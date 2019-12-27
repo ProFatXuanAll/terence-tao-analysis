@@ -1,0 +1,2248 @@
+\section{Fundamentals}
+
+\begin{definition}\label{definition 3.1.1}
+We define a set \(A\) to be any unordered collection of objects.
+If \(x\) is an object, we say that \(x\) is an element of \(A\) or \(x \in A\) if \(x\) lies in the collection; otherwise we say that \(x \notin A\).
+\end{definition}
+
+\begin{axiom}[Sets are objects]\label{axiom 3.1}
+If \(A\) is a set, then \(A\) is also an object.
+In particular, given two sets \(A\) and \(B\), it is meaningful to ask whether \(A\) is also an element of \(B\).
+\end{axiom}
+
+\begin{remark}
+There is a special case of set theory, called \say{pure set theory}, in which \emph{all} objects are sets;
+for instance the number \(0\) might be identified with the empty set \(\emptyset = \{\}\), the number \(1\) might be identified with \(\{0\} = \{\{\}\}\), the number \(2\) might be identified with \(\{0, 1\} = \{\{\}, \{\{\}\}\}\), and so forth.
+From a logical point of view, pure set theory is a simpler theory, since one only has to deal with sets and not with objects;
+however, from a conceptual point of view it is often easier to deal with impure set theories in which some objects are not considered to be sets.
+The two types of theories are more or less equivalent for the purposes of doing mathematics, and so we shall take an agnostic position as to whether all objects are sets or not.
+\end{remark}
+
+\begin{definition}[Equality of sets]\label{definition 3.1.2}
+Two sets \(A\) and \(B\) are equal, \(A = B\), iff every element of \(A\) is an element of \(B\) and vice versa.
+To put it another way, \(A = B\) if and only if every element \(x\) of \(A\) belongs also to \(B\), and every element \(y\) of \(B\) belongs also to \(A\).
+\end{definition}
+
+\begin{lemma}\label{lemma 3.1.1}
+The definition of equality in Definition \ref{definition 3.1.2} is reflexive, symmetric and transitive.
+\end{lemma}
+
+\begin{proof}
+We first prove the reflexive property of Definition \ref{definition 3.1.2}.
+\(\forall\ x \in A\), \(x \in A\) is always true, thus Definition \ref{definition 3.1.2} is reflexive.
+Next we prove the symmetric property of Definition \ref{definition 3.1.2}.
+If \(\forall\ x \in A\), \(x \in B\), then \(\forall\ y \in B\), \(y \in A\) is also true, thus Definition \ref{definition 3.1.2} is symmetric.
+Finally, we prove the transitive property of Definition \ref{definition 3.1.2}.
+If \(\forall\ x \in A\), \(x \in B\) and \(\forall\ y \in B\), \(y \in C\), then \(\forall\ x \in A\), \(x \in C\) is true because \(x \in A \implies x \in B \implies x \in C\), thus Definition \ref{definition 3.1.2} is transitive.
+\end{proof}
+
+Observe that if \(x \in A\) and \(A = B\), then \(x \in B\), by Definition \ref{definition 3.1.2}.
+Thus the \say{is an element of} relation \(\in\) obeys the axiom of substitution.
+Because of this, any new operation we define on sets will also obey the axiom of substitution, as long as we can define that operation purely in terms of the relation \(\in\).
+
+Next, we turn to the issue of exactly which objects are sets and which objects are not.
+The situation is analogous to how we defined the natural numbers in the previous chapter;
+we started with a single natural number, \(0\), and started building more numbers out of \(0\) using the increment operation.
+We will try something similar here, starting with a single set, the \emph{empty set},
+and building more sets out of the empty set by various operations.
+We begin by postulating the existence of the empty set.
+
+\begin{axiom}[Empty set]\label{axiom 3.2}
+There exists a set \(\emptyset\), known as the empty set, which contains no elements, i.e., for every object \(x\) we have \(x \notin \emptyset\).
+\end{axiom}
+
+\begin{lemma}\label{lemma 3.1.2}
+There can only be one empty set;
+if there were two sets \(\emptyset\) and \(\emptyset'\) which were both empty, then they would be equal to each other.
+\end{lemma}
+
+\begin{proof}
+By Definition \ref{definition 3.1.2}, if \(\forall\ x \notin \emptyset\), \(x \notin \emptyset'\) and \(\forall\ y \notin \emptyset'\), \(y \notin \emptyset\), then \(\emptyset = \emptyset'\)
+\end{proof}
+
+\begin{remark}
+The empty set is also denoted \(\{\}\).
+\end{remark}
+
+\begin{definition}\label{definition 3.1.3}
+If a set is not equal to the empty set, we call it \emph{non-empty}.
+\end{definition}
+
+\begin{lemma}[Single choice]\label{lemma 3.1.3}
+Let \(A\) be a non-empty set.
+Then there exists an object \(x\) such that \(x \in A\).
+\end{lemma}
+
+\begin{proof}
+We prove by contradiction.
+Suppose there does not exist any object \(x\) such that \(x \in A\).
+Then for all objects \(x\), we have \(x \notin A\).
+Also, by Axiom \ref{axiom 3.2} we have \(x \notin \emptyset\).
+Thus \(x \in A \iff x \in \emptyset\) (both statements are equally false), and so \(A = \emptyset\) by Definition \ref{definition 3.1.2}, a contradiction.
+\end{proof}
+
+\begin{remark}
+The above Lemma asserts that given any non-empty set \(A\), we are allowed to \say{choose} an element \(x\) of \(A\) which demonstrates this non-emptyness.
+\end{remark}
+
+\begin{axiom}[Singleton sets and pair sets]\label{axiom 3.3}
+If \(a\) is an object, then there exists a set \(\{a\}\) whose only element is \(a\), i.e., for every object \(y\), we have \(y \in \{a\}\) if and only if \(y = a\);
+we refer to \(\{a\}\) as the \emph{singleton set} whose element is \(a\).
+Furthermore, if \(a\) and \(b\) are objects, then there exists a set \(\{a, b\}\) whose only elements are \(a\) and \(b\); i.e., for every object \(y\), we have \(y \in \{a, b\}\) if and only if \(y = a\) or \(y = b\);
+we refer to this set as the \emph{pair set} formed by \(a\) and \(b\).
+\end{axiom}
+
+\begin{lemma}\label{lemma 3.1.4}
+There is only one singleton set for each object \(a\).
+Similarly, given any two objects \(a\) and \(b\), there is only one pair set formed by \(a\) and \(b\).
+\end{lemma}
+
+\begin{proof}
+We first prove the uniqueness of singleton set.
+Let \(A\) and \(A'\) be singleton sets of object \(a\).
+By Axiom \ref{axiom 3.3}, \(\forall\ x \in A\), \(x = a\), and \(\forall\ y \in A'\), \(y = a\).
+But \(x = y = a\) implies \(\forall\ x \in A\), \(x \in A'\).
+Similarly, \(\forall\ y \in A'\), \(y \in A\).
+Thus \(A = A'\) by Definition \ref{definition 3.1.2}.
+Next we prove the uniqueness of pair set.
+Let \(P\) and \(P'\) be par sets of object \(a\) and \(b\).
+By Axiom \ref{axiom 3.3}, \(\forall\ x \in P\), \(x = a\) or \(x = b\), and \(\forall\ y \in P'\), \(y = a\) or \(y = b\).
+But \(x = a\) or \(x = b\) implies \(\forall\ x \in P\), \(x \in P'\).
+Similarly, \(\forall\ y \in P'\), \(y \in P\).
+Thus \(P = P'\) by Definition \ref{definition 3.1.2}.
+\end{proof}
+
+
+\begin{axiom}[Pairwise union]\label{axiom 3.4}
+Given any two sets \(A\), \(B\), there exists a set \(A \cup B\), called the \emph{union} \(A \cup B\) of \(A\) and \(B\), whose elements consists of all the elements which belong to \(A\) or \(B\) or both.
+In other words, for any object \(x\),
+\[
+    x \in A \cup B \iff (x \in A \text{ or } x \in B).
+\]
+\end{axiom}
+
+\begin{remark}
+If \(A\), \(B\), \(A'\) are sets, and \(A\) is equal to \(A'\), then \(A \cup B\) is equal to \(A' \cup B\).
+Similarly if \(B'\) is a set which is equal to \(B\), then \(A \cup B\) is equal to \(A \cup B'\).
+Thus the operation of union obeys the axiom of substitution, and is thus well-defined on sets.
+\end{remark}
+
+\begin{lemma}\label{lemma 3.1.5}
+If \(a\) and \(b\) are objects, then \(\{a, b\} = \{a\} \cup \{b\}\).
+If \(A\), \(B\), \(C\) are sets, then the union operation is commutative (i.e., \(A \cup B = B \cup A\)) and associative (i.e., \((A \cup B) \cup C = A \cup (B \cup C)\)).
+Also, we have \(A \cup A = A \cup \emptyset = \emptyset \cup A = A\).
+\end{lemma}
+
+\begin{proof}
+First we prove \(\{a, b\} = \{a\} \cup \{b\}\).
+By Definition \ref{definition 3.1.2}, we need to show that every element \(x\) of \(\{a, b\}\) is an element of \(\{a\} \cup \{b\}\), and vice versa.
+So suppose first that \(x\) is an element of \(\{a, b\}\).
+By Axiom \ref{axiom 3.3}, this means that at least one of \(x = a\) or 
+\(x = b\) is true.
+We now divide into two cases.
+If \(x = a\), then by Axiom \ref{axiom 3.3} \(x \in \{a\}\), and so by Axiom \ref{axiom 3.4} \(x \in \{a\} \cup \{b\}\).
+Now suppose instead \(x = b\), then by Axiom \ref{axiom 3.3} \(x \in \{b\}\), and so by Axiom \ref{axiom 3.4} again \(x \in \{a\} \cup \{b\}\).
+A similar argument shows that every element of \(\{a\} \cup \{b\}\) lies in \(\{a, b\}\), and so \(\{a, b\} = \{a\} \cup \{b\}\) as desired.
+
+Next we prove the commutative identity.
+By Definition \ref{definition 3.1.2}, we need to show that every element \(x\) of \(A \cup B\) is an element of \(B \cup A\), and vice versa.
+So suppose first that \(x\) is an element of \(A \cup B\).
+By Axiom \ref{axiom 3.4}, this means that at least one of \(x \in A\) or 
+\(x \in B\) is true.
+We now divide into two cases.
+If \(x \in A\), then by Axiom \ref{axiom 3.4} \(x \in B \cup A\).
+Now suppose instead \(x \in B\), then by Axiom \ref{axiom 3.4} again \(x \in B \cup A\).
+A similar argument shows that every element of \(B \cup A\) lies in \(A \cup B\), and so \(A \cup B = B \cup A\) as desired.
+
+Next we prove the associativity identity.
+By Definition \ref{definition 3.1.2}, we need to show that every element \(x\) of \((A \cup B) \cup C\) is an element of \(A \cup (B \cup C)\), and vice versa.
+So suppose first that \(x\) is an element of \((A \cup B) \cup C\).
+By Axiom \ref{axiom 3.4}, this means that at least one of \(x \in A \cup B\) or 
+\(x \in C\) is true.
+We now divide into two cases.
+If \(x \in C\), then by Axiom \ref{axiom 3.4} again \(x \in B \cup C\), and so by Axiom \ref{axiom 3.4} again we have \(x \in A \cup (B \cup C)\).
+Now suppose instead \(x \in A \cup B\), then by Axiom \ref{axiom 3.4} again \(x \in A\) or \(x \in B\).
+If \(x \in A\) then \(x \in A \cup (B \cup C)\) by Axiom \ref{axiom 3.4}, while if \(x \in B\) then by consecutive applications of Axiom \ref{axiom 3.4} we have \(x \in B \cup C\) and hence \(x \in A \cup (B \cup C)\).
+Thus in all cases we see that every element of \((A \cup B) \cup C\) lies in \(A \cup (B \cup C)\).
+A similar argument shows that every element of \(A \cup (B \cup C)\) lies in \((A \cup B) \cup C\), and so \((A \cup B) \cup C = A \cup (B \cup C) \) as desired.
+
+Finally, we prove that \(A \cup A = A \cup \emptyset = \emptyset \cup A = A\).
+By Axiom \ref{axiom 3.4}, \(\forall\ x \in A\), \(x \in A \cup A\) is true, and \(\forall\ y \in A \cup A\), \(y \in A\) is true, thus \(A \cup A = A\) by Definition \ref{definition 3.1.2}.
+And by Axiom \ref{axiom 3.4}, \(\forall\ x \in A \cup \emptyset\), we have \(x \in A\) or \(x \in \emptyset\).
+But by Axiom \ref{axiom 3.2}, \(x \notin \emptyset\), thus \(x \in A\).
+Also by Axiom \ref{axiom 3.4}, \(\forall\ y \in A\), \(y \in A \cup \emptyset\) is true.
+Thus \(A \cup \emptyset = A\), and by commutative, \(\emptyset \cup A = A \cup \emptyset = A\).
+\end{proof}
+
+\begin{definition}[Subsets]\label{definition 3.1.4}
+Let \(A\), \(B\) be sets.
+We say that \(A\) is a \emph{subset} of \(B\), denoted \(A \subseteq B\), iff every element of \(A\) is also an element of \(B\), i.e.
+\[
+    \text{For any object } x, x \in A \implies x \in B.
+\]
+We say that \(A\) is a \emph{proper subset} of \(B\), denoted \(A \subsetneq B\), if \(A \subseteq B\) and \(A \neq B\).
+\end{definition}
+
+\begin{remark}
+Because these definitions involve only the notions of equality and the \say{is an element of} relation, both of which already obey the axiom of substitution, the notion of subset also automatically obeys the axiom of substitution.
+Thus for instance if \(A \subseteq B\) and \(A = A'\), then \(A' \subseteq B\).
+\end{remark}
+
+\begin{lemma}\label{lemma 3.1.6}
+Given any set \(A\), we always have \(A \subseteq A\) and \(\emptyset \subseteq A\).
+\end{lemma}
+
+\begin{proof}
+By Definition \ref{definition 3.1.4}, \(\forall\ x \in A \implies x \in A\), thus \(A \subseteq A\).
+Also by Definition \ref{definition 3.1.4}, \(\forall\ x \in \emptyset \implies x \in A\) (because \(x \in \emptyset\) is false), thus \(\emptyset \subseteq A\).
+\end{proof}
+
+\begin{proposition}[Sets are partially ordered by set inclusion]\label{proposition 3.1.1}
+Let \(A\), \(B\), \(C\) be sets.
+If \(A \subseteq B\) and \(B \subseteq C\) then \(A \subseteq C\).
+If \(A \subseteq B\) and \(B \subseteq A\), then \(A = B\).
+Finally, if \(A \subsetneq B\) and \(B \subsetneq C\) then \(A \subsetneq C\).
+\end{proposition}
+
+\begin{proof}
+First we prove that if \(A \subseteq B\) and \(B \subseteq C\) then \(A \subseteq C\).
+To prove that \(A \subseteq C\), we have to prove that every element of \(A\) is an element of \(C\).
+So, let us pick an arbitrary element \(x\) of \(A\).
+Then, since \(A \subseteq B\), \(x\) must then be an element of \(B\).
+But then since \(B \subseteq C\), \(x\) is an element of \(C\).
+Thus every element of \(A\) is indeed an element of \(C\), as claimed.
+
+Next we prove that if \(A \subseteq B\) and \(B \subseteq A\), then \(A = B\).
+\(\forall\ x \in A\), since \(A \subseteq B\), \(x \in B\).
+But \(\forall\ y \in B\), since \(B \subseteq A\), \(y \in A\).
+Thus \(A = B\) by Definition \ref{definition 3.1.2}.
+
+Finally, we prove that if \(A \subsetneq B\) and \(B \subsetneq C\) then \(A \subsetneq C\).
+\(\forall\ x \in A\), since \(A \subsetneq B\), \(x\) must then be an element of \(B\).
+But then since \(B \subsetneq C\), \(x\) is an element of \(C\).
+Thus every element of \(A\) is indeed an element of \(C\).
+But \(A \neq B\) and \(B \neq C\), \(\exists\ y \in C\) such that \(y \notin B\), then \(y \notin A\) is also true.
+Thus \(A \neq C\), as claimed.
+\end{proof}
+
+\begin{axiom}[Axiom of specification]\label{axiom 3.5}
+Let \(A\) be a set, and for each \(x \in A\), let \(P(x)\) be a property pertaining to \(x\) (i.e., \(P(x)\) is either a true statement or a false statement).
+Then there exists a set, called \(\{x \in A : P(x) \text{ is true}\}\) (or simply \(\{x \in A : P(x)\}\) for short), whose elements are precisely the elements \(x\) in \(A\) for which \(P(x)\) is true.
+In other words, for any object \(y\),
+\[
+    y \in \{x \in A : P(x) \text{ is true}\} \iff (y \in A \text{ and } P(y) \text{ is true}).
+\]
+\end{axiom}
+
+\begin{remark}
+Axiom \ref{axiom 3.5} is also known as the \emph{axiom of separation}.
+We sometimes write \(\{x \in A \mid P(x)\}\) instead of \(\{x \in A : P(x)\}\);
+this is useful when we are using the colon \say{:} to denote something else.
+\end{remark}
+
+\begin{definition}[Intersections]\label{definition 3.1.5}
+The intersection \(S_1 \cap S_2\) of two sets is defined to be the set
+\[
+    S_1 \cap S_2 \coloneqq \{x \in S_1 : x \in S_2\}.
+\]
+In other words, \(S_1 \cap S_2\) consists of all the elements which belong to both \(S_1\) and \(S_2\).
+Thus, for all objects \(x\),
+\[
+    x \in S_1 \cap S_2 \iff x \in S_1 \text{ and } x \in S_2.
+\]
+\end{definition}
+
+\begin{remark}
+Two sets \(A\), \(B\) are said to be \emph{disjoint} if \(A \cap B = \emptyset\).
+Note that this is not the same concept as being \emph{distinct}, \(A \neq B\).
+Meanwhile, the sets \(\emptyset\) and \(\emptyset\) are disjoint but not distinct.
+\end{remark}
+
+\begin{definition}[Difference sets]\label{definition 3.1.6}
+Given two sets \(A\) and \(B\), we define the set \(A - B\) or \(A \setminus B\) to be the set \(A\) with any elements of \(B\) removed:
+\[
+    A \setminus B \coloneqq \{x \in A : x \in B\}.
+\]
+\end{definition}
+
+\begin{proposition}[Sets form a boolean algebra]\label{proposition 3.1.2}
+Let \(A\), \(B\), \(C\) be sets, and let \(X\) be a set containing \(A\), \(B\), \(C\) as subsets.
+    \begin{enumerate}
+        \item (Minimal element) We have \(A \cup \emptyset = A\) and \(A \cap \emptyset = \emptyset\).
+        \item (Maximal element) We have \(A \cup X = X\) and \(A \cap X = A\).
+        \item (Identity) We have \(A \cap A = A\) and \(A \cup A = A\).
+        \item (Commutativity) We have \(A \cup B = B \cup A\) and \(A \cap B = B \cap A\).
+        \item (Associativity) We have \((A \cup B) \cup C = A \cup (B \cup C)\) and \((A \cap B) \cap C = A \cap (B \cap C)\).
+        \item (Distributivity) We have \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\) and \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\).
+        \item (Partition) We have \(A \cup (X \setminus A) = X\) and \(A \cap (X \setminus A) = \emptyset\).
+        \item (De Morgan laws) We have \(X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B)\) and \(X \setminus (A \cap B) = (X \setminus A) \cup (X \setminus B)\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}{(a)}
+We first prove the union part.
+By Axiom \ref{axiom 3.4}, \(\forall\ x \in A \cup \emptyset\), we have \(x \in A\) or \(x \in \emptyset\).
+But by Axiom \ref{axiom 3.2}, \(x \notin \emptyset\), thus \(x \in A\).
+Also by Axiom \ref{axiom 3.4}, \(\forall\ y \in A\), \(y \in A \cup \emptyset\) is true.
+Thus \(A \cup \emptyset = A\).
+
+Now we prove the intersection part.
+By Definition \ref{definition 3.1.5}, \(\forall\ x \in A \cap \emptyset\), we have \(x \in A\) and \(x \in \emptyset\).
+But by Axiom \ref{axiom 3.2}, \(x \notin \emptyset\), thus \(x\) does not exist, which means \(\forall\ x\), \(x \notin A \cap \emptyset\).
+By Axiom \ref{axiom 3.2} and Lemma \ref{lemma 3.1.2}, \(A \cap \emptyset = \emptyset\).
+By Axiom \ref{axiom 3.2} again, \(\forall\ y\), \(y \in \emptyset \implies y \in A \cap \emptyset\) (because both are equivalently false).
+Thus \(A \cap \emptyset = \emptyset\).
+\end{proof}
+
+\begin{proof}{(b)}
+We first prove the union part.
+By the given condition, \(A \subseteq X\).
+Then \(\forall\ x \in A \implies x \in X\), so \(x \in A \cup X \implies x \in X\).
+And \(\forall\ y \in X\), \(y \in A \cup X\) by Axiom \ref{axiom 3.4}.
+Thus \(A \cup X = X\).
+
+Now we prove the intersection part.
+By the given condition, \(A \subseteq X\).
+Then \(\forall\ x \in A \implies x \in X\), so \(x \in A \cap X \implies x \in A\).
+And again \(\forall\ y \in A \implies y \in X\), so \(y \in A \implies y \in A \cap X\).
+Thus \(A \cap X = A\).
+\end{proof}
+
+\begin{proof}{(c)}
+We first prove the union part.
+\(\forall\ x \in A \cup A \iff x \in A\) or \(x \in A \iff x \in A\).
+Thus \(A \cup A = A\).
+
+Now we prove the intersection part.
+\(\forall\ x \in A \cap A \iff x \in A\) and \(x \in A \iff x \in A\).
+Thus \(A \cap A = A\).
+\end{proof}
+
+\begin{proof}{(d)}
+We first prove the union part.
+\(\forall\ x \in A \cup B \iff x \in A\) or \(x \in B \iff x \in B\) or \(x \in A \iff x \in B \cup A\).
+Thus \(A \cup B = B \cup A\).
+
+Now we prove the intersection part.
+\(\forall\ x \in A \cap B \iff x \in A\) and \(x \in B \iff x \in B\) and \(x \in A \iff x \in B \cap A\).
+Thus \(A \cap B = B \cap A\).
+\end{proof}
+
+\begin{proof}{(e)}
+We first prove the union part.
+By Definition \ref{definition 3.1.2}, we need to show that every element \(x\) of \((A \cup B) \cup C\) is an element of \(A \cup (B \cup C)\), and vice versa.
+So suppose first that \(x\) is an element of \((A \cup B) \cup C\).
+By Axiom \ref{axiom 3.4}, this means that at least one of \(x \in A \cup B\) or 
+\(x \in C\) is true.
+We now divide into two cases.
+If \(x \in C\), then by Axiom \ref{axiom 3.4} again \(x \in B \cup C\), and so by Axiom \ref{axiom 3.4} again we have \(x \in A \cup (B \cup C)\).
+Now suppose instead \(x \in A \cup B\), then by Axiom \ref{axiom 3.4} again \(x \in A\) or \(x \in B\).
+If \(x \in A\) then \(x \in A \cup (B \cup C)\) by Axiom \ref{axiom 3.4}, while if \(x \in B\) then by consecutive applications of Axiom \ref{axiom 3.4} we have \(x \in B \cup C\) and hence \(x \in A \cup (B \cup C)\).
+Thus in all cases we see that every element of \((A \cup B) \cup C\) lies in \(A \cup (B \cup C)\).
+A similar argument shows that every element of \(A \cup (B \cup C)\) lies in \((A \cup B) \cup C\), and so \((A \cup B) \cup C = A \cup (B \cup C) \) as desired.
+
+Now we prove the intersection part.
+By definition \ref{definition 3.1.5}, \(\forall\ x \in (A \cap B) \cap C \iff x \in A \cap B \) and \(x \in C \iff x \in A\) and \(x \in B\) and \(x \in C \iff x \in A\) and \(x \in B \cap C \iff x \in A \cap (B \cap C)\).
+Thus \((A \cap B) \cap C = A \cap (B \cap C)\).
+\end{proof}
+
+\begin{proof}{(f)}
+We first prove the union part.
+\(\forall\ x \in A \cup (B \cap C) \iff x \in A\) or \(x \in B \cap C\).
+We divide into two cases.
+If \(x \in A\), then \(x \in A \cup B\) is true and \(x \in A \cup C\) is true, thus \(x \in (A \cup B) \cap (A \cup C)\).
+If \(x \in B \cap C\), then \(x \in B\) and \(x \in C\), so \(x \in A \cup B\) is true and \(x \in A \cup C\) is true, which means \(x \in (A \cup B) \cap (A \cup C)\).
+In both case we show that \(A \cup (B \cap C) \subseteq (A \cup B) \cap (A \cup C)\), so we proved the necessary condition.
+All we left is to prove the sufficient condition.
+\(\forall\ y \in (A \cup B) \cap (A \cup C) \iff y \in A \cup B\) and \(y \in A \cup C\).
+We divide into two cases.
+If \(x \in A\), then \(x \in A \cup (B \cap C)\).
+If \(x \notin A\), then \(x \in B\) and \(x \in C\), thus \(x \in A \cup (B \cap C)\).
+In both case we show that \((A \cup B) \cap (A \cup C) \subseteq A \cup (B \cap C)\).
+Since we prove the necessary and sufficient condition, we conclude that \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\).
+
+Now we prove the intersection part.
+\(\forall\ x \in A \cap (B \cup C) \iff x \in A\) and \(x \in B \cup C\).
+We divide into two cases.
+If \(x \in B\), then \(x \in A \cap B\), so \(x \in (A \cap B) \cup (A \cap C)\).
+If \(x \in C\), then \(x \in A \cap C\), so \(x \in (A \cap B) \cup (A \cap C)\).
+In both case we show that \(A \cap (B \cup C) \subseteq (A \cap B) \cup (A \cap C)\), so we proved the necessary condition.
+All we left is to prove the sufficient condition.
+\(\forall\ y \in (A \cap B) \cup (A \cap C) \iff y \in A \cap B\) or \(y \in A \cap C\).
+But \(y \in A \cap B \implies (y \in A\) and \(y \in B) \implies (y \in A\) and \(y \in B \cup C)\), and \(y \in A \cap C \implies (y \in A\) and \(y \in C) \implies (y \in A\) and \(y \in B \cup C)\).
+Thus \((A \cap B) \cup (A \cap C) \subseteq A \cap (B \cup C)\).
+Since we prove the necessary and sufficient condition, we conclude that \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\).
+\end{proof}
+
+\begin{proof}{(g)}
+We first prove the union part.
+\(\forall\ x \in A \cup (X \setminus A) \iff x \in A\) or \((x \in X\) and \(x \notin A)\).
+We divide into two cases.
+If \(x \in A\), then \(x \in X\) is true because the given condition \(A \subseteq X\).
+If \(x \in X\) and \(x \notin A\), then \(x \in X\) is also true.
+Thus \(x \in A \cup (X \setminus A) \implies x \in X\), so we proved the necessary condition.
+All we left is to prove the sufficient condition.
+\(\forall\ y \in X\), if \(y \in A\), then \(y \in A \cup (X \setminus A)\) is true.
+And if \(y \notin A\), then \(y \in X \setminus A\) is true because the given condition \(A \subseteq X\).
+Thus \(y \in X \implies y \in A \cup (X \setminus A)\).
+Since we prove the necessary and sufficient condition, we conclude that \(A \cup (X \setminus A) = X\).
+
+Now we prove the intersection part.
+\(\forall\ x \in A \cap (X \setminus A) \iff x \in A\) and \((x \in X\) and \(x \notin A)\).
+But \(x \in A\) and \(x \notin A\) cannot be true at the same time, so such \(x\) does not exist.
+Thus \(\forall\ x \notin A \cap (X \setminus A)\) is true, and by Lemma \ref{lemma 3.1.2}, \(A \cap (X \setminus A) = \emptyset\).
+\end{proof}
+
+\begin{proof}{(h)}
+We first prove \(X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B)\).
+By Definition \ref{definition 3.1.2}, two sets are equal iff for all object in one set does not in other set and vice versa.
+\(\forall\ x \in X \setminus (A \cup B) \iff x \in X\) and \(x \notin A \cup B\).
+We want to show that \(\forall\ y \in A \cup B\), \(y \notin (X \setminus A) \cap (X \setminus B)\).
+If \(y \in A\), then \(y \notin X \setminus A\) is true because \(A \subseteq X\), and \(y \notin (X \setminus A) \cap (X \setminus B)\) is also true;
+similarly if \(y \in B\), then \(y \notin X \setminus B\) is true because \(B \subseteq X\), and \(y \notin (X \setminus A) \cap (X \setminus B)\) is also true.
+Thus \(y \notin X \setminus (A \cup B) \implies y \notin (X \setminus A) \cap (X \setminus B)\), so we proved the sufficient condition.
+All we left is to prove the necessary condition.
+\(\forall\ x \in (X \setminus A) \cap (X \setminus B) \iff (x \in X\) and \(x \notin A)\) and \((x \in X\) and \(x \notin B) \iff x \in X\) and \(x \notin A\) and \(x \notin B\).
+Let \(y\), \(z\) be objects, \(y \in A\) and \(z \in B\).
+Because \(y \notin (X \setminus A) \cap (X \setminus B)\) and \(z \notin (X \setminus A) \cap (X \setminus B)\), we want to show that \(y \notin X \setminus (A \cup B)\) and \(z \notin X \setminus (A \cup B)\).
+But \(y \in A \implies y \in A \cup B \implies y \notin X \setminus (A \cup B)\), and \(z \in B \implies z \in A \cup B \implies z \notin X \setminus (A \cup B)\).
+Thus for any object \(w \notin (X \setminus A) \cap (X \setminus B) \implies w \notin X \setminus (A \cup B)\).
+Since we prove the necessary and sufficient condition, we conclude that \(X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B)\).
+
+Now we prove \(X \setminus (A \cap B) = (X \setminus A) \cup (X \setminus B)\).
+\(\forall\ x \in (X \setminus A) \cup (X \setminus B) \iff (x \in X\) and \(x \notin A)\) or \((x \in X\) and \(x \notin B)\).
+If \(x \in X\) and \(x \notin A\), then \(x \in X\) and \(x \notin A \cap B\).
+Similarly if \(x \in X\) and \(x \notin B\), then \(x \in X\) and \(x \notin A \cap B\).
+In both cases we conclude that \(x \in (X \setminus A) \cup (X \setminus B) \implies x \in X \setminus (A \cap B)\), so we proved the sufficient condition.
+All we left is to prove the necessary condition.
+\(\forall\ y \in X \setminus (A \cap B) \iff y \in X\) and \(y \notin A \cap B\).
+If \(y \in A\), then \(y \notin B\) is true, and \(y \in X \setminus B\) is true.
+Similarly if \(y \in B\), then \(y \notin A\) is true, and \(y \in X \setminus A\) is true.
+Thus \(y \in X \setminus (A \cap B) \implies y \in (X \setminus A) \cup (X \setminus B)\).
+Since we prove the necessary and sufficient condition, we conclude that \(X \setminus (A \cap B) = (X \setminus A) \cup (X \setminus B)\).
+\end{proof}
+
+\begin{remark}
+The de Morgan laws are named after the logician Augustus De Morgan (1806--1871), who identified them as one of the basic laws of set theory.
+The above laws are collectively known as the \emph{laws of Boolean algebra}, after the mathematician George Boole (1815–1864), and are also applicable to a number of other objects other than sets;
+it plays a particularly important role in logic.
+\end{remark}
+
+\begin{axiom}[Replacement]\label{axiom 3.6}
+Let \(A\) be a set.
+For any object \(x \in A\), and any object \(y\), suppose we have a statement \(P(x, y)\) pertaining to \(x\) and \(y\), such that for each \(x \in A\) there is at most one \(y\) for which \(P(x, y)\) is true.
+Then there exists a set \(\{y : P(x, y) \text{ is true for some } x \in A\}\), such that for any object \(z\),
+\[
+    z \in \{y: P(x, y) \text{ is true for some } x \in A\} \iff P(x, y) \text{ is true for some } x \in A.
+\]
+\end{axiom}
+
+\begin{remark}
+We often abbreviate a set of the form
+\[
+    \{y : y = f(x) \text{ for some } x \in A\}
+\]
+as \(\{f(x) : x \in A\}\) or \(\{f(x) \mid x \in A\}\).
+We can of course combine the axiom of replacement with the axiom of specification, thus for instance we can create sets such as \(\{f(x) : x \in A; P(x) \text{ is true}\}\) by starting with the set \(A\), using the axiom of specification to create the set \(\{x \in A : P(x) \text{ is true}\}\), and then applying the axiom of replacement to create \(\{f(x) : x \in A; P(x) \text{ is true}\}\).
+\end{remark}
+
+\begin{axiom}[Infinity]\label{axiom 3.7}
+There exists a set \(\mathds{N}\), whose elements are called natural numbers, as well as an object \(0\) in \(\mathds{N}\), and an object \(n++\) assigned to every natural number \(n \in \mathds{N}\), such that the Peano axioms (Axioms \ref{2.1} - \ref{2.5}) hold.
+\end{axiom}
+
+\begin{exercise}\label{exercise 3.1.1}
+Let \(A\), \(B\) be sets.
+Show that the three statements \(A \subseteq B\), \(A \cup B = B\), \(A \cap B = A\) are logically equivalent (any one of them implies the other two).
+\end{exercise}
+
+\begin{proof}
+We first prove that \(A \subseteq B \implies A \cup B = B\).
+By the given condition, \(\forall\ x \in A\), \(x \in B\) is true, thus \(A \cup B \subseteq B\).
+And \(\forall\ y \in B\), \(y \in A \cup B\), thus \(B \subseteq A \cup B\).
+So \(A \subseteq B \implies A \cup B = B\) is true.
+
+Next we prove that \(A \cup B = B \implies A \cap B = A\).
+\(\forall\ x \in A \cap B\), \(x \in A\) is true.
+And by the given condition, \(\forall\ y \in A\) or \(y \in B\), \(y \in B\) is true, so if \(y \in A\), then \(y \in A \cap B\) is true.
+Thus \(A \cup B = B \implies A \cap B = A\) is true.
+
+Finally, we prove that \(A \cap B = A \implies A \subseteq B\).
+By the given condition, \(\forall x \in A\), \(x \in A\) and \(x \in B\), so \(A \subseteq B\) is true.
+Thus \(A \cap B \implies A \subseteq B\) is true.
+
+Since \(A \subseteq B \implies A \cup B = B \implies A \cap B = A \implies A \subseteq B\), we conclude that \(A \subseteq B \iff A \cup B = B \iff A \cap B = A\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.1.2}
+Let \(A\), \(B\), \(C\) be sets.
+Show that \(A \cap B \subseteq A\) and \(A \cap B \subseteq B\).
+Furthermore, show that \(C \subseteq A\) and \(C \subseteq B\) if and only if \(C \subseteq A \cap B\).
+In a similar spirit, show that \(A \subseteq A \cup B\) and \(B \subseteq A \cup B\), and furthermore that \(A \subseteq C\) and \(B \subseteq C\) if and only if \(A \cup B \subseteq C\).
+\end{exercise}
+
+\begin{proof}
+We first prove that \(A \cap B \subseteq A\) and \(A \cap B \subseteq B\).
+By the given condition \(A \cap B \subseteq A\), \(\forall\ x \in A \cap B\), \(x \in A\) and \(x \in B\) is true, thus \(x \in A\) is true.
+Similarly, \(\forall\ x \in A \cap B\), \(x \in A\) and \(x \in B\) is true, thus \(x \in B\) is  true.
+We conclude that \(A \cap B \subseteq A\) and \(A \cap B \subseteq B\).
+
+Next we prove that \(C \subseteq A\) and \(C \subseteq B \iff C \subseteq A \cap B\).
+By the given condition \(C \subseteq A\) and \(C \subseteq B\), \(\forall\ x \in C\), \(x \in A\) is true and \(x \in B\) is true, so \(x \in A \cap B\) is true, and we finish prove the necessary condition.
+Now we prove the sufficient condition.
+Again by the given condition \(C \subseteq A \cap B\), \(\forall\ y \in C\), \(y \in A \cap B\), so \(\forall\ y \in C\), \(y \in A\) is true and \(y \in B\) is also true, thus \(C \subseteq A\) and \(C \subseteq B\) is true.
+Since we prove both necessary and sufficient conditions, we conclude that \(C \subseteq A\) and \(C \subseteq B \iff C \subseteq A \cap B\).
+
+Next we prove that \(A \subseteq A \cup B\) and \(B \subseteq A \cup B\).
+By the given condition \(A \subseteq A \cup B\), \(\forall\ x \in A\), \(x \in A\) or \(x \in B\) is true, thus \(A \subseteq A \cup B\) is true.
+Similarly, by the given condition \(B \subseteq A \cup B\), \(\forall\ y \in B\), \(y \in A\) or \(y \in B\) is true, thus \(B \subseteq A \cup B\) is true.
+
+Finally we show that \(A \subseteq C\) and \(B \subseteq C \iff A \cup B \subseteq C\).
+By the given condition \(A \subseteq C\) and \(B \subseteq C\), \(\forall\ x \in A\), \(x \in C\); and \(\forall\ y \in B\), \(y \in C\).
+Thus \(\forall\ z \in A \cup B\), \(z \in C\) is true.
+Since we prove the necessary condition, all we left is to prove the sufficient condition.
+By the given condition \(A \cup B \subseteq C\), \(\forall\ x \in A\) or \(x \in B\), \(x \in C\).
+If \(x \in A\), then \(x \in C\); similarly if \(x \in B\), \(x \in C\), thus \(A \subseteq C\) and \(B \subseteq C\) is true.
+We conclude that \(A \subseteq C\) and \(B \subseteq C \iff A \cup B \subseteq C\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.1.3}
+Let \(A\), \(B\) be sets.
+Prove the absorption laws \(A \cap (A \cup B) = A\) and \(A \cup (A \cap B) = A\).
+\end{exercise}
+
+\begin{proof}
+By Proposition \ref{proposition 3.1.2}, \(A \cap (A \cup B) = (A \cap A) \cup (A \cap B) = A \cup (A \cap B)\), thus we only need to prove \(A \cup (A \cap B) = A\).
+\(\forall\ x \in A \cup (A \cap B)\), \(x \in A\) or \(x \in A \cap B\), so \(x \in A\) is true.
+\(\forall\ y \in A\), \(y \in A\) or \(y \in A \cap B\) is true, so \(y \in A \cup (A \cap B)\) is true.
+Thus \(A \cup (A \cap B) = A\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.1.4}
+Let \(A\), \(B\), \(X\) be sets such that \(A \cup B = X\) and \(A \cap B = \emptyset\).
+Show that \(A = X \setminus B\) and \(B = X \setminus A\).
+\end{exercise}
+
+\begin{proof}
+By Proposition \ref{proposition 3.1.2}, \(A \cup (X \setminus A) = X\) and \(A \cap (X \setminus A) = \emptyset\).
+So by the given condition \(A \cup B = X\) and \(A \cap B = \emptyset\), \(B = X \setminus A\).
+Similar argument shows that \(A = X \setminus B\).
+Thus we finished the prove.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.1.5}
+Let \(A\) and \(B\) be sets.
+Show that the three sets \(A \setminus B\), \(A \cap B\), and \(B \setminus A\) are disjoint, and that their union is \(A \cup B\).
+\end{exercise}
+
+\begin{proof}
+We first prove the disjoint part.
+\(\forall\ x \in A \setminus B\), \(x \in A\) and \(x \notin B\).
+Because \(x \notin B\), so \(x \notin B \setminus A\), thus \((A \setminus B) \cap (B \setminus A) = \emptyset\).
+Also because \(x \notin B\), so \(x \notin A \cap B\), thus \((A \setminus B) \cap (A \cap B) = \emptyset\).
+Similar argument shows that \((B \setminus A) \cap (A \cap B) = \emptyset\).
+
+Now we prove the union part.
+\begin{align*}
+    (A \setminus B) \cup (A \cap B) \cup (B \setminus A)
+    &= ((A \setminus B) \cup (A \cap B)) \cup (B \setminus A) \\
+    &= (((A \setminus B) \cup A) \cap ((A \setminus B) \cup B))) \cup (B \setminus A) \\
+    &= (A \cap B) \cup (B \setminus A) \\
+    &= (A \cup (B \setminus A)) \cap (B \cup (B \setminus A)) \\
+    &= (A \cup B) \cap (A \cup B) \\
+    &= A \cup B.
+\end{align*}
+\end{proof}
+
+\begin{exercise}\label{exercise 3.1.6}
+Show that the axiom of replacement implies the axiom of specification.
+\end{exercise}
+
+\begin{proof}
+By Axiom \ref{axiom 3.6}, \(z \in \{y : P(x, y) \text{ is true for some } x \in A\} \iff P(x, z)\) is true for some \(x \in A\).
+Change all \(y\) and \(z\) into \(x\), and replace \(P(x, x)\) with \(P(x)\), we derive \(x \in \{x : P(x) \text{ is true for some } x \in A\} \iff P(x)\) is true for some \(x \in A\), which is the same as Axiom \ref{axiom 3.5}.
+Thus we conclude that Axiom \ref{axiom 3.6} implies Axiom \ref{axiom 3.5}.
+\end{proof}
+
+\section{Russell's paradox}
+
+\begin{axiom}[Universal specification]\label{axiom 3.8}
+(Dangerous!)
+Suppose for every object \(x\) we have a property \(P(x)\) pertaining to \(x\) (so that for every \(x\), \(P(x)\) is either a true statement or a false statement).
+Then there exists a set \(\{x : P(x) \text{ is true}\}\) such that for every object \(y\),
+\[
+    y \in \{x : P(x) \text{ is true}\} \iff P(y) \text{ is true}.
+\]
+\end{axiom}
+
+\begin{remark}
+Compare to Axiom \ref{axiom 3.5}, any object \(x\) does not need to be in a set \(A\) to apply this axiom.
+\end{remark}
+
+Axiom \ref{axiom 3.8} is also known as the \emph{axiom of comprehension}.
+Unfortunately, this axiom cannot be introduced into set theory, because it creates a logical contradiction known as \emph{Russell’s paradox}, discovered by the philosopher and logician Bertrand Russell (1872--1970) in 1901.
+The paradox runs as follows.
+Let \(P(x)\) be the statement
+\[
+    P(x) \iff \text{\say{\(x\) is a set, and \(x \notin x\)}};
+\]
+i.e., \(P(x)\) is true only when \(x\) is a set which does not contain itself.
+Now use the axiom of universal specification to create the set
+\[
+    \Omega \coloneqq \{x : P(x) \text{ is true}\} = \{x : x \text{ is a set and } x \notin x\},
+\]
+i.e., the set of all sets which do not contain themselves.
+Now ask the question: does \(\Omega\) contain itself, i.e. is \(\Omega \in \Omega\)?
+If \(\Omega\) did contain itself, then by definition this means that \(P(\Omega)\) is true, i.e., \(\Omega\) is a set and \(\Omega \notin \Omega\).
+On the other hand, if \(\Omega\) did not contain itself, then \(P(\Omega)\) would be true, and hence \(\Omega \in \Omega\).
+Thus in either case we have both \(\Omega \in \Omega\) and \(\Omega \notin \Omega\), which is absurd.
+
+The problem with the above axiom is that it creates sets which are far too \say{large}.
+Since sets are themselves objects (Axiom \ref{axiom 3.1}), this means that sets are allowed to contain themselves, which is a somewhat silly state of affairs.
+One way to informally resolve this issue is to think of objects as being arranged in a hierarchy.
+At the bottom of the hierarchy are the \emph{primitive objects} - the objects that are not sets.
+Then on the next rung of the hierarchy there are sets whose elements consist only of primitive objects, let’s call these \say{primitive sets} for now.
+Then there are sets whose elements consist only of primitive objects and primitive sets, and we can form sets out of these objects, and so forth.
+The point is that at each stage of the hierarchy we only see sets whose elements consist of objects at lower stages of the hierarchy, and so at no stage do we ever construct a set which contains itself.
+
+\begin{axiom}[Regularity]\label{axiom 3.9}
+If \(A\) is a non-empty set, then there is at least one element \(x\) of \(A\) which is either not a set, or is disjoint from \(A\).
+\end{axiom}
+
+The point of this axiom (which is also known as the \emph{axiom of foundation}) is that it is asserting that at least one of the elements of \(A\) is so low on the hierarchy of objects that it does not contain any of the other elements of \(A\).
+
+\begin{exercise}\label{exercise 3.2.1}
+Show that the universal specification axiom, Axiom 3.8, if assumed to be true, would imply Axioms \ref{axiom 3.2}, \ref{axiom 3.3}, \ref{axiom 3.4}, \ref{axiom 3.5}, and \ref{axiom 3.6}.
+(If we assume that all natural numbers are objects, we also obtain Axiom \ref{axiom 3.7}.)
+Thus, this axiom, if permitted, would simplify the foundations of set theory tremendously (and can be viewed as one basis for an intuitive model of set theory known as \say{naive set theory}).
+Unfortunately, as we have seen, Axiom \ref{axiom 3.8} is \say{too good to be true}!
+\end{exercise}
+
+\begin{proof}
+We first prove Axiom \ref{axiom 3.2}.
+By Axiom \ref{axiom 3.8}, there exist a set \(\emptyset\) such that \(\{x: x \notin \emptyset\}\).
+
+Next we prove Axiom \ref{axiom 3.3}.
+For singleton sets, if \(a\) is an object, then by Axiom \ref{axiom 3.8} there exist a set \(\{x: x = a\}\).
+For pair sets, if \(a\) and \(b\) are objects, then by Axiom \ref{axiom 3.8} there exist a set \(\{x: x = a \text{ or } x = b\}\).
+
+Next we prove Axiom \ref{axiom 3.4}.
+By Axiom \ref{axiom 3.8}, there exist sets \(A\), \(B\) and \(\{x : x \in A \text{ or } x \in B\}\).
+
+Next we prove Axiom \ref{axiom 3.5}.
+By Axiom \ref{axiom 3.8}, there exist sets \(A\) and \(\{x \in A : P(x) \text{ is true}\}\).
+
+Next we prove Axiom \ref{axiom 3.6}.
+By Axiom \ref{axiom 3.8}, there exist sets \(A\) and \(\{y : P(x, y), x \in A\}\).
+
+Finally, we prove Axiom \ref{axiom 3.7}.
+By Axiom \ref{axiom 3.8}, there exists a set \(\mathds{N}\), as well as an object \(0\) in \(\mathds{N}\), and an object \(n++\) assigned to every object \(n \in \mathds{N}\), such that the Peano axioms holds.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.2.2}
+Use the axiom of regularity (and the singleton set axiom) to show that if \(A\) is a set, then \(A \notin A\).
+Furthermore, show that if \(A\) and \(B\) are two sets, then either \(A \notin B\) or \(B \notin A\) (or both).
+\end{exercise}
+
+\begin{proof}
+Suppose for sake of contradiction that there exist a set \(A\) such that \(A \in A\) is true.
+By Axiom \ref{axiom 3.3}, there exist a set \(\{A\}\) and \(A \in \{A\}\) is true.
+Then \(A \in A \cap \{A\}\) is true, but by Axiom \ref{axiom 3.9}, the only element \(A\) in \(\{A\}\) must be disjoint from \(\{A\}\), which mean \(A \cap \{A\} = \emptyset\), a contradiction.
+Thus there does not exist a \(A\) such that \(A \in A\) is true, i.e., \(\forall\ A\) is a set, \(A \notin A\).
+
+Next we show that if \(A\) and \(B\) are two sets, then either \(A \notin B\) or \(B \notin A\) (or both).
+If \(A \in B\), we want to show that \(B \notin A\).
+So suppose for sake of contradiction that \(B \in A\).
+Then \(A \in A \cup B\) and \(B \in A \cup B\), which means \(A \cup B \in A \cup B\), contradict to Axiom \ref{axiom 3.9}.
+Thus \(B \notin A\).
+Similar argument show that if \(B \in A\), then \(A \notin B\).
+And if \(A \notin B\), then \(B \notin A\) can also be true.
+So we conclude that either \(A \notin B\) or \(B \notin A\) (or both).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.2.3}
+Show (assuming the other axioms of set theory) that the universal specification axiom, Axiom \ref{axiom 3.8}, is equivalent to an axiom postulating the existence of a \say{universal set} \(\Omega\) consisting of all objects (i.e., for all objects \(x\), we have \(x \in \Omega\)).
+In other words, if Axiom \ref{axiom 3.8} is true, then a universal set exists, and conversely, if a universal set exists, then Axiom \ref{axiom 3.8} is true.
+(This may explain why Axiom \ref{axiom 3.8} is called the axiom of universal specification).
+Note that if a universal set \(\Omega\) existed, then we would have \(\Omega \in \Omega\) by Axiom \ref{axiom 3.1}, contradicting Exercise \ref{exercise 3.2.2}.
+Thus the axiom of foundation specifically rules out the axiom of universal specification.
+\end{exercise}
+
+\begin{proof}
+If Axiom \ref{axiom 3.8} is true, then there exist a set \(\Omega = \{x: x \text{ is a object}\}\), and \(\Omega \in \Omega\).
+Thus Axiom \ref{axiom 3.8} implies a universal set exist.
+If a universal set \(\Omega\) exist, then for any set \(A = \{x: P(x)\}\), \(A \in \Omega\) is true.
+Thus a universal set exist implies Axiom \ref{axiom 3.8} is true.
+Since we prove both necessary and sufficient condition, we conclude that Axiom \ref{axiom 3.8} is logically equivalent to a universal set exist.
+\end{proof}
+
+\section{Functions}
+
+\begin{definition}[Functions]\label{definition 3.3.1}
+Let \(X\), \(Y\) be sets, and let \(P(x, y)\) be a property pertaining to an object \(x \in X\) and an object \(y \in Y\), such that for every \(x \in X\), there is exactly one \(y \in Y\) for which \(P(x, y)\) is true (this is sometimes known as the \emph{vertical line test}).
+Then we define the \emph{function} \(f : X \to Y\) \emph{defined by} \(P\) \emph{on the domain} \(X\) \emph{and range} \(Y\) to be the object which, given any input \(x \in X\), assigns an output \(f(x) \in Y\), defined to be the unique object \(f(x)\) for which \(P(x, f(x))\) is true.
+Thus, for any \(x \in X\) and \(y \in Y\),
+\[
+    y = f(x) \iff P(x, y) \text{ is true}.
+\]
+\end{definition}
+
+Functions are also referred to as \emph{maps} or \emph{transformations}, depending on the context.
+They are also sometimes called \emph{morphisms}, although to be more precise, a morphism refers to a more general class of object, which may or may not correspond to actual functions, depending on the context.
+
+One common way to define a function is simply to specify its domain, its range, and how one generates the output \(f(x)\) from each input;
+this is known as an \emph{explicit} definition of a function.
+In other cases we only define a function \(f\) by specifying what property \(P(x, y)\) links the input \(x\) with the output \(f(x)\);
+this is an \emph{implicit} definition of a function.
+
+In many cases we omit specifying the domain and range of a function for brevity.
+However, too much of this abbreviation can be dangerous;
+sometimes it is important to know what the domain and range of the function is.
+
+We observe that functions obey the axiom of substitution: if \(x = x'\), then \(f(x) = f(x')\).
+In other words, equal inputs imply equal outputs.
+On the other hand, unequal inputs do not necessarily ensure unequal outputs.
+For example, \emph{constant function} simply assign each input with the same output.
+
+\begin{remark}
+We are now using parentheses () to denote several different things in mathematics;
+on one hand, we are using them to clarify the order of operations, but on the other hand we also use parentheses to enclose the argument \(f(x)\) of a function or of a property such as \(P(x)\).
+However, the two usages of parentheses usually are unambiguous from context.
+For instance, if \(a\) is a number, then \(a(b + c)\) denotes the expression \(a \times (b + c)\), whereas if \(f\) is a function, then \(f(b + c)\) denotes the output of \(f\) when the input is \(b + c\).
+Sometimes the argument of a function is denoted by subscripting instead of parentheses;
+for instance, a sequence of natural numbers \(a_0\), \(a_1\), \(a_2\), \(a_3\), \(\cdots\) is, strictly speaking, a function from \(\mathds{N}\) to \(\mathds{N}\), but is denoted by \(n \mapsto a_n\) rather than \(n \mapsto a(n)\).
+\end{remark}
+
+\begin{remark}
+Strictly speaking, functions are not sets, and sets are not functions;
+it does not make sense to ask whether an object \(x\) is an element of a function \(f\), and it does not make sense to apply a set \(A\) to an input \(x\) to create an output \(A(x)\).
+On the other hand, it is possible to start with a function \(f : X \to Y\) and construct its graph \(\{(x, f(x)) : x \in X\}\), which describes the function completely.
+\end{remark}
+
+\begin{definition}[Equality of functions]\label{definition 3.3.2}
+Two functions \(f : X \to Y\), \(g : X \to Y\) with the same domain and range are said to be equal, \(f = g\), if and only if \(f(x) = g(x)\) for all \(x \in X\).
+(If \(f(x)\) and \(g(x)\) agree for some values of \(x\), but not others, then we do not consider \(f\) and \(g\) to be equal.)
+\end{definition}
+
+A rather boring example of a function is the \emph{empty function} \(f : \emptyset \to X\) from the empty set to an arbitrary set \(X\).
+Since the empty set has no elements, we do not need to specify what \(f\) does to any input.
+Nevertheless, just as the empty set is a set, the empty function is a function, albeit not a particularly interesting one.
+Note that for each set \(X\), there is only one function from \(\emptyset\) to \(X\), since Definition \ref{definition 3.3.2} asserts that all functions from \(\emptyset\) to \(X\) are equal.
+
+\begin{definition}[Composition]\label{definition 3.3.3}
+Let \(f : X \to Y\) and \(g : Y \to Z\) be two functions, such that the range of \(f\) is the same set as the domain of \(g\).
+We then define the composition \(g \circ f : X \to Z\) of the two functions \(g\) and \(f\) to be the function defined explicitly by the formula
+\[
+    (g \circ f)(x) \coloneqq g(f(x)).
+\]
+If the range of \(f\) does not match the domain of \(g\), we leave the composition \(g \circ f\) undefined.
+\end{definition}
+
+Composition is not commutative: \(f \circ g\) and \(g \circ f\) are not necessarily the same function.
+
+\begin{lemma}[Composition is associative]\label{lemma 3.3.1}
+Let \(f : Z \to W\), \(g : Y \to Z\), and \(h : X \to Y\) be functions.
+Then \(f \circ (g \circ h) = (f \circ g) \circ h\).
+\end{lemma}
+
+\begin{proof}
+Since \(g \circ h\) is a function from \(X\) to \(Z\), \(f \circ (g \circ h)\) is a function from \(X\) to \(W\).
+Similarly \(f \circ g\) is a function from \(Y\) to \(W\), and hence \((f \circ g) \circ h\) is a function from \(X\) to \(W\).
+Thus \(f \circ (g \circ h)\) and \((f \circ g) \circ h\) have the same domain and range.
+In order to check that they are equal, we see from Definition \ref{definition 3.3.1} that we have to verify that \((f \circ (g \circ h))(x) = ((f \circ g) \circ h)(x)\) for all \(x \in X\).
+But by Definition \ref{definition 3.3.3}
+    \begin{align*}
+        (f \circ (g \circ h))(x)
+        &= f((g \circ h)(x)) \\
+        &= f(g(h(x))) \\
+        &= (f \circ g)(h(x)) \\
+        &= ((f \circ g) \circ h)(x)
+    \end{align*}
+as desired.
+\end{proof}
+
+\begin{definition}[One-to-one function]\label{definition 3.3.4}
+A function \(f\) is \emph{one-to-one} (or \emph{injective}) if different elements map to different elements:
+\[
+    x \neq x' \implies f(x) \neq f(x').
+\]
+
+Equivalently, a function is one-to-one if
+\[
+    f(x) = f(x') \implies x = x'.
+\]
+\end{definition}
+
+\begin{remark}
+If a function \(f : X \to Y\) is not one-to-one, then one can find distinct \(x\) and \(x'\) in the domain \(X\) such that \(f(x) = f(x')\), thus one can find two inputs which map to one output.
+Because of this, we say that \(f\) is \emph{two-to-one} instead of \emph{one-to-one}.
+\end{remark}
+
+\begin{definition}[Onto functions]\label{definition 3.3.5}
+A function \(f\) is \emph{onto} (or \emph{surjective}) if \(f(X) = Y\), i.e., every element in \(Y\) comes from applying \(f\) to some element in \(X\):
+\[
+    \text{For every } y \in Y, \text{there exists } x \in X \text{ such that } f(x) = y.
+\]
+\end{definition}
+
+\begin{definition}[Bijective functions]\label{definition 3.3.6}
+Functions \(f : X \to Y\) which are both one-to-one and onto are also called \emph{bijective} or \emph{invertible}.
+\end{definition}
+
+\begin{remark}
+If a function \(x \mapsto f(x)\) is bijective, then we sometimes call \(f\) a \emph{perfect matching} or a \emph{one-to-one correspondence} (not to be confused with the notion of a one-to-one function), and denote the action of \(f\) using the notation \(x \leftrightarrow f(x)\) instead of \(x \mapsto f(x)\).
+\end{remark}
+
+If \(f\) is bijective, then for every \(y \in Y\), there is exactly one \(x\) such that \(f(x) = y\) (there is at least one because of surjectivity, and at most one because of injectivity).
+This value of \(x\) is denoted \(f^{-1}(y)\); thus \(f^{-1}\) is a function from \(Y\) to \(X\).
+We call \(f^{-1}\) the \emph{inverse} of \(f\).
+
+\begin{exercise}\label{exercise 3.3.1}
+Show that the definition of equality in Definition \ref{definition 3.3.2} is reflexive, symmetric, and transitive.
+Also verify the substitution property: if \(f, \tilde{f} : X \to Y\) and \(g, \tilde{g} : Y \to Z\) are functions such that \(f = \tilde{f}\) and \(g = \tilde{g}\), then \(g \circ f = \tilde{g} \circ \tilde{f}\).
+\end{exercise}
+
+\begin{proof}
+We first prove that Definition \ref{definition 3.3.2} is reflexive.
+Let \(f : X \to Y\) be arbitrary function with domain \(X\) and range \(Y\).
+Then by Definition \ref{definition 3.3.2}, \(\forall\ x \in X\), \(f(x) = f(x)\), thus we proved the reflexive relation.
+
+Next we prove that Definition \ref{definition 3.3.2} is symmetric.
+Let \(f : X \to Y\) and \(g : X \to Y\) be arbitrary functions with domain \(X\) and range \(Y\) such that \(f = g\) is true.
+Then by Definition \ref{definition 3.3.2}, \(\forall\ x \in X\), \(f(x) = g(x)\) is true, and \(g(x) = f(x)\) is also true, thus \(g = f\) is true, and we proved the symmetric relation.
+
+Next we prove that Definition \ref{definition 3.3.2} is transitive.
+Let \(f : X \to Y\), \(g : X \to Y\) and \(h : X \to Y\) be arbitrary functions with domain \(X\) and range \(Y\) such that \(f = g\) and \(g = h\) are true.
+Then by Definition \ref{definition 3.3.2}, \(\forall\ x \in X\), \(f(x) = g(x)\) is true, and \(g(x) = h(x)\) is also true, so \(f(x) = h(x)\) is true, thus \(f = h\), and we proved the transitive relation.
+
+Now we prove that Axiom of substitution holds for composition.
+Since \(g \circ f\) is a function from \(X\) to \(Z\), and \(\tilde{g} \circ \tilde{f}\) is also a function from \(X\) to \(Z\), thus \(g \circ f\) and \(\tilde{g} \circ \tilde{f}\) have the same domain and range.
+By Definition \ref{definition 3.3.3}, \(\forall\ x \in X\), \((g \circ f)(x) = g(f(x)) = g(\tilde{f}(x)) = \tilde{g}(\tilde{f}(x)) = (\tilde{g} \circ \tilde{f})(x)\).
+Thus \(g \circ f = \tilde{g} \circ \tilde{f}\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.3.2}
+Let \(f : X \to Y\) and \(g : Y \to Z\) be functions.
+Show that if \(f\) and \(g\) are both injective, then so is \(g \circ f\);
+similarly, show that if \(f\) and \(g\) are both surjective, then so is \(g \circ f\).
+\end{exercise}
+
+\begin{proof}
+We first prove the injective part.
+By Definition \ref{definition 3.3.4}, \(\forall\ x, x' \in X\), \(f(x) = f(x') \implies x = x'\).
+Also by Definition \ref{definition 3.3.4}, \(\forall\ f(x), f(x') \in Y\), \(g(f(x)) = g(f(x')) \implies f(x) = f(x')\).
+Thus \(\forall\ x, x' \in X\), \(g(f(x)) = g(f(x')) \implies f(x) = f(x')  \implies x = x'\).
+We conclude that \(g \circ f\) is injective if \(f\) and \(g\) are both injective.
+
+Now we prove the subjective part.
+By Definition \ref{definition 3.3.5}, \(\forall\ z \in Z\), \(\exists\ y \in Y\) such that \(g(y) = z\).
+But also by Definition \ref{definition 3.3.5}, \(\forall\ y \in Y\), \(\exists\ x \in X\) such that \(f(x) = y\).
+So \(\forall\ z \in Z\), \(\exists\ x \in X\) such that \(g(f(x)) = z\).
+We conclude that \(g \circ f\) is subjective if \(f\) and \(g\) are both subjective.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.3.3}
+When is the empty function injective?
+surjective?
+bijective?
+\end{exercise}
+
+\begin{proof}
+Let \(f : \emptyset \to Y\) be a empty function.
+\(f\) is always injective because \(\forall\ x, x' \in \emptyset\), \(f(x) = f(x') \implies x = x'\) is vacuously true.
+\(f\) is never surjective, since \(\forall\ y \in Y\), \(\nexists\ x \in \emptyset\) such that \(f(x) = y\).
+And because \(f\) is never surjective, \(f\) is never bijective.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.3.4}
+In this section we give some cancellation laws for composition.
+Let \(f : X \to Y\), \(\tilde{f} : X \to Y\), \(g : Y \to Z\), and \(\tilde{g} : Y \to Z\) be functions.
+Show that if \(g \circ f = g \circ \tilde{f}\) and g is injective, then \(f = \tilde{f}\).
+Is the same statement true if \(g\) is not injective?
+Show that if \(g \circ f = \tilde{g} \circ f\) and \(f\) is surjective, then \(g = \tilde{g}\).
+Is the same statement true if \(f\) is not surjective?
+\end{exercise}
+
+\begin{proof}
+We first prove the injective part.
+By the given condition \(g \circ f = g \circ \tilde{f}\), \(\forall\ x, x' \in X\), \(g(f(x)) = g(\tilde{f}(x))\).
+Since \(g\) is injective, \(g(f(x)) = g(\tilde{f}(x)) \implies f(x) = f(x')\).
+Thus by Definition \ref{definition 3.3.2}, \(f = \tilde{f}\).
+If \(g\) is not injective, then we cannot get \(g(f(x)) = g(\tilde{f}(x)) \implies f(x) = f(x')\).
+So the same statement is not true when \(g\) is not injective.
+
+Now we prove the surjective part.
+Since \(f\) is surjective, \(\forall\ y \in Y\), \(\exists\ x \in X\) such that \(f(x) = y\).
+By the given condition \(g \circ f = \tilde{g} \circ f\), \(g(y) = \tilde{g}(y) \implies g(f(x)) = \tilde{g}(f(x))\).
+Thus by Definition \ref{definition 3.3.2}, \(g = \tilde{g}\).
+If \(f\) is not surjective, then we cannot get \(\forall\ y \in Y\), \(\exists\ x \in X\) such that \(f(x) = y\).
+So the same statement is not true when \(f\) is not surjective.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.3.5}
+Let \(f : X \to Y\) and \(g : Y \to Z\) be functions.
+Show that if \(g \circ f\) is injective, then \(f\) must be injective.
+Is it true that \(g\) must also be injective?
+Show that if \(g \circ f\) is surjective, then \(g\) must be surjective.
+Is it true that \(f\) must also be surjective?
+\end{exercise}
+
+\begin{proof}
+We first prove the injective part.
+By the given condition, \(\forall\ x, x' \in X\), \(g(f(x)) = g(f(x')) \implies x = x'\).
+But if \(f(x) = f(x')\), then \(g(f(x)) = g(f(x'))\) by Definition \ref{definition 3.3.1}.
+So \(f(x) = f(x') \implies x = x'\), which means \(f\) is injective.
+In the above proving process we didn't require \(g\) to be injective, so \(g\) need not be injective the same statement still holds.
+
+Now we prove the surjective part.
+By the given condition, \(\forall\ z \in Z\), \(\exists\ x \in X\) such that \(g(f(x)) = z\).
+But if such \(x\) exists, than \(f(x) \in Y\) also exists by Definition \ref{definition 3.3.1}.
+So \(\forall\ z \in Z\), \(\exists\ f(x) \in Y\) such that \(g(f(x)) = z\), which means \(g\) is surjective.
+In the above proving process we didn't require \(f\) to be surjective, so \(f\) need not be surjective the same statement still holds.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.3.6}
+Let \(f : X \to Y\) be a bijective function, and let \(f^{-1} : Y \to X\) be its inverse.
+Verify the cancellation laws \(f^{-1}(f(x)) = x\) for all \(x \in X\) and \(f(f^{-1}(y)) = y\) for all \(y \in Y\).
+Conclude that \(f^{-1}\) is also invertible, and has \(f\) as its inverse (thus \((f^{-1})^{-1} = f\)).
+\end{exercise}
+
+\begin{proof}
+\(\forall\ x \in X\), \(\exists!\ y \in Y\) such that \(f(x) = y\) and \(x = f^{-1}(y)\).
+So \(\forall\ x \in X\), \(f^{-1}(f(x)) = f^{-1}(y) = x\), and \(\forall\ y \in Y\), \(f(f^{-1}(y)) = f(x) = y\).
+
+Next we prove that \(f^{-1}\) is invertible.
+\(\forall\ y, y' \in Y\), \(f^{-1}(y) = f^{-1}(y') \implies f(f^{-1}(y)) = f(f^{-1}(y')) \implies y = y'\), so \(f^{-1}\) is injective by Definition \ref{definition 3.3.4}.
+And \(\forall\ x \in X\), \(f(x) = y \implies f^{-1}(f(x)) = f^{-1}(y) = x\), so \(f^{-1}\) is surjective by Definition \ref{definition 3.3.5}.
+Since \(f^{-1}\) is both injective and surjective, \(f^{-1}\) is bijective by Definition \ref{definition 3.3.6}.
+
+Now we prove that \((f^{-1})^{-1} = f\).
+Let \(g = (f^{-1})^{-1}\).
+Then \(\forall\ x \in X\), \(\exists!\ y \in Y\) such that \(g(x) = y\).
+But \(g(x) = y = f(f^{-1}(y)) = f(x)\), thus \(g = f\) by Definition \ref{definition 3.3.2}.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.3.7}
+Let \(f : X \to Y\) and \(g : Y \to Z\) be functions.
+Show that if \(f\) and \(g\) are bijective, then so is \(g \circ f\), and we have \((g \circ f)^{-1} = f^{-1} \circ g^{-1}\).
+\end{exercise}
+
+\begin{proof}
+By the given conditions, \(\forall\ x \in X\), \(\exists!\ y \in Y\) such that \(f(x) = y\).
+Also by the given conditions, \(\forall\ y \in Y\), \(\exists!\ z \in Z\) such that \(g(y) = z\).
+So \(\forall\ x \in X\), \(\exists!\ z \in Z\) such that \(g(f(x)) = z\), and \(g \circ f\) is bijective.
+Because \(g \circ f : X \to Z\), so \((g \circ f)^{-1} : Z \to X\).
+Also \(f^{-1} : Y \to X\) and \(g^{-1} : Z \to Y\), so \(f^{-1} \circ g^{-1} : Z \to X\).
+Since both functions have same domain and range, all we left is to show that Definition \ref{definition 3.3.2} holds.
+\(\forall\ z \in Z\), \(\exists!\ x \in X\) such that \((g \circ f)^{-1}(z) = x\).
+But \(x = f^{-1}(f(x)) = f^{-1}(g^{-1}(g(f(x)))) = f^{-1}(g^{-1}(z))\).
+Thus \((g \circ f)^{-1} = f^{-1} \circ g^{-1}\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.3.8}
+If \(X\) is a subset of \(Y\), let \(\iota_{X \to Y} : X \to Y\) be the \emph{inclusive map from \(X\) to \(Y\)}, defined by mapping \(x \mapsto x\) for all \(x \in X\), i.e., \(\iota_{X \to Y}(x) \coloneqq x\) for all \(x \in X\).
+The map \(\iota_{X \to X}\) is in particular called the \emph{identity map} on \(X\).
+
+    \begin{enumerate}
+        \item Show that if \(X \subseteq Y \subseteq Z\) then \(\iota_{Y \to Z} \circ \iota_{X \to Y} = \iota_{X \to Z}\).
+        \item Show that if \(f : A \to B\) is any function, then \(f = f \circ \iota_{A \to A} = \iota_{B \to B} \circ f\).
+        \item Show that if \(f : A \to B\) is a bijective function, then \(f \circ f^{-1} = \iota_{B \to B}\) and \(f^{-1} \circ f = \iota_{A \to A}\).
+        \item Show that if \(X\) and \(Y\) are disjoint sets, and \(f : X \to Z\) and \(g : Y \to Z\) are functions, then there is a unique function \(h : X \cup Y \to Z\) such that \(h \circ \iota_{X \to X \cup Y} = f\) and \(h \circ \iota_{Y \to X \cup Y} = g\).
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}{(a)}
+\(\forall\ x \in X\), \(x \in Y\) and \(x \in Z\).
+So \((\iota_{Y \to Z} \circ \iota_{X \to Y})(x) = \iota_{Y \to Z}(\iota_{X \to Y}(x)) = \iota_{Y \to Z}(x) = x\) and \(\iota_{X \to Z}(x) = x\).
+Thus \(\iota_{Y \to Z} \circ \iota_{X \to Y} = \iota_{X \to Z}\).
+\end{proof}
+
+\begin{proof}{(b)}
+\(\forall\ a \in A\), \(\exists\ b \in B\) such that \(f(a) = b\).
+So \((f \circ \iota_{A \to A})(a) = f(\iota_{A \to A}(a)) = f(a) = b\).
+And \((\iota_{B \to B} \circ f)(a) = \iota_{B \to B}(f(a)) = \iota_{B \to B}(b) = b\).
+Thus \(f = f \circ \iota_{A \to A} = \iota_{B \to B} \circ f\).
+\end{proof}
+
+\begin{proof}{(c)}
+\(\forall\ a \in A\), \(\exists!\ b \in B\) such that \(f(a) = b\).
+But \((f^{-1} \circ f)(a) = f^{-1}(f(a)) = f^{-1}(b) = a\) and \(\iota_{A \to A}(a) = a\).
+Thus \(f^{-1} \circ f = \iota_{A \to A}\).
+
+\(\forall\ b \in B\), \(\exists!\ a \in A\) such that \(f^{-1}(b) = a\).
+But \(f \circ f^{-1}(b) = f(f^{-1}(b)) = f(a) = b\) and \(\iota_{B \to B}(b) = b\).
+Thus \(f \circ f^{-1} = \iota_{B \to B}\).
+\end{proof}
+
+\begin{proof}{(d)}
+We first prove such \(h\) exists.
+The domain and range of \(h \circ \iota_{X \to X \cup Y}\) are \(X\) and \(Z\) respectively, which are just the same as \(f\).
+And the domain and range of \(h \circ \iota_{Y \to X \cup Y}\) are \(Y\) and \(Z\) respectively, which are just the same as \(g\).
+So such \(h\) can exist.
+
+Now we prove such \(h\) is unique.
+\(\forall\ x \in X\), \((h \circ \iota_{X \to X \cup Y})(x) = h(\iota_{X \to X \cup Y}(x)) = h(x)\).
+But \(h \circ \iota_{X \to X \cup Y} = f\), so \(h(x) = f(x)\).
+Similarly, \(\forall\ y \in Y\), \((h \circ \iota_{Y \to X \cup Y})(y) = h(\iota_{Y \to X \cup Y}(y)) = h(y)\).
+But \(h \circ \iota_{Y \to X \cup Y} = g\), so \(h(y) = g(y)\).
+Suppose for sake of contradiction that \(h\) is not unique.
+Then there exist a \(h': X \cup Y \to Z\) such that \(h \circ \iota_{X \to X \cup Y} = f\) and \(h \circ \iota_{Y \to X \cup Y} = g\).
+But similar argument show that \(h'(x) = f(x)\) and \(h'(y) = g(y)\), \(\forall\ e \in X \cup Y\), \(h(e) = h'(e)\), a contradiction.
+Therefore \(h = h'\), and \(h\) is unique.
+\end{proof}
+
+\section{Images and inverse images}
+
+\begin{definition}[Images of sets]\label{definition 3.4.1}
+If \(f : X \to Y\) is a function from \(X\) to \(Y\), and \(S\) is a set in \(X\), we define \(f(S)\) to be the set
+\[
+    f(S) \coloneqq \{f(x) : x \in S\};
+\]
+this set is a subset of \(Y\), and is sometimes called the \emph{image} of \(S\) under the map \(f\).
+We sometimes call \(f(S)\) the \emph{forward image} of \(S\) to distinguish it from the concept of the \emph{inverse image} \(f^{-1}(S)\) of \(S\).
+\end{definition}
+
+\begin{definition}[Inverse images]\label{definition 3.4.2}
+If \(U\) is a subset of \(Y\), we define the set \(f^{-1}(U)\) to be the set
+\[
+    f^{-1}(U) \coloneqq \{x \in X : f(x) \in U\}.
+\]
+In other words, \(f^{-1}(U)\) consists of all the elements of \(X\) which map into \(U\):
+\[
+    f(x) \in U \iff x \in f^{-1}(U).
+\]
+We call \(f^{-1}(U)\) the \emph{inverse image} of \(U\).
+\end{definition}
+
+\begin{remark}
+If \(f\) is a bijective function, then we have defined \(f^{-1}\) in two slightly different ways, but this is not an issue because both definitions are equivalent.
+\end{remark}
+
+\begin{axiom}[Power set axiom]\label{axiom 3.10}
+Let \(X\) and \(Y\) be sets.
+Then there exists a set, denoted \(Y^X\), which consists of all the functions from \(X\) to \(Y\), thus
+\[
+    f \in Y^X \iff (f \text{ is a function with domain } X \text{ and range } Y).
+\]
+\end{axiom}
+
+\begin{remark}
+The reason we use the notation \(Y^X\) to denote this set is that if \(Y\) has \(n\) elements and \(X\) has \(m\) elements, then one can show that \(Y^X\) has \(n^m\) elements.
+\end{remark}
+
+\begin{lemma}\label{lemma 3.4.1}
+Let \(X\) be a set.
+Then the set
+\[
+    \{Y : Y \text{ is a subset of } X\}
+\]
+is a set.
+\end{lemma}
+
+\begin{proof}
+By Axiom \ref{axiom 3.10}, there exists a set \(\{0, 1\}^X\) which consists of all the functions from \(X\) to \(\{0, 1\}\).
+Also by Axiom \ref{axiom 3.6}, we can replace each \(f \in \{0, 1\}^X\) with \(f^{-1}(\{1\})\), i.e., there exists a set \(S = \{f^{-1}(\{1\}) : f \in \{0, 1\}^X\}\).
+Now we only have to show that \(\forall\ f^{-1}(\{1\}) \in S\), \(f^{-1}(\{1\}) \subseteq X\).
+By Definition \ref{definition 3.4.2}, \(f^{-1}(\{1\}) = \{x \in X : f(x) \in \{1\}\}\).
+Thus \(f^{-1}(\{1\}) \subseteq X\) is true because some element in \(X\) can be map to \(0\).
+And we conclude that \(S = \{Y : Y \text{ is a subset of } X\}\) exists.
+\end{proof}
+
+\begin{remark}
+The set \(\{Y : Y \text{ is a subset of } X\}\) is know as the \emph{power set} of \(X\) and is denoted \(2^X\).
+\end{remark}
+
+\begin{axiom}[Union]\label{axiom 3.11}
+Let \(A\) be a set, all of whose elements are themselves sets.
+Then there exists a set \(\bigcup A\) whose elements are precisely those objects which are elements of the elements of \(A\), thus for all objects \(x\)
+\[
+    x \in \bigcup A \iff (x \in S \text{ for some } S \in A)
+\]
+\end{axiom}
+
+The axiom of union, combined with the axiom of pair set, implies the axiom of pairwise union.
+Another important consequence of this axiom is that if one has some set \(I\), and for every element \(\alpha \in I\) we have some set \(A_{\alpha}\), then we can form the union set \(\bigcup_{\alpha \in I} A_{\alpha}\) by defining
+\[
+    \bigcup_{\alpha \in I} A_{\alpha} \coloneqq \bigcup \{A_{\alpha} : \alpha \in I\},
+\]
+which is a set thanks to the axiom of replacement and the axiom of union.
+More generally, we see that for any object \(y\),
+\[
+    y \in \bigcup_{\alpha \in I} A_{\alpha} \iff (y \in A_{\alpha} \text{ for some } \alpha \in I).
+\]
+In situations like this, we often refer to \(I\) as an \emph{index set}, and the elements \(\alpha\) of this index set as \emph{labels};
+the sets \(A_{\alpha}\) are then called a \emph{family of sets}, and are \emph{indexed} by the labels \(\alpha \in I\).
+Note that if \(I\) was empty, then \(\bigcup_{\alpha \in I} A_{\alpha}\) would automatically also be empty.
+
+We can similarly form intersections of families of sets, as long as the index set is non-empty.
+More specifically, given any non-empty set \(I\), and given an assignment of a set \(A_{\alpha}\) to each \(\alpha \in I\), we can define the intersection \(\bigcap_{\alpha \in I} A_{\alpha}\) by first choosing some element \(\beta\) of \(I\) (which we can do since \(I\) is non-empty), and setting
+\[
+    \bigcap_{\alpha \in I} A_{\alpha} \coloneqq \{x \in A_{\beta} : x \in A_{\alpha} \text{ for all } \alpha \in I\},
+\]
+which is a set by the axiom of specification.
+This definition may look like it depends on the choice of \(\beta\), but it does not.
+Observe that for any object \(y\),
+\[
+    y \in \bigcap_{\alpha \in I} A_{\alpha} \iff (y \in A_{\alpha} \text{ for all } \alpha \in I).
+\]
+
+\begin{remark}
+The axioms of set theory that we have introduced (Axioms \ref{axiom 3.1}-\ref{axiom 3.11}, excluding the dangerous Axiom \ref{axiom 3.8}) are known as the \emph{Zermelo-Fraenkel axioms of set theory}, after Ernest Zermelo (1871--1953) and Abraham Fraenkel (1891--1965).
+There is one further axiom we will eventually need, the famous \emph{axiom of choice}, giving rise to the \emph{Zermelo-Fraenkel-Choice (ZFC) axioms of set theory}, but we will not need this axiom for some time.
+\end{remark}
+
+\begin{exercise}\label{exercise 3.4.1}
+Let \(f : X \to Y\) be a bijective function, and let \(f^{-1} : Y \to X\) be its inverse.
+Let \(V\) be any subset of \(Y\).
+Prove that the forward image of \(V\) under \(f^{-1}\) is the same set as the inverse image of \(V\) under \(f\);
+thus the fact that both sets are denoted by \(f^{-1}(V)\) will not lead to any inconsistency.
+\end{exercise}
+
+\begin{proof}
+Because \(f\) is bijective by the given condition, \(\forall\ x \in f^{-1}(V) \iff f(x) \in V \iff x\) is in the inverse image of \(V\) under \(f\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.4.2}
+Let \(f : X \to Y\) be a function from one set \(X\) to another set \(Y\), let \(S\) be a subset of \(X\), and let \(U\) be a subset of \(Y\).
+What, in general, can one say about \(f^{-1}(f(S))\) and \(S\)?
+What about \(f(f^{-1}(U))\) and \(U\)?
+\end{exercise}
+
+\begin{proof}
+\(\forall\ x \in S\), \(x \in f^{-1}(f(S))\) is true because \(f(x) \in f(S)\).
+So we can say \(S \subseteq f^{-1}(f(S))\) is true.
+\(\forall\ x \in f^{-1}(U)\), \(\exists\ y \in U\) such that \(f(x) = y\).
+This means \(\forall\ y \in f(f^{-1}(U))\), \(\exists\ y \in U\).
+So we can say \(f(f^{-1}(U)) \subseteq U\) is true.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.4.3}
+Let \(A\), \(B\) be two subsets of a set \(X\), and let \(f : X \to Y\) be a function.
+Show that \(f(A \cap B) \subseteq f(A) \cap f(B)\), that \(f(A) \setminus f(B) \subseteq f(A \setminus B)\), \(f(A \cup B) = f(A) \cup f(B)\).
+For the first two statements, is it true that the \(\subseteq\) relation can be imporved to \(=\)?
+\end{exercise}
+
+\begin{proof}
+We first prove the intersection part.
+\(\forall\ x \in A \cap B\), \(x \in A\) is true, and \(f(x) \in f(A)\) is true.
+Similarly, \(x \in B\) is true, and \(f(x) \in f(B)\) is true.
+Thus \(f(x) \in f(A) \cap f(B)\) is true, or equivalently \(f(A \cap B) \subseteq f(A) \cap f(B)\).
+If \(A \cap B = \emptyset\), we can not derived \(f(A) \cap f(B) = \emptyset\), thus \(f(A) \cap f(B) \subsetneq f(A \cap B)\).
+
+Next we prove the difference part.
+\(\forall\ x \in A\), if \(f(x) \in f(A) \setminus f(B)\), then \(x \notin B\), otherwise \(f(x) \in f(B)\), a contradiction.
+So \(x \in A \setminus B\), thus \(f(x) \in f(A \setminus B)\), or equivalently \(f(A) \setminus f(B) \subseteq f(A \setminus B)\).
+If \(A \setminus B = A\), then \(f(A \setminus B) = f(A)\), but we can not derive \(f(A) \setminus f(B) = f(A)\), so \(f(A \setminus B) \subsetneq f(A) \setminus f(B)\).
+
+Now we prove the union part.
+\(\forall\ x \in A \cup B\), \(x \in A\) or \(x \in B\) is true.
+If \(x \in A\) is true, then \(f(x) \in f(A)\) is true.
+Similarly, if \(x \in B\) is true, then \(f(x) \in f(B)\) is true.
+So \(\forall\ y \in f(A \cup B)\), \(y \in f(A) \cup f(B)\) is true, and we conclude that \(f(A \cup B) \subseteq f(A) \cup f(B)\).
+\(\forall\ y \in f(A) \cup f(B)\), \(y \in f(A)\) or \(y \in f(B)\) is true.
+If \(y \in f(A)\) is true, then \(\exists\ x \in A\) such that \(f(x) = y\), and because \(x \in A \implies x \in A \cup B\), so \(f(x) \in f(A \cup B)\).
+Similarly, if \(y \in f(B)\) is true, then \(\exists\ x \in B\) such that \(f(x) = y\), and because \(x \in B \implies x \in A \cup B\), so \(f(x) \in f(A \cup B)\).
+Thus \(f(A) \cup f(B) \subseteq f(A \cup B)\), and combined with previous result we conclude that \(f(A \cup B) = f(A) \cup f(B)\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.4.4}
+Let \(f : X \to Y\) be a function from one set \(X\) to another set \(Y\), and let \(U\), \(V\) be subsets of \(Y\). Show that \(f^{-1}(U \cup V) = f^{-1}(U) \cup f^{-1}(V)\), that
+\(f^{-1}(U \cap V) = f^{-1}(U) \cap f^{-1}(V)\), and that \(f^{-1}(U \setminus V) = f^{-1}(U) \setminus f^{-1}(V)\).
+\end{exercise}
+
+\begin{proof}
+We first prove the union part.
+\(\forall\ x \in f^{-1}(U \cup V)\), \(f(x) \in U \cup V\).
+If \(f(x) \in U\), then \(x \in f^{-1}(U)\).
+Similarly, if \(f(x) \in V\), then \(x \in f^{-1}(V)\).
+Thus \(f^{-1}(U \cup V) \subseteq f^{-1}(U) \cup f^{-1}(V)\).
+\(\forall\ x \in f^{-1}(U) \cup f^{-1}(V)\), \(x \in f^{-1}(U)\) or \(x \in f^{-1}(V)\) is true.
+If \(x \in f^{-1}(U)\), then \(f(x) \in U\) is true, and \(f(x) \in U \cup V\) is true, so \(x \in f^{-1}(U \cup V)\) is true.
+Similarly, if \(x \in f^{-1}(V)\), then \(f(x) \in V\) is true, and \(f(x) \in U \cup V\) is true, so \(x \in f^{-1}(U \cup V)\) is true.
+Thus \(f^{-1}(U) \cup f^{-1}(V) \subseteq f^{-1}(U \cup V)\).
+We conclude that \(f^{-1}(U \cup V) = f^{-1}(U) \cup f^{-1}(V)\).
+
+Next we prove the intersection part.
+\(\forall\ x \in f^{-1}(U \cap V)\), \(f(x) \in U \cap V\).
+Because \(f(x) \in U\), so \(x \in f^{-1}(U)\);
+similar argument show that \(x \in f^{-1}(V)\), thus \(x \in f^{-1}(U) \cap f^{-1}(V)\), and we conclude that \(f^{-1}(U \cap V) \subseteq f^{-1}(U) \cap f^{-1}(V)\).
+\(\forall\ x \in f^{-1}(U) \cap f^{-1}(V)\), \(x \in f^{-1}(U)\) is true, so \(f(x) \in U\) is true;
+similar argument show that \(f(x) \in V\) is true, so \(f(x) \in U \cap V\) is true, and \(x \in f^{-1}(U \cap V)\) is also true, we conclude that \(f^{-1}(U) \cap f^{-1}(V) \subseteq f^{-1}(U \cap V)\).
+Combine both result we get \(f^{-1}(U \cap V) = f^{-1}(U) \cap f^{-1}(V)\).
+
+Now we prove the difference part.
+\(\forall\ x \in f^{-1}(U \setminus V)\), \(f(x) \in U \setminus V\).
+Because \(f(x) \in U\), \(x \in f^{-1}(U)\) is true.
+But \(f(x) \notin V\), \(x \notin f^{-1}(V)\) is true.
+So \(x \in f^{-1}(U) \setminus f^{-1}(V)\) is true, thus \(f^{-1}(U \setminus V) \subseteq f^{-1}(U) \setminus f^{-1}(V)\).
+\(\forall\ x \in f^{-1}(U) \setminus f^{-1}(V)\), \(x \in f^{-1}(U) \implies f(x) \in U\) and \(x \notin f^{-1}(x) \implies f(x) \notin V\).
+So \(f(x) \in U \setminus V\), and \(x \in f^{-1}(U \setminus V)\) is true, thus \( f^{-1}(U) \setminus f^{-1}(V) \subseteq f^{-1}(U \setminus V)\).
+Combine both result we get \(f^{-1}(U \setminus V) = f^{-1}(U) \setminus f^{-1}(V)\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.4.5}
+Let \(f : X \to Y\) be a function from one set \(X\) to another set \(Y\).
+Show that \(f(f^{-1}(S)) = S\) for every \(S \subseteq Y\) if and only if \(f\) is surjective.
+Show that \(f^{-1}(f(S)) = S\) for every \(S \subseteq X\) if and only if \(f\) is injective.
+\end{exercise}
+
+\begin{proof}
+We first prove the surjective part.
+We begin with the necessary condition.
+By the given condition \(f(f^{-1}(S)) = S\), \(\forall\ y \in S\), \(\exists\ x \in f^{-1}(S)\) such that \(f(x) = y\).
+Since \(S \subseteq Y\), by replace \(S\) with \(Y\) we get the statement \(\forall\ y \in Y\), \(\exists\ x \in f^{-1}(Y)\) such that \(f(x) = y\), which is the definition of surjective.
+Thus the necessary condition is true, all we left is the sufficient condition.
+By the given condition \(f\) is surjective, \(\forall\ y \in Y\), \(\exists\ x \in X\) such that \(f(x) = y\).
+Because \(S \subseteq Y\) and \(f\) is surjective, \(\forall\ y \in S\), \(\exists\ x \in X\) such that \(f(x) = y\).
+Then \(x \in f^{-1}(S)\) is true, so \(f(f^{-1}(S)) = S\) is also true, otherwise some \(y \in S\) cannot be map under \(f\), which is a contradition with \(f\) is surjective.
+So the sufficient condition is true, we conclude that the if and only if statement is true.
+
+Now we prove the injective part.
+We begin with the necessary condition.
+Let \(x, x' \in S\) such that \(f(x) = f(x')\).
+By the given condition \(f^{-1}(f(S)) = S\), \(f^{-1}(f(x)) = x\) and \(f^{-1}(f(x')) = x'\) are true.
+But \(f(x) = f(x')\), so \(x = f^{-1}(f(x)) = f^{-1}(f(x')) = x'\), thus \(f\) is injective, and the necessary condition is true.
+All we left is sufficient condition.
+\(\forall\ x \in S\), \(x \in f^{-1}(f(S))\) is true, so \(S \subseteq f^{-1}(f(S))\).
+And \(\forall\ x \in f^{-1}(f(S))\), \(\exists\ x' \in S\) such that \(f^{-1}(f(x')) = x\), then \(x = x'\) because \(f\) is injective, so \(x \in S\) is true, and \(f^{-1}(f(S)) \subseteq S\).
+Combine the results above we get \(f\) is injective implies \(f^{-1}(f(S)) = S\), and the if and only if statement is true.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.4.6}
+Let \(X\), \(Y\) be sets.
+Define a \emph{partial function} from \(X\) to \(Y\) to be any function \(f : X' \to Y'\) whose domain \(X'\) is a subset of \(X\), and whose range \(Y'\) is a subset of \(Y\).
+Show that the collection of all partial functions from \(X\) to \(Y\) is itself a set.
+\end{exercise}
+
+\begin{proof}
+By Lemma \ref{lemma 3.4.1}, both \(\hat{X} = \{X' : X' \subseteq X\}\) and \(\hat{Y} = \{Y' : Y' \subseteq Y\}\) are sets.
+Let \(x \in \hat{X}\) and \(y \in \hat{Y}\).
+By Axiom \ref{axiom 3.10}, exists a set \(y^{x}\) which is consist of functions with domain \(x\) and range \(y\).
+By Axiom \ref{axiom 3.6} and Axiom \ref{axiom 3.11}, exists a set \(\bigcup_{x \in \hat{X} \land y \in \hat{Y}} \{f : f \in y^{x}\}\}\).
+Thus the collection of all partial functions from \(X\) to \(Y\) is itself a set.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.4.7}
+Show that Axiom \ref{axiom 3.4} can be deduced from Axiom \ref{axiom 3.1}, Axiom \ref{axiom 3.3} and Axiom \ref{axiom 3.11}.
+\end{exercise}
+
+\begin{proof}
+By Axiom \ref{axiom 3.1}, \(A\) is a set and \(B\) is a set.
+And if \(x\) is a object, we can say \(x \in A\) or \(x \in B\).
+By Axiom \ref{axiom 3.3}, there exists a set \(\{A, B\}\) whose only elements are \(A\) and \(B\).
+By Axiom \ref{axiom 3.11}, \(x \in \bigcup \{A, B\} \iff x \in A \lor x \in B\).
+By defining \(A \cup B \coloneqq \bigcup \{A, B\}\), we show that \(x \in A \cup B \iff x \in A \lor x \in B\) is true.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.4.8}
+Show that if \(\beta\) and \(\beta'\) are two elements of a set \(I\), and to each \(\alpha \in I\) we assign a set \(A_{\alpha}\), then
+\[
+    \{x \in A_{\beta} : x \in A_{\alpha} \text{ for all } \alpha \in I\} = \{x \in A_{\beta'} : x \in A_{\alpha} \text{ for all } \alpha \in I\},
+\]
+and so the definition of \(\bigcap_{\alpha \in I} A_{\alpha}\) does not depend on \(\beta\).
+\end{exercise}
+
+\begin{proof}
+\(\forall\ \alpha \in I \implies x \in A_{\alpha}\).
+Because \(x \in A_{\beta}\) and \(\beta' \in I\), so \(x \in A_{\beta'}\).
+Similar argument shows that \(x \in A_{\beta'} \implies x \in A_{\beta}\).
+Thus the definition of \(\bigcap_{\alpha \in I} A_{\alpha}\) does not depend on \(\beta\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.4.9}
+Show the following statement is true:
+\[
+    y \in \bigcap_{\alpha \in I} A_{\alpha} \iff \forall\ \alpha \in I, y \in A_{\alpha}.
+\]
+\end{exercise}
+
+\begin{proof}
+\(y \in \bigcap_{\alpha \in I} A_{\alpha} \iff y \in \{x \in A_{\beta} : x \in A_{\alpha} \text{ for all } \alpha \in I\} \iff \forall\ \alpha \in I, y \in A_{\alpha}\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.4.10}
+Suppose that \(I\) and \(J\) are two sets, and for all \(\alpha \in I \cup J\) let \(A_{\alpha}\) be a set.
+Show that \((\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha}) = \bigcup_{\alpha \in I \cup J} A_{\alpha}\).
+If \(I\) and \(J\) are non-empty, show that \((\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha}) = \bigcap_{\alpha \in I \cup J} A_{\alpha}\).
+\end{exercise}
+
+\begin{proof}
+We first prove the union part.
+\(\forall\ x \in (\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha})\), \(x \in \bigcup_{\alpha \in I} A_{\alpha} \lor x \in \bigcup_{\alpha \in J} A_{\alpha}\) is true.
+If \(x \in \bigcup_{\alpha \in I} A_{\alpha}\), then \(x \in A_{\alpha}\) for some \(\alpha \in I\), so \(x \in A_{\alpha}\) for some \(\alpha \in I \cup J\) is true, or equivalently \(x \in \bigcup_{\alpha \in I \cup J} A_{\alpha}\) is true.
+Similarly if \(x \in \bigcup_{\alpha \in J} A_{\alpha}\), then \(x \in A_{\alpha}\) for some \(\alpha \in J\), so \(x \in A_{\alpha}\) for some \(\alpha \in I \cup J\) is true, or equivalently \(x \in \bigcup_{\alpha \in I \cup J} A_{\alpha}\) is true.
+Thus \(x \in (\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha}) \implies x \in \bigcup_{\alpha \in I \cup J} A_{\alpha}\), or equivalently \((\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha}) \subseteq \bigcup_{\alpha \in I \cup J} A_{\alpha}\).
+\(\forall\ y \in \bigcup_{\alpha \in I \cup J} A_{\alpha}\), \(y \in A_{\alpha}\) for some \(\alpha \in I \cup J\).
+If \(\alpha \in I\), then \(y \in A_{\alpha}\) for some \(\alpha \in I\) is true, or equivalently \(y \in \bigcup_{\alpha \in I} A_{\alpha}\) is true.
+Similarly if \(\alpha \in J\), then \(y \in A_{\alpha}\) for some \(\alpha \in J\) is true, or equivalently \(y \in \bigcup_{\alpha \in J} A_{\alpha}\) is true.
+Combine both results we get \(\alpha \in I \cup J \implies y \in (\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha})\) is true.
+Thus \(y \in \bigcup_{\alpha \in I \cup J} A_{\alpha} \implies y \in (\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha})\), or equivalently \(\bigcup_{\alpha \in I \cup J} A_{\alpha} \subseteq (\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha})\).
+We conclude that \((\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha}) = \bigcup_{\alpha \in I \cup J} A_{\alpha}\).
+
+Now we prove the intersection part.
+\(\forall\ x \in (\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha})\), \(x \in A_{\alpha}\) for all \(\alpha \in I\) is true, and \(x \in A_{\alpha}\) for all \(\alpha \in J\) is true, so \(x \in A_{\alpha}\) for all \(\alpha \in I \cup J\) is true, or equivalently \(x \in \bigcap_{\alpha \in I \cup J} A_{\alpha}\) is true.
+Thus \(x \in (\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha}) \implies x \in \bigcap_{\alpha \in I \cup J} A_{\alpha}\), or equivalently \((\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha}) \subseteq \bigcap_{\alpha \in I \cup J} A_{\alpha}\).
+\(\forall\ y \in \bigcap_{\alpha \in I \cup J} A_{\alpha}\), \(y \in A_{\alpha}\) for all \(\alpha \in I \cup J\).
+Because \(I \neq \emptyset\), \(\alpha \in I\) is true, \(y \in A_{\alpha}\) for all \(\alpha \in I\) is true, or equivalently \(y \in \bigcap_{\alpha \in I} A_{\alpha}\) is true.
+Similarly \(J \neq \emptyset\), \(\alpha \in J\) is true, \(y \in A_{\alpha}\) for all \(\alpha \in J\) is true, or equivalently \(y \in \bigcap_{\alpha \in J} A_{\alpha}\) is true.
+Since \(y \in \bigcap_{\alpha \in I} A_{\alpha} \land y \in \bigcap_{\alpha \in J} A_{\alpha}\), so \(y \in (\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha})\) is true.
+Thus \(y \in \bigcap_{\alpha \in I \cup J} A_{\alpha} \implies y \in (\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha})\), or equivalently \(\bigcap_{\alpha \in I \cup J} A_{\alpha} \subseteq (\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha})\).
+We conclude that \((\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha}) = \bigcap_{\alpha \in I \cup J} A_{\alpha}\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.4.11}
+Let \(X\) be a set, let \(I\) be a non-empty set, and for all \(\alpha \in I\) let \(A_{\alpha}\) be a subset of \(X\).
+Show that
+\[
+    X \setminus \bigcup_{\alpha \in I} A_{\alpha} = \bigcap_{\alpha \in I} (X \setminus A_{\alpha})
+\]
+and
+\[
+    X \setminus \bigcap_{\alpha \in I} A_{\alpha} = \bigcup_{\alpha \in I} (X \setminus A_{\alpha}).
+\]
+\end{exercise}
+
+\begin{proof}
+We first prove the union part.
+\(\forall\ x \in X \setminus \bigcup_{\alpha \in I} A_{\alpha}\), \(x \in X \land x \notin \bigcup_{\alpha \in I} A_{\alpha} \iff x \in X \land \nexists\ \alpha \in I\) such that \(x \in A_{\alpha} \iff x \in X \land x \notin A_{\alpha}\) for all \(\alpha \in I \iff x \in X \setminus A_{\alpha}\) for all \(\alpha \in I \iff x \in \bigcap_{\alpha \in I} (X \setminus A_{\alpha})\).
+
+Now we prove the intersection part.
+\(\forall\ x \in X \setminus \bigcap_{\alpha \in I} A_{\alpha}\), \(x \in X \land x \notin \bigcap_{\alpha \in I} A_{\alpha} \iff x \in X \land\) not all \(\alpha \in I\) such that \(x \in A_{\alpha} \iff x \in X \land x \notin A_{\alpha}\) for some \(\alpha \in I \iff x \in X \setminus A_{\alpha}\) for some \(\alpha \in I \iff x \in \bigcup_{\alpha \in I} (X \setminus A_{\alpha})\).
+\end{proof}
+
+\section{Cartesian products}
+
+\begin{definition}[Ordered pair]\label{definition 3.5.1}
+If \(x\) and \(y\) are any objects (possibly equal), we define the \emph{ordered pair} \((x, y)\) to be a new object, consisting of \(x\) as its first component and \(y\) as its second component.
+Two ordered pairs \((x, y)\) and \((x', y')\) are considered equal if and only if both their components match, i.e.
+\[
+    (x, y) = (x', y') \iff (x = x' \text{ and } y = y').
+\]
+\end{definition}
+
+\begin{remark}
+Strictly speaking, this definition is partly an axiom, because we have simply postulated that given any two objects \(x\) and \(y\), that an object of the form \((x, y)\) exists.
+However, it is possible to define an ordered pair using the axioms of set theory in such a way that we do not need any further postulates.
+\end{remark}
+
+\begin{remark}
+We have now \say{overloaded} the parenthesis symbols \(()\) once again;
+they now are not only used to denote grouping of operators and arguments of functions, but also to enclose ordered pairs.
+This is usually not a problem in practice as one can still determine what usage the symbols \(()\) were intended for from context.
+\end{remark}
+
+\begin{definition}[Cartesian product]\label{definition 3.5.2}
+If \(X\) and \(Y\) are sets, then we define the \emph{Cartesian product} \(X \times Y\) to be the collection of ordered pairs, whose first component lies in \(X\) and second component lies in \(Y\), thus
+\[
+    X \times Y \coloneqq \{(x, y) : x \in X, y \in Y\}
+\]
+or equivalently,
+\[
+    a \in X \times Y \iff (a = (x, y) \text{ for some } x \in X \text{ and } y \in Y).
+\]
+\end{definition}
+
+\begin{remark}
+We shall simply assume that our notion of ordered pair is such that whenever \(X\) and \(Y\) are sets, the Cartesian product \(X \times Y\) is also a set.
+\end{remark}
+
+Let \(f : X \times Y \to Z\) be a function whose domain \(X \times Y\) is a Cartesian product of two other sets \(X\) and \(Y\).
+Then \(f\) can either be thought of as a function of one variable, mapping the single input of an ordered pair \((x, y)\) in \(X \times Y\) to an output \(f(x, y)\) in \(Z\), or as a function of two variables, mapping an input \(x \in X\) and another input \(y \in Y\) to a single output \(f(x, y)\) in \(Z\).
+While the two notions are technically different, we will not bother to distinguish the two, and think of \(f\) simultaneously as a function of one variable with domain \(X \times Y\) and as a function of two variables with domains \(X\) and \(Y\).
+Thus for instance the addition operation \(+\) on the natural numbers can now be re-interpreted as a function \(+ : N \times N \to N\), defined by \((x, y) \mapsto x + y\).
+
+\begin{definition}[Ordered \(n\)-tuple and \(n\)-fold Cartesian product]\label{definition 3.5.3}
+Let \(n\) be a natural number.
+An \emph{ordered \(n\)-tuple} \((x_i)_{1 \leq i \leq n}\) (also denoted \((x_1, \cdots, x_n)\)) is a collection of objects \(x_i\), one for every natural number \(i\) between \(1\) and \(n\);
+we refer to \(x_i\) as the \emph{\(i^{th}\) component} of the ordered \(n\)-tuple.
+Two ordered \(n\)-tuples \((x_i)_{1 \leq i \leq n}\) and \((y_i)_{1 \leq i \leq n}\) are said to be equal iff \(x_i = y_i\) for all \(1 \leq i \leq n\).
+If \((X_i)_{1 \leq i \leq n}\) is an ordered \(n\)-tuple of sets, we define their \emph{Cartesian product} \(\prod_{1 \leq i \leq n} X_i\) (also denoted \(\prod_{i=1}^n X_i\) or \(X_1 \times \cdots \times X_n\)) by
+\[
+    \prod_{1 \leq i \leq n} X_i \coloneqq \{(x_i)_{1 \leq i \leq n} : x_i \in X_i \text{ for all } 1 \leq i \leq n\}.
+\]
+\end{definition}
+
+\begin{remark}
+One can show that \(\prod_{1 \leq i \leq n} X_i\) is indeed a set.
+Indeed, from the power set axiom we can consider the set of all functions \(i \mapsto x_i\) from the domain \(\{1 \leq i \leq n\}\) to the range \(\bigcup_{1 \leq i \leq n} X_i\), and then we can restrict using the axiom of specification to restrict to those functions \(i \mapsto x_i\) for which \(x_i \in X_i\) for all \(1 \leq i \leq n\).
+\end{remark}
+
+Strictly speaking, the sets \(X_1 \times X_2 \times X_3\), \((X_1 \times X_2) \times X_3\), and \(X_1 \times (X_2 \times X_3)\) are distinct.
+However, they are clearly very related to each other (for instance, there are obvious bijections between any two of the three sets), and it is common in practice to neglect the minor distinctions between these sets and pretend that they are in fact equal.
+Thus a function \(f : X_1 \times X_2 \times X_3 \to Y\) can be thought of as a function of one variable \((x_1, x_2, x_3) \in X_1 \times X_2 \times X_3\), or as a function of three variables \(x_1 \in X_1\), \(x_2 \in X_2\), \(x_3 \in X_3\), or as a function of two variables \(x_1 \in X_1\), \((x_2, x_3) \in X_2 \times X_3\), and so forth;
+we will not bother to distinguish between these different perspectives.
+
+\begin{remark}
+An ordered \(n\)-tuple \(x_1, \cdots, x_n\) of objects is also called an \emph{ordered sequence} of \(n\) elements, or a \emph{finite sequence} for short.
+\end{remark}
+
+If \(x\) is an object, then \((x)\) is a \(1\)-tuple, which we shall identify with \(x\) itself (even though the two are, strictly speaking, not the same object).
+Then if \(X_1\) is any set, then the Cartesian product \(\prod_{1 \leq i \leq 1} X_i\) is just \(X_1\).
+Also, the \emph{empty Cartesian product} \(\prod_{1 \leq i \leq 0} X_i\) gives, not the empty set \(\{\}\), but rather the singleton set \(\{()\}\) whose only element is the \emph{\(0\)-tuple} \(()\), also known as the \emph{empty tuple}.
+
+If \(n\) is a natural number, we often write \(X^n\) as shorthand for the \(n\)-fold Cartesian product \(X^n \coloneqq \prod_{1 \leq i \leq n} X\).
+Thus \(X^1\) is essentially the same set as \(X\) (if we ignore the distinction between an object \(x\) and the \(1\)-tuple \((x)\)), while \(X^2\) is the Cartesian product \(X \times X\).
+The set \(X^0\) is a singleton set \(\{()\}\).
+
+\begin{lemma}[Finite choice]\label{lemma 3.5.1}
+Let \(n \geq 1\) be a natural number, and for each natural number \(1 \leq i \leq n\), let \(X_i\) be a non-empty set.
+Then there exists an \(n\)-tuple \((x_i)_{1 \leq i \leq n}\) such that \(x_i \in X_i\) for all \(1 \leq i \leq n\).
+In other words, if each \(X_i\) is non-empty, then the set \(\prod_{1 \leq i \leq n} X_i\) is also non-empty.
+\end{lemma}
+
+\begin{proof}
+We induct on \(n\) (starting with the base case \(n = 1\); the claim is also vacuously true with \(n = 0\) but is not particularly interesting in that case).
+When \(n = 1\) the claim follows from Lemma \ref{lemma 3.1.3}.
+Now suppose inductively that the claim has already been proven for some \(n\);
+we will now prove it for \(n++\).
+Let \(X_1, \cdots, X_{n++}\) be a collection of non-empty sets.
+By induction hypothesis, we can find an \(n\)-tuple \((x_i)_{1 \leq i \leq n}\) such that \(x_i \in X_i\) for all \(1 \leq i \leq n\).
+Also, since \(X_{n++}\) is non-empty, by Lemma \ref{lemma 3.1.3} we may find an object \(a\) such that \(a \in X_{n++}\).
+If we thus define the \(n++\)-tuple \((y_i)_{1 \leq i \leq n++}\) by setting \(y_i \coloneqq x_i\) when \(1 \leq i \leq n\) and \(y_i \coloneqq a\) when \(i = n++\) it is clear that \(y_i \in X_i\) for all \(1 \leq i \leq n++\), thus closing the induction.
+\end{proof}
+
+\begin{remark}
+It is intuitively plausible that this lemma should be extended to allow for an infinite number of choices, but this cannot be done automatically;
+it requires an additional axiom, the \emph{axiom of choice}.
+\end{remark}
+
+\begin{exercise}\label{exercise 3.5.1}
+Suppose we \emph{define} the ordered pair \((x, y)\) for any objects \(x\) and \(y\) by the formula \((x, y) \coloneqq \{\{x\}, \{x, y\}\}\) (thus using several applications of
+Axiom \ref{axiom 3.3}).
+Show that such a definition indeed obeys the Definition \ref{definition 3.5.1}, and also whenever \(X\) and \(Y\) are sets, the Cartesian product \(X \times Y\) is also a set.
+Thus this definition can be validly used as a definition of an ordered pair.
+For an additional challenge, show that the alternate definition \((x, y) := \{x, \{x, y\}\}\) also verifies Definition \ref{definition 3.5.1} and is thus also an acceptable definition of ordered pair.
+\end{exercise}
+
+\begin{proof}
+Let \((x, y) = \{\{x\}, \{x, y\}\}\) and \((x', y') = \{\{x'\}, \{x', y'\}\}\) be two ordered pairs.
+We want to show that \((x, y) = (x', y') \iff ((x = x') \land (y = y'))\).
+We first prove the necessary condition.
+If \((x, y) = (x', y')\), then \(\{\{x\}, \{x, y\}\} = \{\{x'\}, \{x', y'\}\}\) is true, and both \(\{x\} \in \{\{x'\}, \{x', y'\}\}\) and \(\{x, y\} \in \{\{x'\}, \{x', y'\}\}\) are true.
+Now we divide into four cases.
+    \begin{enumerate}
+        \item If \((\{x\} = \{x'\}) \land (\{x, y\} = \{x'\})\), then \((x = x') \land (y = x')\).
+        But \(\{x', y'\} \in \{\{x\}, \{x, y\}\}\), so \((\{x', y'\} = \{x\}) \lor (\{x', y'\} = \{x, y\})\).
+        If \(\{x', y'\} = \{x\}\), then \(y' = x = x' = y\).
+        Otherwise \(\{x', y'\} = \{x, y\}\), then \((y' = x) \lor (y' = y)\), and both can derive \(y' = y\).
+        \item If \((\{x\} = \{x'\}) \land (\{x, y\} = \{x', y'\})\), then \((x = x') \land ((y = x') \lor (y = y'))\).
+        If \(y = x'\), then we need to show that \(y = y'\).
+        But \(\{x', y'\} \in \{\{x\}, \{x, y\}\}\), so \((\{x', y'\} = \{x\}) \lor (\{x', y'\} = \{x, y\})\).
+        If \(\{x', y'\} = \{x\}\), then \(y' = x = x' = y\).
+        Otherwise \(\{x', y'\} = \{x, y\}\), then \((y' = x) \lor (y' = y)\), and both can derive \(y' = y\).
+        \item If \((\{x\} = \{x', y'\}) \land (\{x, y\} = \{x'\})\), then \((x = x') \land (x = y') \land (y = x')\), so \(y = x' = x = y'\).
+        \item If \((\{x\} = \{x', y'\}) \land (\{x, y\} = \{x', y'\})\), then \((x = x') \land (x = y') \land ((y = x') \lor (y = y'))\).
+        If \(y = x'\), then \(y = x' = x = y'\).
+    \end{enumerate}
+So \((x, y) = (x', y') \implies ((x = x') \land (y = y'))\).
+Now we prove the sufficient condition.
+If \((x = x') \land (y = y')\), then \((\{x\} = \{x'\}) \land (\{x, y\} = \{x', y'\})\).
+So \(\{\{x\}, \{x, y\}\} = \{\{x'\}, \{x', y'\}\}\) is true, or equivalently \((x, y) = (x', y')\).
+Since we have proved both the necessary and the sufficient conditions, we conclude that the given definition of the ordered pair satisfied the constrain \((x, y) = (x', y') \iff ((x = x') \land (y = y'))\).
+
+Next we prove that \(X \times Y\) is a set with the given ordered pair definition.
+By Axiom \ref{axiom 3.3}, \(\{x\}\) is a set for all \(x \in X\), and \(\{x, y\}\) is also a set for all \(x \in X\) and for all \(y \in Y\).
+Again by Axiom \ref{axiom 3.3}, \(\{\{x\}, \{x, y\}\}\) is a set for all \(x \in X\) and for all \(y \in Y\).
+By Axiom \ref{axiom 3.6}, \(\{\{\{x\}, \{x, y\}\} : x \in X \land y \in Y\}\) is a set.
+So \(X \times Y = \{(x, y) : x \in X \land y \in Y\}\) is a set with the given ordered pair definition.
+\end{proof}
+
+\begin{proof}{(additional challenge)}
+Let \((x, y) = \{x, \{x, y\}\}\) and \((x', y') = \{x', \{x', y'\}\}\) be two ordered pairs.
+We want to show that \((x, y) = (x', y') \iff ((x = x') \land (y = y'))\).
+We first prove the necessary condition.
+\((x, y) = (x', y') \iff \{x, \{x, y\}\} = \{x', \{x', y'\}\}\), so both \(x \in \{x', \{x', y'\}\}\) and \(x' \in \{x, \{x, y\}\}\) are true.
+Suppose for sake of contradition that \(x \neq x'\).
+Then \(x = \{x', y'\}\) is true, and \(x' \in x\) is true.
+But \(x' \in \{x, \{x, y\}\} \implies x \in x'\), we get both \((x \in x') \land (x' \in x)\), contradict to Axiom \ref{axiom 3.9} and Exercise \ref{exercise 3.2.2}.
+So \(x = x'\) must be true.
+Now we need to show that \(y = y'\).
+\(\{x, y\} \in \{x', \{x', y'\}\} \implies \{x, y\} = \{x', y'\}\) (because \(\{x, y\} = x' \implies x \in x' = x\), contradict to Axiom \ref{axiom 3.9}) and Exercise \ref{exercise 3.2.2}.
+So \(((y = x') \lor (y = y')) \land ((y' = x) \lor (y' = y))\) is true, and \(((y = x') \land (y' = x)) \lor (y = y')\) is true.
+If \((y = x') \land (y' = x)\), then \(y = x' = x = y'\).
+Thus \((x, y) = (x', y') \implies ((x = x') \land (y = y'))\).
+Now we prove the sufficient condition.
+If \((x = x') \land (y = y')\), then \((x = x') \land (\{x, y\} = \{x', y'\})\).
+So \(\{x, \{x, y\}\} = \{x', \{x', y'\}\}\) is true, or equivalently \((x, y) = (x', y')\).
+Since we have proved both the necessary and the sufficient conditions, we conclude that the given definition of the ordered pair satisfied the constrain \((x, y) = (x', y') \iff ((x = x') \land (y = y'))\).
+
+Next we prove that \(X \times Y\) is a set with the given ordered pair definition.
+By Axiom \ref{axiom 3.3}, \(\{x, y\}\) is a set for all \(x \in X\) and for all \(y \in Y\).
+Again by Axiom \ref{axiom 3.3}, \(\{x, \{x, y\}\}\) is a set for all \(x \in X\) and for all \(y \in Y\).
+By Axiom \ref{axiom 3.6}, \(\{\{x, \{x, y\}\} : x \in X \land y \in Y\}\) is a set.
+So \(X \times Y = \{(x, y) : x \in X \land y \in Y\}\) is a set with the given ordered pair definition.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.5.2}
+Suppose we \emph{define} an ordered \(n\)-tuple to be a surjective function \(x : \{i \in \mathds{N} : 1 \leq i \leq n\} \to X\) whose range is some arbitrary set \(X\) (so different ordered \(n\)-tuples are allowed to have different ranges);
+we then write \(x_i\) for \(x(i)\), and also write \(x\) as \((x_i)_{1 \leq i \leq n}\).
+Using this definition, verify that we have \((x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n}\) if and only if \(x_i = y_i\) for all \(1 \leq i \leq n\).
+Also, show that if \((X_i)_{1 \leq i \leq n}\) are an ordered \(n\)-tuple of sets, then the Cartesian product, as defined in Definition \ref{definition 3.5.3}, is indeed a set.
+\end{exercise}
+
+\begin{proof}
+We first prove \((x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n} \iff x_i = y_i \ \forall\ 1 \leq i \leq n\).
+We first prove the necessary condition.
+By the given definition, \(x = (x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n} = y\).
+Since \(x = y\), \(\forall\ i \in \{i \in \mathds{N}: 1 \leq i \leq n\}\), \(x(i) = y(i)\), but by the definition \(x_i = x(i) = y(i) = y_i\), so \(x_i = y_i \ \forall\ i \in \{i \in \mathds{N} : 1 \leq i \leq n\}\).
+Now we prove the sufficient condition.
+\(\forall\ i \in \{i \in \mathds{N} : 1 \leq i \leq n\}\), \(x_i = y_i\).
+But by the definition \(x(i) = x_i = y_i = y(i)\), so \(x = y\) is true.
+Again by definition, \(x = y\) means \((x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n}\).
+Since we have proved both the necessary and sufficient conditions, we conclude that \((x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n} \iff x_i = y_i \ \forall\ 1 \leq i \leq n\).
+
+If \((X_i)_{1 \leq i \leq n}\) are an ordered \(n\)-tuple of sets, by Axiom \ref{axiom 3.10}, we can consider a set of all functions \(i \mapsto x_i\) from the domain \(\{1 \leq i \leq n\}\) to the range \(\bigcup_{1 \leq i \leq n} X_i\).
+We denote such set as \(F\).
+Then by Exercise \ref{exercise 3.4.6}, there exist a set of all partial function \(P = \{f : A \to B \mid (A \subseteq \{1 \leq i \leq n\}) \land (B \subseteq \bigcup_{1 \leq i \leq n} X_i\})\).
+Then by Axiom \ref{axiom 3.5}, there exist a set \(\{f \in P \mid (f = i \mapsto x_i) \land (x_i \in X_i) \ \forall\ 1 \leq i \leq n\}\).
+Using the given definition, we can rewrite such set as \(\{(x_i)_{1 \leq i \leq n} : x_i \in X_i \text{ for all } 1 \leq i \leq n\}\), which is the same definition as \(\prod_{1 \leq i \leq n} X_i\).
+So the Cartesian product is itself a set.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.5.3}
+Show that the definitions of equality for ordered pair and ordered \(n\)-tuple obey the reflexivity, symmetry, and transitivity axioms.
+\end{exercise}
+
+\begin{proof}
+We first prove the reflexivity.
+Let \((x_i)_{1 \leq i \leq n}\) be a \(n\)-tuple.
+Then by Definition \ref{definition 3.5.3}, \(x_i = x_i\) for all object \(x_i\), \(1 \leq i \leq n\), so \((x_i)_{1 \leq i \leq n} = (x_i)_{1 \leq i \leq n}\).
+
+Next we prove the symmetry.
+Let \((x_i)_{1 \leq i \leq n}\) and \((y_i)_{1 \leq i \leq n}\) be two \(n\)-tuples.
+If \((x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n}\), then by Definition \ref{definition 3.5.3}, \(x_i = y_i\), \(1 \leq i \leq n\), so \(y_i = x_i\), \(1 \leq i \leq n\).
+Thus \((y_i)_{1 \leq i \leq n} = (x_i)_{1 \leq i \leq n}\).
+
+Finally we prove the transitivity.
+Let \((x_i)_{1 \leq i \leq n}\), \((y_i)_{1 \leq i \leq n}\) and \((z_i)_{1 \leq i \leq n}\) be three \(n\)-tuples.
+If \((x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n}\) and \((y_i)_{1 \leq i \leq n} = (z_i)_{1 \leq i \leq n}\), then by Definition \ref{definition 3.5.3}, \(x_i = y_i\) and \(y_i = z_i\), \(1 \leq i \leq n\), so \(x_i = z_i\), \(1 \leq i \leq n\).
+Thus \((x_i)_{1 \leq i \leq n} = (z_i)_{1 \leq i \leq n}\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.5.4}
+Let \(A\), \(B\), \(C\) be sets.
+Show that \(A \times (B \cup C) = (A \times B) \cup (A \times C)\), that \(A \times (B \cap C) = (A \times B) \cap (A \times C)\), and that \(A \times (B \setminus C) = (A \times B) \setminus (A \times C)\).
+\end{exercise}
+
+\begin{proof}
+We first prove the union part.
+\(\forall\ (a, d) \in A \times (B \cup C)\), \((a \in A) \land (d \in B \cup C)\).
+If \(d \in B\), then \((a, d) \in A \times B\).
+Similarly if \(d \in C\), then \((a, d) \in A \times C\).
+Thus \((a, d) \in (A \times B) \cup (A \times C)\).
+\(\forall\ (a', d') \in (A \times B) \cup (A \times C)\), \(((a', d') \in A \times B) \lor ((a', d') \in A \times C)\).
+If \((a', d') \in A \times B\), then \((a' \in A) \land (d' \in B)\), so \(d' \in B \cup C\) is true.
+Similarly if \((a', d') \in A \times C\), then \((a' \in A) \land (d' \in C)\), so \(d' \in B \cup C\) is true.
+Thus \((a', d') \in A \times (B \cup C)\).
+We conclude that \(A \times (B \cup C) = (A \times B) \cup (A \times C)\).
+
+Next we prove the intersection part.
+\(\forall\ (a, d) \in A \times (B \cap C)\), \((a \in A) \land (d \in B \cap C)\).
+Because \((a \in A) \land (d \in B)\), so \((a, d) \in A \times B\).
+Similarly because \((a \in A) \land (d \in C)\), so \((a, d) \in A \times C\).
+Thus \((a, d) \in (A \times B) \cap (A \times C)\).
+\(\forall\ (a', d') \in (A \times B) \cap (A \times C)\), \(((a', d') \in A \times B) \land ((a', d') \in A \times C)\).
+Because \((a', d') \in A \times B\), so \((a' \in A) \land (d' \in B)\).
+Similarly because \((a', d') \in A \times C\), so \((a' \in A) \land (d' \in C)\).
+Thus \(d' \in B \cap C\), and \((a', d') \in A \times (B \cap C)\).
+
+Now we prove the difference part.
+\(\forall\ (a, d) \in A \times (B \setminus C)\), \((a \in A) \land (d \in B \setminus C)\).
+Since \(d \in B \setminus C\), \((d \in B) \land (d \notin C)\).
+So \((a \in A) \land (d \in B) \implies (a, d) \in A \times B\), and \((a \in A) \land (d \notin C) \implies (a, d) \notin A \times C\).
+Thus \((a, d) \in (A \times B) \setminus (A \times C)\).
+\(\forall\ (a', d') \in (A \times B) \setminus (A \times C)\), \(((a', d') \in A \times B) \land ((a', d') \notin A \times C)\).
+Because \((a', d') \in A \times B\), so \((a' \in A) \land (d' \in B)\).
+Also \(((a', d') \notin A \times C) \land (a' \in A)\), so \(d' \notin C\).
+Thus \(d' \in B \setminus C\), and \((a', d') \in A \times (B \setminus C)\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.5.5}
+Let \(A\), \(B\), \(C\), \(D\) be sets.
+Show that \((A \times B) \cap (C \times D) = (A \cap C) \times (B \cap D)\).
+Is it true that \((A \times B) \cup (C \times D) = (A \cup C) \times (B \cup D)?\)
+Is it true that \((A \times B) \setminus (C \times D) = (A \setminus C) \times (B \setminus D)?\)
+\end{exercise}
+
+\begin{proof}
+We first prove the intersection part.
+\(\forall\ (x, y) \in (A \times B) \cap (C \times D)\), \(((x, y) \in A \times B) \land ((x, y) \in C \times D)\).
+So \((x \in A) \land (y \in B) \land (x \in C) \land (y \in D)\), and \((x \in A \cap C) \land (y \in B \cap D)\).
+Thus \((x, y) \in (A \cap C) \times (B \cap D)\).
+\(\forall\ (x', y') \in (A \cap C) \times (B \cap D)\), \((x' \in A \cap C) \land (y' \in B \cap D)\).
+So \((x' \in A \land y' \in B) \land (x' \in C \land y' \in D)\), and \(((x', y') \in A \times B) \land ((x', y') \in C \times D)\).
+Thus \((x', y') \in (A \times B) \cap (C \times D)\).
+We conclude that \((A \times B) \cap (C \times D) = (A \cap C) \times (B \cap D)\).
+
+Next we prove the union part.
+Let \((a, d) \in A \times D\) and \((a \notin C) \land (d \notin B)\).
+Because \(a \in A\), so \(a \in A \cup C\).
+And because \(d \in D\), so \(d \in B \cup D\).
+So \((a, d) \in (A \cup C) \times (B \cup D)\).
+But because \(a \notin C\), so \((a, d) \notin C \times D\).
+Also because \(d \notin B\), so \((a, d) \notin A \times B\).
+Thus \((a, d) \notin (A \times B) \cup (C \times D)\).
+We conclude that \((A \times B) \cup (C \times D) \neq (A \cup C) \times (B \cup D)\).
+
+Now we prove the difference part.
+Let \((a, b) \in A \times B\) and \((a \notin C) \land (b \in D)\).
+Because \(a \notin C\), so \((a, b) \notin C \times D\), and \((a, b) \in (A \times B) \setminus (C \times D)\).
+But \((b \in B) \land (b \in D)\), so \(b \notin B \setminus D\), and \((a, b) \notin (A \setminus C) \times (B \setminus D)\).
+We conclude that \((A \times B) \setminus (C \times D) \neq (A \setminus C) \times (B \setminus D)\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.5.6}
+Let \(A\), \(B\), \(C\), \(D\) be non-empty sets.
+Show that \(A \times B \subseteq C \times D\) if and only if \(A \subseteq C\) and \(B \subseteq D\), and that \(A \times B = C \times D\) if and only if \(A = C\) and \(B = D\).
+What happens if the hypotheses that the \(A\), \(B\), \(C\), \(D\) are all non-empty are removed?
+\end{exercise}
+
+\begin{proof}
+We first prove the subset part.
+\(\forall\ (x, y) \in A \times B \subseteq C \times D\), \((x, y) \in A \times B \implies (x, y) \in C \times D\).
+So \((x \in A \implies x \in C) \land (y \in B \implies y \in D)\), and \((A \subseteq C) \land (B \subseteq D)\).
+Thus \(A \times B \subseteq C \times D \implies (A \subseteq C) \land (B \subseteq D)\).
+\(\forall\ x' \in A \subseteq C\) and \(\forall\ y' \in B \subseteq D\), \(x' \in A \implies x' \in C\) and \(y' \in B \implies y' \in D\).
+So \((x', y') \in A \times B \implies (x', y') \in C \times D\).
+Thus \((A \subseteq C) \land (B \subseteq D) \implies (A \times B) \subseteq (C \times D)\).
+We conclude that \(A \times B \subseteq C \times D \iff (A \subseteq C) \land (B \subseteq D)\).
+
+Next we prove the equality part.
+\(\forall\ (x, y) \in A \times B = C \times D\), \((x \in A \iff x \in C) \land (y \in B \iff y \in D)\).
+But \(x \in A \iff x \in C\) means \(A = C\), similarly \(y \in B \iff y \in D)\) means \(B = D\).
+Thus \(A \times B = C \times D \implies (A = C) \land (B = D)\).
+\(\forall\ x' \in A = C\) and \(\forall\ y' \in B = D\), \((x' \in A \iff x' \in C) \land (y' \in B \iff y' \in D)\).
+But \((x' \in A) \land (x' \in B) \iff (x', y') \in A \times B\) and \((x' \in C) \land (x' \in D) \iff (x', y') \in C \times D\), so \((x', y') \in A \times B \iff (x', y') \in C \times D\).
+Thus \((A = C) \land (B = D) \implies A \times B = C \times D\).
+We conclude that \(A \times B = C \times D \iff (A = C) \land (B = D)\).
+
+Finally we show that if the hypothesis removed.
+If \(A\), \(D\) are empty sets and \(B\), \(C\) are non-empty sets, then \(A \times B = \emptyset\) and \(C \times D = \emptyset\).
+So \(\emptyset = A \times B \subseteq C \times D = \emptyset\), but \(B \subsetneq D = \emptyset\).
+Thus the statement \(A \times B \subseteq C \times D \iff (A \subseteq C) \land (B \subseteq D)\) is false.
+Also \(\emptyset = A \times B = C \times D = \emptyset\), but \(\emptyset = A \neq C\).
+Thus the statement \(A \times B = C \times D \iff (A = C) \land (B = D)\) is false.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.5.7}
+Let \(X\), \(Y\) be sets, and let \(\pi_{X \times Y \to X} : X \times Y \to X\) and \(\pi_{X \times Y \to Y} : X \times Y \to Y\) be the maps \(\pi_{X \times Y \to X}(x, y) \coloneqq x\) and \(\pi_{X \times Y \to Y}(x, y) \coloneqq y\);
+these maps are known as the \emph{co-ordinate functions} on \(X \times Y\).
+Show that for any functions \(f : Z \to X\) and \(g : Z \to Y\), there exists a unique function \(h : Z \to X \times Y\) such that \(\pi_{X \times Y \to X} \circ h = f\) and \(\pi_{X \times Y \to Y} \circ h = g\).
+This function \(h\) is known as the \emph{direct sum} of \(f\) and \(g\) and is denoted \(h = f \oplus g\).
+\end{exercise}
+
+\begin{proof}
+We first prove the existence.
+Since \(h\) has domain \(Z\) and range \(X \times Y\), \(\pi_{X \times Y \to X} \circ h\) have domain \(Z\) and range \(X\), which is the same as \(f\).
+Similarly \(\pi_{X \times Y \to Y} \circ h\) has domain \(Z\) and range \(Y\), which is the same as \(g\).
+Therefore such \(h\) can exist.
+
+Now we prove the uniqueness.
+Suppose that there are two function \(h\) and \(h'\) statisfied the condition.
+Then \(\forall\ z \in Z\), \(h(z) \in X \times Y, h'(z) \in X \times Y\).
+Let \((x, y) = h(z)\) and \((x', y') = h'(z)\).
+So \(\pi_{X \times Y \to X}(h(z)) = x \in X\), \(\pi_{X \times Y \to X}(h'(z)) = x' \in X\), \(\pi_{X \times Y \to Y}(h(z)) = y \in Y\), \(\pi_{X \times Y \to X}(h'(z)) = y' \in Y\).
+But \(f(z) = \pi_{X \times Y \to X}(h(z)) = x\) and \(f(z) = \pi_{X \times Y \to X}(h'(z)) = x'\), so \(x = x'\).
+Similarly \(g(z) = \pi_{X \times Y \to Y}(h(z)) = y\) and \(g(z) = \pi_{X \times Y \to Y}(h'(z)) = y'\), so \(y = y'\).
+Thus \(\forall\ z \in Z\), \(h(z) = (x, y) = (x', y') = h'(z)\), so \(h = h'\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.5.8}
+Let \(X_1, \cdots, X_n\) be sets.
+Show that the Cartesian product \(\prod_{i = 1}^n X_i\) is empty if and only if at least one of the \(X_i\) is empty.
+\end{exercise}
+
+\begin{proof}
+By Definition \ref{definition 3.5.3} \(\prod_{i = 1}^n X_i = \{(x_i)_{1 \leq i \leq n} : x_i \in X_i, \forall\ 1 \leq i \leq n\}\).
+But if at least one of the \(X_i\) is empty, then there does not exist a \(x_i\) such that \(x_i \in X_i\).
+Therefore \((x_i)_{1 \leq i \leq n}\) does not exist, which means \(\prod_{i = 1}^n X_i = \emptyset\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.5.9}
+Suppose that \(I\) and \(J\) are two sets, and for all \(\alpha \in I\) let \(A_{\alpha}\) be a set, and for all \(\beta \in J\) let \(B_{\beta}\) be a set.
+Show that \((\bigcup_{\alpha \in I} A_{\alpha}) \cap (\bigcup_{\beta \in J} B_{\beta}) = \bigcup_{(\alpha, \beta) \in I \times J} (A_{\alpha} \cap B_{\beta})\).
+\end{exercise}
+
+\begin{proof}
+\(\forall\ x \in (\bigcup_{\alpha \in I} A_{\alpha}) \cap (\bigcup_{\beta \in J} B_{\beta}) \iff (x \in \bigcup_{\alpha \in I} A_{\alpha}) \land (x \in \bigcup_{\beta \in J} B_{\beta}) \iff (\exists\ \alpha \in I, x \in A_{\alpha}) \land (\exists\ \beta \in J, x \in B_{\beta}) \iff \exists\ \alpha \in I \ \exists\ \beta \in J, x \in A_{\alpha} \cap B_{\beta} \iff \exists\ (\alpha, \beta) \in I \times J, x \in A_{\alpha} \cap B_{\beta} \iff x \in \bigcup_{(\alpha, \beta) \in I \times J} (A_{\alpha} \cap B_{\beta})\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.5.10}
+If \(f : X \to Y\) is a function, define the \emph{graph} of \(f\) to be the subset of \(X \times Y\) defined by \(\{(x, f(x)) : x \in X\}\).
+Show that two functions \(f : X \to Y\), \(\tilde{f} : X \to Y\) are equal if and only if they have the same graph.
+Conversely, if \(G\) is any subset of \(X \times Y\) with the property that for each \(x \in X\), the set \(\{y \in Y : (x, y) \in G\}\) has exactly one element (or in other words, \(G\) obeys the vertical line test), show that there is exactly one function \(f : X \to Y\) whose graph is equal to \(G\).
+\end{exercise}
+
+\begin{proof}
+We first prove the equality.
+\(f = \tilde{f} \iff \forall\ x \in X, f(x) = \tilde{f}(x) \iff \forall\ x \in X, (x, f(x)) = (x, \tilde{f}(x)) \iff \{(x, f(x)) : x \in X\} = \{(x, \tilde{f}(x)) : x \in X\}\).
+Thus \(f = \tilde{f}\) iff they have the same graph.
+
+Now we prove that when \(G\) obeys the vertical line test, there is exactly one function \(f\) whose graph is \(G\).
+By the given condition, \(\forall\ x \in X\), \(\exists!\ y \in Y\) such that \((x, y) \in G\).
+Let \(f : X \to Y\) be a function that \(\forall\ x \in X\), \(f(x) = y\).
+If there is another \(f'\) satisfied that \(\forall\ x \in X\), \(f'(x) = y\), then \(f = f'\) by Definition \ref{definition 3.3.2}.
+Then the graph of \(f\) is \(\{(x, f(x)) : (x \in X) \land (f(x) = y)\}\), which is the same set as \(G\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.5.11}
+Show that Axiom \ref{axiom 3.10} can in fact be deduced from Lemma \ref{lemma 3.4.1} and the other axioms of set theory, and thus Lemma \ref{lemma 3.4.1} can be used as an alternate formulation of the power set axiom.
+\end{exercise}
+
+\begin{proof}
+For any two sets \(X\) and \(Y\), there exists a set \(X \times Y\).
+By Lemma \ref{lemma 3.4.1}, there exists a set \(A = \{a \mid a \subseteq X \times Y\}\).
+By Axiom \ref{axiom 3.5}, there exists a set \(B = \{b \mid (b \in A) \land (\forall\ (x, y), (x, y') \in b, (x \in X) \land ((x, y) = (x, y') \implies y = y'))\}\).
+By Exercise \ref{exercise 3.5.10}, \(\forall\ G \in B\), there is exactly one \(f : X \to Y\) whose graph is equal to \(G\).
+Then by Axiom \ref{axiom 3.6}, there exist a set \(X^Y = \{f : X \to Y \mid (G \in B) \land (\text{graph of } f = G)\}\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.5.12}
+Let \(f : \mathds{N} \times \mathds{N} \to \mathds{N}\) be a function, and let \(c\) be a natural number.
+Show that there exists a function \(a : \mathds{N} \to \mathds{N}\) such that
+\[
+    a(0) = c
+\]
+and
+\[
+    a(n++) = f(n, a(n)) \text{ for all } n \in \mathds{N},
+\]
+and furthermore that this function is unique.
+For an additional challenge, prove this result without using any properties of the natural numbers other than the Peano axioms directly.
+\end{exercise}
+
+\begin{proof}
+We claim that for every natural number \(N \in \mathds{N}\), there exists a unique function \(a_N : \{n \in \mathds{N} : n \leq N\} \to \mathds{N}\) such that \(a_N(0) = c\) and \(a_N(n++) = f(n, a_{N}(n))\) for all \(n \in \mathds{N}\) such that \(n < N\).
+
+We prove the claim by using induction on \(N\).
+For \(N = 0\), we need to show that such function \(a_0 : \{n \in \mathds{N} : n \leq 0\} \to \mathds{N}\) exists and is unique.
+The domain of \(a_0\) is equal to \(\{0\}\) since \(0\) is the only natural number less than or equal to \(0\).
+Then by defining \(a_0(0) = c\) where \(c \in \mathds{N}\) we get a unique function \(a_0 : \{0\} \to \{c\}\) (if \(a'_0 : \{0\} \to \{c\}\), then by Definition \ref{definition 3.3.2} \(a_0 = a'_0\)).
+And because the domain of \(a_0\) is equal to \(\{0\}\), so there is no \(n \in \{0\}\) such that \((n \in \mathds{N}) \land (n < 0)\), so \(a_0(n++) = f(n, a_0(n))\) is vacuously true.
+Thus for \(N = 0\) the claim is true.
+Suppose inductively that for \(N\) the claim is also true.
+The function \(a_N : \{n \in \mathds{N} : n \leq N\} \to \mathds{N}\) exists and is unique, and \(a_N(0) = c\) and \(a_N(n++) = f(n, a_N(n))\) for all \(n \in \mathds{N}\) such that \(n < N\).
+Then for \(N++\), we can define \(a_{N++} : \{n \in \mathds{N} : n \leq N++\} \to \mathds{N}\) by setting \(a_{N++}(n) = a_N(n)\) when \((n \in \mathds{N}) \land (n < N++)\) (which is unique by induction hypothesis) and \(a_{N++}(N++) = f(N, a_{N++}(N))\) when \((n \in \mathds{N}) \land (n = N++)\) (which is also unique because \(N\) is unique by Axiom \ref{2.4} and \(a_{N++}(N) = a_N(N)\) is unique by induction hypothesis, so \(f(n, a(n))\) is unique by Definition \ref{definition 3.3.1}).
+So \(a_{N++}\) exists and is unique, and \(a_{N++}(0) = a_N(0) = c\) and \(a_{N++}(n++) = f(n, a_{N++}(n))\) for all \(n \in \mathds{N}\) such that \(n < N++\).
+Thus we conclude that the claim is true.
+
+Now we prove the exercise.
+\(\forall\ N \in \mathds{N}\), we can define \(a(N)\) be the value of \(a_N(N)\), where \(a_N\) is the function in the claim, i.e., \(a(N) = a_{N}(N)\).
+Then \(a(0) = a_0(0) = c\), and \(a(N++) = a_{N++}(N++) = f(N, a_{N++}(N)) = f(N, a_{N}(N)) = f(N, a(N))\).
+Since all \(a_N\) exists and unique, thus such \(a\) exists and is unique.
+\end{proof}
+
+\begin{proof}{(additional challenge)}
+We claim that for every natural number \(N \in \mathds{N}\), there exists a unique pair \(A_N\), \(B_N\) of subsets of \(\mathds{N}\) which obeys the following properties:
+    \begin{enumerate}
+        \item \(A_N \cap B_N = \emptyset\)
+        \item \(A_N \cup B_N = \mathds{N}\)
+        \item \(0 \in A_N\)
+        \item \(N++ \in B_N\)
+        \item Whenever \(n \in B_N\), we have \(n++ \in B_N\)
+        \item Whenever \(n \in A_N\) and \(n \neq N\), we have \(n++ \in A_N\)
+    \end{enumerate}
+    
+We prove the claim by using induction on \(N\).
+For \(N = 0\), by Axiom \ref{axiom 3.3} there exists a set \(\{0\}\), and let \(A_0 = \{0\}\).
+Also by Axiom \ref{axiom 3.7} and \ref{axiom 3.5}, there exists a set \(\mathds{N}\), and there also exists a set \(B_0 = \{n \in \mathds{N} \mid n \neq 0\}\).
+Then \(A_0 \cap B_0 = \emptyset\), \(A_0 \cup B_0 = \mathds{N}\), \(0 \in A_0\), \(0++ = 1 \in B_0\), \(\forall\ n \in B_0\) whenever \(n \in B_0\), we have \(n++ \in B_0\).
+And \(\forall\ n \in A_0\) whenever \(n \in A_0\) and \(n \neq 0\), we have \(n++ \in A_0\) is vacuously true because \(\{n \in A_0 : n \neq 0\} = \emptyset\).
+Now we need to show that \(A_0\) and \(B_0\) is unique, so assume that there exists another sets \(A_0'\) and \(B_0'\) such that the above condition holds.
+Then \(0 \in A_0'\) according to condition (c), and \(A_0' = \{0\}\) according to condition (f), so \(A_0 = A_0'\).
+And because \(A_0' \cap B_0' = \{0\} \cap B_0' = \emptyset\), and \(A_0' \cup B_0' = \mathds{N}\), and condition (e) is true, so \(B_0' = \{n \in \mathds{N} : n \neq 0\} = B_0\).
+Thus for \(N = 0\), there exists a unique pair \(A_0\) and \(B_0\) such that the above conditions hold.
+Suppose inductively that there exists a unique pair \(A_N\) and \(B_N\) such that the above conditions hold.
+Then for \(N++\) we can define \(A_{N++}\) and \(B_{N++}\) by setting \(A_{N++} = A_N \cup \{N++\}\) and \(B_{N++} = \{n \in B_N : n \neq N++\} = B_N \setminus \{N++\}\).
+Thus we can check the above conditions still hold.
+For condition (a), \(A_{N++} \cap B_{N++} = (A_N \cup \{N++\}) \cap (B_N \setminus \{N++\})\).
+For all \(n \in A_{N++}\), \(n \in A_N\) or \(n = N++\).
+If \(n \in A_N\), then \(n \notin B_N\) because \(A_N \cap B_N = \emptyset\) by induction hypothesis, so \(n \notin B_N \setminus \{N++\}\).
+If \(n = N++\), then \(n \notin B_N \setminus \{N++\}\).
+Thus \(A_{N++} \cap B_{N++} = \emptyset\), and condition (a) is true for \(A_{N++}\) and \(B_{N++}\).
+For condition (b), \(A_{N++} \cup B_{N++} = (A_N \cup \{N++\}) \cup (B_N \setminus \{N++\}) = (A_N \cup (B_N \setminus \{N++\})) \cup (\{N++\} \cup (B_N \setminus \{N++\})) = (A_N \cup (B_N \setminus \{N++\})) \cup B_N = A_N \cup B_N = \mathds{N}\) by induction hypothesis.
+Thus condition (b) is true for \(A_{N++}\) and \(B_{N++}\).
+For condition (c), \(0 \in A_{N++}\) because \(0 \in A_N\) and \(A_{N++} = A_N \cup \{N++\}\), so condition (c) is true for \(A_{N++}\).
+For condition (d), we want to show that \((N++)++ \in B_N\).
+By induction hypothesis, \(N \in A_N\) and \(N++ \in B_N\) is true, so \((N++)++ \in B_N\) is true.
+Thus \((N++)++ \in B_N \setminus \{N++\} = B_{N++}\) is also true, so condition (e) is true for \(B_{N++}\).
+For condition (f), since \(N \in A_N\) by induction hypothesis, \(N++ \in A_N \cup \{N++\} = A_{N++}\) is true.
+And by (a) and (e), \((N++)++\) is not in \(A_N\).
+So whenever \(n \in A_{N++}\) and \(n \neq N++\), we have \(n++ \in A_{N++}\).
+Thus condition (f) is true for \(A_{N++}\).
+Now we need to show that \(A_{N++}\) and \(B_{N++}\) is unique.
+Because \(A_{N++} = A_N \cup \{N++\}\), and by induction hypothesis \(A_N\) is unique and \(\{N++\}\) is also unique, so \(A_{N++}\) is unique.
+Similarly \(B_{N++}\) is unique.
+Thus we close the induction, so for every \(N \in \mathds{N}\) we have unique \(A_N\) and \(B_N\) such that the above condition is true.
+
+Now we claim that for every natural number \(N \in \mathds{N}\), there exists a unique function \(a_N : A_N \to \mathds{N}\) such that \(a_N(0) = c\) and \(a_N(n++) = f(n, a_{N}(n))\) for all \(n \in \mathds{N}\) such that \(n < N\).
+
+With similar process of previous proof, we can show that the statement is true, and by defining \(a\) with similar argument we can show that \(a\) exist and is unique.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.5.13}
+Suppose we have a set \(\mathds{N}'\) of \say{alternative natural numbers}, an \say{alternative zero} 0', and an \say{alternative increment operation} which takes any alternative natural number \(n' \in N\) and returns another alternative natural number \(n'++' \in \mathds{N}'\), such that the Peano axioms (Axioms \ref{2.1}-\ref{2.5}) all hold with the natural numbers, zero, and increment replaced by their alternative counterparts.
+Show that there exists a bijection \(f : \mathds{N} \to \mathds{N}'\) from the natural numbers to the alternative natural numbers such that \(f(0) = 0'\), and such that for any \(n \in \mathds{N}\) and \(n' \in \mathds{N}'\), we have \(f(n) = n'\) if and only if \(f(n++) = n'++'\).
+\end{exercise}
+
+\begin{proof}
+To be added.
+% Let \(f : \mathds{N} \times \mathds{N}' \to \mathds{N}'\) and \(a : \mathds{N} \to \mathds{N}'\) be functions such that \(a(0) = 0'\) and \(a(n++) = f(n, a(n)) = a(n)++' = n'++'\).
+% By Exercise \ref{exercise 3.5.12}, such \(a\) exists and is unique.
+% Because \(a(0) = 0'\) and \((a(n) = n' \iff a(n++) = n'++')\), so \(\forall\ n' \in \mathds{N}'\), there exists a \(n\) such that \(a(n) = n'\), or equivalently, \(a\) is surjective.
+% Let \(n_1'\), \(n_2' \in \mathds{N}'\) such that \(n_1' = n_2'\).
+% Because \(a\) is surjective, so \(\exists\ n_1, n_2 \in \mathds{N}\) such that \(a(n_1) = n_1'\) and \(a(n_2) = n_2'\).
+% Suppose for sake of contradiction that \(n_1 \neq n_2\), so \(n_1++ \neq n_2++\).
+% Then \(a(n_1++) = n_1'++' = n_2'++' = a(n_2++)\)
+\end{proof}
+
+\section{Cardinality of sets}
+
+\begin{definition}[Equal cardinality]\label{definition 3.6.1}
+We say that two sets \(X\) and \(Y\) have \emph{equal cardinality} iff there exists a bijection \(f : X \to Y\) from \(X\) to \(Y\).
+\end{definition}
+
+\begin{remark}
+The fact that two sets have equal cardinality does not preclude one of the sets from containing the other.
+For instance, if \(X\) is the set of natural numbers and \(Y\) is the set of even natural numbers, then the map \(f : X \to Y\) defined by \(f(n) \coloneqq 2n\) is a bijection from \(X\) to \(Y\), and so \(X\) and \(Y\) have equal cardinality, despite \(Y\) being a subset of \(X\) and seeming intuitively as if it should only have \say{half} of the elements of \(X\).
+\end{remark}
+
+\begin{proposition}
+Let \(X\), \(Y\), \(Z\) be sets.
+Then \(X\) has equal cardinality with \(X\).
+If \(X\) has equal cardinality with \(Y\), then \(Y\) has equal cardinality with \(X\).
+If \(X\) has equal cardinality with \(Y\) and \(Y\) has equal cardinality with \(Z\), then \(X\) has equal cardinality with \(Z\).
+\end{proposition}
+
+\begin{proof}
+We first prove the reflexivity.
+If \(X\) is a set, then there exists a function \(f : X \to X\), \(f = x \mapsto x\) for all \(x \in X\).
+Then \(f\) is injective because \(\forall\ x, x' \in X\), \(f(x) = f(x') \implies x = x'\), and \(f\) is also surjective because \(\forall\ x \in X\), there exists a \(x\) such that \(f(x) = x\).
+So \(f\) is bijective, and \(X\) has equal cardinality with \(X\).
+
+Next we prove the symmetric.
+If \(X\) has equal cardinality with \(Y\), then there exists a function \(f : X \to Y\) such that \(f\) is bijective.
+Since \(f\) is bijective, \(f^{-1} : Y \to X\) is also bijective.
+Thus \(Y\) has equal cardinality with \(X\).
+
+Now we prove the transitivity.
+If \(X\) has equal cardinality with \(Y\) and \(Y\) has equal cardinality with \(Z\), then there exist two functions \(f : X \to Y\) and \(g : Y \to Z\) such that \(f\) and \(g\) are bijective.
+Since \(f\) and \(g\) are bijective, then \(g \circ f : X \to Z\) is bijective.
+Thus \(X\) has equal cardinality with \(Z\).
+\end{proof}
+
+\begin{definition}\label{definition 3.6.2}
+Let \(n\) be a natural number.
+A set \(X\) is said to have \emph{cardinality} \(n\), iff it has equal cardinality with \(\{i \in \mathds{N} : 1 \leq i \leq n\}\).
+We also say that \(X\) \emph{has \(n\) elements} iff it has cardinality \(n\).
+\end{definition}
+
+\begin{remark}
+One can use the set \(\{i \in \mathds{N} : i < n\}\) instead of \(\{i \in \mathds{N} : 1 \leq i \leq n\}\), since these two sets clearly have equal cardinality.
+\end{remark}
+
+\begin{lemma}\label{lemma 3.6.1}
+Suppose that \(n \geq 1\), and \(X\) has cardinality \(n\).
+Then \(X\) is non-empty, and if \(x\) is any element of \(X\), then the set \(X \setminus \{x\}\) (i.e., \(X\) with the element \(x\) removed) has cardinality \(m\), where \(m++ = n\).
+\end{lemma}
+
+\begin{proof}
+If \(X\) is empty then it clearly cannot have the same cardinality as the non-empty set \(\{i \in \mathds{N} : 1 \leq i \leq n\}\), as there is no bijection from the empty set to a non-empty set.
+Now let \(x\) be an element of \(X\).
+Since \(X\) has the same cardinality as \(\{i \in \mathds{N} : 1 \leq i \leq n\}\), we thus have a bijection \(f\) from \(X\) to \(\{i \in \mathds{N} : 1 \leq i \leq n\}\).
+In particular, \(f(x)\) is a natural number between \(1\) and \(n\).
+Now define the function \(g : X \setminus \{x\} \to \{i \in \mathds{N} : 1 \leq i \leq m\}\) by the following rule: for any \(y \in X \setminus \{x\}\), we define \(g(y) \coloneqq f(y)\) if \(f(y) < f(x)\), and define \(g(y)++ \coloneqq f(y)\) if \(f(y) > f(x)\).
+(Note that \(f(y)\) cannot equal \(f(x)\) since \(y \neq x\) and \(f\) is a bijection.)
+It is easy to check that this map is also a bijection, and so \(X \setminus \{x\}\) has equal cardinality with \(\{i \in \mathds{N} : 1 \leq i \leq m\}\).
+In particular \(X \setminus \{x\}\) has cardinality \(m\), as desired.
+\end{proof}
+
+\begin{proposition}[Uniqueness of cardinality]\label{proposition 3.6.2}
+Let \(X\) be a set with some cardinality \(n\).
+Then \(X\) cannot have any other cardinality, i.e., \(X\) cannot have cardinality \(m\) for any \(m \neq n\).
+\end{proposition}
+
+\begin{proof}
+We induct on \(n\).
+First suppose that \(n = 0\).
+Then \(X\) must be empty, and so \(X\) cannot have any non-zero cardinality.
+Now suppose that the proposition is already proven for some \(n\);
+we now prove it for \(n++\).
+Let \(X\) have cardinality \(n++\);
+and suppose that \(X\) also has some other cardinality \(m \neq n++\).
+By Lemma \ref{lemma 3.6.1}, \(X\) is non-empty, and if \(x\) is any element of \(X\), then \(X \setminus \{x\}\) has cardinality \(n\) and also has cardinality \(p\), where \(p++ = m\), by Lemma \ref{lemma 3.6.1}.
+By induction hypothesis, this means that \(n = p\), which implies that \(p++ = m = n++\), a contradiction.
+This closes the induction.
+\end{proof}
+
+\begin{definition}[Finite sets]\label{definition 3.6.3}
+A set is \emph{finite} iff it has cardinality \(n\) for some natural number \(n\);
+otherwise, the set is called \emph{infinite}.
+If \(X\) is a finite set, we use \(\#(X)\) to denote the cardinality of \(X\).
+\end{definition}
+
+\begin{theorem}\label{theorem 3.6.1}
+The set of natural numbers \(\mathds{N}\) is infinite.
+\end{theorem}
+
+\begin{proof}
+Suppose for sake of contradiction that the set of natural numbers \(\mathds{N}\) was finite, so it had some cardinality \(\#(\mathds{N}) = n\).
+Then there is a bijection \(f\) from \(\{i \in \mathds{N} : 1 \leq i \leq n\}\) to \(\mathds{N}\).
+One can show that the sequence \(f(1), f(2), \cdots, f(n)\) is bounded, or more precisely that there exists a natural number \(M\) such that \(f(i) \leq M\) for all \(1 \leq i \leq n\).
+But then the natural number \(M+1\) is not equal to any of the \(f(i)\), contradicting the hypothesis that \(f\) is a bijection.
+\end{proof}
+
+\begin{remark}
+One can also use similar arguments to show that any unbounded set is infinite;
+for instance the rationals \(\mathds{Q}\) and the reals \(\mathds{R}\) are infinite.
+However, it is possible for some sets to be ``more'' infinite than others.
+\end{remark}
+
+\begin{proposition}[Cardinal arithmetic]\label{proposition 3.6.3}
+\leavevmode
+\begin{enumerate}
+    \item Let \(X\) be a finite set, and let \(x\) be an object which is not an element of \(X\).
+    Then \(X \cup \{x\}\) is finite and \(\#(X \cup \{x\}) = \#(X) + 1\).
+    \item Let \(X\) and \(Y\) be finite sets.
+    Then \(X \cup Y\) is finite and \(\#(X \cup Y) \leq \#(X) + \#(Y)\).
+    If in addition \(X\) and \(Y\) are disjoint (i.e., \(X \cap Y = \emptyset\)), then \(\#(X \cup Y) = \#(X) + \#(Y)\).
+    \item Let \(X\) be a finite set, and let \(Y\) be a subset of \(X\).
+    Then \(Y\) is finite, and \(\#(Y) \leq \#(X)\).
+    If in addition \(Y \neq X\) (i.e., \(Y\) is a proper subset of \(X\)), then we have \(\#(Y) < \#(X)\).
+    \item If \(X\) is a finite set, and \(f : X \to Y\) is a function, then \(f(X)\) is a finite set with \(\#(f(X)) \leq \#(X)\).
+    If in addition \(f\) is one-to-one, then \(\#(f(X)) = \#(X)\).
+    \item Let \(X\) and \(Y\) be finite sets.
+    Then Cartesian product \(X \times Y\) is finite and \(\#(X \times Y) = \#(X) \times \#(Y)\).
+    \item Let \(X\) and \(Y\) be finite sets.
+    Then the set \(Y^X\) (defined in Axiom \ref{axiom 3.10}) is finite and \(\#(Y^X) = \#(Y)^{\#(X)}\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}{(a)}
+Let \(\#(X) = n\).
+We use induction on \(n\).
+For \(n = 0\), \(\#(X \cup \{x\}) = \#(\{x\}) = 1 = 0 + 1 = \#(X) + 1\).
+So \(X \cup \{x\}\) is finite and the base case holds.
+Suppose inductively that \(X \cup \{x\}\) is finite and \(\#(X \cup \{x\}) = \#(X) + 1\) for some \(\#(X) = n\).
+Then for \(\#(X) = n++\), let \(X = X' \cup \{x'\}\) where \(x' \notin X'\).
+Because \(\#(X') = n\), by induction hypothesis, there exists a function \(f'\) with domain \(X = X' \cup \{x'\}\) and range \(\{i \in \mathds{N} : 1 \leq i \leq n++\}\) where \(f'\) is bijective.
+Now we define a function \(f\) with domain \(X \cup \{x\}\) and range \(\{i \in \mathds{N} : 1 \leq i \leq (n++) + 1\}\) by setting \(f(y) = f'(y)\) if \(y \in X\) and setting \(f(y) = (n++) + 1\) if \(y = x\).
+Because \(f'\) is bijective, so \(f\) is also bijective.
+Thus \(\#(X \cup \{x\}) = (n++) + 1\), which means \(X \cup \{x\}\) is finite, and this close the induction.
+\end{proof}
+
+\begin{proof}{(b)}
+Let \(\#(X) = n\).
+We use induction on \(n\).
+For \(n = 0\), \(\#(X \cup Y) = \#(Y) \leq \#(Y) = 0 + \#(Y) = \#(X) + \#(Y)\), so \(X \cup Y\) is finite.
+Thus the base case holds.
+Suppose inductively that the statement is true for some \(n\).
+Then for \(n++\), \(\#(X) = n++\) and \(X = X' \cup \{x\}\), where \(x \notin X'\), \(\#(X') = n\) and \(\#(\{x\}) = 1\).
+So \(\#(X \cup Y) = \#(X' \cup \{x\} \cup Y) = \#(X' \cup Y) + 1\).
+By induction hypothesis, \(\#(X' \cup  Y) \leq \#(X') + \#(Y)\), so \(\#(X \cup  Y) = \#(X' \cup  Y) + 1 \leq \#(X)' + \#(Y) + 1 = \#(X) + \#(Y)\).
+Also by induction hypothesis, \(X' \cup Y\) is finite.
+So \(\#(X' \cup Y) \in \mathds{N}\), and \(\#(X \cup Y) = \#(X' \cup Y) + 1 \in \mathds{N}\), which means \(X \cup Y\) is finite.
+This close the induction.
+
+Now we show that if \(X \cap Y = \emptyset\), then \(\#(X \cup Y) = \#(X) + \#(Y)\).
+Let \(\#(X) = n\), and we use induction on \(n\).
+For \(n = 0\), \(\#(X \cup Y) = \#(Y) = 0 + \#(Y) = \#(X) + \#(Y)\).
+Thus the base case holds.
+Suppose inductively that the statement is true for some \(n\).
+Then for \(n++\), \(\#(X) = n++\) and \(X = X' \cup \{x\}\), where \(x \notin X'\), \(\#(X') = n\) and \(\#(\{x\}) = 1\).
+So \(\#(X \cup Y) = \#(X' \cup \{x\} \cup Y) = \#(X' \cup Y) + 1\).
+By induction hypothesis, \(\#(X' \cup  Y) = \#(X') + \#(Y)\), so \(\#(X \cup  Y) = \#(X' \cup  Y) + 1 = \#(X)' + \#(Y) + 1 = \#(X) + \#(Y)\).
+This close the induction.
+\end{proof}
+
+\begin{proof}{(c)}
+Let \(\#(X) = n\).
+We use induction on \(n\).
+For \(n = 0\), if \(Y \subseteq X = \emptyset\), then \(Y = \emptyset\).
+So \(\#(Y) = 0 = \#(X) \leq \#(X)\), and \(Y\) is finite.
+Thus the base case holds.
+Suppose inductively that when \(\#(X) = n\), \(\forall\ Y \subseteq X \implies \#(Y) \leq \#(X)\) and \(Y\) is finite.
+Then for \(\#(X) = n++\), let \(Y \subseteq X\).
+If \(Y = \emptyset\), then \(\#(Y) = 0 \leq n++ = \#(X)\).
+If \(Y \neq \emptyset\), then let \(y \in Y\), so \(y \in X\).
+Because \(Y \setminus \{y\}  \subseteq X \setminus \{y\}\), by induction hypothesis, \(\#(Y \setminus \{y\}) \leq \#(X \setminus \{y\}) = n\).
+So \(\#(Y) = \#(Y \setminus \{y\}) + 1 \leq \#(X \setminus \{y\}) + 1 = n + 1 = \#(X)\).
+Thus \(\#(Y) = m\) where \(m \in \mathds{N}\) and \(m \leq n++\), so \(Y\) is finite.
+This close the induction.
+
+Now we show that if \((Y \subseteq X) \land (Y \neq X)\), then \(\#(Y) < \#(X)\).
+Because \(Y \neq X\), there exists a \(x\) such that \((x \in X) \land (x \notin Y)\).
+So \(Y \cup \{x\} \subseteq X\), and \(\#(Y) + 1 = \#(Y \cup \{x\}) \leq \#(X)\).
+By Proposition \ref{2.2.12}, \(1\) is positive, so \(\#(Y) < \#(X)\).
+\end{proof}
+
+\begin{proof}{(d)}
+Let \(\#(X) = n\).
+We use induction on \(n\).
+For \(n = 0\), if \(f : X \to Y\) is a function, then \(f(X) = \emptyset\).
+Thus \(\#(f(X)) = 0 \leq 0 = \#(X)\).
+So the base case holds.
+Suppose inductively that when \(\#(X) = n\), for any \(f : X \to Y\) we can derive \(\#(f(X)) \leq \#(X)\).
+Then for \(\#(X) = n++\), for any \(f : X \to Y\), we can rewrite the domain of \(f\) as \(X' \cup x\), where \(x \notin X'\).
+So \(\#(X') = n\), and by induction hypothesis \(\#(f(X')) \leq \#(X')\).
+Because \(f(X) = f(X') \cup \{f(x)\}\), so \(\#(f(X)) = \#(f(X') \cup \{f(x)\}) = \#(f(X')) + 1 \leq \#(X') + 1 = \#(X' \cup \{x\}) = \#(X)\).
+This close the induction.
+
+Now we prove the one-to-one part.
+Let \(f : X \to Y\) be a function which is one-to-one and \(X\) be finite.
+We define \(g : X \to f(X)\) where \(\forall\ x \in X\), \(g(x) = f(x)\).
+Because \(f\) is one-to-one, so \(g\) is also one-to-one.
+And \(\forall\ y \in f(X)\), \(\exists\ x \in X\) such that \(g(x) = y\), \(g\) is surjective.
+So \(g\) is bijective, thus \(\#(f(X)) = \#(X)\).
+\end{proof}
+
+\begin{proof}{(e)}
+Let \(\#(X) = n\).
+We use induction on \(n\).
+For \(n = 0\), \(X \times Y = \emptyset\), so \(\#(X \times Y) = 0 = 0 \times \#(Y) = \#(X) \times \#(Y)\).
+Thus the base case holds.
+Suppose inductively that when \(\#(X) = n\), \(\#(X \times Y) = \#(X) \times \#(Y)\).
+Then for \(\#(X) = n++\), let \(X = X' \cup \{x\}\), where \(x \notin X'\), so \(\#(X') = n\) and \(\#(\{x\}) = 1\).
+Since \(\#(\{x\}) = 1\), let \(f : \{x\} \times Y \to Y\) be a function such that \(f(x, y) = y\), where \(y \in Y\).
+Then such \(f\) is bijective, so \(\#(\{x\} \times Y) = \#(Y) = 1 \times \#(Y) = \#(\{x\}) \times \#(Y)\).
+By induction hypothesis, \(\#(X' \times Y) = \#(X') \times \#(Y)\).
+By Exercise \ref{exercise 3.5.4}, \(\#(X \times Y) = \#((X' \cup \{x\}) \times Y) = \#((X' \times Y) \cup (\{x\} \times Y)) = \#(X' \times Y) + \#(\{x\} \times Y) = \#(X') \times \#(Y) + \#(\{x\}) \times \#(Y) = (\#(X') + \#(\{x\})) \times \#(Y) = \#(X) \times \#(Y)\).
+This close the induction.
+\end{proof}
+
+\begin{proof}{(f)}
+We first show that \(\#(Y^{\emptyset}) = 1\).
+Because \(\forall\ f, g \in Y^{\emptyset}\), \(f\) and \(g\) have same domain and range, and both are empty functions, so \(\forall\ x \in \emptyset\), \(f(x) = g(x)\) is vacuously true, which means \(f = g\), and \(\#(Y^X) = \#(Y^{\emptyset}) = 1\).
+
+Next we show that \(\#(\{y\}^{\{x\}}) = 1\).
+Because \(\{y\}^{\{x\}} = \{f \mid f : \{x\} \to \{y\}\}\), \(\forall\ f, g \in \{y\}^{\{x\}}\), \(f\) and \(g\) have same domain and range, and there is only one element in both domain and range, so \(f(x) = y = g(x)\) is true, and \(f = g\) is true.
+Thus there is only one element in \(\{y\}^{\{x\}}\), so \(\#(\{y\}^{\{x\}}) = 1\).
+
+Next we show that \(Y^{\{x\}} = \#(Y)\).
+Let \(\#(Y) = n\).
+We use induction on \(n\).
+For \(n = 0\), \(Y^{\{x\}} = \emptyset^{\{x\}} = \{f \mid f : \{x\} \to \emptyset\}\).
+By Definition \ref{definition 3.3.1}, there is no function whose range equals to \(\emptyset\), so \(\emptyset^{\{x\}} = \emptyset\).
+Thus \(\#(\emptyset^{\{x\}}) = 0 = 0^1 = \#(\emptyset)^{\#(\{x\})}\), and the base case holds.
+Suppose inductively that when \(\#(Y) = n\), \(\#(Y^{\{x\}}) = \#(Y)\).
+Then for \(\#(Y) = n++\), let \(Y = Y' \cup \{y\}\), where \(y \notin Y'\).
+So \(\#(Y) = n\) and \(\#(\{y\}) = 1\), and \(Y^{\{x\}} = (Y' \cup \{y\})^{\{x\}} = \{f \mid f : \{x\} \to Y' \cup \{y\}\}\).
+For any \(f \in (Y' \cup \{y\})^{\{x\}}\), there is only one element in domain of \(f\), i.e., \(x\).
+So \(f(x) \in Y'\) or \(f(x) \in \{y\}\) is true, and \(\{f \mid f : \{x\} \to Y' \cup \{y\}\} = \{f \mid f : \{x\} \to Y'\} \cup \{f \mid f : \{x\} \to \{y\}\} = Y'^{\{x\}} \cup \{y\}^{\{x\}}\) is true.
+By induction hypothesis, \(\#(Y'^{\{x\}}) = \#(Y')\), and by previous prove \(\#(\{y\}^{\{x\}}) = 1\).
+So \(\#(Y^{\{x\}}) = \#((Y' \cup \{y\})^{\{x\}}) = \#(Y'^{\{x\}} \cup \{y\}^{\{x\}}) = \#(Y'^{\{x\}}) + \#(\{y\}^{\{x\}}) = \#(Y') + 1 = \#(Y)\).
+This close the induction.
+
+Finally we prove that \(\#(Y^X) = \#(Y)^{\#(X)}\).
+Let \(\#(X) = n\).
+We use induction on \(n\).
+For \(n = 0\), by previous prove \(\#(Y^X) = \#(Y^{\emptyset}) = 1 = \#(Y)^0 = \#(Y)^{\#(X)}\).
+Thus the base case holds.
+Suppose inductively that when \(\#(X) = n\), \(\#(Y^X) = \#(Y)^{\#(X)}\).
+Then for \(\#(X) = n++\), let \(X = X' \cup \{x\}\), where \(x \notin X'\), so \(\#(X') = n\) and \(\#(\{x\}) = 1\).
+We claim that there exists a bijection \(F\) from \(Y^X\) to \(Y^{X'} \times Y^{\{x\}}\).
+By setting \(F(f_1) = (f_2, f_3)\) where \(f_1(a) = f_2(a)\) if \(a \in X'\) and \(f_1(a) = f_3(a)\) if \(a \in \{x\}\), we can show that \(F\) is bijective.
+Let \(f_1, f_1' \in Y^X\) where \(F(f_1) = F(f_1') = (f_2, f_3)\).
+Since \(f_1\) and \(f_1'\) have same domain and range, and \(\forall\ a \in X' \cup \{x\}\), \(f_1(a) = f_1'(a)\), so \(f_1 = f_1'\) is true, and \(F\) is injective.
+And \(\forall\ (f_2, f_3) \in Y^{X'} \times Y^{\{x\}}\), we can always have a \(f_1 \in Y^X\) where \(f_1(a) = f_2(a)\) if \(a \in X'\) and \(f_1(a) = f_3(a)\) if \(a \in \{x'\}\), so \(F\) is surjective.
+Because \(F\) is both injective and surjective, \(F\) is bijective, we can derive that \(\#(Y^X) = \#(Y^{X'} \times Y^{\{x\}})\).
+By induction hypothesis, \(\#(Y^{X'}) = \#(Y)^{\#(X')}\), and by previous prove \(\#(Y^{\{x\}}) = \#(Y)\).
+Thus \(\#(Y^X) = \#(Y^{X'} \times Y^{\{x\}}) = \#(Y^{X'}) \times \#(Y^{\{x\}}) = \#(Y)^{\#(X')} \times \#(Y) = \#(Y)^{\#(X') + 1} = \#(Y)^{\#(X)}\).
+This close the induction.
+\end{proof}
+
+\begin{remark}
+Proposition \ref{proposition 3.6.3} suggests that there is another way to define the arithmetic operations of natural numbers;
+not defined recursively as in Definitions \ref{2.2.1}, \ref{2.3.1}, \ref{2.3.11}, but instead using the notions of union, Cartesian product, and power set.
+This is the basis of \emph{cardinal arithmetic}, which is an alternative foundation to arithmetic than the Peano arithmetic we have developed here.
+\end{remark}
+
+\begin{exercise}\label{exercise 3.6.1}
+Show that a set \(X\) has cardinality \(0\) if and only if \(X\) is the empty set.
+\end{exercise}
+
+\begin{proof}
+We first prove the necessary condition.
+By Definition \ref{definition 3.6.2}, if \(\#(X) = 0\), then there exist a bijective function \(f : X \to \{i \in \mathds{N} : 1 \leq i \leq 0\}\).
+By Axiom \ref{2.3}, there does not exist a natural number \(n\) where \(n++ = 0\).
+So \(\{i \in \mathds{N} : 1 \leq i \leq 0\} = \emptyset\).
+By Definition \ref{definition 3.3.1}, if \(X\) is non-empty, then there exist a \(x \in X\) such that \(f(x) \in \emptyset\), a contradiction.
+So \(X = \emptyset\) (and \(\forall\ x \in \emptyset, f(x) \in \emptyset\) is vacuously true).
+
+Now we prove the sufficient condition.
+If \(X = \emptyset\), let \(f : \emptyset \to \emptyset\).
+Because \(\forall\ x_1, x_2 \in \emptyset\), \(f(x_1) = f(x_2) \implies x_1 = x_2\) is vacuously true, so \(f\) is injective.
+Also because \(\forall\ y \in \emptyset\), it is vacuously true that there exist \(x \in \emptyset\) such that \(f(x) = y\), so \(f\) is surjective.
+Since \(f\) is both injective and surjective, \(f\) is bijective.
+And the range of \(f\) is \(\emptyset\) which equals to \(\{i \in \mathds{N} : 1 \leq i \leq 0\}\), so \(\#(\emptyset) = 0\).
+
+Since both necessary and sufficient conditions are proved, we conclude that \(X\) has cardinality \(0\) if and only if \(X\) is the empty set.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.6.2}
+Let \(n\) be a natural number, and let \(f : \{i \in \mathds{N} : 1 \leq i \leq n\} \to \mathds{N}\) be a function.
+Show that there exists a natural number \(M\) such that \(f(i) \leq M\) for all \(1 \leq i \leq n\).
+Thus finite subsets of the natural numbers are bounded.
+\end{exercise}
+
+\begin{proof}
+We use induction on \(n\).
+For \(n = 0\), \(\{i \in \mathds{N} : 1 \leq i \leq 0\} = \emptyset\), so \(\forall\ x \in \emptyset\), \(f(x) \leq M\) is vacuously true for any \(M \in \mathds{N}\).
+Thus the base case holds.
+Suppose inductively that for some \(n \in \mathds{N}\), for any function \(f : \{i \in \mathds{N} : 1 \leq i \leq n\} \to \mathds{N}\) there exists a natural number \(M\) such that \(f(i) \leq M\) for all \(1 \leq i \leq n\).
+Then for \(n++\), let \(f\) be a function, \(f : \{i \in \mathds{N} : 1 \leq i \leq n++\} \to \mathds{N}\).
+By induction hypothesis, there exists \(M' \in \mathds{N}\), \(f(i) \leq M'\) for all \(1 \leq i \leq n\).
+Let \(M = M' + f(n++)\), then \(f(i) \leq M' \leq M\) for all \(1 \leq i \leq n\).
+And \(f(n++) \leq f(n++) = M\).
+So \(f(i) \leq M\) for all \(1 \leq i \leq n++\).
+This close the induction.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.6.3}
+Let \(A\) and \(B\) be sets.
+Show that \(A \times B\) and \(B \times A\) have equal cardinality by constructing an explicit bijection between the two sets.
+Then use Proposition \ref{proposition 3.6.3} to conclude an alternate proof of Lemma \ref{2.3.2}.
+\end{exercise}
+
+\begin{proof}
+Let \(f : A \times B \to B \times A\) and setting \(f((a, b)) = (b, a)\), where \((a \in A) \land (b \in B)\).
+We want to show that \(f\) is bijective.
+Let \((a_1, b_1), (a_2, b_2) \in A \times B\) where \(f(a_1, b_1) = f(a_2, b_2)\).
+Then \(f(a_1, b_1) = (b_1, a_1) = (b_2, a_2) = f(a_2, b_2)\), which means \(a_1 = a_2\) and \(b_1 = b_2\), so \((a_1, b_1) = (a_2, b_2)\), and \(f\) is injective.
+Let \((b, a) \in B \times A\), there exists a order pair \((a, b) \in A \times B\) where \(f((a, b)) = (b, a)\), so \(f\) is surjective.
+Since \(f\) is both injective and surjective, \(f\) is bijective, and \(\#(A \times B) = \#(B \times A)\).
+
+By Proposition \ref{proposition 3.6.3}, \(\#(A \times B) = \#(A) \times \#(B)\) and \(\#(B \times A) = \#(B) \times \#(A)\).
+Since \(\#(A), \#(B) \in \mathds{N}\) and \(\#(A \times B) = \#(B \times A)\), \(\#(A) \times \#(B) = \#(B) \times \#(A)\).
+This conclude the Lemma \ref{2.3.2}.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.6.4}
+Let \(A, B, C\) be sets.
+Show that the sets \((A^B)^C\) and \(A^{B \times C}\) have equal cardinality by constructing an explicit bijection between the two sets.
+Conclude that \((a^b)^c = a^{bc}\) for any natural numbers \(a, b, c\).
+Use a similar argument to also conclude \(a^b \times a^c = a^{b+c}\).
+\end{exercise}
+
+\begin{proof}
+We first prove that \(\#((A^B)^C) = \#(A^{B \times C})\).
+By Axiom \ref{axiom 3.10}, \((A^B)^C = \{f \mid f : C \to A^B\}\), \(A^B = \{f \mid f : B \to A\}\) and \(A^{B \times C} = \{f \mid f : B \times C \to A\}\).
+We define a function \(F : (A^B)^C \to A^{B \times C}\) by setting \(F(f)(b, c) = (f(c))(b) \ \forall\ f \in (A^B)^C, b \in B\) and \(c \in C\).
+We want to show that \(F\) is bijective.
+Let \(f, g \in (A^B)^C\) and \(f \neq g\), then \(\forall\ c \in C\), \(f(c) \neq g(c)\), which means there exists \(b \in B\) such that \((f(c))(b) \neq (g(c))(b)\).
+By the above definition, \(F(f)(b, c) = (f(c))(b) \neq (g(c))(b) = F(g)(b, c)\), so \(F(f) \neq F(g)\), and \(F\) is injective.
+\(\forall\ h \in A^{B \times C}\), we can define \(h' \in (A^B)^C\) such that \((h'(c))(b) = h(b, c) \ \forall\ (b \in B) \land (c \in C)\).
+Since such \(h'\) is well-defined and \(F(h') = h\), \(F\) is surjective.
+Thus \(F\) is both injective and surjective, or equivalently \(F\) is bijective, and \(\#(A^{B \times C}) = \#((A^B)^C)\).
+
+By Proposition \ref{proposition 3.6.3}, \(\#((A^B)^C) = \#(A^B)^{\#(C)} = (\#(A)^{\#(B)})^{\#(C)}\).
+Also by Proposition \ref{proposition 3.6.3}, \(\#(A^{B \times C}) = \#(A)^{\#(B \times C)} = \#(A)^{(\#(B) \times \#(C))}\).
+From previous prove that \(\#(A^{B \times C}) = \#((A^B)^C)\) and \(\#(A), \#(B), \#(C) \in \mathds{N}\), we conclude that \((\#(A)^{\#(B)})^{\#(C)} = \#(A)^{(\#(B) \times \#(C))}\).
+
+Now we prove that \(\#(A^B \times A^C) = \#(A^{B \cup C})\).
+We define a function \(F : A^{B \cup C} \to A^B \times A^C\) by setting \(F(f) = (g, h)\) if \(f(b) = g(b)\) and \(f(c) = h(c)\), \(\forall\ f \in A^{B \cup C}, (g, h) \in A^B \times A^C, b \in B\) and \(c \in C\).
+We want to show that \(F\) is bijective.
+If \(f, f' \in A^{B \cup C}\) and \(F(f) = F(f') = (g, h) \in A^B \times A^C\), then \(\forall\ b \in B, c \in C\), \(f(b) = g(b) = f'(b)\) and \(f(c) = h(c) = f'(c)\), which means \(f = f'\), so \(F\) is injective.
+\(\forall\ (p, q) \in A^B \times A^C\), we can define a function \(r \in A^{B \cup C}\) such that \(r(b) = p(b)\) and \(r(c) = q(c)\), \(\forall\ (b \in B) \land (c \in C)\).
+Since such function \(r\) is well-defined and \(F(r) = (p, q)\), \(F\) is surjective.
+Thus \(F\) is both injective and surjective, or equivalently \(F\) is bijective, and \(\#(A^B \times A^C) = \#(A^{B \cup C})\).
+
+By Proposition \ref{proposition 3.6.3}, \(\#(A^B \times A^C) = \#(A^B) \times \#(A^C) = \#(A)^{\#(B)} \times \#(A)^{\#(C)}\).
+Also by Proposition \ref{proposition 3.6.3}, \(\#(A^{B \cup C}) = \#(A)^{\#(B \cup C)} = \#(A)^{(\#(B) + \#(C))}\).
+From previous prove that \(\#(A^B \times A^C) = \#(A^{B \cup C})\) and \(\#(A), \#(B), \#(C) \in \mathds{N}\), we conclude that \(\#(A)^{\#(B)} \times \#(A)^{\#(C)} = \#(A)^{(\#(B) + \#(C))}\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.6.5}
+Let \(A\) and \(B\) be sets.
+Let us say that \(A\) has \emph{lesser or equal} cardinality to \(B\) if there exists an injection \(f : A \to B\) from \(A\) to \(B\).
+Show that if \(A\) and \(B\) are finite sets, then \(A\) has lesser or equal cardinality to \(B\) if and only if \(\#(A) \leq \#(B)\).
+\end{exercise}
+
+\begin{proof}
+We first prove the necessary condition.
+Let \(f : A \to B\) be a injective function.
+By Proposition \ref{proposition 3.6.3}, \(\#(A) = \#(f(A))\).
+Also by Proposition \ref{proposition 3.6.3}, \(f(A) \subseteq B \implies \#(f(A)) \leq \#(B)\).
+So \(\#(A) = \#(f(A)) \leq \#(B)\). 
+\par
+
+Now we prove the sufficient condition.
+Because \(\#(A) \leq \#(B)\), either \(\#(A) = \#(B)\) or \(\#(A) < \#(B)\) is true.
+If \(\#(A) = \#(B)\), then \(\exists\ f \in B^A\) such that \(f\) is bijective, so \(f\) is injective.
+If \(\#(A) < \#(B)\), then \(\forall\ f \in B^A\), \(f\) is not bijective.
+Since \(f\) is not bijective, \(f\) is not injective or not surjective, and we choose \(f\) is not surjective.
+So we can define  \(f : A \to B\) by setting \(x = x'\) if \(f(x) = f(x') \ \forall\ x, x' \in A\).
+We can also set that \(\exists\ y \in B\) such that \(\forall\ x \in A\), \(f(x) \neq y\).
+Thus \(f \in B^A\), \(f\) is not surjective and \(f\) is injective.
+
+Since both the necessary and sufficient conditions are proved, we conclude that \(A\) has lesser or equal cardinality to \(B\) if and only if \(\#(A) \leq \#(B)\).
+\end{proof}
+
+\begin{exercise}\label{exercise 3.6.6}
+Let \(A\) and \(B\) be sets and \(A \neq \emptyset\) such that there exists an injection \(f : A \to B\) from \(A\) to \(B\) (i.e., \(A\) has lesser or equal cardinality to \(B\)).
+Show that there exists a surjection \(g : B \to A\) from \(B\) to \(A\).
+\end{exercise}
+
+\begin{proof}
+Because \(f\) is injective, so \(\#(A) \leq \#(B)\), and we divide into two cases.
+If \(\#(A) = \#(B)\), then \(\exists\ g \in A^B\) where \(g\) is bijective, so \(g\) is surjective.
+If \(\#(A) < \#(B)\), then \(\forall\ g \in A^B\) where \(g\) is not bijective.
+Since \(g\) is not bijective, \(g\) is either not injective or not surjective, and we choose \(g\) is not injective.
+So we can define \(g : B \to A\) by setting \(\exists\ x, x' \in B\), \(g(x) = g(x')\) and \(x \neq x'\).
+We can also set that \(\forall\ y \in A\), there exists a \(x \in B\) such that \(g(x) = y\).
+Thus \(g \in A^B\), \(g\) is not injective and \(g\) is surjective.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.6.7}
+Let \(A\) and \(B\) be finite sets.
+Show that \(A \cup B\) and \(A \cap B\) are also finite sets, and that \(\#(A) + \#(B) = \#(A \cup B) + \#(A \cap B)\).
+\end{exercise}
+
+\begin{proof}
+Let \(\#(A) = n\).
+We use induction on \(n\).
+For \(n = 0\), \(A = \emptyset\), so \(\#(A) + \#(B) = \#(\emptyset) + \#(B) = 0 + \#(B) = \#(B) = \#(\emptyset \cup B) = \#(A \cup B) = \#(A \cup B) + 0 = \#(A \cup B) + \#(\emptyset) = \#(A \cup B) + \#(\emptyset \cap B) = \#(A \cup B) + \#(A \cap B)\).
+Thus \(\#(A \cup B) = \#(B)\) and \(\#(A \cap B) = \#(\emptyset) = 0\), so \(A \cup B\) and \(A \cap B\) are finite, and the base case holds.
+Suppose inductively that when \(\#(A) = n\), \(A \cup B\) and \(A \cap B\) are finite, and \(\#(A) + \#(B) = \#(A \cup B) + \#(A \cap B)\).
+Then when \(\#(A) = n++\), let \(A = A' \cup \{a\}\), where \(a \notin A'\), so \(\#(A') = n\) and \(\#(\{a\}) = 1\).
+By Proposition \ref{proposition 3.6.3}, \(\#(A) = \#(A') + \#(\{a\}) = \#(A') + 1\).
+And by induction hypothesis, \(A' \cup B\) and \(A' \cap B\) are finite, and \(\#(A') + \#(B) = \#(A' \cup B) + \#(A' \cap B)\).
+So \(\#(A) + \#(B) = \#(A') + 1 + \#(B) = \#(A' \cup B) + \#(A' \cap B) + 1\).
+If \(a \in B\), then \(A' \cup B = A' \cup B \cup \{a\} = A \cup B\), which means \(\#(A' \cup B) = \#(A \cup B)\), so \(A \cup B\) is finite.
+Also \((A' \cap B) \cup \{a\} = (A' \cup \{a\}) \cap (B \cup \{a\}) = A \cap B\), and by Proposition \ref{proposition 3.6.3}, \(a \notin A' \cap B \implies (A' \cap B) \cap \{a\} = \emptyset \implies \#(A' \cap B) + \#(\{a\}) = \#((A' \cap B) \cup \{a\}) = \#(A \cap B)\), so \(A \cap B\) is finite.
+And we derive \(\#(A) + \#(B) = \#(A' \cup B) + \#(A' \cap B) + 1 = \#(A \cup B) + \#(A \cap B)\).
+If \(a \notin B\), then \(a \notin A' \cup B \implies A' \cap B = (A' \cap B) \cup \emptyset = (A' \cap B) \cup (\{a\} \cap B) = (A' \cup \{a\}) \cap B = A \cap B\), which means \(\#(A' \cap B) = \#(A \cap B)\), so \(A \cap B\) is finite.
+Also by Proposition \ref{proposition 3.6.3}, \((A' \cup B) \cap \{a\} = \emptyset \implies \#(A' \cup B) + \#(\{a\}) = \#(A' \cup B \cup \{a\}) = \#(A \cup B)\), so \(A \cup B\) is finite.
+And we derive \(\#(A) + \#(B) = \#(A' \cup B) + \#(A' \cap B) + 1 = \#(A \cup B) + \#(A \cap B)\).
+This close the induction.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.6.8}
+Let \(A_1, \cdots, A_n\) be finite sets such that \(\#(\bigcup_{i \in \{1, \cdots, n\}} A_i) > n\).
+Show that there exists \(i \in \{1, \cdots, n\}\) such that \(\#(A_i) \geq 2\).
+(This is known as the \emph{pigeonhole principle}.)
+\end{exercise}
+
+\begin{proof}
+We use induction on \(n\).
+We start from \(n = 1\) because for \(n = 0\), the statement is vacuously true.
+For \(n = 1\), let \(\#(\bigcup_{i \in \{1\}} A_i) > 1\).
+Because \(\bigcup_{i \in \{1\}} A_i = A_1\), so \(\#(A_1) > 1\), or equivalently, \(\#(A_1) \geq 2\).
+Thus the base case holds.
+Suppose inductively that for some \(n \in \mathds{N}\), if \(\#(\bigcup_{i \in \{1, \cdots, n\}} A_i) > n\), then \(\exists\ i \in \{1, \cdots, n\}\) such that \(\#(A_i) \geq 2\).
+Then for \(n++\), let \(\#(\bigcup_{i \in \{1, \cdots, n++\}} A_i) > n++\), and we can divide into three cases.
+
+If \(\#(A_{n++}) = 0\), then \(\bigcup_{i \in \{1, \cdots, n++\}} A_i = \bigcup_{i \in \{1, \cdots, n\}} A_i\).
+So \(\#(\bigcup_{i \in \{1, \cdots, n\}} A_i) > n++ > n\), and by induction hypothesis \(\exists\ i \in \{1, \cdots, n\}\) such that \(\#(A_i) \geq 2\), which means \(\exists\ i \in \{1, \cdots, n++\}\) such that \(\#(A_i) \geq 2\).
+Thus we are done in case \(\#(A_{n++}) = 0\).
+
+If \(\#(A_{n++}) = 1\), let \(x \in A_{n++}\).
+If \(x \in \bigcup_{i \in \{1, \cdots, n\}} A_i\), then \(\bigcup_{i \in \{1, \cdots, n++\}} A_i = \bigcup_{i \in \{1, \cdots, n\}} A_i\), so \(\#(\bigcup_{i \in \{1, \cdots, n\}} A_i) > n++ > n\), and by induction hypothesis \(\exists\ i \in \{1, \cdots, n\}\) such that \(\#(A_i) \geq 2\), which means \(\exists\ i \in \{1, \cdots, n++\}\) such that \(\#(A_i) \geq 2\).
+If \(x \notin \bigcup_{i \in \{1, \cdots, n\}} A_i\), then by Proposition \ref{proposition 3.6.3}, \((\bigcup_{i \in \{1, \cdots, n\}} A_i) \cap A_{n++} = \emptyset \implies \#(\bigcup_{i \in \{1, \cdots, n\}} A_i) + \#(A_{n++}) = \#((\bigcup_{i \in \{1, \cdots, n\}} A_i) \cup A_{n++}) = \#(\bigcup_{i \in \{1, \cdots, n++\}} A_i)\).
+And because \(\#(\bigcup_{i \in \{1, \cdots, n++\}} A_i) > n++\), and \(\#(\bigcup_{i \in \{1, \cdots, n\}} A_i) + \#(A_{n++}) = \#(\bigcup_{i \in \{1, \cdots, n\}} A_i) + 1 > n++\), so \(\#(\bigcup_{i \in \{1, \cdots, n\}} A_i) > n\).
+By induction hypothesis \(\exists\ i \in \{1, \cdots, n\}\) such that \(\#(A_i) \geq 2\), which means \(\exists\ i \in \{1, \cdots, n++\}\) such that \(\#(A_i) \geq 2\).
+Thus we are done in case \(\#(A_{n++}) = 1\).
+
+If \(\#(A_{n++}) \geq 2\), then \(\exists i \in \{1, \cdots, n++\}\) such that \(\#(A_i) \geq 2\).
+Thus we are done in case \(\#(A_{n++}) = 2\).
+This close the induction.
+\end{proof}

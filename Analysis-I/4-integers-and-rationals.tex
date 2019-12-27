@@ -1,0 +1,329 @@
+\section{The integers}
+
+\begin{definition}[Integers]\label{definition 4.1.1}
+An \emph{integer} is an expression1 of the form \(a \text{-----} b\), where \(a\) and \(b\) are natural numbers.
+Two integers are considered to be equal, \(a \text{-----} b = c \text{-----} d\), if and only if \(a + d = c + b\).
+We let \(\mathds{Z}\) denote the set of all integers.
+\end{definition}
+
+In the language of set theory, what we are doing here is starting with the space \(\mathds{N} \times \mathds{N}\) of ordered pairs \((a, b)\) of natural numbers.
+Then we place an \emph{equivalence relation} \(\sim\) on these pairs by declaring \((a, b) \sim (c, d)\) iff \(a + d = c + b\).
+The set-theoretic interpretation of the symbol \(a \text{-----} b\) is that it is the space of all pairs equivalent to \((a, b): a \text{-----} b \coloneqq \{(c, d) \in \mathds{N} \times \mathds{N} : (a, b) \sim (c, d)\}\).
+However, this interpretation plays no role in how we manipulate the integers and we will not refer to it again.
+A similar set-theoretic interpretation can be given to the construction of the rational numbers later in this chapter, or the real numbers in the next chapter.
+
+\begin{lemma}\label{lemma 4.1.1}
+The definition of equality on the integers is reflexive, symmetric and transitive.
+\end{lemma}
+
+\begin{proof}
+We first prove the reflexivity.
+\(\forall\ (a, b) \in \mathds{N} \times \mathds{N}\), \(a + b = a + b\), so \(a \text{-----} b = a \text{-----} b\).
+
+Next we prove the symmetry.
+\(\forall\ (a, b), (c, d) \in \mathds{N} \times \mathds{N}\), if \(a + d = c + b\), then \(a \text{-----} b = c \text{-----} d\).
+But \(a + d = c + b \implies c + b = a + d\), so \(c \text{-----} d = a \text{-----} b\).
+Thus \(a \text{-----} b = c \text{-----} d \implies c \text{-----} d = a \text{-----} b\).
+
+Finally we prove the transitivity.
+\(\forall\ (a, b), (c, d), (e, f) \in \mathds{N} \times \mathds{N}\), if \(a + d = c + b\) and \(c + f = e + d\), then \(a \text{-----} b = c \text{-----} d\) and \(c \text{-----} d = e \text{-----} f\).
+Because \(a + d = c + b\) and \(c + f = e + d\), so \(a + d + c + f = c + b + e + d\).
+By Proposition \ref{2.2.6}, \(a + d + c + f = c + b + e + d \implies a + f = e + b\), so \(a \text{-----} b = e \text{-----} f\).
+\end{proof}
+
+\begin{definition}\label{definition 4.1.2}
+The sum of two integers, \((a \text{-----} b) + (c \text{-----} d)\), is defined by the formula
+\[
+    (a \text{-----} b) + (c \text{-----} d) \coloneqq (a + c) \text{-----} (b + d).
+\]
+The product of two integers, \((a \text{-----} b) \times (c \text{-----} d)\), is defined by the formula
+\[
+    (a \text{-----} b) \times (c \text{-----} d) \coloneqq (ac + bd) \text{-----} (ad + bc).
+\]
+\end{definition}
+
+\begin{lemma}[Addition and multiplication are well-defined]\label{lemma 4.1.2}
+Let \(a, b, a', b', c, d\) be natural numbers.
+If \((a \text{-----} b) = (a' \text{-----} b')\), then \((a \text{-----} b) + (c \text{-----} d) = (a' \text{-----} b') + (c \text{-----} d)\) and \((a \text{-----} b) \times (c \text{-----} d) = (a' \text{-----} b') \times (c \text{-----} d)\), and also \((c \text{-----} d) + (a \text{-----} b) = (c \text{-----} d) + (a' \text{-----} b')\) and \((c \text{-----} d) \times (a \text{-----} b) = (c \text{-----} d) \times (a' \text{-----} b')\).
+Thus addition and multiplication are well-defined operations (equal inputs give equal outputs).
+\end{lemma}
+
+\begin{proof}
+To prove that \((a \text{-----} b) + (c \text{-----} d) = (a' \text{-----} b') + (c \text{-----} d)\), we evaluate both sides as \((a + c) \text{-----} (b + d)\) and \((a' + c) \text{-----} (b' + d)\).
+Thus we need to show that \(a + c + b' + d = a' + c + b + d\).
+But since \((a \text{-----} b) = (a' \text{-----} b')\), we have \(a + b' = a' + b\), and so by adding \(c + d\) to both sides we obtain the claim.
+Now we show that \((a \text{-----} b) \times (c \text{-----} d) = (a' \text{-----} b') \times (c \text{-----} d)\).
+Both sides evaluate to \((ac + bd) \text{-----} (ad + bc)\) and \((a'c + b'd) \text{-----} (a'd + b'c)\), so we have to show that \(ac + bd + a'd + b'c = a'c + b'd + ad + bc\).
+But the left-hand side factors as \(c(a + b') + d(a' + b)\), while the right factors as \(c(a' + b) + d(a + b')\).
+Since \(a + b' = a' + b\), the two sides are equal.
+The other two identities are proven similarly.
+\end{proof}
+
+The integers \(n \text{-----} 0\) behave in the same way as the natural numbers \(n\);
+indeed one can check that \((n \text{-----} 0) + (m \text{-----} 0) = (n + m) \text{-----} 0\) and \((n \text{-----} 0) \times (m \text{-----} 0) = nm \text{-----} 0\).
+Furthermore, \((n \text{-----} 0)\) is equal to \((m \text{-----} 0)\) if and only if \(n = m\).
+(The mathematical term for this is that there is an \emph{isomorphism} between the natural numbers \(n\) and those integers of the form \(n \text{-----} 0\).)
+Thus we may \emph{identify} the natural numbers with integers by setting \(n \equiv n \text{-----} 0\);
+this does not affect our definitions of addition or multiplication or equality since they are consistent with each other.
+Of course, if we set \(n\) equal to \(n \text{-----} 0\), then it will also be equal to any other integer which is equal to \(n \text{-----} 0\).
+
+We can now define incrementation on the integers by defining \(x++ \coloneqq x + 1\) for any integer \(x\);
+this is of course consistent with our definition of the increment operation for natural numbers.
+However, this is no longer an important operation for us, as it has been now superceded by the more general notion of addition.
+
+\begin{definition}[Negation of integers]\label{definition 4.1.3}
+If \((a \text{-----} b)\) is an integer, we define the negation \(-(a \text{-----} b)\) to be the integer \((b \text{-----} a)\).
+In particular if \(n = n \text{-----} 0\) is a positive natural number, we can define its negation \(-n = 0 \text{-----} n\).
+\end{definition}
+
+\begin{lemma}[Trichotomy of integers]\label{lemma 4.1.3}
+Let \(x\) be an integer.
+Then exactly one of the following three statements is true:
+(a) \(x\) is zero;
+(b) \(x\) is equal to a positive natural number \(n\);
+or (c) \(x\) is the negation \(-n\) of a positive natural number \(n\).
+\end{lemma}
+
+\begin{proof}
+We first show that at least one of (a), (b), (c) is true.
+By definition, \(x = a \text{-----} b\) for some natural numbers \(a, b\).
+We have three cases: \(a > b\), \(a = b\), or \(a < b\).
+If \(a > b\) then \(a = b + c \) for some positive natural number \(c\), which means that \(a \text{-----} b = c \text{-----} 0 = c\), which is (b).
+If \(a = b\), then \(a \text{-----} b = a \text{-----} a = 0 \text{-----} 0 = 0\), which is (a).
+If \(a < b\), then \(b > a\), so that \(b \text{-----} a = n\) for some natural number \(n\) by the previous reasoning, and thus \(a \text{-----} b = -n\), which is (c).
+Now we show that no more than one of (a), (b), (c) can hold at a time.
+By definition, a positive natural number is non-zero, so (a) and (b) cannot simultaneously be true.
+If (a) and (c) were simultaneously true, then \(0 = -n\) for some positive natural \(n\);
+thus \((0 \text{-----} 0) = (0 \text{-----} n)\), so that \(0 + n = 0 + 0\), so that \(n = 0\), a contradiction.
+If (b) and (c) were simultaneously true, then \(n = -m\) for some positive \(n, m\), so that \((n \text{-----} 0) = (0 \text{-----} m)\), so that \(n + m = 0 + 0\), which contradicts Proposition \ref{2.2.8}.
+Thus exactly one of (a), (b), (c) is true for any integer \(x\).
+\end{proof}
+
+If \(n\) is a positive natural number, we call \(-n\) a \emph{negative integer}.
+Thus every integer is positive, zero, or negative, but not more than one of these at a time.
+
+One could well ask why we don’t use Lemma \ref{lemma 4.1.3} to \emph{define} the integers;
+i.e., why didn’t we just say an integer is anything which is either a positive natural number, zero, or the negative of a natural number.
+The reason is that if we did so, the rules for adding and multiplying integers would split into many different cases (e.g., negative times positive equals positive; negative plus positive is either negative, positive, or zero, depending on which term is larger, etc.) and to verify all the properties would end up being much messier.
+
+\begin{proposition}[Laws of algebra for integers]\label{proposition 4.1.1}
+Let \(x\), \(y\), \(z\) be integers.
+Then we have
+\begin{align*}
+    x + y &= y + x \\
+    (x + y) + z &= x + (y + z) \\
+    x + 0 = 0 + x &= x \\
+    x + (-x) = (-x) + x &= 0 \\
+    xy &= yx \\
+    (xy)z &= x(yz) \\
+    x1 = 1x &= x \\
+    x(y + z) &= xy + xz \\
+    (y + z)x &= yx + zx.
+\end{align*}
+\end{proposition}
+
+\begin{proof}
+There are two ways to prove these identities.
+One is to use Lemma \ref{lemma 4.1.3} and split into a lot of cases depending on whether \(x, y, z\) are zero, positive, or negative.
+This becomes very messy.
+A shorter way is to write \(x = (a \text{-----} b), y = (c \text{-----} d)\), and \(z = (e \text{-----} f)\) for some natural numbers \(a, b, c, d, e, f\), and expand these identities in terms of \(a, b, c, d, e, f\) and use the algebra of the natural numbers.
+This allows each identity to be proven in a few lines.
+
+We first prove \(x + y = y + x\).
+\begin{align*}
+x + y &= (a \text{-----} b) + (c \text{-----} d) && \text{(by given condition)} \\
+&= (a + c) \text{-----} (b + d) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= (c + a) \text{-----} (d + b) && \text{(by Proposition \ref{2.2.4})} \\
+&= (c \text{-----} d) + (a \text{-----} b) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= y + x. && \text{(by given condition)}
+\end{align*}
+
+Next we prove \((x + y) + z = x + (y + z)\).
+\begin{align*}
+(x + y) + z &= ((a \text{-----} b) + (c \text{-----} d)) + (e \text{-----} f) && \text{(by given condition)} \\
+&= ((a + c) \text{-----} (b + d)) + (e \text{-----} f) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= ((a + c) + e) \text{-----} ((b + d) + f) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= (a + (c + e)) \text{-----} (b + (d + f)) && \text{(by Proposition \ref{2.2.5})} \\
+&= (a \text{-----} b) + ((c + e) \text{-----} (d + f)) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= (a \text{-----} b) + ((c \text{-----} d) + (e \text{-----} f)) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= x + (y + z). && \text{(by given condition)}
+\end{align*}
+
+Next we prove \(x + 0 = 0 + x = x\).
+\begin{align*}
+x + 0 &= (a \text{-----} b) + (0 \text{-----} 0) && \text{(by given condition)} \\
+&= (a + 0) \text{-----} (b + 0) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= (a \text{-----} b) && \text{(by Lemma \ref{2.2.2})} \\
+&= x && \text{(by given condition)} \\
+&= (0 + a) \text{-----} (0 + b) && \text{(by Definition \ref{2.2.1})} \\
+&= (0 \text{-----} 0) + (a \text{-----} b) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= 0 + x. && \text{(by given condition)}
+\end{align*}
+
+Next we prove \(x + (-x) = (-x) + x = 0\).
+\begin{align*}
+x + (-x) &= (a \text{-----} b) + (-x) && \text{(by given condition)} \\
+&= (a \text{-----} b) + (b \text{-----} a) && \text{(by Definition \ref{definition 4.1.3})} \\
+&= (a + b) \text{-----} (b + a) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= (b + a) \text{-----} (a + b) && \text{(by Proposition \ref{2.2.4})} \\
+&= (b \text{-----} a) + (a \text{-----} b) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= (-x) + x && \text{(by given condition)} \\
+&= (a + b) \text{-----} (a + b) && \text{(by Proposition \ref{2.2.4})} \\
+&= (a \text{-----} a) + (b \text{-----} b) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= (0 \text{-----} 0) + (0 \text{-----} 0) && \text{(by Definition \ref{definition 4.1.1})} \\
+&= (0 + 0) \text{-----} (0 + 0) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= (0 \text{-----} 0) && \text{(by Definition \ref{2.2.1})} \\
+&= 0. && \text{(by Lemma \ref{lemma 4.1.3})}
+\end{align*}
+
+Next we prove \(xy = yx\).
+\begin{align*}
+xy &= (a \text{-----} b) \times (c \text{-----} d) && \text{(by given condition)} \\
+&= (ac + bd) \text{-----} (ad + bc) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= (ca + db) \text{-----} (da + cb) && \text{(by Lemma \ref{2.3.2})} \\
+&= (ca + db) \text{-----} (cb + da) && \text{(by Proposition \ref{2.2.4})} \\
+&= (c \text{-----} d) \times (a \text{-----} b) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= yx. && \text{(by given condition)}
+\end{align*}
+
+Next we prove \((xy)z = x(yz)\).
+\begin{align*}
+(xy)z &= ((a \text{-----} b) \times (c \text{-----} d)) \times (e \text{-----} f) && \text{(by given condition)} \\
+&= ((ac + bd) \text{-----} (ad + bc)) \times (e \text{-----} f) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= ((ac + bd)e + (ad + bc)f) \\
+&\quad \text{-----} ((ac + bd)f + (ad + bc)e) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= ((ac)e + (bd)e + (ad)f + (bc)f) \\
+&\quad \text{-----} ((ac)f + (bd)f + (ad)e + (bc)e) && \text{(by Proposition \ref{2.3.4})} \\
+&= (a(ce) + b(de) + a(df) + b(cf)) \\
+&\quad \text{-----} (a(cf) + b(df) + a(de) + b(ce)) && \text{(by Proposition \ref{2.3.5})} \\
+&= (a(ce) + a(df) + b(cf) + b(de)) \\
+&\quad \text{-----} (a(cf) + a(de) + b(ce) + b(df)) && \text{(by Proposition \ref{2.2.4})} \\
+&= (a(ce + df) + b(cf + de)) \\
+&\quad \text{-----} (a(cf + de) + b(ce + df)) && \text{(by Proposition \ref{2.3.4})} \\
+&= (a \text{-----} b) \times ((ce + df) \text{-----} (cf + de)) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= (a \text{-----} b) \times ((c \text{-----} d) \times (e \text{-----} f)) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= x(yz). && \text{(by given condition)}
+\end{align*}
+
+Next we prove \(x1 = 1x = x\).
+We first show that \(\forall\ n \in \mathds{N}\), \(n1 = n\).
+We use induction on \(n\).
+For \(n=0\), \(0 \times 1 = 0\) by Lemma \ref{2.3.3}, so the base case holds.
+Suppose inductively that \(n1 = n\) is true for some \(n\).
+Then for \(n + 1\), by Definition \ref{2.3.1}, \((n + 1) \times 1 = n1 + 1\).
+By induction hypothesis, \(n1 + 1 = n + 1\).
+This close the induction.
+Since \(n1 = 1n\) by Lemma \ref{2.3.2}, \(1n = n\).
+
+Now we show that \(x1 = 1x = x\).
+\begin{align*}
+x1 &= (a \text{-----} b) \times (1 \text{-----} 0) && \text{(by given condition)} \\
+&= (a1 + b0) \text{-----} (a0 + b1) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= (1a + 0b) \text{-----} (0a + 1b) && \text{(by Lemma \ref{2.3.2})} \\
+&= (1a + 0b) \text{-----} (1b + 0a) && \text{(by Proposition \ref{2.2.4})} \\
+&= (1 \text{-----} 0) + (a \text{-----} b) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= 1x && \text{(by given condition)} \\
+&= (1a + 0) \text{-----} (1b + 0) && \text{(by Definition \ref{2.3.1})} \\
+&= (1a) \text{-----} (1b) && \text{(by Lemma \ref{2.2.2})} \\
+&= (a \text{-----} b) && \text{(by previous prove)} \\
+&= x. && \text{(by given condition)}
+\end{align*}
+
+Next we prove that \(x(y + z) = xy + xz\).
+\begin{align*}
+x(y + z) &= (a \text{-----} b) \times ((c \text{-----} d) + (e \text{-----} f)) && \text{(by given condition)} \\
+&= (a \text{-----} b) \times ((c + e) \text{-----} (d + f)) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= (a(c + e) + b(d + f)) \text{-----} (a(d + f) + b(c + e)) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= (ac + ae + bd + bf) \text{-----} (ad + af + bc + be) && \text{(by Proposition \ref{2.3.4})} \\
+&= (ac + bd + ae + bf) \text{-----} (ad + bc + af + be) && \text{(by Proposition \ref{2.2.4})} \\
+&= ((ac + bd) \text{-----} (ad + bc)) + ((ae + bf) \text{-----} (af + be)) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= (a \text{-----} b) \times (c \text{-----} d) + (a \text{-----} b) \times (e \text{-----} f) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= xy + xz. && \text{(by given condition)}
+\end{align*}
+
+Finally we prove \((y + z)x = yx + zx\).
+\begin{align*}
+(y + z)x &= ((c \text{-----} d) + (e \text{-----} f)) \times (a \text{-----} b) && \text{(by given condition)} \\
+&= ((c + e) \text{-----} (d + f)) \times (a \text{-----} b) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= ((c + e)a + (d + f)b) \text{-----} ((c + e)b + (d + f)a) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= (ca + ea + db + fb) \text{-----} (cb + eb + da + fa) && \text{(by Proposition \ref{2.3.4})} \\
+&= (ca + db + ea + fb) \text{-----} (cb + da + eb + fa) && \text{(by Proposition \ref{2.2.4})} \\
+&= ((ca + db) \text{-----} (cb + da)) + ((ea + fb) \text{-----} (eb + fa)) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= (c \text{-----} d) \times (a \text{-----} b) + (e \text{-----} f) \times (a \text{-----} b) && \text{(by Definition \ref{definition 4.1.2})} \\
+&= yx + zx. && \text{(by given condition)}
+\end{align*}
+\end{proof}
+
+\begin{remark}
+The above set of nine identities have a name; they are asserting that the integers form a \emph{commutative ring}.
+(If one deleted the identity \(xy = yx\), then they would only assert that the integers form a \emph{ring}).
+Note that some of these identities were already proven for the natural numbers, but this does not automatically mean that they also hold for the integers because the integers are a larger set than the natural numbers.
+On the other hand, this proposition supercedes many of the propositions derived earlier for natural numbers.
+\end{remark}
+
+We now define the operation of \emph{subtraction} \(x - y\) of two integers by the formula
+\[
+    x - y \coloneqq x + (-y).
+\]
+
+We do not need to verify the substitution axiom for this operation, since we have defined subtraction in terms of two other operations on integers, namely addition and negation, and we have already verified that those operations are well-defined.
+
+One can easily check now that if \(a\) and \(b\) are natural numbers, then
+\[
+    a - b = a + -b = (a \text{-----} 0) + (0 \text{-----} b) = a \text{-----} b,
+\]
+and so \(a \text{-----} b\) is just the same thing as \(a - b\).
+Because of this we can now discard the ----- notation, and use the familiar operation of subtraction instead.
+(As remarked before, we could not use subtraction immediately because it would be circular.)
+
+\begin{proposition}[Integers have no zero divisors]\label{proposition 4.1.2}
+Let \(a\) and \(b\) be integers such that \(ab = 0\).
+Then either \(a = 0\) or \(b = 0\) (or both).
+\end{proposition}
+
+\begin{proof}
+Let \(a = a_1 - a_2\) and \(b = b_1 - b_2\), where \(a_1, a_2, b_1, b_2 \in \mathds{N}\).
+Then
+\begin{align*}
+ab &= (a_1 - a_2) \times (b_1 - b_2) \\
+&= (a_1b_1 + a_2b_2) - (a_1b_2 + a_2b_1) \\
+&= 0 - 0 \\
+&= 0.
+\end{align*} 
+By Corollary \ref{2.2.9}, \(a_1b_1 + a_2b_2 = 0 \implies (a_1b_1 = 0) \land (a_2b_2 = 0)\), similarly \(a_1b_2 + a_2b_1 = 0 \implies (a_1b_2 = 0) \land (a_2b_1 = 0)\).
+By Lemma \ref{2.3.3}, \(a_1b_1 = 0 \implies (a_1 = 0) \lor (b_1 = 0)\), \(a_2b_2 = 0 \implies (a_2 = 0) \lor (b_2 = 0)\), \(a_1b_2 = 0 \implies (a_1 = 0) \lor (b_2 = 0)\) and \(a_2b_1 = 0 \implies (a_2 = 0) \lor (b_1 = 0)\).
+If \(a_1 \neq 0\), then \((b_1 = 0) \land (b_2 = 0)\), so \(b = 0 - 0 = 0\).
+If \(a_2 \neq 0\), then \((b_1 = 0) \land (b_2 = 0)\), so \(b = 0 - 0 = 0\).
+If \(b_1 \neq 0\), then \((a_1 = 0) \land (a_2 = 0)\), so \(a = 0 - 0 = 0\).
+If \(b_2 \neq 0\), then \((a_1 = 0) \land (a_2 = 0)\), so \(a = 0 - 0 = 0\).
+So at least one of \(a\) or \(b\) is \(0\).
+If \(a = 0\) and \(b = 0\), then \(ab = 0\).
+Thus \(ab = 0\) implies either \(a = 0\) or \(b = 0\) (or both).
+\end{proof}
+
+\begin{corollary}[Cancellation law for integers]\label{corollary 4.1.1}
+If \(a, b, c\) are integers such that \(ac = bc\) and \(c\) is non-zero, then \(a = b\).
+\end{corollary}
+
+\begin{proof}
+By Proposition \ref{proposition 4.1.1}, \(ac = bc \implies ac - bc = 0 \implies (a - b)c = 0\).
+By Proposition \ref{proposition 4.1.2}, either \(a - b = 0\) or \(c = 0\) is true, but \(c \neq 0\), so \(a - b = 0\), which means \(a = b\).
+\end{proof}
+
+\begin{definition}[Ordering of the integers]\label{definition 4.1.4}
+Let \(n\) and \(m\) be integers.
+We say that \(n\) is greater than or equal to \(m\), and write \(n \geq m\) or \(m \leq n\), iff we have \(n = m + a\) for some natural number \(a\).
+We say that \(n\) is strictly greater than \(m\), and write \(n > m\) or \(m < n\), iff \(n \geq m\) and \(n \neq m\).
+\end{definition}
+
+\begin{lemma}[Properties of order]\label{lemma 4.1.4}
+Let \(a, b, c\) be integers.
+\begin{enumerate}
+    \item \(a > b\) if and only if \(a - b\) is a positive natural number.
+    \item (Addition preserves order) If \(a > b\), then \(a + c > b + c\).
+    \item (Positive multiplication preserves order) If \(a > b\) and \(c\) is positive, then \(ac > bc\).
+    \item (Negation reverses order) If \(a > b\), then \(-a < -b\).
+    \item (Order is transitive) If \(a > b\) and \(b > c\), then \(a > c\).
+    \item (Order trichotomy) Exactly one of the statements \(a > b\), \(a < b\), or \(a = b\) is true.
+\end{enumerate}
+\end{lemma}
