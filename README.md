@@ -1,4 +1,4 @@
-# Terence Tao Real Analysis
+# Terence Tao Analysis
 
 This is a note of the textbooks
 
@@ -9,7 +9,7 @@ The note covers all **axioms**, **theories**, **lemma**, **propositions** and **
 
 Additionally, I also wrote proofs if there are none in the book.
 
-# Contribution
+## Contribution
 
 I'm not a native English speaker, and do not have mathematical background, so I need some help for the following things:
 
@@ -19,8 +19,9 @@ I'm not a native English speaker, and do not have mathematical background, so I 
 
 If you want to help, please fork the repository and submit a pull request, I'll review the submission ASAP.
 
-## Unsolved Exercise
+### Unsolved Exercise
+
 - Analysis I
-    - 3.5.13
+  - 3.5.13
 - Analysis II
-    - not start yet
+  - not start yet
