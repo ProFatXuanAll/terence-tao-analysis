@@ -18,15 +18,15 @@ The definition of equality on the integers is reflexive, symmetric and transitiv
 \end{additional corollary}
 
 \begin{proof}
-We first prove the reflexivity.
+We first prove the reflexivity of the integers.
 \(\forall\ (a, b) \in \mathds{N} \times \mathds{N}\), \(a + b = a + b\), so \(a \text{-----} b = a \text{-----} b\).
 
-Next we prove the symmetry.
+Next we prove the symmetry of the integers.
 \(\forall\ (a, b), (c, d) \in \mathds{N} \times \mathds{N}\), if \(a + d = c + b\), then \(a \text{-----} b = c \text{-----} d\).
 But \(a + d = c + b \implies c + b = a + d\), so \(c \text{-----} d = a \text{-----} b\).
 Thus \(a \text{-----} b = c \text{-----} d \implies c \text{-----} d = a \text{-----} b\).
 
-Finally we prove the transitivity.
+Finally we prove the transitivity of the integers.
 \(\forall\ (a, b), (c, d), (e, f) \in \mathds{N} \times \mathds{N}\), if \(a + d = c + b\) and \(c + f = e + d\), then \(a \text{-----} b = c \text{-----} d\) and \(c \text{-----} d = e \text{-----} f\).
 Because \(a + d = c + b\) and \(c + f = e + d\), so \(a + d + c + f = c + b + e + d\).
 By Proposition \ref{2.2.6}, \(a + d + c + f = c + b + e + d \implies a + f = e + b\), so \(a \text{-----} b = e \text{-----} f\).
@@ -77,6 +77,21 @@ If \((a \text{-----} b)\) is an integer, we define the negation \(-(a \text{----
 In particular if \(n = n \text{-----} 0\) is a positive natural number, we can define its negation \(-n = 0 \text{-----} n\).
 \end{definition}
 
+\begin{additional corollary}\label{ac 4.1.2}
+The definition of negation on the integers is well-defined.
+\end{additional corollary}
+
+\begin{proof}
+Let \(a, b, a', b' \in \mathds{N}\) and \(a \text{-----} b = a' \text{-----} b'\).
+\begin{align*}
+& a \text{-----} b = a' \text{-----} b' \\
+\implies & a + b' = a' + b & \text{(By Definition \ref{4.1.1})} \\
+\implies & b' + a = b + a' & \text{(By Proposition \ref{2.2.4})} \\
+\implies & b' \text{-----} a' = b \text{-----} a & \text{(By Definition \ref{4.1.1})} \\
+\implies & -(a' \text{-----} b') = -(a \text{-----} b) & \text{(By Definition \ref{4.1.4})} \\
+\end{align*}
+\end{proof}
+
 \begin{lemma}[Trichotomy of integers]\label{4.1.5}
 Let \(x\) be an integer.
 Then exactly one of the following three statements is true:
@@ -89,7 +104,7 @@ or (c) \(x\) is the negation \(-n\) of a positive natural number \(n\).
 We first show that at least one of (a), (b), (c) is true.
 By definition, \(x = a \text{-----} b\) for some natural numbers \(a, b\).
 We have three cases: \(a > b\), \(a = b\), or \(a < b\).
-If \(a > b\) then \(a = b + c \) for some positive natural number \(c\), which means that \(a \text{-----} b = c \text{-----} 0 = c\), which is (b).
+If \(a > b\) then \(a = b + c\) for some positive natural number \(c\), which means that \(a \text{-----} b = c \text{-----} 0 = c\), which is (b).
 If \(a = b\), then \(a \text{-----} b = a \text{-----} a = 0 \text{-----} 0 = 0\), which is (a).
 If \(a < b\), then \(b > a\), so that \(b \text{-----} a = n\) for some natural number \(n\) by the previous reasoning, and thus \(a \text{-----} b = -n\), which is (c).
 Now we show that no more than one of (a), (b), (c) can hold at a time.
@@ -132,43 +147,43 @@ This allows each identity to be proven in a few lines.
 
 We first prove \(x + y = y + x\).
 \begin{align*}
-x + y &= (a \text{-----} b) + (c \text{-----} d) && \text{(by given condition)} \\
+x + y &= (a \text{-----} b) + (c \text{-----} d) && \text{(by the given condition)} \\
 &= (a + c) \text{-----} (b + d) && \text{(by Definition \ref{4.1.2})} \\
 &= (c + a) \text{-----} (d + b) && \text{(by Proposition \ref{2.2.4})} \\
 &= (c \text{-----} d) + (a \text{-----} b) && \text{(by Definition \ref{4.1.2})} \\
-&= y + x. && \text{(by given condition)}
+&= y + x. && \text{(by the given condition)}
 \end{align*}
 
 Next we prove \((x + y) + z = x + (y + z)\).
 \begin{align*}
-(x + y) + z &= ((a \text{-----} b) + (c \text{-----} d)) + (e \text{-----} f) && \text{(by given condition)} \\
+(x + y) + z &= ((a \text{-----} b) + (c \text{-----} d)) + (e \text{-----} f) && \text{(by the given condition)} \\
 &= ((a + c) \text{-----} (b + d)) + (e \text{-----} f) && \text{(by Definition \ref{4.1.2})} \\
 &= ((a + c) + e) \text{-----} ((b + d) + f) && \text{(by Definition \ref{4.1.2})} \\
 &= (a + (c + e)) \text{-----} (b + (d + f)) && \text{(by Proposition \ref{2.2.5})} \\
 &= (a \text{-----} b) + ((c + e) \text{-----} (d + f)) && \text{(by Definition \ref{4.1.2})} \\
 &= (a \text{-----} b) + ((c \text{-----} d) + (e \text{-----} f)) && \text{(by Definition \ref{4.1.2})} \\
-&= x + (y + z). && \text{(by given condition)}
+&= x + (y + z). && \text{(by the given condition)}
 \end{align*}
 
 Next we prove \(x + 0 = 0 + x = x\).
 \begin{align*}
-x + 0 &= (a \text{-----} b) + (0 \text{-----} 0) && \text{(by given condition)} \\
+x + 0 &= (a \text{-----} b) + (0 \text{-----} 0) && \text{(by the given condition)} \\
 &= (a + 0) \text{-----} (b + 0) && \text{(by Definition \ref{4.1.2})} \\
 &= (a \text{-----} b) && \text{(by Lemma \ref{2.2.2})} \\
-&= x && \text{(by given condition)} \\
+&= x && \text{(by the given condition)} \\
 &= (0 + a) \text{-----} (0 + b) && \text{(by Definition \ref{2.2.1})} \\
 &= (0 \text{-----} 0) + (a \text{-----} b) && \text{(by Definition \ref{4.1.2})} \\
-&= 0 + x. && \text{(by given condition)}
+&= 0 + x. && \text{(by the given condition)}
 \end{align*}
 
 Next we prove \(x + (-x) = (-x) + x = 0\).
 \begin{align*}
-x + (-x) &= (a \text{-----} b) + (-x) && \text{(by given condition)} \\
+x + (-x) &= (a \text{-----} b) + (-x) && \text{(by the given condition)} \\
 &= (a \text{-----} b) + (b \text{-----} a) && \text{(by Definition \ref{4.1.4})} \\
 &= (a + b) \text{-----} (b + a) && \text{(by Definition \ref{4.1.2})} \\
 &= (b + a) \text{-----} (a + b) && \text{(by Proposition \ref{2.2.4})} \\
 &= (b \text{-----} a) + (a \text{-----} b) && \text{(by Definition \ref{4.1.2})} \\
-&= (-x) + x && \text{(by given condition)} \\
+&= (-x) + x && \text{(by the given condition)} \\
 &= (a + b) \text{-----} (a + b) && \text{(by Proposition \ref{2.2.4})} \\
 &= (a \text{-----} a) + (b \text{-----} b) && \text{(by Definition \ref{4.1.2})} \\
 &= (0 \text{-----} 0) + (0 \text{-----} 0) && \text{(by Definition \ref{4.1.1})} \\
@@ -179,17 +194,17 @@ x + (-x) &= (a \text{-----} b) + (-x) && \text{(by given condition)} \\
 
 Next we prove \(xy = yx\).
 \begin{align*}
-xy &= (a \text{-----} b) \times (c \text{-----} d) && \text{(by given condition)} \\
+xy &= (a \text{-----} b) \times (c \text{-----} d) && \text{(by the given condition)} \\
 &= (ac + bd) \text{-----} (ad + bc) && \text{(by Definition \ref{4.1.2})} \\
 &= (ca + db) \text{-----} (da + cb) && \text{(by Lemma \ref{2.3.2})} \\
 &= (ca + db) \text{-----} (cb + da) && \text{(by Proposition \ref{2.2.4})} \\
 &= (c \text{-----} d) \times (a \text{-----} b) && \text{(by Definition \ref{4.1.2})} \\
-&= yx. && \text{(by given condition)}
+&= yx. && \text{(by the given condition)}
 \end{align*}
 
 Next we prove \((xy)z = x(yz)\).
 \begin{align*}
-(xy)z &= ((a \text{-----} b) \times (c \text{-----} d)) \times (e \text{-----} f) && \text{(by given condition)} \\
+(xy)z &= ((a \text{-----} b) \times (c \text{-----} d)) \times (e \text{-----} f) && \text{(by the given condition)} \\
 &= ((ac + bd) \text{-----} (ad + bc)) \times (e \text{-----} f) && \text{(by Definition \ref{4.1.2})} \\
 &= ((ac + bd)e + (ad + bc)f) \\
 &\quad \text{-----} ((ac + bd)f + (ad + bc)e) && \text{(by Definition \ref{4.1.2})} \\
@@ -203,7 +218,7 @@ Next we prove \((xy)z = x(yz)\).
 &\quad \text{-----} (a(cf + de) + b(ce + df)) && \text{(by Proposition \ref{2.3.4})} \\
 &= (a \text{-----} b) \times ((ce + df) \text{-----} (cf + de)) && \text{(by Definition \ref{4.1.2})} \\
 &= (a \text{-----} b) \times ((c \text{-----} d) \times (e \text{-----} f)) && \text{(by Definition \ref{4.1.2})} \\
-&= x(yz). && \text{(by given condition)}
+&= x(yz). && \text{(by the given condition)}
 \end{align*}
 
 Next we prove \(x1 = 1x = x\).
@@ -218,40 +233,40 @@ Since \(n1 = 1n\) by Lemma \ref{2.3.2}, \(1n = n\).
 
 Now we show that \(x1 = 1x = x\).
 \begin{align*}
-x1 &= (a \text{-----} b) \times (1 \text{-----} 0) && \text{(by given condition)} \\
+x1 &= (a \text{-----} b) \times (1 \text{-----} 0) && \text{(by the given condition)} \\
 &= (a1 + b0) \text{-----} (a0 + b1) && \text{(by Definition \ref{4.1.2})} \\
 &= (1a + 0b) \text{-----} (0a + 1b) && \text{(by Lemma \ref{2.3.2})} \\
 &= (1a + 0b) \text{-----} (1b + 0a) && \text{(by Proposition \ref{2.2.4})} \\
 &= (1 \text{-----} 0) + (a \text{-----} b) && \text{(by Definition \ref{4.1.2})} \\
-&= 1x && \text{(by given condition)} \\
+&= 1x && \text{(by the given condition)} \\
 &= (1a + 0) \text{-----} (1b + 0) && \text{(by Definition \ref{2.3.1})} \\
 &= (1a) \text{-----} (1b) && \text{(by Lemma \ref{2.2.2})} \\
 &= (a \text{-----} b) && \text{(by previous prove)} \\
-&= x. && \text{(by given condition)}
+&= x. && \text{(by the given condition)}
 \end{align*}
 
 Next we prove that \(x(y + z) = xy + xz\).
 \begin{align*}
-x(y + z) &= (a \text{-----} b) \times ((c \text{-----} d) + (e \text{-----} f)) && \text{(by given condition)} \\
+x(y + z) &= (a \text{-----} b) \times ((c \text{-----} d) + (e \text{-----} f)) && \text{(by the given condition)} \\
 &= (a \text{-----} b) \times ((c + e) \text{-----} (d + f)) && \text{(by Definition \ref{4.1.2})} \\
 &= (a(c + e) + b(d + f)) \text{-----} (a(d + f) + b(c + e)) && \text{(by Definition \ref{4.1.2})} \\
 &= (ac + ae + bd + bf) \text{-----} (ad + af + bc + be) && \text{(by Proposition \ref{2.3.4})} \\
 &= (ac + bd + ae + bf) \text{-----} (ad + bc + af + be) && \text{(by Proposition \ref{2.2.4})} \\
 &= ((ac + bd) \text{-----} (ad + bc)) + ((ae + bf) \text{-----} (af + be)) && \text{(by Definition \ref{4.1.2})} \\
 &= (a \text{-----} b) \times (c \text{-----} d) + (a \text{-----} b) \times (e \text{-----} f) && \text{(by Definition \ref{4.1.2})} \\
-&= xy + xz. && \text{(by given condition)}
+&= xy + xz. && \text{(by the given condition)}
 \end{align*}
 
 Finally we prove \((y + z)x = yx + zx\).
 \begin{align*}
-(y + z)x &= ((c \text{-----} d) + (e \text{-----} f)) \times (a \text{-----} b) && \text{(by given condition)} \\
+(y + z)x &= ((c \text{-----} d) + (e \text{-----} f)) \times (a \text{-----} b) && \text{(by the given condition)} \\
 &= ((c + e) \text{-----} (d + f)) \times (a \text{-----} b) && \text{(by Definition \ref{4.1.2})} \\
 &= ((c + e)a + (d + f)b) \text{-----} ((c + e)b + (d + f)a) && \text{(by Definition \ref{4.1.2})} \\
 &= (ca + ea + db + fb) \text{-----} (cb + eb + da + fa) && \text{(by Proposition \ref{2.3.4})} \\
 &= (ca + db + ea + fb) \text{-----} (cb + da + eb + fa) && \text{(by Proposition \ref{2.2.4})} \\
 &= ((ca + db) \text{-----} (cb + da)) + ((ea + fb) \text{-----} (eb + fa)) && \text{(by Definition \ref{4.1.2})} \\
 &= (c \text{-----} d) \times (a \text{-----} b) + (e \text{-----} f) \times (a \text{-----} b) && \text{(by Definition \ref{4.1.2})} \\
-&= yx + zx. && \text{(by given condition)}
+&= yx + zx. && \text{(by the given condition)}
 \end{align*}
 \end{proof}
 
@@ -283,23 +298,58 @@ Then either \(a = 0\) or \(b = 0\) (or both).
 \end{proposition}
 
 \begin{proof}
-Let \(a = a_1 - a_2\) and \(b = b_1 - b_2\), where \(a_1, a_2, b_1, b_2 \in \mathds{N}\).
+Let \(a = a_1 \text{-----} a_2\) and \(b = b_1 \text{-----} b_2\), where \(a_1, a_2, b_1, b_2 \in \mathds{N}\).
 Then
 \begin{align*}
-ab &= (a_1 - a_2) \times (b_1 - b_2) \\
-&= (a_1b_1 + a_2b_2) - (a_1b_2 + a_2b_1) \\
-&= 0 - 0 \\
+ab &= (a_1 \text{-----} a_2) \times (b_1 \text{-----} b_2) \\
+&= (a_1b_1 + a_2b_2) \text{-----} (a_1b_2 + a_2b_1) \\
+&= 0 \text{-----} 0 \\
 &= 0.
 \end{align*}
-By Corollary \ref{2.2.9}, \(a_1b_1 + a_2b_2 = 0 \implies (a_1b_1 = 0) \land (a_2b_2 = 0)\), similarly \(a_1b_2 + a_2b_1 = 0 \implies (a_1b_2 = 0) \land (a_2b_1 = 0)\).
-By Lemma \ref{2.3.3}, \(a_1b_1 = 0 \implies (a_1 = 0) \lor (b_1 = 0)\), \(a_2b_2 = 0 \implies (a_2 = 0) \lor (b_2 = 0)\), \(a_1b_2 = 0 \implies (a_1 = 0) \lor (b_2 = 0)\) and \(a_2b_1 = 0 \implies (a_2 = 0) \lor (b_1 = 0)\).
-If \(a_1 \neq 0\), then \((b_1 = 0) \land (b_2 = 0)\), so \(b = 0 - 0 = 0\).
-If \(a_2 \neq 0\), then \((b_1 = 0) \land (b_2 = 0)\), so \(b = 0 - 0 = 0\).
-If \(b_1 \neq 0\), then \((a_1 = 0) \land (a_2 = 0)\), so \(a = 0 - 0 = 0\).
-If \(b_2 \neq 0\), then \((a_1 = 0) \land (a_2 = 0)\), so \(a = 0 - 0 = 0\).
-So at least one of \(a\) or \(b\) is \(0\).
-If \(a = 0\) and \(b = 0\), then \(ab = 0\).
-Thus \(ab = 0\) implies either \(a = 0\) or \(b = 0\) (or both).
+Which means \(a_1b_1 + a_2b_2 = a_1b_2 + a_2b_1\).
+    \begin{enumerate}
+        \item If \(a \neq 0\), then \(a_1 \neq a_2\).
+            \begin{enumerate}[label=(\roman*)]
+                \item If \(b_1 = 0\), then \(a_1b_1 + a_2b_2 = a_1b_2 + a_2b_1 \implies a_2b_2 = a_1b_2\).
+                If \(b_2 \neq 0\), by Corollary \ref{2.3.7}, \(a_2b_2 = a_1b_2 \implies a_2 = a_1\), a contradiction.
+                So \(b_2 = 0\), which means \(b = b_1 \text{-----} b_2 = 0 \text{-----} 0 = 0\).
+                \item If \(b_1 \neq 0\), then \(a_1b_1 \neq a_2b_1\) by Corollary \ref{2.3.7}.
+                By Proposition \ref{2.2.13}, only one of the \(a_1 < a_2\) and \(a_1 > a_2\) is true.
+                \begin{enumerate}[label=(\arabic*)]
+                    \item If \(a_1 < a_2\), then \(a_2 = a_1 + d\), where \(d \in \mathds{N}\) and \(d\) is positive.
+                    So
+                        \begin{align*}
+                            & a_1b_1 + a_2b_2 = a_1b_2 + a_2b_1 \\
+                            \implies & a_1b_1 + (a_1 + d)b_2 = a_1b_2 + (a_1 + d)b_1 \\
+                            \implies & a_1b_1 + a_1b_2 + db_2 = a_1b_2 + a_1b_1 + db_1 & \text{(by Proposition \ref{2.3.4})} \\
+                            \implies & db_2 = db_1 & \text{(by Proposition \ref{2.2.6})} \\
+                            \implies & b_2 = b_1. & \text{(by Corollary \ref{2.3.7})}
+                        \end{align*}
+                    Which means \(b = b_1 \text{-----} b_2 = 0 \text{-----} 0 = 0\).
+                    \item If \(a_1 > a_2\), then \(a_1 = a_2 + d\), where \(d \in \mathds{N}\) and \(d\) is positive.
+                    So
+                        \begin{align*}
+                            & a_1b_1 + a_2b_2 = a_1b_2 + a_2b_1 \\
+                            \implies & (a_2 + d)b_1 + a_2b_2 = (a_2 + d)b_2 + a_2b_1 \\
+                            \implies & a_2b_1 + db_1 + a_2b_2 = a_2b_2 + db_2 + a_2b_1 & \text{(by Proposition \ref{2.3.4})} \\
+                            \implies & db_1 = db_2 & \text{(by Proposition \ref{2.2.6})} \\
+                            \implies & b_1 = b_2. & \text{(by Corollary \ref{2.3.7})}
+                        \end{align*}
+                    Which means \(b = b_1 \text{-----} b_2 = 0 \text{-----} 0 = 0\).
+                \end{enumerate}
+            \end{enumerate}
+        In all cases we get \(b = 0\).
+        \item If \(a = 0\), then \(a_1 = a_2\) and \(a_1 \text{-----} a_2 = 0 \text{-----} 0\).
+        So
+        \begin{align*}
+            ab &= (a_1 \text{-----} a_2) \times (b_1 \text{-----} b_2) \\
+            &= (0 \text{-----} 0) \times (b_1 \text{-----} b_2) \\
+            &= (0b_1 + 0b_2) \text{-----} (0b_2 + 0b_1) & \text{(by Definition \ref{4.1.2})} \\
+            &= (0 + 0) \text{-----} (0 + 0) & \text{(by Definition \ref{2.3.1})} \\
+            &= 0 \text{-----} 0 & \text{(by Definition \ref{2.2.1})} \\
+            &= 0.
+        \end{align*}
+    \end{enumerate}
 \end{proof}
 
 \begin{corollary}[Cancellation law for integers]\label{4.1.9}
@@ -329,6 +379,124 @@ Let \(a, b, c\) be integers.
 \end{enumerate}
 \end{lemma}
 
+\begin{proof}{(a)}
+We first prove \(a > b \implies a - b\) is a positive natural number.
+By Definition \ref{4.1.10}, \(a > b \implies a = b + d\), where \(d \in \mathds{N}\) and \(a \neq b\).
+Then \(a - b = b + d - b = d\) by Proposition \ref{4.1.6}, also because \(a \neq b\), \(d \neq 0\).
+By Definition \ref{2.2.7}, \(d\) is positive natural number, so \(a - b\) is positive natural number.
+
+Now we prove \(a - b\) is a positive natural number \(\implies a > b\).
+Let \(a - b = d\).
+By Proposition \ref{4.1.6} \(a - b + b = d + b \implies a = d + b = b + d\).
+By Definition \ref{4.1.10}, \(a \geq b\).
+By Lemma \ref{4.1.5}, only one of \(a = b\) or \(a > b\) is true.
+If \(a = b\), then by Proposition \ref{4.1.6}, \(d = 0\), which contradicted to \(d\) is positive.
+Thus \(a > b\).
+\end{proof}
+
+\begin{proof}{(b)}
+By Lemma \ref{4.1.11}(a), \(a > b \implies a - b\) is positive.
+Let \(a - b = d\).
+So
+\begin{align*}
+& a - b = d \\
+\implies & (a - b) + b = d + b & \text{(by Lemma \ref{4.1.3})} \\
+\implies & a + (-b + b) = d + b & \text{(by Proposition \ref{4.1.6})} \\
+\implies & a = d + b & \text{(by Proposition \ref{4.1.6})} \\
+\implies & a = b + d & \text{(by Proposition \ref{4.1.6})} \\
+\implies & a + c = (b + d) + c & \text{(by Lemma \ref{4.1.3})} \\
+\implies & a + c = b + (d + c) & \text{(by Proposition \ref{4.1.6})} \\
+\implies & a + c = b + (c + d) & \text{(by Proposition \ref{4.1.6})} \\
+\implies & a + c = (b + c) + d & \text{(by Proposition \ref{4.1.6})} \\
+\implies & a + c > b + c. & \text{(by Definition \ref{4.1.10})} \\
+\end{align*}
+\end{proof}
+
+\begin{proof}{(c)}
+By Lemma \ref{4.1.11}(a), \(a > b \implies a - b\) is positive.
+Let \(a - b = d\).
+So
+\begin{align*}
+& a - b = d \\
+\implies & (a - b) + b = d + b & \text{(by Lemma \ref{4.1.3})} \\
+\implies & a + (-b + b) = d + b & \text{(by Proposition \ref{4.1.6})} \\
+\implies & a = d + b & \text{(by Proposition \ref{4.1.6})} \\
+\implies & a = b + d & \text{(by Proposition \ref{4.1.6})} \\
+\implies & ac = (b + d)c & \text{(by Lemma \ref{4.1.3})} \\
+\implies & ac = bc + dc. & \text{(by Proposition \ref{4.1.6})}
+\end{align*}
+By Lemma \ref{2.3.3}, \(dc\) is also positive.
+Thus by Definition \ref{4.1.10}, \(ac > bc\).
+\end{proof}
+
+\begin{proof}{(d)}
+By Lemma \ref{4.1.11}(a), \(a > b \implies a - b\) is positive.
+Let \(a - b = d\).
+So
+\begin{align*}
+& a - b = d \\
+\implies & (a - b) + -a = d + -a & \text{(by Lemma \ref{4.1.3})} \\
+\implies & a + (-b + -a) = d + -a & \text{(by Proposition \ref{4.1.6})} \\
+\implies & a + (-a + -b) = d + -a & \text{(by Proposition \ref{4.1.6})} \\
+\implies & (a + -a) + -b = d + -a & \text{(by Proposition \ref{4.1.6})} \\
+\implies & 0 + -b = d + -a & \text{(by Proposition \ref{4.1.6})} \\
+\implies & -b = d + -a & \text{(by Proposition \ref{4.1.6})} \\
+\implies & -b = -a + d & \text{(by Proposition \ref{4.1.6})} \\
+\implies & -b > -a. & \text{(by Definition \ref{4.1.10})}
+\end{align*}
+\end{proof}
+
+\begin{proof}{(e)}
+By Lemma \ref{4.1.11}(a), \(a > b \implies a - b\) is positive, \(b > c \implies b - c\) is positive.
+Let \(a - b = d_{ab}\), \(b - c = d_{bc}\).
+So
+\begin{align*}
+& b - c = d_{bc} \\
+\implies & (b - c) + c = d_{bc} + c & \text{(by Lemma \ref{4.1.3})} \\
+\implies & b + (-c + c) = d_{bc} + c & \text{(by Proposition \ref{4.1.6})} \\
+\implies & b + 0 = d_{bc} + c & \text{(by Proposition \ref{4.1.6})} \\
+\implies & b = d_{bc} + c & \text{(by Proposition \ref{4.1.6})} \\
+\implies & b = c + d_{bc}. & \text{(by Proposition \ref{4.1.6})} \\
+& a - b = d \\
+\implies & (a - b) + b = d_{ab} + b & \text{(by Lemma \ref{4.1.3})} \\
+\implies & a + (-b + b) = d_{ab} + b & \text{(by Proposition \ref{4.1.6})} \\
+\implies & a + 0 = d_{ab} + b & \text{(by Proposition \ref{4.1.6})} \\
+\implies & a = d_{ab} + b & \text{(by Proposition \ref{4.1.6})} \\
+\implies & a = b + d_{ab} & \text{(by Proposition \ref{4.1.6})} \\
+\implies & a = (c + d_{bc}) + d_{ab} & \text{(by the given condition)} \\
+\implies & a = c + (d_{bc} + d_{ab}). & \text{(by Proposition \ref{4.1.6})} \\
+\end{align*}
+By Proposition \ref{2.2.8}, \(d_{bc} + d_{ab}\) is also positive.
+Thus by Definition \ref{4.1.10}, \(a > c\).
+\end{proof}
+
+\begin{proof}{(f)}
+By Lemma \ref{4.1.5}, \(a - b\) can be exactly one of the following three statements:
+\begin{enumerate}
+    \item \(a - b = 0\).
+    So
+    \begin{align*}
+        & a - b = 0 \\
+        \implies & (a - b) + b = b & \text{(by Lemma \ref{4.1.3})} \\
+        \implies & a + (-b + b) = b & \text{(by Proposition \ref{4.1.6})} \\
+        \implies & a + 0 = b & \text{(by Proposition \ref{4.1.6})} \\
+        \implies & a = b. & \text{(by Proposition \ref{4.1.6})}
+    \end{align*}
+    \item \(a - b > 0\).
+    By Lemma \ref{4.1.11}(a), \(a - b > 0 \implies a > b\).
+    \item \(a - b < 0\).
+    So
+    \begin{align*}
+        & a - b < 0 \\
+        \implies & (a - b) + b < 0 + b & \text{(by Lemma \ref{4.1.11}(c))} \\
+        \implies & a + (-b + b) < 0 + b & \text{(by Proposition \ref{4.1.6})} \\
+        \implies & a + 0 < 0 + b & \text{(by Proposition \ref{4.1.6})} \\
+        \implies & a < 0 + b & \text{(by Proposition \ref{4.1.6})} \\
+        \implies & a < b. & \text{(by Proposition \ref{4.1.6})}
+    \end{align*}
+\end{enumerate}
+\end{proof}
+
 \exercisesection
 
 \begin{exercise}\label{ex 4.1.1}
@@ -337,4 +505,156 @@ Verify that the definition of equality on the integers is both reflexive and sym
 
 \begin{proof}
 See Additional Corollary \ref{ac 4.1.1}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.1.2}
+Show that the definition of negation on the integers is well-defined in the sense that if \((a \text{-----} b) = (a' \text{-----} b')\), then \(-(a \text{-----} b) = -(a' \text{-----} b')\)
+(so equal integers have equal negations).
+\end{exercise}
+
+\begin{proof}
+See Additional Corollary \ref{ac 4.1.2}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.1.3}
+Show that \((-1) \times a = -a\) for every integer \(a\).
+\end{exercise}
+
+\begin{proof}
+Let \(a = a_1 \text{-----} a_2\).
+So
+\begin{align*}
+(-1) \times a &= (0 \text{-----} 1) \times (a_1 \text{-----} a_2) \\
+&= (0a_1 + 1a_2) \text{-----} (0a_2 + 1a_1) & \text{(by Definition \ref{4.1.2})} \\
+&= (0 + 1a_2) \text{-----} (0 + 1a_1) & \text{(by Definition \ref{2.3.1})} \\
+&= 1a_2 \text{-----} 1a_1 & \text{(by Definition \ref{2.2.1})} \\
+&= (0a_2 + a_2) \text{-----} (0a_1 + a_1) & \text{(by Definition \ref{2.3.1})} \\
+&= (0 + a_2) \text{-----} (0 + a_1) & \text{(by Definition \ref{2.3.1})} \\
+&= a_2 \text{-----} a_1 & \text{(by Definition \ref{2.2.1})} \\
+&= -a.
+\end{align*}
+\end{proof}
+
+\begin{exercise}\label{ex 4.1.4}
+Prove the remaining identities in Proposition \ref{4.1.6}.
+\end{exercise}
+
+\begin{proof}
+See Proposition \ref{4.1.6}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.1.5}
+Prove Proposition \ref{4.1.8}.
+\end{exercise}
+
+\begin{proof}
+See Proposition \ref{4.1.8}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.1.6}
+Prove Corollary \ref{4.1.9}.
+\end{exercise}
+
+\begin{proof}
+See Corollary \ref{4.1.9}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.1.7}
+Prove Lemma \ref{4.1.11}.
+\end{exercise}
+
+\begin{proof}
+See Lemma \ref{4.1.11}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.1.8}
+Show that the principle of induction (Axiom \ref{2.5}) does not apply directly to the integers.
+More precisely, give an example of a property \(P(n)\) pertaining to an integer \(n\) such that \(P(0)\) is true, and that \(P(n)\) implies \(P(n++)\) for all integers \(n\), but that \(P(n)\) is not true for all integers \(n\).
+Thus induction is not as useful a tool for dealing with the integers as it is with the natural numbers.
+(The situation becomes even worse with the rational and real numbers, which we shall define shortly.)
+\end{exercise}
+
+\begin{proof}
+For sake of contradiction, we claim that \(\forall\ n \in \mathds{Z}\), \(n + 1 > 0\).
+And we use Axiom \ref{2.5} to prove the above claim.
+For \(n = 0\), \((0 + 1 = 1) \land (1 \neq 0) \implies 1 > 0\), so the base case holds.
+Suppose inductively that for some \(n\) the statement \(n + 1 > 0\) is true.
+Then for \(n++\), \((n++) + 1 = (n + 1) + 1\).
+Because by induction hypothesis, \(n + 1 > 0\), so by Lemma \ref{4.1.11}, \((n + 1) > 0 \implies (n + 1) + 1 > 0 + 1 = 1\).
+Again by Lemma \ref{4.1.11}, \(((n + 1) + 1 > 1) \land (1 > 0) \implies (n + 1) + 1 > 0\), and this close induction.
+
+But if \(n = -1\), then \(-1 + 1 = 0\) by Proposition \ref{4.1.6}.
+By Definition \ref{4.1.10}, \(0 \geq 0\), and By Lemma \ref{4.1.11}, \(0 > 0\) is false because \(0 = 0\) is true.
+So \(n = -1\) does not satisified the above claim, which means induction is not as useful a tool for dealing with the integers as it is with the natural numbers.
+\end{proof}
+
+\section{The rationals}
+
+\begin{definition}\label{4.2.1}
+A \emph{rational number} is an expression of the form \(a // b\), where \(a\) and \(b\) are integers and \(b\) is non-zero;
+\(a // 0\) is not considered to be a rational number.
+Two rational numbers are considered to be equal, \(a // b = c // d\), if and only if \(ad = cb\).
+The set of all rational numbers is denoted \(\mathds{Q}\).
+\end{definition}
+
+\begin{note}
+There is no reasonable way we can divide by zero, since one cannot have both the identities \((a / b) \times b = a\) and \(c \times 0 = 0\) hold simultaneously if \(b\) is allowed to be zero and \(a\) is non-zero.
+Similarly, the identities \(a / a = 1\) and \(2 \times (a / a) = (2 \times a) / a\) cannot hold simultaneously if \(0 / 0\) is defined.
+However, we can eventually get a reasonable notion of dividing by a quantity which approaches zero
+- think of L'H\^opital's rule (see Section 10.5), which suffices for doing things like defining differentiation.
+\end{note}
+
+\begin{additional corollary}\label{ac 4.2.1}
+The definition of equality for the rational numbers is reflexive, symmetric and transitive.
+\end{additional corollary}
+
+\begin{proof}
+We first prove the reflexivity of the rational numbers.
+Let \(a \in \mathds{Q}\) and \(a = a_1 // a_2\), where \(a_1, a_2 \in \mathds{Z}\) and \(a_2 \neq 0\).
+By Lemma \ref{4.1.3}, multiplication of integers is well-defined, so \(a_1a_2 = a_1a_2\).
+By Definition \ref{4.2.1}, \(a_1a_2 = a_1a_2 \implies a_1 // a_2 = a_1 // a_2\).
+
+Next we prove the symmetry of the rational numbers.
+Let \(a, b \in \mathds{Q}\), \(a = a_1 // a_2\) and \(b = b_1 // b_2\), where \(a_1, a_2, b_1, b_2 \in \mathds{Z}\), \(a_2 \neq 0\) and \(b_2 \neq 0\).
+So if \(a = b\), then
+\begin{align*}
+& a = b \\
+\implies & a_1 // a_2 = b_1 // b_2 & \text{(by Definition \ref{4.2.1})} \\
+\implies & a_1b_2 = b_1a_2 & \text{(by Definition \ref{4.2.1})} \\
+\implies & b_1a_2 = a_1b_2 \\
+\implies & b_1 // b_2 = a_1 // a_2 & \text{(by Definition \ref{4.2.1})} \\
+\implies & b = a. & \text{(by Definition \ref{4.2.1})}
+\end{align*}
+
+Finally we prove the transitivity of the rational numbers.
+Let \(a, b, c \in \mathds{Q}\), \(a = a_1 // a_2\), \(b = b_1 // b_2\) and \(c = c_1 // c_2\), where \(a_1, a_2, b_1, b_2, c_1, c_2 \in \mathds{Z}\), \(a_2 \neq 0\), \(b_2 \neq 0\) and \(c_2 \neq 0\).
+So if \(a = b\) and \(b = c\), then
+\begin{align*}
+& a = b \\
+\implies & a_1 // a_2 = b_1 // b_2 & \text{(by Definition \ref{4.2.1})} \\
+\implies & a_1b_2 = b_1a_2 & \text{(by Definition \ref{4.2.1})} \\
+& b = c \\
+\implies & b_1 // b_2 = c_1 // c_2 & \text{(by Definition \ref{4.2.1})} \\
+\implies & b_1c_2 = c_1b_2 & \text{(by Definition \ref{4.2.1})} \\
+\implies & a_2(b_1c_2) = a_2(c_1b_2) & \text{(by Lemma \ref{4.1.3})} \\
+\implies & (a_2b_1)c_2 = a_2(c_1b_2) & \text{(by Proposition \ref{4.1.6})} \\
+\implies & (b_1a_2)c_2 = a_2(c_1b_2) & \text{(by Proposition \ref{4.1.6})} \\
+\implies & (a_1b_2)c_2 = a_2(c_1b_2) & \text{(by the given condition)} \\
+\implies & a_1(b_2c_2) = a_2(c_1b_2) & \text{(by Proposition \ref{4.1.6})} \\
+\implies & a_1(c_2b_2) = a_2(c_1b_2) & \text{(by Proposition \ref{4.1.6})} \\
+\implies & (a_1c_2)b_2 = (a_2c_1)b_2 & \text{(by Proposition \ref{4.1.6})} \\
+\implies & a_1c_2 = a_2c_1 & \text{(by Corollary \ref{4.1.9})} \\
+\implies & a_1 // a_2 = c_1 // c_2 & \text{(by Definition \ref{4.2.1})} \\
+\implies & a = c. & \text{(by Definition \ref{4.2.1})}
+\end{align*}
+\end{proof}
+
+\exercisesection
+
+\begin{exercise}\label{ex 4.2.1}
+Show that the definition of equality for the rational numbers is reflexive, symmetric, and transitive.
+\end{exercise}
+
+\begin{proof}
+See Additional Corollary \ref{ac 4.2.1}.
 \end{proof}
