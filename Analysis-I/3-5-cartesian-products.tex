@@ -1,0 +1,521 @@
+\section{Cartesian products}
+
+\begin{definition}[Ordered pair]\label{3.5.1}
+If \(x\) and \(y\) are any objects (possibly equal), we define the \emph{ordered pair} \((x, y)\) to be a new object, consisting of \(x\) as its first component and \(y\) as its second component.
+Two ordered pairs \((x, y)\) and \((x', y')\) are considered equal if and only if both their components match, i.e.
+\[
+    (x, y) = (x', y') \iff (x = x' \text{ and } y = y').
+\]
+\end{definition}
+
+\begin{remark}\label{3.5.2}
+Strictly speaking, this definition is partly an axiom, because we have simply postulated that given any two objects \(x\) and \(y\), that an object of the form \((x, y)\) exists.
+However, it is possible to define an ordered pair using the axioms of set theory in such a way that we do not need any further postulates.
+\end{remark}
+
+\begin{remark}\label{3.5.3}
+We have now \say{overloaded} the parenthesis symbols \(()\) once again;
+they now are not only used to denote grouping of operators and arguments of functions, but also to enclose ordered pairs.
+This is usually not a problem in practice as one can still determine what usage the symbols \(()\) were intended for from context.
+\end{remark}
+
+\begin{definition}[Cartesian product]\label{3.5.4}
+If \(X\) and \(Y\) are sets, then we define the \emph{Cartesian product} \(X \times Y\) to be the collection of ordered pairs, whose first component lies in \(X\) and second component lies in \(Y\), thus
+\[
+    X \times Y \coloneqq \{(x, y) : x \in X, y \in Y\}
+\]
+or equivalently,
+\[
+    a \in X \times Y \iff (a = (x, y) \text{ for some } x \in X \text{ and } y \in Y).
+\]
+\end{definition}
+
+\begin{remark}\label{3.5.5}
+We shall simply assume that our notion of ordered pair is such that whenever \(X\) and \(Y\) are sets, the Cartesian product \(X \times Y\) is also a set.
+\end{remark}
+
+\begin{note}
+Let \(f : X \times Y \to Z\) be a function whose domain \(X \times Y\) is a Cartesian product of two other sets \(X\) and \(Y\).
+Then \(f\) can either be thought of as a function of one variable, mapping the single input of an ordered pair \((x, y)\) in \(X \times Y\) to an output \(f(x, y)\) in \(Z\), or as a function of two variables, mapping an input \(x \in X\) and another input \(y \in Y\) to a single output \(f(x, y)\) in \(Z\).
+While the two notions are technically different, we will not bother to distinguish the two, and think of \(f\) simultaneously as a function of one variable with domain \(X \times Y\) and as a function of two variables with domains \(X\) and \(Y\).
+Thus for instance the addition operation \(+\) on the natural numbers can now be re-interpreted as a function \(+ : N \times N \to N\), defined by \((x, y) \mapsto x + y\).
+\end{note}
+
+\setcounter{theorem}{6}
+\begin{definition}[Ordered \(n\)-tuple and \(n\)-fold Cartesian product]\label{3.5.7}
+Let \(n\) be a natural number.
+An \emph{ordered \(n\)-tuple} \((x_i)_{1 \leq i \leq n}\) (also denoted \((x_1, \cdots, x_n)\)) is a collection of objects \(x_i\), one for every natural number \(i\) between \(1\) and \(n\);
+we refer to \(x_i\) as the \emph{\(i^{th}\) component} of the ordered \(n\)-tuple.
+Two ordered \(n\)-tuples \((x_i)_{1 \leq i \leq n}\) and \((y_i)_{1 \leq i \leq n}\) are said to be equal iff \(x_i = y_i\) for all \(1 \leq i \leq n\).
+If \((X_i)_{1 \leq i \leq n}\) is an ordered \(n\)-tuple of sets, we define their \emph{Cartesian product} \(\prod_{1 \leq i \leq n} X_i\) (also denoted \(\prod_{i=1}^n X_i\) or \(X_1 \times \cdots \times X_n\)) by
+\[
+    \prod_{1 \leq i \leq n} X_i \coloneqq \{(x_i)_{1 \leq i \leq n} : x_i \in X_i \text{ for all } 1 \leq i \leq n\}.
+\]
+\end{definition}
+
+\begin{remark}\label{3.5.8}
+One can show that \(\prod_{1 \leq i \leq n} X_i\) is indeed a set.
+Indeed, from the power set axiom we can consider the set of all functions \(i \mapsto x_i\) from the domain \(\{1 \leq i \leq n\}\) to the range \(\bigcup_{1 \leq i \leq n} X_i\), and then we can restrict using the axiom of specification to restrict to those functions \(i \mapsto x_i\) for which \(x_i \in X_i\) for all \(1 \leq i \leq n\).
+\end{remark}
+
+\begin{note}
+Strictly speaking, the sets \(X_1 \times X_2 \times X_3\), \((X_1 \times X_2) \times X_3\), and \(X_1 \times (X_2 \times X_3)\) are distinct.
+However, they are clearly very related to each other (for instance, there are obvious bijections between any two of the three sets), and it is common in practice to neglect the minor distinctions between these sets and pretend that they are in fact equal.
+Thus a function \(f : X_1 \times X_2 \times X_3 \to Y\) can be thought of as a function of one variable \((x_1, x_2, x_3) \in X_1 \times X_2 \times X_3\), or as a function of three variables \(x_1 \in X_1\), \(x_2 \in X_2\), \(x_3 \in X_3\), or as a function of two variables \(x_1 \in X_1\), \((x_2, x_3) \in X_2 \times X_3\), and so forth;
+we will not bother to distinguish between these different perspectives.
+\end{note}
+
+\setcounter{theorem}{9}
+\begin{remark}\label{3.5.10}
+An ordered \(n\)-tuple \(x_1, \cdots, x_n\) of objects is also called an \emph{ordered sequence} of \(n\) elements, or a \emph{finite sequence} for short.
+\end{remark}
+
+\begin{note}
+If \(x\) is an object, then \((x)\) is a \(1\)-tuple, which we shall identify with \(x\) itself (even though the two are, strictly speaking, not the same object).
+Then if \(X_1\) is any set, then the Cartesian product \(\prod_{1 \leq i \leq 1} X_i\) is just \(X_1\).
+Also, the \emph{empty Cartesian product} \(\prod_{1 \leq i \leq 0} X_i\) gives, not the empty set \(\{\}\), but rather the singleton set \(\{()\}\) whose only element is the \emph{\(0\)-tuple} \(()\), also known as the \emph{empty tuple}.
+\end{note}
+
+\begin{note}
+If \(n\) is a natural number, we often write \(X^n\) as shorthand for the \(n\)-fold Cartesian product \(X^n \coloneqq \prod_{1 \leq i \leq n} X\).
+Thus \(X^1\) is essentially the same set as \(X\) (if we ignore the distinction between an object \(x\) and the \(1\)-tuple \((x)\)), while \(X^2\) is the Cartesian product \(X \times X\).
+The set \(X^0\) is a singleton set \(\{()\}\).
+\end{note}
+
+\setcounter{theorem}{11}
+\begin{lemma}[Finite choice]\label{3.5.12}
+Let \(n \geq 1\) be a natural number, and for each natural number \(1 \leq i \leq n\), let \(X_i\) be a non-empty set.
+Then there exists an \(n\)-tuple \((x_i)_{1 \leq i \leq n}\) such that \(x_i \in X_i\) for all \(1 \leq i \leq n\).
+In other words, if each \(X_i\) is non-empty, then the set \(\prod_{1 \leq i \leq n} X_i\) is also non-empty.
+\end{lemma}
+
+\begin{proof}
+We induct on \(n\) (starting with the base case \(n = 1\); the claim is also vacuously true with \(n = 0\) but is not particularly interesting in that case).
+When \(n = 1\) the claim follows from Lemma \ref{3.1.6}.
+Now suppose inductively that the claim has already been proven for some \(n\);
+we will now prove it for \(n++\).
+Let \(X_1, \cdots, X_{n++}\) be a collection of non-empty sets.
+By induction hypothesis, we can find an \(n\)-tuple \((x_i)_{1 \leq i \leq n}\) such that \(x_i \in X_i\) for all \(1 \leq i \leq n\).
+Also, since \(X_{n++}\) is non-empty, by Lemma \ref{3.1.6} we may find an object \(a\) such that \(a \in X_{n++}\).
+If we thus define the \(n++\)-tuple \((y_i)_{1 \leq i \leq n++}\) by setting \(y_i \coloneqq x_i\) when \(1 \leq i \leq n\) and \(y_i \coloneqq a\) when \(i = n++\) it is clear that \(y_i \in X_i\) for all \(1 \leq i \leq n++\), thus closing the induction.
+\end{proof}
+
+\begin{remark}\label{3.5.13}
+It is intuitively plausible that this lemma should be extended to allow for an infinite number of choices, but this cannot be done automatically;
+it requires an additional axiom, the \emph{axiom of choice}.
+\end{remark}
+
+\exercisesection
+
+\begin{exercise}\label{ex 3.5.1}
+Suppose we \emph{define} the ordered pair \((x, y)\) for any objects \(x\) and \(y\) by the formula \((x, y) \coloneqq \{\{x\}, \{x, y\}\}\)
+(thus using several applications of Axiom \ref{3.3}).
+Show that such a definition indeed obeys the Definition \ref{3.5.1}, and also whenever \(X\) and \(Y\) are sets, the Cartesian product \(X \times Y\) is also a set.
+Thus this definition can be validly used as a definition of an ordered pair.
+For an additional challenge, show that the alternate definition \((x, y) := \{x, \{x, y\}\}\) also verifies Definition \ref{3.5.1} and is thus also an acceptable definition of ordered pair.
+\end{exercise}
+
+\begin{proof}
+Let \((x, y) = \{\{x\}, \{x, y\}\}\) and \((x', y') = \{\{x'\}, \{x', y'\}\}\) be two ordered pairs.
+We want to show that \((x, y) = (x', y') \iff ((x = x') \land (y = y'))\).
+We first prove the necessary condition.
+If \((x, y) = (x', y')\), then \(\{\{x\}, \{x, y\}\} = \{\{x'\}, \{x', y'\}\}\) is true, and both \(\{x\} \in \{\{x'\}, \{x', y'\}\}\) and \(\{x, y\} \in \{\{x'\}, \{x', y'\}\}\) are true.
+Now we divide into four cases.
+    \begin{enumerate}
+        \item If \((\{x\} = \{x'\}) \land (\{x, y\} = \{x'\})\), then \((x = x') \land (y = x')\).
+        But \(\{x', y'\} \in \{\{x\}, \{x, y\}\}\), so \((\{x', y'\} = \{x\}) \lor (\{x', y'\} = \{x, y\})\).
+        If \(\{x', y'\} = \{x\}\), then \(y' = x = x' = y\).
+        Otherwise \(\{x', y'\} = \{x, y\}\), then \((y' = x) \lor (y' = y)\), and both can derive \(y' = y\).
+        \item If \((\{x\} = \{x'\}) \land (\{x, y\} = \{x', y'\})\), then \((x = x') \land ((y = x') \lor (y = y'))\).
+        If \(y = x'\), then we need to show that \(y = y'\).
+        But \(\{x', y'\} \in \{\{x\}, \{x, y\}\}\), so \((\{x', y'\} = \{x\}) \lor (\{x', y'\} = \{x, y\})\).
+        If \(\{x', y'\} = \{x\}\), then \(y' = x = x' = y\).
+        Otherwise \(\{x', y'\} = \{x, y\}\), then \((y' = x) \lor (y' = y)\), and both can derive \(y' = y\).
+        \item If \((\{x\} = \{x', y'\}) \land (\{x, y\} = \{x'\})\), then \((x = x') \land (x = y') \land (y = x')\), so \(y = x' = x = y'\).
+        \item If \((\{x\} = \{x', y'\}) \land (\{x, y\} = \{x', y'\})\), then \((x = x') \land (x = y') \land ((y = x') \lor (y = y'))\).
+        If \(y = x'\), then \(y = x' = x = y'\).
+    \end{enumerate}
+So \((x, y) = (x', y') \implies ((x = x') \land (y = y'))\).
+Now we prove the sufficient condition.
+If \((x = x') \land (y = y')\), then \((\{x\} = \{x'\}) \land (\{x, y\} = \{x', y'\})\).
+So \(\{\{x\}, \{x, y\}\} = \{\{x'\}, \{x', y'\}\}\) is true, or equivalently \((x, y) = (x', y')\).
+Since we have proved both the necessary and the sufficient conditions, we conclude that the given definition of the ordered pair satisfied the constrain \((x, y) = (x', y') \iff ((x = x') \land (y = y'))\).
+
+Next we prove that \(X \times Y\) is a set with the given ordered pair definition.
+By Axiom \ref{3.3}, \(\{x\}\) is a set for all \(x \in X\), and \(\{x, y\}\) is also a set for all \(x \in X\) and for all \(y \in Y\).
+Again by Axiom \ref{3.3}, \(\{\{x\}, \{x, y\}\}\) is a set for all \(x \in X\) and for all \(y \in Y\).
+By Axiom \ref{3.6}, \(\{\{\{x\}, \{x, y\}\} : x \in X \land y \in Y\}\) is a set.
+So \(X \times Y = \{(x, y) : x \in X \land y \in Y\}\) is a set with the given ordered pair definition.
+\end{proof}
+
+\begin{proof}{(additional challenge)}
+Let \((x, y) = \{x, \{x, y\}\}\) and \((x', y') = \{x', \{x', y'\}\}\) be two ordered pairs.
+We want to show that \((x, y) = (x', y') \iff ((x = x') \land (y = y'))\).
+We first prove the necessary condition.
+\((x, y) = (x', y') \iff \{x, \{x, y\}\} = \{x', \{x', y'\}\}\), so both \(x \in \{x', \{x', y'\}\}\) and \(x' \in \{x, \{x, y\}\}\) are true.
+Suppose for sake of contradition that \(x \neq x'\).
+Then \(x = \{x', y'\}\) is true, and \(x' \in x\) is true.
+But \(x' \in \{x, \{x, y\}\} \implies x \in x'\), we get both \((x \in x') \land (x' \in x)\), contradict to Axiom \ref{3.9} and Exercise \ref{ex 3.2.2}.
+So \(x = x'\) must be true.
+Now we need to show that \(y = y'\).
+\(\{x, y\} \in \{x', \{x', y'\}\} \implies \{x, y\} = \{x', y'\}\) (because \(\{x, y\} = x' \implies x \in x' = x\), contradict to Axiom \ref{3.9}) and Exercise \ref{ex 3.2.2}.
+So \(((y = x') \lor (y = y')) \land ((y' = x) \lor (y' = y))\) is true, and \(((y = x') \land (y' = x)) \lor (y = y')\) is true.
+If \((y = x') \land (y' = x)\), then \(y = x' = x = y'\).
+Thus \((x, y) = (x', y') \implies ((x = x') \land (y = y'))\).
+Now we prove the sufficient condition.
+If \((x = x') \land (y = y')\), then \((x = x') \land (\{x, y\} = \{x', y'\})\).
+So \(\{x, \{x, y\}\} = \{x', \{x', y'\}\}\) is true, or equivalently \((x, y) = (x', y')\).
+Since we have proved both the necessary and the sufficient conditions, we conclude that the given definition of the ordered pair satisfied the constrain \((x, y) = (x', y') \iff ((x = x') \land (y = y'))\).
+
+Next we prove that \(X \times Y\) is a set with the given ordered pair definition.
+By Axiom \ref{3.3}, \(\{x, y\}\) is a set for all \(x \in X\) and for all \(y \in Y\).
+Again by Axiom \ref{3.3}, \(\{x, \{x, y\}\}\) is a set for all \(x \in X\) and for all \(y \in Y\).
+By Axiom \ref{3.6}, \(\{\{x, \{x, y\}\} : x \in X \land y \in Y\}\) is a set.
+So \(X \times Y = \{(x, y) : x \in X \land y \in Y\}\) is a set with the given ordered pair definition.
+\end{proof}
+
+\begin{exercise}\label{ex 3.5.2}
+Suppose we \emph{define} an ordered \(n\)-tuple to be a surjective function \(x : \{i \in \mathds{N} : 1 \leq i \leq n\} \to X\) whose range is some arbitrary set \(X\) (so different ordered \(n\)-tuples are allowed to have different ranges);
+we then write \(x_i\) for \(x(i)\), and also write \(x\) as \((x_i)_{1 \leq i \leq n}\).
+Using this definition, verify that we have \((x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n}\) if and only if \(x_i = y_i\) for all \(1 \leq i \leq n\).
+Also, show that if \((X_i)_{1 \leq i \leq n}\) are an ordered \(n\)-tuple of sets, then the Cartesian product, as defined in Definition \ref{3.5.7}, is indeed a set.
+\end{exercise}
+
+\begin{proof}
+We first prove \((x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n} \iff x_i = y_i \ \forall\ 1 \leq i \leq n\).
+We first prove the necessary condition.
+By the given definition, \(x = (x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n} = y\).
+Since \(x = y\), \(\forall\ i \in \{i \in \mathds{N}: 1 \leq i \leq n\}\), \(x(i) = y(i)\), but by the definition \(x_i = x(i) = y(i) = y_i\), so \(x_i = y_i \ \forall\ i \in \{i \in \mathds{N} : 1 \leq i \leq n\}\).
+Now we prove the sufficient condition.
+\(\forall\ i \in \{i \in \mathds{N} : 1 \leq i \leq n\}\), \(x_i = y_i\).
+But by the definition \(x(i) = x_i = y_i = y(i)\), so \(x = y\) is true.
+Again by definition, \(x = y\) means \((x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n}\).
+Since we have proved both the necessary and sufficient conditions, we conclude that \((x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n} \iff x_i = y_i \ \forall\ 1 \leq i \leq n\).
+
+If \((X_i)_{1 \leq i \leq n}\) are an ordered \(n\)-tuple of sets, by Axiom \ref{3.10}, we can consider a set of all functions \(i \mapsto x_i\) from the domain \(\{1 \leq i \leq n\}\) to the range \(\bigcup_{1 \leq i \leq n} X_i\).
+We denote such set as \(F\).
+Then by Exercise \ref{ex 3.4.7}, there exist a set of all partial function \(P = \{f : A \to B \mid (A \subseteq \{1 \leq i \leq n\}) \land (B \subseteq \bigcup_{1 \leq i \leq n} X_i\})\).
+Then by Axiom \ref{3.5}, there exist a set \(\{f \in P \mid (f = i \mapsto x_i) \land (x_i \in X_i) \ \forall\ 1 \leq i \leq n\}\).
+Using the given definition, we can rewrite such set as \(\{(x_i)_{1 \leq i \leq n} : x_i \in X_i \text{ for all } 1 \leq i \leq n\}\), which is the same definition as \(\prod_{1 \leq i \leq n} X_i\).
+So the Cartesian product is itself a set.
+\end{proof}
+
+\begin{exercise}\label{ex 3.5.3}
+Show that the definitions of equality for ordered pair and ordered \(n\)-tuple obey the reflexivity, symmetry, and transitivity axioms.
+\end{exercise}
+
+\begin{proof}
+We first prove the reflexivity.
+Let \((x_i)_{1 \leq i \leq n}\) be a \(n\)-tuple.
+Then by Definition \ref{3.5.7}, \(x_i = x_i\) for all object \(x_i\), \(1 \leq i \leq n\), so \((x_i)_{1 \leq i \leq n} = (x_i)_{1 \leq i \leq n}\).
+
+Next we prove the symmetry.
+Let \((x_i)_{1 \leq i \leq n}\) and \((y_i)_{1 \leq i \leq n}\) be two \(n\)-tuples.
+If \((x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n}\), then by Definition \ref{3.5.7}, \(x_i = y_i\), \(1 \leq i \leq n\), so \(y_i = x_i\), \(1 \leq i \leq n\).
+Thus \((y_i)_{1 \leq i \leq n} = (x_i)_{1 \leq i \leq n}\).
+
+Finally we prove the transitivity.
+Let \((x_i)_{1 \leq i \leq n}\), \((y_i)_{1 \leq i \leq n}\) and \((z_i)_{1 \leq i \leq n}\) be three \(n\)-tuples.
+If \((x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n}\) and \((y_i)_{1 \leq i \leq n} = (z_i)_{1 \leq i \leq n}\), then by Definition \ref{3.5.7}, \(x_i = y_i\) and \(y_i = z_i\), \(1 \leq i \leq n\), so \(x_i = z_i\), \(1 \leq i \leq n\).
+Thus \((x_i)_{1 \leq i \leq n} = (z_i)_{1 \leq i \leq n}\).
+\end{proof}
+
+\begin{exercise}\label{ex 3.5.4}
+Let \(A\), \(B\), \(C\) be sets.
+Show that \(A \times (B \cup C) = (A \times B) \cup (A \times C)\), that \(A \times (B \cap C) = (A \times B) \cap (A \times C)\), and that \(A \times (B \setminus C) = (A \times B) \setminus (A \times C)\).
+\end{exercise}
+
+\begin{proof}
+We first prove the union part.
+\(\forall\ (a, d) \in A \times (B \cup C)\), \((a \in A) \land (d \in B \cup C)\).
+If \(d \in B\), then \((a, d) \in A \times B\).
+Similarly if \(d \in C\), then \((a, d) \in A \times C\).
+Thus \((a, d) \in (A \times B) \cup (A \times C)\).
+\(\forall\ (a', d') \in (A \times B) \cup (A \times C)\), \(((a', d') \in A \times B) \lor ((a', d') \in A \times C)\).
+If \((a', d') \in A \times B\), then \((a' \in A) \land (d' \in B)\), so \(d' \in B \cup C\) is true.
+Similarly if \((a', d') \in A \times C\), then \((a' \in A) \land (d' \in C)\), so \(d' \in B \cup C\) is true.
+Thus \((a', d') \in A \times (B \cup C)\).
+We conclude that \(A \times (B \cup C) = (A \times B) \cup (A \times C)\).
+
+Next we prove the intersection part.
+\(\forall\ (a, d) \in A \times (B \cap C)\), \((a \in A) \land (d \in B \cap C)\).
+Because \((a \in A) \land (d \in B)\), so \((a, d) \in A \times B\).
+Similarly because \((a \in A) \land (d \in C)\), so \((a, d) \in A \times C\).
+Thus \((a, d) \in (A \times B) \cap (A \times C)\).
+\(\forall\ (a', d') \in (A \times B) \cap (A \times C)\), \(((a', d') \in A \times B) \land ((a', d') \in A \times C)\).
+Because \((a', d') \in A \times B\), so \((a' \in A) \land (d' \in B)\).
+Similarly because \((a', d') \in A \times C\), so \((a' \in A) \land (d' \in C)\).
+Thus \(d' \in B \cap C\), and \((a', d') \in A \times (B \cap C)\).
+
+Now we prove the difference part.
+\(\forall\ (a, d) \in A \times (B \setminus C)\), \((a \in A) \land (d \in B \setminus C)\).
+Since \(d \in B \setminus C\), \((d \in B) \land (d \notin C)\).
+So \((a \in A) \land (d \in B) \implies (a, d) \in A \times B\), and \((a \in A) \land (d \notin C) \implies (a, d) \notin A \times C\).
+Thus \((a, d) \in (A \times B) \setminus (A \times C)\).
+\(\forall\ (a', d') \in (A \times B) \setminus (A \times C)\), \(((a', d') \in A \times B) \land ((a', d') \notin A \times C)\).
+Because \((a', d') \in A \times B\), so \((a' \in A) \land (d' \in B)\).
+Also \(((a', d') \notin A \times C) \land (a' \in A)\), so \(d' \notin C\).
+Thus \(d' \in B \setminus C\), and \((a', d') \in A \times (B \setminus C)\).
+\end{proof}
+
+\begin{exercise}\label{ex 3.5.5}
+Let \(A\), \(B\), \(C\), \(D\) be sets.
+Show that \((A \times B) \cap (C \times D) = (A \cap C) \times (B \cap D)\).
+Is it true that \((A \times B) \cup (C \times D) = (A \cup C) \times (B \cup D)?\)
+Is it true that \((A \times B) \setminus (C \times D) = (A \setminus C) \times (B \setminus D)?\)
+\end{exercise}
+
+\begin{proof}
+We first prove the intersection part.
+\(\forall\ (x, y) \in (A \times B) \cap (C \times D)\), \(((x, y) \in A \times B) \land ((x, y) \in C \times D)\).
+So \((x \in A) \land (y \in B) \land (x \in C) \land (y \in D)\), and \((x \in A \cap C) \land (y \in B \cap D)\).
+Thus \((x, y) \in (A \cap C) \times (B \cap D)\).
+\(\forall\ (x', y') \in (A \cap C) \times (B \cap D)\), \((x' \in A \cap C) \land (y' \in B \cap D)\).
+So \((x' \in A \land y' \in B) \land (x' \in C \land y' \in D)\), and \(((x', y') \in A \times B) \land ((x', y') \in C \times D)\).
+Thus \((x', y') \in (A \times B) \cap (C \times D)\).
+We conclude that \((A \times B) \cap (C \times D) = (A \cap C) \times (B \cap D)\).
+
+Next we prove the union part.
+Let \((a, d) \in A \times D\) and \((a \notin C) \land (d \notin B)\).
+Because \(a \in A\), so \(a \in A \cup C\).
+And because \(d \in D\), so \(d \in B \cup D\).
+So \((a, d) \in (A \cup C) \times (B \cup D)\).
+But because \(a \notin C\), so \((a, d) \notin C \times D\).
+Also because \(d \notin B\), so \((a, d) \notin A \times B\).
+Thus \((a, d) \notin (A \times B) \cup (C \times D)\).
+We conclude that \((A \times B) \cup (C \times D) \neq (A \cup C) \times (B \cup D)\).
+
+Now we prove the difference part.
+Let \((a, b) \in A \times B\) and \((a \notin C) \land (b \in D)\).
+Because \(a \notin C\), so \((a, b) \notin C \times D\), and \((a, b) \in (A \times B) \setminus (C \times D)\).
+But \((b \in B) \land (b \in D)\), so \(b \notin B \setminus D\), and \((a, b) \notin (A \setminus C) \times (B \setminus D)\).
+We conclude that \((A \times B) \setminus (C \times D) \neq (A \setminus C) \times (B \setminus D)\).
+\end{proof}
+
+\begin{exercise}\label{ex 3.5.6}
+Let \(A\), \(B\), \(C\), \(D\) be non-empty sets.
+Show that \(A \times B \subseteq C \times D\) if and only if \(A \subseteq C\) and \(B \subseteq D\), and that \(A \times B = C \times D\) if and only if \(A = C\) and \(B = D\).
+What happens if the hypotheses that the \(A\), \(B\), \(C\), \(D\) are all non-empty are removed?
+\end{exercise}
+
+\begin{proof}
+We first prove the subset part.
+\(\forall\ (x, y) \in A \times B \subseteq C \times D\), \((x, y) \in A \times B \implies (x, y) \in C \times D\).
+So \((x \in A \implies x \in C) \land (y \in B \implies y \in D)\), and \((A \subseteq C) \land (B \subseteq D)\).
+Thus \(A \times B \subseteq C \times D \implies (A \subseteq C) \land (B \subseteq D)\).
+\(\forall\ x' \in A \subseteq C\) and \(\forall\ y' \in B \subseteq D\), \(x' \in A \implies x' \in C\) and \(y' \in B \implies y' \in D\).
+So \((x', y') \in A \times B \implies (x', y') \in C \times D\).
+Thus \((A \subseteq C) \land (B \subseteq D) \implies (A \times B) \subseteq (C \times D)\).
+We conclude that \(A \times B \subseteq C \times D \iff (A \subseteq C) \land (B \subseteq D)\).
+
+Next we prove the equality part.
+\(\forall\ (x, y) \in A \times B = C \times D\), \((x \in A \iff x \in C) \land (y \in B \iff y \in D)\).
+But \(x \in A \iff x \in C\) means \(A = C\), similarly \(y \in B \iff y \in D)\) means \(B = D\).
+Thus \(A \times B = C \times D \implies (A = C) \land (B = D)\).
+\(\forall\ x' \in A = C\) and \(\forall\ y' \in B = D\), \((x' \in A \iff x' \in C) \land (y' \in B \iff y' \in D)\).
+But \((x' \in A) \land (x' \in B) \iff (x', y') \in A \times B\) and \((x' \in C) \land (x' \in D) \iff (x', y') \in C \times D\), so \((x', y') \in A \times B \iff (x', y') \in C \times D\).
+Thus \((A = C) \land (B = D) \implies A \times B = C \times D\).
+We conclude that \(A \times B = C \times D \iff (A = C) \land (B = D)\).
+
+Finally we show that if the hypothesis removed.
+If \(A\), \(D\) are empty sets and \(B\), \(C\) are non-empty sets, then \(A \times B = \emptyset\) and \(C \times D = \emptyset\).
+So \(\emptyset = A \times B \subseteq C \times D = \emptyset\), but \(B \subsetneq D = \emptyset\).
+Thus the statement \(A \times B \subseteq C \times D \iff (A \subseteq C) \land (B \subseteq D)\) is false.
+Also \(\emptyset = A \times B = C \times D = \emptyset\), but \(\emptyset = A \neq C\).
+Thus the statement \(A \times B = C \times D \iff (A = C) \land (B = D)\) is false.
+\end{proof}
+
+\begin{exercise}\label{ex 3.5.7}
+Let \(X\), \(Y\) be sets, and let \(\pi_{X \times Y \to X} : X \times Y \to X\) and \(\pi_{X \times Y \to Y} : X \times Y \to Y\) be the maps \(\pi_{X \times Y \to X}(x, y) \coloneqq x\) and \(\pi_{X \times Y \to Y}(x, y) \coloneqq y\);
+these maps are known as the \emph{co-ordinate functions} on \(X \times Y\).
+Show that for any functions \(f : Z \to X\) and \(g : Z \to Y\), there exists a unique function \(h : Z \to X \times Y\) such that \(\pi_{X \times Y \to X} \circ h = f\) and \(\pi_{X \times Y \to Y} \circ h = g\).
+This function \(h\) is known as the \emph{direct sum} of \(f\) and \(g\) and is denoted \(h = f \oplus g\).
+\end{exercise}
+
+\begin{proof}
+We first prove the existence.
+Since \(h\) has domain \(Z\) and range \(X \times Y\), \(\pi_{X \times Y \to X} \circ h\) have domain \(Z\) and range \(X\), which is the same as \(f\).
+Similarly \(\pi_{X \times Y \to Y} \circ h\) has domain \(Z\) and range \(Y\), which is the same as \(g\).
+Therefore such \(h\) can exist.
+
+Now we prove the uniqueness.
+Suppose that there are two function \(h\) and \(h'\) statisfied the condition.
+Then \(\forall\ z \in Z\), \(h(z) \in X \times Y, h'(z) \in X \times Y\).
+Let \((x, y) = h(z)\) and \((x', y') = h'(z)\).
+So \(\pi_{X \times Y \to X}(h(z)) = x \in X\), \(\pi_{X \times Y \to X}(h'(z)) = x' \in X\), \(\pi_{X \times Y \to Y}(h(z)) = y \in Y\), \(\pi_{X \times Y \to X}(h'(z)) = y' \in Y\).
+But \(f(z) = \pi_{X \times Y \to X}(h(z)) = x\) and \(f(z) = \pi_{X \times Y \to X}(h'(z)) = x'\), so \(x = x'\).
+Similarly \(g(z) = \pi_{X \times Y \to Y}(h(z)) = y\) and \(g(z) = \pi_{X \times Y \to Y}(h'(z)) = y'\), so \(y = y'\).
+Thus \(\forall\ z \in Z\), \(h(z) = (x, y) = (x', y') = h'(z)\), so \(h = h'\).
+\end{proof}
+
+\begin{exercise}\label{ex 3.5.8}
+Let \(X_1, \cdots, X_n\) be sets.
+Show that the Cartesian product \(\prod_{i = 1}^n X_i\) is empty if and only if at least one of the \(X_i\) is empty.
+\end{exercise}
+
+\begin{proof}
+By Definition \ref{3.5.7} \(\prod_{i = 1}^n X_i = \{(x_i)_{1 \leq i \leq n} : x_i \in X_i, \forall\ 1 \leq i \leq n\}\).
+But if at least one of the \(X_i\) is empty, then there does not exist a \(x_i\) such that \(x_i \in X_i\).
+Therefore \((x_i)_{1 \leq i \leq n}\) does not exist, which means \(\prod_{i = 1}^n X_i = \emptyset\).
+\end{proof}
+
+\begin{exercise}\label{ex 3.5.9}
+Suppose that \(I\) and \(J\) are two sets, and for all \(\alpha \in I\) let \(A_{\alpha}\) be a set, and for all \(\beta \in J\) let \(B_{\beta}\) be a set.
+Show that \((\bigcup_{\alpha \in I} A_{\alpha}) \cap (\bigcup_{\beta \in J} B_{\beta}) = \bigcup_{(\alpha, \beta) \in I \times J} (A_{\alpha} \cap B_{\beta})\).
+\end{exercise}
+
+\begin{proof}
+\(\forall\ x \in (\bigcup_{\alpha \in I} A_{\alpha}) \cap (\bigcup_{\beta \in J} B_{\beta}) \iff (x \in \bigcup_{\alpha \in I} A_{\alpha}) \land (x \in \bigcup_{\beta \in J} B_{\beta}) \iff (\exists\ \alpha \in I, x \in A_{\alpha}) \land (\exists\ \beta \in J, x \in B_{\beta}) \iff \exists\ \alpha \in I \ \exists\ \beta \in J, x \in A_{\alpha} \cap B_{\beta} \iff \exists\ (\alpha, \beta) \in I \times J, x \in A_{\alpha} \cap B_{\beta} \iff x \in \bigcup_{(\alpha, \beta) \in I \times J} (A_{\alpha} \cap B_{\beta})\).
+\end{proof}
+
+\begin{exercise}\label{ex 3.5.10}
+If \(f : X \to Y\) is a function, define the \emph{graph} of \(f\) to be the subset of \(X \times Y\) defined by \(\{(x, f(x)) : x \in X\}\).
+Show that two functions \(f : X \to Y\), \(\tilde{f} : X \to Y\) are equal if and only if they have the same graph.
+Conversely, if \(G\) is any subset of \(X \times Y\) with the property that for each \(x \in X\), the set \(\{y \in Y : (x, y) \in G\}\) has exactly one element (or in other words, \(G\) obeys the vertical line test), show that there is exactly one function \(f : X \to Y\) whose graph is equal to \(G\).
+\end{exercise}
+
+\begin{proof}
+We first prove the equality.
+\(f = \tilde{f} \iff \forall\ x \in X, f(x) = \tilde{f}(x) \iff \forall\ x \in X, (x, f(x)) = (x, \tilde{f}(x)) \iff \{(x, f(x)) : x \in X\} = \{(x, \tilde{f}(x)) : x \in X\}\).
+Thus \(f = \tilde{f}\) iff they have the same graph.
+
+Now we prove that when \(G\) obeys the vertical line test, there is exactly one function \(f\) whose graph is \(G\).
+By the given condition, \(\forall\ x \in X\), \(\exists!\ y \in Y\) such that \((x, y) \in G\).
+Let \(f : X \to Y\) be a function that \(\forall\ x \in X\), \(f(x) = y\).
+If there is another \(f'\) satisfied that \(\forall\ x \in X\), \(f'(x) = y\), then \(f = f'\) by Definition \ref{3.3.7}.
+Then the graph of \(f\) is \(\{(x, f(x)) : (x \in X) \land (f(x) = y)\}\), which is the same set as \(G\).
+\end{proof}
+
+\begin{exercise}\label{ex 3.5.11}
+Show that Axiom \ref{3.10} can in fact be deduced from Lemma \ref{3.4.9} and the other axioms of set theory, and thus Lemma \ref{3.4.9} can be used as an alternate formulation of the power set axiom.
+\end{exercise}
+
+\begin{proof}
+For any two sets \(X\) and \(Y\), there exists a set \(X \times Y\).
+By Lemma \ref{3.4.9}, there exists a set \(A = \{a \mid a \subseteq X \times Y\}\).
+By Axiom \ref{3.5}, there exists a set \(B = \{b \mid (b \in A) \land (\forall\ (x, y), (x, y') \in b, (x \in X) \land ((x, y) = (x, y') \implies y = y'))\}\).
+By Exercise \ref{ex 3.5.10}, \(\forall\ G \in B\), there is exactly one \(f : X \to Y\) whose graph is equal to \(G\).
+Then by Axiom \ref{3.6}, there exist a set \(X^Y = \{f : X \to Y \mid (G \in B) \land (\text{graph of } f = G)\}\).
+\end{proof}
+
+\begin{exercise}\label{ex 3.5.12}
+Let \(f : \mathds{N} \times \mathds{N} \to \mathds{N}\) be a function, and let \(c\) be a natural number.
+Show that there exists a function \(a : \mathds{N} \to \mathds{N}\) such that
+\[
+    a(0) = c
+\]
+and
+\[
+    a(n++) = f(n, a(n)) \text{ for all } n \in \mathds{N},
+\]
+and furthermore that this function is unique.
+For an additional challenge, prove this result without using any properties of the natural numbers other than the Peano axioms directly.
+\end{exercise}
+
+\begin{proof}
+We claim that for every natural number \(N \in \mathds{N}\), there exists a unique function \(a_N : \{n \in \mathds{N} : n \leq N\} \to \mathds{N}\) such that \(a_N(0) = c\) and \(a_N(n++) = f(n, a_{N}(n))\) for all \(n \in \mathds{N}\) such that \(n < N\).
+
+We prove the claim by using induction on \(N\).
+For \(N = 0\), we need to show that such function \(a_0 : \{n \in \mathds{N} : n \leq 0\} \to \mathds{N}\) exists and is unique.
+The domain of \(a_0\) is equal to \(\{0\}\) since \(0\) is the only natural number less than or equal to \(0\).
+Then by defining \(a_0(0) = c\) where \(c \in \mathds{N}\) we get a unique function \(a_0 : \{0\} \to \{c\}\) (if \(a'_0 : \{0\} \to \{c\}\), then by Definition \ref{3.3.7} \(a_0 = a'_0\)).
+And because the domain of \(a_0\) is equal to \(\{0\}\), so there is no \(n \in \{0\}\) such that \((n \in \mathds{N}) \land (n < 0)\), so \(a_0(n++) = f(n, a_0(n))\) is vacuously true.
+Thus for \(N = 0\) the claim is true.
+Suppose inductively that for \(N\) the claim is also true.
+The function \(a_N : \{n \in \mathds{N} : n \leq N\} \to \mathds{N}\) exists and is unique, and \(a_N(0) = c\) and \(a_N(n++) = f(n, a_N(n))\) for all \(n \in \mathds{N}\) such that \(n < N\).
+Then for \(N++\), we can define \(a_{N++} : \{n \in \mathds{N} : n \leq N++\} \to \mathds{N}\) by setting \(a_{N++}(n) = a_N(n)\) when \((n \in \mathds{N}) \land (n < N++)\) (which is unique by induction hypothesis) and \(a_{N++}(N++) = f(N, a_{N++}(N))\) when \((n \in \mathds{N}) \land (n = N++)\) (which is also unique because \(N\) is unique by Axiom \ref{2.4} and \(a_{N++}(N) = a_N(N)\) is unique by induction hypothesis, so \(f(n, a(n))\) is unique by Definition \ref{3.3.1}).
+So \(a_{N++}\) exists and is unique, and \(a_{N++}(0) = a_N(0) = c\) and \(a_{N++}(n++) = f(n, a_{N++}(n))\) for all \(n \in \mathds{N}\) such that \(n < N++\).
+Thus we conclude that the claim is true.
+
+Now we prove the exercise.
+\(\forall\ N \in \mathds{N}\), we can define \(a(N)\) be the value of \(a_N(N)\), where \(a_N\) is the function in the claim, i.e., \(a(N) = a_{N}(N)\).
+Then \(a(0) = a_0(0) = c\), and \(a(N++) = a_{N++}(N++) = f(N, a_{N++}(N)) = f(N, a_{N}(N)) = f(N, a(N))\).
+Since all \(a_N\) exists and unique, thus such \(a\) exists and is unique.
+\end{proof}
+
+\begin{proof}{(additional challenge)}
+We claim that for every natural number \(N \in \mathds{N}\), there exists a unique pair \(A_N\), \(B_N\) of subsets of \(\mathds{N}\) which obeys the following properties:
+    \begin{enumerate}
+        \item \(A_N \cap B_N = \emptyset\)
+        \item \(A_N \cup B_N = \mathds{N}\)
+        \item \(0 \in A_N\)
+        \item \(N++ \in B_N\)
+        \item Whenever \(n \in B_N\), we have \(n++ \in B_N\)
+        \item Whenever \(n \in A_N\) and \(n \neq N\), we have \(n++ \in A_N\)
+    \end{enumerate}
+
+We prove the claim by using induction on \(N\).
+For \(N = 0\), by Axiom \ref{3.3} there exists a set \(\{0\}\), and let \(A_0 = \{0\}\).
+Also by Axiom \ref{3.7} and \ref{3.5}, there exists a set \(\mathds{N}\), and there also exists a set \(B_0 = \{n \in \mathds{N} \mid n \neq 0\}\).
+Then \(A_0 \cap B_0 = \emptyset\), \(A_0 \cup B_0 = \mathds{N}\), \(0 \in A_0\), \(0++ = 1 \in B_0\), \(\forall\ n \in B_0\) whenever \(n \in B_0\), we have \(n++ \in B_0\).
+And \(\forall\ n \in A_0\) whenever \(n \in A_0\) and \(n \neq 0\), we have \(n++ \in A_0\) is vacuously true because \(\{n \in A_0 : n \neq 0\} = \emptyset\).
+Now we need to show that \(A_0\) and \(B_0\) is unique, so assume that there exists another sets \(A_0'\) and \(B_0'\) such that the above condition holds.
+Then \(0 \in A_0'\) according to condition (c), and \(A_0' = \{0\}\) according to condition (f), so \(A_0 = A_0'\).
+And because \(A_0' \cap B_0' = \{0\} \cap B_0' = \emptyset\), and \(A_0' \cup B_0' = \mathds{N}\), and condition (e) is true, so \(B_0' = \{n \in \mathds{N} : n \neq 0\} = B_0\).
+Thus for \(N = 0\), there exists a unique pair \(A_0\) and \(B_0\) such that the above conditions hold.
+Suppose inductively that there exists a unique pair \(A_N\) and \(B_N\) such that the above conditions hold.
+Then for \(N++\) we can define \(A_{N++}\) and \(B_{N++}\) by setting \(A_{N++} = A_N \cup \{N++\}\) and \(B_{N++} = \{n \in B_N : n \neq N++\} = B_N \setminus \{N++\}\).
+Thus we can check the above conditions still hold.
+For condition (a), \(A_{N++} \cap B_{N++} = (A_N \cup \{N++\}) \cap (B_N \setminus \{N++\})\).
+For all \(n \in A_{N++}\), \(n \in A_N\) or \(n = N++\).
+If \(n \in A_N\), then \(n \notin B_N\) because \(A_N \cap B_N = \emptyset\) by induction hypothesis, so \(n \notin B_N \setminus \{N++\}\).
+If \(n = N++\), then \(n \notin B_N \setminus \{N++\}\).
+Thus \(A_{N++} \cap B_{N++} = \emptyset\), and condition (a) is true for \(A_{N++}\) and \(B_{N++}\).
+For condition (b), \(A_{N++} \cup B_{N++} = (A_N \cup \{N++\}) \cup (B_N \setminus \{N++\}) = (A_N \cup (B_N \setminus \{N++\})) \cup (\{N++\} \cup (B_N \setminus \{N++\})) = (A_N \cup (B_N \setminus \{N++\})) \cup B_N = A_N \cup B_N = \mathds{N}\) by induction hypothesis.
+Thus condition (b) is true for \(A_{N++}\) and \(B_{N++}\).
+For condition (c), \(0 \in A_{N++}\) because \(0 \in A_N\) and \(A_{N++} = A_N \cup \{N++\}\), so condition (c) is true for \(A_{N++}\).
+For condition (d), we want to show that \((N++)++ \in B_N\).
+By induction hypothesis, \(N \in A_N\) and \(N++ \in B_N\) is true, so \((N++)++ \in B_N\) is true.
+Thus \((N++)++ \in B_N \setminus \{N++\} = B_{N++}\) is also true, so condition (e) is true for \(B_{N++}\).
+For condition (f), since \(N \in A_N\) by induction hypothesis, \(N++ \in A_N \cup \{N++\} = A_{N++}\) is true.
+And by (a) and (e), \((N++)++\) is not in \(A_N\).
+So whenever \(n \in A_{N++}\) and \(n \neq N++\), we have \(n++ \in A_{N++}\).
+Thus condition (f) is true for \(A_{N++}\).
+Now we need to show that \(A_{N++}\) and \(B_{N++}\) is unique.
+Because \(A_{N++} = A_N \cup \{N++\}\), and by induction hypothesis \(A_N\) is unique and \(\{N++\}\) is also unique, so \(A_{N++}\) is unique.
+Similarly \(B_{N++}\) is unique.
+Thus we close the induction, so for every \(N \in \mathds{N}\) we have unique \(A_N\) and \(B_N\) such that the above condition is true.
+
+Now we claim that for every natural number \(N \in \mathds{N}\), there exists a unique function \(a_N : A_N \to \mathds{N}\) such that \(a_N(0) = c\) and \(a_N(n++) = f(n, a_{N}(n))\) for all \(n \in \mathds{N}\) such that \(n < N\).
+
+With similar process of previous proof, we can show that the statement is true, and by defining \(a\) with similar argument we can show that \(a\) exist and is unique.
+\end{proof}
+
+\begin{exercise}\label{ex 3.5.13}
+Suppose we have a set \(\mathds{N}'\) of \say{alternative natural numbers}, an \say{alternative zero} 0', and an \say{alternative increment operation} which takes any alternative natural number \(n' \in N\) and returns another alternative natural number \(n'++' \in \mathds{N}'\), such that the Peano axioms (Axioms \ref{2.1}-\ref{2.5}) all hold with the natural numbers, zero, and increment replaced by their alternative counterparts.
+Show that there exists a bijection \(f : \mathds{N} \to \mathds{N}'\) from the natural numbers to the alternative natural numbers such that \(f(0) = 0'\), and such that for any \(n \in \mathds{N}\) and \(n' \in \mathds{N}'\), we have \(f(n) = n'\) if and only if \(f(n++) = n'++'\).
+\end{exercise}
+
+\begin{proof}
+Define \(f: \mathds{N} \to \mathds{N}'\) be a function such that \(f(0) = 0'\) and \(f(n++) = f(n)++'\).
+We need to show that such \(f\) exists and is bijective.
+
+First we show that \(f\) exists, for which we need to show that \(\forall\ n \in \mathds{N}\), there exists exactly one value \(f(n) \in \mathds{N}'\).
+And we use induction on \(n\).
+For \(n = 0\), by the above definition \(f(0) = 0' \in \mathds{N}'\), so the base case holds.
+Suppose inductively that \(f(n) \in \mathds{N}'\) and there is only one value for \(f(n)\) for some \(n\).
+Then for \(n++\), we need to show that \(f(n++) \in \mathds{N}'\) and there is only one value for \(f(n++)\).
+By induction hypothesis, \(f(n) \in \mathds{N}'\), and because by the given condition Axiom \ref{2.1}-\ref{2.5} all hold on \(\mathds{N}'\), \(f(n)++' \in \mathds{N}'\) and there is only one value for \(f(n)++'\).
+So by the above definition \(f(n++) = f(n)++'\) exists and there is only one value for \(f(n++)\), this close the induction.
+
+Next we show that \(f\) is injective.
+Let \(a, b \in \mathds{N}\) and \(f(a) = f(b)\).
+We claim that \(f(a) = f(b) \implies a = b\), and we use induction on \(a\).
+For \(a = 0\), \(f(a) = f(b) = f(0) = 0'\) by the above definition.
+If \(b \neq 0\), then by Lemma \ref{2.2.10}, there exists exactly one natural number \(c\) such that \(c++ = b\).
+So \(f(b) = f(c++) = f(c)++' = 0'\) by the above definition, but by Axiom \ref{2.3}, \(f(c)++' \neq 0'\), a contradiction.
+Thus \(b = 0\), which means the base case holds.
+Suppose inductively that \(f(a) = f(b) \implies a = b\) for some \(a\).
+Then for \(a++\), we need to show that \(f(a++) = f(b++) \implies a++ = b++\).
+By the above definition \(f(a++) = f(a)++' = f(b++) = f(b)++'\).
+Because \(f(a)++' = f(b)++'\), by Axiom \ref{2.4}, \(f(a) = f(b)\).
+By induction hypothesis, \(f(a) = f(b) \implies a = b\), thus \(a++ = b++\) by Axiom \ref{2.4}, and this close the induction.
+
+Finally we show that \(f\) is surjective.
+We need to show that \(\forall\ n' \in \mathds{N}'\), \(\exists\ n \in \mathds{N}\) such that \(f(n) = n'\).
+We use induction on \(n'\).
+For \(n' = 0'\), \(f(0) = 0'\) by the above definition, so the base case holds.
+Suppose inductively that for some \(n' \in \mathds{N}'\), \(\exists\ n \in \mathds{N}\) such that \(f(n) = n'\).
+Then for \(n'++'\), by induction hypothesis, \(n'++' = (n')++' = f(n)++'\)
+By the above definition, \(f(n)++' = f(n++)\), this close the induction.
+\end{proof}

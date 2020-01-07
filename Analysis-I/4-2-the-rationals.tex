@@ -1,0 +1,682 @@
+\section{The rationals}
+
+\begin{definition}\label{4.2.1}
+A \emph{rational number} is an expression of the form \(a // b\), where \(a\) and \(b\) are integers and \(b\) is non-zero;
+\(a // 0\) is not considered to be a rational number.
+Two rational numbers are considered to be equal, \(a // b = c // d\), if and only if \(ad = cb\).
+The set of all rational numbers is denoted \(\mathds{Q}\).
+\end{definition}
+
+\begin{note}
+There is no reasonable way we can divide by zero, since one cannot have both the identities \((a / b) \times b = a\) and \(c \times 0 = 0\) hold simultaneously if \(b\) is allowed to be zero and \(a\) is non-zero.
+Similarly, the identities \(a / a = 1\) and \(2 \times (a / a) = (2 \times a) / a\) cannot hold simultaneously if \(0 / 0\) is defined.
+However, we can eventually get a reasonable notion of dividing by a quantity which approaches zero
+- think of L'H\^opital's rule (see Section 10.5), which suffices for doing things like defining differentiation.
+\end{note}
+
+\begin{additional corollary}\label{ac 4.2.1}
+The definition of equality for the rational numbers is reflexive, symmetric and transitive.
+\end{additional corollary}
+
+\begin{proof}
+We first prove the reflexivity of the rational numbers.
+Let \(a \in \mathds{Q}\) and \(a = a_1 // a_2\), where \(a_1, a_2 \in \mathds{Z}\) and \(a_2 \neq 0\).
+By Lemma \ref{4.1.3}, multiplication of integers is well-defined, so \(a_1a_2 = a_1a_2\).
+By Definition \ref{4.2.1}, \(a_1a_2 = a_1a_2 \implies a_1 // a_2 = a_1 // a_2\).
+
+Next we prove the symmetry of the rational numbers.
+Let \(a, b \in \mathds{Q}\), \(a = a_1 // a_2\) and \(b = b_1 // b_2\), where \(a_1, a_2, b_1, b_2 \in \mathds{Z}\), \(a_2 \neq 0\) and \(b_2 \neq 0\).
+So if \(a = b\), then
+\begin{align*}
+& a = b \\
+\implies & a_1 // a_2 = b_1 // b_2 & \text{(by Definition \ref{4.2.1})} \\
+\implies & a_1b_2 = b_1a_2 & \text{(by Definition \ref{4.2.1})} \\
+\implies & b_1a_2 = a_1b_2 \\
+\implies & b_1 // b_2 = a_1 // a_2 & \text{(by Definition \ref{4.2.1})} \\
+\implies & b = a. & \text{(by Definition \ref{4.2.1})}
+\end{align*}
+
+Finally we prove the transitivity of the rational numbers.
+Let \(a, b, c \in \mathds{Q}\), \(a = a_1 // a_2\), \(b = b_1 // b_2\) and \(c = c_1 // c_2\), where \(a_1, a_2, b_1, b_2, c_1, c_2 \in \mathds{Z}\), \(a_2 \neq 0\), \(b_2 \neq 0\) and \(c_2 \neq 0\).
+So if \(a = b\) and \(b = c\), then
+\begin{align*}
+& a = b \\
+\implies & a_1 // a_2 = b_1 // b_2 & \text{(by Definition \ref{4.2.1})} \\
+\implies & a_1b_2 = b_1a_2 & \text{(by Definition \ref{4.2.1})} \\
+& b = c \\
+\implies & b_1 // b_2 = c_1 // c_2 & \text{(by Definition \ref{4.2.1})} \\
+\implies & b_1c_2 = c_1b_2 & \text{(by Definition \ref{4.2.1})} \\
+\implies & a_2(b_1c_2) = a_2(c_1b_2) & \text{(by Lemma \ref{4.1.3})} \\
+\implies & (a_2b_1)c_2 = a_2(c_1b_2) & \text{(by Proposition \ref{4.1.6})} \\
+\implies & (b_1a_2)c_2 = a_2(c_1b_2) & \text{(by Proposition \ref{4.1.6})} \\
+\implies & (a_1b_2)c_2 = a_2(c_1b_2) & \text{(by the given condition)} \\
+\implies & a_1(b_2c_2) = a_2(c_1b_2) & \text{(by Proposition \ref{4.1.6})} \\
+\implies & a_1(c_2b_2) = a_2(c_1b_2) & \text{(by Proposition \ref{4.1.6})} \\
+\implies & (a_1c_2)b_2 = (a_2c_1)b_2 & \text{(by Proposition \ref{4.1.6})} \\
+\implies & a_1c_2 = a_2c_1 & \text{(by Corollary \ref{4.1.9})} \\
+\implies & a_1 // a_2 = c_1 // c_2 & \text{(by Definition \ref{4.2.1})} \\
+\implies & a = c. & \text{(by Definition \ref{4.2.1})}
+\end{align*}
+\end{proof}
+
+\begin{definition}\label{4.2.2}
+If \(a // b\) and \(c // d\) are rational numbers, we define their sum
+\[
+    (a // b) + (c // d) \coloneqq (ad + bc) // (bd)
+\]
+their product
+\[
+    (a // b) \times (c // d) \coloneqq (ac) // (bd)
+\]
+and the negation
+\[
+    -(a // b) \coloneqq (-a) // b.
+\]
+\end{definition}
+
+\begin{note}
+If \(b\) and \(d\) are non-zero, then \(bd\) is also non-zero, by Proposition \ref{4.1.8}, so the sum or product of two rational numbers remains a rational number.
+\end{note}
+
+\begin{lemma}\label{4.2.3}
+The sum, product, and negation operations on rational numbers are well-defined, in the sense that if one replaces \(a // b\) with another rational number \(a' // b'\) which is equal to \(a // b\), then the output of the above operations remains unchanged, and similarly for \(c // d\).
+\end{lemma}
+
+\begin{proof}
+We first prove the addition on rationals numbers is well-defined.
+Suppose \(a // b = a' // b'\), so that \(b\) and \(b'\) are non-zero and \(ab' = a'b\).
+We now show that \((a // b) + (c // d) = (a' // b') + (c // d)\).
+By Definition \ref{4.2.2}, the left-hand side is \((ad + bc) // bd\) and the right-hand side is \((a'd + b'c) // b'd\).
+So by Definition \ref{4.2.1}, we have to show that
+\[
+    (ad + bc)b'd = (a'd + b'c)bd,
+\]
+which expands to
+\[
+    ab'd^2 + bb'cd = a'bd^2 + bb'cd.
+\]
+But since \(ab' = a'b\), the claim follows.
+Similarly suppose \(c // d = c' // d'\), so that \(d\) and \(d'\) are non-zero and \(cd' = c'd\).
+We now show that \((a // b) + (c // d) = (a // b) + (c' // d')\).
+By Definition \ref{4.2.2}, the left-hand side is \((ad + bc) // bd\) and the right-hand side is \((ad' + bc') // bd'\).
+So by Definition \ref{4.2.1}, we have to show that
+\[
+    (ad + bc)bd' = (ad' + bc')bd,
+\]
+which expands to
+\[
+    abdd' + b^2cd' = abdd' + b^2c'd.
+\]
+But since \(cd' = c'd\), the claim follows.
+
+Next we prove the multiplication on rationals numbers is well-defined.
+Suppose \(a // b = a' // b'\), so that \(b\) and \(b'\) are non-zero and \(ab' = a'b\).
+We now show that \((a // b) \times (c // d) = (a' // b') \times (c // d)\).
+By Definition \ref{4.2.2}, the left-hand side is \((ac) // (bd)\) and the right-hand side is \((a'c) // (b'd)\).
+So by Definition \ref{4.2.1}, we have to show that
+\[
+    (ac)(b'd) = (a'c)(bd),
+\]
+which is equivalent to
+\[
+    ab'cd = a'bcd.
+\]
+But since \(ab' = a'b\), the claim follows.
+Similary suppose \(c // d = c' // d'\), so that \(d\) and \(d'\) are non-zero and \(cd' = c'd\).
+We now show that \((a // b) \times (c // d) = (a // b) \times (c' // d')\).
+By Definition \ref{4.2.2}, the left-hand side is \((ac) // (bd)\) and the right-hand side is \((ac') // (bd')\).
+So by Definition \ref{4.2.1}, we have to show that
+\[
+    (ac)(bd') = (ac')(bd),
+\]
+which is equivalent to
+\[
+    abcd' = abc'd.
+\]
+But since \(cd' = c'd\), the claim follows.
+
+Finally we prove the negation on rationals numbers is well-defined.
+Suppose \(a // b = a' // b'\), so that \(b\) and \(b'\) are non-zero and \(ab' = a'b\).
+We now show that \(-(a // b) = -(a' // b')\).
+By Definition \ref{4.2.2}, the left-hand side is \((-a) // b\) and the right-hand side is \((-a') // b'\).
+So by Definition \ref{4.2.1}, we have to show that
+\[
+    (-a)b' = (-a')b,
+\]
+which by Exercise \ref{ex 4.1.3} is equivalent to
+\[
+    (-1)ab' = (-1)a'b.
+\]
+But since \(ab' = a'b\), the claim follows.
+\end{proof}
+
+\begin{note}
+The rational numbers \(a // 1\) behave in a manner identical to the integers \(a\):
+\begin{align*}
+    (a // 1) + (b // 1) &= (a + b) // 1; \\
+    (a // 1) \times (b // 1) &= (ab // 1); \\
+    -(a // 1) &= (-a) // 1.
+\end{align*}
+Also, \(a // 1\) and \(b // 1\) are only equal when \(a\) and \(b\) are equal.
+Because of this, we will identify \(a\) with \(a // 1\) for each integer \(a\): \(a \equiv a // 1\);
+the above identities then guarantee that the arithmetic of the integers is consistent with the arithmetic of the rationals.
+Thus just as we embedded the natural numbers inside the integers, we embed the integers inside the rational numbers.
+In particular, all natural numbers are rational numbers, for instance \(0\) is equal to \(0 // 1\) and \(1\) is equal to \(1 // 1\).
+\end{note}
+
+\begin{note}
+Observe that a rational number \(a // b\) is equal to \(0 = 0 // 1\) if and only if \(a \times 1 = b \times 0\), i.e., if the numerator \(a\) is equal to \(0\).
+Thus if \(a\) and \(b\) are non-zero then so is \(a // b\).
+\end{note}
+
+\begin{note}
+We now define a new operation on the rationals: reciprocal.
+If \(x = a // b\) is a non-zero rational (so that \(a, b \neq 0\)) then we define the \emph{reciprocal} \(x^{-1}\) of \(x\) to be the rational number \(x^{-1} \coloneqq b // a\).
+\end{note}
+
+\begin{additional corollary}\label{ac 4.2.2}
+The reciprocal operation on rational numbers is consistent with Definition \ref{4.2.1}:
+if two rational numbers \(a // b\), \(a' // b'\) are equal, then their reciprocals are also equal.
+We however leave the reciprocal of \(0\) undefined.
+\end{additional corollary}
+
+\begin{proof}
+By Definition \ref{4.2.1}, \(b \neq 0\) and \(b' \neq 0\).
+By the definition of reciprocal, \(a \neq 0\) and \(a' \neq 0\).
+\begin{align*}
+& a // b = a' // b' \\
+\implies & ab' = a'b & \text{(by Definition \ref{4.2.1})} \\
+\implies & b'a = ba' & \text{(by Proposition \ref{4.1.6})} \\
+\implies & b' // a' = b // a. & \text{(by Definition \ref{4.2.1})}
+\end{align*}
+\end{proof}
+
+\begin{note}
+In contrast to reciprocal, an operation such as ``numerator'' is not well-defined:
+the rationals \(3 // 4\) and \(6 // 8\) are equal, but have unequal numerators, so we have to be careful when referring to such terms as ``the numerator of \(x\)''.
+\end{note}
+
+\begin{proposition}[Laws of algebra for rationals]\label{4.2.4}
+Let \(x\), \(y\), \(z\) be rationals.
+Then the following laws of algebra hold:
+\begin{align*}
+x + y &= y + x \\
+(x + y) + z &= x + (y + z) \\
+x + 0 = 0 + x &= x \\
+x + (-x) = (-x) + x &= 0 \\
+xy &= yx \\
+(xy)z &= x(yz) \\
+x1 = 1x &= x \\
+x(y + z) &= xy + xz \\
+(y + z)x &= yx + zx.
+\end{align*}
+If \(x\) is non-zero, we also have
+\[
+    xx^{-1} = x^{-1}x = 1.
+\]
+\end{proposition}
+
+\begin{proof}
+To prove this identity, one writes \(x = a // b\), \(y = c // d\), \(z = e // f\) for some integers \(a\), \(c\), \(e\) and non-zero integers \(b\), \(d\), \(f\), and verifies each identity in turn using the algebra of the integers.
+
+First we prove \(x + y = y + x\).
+\begin{align*}
+x + y &= (a // b) + (c // d) & \text{(by the given condition)} \\
+&= (ad + bc) // bd & \text{(by Definition \ref{4.2.2})} \\
+&= (bc + ad) // bd & \text{(by Proposition \ref{4.1.6})} \\
+&= (cb + da) // db & \text{(by Proposition \ref{4.1.6})} \\
+&= (c // d) + (a // b) & \text{(by Definition \ref{4.2.2})} \\
+&= y + x. & \text{(by the given condition)}
+\end{align*}
+
+Next we prove \((x + y) + z = x + (y + z)\).
+\begin{align*}
+(x + y) + z &= ((a // b) + (c // d)) + (e // f) & \text{(by the given condition)} \\
+&= ((ad + bc) // bd) + (e // f) & \text{(by Definition \ref{4.2.2})} \\
+&= ((ad + bc)f + (bd)e) // (bd)f & \text{(by Definition \ref{4.2.2})} \\
+&= ((ad)f + (bc)f + (bd)e) // (bd)f & \text{(by Proposition \ref{4.1.6})} \\
+&= (a(df) + b(cf) + b(de)) // b(df) & \text{(by Proposition \ref{4.1.6})} \\
+&= (a(df) + b(cf + de)) // b(df) & \text{(by Proposition \ref{4.1.6})} \\
+&= (a // b) + ((cf + de) // df) & \text{(by Definition \ref{4.2.2})} \\
+&= (a // b) + ((c // d) + (e // f)) & \text{(by Definition \ref{4.2.2})} \\
+&= x + (y + z). & \text{(by the given condition)}
+\end{align*}
+
+Next we prove \(x + 0 = 0 + x = x\).
+Because we already prove that \(x + y = y + x\), so \(x + 0 = 0 + x\).
+Thus we only need to show that \(x + 0 = x\).
+\begin{align*}
+x + 0 &= (a // b) + (0 // 1) & \text{(by the given condition)} \\
+&= (a1 + b0) // b1 & \text{(by Definition \ref{4.2.2})} \\
+&= (a + 0) // b & \text{(by Proposition \ref{4.1.6})} \\
+&= a // b & \text{(by Proposition \ref{4.1.6})} \\
+&= x. & \text{(by the given condition)}
+\end{align*}
+
+Next we prove \(x + (-x) = (-x) + x = 0\).
+Because we already prove that \(x + y = y + x\), so \(x + (-x) = (-x) + x\).
+Thus we only need to show that \(x + (-x) = 0\).
+\begin{align*}
+x + (-x) &= (a // b) + (-(a // b)) & \text{(by the given condition)} \\
+&= (a // b) + ((-a) // b) & \text{(by Definition \ref{4.2.2})} \\
+&= (ab + b(-a)) // b^2 & \text{(by Definition \ref{4.2.2})} \\
+&= (ab + (-a)b) // b^2 & \text{(by Proposition \ref{4.1.6})} \\
+&= (ab + ((-1)a)b) // b^2 & \text{(by Exercise \ref{ex 4.1.3})} \\
+&= (ab + (-1)(ab)) // b^2 & \text{(by Proposition \ref{4.1.6})} \\
+&= (ab + (-(ab)) // b^2 & \text{(by Exercise \ref{ex 4.1.3})} \\
+&= 0 // b^2 & \text{(by Proposition \ref{4.1.6})} \\
+&= 0.
+\end{align*}
+
+Next we prove \(xy = yx\).
+\begin{align*}
+xy &= (a // b) \times (c // d) & \text{(by the given condition)} \\
+&= ac // bd & \text{(by Definition \ref{4.2.2})} \\
+&= ca // db & \text{(by Proposition \ref{4.1.6})} \\
+&= (c // d) \times (a // b) & \text{(by Definition \ref{4.2.2})} \\
+&= yx. & \text{(by the given condition)}
+\end{align*}
+
+Next we prove \((xy)z = x(yz)\).
+\begin{align*}
+(xy)z &= ((a // b) \times (c // d)) \times (e // f) & \text{(by the given condition)} \\
+&= (ac // bd) \times (e // f) & \text{(by Definition \ref{4.2.2})} \\
+&= (ac)e // (bd)f & \text{(by Definition \ref{4.2.2})} \\
+&= a(ce) // b(df) & \text{(by Proposition \ref{4.1.6})} \\
+&= (a // b) \times (ce // df) & \text{(by Definition \ref{4.2.2})} \\
+&= (a // b) \times ((c // d) \times (e // f)) & \text{(by Definition \ref{4.2.2})} \\
+&= x(yz). & \text{(by the given condition)}
+\end{align*}
+
+Next we prove \(x1 = 1x = x\).
+Because we already prove that \(xy = yx\), so \(x1 = 1x\).
+Thus we only need to show that \(x1 = x\).
+\begin{align*}
+x1 &= (a // b) \times (1 // 1) & \text{(by the given condition)} \\
+&= a1 // b1 & \text{(by Definition \ref{4.2.2})} \\
+&= a // b & \text{(by Proposition \ref{4.1.6})} \\
+&= x. & \text{(by the given condition)}
+\end{align*}
+
+Next we prove \(x(y + z) = xy + xz\).
+\begin{align*}
+x(y + z) &= (a // b) \times ((c // d) + (e // f)) & \text{(by the given condition)} \\
+&= (a // b) \times ((cf + de) // df) & \text{(by Definition \ref{4.2.2})} \\
+&= a(cf + de) // b(df) & \text{(by Definition \ref{4.2.2})} \\
+&= (a(cf) + a(de)) // b(df) & \text{(by Proposition \ref{4.1.6})} \\
+&= b(a(cf) + a(de)) // b^2(df) & \text{(by Proposition \ref{4.2.1})} \\
+&= (b(a(cf)) + b(a(de))) // b^2(df) & \text{(by Proposition \ref{4.1.6})} \\
+&= ((ba)(cf) + (ba)(de)) // b^2(df) & \text{(by Proposition \ref{4.1.6})} \\
+&= ((b(ac))f + (ba)(de)) // (b(bd))f & \text{(by Proposition \ref{4.1.6})} \\
+&= (((ac)b)f + (ba)(ed)) // ((bd)b)f & \text{(by Proposition \ref{4.1.6})} \\
+&= ((ac)(bf) + (b(ae))d) // (bd)(bf) & \text{(by Proposition \ref{4.1.6})} \\
+&= ((ac)(bf) + b((ae)d)) // (bd)(bf) & \text{(by Proposition \ref{4.1.6})} \\
+&= ((ac)(bf) + b(d(ae))) // (bd)(bf) & \text{(by Proposition \ref{4.1.6})} \\
+&= ((ac)(bf) + (bd)(ae)) // (bd)(bf) & \text{(by Proposition \ref{4.1.6})} \\
+&= ((ac)(bf) + (bd)(ae)) // (bd)(bf) & \text{(by Definition \ref{4.2.1})} \\
+&= (ac // bd) + (ae // bf) & \text{(by Definition \ref{4.2.2})} \\
+&= ((a // b) \times (c // d)) + ((a // b) \times (e // f)) & \text{(by Definition \ref{4.2.2})} \\
+&= xy + xz. & \text{(by the given condition)}
+\end{align*}
+
+Next we prove \((y + z)x = yx + zx\).
+Because we already prove \(pq = qp\) and \(p(q + r) = pq + pr\), where \(p, q, r \in \mathds{Q}\),
+so
+\begin{align*}
+(y + z)x &= x(y + z) & (\because pq = qp) \\
+&= xy + xz & (\because p(q + r) = pq + pr) \\
+&= yx + zx. & (\because pq = qp)
+\end{align*}
+
+Finally we prove \(xx^{-1} = x^{-1}x = 1\).
+Because we already prove that \(xy = yx\), so \(xx^{-1} = x^{-1}x\).
+Thus we only need to show that \(xx^{-1} = 1\).
+\begin{align*}
+xx^{-1} &= (a // b) \times (b // a) & \text{(by the given condition)} \\
+&= ab // ba & \text{(by Definition \ref{4.2.2})} \\
+&= ab // ab & \text{(by Proposition \ref{4.1.6})} \\
+&= 1 // 1  & \text{(by Definition \ref{4.2.1})} \\
+&= 1.
+\end{align*}
+\end{proof}
+
+\begin{remark}\label{4.2.5}
+The above set (Proposition \ref{4.2.4}) of ten identities have a name;
+they are asserting that the rationals \(\mathds{Q}\) form a \emph{field}.
+This is better than being a commutative ring because of the tenth identity \(xx^{-1} = x^{-1}x = 1\).
+Note that Proposition \ref{4.2.4} supercedes Proposition \ref{4.1.6}.
+\end{remark}
+
+\begin{note}
+We can now define the \emph{quotient} \(x / y\) of two rational numbers \(x\) and \(y\), \emph{provided that} \(y\) is non-zero, by the formula
+\[
+    x / y \coloneqq x \times y^{-1}.
+\]
+\end{note}
+
+\begin{note}
+Using the above formula, it is easy to see that \(a / b = a // b\) for every integer \(a\) and every non-zero integer \(b\).
+Thus we can now discard the \(//\) notation, and use the more customary \(a / b\) instead of \(a // b\).
+\end{note}
+
+\begin{note}
+In a similar spirit, we define subtraction on the rationals by the formula
+\[
+    x - y \coloneqq x + (-y),
+\]
+just as we did with the integers.
+\end{note}
+
+\begin{definition}\label{4.2.6}
+A rational number \(x\) is said to be \emph{positive} iff we have \(x = a / b\) for some positive integers \(a\) and \(b\).
+It is said to be \emph{negative} iff we have \(x = -y\) for some positive rational \(y\)
+(i.e., \(x = (-a) / b\) for some positive integers \(a\) and \(b\)).
+\end{definition}
+
+\begin{note}
+Thus for instance, every positive integer is a positive rational number, and every negative integer is a negative rational number, so our new definition is consistent with our old one.
+\end{note}
+
+\begin{additional corollary}\label{ac 4.2.3}
+Let \(x = a / b\) be a rational number where \(a, b \in \mathds{Z}\) and \(b \neq 0\).
+Then
+\[
+    -x = (-a) / b = a / (-b) = (-1)(a / b) = (-1)x.
+\]
+\end{additional corollary}
+
+\begin{proof}
+\begin{align*}
+-x &= -(a / b) & \text{(by given condition)} \\
+&= (-a) / b & \text{(by Definition \ref{4.2.2})} \\
+&= ((-1)a) / b & \text{(by Exercise \ref{ex 4.1.3})} \\
+&= ((-1)a) / 1b & \text{(by Proposition \ref{4.1.6})} \\
+&= ((-1) / 1) \times (a / b) & \text{(by Definition \ref{4.2.2})} \\
+&= (-1)(a / b) \\
+&= (-1)x \\
+&= (1 / (-1)) \times (a / b) & \text{(by Definition \ref{4.2.1})} \\
+&= 1a / (-1)b & \text{(by Definition \ref{4.2.2})} \\
+&= a / (-1)b & \text{(by Proposition \ref{4.1.6})} \\
+&= a / (-b). & \text{(by Exercise \ref{ex 4.1.3})}
+\end{align*}
+\end{proof}
+
+\begin{lemma}[Trichotomy of rationals]\label{4.2.7}
+Let \(x\) be a rational number.
+Then exactly one of the following three statements is true:
+\begin{enumerate*}
+    \item \(x\) is equal to \(0\).
+    \item \(x\) is a positive rational number.
+    \item \(x\) is a negative rational number.
+\end{enumerate*}
+\end{lemma}
+
+\begin{proof}
+We first show that at least one of (a), (b), (c) is true.
+Let \(x = a / b\), where \(a, b \in \mathds{Z}\) and \(b \neq 0\).
+By Lemma \ref{4.1.11}, \(a\) can only satisified one of the following three statements:
+\(a = 0\), \(a > 0\) and \(a < 0\).
+Similarly, \(b\) can only satisified one of the following two statements:
+\(b > 0\) and \(b < 0\).
+So
+\begin{enumerate}[label=(\Roman*)]
+    \item If \(a = 0\), then \(x = 0 / b = 0\).
+    \item If \(a > 0\), then we need to consider \(b\).
+    \begin{enumerate}[label=(\roman*)]
+        \item If \(b > 0\), then by Definition \ref{4.2.6}, \(x\) is positive.
+        \item If \(b < 0\), then \(b = -c\) by Definition \ref{4.1.4}, where \(c \in \mathds{Z}^+\).
+        So \(a / b = a / (-c) = (-a) / c\) by Additional Corollary \ref{ac 4.2.3}, which means \(x\) is negative by Definition \ref{4.2.6}.
+    \end{enumerate}
+    \item If \(a < 0\), then \(a = -c\) by Definition \ref{4.1.4}, where \(c \in \mathds{Z}^+\).
+    Now we consider \(b\).
+    \begin{enumerate}[label=(\roman*)]
+        \item If \(b > 0\), then \(a / b = (-c) / b\), which means \(x\) is negative by Definition \ref{4.2.6}.
+        \item If \(b < 0\), then \(b = -d\) by Definition \ref{4.1.4}, where \(d \in \mathds{Z}^+\).
+        So \(a / b = (-c) / (-d) = (-1)((-c) / d) = (-1)(-1)(c / d) = c / d\) by Additional Corollary \ref{ac 4.2.3}, which means \(x\) is positive by Definition \ref{4.2.6}.
+    \end{enumerate}
+\end{enumerate}
+
+Now we show that at most one of (a), (b), (c) is true.
+\begin{enumerate}[label=(\Roman*)]
+    \item If \(x\) is both positive and \(0\), then by Definition \ref{4.2.6} and \ref{4.2.1}, \(x = a / b = 0 / 1\), where \(a, b \in \mathds{Z}^+\).
+    But \(a / b = 0 / 1\) means \(a = 0\), contradicted to \(a\) is positive.
+    \item If \(x\) is both negative and \(0\), then by Definition \ref{4.2.6} and \ref{4.2.1}, \(x = (-a) / b = 0 / 1\), where \(a, b \in \mathds{Z}^+\).
+    But \((-a) / b = 0 / 1\) means \(-a = 0\), contradicted to \(a\) is positive.
+    \item If \(x\) is both positive and negative, then by Definition \ref{4.2.6} and \ref{4.2.1}, \(x = a / b = (-c) / d\), where \(a, b, c, d \in \mathds{Z}^+\).
+    But \(a / b = (-c) / d\) means \(ad = b(-c) = b((-1)c) = (b(-1))c = ((-1)b)c = (-1)(bc)\).
+    By Lemma \ref{2.3.3}, \((-1)(bc)\) is positive, a contradiction.
+\end{enumerate}
+So no more than one of (a), (b), (c) is true at the same time.
+\end{proof}
+
+\begin{definition}[Ordering of the rationals]\label{4.2.8}
+Let \(x\) and \(y\) be rational numbers.
+We say that \(x > y\) iff \(x - y\) is a positive rational number, and \(x < y\) iff \(x - y\) is a negative rational number.
+We write \(x \geq y\) iff either \(x > y\) or \(x = y\), and similarly define \(x \leq y\) iff either \(x < y\) or \(x = y\).
+\end{definition}
+
+\begin{additional corollary}\label{ac 4.2.4}
+If \(x\) and \(y\) are two positive rationals, then \(x + y\) is also a positive rational number.
+\end{additional corollary}
+
+\begin{proof}
+By Definition \ref{4.2.6}, \(x = a / b\) and \(y = c / d\), where \(a, b, c, d \in \mathds{Z}^+\).
+Then by Definition \ref{4.2.2}, \(x + y = (ad + bc) / bd\).
+By Lemma \ref{2.3.2}, \(ad, bc, bd \in \mathds{Z}^+\).
+And by Proposition \ref{2.2.8}, \(ad + bc \in \mathds{Z}^+\).
+Thus by Definition \ref{4.2.6}, \(x + y\) is a positive rational number.
+\end{proof}
+
+\begin{additional corollary}\label{ac 4.2.5}
+If \(x\) and \(y\) are two positive rationals, then \(xy\) is also a positive rational number.
+\end{additional corollary}
+
+\begin{proof}
+By Definition \ref{4.2.6}, \(x = a / b\) and \(y = c / d\), where \(a, b, c, d \in \mathds{Z}^+\).
+Then by Definition \ref{4.2.2}, \(xy = ac / bd\).
+By Lemma \ref{2.3.2}, \(ac, bd \in \mathds{Z}^+\), thus by Definition \ref{4.2.6}, \(xy\) is a positive rational number.
+\end{proof}
+
+\begin{proposition}[Basic properties of order on the rationals]\label{4.2.9}
+Let \(x\), \(y\), \(z\) be rational numbers.
+Then the following properties hold.
+\begin{enumerate}
+    \item (Order trichotomy)
+    Exactly one of the three statements \(x = y\), \(x < y\), or \(x > y\) is true.
+    \item (Order is anti-symmetric)
+    One has \(x < y\) if and only if \(y > x\).
+    \item (Order is transitive)
+    If \(x < y\) and \(y < z\), then \(x < z\).
+    \item (Addition preserves order)
+    If \(x < y\), then \(x + z < y + z\).
+    \item (Positive multiplication preserves order)
+    If \(x < y\) and \(z\) is positive, then \(xz < yz\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}{(a)}
+We first show that at least one of the three statements \(x = y\), \(x > y\) or \(x < y\) is true.
+By Lemma \ref{4.2.7}, \(x - y\) satisify exactly one of the three statements \(x - y = 0\), \(x - y\) is positive, or \(x - y\) is negative.
+\begin{enumerate}[label=(\roman*)]
+    \item If \(x - y = 0\), then \(x - y = 0 \implies x - y + y = y \implies x = y\) by Proposition \ref{4.2.4}.
+    \item If \(x - y\) is positive, then by Definition \ref{4.2.8} \(x > y\).
+    \item If \(x - y\) is negative, then by Definition \ref{4.2.8} \(x < y\).
+\end{enumerate}
+Thus at least one of the three statements \(x = y\), \(x > y\) or \(x < y\) is true.
+
+Now we show that at most one of the three statements \(x = y\), \(x > y\) or \(x < y\) is true.
+\begin{enumerate}[label=(\roman*)]
+    \item If \(x = y\) and \(x > y\), then \(x - y\) is both \(0\) and positive, contradict to Lemma \ref{4.2.7}.
+    \item If \(x = y\) and \(x < y\), then \(x - y\) is both \(0\) and negative, contradict to Lemma \ref{4.2.7}.
+    \item If \(x > y\) and \(x < y\), then \(x - y\) is both positive and negative, contradict to Lemma \ref{4.2.7}.
+\end{enumerate}
+Thus at most one of the three statements \(x = y\), \(x > y\) or \(x < y\) is true.
+\end{proof}
+
+\begin{proof}{(b)}
+\begin{align*}
+x < y & \iff x - y \text{ is negative} & \text{(by Definition \ref{4.2.8})} \\
+& \iff x - y = (-a) / b, \text{ where } a, b \in \mathds{Z}^+ & \text{(by Definition \ref{4.2.6})} \\
+& \iff (x - y) + y = (-a) / b + y & \text{(by Proposition \ref{4.2.4})} \\
+& \iff x + (-y + y) = (-a) / b + y & \text{(by Proposition \ref{4.2.4})} \\
+& \iff x + 0 = (-a) / b + y & \text{(by Proposition \ref{4.2.4})} \\
+& \iff x = (-a) / b + y & \text{(by Proposition \ref{4.2.4})} \\
+& \iff x + (-x) = ((-a) / b + y) + (-x) & \text{(by Proposition \ref{4.2.4})} \\
+& \iff 0 = ((-a) / b + y) + (-x) & \text{(by Proposition \ref{4.2.4})} \\
+& \iff a / b + 0 = a / b + (((-a) / b + y) + (-x)) & \text{(by Proposition \ref{4.2.4})} \\
+& \iff a / b = a / b + (((-a) / b + y) + (-x)) & \text{(by Proposition \ref{4.2.4})} \\
+& \iff a / b = (a / b + ((-a) / b + y)) + (-x) & \text{(by Proposition \ref{4.2.4})} \\
+& \iff a / b = ((a / b + (-a) / b) + y) + (-x) & \text{(by Proposition \ref{4.2.4})} \\
+& \iff a / b = (0 + y) + (-x) & \text{(by Proposition \ref{4.2.4})} \\
+& \iff a / b = y + (-x) & \text{(by Proposition \ref{4.2.4})} \\
+& \iff a / b = y - x \\
+& \iff y - x \text{ is positive} & \text{(by Definition \ref{4.2.6})} \\
+& \iff y > x. & \text{(by Definition \ref{4.2.8})}
+\end{align*}
+\end{proof}
+
+\begin{proof}{(c)}
+By the given conditions and Definition \ref{4.2.8}, \(x < y \implies x - y\) is negative and \(y < z \implies y - z\) is negative.
+Let \(x - y = -p\) and \(y - z = -q\), where \(p, q\) are positive rationals.
+Then
+\begin{align*}
+& x - y = -p \\
+\implies & (x - y) + y = (-p) + y & \text{(by Proposition \ref{4.2.4})} \\
+\implies & x + (-y + y) = (-p) + y & \text{(by Proposition \ref{4.2.4})} \\
+\implies & x + 0 = (-p) + y & \text{(by Proposition \ref{4.2.4})} \\
+\implies & x = (-p) + y & \text{(by Proposition \ref{4.2.4})} \\
+\implies & p + x = p + ((-p) + y) & \text{(by Proposition \ref{4.2.4})} \\
+\implies & p + x = (p + (-p)) + y & \text{(by Proposition \ref{4.2.4})} \\
+\implies & p + x = 0 + y & \text{(by Proposition \ref{4.2.4})} \\
+\implies & p + x = y & \text{(by Proposition \ref{4.2.4})} \\
+& y - z = -q \\
+\implies & (p + x) - z = -q \\
+\implies & p + (x - z) = -q & \text{(by Proposition \ref{4.2.4})} \\
+\implies & (-p) + (p + (x - z)) = (-p) + (-q) & \text{(by Proposition \ref{4.2.4})} \\
+\implies & ((-p) + p) + (x - z) = (-p) + (-q) & \text{(by Proposition \ref{4.2.4})} \\
+\implies & 0 + (x - z) = (-p) + (-q) & \text{(by Proposition \ref{4.2.4})} \\
+\implies & x - z = (-p) + (-q) & \text{(by Proposition \ref{4.2.4})} \\
+\implies & x - z = (-1)p + (-1)q & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
+\implies & x - z = (-1)(p + q) & \text{(by Proposition \ref{4.2.4})} \\
+\implies & x - z = -(p + q). & \text{(by Additional Corollary \ref{ac 4.2.3})}
+\end{align*}
+Because by Additional Corollary \ref{ac 4.2.4}, \(p + q\) is a positive rational number, so by Definition \ref{4.2.6}, \(-(p + q)\) is a negative rational number.
+Since \(x - z = -(p + q)\), \(x - z\) is also a negative rational number, and by Definition \ref{4.2.8}, \(x < z\).
+\end{proof}
+
+\begin{proof}{(d)}
+By the given condition and Definition \ref{4.2.8}, \(x < y \implies x - y\) is negative.
+Let \(x - y = -a\), where \(a\) is a positive rational number.
+So
+\begin{align*}
+& x - y = -a \\
+\implies & (x + (-y)) = -a \\
+\implies & (x + (-y)) + 0 = -a & \text{(by Proposition \ref{4.2.4})} \\
+\implies & (x + (-y)) + (z + (-z)) = -a & \text{(by Proposition \ref{4.2.4})} \\
+\implies & (x + (-y)) + ((-z) + z) = -a & \text{(by Proposition \ref{4.2.4})} \\
+\implies & x + (((-y) + (-z)) + z) = -a & \text{(by Proposition \ref{4.2.4})} \\
+\implies & x + (z + ((-y) + (-z))) = -a & \text{(by Proposition \ref{4.2.4})} \\
+\implies & (x + z) + ((-y) + (-z)) = -a & \text{(by Proposition \ref{4.2.4})} \\
+\implies & (x + z) + ((-1)y + (-1)z) = -a & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
+\implies & (x + z) + (-1)(y + z) = -a & \text{(by Proposition \ref{4.2.4})} \\
+\implies & (x + z) + (-(y + z)) = -a & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
+\implies & (x + z) - (y + z) = -a \\
+\implies & x + z < y + z. & \text{(by Definition \ref{4.2.8})} \\
+\end{align*}
+\end{proof}
+
+\begin{proof}{(e)}
+By the given condition and Definition \ref{4.2.8}, \(x < y \implies x - y\) is negative.
+Let \(x - y = -a\), where \(a\) is a positive rational number.
+So
+\begin{align*}
+& x - y = -a \\
+\implies & (x + (-y)) = -a \\
+\implies & (x + (-y))z = (-a)z & \text{(by Proposition \ref{4.2.4})} \\
+\implies & xz + (-y)z = (-a)z & \text{(by Proposition \ref{4.2.4})} \\
+\implies & xz + ((-1)y)z = ((-1)a)z & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
+\implies & xz + (-1)(yz) = (-1)(az) & \text{(by Proposition \ref{4.2.4})} \\
+\implies & xz + (-(yz)) = -(az) & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
+\implies & xz - yz = -(az).
+\end{align*}
+Because by Additional Corollary \ref{ac 4.2.5}, \(az\) is a positive rational number, so by Definition \ref{4.2.6}, \(-(az)\) is a negative rational number.
+Since \(xz - yz = -(az)\), \(xz - yz\) is also a negative rational number, and by Definition \ref{4.2.8}, \(xz < yz\).
+\end{proof}
+
+\begin{remark}\label{4.2.10}
+The above five properties in Proposition \ref{4.2.9}, combined with the field axioms in Proposition \ref{4.2.4}, have a name:
+they assert that the rationals \(\mathds{Q}\) form an \emph{ordered field}.
+It is important to keep in mind that Proposition \ref{4.2.9}(e) only works when \(z\) is positive.
+\end{remark}
+
+\exercisesection
+
+\begin{exercise}\label{ex 4.2.1}
+Show that the definition of equality for the rational numbers is reflexive, symmetric, and transitive.
+\end{exercise}
+
+\begin{proof}
+See Additional Corollary \ref{ac 4.2.1}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.2.2}
+Prove the remaining components of Lemma \ref{4.2.3}.
+\end{exercise}
+
+\begin{proof}
+See Lemma \ref{4.2.3}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.2.3}
+Prove the remaining components of Proposition \ref{4.2.4}.
+\end{exercise}
+
+\begin{proof}
+See Proposition \ref{4.2.4}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.2.4}
+Prove Lemma \ref{4.2.7}.
+\end{exercise}
+
+\begin{proof}
+See Lemma \ref{4.2.7}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.2.5}
+Prove Proposition \ref{4.2.9}.
+\end{exercise}
+
+\begin{proof}
+See Proposition \ref{4.2.9}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.2.6}
+Show that if \(x\), \(y\), \(z\) are rational numbers such that \(x < y\) and \(z\) is negative, then \(xz > yz\).
+\end{exercise}
+
+\begin{proof}
+By the given condition and Definition \ref{4.2.8}, \(x < y \implies x - y\) is negative.
+Let \(x - y = -a\) and \(z = -b\), where \(a, b\) is a positive rational number.
+So
+\begin{align*}
+& x - y = -a \\
+\implies & (x + (-y)) = -a \\
+\implies & (x + (-y))z = (-a)z & \text{(by Proposition \ref{4.2.4})} \\
+\implies & xz + (-y)z = (-a)z & \text{(by Proposition \ref{4.2.4})} \\
+\implies & xz + ((-1)y)z = ((-1)a)z & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
+\implies & xz + (-1)(yz) = (-1)(az) & \text{(by Proposition \ref{4.2.4})} \\
+\implies & xz + (-(yz)) = (-1)(az) & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
+\implies & xz - yz = (-1)(az) \\
+\implies & xz - yz = (-1)(a(-b)) & \text{(by the given conditions)} \\
+\implies & xz - yz = (-1)(a((-1)b)) & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
+\implies & xz - yz = (-1)((a(-1))b) & \text{(by Proposition \ref{4.2.4})} \\
+\implies & xz - yz = (-1)(((-1)a)b) & \text{(by Proposition \ref{4.2.4})} \\
+\implies & xz - yz = (-1)((-1)(ab)) & \text{(by Proposition \ref{4.2.4})} \\
+\implies & xz - yz = ((-1)(-1))(ab) & \text{(by Proposition \ref{4.2.4})} \\
+\implies & xz - yz = 1(ab) & \text{(by Definition \ref{4.2.1})} \\
+\implies & xz - yz = ab & \text{(by Proposition \ref{4.2.4})} \\
+\end{align*}
+Because by Additional Corollary \ref{ac 4.2.5}, \(ab\) is a positive rational number.
+Since \(xz - yz = az\), \(xz - yz\) is also a positive rational number, and by Definition \ref{4.2.8}, \(xz > yz\).
+\end{proof}

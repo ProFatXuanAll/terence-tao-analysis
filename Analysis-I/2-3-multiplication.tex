@@ -1,0 +1,235 @@
+\section{Multiplication}
+\begin{note}
+In the previous section we have proven all the basic facts that we know to be true about addition and order.
+To save space and to avoid belaboring the obvious, we will now allow ourselves to use all the rules of algebra concerning addition and order that we are familiar with, without further comment.
+\end{note}
+
+\begin{definition}[Multiplication of natural numbers]\label{2.3.1}
+Let \(m\) be a natural number.
+To multiply zero to \(m\), we define \(0 \times m \coloneqq 0\).
+Now suppose inductively that we have defined how to multiply \(n\) to \(m\).
+Then we can multiply \(n++\) to \(m\) by defining \((n++) \times m \coloneqq (n \times m) + m\).
+\end{definition}
+
+\begin{additional corollary}\label{ac 2.3.1}
+The product of two natural numbers is a natural number.
+\end{additional corollary}
+
+\begin{proof}
+Let \(n\), \(m\) be two natural numbers.
+We use induction on \(n\).
+For \(n = 0\), \(n \times m = 0 \times m = 0\) is a natural number.
+Now suppose inductively that \(n\) is a natural number such that \(n \times m\) is a natural number.
+We wish to show that \((n++) \times m\) is also a natural number.
+By Definition \ref{2.3.1}, \((n++) \times m = (n \times m) + m\).
+By induction hypothesis and by Additional Corollary \ref{ac 2.2.1}, \((n \times m)\) is a natural number and sum of two natural number is again a natural number.
+This close the induction.
+\end{proof}
+
+\begin{additional corollary}\label{ac 2.3.2}
+Let \(n\) be a natural number.
+Then \(n \times 0 = 0\).
+\end{additional corollary}
+
+\begin{proof}
+We use induction.
+For base case \(n = 0\), \(0 \times 0 = 0\) by Definition \ref{2.3.1}.
+Suppose inductively that \(n \times 0 = 0\).
+Then \((n++) \times 0 = (n \times 0) + 0 = 0 + 0 = 0\) by Definition \ref{2.3.1} and induction hypothesis.
+This close the induction.
+\end{proof}
+
+\begin{additional corollary}\label{ac 2.3.3}
+Let \(n\), \(m\) be natural numbers.
+Then \(n \times (m++) = (n \times m) + n\).
+\end{additional corollary}
+
+\begin{proof}
+We use induction on \(n\) (fixed \(m\).
+For base case \(n = 0\), \(0 \times (m++) = 0\) by Definition \ref{2.3.1}.
+Suppose inductively that \(n \times (m++) = (n \times m) + n\).
+Then
+    \begin{align*}
+        (n++) \times (m++)
+        &= (n \times (m++)) + (m++) & \text{(by Definition \ref{2.3.1})} \\
+        &= (n \times m) + n + (m++) & \text{(by induction hypothesis)} \\
+        &= (n \times m) + (n++) + m \\
+        &= (n \times m) + m + (n++) \\
+        &= ((n++) \times m) + (n++). & \text{(by Definition \ref{2.3.1})}
+    \end{align*}
+This close the induction.
+\end{proof}
+
+\begin{lemma}[Multiplication is commutative]\label{2.3.2}
+Let \(n\), \(m\) be natural numbers.
+Then \(n \times m = m \times n\)
+\end{lemma}
+
+\begin{proof}
+We use induction on \(n\) (fixed \(m\)).
+For base case \(n = 0\), we want to prove that \(0 \times m = m \times 0\).
+By Definition \ref{2.3.1}, \(0 \times m = 0\), and by Lemma \ref{ac 2.3.2}, \(m \times 0 = 0\), thus base case is true.
+Suppose inductively that \(n \times m = m \times n\) is true.
+Then we want to show that \((n++) \times m = m \times (n++)\) is also true.
+By Definition \ref{2.3.1}, \((n++) \times m = (n \times m) + m\).
+By Additional Corollary \ref{ac 2.3.3} and induction hypothesis, \(m \times (n++) = (m \times n) + m = (n \times m) + m\).
+Thus \((n++) \times m = m \times (n++)\), and this close the induction.
+\end{proof}
+
+\begin{note}
+We will now abbreviate \(n \times m\) as \(nm\), and use the usual convention that multiplication takes precedence over addition, thus for instance \(ab + c\) means \((a \times b) + c\), not \(a \times (b + c)\).
+\end{note}
+
+\begin{lemma}[Positive natural numbers have no zero divisors]\label{2.3.3}
+Let \(n\), \(m\) be natural numbers.
+Then \(n \times m = 0\) if and only if at least one of \(n\), \(m\) is equal to zero.
+In particular, if \(n\) and \(m\) are both positive, then \(nm\) is also positive.
+\end{lemma}
+
+\begin{proof}
+We first prove the necessary condition of Lemma \ref{2.3.3}.
+Suppose for sake of contradiction that \(n\) and \(m\) are positive, and \(n = a++\), \(m = b++\) for some natural number \(a\), \(b\)
+Then \(n \times m = (a++) \times (b++) = (a \times (b++)) + (b++) = (a \times b) + a + (b++)\) by Definition \ref{2.3.1} and Lemma \ref{ac 2.3.3}.
+But \(b++\) is positive, so \(n \times m\) is positive, a contradiction with \(n \times m = 0\).
+Thus at least one of \(n\), \(m\) is \(0\).
+
+Now we prove the sufficient condition of Lemma \ref{2.3.3}.
+By Definition \ref{2.3.1}, \(n \times m = 0\) if \(n = 0\), and by Additional Corollary \ref{ac 2.3.2}, \(n \times m = 0\) if \(m = 0\).
+\end{proof}
+
+\begin{proposition}[Distributive law]\label{2.3.4}
+For any natural numbers \(a\), \(b\), \(c\), we have \(a(b + c) = ab + ac\) and \((b + c)a = ba + ca\).
+\end{proposition}
+
+\begin{proof}
+Since multiplication is commutative we only need to show the first identity \(a(b + c) = ab + ac\).
+We keep \(a\) and \(b\) fixed, and use induction on \(c\).
+Let’s prove the base case \(c = 0\), i.e., \(a(b + 0) = ab + a0\).
+The left-hand side is \(ab\), while the right-hand side is \(ab + 0 = ab\), so we are done with the base case.
+Now let us suppose inductively that \(a(b + c) = ab + ac\), and let us prove that \(a(b + (c++)) = ab + a(c++)\).
+The left-hand side is \(a((b + c)++) = a(b + c) + a\), while the right-hand side is \(ab + ac + a = a(b + c) + a\) by the induction hypothesis, and so we can close the induction.
+\end{proof}
+
+\begin{proposition}[Multiplication is associative]\label{2.3.5}
+For any natural numbers \(a\), \(b\), \(c\), we have \((a \times b) \times c = a \times (b \times c)\).
+\end{proposition}
+
+\begin{proof}
+We keep \(a\) and \(b\) fixed, and use induction on \(c\).
+The base case \(c = 0\), i.e., \((a \times b) \times 0 = a \times (b \times 0)\).
+The left-hand side is \(0\), while the right-hand side is \(a \times 0 = 0\), so we are done with the base case.
+Now let us suppose inductively that \((a \times b) \times c = a \times (b \times c)\), and let us prove that \((a \times b) \times (c++) = a \times (b \times (c++))\).
+The left-hand side is \((a \times b) \times c + (a \times b)\), while the right-hand side is \(a \times (b \times c + b) = a \times (b \times c) + a \times b = (a \times b) \times c + a \times b\) by the Proposition \ref{2.3.4} and induction hypothesis, and so we can close the induction.
+\end{proof}
+
+\begin{proposition}[Multiplication preserves order]\label{2.3.6}
+If \(a\), \(b\) are natural numbers such that \(a < b\), and \(c\) is positive, then \(ac < bc\).
+\end{proposition}
+
+\begin{proof}
+Since \(a < b\), we have \(b = a + d\) for some positive \(d\).
+Multiplying by \(c\) and using the distributive law we obtain \(bc = ac + dc\).
+Since \(d\) is positive, and \(c\) is positive, \(dc\) is positive, and hence \(ac < bc\) as desired.
+\end{proof}
+
+\begin{corollary}[Cancellation law]\label{2.3.7}
+Let \(a\), \(b\), \(c\) be natural numbers such that \(ac = bc\) and \(c\) is non-zero.
+Then \(a = b\).
+\end{corollary}
+
+\begin{proof}
+By the trichotomy of order, we have three cases: \(a < b\), \(a = b\), \(a > b\).
+Suppose first that \(a < b\), then by Proposition \ref{2.3.6} we have \(ac < bc\), a contradiction.
+We can obtain a similar contradiction when \(a > b\).
+Thus the only possibility is that \(a = b\), as desired.
+\end{proof}
+
+\begin{remark}\label{2.3.8}
+Just as Proposition \ref{2.2.6} will allow for a ``virtual subtraction'' which will eventually let us define genuine subtraction, Corollary \ref{2.3.7} provides a ``virtual division'' which will be needed to define genuine division later on.
+\end{remark}
+
+\begin{proposition}[Euclidean algorithm]\label{2.3.9}
+Let \(n\) be a natural number, and let \(q\) be a positive number.
+Then there exist natural numbers \(m\), \(r\) such that \(0 \leq r<q\) and \(n = mq + r\).
+\end{proposition}
+
+\begin{proof}
+We use induction on \(n\) (fixed \(q\)).
+For the base case \(n = 0\), let \(r = m = 0\), then \(0 = 0q + 0\), \(0 \leq 0 < q\), so we are done with base case.
+Suppose inductively that \(n = mq + r\), \(0 \leq r < q\).
+Then \(n++ = (mq + r)++ = mq + (r++)\).
+By induction hypothesis, because \(r < q\), so \(r++ \leq q\) by Proposition \ref{2.2.12}.
+By Proposition \ref{2.2.13}, we have two cases: \(r++ < q\), \(r++ = q\).
+If \(r++ < q\), then \(n++ = mq + (r++)\) satisfied the condition.
+If \(r++ = q\), then \(n++ = mq + q = (m++) \times q\), also satisfied the condition.
+This close the induction.
+\end{proof}
+
+\begin{remark}\label{2.3.10}
+In other words, we can divide a natural number \(n\) by a positive number \(q\) to obtain a quotient \(m\) (which is another natural number) and a remainder \(r\) (which is less than \(q\)).
+This algorithm marks the beginning of \emph{number theory}, which is a beautiful and important subject but one which is beyond the scope of this text.
+\end{remark}
+
+\begin{definition}[Exponentiation for natural numbers]\label{2.3.11}
+Let \(m\) be a natural number.
+To raise \(m\) to the power \(0\), we define \(m^0 \coloneqq 1\); in particular, we define \(0^0 \coloneqq 1\).
+Now suppose recursively that \(m^n\) has been defined for some natural number \(n\), then we define \(m^{n++} \coloneqq m^n \times m\).
+\end{definition}
+
+\exercisesection
+
+\begin{exercise}\label{ex 2.3.1}
+Prove Lemma \ref{2.3.2}.
+\end{exercise}
+
+\begin{proof}
+See Lemma \ref{2.3.2}
+\end{proof}
+
+\begin{exercise}\label{ex 2.3.2}
+Prove Lemma \ref{2.3.3}
+\end{exercise}
+
+\begin{proof}
+See Lemma \ref{2.3.3}
+\end{proof}
+
+\begin{exercise}\label{ex 2.3.3}
+Prove Proposition \ref{2.3.5}
+\end{exercise}
+
+\begin{proof}
+See Proposition \ref{2.3.5}
+\end{proof}
+
+\begin{exercise}\label{ex 2.3.4}
+Prove the identity \((a + b)^2 = a^2 + 2ab + b^2\) for all natural numbers \(a\), \(b\).
+\end{exercise}
+
+\begin{proof}
+\begin{align*}
+    (a + b)^2 &= (a + b)^1 \times (a + b) & \text{(By Definition \ref{2.3.11})} \\
+    &= (a + b)^0 \times (a + b) \times (a + b) & \text{(By Definition \ref{2.3.11})} \\
+    &= 1 \times (a + b) \times (a + b) & \text{(By Definition \ref{2.3.11})} \\
+    &= (1 \times (a + b)) \times (a + b) & \text{(By Proposition \ref{2.3.5})} \\
+    &= (1 \times a + 1 \times b)) \times (a + b) & \text{(By Proposition \ref{2.3.4})} \\
+    &= ((0 \times a + a) + (0 \times b + b)) \times (a + b) & \text{(By Definition \ref{2.3.1})} \\
+    &= (a + b) \times (a + b) & \text{(By Definition \ref{2.3.1})} \\
+    &= a(a + b) + b(a + b) & \text{(By Proposition \ref{2.3.5})} \\
+    &= aa + ab + ba + bb & \text{(By Proposition \ref{2.3.5})} \\
+    &= a^2 + ab + ba + b^2 & \text{(By Definition \ref{2.3.11})} \\
+    &= a^2 + ab + ab + b^2 & \text{(By Lemma \ref{2.3.2})} \\
+    &= a^2 + (0 + ab) + ab + b^2 & \text{(By Definition \ref{2.2.1})} \\
+    &= a^2 + 0ab + ab + ab + b^2 & \text{(By Definition \ref{2.3.1})} \\
+    &= a^2 + 1ab + ab + b^2 & \text{(By Lemma \ref{2.3.2})} \\
+    &= a^2 + 2ab + b^2 & \text{(By Definition \ref{2.3.1})} \\
+\end{align*}
+\end{proof}
+
+\begin{exercise}\label{ex 2.3.5}
+Prove Proposition \ref{2.3.9}
+\end{exercise}
+
+\begin{proof}
+See Proposition \ref{2.3.9}
+\end{proof}

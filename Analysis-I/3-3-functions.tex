@@ -1,0 +1,340 @@
+\section{Functions}
+
+\begin{definition}[Functions]\label{3.3.1}
+Let \(X\), \(Y\) be sets, and let \(P(x, y)\) be a property pertaining to an object \(x \in X\) and an object \(y \in Y\), such that for every \(x \in X\), there is exactly one \(y \in Y\) for which \(P(x, y)\) is true (this is sometimes known as the \emph{vertical line test}).
+Then we define the \emph{function} \(f : X \to Y\) \emph{defined by} \(P\) \emph{on the domain} \(X\) \emph{and range} \(Y\) to be the object which, given any input \(x \in X\), assigns an output \(f(x) \in Y\), defined to be the unique object \(f(x)\) for which \(P(x, f(x))\) is true.
+Thus, for any \(x \in X\) and \(y \in Y\),
+\[
+    y = f(x) \iff P(x, y) \text{ is true}.
+\]
+\end{definition}
+
+\begin{note}
+Functions are also referred to as \emph{maps} or \emph{transformations}, depending on the context.
+They are also sometimes called \emph{morphisms}, although to be more precise, a morphism refers to a more general class of object, which may or may not correspond to actual functions, depending on the context.
+\end{note}
+
+\begin{note}
+One common way to define a function is simply to specify its domain, its range, and how one generates the output \(f(x)\) from each input;
+this is known as an \emph{explicit} definition of a function.
+In other cases we only define a function \(f\) by specifying what property \(P(x, y)\) links the input \(x\) with the output \(f(x)\);
+this is an \emph{implicit} definition of a function.
+\end{note}
+
+\begin{note}
+In many cases we omit specifying the domain and range of a function for brevity.
+However, too much of this abbreviation can be dangerous;
+sometimes it is important to know what the domain and range of the function is.
+\end{note}
+
+\begin{note}
+We observe that functions obey the axiom of substitution: if \(x = x'\), then \(f(x) = f(x')\).
+In other words, equal inputs imply equal outputs.
+On the other hand, unequal inputs do not necessarily ensure unequal outputs.
+For example, \emph{constant function} simply assign each input with the same output.
+\end{note}
+
+\setcounter{theorem}{4}
+\begin{remark}\label{3.3.5}
+We are now using parentheses () to denote several different things in mathematics;
+on one hand, we are using them to clarify the order of operations, but on the other hand we also use parentheses to enclose the argument of a function \(f(x)\) or of a property such as \(P(x)\).
+However, the two usages of parentheses usually are unambiguous from context.
+For instance, if \(a\) is a number, then \(a(b + c)\) denotes the expression \(a \times (b + c)\), whereas if \(f\) is a function, then \(f(b + c)\) denotes the output of \(f\) when the input is \(b + c\).
+Sometimes the argument of a function is denoted by subscripting instead of parentheses;
+for instance, a sequence of natural numbers \(a_0\), \(a_1\), \(a_2\), \(a_3\), \(\cdots\) is, strictly speaking, a function from \(\mathds{N}\) to \(\mathds{N}\), but is denoted by \(n \mapsto a_n\) rather than \(n \mapsto a(n)\).
+\end{remark}
+
+\begin{remark}\label{3.3.6}
+Strictly speaking, functions are not necessarily sets, and sets are not necessarily functions;
+it does not make sense to ask whether an object \(x\) is an element of a function \(f\), and it does not make sense to apply a set \(A\) to an input \(x\) to create an output \(A(x)\).
+On the other hand, it is possible to start with a function \(f : X \to Y\) and construct its graph \(\{(x, f(x)) : x \in X\}\), which describes the function completely once the domain \(X\) and range \(Y\) are specified.
+\end{remark}
+
+\begin{definition}[Equality of functions]\label{3.3.7}
+Two functions \(f : X \to Y\), \(g : X \to Y\) with the same domain and range are said to be equal, \(f = g\), if and only if \(f(x) = g(x)\) for all \(x \in X\).
+(If \(f(x)\) and \(g(x)\) agree for some values of \(x\), but not others, then we do not consider \(f\) and \(g\) to be equal.)
+Two functions \(f: X \to Y\) and \(g: X' \to Y'\) are considered to be unequal if they have different domains \(X \neq X'\) or different ranges \(Y \neq Y'\) (or both)
+\end{definition}
+
+\begin{note}
+A rather boring example of a function is the \emph{empty function} \(f : \emptyset \to X\) from the empty set to an arbitrary set \(X\).
+Since the empty set has no elements, we do not need to specify what \(f\) does to any input.
+Nevertheless, just as the empty set is a set, the empty function is a function, albeit not a particularly interesting one.
+Note that for each set \(X\), there is only one function from \(\emptyset\) to \(X\), since Definition \ref{3.3.7} asserts that all functions from \(\emptyset\) to \(X\) are equal.
+\end{note}
+
+\setcounter{theorem}{9}
+\begin{definition}[Composition]\label{3.3.10}
+Let \(f : X \to Y\) and \(g : Y \to Z\) be two functions, such that the range of \(f\) is the same set as the domain of \(g\).
+We then define the composition \(g \circ f : X \to Z\) of the two functions \(g\) and \(f\) to be the function defined explicitly by the formula
+\[
+    (g \circ f)(x) \coloneqq g(f(x)).
+\]
+If the range of \(f\) does not match the domain of \(g\), we leave the composition \(g \circ f\) undefined.
+\end{definition}
+
+\begin{note}
+Composition is not commutative: \(f \circ g\) and \(g \circ f\) are not necessarily the same function.
+\end{note}
+
+\setcounter{theorem}{11}
+\begin{lemma}[Composition is associative]\label{3.3.12}
+Let \(f : Z \to W\), \(g : Y \to Z\), and \(h : X \to Y\) be functions.
+Then \(f \circ (g \circ h) = (f \circ g) \circ h\).
+\end{lemma}
+
+\begin{proof}
+Since \(g \circ h\) is a function from \(X\) to \(Z\), \(f \circ (g \circ h)\) is a function from \(X\) to \(W\).
+Similarly \(f \circ g\) is a function from \(Y\) to \(W\), and hence \((f \circ g) \circ h\) is a function from \(X\) to \(W\).
+Thus \(f \circ (g \circ h)\) and \((f \circ g) \circ h\) have the same domain and range.
+In order to check that they are equal, we see from Definition \ref{3.3.1} that we have to verify that \((f \circ (g \circ h))(x) = ((f \circ g) \circ h)(x)\) for all \(x \in X\).
+But by Definition \ref{3.3.10}
+    \begin{align*}
+        (f \circ (g \circ h))(x)
+        &= f((g \circ h)(x)) \\
+        &= f(g(h(x))) \\
+        &= (f \circ g)(h(x)) \\
+        &= ((f \circ g) \circ h)(x)
+    \end{align*}
+as desired.
+\end{proof}
+
+\setcounter{theorem}{13}
+\begin{definition}[One-to-one function]\label{3.3.14}
+A function \(f\) is \emph{one-to-one} (or \emph{injective}) if different elements map to different elements:
+\[
+    x \neq x' \implies f(x) \neq f(x').
+\]
+
+Equivalently, a function is one-to-one if
+\[
+    f(x) = f(x') \implies x = x'.
+\]
+\end{definition}
+
+\setcounter{theorem}{15}
+\begin{remark}\label{3.3.16}
+If a function \(f : X \to Y\) is not one-to-one, then one can find distinct \(x\) and \(x'\) in the domain \(X\) such that \(f(x) = f(x')\), thus one can find two inputs which map to one output.
+Because of this, we say that \(f\) is \emph{two-to-one} instead of \emph{one-to-one}.
+\end{remark}
+
+\begin{definition}[Onto functions]\label{3.3.17}
+A function \(f\) is \emph{onto} (or \emph{surjective}) if \(f(X) = Y\), i.e., every element in \(Y\) comes from applying \(f\) to some element in \(X\):
+\[
+    \text{For every } y \in Y, \text{there exists } x \in X \text{ such that } f(x) = y.
+\]
+\end{definition}
+
+\setcounter{theorem}{19}
+\begin{definition}[Bijective functions]\label{3.3.20}
+Functions \(f : X \to Y\) which are both one-to-one and onto are also called \emph{bijective} or \emph{invertible}.
+\end{definition}
+
+\setcounter{theorem}{22}
+\begin{remark}\label{3.3.23}
+If a function \(x \mapsto f(x)\) is bijective, then we sometimes call \(f\) a \emph{perfect matching} or a \emph{one-to-one correspondence} (not to be confused with the notion of a one-to-one function), and denote the action of \(f\) using the notation \(x \leftrightarrow f(x)\) instead of \(x \mapsto f(x)\).
+\end{remark}
+
+\begin{note}
+If \(f\) is bijective, then for every \(y \in Y\), there is exactly one \(x\) such that \(f(x) = y\) (there is at least one because of surjectivity, and at most one because of injectivity).
+This value of \(x\) is denoted \(f^{-1}(y)\); thus \(f^{-1}\) is a function from \(Y\) to \(X\).
+We call \(f^{-1}\) the \emph{inverse} of \(f\).
+\end{note}
+
+\exercisesection
+
+\begin{exercise}\label{ex 3.3.1}
+Show that the definition of equality in Definition \ref{3.3.7} is reflexive, symmetric, and transitive.
+Also verify the substitution property: if \(f, \tilde{f} : X \to Y\) and \(g, \tilde{g} : Y \to Z\) are functions such that \(f = \tilde{f}\) and \(g = \tilde{g}\), then \(g \circ f = \tilde{g} \circ \tilde{f}\).
+Of course, these statements are immediate from the axioms of equality in Appendix A.7 applied directly to the functions in question, but the point of the exercise is to show that they can also be established by instead applying the axioms of equality to elements of the domain and range of these functions, rather than to the functions itself.
+\end{exercise}
+
+\begin{proof}
+We first prove that Definition \ref{3.3.7} is reflexive.
+Let \(f : X \to Y\) be arbitrary function with domain \(X\) and range \(Y\).
+Then by Definition \ref{3.3.7}, \(\forall\ x \in X\), \(f(x) = f(x)\), thus we proved the reflexive relation.
+
+Next we prove that Definition \ref{3.3.7} is symmetric.
+Let \(f : X \to Y\) and \(g : X \to Y\) be arbitrary functions with domain \(X\) and range \(Y\) such that \(f = g\) is true.
+Then by Definition \ref{3.3.7}, \(\forall\ x \in X\), \(f(x) = g(x)\) is true, and \(g(x) = f(x)\) is also true, thus \(g = f\) is true, and we proved the symmetric relation.
+
+Next we prove that Definition \ref{3.3.7} is transitive.
+Let \(f : X \to Y\), \(g : X \to Y\) and \(h : X \to Y\) be arbitrary functions with domain \(X\) and range \(Y\) such that \(f = g\) and \(g = h\) are true.
+Then by Definition \ref{3.3.7}, \(\forall\ x \in X\), \(f(x) = g(x)\) is true, and \(g(x) = h(x)\) is also true, so \(f(x) = h(x)\) is true, thus \(f = h\), and we proved the transitive relation.
+
+Now we prove that Axiom of substitution holds for composition.
+Since \(g \circ f\) is a function from \(X\) to \(Z\), and \(\tilde{g} \circ \tilde{f}\) is also a function from \(X\) to \(Z\), thus \(g \circ f\) and \(\tilde{g} \circ \tilde{f}\) have the same domain and range.
+By Definition \ref{3.3.10}, \(\forall\ x \in X\), \((g \circ f)(x) = g(f(x)) = g(\tilde{f}(x)) = \tilde{g}(\tilde{f}(x)) = (\tilde{g} \circ \tilde{f})(x)\).
+Thus \(g \circ f = \tilde{g} \circ \tilde{f}\).
+\end{proof}
+
+\begin{exercise}\label{ex 3.3.2}
+Let \(f : X \to Y\) and \(g : Y \to Z\) be functions.
+Show that if \(f\) and \(g\) are both injective, then so is \(g \circ f\);
+similarly, show that if \(f\) and \(g\) are both surjective, then so is \(g \circ f\).
+\end{exercise}
+
+\begin{proof}
+We first prove the injective part.
+By Definition \ref{3.3.14}, \(\forall\ x, x' \in X\), \(f(x) = f(x') \implies x = x'\).
+Also by Definition \ref{3.3.14}, \(\forall\ f(x), f(x') \in Y\), \(g(f(x)) = g(f(x')) \implies f(x) = f(x')\).
+Thus \(\forall\ x, x' \in X\), \(g(f(x)) = g(f(x')) \implies f(x) = f(x')  \implies x = x'\).
+We conclude that \(g \circ f\) is injective if \(f\) and \(g\) are both injective.
+
+Now we prove the subjective part.
+By Definition \ref{3.3.17}, \(\forall\ z \in Z\), \(\exists\ y \in Y\) such that \(g(y) = z\).
+But also by Definition \ref{3.3.17}, \(\forall\ y \in Y\), \(\exists\ x \in X\) such that \(f(x) = y\).
+So \(\forall\ z \in Z\), \(\exists\ x \in X\) such that \(g(f(x)) = z\).
+We conclude that \(g \circ f\) is subjective if \(f\) and \(g\) are both subjective.
+\end{proof}
+
+\begin{exercise}\label{ex 3.3.3}
+When is the empty function injective?
+surjective?
+bijective?
+\end{exercise}
+
+\begin{proof}
+Let \(f : \emptyset \to Y\) be a empty function.
+\(f\) is always injective because \(\forall\ x, x' \in \emptyset\), \(f(x) = f(x') \implies x = x'\) is vacuously true.
+\(f\) is never surjective, since \(\forall\ y \in Y\), \(\nexists\ x \in \emptyset\) such that \(f(x) = y\).
+And because \(f\) is never surjective, \(f\) is never bijective.
+\end{proof}
+
+\begin{exercise}\label{ex 3.3.4}
+In this section we give some cancellation laws for composition.
+Let \(f : X \to Y\), \(\tilde{f} : X \to Y\), \(g : Y \to Z\), and \(\tilde{g} : Y \to Z\) be functions.
+Show that if \(g \circ f = g \circ \tilde{f}\) and g is injective, then \(f = \tilde{f}\).
+Is the same statement true if \(g\) is not injective?
+Show that if \(g \circ f = \tilde{g} \circ f\) and \(f\) is surjective, then \(g = \tilde{g}\).
+Is the same statement true if \(f\) is not surjective?
+\end{exercise}
+
+\begin{proof}
+We first prove the injective part.
+By the given condition \(g \circ f = g \circ \tilde{f}\), \(\forall\ x, x' \in X\), \(g(f(x)) = g(\tilde{f}(x))\).
+Since \(g\) is injective, \(g(f(x)) = g(\tilde{f}(x)) \implies f(x) = f(x')\).
+Thus by Definition \ref{3.3.7}, \(f = \tilde{f}\).
+If \(g\) is not injective, then we cannot get \(g(f(x)) = g(\tilde{f}(x)) \implies f(x) = f(x')\).
+So the same statement is not true when \(g\) is not injective.
+
+Now we prove the surjective part.
+Since \(f\) is surjective, \(\forall\ y \in Y\), \(\exists\ x \in X\) such that \(f(x) = y\).
+By the given condition \(g \circ f = \tilde{g} \circ f\), \(g(y) = \tilde{g}(y) \implies g(f(x)) = \tilde{g}(f(x))\).
+Thus by Definition \ref{3.3.7}, \(g = \tilde{g}\).
+If \(f\) is not surjective, then we cannot get \(\forall\ y \in Y\), \(\exists\ x \in X\) such that \(f(x) = y\).
+So the same statement is not true when \(f\) is not surjective.
+\end{proof}
+
+\begin{exercise}\label{ex 3.3.5}
+Let \(f : X \to Y\) and \(g : Y \to Z\) be functions.
+Show that if \(g \circ f\) is injective, then \(f\) must be injective.
+Is it true that \(g\) must also be injective?
+Show that if \(g \circ f\) is surjective, then \(g\) must be surjective.
+Is it true that \(f\) must also be surjective?
+\end{exercise}
+
+\begin{proof}
+We first prove the injective part.
+By the given condition, \(\forall\ x, x' \in X\), \(g(f(x)) = g(f(x')) \implies x = x'\).
+But if \(f(x) = f(x')\), then \(g(f(x)) = g(f(x'))\) by Definition \ref{3.3.1}.
+So \(f(x) = f(x') \implies x = x'\), which means \(f\) is injective.
+In the above proving process we didn't require \(g\) to be injective, so \(g\) need not be injective the same statement still holds.
+
+Now we prove the surjective part.
+By the given condition, \(\forall\ z \in Z\), \(\exists\ x \in X\) such that \(g(f(x)) = z\).
+But if such \(x\) exists, than \(f(x) \in Y\) also exists by Definition \ref{3.3.1}.
+So \(\forall\ z \in Z\), \(\exists\ f(x) \in Y\) such that \(g(f(x)) = z\), which means \(g\) is surjective.
+In the above proving process we didn't require \(f\) to be surjective, so \(f\) need not be surjective the same statement still holds.
+\end{proof}
+
+\begin{exercise}\label{ex 3.3.6}
+Let \(f : X \to Y\) be a bijective function, and let \(f^{-1} : Y \to X\) be its inverse.
+Verify the cancellation laws \(f^{-1}(f(x)) = x\) for all \(x \in X\) and \(f(f^{-1}(y)) = y\) for all \(y \in Y\).
+Conclude that \(f^{-1}\) is also invertible, and has \(f\) as its inverse (thus \((f^{-1})^{-1} = f\)).
+\end{exercise}
+
+\begin{proof}
+\(\forall\ x \in X\), \(\exists!\ y \in Y\) such that \(f(x) = y\) and \(x = f^{-1}(y)\).
+So \(\forall\ x \in X\), \(f^{-1}(f(x)) = f^{-1}(y) = x\), and \(\forall\ y \in Y\), \(f(f^{-1}(y)) = f(x) = y\).
+
+Next we prove that \(f^{-1}\) is invertible.
+\(\forall\ y, y' \in Y\), \(f^{-1}(y) = f^{-1}(y')\) implies \(f(f^{-1}(y)) = f(f^{-1}(y'))\) implies \(y = y'\).
+So \(f^{-1}\) is injective by Definition \ref{3.3.14}.
+And \(\forall\ x \in X\), \(f(x) = y \implies f^{-1}(f(x)) = f^{-1}(y) = x\), so \(f^{-1}\) is surjective by Definition \ref{3.3.17}.
+Since \(f^{-1}\) is both injective and surjective, \(f^{-1}\) is bijective by Definition \ref{3.3.20}.
+
+Now we prove that \((f^{-1})^{-1} = f\).
+Let \(g = (f^{-1})^{-1}\).
+Then \(\forall\ x \in X\), \(\exists!\ y \in Y\) such that \(g(x) = y\).
+But \(g(x) = y = f(f^{-1}(y)) = f(x)\), thus \(g = f\) by Definition \ref{3.3.7}.
+\end{proof}
+
+\begin{exercise}\label{ex 3.3.7}
+Let \(f : X \to Y\) and \(g : Y \to Z\) be functions.
+Show that if \(f\) and \(g\) are bijective, then so is \(g \circ f\), and we have \((g \circ f)^{-1} = f^{-1} \circ g^{-1}\).
+\end{exercise}
+
+\begin{proof}
+By the given conditions, \(\forall\ x \in X\), \(\exists!\ y \in Y\) such that \(f(x) = y\).
+Also by the given conditions, \(\forall\ y \in Y\), \(\exists!\ z \in Z\) such that \(g(y) = z\).
+So \(\forall\ x \in X\), \(\exists!\ z \in Z\) such that \(g(f(x)) = z\), and \(g \circ f\) is bijective.
+Because \(g \circ f : X \to Z\), so \((g \circ f)^{-1} : Z \to X\).
+Also \(f^{-1} : Y \to X\) and \(g^{-1} : Z \to Y\), so \(f^{-1} \circ g^{-1} : Z \to X\).
+Since both functions have same domain and range, all we left is to show that Definition \ref{3.3.7} holds.
+\(\forall\ z \in Z\), \(\exists!\ x \in X\) such that \((g \circ f)^{-1}(z) = x\).
+But \(x = f^{-1}(f(x)) = f^{-1}(g^{-1}(g(f(x)))) = f^{-1}(g^{-1}(z))\).
+Thus \((g \circ f)^{-1} = f^{-1} \circ g^{-1}\).
+\end{proof}
+
+\begin{exercise}\label{ex 3.3.8}
+If \(X\) is a subset of \(Y\), let \(\iota_{X \to Y} : X \to Y\) be the \emph{inclusive map from \(X\) to \(Y\)}, defined by mapping \(x \mapsto x\) for all \(x \in X\), i.e., \(\iota_{X \to Y}(x) \coloneqq x\) for all \(x \in X\).
+The map \(\iota_{X \to X}\) is in particular called the \emph{identity map} on \(X\).
+
+    \begin{enumerate}
+        \item Show that if \(X \subseteq Y \subseteq Z\) then \(\iota_{Y \to Z} \circ \iota_{X \to Y} = \iota_{X \to Z}\).
+        \item Show that if \(f : A \to B\) is any function, then \(f = f \circ \iota_{A \to A} = \iota_{B \to B} \circ f\).
+        \item Show that if \(f : A \to B\) is a bijective function, then \(f \circ f^{-1} = \iota_{B \to B}\) and \(f^{-1} \circ f = \iota_{A \to A}\).
+        \item Show that if \(X\) and \(Y\) are disjoint sets, and \(f : X \to Z\) and \(g : Y \to Z\) are functions, then there is a unique function \(h : X \cup Y \to Z\) such that \(h \circ \iota_{X \to X \cup Y} = f\) and \(h \circ \iota_{Y \to X \cup Y} = g\).
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}{(a)}
+\(\forall\ x \in X\), \(x \in Y\) and \(x \in Z\).
+So \((\iota_{Y \to Z} \circ \iota_{X \to Y})(x) = \iota_{Y \to Z}(\iota_{X \to Y}(x)) = \iota_{Y \to Z}(x) = x\) and \(\iota_{X \to Z}(x) = x\).
+Thus \(\iota_{Y \to Z} \circ \iota_{X \to Y} = \iota_{X \to Z}\).
+\end{proof}
+
+\begin{proof}{(b)}
+\(\forall\ a \in A\), \(\exists\ b \in B\) such that \(f(a) = b\).
+So \((f \circ \iota_{A \to A})(a) = f(\iota_{A \to A}(a)) = f(a) = b\).
+And \((\iota_{B \to B} \circ f)(a) = \iota_{B \to B}(f(a)) = \iota_{B \to B}(b) = b\).
+Thus \(f = f \circ \iota_{A \to A} = \iota_{B \to B} \circ f\).
+\end{proof}
+
+\begin{proof}{(c)}
+\(\forall\ a \in A\), \(\exists!\ b \in B\) such that \(f(a) = b\).
+But \((f^{-1} \circ f)(a) = f^{-1}(f(a)) = f^{-1}(b) = a\) and \(\iota_{A \to A}(a) = a\).
+Thus \(f^{-1} \circ f = \iota_{A \to A}\).
+
+\(\forall\ b \in B\), \(\exists!\ a \in A\) such that \(f^{-1}(b) = a\).
+But \(f \circ f^{-1}(b) = f(f^{-1}(b)) = f(a) = b\) and \(\iota_{B \to B}(b) = b\).
+Thus \(f \circ f^{-1} = \iota_{B \to B}\).
+\end{proof}
+
+\begin{proof}{(d)}
+We first prove such \(h\) exists.
+The domain and range of \(h \circ \iota_{X \to X \cup Y}\) are \(X\) and \(Z\) respectively, which are just the same as \(f\).
+And the domain and range of \(h \circ \iota_{Y \to X \cup Y}\) are \(Y\) and \(Z\) respectively, which are just the same as \(g\).
+So such \(h\) can exist.
+
+Now we prove such \(h\) is unique.
+\(\forall\ x \in X\), \((h \circ \iota_{X \to X \cup Y})(x) = h(\iota_{X \to X \cup Y}(x)) = h(x)\).
+But \(h \circ \iota_{X \to X \cup Y} = f\), so \(h(x) = f(x)\).
+Similarly, \(\forall\ y \in Y\), \((h \circ \iota_{Y \to X \cup Y})(y) = h(\iota_{Y \to X \cup Y}(y)) = h(y)\).
+But \(h \circ \iota_{Y \to X \cup Y} = g\), so \(h(y) = g(y)\).
+Suppose for sake of contradiction that \(h\) is not unique.
+Then there exist a \(h': X \cup Y \to Z\) such that \(h \circ \iota_{X \to X \cup Y} = f\) and \(h \circ \iota_{Y \to X \cup Y} = g\).
+But similar argument show that \(h'(x) = f(x)\) and \(h'(y) = g(y)\), \(\forall\ e \in X \cup Y\), \(h(e) = h'(e)\), a contradiction.
+Therefore \(h = h'\), and \(h\) is unique.
+\end{proof}

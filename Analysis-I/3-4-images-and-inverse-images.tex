@@ -1,0 +1,338 @@
+\section{Images and inverse images}
+
+\begin{definition}[Images of sets]\label{3.4.1}
+If \(f : X \to Y\) is a function from \(X\) to \(Y\), and \(S\) is a set in \(X\), we define \(f(S)\) to be the set
+\[
+    f(S) \coloneqq \{f(x) : x \in S\};
+\]
+this set is a subset of \(Y\), and is sometimes called the \emph{image} of \(S\) under the map \(f\).
+We sometimes call \(f(S)\) the \emph{forward image} of \(S\) to distinguish it from the concept of the \emph{inverse image} \(f^{-1}(S)\) of \(S\).
+\end{definition}
+
+\setcounter{theorem}{3}
+\begin{definition}[Inverse images]\label{3.4.4}
+If \(U\) is a subset of \(Y\), we define the set \(f^{-1}(U)\) to be the set
+\[
+    f^{-1}(U) \coloneqq \{x \in X : f(x) \in U\}.
+\]
+In other words, \(f^{-1}(U)\) consists of all the elements of \(X\) which map into \(U\):
+\[
+    f(x) \in U \iff x \in f^{-1}(U).
+\]
+We call \(f^{-1}(U)\) the \emph{inverse image} of \(U\).
+\end{definition}
+
+\setcounter{theorem}{6}
+\begin{remark}\label{3.4.6}
+If \(f\) is a bijective function, then we have defined \(f^{-1}\) in two slightly different ways, but this is not an issue because both definitions are equivalent.
+\end{remark}
+
+\begin{axiom}[Power set axiom]\label{3.10}
+Let \(X\) and \(Y\) be sets.
+Then there exists a set, denoted \(Y^X\), which consists of all the functions from \(X\) to \(Y\), thus
+\[
+    f \in Y^X \iff (f \text{ is a function with domain } X \text{ and range } Y).
+\]
+\end{axiom}
+
+\begin{note}
+The reason we use the notation \(Y^X\) to denote this set is that if \(Y\) has \(n\) elements and \(X\) has \(m\) elements, then one can show that \(Y^X\) has \(n^m\) elements.
+\end{note}
+
+\setcounter{theorem}{8}
+\begin{lemma}\label{3.4.9}
+Let \(X\) be a set.
+Then the set
+\[
+    \{Y : Y \text{ is a subset of } X\}
+\]
+is a set.
+\end{lemma}
+
+\begin{proof}
+By Axiom \ref{3.10}, there exists a set \(\{0, 1\}^X\) which consists of all the functions from \(X\) to \(\{0, 1\}\).
+Also by Axiom \ref{3.6}, we can replace each \(f \in \{0, 1\}^X\) with \(f^{-1}(\{1\})\), i.e., there exists a set \(S = \{f^{-1}(\{1\}) : f \in \{0, 1\}^X\}\).
+Now we only have to show that \(\forall\ f^{-1}(\{1\}) \in S\), \(f^{-1}(\{1\}) \subseteq X\).
+By Definition \ref{3.4.4}, \(f^{-1}(\{1\}) = \{x \in X : f(x) \in \{1\}\}\).
+Thus \(f^{-1}(\{1\}) \subseteq X\) is true because some element in \(X\) can be map to \(0\).
+And we conclude that \(S = \{Y : Y \text{ is a subset of } X\}\) exists.
+\end{proof}
+
+\begin{remark}\label{3.4.10}
+The set \(\{Y : Y \text{ is a subset of } X\}\) is know as the \emph{power set} of \(X\) and is denoted \(2^X\).
+\end{remark}
+
+\begin{axiom}[Union]\label{3.11}
+Let \(A\) be a set, all of whose elements are themselves sets.
+Then there exists a set \(\bigcup A\) whose elements are precisely those objects which are elements of the elements of \(A\), thus for all objects \(x\)
+\[
+    x \in \bigcup A \iff (x \in S \text{ for some } S \in A)
+\]
+\end{axiom}
+
+\begin{note}
+The axiom of union, combined with the axiom of pair set, implies the axiom of pairwise union.
+Another important consequence of this axiom is that if one has some set \(I\), and for every element \(\alpha \in I\) we have some set \(A_{\alpha}\), then we can form the union set \(\bigcup_{\alpha \in I} A_{\alpha}\) by defining
+\[
+    \bigcup_{\alpha \in I} A_{\alpha} \coloneqq \bigcup \{A_{\alpha} : \alpha \in I\},
+\]
+which is a set thanks to the axiom of replacement and the axiom of union.
+More generally, we see that for any object \(y\),
+\[
+    y \in \bigcup_{\alpha \in I} A_{\alpha} \iff (y \in A_{\alpha} \text{ for some } \alpha \in I).
+\]
+In situations like this, we often refer to \(I\) as an \emph{index set}, and the elements \(\alpha\) of this index set as \emph{labels};
+the sets \(A_{\alpha}\) are then called a \emph{family of sets}, and are \emph{indexed} by the labels \(\alpha \in I\).
+Note that if \(I\) was empty, then \(\bigcup_{\alpha \in I} A_{\alpha}\) would automatically also be empty.
+\end{note}
+
+\begin{note}
+We can similarly form intersections of families of sets, as long as the index set is non-empty.
+More specifically, given any non-empty set \(I\), and given an assignment of a set \(A_{\alpha}\) to each \(\alpha \in I\), we can define the intersection \(\bigcap_{\alpha \in I} A_{\alpha}\) by first choosing some element \(\beta\) of \(I\) (which we can do since \(I\) is non-empty), and setting
+\[
+    \bigcap_{\alpha \in I} A_{\alpha} \coloneqq \{x \in A_{\beta} : x \in A_{\alpha} \text{ for all } \alpha \in I\},
+\]
+which is a set by the axiom of specification.
+This definition may look like it depends on the choice of \(\beta\), but it does not.
+Observe that for any object \(y\),
+\[
+    y \in \bigcap_{\alpha \in I} A_{\alpha} \iff (y \in A_{\alpha} \text{ for all } \alpha \in I).
+\]
+\end{note}
+
+\setcounter{theorem}{11}
+\begin{remark}\label{3.4.12}
+The axioms of set theory that we have introduced (Axioms \ref{3.1}-\ref{3.11}, excluding the dangerous Axiom \ref{3.8}) are known as the \emph{Zermelo-Fraenkel axioms of set theory}, after Ernest Zermelo (1871--1953) and Abraham Fraenkel (1891--1965).
+There is one further axiom we will eventually need, the famous \emph{axiom of choice}, giving rise to the \emph{Zermelo-Fraenkel-Choice (ZFC) axioms of set theory}, but we will not need this axiom for some time.
+\end{remark}
+
+\exercisesection
+
+\begin{exercise}\label{ex 3.4.1}
+Let \(f : X \to Y\) be a bijective function, and let \(f^{-1} : Y \to X\) be its inverse.
+Let \(V\) be any subset of \(Y\).
+Prove that the forward image of \(V\) under \(f^{-1}\) is the same set as the inverse image of \(V\) under \(f\);
+thus the fact that both sets are denoted by \(f^{-1}(V)\) will not lead to any inconsistency.
+\end{exercise}
+
+\begin{proof}
+Because \(f\) is bijective by the given condition, \(\forall\ x \in f^{-1}(V) \iff f(x) \in V \iff x\) is in the inverse image of \(V\) under \(f\).
+\end{proof}
+
+\begin{exercise}\label{ex 3.4.2}
+Let \(f : X \to Y\) be a function from one set \(X\) to another set \(Y\), let \(S\) be a subset of \(X\), and let \(U\) be a subset of \(Y\).
+What, in general, can one say about \(f^{-1}(f(S))\) and \(S\)?
+What about \(f(f^{-1}(U))\) and \(U\)?
+\end{exercise}
+
+\begin{proof}
+\(\forall\ x \in S\), \(x \in f^{-1}(f(S))\) is true because \(f(x) \in f(S)\).
+So we can say \(S \subseteq f^{-1}(f(S))\) is true.
+\(\forall\ x \in f^{-1}(U)\), \(\exists\ y \in U\) such that \(f(x) = y\).
+This means \(\forall\ y \in f(f^{-1}(U))\), \(\exists\ y \in U\).
+So we can say \(f(f^{-1}(U)) \subseteq U\) is true.
+\end{proof}
+
+\begin{exercise}\label{ex 3.4.3}
+Let \(A\), \(B\) be two subsets of a set \(X\), and let \(f : X \to Y\) be a function.
+Show that \(f(A \cap B) \subseteq f(A) \cap f(B)\), that \(f(A) \setminus f(B) \subseteq f(A \setminus B)\), \(f(A \cup B) = f(A) \cup f(B)\).
+For the first two statements, is it true that the \(\subseteq\) relation can be imporved to \(=\)?
+\end{exercise}
+
+\begin{proof}
+We first prove the intersection part.
+\(\forall\ x \in A \cap B\), \(x \in A\) is true, and \(f(x) \in f(A)\) is true.
+Similarly, \(x \in B\) is true, and \(f(x) \in f(B)\) is true.
+Thus \(f(x) \in f(A) \cap f(B)\) is true, or equivalently \(f(A \cap B) \subseteq f(A) \cap f(B)\).
+If \(A \cap B = \emptyset\), we can not derived \(f(A) \cap f(B) = \emptyset\), thus \(f(A) \cap f(B) \subsetneq f(A \cap B)\).
+
+Next we prove the difference part.
+\(\forall\ x \in A\), if \(f(x) \in f(A) \setminus f(B)\), then \(x \notin B\), otherwise \(f(x) \in f(B)\), a contradiction.
+So \(x \in A \setminus B\), thus \(f(x) \in f(A \setminus B)\), or equivalently \(f(A) \setminus f(B) \subseteq f(A \setminus B)\).
+If \(A \setminus B = A\), then \(f(A \setminus B) = f(A)\), but we can not derive \(f(A) \setminus f(B) = f(A)\), so \(f(A \setminus B) \subsetneq f(A) \setminus f(B)\).
+
+Now we prove the union part.
+\(\forall\ x \in A \cup B\), \(x \in A\) or \(x \in B\) is true.
+If \(x \in A\) is true, then \(f(x) \in f(A)\) is true.
+Similarly, if \(x \in B\) is true, then \(f(x) \in f(B)\) is true.
+So \(\forall\ y \in f(A \cup B)\), \(y \in f(A) \cup f(B)\) is true, and we conclude that \(f(A \cup B) \subseteq f(A) \cup f(B)\).
+\(\forall\ y \in f(A) \cup f(B)\), \(y \in f(A)\) or \(y \in f(B)\) is true.
+If \(y \in f(A)\) is true, then \(\exists\ x \in A\) such that \(f(x) = y\), and because \(x \in A \implies x \in A \cup B\), so \(f(x) \in f(A \cup B)\).
+Similarly, if \(y \in f(B)\) is true, then \(\exists\ x \in B\) such that \(f(x) = y\), and because \(x \in B \implies x \in A \cup B\), so \(f(x) \in f(A \cup B)\).
+Thus \(f(A) \cup f(B) \subseteq f(A \cup B)\), and combined with previous result we conclude that \(f(A \cup B) = f(A) \cup f(B)\).
+\end{proof}
+
+\begin{exercise}\label{ex 3.4.4}
+Let \(f : X \to Y\) be a function from one set \(X\) to another set \(Y\), and let \(U\), \(V\) be subsets of \(Y\). Show that \(f^{-1}(U \cup V) = f^{-1}(U) \cup f^{-1}(V)\), that
+\(f^{-1}(U \cap V) = f^{-1}(U) \cap f^{-1}(V)\), and that \(f^{-1}(U \setminus V) = f^{-1}(U) \setminus f^{-1}(V)\).
+\end{exercise}
+
+\begin{proof}
+We first prove the union part.
+\(\forall\ x \in f^{-1}(U \cup V)\), \(f(x) \in U \cup V\).
+If \(f(x) \in U\), then \(x \in f^{-1}(U)\).
+Similarly, if \(f(x) \in V\), then \(x \in f^{-1}(V)\).
+Thus \(f^{-1}(U \cup V) \subseteq f^{-1}(U) \cup f^{-1}(V)\).
+\(\forall\ x \in f^{-1}(U) \cup f^{-1}(V)\), \(x \in f^{-1}(U)\) or \(x \in f^{-1}(V)\) is true.
+If \(x \in f^{-1}(U)\), then \(f(x) \in U\) is true, and \(f(x) \in U \cup V\) is true, so \(x \in f^{-1}(U \cup V)\) is true.
+Similarly, if \(x \in f^{-1}(V)\), then \(f(x) \in V\) is true, and \(f(x) \in U \cup V\) is true, so \(x \in f^{-1}(U \cup V)\) is true.
+Thus \(f^{-1}(U) \cup f^{-1}(V) \subseteq f^{-1}(U \cup V)\).
+We conclude that \(f^{-1}(U \cup V) = f^{-1}(U) \cup f^{-1}(V)\).
+
+Next we prove the intersection part.
+\(\forall\ x \in f^{-1}(U \cap V)\), \(f(x) \in U \cap V\).
+Because \(f(x) \in U\), so \(x \in f^{-1}(U)\);
+similar argument show that \(x \in f^{-1}(V)\), thus \(x \in f^{-1}(U) \cap f^{-1}(V)\), and we conclude that \(f^{-1}(U \cap V) \subseteq f^{-1}(U) \cap f^{-1}(V)\).
+\(\forall\ x \in f^{-1}(U) \cap f^{-1}(V)\), \(x \in f^{-1}(U)\) is true, so \(f(x) \in U\) is true;
+similar argument show that \(f(x) \in V\) is true, so \(f(x) \in U \cap V\) is true, and \(x \in f^{-1}(U \cap V)\) is also true, we conclude that \(f^{-1}(U) \cap f^{-1}(V) \subseteq f^{-1}(U \cap V)\).
+Combine both result we get \(f^{-1}(U \cap V) = f^{-1}(U) \cap f^{-1}(V)\).
+
+Now we prove the difference part.
+\(\forall\ x \in f^{-1}(U \setminus V)\), \(f(x) \in U \setminus V\).
+Because \(f(x) \in U\), \(x \in f^{-1}(U)\) is true.
+But \(f(x) \notin V\), \(x \notin f^{-1}(V)\) is true.
+So \(x \in f^{-1}(U) \setminus f^{-1}(V)\) is true, thus \(f^{-1}(U \setminus V) \subseteq f^{-1}(U) \setminus f^{-1}(V)\).
+\(\forall\ x \in f^{-1}(U) \setminus f^{-1}(V)\), \(x \in f^{-1}(U) \implies f(x) \in U\) and \(x \notin f^{-1}(x) \implies f(x) \notin V\).
+So \(f(x) \in U \setminus V\), and \(x \in f^{-1}(U \setminus V)\) is true, thus \( f^{-1}(U) \setminus f^{-1}(V) \subseteq f^{-1}(U \setminus V)\).
+Combine both result we get \(f^{-1}(U \setminus V) = f^{-1}(U) \setminus f^{-1}(V)\).
+\end{proof}
+
+\begin{exercise}\label{ex 3.4.5}
+Let \(f : X \to Y\) be a function from one set \(X\) to another set \(Y\).
+Show that \(f(f^{-1}(S)) = S\) for every \(S \subseteq Y\) if and only if \(f\) is surjective.
+Show that \(f^{-1}(f(S)) = S\) for every \(S \subseteq X\) if and only if \(f\) is injective.
+\end{exercise}
+
+\begin{proof}
+We first prove the surjective part.
+We begin with the necessary condition.
+By the given condition \(f(f^{-1}(S)) = S\), \(\forall\ y \in S\), \(\exists\ x \in f^{-1}(S)\) such that \(f(x) = y\).
+Since \(S \subseteq Y\), by replace \(S\) with \(Y\) we get the statement \(\forall\ y \in Y\), \(\exists\ x \in f^{-1}(Y)\) such that \(f(x) = y\), which is the definition of surjective.
+Thus the necessary condition is true, all we left is the sufficient condition.
+By the given condition \(f\) is surjective, \(\forall\ y \in Y\), \(\exists\ x \in X\) such that \(f(x) = y\).
+Because \(S \subseteq Y\) and \(f\) is surjective, \(\forall\ y \in S\), \(\exists\ x \in X\) such that \(f(x) = y\).
+Then \(x \in f^{-1}(S)\) is true, so \(f(f^{-1}(S)) = S\) is also true, otherwise some \(y \in S\) cannot be map under \(f\), which is a contradition with \(f\) is surjective.
+So the sufficient condition is true, we conclude that the if and only if statement is true.
+
+Now we prove the injective part.
+We begin with the necessary condition.
+Let \(x, x' \in S\) such that \(f(x) = f(x')\).
+By the given condition \(f^{-1}(f(S)) = S\), \(f^{-1}(f(x)) = x\) and \(f^{-1}(f(x')) = x'\) are true.
+But \(f(x) = f(x')\), so \(x = f^{-1}(f(x)) = f^{-1}(f(x')) = x'\), thus \(f\) is injective, and the necessary condition is true.
+All we left is sufficient condition.
+\(\forall\ x \in S\), \(x \in f^{-1}(f(S))\) is true, so \(S \subseteq f^{-1}(f(S))\).
+And \(\forall\ x \in f^{-1}(f(S))\), \(\exists\ x' \in S\) such that \(f^{-1}(f(x')) = x\), then \(x = x'\) because \(f\) is injective, so \(x \in S\) is true, and \(f^{-1}(f(S)) \subseteq S\).
+Combine the results above we get \(f\) is injective implies \(f^{-1}(f(S)) = S\), and the if and only if statement is true.
+\end{proof}
+
+\begin{exercise}\label{ex 3.4.6}
+Prove Lemma \ref{3.4.9}.
+\end{exercise}
+
+\begin{proof}
+See Lemma \ref{3.4.9}.
+\end{proof}
+
+\begin{exercise}\label{ex 3.4.7}
+Let \(X\), \(Y\) be sets.
+Define a \emph{partial function} from \(X\) to \(Y\) to be any function \(f : X' \to Y'\) whose domain \(X'\) is a subset of \(X\), and whose range \(Y'\) is a subset of \(Y\).
+Show that the collection of all partial functions from \(X\) to \(Y\) is itself a set.
+\end{exercise}
+
+\begin{proof}
+By Lemma \ref{3.4.9}, both \(\hat{X} = \{X' : X' \subseteq X\}\) and \(\hat{Y} = \{Y' : Y' \subseteq Y\}\) are sets.
+Let \(x \in \hat{X}\) and \(y \in \hat{Y}\).
+By Axiom \ref{3.10}, exists a set \(y^{x}\) which is consist of functions with domain \(x\) and range \(y\).
+By Axiom \ref{3.6} and Axiom \ref{3.11}, exists a set \(\bigcup_{x \in \hat{X} \land y \in \hat{Y}} \{f : f \in y^{x}\}\}\).
+Thus the collection of all partial functions from \(X\) to \(Y\) is itself a set.
+\end{proof}
+
+\begin{exercise}\label{ex 3.4.8}
+Show that Axiom \ref{3.4} can be deduced from Axiom \ref{3.1}, Axiom \ref{3.3} and Axiom \ref{3.11}.
+\end{exercise}
+
+\begin{proof}
+By Axiom \ref{3.1}, \(A\) is a set and \(B\) is a set.
+And if \(x\) is a object, we can say \(x \in A\) or \(x \in B\).
+By Axiom \ref{3.3}, there exists a set \(\{A, B\}\) whose only elements are \(A\) and \(B\).
+By Axiom \ref{3.11}, \(x \in \bigcup \{A, B\} \iff x \in A \lor x \in B\).
+By defining \(A \cup B \coloneqq \bigcup \{A, B\}\), we show that \(x \in A \cup B \iff x \in A \lor x \in B\) is true.
+\end{proof}
+
+\begin{exercise}\label{ex 3.4.9}
+Show that if \(\beta\) and \(\beta'\) are two elements of a set \(I\), and to each \(\alpha \in I\) we assign a set \(A_{\alpha}\), then
+\[
+    \{x \in A_{\beta} : x \in A_{\alpha} \text{ for all } \alpha \in I\} = \{x \in A_{\beta'} : x \in A_{\alpha} \text{ for all } \alpha \in I\},
+\]
+and so the definition of \(\bigcap_{\alpha \in I} A_{\alpha}\) does not depend on \(\beta\).
+\end{exercise}
+
+\begin{proof}
+\(\forall\ \alpha \in I \implies x \in A_{\alpha}\).
+Because \(x \in A_{\beta}\) and \(\beta' \in I\), so \(x \in A_{\beta'}\).
+Similar argument shows that \(x \in A_{\beta'} \implies x \in A_{\beta}\).
+Thus the definition of \(\bigcap_{\alpha \in I} A_{\alpha}\) does not depend on \(\beta\).
+\end{proof}
+
+\begin{exercise}\label{ex 3.4.10}
+Suppose that \(I\) and \(J\) are two sets, and for all \(\alpha \in I \cup J\) let \(A_{\alpha}\) be a set.
+Show that \((\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha}) = \bigcup_{\alpha \in I \cup J} A_{\alpha}\).
+If \(I\) and \(J\) are non-empty, show that \((\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha}) = \bigcap_{\alpha \in I \cup J} A_{\alpha}\).
+\end{exercise}
+
+\begin{proof}
+We first prove the union part.
+\(\forall\ x \in (\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha})\), \(x \in \bigcup_{\alpha \in I} A_{\alpha} \lor x \in \bigcup_{\alpha \in J} A_{\alpha}\) is true.
+If \(x \in \bigcup_{\alpha \in I} A_{\alpha}\), then \(x \in A_{\alpha}\) for some \(\alpha \in I\), so \(x \in A_{\alpha}\) for some \(\alpha \in I \cup J\) is true, or equivalently \(x \in \bigcup_{\alpha \in I \cup J} A_{\alpha}\) is true.
+Similarly if \(x \in \bigcup_{\alpha \in J} A_{\alpha}\), then \(x \in A_{\alpha}\) for some \(\alpha \in J\), so \(x \in A_{\alpha}\) for some \(\alpha \in I \cup J\) is true, or equivalently \(x \in \bigcup_{\alpha \in I \cup J} A_{\alpha}\) is true.
+Thus \(x \in (\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha}) \implies x \in \bigcup_{\alpha \in I \cup J} A_{\alpha}\), or equivalently \((\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha}) \subseteq \bigcup_{\alpha \in I \cup J} A_{\alpha}\).
+\(\forall\ y \in \bigcup_{\alpha \in I \cup J} A_{\alpha}\), \(y \in A_{\alpha}\) for some \(\alpha \in I \cup J\).
+If \(\alpha \in I\), then \(y \in A_{\alpha}\) for some \(\alpha \in I\) is true, or equivalently \(y \in \bigcup_{\alpha \in I} A_{\alpha}\) is true.
+Similarly if \(\alpha \in J\), then \(y \in A_{\alpha}\) for some \(\alpha \in J\) is true, or equivalently \(y \in \bigcup_{\alpha \in J} A_{\alpha}\) is true.
+Combine both results we get \(\alpha \in I \cup J \implies y \in (\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha})\) is true.
+Thus \(y \in \bigcup_{\alpha \in I \cup J} A_{\alpha} \implies y \in (\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha})\), or equivalently \(\bigcup_{\alpha \in I \cup J} A_{\alpha} \subseteq (\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha})\).
+We conclude that \((\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha}) = \bigcup_{\alpha \in I \cup J} A_{\alpha}\).
+
+Now we prove the intersection part.
+\(\forall\ x \in (\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha})\), \(x \in A_{\alpha}\) for all \(\alpha \in I\) is true, and \(x \in A_{\alpha}\) for all \(\alpha \in J\) is true, so \(x \in A_{\alpha}\) for all \(\alpha \in I \cup J\) is true, or equivalently \(x \in \bigcap_{\alpha \in I \cup J} A_{\alpha}\) is true.
+Thus \(x \in (\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha}) \implies x \in \bigcap_{\alpha \in I \cup J} A_{\alpha}\), or equivalently \((\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha}) \subseteq \bigcap_{\alpha \in I \cup J} A_{\alpha}\).
+\(\forall\ y \in \bigcap_{\alpha \in I \cup J} A_{\alpha}\), \(y \in A_{\alpha}\) for all \(\alpha \in I \cup J\).
+Because \(I \neq \emptyset\), \(\alpha \in I\) is true, \(y \in A_{\alpha}\) for all \(\alpha \in I\) is true, or equivalently \(y \in \bigcap_{\alpha \in I} A_{\alpha}\) is true.
+Similarly \(J \neq \emptyset\), \(\alpha \in J\) is true, \(y \in A_{\alpha}\) for all \(\alpha \in J\) is true, or equivalently \(y \in \bigcap_{\alpha \in J} A_{\alpha}\) is true.
+Since \(y \in \bigcap_{\alpha \in I} A_{\alpha} \land y \in \bigcap_{\alpha \in J} A_{\alpha}\), so \(y \in (\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha})\) is true.
+Thus \(y \in \bigcap_{\alpha \in I \cup J} A_{\alpha} \implies y \in (\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha})\), or equivalently \(\bigcap_{\alpha \in I \cup J} A_{\alpha} \subseteq (\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha})\).
+We conclude that \((\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha}) = \bigcap_{\alpha \in I \cup J} A_{\alpha}\).
+\end{proof}
+
+\begin{exercise}\label{ex 3.4.11}
+Let \(X\) be a set, let \(I\) be a non-empty set, and for all \(\alpha \in I\) let \(A_{\alpha}\) be a subset of \(X\).
+Show that
+\[
+    X \setminus \bigcup_{\alpha \in I} A_{\alpha} = \bigcap_{\alpha \in I} (X \setminus A_{\alpha})
+\]
+and
+\[
+    X \setminus \bigcap_{\alpha \in I} A_{\alpha} = \bigcup_{\alpha \in I} (X \setminus A_{\alpha}).
+\]
+This should be compared with de Morgan’s laws in Proposition \ref{3.1.28}
+(although one cannot derive the above identities directly from de Morgan’s laws, as \(I\) could be infinite).
+\end{exercise}
+
+\begin{proof}
+We first prove the union part.
+\(\forall\ x \in X \setminus \bigcup_{\alpha \in I} A_{\alpha}\), \(x \in X \land x \notin \bigcup_{\alpha \in I} A_{\alpha} \iff x \in X \land \nexists\ \alpha \in I\) such that \(x \in A_{\alpha} \iff x \in X \land x \notin A_{\alpha}\) for all \(\alpha \in I \iff x \in X \setminus A_{\alpha}\) for all \(\alpha \in I \iff x \in \bigcap_{\alpha \in I} (X \setminus A_{\alpha})\).
+
+Now we prove the intersection part.
+\(\forall\ x \in X \setminus \bigcap_{\alpha \in I} A_{\alpha}\), \(x \in X \land x \notin \bigcap_{\alpha \in I} A_{\alpha} \iff x \in X \land\) not all \(\alpha \in I\) such that \(x \in A_{\alpha} \iff x \in X \land x \notin A_{\alpha}\) for some \(\alpha \in I \iff x \in X \setminus A_{\alpha}\) for some \(\alpha \in I \iff x \in \bigcup_{\alpha \in I} (X \setminus A_{\alpha})\).
+\end{proof}
+
+\begin{exercise}\label{ex 3.4.12}
+Show the following statement is true:
+\[
+    y \in \bigcap_{\alpha \in I} A_{\alpha} \iff \forall\ \alpha \in I, y \in A_{\alpha}.
+\]
+\end{exercise}
+
+\begin{proof}
+\(y \in \bigcap_{\alpha \in I} A_{\alpha} \iff y \in \{x \in A_{\beta} : x \in A_{\alpha} \text{ for all } \alpha \in I\} \iff \forall\ \alpha \in I, y \in A_{\alpha}\).
+\end{proof}
