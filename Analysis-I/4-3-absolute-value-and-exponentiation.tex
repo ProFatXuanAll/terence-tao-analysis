@@ -294,6 +294,266 @@ d(x, z) &= |x - z| & \text{(by Definition \ref{4.3.2})} \\
 \end{align*}
 \end{proof}
 
+\begin{definition}[\(\varepsilon\)-closeness]\label{4.3.4}
+Let \(\varepsilon > 0\) be a rational number, and let \(x\), \(y\) be rational numbers.
+We say that \(y\) is \emph{\(\varepsilon\)-close} to \(x\) iff we have \(d(y, x) \leq \varepsilon\).
+\end{definition}
+
+\begin{remark}\label{4.3.5}
+This definition is not standard in mathematics textbooks;
+we will use it as ``scaffolding'' to construct the more important notions of limits (and of Cauchy sequences) later on, and once we have those more advanced notions we will discard the notion of \(\varepsilon\)-close.
+\end{remark}
+
+\begin{note}
+We do not bother defining a notion of \(\varepsilon\)-close when \(\varepsilon\) is zero or negative, because if \(\varepsilon\) is zero then \(x\) and \(y\) are only \(\varepsilon\)-close when they are equal, and when \(\varepsilon\) is negative then \(x\) and \(y\) are never \(\varepsilon\)-close.
+\end{note}
+
+\begin{note}
+In any event it is a long-standing tradition in analysis that the Greek letters \(\varepsilon\), \(\delta\) should only denote small positive numbers.
+\end{note}
+
+\setcounter{theorem}{6}
+\begin{proposition}\label{4.3.7}
+Let \(x, y, z, w\) be rational numbers.
+\begin{enumerate}
+    \item If \(x = y\), then \(x\) is \(\varepsilon\)-close to \(y\) for every \(\varepsilon > 0\).
+    Conversely, if \(x\) is \(\varepsilon\)-close to \(y\) for every \(\varepsilon > 0\), then we have \(x = y\).
+    \item Let \(\varepsilon > 0\).
+    If \(x\) is \(\varepsilon\)-close to \(y\), then \(y\) is \(\varepsilon\)-close to \(x\).
+    \item Let \(\varepsilon, \delta > 0\).
+    If \(x\) is \(\varepsilon\)-close to \(y\), and \(y\) is \(\delta\)-close to \(z\), then \(x\) and \(z\) are \((\varepsilon + \delta)\)-close.
+    \item Let \(\varepsilon, \delta > 0\).
+    If \(x\) and \(y\) are \(\varepsilon\)-close, and \(z\) and \(w\) are \(\delta\)-close, then \(x + z\) and \(y + w\) are \((\varepsilon + \delta)\)-close, and \(x - z\) and \(y - w\) are also \((\varepsilon + \delta)\)-close.
+    \item Let \(\varepsilon > 0\).
+    If \(x\) and \(y\) are \(\varepsilon\)-close, they are also \(\varepsilon'\)-close for every \(\varepsilon' > \varepsilon\).
+    \item Let \(\varepsilon > 0\).
+    If \(y\) and \(z\) are both \(\varepsilon\)-close to \(x\), and \(w\) is between \(y\) and \(z\) (i.e., \(y \leq w \leq z\) or \(z \leq w \leq y\)), then \(w\) is also \(\varepsilon\)-close to \(x\).
+    \item Let \(\varepsilon > 0\).
+    If \(x\) and \(y\) are \(\varepsilon\)-close, and \(z\) is non-zero, then \(xz\) and \(yz\) are \(\varepsilon|z|\)-close.
+    \item Let \(\varepsilon, \delta > 0\).
+    If \(x\) and \(y\) are \(\varepsilon\)-close, and \(z\) and \(w\) are \(\delta\)-close, then \(xz\) and \(yw\) are \((\varepsilon|z| + \delta|x| + \varepsilon\delta)\)-close.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}{(a)}
+We first prove that \(x = y\) implies \(x\) is \(\varepsilon\)-close to \(y\), \(\forall\ \varepsilon > 0\).
+By Proposition \ref{4.3.3}, \(x = y \iff d(x, y) = 0\).
+Then \(\forall\ \varepsilon > 0 = d(x, y)\), which means \(d(x, y) < \varepsilon\) by Proposition \ref{4.2.9}.
+By Definition \ref{4.2.8}, \(d(x, y) < \varepsilon \implies d(x, y) \leq \varepsilon\).
+Thus by Definition \ref{4.3.4}, \(x\) is \(\varepsilon\)-close to \(y\).
+
+Now we prove that \(\forall\ \varepsilon > 0\), \(x\) is \(\varepsilon\)-close to \(y\) implies \(x = y\).
+By the given condition, \(d(x, y) \leq \varepsilon\).
+Suppose for sake of contradiction that \(x \neq y\), then \(d(x, y) > 0\).
+By Proposition \ref{4.2.9}, \(x \neq y \iff d(x, y) \neq 0\) and \(d(x, y) \geq 0\), which implies \(d(x, y) > 0\).
+Since \(d(x, y) > 0\), \(d(x, y) / 2 > 0\).
+By the given condition, \(\forall\ \varepsilon > 0\), \(d(x, y) \leq \varepsilon\).
+Then we get \(d(x, y) \leq d(x, y) / 2\), and because \(d(x, y) \neq 0\), \(d(x, y) < d(x, y) / 2\), a contradiction.
+So \(x = y\).
+\end{proof}
+
+\begin{proof}{(b)}
+\begin{align*}
+& x \text{ is \(\varepsilon\)-close to } y \\
+\implies & d(x, y) \leq \varepsilon & \text{(by Definition \ref{4.3.4})} \\
+\implies & d(y, x) \leq \varepsilon & \text{(by Proposition \ref{4.3.3}, \(d(x, y) = d(y, x)\))} \\
+\implies & y \text{ is \(\varepsilon\)-close to } x. & \text{(by Definition \ref{4.3.4})}
+\end{align*}
+\end{proof}
+
+\begin{proof}{(c)}
+By Definition \ref{4.3.4}, \(x\) is \(\varepsilon\)-close to \(y\) implies \(d(x, y) \leq \varepsilon\), and \(y\) is \(\delta\)-close to \(z\) implies \(d(y, z) \leq \delta\).
+So
+\begin{align*}
+& d(y, z) \leq \delta \\
+\implies & \varepsilon + d(y, z) \leq \varepsilon + \delta. & \text{(by Proposition \ref{4.3.3})} \\
+& d(x, y) \leq \varepsilon \\
+\implies & d(x, y) + d(y, z) \leq \varepsilon + d(y, z) & \text{(by Proposition \ref{4.3.3})} \\
+\implies & d(x, y) + d(y, z) \leq \varepsilon + \delta & \text{(by Proposition \ref{4.2.9})} \\
+\implies & x \text{ is \((\varepsilon + \delta)\)-close to } z. & \text{(by Definition \ref{4.3.4})}
+\end{align*}
+\end{proof}
+
+\begin{proof}{(d)}
+We first prove that If \(x\) and \(y\) are \(\varepsilon\)-close, and \(z\) and \(w\) are \(\delta\)-close, then \(x + z\) and \(y + w\) are \((\varepsilon + \delta)\)-close.
+By Definition \ref{4.3.4}, \(x\) is \(\varepsilon\)-close to \(y\) implies \(d(x, y) \leq \varepsilon\), and \(z\) is \(\delta\)-close to \(w\) implies \(d(z, w) \leq \delta\).
+Because
+\begin{align*}
+& d(x, y) \leq \varepsilon \\
+\implies & d(x, y) + d(z, w) \leq \varepsilon + d(z, w). & \text{(by Proposition \ref{4.2.9})} \\
+& d(z, w) \leq \delta \\
+\implies & \varepsilon + d(z, w) \leq \varepsilon + \delta & \text{(by Proposition \ref{4.2.9})} \\
+\implies & d(x, y) + d(z, w) \leq \varepsilon + \delta. & \text{(by Proposition \ref{4.2.9})} \\
+\end{align*}
+So
+\begin{align*}
+& d(x + z, y + w) \\
+&= |(x + z) - (y + w)| & \text{(by Definition \ref{4.3.2})} \\
+&= |(x + z) + (-(y + w))| \\
+&= |(x + z) + (-1)(y + w)| & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
+&= |(x + z) + ((-1)y + (-1)w)| & \text{(by Proposition \ref{4.2.4})} \\
+&= |(x + (z + (-1)y)) + (-1)w| & \text{(by Proposition \ref{4.2.4})} \\
+&= |(x + ((-1)y + z)) + (-1)w| & \text{(by Proposition \ref{4.2.4})} \\
+&= |(x + (-1)y) + (z + (-1)w)| & \text{(by Proposition \ref{4.2.4})} \\
+&= |(x + (-y)) + (z + (-w))| & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
+&= |(x - y) + (z - w)| \\
+&\leq |x - y| + |z - w| & \text{(by Proposition \ref{4.3.3})} \\
+&= d(x, y) + d(z, w) & \text{(by Definition \ref{4.3.2})} \\
+&\leq \varepsilon + \delta. \\
+\end{align*}
+Thus by Definition \ref{4.3.4}, \(x + z\) and \(y + w\) are \((\varepsilon + \delta)\)-close.
+
+Now we prove that If \(x\) and \(y\) are \(\varepsilon\)-close, and \(z\) and \(w\) are \(\delta\)-close, then \(x - z\) and \(y - w\) are \((\varepsilon + \delta)\)-close.
+By Definition \ref{4.3.4}, \(x\) is \(\varepsilon\)-close to \(y\) implies \(d(x, y) \leq \varepsilon\), and \(z\) is \(\delta\)-close to \(w\) implies \(d(z, w) \leq \delta\).
+Because
+\begin{align*}
+& d(x, y) \leq \varepsilon \\
+\implies & d(x, y) + d(z, w) \leq \varepsilon + d(z, w). & \text{(by Proposition \ref{4.2.9})} \\
+& d(z, w) \leq \delta \\
+\implies & \varepsilon + d(z, w) \leq \varepsilon + \delta & \text{(by Proposition \ref{4.2.9})} \\
+\implies & d(x, y) + d(z, w) \leq \varepsilon + \delta. & \text{(by Proposition \ref{4.2.9})} \\
+\end{align*}
+So
+\begin{align*}
+& d(x - z, y - w) \\
+&= |(x - z) - (y - w)| & \text{(by Definition \ref{4.3.2})} \\
+&= |(x + (-z)) + (-(y + (-w)))| \\
+&= |(x + (-1)z) + (-1)(y + (-1)w)| & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
+&= |(x + (-1)z) + ((-1)y + (-1)(-1)w)| & \text{(by Proposition \ref{4.2.4})} \\
+&= |(x + (-1)z) + ((-1)y + 1w)| & \text{(by Proposition \ref{4.2.4})} \\
+&= |(x + (-1)z) + ((-1)y + w)| & \text{(by Proposition \ref{4.2.4})} \\
+&= |(x + (-z)) + ((-y) + w)| & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
+&= |(x + ((-z) + (-y))) + w| & \text{(by Proposition \ref{4.2.4})} \\
+&= |(x + ((-y) + (-z))) + w| & \text{(by Proposition \ref{4.2.4})} \\
+&= |(x + (-y)) + ((-z) + w)| & \text{(by Proposition \ref{4.2.4})} \\
+&= |(x + (-y)) + (w + (-z))| & \text{(by Proposition \ref{4.2.4})} \\
+&= |(x - y) + (w - z)| \\
+&\leq |x - y| + |w - z| & \text{(by Proposition \ref{4.3.3})} \\
+&= |x - y| + |-(w - z)| & \text{(by Proposition \ref{4.3.3})} \\
+&= |x - y| + |-(w + (-z))| \\
+&= |x - y| + |(-1)(w + (-1)z)| & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
+&= |x - y| + |(-1)w + (-1)((-1)z)| & \text{(by Proposition \ref{4.2.4})} \\
+&= |x - y| + |(-1)w + ((-1)(-1))z| & \text{(by Proposition \ref{4.2.4})} \\
+&= |x - y| + |(-1)w + 1z| & \text{(by Proposition \ref{4.2.4})} \\
+&= |x - y| + |(-1)w + z| & \text{(by Proposition \ref{4.2.4})} \\
+&= |x - y| + |z + (-1)w| & \text{(by Proposition \ref{4.2.4})} \\
+&= |x - y| + |z + (-w)| & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
+&= |x - y| + |z - w| \\
+&= d(x, y) + d(z, w) & \text{(by Definition \ref{4.3.2})} \\
+&\leq \varepsilon + \delta. \\
+\end{align*}
+Thus by Definition \ref{4.3.4}, \(x - z\) and \(y - w\) are \((\varepsilon + \delta)\)-close.
+\end{proof}
+
+\begin{proof}{(e)}
+By the given condition, \(\forall\ \varepsilon'\), \(\varepsilon < \varepsilon'\).
+And by Definition \ref{4.3.4}, \(x\) is \(\varepsilon\)-close to \(y\) implies \(d(x, y) \leq \varepsilon\).
+If \(d(x, y) = \varepsilon\), then \(d(x, y) < \varepsilon'\).
+If \(d(x, y) < \varepsilon\), then by Proposition \ref{4.2.9}, \(d(x, y) < \varepsilon'\).
+Thus \(d(x, y) < \varepsilon'\), by Definition \ref{4.2.8}, \(d(x, y) \leq \varepsilon'\), which means \(x\) is \(\varepsilon'\)-close to \(y\) by Definition \ref{4.3.4}.
+\end{proof}
+
+\begin{proof}{(f)}
+\begin{align*}
+& y \text{ is } \varepsilon\text{-close to } x \\
+\implies & d(y, x) \leq \varepsilon & \text{(by Definition \ref{4.3.4})} \\
+\implies & |y - x| \leq \varepsilon & \text{(by Definition \ref{4.3.2})} \\
+\implies & (-1)|y - x| \geq (-1)\varepsilon & \text{(by Exercise \ref{ex 4.2.6})} \\
+\implies & -|y - x| \geq -\varepsilon. \\
+& z \text{ is } \varepsilon\text{-close to } x \\
+\implies & d(z, x) \leq \varepsilon & \text{(by Definition \ref{4.3.4})} \\
+\implies & |z - x| \leq \varepsilon & \text{(by Definition \ref{4.3.2})} \\
+\implies & (-1)|z - x| \geq (-1)\varepsilon & \text{(by Exercise \ref{ex 4.2.6})} \\
+\implies & -|z - x| \geq -\varepsilon. \\
+& y \leq w \leq z \\
+\implies & y + (-x) \leq w + (-x) \leq z + (-x) & \text{(by Lemma \ref{4.2.9})} \\
+\implies & y - x \leq w - x \leq z - x \\
+\implies & -|y - x| \leq y - x \leq w - x \leq z - x \leq |z - x| & \text{(by Proposition \ref{4.3.3})} \\
+\implies & -|y - x| \leq w - x \leq |z - x| \\
+\implies & -\varepsilon \leq -|y - x| \leq w - x \leq |z - x| \leq \varepsilon & \text{(by the given conditions)} \\
+\implies & -\varepsilon \leq w - x \leq \varepsilon \\
+\implies & \varepsilon \geq |w - x| & \text{(by Proposition \ref{4.3.3})} \\
+\implies & |w - x| \leq \varepsilon & \text{(by Proposition \ref{4.2.9})} \\
+\implies & d(w, x) \leq \varepsilon & \text{(by Definition \ref{4.3.2})} \\
+\implies & w \text{ is } \varepsilon\text{-close to } x. \\
+& z \leq w \leq y \\
+\implies & z + (-x) \leq w + (-x) \leq y + (-x) & \text{(by Lemma \ref{4.2.9})} \\
+\implies & z - x \leq w - x \leq y - x \\
+\implies & -|z - x| \leq z - x \leq w - x \leq y - x \leq |y - x| & \text{(by Proposition \ref{4.3.3})} \\
+\implies & -|z - x| \leq w - x \leq |y - x| \\
+\implies & -\varepsilon \leq -|z - x| \leq w - x \leq |y - x| \leq \varepsilon & \text{(by the given conditions)} \\
+\implies & -\varepsilon \leq w - x \leq \varepsilon \\
+\implies & \varepsilon \geq |w - x| & \text{(by Proposition \ref{4.3.3})} \\
+\implies & |w - x| \leq \varepsilon & \text{(by Proposition \ref{4.2.9})} \\
+\implies & d(w, x) \leq \varepsilon & \text{(by Definition \ref{4.3.2})} \\
+\implies & w \text{ is } \varepsilon\text{-close to } x.
+\end{align*}
+\end{proof}
+
+\begin{proof}{(g)}
+By Proposition \ref{4.3.3}, \(|z| \geq 0\).
+So
+\begin{align*}
+& x \text{ is } \varepsilon\text{-close to } y \\
+\implies & d(x, y) \leq \varepsilon & \text{(by Definition \ref{4.3.4})} \\
+\implies & |x - y| \leq \varepsilon & \text{(by Definition \ref{4.3.2})} \\
+\implies & |x - y||z| \leq \varepsilon|z| & \text{(by Proposition \ref{4.2.9})} \\
+\implies & |(x - y)z| \leq \varepsilon|z| & \text{(by Proposition \ref{4.3.3})} \\
+\implies & |(x + (-y))z| \leq \varepsilon|z| \\
+\implies & |xz + (-y)z| \leq \varepsilon|z| & \text{(by Proposition \ref{4.2.4})} \\
+\implies & |xz + ((-1)y)z| \leq \varepsilon|z| & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
+\implies & |xz + (-1)(yz)| \leq \varepsilon|z| & \text{(by Proposition \ref{4.2.4})} \\
+\implies & |xz + (-(yz))| \leq \varepsilon|z| & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
+\implies & |xz - yz| \leq \varepsilon|z| \\
+\implies & d(xz, yz) \leq \varepsilon|z| & \text{(by Definition \ref{4.3.2})} \\
+\implies & xz \text{ is } \varepsilon|z|\text{-close to } yz. & \text{(by Definition \ref{4.3.4})} \\
+\end{align*}
+\end{proof}
+
+\begin{proof}{(h)}
+Let \(\varepsilon, \delta > 0\), and suppose that \(x\) and \(y\) are \(\varepsilon\)-close.
+If we write \(a \coloneqq y - x\), then we have \(y = x + a\) and that \(|a| \leq \varepsilon\).
+Similarly, if \(z\) and \(w\) are \(\delta\)-close, and we define \(b \coloneqq w - z\), then \(w = z + b\) and \(|b| \leq \delta\).
+
+Since \(y = x + a\) and \(w = z + b\), we have
+\[
+    yw = (x + a)(z + b) = xz + az + xb + ab.
+\]
+Thus
+\[
+    |yw - xz| = |az + bx + ab| \leq |az| + |bx| + |ab| = |a||z| + |b||x| + |a||b|.
+\]
+Since \(|a| \leq \varepsilon\) and \(|b| \leq \delta\), we thus have
+\[
+    |yw - xz| \leq \varepsilon|z| + \delta|x| + \varepsilon\delta
+\]
+and thus that \(yw\) and \(xz\) are \((\varepsilon|z| + \delta|x| + \varepsilon\delta)\)-close.
+\end{proof}
+
+\begin{remark}\label{4.3.8}
+One should compare statements (a)-(c) of Proposition \ref{4.3.7} with the reflexive, symmetric, and transitive axioms of equality.
+It is often useful to think of the notion of ``\(\varepsilon\)-close'' as an approximate substitute for that of equality in analysis.
+\end{remark}
+
+\begin{definition}[Exponentiation to a natural number]\label{4.3.9}
+Let \(x\) be a rational number.
+To raise \(x\) to the power \(0\), we define \(x^0 \coloneqq 1\);
+in particular we define \(0^0 \coloneqq 1\).
+Now suppose inductively that \(x^n\) has been defined for some natural number \(n\), then we define \(x^{n+1} \coloneqq x^n \times x\).
+\end{definition}
+
+\begin{proposition}[Properties of exponentiation, I]\label{4.3.10}
+Let \(x\), \(y\) be rational numbers, and let \(n\), \(m\) be natural numbers.
+\begin{enumerate}
+    \item We have \(x^n x^m = x^{n + m}\), \((x^n)^m = x^{nm}\), and \((xy)^n = x^n y^n\).
+    \item Suppose \(n > 0\).
+    Then we have \(x^n = 0\) if and only if \(x = 0\).
+    \item If \(x \geq y \geq 0\), then \(x^n \geq y^n \geq 0\).
+    If \(x > y \geq 0\) and \(n > 0\), then \(x^n > y^n \geq 0\).
+    \item We have \(|x^n| = |x|^n\).
+\end{enumerate}
+\end{proposition}
+
 \exercisesection
 
 \begin{exercise}\label{ex 4.3.1}
@@ -302,4 +562,20 @@ Prove Proposition \ref{4.3.3}.
 
 \begin{proof}
 See Proposition \ref{4.3.3}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.3.2}
+Prove the remaining claims in Proposition \ref{4.3.7}.
+\end{exercise}
+
+\begin{proof}
+See Proposition \ref{4.3.7}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.3.3}
+Prove Proposition \ref{4.3.10}.
+\end{exercise}
+
+\begin{proof}
+See Proposition \ref{4.3.10}.
 \end{proof}
