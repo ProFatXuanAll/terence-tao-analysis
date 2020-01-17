@@ -1,0 +1,134 @@
+\section{Equivalent Cauchy sequences}
+
+\begin{definition}[\(\varepsilon\)-close sequences]\label{5.2.1}
+Let \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) be two sequences, and let \(\varepsilon > 0\).
+We say that the sequence \((a_n)_{n = 0}^{\infty}\) is \emph{\(\varepsilon\)-close} to \((b_n)_{n = 0}^{\infty}\) iff \(a_n\) is \(\varepsilon\)-close to \(b_n\) for each \(n \in \mathds{N}\).
+In other words, the sequence \(a_0, a_1, a_2, \dots\) is \(\varepsilon\)-close to the sequence \(b_0, b_1, b_2, \dots\) iff \(|a_n - b_n| \leq \varepsilon\) for all \(n = 0, 1, 2, \dots\).
+\end{definition}
+
+\setcounter{theorem}{2}
+\begin{definition}[\(Eventually \varepsilon\)-close sequences]\label{5.2.3}
+Let \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) be two sequences, and let \(\varepsilon > 0\).
+We say that the sequence \((a_n)_{n = 0}^{\infty}\) is \emph{eventually \(\varepsilon\)-close} to \((b_n)_{n = 0}^{\infty}\) iff there exists an \(N \geq 0\) such that the sequences \((a_n)_{n = N}^{\infty}\) and \((b_n)_{n = N}^{\infty}\) are \(\varepsilon\)-close.
+In other words, \(a_0, a_1, a_2, \dots\) is eventually \(\varepsilon\)-close to \(b_0, b_1, b_2, \dots\) iff there exists an \(N \geq 0\) such that \(|a_n - b_n| \leq \varepsilon\) for all \(n \geq N\).
+\end{definition}
+
+\begin{remark}\label{5.2.4}
+Again, the notations for \(\varepsilon\)-close sequences and eventually \(\varepsilon\)-close sequences are not standard in the literature, and we will not use them outside of this section.
+\end{remark}
+
+\setcounter{theorem}{5}
+\begin{definition}[Equivalent sequences]\label{5.2.6}
+Two sequences \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are \emph{equivalent} iff for each rational \(\varepsilon > 0\), the sequences \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are eventually \(\varepsilon\)-close.
+In other words, \(a_0, a_1, a_2, \dots\) and \(b_0, b_1, b_2, \dots\) are equivalent iff for every rational \(\varepsilon > 0\), there exists an \(N \geq 0\) such that \(|a_n - b_n| \leq \varepsilon\) for all \(n \geq N\).
+\end{definition}
+
+\begin{remark}\label{5.2.7}
+As with Definition \ref{5.1.8}, the quantity \(\varepsilon > 0\) is currently restricted to be a positive rational, rather than a positive real.
+However, we shall eventually see that it makes no difference whether \(\varepsilon\) ranges over the positive rationals or positive reals.
+\end{remark}
+
+\begin{proposition}\label{5.2.8}
+Let \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) be the sequences \(a_n = 1 + 10^{-n}\) and \(b_n = 1 - 10^{-n}\).
+Then the sequences \(a_n, b_n\) are equivalent.
+\end{proposition}
+
+\begin{proof}
+We need to prove that for every \(\varepsilon > 0\), the two sequences \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close to each other.
+So we fix an \(\varepsilon > 0\).
+We need to find an \(N > 0\) such that \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are \(\varepsilon\)-close;
+in other words, we need to find an \(N > 0\) such that
+\[
+    |a_n - b_n| \leq \varepsilon \text{ for all } n \geq N.
+\]
+However, we have
+\[
+    |a_n - b_n| = |(1 + 10^{-n}) - (1 - 10^{-n})| = 2 \times 10^{-n}.
+\]
+Since \(10^{-n}\) is a decreasing function of \(n\) (i.e., \(10^{-m} < 10^{-n}\) whenever \(m > n\);
+this is easily proven by induction), and \(n \geq N\), we have \(2 \times 10^{-n} \leq 2 \times 10^{-N}\).
+Thus we have
+\[
+    |a_n - b_n| \leq 2 \times 10^{-N} \text{ for all } n \geq N.
+\]
+Thus in order to obtain \(|a_n - b_n| \leq \varepsilon\) for all \(n \geq N\), it will be sufficient to choose \(N\) so that \(2 \times 10^{-N} \leq \varepsilon\).
+This is easy to do using logarithms, but we have not yet developed logarithms yet, so we will use a cruder method.
+First, we observe \(10^N\) is always greater than \(N\) for any \(N \geq 1\) (see Exercise \ref{ex 4.3.5}).
+Thus \(10^{-N} \leq 1 / N\), and so \(2 \times 10^{-N} \leq 2 / N\).
+Thus to get \(2 \times 10^{-N} \leq \varepsilon\), it will suffice to choose \(N\) so that \(2 / N \leq \varepsilon\), or equivalently that \(N \geq 2 / \varepsilon\).
+But by Proposition \ref{4.4.1} we can always choose such an \(N\), and the claim follows.
+\end{proof}
+
+\begin{remark}\label{5.2.9}
+Proposition \ref{5.2.8}, in decimal notation, asserts that
+\[
+    1.0000 \dots = 0.9999 \dots.
+\]
+\end{remark}
+
+\exercisesection
+
+\begin{exercise}\label{ex 5.2.1}
+Show that if \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are equivalent sequences of rationals, then \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence if and only if \((b_n)_{n = 1}^{\infty}\) is a Cauchy sequence.
+\end{exercise}
+
+\begin{proof}
+Let \((a_n)_{n = 1}^{\infty}\) be a Cauchy sequence.
+By Definition \ref{5.1.8}, \(\forall\ \varepsilon > 0\) and \(\varepsilon \in \mathds{Q}\), \(\exists\ N_1 \geq 1\) and \(N_1 \in \mathds{N}\) such that
+\[
+    |a_j - a_k| \leq \varepsilon \ \forall\ j, k \geq N_1
+\]
+where \(j, k \in \mathds{N}\).
+Since \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are equivalent sequences, by Definition \ref{5.2.6}, \(\forall\ \varepsilon > 0\) and \(\varepsilon \in \mathds{Q}\), \(\exists\ N_2 \geq 1\) and \(N_2 \in \mathds{N}\) such that
+\[
+    |a_m - b_m| \leq \varepsilon \ \forall\ m \geq N_2
+\]
+where \(m \in \mathds{N}\).
+Let \(N = N_1 + N_2\).
+Since \(N > N_1\) and \(N > N_2\) by Proposition \ref{2.2.11}, we have
+\[
+    |a_j - a_k| \leq \varepsilon \ \forall\ j, k \geq N
+\]
+and
+\[
+    |a_m - b_m| \leq \varepsilon \ \forall\ m \geq N.
+\]
+Since \(\varepsilon > 0\), \(\varepsilon / 3 > 0\) by Additional Corollary \ref{ac 4.2.5}, then we have
+\[
+    |a_j - a_k| \leq \varepsilon / 3 \ \forall\ j, k \geq N
+\]
+and
+\[
+    |a_m - b_m| \leq \varepsilon / 3 \ \forall\ m \geq N.
+\]
+So \(\forall\ \varepsilon > 0\) and \(\forall\ j, k \geq N\),
+\begin{align*}
+|b_j - b_k| &= |b_j + (-b_k)| \\
+&= |(b_j + (-b_k)) + 0| & \text{(by Proposition \ref{4.2.4})} \\
+&= |(b_j + (-b_k)) + ((-a_k) + a_k)| & \text{(by Proposition \ref{4.2.4})} \\
+&= |b_j + ((-b_k) + ((-a_k) + a_k))| & \text{(by Proposition \ref{4.2.4})} \\
+&= |b_j + (((-a_k) + a_k) + (-b_k))| & \text{(by Proposition \ref{4.2.4})} \\
+&= |b_j + ((-a_k) + (a_k + (-b_k)))| & \text{(by Proposition \ref{4.2.4})} \\
+&= |(b_j + (-a_k)) + (a_k + (-b_k))| & \text{(by Proposition \ref{4.2.4})} \\
+&= |0 + ((b_j + (-a_k)) + (a_k + (-b_k)))| & \text{(by Proposition \ref{4.2.4})} \\
+&= |(a_j + (-a_j)) + ((b_j + (-a_k)) + (a_k + (-b_k)))| & \text{(by Proposition \ref{4.2.4})} \\
+&= |((a_j + (-a_j)) + (b_j + (-a_k))) + (a_k + (-b_k))| & \text{(by Proposition \ref{4.2.4})} \\
+&= |(a_j + (((-a_j) + b_j) + (-a_k))) + (a_k + (-b_k))| & \text{(by Proposition \ref{4.2.4})} \\
+&= |(a_j + ((-a_k) + ((-a_j) + b_j))) + (a_k + (-b_k))| & \text{(by Proposition \ref{4.2.4})} \\
+&= |((a_j + (-a_k)) + ((-a_j) + b_j)) + (a_k + (-b_k))| & \text{(by Proposition \ref{4.2.4})} \\
+&\leq |(a_j + (-a_k)) + ((-a_j) + b_j)| + |a_k + (-b_k)| & \text{(by Proposition \ref{4.3.3})} \\
+&\leq (|a_j + (-a_k)| + |(-a_j) + b_j|) + |a_k + (-b_k)| & \text{(by Proposition \ref{4.3.3})} \\
+&= (|a_j + (-a_k)| + |a_j + (-b_j)|) + |a_k + (-b_k)| & \text{(by Proposition \ref{4.3.3})} \\
+&= (|a_j - a_k| + |a_j - b_j|) + |a_k - b_k| \\
+&\leq (\varepsilon / 3 + \varepsilon / 3) + \varepsilon / 3 & \text{(by Proposition \ref{4.3.3})} \\
+&= \varepsilon.
+\end{align*}
+By Definition \ref{5.1.8}, \((b_n)_{n = 1}^{\infty}\) is also a Cauchy sequence.
+Similar proof can show that \((b_n)_{n = 1}^{\infty}\) is a Cauchy sequence implies \((a_n)_{n = 1}^{\infty}\) is also a Cauchy sequence.
+Thus we finished the proof.
+\end{proof}
+
+\begin{exercise}\label{ex 5.2.2}
+Let \(\varepsilon > 0\).
+Show that if \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close, then \((a_n)_{n = 1}^{\infty}\) is bounded if and only if \((b_n)_{n = 1}^{\infty}\) is bounded.
+\end{exercise}
