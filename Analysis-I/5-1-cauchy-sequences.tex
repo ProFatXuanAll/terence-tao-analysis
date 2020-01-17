@@ -5,3 +5,154 @@ Let \(m\) be an integer.
 A \emph{sequence \((a_n)_{n = m}^{\infty}\) of rational numbers} is any function from the set \(\{n \in \mathds{Z} : n \geq m\}\) to \(\mathds{Q}\), i.e., a mapping which assigns to each integer \(n\) greater than or equal to \(m\), a rational number \(a_n\).
 More informally, a sequence \((a_n)_{n = m}^{\infty}\) of rational numbers is a collection of rationals \(a_m, a_{m + 1}, a_{m + 2}, \dots\).
 \end{definition}
+
+\setcounter{theorem}{2}
+\begin{definition}[\(\varepsilon\)-steadiness]\label{5.1.3}
+Let \(\varepsilon > 0\).
+A sequence \((a_n)_{n = 0}^{\infty}\) is said to be \emph{\(\varepsilon\)-steady} iff each pair \(a_j\), \(a_k\) of sequence elements is \(\varepsilon\)-close for every natural number \(j, k\).
+In other words, the sequence \(a_0, a_1, a_2, \dots\) is \(\varepsilon\)-steady iff \(d(a_j, a_k) \leq \varepsilon\) for all \(j, k\).
+\end{definition}
+
+\begin{remark}\label{5.1.4}
+This definition is not standard in the literature;
+we will not need it outside of this section;
+similarly for the concept of ``eventual \(\varepsilon\)-steadiness'' below.
+We have defined \(\varepsilon\)-steadiness for sequences whose index starts at \(0\), but clearly we can make a similar notion for sequences whose indices start from any other number:
+a sequence \(a_N, a_{N + 1}, \dots\) is \(\varepsilon\)-steady if one has \(d(a_j, a_k) \leq \varepsilon\) for all \(j, k \geq N\).
+\end{remark}
+
+\begin{note}
+The notion of \(\varepsilon\)-steadiness of a sequence is simple, but does not really capture the \emph{limiting} behavior of a sequence, because it is too sensitive to the initial members of the sequence.
+So we need a more robust notion of steadiness that does not care about the initial members of a sequence.
+\end{note}
+
+\setcounter{theorem}{5}
+\begin{definition}[Eventual \(\varepsilon\)-steadiness]\label{5.1.6}
+Let \(\varepsilon > 0\).
+A sequence \((a_n)_{n = 0}^{\infty}\) is said to be \emph{eventually \(\varepsilon\)-steady} iff the sequence \(a_N, a_{N + 1}, a_{N + 2}, \dots\) is \(\varepsilon\)-steady for some natural number \(N \geq 0\).
+In other words, the sequence \(a_0, a_1, a_2, \dots\) is eventually \(\varepsilon\)-steady iff there exists an \(N \geq 0\) such that \(|a_j - a_k| \leq \varepsilon\) for all \(j, k \geq N\).
+\end{definition}
+
+\setcounter{theorem}{7}
+\begin{definition}[Cauchy sequences]\label{5.1.8}
+A sequence \((a_n)_{n = 0}^{\infty}\) of rational numbers is said to be a \emph{Cauchy sequence} iff for every rational \(\varepsilon > 0\), the sequence \((a_n)_{n = 0}^{\infty}\) is eventually \(\varepsilon\)-steady.
+In other words, the sequence \(a_0, a_1, a_2, \dots\) is a Cauchy sequence iff for every \(\varepsilon > 0\), there exists an \(N \geq 0\) such that \(|a_j - a_k| \leq \varepsilon\) for all \(j, k \geq N\).
+\end{definition}
+
+\begin{remark}\label{5.1.9}
+At present, the parameter \(\varepsilon\) is restricted to be a positive rational;
+we cannot take \(\varepsilon\) to be an arbitrary positive real number, because the real numbers have not yet been constructed.
+However, once we do construct the real numbers, we shall see that Definition \ref{5.1.8} will not change if we require \(\varepsilon\) to be real instead of rational.
+In other words, we will eventually prove that a sequence is eventually \(\varepsilon\)-steady for every rational \(\varepsilon > 0\) if and only if it is eventually \(\varepsilon\)-steady for every real \(\varepsilon > 0\).
+This rather subtle distinction between a rational \(\varepsilon\) and a real \(\varepsilon\) turns out not to be very important in the long run, and the reader is advised not to pay too much attention as to what type of number \(\varepsilon\) should be.
+\end{remark}
+
+\setcounter{theorem}{10}
+\begin{proposition}\label{5.1.11}
+The sequence \(a_1, a_2, a_3, \dots\) defined by \(a_n \coloneqq 1 / n\) (i.e., the sequence \(1, 1 / 2, 1 / 3, \dots\)) is a Cauchy sequence.
+\end{proposition}
+
+\begin{proof}
+We have to show that for every \(\varepsilon > 0\), the sequence \(a_1, a_2, \dots\) is eventually \(\varepsilon\)-steady.
+So let \(\varepsilon > 0\) be arbitrary.
+We now have to find a number \(N \geq 1\) such that the sequence \(a_N, a_{N + 1}, \dots\) is \(\varepsilon\)-steady.
+Let us see what this means.
+This means that \(d(a_j, a_k) \leq \varepsilon\) for every \(j, k \geq N\), i.e.
+\[
+    |1 / j - 1 / k| \leq \varepsilon \text{ for every } j, k \geq N.
+\]
+Now since \(j, k \geq N\), we know that \(0 < 1 / j, 1 / k \leq 1 / N\), so that \(|1 / j - 1 / k| \leq 1 / N\).
+So in order to force \(|1 / j - 1 / k|\) to be less than or equal to \(\varepsilon\), it would be sufficient for \(1 / N\) to be less than \(\varepsilon\).
+So all we need to do is choose an \(N\) such that \(1 / N\) is less than \(\varepsilon\), or in other words that \(N\) is greater than \(1 / \varepsilon\).
+But this can be done thanks to Proposition \ref{4.4.1}.
+\end{proof}
+
+\begin{note}
+As you can see, verifying from first principles (i.e., without using any of the machinery of limits, etc.) that a sequence is a Cauchy sequence requires some effort, even for a sequence as simple as \(1 / n\).
+The part about selecting an \(N\) can be particularly difficult for beginners
+- one has to think in reverse, working out what conditions on \(N\) would suffice to force the sequence \(a_N, a_{N + 1}, a_{N + 2}, \dots\) to be \(\varepsilon\)-steady, and then finding an \(N\) which obeys those conditions.
+Later we will develop some limit laws which allow us to determine when a sequence is Cauchy more easily.
+\end{note}
+
+\begin{definition}[Bounded sequences]\label{5.1.12}
+Let \(M \geq 0\) be rational.
+A finite sequence \(a_1, a_2, \dots, a_n\) is \emph{bounded by \(M\)} iff \(|a_i| \leq M\) for all \(1 \leq i \leq n\).
+An infinite sequence \((a_n)_{n = 1}^{\infty}\) is \emph{bounded by \(M\)} iff \(|a_i| \leq M\) for all \(i \geq 1\).
+A sequence is said to be \emph{bounded} iff it is bounded by \(M\) for some rational \(M \geq 0\).
+\end{definition}
+
+\setcounter{theorem}{13}
+\begin{lemma}[Finite sequences are bounded]\label{5.1.14}
+Every finite sequence \(a_1, a_2, \dots, a_n\) is bounded.
+\end{lemma}
+
+\begin{proof}
+We prove this by induction on \(n\).
+When \(n = 1\) the sequence \(a_1\) is clearly bounded, for if we choose \(M \coloneqq |a_1|\) then clearly we have \(|a_i| \leq M\) for all \(1 \leq i \leq n\).
+Now suppose that we have already proved the lemma for some \(n \geq 1\);
+we now prove it for \(n + 1\), i.e., we prove every sequence \(a_1, a_2, \dots, a_{n + 1}\) is bounded.
+By the induction hypothesis we know that \(a_1, a_2, \dots, a_n\) is bounded by some \(M \geq 0\);
+in particular, it must be bounded by \(M + |a_{n + 1}|\).
+On the other hand, \(a_{n + 1}\) is also bounded by \(M + |a_{n + 1}|\).
+Thus \(a_1, a_2, \dots, a_n, a_{n++}\) is bounded by \(M + |a_{n + 1}|\), and is hence bounded.
+This closes the induction.
+\end{proof}
+
+\begin{note}
+While this argument shows that every finite sequence is bounded, no matter how long the finite sequence is, it does not say anything about whether an infinite sequence is bounded or not;
+infinity is not a natural number.
+\end{note}
+
+\begin{lemma}[Cauchy sequences are bounded]\label{5.1.15}
+Every Cauchy sequence \((a_n)_{n = 1}^{\infty}\) is bounded.
+\end{lemma}
+
+\begin{proof}
+Let \(n \in \mathds{N}\) and \((a_n)_{n = 1}^{\infty}\) be a rational Cauchy sequence.
+Because \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence, by Definition \ref{5.1.8}, \((a_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady, \(\forall\ \varepsilon > 0\) and \(\varepsilon \in \mathds{Q}\).
+Because \((a_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady \(\forall\ \varepsilon > 0\), \((a_n)_{n = 1}^{\infty}\) is eventually \(1\)-steady.
+By Definition \ref{5.1.6}, \((a_n)_{n = 1}^{\infty}\) is eventually \(1\)-steady means \(\exists\ N \geq 1\), \(N \in \mathds{N}\) such that \((a_n)_{n = N}^{\infty}\) is \(1\)-steady.
+Then we can split \((a_n)_{n = 1}^{\infty}\) into two sequences:
+\begin{enumerate}
+    \item A finite sequence \((a_n)_{n = 1}^{N - 1}\).
+    By Lemma \ref{5.1.14}, \((a_n)_{n = 1}^{N - 1}\) is bounded by \(M\), \(M \geq 0\) and \(M \in \mathds{Q}\).
+    By Definition \ref{5.1.12}, \(\forall\ 1 \leq n \leq N - 1\), \(|a_n| \leq M\).
+    Because \(\forall\ 1 \leq n \leq N - 1\), \(|a_n| \leq M\).
+    So
+    \begin{align*}
+    & (|a_n| \leq M) \land (0 \leq 1) \land (|a_N| \geq 0) & \text{(by Proposition \ref{4.3.3})} \\
+    \implies & (|a_n| \leq M) \land (0 \leq 1) \land (0 \leq |a_N|) & \text{(by Proposition \ref{4.2.9})} \\
+    \implies & (|a_n| \leq M) \land (0 \leq 1) \land (1 + 0 \leq 1 + |a_N|) & \text{(by Proposition \ref{4.2.9})} \\
+    \implies & (|a_n| \leq M) \land (0 \leq 1) \land (1 \leq 1 + |a_N|) & \text{(by Proposition \ref{4.2.4})} \\
+    \implies & (|a_n| \leq M) \land (0 \leq 1 + |a_N|) & \text{(by Proposition \ref{4.2.9})} \\
+    \implies & (|a_n| \leq M) \land (M + 0 \leq M + (1 + |a_N|)) & \text{(by Proposition \ref{4.2.9})} \\
+    \implies & (|a_n| \leq M) \land (M \leq M + (1 + |a_N|)) & \text{(by Proposition \ref{4.2.4})} \\
+    \implies & |a_n| \leq  M + (1 + |a_N|). & \text{(by Proposition \ref{4.2.9})}
+    \end{align*}
+    So by Definition \ref{5.1.12}, \((a_n)_{n = 1}^{N - 1}\) is also bounded by \(M + (1 + |a_N|)\).
+    \item An infinite sequence \((a_n)_{n = N}^{\infty}\).
+    By Definition \ref{5.1.3}, \((a_n)_{n = N}^{\infty}\) is \(1\)-steady implies \(|a_j - a_k| \leq 1\), \(\forall\ j, k \geq N\) and  \(j, k \in \mathds{N}\), which also implies \(|a_j - a_N| \leq 1\).
+    So \(\forall\ j \leq N\),
+    \begin{align*}
+    |a_j| &= |a_j + 0| & \text{(by Proposition \ref{4.2.4})} \\
+    &= |a_j + ((-a_N) + a_N)| & \text{(by Proposition \ref{4.2.4})} \\
+    &= |(a_j + (-a_N)) + a_N| & \text{(by Proposition \ref{4.2.4})} \\
+    &\leq |a_j + (-a_N)| + |a_N| & \text{(by Proposition \ref{4.3.3})} \\
+    &\leq |a_j - a_N| + |a_N| \\
+    &\leq 1 + |a_N| & \text{(by Proposition \ref{4.2.9})} \\
+    &\leq M + (1 + |a_N|). & \text{(from case above)}
+    \end{align*}
+    By Definition \ref{5.1.12}, \((a_n)_{n = N}^{\infty}\) is bounded by \(M + (1 + |a_N|)\).
+\end{enumerate}
+Since \((a_n)_{n = 1}^{N - 1}\) and \((a_n)_{n = N}^{\infty}\) are bounded by \(M + (1 + |a_N|)\), \((a_n)_{n = 1}^{\infty}\) is bounded by \(M + (1 + |a_N|)\).
+\end{proof}
+
+\exercisesection
+
+\begin{exercise}\label{ex 5.1.1}
+Prove Lemma \ref{5.1.15}.
+\end{exercise}
+
+\begin{proof}
+See Lemma \ref{5.1.15}.
+\end{proof}
