@@ -56,6 +56,75 @@ Thus by Definition \ref{5.2.6}, \((a_n)_{n = 1}^{\infty}\) and \((c_n)_{n = 1}^{
 Since \((a_n)_{n = 1}^{\infty}\) and \((c_n)_{n = 1}^{\infty}\) are Cauchy sequences, by Definition \ref{5.3.1}, \(x = \text{LIM}_{n \to \infty} a_n = \text{LIM}_{n \to \infty} c_n = z\).
 \end{proof}
 
+\begin{note}
+Because of Proposition \ref{5.3.3}, we know that our definition of equality between two real numbers is legitimate.
+Of course, when we define other operations on the reals, we have to check that they obey the axiom of substitution:
+two real number inputs which are equal should give equal outputs when applied to any operation on the real numbers.
+\end{note}
+
+\begin{definition}[Addition of reals]\label{5.3.4}
+Let \(x = \text{LIM}_{n \to \infty} a_n\) and \(y = \text{LIM}_{n \to \infty} b_n\) be real numbers.
+Then we define the sum \(x + y\) to be \(x + y \coloneqq \text{LIM}_{n \to \infty} (a_n + b_n)\).
+\end{definition}
+
+\setcounter{theorem}{5}
+\begin{lemma}[Sum of Cauchy sequences is Cauchy]\label{5.3.6}
+Let \(x = \text{LIM}_{n \to \infty} a_n\) and \(y = \text{LIM}_{n \to \infty} b_n\) be real numbers.
+Then \(x + y\) is also a real number
+(i.e., \((a_n + b_n)_{n = 1}^{\infty}\) is a Cauchy sequence of rationals).
+\end{lemma}
+
+\begin{proof}
+We need to show that for every \(\varepsilon > 0\), the sequence \((a_n + b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady.
+Now from hypothesis we know that \((a_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady, and \((b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady, but it turns out that this is not quite enough
+(this can be used to imply that \((a_n + b_n)_{n = 1}^{\infty}\) is eventually \(2\varepsilon\)-steady, but that's not what we want).
+So we need to do a little trick, which is to play with the value of \(\varepsilon\).
+
+We know that \((a_n)_{n = 1}^{\infty}\) is eventually \(\delta\)-steady for every value of \(\delta\).
+This implies not only that \((a_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady, but it is also eventually \(\varepsilon / 2\)-steady.
+Similarly, the sequence \((b_n)_{n = 1}^{\infty}\) is also eventually \(\varepsilon / 2\)-steady.
+This will turn out to be enough to conclude that \((a_n + b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady.
+
+Since \((a_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon / 2\)-steady, we know that there exists an \(N \geq 1\) such that \((a_n)_{n = N}^{\infty}\) is \(\varepsilon / 2\)-steady, i.e., \(a_n\) and \(a_m\) are \(\varepsilon / 2\)-close for every \(n, m \geq N\).
+Similarly there exists an \(M \geq 1\) such that \((b_n)_{n = M}^{\infty}\) is \(\varepsilon / 2\)-steady, i.e., \(b_n\) and \(b_m\) are \(\varepsilon / 2\)-close for every \(n, m \geq M\).
+
+Let \(\max(N, M)\) be the larger of \(N\) and \(M\)
+(we know from Proposition \ref{2.2.13} that one has to be greater than or equal to the other).
+If \(n, m \geq \max(N, M)\), then we know that \(a_n\) and \(a_m\) are \(\varepsilon / 2\)-close, and \(b_n\) and \(b_m\) are \(\varepsilon / 2\)-close, and so by Proposition \ref{4.3.7} we see that \(a_n + b_n\) and \(a_m + b_m\) are \(\varepsilon\)-close for every \(n, m \geq \max(N, M)\).
+This implies that the sequence \((a_n + b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady, as desired.
+\end{proof}
+
+\begin{lemma}[Sums of equivalent Cauchy sequences are equivalent]\label{5.3.7}
+Let \(x = \text{LIM}_{n \to \infty} a_n\), \(y = \text{LIM}_{n \to \infty} b_n\), and \(x' = \text{LIM}_{n \to \infty} a'_n\) be real numbers.
+Suppose that \(x = x'\).
+Then we have \(x + y = x' + y\).
+\end{lemma}
+
+\begin{proof}
+Since \(x\) and \(x'\) are equal, we know that the Cauchy sequences \((a_n)_{n = 1}^{\infty}\) and \((a'_n)_{n = 1}^{\infty}\) are equivalent, so in other words they are eventually \(\varepsilon\)-close for each \(\varepsilon > 0\).
+We need to show that the sequences \((a_n + b_n)_{n = 1}^{\infty}\) and \((a'_n + b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close for each \(\varepsilon > 0\).
+But we already know that there is an \(N \geq 1\) such that \((a_n)_{n = N}^{\infty}\) and \((a'_n)_{n = N}^{\infty}\) are \(\varepsilon\)-close, i.e., that \(a_n\) and \(a'_n\) are \(\varepsilon\)-close for each \(n \geq N\).
+Since \(b_n\) is of course \(0\)-close to \(b_n\), we thus see from Proposition \ref{4.3.7} (extended in the obvious manner to the \(\delta = 0\) case) that \(a_n + b_n\) and \(a'_n + b_n\) are \(\varepsilon\)-close for each \(n \geq N\).
+This implies that \((a_n + b_n)_{n = 1}^{\infty}\) and \((a'_n + b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close for each \(\varepsilon > 0\), and we are done.
+\end{proof}
+
+\begin{remark}\label{5.3.8}
+Lemma \ref{5.3.7} verifies the axiom of substitution for the ``x'' variable in \(x + y\), but one can similarly prove the axiom of substitution for the ``y'' variable.
+(A quick way is to observe from the definition of \(x + y\) that we certainly have \(x + y = y + x\), since \(a_n + b_n = b_n + a_n\).)
+\end{remark}
+
+\begin{definition}[Multiplication of reals]\label{5.3.9}
+Let \(x = \text{LIM}_{n \to \infty} a_n\) and \(y = \text{LIM}_{n \to \infty} b_n\) be real numbers.
+Then we define the product \(xy\) to be \(xy \coloneqq \text{LIM}_{n \to \infty} a_n b_n\).
+\end{definition}
+
+\begin{proposition}[Multiplication is well defined]\label{5.3.10}
+Let \(x = \text{LIM}_{n \to \infty} a_n\), \(y = \text{LIM}_{n \to \infty} b_n\), and \(x' = \text{LIM}_{n \to \infty} a'_n\) be real numbers.
+Then \(xy\) is also a real number.
+Furthermore, if \(x = x'\), then \(xy = x'y\).
+\end{proposition}
+
+
 \exercisesection
 
 \begin{exercise}\label{ex 5.3.1}
@@ -64,4 +133,12 @@ Prove Proposition \ref{5.3.3}.
 
 \begin{proof}
 See Proposition \ref{5.3.3}.
+\end{proof}
+
+\begin{exercise}\label{ex 5.3.2}
+Prove Proposition \ref{5.3.10}.
+\end{exercise}
+
+\begin{proof}
+See Proposition \ref{5.3.10}.
 \end{proof}
