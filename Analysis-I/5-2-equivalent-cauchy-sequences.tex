@@ -124,7 +124,7 @@ So \(\forall\ \varepsilon > 0\) and \(\forall\ j, k \geq N\),
 &= \varepsilon.
 \end{align*}
 By Definition \ref{5.1.8}, \((b_n)_{n = 1}^{\infty}\) is also a Cauchy sequence.
-Similar proof can show that \((b_n)_{n = 1}^{\infty}\) is a Cauchy sequence implies \((a_n)_{n = 1}^{\infty}\) is also a Cauchy sequence.
+Similar proof can show that by the given conditions, \((b_n)_{n = 1}^{\infty}\) is a Cauchy sequence also implies \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence.
 Thus we finished the proof.
 \end{proof}
 
@@ -132,3 +132,30 @@ Thus we finished the proof.
 Let \(\varepsilon > 0\).
 Show that if \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close, then \((a_n)_{n = 1}^{\infty}\) is bounded if and only if \((b_n)_{n = 1}^{\infty}\) is bounded.
 \end{exercise}
+
+\begin{proof}
+By Definition \ref{5.2.3}, \(\exists\ N \geq 1\) and \(N \in \mathds{N}\),
+\[
+    |a_n - b_n| \leq \varepsilon \ \forall\ n \geq N.
+\]
+If \((a_n)_{n = 1}^{\infty}\) is bounded, then by Definition \ref{5.1.12}, \(\exists\ M \geq 0\) and \(M \in \mathds{Q}\),
+\[
+    |a_n| \leq M \ \forall\ n \geq 1.
+\]
+So \(\forall\ n \geq 1\),
+\begin{align*}
+|b_n| &= |b_n + 0| & \text{(by Proposition \ref{4.2.4})} \\
+&= |b_n + ((-a_n) + a_n)| & \text{(by Proposition \ref{4.2.4})} \\
+&= |(b_n + (-a_n)) + a_n| & \text{(by Proposition \ref{4.2.4})} \\
+&\leq |b_n + (-a_n)| + |a_n| & \text{(by Proposition \ref{4.3.3})} \\
+&= |(-a_n) + b_n| + |a_n| & \text{(by Proposition \ref{4.2.4})} \\
+&= |a_n + (-b_n)| + |a_n| & \text{(by Proposition \ref{4.3.3})} \\
+&= |a_n - b_n| + |a_n| \\
+&\leq \varepsilon + |a_n| & \text{(by Proposition \ref{4.2.9})} \\
+&\leq \varepsilon + M & \text{(by Proposition \ref{4.2.9})} \\
+\end{align*}
+Because \(\varepsilon > 0\) and \(M > 0\), so \(\varepsilon + M > 0\) by Additional Corollary \ref{ac 4.2.4}.
+So by Definition \ref{5.1.12}, \((b_n)_{n = 1}^{\infty}\) is bounded by \(\varepsilon + M\).
+Similar proof can show that by the given conditions, \((b_n)_{n = 1}^{\infty}\) is bounded also implies \((a_n)_{n = 1}^{\infty}\) is bounded.
+Thus we finished the proof.
+\end{proof}
