@@ -124,6 +124,50 @@ Then \(xy\) is also a real number.
 Furthermore, if \(x = x'\), then \(xy = x'y\).
 \end{proposition}
 
+\begin{proof}
+First we prove that \(x, y \in \mathds{R} \implies xy \in \mathds{R}\).
+We need to show that for every \(\varepsilon > 0\), the sequence \((a_n b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady.
+From hypothesis we know that \((a_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady, and \((b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady.
+By Lemma \ref{5.1.15}, \(|a_n| \leq A\) and \(|b_n| \leq B\) for all \(n \geq 1\), where \(A, B \geq 0\) and \(A, B \in \mathds{Q}\).
+
+If \(A = 0\), then by Proposition \ref{4.3.3}, \(a_n = 0\) for all \(n \geq 1\).
+Thus \(|a_n b_n| = |0b_n| = |0| = |a_n|\) for all \(n \geq 1\), which means \((a_n b_n)_{n = 1}^{\infty}\) is equivalent to \((a_n)_{n = 1}^{\infty}\), a Cauchy sequence.
+So by Definition \ref{5.3.1}, \(xy = (a_n b_n)_{n = 1}^{\infty}\) is a real number.
+Similarly proof can show that if \(B = 0\), then \(xy = (a_n b_n)_{n = 1}^{\infty}\) is a real number.
+So we only need to consider the case where \(A \neq 0\) and \(B \neq 0\).
+
+We know that \((a_n)_{n = 1}^{\infty}\) is eventually \(\delta\)-steady for every value of \(\delta\).
+This implies not only that \((a_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady, but it is also eventually \(\varepsilon / 2B\)-steady.
+Similarly, the sequence \((b_n)_{n = 1}^{\infty}\) is also eventually \(\varepsilon / 2A\)-steady.
+Since \((a_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon / 2B\)-steady, we know that there exists an \(N \geq 1\) such that \((a_n)_{n = N}^{\infty}\) is \(\varepsilon / 2B\)-steady, i.e., \(a_n\) and \(a_m\) are \(\varepsilon / 2B\)-close for every \(n, m \geq N\).
+Similarly there exists an \(M \geq 1\) such that \((b_n)_{n = M}^{\infty}\) is \(\varepsilon / 2A\)-steady, i.e., \(b_n\) and \(b_m\) are \(\varepsilon / 2A\)-close for every \(n, m \geq M\).
+Let \(\max(N, M)\) be the larger of \(N\) and \(M\)
+(we know from Proposition \ref{2.2.13} that one has to be greater than or equal to the other).
+If \(n, m \geq \max(N, M)\), then we know that \(a_n\) and \(a_m\) are \(\varepsilon / 2B\)-close, and \(b_n\) and \(b_m\) are \(\varepsilon / 2A\)-close.
+So \(\forall\ \varepsilon > 0\) and \(\forall\ n, m \geq \max(N, M)\),
+\begin{align*}
+|a_n b_n - a_m b_m| &= |a_n (b_n - b_m) + b_m (a_n - a_m)| & \text{(by Proposition \ref{4.2.4})} \\
+&\leq |a_n (b_n - b_m)| + |b_m (a_n - a_m)| & \text{(by Proposition \ref{4.3.3})} \\
+&= |a_n||b_n - b_m| + |b_m||a_n - a_m| & \text{(by Proposition \ref{4.3.3})} \\
+&\leq A(\varepsilon / 2A) + B(\varepsilon / 2B) & \text{(by Proposition \ref{4.2.9})} \\
+&= \varepsilon. & \text{(by Proposition \ref{4.2.4})}
+\end{align*}
+This implies that the sequence \((a_n b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady, as desired.
+
+Now we prove that \(x = x'\) implies \(xy = x'y\).
+Since \(x\) and \(x'\) are equal, we know that the Cauchy sequences \((a_n)_{n = 1}^{\infty}\) and \((a'_n)_{n = 1}^{\infty}\) are equivalent, so in other words they are eventually \(\varepsilon\)-close for each \(\varepsilon > 0\).
+We need to show that the sequences \((a_n b_n)_{n = 1}^{\infty}\) and \((a'_n b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close for each \(\varepsilon > 0\).
+But we already know that there is an \(N \geq 1\) such that \((a_n)_{n = N}^{\infty}\) and \((a'_n)_{n = N}^{\infty}\) are \(\varepsilon\)-close, i.e., that \(a_n\) and \(a'_n\) are \(\varepsilon\)-close for each \(n \geq N\).
+So
+\begin{align*}
+|a_n b_n - a'_n b_n| &= |(a_n - a'_n)b_n| & \text{(by Proposition \ref{4.2.4})} \\
+&= |a_n - a'_n||b_n|. & \text{(by Proposition \ref{4.3.3})}
+\end{align*}
+By Proposition \ref{4.3.3}, we have \(|b_n| \geq 0\).
+If \(|b_n| = 0\), then \(\forall\ \varepsilon > 0\), we have \(|a_n - a'_n|0 = 0 \leq \varepsilon\).
+If \(|b_n| > 0\), combining with \(|a_n - a'_n| \leq \varepsilon\) for all \(\varepsilon > 0\), we also have \(|a_n - a'_n| \leq \varepsilon / |b_n|\) and \(|a_n - a'_n||b_n| \leq \varepsilon\).
+This implies that \((a_n b_n)_{n = 1}^{\infty}\) and \((a'_n b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close for each \(\varepsilon > 0\), and we are done.
+\end{proof}
 
 \exercisesection
 
