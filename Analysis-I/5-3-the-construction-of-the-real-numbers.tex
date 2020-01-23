@@ -279,6 +279,61 @@ By what we have said above, this shows that \(\abs*{a_n^{-1} - a_m^{-1}} \leq \v
 Since we have proven this for every \(\varepsilon\), we have that \((a_n^{-1})_{n = 1}^{\infty}\) is a Cauchy sequence, as desired.
 \end{proof}
 
+\begin{definition}[Reciprocals of real numbers]\label{5.3.16}
+Let \(x\) be a non-zero real number.
+Let \((a_n)_{n = 1}^{\infty}\) be a Cauchy sequence bounded away from zero such that \(x = \text{LIM}_{n \to \infty} a_n\) (such a sequence exists by Lemma \ref{5.3.14}).
+Then we define the reciprocal \(x^{-1}\) by the formula \(x^{-1} \coloneqq \text{LIM}_{n \to \infty} a_n^{-1}\).
+(From Lemma \ref{5.3.15} we know that \(x^{-1}\) is a real number.)
+\end{definition}
+
+\begin{lemma}[Reciprocation is well defined]\label{5.3.17}
+Let \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) be two Cauchy sequences bounded away from zero such that \(\text{LIM}_{n \to \infty} a_n = \text{LIM}_{n \to \infty} b_n\) (i.e., the two sequences are equivalent).
+Then \(\text{LIM}_{n \to \infty} a_n^{-1} = \text{LIM}_{n \to \infty} b_n^{-1}\).
+\end{lemma}
+
+\begin{proof}
+Consider the following product \(P\) of three real numbers:
+\[
+    P \coloneqq (\text{LIM}_{n \to \infty} a_n^{-1}) \times (\text{LIM}_{n \to \infty} a_n) \times (\text{LIM}_{n \to \infty} b_n^{-1}).
+\]
+If we multiply this out, we obtain
+\[
+    P = \text{LIM}_{n \to \infty} a_n^{-1} a_n b_n^{-1} = \text{LIM}_{n \to \infty} b_n^{-1}.
+\]
+On the other hand, since \(\text{LIM}_{n \to \infty} a_n = \text{LIM}_{n \to \infty} b_n\), we can write \(P\) in another way as
+\[
+    P = (\text{LIM}_{n \to \infty} a_n^{-1}) \times (\text{LIM}_{n \to \infty} b_n) \times (\text{LIM}_{n \to \infty} b_n^{-1}).
+\]
+(cf. Proposition \ref{5.3.10}).
+Multiplying things out again, we get
+\[
+    P = \text{LIM}_{n \to \infty} a_n^{-1} b_n b_n^{-1} = \text{LIM}_{n \to \infty} a_n^{-1}.
+\]
+Comparing our different formulae for \(P\) we see that \(\text{LIM}_{n \to \infty} a_n^{-1} = \text{LIM}_{n \to \infty} b_n^{-1}\), as desired.
+\end{proof}
+
+\begin{note}
+It is clear from the definition that \(xx^{-1} = x^{-1}x = 1\);
+thus all the field axioms (Proposition \ref{4.2.4}) apply to the reals as well as to the rationals.
+We of course cannot give \(0\) a reciprocal, since \(0\) multiplied by anything gives \(0\), not \(1\).
+\end{note}
+
+\begin{note}
+if \(q\) is a non-zero rational, and hence equal to the real number \(\text{LIM}_{n \to \infty} q\), then the reciprocal of \(\text{LIM}_{n \to \infty} q\) is \(\text{LIM}_{n \to \infty} q^{-1} = q^{-1}\);
+thus the operation of reciprocal on real numbers is consistent with the operation of reciprocal on rational numbers.
+\end{note}
+
+\begin{note}
+Once one has reciprocal, one can define division \(x / y\) of two real numbers \(x, y\), provided \(y\) is non-zero, by the formula
+\[
+    x / y \coloneqq x \times y^{-1},
+\]
+just as we did with the rationals.
+In particular, we have the cancellation law:
+if \(x, y, z\) are real numbers such that \(xz = yz\), and \(z\) is non-zero, then by dividing by \(z\) we conclude that \(x = y\).
+This cancellation law does not work when \(z\) is zero.
+\end{note}
+
 \exercisesection
 
 \begin{exercise}\label{ex 5.3.1}
@@ -295,4 +350,27 @@ Prove Proposition \ref{5.3.10}.
 
 \begin{proof}
 See Proposition \ref{5.3.10}.
+\end{proof}
+
+\begin{exercise}\label{ex 5.3.3}
+Let \(a, b\) be rational numbers.
+Show that \(a = b\) if and only if \(\text{LIM}_{n \to \infty} a = \text{LIM}_{n \to \infty} b\) (i.e., the Cauchy sequences \(a, a, a, a, \dots\) and \(b, b, b, b \dots\) equivalent if and only if \(a = b\)).
+This allows us to embed the rational numbers inside the real numbers in a well-defined manner.
+\end{exercise}
+
+\begin{proof}
+Let \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) be two sequences, where \(a_n = a\) and \(b_n = b\) for all \(n \geq 1\).
+Then \(\forall\ \varepsilon > 0\), \(|a_j - a_k| = |a - a| = |0| = 0 \leq \varepsilon\), \(\forall\ j, k \geq 1\) and \(j, k \in \mathds{N}\).
+Similarly, \(\forall\ \varepsilon > 0\), \(|b_j - b_k| = |b - b| = |0| = 0 \leq \varepsilon\), \(\forall\ j, k \geq 1\) and \(j, k \in \mathds{N}\).
+So \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are two Cauchy sequences.
+Thus we have
+\begin{align*}
+& a = b \\
+\iff & a - b = 0 & \text{(by Proposition \ref{4.2.4})} \\
+\iff & |a - b| = 0 & \text{(by Proposition \ref{4.3.3})} \\
+\iff & |a_n - b_n| = 0 \ \forall\ n \geq 1 \\
+\iff & |a_n - b_n| \leq \varepsilon \ \forall\ \varepsilon > 0 \ \forall\ n \geq 1 \\
+\iff & \text{LIM}_{n \to \infty} a_n = \text{LIM}_{n \to \infty} b_n & \text{(by Definition \ref{5.3.1})} \\
+\iff & \text{LIM}_{n \to \infty} a = \text{LIM}_{n \to \infty} b.
+\end{align*}
 \end{proof}
