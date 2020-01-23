@@ -25,12 +25,12 @@ We first prove the reflexivity.
 Because \(x = \text{LIM}_{n \to \infty} a_n\), by Definition \ref{5.3.1}, \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence of rational numbers.
 By Definition \ref{5.1.8}, \(\forall\ \varepsilon > 0\) and \(\varepsilon \in \mathds{Q}\), \(\exists\ N \geq 1\) and \(N \in \mathds{N}\) such that
 \[
-    |a_j - a_k| \leq \varepsilon \ \forall\ j, k \geq N,
+    \abs*{a_j - a_k} \leq \varepsilon \ \forall\ j, k \geq N,
 \]
 where \(j, k \in \mathds{N}\).
 In particular, we have
 \[
-    |a_j - a_j| \leq \varepsilon \ \forall\ j \geq N.
+    \abs*{a_j - a_j} \leq \varepsilon \ \forall\ j \geq N.
 \]
 By Definition \ref{5.2.6}, \((a_n)_{n = 1}^{\infty}\) and \((a_n)_{n = 1}^{\infty}\) are equivalent sequences.
 Since \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence, by Definition \ref{5.3.1}, \(x = \text{LIM}_{n \to \infty} a_n = \text{LIM}_{n \to \infty} a_n = x\).
@@ -128,10 +128,10 @@ Furthermore, if \(x = x'\), then \(xy = x'y\).
 First we prove that \(x, y \in \mathds{R} \implies xy \in \mathds{R}\).
 We need to show that for every \(\varepsilon > 0\), the sequence \((a_n b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady.
 From hypothesis we know that \((a_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady, and \((b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady.
-By Lemma \ref{5.1.15}, \(|a_n| \leq A\) and \(|b_n| \leq B\) for all \(n \geq 1\), where \(A, B \geq 0\) and \(A, B \in \mathds{Q}\).
+By Lemma \ref{5.1.15}, \(\abs*{a_n} \leq A\) and \(\abs*{b_n} \leq B\) for all \(n \geq 1\), where \(A, B \geq 0\) and \(A, B \in \mathds{Q}\).
 
 If \(A = 0\), then by Proposition \ref{4.3.3}, \(a_n = 0\) for all \(n \geq 1\).
-Thus \(|a_n b_n| = |0b_n| = |0| = |a_n|\) for all \(n \geq 1\), which means \((a_n b_n)_{n = 1}^{\infty}\) is equivalent to \((a_n)_{n = 1}^{\infty}\), a Cauchy sequence.
+Thus \(\abs*{a_n b_n} = \abs*{0b_n} = \abs*{0} = \abs*{a_n}\) for all \(n \geq 1\), which means \((a_n b_n)_{n = 1}^{\infty}\) is equivalent to \((a_n)_{n = 1}^{\infty}\), a Cauchy sequence.
 So by Definition \ref{5.3.1}, \(xy = (a_n b_n)_{n = 1}^{\infty}\) is a real number.
 Similarly proof can show that if \(B = 0\), then \(xy = (a_n b_n)_{n = 1}^{\infty}\) is a real number.
 So we only need to consider the case where \(A \neq 0\) and \(B \neq 0\).
@@ -146,9 +146,9 @@ Let \(\max(N, M)\) be the larger of \(N\) and \(M\)
 If \(n, m \geq \max(N, M)\), then we know that \(a_n\) and \(a_m\) are \(\varepsilon / 2B\)-close, and \(b_n\) and \(b_m\) are \(\varepsilon / 2A\)-close.
 So \(\forall\ \varepsilon > 0\) and \(\forall\ n, m \geq \max(N, M)\),
 \begin{align*}
-|a_n b_n - a_m b_m| &= |a_n (b_n - b_m) + b_m (a_n - a_m)| & \text{(by Proposition \ref{4.2.4})} \\
-&\leq |a_n (b_n - b_m)| + |b_m (a_n - a_m)| & \text{(by Proposition \ref{4.3.3})} \\
-&= |a_n||b_n - b_m| + |b_m||a_n - a_m| & \text{(by Proposition \ref{4.3.3})} \\
+\abs*{a_n b_n - a_m b_m} &= \abs*{a_n (b_n - b_m) + b_m (a_n - a_m)} & \text{(by Proposition \ref{4.2.4})} \\
+&\leq \abs*{a_n (b_n - b_m)} + \abs*{b_m (a_n - a_m)} & \text{(by Proposition \ref{4.3.3})} \\
+&= \abs*{a_n}\abs*{b_n - b_m} + \abs*{b_m}\abs*{a_n - a_m} & \text{(by Proposition \ref{4.3.3})} \\
 &\leq A(\varepsilon / 2A) + B(\varepsilon / 2B) & \text{(by Proposition \ref{4.2.9})} \\
 &= \varepsilon. & \text{(by Proposition \ref{4.2.4})}
 \end{align*}
@@ -160,12 +160,12 @@ We need to show that the sequences \((a_n b_n)_{n = 1}^{\infty}\) and \((a'_n b_
 But we already know that there is an \(N \geq 1\) such that \((a_n)_{n = N}^{\infty}\) and \((a'_n)_{n = N}^{\infty}\) are \(\varepsilon\)-close, i.e., that \(a_n\) and \(a'_n\) are \(\varepsilon\)-close for each \(n \geq N\).
 So
 \begin{align*}
-|a_n b_n - a'_n b_n| &= |(a_n - a'_n)b_n| & \text{(by Proposition \ref{4.2.4})} \\
-&= |a_n - a'_n||b_n|. & \text{(by Proposition \ref{4.3.3})}
+\abs*{a_n b_n - a'_n b_n} &= \abs*{(a_n - a'_n)b_n} & \text{(by Proposition \ref{4.2.4})} \\
+&= \abs*{a_n - a'_n}\abs*{b_n}. & \text{(by Proposition \ref{4.3.3})}
 \end{align*}
-By Proposition \ref{4.3.3}, we have \(|b_n| \geq 0\).
-If \(|b_n| = 0\), then \(\forall\ \varepsilon > 0\), we have \(|a_n - a'_n|0 = 0 \leq \varepsilon\).
-If \(|b_n| > 0\), combining with \(|a_n - a'_n| \leq \varepsilon\) for all \(\varepsilon > 0\), we also have \(|a_n - a'_n| \leq \varepsilon / |b_n|\) and \(|a_n - a'_n||b_n| \leq \varepsilon\).
+By Proposition \ref{4.3.3}, we have \(\abs*{b_n} \geq 0\).
+If \(\abs*{b_n} = 0\), then \(\forall\ \varepsilon > 0\), we have \(\abs*{a_n - a'_n} 0 = 0 \leq \varepsilon\).
+If \(\abs*{b_n} > 0\), combining with \(\abs*{a_n - a'_n} \leq \varepsilon\) for all \(\varepsilon > 0\), we also have \(\abs*{a_n - a'_n} \leq \varepsilon / \abs*{b_n}\) and \(\abs*{a_n - a'_n}\abs*{b_n} \leq \varepsilon\).
 This implies that \((a_n b_n)_{n = 1}^{\infty}\) and \((a'_n b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close for each \(\varepsilon > 0\), and we are done.
 \end{proof}
 
@@ -219,7 +219,7 @@ The other laws of algebra are proven similarly.
 \end{proof}
 
 \begin{definition}[Sequences bounded away from zero]\label{5.3.12}
-A sequence \(\text{LIM}_{n \to \infty} a_n\) of rational numbers is said to be \emph{bounded away from zero} iff there exists a rational number \(c > 0\) such that \(|a_n| \geq c\) for all \(n \geq 1\).
+A sequence \(\text{LIM}_{n \to \infty} a_n\) of rational numbers is said to be \emph{bounded away from zero} iff there exists a rational number \(c > 0\) such that \(\abs*{a_n} \geq c\) for all \(n \geq 1\).
 \end{definition}
 
 \setcounter{theorem}{13}
@@ -238,25 +238,41 @@ Therefore we can find an \(\varepsilon > 0\) such that \((b_n)_{n = 1}^{\infty}\
 Let us fix this \(\varepsilon\).
 We know that \((b_n)_{n = 1}^{\infty}\) is a Cauchy sequence, so it is eventually \(\varepsilon\)-steady.
 Moreover, it is eventually \(\varepsilon / 2\)-steady, since \(\varepsilon / 2 > 0\).
-Thus there is an \(N \geq 1\) such that \(|b_n - b_m| \leq \varepsilon / 2\) for all \(n, m \geq N\).
+Thus there is an \(N \geq 1\) such that \(\abs*{b_n - b_m} \leq \varepsilon / 2\) for all \(n, m \geq N\).
 
-On the other hand, we cannot have \(|b_n| \leq \varepsilon\) for all \(n \geq N\), since this would imply that \((b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-close to \((0)_{n = 1}^{\infty}\).
-Thus there must be some \(n_0 \geq N\) for which \(|b_{n_0}| > \varepsilon\).
-Since we already know that \(|b_{n_0} - b_n| \leq \varepsilon / 2\) for all \(n \geq N\), we have
+On the other hand, we cannot have \(\abs*{b_n} \leq \varepsilon\) for all \(n \geq N\), since this would imply that \((b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-close to \((0)_{n = 1}^{\infty}\).
+Thus there must be some \(n_0 \geq N\) for which \(\abs*{b_{n_0}} > \varepsilon\).
+Since we already know that \(\abs*{b_{n_0} - b_n} \leq \varepsilon / 2\) for all \(n \geq N\), we have
 \begin{align*}
-& |b_{n_0}| - |b_{n_0} - b_n| \geq \varepsilon - \varepsilon / 2 = \varepsilon / 2 & \text{(by Proposition \ref{4.2.9})} \\
-\implies & |b_{n_0}| - |b_n - b_{n_0}| \geq \varepsilon / 2 & \text{(by Proposition \ref{4.3.3})} \\
-\implies & |b_{n_0} + (b_n - b_{n_0})| \geq \varepsilon / 2 & \text{(by Additional Corollary \ref{ac 4.3.1})} \\
-\implies & |b_n| \geq \varepsilon / 2. & \text{(by Proposition \ref{4.2.4})} \\
+& \abs*{b_{n_0}} - \abs*{b_{n_0} - b_n} \geq \varepsilon - \varepsilon / 2 = \varepsilon / 2 & \text{(by Proposition \ref{4.2.9})} \\
+\implies & \abs*{b_{n_0}} - \abs*{b_n - b_{n_0}} \geq \varepsilon / 2 & \text{(by Proposition \ref{4.3.3})} \\
+\implies & \abs*{b_{n_0} + (b_n - b_{n_0})} \geq \varepsilon / 2 & \text{(by Additional Corollary \ref{ac 4.3.1})} \\
+\implies & \abs*{b_n} \geq \varepsilon / 2. & \text{(by Proposition \ref{4.2.4})} \\
 \end{align*}
-Thus conclude from above that \(|b_n| \geq \varepsilon / 2\) for all \(n \geq N\).
+Thus conclude from above that \(\abs*{b_n} \geq \varepsilon / 2\) for all \(n \geq N\).
 
 This almost proves that \((b_n)_{n = 1}^{\infty}\) is bounded away from zero.
 Actually, what it does is show that \((b_n)_{n = 1}^{\infty}\) is \emph{eventually} bounded away from zero.
 But this is easily fixed, by defining a new sequence \(a_n\), by setting \(a_n \coloneqq \varepsilon / 2\) if \(n < N\) and \(a_n \coloneqq b_n\) if \(n \geq N\).
 Since \(b_n\) is a Cauchy sequence, it is not hard to verify that \(a_n\) is also a Cauchy sequence which is equivalent to \(b_n\) (because the two sequences are eventually the same), and so \(x = \text{LIM}_{n \to \infty} a_n\).
-And since \(|b_n| \geq \varepsilon / 2\) for all \(n \geq N\), we know that \(|a_n| \geq \varepsilon / 2\) for all \(n \geq 1\) (splitting into the two cases \(n \geq N\) and \(n < N\) separately).
+And since \(\abs*{b_n} \geq \varepsilon / 2\) for all \(n \geq N\), we know that \(\abs*{a_n} \geq \varepsilon / 2\) for all \(n \geq 1\) (splitting into the two cases \(n \geq N\) and \(n < N\) separately).
 Thus we have a Cauchy sequence which is bounded away from zero (by \(\varepsilon / 2\) instead of \(\varepsilon\), but that’s still OK since \(\varepsilon / 2 > 0\)), and which has \(x\) as a formal limit, and so we are done.
+\end{proof}
+
+\begin{lemma}\label{5.3.15}
+Suppose that \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence which is bounded away from zero.
+Then the sequence \((a_n^{-1})_{n = 1}^{\infty}\) is also a Cauchy sequence.
+\end{lemma}
+
+\begin{proof}
+Since \((a_n)_{n = 1}^{\infty}\) is bounded away from zero, we know that there is a \(c > 0\) such that \(\abs*{a_n} \geq c\) for all \(n \geq 1\).
+Now we need to show that \((a_n^{-1})_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady for each \(\varepsilon > 0\).
+Thus let us fix an \(\varepsilon > 0\);
+our task is now to find an \(N \geq 1\) such that \(\abs*{a_n^{-1} - a_m^{-1}} \leq \varepsilon\) for all \(n, m \geq N\).
+But
+\[
+    \abs*{a_n^{-1} - a_m^{-1}} = \abs*{\frac{a_m - a_n}{a_m a_n}}
+\]
 \end{proof}
 
 \exercisesection
