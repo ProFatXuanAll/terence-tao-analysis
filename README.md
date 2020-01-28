@@ -60,21 +60,21 @@ If you want to help, please fork the repository and submit a pull request, I'll 
     - ex: `\((a_n)_{n = 1}^{\infty}\)`.
   - If there is only **single letter** in **subscript** and **superscript**, then do not enclose with `{` and `}`.
     - ex: `\(x^2\)`.
-  - If subscript and superscript are followed with aother symbols, then appended with additional space.
+  - If **subscript** and **superscript** are followed with aother symbols, then **appended with additional space**.
     - ex: `\(x^2 y^2\)`.
 - `\forall` and `\exists`
-  - `\forall` and `\exists` should be followed with additional space, i.e, `\ `.
+  - `\forall` and `\exists` should be followed with **additional space**, i.e, `\ `.
     - ex: `\(\forall\ n \geq 1\)`.
-  - If there are text before `\forall` and `\exists`, then prepended with additional space, i.e, `\ `.
+  - If there are text before `\forall` and `\exists`, then **prepended with additional space**, i.e, `\ `.
     - ex: `\(n \geq 1 \forall\ n \in \{1,2,3\}\)`.
 - **Absolute value**
   - **Absolute value** should be written as `\abs*{}`.
     - ex: `\(\abs*{a_j - a_k}\)`.
 - **Enumerate**
-  - `\item` in enumerate environments should be indented.
-  - Labels should be enclosed with `(` and `)`.
-  - If the statement we tried to prove also use enumerate environment, then start the label with `\roman`.
-  - In nested enumerate environments, labels presedence should be `\alph`, `\Roman`, `\roman` and `\arabic`.
+  - `\item` in enumerate environments should be **indented**.
+  - **Labels** should be enclosed with `(` and `)`.
+  - If the statement we tried to **prove** also use enumerate environment, then start the label with `\roman`.
+  - In **nested** enumerate environments, **labels presedence** should be `\alph`, `\Roman`, `\roman` and `\arabic`.
 
 ### Unsolved Exercise
 
