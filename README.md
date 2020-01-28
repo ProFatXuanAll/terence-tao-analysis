@@ -67,9 +67,13 @@ If you want to help, please fork the repository and submit a pull request, I'll 
     - ex: `\(\forall\ n \geq 1\)`.
   - If there are text before `\forall` and `\exists`, then **prepended with additional space**, i.e, `\ `.
     - ex: `\(n \geq 1 \forall\ n \in \{1,2,3\}\)`.
-- **Absolute value**
+- **Absolute value**, **floor**, **ceiling**
   - **Absolute value** should be written as `\abs*{}`.
     - ex: `\(\abs*{a_j - a_k}\)`.
+  - Floor should be written as `\floor*{}`.
+    - ex: `\(\floor*{x}\)`
+  - Ceiling should be written as `\ceil*{}`.
+    - ex: `\(\ceil*{x}\)`
 - **Enumerate**
   - `\item` in enumerate environments should be **indented**.
   - **Labels** should be enclosed with `(` and `)`.
