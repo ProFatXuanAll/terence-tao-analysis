@@ -183,6 +183,95 @@ Suppose we have \(x < y\) and \(z\) a positive real, and want to conclude that \
 Since \(x < y\), \(y - x\) is positive, hence by Proposition \ref{5.4.4} we have \((y - x)z = yz - xz\) is positive, hence \(xz < yz\).
 \end{proof}
 
+\begin{proposition}\label{5.4.8}
+Let \(x\) be a positive real number.
+Then \(x^{-1}\) is also positive.
+Also, if \(y\) is another positive number and \(x > y\), then \(x^{-1} < y^{-1}\).
+\end{proposition}
+
+\begin{proof}
+Let \(x\) be positive.
+Since \(xx^{-1} = 1\), the real number \(x^{-1}\) cannot be zero (since \(x0 = 0 \neq 1\)).
+Also, from Proposition \ref{5.4.4} it is easy to see that a positive number times a negative number is negative;
+this shows that \(x^{-1}\) cannot be negative, since this would imply that \(xx^{-1} = 1\) is negative, a contradiction.
+Thus, by Proposition \ref{5.4.4}, the only possibility left is that \(x^{-1}\) is positive.
+
+Now let \(y\) be positive as well, so \(x^{-1}\) and \(y^{-1}\) are also positive.
+If \(x^{-1} \geq y^{-1}\), then by Proposition \ref{5.4.7} we have \(xx^{-1} > yx^{-1} \geq yy^{-1}\), thus \(1 > 1\), which is a contradiction.
+Thus we must have \(x^{-1} < y^{-1}\).
+\end{proof}
+
+\begin{proposition}[The non-negative reals are closed]\label{5.4.9}
+Let \(a_1, a_2, a_3, \dots\) be a Cauchy sequence of non-negative rational numbers.
+Then \(\text{LIM}_{n \to \infty} a_n\) is a non-negative real number.
+\end{proposition}
+
+\begin{proof}
+We argue by contradiction, and suppose that the real number \(x \coloneqq \text{LIM}_{n \to \infty} a_n\) is a negative number.
+Then by definition of negative real number, we have \(x = \text{LIM}_{n \to \infty} b_n\) for some sequence \(b_n\) which is negatively bounded away from zero, i.e., there is a negative rational \(-c < 0\) such that \(b_n \leq -c\) for all \(n \geq 1\).
+On the other hand, we have \(a_n \geq 0\) for all \(n \geq 1\), by hypothesis.
+Thus the numbers \(a_n\) and \(b_n\) are never \(c / 2\)-close, since \(c / 2 < c\).
+Thus the sequences \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are not eventually \(c / 2\)-close.
+Since \(c / 2 > 0\), this implies that \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are not equivalent.
+But this contradicts the fact that both these sequences have \(x\) as their formal limit.
+\end{proof}
+
+\begin{note}
+Eventually, we will see a better explanation of Proposition \ref{5.4.9}:
+the set of non-negative reals is \emph{closed}, whereas the set of positive reals is \emph{open}.
+\end{note}
+
+\begin{corollary}\label{5.4.10}
+Let \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) be Cauchy sequences of rationals such that \(a_n \geq b_n\) for all \(n \geq 1\).
+Then \(\text{LIM}_{n \to \infty} a_n \geq \text{LIM}_{n \to \infty} b_n\).
+\end{corollary}
+
+\begin{proof}
+Apply Proposition \ref{5.4.9} to the sequence \(a_n - b_n\).
+\end{proof}
+
+\begin{remark}\label{5.4.11}
+Note that Corollary \ref{5.4.10} does not work if the \(\geq\) signs are replaced by \(>\):
+for instance if \(a_n \coloneqq 1 + 1 / n\) and \(b_n \coloneqq 1 - 1 / n\), then \(a_n\) is always strictly greater than \(b_n\), but the formal limit of \(a_n\) is not greater than the formal limit of \(b_n\), instead they are equal.
+\end{remark}
+
+\begin{note}
+We now define distance \(d(x, y) \coloneqq \abs*{x - y}\) just as we did for the rationals.
+In fact, Propositions \ref{4.3.3} and \ref{4.3.7} hold not only for the rationals, but for the reals;
+the proof is identical, since the real numbers obey all the laws of algebra and order that the rationals do.
+\end{note}
+
+\begin{proposition}[Bounding of reals by rationals]\label{5.4.12}
+Let \(x\) be a positive real number.
+Then there exists a positive rational number \(q\) such that \(q \leq x\), and there exists a positive integer \(N\) such that \(x \leq N\).
+\end{proposition}
+
+\begin{proof}
+Since \(x\) is a positive real, it is the formal limit of some Cauchy sequence \((a_n)_{n = 1}^{\infty}\) which is positively bounded away from zero.
+Also, by Lemma \ref{5.1.15}, this sequence is bounded.
+Thus we have rationals \(q > 0\) and \(r\) such that \(q \leq a_n \leq r\) for all \(n \geq 1\).
+But by Proposition \ref{4.4.1} we know that there is some integer \(N\) such that \(r \leq N\);
+since \(q\) is positive and \(q \leq r \leq N\), we see that \(N\) is positive.
+Thus \(q \leq a_n \leq N\) for all \(n \geq 1\).
+Applying Corollary \ref{5.4.10} we obtain that \(q \leq x \leq N\), as desired.
+\end{proof}
+
+\begin{corollary}[Archimedean property]\label{5.4.13}
+Let \(x\) and \(\varepsilon\) be any positive real numbers.
+Then there exists a positive integer \(M\) such that \(M\varepsilon > x\).
+\end{corollary}
+
+\begin{proof}
+The number \(x / \varepsilon\) is positive, and hence by Proposition \ref{5.4.12} there exists a positive integer \(N\) such that \(x / \varepsilon \leq N\).
+If we set \(M \coloneqq N + 1\), then \(x / \varepsilon < M\).
+Now multiply by \(\varepsilon\).
+\end{proof}
+
+\begin{note}
+This property (Corollary \ref{5.4.13}) is quite important;
+it says that no matter how large \(x\) is and how small \(\varepsilon\) is, if one keeps adding \(\varepsilon\) to itself, one will eventually overtake \(x\).
+\end{note}
+
 \exercisesection
 
 \begin{exercise}\label{ex 5.4.1}
