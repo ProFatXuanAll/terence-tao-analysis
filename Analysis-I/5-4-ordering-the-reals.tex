@@ -272,6 +272,14 @@ This property (Corollary \ref{5.4.13}) is quite important;
 it says that no matter how large \(x\) is and how small \(\varepsilon\) is, if one keeps adding \(\varepsilon\) to itself, one will eventually overtake \(x\).
 \end{note}
 
+\begin{proposition}\label{5.4.14}
+Given any two real numbers \(x < y\), we can find a rational number \(q\) such that \(x < q < y\).
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
+
 \exercisesection
 
 \begin{exercise}\label{ex 5.4.1}
@@ -294,3 +302,61 @@ See Proposition \ref{5.4.7}.
 Show that for every real number \(x\) there is exactly one integer \(N\) such that \(N \leq x < N + 1\).
 (This integer \(N\) is called the \emph{integer part} of \(x\), and is sometimes denoted \(N = \floor*{x}\).)
 \end{exercise}
+
+\begin{proof}
+We first prove the existence of the integer \(N\).
+By Proposition \ref{5.4.4}, exactly one of the following three statements is true:
+\begin{enumerate}
+    \item \(x = 0\).
+    Then we choose \(N = 0\) so that \(0 \leq 0 < 1\).
+    \item \(x\) is positive.
+    Then by Corollary \ref{5.4.13}, \(\exists\ U \in \mathds{Z}\) and \(U > 0\) such that \(U = U1 > x\).
+    And by Proposition \ref{5.4.12}, \(\exists\ q \in \mathds{Q}\) and \(q > 0\) such that \(q \leq x\).
+    Since \(q \in \mathds{Q}\), by proposition \ref{4.4.1}, \(\exists!\ L \in \mathds{Z}\) such that \(L \leq q < L + 1\).
+    So we have \(L \leq x < U\) by Proposition \ref{5.4.7}.
+    Let \(S_1 = \{n \in \mathds{Z} : L \leq n < U\}\), then \(S_1\) is a finite set since \(\#(S_1) = U - L\).
+    Now let \(S_2 = \{n \in S_1 : L \leq n \leq x\}\), then \(S_2\) is also a finite set by Proposition \ref{3.6.14}.
+    Since \(L \in \mathds{Z}\) and \(L \leq x\), \(S_2 \neq \emptyset\).
+    Then we can choose an integer \(N\) from \(S_2\) where \(N\) is the largest integer.
+    We must have \(x < N + 1\), otherwised \(x \geq N + 1 \implies N > N + 1\), a contradiction.
+    So we have \(N \leq x < N + 1\), and we are done in this case.
+    \item \(x\) is negative.
+    By Proposition \ref{5.4.4}, \(-x\) is positive.
+    Then by Proposition \ref{5.4.12}, \(\exists\ L \in \mathds{Z}\) and \(L > 0\) such that \(-x \leq L\).
+    And By Proposition \ref{5.4.7}, we have \(-L \leq x\).
+    Again by Proposition \ref{5.4.12}, \(\exists\ q \in \mathds{Q}\) and \(q > 0\) such that \(q \leq -x\).
+    Since \(q \in \mathds{Q}\), by proposition \ref{4.4.1}, \(\exists!\ U \in \mathds{Z}\) such that \(U \leq q < U + 1\).
+    We also have \(U - 1 < q\) by Proposition \ref{4.2.9}, combine with \(q \leq -x\) we have \(U - 1 < -x\), or equivalently \(x < -(U - 1)\) by Proposition \ref{5.4.7}.
+    So we have \(-L \leq x < -(U - 1)\) by Proposition \ref{5.4.7}.
+    Let \(S_1 = \{n \in \mathds{Z} : -L \leq n < -(U + 1)\}\), then \(S_1\) is a finite set since \(\#(S_1) = L - (U + 1)\).
+    Now let \(S_2 = \{n \in S_1 : -L \leq n \leq x\}\), then \(S_2\) is also a finite set by Proposition \ref{3.6.14}.
+    Since \(-L \in \mathds{Z}\) and \(-L \leq x\), \(S_2 \neq \emptyset\).
+    Then we can choose an integer \(N\) from \(S_2\) where \(N\) is the largest integer.
+    We must have \(x < N + 1\), otherwised \(x \geq N + 1 \implies N > N + 1\), a contradiction.
+    So we have \(N \leq x < N + 1\), and we are done in this case.
+\end{enumerate}
+From all cases above, we can conclude that \(\exists\ N \in \mathds{Z} : N \leq x < N + 1\).
+
+Now we prove the uniqueness of the integer \(N\).
+Suppose that \(\exists\ N_1, N_2 \in \mathds{Z}\) such that \(N_1 \leq x < N_1 + 1\) and \(N_2 \leq x < N_2 + 1\).
+Then we get \(N_1 < N_2 + 1\) and \(N_2 < N_1 + 1\).
+So
+\begin{align*}
+& (N_1 < N_2 + 1) \land (N_2 < N_1 + 1) \\
+\implies & (N_1 + 1 \leq N_2 + 1) \land (N_2 + 1 \leq N_1 + 1) & \text{(by Definition \ref{4.1.10})} \\
+\implies & (N_1 \leq N_2) \land (N_2 \leq N_1) & \text{(by Definition \ref{4.1.10})} \\
+\implies & N_1 = N_2. & \text{(by Definition \ref{4.1.10})}
+\end{align*}
+Thus we conclude that \(\exists!\ N \in \mathds{Z} : N \leq x < N + 1\).
+\end{proof}
+
+\begin{exercise}\label{ex 5.4.4}
+Show that for any positive real number \(x > 0\) there exists a positive integer \(N\) such that \(x > 1 / N > 0\).
+\end{exercise}
+
+\begin{proof}
+Since \(x\) is positive, \(x^{-1}\) is also positive by Proposition \ref{5.4.8}.
+By Corollary \ref{5.4.13}, \(\exists\ N \in \mathds{Z}\) and \(N > 0\) such that \(N = N1 > 1 / x\).
+Again by Proposition \ref{5.4.8} we have \(0 < 1 / N < x\).
+This conclude the proof.
+\end{proof}
