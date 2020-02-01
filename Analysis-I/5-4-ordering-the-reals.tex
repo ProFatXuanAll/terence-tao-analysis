@@ -389,3 +389,78 @@ Prove Proposition \ref{5.4.14}.
 \begin{proof}
 See Proposition \ref{5.4.14}.
 \end{proof}
+
+\begin{exercise}\label{ex 5.4.6}
+Let \(x, y\) be real numbers and let \(\varepsilon > 0\) be a positive real.
+Show that \(\abs*{x - y} < \varepsilon\) if and only if \(y - \varepsilon < x < y + \varepsilon\), and that \(\abs*{x - y} \leq \varepsilon\) if and only if \(y - \varepsilon \leq x \leq y + \varepsilon\).
+\end{exercise}
+
+\begin{proof}
+We first prove that \(\abs*{x - y} < \varepsilon \iff y - \varepsilon < x < y + \varepsilon\).
+\begin{align*}
+& \abs*{x - y} < \varepsilon \\
+\iff & (x - y < \varepsilon) \land (-(x - y) < \varepsilon) & \text{(by Definition \ref{5.4.5})} \\
+\iff & (x - y < \varepsilon) \land (y - x < \varepsilon) & \text{(by Proposition \ref{5.3.11})} \\
+\iff & (x < y + \varepsilon) \land (y - \varepsilon < x) & \text{(by Proposition \ref{5.4.7})} \\
+\iff & y - \varepsilon < x < y + \varepsilon. & \text{(by Proposition \ref{5.4.7})}
+\end{align*}
+
+Now we prove that \(\abs*{x - y} \leq \varepsilon \iff y - \varepsilon \leq x \leq y + \varepsilon\).
+\begin{align*}
+& \abs*{x - y} \leq \varepsilon \\
+\iff & (x - y \leq \varepsilon) \land (-(x - y) \leq \varepsilon) & \text{(by Definition \ref{5.4.5})} \\
+\iff & (x - y \leq \varepsilon) \land (y - x \leq \varepsilon) & \text{(by Proposition \ref{5.3.11})} \\
+\iff & (x \leq y + \varepsilon) \land (y - \varepsilon \leq x) & \text{(by Proposition \ref{5.4.7})} \\
+\iff & y - \varepsilon \leq x \leq y + \varepsilon. & \text{(by Proposition \ref{5.4.7})}
+\end{align*}
+\end{proof}
+
+\begin{exercise}\label{ex 5.4.7}
+Let \(x\) and \(y\) be real numbers.
+Show that \(x \leq y + \varepsilon\) for all real numbers \(\varepsilon > 0\) if and only if \(x \leq y\).
+Show that \(\abs*{x - y} \leq \varepsilon\) for all real numbers \(\varepsilon > 0\) if and only if \(x = y\).
+\end{exercise}
+
+\begin{proof}
+We first prove that \(x \leq y + \varepsilon\) for all real numbers \(\varepsilon > 0\) if and only if \(x \leq y\).
+\begin{align*}
+& (x \leq y + \varepsilon) \land (\varepsilon > 0) \\
+\iff & (x - y \leq \varepsilon) \land (\varepsilon > 0) & \text{(by Proposition \ref{5.4.7})} \\
+\iff & x - y \leq 0 & \text{(by Proposition \ref{5.4.7})} \\
+\iff & x \leq y. & \text{(by Definition \ref{5.4.6})}
+\end{align*}
+
+Now we prove that \(\abs*{x - y} \leq \varepsilon\) for all real numbers \(\varepsilon > 0\) if and only if \(x = y\).
+\begin{align*}
+& (\abs*{x - y} \leq \varepsilon) \land (\varepsilon > 0) \\
+\iff & (x - y \leq \varepsilon) \land (-(x - y) \leq \varepsilon) \land (\varepsilon > 0) & \text{(by Definition \ref{5.4.5})} \\
+\iff & (x - y \leq \varepsilon) \land (y - x \leq \varepsilon) \land (\varepsilon > 0) & \text{(by Proposition \ref{5.3.11})} \\
+\iff & (x - y \leq 0) \land (y - x \leq 0) & \text{(by Proposition \ref{5.4.7})} \\
+\iff & x - y = 0 & \text{(by Proposition \ref{5.4.7})} \\
+\iff & x = y. & \text{(by Proposition \ref{5.3.11})}
+\end{align*}
+\end{proof}
+
+\begin{exercise}\label{ex 5.4.8}
+Let \((a_n)_{n = 1}^{\infty}\) be a Cauchy sequence of rationals, and let \(x\) be a real number.
+Show that if \(a_n \leq x\) for all \(n \geq 1\), then \(\text{LIM}_{n \to \infty} a_n \leq x\).
+Similarly, show that if \(a_n \geq x\) for all \(n \geq 1\), then \(\text{LIM}_{n \to \infty} a_n \geq x\).
+\end{exercise}
+
+\begin{proof}
+We first prove that \(a_n \leq x\) for all \(n \geq 1\) implies \(\text{LIM}_{n \to \infty} a_n \leq x\).
+Let \(a = \text{LIM}_{n \to \infty} a_n\).
+Suppose for sake of contradiction that \(a > x\).
+Then by Proposition \ref{5.4.14}, \(\exists\ q \in \mathds{Q}\) such that \(a > q > x\).
+So \(\forall\ n \geq 1\), \(a_n \leq x < q\).
+But by Corollary \ref{5.4.10}, \(\forall\ n \geq 1\), \(a_n < q\) implies \(a = \text{LIM}_{n \to \infty} a_n < \text{LIM}_{n \to \infty} q = q\), which contradict to \(a > q\).
+Thus we must have \(a \leq x\).
+
+Now we prove that \(a_n \geq x\) for all \(n \geq 1\) implies \(\text{LIM}_{n \to \infty} a_n \geq x\).
+Let \(a = \text{LIM}_{n \to \infty} a_n\).
+Suppose for sake of contradiction that \(a < x\).
+Then by Proposition \ref{5.4.14}, \(\exists\ q \in \mathds{Q}\) such that \(a < q < x\).
+So \(\forall\ n \geq 1\), \(a_n \geq x > q\).
+But by Corollary \ref{5.4.10}, \(\forall\ n \geq 1\), \(a_n > q\) implies \(a = \text{LIM}_{n \to \infty} a_n > \text{LIM}_{n \to \infty} q = q\), which contradict to \(a < q\).
+Thus we must have \(a \geq x\).
+\end{proof}
