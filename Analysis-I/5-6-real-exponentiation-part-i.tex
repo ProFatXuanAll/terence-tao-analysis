@@ -1,0 +1,65 @@
+\section{Real exponentiation, part I}
+
+\begin{definition}[Exponentiating a real by a natural number]\label{5.6.1}
+Let \(x\) be a real number.
+To raise \(x\) to the power \(0\), we define \(x^0 \coloneqq 1\).
+Now suppose recursively that \(x^n\) has been defined for some natural number \(n\), then we define \(x^{n + 1} \coloneqq x^n \times x\).
+\end{definition}
+
+\begin{definition}[Exponentiating a real by an integer]\label{5.6.2}
+Let \(x\) be a non-zero real number.
+Then for any negative integer \(-n\), we define \(x^{-n} \coloneqq 1 / x^n\).
+\end{definition}
+
+\begin{proposition}\label{5.6.3}
+All the properties in Propositions \ref{4.3.10} and \ref{4.3.12} remain valid if \(x\) and \(y\) are assumed to be real numbers instead of rational numbers.
+\end{proposition}
+
+\begin{meta-proof}
+If one inspects the proof of Propositions \ref{4.3.10} and \ref{4.3.12} we see that they rely on the laws of algebra and the laws of order for the rationals (Propositions \ref{4.2.4} and \ref{4.2.9}).
+But by Propositions \ref{5.3.11}, \ref{5.4.7}, and the identity \(xx^{-1} = x^{-1} x = 1\) we know that all these laws of algebra and order continue to hold for real numbers as well as rationals.
+Thus we can modify the proof of Proposition \ref{4.3.10} and \ref{4.3.12} to hold in the case when \(x\) and \(y\) are real.
+\end{meta-proof}
+
+\begin{note}
+Instead of giving an actual proof of Proposition \ref{5.6.3}, we shall give a meta-proof
+(an argument appealing to the nature of proofs, rather than the nature of real and rational numbers).
+\end{note}
+
+\begin{definition}\label{5.6.4}
+Let \(x \geq 0\) be a non-negative real, and let \(n \geq 1\) be a positive integer.
+We define \(x^{1 / n}\), also known as the \emph{\(n^{\text{th}}\) root of \(x\)}, by the formula
+\[
+    x^{1 / n} \coloneqq \sup\{y \in \mathds{R} : y \geq 0 \text{ and } y^n \leq x\}.
+\]
+We often write \(\sqrt{x}\) for \(x^{1 / 2}\).
+\end{definition}
+
+\begin{note}
+we do not define the \(n^{\text{th}}\) root of a negative number.
+In fact, we will leave the \(n^{\text{th}}\) roots of negative numbers undefined for the rest of the text
+(one can define these \(n^{\text{th}}\) roots once one defines the complex numbers, but we shall refrain from doing so).
+\end{note}
+
+\begin{lemma}[Existence of \(n^{\text{th}}\) roots]\label{5.6.5}
+Let \(x \geq 0\) be a non-negative real, and let \(n \geq 1\) be a positive integer.
+Then the set \(E \coloneqq \{y \in R : y \geq 0 \text{ and } y^n \leq x\}\) is non-empty and is also bounded above.
+In particular, \(x^{1 / n}\) is a real number.
+\end{lemma}
+
+\begin{proof}
+The set \(E\) contains \(0\), so it is certainly not empty.
+Now we show it has an upper bound.
+We divide into two cases: \(x \leq 1\) and \(x > 1\).
+First suppose that we are in the case where \(x \leq 1\).
+Then we claim that the set \(E\) is bounded above by \(1\).
+To see this, suppose for sake of contradiction that there was an element \(y \in E\) for which \(y > 1\).
+But then \(y^n > 1\), and hence \(y^n > x\), a contradiction.
+Thus \(E\) has an upper bound.
+Now suppose that we are in the case where \(x > 1\).
+Then we claim that the set \(E\) is bounded above by \(x\).
+To see this, suppose for contradiction that there was an element \(y \in E\) for which \(y > x\).
+Since \(x > 1\), we thus have \(y > 1\).
+Since \(y > x\) and \(y > 1\), we have \(y^n > x\), a contradiction.
+Thus in both cases \(E\) has an upper bound, and so \(x^{1 / n}\) is real.
+\end{proof}
