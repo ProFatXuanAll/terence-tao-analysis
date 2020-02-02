@@ -49,8 +49,12 @@ If you want to help, please fork the repository and submit a pull request, I'll 
 |exercise|`\begin{exercise}` and `\end{exercise}`|`\label{ex chapter_no.section_no.exercise_no}`|
 |additional corollary|`\begin{additional corollary}` and `\end{additional corollary}`|`\label{ac chapter_no.section_no.corollary_no}`|
 |proof|`\begin{proof}` and `\end{proof}`||
+|meta-proof|`\begin{meta-proof}` and `\end{meta-proof}`||
 |note|`\begin{note}` and `\end{note}`||
 
+- **Quotes**
+  - **Quotes** should be surrounded with ``` `` ``` and `''`.
+  - Don't use `\say{}`.
 - **Operators**, **subscript** and **superscript**
   - **Binart operator** should be surrounded with **spaces**.
     - ex: `\(a + b\)`.
@@ -63,16 +67,16 @@ If you want to help, please fork the repository and submit a pull request, I'll 
   - If **subscript** and **superscript** are followed with aother symbols, then **appended with additional space**.
     - ex: `\(x^2 y^2\)`.
 - `\forall` and `\exists`
-  - `\forall` and `\exists` should be followed with **additional space**, i.e, `\ `.
+  - `\forall` and `\exists` should be **followed with additional space**.
     - ex: `\(\forall\ n \geq 1\)`.
-  - If there are text before `\forall` and `\exists`, then **prepended with additional space**, i.e, `\ `.
-    - ex: `\(n \geq 1 \forall\ n \in \{1,2,3\}\)`.
+  - If there are text before `\forall` and `\exists`, then **prepended with additional space**.
+    - ex: `\(n \geq 1 \ \forall\ n \in \{1,2,3\}\)`.
 - **Absolute value**, **floor**, **ceiling**
   - **Absolute value** should be written as `\abs*{}`.
     - ex: `\(\abs*{a_j - a_k}\)`.
-  - Floor should be written as `\floor*{}`.
+  - **Floor** should be written as `\floor*{}`.
     - ex: `\(\floor*{x}\)`
-  - Ceiling should be written as `\ceil*{}`.
+  - **Ceiling** should be written as `\ceil*{}`.
     - ex: `\(\ceil*{x}\)`
 - **Enumerate**
   - `\item` in enumerate environments should be **indented**.
