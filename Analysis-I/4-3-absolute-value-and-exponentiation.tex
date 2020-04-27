@@ -119,73 +119,65 @@ So by Definition \ref{4.2.8}, \(\abs*{x + y} \leq \abs*{x} + \abs*{y}\).
 
 \begin{proof}{(c)}
 We first prove that \(-y \leq x \leq y\) implies \(y \geq \abs*{x}\).
-\begin{align*}
-& -y \leq x \leq y \\
-\iff & (-y \leq x) \land (x \leq y) & \text{(by Definition \ref{4.2.8})} \\
-\iff & ((-y < x) \lor (x = -y)) \land ((x < y) \lor (x = y)) & \text{(by Definition \ref{4.2.8})} \\
-\iff & ((-x < y) \lor (x = -y)) \land ((x < y) \lor (x = y)) & \text{(by Exercise \ref{ex 4.2.6})} \\
-\iff & ((-x < y) \lor (-x = y)) \land ((x < y) \lor (x = y)). & \text{(by Additional Corollary \ref{ac 4.2.3})}
-\end{align*}
-By Proposition \ref{4.2.9}, exactly one of the two statements \(-x < y\) and \(-x = y\) is true.
-Similarly, exactly one of the two statements \(x < y\) and \(x = y\) is true.
-So we can divide into four cases:
+Because \(-y \leq y\), so \(y \geq 0\) by Proposition \ref{4.2.9} and \(-y \leq 0\) by Exercise \ref{ex 4.2.6}.
+Again by Proposition \ref{4.2.9}, exactly one of the three statements is true:
 \begin{enumerate}[label=(\Roman*)]
-    \item \((-x < y) \land (x < y)\).
-    By Definition \ref{4.3.1}, we get three cases:
-    \begin{enumerate}[label=(\roman*)]
-        \item \(\abs*{x} = 0\).
-        Then \(-x = -0 = 0 < y\) and \(0 < y\).
-        So \(\abs*{x} = 0 < y\).
-        \item \(\abs*{x} = x\).
-        So \(\abs*{x} = x < y\).
-        \item \(\abs*{x} = -x\).
-        So \(\abs*{x} = -x < y\).
-    \end{enumerate}
-    \item \((-x < y) \land (x = y)\).
-    By Definition \ref{4.3.1}, we get three cases:
-    \begin{enumerate}[label=(\roman*)]
-        \item \(\abs*{x} = 0\).
-        This case does not exist since \(-0 = 0 < y\) and \(0 = y\) can not be true at the same time by Proposition \ref{4.2.9}.
-        \item \(\abs*{x} = x\).
-        So \(\abs*{x} = x = y\).
-        \item \(\abs*{x} = -x\).
-        So \(\abs*{x} = -x < y\).
-    \end{enumerate}
-    \item \((-x = y) \land (x < y)\).
-    By Definition \ref{4.3.1}, we get three cases:
-    \begin{enumerate}[label=(\roman*)]
-        \item \(\abs*{x} = 0\).
-        This case does not exist since \(-0 = 0 = y\) and \(0 < y\) can not be true at the same time by Proposition \ref{4.2.9}.
-        \item \(\abs*{x} = x\).
-        So \(\abs*{x} = x < y\).
-        \item \(\abs*{x} = -x\).
-        So \(\abs*{x} = -x = y\).
-    \end{enumerate}
-    \item \((-x = y) \land (x = y)\).
-    Which means \(-x = x \implies 0 = 2x \implies x = 0\) by Proposition \ref{4.2.4}.
-    So \(\abs*{x} = 0 = y\).
+    \item \(x < 0\).
+    Then we have
+    \begin{align*}
+        & -y \leq x < 0 \leq y \\
+        \implies & (-y \leq x) \land (x < 0) \\
+        \implies & (-x \leq y) \land (x < 0) & \text{(by Exercise \ref{ex 4.2.6})} \\
+        \implies & (-x \leq y) \land (x \text{ is negative}) & \text{(by Addtitional Corollary \ref{ac 4.2.7})} \\
+        \implies & (-x \leq y) \land (\abs*{x} = -x) & \text{(by Definition \ref{4.3.1})} \\
+        \implies & \abs*{x} \leq y & \text{(by Addtitional Corollary \ref{ac 4.2.1})} \\
+        \implies & y \geq \abs*{x}. & \text{(by Proposition \ref{4.2.9})}
+    \end{align*}
+    \item \(x = 0\).
+    Then we have
+    \begin{align*}
+        & -y \leq x = 0 \leq y \\
+        \implies & (-y \leq 0) \land (x = 0) \\
+        \implies & (0 \leq y) \land (x = 0) & \text{(by Exercise \ref{ex 4.2.6})} \\
+        \implies & (0 \leq y) \land (\abs*{x} = 0) & \text{(by Definition \ref{4.3.1})} \\
+        \implies & \abs*{x} \leq y & \text{(by Addtitional Corollary \ref{ac 4.2.1})} \\
+        \implies & y \geq \abs*{x}. & \text{(by Proposition \ref{4.2.9})}
+    \end{align*}
+    \item \(x > 0\).
+    Then we have
+    \begin{align*}
+        & -y \leq 0 < x \leq y \\
+        \implies & (0 < x) \land (x \leq y) \\
+        \implies & (x \text{ is positive}) \land (x \leq y) & \text{(by Addtitional Corollary \ref{ac 4.2.7})} \\
+        \implies & (\abs*{x} = x) \land (x \leq y) & \text{(by Definition \ref{4.3.1})} \\
+        \implies & \abs*{x} \leq y & \text{(by Addtitional Corollary \ref{ac 4.2.1})} \\
+        \implies & y \geq \abs*{x}. & \text{(by Proposition \ref{4.2.9})}
+    \end{align*}
 \end{enumerate}
-From all cases above, we can see that either \(\abs*{x} = y\) or \(\abs*{x} < y\) is true.
-Thus by Definition \ref{4.2.8}, \(\abs*{x} \leq y\).
+For all cases above, we have \(y \geq \abs*{x}\).
+Thus we conclude that \(-y \leq x \leq y \implies y \geq \abs*{x}\).
 
-Now we prove that \(y \geq \abs*{x}\) implies \(-y \leq x \leq y\).
-By Definition \ref{4.2.8}, \(y \geq \abs*{x} \iff (y > \abs*{x}) \lor (y = \abs*{x})\).
-By Lemma \ref{4.2.7} and Definition \ref{4.3.1}, \(x\) has three different cases:
-\begin{enumerate}[label=(\roman*)]
-    \item \(x = 0\) and \(\abs*{x} = 0\).
-    So \(y > \abs*{x} = 0 = x\) or \(y = \abs*{x} = 0 = x\) is true, which means \(y \geq x\) by Definition \ref{4.2.8}.
-    \item \(x\) is a positive rational number and \(\abs*{x} = x\).
-    So \(y > \abs*{x} = x\) or \(y = \abs*{x} = x\) is true, which means \(y \geq x\) by Definition \ref{4.2.8}.
-    \item \(x\) is a negative rational number and \(\abs*{x} = -x\).
-    By Exercise \ref{ex 4.2.6}, \(y > -x \iff -y < x\).
-    And by Additional Corollary \ref{4.2.3}, \(y = -x \iff -y = x\).
-    So \(-y < x\) or \(-y = x\) is true, which means \(-y \leq x\) by Definition \ref{4.2.8}.
+Now we prove that \(y \geq \abs*{x} \implies -y \leq x \leq y\).
+By Proposition \ref{4.3.3} (a), \(\abs*{x} \geq 0\).
+So we have \(y \geq \abs*{x} \geq 0\).
+By Exercise \ref{ex 4.2.6}, \(y \geq 0 \implies 0 \geq -y\).
+Then we have \(y \geq \abs*{x} \geq -y\) by Proposition \ref{4.2.9}.
+By Lemma \ref{4.2.7}, exactly one of the three statements is true:
+\begin{enumerate}
+    \item \(x\) is positive.
+    Then by Definition \ref{4.3.1}, \(\abs*{x} = x\).
+    Thus we have \(y \geq x \geq -y\), or \(-y \leq x \leq y\) by Proposition \ref{4.2.9}.
+    \item \(x = 0\).
+    Then by Definition \ref{4.3.1}, \(\abs*{x} = 0\).
+    Thus we have \(y \geq 0 \geq -y\), or \(-y \leq 0 \leq y\) by Proposition \ref{4.2.9}.
+    \item \(x\) is negative.
+    Then by Definition \ref{4.3.1}, \(\abs*{x} = -x\).
+    Thus we have \(y \geq -x \geq -y\), or \(-y \leq x \leq y\) by Exercise \ref{ex 4.2.6}.
 \end{enumerate}
-Combine all cases above we get \(-y \leq x \leq y\).
-
-Finally we show that \(-\abs*{x} \leq x \leq \abs*{x}\).
-Because \(\abs*{x} = \abs*{x}\), so \(\abs*{x} \geq \abs*{x}\) by Definition \ref{4.2.8}.
-Then from previous proof we get \(\abs*{x} \geq \abs*{x} \iff -\abs*{x} \leq x \leq \abs*{x}\).
+For all cases above, we have \(-y \leq x \leq y\).
+Thus we conclude that \(y \geq \abs*{x} \implies -y \leq x \leq y\).
+Combine with proof above, we have \(-y \leq x \leq y \iff y \geq \abs*{x}\).
+In particular, by replacing \(y\) with \(\abs*{x}\), we have \(-\abs*{x} \leq x \leq \abs*{x} \iff \abs*{x} \geq \abs*{x}\).
 \end{proof}
 
 \begin{proof}{(d)}
