@@ -79,44 +79,50 @@ Let \(x, y \geq 0\) be non-negative reals, and let \(n, m \geq 1\) be positive i
 \end{enumerate}
 \end{lemma}
 
-\begin{proof}{(c)}
-We will prove the statement (c) before the other statements in Lemma \ref{5.6.6}.
-First we prove that \(x^{1 / n}\) is non-negative.
-Let \(E = \{z \in \mathds{R} : (z \geq 0) \land (z^n \leq x)\}\).
-Since \(x^{1 / n} = \sup(E)\), we have \(x^{1 / n} \geq z \ \forall\ z \in E\) by Definition \ref{5.5.1}.
-Since \(\forall\ z \in E \implies z \geq 0\), by Proposition \ref{5.4.7}, we have \(x^{1 / n} \geq z \geq 0\).
-So \(x^{1 / n}\) is non-negative.
-
-Now we prove that \(x^{1 / n}\) is positive iff \(x\) is positive.
-By the given conditions we already know that \(x \geq 0\).
-If \(x^{1 / n}\) is positive, then \(x\) is also positive, otherwised \(x = 0\) means \(E = \{z \in \mathds{R} : (z \geq 0) \land (z^n \leq 0)\} = \{0\}\), and \(x^{1 / n} = \sup(\{0\}) = 0\), a contradiction.
-If \(x\) is positive, then we can split into two cases:
-\begin{enumerate}[label=(\Roman*)]
-    \item \(x > 1\).
-    \item \(x \leq 1\).
-\end{enumerate}
-
-% then \(x^{1 / n}\) is also positive, otherwised \(x^{1 / n} = \sup(E) = 0\) means \(E = \{0\} = \{z \in \mathds{R} : (z \geq 0) \land (z^n \leq x)\}\) and \(x = 0\), a contradiction.
-\end{proof}
-
 \begin{proof}{(a)}
-% Let \(E = \{z \in \mathds{R} : (z \geq 0) \land (z^n \leq x)\}\).
-% Since \(y = x^{1 / n} = \sup(E) \in \mathds{R}\), we have \(y^n \in \mathds{R}\) by Proposition \ref{5.3.10}.
-% By Proposition \ref{5.4.7}, we have exactly one of the following three statements is true:
-% \begin{enumerate*}[label=(\roman*)]
-%     \item \(y^n < x\)
-%     \item \(y^n > x\)
-%     \item \(y^n = x\).
-% \end{enumerate*}
-
-% Now we argue by contradiction.
-% We show that both \(y^n < x\) and \(y^n > x\) lead to contradictions.
-% First suppose that \(y^n < x\).
-% Then we have \(y \in E\).
-
+Let \(E = \{z \in \mathds{R} : (z \geq 0) \land (z^N \leq x)\}\).
+So \(y = x^{1 / n} = \sup(E)\).
+Suppose for sake of contadiction that \(y^n \neq x\).
+Then by Proposition \ref{5.4.7}, exactly one of the following statements is true:
+\begin{enumerate}[label=(\Roman*)]
+    \item \(y^n < x\).
+    Now we want to show that \(\exists\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\) such that \((y + \varepsilon)^n < x\).
+    Because \(y < y + \varepsilon\), so we have \(y^n < (y + \varepsilon)^n\).
+    Let \(\delta = (y + \varepsilon)^n - y^n\), then \(\delta > 0\).
+    By Corollary \ref{5.4.13}, we can find an \(N \in \mathds{N}\) and \(N > 0\) such that \(\delta < 1 \times N\).
+    By Proposition \ref{5.4.14}, \(\exists\ q \in \mathds{Q}\) such that \(\delta < q < N\), which means \(\delta / q < 1\), and we have
+    \begin{align*}
+        (y + \varepsilon)^n &= y^n + \delta \\
+        &= y^n + q \delta / q & (q \neq 0) \\
+        &< y^n + q. & (\delta / q < 1)
+    \end{align*}
+    This means if we can show that \(\exists\ q \in \mathds{Q}\) and \(q > 0\) such that \(y^n + q < x\), then we can show that \(\exists\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\) such that \((y + \varepsilon)^n < x\).
+    We can show such \(q\) exists because by Proposition \ref{5.4.14} \(\exists\ q \in \mathds{Q}\) and \(0 < q < x - y^n\).
+    So we must have \(\varepsilon \in \mathds{R}\) and \(\varepsilon > 0\) such that \((y + \varepsilon)^n < x\).
+    But this means \(y + \varepsilon \in E\) and \(y + \varepsilon \leq y\), a contradiction.
+    \item \(y^n > x\).
+    Now we want to show that \(\exists\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\) such that \((y - \varepsilon)^n > x\).
+    Because \(y > y - \varepsilon\), so we have \(y^n > (y - \varepsilon)^n\).
+    Let \(\delta = y^n - (y - \varepsilon)^n\), then \(\delta > 0\).
+    By Proposition \ref{5.4.13}, we can find an \(q \in \mathds{Q}\) and \(q > 0\) such that \(q < 2q \leq \delta\).
+    Then we have \(\delta / q > 1\) and
+    \begin{align*}
+        (y - \varepsilon)^n &= y^n - \delta \\
+        &= y^n - q \delta / q & (q \neq 0) \\
+        &> y^n - q. & (\delta / q > 1)
+    \end{align*}
+    This means if we can show that \(\exists\ q \in \mathds{Q}\) and \(q > 0\) such that \(y^n - q > x\), then we can show that \(\exists\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\) such that \((y - \varepsilon)^n > x\).
+    We can show such \(q\) exists because by Proposition \ref{5.4.14} \(\exists\ q \in \mathds{Q}\) and \(0 < q < y^n - x\).
+    So we must have \(\varepsilon \in \mathds{R}\) and \(\varepsilon > 0\) such that \((y - \varepsilon)^n > x\).
+    But this means \(y - \varepsilon\) is an upper bound of \(E\) and \(y - \varepsilon < y = \sup(E)\), a contradiction.
+\end{enumerate}
+From all cases above we get contradictions, so \(y = x^{1 / n} \implies y^n = x\).
 \end{proof}
 
 \begin{proof}{(b)}
+\end{proof}
+
+\begin{proof}{(c)}
 
 \end{proof}
 
