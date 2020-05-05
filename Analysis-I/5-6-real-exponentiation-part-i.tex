@@ -28,7 +28,7 @@ Instead of giving an actual proof of Proposition \ref{5.6.3}, we shall give a me
 
 \begin{definition}\label{5.6.4}
 Let \(x \geq 0\) be a non-negative real, and let \(n \geq 1\) be a positive integer.
-We define \(x^{1 / n}\), also known as the \emph{\(n^{\text{th}}\) root of \(x\)}, by the formula
+We define \(x^{1 / n}\), also known as the \emph{\(n^{\text{th}}\) roots of \(x\)}, by the formula
 \[
     x^{1 / n} \coloneqq \sup\{y \in \mathds{R} : y \geq 0 \text{ and } y^n \leq x\}.
 \]
@@ -71,8 +71,9 @@ Let \(x, y \geq 0\) be non-negative reals, and let \(n, m \geq 1\) be positive i
     \item Conversely, if \(y^n = x\), then \(y = x^{1 / n}\).
     \item \(x^{1 / n}\) is a non-negative real number, and is positive if and only if \(x\) is positive.
     \item We have \(x > y\) if and only if \(x^{1 / n} > y^{1 / n}\).
-    \item If \(x > 1\), then \(x^{1 / k}\) is a decreasing function of \(k\).
-    If \(x < 1\), then \(x^{1 / k}\) is an increasing function of \(k\).
+    \item Let \(k, l \in \mathds{N}\) and \(k, l > 0\).
+    If \(x > 1\), then \(x^{1 / k}\) is a decreasing (i.e., \(x^{1 / k} > x^{1 / l}\) whenever \(k < l\)) function of \(k\).
+    If \(0 < x < 1\), then \(x^{1 / k}\) is an increasing (i.e., \(x^{1 / k} < x^{1 / l}\) whenever \(k < l\)) function of \(k\).
     If \(x = 1\), then \(x^{1 / k} = 1\) for all \(k\).
     \item We have \((xy)^{1 / n} = x^{1 / n} y^{1 / n}\).
     \item We have \((x^{1 / n})^{1 / m} = x^{1 / nm}\).
@@ -174,7 +175,24 @@ We conclude that \(x > y \iff x^{1 / n} > y^{1 / n}\).
 \end{proof}
 
 \begin{proof}{(e)}
-
+We first prove that if \(x > 1\), then \(x^{1 / k}\) is a decreasing function of \(k\).
+Let \(f : \{k \in \mathds{N} : k > 0\} \to \mathds{R}\) be a function such that \(f(k) = x^{1 / k}\).
+Such function \(f\) exists because of Definition \ref{5.6.4}.
+Let \(k_1, k_2 \in \{k \in \mathds{N} : k > 0\}\) and without loss of generality assume that \(k_1 < k_2\).
+Now we want to show that \(x^{1 / k_1} > x^{1 / k_2}\).
+Suppose for sake of contadiction that \(x^{1 / k_1} \not> x^{1 / k_2}\).
+Then by Proposition \ref{5.4.7}, exactly one of the following two statements is true:
+\begin{enumerate}[label=(\Roman*)]
+    \item \(x^{1 / k_1} = x^{1 / k_2}\).
+    By Lemma \ref{5.6.6}(a), \(x = (x^{1 / k_1})^{k_1} = (x^{1 / k_2})^{k_1} = (x^{1 / k_2})^{k_2}\).
+    Since \(x\) is positive, by Lemma \ref{5.6.6}(c) \(x^{1 / k_1}\) is also positive.
+    So we have
+    \begin{align*}
+        & (x^{1 / k_2})^{k_2} / (x^{1 / k_2})^{k_1} = 1 \\
+        \implies& (x^{1 / k_2})^{k_2 - k_1} = 1 & \text{(by Proposition \ref{5.6.3})}
+    \end{align*}
+    \item \(x^{1 / k_1} < x^{1 / k_2}\).
+\end{enumerate}
 \end{proof}
 
 \begin{proof}{(f)}
