@@ -28,7 +28,7 @@ Instead of giving an actual proof of Proposition \ref{5.6.3}, we shall give a me
 
 \begin{definition}\label{5.6.4}
 Let \(x \geq 0\) be a non-negative real, and let \(n \geq 1\) be a positive integer.
-We define \(x^{1 / n}\), also known as the \emph{\(n^{\text{th}}\) roots of \(x\)}, by the formula
+We define \(x^{1 / n}\), also known as the \emph{\(n^{\text{th}}\) root of \(x\)}, by the formula
 \[
     x^{1 / n} \coloneqq \sup\{y \in \mathds{R} : y \geq 0 \text{ and } y^n \leq x\}.
 \]
@@ -83,7 +83,7 @@ Let \(x, y \geq 0\) be non-negative reals, and let \(n, m \geq 1\) be positive i
 \begin{proof}{(a)}
 Let \(E = \{z \in \mathds{R} : (z \geq 0) \land (z^n \leq x)\}\).
 So \(y = x^{1 / n} = \sup(E)\).
-Suppose for sake of contadiction that \(y^n \neq x\).
+Suppose for sake of contradiction that \(y^n \neq x\).
 Then by Proposition \ref{5.4.7}, exactly one of the following statements is true:
 \begin{enumerate}[label=(\Roman*)]
     \item \(y^n < x\).
@@ -146,7 +146,7 @@ If \(x^{1 / n}\) is positive, then we have
 \end{align*}
 Now we want to show that if \(x\) is positive, then \(x^{1 / n} > 0\).
 Suppose for sake of contradiction that \(x^{1 / n} = 0\).
-Then by Lemma \ref{5.6.6}(a), \(x = (x^{1 / n})^n = 0^n = 0\), a contadiction.
+Then by Lemma \ref{5.6.6}(a), \(x = (x^{1 / n})^n = 0^n = 0\), a contradiction.
 Thus \(x^{1 / n} > 0\).
 We conclude that \(x^{1 / n}\) is positive iff \(x\) is positive.
 \end{proof}
@@ -164,10 +164,10 @@ Suppose for sake of contradiction that \(x^{1 / n} \not> y^{1 / n}\).
 Then by Proposition \ref{5.4.7}, exactly one of the following two statements is true:
 \begin{enumerate}[label=(\Roman*)]
     \item \(x^{1 / n} = y^{1 / n}\).
-    But by Lemma \ref{5.6.6}(a), this means \(x = (x^{1 / n})^n = (y^{1 / n})^n = y\), a contadiction.
+    But by Lemma \ref{5.6.6}(a), this means \(x = (x^{1 / n})^n = (y^{1 / n})^n = y\), a contradiction.
     \item \(x^{1 / n} < y^{1 / n}\).
     By Proposition \ref{5.4.7}, we have \((x^{1 / n})^n < (y^{1 / n})^n \).
-    But by Lemma \ref{5.6.6}(a), this means \(x = (x^{1 / n})^n < (y^{1 / n})^n = y\), a contadiction.
+    But by Lemma \ref{5.6.6}(a), this means \(x = (x^{1 / n})^n < (y^{1 / n})^n = y\), a contradiction.
 \end{enumerate}
 For all cases above we get contradictions.
 Thus \(x > y \implies x^{1 / n} > y^{1 / n}\).
@@ -178,21 +178,98 @@ We conclude that \(x > y \iff x^{1 / n} > y^{1 / n}\).
 We first prove that if \(x > 1\), then \(x^{1 / k}\) is a decreasing function of \(k\).
 Let \(f : \{k \in \mathds{N} : k > 0\} \to \mathds{R}\) be a function such that \(f(k) = x^{1 / k}\).
 Such function \(f\) exists because of Definition \ref{5.6.4}.
-Let \(k_1, k_2 \in \{k \in \mathds{N} : k > 0\}\) and without loss of generality assume that \(k_1 < k_2\).
-Now we want to show that \(x^{1 / k_1} > x^{1 / k_2}\).
-Suppose for sake of contadiction that \(x^{1 / k_1} \not> x^{1 / k_2}\).
+Let \(k \in \{k \in \mathds{N} : k > 0\}\).
+Now we want to show that \(x^{1 / k} > x^{1 / (k + 1)}\).
+Suppose for sake of contradiction that \(x^{1 / k} \not> x^{1 / (k + 1)}\).
 Then by Proposition \ref{5.4.7}, exactly one of the following two statements is true:
 \begin{enumerate}[label=(\Roman*)]
-    \item \(x^{1 / k_1} = x^{1 / k_2}\).
-    By Lemma \ref{5.6.6}(a), \(x = (x^{1 / k_1})^{k_1} = (x^{1 / k_2})^{k_1} = (x^{1 / k_2})^{k_2}\).
-    Since \(x\) is positive, by Lemma \ref{5.6.6}(c) \(x^{1 / k_1}\) is also positive.
-    So we have
+    \item \(x^{1 / k} = x^{1 / (k + 1)}\).
+    Then we have
     \begin{align*}
-        & (x^{1 / k_2})^{k_2} / (x^{1 / k_2})^{k_1} = 1 \\
-        \implies& (x^{1 / k_2})^{k_2 - k_1} = 1 & \text{(by Proposition \ref{5.6.3})}
+        & x = (x^{1 / k})^k & \text{(by Lemma \ref{5.6.6}(a))} \\
+        \implies & x = (x^{1 / (k + 1)})^k \\
+        \implies & x = (x^{1 / (k + 1)})^{(k + 1)} & \text{(by Lemma \ref{5.6.6}(a))} \\
+        \implies & (x^{1 / (k + 1)})^{(k + 1)} / (x^{1 / (k + 1)})^k = 1 & (x > 1) \\
+        \implies & (x^{1 / (k + 1)})^{(k + 1) - k} = 1 & \text{(by Lemma \ref{5.6.3})} \\
+        \implies & (x^{1 / (k + 1)})^1 = 1 \\
+        \implies & x^{1 / (k + 1)} = 1 & \text{(by Definition \ref{5.6.1})} \\
+        \implies & x = (x^{1 / (k + 1)})^{(k + 1)} = 1^{k + 1} = 1. & \text{(by Lemma \ref{5.6.6}(a))}
     \end{align*}
-    \item \(x^{1 / k_1} < x^{1 / k_2}\).
+    But this contradict to \(x > 1\).
+    \item \(x^{1 / k} < x^{1 / (k + 1)}\).
+    Then we have
+    \begin{align*}
+        & (x^{1 / k})^{(k + 1)} < (x^{1 / (k + 1)})^{(k + 1)} \\
+        \implies & (x^{1 / k})^{(k + 1)} < x & \text{(by Lemma \ref{5.6.6}(a))} \\
+        \implies & (x^{1 / k})^k (x^{1 / k}) < x & \text{(by Definition \ref{5.6.1})} \\
+        \implies & x (x^{1 / k}) < x & \text{(by Lemma \ref{5.6.6}(a))} \\
+        \implies & x^{1 / k} < 1 & \text{(by Proposition \ref{5.4.7})} \\
+        \implies & (x^{1 / k})^k < 1^k = 1 & \text{(by Proposition \ref{5.4.7})} \\
+        \implies & x < 1. & \text{(by Lemma \ref{5.6.6}(a))}
+    \end{align*}
+    But this contradict to \(x > 1\).
 \end{enumerate}
+From all cases above we get contradictions.
+Thus \(f(k) = x^{1 / k} > x^{1 / (k + 1)} = f(k + 1)\), \(f(k) = x^{1 / k}\) is a decreasing function of \(k\).
+
+Next we prove that if \(x < 1\), then \(x^{1 / k}\) is a increasing function of \(k\).
+Let \(f : \{k \in \mathds{N} : k > 0\} \to \mathds{R}\) be a function such that \(f(k) = x^{1 / k}\).
+Such function \(f\) exists because of Definition \ref{5.6.4}.
+Let \(k \in \{k \in \mathds{N} : k > 0\}\).
+Now we want to show that \(x^{1 / k} < x^{1 / (k + 1)}\).
+Suppose for sake of contradiction that \(x^{1 / k} \not< x^{1 / (k + 1)}\).
+Then by Proposition \ref{5.4.7}, exactly one of the following two statements is true:
+\begin{enumerate}[label=(\Roman*)]
+    \item \(x^{1 / k} = x^{1 / (k + 1)}\).
+    Then we have
+    \begin{align*}
+        & x = (x^{1 / k})^k & \text{(by Lemma \ref{5.6.6}(a))} \\
+        \implies & x = (x^{1 / (k + 1)})^k \\
+        \implies & x = (x^{1 / (k + 1)})^{(k + 1)} & \text{(by Lemma \ref{5.6.6}(a))} \\
+        \implies & (x^{1 / (k + 1)})^{(k + 1)} / (x^{1 / (k + 1)})^k = 1 & (x > 1) \\
+        \implies & (x^{1 / (k + 1)})^{(k + 1) - k} = 1 & \text{(by Lemma \ref{5.6.3})} \\
+        \implies & (x^{1 / (k + 1)})^1 = 1 \\
+        \implies & x^{1 / (k + 1)} = 1 & \text{(by Definition \ref{5.6.1})} \\
+        \implies & x = (x^{1 / (k + 1)})^{(k + 1)} = 1^{k + 1} = 1. & \text{(by Lemma \ref{5.6.6}(a))}
+    \end{align*}
+    But this contradict to \(x < 1\).
+    \item \(x^{1 / k} > x^{1 / (k + 1)}\).
+    Then we have
+    \begin{align*}
+        & (x^{1 / k})^{(k + 1)} > (x^{1 / (k + 1)})^{(k + 1)} \\
+        \implies & (x^{1 / k})^{(k + 1)} > x & \text{(by Lemma \ref{5.6.6}(a))} \\
+        \implies & (x^{1 / k})^k (x^{1 / k}) > x & \text{(by Definition \ref{5.6.1})} \\
+        \implies & x (x^{1 / k}) > x & \text{(by Lemma \ref{5.6.6}(a))} \\
+        \implies & x^{1 / k} > 1 & \text{(by Proposition \ref{5.4.7})} \\
+        \implies & (x^{1 / k})^k > 1^k = 1 & \text{(by Proposition \ref{5.4.7})} \\
+        \implies & x > 1. & \text{(by Lemma \ref{5.6.6}(a))}
+    \end{align*}
+    But this contradict to \(x < 1\).
+\end{enumerate}
+From all cases above we get contradictions.
+Thus \(f(k) = x^{1 / k} < x^{1 / (k + 1)} = f(k + 1)\), \(f(k) = x^{1 / k}\) is a increasing function of \(k\).
+
+Finally we prove that if \(x = 1\), then \(x^{1 / k} = 1 \ \forall\ k \in \mathds{N}\) and \(k > 0\).
+Suppose for sake of contradiction that \(x^{1 / k} \neq 1\).
+Then by Proposition \ref{5.4.7}, exactly one of the following two statements is true:
+\begin{enumerate}[label=(\Roman*)]
+    \item \(x^{1 / k} > 1\).
+    Then we have
+    \begin{align*}
+        & (x^{1 / k})^k > 1^k = 1 & \text{(by Proposition \ref{5.4.7})} \\
+        \implies & x > 1. & \text{(by Lemma \ref{5.6.6}(a))}
+    \end{align*}
+    But this contradict to \(x = 1\).
+    \item \(x^{1 / k} < 1\).
+    Then we have
+    \begin{align*}
+        & (x^{1 / k})^k < 1^k = 1 & \text{(by Proposition \ref{5.4.7})} \\
+        \implies & x < 1. & \text{(by Lemma \ref{5.6.6}(a))}
+    \end{align*}
+    But this contradict to \(x = 1\).
+\end{enumerate}
+From all cases above we get contradictions.
+Thus if \(x = 1\), then \(x^{1 / k} = 1 \ \forall\ k \in \mathds{N}\) and \(k > 0\).
 \end{proof}
 
 \begin{proof}{(f)}
