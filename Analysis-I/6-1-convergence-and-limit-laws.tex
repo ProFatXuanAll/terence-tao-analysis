@@ -85,3 +85,83 @@ In particular, if we set \(n \coloneqq \max(N, M)\), then we have \(d(a_n, L) \l
 But then we have \(\abs*{L - L'} \leq 2\abs*{L - L'} / 3\), which contradicts the fact that \(\abs*{L - L'} > 0\).
 Thus it is not possible to converge to both \(L\) and \(L'\).
 \end{proof}
+
+\begin{definition}[Limits of sequences]\label{6.1.8}
+If a sequence \((a_n)_{n = m}^\infty\) converges to some real number \(L\), we say that \((a_n)_{n = m}^\infty\) is \emph{convergent} and that its \emph{limit} is \(L\);
+we write
+\[
+    L = \lim_{n \to \infty} a_n
+\]
+to denote this fact.
+If a sequence \((a_n)_{n = m}^\infty\) is not converging to any real number \(L\), we say that the sequence \((a_n)_{n = m}^\infty\) is \emph{divergent} and we leave \(\lim_{n \to \infty} a_n\) undefined.
+\end{definition}
+
+\begin{note}
+Proposition \ref{6.1.7} ensures that a sequence can have at most one limit.
+Thus, if the limit exists, it is a single real number, otherwise it is undefined.
+\end{note}
+
+\begin{remark}\label{6.1.9}
+The notation \(\lim_{n \to \infty} a_n\) does not give any indication about the starting index \(m\) of the sequence, but the starting index is irrelevant (Exercise \ref{ex 6.1.3}).
+Thus in the rest of this discussion we shall not be too careful as to where these sequences start, as we shall be mostly focused on their limits.
+\end{remark}
+
+\exercisesection
+
+\begin{exercise}\label{ex 6.1.1}
+Let \((a_n)_{n = m}^\infty\) be a sequence of real numbers, such that \(a_{n + 1} > a_n\) for each natural number \(n\).
+Prove that whenever \(n\) and \(m\) are natural numbers such that \(m > n\), then we have \(a_m > a_n\).
+(We refer to these sequences as \emph{increasing} sequences.)
+\end{exercise}
+
+\begin{proof}
+Let \(E = \{z \in \mathds{N} : n \leq z \leq m\}\).
+Then \(E\) is a finite set since \(m - n \in \mathds{N}\) and is non-empty set since \(n, m \in E\).
+Let \((a_z)_{z = n}^m\) be a sequence by mapping \(z \in E\) to \(a_z\).
+So \((a_z)_{z = n}^m\) is a finite sequence, and the elements in sequence \((a_z)_{z = n}^m\) are \(\{a_n, a_{n + 1}, \dots, a_{m - 1}, a_m\}\).
+By the given conditions we have \(a_{z + 1} > a_z\) for each natural number \(z\).
+Thus we have \(a_n < a_{n + 1} < \dots < a_{m - 1} < a_m\), and by Proposition \ref{5.4.7} we have \(a_n < a_m\).
+\end{proof}
+
+\begin{exercise}\label{ex 6.1.2}
+Let \((a_n)_{n = m}^\infty\) be a sequence of real numbers, and let \(L\) be a real number.
+Show that \((a_n)_{n = m}^\infty\) converges to \(L\) if and only if, given any real \(\varepsilon > 0\), one can find an \(N \geq m\) such that \(\abs*{a_n - L} \leq \varepsilon\) for all \(n \geq N\).
+\end{exercise}
+
+\begin{proof}
+\begin{align*}
+& (a_n)_{n = m}^\infty \text{ converges to } L \\
+\iff & (\forall\ (\varepsilon \in \mathds{R}) \land (\varepsilon > 0)), (a_n)_{n = m}^\infty \text{ is eventually } \varepsilon\text{-close to } L & \text{(by Definition \ref{6.1.5})} \\
+\iff & (\forall\ (\varepsilon \in \mathds{R}) \land (\varepsilon > 0)), (\exists\ (N \in \mathds{N}) \land (N \geq m)) : \\
+& (a_n)_{n = N}^\infty \text{ is } \varepsilon\text{-close to } L & \text{(by Definition \ref{6.1.5})} \\
+\iff & (\forall\ (\varepsilon \in \mathds{R}) \land (\varepsilon > 0)), (\exists\ (N \in \mathds{N}) \land (N \geq m)) : \\
+& \abs*{a_n - L} \leq \varepsilon \ \forall\ n \geq N. & \text{(by Definition \ref{6.1.5})}
+\end{align*}
+\end{proof}
+
+\begin{exercise}\label{ex 6.1.3}
+Let \((a_n)_{n = m}^\infty\) be a sequence of real numbers, let \(c\) be a real number, and let \(m' \geq m\) be an integer.
+Show that \((a_n)_{n = m}^\infty\) converges to \(c\) if and only if \((a_n)_{n = m'}^\infty\) converges to \(c\).
+\end{exercise}
+
+\begin{proof}
+\begin{align*}
+& (a_n)_{n = m}^\infty \text{ converges to } c \\
+\implies & (\forall\ (\varepsilon \in \mathds{R}) \land (\varepsilon > 0)), (a_n)_{n = m}^\infty \text{ is eventually } \varepsilon\text{-close to } c & \text{(by Definition \ref{6.1.5})} \\
+\implies & (\forall\ (\varepsilon \in \mathds{R}) \land (\varepsilon > 0)), (\exists\ (N \in \mathds{N}) \land (N \geq m)) : \\
+& (a_n)_{n = N}^\infty \text{ is } \varepsilon\text{-close to } c & \text{(by Definition \ref{6.1.5})} \\
+\implies & (\forall\ (\varepsilon \in \mathds{R}) \land (\varepsilon > 0)), (\exists\ (N \in \mathds{N}) \land (N \geq \max(m, m'))) : \\
+& (a_n)_{n = N}^\infty \text{ is } \varepsilon\text{-close to } c. & \text{(by Definition \ref{6.1.5})}
+\end{align*}
+Now we can divide into two cases:
+\begin{enumerate}
+    \item If \(m \geq m'\), then we have \(N \geq m'\), so \(\exists\ N \in \mathds{N}\) and \(N \geq m'\) such that \((a_n)_{n = N}^\infty\) is \(\varepsilon\)-close to \(c\).
+    Thus \((a_n)_{n = m'}^\infty\) converges to \(c\).
+    \item If \(m < m'\), then we can let \(N \geq m'\), so \(\exists\ N \in \mathds{N}\) and \(N \geq m'\) such that \((a_n)_{n = N}^\infty\) is \(\varepsilon\)-close to \(c\).
+    Thus \((a_n)_{n = m'}^\infty\) converges to \(c\).
+\end{enumerate}
+In both cases we get \((a_n)_{n = m'}^\infty\) converges to \(c\).
+Thus if \((a_n)_{n = m}^\infty\) converges to \(c\), then \((a_n)_{n = m'}^\infty\) converges to \(c\).
+Similar proof shows that if \((a_n)_{n = m'}^\infty\) converges to \(c\), then \((a_n)_{n = m}^\infty\) converges to \(c\).
+Thus we conclude that \((a_n)_{n = m}^\infty\) converges to \(c\) if and only if \((a_n)_{n = m'}^\infty\) converges to \(c\).
+\end{proof}
