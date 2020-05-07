@@ -102,8 +102,21 @@ Thus, if the limit exists, it is a single real number, otherwise it is undefined
 \end{note}
 
 \begin{remark}\label{6.1.9}
-The notation \(\lim_{n \to \infty} a_n\) does not give any indication about the starting index \(m\) of the sequence, but the starting index is irrelevant (Exercise \ref{ex 6.1.3}).
+The notation \(\lim_{n \to \infty} a_n\) does not give any indication about the starting index \(m\) of the sequence, but the starting index is irrelevant.
 Thus in the rest of this discussion we shall not be too careful as to where these sequences start, as we shall be mostly focused on their limits.
+\end{remark}
+
+\begin{note}
+We sometimes use the phrase ``\(a_n \to x\) as \(n \to \infty\)'' as an alternate way of writing the statement ``\((a_n)_{n = m}^\infty\) converges to \(x\)''.
+Bear in mind, though, that the individual statements \(a_n \to x\) and \(n \to \infty\) do not have any rigorous meaning;
+this phrase is just a convention, though of course a very suggestive one.
+\end{note}
+
+\begin{remark}\label{6.1.10}
+The exact choice of letter used to denote the index (in this case \(n\)) is irrelevant:
+the phrase \(\lim_{n \to \infty} a_n\) has exactly the same meaning as \(\lim_{k \to \infty} a_k\), for instance.
+Sometimes it will be convenient to change the label of the index to avoid conflicts of notation;
+for instance, we might want to change \(n\) to \(k\) because \(n\) is simultaneously being used for some other purpose, and we want to reduce confusion.
 \end{remark}
 
 \exercisesection
@@ -145,23 +158,45 @@ Show that \((a_n)_{n = m}^\infty\) converges to \(c\) if and only if \((a_n)_{n 
 \end{exercise}
 
 \begin{proof}
+We first show that if \((a_n)_{n = m}^\infty\) converges to \(c\), then \((a_n)_{n = m'}^\infty\) converges to \(c\).
 \begin{align*}
 & (a_n)_{n = m}^\infty \text{ converges to } c \\
 \implies & (\forall\ (\varepsilon \in \mathds{R}) \land (\varepsilon > 0)), (a_n)_{n = m}^\infty \text{ is eventually } \varepsilon\text{-close to } c & \text{(by Definition \ref{6.1.5})} \\
 \implies & (\forall\ (\varepsilon \in \mathds{R}) \land (\varepsilon > 0)), (\exists\ (N \in \mathds{N}) \land (N \geq m)) : \\
-& (a_n)_{n = N}^\infty \text{ is } \varepsilon\text{-close to } c & \text{(by Definition \ref{6.1.5})} \\
-\implies & (\forall\ (\varepsilon \in \mathds{R}) \land (\varepsilon > 0)), (\exists\ (N \in \mathds{N}) \land (N \geq \max(m, m'))) : \\
 & (a_n)_{n = N}^\infty \text{ is } \varepsilon\text{-close to } c. & \text{(by Definition \ref{6.1.5})}
 \end{align*}
 Now we can divide into two cases:
 \begin{enumerate}
-    \item If \(m \geq m'\), then we have \(N \geq m'\), so \(\exists\ N \in \mathds{N}\) and \(N \geq m'\) such that \((a_n)_{n = N}^\infty\) is \(\varepsilon\)-close to \(c\).
+    \item \(N \geq m'\).
+    This means \(\forall\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\), \(\exists\ N \in \mathds{N}\) and \(N \geq m'\) such that \((a_n)_{n = N}^\infty\) is \(\varepsilon\)-close to \(c\).
     Thus \((a_n)_{n = m'}^\infty\) converges to \(c\).
-    \item If \(m < m'\), then we can let \(N \geq m'\), so \(\exists\ N \in \mathds{N}\) and \(N \geq m'\) such that \((a_n)_{n = N}^\infty\) is \(\varepsilon\)-close to \(c\).
+    \item \(N < m'\).
+    Then we can let \(N = m'\), so \(\forall\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\), \(\exists\ N \in \mathds{N}\) and \(N \geq m'\) such that \((a_n)_{n = N}^\infty\) is \(\varepsilon\)-close to \(c\).
     Thus \((a_n)_{n = m'}^\infty\) converges to \(c\).
 \end{enumerate}
 In both cases we get \((a_n)_{n = m'}^\infty\) converges to \(c\).
 Thus if \((a_n)_{n = m}^\infty\) converges to \(c\), then \((a_n)_{n = m'}^\infty\) converges to \(c\).
-Similar proof shows that if \((a_n)_{n = m'}^\infty\) converges to \(c\), then \((a_n)_{n = m}^\infty\) converges to \(c\).
-Thus we conclude that \((a_n)_{n = m}^\infty\) converges to \(c\) if and only if \((a_n)_{n = m'}^\infty\) converges to \(c\).
+
+Now we shows that if \((a_n)_{n = m'}^\infty\) converges to \(c\), then \((a_n)_{n = m}^\infty\) converges to \(c\).
+\begin{align*}
+& (a_n)_{n = m'}^\infty \text{ converges to } c \\
+\implies & (\forall\ (\varepsilon \in \mathds{R}) \land (\varepsilon > 0)), (a_n)_{n = m}^\infty \text{ is eventually } \varepsilon\text{-close to } c & \text{(by Definition \ref{6.1.5})} \\
+\implies & (\forall\ (\varepsilon \in \mathds{R}) \land (\varepsilon > 0)), (\exists\ (N \in \mathds{N}) \land (N \geq m')) : \\
+& (a_n)_{n = N}^\infty \text{ is } \varepsilon\text{-close to } c & \text{(by Definition \ref{6.1.5})} \\
+\implies & (\forall\ (\varepsilon \in \mathds{R}) \land (\varepsilon > 0)), (\exists\ (N \in \mathds{N}) \land (N \geq m)) : \\
+& (a_n)_{n = N}^\infty \text{ is } \varepsilon\text{-close to } c & \text{(by Definition \ref{6.1.5})} \\
+\implies & (a_n)_{n = m}^\infty \text{ converges to } c.
+\end{align*}
+Thus if \((a_n)_{n = m'}^\infty\) converges to \(c\), then \((a_n)_{n = m}^\infty\) converges to \(c\).
+We conclude that \((a_n)_{n = m}^\infty\) converges to \(c\) if and only if \((a_n)_{n = m'}^\infty\) converges to \(c\).
+\end{proof}
+
+\begin{exercise}\label{ex 6.1.4}
+Let \((a_n)_{n = m}^\infty\) be a sequence of real numbers, let \(c\) be a real number, and let \(k \geq 0\) be a non-negative integer.
+Show that \((a_n)_{n = m}^\infty\) converges to \(c\) if and only if \((a_{n + k})_{n = m}^\infty\) converges to \(c\).
+\end{exercise}
+
+\begin{proof}
+Since \((a_{n + k})_{n = m}^\infty = (a_n)_{n = m + k}^\infty\) and \(m + k \geq m\), by Exercise \ref{ex 6.1.3} we have \((a_n)_{n = m}^\infty\) converges to \(c\) if and only if \((a_n)_{n = m + k}^\infty\) converges to \(c\).
+Thus \((a_n)_{n = m}^\infty\) converges to \(c\) if and only if \((a_{n + k})_{n = m}^\infty\) converges to \(c\).
 \end{proof}
