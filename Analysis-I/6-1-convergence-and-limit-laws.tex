@@ -119,6 +119,46 @@ Sometimes it will be convenient to change the label of the index to avoid confli
 for instance, we might want to change \(n\) to \(k\) because \(n\) is simultaneously being used for some other purpose, and we want to reduce confusion.
 \end{remark}
 
+\begin{proposition}\label{6.1.11}
+We have \(\lim_{n \to \infty} 1 / n = 0\).
+\end{proposition}
+
+\begin{proof}
+We have to show that the sequence \((a_n)_{n = 1}^\infty\) converges to \(0\), where \(a_n \coloneqq 1 / n\).
+In other words, for every \(\varepsilon > 0\), we need to show that the sequence \((a_n)_{n = 1}^\infty\) is eventually \(\varepsilon\)-close to \(0\).
+So, let \(\varepsilon > 0\) be an arbitrary real number.
+We have to find an \(N\) such that \(\abs*{a_n - 0} \leq \varepsilon\) for every \(n \geq N\).
+But if \(n \geq N\), then
+\[
+    \abs*{a_n - 0} = \abs*{1 / n - 0} = 1 / n \leq 1 / N.
+\]
+Thus, if we pick \(N > 1 / \varepsilon\) (which we can do by the Archimedean principle), then \(1 / N < \varepsilon\), and so \((a_n)_{n = 1}^\infty\) is \(\varepsilon\)-close to \(0\).
+Thus \((a_n)_{n = 1}^\infty\) is eventually \(\varepsilon\)-close to \(0\).
+Since \(\varepsilon\) was arbitrary, \((a_n)_{n = 1}^\infty\) converges to \(0\).
+\end{proof}
+
+\begin{proposition}[Convergent sequences are Cauchy]\label{6.1.12}
+Suppose that \((a_n)_{n = m}^\infty\) is a convergent sequence of real numbers.
+Then \((a_n)_{n = m}^\infty\) is also a Cauchy sequence.
+\end{proposition}
+
+\begin{proof}
+Let \((a_n)_{n = m}^\infty\) converges to \(L\).
+Then by Definition \ref{6.1.5}, \(\forall\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\), \(\exists\ N \in \mathds{N}\) and \(N \geq m\) such that \(\abs*{a_n - L} \leq \varepsilon \ \forall\ n \geq N\).
+In particular, we have \(\abs*{a_n - L} \leq \varepsilon / 2\).
+Let \(n' \in \mathds{N}\) and \(n' \geq N\).
+So we have
+\begin{align*}
+\abs*{a_n - a_{n'}} &= \abs*{a_n - a_{n'} + L - L} \\
+&= \abs*{(a_n - L) + (L - a_{n'})} \\
+&\leq \abs*{a_n - L} + \abs*{L - a_{n'}} \\
+&= \abs*{a_n - L} + \abs*{a_{n'} - L} \\
+&\leq \varepsilon / 2 + \varepsilon / 2 \\
+&= \varepsilon.
+\end{align*}
+Thus \((a_n)_{n = m}^\infty\) is a Cauchy sequence.
+\end{proof}
+
 \exercisesection
 
 \begin{exercise}\label{ex 6.1.1}
@@ -199,4 +239,12 @@ Show that \((a_n)_{n = m}^\infty\) converges to \(c\) if and only if \((a_{n + k
 \begin{proof}
 Since \((a_{n + k})_{n = m}^\infty = (a_n)_{n = m + k}^\infty\) and \(m + k \geq m\), by Exercise \ref{ex 6.1.3} we have \((a_n)_{n = m}^\infty\) converges to \(c\) if and only if \((a_n)_{n = m + k}^\infty\) converges to \(c\).
 Thus \((a_n)_{n = m}^\infty\) converges to \(c\) if and only if \((a_{n + k})_{n = m}^\infty\) converges to \(c\).
+\end{proof}
+
+\begin{exercise}\label{ex 6.1.5}
+Prove Proposition \ref{6.1.12}.
+\end{exercise}
+
+\begin{proof}
+See Proposition \ref{6.1.12}.
 \end{proof}
