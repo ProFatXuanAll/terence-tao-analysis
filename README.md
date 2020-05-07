@@ -5,13 +5,13 @@ This is a note of the textbooks
 - Analysis I 3rd edition by Terence Tao
 - Analysis II 3rd edition by Terence Tao
 
-The note covers all **axioms**, **theories**, **lemmas**, **propositions**, **corollaries**, **remarks**, **proofs** **notes** and **exercises** appear in the book, which are copied from the books with or without some modifications.
+The note covers almost all **axioms**, **theories**, **lemmas**, **propositions**, **corollaries**, **remarks**, **proofs**, **notes**, **examples** and **exercises** appear in the book, which are copied from the books with or without some modifications.
 
 Additionally, I also wrote proofs if there are none in the book.
 
 ## Contribution
 
-I'm not a native English speaker, and do not have mathematical background, so I need some help for the following things:
+I'm not a native English speaker, and do not have mathematical background, so I really appreciate some help for the following things:
 
 - **grammer**, **syntax** and **semantic correction**
 - more **rigorous proofs**
@@ -46,6 +46,7 @@ If you want to help, please fork the repository and submit a pull request, I'll 
 |proposition|`\begin{proposition}` and `\end{proposition}`|`\label{chapter_no.section_no.statement_no}`|
 |corollary|`\begin{corollary}` and `\end{corollary}`|`\label{chapter_no.section_no.statement_no}`|
 |remark|`\begin{remark}` and `\end{remark}`|`\label{chapter_no.section_no.statement_no}`|
+|example|`\begin{example}` and `\end{example}`|`\label{chapter_no.section_no.statement_no}`|
 |exercise|`\begin{exercise}` and `\end{exercise}`|`\label{ex chapter_no.section_no.exercise_no}`|
 |additional corollary|`\begin{additional corollary}` and `\end{additional corollary}`|`\label{ac chapter_no.section_no.corollary_no}`|
 |proof|`\begin{proof}` and `\end{proof}`||
