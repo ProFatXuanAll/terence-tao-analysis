@@ -60,3 +60,28 @@ Since \(\varepsilon\) is an arbitrary positive real number, we thus see that \((
 \begin{note}
 Because of Proposition \ref{6.1.4}, we will no longer care about the distinction between Definition \ref{5.1.8} and Definition \ref{6.1.3}, and view the concept of a Cauchy sequence as a single unified concept.
 \end{note}
+
+\begin{definition}[Convergence of sequences]\label{6.1.5}
+Let \(\varepsilon > 0\) be a real number, and let \(L\) be a real number.
+A sequence \((a_n)_{n = N}^\infty\) of real numbers is said to be \emph{\(\varepsilon\)-close to \(L\)} iff \(a_n\) is \(\varepsilon\)-close to \(L\) for every \(n \geq N\), i.e., we have \(\abs*{a_n - L} \leq \varepsilon\) for every \(n \geq N\).
+We say that a sequence \((a_n)_{n = m}^\infty\) is \emph{eventually \(\varepsilon\)-close to \(L\)} iff there exists an \(N \geq m\) such that \((a_n)_{n = N}^\infty\) is \(\varepsilon\)-close to \(L\).
+We say that a sequence \((a_n)_{n = m}^\infty\) \emph{converges to \(L\)} iff it is eventually \(\varepsilon\)-close to \(L\) for every real \(\varepsilon > 0\).
+\end{definition}
+
+\setcounter{theorem}{6}
+\begin{proposition}[Uniqueness of limits]\label{6.1.7}
+Let \((a_n)_{n = m}^\infty\) be a real sequence starting at some integer index \(m\), and let \(L \neq L'\) be two distinct real numbers.
+Then it is not possible for \((a_n)_{n = m}^\infty\) to converge to \(L\) while also converging to \(L'\).
+\end{proposition}
+
+\begin{proof}
+Suppose for sake of contradiction that \((a_n)_{n = m}^\infty\) was converging to both \(L\) and \(L'\).
+Let \(\varepsilon = \abs*{L - L'} / 3\);
+note that \(\varepsilon\) is positive since \(L \neq L'\).
+Since \((a_n)_{n = m}^\infty\) converges to \(L\), we know that \((a_n)_{n = m}^\infty\) is eventually \(\varepsilon\)-close to \(L\);
+thus there is an \(N \geq m\) such that \(d(a_n, L) \leq \varepsilon\) for all \(n \geq N\).
+Similarly, there is an \(M \geq m\) such that \(d(a_n, L') \leq \varepsilon\) for all \(n \geq M\).
+In particular, if we set \(n \coloneqq \max(N, M)\), then we have \(d(a_n, L) \leq \varepsilon\) and \(d(a_n, L') \leq \varepsilon\), hence by the triangle inequality \(d(L, L') \leq 2\varepsilon = 2\abs*{L - L'} / 3\).
+But then we have \(\abs*{L - L'} \leq 2\abs*{L - L'} / 3\), which contradicts the fact that \(\abs*{L - L'} > 0\).
+Thus it is not possible to converge to both \(L\) and \(L'\).
+\end{proof}
