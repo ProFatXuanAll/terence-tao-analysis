@@ -6,3 +6,139 @@ These elements are distinct from each other and also distinct from every real nu
 An extended real number \(x\) is called \emph{finite} iff it is a real number, and \emph{infinite} iff it is equal to \(+\infty\) or \(-\infty\).
 (This definition is not directly related to the notion of finite and infinite sets in Section \ref{sec 3.6}, though it is of course similar in spirit.)
 \end{definition}
+
+\begin{definition}[Negation of extended reals]\label{6.2.2}
+The operation of negation \(x \to -x\) on \(\mathds{R}\), we now extend to \(\mathds{R}^*\) by defining \(-(+\infty) \coloneqq -\infty\) and \(-(-\infty) \coloneqq +\infty\).
+\end{definition}
+
+\begin{note}
+Thus every extended real number \(x\) has a negation, and \(-(-x)\) is always equal to \(x\).
+\end{note}
+
+\begin{definition}[Ordering of extended reals]\label{6.2.3}
+Let \(x\) and \(y\) be extended real numbers.
+We say that \(x \leq y\), i.e., \(x\) is less than or equal to \(y\), iff one of the following three statements is true:
+\begin{enumerate}
+    \item \(x\) and \(y\) are real numbers, and \(x \leq y\) as real numbers.
+    \item \(y = +\infty\).
+    \item \(x = -\infty\).
+\end{enumerate}
+We say that \(x < y\) if we have \(x \leq y\) and \(x \neq y\).
+We sometimes write \(x < y\) as \(y > x\), and \(x \leq y\) as \(y \geq x\).
+\end{definition}
+
+\setcounter{theorem}{4}
+\begin{proposition}\label{6.2.5}
+Let \(x, y, z\) be extended real numbers.
+Then the following statements are true:
+\begin{enumerate}
+    \item (Reflexivity)
+    We have \(x \leq x\).
+    \item (Trichotomy)
+    Exactly one of the statements \(x < y\), \(x = y\), or \(x > y\) is true.
+    \item (Transitivity)
+    If \(x \leq y\) and \(y \leq z\), then \(x \leq z\).
+    \item (Negation reverses order) If \(x \leq y\), then \(-y \leq -x\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}{(a)}
+By Proposition \ref{5.4.7}, we already have \(x \leq x\) when \(x \in \mathds{R}\).
+So we only need to consider the cases \(x = +\infty\) or \(x = -\infty\).
+By Definition \ref{6.2.3}, we have \(x \leq +\infty \ \forall\ x \in \mathds{R}^*\).
+So we have \(+\infty \leq +\infty\).
+Again by Definition \ref{6.2.3}, we have \(-\infty \leq x \ \forall\ x \in \mathds{R}^*\).
+So we have \(-\infty \leq -\infty\).
+Thus we conclude that \(x \leq x \ \forall\ x \in \mathds{R}^*\).
+\end{proof}
+
+\begin{proof}{(b)}
+By Proposition \ref{5.4.7}, we already have exactly one of the statements \(x < y\), \(x = y\), or \(x > y\) is true when \(x, y \in \mathds{R}\).
+So we only need to consider the cases \(x = +\infty\), \(x = -\infty\), \(y = +\infty\), or \(y = -\infty\).
+\begin{enumerate}[label=(\Roman*)]
+    \item If \(x = +\infty\), then by Definition \ref{6.2.3} we have \(x \geq y \ \forall\ y \in \mathds{R}^*\).
+    \begin{enumerate}[label=(\roman*)]
+        \item If \(y = +\infty\), then we have \(x = y\).
+        \item If \(y \in \mathds{R}\), then by Definition \ref{6.2.1} \(x \neq y\).
+        Thus by Definition \ref{6.2.3} we have \(x > y\).
+        \item If \(y = -\infty\), then by Definition \ref{6.2.1} \(x \neq y\).
+        Thus by Definition \ref{6.2.3} we have \(x > y\).
+    \end{enumerate}
+    \item If \(x = -\infty\), then by Definition \ref{6.2.3} we have \(x \leq y \ \forall\ y \in \mathds{R}^*\).
+    \begin{enumerate}[label=(\roman*)]
+        \item If \(y = +\infty\), then by Definition \ref{6.2.1} \(x \neq y\).
+        Thus by Definition \ref{6.2.3} we have \(x < y\).
+        \item If \(y \in \mathds{R}\), then by Definition \ref{6.2.1} \(x \neq y\).
+        Thus by Definition \ref{6.2.3} we have \(x < y\).
+        \item If \(y = -\infty\), then we have \(x = y\).
+    \end{enumerate}
+    \item If \(y = +\infty\), then by Definition \ref{6.2.3} we have \(x \leq y \ \forall\ x \in \mathds{R}^*\).
+    \begin{enumerate}[label=(\roman*)]
+        \item If \(x = +\infty\), then we have \(x = y\).
+        \item If \(x \in \mathds{R}\), then by Definition \ref{6.2.1} \(x \neq y\).
+        Thus by Definition \ref{6.2.3} we have \(x < y\).
+        \item If \(x = -\infty\), then by Definition \ref{6.2.1} \(x \neq y\).
+        Thus by Definition \ref{6.2.3} we have \(x < y\).
+    \end{enumerate}
+    \item If \(y = -\infty\), then by Definition \ref{6.2.3} we have \(x \geq y \ \forall\ x \in \mathds{R}^*\).
+    \begin{enumerate}[label=(\roman*)]
+        \item If \(x = +\infty\), then by Definition \ref{6.2.1} \(x \neq y\).
+        Thus by Definition \ref{6.2.3} we have \(x > y\).
+        \item If \(x \in \mathds{R}\), then by Definition \ref{6.2.1} \(x \neq y\).
+        Thus by Definition \ref{6.2.3} we have \(x > y\).
+        \item If \(x = -\infty\), then we have \(x = y\).
+    \end{enumerate}
+\end{enumerate}
+From all cases above we show that exactly one of the statements \(x < y\), \(x = y\), or \(x > y\) is true.
+Thus we finish the proof.
+\end{proof}
+
+\begin{proof}{(c)}
+By Proposition \ref{5.4.7}, we already have \((x \leq y) \land (y \leq z) \implies x \leq z\) when \(x, y, z \in \mathds{R}\).
+So we only need to consider the cases \(x = +\infty\), \(x = -\infty\), \(y = +\infty\), \(y = -\infty\), \(z = +\infty\), or \(z = -\infty\).
+\begin{enumerate}[label=(\Roman*)]
+    \item If \(x = +\infty\), then by Definition \ref{6.2.3} \((x = +\infty) \land (x \leq y) \implies y = +\infty\).
+    Similarly \((y = +\infty) \land (y \leq z) \implies z = +\infty\).
+    Thus we have \(x = +\infty = z\), and by Proposition \ref{6.2.5}(a) we have \(x \leq z\).
+    \item If \(x = -\infty\), then by Definition \ref{6.2.3} \(x \leq z \ \forall\ z \in \mathds{R}^*\).
+    \item If \(y = +\infty\), then by Definition \ref{6.2.3} \((y = +\infty) \land (y \leq z) \implies z = +\infty\).
+    Again by Definition \ref{6.2.3}, we have \(x \leq +\infty = z \ \forall\ x \in \mathds{R}^*\).
+    \item If \(y = -\infty\), then by Definition \ref{6.2.3} \((y = -\infty) \land (x \leq y) \implies x = -\infty\).
+    Again by Definition \ref{6.2.3}, we have \(x = -\infty \leq z \ \forall\ z \in \mathds{R}^*\).
+    \item If \(z = +\infty\), then by Definition \ref{6.2.3}, we have \(x \leq +\infty = z \ \forall\ x \in \mathds{R}^*\).
+    \item If \(z = -\infty\), then by Definition \ref{6.2.3} \((z = -\infty) \land (y \leq z) \implies y = -\infty\).
+    Similarly \((y = -\infty) \land (x \leq y) \implies x = -\infty\).
+    Thus we have \(x = -\infty = z\), and by Proposition \ref{6.2.5}(a) we have \(x \leq z\).
+\end{enumerate}
+From all cases above we show that \((x \leq y) \land (y \leq z) \implies x \leq z\).
+Thus we finish the proof.
+\end{proof}
+
+\begin{proof}{(d)}
+By Proposition \ref{5.4.7}, we already have \(x \leq y \implies -y \leq -x\) when \(x, y \in \mathds{R}\).
+So we only need to consider the cases \(x = +\infty\), \(x = -\infty\), \(y = +\infty\), or \(y = -\infty\).
+\begin{enumerate}[label=(\Roman*)]
+    \item If \(x = +\infty\), then by Definition \ref{6.2.3} \((x = +\infty) \land (x \leq y) \implies y = +\infty\).
+    And by Definition \ref{6.2.2} we have \(-x = -\infty = -y\).
+    Thus by Proposition \ref{6.2.5}(a) we have \(-y \leq -x\).
+    \item If \(x = -\infty\), then by Definition \ref{6.2.2} \(-x = +\infty\).
+    And by Definition \ref{6.2.3} we have \(-y \leq -x \ \forall\ -y \in \mathds{R}^*\).
+    \item If \(y = +\infty\), then by Definition \ref{6.2.2} \(-y = -\infty\).
+    And by Definition \ref{6.2.3} we have \(-y \leq -x \ \forall\ -x \in \mathds{R}^*\).
+    \item If \(y = -\infty\), then by Definition \ref{6.2.3} \((y = -\infty) \land (x \leq y) \implies x = -\infty\).
+    And by Definition \ref{6.2.2} we have \(-x = +\infty = -y\).
+    Thus by Proposition \ref{6.2.5}(a) we have \(-y \leq -x\).
+\end{enumerate}
+From all cases above we show that \(x \leq y \implies -y \leq -x\).
+Thus we finish the proof.
+\end{proof}
+
+\exercisesection
+
+\begin{exercise}\label{ex 6.2.1}
+Prove Proposition \ref{6.2.5}.
+\end{exercise}
+
+\begin{proof}
+See Proposition \ref{6.2.5}.
+\end{proof}
