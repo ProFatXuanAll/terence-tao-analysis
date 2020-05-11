@@ -46,12 +46,12 @@ Then \((a_n)_{n = m}^\infty\) is a Cauchy sequence in the sense of Definition \r
 
 \begin{proof}
 Suppose first that \((a_n)_{n = m}^\infty\) is a Cauchy sequence in the sense of Definition \ref{6.1.3};
-then it is eventually \(\varepsilon\)-steady for every real \(\varepsilon > 0\).
-In particular, it is eventually \(\varepsilon\)-steady for every rational \(\varepsilon > 0\), which makes it a Cauchy sequence in the sense of Definition \ref{5.1.8}.
+then it is eventually \(\varepsilon\)-steady for every \emph{real} \(\varepsilon > 0\).
+In particular, it is eventually \(\varepsilon\)-steady for every \emph{rational} \(\varepsilon > 0\), which makes it a Cauchy sequence in the sense of Definition \ref{5.1.8}.
 
 Now suppose that \((a_n)_{n = m}^\infty\) is a Cauchy sequence in the sense of Definition \ref{5.1.8};
-then it is eventually \(\varepsilon\)-steady for every rational \(\varepsilon > 0\).
-If \(\varepsilon > 0\) is a real number, then there exists a rational \(\varepsilon' > 0\) which is smaller than \(\varepsilon\), by Proposition \ref{5.4.12}.
+then it is eventually \(\varepsilon\)-steady for every \emph{rational} \(\varepsilon > 0\).
+If \(\varepsilon > 0\) is a real number, then there exists a \emph{rational} \(\varepsilon' > 0\) which is smaller than \(\varepsilon\), by Proposition \ref{5.4.12}.
 Since \(\varepsilon'\) is rational, we know that \((a_n)_{n = m}^\infty\) is eventually \(\varepsilon'\)-steady;
 since \(\varepsilon' < \varepsilon\), this implies that \((a_n)_{n = m}^\infty\) is eventually \(\varepsilon\)-steady.
 Since \(\varepsilon\) is an arbitrary positive real number, we thus see that \((a_n)_{n = m}^\infty\) is a Cauchy sequence in the sense of Definition \ref{6.1.3}.
@@ -261,35 +261,160 @@ Let \((a_n)_{n = m}^\infty\) and \((b_n)_{n = m}^\infty\) be convergent sequence
 \end{theorem}
 
 \begin{proof}{(a)}
-
+By Definition \ref{6.1.8} we have \(\forall\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\), \(\exists\ N_a \in \mathds{N}\) such that \(\abs*{a_n - x} \leq \varepsilon \ \forall\ n \geq N_a\).
+Similarly \(\forall\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\), \(\exists\ N_b \in \mathds{N}\) such that \(\abs*{b_n - y} \leq \varepsilon \ \forall\ n \geq N_b\).
+Let \(N = \max(N_a, N_b)\).
+So we have \(\abs*{a_n - x} \leq \varepsilon \ \forall\ n \geq N\) and \(\abs*{b_n - y} \leq \varepsilon \ \forall\ n \geq N\).
+In particular, we have \(\abs*{a_n - x} \leq \varepsilon / 2\) and \(\abs*{b_n - y} \leq \varepsilon / 2\).
+Then we have
+\begin{align*}
+\abs*{a_n + b_n - (x + y)} &= \abs*{(a_n - x) + (b_n - y)} \\
+&\leq \abs*{a_n - x} + \abs*{b_n - y} \\
+&\leq \varepsilon / 2 + \varepsilon / 2 \\
+&= \varepsilon.
+\end{align*}
+Thus by Definition \ref{6.1.5}, \((a_n + b_n)_{n = m}^\infty\) converges to \(x + y\).
+And by Definition \ref{6.1.8} we have \(\lim_{n \to \infty} (a_n + b_n) = x + y = \lim_{n \to \infty} a_n + \lim_{n \to \infty} b_n\).
 \end{proof}
 
 \begin{proof}{(b)}
-
+By Definition \ref{6.1.8} we have \(\forall\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\), \(\exists\ N_a \in \mathds{N}\) such that \(\abs*{a_n - x} \leq \varepsilon \ \forall\ n \geq N_a\).
+Similarly \(\forall\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\), \(\exists\ N_b \in \mathds{N}\) such that \(\abs*{b_n - y} \leq \varepsilon \ \forall\ n \geq N_b\).
+Let \(N = \max(N_a, N_b)\).
+So we have \(\abs*{a_n - x} \leq \varepsilon \ \forall\ n \geq N\) and \(\abs*{b_n - y} \leq \varepsilon \ \forall\ n \geq N\).
+By Corollary \ref{6.1.17}, \(\exists\ A, B \in \mathds{R}\) and \(A, B > 0\) such that \(\abs*{a_n} \leq A\) and \(\abs*{b_n} \leq B\), \(\forall\ n \in \mathds{N}\).
+Since \(A, B > 0\), we have \(\abs*{a_n - x} \leq \varepsilon / 2B\) and \(\abs*{b_n - y} \leq \varepsilon / 2A\).
+Then we have
+\begin{align*}
+\abs*{a_n b_n - x y} &= \abs*{a_n b_n - x y + x b_n - x b_n} \\
+&= \abs*{a_n b_n - x b_n + x b_n - x y} \\
+&= \abs*{b_n(a_n - x) + x(b_n - y)} \\
+&\leq \abs*{b_n(a_n - x)} + \abs*{x(b_n - y)} \\
+&= \abs*{b_n}\abs*{a_n - x} + \abs*{x}\abs*{b_n - y} \\
+&\leq B \times \frac{\varepsilon}{2B} + A \times \frac{\varepsilon}{2A} \\
+&= \varepsilon.
+\end{align*}
+Thus by Definition \ref{6.1.5}, \((a_n b_n)_{n = m}^\infty\) converges to \(x y\).
+And by Definition \ref{6.1.8} we have \(\lim_{n \to \infty} (a_n b_n) = x y = (\lim_{n \to \infty} a_n)(\lim_{n \to \infty} b_n)\).
 \end{proof}
 
 \begin{proof}{(c)}
-
+Let \((b_n)_{n = m}^\infty\) be a sequence where \(b_n = c \ \forall\ n \geq m\).
+Then we have \(\lim_{n \to \infty} c = c\).
+So
+\begin{align*}
+\lim_{n \to \infty} (c a_n) &= \lim_{n \to \infty} (b_n a_n) \\
+&= (\lim_{n \to \infty} b_n)(\lim_{n \to \infty} a_n) & \text{(by Theorem \ref{6.1.19}(b))} \\
+&= c(\lim_{n \to \infty} a_n).
+\end{align*}
 \end{proof}
 
 \begin{proof}{(d)}
-
+\begin{align*}
+\lim_{n \to \infty} (a_n - b_n) &= \lim_{n \to \infty} (a_n + (-1)(b_n)) & \text{(by Proposition \ref{5.3.11})} \\
+&= \lim_{n \to \infty} a_n + \lim_{n \to \infty} ((-1)(b_n)) & \text{(by Theorem \ref{6.1.19}(a))} \\
+&= \lim_{n \to \infty} a_n + (-1)(\lim_{n \to \infty} b_n) & \text{(by Theorem \ref{6.1.19}(c))} \\
+&= \lim_{n \to \infty} a_n - \lim_{n \to \infty} b_n. & \text{(by Proposition \ref{5.3.11})}
+\end{align*}
 \end{proof}
 
 \begin{proof}{(e)}
+We first show that \(\forall\ n \in \mathds{N}\) if \(b_n \neq 0\) and \(\lim_{n \to \infty} b_n \neq 0\), then \((b_n)_{n = m}^\infty\) is bounded away from zero.
+Since \(y = \lim_{n \to \infty} b_n \neq 0\), we must have some \(M \in \mathds{R}\) and \(M > 0\) such that \(\abs*{b_n - 0} > M \ \forall\ n \in \mathds{N}\).
+Otherwise we will get \(y = \lim_{n \to \infty} b_n\) and \(0 = \lim_{n \to \infty} b_n\), contradicts to Proposition \ref{6.1.7}.
+Since \(\abs*{b_n - 0} = \abs*{b_n} > M > 0 \ \forall\ n \in \mathds{N}\), we conclude that \((b_n)_{n = m}^\infty\) is bounded away from zero.
 
+Now we show that \(\lim_{n \to \infty} b_n^{-1} = (\lim_{n \to \infty} b_n)^{-1}\).
+By Definition \ref{6.1.8} we have \(\forall\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\), \(\exists\ N \in \mathds{N}\) such that \(\abs*{b_n - y} \leq \varepsilon \ \forall\ n \geq N\).
+In particular, we have \(\abs*{b_n - y} \leq \varepsilon M\abs*{y}\) (\(M\) is derived from above claim).
+So
+\begin{align*}
+\abs*{b_n^{-1} - y^{-1}} &= \abs*{\frac{1}{b_n} - \frac{1}{y}} \\
+&= \abs*{\frac{y - b_n}{b_n y}} \\
+&= \abs*{y - b_n}\frac{1}{\abs*{b_n}\abs*{y}} \\
+&< \abs*{y - b_n}\frac{1}{M\abs*{y}} & \text{(From above claim)} \\
+&\leq \varepsilon M\abs*{y}\frac{1}{M\abs*{y}} \\
+&= \varepsilon.
+\end{align*}
+Thus by Definition \ref{6.1.5}, \((b_n^{-1})_{n = m}^\infty\) converges to \(y^{-1}\).
+And by Definition \ref{6.1.8} we have \(\lim_{n \to \infty} (b_n^{-1}) = y^{-1} = (\lim_{n \to \infty} b_n)^{-1}\).
 \end{proof}
 
 \begin{proof}{(f)}
-
+\begin{align*}
+\lim_{n \to \infty} \frac{a_n}{b_n} &= \lim_{n \to \infty} a_n b_n^{-1} \\
+&= (\lim_{n \to \infty} a_n)(\lim_{n \to \infty} b_n^{-1}) & \text{(by Theorem \ref{6.1.19}(b))} \\
+&= (\lim_{n \to \infty} a_n)(\lim_{n \to \infty} b_n)^{-1} & \text{(by Theorem \ref{6.1.19}(e))} \\
+&= \frac{\lim_{n \to \infty} a_n}{\lim_{n \to \infty} b_n}.
+\end{align*}
 \end{proof}
 
 \begin{proof}{(g)}
+By Definition \ref{6.1.8} we have \(\forall\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\), \(\exists\ N_a \in \mathds{N}\) such that \(\abs*{a_n - x} \leq \varepsilon \ \forall\ n \geq N_a\).
+Similarly \(\forall\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\), \(\exists\ N_b \in \mathds{N}\) such that \(\abs*{b_n - y} \leq \varepsilon \ \forall\ n \geq N_b\).
+Let \(N = \max(N_a, N_b)\).
+So we have \(\abs*{a_n - x} \leq \varepsilon \ \forall\ n \geq N\) and \(\abs*{b_n - y} \leq \varepsilon \ \forall\ n \geq N\).
 
+If \(x = y\), then we have
+\begin{align*}
+& (\abs*{a_n - x} < \varepsilon) \land (\abs*{b_n - x} < \varepsilon) \\
+\implies & \abs*{\max(a_n, b_n) - x} < \varepsilon \\
+\implies & \abs*{\max(a_n, b_n) - \max(x, y)} < \varepsilon \\
+\implies & \lim_{n \to \infty} \max(a_n, b_n) = \max(x, y) = \max(\lim_{n \to \infty} a_n, \lim_{n \to \infty} b_n).
+\end{align*}
+
+If \(x \neq y\), then we have either \(x < y\) or \(x > y\).
+Assume without loss of generality that \(x < y\).
+Since we have \(\abs*{a_n - x} \leq \varepsilon\) and \(\abs*{b_n - y} \leq \varepsilon\) for every positive real number \(\varepsilon\), we also have \(\abs*{a_n - x} \leq (y - x) / 2\) and \(\abs*{b_n - y} \leq (y - x) / 2\).
+So \(\forall\ n \geq N\), we have
+\begin{align*}
+& (\abs*{a_n - x} \leq \frac{y - x}{2}) \land (\abs*{b_n - y} \leq \frac{y - x}{2}) \\
+\implies & (-\frac{y - x}{2} \leq a_n - x \leq \frac{y - x}{2}) \land (-\frac{y - x}{2} \leq b_n - y \leq \frac{y - x}{2}) \\
+\implies & (a_n - x \leq \frac{y - x}{2}) \land (-\frac{y - x}{2} \leq b_n - y) \\
+\implies & (a_n \leq \frac{y - x}{2} + x) \land (y - \frac{y - x}{2} \leq b_n) \\
+\implies & (a_n \leq \frac{x + y}{2}) \land (\frac{x + y}{2} \leq b_n) \\
+\implies & a_n \leq \frac{x + y}{2} \leq b_n.
+\end{align*}
+This means \(\forall\ n \geq N, \max(a_n, b_n) = b_n\).
+Thus \(\forall\ n \geq N\), we have
+\begin{align*}
+& \abs*{\max(a_n, b_n) - \max(x, y)} = \abs*{b_n - y} \leq \varepsilon \\
+\implies & \lim_{n \to \infty} \max(a_n, b_n) = \max(x, y) = \max(\lim_{n \to \infty} a_n, \lim_{n \to \infty} b_n).
+\end{align*}
 \end{proof}
 
 \begin{proof}{(h)}
+By Definition \ref{6.1.8} we have \(\forall\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\), \(\exists\ N_a \in \mathds{N}\) such that \(\abs*{a_n - x} \leq \varepsilon \ \forall\ n \geq N_a\).
+Similarly \(\forall\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\), \(\exists\ N_b \in \mathds{N}\) such that \(\abs*{b_n - y} \leq \varepsilon \ \forall\ n \geq N_b\).
+Let \(N = \max(N_a, N_b)\).
+So we have \(\abs*{a_n - x} \leq \varepsilon \ \forall\ n \geq N\) and \(\abs*{b_n - y} \leq \varepsilon \ \forall\ n \geq N\).
 
+If \(x = y\), then we have
+\begin{align*}
+& (\abs*{a_n - x} < \varepsilon) \land (\abs*{b_n - x} < \varepsilon) \\
+\implies & \abs*{\min(a_n, b_n) - x} < \varepsilon \\
+\implies & \abs*{\min(a_n, b_n) - \min(x, y)} < \varepsilon \\
+\implies & \lim_{n \to \infty} \min(a_n, b_n) = \min(x, y) = \min(\lim_{n \to \infty} a_n, \lim_{n \to \infty} b_n).
+\end{align*}
+
+If \(x \neq y\), then we have either \(x < y\) or \(x > y\).
+Assume without loss of generality that \(x < y\).
+Since we have \(\abs*{a_n - x} \leq \varepsilon\) and \(\abs*{b_n - y} \leq \varepsilon\) for every positive real number \(\varepsilon\), we also have \(\abs*{a_n - x} \leq (y - x) / 2\) and \(\abs*{b_n - y} \leq (y - x) / 2\).
+So \(\forall\ n \geq N\), we have
+\begin{align*}
+& (\abs*{a_n - x} \leq \frac{y - x}{2}) \land (\abs*{b_n - y} \leq \frac{y - x}{2}) \\
+\implies & (-\frac{y - x}{2} \leq a_n - x \leq \frac{y - x}{2}) \land (-\frac{y - x}{2} \leq b_n - y \leq \frac{y - x}{2}) \\
+\implies & (a_n - x \leq \frac{y - x}{2}) \land (-\frac{y - x}{2} \leq b_n - y) \\
+\implies & (a_n \leq \frac{y - x}{2} + x) \land (y - \frac{y - x}{2} \leq b_n) \\
+\implies & (a_n \leq \frac{x + y}{2}) \land (\frac{x + y}{2} \leq b_n) \\
+\implies & a_n \leq \frac{x + y}{2} \leq b_n.
+\end{align*}
+This means \(\forall\ n \geq N, \min(a_n, b_n) = a_n\).
+Thus \(\forall\ n \geq N\), we have
+\begin{align*}
+& \abs*{\min(a_n, b_n) - \min(x, y)} = \abs*{a_n - x} \leq \varepsilon \\
+\implies & \lim_{n \to \infty} \min(a_n, b_n) = \min(x, y) = \min(\lim_{n \to \infty} a_n, \lim_{n \to \infty} b_n).
+\end{align*}
 \end{proof}
 
 \exercisesection
@@ -388,4 +513,29 @@ Prove Proposition \ref{6.1.15}.
 
 \begin{proof}
 See Proposition \ref{6.1.15}.
+\end{proof}
+
+\begin{exercise}\label{ex 6.1.7}
+Show that Definition \ref{6.1.16} is consistent with Definition \ref{5.1.12}
+(i.e., prove an analogue of Proposition \ref{6.1.4} for bounded sequences instead of Cauchy sequences).
+\end{exercise}
+
+\begin{proof}
+Suppose first that \((a_n)_{n = m}^\infty\) is a bounded sequence in the sense of Definition \ref{6.1.16};
+then \(\exists\ M \in \mathds{R}\) and \(M > 0\) such that \(\abs*{a_n} \leq M \ \forall\ n \geq m\).
+By Proposition \ref{5.4.12}, \(\exists\ N \in \mathds{R}\) and \(N > 0\) such that \(M \leq N\).
+Since \(N \in \mathds{N}\), we also have \(N \in \mathds{Q}\).
+Thus \(\abs*{a_n} \leq N \ \forall\ n \geq m\), which makes it a bounded sequence in the sense of Definition \ref{5.1.12}.
+
+Now suppose that \((a_n)_{n = m}^\infty\) is a bounded sequence in the sense of Definition \ref{5.1.12};
+then \(\exists\ M \in \mathds{Q}\) and \(M > 0\) such that \(\abs*{a_n} \leq M \ \forall\ n \geq m\).
+Since \(M\) is also a real number, we see that \((a_n)_{n = m}^\infty\) is a bounded sequence in the sense of Definition \ref{6.1.16}.
+\end{proof}
+
+\begin{exercise}\label{ex 6.1.8}
+Proof Theorem \ref{6.1.19}.
+\end{exercise}
+
+\begin{proof}
+See Theorem \ref{6.1.19}.
 \end{proof}
