@@ -150,12 +150,142 @@ Then we define the \emph{supremum} \(\sup(E)\) or \emph{least upper bound} of \(
     \item If \(E\) does not contain \(+\infty\) but does contain \(-\infty\), then we set \(\sup(E) \coloneqq \sup(E \setminus \{-\infty\})\)
     (which is a subset of \(\mathds{R}\) and thus falls under case (a)).
 \end{enumerate}
-We also define the \emph{infimum} \(\inf(E)\) of \(E\) (also known as the \emph{greatest lower bound} of \(E\) by the formula
+We also define the \emph{infimum} \(\inf(E)\) of \(E\) (also known as the \emph{greatest lower bound} of \(E\)) by the formula
 \[
     \inf(E) \coloneqq -\sup(-E)
 \]
 where \(-E\) is the set \(-E \coloneqq \{-x : x \in E\}\).
 \end{definition}
+
+\setcounter{theorem}{9}
+\begin{example}\label{6.2.10}
+Let \(E\) be the empty set.
+Then \(\sup(E) = -\infty\) and \(\inf(E) = +\infty\).
+(Because \(-E\) is also empty, so \(\sup(-E) = -\infty\), thus \(\inf(E) = -\sup(-E) = -(-\infty) = +\infty\))
+This is the only case in which the supremum can be less than the infimum.
+We show that by let \(\sup(E)\) be three different value, namely \(+\infty\), \(-\infty\), or arbitrary real number.
+\begin{enumerate}[label=(\Roman*)]
+    \item If \(\sup(E) = +\infty\), then we can further divide into two cases:
+    \begin{enumerate}[label=(\roman*)]
+        \item If \(-\infty \in E\), then \(+\infty \in -E\).
+        So \(\inf(E) = -\sup(-E) = -(+\infty) = -\infty\), and we have \(\inf(E) < \sup(E)\).
+        \item If \(-\infty \not\in E\), then \(+\infty \not\in -E\).
+        So \(\inf(E) \in \mathds{R}\), and we have \(\inf(E) < \sup(E)\).
+    \end{enumerate}
+    \item If \(\sup(E) = -\infty\), then \(\inf(E) = +\infty\).
+    So we have \(\inf(E) > \sup(E)\).
+    \item If \(\sup(E) \in \mathds{R}\), then we can further divide into two cases:
+    \begin{enumerate}[label=(\roman*)]
+        \item If \(-\infty \in E\), then \(+\infty \in -E\).
+        So \(\inf(E) = -\sup(-E) = -(+\infty) = -\infty\), and we have \(\inf(E) < \sup(E)\).
+        \item If \(-\infty \not\in E\), then \(+\infty \not\in -E\).
+        So \(\inf(E) \in \mathds{R}\), and we have
+        \begin{align*}
+            & (x \in E) \land (x \leq \sup(E)) \\
+            \implies & -x \geq -\sup(E) \\
+            \implies & \sup(-E) \geq -x \geq -\sup(E) \\
+            \implies & \inf(E) = -\sup(-E) \leq x \leq \sup(E).
+        \end{align*}
+    \end{enumerate}
+\end{enumerate}
+Thus only when \(\sup(E) = -\infty\) we have \(\inf(E) > \sup(E)\).
+\end{example}
+
+\begin{note}
+One can intuitively think of the supremum of \(E\) as follows.
+Imagine the real line with \(+\infty\) somehow on the far right, and \(-\infty\) on the far left.
+Imagine a piston at \(+\infty\) moving leftward until it is stopped by the presence of a set \(E\);
+the location where it stops is the supremum of \(E\).
+Similarly if one imagines a piston at \(-\infty\) moving rightward until it is stopped by the presence of \(E\), the location where it stops is the infimum of \(E\).
+In the case when \(E\) is the empty set, the pistons pass through each other, the supremum landing at \(-\infty\) and the infimum landing at \(+\infty\).
+\end{note}
+
+\begin{theorem}\label{6.2.11}
+Let \(E\) be a subset of \(\mathds{R}^*\).
+Then the following statements are true.
+\begin{enumerate}
+    \item For every \(x \in E\) we have \(x \leq \sup(E)\) and \(x \geq \inf(E)\).
+    \item Suppose that \(M \in \mathds{R}^*\) is an upper bound for \(E\), i.e., \(x \leq M\) for all \(x \in E\).
+    Then we have \(\sup(E) \leq M\).
+    \item Suppose that \(M \in \mathds{R}^*\) is a lower bound for \(E\), i.e., \(x \geq M\) for all \(x \in E\).
+    Then we have \(\inf(E) \geq M\).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}{(a)}
+We first show that \(\forall\ x \in E\), \(x \leq \sup(E)\).
+Suppose first that \(E = \emptyset\).
+Then the statements \(\forall\ x \in \emptyset\), \(x \leq \sup(E)\) is vacuously true.
+Now suppose that \(E \neq \emptyset\).
+We split into two different cases:
+\begin{enumerate}[label=(\Roman*)]
+    \item If \(+\infty \not\in E\), then we can further split into two cases:
+    \begin{enumerate}[label=(\roman*)]
+        \item If \(E \neq \{-\infty\}\), let \(E' = E \setminus \{-\infty\}\), so \(E' \neq \emptyset\).
+        By Theorem \ref{5.5.9} we have \(x \leq \sup(E')\).
+        And by Definition \ref{6.2.6} we have \(\sup(E) = \sup(E')\), so \(x \leq \sup(E)\).
+        \item If \(E = \{-\infty\}\), then by Definition \ref{6.2.6} we have \(\sup(E) = \sup(\emptyset)\).
+        And we already show that \(\forall\ x \in \emptyset\), \(x \leq \sup(E)\) is vacuously true.
+    \end{enumerate}
+    \item If \(+\infty \in E\), then \(\sup(E) = +\infty\), so by Definition \ref{6.2.3} \(x \leq \sup(E)\).
+\end{enumerate}
+Thus we conclude that \(\forall\ x \in E\), \(x \leq \sup(E)\).
+
+Now we show that \(\forall\ x \in E\), \(x \geq \inf(E)\).
+Suppose first that \(E \neq \emptyset\).
+From above proof we have \(x \leq \sup(E)\).
+So
+\begin{align*}
+& x \leq \sup(E) \\
+\implies & -x \geq -\sup(E) \\
+\implies & \sup(-E) \geq -x \geq -\sup(E) \\
+\implies & \inf(E) = -\sup(-E) \leq x \leq \sup(E).
+\end{align*}
+Now suppose that \(E = \emptyset\).
+So the statements \(\forall\ x \in \emptyset\), \(x \geq \inf(E)\) is vacuously true.
+Thus we conclude that \(\forall\ x \in E\), \(x \geq \inf(E)\).
+\end{proof}
+
+\begin{proof}{(b)}
+Suppose first that \(E = \emptyset\).
+Then by Example \ref{6.2.10} and Definition \ref{6.2.3} we have \(\sup(E) = -\infty \leq M\).
+Now suppose that \(E \neq \emptyset\).
+We split into two different cases:
+\begin{enumerate}[label=(\Roman*)]
+    \item If \(+\infty \not\in E\), then we can further split into two cases:
+    \begin{enumerate}[label=(\roman*)]
+        \item If \(E \neq \{-\infty\}\), let \(E' = E \setminus \{-\infty\}\), so \(E' \neq \emptyset\).
+        By Theorem \ref{5.5.9} and Definition \ref{5.5.5} we have \(x \leq \sup(E') \leq M\).
+        And by Definition \ref{6.2.6} we have \(\sup(E) = \sup(E')\), so \(x \leq \sup(E) \leq M\).
+        \item If \(E = \{-\infty\}\), then by Definition \ref{6.2.6} we have \(\sup(E) = \sup(\emptyset)\).
+        And we already show that \(\sup(E) = -\infty \leq M\).
+    \end{enumerate}
+    \item If \(+\infty \in E\), then \(\sup(E) = +\infty\).
+    By the given condition we have \(\sup(E) \in E \implies \sup(E) \leq M\).
+\end{enumerate}
+Thus we conclude that \(\sup(E) \leq M\).
+\end{proof}
+
+\begin{proof}{(c)}
+Suppose first that \(E = \emptyset\).
+Then by Example \ref{6.2.10} and Definition \ref{6.2.3} we have \(\inf(E) = +\infty \geq M\).
+Now suppose that \(E \neq \emptyset\).
+We split into two different cases:
+\begin{enumerate}[label=(\Roman*)]
+    \item If \(-\infty \not\in E\), then \(+\infty \not\in -E\).
+    We can further split into two cases:
+    \begin{enumerate}[label=(\roman*)]
+        \item If \(-E \neq \{-\infty\}\), let \(-E' = -E \setminus \{-\infty\}\), so \(-E' \neq \emptyset\).
+        By the given condition we have \(-M \geq -x \in -E'\), which means \(-M \geq \sup(-E') \geq -x\) by Theorem \ref{5.5.9}.
+        And by Definition \ref{6.2.6} we have \(\sup(-E) = \sup(-E')\), so \(M \leq -\sup(-E) = \inf(E) \leq x\).
+        \item If \(-E = \{-\infty\}\), then by Definition \ref{6.2.6} we have \(\sup(-E) = \sup(\emptyset)\).
+        And we already show that \(\inf(E) = -\sup(-E) = -(-\infty) = +\infty \geq M\).
+    \end{enumerate}
+    \item If \(-\infty \in E\), then \(\sup(-E) = +\infty\).
+    By the given condition we have \(\inf(E) = -\sup(-E) = -(+\infty) = -\infty \in E \implies \inf(E) \geq M\).
+\end{enumerate}
+Thus we conclude that \(\inf(E) \geq M\).
+\end{proof}
 
 \exercisesection
 
@@ -165,4 +295,12 @@ Prove Proposition \ref{6.2.5}.
 
 \begin{proof}
 See Proposition \ref{6.2.5}.
+\end{proof}
+
+\begin{exercise}\label{ex 6.2.2}
+Prove Theorem \ref{6.2.11}.
+\end{exercise}
+
+\begin{proof}
+See Theorem \ref{6.2.11}.
 \end{proof}
