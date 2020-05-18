@@ -35,7 +35,7 @@ Then we have
 \end{align*}
 So \(0\) is a lower bound of \(\{a_n : n \geq 1\}\), i.e., \(0 \leq \inf(a_n)_{n = 1}^\infty\).
 Suppose for sake of contradiction that \(\exists\ x \in \mathds{R}\) such that \(x > 0\) and \(x = \inf(a_n)_{n = 1}^\infty\).
-Then we must have \(\forall\ n \in \mathds{N}\) and \(n \geq 1\), \(0 < x \leq a_n\).
+Then \(\forall\ n \in \mathds{N}\) and \(n \geq 1\) we must have \(0 < x \leq a_n\).
 But by Proposition \ref{5.4.12}, \(\exists\ q \in \mathds{Q}\) and \(q > 0\) such that \(q \leq x\).
 Let such \(q = a / b\), where \(a, b \in \mathds{Z}\) and \(a, b > 0\).
 Since \(b \in \mathds{Z}\) and \(b > 0\), we have both \(1 / b, 1 / (b + 1) \in \{a_n : n \geq 1\}\).
@@ -53,6 +53,136 @@ However, if a sequence \((a_n)_{n = m}^\infty\) is bounded, say bounded by \(M\)
 Since this set is clearly non-empty, we can thus conclude that the supremum and infimum of a bounded sequence are real numbers (i.e., not \(+\infty\) and \(-\infty\)).
 \end{note}
 
+\setcounter{theorem}{5}
+\begin{proposition}[Least upper bound property]\label{6.3.6}
+Let \((a_n)_{n = m}^\infty\) be a sequence of real numbers, and let \(x\) be the extended real number \(x \coloneqq \sup(a_n)_{n = m}^\infty\).
+Then we have \(a_n \leq x\) for all \(n \geq m\).
+Also, whenever \(M \in \mathds{R}^*\) is an upper bound for \(a_n\) (i.e., \(a_n \leq M\) for all \(n \geq m\)), we have \(x \leq M\).
+Finally, for every extended real number \(y\) for which \(y < x\), there exists at least one \(n \geq m\) for which \(y < a_n \leq x\).
+\end{proposition}
+
+\begin{proof}
+We first show that \(\forall\ n \geq m\) we have \(a_n \leq x\).
+By Definition \ref{6.3.1} we have \(\sup(a_n)_{n = m}^\infty = \sup(\{a_n : n \geq m\})\).
+So by Theorem \ref{6.2.11}, \(\forall\ a_n \in \{a_n : n \geq m\}\) we have \(a_n \leq x\).
+
+Next we show that \(M \in \mathds{R}^*\) is an upper bound of \((a_n)_{n = m}^\infty\) implies \(x \leq M\).
+By Definition \ref{6.3.1} we have \(\sup(a_n)_{n = m}^\infty = \sup(\{a_n : n \geq m\})\).
+So by Theorem \ref{6.2.11}, \(\forall\ a_n \in \{a_n : n \geq m\}\) we have \(a_n \leq x \leq M\).
+
+Finally we show that of \(y \in \mathds{R}^*\) and \(y < x\), then \(\exists\ n \geq m\) such that \(y < a_n \leq x\).
+Suppose for sake of contradition that such \(n\) does not exist.
+Then \(\forall\ n \geq m\) we must have \(a_n \leq y < x\).
+Thus \(y\) is an upper bound of \((a_n)_{n = m}^\infty\).
+But from above proof we show that if \(y\) is an upper bound, then \(x \leq y\), a contradiction.
+Thus \(\exists\ n \geq m\) such that \(y < a_n \leq x\).
+\end{proof}
+
+\begin{remark}\label{6.3.7}
+Let \((a_n)_{n = m}^\infty\) be a sequence of real numbers, and let \(x\) be the extended real number \(x \coloneqq \inf(a_n)_{n = m}^\infty\).
+Then we have \(a_n \geq x\) for all \(n \geq m\).
+Also, whenever \(M \in \mathds{R}^*\) is an lower bound for \(a_n\) (i.e., \(a_n \geq M\) for all \(n \geq m\)), we have \(x \geq M\).
+Finally, for every extended real number \(y\) for which \(y > x\), there exists at least one \(n \geq m\) for which \(y > a_n \geq x\).
+This is the corresponding Proposition for infima, but with all the references to order reversed, e.g., all upper bounds should now be lower bounds, etc.
+The proof is exactly the same.
+\end{remark}
+
+\begin{note}
+In the previous section we saw that all convergent sequences are bounded.
+It is natural to ask whether the converse is true:
+are all bounded sequences convergent?
+The answer is no;
+for instance, the sequence \(1, -1, 1, -1, \dots\) is bounded, but not Cauchy and hence not convergent.
+However, if we make the sequence both bounded and \emph{monotone} (i.e., increasing or decreasing), then it is true that it must converge.
+\end{note}
+
+\begin{proposition}[Monotone bounded sequences converge]\label{6.3.8}
+Let \((a_n)_{n = m}^\infty\) be a sequence of real numbers which has some finite upper bound \(M \in \mathds{R}\), and which is also increasing (i.e., \(a_{n + 1} \geq a_n\) for all \(n \geq m\)).
+Then \((a_n)_{n = m}^\infty\) is convergent, and in fact
+\[
+    \lim_{n \to \infty} a_n = \sup(a_n)_{n = m}^\infty \leq M.
+\]
+\end{proposition}
+
+\begin{proof}
+Since \((a_n)_{n = m}^\infty\) have an upper bound \(M\), the set \(E = \{a_n : n \geq m\}\) have an upper bound \(M\).
+By Theorem \ref{6.2.11}, the supremum \(\sup(E)\) must exist and \(\sup(E) \leq M\).
+Now we want to show that \(\lim_{n \to \infty} a_n = \sup(E)\).
+By Definition \ref{6.1.8} and \ref{6.1.5}, we need to show that \(\forall\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\), \(\exists\ N \in \mathds{N}\) and \(N \geq m\) such that \(\abs*{a_n - \sup(E)} \leq \varepsilon \ \forall\ n \geq N\).
+Because \(\forall\ n \geq m\) we have \(a_n \leq \sup(E)\), so \(\abs*{a_n - \sup(E)} = \sup(E) - a_n\).
+Then we have
+\begin{align*}
+& (\forall\ \varepsilon \in \mathds{R}) \land (\varepsilon > 0) \\
+\implies & -\varepsilon < 0 \\
+\implies & \sup(E) - \varepsilon < \sup(E) \\
+\implies & \exists\ N \geq m : \sup(E) - \varepsilon < a_N \leq \sup(E) & \text{(by Proposition \ref{6.3.6})} \\
+\implies & \forall\ n \geq N : \sup(E) - \varepsilon < a_N \leq a_n \leq \sup(E) & \text{(by the given condition)} \\
+\implies & \sup(E) - \varepsilon \leq a_n \\
+\implies & \sup(E) - a_n \leq \varepsilon \\
+\implies & \abs*{a_n - \sup(E)} \leq \varepsilon.
+\end{align*}
+Thus \(\lim_{n \to \infty} a_n = \sup(E) = \sup(a_n)_{n = m}^\infty\).
+\end{proof}
+
+\begin{additional corollary}\label{ac 6.3.1}
+Let \((a_n)_{n = m}^\infty\) be a sequence of real numbers which has some finite lower bound \(M \in \mathds{R}\), and which is also decreasing (i.e., \(a_{n + 1} \leq a_n\) for all \(n \geq m\)).
+Then \((a_n)_{n = m}^\infty\) is convergent, and in fact
+\[
+    \lim_{n \to \infty} a_n = \inf(a_n)_{n = m}^\infty \geq M.
+\]
+\end{additional corollary}
+
+\begin{proof}
+Since \((a_n)_{n = m}^\infty\) have an lower bound \(M\), the set \(E = \{a_n : n \geq m\}\) have an lower bound \(M\).
+By Theorem \ref{6.2.11}, the infimum \(\inf(E)\) must exist and \(\inf(E) \geq M\).
+Now we want to show that \(\lim_{n \to \infty} a_n = \inf(E)\).
+By Definition \ref{6.1.8} and \ref{6.1.5}, we need to show that \(\forall\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\), \(\exists\ N \in \mathds{N}\) and \(N \geq m\) such that \(\abs*{a_n - \inf(E)} \leq \varepsilon \ \forall\ n \geq N\).
+Because \(\forall\ n \geq m\) we have \(a_n \geq \inf(E)\), so \(\abs*{a_n - \inf(E)} = a_n - \inf(E)\).
+Then we have
+\begin{align*}
+& (\forall\ \varepsilon \in \mathds{R}) \land (\varepsilon > 0) \\
+\implies & \inf(E) < \inf(E) + \varepsilon \\
+\implies & \exists\ N \geq m : \inf(E) \leq a_N < \inf(E) + \varepsilon & \text{(by Remark \ref{6.3.7})} \\
+\implies & \forall\ n \geq N : \inf(E) \leq a_n \leq a_N < \inf(E) + \varepsilon & \text{(by the given condition)} \\
+\implies & a_n \leq \inf(E) + \varepsilon \\
+\implies & a_n - \inf(E) \leq \varepsilon \\
+\implies & \abs*{a_n - \inf(E)} \leq \varepsilon.
+\end{align*}
+Thus \(\lim_{n \to \infty} a_n = \inf(E) = \inf(a_n)_{n = m}^\infty\).
+\end{proof}
+
+\begin{note}
+A sequence is said to be \emph{monotone} if it is either increasing or decreasing.
+From Proposition \ref{6.3.8} and Corollary \ref{6.1.17} we see that a monotone sequence converges if and only if it is bounded.
+\end{note}
+
+\begin{example}\label{6.3.9}
+The sequence \(3, 3.1, 3.14, 3.141, 3.1415, \dots\) is increasing, and is bounded above by \(4\).
+Hence by Proposition \ref{6.3.8} it must have a limit, which is a real number less than or equal to \(4\).
+\end{example}
+
+\begin{note}
+Proposition \ref{6.3.8} asserts that the limit of a monotone sequence exists, but does not directly say what that limit is.
+Nevertheless, with a little extra work one can often find the limit once one is given that the limit does exist.
+\end{note}
+
+\begin{proposition}\label{6.3.10}
+Let \(0 < x < 1\).
+Then we have \(\lim_{n \to \infty} x^n = 0\).
+\end{proposition}
+
+\begin{proof}
+Since \(0 < x < 1\), one can show that the sequence \((x^n)_{n = 1}^\infty\) is decreasing.
+(Because \(x^{n + 1} / x^n = x < 1\), so \(x^{n + 1} < x^n\))
+On the other hand, the sequence \((x^n)_{n = 1}^\infty\) has a lower bound of \(0\).
+Thus by Additional Corollary \ref{ac 6.3.1} the sequence \((x^n)_{n = 1}^\infty\) converges to some limit \(L\).
+Since \(x^{n + 1} = x \times x^n\), we thus see from the limit laws (Theorem \ref{6.1.19}) that \((x^{n + 1})_{n = 1}^\infty\) converges to \(xL\).
+But the sequence \((x^{n + 1})_{n = 1}^\infty\) is just the sequence \((x^n)_{n = 2}^\infty\) shifted by one, and so they must have the same limits by Exercise \ref{ex 6.1.3} and \ref{ex 6.1.4}.
+So \(xL = L\).
+Since \(x \neq 1\), we can solve for \(L\) to obtain \(L = 0\).
+Thus \((x^n)_{n = 1}^\infty\) converges to \(0\).
+\end{proof}
+
 \exercisesection
 
 \begin{exercise}\label{ex 6.3.1}
@@ -61,4 +191,36 @@ Verify the claim in Example \ref{6.3.4}.
 
 \begin{proof}
 See Example \ref{6.3.4}.
+\end{proof}
+
+\begin{exercise}\label{ex 6.3.2}
+Prove Proposition \ref{6.3.6}.
+\end{exercise}
+
+\begin{proof}
+See Proposition \ref{6.3.6}.
+\end{proof}
+
+\begin{exercise}\label{ex 6.3.3}
+Prove Proposition \ref{6.3.8}.
+\end{exercise}
+
+\begin{proof}
+See Proposition \ref{6.3.8}.
+\end{proof}
+
+\begin{exercise}\label{ex 6.3.4}
+Explain why Proposition \ref{6.3.10} fails when \(x > 1\).
+In fact, show that the sequence \((x_n)_{n = 1}^\infty\) diverges when \(x > 1\).
+\end{exercise}
+
+\begin{proof}
+Since \(x = x^{n + 1} / x^n > 1\), we have \(x^{n + 1} > x^n\), which means \((x^n)_{n = 1}^\infty\) is increasing.
+Suppose for sake of contradiction that \((x^n)_{n = 1}^\infty\) has an upper bound of \(M\).
+Then by Proposition \ref{6.3.8} the sequence \((x^n)_{n = 1}^\infty\) converges to some limit \(L\).
+Since \((1 / x)^n x^n = 1\), we thus see from the limit laws (Theorem \ref{6.1.19}) that \(((1 / x)^n x^n)_{n = 1}^\infty\) converges to \(1\).
+But \(0 < (1 / x)^n < 1\), by Proposition \ref{6.3.10} we have \(((1 / x)^n)_{n = 1}^\infty\) converges to \(0\).
+So by Theorem \ref{6.1.19} we have \(0L = 1\), a contradiction.
+Thus \((x^n)_{n = 1}^\infty\) does not have an upper bound.
+This means \((x^n)_{n = 1}^\infty\) is diverge by Corollary \ref{6.1.17}.
 \end{proof}
