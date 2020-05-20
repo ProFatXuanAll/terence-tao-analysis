@@ -1,1 +1,67 @@
 \section{Limsup, Liminf, and limit points}\label{sec 6.4}
+
+\begin{definition}[Limit points]\label{6.4.1}
+Let \((a_n)_{n = m}^\infty\) be a sequence of real numbers, let \(x\) be a real number, and let \(\varepsilon > 0\) be a real number.
+We say that \(x\) is \emph{\(\varepsilon\)-adherent} to \((a_n)_{n = m}^\infty\) iff there exists an \(n \geq m\) such that \(a_n\) is \(\varepsilon\)-close to \(x\).
+We say that \(x\) is \emph{continually \(\varepsilon\)-adherent} to \((a_n)_{n = m}^\infty\) iff it is \(\varepsilon\)-adherent to \((a_n)_{n = N}^\infty\) for every \(N \geq m\).
+We say that \(x\) is a \emph{limit point} or \emph{adherent point} of \((a_n)_{n = m}^\infty\) iff it is continually \(\varepsilon\)-adherent to \((a_n)_{n = m}^\infty\) for every \(\varepsilon > 0\).
+\end{definition}
+
+\begin{remark}\label{6.4.2}
+The verb ``to adhere'' means much the same as ``to stick to'';
+hence the term ``adhesive''.
+\end{remark}
+
+\begin{note}
+Unwrapping all the definitions, we see that \(x\) is a limit point of \((a_n)_{n = m}^\infty\) if, for every \(\varepsilon > 0\) and every \(N \geq m\), there exists an \(n \geq N\) such that \(\abs*{a_n - x} \leq \varepsilon\).
+Note the difference between a sequence being \(\varepsilon\)-close to \(L\)
+(which means that \emph{all} the elements of the sequence stay within a distance \(\varepsilon\) of \(L\))
+and \(L\) being \(\varepsilon\)-adherent to the sequence
+(which only needs a \emph{single} element of the sequence to stay within a distance \(\varepsilon\) of \(L\)).
+Also, for \(L\) to be continually \(\varepsilon\)-adherent to \((a_n)_{n = m}^\infty\), it has to be \(\varepsilon\)-adherent to \((a_n)_{n = N}^\infty\) for \emph{all} \(N \geq m\), whereas for \((a_n)_{n = m}^\infty\) to be eventually \(\varepsilon\)-close to \(L\), we only need \((a_n)_{n = m}^\infty\) to be \(\varepsilon\)-close to \(L\) for \emph{some} \(N \geq m\).
+Thus there are some subtle differences in quantifiers between limits and limit points.
+\end{note}
+
+\setcounter{theorem}{4}
+\begin{proposition}[Limits are limit points]\label{6.4.5}
+Let \((a_n)_{n = m}^\infty\) be a sequence which converges to a real number \(c\).
+Then \(c\) is a limit point of \((a_n)_{n = m}^\infty\), and in fact it is the only limit point of \((a_n)_{n = m}^\infty\).
+\end{proposition}
+
+\begin{proof}
+We first show that \(c\) is a limit point of \((a_n)_{n = m}^\infty\).
+Since \(\lim_{n \to \infty} a_n = c\), we have \(\forall\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\), \(\exists\ N_1 \in \mathds{N}\) and \(N_1 \geq m\) such that \(\abs*{a_n - c} \leq \varepsilon \ \forall\ n \geq N_1\).
+This means \(\forall\ N_2 \in \mathds{N}\) and \(N_2 \geq m\), \(\exists\ n \geq \max(N_1, N_2)\) such that \(\abs*{a_n - c} \leq \varepsilon\).
+So \(c\) is a limit point of \((a_n)_{n = m}^\infty\).
+
+Now we show that \(c\) is the only limit point of \((a_n)_{n = m}^\infty\).
+Suppose for sake of contradiction that \(c'\) is also a limit point of \((a_n)_{n = m}^\infty\) and \(c' \neq c\).
+Since \(\lim_{n \to \infty} a_n = c\), we have \(\forall\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\), \(\exists\ N \in \mathds{N}\) and \(N \geq m\) such that \(\abs*{a_n - c} \leq \varepsilon \ \forall\ n \geq N\).
+In particular, \(\abs*{a_n - c} \leq \abs*{c - c'} / 2\).
+So
+\begin{align*}
+\abs*{c - c'} &= \abs*{a_n - a_n + c - c'} \\
+&= \abs*{c - a_n a_n - c'} \\
+&\leq \abs*{c - a_n} + \abs*{a_n - c'} \\
+&= \abs*{a_n - c} + \abs*{a_n - c'}.
+\end{align*}
+Which means \(\abs*{a_n - c'} \geq \abs*{c - c'} - \abs*{a_n - c}\).
+Then \(\forall\ n \geq N\),
+\begin{align*}
+\abs*{a_n - c'} &\geq \abs*{c - c'} - \abs*{a_n - c} \\
+&\geq \abs*{c - c'} - \abs*{c - c'} / 2 \\
+&= \abs*{c - c'} / 2.
+\end{align*}
+Because \(\abs*{c - c'} / 2 > 0\), we can not find an \(n \geq N\) where \(\abs*{a_n - c'} < \abs*{c - c'} / 2\), which contradict to \(c'\) is limit point.
+Thus \(\lim_{n \to \infty} a_n = c\) is the only limit point of \((a_n)_{n = m}^\infty\).
+\end{proof}
+
+\exercisesection
+
+\begin{exercise}\label{ex 6.4.1}
+Prove Proposition \ref{6.4.5}.
+\end{exercise}
+
+\begin{proof}
+See Proposition \ref{6.4.5}.
+\end{proof}
