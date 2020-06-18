@@ -366,6 +366,52 @@ Since \(-\abs*{a_n} \leq a_n \leq \abs*{a_n}\), we have
 And we conclude that the limit \(\lim_{n \to \infty} a_n\) exists and is equal to zero if and only if the limit \(\lim_{n \to \infty} \abs*{a_n}\) exists and is equal to zero.
 \end{proof}
 
+\begin{theorem}[Completeness of the reals]\label{6.4.18}
+A sequence \((a_n)_{n = 1}^\infty\) of real numbers is a Cauchy sequence if and only if it is convergent.
+\end{theorem}
+
+\begin{proof}
+Proposition \ref{6.1.12} already tells us that every convergent sequence is Cauchy, so it suffices to show that every Cauchy sequence is convergent.
+
+Let \((a_n)_{n = 1}^\infty\) be a Cauchy sequence.
+We know from Lemma \ref{5.1.15} (or more precisely, from the extension of this lemma to the real numbers, which is proven in exactly the same fashion) that the sequence \((a_n)_{n = 1}^\infty\) is bounded;
+by Lemma \ref{6.4.13} (or Proposition \ref{6.4.12}(c)) this implies that \(L^- \coloneqq \lim\inf_{n \to \infty} a_n\) and \(L^+ \coloneqq \lim\sup_{n \to \infty} a_n\) of the sequence are both finite.
+To show that the sequence converges, it will suffice by Proposition \ref{6.4.12}(f) to show that \(L^- = L^+\).
+
+Now let \(\varepsilon > 0\) be any real number.
+Since \((a_n)_{n = 1}^\infty\) is a Cauchy sequence, it must be eventually \(\varepsilon\)-steady, so in particular there exists an \(N \geq 1\) such that the sequence \((a_n)_{n = N}^\infty\) is \(\varepsilon\)-steady.
+In particular, we have \(a_N - \varepsilon \leq a_n \leq a_N + \varepsilon\) for all \(n \geq N\).
+By Proposition \ref{6.3.6} (or Lemma \ref{6.4.13}) this implies that
+\[
+    a_N - \varepsilon \leq \inf(a_n)_{n = N}^\infty \leq \sup(a_n)_{n = N}^\infty \leq a_N + \varepsilon
+\]
+and hence by the definition of \(L^-\) and \(L^+\) (and Proposition \ref{6.3.6} again)
+\[
+    a_N - \varepsilon \leq L^- \leq L^+ \leq a_N + \varepsilon.
+\]
+Thus we have
+\[
+    0 \leq L^+ - L^- \leq 2\varepsilon.
+\]
+But this is true for all \(\varepsilon > 0\), and \(L^+\) and \(L^-\) do not depend on \(\varepsilon\);
+so we must therefore have \(L^+ = L^-\).
+(If \(L^+ > L^-\) then we could set \(\varepsilon \coloneqq (L^+ - L^-) / 3\) and obtain a contradiction.)
+By Proposition \ref{6.4.12}(f) we thus see that the sequence converges.
+\end{proof}
+
+\begin{remark}\label{6.4.19}
+While Theorem \ref{6.4.18} is very similar in spirit to Proposition \ref{6.1.15}, it is a bit more general, since Proposition \ref{6.1.15} refers to Cauchy sequences of rationals instead of real numbers.
+\end{remark}
+
+\begin{remark}\label{6.4.20}
+In the language of metric spaces, Theorem \ref{6.4.18} asserts that the real numbers are a \emph{complete} metric space
+- that they do not contain ``holes'' the same way the rationals do.
+(Certainly the rationals have lots of Cauchy sequences which do not converge to other rationals;
+take for instance the sequence \(1, 1.4, 1.41, 1.414, 1.4142, \dots\) which converges to the irrational \(\sqrt{2}\).)
+This property is closely related to the least upper bound property (Theorem \ref{5.5.9}), and is one of the principal characteristics which make the real numbers superior to the rational numbers for the purposes of doing analysis
+(taking limits, taking derivatives and integrals, finding zeroes of functions, that kind of thing).
+\end{remark}
+
 \exercisesection
 
 \begin{exercise}\label{ex 6.4.1}
