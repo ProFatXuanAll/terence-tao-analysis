@@ -332,8 +332,40 @@ And
 \implies & L \leq \lim\inf_{n \to \infty} b_n \leq L & \text{(by Lemma \ref{6.4.13})} \\
 \implies & \lim\inf_{n \to \infty} b_n = L.
 \end{align*}
-\end{proof}
 Since \(\lim\sup_{n \to \infty} b_n = \lim\inf_{n \to \infty} b_n = L\), by Proposition \ref{6.4.12} \(\lim_{n \to \infty} b_n = L\).
+\end{proof}
+
+\setcounter{theorem}{15}
+\begin{remark}\label{6.4.16}
+The squeeze test, combined with the limit laws and the principle that monotone bounded sequences always have limits, allows to compute a large number of limits.
+\end{remark}
+
+\begin{corollary}[Zero test for sequences]\label{6.4.17}
+Let \((a_n)_{n = M}^\infty\) be a sequence of real numbers.
+Then the limit \(\lim_{n \to \infty} a_n\) exists and is equal to zero if and only if the limit \(\lim_{n \to \infty} \abs*{a_n}\) exists and is equal to zero.
+\end{corollary}
+
+\begin{proof}
+We first show that the limit \(\lim_{n \to \infty} a_n\) exists and is equal to zero implies the limit \(\lim_{n \to \infty} \abs*{a_n}\) exists and is equal to zero.
+\(\forall\ \varepsilon \in \mathds{R}\) and \(\varepsilon > 0\),
+\begin{align*}
+& \lim_{n \to \infty} a_n = 0 \\
+\implies & \abs*{a_n - 0} \leq \varepsilon \\
+\implies & \abs*{a_n} \leq \varepsilon \\
+\implies & \abs*{\abs*{a_n} - 0} \leq \varepsilon \\
+\implies & \lim_{n \to \infty} \abs*{a_n} = 0.
+\end{align*}
+
+Now we show that the limit \(\lim_{n \to \infty} \abs*{a_n}\) exists and is equal to zero implies the limit \(\lim_{n \to \infty} a_n\) exists and is equal to zero.
+Since \(-\abs*{a_n} \leq a_n \leq \abs*{a_n}\), we have
+\begin{align*}
+& \lim_{n \to \infty} \abs*{a_n} = 0 \\
+\implies & \lim_{n \to \infty} -\abs*{a_n} = 0 \\
+\implies & \lim_{n \to \infty} a_n = 0. & \text{(by Corollary \ref{6.4.14})}
+\end{align*}
+And we conclude that the limit \(\lim_{n \to \infty} a_n\) exists and is equal to zero if and only if the limit \(\lim_{n \to \infty} \abs*{a_n}\) exists and is equal to zero.
+\end{proof}
+
 \exercisesection
 
 \begin{exercise}\label{ex 6.4.1}
@@ -449,4 +481,29 @@ Use Lemma \ref{6.4.13} to prove Corollary \ref{6.4.14}.
 
 \begin{proof}
 See Corollary \ref{6.4.14}.
+\end{proof}
+
+\begin{exercise}\label{ex 6.4.6}
+Give an example of two bounded sequences \((a_n)_{n = 1}^\infty\) and \((b_n)_{n = 1}^\infty\) such that \(a_n < b_n\) for all \(n \geq 1\), but that \(\sup(a_n)_{n = 1}^\infty \not< \sup(b_n)_{n = 1}^\infty\).
+Explain why this does not contradict Lemma \ref{6.4.13}.
+\end{exercise}
+
+\begin{proof}
+Let \(a_n = 1 / n\) and \(b_n = 2 / n\).
+Then \(\lim_{n \to \infty} a_n = 0\) and \(\lim_{n \to \infty} b_n = 2 \times \lim_{n \to \infty} a_n = 0\).
+Because non-negative sequence can converge to non-negative real number.
+\end{proof}
+
+\begin{exercise}\label{ex 6.4.7}
+Prove Corollary \ref{6.4.17}.
+Is the corollary still true if we replace zero in the statement of this Corollary by some other number?
+\end{exercise}
+
+\begin{proof}
+See Corollary \ref{6.4.17}.
+
+Now we show that Corollary \ref{6.4.17} is not true if we replace zero by some other number.
+Let \(a_n = (-1)^n\).
+So \(\lim_{n \to \infty} \abs*{a_n} = 1\), but \(\lim_{n \to \infty} a_n\) does not exist.
+Thus Corollary \ref{6.4.17} is not true if we replace zero by some other number.
 \end{proof}
