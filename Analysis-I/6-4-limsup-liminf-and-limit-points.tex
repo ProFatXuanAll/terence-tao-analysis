@@ -250,6 +250,60 @@ Thus \(\lim_{n \to \infty} a_n = c\).
 And we conclude that if \(L^+ = L^- = c\), then \(\lim_{n \to \infty} a_n = c\).
 \end{proof}
 
+\begin{note}
+Parts (c) and (d) of Proposition \ref{6.4.12} say, in particular, that \(L^+\) is the largest limit point of \((a_n)_{n = m}^\infty\), and \(L^-\) is the smallest limit point
+(providing that \(L^+\) and \(L^-\) are finite).
+Proposition \ref{6.4.12} (f) then says that if \(L^+\) and \(L^-\) coincide (so there is only one limit point), then the sequence in fact converges.
+This gives a way to test if a sequence converges: compute its limit superior and limit inferior, and see if they are equal.
+\end{note}
+
+\begin{lemma}[Comparison principle]\label{6.4.13}
+Suppose that \((a_n)_{n = m}^\infty\) and \((b_n)_{n = m}^\infty\) are two sequences of real numbers such that \(a_n \leq b_n\) for all \(n \geq m\).
+Then we have the inequalities
+\begin{align*}
+\sup(a_n)_{n = m}^\infty &\leq \sup(b_n)_{n = m}^\infty \\
+\inf(a_n)_{n = m}^\infty &\leq \inf(b_n)_{n = m}^\infty \\
+\lim\sup_{n \to \infty} a_n &\leq \lim\sup_{n \to \infty} b_n \\
+\lim\inf_{n \to \infty} a_n &\leq \lim\inf_{n \to \infty} b_n
+\end{align*}
+\end{lemma}
+
+\begin{proof}
+We first show that \(\sup(a_n)_{n = m}^\infty \leq \sup(b_n)_{n = m}^\infty\).
+Suppose for sake of contradiction that \(\sup(a_n)_{n = m}^\infty > \sup(b_n)_{n = m}^\infty\).
+Then by Proposition \ref{6.3.6}, \(\exists\ n' \geq m\) such that \(a_{n'} > \sup(b_n)_{n = m}^\infty\).
+Also by Definition \ref{6.3.1}, \(\forall\ n \geq m\) we have \(\sup(b_n)_{n = m}^\infty \geq b_n\).
+But this means \(a_{n'} > b_n\), in particular, \(a_{n'} > b_{n'}\), a contradiction.
+Thus we must have \(\sup(a_n)_{n = m}^\infty \leq \sup(b_n)_{n = m}^\infty\).
+
+Next we show that \(\inf(a_n)_{n = m}^\infty \leq \inf(b_n)_{n = m}^\infty\).
+Suppose for sake of contradiction that \(\inf(a_n)_{n = m}^\infty > \inf(b_n)_{n = m}^\infty\).
+Then by Remark \ref{6.3.7}, \(\exists\ n' \geq m\) such that \(b_{n'} < \inf(a_n)_{n = m}^\infty\).
+Also by Definition \ref{6.3.1}, \(\forall\ n \geq m\) we have \(\inf(a_n)_{n = m}^\infty \leq a_n\).
+But this means \(b_{n'} < a_n\), in particular, \(b_{n'} < a_{n'}\), a contradiction.
+Thus we must have \(\inf(a_n)_{n = m}^\infty \leq \inf(b_n)_{n = m}^\infty\).
+
+Next we show that \(\lim\sup_{n \to \infty} a_n \leq \lim\sup_{n \to \infty} b_n\).
+Suppose for sake of contradiction that \(\lim\sup_{n \to \infty} a_n > \lim\sup_{n \to \infty} b_n\).
+By Definition \ref{6.4.6}, we have \(\inf(a_n^+)_{n = m}^\infty > \inf(b_n^+)_{n = m}^\infty\).
+By Remark \ref{6.3.7}, \(\exists\ n' \geq m\) such that \(b_{n'}^+ < \inf(a_n^+)_{n = m}^\infty\).
+By Definition \ref{6.3.1}, \(\forall\ n \geq m\) we have \(\inf(a_n^+)_{n = m}^\infty \leq a_n^+\).
+But this means \(b_{n'}^+ < a_n^+\), in particular, \(b_{n'}^+ < a_{n'}^+\).
+Again by Definition \ref{6.4.6}, we have \(\sup(b_n)_{n = n'}^\infty < \sup(a_n)_{n = n'}^\infty\).
+But this contradict to the proof above that \(\sup(b_n)_{n = n'}^\infty \geq \sup(a_n)_{n = n'}^\infty\).
+Thus we must have \(\lim\sup_{n \to \infty} a_n \leq \lim\sup_{n \to \infty} b_n\).
+
+Finally we show that \(\lim\inf_{n \to \infty} a_n \leq \lim\inf_{n \to \infty} b_n\).
+Suppose for sake of contradiction that \(\lim\inf_{n \to \infty} a_n > \lim\inf_{n \to \infty} b_n\).
+By Definition \ref{6.4.6}, we have \(\sup(a_n^-)_{n = m}^\infty > \sup(b_n^-)_{n = m}^\infty\).
+By Proposition \ref{6.3.6}, \(\exists\ n' \geq m\) such that \(a_{n'}^- > \sup(b_n^-)_{n = m}^\infty\).
+By Definition \ref{6.3.1}, \(\forall\ n \geq m\) we have \(\sup(b_n^-)_{n = m}^\infty \geq b_n^-\).
+But this means \(a_{n'}^- > b_n^-\), in particular, \(a_{n'}^- > b_{n'}^-\).
+Again by Definition \ref{6.4.6}, we have \(\inf(a_n)_{n = n'}^\infty > \inf(b_n)_{n = n'}^\infty\).
+But this contradict to the proof above that \(\inf(a_n)_{n = n'}^\infty \leq \inf(b_n)_{n = n'}^\infty\).
+Thus we must have \(\lim\inf_{n \to \infty} a_n \leq \lim\inf_{n \to \infty} b_n\).
+\end{proof}
+
 \exercisesection
 
 \begin{exercise}\label{ex 6.4.1}
@@ -349,4 +403,12 @@ Prove Proposition \ref{6.4.12}.
 
 \begin{proof}
 See Proposition \ref{6.4.12}.
+\end{proof}
+
+\begin{exercise}\label{ex 6.4.4}
+Prove Lemma \ref{6.4.13}.
+\end{exercise}
+
+\begin{proof}
+See Lemma \ref{6.4.13}.
 \end{proof}
