@@ -34,3 +34,41 @@ Raising this to the \(k^{th}\) power and using the limit laws (or more precisely
 By Proposition \ref{6.1.11} we thus have \(L^k = 0\);
 but this means that \(L\) cannot be positive (else \(L^k\) would be positive), so \(L = 0\), and we are done.
 \end{proof}
+
+\begin{lemma}\label{6.5.2}
+Let \(x\) be a real number.
+Then the limit \(\lim_{n \to \infty} x^n\) exists and is equal to zero when \(\abs*{x} < 1\), exists and is equal to \(1\) when \(x = 1\), and diverges when \(x = -1\) or when \(\abs*{x} > 1\).
+\end{lemma}
+
+\begin{proof}
+We first show that if \(\abs*{x} < 1\), then \(\lim_{n \to \infty} x^n = 0\).
+Since \(0 \leq \abs*{x} < 1\), we have
+\begin{align*}
+& 0 \leq \abs*{x} < 1 \\
+\implies & \lim_{n \to \infty} \abs*{x}^n = 0 & \text{(by Proposition \ref{6.3.10})} \\
+\implies & (-1)\lim_{n \to \infty} \abs*{x}^n = (-1) \times 0 = 0 \\
+\implies & \lim_{n \to \infty} -\abs*{x}^n = 0. & \text{(by Theorem \ref{6.1.19})}
+\end{align*}
+So \(\lim_{n \to \infty} -\abs*{x}^n = \lim_{n \to \infty} \abs*{x}^n\).
+And because \(-\abs*{x}^n \leq x^n \leq \abs*{x}^n\), by Squeeze test (Corollary \ref{6.4.14}) we have \(\lim_{n \to \infty} x^n = 0\).
+
+Next we show that if \(x = 1\), then \(\lim_{n \to \infty} x^n = 1\).
+And this is done by Additional Corollary \ref{ac 6.5.1}.
+
+Finally we show that if \(x = -1\) or \(\abs*{x} > 1\), then \(\lim_{n \to \infty} x^n\) does not exist.
+If \(x = -1\), then we have sequence \(-1, 1, -1, 1, \dots\), which is not eventually \(1\)-steady for any \(n \geq 1\) and thus does not converge to any value.
+If \(\abs*{x} > 1\), then we can divide into two cases:
+\begin{enumerate}
+    \item If \(x > 1\), then by Exercise \ref{ex 6.3.4} \(\lim_{n \to \infty} x^n\) does not exist.
+    \item If \(x < -1\), then \(\forall\ n \geq 1\) we have
+    \begin{align*}
+        \abs*{x^{n + 1} - x^n} &= \abs*{x^n(x - 1)} \\
+        &= \abs*{x^n}\abs*{x - 1} \\
+        &> \abs*{x^n}\abs*{-2} \\
+        &= 2\abs*{x^n} \\
+        &> 2.
+    \end{align*}
+    This means \(x\) is not a Cauchy sequence, so by Theorem \ref{6.4.18} \(\lim_{n \to \infty} x^n\) does not exist.
+\end{enumerate}
+From all cases above we can conclude that if \(\abs*{x} > 1\) then \(\lim_{n \to \infty} x^n\) does not exist.
+\end{proof}
