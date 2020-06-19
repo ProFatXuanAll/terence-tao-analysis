@@ -72,3 +72,36 @@ If \(\abs*{x} > 1\), then we can divide into two cases:
 \end{enumerate}
 From all cases above we can conclude that if \(\abs*{x} > 1\) then \(\lim_{n \to \infty} x^n\) does not exist.
 \end{proof}
+
+\exercisesection
+
+\begin{exercise}\label{ex 6.5.1}
+Show that \(\lim_{n \to \infty} 1 / n^q = 0\) for any rational \(q > 0\).
+Conclude that the limit \(\lim_{n \to \infty} n^q\) does not exist.
+\end{exercise}
+
+\begin{proof}
+We firs show that \(\lim_{n \to \infty} 1 / n^q = 0\) for any rational \(q > 0\).
+Let \(q = a / b\) where \(a, b \in \mathds{Z}\) and \(a, b > 0\).
+Then we have
+\begin{align*}
+& \frac{1}{n^q} = \frac{1}{n^{a / b}} = \bigg(\frac{1}{n^{1 / b}}\bigg)^a \\
+\implies & \lim_{n \to \infty} 1 / n^{1 / b} = 0 & \text{(by Corollary \ref{6.5.1})} \\
+\implies & \lim_{n \to \infty} (1 / n^{1 / b})^a = 0 & \text{(by Lemma \ref{6.5.2})} \\
+\implies & \lim_{n \to \infty} 1 / n^q = 0.
+\end{align*}
+
+Now we show that \(\lim_{n \to \infty} n^q\) does not exist.
+Suppose for sake of contradiction that \(\lim_{n \to \infty} n^q\) exists and equals to \(y\).
+Since \(n \geq 1\), we have \(n^q \geq 1\), so \(y \geq 1\).
+Then we have
+\begin{align*}
+& (\lim_{n \to \infty} n^q)^{-1} = y^{-1} & \text{(by Theorem \ref{6.1.19})} \\
+\implies & \lim_{n \to \infty} (n^q)^{-1} = y^{-1} & \text{(by Theorem \ref{6.1.19})} \\
+\implies & \lim_{n \to \infty} n^{-q} = y^{-1} \\
+\implies & \lim_{n \to \infty} \frac{1}{n^q} = y^{-1} \\
+\implies & y^{-1} = 0. & \text{(by proof above)}
+\end{align*}
+Which means such \(y\) does not exist, a contradiction.
+Thus \(\lim_{n \to \infty} n^q\) does not exist.
+\end{proof}
