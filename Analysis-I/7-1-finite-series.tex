@@ -203,3 +203,82 @@ Then for \(n + 1\), we have
 \end{align*}
 This close the induction.
 \end{proof}
+
+\begin{remark}\label{7.1.5}
+In the future we may omit some of the parentheses in series expressions, for instance we may write \(\sum_{i = m}^n (a_i + b_i)\) simply as \(\sum_{i = m}^n a_i + b_i\).
+This is reasonably safe from being mis-interpreted, because the alternative interpretation \((\sum_{i = m}^n a_i) + b_i\) does not make any sense
+(the index \(i\) in \(b_i\) is meaningless outside of the summation, since \(i\) is only a dummy variable).
+\end{remark}
+
+\begin{definition}[Summations over finite sets]\label{7.1.6}
+Let \(X\) be a finite set with \(n\) elements (where \(n \in \mathbf{N}\)), and let \(f : X \to \mathbf{R}\) be a function from \(X\) to the real numbers
+(i.e., \(f\) assigns a real number \(f(x)\) to each element \(x\) of \(X\)).
+Then we can define the finite sum \(\sum_{x \in X} f(x)\) as follows.
+We first select any bijection \(g\) from \(\{i \in \mathbf{N} : 1 \leq i \leq n\}\) to \(X\);
+such a bijection exists since \(X\) is assumed to have \(n\) elements.
+We then define
+\[
+    \sum_{x \in X} f(x) \coloneqq \sum_{i = 1}^n f(g(i))
+\]
+\end{definition}
+
+\setcounter{theorem}{7}
+\begin{proposition}[Finite summations are well-defined]\label{7.1.8}
+Let \(X\) be a finite set with \(n\) elements (where \(n \in \mathbf{N}\)), let \(f : X \to \mathbf{R}\) be a function, and let \(g : \{i \in \mathbf{N} : 1 \leq i \leq n\} \to X\) and \(h : \{i \in \mathbf{N} : 1 \leq i \leq n\} \to X\) be bijections.
+Then we have
+\[
+    \sum_{i = 1}^n f(g(i)) = \sum_{i = 1}^n f(h(i)).
+\]
+\end{proposition}
+
+\begin{proof}
+We use induction on \(n\);
+more precisely, we let \(P(n)\) be the assertion that ``For any set \(X\) of \(n\) elements, any function \(f : X \to \mathbf{R}\), and any two bijections \(g, h\) from \(\{i \in \mathbf{N} : 1 \leq i \leq n\}\) to \(X\), we have \(\sum_{i = 1}^n f(g(i)) = \sum_{i = 1}^n f(h(i)\)''.
+(More informally, \(P(n)\) is the assertion that Proposition \ref{7.1.8} is true for that value of \(n\).)
+We want to prove that \(P(n)\) is true for all natural numbers \(n\).
+
+We first check the base case \(P(0)\).
+In this case \(\sum_{i = 1}^0 f(g(i))\) and \(\sum_{i = 1}^0 f(h(i))\) both equal to \(0\), by definition of finite series (Definition \ref{7.1.1}), so we are done.
+
+Now suppose inductively that \(P(n)\) is true;
+we now prove that \(P(n + 1)\) is true.
+Thus, let \(X\) be a set with \(n + 1\) elements, let \(f : X \to \mathbf{R}\) be a function, and let \(g\) and \(h\) be bijections from \(\{i \in N : 1 \leq i \leq n + 1\}\) to \(X\).
+We have to prove that
+\[
+    \sum_{i = 1}^{n + 1} f(g(i)) = \sum_{i = 1}^{n + 1} f(h(i)). \tag{7.1}\label{eq 7.1}
+\]
+Let \(x \coloneqq g(n + 1)\);
+thus \(x\) is an element of \(X\).
+By definition of finite series (Definition \ref{7.1.1}), we can expand the left-hand side of \eqref{eq 7.1} as
+\[
+    \sum_{i = 1}^{n + 1} f(g(i)) = \Bigg(\sum_{i = 1}^n f(g(i))\Bigg) + f(x).
+\]
+Now let us look at the right-hand side of \eqref{eq 7.1}.
+Ideally we would like to have \(h(n + 1)\) also equal to \(x\)
+- this would allow us to use the inductive hypothesis \(P(n)\) much more easily
+- but we cannot assume this.
+However, since \(h\) is a bijection, we do know that there is \emph{some} index \(j\), with \(1 \leq j \leq n + 1\), for which \(h(j) = x\).
+We now use Lemma \ref{7.1.4} and the definition of finite series (Definition \ref{7.1.1}) to write
+\begin{align*}
+\sum_{i = 1}^{n + 1} f(h(i)) &= \Bigg(\sum_{i = 1}^j f(h(i))\Bigg) + \Bigg(\sum_{i = j + 1}^{n + 1} f(h(i))\Bigg) \\
+&= \Bigg(\sum_{i = 1}^{j - 1} f(h(i))\Bigg) + f(h(j)) + \Bigg(\sum_{i = j + 1}^{n + 1} f(h(i))\Bigg) \\
+&= \Bigg(\sum_{i = 1}^{j - 1} f(h(i))\Bigg) + f(x) + \Bigg(\sum_{i = j}^n f(h(i + 1))\Bigg).
+\end{align*}
+We now define the function \(\tilde{h} : \{i \in \mathbf{N} : 1 \leq i \leq n\} \to X - \{x\}\) by setting \(\tilde{h}(i) \coloneqq h(i)\) when \(i < j\) and \(\tilde{h}(i) \coloneqq h(i + 1)\) when \(i \geq j\).
+We can thus write the right-hand side of \eqref{eq 7.1} as
+\[
+    = \Bigg(\sum_{i = 1}^{j - 1} f(\tilde{h}(i))\Bigg) + f(x) + \Bigg(\sum_{i = j}^n f(\tilde{h}(i))\Bigg) = \Bigg(\sum_{i = 1}^n f(\tilde{h}(i))\Bigg) + f(x)
+\]
+where we have used Lemma \ref{7.1.4} once again.
+Thus to finish the proof of \eqref{eq 7.1} we have to show that
+\[
+    \sum_{i = 1}^n f(g(i)) = \sum_{i = 1}^n f(\tilde{h}(i)). \tag{7.2}\label{eq 7.2}
+\]
+But the function \(g\) (when restricted to \(\{i \in \mathbf{N} : 1 \leq i \leq n\}\)) is a bijection from \(\{i \in \mathbf{N} : 1 \leq i \leq n\} \to X - \{x\}\).
+The function \(\tilde{h}\) is also a bijection from \(\{i \in \mathbf{N} : 1 \leq i \leq n\} \to X - \{x\}\) (cf. Lemma \ref{3.6.9}).
+Since \(X - \{x\}\) has \(n\) elements (by Lemma \ref{3.6.9}), the claim \eqref{eq 7.2} then follows directly from the induction hypothesis \(P(n)\).
+\end{proof}
+
+\begin{remark}\label{7.1.9}
+The issue is somewhat more complicated when summing over infinite sets.
+\end{remark}
