@@ -1,0 +1,97 @@
+\section{Real exponentiation, part II}\label{sec 6.7}
+
+\begin{lemma}[Continuity of exponentiation]\label{6.7.1}
+Let \(x > 0\), and let \(\alpha\) be a real number.
+Let \((q_n)_{n = 1}^\infty\) be any sequence of rational numbers converging to \(\alpha\).
+Then \((x^{q_n})_{n = 1}^\infty\) is also a convergent sequence.
+Furthermore, if \((q_n')_{n = 1}^\infty\) is any other sequence of rational numbers converging to \(\alpha\), then \((x^{q_n'})_{n = 1}^\infty\) has the same limit as \((x^{q_n})_{n = 1}^\infty\):
+\[
+    \lim_{n \to \infty} x^{q_n} = \lim_{n \to \infty} x^{q_n'}.
+\]
+\end{lemma}
+
+\begin{proof}
+There are three cases: \(x < 1\), \(x = 1\), and \(x > 1\).
+The case \(x = 1\) is rather easy (because then \(x^q = 1\) for all rational \(q\)).
+
+We first show that if \(x > 1\) then \((x^{q_n})_{n = 1}^\infty\) converges.
+By Proposition \ref{6.4.18} it is enough to show that \((x^{q_n})_{n = 1}^\infty\) is a Cauchy sequence.
+
+To do this, we need to estimate the distance between \(x^{q_n}\) and \(x^{q_m}\);
+let us say for the time being that \(q_n \geq q_m\), so that \(x^{q_n} \geq x^{q_m}\) (since \(x > 1\)).
+We have
+\[
+    d(x^{q_n}, x^{q_m}) = x^{q_n} - x^{q_m} = x^{q_m} (x^{q_n - q_m} - 1).
+\]
+Since \((q_n)_{n = 1}^\infty\) is a convergent sequence, it has some upper bound \(M\);
+since \(x > 1\), we have \(x^{q_m} \leq x^M\).
+Thus
+\[
+    d(x^{q_n}, x^{q_m}) = \abs*{x^{q_n} - x^{q_m}} \leq x^M (x^{q_n - q_m} - 1).
+\]
+Now let \(\varepsilon > 0\).
+We know by Lemma \ref{6.5.3} that the sequence \((x^{1 / k})_{k = 1}^\infty\) is eventually \(\varepsilon x^{-M}\)-close to \(1\).
+Thus there exists some \(K \geq 1\) such that
+\[
+    \abs*{x^{1 / K} - 1} \leq \varepsilon x^{-M}.
+\]
+Now since \((q_n)_{n = 1}^\infty\) is convergent, it is a Cauchy sequence, and so there is an \(N \geq 1\) such that \(q_n\) and \(q_m\) are \(1 / K\)-close for all \(n, m \geq N\).
+Thus we have
+\[
+    d(x^{q_n}, x^{q_m}) \leq x^M (x^{q_n - q_m} - 1) \leq x^M (x^{1 / K} - 1) \leq x^M \varepsilon x^{-M} = \varepsilon.
+\]
+for every \(n, m \geq N\) such that \(q_n \geq q_m\).
+By symmetry we also have this bound when \(n, m \geq N\) and \(q_n \leq q_m\).
+Thus the sequence \((x^{q_n})_{n = 1}^\infty\) is \(\varepsilon\)-steady.
+Thus the sequence \((x^{q_n})_{n = 1}^\infty\) is eventually \(\varepsilon\)-steady for every \(\varepsilon > 0\), and is thus a Cauchy sequence as desired.
+This proves the convergence of \((x^{q_n})_{n = 1}^\infty\) when \(x > 1\).
+
+Next we show that if \(x < 1\) then \((x^{q_n})_{n = 1}^\infty\) also converges.
+By Proposition \ref{6.4.18} it is enough to show that \((x^{q_n})_{n = 1}^\infty\) is a Cauchy sequence.
+
+To do this, we need to estimate the distance between \(x^{q_n}\) and \(x^{q_m}\);
+let us say for the time being that \(q_n \leq q_m\), so that \(x^{q_n} \geq x^{q_m}\) (since \(x < 1\)).
+We have
+\[
+    d(x^{q_n}, x^{q_m}) = x^{q_n} - x^{q_m} = x^{q_m} (x^{q_n - q_m} - 1).
+\]
+Since \((q_n)_{n = 1}^\infty\) is a convergent sequence, it has some lower bound \(M\);
+since \(x < 1\), we have \(x^{q_m} \leq x^M\).
+Thus
+\[
+    d(x^{q_n}, x^{q_m}) = \abs*{x^{q_n} - x^{q_m}} \leq x^M (x^{q_n - q_m} - 1).
+\]
+Now let \(\varepsilon > 0\).
+We know by Lemma \ref{6.5.3} that the sequence \((x^{1 / k})_{k = 1}^\infty\) is eventually \(\varepsilon x^{-M}\)-close to \(1\).
+Thus there exists some \(K \geq 1\) such that
+\[
+    \abs*{x^{1 / K} - 1} \leq \varepsilon x^{-M}.
+\]
+Now since \((q_n)_{n = 1}^\infty\) is convergent, it is a Cauchy sequence, and so there is an \(N \geq 1\) such that \(q_n\) and \(q_m\) are \(1 / K\)-close for all \(n, m \geq N\).
+Thus we have
+\[
+    d(x^{q_n}, x^{q_m}) \leq x^M (x^{q_n - q_m} - 1) \leq x^M (x^{1 / K} - 1) \leq x^M \varepsilon x^{-M} = \varepsilon.
+\]
+for every \(n, m \geq N\) such that \(q_n \leq q_m\).
+By symmetry we also have this bound when \(n, m \geq N\) and \(q_n \geq q_m\).
+Thus the sequence \((x^{q_n})_{n = 1}^\infty\) is \(\varepsilon\)-steady.
+Thus the sequence \((x^{q_n})_{n = 1}^\infty\) is eventually \(\varepsilon\)-steady for every \(\varepsilon > 0\), and is thus a Cauchy sequence as desired.
+This proves the convergence of \((x^{q_n})_{n = 1}^\infty\) when \(x < 1\).
+
+Now we prove the second claim.
+It will suffice to show that
+\[
+    \lim_{n \to \infty} x^{q_n - q_n'} = 1,
+\]
+since the claim would then follow from limit laws
+(since \(x^{q_n} = x^{q_n - q_n'} x^{q_n'}\)).
+
+Write \(r_n \coloneqq q_n - q_n'\);
+by limit laws we know that \((r_n)_{n = 1}^\infty\) converges to \(0\).
+We have to show that for every \(\varepsilon > 0\), the sequence \((x^{r_n})_{n = 1}^\infty\) is eventually \(\varepsilon\)-close to \(1\).
+But from Lemma \ref{6.5.3} we know that the sequence \((x^{1 / k})_{k = 1}^\infty\) is eventually \(\varepsilon\)-close to \(1\).
+Since \(\lim_{k \to \infty} x^{-1 / k}\) is also equal to \(1\) by Lemma \ref{6.5.3}, we know that \((x^{-1 / k})_{k = 1}^\infty\) is also eventually \(\varepsilon\)-close to \(1\).
+Thus we can find a \(K\) such that \(x^{1 / K}\) and \(x^{-1 / K}\) are both \(\varepsilon\)-close to \(1\).
+But since \((r_n)_{n = 1}^\infty\) is convergent to \(0\), it is eventually \(1 / K\)-close to \(0\), so that eventually \(-1 / K \leq r_n \leq 1 / K\), and thus when \(x > 1\) we have \(x^{-1 / K} \leq x^{r_n} \leq x^{1 / K}\), when \(x < 1\) we have \(x^{1 / K} \leq x^{r_n} \leq x^{-1 / K}\).
+In particular \(x^{r_n}\) is also eventually \(\varepsilon\)-close to \(1\) (see Proposition \ref{4.3.7}(f)), as desired.
+\end{proof}
