@@ -95,3 +95,98 @@ Thus we can find a \(K\) such that \(x^{1 / K}\) and \(x^{-1 / K}\) are both \(\
 But since \((r_n)_{n = 1}^\infty\) is convergent to \(0\), it is eventually \(1 / K\)-close to \(0\), so that eventually \(-1 / K \leq r_n \leq 1 / K\), and thus when \(x > 1\) we have \(x^{-1 / K} \leq x^{r_n} \leq x^{1 / K}\), when \(x < 1\) we have \(x^{1 / K} \leq x^{r_n} \leq x^{-1 / K}\).
 In particular \(x^{r_n}\) is also eventually \(\varepsilon\)-close to \(1\) (see Proposition \ref{4.3.7}(f)), as desired.
 \end{proof}
+
+\begin{definition}[Exponentiation to a real exponent]\label{6.7.2}
+Let \(x > 0\) be real, and let \(\alpha\) be a real number.
+We define the quantity \(x^\alpha\) by the formula \(x^\alpha = \lim_{n \to \infty} x^{q_n}\), where \((q_n)_{n = 1}^\infty\) is any sequence of rational numbers converging to \(\alpha\).
+\end{definition}
+
+\begin{note}
+Let us check that Definition \ref{6.7.2} is well-defined.
+First of all, given any real number \(\alpha\) we always have at least one sequence \((q_n)_{n = 1}^\infty\) of rational numbers converging to \(\alpha\), by the definition of real numbers (and Proposition \ref{6.1.15}).
+Secondly, given any such sequence \((q_n)_{n = 1}^\infty\), the limit \(\lim_{n \to \infty} x^{q_n}\) exists by Lemma \ref{6.7.1}.
+Finally, even though there can be multiple choices for the sequence \((q_n)_{n = 1}^\infty\), they all give the same limit by Lemma \ref{6.7.1}.
+Thus this definition is well-defined.
+\end{note}
+
+\begin{note}
+If \(\alpha\) is not just real but rational, i.e., \(\alpha = q\) for some rational \(q\), then Definition \ref{6.7.2} could in principle be inconsistent with our earlier definition of exponentiation in Section \ref{sec 6.7}.
+But in this case \(\alpha\) is clearly the limit of the sequence \((q)_{n = 1}^\infty\), so by definition \(x^\alpha = \lim_{n \to \infty} x^q = x^q\).
+Thus the new definition of exponentiation is consistent with the old one.
+\end{note}
+
+\begin{proposition}\label{6.7.3}
+All the results of Lemma \ref{5.6.9}, which held for rational numbers \(q\) and \(r\), continue to hold for real numbers \(q\) and \(r\).
+\end{proposition}
+
+\begin{proof}{(a)}
+Let \(r\) be a real number.
+Then we can write \(r = \lim_{n \to \infty} r_n\) for some sequences \((r_n)_{n = 1}^\infty\) of rationals, by the definition of real numbers (and Proposition \ref{6.1.15}).
+Since \((r_n)_{n = 1}^\infty\) is a Cauchy sequence, it is bounded by some \(M \in \mathbf{Q}\), i.e, \(-M \leq r_n \leq M \ \forall\ n \geq 1\).
+By Lemma \ref{5.6.9}, both \(x^M\) and \(x^{-M}\) are positive real numbers.
+If \(0 < x < 1\), then \(x^M \leq x^{r_n} \leq x^{-M}\).
+If \(x > 1\), then \(x^{-M} \leq x^{r_n} \leq x^M\).
+By Theorem \ref{6.1.19}, we have
+\begin{align*}
+& \lim_{n \to \infty} \min(x^{-M}, x^M, x^{r_n}) \\
+&= \min(\lim_{n \to \infty} x^{-M}, \lim_{n \to \infty} x^M, \lim_{n \to \infty} x^{r_n}) \\
+&= \min(\lim_{n \to \infty} x^{-M}, \lim_{n \to \infty} x^M, r).
+\end{align*}
+Since both \(x^M\) and \(x^{-M}\) are positive real numbers, we must also have \(r\) is a positive real numbers, as desired.
+\end{proof}
+
+\begin{proof}{(b)}
+Let \(q\) and \(r\) be real numbers.
+Then we can write \(q = \lim_{n \to \infty} q_n\) and \(r = \lim_{n \to \infty} r_n\) for some sequences \((q_n)_{n = 1}^\infty\) and \((r_n)_{n = 1}^\infty\) of rationals, by the definition of real numbers (and Proposition \ref{6.1.15}).
+Then by the limit laws, \(q + r\) is the limit of \((q_n + r_n)_{n = 1}^\infty\).
+By definition of real exponentiation, we have
+\[
+    x^{q + r} = \lim_{n \to \infty} x^{q_n + r_n} ; x^q = \lim_{n \to \infty} x^{q_n} ;  x^r = \lim_{n \to \infty} x^{r_n}.
+\]
+But by Lemma \ref{5.6.9}(b) (applied to \emph{rational} exponents) we have \(x^{q_n + r_n} = x^{q_n} x^{r_n}\).
+Thus by limit laws we have \(x^{q + r} = x^q x^r\), as desired.
+\end{proof}
+
+\begin{proof}{(c)}
+Let \(r\) be a real number.
+Then we can write \(r = \lim_{n \to \infty} r_n\) for some sequences \((r_n)_{n = 1}^\infty\) of rationals, by the definition of real numbers (and Proposition \ref{6.1.15}).
+Then by the limit laws, \(-r\) is the limit of \((-r_n)_{n = 1}^\infty\).
+By definition of real exponentiation, we have
+\[
+    x^{-r} = \lim_{n \to \infty} x^{-r_n}
+\]
+But by Lemma \ref{5.6.9}(c) (applied to \emph{rational} exponents) we have \(x^{-r_n} = 1 / x^{r_n}\).
+Thus by limit laws we have \(x^{-r} = 1 / x^r\), as desired.
+\end{proof}
+
+\begin{proof}{(d)}
+Let \(x, y, r\) be positive real numbers.
+Then we can write \(r = \lim_{n \to \infty} r_n\) for some sequences \((r_n)_{n = 1}^\infty\) of rationals, by the definition of real numbers (and Proposition \ref{6.1.15}).
+By definition of real exponentiation, we have
+\[
+    \max(x^r, y^r) = \lim_{n \to \infty} \max(x^{r_n}, y^{r_n}) ; x^r = \lim_{n \to \infty} x^{r_n} ; y^r = \lim_{n \to \infty} y^{r_n}.
+\]
+But by Lemma \ref{5.6.9}(d) (applied to \emph{rational} exponents) we have \(x > y \iff x^{r_n} > y^{r_n}\).
+Thus by limit laws we have \(x > y \iff x^r > y^r\), as desired.
+\end{proof}
+
+\begin{proof}{(e)}
+Let \(x, q, r\) be positive real numbers.
+Then we can write \(q = \lim_{n \to \infty} q_n\) and \(r = \lim_{n \to \infty} r_n\) for some sequences \((q_n)_{n = 1}^\infty\) and \((r_n)_{n = 1}^\infty\) of rationals, by the definition of real numbers (and Proposition \ref{6.1.15}).
+By definition of real exponentiation, we have
+\[
+    \max(x^q, x^r) = \lim_{n \to \infty} \max(x^{q_n}, x^{r_n}); x^q = \lim_{n \to \infty} x^{q_n} ; x^r = \lim_{n \to \infty} x^{r_n}.
+\]
+But by Lemma \ref{5.6.9}(e) (applied to \emph{rational} exponents) we have if \(x > 1\) then \(x^{q_n} > x^{r_n} \iff q > r\) and if \(x < 1\) then \(x^{q_n} > x^{r_n} \iff q < r\).
+Thus by limit laws we have if \(x > 1\) then \(x^q > x^r \iff q > r\) and if \(x < 1\) then \(x^q > x^r \iff q < r\), as desired.
+\end{proof}
+
+\exercisesection
+
+\begin{exercise}\label{ex 6.7.1}
+Prove the remaining components of Proposition \ref{6.7.3}.
+\end{exercise}
+
+\begin{proof}
+See Proposition \ref{6.7.3}.
+\end{proof}
