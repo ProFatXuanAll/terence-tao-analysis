@@ -34,3 +34,172 @@ In particular, one can replace the index of summation \(i\) with any other symbo
     \sum_{i = m}^n a_i = \sum_{j = m}^n a_j.
 \]
 \end{remark}
+
+\begin{lemma}\label{7.1.4}
+    \begin{enumerate}
+        \item Let \(m \leq n < p\) be integers, and let \(a_i\) be a real number assigned to each integer \(m \leq i \leq p\).
+        Then we have
+        \[
+            \sum_{i = m}^n a_i + \sum_{i = n + 1}^p a_i = \sum_{i = m}^p a_i.
+        \]
+        \item Let \(m \leq n\) be integers, \(k\) be another integer, and let \(a_i\) be a real number assigned to each integer \(m \leq i \leq n\).
+        Then we have
+        \[
+            \sum_{i = m}^n a_i = \sum_{j = m + k}^{n + k} a_{j - k}.
+        \]
+        \item Let \(m \leq n\) be integers, and let \(a_i, b_i\) be real numbers assigned to each integer \(m \leq i \leq n\).
+        Then we have
+        \[
+            \sum_{i = m}^n (a_i + b_i) = \Bigg(\sum_{i = m}^n a_i\Bigg) + \Bigg(\sum_{i = m}^n b_i\Bigg).
+        \]
+        \item Let \(m \leq n\) be integers, and let \(a_i\) be a real number assigned to each integer \(m \leq i \leq n\), and let \(c\) be another real number.
+        Then we have
+        \[
+            \sum_{i = m}^n (ca_i) = c\Bigg(\sum_{i = m}^n a_i\Bigg).
+        \]
+        \item (Triangle inequality for finite series)
+        Let \(m \leq n\) be integers, and let \(a_i\) be a real number assigned to each integer \(m \leq i \leq n\).
+        Then we have
+        \[
+            \abs*{\sum_{i = m}^n a_i} \leq \sum_{i = m}^n \abs*{a_i}.
+        \]
+        \item (Comparison test for finite series) Let \(m \leq n\) be integers, and let \(a_i\), \(b_i\) be real numbers assigned to each integer \(m \leq i \leq n\).
+        Suppose that \(a_i \leq b_i\) for all \(m \leq i \leq n\).
+        Then we have
+        \[
+            \sum_{i = m}^n a_i \leq \sum_{i = m}^n b_i
+        \]
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}{(a)}
+We use induction on \(p\) and start with \(p = m + 1\).
+For \(p = m + 1\), we have
+\[
+    \sum_{i = m}^n a_i + \sum_{i = n + 1}^p a_i = a_m + a_{m + 1} = \sum_{i = m}^p a_i
+\]
+by Definition \ref{7.1.1}.
+Thus the base case holds.
+Suppose inductively that for some \(p > m\) the statement holds.
+Then for \(p + 1\), we have
+\begin{align*}
+& \sum_{i = m}^n a_i + \sum_{i = n + 1}^{p + 1} a_i \\
+&= \Bigg(\sum_{i = m}^n a_i\Bigg) + \Bigg(\sum_{i = n + 1}^p a_i\Bigg) + a_{p + 1} & \text{(by Definition \ref{7.1.1})} \\
+&= \Bigg(\sum_{i = m}^p a_i\Bigg) + a_{p + 1} & \text{(by induction hypothesis)} \\
+&= \sum_{i = m}^{p + 1} a_i. & \text{(by Definition \ref{7.1.1})}
+\end{align*}
+This close the induction.
+\end{proof}
+
+\begin{proof}{(b)}
+We use induction on \(n\) and start with \(n = m\) to show the statement is true.
+For \(n = m\), we have
+\begin{align*}
+\sum_{j = m + k}^{m + k} a_{j - k} &= \Bigg(\sum_{j = m + k}^{m + k - 1} a_{j - k}\Bigg) + a_{m + k - k} & \text{(by Definition \ref{7.1.1})} \\
+&= \Bigg(\sum_{j = m + k}^{m + k - 1} a_{j - k}\Bigg) + a_m \\
+&= 0 + a_m & \text{(by Definition \ref{7.1.1})} \\
+&= \Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + a_m & \text{(by Definition \ref{7.1.1})} \\
+&= \sum_{i = m}^m a_i. & \text{(by Definition \ref{7.1.1})}
+\end{align*}
+So the base case holds.
+Suppose inductively that for some \(n \geq m\) the statement holds.
+Then for \(n + 1\), we have
+\begin{align*}
+\sum_{j = m + k}^{n + 1 + k} a_{j - k} &= \Bigg(\sum_{j = m + k}^{n + 1 + k - 1} a_{j - k}\Bigg) + a_{n + 1 + k - k} & \text{(by Definition \ref{7.1.1})} \\
+&= \Bigg(\sum_{j = m + k}^{n + k} a_{j - k}\Bigg) + a_n \\
+&= \Bigg(\sum_{i = m}^n a_i\Bigg) + a_n & \text{(by induction hypothesis)} \\
+&= \sum_{i = m}^{n + 1} a_i. & \text{(by Definition \ref{7.1.1})}
+\end{align*}
+This close the induction.
+\end{proof}
+
+\begin{proof}{(c)}
+We use induction on \(n\) and start with \(n = m\) to show the statement is true.
+For \(n = m\), we have
+\begin{align*}
+\sum_{i = m}^m (a_i + b_i) &= \Bigg(\sum_{i = m}^{m - 1} (a_i + b_i)\Bigg) + a_m + b_m & \text{(by Definition \ref{7.1.1})} \\
+&= 0 + a_m + b_m & \text{(by Definition \ref{7.1.1})} \\
+&= \Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + \Bigg(\sum_{i = m}^{m - 1} b_i\Bigg) + a_m + b_m & \text{(by Definition \ref{7.1.1})} \\
+&= \Bigg(\sum_{i = m}^m a_i\Bigg) + \Bigg(\sum_{i = m}^m b_i\Bigg). & \text{(by Definition \ref{7.1.1})}
+\end{align*}
+So the base case holds.
+Suppose inductively that for some \(n \geq m\) the statement holds.
+Then for \(n + 1\), we have
+\begin{align*}
+\sum_{i = m}^{n + 1} (a_i + b_i) &= \Bigg(\sum_{i = m}^{n + 1 - 1} (a_i + b_i)\Bigg) + a_{n + 1} + b_{n + 1} & \text{(by Definition \ref{7.1.1})} \\
+&= \Bigg(\sum_{i = m}^n (a_i + b_i)\Bigg) + a_{n + 1} + b_{n + 1} & \text{(by Definition \ref{7.1.1})} \\
+&= \Bigg(\sum_{i = m}^n a_i\Bigg) + \Bigg(\sum_{i = m}^n b_i\Bigg) + a_{n + 1} + b_{n + 1} & \text{(by induction hypothesis)} \\
+&= \Bigg(\sum_{i = m}^{n + 1} a_i\Bigg) + \Bigg(\sum_{i = m}^{n + 1} b_i\Bigg). & \text{(by Definition \ref{7.1.1})}
+\end{align*}
+This close the induction.
+\end{proof}
+
+\begin{proof}{(d)}
+We use induction on \(n\) and start with \(n = m\) to show the statement is true.
+For \(n = m\), we have
+\begin{align*}
+\sum_{i = m}^m ca_i &= \Bigg(\sum_{i = m}^{m - 1} ca_i\Bigg) + ca_m & \text{(by Definition \ref{7.1.1})} \\
+&= 0 + ca_m & \text{(by Definition \ref{7.1.1})} \\
+&= c \times 0 + ca_m \\
+&= c\Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + ca_m & \text{(by Definition \ref{7.1.1})} \\
+&= c\Bigg(\Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + a_m\Bigg) \\
+&= c\Bigg(\sum_{i = m}^m a_i\Bigg). & \text{(by Definition \ref{7.1.1})}
+\end{align*}
+So the base case holds.
+Suppose inductively that for some \(n \geq m\) the statement holds.
+Then for \(n + 1\), we have
+\begin{align*}
+\sum_{i = m}^{n + 1} ca_i &= \Bigg(\sum_{i = m}^{n + 1 - 1} ca_i\Bigg) + ca_{n + 1} & \text{(by Definition \ref{7.1.1})} \\
+&= \Bigg(\sum_{i = m}^n ca_i\Bigg) + ca_{n + 1} \\
+&= c\Bigg(\sum_{i = m}^n a_i\Bigg) + ca_{n + 1} & \text{(by induction hypothesis)} \\
+&= c\Bigg(\Bigg(\sum_{i = m}^n a_i\Bigg) + a_{n + 1}\Bigg) \\
+&= c\Bigg(\sum_{i = m}^{n + 1} a_i\Bigg). & \text{(by Definition \ref{7.1.1})}
+\end{align*}
+This close the induction.
+\end{proof}
+
+\begin{proof}{(e)}
+We use induction on \(n\) and start with \(n = m\) to show the statement is true.
+For \(n = m\), we have
+\begin{align*}
+\abs*{\sum_{i = m}^m a_i} &= \abs*{\Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + a_m} & \text{(by Definition \ref{7.1.1})} \\
+&= \abs*{0 + a_m} & \text{(by Definition \ref{7.1.1})} \\
+&\leq \abs*{0} + \abs*{a_m} \\
+&= \Bigg(\sum_{i = m}^{m - 1} \abs*{a_i}\Bigg) + \abs*{a_m} & \text{(by Definition \ref{7.1.1})} \\
+&= \sum_{i = m}^m \abs*{a_i}. & \text{(by Definition \ref{7.1.1})}
+\end{align*}
+So the base case holds.
+Suppose inductively that for some \(n \geq m\) the statement holds.
+Then for \(n + 1\), we have
+\begin{align*}
+\abs*{\sum_{i = m}^{n + 1} a_i} &= \abs*{\Bigg(\sum_{i = m}^{n + 1 - 1} a_i\Bigg) + a_{n + 1}} & \text{(by Definition \ref{7.1.1})} \\
+&= \abs*{\Bigg(\sum_{i = m}^n a_i\Bigg) + a_{n + 1}} \\
+&\leq \abs*{\sum_{i = m}^n a_i} + \abs*{a_{n + 1}} \\
+&\leq \sum_{i = m}^n \abs*{a_i} + \abs*{a_{n + 1}} & \text{(by induction hypothesis)} \\
+&= \sum_{i = m}^{n + 1} \abs*{a_i}. & \text{(by Definition \ref{7.1.1})}
+\end{align*}
+This close the induction.
+\end{proof}
+
+\begin{proof}{(f)}
+We use induction on \(n\) and start with \(n = m\) to show the statement is true.
+For \(n = m\), we have
+\begin{align*}
+\sum_{i = m}^m a_i &= \Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + a_m & \text{(by Definition \ref{7.1.1})} \\
+&= 0 + a_m = a_m & \text{(by Definition \ref{7.1.1})} \\
+&\leq b_m = 0 + b_m & \text{(by the given condition)} \\
+&= \Bigg(\sum_{i = m}^{m - 1} b_i\Bigg) + b_m & \text{(by Definition \ref{7.1.1})} \\
+&= \sum_{i = m}^m b_i. & \text{(by Definition \ref{7.1.1})} \\
+\end{align*}
+So the base case holds.
+Suppose inductively that for some \(n \geq m\) the statement holds.
+Then for \(n + 1\), we have
+\begin{align*}
+\sum_{i = m}^{n + 1} a_i &= \Bigg(\sum_{i = m}^{n + 1 - 1} a_i\Bigg) + a_{n + 1} & \text{(by Definition \ref{7.1.1})} \\
+&= \Bigg(\sum_{i = m}^n a_i\Bigg) + a_{n + 1} \\
+&\leq \Bigg(\sum_{i = m}^n b_i\Bigg) + a_{n + 1} & \text{(by induction hypothesis)} \\
+&\leq \Bigg(\sum_{i = m}^n b_i\Bigg) + b_{n + 1} & \text{(by the given condition)} \\
+&= \sum_{i = m}^{n + 1} b_i. & \text{(by Definition \ref{7.1.1})} \\
+\end{align*}
+This close the induction.
+\end{proof}
