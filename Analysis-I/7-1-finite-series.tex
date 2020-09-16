@@ -234,7 +234,7 @@ Then we have
 
 \begin{proof}
 We use induction on \(n\);
-more precisely, we let \(P(n)\) be the assertion that ``For any set \(X\) of \(n\) elements, any function \(f : X \to \mathbf{R}\), and any two bijections \(g, h\) from \(\{i \in \mathbf{N} : 1 \leq i \leq n\}\) to \(X\), we have \(\sum_{i = 1}^n f(g(i)) = \sum_{i = 1}^n f(h(i)\)''.
+more precisely, we let \(P(n)\) be the assertion that ``For any set \(X\) of \(n\) elements, any function \(f : X \to \mathbf{R}\), and any two bijections \(g, h\) from \(\{i \in \mathbf{N} : 1 \leq i \leq n\}\) to \(X\), we have \(\sum_{i = 1}^n f(g(i)) = \sum_{i = 1}^n f(h(i))\)''.
 (More informally, \(P(n)\) is the assertion that Proposition \ref{7.1.8} is true for that value of \(n\).)
 We want to prove that \(P(n)\) is true for all natural numbers \(n\).
 
@@ -339,3 +339,102 @@ as \(\sum_{x \in X : P(x) \text{ is true}} f(x)\) or even as \(\sum_{P(x) \text{
     \]
     \end{enumerate}
 \end{proposition}
+
+\begin{proof}{(a)}
+Let \(g : \{i \in \mathbf{N} : 1 \leq i \leq 0\} \to \emptyset\) be a function.
+Then \(g\) is a bijection.
+So
+\begin{align*}
+\sum_{x \in X} f(x) &= \sum_{i = 1}^0 f(g(i)) & \text{(by Definition \ref{7.1.6})} \\
+&= 0. & \text{(by Definition \ref{7.1.1})}
+\end{align*}
+\end{proof}
+
+\begin{proof}{(b)}
+Let \(g : \{1\} \to X\) be a function.
+Then \(g\) is a bijection.
+So
+\begin{align*}
+\sum_{x \in X} f(x) &= \sum_{i = 1}^1 f(g(i)) & \text{(by Definition \ref{7.1.6})} \\
+&= \bigg(\sum_{i = 1}^0 f(g(i))\bigg) + f(g(1)) & \text{(by Definition \ref{7.1.1})} \\
+&= 0 + f(g(1)) & \text{(by Definition \ref{7.1.1})} \\
+&= f(x_0).
+\end{align*}
+\end{proof}
+
+\begin{proof}{(c)}
+Let \(h : \{i \in \mathbf{N} : 1 \leq i \leq \#(Y)\} \to Y\) be a bijection.
+Then \(g \circ h : \) is also a bijection.
+So
+\begin{align*}
+\sum_{x \in X} f(x) &= \sum_{i = 1}^{\#(Y)} f((g \circ h)(i)) & \text{(by Definition \ref{7.1.6})} \\
+&= \sum_{i = 1}^{\#(Y)} f(g(h(i))) \\
+&= \sum_{i = 1}^{\#(Y)} (f \circ g)(h(i)) \\
+&= \sum_{y \in Y} (f \circ g)(y) & \text{(by Definition \ref{7.1.6})} \\
+&= \sum_{y \in Y} f(g(y)).
+\end{align*}
+\end{proof}
+
+\begin{proof}{(d)}
+Let \(f : X \to \{a_i \in \mathbf{R} : n \leq i \leq m\}\) be a function where \(f = i \mapsto a_i\).
+Let \(g : \{i \in \mathbf{N} : 1 \leq i \leq m - n + 1\} \to X\) be a function where \(g = i \mapsto i + n - 1\).
+Then \(g\) is a bijection.
+So
+\begin{align*}
+\sum_{i \in X} a_i &= \sum_{i \in X} f(i) \\
+&= \sum_{i = 1}^{m - n + 1} f(g(i)) & \text{(by Definition \ref{7.1.6})} \\
+&= \sum_{i = 1 + n - 1}^{m - n + 1 + n - 1} f(g(i - n + 1)) & \text{(by Lemma \ref{7.1.4})} \\
+&= \sum_{i = n}^m f(g(i - n + 1)) \\
+&= \sum_{i = n}^m f(i - n + 1 + n - 1) \\
+&= \sum_{i = n}^m f(i) \\
+&= \sum_{i = n}^m a_i.
+\end{align*}
+\end{proof}
+
+\begin{proof}{(e)}
+Let \(g : \{i \in \mathbf{N} : 1 \leq i \leq \#(X)\} \to X\) and \(h : \{i \in \mathbf{N} : 1 \leq i \leq \#(Y)\} \to Y\) be bijections.
+Let \(k : \{i \in \mathbf{N} : 1 \leq i \leq \#(X \cup Y)\} \to X \cup Y\) be a function where \(k(i) = g(i)\) if \(1 \leq i \leq \#(X)\) and \(k(i) = h(i - \#(X))\) otherwise.
+Then \(k\) is a bijection.
+So
+\begin{align*}
+\sum_{z \in X \cup Y} f(z) &= \sum_{i = 1}^{\#(X \cup Y)} f(k(i)) & \text{(by Definition \ref{7.1.6})} \\
+&= \sum_{i = 1}^{\#(X)} f(k(i)) + \sum_{i = \#(X) + 1}^{\#(X \cup Y)} f(k(i)) & \text{(by Lemma \ref{7.1.4})} \\
+&= \sum_{i = 1}^{\#(X)} f(g(i)) + \sum_{i = \#(X) + 1}^{\#(X \cup Y)} f(h(i - \#(X))) \\
+&= \sum_{i = 1}^{\#(X)} f(g(i)) + \sum_{i = 1}^{\#(Y)} f(h(i)) & \text{(by Lemma \ref{7.1.4})} \\
+&= \sum_{x \in X} f(x) + \sum_{y \in Y} f(y). & \text{(by Definition \ref{7.1.6})}
+\end{align*}
+\end{proof}
+
+\begin{proof}{(f)}
+
+\end{proof}
+
+\begin{proof}{(g)}
+
+\end{proof}
+
+\begin{proof}{(h)}
+
+\end{proof}
+
+\begin{proof}{(i)}
+
+\end{proof}
+
+\exercisesection
+
+\begin{exercise}\label{ex 7.1.1}
+Prove Lemma \ref{7.1.4}.
+\end{exercise}
+
+\begin{proof}
+See Lemma \ref{7.1.4}.
+\end{proof}
+
+\begin{exercise}\label{ex 7.1.2}
+Prove Proposition \ref{7.1.11}.
+\end{exercise}
+
+\begin{proof}
+See Proposition \ref{7.1.11}.
+\end{proof}
