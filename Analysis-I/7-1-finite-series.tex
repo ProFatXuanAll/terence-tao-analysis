@@ -460,6 +460,44 @@ for any bijection \(f\) from the set \(\{i \in \mathbf{Z} : n \leq i \leq m\}\) 
 Informally, this means that we can rearrange the elements of a finite sequence at will and still obtain the same value.
 \end{remark}
 
+\begin{lemma}\label{7.1.13}
+Let \(X, Y\) be finite sets, and let \(f : X \times Y \to \mathbf{R}\) be a function.
+Then
+\[
+    \sum_{x \in X} \bigg(\sum_{y \in Y} f(x, y)\bigg) = \sum_{(x, y) \in X \times Y} f(x, y).
+\]
+\end{lemma}
+
+\begin{proof}
+Let \(n\) be the number of elements in \(X\).
+We will use induction on \(n\) (cf. Proposition \ref{7.1.8});
+i.e., we let \(P(n)\) be the assertion that Lemma \ref{7.1.13} is true for any set \(X\) with \(n\) elements, and any finite set \(Y\) and any function \(f : X \times Y \to \mathbf{R}\).
+We wish to prove \(P(n)\) for all natural numbers \(n\).
+
+The base case \(P(0)\) is easy, following from Proposition \ref{7.1.11}(a).
+Now suppose that \(P(n)\) is true;
+we now show that \(P(n + 1)\) is true.
+Let \(X\) be a set with \(n + 1\) elements.
+In particular, by Lemma \ref{3.6.9}, we can write \(X = X' \cup \{x_0\}\), where \(x_0\) is an element of \(X\) and \(X' \coloneqq X - \{x_0\}\) has \(n\) elements.
+Then by Proposition \ref{7.1.11}(e) we have
+\[
+    \sum_{x \in X} \bigg(\sum_{y \in Y} f(x, y)\bigg) = \sum_{x \in X'} \bigg(\sum_{y \in Y} f(x, y)\bigg) + \bigg(\sum_{y \in Y} f(x_0, y)\bigg);
+\]
+by the induction hypothesis this is equal to
+\[
+    \sum_{(x, y) \in X' \times Y} f(x, y) + \bigg(\sum_{y \in Y} f(x_0, y)\bigg).
+\]
+By Proposition \ref{7.1.11}(c) this is equal to
+\[
+    \sum_{(x, y) \in X' \times Y} f(x, y) + \bigg(\sum_{(x, y) \in \{x_0\} \times Y} f(x, y)\bigg).
+\]
+By Proposition \ref{7.1.11}(e) this is equal to
+\[
+    \sum_{(x, y) \in X \times Y} f(x, y)
+\]
+as desired.
+\end{proof}
+
 \exercisesection
 
 \begin{exercise}\label{ex 7.1.1}
