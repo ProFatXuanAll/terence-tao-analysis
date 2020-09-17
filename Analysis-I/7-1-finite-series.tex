@@ -1024,7 +1024,29 @@ Things however get trickier with infinite sums.
 \end{exercise}
 
 \begin{proof}
-Let \(n = \#(X)\).
-We use induction on \(n\).
-For \(n = 0\), we have \(X = \emptyset\).
+Let \(k = \#(X)\).
+We use induction on \(k\).
+For \(k = 0\), we have \(X = \emptyset\).
+So
+\begin{align*}
+\lim_{n \to \infty} \sum_{x \in X} a_n(x) &= \lim_{n \to \infty} 0 & \text{(by Proposition \ref{7.1.11})} \\
+&= 0 \\
+&= \sum_{x \in X} \lim_{n \to \infty} a_n(x). & \text{(by Proposition \ref{7.1.11})}
+\end{align*}
+Thus the base case holds.
+Suppose inductively that for some \(k \geq 0\) the statement is true.
+Then for \(k + 1\), we have to show that the statement is also true.
+Let \(x_0 \in X\) and \(X' = \{x_0\} \cup X\).
+So \(\#(X') = \#(X) - 1 = n\), and we have
+\begin{align*}
+\lim_{n \to \infty} \sum_{x \in X} a_n(x) &= \lim_{n \to \infty} \sum_{x \in \{x_0\} \cup X'} a_n(x) \\
+&= \lim_{n \to \infty} \bigg(\sum_{x \in \{x_0\}} a_n(x) + \sum_{x \in X'} a_n(x)\bigg) & \text{(by Proposition \ref{7.1.11})} \\
+&= \bigg(\lim_{n \to \infty} \sum_{x \in \{x_0\}} a_n(x)\bigg) + \bigg(\lim_{n \to \infty} \sum_{x \in X'} a_n(x)\bigg) & \text{(by Theorem \ref{6.1.19})} \\
+&= \bigg(\lim_{n \to \infty} a_n(x_0)\bigg) + \bigg(\lim_{n \to \infty} \sum_{x \in X'} a_n(x)\bigg) & \text{(by Proposition \ref{7.1.11})} \\
+&= \bigg(\sum_{x \in \{x_0\}} \lim_{n \to \infty} a_n(x)\bigg) + \bigg(\lim_{n \to \infty} \sum_{x \in X'} a_n(x)\bigg) & \text{(by Proposition \ref{7.1.11})} \\
+&= \bigg(\sum_{x \in \{x_0\}} \lim_{n \to \infty} a_n(x)\bigg) + \bigg(\sum_{x \in X'} \lim_{n \to \infty} a_n(x)\bigg) & \text{(by induction hypothesis)} \\
+&= \bigg(\sum_{x \in \{x_0\} \cup X'} \lim_{n \to \infty} a_n(x)\bigg) & \text{(by Proposition \ref{7.1.11})} \\
+&= \sum_{x \in X} \lim_{n \to \infty} a_n(x).
+\end{align*}
+This close the induction.
 \end{proof}
