@@ -958,3 +958,57 @@ Which of the above result for finite series have analoges for finite products?
 \begin{proof}
 See Additional Corollary \ref{ac 7.1.1}, \ref{ac 7.1.2}, \ref{ac 7.1.3}, \ref{ac 7.1.4}, \ref{ac 7.1.5}, \ref{ac 7.1.6} and \ref{ac 7.1.7}.
 \end{proof}
+
+\begin{exercise}\label{ex 7.1.4}
+Define the \emph{factorial function} \(n!\) for natural numbers \(n\) by the recursive definition \(0! \coloneqq 1\) and \((n + 1)! \coloneqq n! \times (n + 1)\).
+If \(x\) and \(y\) are real numbers, prove the \emph{binomial formula}
+\[
+    (x + y)^n = \sum_{j = 0}^n \frac{n!}{j!(n - j)!} x^j y^{n - j}
+\]
+for all natural numbers \(n\).
+\end{exercise}
+
+\begin{proof}
+We use induction on \(n\).
+For \(n = 0\), we have
+\begin{align*}
+(x + y)^0 &= 1 \\
+&= \frac{0!}{0!(0 - 0)!} x^0 y^{0 - 0} & \text{(by the given condition)} \\
+&= \sum_{j = 0}^{-1} \frac{0!}{j!(0 - j)!} x^j y^{0 - j} + \frac{0!}{0!(0 - 0)!} x^0 y^{0 - 0} & \text{(by Definition \ref{7.1.1})} \\
+&= \sum_{j = 0}^0 \frac{0!}{j!(0 - j)!} x^j y^{0 - j} & \text{(by Definition \ref{7.1.1})}
+\end{align*}
+So the base case holds.
+Suppose inductively that for some \(n >= 0\) the statement holds.
+Then for \(n + 1\), we have
+\begin{align*}
+(x + y)^{n + 1} &= (x + y)^n \times (x + y) \\
+&= \bigg(\sum_{j = 0}^n \frac{n!}{j!(n - j)!} x^j y^{n - j}\bigg) \times (x + y) & \text{(by induction hypothesis)} \\
+&= \bigg(\sum_{j = 0}^n \frac{n!}{j!(n - j)!} x^{j + 1} y^{n - j}\bigg) \\
+& \quad + \bigg(\sum_{j = 0}^n \frac{n!}{j!(n - j)!} x^j y^{n + 1 - j}\bigg) \\
+&= \bigg(\sum_{j = 0}^{n - 1} \frac{n!}{j!(n - j)!} x^{j + 1} y^{n - j}\bigg) & \text{(by Definition \ref{7.1.1})} \\
+& \quad + \bigg(\frac{n!}{n!0!} x^{n + 1} y^0\bigg) \\
+& \quad + \bigg(\sum_{j = 1}^n \frac{n!}{j!(n - j)!} x^j y^{n + 1 - j}\bigg) \\
+& \quad + \bigg(\frac{n!}{0!n!} x^0 y^{n + 1}\bigg) \\
+&= \bigg(\sum_{j = 0}^{n - 1} \frac{n!}{j!(n - j)!} x^{j + 1} y^{n - j}\bigg) + x^{n + 1} & \text{(by the given condition)} \\
+& \quad + \bigg(\sum_{j = 1}^n \frac{n!}{j!(n - j)!} x^j y^{n + 1 - j}\bigg) + y^{n + 1} \\
+&= \bigg(\sum_{j = 1}^n \frac{n!}{(j - 1)!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg) + x^{n + 1} & \text{(by Lemma \ref{7.1.4})} \\
+& \quad + \bigg(\sum_{j = 1}^n \frac{n!}{j!(n - j)!} x^j y^{n + 1 - j}\bigg) + y^{n + 1} \\
+&= x^{n + 1} + y^{n + 1} & \text{(by Lemma \ref{7.1.4})} \\
+& \quad + \bigg(\sum_{j = 1}^n \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg).
+\end{align*}
+And we also have
+\begin{align*}
+& \sum_{j = 0}^{n + 1} \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j} \\
+&= \bigg(\sum_{j = n + 1}^{n + 1} \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg) & \text{(by Definition \ref{7.1.1})} \\
+& \quad + \bigg(\sum_{j = 0}^n \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg) \\
+&= x^{n + 1} + \bigg(\sum_{j = 0}^n \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg) & \text{(by the given condition)} \\
+&= x^{n + 1} + \bigg(\sum_{j = 0}^0 \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg) & \text{(by Definition \ref{7.1.1})} \\
+& \quad + \bigg(\sum_{j = 1}^n \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg) \\
+&= x^{n + 1} + y^{n + 1} + \bigg(\sum_{j = 1}^n \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg). & \text{(by the given condition)}
+\end{align*}
+Thus we have
+\[
+    (x + y)^{n + 1} = \sum_{j = 0}^{n + 1} \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}.
+\]
+And this close the induction.
+\end{proof}
