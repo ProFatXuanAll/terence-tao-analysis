@@ -26,7 +26,7 @@ To rigorously define what the series actually sums to, we need another definitio
 Let \(\sum_{n = m}^\infty a_n\) be a formal infinite series.
 For any integer \(N \geq m\), we define the \emph{\(N^{\text{th}}\) partial sum} \(S_N\) of this series to be \(S_N \coloneqq \sum_{n = m}^N a_n\);
 of course, \(S_N\) is a real number.
-If the sequence \((S_N)_{n = m}^\infty\) converges to some limit \(L\) as \(N \to \infty\), then we say that the infinite series \(\sum_{n = m}^\infty a_n\) is \emph{convergent}, and \emph{converges to \(L\)};
+If the sequence \((S_N)_{N = m}^\infty\) converges to some limit \(L\) as \(N \to \infty\), then we say that the infinite series \(\sum_{n = m}^\infty a_n\) is \emph{convergent}, and \emph{converges to \(L\)};
 we also write \(L = \sum_{n = m}^\infty a_n\), and say that \(L\) is the \emph{sum} of the infinite series \(\sum_{n = m}^\infty a_n\).
 If the partial sums \(S_N\) diverge, then we say that the infinite series \(\sum_{n = m}^\infty a_n\) is \emph{divergent}, and we do not assign any real number value to that series.
 \end{definition}
@@ -34,3 +34,48 @@ If the partial sums \(S_N\) diverge, then we say that the infinite series \(\sum
 \begin{remark}\label{7.2.3}
 Note that Proposition \ref{6.1.7} shows that if a series converges, then it has a unique sum, so it is safe to talk about \emph{the} sum \(L = \sum_{n = m}^\infty a_n\) of a convergent series.
 \end{remark}
+
+\setcounter{theorem}{4}
+\begin{proposition}\label{7.2.5}
+Let \(\sum_{n = m}^\infty a_n\) be a formal series of real numbers.
+Then \(\sum_{n = m}^\infty a_n\) converges if and only if, for every real number \(\varepsilon > 0\), there exists an integer \(N \geq m\) such that
+\[
+    \abs*{\sum_{n = p + 1}^q a_n} \leq \varepsilon \text{ for all } p, q \geq N.
+\]
+\end{proposition}
+
+\begin{proof}
+We first show that if \(\sum_{n = m}^\infty a_n\) converges, then \(\forall\ \varepsilon \in \mathbf{R}\) and \(\varepsilon > 0\), \(\exists\ N \in \mathbf{N}\) and \(N \geq m\) such that \(\abs*{\sum_{n = p + 1}^q a_n} \leq \varepsilon \ \forall\ p, q \in \mathbf{N}\) and \(p, q \geq N\).
+Let \(k \in \mathbf{N}\) and let \(S_k = \sum_{n = m}^k a_n\) be the \(k^{\text{th}}\) partial sum of \((a_n)_{n = m}^\infty\).
+Since \((S_k)_{k = m}^\infty\) converges, by Theorem \ref{6.4.18} \((S_k)_{k = m}^\infty\) is a Cauchy sequence.
+So we have \(\forall\ \varepsilon > 0\), \(\exists\ N \geq m\) such that \(\abs*{S_q - S_p} \leq \varepsilon \ \forall\ p, q \geq N\).
+We now divide into two cases:
+\begin{enumerate}
+    \item If \(p > q\), then \(p + 1 > q\).
+    By Definition \ref{7.1.1} \(\abs*{\sum_{n = p + 1}^q a_n} = \abs*{0} = 0 \leq \varepsilon\).
+    \item If \(p \leq q\), then
+    \begin{align*}
+    & \abs*{S_q - S_p} \leq \varepsilon \\
+    \implies & \abs*{\bigg(\sum_{n = m}^q a_n\bigg) - \bigg(\sum_{n = m}^p a_n\bigg)} \leq \varepsilon \\
+    \implies & \abs*{\bigg(\sum_{n = m}^p a_n\bigg) + \bigg(\sum_{n = p + 1}^q a_n\bigg) - \bigg(\sum_{n = m}^p a_n\bigg)} \leq \varepsilon & \text{(by Lemma \ref{7.1.4})} \\
+    \implies & \abs*{\sum_{n = p + 1}^q a_n} \leq \varepsilon.
+    \end{align*}
+\end{enumerate}
+From all cases above we have \(\abs*{\sum_{n = p + 1}^q a_n} \leq \varepsilon \ \forall\ p, q \geq N\).
+Thus we conclude that if \(\sum_{n = m}^\infty a_n\) converges, then \(\forall\ \varepsilon \in \mathbf{R}\) and \(\varepsilon > 0\), \(\exists\ N \in \mathbf{N}\) and \(N \geq m\) such that \(\abs*{\sum_{n = p + 1}^q a_n} \leq \varepsilon \ \forall\ p, q \in \mathbf{N}\) and \(p, q \geq N\).
+
+Now we show that if \(\forall\ \varepsilon \in \mathbf{R}\) and \(\varepsilon > 0\), \(\exists\ N \in \mathbf{N}\) and \(N \geq m\) such that \(\abs*{\sum_{n = p + 1}^q a_n \leq \varepsilon} \ \forall\ p, q \in \mathbf{N}\) and \(p, q \geq N\), then \(\sum_{n = m}^\infty a_n\) converges.
+Since
+\[
+    \abs*{\sum_{n = p + 1}^q a_n} \leq \varepsilon \ \forall\ p, q \geq N,
+\]
+we can choose some \(p < q\) such that
+\begin{align*}
+& \abs*{\sum_{n = p + 1}^q a_n} \leq \varepsilon \\
+\implies & \abs*{\sum_{n = p + 1}^q a_n + \sum_{n = m}^p a_n - \sum_{n = m}^p a_n} \leq \varepsilon \\
+\implies & \abs*{\sum_{n = m}^q a_n - \sum_{n = m}^p a_n} \leq \varepsilon & \text{(by Lemma \ref{7.1.4})} \\
+\implies & \abs*{S_q - S_p} \leq \varepsilon.
+\end{align*}
+This means \((S_k)_{k = m}^\infty\) is a Cauchy Sequence, so by Theorem \ref{6.4.18} \((S_k)_{k = m}^\infty\) converges, and therefore \(\sum_{n = m}^\infty a_n\) converges.
+Thus we conclude that \(\sum_{n = m}^\infty a_n\) converges if and only if \(\forall\ \varepsilon \in \mathbf{R}\) and \(\varepsilon > 0\), \(\exists\ N \in \mathbf{N}\) and \(N \geq m\) such that \(\abs*{\sum_{n = p + 1}^q a_n} \leq \varepsilon \ \forall\ p, q \in \mathbf{N}\) and \(p, q \geq N\).
+\end{proof}
