@@ -97,3 +97,54 @@ To put this another way, if \(\lim_{n \to \infty} a_n\) is non-zero or divergent
 \implies & \lim_{n \to \infty} a_n = 0. & \text{(by Definition \ref{6.1.8})}
 \end{align*}
 \end{proof}
+
+\begin{note}
+If a sequence \((a_n)_{n = m}^\infty\) \emph{does} converge to zero, then the series \(\sum_{n = m}^\infty a_n\) may or may not be convergent;
+it depends on the series.
+\end{note}
+
+\setcounter{theorem}{7}
+\begin{definition}[Absolute convergence]\label{7.2.8}
+Let \(\sum_{n = m}^\infty a_n\) be a formal series of real numbers.
+We say that this series is \emph{absolutely convergent} iff the series \(\sum_{n = m}^\infty \abs*{a_n}\) is convergent.
+\end{definition}
+
+\begin{note}
+In order to distinguish convergence from absolute convergence, we sometimes refer to the former as \emph{conditional convergence}.
+\end{note}
+
+\begin{proposition}[Absolute convergence test]\label{7.2.9}
+Let \(\sum_{n = m}^\infty a_n\) be a formal series of real numbers.
+If this series is absolutely convergent, then it is also conditionally convergent.
+Furthermore, in this case we have the triangle inequality
+\[
+    \abs*{\sum_{n = m}^\infty a_n} \leq \sum_{n = m}^\infty \abs*{a_n}.
+\]
+\end{proposition}
+
+\begin{proof}
+We first show that if \(\sum_{n = m}^\infty a_n\) is absolutely convergent, then it is also conditionally convergent.
+\begin{align*}
+& \sum_{n = m}^\infty \abs*{a_n} \text{ converge} \\
+\implies & \forall\ \varepsilon \in \mathbf{R} \land \varepsilon > 0, \exists\ N \in \mathbf{N} \land N \geq m : \\
+& \abs*{\sum_{n = p + 1}^q \abs*{a_n}} \leq \varepsilon\ \forall\ p, q \in \mathbf{N} \land p, q \geq N & \text{(by Proposition \ref{7.2.5})} \\
+\implies & \forall\ \varepsilon > 0, \ \exists\ N \geq m : \\
+& \sum_{n = p + 1}^q \abs*{a_n} \leq \varepsilon\ \forall\ p, q \geq N \\
+\implies & \forall\ \varepsilon > 0, \ \exists\ N \geq m : \\
+& \abs*{\sum_{n = p + 1}^q a_n} \leq \sum_{n = p + 1}^q \abs*{a_n} \leq \varepsilon\ \forall\ p, q \geq N & \text{(by Lemma \ref{7.1.4})} \\
+\implies & \sum_{n = m}^\infty a_n \text{ converge}. & \text{(by Proposition \ref{7.2.5})}
+\end{align*}
+
+Now we show that the triangle inequality is true.
+Let \(N \in \mathbf{N} \land N \geq m\).
+Let \((S_N)_{N = m}^\infty\) be a sequence where \(S_N = \abs*{\sum_{n = m}^N a_n}\).
+Let \((T_N)_{N = m}^\infty\) be a sequence where \(T_N = \sum_{n = m}^N \abs*{a_n}\).
+Since \(\lim_{N \to \infty} T_N\) exists, from proof above we know that \(\lim_{N \to \infty} S_N\) also exists.
+So
+\begin{align*}
+& \abs*{\sum_{n = m}^N a_n} \leq \sum_{n = m}^N \abs*{a_n} \ \forall\ N \geq m & \text{(by Lemma \ref{7.1.4})} \\
+\implies & S_N \leq T_N \ \forall\ N \geq m \\
+\implies & \lim_{N \to \infty} S_N \leq \lim_{N \to \infty} T_N & \text{(by Theorem \ref{6.1.19})} \\
+\implies & \abs*{\sum_{n = m}^\infty a_n} \leq \sum_{n = m}^\infty \abs*{a_n}. & \text{(by Definition \ref{7.2.2})}
+\end{align*}
+\end{proof}
