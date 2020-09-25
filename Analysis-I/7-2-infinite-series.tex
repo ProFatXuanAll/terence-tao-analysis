@@ -144,7 +144,59 @@ So
 \begin{align*}
 & \abs*{\sum_{n = m}^N a_n} \leq \sum_{n = m}^N \abs*{a_n} \ \forall\ N \geq m & \text{(by Lemma \ref{7.1.4})} \\
 \implies & S_N \leq T_N \ \forall\ N \geq m \\
-\implies & \lim_{N \to \infty} S_N \leq \lim_{N \to \infty} T_N & \text{(by Theorem \ref{6.1.19})} \\
+\implies & \lim_{N \to \infty} S_N \leq \lim_{N \to \infty} T_N & \text{(by Lemma \ref{6.4.13})} \\
 \implies & \abs*{\sum_{n = m}^\infty a_n} \leq \sum_{n = m}^\infty \abs*{a_n}. & \text{(by Definition \ref{7.2.2})}
 \end{align*}
+\end{proof}
+
+\begin{remark}\label{7.2.10}
+The converse to this proposition is not true;
+there exist series which are conditionally convergent but not absolutely convergent.
+\end{remark}
+
+\begin{remark}\label{7.2.11}
+We consider the class of conditionally convergent series to include the class of absolutely convergent series as a subclass.
+Thus when we say a statement such as ``\(\sum_{n = m}^\infty a_n\) is conditionally convergent'', this does not automatically mean that \(\sum_{n = m}^\infty a_n\) is not absolutely convergent.
+If we wish to say that a series is conditionally convergent but not absolutely convergent, then we will instead use a phrasing such as ``\(\sum_{n = m}^\infty a_n\) is \emph{only} conditionally convergent'', or ``\(\sum_{n = m}^\infty a_n\) converges conditionally, but not absolutely''.
+\end{remark}
+
+\begin{proposition}[Alternating series test]\label{7.2.12}
+Let \((a_n)_{n = m}^\infty\) be a sequence of real numbers which are non-negative and decreasing, thus \(a_n \geq 0\) and \(a_n \geq a_{n + 1}\) for every \(n \geq m\).
+Then the series \(\sum_{n = m}^\infty (-1)^n a_n\) is convergent if and only if the sequence \(a_n\) converges to \(0\) as \(n \to \infty\).
+\end{proposition}
+
+\begin{proof}
+From the zero test (Corollary \ref{7.2.6}), we know that if \(\sum_{n = m}^\infty (-1)^n a_n\) is a convergent series, then the sequence \(((-1)^n a_n)_{n = m}^\infty\) converges to \(0\), which implies that \(a_n\) also converges to \(0\), since \((-1)^n a_n\) and \(a_n\) have the same distance from \(0\).
+\begin{align*}
+& \forall\ \varepsilon \in \mathbf{R} \land \varepsilon > 0, \exists\ N \in \mathbf{N} \land N \geq m : \\
+& \abs*{a_n - 0} = \abs*{a_n} = \abs*{(-1)^n a_n} = \abs*{(-1)^n a_n - 0} \leq \varepsilon \ \forall\ n \geq N
+\end{align*}
+
+Now suppose conversely that \(a_n\) converges to \(0\).
+For each \(N\), let \(S_N\) be the partial sum \(S_N \coloneqq \sum_{n = m}^N (-1)^n a_n\);
+our job is to show that \(S_N\) converges.
+Observe that
+\begin{align*}
+S_{N + 2} &= S_N + (-1)^{N + 1} a_{N + 1} + (-1)^{N + 2} a_{N + 2} \\
+&= S_N + (-1)^{N + 1} (a_{N + 1} - a_{N + 2}).
+\end{align*}
+But by hypothesis, \((a_{N + 1} - a_{N + 2})\) is non-negative.
+Thus we have \(S_{N + 2} \geq S_N\) when \(N\) is odd and \(S_{N + 2} \leq S_N\) if \(N\) is even.
+
+Now suppose that \(N\) is even.
+From the above discussion and induction we see that \(S_{N + 2k} \leq S_N\) for all natural numbers \(k\).
+Also we have \(S_{N + 2k + 1} \geq S_{N + 1} = S_N - a_{N + 1}\).
+Finally, we have \(S_{N + 2k + 1} = S_{N + 2k} - a_{N + 2k + 1} \leq S_{N + 2k}\).
+Thus we have
+\[
+    S_N - a_{N + 1} \leq S_{N + 2k + 1} \leq S_{N + 2k} \leq S_N
+\]
+for all \(k\).
+In particular, we have
+\[
+    S_N - a_{N + 1} \leq S_n \leq S_N \ \forall\ n \geq N.
+\]
+In particular, the sequence \((S_n)_{n = m}^\infty\) is eventually \(a_{N + 1}\)-steady.
+But the sequence \((a_N)_{N = m}^\infty\) converges to \(0\) as \(N \to \infty\), thus this implies that \(S_n\) is eventually \(\varepsilon\)-steady for every \(\varepsilon > 0\).
+Thus \(S_n\) converges, and so the series \(\sum_{n = m}^\infty (-1)^n a_n\) is convergent.
 \end{proof}
