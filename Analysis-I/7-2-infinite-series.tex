@@ -200,3 +200,92 @@ In particular, the sequence \((S_n)_{n = m}^\infty\) is eventually \(a_{N + 1}\)
 But the sequence \((a_N)_{N = m}^\infty\) converges to \(0\) as \(N \to \infty\), thus this implies that \((S_n)_{n = m}^\infty\) is eventually \(\varepsilon\)-steady for every \(\varepsilon > 0\).
 Thus \((S_n)_{n = m}^\infty\) converges, and so the series \(\sum_{n = m}^\infty (-1)^n a_n\) is convergent.
 \end{proof}
+
+\begin{note}
+Lack of absolute convergence does not imply lack of conditional convergence, even though absolute convergence implies conditional convergence.
+\end{note}
+
+\setcounter{theorem}{13}
+\begin{proposition}[Series law]\label{6.2.14}
+    \mbox{}
+    \begin{enumerate}
+        \item If \(\sum_{n = m}^\infty a_n\) is a series of real numbers converging to \(x\), and \(\sum_{n = m}^\infty b_n\) is a series of real numbers converging to \(y\), then \(\sum_{n = m}^\infty (a_n + b_n)\) is also a convergent series, and converges to \(x + y\).
+        In particular, we have
+        \[
+            \sum_{n = m}^\infty (a_n + b_n) = \sum_{n = m}^\infty a_n + \sum_{n = m}^\infty b_n.
+        \]
+        \item If \(\sum_{n = m}^\infty a_n\) is a series of real numbers converging to \(x\), and \(c\) is a real number, then \(\sum_{n = m}^\infty (c a_n)\) is also a convergent series, and converges to \(cx\).
+        In particular, we have
+        \[
+            \sum_{n = m}^\infty (c a_n) = c \sum_{n = m}^\infty a_n.
+        \]
+        \item Let \(\sum_{n = m}^\infty a_n\) be a series of real numbers, and let \(k \geq 0\) be an integer.
+        If one of the two series \(\sum_{n = m}^\infty a_n\) and \(\sum_{n = m + k}^\infty a_n\) are convergent, then the other one is also, and we have the identity
+        \[
+            \sum_{n = m}^\infty a_n = \sum_{n = m}^{m + k - 1} a_n + \sum_{n = m + k}^\infty a_n.
+        \]
+        \item Let \(\sum_{n = m}^\infty a_n\) be a series of real numbers converging to \(x\), and let \(k\) be an integer.
+        Then \(\sum_{n = m + k}^\infty a_{n - k}\) also converges to \(x\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}{(a)}
+Let \(A_N = \sum_{n = m}^N a_n\) be the \(N^{\text{th}}\) partial sum of \(x\), and let \(B_N = \sum_{n = m}^N b_n\) be the \(N^{\text{th}}\) partial sum of \(y\).
+So
+\begin{align*}
+x + y &= \sum_{n = m}^\infty a_n + \sum_{n = m}^\infty b_n \\
+&= \lim_{N \to \infty} A_N + \lim_{N \to \infty} B_N & \text{(by Definition \ref{7.2.2})} \\
+&= \lim_{N \to \infty} (A_N + B_N) & \text{(by Theorem \ref{6.1.19})} \\
+&= \sum_{n = m}^\infty (a_n + b_n). & \text{(by Definition \ref{7.2.2})}
+\end{align*}
+\end{proof}
+
+\begin{proof}{(b)}
+Let \(S_N = \sum_{n = m}^N a_n\) be the \(N^{\text{th}}\) partial sum of \(x\).
+So
+\begin{align*}
+cx &= c \sum_{n = m}^\infty a_n \\
+&= c \lim_{N \to \infty} S_N & \text{(by Definition \ref{7.2.2})} \\
+&= \lim_{N \to \infty} (c S_N) & \text{(by Theorem \ref{6.1.19})} \\
+&= \sum_{n = m}^\infty (c a_n). & \text{(by Definition \ref{7.2.2})}
+\end{align*}
+\end{proof}
+
+\begin{proof}{(c)}
+We first show that \(\sum_{n = m}^\infty a_n\) converges if and only if \(\sum_{n = m + k}^\infty a_n\) converges.
+\begin{align*}
+& \sum_{n = m}^\infty a_n \text{ converges} \\
+\iff & \forall\ \varepsilon \in \mathbf{R} \land \varepsilon > 0, \exists\ N \in \mathbf{N} \land N \geq m : \\
+& \abs*{\sum_{n = p + 1}^q a_n} \leq \varepsilon \ \forall\ p, q \in \mathbf{N} \land p, q \geq N & \text{(by Proposition \ref{7.2.5})} \\
+\iff & \forall\ \varepsilon \in \mathbf{R} \land \varepsilon > 0, \exists\ N \in \mathbf{N} \land N \geq m : \\
+& \abs*{\sum_{n = p + k + 1}^q a_n} \leq \varepsilon \ \forall\ p, q \in \mathbf{N} \land p, q \geq N \\
+\iff & \forall\ \varepsilon \in \mathbf{R} \land \varepsilon > 0, \exists\ N \in \mathbf{N} \land N \geq m + k : \\
+& \abs*{\sum_{n = p + 1}^q a_n} \leq \varepsilon \ \forall\ p, q \in \mathbf{N} \land p, q \geq N \\
+\iff & \sum_{n = m + k}^\infty a_n \text{ converges}. & \text{(by Proposition \ref{7.2.5})}
+\end{align*}
+
+Now we show that \(\sum_{n = m}^\infty a_n = \sum_{n = m}^{n + k - 1} a_n + \sum_{n = m + k}^\infty a_n\).
+Let \(A_N = \sum_{n = m}^N a_n\) be the \(N^{\text{th}}\) partial sum of \(\sum_{n = m}^\infty a_n\), and let \(B_N = \sum_{n = m + k}^N a_n\) be the \(N^{\text{th}}\) partial sum of \(\sum_{n = m + k}^\infty a_n\).
+So
+\begin{align*}
+\sum_{n = m}^{m + k - 1} a_n + \sum_{n = m + k}^\infty a_n &= A_{m + k - 1} + \sum_{n = m + k}^\infty a_n \\
+&= A_{m + k - 1} + \lim_{N \to \infty} B_N & \text{(by Definition \ref{7.2.2})} \\
+&= \lim_{N \to \infty} A_{m + k - 1} + \lim_{N \to \infty} B_N \\
+&= \lim_{N \to \infty} (A_{m + k - 1} + B_N) & \text{(by Theorem \ref{6.1.19})} \\
+&= \lim_{N \to \infty} (\sum_{n = m}^{m + k - 1} a_n + \sum_{n = m + k}^N a_n) \\
+&= \lim_{N \to \infty} \sum_{n = m}^N a_n = \lim_{N \to \infty} A_N & \text{(by Lemma \ref{7.1.4})} \\
+&= \sum_{n = m}^\infty a_n. & \text{(by Definition \ref{7.2.2})}
+\end{align*}
+\end{proof}
+
+\begin{proof}{(d)}
+Let \(A_N = \sum_{n = m}^N a_n\) be the \(N^{\text{th}}\) partial sum of \(x\), and let \(B_N = \sum_{n = m + k}^N b_{n - k}\) be the \(N^{\text{th}}\) partial sum of \(\sum_{n = m + k}^\infty a_{n - k}\).
+So
+\begin{align*}
+x &= \sum_{n = m}^\infty a_n = \lim_{N \to \infty} A_N = \lim_{N \to \infty} \sum_{n = m}^N a_n & \text{(by Definition \ref{7.2.2})} \\
+&= \lim_{N' \to \infty} \sum_{n = m}^{N' - k} a_n & (N' = N + k) \\
+&= \lim_{N' \to \infty} \sum_{n = m + k}^{N' - k + k} a_{n - k} & \text{(by Lemma \ref{7.1.4})} \\
+&= \lim_{N' \to \infty} \sum_{n = m + k}^{N'} a_{n - k} = \lim_{N' \to \infty} B_{N'} \\
+&= \sum_{n = m + k}^\infty a_{n - k}. & \text{(by Definition \ref{7.2.2})}
+\end{align*}
+\end{proof}
