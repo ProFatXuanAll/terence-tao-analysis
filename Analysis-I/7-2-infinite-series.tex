@@ -206,7 +206,7 @@ Lack of absolute convergence does not imply lack of conditional convergence, eve
 \end{note}
 
 \setcounter{theorem}{13}
-\begin{proposition}[Series law]\label{6.2.14}
+\begin{proposition}[Series law]\label{7.2.14}
     \mbox{}
     \begin{enumerate}
         \item If \(\sum_{n = m}^\infty a_n\) is a series of real numbers converging to \(x\), and \(\sum_{n = m}^\infty b_n\) is a series of real numbers converging to \(y\), then \(\sum_{n = m}^\infty (a_n + b_n)\) is also a convergent series, and converges to \(x + y\).
@@ -288,4 +288,105 @@ x &= \sum_{n = m}^\infty a_n = \lim_{N \to \infty} A_N = \lim_{N \to \infty} \su
 &= \lim_{N' \to \infty} \sum_{n = m + k}^{N'} a_{n - k} = \lim_{N' \to \infty} B_{N'} \\
 &= \sum_{n = m + k}^\infty a_{n - k}. & \text{(by Definition \ref{7.2.2})}
 \end{align*}
+\end{proof}
+
+\begin{note}
+From Proposition \ref{7.2.14}(c) we see that the convergence of a series does not depend on the first few elements of the series
+(though of course those elements do influence which value the series converges to).
+Because of this, we will usually not pay much attention as to what the initial index \(m\) of the series is.
+\end{note}
+
+\begin{lemma}[Telescoping series]\label{7.2.15}
+Let \((a_n)_{n = 0}^\infty\) be a sequence of real numbers which converge to \(0\), i.e., \(\lim_{n \to \infty} a_n = 0\).
+Then the series \(\sum_{n = 0}^\infty (a_n - a_{n + 1})\) converges to \(a_0\).
+If \(\lim_{n \to \infty} a_n = L\), then the series \(\sum_{n = 0}^\infty (a_n - a_{n + 1})\) converges to \(a_0 + L\).
+\end{lemma}
+
+\begin{proof}
+Let \(S_N = \sum_{n = 0}^N (a_n - a_{n + 1})\) be the \(N^{\text{th}}\) partial sum of \(\sum_{n = m}^\infty (a_n - a_{n + 1})\).
+We first show that \(S_N = a_0 - a_{N + 1}\) by using induction on \(N\).
+For \(N = 0\), we have
+\[
+    S_0 = \sum_{n = 0}^0 a_n - a_{n + 1} = a_0 - a_1
+\]
+by Definition \ref{7.1.1}, so the base case holds.
+Suppose inductively that for some \(N \geq 0\) the statement holds.
+Then for \(N + 1\), we have
+\begin{align*}
+S_{N + 1} &= \sum_{n = 0}^{N + 1} (a_n - a_{n + 1}) \\
+&= \sum_{n = 0}^N (a_n - a_{n + 1}) + a_{N + 1} - a_{N + 2} & \text{(by Definition \ref{7.1.1})} \\
+&= a_0 - a_{N + 1} + a_{N + 1} - a_{N + 2} & \text{(by induction hypothesis)} \\
+&= a_0 - a_{N + 2}.
+\end{align*}
+This close the induction.
+
+Now we show that if \(\lim_{n \to \infty} a_n = 0\), then \(\sum_{n = 0}^\infty (a_n - a_{n + 1})\) converges to \(a_0\).
+\begin{align*}
+\sum_{n = 0}^\infty (a_n - a_{n + 1}) &= \lim_{N \to \infty} S_N & \text{(by Definition \ref{7.2.2})} \\
+&= \lim_{N \to \infty} a_0 + a_N & \text{(from claim above)} \\
+&= a_0 + \lim_{N \to \infty} a_N & \text{(by Theorem \ref{6.1.19})} \\
+&= a_0 + 0 & \text{(by the given condition)} \\
+&= a_0.
+\end{align*}
+
+Finally we show that if \(\lim_{n \to \infty} a_n = L\), then \(\sum_{n = 0}^\infty (a_n - a_{n + 1})\) converges to \(a_0 + L\).
+\begin{align*}
+\sum_{n = 0}^\infty (a_n - a_{n + 1}) &= \lim_{N \to \infty} S_N & \text{(by Definition \ref{7.2.2})} \\
+&= \lim_{N \to \infty} a_0 + a_N & \text{(from claim above)} \\
+&= a_0 + \lim_{N \to \infty} a_N & \text{(by Theorem \ref{6.1.19})} \\
+&= a_0 + L. & \text{(by the given condition)}
+\end{align*}
+\end{proof}
+
+\exercisesection
+
+\begin{exercise}\label{ex 7.2.1}
+Is the series \(\sum_{n = 1}^\infty (-1)^n\) convergent or divergent?
+Justify your answer.
+\end{exercise}
+
+\begin{proof}
+Let \((a_n)_{n = 1}^\infty\) be a sequence where \(a_n = 1 \ \forall\ n \geq 1\).
+Since \(\lim_{n \to \infty} a_n = 1\), by Alternating series test (Proposition \ref{7.2.12}) \(\sum_{n = m}^\infty (-1)^n a_n\) diverges.
+\end{proof}
+
+\begin{exercise}\label{ex 7.2.2}
+Prove Proposition \ref{7.2.5}.
+\end{exercise}
+
+\begin{proof}
+See Proposition \ref{7.2.5}.
+\end{proof}
+
+\begin{exercise}\label{ex 7.2.3}
+Use Proposition \ref{7.2.5} to prove Corollary \ref{7.2.6}.
+\end{exercise}
+
+\begin{proof}
+See Corollary \ref{7.2.6}.
+\end{proof}
+
+\begin{exercise}\label{ex 7.2.4}
+Prove Proposition \ref{7.2.9}.
+\end{exercise}
+
+\begin{proof}
+See Proposition \ref{7.2.9}.
+\end{proof}
+
+\begin{exercise}\label{ex 7.2.5}
+Prove Proposition \ref{7.2.14}.
+\end{exercise}
+
+\begin{proof}
+See Proposition \ref{7.2.14}.
+\end{proof}
+
+\begin{exercise}\label{ex 7.2.2}
+Prove Lemma \ref{7.2.15}.
+How does the proposition change if we assume that an does not converge to zero, but instead converges to some other real number \(L\)?
+\end{exercise}
+
+\begin{proof}
+See Lemma \ref{7.2.15}.
 \end{proof}
