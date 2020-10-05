@@ -17,3 +17,24 @@ Suppose \(\sum_{n = m}^\infty a_n\) is a series of non-negative numbers.
 Then the partial sums \(S_N \coloneqq \sum_{n = m}^N a_n\) are are increasing, i.e., \(S_{N + 1} \geq S_N\) for all \(N \geq m\).
 From Proposition \ref{6.3.8} and Corollary \ref{6.1.17}, we thus see that the sequence \((S_N)_{n = m}^\infty\) is convergent if and only if it has an upper bound \(M\).
 \end{proof}
+
+\begin{corollary}[Comparison test]\label{7.3.2}
+Let \(\sum_{n = m}^\infty a_n\) and \(\sum_{n = m}^\infty b_n\) be two formal series of real numbers, and suppose that \(\abs*{a_n} \leq b_n\) for all \(n \geq m\).
+Then if \(\sum_{n = m}^\infty b_n\) is convergent, then \(\sum_{n = m}^\infty a_n\) is absolutely convergent, and in fact
+\[
+    \abs*{\sum_{n = m}^\infty a_n} \leq \sum_{n = m}^\infty \abs*{a_n} \leq \sum_{n = m}^\infty b_n.
+\]
+\end{corollary}
+
+\begin{proof}
+Let \(A_N = \sum_{n = m}^N \abs*{a_n}\) be the \(N^\text{th}\) partial sum of \(\sum_{n = m}^\infty \abs*{a_n}\), and \(B_N = \sum_{n = m}^N b_n\) be the \(N^\text{th}\) partial sum of \(\sum_{n = m}^\infty b_n\).
+Since \((B_N)_{N = m}^\infty\) converges, by Proposition \ref{7.3.1} \(\exists\ M \in \mathbf{R}\) such that \(\sum_{n = m}^N b_n \leq M \ \forall\ N \geq m\).
+\begin{align*}
+& \sum_{n = m}^\infty b_n \text{ converges} \\
+\implies & \exists\ M \in \mathbf{R} : \sum_{n = m}^N b_n \leq M \ \forall\ N \in \mathbf{N} \land N \geq m & \text{(by Proposition \ref{7.3.1})} \\
+\implies & \exists\ M \in \mathbf{R} : \sum_{n = m}^N \abs*{a_n} \leq \sum_{n = m}^N b_n \leq M \ \forall\ N \geq m & \text{(by the given condition)} \\
+\implies & \exists\ M \in \mathbf{R} : \abs*{\sum_{n = m}^N a_n} \leq \sum_{n = m}^N \abs*{a_n} \leq \sum_{n = m}^N b_n \leq M \ \forall\ N \geq m & \text{(by Lemma \ref{7.1.4})} \\
+\implies & \abs*{\sum_{n = m}^\infty a_n} \text{ converges} \land \sum_{n = m}^\infty \abs*{a_n} \text{ converges} & \text{(by Proposition \ref{7.3.1})} \\
+\implies & \abs*{\sum_{n = m}^\infty a_n} \leq \sum_{n = m}^\infty \abs*{a_n} \leq \sum_{n = m}^\infty b_n. & \text{(by Theorem \ref{6.1.19})}
+\end{align*}
+\end{proof}
