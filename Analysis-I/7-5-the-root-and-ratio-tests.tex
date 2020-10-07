@@ -1,0 +1,42 @@
+\section{The root and ratio tests}\label{sec 7.5}
+
+\begin{theorem}[Root test]\label{7.5.1}
+Let \(\sum_{n = m}^\infty a_n\) be a series of real numbers, and let \(\alpha \coloneqq \lim\sup_{n \to \infty} \abs*{a_n}^{1 / n}\).
+\begin{enumerate}
+    \item If \(\alpha < 1\), then the series \(\sum_{n = m}^\infty a_n\) is absolutely convergent
+    (and hence conditionally convergent).
+    \item If \(\alpha > 1\), then the series \(\sum_{n = m}^\infty a_n\) is not conditionally convergent
+    (and hence cannot be absolutely convergent either).
+    \item If \(\alpha = 1\), we cannot assert any conclusion.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+First suppose that \(\alpha < 1\).
+Note that we must have \(\alpha \geq 0\), since by Lemma \ref{5.6.6} \(\abs*{a_n}^{1 / n} \geq 0\) for every \(n\).
+Then we can find an \(\varepsilon > 0\) such that \(0 < \alpha + \varepsilon < 1\) (for instance, we can set \(\varepsilon \coloneqq (1 - \alpha) / 2\)).
+By Proposition \ref{6.4.12}(a), there exists an \(N \geq m\) such that \(\abs*{a_n}^{1 / n} \leq \alpha + \varepsilon\) for all \(n \geq N\).
+In other words, we have \(\abs*{a_n} \leq (\alpha + \varepsilon)^n\) for all \(n \geq N\).
+But from the geometric series (Lemma \ref{7.3.3}) we have that \(\sum_{n = N}^\infty (\alpha + \varepsilon)^n\) is absolutely convergent, since \(0 < \alpha + \varepsilon < 1\)
+(note that the fact that we start from \(N\) is irrelevant by Proposition \ref{7.2.14}(c)).
+Thus by the comparison test (Corollary \ref{7.3.2}), we see that \(\sum_{n = N}^\infty a_n\) is absolutely convergent, and thus \(\sum_{n = m}^\infty a_n\) is absolutely convergent, by Proposition \ref{7.2.14}(c) again.
+
+Now suppose that \(\alpha > 1\).
+Then by Proposition \ref{6.4.12}(b), we see that for every \(N \geq m\) there exists an \(n \geq N\) such that \(\abs*{a_n}^{1 / n} \geq 1\), and hence that \(\abs*{a_n} \geq 1\).
+In particular, \((a_n)_{n = N}^\infty\) is not \(1\)-close to \(0\) for any \(N\), and hence \((a_n)_{n = m}^\infty\) is not eventually \(1\)-close to \(0\).
+In particular, \((a_n)_{n = m}^\infty\) does not converge to zero.
+Thus by the zero test (Corollary \ref{7.2.6}), \(\sum_{n = m}^\infty a_n\) is not conditionally convergent.
+
+For \(\alpha = 1\), we show two sequences \((a_n)_{n = m}^\infty\) and \((b_n)_{n = m}^\infty\) where
+\[
+    \lim\sup_{n \to \infty} \abs*{a_n}^{1 / n} = \lim\sup_{n \to \infty} \abs*{b_n}^{1 / n} = 1
+\]
+but one is convergent and one is not.
+Let \(a_n = 1 / n\) and \(b_n = 1 / n^2\).
+Then by Corollary \ref{7.3.7} \(\sum_{n = m}^\infty a_n\) is divergent and \(\sum_{n = m}^\infty b_n\) is convergent.
+\end{proof}
+
+\begin{note}
+The root test is phrased using the limit superior, but of course if \(\lim_{n \to \infty} \abs*{a_n}^{1 / n}\) converges then the limit is the same as the limit superior.
+Thus one can phrase the root test using the limit instead of the limit superior, but \emph{only when the limit exists}.
+\end{note}
