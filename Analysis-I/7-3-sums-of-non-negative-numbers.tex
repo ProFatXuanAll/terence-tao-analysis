@@ -170,3 +170,72 @@ we obtain
 as desired.
 This proves the claim.
 \end{proof}
+
+\begin{corollary}\label{7.3.7}
+Let \(q > 0\) be a rational number.
+Then the series \(\sum_{n = 1}^\infty 1 / n^q\) is convergent when \(q > 1\) and divergent when \(q \leq 1\).
+\end{corollary}
+
+\begin{proof}
+The sequence \((1 / n^q)_{n = 1}^\infty\) is non-negative and decreasing (by Lemma \ref{5.6.9}(d)), and so the Cauchy criterion (Proposition \ref{7.3.4}) applies.
+Thus this series is convergent if and only if
+\[
+    \sum_{k = 0}^\infty 2^k \frac{1}{(2^k)^q}
+\]
+is convergent.
+But by the laws of exponentiation (Lemma \ref{5.6.9}) we can rewrite this as the geometric series
+\[
+    \sum_{k = 0}^\infty (2^{1 - q})^k.
+\]
+By Lemma \ref{7.3.3}, the geometric series \(\sum_{k = 0}^\infty x^k\) converges if and only if \(\abs*{x} < 1\).
+Thus the series \(\sum_{n = 1}^\infty 1 / n^q\) will converge if and only if \(\abs*{2^{1 - q}} < 1\), which happens if and only if \(q > 1\).
+\end{proof}
+
+\begin{note}
+In particular, the series \(\sum_{n = 1}^\infty 1 / n\) (also known as the \emph{harmonic series}) is divergent, as claimed earlier.
+However, the series is \(\sum_{n = 1}^\infty 1 / n^2\) convergent.
+\end{note}
+
+\begin{remark}\label{7.3.8}
+The quantity \(\sum_{n = 1}^\infty 1 / n^q\), when it converges, is called \(\zeta(q)\), the \\
+\emph{Riemann-zeta function of \(q\)}.
+This function is very important in number theory, and in particular in the distribution of the primes;
+there is a very famous unsolved problem regarding this function, called the \emph{Riemann hypothesis}, but to discuss it further is far beyond the scope of this text.
+I will mention however that there is a US\$ \(1\) million prize
+- and instant fame among all mathematicians -
+attached to the solution to this problem.
+\end{remark}
+
+\exercisesection
+
+\begin{exercise}\label{ex 7.3.1}
+Use Proposition \ref{7.3.1} to prove Corollary \ref{7.3.2}.
+\end{exercise}
+
+\begin{proof}
+See Corollary \ref{7.3.2}.
+\end{proof}
+
+\begin{exercise}\label{ex 7.3.2}
+Prove Lemma \ref{7.3.3}.
+\end{exercise}
+
+\begin{proof}
+See Lemma \ref{7.3.3}.
+\end{proof}
+
+\begin{exercise}\label{ex 7.3.3}
+Let \(\sum_{n = 0}^\infty a_n\) be an absolutely convergent series of real numbers such that \(\sum_{n = 0}^\infty \abs*{a_n} = 0\).
+Show that \(a_n = 0\) for every natural number \(n\).
+\end{exercise}
+
+\begin{proof}
+Let \(N \in \mathbf{N} \land N \geq 0\), and let \(k \in \mathbf{N} \land 0 \leq k \leq N\).
+\begin{align*}
+& 0 \leq \abs*{a_k} \leq \sum_{n = 0}^N \abs*{a_n} \\
+\implies & \lim_{N \to \infty} 0 = 0 \leq \lim_{N \to \infty} \abs*{a_k} = \abs*{a_k} \leq \lim_{N \to \infty} \sum_{n = 0}^N \abs*{a_n} = 0 & \text{(by Theorem \ref{6.1.19})} \\
+\implies & \lim_{N \to \infty} \abs*{a_k} = \abs*{a_k} = 0 & \text{(by Corollary \ref{6.4.14})} \\
+\implies & a_k = 0.
+\end{align*}
+Since \(N\) is arbitrary, we have \(a_k = 0 \ \forall\ k \geq 0\).
+\end{proof}
