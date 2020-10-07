@@ -40,3 +40,125 @@ Then by Corollary \ref{7.3.7} \(\sum_{n = m}^\infty a_n\) is divergent and \(\su
 The root test is phrased using the limit superior, but of course if \(\lim_{n \to \infty} \abs*{a_n}^{1 / n}\) converges then the limit is the same as the limit superior.
 Thus one can phrase the root test using the limit instead of the limit superior, but \emph{only when the limit exists}.
 \end{note}
+
+\begin{lemma}\label{7.5.2}
+Let \((c_n)_{n = m}^\infty\) be a sequence of positive numbers.
+Then we have
+\[
+    \lim\inf_{n \to \infty} \frac{c_{n + 1}}{c_n} \leq \lim\inf_{n \to \infty} c_n^{1 / n} \leq \lim\sup_{n \to \infty} c_n^{1 / n} \leq \lim\sup_{n \to \infty} \frac{c_{n + 1}}{c_n}.
+\]
+\end{lemma}
+
+\begin{proof}
+There are three inequalities to prove here.
+The middle inequality follows from Proposition \ref{6.4.12}(c).
+
+Next we show that \(\lim\sup_{n \to \infty} c_n^{1 / n} \leq \lim\sup_{n \to \infty} \frac{c_{n + 1}}{c_n}\).
+Write \(L \coloneqq \lim\sup_{n \to \infty} \frac{c_{n + 1}}{c_n}\).
+If \(L = +\infty\) then there is nothing to prove (since \(x \leq +\infty\) for every extended real number \(x\)), so we may assume that \(L\) is a finite real number.
+(Note that \(L\) cannot equal \(-\infty\)).
+Since \(\frac{c_{n + 1}}{c_n}\) is always positive, we know that \(L \geq 0\).
+
+Let \(\varepsilon > 0\).
+By Proposition \ref{6.4.12}(a), we know that there exists an \(N \geq m\) such that \(\frac{c_{n + 1}}{c_n} \leq L + \varepsilon\) for all \(n \geq N\).
+This implies that \(c_{n + 1} \leq c_n (L + \varepsilon)\) for all \(n \geq N\).
+By induction this implies that
+\[
+    c_n \leq c_N (L + \varepsilon)^{n - N} \text{ for all } n \geq N.
+\]
+If we write \(A \coloneqq c_N (L + \varepsilon)^{-N}\), then we have
+\[
+    c_n \leq A(L + \varepsilon)^n
+\]
+and thus
+\[
+    c_n^{1 / n} \leq A^{1 / n} (L + \varepsilon)
+\]
+for all \(n \geq N\).
+But we have
+\[
+    \lim_{n \to \infty} A^{1 / n} (L + \varepsilon) = L + \varepsilon
+\]
+by the limit laws (Theorem \ref{6.1.19}) and Lemma \ref{6.5.3}.
+Thus by the comparison principle (Lemma \ref{6.4.13}) we have
+\[
+    \lim\sup_{n \to \infty} c_n^{1 / n} \leq L + \varepsilon.
+\]
+But this is true for all \(\varepsilon > 0\), so this must imply that
+\[
+    \lim\sup_{n \to \infty} c_n^{1 / n} \leq L.
+\]
+(If \(L < \lim\sup_{n \to \infty} c_n^{1 / n}\), then when \(\varepsilon = (\lim\sup_{n \to \infty} c_n^{1 / n} - L) / 2\) we have
+\[
+    \lim\sup_{n \to \infty} c_n^{1 / n} \leq \frac{\lim\sup_{n \to \infty} c_n^{1 / n} + L}{2},
+\]
+a contradiction.), as desired.
+
+Finally we show that \(\lim\inf_{n \to \infty} \frac{c_{n + 1}}{c_n} \leq \lim\inf_{n \to \infty} c_n^{1 / n}\).
+Write \(L \coloneqq \lim\inf_{n \to \infty} \frac{c_{n + 1}}{c_n}\).
+Since \(\frac{c_{n + 1}}{c_n}\) is always positive, we know that \(L \geq 0\).
+
+Let \(\varepsilon > 0\).
+By Proposition \ref{6.4.12}(a), we know that there exists an \(N \geq m\) such that \(\frac{c_{n + 1}}{c_n} \geq L - \varepsilon\) for all \(n \geq N\).
+This implies that \(c_{n + 1} \geq c_n (L - \varepsilon)\) for all \(n \geq N\).
+By induction this implies that
+\[
+    c_n \geq c_N (L - \varepsilon)^{n - N} \text{ for all } n \geq N.
+\]
+If we write \(A \coloneqq c_N (L - \varepsilon)^{-N}\), then we have
+\[
+    c_n \geq A(L - \varepsilon)^n
+\]
+and thus
+\[
+    c_n^{1 / n} \geq A^{1 / n} (L - \varepsilon)
+\]
+for all \(n \geq N\).
+But we have
+\[
+    \lim_{n \to \infty} A^{1 / n} (L - \varepsilon) = L - \varepsilon
+\]
+by the limit laws (Theorem \ref{6.1.19}) and Lemma \ref{6.5.3}.
+Thus by the comparison principle (Lemma \ref{6.4.13}) we have
+\[
+    \lim\inf_{n \to \infty} c_n^{1 / n} \geq L - \varepsilon.
+\]
+But this is true for all \(\varepsilon > 0\), so this must imply that
+\[
+    \lim\inf_{n \to \infty} c_n^{1 / n} \geq L.
+\]
+(If \(L > \lim\inf_{n \to \infty} c_n^{1 / n}\), then when \(\varepsilon = (L - \lim\inf_{n \to \infty} c_n^{1 / n}) / 2\) we have
+\[
+    \lim\inf_{n \to \infty} c_n^{1 / n} \geq \frac{\lim\inf_{n \to \infty} c_n^{1 / n} + L}{2},
+\]
+a contradiction.), as desired.
+\end{proof}
+
+\begin{corollary}[Ratio test]\label{7.5.3}
+Let \(\sum_{n = m}^\infty a_n\) be a series of non-zero numbers.
+(The non-zero hypothesis is required so that the ratios \(\abs*{a_{n + 1}} / \abs*{a_n}\) appearing below are well-defined.)
+\begin{enumerate}
+    \item If \(\lim\sup_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} < 1\), then the series \(\sum_{n = m}^\infty a_n\) is absolutely convergent (hence conditionally convergent).
+    \item If \(\lim\inf_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} > 1\), then the series \(\sum_{n = m}^\infty a_n\) is not conditionally convergent (and thus cannot be absolutely convergent).
+    \item In the remaining cases, we cannot assert any conclusion.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+We first show that if \(\lim\sup_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} < 1\), then the series \(\sum_{n = m}^\infty a_n\) is absolutely convergent.
+\begin{align*}
+& \lim\sup_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} < 1 \\
+\implies & \lim\sup_{n \to \infty} \abs*{a_n}^{1 / n} \leq \lim\sup_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} < 1 & \text{(by Lemma \ref{7.5.2})} \\
+\implies & \sum_{n = m}^\infty a_n \text{ is absolutely convergent}. & \text{(by Theorem \ref{7.5.1})}
+\end{align*}
+
+Next we show that if \(\lim\inf_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} > 1\), then the series \(\sum_{n = m}^\infty a_n\) is not conditionally convergent.
+\begin{align*}
+& \lim\inf_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} > 1 \\
+\implies & \lim\sup_{n \to \infty} \abs*{a_n}^{1 / n} \geq \lim\inf_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} > 1 & \text{(by Lemma \ref{7.5.2})} \\
+\implies & \sum_{n = m}^\infty a_n \text{ is not conditionally convergent}. & \text{(by Theorem \ref{7.5.1})}
+\end{align*}
+
+Finally we show that if \(\lim\inf_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} \leq 1\) or \(\lim\sup_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} \geq 1\), then we cannot assert any conclusion.
+See Theorem \ref{7.5.1}.
+\end{proof}
