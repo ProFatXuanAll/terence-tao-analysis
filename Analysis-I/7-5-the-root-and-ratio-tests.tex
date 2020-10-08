@@ -224,3 +224,66 @@ The claim then follows from Proposition \ref{6.4.12}(c) and (f).
 \begin{remark}\label{7.5.5}
 In addition to the ratio and root tests, another very useful convergence test is the \emph{integral test}.
 \end{remark}
+
+\exercisesection
+
+\begin{exercise}\label{ex 7.5.1}
+Prove the first inequality in Lemma \ref{7.5.2}.
+\end{exercise}
+
+\begin{proof}
+See Lemma \ref{7.5.2}.
+\end{proof}
+
+\begin{exercise}\label{ex 7.5.2}
+Let \(x\) be a real number with \(\abs*{x} < 1\), and \(q\) be a real number.
+Show that the series \(\sum_{n = 1}^\infty n^q x^n\) is absolutely convergent, and that \(\lim_{n \to \infty} n^q x^n = 0\).
+\end{exercise}
+
+\begin{proof}
+First suppose that \(q = 0\), then by Proposition \ref{5.6.3} and Theorem \ref{6.1.19} we have
+\[
+    \lim\sup_{n \to \infty} \abs*{x^n}^{1 / n} = \lim\sup_{n \to \infty} \abs*{x} = \abs*{x} < 1.
+\]
+By root test (Theorem \ref{7.5.1}) this means \(\sum_{n = 1}^\infty x^n\) is absolutely convergent.
+
+Next suppose that \(q > 0\), then we have
+\[
+    \lim\sup_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} = \lim\sup_{n \to \infty} \frac{\abs*{(n + 1)^q x^{(n + 1)}}}{\abs*{n^q x^n}} = \lim\sup_{n \to \infty} \bigg(\frac{n + 1}{n}\bigg)^q \abs*{x}
+\]
+Since \(\abs*{x} < 1\), we have
+\[
+    \abs*{x} < \frac{\abs*{x} + 1}{2} < 1 \implies \frac{2}{\abs*{x} + 1} > 1 \implies \bigg(\frac{2}{\abs*{x} + 1}\bigg)^{1 / q} > 1.
+\]
+Since \(\lim_{n \to \infty} \frac{n + 1}{n} = 1\) by Proposition \ref{6.1.11} and Theorem \ref{6.1.19}, we have
+\[
+    \exists\ N \geq 1 : \frac{n + 1}{n} < \bigg(\frac{2}{\abs*{x} + 1}\bigg)^{1 / q} \ \forall\ n \geq N
+\]
+by Proposition \ref{6.4.12}.
+And this give us
+\[
+    \bigg(\frac{n + 1}{n}\bigg)^q \abs*{x} < \frac{2\abs*{x}}{\abs*{x} + 1}.
+\]
+Thus by Lemma \ref{6.4.13} we have
+\[
+    \lim\sup_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} = \lim\sup_{n \to \infty} \bigg(\frac{n + 1}{n}\bigg)^q \abs*{x} < \frac{2\abs*{x}}{\abs*{x} + 1} < 1.
+\]
+By ratio test (Corollary \ref{7.5.3}) this means \(\sum_{n = 1}^\infty n^q x^n\) is absolutely convergent.
+
+Now suppose that \(q < 0\), then we have \(-q > 0\) and
+\[
+    \lim\sup_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} = \lim\sup_{n \to \infty} \bigg(\frac{n + 1}{n}\bigg)^q \abs*{x} = \lim\sup_{n \to \infty} \bigg(\frac{n}{n + 1}\bigg)^{-q} \abs*{x} < \frac{2\abs*{x}}{\abs*{x} + 1} < 1.
+\]
+By ratio test (Corollary \ref{7.5.3}) this means \(\sum_{n = 1}^\infty n^q x^n\) is absolutely convergent.
+For all \(q \in \mathbf{R}\) we have \(\sum_{n = 1}^\infty n^q x^n\) is absolutely convergent.
+By absolute convergence test (Proposition \ref{7.2.9}) and zero test (Corollary \ref{7.2.6}) we have \(\lim_{n \to \infty} n^q x^n = 0\).
+\end{proof}
+
+\begin{exercise}\label{ex 7.5.3}
+Give an example of a divergent series \(\sum_{n = 1}^\infty a_n\) of positive numbers \(a_n\) such that \(\lim_{n \to \infty} a_{n + 1} / a_n = \lim_{n \to \infty} a_n^{1 / n} = 1\), and give an example of a convergent series \(\sum_{n = 1}^\infty b_n\) of positive numbers \(b_n\) such that \(\lim_{n \to \infty} b_{n + 1} / b_n = \lim_{n \to \infty} b_n^{1 / n} = 1\).
+This shows that the ratio and root tests can be inconclusive even when the summands are positive and all the limits converge.
+\end{exercise}
+
+\begin{proof}
+See Theorem \ref{7.5.1}.
+\end{proof}
