@@ -33,3 +33,30 @@ Thus, a countable set can be arranged in a sequence, so that we have a zeroth el
 (This is why these sets are called \emph{countable};
 because we can literally count them one by one, starting from \(f(0)\), then \(f(1)\), and so forth.)
 \end{note}
+
+\begin{proposition}[Well ordering principle]\label{8.1.4}
+Let \(X\) be a non-empty subset of the natural numbers \(\mathbf{N}\).
+Then there exists exactly one element \(n \in X\) such that \(n \leq m\) for all \(m \in X\).
+In other words, every non-empty set of natural numbers has a minimum element.
+\end{proposition}
+
+\begin{proof}
+Suppose for sake of contradiction that \(X\) has no minimum element.
+Let \(n \in \mathbf{N}\) and let \(P(n)\) be the statement
+\[
+    \forall\ m \in \mathbf{N} \land m \leq n : m \notin X.
+\]
+We use induction to show that \(\forall\ n \in \mathbf{N}\), \(P(n)\) is true.
+For \(n = 0\), we have \(0 \notin X\) since \(X\) has no mimimum and by Axiom \ref{2.3} \(\forall\ m \in \mathbf{N} \implies m \geq 0\).
+So the base case holds.
+Suppose inductively that \(P(n)\) is true for some \(n \geq 0\).
+Then for \(n + 1\), we need to show that \(P(n + 1)\) is also true.
+By induction hypothesis we have \(m \notin X \ \forall\ m \leq n\).
+Then if \(n + 1 \in X\), \(n + 1\) is the minimum element of \(X\).
+So we must have \(n + 1 \notin X\), and thus \(P(n + 1)\) is true, and this close the induction.
+
+We now use \(P(n)\) to derive contradiction.
+Since \(P(n)\) is true \(\forall\ n \in \mathbf{N}\), we must have \(X = \emptyset\), otherwise if \(n \in X\) then \(P(n)\) is false.
+But \(X = \emptyset\) contradict to the given condition.
+This means \(X\) must have a minimum element.
+\end{proof}
