@@ -60,3 +60,82 @@ Since \(P(n)\) is true \(\forall\ n \in \mathbf{N}\), we must have \(X = \emptys
 But \(X = \emptyset\) contradict to the given condition.
 This means \(X\) must have a minimum element.
 \end{proof}
+
+\begin{note}
+We will refer to the element \(n\) given by the well-ordering principle as the \emph{minimum} of \(X\), and write it as \(\min(X)\).
+This minimum is clearly the same as the infimum of \(X\), as defined in Definition \ref{5.5.10}.
+\end{note}
+
+\begin{proposition}\label{8.1.5}
+Let \(X\) be an infinite subset of the natural numbers \(\mathbf{N}\).
+Then there exists a unique bijection \(f : \mathbf{N} \to X\) which is increasing, in the sense that \(f(n + 1) > f(n)\) for all \(n \in N\).
+In particular, \(X\) has equal cardinality with \(\mathbf{N}\) and is hence countable.
+\end{proposition}
+
+\begin{proof}
+We now define a sequence \(a_0, a_1, a_2, \dots\) of natural numbers recursively by the formula
+\[
+    a_n \coloneqq \min\{x \in X : x \neq a_m \ \forall\ m < n\}.
+\]
+Intuitively speaking, \(a_0\) is the smallest element of \(X\);
+\(a_1\) is the second smallest element of \(X\), i.e., the smallest element of \(X\) once \(a_0\) is removed;
+\(a_2\) is the third smallest element of \(X\);
+and so forth.
+Observe that in order to define \(a_n\), one only needs to know the values of \(a_m\) for all \(m < n\), so this definition is recursive.
+Also, since \(X\) is infinite, the set \(\{x \in X : x \neq a_m \ \forall\ m < n\}\) is infinite, hence non-empty.
+(If it is finite, then its union with the set \(\{a_0, \dots, a_{n - 1}\}\) is also finite, contradict to \(X\) is infinite)
+Thus by the well-ordering principle (Proposition \ref{8.1.5}), the minimum, \(\min\{x \in X : x \neq a_m \ \forall\ m < n\}\) is always well-defined.
+
+One can show that \(a_n\) is an increasing sequence, i.e.
+\[
+    a_0 < a_1 < a_2 < \dots
+\]
+and in particular that \(a_n \neq a_m\) for all \(n \neq m\).
+(If \(a_n \geq a_{n + 1}\), then \(a_{n + 1} = \min\{x \in X : x \neq a_m \ \forall\ m < n\}\), a contradiction)
+Also, we have \(a_n \in X\) for each natural number \(n\) (by Proposition \ref{8.1.4}).
+
+Now define the function \(f : \mathbf{N} \to X\) by \(f(n) \coloneqq a_n\).
+From the previous paragraph we know that \(f\) is one-to-one.
+Now we show that \(f\) is onto.
+In other words, we claim that for every \(x \in X\), there exists an \(n\) such that \(a_n = x\).
+
+Let \(x \in X\).
+Suppose for sake of contradiction that \(a_n \neq x\) for every natural number \(n\).
+Then this implies that \(x\) is an element of the set \(\{x \in X : x \neq a_m \ \forall\ m < n\}\) for all \(n\).
+By definition of \(a_n\), this implies that \(x \geq a_n\) for every natural number \(n\).
+However, since \(a_n\) is an increasing sequence, we have \(a_n \geq n\), and hence \(x \geq n\) for every natural number \(n\).
+In particular we have \(x \geq x + 1\), which is a contradiction.
+Thus we must have \(a_n = x\) for some natural number \(n\), and hence \(f\) is onto.
+
+Since \(f : \mathbf{N} \to X\) is both one-to-one and onto, it is a bijection.
+We have thus found at least one increasing bijection \(f\) from \(\mathbf{N}\) to \(X\).
+Now suppose for sake of contradiction that there was at least one other increasing bijection \(g\) from \(\mathbf{N}\) to \(X\) which was not equal to \(f\).
+Then the set \(\{n \in \mathbf{N} : g(n) \neq f(n)\}\) is non-empty, and define \(m \coloneqq \min\{n \in \mathbf{N} : g(n) \neq f(n)\}\), thus in particular \(g(m) \neq f(m) = a_m\), and \(g(n) = f(n) = a_n\) for all \(n < m\).
+But we then must have
+\[
+    g(m) = \min\{x \in X : x \neq a_t \ \forall\ t < m\} = a_m,
+\]
+a contradiction.
+Thus there is no other increasing bijection from \(\mathbf{N}\) to \(X\) other than \(f\).
+\end{proof}
+
+\begin{corollary}\label{8.1.6}
+All subsets of the natural numbers are at most countable.
+\end{corollary}
+
+\begin{proof}
+Since finite sets are at most countable by definition, combine with Proposition \ref{8.1.5} we thus have all subsets of the natural numbers are at most countable.
+\end{proof}
+
+\begin{corollary}\label{8.1.7}
+If \(X\) is an at most countable set, and \(Y\) is a subset of \(X\), then \(Y\) is at most countable.
+\end{corollary}
+
+\begin{proof}
+If \(X\) is finite then this follows from Proposition \ref{3.6.14}(c), so assume \(X\) is countable.
+Then there is a bijection \(f : X \to \mathbf{N}\) between \(X\) and \(\mathbf{N}\).
+Since \(Y\) is a subset of \(X\), and \(f\) is a bijection from \(X\) and \(\mathbf{N}\), then when we restrict \(f\) to \(Y\), we obtain a bijection between \(Y\) and \(f(Y)\).
+Thus \(f(Y)\) has equal cardinality with \(Y\).
+But \(f(Y)\) is a subset of \(\mathbf{N}\), and hence at most countable by Corollary \ref{8.1.6}.
+Hence \(Y\) is also at most countable.
+\end{proof}
