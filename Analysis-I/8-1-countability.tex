@@ -207,3 +207,90 @@ But since \(X\) and \(Y\) are infinite sets, \(X \cup Y\) can not be finite, thu
 \begin{note}
 To summarize, any subset or image of a countable set is at most countable, and any finite union of countable sets is still countable.
 \end{note}
+
+\begin{corollary}\label{8.1.11}
+The integers \(\mathbf{Z}\) are countable.
+\end{corollary}
+
+\begin{proof}
+We already know that the set \(\mathbf{N} = \{0, 1, 2, 3, \dots\}\) of natural num bers are countable.
+The set \(-\mathbf{N}\) defined by
+\[
+    -\mathbf{N} \coloneqq \{-n : n \in \mathbf{N}\} = \{0, -1, -2, -3, \dots\}
+\]
+is also countable, since the map \(f(n) \coloneqq -n\) is a bijection between \(\mathbf{N}\) and this set.
+Since the integers are the union of \(\mathbf{N}\) and \(-\mathbf{N}\), the claim follows from Proposition \ref{8.1.10}.
+\end{proof}
+
+\begin{note}
+To establish countability of the rationals, we need to relate countability with Cartesian products.
+In particular, we need to show that the set \(\mathbf{N} \times \mathbf{N}\) is countable.
+\end{note}
+
+\begin{lemma}\label{8.1.12}
+The set
+\[
+    A \coloneqq \{(n, m) \in \mathbf{N} \times \mathbf{N} : 0 \leq m \leq n\}
+\]
+is countable.
+\end{lemma}
+
+\begin{proof}
+Define the sequence \(a_0, a_1, a_2, \dots\) recursively by setting \(a_0 \coloneqq 0\), and \(a_{n + 1} \coloneqq a_n + n + 1\) for all natural numbers \(n\).
+Thus
+\[
+    a_0 = 0; a_1 = 0 + 1; a_2 = 0 + 1 + 2; a_3 = 0 + 1 + 2 + 3; \dots
+\]
+By induction one can show that \(a_n\) is increasing, i.e., that \(a_n > a_m\) whenever \(n > m\).
+
+Now define the function \(f : A \to \mathbf{N}\) by
+\[
+    f(n, m) \coloneqq a_n + m.
+\]
+We claim that \(f\) is one-to-one.
+In other words, if \((n, m)\) and \((n', m')\) are any two distinct elements of \(A\), then we claim that \(f(n, m) \neq f(n', m')\).
+
+To prove this claim, let \((n, m)\) and \((n', m')\) be two distinct elements of \(A\).
+There are three cases: \(n' = n\), \(n' > n\), and \(n' < n\).
+First suppose that \(n' = n\).
+Then we must have \(m \neq m'\), otherwise \((n, m)\) and \((n', m')\) would not be distinct.
+Thus \(a_n + m \neq a_n + m'\), and hence \(f(n, m) \neq f(n', m')\), as desired.
+
+Now suppose that \(n' > n\).
+Then \(n' \geq n + 1\), and hence
+\[
+    f(n', m') = a_{n'} + m' \geq a_{n'} \geq a_{n + 1} = a_n + n + 1.
+\]
+But since \((n, m) \in A\), we have \(m \leq n < n + 1\), and hence
+\[
+    f(n', m') \geq a_n + n + 1 > a_n + m = f(n, m),
+\]
+and thus \(f(n', m') \neq f(n, m)\).
+
+The case \(n' < n\) is proven similarly, by switching the roles of \(n\) and \(n'\) in the previous argument.
+Thus we have shown that \(f\) is one-to-one.
+Thus \(f\) is a bijection from \(A\) to \(f(A)\), and so \(A\) has equal cardinality with \(f(A)\).
+But \(f(A)\) is a subset of \(\mathbf{N}\), and hence by Corollary \ref{8.1.6} \(f(A)\) is at most countable.
+Therefore \(A\) is at most countable.
+But, \(A\) is clearly not finite.
+(if \(A\) was finite, then every subset of \(A\) would be finite, and in particular \(\{(n, 0) : n \in \mathbf{N}\}\) would be finite, but this is clearly countably infinite, a contradiction.)
+Thus, \(A\) must be countable.
+\end{proof}
+
+\begin{corollary}\label{8.1.13}
+The set \(\mathbf{N} \times \mathbf{N}\) is countable.
+\end{corollary}
+
+\begin{proof}
+We already know that the set
+\[
+    A \coloneqq \{(n, m) \in \mathbf{N} \times \mathbf{N} : 0 \leq m \leq n\}
+\]
+is countable.
+This implies that the set
+\[
+    B \coloneqq \{(n, m) \in \mathbf{N} \times \mathbf{N} : 0 \leq n \leq m\}
+\]
+is also countable, since the map \(f : A \to B\) given by \(f(n, m) \coloneqq (m, n)\) is a bijection from \(A\) to \(B\).
+But since \(\mathbf{N} \times \mathbf{N}\) is the union of \(A\) and \(B\), the claim then follows from Proposition \ref{8.1.10}.
+\end{proof}
