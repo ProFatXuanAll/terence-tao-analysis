@@ -139,3 +139,71 @@ Thus \(f(Y)\) has equal cardinality with \(Y\).
 But \(f(Y)\) is a subset of \(\mathbf{N}\), and hence at most countable by Corollary \ref{8.1.6}.
 Hence \(Y\) is also at most countable.
 \end{proof}
+
+\begin{proposition}\label{8.1.8}
+Let \(Y\) be a set, and let \(f : \mathbf{N} \to Y\) be a function.
+Then \(f(\mathbf{N})\) is at most countable.
+\end{proposition}
+
+\begin{proof}
+If \(f(\mathbf{N})\) is finite then by Definition \ref{8.1.1} it is at most countable.
+So assume that \(f(\mathbf{N})\) is infinite.
+Let \(A\) be the set
+\[
+    A = \{n \in \mathbf{N} : f(m) \neq f(n) \ \forall\ 0 \leq m < n\}.
+\]
+So \(A \subseteq \mathbf{N}\).
+We now show that \(f_A : A \to f(\mathbf{N})\) is a bijection.
+
+Let \(m, n \in A \land m \neq n\).
+By the definition of \(A\) we know that \(f_A(m) \neq f_A(n)\).
+So \(f_A\) is injective.
+
+Suppose for sake of contradiction that \(f_A\) is not surjective.
+Then \(\exists\ y \in f(\mathbf{N})\) such that \(f_A(n) \neq y \ \forall\ n \in A\).
+But \(f_A(n) \neq y\) means \(\exists\ m \in A\) such that \(f(m) = y\), a contradiction.
+So \(f_A\) is surjective, and thus is bijective.
+
+Since \(A \subseteq \mathbf{N}\), by Proposition \ref{8.1.5} \(\exists\ g : \mathbf{N} \to A\) where \(g\) is bijective.
+This means \(f_A \circ g : \mathbf{N} \to f(\mathbf{N})\) is bijective.
+So by Definition \ref{8.1.1} \(f(\mathbf{N})\) is countable, and thus at most countable.
+\end{proof}
+
+\begin{corollary}\label{8.1.9}
+Let \(X\) be a countable set, and let \(f : X \to Y\) be a function.
+Then \(f(X)\) is at most countable.
+\end{corollary}
+
+\begin{proof}
+By Definition \ref{8.1.1} \(\exists\ g : \mathbf{N} \to X\) such that \(g\) is a bijection.
+So we have \(f \circ g : \mathbf{N} \to Y\) and by Proposition \ref{8.1.8} \((f \circ g)(\mathbf{N})\) is at most countable.
+But
+\[
+    (f \circ g)(\mathbf{N}) = f(g(\mathbf{N})) = f(X).
+\]
+So \(f(X)\) is at most countable.
+\end{proof}
+
+\begin{proposition}\label{8.1.10}
+Let \(X\) be a countable set, and let \(Y\) be a countable set.
+Then \(X \cup Y\) is a countable set.
+\end{proposition}
+
+\begin{proof}
+By Definition \ref{8.1.1} \(\exists\ f : \mathbf{N} \to X\) and \(g : \mathbf{N} \to Y\) such that \(f\) and \(g\) are bijections.
+Let \(h : \mathbf{N} \to X \cup Y\) by setting \(h(2n) = f(n)\) and \(h(2n + 1) = g(n)\) for every natural number \(n\).
+We now show that \(h(\mathbf{N}) = X \cup Y\).
+\begin{align*}
+& z \in h(\mathbf{N}) \\
+\iff & z = h(2n) \lor z = h(2n + 1) \\
+\iff & z = f(n) \lor z = g(n) \\
+\iff & z \in X \lor z \in Y \\
+\iff & z \in X \cup Y.
+\end{align*}
+Then by Corollary \ref{8.1.9} we have \(h(\mathbf{N}) = X \cup Y\) is at most countable.
+But since \(X\) and \(Y\) are infinite sets, \(X \cup Y\) can not be finite, thus \(X \cup Y\) is countable.
+\end{proof}
+
+\begin{note}
+To summarize, any subset or image of a countable set is at most countable, and any finite union of countable sets is still countable.
+\end{note}
