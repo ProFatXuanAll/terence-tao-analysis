@@ -235,6 +235,8 @@ a_n^2                      % do not enclose with {}
 ### Unsolved Exercise
 
 - Analysis I
-  - no requirement yet
+  - 8.1.1
+  - 8.1.9
+  - 8.1.10
 - Analysis II
   - not start yet
