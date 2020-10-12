@@ -1,0 +1,80 @@
+\section{Summation on infinite sets}\label{sec 8.2}
+
+\begin{definition}[Series on countable sets]\label{8.2.1}
+Let \(X\) be a countable set, and let \(f : X \to \mathbf{R}\) be a function.
+We say that the series \(\sum_{x \in X} f(x)\) is absolutely convergent iff for some bijection \(g : \mathbf{N} \to X\), the sum \(\sum_{n = 0}^\infty f(g(n))\) is absolutely convergent.
+We then define the sum of \(\sum_{x \in X} f(x)\) by the formula
+\[
+    \sum_{x \in X} f(x) = \sum_{n = 0}^\infty f(g(n)).
+\]
+\end{definition}
+
+\begin{note}
+From Proposition \ref{7.4.3} (and Proposition \ref{3.6.4}), one can show that these definitions do not depend on the choice of \(g\), and so are well defined.
+\end{note}
+
+\begin{theorem}[Fubini's theorem for infinite sums]\label{8.2.2}
+Let \(f : \mathbf{N} \times \mathbf{N} \to \mathbf{R}\) be a function such that \(\sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f(n, m)\) is absolutely convergent.
+Then we have
+\begin{align*}
+\sum_{n = 0}^\infty \bigg(\sum_{m = 0}^\infty f(n, m)\bigg) &= \sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f(n, m) \\
+&= \sum_{(m, n) \in \mathbf{N} \times \mathbf{N}} f(n, m) \\
+&= \sum_{m = 0}^\infty \bigg(\sum_{n = 0}^\infty f(n, m)\bigg).
+\end{align*}
+In other words, we can switch the order of infinite sums \emph{provided that the entire sum is absolutely convergent}.
+\end{theorem}
+
+\begin{proof}
+The second equality follows easily from Proposition \ref{7.4.3} (and Proposition \ref{3.6.4}).
+
+Let us first consider the case when \(f(n, m)\) is always non-negative (we will deal with the general case later).
+Write
+\[
+    L \coloneqq \sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f(n, m);
+\]
+our task is to show that the series \(\sum_{n = 0}^\infty (\sum_{m = 0}^\infty f(n, m))\) converges to \(L\).
+
+One can easily show that \(\sum_{(n, m) \in X} f(n, m) \leq L\) for all finite sets \(X \subset \mathbf{N} \times \mathbf{N}\).
+(Use a bijection \(g\) between \(\mathbf{N} \times \mathbf{N}\) and \(\mathbf{N} \times \mathbf{N}\), and then use the fact that \(g(X)\) is finite, hence bounded.)
+In particular, for every \(n \in \mathbf{N}\) and \(M \in \mathbf{N}\) we have \(\sum_{m = 0}^M f(n, m) \leq L\), which implies by Proposition \ref{6.3.8} that \(\sum_{m = 0}^\infty f(n, m)\) is convergent for each \(m\).
+Similarly, for any \(N \in \mathbf{N}\) and \(M \in \mathbf{N}\) we have (by Corollary \ref{7.1.14})
+\[
+    \sum_{n = 0}^N \sum_{m = 0}^M f(n, m) \leq \sum_{(n, m) \in X} f(n, m) \leq L
+\]
+where \(X\) is the set \(\{(n,m) \in \mathbf{N} \times \mathbf{N} : n \leq N, m \leq M\}\) which is finite by Proposition \ref{3.6.14}.
+Taking suprema of this as \(M \to \infty\) we have (by limit laws, and an induction on \(\mathbf{N}\))
+\[
+    \sum_{n = 0}^N \sum_{m = 0}^\infty f(n, m) \leq L.
+\]
+By Proposition \ref{6.3.8}, this implies that \(\sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m)\) converges, and
+\[
+    \sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) \leq L.
+\]
+To finish the proof, it will suffice to show that
+\[
+    \sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) \geq L - \varepsilon
+\]
+for every \(\varepsilon > 0\).
+So, let \(\varepsilon > 0\).
+By definition of \(L\), we can then find a finite set \(X \subseteq \mathbf{N} \times \mathbf{N}\) such that \(\sum_{(n, m) \in X} f(n, m) \geq L - \varepsilon\).
+This set, being finite, must be contained in some set of the form \(Y \coloneqq \{(n,m) \in \mathbf{N} \times \mathbf{N} : n \leq N; m \leq M \}\).
+Thus by Corollary \ref{7.1.14}
+\[
+    \sum_{n = 0}^N \sum_{m = 0}^M f(n, m) = \sum_{(n, m) \in Y} f(n, m) \geq \sum_{(n, m) \in X} f(n, m) \geq L - \varepsilon
+\]
+and hence
+\[
+    \sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) \geq \sum_{n = 0}^N \sum_{m = 0}^\infty f(n, m) \geq \sum_{n = 0}^N \sum_{m = 0}^M f(n, m) \geq L - \varepsilon
+\]
+as desired.
+
+This proves the claim when the \(f(n, m)\) are all non-negative.
+A similar argument works when the \(f(n, m)\) are all non-positive
+(in fact, one can simply apply the result just obtained to the function \(-f(n, m)\), and then use limit laws to remove the \(-\).
+For the general case, note that any function \(f(n, m)\) can be written as \(f_+(n, m) + f_-(n, m)\), where \(f_+(n, m)\) is the positive part of \(f(n, m)\)
+(i.e., it equals \(f(n, m)\) when \(f(n, m)\) is positive, and \(0\) otherwise),
+and \(f_-\) is the negative part of \(f(n, m)\)
+(it equals \(f(n, m)\) when \(f(n, m)\) is negative, and \(0\) otherwise).
+It is easy to show that if \(\sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f(n, m)\) is absolutely convergent, then so are \(\sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f_+(n, m)\) and \(\sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f_-(n, m)\).
+So now one applies the results just obtained to \(f_+\) and to \(f_-\) and adds them together using limit laws to obtain the result for a general \(f\).
+\end{proof}
