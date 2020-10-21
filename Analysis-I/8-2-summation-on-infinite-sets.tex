@@ -40,7 +40,7 @@ our task is to show that the series \(\sum_{n = 0}^\infty (\sum_{m = 0}^\infty f
 
 One can easily show that \(\sum_{(n, m) \in X} f(n, m) \leq L\) for all finite sets \(X \subseteq \mathbf{N} \times \mathbf{N}\).
 (Use a bijection \(g\) between \(\mathbf{N} \times \mathbf{N}\) and \(\mathbf{N} \times \mathbf{N}\), and then use the fact that \(g(X)\) is finite, hence bounded.)
-In particular, for every \(n \in \mathbf{N}\) and \(M \in \mathbf{N}\) we have \(\sum_{m = 0}^M f(n, m) \leq L\), which implies by Proposition \ref{6.3.8} that \(\sum_{m = 0}^\infty f(n, m)\) is convergent for each \(m\).
+In particular, for every \(n \in \mathbf{N}\) and \(M \in \mathbf{N}\) we have \(\sum_{m = 0}^M f(n, m) \leq L\), which implies by Proposition \ref{6.3.8} that \(\sum_{m = 0}^\infty f(n, m)\) is convergent for each \(n\).
 Similarly, for any \(N \in \mathbf{N}\) and \(M \in \mathbf{N}\) we have (by Corollary \ref{7.1.14})
 \[
     \sum_{n = 0}^N \sum_{m = 0}^M f(n, m) = \sum_{(n, m) \in X} f(n, m) \leq L
@@ -89,4 +89,48 @@ and \(f_-\) is the negative part of \(f(n, m)\)
 (it equals \(f(n, m)\) when \(f(n, m)\) is negative, and \(0\) otherwise).
 It is easy to show that if \(\sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f(n, m)\) is absolutely convergent, then so are \(\sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f_+(n, m)\) and \(\sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f_-(n, m)\).
 So now one applies the results just obtained to \(f_+\) and to \(f_-\) and adds them together using limit laws to obtain the result for a general \(f\).
+\end{proof}
+
+\begin{lemma}\label{8.2.3}
+Let \(X\) be a countable set, and let \(f : X \to \mathbf{R}\) be a function.
+Then the series \(\sum_{x \in X} f(x)\) is absolutely convergent if and only if
+\[
+    \sup\Bigg\{\sum_{x \in A} \abs*{f(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty.
+\]
+\end{lemma}
+
+\begin{proof}
+Let \(P(X, f)\) be the statement
+\[
+    \sup\Bigg\{\sum_{x \in A} \abs*{f(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty.
+\]
+We first show that if \(\sum_{x \in X} f(x)\) is absolutely convergent, then \(P(X, f)\) is true.
+Let \(L = \sum_{x \in X} f(x)\).
+Since \(\sum_{x \in X} f(x)\) is absolutely convergent, by Definition \ref{8.2.1} \(\exists\ g : \mathbf{N} \to X\) where \(g\) is a bijection such that
+\[
+    L = \sum_{x \in X} \abs*{f(x)} = \sum_{n = 0}^\infty \abs*{f(g(n))}.
+\]
+Let \(A \subseteq X\) be a finite set.
+Since \(g\) is a bijection, we have
+\[
+    \sum_{x \in A} \abs*{f(x)} = \sum_{n \in g^{-1}(A)} \abs*{f(g(n))}
+\]
+Since \(A\) is finite, by Exercise \ref{ex 3.6.3}, \(\exists\ M \in \mathbf{N}\) such that \(g^{-1}(A)\) is bounded by \(M\).
+So we have
+\[
+    \sum_{x \in A} \abs*{f(x)} = \sum_{n \in g^{-1}(A)} \abs*{f(g(n))} \leq \sum_{n = 0}^M \abs*{f(g(n))} \leq L
+\]
+This is true \(\forall\ A \subseteq X\).
+Thus by Theorem \ref{5.5.9} \(P(X, f)\) is true.
+
+Now we show that if \(P(X, f)\) is true, then \(\sum_{x \in X} f(x)\) is absolutely convergent.
+Let \(L\) be the supremum described by \(P(X, f)\).
+Since \(X\) is countable, \(\exists\ g : \mathbf{N} \to X\) where \(g\) is a bijection.
+So we have
+\begin{align*}
+& \forall\ n \in \mathbf{N} : \sum_{x \in g(\{i \in \mathbf{N} : 0 \leq i \leq n\})} \abs*{f(x)} \leq L & (P(X, f) \text{ is true}) \\
+\implies & \forall\ n \in \mathbf{N} : \sum_{i = 0}^n \abs*{f(g(i))} \leq L & \text{(by Definition \ref{7.1.6})} \\
+\implies & \sum_{i = 0}^\infty \abs*{f(g(i))} \text{ converges} & \text{(by Proposition \ref{7.3.1})} \\
+\implies & \sum_{x \in X} \abs*{f(x)} \text{ converges}. & \text{(by Definition \ref{8.2.1})}
+\end{align*}
 \end{proof}
