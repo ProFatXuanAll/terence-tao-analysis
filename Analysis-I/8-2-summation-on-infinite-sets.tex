@@ -13,6 +13,10 @@ We then define the sum of \(\sum_{x \in X} f(x)\) by the formula
 From Proposition \ref{7.4.3} (and Proposition \ref{3.6.4}), one can show that these definitions do not depend on the choice of \(g\), and so are well defined.
 \end{note}
 
+\begin{note}
+For finite sets \(X\) we adopt the convention that series \(\sum_{x \in X} f(x)\) are automatically considered to be absolutely convergent.
+\end{note}
+
 \begin{theorem}[Fubini's theorem for infinite sums]\label{8.2.2}
 Let \(f : \mathbf{N} \times \mathbf{N} \to \mathbf{R}\) be a function such that \(\sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f(n, m)\) is absolutely convergent.
 Then we have
@@ -34,15 +38,15 @@ Write
 \]
 our task is to show that the series \(\sum_{n = 0}^\infty (\sum_{m = 0}^\infty f(n, m))\) converges to \(L\).
 
-One can easily show that \(\sum_{(n, m) \in X} f(n, m) \leq L\) for all finite sets \(X \subset \mathbf{N} \times \mathbf{N}\).
+One can easily show that \(\sum_{(n, m) \in X} f(n, m) \leq L\) for all finite sets \(X \subseteq \mathbf{N} \times \mathbf{N}\).
 (Use a bijection \(g\) between \(\mathbf{N} \times \mathbf{N}\) and \(\mathbf{N} \times \mathbf{N}\), and then use the fact that \(g(X)\) is finite, hence bounded.)
 In particular, for every \(n \in \mathbf{N}\) and \(M \in \mathbf{N}\) we have \(\sum_{m = 0}^M f(n, m) \leq L\), which implies by Proposition \ref{6.3.8} that \(\sum_{m = 0}^\infty f(n, m)\) is convergent for each \(m\).
 Similarly, for any \(N \in \mathbf{N}\) and \(M \in \mathbf{N}\) we have (by Corollary \ref{7.1.14})
 \[
-    \sum_{n = 0}^N \sum_{m = 0}^M f(n, m) \leq \sum_{(n, m) \in X} f(n, m) \leq L
+    \sum_{n = 0}^N \sum_{m = 0}^M f(n, m) = \sum_{(n, m) \in X} f(n, m) \leq L
 \]
 where \(X\) is the set \(\{(n,m) \in \mathbf{N} \times \mathbf{N} : n \leq N, m \leq M\}\) which is finite by Proposition \ref{3.6.14}.
-Taking suprema of this as \(M \to \infty\) we have (by limit laws, and an induction on \(\mathbf{N}\))
+Taking limits of this as \(M \to \infty\) we have (by Exercise \ref{ex 7.1.5} and either Proposition \ref{6.3.8} or Lemma \ref{6.4.13})
 \[
     \sum_{n = 0}^N \sum_{m = 0}^\infty f(n, m) \leq L.
 \]
@@ -55,8 +59,16 @@ To finish the proof, it will suffice to show that
     \sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) \geq L - \varepsilon
 \]
 for every \(\varepsilon > 0\).
+\begin{align*}
+& L \geq \sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) \geq L - \varepsilon \\
+\implies & L + \varepsilon \geq \sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) \geq L - \varepsilon \\
+\implies & \varepsilon \geq \sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) - L \geq -\varepsilon \\
+\implies & \abs*{\sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) - L} \leq \varepsilon \\
+\end{align*}
 So, let \(\varepsilon > 0\).
 By definition of \(L\), we can then find a finite set \(X \subseteq \mathbf{N} \times \mathbf{N}\) such that \(\sum_{(n, m) \in X} f(n, m) \geq L - \varepsilon\).
+(Since \(\mathbf{N} \times \mathbf{N}\) is countable by Corollary \ref{8.1.13}, we can find a bijection \(g : \mathbf{N} \to \mathbf{N} \times \mathbf{N}\) such that \(\sum_{i = 0}^\infty f(g(i)) = L\), which means \(\forall\ \varepsilon > 0\), \(\exists\ H \in \mathbf{N} \land H \geq 0\) such that \(\abs*{\sum_{i = 0}^h f(g(i)) - L} \leq \varepsilon\) for all \(h \geq H\).
+Now we can choose \(X = \{g(i) : 0 \leq i \leq H\}\))
 This set, being finite, must be contained in some set of the form \(Y \coloneqq \{(n,m) \in \mathbf{N} \times \mathbf{N} : n \leq N; m \leq M \}\).
 Thus by Corollary \ref{7.1.14}
 \[
