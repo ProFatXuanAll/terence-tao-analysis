@@ -1,8 +1,4 @@
 \section{Multiplication}\label{sec 2.3}
-\begin{note}
-In the previous section we have proven all the basic facts that we know to be true about addition and order.
-To save space and to avoid belaboring the obvious, we will now allow ourselves to use all the rules of algebra concerning addition and order that we are familiar with, without further comment.
-\end{note}
 
 \begin{definition}[Multiplication of natural numbers]\label{2.3.1}
 Let \(m\) be a natural number.
@@ -18,11 +14,13 @@ The product of two natural numbers is a natural number.
 \begin{proof}
 Let \(n\), \(m\) be two natural numbers.
 We use induction on \(n\).
-For \(n = 0\), \(n \times m = 0 \times m = 0\) is a natural number.
-Now suppose inductively that \(n\) is a natural number such that \(n \times m\) is a natural number.
-We wish to show that \((n++) \times m\) is also a natural number.
+For \(n = 0\), by Definition \ref{2.3.1} we have \(0 \times m = 0\), which is a natural number by Axiom \ref{2.1}.
+So the base case holds.
+Suppose inductively that for some natural number \(n\) we have \(n \times m\) is a natural number.
+We want to show that \((n++) \times m\) is also a natural number.
 By Definition \ref{2.3.1}, \((n++) \times m = (n \times m) + m\).
-By induction hypothesis and by Additional Corollary \ref{ac 2.2.1}, \((n \times m)\) is a natural number and sum of two natural number is again a natural number.
+By induction hypothesis \(n \times m\) is a natural number.
+By Additional Corollary \ref{ac 2.2.1}, \((n \times m) + m\) is again a natural number.
 This close the induction.
 \end{proof}
 
@@ -32,10 +30,16 @@ Then \(n \times 0 = 0\).
 \end{additional corollary}
 
 \begin{proof}
-We use induction.
-For base case \(n = 0\), \(0 \times 0 = 0\) by Definition \ref{2.3.1}.
-Suppose inductively that \(n \times 0 = 0\).
-Then \((n++) \times 0 = (n \times 0) + 0 = 0 + 0 = 0\) by Definition \ref{2.3.1} and induction hypothesis.
+We use induction on \(n\).
+For \(n = 0\), by Definition \ref{2.3.1} we have \(0 \times 0 = 0\).
+So the base case holds.
+Suppose inductively that for some natural number \(n\) we have \(n \times 0 = 0\).
+Then for \(n++\) we have
+\begin{align*}
+(n++) \times 0 &= (n \times 0) + 0 & \text{(by Definition \ref{2.3.1})} \\
+&= 0 + 0 & \text{(by induction hypothesis)} \\
+&= 0. & \text{(by Definition \ref{2.2.1})}
+\end{align*}
 This close the induction.
 \end{proof}
 
@@ -45,18 +49,19 @@ Then \(n \times (m++) = (n \times m) + n\).
 \end{additional corollary}
 
 \begin{proof}
-We use induction on \(n\) (fixed \(m\).
-For base case \(n = 0\), \(0 \times (m++) = 0\) by Definition \ref{2.3.1}.
-Suppose inductively that \(n \times (m++) = (n \times m) + n\).
-Then
-    \begin{align*}
-        (n++) \times (m++)
-        &= (n \times (m++)) + (m++) & \text{(by Definition \ref{2.3.1})} \\
-        &= (n \times m) + n + (m++) & \text{(by induction hypothesis)} \\
-        &= (n \times m) + (n++) + m \\
-        &= (n \times m) + m + (n++) \\
-        &= ((n++) \times m) + (n++). & \text{(by Definition \ref{2.3.1})}
-    \end{align*}
+We use induction on \(n\) (fixed \(m\)).
+For \(n = 0\), by Definition \ref{2.3.1} we have \(0 \times (m++) = 0\).
+So the base case holds.
+Suppose inductively that for some natural number \(n\) we have \(n \times (m++) = (n \times m) + n\).
+Then for \(n++\), we have
+\begin{align*}
+(n++) \times (m++)
+&= (n \times (m++)) + (m++) & \text{(by Definition \ref{2.3.1})} \\
+&= (n \times m) + n + (m++) & \text{(by induction hypothesis)} \\
+&= (n \times m) + (n++) + m & \text{(by Proposition \ref{2.2.5})} \\
+&= (n \times m) + m + (n++) & \text{(by Proposition \ref{2.2.4})} \\
+&= ((n++) \times m) + (n++). & \text{(by Definition \ref{2.3.1})}
+\end{align*}
 This close the induction.
 \end{proof}
 
@@ -67,13 +72,16 @@ Then \(n \times m = m \times n\)
 
 \begin{proof}
 We use induction on \(n\) (fixed \(m\)).
-For base case \(n = 0\), we want to prove that \(0 \times m = m \times 0\).
-By Definition \ref{2.3.1}, \(0 \times m = 0\), and by Lemma \ref{ac 2.3.2}, \(m \times 0 = 0\), thus base case is true.
-Suppose inductively that \(n \times m = m \times n\) is true.
-Then we want to show that \((n++) \times m = m \times (n++)\) is also true.
-By Definition \ref{2.3.1}, \((n++) \times m = (n \times m) + m\).
-By Additional Corollary \ref{ac 2.3.3} and induction hypothesis, \(m \times (n++) = (m \times n) + m = (n \times m) + m\).
-Thus \((n++) \times m = m \times (n++)\), and this close the induction.
+For \(n = 0\), by Definition \ref{2.3.1} we have \(0 \times m = 0\), and by Additional Corollary \ref{ac 2.3.2} we have \(m \times 0 = 0\).
+So the base case holds.
+Suppose inductively that for some natural number \(n\) we have \(n \times m = m \times n\).
+Then for \(n++\), we have
+\begin{align*}
+(n++) \times m &= (n \times m) + m & \text{(by Definition \ref{2.3.1})} \\
+&= (m \times n) + m & \text{(by induction hypothesis)} \\
+&= m \times (n++). & \text{(by Additional Corollary \ref{ac 2.3.3})}
+\end{align*}
+This close the induction.
 \end{proof}
 
 \begin{note}
@@ -87,14 +95,23 @@ In particular, if \(n\) and \(m\) are both positive, then \(nm\) is also positiv
 \end{lemma}
 
 \begin{proof}
-We first prove the necessary condition of Lemma \ref{2.3.3}.
-Suppose for sake of contradiction that \(n\) and \(m\) are positive, and \(n = a++\), \(m = b++\) for some natural number \(a\), \(b\)
-Then \(n \times m = (a++) \times (b++) = (a \times (b++)) + (b++) = (a \times b) + a + (b++)\) by Definition \ref{2.3.1} and Lemma \ref{ac 2.3.3}.
-But \(b++\) is positive, so \(n \times m\) is positive, a contradiction with \(n \times m = 0\).
-Thus at least one of \(n\), \(m\) is \(0\).
-
-Now we prove the sufficient condition of Lemma \ref{2.3.3}.
-By Definition \ref{2.3.1}, \(n \times m = 0\) if \(n = 0\), and by Additional Corollary \ref{ac 2.3.2}, \(n \times m = 0\) if \(m = 0\).
+Let \(n, m, a, b, c, d\) be natural numbers where \(n = a++\), \(m = b++\), \(c = ab + a\) and \(d = b++\).
+Then
+\begin{align*}
+& n \text{ is positive} \land m \text{ is positive} \\
+\iff & n \neq 0 \land m \neq 0 & \text{(by Definition \ref{2.2.7})} \\
+\iff & n = a++ \land m = b++ & \text{(by Lemma \ref{2.2.10})} \\
+\iff & nm = (a++)(b++) \\
+&= ab + a + (b++) & \text{(by Definition \ref{2.3.1} and Lemma \ref{2.3.2})} \\
+\iff & nm = c + d \land d \neq 0 & \text{(by Axiom \ref{2.3})} \\
+\iff & nm \text{ is positive}. & \text{(by Proposition \ref{2.2.8})}
+\end{align*}
+And we must also have
+\begin{align*}
+& (n \text{ is positive} \land m \text{ is positive} \iff nm \text{ is positive}) \\
+\iff & (\lnot (n \text{ is positive} \land m \text{ is positive}) \iff \lnot (nm \text{ is positive})) \\
+\iff & (n = 0 \lor m = 0 \iff nm = 0). & \text{(by Definition \ref{2.2.7})}
+\end{align*}
 \end{proof}
 
 \begin{proposition}[Distributive law]\label{2.3.4}
@@ -116,10 +133,17 @@ For any natural numbers \(a\), \(b\), \(c\), we have \((a \times b) \times c = a
 
 \begin{proof}
 We keep \(a\) and \(b\) fixed, and use induction on \(c\).
-The base case \(c = 0\), i.e., \((a \times b) \times 0 = a \times (b \times 0)\).
-The left-hand side is \(0\), while the right-hand side is \(a \times 0 = 0\), so we are done with the base case.
-Now let us suppose inductively that \((a \times b) \times c = a \times (b \times c)\), and let us prove that \((a \times b) \times (c++) = a \times (b \times (c++))\).
-The left-hand side is \((a \times b) \times c + (a \times b)\), while the right-hand side is \(a \times (b \times c + b) = a \times (b \times c) + a \times b = (a \times b) \times c + a \times b\) by the Proposition \ref{2.3.4} and induction hypothesis, and so we can close the induction.
+For \(c = 0\), by Additional Corollary \ref{ac 2.3.2} we have \((a \times b) \times 0 = 0\) and \(a \times (b \times 0) = a \times 0 = 0\).
+So the base case holds.
+Suppose inductively that for some natural number \(c\) we have \((a \times b) \times c = a \times (b \times c)\).
+Then for \(c++\), we have
+\begin{align*}
+(a \times b) \times (c++) &= (a \times b) \times c + a \times b & \text{(by Additional Corollary \ref{ac 2.3.3})} \\
+&= a \times (b \times c) + a \times b & \text{(by induction hypothesis)} \\
+&= a \times (b \times c + b) & \text{(by Proposition \ref{2.3.4})} \\
+&= a \times (b \times (c++)). & \text{(by Additional Corollary \ref{ac 2.3.3})}
+\end{align*}
+This close the induction.
 \end{proof}
 
 \begin{proposition}[Multiplication preserves order]\label{2.3.6}
@@ -127,9 +151,9 @@ If \(a\), \(b\) are natural numbers such that \(a < b\), and \(c\) is positive, 
 \end{proposition}
 
 \begin{proof}
-Since \(a < b\), we have \(b = a + d\) for some positive \(d\).
-Multiplying by \(c\) and using the distributive law we obtain \(bc = ac + dc\).
-Since \(d\) is positive, and \(c\) is positive, \(dc\) is positive, and hence \(ac < bc\) as desired.
+Since \(a < b\), we have \(b = a + d\) for some positive \(d\) by Proposition \ref{2.2.12}(f).
+Multiplying by \(c\) and using the distributive law (by Proposition \ref{2.3.4}) we obtain \(bc = ac + dc\).
+Since \(d\) is positive, and \(c\) is positive, \(dc\) is positive (by Lemma \ref{2.3.3}), and hence \(ac < bc\) (by Definition \ref{2.2.11}) as desired.
 \end{proof}
 
 \begin{corollary}[Cancellation law]\label{2.3.7}
@@ -138,7 +162,7 @@ Then \(a = b\).
 \end{corollary}
 
 \begin{proof}
-By the trichotomy of order, we have three cases: \(a < b\), \(a = b\), \(a > b\).
+By the trichotomy of order (Proposition \ref{2.2.13}), we have three cases: \(a < b\), \(a = b\), \(a > b\).
 Suppose first that \(a < b\), then by Proposition \ref{2.3.6} we have \(ac < bc\), a contradiction.
 We can obtain a similar contradiction when \(a > b\).
 Thus the only possibility is that \(a = b\), as desired.
@@ -155,13 +179,24 @@ Then there exist natural numbers \(m\), \(r\) such that \(0 \leq r<q\) and \(n =
 
 \begin{proof}
 We use induction on \(n\) (fixed \(q\)).
-For the base case \(n = 0\), let \(r = m = 0\), then \(0 = 0q + 0\), \(0 \leq 0 < q\), so we are done with base case.
-Suppose inductively that \(n = mq + r\), \(0 \leq r < q\).
-Then \(n++ = (mq + r)++ = mq + (r++)\).
-By induction hypothesis, because \(r < q\), so \(r++ \leq q\) by Proposition \ref{2.2.12}.
-By Proposition \ref{2.2.13}, we have two cases: \(r++ < q\), \(r++ = q\).
-If \(r++ < q\), then \(n++ = mq + (r++)\) satisfied the condition.
-If \(r++ = q\), then \(n++ = mq + q = (m++) \times q\), also satisfied the condition.
+For \(n = 0\), let \(r = m = 0\), then we have \(0 = 0q + 0\) and \(0 \leq 0 < q\).
+So the base case holds.
+Suppose inductively that for some natural number \(n\) we have \(n = mq + r\), \(0 \leq r < q\).
+Then for \(n++\), we have
+\begin{align*}
+n++ &= (mq + r)++ & \text{(by induction hypothesis)} \\
+&= mq + (r++) & \text{(by Lemma \ref{2.2.3})} \\
+\end{align*}
+Since \(r < q\), by Proposition \ref{2.2.12}(e) we have \(r++ \leq q\).
+\begin{enumerate}
+    \item If \(r++ < q\), then we have \(0 \leq r < r++\) and we are done in this case.
+    \item If \(r++ = q\), then by Definition \ref{2.3.1} we have
+    \[
+        n++ = mq + q = (m++) \times q = (m++) \times q + r'
+    \]
+    where \(r' = 0\) and \(0 \leq r' < q\) by Definition \ref{2.2.11}, and we are also done in this case.
+\end{enumerate}
+From all cases above we can find some natural numbers \(m, r\) such that \(n++ = mq + r\) and \(0 \leq r < q\).
 This close the induction.
 \end{proof}
 
