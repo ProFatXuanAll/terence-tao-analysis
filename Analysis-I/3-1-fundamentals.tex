@@ -1,8 +1,8 @@
 \section{Fundamentals}\label{sec 3.1}
 
 \begin{definition}\label{3.1.1}
-We define a set \(A\) to be any unordered collection of objects.
-If \(x\) is an object, we say that \(x\) is an element of \(A\) or \(x \in A\) if \(x\) lies in the collection;
+We define a \emph{set} \(A\) to be any unordered collection of objects.
+If \(x\) is an object, we say that \emph{\(x\) is an element of \(A\)} or \(x \in A\) if \(x\) lies in the collection;
 otherwise we say that \(x \notin A\).
 \end{definition}
 
@@ -21,7 +21,7 @@ The two types of theories are more or less equivalent for the purposes of doing 
 \end{remark}
 
 \begin{definition}[Equality of sets]\label{3.1.4}
-Two sets \(A\) and \(B\) are equal, \(A = B\), iff every element of \(A\) is an element of \(B\) and vice versa.
+Two sets \(A\) and \(B\) are \emph{equal}, \(A = B\), iff every element of \(A\) is an element of \(B\) and vice versa.
 To put it another way, \(A = B\) if and only if every element \(x\) of \(A\) belongs also to \(B\), and every element \(y\) of \(B\) belongs also to \(A\).
 \end{definition}
 
@@ -30,12 +30,29 @@ The definition of equality in Definition \ref{3.1.4} is reflexive, symmetric and
 \end{additional corollary}
 
 \begin{proof}
-We first prove the reflexive property of Definition \ref{3.1.4}.
-\(\forall\ x \in A\), \(x \in A\) is always true, thus Definition \ref{3.1.4} is reflexive.
-Next we prove the symmetric property of Definition \ref{3.1.4}.
-If \(\forall\ x \in A\), \(x \in B\), then \(\forall\ y \in B\), \(y \in A\) is also true, thus Definition \ref{3.1.4} is symmetric.
-Finally, we prove the transitive property of Definition \ref{3.1.4}.
-If \(\forall\ x \in A\), \(x \in B\) and \(\forall\ y \in B\), \(y \in C\), then \(\forall\ x \in A\), \(x \in C\) is true because \(x \in A \implies x \in B \implies x \in C\), thus Definition \ref{3.1.4} is transitive.
+We first prove that Definition \ref{3.1.4} is reflexive.
+Let \(A\) be a set.
+Since
+\[
+    \forall\ x : x \in A \implies x \in A,
+\]
+we have Definition \ref{3.1.4} is reflexive, i.e., \(A = A\).
+
+Next we prove that Definition \ref{3.1.4} is symmetric.
+Let \(A, B\) be sets and suppose \(A = B\).
+Since
+\[
+    (\forall\ x : x \in A \iff x \in B) \iff (\forall\ x : x \in B \iff x \in A),
+\]
+we have Definition \ref{3.1.4} is symmetric, i.e., \(A = B \iff B = A\).
+
+Finally, we prove that Definition \ref{3.1.4} is transitive.
+Let \(A, B, C\) be sets and suppose \(A = B\) and \(B = C\).
+Since
+\[
+    (\forall\ x : (x \in A \implies x \in B) \land (x \in B \implies x \in C)) \implies (\forall\ x : x \in A \implies x \in C),
+\]
+we have Definition \ref{3.1.4} is transitive, i.e., \(A = B \land B = C \implies A = C\).
 \end{proof}
 
 \begin{note}
@@ -67,7 +84,13 @@ if there were two sets \(\emptyset\) and \(\emptyset'\) which were both empty, t
 \end{additional corollary}
 
 \begin{proof}
-By Definition \ref{3.1.4}, if \(\forall\ x \notin \emptyset\), \(x \notin \emptyset'\) and \(\forall\ y \notin \emptyset'\), \(y \notin \emptyset\), then \(\emptyset = \emptyset'\).
+Suppose there exist two empty set \(\emptyset\) and \(\emptyset'\).
+Then we have
+\begin{align*}
+& (\forall\ x : (x \in \emptyset \implies x \in \emptyset') \land (x \in \emptyset' \implies x \in \emptyset)) & \text{(vacuously true)} \\
+\iff & (\forall\ x : x \in \emptyset \iff x \in \emptyset') \\
+\iff & \emptyset = \emptyset'. & \text{(by Definition \ref{3.1.4})}
+\end{align*}
 \end{proof}
 
 \begin{note}
@@ -90,6 +113,9 @@ Thus \(x \in A \iff x \in \emptyset\) (both statements are equally false), and s
 
 \begin{remark}\label{3.1.7}
 The above Lemma asserts that given any non-empty set \(A\), we are allowed to ``choose'' an element \(x\) of \(A\) which demonstrates this non-emptyness.
+Later on (in Lemma \ref{3.5.12}) we will show that given any finite number of non-empty sets, say \(A_1, \dots, A_n\), it is possible to choose one element \(x_1, \dots, x_n\) from each set \(A_1, \dots, A_n\);
+this is known as ``finite choice''.
+However, in order to choose elements from an infinite number of sets, we need an additional axiom, the \emph{axiom of choice} (Axiom \ref{8.1}).
 \end{remark}
 
 \begin{remark}\label{3.1.8}
@@ -107,37 +133,45 @@ i.e., for every object \(y\), we have \(y \in \{a, b\}\) if and only if \(y = a\
 we refer to this set as the \emph{pair set} formed by \(a\) and \(b\).
 \end{axiom}
 
-\begin{corollary}\label{3.1.9}
+\begin{remark}\label{3.1.9}
 There is only one singleton set for each object \(a\).
 Similarly, given any two objects \(a\) and \(b\), there is only one pair set formed by \(a\) and \(b\).
-\end{corollary}
+Thus the singleton set axiom is in fact redundant, being a consequence of the pair set axiom.
+Conversely, the pair set axiom will follow from the singleton set axiom and the pairwise union axiom (Axiom \ref{3.4}).
+\end{remark}
 
 \begin{proof}
-We first prove the uniqueness of singleton set.
-Let \(A\) and \(A'\) be singleton sets of object \(a\).
-By Axiom \ref{3.3}, \(\forall\ x \in A\), \(x = a\), and \(\forall\ y \in A'\), \(y = a\).
-But \(x = y = a\) implies \(\forall\ x \in A\), \(x \in A'\).
-Similarly, \(\forall\ y \in A'\), \(y \in A\).
-Thus \(A = A'\) by Definition \ref{3.1.4}.
-Next we prove the uniqueness of pair set.
-Let \(P\) and \(P'\) be par sets of object \(a\) and \(b\).
-By Axiom \ref{3.3}, \(\forall\ x \in P\), \(x = a\) or \(x = b\), and \(\forall\ y \in P'\), \(y = a\) or \(y = b\).
-But \(x = a\) or \(x = b\) implies \(\forall\ x \in P\), \(x \in P'\).
-Similarly, \(\forall\ y \in P'\), \(y \in P\).
-Thus \(P = P'\) by Definition \ref{3.1.4}.
+We first show the uniqueness of singleton set.
+Suppose there exists two sets \(A\) and \(A'\) which are singleton sets of object \(a\).
+Then we have
+\begin{align*}
+& (\forall\ x : x \in A \iff x = a) \land (\forall\ x : x \in A' \iff x = a) & \text{(by Axiom \ref{3.3})} \\
+\iff & \forall\ x : x \in A \iff x \in A' \\
+\iff & A = A'. & \text{(by Definition \ref{3.1.4})}
+\end{align*}
+
+Next we show the uniqueness of pair set.
+Suppose there exists two sets \(X\) and \(X'\) which are pair sets of object \(a\) and \(b\).
+Then we have
+\begin{align*}
+& (\forall\ x : x \in X \iff (x = a) \lor (x = b)) \\
+& \land (\forall\ x : x \in X' \iff (x = a) \lor (x = b)) & \text{(by Axiom \ref{3.3})} \\
+\iff & \forall\ x : x \in X \iff x \in X' \\
+\iff & X = X'. & \text{(by Definition \ref{3.1.4})}
+\end{align*}
 \end{proof}
 
-\begin{remark}\label{3.1.10}
+\begin{example}\label{3.1.10}
 Since \(\emptyset\) is a set (and hence an object), so is the singleton set \(\{\emptyset\}\), i.e., the set whose only element is \(\emptyset\), is a set (and it is not the same set as \(\emptyset\), \(\{\emptyset\} \neq \emptyset\)).
 Similarly, the singleton set \(\{\{\emptyset\}\}\) and the pair set \(\{\emptyset, \{\emptyset\}\}\) are also sets.
 These three sets are not equal to each other.
-\end{remark}
+\end{example}
 
 \begin{axiom}[Pairwise union]\label{3.4}
 Given any two sets \(A\), \(B\), there exists a set \(A \cup B\), called the \emph{union} \(A \cup B\) of \(A\) and \(B\), whose elements consist of all the elements which belong to \(A\) or \(B\) or both.
 In other words, for any object \(x\),
 \[
-    x \in A \cup B \iff (x \in A \text{ or } x \in B).
+    x \in A \cup B \iff (x \in A \lor x \in B).
 \]
 \end{axiom}
 
@@ -148,6 +182,26 @@ Similarly if \(B'\) is a set which is equal to \(B\), then \(A \cup B\) is equal
 Thus the operation of union obeys the axiom of substitution, and is thus well-defined on sets.
 \end{remark}
 
+\begin{proof}
+Suppose \(A, A', B\) are sets such that \(A = A'\).
+Then we have
+\begin{align*}
+& \forall x : x \in A \cup B \\
+\iff & \forall\ x : x \in A \lor x \in B & \text{(by Axiom \ref{3.4})} \\
+\iff & \forall\ x : x \in A' \lor x \in B & \text{(by Definition \ref{3.1.4})} \\
+\iff & \forall x : x \in A' \cup B. & \text{(by Axiom \ref{3.4})}
+\end{align*}
+
+Similarly, suppose \(A, B, B'\) are sets such that \(B = B'\).
+Then we have
+\begin{align*}
+& \forall x : x \in A \cup B \\
+\iff & \forall\ x : x \in A \lor x \in B & \text{(by Axiom \ref{3.4})} \\
+\iff & \forall\ x : x \in A \lor x \in B' & \text{(by Definition \ref{3.1.4})} \\
+\iff & \forall x : x \in A \cup B'. & \text{(by Axiom \ref{3.4})}
+\end{align*}
+\end{proof}
+
 \begin{lemma}\label{3.1.13}
 If \(a\) and \(b\) are objects, then \(\{a, b\} = \{a\} \cup \{b\}\).
 If \(A\), \(B\), \(C\) are sets, then the union operation is commutative (i.e., \(A \cup B = B \cup A\)) and associative (i.e., \((A \cup B) \cup C = A \cup (B \cup C)\)).
@@ -155,25 +209,29 @@ Also, we have \(A \cup A = A \cup \emptyset = \emptyset \cup A = A\).
 \end{lemma}
 
 \begin{proof}
-First we prove \(\{a, b\} = \{a\} \cup \{b\}\).
-By Definition \ref{3.1.4}, we need to show that every element \(x\) of \(\{a, b\}\) is an element of \(\{a\} \cup \{b\}\), and vice versa.
-So suppose first that \(x\) is an element of \(\{a, b\}\).
-By Axiom \ref{3.3}, this means that at least one of \(x = a\) or \(x = b\) is true.
-We now divide into two cases.
-If \(x = a\), then by Axiom \ref{3.3} \(x \in \{a\}\), and so by Axiom \ref{3.4} \(x \in \{a\} \cup \{b\}\).
-Now suppose instead \(x = b\), then by Axiom \ref{3.3} \(x \in \{b\}\), and so by Axiom \ref{3.4} again \(x \in \{a\} \cup \{b\}\).
-A similar argument shows that every element of \(\{a\} \cup \{b\}\) lies in \(\{a, b\}\), and so \(\{a, b\} = \{a\} \cup \{b\}\) as desired.
+We first show that \(\{a, b\} = \{a\} \cup \{b\}\).
+By Axiom \ref{3.3}, the sets \(\{a\}, \{b\}, \{a, b\}\) exist.
+And by Axiom \ref{3.4}, the set \(\{a\} \cup \{b\}\) exists.
+Then we have
+\begin{align*}
+& (\forall\ x : x \in \{a, b\} \iff x = a \lor x = b) & \text{(by Axiom \ref{3.3})} \\
+\iff & (\forall\ x : x \in \{a, b\} \iff x \in \{a\} \lor x \in \{b\}) & \text{(by Axiom \ref{3.3})} \\
+\iff & (\forall\ x : x \in \{a, b\} \iff x \in \{a\} \cup \{b\}) & \text{(by Axiom \ref{3.4})} \\
+\iff & \{a, b\} = \{a\} \cup \{b\}. & \text{(by Definition \ref{3.1.4})}
+\end{align*}
 
-Next we prove the commutative identity.
-By Definition \ref{3.1.4}, we need to show that every element \(x\) of \(A \cup B\) is an element of \(B \cup A\), and vice versa.
-So suppose first that \(x\) is an element of \(A \cup B\).
-By Axiom \ref{3.4}, this means that at least one of \(x \in A\) or \(x \in B\) is true.
-We now divide into two cases.
-If \(x \in A\), then by Axiom \ref{3.4} \(x \in B \cup A\).
-Now suppose instead \(x \in B\), then by Axiom \ref{3.4} again \(x \in B \cup A\).
-A similar argument shows that every element of \(B \cup A\) lies in \(A \cup B\), and so \(A \cup B = B \cup A\) as desired.
+Next we show the commutative identity of union sets.
+Suppose that \(A, B\) are sets.
+By Axiom \ref{3.4}, the sets \(A \cup B\) and \(B \cup A\) exists.
+Then we have
+\begin{align*}
+& (\forall\ x : x \in A \cup B \iff x \in A \lor x \in B) & \text{(by Axiom \ref{3.4})} \\
+\iff & (\forall\ x : x \in A \cup B \iff x \in B \lor x \in A) \\
+\iff & (\forall\ x : x \in A \cup B \iff x \in B \cup A) & \text{(by Axiom \ref{3.4})} \\
+\iff & A \cup B = B \cup A. & \text{(by Definition \ref{3.1.4})}
+\end{align*}
 
-Next we prove the associativity identity.
+Next we show the associativity identity of union sets.
 By Definition \ref{3.1.4}, we need to show that every element \(x\) of \((A \cup B) \cup C\) is an element of \(A \cup (B \cup C)\), and vice versa.
 So suppose first that \(x\) is an element of \((A \cup B) \cup C\).
 By Axiom \ref{3.4}, this means that at least one of \(x \in A \cup B\) or \(x \in C\) is true.
@@ -184,12 +242,19 @@ If \(x \in A\) then \(x \in A \cup (B \cup C)\) by Axiom \ref{3.4}, while if \(x
 Thus in all cases we see that every element of \((A \cup B) \cup C\) lies in \(A \cup (B \cup C)\).
 A similar argument shows that every element of \(A \cup (B \cup C)\) lies in \((A \cup B) \cup C\), and so \((A \cup B) \cup C = A \cup (B \cup C) \) as desired.
 
-Finally, we prove that \(A \cup A = A \cup \emptyset = \emptyset \cup A = A\).
-By Axiom \ref{3.4}, \(\forall\ x \in A\), \(x \in A \cup A\) is true, and \(\forall\ y \in A \cup A\), \(y \in A\) is true, thus \(A \cup A = A\) by Definition \ref{3.1.4}.
-And by Axiom \ref{3.4}, \(\forall\ x \in A \cup \emptyset\), we have \(x \in A\) or \(x \in \emptyset\).
-But by Axiom \ref{3.2}, \(x \notin \emptyset\), thus \(x \in A\).
-Also by Axiom \ref{3.4}, \(\forall\ y \in A\), \(y \in A \cup \emptyset\) is true.
-Thus \(A \cup \emptyset = A\), and by commutative, \(\emptyset \cup A = A \cup \emptyset = A\).
+Finally we show that \(A \cup A = A \cup \emptyset = \emptyset \cup A = A\).
+Suppose that \(A\) is a set.
+Then we have
+\begin{align*}
+& \forall\ x : x \in A \\
+\iff & \forall\ x : x \in A \lor x \in A \\
+\iff & \forall\ x : x \in A \cup A & \text{(by Axiom \ref{3.4})} \\
+\iff & A = A \cup A & \text{(by Definition \ref{3.1.4})} \\
+\iff & \forall\ x : x \in A \lor x \in \emptyset & \text{(vacuously true)} \\
+\iff & A = A \cup \emptyset & \text{(by Definition \ref{3.1.4})} \\
+\iff & \forall\ x : x \in \emptyset \lor x \in A & \text{(vacuously true)} \\
+\iff & A = \emptyset \cup A. & \text{(by Definition \ref{3.1.4})}
+\end{align*}
 \end{proof}
 
 \begin{remark}\label{3.1.14}
