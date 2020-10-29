@@ -257,9 +257,23 @@ Then we have
 \end{align*}
 \end{proof}
 
+\begin{note}
+Because of Lemma \ref{3.1.13}, we do not need to use parentheses to denote multiple unions, thus for instance we can write \(A \cup B \cup C\) instead of \((A \cup B) \cup C\) or \(A \cup (B \cup C)\).
+Similarly for unions of four sets, \(A \cup B \cup C \cup D\), etc.
+\end{note}
+
 \begin{remark}\label{3.1.14}
 While the operation of union has some similarities with addition, the two operations are \emph{not} identical.
 \end{remark}
+
+\begin{note}
+Axiom \ref{3.4} allows us to define triplet sets, quadruplet sets, and so forth: if \(a, b, c\) are three objects, we define \(\{a, b, c\} \coloneqq \{a\} \cup \{b\} \cup \{c\}\);
+if \(a, b, c, d\) are four objects, then we define \(\{a, b, c, d\} \coloneqq \{a\} \cup \{b\} \cup \{c\} \cup \{d\}\), and so forth.
+On the other hand, we are not yet in a position to define sets consisting of \(n\) objects for any given natural number \(n\);
+this would require iterating the above construction ``\(n\) times'', but the concept of \(n\)-fold iteration has not yet been rigorously defined.
+For similar reasons, we cannot yet define sets consisting of infinitely many objects, because that would require iterating the axiom of pairwise union (Axiom \ref{3.4}) infinitely often, and it is not clear at this stage that one can do this rigorously.
+Later on, we will introduce other axioms of set theory which allow one to construct arbitrarily large, and even infinite, sets.
+\end{note}
 
 \begin{definition}[Subsets]\label{3.1.15}
 Let \(A\), \(B\) be sets.
@@ -275,41 +289,78 @@ Because these definitions involve only the notions of equality and the ``is an e
 Thus for instance if \(A \subseteq B\) and \(A = A'\), then \(A' \subseteq B\).
 \end{remark}
 
-\begin{corollary}\label{3.1.17}
+\begin{example}\label{3.1.17}
 Given any set \(A\), we always have \(A \subseteq A\) and \(\emptyset \subseteq A\).
-\end{corollary}
+\end{example}
 
 \begin{proof}
-By Definition \ref{3.1.15}, \(\forall\ x \in A \implies x \in A\), thus \(A \subseteq A\).
-Also by Definition \ref{3.1.15}, \(\forall\ x \in \emptyset \implies x \in A\) (because \(x \in \emptyset\) is false), thus \(\emptyset \subseteq A\).
+Suppose that \(A\) is a set.
+Then we have
+\begin{align*}
+\top \iff & (\forall\ x : x \in A \implies x \in A) \\
+\iff & A \subseteq A. & \text{(by Definition \ref{3.1.15})}
+\end{align*}
+And we also have
+\begin{align*}
+& (\forall\ x : x \in \emptyset \implies x \in A) & \text{(vacuously true)} \\
+\iff & \emptyset \subseteq A. & \text{(by Definition \ref{3.1.15})}
+\end{align*}
 \end{proof}
 
 \begin{proposition}[Sets are partially ordered by set inclusion]\label{3.1.18}
 Let \(A\), \(B\), \(C\) be sets.
 If \(A \subseteq B\) and \(B \subseteq C\) then \(A \subseteq C\).
-If \(A \subseteq B\) and \(B \subseteq A\), then \(A = B\).
+\(A \subseteq B\) and \(B \subseteq A\) if and only if \(A = B\).
 Finally, if \(A \subsetneq B\) and \(B \subsetneq C\) then \(A \subsetneq C\).
 \end{proposition}
 
 \begin{proof}
-First we prove that if \(A \subseteq B\) and \(B \subseteq C\) then \(A \subseteq C\).
+We first show that \(A \subseteq B \land B \subseteq C \implies A \subseteq C\).
+Suppose that \(A \subseteq B\) and \(B \subseteq C\).
 To prove that \(A \subseteq C\), we have to prove that every element of \(A\) is an element of \(C\).
 So, let us pick an arbitrary element \(x\) of \(A\).
 Then, since \(A \subseteq B\), \(x\) must then be an element of \(B\).
 But then since \(B \subseteq C\), \(x\) is an element of \(C\).
 Thus every element of \(A\) is indeed an element of \(C\), as claimed.
 
-Next we prove that if \(A \subseteq B\) and \(B \subseteq A\), then \(A = B\).
-\(\forall\ x \in A\), since \(A \subseteq B\), \(x \in B\).
-But \(\forall\ y \in B\), since \(B \subseteq A\), \(y \in A\).
-Thus \(A = B\) by Definition \ref{3.1.4}.
+Next we show that \(A \subseteq B \land B \subseteq A \iff A = B\).
+Suppose that \(A, B\) are sets and \(A \subseteq B \land B \subseteq A\).
+Then we have
+\begin{align*}
+& A \subseteq B \land B \subseteq A \\
+\iff & (\forall\ x : x \in A \implies x \in B) \land (\forall\ x : x \in B \implies x \in A) & \text{(by Definition \ref{3.1.15})} \\
+\iff & A = B. & \text{(by Definition \ref{3.1.4})}
+\end{align*}
 
-Finally, we prove that if \(A \subsetneq B\) and \(B \subsetneq C\) then \(A \subsetneq C\).
-\(\forall\ x \in A\), since \(A \subsetneq B\), \(x\) must then be an element of \(B\).
-But then since \(B \subsetneq C\), \(x\) is an element of \(C\).
-Thus every element of \(A\) is indeed an element of \(C\).
-But \(A \neq B\) and \(B \neq C\), \(\exists\ y \in C\) such that \(y \notin B\), then \(y \notin A\) is also true.
-Thus \(A \neq C\), as claimed.
+Finally we show that \(A \subsetneq B \land B \subsetneq C \implies A \subsetneq C\).
+Suppose that \(A, B, C\) are sets and \(A \subsetneq B \land B \subsetneq C\).
+Then we have
+\begin{align*}
+& A \subsetneq B \land B \subsetneq C \\
+\implies & (\forall\ x : x \in A \implies x \in B) \land (A \neq B) \\
+& \land (\forall\ x : x \in B \implies x \in C) \land (B \neq C) & \text{(by Definition \ref{3.1.15})} \\
+\implies & (\forall\ x : x \in A \implies x \in B) \\
+& \land \lnot(\forall\ x : x \in A \iff x \in B) \\
+& \land (\forall\ x : x \in B \implies x \in C) \\
+& \land (B \neq C) \\
+\implies & (\forall\ x : x \in A \implies x \in B) \\
+& \land (\exists\ x : (x \in A \land x \notin B) \lor (x \in B \land x \notin A)) \\
+& \land (\forall\ x : x \in B \implies x \in C) \\
+& \land (B \neq C) \\
+\implies & (\forall\ x : x \in A \implies x \in B) \\
+& \land (\exists\ x : x \in B \land x \notin A) & \text{(since \(\forall\ x : x \in A \implies x \in B\))} \\
+& \land (\forall\ x : x \in B \implies x \in C) \\
+& \land (B \neq C) \\
+\implies & (\forall\ x : x \in A \implies x \in B) \\
+& \land (\exists\ x : x \in C \land x \notin A) & \text{(since \(\forall\ x : x \in B \implies x \in C\))} \\
+& \land (\forall\ x : x \in B \implies x \in C) \\
+& \land (B \neq C) \\
+\implies & (\forall\ x : x \in A \implies x \in C) \\
+& \land (A \neq C) \land (B \neq C) \\
+\implies & A \subseteq C \land A \neq C \land B \neq C & \text{(by Definition \ref{3.1.15})} \\
+\implies & A \subsetneq C \land B \neq C & \text{(by Definition \ref{3.1.15})} \\
+\implies & A \subsetneq C.
+\end{align*}
 \end{proof}
 
 \setcounter{theorem}{19}
@@ -323,7 +374,8 @@ we say that sets are only \emph{partially ordered}, whereas the natural numbers 
 \begin{remark}\label{3.1.21}
 We should also caution that the subset relation \(\subseteq\) is not the same as the element relation \(\in\).
 It is important to distinguish sets from their elements, as they can have different properties.
-For instance, it is possible to have an infinite set consisting of finite numbers (the set \(\mathbf{N}\) of natural numbers is one such example), and it is also possible to have a finite set consisting of infinite objects (consider for instance the finite set \(\{\mathbf{N}, \mathbf{Z}, \mathbf{Q}, \mathbf{R}\}\), which has four elements, all of which are infinite).
+For instance, it is possible to have an infinite set consisting of finite numbers (the set \(\mathbf{N}\) of natural numbers is one such example), and it is also possible to have a finite set consisting of infinite objects
+(consider for instance the finite set \(\{\mathbf{N}, \mathbf{Z}, \mathbf{Q}, \mathbf{R}\}\), which has four elements, all of which are infinite).
 \end{remark}
 
 \begin{axiom}[Axiom of specification]\label{3.5}
@@ -356,7 +408,7 @@ Thus, for all objects \(x\),
 
 \begin{note}
 Two sets \(A\), \(B\) are said to be \emph{disjoint} if \(A \cap B = \emptyset\).
-Note that this is not the same concept as being \emph{distinct}, \(A \neq B\).
+This is not the same concept as being \emph{distinct}, \(A \neq B\).
 Meanwhile, the sets \(\emptyset\) and \(\emptyset\) are disjoint but not distinct.
 \end{note}
 
@@ -364,7 +416,7 @@ Meanwhile, the sets \(\emptyset\) and \(\emptyset\) are disjoint but not distinc
 \begin{definition}[Difference sets]\label{3.1.27}
 Given two sets \(A\) and \(B\), we define the set \(A - B\) or \(A \setminus B\) to be the set \(A\) with any elements of \(B\) removed:
 \[
-    A \setminus B \coloneqq \{x \in A : x \in B\}.
+    A \setminus B \coloneqq \{x \in A : x \notin B\}.
 \]
 \end{definition}
 
@@ -383,153 +435,198 @@ Let \(A\), \(B\), \(C\) be sets, and let \(X\) be a set containing \(A\), \(B\),
 \end{proposition}
 
 \begin{proof}{(a)}
-We first prove the union part.
-By Axiom \ref{3.4}, \(\forall\ x \in A \cup \emptyset\), we have \(x \in A\) or \(x \in \emptyset\).
-But by Axiom \ref{3.2}, \(x \notin \emptyset\), thus \(x \in A\).
-Also by Axiom \ref{3.4}, \(\forall\ y \in A\), \(y \in A \cup \emptyset\) is true.
-Thus \(A \cup \emptyset = A\).
-
-Now we prove the intersection part.
-By Definition \ref{3.1.23}, \(\forall\ x \in A \cap \emptyset\), we have \(x \in A\) and \(x \in \emptyset\).
-But by Axiom \ref{3.2}, \(x \notin \emptyset\), thus \(x\) does not exist, which means \(\forall\ x\), \(x \notin A \cap \emptyset\).
-By Axiom \ref{3.2} and Lemma \ref{ac 3.1.2}, \(A \cap \emptyset = \emptyset\).
-By Axiom \ref{3.2} again, \(\forall\ y\), \(y \in \emptyset \implies y \in A \cap \emptyset\) (because both are equivalently false).
-Thus \(A \cap \emptyset = \emptyset\).
+Suppose that \(A\) is a set.
+Then we have
+\begin{align*}
+\top \iff & (\forall\ x : x \in A \iff x \in A) \\
+\iff & (\forall\ x : x \in A \iff x \in A \lor x \in \emptyset) \\
+\iff & (\forall\ x : x \in A \iff x \in A \cup \emptyset) & \text{(by Axiom \ref{3.4})} \\
+\iff & A = A \cup \emptyset. & \text{(by Definition \ref{3.1.4})}
+\end{align*}
+And we also have
+\begin{align*}
+\top \iff & (\bot \iff \bot) \\
+\iff & (\forall\ x : x \in \emptyset \iff x \in \emptyset) \\
+\iff & (\forall\ x : x \in \emptyset \iff x \in A \land x \in \emptyset) \\
+\iff & (\forall\ x : x \in \emptyset \iff x \in A \cap \emptyset) & \text{(by Definition \ref{3.1.23})} \\
+\iff & \emptyset = A \cap \emptyset. & \text{(by Definition \ref{3.1.4})}
+\end{align*}
 \end{proof}
 
 \begin{proof}{(b)}
-We first prove the union part.
-By the given condition, \(A \subseteq X\).
-Then \(\forall\ x \in A \implies x \in X\), so \(x \in A \cup X \implies x \in X\).
-And \(\forall\ y \in X\), \(y \in A \cup X\) by Axiom \ref{3.4}.
-Thus \(A \cup X = X\).
-
-Now we prove the intersection part.
-By the given condition, \(A \subseteq X\).
-Then \(\forall\ x \in A \implies x \in X\), so \(x \in A \cap X \implies x \in A\).
-And again \(\forall\ y \in A \implies y \in X\), so \(y \in A \implies y \in A \cap X\).
-Thus \(A \cap X = A\).
+Suppose that \(A, X\) are sets and \(A \subseteq X\).
+Then we have
+\begin{align*}
+\top \iff & (\forall\ x : x \in X \implies x \in A \lor x \in X) \\
+\iff & (\forall\ x : x \in X \implies x \in A \cup X). & \text{(by Axiom \ref{3.4})} \\
+A \subseteq X \iff & (\forall\ x : x \in A \implies x \in X) & \text{(by Definition \ref{3.1.15})} \\
+\iff & (\forall\ x : x \in A \lor x \in X \implies x \in X) \\
+\iff & (\forall\ x : x \in A \cup X \implies x \in X). & \text{(by Axiom \ref{3.4})} \\
+\top \land A \subseteq X \iff & (\forall\ x : x \in X \iff x \in A \cup X) \\
+\iff & X = A \cup X. & \text{(by Definition \ref{3.1.4})}
+\end{align*}
+And we also have
+\begin{align*}
+\top \iff & (\forall\ x : x \in A \land x \in X \implies x \in A) \\
+\iff & (\forall\ x : x \in A \cap X \implies x \in A). & \text{(by Definition \ref{3.1.23})} \\
+A \subseteq X \iff & (\forall\ x : x \in A \implies x \in X) & \text{(by Definition \ref{3.1.15})} \\
+\iff & (\forall\ x : x \in A \implies x \in A \land x \in X) \\
+\iff & (\forall\ x : x \in A \implies x \in A \cap X). & \text{(by Definition \ref{3.1.23})} \\
+\top \land A \subseteq X \iff & (\forall\ x : x \in A \cap X \iff x \in A) \\
+\iff & A \cap X = A. & \text{(by Definition \ref{3.1.4})}
+\end{align*}
 \end{proof}
 
 \begin{proof}{(c)}
-We first prove the union part.
-\(\forall\ x \in A \cup A \iff x \in A\) or \(x \in A \iff x \in A\).
-Thus \(A \cup A = A\).
-
-Now we prove the intersection part.
-\(\forall\ x \in A \cap A \iff x \in A\) and \(x \in A \iff x \in A\).
-Thus \(A \cap A = A\).
+Suppose that \(A\) is a set.
+Then we have
+\begin{align*}
+\top \iff & (\forall\ x : x \in A \implies x \in A) \\
+\iff & (\forall\ x : x \in A \land x \in A \implies x \in A) \\
+\iff & (\forall\ x : x \in A \cap A \implies x \in A) & \text{(by Definition \ref{3.1.23})} \\
+\iff & (\forall\ x : x \in A \implies x \in A \land x \in A) \\
+\iff & (\forall\ x : x \in A \implies x \in A \cap A) & \text{(by Definition \ref{3.1.23})} \\
+\iff & (\forall\ x : x \in A \cap A \iff x \in A) \\
+\iff & A \cap A = A. & \text{(by Definition \ref{3.1.4})}
+\end{align*}
+And we also have
+\begin{align*}
+\top \iff & (\forall\ x : x \in A \implies x \in A) \\
+\iff & (\forall\ x : x \in A \lor x \in A \implies x \in A) \\
+\iff & (\forall\ x : x \in A \cup A \implies x \in A) & \text{(by Axiom \ref{3.4})} \\
+\iff & (\forall\ x : x \in A \implies x \in A \lor x \in A) \\
+\iff & (\forall\ x : x \in A \implies x \in A \cup A) & \text{(by Axiom \ref{3.4})} \\
+\iff & (\forall\ x : x \in A \cup A \iff x \in A) \\
+\iff & A \cup A = A. & \text{(by Definition \ref{3.1.4})}
+\end{align*}
 \end{proof}
 
 \begin{proof}{(d)}
-We first prove the union part.
-\(\forall\ x \in A \cup B \iff x \in A\) or \(x \in B \iff x \in B\) or \(x \in A \iff x \in B \cup A\).
-Thus \(A \cup B = B \cup A\).
-
-Now we prove the intersection part.
-\(\forall\ x \in A \cap B \iff x \in A\) and \(x \in B \iff x \in B\) and \(x \in A \iff x \in B \cap A\).
-Thus \(A \cap B = B \cap A\).
+Suppose that \(A, B\) are sets.
+Then we have
+\begin{align*}
+& (\forall\ x : x \in A \cup B \iff x \in A \lor x \in B) & \text{(by Axiom \ref{3.4})} \\
+\iff & (\forall\ x : x \in A \cup B \iff x \in B \lor x \in A) \\
+\iff & (\forall\ x : x \in A \cup B \iff x \in B \cup A) & \text{(by Axiom \ref{3.4})} \\
+\iff & A \cup B = B \cup A. & \text{(by Definition \ref{3.1.4})}
+\end{align*}
+And we also have
+\begin{align*}
+& (\forall\ x : x \in A \cap B \iff x \in A \land x \in B) & \text{(by Definition \ref{3.1.23})} \\
+\iff & (\forall\ x : x \in A \cap B \iff x \in B \land x \in A) \\
+\iff & (\forall\ x : x \in A \cap B \iff x \in B \cap A) & \text{(by Definition \ref{3.1.23})} \\
+\iff & A \cap B = B \cap A. & \text{(by Definition \ref{3.1.4})}
+\end{align*}
 \end{proof}
 
 \begin{proof}{(e)}
-We first prove the union part.
-By Definition \ref{3.1.4}, we need to show that every element \(x\) of \((A \cup B) \cup C\) is an element of \(A \cup (B \cup C)\), and vice versa.
-So suppose first that \(x\) is an element of \((A \cup B) \cup C\).
-By Axiom \ref{3.4}, this means that at least one of \(x \in A \cup B\) or \(x \in C\) is true.
-We now divide into two cases.
-If \(x \in C\), then by Axiom \ref{3.4} again \(x \in B \cup C\), and so by Axiom \ref{3.4} again we have \(x \in A \cup (B \cup C)\).
-Now suppose instead \(x \in A \cup B\), then by Axiom \ref{3.4} again \(x \in A\) or \(x \in B\).
-If \(x \in A\) then \(x \in A \cup (B \cup C)\) by Axiom \ref{3.4}, while if \(x \in B\) then by consecutive applications of Axiom \ref{3.4} we have \(x \in B \cup C\) and hence \(x \in A \cup (B \cup C)\).
-Thus in all cases we see that every element of \((A \cup B) \cup C\) lies in \(A \cup (B \cup C)\).
-A similar argument shows that every element of \(A \cup (B \cup C)\) lies in \((A \cup B) \cup C\), and so \((A \cup B) \cup C = A \cup (B \cup C) \) as desired.
-
-Now we prove the intersection part.
-By definition \ref{3.1.23}, \(\forall\ x \in (A \cap B) \cap C \iff x \in A \cap B \) and \(x \in C \iff x \in A\) and \(x \in B\) and \(x \in C \iff x \in A\) and \(x \in B \cap C \iff x \in A \cap (B \cap C)\).
-Thus \((A \cap B) \cap C = A \cap (B \cap C)\).
+Suppose that \(A, B, C\) are sets.
+Then we have
+\begin{align*}
+& (\forall\ x : x \in (A \cup B) \cup C \iff (x \in A \lor x \in B) \lor x \in C) & \text{(by Axiom \ref{3.4})} \\
+\iff & (\forall\ x : x \in (A \cup B) \cup C \iff x \in A \lor (x \in B \lor x \in C)) \\
+\iff & (\forall\ x : x \in (A \cup B) \cup C \iff x \in A \cup (B \cup C)) & \text{(by Axiom \ref{3.4})} \\
+\iff & (A \cup B) \cup C = A \cup (B \cup C). & \text{(by Definition \ref{3.1.4})}
+\end{align*}
+And we also have
+\begin{align*}
+& (\forall\ x : x \in (A \cap B) \cap C \iff (x \in A \land x \in B) \land x \in C) & \text{(by Definition \ref{3.1.23})} \\
+\iff & (\forall\ x : x \in (A \cap B) \cap C \iff x \in A \land (x \in B \land x \in C)) \\
+\iff & (\forall\ x : x \in (A \cap B) \cap C \iff x \in A \cap (B \cap C)) & \text{(by Definition \ref{3.1.23})} \\
+\iff & (A \cap B) \cap C = A \cap (B \cap C). & \text{(by Definition \ref{3.1.4})}
+\end{align*}
 \end{proof}
 
 \begin{proof}{(f)}
-We first prove the union part.
-\(\forall\ x \in A \cup (B \cap C) \iff x \in A\) or \(x \in B \cap C\).
-We divide into two cases.
-If \(x \in A\), then \(x \in A \cup B\) is true and \(x \in A \cup C\) is true, thus \(x \in (A \cup B) \cap (A \cup C)\).
-If \(x \in B \cap C\), then \(x \in B\) and \(x \in C\), so \(x \in A \cup B\) is true and \(x \in A \cup C\) is true, which means \(x \in (A \cup B) \cap (A \cup C)\).
-In both case we show that \(A \cup (B \cap C) \subseteq (A \cup B) \cap (A \cup C)\), so we proved the necessary condition.
-All we left is to prove the sufficient condition.
-\(\forall\ y \in (A \cup B) \cap (A \cup C) \iff y \in A \cup B\) and \(y \in A \cup C\).
-We divide into two cases.
-If \(x \in A\), then \(x \in A \cup (B \cap C)\).
-If \(x \notin A\), then \(x \in B\) and \(x \in C\), thus \(x \in A \cup (B \cap C)\).
-In both case we show that \((A \cup B) \cap (A \cup C) \subseteq A \cup (B \cap C)\).
-Since we prove the necessary and sufficient condition, we conclude that \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\).
-
-Now we prove the intersection part.
-\(\forall\ x \in A \cap (B \cup C) \iff x \in A\) and \(x \in B \cup C\).
-We divide into two cases.
-If \(x \in B\), then \(x \in A \cap B\), so \(x \in (A \cap B) \cup (A \cap C)\).
-If \(x \in C\), then \(x \in A \cap C\), so \(x \in (A \cap B) \cup (A \cap C)\).
-In both case we show that \(A \cap (B \cup C) \subseteq (A \cap B) \cup (A \cap C)\), so we proved the necessary condition.
-All we left is to prove the sufficient condition.
-\(\forall\ y \in (A \cap B) \cup (A \cap C) \iff y \in A \cap B\) or \(y \in A \cap C\).
-But \(y \in A \cap B \implies (y \in A\) and \(y \in B) \implies (y \in A\) and \(y \in B \cup C)\), and \(y \in A \cap C \implies (y \in A\) and \(y \in C) \implies (y \in A\) and \(y \in B \cup C)\).
-Thus \((A \cap B) \cup (A \cap C) \subseteq A \cap (B \cup C)\).
-Since we prove the necessary and sufficient condition, we conclude that \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\).
+Suppose that \(A, B, C\) are sets.
+Then we have
+\begin{align*}
+& \forall\ x : x \in A \cap (B \cup C) \\
+\iff & \forall\ x : x \in A \land x \in B \cup C & \text{(by Definition \ref{3.1.23})} \\
+\iff & \forall\ x : x \in A \land (x \in B \lor x \in C) & \text{(by Axiom \ref{3.4})} \\
+\iff & \forall\ x : (x \in A \land x \in B) \lor (x \in A \land x \in C) \\
+\iff & \forall\ x : (x \in A \cap B) \lor (x \in A \cap C) & \text{(by Definition \ref{3.1.23})} \\
+\iff & \forall\ x : x \in (A \cap B) \cup (A \cap C). & \text{(by Axiom \ref{3.4})}
+\end{align*}
+Thus by Definition \ref{3.1.4} we have \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\).
+Similarly we have
+\begin{align*}
+& \forall\ x : x \in A \cup (B \cap C) \\
+\iff & \forall\ x : x \in A \lor x \in B \cap C & \text{(by Axiom \ref{3.4})} \\
+\iff & \forall\ x : x \in A \lor (x \in B \land x \in C) & \text{(by Definition \ref{3.1.23})} \\
+\iff & \forall\ x : (x \in A \lor x \in B) \land (x \in A \lor x \in C) \\
+\iff & \forall\ x : (x \in A \cup B) \land (x \in A \cup C) & \text{(by Axiom \ref{3.4})} \\
+\iff & \forall\ x : x \in (A \cup B) \cap (A \cup C). & \text{(by Definition \ref{3.1.23})}
+\end{align*}
+Thus by Definition \ref{3.1.4} we have \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\).
 \end{proof}
 
 \begin{proof}{(g)}
-We first prove the union part.
-\(\forall\ x \in A \cup (X \setminus A) \iff x \in A\) or \((x \in X\) and \(x \notin A)\).
-We divide into two cases.
-If \(x \in A\), then \(x \in X\) is true because the given condition \(A \subseteq X\).
-If \(x \in X\) and \(x \notin A\), then \(x \in X\) is also true.
-Thus \(x \in A \cup (X \setminus A) \implies x \in X\), so we proved the necessary condition.
-All we left is to prove the sufficient condition.
-\(\forall\ y \in X\), if \(y \in A\), then \(y \in A \cup (X \setminus A)\) is true.
-And if \(y \notin A\), then \(y \in X \setminus A\) is true because the given condition \(A \subseteq X\).
-Thus \(y \in X \implies y \in A \cup (X \setminus A)\).
-Since we prove the necessary and sufficient condition, we conclude that \(A \cup (X \setminus A) = X\).
-
-Now we prove the intersection part.
-\(\forall\ x \in A \cap (X \setminus A) \iff x \in A\) and \((x \in X\) and \(x \notin A)\).
-But \(x \in A\) and \(x \notin A\) cannot be true at the same time, so such \(x\) does not exist.
-Thus \(\forall\ x \notin A \cap (X \setminus A)\) is true, and by Lemma \ref{ac 3.1.2}, \(A \cap (X \setminus A) = \emptyset\).
+Suppose that \(A, X\) are sets and \(A \subseteq X\).
+Then we have
+\begin{align*}
+& \forall\ x : x \in A \cup (X \setminus A) \\
+\iff & \forall\ x : x \in A \lor x \in (X \setminus A) & \text{(by Axiom \ref{3.4})} \\
+\iff & \forall\ x : x \in A \lor (x \in X \land x \notin A) & \text{(by Definition \ref{3.1.27})} \\
+\iff & \forall\ x : (x \in A \lor x \in X) \land (x \in A \lor x \notin A) \\
+\iff & \forall\ x : (x \in A \lor x \in X) \land \top \\
+\iff & \forall\ x : x \in A \lor x \in X \\
+\iff & \forall\ x : x \in A \cup X & \text{(by Axiom \ref{3.4})} \\
+\iff & \forall\ x : x \in X. & \text{(by Proposition \ref{3.1.28})(b)}
+\end{align*}
+Thus by Definition \ref{3.1.4} we have \(A \cup (X \setminus A) = X\).
+Similarly we have
+\begin{align*}
+& \forall\ x : x \in A \cap (X \setminus A) \\
+\iff & \forall\ x : x \in A \land x \in (X \setminus A) & \text{(by Definition \ref{3.1.23})} \\
+\iff & \forall\ x : x \in A \land (x \in X \land x \notin A) & \text{(by Definition \ref{3.1.27})} \\
+\iff & \forall\ x : (x \in A \land x \notin A) \land x \in X \\
+\iff & \bot \land x \in X \\
+\iff & \bot \\
+\iff & x \in \emptyset.
+\end{align*}
+Thus by Definition \ref{3.1.4} we have \(A \cap (X \setminus A) = \emptyset\).
 \end{proof}
 
 \begin{proof}{(h)}
-We first prove \(X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B)\).
-By Definition \ref{3.1.4}, two sets are equal iff for all object in one set does not in other set and vice versa.
-\(\forall\ x \in X \setminus (A \cup B) \iff x \in X\) and \(x \notin A \cup B\).
-We want to show that \(\forall\ y \in A \cup B\), \(y \notin (X \setminus A) \cap (X \setminus B)\).
-If \(y \in A\), then \(y \notin X \setminus A\) is true because \(A \subseteq X\), and \(y \notin (X \setminus A) \cap (X \setminus B)\) is also true;
-similarly if \(y \in B\), then \(y \notin X \setminus B\) is true because \(B \subseteq X\), and \(y \notin (X \setminus A) \cap (X \setminus B)\) is also true.
-Thus \(y \notin X \setminus (A \cup B) \implies y \notin (X \setminus A) \cap (X \setminus B)\), so we proved the sufficient condition.
-All we left is to prove the necessary condition.
-\(\forall\ x \in (X \setminus A) \cap (X \setminus B) \iff (x \in X\) and \(x \notin A)\) and \((x \in X\) and \(x \notin B) \iff x \in X\) and \(x \notin A\) and \(x \notin B\).
-Let \(y\), \(z\) be objects, \(y \in A\) and \(z \in B\).
-Because \(y \notin (X \setminus A) \cap (X \setminus B)\) and \(z \notin (X \setminus A) \cap (X \setminus B)\), we want to show that \(y \notin X \setminus (A \cup B)\) and \(z \notin X \setminus (A \cup B)\).
-But \(y \in A \implies y \in A \cup B \implies y \notin X \setminus (A \cup B)\), and \(z \in B \implies z \in A \cup B \implies z \notin X \setminus (A \cup B)\).
-Thus for any object \(w \notin (X \setminus A) \cap (X \setminus B) \implies w \notin X \setminus (A \cup B)\).
-Since we prove the necessary and sufficient condition, we conclude that \(X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B)\).
-
-Now we prove \(X \setminus (A \cap B) = (X \setminus A) \cup (X \setminus B)\).
-\(\forall\ x \in (X \setminus A) \cup (X \setminus B) \iff (x \in X\) and \(x \notin A)\) or \((x \in X\) and \(x \notin B)\).
-If \(x \in X\) and \(x \notin A\), then \(x \in X\) and \(x \notin A \cap B\).
-Similarly if \(x \in X\) and \(x \notin B\), then \(x \in X\) and \(x \notin A \cap B\).
-In both cases we conclude that \(x \in (X \setminus A) \cup (X \setminus B) \implies x \in X \setminus (A \cap B)\), so we proved the sufficient condition.
-All we left is to prove the necessary condition.
-\(\forall\ y \in X \setminus (A \cap B) \iff y \in X\) and \(y \notin A \cap B\).
-If \(y \in A\), then \(y \notin B\) is true, and \(y \in X \setminus B\) is true.
-Similarly if \(y \in B\), then \(y \notin A\) is true, and \(y \in X \setminus A\) is true.
-Thus \(y \in X \setminus (A \cap B) \implies y \in (X \setminus A) \cup (X \setminus B)\).
-Since we prove the necessary and sufficient condition, we conclude that \(X \setminus (A \cap B) = (X \setminus A) \cup (X \setminus B)\).
+Suppose that \(A, B, X\) are sets such that \(A \subseteq X\) and \(B \subseteq X\).
+Then we have
+\begin{align*}
+& \forall\ x : x \in X \setminus (A \cup B) \\
+\iff & \forall\ x : x \in X \land x \notin (A \cup B) & \text{(by Definition \ref{3.1.27})} \\
+\iff & \forall\ x : x \in X \land \lnot (x \in A \cup B) \\
+\iff & \forall\ x : x \in X \land \lnot (x \in A \lor x \in B) & \text{(by Axiom \ref{3.4})} \\
+\iff & \forall\ x : x \in X \land (x \notin A \land x \notin B) \\
+\iff & \forall\ x : (x \in X \land x \notin A) \land (x \in X \land x \notin B) \\
+\iff & \forall\ x : (x \in X \setminus A) \land (x \in X \setminus B) & \text{(by Definition \ref{3.1.27})} \\
+\iff & \forall\ x : x \in (X \setminus A) \cap (X \setminus B). & \text{(by Definition \ref{3.1.23})}
+\end{align*}
+Thus by Definition \ref{3.1.4} we have \(X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B)\).
+Similarly we have
+\begin{align*}
+& \forall\ x : x \in X \setminus (A \cap B) \\
+\iff & \forall\ x : x \in X \land x \notin (A \cap B) & \text{(by Definition \ref{3.1.27})} \\
+\iff & \forall\ x : x \in X \land \lnot (x \in A \cap B) \\
+\iff & \forall\ x : x \in X \land \lnot (x \in A \land x \in B) & \text{(by Definition \ref{3.1.23})} \\
+\iff & \forall\ x : x \in X \land (x \notin A \lor x \notin B) \\
+\iff & \forall\ x : (x \in X \land x \notin A) \lor (x \in X \land x \notin B) \\
+\iff & \forall\ x : (x \in X \setminus A) \lor (x \in X \setminus B) & \text{(by Definition \ref{3.1.27})} \\
+\iff & \forall\ x : x \in (X \setminus A) \cup (X \setminus B). & \text{(by Axiom \ref{3.4})}
+\end{align*}
+Thus by Definition \ref{3.1.4} we have \(X \setminus (A \cap B) = (X \setminus A) \cup (X \setminus B)\).
 \end{proof}
 
 \begin{remark}\label{3.1.29}
-The de Morgan laws are named after the logician Augustus De Morgan (1806--1871), who identified them as one of the basic laws of set theory.
+The de Morgan laws are named after the logician Augustus De Morgan (1806 -- 1871), who identified them as one of the basic laws of set theory.
 \end{remark}
 
 \begin{remark}\label{3.1.30}
-Proposition \ref{3.1.28} are collectively known as the \emph{laws of Boolean algebra}, after the mathematician George Boole (1815–1864), and are also applicable to a number of other objects other than sets;
+The reader may observe a certain symmetry in the above laws between \(\cup\) and \(\cap\), and between \(X\) and \(\emptyset\).
+This is an example of \emph{duality} - two distinct properties or objects being dual to each other.
+In this case, the duality is manifested by the complementation relation \(A \mapsto X \setminus A\);
+the de Morgan laws assert that this relation converts unions into intersections and vice versa.
+(It also interchanges \(X\) and the empty set.)
+Proposition \ref{3.1.28} are collectively known as the \emph{laws of Boolean algebra}, after the mathematician George Boole (1815 -- 1864), and are also applicable to a number of other objects other than sets;
 it plays a particularly important role in logic.
 \end{remark}
 
