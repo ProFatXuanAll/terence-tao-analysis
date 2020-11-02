@@ -186,19 +186,19 @@ Thus the operation of union obeys the axiom of substitution, and is thus well-de
 Suppose \(A, A', B\) are sets such that \(A = A'\).
 Then we have
 \begin{align*}
-& \forall x : x \in A \cup B \\
-\iff & \forall\ x : x \in A \lor x \in B & \text{(by Axiom \ref{3.4})} \\
-\iff & \forall\ x : x \in A' \lor x \in B & \text{(by Definition \ref{3.1.4})} \\
-\iff & \forall x : x \in A' \cup B. & \text{(by Axiom \ref{3.4})}
+& \forall\ x : x \in A \cup B \\
+\iff & x \in A \lor x \in B & \text{(by Axiom \ref{3.4})} \\
+\iff & x \in A' \lor x \in B & \text{(by Definition \ref{3.1.4})} \\
+\iff & x \in A' \cup B. & \text{(by Axiom \ref{3.4})}
 \end{align*}
 
 Similarly, suppose \(A, B, B'\) are sets such that \(B = B'\).
 Then we have
 \begin{align*}
-& \forall x : x \in A \cup B \\
-\iff & \forall\ x : x \in A \lor x \in B & \text{(by Axiom \ref{3.4})} \\
-\iff & \forall\ x : x \in A \lor x \in B' & \text{(by Definition \ref{3.1.4})} \\
-\iff & \forall x : x \in A \cup B'. & \text{(by Axiom \ref{3.4})}
+& \forall\ x : x \in A \cup B \\
+\iff & x \in A \lor x \in B & \text{(by Axiom \ref{3.4})} \\
+\iff & x \in A \lor x \in B' & \text{(by Definition \ref{3.1.4})} \\
+\iff & x \in A \cup B'. & \text{(by Axiom \ref{3.4})}
 \end{align*}
 \end{proof}
 
@@ -246,13 +246,12 @@ Finally we show that \(A \cup A = A \cup \emptyset = \emptyset \cup A = A\).
 Suppose that \(A\) is a set.
 Then we have
 \begin{align*}
-& \forall\ x : x \in A \\
-\iff & \forall\ x : x \in A \lor x \in A \\
-\iff & \forall\ x : x \in A \cup A & \text{(by Axiom \ref{3.4})} \\
-\iff & A = A \cup A & \text{(by Definition \ref{3.1.4})} \\
-\iff & \forall\ x : x \in A \lor x \in \emptyset & \text{(vacuously true)} \\
+& (\forall\ x : x \in A \iff x \in A \lor x \in A) \\
+\iff & (\forall\ x : x \in A \iff x \in A \cup A) & \text{(by Axiom \ref{3.4})} \\
+\iff & (A = A \cup A) & \text{(by Definition \ref{3.1.4})} \\
+\iff & (\forall\ x : x \in A \iff x \in A \lor x \in \emptyset) & \text{(vacuously true)} \\
 \iff & A = A \cup \emptyset & \text{(by Definition \ref{3.1.4})} \\
-\iff & \forall\ x : x \in \emptyset \lor x \in A & \text{(vacuously true)} \\
+\iff & (\forall\ x : x \in A \iff x \in \emptyset \lor x \in A) & \text{(vacuously true)} \\
 \iff & A = \emptyset \cup A. & \text{(by Definition \ref{3.1.4})}
 \end{align*}
 \end{proof}
@@ -328,7 +327,8 @@ Suppose that \(A, B\) are sets and \(A \subseteq B \land B \subseteq A\).
 Then we have
 \begin{align*}
 & A \subseteq B \land B \subseteq A \\
-\iff & (\forall\ x : x \in A \implies x \in B) \land (\forall\ x : x \in B \implies x \in A) & \text{(by Definition \ref{3.1.15})} \\
+\iff & (\forall\ x : (x \in A \implies x \in B) \land (x \in B \implies x \in A)) & \text{(by Definition \ref{3.1.15})} \\
+\iff & (\forall\ x : x \in A \iff x \in B) \\
 \iff & A = B. & \text{(by Definition \ref{3.1.4})}
 \end{align*}
 
@@ -436,17 +436,11 @@ Let \(A\), \(B\), \(C\) be sets, and let \(X\) be a set containing \(A\), \(B\),
 
 \begin{proof}{(a)}
 Suppose that \(A\) is a set.
-Then we have
+By Lemma \ref{3.1.13} we have \(A \cup \emptyset = A\).
+We only need to show that \(A \cap \emptyset = \emptyset\).
 \begin{align*}
-\top \iff & (\forall\ x : x \in A \iff x \in A) \\
-\iff & (\forall\ x : x \in A \iff x \in A \lor x \in \emptyset) \\
-\iff & (\forall\ x : x \in A \iff x \in A \cup \emptyset) & \text{(by Axiom \ref{3.4})} \\
-\iff & A = A \cup \emptyset. & \text{(by Definition \ref{3.1.4})}
-\end{align*}
-And we also have
-\begin{align*}
-\top \iff & (\bot \iff \bot) \\
-\iff & (\forall\ x : x \in \emptyset \iff x \in \emptyset) \\
+\top \iff & (\bot \iff \bot) & \text{(vacuously true)} \\
+\iff & (\forall\ x : x \in \emptyset \iff x \in \emptyset) & \text{(vacuously true)} \\
 \iff & (\forall\ x : x \in \emptyset \iff x \in A \land x \in \emptyset) \\
 \iff & (\forall\ x : x \in \emptyset \iff x \in A \cap \emptyset) & \text{(by Definition \ref{3.1.23})} \\
 \iff & \emptyset = A \cap \emptyset. & \text{(by Definition \ref{3.1.4})}
@@ -479,25 +473,13 @@ A \subseteq X \iff & (\forall\ x : x \in A \implies x \in X) & \text{(by Definit
 
 \begin{proof}{(c)}
 Suppose that \(A\) is a set.
-Then we have
+By Lemma \ref{3.1.13} we have \(A \cup A = A\).
+We only need to show that \(A \cap A = A\).
 \begin{align*}
-\top \iff & (\forall\ x : x \in A \implies x \in A) \\
-\iff & (\forall\ x : x \in A \land x \in A \implies x \in A) \\
-\iff & (\forall\ x : x \in A \cap A \implies x \in A) & \text{(by Definition \ref{3.1.23})} \\
-\iff & (\forall\ x : x \in A \implies x \in A \land x \in A) \\
-\iff & (\forall\ x : x \in A \implies x \in A \cap A) & \text{(by Definition \ref{3.1.23})} \\
-\iff & (\forall\ x : x \in A \cap A \iff x \in A) \\
+\top \iff & (\forall\ x : x \in A \iff x \in A) \\
+\iff & (\forall\ x : x \in A \land x \in A \iff x \in A) \\
+\iff & (\forall\ x : x \in A \cap A \iff x \in A) & \text{(by Definition \ref{3.1.23})} \\
 \iff & A \cap A = A. & \text{(by Definition \ref{3.1.4})}
-\end{align*}
-And we also have
-\begin{align*}
-\top \iff & (\forall\ x : x \in A \implies x \in A) \\
-\iff & (\forall\ x : x \in A \lor x \in A \implies x \in A) \\
-\iff & (\forall\ x : x \in A \cup A \implies x \in A) & \text{(by Axiom \ref{3.4})} \\
-\iff & (\forall\ x : x \in A \implies x \in A \lor x \in A) \\
-\iff & (\forall\ x : x \in A \implies x \in A \cup A) & \text{(by Axiom \ref{3.4})} \\
-\iff & (\forall\ x : x \in A \cup A \iff x \in A) \\
-\iff & A \cup A = A. & \text{(by Definition \ref{3.1.4})}
 \end{align*}
 \end{proof}
 
@@ -542,21 +524,21 @@ Suppose that \(A, B, C\) are sets.
 Then we have
 \begin{align*}
 & \forall\ x : x \in A \cap (B \cup C) \\
-\iff & \forall\ x : x \in A \land x \in B \cup C & \text{(by Definition \ref{3.1.23})} \\
-\iff & \forall\ x : x \in A \land (x \in B \lor x \in C) & \text{(by Axiom \ref{3.4})} \\
-\iff & \forall\ x : (x \in A \land x \in B) \lor (x \in A \land x \in C) \\
-\iff & \forall\ x : (x \in A \cap B) \lor (x \in A \cap C) & \text{(by Definition \ref{3.1.23})} \\
-\iff & \forall\ x : x \in (A \cap B) \cup (A \cap C). & \text{(by Axiom \ref{3.4})}
+\iff & x \in A \land x \in B \cup C & \text{(by Definition \ref{3.1.23})} \\
+\iff & x \in A \land (x \in B \lor x \in C) & \text{(by Axiom \ref{3.4})} \\
+\iff & (x \in A \land x \in B) \lor (x \in A \land x \in C) \\
+\iff & (x \in A \cap B) \lor (x \in A \cap C) & \text{(by Definition \ref{3.1.23})} \\
+\iff & x \in (A \cap B) \cup (A \cap C). & \text{(by Axiom \ref{3.4})}
 \end{align*}
 Thus by Definition \ref{3.1.4} we have \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\).
 Similarly we have
 \begin{align*}
 & \forall\ x : x \in A \cup (B \cap C) \\
-\iff & \forall\ x : x \in A \lor x \in B \cap C & \text{(by Axiom \ref{3.4})} \\
-\iff & \forall\ x : x \in A \lor (x \in B \land x \in C) & \text{(by Definition \ref{3.1.23})} \\
-\iff & \forall\ x : (x \in A \lor x \in B) \land (x \in A \lor x \in C) \\
-\iff & \forall\ x : (x \in A \cup B) \land (x \in A \cup C) & \text{(by Axiom \ref{3.4})} \\
-\iff & \forall\ x : x \in (A \cup B) \cap (A \cup C). & \text{(by Definition \ref{3.1.23})}
+\iff & x \in A \lor x \in B \cap C & \text{(by Axiom \ref{3.4})} \\
+\iff & x \in A \lor (x \in B \land x \in C) & \text{(by Definition \ref{3.1.23})} \\
+\iff & (x \in A \lor x \in B) \land (x \in A \lor x \in C) \\
+\iff & (x \in A \cup B) \land (x \in A \cup C) & \text{(by Axiom \ref{3.4})} \\
+\iff & x \in (A \cup B) \cap (A \cup C). & \text{(by Definition \ref{3.1.23})}
 \end{align*}
 Thus by Definition \ref{3.1.4} we have \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\).
 \end{proof}
@@ -566,24 +548,24 @@ Suppose that \(A, X\) are sets and \(A \subseteq X\).
 Then we have
 \begin{align*}
 & \forall\ x : x \in A \cup (X \setminus A) \\
-\iff & \forall\ x : x \in A \lor x \in (X \setminus A) & \text{(by Axiom \ref{3.4})} \\
-\iff & \forall\ x : x \in A \lor (x \in X \land x \notin A) & \text{(by Definition \ref{3.1.27})} \\
-\iff & \forall\ x : (x \in A \lor x \in X) \land (x \in A \lor x \notin A) \\
-\iff & \forall\ x : (x \in A \lor x \in X) \land \top \\
-\iff & \forall\ x : x \in A \lor x \in X \\
-\iff & \forall\ x : x \in A \cup X & \text{(by Axiom \ref{3.4})} \\
-\iff & \forall\ x : x \in X. & \text{(by Proposition \ref{3.1.28})(b)}
+\iff & x \in A \lor x \in (X \setminus A) & \text{(by Axiom \ref{3.4})} \\
+\iff & x \in A \lor (x \in X \land x \notin A) & \text{(by Definition \ref{3.1.27})} \\
+\iff & (x \in A \lor x \in X) \land (x \in A \lor x \notin A) \\
+\iff & (x \in A \lor x \in X) \land \top \\
+\iff & x \in A \lor x \in X \\
+\iff & x \in A \cup X & \text{(by Axiom \ref{3.4})} \\
+\iff & x \in X. & \text{(by Proposition \ref{3.1.28})(b)}
 \end{align*}
 Thus by Definition \ref{3.1.4} we have \(A \cup (X \setminus A) = X\).
 Similarly we have
 \begin{align*}
 & \forall\ x : x \in A \cap (X \setminus A) \\
-\iff & \forall\ x : x \in A \land x \in (X \setminus A) & \text{(by Definition \ref{3.1.23})} \\
-\iff & \forall\ x : x \in A \land (x \in X \land x \notin A) & \text{(by Definition \ref{3.1.27})} \\
-\iff & \forall\ x : (x \in A \land x \notin A) \land x \in X \\
+\iff & x \in A \land x \in (X \setminus A) & \text{(by Definition \ref{3.1.23})} \\
+\iff & x \in A \land (x \in X \land x \notin A) & \text{(by Definition \ref{3.1.27})} \\
+\iff & (x \in A \land x \notin A) \land x \in X \\
 \iff & \bot \land x \in X \\
 \iff & \bot \\
-\iff & x \in \emptyset.
+\iff & x \in \emptyset. & \text{(vacuously true)}
 \end{align*}
 Thus by Definition \ref{3.1.4} we have \(A \cap (X \setminus A) = \emptyset\).
 \end{proof}
@@ -593,25 +575,25 @@ Suppose that \(A, B, X\) are sets such that \(A \subseteq X\) and \(B \subseteq 
 Then we have
 \begin{align*}
 & \forall\ x : x \in X \setminus (A \cup B) \\
-\iff & \forall\ x : x \in X \land x \notin (A \cup B) & \text{(by Definition \ref{3.1.27})} \\
-\iff & \forall\ x : x \in X \land \lnot (x \in A \cup B) \\
-\iff & \forall\ x : x \in X \land \lnot (x \in A \lor x \in B) & \text{(by Axiom \ref{3.4})} \\
-\iff & \forall\ x : x \in X \land (x \notin A \land x \notin B) \\
-\iff & \forall\ x : (x \in X \land x \notin A) \land (x \in X \land x \notin B) \\
-\iff & \forall\ x : (x \in X \setminus A) \land (x \in X \setminus B) & \text{(by Definition \ref{3.1.27})} \\
-\iff & \forall\ x : x \in (X \setminus A) \cap (X \setminus B). & \text{(by Definition \ref{3.1.23})}
+\iff & x \in X \land x \notin (A \cup B) & \text{(by Definition \ref{3.1.27})} \\
+\iff & x \in X \land \lnot (x \in A \cup B) \\
+\iff & x \in X \land \lnot (x \in A \lor x \in B) & \text{(by Axiom \ref{3.4})} \\
+\iff & x \in X \land (x \notin A \land x \notin B) \\
+\iff & (x \in X \land x \notin A) \land (x \in X \land x \notin B) \\
+\iff & (x \in X \setminus A) \land (x \in X \setminus B) & \text{(by Definition \ref{3.1.27})} \\
+\iff & x \in (X \setminus A) \cap (X \setminus B). & \text{(by Definition \ref{3.1.23})}
 \end{align*}
 Thus by Definition \ref{3.1.4} we have \(X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B)\).
 Similarly we have
 \begin{align*}
 & \forall\ x : x \in X \setminus (A \cap B) \\
-\iff & \forall\ x : x \in X \land x \notin (A \cap B) & \text{(by Definition \ref{3.1.27})} \\
-\iff & \forall\ x : x \in X \land \lnot (x \in A \cap B) \\
-\iff & \forall\ x : x \in X \land \lnot (x \in A \land x \in B) & \text{(by Definition \ref{3.1.23})} \\
-\iff & \forall\ x : x \in X \land (x \notin A \lor x \notin B) \\
-\iff & \forall\ x : (x \in X \land x \notin A) \lor (x \in X \land x \notin B) \\
-\iff & \forall\ x : (x \in X \setminus A) \lor (x \in X \setminus B) & \text{(by Definition \ref{3.1.27})} \\
-\iff & \forall\ x : x \in (X \setminus A) \cup (X \setminus B). & \text{(by Axiom \ref{3.4})}
+\iff & x \in X \land x \notin (A \cap B) & \text{(by Definition \ref{3.1.27})} \\
+\iff & x \in X \land \lnot (x \in A \cap B) \\
+\iff & x \in X \land \lnot (x \in A \land x \in B) & \text{(by Definition \ref{3.1.23})} \\
+\iff & x \in X \land (x \notin A \lor x \notin B) \\
+\iff & (x \in X \land x \notin A) \lor (x \in X \land x \notin B) \\
+\iff & (x \in X \setminus A) \lor (x \in X \setminus B) & \text{(by Definition \ref{3.1.27})} \\
+\iff & x \in (X \setminus A) \cup (X \setminus B). & \text{(by Axiom \ref{3.4})}
 \end{align*}
 Thus by Definition \ref{3.1.4} we have \(X \setminus (A \cap B) = (X \setminus A) \cup (X \setminus B)\).
 \end{proof}
@@ -668,20 +650,29 @@ Using only Definition \ref{3.1.4}, Axiom \ref{3.1}, Axiom \ref{3.2}, and Axiom \
 \end{exercise}
 
 \begin{proof}
-By Axiom \ref{3.2}, \(\emptyset \notin \emptyset\), \(\{\emptyset\} \notin \emptyset\), \(\{\{\emptyset\}\} \notin \emptyset\), \(\{\emptyset, \{\emptyset\}\} \notin \emptyset\).
-By Axiom \ref{3.3}, \(\emptyset \in \{\emptyset\}\), \(\{\emptyset\} \in \{\{\emptyset\}\}\), \(\emptyset \in \{\emptyset, \{\emptyset\}\}\) and \(\{\emptyset\} \in \{\emptyset, \{\emptyset\}\})\).
+We first show that \(\emptyset \neq \{\emptyset\}\), \(\emptyset \neq \{\{\emptyset\}\}\) and \(\emptyset \neq \{\emptyset, \{\emptyset\}\}\).
+\begin{align*}
+& \emptyset \in \{\emptyset\} \land \emptyset \notin \emptyset & \text{(by Axiom \ref{3.2})} \\
+\implies & \{\emptyset\} \neq \emptyset. & \text{(by Definition \ref{3.1.4})} \\
+& \{\emptyset\} \in \{\{\emptyset\}\} \land \{\emptyset\} \notin \emptyset & \text{(by Axiom \ref{3.2})} \\
+\implies & \{\{\emptyset\}\} \neq \emptyset. & \text{(by Definition \ref{3.1.4})} \\
+& \emptyset \in \{\emptyset, \{\emptyset\}\} \land \emptyset \notin \emptyset & \text{(by Axiom \ref{3.2})} \\
+\implies & \{\emptyset\} \neq \emptyset. & \text{(by Definition \ref{3.1.4})}
+\end{align*}
 
-\(\because (\emptyset \notin \emptyset) \land (\emptyset \in \{\emptyset\})\), \(\therefore \emptyset \neq \{\emptyset\}\) by Definition \ref{3.1.4}.
+Next we show that \(\{\emptyset\} \neq \{\{\emptyset\}\}\) and \(\{\emptyset\} \neq \{\emptyset, \{\emptyset\}\}\).
+\begin{align*}
+& \{\emptyset\} \in \{\{\emptyset\}\} \land \{\emptyset\} \notin \{\emptyset\} & \text{(by Axiom \ref{3.3})} \\
+\implies & \{\emptyset\} \neq \{\{\emptyset\}\}. & \text{(by Definition \ref{3.1.4})} \\
+& \{\emptyset\} \in \{\emptyset, \{\emptyset\}\} \land \{\emptyset\} \notin \{\emptyset\} & \text{(by Axiom \ref{3.2})} \\
+\implies & \{\emptyset\} \neq \{\{\emptyset\}\}. & \text{(by Definition \ref{3.1.4})}
+\end{align*}
 
-\(\because (\{\emptyset\} \notin \emptyset) \land (\{\emptyset\} \in \{\{\emptyset\}\})\), \(\therefore \emptyset \neq \{\{\emptyset\}\}\) by Definition \ref{3.1.4}.
-
-\(\because (\emptyset \notin \emptyset) \land (\emptyset \in \{\emptyset, \{\emptyset\}\})\), \(\therefore \emptyset \neq \{\emptyset, \{\emptyset\}\}\) by Definition \ref{3.1.4}.
-
-\(\because (\emptyset \neq \{\emptyset\} \implies \{\emptyset\} \notin \{\emptyset\}) \land (\{\emptyset\} \in \{\{\emptyset\}\})\), \(\therefore \{\emptyset\} \neq \{\{\emptyset\}\}\) by Definition \ref{3.1.4}.
-
-\(\because (\emptyset \neq \{\emptyset\} \implies \{\emptyset\} \notin \{\emptyset\}) \land (\{\emptyset\} \in \{\emptyset, \{\emptyset\}\})\), \(\therefore \{\emptyset\} \neq \{\emptyset, \{\emptyset\}\}\) by Definition \ref{3.1.4}.
-
-\(\because (\emptyset \neq \{\emptyset\} \implies \emptyset \notin \{\{\emptyset\}\}) \land (\emptyset \in \{\emptyset, \{\emptyset\}\})\), \(\therefore \{\{\emptyset\}\} \neq \{\emptyset, \{\emptyset\}\}\) by Definition \ref{3.1.4}.
+Finally we show that \(\{\{\emptyset\}\} \neq \{\emptyset, \{\emptyset\}\}\).
+\begin{align*}
+& \emptyset \in \{\emptyset, \{\emptyset\}\} \land \emptyset \notin \{\{\emptyset\}\} & \text{(by Axiom \ref{3.3})} \\
+\implies & \{\{\emptyset\}\} \neq \{\emptyset, \{\emptyset\}\}. & \text{(by Definition \ref{3.1.4})}
+\end{align*}
 \end{proof}
 
 \begin{exercise}\label{ex 3.1.3}
@@ -706,21 +697,29 @@ Show that the three statements \(A \subseteq B\), \(A \cup B = B\), \(A \cap B =
 \end{exercise}
 
 \begin{proof}
-We first prove that \(A \subseteq B \implies A \cup B = B\).
-By the given condition, \(\forall\ x \in A\), \(x \in B\) is true, thus \(A \cup B \subseteq B\).
-And \(\forall\ y \in B\), \(y \in A \cup B\), thus \(B \subseteq A \cup B\).
-So \(A \subseteq B \implies A \cup B = B\) is true.
+We first show that \(A \subseteq B \iff A \cup B = B\).
+Suppose that \(A, B\) are sets.
+Then we have
+\begin{align*}
+A \subseteq B \implies & A \cup B = B. & \text{(by Proposition \ref{3.1.28}(b))} \\
+A \cup B = B \implies & (\forall\ x : x \in A \cup B \iff x \in B) & \text{(by Definition \ref{3.1.4})} \\
+\implies & (\forall\ x : x \in A \lor x \in B \iff x \in B) & \text{(by Axiom \ref{3.4})} \\
+\implies & (\forall\ x : x \in A \implies x \in B) \\
+\implies & A \subseteq B. & \text{(by Definition \ref{3.1.15})} \\
+A \cup B = B \iff & A \subseteq B.
+\end{align*}
 
-Next we prove that \(A \cup B = B \implies A \cap B = A\).
-\(\forall\ x \in A \cap B\), \(x \in A\) is true.
-And by the given condition, \(\forall\ y \in A\) or \(y \in B\), \(y \in B\) is true, so if \(y \in A\), then \(y \in A \cap B\) is true.
-Thus \(A \cup B = B \implies A \cap B = A\) is true.
-
-Finally, we prove that \(A \cap B = A \implies A \subseteq B\).
-By the given condition, \(\forall x \in A\), \(x \in A\) and \(x \in B\), so \(A \subseteq B\) is true.
-Thus \(A \cap B \implies A \subseteq B\) is true.
-
-Since \(A \subseteq B \implies A \cup B = B \implies A \cap B = A \implies A \subseteq B\), we conclude that \(A \subseteq B \iff A \cup B = B \iff A \cap B = A\).
+Now we show that \(A \subseteq B \iff A \cap B = A\).
+Suppose that \(A, B\) are sets.
+Then we have
+\begin{align*}
+A \subseteq B \implies & A \cap B = A. & \text{(by Proposition \ref{3.1.28}(b))} \\
+A \cap B = A \implies & (\forall\ x : x \in A \cap B \iff x \in A) & \text{(by Definition \ref{3.1.4})} \\
+\implies & (\forall\ x : x \in A \land x \in B \iff x \in A) & \text{(by Definition \ref{3.1.23})} \\
+\implies & (\forall\ x : x \in A \implies x \in B) \\
+\implies & A \subseteq B. & \text{(by Definition \ref{3.1.15})} \\
+A \cap B = A \iff & A \subseteq B.
+\end{align*}
 \end{proof}
 
 \begin{exercise}\label{ex 3.1.6}
@@ -739,28 +738,49 @@ In a similar spirit, show that \(A \subseteq A \cup B\) and \(B \subseteq A \cup
 \end{exercise}
 
 \begin{proof}
-We first prove that \(A \cap B \subseteq A\) and \(A \cap B \subseteq B\).
-By the given condition \(A \cap B \subseteq A\), \(\forall\ x \in A \cap B\), \(x \in A\) and \(x \in B\) is true, thus \(x \in A\) is true.
-Similarly, \(\forall\ x \in A \cap B\), \(x \in A\) and \(x \in B\) is true, thus \(x \in B\) is  true.
-We conclude that \(A \cap B \subseteq A\) and \(A \cap B \subseteq B\).
+We first show that \(A \cap B \subseteq A\) and \(A \cap B \subseteq B\).
+Suppose that \(A, B\) are sets.
+Then we have
+\begin{align*}
+& (\forall\ x : x \in A \cap B \iff x \in A \land x \in B) & \text{(by Definition \ref{3.1.23})} \\
+\implies & ((\forall\ x : x \in A \cap B \implies x \in A) \\
+& \land (\forall\ x : x \in A \cap B \implies x \in B)) \\
+\implies & (A \cap B \subseteq A) \land (A \cap B \subseteq B). & \text{(by Definition \ref{3.1.15})}
+\end{align*}
 
-Next we prove that \(C \subseteq A\) and \(C \subseteq B \iff C \subseteq A \cap B\).
-By the given condition \(C \subseteq A\) and \(C \subseteq B\), \(\forall\ x \in C\), \(x \in A\) is true and \(x \in B\) is true, so \(x \in A \cap B\) is true, and we finish prove the necessary condition.
-Now we prove the sufficient condition.
-Again by the given condition \(C \subseteq A \cap B\), \(\forall\ y \in C\), \(y \in A \cap B\), so \(\forall\ y \in C\), \(y \in A\) is true and \(y \in B\) is also true, thus \(C \subseteq A\) and \(C \subseteq B\) is true.
-Since we prove both necessary and sufficient conditions, we conclude that \(C \subseteq A\) and \(C \subseteq B \iff C \subseteq A \cap B\).
+Next we show that \(C \subseteq A \land C \subseteq B \iff C \subseteq A \cap B\).
+Suppose that \(A, B, C\) are sets.
+Then we have
+\begin{align*}
+& (C \subseteq A \land C \subseteq B) \\
+\iff & (\forall\ x : x \in C \implies x \in A) \land (\forall\ x : x \in C \implies x \in B) & \text{(by Definition \ref{3.1.15})} \\
+\iff & (\forall\ x : x \in C \implies x \in A \land x \in B) \\
+\iff & (\forall\ x : x \in C \implies x \in A \cap B) & \text{(by Definition \ref{3.1.23})} \\
+\iff & (C \subseteq A \cap B). & \text{(by Definition \ref{3.1.15})}
+\end{align*}
 
-Next we prove that \(A \subseteq A \cup B\) and \(B \subseteq A \cup B\).
-By the given condition \(A \subseteq A \cup B\), \(\forall\ x \in A\), \(x \in A\) or \(x \in B\) is true, thus \(A \subseteq A \cup B\) is true.
-Similarly, by the given condition \(B \subseteq A \cup B\), \(\forall\ y \in B\), \(y \in A\) or \(y \in B\) is true, thus \(B \subseteq A \cup B\) is true.
+Next we show that \(A \subseteq A \cup B\) and \(B \subseteq A \cup B\).
+Suppose that \(A, B\) are sets.
+Then we have
+\begin{align*}
+\top \iff & (\forall\ x : x \in A \implies \forall\ x : x \in A \lor x \in B) \\
+\iff & (\forall\ x : x \in A \implies \forall\ x : x \in A \cup B) & \text{(by Axiom \ref{3.4})} \\
+\iff & (A \subseteq A \cup B). & \text{(by Definition \ref{3.1.15})} \\
+\top \iff & (\forall\ x : x \in B \implies \forall\ x : x \in A \lor x \in B) \\
+\iff & (\forall\ x : x \in B \implies \forall\ x : x \in A \cup B) & \text{(by Axiom \ref{3.4})} \\
+\iff & (B \subseteq A \cup B). & \text{(by Definition \ref{3.1.15})}
+\end{align*}
 
-Finally we show that \(A \subseteq C\) and \(B \subseteq C \iff A \cup B \subseteq C\).
-By the given condition \(A \subseteq C\) and \(B \subseteq C\), \(\forall\ x \in A\), \(x \in C\); and \(\forall\ y \in B\), \(y \in C\).
-Thus \(\forall\ z \in A \cup B\), \(z \in C\) is true.
-Since we prove the necessary condition, all we left is to prove the sufficient condition.
-By the given condition \(A \cup B \subseteq C\), \(\forall\ x \in A\) or \(x \in B\), \(x \in C\).
-If \(x \in A\), then \(x \in C\); similarly if \(x \in B\), \(x \in C\), thus \(A \subseteq C\) and \(B \subseteq C\) is true.
-We conclude that \(A \subseteq C\) and \(B \subseteq C \iff A \cup B \subseteq C\).
+Finally we show that \(A \subseteq C \land B \subseteq C \iff A \cup B \subseteq C\).
+Suppose that \(A, B, C\) are sets.
+Then we have
+\begin{align*}
+& (A \subseteq C \land B \subseteq C) \\
+\iff & (\forall\ x : x \in A \implies x \in C) \land (\forall\ x : x \in B \implies x \in C) & \text{(by Definition \ref{3.1.15})} \\
+\iff & (\forall\ x : x \in A \lor x \in B \implies x \in C) \\
+\iff & (\forall\ x : x \in A \cup B \implies x \in C) & \text{(by Axiom \ref{3.4})} \\
+\iff & (A \cup B \subseteq C). & \text{(by Definition \ref{3.1.15})}
+\end{align*}
 \end{proof}
 
 \begin{exercise}\label{ex 3.1.8}
@@ -769,10 +789,23 @@ Prove the \emph{absorption laws} \(A \cap (A \cup B) = A\) and \(A \cup (A \cap 
 \end{exercise}
 
 \begin{proof}
-By Proposition \ref{3.1.28}, \(A \cap (A \cup B) = (A \cap A) \cup (A \cap B) = A \cup (A \cap B)\), thus we only need to prove \(A \cup (A \cap B) = A\).
-\(\forall\ x \in A \cup (A \cap B)\), \(x \in A\) or \(x \in A \cap B\), so \(x \in A\) is true.
-\(\forall\ y \in A\), \(y \in A\) or \(y \in A \cap B\) is true, so \(y \in A \cup (A \cap B)\) is true.
-Thus \(A \cup (A \cap B) = A\).
+Suppose that \(A, B\) are sets.
+Then we have
+\begin{align*}
+& \forall\ x : x \in A \cap (A \cup B) \\
+\iff & x \in A \land x \in A \cup B & \text{(by Definition \ref{3.1.23})} \\
+\iff & x \in A \land (x \in A \lor x \in B) & \text{(by Axiom \ref{3.4})} \\
+\iff & x \in A.
+\end{align*}
+Thus by Definition \ref{3.1.4} we have \(A \cap (A \cup B) = A\).
+Similarly we have
+\begin{align*}
+& \forall\ x : x \in A \cup (A \cap B) \\
+\iff & x \in A \lor x \in A \cap B & \text{(by Axiom \ref{3.4})} \\
+\iff & x \in A \lor (x \in A \land x \in B) & \text{(by Definition \ref{3.1.23})} \\
+\iff & x \in A.
+\end{align*}
+Thus by Definition \ref{3.1.4} we have \(A \cup (A \cap B) = A\).
 \end{proof}
 
 \begin{exercise}\label{ex 3.1.9}
@@ -781,10 +814,39 @@ Show that \(A = X \setminus B\) and \(B = X \setminus A\).
 \end{exercise}
 
 \begin{proof}
-By Proposition \ref{3.1.28}, \(A \cup (X \setminus A) = X\) and \(A \cap (X \setminus A) = \emptyset\).
-So by the given condition \(A \cup B = X\) and \(A \cap B = \emptyset\), \(B = X \setminus A\).
-Similar argument shows that \(A = X \setminus B\).
-Thus we finished the prove.
+Suppose that \(A, B, X\) are sets such that \(A \cup B = X\) and \(A \cap B = \emptyset\).
+We first show that \(A \cap B = \emptyset \iff \forall\ x : (x \in A \implies x \notin B) \land (x \in B \implies x \notin A)\).
+\begin{align*}
+& (A \cap B = \emptyset) \\
+\iff & (\forall\ x : x \notin A \cap B) & \text{(by Axiom \ref{3.2})} \\
+\iff & (\forall\ x : \lnot (x \in A \cap B)) \\
+\iff & (\forall\ x : \lnot (x \in A \land x \in B)) & \text{(by Definition \ref{3.1.23})} \\
+\iff & (\forall\ x : x \notin A \lor x \notin B) \\
+\iff & (\forall\ x : (x \in A \implies x \notin B) \land (x \in B \implies x \notin A)) \\
+\end{align*}
+
+Now we show that \(A = X \setminus B\).
+From the proof above we have
+\begin{align*}
+& (A \cup B = X) \land (A \cap B = \emptyset) \\
+\implies & (A \subseteq X) \land (A \cap B = \emptyset) & \text{(by Exercise \ref{ex 3.1.7})} \\
+\implies & (\forall\ x : x \in A \implies x \in X) \land (A \cap B = \emptyset) & \text{(by Definition \ref{3.1.15})} \\
+\implies & (\forall\ x : x \in A \implies x \in X) \\
+& \land (\forall\ x : x \in A \implies x \notin B) \\
+\implies & (\forall\ x : x \in A \implies x \in X \land x \notin B) \\
+\implies & (\forall\ x : x \in A \implies x \in X \setminus B). & \text{(by Definition \ref{3.1.27})}
+\end{align*}
+And we also have
+\begin{align*}
+& \forall\ x : x \in X \setminus B \\
+\implies & x \in X \land x \notin B & \text{(by Definition \ref{3.1.27})} \\
+\implies & x \in A \cup B \land x \notin B \\
+\implies & (x \in A \lor x \in B) \land x \notin B & \text{(by Axiom \ref{3.4})} \\
+\implies & x \in A \land x \notin B \\
+\implies & x \in A.
+\end{align*}
+Thus by Definition \ref{3.1.4} we have \(A = X \setminus B\).
+Similarly argument show that \(B = X \setminus A\), as desired.
 \end{proof}
 
 \begin{exercise}\label{ex 3.1.10}
@@ -793,21 +855,43 @@ Show that the three sets \(A \setminus B\), \(A \cap B\), and \(B \setminus A\) 
 \end{exercise}
 
 \begin{proof}
-We first prove the disjoint part.
-\(\forall\ x \in A \setminus B\), \(x \in A\) and \(x \notin B\).
-Because \(x \notin B\), so \(x \notin B \setminus A\), thus \((A \setminus B) \cap (B \setminus A) = \emptyset\).
-Also because \(x \notin B\), so \(x \notin A \cap B\), thus \((A \setminus B) \cap (A \cap B) = \emptyset\).
-Similar argument shows that \((B \setminus A) \cap (A \cap B) = \emptyset\).
-
-Now we prove the union part.
+Suppose that \(A, B\) are sets.
+Then we have
 \begin{align*}
-    (A \setminus B) \cup (A \cap B) \cup (B \setminus A)
-    &= ((A \setminus B) \cup (A \cap B)) \cup (B \setminus A) \\
-    &= (((A \setminus B) \cup A) \cap ((A \setminus B) \cup B))) \cup (B \setminus A) \\
-    &= (A \cap B) \cup (B \setminus A) \\
-    &= (A \cup (B \setminus A)) \cap (B \cup (B \setminus A)) \\
-    &= (A \cup B) \cap (A \cup B) \\
-    &= A \cup B.
+& \forall\ x : x \in A \setminus B \\
+\implies & x \in A \land x \notin B & \text{(by Definition \ref{3.1.27})} \\
+\implies & x \notin A \cap B. & \text{(by Definition \ref{3.1.23})}
+\end{align*}
+And we also have
+\begin{align*}
+& \forall\ x : x \in A \cap B \\
+\implies & x \in A \land x \in B & \text{(by Definition \ref{3.1.23})} \\
+\implies & x \notin A \setminus B. & \text{(by Definition \ref{3.1.27})}
+\end{align*}
+Thus \(A \setminus B\) and \(A \cap B\) are disjoint.
+Similarly argument show that \(B \setminus A\) and \(A \cap B\) are disjoint.
+For \(A \setminus B\) and \(B \setminus A\), we have
+\begin{align*}
+& \forall\ x : x \in A \setminus B \\
+\implies & x \in A \land x \notin B & \text{(by Definition \ref{3.1.27})} \\
+\implies & x \notin B \setminus A. & \text{(by Definition \ref{3.1.27})}
+\end{align*}
+Similarly argument show that \(\forall\ x : x \in B \setminus A \implies x \notin A \setminus B\).
+Thus \(A \setminus B\) and \(B \setminus A\) are disjoint.
+
+Now we show that \((A \setminus B) \cup (A \cap B) \cup (B \setminus A) = A \cup B\).
+\begin{align*}
+& \forall\ x : x \in (A \setminus B) \cup (A \cap B) \cup (B \setminus A) \\
+\iff & x \in (A \setminus B) \lor x \in (A \cap B) \lor x \in (B \setminus A) & \text{(by Axiom \ref{3.4})} \\
+\iff & (x \in A \land x \notin B) \lor (x \in A \cap B) \lor (x \in B \land x \notin A) & \text{(by Definition \ref{3.1.27})} \\
+\iff & (x \in A \land x \notin B) \lor (x \in A \land x \in B) \lor (x \in B \land x \notin A) & \text{(by Definition \ref{3.1.23})} \\
+\iff & ((x \in A \lor (x \in A \land x \in B)) \\
+& \land (x \notin B \lor (x \in A \land x \in B))) \\
+& \lor (x \in B \land x \notin A) \\
+\iff & ((x \in A) \land (x \notin B \lor x \in A)) \lor (x \in B \land x \notin A) \\
+\iff & (x \in A) \lor (x \in B \land x \notin A) \\
+\iff & x \in A \lor x \in B \\
+\iff & x \in A \cup B. & \text{(by Axiom \ref{3.4})}
 \end{align*}
 \end{proof}
 
