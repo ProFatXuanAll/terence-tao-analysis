@@ -87,15 +87,15 @@ Then \(f \circ (g \circ h) = (f \circ g) \circ h\).
 Since \(g \circ h\) is a function from \(X\) to \(Z\), \(f \circ (g \circ h)\) is a function from \(X\) to \(W\).
 Similarly \(f \circ g\) is a function from \(Y\) to \(W\), and hence \((f \circ g) \circ h\) is a function from \(X\) to \(W\).
 Thus \(f \circ (g \circ h)\) and \((f \circ g) \circ h\) have the same domain and range.
-In order to check that they are equal, we see from Definition \ref{3.3.1} that we have to verify that \((f \circ (g \circ h))(x) = ((f \circ g) \circ h)(x)\) for all \(x \in X\).
+In order to check that they are equal, we see from Definition \ref{3.3.7} that we have to verify that \((f \circ (g \circ h))(x) = ((f \circ g) \circ h)(x)\) for all \(x \in X\).
 But by Definition \ref{3.3.10}
-    \begin{align*}
-        (f \circ (g \circ h))(x)
-        &= f((g \circ h)(x)) \\
-        &= f(g(h(x))) \\
-        &= (f \circ g)(h(x)) \\
-        &= ((f \circ g) \circ h)(x)
-    \end{align*}
+\begin{align*}
+(f \circ (g \circ h))(x)
+&= f((g \circ h)(x)) \\
+&= f(g(h(x))) \\
+&= (f \circ g)(h(x)) \\
+&= ((f \circ g) \circ h)(x)
+\end{align*}
 as desired.
 \end{proof}
 
@@ -125,7 +125,11 @@ A function \(f\) is \emph{onto} (or \emph{surjective}) if \(f(X) = Y\), i.e., ev
 \]
 \end{definition}
 
-\setcounter{theorem}{19}
+\setcounter{theorem}{18}
+\begin{remark}\label{3.3.19}
+The concepts of injectivity and surjectivity are in many ways dual to each other.
+\end{remark}
+
 \begin{definition}[Bijective functions]\label{3.3.20}
 Functions \(f : X \to Y\) which are both one-to-one and onto are also called \emph{bijective} or \emph{invertible}.
 \end{definition}
@@ -150,22 +154,51 @@ Of course, these statements are immediate from the axioms of equality in Appendi
 \end{exercise}
 
 \begin{proof}
-We first prove that Definition \ref{3.3.7} is reflexive.
-Let \(f : X \to Y\) be arbitrary function with domain \(X\) and range \(Y\).
-Then by Definition \ref{3.3.7}, \(\forall\ x \in X\), \(f(x) = f(x)\), thus we proved the reflexive relation.
+We first show that Definition \ref{3.3.7} is reflexive.
+Suppose that \(X, Y\) are sets and \(f : X \to Y\) is a function.
+Then we have
+\begin{align*}
+& (X = X) \land (Y = Y) & \text{(by Additional Corollary \ref{ac 3.1.1})} \\
+& \land (\forall\ x \in X : f(x) = f(x)) & \text{(by Definition \ref{3.3.1})} \\
+\implies & (f = f). & \text{(by Definition \ref{3.3.7})}
+\end{align*}
+Thus Definition \ref{3.3.7} is reflexive.
 
-Next we prove that Definition \ref{3.3.7} is symmetric.
-Let \(f : X \to Y\) and \(g : X \to Y\) be arbitrary functions with domain \(X\) and range \(Y\) such that \(f = g\) is true.
-Then by Definition \ref{3.3.7}, \(\forall\ x \in X\), \(f(x) = g(x)\) is true, and \(g(x) = f(x)\) is also true, thus \(g = f\) is true, and we proved the symmetric relation.
+Next we show that Definition \ref{3.3.7} is symmetric.
+Suppose that \(X, Y\) are sets and \(f : X \to Y, g : X \to Y\) are functions such that \(f = g\).
+Then we have
+\begin{align*}
+& f = g \\
+\iff & (X = X) \land (Y = Y) \land (\forall\ x \in X : f(x) = g(x)) & \text{(by Definition \ref{3.3.7})} \\
+\iff & (X = X) \land (Y = Y) \land (\forall\ x \in X : g(x) = f(x)) \\
+\iff & g = f. & \text{(by Definition \ref{3.3.7})}
+\end{align*}
+Thus Definition \ref{3.3.7} is symmetric.
 
-Next we prove that Definition \ref{3.3.7} is transitive.
-Let \(f : X \to Y\), \(g : X \to Y\) and \(h : X \to Y\) be arbitrary functions with domain \(X\) and range \(Y\) such that \(f = g\) and \(g = h\) are true.
-Then by Definition \ref{3.3.7}, \(\forall\ x \in X\), \(f(x) = g(x)\) is true, and \(g(x) = h(x)\) is also true, so \(f(x) = h(x)\) is true, thus \(f = h\), and we proved the transitive relation.
+Next we show that Definition \ref{3.3.7} is transitive.
+Suppose that \(X, Y\) are sets and \(f : X \to Y, g : X \to Y, h : X \to Y\) are functions such that \(f = g \land g = h\).
+Then we have
+\begin{align*}
+& (f = g) \land (g = h) \\
+\implies & (X = X) \land (Y = Y) \\
+& \land (\forall\ x \in X : f(x) = g(x)) & \text{(by Definition \ref{3.3.7})} \\
+& \land (\forall\ x \in X : g(x) = h(x)) & \text{(by Definition \ref{3.3.7})} \\
+\implies & (X = X) \land (Y = Y) \land (\forall\ x \in X : f(x) = h(x)) \\
+\implies & f = h. & \text{(by Definition \ref{3.3.7})}
+\end{align*}
+Thus Definition \ref{3.3.7} is transitive.
 
-Now we prove that Axiom of substitution holds for composition.
-Since \(g \circ f\) is a function from \(X\) to \(Z\), and \(\tilde{g} \circ \tilde{f}\) is also a function from \(X\) to \(Z\), thus \(g \circ f\) and \(\tilde{g} \circ \tilde{f}\) have the same domain and range.
-By Definition \ref{3.3.10}, \(\forall\ x \in X\), \((g \circ f)(x) = g(f(x)) = g(\tilde{f}(x)) = \tilde{g}(\tilde{f}(x)) = (\tilde{g} \circ \tilde{f})(x)\).
-Thus \(g \circ f = \tilde{g} \circ \tilde{f}\).
+Now we show that Axiom of substitution holds for composition.
+Suppose that \(X, Y, Z\) are sets and \(f : X \to Y, \tilde{f} : X \to Y, g : Y \to Z, \tilde{g} : Y \to Z\) are functions such that \(f = \tilde(f) \land g = \tilde{g}\).
+By Definition \ref{3.3.10} we have \(g \circ f : X \to Z\) and \(\tilde{g} \circ \tilde{f} : X \to Z\).
+Then we have
+\begin{align*}
+& \forall\ x \in X : (g \circ f)(x) = g(f(x)) & \text{(by Definition \ref{3.3.10})} \\
+\iff & \forall\ x \in X : (g \circ f)(x) = g(\tilde{f}(x)) & \text{(by Definition \ref{3.3.7})} \\
+\iff & \forall\ x \in X : (g \circ f)(x) = \tilde{g}(\tilde{f}(x)) & \text{(by Definition \ref{3.3.7})} \\
+\iff & \forall\ x \in X : (g \circ f)(x) = (\tilde{g} \circ \tilde{f})(x) & \text{(by Definition \ref{3.3.10})} \\
+\iff & g \circ f = \tilde{g} \circ \tilde{f}. & \text{(by Definition \ref{3.3.7})}
+\end{align*}
 \end{proof}
 
 \begin{exercise}\label{ex 3.3.2}
@@ -175,17 +208,27 @@ similarly, show that if \(f\) and \(g\) are both surjective, then so is \(g \cir
 \end{exercise}
 
 \begin{proof}
-We first prove the injective part.
-By Definition \ref{3.3.14}, \(\forall\ x, x' \in X\), \(f(x) = f(x') \implies x = x'\).
-Also by Definition \ref{3.3.14}, \(\forall\ f(x), f(x') \in Y\), \(g(f(x)) = g(f(x')) \implies f(x) = f(x')\).
-Thus \(\forall\ x, x' \in X\), \(g(f(x)) = g(f(x')) \implies f(x) = f(x')  \implies x = x'\).
-We conclude that \(g \circ f\) is injective if \(f\) and \(g\) are both injective.
+We first show that \(f, g\) are injective implies \(g \circ f\) is injective.
+Suppose that \(X, Y, Z\) are sets and \(f : X \to Y, g : Y \to Z\) are functions such that \(f, g\) are injective.
+Then we have
+\begin{align*}
+& \forall\ x, x' \in X : (g \circ f)(x) = (g \circ f)(x') \\
+\implies & g(f(x)) = g(f(x')) & \text{(by Definition \ref{3.3.10})} \\
+\implies & f(x) = f(x') & \text{(by Definition \ref{3.3.14})} \\
+\implies & x = x'. & \text{(by Definition \ref{3.3.14})}
+\end{align*}
+Since \((g \circ f)(x) = (g \circ f)(x') \implies x = x'\), by Definition \ref{3.3.14} \(g \circ f\) is injective.
 
-Now we prove the subjective part.
-By Definition \ref{3.3.17}, \(\forall\ z \in Z\), \(\exists\ y \in Y\) such that \(g(y) = z\).
-But also by Definition \ref{3.3.17}, \(\forall\ y \in Y\), \(\exists\ x \in X\) such that \(f(x) = y\).
-So \(\forall\ z \in Z\), \(\exists\ x \in X\) such that \(g(f(x)) = z\).
-We conclude that \(g \circ f\) is subjective if \(f\) and \(g\) are both subjective.
+Now we show that \(f, g\) are surjective implies \(g \circ f\) is surjective.
+Suppose that \(X, Y, Z\) are sets and \(f : X \to Y, g : Y \to Z\) are functions such that \(f, g\) are surjective.
+Then we have
+\begin{align*}
+& (\forall\ z \in Z, \exists\ y \in Y : z = g(y)) & \text{(by Definition \ref{3.3.17})} \\
+& \land (\forall\ y \in Y, \exists\ x \in X : y = f(x)) & \text{(by Definition \ref{3.3.17})} \\
+\implies & \forall\ z \in Z, \exists\ x \in X : z = g(f(x)) \\
+\implies & \forall\ z \in Z, \exists\ x \in X : z = (g \circ f)(x). & \text{(by Definition \ref{3.3.10})}
+\end{align*}
+Since \(\forall\ z \in Z, \exists\ x \in X : z = (g \circ f)(x)\), by Definition \ref{3.3.17} \(g \circ f\) is surjective.
 \end{proof}
 
 \begin{exercise}\label{ex 3.3.3}
@@ -195,8 +238,8 @@ bijective?
 \end{exercise}
 
 \begin{proof}
-Let \(f : \emptyset \to X\) be a empty function.
-\(f\) is always injective because \(\forall\ x, x' \in \emptyset\), \(f(x) = f(x') \implies x = x'\) is vacuously true.
+Suppose that \(X\) is a set and \(f : \emptyset \to X\) is the empty function.
+\(f\) is always injective since \(\forall\ x, x' \in \emptyset\), \(f(x) = f(x') \implies x = x'\) (which is vacuously true).
 \(f\) is never surjective, since \(\forall\ y \in X\), \(\nexists\ x \in \emptyset\) such that \(f(x) = y\).
 And because \(f\) is never surjective, \(f\) is never bijective.
 \end{proof}
@@ -211,19 +254,30 @@ Is the same statement true if \(f\) is not surjective?
 \end{exercise}
 
 \begin{proof}
-We first prove the injective part.
-By the given condition \(g \circ f = g \circ \tilde{f}\), \(\forall\ x, x' \in X\), \(g(f(x)) = g(\tilde{f}(x))\).
-Since \(g\) is injective, \(g(f(x)) = g(\tilde{f}(x)) \implies f(x) = f(x')\).
-Thus by Definition \ref{3.3.7}, \(f = \tilde{f}\).
-If \(g\) is not injective, then we cannot get \(g(f(x)) = g(\tilde{f}(x)) \implies f(x) = f(x')\).
-So the same statement is not true when \(g\) is not injective.
+We first show that \(g\) is injective and \(g \circ f = g \circ \tilde{f}\) implies \(f = \tilde{f}\).
+Suppose that \(X, Y, Z\) are sets and \(f : X \to Y, \tilde{f} : X \to Y, g : Y \to Z\) are functions such that \(g\) is injective and \(g \circ f = g \circ \tilde{f}\).
+Then we have
+\begin{align*}
+& g \circ f = g \circ \tilde{f} \\
+\implies & \forall\ x \in X : (g \circ f)(x) = (g \circ \tilde{f})(x) & \text{(by Definition \ref{3.3.7})} \\
+\implies & g(f(x)) = g(\tilde{f}(x)) & \text{(by Definition \ref{3.3.10})} \\
+\implies & f(x) = \tilde{f}(x) & \text{(by Definition \ref{3.3.14})} \\
+\implies & f = \tilde{f}. & \text{(by Definition \ref{3.3.7})}
+\end{align*}
+The statement is not true when \(g\) is not injective.
 
-Now we prove the surjective part.
-Since \(f\) is surjective, \(\forall\ y \in Y\), \(\exists\ x \in X\) such that \(f(x) = y\).
-By the given condition \(g \circ f = \tilde{g} \circ f\), \(g(y) = \tilde{g}(y) \implies g(f(x)) = \tilde{g}(f(x))\).
-Thus by Definition \ref{3.3.7}, \(g = \tilde{g}\).
-If \(f\) is not surjective, then we cannot get \(\forall\ y \in Y\), \(\exists\ x \in X\) such that \(f(x) = y\).
-So the same statement is not true when \(f\) is not surjective.
+Now we show that \(f\) is surjective and \(g \circ f = \tilde{g} \circ f\) implies \(g = \tilde{g}\).
+Suppose that \(X, Y, Z\) are sets and \(f : X \to Y, g : Y \to Z, \tilde{g} : Y \to Z\) are functions such that \(f\) is surjective and \(g \circ f = \tilde{g} \circ f\).
+Then we have
+\begin{align*}
+& \forall\ y \in Y, \exists\ x \in X : y = f(x) & \text{(by Definition \ref{3.3.17})} \\
+\implies & g(y) = g(f(x)) & \text{(by Definition \ref{3.3.1})} \\
+\implies & g(y) = (g \circ f)(x) & \text{(by Definition \ref{3.3.10})} \\
+\implies & g(y) = (\tilde{g} \circ f)(x) & \text{(by Definition \ref{3.3.7})} \\
+\implies & g(y) = \tilde{g}(f(x)) = \tilde{g}(y) & \text{(by Definition \ref{3.3.10})} \\
+\implies & g = \tilde{g}. & \text{(by Definition \ref{3.3.7})}
+\end{align*}
+The statement is not true when \(f\) is not surjective.
 \end{proof}
 
 \begin{exercise}\label{ex 3.3.5}
@@ -235,17 +289,28 @@ Is it true that \(f\) must also be surjective?
 \end{exercise}
 
 \begin{proof}
-We first prove the injective part.
-By the given condition, \(\forall\ x, x' \in X\), \(g(f(x)) = g(f(x')) \implies x = x'\).
-But if \(f(x) = f(x')\), then \(g(f(x)) = g(f(x'))\) by Definition \ref{3.3.1}.
-So \(f(x) = f(x') \implies x = x'\), which means \(f\) is injective.
-In the above proving process we didn't require \(g\) to be injective, so \(g\) need not be injective the same statement still holds.
+We first show that \(g \circ f\) is injective implies \(f\) is injective.
+Suppose \(X, Y, Z\) are sets and \(f : X \to Y, g : Y \to Z\) are functions such that \(g \circ f\) is injective.
+Then we have
+\begin{align*}
+& \forall\ x, x' \in X : f(x) = f(x') \\
+\implies & g(f(x)) = g(f(x')) & \text{(by Definition \ref{3.3.1})} \\
+\implies & (g \circ f)(x) = (g \circ f)(x') & \text{(by Definition \ref{3.3.10})} \\
+\implies & x = x'. & \text{(by Definition \ref{3.3.14})}
+\end{align*}
+Since \(\forall\ x, x' \in X : f(x) = f(x') \implies x = x'\), by Definition \ref{3.3.14} \(f\) is injective.
+And we don't need \(g\) to be injective.
 
-Now we prove the surjective part.
-By the given condition, \(\forall\ z \in Z\), \(\exists\ x \in X\) such that \(g(f(x)) = z\).
-But if such \(x\) exists, than \(f(x) \in Y\) also exists by Definition \ref{3.3.1}.
-So \(\forall\ z \in Z\), \(\exists\ f(x) \in Y\) such that \(g(f(x)) = z\), which means \(g\) is surjective.
-In the above proving process we didn't require \(f\) to be surjective, so \(f\) need not be surjective the same statement still holds.
+Now we show that \(g \circ f\) is surjective implies \(g\) is surjective.
+Suppose \(X, Y, Z\) are sets and \(f : X \to Y, g : Y \to Z\) are functions such that \(g \circ f\) is surjective.
+Then we have
+\begin{align*}
+& \forall\ z \in Z, \exists\ x \in X : z = (g \circ f)(x) & \text{(by Definition \ref{3.3.17})} \\
+\implies & \forall\ z \in Z, \exists\ x \in X : z = g(f(x)) & \text{(by Definition \ref{3.3.10})} \\
+\implies & \forall\ z \in Z, \exists\ f(x) \in Y : z = g(f(x)) & \text{(by Definition \ref{3.3.1})} \\
+\implies & g \text{ is surjective}. & \text{(by Definition \ref{3.3.17})}
+\end{align*}
+And we don't need \(f\) to be surjective.
 \end{proof}
 
 \begin{exercise}\label{ex 3.3.6}
@@ -255,19 +320,22 @@ Conclude that \(f^{-1}\) is also invertible, and has \(f\) as its inverse (thus 
 \end{exercise}
 
 \begin{proof}
-\(\forall\ x \in X\), \(\exists!\ y \in Y\) such that \(f(x) = y\) and \(x = f^{-1}(y)\).
-So \(\forall\ x \in X\), \(f^{-1}(f(x)) = f^{-1}(y) = x\), and \(\forall\ y \in Y\), \(f(f^{-1}(y)) = f(x) = y\).
+We first show that \(f\) is bijective implies \(f^{-1}(f(x)) = x \land f(f^{-1}(y)) = y\).
+Suppose \(X, Y\) are sets and \(f : X \to Y\) is a function such that \(f\) is bijective.
+Then we have \(f^{-1} : Y \to X\) as inverse of \(f\) and
+\begin{align*}
+& \forall\ x \in X, \forall\ y \in Y : f(x) = y \iff f^{-1}(y) = x \\
+\implies & f^{-1}(f(x)) = x \land f(f^{-1}(y)) = y. & \text{(by Definition \ref{3.3.1})}
+\end{align*}
 
-Next we prove that \(f^{-1}\) is invertible.
-\(\forall\ y, y' \in Y\), \(f^{-1}(y) = f^{-1}(y')\) implies \(f(f^{-1}(y)) = f(f^{-1}(y'))\) implies \(y = y'\).
-So \(f^{-1}\) is injective by Definition \ref{3.3.14}.
-And \(\forall\ x \in X\), \(f(x) = y \implies f^{-1}(f(x)) = f^{-1}(y) = x\), so \(f^{-1}\) is surjective by Definition \ref{3.3.17}.
-Since \(f^{-1}\) is both injective and surjective, \(f^{-1}\) is bijective by Definition \ref{3.3.20}.
-
-Now we prove that \((f^{-1})^{-1} = f\).
-Let \(g = (f^{-1})^{-1}\).
-Then \(\forall\ x \in X\), \(\exists!\ y \in Y\) such that \(g(x) = y\).
-But \(g(x) = y = f(f^{-1}(y)) = f(x)\), thus \(g = f\) by Definition \ref{3.3.7}.
+Now we show that \(f\) is bijective implies \((f^{-1})^{-1} = f\).
+Suppose \(X, Y\) are sets and \(f : X \to Y\) is a function such that \(f\) is bijective.
+Then we have \(f^{-1} : Y \to X\) as inverse of \(f\) and \((f^{-1})^{-1} : X \to Y\) as inverse of \(f^{-1}\) such that
+\begin{align*}
+& \forall\ x \in X, \forall\ y \in Y : \\
+& (f(x) = y \iff f^{-1}(y) = x \iff (f^{-1})^{-1}(x) = y) \\
+\implies & f = (f^{-1})^{-1}. & \text{(by Definition \ref{3.3.7})}
+\end{align*}
 \end{proof}
 
 \begin{exercise}\label{ex 3.3.7}
@@ -276,27 +344,40 @@ Show that if \(f\) and \(g\) are bijective, then so is \(g \circ f\), and we hav
 \end{exercise}
 
 \begin{proof}
-By the given conditions, \(\forall\ x \in X\), \(\exists!\ y \in Y\) such that \(f(x) = y\).
-Also by the given conditions, \(\forall\ y \in Y\), \(\exists!\ z \in Z\) such that \(g(y) = z\).
-So \(\forall\ x \in X\), \(\exists!\ z \in Z\) such that \(g(f(x)) = z\), and \(g \circ f\) is bijective.
-Because \(g \circ f : X \to Z\), so \((g \circ f)^{-1} : Z \to X\).
-Also \(f^{-1} : Y \to X\) and \(g^{-1} : Z \to Y\), so \(f^{-1} \circ g^{-1} : Z \to X\).
-Since both functions have same domain and range, all we left is to show that Definition \ref{3.3.7} holds.
-\(\forall\ z \in Z\), \(\exists!\ x \in X\) such that \((g \circ f)^{-1}(z) = x\).
-But \(x = f^{-1}(f(x)) = f^{-1}(g^{-1}(g(f(x)))) = f^{-1}(g^{-1}(z))\).
-Thus \((g \circ f)^{-1} = f^{-1} \circ g^{-1}\).
+We first show that \(f, g\) are bijective implies \(g \circ f\) is bijective.
+Suppose \(X, Y, Z\) are sets and \(f : X \to Y, g : Y \to Z\) are functions such that \(f, g\) are bijective.
+Then we have
+\begin{align*}
+& f, g \text{ are bijective} \\
+\implies & f, g \text{ are injective} \land f, g \text{ are surjective} & \text{(by Definition \ref{3.3.20})} \\
+\implies & g \circ f \text{ are injective} \land g \circ f \text{ are surjective} & \text{(by Exercise \ref{ex 3.3.2})} \\
+\implies & g \circ f \text{ is bijective}. & \text{(by Definition \ref{3.3.20})}
+\end{align*}
+
+Now we show that \(f, g\) are bijective implies \((g \circ f)^{-1} = f^{-1} \circ g^{-1}\).
+Suppose \(X, Y, Z\) are sets and \(f : X \to Y, g : Y \to Z\) are functions such that \(f, g\) are bijective.
+From proof above we know that \(g \circ f\) is also bijective.
+Then we have
+\begin{align*}
+& \forall\ x \in X, \forall\ y \in Y, \forall\ z \in Z : \\
+& (y = f(x) \iff x = f^{-1}(y) \\
+& \land (z = g(y) \iff y = g^{-1}(z) \\
+& \land (z = (g \circ f)(x) \iff x = (g \circ f)^{-1}(z)) \\
+\implies & f^{-1}(g^{-1}(z)) = (g \circ f)^{-1}(z) & \text{(by Definition \ref{3.3.1})} \\
+\implies & (f^{-1} \circ g^{-1})(z) = (g \circ f)^{-1}(z) & \text{(by Definition \ref{3.3.10})} \\
+\implies & f^{-1} \circ g^{-1} = (g \circ f)^{-1}. & \text{(by Definition \ref{3.3.7})}
+\end{align*}
 \end{proof}
 
 \begin{exercise}\label{ex 3.3.8}
 If \(X\) is a subset of \(Y\), let \(\iota_{X \to Y} : X \to Y\) be the \emph{inclusive map from \(X\) to \(Y\)}, defined by mapping \(x \mapsto x\) for all \(x \in X\), i.e., \(\iota_{X \to Y}(x) \coloneqq x\) for all \(x \in X\).
 The map \(\iota_{X \to X}\) is in particular called the \emph{identity map} on \(X\).
-
-    \begin{enumerate}
-        \item Show that if \(X \subseteq Y \subseteq Z\) then \(\iota_{Y \to Z} \circ \iota_{X \to Y} = \iota_{X \to Z}\).
-        \item Show that if \(f : A \to B\) is any function, then \(f = f \circ \iota_{A \to A} = \iota_{B \to B} \circ f\).
-        \item Show that if \(f : A \to B\) is a bijective function, then \(f \circ f^{-1} = \iota_{B \to B}\) and \(f^{-1} \circ f = \iota_{A \to A}\).
-        \item Show that if \(X\) and \(Y\) are disjoint sets, and \(f : X \to Z\) and \(g : Y \to Z\) are functions, then there is a unique function \(h : X \cup Y \to Z\) such that \(h \circ \iota_{X \to X \cup Y} = f\) and \(h \circ \iota_{Y \to X \cup Y} = g\).
-    \end{enumerate}
+\begin{enumerate}
+    \item Show that if \(X \subseteq Y \subseteq Z\) then \(\iota_{Y \to Z} \circ \iota_{X \to Y} = \iota_{X \to Z}\).
+    \item Show that if \(f : A \to B\) is any function, then \(f = f \circ \iota_{A \to A} = \iota_{B \to B} \circ f\).
+    \item Show that if \(f : A \to B\) is a bijective function, then \(f \circ f^{-1} = \iota_{B \to B}\) and \(f^{-1} \circ f = \iota_{A \to A}\).
+    \item Show that if \(X\) and \(Y\) are disjoint sets, and \(f : X \to Z\) and \(g : Y \to Z\) are functions, then there is a unique function \(h : X \cup Y \to Z\) such that \(h \circ \iota_{X \to X \cup Y} = f\) and \(h \circ \iota_{Y \to X \cup Y} = g\).
+\end{enumerate}
 \end{exercise}
 
 \begin{proof}{(a)}
