@@ -50,12 +50,37 @@ is a set.
 \end{lemma}
 
 \begin{proof}
+% We first show that \(\exists\ S : \forall\ Y \in S \implies Y \subseteq X\).
+Suppose that \(X\) is a set.
 By Axiom \ref{3.10}, there exists a set \(\{0, 1\}^X\) which consists of all the functions from \(X\) to \(\{0, 1\}\).
-Also by Axiom \ref{3.6}, we can replace each \(f \in \{0, 1\}^X\) with \(f^{-1}(\{1\})\), i.e., there exists a set \(S = \{f^{-1}(\{1\}) : f \in \{0, 1\}^X\}\).
-Now we only have to show that \(\forall\ f^{-1}(\{1\}) \in S\), \(f^{-1}(\{1\}) \subseteq X\).
-By Definition \ref{3.4.4}, \(f^{-1}(\{1\}) = \{x \in X : f(x) \in \{1\}\}\).
-Thus \(f^{-1}(\{1\}) \subseteq X\) is true because some element in \(X\) can be map to \(0\).
-And we conclude that \(S = \{Y : Y \text{ is a subset of } X\}\) exists.
+\[
+    f \in \{0, 1\}^X \iff (f \text{ is a function with domain } X \text{ and range } \{0, 1\}).
+\]
+By Axiom \ref{3.6}, we can replace each \(f \in \{0, 1\}^X\) with \(f^{-1}(\{1\})\), i.e., there exists a set
+\[
+    S = \{f^{-1}(\{1\}) : f \in \{0, 1\}^X\}.
+\]
+By Definition \ref{3.4.4} we have
+\begin{align*}
+& \forall\ Y \in S \\
+\implies & \exists\ f \in \{0, 1\}^X : Y = f^{-1}(\{1\}) = \{x \in X : f(x) \in \{1\}\} \\
+\implies & Y \subseteq X.
+\end{align*}
+Now \(\forall\ Y' \subseteq X\) we can define the following sets:
+\begin{align*}
+A_0 &= \{0 : x \in X \setminus Y'\}. & \text{(by Definition \ref{3.1.27} and Axiom \ref{3.6})} \\
+A_1 &= \{1 : x \in Y'\}. & \text{(by Axiom \ref{3.6})}
+\end{align*}
+So we have
+\begin{align*}
+& \forall\ Y' \subseteq X \\
+\implies & \exists\ A_0, A_1 \\
+\implies & \exists\ f : X \to A_0 \cup A_1 & \text{(by Axiom \ref{3.6})} \\
+\implies & f \in \{0, 1\}^X & \text{(by Axiom \ref{3.10})} \\
+\implies & f^{-1}(A_1) = Y' & \text{(by Definition \ref{3.4.4})} \\
+\implies & Y' \in S.
+\end{align*}
+Since \(\forall\ Y : Y \in S \iff Y \subseteq X\), we have show that \(S = \{Y : Y \subseteq X\}\) exists.
 \end{proof}
 
 \begin{remark}\label{3.4.10}
