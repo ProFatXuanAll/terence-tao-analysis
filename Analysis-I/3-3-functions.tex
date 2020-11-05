@@ -381,41 +381,82 @@ The map \(\iota_{X \to X}\) is in particular called the \emph{identity map} on \
 \end{exercise}
 
 \begin{proof}{(a)}
-\(\forall\ x \in X\), \(x \in Y\) and \(x \in Z\).
-So \((\iota_{Y \to Z} \circ \iota_{X \to Y})(x) = \iota_{Y \to Z}(\iota_{X \to Y}(x)) = \iota_{Y \to Z}(x) = x\) and \(\iota_{X \to Z}(x) = x\).
-Thus \(\iota_{Y \to Z} \circ \iota_{X \to Y} = \iota_{X \to Z}\).
+Suppose that \(X, Y, Z\) are sets such that \(X \subseteq Y \subseteq Z\).
+Let \(\iota_{X \to Y} : X \to Y, \iota_{Y \to Z} : Y \to Z, \iota_{X \to Z} : X \to Z\) be functions such that \(\forall\ x \in X : \iota_{X \to Y}(x) = \iota_{X \to Z}(x) = x\) and \(\forall\ y \in Y : \iota_{Y \to Z}(y) = y\).
+Then we have
+\begin{align*}
+\forall\ x \in X : (\iota_{Y \to Z} \circ \iota_{X \to Y})(x) &= \iota_{Y \to Z}(\iota_{X \to Y}(x)) & \text{(by Definition \ref{3.3.10})} \\
+&= \iota_{Y \to Z}(x) \\
+&= x \\
+&= \iota_{X \to Z}(x).
+\end{align*}
+Thus by Definition \ref{3.3.7} we have \(\iota_{Y \to Z} \circ \iota_{X \to Y} = \iota_{X \to Z}\).
 \end{proof}
 
 \begin{proof}{(b)}
-\(\forall\ a \in A\), \(\exists\ b \in B\) such that \(f(a) = b\).
-So \((f \circ \iota_{A \to A})(a) = f(\iota_{A \to A}(a)) = f(a) = b\).
-And \((\iota_{B \to B} \circ f)(a) = \iota_{B \to B}(f(a)) = \iota_{B \to B}(b) = b\).
-Thus \(f = f \circ \iota_{A \to A} = \iota_{B \to B} \circ f\).
+Suppose that \(A, B\) are sets and \(f : A \to B, \iota_{A \to A} : A \to A, \iota_{B \to B} : B \to B\) are functions such that \(\forall\ a \in A : \iota_{A \to A}(a) = a\) and \(\forall\ b \in B : \iota_{B \to B}(b) = b\).
+Then we have
+\begin{align*}
+\forall\ a \in A : f(a) &= f(\iota_{A \to A}(a)) \\
+&= (f \circ \iota_{A \to A})(a) & \text{(by Definition \ref{3.3.10})} \\
+&= \iota_{B \to B}(f(a)) \\
+&= (\iota_{B \to B} \circ f)(a). & \text{(by Definition \ref{3.3.10})}
+\end{align*}
+Thus by Definition \ref{3.3.7} we have \(f = f \circ \iota_{A \to A} = \iota_{B \to B} \circ f\).
 \end{proof}
 
 \begin{proof}{(c)}
-\(\forall\ a \in A\), \(\exists!\ b \in B\) such that \(f(a) = b\).
-But \((f^{-1} \circ f)(a) = f^{-1}(f(a)) = f^{-1}(b) = a\) and \(\iota_{A \to A}(a) = a\).
-Thus \(f^{-1} \circ f = \iota_{A \to A}\).
-
-\(\forall\ b \in B\), \(\exists!\ a \in A\) such that \(f^{-1}(b) = a\).
-But \(f \circ f^{-1}(b) = f(f^{-1}(b)) = f(a) = b\) and \(\iota_{B \to B}(b) = b\).
-Thus \(f \circ f^{-1} = \iota_{B \to B}\).
+Suppose that \(A, B\) are sets and \(f : A \to B, \iota_{A \to A} : A \to A, \iota_{B \to B} : B \to B\) are functions such that \(f\) is bijective, \(\forall\ a \in A : \iota_{A \to A}(a) = a\) and \(\forall\ b \in B : \iota_{B \to B}(b) = b\).
+Then we have
+\begin{align*}
+\forall\ a \in A : a &= f^{-1}(f(a)) & \text{(by Exercise \ref{ex 3.3.6})} \\
+&= (f^{-1} \circ f)(a) & \text{(by Definition \ref{3.3.10})} \\
+&= \iota_{A \to A}(a). \\
+\forall\ b \in B : b &= f(f^{-1}(b)) & \text{(by Exercise \ref{ex 3.3.6})} \\
+&= (f \circ f^{-1})(b) & \text{(by Definition \ref{3.3.10})} \\
+&= \iota_{B \to B}(b).
+\end{align*}
+Thus by Definition \ref{3.3.7} we have \(f^{-1} \circ f = \iota_{A \to A}\) and \(f \circ f^{-1} = \iota_{B \to B}\).
 \end{proof}
 
 \begin{proof}{(d)}
-We first prove such \(h\) exists.
-The domain and range of \(h \circ \iota_{X \to X \cup Y}\) are \(X\) and \(Z\) respectively, which are just the same as \(f\).
-And the domain and range of \(h \circ \iota_{Y \to X \cup Y}\) are \(Y\) and \(Z\) respectively, which are just the same as \(g\).
-So such \(h\) can exist.
+Suppose that \(X, Y, Z\) are sets such that \(X \cap Y = \emptyset\).
+Let \(f : X \to Z, g : Y \to Z\) be functions.
+Let \(\iota_{X \to X \cup Y} : X \to X \cup Y, \iota_{Y \to X \cup Y} : Y \to X \cup Y\) be functions such that \(\forall\ x \in X : \iota_{X \to X \cup Y}(x) = x\) and \(\forall\ y \in Y : \iota_{Y \to X \cup Y}(y) = y\).
+We now define a function \(h : X \cup Y \to Z\) as follow:
+\[
+h(i) = \begin{cases}
+f(i) & \text{ if } i \in X \\
+g(i) & \text{ if } i \in Y
+\end{cases}
+\]
+This function is well-defined since by Axiom \ref{3.4} \(i \in X \cup Y \iff i \in X \lor i \in Y\), and \(X \cap Y = \emptyset \iff \lnot(i \in X \land i \in Y)\).
+Now we have
+\begin{align*}
+\forall\ x \in X : h(x) &= h(\iota_{X \to X \cup Y}(x)) \\
+&= (h \circ \iota_{X \to X \cup Y})(x) & \text{(by Definition \ref{3.3.10})} \\
+&= f(x). \\
+\forall\ y \in Y : h(y) &= h(\iota_{Y \to X \cup Y}(y)) \\
+&= (h \circ \iota_{Y \to X \cup Y})(y) & \text{(by Definition \ref{3.3.10})} \\
+&= g(y).
+\end{align*}
+Thus by Definition \ref{3.3.7} we have \(h \circ \iota_{X \to X \cup Y} = f\) and \(h \circ \iota_{Y \to X \cup Y} = g\).
 
-Now we prove such \(h\) is unique.
-\(\forall\ x \in X\), \((h \circ \iota_{X \to X \cup Y})(x) = h(\iota_{X \to X \cup Y}(x)) = h(x)\).
-But \(h \circ \iota_{X \to X \cup Y} = f\), so \(h(x) = f(x)\).
-Similarly, \(\forall\ y \in Y\), \((h \circ \iota_{Y \to X \cup Y})(y) = h(\iota_{Y \to X \cup Y}(y)) = h(y)\).
-But \(h \circ \iota_{Y \to X \cup Y} = g\), so \(h(y) = g(y)\).
-Suppose for sake of contradiction that \(h\) is not unique.
-Then there exist a \(h': X \cup Y \to Z\) such that \(h \circ \iota_{X \to X \cup Y} = f\) and \(h \circ \iota_{Y \to X \cup Y} = g\).
-But similar argument show that \(h'(x) = f(x)\) and \(h'(y) = g(y)\), \(\forall\ e \in X \cup Y\), \(h(e) = h'(e)\), a contradiction.
-Therefore \(h = h'\), and \(h\) is unique.
+Now suppose there exists another function \(h' : X \cup Y \to Z\) such that \(h' \circ \iota_{X \to X \cup Y} = f\) and \(h' \circ \iota_{Y \to X \cup Y} = g\).
+Then we have
+\begin{align*}
+\forall\ x \in X : f(x) &= (h' \circ \iota_{X \to X \cup Y})(x) \\
+&= h'(\iota_{X \to X \cup Y}(x)) & \text{(by Definition \ref{3.3.10})} \\
+&= h'(x) \\
+&= (h \circ \iota_{X \to X \cup Y})(x) \\
+&= h(\iota_{X \to X \cup Y}(x)) & \text{(by Definition \ref{3.3.10})} \\
+&= h(x). \\
+\forall\ y \in Y : g(y) &= (h' \circ \iota_{Y \to X \cup Y})(y) \\
+&= h'(\iota_{Y \to X \cup Y}(y)) & \text{(by Definition \ref{3.3.10})} \\
+&= h'(y) \\
+&= (h \circ \iota_{Y \to X \cup Y})(y) \\
+&= h(\iota_{Y \to X \cup Y}(y)) & \text{(by Definition \ref{3.3.10})} \\
+&= h(y).
+\end{align*}
+Thus by Definition \ref{3.3.7} we have \(h = h'\), so \(h\) is unique.
 \end{proof}
