@@ -53,6 +53,10 @@ If \((X_i)_{1 \leq i \leq n}\) is an ordered \(n\)-tuple of sets, we define thei
 \]
 \end{definition}
 
+\begin{note}
+Again, Definition \ref{3.5.7} simply postulates that an ordered \(n\)-tuple and a Cartesian product always exist when needed, but using the axioms of set theory one can explicitly construct these objects
+\end{note}
+
 \begin{remark}\label{3.5.8}
 One can show that \(\prod_{1 \leq i \leq n} X_i\) is indeed a set.
 Indeed, from the power set axiom we can consider the set of all functions \(i \mapsto x_i\) from the domain \(\{1 \leq i \leq n\}\) to the range \(\bigcup_{1 \leq i \leq n} X_i\), and then we can restrict using the axiom of specification to restrict to those functions \(i \mapsto x_i\) for which \(x_i \in X_i\) for all \(1 \leq i \leq n\).
@@ -116,62 +120,70 @@ For an additional challenge, show that the alternate definition \((x, y) := \{x,
 \end{exercise}
 
 \begin{proof}
-Let \((x, y) = \{\{x\}, \{x, y\}\}\) and \((x', y') = \{\{x'\}, \{x', y'\}\}\) be two ordered pairs.
-We want to show that \((x, y) = (x', y') \iff ((x = x') \land (y = y'))\).
-We first prove the necessary condition.
-If \((x, y) = (x', y')\), then \(\{\{x\}, \{x, y\}\} = \{\{x'\}, \{x', y'\}\}\) is true, and both \(\{x\} \in \{\{x'\}, \{x', y'\}\}\) and \(\{x, y\} \in \{\{x'\}, \{x', y'\}\}\) are true.
-Now we divide into four cases.
-    \begin{enumerate}
-        \item If \((\{x\} = \{x'\}) \land (\{x, y\} = \{x'\})\), then \((x = x') \land (y = x')\).
-        But \(\{x', y'\} \in \{\{x\}, \{x, y\}\}\), so \((\{x', y'\} = \{x\}) \lor (\{x', y'\} = \{x, y\})\).
-        If \(\{x', y'\} = \{x\}\), then \(y' = x = x' = y\).
-        Otherwise \(\{x', y'\} = \{x, y\}\), then \((y' = x) \lor (y' = y)\), and both can derive \(y' = y\).
-        \item If \((\{x\} = \{x'\}) \land (\{x, y\} = \{x', y'\})\), then \((x = x') \land ((y = x') \lor (y = y'))\).
-        If \(y = x'\), then we need to show that \(y = y'\).
-        But \(\{x', y'\} \in \{\{x\}, \{x, y\}\}\), so \((\{x', y'\} = \{x\}) \lor (\{x', y'\} = \{x, y\})\).
-        If \(\{x', y'\} = \{x\}\), then \(y' = x = x' = y\).
-        Otherwise \(\{x', y'\} = \{x, y\}\), then \((y' = x) \lor (y' = y)\), and both can derive \(y' = y\).
-        \item If \((\{x\} = \{x', y'\}) \land (\{x, y\} = \{x'\})\), then \((x = x') \land (x = y') \land (y = x')\), so \(y = x' = x = y'\).
-        \item If \((\{x\} = \{x', y'\}) \land (\{x, y\} = \{x', y'\})\), then \((x = x') \land (x = y') \land ((y = x') \lor (y = y'))\).
-        If \(y = x'\), then \(y = x' = x = y'\).
-    \end{enumerate}
-So \((x, y) = (x', y') \implies ((x = x') \land (y = y'))\).
-Now we prove the sufficient condition.
-If \((x = x') \land (y = y')\), then \((\{x\} = \{x'\}) \land (\{x, y\} = \{x', y'\})\).
-So \(\{\{x\}, \{x, y\}\} = \{\{x'\}, \{x', y'\}\}\) is true, or equivalently \((x, y) = (x', y')\).
-Since we have proved both the necessary and the sufficient conditions, we conclude that the given definition of the ordered pair satisfied the constrain \((x, y) = (x', y') \iff ((x = x') \land (y = y'))\).
+Suppose that \(x, x', y, y'\) are objects.
+By definition we have
+\begin{align*}
+(x, y) &= \{\{x\}, \{x, y\}\} \\
+(x', y') &= \{\{x'\}, \{x', y'\}\}.
+\end{align*}
+Then we have
+\begin{align*}
+& \{\{x\}, \{x, y\}\} = \{\{x'\}, \{x', y'\}\} \\
+\iff & \{x\} \in \{\{x'\}, \{x', y'\}\} \\
+& \land \{x, y\} \in \{\{x'\}, \{x', y'\}\} \\
+& \land \{x'\} \in \{\{x\}, \{x, y\}\} \\
+& \land \{x', y'\} \in \{\{x\}, \{x, y\}\} & \text{(by Definition \ref{3.1.4})} \\
+\iff & \bigg(\{x\} = \{x'\} \lor \{x\} = \{x', y'\}\bigg) \\
+& \land \bigg(\{x, y\} = \{x'\} \lor \{x, y\} = \{x', y'\}\bigg) \\
+& \land \bigg(\{x'\} = \{x\} \lor \{x'\} = \{x, y\}\bigg) \\
+& \land \bigg(\{x', y'\} = \{x\} \lor \{x', y'\} = \{x, y\}\bigg) & \text{(by Axiom \ref{3.3})} \\
+\iff & \Bigg(\bigg(\{x\} = \{x'\}\bigg) \\
+& \lor \bigg(\{x\} = \{x', y'\} \land \{x'\} = \{x, y\}\bigg)\Bigg) \\
+& \land \Bigg(\bigg(\{x, y\} = \{x', y'\}\bigg) \\
+& \lor \bigg(\{x\} = \{x', y'\} \land \{x'\} = \{x, y\}\bigg)\Bigg) \\
+\iff & \bigg(\{x\} = \{x'\} \land \{x, y\} = \{x', y'\}\bigg) \\
+& \lor \bigg(\{x\} = \{x', y'\} \land \{x'\} = \{x, y\}\bigg) \\
+\iff & x = x' \land y = y'. & \text{(by Axiom \ref{3.3})}
+\end{align*}
+Thus this definition satisfied Definition \ref{3.5.1}.
 
-Next we prove that \(X \times Y\) is a set with the given ordered pair definition.
-By Axiom \ref{3.3}, \(\{x\}\) is a set for all \(x \in X\), and \(\{x, y\}\) is also a set for all \(x \in X\) and for all \(y \in Y\).
-Again by Axiom \ref{3.3}, \(\{\{x\}, \{x, y\}\}\) is a set for all \(x \in X\) and for all \(y \in Y\).
-By Axiom \ref{3.6}, \(\{\{\{x\}, \{x, y\}\} : x \in X \land y \in Y\}\) is a set.
-So \(X \times Y = \{(x, y) : x \in X \land y \in Y\}\) is a set with the given ordered pair definition.
-\end{proof}
+Now suppose that \(X, Y\) are sets.
+By Axiom \ref{3.3}, \(\forall\ x \in X\), there exists a set \(\{x\}\), and so does \(\{x, y\} \ \forall\ y \in Y\).
+Again by Axiom \ref{3.3}, there exists a set \(\{\{x\}, \{x, y\}\}\).
+Now we fix \(y\) and use Axiom \ref{3.6} to replace each \(x\) with \(\{\{x\}, \{x, y\}\}\),
+\[
+    X_y = \{\{\{x\}, \{x, y\}\} : \forall\ x \in X\}.
+\]
+Now we use Axiom \ref{3.11} to get \(X \times Y\),
+\[
+    X \times Y = \bigcup_{y \in Y} X_y.
+\]
+Thus \(X \times Y\) is a set.
 
-\begin{proof}{(additional challenge)}
-Let \((x, y) = \{x, \{x, y\}\}\) and \((x', y') = \{x', \{x', y'\}\}\) be two ordered pairs.
-We want to show that \((x, y) = (x', y') \iff ((x = x') \land (y = y'))\).
-We first prove the necessary condition.
-\((x, y) = (x', y') \iff \{x, \{x, y\}\} = \{x', \{x', y'\}\}\), so both \(x \in \{x', \{x', y'\}\}\) and \(x' \in \{x, \{x, y\}\}\) are true.
-Suppose for sake of contradition that \(x \neq x'\).
-Then \(x = \{x', y'\}\) is true, and \(x' \in x\) is true.
-But \(x' \in \{x, \{x, y\}\} \implies x \in x'\), we get both \((x \in x') \land (x' \in x)\), contradict to Axiom \ref{3.9} and Exercise \ref{ex 3.2.2}.
-So \(x = x'\) must be true.
-Now we need to show that \(y = y'\).
-\(\{x, y\} \in \{x', \{x', y'\}\} \implies \{x, y\} = \{x', y'\}\) (because \(\{x, y\} = x' \implies x \in x' = x\), contradict to Axiom \ref{3.9}) and Exercise \ref{ex 3.2.2}.
-So \(((y = x') \lor (y = y')) \land ((y' = x) \lor (y' = y))\) is true, and \(((y = x') \land (y' = x)) \lor (y = y')\) is true.
-If \((y = x') \land (y' = x)\), then \(y = x' = x = y'\).
-Thus \((x, y) = (x', y') \implies ((x = x') \land (y = y'))\).
-Now we prove the sufficient condition.
-If \((x = x') \land (y = y')\), then \((x = x') \land (\{x, y\} = \{x', y'\})\).
-So \(\{x, \{x, y\}\} = \{x', \{x', y'\}\}\) is true, or equivalently \((x, y) = (x', y')\).
-Since we have proved both the necessary and the sufficient conditions, we conclude that the given definition of the ordered pair satisfied the constrain \((x, y) = (x', y') \iff ((x = x') \land (y = y'))\).
-
-Next we prove that \(X \times Y\) is a set with the given ordered pair definition.
-By Axiom \ref{3.3}, \(\{x, y\}\) is a set for all \(x \in X\) and for all \(y \in Y\).
-Again by Axiom \ref{3.3}, \(\{x, \{x, y\}\}\) is a set for all \(x \in X\) and for all \(y \in Y\).
-By Axiom \ref{3.6}, \(\{\{x, \{x, y\}\} : x \in X \land y \in Y\}\) is a set.
-So \(X \times Y = \{(x, y) : x \in X \land y \in Y\}\) is a set with the given ordered pair definition.
+For additional challenge, suppose that \(x, x', y, y'\) are objects.
+By definition we have
+\begin{align*}
+(x, y) &= \{x, \{x, y\}\} \\
+(x', y') &= \{x', \{x', y'\}\}.
+\end{align*}
+Then we have
+\begin{align*}
+& \{x, \{x, y\}\} = \{x', \{x', y'\}\} \\
+\iff & x \in \{x', \{x', y'\}\} \\
+& \land \{x, y\} \in \{x', \{x', y'\}\} \\
+& \land x' \in \{x, \{x, y\}\} \\
+& \land \{x', y'\} \in \{x, \{x, y\}\} & \text{(by Definition \ref{3.1.4})} \\
+\iff & \bigg(x = x' \lor x = \{x', y'\}\bigg) \\
+& \land \bigg(\{x, y\} = x' \lor \{x, y\} = \{x', y'\}\bigg) \\
+& \land \bigg(x' = x \lor x' = \{x, y\}\bigg) \\
+& \land \bigg(\{x', y'\} = x \lor \{x', y'\} = \{x, y\}\bigg) & \text{(by Axiom \ref{3.3})} \\
+\iff & \bigg(x = x' \land \{x, y\} = \{x', y'\}\bigg) \\
+& \lor \bigg(x = \{x', y'\} \land x' = \{x, y\}\bigg) \\
+\iff & (x = x' \land y = y') \lor (x \in x' \land x' \in x) & \text{(by Axiom \ref{3.3})} \\
+\iff & (x = x' \land y = y') \lor \bot & \text{(by Exercise \ref{ex 3.2.2})} \\
+\iff & x = x' \land y = y'.
+\end{align*}
+Thus this definition satisfied Definition \ref{3.5.1}.
 \end{proof}
 
 \begin{exercise}\label{ex 3.5.2}
