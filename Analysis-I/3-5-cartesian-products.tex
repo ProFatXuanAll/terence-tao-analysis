@@ -194,22 +194,22 @@ Also, show that if \((X_i)_{1 \leq i \leq n}\) are an ordered \(n\)-tuple of set
 \end{exercise}
 
 \begin{proof}
-We first prove \((x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n} \iff x_i = y_i \ \forall\ 1 \leq i \leq n\).
-We first prove the necessary condition.
-By the given definition, \(x = (x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n} = y\).
-Since \(x = y\), \(\forall\ i \in \{i \in \mathbf{N}: 1 \leq i \leq n\}\), \(x(i) = y(i)\), but by the definition \(x_i = x(i) = y(i) = y_i\), so \(x_i = y_i \ \forall\ i \in \{i \in \mathbf{N} : 1 \leq i \leq n\}\).
-Now we prove the sufficient condition.
-\(\forall\ i \in \{i \in \mathbf{N} : 1 \leq i \leq n\}\), \(x_i = y_i\).
-But by the definition \(x(i) = x_i = y_i = y(i)\), so \(x = y\) is true.
-Again by definition, \(x = y\) means \((x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n}\).
-Since we have proved both the necessary and sufficient conditions, we conclude that \((x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n} \iff x_i = y_i \ \forall\ 1 \leq i \leq n\).
+Suppose that \(X\) is a set.
+Let \(I = \{i \in \mathbf{N} : 1 \leq i \leq n\}\) be a set.
+Let \(x : I \to X, y : I \to X\) be two surjective functions.
+Then we have
+\begin{align*}
+& \forall\ 1 \leq i \leq n : x_i = y_i \\
+\iff & x(i) = y(i) \\
+\iff & x = y & \text{(by Definition \ref{3.3.7})} \\
+\iff & (x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n}.
+\end{align*}
 
-If \((X_i)_{1 \leq i \leq n}\) are an ordered \(n\)-tuple of sets, by Axiom \ref{3.10}, we can consider a set of all functions \(i \mapsto x_i\) from the domain \(\{1 \leq i \leq n\}\) to the range \(\bigcup_{1 \leq i \leq n} X_i\).
-We denote such set as \(F\).
-Then by Exercise \ref{ex 3.4.7}, there exist a set of all partial function \(P = \{f : A \to B \mid (A \subseteq \{1 \leq i \leq n\}) \land (B \subseteq \bigcup_{1 \leq i \leq n} X_i\})\).
-Then by Axiom \ref{3.5}, there exist a set \(\{f \in P \mid (f = i \mapsto x_i) \land (x_i \in X_i) \ \forall\ 1 \leq i \leq n\}\).
-Using the given definition, we can rewrite such set as \(\{(x_i)_{1 \leq i \leq n} : x_i \in X_i \text{ for all } 1 \leq i \leq n\}\), which is the same definition as \(\prod_{1 \leq i \leq n} X_i\).
-So the Cartesian product is itself a set.
+Now we show that Definition \ref{3.5.7} is indeed a set.
+By Axiom \ref{3.11}, we have a set \(\bigcup_{1 \leq i \leq n} X_i\).
+By Exercise \ref{ex 3.4.7}, there exists a set of all partial function with domain \(I\) and range \(\bigcup_{i \in I} X_i\), and we denote this set \(A\).
+By Axiom \ref{3.5}, there exists a set \(\prod_{1 \leq i \leq n} X_i = \{x \in A : \forall\ i \in I, x_i \in X_i\}\).
+Since we define \(x = (x_i)_{1 \leq i \leq n}\), we have shown that Definition \ref{3.5.7} is indeed a set.
 \end{proof}
 
 \begin{exercise}\label{ex 3.5.3}
@@ -217,19 +217,67 @@ Show that the definitions of equality for ordered pair and ordered \(n\)-tuple o
 \end{exercise}
 
 \begin{proof}
-We first prove the reflexivity.
-Let \((x_i)_{1 \leq i \leq n}\) be a \(n\)-tuple.
-Then by Definition \ref{3.5.7}, \(x_i = x_i\) for all object \(x_i\), \(1 \leq i \leq n\), so \((x_i)_{1 \leq i \leq n} = (x_i)_{1 \leq i \leq n}\).
+We first show that Definition \ref{3.5.1} is reflexive.
+Suppose that \((x, y)\) is an ordered pair.
+Then we have
+\begin{align*}
+& x = x \land y = y \\
+\iff & (x, y) = (x, y). & \text{(by Definition \ref{3.5.1})}
+\end{align*}
+Thus Definition \ref{3.5.1} is reflexive.
 
-Next we prove the symmetry.
-Let \((x_i)_{1 \leq i \leq n}\) and \((y_i)_{1 \leq i \leq n}\) be two \(n\)-tuples.
-If \((x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n}\), then by Definition \ref{3.5.7}, \(x_i = y_i\), \(1 \leq i \leq n\), so \(y_i = x_i\), \(1 \leq i \leq n\).
-Thus \((y_i)_{1 \leq i \leq n} = (x_i)_{1 \leq i \leq n}\).
+Next we show that Definition \ref{3.5.1} is symmetry.
+Suppose that \((x, y), (x', y')\) are two ordered pairs.
+Then we have
+\begin{align*}
+& (x, y) = (x', y') \\
+\iff & x = x' \land y = y' & \text{(by Definition \ref{3.5.1})} \\
+\iff & x' = x \land y' = y \\
+\iff & (x', y') = (x, y). & \text{(by Definition \ref{3.5.1})}
+\end{align*}
+Thus Definition \ref{3.5.1} is symmetry.
 
-Finally we prove the transitivity.
-Let \((x_i)_{1 \leq i \leq n}\), \((y_i)_{1 \leq i \leq n}\) and \((z_i)_{1 \leq i \leq n}\) be three \(n\)-tuples.
-If \((x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n}\) and \((y_i)_{1 \leq i \leq n} = (z_i)_{1 \leq i \leq n}\), then by Definition \ref{3.5.7}, \(x_i = y_i\) and \(y_i = z_i\), \(1 \leq i \leq n\), so \(x_i = z_i\), \(1 \leq i \leq n\).
-Thus \((x_i)_{1 \leq i \leq n} = (z_i)_{1 \leq i \leq n}\).
+Next we show that Definition \ref{3.5.1} is transitive.
+Suppose that \((x, y), (x', y'), (x'', y'')\) are three ordered pairs.
+Then we have
+\begin{align*}
+& (x, y) = (x', y') \land (x', y') = (x'', y'') \\
+\implies & x = x' \land y = y' \land x' = x'' \land y' = y'' & \text{(by Definition \ref{3.5.1})} \\
+\implies & x = x'' \land y = y'' \\
+\implies & (x, y) = (x'', y''). & \text{(by Definition \ref{3.5.1})}
+\end{align*}
+Thus Definition \ref{3.5.1} is transitive.
+
+Next we show that Definition \ref{3.5.7} is reflexive.
+Suppose that \(i, n \in \mathbf{N}\) and \((x_i)_{1 \leq i \leq n}\) is an ordered \(n\)-tuple.
+Then we have
+\begin{align*}
+& \forall\ 1 \leq i \leq n : x_i = x_i \\
+\iff & (x_i)_{1 \leq i \leq n} = (x_i)_{1 \leq i \leq n}. & \text{(by Definition \ref{3.5.7})}
+\end{align*}
+Thus Definition \ref{3.5.7} is reflexive.
+
+Next we show that Definition \ref{3.5.7} is symmetry.
+Suppose that \(i, n \in \mathbf{N}\) and \((x_i)_{1 \leq i \leq n}, (y_i)_{1 \leq i \leq n}\) are two ordered \(n\)-tuples.
+Then we have
+\begin{align*}
+& (x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n} \\
+\iff & \forall\ 1 \leq i \leq n : x_i = y_i & \text{(by Definition \ref{3.5.7})} \\
+\iff & \forall\ 1 \leq i \leq n : y_i = x_i \\
+\iff & (y_i)_{1 \leq i \leq n} = (x_i)_{1 \leq i \leq n}. & \text{(by Definition \ref{3.5.7})}
+\end{align*}
+Thus Definition \ref{3.5.7} is symmetry.
+
+Finally we show that Definition \ref{3.5.7} is transitive.
+Suppose that \(i, n \in \mathbf{N}\) and \((x_i)_{1 \leq i \leq n}, (y_i)_{1 \leq i \leq n}, (z_i)_{1 \leq i \leq n}\) are three ordered \(n\)-tuples.
+Then we have
+\begin{align*}
+& (x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n} \land (y_i)_{1 \leq i \leq n} = (z_i)_{1 \leq i \leq n} \\
+\implies & \forall\ 1 \leq i \leq n : x_i = y_i \land y_i = z_i & \text{(by Definition \ref{3.5.7})} \\
+\implies & \forall\ 1 \leq i \leq n : x_i = z_i \\
+\implies & (x_i)_{1 \leq i \leq n} = (z_i)_{1 \leq i \leq n}. & \text{(by Definition \ref{3.5.7})}
+\end{align*}
+Thus Definition \ref{3.5.7} is transitive.
 \end{proof}
 
 \begin{exercise}\label{ex 3.5.4}
@@ -238,36 +286,44 @@ Show that \(A \times (B \cup C) = (A \times B) \cup (A \times C)\), that \(A \ti
 \end{exercise}
 
 \begin{proof}
-We first prove the union part.
-\(\forall\ (a, d) \in A \times (B \cup C)\), \((a \in A) \land (d \in B \cup C)\).
-If \(d \in B\), then \((a, d) \in A \times B\).
-Similarly if \(d \in C\), then \((a, d) \in A \times C\).
-Thus \((a, d) \in (A \times B) \cup (A \times C)\).
-\(\forall\ (a', d') \in (A \times B) \cup (A \times C)\), \(((a', d') \in A \times B) \lor ((a', d') \in A \times C)\).
-If \((a', d') \in A \times B\), then \((a' \in A) \land (d' \in B)\), so \(d' \in B \cup C\) is true.
-Similarly if \((a', d') \in A \times C\), then \((a' \in A) \land (d' \in C)\), so \(d' \in B \cup C\) is true.
-Thus \((a', d') \in A \times (B \cup C)\).
-We conclude that \(A \times (B \cup C) = (A \times B) \cup (A \times C)\).
+We first show that \(A \times (B \cup C) = (A \times B) \cup (A \times C)\).
+Suppose that \(A, B, C\) are sets.
+Then we have
+\begin{align*}
+& \forall\ (x, y) \in A \times (B \cup C) \\
+\iff & x \in A \land y \in B \cup C & \text{(by Definition \ref{3.5.4})} \\
+\iff & x \in A \land (y \in B \lor y \in C) & \text{(by Axiom \ref{3.4})} \\
+\iff & (x \in A \land y \in B) \lor (x \in A \land y \in C) \\
+\iff & (x, y) \in A \times B \lor (x, y) \in A \times C & \text{(by Definition \ref{3.5.4})} \\
+\iff & (x, y) \in (A \times B) \cup (A \times C). & \text{(by Axiom \ref{3.4})}
+\end{align*}
+Thus by Definition \ref{3.1.4} we have \(A \times (B \cup C) = (A \times B) \cup (A \times C)\).
 
-Next we prove the intersection part.
-\(\forall\ (a, d) \in A \times (B \cap C)\), \((a \in A) \land (d \in B \cap C)\).
-Because \((a \in A) \land (d \in B)\), so \((a, d) \in A \times B\).
-Similarly because \((a \in A) \land (d \in C)\), so \((a, d) \in A \times C\).
-Thus \((a, d) \in (A \times B) \cap (A \times C)\).
-\(\forall\ (a', d') \in (A \times B) \cap (A \times C)\), \(((a', d') \in A \times B) \land ((a', d') \in A \times C)\).
-Because \((a', d') \in A \times B\), so \((a' \in A) \land (d' \in B)\).
-Similarly because \((a', d') \in A \times C\), so \((a' \in A) \land (d' \in C)\).
-Thus \(d' \in B \cap C\), and \((a', d') \in A \times (B \cap C)\).
+Next we show that \(A \times (B \cap C) = (A \times B) \cap (A \times C)\).
+Suppose that \(A, B, C\) are sets.
+Then we have
+\begin{align*}
+& \forall\ (x, y) \in A \times (B \cap C) \\
+\iff & x \in A \land y \in B \cap C & \text{(by Definition \ref{3.5.4})} \\
+\iff & x \in A \land (y \in B \land y \in C) & \text{(by Definition \ref{3.1.23})} \\
+\iff & (x \in A \land y \in B) \land (x \in A \land y \in C) \\
+\iff & (x, y) \in A \times B \land (x, y) \in A \times C & \text{(by Definition \ref{3.5.4})} \\
+\iff & (x, y) \in (A \times B) \cap (A \times C). & \text{(by Definition \ref{3.1.23})}
+\end{align*}
+Thus by Definition \ref{3.1.4} we have \(A \times (B \cap C) = (A \times B) \cap (A \times C)\).
 
-Now we prove the difference part.
-\(\forall\ (a, d) \in A \times (B \setminus C)\), \((a \in A) \land (d \in B \setminus C)\).
-Since \(d \in B \setminus C\), \((d \in B) \land (d \notin C)\).
-So \((a \in A) \land (d \in B) \implies (a, d) \in A \times B\), and \((a \in A) \land (d \notin C) \implies (a, d) \notin A \times C\).
-Thus \((a, d) \in (A \times B) \setminus (A \times C)\).
-\(\forall\ (a', d') \in (A \times B) \setminus (A \times C)\), \(((a', d') \in A \times B) \land ((a', d') \notin A \times C)\).
-Because \((a', d') \in A \times B\), so \((a' \in A) \land (d' \in B)\).
-Also \(((a', d') \notin A \times C) \land (a' \in A)\), so \(d' \notin C\).
-Thus \(d' \in B \setminus C\), and \((a', d') \in A \times (B \setminus C)\).
+Finally we show that \(A \times (B \setminus C) = (A \times B) \setminus (A \times C)\).
+Suppose that \(A, B, C\) are sets.
+Then we have
+\begin{align*}
+& \forall\ (x, y) \in A \times (B \setminus C) \\
+\iff & x \in A \land y \in B \setminus C & \text{(by Definition \ref{3.5.4})} \\
+\iff & x \in A \land (y \in B \land y \notin C) & \text{(by Definition \ref{3.1.27})} \\
+\iff & (x \in A \land y \in B) \land (x \in A \land y \notin C) \\
+\iff & (x, y) \in A \times B \land (x, y) \notin A \times C & \text{(by Definition \ref{3.5.4})} \\
+\iff & (x, y) \in (A \times B) \setminus (A \times C). & \text{(by Definition \ref{3.1.27})}
+\end{align*}
+Thus by Definition \ref{3.1.4} we have \(A \times (B \setminus C) = (A \times B) \setminus (A \times C)\).
 \end{proof}
 
 \begin{exercise}\label{ex 3.5.5}
@@ -278,30 +334,40 @@ Is it true that \((A \times B) \setminus (C \times D) = (A \setminus C) \times (
 \end{exercise}
 
 \begin{proof}
-We first prove the intersection part.
-\(\forall\ (x, y) \in (A \times B) \cap (C \times D)\), \(((x, y) \in A \times B) \land ((x, y) \in C \times D)\).
-So \((x \in A) \land (y \in B) \land (x \in C) \land (y \in D)\), and \((x \in A \cap C) \land (y \in B \cap D)\).
-Thus \((x, y) \in (A \cap C) \times (B \cap D)\).
-\(\forall\ (x', y') \in (A \cap C) \times (B \cap D)\), \((x' \in A \cap C) \land (y' \in B \cap D)\).
-So \((x' \in A \land y' \in B) \land (x' \in C \land y' \in D)\), and \(((x', y') \in A \times B) \land ((x', y') \in C \times D)\).
-Thus \((x', y') \in (A \times B) \cap (C \times D)\).
-We conclude that \((A \times B) \cap (C \times D) = (A \cap C) \times (B \cap D)\).
+We first show that \((A \times B) \cap (C \times D) = (A \cap C) \times (B \cap D)\).
+Suppose that \(A, B, C, D\) are sets.
+Then we have
+\begin{align*}
+& \forall\ (x, y) \in (A \times B) \cap (C \times D) \\
+\iff & (x, y) \in (A \times B) \land (x, y) \in (C \times D) & \text{(by Definition \ref{3.1.23})} \\
+\iff & (x \in A \land y \in B) \land (x \in C \land y \in D) & \text{(by Definition \ref{3.5.4})} \\
+\iff & (x \in A \land x \in C) \land (y \in B \land y \in D) \\
+\iff & (x \in A \cap C) \land (y \in B \cap D) & \text{(by Definition \ref{3.1.23})} \\
+\iff & (x, y) \in (A \cap C) \times (B \cap D). & \text{(by Definition \ref{3.5.4})}
+\end{align*}
+Thus by Definition \ref{3.1.4} we have \((A \times B) \cap (C \times D) = (A \cap C) \times (B \cap D)\).
 
-Next we prove the union part.
-Let \((a, d) \in A \times D\) and \((a \notin C) \land (d \notin B)\).
-Because \(a \in A\), so \(a \in A \cup C\).
-And because \(d \in D\), so \(d \in B \cup D\).
-So \((a, d) \in (A \cup C) \times (B \cup D)\).
-But because \(a \notin C\), so \((a, d) \notin C \times D\).
-Also because \(d \notin B\), so \((a, d) \notin A \times B\).
-Thus \((a, d) \notin (A \times B) \cup (C \times D)\).
-We conclude that \((A \times B) \cup (C \times D) \neq (A \cup C) \times (B \cup D)\).
+We do not have \((A \times B) \cup (C \times D) = (A \cup C) \times (B \cup D)\).
+Let \(A = \{1\}, B = \{2\}, C = \{3\}, D = \{4\}\).
+Then we have
+\begin{align*}
+(A \times B) \cup (C \times D) &= \{(1, 2)\} \cup \{(3, 4)\} & \text{(by Definition \ref{3.5.4})} \\
+&= \{(1, 2), (3, 4)\}. & \text{(by Axiom \ref{3.4})} \\
+(A \cup C) \times (B \cup D) &= \{1, 3\} \times \{2, 4\} & \text{(by Axiom \ref{3.4})} \\
+&= \{(1, 2), (1, 4), (3, 2), (3, 4)\}. & \text{(by Definition \ref{3.5.4})}
+\end{align*}
+Clearly \((A \times B) \cup (C \times D) \neq (A \cup C) \times (B \cup D)\) by Definition \ref{3.1.4}.
 
-Now we prove the difference part.
-Let \((a, b) \in A \times B\) and \((a \notin C) \land (b \in D)\).
-Because \(a \notin C\), so \((a, b) \notin C \times D\), and \((a, b) \in (A \times B) \setminus (C \times D)\).
-But \((b \in B) \land (b \in D)\), so \(b \notin B \setminus D\), and \((a, b) \notin (A \setminus C) \times (B \setminus D)\).
-We conclude that \((A \times B) \setminus (C \times D) \neq (A \setminus C) \times (B \setminus D)\).
+We do not have \((A \times B) \setminus (C \times D) = (A \setminus C) \times (B \setminus D)\).
+Let \(A = \{1, 2\}, B = \{3, 4\}, C = \{1\}, D = \{3\}\).
+Then we have
+\begin{align*}
+(A \times B) \setminus (C \times D) &= \{(1, 3), (1, 4), (2, 3), (2, 4)\} \setminus \{(1, 3)\} & \text{(by Definition \ref{3.5.4})} \\
+&= \{(1, 4), (2, 3), (2, 4)\}. & \text{(by Definition \ref{3.1.27})} \\
+(A \setminus C) \times (B \setminus D) &= \{2\} \times \{4\} & \text{(by Definition \ref{3.1.27})} \\
+&= \{(2, 4)\}. & \text{(by Definition \ref{3.5.4})}
+\end{align*}
+Clearly \((A \times B) \setminus (C \times D) \neq (A \setminus C) \times (B \setminus D)\) by Definition \ref{3.1.4}..
 \end{proof}
 
 \begin{exercise}\label{ex 3.5.6}
@@ -311,7 +377,7 @@ What happens if the hypotheses that the \(A\), \(B\), \(C\), \(D\) are all non-e
 \end{exercise}
 
 \begin{proof}
-We first prove the subset part.
+We first show that \(A \times B \subseteq C \times D \iff A \subseteq C \land B \subseteq D\).
 \(\forall\ (x, y) \in A \times B \subseteq C \times D\), \((x, y) \in A \times B \implies (x, y) \in C \times D\).
 So \((x \in A \implies x \in C) \land (y \in B \implies y \in D)\), and \((A \subseteq C) \land (B \subseteq D)\).
 Thus \(A \times B \subseteq C \times D \implies (A \subseteq C) \land (B \subseteq D)\).
