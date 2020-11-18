@@ -44,10 +44,10 @@ Thus for instance the addition operation \(+\) on the natural numbers can now be
 \setcounter{theorem}{6}
 \begin{definition}[Ordered \(n\)-tuple and \(n\)-fold Cartesian product]\label{3.5.7}
 Let \(n\) be a natural number.
-An \emph{ordered \(n\)-tuple} \((x_i)_{1 \leq i \leq n}\) (also denoted \((x_1, \cdots, x_n)\)) is a collection of objects \(x_i\), one for every natural number \(i\) between \(1\) and \(n\);
+An \emph{ordered \(n\)-tuple} \((x_i)_{1 \leq i \leq n}\) (also denoted \((x_1, \dots, x_n)\)) is a collection of objects \(x_i\), one for every natural number \(i\) between \(1\) and \(n\);
 we refer to \(x_i\) as the \emph{\(i^{th}\) component} of the ordered \(n\)-tuple.
 Two ordered \(n\)-tuples \((x_i)_{1 \leq i \leq n}\) and \((y_i)_{1 \leq i \leq n}\) are said to be equal iff \(x_i = y_i\) for all \(1 \leq i \leq n\).
-If \((X_i)_{1 \leq i \leq n}\) is an ordered \(n\)-tuple of sets, we define their \emph{Cartesian product} \(\prod_{1 \leq i \leq n} X_i\) (also denoted \(\prod_{i=1}^n X_i\) or \(X_1 \times \cdots \times X_n\)) by
+If \((X_i)_{1 \leq i \leq n}\) is an ordered \(n\)-tuple of sets, we define their \emph{Cartesian product} \(\prod_{1 \leq i \leq n} X_i\) (also denoted \(\prod_{i=1}^n X_i\) or \(X_1 \times \dots \times X_n\)) by
 \[
     \prod_{1 \leq i \leq n} X_i \coloneqq \{(x_i)_{1 \leq i \leq n} : x_i \in X_i \text{ for all } 1 \leq i \leq n\}.
 \]
@@ -71,7 +71,7 @@ we will not bother to distinguish between these different perspectives.
 
 \setcounter{theorem}{9}
 \begin{remark}\label{3.5.10}
-An ordered \(n\)-tuple \(x_1, \cdots, x_n\) of objects is also called an \emph{ordered sequence} of \(n\) elements, or a \emph{finite sequence} for short.
+An ordered \(n\)-tuple \(x_1, \dots, x_n\) of objects is also called an \emph{ordered sequence} of \(n\) elements, or a \emph{finite sequence} for short.
 \end{remark}
 
 \begin{note}
@@ -98,7 +98,7 @@ We induct on \(n\) (starting with the base case \(n = 1\); the claim is also vac
 When \(n = 1\) the claim follows from Lemma \ref{3.1.6}.
 Now suppose inductively that the claim has already been proven for some \(n\);
 we will now prove it for \(n++\).
-Let \(X_1, \cdots, X_{n++}\) be a collection of non-empty sets.
+Let \(X_1, \dots, X_{n++}\) be a collection of non-empty sets.
 By induction hypothesis, we can find an \(n\)-tuple \((x_i)_{1 \leq i \leq n}\) such that \(x_i \in X_i\) for all \(1 \leq i \leq n\).
 Also, since \(X_{n++}\) is non-empty, by Lemma \ref{3.1.6} we may find an object \(a\) such that \(a \in X_{n++}\).
 If we thus define the \(n++\)-tuple \((y_i)_{1 \leq i \leq n++}\) by setting \(y_i \coloneqq x_i\) when \(1 \leq i \leq n\) and \(y_i \coloneqq a\) when \(i = n++\) it is clear that \(y_i \in X_i\) for all \(1 \leq i \leq n++\), thus closing the induction.
@@ -446,14 +446,22 @@ Then we have
 \end{proof}
 
 \begin{exercise}\label{ex 3.5.8}
-Let \(X_1, \cdots, X_n\) be sets.
+Let \(X_1, \dots, X_n\) be sets.
 Show that the Cartesian product \(\prod_{i = 1}^n X_i\) is empty if and only if at least one of the \(X_i\) is empty.
 \end{exercise}
 
 \begin{proof}
-By Definition \ref{3.5.7} \(\prod_{i = 1}^n X_i = \{(x_i)_{1 \leq i \leq n} : x_i \in X_i, \forall\ 1 \leq i \leq n\}\).
-But if at least one of the \(X_i\) is empty, then there does not exist a \(x_i\) such that \(x_i \in X_i\).
-Therefore \((x_i)_{1 \leq i \leq n}\) does not exist, which means \(\prod_{i = 1}^n X_i = \emptyset\).
+Suppose that \(X_1, \dots, X_n\) are sets.
+Then we have
+\begin{align*}
+& \prod_{i = 1}^n X_i = \emptyset \\
+\implies & \lnot (\forall\ 1 \leq i \leq n : X_i \neq \emptyset) & \text{(by Lemma \ref{3.5.12})} \\
+\implies & \exists\ 1 \leq i \leq n : X_i = \emptyset. \\
+& \exists\ 1 \leq i \leq n : X_i = \emptyset \\
+\implies & \{(x_i)_{1 \leq i \leq n} : x_i \in X_i \ \forall\ 1 \leq i \leq n\} = \emptyset & \text{(by Axiom \ref{3.5})} \\
+\implies & \prod_{i = 1}^n X_i = \emptyset. & \text{(by Definition \ref{3.5.7})}
+\end{align*}
+Thus \(\prod_{i = 1}^n X_i = \emptyset \iff \exists\ 1 \leq i \leq n : X_i = \emptyset\).
 \end{proof}
 
 \begin{exercise}\label{ex 3.5.9}
@@ -462,25 +470,41 @@ Show that \((\bigcup_{\alpha \in I} A_{\alpha}) \cap (\bigcup_{\beta \in J} B_{\
 \end{exercise}
 
 \begin{proof}
-\(\forall\ x \in (\bigcup_{\alpha \in I} A_{\alpha}) \cap (\bigcup_{\beta \in J} B_{\beta}) \iff (x \in \bigcup_{\alpha \in I} A_{\alpha}) \land (x \in \bigcup_{\beta \in J} B_{\beta}) \iff (\exists\ \alpha \in I, x \in A_{\alpha}) \land (\exists\ \beta \in J, x \in B_{\beta}) \iff \exists\ \alpha \in I \ \exists\ \beta \in J, x \in A_{\alpha} \cap B_{\beta} \iff \exists\ (\alpha, \beta) \in I \times J, x \in A_{\alpha} \cap B_{\beta} \iff x \in \bigcup_{(\alpha, \beta) \in I \times J} (A_{\alpha} \cap B_{\beta})\).
+Suppose that \(I\) and \(J\) are two sets, and \(\forall\ \alpha \in I\) let \(A_{\alpha}\) be a set, and \(\forall\ \beta \in J\) let \(B_{\beta}\) be a set.
+Then we have
+\begin{align*}
+& \forall\ x \in (\bigcup_{\alpha \in I} A_{\alpha}) \cap (\bigcup_{\beta \in J} B_{\beta}) \\
+\iff & (x \in \bigcup_{\alpha \in I} A_{\alpha}) \land (x \in \bigcup_{\beta \in J} B_{\beta}) & \text{(by Definition \ref{3.1.23})} \\
+\iff & (\exists\ \alpha \in I : x \in A_{\alpha}) \land (\exists\ \beta \in J : x \in B_{\beta}) & \text{(by Axiom \ref{3.11})} \\
+\iff & \exists\ \alpha \ \exists\ \beta : (\alpha \in I) \land (\beta \in J) \land (x \in A_{\alpha}) \land (x \in B_{\beta}) \\
+\iff & \exists\ \alpha \ \exists\ \beta : (\alpha \in I) \land (\beta \in J) \land (x \in A_{\alpha} \cap B_{\beta}) & \text{(by Definition \ref{3.1.23})} \\
+\iff & \exists\ (\alpha, \beta) \in I \times J \land x \in A_{\alpha} \cap B_{\beta} & \text{(by Definition \ref{3.5.4})} \\
+\iff & x \in \bigcup_{(\alpha, \beta) \in I \times J} (A_{\alpha} \cap B_{\beta}). & \text{(by Axiom \ref{3.11})}
+\end{align*}
 \end{proof}
 
 \begin{exercise}\label{ex 3.5.10}
 If \(f : X \to Y\) is a function, define the \emph{graph} of \(f\) to be the subset of \(X \times Y\) defined by \(\{(x, f(x)) : x \in X\}\).
 Show that two functions \(f : X \to Y\), \(\tilde{f} : X \to Y\) are equal if and only if they have the same graph.
-Conversely, if \(G\) is any subset of \(X \times Y\) with the property that for each \(x \in X\), the set \(\{y \in Y : (x, y) \in G\}\) has exactly one element (or in other words, \(G\) obeys the vertical line test), show that there is exactly one function \(f : X \to Y\) whose graph is equal to \(G\).
+Conversely, if \(G\) is any subset of \(X \times Y\) with the property that for each \(x \in X\), the set \(\{y \in Y : (x, y) \in G\}\) has exactly one element (or in other words, \(G\) obeys the \emph{vertical line test}), show that there is exactly one function \(f : X \to Y\) whose graph is equal to \(G\).
 \end{exercise}
 
 \begin{proof}
-We first prove the equality.
-\(f = \tilde{f} \iff \forall\ x \in X, f(x) = \tilde{f}(x) \iff \forall\ x \in X, (x, f(x)) = (x, \tilde{f}(x)) \iff \{(x, f(x)) : x \in X\} = \{(x, \tilde{f}(x)) : x \in X\}\).
-Thus \(f = \tilde{f}\) iff they have the same graph.
+We first show that \(f : X \to Y = \tilde{f} : X \to Y \iff \{(x, f(x)) : x \in X\} = \{(x, \tilde{f}(x)) : x \in X\}\).
+Suppose that \(X, Y\) are sets and \(f : X \to Y, \tilde{f} : X \to Y\) are functions.
+Then we have
+\begin{align*}
+& f = \tilde{f} \\
+\iff & \forall\ x \in X : f(x) = \tilde{f}(x) & \text{(by Definition \ref{3.3.7})} \\
+\iff & \forall\ x \in X : (x, f(x)) = (x, \tilde{f}(x)) & \text{(by Definition \ref{3.5.1})} \\
+\iff & \{(x, f(x)) : x \in X\} = \{(x, \tilde{f}(x)) : x \in X\}. & \text{(by Axiom \ref{3.6})}
+\end{align*}
 
-Now we prove that when \(G\) obeys the vertical line test, there is exactly one function \(f\) whose graph is \(G\).
-By the given condition, \(\forall\ x \in X\), \(\exists!\ y \in Y\) such that \((x, y) \in G\).
-Let \(f : X \to Y\) be a function that \(\forall\ x \in X\), \(f(x) = y\).
-If there is another \(f'\) satisfied that \(\forall\ x \in X\), \(f'(x) = y\), then \(f = f'\) by Definition \ref{3.3.7}.
-Then the graph of \(f\) is \(\{(x, f(x)) : (x \in X) \land (f(x) = y)\}\), which is the same set as \(G\).
+Now we show that \(\exists!\ G = \{(x, f(x)) : x \in X\}\).
+Suppose that \(G, X, Y\) are sets such that \(G \subseteq X \times Y\) and \(\forall\ x \in X\), the set \(\{y \in Y : (x, y) \in G\}\) has exactly one element.
+We now define a function \(f : X \to Y\) where \(f(x) = y \land (x, y) \in G\).
+Since \(\forall\ x \in X\), \(\exists!\ y \in Y : f(x) = y\), by Axiom \ref{3.6} such function \(f\) is well-defined.
+Thus \(G\) is the graph of \(f\), which means \(f\) is unique since if \(f, f'\) have the same graph \(G\) then it follows from proof above that \(f = f'\).
 \end{proof}
 
 \begin{exercise}\label{ex 3.5.11}
