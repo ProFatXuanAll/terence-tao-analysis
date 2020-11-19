@@ -512,11 +512,16 @@ Show that Axiom \ref{3.10} can in fact be deduced from Lemma \ref{3.4.9} and the
 \end{exercise}
 
 \begin{proof}
-For any two sets \(X\) and \(Y\), there exists a set \(X \times Y\).
-By Lemma \ref{3.4.9}, there exists a set \(A = \{a \mid a \subseteq X \times Y\}\).
-By Axiom \ref{3.5}, there exists a set \(B = \{b \mid (b \in A) \land (\forall\ (x, y), (x, y') \in b, (x \in X) \land ((x, y) = (x, y') \implies y = y'))\}\).
-By Exercise \ref{ex 3.5.10}, \(\forall\ G \in B\), there is exactly one \(f : X \to Y\) whose graph is equal to \(G\).
-Then by Axiom \ref{3.6}, there exist a set \(X^Y = \{f : X \to Y \mid (G \in B) \land (\text{graph of } f = G)\}\).
+Suppose that \(X, Y\) are sets.
+Then by Exercise \ref{ex 3.5.1}, \(X \times Y\) is a set.
+We now show that the following sets exist:
+\begin{align*}
+S_1 &= \{S | S \subseteq X \times Y\} & \text{(by Lemma \ref{3.4.9})} \\
+S_2 &= \{X' \times Y' \in S_1 | X' = X \land Y' \subseteq Y \land Y' \neq \emptyset\} & \text{(by Axiom \ref{3.5})} \\
+S_3 &= \{X \times Y' \in S_2 | \\
+& \quad\quad \forall\ (x, y), (x', y') \in X \times Y' : x = x' \implies y = y'\} & \text{(by Exercise \ref{ex 3.5.10})} \\
+Y^X &= \{f : X \to Y | f \text{'s graph } G \in S_3\}. & \text{(by Axiom \ref{3.6})}
+\end{align*}
 \end{proof}
 
 \begin{exercise}\label{ex 3.5.12}
