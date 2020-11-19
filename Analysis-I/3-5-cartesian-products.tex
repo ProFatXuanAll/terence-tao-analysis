@@ -548,7 +548,8 @@ The domain of \(a_0\) is equal to \(\{0\}\) since \(0\) is the only natural numb
 Then by defining \(a_0(0) = c\) where \(c \in \mathbf{N}\) we get a unique function \(a_0 : \{0\} \to \{c\}\) (if \(a'_0 : \{0\} \to \{c\}\), then by Definition \ref{3.3.7} \(a_0 = a'_0\)).
 And because the domain of \(a_0\) is equal to \(\{0\}\), so there is no \(n \in \{0\}\) such that \((n \in \mathbf{N}) \land (n < 0)\), so \(a_0(n++) = f(n, a_0(n))\) is vacuously true.
 Thus for \(N = 0\) the claim is true.
-Suppose inductively that for \(N\) the claim is also true.
+
+Suppose inductively that for some \(N\) the claim is also true.
 The function \(a_N : \{n \in \mathbf{N} : n \leq N\} \to \mathbf{N}\) exists and is unique, and \(a_N(0) = c\) and \(a_N(n++) = f(n, a_N(n))\) for all \(n \in \mathbf{N}\) such that \(n < N\).
 Then for \(N++\), we can define \(a_{N++} : \{n \in \mathbf{N} : n \leq N++\} \to \mathbf{N}\) by setting \(a_{N++}(n) = a_N(n)\) when \((n \in \mathbf{N}) \land (n < N++)\) (which is unique by induction hypothesis) and \(a_{N++}(N++) = f(N, a_{N++}(N))\) when \((n \in \mathbf{N}) \land (n = N++)\) (which is also unique because \(N\) is unique by Axiom \ref{2.4} and \(a_{N++}(N) = a_N(N)\) is unique by induction hypothesis, so \(f(n, a(n))\) is unique by Definition \ref{3.3.1}).
 So \(a_{N++}\) exists and is unique, and \(a_{N++}(0) = a_N(0) = c\) and \(a_{N++}(n++) = f(n, a_{N++}(n))\) for all \(n \in \mathbf{N}\) such that \(n < N++\).
@@ -558,54 +559,61 @@ Now we prove the exercise.
 \(\forall\ N \in \mathbf{N}\), we can define \(a(N)\) be the value of \(a_N(N)\), where \(a_N\) is the function in the claim, i.e., \(a(N) = a_{N}(N)\).
 Then \(a(0) = a_0(0) = c\), and \(a(N++) = a_{N++}(N++) = f(N, a_{N++}(N)) = f(N, a_{N}(N)) = f(N, a(N))\).
 Since all \(a_N\) exists and unique, thus such \(a\) exists and is unique.
-\end{proof}
 
-\begin{proof}{(additional challenge)}
+Now we prove the additional challenge.
 We claim that for every natural number \(N \in \mathbf{N}\), there exists a unique pair \(A_N\), \(B_N\) of subsets of \(\mathbf{N}\) which obeys the following properties:
-    \begin{enumerate}
-        \item \(A_N \cap B_N = \emptyset\)
-        \item \(A_N \cup B_N = \mathbf{N}\)
-        \item \(0 \in A_N\)
-        \item \(N++ \in B_N\)
-        \item Whenever \(n \in B_N\), we have \(n++ \in B_N\)
-        \item Whenever \(n \in A_N\) and \(n \neq N\), we have \(n++ \in A_N\)
-    \end{enumerate}
+\begin{enumerate}
+    \item \(A_N \cap B_N = \emptyset\)
+    \item \(A_N \cup B_N = \mathbf{N}\)
+    \item \(0 \in A_N\)
+    \item \(N++ \in B_N\)
+    \item Whenever \(n \in B_N\), we have \(n++ \in B_N\)
+    \item Whenever \(n \in A_N\) and \(n \neq N\), we have \(n++ \in A_N\)
+\end{enumerate}
 
 We prove the claim by using induction on \(N\).
 For \(N = 0\), by Axiom \ref{3.3} there exists a set \(\{0\}\), and let \(A_0 = \{0\}\).
 Also by Axiom \ref{3.7} and \ref{3.5}, there exists a set \(\mathbf{N}\), and there also exists a set \(B_0 = \{n \in \mathbf{N} \mid n \neq 0\}\).
 Then \(A_0 \cap B_0 = \emptyset\), \(A_0 \cup B_0 = \mathbf{N}\), \(0 \in A_0\), \(0++ = 1 \in B_0\), \(\forall\ n \in B_0\) whenever \(n \in B_0\), we have \(n++ \in B_0\).
-And \(\forall\ n \in A_0\) whenever \(n \in A_0\) and \(n \neq 0\), we have \(n++ \in A_0\) is vacuously true because \(\{n \in A_0 : n \neq 0\} = \emptyset\).
+And \(\forall\ n \in A_0\) whenever \(n \in A_0\) and \(n \neq 0\), \(n++ \in A_0\) is vacuously true since \(\{n \in A_0 : n \neq 0\} = \emptyset\).
 Now we need to show that \(A_0\) and \(B_0\) is unique, so assume that there exists another sets \(A_0'\) and \(B_0'\) such that the above condition holds.
 Then \(0 \in A_0'\) according to condition (c), and \(A_0' = \{0\}\) according to condition (f), so \(A_0 = A_0'\).
 And because \(A_0' \cap B_0' = \{0\} \cap B_0' = \emptyset\), and \(A_0' \cup B_0' = \mathbf{N}\), and condition (e) is true, so \(B_0' = \{n \in \mathbf{N} : n \neq 0\} = B_0\).
 Thus for \(N = 0\), there exists a unique pair \(A_0\) and \(B_0\) such that the above conditions hold.
-Suppose inductively that there exists a unique pair \(A_N\) and \(B_N\) such that the above conditions hold.
+
+Suppose inductively that for some \(N\) there exists a unique pair \(A_N\) and \(B_N\) such that the above conditions hold.
 Then for \(N++\) we can define \(A_{N++}\) and \(B_{N++}\) by setting \(A_{N++} = A_N \cup \{N++\}\) and \(B_{N++} = \{n \in B_N : n \neq N++\} = B_N \setminus \{N++\}\).
 Thus we can check the above conditions still hold.
+
 For condition (a), \(A_{N++} \cap B_{N++} = (A_N \cup \{N++\}) \cap (B_N \setminus \{N++\})\).
 For all \(n \in A_{N++}\), \(n \in A_N\) or \(n = N++\).
 If \(n \in A_N\), then \(n \notin B_N\) because \(A_N \cap B_N = \emptyset\) by induction hypothesis, so \(n \notin B_N \setminus \{N++\}\).
 If \(n = N++\), then \(n \notin B_N \setminus \{N++\}\).
 Thus \(A_{N++} \cap B_{N++} = \emptyset\), and condition (a) is true for \(A_{N++}\) and \(B_{N++}\).
+
 For condition (b), \(A_{N++} \cup B_{N++} = (A_N \cup \{N++\}) \cup (B_N \setminus \{N++\}) = (A_N \cup (B_N \setminus \{N++\})) \cup (\{N++\} \cup (B_N \setminus \{N++\})) = (A_N \cup (B_N \setminus \{N++\})) \cup B_N = A_N \cup B_N = \mathbf{N}\) by induction hypothesis.
 Thus condition (b) is true for \(A_{N++}\) and \(B_{N++}\).
+
 For condition (c), \(0 \in A_{N++}\) because \(0 \in A_N\) and \(A_{N++} = A_N \cup \{N++\}\), so condition (c) is true for \(A_{N++}\).
+
 For condition (d), we want to show that \((N++)++ \in B_N\).
 By induction hypothesis, \(N \in A_N\) and \(N++ \in B_N\) is true, so \((N++)++ \in B_N\) is true.
 Thus \((N++)++ \in B_N \setminus \{N++\} = B_{N++}\) is also true, so condition (e) is true for \(B_{N++}\).
+
 For condition (f), since \(N \in A_N\) by induction hypothesis, \(N++ \in A_N \cup \{N++\} = A_{N++}\) is true.
-And by (a) and (e), \((N++)++\) is not in \(A_N\).
+And by conditions (a) and (e), \((N++)++\) is not in \(A_N\).
 So whenever \(n \in A_{N++}\) and \(n \neq N++\), we have \(n++ \in A_{N++}\).
 Thus condition (f) is true for \(A_{N++}\).
+
 Now we need to show that \(A_{N++}\) and \(B_{N++}\) is unique.
-Because \(A_{N++} = A_N \cup \{N++\}\), and by induction hypothesis \(A_N\) is unique and \(\{N++\}\) is also unique, so \(A_{N++}\) is unique.
-Similarly \(B_{N++}\) is unique.
-Thus we close the induction, so for every \(N \in \mathbf{N}\) we have unique \(A_N\) and \(B_N\) such that the above condition is true.
+So suppose that there exist \(A_{N++}', B_{N++}'\) such that conditions (a) to (f) holds.
+Then by condition (f) \(\forall\ n \in A_{N++}' \iff n \neq N++ \land n++ \in A_{N++}'\).
+The same condition holds for \(A_{N++}\), this means \(\forall\ n \in A_{N++}' \iff n \in A_{N++}\), and thus \(A_{N++} = A_{N++}'\).
+Similar argument holds for \(B_{N++}'\), thus \(A_{N++}, B_{N++}\) are unique.
+This close the induction, so for every \(N \in \mathbf{N}\) we have unique \(A_N\) and \(B_N\) such that the conditions (a) - (f) are true.
 
 Now we claim that for every natural number \(N \in \mathbf{N}\), there exists a unique function \(a_N : A_N \to \mathbf{N}\) such that \(a_N(0) = c\) and \(a_N(n++) = f(n, a_{N}(n))\) for all \(n \in \mathbf{N}\) such that \(n < N\).
-
-With similar process of previous proof, we can show that the statement is true, and by defining \(a\) with similar argument we can show that \(a\) exist and is unique.
+This is done since \(A_N = \{n \in \mathbf{N} : n \leq N\}\).
 \end{proof}
 
 \begin{exercise}\label{ex 3.5.13}
@@ -620,15 +628,15 @@ We need to show that such \(f\) exists and is bijective.
 First we show that \(f\) exists, for which we need to show that \(\forall\ n \in \mathbf{N}\), there exists exactly one value \(f(n) \in \mathbf{N}'\).
 And we use induction on \(n\).
 For \(n = 0\), by the above definition \(f(0) = 0' \in \mathbf{N}'\), so the base case holds.
-Suppose inductively that \(f(n) \in \mathbf{N}'\) and there is only one value for \(f(n)\) for some \(n\).
-Then for \(n++\), we need to show that \(f(n++) \in \mathbf{N}'\) and there is only one value for \(f(n++)\).
+Suppose inductively that for some \(n \in \mathbf{N}\), \(\exists!\ f(n) \in \mathbf{N}'\).
+Then for \(n++\), we need to show that \(\exists!\ f(n++) \in \mathbf{N}'\).
 By induction hypothesis, \(f(n) \in \mathbf{N}'\), and because by the given condition Axiom \ref{2.1}-\ref{2.5} all hold on \(\mathbf{N}'\), \(f(n)++' \in \mathbf{N}'\) and there is only one value for \(f(n)++'\).
 So by the above definition \(f(n++) = f(n)++'\) exists and there is only one value for \(f(n++)\), this close the induction.
 
 Next we show that \(f\) is injective.
 Let \(a, b \in \mathbf{N}\) and \(f(a) = f(b)\).
 We claim that \(f(a) = f(b) \implies a = b\), and we use induction on \(a\).
-For \(a = 0\), \(f(a) = f(b) = f(0) = 0'\) by the above definition.
+For \(a = 0\), \(f(a) = f(0) = 0' = f(b)\) by the above definition.
 If \(b \neq 0\), then by Lemma \ref{2.2.10}, there exists exactly one natural number \(c\) such that \(c++ = b\).
 So \(f(b) = f(c++) = f(c)++' = 0'\) by the above definition, but by Axiom \ref{2.3}, \(f(c)++' \neq 0'\), a contradiction.
 Thus \(b = 0\), which means the base case holds.
