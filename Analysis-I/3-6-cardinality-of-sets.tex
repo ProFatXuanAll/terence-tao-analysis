@@ -97,7 +97,7 @@ The set of natural numbers \(\mathbf{N}\) is infinite.
 \begin{proof}
 Suppose for sake of contradiction that the set of natural numbers \(\mathbf{N}\) was finite, so it had some cardinality \(\#(\mathbf{N}) = n\).
 Then there is a bijection \(f\) from \(\{i \in \mathbf{N} : 1 \leq i \leq n\}\) to \(\mathbf{N}\).
-One can show that the sequence \(f(1), f(2), \dots, f(n)\) is bounded, or more precisely that there exists a natural number \(M\) such that \(f(i) \leq M\) for all \(1 \leq i \leq n\).
+One can show that the sequence \(f(1), f(2), \dots, f(n)\) is bounded, or more precisely that there exists a natural number \(M\) such that \(f(i) \leq M\) for all \(1 \leq i \leq n\) (Exercise \ref{ex 3.6.3}).
 But then the natural number \(M+1\) is not equal to any of the \(f(i)\), contradicting the hypothesis that \(f\) is a bijection.
 \end{proof}
 
@@ -128,40 +128,80 @@ However, it is possible for some sets to be ``more'' infinite than others.
 \end{proposition}
 
 \begin{proof}{(a)}
-Let \(\#(X) = n\).
-We use induction on \(n\).
-For \(n = 0\), \(\#(X \cup \{x\}) = \#(\{x\}) = 1 = 0 + 1 = \#(X) + 1\).
-So \(X \cup \{x\}\) is finite and the base case holds.
-Suppose inductively that \(X \cup \{x\}\) is finite and \(\#(X \cup \{x\}) = \#(X) + 1\) for some \(\#(X) = n\).
-Then for \(\#(X) = n++\), let \(X = X' \cup \{x'\}\) where \(x' \notin X'\).
-Because \(\#(X') = n\), by induction hypothesis, there exists a function \(f'\) with domain \(X = X' \cup \{x'\}\) and range \(\{i \in \mathbf{N} : 1 \leq i \leq n++\}\) where \(f'\) is bijective.
-Now we define a function \(f\) with domain \(X \cup \{x\}\) and range \(\{i \in \mathbf{N} : 1 \leq i \leq (n++) + 1\}\) by setting \(f(y) = f'(y)\) if \(y \in X\) and setting \(f(y) = (n++) + 1\) if \(y = x\).
-Because \(f'\) is bijective, so \(f\) is also bijective.
-Thus \(\#(X \cup \{x\}) = (n++) + 1\), which means \(X \cup \{x\}\) is finite, and this close the induction.
+Suppose that \(X\) is a finite set and \(x \notin X\).
+By Definition \ref{3.6.10} \(\exists\ n \in \mathbf{N}\) such that \(\#(X) = n\).
+By Definition \ref{3.6.5} \(\exists\ f : X \to \{i \in \mathbf{N} : 1 \leq i \leq n\}\) such that \(f\) is bijective.
+Now we define a function \(g : X \cup \{x\} \to \{i \in \mathbf{N} : 1 \leq i \leq n + 1\}\) as follow:
+\[
+    g(y) = \begin{cases}
+        f(y) & \text{if } y \in X \\
+        n + 1 & \text{otherwise}
+    \end{cases}
+\]
+
+Now we need to show that \(g\) is bijective.
+Since \(f\) is bijective, \(\forall\ i \in \{i \in \mathbf{N} : 1 \leq i \leq n\}, \exists\ y \in X\) such that \(f(y) = i\).
+With that and \(g(x) = n + 1\) we thus have \(g\) is surjective.
+For any \(y, y' \in X \cup \{x\}\), if \(g(y) = g(y')\), then we have two cases:
+\begin{enumerate}[label=(\roman*)]
+    \item If \(g(y) \in X\), then \(y = y'\) since \(f\) is bijective.
+    \item If \(g(y) = x\), then \(y = y' = x\) by definition of \(g\).
+\end{enumerate}
+For all cases above we have \(g(y) = g(y') \implies y = y'\), thus \(g\) is injective.
+Since \(g\) is bijective, we have \(\#(X \cup \{x\}) = n + 1 = \#(X) + 1\).
 \end{proof}
 
 \begin{proof}{(b)}
-Let \(\#(X) = n\).
-We use induction on \(n\).
-For \(n = 0\), \(\#(X \cup Y) = \#(Y) \leq \#(Y) = 0 + \#(Y) = \#(X) + \#(Y)\), so \(X \cup Y\) is finite.
-Thus the base case holds.
-Suppose inductively that the statement is true for some \(n\).
-Then for \(n++\), \(\#(X) = n++\) and \(X = X' \cup \{x\}\), where \(x \notin X'\), \(\#(X') = n\) and \(\#(\{x\}) = 1\).
-So \(\#(X \cup Y) = \#(X' \cup \{x\} \cup Y) = \#(X' \cup Y) + 1\).
-By induction hypothesis, \(\#(X' \cup  Y) \leq \#(X') + \#(Y)\), so \(\#(X \cup  Y) = \#(X' \cup  Y) + 1 \leq \#(X)' + \#(Y) + 1 = \#(X) + \#(Y)\).
-Also by induction hypothesis, \(X' \cup Y\) is finite.
-So \(\#(X' \cup Y) \in \mathbf{N}\), and \(\#(X \cup Y) = \#(X' \cup Y) + 1 \in \mathbf{N}\), which means \(X \cup Y\) is finite.
-This close the induction.
+Suppose that \(X, Y\) are finite sets.
+By Definition \ref{3.6.10} \(\exists\ n \in \mathbf{N}\) such that \(\#(X) = n\).
+We use induction on \(n\) to show that \(X \cup Y\) is finite and \(\#(X \cup Y) \leq \#(X) + \#(Y)\).
+For \(n = 0\), we have
+\begin{align*}
+\#(X \cup Y) &= \#(\emptyset \cup Y) & \text{(by Definition \ref{3.6.5})} \\
+&= \#(Y) & \text{(by Lemma \ref{3.1.13})} \\
+&\leq \#(Y) & \text{(by Proposition \ref{2.2.12})} \\
+&= 0 + \#(Y) & \text{(by Definition \ref{2.2.1})} \\
+&= \#(X) + \#(Y). & \text{(by Definition \ref{3.6.5})}
+\end{align*}
+Thus \(X \cup Y\) is finite and the base case holds.
+Suppose inductively that the statement is true for some \(\#(X) = n\).
+Then for \(\#(X) = n++\), we must have \(X \neq \emptyset\) by Lemma \ref{3.6.9} since \(n++ \neq 0\).
+Let \(x \in X\).
+Then we have
+\begin{align*}
+\#(X \cup Y) &= \#((X \setminus \{x\}) \cup \{x\} \cup Y) & \text{(by Proposition \ref{3.1.28}(g))} \\
+&= \#((X \setminus \{x\}) \cup Y \cup \{x\}) & \text{(by Proposition \ref{3.1.28}(d)(e))} \\
+&= \#((X \setminus \{x\}) \cup Y) + 1 & \text{(by Proposition \ref{3.6.14}(a))} \\
+&\leq \#(X \setminus \{x\}) + \#(Y) + 1 & \text{(by induction hypothesis)} \\
+&= \#((X \setminus \{x\}) \cup \{x\}) + \#(Y) & \text{(by Proposition \ref{3.6.14}(a))} \\
+&= \#(X) + \#(Y). & \text{(by Proposition \ref{3.1.28}(g))}
+\end{align*}
+Thus \(X \cup Y\) is finite and this close the induction.
 
-Now we show that if \(X \cap Y = \emptyset\), then \(\#(X \cup Y) = \#(X) + \#(Y)\).
-Let \(\#(X) = n\), and we use induction on \(n\).
-For \(n = 0\), \(\#(X \cup Y) = \#(Y) = 0 + \#(Y) = \#(X) + \#(Y)\).
-Thus the base case holds.
-Suppose inductively that the statement is true for some \(n\).
-Then for \(n++\), \(\#(X) = n++\) and \(X = X' \cup \{x\}\), where \(x \notin X'\), \(\#(X') = n\) and \(\#(\{x\}) = 1\).
-So \(\#(X \cup Y) = \#(X' \cup \{x\} \cup Y) = \#(X' \cup Y) + 1\).
-By induction hypothesis, \(\#(X' \cup  Y) = \#(X') + \#(Y)\), so \(\#(X \cup  Y) = \#(X' \cup  Y) + 1 = \#(X)' + \#(Y) + 1 = \#(X) + \#(Y)\).
-This close the induction.
+Now suppose that \(X, Y\) are finite sets and \(X \cap Y = \emptyset\).
+By Definition \ref{3.6.10} \(\exists\ n \in \mathbf{N}\) such that \(\#(X) = n\).
+We use induction on \(n\) to show that \(\#(X \cup Y) = \#(X) + \#(Y)\).
+For \(n = 0\), we have
+\begin{align*}
+\#(X \cup Y) &= \#(\emptyset \cup Y) & \text{(by Definition \ref{3.6.5})} \\
+&= \#(Y) & \text{(by Lemma \ref{3.1.13})} \\
+&= 0 + \#(Y) & \text{(by Definition \ref{2.2.1})} \\
+&= \#(X) + \#(Y). & \text{(by Definition \ref{3.6.5})}
+\end{align*}
+Thus \(X \cup Y\) is finite and the base case holds.
+Suppose inductively that the statement is true for some \(\#(X) = n\).
+Then for \(\#(X) = n++\), we must have \(X \neq \emptyset\) by Lemma \ref{3.6.9} since \(n++ \neq 0\).
+Let \(x \in X\).
+Then we have
+\begin{align*}
+\#(X \cup Y) &= \#((X \setminus \{x\}) \cup \{x\} \cup Y) & \text{(by Proposition \ref{3.1.28}(g))} \\
+&= \#((X \setminus \{x\}) \cup Y \cup \{x\}) & \text{(by Proposition \ref{3.1.28}(d)(e))} \\
+&= \#((X \setminus \{x\}) \cup Y) + 1 & \text{(by Proposition \ref{3.6.14}(a))} \\
+&= \#(X \setminus \{x\}) + \#(Y) + 1 & \text{(by induction hypothesis)} \\
+&= \#((X \setminus \{x\}) \cup \{x\}) + \#(Y) & \text{(by Proposition \ref{3.6.14}(a))} \\
+&= \#(X) + \#(Y). & \text{(by Proposition \ref{3.1.28}(g))}
+\end{align*}
+Thus \(X \cup Y\) is finite and this close the induction.
 \end{proof}
 
 \begin{proof}{(c)}
