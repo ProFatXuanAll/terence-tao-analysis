@@ -167,7 +167,7 @@
     \end{align*}
     Thus \(X \cup Y\) is finite and the base case holds.
     Suppose inductively that the statement is true for some \(\#(X) = n\).
-    We now that the statement is still true for \(\#(X) = n++\).
+    We show that the statement is still true for \(\#(X) = n++\).
     Let \(x \in X\).
     By Lemma \ref{3.6.9} we have \(\#(X \setminus \{x\}) = n\).
     If \(x \in Y\), then we have
@@ -202,7 +202,7 @@
     \end{align*}
     Thus the base case holds.
     Suppose inductively that the statement is true for some \(\#(X) = n\).
-    We now that the statement is still true for \(\#(X) = n++\).
+    We show that the statement is still true for \(\#(X) = n++\).
     Let \(x \in X\).
     By Lemma \ref{3.6.9} we have \(\#(X \setminus \{x\}) = n\).
     Since \(X \cap Y = \emptyset\), \(x \notin Y\).
@@ -219,55 +219,51 @@
 \end{proof}
 
 \begin{proof}{(c)}
-    Suppose that \(X, Y\) are sets, \(X\) is finite and \(Y \subseteq X\).
+    Suppose that \(X\) is a finite sets.
     By Definition \ref{3.6.10} \(\exists\ n \in \mathbf{N}\) such that \(\#(X) = n\).
-    We use induction on \(n\) to show that \(Y\) is finite and \(\#(Y) \leq \#(X)\).
+    We use induction on \(n\) to show that \(\forall\ Y \subseteq X\), \(Y\) is finite and \(\#(Y) \leq \#(X)\).
     For \(n = 0\), we have
     \begin{align*}
-                 & Y \subseteq \emptyset                                          \\
-        \implies & Y = \emptyset             & \text{(by Axiom \ref{3.2})}        \\
-        \implies & \#(Y) = 0 \leq 0 = \#(X). & \text{(by Definition \ref{3.6.5})}
+                 & \forall\ Y \subseteq \emptyset                                      \\
+        \implies & Y = \emptyset                  & \text{(by Axiom \ref{3.2})}        \\
+        \implies & \#(Y) = 0 \leq 0 = \#(X).      & \text{(by Definition \ref{3.6.5})}
     \end{align*}
     Thus the base case holds.
-    Suppose inductively that for some \(\#(X) = n\), we have \(\forall\ Y \subseteq X \implies \#(Y) \leq \#(X)\) and \(Y\) is finite.
-    Then for \(\#(X) = n++\), we need to show that the statement is true.
+    Suppose inductively that the statement is true for some \(\#(X) = n\).
+    We show that the statement is still true for \(\#(X) = n++\).
     Let \(Y \subseteq X\).
-    If \(Y = X\), then \(\#(Y) = \#(X)\).
-    If \(Y \neq X\), then \(\exists\ x \in X \setminus Y\) such that
+    If \(Y = X\), then by Proposition \ref{3.6.8} \(\#(Y) = \#(X)\).
+    If \(Y \neq X\), then \(\exists\ x \in X \setminus Y\) such that \(Y \subseteq X \setminus \{x\}\) and
     \begin{align*}
         \#(X) & = \#((X \setminus \{x\}) \cup \{x\}) & \text{(by Proposition \ref{3.1.28}(g))} \\
               & = \#(X \setminus \{x\}) + 1          & \text{(by Proposition \ref{3.6.14}(a))} \\
-              & \geq \#(Y \setminus \{x\}) + 1       & \text{(by induction hypothesis)}        \\
-              & = \#(Y \setminus \{x\} \cup \{x\})   & \text{(by Proposition \ref{3.6.14}(a))} \\
-              & = \#(Y).                             & \text{(by Proposition \ref{3.1.28}(g))}
+              & \geq \#(Y) + 1                       & \text{(by induction hypothesis)}        \\
+              & > \#(Y).
     \end{align*}
+    From all cases above we have \(\forall\ Y \subseteq X \implies \#(Y) \leq \#(X)\).
     Thus \(Y\) is finite and this close the induction.
 
-    Now suppose that \(X, Y\) are sets, \(X\) is finite, \(Y \subseteq X\) and \(Y \neq X\).
-    By Definition \ref{3.6.10} \(\exists\ n \in \mathbf{N}\) such that \(\#(X) = n\).
-    We use induction on \(n\) to show that \(Y\) is finite and \(\#(Y) < \#(X)\).
-    We start with \(n = 1\) since for \(n = 0\) we must have \(Y = X = \emptyset\), a contradiction.
-    So for \(n = 1\), let \(X = \{x\}\).
-    Then we have
+    We now use induction on \(n\) to show that \(\forall\ Y \subseteq X : Y \neq X \implies \#(Y) < \#(X)\).
+    We start with \(n = 1\) since for \(n = 0\) we have \(X = \emptyset\) and \(\not\exists\ Y : Y \subseteq X \land Y \neq X\).
+    For \(n = 1\), we have
     \begin{align*}
-                 & Y \subseteq \{x\} \land Y \neq \{x\}                                                         \\
-        \implies & (\forall\ y \in Y \implies y \in \{x\} \land y \neq x) & \text{(by Definition \ref{3.1.15})} \\
-        \implies & Y = \emptyset                                          & \text{(by Axiom \ref{3.2})}         \\
-        \implies & \#(Y) = 0 < 1 = \#(X).                                 & \text{(by Definition \ref{3.6.5})}
+                 & \forall\ Y : Y \subseteq X \land Y \neq X                                      \\
+        \implies & Y = \emptyset                             & \text{(by Axiom \ref{3.3})}        \\
+        \implies & \#(Y) = 0 < 1 = \#(X).                    & \text{(by Definition \ref{3.6.5})}
     \end{align*}
     Thus the base case holds.
-    Suppose inductively that for some \(\#(X) = n\), we have \(\forall\ Y \subseteq X \land Y \neq X \implies \#(Y) < \#(X)\) and \(Y\) is finite.
-    Then for \(\#(X) = n++\), we need to show that the statement is true.
-    Let \(Y \subseteq X\).
-    Then \(\exists\ x \in X \setminus Y\) such that
+    Suppose inductively that the statement is true for some \(\#(X) = n\).
+    We show that the statement is still true for \(\#(X) = n++\).
+    Let \(Y \subseteq X \land Y \neq X\).
+    If \(Y = \emptyset\), then \(\#(Y) = 0 < n++ = \#(X)\).
+    If \(Y \neq \emptyset\), then \(\exists\ x \in Y\) such that
     \begin{align*}
-        \#(X) & = \#((X \setminus \{x\}) \cup \{x\}) & \text{(by Proposition \ref{3.1.28}(g))} \\
-              & = \#(X \setminus \{x\}) + 1          & \text{(by Proposition \ref{3.6.14}(a))} \\
-              & > \#(Y \setminus \{x\}) + 1          & \text{(by induction hypothesis)}        \\
-              & = \#(Y \setminus \{x\} \cup \{x\})   & \text{(by Proposition \ref{3.6.14}(a))} \\
-              & = \#(Y).                             & \text{(by Proposition \ref{3.1.28}(g))}
+                 & \#(Y \setminus \{x\}) < \#(X \setminus \{x\})                           & \text{(by induction hypothesis)}        \\
+        \implies & \#(Y \setminus \{x\}) + 1 < \#(X \setminus \{x\}) + 1                                                             \\
+        \implies & \#((Y \setminus \{x\}) \cup \{x\}) < \#((X \setminus \{x\}) \cup \{x\}) & \text{(by Proposition \ref{3.6.14}(a))} \\
+        \implies & \#(Y) < \#(X).                                                          & \text{(by Proposition \ref{3.1.28}(g))}
     \end{align*}
-    Thus \(Y\) is finite and this close the induction.
+    This close the induction.
 \end{proof}
 
 \begin{proof}{(d)}
