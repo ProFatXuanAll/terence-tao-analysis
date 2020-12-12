@@ -324,16 +324,53 @@
 \end{proof}
 
 \begin{proof}{(e)}
-    Let \(\#(X) = n\).
-    We use induction on \(n\).
-    For \(n = 0\), \(X \times Y = \emptyset\), so \(\#(X \times Y) = 0 = 0 \times \#(Y) = \#(X) \times \#(Y)\).
+    Suppose that \(X, Y\) are finite sets.
+    We first show that \(\forall\ x : \#(\{x\} \times Y) = \#(Y)\).
+    By Definition \ref{3.6.1}, we only need to find a function \(f : \{x\} \times Y \to Y\) such that \(f\) is bijective.
+    We now define \(f : \{x\} \times Y \to Y\) as \(f(x', y) = y\).
+    We need to show that \(f\) is bijective.
+    We start by showing \(f\) is injective.
+    \begin{align*}
+                 & \forall\ (x_1, y_1), (x_2, y_2) \in \{x\} \times Y : f(x_1, y_1) = f(x_2, y_2)                                      \\
+        \implies & x_1 = x_2 \land y_1 = y_2                                                      & \text{(by Axiom \ref{3.3})}        \\
+        \implies & (x_1, y_1) = (x_2, y_2).                                                       & \text{(by Definition \ref{3.5.1})}
+    \end{align*}
+    Thus \(f\) is injective.
+    Now we show that \(f\) is surjective.
+    \begin{align*}
+                 & \forall\ y \in Y                                                                     \\
+        \implies & (x, y) \in \{x\} \times Y                       & \text{(by Definition \ref{3.5.4})} \\
+        \implies & (f(x', y') = f(x, y) \implies (x', y) = (x, y)) & \text{(\(f\) is injective)}        \\
+        \implies & \exists!\ (x, y) : f(x, y) = y.
+    \end{align*}
+    Thus \(f\) is surjective.
+    Since \(f\) is both injective and surjective, \(f\) is bijective and thus \(\#(\{x\} \times Y) = \#(Y)\).
+
+    Now we show that \(\#(X \times Y) = \#(X) \times \#(Y)\).
+    By Definition \ref{3.6.10} \(\exists\ n \in \mathbf{N}\) such that \(\#(X) = n\).
+    We use induction on \(n\) to show that \(\#(X \times Y) = \#(X) \times \#(Y)\).
+    For \(n = 0\), we have
+    \begin{align*}
+        \#(X \times Y) & = \#(\emptyset \times Y) & \text{(by Definition \ref{3.6.5})} \\
+                       & = \#(\emptyset)          & \text{(by Definition \ref{3.5.4})} \\
+                       & = 0                      & \text{(by Definition \ref{3.6.5})} \\
+                       & = \#(X) \times \#(Y).
+    \end{align*}
     Thus the base case holds.
-    Suppose inductively that when \(\#(X) = n\), \(\#(X \times Y) = \#(X) \times \#(Y)\).
-    Then for \(\#(X) = n++\), let \(X = X' \cup \{x\}\), where \(x \notin X'\), so \(\#(X') = n\) and \(\#(\{x\}) = 1\).
-    Since \(\#(\{x\}) = 1\), let \(f : \{x\} \times Y \to Y\) be a function such that \(f(x, y) = y\), where \(y \in Y\).
-    Then such \(f\) is bijective, so \(\#(\{x\} \times Y) = \#(Y) = 1 \times \#(Y) = \#(\{x\}) \times \#(Y)\).
-    By induction hypothesis, \(\#(X' \times Y) = \#(X') \times \#(Y)\).
-    By Exercise \ref{ex 3.5.4}, \(\#(X \times Y) = \#((X' \cup \{x\}) \times Y) = \#((X' \times Y) \cup (\{x\} \times Y)) = \#(X' \times Y) + \#(\{x\} \times Y) = \#(X') \times \#(Y) + \#(\{x\}) \times \#(Y) = (\#(X') + \#(\{x\})) \times \#(Y) = \#(X) \times \#(Y)\).
+    Suppose inductively that the statement is true for some \(\#(X) = n\).
+    We show that the statement is still true for \(\#(X) = n++\).
+    Let \(x \in X\).
+    Then we have
+    \begin{align*}
+        \#(X \times Y) & = \#\bigg(\big((X \setminus \{x\}) \cup \{x\}\big) \times Y\bigg)                                           \\
+                       & = \#((X \setminus \{x\}) \times Y \cup \{x\} \times Y)            & \text{(by Exercise \ref{ex 3.5.4})}     \\
+                       & = \#((X \setminus \{x\}) \times Y) + \#(\{x\} \times Y)           & \text{(by Proposition \ref{3.6.14}(b))} \\
+                       & = \#(X \setminus \{x\}) \times \#(Y) + \#(\{x\} \times Y)         & \text{(by induction hypothesis)}        \\
+                       & = \#(X \setminus \{x\}) \times \#(Y) + \#(Y)                      & \text{(from proof above)}               \\
+                       & = (\#(X \setminus \{x\}) + 1) \times \#(Y)                                                                  \\
+                       & = \#((X \setminus \{x\}) \cup \{x\}) \times \#(Y)                 & \text{(by Proposition \ref{3.6.14}(a))} \\
+                       & = \#(X) \times \#(Y).                                             & \text{(by Proposition \ref{3.1.28}(g))}
+    \end{align*}
     This close the induction.
 \end{proof}
 
