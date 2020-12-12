@@ -338,13 +338,12 @@
     Thus \(f\) is injective.
     Now we show that \(f\) is surjective.
     \begin{align*}
-                 & \forall\ y \in Y                                                                     \\
-        \implies & (x, y) \in \{x\} \times Y                       & \text{(by Definition \ref{3.5.4})} \\
-        \implies & (f(x', y') = f(x, y) \implies (x', y) = (x, y)) & \text{(\(f\) is injective)}        \\
-        \implies & \exists!\ (x, y) : f(x, y) = y.
+                 & \forall\ y \in Y                                                                       \\
+        \implies & (x, y) \in \{x\} \times Y                         & \text{(by Definition \ref{3.5.4})} \\
+        \implies & \exists\ (x, y) \in \{x\} \times Y : f(x, y) = y.
     \end{align*}
     Thus \(f\) is surjective.
-    Since \(f\) is both injective and surjective, \(f\) is bijective and thus \(\#(\{x\} \times Y) = \#(Y)\).
+    Since \(f\) is both injective and surjective, \(f\) is bijective and thus by Definition \ref{3.6.1} we have \(\#(\{x\} \times Y) = \#(Y)\).
 
     Now we show that \(\#(X \times Y) = \#(X) \times \#(Y)\).
     By Definition \ref{3.6.10} \(\exists\ n \in \mathbf{N}\) such that \(\#(X) = n\).
@@ -375,43 +374,81 @@
 \end{proof}
 
 \begin{proof}{(f)}
-    We first show that \(\#(Y^{\emptyset}) = 1\).
-    Because \(\forall\ f, g \in Y^{\emptyset}\), \(f\) and \(g\) have same domain and range, and both are empty functions, so \(\forall\ x \in \emptyset\), \(f(x) = g(x)\) is vacuously true, which means \(f = g\), and \(\#(Y^X) = \#(Y^{\emptyset}) = 1\).
+    Suppose that \(X, Y\) are finite sets.
+    We first show that \(\forall\ x : \#(Y^{\{x\}}) = \#(Y)\).
+    We define a function \(f : Y^{\{x\}} \to Y\) by setting \(\forall\ g \in Y^{\{x\}} : f(g) = g(x)\).
+    We now show that \(f\) is bijective.
+    We start by showing \(f\) is injective.
+    \begin{align*}
+                 & \forall\ g, g' \in Y^{\{x\}} : f(g) = f(g')                                      \\
+        \implies & g(x) = g'(x)                                                                     \\
+        \implies & \forall\ x' \in \{x\} : g(x') = g'(x').     & \text{(by Axiom \ref{3.3})}        \\
+        \implies & g = g'.                                     & \text{(by Definition \ref{3.3.7})}
+    \end{align*}
+    Thus \(f\) is injective.
+    Now we show that \(f\) is surjective.
+    \begin{align*}
+                 & \forall\ y \in Y, \exists\ (g : \{x\} \to Y) : g(x) = y & \text{(by Axiom \ref{3.6})}  \\
+        \implies & g \in Y^{\{x\}}.                                        & \text{(by Axiom \ref{3.10})}
+    \end{align*}
+    Thus \(f\) is surjective.
+    Since \(f\) is both injective and surjective, \(f\) is bijective and thus by Definition \ref{3.6.1} we have \(\#(Y^{\{x\}}) = \#(Y)\).
 
-    Next we show that \(\#(\{y\}^{\{x\}}) = 1\).
-    Because \(\{y\}^{\{x\}} = \{f \mid f : \{x\} \to \{y\}\}\), \(\forall\ f, g \in \{y\}^{\{x\}}\), \(f\) and \(g\) have same domain and range, and there is only one element in both domain and range, so \(f(x) = y = g(x)\) is true, and \(f = g\) is true.
-    Thus there is only one element in \(\{y\}^{\{x\}}\), so \(\#(\{y\}^{\{x\}}) = 1\).
+    Now we show that \(\#(Y^X) = \#(Y)^{\#(X)}\).
+    By Definition \ref{3.6.10} \(\exists\ n \in \mathbf{N}\) such that \(\#(X) = n\).
+    We use induction on \(n\) to show that \(\#(Y^X) = \#(Y)^{\#(X)}\).
+    For \(n = 0\), by Definition \ref{3.6.5} we have \(X = \emptyset\) and
+    \[
+        \forall\ f, f' \in Y^\emptyset, \forall\ x \in \emptyset : f(x) = f'(x).
+    \]
+    Thus by Axiom \ref{3.3} \(Y^\emptyset\) is a singleton set.
+    We can construct a bijection \(g : \{i \in \mathbf{N} : 1 \leq i \leq 1\} \to Y^\emptyset\) and thus by Definition \ref{3.6.5} \(\#(Y^\emptyset) = 1\).
+    Again by Definition \ref{3.6.5} we have \(\#(X) = 0\), and thus by Definition \ref{2.3.11} we have \(\#(Y)^0 = 1\).
+    So the base case holds.
 
-    Next we show that \(Y^{\{x\}} = \#(Y)\).
-    Let \(\#(Y) = n\).
-    We use induction on \(n\).
-    For \(n = 0\), \(Y^{\{x\}} = \emptyset^{\{x\}} = \{f \mid f : \{x\} \to \emptyset\}\).
-    By Definition \ref{3.3.1}, there is no function whose range equals to \(\emptyset\), so \(\emptyset^{\{x\}} = \emptyset\).
-    Thus \(\#(\emptyset^{\{x\}}) = 0 = 0^1 = \#(\emptyset)^{\#(\{x\})}\), and the base case holds.
-    Suppose inductively that when \(\#(Y) = n\), \(\#(Y^{\{x\}}) = \#(Y)\).
-    Then for \(\#(Y) = n++\), let \(Y = Y' \cup \{y\}\), where \(y \notin Y'\).
-    So \(\#(Y) = n\) and \(\#(\{y\}) = 1\), and \(Y^{\{x\}} = (Y' \cup \{y\})^{\{x\}} = \{f \mid f : \{x\} \to Y' \cup \{y\}\}\).
-    For any \(f \in (Y' \cup \{y\})^{\{x\}}\), there is only one element in domain of \(f\), i.e., \(x\).
-    So \(f(x) \in Y'\) or \(f(x) \in \{y\}\) is true, and \(\{f \mid f : \{x\} \to Y' \cup \{y\}\} = \{f \mid f : \{x\} \to Y'\} \cup \{f \mid f : \{x\} \to \{y\}\} = Y'^{\{x\}} \cup \{y\}^{\{x\}}\) is true.
-    By induction hypothesis, \(\#(Y'^{\{x\}}) = \#(Y')\), and by previous prove \(\#(\{y\}^{\{x\}}) = 1\).
-    So \(\#(Y^{\{x\}}) = \#((Y' \cup \{y\})^{\{x\}}) = \#(Y'^{\{x\}} \cup \{y\}^{\{x\}}) = \#(Y'^{\{x\}}) + \#(\{y\}^{\{x\}}) = \#(Y') + 1 = \#(Y)\).
-    This close the induction.
-
-    Finally we prove that \(\#(Y^X) = \#(Y)^{\#(X)}\).
-    Let \(\#(X) = n\).
-    We use induction on \(n\).
-    For \(n = 0\), by previous prove \(\#(Y^X) = \#(Y^{\emptyset}) = 1 = \#(Y)^0 = \#(Y)^{\#(X)}\).
-    Thus the base case holds.
-    Suppose inductively that when \(\#(X) = n\), \(\#(Y^X) = \#(Y)^{\#(X)}\).
-    Then for \(\#(X) = n++\), let \(X = X' \cup \{x\}\), where \(x \notin X'\), so \(\#(X') = n\) and \(\#(\{x\}) = 1\).
-    We claim that there exists a bijection \(F\) from \(Y^X\) to \(Y^{X'} \times Y^{\{x\}}\).
-    By setting \(F(f_1) = (f_2, f_3)\) where \(f_1(a) = f_2(a)\) if \(a \in X'\) and \(f_1(a) = f_3(a)\) if \(a \in \{x\}\), we can show that \(F\) is bijective.
-    Let \(f_1, f_1' \in Y^X\) where \(F(f_1) = F(f_1') = (f_2, f_3)\).
-    Since \(f_1\) and \(f_1'\) have same domain and range, and \(\forall\ a \in X' \cup \{x\}\), \(f_1(a) = f_1'(a)\), so \(f_1 = f_1'\) is true, and \(F\) is injective.
-    And \(\forall\ (f_2, f_3) \in Y^{X'} \times Y^{\{x\}}\), we can always have a \(f_1 \in Y^X\) where \(f_1(a) = f_2(a)\) if \(a \in X'\) and \(f_1(a) = f_3(a)\) if \(a \in \{x'\}\), so \(F\) is surjective.
-    Because \(F\) is both injective and surjective, \(F\) is bijective, we can derive that \(\#(Y^X) = \#(Y^{X'} \times Y^{\{x\}})\).
-    By induction hypothesis, \(\#(Y^{X'}) = \#(Y)^{\#(X')}\), and by previous prove \(\#(Y^{\{x\}}) = \#(Y)\).
-    Thus \(\#(Y^X) = \#(Y^{X'} \times Y^{\{x\}}) = \#(Y^{X'}) \times \#(Y^{\{x\}}) = \#(Y)^{\#(X')} \times \#(Y) = \#(Y)^{\#(X') + 1} = \#(Y)^{\#(X)}\).
+    Suppose inductively that the statement is true for some \(\#(X) = n\).
+    We show that the statement is still true for \(\#(X) = n++\).
+    Let \(x \in X\).
+    We define a function \(h : Y^X \to Y^{X \setminus \{x\}} \times Y^{\{x\}}\) as follow:
+    \[
+        \forall\ f \in Y^X : h(f) = \bigg(g : X \setminus \{x\} \to f(X \setminus \{x\}), g' : \{x\} \to f(\{x\})\bigg),
+    \]
+    where \(\forall\ x' \in X \setminus \{x\} : g(x') = f(x')\).
+    We show that such \(h\) is bijective.
+    We start by showing \(h\) is injective.
+    \begin{align*}
+                 & \forall\ f_1, f_2 \in Y^X : h(f_1) = h(f_2)                                                              \\
+        \implies & (g_{f_1}, g_{f_1}') = (g_{f_2}, g_{f_2}')                                                                \\
+        \implies & g_{f_1} = g_{f_2} \land g_{f_2} = g_{f_2}'                     & \text{(by Definition \ref{3.5.1})}      \\
+        \implies & (\forall\ x' \in X \setminus \{x\} : g_{f_1}(x') = g_{f_2}(x') & \text{(by Definition \ref{3.3.7})}      \\
+                 & \land (\forall\ x' \in \{x\} : g_{f_1}'(x') = g_{f_2}'(x')                                               \\
+        \implies & (\forall\ x' \in X \setminus \{x\} : f_1(x') = f_2(x')                                                   \\
+                 & \land (\forall\ x' \in \{x\} : f_1(x') = f_2(x')                                                         \\
+        \implies & \forall\ x' \in X : f_1(x') = f_2(x')                          & \text{(by Proposition \ref{3.1.28}(g))} \\
+        \implies & f_1 = f_2.                                                     & \text{(by Definition \ref{3.3.7})}
+    \end{align*}
+    Thus \(h\) is injective.
+    Now we show that \(h\) is surjective.
+    \(\forall\ (g, g') \in Y^{X \setminus \{x\}} \times Y^{\{x\}}\), we define a function \(k : X \to Y\) as follow:
+    \[
+        \forall\ x' \in X : k(x') = \begin{cases}
+            g(x')  & \text{if } x' \in X \setminus \{x\} \\
+            g'(x') & \text{if } x' \in \{x\}
+        \end{cases}
+    \]
+    Then \(k \in Y^X\).
+    Thus \(h\) is surjective.
+    Since \(h\) is both injective and surjective, \(h\) is bijective, and we have \(\#(Y^X) = \#(Y^{(X \setminus \{x\})} \times Y^{\{x\}})\).
+    We now finish our induction as follow:
+    \begin{align*}
+        \#(Y^X) & = \#(Y^{(X \setminus \{x\})} \times Y^{\{x\}})       & \text{(by proof above)}                 \\
+                & = \#(Y^{(X \setminus \{x\})}) \times \#(Y^{\{x\}})   & \text{(by Proposition \ref{3.6.14}(e))} \\
+                & = \#(Y)^{\#(X \setminus \{x\})} \times \#(Y^{\{x\}}) & \text{(by induction hypothesis)}        \\
+                & = \#(Y)^{\#(X \setminus \{x\})} \times \#(Y)         & \text{(by proof above)}                 \\
+                & = \#(Y)^{\#(X \setminus \{x\}) + 1}                  & \text{(by Definition \ref{2.3.11})}     \\
+                & = \#(Y)^{\#((X \setminus \{x\}) \cup \{x\})}         & \text{(by Proposition \ref{3.6.14}(a))} \\
+                & = \#(Y)^{\#(X)}.                                     & \text{(by Proposition \ref{3.1.28}(g))}
+    \end{align*}
     This close the induction.
 \end{proof}
 
