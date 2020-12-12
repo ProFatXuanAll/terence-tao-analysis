@@ -267,23 +267,60 @@
 \end{proof}
 
 \begin{proof}{(d)}
-    Let \(\#(X) = n\).
-    We use induction on \(n\).
-    For \(n = 0\), if \(f : X \to Y\) is a function, then \(f(X) = \emptyset\).
-    Thus \(\#(f(X)) = 0 \leq 0 = \#(X)\).
-    So the base case holds.
-    Suppose inductively that when \(\#(X) = n\), for any \(f : X \to Y\) we can derive \(\#(f(X)) \leq \#(X)\).
-    Then for \(\#(X) = n++\), for any \(f : X \to Y\), we can rewrite the domain of \(f\) as \(X' \cup x\), where \(x \notin X'\).
-    So \(\#(X') = n\), and by induction hypothesis \(\#(f(X')) \leq \#(X')\).
-    Because \(f(X) = f(X') \cup \{f(x)\}\), so \(\#(f(X)) = \#(f(X') \cup \{f(x)\}) = \#(f(X')) + 1 \leq \#(X') + 1 = \#(X' \cup \{x\}) = \#(X)\).
+    Suppose that \(X\) is a finite sets.
+    By Definition \ref{3.6.10} \(\exists\ n \in \mathbf{N}\) such that \(\#(X) = n\).
+    We use induction on \(n\) to show that for any set \(Y\) and any function \(f : X \to Y\) we have \(\#(f(X)) \leq \#(X)\).
+    For \(n = 0\), let \(Y\) be arbitrary set and \(f : X \to Y\) be arbitrary function.
+    Then we have
+    \begin{align*}
+                 & X = \emptyset                                                     \\
+        \implies & f(X) = \emptyset             & \text{(by Definition \ref{3.4.1})} \\
+        \implies & \#(f(X)) = 0 \leq 0 = \#(X). & \text{(by Definition \ref{3.6.5})}
+    \end{align*}
+    Thus the base case holds.
+    Suppose inductively that the statement is true for some \(\#(X) = n\).
+    We show that the statement is still true for \(\#(X) = n++\).
+    Let \(x \in X\), \(Y\) be arbitrary set and \(f : X \to Y\) be arbitrary function.
+    If \(f(X \setminus \{x\}) = f(X)\), then we have
+    \begin{align*}
+                 & \#(f(X \setminus \{x\})) \leq \#(X \setminus \{x\}) & \text{(by induction hypothesis)}        \\
+        \implies & \#(f(X)) \leq \#(X \setminus \{x\})                                                           \\
+        \implies & \#(f(X)) < \#(X \setminus \{x\}) + 1                                                          \\
+        \implies & \#(f(X)) < \#((X \setminus \{x\}) \cup \{x\})       & \text{(by Proposition \ref{3.6.14}(a))} \\
+        \implies & \#(f(X)) < \#(X).                                   & \text{(by Proposition \ref{3.1.28}(g))}
+    \end{align*}
+    If \(f(X \setminus \{x\}) \neq f(X)\), then we have
+    \begin{align*}
+        \#(f(X)) & = \#(f(X \setminus \{x\}) \cup \{f(x)\}) & \text{(by Exercise \ref{ex 3.4.3})}     \\
+                 & = \#(f(X \setminus \{x\})) + 1           & \text{(by Proposition \ref{3.6.14}(a))} \\
+                 & \leq \#(X \setminus \{x\}) + 1           & \text{(by induction hypothesis)}        \\
+                 & = \#((X \setminus \{x\}) \cup \{x\})     & \text{(by Proposition \ref{3.6.14}(a))} \\
+                 & = \#(X).                                 & \text{(by Proposition \ref{3.1.28}(g))}
+    \end{align*}
+    From all cases above we have \(\#(f(X)) \leq \#(X)\).
     This close the induction.
 
-    Now we prove the one-to-one part.
-    Let \(f : X \to Y\) be a function which is one-to-one and \(X\) be finite.
-    We define \(g : X \to f(X)\) where \(\forall\ x \in X\), \(g(x) = f(x)\).
-    Because \(f\) is one-to-one, so \(g\) is also one-to-one.
-    And \(\forall\ y \in f(X)\), \(\exists\ x \in X\) such that \(g(x) = y\), \(g\) is surjective.
-    So \(g\) is bijective, thus \(\#(f(X)) = \#(X)\).
+    We now use induction on \(n\) to show that for any set \(Y\) and any one-to-one function \(f : X \to Y\) we have \(\#(f(X)) = \#(X)\).
+    For \(n = 0\), let \(Y\) be arbitrary set and \(f : X \to Y\) be arbitrary one-to-one function.
+    Then we have
+    \begin{align*}
+                 & X = \emptyset                                              \\
+        \implies & f(X) = \emptyset      & \text{(by Definition \ref{3.4.1})} \\
+        \implies & \#(f(X)) = 0 = \#(X). & \text{(by Definition \ref{3.6.5})}
+    \end{align*}
+    Thus the base case holds.
+    Suppose inductively that the statement is true for some \(\#(X) = n\).
+    We show that the statement is still true for \(\#(X) = n++\).
+    Let \(x \in X\), \(Y\) be arbitrary set and \(f : X \to Y\) be arbitrary one-to-one function.
+    Since \(f\) is one-to-one, we must have \(f(X \setminus \{x\}) \neq f(X)\) and
+    \begin{align*}
+        \#(f(X)) & = \#(f(X \setminus \{x\}) \cup \{f(x)\}) & \text{(by Exercise \ref{ex 3.4.3})}     \\
+                 & = \#(f(X \setminus \{x\})) + 1           & \text{(by Proposition \ref{3.6.14}(a))} \\
+                 & = \#(X \setminus \{x\}) + 1              & \text{(by induction hypothesis)}        \\
+                 & = \#((X \setminus \{x\}) \cup \{x\})     & \text{(by Proposition \ref{3.6.14}(a))} \\
+                 & = \#(X).                                 & \text{(by Proposition \ref{3.1.28}(g))}
+    \end{align*}
+    This close the induction.
 \end{proof}
 
 \begin{proof}{(e)}
