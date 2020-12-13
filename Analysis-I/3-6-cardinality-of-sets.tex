@@ -719,22 +719,51 @@
 \end{exercise}
 
 \begin{proof}
-    Let \(\#(A) = n\).
-    We use induction on \(n\).
-    For \(n = 0\), \(A = \emptyset\), so \(\#(A) + \#(B) = \#(\emptyset) + \#(B) = 0 + \#(B) = \#(B) = \#(\emptyset \cup B) = \#(A \cup B) = \#(A \cup B) + 0 = \#(A \cup B) + \#(\emptyset) = \#(A \cup B) + \#(\emptyset \cap B) = \#(A \cup B) + \#(A \cap B)\).
-    Thus \(\#(A \cup B) = \#(B)\) and \(\#(A \cap B) = \#(\emptyset) = 0\), so \(A \cup B\) and \(A \cap B\) are finite, and the base case holds.
-    Suppose inductively that when \(\#(A) = n\), \(A \cup B\) and \(A \cap B\) are finite, and \(\#(A) + \#(B) = \#(A \cup B) + \#(A \cap B)\).
-    Then when \(\#(A) = n++\), let \(A = A' \cup \{a\}\), where \(a \notin A'\), so \(\#(A') = n\) and \(\#(\{a\}) = 1\).
-    By Proposition \ref{3.6.14}, \(\#(A) = \#(A') + \#(\{a\}) = \#(A') + 1\).
-    And by induction hypothesis, \(A' \cup B\) and \(A' \cap B\) are finite, and \(\#(A') + \#(B) = \#(A' \cup B) + \#(A' \cap B)\).
-    So \(\#(A) + \#(B) = \#(A') + 1 + \#(B) = \#(A' \cup B) + \#(A' \cap B) + 1\).
-    If \(a \in B\), then \(A' \cup B = A' \cup B \cup \{a\} = A \cup B\), which means \(\#(A' \cup B) = \#(A \cup B)\), so \(A \cup B\) is finite.
-    Also \((A' \cap B) \cup \{a\} = (A' \cup \{a\}) \cap (B \cup \{a\}) = A \cap B\), and by Proposition \ref{3.6.14}, \(a \notin A' \cap B \implies (A' \cap B) \cap \{a\} = \emptyset \implies \#(A' \cap B) + \#(\{a\}) = \#((A' \cap B) \cup \{a\}) = \#(A \cap B)\), so \(A \cap B\) is finite.
-    And we derive \(\#(A) + \#(B) = \#(A' \cup B) + \#(A' \cap B) + 1 = \#(A \cup B) + \#(A \cap B)\).
-    If \(a \notin B\), then \(a \notin A' \cup B \implies A' \cap B = (A' \cap B) \cup \emptyset = (A' \cap B) \cup (\{a\} \cap B) = (A' \cup \{a\}) \cap B = A \cap B\), which means \(\#(A' \cap B) = \#(A \cap B)\), so \(A \cap B\) is finite.
-    Also by Proposition \ref{3.6.14}, \((A' \cup B) \cap \{a\} = \emptyset \implies \#(A' \cup B) + \#(\{a\}) = \#(A' \cup B \cup \{a\}) = \#(A \cup B)\), so \(A \cup B\) is finite.
-    And we derive \(\#(A) + \#(B) = \#(A' \cup B) + \#(A' \cap B) + 1 = \#(A \cup B) + \#(A \cap B)\).
-    This close the induction.
+    Suppose that \(A, B\) are finite sets.
+    By Proposition \ref{3.6.14}(b) we have \(A \cup B\) is finite.
+    By Exercise \ref{ex 3.1.7} we have \(A \cap B \subseteq A\), and thus by Proposition \ref{3.6.14}(c) we have \(A \cup B\) is finite.
+    By Definition \ref{3.6.10} \(\exists\ n \in \mathbf{N}\) such that \(\#(A) = n\).
+    We use induction on \(n\) to show that \(\#(A) + \#(B) = \#(A \cup B) + \#(A \cap B)\).
+    For \(n = 0\), we have \(A = \emptyset\) and
+    \begin{align*}
+        \#(\emptyset) + \#(B) & = 0 + \#(B)                                    & \text{(by Definition \ref{3.6.5})}      \\
+                              & = \#(B)                                                                                  \\
+                              & = \#(\emptyset \cup B)                         & \text{(by Proposition \ref{3.1.28}(a))} \\
+                              & = \#(\emptyset \cup B) + 0                                                               \\
+                              & = \#(\emptyset \cup B) + \#(\emptyset)         & \text{(by Definition \ref{3.6.5})}      \\
+                              & = \#(\emptyset \cup B) + \#(\emptyset \cap B). & \text{(by Proposition \ref{3.1.28}(a))}
+    \end{align*}
+    Thus the base case holds.
+    Suppose inductively that for some \(n\) the statement is true.
+    We now show that for \(n++\) the statement is also true.
+    Since \(\#(A) = n++\), By Proposition \ref{3.6.8} we must have \(A \neq \emptyset\).
+    Let \(a \in A\).
+    Then we have
+    \begin{align*}
+         & \#(A) + \#(B)                                                                                                    \\
+         & = \#((A \setminus \{a\}) \cup \{a\}) + \#(B)                           & \text{(by Proposition \ref{3.1.28}(g))} \\
+         & = \#(A \setminus \{a\}) + 1 + \#(B)                                    & \text{(by Proposition \ref{3.6.14}(a))} \\
+         & = \#((A \setminus \{a\}) \cup B) + \#((A \setminus \{a\}) \cap B) + 1. & \text{(by induction hypothesis)}
+    \end{align*}
+    We now divide into two cases:
+    \begin{enumerate}
+        \item If \(a \in B\), then we have
+              \begin{align*}
+                   & \#((A \setminus \{a\}) \cup B) + \#((A \setminus \{a\}) \cap B) + 1                                                 \\
+                   & = \#(A \cup B) + \#((A \setminus \{a\}) \cap B) + 1                                                                 \\
+                   & = \#(A \cup B) + \#(((A \setminus \{a\}) \cap B) \cup \{a\})              & \text{(by Proposition \ref{3.6.14}(a))} \\
+                   & = \#(A \cup B) + \#(((A \setminus \{a\}) \cup \{a\}) \cap (B \cup \{a\})) & \text{(by Proposition \ref{3.1.28}(f))} \\
+                   & = \#(A \cup B) + \#(A \cap B).                                            & \text{(by Proposition \ref{3.1.28}(g))}
+              \end{align*}
+        \item If \(a \notin B\), then we have
+              \begin{align*}
+                   & \#((A \setminus \{a\}) \cup B) + \#((A \setminus \{a\}) \cap B) + 1                                           \\
+                   & = \#((A \setminus \{a\}) \cup B) + \#(A \cap B) + 1                                                           \\
+                   & = \#(((A \setminus \{a\}) \cup B) \cup \{a\}) + \#(A \cap B)        & \text{(by Proposition \ref{3.6.14}(a))} \\
+                   & = \#(A \cup B) + \#(A \cap B).                                      & \text{(by Proposition \ref{3.1.28}(d))}
+              \end{align*}
+    \end{enumerate}
+    From all cases above we have \(\#(A) + \#(B) = \#(A \cup B) + \#(A \cap B)\) and this close the induction.
 \end{proof}
 
 \begin{exercise}\label{ex 3.6.10}
