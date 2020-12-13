@@ -664,22 +664,28 @@
 \end{exercise}
 
 \begin{proof}
-    We first prove the necessary condition.
-    Let \(f : A \to B\) be a injective function.
-    By Proposition \ref{3.6.14}, \(\#(A) = \#(f(A))\).
-    Also by Proposition \ref{3.6.14}, \(f(A) \subseteq B \implies \#(f(A)) \leq \#(B)\).
-    So \(\#(A) = \#(f(A)) \leq \#(B)\).
-
-    Now we prove the sufficient condition.
-    Because \(\#(A) \leq \#(B)\), either \(\#(A) = \#(B)\) or \(\#(A) < \#(B)\) is true.
-    If \(\#(A) = \#(B)\), then \(\exists\ f \in B^A\) such that \(f\) is bijective, so \(f\) is injective.
-    If \(\#(A) < \#(B)\), then \(\forall\ f \in B^A\), \(f\) is not bijective.
-    Since \(f\) is not bijective, \(f\) is not injective or not surjective, and we choose \(f\) is not surjective.
-    So we can define  \(f : A \to B\) by setting \(x = x'\) if \(f(x) = f(x') \ \forall\ x, x' \in A\).
-    We can also set that \(\exists\ y \in B\) such that \(\forall\ x \in A\), \(f(x) \neq y\).
-    Thus \(f \in B^A\), \(f\) is not surjective and \(f\) is injective.
-
-    Since both the necessary and sufficient conditions are proved, we conclude that \(A\) has lesser or equal cardinality to \(B\) if and only if \(\#(A) \leq \#(B)\).
+    Suppose that \(A, B\) are finite sets.
+    Then we have
+    \begin{align*}
+                 & A \text{ has lesser or equal cardinality to } B                                             \\
+        \implies & \exists\ f : A \to B \land f \text{ is injective}                                           \\
+        \implies & f(A) \subseteq B                                  & \text{(by Definition \ref{3.4.1})}      \\
+                 & \land \#(f(A)) = \#(A)                            & \text{(by Proposition \ref{3.6.14}(d))} \\
+        \implies & \#(A) = \#(f(A)) \leq \#(B).                      & \text{(by Proposition \ref{3.6.14}(c))}
+    \end{align*}
+    And
+    \begin{align*}
+                 & \#(A) \leq \#(B)                                                                                                                            \\
+        \implies & \exists\ g : \{i \in \mathbf{N} : 1 \leq i \leq \#(A)\} \to A                                                                               \\
+                 & \land g \text{ is bijective}                                                                          & \text{(by Definition \ref{3.6.5})}  \\
+                 & \land \exists\ g' : \{i \in \mathbf{N} : 1 \leq i \leq \#(B)\} \to B                                                                        \\
+                 & \land g' \text{ is bijective}                                                                         & \text{(by Definition \ref{3.6.5})}  \\
+                 & \land \{i \in \mathbf{N} : 1 \leq i \leq \#(A)\} \subseteq \{i \in \mathbf{N} : 1 \leq i \leq \#(B)\}                                       \\
+        \implies & g'(g^{-1}(A)) \subseteq B                                                                             & \text{(by Definition \ref{3.4.1})}  \\
+                 & \land g' \circ g^{-1} \text{ is bijective}                                                            & \text{(by Exercise \ref{ex 3.3.2})} \\
+        \implies & A \text{ has lesser or equal cardinality to } B.                                                      & \text{(by Definition \ref{3.3.20})}
+    \end{align*}
+    Thus we conclude that if \(A, B\) are finite sets, then \(A\) has lesser or equal cardinality to \(B\) iff \(\#(A) \leq \#(B)\).
 \end{proof}
 
 \begin{exercise}\label{ex 3.6.8}
