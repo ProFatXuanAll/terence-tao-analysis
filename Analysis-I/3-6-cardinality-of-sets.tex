@@ -524,16 +524,38 @@
 \end{exercise}
 
 \begin{proof}
-    Let \(f : A \times B \to B \times A\) and setting \(f((a, b)) = (b, a)\), where \((a \in A) \land (b \in B)\).
-    We want to show that \(f\) is bijective.
-    Let \((a_1, b_1), (a_2, b_2) \in A \times B\) where \(f(a_1, b_1) = f(a_2, b_2)\).
-    Then \(f(a_1, b_1) = (b_1, a_1) = (b_2, a_2) = f(a_2, b_2)\), which means \(a_1 = a_2\) and \(b_1 = b_2\), so \((a_1, b_1) = (a_2, b_2)\), and \(f\) is injective.
-    Let \((b, a) \in B \times A\), there exists a order pair \((a, b) \in A \times B\) where \(f((a, b)) = (b, a)\), so \(f\) is surjective.
-    Since \(f\) is both injective and surjective, \(f\) is bijective, and \(\#(A \times B) = \#(B \times A)\).
+    Suppose that \(A, B\) are sets.
+    By Definition \ref{3.5.4} we have \(A \times B, B \times A\) are sets.
+    We define a function \(f : A \times B \to B \times A\) by setting \(\forall\ (a, b) \in A \times B : f(a, b) = (b, a)\).
+    We now show that such \(f\) is bijective.
+    We start by showing \(f\) is injective.
+    \begin{align*}
+                 & \forall\ (a, b), (a', b') \in A \times B : f(a, b) = f(a', b')                                      \\
+        \implies & (b, a) = (b', a')                                                                                   \\
+        \implies & b = b' \land a = a'                                            & \text{(by Definition \ref{3.5.1})} \\
+        \implies & (a, b) = (a', b').                                             & \text{(by Definition \ref{3.5.1})}
+    \end{align*}
+    Thus \(f\) is injective.
+    Now we show that \(f\) is surjective.
+    This is true since
+    \[
+        \forall\ (b, a) \in B \times A, \exists\ (a, b) \in A \times B : f(a, b) = (b, a).
+    \]
+    Thus \(f\) is surjective.
+    Since \(f\) is both injective and surjective, we conclude that \(f\) is bijective.
+    Since \(f\) is bijective, we conclude that \(\#(A \times B) = \#(B \times A)\).
 
-    By Proposition \ref{3.6.14}, \(\#(A \times B) = \#(A) \times \#(B)\) and \(\#(B \times A) = \#(B) \times \#(A)\).
-    Since \(\#(A), \#(B) \in \mathbf{N}\) and \(\#(A \times B) = \#(B \times A)\), \(\#(A) \times \#(B) = \#(B) \times \#(A)\).
-    This conclude the Lemma \ref{2.3.2}.
+    Now suppose that \(A, B\) are two finite set.
+    By Definition \ref{3.6.5}, \(\exists\ n, m \in \mathbf{N}\) such that \(\#(A) = n \land \#(B) = m\).
+    Then we have
+    \begin{align*}
+        \#(A \times B) & = \#(A) \times \#(B) & \text{(by Proposition \ref{3.6.14}(e))} \\
+                       & = n \times m                                                   \\
+                       & = \#(B \times A)     & \text{(by proof above)}                 \\
+                       & = \#(B) \times \#(A) & \text{(by Proposition \ref{3.6.14}(e))} \\
+                       & = m \times n.
+    \end{align*}
+    Thus Lemma \ref{2.3.2} is true.
 \end{proof}
 
 \begin{exercise}\label{ex 3.6.6}
