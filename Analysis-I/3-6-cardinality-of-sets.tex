@@ -694,13 +694,23 @@
 \end{exercise}
 
 \begin{proof}
-    Because \(f\) is injective, so \(\#(A) \leq \#(B)\), and we divide into two cases.
-    If \(\#(A) = \#(B)\), then \(\exists\ g \in A^B\) where \(g\) is bijective, so \(g\) is surjective.
-    If \(\#(A) < \#(B)\), then \(\forall\ g \in A^B\) where \(g\) is not bijective.
-    Since \(g\) is not bijective, \(g\) is either not injective or not surjective, and we choose \(g\) is not injective.
-    So we can define \(g : B \to A\) by setting \(\exists\ x, x' \in B\), \(g(x) = g(x')\) and \(x \neq x'\).
-    We can also set that \(\forall\ y \in A\), there exists a \(x \in B\) such that \(g(x) = y\).
-    Thus \(g \in A^B\), \(g\) is not injective and \(g\) is surjective.
+    Suppose that \(A, B\) are sets, \(A \neq \emptyset\) and \(f : A \to B\) where \(f\) is injection.
+    We now define a function \(g : B \to A\) as follow:
+    \[
+        \forall\ b \in B : \begin{cases}
+            g(b) \in A \setminus \{a\} & \text{if } b \in f(A \setminus \{a\})  \\
+            g(b) = a                   & \text{if } b \notin f(A) \lor b = f(a)
+        \end{cases}
+    \]
+    where \(a \in A\) is a fixed value.
+    We now show that \(g\) is surjective.
+    \begin{align*}
+                 & \forall\ a' \in A : (a' = a) \lor (a' \neq a)                                                       \\
+        \implies & (\exists\ b \in B : b \notin f(A) \lor b = f(a'))     & \text{(\(a' = a \land f\) is injective)}    \\
+                 & \lor (\exists\ b \in B : b \in f(A \setminus \{a'\})) & \text{(\(a' \neq a \land f\) is injective)} \\
+        \implies & \exists\ b \in B : g(b) = a'.
+    \end{align*}
+    Thus \(g\) is surjective.
 \end{proof}
 
 \begin{exercise}\label{ex 3.6.9}
