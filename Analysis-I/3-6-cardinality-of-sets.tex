@@ -488,15 +488,24 @@
 \end{exercise}
 
 \begin{proof}
-    We use induction on \(n\).
-    For \(n = 0\), \(\{i \in \mathbf{N} : 1 \leq i \leq 0\} = \emptyset\), so \(\forall\ x \in \emptyset\), \(f(x) \leq M\) is vacuously true for any \(M \in \mathbf{N}\).
+    Suppose that \(n \in \mathbf{N}\).
+    We use induction on \(n\) to show that for any function \(f : \{i \in \mathbf{N} : 1 \leq i \leq n\} \to \mathbf{N}\), \(\exists\ M \in \mathbf{N}\) such that \(f(i) \leq M\).
+    For \(n = 0\), for any function \(f : \{i \in \mathbf{N} : 1 \leq i \leq 0\} \to \mathbf{N}\) we have
+    \begin{align*}
+                 & f : \{i \in \mathbf{N} : 1 \leq i \leq 0\} \to \mathbf{N}                                        \\
+        \implies & f : \emptyset \to \mathbf{N}                                       & \text{(by Axiom \ref{3.2})} \\
+        \implies & \forall\ M \in \mathbf{N}, \forall\ i \in \emptyset : f(i) \leq M. & \text{(trivially true)}     \\
+    \end{align*}
     Thus the base case holds.
-    Suppose inductively that for some \(n \in \mathbf{N}\), for any function \(f : \{i \in \mathbf{N} : 1 \leq i \leq n\} \to \mathbf{N}\) there exists a natural number \(M\) such that \(f(i) \leq M\) for all \(1 \leq i \leq n\).
-    Then for \(n++\), let \(f\) be a function, \(f : \{i \in \mathbf{N} : 1 \leq i \leq n++\} \to \mathbf{N}\).
-    By induction hypothesis, there exists \(M' \in \mathbf{N}\), \(f(i) \leq M'\) for all \(1 \leq i \leq n\).
-    Let \(M = M' + f(n++)\), then \(f(i) \leq M' \leq M\) for all \(1 \leq i \leq n\).
-    And \(f(n++) \leq f(n++) = M\).
-    So \(f(i) \leq M\) for all \(1 \leq i \leq n++\).
+    Suppose inductively that for some \(n\) the statement is true.
+    Then for \(n++\), for any function \(f : \{i \in \mathbf{N} : 1 \leq i \leq n++\} \to \mathbf{N}\) we have
+    \begin{enumerate}
+        \item By induction hypothesis, \(\exists\ M \in \mathbf{N}\) such that \(f(\{i \in \mathbf{N} : 1 \leq i \leq n\}) \leq M\).
+        \item By Proposition \ref{2.2.13}, exactly one of \(M < f(n++)\), \(M = f(n++)\) or \(M > f(n++)\) is true.
+    \end{enumerate}
+    If \(f(n++) \leq M\), then we have \(\forall\ i \in \{i \in \mathbf{N} : 1 \leq i \leq n++\} : f(i) \leq M\).
+    If \(f(n++) > M\), then we can set \(M' = f(n++)\) and thus \(\forall\ i \in \{i \in \mathbf{N} : 1 \leq i \leq n++\} : f(i) \leq M'\).
+    In all cases above we can conclude that \(\exists\ M \in \mathbf{N}\) such that \(\forall\ i \in \{i \in \mathbf{N} : 1 \leq i \leq n++\} : f(i) \leq M\).
     This close the induction.
 \end{proof}
 
