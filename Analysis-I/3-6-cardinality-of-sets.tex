@@ -773,26 +773,33 @@
 \end{exercise}
 
 \begin{proof}
-    We use induction on \(n\).
-    We start from \(n = 1\) because for \(n = 0\), the statement is vacuously true.
-    For \(n = 1\), let \(\#(\bigcup_{i \in \{1\}} A_i) > 1\).
-    Because \(\bigcup_{i \in \{1\}} A_i = A_1\), so \(\#(A_1) > 1\), or equivalently, \(\#(A_1) \geq 2\).
+    Suppose that \(n \in \mathbf{N}\), \(A_1, \dots, A_n\) are finite sets and \(\#(\bigcup_{i \in \{1, \dots, n\}} A_i) > n\).
+    We use induction on \(n\) to show that \(\exists\ i \in \{1, \dots, n\} : \#(A_i) \geq 2\).
+    We start with \(n = 1\) since for \(n = 0\) the statement is vacuously true.
+    For \(n = 1\), we have
+    \begin{align*}
+                 & \#(\bigcup_{i \in \{1, \dots, 1\}} A_i) > 1                                \\
+        \implies & \#(A_1) > 1                                 & \text{(by Axiom \ref{3.11})} \\
+        \implies & \#(A_1) \geq 2.
+    \end{align*}
     Thus the base case holds.
-    Suppose inductively that for some \(n \in \mathbf{N}\), if \(\#(\bigcup_{i \in \{1, \dots, n\}} A_i) > n\), then \(\exists\ i \in \{1, \dots, n\}\) such that \(\#(A_i) \geq 2\).
-    Then for \(n++\), let \(\#(\bigcup_{i \in \{1, \dots, n++\}} A_i) > n++\), and we can divide into three cases.
-
-    If \(\#(A_{n++}) = 0\), then \(\bigcup_{i \in \{1, \dots, n++\}} A_i = \bigcup_{i \in \{1, \dots, n\}} A_i\).
-    So \(\#(\bigcup_{i \in \{1, \dots, n\}} A_i) > n++ > n\), and by induction hypothesis \(\exists\ i \in \{1, \dots, n\}\) such that \(\#(A_i) \geq 2\), which means \(\exists\ i \in \{1, \dots, n++\}\) such that \(\#(A_i) \geq 2\).
-    Thus we are done in case \(\#(A_{n++}) = 0\).
-
-    If \(\#(A_{n++}) = 1\), let \(x \in A_{n++}\).
-    If \(x \in \bigcup_{i \in \{1, \dots, n\}} A_i\), then \(\bigcup_{i \in \{1, \dots, n++\}} A_i = \bigcup_{i \in \{1, \dots, n\}} A_i\), so \(\#(\bigcup_{i \in \{1, \dots, n\}} A_i) > n++ > n\), and by induction hypothesis \(\exists\ i \in \{1, \dots, n\}\) such that \(\#(A_i) \geq 2\), which means \(\exists\ i \in \{1, \dots, n++\}\) such that \(\#(A_i) \geq 2\).
-    If \(x \notin \bigcup_{i \in \{1, \dots, n\}} A_i\), then by Proposition \ref{3.6.14}, \((\bigcup_{i \in \{1, \dots, n\}} A_i) \cap A_{n++} = \emptyset \implies \#(\bigcup_{i \in \{1, \dots, n\}} A_i) + \#(A_{n++}) = \#((\bigcup_{i \in \{1, \dots, n\}} A_i) \cup A_{n++}) = \#(\bigcup_{i \in \{1, \dots, n++\}} A_i)\).
-    And because \(\#(\bigcup_{i \in \{1, \dots, n++\}} A_i) > n++\), and \(\#(\bigcup_{i \in \{1, \dots, n\}} A_i) + \#(A_{n++}) = \#(\bigcup_{i \in \{1, \dots, n\}} A_i) + 1 > n++\), so \(\#(\bigcup_{i \in \{1, \dots, n\}} A_i) > n\).
-    By induction hypothesis \(\exists\ i \in \{1, \dots, n\}\) such that \(\#(A_i) \geq 2\), which means \(\exists\ i \in \{1, \dots, n++\}\) such that \(\#(A_i) \geq 2\).
-    Thus we are done in case \(\#(A_{n++}) = 1\).
-
-    If \(\#(A_{n++}) \geq 2\), then \(\exists i \in \{1, \dots, n++\}\) such that \(\#(A_i) \geq 2\).
-    Thus we are done in case \(\#(A_{n++}) = 2\).
+    Suppose inductively that for some \(n\) the statement is true.
+    Then for \(n++\), we have
+    \begin{align*}
+                 & \#(\bigcup_{i \in \{1, \dots, n++\}} A_i) > n++                                                        \\
+        \implies & \#((\bigcup_{i \in \{1, \dots, n\}} A_i) \cup A_{n++}) > n++ & \text{(by Axiom \ref{3.11})}            \\
+        \implies & \#(\bigcup_{i \in \{1, \dots, n\}} A_i) + \#(A_{n++}) > n++. & \text{(by Proposition \ref{3.6.14}(b))}
+    \end{align*}
+    Now we split into three cases:
+    \begin{enumerate}
+        \item If \(\#(A_{n++}) = 0\), then we have \(\#(\bigcup_{i \in \{1, \dots, n\}} A_i) > n++ > n\).
+              By induction hypothesis, \(\exists\ i \in \{1, \dots, n\} : \#(A_i) \geq 2\).
+              Then we have \(\exists\ i \in \{1, \dots, n++\} : \#(A_i) \geq 2\).
+        \item If \(\#(A_{n++}) = 1\), then we have \(\#(\bigcup_{i \in \{1, \dots, n\}} A_i) + 1 > n++\).
+              This means \(\#(\bigcup_{i \in \{1, \dots, n\}} A_i) > n\) and by induction hypothesis, \(\exists\ i \in \{1, \dots, n\} : \#(A_i) \geq 2\).
+              Then we have \(\exists\ i \in \{1, \dots, n++\} : \#(A_i) \geq 2\).
+        \item If \(\#(A_{n++}) > 1\), then \(\#(A_{n++}) \geq 2\) and we have \(\exists\ i \in \{1, \dots, n++\} : \#(A_i) \geq 2\).
+    \end{enumerate}
+    From all cases above we have \(\exists\ i \in \{1, \dots, n++\} : \#(A_i) \geq 2\).
     This close the induction.
 \end{proof}
