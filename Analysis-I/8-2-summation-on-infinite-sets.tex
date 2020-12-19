@@ -1,305 +1,305 @@
 \section{Summation on infinite sets}\label{sec 8.2}
 
 \begin{definition}[Series on countable sets]\label{8.2.1}
-Let \(X\) be a countable set, and let \(f : X \to \mathbf{R}\) be a function.
-We say that the series \(\sum_{x \in X} f(x)\) is absolutely convergent iff for some bijection \(g : \mathbf{N} \to X\), the sum \(\sum_{n = 0}^\infty f(g(n))\) is absolutely convergent.
-We then define the sum of \(\sum_{x \in X} f(x)\) by the formula
-\[
-    \sum_{x \in X} f(x) = \sum_{n = 0}^\infty f(g(n)).
-\]
+    Let \(X\) be a countable set, and let \(f : X \to \mathbf{R}\) be a function.
+    We say that the series \(\sum_{x \in X} f(x)\) is absolutely convergent iff for some bijection \(g : \mathbf{N} \to X\), the sum \(\sum_{n = 0}^\infty f(g(n))\) is absolutely convergent.
+    We then define the sum of \(\sum_{x \in X} f(x)\) by the formula
+    \[
+        \sum_{x \in X} f(x) = \sum_{n = 0}^\infty f(g(n)).
+    \]
 \end{definition}
 
 \begin{note}
-From Proposition \ref{7.4.3} (and Proposition \ref{3.6.4}), one can show that these definitions do not depend on the choice of \(g\), and so are well defined.
+    From Proposition \ref{7.4.3} (and Proposition \ref{3.6.4}), one can show that these definitions do not depend on the choice of \(g\), and so are well defined.
 \end{note}
 
 \begin{note}
-For finite sets \(X\) we adopt the convention that series \(\sum_{x \in X} f(x)\) are automatically considered to be absolutely convergent.
+    For finite sets \(X\) we adopt the convention that series \(\sum_{x \in X} f(x)\) are automatically considered to be absolutely convergent.
 \end{note}
 
 \begin{theorem}[Fubini's theorem for infinite sums]\label{8.2.2}
-Let \(f : \mathbf{N} \times \mathbf{N} \to \mathbf{R}\) be a function such that \(\sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f(n, m)\) is absolutely convergent.
-Then we have
-\begin{align*}
-\sum_{n = 0}^\infty \bigg(\sum_{m = 0}^\infty f(n, m)\bigg) &= \sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f(n, m) \\
-&= \sum_{(m, n) \in \mathbf{N} \times \mathbf{N}} f(n, m) \\
-&= \sum_{m = 0}^\infty \bigg(\sum_{n = 0}^\infty f(n, m)\bigg).
-\end{align*}
-In other words, we can switch the order of infinite sums \emph{provided that the entire sum is absolutely convergent}.
+    Let \(f : \mathbf{N} \times \mathbf{N} \to \mathbf{R}\) be a function such that \(\sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f(n, m)\) is absolutely convergent.
+    Then we have
+    \begin{align*}
+        \sum_{n = 0}^\infty \bigg(\sum_{m = 0}^\infty f(n, m)\bigg) & = \sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f(n, m)       \\
+                                                                    & = \sum_{(m, n) \in \mathbf{N} \times \mathbf{N}} f(n, m)       \\
+                                                                    & = \sum_{m = 0}^\infty \bigg(\sum_{n = 0}^\infty f(n, m)\bigg).
+    \end{align*}
+    In other words, we can switch the order of infinite sums \emph{provided that the entire sum is absolutely convergent}.
 \end{theorem}
 
 \begin{proof}
-The second equality follows easily from Proposition \ref{7.4.3} (and Proposition \ref{3.6.4}).
+    The second equality follows easily from Proposition \ref{7.4.3} (and Proposition \ref{3.6.4}).
 
-Let us first consider the case when \(f(n, m)\) is always non-negative (we will deal with the general case later).
-Write
-\[
-    L \coloneqq \sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f(n, m);
-\]
-our task is to show that the series \(\sum_{n = 0}^\infty (\sum_{m = 0}^\infty f(n, m))\) converges to \(L\).
+    Let us first consider the case when \(f(n, m)\) is always non-negative (we will deal with the general case later).
+    Write
+    \[
+        L \coloneqq \sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f(n, m);
+    \]
+    our task is to show that the series \(\sum_{n = 0}^\infty (\sum_{m = 0}^\infty f(n, m))\) converges to \(L\).
 
-One can easily show that \(\sum_{(n, m) \in X} f(n, m) \leq L\) for all finite sets \(X \subseteq \mathbf{N} \times \mathbf{N}\).
-(Use a bijection \(g\) between \(\mathbf{N} \times \mathbf{N}\) and \(\mathbf{N} \times \mathbf{N}\), and then use the fact that \(g(X)\) is finite, hence bounded.)
-In particular, for every \(n \in \mathbf{N}\) and \(M \in \mathbf{N}\) we have \(\sum_{m = 0}^M f(n, m) \leq L\), which implies by Proposition \ref{6.3.8} that \(\sum_{m = 0}^\infty f(n, m)\) is convergent for each \(n\).
-Similarly, for any \(N \in \mathbf{N}\) and \(M \in \mathbf{N}\) we have (by Corollary \ref{7.1.14})
-\[
-    \sum_{n = 0}^N \sum_{m = 0}^M f(n, m) = \sum_{(n, m) \in X} f(n, m) \leq L
-\]
-where \(X\) is the set \(\{(n,m) \in \mathbf{N} \times \mathbf{N} : n \leq N, m \leq M\}\) which is finite by Proposition \ref{3.6.14}.
-Taking limits of this as \(M \to \infty\) we have (by Exercise \ref{ex 7.1.5} and either Proposition \ref{6.3.8} or Lemma \ref{6.4.13})
-\[
-    \sum_{n = 0}^N \sum_{m = 0}^\infty f(n, m) \leq L.
-\]
-By Proposition \ref{6.3.8}, this implies that \(\sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m)\) converges, and
-\[
-    \sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) \leq L.
-\]
-To finish the proof, it will suffice to show that
-\[
-    \sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) \geq L - \varepsilon
-\]
-for every \(\varepsilon > 0\).
-\begin{align*}
-& L \geq \sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) \geq L - \varepsilon \\
-\implies & L + \varepsilon \geq \sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) \geq L - \varepsilon \\
-\implies & \varepsilon \geq \sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) - L \geq -\varepsilon \\
-\implies & \abs*{\sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) - L} \leq \varepsilon \\
-\end{align*}
-So, let \(\varepsilon > 0\).
-By definition of \(L\), we can then find a finite set \(X \subseteq \mathbf{N} \times \mathbf{N}\) such that \(\sum_{(n, m) \in X} f(n, m) \geq L - \varepsilon\).
-(Since \(\mathbf{N} \times \mathbf{N}\) is countable by Corollary \ref{8.1.13}, we can find a bijection \(g : \mathbf{N} \to \mathbf{N} \times \mathbf{N}\) such that \(\sum_{i = 0}^\infty f(g(i)) = L\), which means \(\forall\ \varepsilon > 0\), \(\exists\ H \in \mathbf{N} \land H \geq 0\) such that \(\abs*{\sum_{i = 0}^h f(g(i)) - L} \leq \varepsilon\) for all \(h \geq H\).
-Now we can choose \(X = \{g(i) : 0 \leq i \leq H\}\))
-This set, being finite, must be contained in some set of the form \(Y \coloneqq \{(n,m) \in \mathbf{N} \times \mathbf{N} : n \leq N; m \leq M \}\).
-Thus by Corollary \ref{7.1.14}
-\[
-    \sum_{n = 0}^N \sum_{m = 0}^M f(n, m) = \sum_{(n, m) \in Y} f(n, m) \geq \sum_{(n, m) \in X} f(n, m) \geq L - \varepsilon
-\]
-and hence
-\[
-    \sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) \geq \sum_{n = 0}^N \sum_{m = 0}^\infty f(n, m) \geq \sum_{n = 0}^N \sum_{m = 0}^M f(n, m) \geq L - \varepsilon
-\]
-as desired.
+    One can easily show that \(\sum_{(n, m) \in X} f(n, m) \leq L\) for all finite sets \(X \subseteq \mathbf{N} \times \mathbf{N}\).
+    (Use a bijection \(g\) between \(\mathbf{N} \times \mathbf{N}\) and \(\mathbf{N} \times \mathbf{N}\), and then use the fact that \(g(X)\) is finite, hence bounded.)
+    In particular, for every \(n \in \mathbf{N}\) and \(M \in \mathbf{N}\) we have \(\sum_{m = 0}^M f(n, m) \leq L\), which implies by Proposition \ref{6.3.8} that \(\sum_{m = 0}^\infty f(n, m)\) is convergent for each \(n\).
+    Similarly, for any \(N \in \mathbf{N}\) and \(M \in \mathbf{N}\) we have (by Corollary \ref{7.1.14})
+    \[
+        \sum_{n = 0}^N \sum_{m = 0}^M f(n, m) = \sum_{(n, m) \in X} f(n, m) \leq L
+    \]
+    where \(X\) is the set \(\{(n,m) \in \mathbf{N} \times \mathbf{N} : n \leq N, m \leq M\}\) which is finite by Proposition \ref{3.6.14}.
+    Taking limits of this as \(M \to \infty\) we have (by Exercise \ref{ex 7.1.5} and either Proposition \ref{6.3.8} or Lemma \ref{6.4.13})
+    \[
+        \sum_{n = 0}^N \sum_{m = 0}^\infty f(n, m) \leq L.
+    \]
+    By Proposition \ref{6.3.8}, this implies that \(\sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m)\) converges, and
+    \[
+        \sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) \leq L.
+    \]
+    To finish the proof, it will suffice to show that
+    \[
+        \sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) \geq L - \varepsilon
+    \]
+    for every \(\varepsilon > 0\).
+    \begin{align*}
+                 & L \geq \sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) \geq L - \varepsilon               \\
+        \implies & L + \varepsilon \geq \sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) \geq L - \varepsilon \\
+        \implies & \varepsilon \geq \sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) - L \geq -\varepsilon    \\
+        \implies & \abs*{\sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) - L} \leq \varepsilon               \\
+    \end{align*}
+    So, let \(\varepsilon > 0\).
+    By definition of \(L\), we can then find a finite set \(X \subseteq \mathbf{N} \times \mathbf{N}\) such that \(\sum_{(n, m) \in X} f(n, m) \geq L - \varepsilon\).
+    (Since \(\mathbf{N} \times \mathbf{N}\) is countable by Corollary \ref{8.1.13}, we can find a bijection \(g : \mathbf{N} \to \mathbf{N} \times \mathbf{N}\) such that \(\sum_{i = 0}^\infty f(g(i)) = L\), which means \(\forall\ \varepsilon > 0\), \(\exists\ H \in \mathbf{N} \land H \geq 0\) such that \(\abs*{\sum_{i = 0}^h f(g(i)) - L} \leq \varepsilon\) for all \(h \geq H\).
+    Now we can choose \(X = \{g(i) : 0 \leq i \leq H\}\))
+    This set, being finite, must be contained in some set of the form \(Y \coloneqq \{(n,m) \in \mathbf{N} \times \mathbf{N} : n \leq N; m \leq M \}\).
+    Thus by Corollary \ref{7.1.14}
+    \[
+        \sum_{n = 0}^N \sum_{m = 0}^M f(n, m) = \sum_{(n, m) \in Y} f(n, m) \geq \sum_{(n, m) \in X} f(n, m) \geq L - \varepsilon
+    \]
+    and hence
+    \[
+        \sum_{n = 0}^\infty \sum_{m = 0}^\infty f(n, m) \geq \sum_{n = 0}^N \sum_{m = 0}^\infty f(n, m) \geq \sum_{n = 0}^N \sum_{m = 0}^M f(n, m) \geq L - \varepsilon
+    \]
+    as desired.
 
-This proves the claim when the \(f(n, m)\) are all non-negative.
-A similar argument works when the \(f(n, m)\) are all non-positive
-(in fact, one can simply apply the result just obtained to the function \(-f(n, m)\), and then use limit laws to remove the \(-\).
-For the general case, note that any function \(f(n, m)\) can be written as \(f_+(n, m) + f_-(n, m)\), where \(f_+(n, m)\) is the positive part of \(f(n, m)\)
-(i.e., it equals \(f(n, m)\) when \(f(n, m)\) is positive, and \(0\) otherwise),
-and \(f_-\) is the negative part of \(f(n, m)\)
-(it equals \(f(n, m)\) when \(f(n, m)\) is negative, and \(0\) otherwise).
-It is easy to show that if \(\sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f(n, m)\) is absolutely convergent, then so are \(\sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f_+(n, m)\) and \(\sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f_-(n, m)\).
-So now one applies the results just obtained to \(f_+\) and to \(f_-\) and adds them together using limit laws to obtain the result for a general \(f\).
+    This proves the claim when the \(f(n, m)\) are all non-negative.
+    A similar argument works when the \(f(n, m)\) are all non-positive
+    (in fact, one can simply apply the result just obtained to the function \(-f(n, m)\), and then use limit laws to remove the \(-\).
+    For the general case, note that any function \(f(n, m)\) can be written as \(f_+(n, m) + f_-(n, m)\), where \(f_+(n, m)\) is the positive part of \(f(n, m)\)
+    (i.e., it equals \(f(n, m)\) when \(f(n, m)\) is positive, and \(0\) otherwise),
+    and \(f_-\) is the negative part of \(f(n, m)\)
+    (it equals \(f(n, m)\) when \(f(n, m)\) is negative, and \(0\) otherwise).
+    It is easy to show that if \(\sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f(n, m)\) is absolutely convergent, then so are \(\sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f_+(n, m)\) and \(\sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f_-(n, m)\).
+    So now one applies the results just obtained to \(f_+\) and to \(f_-\) and adds them together using limit laws to obtain the result for a general \(f\).
 \end{proof}
 
 \begin{lemma}\label{8.2.3}
-Let \(X\) be a countable set, and let \(f : X \to \mathbf{R}\) be a function.
-Then the series \(\sum_{x \in X} f(x)\) is absolutely convergent if and only if
-\[
-    \sup\Bigg\{\sum_{x \in A} \abs*{f(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty.
-\]
+    Let \(X\) be a countable set, and let \(f : X \to \mathbf{R}\) be a function.
+    Then the series \(\sum_{x \in X} f(x)\) is absolutely convergent if and only if
+    \[
+        \sup\Bigg\{\sum_{x \in A} \abs*{f(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty.
+    \]
 \end{lemma}
 
 \begin{proof}
-Let \(P(X, f)\) be the statement
-\[
-    \sup\Bigg\{\sum_{x \in A} \abs*{f(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty.
-\]
-We first show that if \(\sum_{x \in X} f(x)\) is absolutely convergent, then \(P(X, f)\) is true.
-Let \(L = \sum_{x \in X} f(x)\).
-Since \(\sum_{x \in X} f(x)\) is absolutely convergent, by Definition \ref{8.2.1} \(\exists\ g : \mathbf{N} \to X\) where \(g\) is a bijection such that
-\[
-    L = \sum_{x \in X} \abs*{f(x)} = \sum_{n = 0}^\infty \abs*{f(g(n))}.
-\]
-Let \(A \subseteq X\) be a finite set.
-Since \(g\) is a bijection, we have
-\[
-    \sum_{x \in A} \abs*{f(x)} = \sum_{n \in g^{-1}(A)} \abs*{f(g(n))}
-\]
-Since \(A\) is finite, by Exercise \ref{ex 3.6.3}, \(\exists\ M \in \mathbf{N}\) such that \(g^{-1}(A)\) is bounded by \(M\).
-So we have
-\[
-    \sum_{x \in A} \abs*{f(x)} = \sum_{n \in g^{-1}(A)} \abs*{f(g(n))} \leq \sum_{n = 0}^M \abs*{f(g(n))} \leq L
-\]
-This is true \(\forall\ A \subseteq X\).
-Thus by Theorem \ref{5.5.9} \(P(X, f)\) is true.
+    Let \(P(X, f)\) be the statement
+    \[
+        \sup\Bigg\{\sum_{x \in A} \abs*{f(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty.
+    \]
+    We first show that if \(\sum_{x \in X} f(x)\) is absolutely convergent, then \(P(X, f)\) is true.
+    Let \(L = \sum_{x \in X} f(x)\).
+    Since \(\sum_{x \in X} f(x)\) is absolutely convergent, by Definition \ref{8.2.1} \(\exists\ g : \mathbf{N} \to X\) where \(g\) is a bijection such that
+    \[
+        L = \sum_{x \in X} \abs*{f(x)} = \sum_{n = 0}^\infty \abs*{f(g(n))}.
+    \]
+    Let \(A \subseteq X\) be a finite set.
+    Since \(g\) is a bijection, we have
+    \[
+        \sum_{x \in A} \abs*{f(x)} = \sum_{n \in g^{-1}(A)} \abs*{f(g(n))}
+    \]
+    Since \(A\) is finite, by Exercise \ref{ex 3.6.3}, \(\exists\ M \in \mathbf{N}\) such that \(g^{-1}(A)\) is bounded by \(M\).
+    So we have
+    \[
+        \sum_{x \in A} \abs*{f(x)} = \sum_{n \in g^{-1}(A)} \abs*{f(g(n))} \leq \sum_{n = 0}^M \abs*{f(g(n))} \leq L
+    \]
+    This is true \(\forall\ A \subseteq X\).
+    Thus by Theorem \ref{5.5.9} \(P(X, f)\) is true.
 
-Now we show that if \(P(X, f)\) is true, then \(\sum_{x \in X} f(x)\) is absolutely convergent.
-Let \(L\) be the supremum described by \(P(X, f)\).
-Since \(X\) is countable, \(\exists\ g : \mathbf{N} \to X\) where \(g\) is a bijection.
-So we have
-\begin{align*}
-& \forall\ n \in \mathbf{N} : \sum_{x \in g(\{i \in \mathbf{N} : 0 \leq i \leq n\})} \abs*{f(x)} \leq L & (P(X, f) \text{ is true}) \\
-\implies & \forall\ n \in \mathbf{N} : \sum_{i = 0}^n \abs*{f(g(i))} \leq L & \text{(by Definition \ref{7.1.6})} \\
-\implies & \sum_{i = 0}^\infty \abs*{f(g(i))} \text{ converges} & \text{(by Proposition \ref{7.3.1})} \\
-\implies & \sum_{x \in X} \abs*{f(x)} \text{ converges}. & \text{(by Definition \ref{8.2.1})}
-\end{align*}
+    Now we show that if \(P(X, f)\) is true, then \(\sum_{x \in X} f(x)\) is absolutely convergent.
+    Let \(L\) be the supremum described by \(P(X, f)\).
+    Since \(X\) is countable, \(\exists\ g : \mathbf{N} \to X\) where \(g\) is a bijection.
+    So we have
+    \begin{align*}
+                 & \forall\ n \in \mathbf{N} : \sum_{x \in g(\{i \in \mathbf{N} : 0 \leq i \leq n\})} \abs*{f(x)} \leq L & (P(X, f) \text{ is true})           \\
+        \implies & \forall\ n \in \mathbf{N} : \sum_{i = 0}^n \abs*{f(g(i))} \leq L                                      & \text{(by Definition \ref{7.1.6})}  \\
+        \implies & \sum_{i = 0}^\infty \abs*{f(g(i))} \text{ converges}                                                  & \text{(by Proposition \ref{7.3.1})} \\
+        \implies & \sum_{x \in X} \abs*{f(x)} \text{ converges}.                                                         & \text{(by Definition \ref{8.2.1})}
+    \end{align*}
 \end{proof}
 
 \begin{note}
-Inspired by Lemma \ref{8.2.3}, we may now define the concept of an absolutely convergent series even when the set \(X\) could be uncountable.
+    Inspired by Lemma \ref{8.2.3}, we may now define the concept of an absolutely convergent series even when the set \(X\) could be uncountable.
 \end{note}
 
 \begin{definition}\label{8.2.4}
-Let \(X\) be a set (which could be uncountable), and let \(f : X \to \mathbf{R}\) be a function.
-We say that the series \(\sum_{x \in X} f(x)\) is absolutely convergent iff
-\[
-    \sup\Bigg\{\sum_{x \in A} \abs*{f(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty.
-\]
+    Let \(X\) be a set (which could be uncountable), and let \(f : X \to \mathbf{R}\) be a function.
+    We say that the series \(\sum_{x \in X} f(x)\) is absolutely convergent iff
+    \[
+        \sup\Bigg\{\sum_{x \in A} \abs*{f(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty.
+    \]
 \end{definition}
 
 \begin{lemma}\label{8.2.5}
-Let \(X\) be a set (which could be uncountable), and let \(f : X \to \mathbf{R}\) be a function such that the series \(\sum_{x \in X} f(x)\) is absolutely convergent.
-Then the set \(\{x \in X : f(x) \neq 0\}\) is at most countable.
+    Let \(X\) be a set (which could be uncountable), and let \(f : X \to \mathbf{R}\) be a function such that the series \(\sum_{x \in X} f(x)\) is absolutely convergent.
+    Then the set \(\{x \in X : f(x) \neq 0\}\) is at most countable.
 \end{lemma}
 
 \begin{proof}
-This shall be done once I learn Axiom of choice.
+    This shall be done once I learn Axiom of choice.
 \end{proof}
 
 \begin{note}
-Because Lemma \ref{8.2.5}, we can define the value of \(\sum_{x \in X} f(x)\) for any absolutely convergent series on an uncountable set \(X\) by the formula
-\[
-    \sum_{x \in X} \coloneqq \sum_{x \in X : f(x) \neq 0} f(x),
-\]
-since we have replaced a sum on an uncountable set \(X\) by a sum on the countable set \(\{x \in X : f(x) \neq 0\}\).
-(If the former sum is absolutely convergent, then the latter one is also.)
-Definition \ref{8.2.4} is consistent with the definitions we already have for series on countable sets (Definition \ref{8.2.1}).
+    Because Lemma \ref{8.2.5}, we can define the value of \(\sum_{x \in X} f(x)\) for any absolutely convergent series on an uncountable set \(X\) by the formula
+    \[
+        \sum_{x \in X} \coloneqq \sum_{x \in X : f(x) \neq 0} f(x),
+    \]
+    since we have replaced a sum on an uncountable set \(X\) by a sum on the countable set \(\{x \in X : f(x) \neq 0\}\).
+    (If the former sum is absolutely convergent, then the latter one is also.)
+    Definition \ref{8.2.4} is consistent with the definitions we already have for series on countable sets (Definition \ref{8.2.1}).
 \end{note}
 
 \begin{proposition}[Absolutely convergent series laws]\label{8.2.6}
-Let \(X\) be an arbitrary set (possibly uncountable), and let \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) be functions such that the series \(\sum_{x \in X} f(x)\) and \(\sum_{x \in X} g(x)\) are both absolutely convergent.
-\begin{enumerate}
-    \item The series \(\sum_{x \in X} (f(x) + g(x))\) is absolutely convergent, and
-    \[
-        \sum_{x \in X} (f(x) + g(x)) = \sum_{x \in X} f(x) + \sum_{x \in X} g(x).
-    \]
-    \item If \(c\) is a real number, then \(\sum_{x \in X} cf(x)\) is absolutely convergent, and
-    \[
-        \sum_{x \in X} cf(x) = c \sum_{x \in X} f(x).
-    \]
-    \item If \(X = X_1 \cup X_2\) for some disjoint sets \(X_1\) and \(X_2\), then \(\sum_{x \in X_1} f(x)\) and \(\sum_{x \in X_2} f(x)\) are absolutely convergent, and
-    \[
-        \sum_{x \in X_1 \cup X_2} f(x) = \sum_{x \in X_1} f(x) + \sum_{x \in X_2} f(x).
-    \]
-    Conversely, if \(h : X \to \mathbf{R}\) is such that \(\sum_{x \in X_1} h(x)\) and \(\sum_{x \in X_2} h(x)\) are absolutely convergent, then \(\sum_{x \in X_1 \cup X_2} h(x)\) is also absolute convergent, and
-    \[
-        \sum_{x \in X_1 \cup X_2} h(x) = \sum_{x \in X_1} h(x) + \sum_{x \in X_2} h(x).
-    \]
-    \item If \(Y\) is another set, and \(\phi : Y \to X\) is a bijection, then \(\sum_{y \in Y} f(\phi(y))\) is absolutely convergent, and
-    \[
-        \sum_{y \in Y} f(\phi(y)) = \sum_{x \in X} f(x).
-    \]
-\end{enumerate}
+    Let \(X\) be an arbitrary set (possibly uncountable), and let \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) be functions such that the series \(\sum_{x \in X} f(x)\) and \(\sum_{x \in X} g(x)\) are both absolutely convergent.
+    \begin{enumerate}
+        \item The series \(\sum_{x \in X} (f(x) + g(x))\) is absolutely convergent, and
+              \[
+                  \sum_{x \in X} (f(x) + g(x)) = \sum_{x \in X} f(x) + \sum_{x \in X} g(x).
+              \]
+        \item If \(c\) is a real number, then \(\sum_{x \in X} cf(x)\) is absolutely convergent, and
+              \[
+                  \sum_{x \in X} cf(x) = c \sum_{x \in X} f(x).
+              \]
+        \item If \(X = X_1 \cup X_2\) for some disjoint sets \(X_1\) and \(X_2\), then \(\sum_{x \in X_1} f(x)\) and \(\sum_{x \in X_2} f(x)\) are absolutely convergent, and
+              \[
+                  \sum_{x \in X_1 \cup X_2} f(x) = \sum_{x \in X_1} f(x) + \sum_{x \in X_2} f(x).
+              \]
+              Conversely, if \(h : X \to \mathbf{R}\) is such that \(\sum_{x \in X_1} h(x)\) and \(\sum_{x \in X_2} h(x)\) are absolutely convergent, then \(\sum_{x \in X_1 \cup X_2} h(x)\) is also absolute convergent, and
+              \[
+                  \sum_{x \in X_1 \cup X_2} h(x) = \sum_{x \in X_1} h(x) + \sum_{x \in X_2} h(x).
+              \]
+        \item If \(Y\) is another set, and \(\phi : Y \to X\) is a bijection, then \(\sum_{y \in Y} f(\phi(y))\) is absolutely convergent, and
+              \[
+                  \sum_{y \in Y} f(\phi(y)) = \sum_{x \in X} f(x).
+              \]
+    \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-This shall be done once I learn Axiom of choice.
+    This shall be done once I learn Axiom of choice.
 \end{proof}
 
 \begin{lemma}\label{8.2.7}
-Let \(\sum_{n = 0}^\infty a_n\) be a series of real numbers which is conditionally convergent, but not absolutely convergent.
-Define the sets \(A_+ \coloneqq \{n \in \mathbf{N} : a_n \geq 0\}\) and \(A_- \coloneqq \{n \in \mathbf{N} : a_n < 0\}\), thus \(A_+ \cup A_- = \mathbf{N}\) and \(A_+ \cap A_- = \emptyset\).
-Then both of the series \(\sum_{n \in A_+} a_n\) and \(\sum_{n \in A_-} a_n\) are not absolutely convergent.
+    Let \(\sum_{n = 0}^\infty a_n\) be a series of real numbers which is conditionally convergent, but not absolutely convergent.
+    Define the sets \(A_+ \coloneqq \{n \in \mathbf{N} : a_n \geq 0\}\) and \(A_- \coloneqq \{n \in \mathbf{N} : a_n < 0\}\), thus \(A_+ \cup A_- = \mathbf{N}\) and \(A_+ \cap A_- = \emptyset\).
+    Then both of the series \(\sum_{n \in A_+} a_n\) and \(\sum_{n \in A_-} a_n\) are not absolutely convergent.
 \end{lemma}
 
 \begin{proof}
-This shall be done once I learn Axiom of choice.
+    This shall be done once I learn Axiom of choice.
 \end{proof}
 
 \begin{note}
-Theorem \ref{8.2.8} is done by Georg Riemann (1826 -- 1866), which asserts that a series which converges conditionally but not absolutely can be rearranged to converge to any value one pleases!
+    Theorem \ref{8.2.8} is done by Georg Riemann (1826 -- 1866), which asserts that a series which converges conditionally but not absolutely can be rearranged to converge to any value one pleases!
 \end{note}
 
 \begin{theorem}\label{8.2.8}
-Let \(\sum_{n = 0}^\infty a_n\) be a series which is conditionally convergent, but not absolutely convergent, and let \(L\) be any real number.
-Then there exists a bijection \(f : \mathbf{N} \to \mathbf{N}\) such that \(\sum_{m = 0}^\infty a_{f(m)}\) converges conditionally to \(L\).
+    Let \(\sum_{n = 0}^\infty a_n\) be a series which is conditionally convergent, but not absolutely convergent, and let \(L\) be any real number.
+    Then there exists a bijection \(f : \mathbf{N} \to \mathbf{N}\) such that \(\sum_{m = 0}^\infty a_{f(m)}\) converges conditionally to \(L\).
 \end{theorem}
 
 \begin{proof}
-Let \(A_+\) and \(A_-\) be the sets in Lemma \ref{8.2.7};
-from Lemma \ref{8.2.7} we know that \(\sum_{n \in A_+} a_n\) and \(\sum_{n \in A_-} a_n\) both fail to be absolutely convergent.
-In particular \(A_+\) and \(A_-\) are infinite (why?).
-By Proposition \ref{8.1.5} we can then find increasing bijections \(f_+ : \mathbf{N} \to A_+\) and \(f_- : \mathbf{N} \to A_-\).
-Thus the sums \(\sum_{m = 0}^\infty a_{f_+(m)}\) and \(\sum_{m = 0}^\infty a_{f_-(m)}\) both fail to be absolutely convergent (why?).
-The plan shall be to select terms from the divergent series \(\sum_{m = 0}^\infty a_{f_+(m)}\) and \(\sum_{m = 0}^\infty a_{f_-(m)}\) in a well-chosen order in order to keep their difference converging towards \(L\).
+    Let \(A_+\) and \(A_-\) be the sets in Lemma \ref{8.2.7};
+    from Lemma \ref{8.2.7} we know that \(\sum_{n \in A_+} a_n\) and \(\sum_{n \in A_-} a_n\) both fail to be absolutely convergent.
+    In particular \(A_+\) and \(A_-\) are infinite (why?).
+    By Proposition \ref{8.1.5} we can then find increasing bijections \(f_+ : \mathbf{N} \to A_+\) and \(f_- : \mathbf{N} \to A_-\).
+    Thus the sums \(\sum_{m = 0}^\infty a_{f_+(m)}\) and \(\sum_{m = 0}^\infty a_{f_-(m)}\) both fail to be absolutely convergent (why?).
+    The plan shall be to select terms from the divergent series \(\sum_{m = 0}^\infty a_{f_+(m)}\) and \(\sum_{m = 0}^\infty a_{f_-(m)}\) in a well-chosen order in order to keep their difference converging towards \(L\).
 
-We define the sequence \(n_0, n_1, n_2, \dots\) of natural numbers recursively as follows.
-Suppose that \(j\) is a natural number, and that \(n_i\) has already been defined for all \(i < j\) (this is vacuously true if \(j = 0\)).
-We then define \(n_j\) by the following rule:
-\begin{enumerate}[label=(\Roman*)]
-    \item If \(\sum_{0 \leq i < j} a_{n_i} < L\), then we set
-    \[
-        n_j \coloneqq \min\{n \in A_+ : n \neq n_i \ \forall\ i < j\}.
-    \]
-    \item If instead \(\sum_{0 \leq i < j} a_{n_i} \geq L\), then we set
-    \[
-        n_j \coloneqq \min\{n \in A_- : n \neq n_i \ \forall\ i < j\}.
-    \]
-\end{enumerate}
-Note that this recursive definition is well-defined because \(A_+\) and \(A_-\) are infinite, and so the sets \(\{n \in A_+ : n \neq n_i \ \forall\ i < j\}\) and \(n_j \coloneqq \min\{n \in A_- : n \neq n_i \ \forall\ i < j\}\) are never empty.
-(Intuitively, we add a non-negative number to the series whenever the partial sum is too low, and add a negative number when the sum is too high.)
-One can then verify the following claims:
-\begin{enumerate}
-    \item The map \(j \mapsto n_j\) is injective. (Why?)
-    \item Case I occurs an infinite number of times, and Case II also occurs an infinite number of times. (Why? prove by contradiction.)
-    \item The map \(j \mapsto n_j\) is surjective. (Why?)
-    \item We have \(\lim_{j \to \infty} a_{n_j} = 0\). (Why? Note from Corollary \ref{7.2.6} that \(\lim_{n \to \infty} a_n = 0\).)
-    \item We have \(\lim_{j \to \infty} \sum_{0 \leq i \leq j} a_{n_i} = L\). (Why?)
-\end{enumerate}
-The claim then follows by setting \(f(i) \coloneqq n_i\) for all \(i\).
+    We define the sequence \(n_0, n_1, n_2, \dots\) of natural numbers recursively as follows.
+    Suppose that \(j\) is a natural number, and that \(n_i\) has already been defined for all \(i < j\) (this is vacuously true if \(j = 0\)).
+    We then define \(n_j\) by the following rule:
+    \begin{enumerate}[label=(\Roman*)]
+        \item If \(\sum_{0 \leq i < j} a_{n_i} < L\), then we set
+              \[
+                  n_j \coloneqq \min\{n \in A_+ : n \neq n_i \ \forall\ i < j\}.
+              \]
+        \item If instead \(\sum_{0 \leq i < j} a_{n_i} \geq L\), then we set
+              \[
+                  n_j \coloneqq \min\{n \in A_- : n \neq n_i \ \forall\ i < j\}.
+              \]
+    \end{enumerate}
+    Note that this recursive definition is well-defined because \(A_+\) and \(A_-\) are infinite, and so the sets \(\{n \in A_+ : n \neq n_i \ \forall\ i < j\}\) and \(n_j \coloneqq \min\{n \in A_- : n \neq n_i \ \forall\ i < j\}\) are never empty.
+    (Intuitively, we add a non-negative number to the series whenever the partial sum is too low, and add a negative number when the sum is too high.)
+    One can then verify the following claims:
+    \begin{enumerate}
+        \item The map \(j \mapsto n_j\) is injective. (Why?)
+        \item Case I occurs an infinite number of times, and Case II also occurs an infinite number of times. (Why? prove by contradiction.)
+        \item The map \(j \mapsto n_j\) is surjective. (Why?)
+        \item We have \(\lim_{j \to \infty} a_{n_j} = 0\). (Why? Note from Corollary \ref{7.2.6} that \(\lim_{n \to \infty} a_n = 0\).)
+        \item We have \(\lim_{j \to \infty} \sum_{0 \leq i \leq j} a_{n_i} = L\). (Why?)
+    \end{enumerate}
+    The claim then follows by setting \(f(i) \coloneqq n_i\) for all \(i\).
 \end{proof}
 
 \exercisesection
 
 \begin{exercise}\label{ex 8.2.1}
-Prove Lemma \ref{8.2.3}.
+    Prove Lemma \ref{8.2.3}.
 \end{exercise}
 
 \begin{proof}
-See Lemma \ref{8.2.3}.
+    See Lemma \ref{8.2.3}.
 \end{proof}
 
 \begin{exercise}\label{ex 8.2.2}
-Prove Lemma \ref{8.2.5}.
+    Prove Lemma \ref{8.2.5}.
 \end{exercise}
 
 \begin{proof}
-See Lemma \ref{8.2.5}.
+    See Lemma \ref{8.2.5}.
 \end{proof}
 
 \begin{exercise}\label{ex 8.2.3}
-Prove Proposition \ref{8.2.6}.
+    Prove Proposition \ref{8.2.6}.
 \end{exercise}
 
 \begin{proof}
-See Proposition \ref{8.2.6}.
+    See Proposition \ref{8.2.6}.
 \end{proof}
 
 \begin{exercise}\label{ex 8.2.4}
-Prove Lemma \ref{8.2.7}.
+    Prove Lemma \ref{8.2.7}.
 \end{exercise}
 
 \begin{proof}
-See Lemma \ref{8.2.7}.
+    See Lemma \ref{8.2.7}.
 \end{proof}
 
 \begin{exercise}\label{ex 8.2.5}
-Explain the gaps marked (why?) in the proof of Theorem \ref{8.2.8}.
+    Explain the gaps marked (why?) in the proof of Theorem \ref{8.2.8}.
 \end{exercise}
 
 \begin{proof}
-See Theorem \ref{8.2.8}.
+    See Theorem \ref{8.2.8}.
 \end{proof}
 
 \begin{exercise}\label{ex 8.2.6}
-Let \(\sum_{n = 0}^\infty a_n\) be a series which is conditionally convergent, but not absolutely convergent.
-Show that there exists a bijection \(f : \mathbf{N} \to \mathbf{N}\) such that \(\sum_{m = 0}^\infty a_{f(m)}\) diverges to \(+\infty\), or more precisely that
-\[
-    \lim\inf_{N \to \infty} \sum_{m = N}^\infty a_{f(m)} = \lim\sup_{N \to \infty} \sum_{m = N}^\infty a_{f(m)} = +\infty.
-\]
-(Of course, a similar statement holds with \(+\infty\) replaced by \(-\infty\).)
+    Let \(\sum_{n = 0}^\infty a_n\) be a series which is conditionally convergent, but not absolutely convergent.
+    Show that there exists a bijection \(f : \mathbf{N} \to \mathbf{N}\) such that \(\sum_{m = 0}^\infty a_{f(m)}\) diverges to \(+\infty\), or more precisely that
+    \[
+        \lim\inf_{N \to \infty} \sum_{m = N}^\infty a_{f(m)} = \lim\sup_{N \to \infty} \sum_{m = N}^\infty a_{f(m)} = +\infty.
+    \]
+    (Of course, a similar statement holds with \(+\infty\) replaced by \(-\infty\).)
 \end{exercise}
 
 \begin{proof}
-This shall be done once I learn Axiom of choice.
+    This shall be done once I learn Axiom of choice.
 \end{proof}
