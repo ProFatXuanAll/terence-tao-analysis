@@ -1,134 +1,134 @@
 \section{Russell's paradox}\label{sec 3.2}
 
 \begin{axiom}[Universal specification]\label{3.8}
-(Dangerous!)
-Suppose for every object \(x\) we have a property \(P(x)\) pertaining to \(x\) (so that for every \(x\), \(P(x)\) is either a true statement or a false statement).
-Then there exists a set \(\{x : P(x) \text{ is true}\}\) such that for every object \(y\),
-\[
-    y \in \{x : P(x) \text{ is true}\} \iff P(y) \text{ is true}.
-\]
+    (Dangerous!)
+    Suppose for every object \(x\) we have a property \(P(x)\) pertaining to \(x\) (so that for every \(x\), \(P(x)\) is either a true statement or a false statement).
+    Then there exists a set \(\{x : P(x) \text{ is true}\}\) such that for every object \(y\),
+    \[
+        y \in \{x : P(x) \text{ is true}\} \iff P(y) \text{ is true}.
+    \]
 \end{axiom}
 
 \begin{note}
-Compare to Axiom \ref{3.5}, any object \(x\) does not need to be in a set \(A\) to apply this axiom.
+    Compare to Axiom \ref{3.5}, any object \(x\) does not need to be in a set \(A\) to apply this axiom.
 \end{note}
 
 \begin{note}
-Axiom \ref{3.8} is also known as the \emph{axiom of comprehension}.
-Unfortunately, this axiom cannot be introduced into set theory, because it creates a logical contradiction known as \emph{Russell’s paradox}, discovered by the philosopher and logician Bertrand Russell (1872--1970) in 1901.
-The paradox runs as follows.
-Let \(P(x)\) be the statement
-\[
-    P(x) \iff \text{``\(x\) is a set, and \(x \notin x\)''};
-\]
-i.e., \(P(x)\) is true only when \(x\) is a set which does not contain itself.
-Now use the axiom of universal specification to create the set
-\[
-    \Omega \coloneqq \{x : P(x) \text{ is true}\} = \{x : x \text{ is a set and } x \notin x\},
-\]
-i.e., the set of all sets which do not contain themselves.
-Now ask the question: does \(\Omega\) contain itself, i.e. is \(\Omega \in \Omega\)?
-If \(\Omega\) did contain itself, then by definition this means that \(P(\Omega)\) is true, i.e., \(\Omega\) is a set and \(\Omega \notin \Omega\).
-On the other hand, if \(\Omega\) did not contain itself, then \(P(\Omega)\) would be true, and hence \(\Omega \in \Omega\).
-Thus in either case we have both \(\Omega \in \Omega\) and \(\Omega \notin \Omega\), which is absurd.
+    Axiom \ref{3.8} is also known as the \emph{axiom of comprehension}.
+    Unfortunately, this axiom cannot be introduced into set theory, because it creates a logical contradiction known as \emph{Russell’s paradox}, discovered by the philosopher and logician Bertrand Russell (1872--1970) in 1901.
+    The paradox runs as follows.
+    Let \(P(x)\) be the statement
+    \[
+        P(x) \iff \text{``\(x\) is a set, and \(x \notin x\)''};
+    \]
+    i.e., \(P(x)\) is true only when \(x\) is a set which does not contain itself.
+    Now use the axiom of universal specification to create the set
+    \[
+        \Omega \coloneqq \{x : P(x) \text{ is true}\} = \{x : x \text{ is a set and } x \notin x\},
+    \]
+    i.e., the set of all sets which do not contain themselves.
+    Now ask the question: does \(\Omega\) contain itself, i.e. is \(\Omega \in \Omega\)?
+    If \(\Omega\) did contain itself, then by definition this means that \(P(\Omega)\) is true, i.e., \(\Omega\) is a set and \(\Omega \notin \Omega\).
+    On the other hand, if \(\Omega\) did not contain itself, then \(P(\Omega)\) would be true, and hence \(\Omega \in \Omega\).
+    Thus in either case we have both \(\Omega \in \Omega\) and \(\Omega \notin \Omega\), which is absurd.
 \end{note}
 
 \begin{note}
-The problem with Axiom \ref{3.8} is that it creates sets which are far too ``large''.
-Since sets are themselves objects (Axiom \ref{3.1}), this means that sets are allowed to contain themselves, which is a somewhat silly state of affairs.
-One way to informally resolve this issue is to think of objects as being arranged in a hierarchy.
-At the bottom of the hierarchy are the \emph{primitive objects} - the objects that are not sets.
-Then on the next rung of the hierarchy there are sets whose elements consist only of primitive objects, let’s call these ``primitive sets'' for now.
-Then there are sets whose elements consist only of primitive objects and primitive sets, and we can form sets out of these objects, and so forth.
-The point is that at each stage of the hierarchy we only see sets whose elements consist of objects at lower stages of the hierarchy, and so at no stage do we ever construct a set which contains itself.
+    The problem with Axiom \ref{3.8} is that it creates sets which are far too ``large''.
+    Since sets are themselves objects (Axiom \ref{3.1}), this means that sets are allowed to contain themselves, which is a somewhat silly state of affairs.
+    One way to informally resolve this issue is to think of objects as being arranged in a hierarchy.
+    At the bottom of the hierarchy are the \emph{primitive objects} - the objects that are not sets.
+    Then on the next rung of the hierarchy there are sets whose elements consist only of primitive objects, let’s call these ``primitive sets'' for now.
+    Then there are sets whose elements consist only of primitive objects and primitive sets, and we can form sets out of these objects, and so forth.
+    The point is that at each stage of the hierarchy we only see sets whose elements consist of objects at lower stages of the hierarchy, and so at no stage do we ever construct a set which contains itself.
 \end{note}
 
 \begin{note}
-In pure set theory, there will be no primitive objects, but there will be one primitive set \(\emptyset\) on the next rung of the hierarchy.
+    In pure set theory, there will be no primitive objects, but there will be one primitive set \(\emptyset\) on the next rung of the hierarchy.
 \end{note}
 
 \begin{axiom}[Regularity]\label{3.9}
-If \(A\) is a non-empty set, then there is at least one element \(x\) of \(A\) which is either not a set, or is disjoint from \(A\).
+    If \(A\) is a non-empty set, then there is at least one element \(x\) of \(A\) which is either not a set, or is disjoint from \(A\).
 \end{axiom}
 
 \begin{note}
-The point of this axiom (which is also known as the \emph{axiom of foundation}) is that it is asserting that at least one of the elements of \(A\) is so low on the hierarchy of objects that it does not contain any of the other elements of \(A\).
+    The point of this axiom (which is also known as the \emph{axiom of foundation}) is that it is asserting that at least one of the elements of \(A\) is so low on the hierarchy of objects that it does not contain any of the other elements of \(A\).
 \end{note}
 
 \exercisesection
 
 \begin{exercise}\label{ex 3.2.1}
-Show that the universal specification axiom, Axiom \ref{3.8}, if assumed to be true, would imply Axioms \ref{3.2}, \ref{3.3}, \ref{3.4}, \ref{3.5}, and \ref{3.6}.
-(If we assume that all natural numbers are objects, we also obtain Axiom \ref{3.7}.)
-Thus, this axiom, if permitted, would simplify the foundations of set theory tremendously (and can be viewed as one basis for an intuitive model of set theory known as ``naive set theory'').
-Unfortunately, as we have seen, Axiom \ref{3.8} is ``too good to be true''!
+    Show that the universal specification axiom, Axiom \ref{3.8}, if assumed to be true, would imply Axioms \ref{3.2}, \ref{3.3}, \ref{3.4}, \ref{3.5}, and \ref{3.6}.
+    (If we assume that all natural numbers are objects, we also obtain Axiom \ref{3.7}.)
+    Thus, this axiom, if permitted, would simplify the foundations of set theory tremendously (and can be viewed as one basis for an intuitive model of set theory known as ``naive set theory'').
+    Unfortunately, as we have seen, Axiom \ref{3.8} is ``too good to be true''!
 \end{exercise}
 
 \begin{proof}
-We first show that Axiom \ref{3.8} implies Axiom \ref{3.2}.
-By Axiom \ref{3.8}, there exist a set \(\emptyset = \{x: x \neq x\}\).
-Then we must have \(\forall\ x : x \notin \emptyset\), otherwise we have \(x \in \emptyset \implies x \notin \emptyset\), a contradiction.
-Thus \(\emptyset\) satisfy Axiom \ref{3.2}.
+    We first show that Axiom \ref{3.8} implies Axiom \ref{3.2}.
+    By Axiom \ref{3.8}, there exist a set \(\emptyset = \{x: x \neq x\}\).
+    Then we must have \(\forall\ x : x \notin \emptyset\), otherwise we have \(x \in \emptyset \implies x \notin \emptyset\), a contradiction.
+    Thus \(\emptyset\) satisfy Axiom \ref{3.2}.
 
-Next we show that Axiom \ref{3.8} implies Axiom \ref{3.3}.
-Suppose that \(a, b\) are objects.
-Then by Axiom \ref{3.8} there exist two sets \(A = \{x: x = a\}\) and \(B = \{x: x = a \lor x = b\}\).
-Thus \(A, B\) satisfy Axiom \ref{3.3}.
+    Next we show that Axiom \ref{3.8} implies Axiom \ref{3.3}.
+    Suppose that \(a, b\) are objects.
+    Then by Axiom \ref{3.8} there exist two sets \(A = \{x: x = a\}\) and \(B = \{x: x = a \lor x = b\}\).
+    Thus \(A, B\) satisfy Axiom \ref{3.3}.
 
-Next we show that Axiom \ref{3.8} implies Axiom \ref{3.4}.
-Suppose that \(A, B\) are sets.
-By Axiom \ref{3.8}, there exists a set \(C = \{x : x \in A \lor x \in B\}\).
-Thus \(A, B, C\) satisfy Axiom \ref{3.4}.
+    Next we show that Axiom \ref{3.8} implies Axiom \ref{3.4}.
+    Suppose that \(A, B\) are sets.
+    By Axiom \ref{3.8}, there exists a set \(C = \{x : x \in A \lor x \in B\}\).
+    Thus \(A, B, C\) satisfy Axiom \ref{3.4}.
 
-Next we show that Axiom \ref{3.8} implies Axiom \ref{3.5}.
-Suppose that \(A\) is a set.
-By Axiom \ref{3.8}, there exists a set \(B = \{x : x \in A \land P(x) \text{ is true}\}\).
-Thus \(A, B\) satisfy Axiom \ref{3.5}.
+    Next we show that Axiom \ref{3.8} implies Axiom \ref{3.5}.
+    Suppose that \(A\) is a set.
+    By Axiom \ref{3.8}, there exists a set \(B = \{x : x \in A \land P(x) \text{ is true}\}\).
+    Thus \(A, B\) satisfy Axiom \ref{3.5}.
 
-Next we show that Axiom \ref{3.8} implies Axiom \ref{3.6}.
-Suppose that \(A\) is a set and \(P(x, y)\) is the hypothesis in Axiom \ref{3.6}.
-By Axiom \ref{3.8}, there exists a set \(B = \{y :  x \in A \land P(x, y) \text{ is true}\}\).
-Thus \(A, B\) satisfy Axiom \ref{3.6}.
+    Next we show that Axiom \ref{3.8} implies Axiom \ref{3.6}.
+    Suppose that \(A\) is a set and \(P(x, y)\) is the hypothesis in Axiom \ref{3.6}.
+    By Axiom \ref{3.8}, there exists a set \(B = \{y :  x \in A \land P(x, y) \text{ is true}\}\).
+    Thus \(A, B\) satisfy Axiom \ref{3.6}.
 
-Finally, we show that Axiom \ref{3.8} implies Axiom \ref{3.7}.
-By Axiom \ref{3.8}, there exists a set \(\mathbf{N}\) such that the Peano axioms holds.
-Thus \(\mathbf{N}\) satisfy Axiom \ref{3.7}.
+    Finally, we show that Axiom \ref{3.8} implies Axiom \ref{3.7}.
+    By Axiom \ref{3.8}, there exists a set \(\mathbf{N}\) such that the Peano axioms holds.
+    Thus \(\mathbf{N}\) satisfy Axiom \ref{3.7}.
 \end{proof}
 
 \begin{exercise}\label{ex 3.2.2}
-Use the axiom of regularity (and the singleton set axiom) to show that if \(A\) is a set, then \(A \notin A\).
-Furthermore, show that if \(A\) and \(B\) are two sets, then either \(A \notin B\) or \(B \notin A\) (or both).
+    Use the axiom of regularity (and the singleton set axiom) to show that if \(A\) is a set, then \(A \notin A\).
+    Furthermore, show that if \(A\) and \(B\) are two sets, then either \(A \notin B\) or \(B \notin A\) (or both).
 \end{exercise}
 
 \begin{proof}
-We fisrt show that if \(A\) is a set, then \(A \notin A\).
-Suppose for sake of contradiction that there exist a set \(A\) such that \(A \in A\) is true.
-By Axiom \ref{3.3}, there exist a set \(\{A\}\) and \(A \in \{A\}\) is true.
-Then \(A \in A \cap \{A\}\) is true, but by Axiom \ref{3.9}, the only element \(A\) in \(\{A\}\) must be disjoint from \(\{A\}\), which mean \(A \cap \{A\} = \emptyset\), a contradiction.
-Thus there does not exist a \(A\) such that \(A \in A\) is true, i.e., \(\forall\ A\) is a set, \(A \notin A\).
+    We fisrt show that if \(A\) is a set, then \(A \notin A\).
+    Suppose for sake of contradiction that there exist a set \(A\) such that \(A \in A\) is true.
+    By Axiom \ref{3.3}, there exist a set \(\{A\}\) and \(A \in \{A\}\) is true.
+    Then \(A \in A \cap \{A\}\) is true, but by Axiom \ref{3.9}, the only element \(A\) in \(\{A\}\) must be disjoint from \(\{A\}\), which mean \(A \cap \{A\} = \emptyset\), a contradiction.
+    Thus there does not exist a \(A\) such that \(A \in A\) is true, i.e., \(\forall\ A\) is a set, \(A \notin A\).
 
-Now we show that if \(A\) and \(B\) are two sets, then either \(A \notin B\) or \(B \notin A\) (or both).
-If \(A \in B\), we want to show that \(B \notin A\).
-So suppose for sake of contradiction that \(B \in A\).
-Then \(A \in A \cup B\) and \(B \in A \cup B\), which means \(A \cup B \in A \cup B\), contradict to Axiom \ref{3.9}.
-Thus \(B \notin A\).
-Similar argument show that if \(B \in A\), then \(A \notin B\).
-And if \(A \notin B\), then \(B \notin A\) can also be true.
-So we conclude that either \(A \notin B\) or \(B \notin A\) (or both).
+    Now we show that if \(A\) and \(B\) are two sets, then either \(A \notin B\) or \(B \notin A\) (or both).
+    If \(A \in B\), we want to show that \(B \notin A\).
+    So suppose for sake of contradiction that \(B \in A\).
+    Then \(A \in A \cup B\) and \(B \in A \cup B\), which means \(A \cup B \in A \cup B\), contradict to Axiom \ref{3.9}.
+    Thus \(B \notin A\).
+    Similar argument show that if \(B \in A\), then \(A \notin B\).
+    And if \(A \notin B\), then \(B \notin A\) can also be true.
+    So we conclude that either \(A \notin B\) or \(B \notin A\) (or both).
 \end{proof}
 
 \begin{exercise}\label{ex 3.2.3}
-Show (assuming the other axioms of set theory) that the universal specification axiom, Axiom \ref{3.8}, is equivalent to an axiom postulating the existence of a ``universal set'' \(\Omega\) consisting of all objects (i.e., for all objects \(x\), we have \(x \in \Omega\)).
-In other words, if Axiom \ref{3.8} is true, then a universal set exists, and conversely, if a universal set exists, then Axiom \ref{3.8} is true.
-(This may explain why Axiom \ref{3.8} is called the axiom of universal specification.)
-Note that if a universal set \(\Omega\) existed, then we would have \(\Omega \in \Omega\) by Axiom \ref{3.1}, contradicting Exercise \ref{ex 3.2.2}.
-Thus the axiom of foundation specifically rules out the axiom of universal specification.
+    Show (assuming the other axioms of set theory) that the universal specification axiom, Axiom \ref{3.8}, is equivalent to an axiom postulating the existence of a ``universal set'' \(\Omega\) consisting of all objects (i.e., for all objects \(x\), we have \(x \in \Omega\)).
+    In other words, if Axiom \ref{3.8} is true, then a universal set exists, and conversely, if a universal set exists, then Axiom \ref{3.8} is true.
+    (This may explain why Axiom \ref{3.8} is called the axiom of universal specification.)
+    Note that if a universal set \(\Omega\) existed, then we would have \(\Omega \in \Omega\) by Axiom \ref{3.1}, contradicting Exercise \ref{ex 3.2.2}.
+    Thus the axiom of foundation specifically rules out the axiom of universal specification.
 \end{exercise}
 
 \begin{proof}
-If Axiom \ref{3.8} is true, then there exists a set \(\Omega = \{x: x \text{ is a object}\}\), and \(\Omega \in \Omega\).
-Thus Axiom \ref{3.8} implies a universal set exists.
-If a universal set \(\Omega\) exists, then we must have a set \(A = \{x: P(x)\}\) and \(A \in \Omega\) is true (since \(A\) is an object).
-Thus a universal set exists implies Axiom \ref{3.8} is true.
-We conclude that Axiom \ref{3.8} is true iff a universal set exists.
+    If Axiom \ref{3.8} is true, then there exists a set \(\Omega = \{x: x \text{ is a object}\}\), and \(\Omega \in \Omega\).
+    Thus Axiom \ref{3.8} implies a universal set exists.
+    If a universal set \(\Omega\) exists, then we must have a set \(A = \{x: P(x)\}\) and \(A \in \Omega\) is true (since \(A\) is an object).
+    Thus a universal set exists implies Axiom \ref{3.8} is true.
+    We conclude that Axiom \ref{3.8} is true iff a universal set exists.
 \end{proof}
