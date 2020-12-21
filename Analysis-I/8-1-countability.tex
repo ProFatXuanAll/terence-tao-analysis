@@ -42,23 +42,35 @@
 
 \begin{proof}
     Suppose for sake of contradiction that \(X\) has no minimum element.
-    Let \(n \in \mathbf{N}\) and let \(P(n)\) be the statement
+    In other words, we have
     \[
-        \forall\ m \in \mathbf{N} \land m \leq n : m \notin X.
+        \forall\ n \in \mathbf{N}, \forall\ m \in X : n \leq m \implies n \notin X.
     \]
-    We use induction to show that \(\forall\ n \in \mathbf{N}\), \(P(n)\) is true.
-    For \(n = 0\), we have \(0 \notin X\) since \(X\) has no mimimum and by Axiom \ref{2.3} \(\forall\ m \in \mathbf{N} \implies m \geq 0\).
-    So the base case holds.
-    Suppose inductively that \(P(n)\) is true for some \(n \geq 0\).
-    Then for \(n + 1\), we need to show that \(P(n + 1)\) is also true.
-    By induction hypothesis we have \(m \notin X \ \forall\ m \leq n\).
-    Then if \(n + 1 \in X\), \(n + 1\) is the minimum element of \(X\).
-    So we must have \(n + 1 \notin X\), and thus \(P(n + 1)\) is true, and this close the induction.
+    We now use induction to show that \(\forall\ n \in \mathbf{N}\), \(n \notin X\).
+    For \(n = 0\), we have
+    \begin{align*}
+                 & X \subseteq \mathbf{N}                                                               \\
+        \implies & (\forall\ m \in X \implies m \in \mathbf{N}) & \text{(by Definition \ref{3.1.15})}   \\
+        \implies & (\forall\ m \in X \implies 0 \leq m)         & \text{(by Axiom \ref{2.3})}           \\
+        \implies & 0 \notin X.                                  & \text{(\(X\) has no minimum element)}
+    \end{align*}
+    Thus the base case holds.
+    Suppose inductively that \(n \notin X\) is true for some \(n \geq 0\).
+    Then for \(n + 1\), we have
+    \begin{align*}
+                 & n \notin X                    & \text{(by induction hypothesis)}        \\
+        \implies & \forall\ m \in X : m \geq n                                             \\
+        \implies & \forall\ m \in X : m > n      & (m \neq n)                              \\
+        \implies & \forall\ m \in X : m \geq n++ & \text{(by Proposition \ref{2.2.12}(e))} \\
+        \implies & n++ \notin X.                 & \text{(\(X\) has no minimum element)}
+    \end{align*}
+    This close the induction.
 
-    We now use \(P(n)\) to derive contradiction.
-    Since \(P(n)\) is true \(\forall\ n \in \mathbf{N}\), we must have \(X = \emptyset\), otherwise if \(n \in X\) then \(P(n)\) is false.
-    But \(X = \emptyset\) contradict to the given condition.
-    This means \(X\) must have a minimum element.
+    Since \(\forall\ n \in \mathbf{N} \implies n \notin X\), we must have \(X = \emptyset\), a contradiction.
+    This means \(\exists\ n \in \mathbf{N}\) such that \(\forall\ m \in X : n \leq m \land n \in X\).
+    We now show that such \(n\) is unique.
+    Suppose that \(\exists\ n, n' \in X\) such that \(\forall\ m \in X : n \leq m \land n' \leq m\).
+    Then we have \(n \leq n' \land n' \leq n\), which means \(n = n'\).
 \end{proof}
 
 \begin{note}
