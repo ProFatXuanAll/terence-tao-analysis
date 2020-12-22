@@ -387,13 +387,67 @@
 
 \exercisesection
 
-\begin{exercise}\label{ex 8.1.1}
+\begin{exercise}[Dedekind-infinite set]\label{ex 8.1.1}
     Let \(X\) be a set.
     Show that \(X\) is infinite if and only if there exists a proper subset \(Y \subsetneq X\) of \(X\) which has the same cardinality as \(X\).
 \end{exercise}
 
 \begin{proof}
-    This shall be done once I learn Axiom of choice.
+    We first show that \(X\) is finite implies \(\exists\ Y \subsetneq X\) such that \(Y\) has the same cardinality as \(X\).
+    Suppose that \(X\) is an infinite set.
+    Then we must have \(X \neq \emptyset\) since by Definition \ref{3.6.5} \(\#(\emptyset) = 0\).
+
+    Let \(n \in \mathbf{N}\) and let \(P(n)\) be the statement ``\(\exists\ A_n \subseteq X\) such that \(\#(A_n) = n\)''.
+    We now show that \(\forall\ n \in \mathbf{N}\), \(P(n)\) is true.
+    For \(n = 0\), we have \(\emptyset \subseteq X\) by Example \ref{3.1.17}, thus the base case holds.
+    Suppose inductively that \(P(n)\) is true for some \(n \geq 0\).
+    Then we need to show that \(P(n + 1)\) is true.
+    By induction hypothesis, \(\exists\ A_n \subseteq X : \#(A_n) = n\).
+    Then by Proposition \ref{3.6.14}(b) we have \(X \setminus A_n\) being infinite.
+    Since \(X \setminus A_n\) is infinite, \(X \setminus A_n \neq \emptyset\), thus we have \(\exists\ x \in X \setminus A_n\).
+    Then we can have a set \(A_{n + 1} = A_n \cup \{x\}\), and this close the induction.
+
+    By Axiom \ref{8.1}, the set \(\prod_{\alpha \in \mathbf{N} \setminus \{0\}} A_{\alpha}\) is non-empty since \(\forall\ n \in \mathbf{N}\), \(P(n)\) is true.
+    We can now choose a \((x_{\alpha})_{\alpha \in \mathbf{N} \setminus \{0\}}\) from \(\prod_{\alpha \in \mathbf{N} \setminus \{0\}} A_{\alpha}\) where \(\forall\ i, j \in \mathbf{N} \setminus \{0\} : x_i \neq x_j\).
+    We collect \(x_i\) as a set \(A = \{x_i : i \in \mathbf{N} \setminus \{0\}\}\).
+    Now we define a function \(f : X \to X \setminus \{x_1\}\) as follow:
+    \[
+        f(x) = \begin{cases}
+            x_{n + 1} & \text{if } x = x_n \in A, \\
+            x         & \text{if } x \notin A.
+        \end{cases}
+    \]
+    We show that such \(f\) is bijective.
+    We start by showing \(f\) is injective.
+    Let \(x, x' \in X\) and \(x \neq x'\).
+    We devide into four cases:
+    \begin{enumerate}
+        \item If \(x \in A \land x' \in A\), then \(\exists\ n, n' \in \mathbf{N} \setminus \{0\}\) such that \(x = x_n \land x' = x_{n'}\).
+              By the definition of \(x_n\) and \(x_{n'}\), we must have \(x_n \neq x_{n'} \implies x_{n + 1} \neq x_{n' + 1}\).
+              Thus we have \(f(x) \neq f(x')\).
+        \item If \(x \in A \land x' \notin A\), then \(f(x) \in A \land f(x') = x' \notin A\) and thus \(f(x) \neq f(x')\).
+        \item If \(x \notin A \land x' \in A\), then \(f(x) = x \notin A \land f(x') \in A\) and thus \(f(x) \neq f(x')\).
+        \item If \(x \notin A \land x' \notin A\), then \(f(x) = x \neq x' = f(x')\).
+    \end{enumerate}
+    From all cases above we have \(f(x) \neq f(x')\), thus \(f\) is injective.
+    Now we show that \(f\) is surjective.
+    Since \(\forall\ x \in X \setminus \{x_1\}\), we have \(x \in A \lor x \notin A\).
+    \begin{enumerate}
+        \item If \(x \in A\), then \(\exists\ n \in \mathbf{N} \setminus \{0, 1\}\) such that \(x = x_n\).
+              And we have \(x_{n - 1} \in A\) where \(f(x_{n - 1}) = x_n\).
+        \item If \(x \notin A\), then we have \(f(x) = x\).
+    \end{enumerate}
+    Thus \(f\) is surjective.
+    Since \(f\) is both injective and surjective, \(f\) is bijective.
+    Since \(f\) is bijective, by Definition \ref{3.6.1} \(X\) and \(X \setminus \{x_1\}\) have the same cardinality.
+    But \(x_1 \in X \land x_1 \notin X \setminus \{x_1\}\), we have \(X \neq X \setminus \{x_1\}\).
+    Thus by Definition \ref{3.1.15} \(X \setminus \{x_1\} \subsetneq X\).
+
+    Now we show that if \(\exists\ Y \subsetneq X\) where \(X\) and \(Y\) have the same cardinality, then \(X\) is infinite.
+    We prove this by contradiction.
+    Suppose for sake of contradiction that \(X\) is finite.
+    Then by Proposition \ref{3.6.14}(c) we have \(\#(Y) < \#(X)\), a contradiction.
+    Thus \(X\) is infinite.
 \end{proof}
 
 \begin{exercise}\label{ex 8.1.2}
