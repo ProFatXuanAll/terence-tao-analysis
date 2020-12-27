@@ -544,61 +544,72 @@
     By Axiom \ref{3.11} we have \(\bigcup_{\alpha \in I} A_{\alpha} = (\bigcup_{\alpha \in I \setminus \{i\}} A_{\alpha}) \cup A_i\).
     Then by Proposition \ref{8.1.10} \(\bigcup_{\alpha \in I} A_{\alpha}\) is at most countable.
     This close the induction.
+    So we have proven that finite union of at most countable sets is at most countable.
 
-    Now we show that if \(I\) is countable, then \(\bigcup_{\alpha \in I} A_{\alpha}\) is at most countable.
-    Since \(\forall\ \alpha \in I\), \(A_{\alpha}\) is at most countable, \(A_{\alpha}\) can be either finite and countable.
-    We now only consider the case where all \(A_{\alpha}\) are countable and disjoint.
-    We will deal with other cases latter.
+    We have proven the case where \(I\) is finite.
+    We now only need to prove the case where \(I\) is countable.
+    Let \(J = \{\alpha \in I : A_{\alpha} \neq \emptyset\}\).
+    Since \(J \subseteq I\), by Corollary \ref{8.1.7} we have \(J\) being at most countable.
+    If \(J\) is finite (including the case where \(J = \emptyset\)), then we already show that finite union of at most countable sets is at most countable.
+    So suppose that \(J\) is countable.
+    Then we have
+    \begin{align*}
+             & \forall\ x \in \bigcup_{\alpha \in I} A_{\alpha} \\
+        \iff & \exists\ \alpha' \in I : x \in A_{\alpha'}'      \\
+        \iff & A_{\alpha'}' \neq \emptyset                      \\
+        \iff & \exists\ \alpha' \in J : x \in A_{\alpha'}'      \\
+        \iff & x \in \bigcup_{\alpha \in J} A_{\alpha}.
+    \end{align*}
+    Thus by Definition \ref{3.1.4} we have \(\bigcup_{\alpha \in I} A_{\alpha} = \bigcup_{\alpha \in J} A_{\alpha}\).
+    To show that \(\bigcup_{\alpha \in I} A_{\alpha}\) is at most countable, it is suffice to show that \(\bigcup_{\alpha \in J} A_{\alpha}\) is at most countable.
 
-    Since \(\forall\ \alpha \in I\), \(A_{\alpha}\) is countable, \(\exists\ f_{\alpha} : \mathbf{N} \to A_{\alpha}\) such that \(f_{\alpha}\) is bijective.
-    We now use Axiom \ref{3.3} to define singleton sets \(\{f_{\alpha}\} \ \forall\ \alpha \in I\).
-    By Axiom \ref{8.1}, we have \(\prod_{\alpha \in I} \{f_{\alpha}\}\) is a set and \(\prod_{\alpha \in I} \{f_{\alpha}\} \neq \emptyset\).
-    This means \(\forall\ \alpha \in I\), we can choose a function \((f_{\alpha})_{\alpha \in I}\) from \(\prod_{\alpha \in I} \{f_{\alpha}\}\).
-    We fix such function \((f_{\alpha})_{\alpha \in I}\).
+    Since \(\forall\ \alpha \in J\), \(A_{\alpha}\) is at most countable, we split into two cases:
+    \begin{enumerate}
+        \item If \(A_{\alpha}\) is finite, then by Definition \ref{3.6.5} \(\exists\ f_{\alpha}' : \{n \in \mathbf{N} : 1 \leq n \leq \#(A_{\alpha})\} \to A_{\alpha}\) such that \(f_{\alpha}'\) is bijective.
+              We now define a function \(f_{\alpha} : \mathbf{N} \to A_{\alpha}\) as follow:
+              \[
+                  \forall\ n \in \mathbf{N} : f_{\alpha}(n) = \begin{cases}
+                      f_{\alpha}'(n) & \text{if } 1 \leq n \leq \#(A_{\alpha}),  \\
+                      f_{\alpha}'(1) & \text{if } n = 0 \lor n > \#(A_{\alpha}).
+                  \end{cases}
+              \]
+              Thus \(f_{\alpha}\) is surjective.
+              We can define \(F_{\alpha}\) to be a set of functions
+              \[
+                  F_{\alpha} = \{f_{\alpha} : \mathbf{N} \to A_{\alpha} | f_{\alpha} \text{ follows the definition above}\}
+              \]
+              and \(F_{\alpha} \neq \emptyset\).
+        \item If \(A_{\alpha}\) is countable, then we define \(F_{\alpha}\) to be a set of bijections
+              \[
+                  F_{\alpha} = \{f_{\alpha} : \mathbf{N} \to A_{\alpha} | f_{\alpha} \text{ is bijective}\}.
+              \]
+              Since \(A_{\alpha}\) is countable, \(F_{\alpha} \neq \emptyset\).
+    \end{enumerate}
+    Since \(\forall\ \alpha \in J\), \(F_{\alpha} \neq \emptyset\), by Axiom \ref{8.1} the set \(\prod_{\alpha \in J} F_{\alpha} \neq \emptyset\).
+    This means we can choose a function \((f_{\alpha})_{\alpha \in J}\) from \(\prod_{\alpha \in J} F_{\alpha}\) which maps \(\alpha \in J\) to a function \(f_{\alpha} : \mathbf{N} \to A_{\alpha}\).
 
-    Since \(I\) is countable, \(\exists\ g : \mathbf{N} \to I\) such that \(g\) is bijective.
-    We now define another function \(h : \mathbf{N} \times \mathbf{N} \to \bigcup_{\alpha \in I} A_{\alpha}\) as follow:
+    We now use Axiom \ref{8.1} to choose a function \((f_{\alpha})_{\alpha \in J}\) and fix such function.
+    Since \(J\) is countable, \(\exists\ g : \mathbf{N} \to J\) such that \(g\) is bijective.
+    We now define another function \(h : \mathbf{N} \times \mathbf{N} \to \bigcup_{\alpha \in J} A_{\alpha}\) as follow:
     \[
         \forall\ (n, m) \in \mathbf{N} \times \mathbf{N} : h(n, m) = f_{g(n)}(m).
     \]
-    We show that such function \(h\) is bijective.
-    We start by showing \(h\) is injective.
-    \begin{align*}
-                 & \forall\ (n, m), (n', m') \in \mathbf{N} \times \mathbf{N} : h(n, m) = h(n, m')                                         \\
-        \implies & f_{g(n)}(m) = f_{g(n')}(m')                                                                                             \\
-        \implies & g(n) = g(n') \land m = m'                                                       & (A_{g(n)} \cap A_{g(n')} = \emptyset) \\
-        \implies & n = n' \land m = m'                                                             & \text{(\(g\) is bijective)}           \\
-        \implies & (n, m) = (n, m').                                                               & \text{(by Definition \ref{3.5.1})}
-    \end{align*}
-    Thus \(h\) is injective.
-    Now we show that \(h\) is surjective.
-    \(\forall\ x \in \bigcup_{\alpha \in I} A_{\alpha}\), we have \(\exists!\ \beta \in I\) such that \(x \in A_{\beta}\).
-    This is true since we have all \(A_{\alpha}\) are disjoint.
-    Since \(f_{\beta}\) is bijective, \(\exists\ m \in \mathbf{N}\) such that \(f_{\beta}(m) = x\).
+    By Corollary \ref{8.1.9} we now that \(h(\mathbf{N} \times \mathbf{N})\) is at most countable.
+    If we can show that \(h\) is surjective, then we can show that \(\bigcup_{\alpha \in J} A_{\alpha}\) is at most countable.
+    \(\forall\ x \in \bigcup_{\alpha \in J} A_{\alpha}\), \(\exists\ \beta \in J\) such that \(x \in A_{\beta}\).
+    By the definition of \(f_{\beta}\) we know that \(f_{\beta}\) is surjective.
+    Since \(f_{\beta}\) is surjective, \(\exists\ m \in \mathbf{N}\) such that \(f_{\beta}(m) = x\).
     Since \(g\) is bijective, \(\exists\ n \in \mathbf{N}\) such that \(g(n) = \beta\).
     Then \(\exists\ (n, m) \in \mathbf{N} \times \mathbf{N}\) such that \(h(n, m) = x\).
-    Thus \(h\) is surjective.
-    Since \(h\) is both injective and surjective, we have \(h\) is bijective.
-    Since \(h\) is bijective, by Definition \ref{3.6.1} \(\mathbf{N} \times \mathbf{N}\) and \(\bigcup_{\alpha \in I} A_{\alpha}\) have the same cardinality.
-    Then by Corollary \ref{8.1.13} \(\bigcup_{\alpha \in I} A_{\alpha}\) is countable.
+    Thus \(h\) is surjective and we conclude that \(\bigcup_{\alpha \in J} A_{\alpha}\) is at most countable.
+    This means countable union of at most countable set is at most countable.
 
-    We now remove the condition \(\forall\ \alpha \in I\), \(A_{\alpha}\) are countable and disjoint.
-    We define \(A_{g(n)}'\) recursive by setting \(A_{g(n)}' = A_{g(n)} \setminus \bigcup_{1 \leq i \leq n - 1} A_{g(i)}\).
-    We need to show that
-    \[
-        \bigcup_{\alpha \in I} A_{\alpha}' = \bigcup_{n \in \mathbf{N}} A_{g(n)}' = \bigcup_{n \in \mathbf{N}} A_{g(n)} = \bigcup_{\alpha \in I} A_{\alpha}.
-    \]
-    We have \(\bigcup_{\alpha \in I} A_{\alpha}' = \bigcup_{n \in \mathbf{N}} A_{g(n)}'\) and \(\bigcup_{\alpha \in I} A_{\alpha} = \bigcup_{n \in \mathbf{N}} A_{g(n)}\) are true.
-    It is suffice to show that \(\bigcup_{\alpha \in I} A_{\alpha}' = \bigcup_{\alpha \in I} A_{\alpha}\).
-    \begin{enumerate}
-        \item \(\forall\ x \in \bigcup_{\alpha \in I} A_{\alpha}'\), \(\exists\ \beta \in I\) such that \(x \in A_{\beta}'\).
-              By the definition of \(A_{\beta}'\), we have \(x \in A_{\beta}\), thus \(x \in \bigcup_{\alpha \in I} A_{\alpha}\).
-        \item \(\forall\ x \in \bigcup_{\alpha \in I} A_{\alpha}\), \(\exists\ \beta \in I\) such that \(x \in A_{\beta}\).
-              By Axiom \ref{3.6} we can define a set \(S = \{n \in \mathbf{N} : x \in A_{g(n)}\}\).
-              Since \(S \subseteq \mathbf{N}\), by well ordering principle (Proposition \ref{8.1.4}) \(\exists\ n \in \mathbf{N}\) such that \(n = \min(S)\).
-              Then we must have \(x \in \bigcup_{n \in \mathbf{N}} A_{g(n)}'\) since \(\nexists\ i < n\) such that \(x \in A_{g(i)}'\).
-    \end{enumerate}
-    Thus by Definition \ref{3.1.4} we have \(\bigcup_{\alpha \in I} A_{\alpha}' = \bigcup_{\alpha \in I} A_{\alpha}\) and both are countable, and by Definition \ref{8.1.1}, at most countable.
+    We now show that countable union of countable set is countable.
+    More formally, let \(I\) be a countable set and \(\forall\ \alpha \in I\) let \(A_{\alpha}\) be countable set.
+    We prove by contradiction.
+    Since we now that countable union of countable set is at most countable, suppose for sake of contradiction that the result is finite.
+    But letting \(A_{\alpha} = \mathbf{N}\) for all \(\alpha \in I\), we get \(\bigcup_{\alpha \in I} A_{\alpha} = \mathbf{N}\), a contradiction.
+    Thus countable union of countable set is countable.
 \end{proof}
 
 \begin{exercise}\label{ex 8.1.10}
