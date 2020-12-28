@@ -231,8 +231,40 @@
     \end{enumerate}
 \end{proposition}
 
-\begin{proof}
-    This shall be done once I learn Axiom of choice.
+\begin{proof}{(a)}
+    Suppose that \(X\) is a set and \(f : X \to \mathbf{R}, g : X \to \mathbf{R}\) are functions such that \(\sum_{x \in X} f(x)\) and \(\sum_{x \in X} g(x)\) are both absolutely convergent.
+    By Proposition \ref{7.1.11}(f) we already show that the statement is true when \(X\) is finite.
+    So suppose that \(X\) is infinite.
+
+    We first show that \(\sum_{x \in X} (f(x) + g(x))\) is absolutely convergent.
+    Since \(\sum_{x \in X} f(x)\) and \(\sum_{x \in X} g(x)\) are both absolutely convergent, by Lemma \ref{8.2.3}, \(\exists\ N, M \in \mathbf{R}\) such that
+    \[
+        N = \sup\Bigg\{\sum_{x \in A} \abs*{f(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty
+    \]
+    and
+    \[
+        M = \sup\Bigg\{\sum_{x \in A} \abs*{g(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty.
+    \]
+    Let \(A \subsetneq X\) be a finite set.
+    Then we have
+    \begin{align*}
+        \sum_{x \in A} \abs*{f(x) + g(x)} & \leq \sum_{x \in A} (\abs*{f(x)} + \abs*{g(x)})                                                     \\
+                                          & = \sum_{x \in A} \abs*{f(x)} + \sum_{x \in A} \abs*{g(x)} & \text{(by Proposition \ref{7.1.11}(f))} \\
+                                          & \leq N + M.
+    \end{align*}
+    Since \(A\) is arbitrary, we have
+    \[
+        \sup\Bigg\{\sum_{x \in A} \abs*{f(x) + g(x)} : A \subseteq X, A \text{ finite}\Bigg\} \leq N + M < \infty.
+    \]
+    Thus by Definition \ref{8.2.4} we have \(\sum_{x \in X} (f(x) + g(x))\) is absolutely convergent.
+
+    Now we show that \(\sum_{x \in X} (f(x) + g(x)) = \sum_{x \in X} f(x) + \sum_{x \in X} g(x)\).
+    Let \(X_f = \{x \in X : f(x) \neq 0\}\), \(X_g = \{x \in X : g(x) \neq 0\}\) and \(X_h = \{x \in X : f(x) + g(x) \neq 0\}\) be sets.
+    Then by Lemma \ref{8.2.5} we have all \(X_f\), \(X_g\) and \(X_h\) are at most countable.
+    Since
+    \[
+        \bigg\{x \in X : \big(f(x) = 0 \land g(x) \neq 0\big) \lor \big(f(x) \neq 0 \land g(x) = 0\big)\bigg\} \subseteq X_h,
+    \]
 \end{proof}
 
 \begin{lemma}\label{8.2.7}
