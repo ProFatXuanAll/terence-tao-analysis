@@ -220,7 +220,7 @@
               \[
                   \sum_{x \in X_1 \cup X_2} f(x) = \sum_{x \in X_1} f(x) + \sum_{x \in X_2} f(x).
               \]
-              Conversely, if \(h : X \to \mathbf{R}\) is such that \(\sum_{x \in X_1} h(x)\) and \(\sum_{x \in X_2} h(x)\) are absolutely convergent, then \(\sum_{x \in X_1 \cup X_2} h(x)\) is also absolute convergent, and
+              Conversely, if \(h : X \to \mathbf{R}\) is such that \(\sum_{x \in X_1} h(x)\) and \(\sum_{x \in X_2} h(x)\) are absolutely convergent, then \(\sum_{x \in X_1 \cup X_2} h(x)\) is also absolutely convergent, and
               \[
                   \sum_{x \in X_1 \cup X_2} h(x) = \sum_{x \in X_1} h(x) + \sum_{x \in X_2} h(x).
               \]
@@ -427,29 +427,89 @@
                              & = \sum_{x \in X_f} f(x)                                                                                 & \text{(by Definition \ref{8.2.4})}      \\
                              & = \sum_{n = 0}^\infty f(n_f(n))                                                                         & \text{(by Definition \ref{8.2.1})}      \\
                              & = \sum_{n = 0}^{\#(X_{f1}) - 1} f(n_f(n)) + \sum_{n = \#(X_{f1})}^\infty f(n_f(n))                      & \text{(by Proposition \ref{7.2.14}(c))} \\
-                             & = \sum_{n = 0}^{\#(X_{f1}) - 1} f(n_{X_1}(n)) + \sum_{n = \#(X_{f1})}^\infty f(n_{X_2}(n - \#(X_{f1})))                                           \\
+                             & = \sum_{n = 0}^{\#(X_{f1}) - 1} f(n_{X_1}(n)) \\
+                             & \quad + \sum_{n = \#(X_{f1})}^\infty f(n_{X_2}(n - \#(X_{f1})))                                           \\
                              & = \sum_{n = 0}^{\#(X_{f1}) - 1} f(n_{X_1}(n)) + \sum_{n = 0}^\infty f(n_{X_2}(n))                       & \text{(by Proposition \ref{7.2.14}(d))} \\
                              & = \sum_{x \in X_{f1}} f(x) + \sum_{n = 0}^\infty f(n_{X_2}(n))                                          & \text{(by Definition \ref{7.1.6})}      \\
                              & = \sum_{x \in X_{f1}} f(x) + \sum_{x \in X_{f2}} f(x)                                                   & \text{(by Definition \ref{8.2.1})}      \\
                              & = \sum_{x \in X_1} f(x) + \sum_{x \in X_2} f(x).                                                        & \text{(by Definition \ref{8.2.4})}
                         \end{align*}
-                  \item If both sets are countable, then we can set \(n_f\) as follow:
-                        \[
-                            \forall\ n \in \mathbf{N} : n_f(n) = \begin{cases}
-                                n_{X_1}(\frac{n}{2})     & \text{if } n \text{ is even}, \\
-                                n_{X_2}(\frac{n - 1}{2}) & \text{if } n \text{ is odd}.
-                            \end{cases}
-                        \]
-                        Where \(n_{X_1} : \mathbf{N} \to X_{f1}\) and \(n_{X_2} : \mathbf{N} \to X_{f2}\) are bijections.
-                        Thus
-                        \begin{align*}
-                             & \sum_{x \in X} f(x)                                                  \\
-                             & = \sum_{x \in X_f} f(x)         & \text{(by Definition \ref{8.2.4})} \\
-                             & = \sum_{n = 0}^\infty f(n_f(n)) & \text{(by Definition \ref{8.2.1})} \\
-                             & = \sum_{n = 0}^\infty f(n_f(n))
-                        \end{align*}
+                  \item If both sets are countable, then by Definition \ref{8.1.1} \(\exists\ n_{X_1} : \mathbf{N} \to X_{f1}, n_{X_2} : \mathbf{N} \to X_{f2}\) such that both are bijections.
+                  By Definition \ref{8.2.1} we have
+                  \[
+                      \sum_{x \in X_1} f(x) = \sum_{n = 0}^\infty f(n_{X_1}(n)) ; \sum_{x \in X_2} f(x) = \sum_{n = 0}^\infty f(n_{X_2}(n)).
+                  \]
+                  Let \((S_n^f)_{n = 0}^\infty, (S_n^{X_1})_{n = 0}^\infty, (S_n^{X_2})_{n = 0}^\infty\) be sequences of partial sums
+                  \[
+                      S_N^f = \sum_{n = 0}^N f(n_f(n)) ; S_N^{X_1} = \sum_{n = 0}^N f(n_{X_1}(n)) ; S_N^{X_2} = \sum_{n = 0}^N f(n_{X_2}(n)).
+                  \]
+                  To prove that
+                  \[
+                      \sum_{n = 0}^\infty f(n_f(x)) = \sum_{n = 0}^\infty f(n_{X_1}(n)) + \sum_{n = 0}^\infty f(n_{X_2}(n)),
+                  \]
+                  we can instead prove
+                  \[
+                      \lim_{N \to \infty} S_N^f = \lim_{N \to \infty} S_N^{X_1} + \lim_{N \to \infty} S_N^{X_2} = \lim_{N \to \infty} S_N^{X_1} + S_N^{X_2}.
+                  \]
+                  We can set \(n_f\) as follow:
+                  \[
+                      \forall\ n \in \mathbf{N} : n_f(n) = \begin{cases}
+                          n_{X_1}(\frac{n}{2}) & \text{if } n \text{ is even}, \\
+                          n_{X_2}(\frac{n - 1}{2}) & \text{if } n \text{ is odd}.
+                      \end{cases}
+                  \]
+                  Then we have
+                  \[
+                      \sum_{n = 0}^{2N + 1} f(n_f(n)) = \sum_{n = 0}^N f(n_{X_1}(n)) + \sum_{n = 0}^N f(n_{X_2}(n)).
+                  \]
+                  Thus by Definition \ref{7.2.2} we have
+                  \[
+                      \lim_{N \to \infty} \sum_{n = 0}^{2N + 1} f(n_f(n)) = \lim_{N \to \infty} \Bigg(\sum_{n = 0}^N f(n_{X_1}(n)) + \sum_{n = 0}^N f(n_{X_2}(n))\Bigg)
+                  \]
+                  and
+                  \begin{align*}
+                      & \sum_{x \in X} f(x) \\
+                      & = \sum_{x \in X_f} f(x) & \text{(by Definition \ref{8.2.4})} \\
+                      & = \sum_{n = 0}^\infty f(n_f(n)) & \text{(by Definition \ref{8.2.1})} \\
+                      & = \sum_{n = 0}^\infty f(n_{X_1}(n)) + \sum_{n = 0}^\infty f(n_{X_2}(n)) \\
+                      & = \sum_{x \in X_{f1}} f(x) + \sum_{x \in X_{f2}} f(x) & \text{(by Definition \ref{8.2.1})} \\
+                      & = \sum_{x \in X_1} f(x) + \sum_{x \in X_2} f(x). & \text{(by Definition \ref{8.2.4})}
+                  \end{align*}
               \end{enumerate}
     \end{enumerate}
+    From all cases above we can conclude that \(\sum_{x \in X} f(x) = \sum_{x \in X_1} f(x) + \sum_{x \in X_2} f(x)\).
+
+    Finally we show that if \(h : X \to \mathbf{R}\) is a function such that \(\sum_{x \in X_1} h(x)\) and \(\sum_{x \in X_2} h(x)\) are absolutely convergent, then \(\sum_{x \in X} h(x)\) is also absolutely convergent.
+    Since \(\sum_{x \in X_1} h(x)\) and \(\sum_{x \in X_2} h(x)\) are absolutely convergent, by Definition \ref{8.2.4}, \(\exists\ N, M \in \mathbf{R}\) such that
+    \[
+        N = \sup\Bigg\{\sum_{x \in A} \abs*{h(x)} : A \subseteq X_1, A \text{ finite}\Bigg\} < \infty
+    \]
+    and
+    \[
+        M = \sup\Bigg\{\sum_{x \in A} \abs*{h(x)} : A \subseteq X_2, A \text{ finite}\Bigg\} < \infty.
+    \]
+    Let \(A \subseteq X\) be a finite set.
+    Let \(A_1 = A \cap X_1\) and \(A_2 = A \cap X_2\).
+    Clearly we have
+    \begin{align*}
+        A_1 \cap A_2 & = \emptyset, \\
+        A_1 \cup A_2 & = A, \\
+        A_1 & \subseteq X_1, \\
+        A_2 & \subseteq X_2, \\
+        A_1 & \text{ is finite}, \\
+        A_2 & \text{ is finite}.
+    \end{align*}
+    Then we have
+    \begin{align*}
+         \sum_{x \in A} \abs*{h(x)} & = \sum_{x \in A_1 \cup A_2} \abs*{h(x)} \\
+         & = \sum_{x \in A_1} \abs*{h(x)} + \sum_{x \in A_2} \abs*{h(x)} \\
+         & \leq N + M.
+    \end{align*}
+    Since \(A\) is arbitrary, we have
+    \[
+        \sup\Bigg\{\sum_{x \in A} \abs*{h(x)} : A \subseteq X, A \text{ finite}\Bigg\} \leq N + M < \infty
+    \]
+    Thus by Definition \ref{8.2.4} \(\sum_{x \in X} h(x)\) is absolutely convergent.
 \end{proof}
 
 \begin{lemma}\label{8.2.7}
