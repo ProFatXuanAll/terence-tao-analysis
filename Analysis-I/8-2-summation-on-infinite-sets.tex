@@ -685,36 +685,42 @@
               for all \(j' \geq j\).
               Now we split into two cases:
               \begin{enumerate}[label=(\Roman*)]
-                  \item If \(\sum_{0 \leq i \leq j'} a_{n_i} < L\), then \(a_{n_{j' + 1}} \geq 0\) and \(\sum_{0 \leq i \leq j' + 1} a_{n_i} \geq L\).
-                        This can be done from the claim (b) above.
+                  \item If \(\sum_{0 \leq i \leq j'} a_{n_i} < L\), then \(\exists\ k \geq j'\) such that
+                        \[
+                            \sum_{0 \leq i \leq k} a_{n_i} < L \land \sum_{0 \leq i \leq k + 1} a_{n_i} \geq L.
+                        \]
+                        This is true by the claim (b) above.
                         Thus
                         \begin{align*}
-                                     & \sum_{0 \leq i \leq j' + 1} a_{n_i} \geq L                             \\
-                            \implies & \sum_{0 \leq i \leq j'} a_{n_i} + a_{n_{j' + 1}} \geq L                \\
-                            \implies & \sum_{0 \leq i \leq j'} a_{n_i} \geq L - a_{n_{j' + 1}}                \\
-                            \implies & \sum_{0 \leq i \leq j'} a_{n_i} \geq L - \varepsilon                   \\
-                            \implies & L > \sum_{0 \leq i \leq j'} a_{n_i} \geq L - \varepsilon               \\
-                            \implies & L + \varepsilon > \sum_{0 \leq i \leq j'} a_{n_i} \geq L - \varepsilon \\
-                            \implies & \abs*{\sum_{0 \leq i \leq j'} a_{n_i} - L} < \varepsilon.
+                                     & \sum_{0 \leq i \leq k + 1} a_{n_i} \geq L                                                                       \\
+                            \implies & \sum_{0 \leq i \leq k} a_{n_i} + a_{n_{k + 1}} \geq L                                                           \\
+                            \implies & \sum_{0 \leq i \leq k} a_{n_i} \geq L - a_{n_{k + 1}}                                                           \\
+                            \implies & \sum_{0 \leq i \leq k} a_{n_i} \geq L - \varepsilon                   & (\abs*{a_{n_{k + 1}}} \leq \varepsilon) \\
+                            \implies & L > \sum_{0 \leq i \leq k} a_{n_i} \geq L - \varepsilon                                                         \\
+                            \implies & L + \varepsilon > \sum_{0 \leq i \leq k} a_{n_i} \geq L - \varepsilon                                           \\
+                            \implies & \abs*{\sum_{0 \leq i \leq k} a_{n_i} - L} < \varepsilon.
                         \end{align*}
-                  \item If \(\sum_{0 \leq i \leq j'} a_{n_i} \geq L\), then \(a_{n_{j' + 1}} < 0\) and \(\sum_{0 \leq i \leq j' + 1} a_{n_i} < L\).
-                        This can be done from the claim (b) above.
+                  \item If \(\sum_{0 \leq i \leq j'} a_{n_i} \geq L\), then \(\exists\ k \geq j'\) such that
+                        \[
+                            \sum_{0 \leq i \leq k} a_{n_i} \geq L \land \sum_{0 \leq i \leq k + 1} a_{n_i} < L.
+                        \]
+                        This is true by the claim (b) above.
                         Thus
                         \begin{align*}
-                                     & \sum_{0 \leq i \leq j' + 1} a_{n_i} < L                                \\
-                            \implies & \sum_{0 \leq i \leq j'} a_{n_i} + a_{n_{j' + 1}} < L                   \\
-                            \implies & \sum_{0 \leq i \leq j'} a_{n_i} < L - a_{n_{j' + 1}}                   \\
-                            \implies & \sum_{0 \leq i \leq j'} a_{n_i} < L + \varepsilon                      \\
-                            \implies & L \leq \sum_{0 \leq i \leq j'} a_{n_i} < L + \varepsilon               \\
-                            \implies & L - \varepsilon \leq \sum_{0 \leq i \leq j'} a_{n_i} < L + \varepsilon \\
-                            \implies & \abs*{\sum_{0 \leq i \leq j'} a_{n_i} - L} < \varepsilon.
+                                     & \sum_{0 \leq i \leq k + 1} a_{n_i} < L                                                                          \\
+                            \implies & \sum_{0 \leq i \leq k} a_{n_i} + a_{n_{k + 1}} < L                                                              \\
+                            \implies & \sum_{0 \leq i \leq k} a_{n_i} < L - a_{n_{k + 1}}                                                              \\
+                            \implies & \sum_{0 \leq i \leq k} a_{n_i} < L + \varepsilon                      & (\abs*{a_{n_{k + 1}}} \leq \varepsilon) \\
+                            \implies & L \leq \sum_{0 \leq i \leq k} a_{n_i} < L + \varepsilon                                                         \\
+                            \implies & L - \varepsilon \leq \sum_{0 \leq i \leq k} a_{n_i} < L + \varepsilon                                           \\
+                            \implies & \abs*{\sum_{0 \leq i \leq k} a_{n_i} - L} < \varepsilon.
                         \end{align*}
               \end{enumerate}
               From all cases above we have show that \(\forall\ \varepsilon > 0\), \(\exists\ j \geq 0\) such that
               \[
-                  \abs*{\sum_{0 \leq i \leq j'} a_{n_i} - L} < \varepsilon.
+                  \abs*{\sum_{0 \leq i \leq k} a_{n_i} - L} < \varepsilon.
               \]
-              for all \(j' \geq j\).
+              for all \(k \geq j\).
               Thus \(\lim_{j \to \infty} \sum_{0 \leq i \leq j} a_{n_i} = L\).
     \end{enumerate}
     The claim then follows by setting \(f(i) \coloneqq n_i\) for all \(i\).
