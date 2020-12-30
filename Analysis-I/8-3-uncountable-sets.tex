@@ -91,3 +91,31 @@
     it can neither be proved nor disproved in that set of axioms
     (unless those axioms are inconsistent, which is highly unlikely).
 \end{remark}
+
+\exercisesection
+
+\begin{exercise}\label{ex 8.3.1}
+    Let \(X\) be a finite set of cardinality \(n\).
+    Show that \(2^X\) is a finite set of cardinality \(2^n\).
+\end{exercise}
+
+\begin{proof}
+    We use induction on \(n\).
+    For \(n = 0\), \(X = \emptyset\) and \(2^{\emptyset} = \{\emptyset\}\).
+    Clearly \(\#(2^{\emptyset}) = 1\).
+    So the base case holds.
+    Suppose inductively that \(\#(2^X) = 2^n\) for some \(n\).
+    We need to show that for \(n + 1\), \(\#(2^X) = 2^{n + 1}\).
+    Since \(\#(X) = n + 1\), we have \(X \neq \emptyset\).
+    Let \(x \in X\).
+    Then we have
+    \begin{align*}
+        \#(2^X) & = \#(2^{(X \setminus \{x\}) \cup \{x\}}) \\
+        & = \#(2^{X \setminus \{x\}}) \times \#(2^{\{x\}}) & \text{(by Exercise \ref{ex 3.6.6})} \\
+        & = 2^n \times \#(2^{\{x\}}) & \text{(by induction hypothesis)} \\
+        & = 2^n \times \#(\{\emptyset, \{x\}\}) \\
+        & = 2^n \times 2 \\
+        & = 2^{n + 1}.
+    \end{align*}
+    This close the induction.
+\end{proof}
