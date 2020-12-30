@@ -619,9 +619,14 @@
 \begin{proof}
     Let \(A_+\) and \(A_-\) be the sets in Lemma \ref{8.2.7};
     from Lemma \ref{8.2.7} we know that \(\sum_{n \in A_+} a_n\) and \(\sum_{n \in A_-} a_n\) both fail to be absolutely convergent.
-    In particular \(A_+\) and \(A_-\) are infinite (why?).
+    In particular \(A_+\) and \(A_-\) are infinite.
+    (Since \(A_+ \cup A_- = \mathbf{N}\), we know that at least one of \(A_+\) and \(A_-\) is countable.
+    If \(A_+\) is finite, then \(\sum_{n = 0}^\infty a_n - \sum_{n \in A_+} a_n = \sum_{n \in A_-} a_n\) is conditionally convergent.
+    But this means \(\sum_{n \in A_-} \abs*{a_n} = \sum_{n \in A_-} -a_n = -\sum_{n \in A_-} a_n\) converges, which means \(\sum_{n \in A_-} a_n\) is absolutely convergent, contradict to Lemma \ref{8.2.7}.
+    Similarly if \(A_-\) is finite, then \(\sum_{n \in A_+} a_n\) is absolutely convergent, again contradict to Lemma \ref{8.2.7}.
+    Thus both \(A_+\) and \(A_-\) must be countable.)
     By Proposition \ref{8.1.5} we can then find increasing bijections \(f_+ : \mathbf{N} \to A_+\) and \(f_- : \mathbf{N} \to A_-\).
-    Thus the sums \(\sum_{m = 0}^\infty a_{f_+(m)}\) and \(\sum_{m = 0}^\infty a_{f_-(m)}\) both fail to be absolutely convergent (why?).
+    Thus the sums \(\sum_{m = 0}^\infty a_{f_+(m)}\) and \(\sum_{m = 0}^\infty a_{f_-(m)}\) both fail to be absolutely convergent (first by Definition \ref{8.2.1} then by Lemma \ref{8.2.7}).
     The plan shall be to select terms from the divergent series \(\sum_{m = 0}^\infty a_{f_+(m)}\) and \(\sum_{m = 0}^\infty a_{f_-(m)}\) in a well-chosen order in order to keep their difference converging towards \(L\).
 
     We define the sequence \(n_0, n_1, n_2, \dots\) of natural numbers recursively as follows.
@@ -637,15 +642,80 @@
                   n_j \coloneqq \min\{n \in A_- : n \neq n_i \ \forall\ i < j\}.
               \]
     \end{enumerate}
-    Note that this recursive definition is well-defined because \(A_+\) and \(A_-\) are infinite, and so the sets \(\{n \in A_+ : n \neq n_i \ \forall\ i < j\}\) and \(n_j \coloneqq \min\{n \in A_- : n \neq n_i \ \forall\ i < j\}\) are never empty.
+    Note that this recursive definition is well-defined because \(A_+\) and \(A_-\) are infinite, and so the sets \(\{n \in A_+ : n \neq n_i \ \forall\ i < j\}\) and \(\{n \in A_- : n \neq n_i \ \forall\ i < j\}\) are never empty.
     (Intuitively, we add a non-negative number to the series whenever the partial sum is too low, and add a negative number when the sum is too high.)
     One can then verify the following claims:
     \begin{enumerate}
-        \item The map \(j \mapsto n_j\) is injective. (Why?)
-        \item Case I occurs an infinite number of times, and Case II also occurs an infinite number of times. (Why? prove by contradiction.)
-        \item The map \(j \mapsto n_j\) is surjective. (Why?)
-        \item We have \(\lim_{j \to \infty} a_{n_j} = 0\). (Why? Note from Corollary \ref{7.2.6} that \(\lim_{n \to \infty} a_n = 0\).)
-        \item We have \(\lim_{j \to \infty} \sum_{0 \leq i \leq j} a_{n_i} = L\). (Why?)
+        \item The map \(j \mapsto n_j\) is injective.
+              This is true since
+              \begin{align*}
+                           & \forall\ i, j \in \mathbf{N} : i \neq j \\
+                  \implies & i < j \lor i > j                        \\
+                  \implies & n_i \neq n_j.
+              \end{align*}
+        \item Case I occurs an infinite number of times, and Case II also occurs an infinite number of times.
+              We prove this by contradiction.
+              Suppose that case I occurs only finite number of times.
+              Then we have
+              \[
+                  \sum_{0 \leq i < j} a_{n_i} < L \land \sum_{0 \leq i < j} a_{n_i} + a_{n_j} + \sum_{i > j} a_{n_i} \geq L
+              \]
+              where \(j\) is the last time case I occurs.
+              Since \(\sum_{0 \leq i < j} a_{n_i} + a_{n_j}\) is finite, \(\sum_{i > j} a_{n_i}\) have a lower bound.
+              Since all \(i > j\) are cases II, \(\sum_{i > j} a_{n_i}\) is decreasing.
+              Since \(\sum_{i > j} a_{n_i}\) is decreasing and has lower bound, by Additional Corollary \ref{ac 6.3.1} \(\sum_{i > j} a_{n_i}\) is convergent.
+              But this means \(\sum_{n \in A_-} a_n\) is absolutely convergent (which proof can be found above), a contradiction.
+              Thus case I occurs infinite number of times.
+              Similar proof show that case II also occurs infinite number of times.
+        \item The map \(j \mapsto n_j\) is surjective.
+              \(\forall\ n \in \mathbf{N}\), either \(n \in A_+\) or \(n \in A_-\).
+              If \(n \in A_+\) and there is no \(j \mapsto n\), then \(\forall\ n' > n\) there must also have no \(j \mapsto n'\), otherwise by definition we must have \(n = \min\{n \in A_+ : n \neq n_i \ \forall\ i < j\}\).
+              But if \(\forall\ n' > n\) there is no \(j \to n'\), then case I only occur finite number of times, a contradiction.
+              Thus \(\exists\ j \mapsto n\).
+              Similar argument show that if \(n \in A_-\) then \(\exists\ j \mapsto n\).
+              Thus \(j \mapsto n_j\) is surjective.
+        \item We have \(\lim_{j \to \infty} a_{n_j} = 0\).
+              By Corollary \ref{7.2.6} we have \(\lim_{j \to \infty} a_j = 0\).
+              Since \(j \to n_j\) is bijective, we have \(\lim_{j \to \infty} a_{n_j} = 0\).
+        \item We have \(\lim_{j \to \infty} \sum_{0 \leq i \leq j} a_{n_i} = L\).
+              Since \(\lim_{j \to \infty} a_{n_j} = 0\), \(\forall\ \varepsilon \in \mathbf{R} \land \varepsilon > 0\), \(\exists\ j \geq 0\) such that
+              \[
+                  \abs*{a_{n_{j'}} - 0} \leq \varepsilon
+              \]
+              for all \(j' \geq j\).
+              Now we split into two cases:
+              \begin{enumerate}[label=(\Roman*)]
+                  \item If \(\sum_{0 \leq i \leq j'} a_{n_i} < L\), then \(a_{n_{j' + 1}} \geq 0\) and \(\sum_{0 \leq i \leq j' + 1} a_{n_i} \geq L\).
+                        This can be done from the claim (b) above.
+                        Thus
+                        \begin{align*}
+                                     & \sum_{0 \leq i \leq j' + 1} a_{n_i} \geq L                             \\
+                            \implies & \sum_{0 \leq i \leq j'} a_{n_i} + a_{n_{j' + 1}} \geq L                \\
+                            \implies & \sum_{0 \leq i \leq j'} a_{n_i} \geq L - a_{n_{j' + 1}}                \\
+                            \implies & \sum_{0 \leq i \leq j'} a_{n_i} \geq L - \varepsilon                   \\
+                            \implies & L > \sum_{0 \leq i \leq j'} a_{n_i} \geq L - \varepsilon               \\
+                            \implies & L + \varepsilon > \sum_{0 \leq i \leq j'} a_{n_i} \geq L - \varepsilon \\
+                            \implies & \abs*{\sum_{0 \leq i \leq j'} a_{n_i} - L} < \varepsilon.
+                        \end{align*}
+                  \item If \(\sum_{0 \leq i \leq j'} a_{n_i} \geq L\), then \(a_{n_{j' + 1}} < 0\) and \(\sum_{0 \leq i \leq j' + 1} a_{n_i} < L\).
+                        This can be done from the claim (b) above.
+                        Thus
+                        \begin{align*}
+                                     & \sum_{0 \leq i \leq j' + 1} a_{n_i} < L                                \\
+                            \implies & \sum_{0 \leq i \leq j'} a_{n_i} + a_{n_{j' + 1}} < L                   \\
+                            \implies & \sum_{0 \leq i \leq j'} a_{n_i} < L - a_{n_{j' + 1}}                   \\
+                            \implies & \sum_{0 \leq i \leq j'} a_{n_i} < L + \varepsilon                      \\
+                            \implies & L \leq \sum_{0 \leq i \leq j'} a_{n_i} < L + \varepsilon               \\
+                            \implies & L - \varepsilon \leq \sum_{0 \leq i \leq j'} a_{n_i} < L + \varepsilon \\
+                            \implies & \abs*{\sum_{0 \leq i \leq j'} a_{n_i} - L} < \varepsilon.
+                        \end{align*}
+              \end{enumerate}
+              From all cases above we have show that \(\forall\ \varepsilon > 0\), \(\exists\ j \geq 0\) such that
+              \[
+                  \abs*{\sum_{0 \leq i \leq j'} a_{n_i} - L} < \varepsilon.
+              \]
+              for all \(j' \geq j\).
+              Thus \(\lim_{j \to \infty} \sum_{0 \leq i \leq j} a_{n_i} = L\).
     \end{enumerate}
     The claim then follows by setting \(f(i) \coloneqq n_i\) for all \(i\).
 \end{proof}
