@@ -110,12 +110,12 @@
     Let \(x \in X\).
     Then we have
     \begin{align*}
-        \#(2^X) & = \#(2^{(X \setminus \{x\}) \cup \{x\}}) \\
-        & = \#(2^{X \setminus \{x\}}) \times \#(2^{\{x\}}) & \text{(by Exercise \ref{ex 3.6.6})} \\
-        & = 2^n \times \#(2^{\{x\}}) & \text{(by induction hypothesis)} \\
-        & = 2^n \times \#(\{\emptyset, \{x\}\}) \\
-        & = 2^n \times 2 \\
-        & = 2^{n + 1}.
+        \#(2^X) & = \#(2^{(X \setminus \{x\}) \cup \{x\}})                                               \\
+                & = \#(2^{X \setminus \{x\}}) \times \#(2^{\{x\}}) & \text{(by Exercise \ref{ex 3.6.6})} \\
+                & = 2^n \times \#(2^{\{x\}})                       & \text{(by induction hypothesis)}    \\
+                & = 2^n \times \#(\{\emptyset, \{x\}\})                                                  \\
+                & = 2^n \times 2                                                                         \\
+                & = 2^{n + 1}.
     \end{align*}
     This close the induction.
 \end{proof}
@@ -140,10 +140,10 @@
     Suppose for sake of contradiction that \(D_{n + 1} \cap D_{n + k + 1} \neq \emptyset\).
     Then we have
     \begin{align*}
-        & \exists\ x \in D_{n + 1} \cap D_{n + k + 1} \\
-        \implies & x \in f(D_n) \cap f(D_{n + k}) \\
-        \implies & \exists\ (z \in D_n \land z' \in D_{n + k}) : f(z) = f(z') \\
-        \implies & z = z'. & \text{(\(f\) is injective)}
+                 & \exists\ x \in D_{n + 1} \cap D_{n + k + 1}                                              \\
+        \implies & x \in f(D_n) \cap f(D_{n + k})                                                           \\
+        \implies & \exists\ (z \in D_n \land z' \in D_{n + k}) : f(z) = f(z')                               \\
+        \implies & z = z'.                                                    & \text{(\(f\) is injective)}
     \end{align*}
     But by induction hypothesis we know that \(D_n \cap D_{n + k} = \emptyset\), a contradiction.
     Thus \(D_{n + 1} \cap D_{n + k + 1} = \emptyset\).
@@ -164,11 +164,47 @@
     \[
         \forall\ x \in A : g(x) = \begin{cases}
             f^{-1}(x) & \text{if } x \in \bigcup_{n = 1}^\infty D_n, \\
-            x & \text{otherwise},
+            x         & \text{otherwise},
         \end{cases}
     \]
     then \(g\) is bijective.
     Since \(f\) is injective, \(f\) is thus bijective from \(\bigcup_{n = 0}^\infty D_n\) to \(f(\bigcup_{n = 0}^\infty D_n)\).
     By definition we have \(f(\bigcup_{n = 0}^\infty D_n) = \bigcup_{n = 1}^\infty D_n\).
     Thus \(g\) is well-defined.
+
+    We now show that \(g\) is bijective.
+    We start by showing that \(g\) is injective.
+    Let \(x, x' \in A\) such that \(g(x) = g(x')\).
+    We now split into four cases:
+    \begin{enumerate}
+        \item If \(x, x' \in \bigcup_{n = 1}^\infty D_n\), then since \(f\) is bijective from \(\bigcup_{n = 0}^\infty D_n\) to \(\bigcup_{n = 1}^\infty D_n\), we have \(f^{-1}(x) = f^{-1}(x') \implies x = x'\).
+        \item If \(x, x' \in A \setminus \bigcup_{n = 1}^\infty D_n\), then we have \(g(x) = x = x' = g(x')\).
+        \item If \(x \in \bigcup_{n = 1}^\infty D_n\) and \(x' \in A \setminus \bigcup_{n = 1}^\infty D_n\), then we show that this case is impossible.
+              Since \(x \in \bigcup_{n = 1}^\infty D_n\), we have
+              \[
+                  f^{-1}(x) \in \bigcup_{n = 0}^\infty D_n = D_0 \cup (\bigcup_{n = 1}^\infty D_n) = (B \setminus A) \cup (\bigcup_{n = 1}^\infty D_n).
+              \]
+              but \(g(x) = f^{-1}(x) = x' = g(x')\) implies \(x' \in (B \setminus A) \cup (\bigcup_{n = 1}^\infty D_n)\), a contradiction.
+              Thus this case is impossible.
+        \item If \(x' \in \bigcup_{n = 1}^\infty D_n\) and \(x \in A \setminus \bigcup_{n = 1}^\infty D_n\), then from claim (c) above we know this case is impossible.
+    \end{enumerate}
+    From all possible cases above we have \(x = x'\), thus \(g\) is injective.
+
+    Next we show that \(g\) is surjective.
+    Let \(y \in B\).
+    We now split into two cases:
+    \begin{enumerate}
+        \item If \(y \in \bigcup_{n = 0}^\infty D_n\), then since \(f\) is bijective from \(\bigcup_{n = 0}^\infty D_n\) to \(\bigcup_{n = 1}^\infty D_n\), \(\exists\ x \in \bigcup_{n = 1}^\infty D_n\) such that \(f^{-1}(x) = y\).
+        \item If \(y \in B \setminus (\bigcup_{n = 0}^\infty D_n)\), then we know that \(y \in A\) since
+              \begin{align*}
+                  B \setminus \bigcup_{n = 0}^\infty D_n & = B \setminus \bigg((B \setminus A) \cup (\bigcup_{n = 1}^\infty D_n)\bigg)                                                                \\
+                                                         & = \bigg(B \setminus (B \setminus A)\bigg) \cap \bigg(B \setminus (\bigcup_{n = 1}^\infty D_n)\bigg) & \text{(by Proposition \ref{3.1.28})} \\
+                                                         & = (A \cap B) \cap \bigg(B \setminus (\bigcup_{n = 1}^\infty D_n)\bigg)                                                                     \\
+                                                         & \subseteq A.
+              \end{align*}
+              Since \(y \notin \bigcup_{n = 0}^\infty D_n\), we have \(g(y) = y\).
+    \end{enumerate}
+    From all cases above we can find a \(x \in A\) such that \(g(x) = y\).
+    Thus \(g\) is surjective.
+    Since \(g\) is both injective and surjective, we know that \(g\) is bijective.
 \end{proof}
