@@ -208,3 +208,34 @@
     Thus \(g\) is surjective.
     Since \(g\) is both injective and surjective, we know that \(g\) is bijective.
 \end{proof}
+
+\begin{exercise}\label{ex 8.3.3}
+    Recall from Exercise \ref{ex 3.6.7} that a set \(A\) is said to have lesser or equal cardinality than a set \(B\) iff there is an injective map \(f : A \to B\) from \(A\) to \(B\).
+    Using Exercise \ref{ex 8.3.2}, show that if \(A, B\) are sets such that \(A\) has lesser or equal cardinality to \(B\) and \(B\) has lesser or equal cardinality to \(A\), then \(A\) and \(B\) have equal cardinality.
+    (This is known as the Schröder-Bernstein theorem, after Ernst Schröder (1841 -- 1902) and Felix Bernstein (1878 -- 1956).)
+\end{exercise}
+
+\begin{proof}
+    Suppose that \(A, B\) are sets, \(A\) has lesser or equal cardinality to \(B\) and \(B\) has lesser or equal cardinality to \(A\).
+    Then by Exercise \ref{ex 3.6.7} we know that \(\exists\ f : A \to B, g : B \to A\) such that \(f, g\) are injective.
+    By Exercise \ref{ex 3.3.2} we have \(f \circ g : B \to B\) is injective.
+    Then by Definition \ref{3.4.1} we have \(f(A) \subseteq B\) and \(f(g(B)) \subseteq B\).
+    Define the sets \(D_n\) recursively by setting
+    \begin{align*}
+        D_0       & = B \setminus f(A), \\
+        D_{n + 1} & = f(g(D_n)),
+    \end{align*}
+    where \(n \in \mathbf{N}\).
+    By Exercise \ref{ex 8.3.2} we know that \(\forall i, j \in \mathbf{N} : i \neq j \implies D_i \cap D_j = \emptyset\).
+    Now let \(h : f(A) \to B\) be a function defined by setting
+    \[
+        \forall\ x \in f(A) : h(x) = \begin{cases}
+            (g^{-1} \circ f^{-1})(x) & \text{if } x \in \bigcup_{n = 1}^\infty D_n,    \\
+            x                        & \text{if } x \notin \bigcup_{n = 1}^\infty D_n.
+        \end{cases}
+    \]
+    By Exercise \ref{ex 8.3.2} we know that \(h\) is bijective.
+    Thus by Definition \ref{3.6.1} we know \(f(A)\) and \(B\) have the same cardinality.
+    But since \(f\) is injective, we know that \(f\) is bijective from \(A\) to \(f(A)\), which means \(A, f(A)\) have the same cardinality.
+    Thus by Proposition \ref{3.6.4} \(A, B\) have the same cardinality.
+\end{proof}
