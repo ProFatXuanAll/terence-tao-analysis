@@ -130,3 +130,39 @@
 \begin{proof}
     See Proposition \ref{8.4.7}.
 \end{proof}
+
+\begin{exercise}\label{ex 8.4.2}
+    Let \(I\) be a set, and for each \(\alpha \in I\) let \(X_{\alpha}\) be a non-empty set.
+    Suppose that all the sets \(X_{\alpha}\) are disjoint from each other, i.e., \(X_{\alpha} \cap X_{\beta} = \emptyset\) for all distinct \(\alpha, \beta \in I\).
+    Using the axiom of choice, show that there exists a set \(Y\) such that \(\#(Y \cap X_{\alpha}) = 1\) for all \(\alpha \in I\) (i.e., \(Y\) intersects each \(X_{\alpha}\) in exactly one element).
+    Conversely, show that if the above statement was true for an arbitrary choice of sets \(I\) and non-empty disjoint sets \(X_{\alpha}\), then the axiom of choice is true.
+\end{exercise}
+
+\begin{proof}
+    We first show that axiom of choice (Axiom \ref{8.1}) implies there exists a set \(Y\) such that \(\#(Y \cap X_{\alpha}) = 1\) for all \(\alpha \in I\).
+    By Axiom \ref{8.1}, the set \(\prod_{\alpha \in I} X_{\alpha}\) is non-empty.
+    Let \(f \in \prod_{\alpha \in I} X_{\alpha}\).
+    We know that \(f\) is injective since
+    \begin{align*}
+        & \forall\ \alpha, \beta \in I \land \alpha \neq \beta \\
+        \implies & f(\alpha) \in X_{\alpha} \land f(\beta) \in X_{\beta} & \text{(by Axiom \ref{8.1})} \\
+        \implies & f(\alpha) \neq f(\beta). & (X_{\alpha} \cap X_{\beta} = \emptyset)
+    \end{align*}
+    Let \(Y = f(I)\).
+    Then we have
+    \begin{align*}
+        & \forall\ \alpha \in I \\
+        \implies & \exists!\ f(\alpha) \in X_{\alpha} & \text{(by Definition \ref{3.3.1})} \\
+        \implies & Y \cap X_{\alpha} = \bigg(\{f(\alpha)\} \cup \bigcup_{\beta \in X : \beta \neq \alpha} \{f(\beta)\}\bigg) \cap X_\alpha = \{f(\alpha)\} & (X_{\alpha} \cap X_{\beta} = \emptyset) \\
+        \implies & \#(Y \cap X_{\alpha}) = 1.
+    \end{align*}
+    Thus axiom of choice (Axiom \ref{8.1}) implies there exists a set \(Y\) such that \(\#(Y \cap X_{\alpha}) = 1\) for all \(\alpha \in I\).
+
+    Now we show that if there exists a set \(Y\) such that \(\#(Y \cap X_{\alpha}) = 1\) for all \(\alpha \in I\), then axiom of choice (Axiom \ref{8.1}) is true.
+    Since we know that \(\exists\ Y : \#(Y \cap X_{\alpha}) = 1\) for all \(\alpha \in I\), we can let \(Y \cap X_{\alpha} = \{x_{\alpha}\}\).
+    By Definition \ref{3.1.23} we have \(\{x_\alpha\} \subseteq X_{\alpha}\).
+    This means for each \(\alpha \in I\), there exists exactly one element \(x_{\alpha} \in X_{\alpha}\).
+    Thus by Axiom \ref{3.6} we have a function \(f : I \to \bigcup_{\alpha \in I} X_{\alpha}\) such that \(f(\alpha) = x_{\alpha} \in X_{\alpha}\) for all \(\alpha \in I\).
+    But this means \(f \in \prod_{\alpha \in I} X_{\alpha}\), so \(\prod_{\alpha \in I} X_{\alpha} \neq \emptyset\), which means axiom of choice (Axiom \ref{8.1}) is true.
+    Thus if there exists a set \(Y\) such that \(\#(Y \cap X_{\alpha}) = 1\) for all \(\alpha \in I\), then axiom of choice (Axiom \ref{8.1}) is true.
+\end{proof}
