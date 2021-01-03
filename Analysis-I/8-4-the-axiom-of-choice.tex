@@ -93,18 +93,31 @@
 \end{proposition}
 
 \begin{proof}
+    We first show that axiom of choice (Axiom \ref{8.1}) implies \(\exists\ f : X \to Y\) such that \(P(x, f(x))\) is true for all \(x \in X\).
     Define
     \[
         Y_x \coloneqq \{y \in Y : P(x, y) \text{ is true}\}
     \]
     for each \(x \in X\).
     Such a set exist by Axiom \ref{3.5} and is non-empty by the hypothesis.
-    Then by axiom of choice (Axiom \ref{8.1}), \(\forall\ x \in X\), we can choose \(y \in Y_x\).
-    Now we define \(f : X \to Y\) as \(f(x) = y\).
-    Thus \(P(x, f(x))\) is true \(\forall\ x \in X\).
+    By Axiom \ref{3.10}, we know that the set
+    \[
+        \prod_{x \in X} Y_x = \Bigg\{(y_x)_{x \in X} \in (\bigcup_{x \in X} Y_x)^X : y_x \in Y_x \ \forall\ x \in X\Bigg\}
+    \]
+    exists.
+    By axiom of choice (Axiom \ref{8.1}) we also know that the set \(\prod_{x \in X} Y_x\) is non-empty.
+    Now we can choose an element \(f \in \prod_{x \in X} Y_x\).
+    We know that \(f\) is a function with domain \(X\) and range \(Y\).
+    Also, \(\forall\ x \in X\), we have an unique \(f(x) \in Y_x\).
+    Since \(Y_x\) is non-empty and has only one element, we know that one element is \(f(x)\).
+    By the defined of \(Y_x\) we know that \(P(x, f(x))\) is true.
+    Thus axiom of choice (Axiom \ref{8.1}) implies \(\exists\ f : X \to Y\) such that \(P(x, f(x))\) is true for all \(x \in X\).
 
-    Now we show that Proposition \ref{8.4.7} implies axiom of choice (Axiom \ref{8.1}).
-    This shall be done once I revised all the previous Axiom of sets.
+    Now we show that if \(\exists\ f : X \to Y\) such that \(P(x, f(x))\) is true for all \(x \in X\), then axiom of choice (Axiom \ref{8.1}) is true.
+    Using the definition of \(Y_x\) again we know that \(Y_x = \{f(x)\}\).
+    By Axiom \ref{3.10} we can have a set \(\prod_{x \in X} Y_x\) and we want to show that \(\prod_{x \in X} Y_x \neq \emptyset\).
+    But this is true since \(f \in \prod_{x \in X} Y_x\).
+    Thus if \(\exists\ f : X \to Y\) such that \(P(x, f(x))\) is true for all \(x \in X\), then axiom of choice (Axiom \ref{8.1}) is true.
 \end{proof}
 
 \exercisesection
@@ -113,3 +126,7 @@
     Show that the axiom of choice implies Proposition \ref{8.4.7}.
     Conversely, show that if Proposition \ref{8.4.7} is true, then the axiom of choice is also true.
 \end{exercise}
+
+\begin{proof}
+    See Proposition \ref{8.4.7}.
+\end{proof}
