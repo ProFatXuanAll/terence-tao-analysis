@@ -179,6 +179,35 @@
     Is this set partially ordered? totally ordered? well-ordered? Explain.
 \end{exercise}
 
+\begin{proof}
+    Since
+    \[
+        \forall\ x \in \emptyset \implies x \leq_{\emptyset} x
+    \]
+    is vacuously true, \(\leq_{\emptyset}\) is reflexive.
+    Since
+    \[
+        \forall\ x, y \in \emptyset \land x \leq_{\emptyset} y \land y \leq_{\emptyset} x \implies x = y
+    \]
+    is vacuously true, \(\leq_{\emptyset}\) is anti-symmetry.
+    Since
+    \[
+        \forall\ x, y, z \in \emptyset \land x \leq_{\emptyset} y \land y \leq_{\emptyset} z \implies x \leq_{\emptyset} z
+    \]
+    is vacuously true, \(\leq_{\emptyset}\) is transitive.
+    Since \(\leq_{\emptyset}\) is reflexive, anti-symmetric and transitive, we know that \((\emptyset, \leq_{\emptyset})\) is partially ordered.
+    Since
+    \[
+        \forall\ x, y \in \emptyset \implies x \leq_{\emptyset} y \lor y \leq_{\emptyset} x
+    \]
+    is vacuously true, we know that \((\emptyset, \leq_{\emptyset})\) is totally ordered.
+    Since
+    \[
+        \forall\ Z \subseteq \emptyset \land Z \neq \emptyset \implies \exists\ \min(Z)
+    \]
+    is vacuously true, we know that \((\emptyset, \leq_{\emptyset})\) is well-ordered.
+\end{proof}
+
 \begin{exercise}\label{ex 8.5.2}
     Give examples of a set \(X\) and a relation \(\leq\) such that
     \begin{enumerate}
@@ -209,7 +238,7 @@
 
 \begin{exercise}\label{ex 8.5.6}
     Let \(X\) be a partially ordered set.
-    For any \(x\) in \(X\), define the order ideal \((x) \subset X\) to be the set \((x) \coloneqq \{y \in X : y \leq x\}\).
+    For any \(x\) in \(X\), define the order ideal \((x) \subseteq X\) to be the set \((x) \coloneqq \{y \in X : y \leq x\}\).
     Let \((X) \coloneqq \{(x) : x \in X\}\) be the set of all order ideals, and let \(f : X \to (X)\) be the map \(f(x) \coloneqq (x)\) that sends every element of \(x\) to its order ideal.
     Show that \(f\) is a bijection, and that given any \(x, y \in X\), that \(x \leq_X y\) if and only if \(f(x) \subseteq f(y)\).
     This exercise shows that any partially ordered set can be \emph{represented} by a collection of sets whose ordering relation is given by set inclusion.
@@ -265,7 +294,7 @@
 \begin{exercise}\label{ex 8.5.16}
     Let \(X\) be a set, and let \(P\) be the set of all partial orderings of \(X\).
     (For instance, if \(X \coloneqq \mathbf{N} \setminus \{0\}\), then both the usual partial ordering \(\leq\), and the partial ordering in Exercise \ref{ex 8.5.3}, are elements of \(P\).)
-    We say that one partial ordering \(\leq \in P\) is \emph{coarser} than another partial ordering \(\leq' \in P\) if for any \(x, y \in P\), we have the implication \((x \leq y) \implies (x \leq' y)\).
+    We say that one partial ordering \(\leq \in P\) is \emph{coarser} than another partial ordering \(\leq' \in P\) if for any \(x, y \in X\), we have the implication \((x \leq y) \implies (x \leq' y)\).
     Thus for instance the partial ordering in Exercise \ref{ex 8.5.3} is coarser than the usual ordering \(\leq\).
     Let us write \(\leq \preceq \leq'\) if \(\leq\) is coarser than \(\leq'\).
     Show that \(\preceq\) turns \(P\) into a partially ordered set;
@@ -285,7 +314,7 @@
 \begin{exercise}\label{ex 8.5.18}
     Using Zorn's lemma (Lemma \ref{8.5.15}), prove \emph{Hausdorff's maximality principle}:
     if \(X\) is a partially ordered set, then there exists a totally ordered subset \(Y\) of \(X\) which is maximal with respect to set inclusion
-    (i.e. there is no other totally ordered subset \(Y'\) of \(X\) which contains \(Y\).
+    (i.e. there is no other totally ordered subset \(Y'\) of \(X\) which contains \(Y\)).
     Conversely, show that if Hausdorff's maximality principle is true, then Zorn's lemma (Lemma \ref{8.5.15}) is true.
     Thus by Exercise \ref{ex 8.5.17}, these two statements are logically equivalent to the axiom of choice.
 \end{exercise}
@@ -305,5 +334,8 @@
 \end{exercise}
 
 \begin{exercise}\label{ex 8.5.20}
-
+    Let \(X\) be a set, and let \(\Omega \subseteq 2^X\) be a collection of subsets of \(X\).
+    Assume that \(\Omega\) does not contain the empty set \(\emptyset\).
+    Using Zorn's lemma, show that there is a subcollection \(\Omega' \subseteq \Omega\) such that all the elements of \(\Omega'\) are disjoint from each other (i.e., \(A \cap B = \emptyset\) whenever \(A, B\) are distinct elements of \(\Omega'\)), but that all the elements of \(\Omega\) intersect at least one element of \(\Omega'\) (i.e., for all \(C \in \Omega\) there exists \(A \in \Omega'\) such that \(C \cap A \neq \emptyset\)).
+    Conversely, if the above claim is true, show that it implies the claim in Exercise \ref{ex 8.4.2}, and thus this is yet another claim which is logically equivalent to the axiom of choice.
 \end{exercise}
