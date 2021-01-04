@@ -209,13 +209,80 @@
 \end{proof}
 
 \begin{exercise}\label{ex 8.5.2}
-    Give examples of a set \(X\) and a relation \(\leq\) such that
+    Give examples of a set \(X\) and a relation \(\leq_X\) such that
     \begin{enumerate}
-        \item The relation \(\leq\) is reflexive and anti-symmetric, but not transitive;
-        \item The relation \(\leq\) is reflexive and transitive, but not anti-symmetric;
-        \item The relation \(\leq\) is anti-symmetric and transitive, but not reflexive.
+        \item The relation \(\leq_X\) is reflexive and anti-symmetric, but not transitive;
+        \item The relation \(\leq_X\) is reflexive and transitive, but not anti-symmetric;
+        \item The relation \(\leq_X\) is anti-symmetric and transitive, but not reflexive.
     \end{enumerate}
 \end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Let \(X = \{1, 2, 4\}\) be a set and let \(\leq_X\) be the relation
+        \[
+            \forall\ a, b \in X : a \leq_X b \coloneqq (a = b) \lor (2a = b).
+        \]
+        Since
+        \[
+            \forall\ a \in X : a = a \implies a \leq_X a,
+        \]
+        we know that \((X, \leq_X)\) is reflexive.
+        Since we have
+        \[
+            1 \leq_X 1, 1 \leq_X 2, 2 \leq_X 2, 2 \leq_X 4, 4 \leq_X 4,
+        \]
+        we know that when pairs of \(a, b \in X\) satisfing \(a \leq_X b \land b \leq_X a\) we must have \(a = b\).
+        Since \((X, \leq_X)\) is reflexive, we know that \((X, \leq_X)\) is anti-symmetric.
+        Since we have \(1 \leq_X 2 \land 2 \leq_X 4\) but not \(1 \leq_X 4\), we know that \((X, \leq_X)\) is not transitive.
+        \item Let \(X = \mathbf{Z}\) be a set and let \(\leq_X\) be the relation
+        \[
+            \forall\ a, b \in X : a \leq_X b \coloneqq \abs*{a} \leq \abs*{b}.
+        \]
+        Since
+        \[
+            \forall\ a \in X : \abs*{a} \leq \abs*{a} \implies a \leq_X a,
+        \]
+        we know that \((X, \leq_X)\) is reflexive.
+        Since we have
+        \[
+            (1 \neq -1) \implies (\abs*{1} \leq \abs*{-1}) \land (\abs*{-1} \leq \abs*{1}) \implies (1 \leq_X -1) \land (-1 \leq_X 1)
+        \]
+        we know that \((X, \leq_X)\) is not anti-symmetric.
+        Since
+        \begin{align*}
+            & \forall\ a, b, c \in X : a \leq_X b \land b \leq_X c \\
+            \implies & \abs*{a} \leq \abs*{b} \land \abs*{b} \leq \abs*{c} \\
+            \implies & \abs*{a} \leq \abs*{c} \\
+            \implies & a \leq_X c,
+        \end{align*}
+        we know that \((X, \leq_X)\) is transitive.
+        \item Let \(X = \mathbf{N}\) be a set and let \(\leq_X\) be the relation
+        \[
+            \forall\ a, b \in X : a \leq_X b \coloneqq a + 1 \leq b.
+        \]
+        Since
+        \[
+            \forall\ a \in X : a + 1 \not\leq a,
+        \]
+        we know that \((X, \leq_X)\) is not reflexive.
+        Since
+        \begin{align*}
+            & \forall\ a, b \in X : a \leq_X b \land b \leq_X a \\
+            \implies & a + 1 \leq b \land b + 1 \leq a \\
+            \implies & a, b \notin \mathbf{N}
+        \end{align*}
+        is vacuously true, we know that \((X, \leq_X)\) is anti-symmetric.
+        Since
+        \begin{align*}
+            & \forall\ a, b, c \in X : a \leq_X b \land b \leq_X c \\
+            \implies & a + 1 \leq b \land b + 1 \leq c \\
+            \implies & a + 1 \leq a + 2 \leq c \\
+            \implies & a \leq_X c,
+        \end{align*}
+        we know that \((X, \leq_X)\) is transitive.
+    \end{enumerate}
+\end{proof}
 
 \begin{exercise}\label{ex 8.5.3}
     Given two positive integers \(n, m \in \mathbf{N} \setminus \{0\}\), we say that \emph{\(n\) divides \(m\)}, and write \(n | m\), if there exists a positive integer \(a\) such that \(m = na\).
