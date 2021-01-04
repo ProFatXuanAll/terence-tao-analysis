@@ -60,3 +60,31 @@
     However, the integers \(\mathbf{Z}\), the rationals \(\mathbf{Q}\), and the real numbers \(\mathbf{R}\) are not (see Exercise \ref{ex 8.1.2}).
     Every subset of a well-ordered set is again well-ordered.
 \end{example}
+
+\begin{proposition}[Principle of strong induction]\label{8.5.10}
+    Let \(X\) be a well-ordered set with an ordering relation \(\leq\), and let \(P(n)\) be a property pertaining to an element \(n \in X\)
+    (i.e., for each \(n \in X\), \(P(n)\) is either a true statement or a false statement).
+    Suppose that for every \(n \in X\), we have the following implication:
+    if \(P(m)\) is true for all \(m \in X\) with \(m <_X n\), then \(P(n)\) is also true.
+    Prove that \(P(n)\) is true for all \(n \in X\).
+\end{proposition}
+
+\begin{proof}
+    Let \(Y\) be the following set
+    \[
+        Y = \{n \in X : P(m) \text{ is false for some } m \in X \text{ with } m \leq_X n\}.
+    \]
+    If \(Y = \emptyset\), then we know that \(P(n)\) is true \(\forall\ n \in X\).
+    So suppose for sake of contradiction that \(Y \neq \emptyset\).
+    Since \(X\) is well-ordered and \(Y \subseteq X\), by Definition \ref{8.5.8} we know that \(\min(Y)\) exists.
+    This means \(\forall\ m \in X \land m <_X \min(Y) \implies P(m)\) is true.
+    But by hypothesis we know that ``\(\forall\ m \in X \land m <_X \min(Y)\), \(P(m)\) is true'' implies \(P(\min(Y))\) is true, a contradiction.
+    Thus \(Y = \emptyset\).
+\end{proof}
+
+\begin{remark}\label{8.5.11}
+    It may seem strange that there is no ``base'' case in strong induction, corresponding to the hypothesis \(P(0)\) in Axiom \ref{2.5}.
+    However, such a base case is automatically included in the strong induction hypothesis.
+    Indeed, if \(0\) is the minimal element of \(X\), then by specializing the hypothesis ``if \(P(m)\) is true for all \(m \in X\) with \(m <_X n\), then \(P(n)\) is also true'' to the \(n = 0\) case, we automatically obtain that \(P(0)\) is true.
+    (Since there is no element \(m <_X n\), such statement ``if \(P(m)\) is true for all \(m \in X\) with \(m <_X n\)'' is false, thus the implication holds vacuously.)
+\end{remark}
