@@ -95,3 +95,215 @@
     If in addition \(x \notin Y\), we say that \(x\) is a \emph{strict upper bound} for \(Y\).
     Equivalently, \(x\) is a strict upper bound for \(Y\) iff \(y < x\) for all \(y \in Y\).
 \end{definition}
+
+\setcounter{theorem}{13}
+\begin{lemma}\label{8.5.14}
+    Let \(X\) be a partially ordered set with ordering relation \(\leq\), and let \(x_0\) be an element of \(X\).
+    Then there is a well-ordered subset \(Y\) of \(X\) which has \(x_0\) as its minimal element, and which has no strict upper bound.
+\end{lemma}
+
+\begin{proof}
+    The intuition behind this lemma is that one is trying to perform the following algorithm:
+    we initalize \(Y \coloneqq \{x_0\}\).
+    If \(Y\) has no strict upper bound, then we are done;
+    otherwise, we choose a strict upper bound and add it to \(Y\).
+    Then we look again to see if \(Y\) has a strict upper bound or not.
+    If not, we are done;
+    otherwise we choose another strict upper bound and add it to \(Y\).
+    We continue this algorithm ``infinitely often'' until we exhaust all the strict upper bounds;
+    the axiom of choice comes in because infinitely many choices are involved.
+    This is however not a rigorous proof because it is quite difficult to precisely pin down what it means to perform an algorithm ``infinitely often''.
+    Instead, what we will do is that we will isolate a collection of ``partially completed'' sets \(Y\), which we shall call \emph{good sets}, and then take the union of all these good sets to obtain a ``completed'' object \(Y_{\infty}\) which will indeed have no strict upper bound.
+
+    We now begin the rigorous proof.
+    Suppose for sake of contradiction that every well-ordered subset \(Y\) of \(X\) which has \(x_0\) as its minimal element has at least one strict upper bound.
+    Using the axiom of choice (in the form of Proposition \ref{8.4.7}), we can thus assign a strict upper bound \(s(Y) \in X\) to each well-ordered subset \(Y\) of \(X\) which has \(x_0\) as its minimal element.
+
+    Let us define a special class of subsets \(Y\) of \(X\).
+    We say that a subset \(Y\) of \(X\) is good iff it is well-ordered, contains \(x_0\) as its minimal element, and obeys the property that
+    \[
+        x = s(\{y \in Y : y < x\}) \ \forall\ x \in Y \setminus \{x_0\}.
+    \]
+    Note that if \(x \in Y \setminus \{x_0\}\) then the set \(\{y \in Y : y < x\}\) is a subset of \(X\) which is well-ordered and contains \(x_0\) as its minimal element.
+    Let \(\Omega \coloneqq \{Y \subseteq X : Y \text{ is good}\}\) be the collection of all good subsets of \(X\).
+    This collection is not empty, since the subset \(\{x_0\}\) of \(X\) is clearly good
+    (which is vacuously true).
+
+    We make the following important observation:
+    if \(Y\) and \(Y'\) are two good subsets of \(X\), then every element of \(Y' \setminus Y\) is a strict upper bound for \(Y\), and every element of \(Y \setminus Y'\) is a strict upper bound for \(Y'\).
+    (Exercise \ref{ex 8.5.13}).
+    In particular, given any two good sets \(Y\) and \(Y'\), at least one of \(Y' \setminus Y\) and \(Y \setminus Y'\) must be empty
+    (since they are both strict upper bounds of each other).
+    In other words, \(\Omega\) is totally ordered by set inclusion:
+    given any two good sets \(Y\) and \(Y'\), either \(Y \subseteq Y'\) or \(Y' \subseteq Y\).
+
+    Let \(Y_{\infty} = \bigcup \Omega\), i.e., \(Y_{\infty}\) is the set of all elements of \(X\) which belong to at least one good subset of \(X\).
+    Clearly \(x_0 \in Y_{\infty}\).
+    Also, since each good subset of \(X\) has \(x_0\) as its minimal element, the set \(Y_{\infty}\) also has \(x_0\) as its minimal element.
+
+    Next, we show that \(Y_{\infty}\) is totally ordered.
+    Let \(x, x'\) be two elements of \(Y_{\infty}\).
+    By definition of \(Y_{\infty}\), we know that \(x\) lies in some good set \(Y\) and \(x'\) lies in some good set \(Y'\).
+    But since \(\Omega\) is totally ordered, one of these good sets contains the other.
+    Thus \(x, x'\) are contained in a single good set (either \(Y\) or \(Y'\));
+    since good sets are totally ordered, we thus see that either \(x \leq x'\) or \(x' \leq x\) as desired.
+
+    Next, we show that \(Y_{\infty}\) is well-ordered.
+    Let \(A\) be any non-empty subset of \(Y_{\infty}\).
+    Then we can pick an element \(a \in A\), which then lies in \(Y_{\infty}\).
+    Therefore there is a good set \(Y\) such that \(a \in Y\).
+    Then \(A \cap Y\) is a non-empty subset of \(Y\);
+    since \(Y\) is well-ordered, the set \(A \cap Y\) thus has a minimal element, call it \(b\).
+    Now recall that for any other good set \(Y'\), every element of \(Y' \setminus Y\) is a strict upper bound for \(Y\), and in particular is larger than \(b\).
+    Since \(b\) is a minimal element of \(A \cap Y\), this implies that \(b\) is also a minimal element of \(A \cap Y'\) for any good set \(Y'\) with \(A \cap Y' \neq \emptyset\).
+    Since every element of \(A\) belongs to \(Y_{\infty}\) and hence belongs to at least one good set \(Y'\), we thus see that \(b\) is a minimal element of \(A\).
+    Thus \(Y_{\infty}\) is well-ordered as claimed.
+
+    Since \(Y_{\infty}\) is well-ordered with \(x_0\) as its minimal element, it has a strict upper bound \(s(Y_{\infty})\).
+    But then \(Y_{\infty} \cup \{s(Y_{\infty})\}\) is well-ordered (by Exercise \ref{ex 8.5.11}) and has \(x_0\) as its minimal element.
+    Thus this set is good, and must therefore be contained in \(Y_{\infty}\).
+    But this is a contradiction since \(s(Y_{\infty})\) is a strict upper bound for \(Y_{\infty}\).
+    Thus we have constructed a set with no strict upper bound, as desired.
+\end{proof}
+
+\begin{lemma}[Zorn's lemma]\label{8.5.15}
+    Let \(X\) be a non-empty partially ordered set, with the property that every totally ordered subset \(Y\) of \(X\) has an upper bound.
+    Then \(X\) contains at least one maximal element.
+\end{lemma}
+
+\exercisesection
+
+\begin{exercise}\label{ex 8.5.1}
+    Consider the empty set \(\emptyset\) with the empty order relation \(\leq_\emptyset\)
+    (this relation is vacuous because the empty set has no elements).
+    Is this set partially ordered? totally ordered? well-ordered? Explain.
+\end{exercise}
+
+\begin{exercise}\label{ex 8.5.2}
+    Give examples of a set \(X\) and a relation \(\leq\) such that
+    \begin{enumerate}
+        \item The relation \(\leq\) is reflexive and anti-symmetric, but not transitive;
+        \item The relation \(\leq\) is reflexive and transitive, but not anti-symmetric;
+        \item The relation \(\leq\) is anti-symmetric and transitive, but not reflexive.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{ex 8.5.3}
+    Given two positive integers \(n, m \in \mathbf{N} \setminus \{0\}\), we say that \emph{\(n\) divides \(m\)}, and write \(n | m\), if there exists a positive integer \(a\) such that \(m = na\).
+    Show that the set \(\mathbf{N} \setminus \{0\}\) with the ordering relation \(|\) is a partially ordered set but not a totally ordered one.
+    Note that this is a different ordering relation from the usual \(\leq\) ordering of \(\mathbf{N} \setminus \{0\}\).
+\end{exercise}
+
+\begin{exercise}\label{ex 8.5.4}
+    Show that the set of positive reals \(\mathbf{R}^+ \coloneqq \{x \in \mathbf{R} : x > 0\}\) have no minimal element.
+\end{exercise}
+
+\begin{exercise}\label{ex 8.5.5}
+    Let \(f : X \to Y\) be a function from one set \(X\) to another set \(Y\).
+    Suppose that \(Y\) is partially ordered with some ordering relation \(\leq_Y\).
+    Define a relation \(\leq_X\) on \(X\) by defining \(x \leq_X x'\) if and only if \(f(x) <_Y f(x')\) or \(x = x'\).
+    Show that this relation \(\leq_X\) turns \(X\) into a partially ordered set.
+    If we know in addition that the relation \(\leq_Y\) makes \(Y\) totally ordered, does this mean that the relation \(\leq_X\) makes \(X\) totally ordered also?
+    If not, what additional assumption needs to be made on \(f\) in order to ensure that \(\leq_X\) makes \(X\) totally ordered?
+\end{exercise}
+
+\begin{exercise}\label{ex 8.5.6}
+    Let \(X\) be a partially ordered set.
+    For any \(x\) in \(X\), define the order ideal \((x) \subset X\) to be the set \((x) \coloneqq \{y \in X : y \leq x\}\).
+    Let \((X) \coloneqq \{(x) : x \in X\}\) be the set of all order ideals, and let \(f : X \to (X)\) be the map \(f(x) \coloneqq (x)\) that sends every element of \(x\) to its order ideal.
+    Show that \(f\) is a bijection, and that given any \(x, y \in X\), that \(x \leq_X y\) if and only if \(f(x) \subseteq f(y)\).
+    This exercise shows that any partially ordered set can be \emph{represented} by a collection of sets whose ordering relation is given by set inclusion.
+\end{exercise}
+
+\begin{exercise}\label{ex 8.5.7}
+    Let \(X\) be a partially ordered set, and let \(Y\) be a totally ordered subset of \(X\).
+    Show that \(Y\) can have at most one maximum and at most one minimum.
+\end{exercise}
+
+\begin{exercise}\label{ex 8.5.8}
+    Show that every finite non-empty subset of a totally ordered set has a minimum and a maximum.
+    Conclude in particular that every finite totally ordered set is well-ordered.
+\end{exercise}
+
+\begin{exercise}\label{ex 8.5.9}
+    Let \(X\) be a totally ordered set such that every non-empty subset of \(X\) has both a minimum and a maximum.
+    Show that \(X\) is finite.
+\end{exercise}
+
+\begin{exercise}\label{ex 8.5.10}
+    Prove Proposition \ref{8.5.10}, without using the axiom of choice.
+\end{exercise}
+
+\begin{exercise}\label{ex 8.5.11}
+    Let \(X\) be a partially ordered set, and let \(Y\) and \(Y'\) be well-ordered subsets of \(X\).
+    Show that \(Y \cup Y'\) is well-ordered if and only if it is totally ordered.
+\end{exercise}
+
+\begin{exercise}\label{ex 8.5.12}
+    Let \(X\) and \(Y\) be partially ordered sets with ordering relations \(\leq_X\) and \(\leq_Y\) respectively.
+    Define a relation \(\leq_{X \times Y}\) on the Cartesian product \(X \times Y\) by defining \((x, y) \leq_{X \times Y} (x', y')\) if \(x <_X x'\), or if \(x = x'\) and \(y \leq_Y y'\).
+    (This is called the \emph{lexicographical ordering} on \(X \times Y\), and is similar to the alphabetical ordering of words;
+    a word \(w\) appears earlier in a dictionary than another word \(w'\) if the first letter of \(w\) is earlier in the alphabet than the first letter of \(w'\), or if the first letters match and the second letter of \(w\) is earlier than the second letter of \(w'\), and so forth.)
+    Show that \(\leq_{X \times Y}\) defines a partial ordering on \(X \times Y\).
+    Furthermore, show that if \(X\) and \(Y\) are totally ordered, then so is \(X \times Y\), and if \(X\) and \(Y\) are well-ordered, then so is \(X \times Y\).
+\end{exercise}
+
+\begin{exercise}\label{ex 8.5.13}
+    Prove the claim in the proof of Lemma \ref{8.5.14}, namely that every element of \(Y' \setminus Y\) is an upper bound for \(Y\) and vice versa.
+\end{exercise}
+
+\begin{exercise}\label{ex 8.5.14}
+    Use Lemma \ref{8.5.14} to prove Lemma \ref{8.5.15}.
+\end{exercise}
+
+\begin{exercise}\label{ex 8.5.15}
+    Let \(A\) and \(B\) be two non-empty sets such that \(A\) does not have lesser or equal cardinality to \(B\).
+    Using the principle of transfinite induction, prove that \(B\) has lesser or equal cardinality to \(A\).
+    This exercise (combined with Exercise \ref{ex 8.3.3}) shows that the cardinality of any two sets is comparable, as long as one assumes the axiom of choice.
+\end{exercise}
+
+\begin{exercise}\label{ex 8.5.16}
+    Let \(X\) be a set, and let \(P\) be the set of all partial orderings of \(X\).
+    (For instance, if \(X \coloneqq \mathbf{N} \setminus \{0\}\), then both the usual partial ordering \(\leq\), and the partial ordering in Exercise \ref{ex 8.5.3}, are elements of \(P\).)
+    We say that one partial ordering \(\leq \in P\) is \emph{coarser} than another partial ordering \(\leq' \in P\) if for any \(x, y \in P\), we have the implication \((x \leq y) \implies (x \leq' y)\).
+    Thus for instance the partial ordering in Exercise \ref{ex 8.5.3} is coarser than the usual ordering \(\leq\).
+    Let us write \(\leq \preceq \leq'\) if \(\leq\) is coarser than \(\leq'\).
+    Show that \(\preceq\) turns \(P\) into a partially ordered set;
+    thus the set of partial orderings on \(X\) is itself partially ordered.
+    There is exactly one minimal element of \(P\);
+    what is it?
+    Show that the maximal elements of \(P\) are precisely the total orderings of \(P\).
+    Using Zorn's lemma (Lemma \ref{8.5.15}), show that given any partial ordering \(\leq\) of \(X\) there exists a total ordering \(\leq'\) such that \(\leq\) is coarser than \(\leq'\).
+\end{exercise}
+
+\begin{exercise}\label{ex 8.5.17}
+    Use Zorn's lemma (Lemma \ref{8.5.15}) to give another proof of the claim in Exercise \ref{ex 8.4.2}.
+    Deduce that Zorn's lemma (Lemma \ref{8.5.15}) and the axiom of choice are in fact logically equivalent
+    (i.e., they can be deduced from each other).
+\end{exercise}
+
+\begin{exercise}\label{ex 8.5.18}
+    Using Zorn's lemma (Lemma \ref{8.5.15}), prove \emph{Hausdorff's maximality principle}:
+    if \(X\) is a partially ordered set, then there exists a totally ordered subset \(Y\) of \(X\) which is maximal with respect to set inclusion
+    (i.e. there is no other totally ordered subset \(Y'\) of \(X\) which contains \(Y\).
+    Conversely, show that if Hausdorff's maximality principle is true, then Zorn's lemma (Lemma \ref{8.5.15}) is true.
+    Thus by Exercise \ref{ex 8.5.17}, these two statements are logically equivalent to the axiom of choice.
+\end{exercise}
+
+\begin{exercise}\label{ex 8.5.19}
+    Let \(X\) be a set, and let \(\Omega\) be the space of all pairs \((Y, \leq)\), where \(Y\) is a subset of \(X\) and \(\leq\) is a well-ordering of \(Y\).
+    If \((Y, \leq)\) and \((Y', \leq')\) are elements of \(\Omega\), we say that \((Y, \leq)\) is an \emph{initial segment} of \((Y', \leq')\) if there exists an \(x \in Y'\) such that \(Y \coloneqq \{y \in Y' : y <' x\}\) (so in particular \(Y \subsetneq Y'\)), and for any \(y, y' \in Y\), \(y \leq y'\) if and only if \(y \leq' y'\).
+    Define a relation \(\preceq\) on \(\Omega\) by defining \((Y, \leq) \preceq (Y', \leq')\) if either \((Y, \leq) = (Y', \leq')\), or if \((Y, \leq)\) is an initial segment of \((Y', \leq')\).
+    Show that \(\preceq\) is a partial ordering of \(\Omega\).
+    There is exactly one minimal element of \(\Omega\);
+    what is it?
+    Show that the maximal elements of \(\Omega\) are precisely the well-orderings \((X, \leq)\) of \(X\).
+    Using Zorn's lemma (Lemma \ref{8.5.15}), conclude the well ordering principle:
+    every set \(X\) has at least one well-ordering.
+    Conversely, use the well-ordering principle to prove the axiom of choice, Axiom \ref{8.1}.
+    We thus see that the axiom of choice, Zorn's lemma (Lemma \ref{8.5.15}), and the well-ordering principle are all logically equivalent to each other.
+\end{exercise}
+
+\begin{exercise}\label{ex 8.5.20}
+
+\end{exercise}
