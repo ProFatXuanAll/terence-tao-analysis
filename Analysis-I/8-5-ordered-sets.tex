@@ -515,9 +515,7 @@
 
     Now we shot that if \(Y \cup Y'\) is totally ordered then \(Y \cup Y'\) is well-ordered.
     Suppose that \(Y \cup Y'\) is totally ordered.
-    Let \(Z \subseteq Y \cup Y'\), \(Z_Y = Z \cap Y\) and \(Z_{Y'} = Z \cap Y'\).
-    If \(Z = \emptyset\), then by Exercise \ref{ex 8.5.1} \(Z\) is well-ordered.
-    So suppose that \(Z \neq \emptyset\).
+    Let \(Z \subseteq Y \cup Y' \land Z \neq \emptyset\), \(Z_Y = Z \cap Y\) and \(Z_{Y'} = Z \cap Y'\).
     If \(Z_Y = \emptyset \lor Z_{Y'} = \emptyset\), then \(Z \subseteq Y' \lor Z \subseteq Y\) and \(Z\) is well-ordered.
     So suppose that \(Z_Y \neq \emptyset \land Z_{Y'} \neq \emptyset\).
     Since \(Y, Y'\) are well-ordered, by Definition \ref{8.5.8} \(Z_Y, Z_{Y'}\) are also well-ordered.
@@ -553,6 +551,84 @@
     Show that \(\leq_{X \times Y}\) defines a partial ordering on \(X \times Y\).
     Furthermore, show that if \(X\) and \(Y\) are totally ordered, then so is \(X \times Y\), and if \(X\) and \(Y\) are well-ordered, then so is \(X \times Y\).
 \end{exercise}
+
+\begin{proof}
+    We first show that \((X \times Y, \leq_{X \times Y})\) is partially ordered.
+    If \(X = \emptyset \lor Y = \emptyset\), then by Exercise \ref{ex 3.5.8} \(X \times Y = \emptyset\) and by Exercise \ref{ex 8.5.1} we know that \(\emptyset\) is partially ordered.
+    So suppose that \(X \neq \emptyset \land Y \neq \emptyset\).
+    Since
+    \[
+        \forall\ (x, y) \in X \times Y : (x, y) = (x, y) \implies (x, y) \leq_{X \times Y} (x, y),
+    \]
+    we know that \((X \times Y, \leq_{X \times Y})\) is reflexive.
+    Since
+    \begin{align*}
+        & \forall\ (x, y), (x', y') \in X \times Y : \\
+        & \big((x, y) \leq_{X \times Y} (x', y')\big) \land \big((x', y') \leq_{X \times Y} (x, y)\big) \\
+        \implies & \Big((x <_X x') \lor \big((x = x') \land (y \leq_Y y')\big)\Big) \\
+        & \land \Big((x' <_X x) \lor \big((x = x') \land (y' \leq_Y y)\big)\Big) \\
+        \implies & (x = x') \land (y \leq_Y y') \land (y' \leq_Y y) \\
+        \implies & (x = x') \land (y = y') & \text{(by Definition \ref{8.5.1})} \\
+        \implies & (x, y) = (x', y'), & \text{(by Definition \ref{3.5.1})}
+    \end{align*}
+    we know that \((X \times Y, \leq_{X \times Y})\) is anti-symmetric.
+    Since
+    \begin{align*}
+        & \forall\ (x_1, y_1), (x_2, y_2), (x_3, y_3) \in X \times Y : \\
+        & \big((x_1, y_1) \leq_{X \times Y} (x_2, y_2)\big) \land \big((x_2, y_2) \leq_{X \times Y} (x_3, y_3)\big) \\
+        \implies & \Big((x_1 <_X x_2) \lor \big((x_1 = x_2) \land (y_1 \leq_Y y_2)\big)\Big) \\
+        & \land \Big((x_2 <_X x_3) \lor \big((x_2 = x_3) \land (y_2 \leq_Y y_3)\big)\Big) \\
+        \implies & (x_1 <_X x_2 <_X x_3) & \text{(by Definition \ref{8.5.1})} \\
+        & \lor \big((x_1 = x_2 <_X x_3) \land (y_1 \leq_Y y_2)\big) \\
+        & \lor \big((x_1 <_X x_2 = x_3) \land (y_2 \leq_Y y_3)\big) \\
+        & \lor \big((x_1 = x_2 = x_3) \land (y_1 \leq_Y y_2 \leq_Y y_3)\big) & \text{(by Definition \ref{8.5.1})} \\
+        \implies & (x_1, y_1) \leq_{X \times Y} (x_3, y_3),
+    \end{align*}
+    we know that \((X \times Y, \leq_{X \times Y})\) is transitive.
+    Since \((X \times Y, \leq_{X \times Y})\) is reflexive, anti-symmetric and transitive, by Definition \ref{8.5.1} \((X \times Y, \leq_{X \times Y})\) is partially ordered.
+
+    Now we show that if \((X, \leq_X), (Y, \leq_Y)\) are totally ordered, then \((X \times Y, \leq_{X \times Y})\) is totally ordered.
+    If \(X = \emptyset \lor Y = \emptyset\), then by Exercise \ref{ex 3.5.8} \(X \times Y = \emptyset\) and by Exercise \ref{ex 8.5.1} we know that \(\emptyset\) is totally ordered.
+    So suppose that \(X \neq \emptyset \land Y \neq \emptyset\).
+    From prove above we know that \((X \times Y, \leq_{X \times Y})\) is partially ordered.
+    Since
+    \begin{align*}
+        & \forall\ (x, y), (x', y') \in X \times Y : (x, y) \neq (x', y') \\
+        \implies & \big((x \neq x') \land (y = y')\big) & \text{(by Definition \ref{3.5.1})} \\
+        & \lor \big((x = x') \land (y \neq y')\big) \\
+        & \lor \big((x \neq x') \land (y \neq y')\big),
+    \end{align*}
+    we can split into three cases:
+    \begin{enumerate}
+        \item If \((x = x') \land (y \neq y')\), then \((y <_Y y') \lor (y' <_Y y)\) since \(Y\) is totally ordered.
+        Thus we have \(\big((x, y) \leq_{X \times Y} (x', y')\big) \lor \big((x, y) \leq_{X \times Y} (x', y')\big)\).
+        \item If \((x \neq x') \land (y = y')\), then \((x <_X x') \lor (x' <_X x)\) since \(X\) is totally ordered.
+        Thus we have \(\big((x, y) \leq_{X \times Y} (x', y')\big) \lor \big((x, y) \leq_{X \times Y} (x', y')\big)\).
+        \item If \((x \neq x') \land (y \neq y')\), then \((x <_X x') \lor (x' <_X x)\) since \(X\) is totally ordered.
+        Thus we have \(\big((x, y) \leq_{X \times Y} (x', y')\big) \lor \big((x, y) \leq_{X \times Y} (x', y')\big)\).
+    \end{enumerate}
+    From all cases above we have \(\big((x, y) \leq_{X \times Y} (x', y')\big) \lor \big((x, y) \leq_{X \times Y} (x', y')\big)\).
+    Thus \((X \times Y, \leq_{X \times Y})\) is totally ordered.
+
+    Now we show that if \((X, \leq_X), (Y, \leq_Y)\) are well-ordered, then \((X \times Y, \leq_{X \times Y})\) is well-ordered.
+    If \(X = \emptyset \lor Y = \emptyset\), then by Exercise \ref{ex 3.5.8} \(X \times Y = \emptyset\) and by Exercise \ref{ex 8.5.1} we know that \(\emptyset\) is well-ordered.
+    So suppose that \(X \neq \emptyset \land Y \neq \emptyset\).
+    From prove above we know that \((X \times Y, \leq_{X \times Y})\) is totally ordered.
+    Let \(Z \subseteq X \times Y \land Z \neq \emptyset\) and \(Z_X = \{x \in X | \exists\ y \in Y : (x, y) \in Z\}\).
+    Since \(X\) is well-ordered and \(Z_X \subseteq X\), by Definition \ref{8.5.8} and Exercise \ref{ex 8.5.7} we know there exists exactly one minimum element in \(Z_X\).
+    Let \(z_x = \min(Z_X)\).
+    Since \(z_x \in Z_X\), we know that the set \(Z_Y = \{y \in Y : (z_x, y) \in Z\}\) is not empty.
+    Since \(Y\) is well-ordered and \(Z_Y \subseteq Y\), by Definition \ref{8.5.8} and Exercise \ref{ex 8.5.7} we know there exists exactly one minimum element in \(Z_Y\).
+    Let \(z_y = \min(Z_Y)\) be an minimum element.
+    Then we have
+    \begin{align*}
+        & \forall\ (x, y) \in Z : (x, y) \neq (z_x, z_y) \\
+        \implies & (x \neq z_x) \lor \big((x = z_x) \land (y \neq z_y)\big) \\
+        \implies & (z_x \leq x) \land (z_y \leq y) & \text{(by Definition \ref{8.5.5})} \\
+        \implies & (z_x, z_y) \leq_{X \times Y} (x, y).
+    \end{align*}
+    Thus \((X \times Y, \leq_{X \times Y})\) is well-ordered.
+\end{proof}
 
 \begin{exercise}\label{ex 8.5.13}
     Prove the claim in the proof of Lemma \ref{8.5.14}, namely that every element of \(Y' \setminus Y\) is an upper bound for \(Y\) and vice versa.
