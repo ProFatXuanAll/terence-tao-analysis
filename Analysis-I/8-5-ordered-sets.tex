@@ -338,6 +338,51 @@
     If not, what additional assumption needs to be made on \(f\) in order to ensure that \(\leq_X\) makes \(X\) totally ordered?
 \end{exercise}
 
+\begin{proof}
+    We first show that \((X, \leq_X)\) is partially ordered.
+    Since
+    \[
+        \forall\ x \in X : x = x \implies x \leq_X x,
+    \]
+    we know that \((X, \leq_X)\) is reflexive.
+    Since
+    \begin{align*}
+                 & \forall\ x, x' \in X : x \leq_X x' \land x' \leq_X x                                                                    \\
+        \implies & \Big(\big(f(x) <_Y f(x')\big) \lor \big(x = x'\big)\Big) \land \Big(\big(f(x') <_Y f(x)\big) \lor \big(x = x'\big)\Big) \\
+        \implies & x = x',
+    \end{align*}
+    we know that \((X, \leq_X)\) is anti-symmetric.
+    Since
+    \begin{align*}
+                 & \forall\ x_1, x_2, x_3 \in X : x_1 \leq_X x_2 \land x_2 \leq_X x_3                                                                  \\
+        \implies & \Big(\big(f(x_1) <_Y f(x_2)\big) \lor \big(x_1 = x_2\big)\Big) \land \Big(\big(f(x_2) <_Y f(x_3)\big) \lor \big(x_2 = x_3\big)\Big) \\
+        \implies & \bigg(\Big(\big(f(x_1) <_Y f(x_2)\big) \lor \big(x_1 = x_2\big)\Big) \land \big(f(x_2) <_Y f(x_3)\big)\bigg)                        \\
+                 & \lor \bigg(\Big(\big(f(x_1) <_Y f(x_2)\big) \lor \big(x_1 = x_2\big)\Big) \land \big(x_2 = x_3\big)\bigg)                           \\
+        \implies & \big(f(x_1) <_Y f(x_2) <_Y f(x_3)\big)                                                                                              \\
+                 & \lor \Big(\big(x_1 = x_2\big) \land \big(f(x_1) <_Y f(x_3)\big)\Big)                                                                \\
+                 & \lor \Big(\big(f(x_1) <_Y f(x_2)\big) \land \big(x_2 = x_3\big)\Big)                                                                \\
+                 & \lor \big(x_1 = x_2 = x_3\big)                                                                                                      \\
+        \implies & \big(f(x_1) <_Y f(x_3)\big)                                                                                                         \\
+                 & \lor \big(f(x_1) <_Y f(x_3)\big)                                                                                                    \\
+                 & \lor \big(f(x_1) <_Y f(x_3)\big)                                                                                                    \\
+                 & \lor \big(x_1 = x_3\big)                                                                                                            \\
+        \implies & x_1 \leq_X x_3,
+    \end{align*}
+    we know that \((X, \leq_X)\) is transitive.
+    Since \((X, \leq_X)\) is reflexive, anti-symmetric and transitive, by Definition \ref{8.5.1} \((X, \leq_X)\) is partially ordered.
+
+    Next we show that \((X, \leq_X)\) may not be totally ordered when \((Y, \leq_Y)\) is totally ordered.
+    If \(\forall x, x' \in X : x \neq x' \implies f(x) = f(x')\), then we do not have the ordering relation \(x \leq_X x'\) and \(x' \leq_X x\).
+    Thus by Definition \ref{8.5.3} \((X, \leq_X)\) is not totally ordered.
+
+    Next we show that if \(f : X \to Y\) is injective and \((Y, \leq_Y)\) is totally ordered, then \((X, \leq_X)\) is totally ordered.
+    Since \(f\) is injective, we know that \(\forall\ x, x' \in X : x \neq x' \implies f(x) \neq f(x')\).
+    Since \(Y\) is totally ordered, we know that \(f(x) \leq_Y f(x') \lor f(x') \leq_Y f(x)\) is true.
+    Since \(f(x) \neq f(x')\), we know that exactly one of \(f(x) \leq_Y f(x') \lor f(x') \leq_Y f(x)\) is true.
+    In either cases we get exactly one of \(x \leq_X x' \lor x' \leq_X x\).
+    Thus by Definition \ref{8.5.3} \((X, \leq_X)\) is totally ordered.
+\end{proof}
+
 \begin{exercise}\label{ex 8.5.6}
     Let \(X\) be a partially ordered set.
     For any \(x\) in \(X\), define the order ideal \((x) \subseteq X\) to be the set \((x) \coloneqq \{y \in X : y \leq x\}\).
