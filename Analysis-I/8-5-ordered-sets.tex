@@ -436,6 +436,33 @@
     Conclude in particular that every finite totally ordered set is well-ordered.
 \end{exercise}
 
+\begin{proof}
+    Let \(X \neq \emptyset\) be a totally ordered set with ordering relation \(\leq_X\) and let \(Y \subseteq X\) be a finite set where \(Y \neq \emptyset\).
+    Let \(n = \#(Y)\).
+    We use induction on \(n\) to show that \(Y\) has a minimum and maximum.
+    For \(n = 1\), let \(y \in Y\).
+    Then \(\nexists\ y' \in Y\) such that \(y' <_X y \lor y <_X y'\) since \(y\) is the only element.
+    Thus by Definition \ref{8.5.5} \(y\) is the minimum and the maximum of \(Y\), and the base case holds.
+    Suppose inductively that for some \(n \geq 1\) we know that \(Y\) has a minimum and maximum.
+    Then for \(n + 1\), let \(y \in Y\).
+    By induction hypothesis we know that \(Y \setminus \{y\}\) has a minimum and maximum.
+    Let \(y_l\) be the minimum of \(Y \setminus \{y\}\).
+    Since \(y \notin Y \setminus \{y\}\), we know that \(y \neq y_l\).
+    Since \(Y \subseteq X\), we know that \(Y\) is totally ordered, and we can have \(y <_X y_l \lor y_l <_X y\).
+    \begin{enumerate}
+        \item If \(y <_X y_l\), then \(y\) is the minimum of \(Y\) since
+        \begin{align*}
+            & \forall\ y' \in Y \setminus \{y\} \\
+            \implies & y' \in Y \land y_l <_X y' & \text{(by Definition \ref{8.5.5})} \\
+            \implies & y <_X y'. & \text{(by Definition \ref{8.5.1}, \(X, \leq_X\) is transitive)}
+        \end{align*}
+        \item If \(y_l <_X y\), then \(y_l\) is the minimum of \(Y\) since \(\nexists\ y' \in Y : y' < y_l\).
+    \end{enumerate}
+    From all cases above we know that \(Y\) has a minimum.
+    Similar arguments show that \(Y\) also has a maximum.
+    This close the induction.
+\end{proof}
+
 \begin{exercise}\label{ex 8.5.9}
     Let \(X\) be a totally ordered set such that every non-empty subset of \(X\) has both a minimum and a maximum.
     Show that \(X\) is finite.
