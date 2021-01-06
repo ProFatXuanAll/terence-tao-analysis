@@ -395,16 +395,16 @@
     We first show that \(f\) is bijective.
     We start by showing \(f\) is injecitve.
     \begin{align*}
-        & \forall\ x, x' \in X : f(x) = f(x') \\
-        \implies & (x) = (x') \\
-        \implies & x \in (x') \land x' \in (x) & \text{(by Definition \ref{8.5.1}, \((X, \leq_X)\) is reflexive)} \\
-        \implies & x \leq_X x' \land x' \leq_X x' \\
-        \implies & x = x'. & \text{(by Definition \ref{8.5.1}, \((X, \leq_X)\) is anti-symmetric)}
+                 & \forall\ x, x' \in X : f(x) = f(x')                                                                         \\
+        \implies & (x) = (x')                                                                                                  \\
+        \implies & x \in (x') \land x' \in (x)         & \text{(by Definition \ref{8.5.1}, \((X, \leq_X)\) is reflexive)}      \\
+        \implies & x \leq_X x' \land x' \leq_X x'                                                                              \\
+        \implies & x = x'.                             & \text{(by Definition \ref{8.5.1}, \((X, \leq_X)\) is anti-symmetric)}
     \end{align*}
     Thus \(f\) is injective.
     Next we show that \(f\) is surjective.
     \begin{align*}
-        & \forall\ (x) \in (X) : x \in (x) & \text{(by Definition \ref{8.5.1}, \((X, \leq_X)\) is reflexive)} \\
+                 & \forall\ (x) \in (X) : x \in (x) & \text{(by Definition \ref{8.5.1}, \((X, \leq_X)\) is reflexive)} \\
         \implies & \exists\ x \in X : f(x) = (x).
     \end{align*}
     Thus \(f\) is surjective.
@@ -412,21 +412,21 @@
 
     Finally we show that \(\forall\ x, y \in X : x \leq_X y \iff f(x) \subseteq f(y)\).
     \begin{align*}
-        & \forall\ x, y \in X : x \leq_X y \\
+             & \forall\ x, y \in X : x \leq_X y                                                                                        \\
         \iff & \forall\ z \in X : (z \leq_X x \implies z \leq_X y) & \text{(by Definition \ref{8.5.1}, \((X, \leq_X)\) is transitive)} \\
-        \iff & (x) \subseteq (y) \\
+        \iff & (x) \subseteq (y)                                                                                                       \\
         \iff & f(x) \subseteq f(y).
     \end{align*}
 \end{proof}
 
 \begin{exercise}\label{ex 8.5.7}
-    Let \(X\) be a partially ordered set, and let \(Y\) be a totally ordered subset of \(X\).
+    Let \(X\) be a partially ordered set with ordering relation \(\leq_X\), and let \(Y\) be a totally ordered subset of \(X\).
     Show that \(Y\) can have at most one maximum and at most one minimum.
 \end{exercise}
 
 \begin{proof}
     Suppose for sake of contradiction that \(\exists\ y, y' \in Y\) such that \(y \neq y'\) and both \(y, y'\) are maximum of \(Y\).
-    Then by Definition \ref{8.5.5} we have \(y < y'\), so \(y\) is not a maximum, a contradiction.
+    Then by Definition \ref{8.5.1} we have \(y \leq_X y' \land y' \leq_X y\), so \(y = y'\), a contradiction.
     Thus \(Y\) can have at most one maximum.
     Similar arguments show that \(Y\) can have at most one minimum.
 \end{proof}
@@ -451,11 +451,11 @@
     Since \(Y \subseteq X\), we know that \(Y\) is totally ordered, and we can have \(y <_X y_l \lor y_l <_X y\).
     \begin{enumerate}
         \item If \(y <_X y_l\), then \(y\) is the minimum of \(Y\) since
-        \begin{align*}
-            & \forall\ y' \in Y \setminus \{y\} \\
-            \implies & y' \in Y \land y_l <_X y' & \text{(by Definition \ref{8.5.5})} \\
-            \implies & y <_X y'. & \text{(by Definition \ref{8.5.1}, \(X, \leq_X\) is transitive)}
-        \end{align*}
+              \begin{align*}
+                           & \forall\ y' \in Y \setminus \{y\}                                                                   \\
+                  \implies & y' \in Y \land y_l <_X y'         & \text{(by Definition \ref{8.5.5})}                              \\
+                  \implies & y <_X y'.                         & \text{(by Definition \ref{8.5.1}, \(X, \leq_X\) is transitive)}
+              \end{align*}
         \item If \(y_l <_X y\), then \(y_l\) is the minimum of \(Y\) since \(\nexists\ y' \in Y : y' < y_l\).
     \end{enumerate}
     From all cases above we know that \(Y\) has a minimum.
@@ -475,7 +475,7 @@
     Define \(x_n\) recursively as follow
     \[
         \forall\ n \in \mathbf{N} : x_n = \begin{cases}
-            \min(X) & \text{if } n = 0 \\
+            \min(X)                                       & \text{if } n = 0 \\
             \min(X \setminus \bigcup_{m = 0}^{n - 1} x_m) & \text{if } n > 0
         \end{cases}
     \]
@@ -505,9 +505,9 @@
     We first show that if \(Y \cup Y'\) is well-ordered then \(Y \cup Y'\) is totally ordered.
     Suppose that \(Y \cup Y'\) is well-ordered.
     \begin{align*}
-        & \forall\ y_1, y_2 \in Y \cup Y' : y_1 \neq y_2 \\
-        \implies & \{y_1, y_2\} \subseteq Y \cup Y' \\
-        \implies & \exists\ y = \min(y_1, y_2) & \text{(by Definition \ref{8.5.8})} \\
+                 & \forall\ y_1, y_2 \in Y \cup Y' : y_1 \neq y_2                                              \\
+        \implies & \{y_1, y_2\} \subseteq Y \cup Y'                                                            \\
+        \implies & \exists\ y = \min(y_1, y_2)                            & \text{(by Definition \ref{8.5.8})} \\
         \implies & (y = y_1 \land y <_X y_2) \lor (y = y_2 \land y < y_1) & \text{(by Definition \ref{8.5.5})} \\
         \implies & (y_1 <_X y_2) \lor (y_2 <_X y_1).
     \end{align*}
@@ -523,20 +523,20 @@
     Since \(Y \cup Y'\) is totally order, we know that \(z_Y \leq_X z_{Y'} \lor z_{Y'} \leq_X z_Y\).
     \begin{enumerate}
         \item If \(z_Y = z_{Y'}\), then
-        \begin{align*}
-            & \forall\ z \in Z : z \in Y \cup Y' \\
-            \implies & z \in Y \lor z \in Y' \\
-            \implies & z_Y <_X z. & \text{(by Definition \ref{8.5.5})}
-        \end{align*}
-        Thus by Definition \ref{8.5.5} \(z_Y = \min(Z)\).
+              \begin{align*}
+                           & \forall\ z \in Z : z \in Y \cup Y'                                      \\
+                  \implies & z \in Y \lor z \in Y'                                                   \\
+                  \implies & z_Y <_X z.                         & \text{(by Definition \ref{8.5.5})}
+              \end{align*}
+              Thus by Definition \ref{8.5.5} \(z_Y = \min(Z)\).
         \item If \(z_Y <_X z_{Y'}\), then
-        \begin{align*}
-            & \forall\ z \in Z : z \in Y \cup Y' \\
-            \implies & z \in Y \lor z \in Y' \\
-            \implies & (z_Y <_X z) \lor (z_{Y'} <_X z) & \text{(by Definition \ref{8.5.5})} \\
-            \implies & z_Y <_X z_{Y'} <_X z. & \text{(by Definition \ref{8.5.1})}
-        \end{align*}
-        Thus by Definition \ref{8.5.5} \(z_Y = \min(Z)\).
+              \begin{align*}
+                           & \forall\ z \in Z : z \in Y \cup Y'                                      \\
+                  \implies & z \in Y \lor z \in Y'                                                   \\
+                  \implies & (z_Y <_X z) \lor (z_{Y'} <_X z)    & \text{(by Definition \ref{8.5.5})} \\
+                  \implies & z_Y <_X z_{Y'} <_X z.              & \text{(by Definition \ref{8.5.1})}
+              \end{align*}
+              Thus by Definition \ref{8.5.5} \(z_Y = \min(Z)\).
         \item If \(z_{Y'} <_X z_Y\), then using similar arguments in case (b) we know that \(z_{Y'} = \min(Z)\).
     \end{enumerate}
     From all cases above we can find a minimum of \(Z\).
@@ -563,25 +563,25 @@
     we know that \((X \times Y, \leq_{X \times Y})\) is reflexive.
     Since
     \begin{align*}
-        & \forall\ (x, y), (x', y') \in X \times Y : \\
-        & \big((x, y) \leq_{X \times Y} (x', y')\big) \land \big((x', y') \leq_{X \times Y} (x, y)\big) \\
-        \implies & \Big((x <_X x') \lor \big((x = x') \land (y \leq_Y y')\big)\Big) \\
-        & \land \Big((x' <_X x) \lor \big((x = x') \land (y' \leq_Y y)\big)\Big) \\
-        \implies & (x = x') \land (y \leq_Y y') \land (y' \leq_Y y) \\
-        \implies & (x = x') \land (y = y') & \text{(by Definition \ref{8.5.1})} \\
-        \implies & (x, y) = (x', y'), & \text{(by Definition \ref{3.5.1})}
+                 & \forall\ (x, y), (x', y') \in X \times Y :                                                                                         \\
+                 & \big((x, y) \leq_{X \times Y} (x', y')\big) \land \big((x', y') \leq_{X \times Y} (x, y)\big)                                      \\
+        \implies & \Big((x <_X x') \lor \big((x = x') \land (y \leq_Y y')\big)\Big)                                                                   \\
+                 & \land \Big((x' <_X x) \lor \big((x = x') \land (y' \leq_Y y)\big)\Big)                                                             \\
+        \implies & (x = x') \land (y \leq_Y y') \land (y' \leq_Y y)                                                                                   \\
+        \implies & (x = x') \land (y = y')                                                                       & \text{(by Definition \ref{8.5.1})} \\
+        \implies & (x, y) = (x', y'),                                                                            & \text{(by Definition \ref{3.5.1})}
     \end{align*}
     we know that \((X \times Y, \leq_{X \times Y})\) is anti-symmetric.
     Since
     \begin{align*}
-        & \forall\ (x_1, y_1), (x_2, y_2), (x_3, y_3) \in X \times Y : \\
-        & \big((x_1, y_1) \leq_{X \times Y} (x_2, y_2)\big) \land \big((x_2, y_2) \leq_{X \times Y} (x_3, y_3)\big) \\
-        \implies & \Big((x_1 <_X x_2) \lor \big((x_1 = x_2) \land (y_1 \leq_Y y_2)\big)\Big) \\
-        & \land \Big((x_2 <_X x_3) \lor \big((x_2 = x_3) \land (y_2 \leq_Y y_3)\big)\Big) \\
-        \implies & (x_1 <_X x_2 <_X x_3) & \text{(by Definition \ref{8.5.1})} \\
-        & \lor \big((x_1 = x_2 <_X x_3) \land (y_1 \leq_Y y_2)\big) \\
-        & \lor \big((x_1 <_X x_2 = x_3) \land (y_2 \leq_Y y_3)\big) \\
-        & \lor \big((x_1 = x_2 = x_3) \land (y_1 \leq_Y y_2 \leq_Y y_3)\big) & \text{(by Definition \ref{8.5.1})} \\
+                 & \forall\ (x_1, y_1), (x_2, y_2), (x_3, y_3) \in X \times Y :                                                                                   \\
+                 & \big((x_1, y_1) \leq_{X \times Y} (x_2, y_2)\big) \land \big((x_2, y_2) \leq_{X \times Y} (x_3, y_3)\big)                                      \\
+        \implies & \Big((x_1 <_X x_2) \lor \big((x_1 = x_2) \land (y_1 \leq_Y y_2)\big)\Big)                                                                      \\
+                 & \land \Big((x_2 <_X x_3) \lor \big((x_2 = x_3) \land (y_2 \leq_Y y_3)\big)\Big)                                                                \\
+        \implies & (x_1 <_X x_2 <_X x_3)                                                                                     & \text{(by Definition \ref{8.5.1})} \\
+                 & \lor \big((x_1 = x_2 <_X x_3) \land (y_1 \leq_Y y_2)\big)                                                                                      \\
+                 & \lor \big((x_1 <_X x_2 = x_3) \land (y_2 \leq_Y y_3)\big)                                                                                      \\
+                 & \lor \big((x_1 = x_2 = x_3) \land (y_1 \leq_Y y_2 \leq_Y y_3)\big)                                        & \text{(by Definition \ref{8.5.1})} \\
         \implies & (x_1, y_1) \leq_{X \times Y} (x_3, y_3),
     \end{align*}
     we know that \((X \times Y, \leq_{X \times Y})\) is transitive.
@@ -593,19 +593,19 @@
     From prove above we know that \((X \times Y, \leq_{X \times Y})\) is partially ordered.
     Since
     \begin{align*}
-        & \forall\ (x, y), (x', y') \in X \times Y : (x, y) \neq (x', y') \\
-        \implies & \big((x \neq x') \land (y = y')\big) & \text{(by Definition \ref{3.5.1})} \\
-        & \lor \big((x = x') \land (y \neq y')\big) \\
-        & \lor \big((x \neq x') \land (y \neq y')\big),
+                 & \forall\ (x, y), (x', y') \in X \times Y : (x, y) \neq (x', y')                                      \\
+        \implies & \big((x \neq x') \land (y = y')\big)                            & \text{(by Definition \ref{3.5.1})} \\
+                 & \lor \big((x = x') \land (y \neq y')\big)                                                            \\
+                 & \lor \big((x \neq x') \land (y \neq y')\big),
     \end{align*}
     we can split into three cases:
     \begin{enumerate}
         \item If \((x = x') \land (y \neq y')\), then \((y <_Y y') \lor (y' <_Y y)\) since \(Y\) is totally ordered.
-        Thus we have \(\big((x, y) \leq_{X \times Y} (x', y')\big) \lor \big((x, y) \leq_{X \times Y} (x', y')\big)\).
+              Thus we have \(\big((x, y) \leq_{X \times Y} (x', y')\big) \lor \big((x, y) \leq_{X \times Y} (x', y')\big)\).
         \item If \((x \neq x') \land (y = y')\), then \((x <_X x') \lor (x' <_X x)\) since \(X\) is totally ordered.
-        Thus we have \(\big((x, y) \leq_{X \times Y} (x', y')\big) \lor \big((x, y) \leq_{X \times Y} (x', y')\big)\).
+              Thus we have \(\big((x, y) \leq_{X \times Y} (x', y')\big) \lor \big((x, y) \leq_{X \times Y} (x', y')\big)\).
         \item If \((x \neq x') \land (y \neq y')\), then \((x <_X x') \lor (x' <_X x)\) since \(X\) is totally ordered.
-        Thus we have \(\big((x, y) \leq_{X \times Y} (x', y')\big) \lor \big((x, y) \leq_{X \times Y} (x', y')\big)\).
+              Thus we have \(\big((x, y) \leq_{X \times Y} (x', y')\big) \lor \big((x, y) \leq_{X \times Y} (x', y')\big)\).
     \end{enumerate}
     From all cases above we have \(\big((x, y) \leq_{X \times Y} (x', y')\big) \lor \big((x, y) \leq_{X \times Y} (x', y')\big)\).
     Thus \((X \times Y, \leq_{X \times Y})\) is totally ordered.
@@ -622,9 +622,9 @@
     Let \(z_y = \min(Z_Y)\) be an minimum element.
     Then we have
     \begin{align*}
-        & \forall\ (x, y) \in Z : (x, y) \neq (z_x, z_y) \\
-        \implies & (x \neq z_x) \lor \big((x = z_x) \land (y \neq z_y)\big) \\
-        \implies & (z_x \leq x) \land (z_y \leq y) & \text{(by Definition \ref{8.5.5})} \\
+                 & \forall\ (x, y) \in Z : (x, y) \neq (z_x, z_y)                                                \\
+        \implies & (x \neq z_x) \lor \big((x = z_x) \land (y \neq z_y)\big)                                      \\
+        \implies & (z_x \leq x) \land (z_y \leq y)                          & \text{(by Definition \ref{8.5.5})} \\
         \implies & (z_x, z_y) \leq_{X \times Y} (x, y).
     \end{align*}
     Thus \((X \times Y, \leq_{X \times Y})\) is well-ordered.
