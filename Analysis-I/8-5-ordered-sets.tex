@@ -797,6 +797,72 @@
     Using Zorn's lemma (Lemma \ref{8.5.15}), show that given any partial ordering \(\leq\) of \(X\) there exists a total ordering \(\leq'\) such that \(\leq\) is coarser than \(\leq'\).
 \end{exercise}
 
+\begin{proof}
+    Since
+    \begin{align*}
+                 & \forall\ \leq \in P                                \\
+        \implies & (\forall\ x, y \in X : x \leq y \implies x \leq y) \\
+        \implies & \leq \preceq \leq,
+    \end{align*}
+    we know that \((P, \preceq)\) is reflexive.
+    Since
+    \begin{align*}
+                 & \forall\ \leq, \leq' \in P : (\leq \preceq \leq') \land (\leq' \preceq \leq)                      \\
+        \implies & \big(\forall\ x, y \in X : (x \leq y \implies x \leq y') \land (x \leq' y \implies x \leq y)\big) \\
+        \implies & \big(\forall\ x, y \in X : (x \leq y \iff x \leq' y)\big)                                         \\
+        \implies & \leq = \leq',
+    \end{align*}
+    we know that \((P, \preceq)\) is anti-symmetric.
+    Since
+    \begin{align*}
+                 & \forall\ \leq_1, \leq_2, \leq_3 \in P : (\leq_1 \preceq \leq_2) \land (\leq_2 \preceq \leq_3)           \\
+        \implies & \big(\forall\ x, y \in X : (x \leq_1 y \implies x \leq_2 y) \land (x \leq_2 y \implies x \leq_3 y)\big) \\
+        \implies & \big(\forall\ x, y \in X : (x \leq_1 y \implies x \leq_3 y)\big)                                        \\
+        \implies & \leq_1 \preceq \leq_3,
+    \end{align*}
+    we know that \((P, \preceq)\) is transitive.
+    Since \((P, \preceq)\) is reflexive, anti-symmetric and transitive, by Definition \ref{8.5.1} we know that \((P, \preceq)\) is partially ordered.
+
+    Next we show that \((P, \preceq)\) has exactly one minimal element.
+    \begin{enumerate}
+        \item If \(X = \emptyset\), then \(\{\leq_{\emptyset}\} = P\) since
+              \begin{align*}
+                           & \forall\ \leq \in P                                                                  \\
+                  \implies & (\forall\ x, y \in X : x \leq_{\emptyset} y \iff x \leq y) & \text{(vacuously true)} \\
+                  \implies & \leq_{\emptyset} = \leq.
+              \end{align*}
+              Thus \(\leq_{\emptyset}\) is the minimal element of \((P, \preceq)\).
+        \item If \(X \neq \emptyset\), then we have \(=\) is the minimal element of \((P, \preceq)\) since
+              \begin{align*}
+                           & \forall\ \leq \in P                                                                   \\
+                  \implies & (\forall\ x, y \in X : x = y \implies x \leq y) & \text{(\(\leq\) is anti-symmetric)} \\
+                  \implies & = \preceq \leq.
+              \end{align*}
+    \end{enumerate}
+
+    From prove above we know that \(P \neq \emptyset\).
+    Now let \(C\) be a totally ordered subset of \(P\).
+    In order to apply Zorn's lemma (Lemma \ref{8.5.15}), we have to show that there is an upper bound of \(C\).
+    Let \(\leq_C\) be defined as follows:
+    \[
+        \forall\ x, y \in X, x \leq_C y \iff \exists\ \leq' \in C : x \leq' y.
+    \]
+    We have to show \(\leq_C\) is well-defined.
+    Suppose \(\leq, \leq' \in C\) and there exists \(x, y \in X\) such that \(x \leq y\) and \(y \leq' x\) but \(y \neq x\).
+    Since both are in \(C\), either \(\leq \preceq \leq' \lor \leq' \preceq \leq\).
+    Without loss of generality suppose that \(\leq \preceq \leq'\), then \(x \leq y\) implies \(x \leq' y\) and since \(x \neq y\) so \(x <' y\) which contradicts our assumption that \(y <' x\).
+    Hence \(\leq_C\) is well-defined.
+    Also is not difficult to show that is a partial ordering of \(X\).
+    Clearly \(\leq_C\) is an upper bound for \(C\) because whenever \(x \leq' y\) for \(\leq' \in C\) would imply \(x \leq_C y\), which means \(\leq' \preceq \leq_C\).
+    Thus by Zorn's lemma (Lemma \ref{8.5.15}) \(X\) contains at least one maximal element which we call \(\leq_P\).
+    We claim that \(\leq_P\) is a total ordering of \(X\).
+    Suppose for the sake of contradiction that \(\leq_P\) is not a total ordering of \(X\).
+    Thus there must be a pair \(x, y \in X\) for which neither \(x \not\leq_p y\) nor \(y \not\leq_p x\).
+    Thus we can define \(\leq = \leq_p\) for all \(X \setminus \{x, y\}\) and we set \(x \leq y\).
+    Thus is a partial ordering of \(X\), i.e., \(\leq \in P\) and also \(\leq_p \preceq \leq\), note that the implication \(x \leq_p y \implies x \leq y\) is vacuously true, which is a contradiction.
+    Hence \(\leq_p\) is a total ordering of \(X\).
+\end{proof}
+
 \begin{exercise}\label{ex 8.5.17}
     Use Zorn's lemma (Lemma \ref{8.5.15}) to give another proof of the claim in Exercise \ref{ex 8.4.2}.
     Deduce that Zorn's lemma (Lemma \ref{8.5.15}) and the axiom of choice are in fact logically equivalent
