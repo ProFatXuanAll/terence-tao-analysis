@@ -631,8 +631,65 @@
 \end{proof}
 
 \begin{exercise}\label{ex 8.5.13}
-    Prove the claim in the proof of Lemma \ref{8.5.14}, namely that every element of \(Y' \setminus Y\) is an upper bound for \(Y\) and vice versa.
+    Prove the claim in the proof of Lemma \ref{8.5.14}, namely that every element of \(Y' \setminus Y\) is an strict upper bound for \(Y\) and vice versa.
 \end{exercise}
+
+\begin{proof}
+    Since \(x_0 \in Y \cap Y'\) we know \(Y \cap Y' \neq \emptyset\).
+    Let \(n \in Y \cap Y'\) and let \(P(n)\) be the statement define as follow:
+    \[
+        \{y \in Y : y \leq n\} = \{y \in Y' : y \leq n\}.
+    \]
+    We know that
+    \[
+        \{y \in Y : y \leq x_0\} = \{y \in Y' : y \leq x_0\} = \{x_0\},
+    \]
+    so we can savely assume that \(\exists\ n \in X\) such that \(P(m)\) is true \(\forall\ m \in Y \cap Y' \land m < n\).
+    If we can show that \(P(n)\) is true, then by strong induction (Proposition \ref{8.5.10}) we know that \(P(n^*)\) is true \(\forall\ n^* \in Y \cap Y'\).
+    By induction hypothesis we have
+    \begin{align*}
+                 & \forall\ m \in Y \cap Y' \land m < n                                                                                 \\
+        \implies & \{y \in Y : y \leq m\} = \{y \in Y' : y \leq m\}                                                                     \\
+        \implies & \bigcup_{m \in Y \cap Y' : m < n} \{y \in Y : y \leq m\} = \bigcup_{m \in Y \cap Y' : m < n} \{y \in Y' : y \leq m\} \\
+        \implies & \{y \in Y : y < n\} = \{y \in Y' : y < n\}                                                                           \\
+        \implies & \{y \in Y : y < n\} \cup \{n\} = \{y \in Y' : y < n\} \cup \{n\}                                                     \\
+        \implies & \{y \in Y : y \leq n\} = \{y \in Y' : y \leq n\}.
+    \end{align*}
+    Thus \(P(n)\) is true for all \(n \in Y \cap Y'\).
+    This means
+    \[
+        \{y \in Y : y \leq n\} = \{y \in Y' : y \leq n\} = \{y \in Y \cap Y' : y \leq n\}
+    \]
+    and thus \(Y \cap Y'\) is good.
+
+    Now we show that if \(Y \setminus Y' \neq \emptyset\), then \(s(Y \cap Y') = \min(Y \setminus Y')\).
+    Since \(Y \cap Y'\) is good, \(s(Y \cap Y')\) is well-defined.
+    Since \(Y\) is well-ordered and \(Y \setminus Y' \subseteq Y\), \(\min(Y \setminus Y')\) is also well-defined.
+    Now suppose for sake of contradiction that \(s(Y \cap Y') \neq \min(Y \setminus Y')\).
+    Then \(\exists\ m \in (Y \cap Y' \setminus \{x_0\})\) such that
+    \[
+        m = s(\{y \in Y : y < m\}) \land \min(Y \setminus Y') < m.
+    \]
+    But this means \(P(\min(Y \setminus Y'))\) is true, i.e.,
+    \[
+        \{y \in Y : y \leq \min(Y \setminus Y')\} = \{y \in Y \cap Y' : y \leq \min(Y \setminus Y')\}.
+    \]
+    So we have \(\min(Y \setminus Y') \in Y \cap Y'\), a contradiction.
+    Thus \(s(Y \cap Y') = \min(Y \setminus Y')\).
+    Similar arguments show that \(s(Y \cap Y') = \min(Y' \setminus Y)\).
+    Since \((Y \setminus Y') \cap (Y' \setminus Y) = \emptyset\), we know that at least one of \(Y \setminus Y'\) or \(Y' \setminus Y\) is empty, otherwise we have \(\min(Y \setminus Y') = \min(Y' \setminus Y)\), a contradiction.
+
+    Finally we show that every element of \(Y' \setminus Y\) is an upper bound for \(Y\) and vice versa.
+    From proof above we know that at least one of \(Y \setminus Y'\) or \(Y' \setminus Y\) is empty.
+    \begin{enumerate}
+        \item If \(Y \setminus Y' = \emptyset\), then it is vacuously true that every element of \(Y \setminus Y'\) is an strict upper bound of \(Y'\).
+        \item If \(Y \setminus Y' \neq \emptyset\), then \(Y' \setminus Y = \emptyset\) and thus \(Y' \subseteq Y\).
+              Since \(Y \cap Y' = Y'\) and \(s(Y \cap Y') = s(Y') = \min(Y \setminus Y')\), by Definition \ref{8.5.5} we know that every element of \(Y' \setminus Y\) is an strict upper bound of \(Y\).
+    \end{enumerate}
+    From all cases above we can conclude that every element of \(Y \setminus Y'\) is an strict upper bound of \(Y'\).
+    Similar arguments also show that every element of \(Y' \setminus Y\) is an strict upper bound of \(Y\).
+    So we are done.
+\end{proof}
 
 \begin{exercise}\label{ex 8.5.14}
     Use Lemma \ref{8.5.14} to prove Lemma \ref{8.5.15}.
