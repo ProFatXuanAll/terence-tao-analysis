@@ -235,8 +235,7 @@ a_n^2                      % do not enclose with {}
 ### Unsolved Exercise
 
 - Analysis I
-  - 8.1.1
-  - 8.1.9
   - 8.1.10
+  - 8.5.16 - 8.5.20
 - Analysis II
   - not start yet
