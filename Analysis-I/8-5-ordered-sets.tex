@@ -723,6 +723,66 @@
     This exercise (combined with Exercise \ref{ex 8.3.3}) shows that the cardinality of any two sets is comparable, as long as one assumes the axiom of choice.
 \end{exercise}
 
+\begin{proof}
+    For every subset \(X \subseteq B\), let \(P(X)\) denote the property that there exists an injective map from \(X \to A\).
+    Let \(S = \{X \subseteq B : P(X)\}\) be a set.
+    Since \(B \neq \emptyset\), let \(b \in B\) and let \(f_{\{b\}} : \{b\} \to A\).
+    clearly \(f_{\{b\}}\) is injective, so we know that \(S \neq \emptyset\).
+    Let \(\leq_S\) be a ordering relation of \(S\) by setting
+    \begin{align*}
+             & \forall\ X, Y \in S : X \leq_S Y                                          \\
+        \iff & (X \subseteq Y)                                                           \\
+             & \land \big(\exists\ f_X : X \to A \text{ where \(f_X\) is injective}\big) \\
+             & \land \big(\exists\ f_Y : Y \to A \text{ where \(f_Y\) is injective}\big) \\
+             & \land \big(f_X(X) = f_Y(X)\big).
+    \end{align*}
+    Since
+    \[
+        \forall\ X \in S : X \subseteq X \land f_X(X) = f_X(X) \implies X \leq_S X,
+    \]
+    we know that \((S, \leq_S)\) is reflexive.
+    Since
+    \begin{align*}
+                 & \forall\ X, Y \in S : X \leq_S Y \land Y \leq_S X                                        \\
+        \implies & X \subseteq Y \land Y \subseteq X                                                        \\
+        \implies & X = Y,                                            & \text{(by Proposition \ref{3.1.18})}
+    \end{align*}
+    we know that \((S, \leq_S)\) is anti-symmetric.
+    Since
+    \begin{align*}
+                 & \forall\ X, Y, Z \in S : X \leq_S Y \land Y \leq_S Z                                                  \\
+        \implies & (X \subseteq Y) \land (Y \subseteq Z) \land \big(f_X(X) = f_Y(X)\big) \land \big(f_Y(Y) = f_Z(Y)\big) \\
+        \implies & (X \subseteq Z) \land (f_X(X) = f_Z(X))                                                               \\
+        \implies & X \leq_S Z,
+    \end{align*}
+    we know that \((S, \leq_S)\) is transitive.
+    Since \((S, \leq_S)\) is reflexive, anti-symmetric and transitive, by Definition \ref{8.5.1} we know that \((S, \leq_S)\) is partially ordered.
+
+    Now we show that \(\forall\ S' \subseteq S\), if \(S'\) is totally ordered with ordering relation \(\leq_S\), then there exists an upper bound of \(S'\).
+    Let \(S'\) be an totally ordered subset of \(S\) with ordering relation \(\leq_S\).
+    Since
+    \begin{align*}
+                 & \forall\ X \in S'                                                                \\
+        \implies & X \subseteq \bigcup S' \land f_X(X) = f_X(X) \subseteq \bigcup_{Y \in S'} f_Y(Y) \\
+        \implies & X \leq_S \bigcup S',
+    \end{align*}
+    we know that \(\bigcup S'\) is an upper bound of \(S'\).
+    Thus every totally ordered subset of \(S\) with oredering relation \(\leq_S\) has an upper bound.
+    By Zorn's lemma (Lemma \ref{8.5.15}), we know that there exists at least one maximal element of \(S\).
+    Suppose for sake of contradiction that \(B\) is not an maximal element.
+    Let \(X\) be an maximal element of \(S\).
+    So \(X \subsetneq B\).
+    Then we know that \(P(X)\) is true, i.e., \(\exists\ f_X : X \to A\) such that \(f_X\) is injective.
+    We must have \(f_X(X) = A\), otherwise \(f_X(X) \subseteq A\), we know that \(\exists\ a \in A \setminus f_X(X)\), and we can let \(b \in B \setminus X\) map to \(a\), i.e., \(f_X(b) = a\).
+    This cause \(X \subseteq X \cup \{b\} \land f_X(X) = f_{X \cup \{b\}}(X)\), which means \(X \leq_S X \cup \{b\}\), contradict to \(X\) is an maximal element.
+    So we have \(f_X(X) = A\).
+    But this also means \(f_X\) is a bijection from \(X\) to \(A\).
+    So we can set \(g : A \to B\) as \(g(a) = f_X^{-1}(a)\), which is injective.
+    By hypothesis we know that we cannot have a injection from \(A\) to \(B\) (this is the definition of \(A\) having lesser or equal cardinality to \(B\), see Exercise \ref{ex 3.6.7}).
+    Thus we derived a contradiction.
+    So \(B\) is an maximal element of \(S\), and \(\exists\ f_B : B \to A\) such that \(f_B\) is injective.
+\end{proof}
+
 \begin{exercise}\label{ex 8.5.16}
     Let \(X\) be a set, and let \(P\) be the set of all partial orderings of \(X\).
     (For instance, if \(X \coloneqq \mathbf{N} \setminus \{0\}\), then both the usual partial ordering \(\leq\), and the partial ordering in Exercise \ref{ex 8.5.3}, are elements of \(P\).)
