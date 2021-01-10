@@ -60,3 +60,57 @@
     Let \(X\) be a subset of \(\mathbf{R}\).
     The \emph{closure} of \(X\), sometimes denoted \(\overline{X}\) is defined to be the set of all the adherent points of \(X\).
 \end{definition}
+
+\begin{lemma}[Elementary properties of closures]\label{9.1.11}
+    Let \(X\) and \(Y\) be arbitrary subsets of \(\mathbf{R}\).
+    Then \(X \subseteq \overline{X}\), \(\overline{X \cup Y} = \overline{X} \cup \overline{Y}\), and \(\overline{X \cap Y} \subseteq \overline{X} \cap \overline{Y}\).
+    If \(X \subseteq Y\), then \(\overline{X} \subseteq \overline{Y}\).
+\end{lemma}
+
+\begin{proof}
+    Let \(\varepsilon \in \mathbf{R}^+\).
+    Since
+    \begin{align*}
+                 & \forall\ x \in X                                                        \\
+        \implies & \abs*{x - x} = 0 \leq \varepsilon                                       \\
+        \implies & x \in \overline{X},               & \text{(by Definition \ref{9.1.10})}
+    \end{align*}
+    by Definition \ref{3.1.15} we have \(X \subseteq \overline{X}\).
+    Since
+    \begin{align*}
+                 & \forall\ x \in \overline{X \cup Y}                                                            \\
+        \implies & \exists\ y \in X \cup Y : \abs*{x - y} \leq \varepsilon & \text{(by Definition \ref{9.1.10})} \\
+        \implies & y \in X \lor y \in Y                                    & \text{(by Axiom \ref{3.4})}         \\
+        \implies & x \in \overline{X} \lor x \in \overline{Y}              & \text{(by Definition \ref{9.1.10})} \\
+        \implies & x \in \overline{X} \cup \overline{Y}                    & \text{(by Axiom \ref{3.4})}
+    \end{align*}
+    and
+    \begin{align*}
+                 & \forall\ x \in \overline{X} \cup \overline{Y}                                                 \\
+        \implies & x \in \overline{X} \lor x \in \overline{Y}              & \text{(by Axiom \ref{3.4})}         \\
+        \implies & (\exists\ y \in X : \abs*{x - y} \leq \varepsilon)                                            \\
+                 & \lor (\exists\ y \in Y : \abs*{x - y} \leq \varepsilon) & \text{(by Definition \ref{9.1.10})} \\
+        \implies & \exists\ y \in X \cup Y : \abs*{x - y} \leq \varepsilon & \text{(by Axiom \ref{3.4})}         \\
+        \implies & x \in \overline{X \cup Y},                              & \text{(by Definition \ref{9.1.10})}
+    \end{align*}
+    by Proposition \ref{3.1.18} we have \(\overline{X \cup Y} = \overline{X} \cup \overline{Y}\).
+    Since
+    \begin{align*}
+                 & \forall\ x \in \overline{X \cap Y}                                                            \\
+        \implies & \exists\ y \in X \cap Y : \abs*{x - y} \leq \varepsilon & \text{(by Definition \ref{9.1.10})} \\
+        \implies & y \in X \land y \in Y                                   & \text{(by Definition \ref{3.1.23})} \\
+        \implies & x \in \overline{X} \land x \in \overline{Y}             & \text{(by Definition \ref{9.1.10})} \\
+        \implies & x \in \overline{X} \cap \overline{Y},                   & \text{(by Definition \ref{3.1.23})}
+    \end{align*}
+    by Definition \ref{3.1.15} we have \(\overline{X \cap Y} \subseteq \overline{X} \cap \overline{Y}\).
+    Now suppose that \(X \subseteq Y\).
+    Then we have
+    \begin{align*}
+                 & \forall\ x \in \overline{X}                                                            \\
+        \implies & \exists\ y \in X : \abs*{x - y} \leq \varepsilon & \text{(by Definition \ref{9.1.10})} \\
+        \implies & y \in Y                                          & (X \subseteq X)                     \\
+        \implies & x \in \overline{Y}.                              & \text{(by Definition \ref{9.1.10})}
+    \end{align*}
+    Thus by Definition \ref{3.1.15} we have \(\overline{X} \subseteq \overline{Y}\).
+    And we conclude that \(X \subseteq Y \implies \overline{X} \subseteq \overline{Y}\).
+\end{proof}
