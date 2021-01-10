@@ -114,3 +114,51 @@
     Thus by Definition \ref{3.1.15} we have \(\overline{X} \subseteq \overline{Y}\).
     And we conclude that \(X \subseteq Y \implies \overline{X} \subseteq \overline{Y}\).
 \end{proof}
+
+\begin{lemma}[Closures of intervals]\label{9.1.12}
+    Let \(a < b\) be real numbers, and let \(I\) be any one of the four intervals \((a, b)\), \((a, b]\), \([a, b)\), or \([a, b]\).
+    Then the closure of \(I\) is \([a, b]\).
+    Similarly, the closure of \((a, \infty)\) or \([a, \infty)\) is \([a, \infty)\), while the closure of \((-\infty, a)\) or \((-\infty, a]\) is \((-\infty, a]\).
+    Finally, the closure of \((-\infty, \infty)\) is \((-\infty, \infty)\).
+\end{lemma}
+
+\begin{proof}
+    First let us show that every element of \([a, b]\) is adherent to \((a, b)\).
+    Let \(x \in [a, b]\).
+    If \(x \in (a, b)\) then it is definitely adherent to \((a, b)\).
+    This is true since \(\forall\ \varepsilon \in \mathbf{R}^+\) we have \(\abs*{x - x} \leq \varepsilon\).
+    If \(x = b\) then \(x\) is also adherent to \((a, b)\).
+    Otherwise \(\exists\ \varepsilon \in \mathbf{R}^+\) such that
+    \[
+        \forall\ y \in (a, b), \abs*{x - y} > \varepsilon.
+    \]
+    But this means
+    \begin{align*}
+                 & \abs*{x - y} > \varepsilon                                                               \\
+        \implies & \abs*{b - y} > \varepsilon                        & (x = b)                              \\
+        \implies & b - y > \varepsilon                               & (y < b)                              \\
+        \implies & b - \varepsilon > y                                                                      \\
+        \implies & b > b - \varepsilon > y > a                       & (\varepsilon > 0 \land y \in (a, b)) \\
+        \implies & b - \varepsilon \in (a, b)                        & \text{(by Definition \ref{9.1.1})}   \\
+        \implies & 0 = \abs*{b - (b - \varepsilon)} \leq \varepsilon                                        \\
+        \implies & \abs*{x - (b - \varepsilon)} \leq \varepsilon,
+    \end{align*}
+    a contradiction.
+    Thus \(x = b\) implies \(x\) is also adherent to \((a, b)\).
+    Similarly when \(x = a\).
+    Thus every point in \([a, b]\) is adherent to \((a, b)\).
+
+    Now we show that every point \(x\) that is adherent to \((a, b)\) lies in \([a, b]\).
+    Suppose for sake of contradiction that \(x\) does not lie in \([a, b]\), then either \(x > b\) or \(x < a\).
+    If \(x > b\) then \(x\) is not \((x - b)\)-adherent to \((a, b)\), and is hence not an adherent point to \((a, b)\)
+    (by setting \(\varepsilon = x - b\) we have \(\forall\ y \in (a, b)\), \(\abs*{x - y} = x - y > x - b = \varepsilon\)).
+    Similarly, if \(x < a\), then \(x\) is not \((a - x)\)-adherent to \((a, b)\), and is hence not an adherent point to \((a, b)\).
+    This contradiction shows that \(x\) is in fact in \([a, b]\) as claimed.
+
+    Using similar arguments we can show that every point in \([a, b]\) is also adherent to \((a, b]\) and \([a, b)\), and every point \(x\) that is adherent to \((a, b]\) and \([a, b)\) lies in \([a, b]\).
+
+    Now we show that the closure of \((a, \infty)\) or \([a, \infty)\) is \([a, \infty)\).
+    From the proof above we know that the closure of \((a, \infty)\) and \([a, \infty)\) is \([a, \infty]\).
+    But since \(\forall\ x \in (a, \infty)\) the statement \(\abs*{x - \infty} \leq \varepsilon\) is undefined, thus we can only have \([a, \infty)\) as the closure of \((a, \infty)\) and \([a, \infty)\).
+                    Similar arguments show that the closure of \((-\infty, a)\) or \((-\infty, a]\) is \((-\infty, a]\), and the closure of \((-\infty, \infty)\) is \((-\infty, \infty)\).
+\end{proof}
