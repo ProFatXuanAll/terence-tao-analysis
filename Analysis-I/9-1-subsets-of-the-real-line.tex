@@ -386,3 +386,45 @@
     In fact, no half-infinite interval or doubly infinite interval can be bounded.
     The sets \(\mathbf{N}\), \(\mathbf{Z}\), \(\mathbf{Q}\), and \(\mathbf{R}\) are all unbounded.
 \end{example}
+
+\begin{theorem}[Heine-Borel theorem for the line]\label{9.1.24}
+    Let \(X\) be a subset of \(\mathbf{R}\).
+    Then the following two statements are equivalent:
+    \begin{enumerate}
+        \item \(X\) is closed and bounded.
+        \item Given any sequence \((a_n)_{n = 0}^\infty\) of real numbers which takes values in \(X\) (i.e., \(a_n \in X\) for all \(n\)), there exists a subsequence \((a_{n_j})_{j = 0}^\infty\) of the original sequence, which converges to some number \(L\) in \(X\).
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    We first show that statement (a) implies statement (b).
+    Suppose that \(X\) is a set such that \(X\) is closed and bounded.
+    Let \((a_n)_{n = 0}^\infty\) be a sequence where \(\forall\ n \in \mathbf{N}\), \(a_n \in X\).
+    Since \(X\) is bounded, by Definition \ref{9.1.22} \(\exists\ M \in \mathbf{R}^+\) such that \(X \subseteq [-M, M]\), thus \((a_n)_{n = 0}^\infty\) is also bounded by \(M\), i.e., \(\forall\ n \in \mathbf{N}\), \(\abs*{a_n} \leq M\).
+    By Bolzano-Weierstrass theorem (Theorem \ref{6.6.8}) we know that there exists a subsequence \((a_{n_j})_{j = 0}^\infty\) of \((a_n)_{n = 0}^\infty\) such that \((a_{n_j})_{j = 0}^\infty\) converges.
+    Since \(X\) is closed, by Corollary \ref{9.1.17} we know that \(\lim_{j \to \infty} a_{n_j} \in X\).
+
+    Now we show that statement (b) implies statement (a).
+    Suppose for sake of contradiction that statement (b) does not implies statement (a).
+    Then \(X\) is not closed or \(X\) is unbounded.
+    Since given any sequence \((a_n)_{n = 0}^\infty\) we can always find a subsequence \((a_{n_j})_{j = 0}^\infty\) such that \(\lim_{j \to \infty} a_{n_j} \in X\), we know that if \((a_n)_{n = 0}^\infty\) converges then \(\lim_{n \to \infty} a_n \in X\).
+    Thus we have every convergent sequence \((a_n)_{n = 0}^\infty\) have its limit in \(X\), and by Corollary \ref{9.1.17} we know that \(X\) is closed.
+    Then we must have \(X\) is unbounded, i.e., \(\nexists\ M \in \mathbf{R}^+\) such that \(X \subseteq [-M, M]\).
+    Now we define \(X_n = \{x \in X : \abs*{x} > n\}\) for every \(n \in \mathbf{N}\).
+    We know that \(X_n \neq \emptyset\) since \(X_n\) is unbounded.
+    By axiom of choice (Axiom \ref{8.1}) we know that \(\prod_{n \in \mathbf{N}} X_n \neq \emptyset\).
+    Let \(f \in \prod_{n \in \mathbf{N}} X_n\).
+    We can define a sequence \((a_n)_{n = 0}^\infty\) by setting \(a_n = f(n)\).
+    By hypothesis we know that there exists a subsequence \((a_{n_j})_{j = 0}^\infty\) such that \(L = \lim_{j \to \infty} a_{n_j} \in X\).
+    But this means
+    \begin{align*}
+                 & \forall\ n \in \mathbf{N} \land n \geq \abs*{L} + 1         & \text{(by Proposition \ref{5.4.12})} \\
+        \implies & \abs*{a_n} > n \geq \abs*{L} + 1                            & (a_n \in X_n)                        \\
+        \implies & \forall\ n_j > \abs*{L} + 1 : \abs*{a_{n_j}} > \abs*{L} + 1                                        \\
+        \implies & \abs*{a_{n_j}} - \abs*{L} > 1                                                                      \\
+        \implies & \abs*{a_{n_j} - L} \geq \abs*{a_{n_j}} - \abs*{L} > 1                                              \\
+        \implies & \lim_{j \to \infty} a_{n_j} \neq L,
+    \end{align*}
+    a contradiction.
+    Thus \(X\) is closed and bounded.
+\end{proof}
