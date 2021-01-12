@@ -268,3 +268,40 @@
     Then by Definition \ref{9.1.10} \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ y \in \emptyset\) such that \(\abs*{x - y} \leq \varepsilon\), a contradiction.
     Thus \(\overline{\emptyset} = \emptyset\).
 \end{proof}
+
+\begin{lemma}\label{9.1.14}
+    Let \(X\) be a subset of \(\mathbf{R}\), and let \(x \in \mathbf{R}\).
+    Then \(x\) is an adherent point of \(X\) if and only if there exists a sequence \((a_n)_{n = 0}^\infty\), consisting entirely of elements in \(X\), which converges to \(x\).
+\end{lemma}
+
+\begin{proof}
+    We first show that if \(x\) is an adherent point of \(X\), then there exists a sequence \((a_n)_{n = 0}^\infty\) such that \(\forall\ n \in \mathbf{N}\), \(a_n \in X\) and \(\lim_{n \to \infty} a_n = x\).
+    For each \(n \in \mathbf{N}\) let \(A_n\) be a set where
+    \[
+        A_n = \{y \in X : \abs*{x - y} \leq \frac{1}{n}\}.
+    \]
+    We know by Definition \ref{9.1.10} that \(A_n \neq \emptyset\).
+    By axiom of choice (Axiom \ref{8.1}) we know \(\prod_{n \in \mathbf{N}} A_n \neq \emptyset\).
+    Let \(f \in \prod_{n \in \mathbf{N}} A_n\).
+    We can define a sequence \((a_n)_{n = 0}^\infty\) by setting \(a_n = f(n)\).
+    Then we have
+    \begin{align*}
+                 & \forall\ n \in \mathbf{N}                                                                                           \\
+        \implies & 0 \leq \abs*{x - a_n} \leq \frac{1}{n}                                                                              \\
+        \implies & \lim_{n \to \infty} \abs*{x - a_n} = 0                                         & \text{(by Corollary \ref{6.4.14})} \\
+        \implies & \lim_{n \to \infty} \max(x - a_n, a_n - x) = 0                                                                      \\
+        \implies & \max(\lim_{n \to \infty} x - a_n, \lim_{n \to \infty} a_n - x) = 0             & \text{(by Theorem \ref{6.1.19})}   \\
+        \implies & \max\big(x - (\lim_{n \to \infty} a_n), (\lim_{n \to \infty} a_n) - x\big) = 0 & \text{(by Theorem \ref{6.1.19})}   \\
+        \implies & x = \lim_{n \to \infty} a_n.
+    \end{align*}
+
+    Now we show that if there exists a sequence \((a_n)_{n = 0}^\infty\) such that \(\forall\ n \in \mathbf{N}\), \(a_n \in X\) and \(\lim_{n \to \infty} a_n = x\), then \(x\) is an adherent point of \(X\).
+    Since \(\lim_{n \to \infty} a_n = x\), by Proposition \ref{6.4.5} \(x\) is the only limit point of \((a_n)_{n = m}^\infty\).
+    So we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ n \in \mathbf{N} : \abs*{x - a_n} \leq \varepsilon & \text{(by Definition \ref{6.4.1})}  \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ a_n \in X : \abs*{x - a_n} \leq \varepsilon                                              \\
+        \implies & x \in \overline{X}.                                                                                & \text{(by Definition \ref{9.1.10})}
+    \end{align*}
+    And we conclude that \(x\) is an adherent point of \(X\) if and only if there exists a sequence \((a_n)_{n = 0}^\infty\) such that \(\forall\ n \in \mathbf{N}\), \(a_n \in X\) and \(\lim_{n \to \infty} a_n = x\).
+\end{proof}
