@@ -314,3 +314,32 @@
     From Lemma \ref{9.1.12} we see that if \(a < b\) are real numbers, then \([a, b]\), \([a, +\infty)\), \((-\infty, a]\), and \((-\infty, +\infty)\) are closed, while \((a, b)\), \((a, b]\), \([a, b)\), \((a, +\infty)\), and \((-\infty, a)\) are not.
     From Lemma \ref{9.1.13} we see that \(\mathbf{N}\), \(\mathbf{Z}\), \(\mathbf{R}\), \(\emptyset\) are closed, while \(\mathbf{Q}\) is not.
 \end{example}
+
+\begin{corollary}\label{9.1.17}
+    Let \(X\) be a subset of \(\mathbf{R}\).
+    If \(X\) is closed, and \((a_n)_{n = 0}^\infty\) is a convergent sequence consisting of elements in \(X\), then \(\lim_{n \to \infty} a_n\) also lies in \(X\).
+    Conversely, if it is true that every convergent sequence \((a_n)_{n = 0}^\infty\) of elements in \(X\) has its limit in \(X\) as well, then \(X\) is necessarily closed.
+\end{corollary}
+
+\begin{proof}
+    We first show that if \(X\) is closed, and \((a_n)_{n = 0}^\infty\) is a convergent sequence consisting of elements in \(X\), then \(\lim_{n \to \infty} a_n\) also lies in \(X\).
+    Let \(x = \lim_{n \to \infty} a_n\).
+    Then we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ n \in \mathbf{N} : \abs*{x - a_{n'}} \leq \varepsilon \ \forall\ n' \in \mathbf{N} \land n' \geq n                                       \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ a_n \in X : \abs*{x - a_n} \leq \varepsilon                                                                                              \\
+        \implies & x \in \overline{X}                                                                                                                                 & \text{(by Definition \ref{9.1.10})} \\
+        \implies & x \in X.                                                                                                                                           & \text{(by Definition \ref{9.1.15})}
+    \end{align*}
+
+    Now we show that if every convergent sequence \((a_n)_{n = 0}^\infty\) of elements in \(X\) has its limit in \(X\) as well, then \(X\) is closed.
+    By Lemma \ref{9.1.11} we have \(X \subseteq \overline{X}\).
+    Since
+    \begin{align*}
+                 & \forall\ x \in \overline{X}                                                                                                                   \\
+        \implies & \exists\ (a_n)_{n = 0}^\infty : (\forall\ n \in \mathbf{N}, a_n \in X) \land (\lim_{n \to \infty} a_n = x) & \text{(by Lemma \ref{9.1.14})}   \\
+        \implies & x \in X,                                                                                                   & \text{(by the given hypothesis)}
+    \end{align*}
+    by Definition \ref{3.1.15} we have \(\overline{X} \subseteq X\).
+    Since \(X \subseteq \overline{X} \land \overline{X} \subseteq X\), by Proposition \ref{3.1.8} we have \(X = \overline{X}\), and thus by Definition \ref{9.1.15} \(X\) is closed.
+\end{proof}
