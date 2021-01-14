@@ -491,9 +491,40 @@
 \begin{exercise}\label{ex 9.1.6}
     Let \(X\) be a subset of \(\mathbf{R}\).
     Show that \(X\) is closed (i.e., \(\overline{\overline{X}} = \overline{X}\)).
-    Furthermore, show that if \(Y\) is any closed set that contains \(X\), then \(Y\) also contains \(X\).
+    Furthermore, show that if \(Y\) is any closed set that contains \(X\), then \(Y\) also contains \(\overline{X}\).
     Thus the closure \(\overline{X}\) of \(X\) is the smallest closed set which contains \(X\).
 \end{exercise}
+
+\begin{proof}
+    We first show that \(X \subseteq \mathbf{R} \implies \overline{\overline{X}} = \overline{X}\).
+    We have
+    \begin{align*}
+                 & X \subseteq \mathbf{R}                                                           \\
+        \implies & \overline{X} \subseteq \overline{\mathbf{R}}    & \text{(by Lemma \ref{9.1.11})} \\
+        \implies & \overline{X} \subseteq \mathbf{R}               & \text{(by Lemma \ref{9.1.13})} \\
+        \implies & \overline{X} \subseteq \overline{\overline{X}}. & \text{(by Lemma \ref{9.1.11})}
+    \end{align*}
+    Since
+    \begin{align*}
+                 & \forall\ x \in \overline{\overline{X}}                                                                                                             \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ y \in \overline{X} : \abs*{x - y} \leq \frac{\varepsilon}{2} & \text{(by Definition \ref{9.1.10})} \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ z \in X : \abs*{y - z} \leq \frac{\varepsilon}{2}            & \text{(by Definition \ref{9.1.10})} \\
+        \implies & \abs*{x - y} + \abs*{y - z} \leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2}                                                                     \\
+        \implies & \abs*{x - y + y - z} \leq \abs*{x - y} + \abs*{y - z} \leq \varepsilon                                                                             \\
+        \implies & \abs*{x - z} \leq \varepsilon                                                                                                                      \\
+        \implies & x \in \overline{X},                                                                                          & \text{(by Definition \ref{9.1.10})}
+    \end{align*}
+    by Definition \ref{3.1.15} we know that \(\overline{\overline{X}} \subseteq \overline{X}\).
+    Since \(\overline{\overline{X}} \subseteq \overline{X} \land \overline{X} \subseteq \overline{\overline{X}}\), by Proposition \ref{3.1.18} we have \(\overline{\overline{X}} = \overline{X}\).
+    So by Definition \ref{9.1.15} \(\overline{X}\) is closed.
+
+    Now we show that if \(Y\) is any closed set that contains \(X\), then \(Y\) also contains \(\overline{X}\).
+    \begin{align*}
+                 & (X \subseteq Y) \land (Y = \overline{Y})                       & \text{(by Definition \ref{9.1.15})} \\
+        \implies & (\overline{X} \subseteq \overline{Y}) \land (Y = \overline{Y}) & \text{(by Lemma \ref{9.1.11})}      \\
+        \implies & \overline{X} \subseteq Y.
+    \end{align*}
+\end{proof}
 
 \begin{exercise}\label{ex 9.1.7}
     Let \(n \geq 1\) be a positive integer, and let \(X_1, \dots, X_n\) be closed subsets of \(\mathbf{R}\).
