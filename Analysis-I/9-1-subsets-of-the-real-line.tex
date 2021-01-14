@@ -579,6 +579,56 @@
     Conversely, show that every limit point and every isolated point of \(X\) is an adherent point of \(X\).
 \end{exercise}
 
+\begin{proof}
+    We first show that every adherent point of \(X\) is either a limit point or an isolated point of \(X\), but cannot be both.
+    Let \(X \subseteq \mathbf{R}\) and let \(x\) be an adherent point of \(X\).
+    We have \(x \in \overline{X} \implies x \in \mathbf{R}\) since
+    \begin{align*}
+                 & X \subseteq \mathbf{R}                                                        \\
+        \implies & \overline{X} \subseteq \overline{\mathbf{R}} & \text{(by Lemma \ref{9.1.11})} \\
+        \implies & \overline{X} \subseteq \mathbf{R}.           & \text{(by Lemma \ref{9.1.13})}
+    \end{align*}
+    By Definition \ref{9.1.8} we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ y \in X : \abs*{x - y} \leq \varepsilon.
+    \]
+    Since \(y \in X\), we have either \(y \in X \setminus \{x\}\) or \(y \notin X \setminus \{x\}\) but not both.
+    \begin{enumerate}
+        \item If \(y \in X \setminus \{x\}\), then we have
+              \[
+                  \forall\ \varepsilon \in \mathbf{R}^+, \exists\ y \in X \setminus \{x\} : \abs*{x - y} \leq \varepsilon.
+              \]
+              Thus by Definition \ref{9.1.18} \(x\) is a limit point of \(X\).
+        \item If \(y \notin X \setminus \{x\}\), then we have \(y = x\).
+              Thus \(x \in X\) and
+              \begin{align*}
+                           & \lnot(\forall\ \varepsilon \in \mathbf{R}^+, \exists\ y \in X \setminus \{x\} : \abs*{x - y} \leq \varepsilon) \\
+                  \implies & \exists\ \varepsilon \in \mathbf{R}^+ : \forall\ y \in X \setminus \{x\}, \abs*{x - y} > \varepsilon.
+              \end{align*}
+              By Definition \ref{9.1.18} \(x\) is a isolated point of \(X\).
+    \end{enumerate}
+    From all cases above we know that \(x\) is either a limit point or an isolated point of \(X\), but not both.
+    Since \(x\) is arbitrary adherent point of \(X\), we conclude that every adherent point of \(X\) is either a limit point or an isolated point of \(X\), but cannot be both.
+
+    Now we show that every limit point and every isolated point of \(X\) is an adherent point of \(X\).
+    First suppose that \(x\) is a limit point of \(X\).
+    Then we have
+    \begin{align*}
+                 & x \in \overline{X \setminus \{x\}}                                                                      & \text{(by Definition \ref{9.1.18})} \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ y \in X \setminus \{x\} : \abs*{x - y} \leq \varepsilon & \text{(by Definition \ref{9.1.10})} \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ y \in X \setminus \{x\} : \abs*{x - y} \leq \varepsilon                                       \\
+        \implies & x \in \overline{X}.                                                                                     & \text{(by Definition \ref{9.1.10})}
+    \end{align*}
+    Now suppose that \(x\) is a isolated point of \(X\).
+    Then we have
+    \begin{align*}
+                 & x \in X                                                                  & \text{(by Definition \ref{9.1.18})} \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, 0 = \abs*{x - x} \leq \varepsilon                                       \\
+        \implies & x \in \overline{X}.                                                      & \text{(by Definition \ref{9.1.10})}
+    \end{align*}
+    Since \(x\) is arbitrary limit point or isolated point of \(X\), we conclude that every limit point and every isolated point of \(X\) is an adherent point of \(X\).
+\end{proof}
+
 \begin{exercise}\label{ex 9.1.10}
     If \(X\) is a non-empty subset of \(\mathbf{R}\), show that \(X\) is bounded if and only if \(\inf(X)\) and \(\sup(X)\) are finite.
 \end{exercise}
