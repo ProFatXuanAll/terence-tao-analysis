@@ -48,3 +48,88 @@
         (cf)(x) \coloneqq c \times f(x).
     \]
 \end{definition}
+
+\exercisesection
+
+\begin{exercise}\label{ex 9.2.1}
+    Let \(f : \mathbf{R} \to \mathbf{R}\), \(g : \mathbf{R} \to \mathbf{R}\), \(h : \mathbf{R} \to \mathbf{R}\).
+    Which of the following identities are true, and which ones are false?
+    In the former case, give a proof;
+    in the latter case, give a counterexample.
+    \begin{align*}
+        (f + g) \circ h & = (f \circ h) + (g \circ h) \\
+        f \circ (g + h) & = (f \circ g) + (f \circ h) \\
+        (f + g) \cdot h & = (f \cdot h) + (g \cdot h) \\
+        f \cdot (g + h) & = (f \cdot g) + (f \cdot h)
+    \end{align*}
+\end{exercise}
+
+\begin{proof}
+    We first show that \((f + g) \circ h = (f \circ h) + (g \circ h)\).
+    By Definition \ref{3.3.7} we need to show that \((f + g) \circ h\) and \((f \circ h) + (g \circ h)\) have the same domain and range.
+    By Definition \ref{9.2.1} we know that \(f + g\) has domain \(\mathbf{R}\) and range \(\mathbf{R}\).
+    By Definition \ref{3.3.10} we know that \((f + g) \circ h\), \(f \circ h\), \(g \circ h\) have domain \(\mathbf{R}\) and range \(\mathbf{R}\).
+    Again by Definition \ref{9.2.1} we know that \((f \circ h) + (g \circ h)\) has domain \(\mathbf{R}\) and range \(\mathbf{R}\).
+    Thus \((f + g) \circ h\) and \((f \circ h) + (g \circ h)\) have the same domain and range.
+    By Definition \ref{3.3.7} we also need to show that \(\forall\ x \in \mathbf{R}, ((f + g) \circ h)(x) = ((f \circ h) + (g \circ h))(x)\).
+    \begin{align*}
+        \forall\ x \in \mathbf{R}, ((f + g) \circ h)(x) & = (f + g)(h(x))                   & \text{(by Definition \ref{3.3.10})} \\
+                                                        & = f(h(x)) + g(h(x))               & \text{(by Definition \ref{9.2.1})}  \\
+                                                        & = (f \circ h)(x) + (g \circ h)(x) & \text{(by Definition \ref{3.3.10})} \\
+                                                        & = ((f \circ h) + (g \circ h))(x). & \text{(by Definition \ref{9.2.1})}
+    \end{align*}
+    Thus by Definition \ref{3.3.7} we have \((f + g) \circ h = (f \circ h) + (g \circ h)\).
+
+    Next we show that \(f \circ (g + h) = (f \circ g) + (f \circ h)\) may not be true.
+    Let \(f(x) = 2^x\), \(g(x) = h(x) = x\).
+    Then we have
+    \begin{align*}
+        (f \circ (g + h))(x) & = f((g + h)(x))  & \text{(by Definition \ref{3.3.10})} \\
+                             & = f(g(x) + h(x)) & \text{(by Definition \ref{9.2.1})}  \\
+                             & = f(x + x)                                             \\
+                             & = f(2x)                                                \\
+                             & = 2^{2x}
+    \end{align*}
+    and
+    \begin{align*}
+        ((f \circ g) + (f \circ h))(x) & = (f \circ g)(x) + (f \circ h)(x) & \text{(by Definition \ref{9.2.1})}  \\
+                                       & = f(g(x)) + f(h(x))               & \text{(by Definition \ref{3.3.10})} \\
+                                       & = f(x) + f(x)                                                           \\
+                                       & = 2^x + 2^x                                                             \\
+                                       & = 2 \cdot 2^x.
+    \end{align*}
+    When \(x = 2\) we have \(2^{2x} = 16\) and \(2 \cdot 2^x = 8\).
+    Thus \(f \circ (g + h) = (f \circ g) + (f \circ h)\) may not be true.
+
+    Next we show that \((f + g) \cdot h = (f \cdot h) + (g \cdot h)\).
+    By Definition \ref{3.3.7} we need to show that \((f + g) \cdot h\) and \((f \cdot h) + (g \cdot h)\) have the same domain and range.
+    By Definition \ref{9.2.1} we know that \(f + g\) has domain \(\mathbf{R}\) and range \(\mathbf{R}\).
+    Again By Definition \ref{9.2.1} we know that \((f + g) \cdot h\), \(f \cdot h\), \(g \cdot h\) have domain \(\mathbf{R}\) and range \(\mathbf{R}\).
+    Again by Definition \ref{9.2.1} we know that \((f \cdot h) + (g \cdot h)\) has domain \(\mathbf{R}\) and range \(\mathbf{R}\).
+    Thus \((f + g) \cdot h\) and \((f \cdot h) + (g \cdot h)\) have the same domain and range.
+    By Definition \ref{3.3.7} we also need to show that \(\forall\ x \in \mathbf{R}, ((f + g) \cdot h)(x) = ((f \cdot h) + (g \cdot h))(x)\).
+    \begin{align*}
+        \forall\ x \in \mathbf{R}, ((f + g) \cdot h)(x) & = (f + g)(x) \cdot h(x)           & \text{(by Definition \ref{9.2.1})} \\
+                                                        & = (f(x) + g(x)) \cdot h(x)        & \text{(by Definition \ref{9.2.1})} \\
+                                                        & = f(x)h(x) + g(x)h(x)                                                  \\
+                                                        & = (f \cdot h)(x) + (g \cdot h)(x) & \text{(by Definition \ref{9.2.1})} \\
+                                                        & = ((f \cdot h) + (g \cdot h))(x). & \text{(by Definition \ref{9.2.1})}
+    \end{align*}
+    Thus by Definition \ref{3.3.7} we have \((f + g) \cdot h = (f \cdot h) + (g \cdot h)\).
+
+    Finally we show that \(f \cdot (g + h) = (f \cdot g) + (f \cdot h)\).
+    By Definition \ref{3.3.7} we need to show that \(f \cdot (g + h)\) and \((f \cdot g) + (f \cdot h)\) have the same domain and range.
+    By Definition \ref{9.2.1} we know that \(g + h\) has domain \(\mathbf{R}\) and range \(\mathbf{R}\).
+    Again By Definition \ref{9.2.1} we know that \(f \cdot (g + h)\), \(f \cdot g\), \(f \cdot h\) have domain \(\mathbf{R}\) and range \(\mathbf{R}\).
+    Again by Definition \ref{9.2.1} we know that \((f \cdot g) + (f \cdot h)\) has domain \(\mathbf{R}\) and range \(\mathbf{R}\).
+    Thus \(f \cdot (g + h)\) and \((f \cdot g) + (f \cdot h)\) have the same domain and range.
+    By Definition \ref{3.3.7} we also need to show that \(\forall\ x \in \mathbf{R}, (f \cdot (g + h))(x) = ((f \cdot g) + (f \cdot h))(x)\).
+    \begin{align*}
+        \forall\ x \in \mathbf{R}, (f \cdot (g + h))(x) & = f(x) \cdot (g + h)(x)           & \text{(by Definition \ref{9.2.1})} \\
+                                                        & = f(x) \cdot (g(x) + h(x))        & \text{(by Definition \ref{9.2.1})} \\
+                                                        & = f(x)g(x) + f(x)h(x)                                                  \\
+                                                        & = (f \cdot g)(x) + (f \cdot h)(x) & \text{(by Definition \ref{9.2.1})} \\
+                                                        & = ((f \cdot g) + (f \cdot h))(x). & \text{(by Definition \ref{9.2.1})}
+    \end{align*}
+    Thus by Definition \ref{3.3.7} we have \(f \cdot (g + h) = (f \cdot g) + (f \cdot h)\).
+\end{proof}
