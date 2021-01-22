@@ -28,3 +28,61 @@
     To give an example, if \(f : \mathbf{R} \to \mathbf{R}\) is the function defined by setting \(f(x) = 1\) when \(x = 0\) and \(f(x) = 0\) when \(x \neq 0\), then one has \(\lim_{x \to 0 ; x \in \mathbf{R} \setminus \{0\}} f(x) = 0\), but \(\lim_{x \to 0 ; x \in \mathbf{R}} f(x)\) is undefined.
     Some authors only define the limit \(\lim_{x \to x_0 ; x \in E} f(x)\) when \(E\) does not contain \(x_0\) (so that \(x_0\) is now a limit point of \(E\) rather than an adherent point), or would use \(\lim_{x \to x_0 ; x \in E} f(x)\) to denote what we would call \(\lim_{x \in x_0 ; x \in E \setminus \{x_0\}} f(x)\), but we have chosen a slightly more general notation, which allows the possibility that \(E\) contains \(x_0\).
 \end{remark}
+
+\setcounter{theorem}{8}
+\begin{proposition}\label{9.3.9}
+    Let \(X\) be a subset of \(\mathbf{R}\), let \(f : X \to \mathbf{R}\) be a function, let \(E\) be a subset of \(X\), let \(x_0\) be an adherent point of \(E\), and let \(L\) be a real number.
+    Then the following two statements are logically equivalent:
+    \begin{enumerate}
+        \item \(f\) converges to \(L\) at \(x_0\) in \(E\).
+        \item For every sequence \((a_n)_{n = 0}^\infty\) which consists entirely of elements of \(E\) and converges to \(x_0\), the sequence \((f(a_n))_{n = 0}^\infty\) converges to \(L\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    We first show that the first statement implies the second statement.
+    Since \(f\) converges to \(L\) at \(x_0 \in E\), by Definition \ref{9.3.6} we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : x \in E \land \abs*{x - x_0} < \delta \implies \abs*{f(x) - L} \leq \varepsilon.
+    \]
+    Now we fix \(\varepsilon\), and we have some \(\delta\) satisfying the statement above, we also fix such \(\delta\).
+    Let \((a_n)_{n = 0}^\infty\) be a sequence which consists entirely of elements of \(E\) and \(\lim_{n \to \infty} a_n = x_0\).
+    By Definition \ref{6.1.5} we have
+    \[
+        \forall\ \varepsilon' \in \mathbf{R}^+, \exists\ n \in \mathbf{N} : \abs*{a_N - x_0} \leq \varepsilon' \ \forall\ N \geq n.
+    \]
+    In particular, we have
+    \[
+        \forall\ \varepsilon' < \delta, \exists\ n \in \mathbf{N} : \abs*{a_N - x_0} \leq \varepsilon' < \delta \ \forall\ N \geq n.
+    \]
+    Since \((a_n)_{n = 0}^\infty\) consists entirely of elements of \(E\), we have
+    \[
+        \abs*{a_N - x_0} < \delta \implies \abs*{f(a_N) - L} \leq \varepsilon.
+    \]
+    Since \(\varepsilon\) is arbitrary, we have showed that
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ n \in \mathbf{N} : \abs*{f(a_N) - L} \leq \varepsilon \ \forall\ N \geq n
+    \]
+    and by Definition \ref{6.1.5} we have \(\lim_{n \to \infty} f(a_n) = L\).
+
+    Now we show that the second statement implies the first statement.
+    Suppose for sake of contradiction that \(f\) does not converge to \(L\) at \(x_0 \in E\).
+    Then by Definition \ref{9.3.6} we have
+    \[
+        \exists\ \varepsilon \in \mathbf{R}^+ : \forall\ \delta \in \mathbf{R}^+, \big(x \in E \land \abs*{x - x_0} < \delta\big) \land \big(\abs*{f(x) - L} > \varepsilon\big).
+    \]
+    Let \((a_n)_{n = 0}^\infty\) be a sequence which consists entirely of elements of \(E\) and \(\lim_{n \to \infty} a_n = x_0\).
+    By hypothesis we have \(\lim_{n \to \infty} f(a_n) = L\).
+    By Definition \ref{6.1.5}, the following two statements are true:
+    \begin{align*}
+         & \exists\ n_1 \in \mathbf{N} : \abs*{a_{N_1} - x_0} \leq \frac{\delta}{2} < \delta \ \forall\ N_1 \geq n_1 \\
+         & \exists\ n_2 \in \mathbf{N} : \abs*{f(a_{N_2}) - L} \leq \varepsilon \ \forall\ N_2 \geq n_2
+    \end{align*}
+    Let \(n = \max(n_1, n_2)\).
+    Then we have
+    \[
+        \forall\ N \geq n, \big(\abs*{a_N - x_0} < \delta\big) \land \big(\abs*{f(a_N) - L} \leq \varepsilon\big).
+    \]
+    But \(a_N \in E\), so this contradict to \(\abs*{f(a_N) - L} > \varepsilon\).
+    Thus \(f\) must converge to \(L\) at \(x_0 \in E\).
+\end{proof}
