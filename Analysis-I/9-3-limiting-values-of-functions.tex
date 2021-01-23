@@ -203,5 +203,56 @@
     Then \(\lim_{x \to 0 ; x \in \mathbf{R} \setminus \{0\}} f(x) = 0\), but \(\lim_{x \to 0 ; x \in \mathbf{R}} f(x)\) is undefined.
     (When this happens, we say that \(f\) has a ``removable singularity'' or ``removable discontinuity'' at \(0\).
     Because of such singularities, it is sometimes the convention when writing \(\lim_{x \to x_0} f(x)\) to automatically exclude \(x_0\) from the set;
-    for instance, in the textbook, \(\lim_{x \to x_0} f(x)\) is used as shorthand for \(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} f(x)\).)
+    for instance, in some textbook, \(\lim_{x \to x_0} f(x)\) is used as shorthand for \(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} f(x)\).)
 \end{example}
+
+\begin{note}
+    On the other hand, the limit at \(x_0\) should only depend on the values of the function near \(x_0\);
+    the values away from \(x_0\) are not relevant.
+\end{note}
+
+\begin{proposition}[Limits are local]\label{9.3.18}
+    Let \(X\) be a subset of \(\mathbf{R}\), let \(E\) be a subset of \(X\), let \(x_0\) be an adherent point of \(E\), let \(f : X \to \mathbf{R}\) be a function, and let \(L\) be a real number.
+    Let \(\delta > 0\).
+    Then we have
+    \[
+        \lim_{x \to x_0 ; x \in E} f(x) = L
+    \]
+    if and only if
+    \[
+        \lim_{x \to x_0 ; x \in E \cap (x_0 - \delta, x_0 + \delta)} f(x) = L.
+    \]
+\end{proposition}
+
+\begin{proof}
+    We first show that \(\lim_{x \to x_0 ; x \in E} f(x) = L \implies \lim_{x \to x_0 ; x \in E \cap (x_0 - \delta, x_0 + \delta)} f(x) = L\).
+    This is true since \(E \cap (x_0 - \delta, x_0 + \delta) \subseteq E\).
+
+    Now we show that \(\lim_{x \to x_0 ; x \in E \cap (x_0 - \delta, x_0 + \delta)} f(x) = L \implies \lim_{x \to x_0 ; x \in E} f(x) = L\).
+    This is true since by Definition \ref{9.3.6} we have
+    \begin{align*}
+                 & \lim_{x \to x_0 ; x \in E \cap (x_0 - \delta, x_0 + \delta)} f(x) = L                                                                          \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ :                                                                     \\
+                 & \bigg(\forall\ x \in E \cap (x_0 - \delta, x_0 + \delta), \abs*{x - x_0} < \delta' \implies \abs*{f(x) - L} \leq \varepsilon\bigg)             \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ :                                                                     \\
+                 & \bigg(\forall\ x \in E \land x \in (x_0 - \delta, x_0 + \delta) \land \abs*{x - x_0} < \delta' \implies \abs*{f(x) - L} \leq \varepsilon\bigg) \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ :                                                                     \\
+                 & \bigg(\forall\ x \in E \land (x_0 - \delta < x < x_0 + \delta) \land \abs*{x - x_0} < \delta' \implies \abs*{f(x) - L} \leq \varepsilon\bigg)  \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ :                                                                     \\
+                 & \bigg(\forall\ x \in E \land (-\delta < x - x_0 < \delta) \land \abs*{x - x_0} < \delta' \implies \abs*{f(x) - L} \leq \varepsilon\bigg)       \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ :                                                                     \\
+                 & \bigg(\forall\ x \in E \land \abs*{x - x_0} < \delta \land \abs*{x - x_0} < \delta' \implies \abs*{f(x) - L} \leq \varepsilon\bigg)            \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ :                                                                     \\
+                 & \bigg(\forall\ x \in E \land \abs*{x - x_0} < \min(\delta, \delta') \implies \abs*{f(x) - L} \leq \varepsilon\bigg)                            \\
+        \implies & \lim_{x \to x_0 ; x \in E} f(x) = L.
+    \end{align*}
+\end{proof}
+
+\begin{note}
+    Informally, Proposition \ref{9.3.18} asserts that
+    \[
+        \lim_{x \to x_0 ; x \in E} f(x) = \lim_{x \to x_0 ; x \in E \cap (x_0 - \delta, x_0 + \delta)} f(x).
+    \]
+    Thus the limit of a function at \(x_0\), if it exists, only depends on the values of \(f\) near \(x_0\);
+    the values far away do not actually influence the limit.
+\end{note}
