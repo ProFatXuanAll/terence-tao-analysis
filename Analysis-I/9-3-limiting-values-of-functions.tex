@@ -309,3 +309,31 @@
     Let \(X\) be a subset of \(\mathbf{R}\), let \(E\) be a subset of \(X\), let \(x_0\) be an adherent point of \(E\), and let \(f : X \to \mathbf{R}\), \(g : X \to \mathbf{R}\), \(h : X \to \mathbf{R}\) be functions such that \(f(x) \leq g(x) \leq h(x)\) for all \(x \in E\).
     If we have \(\lim_{x \to x_0 ; x \in E} f(x) = \lim_{x \to x_0 ; x \in E} h(x) = L\) for some real number \(L\), show that \(\lim_{x \to x_0 ; x \in E} g(x) = L\).
 \end{exercise}
+
+\begin{proof}
+    Since \(\lim_{x \to x_0 ; x \in E} f(x) = L\), by Definition \ref{9.3.6} we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta_1 \in \mathbf{R}^+ : \bigg(\forall\ x \in E, \abs*{x - x_0} < \delta_1 \implies \abs*{f(x) - L} \leq \varepsilon\bigg).
+    \]
+    Similarly we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta_2 \in \mathbf{R}^+ : \bigg(\forall\ x \in E, \abs*{x - x_0} < \delta_2 \implies \abs*{h(x) - L} \leq \varepsilon\bigg).
+    \]
+    Let \(\delta = \min(\delta_1, \delta_2)\).
+    Then we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in E, \abs*{x - x_0} < \delta \implies \abs*{f(x) - L} \leq \varepsilon \land \abs*{h(x) - L} \leq \varepsilon\bigg).
+    \]
+    Since \(f(x) \leq g(x) \leq h(x)\), we have
+    \begin{align*}
+                 & \big(x \in E\big) \land \big(\abs*{x - x_0} < \delta\big)                                                                      \\
+        \implies & \big(f(x) \leq g(x) \leq h(x)\big) \land \big(\abs*{f(x) - L} < \varepsilon\big) \land \big(\abs*{h(x) - L} < \varepsilon\big) \\
+        \implies & -\varepsilon \leq f(x) - L \leq g(x) - L \leq h(x) - L \leq \varepsilon                                                        \\
+        \implies & \abs*{g(x) - L} \leq \varepsilon.
+    \end{align*}
+    But this means
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in E, \abs*{g(x) - L} \leq \varepsilon\bigg)
+    \]
+    and thus by Definition \ref{9.3.6} \(\lim_{x \to x_0 ; x \in E} g(x) = L\).
+\end{proof}
