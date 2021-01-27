@@ -92,3 +92,66 @@
                                                     & = f(x_0) / g(x_0).                                                                       & \text{(by Definition \ref{9.4.1})}  \\
     \end{align*}
 \end{proof}
+
+\begin{proposition}[Exponentiation is continuous, I]\label{9.4.10}
+    Let \(a > 0\) be a positive real number.
+    Then the function \(f : \mathbf{R} \to \mathbf{R}\) defined by \(f(x) \coloneqq a^x\) is continuous.
+\end{proposition}
+
+\begin{proof}
+    If \(a = 1\), then by Exercise \ref{ex 9.4.2} we know that
+    \[
+        \forall\ x_0 \in X, \lim_{x \to x_0 ; x \in \mathbf{R}} 1^x = \lim_{x \to x_0 ; x \in \mathbf{R}} 1 = 1.
+    \]
+    So suppose that \(a \neq 1\).
+    Let \(x_0 \in \mathbf{R}\).
+    By Lemma \ref{9.1.13}, \(x_0\) is an adherent point.
+    By Proposition \ref{6.7.3} we know that \(a^{x_0} > 0\).
+    By Lemma \ref{6.5.3}, we know that \(\lim_{n \to \infty} a^{1 / n} = 1\).
+    This means
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ n \geq 0 : \abs*{a^{1 / N} - 1} \leq \varepsilon \ \forall\ N \geq n.
+    \]
+    In particular, we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ n \geq 0 : \abs*{a^{1 / N} - 1} \leq \varepsilon / a^{x_0} \ \forall\ N \geq n.
+    \]
+    Now we fix \(\varepsilon\) and \(n\).
+    Let \(x \in \mathbf{R} \land x - x_0 \in [0, 1 / n)\).
+    By Exercise \ref{ex 5.4.3} \(\exists\ k \geq n\) such that \(1 / (k + 1) < x - x_0 < 1 / k\).
+    Now we split into two cases:
+    \begin{enumerate}
+        \item If \(a > 1\), then by Proposition \ref{6.7.3} we have
+              \begin{align*}
+                           & 1 / (k + 1) < x - x_0 < 1 / k                                                                \\
+                  \implies & a^{1 / (k + 1)} < a^{x - x_0} < a^{1 / k}                                                    \\
+                  \implies & a^{1 / (k + 1)} - 1 < a^{x - x_0} - 1 < a^{1 / k} - 1                                        \\
+                  \implies & \bigg(\abs*{a^{x - x_0} - 1} < \abs*{a^{1 / k} - 1} < \varepsilon / a^{x_0}\bigg)            \\
+                           & \lor \bigg(\abs*{a^{x - x_0} - 1} < \abs*{a^{1 / (k + 1)} - 1} < \varepsilon / a^{x_0}\bigg) \\
+                  \implies & \abs*{a^{x - x_0} - 1} \leq \varepsilon / a^{x_0}                                            \\
+                  \implies & \abs*{a^x - a^{x_0}} = a^{x_0} \abs*{a^{x - x_0} - 1} \leq \varepsilon                       \\
+              \end{align*}
+        \item if \(a < 1\), then by Proposition \ref{6.7.3} we have
+              \begin{align*}
+                           & 1 / (k + 1) < x - x_0 < 1 / k                                                                \\
+                  \implies & a^{1 / k} < a^{x - x_0} < a^{1 / (k + 1)}                                                    \\
+                  \implies & a^{1 / k} - 1 < a^{x - x_0} - 1 < a^{1 / (k + 1)} - 1                                        \\
+                  \implies & \bigg(\abs*{a^{x - x_0} - 1} < \abs*{a^{1 / k} - 1} < \varepsilon / a^{x_0}\bigg)            \\
+                           & \lor \bigg(\abs*{a^{x - x_0} - 1} < \abs*{a^{1 / (k + 1)} - 1} < \varepsilon / a^{x_0}\bigg) \\
+                  \implies & \abs*{a^{x - x_0} - 1} \leq \varepsilon / a^{x_0}                                            \\
+                  \implies & \abs*{a^x - a^{x_0}} = a^{x_0} \abs*{a^{x - x_0} - 1} \leq \varepsilon                       \\
+              \end{align*}
+    \end{enumerate}
+    From all cases above we have \(\abs*{a^x - a^{x_0}} \leq \varepsilon\).
+    Now let \(\delta = 1 / n\).
+    Then we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in \mathbf{R} \land \abs*{x - x_0} < \delta \implies \abs*{a^x - a^{x_0}} \leq \varepsilon\bigg).
+    \]
+    Thus by Definition \ref{9.3.6} we have \(\lim_{x \to x_0 ; x \in \mathbf{R}} a^x = a^{x_0}\).
+    Since \(x_0\) is arbitrary, by Definition \ref{9.4.1} \(a^x\) is continuous on \(\mathbf{R}\).
+\end{proof}
+
+\begin{exercise}\label{ex 9.4.2}
+
+\end{exercise}
