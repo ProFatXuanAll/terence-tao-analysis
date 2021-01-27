@@ -11,3 +11,52 @@
     We say that \(f\) is \emph{continuous on \(X\)} (or simply \emph{continuous}) iff \(f\) is continuous at \(x_0\) for every \(x_0 \in X\).
     We say that \(f\) is \emph{discontinuous at \(x_0\)} iff it is not continuous at \(x_0\).
 \end{definition}
+
+\begin{note}
+    Restricting the domain of a function can make a discontinuous function continuous again.
+\end{note}
+
+\setcounter{theorem}{6}
+\begin{proposition}[Equivalent formulations of continuity]\label{9.4.7}
+    Let \(X\) be a subset of \(\mathbf{R}\), let \(f : X \to \mathbf{R}\) be a function, and let \(x_0\) be an element of \(X\).
+    Then the following four statements are logically equivalent:
+    \begin{enumerate}
+        \item \(f\) is continuous at \(x_0\).
+        \item For every sequence \((a_n)_{n = 0}^\infty\) consisting of elements of \(X\) with \(\lim_{n \to \infty} a_n = x_0\), we have \(\lim_{n \to \infty} f(a_n) = f(x_0)\).
+        \item For every \(\varepsilon > 0\), there exists a \(\delta > 0\) such that \(\abs*{f(x) - f(x_0)} < \varepsilon\) for all \(x \in X\) with \(\abs*{x - x_0} < \delta\).
+        \item For every \(\varepsilon > 0\), there exists a \(\delta > 0\) such that \(\abs*{f(x) - f(x_0)} \leq \varepsilon\) for all \(x \in X\) with \(\abs*{x - x_0} \leq \delta\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    We first show that the statement (a) and the statement (b) are equivalent.
+    By Definition \ref{9.4.1}, \(f\) is continuous at \(x_0\) iff \(f\) converges to \(f(x_0)\) at \(x_0\) in \(X\).
+    Thus by Proposition \ref{9.3.9} we know that the statement (a) and the statement (b) are equivalent.
+
+    Next we show that the statement (a) and the statement (c) are equivalent.
+    By Definition \ref{9.4.1}, \(f\) is continuous at \(x_0\) iff \(f\) converges to \(f(x_0)\) at \(x_0\) in \(X\).
+    By Definition \ref{9.3.6} this is equivalent to the statement
+    \[
+        \forall\ \varepsilon' \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in X, \abs*{x - x_0} < \delta \implies \abs*{f(x) - f(x_0)} \leq \varepsilon'\bigg).
+    \]
+    Let \(\varepsilon \in \mathbf{R}^+ \land \varepsilon > \varepsilon'\).
+    Then we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in X, \abs*{x - x_0} < \delta \implies \abs*{f(x) - f(x_0)} \leq \varepsilon' < \varepsilon\bigg).
+    \]
+    Thus the statement (a) and the statement (c) are equivalent.
+
+    Finally we show that the statement (a) and the statement (d) are equivalent.
+    By Definition \ref{9.4.1}, \(f\) is continuous at \(x_0\) iff \(f\) converges to \(f(x_0)\) at \(x_0\) in \(X\).
+    By Definition \ref{9.3.6} this is equivalent to the statement
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ : \bigg(\forall\ x \in X, \abs*{x - x_0} < \delta' \implies \abs*{f(x) - f(x_0)} \leq \varepsilon\bigg).
+    \]
+    Let \(\delta \in \mathbf{R}^+ \land \abs*{x - x_0} \leq \delta < \delta'\).
+    By Proposition \ref{5.4.14} we know such \(\delta\) exists.
+    Then we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in X, \abs*{x - x_0} \leq \delta \implies \abs*{f(x) - f(x_0)} \leq \varepsilon\bigg).
+    \]
+    Thus the statement (a) and the statement (d) are equivalent.
+\end{proof}
