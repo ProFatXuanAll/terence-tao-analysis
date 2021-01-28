@@ -319,3 +319,25 @@
     Such a function is known as a \emph{polynomial of one variable};
     Show that \(P\) is continuous.
 \end{exercise}
+
+\begin{proof}
+    Let \(F_n = \{\text{all polynomial function with the highest order being \(n\)}\}\).
+    Let \(Q(n)\) be the statement ``all function \(f \in F_n\) are continuous''.
+    We use induction on \(n\) to show that \(\forall\ n \in \mathbf{N}\), \(Q(n)\) is true.
+    For \(n = 0\), we have
+    \[
+        \sum_{n = 0}^0 c_i x^i = c_0 x^0 = c_0.
+    \]
+    By Exercise \ref{ex 9.4.2} we know that constant functions are continuous, and thus the base case holds.
+    Suppose inductively that \(Q(n)\) is true for some \(n \geq 0\).
+    To show that \(Q(n + 1)\) is true, observe that every function \(f \in F_{n + 1}\) are in the form
+    \begin{align*}
+        f(x) & = \sum_{i = 0}^{n + 1} c_i x^i                      \\
+             & = \sum_{i = 0}^n c_i x^i + c_{n + 1} x^{n + 1}      \\
+             & = \sum_{i = 0}^n c_i x^i + c_{n + 1} (x^n \cdot x).
+    \end{align*}
+    By induction hypothesis we know that \(\sum_{i = 0}^n c_i x^i\) and \(x^n\) are continuous.
+    By Exercise \ref{ex 9.4.2} we know that \(c_{n + 1}\) and \(x\) are continuous.
+    Thus by Proposition \ref{9.4.9} we know that \(f\) is continuous.
+    This close the induction.
+\end{proof}
