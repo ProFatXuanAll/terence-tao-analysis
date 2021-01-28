@@ -210,6 +210,33 @@
     This follows since \(\abs*{x} = \max(x, -x)\) and the functions \(x, -x\) are already continuous.
 \end{proof}
 
+\begin{proposition}[Composition preserves continuity]\label{9.4.13}
+    Let \(X\) and \(Y\) be subsets of \(\mathbf{R}\), and let \(f : X \to Y\) and \(g : Y \to \mathbf{R}\) be functions.
+    Let \(x_0\) be a point in \(X\).
+    If \(f\) is continuous at \(x_0\), and \(g\) is continuous at \(f(x_0)\), then the composition \(g \circ f : X \to \mathbf{R}\) is continuous at \(x_0\).
+\end{proposition}
+
+\begin{proof}
+    Since \(\lim_{y \to f(x_0) ; y \in Y} g(x) = g(f(x_0))\), by Definition \ref{9.3.6} we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ : \bigg(\forall\ y \in Y, \abs*{y - f(x_0)} < \delta' \implies \abs*{g(y) - g(f(x_0))} < \varepsilon\bigg).
+    \]
+    Since \(\lim_{x \to x_0 ; x \in X} f(x) = f(x_0)\), by Definition \ref{9.3.6} we have
+    \[
+        \forall\ \varepsilon' \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in X, \abs*{x - x_0} < \delta \implies \abs*{f(x) - f(x_0)} < \varepsilon'\bigg).
+    \]
+    In particular, we have
+    \[
+        \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in X, \abs*{x - x_0} < \delta \implies \abs*{f(x) - f(x_0)} < \delta'\bigg).
+    \]
+    Since \(f(x) \in Y\) and \(\abs*{f(x) - f(x_0)} < \delta'\) implies \(\abs*{g(f(x)) - g(f(x_0))} < \varepsilon\), we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in X, \abs*{x - x_0} < \delta \implies \abs*{g(f(x)) - g(f(x_0))} < \varepsilon\bigg).
+    \]
+    Thus by Definition \ref{9.3.6} we have \(\lim_{x \to x_0 ; x \in X} g(f(x)) = g(f(x_0))\).
+    By Definition \ref{9.4.1} \(g \circ f\) is continuous at \(x_0\).
+\end{proof}
+
 \exercisesection
 
 \begin{exercise}\label{ex 9.4.2}
