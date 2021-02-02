@@ -47,3 +47,33 @@
     \end{align*}
     Thus by Definition \ref{9.5.1} we have \(f(x_0+) = f(x_0-) = f(x_0)\).
 \end{proof}
+
+\setcounter{theorem}{2}
+\begin{proposition}\label{9.5.3}
+    Let \(X\) be a subset of \(\mathbf{R}\) containing a real number \(x_0\), and suppose that \(x_0\) is an adherent point of both \(X \cap (x_0, \infty)\) and \(X \cap (-\infty, x_0)\).
+    Let \(f : X \to \mathbf{R}\) be a function.
+    If \(f(x_0+)\) and \(f(x_0-)\) both exist and are both equal to \(f(x_0)\), then \(f\) is continuous at \(x_0\).
+\end{proposition}
+
+\begin{proof}
+    Let us write \(L \coloneqq f(x_0)\).
+    Then by hypothesis we have
+    \[
+        \lim_{x \to x_0 ; x \in X \cap (x_0, \infty)} f(x) = L
+    \]
+    and
+    \[
+        \lim_{x \to x_0 ; x \in X \cap (-\infty, x_0)} f(x) = L.
+    \]
+    Let \(\varepsilon > 0\) be given.
+    From the first statement above and Proposition \ref{9.4.7} (applied to the restriction of \(f\) to \(X \cap (x_0, +\infty)\)), we know that there exists a \(\delta_+ > 0\) such that \(\abs*{f(x) - L} < \varepsilon\) for all \(x \in X \cap(x_0, \infty)\) for which \(\abs*{x - x_0} < \delta_+\).
+    From the second statement above we similarly know that there exists a \(\delta_- > 0\) such that \(\abs*{f(x) - L} < \varepsilon\) for all \(x \in X \cap (-\infty, x_0)\) for which \(\abs*{x - x_0} < \delta_-\).
+    Now let \(\delta \coloneqq \min(\delta_-, \delta_+)\);
+    then \(\delta > 0\), and suppose that \(x \in X\) is such that \(\abs*{x - x_0} < \delta\).
+    Then there are three cases:
+    \(x > x_0\), \(x = x_0\), and \(x < x_0\), but in all three cases we know that \(\abs*{f(x) - L} < \varepsilon\).
+    (If \(x > x_0\), then \(x \in X \cap (x_0, \infty)\), thus \(\abs*{x - x_0} < \delta \leq \delta_+ \implies \abs*{f(x) - L} < \varepsilon\).
+    Similarly, if \(x < x_0\), then \(x \in X \cap (-\infty, x_0)\), thus \(\abs*{x - x_0} < \delta \leq \delta_- \implies \abs*{f(x) - L} < \varepsilon\).
+    If \(x = x_0\), then we have \(\abs*{x_0 - x_0} = 0 < \delta\) and \(\abs*{f(x_0) - f(x_0)} = 0 < \varepsilon\).)
+    By Proposition \ref{9.4.7} we thus have that \(f\) is continuous at \(x_0\), as desired.
+\end{proof}
