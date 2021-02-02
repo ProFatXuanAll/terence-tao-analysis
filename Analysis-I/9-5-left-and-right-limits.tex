@@ -104,3 +104,92 @@
 \begin{note}
     The study of discontinuities is also called \emph{singularities}.
 \end{note}
+
+\exercisesection
+
+\begin{exercise}\label{ex 9.5.1}
+    Let \(E\) be a subset of \(\mathbf{R}\), let \(f : E \to \mathbf{R}\) be a function, and let \(x_0\) be an adherent point of \(E\).
+    Write down a definition of what it would mean for the limit \(\lim_{x \to x_0 ; x \in E} f(x)\) to exist and equal \(+\infty\) or \(-\infty\).
+    If \(f : \mathbf{R} \setminus \{0\} \to \mathbf{R}\) is the function \(f(x) \coloneqq 1 / x\), use your definition to conclude \(f(0+) = +\infty\) and \(f(0-) = -\infty\).
+    Also, state and prove some analogue of Proposition \ref{9.3.9} when \(L = +\infty\) or \(L = -\infty\).
+\end{exercise}
+
+\begin{definition}
+    We define \(\lim_{x \to x_0 ; x \in E} f(x) = \infty\) iff
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in E, \abs*{x - x_0} < \delta \implies f(x) > \varepsilon\bigg).
+    \]
+    And define \(\lim_{x \to x_0 ; x \in E} f(x) = -\infty\) iff
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in E, \abs*{x - x_0} < \delta \implies f(x) < -\varepsilon\bigg).
+    \]
+
+    Now we show that \(\lim_{x \to 0 ; x \in \mathbf{R} \cap (0, \infty)} 1 / x = \infty\) and \(\lim_{x \to 0 ; x \in \mathbf{R} \cap (-\infty, 0)} 1 / x = -\infty\).
+    Let \(\varepsilon \in \mathbf{R}^+\).
+    \(\forall\ x \in \mathbf{R} \cap (0, \infty)\), we have
+    \[
+        x = \abs*{x} = \abs*{x - 0} < 1 / \varepsilon \implies 1 / x < \varepsilon.
+    \]
+    By letting \(\delta = 1 / \varepsilon\) we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in \mathbf{R} \cap (0, \infty), \abs*{x - 0} < \delta \implies 1 / x > \varepsilon\bigg).
+    \]
+    Thus by our definition \(\lim_{x \to 0 ; x \in \mathbf{R} \cap (0, \infty)} 1 / x = \infty\).
+    Similarly, \(\forall\ x \in \mathbf{R} \cap (-\infty, 0)\), we have
+    \[
+        -x = \abs*{x} = \abs*{x - 0} < 1 / \varepsilon \implies 1 / x < -\varepsilon.
+    \]
+    By letting \(\delta = 1 / \varepsilon\) we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in \mathbf{R} \cap (-\infty, 0), \abs*{x - 0} < \delta \implies 1 / x < -\varepsilon\bigg).
+    \]
+    Thus by our definition \(\lim_{x \to 0 ; x \in \mathbf{R} \cap (-\infty, 0)} 1 / x = -\infty\).
+
+    Now we define an analogue of Proposition \ref{9.3.9} on \(\infty\).
+    The following two statements are equivalent:
+    \begin{enumerate}
+        \item \(\lim_{x \to x_0 ; x \in E} f(x) = \infty\).
+        \item For every sequence \((a_n)_{n = 0}^\infty\) which consists entirely of elements of \(E\) and converges to \(x_0\), the sequence \((f(a_n))_{n = 0}^\infty\) converges to \(\infty\).
+    \end{enumerate}
+    We first show that the first statement above implies the second statement above.
+    Since \(\lim_{x \to x_0 ; x \in E} f(x) = \infty\), by our definition we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in E, \abs*{x - x_0} < \delta \implies f(x) > \varepsilon\bigg).
+    \]
+    Since \(\lim_{n \to \infty} a_n = x_0\), \(\exists\ n \in \mathbf{N}\) such that \(\forall\ N \geq n\) we have \(\abs*{a_N - x_0} \leq \delta / 2 < \delta\).
+    But since \(a_N \in E\), we have \(\abs*{a_N - x_0} < \delta \implies f(a_N) > \varepsilon\).
+    Thus \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ n \in \mathbf{N}\) such that \(\forall\ N \geq n\) we have \(f(a_N) > \varepsilon\), which means \(\lim_{n \to \infty} f(a_n) = \infty\)
+    (Since all element in \((f(a_n)_{n = 0}^\infty)\) are eventually positive and only bounded above by \(\infty\)).
+    Next we show that the second statement above implies the first statement above.
+    Suppose for sake of contradiction that \(\lim_{x \to x_0 ; x \in E} f(x) \neq \infty\).
+    Then \(\exists\ \varepsilon \in \mathbf{R}^+\) such that \(\forall\ \delta \in \mathbf{R}^+\), we have \(\abs*{x - x_0} < \delta \land f(x) \leq \varepsilon\).
+    Since \(\lim_{n \to \infty} a_n = x_0\), we know that \(\exists\ n_1 \in \mathbf{N}\) such that \(\forall\ N \geq n_1\) we have \(\abs*{a_N - x_0} < \delta\).
+    Since \(\lim_{n \to \infty} f(a_n) = \infty\), we know that \(\exists\ n_2 \in \mathbf{N}\) such that \(\forall\ N \geq n_2\) we have \(f(a_N) > \varepsilon\).
+    Let \(n = \max(n_1, n_2)\).
+    Then we have \(\forall\ N \geq n\), \(\abs*{a_N - x_0} < \delta \land f(a_N) > \varepsilon\), a contradiction.
+    Thus \(\lim_{x \to x_0 ; x \in E} f(x) = \infty\).
+
+    Finally we define an analogue of Proposition \ref{9.3.9} on \(-\infty\).
+    The following two statements are equivalent:
+    \begin{enumerate}
+        \item \(\lim_{x \to x_0 ; x \in E} f(x) = -\infty\).
+        \item For every sequence \((a_n)_{n = 0}^\infty\) which consists entirely of elements of \(E\) and converges to \(x_0\), the sequence \((f(a_n))_{n = 0}^\infty\) converges to \(-\infty\).
+    \end{enumerate}
+    We first show that the first statement above implies the second statement above.
+    Since \(\lim_{x \to x_0 ; x \in E} f(x) = -\infty\), by our definition we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in E, \abs*{x - x_0} < \delta \implies f(x) < -\varepsilon\bigg).
+    \]
+    Since \(\lim_{n \to -\infty} a_n = x_0\), \(\exists\ n \in \mathbf{N}\) such that \(\forall\ N \geq n\) we have \(\abs*{a_N - x_0} \leq \delta / 2 < \delta\).
+    But since \(a_N \in E\), we have \(\abs*{a_N - x_0} < \delta \implies f(a_N) < -\varepsilon\).
+    Thus \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ n \in \mathbf{N}\) such that \(\forall\ N \geq n\) we have \(f(a_N) < -\varepsilon\), which means \(\lim_{n \to -\infty} f(a_n) = -\infty\)
+    (Since all element in \((f(a_n)_{n = 0}^\infty)\) are eventually negative and only bounded below by \(-\infty\)).
+    Next we show that the second statement above implies the first statement above.
+    Suppose for sake of contradiction that \(\lim_{x \to x_0 ; x \in E} f(x) \neq -\infty\).
+    Then \(\exists\ \varepsilon \in \mathbf{R}^+\) such that \(\forall\ \delta \in \mathbf{R}^+\), we have \(\abs*{x - x_0} < \delta \land f(x) \geq -\varepsilon\).
+    Since \(\lim_{n \to -\infty} a_n = x_0\), we know that \(\exists\ n_1 \in \mathbf{N}\) such that \(\forall\ N \geq n_1\) we have \(\abs*{a_N - x_0} < \delta\).
+    Since \(\lim_{n \to -\infty} f(a_n) = -\infty\), we know that \(\exists\ n_2 \in \mathbf{N}\) such that \(\forall\ N \geq n_2\) we have \(f(a_N) < -\varepsilon\).
+    Let \(n = \max(n_1, n_2)\).
+    Then we have \(\forall\ N \geq n\), \(\abs*{a_N - x_0} < \delta \land f(a_N) < -\varepsilon\), a contradiction.
+    Thus \(\lim_{x \to x_0 ; x \in E} f(x) = -\infty\).
+\end{definition}
