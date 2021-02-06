@@ -206,3 +206,41 @@
     Since \(f_d([-1, 1]) = (-\infty, -1) \cup \{0\} \cup (1, \infty)\), by Definition \ref{9.6.1} \(f_d\) is unbounded.
     Since \(f_d\) is not bounded, \(f_d\) does not violate the maximum principle (Proposition \ref{9.6.7}).
 \end{proof}
+
+\begin{exercise}\label{ex 9.6.2}
+    Let \(X \subseteq \mathbf{R}\).
+    If \(f, g: X \to \mathbf{R}\) are bounded functions, show that \(f + g\), \(f - g\), and \(f \cdot g\) are also bounded functions.
+    If we furthermore assume that \(g(x) \neq 0\) for all \(x \in X\), is it true that \(f / g\) is bounded?
+    Prove this or give a counterexample.
+\end{exercise}
+
+\begin{proof}
+    Suppose that \(f\) is bounded by \(M \in \mathbf{R}\) and \(g\) is bounded by \(N \in \mathbf{R}\).
+    Then we have
+    \begin{align*}
+        & \forall\ x \in X, \big(\abs*{f(x)} \leq M\big) \land \big(\abs*{g(x)} \leq N\big) & \text{(by Definition \ref{9.6.1})} \\
+        \implies & \big(-M \leq f(x) \leq M\big) \land \big(-N \leq g(x) \leq N\big) \\
+        \implies & -(M + N) \leq f(x) + g(x) \leq M + N \\
+        \implies & \abs*{f(x) + g(x)} \leq M + N
+    \end{align*}
+    and
+    \begin{align*}
+        & \forall\ x \in X, \big(\abs*{f(x)} \leq M\big) \land \big(\abs*{g(x)} \leq N\big) & \text{(by Definition \ref{9.6.1})} \\
+        \implies & \big(-M \leq f(x) \leq M\big) \land \big(-N \leq g(x) \leq N\big) \\
+        \implies & \big(-M \leq f(x) \leq M\big) \land \big(N \geq -g(x) \geq -N\big) \\
+        \implies & -(M + N) \leq f(x) - g(x) \leq M + N \\
+        \implies & \abs*{f(x) - g(x)} \leq M + N
+    \end{align*}
+    and
+    \begin{align*}
+        & \forall\ x \in X, \big(\abs*{f(x)} \leq M\big) \land \big(\abs*{g(x)} \leq N\big) & \text{(by Definition \ref{9.6.1})} \\
+        \implies & \big(-M \leq f(x) \leq M\big) \land \big(-N \leq g(x) \leq N\big) \\
+        \implies & -MN \leq f(x) g(x) \leq MN \\
+        \implies & \abs*{f(x) + g(x)} \leq MN.
+    \end{align*}
+    Thus by Definition \ref{9.6.1} \(f + g\), \(f - g\), \(f \cdot g\) are bounded.
+
+    Now we show an counterexample when \(g(x) \neq 0\) for all \(x \in X\).
+    Let \(X = (0, \infty)\), let \(f(x) = 1\) and let \(g(x) = 1 / x\).
+    Then \(g(x) \neq 0\) for all \(x \in X\) and is bounded by \(1\), and \((f / g)(X) = (0, \infty)\) is unbounded.
+\end{proof}
