@@ -1,2 +1,53 @@
 \section{The intermediate value theorem}\label{sec 9.7}
 
+\begin{theorem}[Intermediate value theorem]\label{9.7.1}
+    Let \(a < b\), and let \(f : [a, b] \to \mathbf{R}\) be a continuous function on \([a, b]\).
+    Let \(y\) be a real number between \(f(a)\) and \(f(b)\), i.e., either \(f(a) \leq y \leq f(b)\) or \(f(a) \geq y \geq f(b)\).
+    Then there exists \(c \in [a, b]\) such that \(f(c) = y\).
+\end{theorem}
+
+\begin{proof}
+    We have two cases: \(f(a) \leq y \leq f(b)\) or \(f(a) \geq y \geq f(b)\).
+    We will assume the former, that \(f(a) \leq y \leq f(b)\);
+    the latter is proven similarly.
+
+    If \(y = f(a)\) or \(y = f(b)\) then the claim is easy, as one can simply set \(c = a\) or \(c = b\), so we will assume that \(f(a) < y < f(b)\).
+    Let \(E\) denote the set
+    \[
+        E \coloneqq \{x \in [a, b] : f(x) < y\}.
+    \]
+    Clearly \(E\) is a subset of \([a, b]\), and is hence bounded.
+    Also, since \(f(a) < y\), we see that \(a\) is an element of \(E\), so \(E\) is non-empty.
+    By the least upper bound principle, the supremum
+    \[
+        c \coloneqq \sup(E)
+    \]
+    is thus finite.
+    Since \(E\) is bounded by \(b\), we know that \(c \leq b\);
+    since \(E\) contains \(a\), we know that \(c \geq a\).
+    Thus we have \(c \in [a, b]\).
+    To complete the proof we now show that \(f(c) = y\).
+    The idea is to work from the left of \(c\) to show that \(f(c) \leq y\), and to work from the right of \(c\) to show that \(f(c) \geq y\).
+
+    Let \(n \geq 1\) be an integer.
+    The number \(c - \frac{1}{n}\) is less than \(c = \sup(E)\) and hence cannot be an upper bound for \(E\).
+    Thus there exists a point, call it \(x_n\), which lies in \(E\) and which is greater than \(c - \frac{1}{n}\).
+    Also \(x_n \leq c\) since \(c\) is an upper bound for \(E\).
+    Thus
+    \[
+        c - \frac{1}{n} \leq x_n \leq c.
+    \]
+    By the squeeze test (Corollary \ref{6.4.14}) we thus have \(\lim_{n \to \infty} x_n = c\).
+    Since \(f\) is continuous at \(c\), this implies that \(\lim_{n \to \infty} f(x_n) = f(c)\).
+    But since \(x_n\) lies in \(E\) for every \(n\), we have \(f(x_n) < y\) for every \(n\).
+    By the comparison principle (Lemma \ref{6.4.13}) we thus have \(f(c) \leq y\).
+    Since \(f(b) > f(c)\), we conclude \(c \neq b\).
+
+    Since \(c \neq b\) and \(c \in [a, b]\), we must have \(c < b\).
+    In particular there is an \(N > 0\) such that \(c + \frac{1}{n} < b\) for all \(n > N\)
+    (since \(c + \frac{1}{n}\) converges to \(c\) as \(n \to \infty\)).
+    Since \(c\) is the supremum of \(E\) and \(c + \frac{1}{n} > c\), we thus have \(c + \frac{1}{n} \notin E\) for all \(n > N\).
+    Since \(c + \frac{1}{n} \in [a, b]\), we thus have \(f(c + \frac{1}{n}) \geq y\) for all \(n \geq N\).
+    But \(c + \frac{1}{n}\) converges to \(c\), and \(f\) is continuous at \(c\), thus \(f(c) \geq y\).
+    But we already knew that \(f(c) \leq y\), thus \(f(c) = y\), as desired.
+\end{proof}
