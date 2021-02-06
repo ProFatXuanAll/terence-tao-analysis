@@ -2,12 +2,34 @@
 
 \begin{definition}\label{9.6.1}
     Let \(X\) be a subset of \(\mathbf{R}\), and let \(f : X \to \mathbf{R}\) be a function.
-    We say that \(f\) is \emph{bounded from above} if there exists a real number \(M\) such that \(f(x) \leq M\) for all \(x \in X\).
-    We say that \(f\) is \emph{bounded from below} if there exists a real number \(M\) such that \(f(x) \geq -M\) for all \(x \in X\).
-    We say that \(f\) is \emph{bounded} if there exists a real number \(M\) such that \(\abs*{f(x)} \leq M\) for all \(x \in X\).
+    We say that \(f\) is \emph{bounded from above} iff there exists a real number \(M\) such that \(f(x) \leq M\) for all \(x \in X\).
+    We say that \(f\) is \emph{bounded from below} iff there exists a real number \(M\) such that \(f(x) \geq -M\) for all \(x \in X\).
+    We say that \(f\) is \emph{bounded} iff there exists a real number \(M\) such that \(\abs*{f(x)} \leq M\) for all \(x \in X\).
 \end{definition}
 
 \begin{remark}\label{9.6.2}
     A function is bounded if and only if it is bounded both from above and below.
     Also, a function \(f : X \to \mathbf{R}\) is bounded if and only if its image \(f(X)\) is a bounded set in the sense of Definition \ref{9.1.22}.
 \end{remark}
+
+\begin{lemma}\label{9.6.3}
+    Let \(a < b\) be real numbers, and let \(f : [a, b] \to \mathbf{R}\) be a function continuous on \([a, b]\).
+    Then \(f\) is a bounded function.
+\end{lemma}
+
+\begin{proof}
+    Suppose for sake of contradiction that \(f\) is not bounded.
+    Thus for every real number \(M\) there exists an element \(x \in [a, b]\) such that \(\abs*{f(x)} \geq M\).
+
+    In particular, for every natural number \(n\), the set \(\{x \in [a, b] : \abs*{f(x)} \geq n\}\) is non-empty.
+    We can thus choose a sequence \((x_n)_{n = 0}^\infty\) in \([a, b]\) such that \(\abs*{f(x_n)} \geq n\) for all \(n\).
+    This sequence lies in \([a, b]\), and so by Theorem \ref{9.1.24} there exists a subsequence \((x_{n_j})_{j = 0}^\infty\) which converges to some limit \(L \in [a, b]\), where \(n_0 < n_1 < n_2 < \dots\) is an increasing sequence of natural numbers.
+    In particular, we see that \(n_j \geq j\) for all \(j \in \mathbf{N}\) (use induction).
+
+    Since \(f\) is continuous on \([a, b]\), it is continuous at \(L\), and in particular we see that
+    \[
+        \lim_{j \to \infty} f(x_{n_j}) = f(L).
+    \]
+    Thus the sequence \((f(x_{n_j}))_{j = 0}^\infty\) is convergent, and hence it is bounded.
+    On the other hand, we know from the construction that \(\abs*{f(x_{n_j})} \geq n_j \geq j\) for all \(j\), and hence the sequence \((f(x_{n_j}))_{j = 0}^\infty\) is not bounded, a contradiction.
+\end{proof}
