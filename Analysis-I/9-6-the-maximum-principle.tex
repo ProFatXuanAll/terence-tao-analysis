@@ -53,3 +53,88 @@
     Similarly if it attains its minimum somewhere, then it must be bounded from below.
     These notions of maxima and minima are \emph{global}.
 \end{remark}
+
+\begin{proposition}[Maximum principle]\label{9.6.7}
+    Let \(a < b\) be real numbers, and let \(f : [a, b] \to \mathbf{R}\) be a function continuous on \([a, b]\).
+    Then \(f\) attains its maximum at some point \(x_{\max} \in [a, b]\), and also attains its minimum at some point \(x_{\min} \in [a, b]\).
+\end{proposition}
+
+\begin{proof}
+    From Lemma \ref{9.6.3} we know that \(f\) is bounded, thus there exists an \(M\) such that \(-M \leq f(x) \leq M\) for each \(x \in [a, b]\).
+    Now let \(E\) denote the
+    set
+    \[
+        E \coloneqq \{f(x) : x \in [a, b]\}.
+    \]
+    (In other words, \(E \coloneqq f([a, b])\).)
+    By what we just said, this set is a subset of \([-M, M]\).
+    It is also non-empty, since it contains for instance the point \(f(a)\).
+    Hence by the least upper bound principle, it has a supremum \(\sup(E)\) which is a real number.
+
+    Write \(m \coloneqq \sup(E)\).
+    By definition of supremum, we know that \(y \leq m\) for all \(y \in E\);
+    by definition of \(E\), this means that \(f(x) \leq m\) for all \(x \in [a, b]\).
+    Thus to show that \(f\) attains its maximum somewhere, it will suffice to find an \(x_{\max} \in [a, b]\) such that \(f(x_{\max}) = m\).
+
+    Let \(n \geq 1\) be any integer.
+    Then \(m - \frac{1}{n} < m = \sup(E)\).
+    As \(\sup(E)\) is the least upper bound for \(E\), \(m - \frac{1}{n}\) cannot be an upper bound for \(E\), thus there exists a \(y \in E\) such that \(m - \frac{1}{n} < y\).
+    By definition of \(E\), this implies that there exists an \(x \in [a, b]\) such that \(m - \frac{1}{n} < f(x)\).
+
+    We now choose a sequence \((x_n)_{n = 1}^\infty\) by choosing, for each \(n\), \(x_n\) to be an element of \([a, b]\) such that \(m - \frac{1}{n} < f(x_n)\).
+    (Again, this requires the axiom of choice;
+    however it is possible to prove this principle without the axiom of choice.
+    For instance, you will see a better proof of this proposition using the notion of \emph{compactness})
+    This is a sequence in \([a, b]\);
+    by the Heine-Borel theorem (Theorem \ref{9.1.24}), we can thus find a subsequence \((x_{n_j})_{j = 1}^\infty\), where \(n_1 < n_2 < \dots\), which converges to some limit \(x_{\max} \in [a, b]\).
+    Since \((x_{n_j})_{j = 1}^\infty\) converges to \(x_{\max}\), and \(f\) is continuous at \(x_{\max}\), we have as before that
+    \[
+        \lim_{j \to \infty} f(x_{n_j}) = f(x_{\max})
+    \]
+    On the other hand, by construction we know that
+    \[
+        f(x_{n_j}) > m - \frac{1}{n_j} \geq m - \frac{1}{j},
+    \]
+    and so by taking limits of both sides we see that
+    \[
+        f(x_{\max}) = \lim_{j \to \infty} f(x_{n_j}) \geq \lim_{j \to \infty} m - \frac{1}{j} = m.
+    \]
+    On the other hand, we know that \(f(x) \leq m\) for all \(x \in [a, b]\), so in particular \(f(x_{\max}) \leq m\).
+    Combining these two inequalities we see that \(f(x_{\max}) = m\) as desired.
+
+    By the least upper bound principle again, \(E\) has a infimum \(\inf(E)\) which is a real number.
+    Write \(m \coloneqq \inf(E)\).
+    By definition of infimum, we know that \(y \geq m\) for all \(y \in E\);
+    by definition of \(E\), this means that \(f(x) \geq m\) for all \(x \in [a, b]\).
+    Thus to show that \(f\) attains its minimum somewhere, it will suffice to find an \(x_{\min} \in [a, b]\) such that \(f(x_{\min}) = m\).
+
+    Let \(n \geq 1\) be any integer.
+    Then \(m + \frac{1}{n} > m = \inf(E)\).
+    As \(\inf(E)\) is the greatest lower bound for \(E\), \(m + \frac{1}{n}\) cannot be an lower bound for \(E\), thus there exists a \(y \in E\) such that \(m + \frac{1}{n} > y\).
+    By definition of \(E\), this implies that there exists an \(x \in [a, b]\) such that \(m + \frac{1}{n} > f(x)\).
+
+    We now choose a sequence \((x_n)_{n = 1}^\infty\) by choosing, for each \(n\), \(x_n\) to be an element of \([a, b]\) such that \(m + \frac{1}{n} > f(x_n)\).
+    (Again, this requires the axiom of choice)
+    This is a sequence in \([a, b]\);
+    by the Heine-Borel theorem (Theorem \ref{9.1.24}), we can thus find a subsequence \((x_{n_j})_{j = 1}^\infty\), where \(n_1 < n_2 < \dots\), which converges to some limit \(x_{\min} \in [a, b]\).
+    Since \((x_{n_j})_{j = 1}^\infty\) converges to \(x_{\min}\), and \(f\) is continuous at \(x_{\min}\), we have as before that
+    \[
+        \lim_{j \to \infty} f(x_{n_j}) = f(x_{\min})
+    \]
+    On the other hand, by construction we know that
+    \[
+        f(x_{n_j}) < m + \frac{1}{n_j} \leq m + \frac{1}{j},
+    \]
+    and so by taking limits of both sides we see that
+    \[
+        f(x_{\min}) = \lim_{j \to \infty} f(x_{n_j}) \leq \lim_{j \to \infty} m + \frac{1}{j} = m.
+    \]
+    On the other hand, we know that \(f(x) \geq m\) for all \(x \in [a, b]\), so in particular \(f(x_{\min}) \geq m\).
+    Combining these two inequalities we see that \(f(x_{\min}) = m\) as desired.
+\end{proof}
+
+\begin{remark}\label{9.6.8}
+    Strictly speaking, ``maximum principle'' is a misnomer, since the principle also concerns the minimum.
+    Perhaps a more precise name would have been ``extremum principle'';
+    the word ``extremum'' is used to denote either a maximum or a minimum.
+\end{remark}
