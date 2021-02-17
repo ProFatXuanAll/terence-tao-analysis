@@ -3,7 +3,7 @@
 \setcounter{theorem}{1}
 \begin{definition}[Uniform continuity]\label{9.9.2}
     Let \(X\) be a subset of \(\mathbf{R}\), and let \(f : X \to \mathbf{R}\) be a function.
-    We say that \(f\) is \emph{uniformly continuous} if, for every \(\varepsilon > 0\), there exists a \(\delta > 0\) such that \(f(x)\) and \(f(x_0)\) are \(\varepsilon\)-close whenever \(x, x_0 \in X\) are two points in \(X\) which are \(\delta\)-close.
+    We say that \(f\) is \emph{uniformly continuous} on \(X\) if, for every \(\varepsilon > 0\), there exists a \(\delta > 0\) such that \(f(x)\) and \(f(x_0)\) are \(\varepsilon\)-close whenever \(x, x_0 \in X\) are two points in \(X\) which are \(\delta\)-close.
 \end{definition}
 
 \begin{remark}\label{9.9.3}
@@ -41,4 +41,65 @@
              & (\forall\ n \in \mathbf{N} \land n \geq N, \abs*{(a_n - b_n) - 0} \leq \varepsilon)                                      \\
         \iff & \lim_{n \to \infty} (a_n - b_n) = 0.                                                & \text{(by Definition \ref{6.1.5})}
     \end{align*}
+\end{proof}
+
+\begin{proposition}\label{9.9.8}
+    Let \(X\) be a subset of \(\mathbf{R}\), and let \(f : X \to \mathbf{R}\) be a function.
+    Then the following two statements are logically equivalent:
+    \begin{enumerate}
+        \item \(f\) is uniformly continuous on \(X\).
+        \item Whenever \((x_n)_{n = 0}^\infty\) and \((y_n)_{n = 0}^\infty\) are two equivalent sequences consisting of elements of \(X\), the sequences \((f(x_n))_{n = 0}^\infty\) and \((f(y_n))_{n = 0}^\infty\) are also equivalent.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    We first show that the first statement implies the second statement.
+    By Definition \ref{9.9.2}, \(f\) is uniformly continuous on \(X\) iff
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x, y \in X, \abs*{x - y} < \delta \implies \abs*{f(x) - f(y)} \leq \varepsilon\bigg).
+    \]
+    By Definition \ref{9.9.5}, \((x_n)_{n = 0}^\infty = (y_n)_{n = 0}^\infty\) iff
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{N} : \bigg(\forall\ n \in \mathbf{N} \land n \geq N, \abs*{x_n - y_n} \leq \varepsilon\bigg).
+    \]
+    In particular, we have
+    \[
+        \exists\ N \in \mathbf{N} : \bigg(\forall\ n \in \mathbf{N} \land n \geq N, \abs*{x_n - y_n} \leq \delta / 2 < \delta\bigg).
+    \]
+    Since \(\forall\ n \geq 0\) we have \(x_n, y_n \in X\), by replacing \(x, y\) with \(x_n, y_n\) we see that
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x_n, y_n \in X, \abs*{x_n - y_n} < \delta \implies \abs*{f(x_n) - f(y_n)} \leq \varepsilon\bigg).
+    \]
+    Thus we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{N} : \bigg(\forall\ n \in \mathbf{N} \land n \geq N, \abs*{f(x_n) - f(y_n)} \leq \varepsilon\bigg)
+    \]
+    and by Definition \ref{9.9.5} \((f(x_n))_{n = 0}^\infty = (f(y_n))_{n = 0}^\infty\).
+
+    Now we show that the second statement implies the first statement.
+    We have \(\forall\ n \in \mathbf{N}\), \(x_n, y_n \in X\) and \((x_n)_{n = 0}^\infty = (y_n)_{n = 0}^\infty \implies (f(x_n))_{n = 0}^\infty = (f(y_n))_{n = 0}^\infty\).
+    Suppose for sake of contradiction that \(f\) is not uniformly continuous on \(X\).
+    Then we have
+    \[
+        \exists\ \varepsilon \in \mathbf{R}^+ : \forall\ \delta \in \mathbf{R}^+, \bigg(\forall\ x, y \in X, \abs*{x - y} < \delta \land \abs*{f(x) - f(y)} > \varepsilon\bigg).
+    \]
+    By replacing \(x, y\) with \(x_n, y_n\) we have
+    \[
+        \exists\ \varepsilon \in \mathbf{R}^+ : \forall\ \delta \in \mathbf{R}^+, \bigg(\forall\ x_n, y_n \in X, \abs*{x_n - y_n} < \delta \land \abs*{f(x_n) - f(y_n)} > \varepsilon\bigg).
+    \]
+    Since \((x_n)_{n = 0}^\infty = (y_n)_{n = 0}^\infty\), we have
+    \[
+        \exists\ N_1 \in \mathbf{N} : \bigg(\forall\ n \in \mathbf{N} \land n \geq N_1, \abs*{x_n - y_n} \leq \delta / 2 < \delta\bigg).
+    \]
+    Since \((f(x_n))_{n = 0}^\infty = (f(y_n))_{n = 0}^\infty\), we have
+    \[
+        \exists\ N_2 \in \mathbf{N} : \bigg(\forall\ n \in \mathbf{N} \land n \geq N_2, \abs*{f(x_n) - f(y_n)} \leq \varepsilon\bigg).
+    \]
+    Let \(N = \max(N_1, N_2)\).
+    Then we have
+    \[
+        \forall\ n \in \mathbf{N} \land n \geq N, \abs*{x_n - y_n} < \delta \land \abs*{f(x_n) - f(y_n)} \leq \varepsilon,
+    \]
+    a contradiction.
+    Thus \(f\) is uniformly continuous on \(X\).
 \end{proof}
