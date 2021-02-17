@@ -15,7 +15,7 @@ The notes also have some additional corollaries to help proving others.
 
 I'm not a native English user, and do not have mathematical background. So any helps are appreciated, especially for the following things:
 
-- **Syntax** and **grammer** correction.
+- **Syntax** and **grammar** correction.
 - Making **proofs** more **rigorous**.
 - **Proofs** I am struggled with.
 
