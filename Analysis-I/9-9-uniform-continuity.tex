@@ -164,3 +164,31 @@
     Since \(f\) is continuous, \(f(0) = 1 / 0\) must exist, a contradiction.
     Thus \(f\) is not uniformly continuous.
 \end{proof}
+
+\begin{proposition}\label{9.9.15}
+    Let \(X\) be a subset of \(\mathbf{R}\), and let \(f : X \to \mathbf{R}\) be a uniformly continuous function.
+    Suppose that \(E\) is a bounded subset of \(X\).
+    Then \(f(E)\) is also bounded.
+\end{proposition}
+
+\begin{proof}
+    Suppose for sake of contradiction that \(f\) is not bounded.
+    Thus for every real number \(M\) there exists an element \(x \in E\) such that \(\abs*{f(x)} \geq M\).
+
+    In particular, for every natural number \(n\), the set \(\{x \in E : \abs*{f(x)} \geq n\}\) is non-empty.
+    We can thus choose a sequence \((x_n)_{n = 0}^\infty\) in \(E\) such that \(\abs*{f(x_n)} \geq n\) for all \(n\).
+    Since \((x_n)_{n = 0}^\infty\) in \(E\), by Bolzano-Weierstrass theorem (Theorem \ref{6.6.8}) there exists a subsequence \((x_{n_j})_{j = 0}^\infty\) which converges, where \(n_0 < n_1 < n_2 < \dots\) is an increasing sequence of natural numbers.
+    In particular, we see that \(n_j \geq j\) for all \(j \in \mathbf{N}\) (use induction).
+
+    Let \(\lim_{n \to \infty} x_n = x_*\).
+    Since \((x_n)_{n = 0}^\infty\) in \(E\), by Lemma \ref{9.1.14} we know that \(x_*\) is an adherent point of \(E\).
+    Since \(f\) is continuous on \(X\), by Exercise \ref{ex 9.4.6} \(f\) is continuous on \(E\).
+    In particular, \(f\) is uniformly continuous on \(E\).
+    Thus by Corollary \ref{9.9.14} we know that \(\lim_{x \to x_* ; x \in E} f(x)\) exists.
+    By Proposition \ref{9.3.9} we see that
+    \[
+        \lim_{j \to \infty} f(x_{n_j}) = \lim_{x \to x_* ; x \in E} f(x).
+    \]
+    Thus the sequence \((f(x_{n_j}))_{j = 0}^\infty\) is convergent, and hence it is bounded.
+    On the other hand, we know from the construction that \(\abs*{f(x_{n_j})} \geq n_j \geq j\) for all \(j\), and hence the sequence \((f(x_{n_j}))_{j = 0}^\infty\) is not bounded, a contradiction.
+\end{proof}
