@@ -110,3 +110,34 @@
     In contrast, Proposition \ref{9.9.8} asserts that if \(f\) is \emph{uniformly} continuous, then \(f\) maps \emph{equivalent} pairs of sequences to equivalent pairs of sequences.
     To see how the two Propositions are connected, observe from Lemma \ref{9.9.7} that \((x_n)_{n = 0}^\infty\) will converge to \(x_*\) if and only if the sequences \((x_n)_{n = 0}^\infty\) and \((x_*)_{n = 0}^\infty\) are equivalent.
 \end{remark}
+
+\setcounter{theorem}{11}
+\begin{proposition}\label{9.9.12}
+    Let \(X\) be a subset of \(\mathbf{R}\), and let \(f : X \to \mathbf{R}\) be a uniformly continuous function.
+    Let \((x_n)_{n = 0}^\infty\) be a Cauchy sequence consisting entirely of elements in \(X\).
+    Then \((f(x_n))_{n = 0}^\infty\) is also a Cauchy sequence.
+\end{proposition}
+
+\begin{proof}
+    Since \(f\) is uniformly continuous, by Definition \ref{9.9.2} we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x, y \in X, \abs*{x - y} < \delta \implies \abs*{f(x) - f(y)} \leq \varepsilon\bigg).
+    \]
+    Since \((x_n)_{n = 0}^\infty\) is a Cauchy sequence, by Definition \ref{6.1.3} we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{N} : \bigg(\forall\ i, j \in \mathbf{N} \land i, j \geq N, \abs*{x_i - x_j} \leq \varepsilon\bigg).
+    \]
+    In particular, we have
+    \[
+        \exists\ N \in \mathbf{N} : \bigg(\forall\ i, j \in \mathbf{N} \land i, j \geq N, \abs*{x_i - x_j} \leq \delta / 2 < \delta\bigg).
+    \]
+    Since \(x_i, x_j \in X\), we have
+    \[
+        \abs*{x_i - x_j} < \delta \implies \abs*{f(x_i) - f(x_j)} \leq \varepsilon.
+    \]
+    Thus we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{N} : \bigg(\forall\ i, j \in \mathbf{N} \land i, j \geq N, \abs*{f(x_i) - f(x_j)} \leq \varepsilon\bigg).
+    \]
+    and by Definition \ref{6.1.3} \((f(x_n))_{n = 0}^\infty\) is a Cauchy sequence.
+\end{proof}
