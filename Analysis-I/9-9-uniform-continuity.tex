@@ -301,3 +301,28 @@
     Let \(f : X \to Y\) be a function which is uniformly continuous on \(X\), and let \(g : Y \to Z\) be a function which is uniformly continuous on \(Y\).
     Show that the function \(g \circ f : X \to Z\) is uniformly continuous on \(X\).
 \end{exercise}
+
+\begin{proof}
+    Since \(f\) is continuous on \(X\) and \(g\) is continuous on \(Y\), by Proposition \ref{9.4.13} we know that \(g \circ f\) is continuous on \(X\).
+    Since \(g\) is uniformly continuous, by Definition \ref{9.9.2} we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ : \bigg(\forall\ y_1, y_2 \in Y, \abs*{y_1 - y_2} < \delta' \implies \abs*{g(y_1) - g(y_2)} \leq \varepsilon\bigg).
+    \]
+    Similarly, since \(f\) is uniformly continuous, by Definition \ref{9.9.2} we have
+    \[
+        \forall\ \varepsilon' \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x_1, x_2 \in X, \abs*{x_1 - x_2} < \delta \implies \abs*{f(x_1) - f(x_2)} \leq \varepsilon'\bigg).
+    \]
+    In particular, we have
+    \[
+        \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x_1, x_2 \in X, \abs*{x_1 - x_2} < \delta \implies \abs*{f(x_1) - f(x_2)} \leq \delta' / 2 < \delta'\bigg).
+    \]
+    Since \(f(x_1), f(x_2) \in Y\), we have
+    \[
+        \abs*{f(x_1) - f(x_2)} < \delta' \implies \abs*{g(f(x_1)) - g(f(x_2))} \leq \varepsilon.
+    \]
+    Thus we have showed that
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x_1, x_2 \in X, \abs*{x_1 - x_2} < \delta \implies \abs*{g(f(x_1)) - g(f(x_2))} \leq \varepsilon\bigg).
+    \]
+    and by Definition \ref{9.9.2} \(g \circ f\) is uniformly continuous on \(X\).
+\end{proof}
