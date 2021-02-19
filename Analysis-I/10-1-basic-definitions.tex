@@ -47,3 +47,28 @@
     (This confusion becomes even worse in the calculus of several variables, and the standard notation of \(\frac{\partial f}{\partial x}\) can lead to some serious ambiguities.
     There are ways to resolve these ambiguities, most notably by introducing the notion of differentiation along vector fields, but this is beyond the scope of this text.)
 \end{remark}
+
+\begin{example}\label{10.1.6}
+    Let \(f : \mathbf{R} \to \mathbf{R}\) be the function \(f(x) \coloneqq \abs*{x}\), and let \(x_0 = 0\).
+    To see whether \(f\) is differentiable at \(0\) on \(\mathbf{R}\), we compute the limit
+    \[
+        \lim_{x \to 0 ; x \in \mathbf{R} \setminus \{0\}} \frac{f(x) - f(0)}{x - 0} = \lim_{x \to 0 ; x \in \mathbf{R} \setminus \{0\}} \frac{\abs*{x}}{x}.
+    \]
+    Now we take left limits and right limits.
+    The right limit is
+    \[
+        \lim_{x \to 0 ; x \in (0, \infty)} \frac{\abs*{x}}{x} = \lim_{x \to 0 ; x \in (0, \infty)} \frac{x}{x} = \lim_{x \to 0 ; x \in (0, \infty)} 1 = 1,
+    \]
+    while the left limit is
+    \[
+        \lim_{x \to 0 ; x \in (-\infty, 0)} \frac{\abs*{x}}{x} = \lim_{x \to 0 ; x \in (-\infty, 0)} \frac{-x}{x} = \lim_{x \to 0 ; x \in (-\infty, 0)} -1 = -1,
+    \]
+    and these limits do not match.
+    Thus \(\lim_{x \to 0 ; x \in (0, \infty)} \frac{\abs*{x}}{x}\) does not exist, and \(f\) is not differentiable at \(0\) on \(\mathbf{R}\).
+    However, if one restricts \(f\) to \([0, \infty)\), then the restricted function \(f|_{[0, \infty)}\) is differentiable at \(0\) on \([0, \infty)\), with derivative \(1\):
+    \[
+    \lim_{x \to 0 ; x \in [0, \infty) \setminus \{0\}} \frac{f(x) - f(0)}{x - 0} = \lim_{x \to 0 ; x \in (0, \infty)} \frac{\abs*{x}}{x} = 1.
+        \]
+        Similarly, when one restricts \(f\) to \((-\infty, 0]\), the restricted function \(f|_{(-\infty, 0]}\) is differentiable at \(0\) on \((-\infty, 0]\), with derivative \(-1\).
+    Thus even when a function is not differentiable, it is sometimes possible to restore the differentiability by restricting the domain of the function.
+\end{example}
