@@ -72,3 +72,67 @@
         Similarly, when one restricts \(f\) to \((-\infty, 0]\), the restricted function \(f|_{(-\infty, 0]}\) is differentiable at \(0\) on \((-\infty, 0]\), with derivative \(-1\).
     Thus even when a function is not differentiable, it is sometimes possible to restore the differentiability by restricting the domain of the function.
 \end{example}
+
+\begin{proposition}[Newton's approximation]\label{10.1.7}
+    Let \(X\) be a subset of \(\mathbf{R}\), let \(x_0 \in X\) be a limit point of \(X\), let \(f : X \to \mathbf{R}\) be a function, and let \(L\) be a real number.
+    Then the following statements are logically equivalent:
+    \begin{enumerate}
+        \item \(f\) is differentiable at \(x_0\) on \(X\) with derivative \(L\).
+        \item For every \(\varepsilon > 0\), there exists a \(\delta > 0\) such that \(f(x)\) is \(\varepsilon \abs*{x - x_0}\)-close to \(f(x_0) + L(x - x_0)\) whenever \(x \in X\) is \(\delta\)-close to \(x_0\), i.e., we have
+              \[
+                  \abs*{f(x) - (f(x_0) + L(x - x_0))} \leq \varepsilon \abs*{x - x_0}
+              \]
+              whenever \(x \in X\) and \(\abs*{x - x_0} \leq \delta\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    We first show that the first statement implies the second statement.
+    Since \(f\) is differentiable at \(x_0\) on \(X\) with derivative \(L\), by Definition \ref{10.1.1} we have
+    \[
+        \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = L.
+    \]
+    By Definition \ref{9.3.6} this means
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in X \setminus \{x_0\}, \abs*{x - x_0} < \delta \implies \abs*{\frac{f(x) - f(x_0)}{x - x_0} - L} \leq \varepsilon\bigg).
+    \]
+    Thus we have
+    \begin{align*}
+                 & \forall\ x \in X \setminus \{x_0\}, \abs*{x - x_0} \leq \delta / 2 < \delta             \\
+        \implies & \abs*{\frac{f(x) - f(x_0)}{x - x_0} - L} \leq \varepsilon                               \\
+        \implies & \abs*{\frac{f(x) - f(x_0)}{x - x_0} - L} \abs*{x - x_0} \leq \varepsilon \abs*{x - x_0} \\
+        \implies & \abs*{(f(x) - f(x_0)) - L(x - x_0)} \leq \varepsilon \abs*{x - x_0}                     \\
+        \implies & \abs*{f(x) - (f(x_0) + L(x - x_0))} \leq \varepsilon \abs*{x - x_0}.
+    \end{align*}
+    If \(x = x_0\), then we have
+    \begin{align*}
+                 & 0 = \abs*{x_0 - x_0} \leq \delta / 2 < \delta                                      \\
+        \implies & 0 = \abs*{f(x_0) - (f(x_0) + L(x_0 - x_0))} \leq \varepsilon \abs*{x_0 - x_0} = 0.
+    \end{align*}
+    Thus we have \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ \delta \in \mathbf{R}^+\) such that
+    \[
+        \forall\ x \in X, \abs*{x - x_0} \leq \delta / 2 \implies \abs*{f(x) - (f(x_0) + L(x - x_0))} \leq \varepsilon \abs*{x - x_0}.
+    \]
+
+    Now we show that the second statement implies the first statement.
+    By hypothesis we have \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ \delta \in \mathbf{R}^+\) such that
+    \[
+        \forall\ x \in X, \abs*{x - x_0} \leq \delta \implies \abs*{f(x) - (f(x_0) + L(x - x_0))} \leq \varepsilon \abs*{x - x_0}.
+    \]
+    In particular, we have
+    \[
+        \forall\ x \in X \setminus \{x_0\}, \abs*{x - x_0} \leq \delta \implies \abs*{f(x) - (f(x_0) + L(x - x_0))} \leq \varepsilon \abs*{x - x_0}.
+    \]
+    Thus we have
+    \begin{align*}
+                 & \forall\ x \in X \setminus \{x_0\}, \abs*{x - x_0} \leq \delta        \\
+        \implies & \abs*{f(x) - (f(x_0) + L(x - x_0))} \leq \varepsilon \abs*{x - x_0}   \\
+        \implies & \abs*{f(x) - (f(x_0) + L(x - x_0))} / \abs*{x - x_0} \leq \varepsilon \\
+        \implies & \abs*{\frac{f(x) - f(x_0)}{x - x_0} - L} \leq \varepsilon.
+    \end{align*}
+    By Definition \ref{9.3.6} this means
+    \[
+        \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = L
+    \]
+    and by Definition \ref{10.1.1} we know that \(f\) is differentiable at \(x_0\) on \(X\) with derivative \(L\).
+\end{proof}
