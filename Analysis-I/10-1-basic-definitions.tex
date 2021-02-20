@@ -468,6 +468,23 @@
     Show that \(f\) is differentiable on \(\mathbf{R}\) and \(f'(x) = n x^{n - 1}\) for all \(x \in \mathbf{R}\) with the convention that \(n x^{n - 1} = 0\) when \(n = 0\).
 \end{exercise}
 
+\begin{proof}
+    We use induction on \(n\) to show that \(\forall\ n \in \mathbf{N}\), \(f_n(x) = x^n\) is differentiable on \(\mathbf{R}\) and \(f_n'(x) = n x^{n - 1}\).
+    For \(n = 0\), we have \(f_0(x) = x^0 = 1\), and by Theorem \ref{10.1.13}(a) we know that \(f_0\) is differentiable on \(\mathbf{R}\) and \(\forall\ x \in X\), \(f_0'(x) = 0\).
+    Thus the base case holds.
+    Suppose inductively that for some \(n \geq 0\) we have \(f_n(x) = x^n\) is differentiable on \(\mathbf{R}\) and \(f_n'(x) = n x^{n - 1}\).
+    Then for \(n + 1\), we have \(f_{n + 1}(x) = x^{n + 1} = x^n \cdot x^1 = f_n(x) f_1(x) = (f_n \cdot f_1)(x)\) and
+    \begin{align*}
+          & (f_n \cdot f_1)'(x)                                                        \\
+        = & f_n'(x) f_1(x) + f_n(x) f_1'(x)     & \text{(by Theorem \ref{10.1.13}(d))} \\
+        = & (n x^{n - 1})(x^1) + f_n(x) f_1'(x) & \text{(by induction hypothesis)}     \\
+        = & (n x^{n - 1})(x^1) + (x^n)(1 x^0)   & \text{(by Theorem \ref{10.1.13}(b))} \\
+        = & n x^n + x^n                                                                \\
+        = & (n + 1) x^n.
+    \end{align*}
+    This close the induction.
+\end{proof}
+
 \begin{exercise}\label{ex 10.1.6}
     Let \(n\) be a \emph{negative} integer, and let \(f : \mathbf{R} \setminus \{0\} \to \mathbf{R}\) be the function \(f(x) \coloneqq x^n\).
     Show that \(f\) is differentiable on \(\mathbf{R} \setminus \{0\}\) and \(f'(x) = n x^{n - 1}\) for all \(x \in \mathbf{R} \setminus \{0\}\).
