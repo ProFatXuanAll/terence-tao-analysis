@@ -253,23 +253,32 @@
 \end{proof}
 
 \begin{proof}{(c)}
-    Since \(f\) is differentiable at \(x_0\), by Definition \ref{10.1.1} we have
-    \[
-        \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0).
-    \]
-    Similarly, since \(g\) is differentiable at \(x_0\), by Definition \ref{10.1.1} we have
-    \[
-        \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0} = g'(x_0).
-    \]
-    Then we have
+    By Definition \ref{10.1.1} and Proposition \ref{9.3.14} we have
     \begin{align*}
-         & f'(x_0) + g'(x_0)                                                                                                                                                                                \\
-         & = \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} + \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0}                                        \\
-         & = \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} + \frac{g(x) - g(x_0)}{x - x_0}                                              & \text{(by Proposition \ref{9.3.14})} \\
-         & = \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0) + g(x) - g(x_0)}{x - x_0}                                                                                                     \\
-         & = \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) + g(x) - (f(x_0) + g(x_0))}{x - x_0}                                                                                                   \\
-         & = \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{(f + g)(x) - (f + g)(x_0)}{x - x_0}                                                                                                         \\
-         & = (f + g)'(x_0).                                                                                                                                          & \text{(by Definition \ref{10.1.1})}
+          & f'(x_0) + g'(x_0)                                                                                                                                       \\
+        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} + \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0} \\
+        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} + \frac{g(x) - g(x_0)}{x - x_0}                                              \\
+        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0) + g(x) - g(x_0)}{x - x_0}                                                              \\
+        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) + g(x) - (f(x_0) + g(x_0))}{x - x_0}                                                            \\
+        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{(f + g)(x) - (f + g)(x_0)}{x - x_0}                                                                  \\
+        = & (f + g)'(x_0).
     \end{align*}
     Thus \(f + g\) is differentiable at \(x_0\) and \((f + g)'(x_0) = f'(x_0) + g'(x_0)\).
+\end{proof}
+
+\begin{proof}{(d)}
+    By Definition \ref{10.1.1} and Proposition \ref{9.3.14} we have
+    \begin{align*}
+          & f'(x_0) g(x_0) + f(x_0) g'(x_0)                                                                                                                                                                         \\
+        = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}\bigg) \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} g(x)\bigg)                                                    \\
+          & + f(x_0) \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0}\bigg)                                                                                                         \\
+        = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{(f(x) - f(x_0)) g(x)}{x - x_0}\bigg) + \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x_0) (g(x) - g(x_0))}{x - x_0}\bigg)         \\
+        = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) g(x) - f(x_0) g(x)}{x - x_0}\bigg) + \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}\bigg) \\
+        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \bigg(\frac{f(x) g(x) - f(x_0) g(x)}{x - x_0} + \frac{f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}\bigg)                                                          \\
+        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) g(x) - f(x_0) g(x) + f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}                                                                                      \\
+        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) g(x) - f(x_0) g(x_0)}{x - x_0}                                                                                                                  \\
+        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{(fg)(x) - (fg)(x_0)}{x - x_0}                                                                                                                        \\
+        = & (fg)'(x_0).
+    \end{align*}
+    Thus \(fg\) is differentiable at \(x_0\) and \((fg)'(x_0) = f'(x_0) g(x_0) + f(x_0) g'(x_0)\).
 \end{proof}
