@@ -339,3 +339,63 @@
 \begin{remark}\label{10.1.14}
     The product rule is also known as the \emph{Leibniz rule}, after Gottfried Leibniz (1646 -- 1716), who was the other founder of differential and integral calculus besides Newton.
 \end{remark}
+
+\begin{theorem}[Chain rule]\label{10.1.15}
+    Let \(X, Y\) be subsets of \(\mathbf{R}\), let \(x_0 \in X\) be a limit point of \(X\), and let \(y_0 \in Y\) be a limit point of \(Y\).
+    Let \(f : X \to Y\) be a function such that \(f(x_0) = y_0\), and such that \(f\) is differentiable at \(x_0\).
+    Suppose that \(g : Y \to \mathbf{R}\) is a function which is differentiable at \(y_0\).
+    Then the function \(g \circ f : X \to \mathbf{R}\) is differentiable at \(x_0\), and
+    \[
+        (g \circ f)'(x_0) = g'(y_0) f'(x_0)
+    \]
+\end{theorem}
+
+\begin{proof}
+    Since \(f\) is differentiable at \(x_0\) and \(g\) is differentiable at \(y_0\), by Newton's approximation (Proposition \ref{10.1.7}), we have \(\forall\ \varepsilon_1, \varepsilon_2 \in \mathbf{R}^+\), \(\exists\ \delta_1, \delta_2 \in \mathbf{R}^+\) such that
+    \[
+        \forall\ x \in X, \abs*{x - x_0} \leq \delta_1 \implies \abs*{f(x) - (f(x_0) + f'(x_0)(x - x_0))} \leq \varepsilon_1 \abs*{x - x_0}
+    \]
+    and
+    \[
+        \forall\ y \in Y, \abs*{y - y_0} \leq \delta_2 \implies \abs*{g(y) - (g(y_0) + g'(y_0)(y - y_0))} \leq \varepsilon_2 \abs*{y - y_0}.
+    \]
+    In particular, we have
+    \begin{align*}
+                 & \forall\ x \in X, \abs*{x - x_0} \leq \delta_1                                 \\
+        \implies & \abs*{f(x) - (f(x_0) + f'(x_0)(x - x_0))} \leq \varepsilon_1 \abs*{x - x_0}    \\
+        \implies & \abs*{f(x) - f(x_0)}                                                           \\
+                 & \leq \abs*{f(x) - (f(x_0) + f'(x_0)(x - x_0))} + \abs*{f'(x_0)(x - x_0)}       \\
+                 & \leq \varepsilon_1 \abs*{x - x_0} + \abs*{f'(x_0)(x - x_0)}                    \\
+        \implies & \abs*{f(x) - y_0} \leq \varepsilon_1 \abs*{x - x_0} + \abs*{f'(x_0)(x - x_0)}.
+    \end{align*}
+    Let \(\delta = \min(\delta_1, \delta_2)\).
+    Then we have
+    \begin{align*}
+                 & \forall\ x \in X, \abs*{f(x) - y_0} \leq \delta                                                                        \\
+        \implies & \abs*{g(f(x)) - \Big(g(y_0) + g'(y_0)\big(f(x) - y_0\big)\Big)} \leq \varepsilon_2 \abs*{f(x) - y_0}                   \\
+        \implies & \abs*{g(f(x)) - \Big(g(y_0) + g'(y_0)\big(f(x) - y_0\big)\Big)}                                                        \\
+                 & \leq \varepsilon_2 \abs*{f(x) - y_0}                                                                                   \\
+                 & \leq \varepsilon_2 \big(\varepsilon_1 \abs*{x - x_0} + \abs*{f'(x_0)(x - x_0)}\big)                                    \\
+                 & = \varepsilon_2 \varepsilon_1 \abs*{x - x_0} + \varepsilon_2 \abs*{f'(x_0)(x - x_0)}                                   \\
+        \implies & \abs*{g(f(x)) - \Big(g(y_0) + g'(y_0)\big(f(x) - y_0\big)\Big)}                                                        \\
+                 & + \abs*{g'(y_0) \Big(f(x) - \big(y_0 + f'(x_0)(x - x_0)\big)\Big)}                                                     \\
+                 & \leq \varepsilon_2 \varepsilon_1 \abs*{x - x_0} + \varepsilon_2 \abs*{f'(x_0)(x - x_0)} + \varepsilon_1 \abs*{x - x_0} \\
+        \implies & \abs*{g(f(x)) - \big(g(y_0) + g'(y_0) f'(x_0) (x - x_0)\big)}                                                          \\
+                 & \leq \big(\varepsilon_2 \varepsilon_1 + \varepsilon_2 \abs*{f'(x_0)} + \varepsilon_1\big) \abs*{x - x_0}               \\
+                 & = \Big(\varepsilon_2 \big(\varepsilon_1 + \abs*{f'(x_0)}\big) + \varepsilon_1\Big) \abs*{x - x_0}.
+    \end{align*}
+    Let \(\varepsilon \in \mathbf{R}^+\), let \(\varepsilon_1 = \frac{\varepsilon}{2}\) and let \(\varepsilon_2 = \frac{\varepsilon}{2(\varepsilon_1 + \abs*{f'(x_0)})}\).
+    Then we have
+    \begin{align*}
+                 & \forall\ x \in X, \abs*{f(x) - y_0} \leq \delta                                                                                             \\
+        \implies & \abs*{g(f(x)) - \big(g(y_0) + g'(y_0) f'(x_0) (x - x_0)\big)}                                                                               \\
+                 & \leq \Big(\varepsilon_2 \big(\varepsilon_1 + \abs*{f'(x_0)}\big) + \varepsilon_1\Big) \abs*{x - x_0}                                        \\
+                 & = \bigg(\frac{\varepsilon \big(\varepsilon_1 + \abs*{f'(x_0)}\big)}{2(\varepsilon_1 + \abs*{f'(x_0)})} + \varepsilon_1\bigg) \abs*{x - x_0} \\
+                 & = (\frac{\varepsilon}{2} + \varepsilon_1) \abs*{x - x_0}                                                                                    \\
+                 & = (\frac{\varepsilon}{2} + \frac{\varepsilon}{2}) \abs*{x - x_0}                                                                            \\
+                 & = \varepsilon \abs*{x - x_0}                                                                                                                \\
+        \implies & \abs*{(g \circ f)(x) - \big((g \circ f)(x_0) + g'(y_0) f'(x_0) (x - x_0)\big)}                                                              \\
+                 & \leq \varepsilon \abs*{x - x_0}
+    \end{align*}
+    and thus by Newton's approximation (Proposition \ref{10.1.7}) we have \((g \circ f)'(x_0) = g'(y_0) f'(x_0)\).
+\end{proof}
