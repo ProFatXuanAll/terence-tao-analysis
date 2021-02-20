@@ -217,7 +217,7 @@
         \item If \(f\) is differentiable at \(x_0\) and \(c\) is a real number, then \(cf\) is also differentiable at \(x_0\), and \((cf)'(x_0) = cf'(x_0)\).
         \item (Difference rule)
               If \(f\) and \(g\) are differentiable at \(x_0\), then \(f - g\) is also differentiable at \(x_0\), and \((f - g)'(x_0) = f'(x_0) - g'(x_0)\).
-        \item If \(g\) is differentiable at \(x_0\), and \(g\) is non-zero on \(X\) (i.e., \(g(x)' \neq 0\) for all \(x \in X\)), then \(1 / g\) is also differentiable at \(x_0\), and \((\frac{1}{g})'(x_0) = -\frac{g'(x_0)}{g(x_0)^2}\).
+        \item If \(g\) is differentiable at \(x_0\), and \(g\) is non-zero on \(X\) (i.e., \(g(x) \neq 0\) for all \(x \in X\)), then \(1 / g\) is also differentiable at \(x_0\), and \((\frac{1}{g})'(x_0) = -\frac{g'(x_0)}{g(x_0)^2}\).
         \item (Quotient rule)
               If \(f\) and \(g\) are differentiable at \(x_0\), and \(g\) is non-zero on \(X\), then \(f / g\) is also differentiable at \(x_0\), and
               \[
@@ -305,4 +305,20 @@
         = & (f - g)'(x_0).         & \text{(by Definition \ref{9.2.1})}
     \end{align*}
     Thus \(f - g\) is differentiable at \(x_0\) and \((f - g)'(x_0) = f'(x_0) - g'(x_0)\).
+\end{proof}
+
+\begin{proof}{(g)}
+    By Definition \ref{10.1.1} and Proposition \ref{9.3.14} we have
+    \begin{align*}
+          & -\frac{g'(x_0)}{g(x_0)^2}                                                                                                                                                     \\
+        = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\frac{-1}{g(x_0)^2}\bigg)                                                        \\
+        = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\frac{-g(x_0)}{g(x_0) g(x_0)^2}\bigg)                                            \\
+        = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{-g(x_0)}{g(x) g(x_0)^2}\bigg) \\
+        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \Bigg(\bigg(\frac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\frac{-g(x_0)}{g(x) g(x_0)^2}\bigg)\Bigg)                                  \\
+        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{\frac{g(x_0)(g(x_0) - g(x))}{g(x) g(x_0)^2}}{x - x_0}                                                                      \\
+        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{\frac{g(x_0) - g(x)}{g(x) g(x_0)}}{x - x_0}                                                                                \\
+        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{\frac{1}{g(x)} - \frac{1}{g(x_0)}}{x - x_0}                                                                                \\
+        = & (\frac{1}{g})'(x_0).
+    \end{align*}
+    Thus \(1 / g\) is differentiable at \(x_0\) and \((1 / g)'(x_0) = -\frac{g'(x_0)}{g(x_0)^2}\).
 \end{proof}
