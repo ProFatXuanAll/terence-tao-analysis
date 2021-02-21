@@ -16,3 +16,56 @@
     If \(f : X \to \mathbf{R}\) attains a local maximum at a point \(x_0\) in \(X\), and \(Y \subseteq X\) is a subset of \(X\) which contains \(x_0\), then the restriction \(f|_Y : Y \to \mathbf{R}\) also attains a local maximum at \(x_0\).
     Similarly for minima.
 \end{remark}
+
+\begin{proposition}[Local extrema are stationary]\label{10.2.6}
+    Let \(a < b\) be real numbers, and let \(f : (a, b) \to \mathbf{R}\) be a function.
+    If \(x_0 \in (a, b)\), \(f\) is differentiable at \(x_0\), and \(f\) attains either a local maximum or local minimum at \(x_0\), then \(f'(x_0) = 0\).
+\end{proposition}
+
+\begin{proof}
+    Suppose \(f\) attains local maximum at \(x_0\).
+    Then by Definition \ref{10.2.1} we know that
+    \[
+        \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in (a, b) \cap (x_0 - \delta, x_0 + \delta), f(x) \leq f(x_0).
+    \]
+    Since \(f\) is differentiable at \(x_0\), by Definition \ref{10.1.1} we know that
+    \[
+        \lim_{x \to x_0 ; x \in (a, b) \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0)
+    \]
+    By Definition \ref{9.3.6} we know that \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ \delta' \in \mathbf{R}^+\) such that
+    \[
+        \forall\ x \in (a, b) \setminus \{x_0\}, \abs*{x - x_0} < \delta' \implies \abs*{\frac{f(x) - f(x_0)}{x - x_0} - f'(x_0)} \leq \varepsilon.
+    \]
+    In particular, we have
+    \[
+        \forall\ x \in (a, b) \cap (x_0, x_0 + \delta), \abs*{x - x_0} < \delta' \implies \abs*{\frac{f(x) - f(x_0)}{x - x_0} - f'(x_0)} \leq \varepsilon
+    \]
+    and
+    \[
+        \forall\ x \in (a, b) \cap (x_0 - \delta, x_0), \abs*{x - x_0} < \delta' \implies \abs*{\frac{f(x) - f(x_0)}{x - x_0} - f'(x_0)} \leq \varepsilon.
+    \]
+    Thus by Definition \ref{9.3.6} we must also have
+    \[
+        \lim_{x \to x_0 ; x \in (a, b) \cap (x_0, x_0 + \delta)} \frac{f(x) - f(x_0)}{x - x_0} = \lim_{x \to x_0 ; x \in (a, b) \cap (x_0 - \delta, x_0)} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0).
+    \]
+    Since
+    \begin{align*}
+                 & \forall\ x \in (a, b) \cap (x_0, x_0 + \delta)                                                                                       \\
+        \implies & f(x) \leq f(x_0)                                                                                                                     \\
+        \implies & f(x) - f(x_0) \leq 0                                                                                                                 \\
+        \implies & \frac{f(x) - f(x_0)}{x - x_0} \leq 0                                                                                                 \\
+        \implies & \lim_{x \to x_0 ; x \in (a, b) \cap (x_0, x_0 + \delta)} \frac{f(x) - f(x_0)}{x - x_0} \leq 0 & \text{(by Proposition \ref{9.3.14})} \\
+        \implies & f'(x_0) \leq 0
+    \end{align*}
+    and
+    \begin{align*}
+                 & \forall\ x \in (a, b) \cap (x_0 - \delta, x_0)                                                                                        \\
+        \implies & f(x) \leq f(x_0)                                                                                                                      \\
+        \implies & f(x) - f(x_0) \leq 0                                                                                                                  \\
+        \implies & \frac{f(x) - f(x_0)}{x - x_0} \geq 0                                                                                                  \\
+        \implies & \lim_{x \to x_0 ; x \in (a, b) \cap (x_0 - \delta, x_0)} \frac{f(x) - f(x_0)}{x - x_0} \geq 0, & \text{(by Proposition \ref{9.3.14})} \\
+        \implies & f'(x_0) \geq 0.
+    \end{align*}
+    we must have \(f'(x_0) = 0\).
+    Similar arguments work for the case \(f\) attains local minimum at \(x_0\).
+\end{proof}
