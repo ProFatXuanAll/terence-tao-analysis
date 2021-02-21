@@ -37,3 +37,43 @@
         = & \frac{f'(x_0)}{g'(x_0)}.                                                                                                                                                                                                                & \text{(by Definition \ref{10.1.1})}
     \end{align*}
 \end{proof}
+
+\begin{note}
+    The presence of the \(\delta\) here may seem somewhat strange, but is needed because \(g(x)\) might vanish at some points other than \(x_0\), which would imply that quotient \(\frac{f(x)}{g(x)}\) is not necessarily defined at all points in \(X \setminus \{x_0\}\).
+\end{note}
+
+\begin{proposition}[L'Hôpital's rule II]\label{10.5.2}
+    Let \(a < b\) be real numbers, let \(f : [a, b] \to \mathbf{R}\) and \(g : [a, b] \to \mathbf{R}\) be functions which are differentiable on \([a, b]\).
+    Suppose that \(f(a) = g(a) = 0\), that \(g'\) is non-zero on \([a, b]\) (i.e., \(g'(x) \neq 0\) for all \(x \in [a, b]\)), and \(\lim_{x \to a ; x \in (a, b]} \frac{f'(x)}{g'(x)}\) exists and equals \(L\).
+    Then \(g(x) \neq 0\) for all \(x \in (a, b]\), and \(\lim_{x \to a ; x \in (a, b]} \frac{f(x)}{g(x)}\) exists and equals \(L\).
+\end{proposition}
+
+\begin{proof}
+    We first show that \(g(x) \neq 0\) for all \(x \in (a, b]\).
+    Suppose for sake of contradiction that \(g(x) = 0\) for some \(x \in (a, b]\).
+    But since \(g(a)\) is also zero, we can apply Rolle's theorem (Theorem \ref{10.2.7}) to obtain \(g'(y) = 0\) for some \(a < y < x\), but this contradicts the hypothesis that \(g'\) is non-zero on \([a, b]\).
+
+    Now we show that \(\lim_{x \to a ; x \in (a, b]} \frac{f(x)}{g(x)} = L\).
+    By Proposition \ref{9.3.9}, it will suffice to show that
+    \[
+        \lim_{n \to \infty} \frac{f(x_n)}{g(x_n)} = L
+    \]
+    for any sequence \((x_n)_{n = 0}^\infty\) taking values in \((a, b]\) which converges to \(a\).
+
+    Consider a single \(x_n\), and consider the function \(h_n : [a, x_n] \to \mathbf{R}\) defined by
+    \[
+        h_n(x) \coloneqq f(x) g(x_n) - g(x) f(x_n).
+    \]
+    Observe that \(h_n\) is continuous on \([a, x_n]\) and equals \(0\) at both \(a\) and \(x_n\), and is differentiable on \((a, x_n)\) with derivative \(h_n'(x) = f'(x) g(x_n) - g'(x) f(x_n)\).
+    (Note that \(f(x_n)\) and \(g(x_n)\) are constants with respect to \(x\).)
+    By Rolle's theorem (Theorem \ref{10.2.7}), we can thus find \(y_n \in (a, x_n)\) such that \(h_n'(y_n) = 0\), which implies that
+    \[
+        \frac{f(x_n)}{g(x_n)} = \frac{f'(y_n)}{g'(y_n)}.
+    \]
+    Since \(y_n \in (a, x_n)\) for all \(n\), and \(x_n\) converges to \(a\) as \(n \to \infty\), we see from the squeeze test (Corollary \ref{6.4.14}) that \(y_n\) also converges to \(a\) as \(n \to \infty\).
+    Thus \(\frac{f'(y_n)}{g'(y_n)}\) converges to \(L\), and thus \(\frac{f(x_n)}{g(x_n)}\) also converges to \(L\), as desired.
+\end{proof}
+
+\begin{note}
+    In Proposition \ref{10.5.2}, the hypothesis that \(f, g\) be differentiable on \([a, b]\) may be weakened to being continuous on \([a, b]\) and differentiable on \((a, b]\), with \(g'\) only assumed to be non-zero on \((a, b]\) rather than \([a, b]\).
+\end{note}
