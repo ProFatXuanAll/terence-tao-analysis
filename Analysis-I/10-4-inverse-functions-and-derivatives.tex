@@ -31,5 +31,46 @@
 \begin{note}
     Lemma \ref{10.4.1} seems to answer the question of how to differentiate the inverse of a function, however it has one significant drawback:
     the lemma only works if one assumes a \emph{priori} that \(f^{-1}\) is differentiable.
-    Thus, if one does not already know that \(f^{-1}\) is differentiable, one cannot use Lemma \ref{10.4.1} to compute the derivative of \(f^{-1}\) .
+    Thus, if one does not already know that \(f^{-1}\) is differentiable, one cannot use Lemma \ref{10.4.1} to compute the derivative of \(f^{-1}\).
 \end{note}
+
+\begin{theorem}[Inverse function theorem]\label{10.4.2}
+    Let \(f : X \to Y\) be an invertible function, with inverse \(f^{-1} : Y \to X\).
+    Suppose that \(x_0 \in X\) and \(y_0 \in Y\) are such that \(f(x_0) = y_0\).
+    If \(f\) is differentiable at \(x_0\), \(f^{-1}\) is continuous at \(y_0\), and \(f'(x_0 ) \neq 0\), then \(f^{-1}\) is differentiable at \(y_0\) and
+    \[
+        (f^{-1})'(y_0) = \frac{1}{f'(x_0)}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    We have to show that
+    \[
+        \lim_{y \to y_0 ; y \in Y \setminus \{y_0\}} \frac{f^{-1}(y) - f^{-1}(y_0)}{y - y_0} = \frac{1}{f'(x_0)}.
+    \]
+    By Proposition \ref{9.3.9}, it suffices to show that
+    \[
+        \lim_{n \to \infty} \frac{f^{-1}(y_n) - f^{-1}(y_0)}{y_n - y_0} = \frac{1}{f'(x_0)}
+    \]
+    for any sequence \((y_n)_{n = 1}^\infty\) of elements in \(Y \setminus \{y_0\}\) which converge to \(y_0\).
+
+    To prove this, we set \(x_n \coloneqq f^{-1}(y_n)\).
+    Then \((x_n)_{n = 1}^\infty\) is a sequence of elements in \(X \setminus \{x_0\}\).
+    (Note that \(f^{-1}\) is a bijection)
+    Since \(f^{-1}\) is continuous by assumption, we know that \(x_n = f^{-1}(y_n)\) converges to \(f^{-1}(y_0) = x_0\) as \(n \to \infty\).
+    Thus, since \(f\) is differentiable at \(x_0\), we have (by Proposition \ref{9.3.9} again)
+    \[
+        \lim_{n \to \infty} \frac{f(x_n) - f(x_0)}{x_n - x_0} = f'(x_0).
+    \]
+    But since \(x_n \neq x_0\) and \(f\) is a bijection, the fraction \(\frac{f(x_n) - f(x_0)}{x_n - x_0}\) is non-zero.
+    Also, by hypothesis \(f(x_0)\) is non-zero.
+    So by limit laws
+    \[
+        \lim_{n \to \infty} \frac{x_n - x_0}{f(x_n) - f(x_0)} = \frac{1}{f'(x_0)}.
+    \]
+    But since \(x_n = f^{-1}(y_n)\) and \(x_0 = f^{-1}(y_0)\), we thus have
+    \[
+        \lim_{n \to \infty} \frac{f^{-1}(y_n) - f^{-1}(y_0)}{y_n - y_0} = \frac{1}{f'(x_0)}.
+    \]
+    as desired.
+\end{proof}
