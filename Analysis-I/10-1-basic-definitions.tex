@@ -355,47 +355,53 @@
 \end{theorem}
 
 \begin{proof}
-    Since \(f\) is differentiable at \(x_0\) and \(g\) is differentiable at \(y_0\), by Newton's approximation (Proposition \ref{10.1.7}), we have \(\forall\ \varepsilon_1, \varepsilon_2 \in \mathbf{R}^+\), \(\exists\ \delta_1, \delta_2 \in \mathbf{R}^+\) such that
+    Since \(f\) is differentiable at \(x_0\), by Proposition \ref{10.1.10} we know that \(f\) is continuous at \(x_0\), so we have \(\forall\ \varepsilon_1 \in \mathbf{R}^+\), \(\exists\ \delta_1 \in \mathbf{R}^+\) such that
     \[
-        \forall\ x \in X, \abs*{x - x_0} \leq \delta_1 \implies \abs*{f(x) - (f(x_0) + f'(x_0)(x - x_0))} \leq \varepsilon_1 \abs*{x - x_0}
+        \forall\ x \in X, \abs*{x - x_0} \leq \delta_1 \implies \abs*{f(x) - f(x_0)} \leq \varepsilon_1.
+    \]
+    Since \(f\) is differentiable at \(x_0\) and \(g\) is differentiable at \(y_0\), by Newton's approximation (Proposition \ref{10.1.7}), we have \(\forall\ \varepsilon_2, \varepsilon_3 \in \mathbf{R}^+\), \(\exists\ \delta_2, \delta_3 \in \mathbf{R}^+\) such that
+    \[
+        \forall\ x \in X, \abs*{x - x_0} \leq \delta_2 \implies \abs*{f(x) - (f(x_0) + f'(x_0)(x - x_0))} \leq \varepsilon_2 \abs*{x - x_0}
     \]
     and
     \[
-        \forall\ y \in Y, \abs*{y - y_0} \leq \delta_2 \implies \abs*{g(y) - (g(y_0) + g'(y_0)(y - y_0))} \leq \varepsilon_2 \abs*{y - y_0}.
+        \forall\ y \in Y, \abs*{y - y_0} \leq \delta_3 \implies \abs*{g(y) - (g(y_0) + g'(y_0)(y - y_0))} \leq \varepsilon_3 \abs*{y - y_0}.
     \]
     In particular, we have
     \begin{align*}
-                 & \forall\ x \in X, \abs*{x - x_0} \leq \delta_1                                 \\
-        \implies & \abs*{f(x) - (f(x_0) + f'(x_0)(x - x_0))} \leq \varepsilon_1 \abs*{x - x_0}    \\
+                 & \forall\ x \in X, \abs*{x - x_0} \leq \delta_2                                 \\
+        \implies & \abs*{f(x) - (f(x_0) + f'(x_0)(x - x_0))} \leq \varepsilon_2 \abs*{x - x_0}    \\
         \implies & \abs*{f(x) - f(x_0)}                                                           \\
                  & \leq \abs*{f(x) - (f(x_0) + f'(x_0)(x - x_0))} + \abs*{f'(x_0)(x - x_0)}       \\
-                 & \leq \varepsilon_1 \abs*{x - x_0} + \abs*{f'(x_0)(x - x_0)}                    \\
-        \implies & \abs*{f(x) - y_0} \leq \varepsilon_1 \abs*{x - x_0} + \abs*{f'(x_0)(x - x_0)}.
+                 & \leq \varepsilon_2 \abs*{x - x_0} + \abs*{f'(x_0)(x - x_0)}                    \\
+        \implies & \abs*{f(x) - y_0} \leq \varepsilon_2 \abs*{x - x_0} + \abs*{f'(x_0)(x - x_0)}.
     \end{align*}
-    Let \(\delta = \min(\delta_1, \delta_2)\).
+    Let \(\delta = \min(\delta_2, \delta_3)\) and \(\varepsilon_1 = \delta\).
     Then we have
     \begin{align*}
-                 & \forall\ x \in X, \abs*{f(x) - y_0} \leq \delta                                                                        \\
-        \implies & \abs*{g(f(x)) - \Big(g(y_0) + g'(y_0)\big(f(x) - y_0\big)\Big)} \leq \varepsilon_2 \abs*{f(x) - y_0}                   \\
+                 & \forall\ x \in X, \abs*{x - x_0} \leq \delta_1                                                                         \\
+        \implies & \abs*{f(x) - f(x_0)} \leq \delta                                                                                       \\
+        \implies & \abs*{f(x) - y_0} \leq \delta                                                                                          \\
+        \implies & \abs*{g(f(x)) - \Big(g(y_0) + g'(y_0)\big(f(x) - y_0\big)\Big)} \leq \varepsilon_3 \abs*{f(x) - y_0}                   \\
         \implies & \abs*{g(f(x)) - \Big(g(y_0) + g'(y_0)\big(f(x) - y_0\big)\Big)}                                                        \\
-                 & \leq \varepsilon_2 \abs*{f(x) - y_0}                                                                                   \\
-                 & \leq \varepsilon_2 \big(\varepsilon_1 \abs*{x - x_0} + \abs*{f'(x_0)(x - x_0)}\big)                                    \\
-                 & = \varepsilon_2 \varepsilon_1 \abs*{x - x_0} + \varepsilon_2 \abs*{f'(x_0)(x - x_0)}                                   \\
+                 & \leq \varepsilon_3 \abs*{f(x) - y_0}                                                                                   \\
+                 & \leq \varepsilon_3 \big(\varepsilon_2 \abs*{x - x_0} + \abs*{f'(x_0)(x - x_0)}\big)                                    \\
+                 & = \varepsilon_3 \varepsilon_2 \abs*{x - x_0} + \varepsilon_3 \abs*{f'(x_0)(x - x_0)}                                   \\
         \implies & \abs*{g(f(x)) - \Big(g(y_0) + g'(y_0)\big(f(x) - y_0\big)\Big)}                                                        \\
                  & + \abs*{g'(y_0) \Big(f(x) - \big(y_0 + f'(x_0)(x - x_0)\big)\Big)}                                                     \\
-                 & \leq \varepsilon_2 \varepsilon_1 \abs*{x - x_0} + \varepsilon_2 \abs*{f'(x_0)(x - x_0)} + \varepsilon_1 \abs*{x - x_0} \\
+                 & \leq \varepsilon_3 \varepsilon_2 \abs*{x - x_0} + \varepsilon_3 \abs*{f'(x_0)(x - x_0)} + \varepsilon_2 \abs*{x - x_0} \\
         \implies & \abs*{g(f(x)) - \big(g(y_0) + g'(y_0) f'(x_0) (x - x_0)\big)}                                                          \\
-                 & \leq \big(\varepsilon_2 \varepsilon_1 + \varepsilon_2 \abs*{f'(x_0)} + \varepsilon_1\big) \abs*{x - x_0}               \\
-                 & = \Big(\varepsilon_2 \big(\varepsilon_1 + \abs*{f'(x_0)}\big) + \varepsilon_1\Big) \abs*{x - x_0}.
+                 & \leq \big(\varepsilon_3 \varepsilon_2 + \varepsilon_3 \abs*{f'(x_0)} + \varepsilon_2\big) \abs*{x - x_0}               \\
+                 & = \Big(\varepsilon_3 \big(\varepsilon_2 + \abs*{f'(x_0)}\big) + \varepsilon_2\Big) \abs*{x - x_0}.
     \end{align*}
-    Let \(\varepsilon \in \mathbf{R}^+\), let \(\varepsilon_1 = \frac{\varepsilon}{2}\) and let \(\varepsilon_2 = \frac{\varepsilon}{2(\varepsilon_1 + \abs*{f'(x_0)})}\).
+    Let \(\varepsilon \in \mathbf{R}^+\), let \(\varepsilon_2 = \frac{\varepsilon}{2}\) and let \(\varepsilon_3 = \frac{\varepsilon}{2(\varepsilon_2 + \abs*{f'(x_0)})}\).
     Then we have
     \begin{align*}
-                 & \forall\ x \in X, \abs*{f(x) - y_0} \leq \delta                                                                                             \\
+                 & \forall\ x \in X, \abs*{x - x_0} \leq \delta_1                                                                                              \\
         \implies & \abs*{g(f(x)) - \big(g(y_0) + g'(y_0) f'(x_0) (x - x_0)\big)}                                                                               \\
-                 & \leq \Big(\varepsilon_2 \big(\varepsilon_1 + \abs*{f'(x_0)}\big) + \varepsilon_1\Big) \abs*{x - x_0}                                        \\
-                 & = \bigg(\frac{\varepsilon \big(\varepsilon_1 + \abs*{f'(x_0)}\big)}{2(\varepsilon_1 + \abs*{f'(x_0)})} + \varepsilon_1\bigg) \abs*{x - x_0} \\
-                 & = (\frac{\varepsilon}{2} + \varepsilon_1) \abs*{x - x_0}                                                                                    \\
+                 & \leq \Big(\varepsilon_3 \big(\varepsilon_2 + \abs*{f'(x_0)}\big) + \varepsilon_2\Big) \abs*{x - x_0}                                        \\
+                 & = \bigg(\frac{\varepsilon \big(\varepsilon_2 + \abs*{f'(x_0)}\big)}{2(\varepsilon_2 + \abs*{f'(x_0)})} + \varepsilon_2\bigg) \abs*{x - x_0} \\
+                 & = (\frac{\varepsilon}{2} + \varepsilon_2) \abs*{x - x_0}                                                                                    \\
                  & = (\frac{\varepsilon}{2} + \frac{\varepsilon}{2}) \abs*{x - x_0}                                                                            \\
                  & = \varepsilon \abs*{x - x_0}                                                                                                                \\
         \implies & \abs*{(g \circ f)(x) - \big((g \circ f)(x_0) + g'(y_0) f'(x_0) (x - x_0)\big)}                                                              \\
