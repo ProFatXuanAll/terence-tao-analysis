@@ -106,9 +106,35 @@
     Let \(q\) be a rational number, and let \(f : (0, \infty) \to \mathbf{R}\) be the function \(f(x) = x^q\).
     \begin{enumerate}
         \item Show that \(f\) is differentiable on \((0, \infty)\) and that \(f'(x) = q x^{q - 1}\).
-        \item Show that \(\lim_{x \to 1 ; x \in (0, \infty)} \frac{x^q - 1}{x - 1} = q\) for every rational number \(q\).
+        \item Show that \(\lim_{x \to 1 ; x \in (0, \infty) \setminus \{1\}} \frac{x^q - 1}{x - 1} = q\) for every rational number \(q\).
     \end{enumerate}
 \end{exercise}
+
+\begin{proof}
+    We first show that \(f\) is differentiable on \((0, \infty)\) and that \(f'(x) = q x^{q - 1}\).
+    Let \(q = a / b\) where \(a, b \in \mathbf{Z}\) and \(b > 0\).
+    Then we have
+    \begin{align*}
+        x^q & = x^{a / b}      \\
+            & = (x^a)^{1 / b}.
+    \end{align*}
+    By Exercise \ref{ex 10.1.5} and Exercise \ref{ex 10.1.6} we know that \(x^a\) is differentiable on \((0, \infty)\).
+    By Exercise \ref{ex 10.4.1}(b) we know that \(x^{1 / b}\) is differentiable on \((0, \infty)\).
+    Thus by chain rule (Theorem \ref{10.1.15}) we know that \(x^q = x^{a / b}\) is differentiable and
+    \begin{align*}
+        (x^q)' & = (x^{a / b})'                                                                                 \\
+               & = (a(x^{1 / b})^{a - 1}) (\frac{1}{b} x^{\frac{1}{b} - 1}) & \text{(by Theorem \ref{10.1.15})} \\
+               & = \frac{a}{b} x^{\frac{a}{b} - 1}                                                              \\
+               & = q x^{q - 1}.
+    \end{align*}
+
+    Now we show that \(\lim_{x \to 1 ; x \in (0, \infty) \setminus \{1\}} \frac{x^q - 1}{x - 1} = q\) for every rational number \(q\).
+    Since \(x^q\) is differentiable on \((0, \infty)\), we know that \(x^q\) is differentiable at \(1\).
+    Thus by Definition \ref{10.1.1} we have
+    \[
+        \lim_{x \to 1 ; x \in (0, \infty) \setminus \{1\}} \frac{x^q - 1}{x - 1} = f'(1) = q \cdot 1^{q - 1} = q.
+    \]
+\end{proof}
 
 \begin{exercise}\label{ex 10.4.3}
     Let \(\alpha\) be a real number, and let \(f : (0, \infty) \to \mathbf{R}\) be the function \(f(x) = x^{\alpha}\).
