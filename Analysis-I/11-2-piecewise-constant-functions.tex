@@ -89,21 +89,9 @@
 \end{proposition}
 
 \begin{proof}
-    By Definition \ref{11.2.9} we have
-    \[
-        p.c. \int_{[\mathbf{P}]} f = \sum_{J \in \mathbf{P}} c_J \abs*{J}
-    \]
-    and
-    \[
-        p.c. \int_{[\mathbf{P}']} f = \sum_{J \in \mathbf{P}'} c_J \abs*{J}.
-    \]
-    By Lemma \ref{11.1.18} we know that \(\mathbf{P} \# \mathbf{P}'\) is a partition of \(I\) and is both finer than \(\mathbf{P}\) and finer than \(\mathbf{P}'\), thus by Definition \ref{11.2.9}
+    By Lemma \ref{11.1.18} we know that \(\mathbf{P} \# \mathbf{P}'\) is a partition of \(I\) and is both finer than \(\mathbf{P}\) and finer than \(\mathbf{P}'\), thus by Definition \ref{11.2.9} we have
     \[
         p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \abs*{J}.
-    \]
-    To show that \(p.c. \int_{[\mathbf{P}]} f = p.c. \int_{[\mathbf{P}']} f\), it suffices to show that
-    \[
-        \sum_{J \in \mathbf{P}} c_J \abs*{J} = \sum_{J \in \mathbf{P}'} c_J \abs*{J} = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \abs*{J}.
     \]
     By Theorem \ref{11.1.13}, we know that
     \[
@@ -123,13 +111,24 @@
     Since \(K \cap K' \subseteq K\), we have \(x \in \bigcup \mathbf{P}_K\), so \(K \subseteq \bigcup \mathbf{P}_K\).
     By the definition of \(\mathbf{P}_K\) we know that \(\bigcup \mathbf{P}_K \subseteq K\), thus by Proposition \ref{3.1.18} we have \(K = \bigcup \mathbf{P}_K\) and by Definition \ref{11.1.10} \(\mathbf{P}_K\) is a partition of \(K\).
 
+    Now we show that \(\bigcup_{K \in \mathbf{P}} \mathbf{P}_K = \mathbf{P} \# \mathbf{P}'\).
+    By the definition of \(\mathbf{P}_K\) we have \(\bigcup_{K \in \mathbf{P}} \mathbf{P}_K \subseteq \mathbf{P} \# \mathbf{P}'\).
+    Let \(S \in \mathbf{P} \# \mathbf{P}'\).
+    Since \(\mathbf{P} \# \mathbf{P}'\) is finer than \(\mathbf{P}\), by Definition \ref{11.1.14} \(\exists\ K \in \mathbf{P}\) such that \(S \subseteq K\).
+    Thus \(S \in \mathbf{P}_K\) and \(\mathbf{P} \# \mathbf{P}' \subseteq \bigcup_{K \in \mathbf{P}} \mathbf{P}_K\).
+    Again by Proposition \ref{3.1.18} we have \(\bigcup_{K \in \mathbf{P}} \mathbf{P}_K = \mathbf{P} \# \mathbf{P}'\).
+
     Since \(f\) is piecewise constant with respect to \(\mathbf{P}\), by Lemma \ref{11.2.7} we know that \(f\) is piecewise constant with respect to \(\mathbf{P} \# \mathbf{P}'\).
     So we have
     \begin{align*}
-        & \forall\ J \in \mathbf{P}, J = \bigcup \mathbf{P}_J \\
-        \implies & \abs*{J} = \sum_{J' \in \mathbf{P}_J} \abs*{J'} & \text{(by Theorem \ref{11.1.13})} \\
-        \implies & \abs*{I} = \sum_{J \in \mathbf{P}} \abs*{J} = \sum_{J \in \mathbf{P}} \sum_{J' \in \mathbf{P}_J} \abs*{J'} = \sum_{J \in \mathbf{P} \# \mathbf{P}'} \abs*{J} \\
-        \implies & p.c. \int_{[\mathbf{P}]} f = \sum_{J \in \mathbf{P}} c_J \abs*{J} = \sum_{J \in \mathbf{P}} c_J \bigg(\sum_{J' \in \mathbf{P}_J} \abs*{J'}\bigg) & \text{(by Definition \ref{11.2.9})} \\
-        \implies & p.c. \int_{[\mathbf{P}]} f = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \abs*{J}.
+        p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f & = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \abs*{J} & \text{(by Definition \ref{11.2.9})} \\
+        & = \sum_{J \in \bigcup_{K \in \mathbf{P}} \mathbf{P}_K} c_J \abs*{J} \\
+        & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_J \abs*{J} & \text{(by Proposition \ref{7.1.11}(e))} \\
+        & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_K \abs*{J} & (J \subseteq K) \\
+        & = \sum_{K \in \mathbf{P}} c_K \bigg(\sum_{J \in \mathbf{P}_K} \abs*{J}\bigg) \\
+        & = \sum_{K \in \mathbf{P}} c_K \abs*{K} & \text{(by Theorem \ref{11.1.13})} \\
+        & = p.c. \int_{[\mathbf{P}]} f. & \text{(by Definition \ref{11.2.9})}
     \end{align*}
+    Using similar arguments we can show that \(p.c. \int_{[\mathbf{P}']} f = p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f\).
+    Thus we have \(p.c. \int_{[\mathbf{P}]} f = p.c. \int_{[\mathbf{P}']} f\).
 \end{proof}
