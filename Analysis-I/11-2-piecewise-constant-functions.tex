@@ -80,3 +80,41 @@
     The piecewise constant integral corresponds intuitively to one's notion of area, given that the area of a rectangle ought to be the product of the lengths of the sides.
     (Of course, if \(f\) is negative somewhere, then the ``area'' \(c_J \abs*{J}\) would also be negative.)
 \end{remark}
+
+\setcounter{theorem}{12}
+\begin{proposition}[Piecewise constant integral is independent of partition]\label{11.2.13}
+    Let \(I\) be a bounded interval, and let \(f : I \to \mathbf{R}\) be a function.
+    Suppose that \(\mathbf{P}\) and \(\mathbf{P}'\) are partitions of \(I\) such that \(f\) is piecewise constant both with respect to \(\mathbf{P}\) and with respect to \(\mathbf{P}'\).
+    Then \(p.c. \int_{[\mathbf{P}]} f = p.c. \int_{[\mathbf{P}']} f\).
+\end{proposition}
+
+\begin{proof}
+    By Definition \ref{11.2.9} we have
+    \[
+        p.c. \int_{[\mathbf{P}]} f = \sum_{J \in \mathbf{P}} c_J \abs*{J}
+    \]
+    and
+    \[
+        p.c. \int_{[\mathbf{P}']} f = \sum_{J \in \mathbf{P}'} c_J \abs*{J}.
+    \]
+    By Lemma \ref{11.1.18} we know that \(\mathbf{P} \# \mathbf{P}'\) is a partition of \(I\) and is both finer than \(\mathbf{P}\) and finer than \(\mathbf{P}'\), thus by Definition \ref{11.2.9}
+    \[
+        p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \abs*{J}.
+    \]
+    To show that \(p.c. \int_{[\mathbf{P}]} f = p.c. \int_{[\mathbf{P}']} f\), it suffices to show that
+    \[
+        \sum_{J \in \mathbf{P}} c_J \abs*{J} = \sum_{J \in \mathbf{P}'} c_J \abs*{J} = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \abs*{J}.
+    \]
+    By Theorem \ref{11.1.13}, we know that
+    \[
+        \abs*{I} = \sum_{J \in \mathbf{P}} \abs*{J} = \sum_{J \in \mathbf{P} \# \mathbf{P}'} \abs*{J}.
+    \]
+    Since \(f\) is piecewise constant with respect to \(\mathbf{P}\), by Lemma \ref{11.2.7} we know that \(f\) is piecewise constant with respect to \(\mathbf{P} \# \mathbf{P}'\).
+    By Definition \ref{11.1.14} \(\forall\ J \in \mathbf{P} \# \mathbf{P}'\), \(\exists\ K \in \mathbf{P}\) such that \(J \subseteq K\).
+    Thus we have
+    \begin{align*}
+                 & \forall\ x \in J                                        \\
+        \implies & x \in K                                                 \\
+        \implies & c_J = f(x) = c_K. & \text{(by Definition \ref{11.2.3})}
+    \end{align*}
+\end{proof}
