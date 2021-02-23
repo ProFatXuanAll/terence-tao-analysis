@@ -109,12 +109,27 @@
     \[
         \abs*{I} = \sum_{J \in \mathbf{P}} \abs*{J} = \sum_{J \in \mathbf{P} \# \mathbf{P}'} \abs*{J}.
     \]
+    By Definition \ref{11.1.14}, \(\forall\ S \in \mathbf{P} \# \mathbf{P}'\), \(\exists\ K \in \mathbf{P}\) such that \(S \subseteq K\).
+    Now we fix such \(K\) and let \(\mathbf{P}_K\) be the set
+    \[
+        \mathbf{P}_K = \{S \in \mathbf{P} \# \mathbf{P}' : S \subseteq K\}.
+    \]
+    We claim that \(\mathbf{P}_K\) is a partition of \(K\).
+    We know that \(\mathbf{P}_K\) is finite since \(\mathbf{P}_K \subseteq \mathbf{P} \# \mathbf{P}'\) and \(\mathbf{P} \# \mathbf{P}'\) is finite.
+    Since \(\mathbf{P} \# \mathbf{P}'\) is a partition of \(I\), by Definition \ref{11.1.10} \(\forall\ S \in \mathbf{P}_K\), \(S\) is a bounded interval, and if \(S' \in \mathbf{P}_K\) and \(S \neq S'\) then \(S \cap S' = \emptyset\).
+    Let \(x \in K\).
+    By Definition \ref{11.1.10} we must have \(x \in I\), and \(\exists!\ K' \in \mathbf{P}'\) such that \(x \in K'\).
+    By Definition \ref{11.1.16} we know that \(K \cap K' \in \mathbf{P} \# \mathbf{P}'\).
+    Since \(K \cap K' \subseteq K\), we have \(x \in \bigcup \mathbf{P}_K\), so \(K \subseteq \bigcup \mathbf{P}_K\).
+    By the definition of \(\mathbf{P}_K\) we know that \(\bigcup \mathbf{P}_K \subseteq K\), thus by Proposition \ref{3.1.18} we have \(K = \bigcup \mathbf{P}_K\) and by Definition \ref{11.1.10} \(\mathbf{P}_K\) is a partition of \(K\).
+
     Since \(f\) is piecewise constant with respect to \(\mathbf{P}\), by Lemma \ref{11.2.7} we know that \(f\) is piecewise constant with respect to \(\mathbf{P} \# \mathbf{P}'\).
-    By Definition \ref{11.1.14} \(\forall\ J \in \mathbf{P} \# \mathbf{P}'\), \(\exists\ K \in \mathbf{P}\) such that \(J \subseteq K\).
-    Thus we have
+    So we have
     \begin{align*}
-                 & \forall\ x \in J                                        \\
-        \implies & x \in K                                                 \\
-        \implies & c_J = f(x) = c_K. & \text{(by Definition \ref{11.2.3})}
+        & \forall\ J \in \mathbf{P}, J = \bigcup \mathbf{P}_J \\
+        \implies & \abs*{J} = \sum_{J' \in \mathbf{P}_J} \abs*{J'} & \text{(by Theorem \ref{11.1.13})} \\
+        \implies & \abs*{I} = \sum_{J \in \mathbf{P}} \abs*{J} = \sum_{J \in \mathbf{P}} \sum_{J' \in \mathbf{P}_J} \abs*{J'} = \sum_{J \in \mathbf{P} \# \mathbf{P}'} \abs*{J} \\
+        \implies & p.c. \int_{[\mathbf{P}]} f = \sum_{J \in \mathbf{P}} c_J \abs*{J} = \sum_{J \in \mathbf{P}} c_J \bigg(\sum_{J' \in \mathbf{P}_J} \abs*{J'}\bigg) & \text{(by Definition \ref{11.2.9})} \\
+        \implies & p.c. \int_{[\mathbf{P}]} f = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \abs*{J}.
     \end{align*}
 \end{proof}
