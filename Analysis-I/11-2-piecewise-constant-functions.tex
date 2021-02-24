@@ -245,3 +245,42 @@
                       & = c \abs*{I}.               & \text{(by Theorem \ref{11.1.13})}
     \end{align*}
 \end{proof}
+
+\begin{proof}{(g)}
+    Let \(I_1, I_2\) be the sets
+    \[
+        I_1 = \{x \in J, x \leq \inf(I) \land x \notin I\}
+    \]
+    and
+    \[
+        I_2 = \{x \in J, x \geq \sup(I) \land x \notin I \cup I_1\}.
+    \]
+    Then we know that \(I \cap I_1 = I \cap I_2 = I_1 \cap I_2 = \emptyset\).
+    Let \(\mathbf{P} = \{I_1, I, I_2\}\).
+    We know claim that \(\mathbf{P}\) is a partition of \(J\).
+    Since \(J\) is a bounded interval, we know that \(\inf(J) = \inf(I_1)\) and \(\sup(J) = \sup(I_2)\).
+    Then we have \(I_1 \subseteq [\inf(J), \inf(I)]\) and \(I_2 \subseteq [\sup(I), \sup(J)]\).
+    If \(\inf(J) \in J\), then we know that \(I_1 = [\inf(J), \inf(I)]\) or \(I_1 = [\inf(J), \inf(I))\), which depends on whether \(\inf(I) \in I\).
+    Otherwise we have \(I_1 = (\inf(J), \inf(I)]\) or \(I_1 = (\inf(J), \inf(I))\), which again depends on whether \(\inf(I) \in I\).
+    Using similar arguments we know thtat \(I_2\) can be one of \((\sup(I), \sup(J))\), \([\sup(I), \sup(J))\), \((\sup(I), \sup(J)]\) or \([\sup(I), \sup(J)]\).
+    Thus \(I_1, I_2\) are bounded intervals.
+    By the definition of \(I_1, I_2\), we know that \(\bigcup \mathbf{P} \subseteq J\).
+    To show that \(\bigcup \mathbf{P} = J\), by Proposition \ref{3.1.18} we need to show that \(J \subseteq \bigcup \mathbf{P}\).
+    Let \(x \in J\).
+    If \(x \in I\), we have \(x \in \bigcup \mathbf{P}\).
+    If \(x \notin I\), we then have \(x \leq \inf(I) \lor x \geq \sup(I)\), thus \(x \in I_1 \lor x \in I_2\), and again \(x \in \bigcup \mathbf{P}\).
+    Since \(x\) is arbitrary, we have \(J \subseteq \mathbf{P}\).
+    Since \(\bigcup \mathbf{P} = J\) and \(\mathbf{P}\) is finite (\(\abs*{P} = 3\)), by Definition \ref{11.1.10} \(\mathbf{P}\) is a partition of \(J\).
+
+    Now let \(\mathbf{P}_I\) be the partition of \(I\).
+    Then we have
+    \begin{align*}
+        p.c. \int_J F & = p.c. \int_{[\mathbf{P}]} F                                                       & \text{(by Definition \ref{11.2.14})}    \\
+                      & = \sum_{K \in \mathbf{P}} c_K \abs*{K}                                             & \text{(by Definition \ref{11.2.9})}     \\
+                      & = c_{I_1} \abs*{I_1} + \sum_{K \in \mathbf{P}_I} c_K \abs*{K} + c_{I_2} \abs*{I_2} & \text{(by Proposition \ref{7.1.11}(e))} \\
+                      & = 0 \abs*{I_1} + \sum_{K \in \mathbf{P}_I} c_K \abs*{K} + 0 \abs*{I_2}             & \text{(by hypothesis)}                  \\
+                      & = \sum_{K \in \mathbf{P}_I} c_K \abs*{K}                                                                                     \\
+                      & = p.c. \int_{[\mathbf{P}_I]} f                                                     & \text{(by Definition \ref{11.2.9})}     \\
+                      & = p.c. \int_I f.                                                                   & \text{(by Definition \ref{11.2.14})}
+    \end{align*}
+\end{proof}
