@@ -121,13 +121,13 @@
     Since \(f\) is piecewise constant with respect to \(\mathbf{P}\), by Lemma \ref{11.2.7} we know that \(f\) is piecewise constant with respect to \(\mathbf{P} \# \mathbf{P}'\).
     So we have
     \begin{align*}
-        p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f & = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \abs*{J} & \text{(by Definition \ref{11.2.9})} \\
-        & = \sum_{J \in \bigcup_{K \in \mathbf{P}} \mathbf{P}_K} c_J \abs*{J} \\
-        & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_J \abs*{J} & \text{(by Proposition \ref{7.1.11}(e))} \\
-        & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_K \abs*{J} & (J \subseteq K) \\
-        & = \sum_{K \in \mathbf{P}} c_K \bigg(\sum_{J \in \mathbf{P}_K} \abs*{J}\bigg) \\
-        & = \sum_{K \in \mathbf{P}} c_K \abs*{K} & \text{(by Theorem \ref{11.1.13})} \\
-        & = p.c. \int_{[\mathbf{P}]} f. & \text{(by Definition \ref{11.2.9})}
+        p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f & = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \abs*{J}                        & \text{(by Definition \ref{11.2.9})}     \\
+                                                  & = \sum_{J \in \bigcup_{K \in \mathbf{P}} \mathbf{P}_K} c_J \abs*{J}                                                    \\
+                                                  & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_J \abs*{J}             & \text{(by Proposition \ref{7.1.11}(e))} \\
+                                                  & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_K \abs*{J}             & (J \subseteq K)                         \\
+                                                  & = \sum_{K \in \mathbf{P}} c_K \bigg(\sum_{J \in \mathbf{P}_K} \abs*{J}\bigg)                                           \\
+                                                  & = \sum_{K \in \mathbf{P}} c_K \abs*{K}                                       & \text{(by Theorem \ref{11.1.13})}       \\
+                                                  & = p.c. \int_{[\mathbf{P}]} f.                                                & \text{(by Definition \ref{11.2.9})}
     \end{align*}
     Using similar arguments we can show that \(p.c. \int_{[\mathbf{P}']} f = p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f\).
     Thus we have \(p.c. \int_{[\mathbf{P}]} f = p.c. \int_{[\mathbf{P}']} f\).
@@ -154,17 +154,34 @@
         \item If \(f(x) \geq g(x)\) for all \(x \in I\), then \(p.c. \int_I f \geq p.c. \int_I g\).
         \item If \(f\) is the constant function \(f(x) = c\) for all \(x \in I\), then \(p.c. \int_I f = c \abs*{I}\).
         \item Let \(J\) be a bounded interval containing \(I\) (i.e., \(I \subseteq J\)), and let \(F : J \to \mathbf{R}\) be the function
-        \[
-            F(x) \coloneqq \begin{cases}
-                f(x) & \text{if } x \in I \\
-                0 & \text{if } x \notin I
-            \end{cases}
-        \]
-        Then \(F\) is piecewise constant on \(J\), and \(p.c. \int_I F = p.c. \int_I f\).
+              \[
+                  F(x) \coloneqq \begin{cases}
+                      f(x) & \text{if } x \in I    \\
+                      0    & \text{if } x \notin I
+                  \end{cases}
+              \]
+              Then \(F\) is piecewise constant on \(J\), and \(p.c. \int_I F = p.c. \int_I f\).
         \item Suppose that \(\{J, K\}\) is a partition of \(I\) into two intervals \(J\) and \(K\).
-            Then the function \(f|_J : J \to \mathbf{R}\) and \(f|_K : K \to \mathbf{R}\) are piecewise constant on \(J\) and \(K\) respectively, and we have
-            \[
-                p.c. \int_I f = p.c. \int_I f|_J + p.c. \int_I f|_K.
-            \]
+              Then the function \(f|_J : J \to \mathbf{R}\) and \(f|_K : K \to \mathbf{R}\) are piecewise constant on \(J\) and \(K\) respectively, and we have
+              \[
+                  p.c. \int_I f = p.c. \int_I f|_J + p.c. \int_I f|_K.
+              \]
     \end{enumerate}
 \end{theorem}
+
+\begin{proof}{(a)}
+    Since \(f, g\) are both piecewise constant functions on \(I\), by Lemma \ref{11.2.8} \(f + g\) is also a piecewise constant function on \(I\).
+    By Definition \ref{11.2.3}, \(\exists\ \mathbf{P}_f, \mathbf{P}_g\) such that \(\mathbf{P}_f, \mathbf{P}_g\) are partitions of \(I\), \(f\) is piecewise constant with respect to \(\mathbf{P}_f\) and \(g\) is piecewise constant with respect to \(\mathbf{P}_g\).
+    Let \(\mathbf{P} = \mathbf{P}_f \# \mathbf{P}_g\).
+    Then by Lemma \ref{11.1.18} we know that \(\mathbf{P}\) is also a partition of \(I\) and by Lemma \ref{11.2.7} \(f, g\) are piecewise constant with respect to \(\mathbf{P}\).
+    Now let \(J \in \mathbf{P}\), let \(f_J \in \mathbf{R}\) be the constant value of \(f\) on \(J\) and \(g_J \in \mathbf{R}\) be the constant value of \(g\) on \(J\).
+    Then by Definition \ref{11.2.1} \(f_J + g_J\) is also a constant of \(f + g\) on \(J\).
+    Thus we have \(f + g\) is piecewise constant with respect to \(\mathbf{P}\) and
+    \begin{align*}
+        p.c. \int_I f + p.c. \int_I g & = p.c. \int_{[\mathbf{P}]} f + p.c. \int_{[\mathbf{P}]} g                     & \text{(by Definition \ref{11.2.14})}    \\
+                                      & = \sum_{J \in \mathbf{P}} f_J \abs*{J} + \sum_{J \in \mathbf{P}} g_J \abs*{J} & \text{(by Definition \ref{11.2.9})}     \\
+                                      & = \sum_{J \in \mathbf{P}} (f_J + g_J) \abs*{J}                                & \text{(by Proposition \ref{7.1.11}(f))} \\
+                                      & = p.c. \int_{[\mathbf{P}]} (f_J + g_J)                                        & \text{(by Definition \ref{11.2.9})}     \\
+                                      & = p.c. \int_I (f_J + g_J).                                                    & \text{(by Definition \ref{11.2.14})}
+    \end{align*}
+\end{proof}
