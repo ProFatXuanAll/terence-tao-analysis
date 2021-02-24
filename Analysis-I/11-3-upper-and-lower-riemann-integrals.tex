@@ -106,3 +106,42 @@
 \begin{remark}\label{11.3.10}
     The restriction \(J \neq \emptyset\) is required because the quantities \(\inf_{x \in J} f(x)\) and \(\sup_{x \in J} f(x)\) are infinite (or negative infinite) if \(J\) is empty.
 \end{remark}
+
+\begin{lemma}\label{11.3.11}
+    Let \(f : I \to \mathbf{R}\) be a bounded function on a bounded interval \(I\), and let \(g\) be a function which majorizes \(f\) and which is piecewise constant with respect to some partition \(\mathbf{P}\) of \(I\).
+    Then
+    \[
+        p.c. \int_I g \geq U(f, \mathbf{P}).
+    \]
+    Similarly, if \(h\) is a function which minorizes \(f\) and is piecewise constant with respect to \(\mathbf{P}\), then
+    \[
+        p.c. \int_I h \leq L(f, \mathbf{P}).
+    \]
+\end{lemma}
+
+\begin{proof}
+    Since \(g\) majorizes \(f\) and \(h\) minorizes \(f\), by Definition \ref{11.3.1} we have \(\forall\ x \in I\), \(h(x) \leq f(x) \leq g(x)\).
+    Since \(\mathbf{P}\) is a partition of \(I\), by Definition \ref{11.1.10} we have \(\forall\ J \in \mathbf{P}\), \(h(x) \leq f(x) \leq g(x)\) for all \(x \in J\).
+    In particular, we have
+    \[
+        h(x) \leq \inf_{x \in J} f(x) \leq f(x) \leq \sup_{x \in J} f(x) \leq g(x)
+    \]
+    when \(J \neq \emptyset\).
+    Let \(c_{g_J}, c_{h_J}\) be constant values of \(g, h\) on \(J\) respectively.
+    Then we have
+    \begin{align*}
+        U(f, \mathbf{P}) & = \sum_{J \in \mathbf{P} : J \neq \emptyset} (\sup_{x \in J} f(x)) \abs*{J} & \text{(by Definition \ref{11.3.9})} \\
+        & \leq \sum_{J \in \mathbf{P} : J \neq \emptyset} c_{g_J} \abs*{J} & \text{(by Proposition \ref{7.1.11}(h))} \\
+        & = \sum_{J \in \mathbf{P}} c_{g_J} \abs*{J} & \text{(by Proposition \ref{7.1.11}(a)(e))} \\
+        & = p.c. \int_{[\mathbf{P}]} g & \text{(by Definition \ref{11.2.9})} \\
+        & = p.c. \int_I g & \text{(by Definition \ref{11.2.14})}
+    \end{align*}
+    and
+    \begin{align*}
+        L(f, \mathbf{P}) & = \sum_{J \in \mathbf{P} : J \neq \emptyset} (\inf_{x \in J} f(x)) \abs*{J} & \text{(by Definition \ref{11.3.9})} \\
+        & \geq \sum_{J \in \mathbf{P} : J \neq \emptyset} c_{h_J} \abs*{J} & \text{(by Proposition \ref{7.1.11}(h))} \\
+        & = \sum_{J \in \mathbf{P}} c_{h_J} \abs*{J} & \text{(by Proposition \ref{7.1.11}(a)(e))} \\
+        & = p.c. \int_{[\mathbf{P}]} h & \text{(by Definition \ref{11.2.9})} \\
+        & = p.c. \int_I h. & \text{(by Definition \ref{11.2.14})}
+    \end{align*}
+\end{proof}
