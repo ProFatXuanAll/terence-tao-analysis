@@ -145,3 +145,106 @@
         & = p.c. \int_I h. & \text{(by Definition \ref{11.2.14})}
     \end{align*}
 \end{proof}
+
+\begin{proposition}\label{11.3.12}
+    Let \(f : I \to \mathbf{R}\) be a bounded function on a bounded interval \(I\).
+    Then
+    \[
+        \overline{\int}_I f = \inf \{U(f, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\}
+    \]
+    and
+    \[
+        \underline{\int}_I f = \sup \{L(f, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\}
+    \]
+\end{proposition}
+
+\begin{proof}
+    If \(I = \emptyset\), then by Definition \ref{11.1.10} the only partition of \(\emptyset\) is \(\{\emptyset\}\).
+    By Definition \ref{11.3.2} we have
+    \[
+        \overline{\int}_{\emptyset} f = \inf \{0\} = 0 = \sup \{0\} = \underline{\int}_{\emptyset} f.
+    \]
+    By Definition \ref{11.3.9} we have
+    \begin{align*}
+        \inf \{U(f, \{\emptyset\})\} & = U(f, \{\emptyset\}) \\
+        & = \sum_{J \in \{\emptyset\} : J \neq \emptyset} (\sup_{x \in J} f(x)) \abs*{J} & \text{(by Definition \ref{11.3.9})} \\
+        & = \sum_{J \in \emptyset} (\sup_{x \in J} f(x)) \abs*{J} \\
+        & = 0 & \text{(by Proposition \ref{7.1.11}(a))}
+    \end{align*}
+    and
+    \begin{align*}
+        \sup \{L(f, \{\emptyset\})\} & = L(f, \{\emptyset\}) \\
+        & = \sum_{J \in \{\emptyset\} : J \neq \emptyset} (\inf_{x \in J} f(x)) \abs*{J} & \text{(by Definition \ref{11.3.9})} \\
+        & = \sum_{J \in \emptyset} (\inf_{x \in J} f(x)) \abs*{J} \\
+        & = 0. & \text{(by Proposition \ref{7.1.11}(a))}
+    \end{align*}
+    Thus when \(I = \emptyset\), we have
+    \[
+        \overline{\int}_{\emptyset} f = \inf \{U(f, \{\emptyset\})\} = \underline{\int}_{\emptyset} f = \sup \{L(f, \{\emptyset\})\} = 0.
+    \]
+
+    Now suppose that \(I \neq \emptyset\).
+    Let \(g\) be a function which majorizes \(f\) and which is piecewise constant with respect to some partition \(\mathbf{P}_g\) of \(I\).
+    Let \(h\) be a function which minorizes \(f\) and which is piecewise constant with respect to some partition \(\mathbf{P}_h\) of \(I\).
+    Both function is well defined since \(f\) is bounded function on a bounded interval \(I\).
+    If \(\emptyset \in \mathbf{P}_g\), then \(\mathbf{P}_g \setminus \{\emptyset\}\) is also a partition of \(I\), thus we can choose a partition without containing \(\emptyset\).
+    In particular, let \(\emptyset \notin \mathbf{P}_g\) and \(\emptyset \notin \mathbf{P}_h\).
+    By Lemma \ref{11.3.11} we have \(U(f, \mathbf{P}_g) \leq p.c. \int_I g\) and \(L(f, \mathbf{P}_h) \geq p.c. \int_I h\), thus \(U(f, \mathbf{P})\) is a lower bound of the set
+    \[
+        \{p.c. \int_I g' : g' \text{ is a piecewise constant function on \(I\) which majorizes } f\}
+    \]
+    and
+    \(L(f, \mathbf{P}_h)\) is an upper bound of the set
+    \[
+        \{p.c. \int_I h' : h' \text{ is a piecewise constant function on \(I\) which minorizes } f\}.
+    \]
+    By Definition \ref{11.3.2} we have
+    \[
+        \inf \{U(f, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\} \leq U(f, \mathbf{P}_g) \leq \overline{\int}_I f \leq p.c. \int_I g
+    \]
+    and
+    \[
+        \sup \{L(f, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\} \geq L(f, \mathbf{P}_h) \geq \underline{\int}_I f \geq p.c. \int_I h.
+    \]
+    Let \(G : I \to \mathbf{R}\) be a function where \(G(x) = \sup_{x \in J} f(x)\) for all \(J \in \mathbf{P}_g\).
+    Let \(H : I \to \mathbf{R}\) be a function where \(H(x) = \inf_{x \in J} f(x)\) for all \(J \in \mathbf{P}_h\).
+    By Definition \ref{11.2.3} we know that \(G\) is a piecewise constant function with respect to \(\mathbf{P}_g\) and \(H\) is a piecewise constant function with respect to \(\mathbf{P}_h\).
+    Thus we have
+    \begin{align*}
+        U(f, \mathbf{P}_g) & = \sum_{J \in \mathbf{P}_g : J \neq \emptyset} (\sup_{x \in J} f(x)) \abs*{J} & \text{(by Definition \ref{11.3.9})} \\
+        & = \sum_{J \in \mathbf{P}_g} (\sup_{x \in J} f(x)) \abs*{J} & (\emptyset \notin \mathbf{P}_g) \\
+        & = p.c. \int_{[\mathbf{P}_g]} G & \text{(by Definition \ref{11.2.9})} \\
+        & = p.c. \int_I G & \text{(by Definition \ref{11.2.14})}
+    \end{align*}
+    and
+    \begin{align*}
+        L(f, \mathbf{P}_h) & = \sum_{J \in \mathbf{P}_h : J \neq \emptyset} (\inf_{x \in J} f(x)) \abs*{J} & \text{(by Definition \ref{11.3.9})} \\
+        & = \sum_{J \in \mathbf{P}_h} (\inf_{x \in J} f(x)) \abs*{J} & (\emptyset \notin \mathbf{P}_h) \\
+        & = p.c. \int_{[\mathbf{P}_h]} H & \text{(by Definition \ref{11.2.9})} \\
+        & = p.c. \int_I H & \text{(by Definition \ref{11.2.14})}
+    \end{align*}
+    By Definition \ref{11.3.2} we have
+    \[
+        \overline{\int}_I f \leq p.c. \int_I G = U(f, \mathbf{P}_g)
+    \]
+    and
+    \[
+        \underline{\int}_I f \geq p.c. \int_I H = L(f, \mathbf{P}_h).
+    \]
+    Thus
+    \[
+        \overline{\int}_I f \leq \inf \{U(f, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\} \leq U(f, \mathbf{P}_g)
+    \]
+    and
+    \[
+        \underline{\int}_I f \geq \sup \{L(f, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\} \leq L(f, \mathbf{P}_h).
+    \]
+    Combine all results above we have
+    \[
+        \overline{\int}_I f = \inf \{U(f, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\}
+    \]
+    and
+    \[
+        \underline{\int}_I f = \sup \{L(f, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\}.
+    \]
+\end{proof}
