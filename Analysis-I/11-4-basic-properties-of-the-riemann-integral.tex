@@ -379,3 +379,76 @@
     By Theorem \ref{11.4.3} we know that \(f_+, f_-\) are Riemann integrable.
     Since \(\abs*{f} = f_+ - f_-\), by Theorem \ref{11.4.1}(a) we know that \(\abs*{f}\) is Riemann integrable.
 \end{proof}
+
+\begin{theorem}[Products preserve Riemann integrability]\label{11.4.5}
+    Let \(I\) be a bounded interval.
+    If \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) are Riemann integrable, then \(fg : I \to \mathbf{R}\) is also Riemann integrable.
+\end{theorem}
+
+\begin{proof}
+    We split \(f = f_+ + f_-\) and \(g = g_+ + g_-\) into positive and negative parts;
+    by Corollary \ref{11.4.4}, the functions \(f_+\), \(f_-\), \(g_+\), \(g_-\) are Riemann integrable.
+    Since
+    \[
+        fg = f_+ g_+ + f_+ g_- + f_- g_+ + f_- g_-
+    \]
+    then it suffices to show that the functions \(f_+ g_+\), \(f_+ g_-\), \(f_- g_+\), \(f_- g_-\) are individually Riemann integrable.
+    We will just show this for \(f_+ g_+\);
+    the other three are similar.
+
+    Since \(f_+\) and \(g_+\) are bounded and positive, there are \(M_1, M_2 > 0\) such that
+    \[
+        0 \leq f_+(x) \leq M_1 \text{ and } 0 \leq g_+(x) \leq M_2
+    \]
+    for all \(x \in I\).
+    Now let \(\varepsilon > 0\) be arbitrary.
+    Then, as in the proof of Theorem \ref{11.4.3}, we can find a piecewise constant function \(\underline{f_+}\) minorizing \(f_+\) on \(I\), and a piecewise constant function \(\overline{f_+}\) majorizing \(f_+\) on \(I\), such that
+    \[
+        \int_I \overline{f_+} \leq \int_I f_+ + \varepsilon
+    \]
+    and
+    \[
+        \int_I \underline{f_+} \geq \int_I f_+ - \varepsilon.
+    \]
+    Note that \(\underline{f_+}\) may be negative at places, but we can fix this by replacing \(\underline{f_+}\) by \(\max(\underline{f_+}, 0)\), since this still minorizes \(f_+\) and still has integral greater than or equal to \(\int_I f_+ - \varepsilon\).
+    So without loss of generality we may assume that \(\underline{f_+}(x) \geq 0\) for all \(x \in I\).
+    Similarly we may assume that \(\overline{f_+}(x) \leq M_1\) for all \(x \in I\);
+    thus
+    \[
+        0 \leq \underline{f_+}(x) \leq f_+(x) \leq \overline{f_+}(x) \leq M_1
+    \]
+    for all \(x \in I\).
+
+    Similar reasoning allows us to find piecewise constant \(\underline{g_+}\) minorizing \(g_+\), and \(\overline{g_+}\) majorizing \(g_+\), such that
+    \[
+        \int_I \overline{g_+} \leq \int_I g_+ + \varepsilon
+    \]
+    and
+    \[
+        \int_I \underline{g_+} \geq \int_I g_+ - \varepsilon,
+    \]
+    and
+    \[
+        0 \leq \underline{g_+}(x) \leq g_+(x) \leq \overline{g_+}(x) \leq M_2
+    \]
+    for all \(x \in I\).
+
+    Notice that \(\underline{f_+} \underline{g_+}\) is piecewise constant and minorizes \(f_+ g_+\), while \(\overline{f_+} \overline{g_+}\) is piecewise constant and majorizes \(f_+ g_+\).
+    Thus
+    \[
+        0 \leq \overline{\int}_I f_+ g_+ - \underline{\int}_I f_+ g_+ \leq \int_I \overline{f}_+ \overline{g_+} - \underline{f_+} \underline{g_+}.
+    \]
+    However, we have
+    \begin{align*}
+        \overline{f_+}(x) \overline{g_+}(x) - \underline{f_+}(x) \underline{g_+}(x) & = \overline{f_+}(x) (\overline{g_+} - \underline{g_+})(x) + \underline{g_+}(x) (\overline{f_+} - \underline{f_+})(x) \\
+                                                                                    & \leq M_1 (\overline{g_+} - \underline{g_+})(x) + M_2 (\overline{f_+} - \underline{f_+})(x)
+    \end{align*}
+    for all \(x \in I\), and thus
+    \begin{align*}
+        0 \leq \overline{\int}_I f_+ g_+ - \underline{\int}_I f_+ g_+ & \leq M_1 \int_I (\overline{g_+} - \underline{g_+}) + M_2 \int_I (\overline{f_+} - \underline{f_+}) \\
+                                                                      & \leq M_1 (2\varepsilon) + M_2 (2\varepsilon).
+    \end{align*}
+    Again, since \(\varepsilon\) was arbitrary, we can conclude that \(f_+ g_+\) is Riemann integrable, as before.
+    Similar argument show that \(f_+ g_-\), \(f_- g_+\), \(f_- g_-\) are Riemann integrable;
+    combining them we obtain that \(fg\) is Riemann integrable.
+\end{proof}
