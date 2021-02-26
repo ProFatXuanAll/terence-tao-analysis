@@ -522,9 +522,33 @@
     Let \(I\) be a bounded interval, let \(f : I \to \mathbf{R}\) be a Riemann integrable function, and let \(\mathbf{P}\) be a partition of \(I\).
     Show that
     \[
-        \int_I f = \sum_{J \in \mathbf{P}} \int_J f.
+        \int_I f = \sum_{J \in \mathbf{P}} \int_J f|_J.
     \]
 \end{exercise}
+
+\begin{proof}
+    Let \(P(n)\) be the statement ``\(n = \abs*{\mathbf{P}}\) and \(\int_I f = \sum_{J \in \mathbf{P}} \int_J f\)''.
+    We use induction on \(n\) to show that \(P(n)\) is true \(\forall\ n \in \mathbf{N}\).
+    For \(n = 0\), we have \(\mathbf{P} = \emptyset\) and \(I = \emptyset\).
+    Thus
+    \begin{align*}
+        p.c. \int_{[\emptyset]} f & = \sum_{J \in \emptyset} c_J \abs*{J} & \text{(by Definition \ref{11.2.9})}     \\
+                                  & = 0                                   & \text{(by Proposition \ref{7.1.11}(a))} \\
+                                  & = p.c. \int_{\emptyset} f             & \text{(by Definition \ref{11.2.14})}    \\
+                                  & = \int_{\emptyset} f                  & \text{(by Lemma \ref{11.3.7})}          \\
+                                  & = \sum_{J \in \emptyset} \int_J f     & \text{(by Proposition \ref{7.1.11}(a))}
+    \end{align*}
+    and the base case holds.
+    Suppose inductively that \(P(n)\) is true for some \(n \geq 0\).
+    Then for \(n + 1\), let \(K \in \mathbf{P}\) where \(\forall\ x \in K\), \(x < y\) where \(y \in \bigcup (\mathbf{P} \setminus \{K\})\).
+    Then \(\{K, \bigcup (\mathbf{P} \setminus \{K\})\}\) is a partition of \(I\), and
+    \begin{align*}
+        \int_I f & = \int_K f|_K + \int_{\bigcup (\mathbf{P} \setminus \{K\})} f|_{\bigcup (\mathbf{P} \setminus \{K\})} & \text{(by Theorem \ref{11.4.1}(h))}     \\
+                 & = \int_K f|_K + \sum_{J \in \mathbf{P} \setminus \{K\}} \int_J f|_J                                   & \text{(by induction hypothesis)}        \\
+                 & = \sum_{J \in \mathbf{P}} \int_J f|_J.                                                                & \text{(by Proposition \ref{7.1.11}(e))}
+    \end{align*}
+    This close the induction.
+\end{proof}
 
 \begin{exercise}\label{ex 11.4.4}
     Without repeating all the computations in the above proofs, give a short explanation as to why the remaining cases of Theorem \ref{11.4.3} and Theorem \ref{11.4.5} follow automatically from the cases presented in the text.
