@@ -466,9 +466,57 @@
 \begin{exercise}\label{ex 11.4.2}
     Let \(a < b\) be real numbers, and let \(f : [a, b] \to \mathbf{R}\) be a continuous, non-negative function
     (so \(f(x) \geq 0\) for all \(x \in [a, b]\)).
-    Suppose that \(\int_[a, b] f = 0\).
+    Suppose that \(\int_{[a, b]} f = 0\).
     Show that \(f(x) = 0\) for all \(x \in [a, b]\).
 \end{exercise}
+
+\begin{proof}
+    Suppose for sake of contradiction that \(\exists\ x \in [a, b]\) such that \(f(x) > 0\).
+    Let \(x_0 \in [a, b]\) and \(f(x_0) > 0\).
+    Since \(f\) is continuous, by Proposition \ref{9.4.7} we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in [a, b], \abs*{x - x_0} < \delta \implies \abs*{f(x) - f(x_0)} \leq \varepsilon\bigg),
+    \]
+    or equivalently
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in [a, b] \cap (x_0 - \delta, x_0 + \delta) \implies \abs*{f(x) - f(x_0)} \leq \varepsilon\bigg).
+    \]
+    In particular, we have
+    \[
+        \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in [a, b] \cap (x_0 - \delta, x_0 + \delta) \implies \abs*{f(x) - f(x_0)} \leq \frac{f(x_0)}{2}\bigg),
+    \]
+    or equivalently
+    \[
+        \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in [a, b] \cap (x_0 - \delta, x_0 + \delta) \implies \frac{f(x_0)}{2} \leq f(x) \leq \frac{3 f(x_0)}{2}\bigg).
+    \]
+    We know that \([a, b] \cap (x_0 - \delta, x_0 + \delta) \neq \emptyset\) since \(\delta \neq 0\).
+    We also have
+    \[
+        \sup([a, b] \cap (x_0 - \delta, x_0 + \delta)) \neq \inf([a, b] \cap (x_0 - \delta, x_0 + \delta))
+    \]
+    since \(a \neq b\).
+    Thus by Definition \ref{11.1.8} we have \(\abs*{[a, b] \cap (x_0 - \delta, x_0 + \delta)} > 0\).
+    By Corollary \ref{11.1.6} we know that \([a, b] \cap (x_0 - \delta, x_0 + \delta)\) is a bounded interval.
+    Let \(f_L : [a, b] \to \mathbf{R}\) be the function
+    \[
+        f_L(x) = \begin{cases}
+            \frac{f(x_0)}{2} & \text{if } x \in [a, b] \cap (x_0 - \delta, x_0 + \delta)    \\
+            0                & \text{if } x \notin [a, b] \cap (x_0 - \delta, x_0 + \delta)
+        \end{cases}
+    \]
+    Since \(f(x) \geq 0\) for all \(x \in [a, b]\), we know that \(f_L\) minorizes \(f\).
+    By Theorem \ref{11.2.16}(g) we know that \(f_L\) is a piecewise constant function.
+    By Lemma \ref{11.3.7} we have
+    \[
+        \int_{[a, b]} f_L = p.c. \int_{[a, b]} f_L = \frac{f(x_0)}{2}\abs*{[a, b] \cap (x_0 - \delta, x_0 + \delta)} > 0.
+    \]
+    But by Definition \ref{11.3.2} and Definition \ref{11.3.4} we have
+    \[
+        0 < \int_{[a, b]} f_L \leq \underline{\int}_{[a, b]} f = \int_{[a, b]} f = 0,
+    \]
+    a contradiction.
+    Thus \(\forall\ x \in [a, b]\), we must have \(f(x) = 0\).
+\end{proof}
 
 \begin{exercise}\label{ex 11.4.3}
     Let \(I\) be a bounded interval, let \(f : I \to \mathbf{R}\) be a Riemann integrable function, and let \(\mathbf{P}\) be a partition of \(I\).
