@@ -294,3 +294,74 @@
 \begin{remark}\label{11.4.2}
     We often abbreviate \(\int_J f|_J\) as \(\int_J f\) even though \(f\) is really defined on a larger domain than just \(J\).
 \end{remark}
+
+\begin{theorem}[Max and min preserve integrability]\label{11.4.3}
+    Let \(I\) be a bounded interval, and let \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) be a Riemann integrable function.
+    Then the functions \(\max(f, g) : I \to \mathbf{R}\) and \(\min(f, g) : I \to \mathbf{R}\) defined by \(\max(f, g)(x) \coloneqq \max(f (x), g(x))\) and \(\min(f, g)(x) \coloneqq \min(f (x), g(x))\) are also Riemann integrable.
+\end{theorem}
+
+\begin{proof}
+    We shall just prove the claim for \(\max(f, g)\), the case of \(\min(f, g)\) being similar.
+    First note that since \(f\) and \(g\) are bounded, then \(\max(f, g)\) is also bounded.
+
+    Let \(\varepsilon > 0\).
+    Since \(\int_I f = \underline{\int}_I f\), there exists a piecewise constant function \(\underline{f} : I \to \mathbf{R}\) which minorizes \(f\) on \(I\) such that
+    \[
+        \int_I \underline{f} \geq \int_I f - \varepsilon.
+    \]
+    Similarly we can find a piecewise constant \(g : I \to \mathbf{R}\) which minorizes \(g\) on \(I\) such that
+    \[
+        \int_I \underline{g} \geq \int_I g - \varepsilon,
+    \]
+    and we can find piecewise functions \(\overline{f}, \overline{g}\) which majorize \(f, g\) respectively on \(I\) such that
+    \[
+        \int_I \overline{f} \leq \int_I f + \varepsilon
+    \]
+    and
+    \[
+        \int_I \overline{g} \leq \int_I g + \varepsilon.
+    \]
+    In particular, if \(h : I \to \mathbf{R}\) denotes the function
+    \[
+        h \coloneqq (\overline{f} - \underline{f}) + (\overline{g} - \underline{g})
+    \]
+    we have
+    \[
+        \int_I h \leq 4 \varepsilon.
+    \]
+    On the other hand, \(\max(\underline{f}, \underline{g})\) is a piecewise constant function on \(I\) which minorizes \(\max(f, g)\), while \(\max(\overline{f}, \overline{g})\) is similarly a piecewise constant function on \(I\) which majorizes \(\max(f, g)\).
+    Thus
+    \[
+        \int_I \max(\underline{f}, \underline{g}) \leq \underline{\int}_I \max(f, g) \leq \overline{\int}_I \max(f, g) \leq \int_I \max(\overline{f}, \overline{g}),
+    \]
+    and so
+    \[
+        0 \leq \overline{\int}_I \max(f, g) - \underline{\int}_I \max(f, g) \leq \int_I \max(\overline{f}, \overline{g}) - \max(\underline{f}, \underline{g}).
+    \]
+    But we have
+    \[
+        \overline{f}(x) = \underline{f}(x) + (\overline{f} - \underline{f})(x) \leq \underline{f}(x) + h(x)
+    \]
+    and similarly
+    \[
+        \overline{g}(x) = \underline{g}(x) + (\overline{g} - \underline{g})(x) \leq \underline{g}(x) + h(x)
+    \]
+    and thus
+    \[
+        \max(\overline{f}(x), \overline{g}(x)) \leq \max(\underline{f}(x), \underline{g}(x)) + h(x).
+    \]
+    Inserting this into the previous inequality, we obtain
+    \[
+        0 \leq \overline{\int}_I \max(f, g) - \underline{\int}_I \max(f, g) \leq \int_I h \leq 4 \varepsilon.
+    \]
+    To summarize, we have shown that
+    \[
+        0 \leq \overline{\int}_I \max(f, g) - \underline{\int}_I \max(f, g) \leq 4 \varepsilon
+    \]
+    for every \(\varepsilon\).
+    Since \(\overline{\int}_I \max(f, g) - \underline{\int}_I \max(f, g)\) does not depend on \(\varepsilon\), we thus see that
+    \[
+        \overline{\int}_I \max(f, g) - \underline{\int}_I \max(f, g) = 0
+    \]
+    and hence that \(\max(f, g)\) is Riemann integrable.
+\end{proof}
