@@ -13,11 +13,31 @@
 \end{note}
 
 \begin{definition}[\(\alpha\)-length]\label{11.8.1}
-    Let \(I\) be a bounded interval, and let \(\alpha : X \to \mathbf{R}\) be a function defined on some domain \(X\) which contains \(I\).
+    Let \(I\) be a bounded interval, and let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\).
     Then we define the \emph{\(\alpha\)-length} \(\alpha[I]\) of \(I\) as follows.
-    If \(I\) is a point or the empty set, we set \(\alpha[I] = 0\).
-    If \(I\) is an interval of the form \([a, b]\), \([a, b)\), \((a, b]\), or \((a, b)\) for some \(b > a\), then we set \(\alpha[I] = \alpha(b) - \alpha(a)\).
+    If \(I\) is the empty set, we set \(\alpha[I] = 0\).
+    If \(I\) is a point of the form \(\{a\}\) a point for some real number \(a\), we set
+    \[
+        \alpha[\{\alpha\}] \coloneqq \lim_{x \to a^+ ; x \in X} \alpha(x) - \lim_{x \to a^- ; x \in X} \alpha(x),
+    \]
+    with the convention that \(\lim_{x \to a^+ ; x \in X} \alpha(x)\) (resp. \(\lim_{x \to a^- ; x \in X} \alpha(x)\)) is \(\alpha(a)\) when \(a\) is the right (resp. left) endpoint of \(X\).
+    If \(I\) is an interval of the form \((a, b)\) for some real numbers \(b > a\), set
+    \[
+        \alpha[(a, b)] \coloneqq \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x).
+    \]
+    If \(I\) is an interval of the form \([a, b)\), \((a, b]\), or \([a, b]\) for some real numbers \(b > a\), then we set
+    \[
+        \alpha[I] = \begin{cases}
+            \alpha(\{a\}) + \alpha((a, b)) & \text{if } I = [a, b) \\
+            \alpha((a, b)) + \alpha(\{b\}) & \text{if } I = (a, b] \\
+            \alpha(\{a\}) + \alpha((a, b)) + \alpha(\{b\}) & \text{if } I = [a, b]
+        \end{cases}
+    \]
 \end{definition}
+
+\begin{note}
+    In the special case when \(\alpha\) is continuous, the definition of \(\alpha[I]\) where \(I\) is of the form \((a, b)\), \([a, b)\), \((a, b]\), or \([a, b]\) simplifies to \(\alpha[I] = \alpha(b) - \alpha(a)\).
+\end{note}
 
 \begin{note}
     We sometimes write \(\alpha\big|_a^b\) or \(\alpha(x)\big|_{x = a}^{x = b}\) instead of \(\alpha[[a, b]]\).
