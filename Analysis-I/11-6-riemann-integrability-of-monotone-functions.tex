@@ -170,6 +170,29 @@
     Formulate a reasonable notion of a piecewise monotone function, and then show that all bounded piecewise monotone functions are Riemann integrable.
 \end{exercise}
 
+\begin{proof}
+    Let \(I\) be a bounded interval, and let \(f : I \to \mathbf{R}\).
+    We say that \(f\) is \emph{piecewise monotone on \(I\)} iff there exists a partition \(\mathbf{P}\) of \(I\) such that \(f|_J\) is monotone on \(J\) for all \(J \in \mathbf{P}\).
+
+    Now we show that all bounded piecewise monotone functions are Riemann integrable.
+    Suppose that \(f : I \to \mathbf{R}\) is a bounded piecewise monotone function.
+    Then by the definition \(\exists\ \mathbf{P}\) such that \(\mathbf{P}\) is a partition of \(I\) and \(f|_J\) is monotone on \(J\) for all \(J \in \mathbf{P}\).
+    Since \(f\) is bounded, \(f|_J\) is also bounded, by Corollary \ref{11.6.3} we know that \(f|_J\) is Riemann integrable on \(J\).
+    Let \(F_J : I \to \mathbf{R}\) be the function
+    \[
+        F_J(x) = \begin{cases}
+            f|_J(x) & \text{if } x \in J    \\
+            0       & \text{if } x \notin J
+        \end{cases}
+    \]
+    Then by Theorem \ref{11.4.1}(g) we know that \(F_J\) is Riemann integrable and
+    \begin{align*}
+        \sum_{J \in \mathbf{P}} \int_I F_J & = \sum_{J \in \mathbf{P}} \int_J f|_J & \text{(by Theorem \ref{11.4.1}(g))}  \\
+                                           & = \int_I f.                           & \text{(by Exercise \ref{ex 11.4.3})}
+    \end{align*}
+    Thus \(f\) is Riemann integrable on \(I\).
+\end{proof}
+
 \begin{exercise}\label{ex 11.6.3}
     Prove Proposition \ref{11.6.4}.
 \end{exercise}
