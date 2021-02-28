@@ -113,3 +113,27 @@
     Let \(I\) be a bounded interval, and let \(f : I \to \mathbf{R}\).
     We say that \(f\) is \emph{piecewise continuous on \(I\)} iff there exists a partition \(\mathbf{P}\) of \(I\) such that \(f|_J\) is continuous on \(J\) for all \(J \in \mathbf{P}\).
 \end{definition}
+
+\setcounter{theorem}{5}
+\begin{proposition}\label{11.5.6}
+    Let \(I\) be a bounded interval, and let \(f : I \to \mathbf{R}\) be both piecewise continuous and bounded.
+    Then \(f\) is Riemann integrable.
+\end{proposition}
+
+\begin{proof}
+    Since \(f\) is piecewise continuous on \(I\), by Definition \ref{11.5.4} \(\exists\ \mathbf{P}\) such that \(\mathbf{P}\) is a partition of \(I\) and \(f|_J\) is continuous on \(J\) for all \(J \in \mathbf{P}\).
+    Since \(f\) is bounded, we know that \(f|_J\) is bounded, and by Proposition \ref{11.5.3} \(f|_J\) is Riemann integrable on \(J\).
+    Let \(F_J : I \to \mathbf{R}\) be the function
+    \[
+        F_J(x) = \begin{cases}
+            f|_J(x) & \text{if } x \in J    \\
+            0       & \text{if } x \notin J
+        \end{cases}
+    \]
+    Then we have
+    \begin{align*}
+        \sum_{J \in \mathbf{P}} \int_I F_J & = \sum_{J \in \mathbf{P}} \int_J f|_J & \text{(by Theorem \ref{11.4.1}(g))}  \\
+                                           & = \int_I f.                           & \text{(by Exercise \ref{ex 11.4.3})}
+    \end{align*}
+    Thus \(f\) is Riemann integrable on \(I\).
+\end{proof}
