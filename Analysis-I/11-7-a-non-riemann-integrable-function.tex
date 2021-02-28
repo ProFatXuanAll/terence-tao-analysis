@@ -1,1 +1,46 @@
 \section{A non-Riemann integrable function}\label{sec 11.7}
+
+\begin{proposition}\label{11.7.1}
+    Let \(f : [0, 1] \to \mathbf{R}\) be the discontinuous function
+    \[
+        f(x) \coloneqq \begin{cases}
+            1 & \text{if } x \in \mathbf{Q} \\
+            0 & \text{if } x \notin \mathbf{Q}
+        \end{cases}
+    \]
+    Then \(f\) is bounded but not Riemann integrable.
+\end{proposition}
+
+\begin{proof}
+    It is clear that \(f\) is bounded, so let us show that it is not Riemann integrable.
+
+    Let \(\mathbf{P}\) be any partition of \([0, 1]\).
+    For any \(J \in \mathbf{P}\), observe that if \(J\) is not a point or the empty set, then
+    \[
+        \sup_{x \in J} f(x) = 1
+    \]
+    (by Proposition \ref{5.4.14}).
+    In particular we have
+    \[
+        \bigg(\sup_{x \in J} f(x)\bigg) \abs*{J} = \abs*{J}.
+    \]
+    (Note this is also true when \(J\) is a point, since both sides are zero.)
+    In particular we see that
+    \[
+        U(f, \mathbf{P}) = \sum_{J \in \mathbf{P} : J \neq \emptyset} \abs*{J} = \abs*{[0, 1]} = 1
+    \]
+    by Theorem \ref{11.1.13};
+    note that the empty set does not contribute anything to the total length.
+    In particular we have \(\overline{\int}_{[0, 1]} f = 1\), by Proposition \ref{11.3.12}.
+
+    A similar argument gives that
+    \[
+        \inf_{x \in J} f(x) = 0
+    \]
+    for all \(J\) (other than points or the empty set), and so
+    \[
+        L(f, \mathbf{P}) = \sum_{J \in \mathbf{P} : J \neq \emptyset} 0 = 0.
+    \]
+    In particular we have \(\underline{\int}_{[0, 1]} f = 0\), by Proposition \ref{11.3.12}.
+    Thus the upper and lower Riemann integrals do not match, and so this function is not Riemann integrable.
+\end{proof}
