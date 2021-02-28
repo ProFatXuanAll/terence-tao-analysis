@@ -131,3 +131,27 @@
     \]
     By Proposition \ref{7.3.1} we thus have \(\sum_{n = 0}^\infty f(n)\) is convergent.
 \end{proof}
+
+\begin{corollary}\label{11.6.5}
+    Let \(p\) be a real number.
+    Then \(\sum_{n = 1}^\infty \frac{1}{n^p}\) converges absolutely when \(p > 1\) and diverges when \(p \leq 1\).
+\end{corollary}
+
+\begin{proof}
+    First suppose that \(p > 1\).
+    Let \(f : [1, \infty) \to \mathbf{R}\) be the function \(f(x) = \frac{1}{x^p}\).
+    By Proposition \ref{6.7.3}(a)(e) we know that \(f\) is positive and monotone decreasing.
+    Let \(N \in \mathbf{N}\) and \(N > 1\).
+    Then by Proposition \ref{11.6.1} we know that \(\int_{[1, N]} f\) is Riemann integrable.
+    Let \(x \in [1, \infty)\).
+    Since \(p > 1\), we have \(p - 1 > 0\) and by Archimedean property (Corollary \ref{5.4.13}) we know that \(\exists\ M \in \mathbf{N}\) and \(M > 0\) such that \(M(N - 1)(p - 1) > 1 = 1^p > x^p\).
+    This means \(\frac{1}{x^p} < \frac{1}{M(N - 1)(p - 1)}\) and thus
+    \begin{align*}
+        \int_{[1, N]} f & \leq \int_{[1, N]} \frac{1}{M(N - 1)(p - 1)}   & \text{(by Theorem \ref{11.4.1}(e))} \\
+                        & = p.c. \int_{[1, N]} \frac{1}{M(N - 1)(p - 1)} & \text{(by Lemma \ref{11.3.7})}      \\
+                        & = \frac{N - 1}{M(N - 1)(p - 1)}                & \text{(by Definition \ref{11.2.9})} \\
+                        & = \frac{1}{M(p - 1)}                                                                 \\
+                        & \leq \frac{1}{p - 1}.
+    \end{align*}
+    Since \(\int_{[1, N]} f \leq \frac{1}{p - 1}\) for all \(N > 1\), we have \(\sup_{N > 1} \int_{[1, N]} f \leq \frac{1}{p - 1}\), and thus by Proposition \ref{11.6.4} we know that \(\sum_{n = 1}^\infty f(n)\) is convergent.
+\end{proof}
