@@ -82,3 +82,52 @@
     \]
     But \(\varepsilon\) is arbitrary, and so we can argue as in the proof of Theorem \ref{11.5.1} to conclude Riemann integrability.
 \end{proof}
+
+\begin{proposition}[Integral test]\label{11.6.4}
+    Let \(f : [0, \infty) \to \mathbf{R}\) be a monotone decreasing function which is non-negative
+    (i.e., \(f(x) \geq 0\) for all \(x \geq 0\)).
+    Then the sum \(\sum_{n = 0}^\infty f(n)\) is convergent if and only if \(\sup_{N > 0} \int_{[0, N]} f\) is finite.
+\end{proposition}
+
+\begin{proof}
+    Let \(N \in \mathbf{N}\) and \(N > 0\).
+    Since \(f\) is monotone decreasing, by Proposition \ref{11.6.1} we know that \(f\) is Riemann integrable on both \([0, N]\) and every interval \([a, b] \subseteq [0, N]\).
+    Then we have
+    \begin{align*}
+        \int_{[0, N]} f & = \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f|_{[n, n + 1)} + \int_{[N, N]} f|_{[N, N]} & \text{(by Exercise \ref{ex 11.4.3})}      \\
+                        & = \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f|_{[n, n + 1)}                             & \text{(by Definition \ref{11.1.8})}       \\
+                        & \leq \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f(n)                                     & \text{(by Theorem \ref{11.4.1}(e))}       \\
+                        & = \sum_{n = 0}^{N - 1} f(n) \abs*{n + 1 - n}                                         & \text{(by Definition \ref{11.2.9})}       \\
+                        & = \sum_{n = 0}^{N - 1} f(n)                                                                                                      \\
+                        & \leq \sum_{n = 0}^N f(n)                                                             & (\forall\ x \in [0, \infty), f(x) \geq 0)
+    \end{align*}
+    and
+    \begin{align*}
+        \int_{[0, N]} f & = \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f|_{[n, n + 1)} + \int_{[N, N]} f|_{[N, N]} & \text{(by Exercise \ref{ex 11.4.3})} \\
+                        & = \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f|_{[n, n + 1)}                             & \text{(by Definition \ref{11.1.8})}  \\
+                        & \geq \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f(n + 1)                                 & \text{(by Theorem \ref{11.4.1}(e))}  \\
+                        & = \sum_{n = 0}^{N - 1} f(n + 1) \abs*{n + 1 - n}                                     & \text{(by Definition \ref{11.2.9})}  \\
+                        & = \sum_{n = 0}^{N - 1} f(n + 1)                                                                                             \\
+                        & = \sum_{n = 1}^N f(n).                                                               & \text{(by Lemma \ref{7.1.4}(b))}
+    \end{align*}
+
+    Suppose that \(\sum_{n = 0}^\infty f(n)\) is convergent.
+    Then by Definition \ref{7.2.2} we know that
+    \[
+        \sum_{n = 0}^\infty f(n) = \lim_{m \to \infty} \sum_{n = 0}^m f(n)
+    \]
+    and by Proposition \ref{6.1.12} \((\sum_{n = 0}^m f(n))_{m = 0}^\infty\) is a Cauchy sequence.
+    By Lemma \ref{5.1.15} we know that \((\sum_{n = 0}^m f(n))_{m = 0}^\infty\) is bounded by some \(M \in \mathbf{R}\).
+    By Comparison principle (Lemma \ref{6.4.13}) we have
+    \[
+        \sup \bigg(\int_{[0, N] f}\bigg)_{N = 1}^\infty \leq \sup \bigg(\sum_{n = 0}^N f(n)\bigg)_{N = 1}^\infty \leq M
+    \]
+    and thus \(\sup_{N > 0} \int_{[0, N]} f\) is finite.
+
+    Now suppose that \(\sup_{N > 0} \int_{[0, N]} f\) is finite.
+    By Comparison principle (Lemma \ref{6.4.13}) we have
+    \[
+        \sup \bigg(\sum_{n = 1}^N f(n)\bigg)_{N = 1}^\infty \leq \sup \bigg(\int_{[0, N] f}\bigg)_{N = 1}^\infty
+    \]
+    By Proposition \ref{7.3.1} we thus have \(\sum_{n = 0}^\infty f(n)\) is convergent.
+\end{proof}
