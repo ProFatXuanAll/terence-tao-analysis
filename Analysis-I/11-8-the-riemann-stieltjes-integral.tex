@@ -191,7 +191,7 @@
 \end{definition}
 
 \begin{theorem}\label{11.8.10}
-    Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) be piecewise constant functions on \(I\).
+    Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) be piecewise constant functions on \(I\) such that both \(p.c. \int_I f \; d \alpha\) and \(p.c. \int_I g \; d \alpha\) are well-defined.
     \begin{enumerate}
         \item We have \(p.c. \int_I (f + g) \; d \alpha = p.c. \int_I f \; d \alpha + p.c. \int_I g \; d \alpha\).
         \item For any real number \(c\), we have \(p.c. \int_I (cf) \; d \alpha = c (p.c. \int_I f \; d \alpha)\).
@@ -254,6 +254,30 @@
                                                               & = p.c. \int_I f \; d \alpha + p.c. \int_I (-g) \; d \alpha   & \text{(by Theorem \ref{11.8.10}(b))} \\
                                                               & = p.c. \int_I (f + (-g)) \; d \alpha                         & \text{(by Theorem \ref{11.8.10}(a))} \\
                                                               & = p.c. \int_I (f - g) \; d \alpha.                           & \text{(by Definition \ref{9.2.1})}
+    \end{align*}
+\end{proof}
+
+\begin{proof}{(d)}
+    By Definition \ref{11.2.3}, \(\exists\ \mathbf{P}\) such that \(\mathbf{P}\) is a partition of \(I\) and \(f\) is piecewise constant with respect to \(\mathbf{P}\).
+    Let \(J \in \mathbf{P}\) and let \(f_J \in \mathbf{R}\) be the constant value of \(f\) on \(J\).
+    Since \(\alpha\) is monotone increasing and \(p.c. \int_I f \; d \alpha\) is well-defined, we know that \(\alpha[J]\) is well-defined.
+    So for any \(a, b \in J\) and \(a \leq b\) we have
+    \begin{align*}
+        \alpha[J] & = \alpha[(a, b)]                                                                                                                                             \\
+                  & = \lim_{x \to b^- ; x \in (a, b)} \alpha(x) - \lim_{x \to a^+ ; x \in (a, b)} \alpha(x)                                & \text{(by Definition \ref{11.8.1})} \\
+                  & = \lim_{x \to b ; x \in (a, b) \cap (-\infty, b)} \alpha(x) - \lim_{x \to a ; x \in (a, b) \cap (a, \infty)} \alpha(x) & \text{(by Definition \ref{9.5.1})}  \\
+                  & = \lim_{x \to b ; x \in (a, b)} \alpha(x) - \lim_{x \to a ; x \in (a, b)} \alpha(x)                                                                          \\
+                  & \geq 0                                                                                                                 & (a \leq b)
+    \end{align*}
+    when \(J\) is a point or a open interval, and \(\alpha[J] = 0\) when \(J = \emptyset\).
+    Similar arguments work for the cases \([a, b), (a, b], [a, b]\), and we conclude that \(\alpha[J] \geq 0\).
+    Since \(\forall\ x \in I\), \(f(x) \geq 0\), we then have \(f_J \geq 0\) and \(f_J \alpha[J] \geq 0\).
+    Thus
+    \begin{align*}
+        p.c. \int_I f \; d \alpha & = p.c. \int_{[\mathbf{P}]} f \; d \alpha & \text{(by Definition \ref{11.8.9})}     \\
+                                  & = \sum_{J \in \mathbf{P}} f_J \alpha[J]  & \text{(by Definition \ref{11.8.5})}     \\
+                                  & \geq \sum_{J \in \mathbf{P}} 0           & \text{(by Proposition \ref{7.1.11}(h))} \\
+                                  & = 0.
     \end{align*}
 \end{proof}
 
