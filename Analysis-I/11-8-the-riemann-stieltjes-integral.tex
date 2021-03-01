@@ -16,8 +16,8 @@
     If \(I\) is an interval of the form \([a, b)\), \((a, b]\), or \([a, b]\) for some real numbers \(b > a\), then we set
     \[
         \alpha[I] = \begin{cases}
-            \alpha(\{a\}) + \alpha((a, b)) & \text{if } I = [a, b) \\
-            \alpha((a, b)) + \alpha(\{b\}) & \text{if } I = (a, b] \\
+            \alpha(\{a\}) + \alpha((a, b))                 & \text{if } I = [a, b) \\
+            \alpha((a, b)) + \alpha(\{b\})                 & \text{if } I = (a, b] \\
             \alpha(\{a\}) + \alpha((a, b)) + \alpha(\{b\}) & \text{if } I = [a, b]
         \end{cases}
     \]
@@ -63,27 +63,27 @@
     Since \(b \in I\), we know that one of the intervals \(K\) in \(\mathbf{P}\) contains \(b\).
     Since \(K\) is contained in \(I\), it must therefore be of the form \((c, b]\), \([c, b]\), or \(\{b\}\) for some real number \(c\), with \(a \leq c \leq b\) (in the latter case of \(K = \{b\}\), we set \(c \coloneqq b\)).
     In particular, this means that the set \(I \setminus K\) is also an interval of the form \([a, c]\), \((a, c)\), \((a, c]\), \([a, c)\) when \(c > a\), or a point or empty set when \(a = c\).
-    Either way, by Definition \ref{11.8.1} we see that
+            Either way, by Definition \ref{11.8.1} we see that
+            \begin{align*}
+                \alpha[I] & = \alpha[(a, b)] + \alpha(\{b\})                                                              \\
+                          & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) + \alpha(\{b\}) \\
+                          & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to c^+ ; x \in X} \alpha(x)                 \\
+                          & + \lim_{x \to c^+ ; x \in X} \alpha(x) - \lim_{x \to c^- ; x \in X} \alpha(x)                 \\
+                          & + \lim_{x \to c^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) + \alpha(\{b\}) \\
+                          & = \alpha[(c, b)] + \alpha[\{c\}] + \alpha[(a, c)] + \alpha(\{b\})                             \\
+                          & = \alpha[(a, c)] + \alpha[[c, b]]                                                             \\
+                          & = \alpha[K] + \alpha[I \setminus K]
+            \end{align*}
+            when \(I = (a, b]\) and
     \begin{align*}
-        \alpha[I] & = \alpha[(a, b)] + \alpha(\{b\}) \\
-        & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) + \alpha(\{b\}) \\
-        & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to c^+ ; x \in X} \alpha(x) \\
-        & + \lim_{x \to c^+ ; x \in X} \alpha(x) - \lim_{x \to c^- ; x \in X} \alpha(x) \\
-        & + \lim_{x \to c^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) + \alpha(\{b\}) \\
-        & = \alpha[(c, b)] + \alpha[\{c\}] + \alpha[(a, c)] + \alpha(\{b\}) \\
-        & = \alpha[(a, c)] + \alpha[[c, b]] \\
-        & = \alpha[K] + \alpha[I \setminus K]
-    \end{align*}
-    when \(I = (a, b]\) and
-    \begin{align*}
-        \alpha[I] & = \alpha(\{a\}) + \alpha[(a, b)] + \alpha(\{b\}) \\
-        & = \alpha(\{a\}) + \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) + \alpha(\{b\}) \\
-        & = \alpha(\{a\}) + \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to c^+ ; x \in X} \alpha(x) \\
-        & + \lim_{x \to c^+ ; x \in X} \alpha(x) - \lim_{x \to c^- ; x \in X} \alpha(x) \\
-        & + \lim_{x \to c^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) + \alpha(\{b\}) \\
-        & = \alpha(\{a\}) + \alpha[(c, b)] + \alpha[\{c\}] + \alpha[(a, c)] + \alpha(\{b\}) \\
-        & = \alpha[[a, c)] + \alpha[[c, b]] \\
-        & = \alpha[K] + \alpha[I \setminus K].
+        \alpha[I] & = \alpha(\{a\}) + \alpha[(a, b)] + \alpha(\{b\})                                                              \\
+                  & = \alpha(\{a\}) + \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) + \alpha(\{b\}) \\
+                  & = \alpha(\{a\}) + \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to c^+ ; x \in X} \alpha(x)                 \\
+                  & + \lim_{x \to c^+ ; x \in X} \alpha(x) - \lim_{x \to c^- ; x \in X} \alpha(x)                                 \\
+                  & + \lim_{x \to c^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) + \alpha(\{b\})                 \\
+                  & = \alpha(\{a\}) + \alpha[(c, b)] + \alpha[\{c\}] + \alpha[(a, c)] + \alpha(\{b\})                             \\
+                  & = \alpha[[a, c)] + \alpha[[c, b]]                                                                             \\
+                  & = \alpha[K] + \alpha[I \setminus K].
     \end{align*}
     when \(I = [a, b]\).
     On the other hand, since \(\mathbf{P}\) forms a partition of \(I\), we see that \(\mathbf{P} \setminus \{K\}\) forms a partition of \(I \setminus K\).
@@ -99,28 +99,28 @@
 
     Now suppose that \(b \notin I\), i.e., \(I\) is either \((a, b)\) or \([a, b)\).
     Then one of the intervals \(K\) also is of the form \((c, b)\) or \([c, b)\) (see Exercise \ref{ex 11.1.3}).
-    In particular, this means that the set \(I \setminus K\) is also an interval of the form \([a, c]\), \((a, c)\), \((a, c]\), \([a, c)\) when \(c > a\), or a point or empty set when \(a = c\).
+            In particular, this means that the set \(I \setminus K\) is also an interval of the form \([a, c]\), \((a, c)\), \((a, c]\), \([a, c)\) when \(c > a\), or a point or empty set when \(a = c\).
     By Definition \ref{11.8.1} we see that
     \begin{align*}
-        \alpha[I] & = \alpha[(a, b)] \\
-        & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) \\
-        & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to c^+ ; x \in X} \alpha(x) \\
-        & + \lim_{x \to c^+ ; x \in X} \alpha(x) - \lim_{x \to c^- ; x \in X} \alpha(x) \\
-        & + \lim_{x \to c^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) \\
-        & = \alpha[(c, b)] + \alpha[\{c\}] + \alpha[(a, c)] \\
-        & = \alpha[(a, c)] + \alpha[[c, b)] \\
-        & = \alpha[K] + \alpha[I \setminus K]
+        \alpha[I] & = \alpha[(a, b)]                                                              \\
+                  & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) \\
+                  & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to c^+ ; x \in X} \alpha(x) \\
+                  & + \lim_{x \to c^+ ; x \in X} \alpha(x) - \lim_{x \to c^- ; x \in X} \alpha(x) \\
+                  & + \lim_{x \to c^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) \\
+                  & = \alpha[(c, b)] + \alpha[\{c\}] + \alpha[(a, c)]                             \\
+                  & = \alpha[(a, c)] + \alpha[[c, b)]                                             \\
+                  & = \alpha[K] + \alpha[I \setminus K]
     \end{align*}
     when \(I = (a, b)\) and
     \begin{align*}
-        \alpha[I] & = \alpha(\{a\}) + \alpha[(a, b)] \\
-        & = \alpha(\{a\}) + \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) \\
-        & = \alpha(\{a\}) + \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to c^+ ; x \in X} \alpha(x) \\
-        & + \lim_{x \to c^+ ; x \in X} \alpha(x) - \lim_{x \to c^- ; x \in X} \alpha(x) \\
-        & + \lim_{x \to c^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) \\
-        & = \alpha(\{a\}) + \alpha[(c, b)] + \alpha[\{c\}] + \alpha[(a, c)] \\
-        & = \alpha[[a, c)] + \alpha[[c, b)] \\
-        & = \alpha[K] + \alpha[I \setminus K].
+        \alpha[I] & = \alpha(\{a\}) + \alpha[(a, b)]                                                              \\
+                  & = \alpha(\{a\}) + \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) \\
+                  & = \alpha(\{a\}) + \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to c^+ ; x \in X} \alpha(x) \\
+                  & + \lim_{x \to c^+ ; x \in X} \alpha(x) - \lim_{x \to c^- ; x \in X} \alpha(x)                 \\
+                  & + \lim_{x \to c^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x)                 \\
+                  & = \alpha(\{a\}) + \alpha[(c, b)] + \alpha[\{c\}] + \alpha[(a, c)]                             \\
+                  & = \alpha[[a, c)] + \alpha[[c, b)]                                                             \\
+                  & = \alpha[K] + \alpha[I \setminus K].
     \end{align*}
     when \(I = [a, b)\).
     The rest of the argument then proceeds as above.
@@ -167,13 +167,13 @@
     Since \(f\) is piecewise constant with respect to \(\mathbf{P}\), by Lemma \ref{11.2.7} we know that \(f\) is piecewise constant with respect to \(\mathbf{P} \# \mathbf{P}'\).
     So we have
     \begin{align*}
-        p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f \; d \alpha & = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \alpha[J]             & \text{(by Definition \ref{11.8.5})}     \\
-                                                  & = \sum_{J \in \bigcup_{K \in \mathbf{P}} \mathbf{P}_K} c_J \alpha[J]                                                    \\
-                                                  & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_J \alpha[J]             & \text{(by Proposition \ref{7.1.11}(e))} \\
-                                                  & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_K \alpha[J]             & (J \subseteq K)                         \\
-                                                  & = \sum_{K \in \mathbf{P}} c_K \bigg(\sum_{J \in \mathbf{P}_K} \alpha[J]\bigg)                                           \\
-                                                  & = \sum_{K \in \mathbf{P}} c_K \alpha[K]                                       & \text{(by Lemma \ref{11.8.4})}       \\
-                                                  & = p.c. \int_{[\mathbf{P}]} f \; d \alpha.                                                & \text{(by Definition \ref{11.8.5})}
+        p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f \; d \alpha & = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \alpha[J]                        & \text{(by Definition \ref{11.8.5})}     \\
+                                                              & = \sum_{J \in \bigcup_{K \in \mathbf{P}} \mathbf{P}_K} c_J \alpha[J]                                                    \\
+                                                              & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_J \alpha[J]             & \text{(by Proposition \ref{7.1.11}(e))} \\
+                                                              & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_K \alpha[J]             & (J \subseteq K)                         \\
+                                                              & = \sum_{K \in \mathbf{P}} c_K \bigg(\sum_{J \in \mathbf{P}_K} \alpha[J]\bigg)                                           \\
+                                                              & = \sum_{K \in \mathbf{P}} c_K \alpha[K]                                       & \text{(by Lemma \ref{11.8.4})}          \\
+                                                              & = p.c. \int_{[\mathbf{P}]} f \; d \alpha.                                     & \text{(by Definition \ref{11.8.5})}
     \end{align*}
     Using similar arguments we can show that \(p.c. \int_{[\mathbf{P}']} f \; d \alpha = p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f \; d \alpha\).
     Thus we have \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d \alpha\).
@@ -223,11 +223,11 @@
     Then by Definition \ref{11.2.1} \(f_J + g_J\) is also a constant of \(f + g\) on \(J\).
     Thus we have \(f + g\) is piecewise constant with respect to \(\mathbf{P}\) and
     \begin{align*}
-        p.c. \int_I f \; d \alpha + p.c. \int_I g \; d \alpha & = p.c. \int_{[\mathbf{P}]} f \; d \alpha + p.c. \int_{[\mathbf{P}]} g \; d \alpha                    & \text{(by Definition \ref{11.8.9})}    \\
-                                      & = \sum_{J \in \mathbf{P}} f_J \alpha[J] + \sum_{J \in \mathbf{P}} g_J \alpha[J] & \text{(by Definition \ref{11.8.5})}     \\
-                                      & = \sum_{J \in \mathbf{P}} (f_J + g_J) \alpha[J]                                & \text{(by Proposition \ref{7.1.11}(f))} \\
-                                      & = p.c. \int_{[\mathbf{P}]} (f_J + g_J) \; d \alpha                                       & \text{(by Definition \ref{11.8.5})}     \\
-                                      & = p.c. \int_I (f_J + g_J) \; d \alpha.                                                    & \text{(by Definition \ref{11.8.9})}
+        p.c. \int_I f \; d \alpha + p.c. \int_I g \; d \alpha & = p.c. \int_{[\mathbf{P}]} f \; d \alpha + p.c. \int_{[\mathbf{P}]} g \; d \alpha & \text{(by Definition \ref{11.8.9})}     \\
+                                                              & = \sum_{J \in \mathbf{P}} f_J \alpha[J] + \sum_{J \in \mathbf{P}} g_J \alpha[J]   & \text{(by Definition \ref{11.8.5})}     \\
+                                                              & = \sum_{J \in \mathbf{P}} (f_J + g_J) \alpha[J]                                   & \text{(by Proposition \ref{7.1.11}(f))} \\
+                                                              & = p.c. \int_{[\mathbf{P}]} (f_J + g_J) \; d \alpha                                & \text{(by Definition \ref{11.8.5})}     \\
+                                                              & = p.c. \int_I (f_J + g_J) \; d \alpha.                                            & \text{(by Definition \ref{11.8.9})}
     \end{align*}
 \end{proof}
 
@@ -238,21 +238,21 @@
     Then by Definition \ref{11.2.1} \(c f_J\) is also a constant of \(cf\) on \(J\).
     Thus we have \(cf\) is piecewise constant with respect to \(\mathbf{P}\) and
     \begin{align*}
-        c (p.c. \int_I f \; d \alpha) & = c (p.c. \int_{[\mathbf{P}]} f \; d \alpha)           & \text{(by Definition \ref{11.8.9})}    \\
-                          & = c (\sum_{J \in \mathbf{P}} f_J \alpha[J]) & \text{(by Definition \ref{11.8.5})}     \\
-                          & = \sum_{J \in \mathbf{P}} c f_J \alpha[J]   & \text{(by Proposition \ref{7.1.11}(g))} \\
-                          & = p.c. \int_{[\mathbf{P}]} (c f) \; d \alpha           & \text{(by Definition \ref{11.8.5})}     \\
-                          & = p.c. \int_I (c f) \; d \alpha.                       & \text{(by Definition \ref{11.8.9})}
+        c (p.c. \int_I f \; d \alpha) & = c (p.c. \int_{[\mathbf{P}]} f \; d \alpha) & \text{(by Definition \ref{11.8.9})}     \\
+                                      & = c (\sum_{J \in \mathbf{P}} f_J \alpha[J])  & \text{(by Definition \ref{11.8.5})}     \\
+                                      & = \sum_{J \in \mathbf{P}} c f_J \alpha[J]    & \text{(by Proposition \ref{7.1.11}(g))} \\
+                                      & = p.c. \int_{[\mathbf{P}]} (c f) \; d \alpha & \text{(by Definition \ref{11.8.5})}     \\
+                                      & = p.c. \int_I (c f) \; d \alpha.             & \text{(by Definition \ref{11.8.9})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(c)}
     We have
     \begin{align*}
-        p.c. \int_I f \; d \alpha - p.c. \int_I g \; d \alpha & = p.c. \int_I f \; d \alpha + (-1) p.c. \int_I g \; d \alpha                                       \\
-                                      & = p.c. \int_I f \; d \alpha + p.c. \int_I (-g) \; d \alpha  & \text{(by Theorem \ref{11.8.10}(b))} \\
-                                      & = p.c. \int_I (f + (-g)) \; d \alpha            & \text{(by Theorem \ref{11.8.10}(a))} \\
-                                      & = p.c. \int_I (f - g) \; d \alpha.               & \text{(by Definition \ref{9.2.1})}
+        p.c. \int_I f \; d \alpha - p.c. \int_I g \; d \alpha & = p.c. \int_I f \; d \alpha + (-1) p.c. \int_I g \; d \alpha                                        \\
+                                                              & = p.c. \int_I f \; d \alpha + p.c. \int_I (-g) \; d \alpha   & \text{(by Theorem \ref{11.8.10}(b))} \\
+                                                              & = p.c. \int_I (f + (-g)) \; d \alpha                         & \text{(by Theorem \ref{11.8.10}(a))} \\
+                                                              & = p.c. \int_I (f - g) \; d \alpha.                           & \text{(by Definition \ref{9.2.1})}
     \end{align*}
 \end{proof}
 
@@ -287,8 +287,8 @@
     Let \(\text{sgn} : \mathbf{R} \to \mathbf{R}\) be the signum function
     \[
         \text{sgn}(x) = \begin{cases}
-            1 & \text{when } x > 0 \\
-            0 & \text{when } x = 0 \\
+            1  & \text{when } x > 0  \\
+            0  & \text{when } x = 0  \\
             -1 & \text{when } x < 0.
         \end{cases}
     \]
