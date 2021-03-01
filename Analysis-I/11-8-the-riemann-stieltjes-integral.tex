@@ -377,6 +377,61 @@
     We sometimes write \(\int_I f\) as \(\int_I f \; dx\) or \(\int_I f(x) \; dx\).
 \end{note}
 
+\begin{theorem}\label{11.8.12}
+    Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f\) be a function which is uniformly continuous on \(I\).
+    Then \(f\) is Riemann-Stieltjes integrable.
+\end{theorem}
+
+\begin{proof}
+    From Proposition \ref{9.9.15} we see that \(f\) is bounded.
+    Now we have to show that \(\underline{\int}_I f \; d \alpha = \overline{\int}_I f \; d \alpha\).
+
+    If \(I\) is a point or the empty set then the theorem is trivial, so let us assume that \(I\) is one of the four intervals \([a, b]\), \((a, b)\), \((a, b]\), or \([a, b)\) for some real numbers \(a < b\).
+
+            Let \(\varepsilon > 0\) be arbitrary.
+            By uniform continuity, there exists a \(\delta > 0\) such that \(\abs*{f(x) - f(y)} < \varepsilon\) whenever \(x, y \in I\) are such that \(\abs*{x - y} < \delta\).
+            By the Archimedean principle, there exists an integer \(N > 0\) such that \((b - a) / N < \delta\) and \((\alpha(b) - \alpha(a)) / N < \delta\).
+
+            Note that we can partition \(I\) into \(N\) intervals \(J_1, \dots, J_N\), each of length \((b - a) / N\).
+            (How? One has to treat each of the cases \([a, b]\), \((a, b)\), \((a, b]\), \([a, b)\) slightly differently.)
+    By Proposition \ref{11.3.12}, we thus have
+    \[
+        \overline{\int}_I f \; d \alpha \leq \sum_{k = 1}^N (\sup_{x \in J_k} f(x)) \alpha[J_k]
+    \]
+    and
+    \[
+        \underline{\int}_I f \; d \alpha \geq \sum_{k = 1}^N (\inf_{x \in J_k} f(x)) \alpha[J_k]
+    \]
+    so in particular
+    \[
+        \overline{\int}_I f \; d \alpha - \underline{\int}_I f \; d \alpha \leq \sum_{k = 1}^N (\sup_{x \in J_k} f(x) - \inf_{x \in J_k} f(x)) \alpha[J_k].
+    \]
+    However, we have \(\abs*{f(x) - f(y)} < \varepsilon\) for all \(x, y \in J_k\), since \(\alpha[J_k] = (\alpha(b) - \alpha(a)) / N < \delta\).
+    In particular we have
+    \[
+        f(x) < f(y) + \varepsilon \text{ for all } x, y \in J_k.
+    \]
+    Taking suprema in \(x\), we obtain
+    \[
+        \sup_{x \in J_k} f(x) \leq f(y) + \varepsilon \text{ for all } y \in J_k,
+    \]
+    and then taking infima in \(y\) we obtain
+    \[
+        \sup_{x \in J_k} f(x) \leq \inf_{y \in J_k} f(y) + \varepsilon.
+    \]
+    Inserting this bound into our previous inequality, we obtain
+    \[
+        \overline{\int}_I f \; d \alpha - \underline{\int}_I f \; d \alpha \leq \sum_{k = 1}^N \varepsilon \alpha[J_k],
+    \]
+    but by Lemma \ref{11.8.4} we thus have
+    \[
+        \overline{\int}_I f - \underline{\int}_I f \leq \varepsilon \alpha[I].
+    \]
+    But \(\varepsilon > 0\) was arbitrary, while \(\alpha[I]\) is fixed.
+    Thus \(\overline{\int}_I f - \underline{\int}_I f\) cannot be positive.
+    By Definition \ref{11.8.11} we thus have that \(f\) is Riemann-Stieltjes integrable.
+\end{proof}
+
 \exercisesection
 
 \begin{exercise}\label{ex 11.8.1}
