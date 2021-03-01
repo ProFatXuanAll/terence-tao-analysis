@@ -142,6 +142,43 @@
     Then for any bounded interval \(I\), any partition \(\mathbf{P}\) of \(I\), and any function \(f\) that is piecewise constant with respect to \(P\), we have \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}]} f\).
 \end{example}
 
+\begin{proposition}[Piecewise constant Riemann-Stieltjes integral is independent of partition]\label{11.8.8}
+    Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) be a function.
+    Suppose that \(\mathbf{P}\) and \(\mathbf{P}'\) are partitions of \(I\) such that \(f\) is piecewise constant both with respect to \(\mathbf{P}\) and with respect to \(\mathbf{P}'\).
+    Then \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d \alpha\).
+\end{proposition}
+
+\begin{proof}
+    By Lemma \ref{11.1.18} we know that \(\mathbf{P} \# \mathbf{P}'\) is a partition of \(I\) and is both finer than \(\mathbf{P}\) and finer than \(\mathbf{P}'\), thus by Definition \ref{11.8.5} we have
+    \[
+        p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f \; d \alpha = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \alpha[J].
+    \]
+    By Lemma \ref{11.8.4}, we know that
+    \[
+        \alpha[I] = \sum_{J \in \mathbf{P}} \alpha[J] = \sum_{J \in \mathbf{P} \# \mathbf{P}'} \alpha[J].
+    \]
+    By Definition \ref{11.1.14}, \(\forall\ S \in \mathbf{P} \# \mathbf{P}'\), \(\exists\ K \in \mathbf{P}\) such that \(S \subseteq K\).
+    Now we fix such \(K\) and let \(\mathbf{P}_K\) be the set
+    \[
+        \mathbf{P}_K = \{S \in \mathbf{P} \# \mathbf{P}' : S \subseteq K\}.
+    \]
+    We know that \(\mathbf{P}_K\) is a partition of \(K\) and \(\bigcup_{K \in \mathbf{P}} \mathbf{P}_K = \mathbf{P} \# \mathbf{P}'\).
+    (See the proof of Proposition \ref{11.2.13})
+    Since \(f\) is piecewise constant with respect to \(\mathbf{P}\), by Lemma \ref{11.2.7} we know that \(f\) is piecewise constant with respect to \(\mathbf{P} \# \mathbf{P}'\).
+    So we have
+    \begin{align*}
+        p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f \; d \alpha & = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \alpha[J]             & \text{(by Definition \ref{11.8.5})}     \\
+                                                  & = \sum_{J \in \bigcup_{K \in \mathbf{P}} \mathbf{P}_K} c_J \alpha[J]                                                    \\
+                                                  & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_J \alpha[J]             & \text{(by Proposition \ref{7.1.11}(e))} \\
+                                                  & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_K \alpha[J]             & (J \subseteq K)                         \\
+                                                  & = \sum_{K \in \mathbf{P}} c_K \bigg(\sum_{J \in \mathbf{P}_K} \alpha[J]\bigg)                                           \\
+                                                  & = \sum_{K \in \mathbf{P}} c_K \alpha[K]                                       & \text{(by Lemma \ref{11.8.4})}       \\
+                                                  & = p.c. \int_{[\mathbf{P}]} f \; d \alpha.                                                & \text{(by Definition \ref{11.8.5})}
+    \end{align*}
+    Using similar arguments we can show that \(p.c. \int_{[\mathbf{P}']} f \; d \alpha = p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f \; d \alpha\).
+    Thus we have \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d \alpha\).
+\end{proof}
+
 \exercisesection
 
 \begin{exercise}\label{ex 11.8.1}
