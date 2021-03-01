@@ -481,3 +481,53 @@
         \int_{[-1, 1]} f \; d \, \text{sgn} = 2f(0).
     \]
 \end{exercise}
+
+\begin{proof}
+    We first show that \(f\) is Riemann-Stieltjes integrable on \([-1, 1]\) with respect to \(\text{sgn}\).
+    By Theorem \ref{9.9.16} \(f\) is uniformly continuous, and thus by Proposition \ref{9.9.15} \(f\) is bounded.
+    Since \(\text{sgn}\) is monoton increasing, by Theorem \ref{11.8.12} we know that \(f\) is Riemann-Stieltjes integrable on \([-1, 1]\) with respect to \(\text{sgn}\).
+
+    Now we show that \(\int_{[-1, 1]} f \; d \, \text{sgn} = 2f(0)\).
+    Since \(f\) is continuous, by Proposition \ref{9.4.7} \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ \delta \in \mathbf{R}^+\) such that
+    \begin{align*}
+        \forall\ x \in [-1, 1], \abs*{x - 0} \leq \delta \implies & \abs*{f(x) - f(0)} \leq \varepsilon                   \\
+        \implies                                                  & f(0) - \varepsilon \leq f(x) \leq f(0) + \varepsilon.
+    \end{align*}
+    Since \(f\) is bounded, \(\exists\ M \in \mathbf{R}\) such that \(\abs*{f(x)} \leq M\) for all \(x \in [-1, 1]\).
+    Let \(f_U : [-1, 1] \to \mathbf{R}\) be the function
+    \[
+        f_U(x) = \begin{cases}
+            f(0) + \varepsilon & \text{if } x \in [-\delta, \delta]                   \\
+            M                  & \text{if } x \in [-1, 1] \setminus [-\delta, \delta]
+        \end{cases}
+    \]
+    and let \(f_L : [-1, 1] \to \mathbf{R}\) be the function
+    \[
+        f_L(x) = \begin{cases}
+            f(0) - \varepsilon & \text{if } x \in [-\delta, \delta]                   \\
+            -M                 & \text{if } x \in [-1, 1] \setminus [-\delta, \delta]
+        \end{cases}
+    \]
+    Clearly \(f_U\) majorizes \(f\) and \(f_L\) minorizes \(f\).
+    Then we have
+    \begin{align*}
+        \overline{\int}_{[-1, 1]} f \; d \text{sgn} & \leq p.c. \int f_U \; d \text{sgn}                                & \text{(by Definition \ref{11.8.11})} \\
+                                                    & = M (\text{sgn}(-\delta) - \text{sgn}(-1))                        & \text{(by Definition \ref{11.8.5})}  \\
+                                                    & + (f(0) + \varepsilon) (\text{sgn}(\delta) - \text{sgn}(-\delta))                                        \\
+                                                    & + M (\text{sgn}(1) - \text{sgn}(\delta))                                                                 \\
+                                                    & = 2(f(0) + \varepsilon)
+    \end{align*}
+    and
+    \begin{align*}
+        \underline{\int}_{[-1, 1]} f \; d \text{sgn} & \geq p.c. \int f_L \; d \text{sgn}                                & \text{(by Definition \ref{11.8.11})} \\
+                                                     & = M (\text{sgn}(-\delta) - \text{sgn}(-1))                        & \text{(by Definition \ref{11.8.5})}  \\
+                                                     & + (f(0) - \varepsilon) (\text{sgn}(\delta) - \text{sgn}(-\delta))                                        \\
+                                                     & + M (\text{sgn}(1) - \text{sgn}(\delta))                                                                 \\
+                                                     & = 2(f(0) - \varepsilon).
+    \end{align*}
+    Combining results above we have
+    \[
+        2(f(0) - \varepsilon) \leq \underline{\int}_{[-1, 1]} f \; d \text{sgn} = \int_{[-1, 1]} f \; d \text{sgn} = \overline{\int}_{[-1, 1]} f \; d \text{sgn} \leq 2(f(0) + \varepsilon).
+    \]
+    Since \(\varepsilon\) is arbitrary, we thus have \(\int_{[-1, 1]} f \; d \text{sgn} = 2f(0)\).
+\end{proof}
