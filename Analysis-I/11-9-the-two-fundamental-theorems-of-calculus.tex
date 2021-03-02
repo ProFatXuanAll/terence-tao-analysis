@@ -177,3 +177,38 @@
     \]
     as desired.
 \end{proof}
+
+\begin{note}
+    One can use the second fundamental theorem of calculus to compute integrals relatively easily provided that you can find an anti-derivative of the integrand \(f\).
+    the first fundamental theorem of calculus ensures that every \emph{continuous} Riemann integrable function has an anti-derivative.
+    For discontinuous functions, the situation is more complicated.
+    Also, not every function with an anti-derivative is Riemann integrable.
+\end{note}
+
+\begin{lemma}\label{11.9.5}
+    Let \(I\) be a bounded interval, and let \(f : I \to \mathbf{R}\) be a function.
+    Let \(F : I \to \mathbf{R}\) and \(G : I \to \mathbf{R}\) be two antiderivatives of \(f\).
+    Then there exists a real number \(C\) such that \(F(x) = G(x) + C\) for all \(x \in I\).
+\end{lemma}
+
+\begin{proof}
+    Since \(I\) is a bounded interval, \(\forall\ x \in \overline{I}\), \(x\) is a limit point, thus \(\forall\ x \in I\), \(x\) is also a limit point.
+    Since \(F, G\) are antiderivatives of \(f\), by Definition \ref{11.9.3} we know that \(F, G\) are differentiable on \(I\).
+    By Theorem \ref{10.1.13}(f) we know that \(F - G\) is differentiable on \(I\), and thus by Corollary \ref{10.1.12} we know that \(F - G\) are continuous on \(I\).
+    Let \(x, y \in I\) and \(x < y\).
+    Since \(I\) is a bounded interval, by Lemma \ref{11.1.10} we know that \(I\) is connected, and thus by Definition \ref{11.1.1} \([x, y] \subseteq I\).
+    By the mean-value theorem (Corollary \ref{10.2.9}) we know that
+    \[
+        \exists\ c \in I : \frac{(F - G)(x) - (F - G)(y)}{x - y} = (F - G)'(c).
+    \]
+    Thus we have
+    \begin{align*}
+                 & \frac{(F - G)(x) - (F - G)(y)}{x - y} = (F - G)'(c)                                          \\
+        \implies & \frac{(F - G)(x) - (F - G)(y)}{x - y} = F'(c) - G'(c) & \text{(by Theorem \ref{10.1.13}(f))} \\
+        \implies & \frac{(F - G)(x) - (F - G)(y)}{x - y} = 0             & \text{(by hypothesis)}               \\
+        \implies & (F - G)(x) = (F - G)(y)                                                                      \\
+        \implies & F(x) - G(x) = F(y) - G(y)                             & \text{(by Definition \ref{9.2.1})}   \\
+        \implies & F(x) = G(x) + F(y) - G(y).
+    \end{align*}
+    By setting \(C = F(y) - G(y)\) we are done.
+\end{proof}
