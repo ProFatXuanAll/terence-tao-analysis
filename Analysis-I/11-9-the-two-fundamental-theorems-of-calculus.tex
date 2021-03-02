@@ -213,6 +213,82 @@
     By setting \(C = F(y) - G(y)\) we are done.
 \end{proof}
 
+\begin{proposition}\label{11.9.6}
+    Let \(a < b\) be real numbers, let \(x \in [a, b]\) and let \(f : [a, b] \to \mathbf{R}\) be a monotone function.
+    If \(f\) is monotone increasing, then we have
+    \[
+        f(x_0+) = \inf_{x \in [a, b] \cap (x_0, \infty)} f(x)
+    \]
+    and
+    \[
+        f(x_0-) = \sup_{x \in [a, b] \cap (-\infty, x_0)} f(x).
+    \]
+    If \(f\) is monotone decreasing, then we have
+    \[
+        f(x_0+) = \sup_{x \in [a, b] \cap (x_0, \infty)} f(x)
+    \]
+    and
+    \[
+        f(x_0-) = \inf_{x \in [a, b] \cap (-\infty, x_0)} f(x).
+    \]
+\end{proposition}
+
+\begin{proof}
+    First suppose that \(f\) is monotone increasing.
+    Since \(f\) is monotone increasing, we have
+    \[
+        \sup_{x \in [a, b] \cap (x_0, \infty)} f(x) \leq \sup_{x \in [a, b]} f(x)
+    \]
+    and
+    \[
+        \inf_{x \in [a, b] \cap (x_0, \infty)} f(x) \geq \inf_{x \in [a, b]} f(x)
+    \]
+    and thus \(f(x_0+)\) and \(f(x_0-)\) are finite.
+    Let \(U = \inf_{x \in [a, b] \cap (x_0, \infty)} f(x)\).
+    By the definition of \(U\), \(\forall\ \varepsilon \in \mathbf{R}^+\), we can always find an \(x \in [a, b] \cap (x_0, \infty)\) such that \(0 \leq f(x) - U \leq \varepsilon\).
+    We also know that for all \(y \in [a, b] \cap (x_0, \infty)\) and \(y \leq x\), we have \(0 \leq f(y) - U \leq f(x) - U \leq \varepsilon\).
+    Thus by setting \(\delta = x - x_0\) we have
+    \[
+        \forall\ y \in [a, b] \cap (x_0, \infty), \abs*{y - x_0} < \delta \implies \abs*{f(y) - U} \leq \varepsilon
+    \]
+    and by Definition \ref{9.3.6} and Definition \ref{9.5.1} we have \(f(x_0+) = U\).
+    Similarly let \(L = \sup_{x \in [a, b] \cap (x_0, \infty)} f(x)\).
+    By the definition of \(L\), \(\forall\ \varepsilon \in \mathbf{R}^+\), we can always find an \(x \in [a, b] \cap (-\infty, x_0)\) such that \(0 \leq L - f(x) \leq \varepsilon\).
+    We also know that for all \(y \in [a, b] \cap (-\infty, x_0)\) and \(y \geq x\), we have \(0 \leq L - f(y) \leq L - f(x) \leq \varepsilon\).
+    Thus by setting \(\delta = x_0 - x\) we have
+    \[
+        \forall\ y \in [a, b] \cap (-\infty, x_0), \abs*{y - x_0} < \delta \implies \abs*{f(y) - L} \leq \varepsilon
+    \]
+    and by Definition \ref{9.3.6} and Definition \ref{9.5.1} we have \(f(x_0-) = L\).
+
+    Now suppose that \(f\) is monotone decreasing.
+    Since \(f\) is monotone decreasing, we have
+    \[
+        \sup_{x \in [a, b] \cap (x_0, \infty)} f(x) \leq \sup_{x \in [a, b]} f(x)
+    \]
+    and
+    \[
+        \inf_{x \in [a, b] \cap (x_0, \infty)} f(x) \geq \inf_{x \in [a, b]} f(x)
+    \]
+    and thus \(f(x_0+)\) and \(f(x_0-)\) are finite.
+    Let \(U = \sup_{x \in [a, b] \cap (x_0, \infty)} f(x)\).
+    By the definition of \(U\), \(\forall\ \varepsilon \in \mathbf{R}^+\), we can always find an \(x \in [a, b] \cap (x_0, \infty)\) such that \(0 \leq U - f(x) \leq \varepsilon\).
+    We also know that for all \(y \in [a, b] \cap (x_0, \infty)\) and \(y \leq x\), we have \(0 \leq U - f(y) \leq U - f(x) \leq \varepsilon\).
+    Thus by setting \(\delta = x - x_0\) we have
+    \[
+        \forall\ y \in [a, b] \cap (x_0, \infty), \abs*{y - x_0} < \delta \implies \abs*{f(y) - U} \leq \varepsilon
+    \]
+    and by Definition \ref{9.3.6} and Definition \ref{9.5.1} we have \(f(x_0+) = U\).
+    Similarly let \(L = \inf_{x \in [a, b] \cap (x_0, \infty)} f(x)\).
+    By the definition of \(L\), \(\forall\ \varepsilon \in \mathbf{R}^+\), we can always find an \(x \in [a, b] \cap (-\infty, x_0)\) such that \(0 \leq f(x) - L \leq \varepsilon\).
+    We also know that for all \(y \in [a, b] \cap (-\infty, x_0)\) and \(y \geq x\), we have \(0 \leq f(y) - L \leq f(x) - L \leq \varepsilon\).
+    Thus by setting \(\delta = x_0 - x\) we have
+    \[
+        \forall\ y \in [a, b] \cap (-\infty, x_0), \abs*{y - x_0} < \delta \implies \abs*{f(y) - L} \leq \varepsilon
+    \]
+    and by Definition \ref{9.3.6} and Definition \ref{9.5.1} we have \(f(x_0-) = L\).
+\end{proof}
+
 \exercisesection
 
 \begin{exercise}\label{ex 11.9.1}
