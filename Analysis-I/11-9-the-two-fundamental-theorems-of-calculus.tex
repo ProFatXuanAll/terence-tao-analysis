@@ -336,3 +336,47 @@
     Let \(x_0\) be an element of \((a, b)\).
     Show that \(F\) is differentiable at \(x_0\) if and only if \(f\) is continuous at \(x_0\).
 \end{exercise}
+
+\begin{proof}
+    Since \(f\) is monotone increasing, by Proposition \ref{11.6.1} we know that \(f\) is Riemann integrable and \(F\) is well-defined.
+    If \(f\) is continuous at \(x_0\) then by Theorem \ref{11.9.1} we know that \(F\) is differentiable at \(x_0\).
+    So we only need to show that if \(F\) is differentiable at \(x_0\) then \(f\) is continuous at \(x_0\).
+
+    Suppose that \(F\) is differentiable at \(x_0\).
+    Suppose for sake of contradiction that \(f\) is not continuous at \(x_0\).
+    Since \(f\) is monotone increasing, by Proposition \ref{11.9.6} we know that both \(f(x_0+)\) and \(f(x_0-)\) exist.
+    Since \(f\) is not continuous at \(x_0\), we have \(f(x_0) \neq f(x_0-)\) or \(f(x_0) \neq f(x_0+)\).
+
+    First suppose that \(f(x_0) \neq f(x_0-)\).
+    Then by Proposition \ref{11.9.6} we have \(f(x_0-) < f(x_0)\).
+    If \(x \in [a, b] \cap (-\infty, x_0)\), then we have
+    \[
+        \frac{F(x) - F(x_0)}{x - x_0} = \frac{-\int_{[x, x_0]} f}{x - x_0} = \frac{\int_{[x, x_0]} f}{x_0 - x} \leq \frac{\int_{[x, x_0]} f(x_0-)}{x_0 - x} = f(x_0-).
+    \]
+    If \(x \in [a, b] \cap (x_0, \infty)\), then we have
+    \[
+        \frac{F(x) - F(x_0)}{x - x_0} = \frac{\int_{[x_0, x]} f}{x - x_0} \geq \frac{\int_{[x_0, x]} f(x_0)}{x - x_0} = f(x_0).
+    \]
+    Thus we have
+    \[
+        F'(x_0-) \leq f(x_0-) < f(x_0) \leq F'(x_0+)
+    \]
+    and \(F'(x_0)\) does not exists, a contradiction.
+
+    Now suppose that \(f(x_0) \neq f(x_0+)\).
+    Then by Proposition \ref{11.9.6} we have \(f(x_0) < f(x_0+)\).
+    If \(x \in [a, b] \cap (-\infty, x_0)\), then we have
+    \[
+        \frac{F(x) - F(x_0)}{x - x_0} = \frac{-\int_{[x, x_0]} f}{x - x_0} = \frac{\int_{[x, x_0]} f}{x_0 - x} \leq \frac{\int_{[x, x_0]} f(x_0)}{x_0 - x} = f(x_0).
+    \]
+    If \(x \in [a, b] \cap (x_0, \infty)\), then we have
+    \[
+        \frac{F(x) - F(x_0)}{x - x_0} = \frac{\int_{[x_0, x]} f}{x - x_0} \geq \frac{\int_{[x_0, x]} f(x_0+)}{x - x_0} = f(x_0+).
+    \]
+    Thus we have
+    \[
+        F'(x_0-) \leq f(x_0) < f(x_0+) \leq F'(x_0+)
+    \]
+    and \(F'(x_0)\) does not exists, a contradiction.
+    So we conclude that \(f\) is continuous at \(x_0\).
+\end{proof}
