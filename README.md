@@ -238,6 +238,5 @@ a_n^2                      % do not enclose with {}
   - 8.1.10
   - 8.5.16 - 8.5.20
   - 9.3.4
-  - 11.9.1
 - Analysis II
   - not start yet
