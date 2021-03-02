@@ -1,1 +1,108 @@
 \section{The two fundamental theorems of calculus}\label{sec 11.9}
+
+\begin{theorem}[First Fundamental Theorem of Calculus]\label{11.9.1}
+    Let \(a < b\) be real numbers, and let \(f : [a, b] \to \mathbf{R}\) be a Riemann integrable function.
+    Let \(F : [a, b] \to \mathbf{R}\) be the function
+    \[
+        F(x) \coloneqq \int_{[a, x]} f.
+    \]
+    Then \(F\) is continuous.
+    Furthermore, if \(x_0 \in [a, b]\) and \(f\) is continuous at \(x_0\), then \(F\) is differentiable at \(x_0\), and \(F'(x_0) = f(x_0)\).
+\end{theorem}
+
+\begin{proof}
+    Since \(f\) is Riemann integrable, it is bounded (by Definition \ref{11.3.4}).
+    Thus we have some real number \(M\) such that \(-M \leq f(x) \leq M\) for all \(x \in [a, b]\).
+
+    Now let \(x < y\) be two elements of \([a, b]\).
+    Then notice that
+    \[
+        F(y) - F(x) = \int_{[a, y]} f - \int_{[a, x]} f = \int_{[x, y]} f
+    \]
+    by Theorem \ref{11.4.1}(h).
+    By Theorem \ref{11.4.1}(e) we thus have
+    \[
+        \int_{[x, y]} f \leq \int_{[x, y]} M = p.c. \int_{[x, y]} M = M(y - x)
+    \]
+    and
+    \[
+        \int_{[x, y]} f \geq \int_{[x, y]} -M = p.c. \int_{[x, y]} -M = -M(y - x)
+    \]
+    and thus
+    \[
+        \abs*{F(y) - F(x)} \leq M(y - x).
+    \]
+    This is for \(y > x\).
+    By interchanging \(x\) and \(y\) we thus see that
+    \[
+        \abs*{F(y) - F(x)} \leq M(x - y)
+    \]
+    when \(x > y\).
+    Also, we have \(F(y) - F(x) = 0\) when \(x = y\).
+    Thus in all
+    three cases we have
+    \[
+        \abs*{F(y) - F(x)} \leq M \abs*{x - y}.
+    \]
+    Now let \(z \in [a, b]\), and let \((z_n)_{n = 0}^\infty\) be any sequence in \([a, b]\) converging to \(z\).
+    Then we have
+    \[
+        -M \abs*{z_n - z} \leq F(z_n) - F(z) \leq M \abs*{z_n - z}
+    \]
+    for each \(n\).
+    But \(-M \abs*{z_n - z}\) and \(M \abs*{z_n - z}\) both converge to \(0\) as \(n \to \infty\), so by the squeeze test \(F(z_n) - F(z)\) converges to \(0\) as \(n \to \infty\), and thus \(\lim_{n \to \infty} F(z_n) = F(z)\).
+    Since this is true for all sequences \(z_n \in [a, b]\) converging to \(z\), we thus see that \(F\) is continuous at \(z\) (by Proposition \ref{9.4.7}).
+    Since \(z\) was an arbitrary element of \([a, b]\), we thus see that \(F\) is continuous
+    (The above proof also show that when \(F\) is Lipschitz continuous, \(F\) is also continuous, see Exercise \ref{ex 10.2.6}).
+
+    Now suppose that \(x_0 \in [a, b]\), and \(f\) is continuous at \(x_0\).
+    Choose any \(\varepsilon > 0\).
+    Then by continuity, we can find a \(\delta > 0\) such that \(\abs*{f(x) - f(x_0)} \leq \varepsilon\) for all \(x\) in the interval \(I \coloneqq [x_0 - \delta, x_0 + \delta] \cap [a, b]\), or in other words
+    \[
+        f(x_0) - \varepsilon \leq f(x) \leq f(x_0) + \varepsilon \text{ for all } x \in I.
+    \]
+    We now show that
+    \[
+        \abs*{F(y) - F(x_0) - f(x_0)(y - x_0)} \leq \varepsilon \abs*{y - x_0}
+    \]
+    for all \(y \in I\), since Proposition \ref{10.1.7} will then imply that \(F\) is differentiable at \(x_0\) with derivative \(F'(x_0) = f(x_0)\) as desired.
+
+    Now fix \(y \in I\).
+    There are three cases.
+    If \(y = x_0\), then \(F(y) - F(x_0) - f(x_0)(y - x_0) = 0\) and so the claim is obvious.
+    If \(y > x_0\), then
+    \[
+        F(y) - F(x_0) = \int_{[x_0, y]} f.
+    \]
+    Since \(x_0\), \(y \in I\), and \(I\) is a connected set (by Corollary \ref{11.1.6}), then \([x_0, y]\) is a subset of \(I\), and thus we have
+    \[
+        f(x_0) - \varepsilon \leq f(x) \leq f(x_0) + \varepsilon \text{ for all } x \in [x_0, y],
+    \]
+    and thus by Theorem \ref{11.4.1}(e)
+    \[
+        (f(x_0) - \varepsilon) (y - x_0) \leq \int_{[x_0, y]} f \leq (f(x_0) + \varepsilon) (y - x_0)
+    \]
+    and so in particular
+    \[
+        \abs*{F(y) - F(x_0) - f(x_0)(y - x_0)} \leq \varepsilon \abs*{y - x_0}
+    \]
+    as desired.
+    If \(y < x_0\), then
+    \[
+        F(y) - F(x_0) = - (F(x_0) - F(y)) = -\int_{[y, x_0]} f.
+    \]
+    Since \(x_0\), \(y \in I\), and \(I\) is a connected set (by Corollary \ref{11.1.6}), then \([y, x_0]\) is a subset of \(I\), and thus we have
+    \[
+        f(x_0) - \varepsilon \leq f(x) \leq f(x_0) + \varepsilon \text{ for all } x \in [y, x_0],
+    \]
+    and thus by Theorem \ref{11.4.1}(e)
+    \begin{align*}
+                 & (f(x_0) - \varepsilon) (x_0 - y) \leq \int_{[y, x_0]} f \leq (f(x_0) + \varepsilon) (x_0 - y)   \\
+        \implies & -(f(x_0) - \varepsilon) (y - x_0) \leq \int_{[y, x_0]} f \leq -(f(x_0) + \varepsilon) (y - x_0) \\
+        \implies & -\varepsilon (y - x_0) \leq \int_{[y, x_0]} f + f(x_0)(y - x_0) \leq \varepsilon (y - x_0)      \\
+        \implies & -\varepsilon (y - x_0) \leq F(x_0) - F(y) + f(x_0)(y - x_0) \leq \varepsilon (y - x_0)          \\
+        \implies & -\varepsilon (y - x_0) \leq F(y) - F(x_0) - f(x_0)(y - x_0) \leq \varepsilon (y - x_0)          \\
+        \implies & \abs*{F(y) - F(x_0) - f(x_0)(y - x_0)} \leq \varepsilon (y - x_0)
+    \end{align*}
+    as desired.
+\end{proof}
