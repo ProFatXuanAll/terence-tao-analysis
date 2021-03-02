@@ -121,3 +121,58 @@
     Let \(I\) be a bounded interval, and let \(f : I \to \mathbf{R}\) be a function.
     We say that a function \(F : I \to \mathbf{R}\) is an \emph{antiderivative} of \(f\) if \(F\) is differentiable on \(I\) and \(F'(x) = f(x)\) for all \(x \in I\).
 \end{definition}
+
+\begin{theorem}[Second Fundamental Theorem of Calculus]\label{11.9.4}
+    Let \(a < b\) be real numbers, and let \(f : [a, b] \to \mathbf{R}\) be a Riemann integrable function.
+    If \(F : [a, b] \to \mathbf{R}\) is an antiderivative of \(f\), then
+    \[
+        \int_{[a, b]} f = F(b) - F(a).
+    \]
+\end{theorem}
+
+\begin{proof}
+    The claim is trivial when \(b = a\), so assume \(b > a\), so in particular all points of \([a, b]\) are limit points.
+    We will use Riemann sums.
+    The idea is to show that
+    \[
+        U(f, \mathbf{P}) \geq F(b) - F(a) \geq L(f, \mathbf{P})
+    \]
+    for every partition \(\mathbf{P}\) of \([a, b]\).
+    The left inequality asserts that \(F(b) - F(a)\) is a lower bound for \(\{U(f, \mathbf{P}) : \mathbf{P} \text{ is a partition of } [a, b]\}\), while the right inequality asserts that \(F(b) - F(a)\) is an upper bound for \(\{L(f, \mathbf{P}) : \mathbf{P} \text{ is a partition of } [a, b]\}\).
+    But by Proposition \ref{11.3.12}, this means that
+    \[
+        \overline{\int}_{[a, b]} f \geq F(b) - F(a) \geq \underline{\int}_{[a, b]} f,
+    \]
+    but since \(f\) is assumed to be Riemann integrable, both the upper and lower Riemann integral equal \(\int_{[a, b]} f\).
+    The claim follows.
+
+    We have to show the bound \(U(f, \mathbf{P}) \geq F(b) - F(a) \geq L(f, \mathbf{P})\).
+    We shall just show the first inequality \(U(f, \mathbf{P}) \geq F(b) - F(a)\);
+    the other inequality is similar.
+
+    Let \(\mathbf{P}\) be a partition of \([a, b]\).
+    From Lemma \ref{11.8.4} we have
+    \[
+        F(b) - F(a) = \sum_{J \in \mathbf{P}} F[J] = \sum_{J \in \mathbf{P} : J \neq \emptyset} F[J],
+    \]
+    while from definition we have
+    \[
+        U(f, \mathbf{P}) = \sum_{J \in \mathbf{P} : J \neq \emptyset} \sup_{x \in J} f(x) \abs*{J}.
+    \]
+    Thus it will suffice to show that
+    \[
+        F[J] \leq \sup_{x \in J} f(x) \abs*{J}
+    \]
+    for all \(J \in \mathbf{P}\)
+    (other than the empty set).
+
+    When \(J\) is a point then the claim is clear, since both sides are zero.
+    Now suppose that \(J = [c, d], (c, d], [c, d)\), or \((c, d)\) for some \(c < d\).
+    Then the left-hand side is \(F[J] = F(d) - F(c)\).
+    By the mean-value theorem (Corollary \ref{10.2.9}), this is equal to \((d - c) F'(e)\) for some \(e \in J\).
+    But since \(F'(e) = f(e)\), we thus have
+    \[
+        F[J] = (d - c) f(e) = f(e) \abs*{J} \leq \sup_{x \in J} f(x) \abs*{J}
+    \]
+    as desired.
+\end{proof}
