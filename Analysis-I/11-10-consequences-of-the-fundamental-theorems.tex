@@ -47,3 +47,43 @@
     \]
     But by the second fundamental theorem of calculus (Theorem \ref{11.9.4}), \(\int_J \alpha' = \alpha[J]\), and the claim follows.
 \end{proof}
+
+\begin{corollary}\label{11.10.3}
+    Let \(\alpha : [a, b] \to \mathbf{R}\) be a monotone increasing function, and suppose that \(\alpha\) is also differentiable on \([a, b]\), with \(\alpha'\) being Riemann integrable.
+    Let \(f : [a, b] \to \mathbf{R}\) be a function which is Riemann-Stieltjes integrable with respect to \(\alpha\) on \([a, b]\).
+    Then \(f \alpha'\) is Riemann integrable on \([a, b]\), and
+    \[
+        \int_{[a, b]} f \; d \alpha = \int_{[a, b]} f \alpha'.
+    \]
+\end{corollary}
+
+\begin{proof}
+    Note that since \(f\) and \(\alpha'\) are bounded, then \(f \alpha'\) must also be bounded.
+    Also, since \(\alpha\) is monotone increasing and differentable, \(\alpha'\) is non-negative (by Proposition \ref{10.3.1}).
+
+    Let \(\varepsilon > 0\).
+    Then, we can find a piecewise constant function \(\overline{f}\) majorizing \(f\) on \([a, b]\), and a piecewise constant function \(\underline{f}\) minorizing \(f\) on \([a, b]\), such that
+    \[
+        \int_{[a, b]} f \; d \alpha - \varepsilon \leq \int_{[a, b]} \underline{f} \; d \alpha \leq \int_{[a, b]} \overline{f} \; d \alpha \leq \int_{[a, b]} f \; d \alpha + \varepsilon.
+    \]
+    Applying Theorem \ref{11.10.2}, we obtain
+    \[
+        \int_{[a, b]} f \; d \alpha - \varepsilon \leq \int_{[a, b]} \underline{f} \alpha' \leq \int_{[a, b]} \overline{f} \alpha' \leq \int_{[a, b]} f \; d \alpha + \varepsilon.
+    \]
+
+    Since \(\alpha'\) is non-negative and \(\underline{f}\) minorizes \(f\), then \(\underline{f} \alpha'\) minorizes \(f \alpha'\).
+    Thus \(\int_{[a, b]} \underline{f} \alpha' \leq \underline{\int}_{[a, b]} f \alpha'\).
+    Thus
+    \[
+        \int_{[a, b]} f \; d \alpha - \varepsilon \leq \underline{\int}_{[a, b]} f \alpha'.
+    \]
+    Similarly we have
+    \[
+        \overline{\int}_{[a, b]} f \alpha' \leq \int_{[a, b]} f \; d \alpha + \varepsilon.
+    \]
+    Since these statements are true for any \(\varepsilon > 0\), we must have
+    \[
+        \int_{[a, b]} f \; d \alpha \leq \underline{\int}_{[a, b]} f \alpha' \leq \overline{\int}_{[a, b]} f \alpha' \leq \int_{[a, b]} f \; d \alpha
+    \]
+    and the claim follows.
+\end{proof}
