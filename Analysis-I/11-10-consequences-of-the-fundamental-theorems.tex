@@ -21,3 +21,29 @@
                              & = F(b) G(b) - F(a) G(a) - \int_{[a, b]} (F' G). & \text{(by Theorem \ref{11.9.4})}
     \end{align*}
 \end{proof}
+
+\begin{theorem}\label{11.10.2}
+    Let \(\alpha : [a, b] \to \mathbf{R}\) be a monotone increasing function, and suppose that \(\alpha\) is also differentiable on \([a, b]\), with \(\alpha'\) being Riemann integrable.
+    Let \(f : [a, b] \to \mathbf{R}\) be a piecewise constant function on \([a, b]\).
+    Then \(f \alpha'\) is Riemann integrable on \([a, b]\), and
+    \[
+        \int_{[a, b]} f \; d \alpha = \int_{[a, b]} f \alpha'.
+    \]
+\end{theorem}
+
+\begin{proof}
+    Since \(f\) is piecewise constant, it is Riemann integrable, and since \(\alpha'\) is also Riemann integrable, then \(f \alpha'\) is Riemann integrable by Theorem \ref{11.4.5}.
+
+    Suppose that \(f\) is piecewise constant with respect to some partition \(\mathbf{P}\) of \([a, b]\);
+    without loss of generality we may assume that \(\mathbf{P}\) does not contain the empty set.
+    Then we have
+    \[
+        \int_{[a, b]} f \; d \alpha = p.c. \int_{[\mathbf{P}]} f \; d \alpha = \sum_{J \in \mathbf{P}} c_J \alpha[J]
+    \]
+    where \(c_J\) is the constant value of \(f\) on \(J\).
+    On the other hand, from Theorem \ref{11.4.1}(h) (and Exercise \ref{ex 11.4.3}) we have
+    \[
+        \int_{[a, b]} f \alpha' = \sum_{J \in \mathbf{P}} \int_J f \alpha' = \sum_{J \in \mathbf{P}} \int_J c_J \alpha' = \sum_{J \in \mathbf{P}} c_J \int_J \alpha'.
+    \]
+    But by the second fundamental theorem of calculus (Theorem \ref{11.9.4}), \(\int_J \alpha' = \alpha[J]\), and the claim follows.
+\end{proof}
