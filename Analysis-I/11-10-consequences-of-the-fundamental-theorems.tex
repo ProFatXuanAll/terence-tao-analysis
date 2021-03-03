@@ -207,6 +207,35 @@
     Show that \(g\) is also Riemann integrable, and \(\int_{[-b, -a]} g = \int_{[a, b]} f\).
 \end{exercise}
 
+\begin{proof}
+    Let \(\varepsilon > 0\).
+    Then, we can find a piecewise constant function \(\overline{f}\) majorizing \(f\) on \([a, b]\), and a piecewise constant function \(\underline{f}\) minorizing \(f\) on \([a, b]\), such that
+    \[
+        \int_{[a, b]} f - \varepsilon \leq \int_{[a, b]} \underline{f} = \int_{[a, b]} \overline{f} \leq \int_{[a, b]} f + \varepsilon.
+    \]
+    Since \(\overline{f}\) majorizes \(f\) on \([a, b]\), we know that \(\overline{f}\) majorizes \(g\) on \([-b, -a]\).
+    Let \(\overline{g} : [-b, -a] \to \mathbf{R}\) be the function \(\overline{g}(x) = \overline{f}(-x)\).
+    Then \(\overline{g}\) majorizes \(g\) on \([-b, -a]\) and
+    \[
+        \int_{[-b, -a]} \overline{g} \leq \int_{[a, b]} f + \varepsilon.
+    \]
+    Similarly since \(\underline{f}\) minorizes \(f\) on \([a, b]\), we know that \(\underline{f}\) minorizes \(g\) on \([-b, -a]\).
+    Let \(\underline{g} : [-b, -a] \to \mathbf{R}\) be the function \(\underline{g}(x) = \underline{f}(-x)\).
+    Then \(\underline{g}\) minorizes \(g\) on \([-b, -a]\) and
+    \[
+        \int_{[-b, -a]} \underline{g} \geq \int_{[a, b]} f - \varepsilon.
+    \]
+    By Definition \ref{11.3.2} and Proposition \ref{11.3.3} we have
+    \[
+        \int_{[a, b]} f - \varepsilon \leq \int_{[-b, -a]} \underline{g} \leq \underline{\int}_{[-b, -a]} g \leq \overline{\int}_{[-b, -a]} g \leq \int_{[-b, -a]} \overline{g} \leq \int_{[a, b]} f + \varepsilon.
+    \]
+    Since these statements are true for any \(\varepsilon > 0\), we must have
+    \[
+        \int_{[a, b]} f \leq \underline{\int}_{[-b, -a]} g \leq \overline{\int}_{[-b, -a]} g \leq \int_{[a, b]} f
+    \]
+    and the claim follows.
+\end{proof}
+
 \begin{exercise}\label{ex 11.10.4}
     What is the analogue of Proposition \ref{11.10.7} when \(\phi\) is monotone decreasing instead of monotone increasing?
     (When \(\phi\) is neither monotone increasing or monotone decreasing, the situation becomes significantly more complicated.)
