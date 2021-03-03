@@ -92,3 +92,33 @@
     Informally, Corollary \ref{11.10.3} asserts that \(f \; d \alpha\) is essentially equivalent to \(f \frac{d \alpha}{dx} dx\), when \(\alpha\) is differentiable.
     However, the advantage of the Riemann-Stieltjes integral is that it still makes sense even when \(\alpha\) is not differentiable.
 \end{remark}
+
+\begin{lemma}[Change of variables formula I]\label{11.10.5}
+    Let \([a, b]\) be a closed interval, and let \(\phi : [a, b] \to [\phi(a), \phi(b)]\) be a continuous monotone increasing function.
+    Let \(f : [\phi(a), \phi(b)] \to \mathbf{R}\) be a piecewise constant function on \([\phi(a), \phi(b)]\).
+    Then \(f \circ \phi : [a, b] \to \mathbf{R}\) is also piecewise constant on \([a, b]\), and
+    \[
+        \int_{[a, b]} f \circ \phi \; d \phi = \int_{[\phi(a), \phi(b)]} f.
+    \]
+\end{lemma}
+
+\begin{proof}
+    Let \(\mathbf{P}\) be a partition of \([\phi(a), \phi(b)]\) such that \(f\) is piecewise constant with respect to \(\mathbf{P}\);
+    we may assume that \(\mathbf{P}\) does not contain the empty set.
+    For each \(J \in \mathbf{P}\), let \(c_J\) be the constant value of \(f\) on \(J\), thus
+    \[
+        \int_{[\phi(a), \phi(b)]} f = \sum_{J \in \mathbf{P}} c_J \abs*{J}.
+    \]
+    For each interval \(J\), let \(\phi^{-1}(J)\) be the set \(\phi^{-1}(J) \coloneqq \{x \in [a, b] : \phi(x) \in J\}\).
+    Then \(\phi^{-1}(J)\) is connected (by Proposition \ref{9.8.3} and Lemma \ref{11.1.4}), and is thus an interval.
+    Furthermore, \(c_J\) is the constant value of \(f \circ \phi\) on \(\phi^{-1}(J)\) (since \((f \circ \phi)(\phi^{-1}(J)) = f(J)\)).
+    Thus, if we define \(\mathbf{S} \coloneqq \{\phi^{-1} (J) : J \in \mathbf{P}\}\), then \(\mathbf{S}\) partitions \([a, b]\)
+    (\(\mathbf{S}\) is finite since \(\mathbf{P}\) is finite;
+    \(\phi^{-1}(J)\) is an interval and \(\phi\) is a bijection from \([a, b]\) to \([\phi(a), \phi(b)]\)),
+    and \(f \circ \phi\) is piecewise constant with respect to \(\mathbf{S}\) (for every \(\phi^{-1}(J) \in \mathbf{S}\), \(f\) is constant on \(\phi^{-1}(J)\)).
+    Thus
+    \[
+        \int_{[a, b]} f \circ \phi \; d \phi = \int_{[\mathbf{S}]} f \circ \phi \; d \phi = \sum_{J \in \mathbf{P}} c_J \phi[\phi^{-1}(J)].
+    \]
+    But \(\phi[\phi^{-1}(J)] = \abs*{J}\) (since \(\phi(\phi^{-1}(J)) = J\)), and the claim follows.
+\end{proof}
