@@ -120,5 +120,46 @@
     \[
         \int_{[a, b]} f \circ \phi \; d \phi = \int_{[\mathbf{S}]} f \circ \phi \; d \phi = \sum_{J \in \mathbf{P}} c_J \phi[\phi^{-1}(J)].
     \]
-    But \(\phi[\phi^{-1}(J)] = \abs*{J}\) (since \(\phi(\phi^{-1}(J)) = J\)), and the claim follows.
+    But \(\phi[\phi^{-1}(J)] = \abs*{J}\) (since \(\phi(\phi^{-1}(J)) = J\) and \(\phi\) is continuous), and the claim follows.
+\end{proof}
+
+\begin{proposition}[Change of variables formula II]\label{11.10.6}
+    Let \([a, b]\) be a closed interval, and let \(\phi : [a, b] \to [\phi(a), \phi(b)]\) be a continuous monotone increasing function.
+    Let \(f : [\phi(a), \phi(b)] \to \mathbf{R}\) be a Riemann integrable function on \([\phi(a), \phi(b)]\).
+    Then \(f \circ \phi : [a, b] \to \mathbf{R}\) is Riemann-Stieltjes integrable with respect to \(\phi\) on \([a, b]\), and
+    \[
+        \int_{[a, b]} f \circ \phi \; d \phi = \int_{[\phi(a), \phi(b)]} f.
+    \]
+\end{proposition}
+
+\begin{proof}
+    This will be obtained from Lemma \ref{11.10.5} in a similar manner to how Corollary \ref{11.10.3} was obtained from Theorem \ref{11.10.2}.
+    First observe that since \(f\) is Riemann integrable, it is bounded, and then \(f \circ \phi\) must also be bounded (by Proposition \ref{9.8.3} \(\phi\) is a bijection).
+
+    Let \(\varepsilon > 0\).
+    Then, we can find a piecewise constant function \(\overline{f}\) majorizing \(f\) on \([\phi(a), \phi(b)]\), and a piecewise constant function \(\underline{f}\) minorizing \(f\) on \([\phi(a), \phi(b)]\), such that
+    \[
+        \int_{[\phi(a), \phi(b)]} f - \varepsilon \leq \int_{[\phi(a), \phi(b)]} \underline{f} \leq \int_{[\phi(a), \phi(b)]} \overline{f} \leq \int_{[\phi(a), \phi(b)]} f + \varepsilon.
+    \]
+    Applying Lemma \ref{11.10.5}, we obtain
+    \[
+        \int_{[\phi(a), \phi(b)]} f - \varepsilon \leq \int_{[a, b]} \underline{f} \circ \phi \; d \phi \leq \int_{[a, b]} \overline{f} \circ \; d \phi \leq \int_{[\phi(a), \phi(b)]} f + \varepsilon.
+    \]
+    Since \(\underline{f} \circ \phi\) is piecewise constant and minorizes \(f \circ \phi\), we have
+    \[
+        \int_{[a, b]} \underline{f} \circ \phi \; d \phi \leq \underline{\int}_{[a, b]} f \circ \phi \; d \phi
+    \]
+    while similarly we have
+    \[
+        \int_{[a, b]} \overline{f} \circ \phi \; d \phi \geq \overline{\int}_{[a, b]} f \circ \phi \; d \phi.
+    \]
+    Thus
+    \[
+        \int_{[\phi(a), \phi(b)]} f - \varepsilon \leq \underline{\int}_{[a, b]} f \circ \phi \; d \phi \leq \overline{\int}_{[a, b]} f \circ \; d \phi \leq \int_{[\phi(a), \phi(b)]} f + \varepsilon.
+    \]
+    Since \(\varepsilon > 0\) was arbitrary, this implies that
+    \[
+        \int_{[\phi(a), \phi(b)]} f \leq \underline{\int}_{[a, b]} f \circ \phi \; d \phi \leq \overline{\int}_{[a, b]} f \circ \; d \phi \leq \int_{[\phi(a), \phi(b)]} f
+    \]
+    and the claim follows.
 \end{proof}
