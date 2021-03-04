@@ -166,3 +166,40 @@
     We see that the starting point \(m\) of the sequence is unimportant for the purposes of taking limits;
     if \((x^{(n)})_{n = m}^\infty\) converges to \(x\), then \((x^{(n)})_{n = m'}^\infty\) also converges to \(x\) for any \(m' \geq m\).
 \end{remark}
+
+\begin{note}
+    The convergence of a sequence can depend on what metric one uses.
+\end{note}
+
+\setcounter{theorem}{17}
+\begin{proposition}[Equivalence of \(l^1\), \(l^2\), \(l^\infty\)]\label{1.1.18}
+    Let \(\mathbf{R}^n\) be a Euclidean space, and let \((x^{(k)})_{k = m}^\infty\) be a sequence of points in \(\mathbf{R}^n\).
+    We write \(x^{(k)} = (x_1^{(k)}, x_2^{(k)}, \dots, x_n^{(k)})\), i.e., for \(j = 1, 2, \dots, n\), \(x_j \in \mathbf{R}\) is the \(j^{\text{th}}\) coordinate of \(x^{(k)} \in \mathbf{R}^n\).
+    Let \(x = (x_1, \dots, x_n)\) be a point in \(\mathbf{R}^n\).
+    Then the following four statements are equivalent:
+    \begin{enumerate}
+        \item \((x^{(k)})_{k = m}^\infty\) converges to \(x\) with respect to the Euclidean metric \(d_{l^2}\).
+        \item \((x^{(k)})_{k = m}^\infty\) converges to \(x\) with respect to the taxi-cab metric \(d_{l^1}\).
+        \item \((x^{(k)})_{k = m}^\infty\) converges to \(x\) with respect to the sup norm metric \(d_{l^\infty}\).
+        \item For every \(1 \leq j \leq n\), the sequence \((x_j^{(k)})_{k = m}^\infty\) converges to \(x_j\).
+              (Notice that this is a sequence of real numbers, not of points in \(\mathbf{R}^n\).)
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    We have
+    \begin{align*}
+             & \lim_{k \to \infty} d_{l^2}(x^{(k)}, x) = 0                                                                     & \text{(by Definition \ref{1.1.14})} \\
+        \iff & \lim_{k \to \infty} \sqrt{\sum_{j = 1}^n (x_j^{(k)} - x_j)^2} = 0                                               & \text{(by Example \ref{1.1.6})}     \\
+        \iff & \lim_{k \to \infty} \bigg(\sum_{j = 1}^n (x_j^{(k)} - x_j)^2\bigg) = 0                                                                                \\
+        \iff & \sum_{j = 1}^n \bigg(\lim_{k \to \infty} (x_j^{(k)} - x_j)^2\bigg) = 0                                                                                \\
+        \iff & \forall\ j \in \{i \in \mathbf{N} : 1 \leq i \leq n\}, \lim_{k \to \infty} x_j^{(k)} - x_j = 0                                                        \\
+        \iff & \forall\ j \in \{i \in \mathbf{N} : 1 \leq i \leq n\}, \lim_{k \to \infty} x_j^{(k)} = x_j                                                            \\
+        \iff & \forall\ j \in \{i \in \mathbf{N} : 1 \leq i \leq n\}, \lim_{k \to \infty} \abs*{x_j^{(k)} - x_j} = 0           & \text{(by Lemma \ref{1.1.1})}       \\
+        \iff & \sum_{j = 1}^n \bigg(\lim_{k \to \infty} \abs*{x_j^{(k)} - x_j}\bigg) = 0                                                                             \\
+        \iff & \lim_{k \to \infty} \bigg(\sum_{j = 1}^n \abs*{x_j^{(k)} - x_j}\bigg) = 0                                                                             \\
+        \iff & \lim_{k \to \infty} d_{l^1}(x^{(k)}, x) = 0                                                                     & \text{(by Example \ref{1.1.7})}     \\
+        \iff & \lim_{k \to \infty} \sup\bigg\{\abs*{x_j^{(k)} - x_j} : j \in \{i \in \mathbf{N} : 1 \leq i \leq n\}\bigg\} = 0                                       \\
+        \iff & \lim_{k \to \infty} d_{l^\infty}(x^{(k)}, x) = 0.                                                               & \text{(by Example \ref{1.1.9})}
+    \end{align*}
+\end{proof}
