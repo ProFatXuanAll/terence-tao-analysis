@@ -13,7 +13,8 @@ The notes also have some additional corollaries to help proving others.
 
 ### Issues
 
-I'm not a native English user, and do not have mathematical background. So any helps are appreciated, especially for the following things:
+I'm not a native English speaker, and do not have mathematical background.
+Any helps are appreciated, especially for the followings:
 
 - **Syntax** and **grammar** correction.
 - Making **proofs** more **rigorous**.
@@ -232,7 +233,7 @@ a_n^2                      % do not enclose with {}
 \end{enumerate}
 ```
 
-### Unsolved Exercise
+### Unsolved Exercises
 
 - Analysis I
   - 8.1.10
