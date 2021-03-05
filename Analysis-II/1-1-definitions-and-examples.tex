@@ -453,7 +453,7 @@
                       & = \bigg(\sum_{i = 1}^n (x_i - y_i)^2\bigg)^{1 / 2} + \bigg(\sum_{i = 1}^n (y_i - z_i)^2\bigg)^{1 / 2} \\
                       & = d_{l^2}(x, y) + d_{l^2}(y, z).
     \end{align*}
-    Thus by Definition \ref{1.1.2} \((\mathbf{R}, d_{l^2})\) is a metric space.
+    Thus by Definition \ref{1.1.2} \((\mathbf{R}^n, d_{l^2})\) is a metric space.
 \end{proof}
 
 \begin{exercise}\label{ex 1.1.7}
@@ -486,7 +486,7 @@
                       & \leq \sum_{i = 1}^n (\abs*{x_i - y_i} + \abs*{y_i - z_i}) \\
                       & = d_{l^1}(x, y) + d_{l^1}(y, z).
     \end{align*}
-    Thus by Definition \ref{1.1.2} \((\mathbf{R}, d_{l^1})\) is a metric space.
+    Thus by Definition \ref{1.1.2} \((\mathbf{R}^n, d_{l^1})\) is a metric space.
 \end{proof}
 
 \begin{exercise}\label{ex 1.1.8}
@@ -496,6 +496,35 @@
     \]
     for all \(x, y \in \mathbf{R}^n\).
 \end{exercise}
+
+\begin{proof}
+    Let \(n \in \mathbf{N}\), let \(x, y \in \mathbf{R}^n\), let \(i \in \mathbf{N}\) and \(1 \leq i \leq n\), and let \(x_i, y_i\) be the \(i^{\text{th}}\) coordinate of \(x, y\) respectively.
+    We have
+    \begin{align*}
+        (d_{l^2}(x, y))^2 & = \sum_{i = 1}^n (x_i - y_i)^2                                                                                                                                               \\
+                          & = \sum_{i = 1}^n \abs*{x_i - y_i}^2                                                                                                                                          \\
+                          & \leq \sum_{i = 1}^n \abs*{x_i - y_i}^2 + \sum_{i = 1}^n \Bigg(\abs*{x_i - y_i} \bigg(\sum_{j = 1}^{i - 1} \abs*{x_j - y_j} + \sum_{j = i + 1}^n \abs*{x_j - y_j}\bigg)\Bigg) \\
+                          & = \sum_{i = 1}^n \abs*{x_i - y_i} \bigg(\sum_{j = 1}^{i - 1} \abs*{x_j - y_j} + \abs*{x_i - y_i} + \sum_{j = i + 1}^n \abs*{x_j - y_j}\bigg)                                 \\
+                          & = \sum_{i = 1}^n \abs*{x_i - y_i} \bigg(\sum_{j = 1}^n \abs*{x_j - y_j}\bigg)                                                                                                \\
+                          & = \bigg(\sum_{i = 1}^n \abs*{x_i - y_i}\bigg)^2                                                                                                                              \\
+                          & = (d_{l^1}(x, y))^2
+    \end{align*}
+    and thus \(d_{l^2}(x, y) \leq d_{l^1}(x, y)\).
+    Now let \(a_i = \abs*{x_i - y_i}\) and \(b_i = 1\).
+    Then we have
+    \begin{align*}
+        d_{l^1}(x, y) & = \sum_{i = 1}^n \abs*{x_i - y_i}                                                                                                 \\
+                      & = \abs*{\sum_{i = 1}^n \abs*{x_i - y_i}}                                                                                          \\
+                      & = \abs*{\sum_{i = 1}^n a_i b_i}                                                                                                   \\
+                      & \leq \bigg(\sum_{i = 1}^n a_i^2\bigg)^{1 / 2} \bigg(\sum_{i = 1}^n b_i^2\bigg)^{1 / 2}      & \text{(by Exercise \ref{ex 1.1.5})} \\
+                      & = \bigg(\sum_{i = 1}^n \abs{x_i - y_i}^2\bigg)^{1 / 2} \bigg(\sum_{i = 1}^n 1\bigg)^{1 / 2}                                       \\
+                      & = \sqrt{n} d_{l^2}(x, y).
+    \end{align*}
+    Combining the results we have
+    \[
+        d_{l^2}(x, y) \leq d_{l^1}(x, y) \leq \sqrt{n} d_{l^2}(x, y).
+    \]
+\end{proof}
 
 \begin{exercise}\label{ex 1.1.9}
     Show that \((\mathbf{R}^n, d_{l^\infty})\) in Example \ref{1.1.9} is indeed a metric space.
