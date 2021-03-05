@@ -435,7 +435,7 @@
     If \(x \neq y\), then \(\exists\ j \in \mathbf{N}\) and \(1 \leq j \leq n\) such that \(x_j \neq y_j\).
     So
     \[
-        d_{l^2}(x, y) = \bigg(\sum_{i = 1}^n (x_i - y_i)^2\bigg)^{1 / 2} > 0.
+        d_{l^2}(x, y) = \bigg(\sum_{i = 1}^n (x_i - y_i)^2\bigg)^{1 / 2} \geq ((x_j - y_j)^2)^{1 / 2} > 0.
     \]
     For symmetry:
     We have
@@ -471,7 +471,7 @@
     If \(x \neq y\), then \(\exists\ j \in \mathbf{N}\) and \(1 \leq j \leq n\) such that \(x_j \neq y_j\).
     So
     \[
-        d_{l^1}(x, y) = \sum_{i = 1}^n \abs*{x_i - y_i} > 0.
+        d_{l^1}(x, y) = \sum_{i = 1}^n \abs*{x_i - y_i} \geq \abs*{x_j - y_j} > 0.
     \]
     For symmetry:
     We have
@@ -529,6 +529,36 @@
 \begin{exercise}\label{ex 1.1.9}
     Show that \((\mathbf{R}^n, d_{l^\infty})\) in Example \ref{1.1.9} is indeed a metric space.
 \end{exercise}
+
+\begin{proof}
+    Let \(n \in \mathbf{N}\), let \(x, y, z \in \mathbf{R}^n\), let \(i \in \mathbf{N}\) and \(1 \leq i \leq n\), and let \(x_i, y_i, z_i\) be the \(i^{\text{th}}\) coordinate of \(x, y, z\) respectively.
+    For indentity:
+    We have
+    \[
+        d_{l^\infty}(x, x) = \sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{x_i - x_i}\} = 0.
+    \]
+    For positivity:
+    If \(x \neq y\), then \(\exists\ j \in \mathbf{N}\) and \(1 \leq j \leq n\) such that \(x_j \neq y_j\).
+    So
+    \[
+        d_{l^\infty}(x, y) = \sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{x_i - y_i}\} \geq \abs*{x_j - y_j} > 0.
+    \]
+    For symmetry:
+    We have
+    \[
+        d_{l^\infty}(x, y) = \sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{x_i - y_i}\} = \sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{y_i - x_i}\} = d_{l^\infty}(y, x).
+    \]
+    For triangle inequality:
+    We have
+    \begin{align*}
+        d_{l^\infty}(x, z) & = \sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{x_i - z_i}\}                                                                     \\
+                           & = \sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{x_i - y_i + y_i - z_i}\}                                                         \\
+                           & \leq \sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{x_i - y_i} + \abs*{y_i - z_i}\}                                               \\
+                           & \leq \sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{x_i - y_i}\} + \sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{y_i - z_i}\} \\
+                           & = d_{l^\infty}(x, y) + d_{l^\infty}(y, z).
+    \end{align*}
+    Thus by Definition \ref{1.1.2} \((\mathbf{R}^n, d_{l^\infty})\) is a metric space.
+\end{proof}
 
 \begin{exercise}\label{ex 1.1.10}
     Prove the two inequalities
