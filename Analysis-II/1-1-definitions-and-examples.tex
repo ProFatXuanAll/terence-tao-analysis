@@ -429,7 +429,7 @@
     For indentity:
     We have
     \[
-        d_{l^2}(x, x) = \bigg(\sum_{i = 1}^n (x_i - x_i)\bigg)^{1 / 2} = 0.
+        d_{l^2}(x, x) = \bigg(\sum_{i = 1}^n (x_i - x_i)^2\bigg)^{1 / 2} = 0.
     \]
     For positivity:
     If \(x \neq y\), then \(\exists\ j \in \mathbf{N}\) and \(1 \leq j \leq n\) such that \(x_j \neq y_j\).
@@ -459,6 +459,35 @@
 \begin{exercise}\label{ex 1.1.7}
     Show that \((\mathbf{R}^n, d_{l^1})\) in Example \ref{1.1.7} is indeed a metric space.
 \end{exercise}
+
+\begin{proof}
+    Let \(n \in \mathbf{N}\), let \(x, y, z \in \mathbf{R}^n\), let \(i \in \mathbf{N}\) and \(1 \leq i \leq n\), and let \(x_i, y_i, z_i\) be the \(i^{\text{th}}\) coordinate of \(x, y, z\) respectively.
+    For indentity:
+    We have
+    \[
+        d_{l^1}(x, x) = \sum_{i = 1}^n \abs*{x_i - x_i} = 0.
+    \]
+    For positivity:
+    If \(x \neq y\), then \(\exists\ j \in \mathbf{N}\) and \(1 \leq j \leq n\) such that \(x_j \neq y_j\).
+    So
+    \[
+        d_{l^1}(x, y) = \sum_{i = 1}^n \abs*{x_i - y_i} > 0.
+    \]
+    For symmetry:
+    We have
+    \[
+        d_{l^1}(x, y) = \sum_{i = 1}^n \abs*{x_i - y_i} = \sum_{i = 1}^n \abs*{y_i - x_i} = d_{l^1}(y, x).
+    \]
+    For triangle inequality:
+    We have
+    \begin{align*}
+        d_{l^1}(x, z) & = \sum_{i = 1}^n \abs*{x_i - z_i}                         \\
+                      & = \sum_{i = 1}^n \abs*{x_i - y_i + y_i - z_i}             \\
+                      & \leq \sum_{i = 1}^n (\abs*{x_i - y_i} + \abs*{y_i - z_i}) \\
+                      & = d_{l^1}(x, y) + d_{l^1}(y, z).
+    \end{align*}
+    Thus by Definition \ref{1.1.2} \((\mathbf{R}, d_{l^1})\) is a metric space.
+\end{proof}
 
 \begin{exercise}\label{ex 1.1.8}
     Prove the two inequalities
