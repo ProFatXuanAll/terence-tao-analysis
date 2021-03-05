@@ -345,6 +345,81 @@
     \]
 \end{exercise}
 
+\begin{proof}
+    We first show the identity is true by induction on \(n\).
+    For \(n = 0\), we have
+    \[
+        \bigg(\sum_{i = 1}^0 a_i b_i\bigg)^2 + \frac{1}{2} \sum_{i = 1}^0 \sum_{j = 1}^0 (a_i b_j - a_j b_i)^2 = 0
+    \]
+    and
+    \[
+        \bigg(\sum_{i = 1}^0 a_i^2\bigg) \bigg(\sum_{j = 1}^0 b_j^2\bigg) = 0
+    \]
+    so the base case holds.
+    Suppose inductively that the identity is true for some \(n \geq 0\).
+    Then for \(n + 1\), we have
+    \begin{align*}
+          & \bigg(\sum_{i = 1}^{n + 1} a_i b_i\bigg)^2 + \frac{1}{2} \sum_{i = 1}^{n + 1} \sum_{j = 1}^{n + 1} (a_i b_j - a_j b_i)^2                                                                                  \\
+        = & \bigg(\sum_{i = 1}^n a_i b_i + a_{n + 1} b_{n + 1}\bigg)^2 + \frac{1}{2} \sum_{i = 1}^{n + 1} \sum_{j = 1}^{n + 1} (a_i b_j - a_j b_i)^2                                                                  \\
+        = & \bigg(\sum_{i = 1}^n a_i b_i\bigg)^2 + 2 \bigg(\sum_{i = 1}^n a_i b_i\bigg) (a_{n + 1} b_{n + 1}) + (a_{n + 1} b_{n + 1})^2 + \frac{1}{2} \sum_{i = 1}^{n + 1} \sum_{j = 1}^{n + 1} (a_i b_j - a_j b_i)^2 \\
+        = & \bigg(\sum_{i = 1}^n a_i b_i\bigg)^2 + 2 \bigg(\sum_{i = 1}^n a_i b_i\bigg) (a_{n + 1} b_{n + 1}) + (a_{n + 1} b_{n + 1})^2                                                                               \\
+          & + \frac{1}{2} \sum_{i = 1}^{n + 1} \bigg(\sum_{j = 1}^n (a_i b_j - a_j b_i)^2 + (a_i b_{n + 1} - a_{n + 1} b_i)^2\bigg)                                                                                   \\
+        = & \bigg(\sum_{i = 1}^n a_i b_i\bigg)^2 + 2 \bigg(\sum_{i = 1}^n a_i b_i\bigg) (a_{n + 1} b_{n + 1}) + (a_{n + 1} b_{n + 1})^2                                                                               \\
+          & + \frac{1}{2} \sum_{i = 1}^{n + 1} \sum_{j = 1}^n (a_i b_j - a_j b_i)^2 + \frac{1}{2} \sum_{i = 1}^{n + 1} (a_i b_{n + 1} - a_{n + 1} b_i)^2                                                              \\
+        = & \bigg(\sum_{i = 1}^n a_i b_i\bigg)^2 + 2 \bigg(\sum_{i = 1}^n a_i b_i\bigg) (a_{n + 1} b_{n + 1}) + (a_{n + 1} b_{n + 1})^2                                                                               \\
+          & + \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n (a_i b_j - a_j b_i)^2 + \frac{1}{2} \sum_{j = 1}^n (a_{n + 1} b_j - a_j b_{n + 1})^2 + \frac{1}{2} \sum_{i = 1}^{n + 1} (a_i b_{n + 1} - a_{n + 1} b_i)^2     \\
+        = & \bigg(\sum_{i = 1}^n a_i b_i\bigg)^2 + 2 \bigg(\sum_{i = 1}^n a_i b_i\bigg) (a_{n + 1} b_{n + 1}) + (a_{n + 1} b_{n + 1})^2                                                                               \\
+          & + \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n (a_i b_j - a_j b_i)^2 + \frac{1}{2} \sum_{j = 1}^n (a_{n + 1} b_j - a_j b_{n + 1})^2 + \frac{1}{2} \sum_{i = 1}^n (a_i b_{n + 1} - a_{n + 1} b_i)^2           \\
+        = & \bigg(\sum_{i = 1}^n a_i b_i\bigg)^2 + 2 \bigg(\sum_{i = 1}^n a_i b_i\bigg) (a_{n + 1} b_{n + 1}) + (a_{n + 1} b_{n + 1})^2                                                                               \\
+          & + \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n (a_i b_j - a_j b_i)^2 + \sum_{i = 1}^n (a_{n + 1} b_i - a_i b_{n + 1})^2
+    \end{align*}
+    and
+    \begin{align*}
+          & \bigg(\sum_{i = 1}^{n + 1} a_i^2\bigg) \bigg(\sum_{j = 1}^{n + 1} b_j^2\bigg)                                                                                                             \\
+        = & \bigg(\sum_{i = 1}^n a_i^2 + a_{n + 1}^2\bigg) \bigg(\sum_{j = 1}^n b_j^2 + b_{n + 1}^2\bigg)                                                                                             \\
+        = & \bigg(\sum_{i = 1}^n a_i^2\bigg) \bigg(\sum_{j = 1}^n b_j^2\bigg) + a_{n + 1}^2 \bigg(\sum_{j = 1}^n b_j^2\bigg) + b_{n + 1}^2 \bigg(\sum_{i = 1}^n a_i^2\bigg) + (a_{n + 1} b_{n + 1})^2 \\
+        = & \bigg(\sum_{i = 1}^n a_i^2\bigg) \bigg(\sum_{j = 1}^n b_j^2\bigg) + \bigg(\sum_{j = 1}^n a_{n + 1}^2 b_j^2\bigg) + \bigg(\sum_{i = 1}^n a_i^2 b_{n + 1}^2\bigg) + (a_{n + 1} b_{n + 1})^2 \\
+        = & \bigg(\sum_{i = 1}^n a_i^2\bigg) \bigg(\sum_{j = 1}^n b_j^2\bigg) + \bigg(\sum_{j = 1}^n a_{n + 1}^2 b_j^2 - 2 a_{n + 1} b_j a_j b_{n + 1} + a_j^2 b_{n + 1}^2\bigg)                      \\
+          & + \sum_{j = 1}^n 2 a_{n + 1} b_j a_j b_{n + 1} - \sum_{j = 1}^n a_j^2 b_{n + 1}^2 + \bigg(\sum_{i = 1}^n a_i^2 b_{n + 1}^2\bigg) + (a_{n + 1} b_{n + 1})^2                                \\
+        = & \bigg(\sum_{i = 1}^n a_i^2\bigg) \bigg(\sum_{j = 1}^n b_j^2\bigg) + \bigg(\sum_{j = 1}^n (a_{n + 1} b_j - a_j b_{n + 1})^2\bigg)                                                          \\
+          & + 2 \sum_{j = 1}^n \bigg(b_j a_j\bigg)(a_{n + 1} b_{n + 1}) + (a_{n + 1} b_{n + 1})^2.
+    \end{align*}
+    By induction hypothesis we thus have
+    \[
+        \bigg(\sum_{i = 1}^{n + 1} a_i b_i\bigg)^2 + \frac{1}{2} \sum_{i = 1}^{n + 1} \sum_{j = 1}^{n + 1} (a_i b_j - a_j b_i)^2 = \bigg(\sum_{i = 1}^{n + 1} a_i^2\bigg) \bigg(\sum_{j = 1}^{n + 1} b_j^2\bigg)
+    \]
+    and this close the induction.
+
+    Next we show that Cauchy-Schwarz inequality is true.
+    Since
+    \[
+        \bigg(\sum_{i = 1}^n a_i b_i\bigg)^2 + \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n (a_i b_j - a_j b_i)^2 = \bigg(\sum_{i = 1}^n a_i^2\bigg) \bigg(\sum_{j = 1}^n b_j^2\bigg),
+    \]
+    we have
+    \[
+        \bigg(\sum_{i = 1}^n a_i b_i\bigg)^2 \leq \bigg(\sum_{i = 1}^n a_i^2\bigg) \bigg(\sum_{j = 1}^n b_j^2\bigg)
+    \]
+    and thus
+    \[
+        \abs*{\sum_{i = 1}^n a_i b_i} \leq \bigg(\sum_{i = 1}^n a_i^2\bigg)^{1 / 2} \bigg(\sum_{j = 1}^n b_j^2\bigg)^{1 / 2}.
+    \]
+
+    Finally we show that \(d_{l^2}\) satisfy triangle inequality.
+    We have
+    \begin{align*}
+         & \sum_{i = 1}^n (a_i + b_i)^2                                                                                                           \\
+         & = \sum_{i = 1}^n a_i^2 + 2 a_i b_i + b_i^2                                                                                             \\
+         & = \sum_{i = 1}^n a_i^2 + 2 \sum_{i = 1}^n a_i b_i + \sum_{i = 1}^n b_i^2                                                               \\
+         & \leq \sum_{i = 1}^n a_i^2 + 2 \abs*{\sum_{i = 1}^n a_i b_i} + \sum_{i = 1}^n b_i^2                                                     \\
+         & \leq \sum_{i = 1}^n a_i^2 + 2 \bigg(\sum_{i = 1}^n a_i^2\bigg)^{1 / 2} \bigg(\sum_{j = 1}^n b_j^2\bigg)^{1 / 2} + \sum_{i = 1}^n b_i^2 \\
+         & = \bigg(\bigg(\sum_{i = 1}^n a_i^2\bigg)^{1 / 2} + \bigg(\sum_{j = 1}^n b_j^2\bigg)^{1 / 2}\bigg)^2
+    \end{align*}
+    and thus
+    \[
+        \bigg(\sum_{i = 1}^n (a_i + b_i)^2\bigg)^{1 / 2} \leq \bigg(\sum_{i = 1}^n a_i^2\bigg)^{1 / 2} + \bigg(\sum_{j = 1}^n b_j^2\bigg)^{1 / 2}.
+    \]
+\end{proof}
+
 \begin{exercise}\label{ex 1.1.6}
     Show that \((\mathbf{R}^n, d_{l^2})\) in Example \ref{1.1.6} is indeed a metric space.
 \end{exercise}
