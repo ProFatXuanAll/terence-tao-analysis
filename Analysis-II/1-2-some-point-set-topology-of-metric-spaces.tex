@@ -65,3 +65,44 @@
     We say that \(x_0\) is an \emph{adherent point} of \(E\) if for every radius \(r > 0\), the ball \(B(x_0, r)\) has a non-empty intersection with \(E\).
     The set of all adherent points of \(E\) is called the \emph{closure} of \(E\) and is denoted \(\overline{E}\).
 \end{definition}
+
+\begin{note}
+    Notions in Definition \ref{1.2.9} are consistent with the corresponding notions on the real line.
+\end{note}
+
+\begin{proposition}\label{1.2.10}
+    Let \((X, d)\) be a metric space, let \(E\) be a subset of \(X\), and let \(x_0\) be a point in \(X\).
+    Then the following statements are logically equivalent.
+    \begin{enumerate}
+        \item \(x_0\) is an adherent point of \(E\).
+        \item \(x_0\) is either an interior point or a boundary point of \(E\).
+        \item There exists a sequence \((x_n)_{n = 1}^\infty\) in \(E\) which converges to \(x_0\) with respect to the metric \(d\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    We first show that statement (a) implies statement (b).
+    Suppose that \(x_0\) is an adherent point of \(E\).
+    By Definition \ref{1.2.9}, \(\forall\ r \in \mathbf{R}^+\), we have \(B_{(X, d)}(x_0, r) \cap E \neq \emptyset\).
+    Thus by Definition \ref{1.2.5} \(x_0\) is not a exterior point.
+    Now we have either \(B_{(X, d)}(x_0, r) \subseteq E\) or \(B_{(X, d)}(x_0, r) \not\subseteq E\), and again by Definition \ref{1.2.5} we have \(x_0\) is either an interior point or a boundary point of \(E\).
+
+    Next we show that statement (b) implies statement (c).
+    First suppose that \(x_0\) is an interior point of \(E\).
+    Then by setting \(x_n = x_0\) for all \(n \in \mathbf{N}\) and \(n \geq 1\) we have \(\lim_{n \to \infty} d(x_n, x_0) = \lim_{n \to \infty} 0 = 0\).
+    Now suppose that \(x_0\) is a boundary point of \(E\).
+    By Definition \ref{1.2.5} \(\forall\ r \in \mathbf{R}^+\) we have \(B_{(X, d)}(x_0, r) \cap E \neq \emptyset\).
+    Let \(X_n = B_{(X, d)}(x_0, \frac{1}{n})\).
+    Since \(X_n \cap E \neq \emptyset\), by axiom of choice we can choose \(x_n \in X_n \cap E\) for all \(n \in \mathbf{N}\) and \(n \geq 1\).
+    So we have \(\lim_{n \to \infty} d(x_n, x_0) \leq \lim_{n \to \infty} \frac{1}{n} = 0\), and by sequeeze test we have \(\lim_{n \to \infty} d(x_n, x_0) = 0\).
+    In both cases we have \(\lim_{n \to \infty} d(x_n, x_0) = 0\), thus by Definition \ref{1.1.14} \((x_n)_{n = 1}^\infty\) converges to \(x_0\) with respect to \(d\).
+
+    Finally we show that statement (c) implies statement (a).
+    Suppose that there exists a sequence \((x_n)_{n = 1}^\infty\) in \(E\) which converges to \(x_0\) with respect to \(d\).
+    By Definition \ref{1.1.14} \(\forall\ r \in \mathbf{R}^+\), \(\exists\ N \in \mathbf{N}\) and \(N \geq 1\) such that
+    \[
+        \forall\ n \in \mathbf{N} \land n \geq N, d(x_n, x_0) \leq r.
+    \]
+    Since \(x_n \in E\) and \(E \subseteq X\), we know that the set \(B_{(X, d)}(x_0, r) \cap E \neq \emptyset\).
+    Since \(r\) is arbitrary, by Definition \ref{1.2.9} we know that \(x_0\) is an adherent point of \(E\).
+\end{proof}
