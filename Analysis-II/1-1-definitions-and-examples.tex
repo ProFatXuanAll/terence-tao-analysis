@@ -782,3 +782,36 @@
     Suppose that \((x_n)_{n = 1}^\infty\) converges to a point \(x \in X\), and \((y_n)_{n = 1}^\infty\) converges to a point \(y \in X\).
     Show that \(\lim_{n \to \infty} d(x_n, y_n) = d(x, y)\).
 \end{exercise}
+
+\begin{proof}
+    We have
+    \begin{align*}
+         & \lim_{n \to \infty} d(x_n, x) = 0;       & \text{(by Definition \ref{1.1.14})} \\
+         & \lim_{n \to \infty} d(y_n, y) = 0;       & \text{(by Definition \ref{1.1.14})} \\
+         & \lim_{n \to \infty} d(x, y)   = d(x, y).
+    \end{align*}
+    Since
+    \begin{align*}
+        d(x_n, y_n) & \leq d(x_n, x) + d(x, y_n)           & \text{(by Definition \ref{1.1.2}(d))} \\
+                    & \leq d(x_n, x) + d(x, y) + d(y, y_n) & \text{(by Definition \ref{1.1.2}(d))} \\
+                    & = d(x_n, x) + d(x, y) + d(y_n, y)    & \text{(by Definition \ref{1.1.2}(c))}
+    \end{align*}
+    and
+    \begin{align*}
+        d(x, y) & \leq d(x, x_n) + d(x_n, y)               & \text{(by Definition \ref{1.1.2}(d))} \\
+                & \leq d(x, x_n) + d(x_n, y_n) + d(y_n, y) & \text{(by Definition \ref{1.1.2}(d))} \\
+                & = d(x_n, x) + d(x_n, y_n) + d(y_n, y),   & \text{(by Definition \ref{1.1.2}(c))}
+    \end{align*}
+    we have
+    \begin{align*}
+                 & \bigg(d(x_n, y_n) - d(x, y) \leq d(x_n, x) + d(y_n, y)\bigg)                                                                   \\
+                 & \land \bigg(d(x, y) - d(x_n, y_n) \leq d(x_n, x) + d(y_n, y)\bigg)                                                             \\
+        \implies & 0 \leq \abs*{d(x_n, y_n) - d(x, y)} \leq d(x_n, x) + d(y_n, y)                                                                 \\
+        \implies & \lim_{n \to \infty} 0 \leq \lim_{n \to \infty} \abs*{d(x_n, y_n) - d(x, y)} \leq \lim_{n \to \infty} d(x_n, x) + d(y_n, y)     \\
+        \implies & 0 \leq \lim_{n \to \infty} \abs*{d(x_n, y_n) - d(x, y)} \leq \lim_{n \to \infty} d(x_n, x) + \lim_{n \to \infty} d(y_n, y) = 0 \\
+        \implies & \lim_{n \to \infty} \abs*{d(x_n, y_n) - d(x, y)} = 0                                                                           \\
+        \implies & \lim_{n \to \infty} d(x_n, y_n) - d(x, y) = 0                                                                                  \\
+        \implies & \lim_{n \to \infty} d(x_n, y_n) - \lim_{n \to \infty} d(x, y) = 0                                                              \\
+        \implies & \lim_{n \to \infty} d(x_n, y_n) = \lim_{n \to \infty} d(x, y) = d(x, y).
+    \end{align*}
+\end{proof}
