@@ -715,7 +715,66 @@
     \end{align*}
     Thus by Definition \ref{1.1.2} \((X, d_{l^1})\) and \((X, d_{l^\infty})\) are metric spaces.
 
-    Next we show that there exist sequences \(x^{(1)}, x^{(2)}, \dots\) of elements of \(X\) which are convergent with respect to the \(d_{l^\infty}\) metric but not with respect to the \(d_{l^1}\) metric.
+    Next we show that there exist sequences of elements of \(X\) which are convergent with respect to the \(d_{l^\infty}\) metric but not with respect to the \(d_{l^1}\) metric.
+    Let \((x^{(k)})_{k = 1}^\infty\) be the sequence of sequence \((x_n^{(k)})_{n = 0}^\infty\) where
+    \[
+        x_n^{(k)} = \begin{cases}
+            0                           & \text{if } n = 0    \\
+            \frac{1}{n^2} + \frac{1}{k} & \text{if } n \leq k \\
+            \frac{1}{n^2}               & \text{if } n > k.
+        \end{cases}
+    \]
+    Then we know that \(\sum_{n = 0}^\infty \abs*{x_n^{(k)}}\) is absolutely convergent for all \(k \in \mathbf{N}\) and \(k \geq 1\).
+    Let \((y_n)_{n = 0}^\infty\) be a sequence where
+    \[
+        y_n = \begin{cases}
+            0             & \text{if } n = 0  \\
+            \frac{1}{n^2} & \text{if } n > 0.
+        \end{cases}
+    \]
+    Then \(\sum_{n = 0}^\infty \abs*{y_n}\) is also absolutely convergent.
+    Now we show that \((x^{(k)})_{k = 1}^\infty\) converges to \((y_n)_{n = 0}^\infty\) with respect to \(d_{l^\infty}\).
+    By Definition \ref{1.1.14} we need to show that
+    \[
+        \lim_{k \to \infty} d_{l^\infty}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) = 0.
+    \]
+    We have
+    \begin{align*}
+        d_{l^\infty}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) & = \sup_{n \in \mathbf{N}} \abs*{x_n^{(k)} - y_n} \\
+                                                                       & = \sup \{0, \frac{1}{k}\}                        \\
+                                                                       & = \frac{1}{k}
+    \end{align*}
+    and thus
+    \[
+        \lim_{k \to \infty} d_{l^\infty}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) = \lim_{k \to \infty} \frac{1}{k} = 0.
+    \]
+    But we also have
+    \begin{align*}
+        d_{l^1}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) & = \sum_{n = 0}^\infty \abs*{x_n^{(k)} - y_n} \\
+                                                                  & = \sum_{n = 1}^k \frac{1}{k}                 \\
+                                                                  & = 1
+    \end{align*}
+    and thus
+    \[
+        \lim_{k \to \infty} d_{l^1}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) = \lim_{k \to \infty} 1 = 1 \neq 0
+    \]
+    and we conclude that \((x^{(k)})_{k = 1}^\infty\) converges to \((y_n)_{n = 0}^\infty\) with respect to \(d_{l^\infty}\) but not \(d_{l^1}\).
+
+    Finally we show that any sequence which converges in the \(d_{l^1}\) metric automatically converges in the \(d_{l^\infty}\) metric.
+    Suppose that \((x^{(k)})_{k = 1}^\infty\) converges to \((y_n)_{n = 0}^\infty\) with respect to \(d_{l^1}\).
+    Since
+    \begin{align*}
+        d_{l^1}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) & = \sum_{n = 0}^\infty \abs*{x_n^{(k)} - y_n}                      \\
+                                                                  & \geq \sup_{n \in N} \abs*{x_n^{(k)} - y_n}                        \\
+                                                                  & = d_{l^\infty}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty),
+    \end{align*}
+    by squeeze test we have
+    \begin{align*}
+                 & 0 \leq d_{l^\infty}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) \leq d_{l^1}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty)                                                                     \\
+        \implies & 0 = \lim_{k \to \infty} 0 \leq \lim_{k \to \infty} d_{l^\infty}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) \leq \lim_{k \to \infty} d_{l^1}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) = 0 \\
+        \implies & \lim_{k \to \infty} d_{l^\infty}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) = 0.
+    \end{align*}
+    Thus any sequence which converges in the \(d_{l^1}\) metric automatically converges in the \(d_{l^\infty}\) metric.
 \end{proof}
 
 \begin{exercise}\label{ex 1.1.16}
