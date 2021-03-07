@@ -193,3 +193,40 @@
     By Proposition \ref{1.2.10} we know that \(\overline{E} = \text{int}(E) \cup \partial E\).
     Thus we have \(\partial E \subseteq E\) and by Definition \ref{1.2.12} \(E\) is closed.
 \end{proof}
+
+\begin{proof}{(c)}
+    Let \(x_0 \in X\) and let \(r \in \mathbf{R}^+\).
+    We first show that \(B_{(X, d)}(x_0, r)\) is an open set.
+    Since \(x_0 \in B_{(X, d)}(x_0, r)\), we know that \(B_{(X, d)}(x_0, r) \neq \emptyset\).
+    Let \(x \in B_{(X, d)}(x_0, r)\) and let \(r' = r - d(x, x_0)\).
+    By Definition \ref{1.2.1} we have \(d(x, x_0) < r\), so \(r' > 0\).
+    Then we have
+    \begin{align*}
+                 & \forall\ y \in B_{(X, d)}(x, r')                                            \\
+        \implies & d(y, x) < r'                        & \text{(by Definition \ref{1.2.1})}    \\
+        \implies & d(y, x) < r - d(x, x_0)                                                     \\
+        \implies & d(y, x) + d(x, x_0) < r                                                     \\
+        \implies & d(y, x_0) < d(y, x) + d(x, x_0) < r & \text{(by Definition \ref{1.1.2}(d))} \\
+        \implies & y \in B_{(X, d)}(x_0, r)            & \text{(by Definition \ref{1.2.1})}
+    \end{align*}
+    and thus \(B_{(X, d)}(x, r') \subseteq B_{(X, d)}(x_0, r)\).
+    By Definition \ref{1.2.5} this means \(B_{(X, d)}(x_0, r) \subseteq \text{int}(B_{(X, d)}(x_0, r))\).
+    By Remark \ref{1.2.6} we then have \(B_{(X, d)}(x_0, r) = \text{int}(B_{(X, d)}(x_0, r))\), so by Proposition \ref{1.2.15}(a) \(B_{(X, d)}(x_0, r)\) is closed.
+
+    Now we show that \(\{x \in X : d(x, x_0) \leq r\}\) is closed.
+    Let \(E = \{x \in X : d(x, x_0) \leq r\}\).
+    Since \(B_{(X, d)}(x_0, r) \neq \emptyset\) and \(B_{(X, d)}(x_0, r) \subseteq E\), by Definition \ref{1.2.5} we know that \(x_0 \in \text{int}(E)\).
+    By Corollary \ref{1.2.11} we know that \(\overline{E} = \text{int}(E) \cup \partial E\), thus \(x_0 \in \overline{E}\) and \(\overline{E} \neq \emptyset\).
+    Let \(y \in \overline{E}\).
+    By Proposition \ref{1.2.10}(c), \(\exists\ (y_n)_{n = 1}^\infty\) such that \(y_n \in E\) for all \(n \in \mathbf{Z}^+\) and \(\lim_{n \to \infty} y_n = y\).
+    Suppose for sake of contradiction that \(y \notin E\).
+    Then we have \(d(y, x_0) > r\).
+    By Definition \ref{1.1.14}, \(\exists\ N \in \mathbf{Z}^+\) such that \(\forall\ n \in \mathbf{N}\) and \(n \geq N\), we have
+    \[
+        d(y_n, y) \leq \frac{d(y, x_0) - r}{2} < d(y, x_0) - r.
+    \]
+    Then by Definition \ref{1.1.2} we have \(r < d(y, x_0) - d(y_n, y) \leq d(y_n, x_0)\).
+    But \(d(y_n, x_0) > r\) means \(y_n \notin E\), a contradiction.
+    Thus we must have \(y \in E\).
+    Since \(y\) is arbitrary, we have \(\overline{E} \subseteq E\) and by Proposition \ref{1.2.15}(b) \(E\) is closed.
+\end{proof}
