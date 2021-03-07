@@ -279,8 +279,8 @@
         & \forall\ x_0 \in \bigcap_{i \in I} E_i \\
         \implies & \forall\ i \in I, x_0 \in E_i \\
         \implies & \forall\ i \in I, x_0 \in \text{int}(E_i) & \text{(by Proposition \ref{1.2.15}(a))} \\
-        \implies & \forall\ i \in I, \exists\ r_i \in \mathbf{R} : B_{(X, d)}(x_0, r_i) \subseteq E_i & \text{(by Definition \ref{1.2.5})} \\
-        \implies & \forall\ i \in I, B_{(X, d)}(x_0, \min_{j \in I}(r_j)) \subseteq E_i \\
+        \implies & \forall\ i \in I, \exists\ r_i \in \mathbf{R}^+ : B_{(X, d)}(x_0, r_i) \subseteq E_i & \text{(by Definition \ref{1.2.5})} \\
+        \implies & \forall\ i \in I, B_{(X, d)}(x_0, \min_{j \in I}(r_j)) \subseteq E_i & \text{(\(I\) is finite)} \\
         \implies & B_{(X, d)}(x_0, \min_{j \in I}(r_j)) \subseteq \bigcap_{i \in I} E_i \\
         \implies & x_0 \in \text{int}(\bigcap_{i \in I} E_i) & \text{(by Definition \ref{1.2.5})}
     \end{align*}
@@ -295,5 +295,29 @@
         \implies & \bigcap_{i \in I} (X \setminus F_i) \text{ is open} \\
         \implies & X \setminus \bigg(\bigcap_{i \in I} (X \setminus F_i)\bigg) \text{ is closed} & \text{(by Proposition \ref{1.2.15}(e))} \\
         \implies & \bigcup_{i \in I} F_i \text{ is closed}.
+    \end{align*}
+\end{proof}
+
+\begin{proof}{(g)}
+    We first show that if \(\{E_\alpha\}_{\alpha \in I}\) is a collection of open sets in \(X\), then \(\bigcup_{\alpha \in I} E_\alpha\) is also open.
+    We have
+    \begin{align*}
+        & \forall\ x_0 \in \bigcup_{\alpha \in I} E_\alpha \\
+        \implies & \exists\ \beta \in I : x_0 \in E_\beta \\
+        \implies & x_0 \in \text{int}(E_\beta) & \text{(by Proposition \ref{1.2.15}(a))} \\
+        \implies & \exists\ r \in \mathbf{R}^+ : B_{(X, d)}(x_0, r) \subseteq E_\beta & \text{(by Definition \ref{1.2.5})} \\
+        \implies & B_{(X, d)}(x_0, r) \subseteq \bigcup_{\alpha \in I} E_\alpha \\
+        \implies & x_0 \in \text{int}(\bigcup_{\alpha \in I} E_\alpha) & \text{(by Definition \ref{1.2.5})}
+    \end{align*}
+    and thus by Proposition \ref{1.2.15}(a) we know that \(\bigcup_{\alpha \in I} E_\alpha\) is open.
+
+    Now we show that if \(\{F_\alpha\}_{\alpha \in I}\) is a collection of closed sets in \(X\), then \(\bigcap_{\alpha \in I} F_\alpha\) is also closed.
+    We have
+    \begin{align*}
+        & \forall\ \alpha \in I, F_\alpha \text{ is closed} \\
+        \implies & \forall\ \alpha \in I, X \setminus F_\alpha \text{ is open} & \text{(by Proposition \ref{1.2.15}(e))} \\
+        \implies & \bigcup_{\alpha \in I} (X \setminus F_\alpha) \text{ is open} \\
+        \implies & X \setminus \bigg(\bigcup_{\alpha \in I} (X \setminus F_\alpha)\bigg) \text{ is closed} & \text{(by Proposition \ref{1.2.15}(e))} \\
+        \implies & \bigcap_{\alpha \in I} F_\alpha \text{ is closed}.
     \end{align*}
 \end{proof}
