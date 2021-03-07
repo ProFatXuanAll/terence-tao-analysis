@@ -321,3 +321,51 @@
         \implies & \bigcap_{\alpha \in I} F_\alpha \text{ is closed}.
     \end{align*}
 \end{proof}
+
+\begin{proof}{(h)}
+    We first show that \(\text{int}(E)\) is open.
+    Since
+    \begin{align*}
+        & \forall\ x_0 \in \text{int}(E) \\
+        \implies & \exists\ r \in \mathbf{R}^+ : B_{(X, d)}(x_0, r) \subseteq E & \text{(by Definition \ref{1.2.5})} \\
+        \implies & B_{(X, d)}(x_0, r) \text{ is open} & \text{(by Proposition \ref{1.2.15}(c))} \\
+        \implies & \forall\ y \in B_{(X, d)}(x_0, r), \exists\ r' \in \mathbf{R}^+ : \\
+        & B_{(X, d)}(y, r') \subseteq B_{(X, d)}(x_0, r) & \text{(by Definition \ref{1.2.5})} \\
+        \implies & B_{(X, d)}(y, r') \subseteq B_{(X, d)}(x_0, r) \subseteq E \\
+        \implies & y \in \text{int}(E) & \text{(by Definition \ref{1.2.5})} \\
+        \implies & B_{(X, d)}(x_0, r) \subseteq \text{int}(E) \\
+        \implies & x_0 \in \text{int}(\text{int}(E)), & \text{(by Definition \ref{1.2.5})}
+    \end{align*}
+    by Proposition \ref{1.2.15}(a) we know that \(\text{int}(E)\) is open.
+
+    Next we show that \(\forall\ V \subseteq E\), \(V\) is open implies \(V \subseteq \text{int}(E)\).
+    We have
+    \begin{align*}
+        & \forall\ V \subseteq E \land V \text{ is open} \\
+        \implies & V = \text{int}(V) \subseteq E & \text{(by Proposition \ref{1.2.15}(a))} \\
+        \implies & \forall\ x_0 \in V, \exists\ r \in \mathbf{R}^+ : \\
+        & B_{(X, d)}(x_0, r) \subseteq V \subseteq E & \text{(by Definition \ref{1.2.5})} \\
+        \implies & \forall\ x_0 \in V, x_0 \in \text{int}(E) & \text{(by Definition \ref{1.2.5})} \\
+        \implies & V \subseteq \text{int}(E).
+    \end{align*}
+
+    Next we show that \(\overline{E}\) is closed.
+    Since
+    \begin{align*}
+        & \forall\ x_0 \in X \setminus \overline{E} \\
+        \implies & x_0 \in X \setminus (\text{int}(E) \cup \partial E) & \text{(by Corollary \ref{1.2.11})} \\
+        \implies & x_0 \in \text{ext}(E) & \text{(by Definition \ref{1.2.5})} \\
+        \implies & \exists\ r \in \mathbf{R}^+ : B_{(X, d)}(x_0, r) \cap E = \emptyset & \text{(by Definition \ref{1.2.5})} \\
+        \implies & \exists\ r \in \mathbf{R}^+ : B_{(X, d)}(x_0, r) \subseteq X \setminus E \\
+        \implies & x_0 \in \text{int}(X \setminus \overline{E}), & \text{(by Definition \ref{1.2.5})}
+    \end{align*}
+    By Proposition \ref{1.2.15}(a) we know that \(X \setminus \overline{E}\)
+    % \begin{align*}
+    %     & \forall\ x_0 \in \overline{\overline{E}} \\
+    %     \implies & \forall\ r \in \mathbf{R}^+, B_{(X, d)}(x_0, r) \cap \overline{E} \neq \emptyset & \text{(by Definition \ref{1.2.9})} \\
+    %     \implies & \forall\ r \in \mathbf{R}^+, B_{(X, d)}(x_0, r) \cap (\text{int}(E) \cup \partial E) \neq \emptyset & \text{(by Corollary \ref{1.2.11})} \\
+    %     \implies & \forall\ r \in \mathbf{R}^+, \big(B_{(X, d)}(x_0, r) \cap \text{int}(E) \neq \emptyset\big) \\
+    %     & \lor \big(B_{(X, d)}(x_0, r) \cap \partial E \neq \emptyset\big) \\
+    %     \implies & x_0 \in \overline{E}, & \text{(by Definition \ref{1.2.9})}
+    % \end{align*}
+\end{proof}
