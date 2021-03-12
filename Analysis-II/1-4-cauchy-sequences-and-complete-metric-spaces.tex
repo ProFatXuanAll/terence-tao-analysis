@@ -63,3 +63,21 @@
     Let \((x^{(n)})_{n = m}^\infty\) be a sequence of points in a metric space \((X, d)\).
     We say that this sequence is a \emph{Cauchy sequence} iff for every \(\varepsilon > 0\), there exists an \(N \geq m\) such that \(d(x^{(j)}, x^{(k)}) < \varepsilon\) for all \(j, k \geq N\).
 \end{definition}
+
+\begin{lemma}[Convergent sequences are Cauchy sequences]\label{1.4.7}
+    Let \((x^{(n)})_{n = m}^\infty\) be a sequence in \((X, d)\) which converges to some limit \(x_0\).
+    Then \((x^{(n)})_{n = m}^\infty\) is also a Cauchy sequence.
+\end{lemma}
+
+\begin{proof}
+    Since \(\lim_{n \to \infty} d(x^{(n)}, x_0) = 0\), by Definition \ref{1.1.14} we know that \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ N \in \mathbf{N}\) and \(N \geq m\) such that \(\forall\ n \geq N\), we have \(d(x^{(n)}, x_0) \leq \varepsilon / 2\).
+    Let \(k \in \mathbf{N}\) and \(k \geq N\).
+    Then we have
+    \begin{align*}
+        d(x^{(n)}, x^{(k)}) & \leq d(x^{(n)}, x_0) + d(x_0, x^{(k)}) & \text{(by Definition \ref{1.1.2}(d))} \\
+                            & = d(x^{(n)}, x_0) + d(x^{(k)}, x_0)    & \text{(by Definition \ref{1.1.2}(c))} \\
+                            & \leq \varepsilon / 2 + \varepsilon / 2                                         \\
+                            & = \varepsilon
+    \end{align*}
+    and by Definition \ref{1.4.6} \((x^{(n)})_{n = m}^\infty\) is a Cauchy sequence.
+\end{proof}
