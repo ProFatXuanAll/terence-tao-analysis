@@ -81,3 +81,23 @@
     \end{align*}
     and by Definition \ref{1.4.6} \((x^{(n)})_{n = m}^\infty\) is a Cauchy sequence.
 \end{proof}
+
+\setcounter{theorem}{8}
+\begin{lemma}\label{1.4.9}
+    Let \((x^{(n)})_{n = m}^\infty\) be a Cauchy sequence in \((X, d)\).
+    Suppose that there is some subsequence \((x^{(n_j)})_{j = 1}^\infty\) of this sequence which converges to a limit \(x_0\) in \(X\).
+    Then the original sequence \((x^{(n)})_{n = m}^\infty\) also converges to \(x_0\).
+\end{lemma}
+
+\begin{proof}
+    Since \(\lim_{j \to \infty} d(x^{(n_j)}, x_0) = 0\), by Definition \ref{1.1.14} we know that \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ N_1 \in \mathbf{N}\) and \(N_1 \geq 1\) such that \(\forall\ j \geq N_1\), we have \(d(x^{(n_j)}, x_0) \leq \varepsilon / 2\).
+    Since \((x^{(n)})_{n = m}^\infty\) is a Cauchy sequence, by Definition \ref{1.4.6} we know that \(\exists\ N_2 \in \mathbf{N}\) and \(N_2 \geq m\) such that \(\forall\ i, k \in \mathbf{N}\) and \(i, k \geq N\) we have \(d(x^{(i)}, x^{(k)}) \leq \varepsilon / 2\).
+    Let \(N = \max(N_1, N_2)\).
+    Then \(\forall\ i, j \geq N\), we have
+    \begin{align*}
+        d(x^{(i)}, x_0) & \leq d(x^{(i)}, x^{(n_j)}) + d(x^{(n_j)}, x_0) & \text{(by Definition \ref{1.1.2}(d))} \\
+                        & \leq \varepsilon / 2 + \varepsilon / 2         & (n_j \geq j \geq N)                   \\
+                        & = \varepsilon
+    \end{align*}
+    and thus by Definition \ref{1.1.14} \(\lim_{n \to \infty} d(x^{(n)}, x_0) = 0\).
+\end{proof}
