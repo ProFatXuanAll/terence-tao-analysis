@@ -230,3 +230,24 @@
         \item Show that the formal limit agrees with the actual limit, thus if \((x_n)_{n = 1}^\infty\) is any Cauchy sequence in \(X\), then we have \(\lim_{n \to \infty} x_n = \text{LIM}_{n \to \infty} x_n\) in \(\overline{X}\).
     \end{enumerate}
 \end{exercise}
+
+\begin{proof}{(a)}
+    Let \((x^{(n)})_{n = m}^\infty\), \((y^{(n)})_{n = m}^\infty\), \((z^{(n)})_{n = m}^\infty\) be Cauchy sequences in \(X\).
+
+    For reflexive:
+    By Definition \ref{1.1.2}(a) we have \(\lim_{n \to \infty} d(x_n, x_n) = \lim_{n \to \infty} 0 = 0\), thus \(\text{LIM}_{n \to \infty} x_n = \text{LIM}_{n \to \infty} x_n\).
+
+    For symmetry:
+    By Definition \ref{1.1.2}(c) we have \(\lim_{n \to \infty} d(x_n, y_n) = \lim_{n \to \infty} d(y_n, x_n)\), thus \(\text{LIM}_{n \to \infty} x_n = \text{LIM}_{n \to \infty} y_n\) iff \(\text{LIM}_{n \to \infty} y_n = \text{LIM}_{n \to \infty} x_n\).
+
+    For transitive:
+    We have
+    \begin{align*}
+                 & (\text{LIM}_{n \to \infty} x_n = \text{LIM}_{n \to \infty} y_n) \land (\text{LIM}_{n \to \infty} y_n = \text{LIM}_{n \to \infty} z_n)                                      \\
+        \implies & (\lim_{n \to \infty} d(x_n, y_n) = 0) \land (\lim_{n \to \infty} d(y_n, z_n) = 0)                                                                                          \\
+        \implies & \lim_{n \to \infty} d(x_n, y_n) + d(y_n, z_n) = 0                                                                                                                          \\
+        \implies & 0 \leq \lim_{n \to \infty} d(x_n, z_n) \leq \lim_{n \to \infty} d(x_n, y_n) + d(y_n, z_n) = 0                                         & \text{(by Definition \ref{1.1.2})} \\
+        \implies & \lim_{n \to \infty} d(x_n, z_n) = 0                                                                                                   & \text{(by squeeze test)}           \\
+        \implies & \text{LIM}_{n \to \infty} x_n = \text{LIM}_{n \to \infty} z_n.
+    \end{align*}
+\end{proof}
