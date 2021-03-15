@@ -61,7 +61,7 @@
 
 \begin{definition}[Cauchy sequences]\label{1.4.6}
     Let \((x^{(n)})_{n = m}^\infty\) be a sequence of points in a metric space \((X, d)\).
-    We say that this sequence is a \emph{Cauchy sequence} iff for every \(\varepsilon > 0\), there exists an \(N \geq m\) such that \(d(x^{(j)}, x^{(k)}) < \varepsilon\) for all \(j, k \geq N\).
+    We say that this sequence is a \emph{Cauchy sequence} iff for every \(\varepsilon > 0\), there exists an \(N \geq m\) such that \(d(x^{(j)}, x^{(k)}) \leq \varepsilon\) for all \(j, k \geq N\).
 \end{definition}
 
 \begin{lemma}[Convergent sequences are Cauchy sequences]\label{1.4.7}
@@ -215,13 +215,13 @@
               We say that two formal limits \(\text{LIM}_{n \to \infty} x_n\) and \(\text{LIM}_{n \to \infty} y_n\) are equal if \(\text{lim}_{n \to \infty} d(x_n, y_n)\) is equal to zero.
               Show that this equality relation obeys the reflexive, symmetry, and transitive axioms.
         \item Let \(\overline{X}\) be the space of all formal limits of Cauchy sequences in \(X\), with the above equality relation.
-              Define a metric \(d_{\overline{X}} : \overline{X} \times \overline{X} \to \mathbf{R}^+\) by setting
+              Define a metric \(d_{\overline{X}} : \overline{X} \times \overline{X} \to [0, \infty)\) by setting
               \[
                   d_{\overline{X}}(\text{LIM}_{n \to \infty} x_n, \text{LIM}_{n \to \infty} y_n) \coloneqq \lim_{n \to \infty} d(x_n, y_n).
               \]
               Show that this function is well-defined (this means not only that the limit \\
               \(\lim_{n \to \infty} d(x_n, y_n)\) exists, but also that the axiom of substitution is obeyed;
-              cf. Lemma 5.3.7), and gives \(X\) the structure of a metric space.
+              cf. Lemma 5.3.7), and gives \(\overline{X}\) the structure of a metric space.
         \item Show that the metric space \((\overline{X}, d_{\overline{X}})\) is complete.
         \item We identify an element \(x \in X\) with the corresponding formal limit \(\text{LIM}_{n \to \infty} x\) in \(X\);
               show that this is legitimate by verifying that \(x = y \iff \text{LIM}_{n \to \infty} x = \text{LIM}_{n \to \infty} y\).
@@ -250,4 +250,51 @@
         \implies & \lim_{n \to \infty} d(x_n, z_n) = 0                                                                                                   & \text{(by squeeze test)}           \\
         \implies & \text{LIM}_{n \to \infty} x_n = \text{LIM}_{n \to \infty} z_n.
     \end{align*}
+\end{proof}
+
+\begin{proof}{(b)}
+    Let \((x^{(n)})_{n = m}^\infty\), \((y^{(n)})_{n = m}^\infty\) be Cauchy sequences in \(X\) with formal limits in \(\overline{X}\).
+    We first show that the limit
+    \[
+        d_{\overline{X}}(\text{LIM}_{n \to \infty} x_n, \text{LIM}_{n \to \infty} y_n) \coloneqq \lim_{n \to \infty} d(x_n, y_n)
+    \]
+    exists.
+    Let \((a_n)_{n = m}^\infty\) be the sequence \(a_n = d(x_n, y_n)\).
+    To show that the above limit exists, it will suffice to show that \((a_n)_{n = m}^\infty\) converges in \(\mathbf{R}\).
+    Let \(\varepsilon \in \mathbf{R}^+\).
+    Since \((x^{(n)})_{n = m}^\infty\) is a Cauchy sequence, by Definition \ref{1.4.6} we know that \(\exists\ N_1 \in \mathbf{N}\) and \(N_1 \geq m\) such that \(\forall\ j, k \in \mathbf{N}\) and \(j, k \geq N_1\) we have \(d(x_j, x_k) \leq \varepsilon / 2\).
+    Similarly, \(\exists\ N_2 \in \mathbf{N}\) and \(N_2 \geq m\) such that \(\forall\ j, k \in \mathbf{N}\) and \(j, k \geq N_2\) we have \(d(y_j, y_k) \leq \varepsilon / 2\).
+    Let \(N = \max(N_1, N_2)\).
+    Then \(\forall\ j, k \geq N\), we have
+    \begin{align*}
+        \abs*{a_j - a_k} & = \abs*{d(x_j, y_j) - d(x_k, y_k)}                                                                               \\
+                         & = \abs*{d(x_j, y_j) + d(y_j, x_k) - d(y_j, x_k) - d(x_k, y_k)}                                                   \\
+                         & \leq \abs*{d(x_j, y_j) + d(y_j, x_k)} + \abs*{d(y_j, x_k) + d(x_k, y_k)}                                         \\
+                         & = d(x_j, y_j) + d(y_j, x_k) + d(y_j, x_k) + d(x_k, y_k)                                                          \\
+                         & \leq d(x_j, x_k) + d(y_j, y_k)                                           & \text{(by Definition \ref{1.1.2}(d))} \\
+                         & \leq \varepsilon / 2 + \varepsilon / 2                                                                           \\
+                         & = \varepsilon
+    \end{align*}
+    and thus \((a_n)_{n = m}^\infty\) is a Cauchy sequence in \(\mathbf{R}\) and we know that \((a_n)_{n = m}^\infty\) converges in \(\mathbf{R}\).
+
+    Now we show that \(d_{\overline{X}}\) obeys the axiom of substitution.
+    Let \((z^{(n)})_{n = m}^\infty\) be a Cauchy sequence in \(X\) such that \(\text{LIM}_{n \to \infty} x_n = \text{LIM}_{n \to \infty} z_n\).
+    Then we have
+    \begin{align*}
+                 & \begin{cases}
+            d(x_n, y_n) \leq d(x_n, z_n) + d(z_n, y_n) \\
+            d(z_n, y_n) \leq d(x_n, y_n) + d(x_n, z_n)
+        \end{cases}                                                                                           & \text{(by Definition \ref{1.1.2}(c)(d))} \\
+        \implies & \begin{cases}
+            d(x_n, y_n) - d(z_n, y_n) \leq d(x_n, z_n) \\
+            d(z_n, y_n) - d(x_n, y_n) \leq d(x_n, z_n)
+        \end{cases}                                                                                                                                      \\
+        \implies & 0 \leq \abs*{d(x_n, y_n) - d(z_n, y_n)} \leq d(x_n, z_n)                                                                                                        \\
+        \implies & \lim_{n \to \infty} 0 \leq \lim_{n \to \infty} \abs*{d(x_n, y_n) - d(z_n, y_n)} \leq \lim_{n \to \infty} d(x_n, z_n)                                            \\
+        \implies & 0 \leq \lim_{n \to \infty} \abs*{d(x_n, y_n) - d(z_n, y_n)} \leq 0                                                   & \text{(by Exercise \ref{ex 1.4.8}(a))}   \\
+        \implies & \lim_{n \to \infty} \abs*{d(x_n, y_n) - d(z_n, y_n)} = 0                                                             & \text{(by squeeze test)}                 \\
+        \implies & \lim_{n \to \infty} d(x_n, y_n) - d(z_n, y_n) = 0                                                                                                               \\
+        \implies & \lim_{n \to \infty} d(x_n, y_n) = \lim_{n \to \infty} d(z_n, y_n)
+    \end{align*}
+    and thus \(d_{\overline{X}}(\text{LIM}_{n \to \infty} x_n, \text{LIM}_{n \to \infty} y_n) = d_{\overline{X}}(\text{LIM}_{n \to \infty} z_n, \text{LIM}_{n \to \infty} y_n)\).
 \end{proof}
