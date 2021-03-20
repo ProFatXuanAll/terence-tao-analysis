@@ -334,9 +334,9 @@
     \[
         \lim_{n \to \infty} d_{\overline{X}}(a^{(n)}, x) = \lim_{n \to \infty} d_{\overline{X}}(\text{LIM}_{k \to \infty} a_k^{(n)}, \text{LIM}_{k \to \infty} b_k) = \lim_{n \to \infty} (\lim_{k \to \infty} d(a_k^{(n)}, b_k)) = 0
     \]
-    for some Cauchy sequence \((b_k)_{k = m}^{\infty}\) in \(X\).
+    for some Cauchy sequence \((b_k)_{k = 1}^{\infty}\) in \(X\).
 
-    Let \(j, K, k_1, k_2, N, n_1, n_2 \in \mathbf{Z}^+\).
+    Let \(j, K, k_1, k_2, L, N, n_1, n_2 \in \mathbf{Z}^+\).
     Since \((a_k^{(n)})_{k = 1}^\infty\) is a Cauchy sequence, by Definition \ref{1.4.6} we know that \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ K \geq 1\) such that \(\forall\ k_1, k_2 \geq K\),
     \[
         d(a_{k_1}^{(n)}, a_{k_2}^{(n)}) \leq \varepsilon.
@@ -346,6 +346,8 @@
         d(a_{k_1}^{(n)}, a_{k_2}^{(n)}) \leq \frac{1}{n}.
     \]
     Since the existence of \(K\) depends on \(n\), we denote such \(K\) as \(K_n\).
+    Note that we can always choose such \(K_n \geq n\)
+    (If \(K_n < n\), then we can simply set \(K_n = n\)).
     Since \((a^{(n)})_{n = 1}^\infty\) is a Cauchy sequence, by Definition \ref{1.4.6} \(\exists\ N \geq 1\) such that \(\forall\ n_1, n_2 \geq N\),
     \begin{align*}
                  & d_{\overline{X}}(a^{(n_1)}, a^{(n_2)}) \leq \varepsilon / 2 < \varepsilon                                                                             \\
@@ -369,20 +371,22 @@
     \]
     for all \(j \geq 1\).
     Since the existence of \(M\) depends on \(j\), we denote such \(M\) as \(M_j\).
+    Note that we can always choose such \(M_j \geq j\)
+    (If \(M_j < j\), then we can simply set \(M_j = j\)).
 
     Let \(P(j, n) = \max(M_j, K_n)\).
-    This means \(\forall\ k, k_1, k_2, n, n_1, n_2 \geq P(j, n)\), we have
+    This means \(P(j, n) \geq \max(j, n)\) (since \(K_n \geq n\) and \(M_j \geq j\)) and \(\forall\ k, k_1, k_2, n, n_1, n_2 \geq P(j, n)\), we have
     \begin{align*}
-        d(a_{k_1}^{(n)}, a_{k_2}^{(n)}) & < \frac{1}{n}     \\
-        d(a_k^{(n_1)}, a_k^{(n_2)})     & \leq \frac{1}{j}.
+        d(a_{k_1}^{(n)}, a_{k_2}^{(n)}) & < \frac{1}{P(j, n)} \leq \frac{1}{n}     \\
+        d(a_k^{(n_1)}, a_k^{(n_2)})     & \leq \frac{1}{P(j, n)} \leq \frac{1}{j}.
     \end{align*}
-    By axiom of choice, we can choose \(a_{P(j, n)}^{(P(j, n))}\) for every \(j \geq 1\) and let \((b_j)_{j = 1}^\infty\) be a sequence in \(X\) where \(b_j = a_{P(j, n)}^{(P(j, n))}\).
-    Then \(\forall\ k_1 \leq k_2\), we have
+    By axiom of choice, we can choose \(a_{P(j, j)}^{(P(j, j))}\) for every \(j \geq 1\) and let \((b_j)_{j = 1}^\infty\) be a sequence in \(X\) where \(b_j = a_{P(j, j)}^{(P(j, j))}\).
+    Then we have
     \begin{align*}
         d(b_{k_1}, b_{k_2}) & = d(a_{P(k_1, k_1)}^{(P(k_1, k_1))}, a_{P(k_2, k_2)}^{(P(k_2, k_2))})                                                                                                                  \\
                             & \leq d(a_{P(k_1, k_1)}^{(P(k_1, k_1))}, a_{P(k_2, k_2)}^{(P(k_1, k_1))}) + d(a_{P(k_2, k_2)}^{(P(k_1, k_1))}, a_{P(k_2, k_2)}^{(P(k_2, k_2))}) & \text{(by Definition \ref{1.1.2}(d))} \\
                             & \leq \frac{1}{k_1} + \frac{1}{k_2}                                                                                                                                                     \\
-                            & \leq \frac{2}{k_1}.
+                            & \leq \frac{2}{\min(k_1, k_2)}.
     \end{align*}
     Since \(\varepsilon \in \mathbf{R}^+\), we can always find a \(K \in \mathbf{Z}^+\) such that
     \[
@@ -390,16 +394,16 @@
     \]
     Combine the results above we have \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ K \geq 1\) such that \(\forall\ k_1, k_2 \geq K\),
     \[
-        d(b_{k_1}, b_{k_2}) \leq \frac{2}{K} \leq \varepsilon.
+        d(b_{k_1}, b_{k_2}) \leq \frac{2}{\min(k_1, k_2)} \leq \frac{2}{K} \leq \varepsilon.
     \]
     By Definition \ref{1.4.6} this means \((b_j)_{j = 1}^\infty\) is a Cauchy sequence.
     Thus by Exercise \ref{ex 1.4.8}(b) we have \(\text{LIM}_{j \to \infty} b_j \in \overline{X}\).
 
     Now we show that \(\lim_{n \to \infty} (\lim_{k \to \infty} d(a_k^{(n)}, b_k)) = 0\).
-    Since \(\forall\ k \geq P(j, n)\) we have
+    Since \(\forall\ k \geq P(n, n)\), we have
     \begin{align*}
-        d(a_k^{(n)}, b_k) & = d(a_k^{(n)}, a_{P(k, k)}^{(P(k, k))})                                                                                  \\
-                          & \leq d(a_k^{(n)}, a_{P(k, k)}^{(n)}) + d(a_{P(k, k)}^{(n)}, a_{P(k, k)}^{(P_k)}) & \text{(by Definition \ref{1.1.2}(d))} \\
+        d(a_k^{(n)}, b_k) & = d(a_k^{(n)}, a_{P(k, k)}^{(P(k, k))})                                                                                      \\
+                          & \leq d(a_k^{(n)}, a_{P(k, k)}^{(n)}) + d(a_{P(k, k)}^{(n)}, a_{P(k, k)}^{(P(k, k))}) & \text{(by Definition \ref{1.1.2}(d))} \\
                           & \leq \frac{1}{n} + \frac{1}{k},
     \end{align*}
     we then have
