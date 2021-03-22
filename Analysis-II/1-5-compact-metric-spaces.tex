@@ -80,3 +80,37 @@
     Since \((Y, d|_{Y \times Y})\) is compact, by Proposition \ref{1.5.5} we know that \((Y, d)\) is complete and bounded.
     Thus by Proposition \ref{1.4.12}(a) we know that \(Y\) is closed in \(X\).
 \end{proof}
+
+\begin{theorem}[Heine-Borel theorem]\label{1.5.7}
+    Let \((\mathbf{R}^n, d)\) be a Euclidean space with either the Euclidean metric, the taxicab metric, or the supnorm metric.
+    Let \(E\) be a subset of \(\mathbf{R}^n\).
+    Then \(E\) is compact if and only if it is closed and bounded.
+\end{theorem}
+
+\begin{proof}
+    By Exercise \ref{ex 1.1.6}, \ref{ex 1.1.7}, \ref{ex 1.1.9} we know that \((\mathbf{R}^n, d_{l^2})\), \((\mathbf{R}^n, d_{l^1})\), \((\mathbf{R}^n, d_{l^\infty})\) are metric spaces.
+    By Corollary \ref{1.5.6} we know that if \((E, d_{l^1})\) is compact then \(E\) is a closed and bounded.
+    Thus we only need to show that if \((E, d_{l^1})\) is closed and bounded then \(E\) is compact.
+
+    Let \(E \subseteq \mathbf{R}^n\) and let \((E, d_{l^1})\) be closed and bounded.
+    Since \(E \subseteq \mathbf{R}^n\), we know that \(\forall\ x \in E\), we have \(x\) in the form \(x = (x_1, \dots, x_n) = (x_i)_{i = 1}^n \in \mathbf{R}^n\).
+    Let \(E_i\) be the set
+    \[
+        E_i = \{y \in \mathbf{R} | \exists\ x \in E : x_i = y\},
+    \]
+    i.e., \(E_i\) is the collection of \(i^{\text{th}}\) coordinate of all element \(x \in E\).
+    Now we show that \((E_i, d_{l^1})\) is closed and bounded for all \(i \in \{1, \dots, n\}\).
+
+    Since \((E, d_{l^1})\) is bounded, by Definition \ref{1.5.3} there exists a ball \(B_{(X, d_{l^1})}(y, r)\) in \(\mathbf{R}^n\) such that \(E \subseteq B_{(X, d_{l^1})}(y, r)\).
+    By Definition \ref{1.2.1} we have
+    \[
+        \forall\ x \in E, d_{l^1}(x, y) = \sum_{i = 1}^n \abs*{x_i - y_i} < r
+    \]
+    which implies
+    \begin{align*}
+                 & \abs*{x_i - y_i} < r              \\
+        \implies & x_i \in (y_i - r, y_i + r)        \\
+        \implies & E_i \subseteq (y_i - r, y_i + r).
+    \end{align*}
+    Thus \((E_i, d_{l^1})\) is bounded.
+\end{proof}
