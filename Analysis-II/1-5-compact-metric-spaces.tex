@@ -24,3 +24,49 @@
 \begin{remark}\label{1.5.4}
     Definition \ref{1.5.3} is compatible with the definition of a bounded set on \(\mathbf{R}\).
 \end{remark}
+
+\begin{proposition}\label{1.5.5}
+    Let \((X, d)\) be a compact metric space.
+    Then \((X, d)\) is both complete and bounded.
+\end{proposition}
+
+\begin{proof}
+    If \(X = \emptyset\), then every Cauchy sequence \((a_n)_{n = 1}^\infty\) in \((\emptyset, d)\) converges in \((\emptyset, d)\) trivially, thus by Definition \ref{1.4.10} \((\emptyset, d)\) is complete.
+    Also, \(\forall\ x \in \emptyset\), \(\forall\ r \in \mathbf{R}^+\), we have \(\emptyset \subseteq B_{(\emptyset, d)}(x, r)\) (again the statement is trivially true), thus by Definition \ref{1.5.3} \((\emptyset, d)\) is bounded.
+
+    Now suppose that \(X \neq \emptyset\).
+    We show that \((X, d)\) is complete by contradiction.
+    So suppose for sake of contradiction that \((X, d)\) is not complete.
+    Then by Definition \ref{1.4.10} we know that there exists a Cauchy sequence \((a_n)_{n = 1}^\infty\) in \((X, d)\) does not converge to \(X\).
+    We know that \((a_n)_{n = 1}^\infty\) must converge by Exercise \ref{ex 1.4.8}.
+    Since \((X, d)\) is compact, by Definition \ref{1.5.1} we know that there exists a subsequence of \((a_n)_{n = 1}^\infty\) which converges to some \(x_0 \in X\).
+    But since \((a_n)_{n = 1}^\infty\) is a Cauchy sequence, by Lemma \ref{1.4.9} we know that \((a_n)_{n = 1}^\infty\) must also converge to \(x_0 \in X\), a contradiction.
+    Thus \((X, d)\) is complete.
+
+    Finally, we show that \((X, d)\) is bounded by contradiction.
+    Suppose for sake of contradiction that \((X, d)\) is not bounded.
+    Then by Definition \ref{1.5.3} \(\exists\ x_0 \in X\) such that \(\forall\ r \in \mathbf{R}^+\), we have \(X \not\subseteq B_{(X, d)}(x_0, r)\).
+    In particular, we know that \(X \not\subseteq B_{(X, d)}(x_0, r)\) for all \(r \in \mathbf{Z}^+\).
+    Let \((a_n)_{n = 1}^\infty\) be the sequence where \(a_n \in X \setminus B_{(X, d)}(x_0, r)\).
+    Note that such sequence is well-defined by axiom of choice.
+    Since \(a_n \in X \setminus B_{(X, d)}(x_0, r)\), by Definition \ref{1.2.1} we know that \(d(a_n, x_0) \geq r\).
+    Since \((X, d)\) is compact, by Definition \ref{1.5.1} there exists a subsequence \((a_{n_j})_{j = 1}^\infty\) of \((a_n)_{n = 1}^\infty\) such that \((a_{n_j})_{j = 1}^\infty\) converges in \(X\).
+    Let \(\lim_{j \to \infty} a_{n_j} = L\).
+    By Definition \ref{1.1.14} we know that \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ J \in \mathbf{Z}^+\) such that \(\forall\ j \geq J\), we have \(d(a_{n_j}, L) \leq \varepsilon\).
+    In particular, \(\exists\ J \in \mathbf{Z}^+\) such that \(\forall\ j \geq J\), we have \(d(a_{n_j}, L) \leq 1\).
+    We fix such \(J\) and let \(i = \max(J + 1, \ceil{d(L, x_0)} + 2)\).
+    Then we have
+    \begin{align*}
+        d(a_{n_i}, x_0) & \leq d(a_{n_i}, L) + d(L, x_0) \\
+                        & \leq 1 + d(L, x_0)             \\
+                        & < 2 + d(L, x_0)
+    \end{align*}
+    and
+    \begin{align*}
+        d(a_{n_i}, x_0) & \geq n_i            \\
+                        & \geq i              \\
+                        & \geq d(L, x_0) + 2.
+    \end{align*}
+    But this means \(d(L, x_0) + 2 < d(L, x_0) + 2\), a contradiction.
+    Thus \((X, d)\) is bounded.
+\end{proof}
