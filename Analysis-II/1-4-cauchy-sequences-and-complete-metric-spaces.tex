@@ -232,7 +232,7 @@
 \end{exercise}
 
 \begin{proof}{(a)}
-    Let \((x^{(n)})_{n = m}^\infty\), \((y^{(n)})_{n = m}^\infty\), \((z^{(n)})_{n = m}^\infty\) be Cauchy sequences in \(X\).
+    Let \((x^{(n)})_{n = m}^\infty\), \((y^{(n)})_{n = m}^\infty\), \((z^{(n)})_{n = m}^\infty\) be Cauchy sequences in \((X, d)\).
 
     For reflexive:
     By Definition \ref{1.1.2}(a) we have \(\lim_{n \to \infty} d(x_n, x_n) = \lim_{n \to \infty} 0 = 0\), thus \(\text{LIM}_{n \to \infty} x_n = \text{LIM}_{n \to \infty} x_n\).
@@ -253,7 +253,7 @@
 \end{proof}
 
 \begin{proof}{(b)}
-    Let \((x^{(n)})_{n = m}^\infty\), \((y^{(n)})_{n = m}^\infty\) be Cauchy sequences in \(X\) with formal limits in \(\overline{X}\).
+    Let \((x^{(n)})_{n = m}^\infty\), \((y^{(n)})_{n = m}^\infty\) be Cauchy sequences in \((X, d)\) with formal limits in \(\overline{X}\).
     We first show that the limit
     \[
         d_{\overline{X}}(\text{LIM}_{n \to \infty} x_n, \text{LIM}_{n \to \infty} y_n) \coloneqq \lim_{n \to \infty} d(x_n, y_n)
@@ -278,7 +278,7 @@
     and thus \((a_n)_{n = m}^\infty\) is a Cauchy sequence in \(\mathbf{R}\) and we know that \((a_n)_{n = m}^\infty\) converges in \(\mathbf{R}\).
 
     Next we show that \(d_{\overline{X}}\) obeys the axiom of substitution.
-    Let \((z^{(n)})_{n = m}^\infty\) be a Cauchy sequence in \(X\) such that \(\text{LIM}_{n \to \infty} x_n = \text{LIM}_{n \to \infty} z_n\).
+    Let \((z^{(n)})_{n = m}^\infty\) be a Cauchy sequence in \((X, d)\) such that \(\text{LIM}_{n \to \infty} x_n = \text{LIM}_{n \to \infty} z_n\).
     Then we have
     \begin{align*}
                  & \begin{cases}
@@ -299,7 +299,7 @@
     and thus \(d_{\overline{X}}(\text{LIM}_{n \to \infty} x_n, \text{LIM}_{n \to \infty} y_n) = d_{\overline{X}}(\text{LIM}_{n \to \infty} z_n, \text{LIM}_{n \to \infty} y_n)\).
 
     Now we show that \((\overline{X}, d_{\overline{X}})\) is a metric space.
-    Let \((x^{(n)})_{n = m}^\infty\), \((y^{(n)})_{n = m}^\infty\), \((z^{(n)})_{n = m}^\infty\) be Cauchy sequences in \(X\) with formal limits \(a, b, c\) in \(\overline{X}\) respectively.
+    Let \((x^{(n)})_{n = m}^\infty\), \((y^{(n)})_{n = m}^\infty\), \((z^{(n)})_{n = m}^\infty\) be Cauchy sequences in \((X, d)\) with formal limits \(a, b, c\) in \(\overline{X}\) respectively.
     For identify:
     We have
     \[
@@ -327,14 +327,14 @@
 \end{proof}
 
 \begin{proof}{(c)}
-    To show that \((\overline{X}, d_{\overline{X}})\) is complete, by Definition \ref{1.4.10} we need to show that for any Cauchy sequence \((a^{(n)})_{n = 1}^\infty\) in \(\overline{X}\), \(\exists\ x \in \overline{X}\) such that \(\lim_{n \to \infty} d_{\overline{X}}(a^{(n)}, x) = 0\).
-    Since \(a^{(n)} \in \overline{X}\), by the definition of \(\overline{X}\) we know that \(\forall\ n \geq 1\), there exists a Cauchy sequence \((a_k^{(n)})_{k = 1}^\infty\) in \(X\) such that \(\text{LIM}_{k \to \infty} a_k^{(n)} = a^{(n)}\).
-    Similarly since \(x \in \overline{X}\), there exists a Cauchy sequence \((b_k)_{k = 1}^{\infty}\) in \(X\) such that \(\text{LIM}_{n \to \infty} b_k = x\).
+    To show that \((\overline{X}, d_{\overline{X}})\) is complete, by Definition \ref{1.4.10} we need to show that for any Cauchy sequence \((a^{(n)})_{n = 1}^\infty\) in \((\overline{X}, d_{\overline{X}})\), \(\exists\ x \in \overline{X}\) such that \(\lim_{n \to \infty} d_{\overline{X}}(a^{(n)}, x) = 0\).
+    Since \(a^{(n)} \in \overline{X}\), by the definition of \(\overline{X}\) we know that \(\forall\ n \geq 1\), there exists a Cauchy sequence \((a_k^{(n)})_{k = 1}^\infty\) in \((X, d)\) such that \(\text{LIM}_{k \to \infty} a_k^{(n)} = a^{(n)}\).
+    Similarly since \(x \in \overline{X}\), there exists a Cauchy sequence \((b_k)_{k = 1}^{\infty}\) in \((X, d)\) such that \(\text{LIM}_{n \to \infty} b_k = x\).
     Thus by Exercise \ref{ex 1.4.8}(b) it will suffice to show that
     \[
         \lim_{n \to \infty} d_{\overline{X}}(a^{(n)}, x) = \lim_{n \to \infty} d_{\overline{X}}(\text{LIM}_{k \to \infty} a_k^{(n)}, \text{LIM}_{k \to \infty} b_k) = \lim_{n \to \infty} (\lim_{k \to \infty} d(a_k^{(n)}, b_k)) = 0
     \]
-    for some Cauchy sequence \((b_k)_{k = 1}^{\infty}\) in \(X\).
+    for some Cauchy sequence \((b_k)_{k = 1}^{\infty}\) in \((X, d)\).
 
     Let \(j, K, k_1, k_2, L, N, n_1, n_2 \in \mathbf{Z}^+\).
     Since \((a_k^{(n)})_{k = 1}^\infty\) is a Cauchy sequence, by Definition \ref{1.4.6} we know that \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ K \geq 1\) such that \(\forall\ k_1, k_2 \geq K\),
@@ -440,7 +440,7 @@
     Thus we only need to show that \(\overline{X} \subseteq Y\).
 
     Let \(x_0 \in \overline{X}\).
-    By Exercise \ref{ex 1.4.8}(b) there exists a Cauchy sequence \((a_n)_{n = 1}^\infty\) in \(X\) such that \(\text{LIM}_{n \to \infty} a_n = x_0\).
+    By Exercise \ref{ex 1.4.8}(b) there exists a Cauchy sequence \((a_n)_{n = 1}^\infty\) in \((X, d)\) such that \(\text{LIM}_{n \to \infty} a_n = x_0\).
     By Definition \ref{1.4.6} we know that \(\forall\ r \in \mathbf{R}^+\), \(\exists\ N \in \mathbf{Z}^+\) such that \(\forall\ n \geq N\),
     \begin{align*}
                  & \bigg(d(a_n, x) \leq \frac{r}{3}\bigg) \land \bigg(d(a_N, x) \leq \frac{r}{3}\bigg)                                            \\
@@ -458,6 +458,6 @@
 \end{proof}
 
 \begin{proof}{(f)}
-    By Exercise \ref{ex 1.4.8}(d) we know that \((x_n)_{n = 1}^\infty\) is also in \(\overline{X}\).
+    By Exercise \ref{ex 1.4.8}(d) we know that \((x_n)_{n = 1}^\infty\) is also in \((\overline{X}, d_{\overline{X}})\).
     Thus by Exercise \ref{ex 1.4.8}(c) we have \(\lim_{n \to \infty} x_n = \text{LIM}_{n \to \infty} x_n\).
 \end{proof}
