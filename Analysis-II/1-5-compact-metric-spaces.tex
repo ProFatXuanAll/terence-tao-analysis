@@ -99,18 +99,42 @@
         E_i = \{y \in \mathbf{R} | \exists\ x \in E : x_i = y\},
     \]
     i.e., \(E_i\) is the collection of \(i^{\text{th}}\) coordinate of all element \(x \in E\).
-    Now we show that \((E_i, d_{l^1})\) is closed and bounded for all \(i \in \{1, \dots, n\}\).
+    Now we show that \(E_i\) is bounded and \(E_i\) is a subset of some closed interval \(C_i\).
 
-    Since \((E, d_{l^1})\) is bounded, by Definition \ref{1.5.3} there exists a ball \(B_{(X, d_{l^1})}(y, r)\) in \(\mathbf{R}^n\) such that \(E \subseteq B_{(X, d_{l^1})}(y, r)\).
-    By Definition \ref{1.2.1} we have
-    \[
-        \forall\ x \in E, d_{l^1}(x, y) = \sum_{i = 1}^n \abs*{x_i - y_i} < r
-    \]
-    which implies
+    Since \((E, d_{l^1})\) is bounded, by Definition \ref{1.5.3} there exists a ball \(B_{(\mathbf{R}^n, d_{l^1})}(y, r)\) such that \(E \subseteq B_{(\mathbf{R}^n, d_{l^1})}(y, r)\).
+    Then we have
     \begin{align*}
-                 & \abs*{x_i - y_i} < r              \\
-        \implies & x_i \in (y_i - r, y_i + r)        \\
-        \implies & E_i \subseteq (y_i - r, y_i + r).
+                 & E \subseteq B_{(\mathbf{R}^n, d_{l^1})}(y, r)                                                      \\
+        \implies & \forall\ x \in E, x \in B_{(\mathbf{R}^n, d_{l^1})}(y, r)                                          \\
+        \implies & d_{l^1}(x, y) = \sum_{i = 1}^n \abs*{x_i - y_i} < r           & \text{(by Definition \ref{1.2.1})} \\
+        \implies & \abs*{x_i - y_i} < r \text{ for every } i \in \{1, \dots, n\}                                      \\
+        \implies & x_i \in (y_i - r, y_i + r)                                                                         \\
+        \implies & E_i \subseteq (y_i - r, y_i + r)                                                                   \\
+        \implies & E_i \subseteq B_{(\mathbf{R}, d_{l^1})}(y_i, r).              & \text{(by Definition \ref{1.2.1})}
     \end{align*}
-    Thus \((E_i, d_{l^1})\) is bounded.
+    Thus by Definition \ref{1.5.3} \((E_i, d_{l^1})\) is bounded.
+    Let \(C_i = [y_i - r, y_i + r]\).
+    Then we know that \(C_i\) is closed and \(E_i \subseteq (y_i - r, y_i + r) \subseteq C_i\).
+
+    Let \(P(n)\) be the statement ``If \(F \subseteq \mathbf{R}^n\) satisfying \(F_i\) is bounded and \(F_i\) is a subset of some closed set \(C_i \subseteq \mathbf{R}\) for every \(i \in \{1, \dots, n\}\), then for any sequence in \(F\) there exists a subsequence which converges in \(\mathbf{R}^n\) with respect to \(d_{l^1}\)''.
+    We use induction on \(n\) to show that \(P(n)\) is true \(\forall\ n \in \mathbf{Z}^+\).
+
+    For \(n = 1\), since \(F = F_1\) is bounded and \(F\) is a subset of some closed set \(C_1 \subseteq \mathbf{R}\), by Heine-Borel theorem (Theorem 9.1.24 in Analysis I) on real line we know that for every sequence \((a^{(k)})_{k = 1}^\infty\) in \(F\), there exists a subsequence \((a^{(k_j)})_{j = 1}^\infty\) which converges in \(C_1 \subseteq \mathbf{R}\) with respect to \(d_{l^1}\).
+    Thus the base case holds.
+
+    Suppose inductively that \(P(n)\) is true for some \(n \geq 1\).
+    Then we need to show that \(P(n + 1)\) is true.
+    So suppose that \(F \subseteq \mathbf{R}^{n + 1}\) such that \(F_i\) is bounded and \(F_i\) is a subset of some closed set \(C_i \in \mathbf{R}\) for every \(i \in \{1, \dots, n, n + 1\}\).
+    Let \((a^{(k)})_{k = 1}^\infty\) be any sequence in \(F\) and let \((b^{(k)})_{k = 1}^\infty\) be the sequence \(b^{(k)} = (a_1^{(k)}, \dots, a_n^{(k)})\), i.e., \(b^{(k)}\) is the first \(n\) coordinates of \(a^{(k)}\).
+    Since \(b^{(k)} \in \mathbf{R}^n\) for all \(k \geq 1\) and \(b_i^{(k)} \in F_i\) for all \(i \in \{1, \dots, n\}\), by induction hypothesis there exists a subsequence \((b^{(k_j)})_{j = 1}^\infty\) which converges in \(\mathbf{R}^n\) with respect to \(d_{l^1}\).
+    This means the first \(n\) coordinates of the sequence \((a^{(k_j)})_{j = 1}^\infty\) converges with respect to \(d_{l^1}\).
+    Let \(L \in \mathbf{R}^n\) such that \(\lim_{j \to \infty} d(b^{(k_j)}, L) = 0\).
+    By Lemma \ref{1.4.3} we know that every subsequence of \((b^{(k_j)})_{j = 1}^\infty\) also converges to \(L\).
+    Since \((a_{n + 1}^{(k_j)})_{j = 1}^\infty\) is in \(F_{n + 1}\), by Heine-Borel theorem (Theorem 9.1.24 in Analysis I) on real line we know that there exists a subsequence \((a^{(k_{j_p})})_{p = 1}^\infty\) which converges in \(C_{n + 1} \subseteq \mathbf{R}\).
+    Since \((b^{k_{j_p}})_{p = 1}^\infty\) converges to \(L\) with respect to \(d_{l^1}\), by Proposition \ref{1.1.18} we know that \((a^{(k_{j_p})})_{p = 1}^\infty\) converges in \(\mathbf{R}^{n + 1}\) with respect to \(d_{l^1}\).
+    This close the induction.
+
+    From the proof above we know that \(E \subseteq \mathbf{R}^n\) is close and bounded implies \(E_i\) is bounded and \(E_i\) is a subset of some closed set \(C_i \subseteq \mathbf{R}\) for every \(i \in \{1, \dots, n\}\).
+    Thus we know that for every sequence in \(E\) there exists a subsequence which converges in \(\mathbf{R}^n\).
+    By Definition \ref{1.5.1} this means \(E\) is compact.
 \end{proof}
