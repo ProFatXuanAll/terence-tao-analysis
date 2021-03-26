@@ -201,9 +201,45 @@
               So we can choose a point \(y^{(3)}\) which does not lie in \(B(y^{(1)}, r_0 / 2) \cup B(y^{(2)}, r_0 / 2)\), so in particular \(d(y^{(3)}, y^{(1)}) \geq r_0 / 2\) and \(d(y^{(3)}, y^{(2)}) \geq r_0 / 2\).
               Continuing in this fashion we obtain a sequence \((y^{(n)})_{n = 1}^\infty\) in \(Y\) with the property that \(d(y^{(k)}, y^{(j)}) \geq r_0 / 2\) for all \(k > j\).
               In particular the sequence \((y^{(n)})_{n = 1}^\infty\) is not a Cauchy sequence, and in fact no subsequence of \((y^{(n)})_{n = 1}^\infty\) can be a Cauchy sequence either.
-              But this contradicts the assumption that \(Y\) is compact (by Proposition \ref{1.5.5} and Lemma \ref{1.4.7}).
+              But this contradicts the assumption that \(Y\) is compact (by Lemma \ref{1.4.7}).
         \item Case 3:
               \(r_0 = \infty\).
               For this case we argue as in Case 2, but replacing the role of \(r_0 / 2\) by (say) \(1\).
     \end{itemize}
+\end{proof}
+
+\begin{corollary}\label{1.5.9}
+    Let \((X, d)\) be a metric space, and let \(K_1, K_2, K_3, \dots\) be a sequence of non-empty compact subsets of \(X\) such that
+    \[
+        K_1 \supseteq K_2 \supseteq K_3 \supseteq \dots.
+    \]
+    Then the intersection \(\bigcap_{n = 1}^\infty K_n\) is non-empty.
+\end{corollary}
+
+\begin{proof}
+    Since \((K_n, d|_{K_n \times K_n})\) is compact for every \(n \geq 1\), by Corollary \ref{1.5.6} we know that \(K_n\) is closed with respect to \((K_1, d|_{K_1 \times K_1})\).
+    Let \(V_n = K_1 \setminus K_n\) for every \(n \geq 1\).
+    Then by Proposition \ref{1.2.15}(e) we know that \(V_n\) is open with respect to \((K_1, d|_{K_1 \times K_1})\).
+
+    Suppose for sake of contradiction that \(\bigcap_{n = 1}^\infty K_n = \emptyset\).
+    Since
+    \[
+        \bigcup_{n = 1}^\infty V_n = \bigcup_{n = 1}^\infty (K_1 \setminus K_n) = K_1 \setminus \bigg(\bigcap_{n = 1}^\infty K_n\bigg) = K_1
+    \]
+    and \(K_1\) is compact, by Theorem \ref{1.5.8} we know that there exists a finite set \(F \subseteq \mathbf{Z}^+\) such that
+    \[
+        K_1 \subseteq \bigcup_{i \in F} V_i.
+    \]
+    Since \(F\) is finite subset of \(\mathbf{Z}^+\), by well-ordering principle \(\min(F)\) is well-defined.
+    Then we have
+    \begin{align*}
+                 & K_1 \subseteq \bigcup_{i \in F} V_i \subseteq \bigcup_{n = 1}^\infty V_i = K_1                                                          \\
+        \implies & K_1 = \bigcup_{i \in F} V_i                                                                                                             \\
+        \implies & K_1 = \bigcup_{i \in F} (K_1 \setminus K_i)                                                                                             \\
+        \implies & K_1 = K_1 \setminus \bigg(\bigcap_{i \in F} K_i\bigg)                                                                                   \\
+        \implies & \bigcap_{i \in F} K_i = \emptyset                                              & \text{(since \(\bigcap_{i \in F} K_i \subseteq K_1)\)} \\
+        \implies & K_{\min(F)} = \emptyset.                                                       & \text{(since \(K_{\min(F)} = \bigcap_{i \in F} K_i)\)}
+    \end{align*}
+    But by hypothesis we know that \(K_{\min(F)} \neq \emptyset\), a contradiction.
+    Thus \(\bigcap_{n = 1}^\infty K_n \neq \emptyset\).
 \end{proof}
