@@ -19,18 +19,36 @@ The definition of equality on the integers is reflexive, symmetric and transitiv
 \end{additional corollary}
 
 \begin{proof}
-    We first show that Definition \ref{4.1.1} is reflexive.
-    \(\forall\ (a, b) \in \mathbf{N} \times \mathbf{N}\), \(a + b = a + b\), so \(a \text{---} b = a \text{---} b\).
+    Let \((a, b), (c, d), (e, f) \in \mathbf{N} \times \mathbf{N}\).
+    Since
+    \begin{align*}
+                 & a + b = a + b                                                         \\
+        \implies & a \text{---} b = a \text{---} b, & \text{(by Definition \ref{4.1.1})}
+    \end{align*}
+    we know that Definition \ref{4.1.1} is reflexive.
 
-    Next we show that Definition \ref{4.1.1} is symmetric.
-    \(\forall\ (a, b), (c, d) \in \mathbf{N} \times \mathbf{N}\), if \(a + d = c + b\), then \(a \text{---} b = c \text{---} d\).
-    But \(a + d = c + b \implies c + b = a + d\), so \(c \text{---} d = a \text{---} b\).
-    Thus \(a \text{---} b = c \text{---} d \implies c \text{---} d = a \text{---} b\).
+    Suppose that \(a \text{---} b = c \text{---} d\).
+    Then we have
+    \begin{align*}
+                 & a \text{---} b = c \text{---} d                                      \\
+        \implies & a + d = c + b                   & \text{(by Definition \ref{4.1.1})} \\
+        \implies & c + b = a + d                                                        \\
+        \implies & c \text{---} d = a \text{---} b & \text{(by Definition \ref{4.1.1})}
+    \end{align*}
+    and thus Definition \ref{4.1.1} is symmetric.
 
-    Finally we show that Definition \ref{4.1.1} is transitive.
-    \(\forall\ (a, b), (c, d), (e, f) \in \mathbf{N} \times \mathbf{N}\), if \(a + d = c + b\) and \(c + f = e + d\), then \(a \text{---} b = c \text{---} d\) and \(c \text{---} d = e \text{---} f\).
-    Because \(a + d = c + b\) and \(c + f = e + d\), so \(a + d + c + f = c + b + e + d\).
-    By Proposition \ref{2.2.6}, \(a + d + c + f = c + b + e + d \implies a + f = e + b\), so \(a \text{---} b = e \text{---} f\).
+    Finally suppose that \(a \text{---} b = c \text{---} d\) and \(c \text{---} d = e \text{---} f\).
+    Then we have
+    \begin{align*}
+                 & (a \text{---} b = c \text{---} d) \land (c \text{---} d = e \text{---} f)                                       \\
+        \implies & (a + d = c + b) \land (c + f = e + d)                                     & \text{(by Definition \ref{4.1.1})}  \\
+        \implies & (a + d + f = c + b + f) \land (c + f + b = e + d + b)                     & \text{(by Definition \ref{2.2.1})}  \\
+        \implies & (a + f + d = c + f + b) \land (c + f + b = e + b + d)                     & \text{(by Proposition \ref{2.2.4})} \\
+        \implies & a + f + d = e + b + d                                                                                           \\
+        \implies & a + f = e + b                                                             & \text{(by Proposition \ref{2.2.6})} \\
+        \implies & a \text{---} b = e \text{---} f
+    \end{align*}
+    and thus Definition \ref{4.1.1} is transitive.
 \end{proof}
 
 \begin{definition}\label{4.1.2}
