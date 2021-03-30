@@ -387,12 +387,67 @@
 
 \begin{exercise}\label{ex 1.5.8}
     Let \((X, d_{l^1})\) be the metric space from Exercise \ref{ex 1.1.15}.
-    For each natural number \(n\), let \(e_j^{(n)} = (e_j^{(n)})_{j = 0}^\infty\) be the sequence in \(X\) such that \(e_j^{(n)} \coloneqq 1\) when \(n = j\) and \(e_j^{(n)} \coloneqq 0\) when \(n \neq j\).
+    For each natural number \(n\), let \(e^{(n)} = (e_j^{(n)})_{j = 0}^\infty\) be the sequence in \(X\) such that \(e_j^{(n)} \coloneqq 1\) when \(n = j\) and \(e_j^{(n)} \coloneqq 0\) when \(n \neq j\).
     Show that the set \(\{e^{(n)} : n \in \mathbf{N}\}\) is a closed and bounded subset of \(X\), but is not compact.
     (This is despite the fact that \((X, d_{l^1})\) is even a complete metric space
     - a fact which we will not prove here.
     The problem is that not that \(X\) is incomplete, but rather that it is ``infinite-dimensional'', in a sense that we will not discuss here.)
 \end{exercise}
+
+\begin{proof}
+    Let \(E = \{e^{(n)} : n \in \mathbf{N}\}\).
+    We first show that \(E\) is bounded.
+    Since
+    \[
+        \sum_{j = 0}^\infty \abs*{e_j^{(n)}} = 1
+    \]
+    for every \(n \in \mathbf{N}\), we know that \(e^{(n)}\) is absolutely convergent and by Exercise \ref{ex 1.1.15} \(e^{(n)} \in X\).
+    Since
+    \begin{align*}
+        d_{l^1}(e^{(0)}, e^{(n)}) & = \sum_{j = 0}^\infty \abs*{e_j^{(0)} - e_j^{(n)}}            \\
+                                  & = \abs*{e_0^{(0)} - e_0^{(n)}} + \abs*{e_n^{(0)} - e_n^{(n)}} \\
+                                  & = \abs*{1 - e_0^{(n)}} + \abs*{e_n^{(0)} - 1}                 \\
+                                  & = \begin{cases}
+            0 & \text{if } n = 0    \\
+            2 & \text{if } n \neq 0
+        \end{cases}                                  \\
+                                  & < 3,
+    \end{align*}
+    by Definition \ref{1.2.1} we know that the ball \(B_{(X, d_{l^1})}(e^{(0)}, 3)\) contains the set \(E\).
+    Thus by Definition \ref{1.5.3} we know that the set \(E\) is bounded.
+
+    Next we show that \(E\) is closed.
+    Let \(\overline{E}\) be the closure of \(E\) and let \(a \in \overline{E}\).
+    By Proposition \ref{1.2.10}(c) we know that there exists a sequence \((a^{(k)})_{k = 0}^\infty\) in \(E\) such that \(\lim_{k \to \infty} d(a, a^{(k)}) = 0\).
+    By Lemma \ref{1.4.7}, \((a^{(k)})_{k = 0}^\infty\) is a Cauchy sequence.
+    By Definition \ref{1.4.6}, this means \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ N \in \mathbf{N}\) such that \(\forall\ k, k' \in \mathbf{N}\) and \(k, k' \geq N\), we have
+    \[
+        d(a^{(k)}, a^{(k')}) \leq \varepsilon.
+    \]
+    In particular, \(\exists\ N \in \mathbf{N}\) such that \(\forall\ k, k' \geq N\), we have
+    \[
+        d(a^{(k)}, a^{(k')}) \leq \frac{1}{2} < 1.
+    \]
+    Since \(a^{(k)}, a^{(k')} \in E\), we know that
+    \[
+        d(a^{(k)}, a^{(k')}) = \begin{cases}
+            0 & \text{if } a^{(k)} = a^{(k')};    \\
+            2 & \text{if } a^{(k)} \neq a^{(k')}.
+        \end{cases}
+    \]
+    Thus we must have \(a^{(k)} = a^{(N)}\) for all \(k \geq N\).
+    By Definition \ref{1.1.14}, we know that \(a\) converges to \(a^{(N)}\), thus \(a \in E\).
+    Since \(a\) is arbitrary adherent point, by Proposition \ref{1.2.15}(b) we know that \(E\) is closed.
+
+    Finally we show that \(E\) is not compact.
+    Let \((e^{(n)})_{n = 0}^\infty\) be a sequence.
+    Since \((e^{(n)})_{n = 0}^\infty\) in \(E\), we know that \(\forall\ N \in \mathbf{N}\), \(\forall\ n, n' \in \mathbf{N}\) and \(n, n' \geq N\), we have
+    \[
+        d(e^{(n)}, e^{(n')}) = 2.
+    \]
+    Thus by Definition \ref{1.4.6} \((e^{(n)})_{n = 0}^\infty\) is not a Cauchy sequence.
+    Similarly any subsequence of \((e^{(n)})_{n = 0}^\infty\) is not a Cauchy sequence, by Lemma \ref{1.4.7} this means no subsequence is convergent, and by Definition \ref{1.5.1} \(E\) is not compact.
+\end{proof}
 
 \begin{exercise}\label{ex 1.5.9}
     Show that a metric space \((X, d)\) is compact if and only if every sequence in \(X\) has at least one limit point.
