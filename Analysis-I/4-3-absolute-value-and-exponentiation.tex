@@ -451,82 +451,157 @@ Then \(\abs*{x} - \abs*{y} \leq \abs*{x + y}\).
 \begin{proof}{(a)}
     We first show that \(x^n x^m = x^{n + m}\).
     We use induction on \(n\).
-    For \(n = 0\), \(x^0 x^m = 1 x^m = x^m\) by Definition \ref{4.3.9} and Proposition \ref{4.2.4}.
-    And \(x^{0 + m} = x^m\) by Proposition \ref{4.2.4}.
-    So \(x^0 x^m = x^{0 + m}\), and the base case holds.
-    Suppose inductively that for some \(n\), \(x^n x^m = x^{n + m}\).
-    Then for \(n++\), \(x^{n++} x^m = (x^n x) x^m = x^n (x x^m) = x^n (x^m x) = (x^n x^m)x\) by Definition \ref{4.3.9} and Proposition \ref{4.2.4}.
-    And \(x^{(n++) + m} = x^{(n + m)++} = x^{n + m} x = (x^n x^m)x\) by Definition \ref{2.2.1} and induction hypothesis.
-    So \(x^{n++} x^m = x^{(n++) + m}\), and this close the induction.
+    For \(n = 0\), we have
+    \begin{align*}
+        x^0 x^m & = 1 x^m     & \text{(by Definition \ref{4.3.9})}  \\
+                & = x^m       & \text{(by Proposition \ref{4.2.4})} \\
+                & = x^{0 + m} & \text{(by Definition \ref{2.2.1})}
+    \end{align*}
+    and the base case holds.
+    Suppose inductively that for some \(n \geq 0\) we have \(x^n x^m = x^{n + m}\).
+    Then for \(n + 1\), we have
+    \begin{align*}
+        x^{n + 1} x^m & = (x^n x) x^m     & \text{(by Definition \ref{4.3.9})}  \\
+                      & = x^n (x x^m)     & \text{(by Proposition \ref{4.2.4})} \\
+                      & = x^n (x^m x)     & \text{(by Proposition \ref{4.2.4})} \\
+                      & = (x^n x^m) x     & \text{(by Proposition \ref{4.2.4})} \\
+                      & = x^{n + m} x     & \text{(by induction hypothesis)}    \\
+                      & = x^{(n + m) + 1} & \text{(by Definition \ref{4.3.9})}  \\
+                      & = x^{n + (m + 1)} & \text{(by Proposition \ref{2.2.5})} \\
+                      & = x^{n + (1 + m)} & \text{(by Proposition \ref{2.2.4})} \\
+                      & = x^{(n + 1) + m} & \text{(by Proposition \ref{2.2.5})}
+    \end{align*}
+    and this close the induction.
 
     Next we show that \((x^n)^m = x^{nm}\).
     We use induction on \(m\).
-    For \(m = 0\), \((x^n)^0 = 1\) by Definition \ref{4.3.9}.
-    And \(x^{n0} = x^0 = 1\) by Additional Corollary \ref{ac 2.3.2} and Definition \ref{4.3.9}.
-    So \((x^n)^0 = x^{n0}\), and the base case holds.
-    Suppose inductively that for some \(m\), \((x^n)^m = x^{nm}\).
-    Then for \(m++\), \((x^n)^{m++} = (x^n)^m x^n = x^{nm} x^n\) by Definition \ref{4.3.9} and induction hypothesis.
-    And \(x^{n(m++)} = x^{nm + n} = x^{nm} x^n\) by Additional Corollary \ref{ac 2.3.3} and previous prove.
-    So \((x^n)^{m++} = x^{n(m++)}\), and this close the induction.
+    For \(m = 0\), we have
+    \begin{align*}
+        (x^n)^0 & = 1      & \text{(by Definition \ref{4.3.9})}              \\
+                & = x^0    & \text{(by Definition \ref{4.3.9})}              \\
+                & = x^{n0} & \text{(by Additional Corollary \ref{ac 2.3.2})}
+    \end{align*}
+    and the base case holds.
+    Suppose inductively that for some \(m \geq 0\) we have \((x^n)^m = x^{nm}\).
+    Then for \(m + 1\), we have
+    \begin{align*}
+        (x^n)^{m + 1} & = (x^n)^m (x^n) & \text{(by Definition \ref{4.3.9})}  \\
+                      & = x^{nm} x^n    & \text{(by induction hypothesis)}    \\
+                      & = x^{nm + n}                                          \\
+                      & = x^{n(m + 1)}  & \text{(by Proposition \ref{2.3.4})}
+    \end{align*}
+    and this close the induction.
 
-    Finally we prove that \((xy)^n = x^n y^n\).
+    Finally we show that \((xy)^n = x^n y^n\).
     We use induction on \(n\).
-    For \(n = 0\), \((xy)^0 = 1\) by Definition \ref{4.3.9}.
-    And \(x^0 y^0 = 1 \times 1 = 1\) by Definition \ref{4.3.9}.
-    So \((xy)^0 = x^0 y^0\), and the base case holds.
-    Suppose inductively that for some \(n\), \((xy)^n = x^n y^n\).
-    Then for \(n++\), \((xy)^{n++} = (xy)^n (xy) = (x^n y^n)(xy)\) by Definition \ref{4.3.9} and induction hypothesis.
-    And \(x^{n++} y^{n++} = (x^n x)(y^n y) = (x^n (x y^n))y = (x^n (y^n x))y = (x^n y^n)(xy)\) by Definition \ref{4.3.9} and Proposition \ref{4.2.4}.
-    So \((xy)^{n++} = x^{n++} y^{n++}\), and this close the induction.
+    For \(n = 0\), we have
+    \begin{align*}
+        (xy)^0 & = 1       & \text{(by Definition \ref{4.3.9})}  \\
+               & = y^0     & \text{(by Definition \ref{4.3.9})}  \\
+               & = 1y^0    & \text{(by Proposition \ref{4.2.4})} \\
+               & = x^0 y^0 & \text{(by Definition \ref{4.3.9})}
+    \end{align*}
+    and the base case holds.
+    Suppose inductively that for some \(n \geq 0\) we have \((xy)^n = x^n y^n\).
+    Then for \(n + 1\), we have
+    \begin{align*}
+        (xy)^{n + 1} & = (xy)^n (xy)         & \text{(by Definition \ref{4.3.9})}  \\
+                     & = (x^n y^n) (xy)      & \text{(by induction hypothesis)}    \\
+                     & = x^n (y^n x) y       & \text{(by Proposition \ref{4.2.4})} \\
+                     & = x^n (x y^n) y       & \text{(by Proposition \ref{4.2.4})} \\
+                     & = (x^n x)(y^n y)      & \text{(by Proposition \ref{4.2.4})} \\
+                     & = x^{n + 1} y^{n + 1} & \text{(by Definition \ref{4.3.9})}
+    \end{align*}
+    and this close the induction.
 \end{proof}
 
 \begin{proof}{(b)}
-    We first prove that \(x^n = 0\) implies \(x = 0\).
-    We use induction on \(n\) and begin with \(n = 1\).
-    For \(n = 1\), \(x^1 = x^0 x = 1x = x = 0\) by Definition \ref{4.3.9} and Proposition \ref{4.2.4}.
-    So \(x^1 = 0 \implies x = 0\), and the base case holds.
-    Suppose inductively that for some \(n\), \(x^n = 0 \implies x = 0\).
-    Then for \(n++\), \(x^{n++} = x^n x = 0\) by Definition \ref{4.3.9}.
-    Suppose for sake of contradiction that \(x \neq 0\).
-    Then \(x^n x = 0 \implies x^n = 0 / x = 0\).
-    But by induction hypothesis, \(x^n = 0 \implies x = 0\), a contradiction.
-    Thus \(x = 0\), which means \(x^{n++} = 0 \implies x = 0\), and this close the induction.
-
-    Now we prove that \(x = 0\) implies \(x^n = 0\).
-    Since \(n > 0\), \(x^n = x^{(n - 1) + 1} = x^{n - 1} x = x^{n - 1} 0 = 0\) by Proposition \ref{4.3.10}(a).
-    Thus \(x = 0 \implies x^n = 0\).
+    We use induction on \(n\) and we start with \(n = 1\).
+    For \(n = 1\), we have
+    \begin{align*}
+             & x^1 = 0                                         \\
+        \iff & x^0 x = 0 & \text{(by Definition \ref{4.3.9})}  \\
+        \iff & 1x = 0    & \text{(by Definition \ref{4.3.9})}  \\
+        \iff & x = 0     & \text{(by Proposition \ref{4.2.4})}
+    \end{align*}
+    and the base case holds.
+    Suppose inductively that for some \(n \geq 1\) we have \(x^n = 0 \iff x = 0\).
+    Then for \(n + 1\), we have
+    \begin{align*}
+             & x^{n + 1} = 0                                                                               \\
+        \iff & x^n x = 0              & \text{(by Definition \ref{4.3.9})}                                 \\
+        \iff & (x^n = 0) \lor (x = 0) & \text{(by Additional Corollary \ref{ac 4.2.5} and \ref{ac 4.2.6})} \\
+        \iff & x = 0                  & \text{(by induction hypothesis)}
+    \end{align*}
+    and this close the induction.
 \end{proof}
 
 \begin{proof}{(c)}
-    We first prove that \(x \geq y \geq 0\) implies \(x^n \geq y^n \geq 0\).
+    We first show that if \(x \geq y \geq 0\), then \(x^n \geq y^n \geq 0\).
     We use induction on \(n\).
-    For \(n = 0\), \(x^0 = 1\) and \(y^0 = 1\) by Definition \ref{4.3.9}, and \(1 \geq 1 \geq 0\), so the base case holds.
-    Suppose inductively that for some \(n\), \(x^n \geq y^n \geq 0\).
-    Then for \(n++\), \(x^{n++} = x^n x \geq y^n x\) and \(y^n x \geq y^n y = y^{n++}\) by Definition \ref{4.3.9}, induction hypothesis, Proposition \ref{4.2.9} and the given conditions.
-    So \(x^{n++} \geq y^{n++}\) by Proposition \ref{4.2.4}.
-    And \(y^{n++} = y^n y \geq y^n 0 = 0\) by Definition \ref{4.3.9} and the given conditions.
-    So \(y^{n++} \geq 0\).
-    Thus \(x^{n++} \geq y^{n++} \geq 0\), and this close the induction.
+    For \(n = 0\), we have
+    \begin{align*}
+                 & x \geq y \geq 0                                                  \\
+        \implies & x^0 = 1 \geq y^0 = 1 \geq 0 & \text{(by Definition \ref{4.3.9})}
+    \end{align*}
+    and the base case holds.
+    Suppose inductively that for some \(n \geq 0\) we have \(x^n \geq y^n \geq 0\).
+    Then for \(n + 1\), we have
+    \begin{align*}
+                 & (x \geq y \geq 0) \land (x^n \geq y^n \geq 0)                  & \text{(by induction hypothesis)}       \\
+        \implies & (x^n x \geq y^n x \geq 0x) \land (y^n x \geq y^n y \geq y^n 0) & \text{(by Proposition \ref{4.2.9}(e))} \\
+        \implies & x^n x \geq y^n x \geq y^n y \geq y^n 0                         & \text{(by Proposition \ref{4.2.9}(c))} \\
+        \implies & x^n x \geq y^n y \geq 0                                        & \text{(by Definition \ref{4.2.2})}     \\
+        \implies & x^{n + 1} \geq y^{n + 1} \geq 0                                & \text{(by Definition \ref{4.3.9})}
+    \end{align*}
+    and this close the induction.
 
-    Now we prove that \(x > y \geq 0\) and \(n > 0\), then \(x^n > y^n \geq 0\).
-    We use induction on \(n\) and begin with \(n = 1\).
-    For \(n = 1\), \(x^1 = x^0 x = 1x = x\) and \(y^1 = y^0 y = 1y = y\) by Definition \ref{4.3.9} and Proposition \ref{4.2.4}.
-    So \(x^1 > y^1 \geq 0\) by the given conditions, and the base case holds.
-    Suppose inductively that for some \(n\), \(x^n > y^n \geq 0\).
-    Then for \(n++\), \(x^{n++} = x^n x > y^n x\) and \(y^n x > y^n y = y^{n++}\) by Definition \ref{4.3.9}, induction hypothesis, Proposition \ref{4.2.9} and the given conditions.
-    So \(x^{n++} > y^{n++}\) by Proposition \ref{4.2.4}.
-    And \(y^{n++} = y^n y \geq y^n 0 = 0\) by Definition \ref{4.3.9} and the given conditions.
-    So \(y^{n++} \geq 0\).
-    Thus \(x^{n++} > y^{n++} \geq 0\), and this close the induction.
+    Now we show that if \(x > y \geq 0\) and \(n > 0\), then \(x^n > y^n \geq 0\).
+    If \(y = 0\), then by Proposition \ref{4.3.10}(b) we know that \(y^n = 0\).
+    By Proposition \ref{4.2.9}(e) \(x > 0 \implies x^n\), thus we have \(x^n > 0 \geq 0\).
+    So suppose that \(y > 0\).
+    We use induction on \(n\) and start with \(n = 1\).
+    For \(n = 1\), we have
+    \begin{align*}
+                 & (x > y > 0) \land (x^1 = x^0 x = 1x) \land (y^1 = y^0 y = 1y) & \text{(by Definition \ref{4.3.9})}  \\
+                 & (x > y > 0) \land (x^1 = x) \land (y^1 = y)                   & \text{(by Proposition \ref{4.2.4})} \\
+        \implies & x^1 > y^1 > 0                                                 & \text{(by Definition \ref{4.3.9})}
+    \end{align*}
+    and the base case holds.
+    Suppose inductively that for some \(n \geq 1\) we have \(x^n > y^n > 0\).
+    Then for \(n + 1\), we have
+    \begin{align*}
+                 & (x > y > 0) \land (x^n > y^n > 0)                  & \text{(by induction hypothesis)}       \\
+        \implies & (x^n x > y^n x > 0x) \land (y^n x > y^n y > y^n 0) & \text{(by Proposition \ref{4.2.9}(e))} \\
+        \implies & x^n x > y^n x > y^n y > y^n 0                      & \text{(by Proposition \ref{4.2.9}(c))} \\
+        \implies & x^n x > y^n y > 0                                  & \text{(by Definition \ref{4.2.2})}     \\
+        \implies & x^{n + 1} > y^{n + 1} > 0                          & \text{(by Definition \ref{4.3.9})}
+    \end{align*}
+    and this close the induction.
+    Combine with the result above we have
+    \[
+        x > y \geq 0 \implies x^n > y^n \geq 0.
+    \]
 \end{proof}
 
 \begin{proof}{(d)}
     We use induction on \(n\).
-    For \(n = 0\), \(\abs*{x^0} = \abs*{1} = 1\) and \(\abs*{x}^0 = 1\) by Definition \ref{4.3.9} and Definition \ref{4.3.1}.
-    So \(\abs*{x^0} = \abs*{x}^0\), and the base case holds.
-    Suppose inductively that for some \(n\), \(\abs*{x^n} = \abs*{x}^n\).
-    Then for \(n++\), \(\abs*{x^{n++}} = \abs*{x^n x} = \abs*{x^n}\abs*{x} = \abs*{x}^n \abs*{x}\) and \(\abs*{x}^{n++} = \abs*{x}^n \abs*{x}\) by Definition \ref{4.3.9}, Proposition \ref{4.3.3} and induction hypothesis.
-    So \(\abs*{x^{n++}} = \abs*{x}^{n++}\), and this close the induction.
+    For \(n = 0\), we have
+    \begin{align*}
+        \abs*{x^0} & = \abs*{1}   & \text{(by Definition \ref{4.3.9})} \\
+                   & = 1          & \text{(by Definition \ref{4.3.1})} \\
+                   & = \abs*{x}^0 & \text{(by Definition \ref{4.3.9})}
+    \end{align*}
+    and the base case holds.
+    Suppose inductively that for some \(n \geq 0\) we have \(\abs*{x^n} = \abs*{x}^n\).
+    Then for \(n + 1\), we have
+    \begin{align*}
+        \abs*{x^{n + 1}} & = \abs*{x^n x}        & \text{(by Definition \ref{4.3.9})}     \\
+                         & = \abs*{x^n} \abs*{x} & \text{(by Proposition \ref{4.3.3}(d))} \\
+                         & = \abs*{x}^n \abs*{x} & \text{(by induction hypothesis)}       \\
+                         & = \abs*{x}^{n + 1}    & \text{(by Definition \ref{4.3.9})}
+    \end{align*}
+    and this close the induction.
 \end{proof}
 
 \begin{definition}[Exponentiation to a negative number]\label{4.3.11}
