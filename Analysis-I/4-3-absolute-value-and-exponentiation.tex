@@ -243,15 +243,11 @@ Then \(\abs*{x} - \abs*{y} \leq \abs*{x + y}\).
 
 \begin{proof}
     \begin{align*}
-                 & \abs*{(x + y) + (-y)} \leq \abs*{x + y} + \abs*{-y}                 & \text{(by Proposition \ref{4.3.3})} \\
-        \implies & \abs*{x + (y + (-y))} \leq \abs*{x + y} + \abs*{-y}                 & \text{(by Proposition \ref{4.2.4})} \\
-        \implies & \abs*{x + 0} \leq \abs*{x + y} + \abs*{-y}                          & \text{(by Proposition \ref{4.2.4})} \\
-        \implies & \abs*{x} \leq \abs*{x + y} + \abs*{-y}                              & \text{(by Proposition \ref{4.2.4})} \\
-        \implies & \abs*{x} \leq \abs*{x + y} + \abs*{y}                               & \text{(by Proposition \ref{4.3.3})} \\
-        \implies & \abs*{x} + (-\abs*{y}) \leq (\abs*{x + y} + \abs*{y}) + (-\abs*{y}) & \text{(by Proposition \ref{4.2.9})} \\
-        \implies & \abs*{x} + (-\abs*{y}) \leq \abs*{x + y} + (\abs*{y} + (-\abs*{y})) & \text{(by Proposition \ref{4.2.4})} \\
-        \implies & \abs*{x} + (-\abs*{y}) \leq \abs*{x + y} + 0                        & \text{(by Proposition \ref{4.2.4})} \\
-        \implies & \abs*{x} + (-\abs*{y}) \leq \abs*{x + y}                            & \text{(by Proposition \ref{4.2.4})} \\
+                 & \abs*{x + y + (-y)} \leq \abs*{x + y} + \abs*{-y}                 & \text{(by Proposition \ref{4.3.3}(b))} \\
+        \implies & \abs*{x} \leq \abs*{x + y} + \abs*{-y}                            & \text{(by Proposition \ref{4.2.4})}    \\
+        \implies & \abs*{x} \leq \abs*{x + y} + \abs*{y}                             & \text{(by Proposition \ref{4.3.3}(d))} \\
+        \implies & \abs*{x} + (-\abs*{y}) \leq \abs*{x + y} + \abs*{y} + (-\abs*{y}) & \text{(by Proposition \ref{4.2.9}(d))} \\
+        \implies & \abs*{x} + (-\abs*{y}) \leq \abs*{x + y}                          & \text{(by Proposition \ref{4.2.4})}    \\
         \implies & \abs*{x} - \abs*{y} \leq \abs*{x + y}.
     \end{align*}
 \end{proof}
@@ -299,177 +295,112 @@ Then \(\abs*{x} - \abs*{y} \leq \abs*{x + y}\).
 \end{proposition}
 
 \begin{proof}{(a)}
-    We first prove that \(x = y\) implies \(x\) is \(\varepsilon\)-close to \(y\), \(\forall\ \varepsilon > 0\).
-    By Proposition \ref{4.3.3}, \(x = y \iff d(x, y) = 0\).
-    Then by the given condition, \(\forall\ \varepsilon > 0 = d(x, y)\), which means \(d(x, y) < \varepsilon\) by Proposition \ref{4.2.9}.
-    By Definition \ref{4.2.8}, \(d(x, y) < \varepsilon \implies d(x, y) \leq \varepsilon\).
-    Thus by Definition \ref{4.3.4}, \(x\) is \(\varepsilon\)-close to \(y\).
+    We first show that if \(x = y\), then \(x\) is \(\varepsilon\)-close to \(y\) for every \(\varepsilon \in \mathbf{Q}^+\).
+    \begin{align*}
+                 & x = y                                                                                                                              \\
+        \implies & x - y = 0                                                                        & \text{(by Proposition \ref{4.2.4})}             \\
+        \implies & \abs*{x - y} = 0                                                                 & \text{(by Proposition \ref{4.3.3}(a))}          \\
+        \implies & \forall\ \varepsilon \in \mathbf{Q}^+, \abs*{x - y} \leq \varepsilon             & \text{(by Additional Corollary \ref{ac 4.2.7})} \\
+        \implies & \forall\ \varepsilon \in \mathbf{Q}^+, x \text{ is \(\varepsilon\)-close to } y. & \text{(by Definition \ref{4.3.4})}
+    \end{align*}
 
-    Now we prove that \(\forall\ \varepsilon > 0\), \(x\) is \(\varepsilon\)-close to \(y\) implies \(x = y\).
-    By the given condition, \(d(x, y) \leq \varepsilon\).
-    Suppose for sake of contradiction that \(x \neq y\), then \(d(x, y) > 0\) by Proposition \ref{4.3.3}.
-    Since \(d(x, y) > 0\), \(d(x, y) / 2 > 0\).
-    But by the given condition, \(\forall\ \varepsilon > 0\), \(d(x, y) \leq \varepsilon\).
-    Then we get \(d(x, y) \leq d(x, y) / 2\), and because \(d(x, y) \neq 0\), \(d(x, y) < d(x, y) / 2\), a contradiction.
-    So \(x = y\).
+    Now we show that if \(x\) is \(\varepsilon\)-close to \(y\) for every \(\varepsilon \in \mathbf{Q}^+\), then \(x = y\).
+    Suppose for sake of contradiction that \(x \neq y\).
+    Then by Proposition \ref{4.3.3}(e) we have \(d(x, y) > 0\).
+    But then we have \(d(x, y) < d(x, y)\), a contradiction.
+    Thus we must have \(x = y\).
 \end{proof}
 
 \begin{proof}{(b)}
+    We have
     \begin{align*}
-                 & x \text{ is \(\varepsilon\)-close to } y                                                               \\
-        \implies & d(x, y) \leq \varepsilon                  & \text{(by Definition \ref{4.3.4})}                         \\
-        \implies & d(y, x) \leq \varepsilon                  & \text{(by Proposition \ref{4.3.3}, \(d(x, y) = d(y, x)\))} \\
-        \implies & y \text{ is \(\varepsilon\)-close to } x. & \text{(by Definition \ref{4.3.4})}
+             & x \text{ is \(\varepsilon\)-close to } y                                           \\
+        \iff & d(x, y) \leq \varepsilon                  & \text{(by Definition \ref{4.3.4})}     \\
+        \iff & d(y, x) \leq \varepsilon                  & \text{(by Proposition \ref{4.3.3}(f))} \\
+        \iff & y \text{ is \(\varepsilon\)-close to } x. & \text{(by Definition \ref{4.3.4})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(c)}
-    By Definition \ref{4.3.4}, \(x\) is \(\varepsilon\)-close to \(y\) implies \(d(x, y) \leq \varepsilon\), and \(y\) is \(\delta\)-close to \(z\) implies \(d(y, z) \leq \delta\).
-    So
+    We have
     \begin{align*}
-                 & d(y, z) \leq \delta                                                                            \\
-        \implies & \varepsilon + d(y, z) \leq \varepsilon + \delta.         & \text{(by Proposition \ref{4.3.3})} \\
-                 & d(x, y) \leq \varepsilon                                                                       \\
-        \implies & d(x, y) + d(y, z) \leq \varepsilon + d(y, z)             & \text{(by Proposition \ref{4.3.3})} \\
-        \implies & d(x, y) + d(y, z) \leq \varepsilon + \delta              & \text{(by Proposition \ref{4.2.9})} \\
-        \implies & d(x, z) \leq d(x, y) + d(y, z) \leq \varepsilon + \delta & \text{(by Proposition \ref{4.3.3})} \\
-        \implies & x \text{ is \((\varepsilon + \delta)\)-close to } z.     & \text{(by Definition \ref{4.3.4})}
+                 & (x \text{ is \(\varepsilon\)-close to } y) \land (y \text{ is \(\delta\)-close to } z)                                             \\
+        \implies & \big(d(x, y) \leq \varepsilon\big) \land \big(d(y, z) \leq \delta\big)                 & \text{(by Definition \ref{4.3.4})}        \\
+        \implies & d(x, y) + d(y, z) \leq \varepsilon + d(y, z) \leq \varepsilon + \delta                 & \text{(by Proposition \ref{4.2.9}(c)(d))} \\
+        \implies & d(x, z) \leq d(x, y) + d(y, z) \leq \varepsilon + \delta                               & \text{(by Proposition \ref{4.3.3}(g))}    \\
+        \implies & x \text{ is \((\varepsilon + \delta)\)-close to } z.                                   & \text{(by Definition \ref{4.3.4})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(d)}
-    We first prove that If \(x\) and \(y\) are \(\varepsilon\)-close, and \(z\) and \(w\) are \(\delta\)-close, then \(x + z\) and \(y + w\) are \((\varepsilon + \delta)\)-close.
-    By Definition \ref{4.3.4}, \(x\) is \(\varepsilon\)-close to \(y\) implies \(d(x, y) \leq \varepsilon\), and \(z\) is \(\delta\)-close to \(w\) implies \(d(z, w) \leq \delta\).
-    Because
     \begin{align*}
-                 & d(z, w) \leq \delta                                                                    \\
-        \implies & \varepsilon + d(z, w) \leq \varepsilon + \delta. & \text{(by Proposition \ref{4.2.9})} \\
-                 & d(x, y) \leq \varepsilon                                                               \\
-        \implies & d(x, y) + d(z, w) \leq \varepsilon + d(z, w)     & \text{(by Proposition \ref{4.2.9})} \\
-        \implies & d(x, y) + d(z, w) \leq \varepsilon + \delta.     & \text{(by Proposition \ref{4.2.9})}
+                 & (x \text{ is \(\varepsilon\)-close to } y) \land (z \text{ is \(\delta\)-close to } w)                                             \\
+        \implies & \big(d(x, y) \leq \varepsilon\big) \land \big(d(z, w) \leq \delta\big)                 & \text{(by Definition \ref{4.3.4})}        \\
+        \implies & d(x, y) + d(z, w) \leq \varepsilon + d(z, w) \leq \varepsilon + \delta                 & \text{(by Proposition \ref{4.2.9}(c)(d))} \\
+        \implies & \abs*{x - y} + \abs*{z - w} \leq \varepsilon + \delta                                  & \text{(by Definition \ref{4.3.2})}        \\
+        \implies & \abs*{x - y + z - w} \leq \abs*{x - y} + \abs*{z - w} \leq \varepsilon + \delta        & \text{(by Proposition \ref{4.3.3}(b))}    \\
+        \implies & \abs*{x + z - (y + w)} \leq \varepsilon + \delta                                       & \text{(by Proposition \ref{4.2.4})}       \\
+        \implies & (x + z) \text{ is \((\varepsilon + \delta)\)-close to } (y + w)                        & \text{(by Definition \ref{4.3.4})}        \\
+        \implies & \abs*{x - y} + \abs*{-(z - w)} \leq \varepsilon + \delta                               & \text{(by Proposition \ref{4.3.3})(d)}    \\
+        \implies & \abs*{x - y} + \abs*{w - z} \leq \varepsilon + \delta                                  & \text{(by Proposition \ref{4.2.4})}       \\
+        \implies & \abs*{x - y + w - z} \leq \abs*{x - y} + \abs*{w - z} \leq \varepsilon + \delta        & \text{(by Proposition \ref{4.3.3}(b))}    \\
+        \implies & \abs*{x - z - (y - w)} \leq \varepsilon + \delta                                       & \text{(by Proposition \ref{4.2.4})}       \\
+        \implies & (x - z) \text{ is \((\varepsilon + \delta)\)-close to } (y - w).                       & \text{(by Definition \ref{4.3.4})}
     \end{align*}
-    So
-    \begin{align*}
-         & d(x + z, y + w)                                                                      \\
-         & = \abs*{(x + z) - (y + w)}         & \text{(by Definition \ref{4.3.2})}              \\
-         & = \abs*{(x + z) + (-(y + w))}                                                        \\
-         & = \abs*{(x + z) + (-1)(y + w)}     & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
-         & = \abs*{(x + z) + ((-1)y + (-1)w)} & \text{(by Proposition \ref{4.2.4})}             \\
-         & = \abs*{(x + (z + (-1)y)) + (-1)w} & \text{(by Proposition \ref{4.2.4})}             \\
-         & = \abs*{(x + ((-1)y + z)) + (-1)w} & \text{(by Proposition \ref{4.2.4})}             \\
-         & = \abs*{(x + (-1)y) + (z + (-1)w)} & \text{(by Proposition \ref{4.2.4})}             \\
-         & = \abs*{(x + (-y)) + (z + (-w))}   & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
-         & = \abs*{(x - y) + (z - w)}                                                           \\
-         & \leq \abs*{x - y} + \abs*{z - w}   & \text{(by Proposition \ref{4.3.3})}             \\
-         & = d(x, y) + d(z, w)                & \text{(by Definition \ref{4.3.2})}              \\
-         & \leq \varepsilon + \delta.         & \text{(by the given conditions)}
-    \end{align*}
-    Thus by Definition \ref{4.3.4}, \(x + z\) and \(y + w\) are \((\varepsilon + \delta)\)-close.
-
-    Now we prove that If \(x\) and \(y\) are \(\varepsilon\)-close, and \(z\) and \(w\) are \(\delta\)-close, then \(x - z\) and \(y - w\) are \((\varepsilon + \delta)\)-close.
-    By Definition \ref{4.3.4}, \(x\) is \(\varepsilon\)-close to \(y\) implies \(d(x, y) \leq \varepsilon\), and \(z\) is \(\delta\)-close to \(w\) implies \(d(z, w) \leq \delta\).
-    Again because
-    \begin{align*}
-                 & d(z, w) \leq \delta                                                                    \\
-        \implies & \varepsilon + d(z, w) \leq \varepsilon + \delta. & \text{(by Proposition \ref{4.2.9})} \\
-                 & d(x, y) \leq \varepsilon                                                               \\
-        \implies & d(x, y) + d(z, w) \leq \varepsilon + d(z, w)     & \text{(by Proposition \ref{4.2.9})} \\
-        \implies & d(x, y) + d(z, w) \leq \varepsilon + \delta.     & \text{(by Proposition \ref{4.2.9})}
-    \end{align*}
-    So
-    \begin{align*}
-         & d(x - z, y - w)                                                                               \\
-         & = \abs*{(x - z) - (y - w)}                  & \text{(by Definition \ref{4.3.2})}              \\
-         & = \abs*{(x + (-z)) + (-(y + (-w)))}                                                           \\
-         & = \abs*{(x + (-1)z) + (-1)(y + (-1)w)}      & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
-         & = \abs*{(x + (-1)z) + ((-1)y + (-1)(-1)w)}  & \text{(by Proposition \ref{4.2.4})}             \\
-         & = \abs*{(x + (-1)z) + ((-1)y + 1w)}         & \text{(by Proposition \ref{4.2.4})}             \\
-         & = \abs*{(x + (-1)z) + ((-1)y + w)}          & \text{(by Proposition \ref{4.2.4})}             \\
-         & = \abs*{(x + (-z)) + ((-y) + w)}            & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
-         & = \abs*{(x + ((-z) + (-y))) + w}            & \text{(by Proposition \ref{4.2.4})}             \\
-         & = \abs*{(x + ((-y) + (-z))) + w}            & \text{(by Proposition \ref{4.2.4})}             \\
-         & = \abs*{(x + (-y)) + ((-z) + w)}            & \text{(by Proposition \ref{4.2.4})}             \\
-         & = \abs*{(x + (-y)) + (w + (-z))}            & \text{(by Proposition \ref{4.2.4})}             \\
-         & = \abs*{(x - y) + (w - z)}                                                                    \\
-         & \leq \abs*{x - y} + \abs*{w - z}            & \text{(by Proposition \ref{4.3.3})}             \\
-         & = \abs*{x - y} + \abs*{-(w - z)}            & \text{(by Proposition \ref{4.3.3})}             \\
-         & = \abs*{x - y} + \abs*{-(w + (-z))}                                                           \\
-         & = \abs*{x - y} + \abs*{(-1)(w + (-1)z)}     & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
-         & = \abs*{x - y} + \abs*{(-1)w + (-1)((-1)z)} & \text{(by Proposition \ref{4.2.4})}             \\
-         & = \abs*{x - y} + \abs*{(-1)w + ((-1)(-1))z} & \text{(by Proposition \ref{4.2.4})}             \\
-         & = \abs*{x - y} + \abs*{(-1)w + 1z}          & \text{(by Proposition \ref{4.2.4})}             \\
-         & = \abs*{x - y} + \abs*{(-1)w + z}           & \text{(by Proposition \ref{4.2.4})}             \\
-         & = \abs*{x - y} + \abs*{z + (-1)w}           & \text{(by Proposition \ref{4.2.4})}             \\
-         & = \abs*{x - y} + \abs*{z + (-w)}            & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
-         & = \abs*{x - y} + \abs*{z - w}                                                                 \\
-         & = d(x, y) + d(z, w)                         & \text{(by Definition \ref{4.3.2})}              \\
-         & \leq \varepsilon + \delta.                  & \text{(by the given conditions)}
-    \end{align*}
-    Thus by Definition \ref{4.3.4}, \(x - z\) and \(y - w\) are \((\varepsilon + \delta)\)-close.
 \end{proof}
 
 \begin{proof}{(e)}
-    By the given condition, \(\forall\ \varepsilon'\), \(\varepsilon < \varepsilon'\).
-    And by Definition \ref{4.3.4}, \(x\) is \(\varepsilon\)-close to \(y\) implies \(d(x, y) \leq \varepsilon\).
-    If \(d(x, y) = \varepsilon\), then \(d(x, y) < \varepsilon'\).
-    If \(d(x, y) < \varepsilon\), then by Proposition \ref{4.2.9}, \(d(x, y) < \varepsilon'\).
-    Thus \(d(x, y) < \varepsilon'\), by Definition \ref{4.2.8}, \(d(x, y) \leq \varepsilon'\), which means \(x\) is \(\varepsilon'\)-close to \(y\) by Definition \ref{4.3.4}.
-\end{proof}
-
-\begin{proof}{(f)}
     \begin{align*}
-                 & y \text{ is } \varepsilon\text{-close to } x                                                                        \\
-        \implies & d(y, x) \leq \varepsilon                                                      & \text{(by Definition \ref{4.3.4})}  \\
-        \implies & \abs*{y - x} \leq \varepsilon                                                 & \text{(by Definition \ref{4.3.2})}  \\
-        \implies & (-1)\abs*{y - x} \geq (-1)\varepsilon                                         & \text{(by Exercise \ref{ex 4.2.6})} \\
-        \implies & -\abs*{y - x} \geq -\varepsilon.                                                                                    \\
-                 & z \text{ is } \varepsilon\text{-close to } x                                                                        \\
-        \implies & d(z, x) \leq \varepsilon                                                      & \text{(by Definition \ref{4.3.4})}  \\
-        \implies & \abs*{z - x} \leq \varepsilon                                                 & \text{(by Definition \ref{4.3.2})}  \\
-        \implies & (-1)\abs*{z - x} \geq (-1)\varepsilon                                         & \text{(by Exercise \ref{ex 4.2.6})} \\
-        \implies & -\abs*{z - x} \geq -\varepsilon.                                                                                    \\
-                 & y \leq w \leq z                                                                                                     \\
-        \implies & y + (-x) \leq w + (-x) \leq z + (-x)                                          & \text{(by Lemma \ref{4.2.9})}       \\
-        \implies & y - x \leq w - x \leq z - x                                                                                         \\
-        \implies & -\abs*{y - x} \leq y - x \leq w - x \leq z - x \leq \abs*{z - x}              & \text{(by Proposition \ref{4.3.3})} \\
-        \implies & -\abs*{y - x} \leq w - x \leq \abs*{z - x}                                                                          \\
-        \implies & -\varepsilon \leq -\abs*{y - x} \leq w - x \leq \abs*{z - x} \leq \varepsilon & \text{(by the given conditions)}    \\
-        \implies & -\varepsilon \leq w - x \leq \varepsilon                                                                            \\
-        \implies & \varepsilon \geq \abs*{w - x}                                                 & \text{(by Proposition \ref{4.3.3})} \\
-        \implies & \abs*{w - x} \leq \varepsilon                                                 & \text{(by Proposition \ref{4.2.9})} \\
-        \implies & d(w, x) \leq \varepsilon                                                      & \text{(by Definition \ref{4.3.2})}  \\
-        \implies & w \text{ is } \varepsilon\text{-close to } x.                                                                       \\
-                 & z \leq w \leq y                                                                                                     \\
-        \implies & z + (-x) \leq w + (-x) \leq y + (-x)                                          & \text{(by Lemma \ref{4.2.9})}       \\
-        \implies & z - x \leq w - x \leq y - x                                                                                         \\
-        \implies & -\abs*{z - x} \leq z - x \leq w - x \leq y - x \leq \abs*{y - x}              & \text{(by Proposition \ref{4.3.3})} \\
-        \implies & -\abs*{z - x} \leq w - x \leq \abs*{y - x}                                                                          \\
-        \implies & -\varepsilon \leq -\abs*{z - x} \leq w - x \leq \abs*{y - x} \leq \varepsilon & \text{(by the given conditions)}    \\
-        \implies & -\varepsilon \leq w - x \leq \varepsilon                                                                            \\
-        \implies & \varepsilon \geq \abs*{w - x}                                                 & \text{(by Proposition \ref{4.3.3})} \\
-        \implies & \abs*{w - x} \leq \varepsilon                                                 & \text{(by Proposition \ref{4.2.9})} \\
-        \implies & d(w, x) \leq \varepsilon                                                      & \text{(by Definition \ref{4.3.2})}  \\
-        \implies & w \text{ is } \varepsilon\text{-close to } x.
+                 & (x \text{ is \(\varepsilon\)-close to } y) \land (\varepsilon' > \varepsilon)                                          \\
+        \implies & \big(d(x, y) \leq \varepsilon\big) \land (\varepsilon' > \varepsilon)         & \text{(by Definition \ref{4.3.4})}     \\
+        \implies & d(x, y) < \varepsilon'                                                        & \text{(by Proposition \ref{4.2.9}(c))} \\
+        \implies & x \text{ is \(\varepsilon'\)-close to } y.                                    & \text{(by Definition \ref{4.3.4})}
     \end{align*}
 \end{proof}
 
-\begin{proof}{(g)}
-    By Proposition \ref{4.3.3}, \(\abs*{z} \geq 0\).
-    So
+\begin{proof}{(f)}
+    We have
     \begin{align*}
-                 & x \text{ is } \varepsilon\text{-close to } y                                                              \\
-        \implies & d(x, y) \leq \varepsilon                                & \text{(by Definition \ref{4.3.4})}              \\
-        \implies & \abs*{x - y} \leq \varepsilon                           & \text{(by Definition \ref{4.3.2})}              \\
-        \implies & \abs*{x - y}\abs*{z} \leq \varepsilon\abs*{z}           & \text{(by Proposition \ref{4.2.9})}             \\
-        \implies & \abs*{(x - y)z} \leq \varepsilon\abs*{z}                & \text{(by Proposition \ref{4.3.3})}             \\
-        \implies & \abs*{(x + (-y))z} \leq \varepsilon\abs*{z}                                                               \\
-        \implies & \abs*{xz + (-y)z} \leq \varepsilon\abs*{z}              & \text{(by Proposition \ref{4.2.4})}             \\
-        \implies & \abs*{xz + ((-1)y)z} \leq \varepsilon\abs*{z}           & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
-        \implies & \abs*{xz + (-1)(yz)} \leq \varepsilon\abs*{z}           & \text{(by Proposition \ref{4.2.4})}             \\
-        \implies & \abs*{xz + (-(yz))} \leq \varepsilon\abs*{z}            & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
-        \implies & \abs*{xz - yz} \leq \varepsilon\abs*{z}                                                                   \\
-        \implies & d(xz, yz) \leq \varepsilon\abs*{z}                      & \text{(by Definition \ref{4.3.2})}              \\
-        \implies & xz \text{ is } \varepsilon\abs*{z}\text{-close to } yz. & \text{(by Definition \ref{4.3.4})}              \\
+                 & (y \text{ is } \varepsilon\text{-close to } x) \land (z \text{ is } \varepsilon\text{-close to } x)                                          \\
+        \implies & \big(d(y, x) \leq \varepsilon\big) \land \big(d(z, x) \leq \varepsilon\big)                         & \text{(by Definition \ref{4.3.4})}     \\
+        \implies & (\abs*{y - x} \leq \varepsilon) \land (\abs*{z - x} \leq \varepsilon)                               & \text{(by Definition \ref{4.3.2})}     \\
+        \implies & (-\varepsilon \leq y - x \leq \varepsilon) \land (-\varepsilon \leq z - x \leq \varepsilon).        & \text{(by Proposition \ref{4.3.3}(c))}
+    \end{align*}
+    Now we split into two cases:
+    \begin{enumerate}[label=(\Roman*)]
+        \item If \(y \leq w \leq z\), then we have
+              \begin{align*}
+                           & y \leq w \leq z                                                                                         \\
+                  \implies & y - x \leq w - x \leq z - x                                    & \text{(by Proposition \ref{4.2.9}(d))} \\
+                  \implies & -\varepsilon \leq y - x \leq w - x \leq z - x \leq \varepsilon & \text{(by Proposition \ref{4.2.9}(c))} \\
+                  \implies & \abs*{w - x} \leq \varepsilon                                  & \text{(by Proposition \ref{4.3.3}(c))} \\
+                  \implies & d(w, x) \leq \varepsilon                                       & \text{(by Definition \ref{4.3.2})}     \\
+                  \implies & w \text{ is } \varepsilon\text{-close to } x.                  & \text{(by Definition \ref{4.3.4})}
+              \end{align*}
+        \item If \(z \leq w \leq y\), then we have
+              \begin{align*}
+                           & z \leq w \leq y                                                                                         \\
+                  \implies & z - x \leq w - x \leq y - x                                    & \text{(by Proposition \ref{4.2.9}(d))} \\
+                  \implies & -\varepsilon \leq z - x \leq w - x \leq y - x \leq \varepsilon & \text{(by Proposition \ref{4.2.9}(c))} \\
+                  \implies & \abs*{w - x} \leq \varepsilon                                  & \text{(by Proposition \ref{4.3.3}(c))} \\
+                  \implies & d(w, x) \leq \varepsilon                                       & \text{(by Definition \ref{4.3.2})}     \\
+                  \implies & w \text{ is } \varepsilon\text{-close to } x.                  & \text{(by Definition \ref{4.3.4})}
+              \end{align*}
+    \end{enumerate}
+    From all cases above we conclude that \(w\) is \(\varepsilon\)-close to \(x\).
+\end{proof}
+
+\begin{proof}{(g)}
+    \begin{align*}
+                 & (x \text{ is } \varepsilon\text{-close to } y) \land (z \neq 0)                                          \\
+        \implies & \big(d(x, y) \leq \varepsilon\big) \land (z \neq 0)             & \text{(by Definition \ref{4.3.4})}     \\
+        \implies & (\abs*{x - y} \leq \varepsilon) \land (z \neq 0)                & \text{(by Definition \ref{4.3.2})}     \\
+        \implies & (\abs*{x - y} \leq \varepsilon) \land (\abs*{z} > 0)            & \text{(by Proposition \ref{4.3.3}(a))} \\
+        \implies & \abs*{x - y} \abs*{z} \leq \varepsilon \abs*{z}                 & \text{(by Proposition \ref{4.2.9}(e))} \\
+        \implies & \abs*{(x - y)z} \leq \varepsilon \abs*{z}                       & \text{(by Proposition \ref{4.3.3}(d))} \\
+        \implies & \abs*{xz - yz} \leq \varepsilon \abs*{z}                        & \text{(by Proposition \ref{4.2.4})}    \\
+        \implies & d(xz, yz) \leq \varepsilon \abs*{z}                             & \text{(by Definition \ref{4.3.2})}     \\
+        \implies & xz \text{ is } (\varepsilon \abs*{z})\text{-close to } yz.      & \text{(by Definition \ref{4.3.4})}
     \end{align*}
 \end{proof}
 
@@ -518,7 +449,7 @@ Then \(\abs*{x} - \abs*{y} \leq \abs*{x + y}\).
 \end{proposition}
 
 \begin{proof}{(a)}
-    We first prove that \(x^n x^m = x^{n + m}\).
+    We first show that \(x^n x^m = x^{n + m}\).
     We use induction on \(n\).
     For \(n = 0\), \(x^0 x^m = 1 x^m = x^m\) by Definition \ref{4.3.9} and Proposition \ref{4.2.4}.
     And \(x^{0 + m} = x^m\) by Proposition \ref{4.2.4}.
@@ -528,7 +459,7 @@ Then \(\abs*{x} - \abs*{y} \leq \abs*{x + y}\).
     And \(x^{(n++) + m} = x^{(n + m)++} = x^{n + m} x = (x^n x^m)x\) by Definition \ref{2.2.1} and induction hypothesis.
     So \(x^{n++} x^m = x^{(n++) + m}\), and this close the induction.
 
-    Next we prove that \((x^n)^m = x^{nm}\).
+    Next we show that \((x^n)^m = x^{nm}\).
     We use induction on \(m\).
     For \(m = 0\), \((x^n)^0 = 1\) by Definition \ref{4.3.9}.
     And \(x^{n0} = x^0 = 1\) by Additional Corollary \ref{ac 2.3.2} and Definition \ref{4.3.9}.
