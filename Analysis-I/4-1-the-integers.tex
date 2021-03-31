@@ -432,8 +432,8 @@ Then \((-x)(-y) = xy\).
 
 \begin{definition}[Ordering of the integers]\label{4.1.10}
     Let \(n\) and \(m\) be integers.
-    We say that \(n\) is greater than or equal to \(m\), and write \(n \geq m\) or \(m \leq n\), iff we have \(n = m + a\) for some natural number \(a\).
-    We say that \(n\) is strictly greater than \(m\), and write \(n > m\) or \(m < n\), iff \(n \geq m\) and \(n \neq m\).
+    We say that \(n\) is \emph{greater than or equal} to \(m\), and write \(n \geq m\) or \(m \leq n\), iff we have \(n = m + a\) for some natural number \(a\).
+    We say that \(n\) is \emph{strictly greater than} \(m\), and write \(n > m\) or \(m < n\), iff \(n \geq m\) and \(n \neq m\).
 \end{definition}
 
 \begin{lemma}[Properties of order]\label{4.1.11}
@@ -449,144 +449,90 @@ Then \((-x)(-y) = xy\).
 \end{lemma}
 
 \begin{proof}{(a)}
-    We first prove that \(a > b\) implies \(a - b\) is a positive natural number.
-    By Definition \ref{4.1.10}, \(a > b \implies a = b + d\), where \(d \in \mathbf{N}\) and \(a \neq b\).
-    Then \(a - b = a + (-b) = (b + d) + (-b) = (d + b) + (-b) = d + (b + (-b)) = d + 0 = d\) by Proposition \ref{4.1.6}.
-    Also because \(a \neq b\), \(d \neq 0\).
-    By Definition \ref{2.2.7}, \(d\) is positive natural number, so \(a - b\) is positive natural number.
-
-    Now we prove that \(a - b\) is a positive natural number implies \(a > b\).
-    Let \(a - b = d\).
-    By Proposition \ref{4.1.6}, \((a - b) + b = d + b \implies a = b + d\).
-    By Definition \ref{4.1.10}, \(a \geq b\).
-    Because \(d\) is a positive natural number, \(b \neq b + d = a\), so by Definition \ref{4.1.10}, \(a > b\).
+    We have
+    \begin{align*}
+             & a > b                                                                                          \\
+        \iff & (\exists\ m \in \mathbf{N} : a = b + m) \land (a \neq b) & \text{(by Definition \ref{4.1.10})} \\
+        \iff & \exists\ m \in \mathbf{N} : a - b = m \neq 0             & \text{(by Proposition \ref{4.1.6})} \\
+        \iff & a - b \text{ is positive}.                               & \text{(by Lemma \ref{2.2.7})}
+    \end{align*}
 \end{proof}
 
 \begin{proof}{(b)}
-    By Lemma \ref{4.1.11}(a), \(a > b \implies a - b\) is positive.
-    Let \(a - b = d\).
-    So
+    We have
     \begin{align*}
-                 & a - b = d                                                                               \\
-        \implies & (a - b) + b = d + b                               & \text{(by Lemma \ref{4.1.3})}       \\
-        \implies & a + (-b + b) = d + b                              & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & a = d + b                                         & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & a = b + d                                         & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & a + c = (b + d) + c                               & \text{(by Lemma \ref{4.1.3})}       \\
-        \implies & a + c = b + (d + c)                               & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & a + c = b + (c + d)                               & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & a + c = (b + c) + d                               & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & (a + c) + (-(b + c)) = ((b + c) + d) + (-(b + c)) & \text{(by Lemma \ref{4.1.3})}       \\
-        \implies & (a + c) - (b + c) = ((b + c) + d) + (-(b + c))                                          \\
-        \implies & (a + c) - (b + c) = (d + (b + c)) + (-(b + c))    & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & (a + c) - (b + c) = d + ((b + c) + (-(b + c)))    & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & (a + c) - (b + c) = d + 0                         & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & (a + c) - (b + c) = d                             & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & a + c > b + c.                                    & \text{(by Lemma \ref{4.1.11}(a))}   \\
+                 & a > b                                                                                          \\
+        \implies & (\exists\ m \in \mathbf{N} : a = b + m) \land (a \neq b) & \text{(by Definition \ref{4.1.10})} \\
+        \implies & (a + c = b + m + c) \land (a + c \neq b + c)             & \text{(by Lemma \ref{4.1.3})}       \\
+        \implies & (a + c = b + c + m) \land (a + c \neq b + c)             & \text{(by Proposition \ref{4.1.6})} \\
+        \implies & a + c > b + c.                                           & \text{(by Definition \ref{4.1.10})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(c)}
-    By Lemma \ref{4.1.11}(a), \(a > b \implies a - b\) is positive.
-    Let \(a - b = d\).
-    So
+    We have
     \begin{align*}
-                 & a - b = d                                                            \\
-        \implies & (a - b) + b = d + b            & \text{(by Lemma \ref{4.1.3})}       \\
-        \implies & a + (-b + b) = d + b           & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & a = d + b                      & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & a = b + d                      & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & ac = (b + d)c                  & \text{(by Lemma \ref{4.1.3})}       \\
-        \implies & ac = bc + dc                   & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & ac + (-bc) = (bc + dc) + (-bc) & \text{(by Lemma \ref{4.1.3})}       \\
-        \implies & ac - bc = (bc + dc) + (-bc)                                          \\
-        \implies & ac - bc = (dc + bc) + (-bc)    & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & ac - bc = dc + (bc + (-bc))    & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & ac - bc = dc + 0               & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & ac - bc = dc.                  & \text{(by Proposition \ref{4.1.6})}
+                 & a > b                                                                                       \\
+        \implies & (\exists\ m \in \mathbf{N} : a - b = m) \land (m > 0) & \text{(by Lemma \ref{4.1.11}(a))}   \\
+        \implies & \big((a - b)c = ac - bc = mc\big) \land (m > 0)       & \text{(by Proposition \ref{4.1.6})} \\
+        \implies & (ac = bc + mc) \land (m > 0)                          & \text{(by Proposition \ref{4.1.6})} \\
+        \implies & (ac = bc + mc) \land (mc > 0c)                        & \text{(by Proposition \ref{2.3.6})} \\
+        \implies & (ac = bc + mc) \land (mc > 0)                         & \text{(by Definition \ref{2.3.1})}  \\
+        \implies & ac > bc.                                              & \text{(by Lemma \ref{4.1.11}(a))}
     \end{align*}
-    By Lemma \ref{2.3.3}, \(dc\) is also positive.
-    Thus by Lemma \ref{4.1.11}(a), \(ac > bc\).
 \end{proof}
 
 \begin{proof}{(d)}
+    We have
     \begin{align*}
-                 & a > b                                                              \\
-        \implies & a + (-a) > b + (-a)          & \text{(by Lemma \ref{4.1.11}(b))}   \\
-        \implies & 0 > b + (-a)                 & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & (-b) + 0 > (-b) + (b + (-a)) & \text{(by Lemma \ref{4.1.11}(b))}   \\
-        \implies & -b > (-b) + (b + (-a))       & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & -b > ((-b) + b) + (-a)       & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & -b > 0 + (-a)                & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & -b > -a.                     & \text{(by Proposition \ref{4.1.6})} \\
+                 & a > b                                                                                       \\
+        \implies & (\exists\ m \in \mathbf{N} : a - b = m) \land (m > 0) & \text{(by Lemma \ref{4.1.11}(a))}   \\
+        \implies & (b - a = -m) \land (m > 0)                            & \text{(by Definition \ref{4.1.4})}  \\
+        \implies & \big((-b) + b - a = (-b) + (-m)\big) \land (m > 0)    & \text{(by Lemma \ref{4.1.3})}       \\
+        \implies & \big(-a = (-b) + (-m)\big) \land (m > 0)              & \text{(by Proposition \ref{4.1.6})} \\
+        \implies & \big((-a) + m = (-b) + (-m) + m\big) \land (m > 0)    & \text{(by Lemma \ref{4.1.3})}       \\
+        \implies & \big((-a) + m = -b\big) \land (m > 0)                 & \text{(by Proposition \ref{4.1.6})} \\
+        \implies & -b > -a.                                              & \text{(by Lemma \ref{4.1.11}(a))}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(e)}
-    By Lemma \ref{4.1.11}(a), \(a > b \implies a - b\) is positive, \(b > c \implies b - c\) is positive.
-    Let \(a - b = d_{ab}\), \(b - c = d_{bc}\).
-    So
+    We have
     \begin{align*}
-                 & b - c = d_{bc}                                                                  \\
-        \implies & (b - c) + c = d_{bc} + c                  & \text{(by Lemma \ref{4.1.3})}       \\
-        \implies & b + (-c + c) = d_{bc} + c                 & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & b + 0 = d_{bc} + c                        & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & b = d_{bc} + c                            & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & b = c + d_{bc}.                           & \text{(by Proposition \ref{4.1.6})} \\
-                 & a - b = d                                                                       \\
-        \implies & (a - b) + b = d_{ab} + b                  & \text{(by Lemma \ref{4.1.3})}       \\
-        \implies & a + (-b + b) = d_{ab} + b                 & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & a + 0 = d_{ab} + b                        & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & a = d_{ab} + b                            & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & a = b + d_{ab}                            & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & a = (c + d_{bc}) + d_{ab}                 & \text{(by the given condition)}     \\
-        \implies & a = c + (d_{bc} + d_{ab})                 & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & (-c) + a = (-c) + (c + (d_{bc} + d_{ab})) & \text{(by Lemma \ref{4.1.3})}       \\
-        \implies & a + (-c) = (-c) + (c + (d_{bc} + d_{ab})) & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & a - c = (-c) + (c + (d_{bc} + d_{ab}))    & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & a - c = ((-c) + c) + (d_{bc} + d_{ab})    & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & a - c = 0 + (d_{bc} + d_{ab})             & \text{(by Proposition \ref{4.1.6})} \\
-        \implies & a - c = d_{bc} + d_{ab}                   & \text{(by Proposition \ref{4.1.6})} \\
+                 & (a > b) \land (b > c)                                                                              \\
+        \implies & \exists\ m, n \in \mathbf{N} : (a = b + m) \land (b = c + n)                                       \\
+                 & \land (m > 0) \land (n > 0)                                  & \text{(by Lemma \ref{4.1.11}(a))}   \\
+        \implies & (a = c + n + m) \land (m > 0) \land (n > 0)                  & \text{(by Lemma \ref{4.1.3})}       \\
+        \implies & (a = c + n + m) \land (n + m > 0)                            & \text{(by Proposition \ref{2.2.8})} \\
+        \implies & a > c.                                                       & \text{(by Lemma \ref{4.1.11}(a))}
     \end{align*}
-    By Proposition \ref{2.2.8}, \(d_{bc} + d_{ab}\) is also positive.
-    Thus by Definition \ref{4.1.11}(a), \(a > c\).
 \end{proof}
 
 \begin{proof}{(f)}
     By Lemma \ref{4.1.5}, \(a - b\) can be exactly one of the following three statements:
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label=(\Roman*)]
         \item \(a - b = 0\).
-              So
+              Then we have
               \begin{align*}
-                       & a - b = 0                                              \\
-                  \iff & (a - b) + b = b  & \text{(by Lemma \ref{4.1.3})}       \\
-                  \iff & a + (-b + b) = b & \text{(by Proposition \ref{4.1.6})} \\
-                  \iff & a + 0 = b        & \text{(by Proposition \ref{4.1.6})} \\
-                  \iff & a = b.           & \text{(by Proposition \ref{4.1.6})}
+                       & a - b = 0                                                  \\
+                  \iff & a + (-b) = 0                                               \\
+                  \iff & a + (-b) + b = 0 + b & \text{(by Lemma \ref{4.1.3})}       \\
+                  \iff & a + 0 = 0 + b        & \text{(by Proposition \ref{4.1.6})} \\
+                  \iff & a = b.               & \text{(by Proposition \ref{4.1.6})}
               \end{align*}
-        \item \(a - b\) is a positive natural number, which means \(a > b\) by Lemma \ref{4.1.11}(a).
-        \item \(a - b = -d\), where \(d\) is a positive natural number.
-              So
+        \item \(a - b\) is a positive natural number.
+              Then by Lemma \ref{4.1.11}(a) we have \(a > b\).
+        \item \(a - b = -n\) where \(n\) is a positive natural number.
+              Then we have
               \begin{align*}
-                       & a - b = -d                                                            \\
-                  \iff & a + (-b) = -d                                                         \\
-                  \iff & (a + (-b)) + b = (-d) + b       & \text{(by Lemma \ref{4.1.3})}       \\
-                  \iff & a + ((-b) + b) = (-d) + b       & \text{(by Proposition \ref{4.1.6})} \\
-                  \iff & a + 0 = (-d) + b                & \text{(by Proposition \ref{4.1.6})} \\
-                  \iff & a = (-d) + b                    & \text{(by Proposition \ref{4.1.6})} \\
-                  \iff & a + (-a) = ((-d) + b) + (-a)    & \text{(by Lemma \ref{4.1.3})}       \\
-                  \iff & 0 = ((-d) + b) + (-a)           & \text{(by Proposition \ref{4.1.6})} \\
-                  \iff & d + 0 = d + (((-d) + b) + (-a)) & \text{(by Lemma \ref{4.1.3})}       \\
-                  \iff & d = d + (((-d) + b) + (-a))     & \text{(by Proposition \ref{4.1.6})} \\
-                  \iff & d = (d + ((-d) + b)) + (-a)     & \text{(by Proposition \ref{4.1.6})} \\
-                  \iff & d = ((d + (-d)) + b) + (-a)     & \text{(by Proposition \ref{4.1.6})} \\
-                  \iff & d = (0 + b) + (-a)              & \text{(by Proposition \ref{4.1.6})} \\
-                  \iff & d = b + (-a)                    & \text{(by Proposition \ref{4.1.6})} \\
-                  \iff & d = b - a                                                             \\
-                  \iff & b > a                           & \text{(by Lemma \ref{4.1.11}(a))}   \\
-                  \iff & a < b.                          & \text{(by Definition \ref{4.1.10})} \\
+                       & a - b = -n                                            \\
+                  \iff & -(a - b) = -(-n) & \text{(by Additional Corollary \ref{ac 4.1.2})} \\
+                  \iff & (b - a) = n      & \text{(by Definition \ref{4.1.4})}
               \end{align*}
+              and by Lemma \ref{4.1.11}(a) we have \(b > a\).
+              By Definition \ref{4.1.10} we have \(b > a \iff a < b\).
     \end{enumerate}
+    Thus we conclude that exactly one of the statements \(a = b\), \(a > b\), or \(a < b\) is true.
 \end{proof}
 
 \exercisesection
