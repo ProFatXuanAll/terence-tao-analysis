@@ -257,21 +257,12 @@ The definition of negation on the integers is well-defined.
     Thus the multiplication of integer is associative.
 
     Next we show that \(x1 = 1x = x\).
-    We first show that \(\forall\ n \in \mathbf{N}\), \(n1 = n\).
-    We use induction on \(n\).
-    For \(n=0\), by Lemma \ref{2.3.3} we have \(0 \times 1 = 0\), so the base case holds.
-    Suppose inductively that \(n1 = n\) is true for some \(n\).
-    Then for \(n + 1\), by Definition \ref{2.3.1} we have \((n + 1) \times 1 = n1 + 1\).
-    By induction hypothesis we have \(n1 = n\).
-    Thus we have \(n1 + 1 = n + 1\), and this close the induction.
-
-    Now we show that \(x1 = 1x = x\).
     Since the multiplication of integer is commutative, we know that \(x1 = 1x\).
     So we only need to show that \(x1 = x\).
     \begin{align*}
         x1 & = (a \text{---} b) \times (1 \text{---} 0)                                                   \\
            & = (a1 + b0) \text{---} (a0 + b1)           & \text{(by Definition \ref{4.1.2})}              \\
-           & = (a + b0) \text{---} (a0 + b)             & (n1 = n)                                        \\
+           & = (a + b0) \text{---} (a0 + b)             & \text{(by Additional Corollary \ref{ac 2.3.4})} \\
            & = (a + 0) \text{---} (0 + b)               & \text{(by Additional Corollary \ref{ac 2.3.2})} \\
            & = (a + 0) \text{---} (b + 0)               & \text{(by Proposition \ref{2.2.4})}             \\
            & = (a \text{---} b)                         & \text{(by Lemma \ref{2.2.2})}                   \\
@@ -326,64 +317,97 @@ The definition of negation on the integers is well-defined.
     (As remarked before, we could not use subtraction immediately because it would be circular.)
 \end{note}
 
+\begin{additional corollary}\label{ac 4.1.3}
+Let \(x\) be an integer.
+Then \(-x = (-1)x\).
+\end{additional corollary}
+
+\begin{proof}
+    Let \(x = (a \text{---} b)\) where \(a, b \in \mathbf{N}\).
+    Then we have
+    \begin{align*}
+        -x & = -(a \text{---} b)                                                                  \\
+           & = (b \text{---} a)                 & \text{(by Definition \ref{4.1.4})}              \\
+           & = (1b \text{---} 1a)               & \text{(by Additional Corollary \ref{ac 2.3.4})} \\
+           & = (0 + 1b) \text{---} (0 + 1a)     & \text{(by Definition \ref{2.2.1})}              \\
+           & = (0a + 1b) \text{---} (0b + 1a)   & \text{(by Lemma \ref{2.3.3})}                   \\
+           & = (0 \text{---} 1)(a \text{---} b) & \text{(by Definition \ref{4.1.2})}              \\
+           & = (-1)(a \text{---} b)             & \text{(by Definition \ref{4.1.4})}              \\
+           & = (-1)x.
+    \end{align*}
+\end{proof}
+
+\begin{additional corollary}\label{ac 4.1.4}
+Let \(x\) be an integer.
+Then \(x = -(-x)\).
+\end{additional corollary}
+
+\begin{proof}
+    Let \(x = (a \text{---} b)\) where \(a, b \in \mathbf{N}\).
+    Then we have
+    \begin{align*}
+        -(-x) & = -(b \text{---} a) & \text{(by Definition \ref{4.1.4})} \\
+              & = (a \text{---} b)  & \text{(by Definition \ref{4.1.4})} \\
+              & = x.
+    \end{align*}
+\end{proof}
+
+\begin{additional corollary}\label{ac 4.1.5}
+Let \(x, y\) be integers.
+Then \((-x)(-y) = xy\).
+\end{additional corollary}
+
+\begin{proof}
+    We have
+    \begin{align*}
+        (-x)(-y) & = \big((-1)x\big) \big((-1)y\big) & \text{(by Additional Corollary \ref{ac 4.1.3})} \\
+                 & = (-1)\big(x(-1)\big)y            & \text{(by Proposition \ref{4.1.6})}             \\
+                 & = (-1)\big((-1)x\big)y            & \text{(by Proposition \ref{4.1.6})}             \\
+                 & = \big((-1)(-1)\big)(xy)          & \text{(by Proposition \ref{4.1.6})}             \\
+                 & = \big(-(-1)\big)(xy)             & \text{(by Additional Corollary \ref{ac 4.1.3})} \\
+                 & = 1(xy)                           & \text{(by Additional Corollary \ref{ac 4.1.4})} \\
+                 & = xy.                             & \text{(by Proposition \ref{4.1.6})}
+    \end{align*}
+\end{proof}
+
 \begin{proposition}[Integers have no zero divisors]\label{4.1.8}
     Let \(a\) and \(b\) be integers such that \(ab = 0\).
     Then either \(a = 0\) or \(b = 0\) (or both).
 \end{proposition}
 
 \begin{proof}
-    Let \(a = a_1 \text{---} a_2\) and \(b = b_1 \text{---} b_2\), where \(a_1, a_2, b_1, b_2 \in \mathbf{N}\).
-    Then
-    \begin{align*}
-        ab & = (a_1 \text{---} a_2) \times (b_1 \text{---} b_2) \\
-           & = (a_1b_1 + a_2b_2) \text{---} (a_1b_2 + a_2b_1)   \\
-           & = 0 \text{---} 0                                   \\
-           & = 0.
-    \end{align*}
-    Which means \(a_1b_1 + a_2b_2 = a_1b_2 + a_2b_1\).
+    Suppose for sake of contradiction that \(a \neq 0 \land b \neq 0\).
+    By Lemma \ref{4.1.5} we now split into four cases:
     \begin{enumerate}
-        \item If \(a \neq 0\), then \(a_1 \neq a_2\).
-              \begin{enumerate}[label=(\roman*)]
-                  \item If \(b_1 = 0\), then \(a_1b_1 + a_2b_2 = a_1b_2 + a_2b_1 \implies a_2b_2 = a_1b_2\).
-                        If \(b_2 \neq 0\), by Corollary \ref{2.3.7}, \(a_2b_2 = a_1b_2 \implies a_2 = a_1\), a contradiction.
-                        So \(b_2 = 0\), which means \(b = b_1 \text{---} b_2 = 0 \text{---} 0 = 0\).
-                  \item If \(b_1 \neq 0\), then \(a_1b_1 \neq a_2b_1\) by Corollary \ref{2.3.7}.
-                        By Proposition \ref{2.2.13}, only one of the \(a_1 < a_2\) and \(a_1 > a_2\) is true.
-                        \begin{enumerate}[label=(\arabic*)]
-                            \item If \(a_1 < a_2\), then \(a_2 = a_1 + d\), where \(d \in \mathbf{N}\) and \(d\) is positive.
-                                  So
-                                  \begin{align*}
-                                               & a_1b_1 + a_2b_2 = a_1b_2 + a_2b_1                                                     \\
-                                      \implies & a_1b_1 + (a_1 + d)b_2 = a_1b_2 + (a_1 + d)b_1                                         \\
-                                      \implies & a_1b_1 + a_1b_2 + db_2 = a_1b_2 + a_1b_1 + db_1 & \text{(by Proposition \ref{2.3.4})} \\
-                                      \implies & db_2 = db_1                                     & \text{(by Proposition \ref{2.2.6})} \\
-                                      \implies & b_2 = b_1.                                      & \text{(by Corollary \ref{2.3.7})}
-                                  \end{align*}
-                                  Which means \(b = b_1 \text{---} b_2 = 0 \text{---} 0 = 0\).
-                            \item If \(a_1 > a_2\), then \(a_1 = a_2 + d\), where \(d \in \mathbf{N}\) and \(d\) is positive.
-                                  So
-                                  \begin{align*}
-                                               & a_1b_1 + a_2b_2 = a_1b_2 + a_2b_1                                                     \\
-                                      \implies & (a_2 + d)b_1 + a_2b_2 = (a_2 + d)b_2 + a_2b_1                                         \\
-                                      \implies & a_2b_1 + db_1 + a_2b_2 = a_2b_2 + db_2 + a_2b_1 & \text{(by Proposition \ref{2.3.4})} \\
-                                      \implies & db_1 = db_2                                     & \text{(by Proposition \ref{2.2.6})} \\
-                                      \implies & b_1 = b_2.                                      & \text{(by Corollary \ref{2.3.7})}
-                                  \end{align*}
-                                  Which means \(b = b_1 \text{---} b_2 = 0 \text{---} 0 = 0\).
-                        \end{enumerate}
-              \end{enumerate}
-              In all cases we get \(b = 0\).
-        \item If \(a = 0\), then \(a_1 = a_2\) and \(a_1 \text{---} a_2 = 0 \text{---} 0\).
-              So
+        \item \(a\) is positive and \(b\) is positive.
+              Then by Lemma \ref{2.3.3} we know that \(a = 0 \lor b = 0\), a contradiction.
+        \item \(a\) is negative and \(b\) is positive.
+              Then by Definition \ref{4.1.4} \(-a\) is positive and
               \begin{align*}
-                  ab & = (a_1 \text{---} a_2) \times (b_1 \text{---} b_2)                                      \\
-                     & = (0 \text{---} 0) \times (b_1 \text{---} b_2)                                          \\
-                     & = (0b_1 + 0b_2) \text{---} (0b_2 + 0b_1)           & \text{(by Definition \ref{4.1.2})} \\
-                     & = (0 + 0) \text{---} (0 + 0)                       & \text{(by Definition \ref{2.3.1})} \\
-                     & = 0 \text{---} 0                                   & \text{(by Definition \ref{2.2.1})} \\
-                     & = 0.
+                           & ab + (-ab) = 0       & \text{(by Proposition \ref{4.1.6})}             \\
+                  \implies & 0 + (-ab) = 0                                                          \\
+                  \implies & -ab = 0              & \text{(by Definition \ref{2.2.1})}              \\
+                  \implies & (-1)(ab) = 0         & \text{(by Additional Corollary \ref{ac 4.1.3})} \\
+                  \implies & \big((-1)a\big)b = 0 & \text{(by Proposition \ref{4.1.6})}             \\
+                  \implies & (-a)b = 0            & \text{(by Additional Corollary \ref{ac 4.1.3})} \\
+                  \implies & -a = 0 \lor b = 0    & \text{(by Lemma \ref{2.3.3})}                   \\
+                  \implies & a = -0 \lor b = 0    & \text{(by Additional Corollary \ref{ac 4.1.4})} \\
+                  \implies & a = 0 \lor b = 0,    & \text{(by Definition \ref{4.1.4})}
               \end{align*}
+              a contradiction.
+        \item \(a\) is positive and \(b\) is negative.
+              Then by Definition \ref{4.1.4} \(-b\) is positive and by Proposition \ref{4.1.6} we have \(-ab = -ba\).
+              From case (b) we know that \(b = 0 \lor a = 0\), a contradiction.
+        \item \(a\) is negative and \(b\) is negative.
+              Then by Definition \ref{4.1.4} \(-a\) and \(-b\) are positive.
+              By Additional Corollary \ref{ac 4.1.5} we know that \((-a)(-b) = ab\).
+              This means \(-a = 0 \lor -b = 0\) and by Additional Corollary \ref{ac 4.1.3} and \ref{ac 4.1.4} we have \(a = 0 \lor b = 0\), a contradiction.
     \end{enumerate}
+    From all cases above we derived contradiction.
+    Thus we must have
+    \[
+        \lnot(a \neq 0 \land b \neq 0) \iff a = 0 \lor b = 0.
+    \]
 \end{proof}
 
 \begin{corollary}[Cancellation law for integers]\label{4.1.9}
