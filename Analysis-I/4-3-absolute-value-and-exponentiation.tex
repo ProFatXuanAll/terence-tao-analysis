@@ -609,6 +609,53 @@ Then \(\abs*{x} - \abs*{y} \leq \abs*{x + y}\).
     Then for any negative integer \(-n\), we define \(x^{-n} \coloneqq 1 / x^n\).
 \end{definition}
 
+\begin{note}
+    When \(n = 1\), the definition of \(x^{-1}\) provided by Definition \ref{4.3.11} coincides with the reciprocal of \(x\) defined previously, so there is no incompatibility of notation caused by this new definition.
+\end{note}
+
+\begin{additional corollary}\label{ac 4.3.2}
+Let \(x\) be a non-zero rational number.
+Then for any negative integer \(-n\), we have \(x^{-n + 1} = x^{-n} \times x\).
+\end{additional corollary}
+
+\begin{proof}
+    By Lemma \ref{4.1.11}(f), exactly one of the following three statements is true:
+    \begin{enumerate}[label=(\Roman*)]
+        \item \(-n + 1 = 0\).
+              Then by Proposition \ref{4.1.6} we have \(n = 1\) and
+              \begin{align*}
+                  x^{-1 + 1} & = x^0                                             \\
+                             & = 1         & \text{(by Definition \ref{4.3.9})}  \\
+                             & = x^{-1} x. & \text{(by Proposition \ref{4.2.4})}
+              \end{align*}
+        \item \(-n + 1 > 0\).
+              Then we have
+              \begin{align*}
+                           & -n + 1 > 0                                                   \\
+                  \implies & n < 1      & \text{(by Lemma \ref{4.1.11}(b))}               \\
+                  \implies & n = 0      & \text{(by Axiom \ref{2.3})}                     \\
+                  \implies & -n = 0     & \text{(by Additional Corollary \ref{ac 4.2.3})}
+              \end{align*}
+              which contradict to \(-n\) is negative.
+              Thus this case does not exist.
+        \item \(-n + 1 < 0\).
+              Then by Lemma \ref{4.1.11}(d) we have \(n - 1 > 0\) and
+              \begin{align*}
+                           & x^{-n + 1} x^{n - 1} = 1              & \text{(by Proposition \ref{4.2.4})} \\
+                  \implies & (x^{-n + 1} x^{n - 1}) x = 1x         & \text{(by Lemma \ref{4.2.3})}       \\
+                  \implies & x^{-n + 1} (x^{n - 1} x) = 1x         & \text{(by Proposition \ref{4.2.4})} \\
+                  \implies & x^{-n + 1} x^{n - 1 + 1} = 1x         & \text{(by Definition \ref{4.3.9})}  \\
+                  \implies & x^{-n + 1} x^n = 1x                   & \text{(by Proposition \ref{4.1.6})} \\
+                  \implies & (x^{-n + 1} x^n) x^{-n} = (1x) x^{-n} & \text{(by Proposition \ref{4.1.6})} \\
+                  \implies & x^{-n + 1} (x^n x^{-n}) = 1(x x^{-n}) & \text{(by Proposition \ref{4.2.4})} \\
+                  \implies & x^{-n + 1} 1 = 1x x^{-n}              & \text{(by Proposition \ref{4.2.4})} \\
+                  \implies & x^{-n + 1} = x x^{-n}                 & \text{(by Proposition \ref{4.2.4})} \\
+                  \implies & x^{-n + 1} = x^{-n} x.                & \text{(by Proposition \ref{4.2.4})}
+              \end{align*}
+    \end{enumerate}
+    From all cases above we conclude that \(x^{-n + 1} = x^{-n} x\).
+\end{proof}
+
 \begin{proposition}[Properties of exponentiation, II]\label{4.3.12}
     Let \(x\), \(y\) be nonzero rational numbers, and let \(n\), \(m\) be integers.
     \begin{enumerate}
@@ -621,304 +668,196 @@ Then \(\abs*{x} - \abs*{y} \leq \abs*{x + y}\).
 
 \begin{proof}{(a)}
     We first show that \(x^n x^m = x^{n + m}\).
-    By Lemma \ref{4.1.5}, exactly one of the following three statements is true:
+    By Lemma \ref{4.1.5} exactly one of the following two statements is true:
     \begin{enumerate}[label=(\Roman*)]
-        \item \(n = 0\).
-              Then \(x^0 x^m = 1x^m = x^m\) by Definition \ref{4.3.9} and Proposition \ref{4.2.4}.
-              And \(x^{0 + m} = x^m\) by Proposition \ref{4.2.4}.
-              So \(x^0 x^m = x^{0 + m}\).
-        \item \(n\) is a positive integer.
-              Again by Lemma \ref{4.1.5}, exactly one of the following three statements is true:
+        \item \(n \geq 0\).
+              Then we use induction on \(n\).
+              For \(n = 0\), we have
+              \begin{align*}
+                  x^0 x^m & = 1x^m      & \text{(by Definition \ref{4.3.9})}  \\
+                          & = x^m       & \text{(by Proposition \ref{4.2.4})} \\
+                          & = x^{0 + m} & \text{(by Proposition \ref{4.1.6})}
+              \end{align*}
+              and the base case holds.
+              Suppose inductively that for some \(n \geq 0\) we have \(x^n x^m = x^{n + m}\).
+              Then for \(n + 1\), we have
+              \begin{align*}
+                  x^{n + 1} x^m & = (x^n x) x^m  & \text{(by Definition \ref{4.3.9})}  \\
+                                & = x^n (x x^m)  & \text{(by Proposition \ref{4.2.4})} \\
+                                & = x^n (x^m x)  & \text{(by Proposition \ref{4.2.4})} \\
+                                & = (x^n x^m) x  & \text{(by Proposition \ref{4.2.4})} \\
+                                & = x^{n + m} x. & \text{(by induction hypothesis)}
+              \end{align*}
+              By Lemma \ref{4.1.5} again exactly one of the following two statements is true:
               \begin{enumerate}[label=(\roman*)]
-                  \item \(m = 0\).
-                        Then \(x^n x^0 = x^0 x^n\) and \(x^{n + 0} = x^{0 + n}\) by Proposition \ref{4.2.4} and Proposition \ref{4.1.6}, which is the same case as \(n = 0\).
-                  \item \(m\) is a positive integer.
-                        Then by Proposition \ref{4.3.10}, \(x^n x^m = x^{n + m}\).
-                  \item \(m\) is a negative integer.
-                        Again by Lemma \ref{4.1.5}, exactly one of the following three statements is true:
+                  \item If \(n + m \geq 0\), then we have
+                        \begin{align*}
+                            x^{n + m} x & = x^{(n + m) + 1}  & \text{(by Definition \ref{4.3.9})} \\
+                                        & = x^{n + (m + 1)}  & \text{(by Lemma \ref{2.2.5})}      \\
+                                        & = x^{n + (1 + m)}  & \text{(by Lemma \ref{2.2.4})}      \\
+                                        & = x^{(n + 1) + m}. & \text{(by Lemma \ref{2.2.5})}
+                        \end{align*}
+                  \item If \(n + m < 0\), then we have
+                        \begin{align*}
+                            x^{n + m} x & = x^{(n + m) + 1}  & \text{(by Additional Corollary \ref{ac 4.3.2})} \\
+                                        & = x^{n + (m + 1)}  & \text{(by Proposition \ref{4.1.6})}             \\
+                                        & = x^{n + (1 + m)}  & \text{(by Proposition \ref{4.1.6})}             \\
+                                        & = x^{(n + 1) + m}. & \text{(by Proposition \ref{4.1.6})}
+                        \end{align*}
+              \end{enumerate}
+              From all cases above we conclude that \(x^{n + 1} x^m = x^{(n + 1) + m}\), and this close the induction.
+        \item \(n < 0\).
+              Then by Definition \ref{4.1.4} we know that \(-n > 0\).
+              By Lemma \ref{4.1.5} again exactly one of the following two statements is true:
+              \begin{enumerate}[label=(\roman*)]
+                  \item If \(n + m \geq 0\), then we have
+                        \begin{align*}
+                                     & (n < 0) \land (n + m \geq 0)                                        \\
+                            \implies & (-n > 0) \land (m \geq -n)   & \text{(by Lemma \ref{4.1.11}(b)(d))} \\
+                            \implies & m \geq -n > 0                & \text{(by Lemma \ref{4.1.11}(e)}
+                        \end{align*}
+                        and
+                        \begin{align*}
+                            x^n x^m & = \frac{1x^m}{x^{-n}}                    & \text{(by Definition \ref{4.3.11})}     \\
+                                    & = \frac{x^m}{x^{-n}}                     & \text{(by Proposition \ref{4.2.4})}     \\
+                                    & = \frac{x^m x^{n + m}}{x^{-n} x^{n + m}} & \text{(by Definition \ref{4.2.2})}      \\
+                                    & = \frac{x^m x^{n + m}}{x^{(-n) + n + m}} & \text{(by Proposition \ref{4.3.10}(a))} \\
+                                    & = \frac{x^m x^{n + m}}{x^m}              & \text{(by Proposition \ref{4.1.6})}     \\
+                                    & = x^{n + m}.                             & \text{(by Definition \ref{4.2.2})}
+                        \end{align*}
+                  \item If \(n + m < 0\), then by Lemma \ref{4.1.5} again exactly one of the following two statements is true:
                         \begin{enumerate}[label=(\arabic*)]
-                            \item \(n + m = 0\).
-                                  Then \(n = -m\) and \(x^n x^m = x^{-m} x^m = 1\) by Proposition \ref{4.2.4}.
-                                  And \(x^{n + m} = x^{(-m) + m} = x^0 = 1\) by Proposition \ref{4.2.4} and Definition \ref{4.3.9}.
-                                  So \(x^{-m} x^m = x^{(-m) + m}\).
-                            \item \(n + m\) is a positive integer.
-                                  By Proposition \ref{4.3.10}, \(x \neq 0 \implies x^{-m} \neq 0\).
-                                  Then
+                            \item \(m \geq 0\).
+                                  This is the same case as case (I) since
                                   \begin{align*}
-                                       & (x^n x^m) x^{-m}                                            \\
-                                       & = x^n (x^m x^{-m})   & \text{(by Proposition \ref{4.2.4})}  \\
-                                       & = x^n 1              & \text{(by Proposition \ref{4.2.4})}  \\
-                                       & = x^n                & \text{(by Proposition \ref{4.2.4})}  \\
-                                       & = x^{n + 0}          & \text{(by Proposition \ref{4.1.6})}  \\
-                                       & = x^{n + (m + (-m))} & \text{(by Proposition \ref{4.1.6})}  \\
-                                       & = x^{(n + m) + (-m)} & \text{(by Proposition \ref{4.1.6})}  \\
-                                       & = x^{n + m} x^{-m}.  & \text{(by Proposition \ref{4.3.10})}
+                                      x^n x^m & = x^m x^n    & \text{(by Proposition \ref{4.2.4})} \\
+                                              & = x^{m + n}  & \text{(by case (I))}                \\
+                                              & = x^{n + m}. & \text{(by Lemma \ref{2.2.4})}
                                   \end{align*}
-                                  So
+                            \item \(m < 0\).
+                                  Then we have \(-n, -m, -(n + m) > 0\) and
                                   \begin{align*}
-                                               & (x^n x^m) x^{-m} = x^{n + m} x^{-m}                                                   \\
-                                      \implies & ((x^n x^m) x^{-m}) x^m = (x^{n + m} x^{-m}) x^m & \text{(by Lemma \ref{4.2.3})}       \\
-                                      \implies & (x^n x^m)(x^{-m} x^m) = x^{n + m} (x^{-m} x^m)  & \text{(by Proposition \ref{4.2.4})} \\
-                                      \implies & (x^n x^m)1 = x^{n + m} 1                        & \text{(by Proposition \ref{4.2.4})} \\
-                                      \implies & x^n x^m = x^{n + m}.                            & \text{(by Proposition \ref{4.2.4})} \\
-                                  \end{align*}
-                            \item \(n + m\) is a negative integer.
-                                  Then \(-(n + m)\) is a positive integer.
-                                  By Proposition \ref{4.3.10}, \(x \neq 0 \implies x^n \neq 0\), \(x^{-m} \neq 0\) and \(x^{-(n + m)} \neq 0\).
-                                  So
-                                  \begin{align*}
-                                       & x^n (x^{-n} x^{-m})                                              \\
-                                       & = (x^n x^{-n})x^{-m}      & \text{(by Proposition \ref{4.2.4})}  \\
-                                       & = 1x^{-m}                 & \text{(by Proposition \ref{4.2.4})}  \\
-                                       & = x^{-m}                  & \text{(by Proposition \ref{4.2.4})}  \\
-                                       & = x^{0 + (-m)}            & \text{(by Proposition \ref{4.1.6})}  \\
-                                       & = x^{(n + (-n)) + (-m)}   & \text{(by Proposition \ref{4.1.6})}  \\
-                                       & = x^{n + ((-n) + (-m))}   & \text{(by Proposition \ref{4.1.6})}  \\
-                                       & = x^{n + ((-1)n + (-1)m)} & \text{(by Exercise \ref{ex 4.1.3})}  \\
-                                       & = x^{n + (-1)(n + m)}     & \text{(by Proposition \ref{4.1.6})}  \\
-                                       & = x^{n + (-(n + m))}      & \text{(by Exercise \ref{ex 4.1.3})}  \\
-                                       & = x^n x^{-(n + m)}.       & \text{(by Proposition \ref{4.3.10})} \\
-                                  \end{align*}
-                                  And
-                                  \begin{align*}
-                                               & x^n (x^{-n} x^{-m}) = x^n x^{-(n + m)}                                                         \\
-                                      \implies & x^{-n} (x^n (x^{-n} x^{-m})) = x^{-n} (x^n x^{-(n + m)}) & \text{(by Lemma \ref{4.2.3})}       \\
-                                      \implies & (x^{-n} x^n)(x^{-n} x^{-m}) = (x^{-n} x^n)x^{-(n + m)}   & \text{(by Proposition \ref{4.2.4})} \\
-                                      \implies & 1(x^{-n} x^{-m}) = 1x^{-(n + m)}                         & \text{(by Proposition \ref{4.2.4})} \\
-                                      \implies & x^{-n} x^{-m} = x^{-(n + m)}                             & \text{(by Proposition \ref{4.2.4})} \\
-                                      \implies & x^n (x^{-n} x^{-m}) = x^n x^{-(n + m)}                   & \text{(by Lemma \ref{4.2.3})}       \\
-                                      \implies & (x^n x^{-n}) x^{-m} = x^n x^{-(n + m)}                   & \text{(by Proposition \ref{4.2.4})} \\
-                                      \implies & 1x^{-m} = x^n x^{-(n + m)}                               & \text{(by Proposition \ref{4.2.4})} \\
-                                      \implies & x^{-m} = x^n x^{-(n + m)}                                & \text{(by Proposition \ref{4.2.4})} \\
-                                      \implies & x^m x^{-m} = x^m (x^n x^{-(n + m)})                      & \text{(by Lemma \ref{4.2.3})}       \\
-                                      \implies & 1 = x^m (x^n x^{-(n + m)})                               & \text{(by Proposition \ref{4.2.4})} \\
-                                      \implies & 1 = (x^m x^n) x^{-(n + m)}                               & \text{(by Proposition \ref{4.2.4})} \\
-                                      \implies & 1x^{n + m} = ((x^m x^n) x^{-(n + m)}) x^{n + m}          & \text{(by Lemma \ref{4.2.3})}       \\
-                                      \implies & 1x^{n + m} = (x^m x^n)(x^{-(n + m)} x^{n + m})           & \text{(by Proposition \ref{4.2.4})} \\
-                                      \implies & 1x^{n + m} = (x^m x^n)1                                  & \text{(by Proposition \ref{4.2.4})} \\
-                                      \implies & x^{n + m} = x^m x^n                                      & \text{(by Proposition \ref{4.2.4})} \\
-                                      \implies & x^{n + m} = x^n x^m.                                     & \text{(by Proposition \ref{4.2.4})}
+                                      x^{n + m} & = \frac{1}{x^{-(n + m)}}    & \text{(by Definition \ref{4.3.11})}             \\
+                                                & = \frac{1}{x^{(-n) + (-m)}} & \text{(by Additional Corollary \ref{ac 4.1.3})} \\
+                                                & = \frac{1}{x^{-n} x^{-m}}   & \text{(by Definition \ref{4.2.2})}              \\
+                                                & = x^n x^m.                  & \text{(by Definition \ref{4.3.11})}
                                   \end{align*}
                         \end{enumerate}
               \end{enumerate}
-        \item \(n\) is a negative integer.
-              Again by Lemma \ref{4.1.5}, exactly one of the following three statements is true:
-              \begin{enumerate}[label=(\roman*)]
-                  \item \(m = 0\).
-                        Then \(x^n x^0 = x^0 x^n\) and \(x^{n + 0} = x^{0 + n}\) by Proposition \ref{4.2.4} and Proposition \ref{4.1.6}, which is the same case as \(n = 0\).
-                  \item \(m\) is a positive integer.
-                        Then \(x^n x^m = x^m x^n\) and \(x^{n + m} = x^{m + n}\) by Proposition \ref{4.2.4} and Proposition \ref{4.1.6}, which is the same case as \(n\) is positive and \(m\) is negative.
-                  \item \(m\) is a negative integer.
-                        Then \(-n, -m, -(n + m)\) are positive integers.
-                        By Proposition \ref{4.3.10}, \(x \neq 0 \implies x^{-n} \neq 0\), \(x^{-m} \neq 0\) and \(x^{-(n + m)} \neq 0\).
-                        So
-                        \begin{align*}
-                                     & x^{-n} x^{-m} = x^{-(n + m)}                   & \text{(by Proposition \ref{4.3.10})} \\
-                            \implies & x^n (x^{-n} x^{-m}) = x^n x^{-(n + m)}         & \text{(by Lemma \ref{4.2.3})}        \\
-                            \implies & (x^n x^{-n}) x^{-m} = x^n x^{-(n + m)}         & \text{(by Proposition \ref{4.2.4})}  \\
-                            \implies & 1x^{-m} = x^n x^{-(n + m)}                     & \text{(by Proposition \ref{4.2.4})}  \\
-                            \implies & x^{-m} = x^n x^{-(n + m)}                      & \text{(by Proposition \ref{4.2.4})}  \\
-                            \implies & x^m x^{-m} = x^m (x^n x^{-(n + m)})            & \text{(by Lemma \ref{4.2.3})}        \\
-                            \implies & 1 = x^m (x^n x^{-(n + m)})                     & \text{(by Proposition \ref{4.2.4})}  \\
-                            \implies & 1 = (x^m x^n) x^{-(n + m)}                     & \text{(by Proposition \ref{4.2.4})}  \\
-                            \implies & 1x^{n + m} = ((x^m x^n) x^{-(n + m)})x^{n + m} & \text{(by Lemma \ref{4.2.3})}        \\
-                            \implies & 1x^{n + m} = (x^m x^n)(x^{-(n + m)} x^{n + m}) & \text{(by Proposition \ref{4.2.4})}  \\
-                            \implies & 1x^{n + m} = (x^m x^n)1                        & \text{(by Proposition \ref{4.2.4})}  \\
-                            \implies & x^{n + m} = x^m x^n                            & \text{(by Proposition \ref{4.2.4})}  \\
-                            \implies & x^{n + m} = x^n x^m.                           & \text{(by Proposition \ref{4.2.4})}
-                        \end{align*}
-              \end{enumerate}
     \end{enumerate}
-    From all cases above, we can conclude that \(x^n x^m = x^{n + m}\).
+    From all cases above we conclude that \(x^n x^m = x^{n + m}\).
 
-    Next we prove that \((x^n)^m = x^{nm}\).
-    By Lemma \ref{4.1.5}, exactly one of the following three statements is true:
+    Next we show that \((x^n)^m = x^{nm}\).
+    By Lemma \ref{4.1.5} exactly one of the following two statements is true:
     \begin{enumerate}[label=(\Roman*)]
-        \item \(n = 0\).
-              Then by Definition \ref{4.3.9}, \((x^0)^m = 1^m\) and \(x^{0m} = x^0 = 1\).
-              Again By Lemma \ref{4.1.5}, exactly one of the following three statements is true:
-              \begin{enumerate}[label=(\roman*)]
-                  \item \(m = 0\).
-                        Then \(1^0 = 1\) by Definition \ref{4.3.9}, so \((x^0)^0 = x^{0 \times 0}\).
-                  \item \(m\) is a positive integer.
-                        We claim that \(1^m = 1\) by using induction on \(m\).
-                        For \(m = 0\), \(1^0 = 1\) by Definition \ref{4.3.9}, so the base case holds.
-                        Suppose inductively that for some \(m\), \(1^m = 1\).
-                        Then for \(m++\), \(1^{m++} = 1^m \times 1 = 1 \times 1 = 1\) by Definition \ref{4.3.9} and induction hypothesis, and this close the induction.
-                        So \((x^0)^m = x^{0m}\).
-                  \item \(m\) is a negative integer.
-                        Then \(-m\) is a positive integer, and \(1^m = 1 / 1^{-m}\) by Definition \ref{4.3.11}.
-                        From previous prove, we show that \(1^{-m} = 1\).
-                        So \((x^0)^m = x^{0m}\).
-              \end{enumerate}
-        \item \(n\) is a positive integer.
-              Again by Lemma \ref{4.1.5}, exactly one of the following three statements is true:
-              \begin{enumerate}[label=(\roman*)]
-                  \item \(m = 0\).
-                        Then by Definition \ref{4.3.9}, \((x^n)^0 = 1\) and \(x^{n0} = x^0 = 1\).
-                        So \((x^n)^0 = x^{n0}\).
-                  \item \(m\) is a positive integer.
-                        Then by Proposition \ref{4.3.10}, \((x^n)^m = x^{nm}\).
-                  \item \(m\) is a negative integer.
-                        Then \(-m\) is a positive integer.
-                        So
-                        \begin{align*}
-                                     & (x^n)^{-m} = x^{n(-m)}    & \text{(by Proposition \ref{4.3.10})}            \\
-                            \implies & (x^n)^{-m} = x^{n((-1)m)} & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
-                            \implies & (x^n)^{-m} = x^{(n(-1))m} & \text{(by Proposition \ref{4.1.6})}             \\
-                            \implies & (x^n)^{-m} = x^{((-1)n)m} & \text{(by Proposition \ref{4.1.6})}             \\
-                            \implies & (x^n)^{-m} = x^{(-1)(nm)} & \text{(by Proposition \ref{4.1.6})}             \\
-                            \implies & (x^n)^{-m} = x^{-(nm)}    & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
-                            \implies & 1 / (x^n)^m = 1 / x^{nm}  & \text{(by Definition \ref{4.3.11})}             \\
-                            \implies & 1x^{nm} = 1(x^n)^m        & \text{(by Definition \ref{4.2.1})}              \\
-                            \implies & x^{nm} = (x^n)^m.         & \text{(by Proposition \ref{4.2.4})}
-                        \end{align*}
-              \end{enumerate}
-        \item \(n\) is a negative integer.
-              Then \(-n\) is a positive integer.
-              Again by Lemma \ref{4.1.5}, exactly one of the following three statements is true:
-              \begin{enumerate}[label=(\roman*)]
-                  \item \(m = 0\).
-                        Then by Definition \ref{4.3.9}, \((x^n)^0 = 1\) and \(x^{n0} = x^0 = 1\).
-                        So \((x^n)^0 = x^{n0}\).
-                  \item \(m\) is a positive integer.
-                        So
-                        \begin{align*}
-                                     & (x^{-n})^m = x^{(-n)m}    & \text{(by Proposition \ref{4.3.10})}            \\
-                            \implies & (x^{-n})^m = x^{((-1)n)m} & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
-                            \implies & (x^{-n})^m = x^{(-1)(nm)} & \text{(by Proposition \ref{4.1.6})}             \\
-                            \implies & (x^{-n})^m = x^{-(nm)}    & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
-                            \implies & (1 / x^n)^m = 1 / x^{nm}. & \text{(by Definition \ref{4.3.11})}
-                        \end{align*}
-                        We claim that \((1 / x^n)^m = 1 / (x^n)^m\) by using induction on \(m\).
-                        For \(m = 0\), \((1 / x^n)^0 = 1\) and \(1 / (x^n)^0 = 1 / 1 = 1\) by Definition \ref{4.3.9}.
-                        So \((1 / x^n)^0 = 1 / (x^n)^0\), and the base case holds.
-                        Suppose inductively that for some \(m\), \((1 / x^n)^m = 1 / (x^n)^m\).
-                        Then for \(m++\), \((1 / x^n)^{m++} = (1 / x^n)^m \times (1 / x^n) = 1 / (x^n)^m \times (1 / x^n) = (1 \times 1) / ((x^n)^m \times x^n) = 1 / (x^n)^{m++}\) by Definition \ref{4.3.9}, induction hypothesis and Definition \ref{4.2.2}.
-                        This close the induction.
-                        So
-                        \begin{align*}
-                                     & 1 / (x^n)^m = 1 / x^{nm}                                       \\
-                            \implies & 1x^{nm} = 1(x^n)^m       & \text{(by Definition \ref{4.2.1})}  \\
-                            \implies & x^{nm} = (x^n)^m.        & \text{(by Proposition \ref{4.2.4})}
-                        \end{align*}
-                  \item \(m\) is a negative integer.
-                        Then \(-m\) is a positive integer.
-                        So
-                        \begin{align*}
-                             & (x^n)^m                                                              \\
-                             & = 1 / (x^n)^{-m}   & \text{(by Definition \ref{4.3.11})}             \\
-                             & = 1 / x^{n(-m)}    & \text{(from case above)}                        \\
-                             & = 1 / x^{n((-1)m)} & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
-                             & = 1 / x^{(n(-1))m} & \text{(by Proposition \ref{4.2.4})}             \\
-                             & = 1 / x^{((-1)n)m} & \text{(by Proposition \ref{4.2.4})}             \\
-                             & = 1 / x^{(-1)(nm)} & \text{(by Proposition \ref{4.2.4})}             \\
-                             & = 1 / x^{-(nm)}    & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
-                             & = x^{nm}.          & \text{(by Definition \ref{4.3.11})}
-                        \end{align*}
-              \end{enumerate}
-    \end{enumerate}
-    From all cases above, we can conclude that \((x^n)^m = x^{nm}\).
-
-    Finally we prove that \((xy)^n = x^n y^n\).
-    By Lemma \ref{4.1.5}, exactly one of the following three statements is true:
-    \begin{enumerate}[label=(\roman*)]
-        \item \(n = 0\).
-              Then by Proposition \ref{4.3.10}, \((xy)^0 = x^0 y^0\).
-        \item \(n\) is a positive integer.
-              Then by Proposition \ref{4.3.10}, \((xy)^n = x^n y^n\).
-        \item \(n\) is a negative integer.
-              Then \(-n\) is a positive integer.
-              So
+        \item \(m \geq 0\).
+              Then we use induction on \(m\).
+              For \(m = 0\), we have
               \begin{align*}
-                           & (xy)^{-n} = x^{-n} y^{-n}             & \text{(by Proposition \ref{4.3.10})} \\
-                  \implies & 1 / (xy)^n = (1 / x^n)(1 / y^n)       & \text{(by Definition \ref{4.3.11})}  \\
-                  \implies & 1 / (xy)^n = (1 \times 1) / (x^n y^n) & \text{(by Definition \ref{4.2.2})}   \\
-                  \implies & 1 / (xy)^n = 1 / (x^n y^n)                                                   \\
-                  \implies & 1(x^n y^n) = 1(xy)^n                  & \text{(by Definition \ref{4.2.1})}   \\
-                  \implies & (x^n y^n) = (xy)^n.                   & \text{(by Proposition \ref{4.2.4})}
+                  (x^n)^0 & = 1      & \text{(by Definition \ref{4.3.9})}  \\
+                          & = x^0    & \text{(by Proposition \ref{4.2.4})} \\
+                          & = x^{n0} & \text{(by Proposition \ref{4.1.6})}
+              \end{align*}
+              and the base case holds.
+              Suppose inductively that for some \(n \geq 0\) we have \((x^n)^m = x^{nm}\).
+              Then for \(n + 1\), we have
+              \begin{align*}
+                  (x^n)^{m + 1} & = (x^n)^m x^n  & \text{(by Additional Corollary \ref{ac 4.3.2})} \\
+                                & = x^{nm} x^n   & \text{(by induction hypothesis)}                \\
+                                & = x^{nm + n}   & \text{(by Proposition \ref{4.3.10}(a))}         \\
+                                & = x^{n(m + 1)} & \text{(by Proposition \ref{2.3.4})}
+              \end{align*}
+              and this close the induction.
+        \item \(m < 0\).
+              Then by Additional Corollary \ref{ac 4.2.5} we have \(-m > 0\) and
+              \begin{align*}
+                  (x^n)^m & = \frac{1}{(x^n)^{-m}} & \text{(by Definition \ref{4.3.11})}             \\
+                          & = \frac{1}{x^{n(-m)}}  & \text{(by case (I))}                            \\
+                          & = \frac{1}{x^{-nm}}    & \text{(by Additional Corollary \ref{ac 4.1.3})} \\
+                          & = x^{nm}.              & \text{(by Definition \ref{4.3.11})}
               \end{align*}
     \end{enumerate}
-    From all cases above, we can conclude that \((xy)^n = x^n y^n\).
+    From all cases above we conclude that \((x^n)^m = x^{nm}\).
+
+    Finally we show that \((xy)^n = x^n y^n\).
+    By Lemma \ref{4.1.5} exactly one of the following two statements is true:
+    \begin{enumerate}[label=(\Roman*)]
+        \item \(n \geq 0\).
+              Then by Proposition \ref{4.3.10}(a) we know that \((xy)^n = x^n y^n\).
+        \item \(n < 0\).
+              Then by Additional Corollary \ref{ac 4.2.5} we have \(-n > 0\) and
+              \begin{align*}
+                  (xy)^n & = \frac{1}{(xy)^{-n}}     & \text{(by Definition \ref{4.3.11})}     \\
+                         & = \frac{1}{x^{-n} y^{-n}} & \text{(by Proposition \ref{4.3.10}(a))} \\
+                         & = x^n y^n.                & \text{(by Definition \ref{4.3.11})}
+              \end{align*}
+    \end{enumerate}
+    From all cases above we conclude that \((xy)^n = x^n y^n\).
 \end{proof}
 
 \begin{proof}{(b)}
-    By Definition \ref{4.2.8}, \(x \geq y > 0 \implies x \geq y \geq 0\).
-    If \(n\) is a positive integer, then by Proposition \ref{4.3.10}, \(x \geq y \geq 0 \implies x^n \geq y^n \geq 0\).
-    By the given conditions and Proposition \ref{4.3.10}, \(y \neq 0 \implies y^n \neq 0\).
-    So \(x \geq y > 0 \implies x^n \geq y^n > 0\) when \(n\) is a positive integer.
-
-    If \(n\) is a negative integer, then let \(n = -a\), where \(a\) is a positive integer.
-    By the given conditions we have two cases:
-    \begin{enumerate}[label=(\roman*)]
-        \item \(x > y\).
-              By Definition \ref{4.2.6}, \((x > 0 \implies 1 / x > 0) \land (y > 0 \implies 1 / y > 0)\).
-              By Additional Corollary \ref{ac 4.2.5} and Definition \ref{4.2.2}, \((1 / x) \times (1 / y) = 1 / xy > 0\).
-              So \(x > y \implies x \times (1 / xy) > y \times (1 / xy) \implies 1 / y > 1 / x\) by Proposition \ref{4.2.9}.
-              From previous prove, we get \(1 / y \geq 1 / x > 0 \implies (1 / y)^a \geq (1 / x)^a > 0\).
-              But by Definition \ref{4.3.11}, Proposition \ref{4.3.12}(a) and Additional Corollary \ref{ac 4.2.3}, \((1 / y)^a = (y^{-1})^a = y^{(-1)a} = y^{-a} = y^n\) and \((1 / x)^a = (x^{-1})^a = x^{(-1)a} = x^{-a} = x^n\).
-              So \(x \geq y > 0 \implies y^n \geq x^n > 0\) when \(n\) is a negative integer.
-        \item \(x = y\).
-              Then \(x^a = y^a > 0\) by Proposition \ref{4.3.10}.
-              By Definition \ref{4.2.6}, \((x^a > 0 \implies 1 / x^a > 0) \land (y^a > 0 \implies 1 / y^a > 0)\).
-              But by Definition \ref{4.3.11}, \((1 / x^a = x^{-a} = x^n) \land (1 / y^a = y^{-a} = y^n)\).
-              And by Definition \ref{4.2.8}, \(x^n = y^n \implies y^n \geq x^n\).
-              So \(x \geq y > 0 \implies y^n \geq x^n > 0\) when \(n\) is a negative integer.
+    By Lemma \ref{4.1.5} exactly one of the following two statements is true:
+    \begin{enumerate}[label=(\Roman*)]
+        \item \(n \geq 0\).
+              Then by Proposition \ref{4.3.10}(b)(c) we have \(x^n \geq y^n > 0\).
+        \item \(n < 0\).
+              Then by Additional Corollary \ref{ac 4.2.5} we have \(-n > 0\) and
+              \begin{align*}
+                           & x^{-n} \geq y^{-n} > 0                                                 & \text{(by Proposition \ref{4.3.10}(b)(c))}      \\
+                  \implies & \frac{1}{x^n} \geq \frac{1}{y^n} > 0                                   & \text{(by Definition \ref{4.3.11})}             \\
+                  \implies & (\frac{1}{x^n} \geq \frac{1}{y^n} > 0) \land (x^n > 0) \land (y^n > 0) & \text{(by Additional Corollary \ref{ac 4.2.6})} \\
+                  \implies & \frac{x^n y^n}{x^n} \geq \frac{x^n y^n}{y^n} > 0(x^n y^n)              & \text{(by Proposition \ref{4.2.9}(e))}          \\
+                  \implies & y^n \geq x^n > 0(x^n y^n)                                              & \text{(by Definition \ref{4.2.2})}              \\
+                  \implies & y^n \geq x^n > 0.                                                      & \text{(by Proposition \ref{4.2.4})}
+              \end{align*}
     \end{enumerate}
-    From all cases above, we conclude that \(x \geq y > 0 \implies y^n \geq x^n > 0\) when \(n\) is a negative integer.
 \end{proof}
 
 \begin{proof}{(c)}
     Suppose for sake of contradiction that \(x \neq y\)
-    Then by Proposition \ref{4.2.9}, exactly one of the following two statements is true:
+    Then by Proposition \ref{4.2.9} exactly one of the following two statements is true:
     \begin{enumerate}[label=(\Roman*)]
         \item \(x > y\).
-              Then by Lemma \ref{4.1.5} and the given conditions, exactly one of the following two statements is true:
+              By hypothesis we know that \(n \neq 0\).
+              Then by Lemma \ref{4.1.5} exactly one of the following two statements is true:
               \begin{enumerate}[label=(\roman*)]
-                  \item \(n\) is a positive integer.
-                        But by Proposition \ref{4.3.10}, \(x^n > y^n\), a contradiction.
-                  \item \(n\) is a negative integer.
-                        Let \(n = -a\), where \(a\) is a negative integer.
-                        By Definition \ref{4.2.6}, \((x > 0 \implies 1 / x > 0) \land (y > 0 \implies 1 / y > 0)\).
-                        By Additional Corollary \ref{ac 4.2.5} and Definition \ref{4.2.2}, \((1 / x) \times (1 / y) = 1 / xy > 0\).
-                        So \(x > y \implies x \times (1 / xy) > y \times (1 / xy) \implies 1 / y > 1 / x\) by Proposition \ref{4.2.9}.
-                        By Proposition \ref{4.3.10}, \((1 / y)^a > (1 / x)^a\).
-                        But by Definition \ref{4.3.11}, Proposition \ref{4.3.12}(a) and Additional Corollary \ref{ac 4.2.3}, \((1 / y)^a = (y^{-1})^a = y^{(-1)a} = y^{-a} = y^n\) and \((1 / x)^a = (x^{-1})^a = x^{(-1)a} = x^{-a} = x^n\).
-                        So \(x > y \implies y^n > x^n\), a contradiction.
+                  \item \(n > 0\).
+                        But by Proposition \ref{4.3.10}(c) we must have \(x^n > y^n\), a contradiction.
+                  \item \(n < 0\).
+                        Then by Additional Corollary \ref{ac 4.2.5} we have \(-n > 0\) and
+                        \begin{align*}
+                                     & x^{-n} > y^{-n} > 0 & \text{(by Proposition \ref{4.3.10}(b)(c))} \\
+                            \implies & y^n > x^n > 0,      & \text{(by Proposition \ref{4.3.12}(b))}
+                        \end{align*}
+                        a contradiction.
               \end{enumerate}
         \item \(x < y\).
-              By Proposition \ref{4.2.9}, \(x < y \implies y > x\), which just the same as \(x > y\).
+              By Proposition \ref{4.2.9} we know that \(x < y \implies y > x\), which is just the same as case (I).
     \end{enumerate}
-    From all cases above we get a contradiction, so \(x = y\).
+    From all cases above we derive contradictions, thus we must have \(x = y\).
 \end{proof}
 
 \begin{proof}{(d)}
-    By Lemma \ref{4.1.5}, exactly one of the following three statements is true:
+    By Lemma \ref{4.1.5} exactly one of the following two statements is true:
     \begin{enumerate}[label=(\Roman*)]
-        \item \(n = 0\).
-              Then by Proposition \ref{4.3.10}, \(\abs*{x^0} = \abs*{x}^0\).
-        \item \(n\) is a positive integer.
-              Then by Proposition \ref{4.3.10}, \(\abs*{x^n} = \abs*{x}^n\).
-        \item \(n\) is a negative integer.
-              Then by Definition \ref{4.3.11}, \(\abs*{x^n} = \abs*{1 / x^{-n}}\) and \(\abs*{x}^n = 1 / \abs*{x}^{-n}\).
-              By Lemma \ref{4.2.7}, exactly one of the following three statements is true:
-              \begin{enumerate}[label=(\roman*)]
-                  \item \(x^{-n} = 0\).
-                        This case does not exist because \(x \neq 0 \implies x^{-n} \neq 0\).
-                  \item \(x^{-n}\) is a positive rational number.
-                        Then by Definition \ref{4.2.6} and Definition \ref{4.3.1}, \(1 / x^{-n}\) is a positive rational number and \(\abs*{1 / x^{-n}} = 1 / x^{-n} = 1 / \abs*{x^{-n}}\).
-                        And by Proposition \ref{4.3.10}, \(1 / \abs*{x}^{-n} = 1 / \abs*{x^{-n}}\).
-                        So \(\abs*{x^n} = \abs*{x}^n\).
-                  \item \(x^{-n}\) is a negative rational number.
-                        By Additional Corollary \ref{ac 4.2.3}, \(1 / x^{-n}\) is a negative rational number.
-                        By Definition \ref{4.3.1}, \(\abs*{1 / x^{-n}} = -(1 / x^{-n})\).
-                        Again by Additional Corollary \ref{ac 4.2.3}, \(-(1 / x^{-n}) = 1 / -(x^{-n})\).
-                        Again by Definition \ref{4.3.1}, \(1 / -(x^{-n}) = 1 / \abs*{x^{-n}}\).
-                        And by Proposition \ref{4.3.10}, \(1 / \abs*{x}^{-n} = 1 / \abs*{x^{-n}}\).
-                        So \(\abs*{x^n} = \abs*{x}^n\).
-              \end{enumerate}
+        \item \(n \geq 0\).
+              Then by Proposition \ref{4.3.10}(d) we have \(\abs*{x^n} = \abs*{x}^n\).
+        \item \(n < 0\).
+              Then by Additional Corollary \ref{ac 4.2.5} we have \(-n > 0\) and
+              \begin{align*}
+                  \abs*{x^n} & = \abs*{x^{-(-n)}}                      & \text{(by Additional Corollary \ref{ac 4.1.4})} \\
+                             & = \abs*{x^{(-1)(-n)}}                   & \text{(by Additional Corollary \ref{ac 4.1.3})} \\
+                             & = \abs*{(x^{-1})^{-n}}                  & \text{(by Proposition \ref{4.3.12}(a))}         \\
+                             & = \abs*{x^{-1}}^{-n}                    & \text{(by Proposition \ref{4.3.10}(d))}         \\
+                             & = \abs*{\frac{1}{x^1}}^{-n}             & \text{(by Definition \ref{4.3.11})}             \\
+                             & = \bigg(\frac{1}{\abs*{x^1}}\bigg)^{-n} & \text{(by Definition \ref{4.2.2})}              \\
+                             & = \bigg(\frac{1}{\abs*{x}^1}\bigg)^{-n} & \text{(by Proposition \ref{4.3.10}(d))}         \\
+                             & = (\abs*{x}^{-1})^{-n}                  & \text{(by Definition \ref{4.3.11})}             \\
+                             & = \abs*{x}^{-1(-n)}                     & \text{(by Proposition \ref{4.3.12}(a))}         \\
+                             & = \abs*{x}^n.                           & \text{(by Additional Corollary \ref{ac 4.1.4})}
+              \end{align*}
     \end{enumerate}
-    From all cases above, we conclude that \(\abs*{x^n} = \abs*{x}^n\).
+    From all cases above we conclude that \(\abs*{x^n} = \abs*{x}^n\).
 \end{proof}
 
 \exercisesection
