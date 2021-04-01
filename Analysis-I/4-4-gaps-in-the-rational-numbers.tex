@@ -1,5 +1,66 @@
 \section{Gaps in the rational numbers}\label{sec 4.4}
 
+\begin{additional corollary}[Euclidean algorithm]\label{ac 4.4.1}
+Let \(n \in \mathbf{Z}\) and let \(q \in \mathbf{Z}^+\).
+Then \(\exists!\ m, r \in \mathbf{Z}\) such that \(0 \leq r < q\) and \(n = mq + r\).
+\end{additional corollary}
+
+\begin{proof}
+    We first show that there exists at least one pairs of \(m, r \in \mathbf{Z}\) satisfy the statement.
+    By Lemma \ref{4.1.5} exactly one of the following two statements is true:
+    \begin{enumerate}
+        \item \(n \geq 0\).
+              Then by Proposition \ref{2.3.9} we know that such \(m, r \in \mathbf{Z}\) exist.
+        \item \(n < 0\).
+              Then by Additional Corollary \ref{ac 4.2.5} we have \(-n > 0\) and
+              \begin{align*}
+                           & \exists\ m, r \in \mathbf{Z} : (0 \leq r < q) \land (-n = mq + r) & \text{(by Proposition \ref{2.3.9})}             \\
+                  \implies & (q > q - r > 0) \land (-n = mq + r)                               & \text{(by Lemma \ref{4.1.11}(a))}               \\
+                  \implies & (q > q - r > 0) \land (n = (-m)q - r)                             & \text{(by Additional Corollary \ref{ac 4.1.3})} \\
+                  \implies & n = (-m)q - q + q - r                                             & \text{(by Proposition \ref{4.1.6})}             \\
+                  \implies & n = (-m - 1)q + (q - r).                                          & \text{(by Proposition \ref{4.1.6})}
+              \end{align*}
+              Since \(-m - 1 \in \mathbf{Z}\) and \(q > q - r > 0\), by setting \(m' = -m - 1\) and \(r' = q - r\) we see that \(n = m'q + r'\) satisfy the statement.
+    \end{enumerate}
+    From all cases above we conclude that at least one pairs of \(m, r \in \mathbf{Z}\) satisfy the statement.
+
+    Now we show the uniqueness of such \(m, r\).
+    Let \(m, m', r, r' \in \mathbf{Z}\) such that
+    \[
+        (n = mq + r = m'q + r') \land (0 \leq r < q) \land (0 \leq r' < q).
+    \]
+    Suppose for sake of contradiction that \(r \neq r'\).
+    By Lemma \ref{4.1.5} exactly one of the following two statements is true:
+    \begin{enumerate}
+        \item \(r > r'\).
+              Let \(a = r - r'\)
+              By Lemma \ref{4.1.11}(a) we know that \(a \in \mathbf{Z}^+\).
+              Then we have
+              \begin{align*}
+                           & mq + r = m'q + r'                                                         \\
+                  \implies & r - r' = (m' - m)q      & \text{(by Proposition \ref{4.1.6})}             \\
+                  \implies & m' - m > 0              & \text{(by Additional Corollary \ref{ac 4.2.6})} \\
+                  \implies & m' - m \in \mathbf{Z}^+                                                   \\
+                  \implies & (m' - m)q \geq q        & \text{(by Lemma \ref{2.2.12}(d))}               \\
+                  \implies & r - r' \geq q                                                             \\
+                  \implies & r \geq q + r' \geq q    & \text{(by Lemma \ref{4.1.11}(b))}
+              \end{align*}
+              which contradict to \(r < q\).
+        \item \(r < r'\).
+              By Definition \ref{4.1.10} we have \(r' > r\).
+              Using similar argument above we derive a contradiction.
+    \end{enumerate}
+    From all cases we derive contradictions, thus we must have \(r = r'\).
+    This means
+    \begin{align*}
+                 & mq + r = m'q + r'                                       \\
+        \implies & mq + r = m'q + r                                        \\
+        \implies & mq = m'q          & \text{(by Proposition \ref{4.1.6})} \\
+        \implies & m = m'.           & \text{(by Corollary \ref{4.1.9})}
+    \end{align*}
+    Thus we conclude that for every \(n \in \mathbf{Z}\) and \(q \in \mathbf{Z}^+\), \(\exists!\ m, r \in \mathbf{Z}\) such that \(n = mq + r\) and \(0 \leq r < q\).
+\end{proof}
+
 \begin{proposition}[Interspersing of integers by rationals]\label{4.4.1}
     Let \(x\) be a rational number.
     Then there exists an integer \(n\) such that \(n \leq x < n + 1\).
@@ -9,87 +70,19 @@
 \end{proposition}
 
 \begin{proof}
-    We first prove that \(\forall\ x \in \mathbf{Q}\), \(\exists\ n \in \mathbf{Z}\) such that \(n \leq x < n + 1\).
-    By Lemma \ref{4.2.7}, exactly one of the following three statements is true:
-    \begin{enumerate}
-        \item \(x = 0\).
-              Then by Definition \ref{4.2.8}, \(0 \leq 0\).
-              By Definition \ref{2.2.11} and Definition \ref{2.2.1}, \(0 + 1 = 1 \implies 0 < 1\).
-              So \(0 \leq 0 < 1\).
-        \item \(x\) is a positive rational number.
-              Then by Definition \ref{4.2.6}, \(x = a / b\), where \(a, b \in \mathbf{Z}^+\).
-              By Proposition \ref{2.3.9}, \(a = nb + r\), where \(n, r \in \mathbf{N}\) and \(0 \leq r < b\).
-              So
-              \begin{align*}
-                  x & = a / b                                                      \\
-                    & = (nb + r) / b                                               \\
-                    & = (nb + r)b^{-1}       & \text{(by Definition \ref{4.3.11})} \\
-                    & = (nb)b^{-1} + rb^{-1} & \text{(by Proposition \ref{4.2.4})} \\
-                    & = n(bb^{-1}) + rb^{-1} & \text{(by Proposition \ref{4.2.4})} \\
-                    & = n1 + rb^{-1}         & \text{(by Proposition \ref{4.2.4})} \\
-                    & = n + rb^{-1}.         & \text{(by Proposition \ref{4.2.4})}
-              \end{align*}
-              By Proposition \ref{4.2.9}, \(0 \leq r < b \implies 0b^{-1} \leq rb^{-1} < bb^{-1}\).
-              Since \(0b^{-1} = 0\) and \(bb^{-1} = 1\) by Proposition \ref{4.2.4}, \(0 \leq rb^{-1} < 1\).
-              Again by Proposition \ref{4.2.9}, \(0 \leq rb^{-1} < 1 \implies n + 0 \leq n + rb^{-1} < n + 1\).
-              Again By Proposition \ref{4.2.4}, \(n + 0 = n\).
-              So \(n \leq x < n + 1\).
-        \item \(x\) is a negative rational number.
-              Then by Definition \ref{4.2.6}, \(x = (-a) / b\), where \(a, b \in \mathbf{Z}^+\).
-              By Proposition \ref{2.3.9}, \(a = mb + r\), where \(m, r \in \mathbf{N}\) and \(0 \leq r < b\).
-              So
-              \begin{align*}
-                  x & = (-a) / b                                                                     \\
-                    & = -(mb + r) / b                                                                \\
-                    & = ((-1)(mb + r)) / b         & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
-                    & = ((-1)(mb + r))b^{-1}       & \text{(by Definition \ref{4.3.11})}             \\
-                    & = (-1)((mb + r)b^{-1})       & \text{(by Proposition \ref{4.2.4})}             \\
-                    & = (-1)((mb)b^{-1} + rb^{-1}) & \text{(by Proposition \ref{4.2.4})}             \\
-                    & = (-1)(m(bb^{-1}) + rb^{-1}) & \text{(by Proposition \ref{4.2.4})}             \\
-                    & = (-1)(m1 + rb^{-1})         & \text{(by Proposition \ref{4.2.4})}             \\
-                    & = (-1)(m + rb^{-1})          & \text{(by Proposition \ref{4.2.4})}             \\
-                    & = (-1)m + (-1)(rb^{-1})      & \text{(by Proposition \ref{4.2.4})}             \\
-                    & = (-m) + (-(rb^{-1})).       & \text{(by Additional Corollary \ref{ac 4.2.3})} \\
-              \end{align*}
-              By Proposition \ref{4.2.9}, \(0 \leq r < b \implies 0b^{-1} \leq rb^{-1} < bb^{-1}\).
-              Since \(0b^{-1} = 0\) and \(bb^{-1} = 1\) by Proposition \ref{4.2.4}, \(0 \leq rb^{-1} < 1\).
-              By Exercise \ref{ex 4.2.6}, \(0 \leq rb^{-1} < 1 \implies (-1)1 < (-1)(rb^{-1}) \leq (-1)0\).
-              By Additional Corollary \ref{ac 4.2.3}, \((-1)(rb^{-1}) = -(rb^{-1})\).
-              Since \((-1)1 = (-1)\) and \((-1)0 = 0\), \(-1 < -(rb^{-1}) \leq 0\).
-              Again by Proposition \ref{4.2.9}, \(-1 < -(rb^{-1}) \leq 0 \implies (-m) + (-1) < (-m) + (-(rb^{-1})) \leq (-m) + 0\).
-              Again By Proposition \ref{4.2.4}, \((-m) + 0 = m\).
-              So \((-m) + (-1) < x \leq -m\).
-              Now we futher split into two cases:
-              \begin{enumerate}[label=(\roman*)]
-                  \item \(x = -m\).
-                        Then by Definition \ref{4.2.8}, \(x = -m \implies -m \leq x\).
-                        And by Proposition \ref{4.2.4} and Definition \ref{4.2.8}, \(((-m) + 1) - (-m) = 1 > 0 \implies -m < (-m) + 1\).
-                        Let \(n = -m\).
-                        So \(-m \leq x < (-m) + 1 \implies n \leq x < n + 1\).
-                  \item \(x < -m\).
-                        Then by Definition \ref{4.2.8}, \((-m) + (-1) < x \implies (-m) + (-1) \leq x\).
-                        Let \(n = (-m) + (-1)\), then by Proposition \ref{4.1.6}, \(n + 1 = ((-m) + (-1)) + 1 = (-m) + ((-1) + 1) = (-m) + 0 = -m\).
-                        So \((-m) + (-1) \leq x < -m \implies n \leq x < n + 1\).
-              \end{enumerate}
-    \end{enumerate}
-    From all cases above, we conclude that \(\exists\ n \in \mathbf{Z}\), \(n \leq x < n + 1\).
-
-    Now we prove that \(\forall\ x \in \mathbf{Q}\), \(\exists!\ n\) for which \(n \leq x < n + 1\).
-    Suppose that \(\exists\ n_1, n_2 \in \mathbf{N}\) such that \(n_1 \leq x < n_1 + 1\) and \(n_2 \leq x < n_2 + 1\).
-    We want to show that \(n_1 = n_2\).
-    Then we get \(n_1 < n_2 + 1\) and \(n_2 < n_1 + 1\).
-    So
+    By Definition \ref{4.2.1} we know that \(x = a / b\) where \(a, b \in \mathbf{Z}\) and \(b > 0\).
+    Since \(a \in \mathbf{Z}\) and \(b \in \mathbf{Z}^+\), by Additional Corollary \ref{ac 4.4.1} we know that \(\exists!\ m, r \in \mathbf{Z}\) such that \(a = mb + r\) and \(0 \leq r < b\).
+    Then we have
     \begin{align*}
-                 & (n_1 < n_2 + 1) \land (n_2 < n_1 + 1)                                                      \\
-        \implies & (n_1 + 1 \leq n_2 + 1) \land (n_2 + 1 \leq n_1 + 1) & \text{(by Proposition \ref{2.2.12})} \\
-        \implies & (n_1 \leq n_2) \land (n_2 \leq n_1)                 & \text{(by Proposition \ref{2.2.12})} \\
-        \implies & n_1 = n_2.                                          & \text{(by Proposition \ref{2.2.12})}
+                 & (a = mb + r) \land (0 \leq r < b)                                                                           \\
+        \implies & (x = \frac{a}{b} = m + \frac{r}{b}) \land (0 \leq r < b)           & \text{(by Proposition \ref{4.2.4})}    \\
+        \implies & (x = \frac{a}{b} = m + \frac{r}{b}) \land (0 \leq \frac{r}{b} < 1) & \text{(by Proposition \ref{4.2.9}(e))} \\
+        \implies & m \leq x = m + \frac{r}{b} < m + 1.                                & \text{(by Proposition \ref{4.2.9}(d))}
     \end{align*}
-
-    Finally, we prove that \(\forall\ x \in \mathbf{Q}\), \(\exists\ N \in \mathbf{N}\) such that \(N > x\).
-    Because \(\forall\ x \in \mathbf{Q}\), \(\exists!\ n \in \mathbf{N}\), \(n \leq x < n + 1\).
-    By setting \(N = n + 1\), we get \(x < N\).
-    By Proposition \ref{4.2.9}, \(x < N \implies N > x\).
+    Note that such \(m\) is unique by Additional Corollary \ref{4.4.2}.
+    If \(m + 1 < 0\), then by setting \(N = 0\) we have \(x < N\).
+    If \(m + 1 \geq 0\), then by setting \(N = m + 1\) we again have \(x < N\).
+    Thus we conclude that \(\forall\ x \in \mathbf{Q}\), \(\exists\ N \in \mathbf{N}\) such that \(x < N\).
 \end{proof}
 
 \begin{remark}\label{4.4.2}
