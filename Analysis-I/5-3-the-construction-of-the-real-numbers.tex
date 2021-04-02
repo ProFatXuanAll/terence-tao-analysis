@@ -345,19 +345,17 @@
 \end{exercise}
 
 \begin{proof}
-    Let \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) be two sequences, where \(a_n = a\) and \(b_n = b\) for all \(n \geq 1\).
-    Then \(\forall\ \varepsilon > 0\), \(\abs*{a_j - a_k} = \abs*{a - a} = \abs*{0} = 0 \leq \varepsilon\), \(\forall\ j, k \geq 1\) and \(j, k \in \mathbf{N}\).
-    Similarly, \(\forall\ \varepsilon > 0\), \(\abs*{b_j - b_k} = \abs*{b - b} = \abs*{0} = 0 \leq \varepsilon\), \(\forall\ j, k \geq 1\) and \(j, k \in \mathbf{N}\).
-    So \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are two Cauchy sequences.
-    Thus we have
+    Let \((a)_{n = 1}^{\infty}\) and \((b)_{n = 1}^{\infty}\) be two sequences where \(a, b \in \mathbf{Q}\).
+    By Definition \ref{5.2.6} \((a)_{n = 1}^\infty\) and \((b)_{n = 1}^\infty\) is Cauchy sequence since
+    \[
+        \forall\ \varepsilon \in \mathbf{Q}^+, \forall\ n \geq 1, \abs*{a - a} = \abs*{b - b} = 0 \leq \varepsilon.
+    \]
+    Then we have
     \begin{align*}
-             & a = b                                                                                                                  \\
-        \iff & a - b = 0                                                                        & \text{(by Proposition \ref{4.2.4})} \\
-        \iff & \abs*{a - b} = 0                                                                 & \text{(by Proposition \ref{4.3.3})} \\
-        \iff & \abs*{a_n - b_n} = 0 \ \forall\ n \geq 1                                                                               \\
-        \iff & \abs*{a_n - b_n} \leq \varepsilon \ \forall\ \varepsilon > 0 \ \forall\ n \geq 1                                       \\
-        \iff & \text{LIM}_{n \to \infty} a_n = \text{LIM}_{n \to \infty} b_n                    & \text{(by Definition \ref{5.3.1})}  \\
-        \iff & \text{LIM}_{n \to \infty} a = \text{LIM}_{n \to \infty} b.
+             & a = b                                                                                                                            \\
+        \iff & \forall\ \varepsilon \in \mathbf{Q}^+, \forall\ n \geq 1, \abs*{a - b} \leq \varepsilon & \text{(by Proposition \ref{4.3.7}(a))} \\
+        \iff & (a)_{n = 1}^\infty = (b)_{n = 1}^\infty                                                 & \text{(by Definition \ref{5.2.6})}     \\
+        \iff & \text{LIM}_{n \to \infty} a = \text{LIM}_{n \to \infty} b.                              & \text{(by Definition \ref{5.3.1})}
     \end{align*}
 \end{proof}
 
@@ -368,8 +366,8 @@
 \end{exercise}
 
 \begin{proof}
-    Because \((a_n)_{n = 0}^{\infty}\) is equivalent to \((b_n)_{n = 0}^{\infty}\), by Definition \ref{5.2.6}, \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are eventually \(\varepsilon\)-close \(\forall\ \varepsilon > 0\).
-    So by Exercise \ref{ex 5.2.2}, \((a_n)_{n = 0}^{\infty}\) is bounded iff \((b_n)_{n = 0}^{\infty}\) is bounded.
+    Since \((a_n)_{n = 0}^{\infty} = (b_n)_{n = 0}^{\infty}\), by Definition \ref{5.2.6} we know that \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are eventually \(\varepsilon\)-close for every \(\varepsilon \in \mathbf{Q}^+\).
+    Thus by Exercise \ref{ex 5.2.2} \((a_n)_{n = 0}^{\infty}\) is bounded iff \((b_n)_{n = 0}^{\infty}\) is bounded.
 \end{proof}
 
 \begin{exercise}\label{ex 5.3.5}
@@ -377,8 +375,20 @@
 \end{exercise}
 
 \begin{proof}
-    By Proposition \ref{5.1.11}, the sequence \((a_n)_{n = 1}^{\infty}\) where \(a_n \coloneqq 1 / n\) is a Cauchy sequence.
-    So \(\text{LIM}_{n \to \infty} 1 / n \in \mathbf{R}\).
-    We also know that \(\forall\ \varepsilon > 0\), \(\exists\ N \geq 1\) such that \(\abs*{1 / n} = \abs*{1 / n - 0} \leq \varepsilon \ \forall\ n \geq N\).
-    Thus by Definition \ref{5.3.1}, \(\text{LIM}_{n \to \infty} 1 / n = 0\).
+    By Proposition \ref{5.1.11} we know that the sequence \((\frac{1}{n})_{n = 1}^{\infty}\) is a Cauchy sequence.
+    By Proposition \ref{4.4.1}, \(\forall\ \varepsilon \in \mathbf{Q}^+\), \(\exists\ N \in \mathbf{Z}^+\) such that
+    \[
+        \frac{1}{\varepsilon} < N \implies \frac{1}{N} < \varepsilon.
+    \]
+    Then we have
+    \begin{align*}
+        \forall\ n \geq N, \abs*{\frac{1}{n} - 0} & = \frac{1}{n}    & \text{(by Definition \ref{4.3.1})}      \\
+                                                  & \leq \frac{1}{N} & \text{(by Proposition \ref{4.3.12}(b))} \\
+                                                  & < \varepsilon
+    \end{align*}
+    and thus by Definition \ref{5.2.6} \((\frac{1}{n})_{n = 1}^\infty = (0)_{n = 1}^\infty\).
+    By Definition \ref{5.3.1} and Exercise \ref{ex 5.3.3} we have
+    \[
+        \text{LIM}_{n \to \infty} \frac{1}{n} = \text{LIM}_{n \to \infty} 0 = 0.
+    \]
 \end{proof}
