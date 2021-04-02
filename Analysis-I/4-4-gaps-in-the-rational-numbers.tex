@@ -114,15 +114,17 @@ Then every natural number is either even or odd, but not both.
 
 \begin{proof}
     We use induction on \(n\).
-    For \(n = 0\), \(0 = 0 \times 2 = 2 \times 0\) by Definition \ref{2.3.1} and Lemma \ref{2.3.2}.
-    And by Axiom \ref{2.3}, \(0 \neq 2m + 1\).
-    So the base case holds.
-    Suppose inductively that for some \(n\), \(\exists\ m \in \mathbf{N}\) such that either \(n = 2m\) or \(n = 2m + 1\) is true, but not both.
-    Then for \(n++\), by induction hypothesis, we can split into two cases.
-    If \(n = 2m\), then \(n++ = (2m)++ = 2m + 1\), which means \(n++\) is odd.
-    If \(n = 2m + 1\), then \(n++ = (2m + 1)++ = (2m + 1) + 1 = 2m + (1 + 1) = 2m + 2 = 2(m + 1)\) by Proposition \ref{2.2.5} and Proposition \ref{2.3.4}, which means \(n++\) is even.
-    Because by induction hypothesis, either even or odd, but not both.
-    So \(n++\) is also either even or odd, but not both, and this close the induction.
+    For \(n = 0\), by Definition \ref{2.3.1} and Lemma \ref{2.3.2} we have \(0 = 0 \times 2 = 2 \times 0\).
+    By Axiom \ref{2.3} we have \(0 \neq 2m + 1\).
+    Thus \(0\) is even and is not odd, so the base case holds.
+    Suppose inductively that for some \(n \geq 0\), \(\exists\ m \in \mathbf{N}\) such that either \(n = 2m\) or \(n = 2m + 1\) is true, but not both.
+    Then for \(n + 1\), by induction hypothesis we can split into two cases:
+    \begin{enumerate}
+        \item If \(n = 2m\), then \(n + 1 = 2m + 1\), which means \(n + 1\) is odd.
+        \item If \(n = 2m + 1\), then by Proposition \ref{2.2.5} and Proposition \ref{2.3.4} we have \(n + 1 = 2m + 2 = 2(m + 1)\), which means \(n + 1\) is even.
+    \end{enumerate}
+    By induction hypothesis the two cases can not be true at the same time, thus \(n + 1\) is also either even or odd, but not both.
+    This close the induction.
 \end{proof}
 
 \begin{additional corollary}\label{ac 4.4.3}
@@ -132,33 +134,27 @@ If \(n\) is odd, then \(n^2\) is also odd.
 \end{additional corollary}
 
 \begin{proof}
-    We first prove that \(n\) is even implies \(n^2\) is even.
-    By Additional Corollary \ref{ac 4.4.2}, \(\exists\ m \in \mathbf{N}\) such that \(n = 2m\).
-    So
+    We first show that \(n\) is even implies \(n^2\) is even.
+    Since \(n\) is even, by Additional Corollary \ref{ac 4.4.2} \(\exists\ m \in \mathbf{N}\) such that \(n = 2m\).
+    Then we have
     \begin{align*}
-        n^2 & = (2m)^2                                         \\
-            & = (2m)(2m) & \text{(by Definition \ref{2.3.11})} \\
-            & = 2(m(2m)) & \text{(by Proposition \ref{2.3.5})} \\
-            & = 2((2m)m) & \text{(by Lemma \ref{2.3.2})}       \\
-            & = 2(2(mm)) & \text{(by Proposition \ref{2.3.5})} \\
-            & = 2(2m^2). & \text{(by Definition \ref{2.3.11})}
+        n^2 & = (2m)^2                                                 \\
+            & = (2m)(2m)         & \text{(by Definition \ref{2.3.11})} \\
+            & = 2\big(m(2m)\big) & \text{(by Proposition \ref{2.3.5})}
     \end{align*}
-    By Additional Corollary \ref{ac 4.4.2}, \(n^2\) is also even.
+    and thus by Additional Corollary \ref{ac 4.4.2} \(n^2\) is even.
 
-    Now we prove that \(n\) is odd implies \(n^2\) is odd.
-    By Additional Corollary \ref{ac 4.4.2}, \(\exists\ m \in \mathbf{N}\) such that \(n = 2m + 1\).
-    So
+    Now we show that \(n\) is odd implies \(n^2\) is odd.
+    Since \(n\) is odd, by Additional Corollary \ref{ac 4.4.2} \(\exists\ m \in \mathbf{N}\) such that \(n = 2m + 1\).
+    Then we have
     \begin{align*}
-        n^2 & = (2m + 1)^2                                                                  \\
-            & = (2m + 1)(2m + 1)                      & \text{(by Definition \ref{2.3.11})} \\
-            & = (2m)(2m) + (2m)1 + 1(2m) + 1 \times 1 & \text{(by Proposition \ref{2.3.4})} \\
-            & = 2(2m^2) + (2m)1 + 1(2m) + 1 \times 1  & \text{(by previous prove)}          \\
-            & = 2(2m^2) + (2m) + (2m) + 1                                                   \\
-            & = 2(2m^2) + 2(m + m) + 1                & \text{(by Proposition \ref{2.3.4})} \\
-            & = 2(2m^2) + 2(2m) + 1                                                         \\
-            & = 2((2m^2) + (2m)) + 1.                 & \text{(by Proposition \ref{2.3.4})} \\
+        n^2 & = (2m + 1)^2                                                         \\
+            & = (2m)^2 + 2(2m)1 + 1^2        & \text{(by Exercise \ref{ex 2.3.4})} \\
+            & = (2m)(2m) + 2(2m) + 1         & \text{(by Definition \ref{2.3.11})} \\
+            & = 2\big(m(2m)\big) + 2(2m) + 1 & \text{(by Proposition \ref{2.3.5})} \\
+            & = 2\big(m(2m) + 2m\big) + 1    & \text{(by Proposition \ref{2.3.4})}
     \end{align*}
-    By Additional Corollary \ref{ac 4.4.2}, \(n^2\) is also odd.
+    and thus by Additional Corollary \ref{ac 4.4.2} \(n^2\) is odd.
 \end{proof}
 
 \begin{proposition}\label{4.4.4}
@@ -179,7 +175,7 @@ If \(n\) is odd, then \(n^2\) is also odd.
     Inserting \(p = 2k\) into \(p^2 = 2q^2\) we obtain \(4k^2 = 2q^2\), so that \(q^2 = 2k^2\).
 
     To summarize, we started with a pair \((p, q)\) of positive integers such that \(p^2 = 2q^2\), and ended up with a pair \((q, k)\) of positive integers such that \(q^2 = 2k^2\).
-    Since \(p^2 = 2q^2\), so \(p^2 = q^2 + q^2 \implies p^2 > q^2\) by Proposition \ref{2.2.12}.
+    Since \(p^2 = 2q^2\), by Proposition \ref{2.2.12} we have \(p^2 = q^2 + q^2 \implies p^2 > q^2\).
     If \(p < q\), then by Proposition \ref{2.3.6}, \(p^2 < pq\) and \(pq < q^2\).
     So by Proposition \ref{2.2.12}, \(p^2 < q^2\), a contradiction.
     Thus we have \(q < p\).
