@@ -68,7 +68,11 @@
 \end{proof}
 
 \begin{lemma}[Sums of equivalent Cauchy sequences are equivalent]\label{5.3.7}
-    Let \(x = \text{LIM}_{n \to \infty} a_n\), \(y = \text{LIM}_{n \to \infty} b_n\), and \(x' = \text{LIM}_{n \to \infty} a'_n\) be real numbers.
+    Let
+    \[
+        x = \text{LIM}_{n \to \infty} a_n, y = \text{LIM}_{n \to \infty} b_n, x' = \text{LIM}_{n \to \infty} a'_n
+    \]
+    be real numbers.
     Suppose that \(x = x'\).
     Then we have \(x + y = x' + y\).
 \end{lemma}
@@ -92,54 +96,63 @@
 \end{definition}
 
 \begin{proposition}[Multiplication is well defined]\label{5.3.10}
-    Let \(x = \text{LIM}_{n \to \infty} a_n\), \(y = \text{LIM}_{n \to \infty} b_n\), and \(x' = \text{LIM}_{n \to \infty} a'_n\) be real numbers.
+    Let
+    \[
+        x = \text{LIM}_{n \to \infty} a_n, y = \text{LIM}_{n \to \infty} b_n, x' = \text{LIM}_{n \to \infty} a'_n
+    \]
+    be real numbers.
     Then \(xy\) is also a real number.
     Furthermore, if \(x = x'\), then \(xy = x'y\).
 \end{proposition}
 
 \begin{proof}
-    First we prove that \(x, y \in \mathbf{R} \implies xy \in \mathbf{R}\).
-    We need to show that for every \(\varepsilon > 0\), the sequence \((a_n b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady.
-    From hypothesis we know that \((a_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady, and \((b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady.
-    By Lemma \ref{5.1.15}, \(\abs*{a_n} \leq A\) and \(\abs*{b_n} \leq B\) for all \(n \geq 1\), where \(A, B \geq 0\) and \(A, B \in \mathbf{Q}\).
-
-    If \(A = 0\), then by Proposition \ref{4.3.3}, \(a_n = 0\) for all \(n \geq 1\).
-    Thus \(\abs*{a_n b_n} = \abs*{0b_n} = \abs*{0} = \abs*{a_n}\) for all \(n \geq 1\), which means \((a_n b_n)_{n = 1}^{\infty}\) is equivalent to \((a_n)_{n = 1}^{\infty}\), a Cauchy sequence.
-    So by Definition \ref{5.3.1}, \(xy = (a_n b_n)_{n = 1}^{\infty}\) is a real number.
-    Similarly proof can show that if \(B = 0\), then \(xy = (a_n b_n)_{n = 1}^{\infty}\) is a real number.
-    So we only need to consider the case where \(A \neq 0\) and \(B \neq 0\).
-
-    We know that \((a_n)_{n = 1}^{\infty}\) is eventually \(\delta\)-steady for every value of \(\delta\).
-    This implies not only that \((a_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady, but it is also eventually \(\varepsilon / 2B\)-steady.
-    Similarly, the sequence \((b_n)_{n = 1}^{\infty}\) is also eventually \(\varepsilon / 2A\)-steady.
-    Since \((a_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon / 2B\)-steady, we know that there exists an \(N \geq 1\) such that \((a_n)_{n = N}^{\infty}\) is \(\varepsilon / 2B\)-steady, i.e., \(a_n\) and \(a_m\) are \(\varepsilon / 2B\)-close for every \(n, m \geq N\).
-    Similarly there exists an \(M \geq 1\) such that \((b_n)_{n = M}^{\infty}\) is \(\varepsilon / 2A\)-steady, i.e., \(b_n\) and \(b_m\) are \(\varepsilon / 2A\)-close for every \(n, m \geq M\).
-    Let \(\max(N, M)\) be the larger of \(N\) and \(M\)
-    (we know from Proposition \ref{2.2.13} that one has to be greater than or equal to the other).
-    If \(n, m \geq \max(N, M)\), then we know that \(a_n\) and \(a_m\) are \(\varepsilon / 2B\)-close, and \(b_n\) and \(b_m\) are \(\varepsilon / 2A\)-close.
-    So \(\forall\ \varepsilon > 0\) and \(\forall\ n, m \geq \max(N, M)\),
+    We first show that \(x, y \in \mathbf{R} \implies xy \in \mathbf{R}\).
+    Let \(\varepsilon \in \mathbf{Q}^+\) and let \(j, k \in \mathbf{Z}^+\).
+    Since \((a_n)_{n = 1}^\infty\) and \((b_n)_{n = 1}^\infty\) are Cauchy sequence, by Lemma \ref{5.1.15} we know that \((a_n)_{n = 1}^\infty\) and \((b_n)_{n = 1}^\infty\) are bounded by some \(M_1, M_2 \in \mathbf{Q} \setminus \mathbf{Q}^-\).
+    Then by Proposition \ref{4.2.9}(a) we know that \((a_n)_{n = 1}^\infty\) and \((b_n)_{n = 1}^\infty\) are bounded by \(M = \max(M_1, M_2) + 1\).
+    Since \(x = \text{LIM}_{n \to \infty} a_n\) and \(y = \text{LIM}_{n \to \infty} b_n\), by Definition \ref{5.1.8} we have
     \begin{align*}
-        \abs*{a_n b_n - a_m b_m} & = \abs*{a_n (b_n - b_m) + b_m (a_n - a_m)}                & \text{(by Proposition \ref{4.2.4})} \\
-                                 & \leq \abs*{a_n (b_n - b_m)} + \abs*{b_m (a_n - a_m)}      & \text{(by Proposition \ref{4.3.3})} \\
-                                 & = \abs*{a_n}\abs*{b_n - b_m} + \abs*{b_m}\abs*{a_n - a_m} & \text{(by Proposition \ref{4.3.3})} \\
-                                 & \leq A(\varepsilon / 2A) + B(\varepsilon / 2B)            & \text{(by Proposition \ref{4.2.9})} \\
-                                 & = \varepsilon.                                            & \text{(by Proposition \ref{4.2.4})}
+         & \exists\ N_1 \in \mathbf{Z}^+ : \forall\ j, k \geq N_1, \abs*{a_j - a_k} \leq \varepsilon; \\
+         & \exists\ N_2 \in \mathbf{Z}^+ : \forall\ j, k \geq N_2, \abs*{b_j - b_k} \leq \varepsilon.
     \end{align*}
-    This implies that the sequence \((a_n b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady, as desired.
-
-    Now we prove that \(x = x'\) implies \(xy = x'y\).
-    Since \(x\) and \(x'\) are equal, we know that the Cauchy sequences \((a_n)_{n = 1}^{\infty}\) and \((a'_n)_{n = 1}^{\infty}\) are equivalent, so in other words they are eventually \(\varepsilon\)-close for each \(\varepsilon > 0\).
-    We need to show that the sequences \((a_n b_n)_{n = 1}^{\infty}\) and \((a'_n b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close for each \(\varepsilon > 0\).
-    But we already know that there is an \(N \geq 1\) such that \((a_n)_{n = N}^{\infty}\) and \((a'_n)_{n = N}^{\infty}\) are \(\varepsilon\)-close, i.e., that \(a_n\) and \(a'_n\) are \(\varepsilon\)-close for each \(n \geq N\).
-    So
+    In particular, we have
     \begin{align*}
-        \abs*{a_n b_n - a'_n b_n} & = \abs*{(a_n - a'_n)b_n}       & \text{(by Proposition \ref{4.2.4})} \\
-                                  & = \abs*{a_n - a'_n}\abs*{b_n}. & \text{(by Proposition \ref{4.3.3})}
+         & \exists\ N_1 \in \mathbf{Z}^+ : \forall\ j, k \geq N_1, \abs*{a_j - a_k} \leq \frac{\varepsilon}{2M}; \\
+         & \exists\ N_2 \in \mathbf{Z}^+ : \forall\ j, k \geq N_2, \abs*{b_j - b_k} \leq \frac{\varepsilon}{2M}.
     \end{align*}
-    By Proposition \ref{4.3.3}, we have \(\abs*{b_n} \geq 0\).
-    If \(\abs*{b_n} = 0\), then \(\forall\ \varepsilon > 0\), we have \(\abs*{a_n - a'_n} 0 = 0 \leq \varepsilon\).
-    If \(\abs*{b_n} > 0\), combining with \(\abs*{a_n - a'_n} \leq \varepsilon\) for all \(\varepsilon > 0\), we also have \(\abs*{a_n - a'_n} \leq \varepsilon / \abs*{b_n}\) and \(\abs*{a_n - a'_n}\abs*{b_n} \leq \varepsilon\).
-    This implies that \((a_n b_n)_{n = 1}^{\infty}\) and \((a'_n b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close for each \(\varepsilon > 0\), and we are done.
+    Let \(N = \max(N_1, N_2)\).
+    Such \(N\) is well-defined since Proposition \ref{2.2.13}.
+    Then \(\forall\ j, k \geq N\), we have
+    \begin{align*}
+        \abs*{a_j b_j - a_k b_k} & = \abs*{a_j b_j - a_j b_k + a_j b_k - a_k b_k}              & \text{(by Proposition \ref{4.2.4})}       \\
+                                 & \leq \abs*{a_j b_j - a_j b_k} + \abs*{a_j b_k - a_k b_k}    & \text{(by Proposition \ref{4.3.3}(b))}    \\
+                                 & = \abs*{a_j} \abs*{b_j - b_k} + \abs*{b_k} \abs*{a_j - a_k} & \text{(by Proposition \ref{4.3.3}(d))}    \\
+                                 & \leq M \frac{\varepsilon}{2M} + M \frac{\varepsilon}{2M}    & \text{(by Proposition \ref{4.2.9}(c)(e))} \\
+                                 & = \varepsilon.
+    \end{align*}
+    Thus by Definition \ref{5.1.8} \((a_n b_n)_{n = 1}^\infty\) is a Cauchy sequence and by Definition \ref{5.3.1} \(xy \in \mathbf{R}\).
+
+    Now we show that \(x = x' \implies xy = xy'\).
+    Since \((a_n)_{n = 1}^\infty\), \((a_n')_{n = 1}^\infty\), \((b_n)_{n = 1}^\infty\) are Cauchy sequence, by Lemma \ref{5.1.15} we know that \((a_n)_{n = 1}^\infty\) and \((a_n')_{n = 1}^\infty\) are bounded by some \(M_1, M_2 M_3 \in \mathbf{Q} \setminus \mathbf{Q}^-\).
+    Then by Proposition \ref{4.2.9}(a) we know that \((a_n)_{n = 1}^\infty\), \((a_n')_{n = 1}^\infty\), \((b_n)_{n = 1}^\infty\) are bounded by \(M = \max(M_1, M_2, M_3) + 1\).
+    Since \(x = x'\), by Definition \ref{5.2.6} we know that
+    \[
+        \forall\ \varepsilon \in \mathbf{Q}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \abs*{a_n - a_n'} \leq \varepsilon.
+    \]
+    In particular, we have
+    \[
+        \forall\ \varepsilon \in \mathbf{Q}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \abs*{a_n - a_n'} \leq \frac{\varepsilon}{M}.
+    \]
+    Then we have
+    \begin{align*}
+                 & \abs*{a_n - a_n'} \leq \frac{\varepsilon}{M}                                                                   \\
+        \implies & \abs*{b_n} \abs*{a_n - a_n'} \leq \abs*{b_n} \frac{\varepsilon}{M} & \text{(by Proposition \ref{4.2.9}(c)(e))} \\
+        \implies & \abs*{b_n} \abs*{a_n - a_n'} \leq M \frac{\varepsilon}{M}          & \text{(by Proposition \ref{4.2.9}(c)(e))} \\
+        \implies & \abs*{b_n} \abs*{a_n - a_n'} \leq \varepsilon                                                                  \\
+        \implies & \abs*{b_n (a_n - a_n')} \leq \varepsilon                           & \text{(by Proposition \ref{4.3.3}(d))}    \\
+        \implies & \abs*{a_n b_n - a_n' b_n} \leq \varepsilon                         & \text{(by Proposition \ref{4.2.4}}
+    \end{align*}
+    and thus by Definition \ref{5.2.6} we have \(xy = x'y\).
 \end{proof}
 
 \begin{note}
