@@ -28,6 +28,51 @@
     However, we shall eventually see that it makes no difference whether \(\varepsilon\) ranges over the positive rationals or positive reals.
 \end{remark}
 
+\begin{additional corollary}\label{ac 5.2.1}
+Equivalence defined as Definition \ref{5.2.6} is reflexive, symmetric and transitive.
+\end{additional corollary}
+
+\begin{proof}
+    Let \((a_n)_{n = m}^\infty\), \((b_n)_{n = m}^\infty\), \((c_n)_{n = m}^\infty\) be sequences of rationals.
+    We have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{Q}^+, \forall\ n \geq m, \abs*{a_n - a_n} = \abs*{0} = 0 \leq \varepsilon                                      \\
+        \implies & (a_n)_{n = m}^\infty = (a_n)_{n = m}^\infty                                                                & \text{(by Definition \ref{5.2.6})}
+    \end{align*}
+    and thus Definition \ref{5.2.6} is reflexive.
+
+    Now suppose that \((a_n)_{n = m}^\infty = (b_n)_{n = m}^\infty\).
+    Then we have
+    \begin{align*}
+                 & (a_n)_{n = m}^\infty = (b_n)_{n = m}^\infty                                                                               \\
+        \implies & \forall\ \varepsilon \in \mathbf{Q}^+, \exists\ N \in \mathbf{N} \land N \geq m:                                          \\
+                 & \forall\ n \geq N, \abs*{a_n - b_n} \leq \varepsilon                             & \text{(by Definition \ref{5.2.6})}     \\
+        \implies & \forall\ \varepsilon \in \mathbf{Q}^+, \exists\ N \in \mathbf{N} \land N \geq m:                                          \\
+                 & \forall\ n \geq N, \abs*{b_n - a_n} \leq \varepsilon                             & \text{(by Proposition \ref{4.3.3}(f))} \\
+        \implies & (b_n)_{n = m}^\infty = (a_n)_{n = m}^\infty                                      & \text{(by Definition \ref{5.2.6})}
+    \end{align*}
+    and thus Definition \ref{5.2.6} is symmetric.
+
+    Finally suppose that \((a_n)_{n = m}^\infty = (b_n)_{n = m}^\infty\) and \((b_n)_{n = m}^\infty = (c_n)_{n = m}^\infty\).
+    Then we have
+    \begin{align*}
+                 & \big((a_n)_{n = m}^\infty = (b_n)_{n = m}^\infty\big) \land \big((b_n)_{n = m}^\infty = (c_n)_{n = m}^\infty\big)                                                \\
+        \implies & \forall\ \varepsilon \in \mathbf{Q}^+, \exists\ N_1, N_2 \in \mathbf{N} \land N_1, N_2 \geq m:                       & \text{(by Definition \ref{5.2.6})}        \\
+                 & \begin{cases}
+            \abs*{a_n - b_n} \leq \frac{\varepsilon}{2} & \forall\ n \geq N_1 \\
+            \abs*{b_n - c_n} \leq \frac{\varepsilon}{2} & \forall\ n \geq N_2 \\
+        \end{cases}                                                                                                                                        \\
+        \implies & \forall\ \varepsilon \in \mathbf{Q}^+, \exists\ N = \max(N_1, N_2) \geq m:                                           & \text{(by Proposition \ref{2.2.13})}      \\
+                 & \forall\ n \geq N, (\abs*{a_n - b_n} \leq \frac{\varepsilon}{2}) \land (\abs*{b_n - c_n} \leq \frac{\varepsilon}{2})                                             \\
+        \implies & \forall\ \varepsilon \in \mathbf{Q}^+, \exists\ N = \max(N_1, N_2) \geq m:                                                                                       \\
+                 & \forall\ n \geq N, \abs*{a_n - b_n} + \abs*{b_n - c_n} \leq \varepsilon                                              & \text{(by Proposition \ref{4.2.9}(c)(d))} \\
+        \implies & \forall\ \varepsilon \in \mathbf{Q}^+, \exists\ N = \max(N_1, N_2) \geq m:                                                                                       \\
+                 & \forall\ n \geq N, \abs*{a_n - c_n} \leq \abs*{a_n - b_n} + \abs*{b_n - c_n} \leq \varepsilon                        & \text{(by Proposition \ref{4.3.3}(b))}    \\
+        \implies & (a_n)_{n = m}^\infty = (c_n)_{n = m}^\infty                                                                          & \text{(by Definition \ref{5.2.6})}
+    \end{align*}
+    and thus Definition \ref{5.2.6} is transitive.
+\end{proof}
+
 \begin{proposition}\label{5.2.8}
     Let \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) be the sequences \(a_n = 1 + 10^{-n}\) and \(b_n = 1 - 10^{-n}\).
     Then the sequences \(a_n, b_n\) are equivalent.
@@ -73,59 +118,30 @@
 \end{exercise}
 
 \begin{proof}
-    Let \((a_n)_{n = 1}^{\infty}\) be a Cauchy sequence.
-    By Definition \ref{5.1.8}, \(\forall\ \varepsilon > 0\) and \(\varepsilon \in \mathbf{Q}\), \(\exists\ N_1 \geq 1\) and \(N_1 \in \mathbf{N}\) such that
+    Let \(j, k \in \mathbf{Z}^+\).
+    Since \((a_n)_{n = 1}^\infty = (b_n)_{n = 1}^\infty\), by Definition \ref{5.2.6} we have
     \[
-        \abs*{a_j - a_k} \leq \varepsilon \ \forall\ j, k \geq N_1
+        \forall\ \varepsilon \in \mathbf{Q}^+, \exists\ N_1 \in \mathbf{Z}^+ : \forall\ n \geq N_1, \abs*{a_n - b_n} \leq \frac{\varepsilon}{3}.
     \]
-    where \(j, k \in \mathbf{N}\).
-    Since \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are equivalent sequences, by Definition \ref{5.2.6}, \(\forall\ \varepsilon > 0\) and \(\varepsilon \in \mathbf{Q}\), \(\exists\ N_2 \geq 1\) and \(N_2 \in \mathbf{N}\) such that
-    \[
-        \abs*{a_m - b_m} \leq \varepsilon \ \forall\ m \geq N_2
-    \]
-    where \(m \in \mathbf{N}\).
-    Let \(N = N_1 + N_2\).
-    Since \(N > N_1\) and \(N > N_2\) by Proposition \ref{2.2.11}, we have
-    \[
-        \abs*{a_j - a_k} \leq \varepsilon \ \forall\ j, k \geq N
-    \]
-    and
-    \[
-        \abs*{a_m - b_m} \leq \varepsilon \ \forall\ m \geq N.
-    \]
-    Since \(\varepsilon > 0\), \(\varepsilon / 3 > 0\) by Additional Corollary \ref{ac 4.2.5}, then we have
-    \[
-        \abs*{a_j - a_k} \leq \varepsilon / 3 \ \forall\ j, k \geq N
-    \]
-    and
-    \[
-        \abs*{a_m - b_m} \leq \varepsilon / 3 \ \forall\ m \geq N.
-    \]
-    So \(\forall\ \varepsilon > 0\) and \(\forall\ j, k \geq N\),
+    Then we have
     \begin{align*}
-        \abs*{b_j - b_k} & = \abs*{b_j + (-b_k)}                                                                                        \\
-                         & = \abs*{(b_j + (-b_k)) + 0}                                            & \text{(by Proposition \ref{4.2.4})} \\
-                         & = \abs*{(b_j + (-b_k)) + ((-a_k) + a_k)}                               & \text{(by Proposition \ref{4.2.4})} \\
-                         & = \abs*{b_j + ((-b_k) + ((-a_k) + a_k))}                               & \text{(by Proposition \ref{4.2.4})} \\
-                         & = \abs*{b_j + (((-a_k) + a_k) + (-b_k))}                               & \text{(by Proposition \ref{4.2.4})} \\
-                         & = \abs*{b_j + ((-a_k) + (a_k + (-b_k)))}                               & \text{(by Proposition \ref{4.2.4})} \\
-                         & = \abs*{(b_j + (-a_k)) + (a_k + (-b_k))}                               & \text{(by Proposition \ref{4.2.4})} \\
-                         & = \abs*{0 + ((b_j + (-a_k)) + (a_k + (-b_k)))}                         & \text{(by Proposition \ref{4.2.4})} \\
-                         & = \abs*{(a_j + (-a_j)) + ((b_j + (-a_k)) + (a_k + (-b_k)))}            & \text{(by Proposition \ref{4.2.4})} \\
-                         & = \abs*{((a_j + (-a_j)) + (b_j + (-a_k))) + (a_k + (-b_k))}            & \text{(by Proposition \ref{4.2.4})} \\
-                         & = \abs*{(a_j + (((-a_j) + b_j) + (-a_k))) + (a_k + (-b_k))}            & \text{(by Proposition \ref{4.2.4})} \\
-                         & = \abs*{(a_j + ((-a_k) + ((-a_j) + b_j))) + (a_k + (-b_k))}            & \text{(by Proposition \ref{4.2.4})} \\
-                         & = \abs*{((a_j + (-a_k)) + ((-a_j) + b_j)) + (a_k + (-b_k))}            & \text{(by Proposition \ref{4.2.4})} \\
-                         & \leq \abs*{(a_j + (-a_k)) + ((-a_j) + b_j)} + \abs*{a_k + (-b_k)}      & \text{(by Proposition \ref{4.3.3})} \\
-                         & \leq (\abs*{a_j + (-a_k)} + \abs*{(-a_j) + b_j}) + \abs*{a_k + (-b_k)} & \text{(by Proposition \ref{4.3.3})} \\
-                         & = (\abs*{a_j + (-a_k)} + \abs*{a_j + (-b_j)}) + \abs*{a_k + (-b_k)}    & \text{(by Proposition \ref{4.3.3})} \\
-                         & = (\abs*{a_j - a_k} + \abs*{a_j - b_j}) + \abs*{a_k - b_k}                                                   \\
-                         & \leq (\varepsilon / 3 + \varepsilon / 3) + \varepsilon / 3             & \text{(by Proposition \ref{4.3.3})} \\
-                         & = \varepsilon.
+                 & (a_n)_{n = 1}^\infty \text{ is a Cauchy sequence}                                                                                    \\
+        \implies & \exists\ N_2 \in \mathbf{Z}^+ : \forall\ j, k \geq N,                                                                                \\
+                 & \abs*{a_j - a_k} \leq \frac{\varepsilon}{3}                                              & \text{(by Definition \ref{5.1.8})}        \\
+        \implies & \exists\ N = \max(N_1, N_2) \in \mathbf{Z}^+ : \forall\ j, k \geq N,                     & \text{(by Proposition \ref{2.2.13})}      \\
+                 & \abs*{a_j - a_k} \leq \frac{\varepsilon}{3}                                                                                          \\
+        \implies & \exists\ N = \max(N_1, N_2) \in \mathbf{Z}^+ : \forall\ j, k \geq N,                                                                 \\
+                 & \abs*{a_j - a_k} + \abs*{a_j - b_j} + \abs*{a_k - b_k}                                                                               \\
+                 & \leq \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon & \text{(by Proposition \ref{4.2.9}(c)(d))} \\
+        \implies & \exists\ N = \max(N_1, N_2) \in \mathbf{Z}^+ : \forall\ j, k \geq N,                                                                 \\
+                 & \abs*{a_j - a_k} + \abs*{b_j - a_j} + \abs*{a_k - b_k} \leq \varepsilon                  & \text{(by Proposition \ref{4.3.3}(f))}    \\
+        \implies & \exists\ N = \max(N_1, N_2) \in \mathbf{Z}^+ : \forall\ j, k \geq N,                                                                 \\
+                 & \abs*{b_j - b_k} = \abs*{a_j - a_k + b_j - a_j + a_k - b_k}                                                                          \\
+                 & \leq \abs*{a_j - a_k} + \abs*{b_j - a_j} + \abs*{a_k - b_k} \leq \varepsilon             & \text{(by Proposition \ref{4.3.3}(b))}    \\
+        \implies & (b_n)_{n = 1}^\infty \text{ is a Cauchy sequence}.                                       & \text{(by Definition \ref{5.1.8})}
     \end{align*}
-    By Definition \ref{5.1.8}, \((b_n)_{n = 1}^{\infty}\) is also a Cauchy sequence.
-    Similar proof can show that by the given conditions, \((b_n)_{n = 1}^{\infty}\) is a Cauchy sequence also implies \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence.
-    Thus we finished the proof.
+    Using similar arguments we can show that \((b_n)_{n = 1}^\infty\) is a Cauchy sequence implies \((a_n)_{n = 1}^\infty\) is a Cauchy sequence.
+    Thus we conclude that \((a_n)_{n = 1}^\infty\) is a Cauchy sequence iff \((b_n)_{n = 1}^\infty\) is a Cauchy sequence.
 \end{proof}
 
 \begin{exercise}\label{ex 5.2.2}
