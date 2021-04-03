@@ -30,73 +30,111 @@
 
 \begin{proof}
     We first show that at least one of the three statements is true.
-    Let \(x\) be the formal limit of some sequence \((a_n)_{n = 1}^{\infty}\), \(\varepsilon, c \in \mathbf{Q}\) and \(N, j, k \in \mathbf{N}\).
-    If \((a_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-close to \(0\) for all \(\varepsilon > 0\), then \(x = 0\) by Definition \ref{5.3.1}.
-    If \((a_n)_{n = 1}^{\infty}\) is not eventually \(\varepsilon\)-close to \(0\) for all \(\varepsilon > 0\), then \(x \neq 0\) by Definition \ref{5.3.1}.
-    By Lemma \ref{5.3.14}, \(x \neq 0\) implies \(\exists\ c > 0\) such that \(\abs*{a_n} \geq c \ \forall\ n \geq 1\).
-    Since \(c > 0\), we have \(a_n \neq 0\), otherwised \(0 \geq c\), a contradiction.
-    If \(a_n > 0\), then \(a_n \geq c > 0\).
-    If \(a_n < 0\), then \(-a_n \geq c > 0\), which implies \(a_n \leq -c < 0\) by Exercise \ref{ex 4.2.6}.
-    Since \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence, \(\forall\ \varepsilon > 0\), \(\exists\ N \geq 1\) such that \(\abs*{a_j - a_k} \leq \varepsilon \ \forall\ j, k \geq N\).
-    In particular, \(\abs*{a_j - a_k} \leq c\).
+    Let \(x\) be the formal limit of some rational sequence \((a_n)_{n = 1}^{\infty}\), let \(\varepsilon, c \in \mathbf{Q}^+\) and let \(N, j, k \in \mathbf{N}\).
+    Consider the following two cases:
+    \begin{itemize}
+        \item If \((a_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-close to \(0\) for all \(\varepsilon > 0\), then by Definition \ref{5.2.6} we have \(x = 0\).
+        \item If \((a_n)_{n = 1}^{\infty}\) is not eventually \(\varepsilon\)-close to \(0\) for all \(\varepsilon > 0\), then by Definition \ref{5.2.6} we have \(x \neq 0\).
+    \end{itemize}
+    By Lemma \ref{5.3.14}, \(x \neq 0\) implies \(\exists\ c > 0\) such that \(\abs*{a_n} \geq c > 0\) for every \(n \geq 1\).
+    By Proposition \ref{4.3.3}(a) we have \(a_n \neq 0\).
+    By Proposition \ref{4.2.9}(a) we now split into two cases:
+    \begin{itemize}
+        \item If \(a_n > 0\), then by Definition \ref{4.3.1} we have \(a_n \geq c > 0\).
+        \item If \(a_n < 0\), then by Definition \ref{4.3.1} we have \(-a_n \geq c > 0\), and by Exercise \ref{ex 4.2.6} we have \(a_n \leq -c < 0\).
+    \end{itemize}
+    Since \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence, by Definition \ref{5.1.8} we have
+    \[
+        \forall\ \varepsilon > 0, \exists\ N \geq 1 : \forall\ j, k \geq N, \abs*{a_j - a_k} \leq \varepsilon.
+    \]
+    In particular,
+    \[
+        \exists\ N \geq 1 : \forall\ j, k \geq N, \abs*{a_j - a_k} \leq c.
+    \]
     So
     \begin{align*}
-                 & \abs*{a_j - a_k} \leq c                                               \\
-        \implies & -c \leq a_j - a_k \leq c        & \text{(by Proposition \ref{4.3.3})} \\
-        \implies & -c + a_k \leq a_j \leq c + a_k. & \text{(by Proposition \ref{4.2.9})} \\
+                 & \abs*{a_j - a_N} \leq c                                               \\
+        \implies & -c \leq a_j - a_N \leq c        & \text{(by Proposition \ref{4.3.3})} \\
+        \implies & -c + a_N \leq a_j \leq c + a_N. & \text{(by Proposition \ref{4.2.9})} \\
     \end{align*}
-    \begin{enumerate}[label=(\roman*)]
-        \item If \(a_k > 0\), then we have \(0 \leq a_j \leq 2c\).
-              Since \(a_j \neq 0\), we have \(a_j > 0\) for all \(j \geq N\).
-              Then we can define a sequence \((b_n)_{n = 1}^{\infty}\) by setting \(b_n = a_n\) if \(a_n > 0\) and \(b_n = -a_n\) if \(a_n < 0\) for all \(n \geq 1\).
-              Because \(\forall\ \varepsilon > 0\), \(\abs*{b_n - a_n} = 0 \leq \varepsilon \ \forall\ n \geq N\), so \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are equivalent Cauchy sequence.
-              And because \((b_n)_{n = 1}^{\infty}\) is positively bounded away from zero, \(x\) is positive.
-        \item If \(a_k < 0\), then we have \(-2c \leq a_j \leq 0\).
-              Since \(a_j \neq 0\), we have \(a_j < 0\) for all \(j \geq N\).
-              Then we can define a sequence \((b_n)_{n = 1}^{\infty}\) by setting \(b_n = a_n\) if \(a_n < 0\) and \(b_n = -a_n\) if \(a_n > 0\) for all \(n \geq 1\).
-              Because \(\forall\ \varepsilon > 0\), \(\abs*{b_n - a_n} = 0 \leq \varepsilon \ \forall\ n \geq N\), so \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are equivalent Cauchy sequence.
-              And because \((b_n)_{n = 1}^{\infty}\) is negatively bounded away from zero, \(x\) is negative.
-    \end{enumerate}
-    Since \(x\) can be either \(0\), positive or negative, we conclude that at least one of the three statements is true.
+    By Proposition \ref{4.2.9}(a) again we now split into two cases:
+    \begin{itemize}
+        \item If \(a_N > 0\), then we have
+              \begin{align*}
+                           & (-c + a_N \leq a_j \leq c + a_N) \land (0 < c \leq a_N)                                             \\
+                  \implies & 0 \leq a_j \leq c + a_N                                 & \text{(by Proposition \ref{4.2.9}(c)(d))} \\
+                  \implies & c < a_j \leq c + a_N.                                   & (x \neq 0)
+              \end{align*}
+              Since this is true for all \(j \geq N\), by Lemma \ref{5.3.14} and Definition \ref{5.4.1} we know that \((a_n)_{n = 1}^\infty\) is positively bounded away from zero.
+              Thus by Definition \ref{5.4.3} \(x\) is positive.
+        \item If \(a_N < 0\), then we have
+              \begin{align*}
+                           & (-c + a_N \leq a_j \leq c + a_N) \land (a_N \leq -c < 0)                                             \\
+                  \implies & -c + a_N \leq a_j \leq 0                                 & \text{(by Proposition \ref{4.2.9}(c)(d))} \\
+                  \implies & -c + a_N \leq a_j < -c.                                  & (x \neq 0)
+              \end{align*}
+              Since this is true for all \(j \geq N\), by Lemma \ref{5.3.14} and Definition \ref{5.4.1} we know that \((a_n)_{n = 1}^\infty\) is negatively bounded away from zero.
+              Thus by Definition \ref{5.4.3} \(x\) is negative.
+    \end{itemize}
+    From all cases above we conclude that at least one of the three statements is true.
 
-    Now we show that at most one of the three statements is true.
-    Let \(x\) be the formal limit of some sequence \((a_n)_{n = 1}^{\infty}\) and \(\varepsilon, c \in \mathbf{Q}\).
-    If \(x = 0\), then \(\exists\ N \geq 1\) such that \(\abs*{a_n - 0} = \abs*{a_n} \leq \varepsilon \ \forall\ n \geq N\).
-    If \(x\) is positive, then \(\exists\ c_1 > 0\) such that \(a_n > c_1 \ \forall\ n \geq 1\).
-    If \(x\) is negative, then \(\exists\ c_2 > 0\) such that \(a_n < -c_2 \ \forall\ n \geq 1\).
-    Suppose for sake of contradiction that \(x\) is both \(0\) and positive.
-    Then we have \(\abs*{a_n} \leq c_1\) and \(\abs*{a_n} > c_1\) for all \(n \geq N\) at the same time, which is a contradiction by Proposition \ref{4.2.9}.
-    Similarly suppose for sake of contradiction that \(x\) is both \(0\) and negative.
-    Then we also have \(\abs*{a_n} \leq c_2\) and \(\abs*{a_n} > c_2\) for all \(n \geq N\) at the same time, which is a contradiction by Proposition \ref{4.2.9}.
-    Now suppose for sake of contradiction that \(x\) is both positive and negative.
-    Then we have \(a_n \geq c_1 > 0\) and \(a_n \leq -c_2 < 0\) for all \(n \geq 1\) at the same time, which is a contradiction by Proposition \ref{4.2.9}.
-    So at most one of the three statements is true.
-    Combine with the previous proof, we conclude that exactly one of the three statements is true.
+    Next we show that at most one of the three statements is true.
+    Let \(x\) be the formal limit of some rational sequence \((a_n)_{n = 1}^{\infty}\) and let \(\varepsilon, c \in \mathbf{Q}^+\).
+    \begin{itemize}
+        \item If \(x = 0\) and \(x\) is positive, then we have \((a_n)\) eventually \(\varepsilon\)-close to \(0\) for all \(\varepsilon > 0\) and \(a_n \geq c\) for all \(n \geq 1\).
+              But then we have \(\abs*{a_n - 0} \leq c / 2\) and \(a_n \geq c > 0\), a contradiction.
+        \item If \(x = 0\) and \(x\) is negative, then we have \((a_n)\) eventually \(\varepsilon\)-close to \(0\) for all \(\varepsilon > 0\) and \(a_n \leq -c\) for all \(n \geq 1\).
+              But then we have \(\abs*{a_n - 0} \leq c / 2\) and \(a_n \leq -c < 0\), a contradiction.
+        \item If \(x\) is positive and \(x\) is negative, then we have \(a_n \geq c\) and \(a_n \leq -c\) for all \(n \geq 1\).
+              But then we have \(a_n < 0\) and \(0 < a_n\), a contradiction.
+    \end{itemize}
+    From all cases above we conclude that at most one of the three statements is true.
 
-    Now we show that \(x\) is negative iff \(-x\) is positive.
+    Next we show that \(x\) is negative iff \(-x\) is positive.
     Let \(x\) be the formal limit of some sequence \((a_n)_{n = 1}^{\infty}\).
-    Then by Definition \ref{5.4.3}, \(\exists\ c > 0\) such that \(a_n \leq -c < 0 \ \forall\ n \geq 1\).
-    So \(\forall\ n \geq 1\),
+    Then we have
     \begin{align*}
-             & x \text{ is negative}                                                                               \\
-        \iff & (x = \text{LIM}_{n \to \infty} a_n) \land (a_n \leq -c < 0)   & \text{(by Definition \ref{5.4.3})}  \\
-        \iff & (-x = \text{LIM}_{n \to \infty} -a_n) \land (a_n \leq -c < 0) & \text{(by Definition \ref{5.3.9})}  \\
-        \iff & (-x = \text{LIM}_{n \to \infty} -a_n) \land (-a_n \geq c > 0) & \text{(by Exercise \ref{ex 4.2.6})} \\
-        \iff & -x \text{ is positive}.
+             & x \text{ is negative}                                                                                          \\
+        \iff & (x = \text{LIM}_{n \to \infty} a_n)                                                                            \\
+             & \land (\exists\ c \in \mathbf{Q}^+ : \forall\ n \geq 1, a_n \leq -c < 0) & \text{(by Definition \ref{5.4.3})}  \\
+        \iff & (-x = \text{LIM}_{n \to \infty} -a_n)                                    & \text{(by Definition \ref{5.3.9})}  \\
+             & \land (\exists\ c \in \mathbf{Q}^+ : \forall\ n \geq 1, a_n \leq -c < 0)                                       \\
+        \iff & (-x = \text{LIM}_{n \to \infty} -a_n)                                                                          \\
+             & \land (\exists\ c \in \mathbf{Q}^+ : \forall\ n \geq 1, -a_n \geq c > 0) & \text{(by Exercise \ref{ex 4.2.6})} \\
+        \iff & -x \text{ is positive}.                                                  & \text{(by Definition \ref{5.4.3})}
     \end{align*}
-    Thus \(x\) is negative iff \(-x\) is positive.
 
-    Now we show that \(x, y\) are positive implies \(x + y\) is also positive.
-    Let \(x = (a_n)_{n = 1}^{\infty}\) and \(y = (b_n)_{n = 1}^{\infty}\).
-    Then by Definition \ref{5.4.3}, \(\exists\ c_1 > 0\) such that \(a_n \geq c_1 > 0 \ \forall\ n \geq 1\) and \(\exists\ c_2 > 0\) such that \(b_n \geq c_2 > 0 \ \forall\ n \geq 1\).
-    But by Definition \ref{5.3.4}, \(x + y = \text{LIM}_{n \to \infty} a_n + b_n\), and by Proposition \ref{4.2.9}, \(a_n + b_n \geq c_1 + c_2 > 0 \ \forall\ n \geq 1\).
-    So \(x + y\) is positive by Definition \ref{5.4.3}.
+    Next we show that \(x, y\) are positive implies \(x + y\) is also positive.
+    Let \(x\) be the formal limit of some sequence \((a_n)_{n = 1}^{\infty}\) and let \(y\) be the formal limit of some sequence \((b_n)_{n = 1}^{\infty}\).
+    Then we have
+    \begin{align*}
+                 & (x \text{ is positive}) \land (y \text{ is positive})                                                                                 \\
+        \implies & (x = \text{LIM}_{n \to \infty} a_n) \land (y = \text{LIM}_{n \to \infty} b_n)                                                         \\
+                 & \land (\exists\ c_1 \in \mathbf{Q}^+ : \forall\ n \geq 1, 0 < c_1 < a_n)                                                              \\
+                 & \land (\exists\ c_2 \in \mathbf{Q}^+ : \forall\ n \geq 1, 0 < c_2 < b_n)                  & \text{(by Definition \ref{5.4.3})}        \\
+        \implies & (x + y = \text{LIM}_{n \to \infty} a_n + b_n)                                             & \text{(by Definition \ref{5.3.4})}        \\
+                 & \land (\exists\ c_1 \in \mathbf{Q}^+ : \forall\ n \geq 1, 0 < c_1 < a_n)                                                              \\
+                 & \land (\exists\ c_2 \in \mathbf{Q}^+ : \forall\ n \geq 1, 0 < c_2 < b_n)                                                              \\
+        \implies & (x + y = \text{LIM}_{n \to \infty} a_n + b_n)                                                                                         \\
+                 & \land (\exists\ c_1, c_2 \in \mathbf{Q}^+ : \forall\ n \geq 1, 0 < c_1 + c_2 < a_n + b_n) & \text{(by Proposition \ref{4.2.9}(c)(d))} \\
+        \implies & x + y \text{ is positive}.                                                                & \text{(by Definition \ref{5.4.3})}
+    \end{align*}
 
     Finally we show that \(x, y\) are positive implies \(xy\) is also positive.
-    Let \(x = (a_n)_{n = 1}^{\infty}\) and \(y = (b_n)_{n = 1}^{\infty}\).
-    Then by Definition \ref{5.4.3}, \(\exists\ c_1 > 0\) such that \(a_n \geq c_1 > 0 \ \forall\ n \geq 1\) and \(\exists\ c_2 > 0\) such that \(b_n \geq c_2 > 0 \ \forall\ n \geq 1\).
-    But by Definition \ref{5.3.9}, \(xy = \text{LIM}_{n \to \infty} a_n b_n\), and by Proposition \ref{4.2.9}, \(a_n b_n \geq c_1 c_2 > 0 \ \forall\ n \geq 1\).
-    So \(xy\) is positive by Definition \ref{5.4.3}.
+    Let \(x\) be the formal limit of some sequence \((a_n)_{n = 1}^{\infty}\) and let \(y\) be the formal limit of some sequence \((b_n)_{n = 1}^{\infty}\).
+    Then we have
+    \begin{align*}
+                 & (x \text{ is positive}) \land (y \text{ is positive})                                                                             \\
+        \implies & (x = \text{LIM}_{n \to \infty} a_n) \land (y = \text{LIM}_{n \to \infty} b_n)                                                     \\
+                 & \land (\exists\ c_1 \in \mathbf{Q}^+ : \forall\ n \geq 1, 0 < c_1 < a_n)                                                          \\
+                 & \land (\exists\ c_2 \in \mathbf{Q}^+ : \forall\ n \geq 1, 0 < c_2 < b_n)              & \text{(by Definition \ref{5.4.3})}        \\
+        \implies & (xy = \text{LIM}_{n \to \infty} a_n b_n)                                              & \text{(by Definition \ref{5.3.9})}        \\
+                 & \land (\exists\ c_1 \in \mathbf{Q}^+ : \forall\ n \geq 1, 0 < c_1 < a_n)                                                          \\
+                 & \land (\exists\ c_2 \in \mathbf{Q}^+ : \forall\ n \geq 1, 0 < c_2 < b_n)                                                          \\
+        \implies & (xy = \text{LIM}_{n \to \infty} a_n b_n)                                                                                          \\
+                 & \land (\exists\ c_1, c_2 \in \mathbf{Q}^+ : \forall\ n \geq 1, 0 < c_1 c_2 < a_n b_n) & \text{(by Proposition \ref{4.2.9}(d)(e))} \\
+        \implies & xy \text{ is positive}.                                                               & \text{(by Definition \ref{5.4.3})}
+    \end{align*}
 \end{proof}
 
 \begin{note}
