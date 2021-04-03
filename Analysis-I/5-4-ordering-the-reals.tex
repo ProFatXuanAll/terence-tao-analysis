@@ -166,33 +166,30 @@
 \begin{proof}{(a)}
     We first show that at least one of the three statements is true.
     By Proposition \ref{5.4.4}, exactly one of the following three statements is true:
-    \begin{enumerate}
+    \begin{itemize}
         \item \(x - y = 0\).
-              Then by Definition \ref{5.3.11}, \(x = y\).
+              Then by Definition \ref{5.3.11} we have \(x = y\).
         \item \(x - y\) is positive.
-              Then by Definition \ref{5.4.6}, \(x > y\).
+              Then by Definition \ref{5.4.6} we have \(x > y\).
         \item \(x - y\) is negative.
-              Then by Definition \ref{5.4.6}, \(x < y\).
-    \end{enumerate}
+              Then by Definition \ref{5.4.6} we have \(x < y\).
+    \end{itemize}
     So at least one of the three statements is true.
 
     Now we show that at most one of the three statements is true.
-    Suppose for sake of contradiction that both \(x = y\) and \(x > y\) are true.
-    Then by Definition \ref{5.3.11}, \(x - y = 0\).
-    And by Definition \ref{5.4.6}, \(x - y\) is positive.
-    But this contradict to Proposition \ref{5.4.4}.
-    Similarly suppose for sake of contradiction that both \(x = y\) and \(x < y\) are true.
-    Then by Definition \ref{5.3.11}, \(x - y = 0\).
-    And by Definition \ref{5.4.6}, \(x - y\) is negative.
-    But this contradict to Proposition \ref{5.4.4}.
-    Finally, suppose for sake of contradiction that both \(x > y\) and \(x < y\) are true.
-    Then by Definition \ref{5.4.6}, \(x - y\) is both positive and negative.
-    But this contradict to Proposition \ref{5.4.4}.
-    So at most one of the three statements is true.
-    Combine with previous proof, we conclude that exactly one of the three statements is true.
+    \begin{itemize}
+        \item If \(x = y\) and \(x > y\) are true, then by Definition \ref{5.3.11} we have \(x - y = 0\) and by Definition \ref{5.4.6} we have \(x - y\) is positive.
+              But this contradict to Proposition \ref{5.4.4}.
+        \item If \(x = y\) and \(x < y\) are true, then by Definition \ref{5.3.11} we have \(x - y = 0\) and by Definition \ref{5.4.6} we have \(x - y\) is negative.
+              But this contradict to Proposition \ref{5.4.4}.
+        \item If \(x > y\) and \(x < y\) are true, then by Definition \ref{5.4.6}, \(x - y\) is both positive and negative.
+              But this contradict to Proposition \ref{5.4.4}.
+    \end{itemize}
+    From all cases above we conclude that at most one of the three statements is true.
 \end{proof}
 
 \begin{proof}{(b)}
+    We have
     \begin{align*}
              & x < y                                                               \\
         \iff & x - y \text{ is negative}    & \text{(by Definition \ref{5.4.6})}   \\
@@ -203,22 +200,42 @@
 \end{proof}
 
 \begin{proof}{(c)}
-    By Proposition \ref{5.4.7}(b), \(x < y \iff y > x\) and \(y < z \iff z > y\).
-    And by Definition \ref{5.4.6}, \(y > x \iff y - x\) is positive and \(z > y \iff z - y\) is positive.
-    So by Proposition \ref{5.4.4}, \(z - x = (y - x) + (z - y)\) is also positive, which means \(z > x\) by Definition \ref{5.4.6}.
-    Again by Proposition \ref{5.4.7}(b), \(z > x \iff x < z\).
+    We have
+    \begin{align*}
+                 & (x < y) \land (y < z)                                                                                      \\
+        \implies & (x - y \text{ is negative}) \land (y - z \text{ is negative})       & \text{(by Definition \ref{5.4.6})}   \\
+        \implies & (-(x - y) \text{ is positive}) \land (-(y - z) \text{ is positive}) & \text{(by Proposition \ref{5.4.4})}  \\
+        \implies & (y - x \text{ is positive}) \land (z - y \text{ is positive})       & \text{(by Proposition \ref{5.3.11})} \\
+        \implies & y - x + z - y \text{ is positive}                                   & \text{(by Proposition \ref{5.4.4})}  \\
+        \implies & - x + z \text{ is positive}                                         & \text{(by Proposition \ref{5.3.11})} \\
+        \implies & -(x - z) \text{ is positive}                                        & \text{(by Proposition \ref{5.3.11})} \\
+        \implies & x - z \text{ is negative}                                           & \text{(by Proposition \ref{5.4.4})}  \\
+        \implies & x < z.                                                              & \text{(by Definition \ref{5.4.6})}
+    \end{align*}
 \end{proof}
 
 \begin{proof}{(d)}
-    By Proposition \ref{5.4.7}(b), \(x < y \iff y > x\).
-    By Definition \ref{5.4.6}, \(y > x \iff y - x\) is positive.
-    So \(y - x = (y + z) - (x + z)\) is also positive, which means \(y + z > x + z\).
-    Again by Proposition \ref{5.4.7}(b), \(y + z > x + z \iff x + z < y + z\).
+    We have
+    \begin{align*}
+                 & x < y                                                                      \\
+        \implies & x - y \text{ is negative}           & \text{(by Definition \ref{5.4.6})}   \\
+        \implies & x + z - z - y \text{ is negative}   & \text{(by Proposition \ref{5.3.11})} \\
+        \implies & x + z - (y + z) \text{ is negative} & \text{(by Proposition \ref{5.3.11})} \\
+        \implies & x + z < y + z.                      & \text{(by Definition \ref{5.4.6})}
+    \end{align*}
 \end{proof}
 
 \begin{proof}{(e)}
-    Suppose we have \(x < y\) and \(z\) a positive real, and want to conclude that \(xz < yz\).
-    Since \(x < y\), \(y - x\) is positive, hence by Proposition \ref{5.4.4} we have \((y - x)z = yz - xz\) is positive, hence \(xz < yz\).
+    We have
+    \begin{align*}
+                 & x < y                                                                 \\
+        \implies & y > x                        & \text{(by Proposition \ref{5.4.7}(b))} \\
+        \implies & y - x \text{ is positive}    & \text{(by Definition \ref{5.4.6})}     \\
+        \implies & (y - x)z \text{ is positive} & \text{(by Proposition \ref{5.4.4})}    \\
+        \implies & yz - xz \text{ is positive}  & \text{(by Proposition \ref{5.3.11})}   \\
+        \implies & yz > xz                      & \text{(by Definition \ref{5.4.6})}     \\
+        \implies & xz < yz.                     & \text{(by Proposition \ref{5.4.7}(b))}
+    \end{align*}
 \end{proof}
 
 \begin{proposition}\label{5.4.8}
