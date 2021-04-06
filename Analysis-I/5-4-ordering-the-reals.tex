@@ -364,6 +364,65 @@
     There are some subtleties in the decimal system, for instance \(0.9999\dots\) and \(1.000\dots\) are in fact the same real number.
 \end{remark}
 
+\begin{additional corollary}\label{ac 5.4.1}
+Let \(X\) be an non-empty finite subset of \(\mathbf{R}\).
+Then \(X\) has exactly one maximum \(\max(X) \in X\) satisfying
+\[
+    \forall\ x \in X, x \leq \max(X).
+\]
+Similarly, \(X\) has exactly one minimum \(\min(X) \in X\) satisfying
+\[
+    \forall\ x \in X, x \geq \min(X).
+\]
+\end{additional corollary}
+
+\begin{proof}
+    Let \(n = \#(X)\).
+    We use induction on \(n\) to show that \(\max(X), \min(X) \in X\) and we start with \(n = 1\) (since \(\#(\emptyset) = 0\) by Exercise \ref{ex 3.6.2}).
+    For \(n = 1\), we have \(X = \{x\}\) for some \(x \in \mathbf{R}\).
+    Then we have
+    \begin{align*}
+                 & \forall\ y \in X, y = x                                         & \text{(by Axiom \ref{3.3})}        \\
+        \implies & (\forall\ y \in X, y \leq x) \land (\forall\ y \in X, y \geq x) & \text{(by Definition \ref{5.4.6})} \\
+        \implies & \max(X) = \min(X) = x
+    \end{align*}
+    and the base case holds.
+    Suppose inductively that for some \(n \geq 1\) we have \(\max(X) \in X\) and \(\min(X) \in X\).
+    Then for \(n + 1\), we need to show that \(\max(X) \in X\) and \(\min(X) \in X\).
+    Let \(x \in X\) and let \(X' = X \setminus \{x\}\).
+    Then we have
+    \begin{align*}
+                 & X = X' \cup \{x\}                                                                                                                     \\
+        \implies & \#(X') = n                                                                                  & \text{(by Proposition \ref{3.6.14}(a))} \\
+        \implies & (\max(X') \in X') \land (\min(X') \in X')                                                   & \text{(by induction hypothesis)}        \\
+        \implies & (\max(X') \in X) \land (\min(X') \in X)                                                     & (X' \subseteq X)                        \\
+        \implies & \begin{cases}
+            \max(X) = \begin{cases}
+                \max(X') & \text{if } \max(X') > x \\
+                x        & \text{if } \max(X') < x
+            \end{cases} \\
+            \min(X) = \begin{cases}
+                \min(X') & \text{if } \min(X') < x \\
+                x        & \text{if } \min(X') > x
+            \end{cases}
+        \end{cases}                                                                                                            \\
+        \implies & \big(\forall\ y \in X, x \leq \max(X)\big) \land \big(\forall\ y \in X, x \geq \min(X)\big)
+    \end{align*}
+    and this close the induction.
+
+    Now we show that at most one \(\max(X), \min(X) \in X\).
+    Suppose that \(x_1 = \max(X)\) and \(x_2 = \max(X)\).
+    Then by Proposition \ref{5.4.7}(a) we have
+    \[
+        (x_1 \leq x_2) \land (x_2 \leq x_1) \implies x_1 = x_2.
+    \]
+    Similarly suppose that \(x_1 = \min(X)\) and \(x_2 = \min(X)\).
+    Then by Proposition \ref{5.4.7}(a) we have
+    \[
+        (x_1 \geq x_2) \land (x_2 \geq x_1) \implies x_1 = x_2.
+    \]
+\end{proof}
+
 \exercisesection
 
 \begin{exercise}\label{ex 5.4.1}
@@ -390,45 +449,49 @@
 \begin{proof}
     We first prove the existence of the integer \(N\).
     By Proposition \ref{5.4.4}, exactly one of the following three statements is true:
-    \begin{enumerate}
+    \begin{itemize}
         \item \(x = 0\).
               Then we choose \(N = 0\) so that \(0 \leq 0 < 1\).
         \item \(x\) is positive.
-              Then by Corollary \ref{5.4.13}, \(\exists\ U \in \mathbf{Z}\) and \(U > 0\) such that \(U = U1 > x\).
-              And by Proposition \ref{5.4.12}, \(\exists\ q \in \mathbf{Q}\) and \(q > 0\) such that \(q \leq x\).
-              Since \(q \in \mathbf{Q}\), by proposition \ref{4.4.1}, \(\exists!\ L \in \mathbf{Z}\) such that \(L \leq q < L + 1\).
-              So we have \(L \leq x < U\) by Proposition \ref{5.4.7}.
-              Let \(S_1 = \{n \in \mathbf{Z} : L \leq n < U\}\), then \(S_1\) is a finite set since \(\#(S_1) = U - L\).
-              Now let \(S_2 = \{n \in S_1 : L \leq n \leq x\}\), then \(S_2\) is also a finite set by Proposition \ref{3.6.14}.
-              Since \(L \in \mathbf{Z}\) and \(L \leq x\), \(S_2 \neq \emptyset\).
-              Then we can choose an integer \(N\) from \(S_2\) where \(N\) is the largest integer.
-              We must have \(x < N + 1\), otherwised \(x \geq N + 1 \implies N > N + 1\), a contradiction.
-              So we have \(N \leq x < N + 1\), and we are done in this case.
+              Then by Proposition \ref{5.4.12} \(\exists\ q \in \mathbf{Q}^+\) and \(\exists\ N_1' \in \mathbf{Z}^+\) such that \(q \leq x \leq N_1'\).
+              Let \(N_1 = N_1' + 1\).
+              Then we have \(x < N_1\).
+              By Proposition \ref{4.4.1} we know that \(\exists\ N_2 \in \mathbf{Z}\) such that \(N_2 \leq q\), thus by Proposition \ref{5.4.7}(c) we have \(N_2 \leq x < N_1\).
+              Let \(X\) be the set
+              \[
+                  X = \{n \in \mathbf{Z} : N_2 \leq n < N_1\}
+              \]
+              and let \(X'\) be the set
+              \[
+                  X' = \{n \in X : n \leq x < N_1\}.
+              \]
+              We know that \(X, X'\) is finite since \(\#(X) = N_1 - N_2 + 1 \geq 1\) and \(X' \subseteq X\) (by Proposition \ref{3.6.14}(c)).
+              We also know that \(X, X'\) is non-empty since \(N_2 \in X'X\).
+              By Additional Corollary \ref{ac 5.4.1} we know that \(\exists!\ \max(X') \in X'\).
+              Let \(N = \max(X')\).
+              By the definition of \(X'\) we know that \(N \leq x < N_1\).
+              We must also have \(x < N + 1\), otherwise if \(N + 1 \leq x\) then \(\max(X') = N + 1\), a contradiction.
+              Thus we have \(N \leq x < N + 1\).
         \item \(x\) is negative.
-              By Proposition \ref{5.4.4}, \(-x\) is positive.
-              Then by Proposition \ref{5.4.12}, \(\exists\ L \in \mathbf{Z}\) and \(L > 0\) such that \(-x \leq L\).
-              And By Proposition \ref{5.4.7}, we have \(-L \leq x\).
-              Again by Proposition \ref{5.4.12}, \(\exists\ q \in \mathbf{Q}\) and \(q > 0\) such that \(q \leq -x\).
-              Since \(q \in \mathbf{Q}\), by proposition \ref{4.4.1}, \(\exists!\ U \in \mathbf{Z}\) such that \(U \leq q < U + 1\).
-              We also have \(U - 1 < q\) by Proposition \ref{4.2.9}, combine with \(q \leq -x\) we have \(U - 1 < -x\), or equivalently \(x < -(U - 1)\) by Proposition \ref{5.4.7}.
-              So we have \(-L \leq x < -(U - 1)\) by Proposition \ref{5.4.7}.
-              Let \(S_1 = \{n \in \mathbf{Z} : -L \leq n < -(U + 1)\}\), then \(S_1\) is a finite set since \(\#(S_1) = L - (U + 1)\).
-              Now let \(S_2 = \{n \in S_1 : -L \leq n \leq x\}\), then \(S_2\) is also a finite set by Proposition \ref{3.6.14}.
-              Since \(-L \in \mathbf{Z}\) and \(-L \leq x\), \(S_2 \neq \emptyset\).
-              Then we can choose an integer \(N\) from \(S_2\) where \(N\) is the largest integer.
-              We must have \(x < N + 1\), otherwised \(x \geq N + 1 \implies N > N + 1\), a contradiction.
-              So we have \(N \leq x < N + 1\), and we are done in this case.
-    \end{enumerate}
-    From all cases above, we can conclude that \(\exists\ N \in \mathbf{Z} : N \leq x < N + 1\).
+              Then we have
+              \begin{align*}
+                           & -x > 0                                           & \text{(by Proposition \ref{5.4.4})}    \\
+                  \implies & \exists\ M \in \mathbf{Z}^+ : M1 = M > x         & \text{(by Corollary \ref{5.4.13})}     \\
+                  \implies & x + M > 0                                        & \text{(by Proposition \ref{5.4.7}(d))} \\
+                  \implies & \exists\ N \in \mathbf{Z} : N \leq x + M < N + 1 & \text{(from case above)}               \\
+                  \implies & N - M \leq x < N - M + 1.
+              \end{align*}
+    \end{itemize}
+    From all cases above we conclude that \(\exists\ N \in \mathbf{Z} : N \leq x < N + 1\).
 
     Now we prove the uniqueness of the integer \(N\).
     Suppose that \(\exists\ N_1, N_2 \in \mathbf{Z}\) such that \(N_1 \leq x < N_1 + 1\) and \(N_2 \leq x < N_2 + 1\).
-    Then we get \(N_1 < N_2 + 1\) and \(N_2 < N_1 + 1\).
-    So
+    Then we have
     \begin{align*}
-                 & (N_1 < N_2 + 1) \land (N_2 < N_1 + 1)                                                     \\
-        \implies & (N_1 + 1 \leq N_2 + 1) \land (N_2 + 1 \leq N_1 + 1) & \text{(by Definition \ref{4.1.10})} \\
-        \implies & (N_1 \leq N_2) \land (N_2 \leq N_1)                 & \text{(by Definition \ref{4.1.10})} \\
+                 & (N_1 \leq x < N_1 + 1) \land (N_2 \leq x < N_2 + 1)                                          \\
+        \implies & (N_1 < N_2 + 1) \land (N_2 < N_1 + 1)               & \text{(by Proposition \ref{5.4.7}(c))} \\
+        \implies & (N_1 + 1 \leq N_2 + 1) \land (N_2 + 1 \leq N_1 + 1) & \text{(by Definition \ref{4.1.10})}    \\
+        \implies & (N_1 \leq N_2) \land (N_2 \leq N_1)                 & \text{(by Definition \ref{4.1.10})}    \\
         \implies & N_1 = N_2.                                          & \text{(by Lemma \ref{4.1.11})}
     \end{align*}
     Thus we conclude that \(\exists!\ N \in \mathbf{Z} : N \leq x < N + 1\).
