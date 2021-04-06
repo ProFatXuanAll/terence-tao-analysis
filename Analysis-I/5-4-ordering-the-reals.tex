@@ -525,22 +525,30 @@ Similarly, \(X\) has exactly one minimum \(\min(X) \in X\) satisfying
 \end{exercise}
 
 \begin{proof}
-    We first prove that \(\abs*{x - y} < \varepsilon \iff y - \varepsilon < x < y + \varepsilon\).
+    We first show that \(\abs*{x - y} < \varepsilon \iff y - \varepsilon < x < y + \varepsilon\).
     \begin{align*}
-             & \abs*{x - y} < \varepsilon                                                                  \\
-        \iff & (x - y < \varepsilon) \land (-(x - y) < \varepsilon) & \text{(by Definition \ref{5.4.5})}   \\
-        \iff & (x - y < \varepsilon) \land (y - x < \varepsilon)    & \text{(by Proposition \ref{5.3.11})} \\
-        \iff & (x < y + \varepsilon) \land (y - \varepsilon < x)    & \text{(by Proposition \ref{5.4.7})}  \\
-        \iff & y - \varepsilon < x < y + \varepsilon.               & \text{(by Proposition \ref{5.4.7})}
+             & \abs*{x - y} < \varepsilon                                                                                                          \\
+        \iff & \big(-(x - y) \leq x - y < \varepsilon\big) \lor \big(x - y \leq -(x - y) < \varepsilon\big) & \text{(by Definition \ref{5.4.5})}   \\
+        \iff & (x - y < \varepsilon) \land (-(x - y) < \varepsilon)                                                                                \\
+        \iff & (x - y < \varepsilon) \land (y - x < \varepsilon)                                            & \text{(by Proposition \ref{5.3.11})} \\
+        \iff & (x < y + \varepsilon) \land (y - \varepsilon < x)                                            & \text{(by Proposition \ref{5.4.7})}  \\
+        \iff & y - \varepsilon < x < y + \varepsilon.                                                       & \text{(by Proposition \ref{5.4.7})}
     \end{align*}
 
-    Now we prove that \(\abs*{x - y} \leq \varepsilon \iff y - \varepsilon \leq x \leq y + \varepsilon\).
+    Now we show that \(\abs*{x - y} \leq \varepsilon \iff y - \varepsilon \leq x \leq y + \varepsilon\).
+    Since
     \begin{align*}
-             & \abs*{x - y} \leq \varepsilon                                                                     \\
-        \iff & (x - y \leq \varepsilon) \land (-(x - y) \leq \varepsilon) & \text{(by Definition \ref{5.4.5})}   \\
-        \iff & (x - y \leq \varepsilon) \land (y - x \leq \varepsilon)    & \text{(by Proposition \ref{5.3.11})} \\
-        \iff & (x \leq y + \varepsilon) \land (y - \varepsilon \leq x)    & \text{(by Proposition \ref{5.4.7})}  \\
-        \iff & y - \varepsilon \leq x \leq y + \varepsilon.               & \text{(by Proposition \ref{5.4.7})}
+             & \abs*{x - y} = \varepsilon                                                                 \\
+        \iff & (x - y = \varepsilon) \lor (-(x - y) = \varepsilon) & \text{(by Definition \ref{5.4.5})}   \\
+        \iff & (x = y + \varepsilon) \lor (x = y - \varepsilon),   & \text{(by Proposition \ref{5.3.11})}
+    \end{align*}
+    we have
+    \begin{align*}
+             & \abs*{x - y} \leq \varepsilon                                                                            \\
+        \iff & (\abs*{x - y} < \varepsilon) \land (\abs*{x - y} = \varepsilon)                                          \\
+        \iff & (y - \varepsilon < x < y + \varepsilon) \land \big((x = y + \varepsilon) \lor (x = y - \varepsilon)\big) \\
+        \iff & (y - \varepsilon \leq x < y + \varepsilon) \lor (y - \varepsilon < x \leq y + \varepsilon)               \\
+        \iff & y - \varepsilon \leq x \leq y + \varepsilon.
     \end{align*}
 \end{proof}
 
