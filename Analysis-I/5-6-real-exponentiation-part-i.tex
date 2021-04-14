@@ -81,42 +81,58 @@ Thus we can modify the proof of Proposition \ref{4.3.10} and \ref{4.3.12} to hol
 \end{lemma}
 
 \begin{proof}{(a)}
-    Let \(E = \{z \in \mathbf{R} : (z \geq 0) \land (z^n \leq x)\}\).
-    So \(y = x^{1 / n} = \sup(E)\).
+    Let \(E = \{z \in \mathbf{R} : (z \geq 0) \land (z^n \leq x)\}\) and let \(y = x^{1 / n} = \sup(E)\).
+    Since \(0 \in E\), by Definition \ref{5.5.5} we know that \(0 \leq y\).
     Suppose for sake of contradiction that \(y^n \neq x\).
-    Then by Proposition \ref{5.4.7}, exactly one of the following statements is true:
-    \begin{enumerate}[label=(\Roman*)]
+    Then by Proposition \ref{5.4.7} exactly one of the following statements is true:
+    \begin{itemize}
         \item \(y^n < x\).
-              Now we want to show that \(\exists\ \varepsilon \in \mathbf{R}\) and \(\varepsilon > 0\) such that \((y + \varepsilon)^n < x\).
-              Because \(y < y + \varepsilon\), so we have \(y^n < (y + \varepsilon)^n\).
-              Let \(\delta = (y + \varepsilon)^n - y^n\), then \(\delta > 0\).
-              By Corollary \ref{5.4.13}, we can find an \(N \in \mathbf{N}\) and \(N > 0\) such that \(\delta < 1 \times N\).
-              By Proposition \ref{5.4.14}, \(\exists\ q \in \mathbf{Q}\) such that \(\delta < q < N\), which means \(\delta / q < 1\), and we have
+              Now we show that \(\exists\ m \in \mathbf{Z}^+\) such that \((y + \frac{1}{m})^n < x\).
+              Suppose for sake of contradiction that \(\forall\ m \in \mathbf{Z}^+\), we have \((y + \frac{1}{m})^n \geq x\).
+              Let \((y + \frac{1}{m})_{m = 1}^\infty\) be a sequences.
+              Then we have
               \begin{align*}
-                  (y + \varepsilon)^n & = y^n + \delta                          \\
-                                      & = y^n + q \delta / q & (q \neq 0)       \\
-                                      & < y^n + q.           & (\delta / q < 1)
+                  \text{LIM}_{m \to \infty} \bigg(y + \frac{1}{m}\bigg) & = \text{LIM}_{m \to \infty} y + \text{LIM}_{m \to \infty} \frac{1}{m} & \text{(by Definition \ref{5.3.4})}   \\
+                                                                        & = \text{LIM}_{m \to \infty} y + 0                                     & \text{(by Exercise \ref{ex 5.3.5})}  \\
+                                                                        & = y.                                                                  & \text{(by Proposition \ref{6.1.15})}
               \end{align*}
-              This means if we can show that \(\exists\ q \in \mathbf{Q}\) and \(q > 0\) such that \(y^n + q < x\), then we can show that \(\exists\ \varepsilon \in \mathbf{R}\) and \(\varepsilon > 0\) such that \((y + \varepsilon)^n < x\).
-              We can show such \(q\) exists because by Proposition \ref{5.4.14} \(\exists\ q \in \mathbf{Q}\) and \(0 < q < x - y^n\).
-              So we must have \(\varepsilon \in \mathbf{R}\) and \(\varepsilon > 0\) such that \((y + \varepsilon)^n < x\).
-              But this means \(y + \varepsilon \in E\) and \(y + \varepsilon \leq y\), a contradiction.
+              Note that we use Proposition \ref{6.1.15} without circularity.
+              But then we have
+              \begin{align*}
+                           & \forall\ m \in \mathbf{Z}^+, y^n < x \leq \bigg(y + \frac{1}{m}\bigg)^n                                                \\
+                  \implies & y^n < x \leq \text{LIM}_{m \to \infty} \bigg(y + \frac{1}{m}\bigg)^n             & \text{(by Exercise \ref{ex 5.4.8})} \\
+                  \implies & y^n < x \leq \Bigg(\text{LIM}_{m \to \infty} \bigg(y + \frac{1}{m}\bigg)\Bigg)^n & \text{(by Definition \ref{5.3.9})}  \\
+                  \implies & y^n < x \leq y^n                                                                                                       \\
+                  \implies & y^n < y^n,
+              \end{align*}
+              a contradiction.
+              Thus we know that \(\exists\ m \in \mathbf{Z}^+\) such that \((y + \frac{1}{m})^n < x\).
+              Since \(m \in \mathbf{Z}^+\), we know that \(y < y + \frac{1}{m}\), thus by Proposition \ref{5.6.3} we know that \(y^n < (y + \frac{1}{m})^n\).
+              But this means \(y + \frac{1}{m} \in E\) and \(y + \frac{1}{m} \leq y\), a contradiction.
         \item \(y^n > x\).
-              Now we want to show that \(\exists\ \varepsilon \in \mathbf{R}\) and \(\varepsilon > 0\) such that \((y - \varepsilon)^n > x\).
-              Because \(y > y - \varepsilon\), so we have \(y^n > (y - \varepsilon)^n\).
-              Let \(\delta = y^n - (y - \varepsilon)^n\), then \(\delta > 0\).
-              By Proposition \ref{5.4.13}, we can find an \(q \in \mathbf{Q}\) and \(q > 0\) such that \(q < 2q \leq \delta\).
-              Then we have \(\delta / q > 1\) and
+              Now we show that \(\exists\ m \in \mathbf{Z}^+\) such that \((y - \frac{1}{m})^n > x\).
+              Suppose for sake of contradiction that \(\forall\ m \in \mathbf{Z}^+\), we have \((y - \frac{1}{m})^n \leq x\).
+              Let \((y - \frac{1}{m})_{m = 1}^\infty\) be a sequences.
+              Then we have
               \begin{align*}
-                  (y - \varepsilon)^n & = y^n - \delta                          \\
-                                      & = y^n - q \delta / q & (q \neq 0)       \\
-                                      & > y^n - q.           & (\delta / q > 1)
+                  \text{LIM}_{m \to \infty} \bigg(y - \frac{1}{m}\bigg) & = \text{LIM}_{m \to \infty} y - \text{LIM}_{m \to \infty} \frac{1}{m} & \text{(by Definition \ref{5.3.4})}   \\
+                                                                        & = \text{LIM}_{m \to \infty} y - 0                                     & \text{(by Exercise \ref{ex 5.3.5})}  \\
+                                                                        & = y.                                                                  & \text{(by Proposition \ref{6.1.15})}
               \end{align*}
-              This means if we can show that \(\exists\ q \in \mathbf{Q}\) and \(q > 0\) such that \(y^n - q > x\), then we can show that \(\exists\ \varepsilon \in \mathbf{R}\) and \(\varepsilon > 0\) such that \((y - \varepsilon)^n > x\).
-              We can show such \(q\) exists because by Proposition \ref{5.4.14} \(\exists\ q \in \mathbf{Q}\) and \(0 < q < y^n - x\).
-              So we must have \(\varepsilon \in \mathbf{R}\) and \(\varepsilon > 0\) such that \((y - \varepsilon)^n > x\).
-              But this means \(y - \varepsilon\) is an upper bound of \(E\) and \(y - \varepsilon < y = \sup(E)\), a contradiction.
-    \end{enumerate}
+              Note that we use Proposition \ref{6.1.15} without circularity.
+              But then we have
+              \begin{align*}
+                           & \forall\ m \in \mathbf{Z}^+, \bigg(y - \frac{1}{m}\bigg)^n \leq x < y^n                                                \\
+                  \implies & \text{LIM}_{m \to \infty} \bigg(y - \frac{1}{m}\bigg)^n \leq x < y^n             & \text{(by Exercise \ref{ex 5.4.8})} \\
+                  \implies & \Bigg(\text{LIM}_{m \to \infty} \bigg(y - \frac{1}{m}\bigg)\Bigg)^n \leq x < y^n & \text{(by Definition \ref{5.3.9})}  \\
+                  \implies & y^n \leq x < y^n                                                                                                       \\
+                  \implies & y^n < y^n,
+              \end{align*}
+              a contradiction.
+              Thus we know that \(\exists\ m \in \mathbf{Z}^+\) such that \((y - \frac{1}{m})^n > x\).
+              Since \(m \in \mathbf{Z}^+\), we know that \(y - \frac{1}{m} < y\), thus by Proposition \ref{5.6.3} we know that \((y - \frac{1}{m})^n < y^n\).
+              But this means \(y - \frac{1}{m} \notin E\) and \(y - \frac{1}{m}\) and upper bound for \(E\) which is strictly less than \(y\), a contradiction.
+    \end{itemize}
     From all cases above we get contradictions, so \(y = x^{1 / n} \implies y^n = x\).
 \end{proof}
 
