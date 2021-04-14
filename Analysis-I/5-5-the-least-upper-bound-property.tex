@@ -81,7 +81,7 @@
     By the Archimedean property (Corollary \ref{5.4.13}), we can find an integer \(K\) such that \(K / n \geq M\), and hence \(K / n\) is also an upper bound for \(E\).
     (Note that \(K\) is positive, and \(M\) can be either zero or negative, but \(K / n\) is positive, so we are fine.)
     By the Archimedean property again, there exists another integer \(L\) such that \(L / n < x_0\).
-    (Note that \(-L\) is positive, so we have \(-L / n > -x_0\))
+    (Note that if \(x_0 \geq 0\), then we can set \(L = -1\); if \(x_0 < 0\), then \(-x_0\) is positive, so by Archimedean property we have some \(-L \in \mathbf{Z}^+\) such that \(-L / n > -x_0\).)
     Since \(x_0\) lies in \(E\), we see that \(L / n\) is not an upper bound for \(E\).
     Since \(K / n\) is an upper bound but \(L / n\) is not, we see that \(K \geq L\).
 
@@ -248,14 +248,19 @@
 
 \begin{proof}
     Let \(d = K - L\), so \(d\) is positive by Definition \ref{4.1.10}.
-    Now we use induction on \(d\) to prove that for all \(d \in \mathbf{Z}\) and \(d > 0\), \(\exists\ m \in \mathbf{Z}\) such that \(L < m \leq K\) and \(m / n\) is an upper bound for \(E\), but that \((m - 1) / n\) is not an upper bound for \(E\).
+    Now we use induction on \(d\) to show that for all \(d \in \mathbf{Z}^+\), \(\exists\ m \in \mathbf{Z}\) such that \(L < m \leq K\) and \(m / n\) is an upper bound for \(E\), but that \((m - 1) / n\) is not an upper bound for \(E\).
+    We start with \(d = 1\).
     For \(d = 1\), we have \(K - 1 = L\).
-    Then let \(m = K\), so by the given conditions \(K / n\) is an upper bound for \(E\), and again by the given conditions \((K - 1) / n = L / n\) is not an upper bound for \(E\).
+    Then let \(m = K\).
+    So by hypothesis we have \(L < m = K \leq K\), \(m / n = K / n\) is an upper bound for \(E\) and \((m - 1) / n = (K - 1) / n = L / n\) is not an upper bound for \(E\).
     Thus the base case holds.
     Suppose inductively that the statement holds for some \(d \geq 1\).
-    Then for \(d++\), we have \(K - L = d++\).
-    Since \(K / n\) is an upper bound for \(E\), if \((K - 1) / n\) is not an upper bound for \(E\), then we can choose \(m = K\);
-    if \((K - 1) / n\) is also an upper bound for \(E\), then by induction hypothesis, \(\exists\ m \in \mathbf{Z}\) such that \(L < m \leq K - 1\) and \(m / n\) is an upper bound for \(E\), but that \((m - 1) / n\) is not an upper bound for \(E\).
+    Then for \(d + 1\), we need to show that the statement is also true.
+    We have \(K - L = d + 1\).
+    Since \(K / n\) is an upper bound for \(E\), we can ask whether \((K - 1) / n\) is an upper bound for \(E\).
+    If \((K - 1) / n\) is not an upper bound for \(E\), then we can choose \(m = K\) and we are done.
+    If \((K - 1) / n\) is an upper bound for \(E\), then we know that \(L = K - 1 - d < K - 1\) since \(d \geq 1\).
+    Since \(K - 1 - L = d\), by induction hypothesis \(\exists\ m \in \mathbf{Z}\) such that \(L < m \leq K - 1\) and \(m / n\) is an upper bound for \(E\), but \((m - 1) / n\) is not an upper bound for \(E\).
     This close the induction.
 \end{proof}
 
@@ -268,12 +273,12 @@
 \begin{proof}
     Suppose for sake of contradiction that \(m \neq m'\).
     Then by Lemma \ref{4.1.11}, we have either \(m < m'\) or \(m > m'\), but not both.
-    \begin{enumerate}
-        \item If \(m < m'\), then \(m - 1 < m \leq m' - 1\) by Lemma \ref{4.1.11}.
-              Again by Lemma \ref{4.1.11}, we have \(m / n \leq (m' - 1) / n\), which means \((m' - 1) / n\) is also a upper bound, a contradiction.
-        \item If \(m > m'\), then \(m' - 1 < m' \leq m - 1\) by Lemma \ref{4.1.11}.
-              Again by Lemma \ref{4.1.11}, we have \(m' / n \leq (m - 1) / n\), which means \((m - 1) / n\) is also a upper bound, a contradiction.
-    \end{enumerate}
+    \begin{itemize}
+        \item If \(m < m'\), then by Lemma \ref{4.1.11}(e) we have \(m - 1 < m \leq m' - 1\).
+              Again by Lemma \ref{4.1.11}(e) we have \(m / n \leq (m' - 1) / n\), which means \((m' - 1) / n\) is also a upper bound for \(E\), a contradiction.
+        \item If \(m > m'\), then by Definition \ref{4.1.10} we have \(m' < m\).
+              Using similar proof as above we can show that \((m - 1) / n\) is also a upper bound for \(E\), a contradiction.
+    \end{itemize}
     Thus we must have \(m = m'\).
 \end{proof}
 
