@@ -290,22 +290,24 @@
 
 \begin{proof}
     We first show that \(q_1, q_2, q_3, \dots\) is a Cauchy sequence.
-    By Corollary \ref{5.4.13}, \(\forall\ \varepsilon \in \mathbf{Q}\) and \(\varepsilon > 0\), \(\exists\ M \in \mathbf{Z}\) and \(M \geq 1\) such that \(M\varepsilon > 1\), which means \(\varepsilon > 1 / M\) by Proposition \ref{4.2.9}.
-    So we have \(\abs*{q_n - q_{n'}} \leq \frac{1}{M} < \varepsilon \ \forall\ n, n' \geq M\), where \(n, n' \in \mathbf{Z}\).
-    This means \((q_n)_{n = 1}^{\infty}\) is a Cauchy sequence.
+    By Archimedean property (Corollary \ref{5.4.13}) we know that \(\forall\ \varepsilon \in \mathbf{Q}^+\), \(\exists\ M \in \mathbf{Z}^+\) such that \(M\varepsilon > 1\).
+    By Proposition \ref{4.2.9} we have \(\varepsilon > 1 / M\).
+    By hypothesis we have \(\forall\ n, n' \geq M\), \(\abs*{q_n - q_{n'}} \leq \frac{1}{M} < \varepsilon\).
+    Since \(\varepsilon\) is arbitrary, by Definition \ref{5.1.8} \((q_n)_{n = 1}^{\infty}\) is a Cauchy sequence.
 
-    Now we prove that \(S \coloneqq \text{LIM}_{n \to \infty} q_n\) implies \(\abs*{q_M - S} \leq \frac{1}{M}\) for every \(M \geq 1\).
-    By the given conditions, we have \(\abs*{q_M - q_n} \leq 1 / M\) for all \(M \geq 1\) and \(n \geq M\), where \(n \in \mathbf{Z}\).
-    So \(\forall\ n \geq M \geq 1\), we have
+    Now we show that if \(S = \text{LIM}_{n \to \infty} q_n\), then \(\abs*{q_M - S} \leq \frac{1}{M}\) for every \(M \geq 1\).
+    From proof above we know that \((q_n)_{n = 1}^\infty\) is indeed a Cauchy sequence, thus \(S = \text{LIM}_{n \to \infty} q_n\) is well-defined.
+    By hypothesis we have \(\abs*{q_M - q_n} \leq 1 / M\) for all \(M \in \mathbf{Z}^+\) and for all \(n \geq M\).
+    Then we have
     \begin{align*}
-                 & \abs*{q_M - q_n} \leq 1 / M                                                                            \\
-        \implies & \abs*{q_n - q_M} \leq 1 / M                                      & \text{(by Proposition \ref{4.3.3})} \\
-        \implies & -1 / M \leq q_n - q_M \leq 1 / M                                 & \text{(by Proposition \ref{4.3.3})} \\
-        \implies & -1 / M + q_M \leq q_n \leq 1 / M + q_M                           & \text{(by Proposition \ref{4.2.9})} \\
-        \implies & -1 / M + q_M \leq \text{LIM}_{n \to \infty} q_n \leq 1 / M + q_M & \text{(by Exercise \ref{ex 5.4.8})} \\
-        \implies & -1 / M + q_M \leq S \leq 1 / M + q_M                                                                   \\
-        \implies & -1 / M \leq S - q_M \leq 1 / M                                   & \text{(by Proposition \ref{5.4.7})} \\
-        \implies & \abs*{S - q_M} \leq 1 / M                                        & \text{(by Exercise \ref{ex 5.4.6})} \\
+                 & \abs*{q_M - q_n} \leq 1 / M                                                                               \\
+        \implies & \abs*{q_n - q_M} \leq 1 / M                                      & \text{(by Definition \ref{4.3.1})}     \\
+        \implies & -1 / M \leq q_n - q_M \leq 1 / M                                 & \text{(by Proposition \ref{4.3.3})(c)} \\
+        \implies & -1 / M + q_M \leq q_n \leq 1 / M + q_M                           & \text{(by Proposition \ref{4.2.9})(d)} \\
+        \implies & -1 / M + q_M \leq \text{LIM}_{n \to \infty} q_n \leq 1 / M + q_M & \text{(by Exercise \ref{ex 5.4.8})}    \\
+        \implies & -1 / M + q_M \leq S \leq 1 / M + q_M                                                                      \\
+        \implies & -1 / M \leq S - q_M \leq 1 / M                                   & \text{(by Proposition \ref{5.4.7})}    \\
+        \implies & \abs*{S - q_M} \leq 1 / M                                        & \text{(by Exercise \ref{ex 5.4.6})}    \\
         \implies & \abs*{q_M - S} \leq 1 / M.                                       & \text{(by Definition \ref{5.4.5})}
     \end{align*}
 \end{proof}
