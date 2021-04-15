@@ -138,15 +138,32 @@ Thus we can modify the proof of Proposition \ref{4.3.10} and \ref{4.3.12} to hol
 
 \begin{proof}{(b)}
     Let \(E = \{z \in \mathbf{R} : (z \geq 0) \land (z^n \leq x)\}\).
-    So \(x^{1 / n} = \sup(E)\).
-    Since \(y > 0\) and \(y^n = x\), we have \(y \in E\).
-    By Definition \ref{5.5.5}, \(y \leq \sup(E) = x^{1 / n}\).
+    By Definition \ref{5.6.4} we have \(x^{1 / n} = \sup(E)\).
+    Since \(0 \in E\), by Definition \ref{5.5.5} we know that \(0 \leq x^{1 / n}\).
+    Let \(y \in \mathbf{R} \setminus \mathbf{R}^-\) such that \(y^n = x\).
+    Such \(y\) is well-defined since Lemma \ref{5.6.6}(a).
+    By the definition of \(E\) we know that \(y \in E\).
     Suppose for sake of contradiction that \(y \neq x^{1 / n}\).
-    Then we have \(y < x^{1 / n}\).
-    By Exercise \ref{ex 5.5.5}, \(\exists\ \varepsilon \in \mathbf{R}\) such that \(y < \varepsilon < x^{1 / n}\).
-    So we have \(y^n < \varepsilon^n\), which means \(\varepsilon \notin E\).
-    But this means \(\varepsilon > x^{1 / n}\) because \(0 < y < \varepsilon\) and \(x < \varepsilon^n\), contradict to \(\varepsilon < x^{1 / n}\).
-    So \(y = x^{1 / n}\).
+    Then by Proposition \ref{5.4.7} exactly one of the following statements is true:
+    \begin{itemize}
+        \item \(y < x^{1 / n}\).
+              But then we have
+              \begin{align*}
+                           & y^n < (x^{1 / n})^n & \text{(by Proposition \ref{5.6.3})} \\
+                  \implies & x < (x^{1 / n})^n                                         \\
+                  \implies & x < x,              & \text{(by Lemma \ref{5.6.6}(a))}
+              \end{align*}
+              a contradiction.
+        \item \(y > x^{1 / n}\).
+              But then we have
+              \begin{align*}
+                           & y^n > (x^{1 / n})^n & \text{(by Proposition \ref{5.6.3})} \\
+                  \implies & x > (x^{1 / n})^n                                         \\
+                  \implies & x > x,              & \text{(by Lemma \ref{5.6.6}(a))}
+              \end{align*}
+              a contradiction.
+    \end{itemize}
+    From all cases above we get contradictions, so \(y^n = x \implies y = x^{1 / n}\).
 \end{proof}
 
 \begin{proof}{(c)}
