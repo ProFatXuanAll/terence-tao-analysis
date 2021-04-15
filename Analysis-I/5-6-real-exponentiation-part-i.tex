@@ -214,101 +214,70 @@ Thus we can modify the proof of Proposition \ref{4.3.10} and \ref{4.3.12} to hol
 \end{proof}
 
 \begin{proof}{(e)}
-    We first prove that if \(x > 1\), then \(x^{1 / k}\) is a decreasing function of \(k\).
-    Let \(f : \{k \in \mathbf{N} : k > 0\} \to \mathbf{R}\) be a function such that \(f(k) = x^{1 / k}\).
-    Such function \(f\) exists because of Definition \ref{5.6.4}.
-    Let \(k \in \{k \in \mathbf{N} : k > 0\}\).
+    If \(x = 0\), then by Lemma \ref{5.6.6}(c) we know that \(x^{1 / k} = 0\) for every \(k \in \mathbf{Z}^+\).
+    Thus we only consider the case \(x \in \mathbf{R}^+\).
+
+    We first show that if \(x > 1\), then \(x^{1 / k}\) is a decreasing function of \(k\).
+    Let \(f : \mathbf{Z}^+ \to \mathbf{R}\) be a function such that \(f(k) = x^{1 / k}\).
+    Such function \(f\) is well-defined since Lemma \ref{5.6.5}.
     Now we want to show that \(x^{1 / k} > x^{1 / (k + 1)}\).
-    Suppose for sake of contradiction that \(x^{1 / k} \not> x^{1 / (k + 1)}\).
-    Then by Proposition \ref{5.4.7}, exactly one of the following two statements is true:
-    \begin{enumerate}[label=(\Roman*)]
-        \item \(x^{1 / k} = x^{1 / (k + 1)}\).
-              Then we have
-              \begin{align*}
-                           & x = (x^{1 / k})^k                                     & \text{(by Lemma \ref{5.6.6}(a))}   \\
-                  \implies & x = (x^{1 / (k + 1)})^k                                                                    \\
-                  \implies & x = (x^{1 / (k + 1)})^{(k + 1)}                       & \text{(by Lemma \ref{5.6.6}(a))}   \\
-                  \implies & (x^{1 / (k + 1)})^{(k + 1)} / (x^{1 / (k + 1)})^k = 1 & (x > 1)                            \\
-                  \implies & (x^{1 / (k + 1)})^{(k + 1) - k} = 1                   & \text{(by Lemma \ref{5.6.3})}      \\
-                  \implies & (x^{1 / (k + 1)})^1 = 1                                                                    \\
-                  \implies & x^{1 / (k + 1)} = 1                                   & \text{(by Definition \ref{5.6.1})} \\
-                  \implies & x = (x^{1 / (k + 1)})^{(k + 1)} = 1^{k + 1} = 1.      & \text{(by Lemma \ref{5.6.6}(a))}
-              \end{align*}
-              But this contradict to \(x > 1\).
-        \item \(x^{1 / k} < x^{1 / (k + 1)}\).
-              Then we have
-              \begin{align*}
-                           & (x^{1 / k})^{(k + 1)} < (x^{1 / (k + 1)})^{(k + 1)}                                       \\
-                  \implies & (x^{1 / k})^{(k + 1)} < x                           & \text{(by Lemma \ref{5.6.6}(a))}    \\
-                  \implies & (x^{1 / k})^k (x^{1 / k}) < x                       & \text{(by Definition \ref{5.6.1})}  \\
-                  \implies & x (x^{1 / k}) < x                                   & \text{(by Lemma \ref{5.6.6}(a))}    \\
-                  \implies & x^{1 / k} < 1                                       & \text{(by Proposition \ref{5.4.7})} \\
-                  \implies & (x^{1 / k})^k < 1^k = 1                             & \text{(by Proposition \ref{5.4.7})} \\
-                  \implies & x < 1.                                              & \text{(by Lemma \ref{5.6.6}(a))}
-              \end{align*}
-              But this contradict to \(x > 1\).
-    \end{enumerate}
-    From all cases above we get contradictions.
-    Thus \(f(k) = x^{1 / k} > x^{1 / (k + 1)} = f(k + 1)\), \(f(k) = x^{1 / k}\) is a decreasing function of \(k\).
+    Suppose for sake of contradiction that \(x^{1 / k} \leq x^{1 / (k + 1)}\).
+    But then we have
+    \begin{align*}
+                 & x^{\frac{1}{k}} \leq x^{\frac{1}{k + 1}}                                                                                                                           \\
+        \implies & (x^{\frac{1}{k}})^k \leq (x^{\frac{1}{k + 1}})^k                                                                             & \text{(by Proposition \ref{5.6.3})} \\
+        \implies & x \leq (x^{\frac{1}{k + 1}})^k                                                                                               & \text{(by Lemma \ref{5.6.6}(a))}    \\
+        \implies & (x^{\frac{1}{k + 1}})^{k + 1} \leq (x^{\frac{1}{k + 1}})^k                                                                   & \text{(by Lemma \ref{5.6.6}(a)(b))} \\
+        \implies & (x^{\frac{1}{k + 1}})^{k + 1} \cdot (x^{\frac{1}{k + 1}})^{-1} \leq (x^{\frac{1}{k + 1}})^k \cdot (x^{\frac{1}{k + 1}})^{-1} & \text{(by Lemma \ref{5.6.6}(c))}    \\
+        \implies & (x^{\frac{1}{k + 1}})^{k + 1} \cdot (x^{\frac{1}{k + 1}})^{-k} \leq (x^{\frac{1}{k + 1}})^k \cdot (x^{\frac{1}{k + 1}})^{-k} & \text{(by Proposition \ref{5.6.3})} \\
+        \implies & x^{\frac{1}{k + 1}} \leq 1                                                                                                   & \text{(by Proposition \ref{5.6.3})} \\
+        \implies & (x^{\frac{1}{k + 1}})^{k + 1} \leq 1^{k + 1} = 1                                                                             & \text{(by Proposition \ref{5.6.3})} \\
+        \implies & x \leq 1,                                                                                                                    & \text{(by Lemma \ref{5.6.6}(a))}
+    \end{align*}
+    a contradiction.
+    Thus we must have \(f(k) = x^{1 / k} > x^{1 / (k + 1)} = f(k + 1)\), and \(f(k) = x^{1 / k}\) is a decreasing function of \(k\).
 
-    Next we prove that if \(x < 1\), then \(x^{1 / k}\) is a increasing function of \(k\).
-    Let \(f : \{k \in \mathbf{N} : k > 0\} \to \mathbf{R}\) be a function such that \(f(k) = x^{1 / k}\).
-    Such function \(f\) exists because of Definition \ref{5.6.4}.
-    Let \(k \in \{k \in \mathbf{N} : k > 0\}\).
+    Next we show that if \(x < 1\), then \(x^{1 / k}\) is a increasing function of \(k\).
+    Let \(f : \mathbf{Z}^+ \to \mathbf{R}\) be a function such that \(f(k) = x^{1 / k}\).
+    Such function \(f\) is well-defined since Lemma \ref{5.6.5}.
     Now we want to show that \(x^{1 / k} < x^{1 / (k + 1)}\).
-    Suppose for sake of contradiction that \(x^{1 / k} \not< x^{1 / (k + 1)}\).
-    Then by Proposition \ref{5.4.7}, exactly one of the following two statements is true:
-    \begin{enumerate}[label=(\Roman*)]
-        \item \(x^{1 / k} = x^{1 / (k + 1)}\).
-              Then we have
-              \begin{align*}
-                           & x = (x^{1 / k})^k                                     & \text{(by Lemma \ref{5.6.6}(a))}   \\
-                  \implies & x = (x^{1 / (k + 1)})^k                                                                    \\
-                  \implies & x = (x^{1 / (k + 1)})^{(k + 1)}                       & \text{(by Lemma \ref{5.6.6}(a))}   \\
-                  \implies & (x^{1 / (k + 1)})^{(k + 1)} / (x^{1 / (k + 1)})^k = 1 & (x > 1)                            \\
-                  \implies & (x^{1 / (k + 1)})^{(k + 1) - k} = 1                   & \text{(by Lemma \ref{5.6.3})}      \\
-                  \implies & (x^{1 / (k + 1)})^1 = 1                                                                    \\
-                  \implies & x^{1 / (k + 1)} = 1                                   & \text{(by Definition \ref{5.6.1})} \\
-                  \implies & x = (x^{1 / (k + 1)})^{(k + 1)} = 1^{k + 1} = 1.      & \text{(by Lemma \ref{5.6.6}(a))}
-              \end{align*}
-              But this contradict to \(x < 1\).
-        \item \(x^{1 / k} > x^{1 / (k + 1)}\).
-              Then we have
-              \begin{align*}
-                           & (x^{1 / k})^{(k + 1)} > (x^{1 / (k + 1)})^{(k + 1)}                                       \\
-                  \implies & (x^{1 / k})^{(k + 1)} > x                           & \text{(by Lemma \ref{5.6.6}(a))}    \\
-                  \implies & (x^{1 / k})^k (x^{1 / k}) > x                       & \text{(by Definition \ref{5.6.1})}  \\
-                  \implies & x (x^{1 / k}) > x                                   & \text{(by Lemma \ref{5.6.6}(a))}    \\
-                  \implies & x^{1 / k} > 1                                       & \text{(by Proposition \ref{5.4.7})} \\
-                  \implies & (x^{1 / k})^k > 1^k = 1                             & \text{(by Proposition \ref{5.4.7})} \\
-                  \implies & x > 1.                                              & \text{(by Lemma \ref{5.6.6}(a))}
-              \end{align*}
-              But this contradict to \(x < 1\).
-    \end{enumerate}
-    From all cases above we get contradictions.
-    Thus \(f(k) = x^{1 / k} < x^{1 / (k + 1)} = f(k + 1)\), \(f(k) = x^{1 / k}\) is a increasing function of \(k\).
+    Suppose for sake of contradiction that \(x^{1 / k} \geq x^{1 / (k + 1)}\).
+    But then we have
+    \begin{align*}
+                 & x^{\frac{1}{k}} \geq x^{\frac{1}{k + 1}}                                                                                                                           \\
+        \implies & (x^{\frac{1}{k}})^k \geq (x^{\frac{1}{k + 1}})^k                                                                             & \text{(by Proposition \ref{5.6.3})} \\
+        \implies & x \geq (x^{\frac{1}{k + 1}})^k                                                                                               & \text{(by Lemma \ref{5.6.6}(a))}    \\
+        \implies & (x^{\frac{1}{k + 1}})^{k + 1} \geq (x^{\frac{1}{k + 1}})^k                                                                   & \text{(by Lemma \ref{5.6.6}(a)(b))} \\
+        \implies & (x^{\frac{1}{k + 1}})^{k + 1} \cdot (x^{\frac{1}{k + 1}})^{-1} \geq (x^{\frac{1}{k + 1}})^k \cdot (x^{\frac{1}{k + 1}})^{-1} & \text{(by Lemma \ref{5.6.6}(c))}    \\
+        \implies & (x^{\frac{1}{k + 1}})^{k + 1} \cdot (x^{\frac{1}{k + 1}})^{-k} \geq (x^{\frac{1}{k + 1}})^k \cdot (x^{\frac{1}{k + 1}})^{-k} & \text{(by Proposition \ref{5.6.3})} \\
+        \implies & x^{\frac{1}{k + 1}} \geq 1                                                                                                   & \text{(by Proposition \ref{5.6.3})} \\
+        \implies & (x^{\frac{1}{k + 1}})^{k + 1} \geq 1^{k + 1} = 1                                                                             & \text{(by Proposition \ref{5.6.3})} \\
+        \implies & x \geq 1,                                                                                                                    & \text{(by Lemma \ref{5.6.6}(a))}
+    \end{align*}
+    a contradiction.
+    Thus we must have \(f(k) = x^{1 / k} < x^{1 / (k + 1)} = f(k + 1)\), and \(f(k) = x^{1 / k}\) is a increasing function of \(k\).
 
-    Finally we prove that if \(x = 1\), then \(x^{1 / k} = 1 \ \forall\ k \in \mathbf{N}\) and \(k > 0\).
+    Finally we show that if \(x = 1\), then \(x^{1 / k} = 1\) for every \(k \in \mathbf{Z}^+\).
     Suppose for sake of contradiction that \(x^{1 / k} \neq 1\).
-    Then by Proposition \ref{5.4.7}, exactly one of the following two statements is true:
-    \begin{enumerate}[label=(\Roman*)]
+    Then by Proposition \ref{5.4.7} exactly one of the following two statements is true:
+    \begin{itemize}
         \item \(x^{1 / k} > 1\).
-              Then we have
+              But then we have
               \begin{align*}
-                           & (x^{1 / k})^k > 1^k = 1 & \text{(by Proposition \ref{5.4.7})} \\
-                  \implies & x > 1.                  & \text{(by Lemma \ref{5.6.6}(a))}
+                           & (x^{1 / k})^k > 1^k = 1 & \text{(by Proposition \ref{5.6.3})} \\
+                  \implies & x > 1,                  & \text{(by Lemma \ref{5.6.6}(a))}
               \end{align*}
-              But this contradict to \(x = 1\).
+              a contradiction.
         \item \(x^{1 / k} < 1\).
-              Then we have
+              But then we have
               \begin{align*}
-                           & (x^{1 / k})^k < 1^k = 1 & \text{(by Proposition \ref{5.4.7})} \\
-                  \implies & x < 1.                  & \text{(by Lemma \ref{5.6.6}(a))}
+                           & (x^{1 / k})^k < 1^k = 1 & \text{(by Proposition \ref{5.6.3})} \\
+                  \implies & x < 1,                  & \text{(by Lemma \ref{5.6.6}(a))}
               \end{align*}
-              But this contradict to \(x = 1\).
-    \end{enumerate}
+              a contradiction.
+    \end{itemize}
     From all cases above we get contradictions.
-    Thus if \(x = 1\), then \(x^{1 / k} = 1 \ \forall\ k \in \mathbf{N}\) and \(k > 0\).
+    Thus we must have \(x^{1 / k} = 1\).
 \end{proof}
 
 \begin{proof}{(f)}
