@@ -65,7 +65,7 @@
         a_N^+ \coloneqq \sup(a_n)_{n = N}^\infty.
     \]
     More informally, \(a_N^+\) is the supremum of all the elements in the sequence from \(a_N\) onwards.
-    We then define the \emph{limit superior} of the sequence \((a_n)_{n = m}^\infty\), denoted \(\limsup_{n \to \infty} a_n\), by the formula
+    We then define the \emph{limit superior} of the sequence \((a_n)_{n = m}^\infty\) by the formula
     \[
         \limsup_{n \to \infty} a_n \coloneqq \inf(a_N^+)_{N = m}^\infty.
     \]
@@ -73,7 +73,7 @@
     \[
         a_N^- \coloneqq \inf(a_n)_{n = N}^\infty
     \]
-    and define the \emph{limit inferior} of the sequence \((a_n)_{n = m}^\infty\), denoted \(\liminf_{n \to \infty} a_n\), by the formula
+    and define the \emph{limit inferior} of the sequence \((a_n)_{n = m}^\infty\) by the formula
     \[
         \liminf_{n \to \infty} a_n \coloneqq \sup(a_N^-)_{N = m}^\infty.
     \]
@@ -145,6 +145,7 @@
 \end{proof}
 
 \begin{proof}{(c)}
+    Let \(N \in \mathbf{N}\).
     We first show that \(\inf(a_n)_{n = m}^\infty \leq L^-\).
     \begin{align*}
         L^- & = \liminf_{n \to \infty} a_n & \text{(by Definition \ref{6.4.6})} \\
@@ -162,7 +163,9 @@
     \end{align*}
 
     Finally we show that \(L^- \leq L^+\).
+    Let \(N_1, N_2 \in \mathbf{N}\).
     Suppose for sake of contradiction that \(L^- > L^+\).
+    Then we have
     \begin{align*}
                  & L^+ < L^-                                                                                          \\
         \implies & \inf(a_N^+)_{N = m}^\infty < \sup(a_N^-)_{N = m}^\infty      & \text{(by Definition \ref{6.4.6})}  \\
@@ -171,67 +174,70 @@
         \implies & \sup(a_n)_{n = N_1}^\infty < \inf(a_n)_{n = N_2}^\infty.     & \text{(by Definition \ref{6.4.6})}
     \end{align*}
     Let \(N = \max(N_1, N_2)\).
-    Then \(\forall\ n \geq N\), we have
+    Then we have
     \[
-        a_n \leq \sup(a_n)_{n = N}^\infty \leq \sup(a_n)_{n = N_1}^\infty < \inf(a_n)_{n = N_2}^\infty \leq \inf(a_n)_{n = N}^\infty \leq a_n,
+        \sup(a_n)_{n = N}^\infty \leq \sup(a_n)_{n = N_1}^\infty < \inf(a_n)_{n = N_2}^\infty \leq \inf(a_n)_{n = N}^\infty,
     \]
     a contradiction.
-    Thus \(L^- \leq L^+\).
-    And we conclude that \(\inf(a_n)_{n = m}^\infty \leq L^- \leq L^+ \leq \sup(a_n)_{n = m}^\infty\).
+    Thus \(L^- \leq L^+\), and we conclude that
+    \[
+        \inf(a_n)_{n = m}^\infty \leq L^- \leq L^+ \leq \sup(a_n)_{n = m}^\infty.
+    \]
 \end{proof}
 
 \begin{proof}{(d)}
+    Let \(N, n' \in \mathbf{N}\).
     Suppose that \(c\) is a limit point of \((a_n)_{n = m}^\infty\).
     We first show that \(L^- \leq c\).
     Suppose for sake of contradiction that \(L^- > c\).
     Let \(\varepsilon = (L^- - c) / 2\).
-    Since \(c\) is a limit point, \(\forall\ N \in \mathbf{N}\) and \(N \geq m\), there must \(\exists\ n \in \mathbf{N}\) and \(n \geq N\) such that \(\abs*{a_n - c} \leq \varepsilon\).
+    Since \(c\) is a limit point, by Definition \ref{6.4.1} \(\forall\ N \geq m\), \(\exists\ n \geq N\) such that \(\abs*{a_n - c} \leq \varepsilon\).
     So we have \(-\varepsilon \leq a_n - c \leq \varepsilon\) and thus \(a_n \leq c + \varepsilon\).
-    By Proposition \ref{6.4.12}(a), \(L^- - \varepsilon \leq L^-\) implies \(\exists\ N \geq m\) such that \(a_{n'} > L^- - \varepsilon \ \forall\ n' \geq N\).
-    Combine with the above result we get \(L^- - \varepsilon < c + \varepsilon\), but after expanding the equation we get \((L^- + c) / 2 < (L^- + c) / 2\), a contradiction.
+    Since \(L^- - \varepsilon < L^-\), by Proposition \ref{6.4.12}(a) we have \(\exists\ N \geq m\) such that \(a_{n'} > L^- - \varepsilon\) for every \(n' \geq N\).
+    Combine with the above result we get \(L^- - \varepsilon < c + \varepsilon\), but substituting \(\varepsilon\) with \((L^- - c) / 2\) we get \((L^- + c) / 2 < (L^- + c) / 2\), a contradiction.
     Thus \(L^- \leq c\).
 
     Now we show that \(L^+ \geq c\).
     Suppose for sake of contradiction that \(L^+ < c\).
     Let \(\varepsilon = (c - L^+) / 2\).
-    Since \(c\) is a limit point, \(\forall\ N \in \mathbf{N}\) and \(N \geq m\), there must \(\exists\ n \in \mathbf{N}\) and \(n \geq N\) such that \(\abs*{a_n - c} \leq \varepsilon\).
+    Since \(c\) is a limit point, by Definition \ref{6.4.1} \(\forall\ N \geq m\), \(\exists\ n \geq N\) such that \(\abs*{a_n - c} \leq \varepsilon\).
     So we have \(-\varepsilon \leq a_n - c \leq \varepsilon\) and thus \(c - \varepsilon \leq a_n\).
-    By Proposition \ref{6.4.12}(a), \(L^+ \leq L^+ + \varepsilon\) implies \(\exists\ N \geq m\) such that \(a_{n'} < L^+ + \varepsilon \ \forall\ n' \geq N\).
-    Combine with the above result we get \(c - \varepsilon < L^+ + \varepsilon\), but after expanding the equation we get \((c + L^+) / 2 < (c + L^+) / 2\), a contradiction.
+    Since \(L^+ < L^+ + \varepsilon\), by Proposition \ref{6.4.12}(a) we have \(\exists\ N \geq m\) such that \(a_{n'} < L^+ + \varepsilon\) for every \(n' \geq N\).
+    Combine with the above result we get \(c - \varepsilon < L^+ + \varepsilon\), but substituting \(\varepsilon\) with \((c - L^+) / 2\) we get \((c + L^+) / 2 < (c + L^+) / 2\), a contradiction.
     Thus \(L^+ \geq c\).
     And we conclude that \(L^- \leq c \leq L^+\).
 \end{proof}
 
 \begin{proof}{(e)}
+    Let \(N, N' \in \mathbf{N}\).
     We first show that if \(L^+\) is finite, then \(L^+\) is a limit point of \((a_n)_{n = m}^\infty\).
-    By Definition \ref{6.4.1}, we need to show that \(\forall\ \varepsilon \in \mathbf{R}\) and \(\varepsilon > 0\), \(\forall\ N \in \mathbf{N}\) and \(N \geq m\), \(\exists\ n \geq N\) such that \(\abs*{a_n - L^+} \leq \varepsilon\).
-    Since \(L^+ < L^+ + \varepsilon\), by Proposition \ref{6.4.12}(a) \(\exists\ N' \in \mathbf{N}\) and \(N' \geq m\) such that \(a_n < L^+ + \varepsilon \ \forall\ n \geq N'\).
+    By Definition \ref{6.4.1} we need to show that \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\forall\ N \geq m\), \(\exists\ n \geq N\) such that \(\abs*{a_n - L^+} \leq \varepsilon\).
+    Since \(L^+ < L^+ + \varepsilon\), by Proposition \ref{6.4.12}(a) \(\exists\ N' \geq m\) such that \(a_n < L^+ + \varepsilon\) for every \(n \geq N'\).
     But this also means \(\forall\ N \geq m\), \(\exists\ n \geq N\) such that \(a_n < L^+ + \varepsilon\) as long as we always choose \(n \geq \max(N', N)\).
-    Similarly, since \(L^+ - \varepsilon < L^+\), by Proposition \ref{6.4.12}(b), \(\forall\ N \in \mathbf{N}\) and \(N \geq m\), \(\exists\ n \geq N\) such that \(a_n > L^+ - \varepsilon\).
+    Since \(L^+ - \varepsilon < L^+\), by Proposition \ref{6.4.12}(b), \(\forall\ N \geq m\), \(\exists\ n \geq N\) such that \(a_n > L^+ - \varepsilon\).
     Combine the two statements above we have \(\forall\ N \geq m\), \(\exists\ n \geq N\) such that \(L^+ - \varepsilon < a_n < L^+ + \varepsilon\).
-    This means \(-\varepsilon < a_n - L^+ < \varepsilon\), so \(\abs*{a_n - L^+} < \varepsilon\).
-    Thus \(L^+\) is a limit point.
+    Thus \(\abs*{a_n - L^+} < \varepsilon\) and \(L^+\) is a limit point.
 
     Now we show that if \(L^-\) is finite, then \(L^-\) is a limit point of \((a_n)_{n = m}^\infty\).
-    By Definition \ref{6.4.1}, we need to show that \(\forall\ \varepsilon \in \mathbf{R}\) and \(\varepsilon > 0\), \(\forall\ N \in \mathbf{N}\) and \(N \geq m\), \(\exists\ n \geq N\) such that \(\abs*{a_n - L^-} \leq \varepsilon\).
-    Since \(L^- < L^- + \varepsilon\), by Proposition \ref{6.4.12}(b), \(\forall\ N \in \mathbf{N}\) and \(N \geq m\), \(\exists\ n \geq N\) such that \(a_n < L^- + \varepsilon\).
-    Similarly, since \(L^- - \varepsilon < L^-\), by Proposition \ref{6.4.12}(a) \(\exists\ N' \in \mathbf{N}\) and \(N' \geq m\) such that \(a_n > L^+ - \varepsilon \ \forall\ n \geq N'\).
+    By Definition \ref{6.4.1} we need to show that \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\forall\ N \geq m\), \(\exists\ n \geq N\) such that \(\abs*{a_n - L^-} \leq \varepsilon\).
+    Since \(L^- - \varepsilon < L^-\), by Proposition \ref{6.4.12}(a) \(\exists\ N' \geq m\) such that \(a_n > L^- - \varepsilon\) for every \(n \geq N'\).
     But this also means \(\forall\ N \geq m\), \(\exists\ n \geq N\) such that \(a_n > L^- - \varepsilon\) as long as we always choose \(n \geq \max(N', N)\).
+    Since \(L^- < L^- + \varepsilon\), by Proposition \ref{6.4.12}(b), \(\forall\ N \geq m\), \(\exists\ n \geq N\) such that \(a_n < L^- + \varepsilon\).
     Combine the two statements above we have \(\forall\ N \geq m\), \(\exists\ n \geq N\) such that \(L^- - \varepsilon < a_n < L^- + \varepsilon\).
-    This means \(-\varepsilon < a_n - L^- < \varepsilon\), so \(\abs*{a_n - L^-} < \varepsilon\).
-    Thus \(L^-\) is also a limit point.
+    Thus \(\abs*{a_n - L^-} < \varepsilon\) and \(L^-\) is also a limit point.
 \end{proof}
 
 \begin{proof}{(f)}
+    Let \(N, N_1, N_2, n_1, n_2 \in \mathbf{N}\).
     We first show that if \(\lim_{n \to \infty} a_n = c\), then \(L^+ = c\).
     By Proposition \ref{6.4.5}, \(c\) is the only limit point of \((a_n)_{n = m}^\infty\).
     And by Proposition \ref{6.4.12}(d), we have \(L^- \leq c \leq L^+\).
     Suppose for sake of contradiction that \(c \neq L^+\).
     Then we must have \(c < L^+\).
     Let \(\varepsilon = (L^+ - c) / 2\).
-    Since \(L^+ - \varepsilon < L^+\), by Proposition \ref{6.4.12}(b), \(\forall\ N \in \mathbf{N}\) and \(N \geq m\), \(\exists\ n \geq N\) such that \(a_n > L^+ - \varepsilon\).
-    Since \(\lim_{n \to \infty} a_n = c\), \(\exists\ N \in \mathbf{N}\) and \(N \geq m\) such that \(\abs*{a_{n'} - c} \leq \varepsilon \ \forall\ n' \geq N\), so \(-\varepsilon \leq a_{n'} - c \leq \varepsilon\) and \(a_{n'} \leq c + \varepsilon\).
-    Combine with the above result we have \(L^+ - \varepsilon < c + \varepsilon\), but after expanding the equation we get \((L^+ + c) / 2 < (L^+ + c) / 2\), a contradiction.
+    Since \(L^+ - \varepsilon < L^+\), by Proposition \ref{6.4.12}(b), \(\forall\ N_1 \geq m\), \(\exists\ n_1 \geq N_1\) such that \(a_{n_1} > L^+ - \varepsilon\).
+    Since \(\lim_{n \to \infty} a_n = c\), \(\exists\ N_2 \geq m\) such that \(\abs*{a_{n_2} - c} \leq \varepsilon\) for every \(n_2 \geq N_2\), so \(-\varepsilon \leq a_{n_2} - c \leq \varepsilon\) and \(a_{n_2} \leq c + \varepsilon\).
+    By setting \(N = \max(N_1, N_2)\) we have \(L^+ - \varepsilon < a_n \leq c + \varepsilon\), but substituting \(\varepsilon\) with \((L^+ - c) / 2\) we get \((L^+ + c) / 2 < (L^+ + c) / 2\), a contradiction.
     Thus \(c = L^+\).
 
     Next we show that if \(\lim_{n \to \infty} a_n = c\), then \(L^- = c\).
@@ -240,26 +246,25 @@
     Suppose for sake of contradiction that \(c \neq L^-\).
     Then we must have \(L^- < c\).
     Let \(\varepsilon = (c - L^-) / 2\).
-    Since \(L^- < L^- + \varepsilon\), by Proposition \ref{6.4.12}(b), \(\forall\ N \in \mathbf{N}\) and \(N \geq m\), \(\exists\ n \geq N\) such that \(a_n < L^- + \varepsilon\).
-    Since \(\lim_{n \to \infty} a_n = c\), \(\exists\ N \in \mathbf{N}\) and \(N \geq m\) such that \(\abs*{a_{n'} - c} \leq \varepsilon \ \forall\ n' \geq N\), so \(-\varepsilon \leq a_{n'} - c \leq \varepsilon\) and \(c - \varepsilon \leq a_{n'}\).
-    Combine with the above result we have \(c - \varepsilon < L^- + \varepsilon\), but after expanding the equation we get \((L^- + c) / 2 < (L^- + c) / 2\), a contradiction.
+    Since \(L^- < L^- + \varepsilon\), by Proposition \ref{6.4.12}(b), \(\forall\ N_1 \geq m\), \(\exists\ n_1 \geq N_1\) such that \(a_{n_1} < L^- + \varepsilon\).
+    Since \(\lim_{n \to \infty} a_n = c\), \(\exists\ N_2 \geq m\) such that \(\abs*{a_{n_2} - c} \leq \varepsilon\) for every \(n_2 \geq N_2\), so \(-\varepsilon \leq a_{n_2} - c \leq \varepsilon\) and \(c - \varepsilon \leq a_{n_2}\).
+    By setting \(N = \max(N_1, N_2)\) we have \(c - \varepsilon \leq a_n < L^- + \varepsilon\), but substituting \(\varepsilon\) with \((c - L^-) / 2\) we get \((L^- + c) / 2 < (L^- + c) / 2\), a contradiction.
     Thus \(c = L^-\).
     We conclude that if \(\lim_{n \to \infty} a_n = c\), then \(L^+ = L^- = c\).
 
     Finally we show that if \(L^+ = L^- = c\), then \(\lim_{n \to \infty} a_n = c\).
-    Let \(\varepsilon \in \mathbf{R}\) and \(\varepsilon > 0\).
+    Let \(\varepsilon \in \mathbf{R}^+\).
     Then we have \(c - \varepsilon < c < c + \varepsilon\).
-    Since \(c = L^+\), by Proposition \ref{6.4.11}(a), \(\exists\ N_1 \in \mathbf{N}\) and \(N_1 \geq m\) such that \(a_{n_1} < c + \varepsilon \ \forall\ n_1 \in \mathbf{N}\) and \(n_1 \geq N_1\).
-    Similarly since \(c = L^-\), by Proposition \ref{6.4.11}(a), \(\exists\ N_2 \in \mathbf{N}\) and \(N_2 \geq m\) such that \(c - \varepsilon < a_{n_2} \ \forall\ n_2 \in \mathbf{N}\) and \(n_2 \geq N_2\).
+    Since \(c = L^+\), by Proposition \ref{6.4.11}(a) \(\exists\ N_1 \geq m\) such that \(a_{n_1} < c + \varepsilon\) for every \(n_1 \geq N_1\).
+    Similarly since \(c = L^-\), by Proposition \ref{6.4.11}(a) \(\exists\ N_2 \geq m\) such that \(c - \varepsilon < a_{n_2}\) for every \(n_2 \geq N_2\).
     Let \(N = \max(N_1, N_2)\).
-    Then \(\exists\ N \geq m\) such that \(c - \varepsilon < a_n < c + \varepsilon \ \forall\ n \geq N\).
-    But this means \(-\varepsilon < a_n - c < \varepsilon\), therefore \(\abs*{a_n - c} < \varepsilon\).
-    Thus \(\lim_{n \to \infty} a_n = c\).
-    And we conclude that if \(L^+ = L^- = c\), then \(\lim_{n \to \infty} a_n = c\).
+    Then \(\exists\ N \geq m\) such that \(c - \varepsilon < a_n < c + \varepsilon\) for every \(n \geq N\).
+    But this means \(\abs*{a_n - c} < \varepsilon\), and thus \(\lim_{n \to \infty} a_n = c\).
+    We conclude that \(L^+ = L^- = c \iff \lim_{n \to \infty} a_n = c\).
 \end{proof}
 
 \begin{note}
-    Parts (c) and (d) of Proposition \ref{6.4.12} say, in particular, that \(L^+\) is the largest limit point of \((a_n)_{n = m}^\infty\), and \(L^-\) is the smallest limit point
+    Parts (d) and (e) of Proposition \ref{6.4.12} say, in particular, that \(L^+\) is the largest limit point of \((a_n)_{n = m}^\infty\), and \(L^-\) is the smallest limit point
     (providing that \(L^+\) and \(L^-\) are finite).
     Proposition \ref{6.4.12} (f) then says that if \(L^+\) and \(L^-\) coincide (so there is only one limit point), then the sequence in fact converges.
     This gives a way to test if a sequence converges: compute its limit superior and limit inferior, and see if they are equal.
