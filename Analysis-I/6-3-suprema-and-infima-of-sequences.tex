@@ -104,23 +104,22 @@
 \end{proposition}
 
 \begin{proof}
-    Since \((a_n)_{n = m}^\infty\) have an upper bound \(M\), the set \(E = \{a_n : n \geq m\}\) have an upper bound \(M\).
-    By Theorem \ref{5.5.9}, the supremum \(\sup(E)\) must exist and \(\sup(E) \leq M\).
+    Since \((a_n)_{n = m}^\infty\) have an upper bound \(M\), by Definition \ref{6.3.1} the set \(E = \{a_n : n \geq m\}\) have an upper bound \(M\).
+    By Theorem \ref{5.5.9} \(\sup(E)\) must exist and \(\sup(E) \leq M\).
     Now we want to show that \(\lim_{n \to \infty} a_n = \sup(E)\).
-    By Definition \ref{6.1.8} and \ref{6.1.5}, we need to show that \(\forall\ \varepsilon \in \mathbf{R}\) and \(\varepsilon > 0\), \(\exists\ N \in \mathbf{N}\) and \(N \geq m\) such that \(\abs*{a_n - \sup(E)} \leq \varepsilon \ \forall\ n \geq N\).
-    Because \(\forall\ n \geq m\) we have \(a_n \leq \sup(E)\), we must also have \(\abs*{a_n - \sup(E)} = \sup(E) - a_n\).
-    So
+    By Definition \ref{6.1.8} and \ref{6.1.5}, we need to show that \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ N \in \mathbf{N}\) and \(N \geq m\) such that \(\abs*{a_n - \sup(E)} \leq \varepsilon\) for every \(n \geq N\).
+    Since \(\forall\ n \geq m\) we have \(a_n \leq \sup(E)\), we must also have \(\abs*{a_n - \sup(E)} = \sup(E) - a_n\).
+    Thus
     \begin{align*}
-                 & (\forall\ \varepsilon \in \mathbf{R}) \land (\varepsilon > 0)                                               \\
-        \implies & -\varepsilon < 0                                                                                            \\
+                 & \forall\ \varepsilon \in \mathbf{R}^+, -\varepsilon < 0                                                     \\
         \implies & \sup(E) - \varepsilon < \sup(E)                                                                             \\
         \implies & \exists\ N \geq m : \sup(E) - \varepsilon < a_N \leq \sup(E)          & \text{(by Proposition \ref{6.3.6})} \\
-        \implies & \forall\ n \geq N : \sup(E) - \varepsilon < a_N \leq a_n \leq \sup(E) & \text{(by the given condition)}     \\
+        \implies & \forall\ n \geq N : \sup(E) - \varepsilon < a_N \leq a_n \leq \sup(E) & \text{(by hypothesis)}              \\
         \implies & \sup(E) - \varepsilon \leq a_n                                                                              \\
         \implies & \sup(E) - a_n \leq \varepsilon                                                                              \\
-        \implies & \abs*{a_n - \sup(E)} \leq \varepsilon.
+        \implies & \abs*{a_n - \sup(E)} \leq \varepsilon
     \end{align*}
-    Thus \(\lim_{n \to \infty} a_n = \sup(E) = \sup(a_n)_{n = m}^\infty\).
+    and we conclude that \(\lim_{n \to \infty} a_n = \sup(E) = \sup(a_n)_{n = m}^\infty\).
 \end{proof}
 
 \begin{additional corollary}\label{ac 6.3.1}
@@ -132,23 +131,21 @@ Then \((a_n)_{n = m}^\infty\) is convergent, and in fact
 \end{additional corollary}
 
 \begin{proof}
-    Since \((a_n)_{n = m}^\infty\) have an lower bound \(M\), the set \(E = \{a_n : n \geq m\}\) have an lower bound \(M\).
-    By Theorem \ref{5.5.9}, the supremum of the set \(-E = \{-a_n : n \geq m\}\) must exist, so the infimum of the set \(E\) also exist since \(\inf(E) = -\sup(-E)\).
-    By Theorem \ref{6.2.11}, we have \(\inf(E) \geq M\).
-    Now we want to show that \(\lim_{n \to \infty} a_n = \inf(E)\).
-    By Definition \ref{6.1.8} and \ref{6.1.5}, we need to show that \(\forall\ \varepsilon \in \mathbf{R}\) and \(\varepsilon > 0\), \(\exists\ N \in \mathbf{N}\) and \(N \geq m\) such that \(\abs*{a_n - \inf(E)} \leq \varepsilon \ \forall\ n \geq N\).
-    Because \(\forall\ n \geq m\) we have \(a_n \geq \inf(E)\), we must also have \(\abs*{a_n - \inf(E)} = a_n - \inf(E)\).
-    So
+    Since \((a_n)_{n = m}^\infty\) is decreasing, we know that \((-a_n)_{n = m}^\infty\) is increasing since
+    \[
+        n \leq m \iff a_n \leq a_m \iff -a_n \geq -a_m.
+    \]
+    Thus we have
     \begin{align*}
-                 & (\forall\ \varepsilon \in \mathbf{R}) \land (\varepsilon > 0)                                           \\
-        \implies & \inf(E) < \inf(E) + \varepsilon                                                                         \\
-        \implies & \exists\ N \geq m : \inf(E) \leq a_N < \inf(E) + \varepsilon          & \text{(by Remark \ref{6.3.7})}  \\
-        \implies & \forall\ n \geq N : \inf(E) \leq a_n \leq a_N < \inf(E) + \varepsilon & \text{(by the given condition)} \\
-        \implies & a_n \leq \inf(E) + \varepsilon                                                                          \\
-        \implies & a_n - \inf(E) \leq \varepsilon                                                                          \\
-        \implies & \abs*{a_n - \inf(E)} \leq \varepsilon.
+                 & \forall\ n \geq m, a_n \geq M                                                              \\
+        \implies & -a_n \leq -M                                                                               \\
+        \implies & \lim_{n \to \infty} -a_n = \sup(-a_n)_{n = m}^\infty & \text{(by Proposition \ref{6.3.8})} \\
+        \implies & -\lim_{n \to \infty} a_n = \sup(-a_n)_{n = m}^\infty & \text{(by Theorem \ref{6.1.19}(c))} \\
+        \implies & \lim_{n \to \infty} a_n = -\sup(-a_n)_{n = m}^\infty                                       \\
+        \implies & \lim_{n \to \infty} a_n = -\sup\{-a_n : n \geq m\}   & \text{(by Definition \ref{6.3.1})}  \\
+        \implies & \lim_{n \to \infty} a_n = \inf\{a_n : n \geq m\}     & \text{(by Definition \ref{6.2.6})}  \\
+        \implies & \lim_{n \to \infty} a_n = \inf(a_n)_{n = m}^\infty.  & \text{(by Definition \ref{6.3.1})}
     \end{align*}
-    Thus \(\lim_{n \to \infty} a_n = \inf(E) = \inf(a_n)_{n = m}^\infty\).
 \end{proof}
 
 \begin{note}
