@@ -169,21 +169,37 @@
 \end{proposition}
 
 \begin{proof}
-    Let \((a_n)_{n = m}^\infty\) be a Cauchy sequence of rationals, and write \(L \coloneqq \text{LIM}_{n \to \infty} a_n\).
-    We have to show that \((a_n)_{n = m}^\infty\) converges to \(L\).
-    Suppose for sake of contradiction that sequence \(a_n\) is not eventually \(\varepsilon\)-close to \(L\).
-    Then \(\exists\ \varepsilon \in \mathbf{Q}\) and \(\varepsilon > 0\) such that \(\forall\ n \in \mathbf{N}\) and \(n \geq m\), \(\abs*{a_n - L} > \varepsilon\).
-    \begin{enumerate}
-        \item If \(a_n - L > 0\), then \(\abs*{a_n - L} = a_n - L > \varepsilon\), so \(a_n > L + \varepsilon\).
-              By Exercise \ref{ex 5.4.8}, we have \(\text{LIM}_{n \to \infty} a_n > L + \varepsilon\).
-              But \(L > L + \varepsilon \implies \varepsilon < 0\), a contradiction.
-        \item If \(a_n - L < 0\), then \(\abs*{a_n - L} = L - a_n > \varepsilon\), so \(a_n < L - \varepsilon\).
-              By Exercise \ref{ex 5.4.8}, we have \(\text{LIM}_{n \to \infty} a_n < L - \varepsilon\).
-              But \(L < L - \varepsilon \implies \varepsilon < 0\), a contradiction.
-    \end{enumerate}
-    Thus such \(\varepsilon\) does not exist.
-    Therefor we have \(a_n\) is eventually \(\varepsilon\)-close to \(L\), which means \(\lim_{n \to \infty} a_n = L\).
-    Thus we conclude that \(\text{LIM}_{n \to \infty} a_n = \lim_{n \to \infty} a_n\).
+    Let \((a_n)_{n = m}^\infty\) be a Cauchy sequence of rationals, and let \(L = \text{LIM}_{n \to \infty} a_n\).
+    By Definition \ref{5.3.1} we know that \(L \in \mathbf{R}\).
+    Thus by Proposition \ref{6.1.4} and Definition \ref{6.1.5} we can ask whether \((a_n)_{n = m}^\infty\) converges to \(L\).
+    Suppose for sake of contradiction that sequence \(a_n\) is not eventually \(\varepsilon\)-close to \(L\) for every \(\varepsilon \in \mathbf{R}^+\).
+    Then \(\exists\ \varepsilon \in \mathbf{R}^+\) such that \(\forall\ n \in \mathbf{N}\) and \(n \geq m\), we have \(\abs*{a_n - L} > \varepsilon\).
+    Since \(\varepsilon > 0\), we know that \(\abs*{a_n - L} > 0\), now we split into two cases:
+    \begin{itemize}
+        \item If \(a_n - L > 0\), then we have
+              \begin{align*}
+                           & \forall\ n \geq m, \abs*{a_n - L} > \varepsilon                                       \\
+                  \implies & a_n - L > \varepsilon                                                                 \\
+                  \implies & a_n > L + \varepsilon                                                                 \\
+                  \implies & \text{LIM}_{n \to \infty} a_n > L + \varepsilon & \text{(by Exercise \ref{ex 5.4.8})} \\
+                  \implies & L > L + \varepsilon                                                                   \\
+                  \implies & 0 > \varepsilon.
+              \end{align*}
+              But this contradict to \(\varepsilon > 0\).
+        \item If \(a_n - L < 0\), then we have
+              \begin{align*}
+                           & \forall\ n \geq m, \abs*{a_n - L} > \varepsilon                                       \\
+                  \implies & L - a_n > \varepsilon                                                                 \\
+                  \implies & a_n < L - \varepsilon                                                                 \\
+                  \implies & \text{LIM}_{n \to \infty} a_n < L - \varepsilon & \text{(by Exercise \ref{ex 5.4.8})} \\
+                  \implies & L < L - \varepsilon                                                                   \\
+                  \implies & \varepsilon < 0.
+              \end{align*}
+              But this contradict to \(\varepsilon > 0\).
+    \end{itemize}
+    From all cases above we derived contradictions.
+    Thus such \(\varepsilon\) does not exist, and therefor we must have \((a_n)_{n = m}^\infty\) eventually \(\varepsilon\)-close to \(L\) for every \(\varepsilon \in \mathbf{R}^+\).
+    By Definition \ref{6.1.5} this means \(\lim_{n \to \infty} a_n = L\).
 \end{proof}
 
 \begin{definition}[Bounded sequences]\label{6.1.16}
