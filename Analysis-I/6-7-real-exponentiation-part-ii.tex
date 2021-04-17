@@ -106,11 +106,11 @@
     First of all, given any real number \(\alpha\) we always have at least one sequence \((q_n)_{n = 1}^\infty\) of rational numbers converging to \(\alpha\), by the definition of real numbers (and Proposition \ref{6.1.15}).
     Secondly, given any such sequence \((q_n)_{n = 1}^\infty\), the limit \(\lim_{n \to \infty} x^{q_n}\) exists by Lemma \ref{6.7.1}.
     Finally, even though there can be multiple choices for the sequence \((q_n)_{n = 1}^\infty\), they all give the same limit by Lemma \ref{6.7.1}.
-    Thus this definition is well-defined.
+    Thus Definition \ref{6.7.2} is well-defined.
 \end{note}
 
 \begin{note}
-    If \(\alpha\) is not just real but rational, i.e., \(\alpha = q\) for some rational \(q\), then Definition \ref{6.7.2} could in principle be inconsistent with our earlier definition of exponentiation in Section \ref{sec 6.7}.
+    If \(\alpha\) is not just real but rational, i.e., \(\alpha = q\) for some rational \(q\), then Definition \ref{6.7.2} could in principle be inconsistent with our earlier definition of exponentiation in Section \ref{sec 5.6}.
     But in this case \(\alpha\) is clearly the limit of the sequence \((q)_{n = 1}^\infty\), so by definition \(x^\alpha = \lim_{n \to \infty} x^q = x^q\).
     Thus the new definition of exponentiation is consistent with the old one.
 \end{note}
@@ -122,18 +122,17 @@
 \begin{proof}{(a)}
     Let \(r\) be a real number.
     Then we can write \(r = \lim_{n \to \infty} r_n\) for some sequences \((r_n)_{n = 1}^\infty\) of rationals, by the definition of real numbers (and Proposition \ref{6.1.15}).
-    Since \((r_n)_{n = 1}^\infty\) is a Cauchy sequence, it is bounded by some \(M \in \mathbf{Q}\), i.e, \(-M \leq r_n \leq M \ \forall\ n \geq 1\).
+    Since \((r_n)_{n = 1}^\infty\) is a Cauchy sequence, it is bounded by some \(M \in \mathbf{Q}^+\), i.e, \(-M \leq r_n \leq M\) for every \(n \geq 1\).
     By Lemma \ref{5.6.9}, both \(x^M\) and \(x^{-M}\) are positive real numbers.
     If \(0 < x < 1\), then \(x^M \leq x^{r_n} \leq x^{-M}\).
-    If \(x > 1\), then \(x^{-M} \leq x^{r_n} \leq x^M\).
-    By Theorem \ref{6.1.19}, we have
+    If \(x \geq 1\), then \(x^{-M} \leq x^{r_n} \leq x^M\).
+    By Theorem \ref{6.1.19}(h) we have
     \begin{align*}
          & \lim_{n \to \infty} \min(x^{-M}, x^M, x^{r_n})                                           \\
          & = \min(\lim_{n \to \infty} x^{-M}, \lim_{n \to \infty} x^M, \lim_{n \to \infty} x^{r_n}) \\
-         & = \min(x^{-M}, x^M, x^r)                                                                 \\
-         & = x^{-M}.
+         & = \min(x^M, x^{-M}).
     \end{align*}
-    Since \(x^{-M}\) is positive real number, \(x^r\) must also be a positive real number, as desired.
+    Since \(\min(x^M, x^{-M})\) is positive real number, we know that \(x^r\) must also be a positive real number.
 \end{proof}
 
 \begin{proof}{(b)}
@@ -146,40 +145,112 @@
     \]
     But by Lemma \ref{5.6.9}(b) (applied to \emph{rational} exponents) we have \(x^{q_n + r_n} = x^{q_n} x^{r_n}\).
     Thus by limit laws we have \(x^{q + r} = x^q x^r\), as desired.
+
+    Now we show that \((x^q)^r = \lim_{n \to \infty} (x^{q_n})^{r_n}\).
+    By Theorem \ref{6.1.19}(c) we know that \(q r_n = \lim_{m \to \infty} q_m r_n\).
+    Thus we have
+    \begin{align*}
+        (x^q)^r & = \lim_{n \to \infty} (x^q)^{r_n}                         & \text{(by Definition \ref{6.7.2})} \\
+                & = \lim_{n \to \infty} (\lim_{m \to \infty} x^{q_m})^{r_n} & \text{(by Definition \ref{6.7.2})} \\
+                & = \lim_{n \to \infty} (\lim_{m \to \infty} x^{q_m r_n})   & \text{(by Lemma \ref{5.6.9}(b))}   \\
+                & = \lim_{n \to \infty} x^{q r_n}                           & \text{(by Definition \ref{6.7.2})} \\
+                & = x^{qr}.                                                 & \text{(by Definition \ref{6.7.2})}
+    \end{align*}
 \end{proof}
 
 \begin{proof}{(c)}
-    Let \(r\) be a real number.
-    Then we can write \(r = \lim_{n \to \infty} r_n\) for some sequences \((r_n)_{n = 1}^\infty\) of rationals, by the definition of real numbers (and Proposition \ref{6.1.15}).
-    Then by the limit laws, \(-r\) is the limit of \((-r_n)_{n = 1}^\infty\).
-    By definition of real exponentiation, we have
-    \[
-        x^{-r} = \lim_{n \to \infty} x^{-r_n}
-    \]
-    But by Lemma \ref{5.6.9}(c) (applied to \emph{rational} exponents) we have \(x^{-r_n} = 1 / x^{r_n}\).
-    Thus by limit laws we have \(x^{-r} = 1 / x^r\), as desired.
+    Let \(r \in \mathbf{R}\) where \(r = \lim_{n \to \infty} r_n\) for some sequences \((r_n)_{n = 1}^\infty\) of rationals.
+    By Proposition \ref{6.1.15} \(r\) is well-defined and by Theorem \ref{6.1.19}(c) we know that \(-r\) is the limit of \((-r_n)_{n = 1}^\infty\).
+    By Proposition \ref{6.7.3}(a) we know that \(x^{-r} > 0\) and by Proposition \ref{5.6.9}(a) we know that \(x^{r_n} > 0\) for every \(n \in \mathbf{Z}^+\).
+    Thus we have
+    \begin{align*}
+        x^{-r} & = \lim_{n \to \infty} x^{-r_n}    & \text{(by Definition \ref{6.7.2})}  \\
+               & = 1 / \lim_{n \to \infty} x^{r_n} & \text{(by Theorem \ref{6.1.19}(e))} \\
+               & = 1 / x^r.                        & \text{(by Definition \ref{6.7.2})}
+    \end{align*}
 \end{proof}
 
 \begin{proof}{(d)}
-    Let \(x, y, r\) be positive real numbers.
-    Then we can write \(r = \lim_{n \to \infty} r_n\) for some sequences \((r_n)_{n = 1}^\infty\) of rationals, by the definition of real numbers (and Proposition \ref{6.1.15}).
-    By definition of real exponentiation, we have
+    Let \(x, y, r \in \mathbf{R}^+\) where \(r = \lim_{n \to \infty} r_n\) for some sequences \((r_n)_{n = 1}^\infty\) of rationals.
+    By Proposition \ref{6.1.15} \(r\) is well-defined.
+    Since \(r \in \mathbf{R}^+\), by Definition \ref{5.4.3} we know that \(\exists\ c \in \mathbf{R}^+\) such that \(r_n \geq c\) for every \(n \in \mathbf{Z}^+\).
+
+    We first show that \(x > y \implies x^r > y^r\).
+    \begin{align*}
+                 & x > y                                                                                                 \\
+        \implies & \forall\ n \in \mathbf{Z}^+, x^{r_n} > y^{r_n}               & \text{(by Proposition \ref{5.6.9}(d))} \\
+        \implies & \lim_{n \to \infty} x^{r_n} \geq \lim_{n \to \infty} y^{r_n} & \text{(by Lemma \ref{6.4.13})}         \\
+        \implies & x^r \geq y^r.                                                & \text{(by Definition \ref{6.7.2})}
+    \end{align*}
+    Now we show that \(x^r \neq y^r\).
+    Suppose for sake of contradiction that \(x^r = y^r\).
+    Then we have
+    \begin{align*}
+                 & x^r = y^r                                                                                                                                                               \\
+        \implies & \lim_{n \to \infty} x^{r_n} = \lim_{n \to \infty} y^{r_n}                                                                          & \text{(by Definition \ref{6.7.2})} \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \abs*{x^{r_n} - y^{r_n}} \leq \varepsilon. & \text{(by Definition \ref{5.3.1})}
+    \end{align*}
+    But by Proposition \ref{5.6.9}(d) we know that \(x > y \implies x^{r_n} > y^{r_n}\), thus by setting \(\varepsilon = (x^{r_n} - y^{r_n}) / 2\) we get
     \[
-        \max(x^r, y^r) = \lim_{n \to \infty} \max(x^{r_n}, y^{r_n}) ; x^r = \lim_{n \to \infty} x^{r_n} ; y^r = \lim_{n \to \infty} y^{r_n}.
+        \abs*{x^{r_n} - y^{r_n}} = x^{r_n} - y^{r_n} \leq \frac{x^{r_n} - y^{r_n}}{2},
     \]
-    But by Lemma \ref{5.6.9}(d) (applied to \emph{rational} exponents) we have \(x > y \iff x^{r_n} > y^{r_n}\).
-    Thus by limit laws we have \(x > y \iff x^r > y^r\), as desired.
+    a contradiction.
+    Thus we must have \(x^r > y^r\).
+
+    Finally we show that \(x^r > y^r \implies x > y\).
+    Suppose for sake of contradiction that \(x \leq y\).
+    Then from the proof above we know that \(x^r \leq y^r\), a contradiction.
+    Thus we must have \(x > y\).
+    We conclude that if \(r > 0\), then \(x > y \iff x^r > y^r\).
 \end{proof}
 
 \begin{proof}{(e)}
-    Let \(x, q, r\) be positive real numbers.
-    Then we can write \(q = \lim_{n \to \infty} q_n\) and \(r = \lim_{n \to \infty} r_n\) for some sequences \((q_n)_{n = 1}^\infty\) and \((r_n)_{n = 1}^\infty\) of rationals, by the definition of real numbers (and Proposition \ref{6.1.15}).
-    By definition of real exponentiation, we have
-    \[
-        \max(x^q, x^r) = \lim_{n \to \infty} \max(x^{q_n}, x^{r_n}); x^q = \lim_{n \to \infty} x^{q_n} ; x^r = \lim_{n \to \infty} x^{r_n}.
-    \]
-    But by Lemma \ref{5.6.9}(e) (applied to \emph{rational} exponents) we have if \(x > 1\) then \(x^{q_n} > x^{r_n} \iff q > r\) and if \(x < 1\) then \(x^{q_n} > x^{r_n} \iff q < r\).
-    Thus by limit laws we have if \(x > 1\) then \(x^q > x^r \iff q > r\) and if \(x < 1\) then \(x^q > x^r \iff q < r\), as desired.
+    Let \(x, q, r \in \mathbf{R}^+\) where \(q = \lim_{n \to \infty} q_n\) and \(r = \lim_{n \to \infty} r_n\) for some sequences \((q_n)_{n = 1}^\infty\), \((r_n)_{n = 1}^\infty\) of rationals.
+    By Proposition \ref{6.1.15} \(q, r\) are well-defined.
+    Since \(q, r \in \mathbf{R}^+\), by Definition \ref{5.4.3} we know that \(\exists\ c_1, c_2 \in \mathbf{R}^+\) such that \(q_n \geq c_1\) and \(r_n \geq c_2\) for every \(n \in \mathbf{Z}^+\).
+    Thus by Proposition \ref{5.6.9}(a) we know that \(x^{q_n}, x^{r_n} > 0\) for every \(n \in \mathbf{Z}^+\).
+
+    We first show that if \(x > 1\), then \(x^q > x^r \implies q > r\).
+    We have
+    \begin{align*}
+                 & x^q > x^r > 0                          & \text{(by Proposition \ref{6.7.3}(a))}    \\
+        \implies & x^{q - r} > 1                          & \text{(by Proposition \ref{6.7.3}(b)(c))} \\
+        \implies & \lim_{n \to \infty} x^{q_n - r_n} > 1. & \text{(by Definition \ref{6.7.2})}        \\
+    \end{align*}
+    Now we show that \(\exists\ N \in \mathbf{Z}^+\) such that \(q_n - r_n > 0\) for every \(n \geq N\).
+    Suppose for sake of contradiction that \(\forall\ N \in \mathbf{Z}^+\), \(\exists\ n \geq N\) such that \(q_n - r_n \leq 0\).
+    Then we have
+    \begin{align*}
+                 & q_n - r_n \leq 0                                                                   \\
+        \implies & r_n - q_n \geq 0                                                                   \\
+        \implies & x^{r_n - q_n} \geq 1^{r_n - q_n} = 1      & \text{(by Proposition \ref{6.7.3}(d))} \\
+        \implies & x^{q_n - r_n} \leq 1                      & \text{(by Proposition \ref{6.7.3}(c))} \\
+        \implies & \lim_{n \to \infty} x^{q_n - r_n} \leq 1, & \text{(by Lemma \ref{6.4.13})}
+    \end{align*}
+    which contradict to \(\lim_{n \to \infty} x^{q_n - r_n} > 1\).
+    Thus \(\exists\ N \in \mathbf{Z}^+\) such that \(q_n - r_n > 0\) for every \(n \geq N\).
+    This means \(q_n > r_n\) for every \(n \geq N\), and by Lemma \ref{6.4.13} we know that \(q = \lim_{n \to \infty} q_n \geq \lim_{n \to \infty} r_n = r\).
+
+    Next we show that if \(x > 1\), then \(q > r \implies x^q > x^r\).
+    \begin{align*}
+                 & q > r                                                                                                          \\
+        \implies & q - r > 0                                                                                                      \\
+        \implies & x^{q - r} > 1^{q - r}                                                     & \text{(by Lemma \ref{6.7.3}(d))}   \\
+        \implies & x^{q - r} > \lim_{n \to \infty} 1^{q_n - r_n} = \lim_{n \to \infty} 1 = 1 & \text{(by Definition \ref{6.7.2})} \\
+        \implies & x^{q - r} x^r > x^r                                                       & \text{(by Lemma \ref{6.7.3}(a))}   \\
+        \implies & x^{q - r + r} > x^r                                                       & \text{(by Lemma \ref{6.7.3}(b))}   \\
+        \implies & x^q > x^r.                                                                & \text{(by Lemma \ref{5.6.8})}
+    \end{align*}
+    Thus we conclude that if \(x > 1\), then \(x^q > x^r \iff q > r\).
+
+    Finally we show that if \(x < 1\), then \(x^q > x^r \iff q < r\).
+    \begin{align*}
+                 & x < 1                                                                                    \\
+        \implies & x^{-1} > 1                                                                               \\
+        \implies & \big((x^{-1})^q < (x^{-1})^r \iff q < r\big) & \text{(from proof above)}                 \\
+        \implies & (x^{-q} < x^{-r} \iff q < r)                 & \text{(by Proposition \ref{6.7.3}(b))}    \\
+        \implies & (x^q > x^r \iff q < r).                      & \text{(by Proposition \ref{6.7.3}(a)(c))}
+    \end{align*}
 \end{proof}
 
 \exercisesection
