@@ -82,12 +82,12 @@
 
 \begin{remark}\label{6.6.7}
     Proposition \ref{6.6.5} and \ref{6.6.6} give a sharp contrast between the notion of a limit, and that of a limit point.
-    When a sequence has a limit \(L\), then all subsequences also converge to \(L\).
-    But when a sequence has \(L\) as a limit point, then only some subsequences converge to \(L\).
+    When a sequence has a limit \(L\), then \emph{all} subsequences also converge to \(L\).
+    But when a sequence has \(L\) as a limit point, then only \emph{some} subsequences converge to \(L\).
 \end{remark}
 
 \begin{note}
-    We can now prove an important theorem in real analysis, due to Bernard Bolzano (1781--1848) and Karl Weierstrass (1815--1897):
+    We can now prove an important theorem in real analysis, due to Bernard Bolzano (1781 -- 1848) and Karl Weierstrass (1815 -- 1897):
     every bounded sequence has a convergent subsequence.
 \end{note}
 
@@ -141,13 +141,18 @@
 \end{exercise}
 
 \begin{proof}
-    Let \(j \in \mathbf{N}\), and let \(f(n) : \mathbf{N} \to \mathbf{N}\) be a function where \(f(0) = \min\{n \in \mathbf{N} : \abs*{a_n} \geq 0\}\) and \(f(n_j) = \min\{n \in \mathbf{N} : (\abs*{a_n} \geq j) \land (n > n_{j - 1})\}\).
-    Such \(f\) exists because \((a_n)_{n = 0}^\infty\) is not bounded.
+    Let \(j \in \mathbf{N}\), and let \(f(n) : \mathbf{N} \to \mathbf{N}\) be a function defined as follow:
+    \begin{align*}
+        f(0)   & = \min\{n \in \mathbf{N} : \abs*{a_n} \geq 0\}                         \\
+        f(n_j) & = \min\{n \in \mathbf{N} : (\abs*{a_n} \geq j) \land (n > n_{j - 1})\}
+    \end{align*}
+    Since \((a_n)_{n = 0}^\infty\) is not bounded, we know that \(\exists\ n \in \mathbf{N}\) such that \(\abs*{a_n} \geq j\) for every \(j \in \mathbf{N}\).
+    Thus by Theorem \ref{5.5.9} such \(f\) is well-defined.
     Let \((b_n)_{n = 1}^\infty\) be a subsequence of \((a_n)_{n = 0}^\infty\) where \(b_n = a_{f(n)}\).
-    Then \(\abs*{1 / b_n} \leq 1 / n\).
-    Since \(\lim_{n \to \infty} 0 = 0\) and \(\lim_{n \to \infty} 1 / n = 0\), by Squeeze test (Corollary \ref{6.4.14}), \(0 \leq \abs*{1 / b_n} \leq 1 / j\) implies \(\lim_{n \to \infty} \abs*{1 / b_n} = 0\).
+    Then \(0 \leq \abs*{1 / b_n} \leq 1 / n\).
+    Since \(\lim_{n \to \infty} 0 = 0\) and \(\lim_{n \to \infty} 1 / n = 0\), by squeeze test (Corollary \ref{6.4.14}) we have \(\lim_{n \to \infty} \abs*{1 / b_n} = 0\).
     Since \(\lim_{n \to \infty} \abs*{1 / b_n} = 0\), by zero test (Corollary \ref{6.4.17}) we have \(\lim_{n \to \infty} 1 / b_n = 0\).
-    Thus there exists a subsequence \((b_n)_{n = 0}^\infty\) of \((a_n)_{n = 0}^\infty\) such that \(\lim_{n \to \infty} 1 / b_n\) exists and is equal to zero.
+    Thus there exists a subsequence \((b_n)_{n = 0}^\infty\) of \((a_n)_{n = 0}^\infty\) such that \(\lim_{n \to \infty} 1 / b_n = 0\)
 \end{proof}
 
 \begin{exercise}\label{ex 6.6.4}
