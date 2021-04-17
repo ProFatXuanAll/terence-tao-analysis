@@ -690,7 +690,7 @@ Then we define the finite product \(\prod_{i = m}^n a_i\) by the recursive formu
 \begin{additional corollary}\label{ac 7.1.3}
 Let \(X\) be a finite set with \(n\) elements (where \(n \in \mathbf{N}\)), and let \(f : X \to \mathbf{R}\) be a function from \(X\) to the real numbers
 (i.e., \(f\) assigns a real number \(f(x)\) to each element \(x\) of \(X\)).
-Then we can define the finite sum \(\prod_{x \in X} f(x)\) as follows.
+Then we can define the finite product \(\prod_{x \in X} f(x)\) as follows.
 We first select any bijection \(g\) from \(\{i \in \mathbf{N} : 1 \leq i \leq n\}\) to \(X\);
 such a bijection exists since \(X\) is assumed to have \(n\) elements.
 We then define
@@ -708,10 +708,9 @@ Then we have
 \end{additional corollary}
 
 \begin{proof}
+    Let \(P(n)\) be the assertion that ``For any set \(X\) of \(n\) elements, any function \(f : X \to \mathbf{R}\), and any two bijections \(g, h\) from \(\{i \in \mathbf{N} : 1 \leq i \leq n\}\) to \(X\), we have \(\prod_{i = 1}^n f(g(i)) = \prod_{i = 1}^n f(h(i))\)''.
+    (More informally, \(P(n)\) is the assertion that Additional Corollary \ref{ac 7.1.3} is true for that value of \(n\).)
     We use induction on \(n\);
-    more precisely, we let \(P(n)\) be the assertion that ``For any set \(X\) of \(n\) elements, any function \(f : X \to \mathbf{R}\), and any two bijections \(g, h\) from \(\{i \in \mathbf{N} : 1 \leq i \leq n\}\) to \(X\), we have \(\prod_{i = 1}^n f(g(i)) = \prod_{i = 1}^n f(h(i))\)''.
-    (More informally, \(P(n)\) is the assertion that Proposition \ref{7.1.8} is true for that value of \(n\).)
-    We want to prove that \(P(n)\) is true for all natural numbers \(n\).
 
     We first check the base case \(P(0)\).
     In this case \(\prod_{i = 1}^0 f(g(i))\) and \(\prod_{i = 1}^0 f(h(i))\) both equal to \(1\), by Additional Corollary \ref{ac 7.1.1}, so we are done.
@@ -730,10 +729,7 @@ Then we have
         \prod_{i = 1}^{n + 1} f(g(i)) = \Bigg(\prod_{i = 1}^n f(g(i))\Bigg) \times f(x).
     \]
     Now let us look at the right-hand side of \eqref{eq ac 7.1}.
-    Ideally we would like to have \(h(n + 1)\) also equal to \(x\)
-    - this would allow us to use the inductive hypothesis \(P(n)\) much more easily
-    - but we cannot assume this.
-    However, since \(h\) is a bijection, we do know that there is \emph{some} index \(j\), with \(1 \leq j \leq n + 1\), for which \(h(j) = x\).
+    Since \(h\) is a bijection, we do know that there is \emph{some} index \(j\), with \(1 \leq j \leq n + 1\), for which \(h(j) = x\).
     We now use Additional Corollary \ref{ac 7.1.1} and \ref{ac 7.1.2} to write
     \begin{align*}
         \prod_{i = 1}^{n + 1} f(h(i)) & = \Bigg(\prod_{i = 1}^j f(h(i))\Bigg) \times \Bigg(\prod_{i = j + 1}^{n + 1} f(h(i))\Bigg)                      \\
