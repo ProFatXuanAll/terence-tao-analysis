@@ -994,12 +994,12 @@ Then
     For \(n = 0\), we have
     \begin{align*}
         (x + y)^0 & = 1                                                                                                                                \\
-                  & = \frac{0!}{0!(0 - 0)!} x^0 y^{0 - 0}                                                         & \text{(by the given condition)}    \\
+                  & = \frac{0!}{0!(0 - 0)!} x^0 y^{0 - 0}                                                         & \text{(by definition)}             \\
                   & = \sum_{j = 0}^{-1} \frac{0!}{j!(0 - j)!} x^j y^{0 - j} + \frac{0!}{0!(0 - 0)!} x^0 y^{0 - 0} & \text{(by Definition \ref{7.1.1})} \\
                   & = \sum_{j = 0}^0 \frac{0!}{j!(0 - j)!} x^j y^{0 - j}                                          & \text{(by Definition \ref{7.1.1})}
     \end{align*}
     So the base case holds.
-    Suppose inductively that for some \(n >= 0\) the statement holds.
+    Suppose inductively that for some \(n \geq 0\) the statement holds.
     Then for \(n + 1\), we have
     \begin{align*}
         (x + y)^{n + 1} & = (x + y)^n \times (x + y)                                                                                                      \\
@@ -1010,22 +1010,30 @@ Then
                         & \quad + \bigg(\frac{n!}{n!0!} x^{n + 1} y^0\bigg)                                                                               \\
                         & \quad + \bigg(\sum_{j = 1}^n \frac{n!}{j!(n - j)!} x^j y^{n + 1 - j}\bigg)                                                      \\
                         & \quad + \bigg(\frac{n!}{0!n!} x^0 y^{n + 1}\bigg)                                                                               \\
-                        & = \bigg(\sum_{j = 0}^{n - 1} \frac{n!}{j!(n - j)!} x^{j + 1} y^{n - j}\bigg) + x^{n + 1}   & \text{(by the given condition)}    \\
+                        & = \bigg(\sum_{j = 0}^{n - 1} \frac{n!}{j!(n - j)!} x^{j + 1} y^{n - j}\bigg) + x^{n + 1}   & \text{(by definition)}             \\
                         & \quad + \bigg(\sum_{j = 1}^n \frac{n!}{j!(n - j)!} x^j y^{n + 1 - j}\bigg) + y^{n + 1}                                          \\
-                        & = \bigg(\sum_{j = 1}^n \frac{n!}{(j - 1)!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg) + x^{n + 1} & \text{(by Lemma \ref{7.1.4})}      \\
-                        & \quad + \bigg(\sum_{j = 1}^n \frac{n!}{j!(n - j)!} x^j y^{n + 1 - j}\bigg) + y^{n + 1}                                          \\
-                        & = x^{n + 1} + y^{n + 1}                                                                    & \text{(by Lemma \ref{7.1.4})}      \\
-                        & \quad + \bigg(\sum_{j = 1}^n \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg).
+                        & = \bigg(\sum_{j = 1}^n \frac{n!}{(j - 1)!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg) + x^{n + 1} & \text{(by Lemma \ref{7.1.4}(b))}   \\
+                        & \quad + \bigg(\sum_{j = 1}^n \frac{n!}{j!(n - j)!} x^j y^{n + 1 - j}\bigg) + y^{n + 1}
     \end{align*}
-    And we also have
+    and
     \begin{align*}
-         & \sum_{j = 0}^{n + 1} \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}                                                                       \\
-         & = \bigg(\sum_{j = n + 1}^{n + 1} \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                & \text{(by Definition \ref{7.1.1})} \\
-         & \quad + \bigg(\sum_{j = 0}^n \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                                                         \\
-         & = x^{n + 1} + \bigg(\sum_{j = 0}^n \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)              & \text{(by the given condition)}    \\
-         & = x^{n + 1} + \bigg(\sum_{j = 0}^0 \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)              & \text{(by Definition \ref{7.1.1})} \\
-         & \quad + \bigg(\sum_{j = 1}^n \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                                                         \\
-         & = x^{n + 1} + y^{n + 1} + \bigg(\sum_{j = 1}^n \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg). & \text{(by the given condition)}
+         & \bigg(\sum_{j = 1}^n \frac{n!}{(j - 1)!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                                                                                                          \\
+         & \quad + \bigg(\sum_{j = 1}^n \frac{n!}{j!(n - j)!} x^j y^{n + 1 - j}\bigg)                                                                                                            \\
+         & = \sum_{j = 1}^n \bigg(\frac{n!}{(j - 1)!(n + 1 - j)!} x^j y^{n + 1 - j} + \frac{n!}{j!(n - j)!} x^j y^{n + 1 - j}\bigg)                           & \text{(by Lemma \ref{7.1.4}(c))} \\
+         & = \sum_{j = 1}^n \bigg(\frac{j \times n!}{j!(n + 1 - j)!} x^j y^{n + 1 - j} + \frac{(n + 1 - j) \times n!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                                    \\
+         & = \sum_{j = 1}^n \bigg(\frac{j \times n! + (n + 1 - j) \times n!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                                                                             \\
+         & = \sum_{j = 1}^n \bigg(\frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg).
+    \end{align*}
+    We also have
+    \begin{align*}
+         & \sum_{j = 0}^{n + 1} \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}                                                                                           \\
+         & = \frac{(n + 1)!}{(n + 1)! 0!} x^{n + 1} y^0 + \bigg(\sum_{j = 0}^n \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg) & \text{(by Definition \ref{7.1.1})} \\
+         & = x^{n + 1} + \bigg(\sum_{j = 0}^n \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                                  & \text{(by definition)}             \\
+         & = x^{n + 1} + \bigg(\sum_{j = 0}^0 \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                                  & \text{(by Lemma \ref{7.1.4}(a))}   \\
+         & \quad + \bigg(\sum_{j = 1}^n \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                                                                             \\
+         & = x^{n + 1} + \frac{(n + 1)!}{0! (n + 1)!} x^0 y^{n + 1}                                                                    & \text{(by Definition \ref{7.1.1})} \\
+         & \quad + \bigg(\sum_{j = 1}^n \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                                                                             \\
+         & = x^{n + 1} + y^{n + 1} + \bigg(\sum_{j = 1}^n \frac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg).                     & \text{(by definition)}
     \end{align*}
     Thus we have
     \[
