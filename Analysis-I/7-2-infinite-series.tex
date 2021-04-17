@@ -121,28 +121,26 @@
 
 \begin{proof}
     We first show that if \(\sum_{n = m}^\infty a_n\) is absolutely convergent, then it is also conditionally convergent.
+    Let \(N, p, q \in \mathbf{N}\).
+    Then we have
     \begin{align*}
-                 & \sum_{n = m}^\infty \abs*{a_n} \text{ converge}                                                                                               \\
-        \implies & \forall\ \varepsilon \in \mathbf{R} \land \varepsilon > 0, \exists\ N \in \mathbf{N} \land N \geq m :                                         \\
-                 & \abs*{\sum_{n = p + 1}^q \abs*{a_n}} \leq \varepsilon\ \forall\ p, q \in \mathbf{N} \land p, q \geq N   & \text{(by Proposition \ref{7.2.5})} \\
-        \implies & \forall\ \varepsilon > 0, \ \exists\ N \geq m :                                                                                               \\
-                 & \sum_{n = p + 1}^q \abs*{a_n} \leq \varepsilon\ \forall\ p, q \geq N                                                                          \\
-        \implies & \forall\ \varepsilon > 0, \ \exists\ N \geq m :                                                                                               \\
-                 & \abs*{\sum_{n = p + 1}^q a_n} \leq \sum_{n = p + 1}^q \abs*{a_n} \leq \varepsilon\ \forall\ p, q \geq N & \text{(by Lemma \ref{7.1.4})}       \\
-        \implies & \sum_{n = m}^\infty a_n \text{ converge}.                                                               & \text{(by Proposition \ref{7.2.5})}
+                 & \sum_{n = m}^\infty \abs*{a_n} \text{ converge}                                                                                                                               \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \geq m : \forall\ p, q \geq N, \abs*{\sum_{n = p + 1}^q \abs*{a_n}} \leq \varepsilon, & \text{(by Proposition \ref{7.2.5})} \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \geq m : \forall\ p, q \geq N, \sum_{n = p + 1}^q \abs*{a_n} \leq \varepsilon                                               \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \geq m : \forall\ p, q \geq N,                                                                                              \\
+                 & \abs*{\sum_{n = p + 1}^q a_n} \leq \sum_{n = p + 1}^q \abs*{a_n} \leq \varepsilon                                                       & \text{(by Lemma \ref{7.1.4}(e))}    \\
+        \implies & \sum_{n = m}^\infty a_n \text{ converge}.                                                                                               & \text{(by Proposition \ref{7.2.5})}
     \end{align*}
 
     Now we show that the triangle inequality is true.
-    Let \(N \in \mathbf{N} \land N \geq m\).
-    Let \((S_N)_{N = m}^\infty\) be a sequence where \(S_N = \abs*{\sum_{n = m}^N a_n}\).
-    Let \((T_N)_{N = m}^\infty\) be a sequence where \(T_N = \sum_{n = m}^N \abs*{a_n}\).
-    Since \(\lim_{N \to \infty} T_N\) exists, from proof above we know that \(\lim_{N \to \infty} S_N\) also exists.
-    So
+    From the proof above we know that \(\sum_{n = m}^\infty a_n\) converges, thus \(\abs*{\sum_{n = m}^\infty a_n}\) exists and
     \begin{align*}
-                 & \abs*{\sum_{n = m}^N a_n} \leq \sum_{n = m}^N \abs*{a_n} \ \forall\ N \geq m & \text{(by Lemma \ref{7.1.4})}      \\
-        \implies & S_N \leq T_N \ \forall\ N \geq m                                                                                  \\
-        \implies & \lim_{N \to \infty} S_N \leq \lim_{N \to \infty} T_N                         & \text{(by Lemma \ref{6.4.13})}     \\
-        \implies & \abs*{\sum_{n = m}^\infty a_n} \leq \sum_{n = m}^\infty \abs*{a_n}.          & \text{(by Definition \ref{7.2.2})}
+                 & \forall\ N \geq m, \abs*{\sum_{n = m}^N a_n} \leq \sum_{n = m}^N \abs*{a_n}                                                              & \text{(by Lemma \ref{7.1.4}(e))}    \\
+        \implies & \lim_{N \to \infty} \abs*{\sum_{n = m}^N a_n} \leq \lim_{N \to \infty} \sum_{n = m}^N \abs*{a_n}                                         & \text{(by Lemma \ref{6.4.13})}      \\
+        \implies & \lim_{N \to \infty} \max(\sum_{n = m}^N a_n, -\sum_{n = m}^N a_n) \leq \lim_{N \to \infty} \sum_{n = m}^N \abs*{a_n}                                                           \\
+        \implies & \max(\lim_{N \to \infty} \sum_{n = m}^N a_n, \lim_{N \to \infty} -\sum_{n = m}^N a_n) \leq \lim_{N \to \infty} \sum_{n = m}^N \abs*{a_n} & \text{(by Theorem \ref{6.1.19}(g))} \\
+        \implies & \abs*{\lim_{N \to \infty} \sum_{n = m}^N a_n} \leq \lim_{N \to \infty} \sum_{n = m}^N \abs*{a_n}                                                                               \\
+        \implies & \abs*{\sum_{n = m}^\infty a_n} \leq \sum_{n = m}^\infty \abs*{a_n}.                                                                      & \text{(by Definition \ref{7.2.2})}
     \end{align*}
 \end{proof}
 
