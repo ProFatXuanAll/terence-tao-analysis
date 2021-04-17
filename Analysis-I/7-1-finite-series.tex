@@ -225,8 +225,10 @@
     such a bijection exists since \(X\) is assumed to have \(n\) elements.
     We then define
     \[
-        \sum_{x \in X} f(x) \coloneqq \sum_{i = 1}^n f(g(i))
+        \sum_{x \in X} f(x) \coloneqq \sum_{i = 1}^n f(g(i)).
     \]
+    In some cases we would like to define the sum \(\sum_{x \in X} f(x)\) when \(f : Y \to \mathbf{R}\) is defined on a larger set \(Y\) than \(X\).
+    In such cases we use exactly the same definition as is given above.
 \end{definition}
 
 \setcounter{theorem}{7}
@@ -287,7 +289,8 @@
 \end{proof}
 
 \begin{remark}\label{7.1.9}
-    The issue is somewhat more complicated when summing over infinite sets.
+    The issue is somewhat more complicated when summing over infinite sets;
+    See Section \ref{sec 8.2}.
 \end{remark}
 
 \begin{remark}\label{7.1.10}
@@ -348,8 +351,7 @@
 
 \begin{proof}{(a)}
     Let \(g : \{i \in \mathbf{N} : 1 \leq i \leq 0\} \to \emptyset\) be a function.
-    Then \(g\) is a bijection.
-    So
+    Then \(g\) is a bijection and
     \begin{align*}
         \sum_{x \in X} f(x) & = \sum_{i = 1}^0 f(g(i)) & \text{(by Definition \ref{7.1.6})} \\
                             & = 0.                     & \text{(by Definition \ref{7.1.1})}
@@ -357,9 +359,8 @@
 \end{proof}
 
 \begin{proof}{(b)}
-    Let \(g : \{1\} \to X\) be a function.
-    Then \(g\) is a bijection.
-    So
+    Let \(g : \{1\} \to \{x_0\}\) be a function.
+    Then \(g\) is a bijection and
     \begin{align*}
         \sum_{x \in X} f(x) & = \sum_{i = 1}^1 f(g(i))                       & \text{(by Definition \ref{7.1.6})} \\
                             & = \bigg(\sum_{i = 1}^0 f(g(i))\bigg) + f(g(1)) & \text{(by Definition \ref{7.1.1})} \\
@@ -370,8 +371,8 @@
 
 \begin{proof}{(c)}
     Let \(h : \{i \in \mathbf{N} : 1 \leq i \leq \#(Y)\} \to Y\) be a bijection.
-    Then \(g \circ h : \{i \in \mathbf{N} : 1 \leq i \leq \#(Y)\} \to X\) is also a bijection.
-    So
+    Since \(X\) is finite and \(g\) is a bijection between \(X\) and \(Y\), we know that \(Y\) is finite and thus such \(h\) is well-defined.
+    Then we know that \(g \circ h : \{i \in \mathbf{N} : 1 \leq i \leq \#(Y)\} \to X\) is also a bijection and
     \begin{align*}
         \sum_{x \in X} f(x) & = \sum_{i = 1}^{\#(Y)} f((g \circ h)(i)) & \text{(by Definition \ref{7.1.6})} \\
                             & = \sum_{i = 1}^{\#(Y)} f(g(h(i)))                                             \\
@@ -384,73 +385,78 @@
 \begin{proof}{(d)}
     Let \(f : X \to \{a_i \in \mathbf{R} : n \leq i \leq m\}\) be a function where \(f = i \mapsto a_i\).
     Let \(g : \{i \in \mathbf{N} : 1 \leq i \leq m - n + 1\} \to X\) be a function where \(g = i \mapsto i + n - 1\).
-    Then \(g\) is a bijection.
-    So
+    Then \(g\) is a bijection and
     \begin{align*}
-        \sum_{i \in X} a_i & = \sum_{i \in X} f(i)                                                                           \\
-                           & = \sum_{i = 1}^{m - n + 1} f(g(i))                         & \text{(by Definition \ref{7.1.6})} \\
-                           & = \sum_{i = 1 + n - 1}^{m - n + 1 + n - 1} f(g(i - n + 1)) & \text{(by Lemma \ref{7.1.4})}      \\
-                           & = \sum_{i = n}^m f(g(i - n + 1))                                                                \\
-                           & = \sum_{i = n}^m f(i - n + 1 + n - 1)                                                           \\
-                           & = \sum_{i = n}^m f(i)                                                                           \\
+        \sum_{i \in X} a_i & = \sum_{i \in X} f(i)                                                                                 \\
+                           & = \sum_{i = 1}^{m - n + 1} f(g(i))                               & \text{(by Definition \ref{7.1.6})} \\
+                           & = \sum_{i = 1}^{m - n + 1} f(i + n - 1)                                                               \\
+                           & = \sum_{i = 1}^{m - n + 1} a_{i + n - 1}                                                              \\
+                           & = \sum_{i = 1 + n - 1}^{m - n + 1 + n - 1} a_{i + n - 1 - n + 1} & \text{(by Lemma \ref{7.1.4}(b))}   \\
                            & = \sum_{i = n}^m a_i.
     \end{align*}
 \end{proof}
 
 \begin{proof}{(e)}
     Let \(g : \{i \in \mathbf{N} : 1 \leq i \leq \#(X)\} \to X\) and \(h : \{i \in \mathbf{N} : 1 \leq i \leq \#(Y)\} \to Y\) be bijections.
-    Let \(k : \{i \in \mathbf{N} : 1 \leq i \leq \#(X \cup Y)\} \to X \cup Y\) be a function where \(k(i) = g(i)\) if \(1 \leq i \leq \#(X)\) and \(k(i) = h(i - \#(X))\) otherwise.
-    Then \(k\) is a bijection.
-    So
+    Since \(X, Y\) are finite, we know that \(g, h\) are well-defined and \(X \cup Y\) is finite.
+    Let \(k : \{i \in \mathbf{N} : 1 \leq i \leq \#(X \cup Y)\} \to X \cup Y\) be a bijection where
+    \[
+        k(i) = \begin{cases}
+            g(i)         & \text{if } 1 \leq i \leq \#(X)                  \\
+            h(i - \#(X)) & \text{if } \#(X) + 1 \leq i \leq \#(X) + \#(Y).
+        \end{cases}
+    \]
+    Since \(X \cup Y\) is finite, we know that \(k\) is well-defined and \(\#(X \cup Y) = \#(X) + \#(Y)\).
+    Then we have
     \begin{align*}
         \sum_{z \in X \cup Y} f(z) & = \sum_{i = 1}^{\#(X \cup Y)} f(k(i))                                                & \text{(by Definition \ref{7.1.6})} \\
-                                   & = \sum_{i = 1}^{\#(X)} f(k(i)) + \sum_{i = \#(X) + 1}^{\#(X \cup Y)} f(k(i))         & \text{(by Lemma \ref{7.1.4})}      \\
+                                   & = \sum_{i = 1}^{\#(X)} f(k(i)) + \sum_{i = \#(X) + 1}^{\#(X \cup Y)} f(k(i))         & \text{(by Lemma \ref{7.1.4}(a))}   \\
                                    & = \sum_{i = 1}^{\#(X)} f(g(i)) + \sum_{i = \#(X) + 1}^{\#(X \cup Y)} f(h(i - \#(X)))                                      \\
-                                   & = \sum_{i = 1}^{\#(X)} f(g(i)) + \sum_{i = 1}^{\#(Y)} f(h(i))                        & \text{(by Lemma \ref{7.1.4})}      \\
+                                   & = \sum_{i = 1}^{\#(X)} f(g(i)) + \sum_{i = 1}^{\#(Y)} f(h(i))                        & \text{(by Lemma \ref{7.1.4}(b))}   \\
                                    & = \sum_{x \in X} f(x) + \sum_{y \in Y} f(y).                                         & \text{(by Definition \ref{7.1.6})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(f)}
     Let \(h : \{i \in \mathbf{N} : 1 \leq i \leq \#(X)\} \to X\) be a bijection.
-    So
+    Since \(X\) is finite, we know that \(h\) is well-defined and
     \begin{align*}
         \sum_{x \in X} (f(x) + g(x)) & = \sum_{x \in X} (f + g)(x)                                                                        \\
                                      & = \sum_{i = 1}^{\#(X)} (f + g)(h(i))                          & \text{(by Definition \ref{7.1.6})} \\
                                      & = \sum_{i = 1}^{\#(X)} (f(h(i)) + g(h(i)))                                                         \\
-                                     & = \sum_{i = 1}^{\#(X)} f(h(i)) + \sum_{i = 1}^{\#(X)} g(h(i)) & \text{(by Lemma \ref{7.1.4})}      \\
+                                     & = \sum_{i = 1}^{\#(X)} f(h(i)) + \sum_{i = 1}^{\#(X)} g(h(i)) & \text{(by Lemma \ref{7.1.4}(c))}   \\
                                      & = \sum_{x \in X} f(x) + \sum_{x \in X} g(x).                  & \text{(by Definition \ref{7.1.6})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(g)}
     Let \(g : \{i \in \mathbf{N} : 1 \leq i \leq \#(X)\} \to X\) be a bijection.
-    So
+    Since \(X\) is finite, we know that \(g\) is well-defined and
     \begin{align*}
         \sum_{x \in X} cf(x) & = \sum_{x \in X} (cf)(x)                                               \\
                              & = \sum_{i = 1}^{\#(X)} (cf)(g(i)) & \text{(by Definition \ref{7.1.6})} \\
                              & = \sum_{i = 1}^{\#(X)} cf(g(i))                                        \\
-                             & = c\sum_{i = 1}^{\#(X)} f(g(i))   & \text{(by Lemma \ref{7.1.4})}      \\
+                             & = c\sum_{i = 1}^{\#(X)} f(g(i))   & \text{(by Lemma \ref{7.1.4}(d))}   \\
                              & = c\sum_{x \in X} f(x).           & \text{(by Definition \ref{7.1.6})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(h)}
     Let \(h : \{i \in \mathbf{N} : 1 \leq i \leq \#(X)\} \to X\) be a bijection.
-    So
+    Since \(X\) is finite, we know that \(h\) is well-defined and
     \begin{align*}
         \sum_{x \in X} f(x) & = \sum_{i = 1}^{\#(X)} f(h(i))    & \text{(by Definition \ref{7.1.6})} \\
-                            & \leq \sum_{i = 1}^{\#(X)} g(h(i)) & \text{(by Lemma \ref{7.1.4})}      \\
+                            & \leq \sum_{i = 1}^{\#(X)} g(h(i)) & \text{(by Lemma \ref{7.1.4}(f))}   \\
                             & = \sum_{x \in X} g(x).            & \text{(by Definition \ref{7.1.6})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(i)}
     Let \(g : \{i \in \mathbf{N} : 1 \leq i \leq \#(X)\} \to X\) be a bijection.
-    So
+    Since \(X\) is finite, we know that \(g\) is well-defined and
     \begin{align*}
         \abs*{\sum_{x \in X} f(x)} & = \abs*{\sum_{i = 1}^{\#(X)} f(g(i))}    & \text{(by Definition \ref{7.1.6})} \\
-                                   & \leq \sum_{i = 1}^{\#(X)} \abs*{f(g(i))} & \text{(by Lemma \ref{7.1.4})}      \\
+                                   & \leq \sum_{i = 1}^{\#(X)} \abs*{f(g(i))} & \text{(by Lemma \ref{7.1.4}(e))}   \\
                                    & = \sum_{x \in X} \abs*{f(x)}.            & \text{(by Definition \ref{7.1.6})}
     \end{align*}
 \end{proof}
