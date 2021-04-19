@@ -555,21 +555,23 @@
 
     We first show that if \(I\) is finite, then \(\bigcup_{\alpha \in I} A_{\alpha}\) is at most countable.
     Since \(I\) is finite, by Definition \ref{3.6.5} \(\exists\ n \in \mathbf{N}\) such that \(\#(I) = n\).
-    We use induction on \(n\) to show that \(\forall\ n \in \mathbf{N}\), \(\bigcup_{\alpha \in I} A_{\alpha}\) is at most countable.
+    Let \(P(n)\) be the statement ``\(\#(I) = n\) and \(\bigcup_{\alpha \in I} A_{\alpha}\) is at most countable''.
+    We use induction on \(n\) to show that \(P(n)\) is true for every \(n \in \mathbf{N}\).
     For \(n = 0\), we have \(\#(\emptyset) = 0\) and \(\bigcup_{\alpha \in \emptyset} A_{\alpha} = \emptyset\).
     Thus the base case holds.
-    Suppose inductively that for some \(n\) the statement is true.
-    Then for \(n + 1\), we have \(I \neq \emptyset\) and let \(i \in I\).
-    Since \(\#(I \setminus \{i\}) = n\), by induction hypothesis the set \(\bigcup_{\alpha \in I \setminus \{i\}} A_{\alpha}\) is at most countable.
+    Suppose inductively that \(P(n)\) is true for some \(n \geq 0\).
+    Then we need to show that \(P(n + 1)\) is also true.
+    Since \(\#(I) = n + 1 > 0\), we know that \(I \neq \emptyset\).
+    Let \(i \in I\).
+    Since \(\#(I \setminus \{i\}) = n\), by induction hypothesis we know that the set \(\bigcup_{\alpha \in I \setminus \{i\}} A_{\alpha}\) is at most countable.
     By Axiom \ref{3.11} we have \(\bigcup_{\alpha \in I} A_{\alpha} = (\bigcup_{\alpha \in I \setminus \{i\}} A_{\alpha}) \cup A_i\).
-    Then by Proposition \ref{8.1.10} \(\bigcup_{\alpha \in I} A_{\alpha}\) is at most countable.
+    Then by Proposition \ref{8.1.10} and Corollary \ref{8.1.7} we know that \(\bigcup_{\alpha \in I} A_{\alpha}\) is at most countable.
     This close the induction.
-    So we have proven that finite union of at most countable sets is at most countable.
+    We conclude that finite union of at most countable sets is at most countable.
 
-    We have proven the case where \(I\) is finite.
-    We now only need to prove the case where \(I\) is countable.
+    Now we show the case where \(I\) is countable.
     Let \(J = \{\alpha \in I : A_{\alpha} \neq \emptyset\}\).
-    Since \(J \subseteq I\), by Corollary \ref{8.1.7} we have \(J\) being at most countable.
+    Since \(J \subseteq I\), by Corollary \ref{8.1.7} we know that \(J\) is at most countable.
     If \(J\) is finite (including the case where \(J = \emptyset\)), then we already show that finite union of at most countable sets is at most countable.
     So suppose that \(J\) is countable.
     Then we have
@@ -577,14 +579,15 @@
              & \forall\ x \in \bigcup_{\alpha \in I} A_{\alpha} \\
         \iff & \exists\ \alpha' \in I : x \in A_{\alpha'}'      \\
         \iff & A_{\alpha'}' \neq \emptyset                      \\
+        \iff & \alpha' \in J                                    \\
         \iff & \exists\ \alpha' \in J : x \in A_{\alpha'}'      \\
         \iff & x \in \bigcup_{\alpha \in J} A_{\alpha}.
     \end{align*}
     Thus by Definition \ref{3.1.4} we have \(\bigcup_{\alpha \in I} A_{\alpha} = \bigcup_{\alpha \in J} A_{\alpha}\).
-    To show that \(\bigcup_{\alpha \in I} A_{\alpha}\) is at most countable, it is suffice to show that \(\bigcup_{\alpha \in J} A_{\alpha}\) is at most countable.
+    To show that \(\bigcup_{\alpha \in I} A_{\alpha}\) is at most countable, it suffices to show that \(\bigcup_{\alpha \in J} A_{\alpha}\) is at most countable.
 
     Since \(\forall\ \alpha \in J\), \(A_{\alpha}\) is at most countable, we split into two cases:
-    \begin{enumerate}
+    \begin{itemize}
         \item If \(A_{\alpha}\) is finite, then by Definition \ref{3.6.5} \(\exists\ f_{\alpha}' : \{n \in \mathbf{N} : 1 \leq n \leq \#(A_{\alpha})\} \to A_{\alpha}\) such that \(f_{\alpha}'\) is bijective.
               We now define a function \(f_{\alpha} : \mathbf{N} \to A_{\alpha}\) as follow:
               \[
@@ -604,7 +607,7 @@
                   F_{\alpha} = \{f_{\alpha} : \mathbf{N} \to A_{\alpha} | f_{\alpha} \text{ is bijective}\}.
               \]
               Since \(A_{\alpha}\) is countable, \(F_{\alpha} \neq \emptyset\).
-    \end{enumerate}
+    \end{itemize}
     Since \(\forall\ \alpha \in J\), \(F_{\alpha} \neq \emptyset\), by Axiom \ref{8.1} the set \(\prod_{\alpha \in J} F_{\alpha} \neq \emptyset\).
     This means we can choose a function \((f_{\alpha})_{\alpha \in J}\) from \(\prod_{\alpha \in J} F_{\alpha}\) which maps \(\alpha \in J\) to a function \(f_{\alpha} : \mathbf{N} \to A_{\alpha}\).
 
