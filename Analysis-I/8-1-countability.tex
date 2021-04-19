@@ -87,37 +87,38 @@
 \begin{proof}
     We now define a sequence \(a_0, a_1, a_2, \dots\) of natural numbers recursively by the formula
     \[
-        a_n \coloneqq \min\{x \in X : x \neq a_m \ \forall\ m < n\}.
+        a_n \coloneqq \min\{x \in X : x \neq a_m \text{ for all } m < n\}.
     \]
     Intuitively speaking, \(a_0\) is the smallest element of \(X\);
     \(a_1\) is the second smallest element of \(X\), i.e., the smallest element of \(X\) once \(a_0\) is removed;
     \(a_2\) is the third smallest element of \(X\);
     and so forth.
     Observe that in order to define \(a_n\), one only needs to know the values of \(a_m\) for all \(m < n\), so this definition is recursive.
-    Also, since \(X\) is infinite, the set \(\{x \in X : x \neq a_m \ \forall\ m < n\}\) is infinite, hence non-empty.
-    (If it is finite, then its union with the set \(\{a_0, \dots, a_{n - 1}\}\) is also finite, contradict to \(X\) is infinite.)
-    Thus by the well-ordering principle (Proposition \ref{8.1.5}), the minimum, \(\min\{x \in X : x \neq a_m \ \forall\ m < n\}\) is always well-defined.
+    Also, since \(X\) is infinite, the set \(\{x \in X : x \neq a_m \text{ for all } m < n\}\) is infinite, hence non-empty.
+    (If it is finite, then its union with the set \(\{a_0, \dots, a_{n - 1}\}\) is also finite, but the union is \(X\), which contradict to \(X\) is infinite.)
+    Thus by the well-ordering principle (Proposition \ref{8.1.5}), the minimum, \(\min\{x \in X : x \neq a_m \text{ for all } m < n\}\) is always well-defined.
 
-    One can show that \(a_n\) is an increasing sequence, i.e.
+    Since \(a_{n + 1} = \min\{x \in X : x \neq a_m \text{ for all } m < n + 1\}\), we know that \(a_n < a_{n + 1}\).
+    Since \(n\) is arbitrary, we see that \(a_n\) is an increasing sequence, i.e.
     \[
         a_0 < a_1 < a_2 < \dots
     \]
     and in particular that \(a_n \neq a_m\) for all \(n \neq m\).
-    This is true since \(a_{n + 1} = \min\{x \in X : x \neq a_m \ \forall\ m < n + 1\}\) implies \(a_n \neq a_{n + 1}\), and \(a_n = \min\{x \in X : x \neq a_m \ \forall\ m < n\}\) implies \(a_n \leq a_{n + 1}\).
     Also, we have \(a_n \in X\) for each natural number \(n\) (by Proposition \ref{8.1.4}).
 
     Now define the function \(f : \mathbf{N} \to X\) by \(f(n) \coloneqq a_n\).
     From the previous paragraph we know that \(f\) is one-to-one.
     Now we show that \(f\) is onto.
-    In other words, we claim that for every \(x \in X\), there exists an \(n\) such that \(a_n = x\).
+    In other words, we claim that for every \(y \in X\), there exists an \(n\) such that \(a_n = y\).
 
-    Let \(x \in X\).
-    Suppose for sake of contradiction that \(a_n \neq x\) for every natural number \(n\).
-    Then this implies that \(x\) is an element of the set \(\{x \in X : x \neq a_m \ \forall\ m < n\}\) for all \(n\).
-    By definition of \(a_n\), this implies that \(x \geq a_n\) for every natural number \(n\).
-    However, since \(a_n\) is an increasing sequence, we have \(a_n \geq n\), and hence \(x \geq n\) for every natural number \(n\).
-    In particular we have \(x \geq x + 1\), which is a contradiction.
-    Thus we must have \(a_n = x\) for some natural number \(n\), and hence \(f\) is onto.
+    Let \(y \in X\).
+    Suppose for sake of contradiction that \(a_n \neq y\) for every natural number \(n\).
+    Then this implies that \(y\) is an element of the set \(\{x \in X : x \neq a_m \text{ for all } m < n\}\) for all \(n\).
+    By definition of \(a_n\), this implies that \(y > a_n\) for every natural number \(n\).
+    (If \(y < a_n\), then \(y = \min\{x \in X : a \neq a_m \text{ for all } m < n\}\) instead of \(a_n\), a contradiction)
+    However, since \(a_n\) is an increasing sequence, we have \(a_n \geq n\), and hence \(y \geq n\) for every natural number \(n\).
+    In particular we have \(y \geq y + 1\), which is a contradiction.
+    Thus we must have \(a_n = y\) for some natural number \(n\), and hence \(f\) is onto.
 
     Since \(f : \mathbf{N} \to X\) is both one-to-one and onto, it is a bijection.
     We have thus found at least one increasing bijection \(f\) from \(\mathbf{N}\) to \(X\).
@@ -125,7 +126,7 @@
     Then the set \(\{n \in \mathbf{N} : g(n) \neq f(n)\}\) is non-empty, and define \(m \coloneqq \min\{n \in \mathbf{N} : g(n) \neq f(n)\}\), thus in particular \(g(m) \neq f(m) = a_m\), and \(g(n) = f(n) = a_n\) for all \(n < m\).
     But we then must have
     \[
-        g(m) = \min\{x \in X : x \neq a_t \ \forall\ t < m\} = a_m,
+        g(m) = \min\{x \in X : x \neq a_t \text{ for all } t < m\} = a_m,
     \]
     a contradiction.
     Thus there is no other increasing bijection from \(\mathbf{N}\) to \(X\) other than \(f\).
@@ -162,7 +163,7 @@
     So assume that \(f(\mathbf{N})\) is infinite.
     Let \(A\) be the set
     \[
-        A = \{n \in \mathbf{N} : f(m) \neq f(n) \ \forall\ 0 \leq m < n\}.
+        A = \{n \in \mathbf{N} : f(m) \neq f(n) \text{ for all } 0 \leq m < n\}.
     \]
     So \(A \subseteq \mathbf{N}\).
     We now show that \(f_A : A \to f(\mathbf{N})\) is a bijection.
@@ -172,7 +173,7 @@
     So \(f_A\) is injective.
 
     Suppose for sake of contradiction that \(f_A\) is not surjective.
-    Then \(\exists\ y \in f(\mathbf{N})\) such that \(f_A(n) \neq y \ \forall\ n \in A\).
+    Then \(\exists\ y \in f(\mathbf{N})\) such that \(f_A(n) \neq y \text{ for all } n \in A\).
     Since \(y \in f(\mathbf{N})\), \(\exists\ m \in \mathbf{N} \setminus A\) such that \(f(m) = y\).
     But \(f_A(n) \neq y = f(m)\) means \(m \in A\), a contradiction.
     So \(f_A\) is surjective, and thus is bijective.
@@ -346,7 +347,7 @@
         h(n, m) = (f(n), g(m)) \neq (f(n'), g(m')) = h(n', m')
     \]
     since \(f, g\) are bijections, so \(h\) is injective.
-    Again since \(f, g\) are bijections, \(\forall\ x \in X \land \ \forall\ y \in Y\), \(\exists\ n, m \in \mathbf{N}\) such that \(x = f(n) \land y = g(m)\).
+    Again since \(f, g\) are bijections, \(\forall\ x \in X \land \text{ for all } y \in Y\), \(\exists\ n, m \in \mathbf{N}\) such that \(x = f(n) \land y = g(m)\).
     So \(h\) is surjective, and thus is bijective.
 
     Since \(h\) is bijective, \(\mathbf{N} \times \mathbf{N}\) and \(X \times Y\) has the same cardinality.
