@@ -304,12 +304,13 @@
 
 \begin{proof}
     Let \(S_N = \sum_{n = 0}^N (a_n - a_{n + 1})\) be the \(N^{\text{th}}\) partial sum of \(\sum_{n = m}^\infty (a_n - a_{n + 1})\).
-    We first show that \(S_N = a_0 - a_{N + 1}\) by using induction on \(N\).
-    For \(N = 0\), we have
+    We first show that \(S_N = a_0 - a_{N + 1}\) for every \(N \in \mathbf{N}\).
+    We use induction on \(N\).
+    For \(N = 0\), by Definition \ref{7.1.1} we have
     \[
-        S_0 = \sum_{n = 0}^0 a_n - a_{n + 1} = a_0 - a_1
+        S_0 = \sum_{n = 0}^0 a_n - a_{n + 1} = a_0 - a_1,
     \]
-    by Definition \ref{7.1.1}, so the base case holds.
+    so the base case holds.
     Suppose inductively that for some \(N \geq 0\) the statement holds.
     Then for \(N + 1\), we have
     \begin{align*}
@@ -320,22 +321,14 @@
     \end{align*}
     This close the induction.
 
-    Now we show that if \(\lim_{n \to \infty} a_n = 0\), then \(\sum_{n = 0}^\infty (a_n - a_{n + 1})\) converges to \(a_0\).
+    Now we show that if \(\lim_{n \to \infty} a_n = L\), then \(\sum_{n = 0}^\infty (a_n - a_{n + 1}) = a_0 + L\).
     \begin{align*}
-        \sum_{n = 0}^\infty (a_n - a_{n + 1}) & = \lim_{N \to \infty} S_N       & \text{(by Definition \ref{7.2.2})} \\
-                                              & = \lim_{N \to \infty} a_0 + a_N & \text{(from claim above)}          \\
-                                              & = a_0 + \lim_{N \to \infty} a_N & \text{(by Theorem \ref{6.1.19})}   \\
-                                              & = a_0 + 0                       & \text{(by the given condition)}    \\
-                                              & = a_0.
+        \sum_{n = 0}^\infty (a_n - a_{n + 1}) & = \lim_{N \to \infty} S_N       & \text{(by Definition \ref{7.2.2})}  \\
+                                              & = \lim_{N \to \infty} a_0 + a_N & \text{(from claim above)}           \\
+                                              & = a_0 + \lim_{N \to \infty} a_N & \text{(by Theorem \ref{6.1.19}(a))} \\
+                                              & = a_0 + L.
     \end{align*}
-
-    Finally we show that if \(\lim_{n \to \infty} a_n = L\), then \(\sum_{n = 0}^\infty (a_n - a_{n + 1})\) converges to \(a_0 + L\).
-    \begin{align*}
-        \sum_{n = 0}^\infty (a_n - a_{n + 1}) & = \lim_{N \to \infty} S_N       & \text{(by Definition \ref{7.2.2})} \\
-                                              & = \lim_{N \to \infty} a_0 + a_N & \text{(from claim above)}          \\
-                                              & = a_0 + \lim_{N \to \infty} a_N & \text{(by Theorem \ref{6.1.19})}   \\
-                                              & = a_0 + L.                      & \text{(by the given condition)}
-    \end{align*}
+    In particular, we have \(\sum_{n = 0}^\infty (a_n - a_{n + 1}) = a_0\) if \(\lim_{n \to \infty} a_n = 0\).
 \end{proof}
 
 \exercisesection
@@ -346,8 +339,8 @@
 \end{exercise}
 
 \begin{proof}
-    Let \((a_n)_{n = 1}^\infty\) be a sequence where \(a_n = 1 \ \forall\ n \geq 1\).
-    Since \(\lim_{n \to \infty} a_n = 1\), by Alternating series test (Proposition \ref{7.2.12}) \(\sum_{n = m}^\infty (-1)^n a_n\) diverges.
+    Let \((a_n)_{n = 1}^\infty\) be a sequence where \(a_n = 1\) for every \(n \geq 1\).
+    Since \(\lim_{n \to \infty} a_n = 1\), by alternating series test (Proposition \ref{7.2.12}) we know that \(\sum_{n = m}^\infty (-1)^n a_n\) diverges.
 \end{proof}
 
 \begin{exercise}\label{ex 7.2.2}
