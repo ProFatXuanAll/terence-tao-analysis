@@ -12,8 +12,11 @@
 \end{theorem}
 
 \begin{proof}
+    By Proposition \ref{7.2.14}(c), we may assume without loss of generality that \(m \geq 1\)
+    (in particular \(\abs*{a_n}^{1 / n}\) is well-defined for any \(n \geq m\)).
+
     First suppose that \(\alpha < 1\).
-    Note that we must have \(\alpha \geq 0\), since by Lemma \ref{5.6.6} \(\abs*{a_n}^{1 / n} \geq 0\) for every \(n\).
+    Note that we must have \(\alpha \geq 0\), since by Lemma \ref{5.6.6}(c) \(\abs*{a_n}^{1 / n} \geq 0\) for every \(n\).
     Then we can find an \(\varepsilon > 0\) such that \(0 < \alpha + \varepsilon < 1\) (for instance, we can set \(\varepsilon \coloneqq (1 - \alpha) / 2\)).
     By Proposition \ref{6.4.12}(a), there exists an \(N \geq m\) such that \(\abs*{a_n}^{1 / n} \leq \alpha + \varepsilon\) for all \(n \geq N\).
     In other words, we have \(\abs*{a_n} \leq (\alpha + \varepsilon)^n\) for all \(n \geq N\).
@@ -35,46 +38,54 @@
     \[
         \limsup_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} = \limsup_{n \to \infty} \frac{\abs*{b_{n + 1}}}{\abs*{b_n}} = 1
     \]
-    but \(\sum_{n = m}^\infty a_n\) is convergent and \(\sum_{n = m}^\infty b_n\) is not.
+    but \(\sum_{n = m}^\infty a_n\) converges and \(\sum_{n = m}^\infty b_n\) diverges.
     Let \(a_n = 1 / n\) and \(b_n = (-1)^n / n\).
-    Then by Corollary \ref{7.3.7} \(\sum_{n = m}^\infty a_n\) is divergent, and by Alternating series test (Proposition \ref{7.2.12}) \(\sum_{n = m}^\infty b_n\) is convergent.
-    By Lemma \ref{7.5.2}, we have
+    Then by Corollary \ref{7.3.7} \(\sum_{n = m}^\infty a_n\) diverges and by alternating series test (Proposition \ref{7.2.12}) \(\sum_{n = m}^\infty b_n\) converges.
+
+    Since
+    \begin{align*}
+        \limsup_{n \to \infty} \abs*{\frac{1}{n}}^{1 / n} & \leq \limsup_{n \to \infty} \frac{\abs*{n}}{\abs*{n + 1}} & \text{(by Lemma \ref{7.5.2})}        \\
+                                                          & = \limsup_{n \to \infty} \bigg(1 - \frac{1}{n + 1}\bigg)                                         \\
+                                                          & = 1                                                       & \text{(by Proposition \ref{6.1.11})}
+    \end{align*}
+    and
+    \begin{align*}
+        \liminf_{n \to \infty} \abs*{\frac{1}{n}}^{1 / n} & \geq \liminf_{n \to \infty} \frac{\abs*{n}}{\abs*{n + 1}} & \text{(by Lemma \ref{7.5.2})}        \\
+                                                          & = \liminf_{n \to \infty} \bigg(1 - \frac{1}{n + 1}\bigg)                                         \\
+                                                          & = 1,                                                      & \text{(by Proposition \ref{6.1.11})}
+    \end{align*}
+    by Proposition \ref{6.4.12}(f) we have
     \[
-        \limsup_{n \to \infty} \abs*{\frac{1}{n}}^{1 / n} \leq \limsup_{n \to \infty} \frac{\abs*{n}}{\abs*{n + 1}} = \limsup_{n \to \infty} 1 - \frac{1}{n + 1} = 1
-    \]
-    by Proposition \ref{6.1.11} and limit laws (Theorem \ref{6.1.19}).
-    Similarly we have
-    \[
-        \liminf_{n \to \infty} \abs*{\frac{1}{n}}^{1 / n} \geq \liminf_{n \to \infty} \frac{\abs*{n}}{\abs*{n + 1}} = \liminf_{n \to \infty} 1 - \frac{1}{n + 1} = 1.
-    \]
-    By Proposition \ref{6.4.12} we have
-    \[
-        \limsup_{n \to \infty} \frac{\abs*{n}}{\abs*{n + 1}} = \liminf_{n \to \infty} \frac{\abs*{n}}{\abs*{n + 1}} = \lim_{n \to \infty} \frac{\abs*{n}}{\abs*{n + 1}} = 1
+        \limsup_{n \to \infty} \frac{\abs*{n}}{\abs*{n + 1}} = \liminf_{n \to \infty} \frac{\abs*{n}}{\abs*{n + 1}} = 1 = \lim_{n \to \infty} \frac{\abs*{n}}{\abs*{n + 1}}
     \]
     and
     \[
-        \limsup_{n \to \infty} \abs*{\frac{1}{n}}^{1 / n} = \liminf_{n \to \infty} \abs*{\frac{1}{n}}^{1 / n} = \lim_{n \to \infty} \abs*{\frac{1}{n}}^{1 / n} = 1.
+        \limsup_{n \to \infty} \abs*{\frac{1}{n}}^{1 / n} = \liminf_{n \to \infty} \abs*{\frac{1}{n}}^{1 / n} = 1 = \lim_{n \to \infty} \abs*{\frac{1}{n}}^{1 / n}.
     \]
-    So we have \(\limsup_{n \to \infty} \abs*{a_n}^{1 / n} = \limsup_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} = 1\) but \(\sum_{n = m}^\infty a_n\) is divergent.
-    By Lemma \ref{7.5.2} again, we have
+    Thus we have \(\limsup_{n \to \infty} \abs*{a_n}^{1 / n} = \limsup_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} = 1\) but \(\sum_{n = m}^\infty a_n\) diverges.
+
+    Since
+    \begin{align*}
+        \limsup_{n \to \infty} \abs*{\frac{(-1)^n}{n}}^{1 / n} & \leq \limsup_{n \to \infty} \frac{\abs*{(-1)^{n + 1} n}}{\abs*{(-1)^n (n + 1)}} & \text{(by Lemma \ref{7.5.2})}        \\
+                                                               & = \limsup_{n \to \infty} \frac{n}{n + 1}                                                                               \\
+                                                               & = 1                                                                             & \text{(by Proposition \ref{6.1.11})}
+    \end{align*}
+    and
+    \begin{align*}
+        \liminf_{n \to \infty} \abs*{\frac{(-1)^n}{n}}^{1 / n} & \geq \liminf_{n \to \infty} \frac{\abs*{(-1)^{n + 1} n}}{\abs*{(-1)^n (n + 1)}} & \text{(by Lemma \ref{7.5.2})}        \\
+                                                               & = \liminf_{n \to \infty} \frac{n}{n + 1}                                                                               \\
+                                                               & = 1,                                                                            & \text{(by Proposition \ref{6.1.11})}
+    \end{align*}
+    By Proposition \ref{6.4.12}(f) we have
     \[
-        \limsup_{n \to \infty} \abs*{\frac{(-1)^n}{n}}^{1 / n} \leq \limsup_{n \to \infty} \frac{\abs*{(-1)^n (n + 1)}}{\abs*{(-1)^{n + 1} n}} = \limsup_{n \to \infty} 1 - \frac{1}{n + 1} = 1
-    \]
-    by Proposition \ref{6.1.11} and limit laws (Theorem \ref{6.1.19}).
-    Similarly we have
-    \[
-        \liminf_{n \to \infty} \abs*{\frac{(-1)^n}{n}}^{1 / n} \geq \liminf_{n \to \infty} \frac{\abs*{(-1)^n (n + 1)}}{\abs*{(-1)^{n + 1} n}} = \liminf_{n \to \infty} 1 - \frac{1}{n + 1} = 1
-    \]
-    By Proposition \ref{6.4.12} we have
-    \[
-        \limsup_{n \to \infty} \frac{\abs*{(-1)^n (n + 1)}}{\abs*{(-1)^{n + 1} n}} = \liminf_{n \to \infty} \frac{\abs*{(-1)^n (n + 1)}}{\abs*{(-1)^{n + 1} n}} = \lim_{n \to \infty} \frac{\abs*{(-1)^n (n + 1)}}{\abs*{(-1)^{n + 1} n}} = 1
+        \limsup_{n \to \infty} \frac{\abs*{(-1)^{n + 1} n}}{\abs*{(-1)^n (n + 1)}} = \liminf_{n \to \infty} \frac{\abs*{(-1)^{n + 1} n}}{\abs*{(-1)^n (n + 1)}} = 1 = \lim_{n \to \infty} \frac{\abs*{(-1)^{n + 1} n}}{\abs*{(-1)^n (n + 1)}}
     \]
     and
     \[
         \limsup_{n \to \infty} \abs*{\frac{(-1)^n}{n}}^{1 / n} = \liminf_{n \to \infty} \abs*{\frac{(-1)^n}{n}}^{1 / n} = \lim_{n \to \infty} \abs*{\frac{(-1)^n}{n}}^{1 / n} = 1.
     \]
-    So we have \(\limsup_{n \to \infty} \abs*{b_n}^{1 / n} = \limsup_{n \to \infty} \frac{\abs*{b_{n + 1}}}{\abs*{b_n}} = 1\) but \(\sum_{n = m}^\infty b_n\) is convergent.
-    Thus we conclude that when \(\limsup_{n \to \infty} \abs*{a_n}^{1 / n} = \limsup_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} = 1\) we cannot assert any conclusion.
+    Thus we have \(\limsup_{n \to \infty} \abs*{b_n}^{1 / n} = \limsup_{n \to \infty} \frac{\abs*{b_{n + 1}}}{\abs*{b_n}} = 1\) but \(\sum_{n = m}^\infty b_n\) converges.
+    We conclude that when \(\limsup_{n \to \infty} \abs*{a_n}^{1 / n} = \limsup_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} = 1\) we cannot assert any conclusion.
 \end{proof}
 
 \begin{note}
