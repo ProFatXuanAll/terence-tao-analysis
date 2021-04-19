@@ -153,6 +153,8 @@
     We consider the class of conditionally convergent series to include the class of absolutely convergent series as a subclass.
     Thus when we say a statement such as ``\(\sum_{n = m}^\infty a_n\) is conditionally convergent'', this does not automatically mean that \(\sum_{n = m}^\infty a_n\) is not absolutely convergent.
     If we wish to say that a series is conditionally convergent but not absolutely convergent, then we will instead use a phrasing such as ``\(\sum_{n = m}^\infty a_n\) is \emph{only} conditionally convergent'', or ``\(\sum_{n = m}^\infty a_n\) converges conditionally, but not absolutely''.
+    We caution however that in most other texts, the terminology ``conditional convergence'' is meant in this latter sense
+    (that is, of a series that converges but does not converge absolutely).
 \end{remark}
 
 \begin{proposition}[Alternating series test]\label{7.2.12}
@@ -163,8 +165,8 @@
 \begin{proof}
     From the zero test (Corollary \ref{7.2.6}), we know that if \(\sum_{n = m}^\infty (-1)^n a_n\) is a convergent series, then the sequence \(((-1)^n a_n)_{n = m}^\infty\) converges to \(0\), which implies that \(a_n\) also converges to \(0\), since \((-1)^n a_n\) and \(a_n\) have the same distance from \(0\).
     \begin{align*}
-         & \forall\ \varepsilon \in \mathbf{R} \land \varepsilon > 0, \exists\ N \in \mathbf{N} \land N \geq m :        \\
-         & \abs*{a_n - 0} = \abs*{a_n} = \abs*{(-1)^n a_n} = \abs*{(-1)^n a_n - 0} \leq \varepsilon \ \forall\ n \geq N
+         & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{N} \land N \geq m : \forall\ n \geq N, \\
+         & \abs*{a_n - 0} = \abs*{a_n} = \abs*{(-1)^n a_n} = \abs*{(-1)^n a_n - 0} \leq \varepsilon
     \end{align*}
 
     Now suppose conversely that \(a_n\) converges to \(0\).
@@ -189,11 +191,11 @@
     for all \(k\).
     In particular, we have
     \[
-        S_N - a_{N + 1} \leq S_n \leq S_N \ \forall\ n \geq N.
+        S_N - a_{N + 1} \leq S_n \leq S_N \text{ for all } n \geq N.
     \]
     In particular, the sequence \((S_n)_{n = m}^\infty\) is eventually \(a_{N + 1}\)-steady
     \[
-        S_p - S_n \leq S_N - S_n \leq a_{N + 1} \ \forall\ p, n \geq N.
+        S_p - S_n \leq S_N - S_n \leq a_{N + 1} \text{ for all } p, n \geq N.
     \]
     But the sequence \((a_N)_{N = m}^\infty\) converges to \(0\) as \(N \to \infty\), thus this implies that \((S_n)_{n = m}^\infty\) is eventually \(\varepsilon\)-steady for every \(\varepsilon > 0\).
     Thus \((S_n)_{n = m}^\infty\) converges, and so the series \(\sum_{n = m}^\infty (-1)^n a_n\) is convergent.
@@ -228,63 +230,63 @@
 \end{proposition}
 
 \begin{proof}{(a)}
-    Let \(A_N = \sum_{n = m}^N a_n\) be the \(N^{\text{th}}\) partial sum of \(x\), and let \(B_N = \sum_{n = m}^N b_n\) be the \(N^{\text{th}}\) partial sum of \(y\).
-    So
+    We have
     \begin{align*}
-        x + y & = \sum_{n = m}^\infty a_n + \sum_{n = m}^\infty b_n                                      \\
-              & = \lim_{N \to \infty} A_N + \lim_{N \to \infty} B_N & \text{(by Definition \ref{7.2.2})} \\
-              & = \lim_{N \to \infty} (A_N + B_N)                   & \text{(by Theorem \ref{6.1.19})}   \\
-              & = \sum_{n = m}^\infty (a_n + b_n).                  & \text{(by Definition \ref{7.2.2})}
+        x + y & = \sum_{n = m}^\infty a_n + \sum_{n = m}^\infty b_n                                                                     \\
+              & = \lim_{N \to \infty} \sum_{n = m}^N a_n + \lim_{N \to \infty} \sum_{n = m}^N b_n & \text{(by Definition \ref{7.2.2})}  \\
+              & = \lim_{N \to \infty} \Bigg(\sum_{n = m}^N a_n + \sum_{n = m}^N b_n\Bigg)         & \text{(by Theorem \ref{6.1.19}(a))} \\
+              & = \lim_{N \to \infty} \sum_{n = m}^N (a_n + b_n)                                  & \text{(by Lemma \ref{7.1.4}(c))}    \\
+              & = \sum_{n = m}^\infty (a_n + b_n).                                                & \text{(by Definition \ref{7.2.2})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(b)}
-    Let \(S_N = \sum_{n = m}^N a_n\) be the \(N^{\text{th}}\) partial sum of \(x\).
-    So
+    We have
     \begin{align*}
-        cx & = c \sum_{n = m}^\infty a_n                                         \\
-           & = c \lim_{N \to \infty} S_N    & \text{(by Definition \ref{7.2.2})} \\
-           & = \lim_{N \to \infty} (c S_N)  & \text{(by Theorem \ref{6.1.19})}   \\
-           & = \sum_{n = m}^\infty (c a_n). & \text{(by Definition \ref{7.2.2})}
+        cx & = c \sum_{n = m}^\infty a_n                                                                  \\
+           & = c \lim_{N \to \infty} \sum_{n = m}^N a_n             & \text{(by Definition \ref{7.2.2})}  \\
+           & = \lim_{N \to \infty} \Bigg(c \sum_{n = m}^N a_n\Bigg) & \text{(by Theorem \ref{6.1.19}(c))} \\
+           & = \lim_{N \to \infty} \sum_{n = m}^N (c a_n)           & \text{(by Lemma \ref{7.1.4}(d))}    \\
+           & = \sum_{n = m}^\infty (c a_n).                         & \text{(by Definition \ref{7.2.2})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(c)}
-    We first show that \(\sum_{n = m}^\infty a_n\) converges if and only if \(\sum_{n = m + k}^\infty a_n\) converges.
+    Let \(M \in \mathbf{N}\).
+    Then we have
     \begin{align*}
-             & \sum_{n = m}^\infty a_n \text{ converges}                                                                                                       \\
-        \iff & \forall\ \varepsilon \in \mathbf{R} \land \varepsilon > 0, \exists\ N \in \mathbf{N} \land N \geq m :                                           \\
-             & \abs*{\sum_{n = p + 1}^q a_n} \leq \varepsilon \ \forall\ p, q \in \mathbf{N} \land p, q \geq N           & \text{(by Proposition \ref{7.2.5})} \\
-        \iff & \forall\ \varepsilon \in \mathbf{R} \land \varepsilon > 0, \exists\ N \in \mathbf{N} \land N \geq m :                                           \\
-             & \abs*{\sum_{n = p + k + 1}^q a_n} \leq \varepsilon \ \forall\ p, q \in \mathbf{N} \land p, q \geq N                                             \\
-        \iff & \forall\ \varepsilon \in \mathbf{R} \land \varepsilon > 0, \exists\ N \in \mathbf{N} \land N \geq m + k :                                       \\
-             & \abs*{\sum_{n = p + 1}^q a_n} \leq \varepsilon \ \forall\ p, q \in \mathbf{N} \land p, q \geq N                                                 \\
-        \iff & \sum_{n = m + k}^\infty a_n \text{ converges}.                                                            & \text{(by Proposition \ref{7.2.5})}
-    \end{align*}
-
-    Now we show that \(\sum_{n = m}^\infty a_n = \sum_{n = m}^{n + k - 1} a_n + \sum_{n = m + k}^\infty a_n\).
-    Let \(A_N = \sum_{n = m}^N a_n\) be the \(N^{\text{th}}\) partial sum of \(\sum_{n = m}^\infty a_n\), and let \(B_N = \sum_{n = m + k}^N a_n\) be the \(N^{\text{th}}\) partial sum of \(\sum_{n = m + k}^\infty a_n\).
-    So
-    \begin{align*}
-        \sum_{n = m}^{m + k - 1} a_n + \sum_{n = m + k}^\infty a_n & = A_{m + k - 1} + \sum_{n = m + k}^\infty a_n                                                                      \\
-                                                                   & = A_{m + k - 1} + \lim_{N \to \infty} B_N                                     & \text{(by Definition \ref{7.2.2})} \\
-                                                                   & = \lim_{N \to \infty} A_{m + k - 1} + \lim_{N \to \infty} B_N                                                      \\
-                                                                   & = \lim_{N \to \infty} (A_{m + k - 1} + B_N)                                   & \text{(by Theorem \ref{6.1.19})}   \\
-                                                                   & = \lim_{N \to \infty} (\sum_{n = m}^{m + k - 1} a_n + \sum_{n = m + k}^N a_n)                                      \\
-                                                                   & = \lim_{N \to \infty} \sum_{n = m}^N a_n = \lim_{N \to \infty} A_N            & \text{(by Lemma \ref{7.1.4})}      \\
-                                                                   & = \sum_{n = m}^\infty a_n.                                                    & \text{(by Definition \ref{7.2.2})}
+             & L = \sum_{n = m}^\infty a_n = \lim_{N \to \infty} \sum_{n = m}^N a_n                                                             & \text{(by Definition \ref{7.2.2})} \\
+        \iff & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ M \geq m : \forall\ N \geq M, \abs*{\sum_{n = m}^N a_N - L} \leq \varepsilon                                          \\
+        \iff & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ M \geq m + k : \forall\ N \geq M, \abs*{\sum_{n = m}^N a_N - L} \leq \varepsilon                                      \\
+        \iff & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ M \geq m + k : \forall\ N \geq M,                                                                                     \\
+             & \abs*{\sum_{n = m}^{m + k - 1} a_N + \sum_{n = m + k}^N a_N - L} \leq \varepsilon                                                & \text{(by Lemma \ref{7.1.4}(a))}   \\
+        \iff & L = \lim_{N \to \infty} \Bigg(\sum_{n = m}^{m + k - 1} a_N + \sum_{n = m + k}^N a_n\Bigg)                                                                             \\
+        \iff & L = \sum_{n = m}^{m + k - 1} a_N + \lim_{N \to \infty} \sum_{n = m + k}^N a_n                                                                                         \\
+        \iff & L = \sum_{n = m}^{m + k - 1} a_N + \sum_{n = m + k}^\infty a_n.                                                                  & \text{(by Definition \ref{7.2.2})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(d)}
-    Let \(A_N = \sum_{n = m}^N a_n\) be the \(N^{\text{th}}\) partial sum of \(x\), and let \(B_N = \sum_{n = m + k}^N a_{n - k}\) be the \(N^{\text{th}}\) partial sum of \(\sum_{n = m + k}^\infty a_{n - k}\).
-    So
+    Let \(M \in \mathbf{N}\).
+    Then we have
     \begin{align*}
-        x & = \sum_{n = m}^\infty a_n = \lim_{N \to \infty} A_N = \lim_{N \to \infty} \sum_{n = m}^N a_n & \text{(by Definition \ref{7.2.2})} \\
-          & = \lim_{N' \to \infty} \sum_{n = m}^{N' - k} a_n                                             & (N' = N + k)                       \\
-          & = \lim_{N' \to \infty} \sum_{n = m + k}^{N' - k + k} a_{n - k}                               & \text{(by Lemma \ref{7.1.4})}      \\
-          & = \lim_{N' \to \infty} \sum_{n = m + k}^{N'} a_{n - k} = \lim_{N' \to \infty} B_{N'}                                              \\
-          & = \sum_{n = m + k}^\infty a_{n - k}.                                                         & \text{(by Definition \ref{7.2.2})}
+                 & x = \sum_{n = m}^\infty a_n = \lim_{N \to \infty} \sum_{n = m}^N a_n                                                             & \text{(by Definition \ref{7.2.2})} \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ M \geq m : \forall\ N \geq M, \abs*{\sum_{n = m}^N a_n - x} \leq \varepsilon                                          \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ M \geq m : \forall\ N \geq M, \abs*{\sum_{n = m}^N a_n - x} \leq \varepsilon                                          \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ M \geq m - k : \forall\ N \geq M, \abs*{\sum_{n = m}^N a_n - x} \leq \varepsilon                                      \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ M \geq m - k : \forall\ N \geq M,                                                                                     \\
+                 & \abs*{\sum_{n = m + k}^{N + k} a_{n - k} - x} \leq \varepsilon.                                                                  & \text{(by Lemma \ref{7.1.4}(b))}
+    \end{align*}
+    Now let \(M' = M + k\) and \(N' = N + k\).
+    Then we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ M \geq m - k : \forall\ N \geq M,                                                  \\
+                 & \abs*{\sum_{n = m + k}^{N + k} a_{n - k} - x} \leq \varepsilon                                                                     \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ M + k \geq m : \forall\ N + k \geq M + k,                                          \\
+                 & \abs*{\sum_{n = m + k}^{N + k} a_{n - k} - x} \leq \varepsilon                                                                     \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ M' \geq m : \forall\ N' \geq M',                                                   \\
+                 & \abs*{\sum_{n = m + k}^{N'} a_{n - k} - x} \leq \varepsilon                                                                        \\
+        \implies & x = \lim_{N' \to \infty} \sum_{n = m + k}^{N'} a_{n - k} = \sum_{n = m + k}^\infty a_{n - k}. & \text{(by Definition \ref{7.2.2})}
     \end{align*}
 \end{proof}
 
