@@ -88,7 +88,7 @@
     \]
     Thus
     \[
-        \abs*{\sum_{n \in X} a_n} \leq \sum_{n \in X} \abs*{a_n} \leq \sum_{n = N + 1}^q \abs*{a_n} \leq \varepsilon / 2
+        \abs*{\sum_{m = 0}^{M'} a_{f(m)} - \sum_{n = 0}^N a_n} = \abs*{\sum_{n \in X} a_n} \leq \sum_{n \in X} \abs*{a_n} \leq \sum_{n = N + 1}^q \abs*{a_n} \leq \varepsilon / 2
     \]
     by our choice of \(N\).
     Thus \(\sum_{m = 0}^{M'} a_{f(m)}\) is \(\varepsilon / 2\)-close to \(\sum_{n = 0}^N a_n\), which as mentioned before is \(\varepsilon / 2\)-close to \(L'\).
@@ -113,15 +113,18 @@
     Let \(\sum_{n = 0}^\infty a_n\) be an absolutely convergent series of real numbers.
     Let \(f : \mathbf{N} \to \mathbf{N}\) be an increasing function (i.e., \(f(n + 1) > f(n)\) for all \(n \in \mathbf{N}\)).
     Show that \(\sum_{n = 0}^\infty a_{f(n)}\) is also an absolutely convergent series.
+    What happens if we assume \(f\) is merely one-to-one, rather than increasing?
 \end{exercise}
 
 \begin{proof}
+    Since \(f\) is bijective implies \(f\) is one-to-one, we only need to proof the case for \(f\) being one-to-one.
+
     Let \(S_N = \sum_{n = 0}^N \abs*{a_n}\) and \(T_N = \sum_{n = 0}^N \abs*{a_{f(n)}}\).
     Since \(\sum_{n = 0}^\infty a_n\) is absolutely convergent and \(S_N\) is an increasing sequence, by Proposition \ref{6.3.8} we have \(\lim_{N \to \infty} S_N = \sup(S_N)_{N = 0}^\infty\).
-    Since \((f(n))_{n = 0}^N\) is a finite sequence, it is bounded by some \(M \in \mathbf{N}\), thus \(\{f(n) : n \in \mathbf{N} \land n \leq N\} \subseteq \{n \in \mathbf{N} : n \leq M\}\).
+    Since \((f(n))_{n = 0}^N\) is a finite sequence with \(N + 1\) unique elements (\(f\) is assumed to be one-to-one), it is bounded by some \(M \in \mathbf{N}\), thus \(\{f(n) : n \in \mathbf{N} \land n \leq N\} \subseteq \{n \in \mathbf{N} : n \leq M\}\).
     Now we have
     \[
-        T_N = \sum_{n = 0}^N \abs*{a_{f(n)}} = \sum_{n \in \{f(n) : n \in \mathbf{N} \land n \leq N\}} \abs*{a_n} \leq \sum_{n = 0}^M a_n = S_M \leq \sup(S_M)_{M = 0}^\infty = \lim_{M \to \infty} S_M,
+        T_N = \sum_{n = 0}^N \abs*{a_{f(n)}} \leq \sum_{n \in \mathbf{N} : n \leq M} \abs*{a_n} = S_M \leq \sup(S_M)_{M = 0}^\infty = \lim_{M \to \infty} S_M,
     \]
     which means \(T_N\) is bounded.
     Since \((T_N)_{N = 0}^\infty\) is an increasing sequence and is bounded, by Proposition \ref{6.3.8} \((T_N)_{N = 0}^\infty\) converges, and thus \(\sum_{n = 0}^\infty a_{f(n)}\) is absolutely convergent.
