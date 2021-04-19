@@ -165,22 +165,34 @@
     \[
         A = \{n \in \mathbf{N} : f(m) \neq f(n) \text{ for all } 0 \leq m < n\}.
     \]
-    So \(A \subseteq \mathbf{N}\).
-    We now show that \(f_A : A \to f(\mathbf{N})\) is a bijection.
+    So \(A \subseteq \mathbf{N}\) and \(A\) is infinite.
+    We now show that \(f|_A : A \to f(A)\) is a bijection.
 
-    Let \(m, n \in A \land m \neq n\).
-    By the definition of \(A\) we know that \(f_A(m) \neq f_A(n)\).
-    So \(f_A\) is injective.
+    Let \(p, q \in A\) and \(p \neq q\).
+    By the definition of \(A\) we know that \(f|_A(p) \neq f|_A(q)\) and thus \(f|_A\) is injective.
+    By Definition \ref{3.4.1} we also know that \(f|_A\) is surjective, thus \(f|_A\) is bijective.
 
-    Suppose for sake of contradiction that \(f_A\) is not surjective.
-    Then \(\exists\ y \in f(\mathbf{N})\) such that \(f_A(n) \neq y \text{ for all } n \in A\).
-    Since \(y \in f(\mathbf{N})\), \(\exists\ m \in \mathbf{N} \setminus A\) such that \(f(m) = y\).
-    But \(f_A(n) \neq y = f(m)\) means \(m \in A\), a contradiction.
-    So \(f_A\) is surjective, and thus is bijective.
+    Now we show that \(\forall\ y \in f(\mathbf{N})\), \(\exists\ p \in A\) such that \(f|_A(p) = y\).
+    Suppose for sake of contradiction that \(\nexists\ p \in A\) such that \(f|_A(p) = y\).
+    Then we have \(y \neq f|_A(p)\) for every \(p \in A\).
+    Since \(y \in f(\mathbf{N})\), we know that \(\exists\ q \in \mathbf{N}\) such that \(f(q) = y\) and \(q \notin A\).
+    Since \(q \notin A\), by the definition of \(A\) we know that \(\exists\ 0 \leq m < q\) such that \(f(m) = f(q) = y\).
+    Now we let \(E\) be the set
+    \[
+        E = \{m \in \mathbf{N} : f(m) = f(q) = y\}.
+    \]
+    Since \(E \subseteq \mathbf{N}\) and \(E \neq \emptyset\), by well ordering principle (Proposition \ref{8.1.4}) we know that \(\min(E)\) exists.
+    This means \(\exists\ p \in E\) such that \(\forall\ 0 \leq m < p\), we have \(f(m) \neq f(p) = f(q)\).
+    But then we must have \(p \in A\), a contradiction.
+    Thus \(\forall\ y \in f(\mathbf{N})\), \(\exists\ p \in A\) such that \(f|_A(p) = y\).
+    This means \(f(\mathbf{N}) \subseteq f(A)\), thus we have \(f(\mathbf{N}) = f(A)\).
 
-    Since \(A \subseteq \mathbf{N}\), by Proposition \ref{8.1.5} \(\exists\ g : \mathbf{N} \to A\) where \(g\) is bijective.
-    This means \(f_A \circ g : \mathbf{N} \to f(\mathbf{N})\) is bijective.
-    So by Definition \ref{8.1.1} \(f(\mathbf{N})\) is countable, and thus at most countable.
+    Since \(A \subseteq \mathbf{N}\) and \(A\) is infinite, by Proposition \ref{8.1.5} \(\exists\ g : \mathbf{N} \to A\) where \(g\) is bijective.
+    This means \(f|_A \circ g\) is bijective and we have
+    \[
+        (f|_A \circ g)(\mathbf{N}) = f|_A\big(g(\mathbf{N})\big) = f|_A(A) = f(A) = f(\mathbf{N}).
+    \]
+    Thus by Definition \ref{8.1.1} \(f(\mathbf{N})\) is countable, and thus at most countable.
 \end{proof}
 
 \begin{corollary}\label{8.1.9}
