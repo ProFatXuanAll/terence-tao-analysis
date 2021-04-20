@@ -237,6 +237,45 @@
     To summarize, any subset or image of a countable set is at most countable, and any finite union of countable sets is still countable.
 \end{note}
 
+\begin{additional corollary}\label{ac 8.1.1}
+Let \(X, Y\) be at most countable sets.
+Then \(X \cup Y\) is at most countable.
+\end{additional corollary}
+
+\begin{proof}
+    We split into following three cases:
+    \begin{itemize}
+        \item \(X, Y\) are countable.
+              Then by Proposition \ref{8.1.10} we know that \(X \cup Y\) is countable, thus at most countable.
+        \item \(X, Y\) are finite.
+              Then by Proposition \ref{3.6.14}(b) we know that \(X \cup Y\) is finite, thus at most countable.
+        \item \(X, Y\) consist of one finite set and one countable set.
+              Without the loss of generality, suppose that \(X\) is finite and \(Y\) is countable.
+              Since \(X\) is finite, there exists a function \(f : \{i \in \mathbf{N} : 1 \leq i \leq \#(X)\} \to X\) such that \(f\) is bijective.
+              Since \(Y\) is countable, by Definition \ref{8.1.1} there exists a function \(g : \mathbf{N} \to Y\) such that \(g\) is bijective.
+              Now we define a functiton \(h : \mathbf{N} \to X \cup Y\) as follow:
+              \[
+                  \forall\ n \in \mathbf{N}, h(n) = \begin{cases}
+                      f(n + 1)     & \text{ if } n < \#(X)    \\
+                      g(n - \#(X)) & \text{ if } n \geq \#(X)
+                  \end{cases}
+              \]
+              We need to show that \(h(\mathbf{N}) = X \cup Y\).
+              Since \(h(\mathbf{N}) \subseteq X \cup Y\), it suffices to show that \(X \cup Y \subseteq h(\mathbf{N})\).
+              \begin{align*}
+                           & \forall\ z \in X \cup Y                                                        \\
+                  \implies & (z \in X) \lor (z \in Y)                                                       \\
+                  \implies & \big(\exists\ n \in \{i \in \mathbf{N} : 1 \leq i \leq \#(X)\} : f(n) = z\big) \\
+                           & \land \big(\exists\ n \in \mathbf{N} : g(n) = z\big)                           \\
+                  \implies & \big(h(n - 1) = f(n) = z\big) \land \big(h(n + \#(X)) = g(n) = z\big)          \\
+                  \implies & z \in h(\mathbf{N}),
+              \end{align*}
+              Thus we have \(X \cup Y \subseteq h(\mathbf{N})\).
+              By Proposition \ref{8.1.8} \(X \cup Y\) is at most countable.
+    \end{itemize}
+    From all cases above we conclude that \(X \cup Y\) is at most countable.
+\end{proof}
+
 \begin{corollary}\label{8.1.11}
     The integers \(\mathbf{Z}\) are countable.
 \end{corollary}
@@ -565,7 +604,7 @@
     Let \(i \in I\).
     Since \(\#(I \setminus \{i\}) = n\), by induction hypothesis we know that the set \(\bigcup_{\alpha \in I \setminus \{i\}} A_{\alpha}\) is at most countable.
     By Axiom \ref{3.11} we have \(\bigcup_{\alpha \in I} A_{\alpha} = (\bigcup_{\alpha \in I \setminus \{i\}} A_{\alpha}) \cup A_i\).
-    Then by Proposition \ref{8.1.10} and Corollary \ref{8.1.7} we know that \(\bigcup_{\alpha \in I} A_{\alpha}\) is at most countable.
+    Then by Additional Corollary \ref{ac 8.1.1} we know that \(\bigcup_{\alpha \in I} A_{\alpha}\) is at most countable.
     This close the induction.
     We conclude that finite union of at most countable sets is at most countable.
 
@@ -586,7 +625,8 @@
     Thus by Definition \ref{3.1.4} we have \(\bigcup_{\alpha \in I} A_{\alpha} = \bigcup_{\alpha \in J} A_{\alpha}\).
     To show that \(\bigcup_{\alpha \in I} A_{\alpha}\) is at most countable, it suffices to show that \(\bigcup_{\alpha \in J} A_{\alpha}\) is at most countable.
 
-    Since \(\forall\ \alpha \in J\), \(A_{\alpha}\) is at most countable, we split into two cases:
+    Since \(\forall\ \alpha \in J\), \(A_{\alpha}\) is at most countable.
+    We split into two cases:
     \begin{itemize}
         \item If \(A_{\alpha}\) is finite, then by Definition \ref{3.6.5} \(\exists\ f_{\alpha}' : \{n \in \mathbf{N} : 1 \leq n \leq \#(A_{\alpha})\} \to A_{\alpha}\) such that \(f_{\alpha}'\) is bijective.
               We now define a function \(f_{\alpha} : \mathbf{N} \to A_{\alpha}\) as follow:
@@ -606,12 +646,12 @@
               \[
                   F_{\alpha} = \{f_{\alpha} : \mathbf{N} \to A_{\alpha} | f_{\alpha} \text{ is bijective}\}.
               \]
-              Since \(A_{\alpha}\) is countable, \(F_{\alpha} \neq \emptyset\).
+              Since \(A_{\alpha}\) is countable, we know that \(F_{\alpha} \neq \emptyset\).
     \end{itemize}
-    Since \(\forall\ \alpha \in J\), \(F_{\alpha} \neq \emptyset\), by Axiom \ref{8.1} the set \(\prod_{\alpha \in J} F_{\alpha} \neq \emptyset\).
+    Since \(\forall\ \alpha \in J\), \(F_{\alpha} \neq \emptyset\), by axiom of choice (Axiom \ref{8.1}) the set \(\prod_{\alpha \in J} F_{\alpha} \neq \emptyset\).
     This means we can choose a function \((f_{\alpha})_{\alpha \in J}\) from \(\prod_{\alpha \in J} F_{\alpha}\) which maps \(\alpha \in J\) to a function \(f_{\alpha} : \mathbf{N} \to A_{\alpha}\).
 
-    We now use Axiom \ref{8.1} to choose a function \((f_{\alpha})_{\alpha \in J}\) and fix such function.
+    We now use axiom of choice (Axiom \ref{8.1}) to choose a function \((f_{\alpha})_{\alpha \in J}\) and fix such function.
     Since \(J\) is countable, \(\exists\ g : \mathbf{N} \to J\) such that \(g\) is bijective.
     We now define another function \(h : \mathbf{N} \times \mathbf{N} \to \bigcup_{\alpha \in J} A_{\alpha}\) as follow:
     \[
@@ -619,20 +659,29 @@
     \]
     By Corollary \ref{8.1.9} we now that \(h(\mathbf{N} \times \mathbf{N})\) is at most countable.
     If we can show that \(h\) is surjective, then we can show that \(\bigcup_{\alpha \in J} A_{\alpha}\) is at most countable.
-    \(\forall\ x \in \bigcup_{\alpha \in J} A_{\alpha}\), \(\exists\ \beta \in J\) such that \(x \in A_{\beta}\).
+    Let \(x \in \bigcup_{\alpha \in J} A_{\alpha}\).
+    We know that \(\exists\ \beta \in J\) such that \(x \in A_{\beta}\).
     By the definition of \(f_{\beta}\) we know that \(f_{\beta}\) is surjective.
     Since \(f_{\beta}\) is surjective, \(\exists\ m \in \mathbf{N}\) such that \(f_{\beta}(m) = x\).
     Since \(g\) is bijective, \(\exists\ n \in \mathbf{N}\) such that \(g(n) = \beta\).
-    Then \(\exists\ (n, m) \in \mathbf{N} \times \mathbf{N}\) such that \(h(n, m) = x\).
-    Thus \(h\) is surjective and we conclude that \(\bigcup_{\alpha \in J} A_{\alpha}\) is at most countable.
-    This means countable union of at most countable set is at most countable.
+    Then we have
+    \[
+        (n, m) \in \mathbf{N} \times \mathbf{N} \implies h(n, m) = f_{g(n)}(m) = f_{\beta}(m) = x.
+    \]
+    Since \(x\) is arbitrary, we thus know that \(h\) is surjective.
+    We conclude that countable union of at most countable set is at most countable.
 
-    We now show that countable union of countable set is countable.
-    More formally, let \(I\) be a countable set and \(\forall\ \alpha \in I\) let \(A_{\alpha}\) be countable set.
-    We prove by contradiction.
-    Since we now that countable union of countable set is at most countable, suppose for sake of contradiction that the result is finite.
-    But letting \(A_{\alpha} = \mathbf{N}\) for all \(\alpha \in I\), we get \(\bigcup_{\alpha \in I} A_{\alpha} = \mathbf{N}\), a contradiction.
-    Thus countable union of countable set is countable.
+    Finally we show that countable union of countable set is countable.
+    Let \(I\) be a countable set and \(\forall\ \alpha \in I\) let \(A_{\alpha}\) be countable set.
+    From the proof above we know that \(\bigcup_{\alpha \in I} A_{\alpha}\) is at most countable.
+    Suppose for sake of contradiction that \(\bigcup_{\alpha \in I} A_{\alpha}\) is finite.
+    Let \(\beta \in I\).
+    By hypothesis we know that \(A_{\beta}\) is countable, and we have
+    \[
+        A_{\beta} \subseteq \bigcup_{\alpha \in I} A_{\alpha}.
+    \]
+    But \(\bigcup_{\alpha \in I} A_{\alpha}\) is finite, thus by Proposition \ref{3.6.14}(c) we know that \(A_{\beta}\) is finite, a contradiction.
+    We conclude that countable union of countable set is countable.
 \end{proof}
 
 \begin{exercise}\label{ex 8.1.10}
