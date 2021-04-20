@@ -159,23 +159,23 @@
     \[
         M = \sup\Bigg\{\sum_{x \in A} \abs*{f(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty.
     \]
-    We first show that \(\forall\ n \in \mathbf{N} \setminus \{0\}\), the set \(S_n = \{x \in X : \abs*{f(x)} > 1 / n\}\) is finite and \(\#(S_n) \leq Mn\).
+    We first show that \(\forall\ n \in \mathbf{Z}^+\), the set \(S_n = \{x \in X : \abs*{f(x)} > 1 / n\}\) is finite and \(\#(S_n) \leq Mn\).
 
     Suppose for sake of contradiction that \(S_n\) is infinite.
-    Then we can have a finite set \(S \subsetneq S_n\) where \(\#(S) = (M + 1)n\).
+    Then we can have a finite set \(S \subseteq S_n\) where \(\#(S) > (M + 1)n\).
     Since \(S\) is finite, we have \(\sum_{x \in S} \abs*{f(x)} \leq M\).
-    Since \(S \subsetneq S_n\), we have \(\forall\ x \in S : \abs*{x} > 1 / n\).
+    Since \(S \subseteq S_n\), we have \(\abs*{f(x)} > 1 / n\) for every \(x \in S\).
     But now we have
     \[
         M \geq \sum_{x \in S} \abs*{f(x)} > \frac{(M + 1)n}{n} = M + 1,
     \]
     a contradiction.
-    Thus \(S\) must be finite.
+    Thus \(S_n\) must be finite.
 
     Now suppose for sake of contradiction \(\#(S_n) > Mn\).
     Again we have
     \[
-        M \geq \sum_{x \in S} \abs*{f(x)} > \frac{\#(S_n)}{n} > \frac{Mn}{n} = M,
+        M \geq \sum_{x \in S_n} \abs*{f(x)} > \frac{Mn}{n} = M,
     \]
     a contradiction.
     Thus \(\#(S_n) \leq Mn\).
@@ -183,16 +183,16 @@
     Let \(x \in X\) where \(f(x) \neq 0\).
     If \(x\) does not exist, then we have \(\{x \in X : f(x) \neq 0\} = \emptyset\) which is at most countable.
     So suppose that such \(x\) exists.
-    Since \(\abs*{f(x)} \in \mathbf{R}\), by Proposition \ref{5.4.12} we have
+    Since \(\abs*{f(x)} \in \mathbf{R}^+\), by Proposition \ref{5.4.12} we have
     \begin{align*}
-                 & \exists\ N \in \mathbf{N} : \frac{1}{\abs*{f(x)}} < N                                                                       \\
-        \implies & \abs*{f(x)} > \frac{1}{N}                                                                                                   \\
-        \implies & x \in S_N                                                                           & \text{(by the definition of \(S_N\))} \\
-        \implies & x \in \bigcup_{n \in \mathbf{N} \setminus \{0\}} S_n                                & \text{(by Axiom \ref{3.11})}          \\
-        \implies & \{x \in X : f(x) \neq 0\} \subseteq \bigcup_{n \in \mathbf{N} \setminus \{0\}} S_n. & \text{(by Definition \ref{3.1.15})}
+                 & \exists\ N \in \mathbf{Z}^+ : \frac{1}{\abs*{f(x)}} < N                                                       \\
+        \implies & \abs*{f(x)} > \frac{1}{N}                                                                                     \\
+        \implies & x \in S_N                                                             & \text{(by the definition of \(S_N\))} \\
+        \implies & x \in \bigcup_{n \in \mathbf{Z}^+} S_n                                & \text{(by Axiom \ref{3.11})}          \\
+        \implies & \{x \in X : f(x) \neq 0\} \subseteq \bigcup_{n \in \mathbf{Z}^+} S_n. & \text{(by Definition \ref{3.1.15})}
     \end{align*}
-    Since \(\forall\ n \in \mathbf{N} \setminus \{0\}\), \(S_n\) is finite and thus at most countable, by Exercise \ref{8.1.9} we have \(\bigcup_{n \in \mathbf{N} \setminus \{0\}} S_n\) is at most countable.
-    Since \(\{x \in X : f(x) \neq 0\} \subseteq \bigcup_{n \in \mathbf{N} \setminus \{0\}} S_n\), by Corollary \ref{8.1.7} we thus have \(\{x \in X : f(x) \neq 0\}\) is at most countable.
+    Since \(\forall\ n \in \mathbf{Z}^+\), \(S_n\) is finite, by Exercise \ref{8.1.9} we know that \(\bigcup_{n \in \mathbf{Z}^+} S_n\) is at most countable.
+    Since \(\{x \in X : f(x) \neq 0\} \subseteq \bigcup_{n \in \mathbf{Z}^+} S_n\), by Corollary \ref{8.1.7} we know that \(\{x \in X : f(x) \neq 0\}\) is at most countable.
 \end{proof}
 
 \begin{note}
