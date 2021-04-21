@@ -681,7 +681,10 @@ Let \(X\) be an at most countable set, and let \(f : X \to \mathbf{R}\) and \(g 
 \end{proof}
 
 \begin{proof}{(d)}
-    Suppose that \(X, Y\) be sets and \(f : X \to \mathbf{R}, \phi : Y \to X\) are functions such that \(\sum_{x \in X} f(x)\) is absolutely convergent and \(\phi\) is bijective.
+    If \(X\) is at most countable, then the statements follow by Additional Corollary \ref{ac 8.2.1}(d).
+    So suppose that \(X\) is uncountable.
+
+    We first show that \(\sum_{y \in Y} f\big(\phi(y)\big)\) is absolutely convergent.
     Since \(\sum_{x \in X} f(x)\) is absolutely convergent, by Definition \ref{8.2.4}, \(\exists\ N \in \mathbf{R}\) such that
     \[
         N = \sup\Bigg\{\sum_{x \in A} \abs*{f(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty
@@ -689,42 +692,25 @@ Let \(X\) be an at most countable set, and let \(f : X \to \mathbf{R}\) and \(g 
     Let \(A \subseteq Y\) be a finite set.
     Then we have
     \begin{align*}
-        \sum_{y \in A} \abs*{f(\phi(y))} & = \sum_{x \in \phi(A)} \abs*{f(x)} & \text{(by Proposition \ref{7.1.11}(c))} \\
-                                         & \leq N.                            & \text{(\(\phi(A)\) is finite)}
+        \sum_{y \in A} \abs*{f\big(\phi(y)\big)} & = \sum_{x \in \phi(A)} \abs*{f(x)} & \text{(by Proposition \ref{7.1.11}(c))} \\
+                                                 & \leq N.                            & \text{(\(\phi(A)\) is finite)}
     \end{align*}
     Since \(A\) is arbitrary, we have
     \[
-        \sup\Bigg\{\sum_{y \in A} \abs*{f(\phi(x))} : A \subseteq Y, A \text{ finite}\Bigg\} \leq N < \infty.
+        \sup\Bigg\{\sum_{y \in A} \abs*{f\big(\phi(x)\big)} : A \subseteq Y, A \text{ finite}\Bigg\} \leq N < \infty.
     \]
-    Thus by Definition \ref{8.2.4} \(\sum_{y \in Y} f(\phi(y))\) is absolutely convergent.
+    Thus by Definition \ref{8.2.4} \(\sum_{y \in Y} f\big(\phi(y)\big)\) is absolutely convergent.
 
-    Now we show that \(\sum_{y \in Y} f(\phi(y)) = \sum_{x \in X} f(x)\).
-    Let \(X_f = \{x \in X : f(x) \neq 0\}\) and \(Y_f = \{y \in Y : f(\phi(y)) \neq 0\}\) be sets.
-    By Lemma \ref{8.2.5} we know that \(X_f\) is at most countable.
-    Clearly we have \(\phi(Y_f) = X_f\), thus \(Y_f\) is at most countable.
-    We now split into two cases:
-    \begin{enumerate}[label=(\Roman*)]
-        \item If \(X_f\) is finite, then we have
-              \begin{align*}
-                   & \sum_{y \in Y} f(\phi(y))                                               \\
-                   & = \sum_{y \in Y_f} f(\phi(y)) & \text{(by Definition \ref{8.2.4})}      \\
-                   & = \sum_{x \in X_f} f(x)       & \text{(by Proposition \ref{7.1.11}(c))} \\
-                   & = \sum_{x \in X} f(x).        & \text{(by Definition \ref{8.2.4})}
-              \end{align*}
-        \item If \(X_f\) is countable, then \(\exists\ n_y : \mathbf{N} \to Y_f\) such that \(n_y\) is bijective.
-              Let \(n_x = \phi \circ n_y\).
-              By Exercise \ref{ex 3.3.7} \(n_x\) is bijective from \(\mathbf{N}\) to \(X_f\).
-              Then we have
-              \begin{align*}
-                   & \sum_{y \in Y} f(\phi(y))                                                  \\
-                   & = \sum_{y \in Y_f} f(\phi(y))         & \text{(by Definition \ref{8.2.4})} \\
-                   & = \sum_{n = 0}^\infty f(\phi(n_y(n))) & \text{(by Definition \ref{8.2.1})} \\
-                   & = \sum_{n = 0}^\infty f(n_x(n))                                            \\
-                   & = \sum_{x \in X_f} f(x)               & \text{(by Definition \ref{8.2.1})} \\
-                   & = \sum_{x \in X} f(x).                & \text{(by Definition \ref{8.2.4})}
-              \end{align*}
-    \end{enumerate}
-    From all cases above we can conclude that \(\sum_{y \in Y} f(\phi(y)) = \sum_{x \in X} f(x)\).
+    Now we show that \(\sum_{y \in Y} f\big(\phi(y)\big) = \sum_{x \in X} f(x)\).
+    Let \(X_f = \{x \in X : f(x) \neq 0\}\) and \(Y_f = \{y \in Y : f\big(\phi(y)\big) \neq 0\}\) be sets.
+    By Lemma \ref{8.2.5} we know that \(X_f\) and \(Y_f\) are at most countable.
+    Clearly \(\phi\) is a bijective between \(X_f\) and \(Y_f\) and thus \(\phi(Y_f) = X_f\).
+    Then we have
+    \begin{align*}
+        \sum_{y \in Y} f\big(\phi(y)\big) & = \sum_{y \in Y_f} f\big(\phi(y)\big) & \text{(by Lemma \ref{8.2.5})}                      \\
+                                          & = \sum_{x \in X_f} f(x)               & \text{(by Additional Corollary \ref{ac 8.2.1}(d))} \\
+                                          & = \sum_{x \in X} f(x).                & \text{(by Lemma \ref{8.2.5})}
+    \end{align*}
 \end{proof}
 
 \begin{lemma}\label{8.2.7}
