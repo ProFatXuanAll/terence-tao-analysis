@@ -513,6 +513,8 @@ Let \(X\) be an at most countable set, and let \(f : X \to \mathbf{R}\) and \(g 
     Thus by Definition \ref{8.2.4} we have \(\sum_{x \in X} \big(f(x) + g(x)\big)\) is absolutely convergent.
 
     Now we show that \(\sum_{x \in X} (f(x) + g(x)) = \sum_{x \in X} f(x) + \sum_{x \in X} g(x)\).
+    If \(X\) is at most countable, then the statement follows by Additional Corollary \ref{ac 8.2.1}(a).
+    So suppose that \(X\) is uncountable.
     Let \(X_f = \{x \in X : f(x) \neq 0\}\), \(X_g = \{x \in X : g(x) \neq 0\}\) and \(X_h = \{x \in X : f(x) + g(x) \neq 0\}\) be sets.
     Then by Lemma \ref{8.2.5} we know that \(X_f\), \(X_g\) and \(X_h\) are at most countable.
     Since
@@ -539,42 +541,20 @@ Let \(X\) be an at most countable set, and let \(f : X \to \mathbf{R}\) and \(g 
     \end{align*}
     and \(X_h \subseteq X_f \cup X_g\).
     By Additional Corollary \ref{ac 8.1.1} we know that \(X_f \cup X_g\) is at most countable.
-    Now we split into two cases:
-    \begin{itemize}
-        \item If \(X_f \cup X_g\) is finite, then by Proposition \ref{3.6.14}(c) both \(X_h\) and \((X_f \cup X_g) \setminus X_h\) are finite.
-              Thus
-              \begin{align*}
-                   & \sum_{x \in X} \big(f(x) + g(x)\big)                                                                                                                 \\
-                   & = \sum_{x \in X_h} \big(f(x) + g(x)\big)                                                                   & \text{(by Lemma \ref{8.2.5})}           \\
-                   & = \sum_{x \in X_h} \big(f(x) + g(x)\big) + \sum_{x \in (X_f \cup X_g) \setminus X_h} \big(f(x) + g(x)\big)                                           \\
-                   & = \sum_{x \in X_f \cup X_g} \big(f(x) + g(x)\big)                                                          & \text{(by Proposition \ref{7.1.11}(e))} \\
-                   & = \sum_{x \in X_f \cup X_g} f(x) + \sum_{x \in X_f \cup X_g} g(x)                                          & \text{(by Proposition \ref{7.1.11}(f))} \\
-                   & = \sum_{x \in X_f} f(x) + \sum_{x \in (X_f \cup X_g) \setminus X_f} f(x)                                   & \text{(by Proposition \ref{7.1.11}(e))} \\
-                   & \quad + \sum_{x \in X_g} g(x) + \sum_{x \in (X_f \cup X_g) \setminus X_g} g(x)                             & \text{(by Proposition \ref{7.1.11}(e))} \\
-                   & = \sum_{x \in X_f} f(x) + \sum_{x \in X_g} g(x)                                                                                                      \\
-                   & = \sum_{x \in X} f(x) + \sum_{x \in X} g(x).                                                               & \text{(by Lemma \ref{8.2.5})}
-              \end{align*}
-        \item If \(X_f \cup X_g\) is countable, then by Definition \ref{8.1.1} \(\exists\ k : \mathbf{N} \to X_f \cup X_g\) such that \(k\) is bijective.
-              By Corollary \ref{8.1.7} we know that both \(X_h\) and \((X_f \cup X_g) \setminus X_h\) are at most countable.
-              Using Proposition \ref{8.2.6}(c) without circularity we thus have
-              \begin{align*}
-                   & \sum_{x \in X} \big(f(x) + g(x)\big)                                                                                                                 \\
-                   & = \sum_{x \in X_h} \big(f(x) + g(x)\big)                                                                   & \text{(by Lemma \ref{8.2.5})}           \\
-                   & = \sum_{x \in X_h} \big(f(x) + g(x)\big) + \sum_{x \in (X_f \cup X_g) \setminus X_h} \big(f(x) + g(x)\big)                                           \\
-                   & = \sum_{x \in X_f \cup X_g} \big(f(x) + g(x)\big)                                                          & \text{(by Proposition \ref{8.2.6}(c))}  \\
-                   & = \sum_{n = 0}^\infty \Big(f\big(k(n)\big) + g\big(k(n)\big)\Big)                                          & \text{(by Definition \ref{8.2.1})}      \\
-                   & = \sum_{n = 0}^\infty f\big(k(n)\big) + \sum_{n = 0}^\infty g\big(k(n)\big)                                & \text{(by Proposition \ref{7.2.14}(a))} \\
-                   & = \sum_{x \in X_f \cup X_g} f(x) + \sum_{x \in X_f \cup X_g} g(x)                                          & \text{(by Definition \ref{8.2.1})}      \\
-                   & = \sum_{x \in X_f} f(x) + \sum_{x \in (X_f \cup X_g) \setminus X_f} f(x)                                   & \text{(by Proposition \ref{8.2.6}(c))}  \\
-                   & \quad + \sum_{x \in X_g} g(x) + \sum_{x \in (X_f \cup X_g) \setminus X_g} g(x)                             & \text{(by Proposition \ref{8.2.6}(c))}  \\
-                   & = \sum_{x \in X_f} f(x) + \sum_{x \in X_g} g(x)                                                                                                      \\
-                   & = \sum_{x \in X} f(x) + \sum_{x \in X} g(x).                                                               & \text{(by Lemma \ref{8.2.5})}
-              \end{align*}
-    \end{itemize}
-    From all cases above we conclude that
-    \[
-        \sum_{x \in X} (f(x) + g(x)) = \sum_{x \in X} f(x) + \sum_{x \in X} g(x).
-    \]
+    By Corollary \ref{8.1.7} we know that \(X_f \cup X_g \setminus X_f\), \(X_f \cup X_g \setminus X_g\), \(X_f \cup X_g \setminus X_h\) are at most countable.
+    Thus we have
+    \begin{align*}
+         & \sum_{x \in X} \big(f(x) + g(x)\big)                                                                                                      \\
+         & = \sum_{x \in X_h} \big(f(x) + g(x)\big)                                       & \text{(by Lemma \ref{8.2.5})}                            \\
+         & = \sum_{x \in X_h} \big(f(x) + g(x)\big)                                                                                                  \\
+         & \quad + \sum_{x \in (X_f \cup X_g) \setminus X_h} \big(f(x) + g(x)\big)        & (x \notin X_h \iff f(x) + g(x) = 0)                      \\
+         & = \sum_{x \in X_f \cup X_g} \big(f(x) + g(x)\big)                              & \text{(by Additional Corollary \ref{ac 8.2.1}(c))}       \\
+         & = \sum_{x \in X_f \cup X_g} f(x) + \sum_{x \in X_f \cup X_g} g(x)              & \text{(by Additional Corollary \ref{ac 8.2.1}(a))}       \\
+         & = \sum_{x \in X_f} f(x) + \sum_{x \in (X_f \cup X_g) \setminus X_f} f(x)       & \text{(by Additional Corollary \ref{ac 8.2.1}(c))}       \\
+         & \quad + \sum_{x \in X_g} g(x) + \sum_{x \in (X_f \cup X_g) \setminus X_g} g(x) & \text{(by Additional Corollary \ref{ac 8.2.1}(c))}       \\
+         & = \sum_{x \in X_f} f(x) + \sum_{x \in X_g} g(x)                                & (x \notin X_f \iff f(x) = 0, x \notin X_g \iff g(x) = 0) \\
+         & = \sum_{x \in X} f(x) + \sum_{x \in X} g(x).                                   & \text{(by Lemma \ref{8.2.5})}
+    \end{align*}
 \end{proof}
 
 \begin{proof}{(b)}
