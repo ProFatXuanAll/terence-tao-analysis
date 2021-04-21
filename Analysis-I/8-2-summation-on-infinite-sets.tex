@@ -704,8 +704,8 @@ Let \(X\) be an at most countable set, and let \(f : X \to \mathbf{R}\) and \(g 
     Now we show that \(\sum_{y \in Y} f\big(\phi(y)\big) = \sum_{x \in X} f(x)\).
     Let \(X_f = \{x \in X : f(x) \neq 0\}\) and \(Y_f = \{y \in Y : f\big(\phi(y)\big) \neq 0\}\) be sets.
     By Lemma \ref{8.2.5} we know that \(X_f\) and \(Y_f\) are at most countable.
-    Clearly \(\phi\) is a bijective between \(X_f\) and \(Y_f\) and thus \(\phi(Y_f) = X_f\).
-    Then we have
+    Clearly \(\phi\) is a bijective between \(X_f\) and \(Y_f\).
+    Thus we have
     \begin{align*}
         \sum_{y \in Y} f\big(\phi(y)\big) & = \sum_{y \in Y_f} f\big(\phi(y)\big) & \text{(by Lemma \ref{8.2.5})}                      \\
                                           & = \sum_{x \in X_f} f(x)               & \text{(by Additional Corollary \ref{ac 8.2.1}(d))} \\
@@ -730,29 +730,20 @@ Let \(X\) be an at most countable set, and let \(f : X \to \mathbf{R}\) and \(g 
                                 & = \sum_{n \in A} \max(a_n, 0) + \sum_{n \in A} \min(a_n, 0)           & \text{(by Definition \ref{8.2.1})}      \\
                                 & = \sum_{n \in A_+} a_n + \sum_{n \in A_-} a_n.                        & \text{(by Lemma \ref{8.2.5})}
     \end{align*}
-    We now split into two cases:
-    \begin{enumerate}
-        \item If \(\sum_{n \in A_+} a_n\) is absolutely convergent, then we have
-              \[
-                  \sum_{n = 0}^\infty a_n - \sum_{n \in A_+} a_n = \sum_{n \in A_-} a_n
-              \]
-              and
-              \begin{align*}
-                  \sum_{n \in A_-} \abs*{a_n} & = \sum_{n \in A_-} -a_n                                           \\
-                                              & = -\sum_{n \in A_-} a_n. & \text{(by Proposition \ref{8.2.6}(b))}
-              \end{align*}
-              Thus \(\sum_{n \in A_-} a_n\) is also absolutely convergent.
-        \item If \(\sum_{n \in A_-} a_n\) is absolutely convergent, then we have
-              \[
-                  \sum_{n = 0}^\infty a_n - \sum_{n \in A_-} a_n = \sum_{n \in A_+} a_n
-              \]
-              and
-              \[
-                  \sum_{n \in A_+} \abs*{a_n} = \sum_{n \in A_+} a_n.
-              \]
-              Thus \(\sum_{n \in A_+} a_n\) is also absolutely convergent.
-    \end{enumerate}
-    From all cases above we have both \(\sum_{n \in A_+} a_n\) and \(\sum_{n \in A_-} a_n\) are absolutely convergent.
+    Thus \(\sum_{n \in A_+} a_n\) and \(\sum_{n \in A_-} a_n\) converges.
+    Since \(\sum_{n \in A_+} a_n\) converges and
+    \[
+        \sum_{n \in A_+} \abs*{a_n} = \sum_{n \in A_+} a_n,
+    \]
+    we know that \(\sum_{n \in A_+} a_n\) is absolutely converges.
+    Since
+    \begin{align*}
+        \sum_{n \in A_-} \abs*{a_n} & = \sum_{n = 0}^\infty \abs*{\min(a_n, 0)} & \text{(by Lemma \ref{8.2.5})}           \\
+                                    & = \sum_{n = 0}^\infty -\min(a_n, 0)                                                 \\
+                                    & = -\sum_{n = 0}^\infty \min(a_n, 0)       & \text{(by Proposition \ref{7.2.14}(b))} \\
+                                    & = -\sum_{n \in A_-} a_n,                  & \text{(by Lemma \ref{8.2.5})}
+    \end{align*}
+    we know that \(\sum_{n \in A_-} \abs*{a_n}\) is absolutely convergent.
     But by Proposition \ref{8.2.6}(c) we have
     \[
         \sum_{n \in A_+} a_n + \sum_{n \in A_-} a_n = \sum_{n \in A} a_n
