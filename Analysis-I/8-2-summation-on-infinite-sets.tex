@@ -510,7 +510,7 @@ Let \(X\) be an at most countable set, and let \(f : X \to \mathbf{R}\) and \(g 
     \[
         \sup\Bigg\{\sum_{x \in A} \abs*{f(x) + g(x)} : A \subseteq X, A \text{ finite}\Bigg\} \leq N + M < \infty.
     \]
-    Thus by Definition \ref{8.2.4} we have \(\sum_{x \in X} \big(f(x) + g(x)\big)\) is absolutely convergent.
+    Thus by Definition \ref{8.2.4} \(\sum_{x \in X} \big(f(x) + g(x)\big)\) is absolutely convergent.
 
     Now we show that \(\sum_{x \in X} (f(x) + g(x)) = \sum_{x \in X} f(x) + \sum_{x \in X} g(x)\).
     If \(X\) is at most countable, then the statement follows by Additional Corollary \ref{ac 8.2.1}(a).
@@ -574,42 +574,33 @@ Let \(X\) be an at most countable set, and let \(f : X \to \mathbf{R}\) and \(g 
     \[
         \sup\Bigg\{\sum_{x \in A} \abs*{cf(x)} : A \subseteq X, A \text{ finite}\Bigg\} \leq \abs*{c}N < \infty.
     \]
-    Thus by Definition \ref{8.2.4} we have \(\sum_{x \in X} cf(x)\) is absolutely convergent.
+    Thus by Definition \ref{8.2.4} \(\sum_{x \in X} cf(x)\) is absolutely convergent.
 
     Now we show that \(\sum_{x \in X} cf(x) = c \sum_{x \in X} f(x)\).
+    If \(X\) is at most countable, then the statement follows by Additional Corollary \ref{ac 8.2.1}(b).
+    So suppose that \(X\) is uncountable.
     Let \(X_f = \{x \in X : f(x) \neq 0\}\) and \(X_h = \{x \in X : cf(x) \neq 0\}\) be two sets.
     By Lemma \ref{8.2.5} we know that both \(X_f\) and \(X_h\) are at most countable.
-    If \(c = 0\), then \(X_h = \emptyset\) and we have
-    \begin{align*}
-        \sum_{x \in X} 0f(x) & = \sum_{x \in X_h} 0f(x)  & \text{(by Definition \ref{8.2.4})}      \\
-                             & = 0                       & \text{(by Proposition \ref{7.1.11}(a))} \\
-                             & = 0 \sum_{x \in X_f} f(x)                                           \\
-                             & = 0 \sum_{x \in X} f(x).  & \text{(by Definition \ref{8.2.4})}
-    \end{align*}
-    Thus the statement is true when \(c = 0\).
-    Now suppose that \(c \neq 0\).
-    Since \(\forall\ x \in X : cf(x) \neq 0 \iff f(x) \neq 0\), we have \(X_h = X_f\).
-    We split into two cases:
-    \begin{enumerate}[label=(\Roman*)]
-        \item If \(X_h\) is finite, then we have
+    \begin{itemize}
+        \item If \(c = 0\), then \(X_h = \emptyset\) and we have
               \begin{align*}
-                  \sum_{x \in X} cf(x) & = \sum_{x \in X_h} cf(x)  & \text{(by Definition \ref{8.2.4})}      \\
-                                       & = c \sum_{x \in X_h} f(x) & \text{(by Proposition \ref{7.1.11}(g))} \\
-                                       & = c \sum_{x \in X_f} f(x)                                           \\
-                                       & = c \sum_{x \in X} f(x).  & \text{(by Definition \ref{8.2.4})}
+                  \sum_{x \in X} 0f(x) & = \sum_{x \in X_h} 0f(x) & \text{(by Lemma \ref{8.2.5})}           \\
+                                       & = 0                      & \text{(by Proposition \ref{7.1.11}(a))} \\
+                                       & = 0 \sum_{x \in X} f(x).
               \end{align*}
-        \item If \(X_h\) is countable, then by Definition \ref{8.1.1}, \(\exists\ n_h : X_h \to \mathbf{N}\) such that \(n_h\) is bijective.
+        \item If \(c \neq 0\), then we have \(X_f = X_h\) since
+              \[
+                  \forall\ x, x \in X_f \iff f(x) \neq 0 \iff cf(x) \neq 0 \iff x \in X_h.
+              \]
               Thus
               \begin{align*}
-                  \sum_{x \in X} cf(x) & = \sum_{x \in X_h} cf(x)          & \text{(by Definition \ref{8.2.4})}      \\
-                                       & = \sum_{n = 0}^\infty cf(n_h(n))  & \text{(by Definition \ref{8.2.1})}      \\
-                                       & = c \sum_{n = 0}^\infty f(n_h(n)) & \text{(by Proposition \ref{7.2.14}(b))} \\
-                                       & = c \sum_{x \in X_h} f(x)         & \text{(by Definition \ref{8.2.1})}      \\
-                                       & = c \sum_{x \in X_f} f(x)                                                   \\
-                                       & = c \sum_{x \in X} f(x).          & \text{(by Definition \ref{8.2.4})}
+                  \sum_{x \in X} cf(x) & = \sum_{x \in X_h} cf(x)  & \text{(by Lemma \ref{8.2.5})}                      \\
+                                       & = c \sum_{x \in X_h} f(x) & \text{(by Additional Corollary \ref{ac 8.2.1}(b))} \\
+                                       & = c \sum_{x \in X_f} f(x)                                                      \\
+                                       & = c \sum_{x \in X} f(x).  & \text{(by Lemma \ref{8.2.5})}
               \end{align*}
-    \end{enumerate}
-    From all cases above we can conclude that \(\sum_{x \in X} cf(x) = c \sum_{x \in X} f(x)\).
+    \end{itemize}
+    From all cases above we conclude that \(\sum_{x \in X} cf(x) = c \sum_{x \in X} f(x)\).
 \end{proof}
 
 \begin{proof}{(c)}
