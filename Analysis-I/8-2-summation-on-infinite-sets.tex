@@ -17,6 +17,259 @@
     For finite sets \(X\) we adopt the convention that series \(\sum_{x \in X} f(x)\) are automatically considered to be absolutely convergent.
 \end{note}
 
+\begin{additional corollary}\label{ac 8.2.1}
+Let \(X\) be an at most countable set, and let \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) be functions such that the series \(\sum_{x \in X} f(x)\) and \(\sum_{x \in X} g(x)\) are both absolutely convergent.
+\begin{enumerate}
+    \item The series \(\sum_{x \in X} (f(x) + g(x))\) is absolutely convergent, and
+          \[
+              \sum_{x \in X} (f(x) + g(x)) = \sum_{x \in X} f(x) + \sum_{x \in X} g(x).
+          \]
+    \item If \(c\) is a real number, then \(\sum_{x \in X} cf(x)\) is absolutely convergent, and
+          \[
+              \sum_{x \in X} cf(x) = c \sum_{x \in X} f(x).
+          \]
+    \item If \(X = X_1 \cup X_2\) for some disjoint sets \(X_1\) and \(X_2\), then \(\sum_{x \in X_1} f(x)\) and \\
+          \(\sum_{x \in X_2} f(x)\) are absolutely convergent, and
+          \[
+              \sum_{x \in X_1 \cup X_2} f(x) = \sum_{x \in X_1} f(x) + \sum_{x \in X_2} f(x).
+          \]
+          Conversely, if \(h : X \to \mathbf{R}\) is such that \(\sum_{x \in X_1} h(x)\) and \(\sum_{x \in X_2} h(x)\) are absolutely convergent, then \(\sum_{x \in X_1 \cup X_2} h(x)\) is also absolutely convergent, and
+          \[
+              \sum_{x \in X_1 \cup X_2} h(x) = \sum_{x \in X_1} h(x) + \sum_{x \in X_2} h(x).
+          \]
+    \item If \(Y\) is another set, and \(\phi : Y \to X\) is a bijection, then \(\sum_{y \in Y} f(\phi(y))\) is absolutely convergent, and
+          \[
+              \sum_{y \in Y} f(\phi(y)) = \sum_{x \in X} f(x).
+          \]
+\end{enumerate}
+\end{additional corollary}
+
+\begin{proof}{(a)}
+    Since \(X\) is at most countable, by Definition \ref{8.1.1} we know that \(X\) is either finite or countable.
+    If \(X\) is finite, then the statement follows from Proposition \ref{7.1.11}(f).
+    So suppose that \(X\) is countable.
+    By Definition \ref{8.2.1} we know that there exists a bijection \(p : \mathbf{N} \to X\) such that \(\sum_{n = 0}^\infty f\big(p(n)\big)\) converges.
+    Similarly, there exists a bijection \(q : \mathbf{N} \to X\) such that \(\sum_{n = 0}^\infty g\big(q(n)\big)\) converges.
+    Since \(p\) is bijective, by Proposition \ref{7.4.3} we know that
+    \[
+        \sum_{x \in X} g(x) = \sum_{n = 0}^\infty g(q(n)) = \sum_{n = 0}^\infty g(p(n)).
+    \]
+    Thus we have
+    \begin{align*}
+         & \sum_{x \in X} \abs*{f(x)} + \sum_{x \in X} \abs*{g(x)}                                                                                  \\
+         & = \sum_{n = 0}^\infty \abs*{f\big(p(n)\big)} + \sum_{n = 0}^\infty \abs*{g\big(p(n)\big)}      & \text{(by Definition \ref{8.2.1})}      \\
+         & = \sum_{n = 0}^\infty \Big(\abs*{f\big(p(n)\big)} + \abs*{g\big(p(n)\big)}\Big)                & \text{(by Proposition \ref{7.2.14}(a))} \\
+         & = \lim_{N \to \infty} \sum_{n = 0}^N \Big(\abs*{f\big(p(n)\big)} + \abs*{g\big(p(n)\big)}\Big) & \text{(by Definition \ref{7.2.2})}      \\
+         & \geq \lim_{N \to \infty} \sum_{n = 0}^N \abs*{f\big(p(n)\big) + g\big(p(n)\big)}               & \text{(by Theorem \ref{6.1.19}(h))}     \\
+         & = \sum_{n = 0}^\infty \abs*{f\big(p(n)\big) + g\big(p(n)\big)}                                 & \text{(by Proposition \ref{6.3.8})}     \\
+         & = \sum_{x \in X} \abs*{f(x) + g(x)}                                                            & \text{(by Definition \ref{8.2.1})}
+    \end{align*}
+    and \(\sum_{x \in X} f(x) + g(x)\) is absolutely convergent.
+    This implies
+    \begin{align*}
+         & \sum_{x \in X} f(x) + \sum_{x \in X} g(x)                                                                             \\
+         & = \sum_{n = 0}^\infty f\big(p(n)\big) + \sum_{n = 0}^\infty g\big(p(n)\big) & \text{(by Definition \ref{8.2.1})}      \\
+         & = \sum_{n = 0}^\infty \Big(f\big(p(n)\big) + g\big(p(n)\big)\Big)           & \text{(by Proposition \ref{7.2.14}(a))} \\
+         & = \sum_{x \in X} \big(f(x) + g(x)\big).                                     & \text{(by Definition \ref{8.2.1})}
+    \end{align*}
+\end{proof}
+
+\begin{proof}{(b)}
+    Since \(X\) is at most countable, by Definition \ref{8.1.1} we know that \(X\) is either finite or countable.
+    If \(X\) is finite, then the statement follows from Proposition \ref{7.1.11}(g).
+    So suppose that \(X\) is countable.
+    By Definition \ref{8.2.1} we know that there exists a bijection \(p : \mathbf{N} \to X\) such that \(\sum_{n = 0}^\infty f\big(p(n)\big)\) converges.
+    Then we have
+    \begin{align*}
+        \abs*{c} \sum_{x \in X} \abs*{f(x)} & = \abs*{c} \sum_{n = 0}^\infty \abs*{f\big(p(n)\big)} & \text{(by Definition \ref{8.2.1})}      \\
+                                            & = \sum_{n = 0}^\infty \abs*{c} \abs*{f\big(p(n)\big)} & \text{(by Proposition \ref{7.2.14}(b))} \\
+                                            & = \sum_{n = 0}^\infty \abs*{c f\big(p(n)\big)}                                                  \\
+                                            & = \sum_{x \in X} \abs*{c f(x)}                        & \text{(by Definition \ref{8.2.1})}
+    \end{align*}
+    and thus \(\sum_{x \in X} \abs*{c f(x)}\) is absolutely convergent.
+    This implies
+    \begin{align*}
+        c \sum_{x \in X} f(x) & = c \sum_{n = 0}^\infty f\big(p(n)\big) & \text{(by Definition \ref{8.2.1})}      \\
+                              & = \sum_{n = 0}^\infty c f\big(p(n)\big) & \text{(by Proposition \ref{7.2.14}(b))} \\
+                              & = \sum_{x \in X} f(x).                  & \text{(by Definition \ref{8.2.1})}
+    \end{align*}
+\end{proof}
+
+\begin{proof}{(c)}
+    We first show that if \(X = X_1 \cup X_2\), \(X_1 \cap X_2 = \emptyset\), then \(\sum_{x \in X_1} f(x)\) and \(\sum_{x \in X_2} f(x)\) is absolutely convergent.
+    Since \(X\) is at most countable, by Definition \ref{8.1.1} we know that \(X\) is either finite or countable.
+    If \(X\) is finite, then the statement follows from Proposition \ref{7.1.11}(e).
+    So suppose that \(X\) is countable.
+    Since \(X = X_1 \cup X_2\), we know that \(X_1\) and \(X_2\) cannot both be finite.
+    Now we split into two cases:
+    \begin{itemize}
+        \item One of \(X_1, X_2\) is finite and one is countable.
+              Without the loss of generality suppose that \(X_1\) is finite.
+              Since \(X_1\) is finite, we know that \(\exists\ q_1 : \{i \in \mathbf{N} : 1 \leq i \leq \#(X_1)\} \to X_1\) such that \(q_1\) is bijective.
+              Since \(X_2\) is countable, by Definition \ref{8.1.1} we know that \(\exists\ q_2 : \mathbf{N} \to X_2\) such that \(q_2\) is bijective.
+              Then we define a function \(q : \mathbf{N} \to X\) as follow:
+              \[
+                  \forall\ n \in \mathbf{N}, q(n) = \begin{cases}
+                      q_1(n + 1)       & \text{if } n < \#(X_1)    \\
+                      q_2(n - \#(X_1)) & \text{if } n \geq \#(X_1)
+                  \end{cases}
+              \]
+              Such \(q\) is bijective since \(X_1 \cap X_2 = \emptyset\) and \(q_1, q_2\) are bijective.
+              Then we have
+              \begin{align*}
+                  \sum_{x \in X} \abs*{f(x)} & = \sum_{n = 0}^\infty \abs*{f\big(q(n)\big)}                                                           & \text{(by Definition \ref{8.2.1})}      \\
+                                             & = \sum_{n = 0}^{\#(X_1) - 1} \abs*{f\big(q(n)\big)} + \sum_{n = \#(X_1)}^\infty \abs*{f\big(q(n)\big)} & \text{(by Proposition \ref{7.2.14}(c))} \\
+                                             & = \sum_{n = 0}^{\#(X_1) - 1} \abs*{f\big(q_1(n + 1)\big)}                                                                                        \\
+                                             & \quad + \sum_{n = \#(X_1)}^\infty \abs*{f\Big(q_2\big(n - \#(X_1)\big)\Big)}                                                                     \\
+                                             & = \sum_{n = 1}^{\#(X_1)} \abs*{f\big(q_1(n)\big)}                                                      & \text{(by Lemma \ref{7.1.4}(b))}        \\
+                                             & \quad + \sum_{n = 0}^\infty \abs*{f\big(q_2(n)\big)}                                                   & \text{(by Proposition \ref{7.2.14}(d))} \\
+                                             & = \sum_{x \in X_1} \abs*{f(x)}                                                                         & \text{(by Definition \ref{7.1.6})}      \\
+                                             & \quad + \sum_{x \in X_2} \abs*{f\big(q(n)\big)}                                                        & \text{(by Definition \ref{8.2.1})}
+              \end{align*}
+              and thus both \(\sum_{x \in X_1} f(x)\) and \(\sum_{x \in X_2} f(x)\) are absolutely convergent.
+              This implies
+              \begin{align*}
+                  \sum_{x \in X} f(x) & = \sum_{n = 0}^\infty f(q(x))                                                            & \text{(by Definition \ref{8.2.1})}      \\
+                                      & = \sum_{n = 0}^{\#(X_1) - 1} f\big(q(n)\big) + \sum_{n = \#(X_1)}^\infty f\big(q(n)\big) & \text{(by Proposition \ref{7.2.14}(c))} \\
+                                      & = \sum_{n = 0}^{\#(X_1) - 1} f\big(q_1(n + 1)\big)                                                                                 \\
+                                      & \quad + \sum_{n = \#(X_1)}^\infty f\Big(q_2\big(n - \#(X_1)\big)\Big)                                                              \\
+                                      & = \sum_{n = 1}^{\#(X_1)} f\big(q_1(n)\big)                                               & \text{(by Lemma \ref{7.1.4}(b))}        \\
+                                      & \quad + \sum_{n = 0}^\infty f\big(q_2(n)\big)                                            & \text{(by Proposition \ref{7.2.14}(c))} \\
+                                      & = \sum_{x \in X_1} f(x)                                                                  & \text{(by Definition \ref{7.1.6})}      \\
+                                      & \quad + \sum_{x \in X_2} f\big(q(n)\big).                                                & \text{(by Definition \ref{8.2.1})}
+              \end{align*}
+        \item Both \(X_1, X_2\) are countable.
+              Since \(X_1\) is countable, by Definition \ref{8.1.1} we know that \(\exists\ q_1 : \mathbf{N} \to X_1\) such that \(q_1\) is bijective.
+              Similarly, \(\exists\ q_2 : \mathbf{N} \to X_2\) such that \(q_2\) is bijective.
+              Then we define a function \(q : \mathbf{N} \to X\) as follow:
+              \[
+                  \forall\ n \in \mathbf{N}, q(n) = \begin{cases}
+                      q_1(\frac{n}{2})     & \text{if } n \text{ is even} \\
+                      q_2(\frac{n - 1}{2}) & \text{if } n \text{ is odd}
+                  \end{cases}
+              \]
+              Such \(q\) is bijective since \(X_1 \cap X_2 = \emptyset\) and \(q_1, q_2\) are bijective.
+              Then we have
+              \begin{align*}
+                   & \sum_{x \in X} \abs*{f(x)}                                                                                                                                            \\
+                   & = \sum_{n = 0}^\infty \abs*{f\big(q(n)\big)}                                                                                & \text{(by Definition \ref{8.2.1})}      \\
+                   & = \lim_{N \to \infty} \sum_{n = 0}^{2N} \abs*{f\big(q(n)\big)}                                                              & \text{(by Definition \ref{7.2.2})}      \\
+                   & = \lim_{N \to \infty} \sum_{n \leq 2N} \abs*{f\big(q(n)\big)}                                                               & \text{(by Definition \ref{7.1.6})}      \\
+                   & = \lim_{N \to \infty} \Bigg(\sum_{n \leq 2N \land n \text{ is even}} \abs*{f\big(q(n)\big)}                                                                           \\
+                   & \quad + \sum_{n \leq 2N \land n \text{ is odd}} \abs*{f\big(q(n)\big)}\Bigg)                                                & \text{(by Proposition \ref{7.1.11}(e))} \\
+                   & = \lim_{N \to \infty} \Bigg(\sum_{n \leq 2N \land n \text{ is even}} \abs*{f\big(q_1(\frac{n}{2})\big)}                                                               \\
+                   & \quad + \sum_{n \leq 2N \land n \text{ is odd}} \abs*{f\big(q_2(\frac{n - 1}{2})\big)}\Bigg)                                                                          \\
+                   & = \lim_{N \to \infty} \sum_{n \leq 2N \land n \text{ is even}} \abs*{f\big(q_1(\frac{n}{2})\big)}                                                                     \\
+                   & \quad + \lim_{N \to \infty} \sum_{n \leq 2N \land n \text{ is odd}} \abs*{f\big(q_2(\frac{n - 1}{2})\big)}                  & \text{(by Theorem \ref{6.1.19}(a))}     \\
+                   & = \lim_{N \to \infty} \sum_{n = 0}^N \abs*{f\big(q_1(n)\big)} + \lim_{N \to \infty} \sum_{n = 0}^N \abs*{f\big(q_2(n)\big)} & \text{(by Definition \ref{7.1.6})}      \\
+                   & = \sum_{n = 0}^\infty \abs*{f\big(q_1(n)\big)} + \sum_{n = 0}^\infty \abs*{f\big(q_2(n)\big)}                               & \text{(by Definition \ref{7.2.2})}      \\
+                   & = \sum_{x \in X_1} \abs*{f(x)} + \sum_{x \in X_2} \abs*{f(x)}                                                               & \text{(by Definition \ref{8.2.1})}
+              \end{align*}
+              and thus both \(\sum_{x \in X_1} f(x)\) and \(\sum_{x \in X_2} f(x)\) are absolutely convergent.
+              This implies
+              \begin{align*}
+                   & \sum_{x \in X} f(x)                                                                                                                                     \\
+                   & = \sum_{n = 0}^\infty f\big(q(n)\big)                                                                         & \text{(by Definition \ref{8.2.1})}      \\
+                   & = \lim_{N \to \infty} \sum_{n = 0}^{2N} f\big(q(n)\big)                                                       & \text{(by Definition \ref{7.2.2})}      \\
+                   & = \lim_{N \to \infty} \sum_{n \leq 2N} f\big(q(n)\big)                                                        & \text{(by Definition \ref{7.1.6})}      \\
+                   & = \lim_{N \to \infty} \Bigg(\sum_{n \leq 2N \land n \text{ is even}} f\big(q(n)\big)                                                                    \\
+                   & \quad + \sum_{n \leq 2N \land n \text{ is odd}} f\big(q(n)\big)\Bigg)                                         & \text{(by Proposition \ref{7.1.11}(e))} \\
+                   & = \lim_{N \to \infty} \Bigg(\sum_{n \leq 2N \land n \text{ is even}} f\big(q_1(\frac{n}{2})\big)                                                        \\
+                   & \quad + \sum_{n \leq 2N \land n \text{ is odd}} f\big(q_2(\frac{n - 1}{2})\big)\Bigg)                                                                   \\
+                   & = \lim_{N \to \infty} \sum_{n \leq 2N \land n \text{ is even}} f\big(q_1(\frac{n}{2})\big)                                                              \\
+                   & \quad + \lim_{N \to \infty} \sum_{n \leq 2N \land n \text{ is odd}} f\big(q_2(\frac{n - 1}{2})\big)           & \text{(by Theorem \ref{6.1.19}(a))}     \\
+                   & = \lim_{N \to \infty} \sum_{n = 0}^N f\big(q_1(n)\big) + \lim_{N \to \infty} \sum_{n = 0}^N f\big(q_2(n)\big) & \text{(by Definition \ref{7.1.6})}      \\
+                   & = \sum_{n = 0}^\infty f\big(q_1(n)\big) + \sum_{n = 0}^\infty f\big(q_2(n)\big)                               & \text{(by Definition \ref{7.2.2})}      \\
+                   & = \sum_{x \in X_1} f(x) + \sum_{x \in X_2} f(x).                                                              & \text{(by Definition \ref{8.2.1})}
+              \end{align*}
+    \end{itemize}
+    From all cases above we conclude that both \(\sum_{x \in X_1} f(x)\) and \(\sum_{x \in X_2} f(x)\) are absolutely convergent, and we have
+    \[
+        \sum_{x \in X} f(x) = \sum_{x \in X_1} f(x) + \sum_{x \in X_2} f(x).
+    \]
+
+    Now we show that if \(X_1 \cup X_2 \subseteq X\), \(X_1 \cap X_2 = \emptyset\), \(\sum_{x \in X_1} h(x)\) and \(\sum_{x \in X_2} h(x)\) are absolutely convergent, then \(\sum_{x \in X_1 \cup X_2} h(x)\) is absolutely convergent.
+    Since \(X\) is at most countable, by Corollary \ref{8.1.7} we know that \(X_1 \cup X_2\) is at most countable.
+    By Definition \ref{8.1.1} we know that \(X_1 \cup X_2\) is either finite or countable.
+    If \(X_1 \cup X_2\) is finite, then the statement follows from Proposition \ref{7.1.11}(e).
+    So suppose that \(X_1 \cup X_2\) is countable.
+    We know that \(X_1\) and \(X_2\) cannot both be finite.
+    Now we split into two cases:
+    \begin{itemize}
+        \item One of \(X_1, X_2\) is finite and one is countable.
+              Without the loss of generality suppose that \(X_1\) is finite.
+              Since \(X_1\) is finite, we know that \(\exists\ q_1 : \{i \in \mathbf{N} : 1 \leq i \leq \#(X_1)\} \to X_1\) such that \(q_1\) is bijective.
+              Since \(X_2\) is countable, by Definition \ref{8.1.1} we know that \(\exists\ q_2 : \mathbf{N} \to X_2\) such that \(q_2\) is bijective.
+              Then we define a function \(q : \mathbf{N} \to X_1 \cup X_2\) as follow:
+              \[
+                  \forall\ n \in \mathbf{N}, q(n) = \begin{cases}
+                      q_1(n + 1)       & \text{if } n < \#(X_1)    \\
+                      q_2(n - \#(X_1)) & \text{if } n \geq \#(X_1)
+                  \end{cases}
+              \]
+              Such \(q\) is bijective since \(X_1 \cap X_2 = \emptyset\) and \(q_1, q_2\) are bijective.
+              Then we have
+              \begin{align*}
+                   & \sum_{x \in X_1} \abs*{h(x)} + \sum_{x \in X_2} \abs*{h(x)}                                                                                      \\
+                   & = \sum_{n = 1}^{\#(X_1)} \abs*{h\big(q_1(n)\big)}                                                      & \text{(by Definition \ref{7.1.6})}      \\
+                   & \quad + \sum_{n = 0}^\infty \abs*{h\big(q_2(n)\big)}                                                   & \text{(by Definition \ref{8.2.1})}      \\
+                   & = \sum_{n = 0}^{\#(X_1) - 1} \abs*{h\big(q_1(n + 1)\big)}                                              & \text{(by Lemma \ref{7.1.4}(b))}        \\
+                   & \quad + \sum_{n = \#(X_1)}^\infty \abs*{h\Big(q_2\big(n - \#(X_1)\big)\Big)}                           & \text{(by Proposition \ref{7.2.14}(d))} \\
+                   & = \sum_{n = 0}^{\#(X_1) - 1} \abs*{h\big(q(n)\big)} + \sum_{n = \#(X_1)}^\infty \abs*{h\big(q(n)\big)}                                           \\
+                   & = \sum_{n = 0}^\infty \abs*{h\big(q(n)\big)}                                                           & \text{(by Proposition \ref{7.2.14}(c))} \\
+                   & = \sum_{x \in X_1 \cup X_2} \abs*{h(x)}                                                                & \text{(by Definition \ref{8.2.1})}
+              \end{align*}
+              and thus \(\sum_{x \in X_1 \cup X_2} h(x)\) is absolutely convergent.
+        \item Both \(X_1, X_2\) are countable.
+              Since \(X_1\) is countable, by Definition \ref{8.1.1} we know that \(\exists\ q_1 : \mathbf{N} \to X_1\) such that \(q_1\) is bijective.
+              Similarly, \(\exists\ q_2 : \mathbf{N} \to X_2\) such that \(q_2\) is bijective.
+              Then we define a function \(q : \mathbf{N} \to X_1 \cup X_2\) as follow:
+              \[
+                  \forall\ n \in \mathbf{N}, q(n) = \begin{cases}
+                      q_1(\frac{n}{2})     & \text{if } n \text{ is even} \\
+                      q_2(\frac{n - 1}{2}) & \text{if } n \text{ is odd}
+                  \end{cases}
+              \]
+              Such \(q\) is bijective since \(X_1 \cap X_2 = \emptyset\) and \(q_1, q_2\) are bijective.
+              Then we have
+              \begin{align*}
+                   & \sum_{x \in X_1} \abs*{h(x)} + \sum_{x \in X_2} \abs*{h(x)}                                                                                                     \\
+                   & = \sum_{n = 0}^\infty \abs*{h\big(q_1(n)\big)} + \sum_{n = 0}^\infty \abs*{h\big(q_2(n)\big)}                         & \text{(by Definition \ref{8.2.1})}      \\
+                   & = \sum_{n = 0}^\infty \Big(\abs*{h\big(q_1(n)\big)} + \abs*{h\big(q_2(n)\big)}\Big)                                   & \text{(by Proposition \ref{7.2.14}(a))} \\
+                   & = \lim_{N \to \infty} \Bigg(\sum_{n = 0}^N \abs*{h\big(q_1(n)\big)} + \sum_{n = 0}^N \abs*{h\big(q_2(n)\big)}\Bigg)   & \text{(by Definition \ref{7.2.2})}      \\
+                   & = \lim_{N \to \infty} \Bigg(\sum_{n = 0}^N \abs*{h\big(q(2n)\big)} + \sum_{n = 0}^N \abs*{h\big(q(2n + 1)\big)}\Bigg)                                           \\
+                   & = \lim_{N \to \infty} \Bigg(\sum_{n \leq 2N : n \text{ is even}} \abs*{h\big(q(n)\big)}                                                                         \\
+                   & \quad + \sum_{n \leq 2N : n \text{ is odd}} \abs*{h\big(q(n)\big)}\Bigg)                                              & \text{(by Definition \ref{7.1.6})}      \\
+                   & = \lim_{N \to \infty} \sum_{n \leq 2N} \abs*{h\big(q(n)\big)}                                                         & \text{(by Proposition \ref{7.1.11}(e))} \\
+                   & = \lim_{N \to \infty} \sum_{n = 0}^{2N} \abs*{h\big(q(n)\big)}                                                        & \text{(by Definition \ref{7.1.6})}      \\
+                   & = \sum_{n = 0}^\infty \abs*{h\big(q(n)\big)}                                                                          & \text{(by Definition \ref{7.2.2})}      \\
+                   & = \sum_{x \in X_1 \cup X_2}^\infty \abs*{h(x)}                                                                        & \text{(by Definition \ref{8.2.1})}
+              \end{align*}
+              and thus \(\sum_{x \in X_1 \cup X_2} h(x)\) is absolutely convergent.
+    \end{itemize}
+    From all cases above we conclude that \(\sum_{x \in X_1 \cup X_2} h(x)\) is absolutely convergent.
+    Since \(\sum_{x \in X_1 \cup X_2} h(x)\) is absolutely convergent, from the proof above we have
+    \[
+        \sum_{x \in X_1 \cup X_2} h(x) = \sum_{x \in X_1} h(x) + \sum_{x \in X_2} h(x).
+    \]
+\end{proof}
+
+\begin{proof}{(d)}
+    Since \(X\) is at most countable, by Definition \ref{8.1.1} we know that \(X\) is either finite or countable.
+    If \(X\) is finite, then the statement follows from Proposition \ref{7.1.11}(c).
+    So suppose that \(X\) is countable.
+    By Definition \ref{8.2.1} we know that there exists a bijection \(p : \mathbf{N} \to X\) such that \(\sum_{n = 0}^\infty f\big(p(n)\big)\) converges.
+    Since \(\phi\) is bijective, we know that \(Y\) is also countable and by Definition \ref{8.1.1} \(\exists\ q : \mathbf{N} \to Y\) such that \(q\) is bijective.
+    Then we have \(\phi \circ q : \mathbf{N} \to X\) is bijective and
+    \begin{align*}
+        \sum_{x \in X} f(x) & = \sum_{n = 0}^\infty f\big(p(n)\big)               & \text{(by Definition \ref{8.2.1})}  \\
+                            & = \sum_{n = 0}^\infty f\big((\phi \circ q)(n)\big)  & \text{(by Proposition \ref{7.4.3})} \\
+                            & = \sum_{n = 0}^\infty f\Big(\phi\big(q(n)\big)\Big)                                       \\
+                            & = \sum_{y \in Y} f\big(\phi(y)\big).                & \text{(by Definition \ref{8.2.1})}
+    \end{align*}
+    Thus \(\sum_{y \in Y} f\big(\phi(y)\big)\) is absolutely convergent.
+\end{proof}
+
 \begin{theorem}[Fubini's theorem for infinite sums]\label{8.2.2}
     Let \(f : \mathbf{N} \times \mathbf{N} \to \mathbf{R}\) be a function such that \(\sum_{(n, m) \in \mathbf{N} \times \mathbf{N}} f(n, m)\) is absolutely convergent.
     Then we have
