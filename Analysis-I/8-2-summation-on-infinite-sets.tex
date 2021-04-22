@@ -765,11 +765,8 @@ Let \(X\) be an at most countable set, and let \(f : X \to \mathbf{R}\) and \(g 
     Let \(A_+\) and \(A_-\) be the sets in Lemma \ref{8.2.7};
     from Lemma \ref{8.2.7} we know that \(\sum_{n \in A_+} a_n\) and \(\sum_{n \in A_-} a_n\) both fail to be absolutely convergent.
     In particular \(A_+\) and \(A_-\) are infinite.
-    (Since \(A_+ \cup A_- = \mathbf{N}\), we know that at least one of \(A_+\) and \(A_-\) is countable.
-    If \(A_+\) is finite, then \(\sum_{n = 0}^\infty a_n - \sum_{n \in A_+} a_n = \sum_{n \in A_-} a_n\) is conditionally convergent.
-    But this means \(\sum_{n \in A_-} \abs*{a_n} = \sum_{n \in A_-} -a_n = -\sum_{n \in A_-} a_n\) converges, which means \(\sum_{n \in A_-} a_n\) is absolutely convergent, contradict to Lemma \ref{8.2.7}.
-    Similarly if \(A_-\) is finite, then \(\sum_{n \in A_+} a_n\) is absolutely convergent, again contradict to Lemma \ref{8.2.7}.
-    Thus both \(A_+\) and \(A_-\) must be countable.)
+    (If \(A_-\) is finite, then \(\sum_{n \in A_-} a_n\) is absolutely convergent.
+    If \(A_+\) is finite, then \(\sum_{n \in A_+} a_n\) is also absolutely convergent.)
     By Proposition \ref{8.1.5} we can then find increasing bijections \(f_+ : \mathbf{N} \to A_+\) and \(f_- : \mathbf{N} \to A_-\).
     Thus the sums \(\sum_{m = 0}^\infty a_{f_+(m)}\) and \(\sum_{m = 0}^\infty a_{f_-(m)}\) both fail to be absolutely convergent (first by Definition \ref{8.2.1} then by Lemma \ref{8.2.7}).
     The plan shall be to select terms from the divergent series \(\sum_{m = 0}^\infty a_{f_+(m)}\) and \(\sum_{m = 0}^\infty a_{f_-(m)}\) in a well-chosen order in order to keep their difference converging towards \(L\).
@@ -780,94 +777,119 @@ Let \(X\) be an at most countable set, and let \(f : X \to \mathbf{R}\) and \(g 
     \begin{enumerate}[label=(\Roman*)]
         \item If \(\sum_{0 \leq i < j} a_{n_i} < L\), then we set
               \[
-                  n_j \coloneqq \min\{n \in A_+ : n \neq n_i \ \forall\ i < j\}.
+                  n_j \coloneqq \min\{n \in A_+ : n \neq n_i \text{ for all } i < j\}.
               \]
         \item If instead \(\sum_{0 \leq i < j} a_{n_i} \geq L\), then we set
               \[
-                  n_j \coloneqq \min\{n \in A_- : n \neq n_i \ \forall\ i < j\}.
+                  n_j \coloneqq \min\{n \in A_- : n \neq n_i \text{ for all } i < j\}.
               \]
     \end{enumerate}
-    Note that this recursive definition is well-defined because \(A_+\) and \(A_-\) are infinite, and so the sets \(\{n \in A_+ : n \neq n_i \ \forall\ i < j\}\) and \(\{n \in A_- : n \neq n_i \ \forall\ i < j\}\) are never empty.
+    Note that this recursive definition is well-defined because \(A_+\) and \(A_-\) are infinite, and so the sets \(\{n \in A_+ : n \neq n_i \text{ for all } i < j\}\) and \(\{n \in A_- : n \neq n_i \text{ for all } i < j\}\) are never empty.
     (Intuitively, we add a non-negative number to the series whenever the partial sum is too low, and add a negative number when the sum is too high.)
     One can then verify the following claims:
-    \begin{enumerate}
+    \begin{itemize}
         \item The map \(j \mapsto n_j\) is injective.
               This is true since
               \begin{align*}
-                           & \forall\ i, j \in \mathbf{N} : i \neq j \\
-                  \implies & i < j \lor i > j                        \\
-                  \implies & n_i \neq n_j.
+                           & \forall\ j_1, j_2 \in \mathbf{N}, j_1 \neq j_2 \\
+                  \implies & j_1 < j_2 \lor j_1 > j_2                       \\
+                  \implies & n_{j_1} \neq n_{j_2}.
               \end{align*}
         \item Case I occurs an infinite number of times, and Case II also occurs an infinite number of times.
               We prove this by contradiction.
-              Suppose that case I occurs only finite number of times.
+              Suppose for sake of contradiction that case I occurs only finite number of times.
               Then we have
               \[
-                  \sum_{0 \leq i < j} a_{n_i} < L \land \sum_{0 \leq i < j} a_{n_i} + a_{n_j} + \sum_{i > j} a_{n_i} \geq L
+                  \Bigg(\sum_{0 \leq i < j} a_{n_i} < L\Bigg) \land \Bigg(\sum_{0 \leq i < j} a_{n_i} + a_{n_j} + \sum_{i > j} a_{n_i} \geq L\Bigg)
               \]
               where \(j\) is the last time case I occurs.
               Since \(\sum_{0 \leq i < j} a_{n_i} + a_{n_j}\) is finite, \(\sum_{i > j} a_{n_i}\) have a lower bound.
               Since all \(i > j\) are cases II, \(\sum_{i > j} a_{n_i}\) is decreasing.
               Since \(\sum_{i > j} a_{n_i}\) is decreasing and has lower bound, by Additional Corollary \ref{ac 6.3.1} \(\sum_{i > j} a_{n_i}\) is convergent.
-              But this means \(\sum_{n \in A_-} a_n\) is absolutely convergent (which proof can be found above), a contradiction.
+              But this means \(\sum_{n \in A_-} a_n\) is absolutely convergent, a contradiction.
               Thus case I occurs infinite number of times.
               Similar proof show that case II also occurs infinite number of times.
         \item The map \(j \mapsto n_j\) is surjective.
-              \(\forall\ n \in \mathbf{N}\), either \(n \in A_+\) or \(n \in A_-\).
-              If \(n \in A_+\) and there is no \(j \mapsto n\), then \(\forall\ n' > n\) there must also have no \(j \mapsto n'\), otherwise by definition we must have \(n = \min\{n \in A_+ : n \neq n_i \ \forall\ i < j\}\).
-              But if \(\forall\ n' > n\) there is no \(j \to n'\), then case I only occur finite number of times, a contradiction.
+              We know that \(\forall\ n \in \mathbf{N}\), either \(n \in A_+\) or \(n \in A_-\).
+              If \(n \in A_+\) and there is no \(j \mapsto n\), then \(\forall\ n' > n\) there must also have no \(j \mapsto n'\), otherwise by definition we must have \(n = \min\{n \in A_+ : n \neq n_i \text{ for all } i < j\}\).
+              But then case I only occur finite number of times, a contradiction.
               Thus \(\exists\ j \mapsto n\).
               Similar argument show that if \(n \in A_-\) then \(\exists\ j \mapsto n\).
               Thus \(j \mapsto n_j\) is surjective.
         \item We have \(\lim_{j \to \infty} a_{n_j} = 0\).
               By Corollary \ref{7.2.6} we have \(\lim_{j \to \infty} a_j = 0\).
-              Since \(j \to n_j\) is bijective, we have \(\lim_{j \to \infty} a_{n_j} = 0\).
+              This means
+              \[
+                  \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{N} : \forall\ j \geq N, \abs*{a_j - 0} \leq \varepsilon.
+              \]
+              Thus the set \(E = \{j \in \mathbf{N} : a_j - 0 > \varepsilon\}\) is finite.
+              Since \(j \to n_j\) is bijective, we know that the set \(E' = \{n_j \in \mathbf{N} : j \in E\}\) is also finite.
+              Let \(M = \max(E')\).
+              Then we have
+              \[
+                  \forall\ n_j \geq M, \abs*{a_{n_j} - 0} \leq \varepsilon.
+              \]
+              Thus \(\lim_{j \to \infty} a_{n_j} = 0\).
         \item We have \(\lim_{j \to \infty} \sum_{0 \leq i \leq j} a_{n_i} = L\).
-              Since \(\lim_{j \to \infty} a_{n_j} = 0\), \(\forall\ \varepsilon \in \mathbf{R} \land \varepsilon > 0\), \(\exists\ j \geq 0\) such that
+              Since \(\lim_{j \to \infty} a_{n_j} = 0\), we have
               \[
-                  \abs*{a_{n_{j'}} - 0} \leq \varepsilon
+                  \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{N} : \forall\ j \geq N, \abs*{a_{n_j} - 0} \leq \varepsilon.
               \]
-              for all \(j' \geq j\).
-              Now we split into two cases:
-              \begin{enumerate}[label=(\Roman*)]
-                  \item If \(\sum_{0 \leq i \leq j'} a_{n_i} < L\), then \(\exists\ k \geq j'\) such that
-                        \[
-                            \sum_{0 \leq i \leq k} a_{n_i} < L \land \sum_{0 \leq i \leq k + 1} a_{n_i} \geq L.
-                        \]
-                        This is true by the claim (b) above.
-                        Thus
-                        \begin{align*}
-                                     & \sum_{0 \leq i \leq k + 1} a_{n_i} \geq L                                                                       \\
-                            \implies & \sum_{0 \leq i \leq k} a_{n_i} + a_{n_{k + 1}} \geq L                                                           \\
-                            \implies & \sum_{0 \leq i \leq k} a_{n_i} \geq L - a_{n_{k + 1}}                                                           \\
-                            \implies & \sum_{0 \leq i \leq k} a_{n_i} \geq L - \varepsilon                   & (\abs*{a_{n_{k + 1}}} \leq \varepsilon) \\
-                            \implies & L > \sum_{0 \leq i \leq k} a_{n_i} \geq L - \varepsilon                                                         \\
-                            \implies & L + \varepsilon > \sum_{0 \leq i \leq k} a_{n_i} \geq L - \varepsilon                                           \\
-                            \implies & \abs*{\sum_{0 \leq i \leq k} a_{n_i} - L} < \varepsilon.
-                        \end{align*}
-                  \item If \(\sum_{0 \leq i \leq j'} a_{n_i} \geq L\), then \(\exists\ k \geq j'\) such that
-                        \[
-                            \sum_{0 \leq i \leq k} a_{n_i} \geq L \land \sum_{0 \leq i \leq k + 1} a_{n_i} < L.
-                        \]
-                        This is true by the claim (b) above.
-                        Thus
-                        \begin{align*}
-                                     & \sum_{0 \leq i \leq k + 1} a_{n_i} < L                                                                          \\
-                            \implies & \sum_{0 \leq i \leq k} a_{n_i} + a_{n_{k + 1}} < L                                                              \\
-                            \implies & \sum_{0 \leq i \leq k} a_{n_i} < L - a_{n_{k + 1}}                                                              \\
-                            \implies & \sum_{0 \leq i \leq k} a_{n_i} < L + \varepsilon                      & (\abs*{a_{n_{k + 1}}} \leq \varepsilon) \\
-                            \implies & L \leq \sum_{0 \leq i \leq k} a_{n_i} < L + \varepsilon                                                         \\
-                            \implies & L - \varepsilon \leq \sum_{0 \leq i \leq k} a_{n_i} < L + \varepsilon                                           \\
-                            \implies & \abs*{\sum_{0 \leq i \leq k} a_{n_i} - L} < \varepsilon.
-                        \end{align*}
-              \end{enumerate}
-              From all cases above we have show that \(\forall\ \varepsilon > 0\), \(\exists\ j \geq 0\) such that
+              Let \(K\) be the set
               \[
-                  \abs*{\sum_{0 \leq i \leq k} a_{n_i} - L} < \varepsilon.
+                  K = \Bigg\{k \in \mathbf{N} : (k \geq j) \land \Bigg(\sum_{i = 0}^k a_{n_i} < L\Bigg) \land \Bigg(\sum_{i = 0}^{k + 1} a_{n_i} \geq L\Bigg)\Bigg\}.
               \]
-              for all \(k \geq j\).
-              Thus \(\lim_{j \to \infty} \sum_{0 \leq i \leq j} a_{n_i} = L\).
-    \end{enumerate}
+              We know that \(K \neq \emptyset\) since case II occurs infinite number of times.
+              Let \(k = \min(K)\).
+              Such \(k\) is well-defined by well ordering principle (Proposition \ref{8.1.4}).
+              Now we show that for every \(p \in \mathbf{N}\), we have
+              \[
+                  L - \varepsilon \leq \sum_{i = 0}^{k + p} a_{n_i} \leq L + \varepsilon.
+              \]
+              We use induction on \(p\).
+              For \(p = 0\), we have
+              \begin{align*}
+                           & \sum_{i = 0}^{k + p} a_{n_i} = \sum_{i = 0}^k a_{n_i}                                                           \\
+                  \implies & \sum_{i = 0}^{k + 1} a_{n_i} \geq L                                   & \text{(by the definition of \(k\))}     \\
+                  \implies & \sum_{i = 0}^k a_{n_i} + a_{n_{k + 1}} \geq L                                                                   \\
+                  \implies & \sum_{i = 0}^k a_{n_i} \geq L - a_{n_{k + 1}} \geq L - \varepsilon    & (\abs*{a_{n_{k + 1}}} \leq \varepsilon) \\
+                  \implies & L + \varepsilon \geq L > \sum_{i = 0}^k a_{n_i} \geq L - \varepsilon. & \text{(by the definition of \(k\))}
+              \end{align*}
+              Thus the base case holds.
+              Suppose inductively that for some \(p \geq 0\) the statement is true.
+              Then we need to show that for \(p + 1\) the statement is also true.
+              We split into two cases:
+              \begin{itemize}
+                  \item If \(a_{n_{p + 1}} \geq 0\), then this means case I happened.
+                        Thus we have
+                        \begin{align*}
+                                     & (0 \leq a_{n_{p + 1}} \leq \varepsilon) \land \Bigg(\sum_{i = 0}^{k + p} a_{n_i} < L\Bigg)                      & \text{(case I)}                  \\
+                            \implies & (0 \leq a_{n_{p + 1}} \leq \varepsilon) \land \Bigg(L - \varepsilon \leq \sum_{i = 0}^{k + p} a_{n_i} < L\Bigg) & \text{(by induction hypothesis)} \\
+                            \implies & L - \varepsilon \leq \sum_{i = 0}^{k + p} a_{n_i} + a_{n_{p + 1}} \leq L + \varepsilon                                                             \\
+                            \implies & L - \varepsilon \leq \sum_{i = 0}^{k + p + 1} a_{n_i} \leq L + \varepsilon.
+                        \end{align*}
+                  \item If \(a_{n_{p + 1}} < 0\), then this means case II happened.
+                        Thus we have
+                        \begin{align*}
+                                     & (-\varepsilon \leq a_{n_{p + 1}} < 0) \land \Bigg(L \leq \sum_{i = 0}^{k + p} a_{n_i}\Bigg) & \text{(case II)}                 \\
+                            \implies & (-\varepsilon \leq a_{n_{p + 1}} < 0)                                                                                          \\
+                                     & \land \Bigg(L \leq \sum_{i = 0}^{k + p} a_{n_i} \leq L + \varepsilon\Bigg)                  & \text{(by induction hypothesis)} \\
+                            \implies & L - \varepsilon \leq \sum_{i = 0}^{k + p} a_{n_i} + a_{n_{p + 1}} \leq L + \varepsilon                                         \\
+                            \implies & L - \varepsilon \leq \sum_{i = 0}^{k + p + 1} a_{n_i} \leq L + \varepsilon.
+                        \end{align*}
+              \end{itemize}
+              From all cases above we conclude that \(L - \varepsilon \leq \sum_{i = 0}^{k + p + 1} a_{n_i} \leq L + \varepsilon\).
+              This close the induction.
+              This means \(\forall\ p \geq 0\), we have
+              \[
+                  L - \varepsilon \leq \sum_{i = 0}^{k + p} \leq L + \varepsilon \iff \abs*{\sum_{i = 0}^{k + p} - L} \leq \varepsilon.
+              \]
+              Rewritting with \(q = k + p\), we have
+              \[
+                  \forall\ \varepsilon \in \mathbf{R}^+, \exists\ k \geq 0 : \forall\ q \geq k, \abs*{\sum_{i = 0}^q - L} \leq \varepsilon.
+              \]
+              Thus \(\lim_{q \to \infty} \sum_{i = 0}^q a_{n_i} = L\).
+    \end{itemize}
     The claim then follows by setting \(f(i) \coloneqq n_i\) for all \(i\).
 \end{proof}
 
