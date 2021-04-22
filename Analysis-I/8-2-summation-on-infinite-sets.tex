@@ -890,7 +890,7 @@ Let \(X\) be an at most countable set, and let \(f : X \to \mathbf{R}\) and \(g 
               \]
               Thus \(\lim_{q \to \infty} \sum_{i = 0}^q a_{n_i} = L\).
     \end{itemize}
-    The claim then follows by setting \(f(i) \coloneqq n_i\) for all \(i\).
+    The claim then follows by setting \(f(i) \coloneqq n_i\) for all \(i \in \mathbf{N}\).
 \end{proof}
 
 \exercisesection
@@ -939,30 +939,101 @@ Let \(X\) be an at most countable set, and let \(f : X \to \mathbf{R}\) and \(g 
     Let \(\sum_{n = 0}^\infty a_n\) be a series which is conditionally convergent, but not absolutely convergent.
     Show that there exists a bijection \(f : \mathbf{N} \to \mathbf{N}\) such that \(\sum_{m = 0}^\infty a_{f(m)}\) diverges to \(+\infty\), or more precisely that
     \[
-        \liminf_{N \to \infty} \sum_{m = N}^\infty a_{f(m)} = \limsup_{N \to \infty} \sum_{m = N}^\infty a_{f(m)} = +\infty.
+        \liminf_{N \to \infty} \sum_{m = 0}^N a_{f(m)} = \limsup_{N \to \infty} \sum_{m = 0}^N a_{f(m)} = +\infty.
     \]
     (Of course, a similar statement holds with \(+\infty\) replaced by \(-\infty\).)
 \end{exercise}
 
 \begin{proof}
     Let \(A_+\) and \(A_-\) defined as Lemma \ref{8.2.7}.
-    In Theorem \ref{8.2.8} we know that both \(A_+\) and \(A_-\) are countable.
-    By Definition \ref{8.1.1} \(\exists\ f_+ : \mathbf{N} \to A_+\) such that \(f_+\) is bijective.
-    We know that \(\sum_{n \in A_+} a_n = \sum_{m = 0}^\infty a_{f_+(m)}\) diverges.
-    Otherwise
-    \[
-        \sum_{m = 0}^\infty \abs*{f_+(m)} = \sum_{m = 0}^\infty f_+(m),
-    \]
-    which means \(\sum_{m = 0}^\infty f_+(m)\) is absolutely convergent and contradicts to Lemma \ref{8.2.7}.
-    Similarly, \(\exists\ f_- : \mathbf{N} \to A_-\) such that \(f_-\) is bijective.
-    We know that \(\sum_{n \in A_-} a_n = \sum_{m = 0}^\infty a_{f_-(m)}\) diverges.
-    Otherwise
-    \[
-        \sum_{m = 0}^\infty \abs*{f_-(m)} = \sum_{m = 0}^\infty -f_-(m) = -\sum_{m = 0}^\infty f_-(m),
-    \]
-    which means \(\sum_{m = 0}^\infty f_-(m)\) is absolutely convergent and contradicts to Lemma \ref{8.2.7}.
-    Thus we have found bijections \(f_+\) and \(f_-\) where
-    \[
-        \sum_{m = 0}^\infty a_{f_+(m)} = \infty \land \sum_{m = 0}^\infty a_{f_-(m)} = -\infty.
-    \]
+    In Theorem \ref{8.2.8} we know that both \(A_+\) and \(A_-\) are countable, and there exist two increasing bijections \(f_+ : \mathbf{N} \to A_+\) and \(f_- : \mathbf{N} \to A_-\).
+    We know that both \(\sum_{m = 0}^\infty a_{f_+(m)}\) and \(\sum_{m = 0}^\infty a_{f_-(m)}\) fail to be absolutely convergent.
+
+    We first show that there exists a bijection \(f : \mathbf{N} \to \mathbf{N}\) such that \(\sum_{m = 0}^\infty a_{f(m)}\) diverges to \(+\infty\).
+    Let \(L_0 = 0\).
+    Suppose that \(j \in \mathbf{N}\), and \(n_i\) has been defined for all \(i < j\)
+    (this is vacuously true if \(j = 0\)).
+    We define \(n_j\) by the following rule:
+    \begin{enumerate}[label=(\Roman*)]
+        \item If \(\sum_{0 \leq i < j} a_{n_i} < L_j\), then we set
+              \begin{align*}
+                  n_j       & = \min\{n \in A_+ : n \neq n_i \text{ for all } i < j\}; \\
+                  L_{j + 1} & = L_j.
+              \end{align*}
+        \item If \(\sum_{0 \leq i < j} a_{n_i} \geq L_j\), then we set
+              \begin{align*}
+                  n_j       & = \min\{n \in A_- : n \neq n_i \text{ for all } i < j\}; \\
+                  L_{j + 1} & = L_j + 1.
+              \end{align*}
+    \end{enumerate}
+    Now we verify the following claims:
+    \begin{itemize}
+        \item The map \(j \mapsto n_j\) is injective.
+              Suppose that \(i, j \in \mathbf{N}\) and \(i \neq j\).
+              Then by the definition of \(n_i, n_j\) we know that \(n_i \neq n_j\).
+              Thus \(j \mapsto n_j\) is injective.
+        \item Both Case I and II occur infinite number of times.
+              Obviously, at least one case must occur infinite number of times.
+              Suppose for sake of contradiction that Case I only occurs finite number of times.
+              Let \(j\) be the largest number such that Case I occurs, i.e.,
+              \[
+                  \Bigg(\sum_{0 \leq i < j} a_{n_i} < L_j\Bigg) \land \Bigg(\sum_{0 \leq i \leq j} a_{n_i} \geq L_j\Bigg).
+              \]
+              Then \(\forall\ k \in \mathbf{N}\) and \(k > j\), Case II occurs, i.e.,
+              \[
+                  S_k = \sum_{i = 0}^k a_{n_i} \geq L_k.
+              \]
+              Since Case II occurs, we know that \(S_k\) is decreasing and \(L_k\) is increasing.
+              Thus
+              \begin{align*}
+                           & S_k > S_{k + 1} \geq L_{k + 1} > L_k \geq 0                                                           \\
+                  \implies & (\lim_{k \to \infty} S_k \text{ converges})         & \text{(by Additional Corollary \ref{ac 6.3.1})} \\
+                           & \land (S_k - L_k \geq S_{k + 1} - L_{k + 1} \geq 0)                                                   \\
+                  \implies & \lim_{k \to \infty} S_k - L_k \text{ converges}     & \text{(by Additional Corollary \ref{ac 6.3.1})} \\
+                  \implies & \lim_{k \to \infty} L_k \text{ converges}.          & \text{(by Theorem \ref{6.1.19}(a))}
+              \end{align*}
+              But since Case II occurs infinite number of times, we know that \(\lim_{k \to \infty} L_k\) diverges to \(\infty\), a contradiction.
+              Thus case I must occurs infinite number of times.
+
+              Now Suppose for sake of contradiction that Case II only occurs finite number of times.
+              Let \(j\) be the largest number such that Case II occurs, i.e.,
+              \[
+                  \Bigg(\sum_{0 \leq i < j} a_{n_i} \geq L_j\Bigg) \land \Bigg(\sum_{0 \leq i \leq j} a_{n_i} < L_j\Bigg).
+              \]
+              Then \(\forall\ k \in \mathbf{N}\) and \(k > j\), Case I occurs, i.e.,
+              \[
+                  S_k = \sum_{i = 0}^k a_{n_i} < L_k.
+              \]
+              Since Case I occurs, we know that \(S_k\) is increasing.
+              Thus
+              \begin{align*}
+                           & S_k < S_{k + 1} < L_{k + 1} = L_k                                                                 \\
+                  \implies & \lim_{k \to \infty} S_k \text{ converges}                & \text{(by Proposition \ref{6.3.8})}    \\
+                  \implies & \sum_{k = j + 1}^\infty a_{n_k} \text{ converges}        & \text{(by Definition \ref{7.2.2})}     \\
+                  \implies & \sum_{k = j + 1}^\infty \abs*{a_{n_k}} \text{ converges} & (\forall\ k > j, a_{n_k} \geq 0)       \\
+                  \implies & \sum_{k \in A_+} \abs*{a_k} \text{ converges}            & \text{(by Proposition \ref{8.2.6}(c))}
+              \end{align*}
+              But we know that \(\sum_{k \in A_+} \abs*{a_k}\) is not absolutely convergent, a contradiction.
+              Thus case II must occurs infinite number of times.
+              We conclude that both Case I and II occur infinite number of times.
+        \item The map \(j \mapsto n_j\) is surjective.
+              We know that \(\forall\ n \in \mathbf{N}\), either \(n \in A_+\) or \(n \in A_-\).
+              If \(n \in A_+\) and there is no \(j \mapsto n\), then \(\forall\ n' > n\) there must also have no \(j \mapsto n'\), otherwise by definition we must have \(n = \min\{n \in A_+ : n \neq n_i \text{ for all } i < j\}\).
+              But then case I only occur finite number of times, a contradiction.
+              Thus \(\exists\ j \mapsto n\).
+              Similar argument show that if \(n \in A_-\) then \(\exists\ j \mapsto n\).
+              Thus \(j \mapsto n_j\) is surjective.
+        \item We have \(\limsup_{j \to \infty} \sum_{i = 0}^j a_{n_j}\) diverges to \(\infty\).
+              Since Case II occurs infinite number of times, we know that for every \(M \in \mathbf{R}^+\), \(\exists\ j \geq 0\) such that \(M \leq L_i\).
+              This means
+              \[
+                  \exists\ k \in \mathbf{N} \land k > j : M \leq L_i \leq \sum_{i = 0}^k a_{n_i}.
+              \]
+              Since this is true for every \(M \in \mathbf{R}^+\), by Exercise \ref{ex 6.4.8} we thus have
+              \[
+                  \limsup_{j \to \infty} \sum_{i = 0}^j a_{n_j} = \infty.
+              \]
+    \end{itemize}
+    The claim then follows by setting \(f(i) \coloneqq n_i\) for all \(i \in \mathbf{N}\).
+    Similar proof can be used to show the case \(-\infty\).
 \end{proof}
