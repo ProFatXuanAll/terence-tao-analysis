@@ -104,7 +104,7 @@
     For \(n = 0\), \(X = \emptyset\) and \(2^{\emptyset} = \{\emptyset\}\).
     Clearly \(\#(2^{\emptyset}) = 1\).
     So the base case holds.
-    Suppose inductively that \(\#(2^X) = 2^n\) for some \(n\).
+    Suppose inductively that \(\#(2^X) = 2^n\) for some \(n \geq 0\).
     We need to show that for \(n + 1\), \(\#(2^X) = 2^{n + 1}\).
     Since \(\#(X) = n + 1\), we have \(X \neq \emptyset\).
     Let \(x \in X\).
@@ -130,34 +130,34 @@
 \end{exercise}
 
 \begin{proof}
-    We first show that \(\forall\ n, m \in \mathbf{N} : D_n \cap D_m = \emptyset\).
-    Let \(P(n)\) be the statement ``\(\forall\ k \in \mathbf{N} \land k > 0 : D_n \cap D_{n + k} = \emptyset\)''.
+    We first show that \(\forall\ n, m \in \mathbf{N}\), \(n \neq m \implies D_n \cap D_m = \emptyset\).
+    Let \(P(n)\) be the statement ``\(\forall\ k \in \mathbf{Z}^+ : D_n \cap D_{n + k} = \emptyset\)''.
     We use induction on \(n\) to show that \(P(n)\) is true.
     For \(n = 0\), we have \(D_0 = B \setminus A\) and \(D_k = f(D_{k - 1}) \subseteq A\).
     Thus we have \(D_0 \cap D_k = \emptyset\) and the base case holds.
-    Suppose inductively that \(P(n)\) is true for some \(n\).
+    Suppose inductively that \(P(n)\) is true for some \(n \geq 0\).
     Then for \(n + 1\), we need to show that \(P(n + 1)\) is also true.
     Suppose for sake of contradiction that \(D_{n + 1} \cap D_{n + k + 1} \neq \emptyset\).
     Then we have
     \begin{align*}
-                 & \exists\ x \in D_{n + 1} \cap D_{n + k + 1}                                              \\
-        \implies & x \in f(D_n) \cap f(D_{n + k})                                                           \\
-        \implies & \exists\ (z \in D_n \land z' \in D_{n + k}) : f(z) = f(z')                               \\
-        \implies & z = z'.                                                    & \text{(\(f\) is injective)}
+                 & \exists\ x : (x \in D_{n + 1} \cap D_{n + k + 1})                                                            \\
+        \implies & \exists\ x : \big(x \in f(D_n) \cap f(D_{n + k})\big)                                                        \\
+        \implies & \exists\ z, z' : \big(z \in D_n \land z' \in D_{n + k} \land f(z) = f(z')\big)                               \\
+        \implies & z = z'.                                                                        & \text{(\(f\) is injective)}
     \end{align*}
     But by induction hypothesis we know that \(D_n \cap D_{n + k} = \emptyset\), a contradiction.
     Thus \(D_{n + 1} \cap D_{n + k + 1} = \emptyset\).
     This close the induction.
 
-    Now we use \(P(n)\) to show that \(\forall\ n, m \in \mathbf{N} : D_n \cap D_m = \emptyset\).
-    Since \(m \neq n \implies m < n \lor m > n\), we can let
+    Now we use \(P(n)\) to show that \(\forall\ n, m \in \mathbf{N}\), \(n \neq m \implies D_n \cap D_m = \emptyset\).
+    Since \(m \neq n\), we have
     \[
         \begin{cases}
             n = m + k & \text{if } m < n, \\
             m = n + k & \text{if } n < m,
         \end{cases}
     \]
-    where \(k > 0\).
+    where \(k \in \mathbf{Z}^+\).
     Using \(P(n)\) we can thus have \(D_n \cap D_m = \emptyset\).
 
     Finally we show that if \(g : A \to B\) is a function where
@@ -175,26 +175,29 @@
     We now show that \(g\) is bijective.
     We start by showing that \(g\) is injective.
     Let \(x, x' \in A\) such that \(g(x) = g(x')\).
-    We now split into four cases:
-    \begin{enumerate}
+    We split into four cases:
+    \begin{itemize}
         \item If \(x, x' \in \bigcup_{n = 1}^\infty D_n\), then since \(f\) is bijective from \(\bigcup_{n = 0}^\infty D_n\) to \(\bigcup_{n = 1}^\infty D_n\), we have \(f^{-1}(x) = f^{-1}(x') \implies x = x'\).
         \item If \(x, x' \in A \setminus \bigcup_{n = 1}^\infty D_n\), then we have \(g(x) = x = x' = g(x')\).
-        \item If \(x \in \bigcup_{n = 1}^\infty D_n\) and \(x' \in A \setminus \bigcup_{n = 1}^\infty D_n\), then we show that this case is impossible.
+        \item One of \(x, x'\) is in \(A \setminus \bigcup_{n = 1}^\infty D_n\) and the other is in \(\bigcup_{n = 1}^\infty D_n\).
+              Without the loss of generality suppose that \(x \in \bigcup_{n = 1}^\infty D_n\) and \(x' \in A \setminus \bigcup_{n = 1}^\infty D_n\).
+              Then we show that this case is impossible.
               Since \(x \in \bigcup_{n = 1}^\infty D_n\), we have
               \[
                   f^{-1}(x) \in \bigcup_{n = 0}^\infty D_n = D_0 \cup (\bigcup_{n = 1}^\infty D_n) = (B \setminus A) \cup (\bigcup_{n = 1}^\infty D_n).
               \]
-              but \(g(x) = f^{-1}(x) = x' = g(x')\) implies \(x' \in (B \setminus A) \cup (\bigcup_{n = 1}^\infty D_n)\), a contradiction.
+              But \(g(x) = f^{-1}(x) = x' = g(x')\) implies \(x' \in (B \setminus A) \cup (\bigcup_{n = 1}^\infty D_n)\), a contradiction.
               Thus this case is impossible.
-        \item If \(x' \in \bigcup_{n = 1}^\infty D_n\) and \(x \in A \setminus \bigcup_{n = 1}^\infty D_n\), then from claim (c) above we know this case is impossible.
-    \end{enumerate}
-    From all possible cases above we have \(x = x'\), thus \(g\) is injective.
+    \end{itemize}
+    From all possible cases above we conclude that \(x = x'\).
+    Thus \(g\) is injective.
 
     Next we show that \(g\) is surjective.
     Let \(y \in B\).
-    We now split into two cases:
-    \begin{enumerate}
-        \item If \(y \in \bigcup_{n = 0}^\infty D_n\), then since \(f\) is bijective from \(\bigcup_{n = 0}^\infty D_n\) to \(\bigcup_{n = 1}^\infty D_n\), \(\exists\ x \in \bigcup_{n = 1}^\infty D_n\) such that \(f^{-1}(x) = y\).
+    We split into two cases:
+    \begin{itemize}
+        \item If \(y \in \bigcup_{n = 0}^\infty D_n\), then \(\exists\ x \in \bigcup_{n = 1}^\infty D_n\) such that \(f^{-1}(x) = y\).
+              This is true since \(f\) is bijective from \(\bigcup_{n = 0}^\infty D_n\) to \(\bigcup_{n = 1}^\infty D_n\).
         \item If \(y \in B \setminus (\bigcup_{n = 0}^\infty D_n)\), then we know that \(y \in A\) since
               \begin{align*}
                   B \setminus \bigcup_{n = 0}^\infty D_n & = B \setminus \bigg((B \setminus A) \cup (\bigcup_{n = 1}^\infty D_n)\bigg)                                                                \\
@@ -203,7 +206,7 @@
                                                          & \subseteq A.
               \end{align*}
               Since \(y \notin \bigcup_{n = 0}^\infty D_n\), we have \(g(y) = y\).
-    \end{enumerate}
+    \end{itemize}
     From all cases above we can find a \(x \in A\) such that \(g(x) = y\).
     Thus \(g\) is surjective.
     Since \(g\) is both injective and surjective, we know that \(g\) is bijective.
