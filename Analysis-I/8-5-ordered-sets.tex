@@ -66,20 +66,28 @@
     (i.e., for each \(n \in X\), \(P(n)\) is either a true statement or a false statement).
     Suppose that for every \(n \in X\), we have the following implication:
     if \(P(m)\) is true for all \(m \in X\) with \(m <_X n\), then \(P(n)\) is also true.
-    Prove that \(P(n)\) is true for all \(n \in X\).
+    Then \(P(n)\) is true for all \(n \in X\).
 \end{proposition}
 
 \begin{proof}
-    Let \(Y\) be the following set
+    Since \(X\) is well-ordered, by Definition \ref{8.5.8} we know that \(X \neq \emptyset\) and \(\min(X)\) exists.
+    By Definition \ref{8.5.5} we know that the statement ``\(\forall\ m \in X\), \(m <_X \min(X) \implies P(m)\) is true'' is vacuously true since there is no \(m <_X n\).
+    Thus by hypothesis we know that \(P\big(\min(X)\big)\) is vacuously true.
+
+    Now let \(Y\) be the set
     \[
-        Y = \{n \in X : P(m) \text{ is false for some } m \in X \text{ with } m \leq_X n\}.
+        Y = \{m \in X : P(m) \text{ is false}\}.
     \]
-    If \(Y = \emptyset\), then we know that \(P(n)\) is true \(\forall\ n \in X\).
-    So suppose for sake of contradiction that \(Y \neq \emptyset\).
+    Suppose for sake of contradiction that \(Y \neq \emptyset\).
     Since \(X\) is well-ordered and \(Y \subseteq X\), by Definition \ref{8.5.8} we know that \(\min(Y)\) exists.
-    This means \(\forall\ m \in X \land m <_X \min(Y) \implies P(m)\) is true.
-    But by hypothesis we know that ``\(\forall\ m \in X \land m <_X \min(Y)\), \(P(m)\) is true'' implies \(P(\min(Y))\) is true, a contradiction.
-    Thus \(Y = \emptyset\).
+    From previous claim we know that \(\min(Y) \neq \min(X)\), thus the set
+    \[
+        Y' = \{m \in X : m <_X \min(Y)\}
+    \]
+    is not empty.
+    Also by Definition \ref{8.5.5} we know that \(\forall\ m \in Y'\), \(P(m)\) is true, otherwise contradict to the definition of \(\min(Y)\).
+    But this means \(\forall\ m \in X\), \(m <_X \min(Y) \implies P\big(\min(Y)\big)\) is false, which contradict to the hypothesis.
+    Thus we must have \(P(n)\) is true for all \(n \in X\).
 \end{proof}
 
 \begin{remark}\label{8.5.11}
