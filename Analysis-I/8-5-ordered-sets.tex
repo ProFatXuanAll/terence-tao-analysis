@@ -127,10 +127,11 @@
     Suppose for sake of contradiction that every well-ordered subset \(Y\) of \(X\) which has \(x_0\) as its minimal element has at least one strict upper bound.
     Using the axiom of choice (in the form of Proposition \ref{8.4.7}), we can thus assign a strict upper bound \(s(Y) \in X\) to each well-ordered subset \(Y\) of \(X\) which has \(x_0\) as its minimal element.
 
+    Henceforth we fix a single such strict upper bound function \(s\).
     Let us define a special class of subsets \(Y\) of \(X\).
-    We say that a subset \(Y\) of \(X\) is good iff it is well-ordered, contains \(x_0\) as its minimal element, and obeys the property that
+    We say that a subset \(Y\) of \(X\) is \emph{good} iff it is well-ordered, contains \(x_0\) as its minimal element, and obeys the property that
     \[
-        x = s(\{y \in Y : y < x\}) \ \forall\ x \in Y \setminus \{x_0\}.
+        x = s(\{y \in Y : y < x\}) \text{ for all } x \in Y \setminus \{x_0\}.
     \]
     Note that if \(x \in Y \setminus \{x_0\}\) then the set \(\{y \in Y : y < x\}\) is a subset of \(X\) which is well-ordered and contains \(x_0\) as its minimal element.
     Let \(\Omega \coloneqq \{Y \subseteq X : Y \text{ is good}\}\) be the collection of all good subsets of \(X\).
@@ -164,12 +165,26 @@
     since \(Y\) is well-ordered, the set \(A \cap Y\) thus has a minimal element, call it \(b\).
     Now recall that for any other good set \(Y'\), every element of \(Y' \setminus Y\) is a strict upper bound for \(Y\), and in particular is larger than \(b\).
     Since \(b\) is a minimal element of \(A \cap Y\), this implies that \(b\) is also a minimal element of \(A \cap Y'\) for any good set \(Y'\) with \(A \cap Y' \neq \emptyset\).
+    This is true since
+    \begin{align*}
+                 & \forall\ y_1 \in Y, y_1 < \min(Y' \setminus Y)                                                    \\
+        \implies & y_1 \in Y \cap Y'                                                                                 \\
+        \implies & \forall\ y_2 \in A \cap Y, \big(y_2 < \min(Y' \setminus Y)\big) \land \big(y_2 \in Y \cap Y'\big) \\
+        \implies & y_2 \in A \cap Y'                                                                                 \\
+        \implies & b = \min(A \cap Y) = \min(A \cap Y').
+    \end{align*}
     Since every element of \(A\) belongs to \(Y_{\infty}\) and hence belongs to at least one good set \(Y'\), we thus see that \(b\) is a minimal element of \(A\).
     Thus \(Y_{\infty}\) is well-ordered as claimed.
 
     Since \(Y_{\infty}\) is well-ordered with \(x_0\) as its minimal element, it has a strict upper bound \(s(Y_{\infty})\).
     But then \(Y_{\infty} \cup \{s(Y_{\infty})\}\) is well-ordered (by Exercise \ref{ex 8.5.11}) and has \(x_0\) as its minimal element.
-    Thus this set is good, and must therefore be contained in \(Y_{\infty}\).
+    We now claim that \(Y_{\infty} \cup \{s(Y_{\infty})\}\) is good.
+    By the preceding discussion, it suffices to show that \(x = s\big(\big\{y \in Y_{\infty} \cup \{s(Y_{\infty})\} : y < x\big\}\big)\) when \(x \in \big(Y_{\infty} \cup \{s(Y_{\infty})\}\big) \setminus \{x_0\}\).
+    If \(x = s(Y_{\infty})\) this is clear since \(\big\{y \in Y_{\infty} \cup \{s(Y_{\infty})\} : y < x\big\} = Y_{\infty}\) in this case.
+    If instead \(x \in Y_{\infty}\), then \(x \in Y\) for some good \(Y\).
+    Then the set \(\big\{y \in Y_{\infty} \cup \{s(Y_{\infty})\}: y < x\big\}\) is equal to \(\{y \in Y : y < x\}\)
+    (why? use the previous observation that every element of \(Y' \setminus Y\) is an upper bound for \(x\) for every good \(Y'\)), and the claim then follows since \(Y\) is good.
+    By definition of \(Y_{\infty}\), we conclude that the good set \(Y_{\infty} \cup \{s(Y_{\infty})\}\) is contained in \(Y_{\infty}\).
     But this is a contradiction since \(s(Y_{\infty})\) is a strict upper bound for \(Y_{\infty}\).
     Thus we have constructed a set with no strict upper bound, as desired.
 \end{proof}
@@ -661,77 +676,91 @@
 \end{exercise}
 
 \begin{proof}
-    Since \(x_0 \in Y \cap Y'\) we know \(Y \cap Y' \neq \emptyset\).
+    Since \(Y, Y'\) are good, we know that \(x_0 \in Y \cap Y'\) and thus \(Y \cap Y' \neq \emptyset\).
     Let \(n \in Y \cap Y'\) and let \(P(n)\) be the statement define as follow:
     \[
-        \{y \in Y : y \leq n\} = \{y \in Y' : y \leq n\}.
+        \{y \in Y : y \leq n\} = \{y \in Y' : y \leq n\} = \{y \in Y \cap Y' : y \leq n\}.
     \]
-    We know that
+    Let \(Q(n)\) be the statement ``if \(P(m)\) is true for every \(m \in Y \cap Y'\) and \(m < n\), then \(P(n)\) is true.''
+    Note that if we can show that \(Q(n)\) is true for every \(n \in Y \cap Y'\), then by principle of strong induction (Proposition \ref{8.5.10}) we know that \(P(n)\) is true for every \(n \in Y \cap Y'\).
+
+    Since \(\min(Y) = \min(Y') = x_0\), we know that \(\min(Y \cap Y') = x_0\) and
     \[
-        \{y \in Y : y \leq x_0\} = \{y \in Y' : y \leq x_0\} = \{x_0\},
+        \{y \in Y : y \leq x_0\} = \{y \in Y' : y \leq x_0\} = \{y \in Y \cap Y' : y \leq x_0\} = \{x_0\}.
     \]
-    so we can savely assume that \(\exists\ n \in X\) such that \(P(m)\) is true \(\forall\ m \in Y \cap Y' \land m < n\).
-    If we can show that \(P(n)\) is true, then by strong induction (Proposition \ref{8.5.10}) we know that \(P(n^*)\) is true \(\forall\ n^* \in Y \cap Y'\).
-    Since
-    \begin{align*}
-                 & \forall\ x \in \bigcup_{m \in Y \cap Y' : m < n} \{y \in Y : y \leq m\} \\
-        \implies & \exists\ m \in Y \cap Y' \land m < n : x \leq m                         \\
-        \implies & x \leq m < n                                                            \\
-        \implies & x \in \{y \in Y : y < n\},
-    \end{align*}
-    we have \(\bigcup_{m \in Y \cap Y' : m < n} \{y \in Y : y \leq m\} \subseteq \{y \in Y : y < n\}\).
-    Since
-    \begin{align*}
-                 & \forall\ x \in \{y \in Y : y < n\}                              \\
-        \implies & x \in \{y \in Y' : y < n\}                                      \\
-        \implies & x \in \{y \in Y \cap Y' : y < n\}                               \\
-        \implies & x \in \bigcup_{m \in Y \cap Y' : m < n} \{y \in Y : y \leq m\},
-    \end{align*}
-    we have \(\{y \in Y : y < n\} \subseteq \bigcup_{m \in Y \cap Y' : m < n} \{y \in Y : y \leq m\}\).
-    Thus by Proposition \ref{3.1.18} we have \(\bigcup_{m \in Y \cap Y' : m < n} \{y \in Y : y \leq m\} = \{y \in Y : y < n\}\).
-    By induction hypothesis we have
-    \begin{align*}
-                 & \forall\ m \in Y \cap Y' \land m < n                                                                                 \\
-        \implies & \{y \in Y : y \leq m\} = \{y \in Y' : y \leq m\}                                                                     \\
-        \implies & \bigcup_{m \in Y \cap Y' : m < n} \{y \in Y : y \leq m\} = \bigcup_{m \in Y \cap Y' : m < n} \{y \in Y' : y \leq m\} \\
-        \implies & \{y \in Y : y < n\} = \{y \in Y' : y < n\}                                                                           \\
-        \implies & \{y \in Y : y < n\} \cup \{n\} = \{y \in Y' : y < n\} \cup \{n\}                                                     \\
-        \implies & \{y \in Y : y \leq n\} = \{y \in Y' : y \leq n\}.
-    \end{align*}
-    Thus \(P(n)\) is true for all \(n \in Y \cap Y'\).
-    This means
+    Thus \(Q(x_0)\) is vacuously true (there is no element \(z \in Y \cap Y'\) which satisfy \(z < x_0\)).
+    Suppose inductively that \(Q(m)\) is true for some \(m \geq x_0\).
+    We need to show that \(Q(n)\) is also true for the next smallest item \(n \in Y \cap Y'\).
+    By smallest we mean that
     \[
-        \{y \in Y : y \leq n\} = \{y \in Y' : y \leq n\} = \{y \in Y \cap Y' : y \leq n\}
+        n = \min\big(\{n \in Y \cap Y' : Q(m) \text{ is true and } x_0 \leq m < n \text { for every } m \in Y \cap Y'\}\big).
     \]
-    and thus \(Y \cap Y'\) is good.
+    Such \(n\) is well-defined since in the proof of Lemma \ref{8.5.14} we suppose for sake of contradiction that every well-ordered subset \(Y\) of \(X\) which has \(x_0\) as its minimal element has at least one strict upper bound.
+    We know that the set \(\{y \in Y : y \leq n\}\) is not empty since it contains \(x_0\), so let \(x \in \{y \in Y : y \leq n\}\).
+    Now we split into two cases:
+    \begin{itemize}
+        \item If \(x = n\), then by the definition of \(n\) we know that \(x \in \{y \in Y \cap Y' : y \leq n\}\).
+        \item If \(x < n\), then by the definition of \(n\) we know that by induction hypothesis \(Q(x)\) is true.
+              Then we have
+              \begin{align*}
+                           & P(x) \text{ is true}                                    \\
+                  \implies & \{y \in Y : y \leq x\} = \{y \in Y \cap Y' : y \leq x\} \\
+                  \implies & x \in \{y \in Y \cap Y' : y \leq x < n\}.
+              \end{align*}
+    \end{itemize}
+    From all cases above we conclude that \(\{y \in Y : y \leq n\} \subseteq \{y \in Y \cap Y' : y \leq n\}\).
+    We also have \(\{y \in Y \cap Y' : y \leq n\} \subseteq \{y \in Y : y \leq n\}\) since
+    \begin{align*}
+                 & \forall\ x \in \{y \in Y \cap Y' : y \leq n\} \\
+        \implies & (x \in Y \cap Y') \land (x \leq n)            \\
+        \implies & (x \in Y) \land (x \leq n)                    \\
+        \implies & x \in \{y \in Y : y \leq n\}.
+    \end{align*}
+    Thus we have \(\{y \in Y : y \leq n\} = \{y \in Y \cap Y' : y \leq n\}\).
+    Using similar arguments as above we have \(\{y \in Y' : y \leq n\} = \{y \in Y \cap Y' : y \leq n\}\).
+    Thus we conclude that \(P(n)\) is also true, i.e.,
+    \[
+        \{y \in Y : y \leq n\} = \{y \in Y' : y \leq n\} = \{y \in Y \cap Y' : y \leq n\}.
+    \]
+    By induction hypothesis we know that \(Q(m)\) is true for every \(m \in Y \cap Y'\) and \(m < n\).
+    Thus we conclude that \(Q(n)\) is also true, this close the induction.
+
+    By principle of strong induction (Proposition \ref{8.5.10}) we know that \(P(n)\) is true for all \(n \in Y \cap Y'\).
+    Thus we have
+    \begin{align*}
+                 & \forall\ x \in (Y \cap Y') \setminus \{x_0\}, P(x) \text{ is true}                                               \\
+        \implies & \{y \in Y \cap Y' : y \leq x\} = \{y \in Y : y \leq x\}                                                          \\
+        \implies & \{y \in Y \cap Y' : y \leq x\} \setminus \{x\} = \{y \in Y : y \leq x\} \setminus \{x\}                          \\
+        \implies & \{y \in Y \cap Y' : y < x\} = \{y \in Y : y < x\}                                                                \\
+        \implies & s(\{y \in Y \cap Y' : y < x\}) = s(\{y \in Y : y < x\}) = x                             & \text{(\(Y\) is good)}
+    \end{align*}
+    and \(Y \cap Y'\) is good.
 
     Now we show that if \(Y \setminus Y' \neq \emptyset\), then \(s(Y \cap Y') = \min(Y \setminus Y')\).
     Since \(Y \cap Y'\) is good, \(s(Y \cap Y')\) is well-defined.
-    Since \(Y\) is well-ordered and \(Y \setminus Y' \subseteq Y\), \(\min(Y \setminus Y')\) is also well-defined.
-    Now suppose for sake of contradiction that \(s(Y \cap Y') \neq \min(Y \setminus Y')\).
-    Then \(\exists\ m \in (Y \cap Y' \setminus \{x_0\})\) such that
-    \[
-        m = s(\{y \in Y : y < m\}) \land \min(Y \setminus Y') < m.
-    \]
-    But this means \(P(\min(Y \setminus Y'))\) is true, i.e.,
-    \[
-        \{y \in Y : y \leq \min(Y \setminus Y')\} = \{y \in Y \cap Y' : y \leq \min(Y \setminus Y')\}.
-    \]
-    So we have \(\min(Y \setminus Y') \in Y \cap Y'\), a contradiction.
-    Thus \(s(Y \cap Y') = \min(Y \setminus Y')\).
-    Similar arguments show that \(s(Y \cap Y') = \min(Y' \setminus Y)\).
-    Since \((Y \setminus Y') \cap (Y' \setminus Y) = \emptyset\), we know that at least one of \(Y \setminus Y'\) or \(Y' \setminus Y\) is empty, otherwise we have \(\min(Y \setminus Y') = \min(Y' \setminus Y)\), a contradiction.
+    Since \(Y\) is well-ordered and \(Y \setminus Y' \subseteq Y\), \(Y \setminus Y'\) is also well-ordered and thus \(\min(Y \setminus Y')\) is well-defined.
+    We know that \(\forall\ y_1 \in Y\), \(y_1 < \min(Y \setminus Y') \implies y_1 \notin Y \setminus Y'\), otherwise \(y_1 = \min(Y \setminus Y')\), a contradiction.
+    Thus \(y_1 \in Y \cap Y'\) and \(\{y \in Y : y < \min(Y \setminus Y')\} \subseteq Y \cap Y\).
+    Similarly, we know that \(\forall\ y_2 \in Y \cap Y'\), \(y_2 \in Y\) and \(y_2 < \min(Y \setminus Y')\), so \(y_2 \in \{y \in Y : y < \min(Y \setminus Y')\}\) and \(Y \cap Y' \subseteq \{y \in Y : y < \min(Y \setminus Y')\}\).
+    We now conclude that \(\{y \in Y : y < \min(Y \setminus Y')\} = Y \cap Y'\) and
+    \begin{align*}
+                 & \min(Y \setminus Y') \in Y \setminus \{x_0\}                                                      \\
+        \implies & \min(Y \setminus Y') = s\big(\{y \in Y : y < \min(Y \setminus Y')\}\big) & \text{(\(Y\) is good)} \\
+        \implies & \min(Y \setminus Y') = s(Y \cap Y').
+    \end{align*}
+    Similar arguments show that if \(Y' \setminus Y \neq \emptyset\), then \(s(Y \cap Y') = \min(Y' \setminus Y)\).
 
     Finally we show that every element of \(Y' \setminus Y\) is an upper bound for \(Y\) and vice versa.
-    From proof above we know that at least one of \(Y \setminus Y'\) or \(Y' \setminus Y\) is empty.
-    \begin{enumerate}
+    Since \((Y \setminus Y') \cap (Y' \setminus Y) = \emptyset\), we know that at least one of \(Y \setminus Y'\) or \(Y' \setminus Y\) is empty.
+    Otherwise we have \(s(Y \cap Y') = \min(Y \setminus Y') = \min(Y' \setminus Y)\), which means \(\big(s(Y \cap Y') \in Y \setminus Y'\big) \land \big(s(Y \cap Y') \in Y' \setminus Y\big)\), a contradiction.
+    Now we split into two cases:
+    \begin{itemize}
         \item If \(Y \setminus Y' = \emptyset\), then it is vacuously true that every element of \(Y \setminus Y'\) is an strict upper bound of \(Y'\).
-        \item If \(Y \setminus Y' \neq \emptyset\), then \(Y' \setminus Y = \emptyset\) and thus \(Y' \subseteq Y\).
-              Since \(Y \cap Y' = Y'\) and \(s(Y \cap Y') = s(Y') = \min(Y \setminus Y')\), by Definition \ref{8.5.5} we know that every element of \(Y' \setminus Y\) is an strict upper bound of \(Y\).
-    \end{enumerate}
-    From all cases above we can conclude that every element of \(Y \setminus Y'\) is an strict upper bound of \(Y'\).
-    Similar arguments also show that every element of \(Y' \setminus Y\) is an strict upper bound of \(Y\).
-    So we are done.
+        \item If \(Y \setminus Y' \neq \emptyset\), then \(Y' \setminus Y = \emptyset\) and \(Y' \subseteq Y\).
+              Since \(Y \cap Y' = Y'\) and \(s(Y \cap Y') = s(Y') = \min(Y \setminus Y')\), by Definition \ref{8.5.5} we know that every element of \(Y \setminus Y'\) is an strict upper bound of \(Y'\).
+    \end{itemize}
+    From all cases above we conclude that every element of \(Y \setminus Y'\) is an strict upper bound of \(Y'\).
+    Using similar arguments we can show that every element of \(Y' \setminus Y\) is an strict upper bound of \(Y\).
 \end{proof}
 
 \begin{exercise}\label{ex 8.5.14}
@@ -744,7 +773,7 @@
 
 \begin{exercise}\label{ex 8.5.15}
     Let \(A\) and \(B\) be two non-empty sets such that \(A\) does not have lesser or equal cardinality to \(B\).
-    Using the principle of transfinite induction, prove that \(B\) has lesser or equal cardinality to \(A\).
+    Using Zorn's lemma, prove that \(B\) has lesser or equal cardinality to \(A\).
     This exercise (combined with Exercise \ref{ex 8.3.3}) shows that the cardinality of any two sets is comparable, as long as one assumes the axiom of choice.
 \end{exercise}
 
