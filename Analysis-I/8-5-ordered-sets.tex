@@ -359,7 +359,7 @@
 
 \begin{proof}
     Suppose for sake of contradiction that \(\exists\ x \in \mathbf{R}^+\) such that \(x = \min(\mathbf{R}^+)\).
-    Since \(x > 0\), we know that \(x / 2 > 0 \land x / 2 \in \mathbf{R}^+\).
+    Since \(x > 0\), we know that \(x / 2 > 0\) and \(x / 2 \in \mathbf{R}^+\).
     But \(x = \min(\mathbf{R}^+)\) implies we have \(x < x / 2\), a contradiction.
     Thus \(\nexists\ x \in \mathbf{R}^+\) such that \(x = \min(\mathbf{R}^+)\).
 \end{proof}
@@ -377,19 +377,19 @@
     We first show that \((X, \leq_X)\) is partially ordered.
     Since
     \[
-        \forall\ x \in X : x = x \implies x \leq_X x,
+        \forall\ x \in X, x = x \implies x \leq_X x,
     \]
     we know that \((X, \leq_X)\) is reflexive.
     Since
     \begin{align*}
-                 & \forall\ x, x' \in X : x \leq_X x' \land x' \leq_X x                                                                    \\
+                 & \forall\ x, x' \in X, (x \leq_X x') \land (x' \leq_X x)                                                                 \\
         \implies & \Big(\big(f(x) <_Y f(x')\big) \lor \big(x = x'\big)\Big) \land \Big(\big(f(x') <_Y f(x)\big) \lor \big(x = x'\big)\Big) \\
         \implies & x = x',
     \end{align*}
     we know that \((X, \leq_X)\) is anti-symmetric.
     Since
     \begin{align*}
-                 & \forall\ x_1, x_2, x_3 \in X : x_1 \leq_X x_2 \land x_2 \leq_X x_3                                                                  \\
+                 & \forall\ x_1, x_2, x_3 \in X, (x_1 \leq_X x_2) \land (x_2 \leq_X x_3)                                                               \\
         \implies & \Big(\big(f(x_1) <_Y f(x_2)\big) \lor \big(x_1 = x_2\big)\Big) \land \Big(\big(f(x_2) <_Y f(x_3)\big) \lor \big(x_2 = x_3\big)\Big) \\
         \implies & \bigg(\Big(\big(f(x_1) <_Y f(x_2)\big) \lor \big(x_1 = x_2\big)\Big) \land \big(f(x_2) <_Y f(x_3)\big)\bigg)                        \\
                  & \lor \bigg(\Big(\big(f(x_1) <_Y f(x_2)\big) \lor \big(x_1 = x_2\big)\Big) \land \big(x_2 = x_3\big)\bigg)                           \\
@@ -407,14 +407,14 @@
     Since \((X, \leq_X)\) is reflexive, anti-symmetric and transitive, by Definition \ref{8.5.1} \((X, \leq_X)\) is partially ordered.
 
     Next we show that \((X, \leq_X)\) may not be totally ordered when \((Y, \leq_Y)\) is totally ordered.
-    If \(\forall x, x' \in X : x \neq x' \implies f(x) = f(x')\), then we do not have the ordering relation \(x \leq_X x'\) and \(x' \leq_X x\).
+    If \(\exists\ x, x' \in X : x \neq x' \implies f(x) = f(x')\), then we do not have the ordering relation \(x \leq_X x'\) and \(x' \leq_X x\).
     Thus by Definition \ref{8.5.3} \((X, \leq_X)\) is not totally ordered.
 
     Next we show that if \(f : X \to Y\) is injective and \((Y, \leq_Y)\) is totally ordered, then \((X, \leq_X)\) is totally ordered.
-    Since \(f\) is injective, we know that \(\forall\ x, x' \in X : x \neq x' \implies f(x) \neq f(x')\).
-    Since \(Y\) is totally ordered, we know that \(f(x) \leq_Y f(x') \lor f(x') \leq_Y f(x)\) is true.
-    Since \(f(x) \neq f(x')\), we know that exactly one of \(f(x) \leq_Y f(x') \lor f(x') \leq_Y f(x)\) is true.
-    In either cases we get exactly one of \(x \leq_X x' \lor x' \leq_X x\).
+    Since \(f\) is injective, we know that \(\forall\ x, x' \in X, x \neq x' \implies f(x) \neq f(x')\).
+    Since \(Y\) is totally ordered, we know that \(\big(f(x) \leq_Y f(x')\big) \lor \big(f(x') \leq_Y f(x)\big)\) is true.
+    Since \(f(x) \neq f(x')\), we know that exactly one of \(\big(f(x) <_Y f(x')\big) \lor \big(f(x') <_Y f(x)\big)\) is true.
+    In either cases we get exactly one of \((x \leq_X x') \lor (x' \leq_X x)\) is true.
     Thus by Definition \ref{8.5.3} \((X, \leq_X)\) is totally ordered.
 \end{proof}
 
