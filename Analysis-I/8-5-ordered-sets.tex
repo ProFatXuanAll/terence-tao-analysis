@@ -582,15 +582,17 @@
     So suppose that \(X \neq \emptyset \land Y \neq \emptyset\).
     Since
     \[
-        \forall\ (x, y) \in X \times Y : (x, y) = (x, y) \implies (x, y) \leq_{X \times Y} (x, y),
+        \forall\ (x, y) \in X \times Y, (x, y) = (x, y) \implies (x, y) \leq_{X \times Y} (x, y),
     \]
     we know that \((X \times Y, \leq_{X \times Y})\) is reflexive.
     Since
     \begin{align*}
-                 & \forall\ (x, y), (x', y') \in X \times Y :                                                                                         \\
+                 & \forall\ (x, y), (x', y') \in X \times Y,                                                                                          \\
                  & \big((x, y) \leq_{X \times Y} (x', y')\big) \land \big((x', y') \leq_{X \times Y} (x, y)\big)                                      \\
         \implies & \Big((x <_X x') \lor \big((x = x') \land (y \leq_Y y')\big)\Big)                                                                   \\
                  & \land \Big((x' <_X x) \lor \big((x = x') \land (y' \leq_Y y)\big)\Big)                                                             \\
+        \implies & \Big((x \leq_X x') \land \big((x <_X x') \lor (y \leq_Y y')\big)\Big)                                                              \\
+                 & \land \Big((x' \leq_X x) \land \big((x' <_X x) \lor (y' \leq_Y y)\big)\Big)                                                        \\
         \implies & (x = x') \land (y \leq_Y y') \land (y' \leq_Y y)                                                                                   \\
         \implies & (x = x') \land (y = y')                                                                       & \text{(by Definition \ref{8.5.1})} \\
         \implies & (x, y) = (x', y'),                                                                            & \text{(by Definition \ref{3.5.1})}
@@ -617,41 +619,38 @@
     From prove above we know that \((X \times Y, \leq_{X \times Y})\) is partially ordered.
     Since
     \begin{align*}
-                 & \forall\ (x, y), (x', y') \in X \times Y : (x, y) \neq (x', y')                                      \\
-        \implies & \big((x \neq x') \land (y = y')\big)                            & \text{(by Definition \ref{3.5.1})} \\
-                 & \lor \big((x = x') \land (y \neq y')\big)                                                            \\
-                 & \lor \big((x \neq x') \land (y \neq y')\big),
+                 & \forall\ (x, y), (x', y') \in X \times Y, (x, y) \neq (x', y')                                      \\
+        \implies & (x \neq x') \lor \big((x = x') \land (y \neq y')\big),         & \text{(by Definition \ref{3.5.1})}
     \end{align*}
-    we can split into three cases:
-    \begin{enumerate}
+    we split into two cases:
+    \begin{itemize}
+        \item If \(x \neq x'\), then \((x <_X x') \lor (x' <_X x)\) since \(X\) is totally ordered.
+              Thus we have \(\big((x, y) \leq_{X \times Y} (x', y')\big) \lor \big((x, y) \leq_{X \times Y} (x', y')\big)\).
         \item If \((x = x') \land (y \neq y')\), then \((y <_Y y') \lor (y' <_Y y)\) since \(Y\) is totally ordered.
               Thus we have \(\big((x, y) \leq_{X \times Y} (x', y')\big) \lor \big((x, y) \leq_{X \times Y} (x', y')\big)\).
-        \item If \((x \neq x') \land (y = y')\), then \((x <_X x') \lor (x' <_X x)\) since \(X\) is totally ordered.
-              Thus we have \(\big((x, y) \leq_{X \times Y} (x', y')\big) \lor \big((x, y) \leq_{X \times Y} (x', y')\big)\).
-        \item If \((x \neq x') \land (y \neq y')\), then \((x <_X x') \lor (x' <_X x)\) since \(X\) is totally ordered.
-              Thus we have \(\big((x, y) \leq_{X \times Y} (x', y')\big) \lor \big((x, y) \leq_{X \times Y} (x', y')\big)\).
-    \end{enumerate}
-    From all cases above we have \(\big((x, y) \leq_{X \times Y} (x', y')\big) \lor \big((x, y) \leq_{X \times Y} (x', y')\big)\).
+    \end{itemize}
+    From all cases above we conclude that \(\big((x, y) \leq_{X \times Y} (x', y')\big) \lor \big((x, y) \leq_{X \times Y} (x', y')\big)\).
     Thus \((X \times Y, \leq_{X \times Y})\) is totally ordered.
 
     Now we show that if \((X, \leq_X), (Y, \leq_Y)\) are well-ordered, then \((X \times Y, \leq_{X \times Y})\) is well-ordered.
     If \(X = \emptyset \lor Y = \emptyset\), then by Exercise \ref{ex 3.5.8} \(X \times Y = \emptyset\) and by Exercise \ref{ex 8.5.1} we know that \(\emptyset\) is well-ordered.
     So suppose that \(X \neq \emptyset \land Y \neq \emptyset\).
     From prove above we know that \((X \times Y, \leq_{X \times Y})\) is totally ordered.
-    Let \(Z \subseteq X \times Y \land Z \neq \emptyset\) and \(Z_X = \{x \in X | \exists\ y \in Y : (x, y) \in Z\}\).
-    Since \(X\) is well-ordered and \(Z_X \subseteq X\), by Definition \ref{8.5.8} and Exercise \ref{ex 8.5.7} we know there exists exactly one minimum element in \(Z_X\).
-    Let \(z_x = \min(Z_X)\).
+    Let \(Z \subseteq X \times Y\) and \(Z \neq \emptyset\), let \(Z_X = \{x \in X | \exists\ y \in Y : (x, y) \in Z\}\).
+    Since \(X\) is well-ordered and \(Z_X \subseteq X\), by Definition \ref{8.5.8} we know that \(z_x = \min(Z_X)\) exists.
     Since \(z_x \in Z_X\), we know that the set \(Z_Y = \{y \in Y : (z_x, y) \in Z\}\) is not empty.
-    Since \(Y\) is well-ordered and \(Z_Y \subseteq Y\), by Definition \ref{8.5.8} and Exercise \ref{ex 8.5.7} we know there exists exactly one minimum element in \(Z_Y\).
-    Let \(z_y = \min(Z_Y)\) be an minimum element.
+    Since \(Y\) is well-ordered and \(Z_Y \subseteq Y\), by Definition \ref{8.5.8} we know that \(z_y = \min(Z_Y)\) exists.
     Then we have
     \begin{align*}
-                 & \forall\ (x, y) \in Z : (x, y) \neq (z_x, z_y)                                                \\
-        \implies & (x \neq z_x) \lor \big((x = z_x) \land (y \neq z_y)\big)                                      \\
-        \implies & (z_x \leq x) \land (z_y \leq y)                          & \text{(by Definition \ref{8.5.5})} \\
+                 & \forall\ (x, y) \in Z                                                                       \\
+        \implies & (z_x <_X x) \lor (x = z_x)                                                                  \\
+        \implies & \big((z_x, z_y) \leq_{X \times Y} (x, y)\big) \lor (x = z_x)                                \\
+        \implies & \big((z_x, z_y) \leq_{X \times Y} (x, y)\big) \lor \big((x = z_x) \land (y \in Z_y)\big)    \\
+        \implies & \big((z_x, z_y) \leq_{X \times Y} (x, y)\big) \lor \big((x = z_x) \land (z_y \leq_Y y)\big) \\
         \implies & (z_x, z_y) \leq_{X \times Y} (x, y).
     \end{align*}
-    Thus \((X \times Y, \leq_{X \times Y})\) is well-ordered.
+    Thus \(\min(Z) = (z_x, z_y)\).
+    Since \(Z\) is arbitrary, by Definition \ref{8.5.8} we know that \((X \times Y, \leq_{X \times Y})\) is well-ordered.
 \end{proof}
 
 \begin{exercise}\label{ex 8.5.13}
