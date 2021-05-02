@@ -540,44 +540,30 @@
 \end{exercise}
 
 \begin{proof}
-    We first show that if \(Y \cup Y'\) is well-ordered then \(Y \cup Y'\) is totally ordered.
-    Suppose that \(Y \cup Y'\) is well-ordered.
-    \begin{align*}
-                 & \forall\ y_1, y_2 \in Y \cup Y' : y_1 \neq y_2                                              \\
-        \implies & \{y_1, y_2\} \subseteq Y \cup Y'                                                            \\
-        \implies & \exists\ y = \min(y_1, y_2)                            & \text{(by Definition \ref{8.5.8})} \\
-        \implies & (y = y_1 \land y <_X y_2) \lor (y = y_2 \land y < y_1) & \text{(by Definition \ref{8.5.5})} \\
-        \implies & (y_1 <_X y_2) \lor (y_2 <_X y_1).
-    \end{align*}
-    Thus by Definition \ref{8.5.3} \(Y \cup Y'\) is totally ordered.
-
-    Now we shot that if \(Y \cup Y'\) is totally ordered then \(Y \cup Y'\) is well-ordered.
+    By Definition \ref{8.5.8} we know that if \(Y \cup Y'\) is well-ordered, then \(Y \cup Y'\) is totally ordered.
+    So we only need to show that if \(Y \cup Y'\) is totally ordered, then \(Y \cup Y'\) is well-ordered.
     Suppose that \(Y \cup Y'\) is totally ordered.
-    Let \(Z \subseteq Y \cup Y' \land Z \neq \emptyset\), \(Z_Y = Z \cap Y\) and \(Z_{Y'} = Z \cap Y'\).
+    Let \(Z \subseteq Y \cup Y' \land Z \neq \emptyset\), let \(Z_Y = Z \cap Y\) and let \(Z_{Y'} = Z \cap Y'\).
     If \(Z_Y = \emptyset \lor Z_{Y'} = \emptyset\), then \(Z \subseteq Y' \lor Z \subseteq Y\) and \(Z\) is well-ordered.
     So suppose that \(Z_Y \neq \emptyset \land Z_{Y'} \neq \emptyset\).
     Since \(Y, Y'\) are well-ordered, by Definition \ref{8.5.8} \(Z_Y, Z_{Y'}\) are also well-ordered.
     Let \(z_Y = \min(Z_Y)\) and \(z_{Y'} = \min(Z_{Y'})\).
-    Since \(Y \cup Y'\) is totally order, we know that \(z_Y \leq_X z_{Y'} \lor z_{Y'} \leq_X z_Y\).
-    \begin{enumerate}
-        \item If \(z_Y = z_{Y'}\), then
+    Since \(Y \cup Y'\) is totally order, we know that \((z_Y \leq_X z_{Y'}) \lor (z_{Y'} \leq_X z_Y)\).
+    Now we split into two cases:
+    \begin{itemize}
+        \item If \(z_Y \leq_X z_{Y'}\), then
               \begin{align*}
-                           & \forall\ z \in Z : z \in Y \cup Y'                                      \\
-                  \implies & z \in Y \lor z \in Y'                                                   \\
-                  \implies & z_Y <_X z.                         & \text{(by Definition \ref{8.5.5})}
+                           & \forall\ z \in Z                                                                      \\
+                  \implies & z \in Y \cup Y'                                                                       \\
+                  \implies & z \in Y \lor z \in Y'                                                                 \\
+                  \implies & (z_Y \leq_X z) \lor (z_{Y'} \leq_X z)            & \text{(by Definition \ref{8.5.5})} \\
+                  \implies & (z_Y \leq_X z) \lor (z_Y \leq_X z_{Y'} \leq_X z) & \text{(by Definition \ref{8.5.1})} \\
+                  \implies & z_Y \leq_X z.
               \end{align*}
               Thus by Definition \ref{8.5.5} \(z_Y = \min(Z)\).
-        \item If \(z_Y <_X z_{Y'}\), then
-              \begin{align*}
-                           & \forall\ z \in Z : z \in Y \cup Y'                                      \\
-                  \implies & z \in Y \lor z \in Y'                                                   \\
-                  \implies & (z_Y <_X z) \lor (z_{Y'} <_X z)    & \text{(by Definition \ref{8.5.5})} \\
-                  \implies & z_Y <_X z_{Y'} <_X z.              & \text{(by Definition \ref{8.5.1})}
-              \end{align*}
-              Thus by Definition \ref{8.5.5} \(z_Y = \min(Z)\).
-        \item If \(z_{Y'} <_X z_Y\), then using similar arguments in case (b) we know that \(z_{Y'} = \min(Z)\).
-    \end{enumerate}
-    From all cases above we can find a minimum of \(Z\).
+        \item If \(z_{Y'} \leq_X z_Y\), then using similar arguments above we know that \(z_{Y'} = \min(Z)\).
+    \end{itemize}
+    From all cases above we conclude that \(\min(Z)\) exists.
     Since \(Z\) is arbitrary, by Definition \ref{8.5.8} \(Y \cup Y'\) is well-ordered.
 \end{proof}
 
