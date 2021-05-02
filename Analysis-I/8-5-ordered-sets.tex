@@ -462,7 +462,7 @@
 
 \begin{proof}
     Suppose for sake of contradiction that \(\exists\ y, y' \in Y\) such that \(y \neq y'\) and both \(y, y'\) are maximum of \(Y\).
-    Then by Definition \ref{8.5.1} we have \(y \leq_X y' \land y' \leq_X y\), so \(y = y'\), a contradiction.
+    Then by Definition \ref{8.5.5} we have \((y \leq_X y') \land (y' \leq_X y)\), so \(y = y'\), a contradiction.
     Thus \(Y\) can have at most one maximum.
     Similar arguments show that \(Y\) can have at most one minimum.
 \end{proof}
@@ -477,24 +477,26 @@
     Let \(n = \#(Y)\).
     We use induction on \(n\) to show that \(Y\) has a minimum and maximum.
     For \(n = 1\), let \(y \in Y\).
-    Then \(\nexists\ y' \in Y\) such that \(y' <_X y \lor y <_X y'\) since \(y\) is the only element.
+    Then \(\forall\ y' \in Y\), we have \(y \leq_X y'\) and \(y' \leq_X y\).
     Thus by Definition \ref{8.5.5} \(y\) is the minimum and the maximum of \(Y\), and the base case holds.
     Suppose inductively that for some \(n \geq 1\) we know that \(Y\) has a minimum and maximum.
     Then for \(n + 1\), let \(y \in Y\).
     By induction hypothesis we know that \(Y \setminus \{y\}\) has a minimum and maximum.
-    Let \(y_l\) be the minimum of \(Y \setminus \{y\}\).
+    Let \(y_l = \min(Y \setminus \{y\})\).
     Since \(y \notin Y \setminus \{y\}\), we know that \(y \neq y_l\).
-    Since \(Y \subseteq X\), we know that \(Y\) is totally ordered, and we can have \(y <_X y_l \lor y_l <_X y\).
-    \begin{enumerate}
+    Since \(Y \subseteq X\), we know that \(Y\) is totally ordered, and thus we have \((y <_X y_l) \lor (y_l <_X y)\).
+    Now we split into two cases:
+    \begin{itemize}
         \item If \(y <_X y_l\), then \(y\) is the minimum of \(Y\) since
               \begin{align*}
-                           & \forall\ y' \in Y \setminus \{y\}                                                                   \\
-                  \implies & y' \in Y \land y_l <_X y'         & \text{(by Definition \ref{8.5.5})}                              \\
-                  \implies & y <_X y'.                         & \text{(by Definition \ref{8.5.1}, \(X, \leq_X\) is transitive)}
+                           & \forall\ y' \in Y                                                                                          \\
+                  \implies & (y' = y) \lor (y' \in Y \setminus \{y\})                                                                   \\
+                  \implies & (y' = y) \lor (y_l <_X y')               & \text{(by Definition \ref{8.5.5})}                              \\
+                  \implies & y \leq_X y'.                             & \text{(by Definition \ref{8.5.1}, \(X, \leq_X\) is transitive)}
               \end{align*}
-        \item If \(y_l <_X y\), then \(y_l\) is the minimum of \(Y\) since \(\nexists\ y' \in Y : y' < y_l\).
-    \end{enumerate}
-    From all cases above we know that \(Y\) has a minimum.
+        \item If \(y_l <_X y\), then \(y_l\) is the minimum of \(Y\) since \(\forall\ y' \in Y, y_l \leq_X y'\).
+    \end{itemize}
+    From all cases above we conclude that \(Y\) has a minimum.
     Similar arguments show that \(Y\) also has a maximum.
     This close the induction.
 \end{proof}
