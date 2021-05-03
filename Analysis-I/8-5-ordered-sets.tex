@@ -230,7 +230,7 @@
     \[
         \forall\ x, y \in \emptyset, (x \leq_{\emptyset} y) \land (y \leq_{\emptyset} x) \implies x = y
     \]
-    is vacuously true, \(\leq_{\emptyset}\) is anti-symmetry.
+    is vacuously true, \(\leq_{\emptyset}\) is anti-symmetric.
     Since
     \[
         \forall\ x, y, z \in \emptyset, (x \leq_{\emptyset} y) \land (y \leq_{\emptyset} z) \implies x \leq_{\emptyset} z
@@ -844,7 +844,7 @@
         \implies & Y \leq_S \bigcup S',
     \end{align*}
     we know that \(\bigcup S'\) is an upper bound of \(S'\).
-    Since \(S'\) is arbitrary, we conclude that every totally ordered subset of \(S\) with oredering relation \(\leq_S\) has an upper bound.
+    Since \(S'\) is arbitrary, we conclude that every totally ordered subset of \(S\) with ordering relation \(\leq_S\) has an upper bound.
 
     By Zorn's lemma (Lemma \ref{8.5.15}) we know that there exists at least one maximal element of \(S\).
     Suppose for sake of contradiction that \(B \neq \max(S)\).
@@ -879,67 +879,149 @@
 \begin{proof}
     Since
     \begin{align*}
-                 & \forall\ \leq \in P                                \\
-        \implies & (\forall\ x, y \in X : x \leq y \implies x \leq y) \\
+                 & \forall\ \leq \in P                               \\
+        \implies & (\forall\ x, y \in X, x \leq y \implies x \leq y) \\
         \implies & \leq \preceq \leq,
     \end{align*}
     we know that \((P, \preceq)\) is reflexive.
     Since
     \begin{align*}
-                 & \forall\ \leq, \leq' \in P : (\leq \preceq \leq') \land (\leq' \preceq \leq)                      \\
-        \implies & \big(\forall\ x, y \in X : (x \leq y \implies x \leq y') \land (x \leq' y \implies x \leq y)\big) \\
-        \implies & \big(\forall\ x, y \in X : (x \leq y \iff x \leq' y)\big)                                         \\
+                 & \forall\ \leq, \leq' \in P, (\leq \preceq \leq') \land (\leq' \preceq \leq)                      \\
+        \implies & \big(\forall\ x, y \in X, (x \leq y \implies x \leq y') \land (x \leq' y \implies x \leq y)\big) \\
+        \implies & \big(\forall\ x, y \in X, (x \leq y \iff x \leq' y)\big)                                         \\
         \implies & \leq = \leq',
     \end{align*}
     we know that \((P, \preceq)\) is anti-symmetric.
     Since
     \begin{align*}
-                 & \forall\ \leq_1, \leq_2, \leq_3 \in P : (\leq_1 \preceq \leq_2) \land (\leq_2 \preceq \leq_3)           \\
-        \implies & \big(\forall\ x, y \in X : (x \leq_1 y \implies x \leq_2 y) \land (x \leq_2 y \implies x \leq_3 y)\big) \\
-        \implies & \big(\forall\ x, y \in X : (x \leq_1 y \implies x \leq_3 y)\big)                                        \\
+                 & \forall\ \leq_1, \leq_2, \leq_3 \in P, (\leq_1 \preceq \leq_2) \land (\leq_2 \preceq \leq_3)           \\
+        \implies & \big(\forall\ x, y \in X, (x \leq_1 y \implies x \leq_2 y) \land (x \leq_2 y \implies x \leq_3 y)\big) \\
+        \implies & \big(\forall\ x, y \in X, (x \leq_1 y \implies x \leq_3 y)\big)                                        \\
         \implies & \leq_1 \preceq \leq_3,
     \end{align*}
     we know that \((P, \preceq)\) is transitive.
     Since \((P, \preceq)\) is reflexive, anti-symmetric and transitive, by Definition \ref{8.5.1} we know that \((P, \preceq)\) is partially ordered.
 
     Next we show that \((P, \preceq)\) has exactly one minimal element.
-    \begin{enumerate}
-        \item If \(X = \emptyset\), then \(\{\leq_{\emptyset}\} = P\) since
-              \begin{align*}
-                           & \forall\ \leq \in P                                                                  \\
-                  \implies & (\forall\ x, y \in X : x \leq_{\emptyset} y \iff x \leq y) & \text{(vacuously true)} \\
-                  \implies & \leq_{\emptyset} = \leq.
-              \end{align*}
-              Thus \(\leq_{\emptyset}\) is the minimal element of \((P, \preceq)\).
-        \item If \(X \neq \emptyset\), then we have \(=\) is the minimal element of \((P, \preceq)\) since
-              \begin{align*}
-                           & \forall\ \leq \in P                                                                   \\
-                  \implies & (\forall\ x, y \in X : x = y \implies x \leq y) & \text{(\(\leq\) is anti-symmetric)} \\
-                  \implies & = \preceq \leq.
-              \end{align*}
-    \end{enumerate}
-
-    From prove above we know that \(P \neq \emptyset\).
-    Now let \(C\) be a totally ordered subset of \(P\).
-    In order to apply Zorn's lemma (Lemma \ref{8.5.15}), we have to show that there is an upper bound of \(C\).
-    Let \(\leq_C\) be defined as follows:
+    We claim that the equivalent relation on \(X\), denote as \(=_X\), is the minimal element of \((P, \preceq)\).
+    To show that \((X, =_X)\) is partially ordered, since equivalent relation is reflexive and transitive, we only need to show that \(=_X\) is anti-symmetric.
+    Since
     \[
-        \forall\ x, y \in X, x \leq_C y \iff \exists\ \leq' \in C : x \leq' y.
+        \forall\ x, y \in X, (x =_X y) \land (y =_X x) \implies x =_X y,
     \]
-    We have to show \(\leq_C\) is well-defined.
-    Suppose \(\leq, \leq' \in C\) and there exists \(x, y \in X\) such that \(x \leq y\) and \(y \leq' x\) but \(y \neq x\).
-    Since both are in \(C\), either \(\leq \preceq \leq' \lor \leq' \preceq \leq\).
-    Without loss of generality suppose that \(\leq \preceq \leq'\), then \(x \leq y\) implies \(x \leq' y\) and since \(x \neq y\) so \(x <' y\) which contradicts our assumption that \(y <' x\).
-    Hence \(\leq_C\) is well-defined.
-    Also is not difficult to show that is a partial ordering of \(X\).
-    Clearly \(\leq_C\) is an upper bound for \(C\) because whenever \(x \leq' y\) for \(\leq' \in C\) would imply \(x \leq_C y\), which means \(\leq' \preceq \leq_C\).
-    Thus by Zorn's lemma (Lemma \ref{8.5.15}) \(X\) contains at least one maximal element which we call \(\leq_P\).
-    We claim that \(\leq_P\) is a total ordering of \(X\).
-    Suppose for the sake of contradiction that \(\leq_P\) is not a total ordering of \(X\).
-    Thus there must be a pair \(x, y \in X\) for which neither \(x \not\leq_p y\) nor \(y \not\leq_p x\).
-    Thus we can define \(\leq = \leq_p\) for all \(X \setminus \{x, y\}\) and we set \(x \leq y\).
-    Thus is a partial ordering of \(X\), i.e., \(\leq \in P\) and also \(\leq_p \preceq \leq\), note that the implication \(x \leq_p y \implies x \leq y\) is vacuously true, which is a contradiction.
-    Hence \(\leq_p\) is a total ordering of \(X\).
+    we know that \(=_X\) is anti-symmetric.
+    Thus by Definition \ref{8.5.1} \((X, =_X)\) is partially ordered and \(=_X \in P\).
+    Since
+    \begin{align*}
+                 & \forall\ \leq \in P                                                                   \\
+        \implies & (\forall\ x, y \in X, x =_X y \implies x \leq y) & \text{(by Definition \ref{8.5.1})} \\
+        \implies & =_X \preceq \leq,
+    \end{align*}
+    by Definition \ref{8.5.5} we have \(=_X = \min(P)\).
+
+    Next we show that if \(S\) is a non-empty totally ordered subset of \(P\), then the relation \(\leq_S\) defined as follow is a element in \(P\).
+    Let \(\leq_S\) be a relation define as follow:
+    \[
+        \forall\ x, y \in X, x \leq_S y \iff \exists\ \leq \in S : x \leq y.
+    \]
+    Since
+    \begin{align*}
+                 & \forall\ x \in X, \forall\ \leq \in S, x \leq x & \text{(\(\leq\) is partially ordered)} \\
+        \implies & x \leq_S x,
+    \end{align*}
+    we know that \(\leq_S\) is reflexive.
+    Since
+    \begin{align*}
+                 & \forall\ x, y \in X, (x \leq_S y) \land (y \leq_S x)                                                                              \\
+        \implies & \exists\ \leq_1, \leq_2 \in S : (x \leq_1 y) \land (y \leq_2 x)                          & \text{(\(\leq\) is partially ordered)} \\
+        \implies & (\leq_2 \preceq \leq_1) \lor (\leq_1 \preceq \leq_2)                                     & \text{(\(S\) is totally ordered)}      \\
+        \implies & \big((x \leq_1 y) \land (y \leq_1 x)\big) \lor \big((x \leq_2 y) \land (y \leq_2 x)\big)                                          \\
+        \implies & x =_X y,
+    \end{align*}
+    we know that \(\leq_S\) is anti-symmetric.
+    Since
+    \begin{align*}
+                 & \forall\ x, y, z \in X, (x \leq_S y) \land (y \leq_S z)                                                                           \\
+        \implies & \exists\ \leq_1, \leq_2 \in S : (x \leq_1 y) \land (y \leq_2 z)                          & \text{(\(\leq\) is partially ordered)} \\
+        \implies & (\leq_2 \preceq \leq_1) \lor (\leq_1 \preceq \leq_2)                                     & \text{(\(S\) is totally ordered)}      \\
+        \implies & \big((x \leq_1 y) \land (y \leq_1 z)\big) \lor \big((x \leq_2 y) \land (y \leq_2 z)\big)                                          \\
+        \implies & (x \leq_1 z) \lor (x \leq_2 z)                                                                                                    \\
+        \implies & x \leq_S z,
+    \end{align*}
+    we know that \(\leq_S\) is transitive.
+    Since \((S, \leq_S)\) is reflexive, anti-symmetric and transitive, by Definition \ref{8.5.1} we know that \((S, \leq_S)\) is partially ordered.
+    Thus \(\leq_S \in P\).
+
+    Next we show that every totally ordered subset of \(P\) has a upper bound.
+    Let \(S\) be a totally ordered subset of \(P\).
+    If \(S = \emptyset\), by Exercise \ref{ex 8.5.1} we know that \(\emptyset\) is totally ordered, and the statement
+    \[
+        \forall\ \leq \in \emptyset, \leq \preceq \leq'
+    \]
+    is vacuously true for every \(\leq' \in P\).
+    Thus \(\emptyset\) has a upper bound in \(P\).
+    So suppose that \(S \neq \emptyset\).
+    Then the relation \(\leq_S\) defined as above is a upper bound of \(S\) since for every \(\leq \in S\), we have
+    \begin{align*}
+                 & \forall\ x, y \in X, x \leq y                                            \\
+        \implies & x \leq_S y                    & \text{(by the definition of \(\leq_S\))} \\
+        \implies & \leq \preceq \leq_S.
+    \end{align*}
+    Thus every totally ordered subset of \(P\) has a upper bound.
+
+    By Zorn's lemma (Lemma \ref{8.5.15}) we know that \(\leq_{\max} = \max(P)\) exists.
+    We show that \((X, \leq_{\max})\) is totally ordered.
+    Suppose for sake of contradiction that \((X, \leq_{\max})\) is not totally ordered.
+    Then \(\exists\ a, b \in X\) such that \(a \not\leq_{\max} b\) and \(b \not\leq_{\max} a\).
+    Now we define a relation \(\leq_T\) on \(X\) as follow:
+    \[
+        \forall\ x, y \in X, x \leq_T y \iff \begin{cases}
+            x \leq_{\max} y & \text{if } \big((x, y) \neq (a, b)\big) \land \big((x, y) \neq (b, a)\big) \\
+            \text{true}     & \text{if } (x, y) = (a, b)                                                 \\
+            \text{false}    & \text{if } (x, y) = (b, a)
+        \end{cases}
+    \]
+    We show that \((X, \leq_T)\) is partially ordered.
+    Since
+    \begin{align*}
+                 & \forall\ x \in X, x =_X x                                                                                  \\
+        \implies & x \leq_{\max} x                                                 & \text{(\(X, \leq_{\max}\) is reflexive)} \\
+        \implies & \big((x, x) \neq (a, b)\big) \land \big((x, x) \neq (b, a)\big)                                            \\
+        \implies & x \leq_T x,
+    \end{align*}
+    we know that \((X, \leq_T)\) is reflexive.
+    Since
+    \begin{align*}
+                 & \forall\ x, y \in X, (x \leq_T y) \land (y \leq_T x) \\
+        \implies & \begin{cases}
+            (x \leq_{\max} y) \land (y \leq_{\max} x) & \text{if } \big((x, y) \neq (a, b)\big) \land \big((x, y) \neq (b, a)\big) \\
+            (\text{true}) \land (\text{false})        & \text{if } (x, y) = (a, b)                                                 \\
+            (\text{false}) \land (\text{true})        & \text{if } (x, y) = (b, a)                                                 \\
+        \end{cases}                           \\
+        \implies & (x \leq_{\max} y) \land (y \leq_{\max} x)            \\
+        \implies & x =_X y,
+    \end{align*}
+    we know that \((X, \leq_T)\) is anti-symmetric.
+    Since
+    \begin{align*}
+                 & \forall\ x, y, z \in X, (x \leq_T y) \land (y \leq_T z)         \\
+        \implies & \begin{cases}
+            (x \leq_{\max} y) \land (y \leq_{\max} z) & \text{if } \big((x, y) \neq (a, b)\big) \land \big((x, y) \neq (b, a)\big)  \\
+                                                      & \text{and } \big((y, z) \neq (a, b)\big) \land \big((y, z) \neq (b, a)\big) \\
+            (x \leq_{\max} y) \land (\text{true})     & \text{if } \big((x, y) \neq (a, b)\big) \land \big((x, y) \neq (b, a)\big)  \\
+                                                      & \text{and } (y, z) = (a, b)                                                 \\
+            (x \leq_{\max} y) \land (\text{false})    & \text{if } \big((x, y) \neq (a, b)\big) \land \big((x, y) \neq (b, a)\big)  \\
+                                                      & \text{and } (y, z) = (b, a)                                                 \\
+            (\text{true}) \land (y \leq_{\max} z)     & \text{if } (x, y) = (a, b)                                                  \\
+                                                      & \text{and } \big((y, z) \neq (a, b)\big) \land \big((y, z) \neq (b, a)\big) \\
+            (\text{true}) \land (\text{false})        & \text{if } \big((x, y) = (a, b)\big) \land \big((y, z) = (b, a)\big)        \\
+            (\text{false}) \land (y \leq_{\max} z)    & \text{if } (x, y) = (b, a)                                                  \\
+                                                      & \text{and } \big((y, z) \neq (a, b)\big) \land \big((y, z) \neq (b, a)\big) \\
+            (\text{false}) \land (\text{true})        & \text{if } \big((x, y) = (b, a)\big) \land \big((y, z) = (a, b)\big)        \\
+        \end{cases}                                      \\
+        \implies & (x \leq_{\max} z) \lor (x \leq_{\max} y) \lor (y \leq_{\max} z) \\
+        \implies & x \leq_{\max} z
+    \end{align*}
 \end{proof}
 
 \begin{exercise}\label{ex 8.5.17}
