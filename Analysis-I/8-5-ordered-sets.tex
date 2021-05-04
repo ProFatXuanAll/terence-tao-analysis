@@ -919,8 +919,7 @@
     \end{align*}
     by Definition \ref{8.5.5} we have \(=_X = \min(P)\).
 
-    Next we show that if \(S\) is a non-empty totally ordered subset of \(P\), then the relation \(\leq_S\) defined as follow is a element in \(P\).
-    Let \(\leq_S\) be a relation define as follow:
+    Next we show that if \(S\) is a non-empty totally ordered subset of \(P\), then the relation \(\leq_S\) defined as follow is a element in \(P\):
     \[
         \forall\ x, y \in X, x \leq_S y \iff \exists\ \leq \in S : x \leq y.
     \]
@@ -929,7 +928,7 @@
                  & \forall\ x \in X, \forall\ \leq \in S, x \leq x & \text{(\(\leq\) is partially ordered)} \\
         \implies & x \leq_S x,
     \end{align*}
-    we know that \(\leq_S\) is reflexive.
+    we know that \((X, \leq_S)\) is reflexive.
     Since
     \begin{align*}
                  & \forall\ x, y \in X, (x \leq_S y) \land (y \leq_S x)                                                                              \\
@@ -938,7 +937,7 @@
         \implies & \big((x \leq_1 y) \land (y \leq_1 x)\big) \lor \big((x \leq_2 y) \land (y \leq_2 x)\big)                                          \\
         \implies & x =_X y,
     \end{align*}
-    we know that \(\leq_S\) is anti-symmetric.
+    we know that \((X, \leq_S)\) is anti-symmetric.
     Since
     \begin{align*}
                  & \forall\ x, y, z \in X, (x \leq_S y) \land (y \leq_S z)                                                                           \\
@@ -948,8 +947,8 @@
         \implies & (x \leq_1 z) \lor (x \leq_2 z)                                                                                                    \\
         \implies & x \leq_S z,
     \end{align*}
-    we know that \(\leq_S\) is transitive.
-    Since \((S, \leq_S)\) is reflexive, anti-symmetric and transitive, by Definition \ref{8.5.1} we know that \((S, \leq_S)\) is partially ordered.
+    we know that \((X, \leq_S)\) is transitive.
+    Since \((X, \leq_S)\) is reflexive, anti-symmetric and transitive, by Definition \ref{8.5.1} we know that \((X, \leq_S)\) is partially ordered.
     Thus \(\leq_S \in P\).
 
     Next we show that every totally ordered subset of \(P\) has a upper bound.
@@ -973,55 +972,53 @@
     We show that \((X, \leq_{\max})\) is totally ordered.
     Suppose for sake of contradiction that \((X, \leq_{\max})\) is not totally ordered.
     Then \(\exists\ a, b \in X\) such that \(a \not\leq_{\max} b\) and \(b \not\leq_{\max} a\).
+    Note that we must have \(a \neq_X b\) since \(\leq_{\max}\) is reflexive.
     Now we define a relation \(\leq_T\) on \(X\) as follow:
-    \[
-        \forall\ x, y \in X, x \leq_T y \iff \begin{cases}
-            x \leq_{\max} y & \text{if } \big((x, y) \neq (a, b)\big) \land \big((x, y) \neq (b, a)\big) \\
-            \text{true}     & \text{if } (x, y) = (a, b)                                                 \\
-            \text{false}    & \text{if } (x, y) = (b, a)
-        \end{cases}
-    \]
+    \begin{align*}
+             & \forall\ x, y \in X, x \leq_T y                                   \\
+        \iff & (x, y) = (a, b)                 & \text{(enforce \(a \leq_T b\))} \\
+             & \lor (x =_X y)                  & \text{(enforce reflexivity)}
+    \end{align*}
     We show that \((X, \leq_T)\) is partially ordered.
     Since
-    \begin{align*}
-                 & \forall\ x \in X, x =_X x                                                                                  \\
-        \implies & x \leq_{\max} x                                                 & \text{(\(X, \leq_{\max}\) is reflexive)} \\
-        \implies & \big((x, x) \neq (a, b)\big) \land \big((x, x) \neq (b, a)\big)                                            \\
-        \implies & x \leq_T x,
-    \end{align*}
+    \[
+        \forall\ x \in X, x =_X x \implies x \leq_T x,
+    \]
     we know that \((X, \leq_T)\) is reflexive.
     Since
     \begin{align*}
-                 & \forall\ x, y \in X, (x \leq_T y) \land (y \leq_T x) \\
-        \implies & \begin{cases}
-            (x \leq_{\max} y) \land (y \leq_{\max} x) & \text{if } \big((x, y) \neq (a, b)\big) \land \big((x, y) \neq (b, a)\big) \\
-            (\text{true}) \land (\text{false})        & \text{if } (x, y) = (a, b)                                                 \\
-            (\text{false}) \land (\text{true})        & \text{if } (x, y) = (b, a)                                                 \\
-        \end{cases}                           \\
-        \implies & (x \leq_{\max} y) \land (y \leq_{\max} x)            \\
-        \implies & x =_X y,
+             & \forall\ x, y \in X, (x \leq_T y) \land (y \leq_T x)                           \\
+        \iff & \begin{cases}
+            \big((x, y) = (a, b)\big) \land \big((y, x) = (a, b)\big) & \iff \text{false} \\
+            \big((x, y) = (a, b)\big) \land (y =_X x)                 & \iff \text{false} \\
+            (x =_X y) \land \big((y, x) = (a, b)\big)                 & \iff \text{false} \\
+            (x =_X y) \land (y =_X x)                                 & \iff (x =_X y)
+        \end{cases}                                                     \\
+        \iff & (\text{false}) \lor (x =_X y)                                                  \\
+        \iff & (x =_X y),                                           & \text{(vacuously true)}
     \end{align*}
     we know that \((X, \leq_T)\) is anti-symmetric.
     Since
     \begin{align*}
-                 & \forall\ x, y, z \in X, (x \leq_T y) \land (y \leq_T z)         \\
-        \implies & \begin{cases}
-            (x \leq_{\max} y) \land (y \leq_{\max} z) & \text{if } \big((x, y) \neq (a, b)\big) \land \big((x, y) \neq (b, a)\big)  \\
-                                                      & \text{and } \big((y, z) \neq (a, b)\big) \land \big((y, z) \neq (b, a)\big) \\
-            (x \leq_{\max} y) \land (\text{true})     & \text{if } \big((x, y) \neq (a, b)\big) \land \big((x, y) \neq (b, a)\big)  \\
-                                                      & \text{and } (y, z) = (a, b)                                                 \\
-            (x \leq_{\max} y) \land (\text{false})    & \text{if } \big((x, y) \neq (a, b)\big) \land \big((x, y) \neq (b, a)\big)  \\
-                                                      & \text{and } (y, z) = (b, a)                                                 \\
-            (\text{true}) \land (y \leq_{\max} z)     & \text{if } (x, y) = (a, b)                                                  \\
-                                                      & \text{and } \big((y, z) \neq (a, b)\big) \land \big((y, z) \neq (b, a)\big) \\
-            (\text{true}) \land (\text{false})        & \text{if } \big((x, y) = (a, b)\big) \land \big((y, z) = (b, a)\big)        \\
-            (\text{false}) \land (y \leq_{\max} z)    & \text{if } (x, y) = (b, a)                                                  \\
-                                                      & \text{and } \big((y, z) \neq (a, b)\big) \land \big((y, z) \neq (b, a)\big) \\
-            (\text{false}) \land (\text{true})        & \text{if } \big((x, y) = (b, a)\big) \land \big((y, z) = (a, b)\big)        \\
-        \end{cases}                                      \\
-        \implies & (x \leq_{\max} z) \lor (x \leq_{\max} y) \lor (y \leq_{\max} z) \\
-        \implies & x \leq_{\max} z
+             & \forall\ x, y, z \in X, (x \leq_T y) \land (y \leq_T z)                                \\
+        \iff & \begin{cases}
+            \big((x, y) = (a, b)\big) \land \big((y, z) = (a, b)\big) & \iff \text{false}    \\
+            \big((x, y) = (a, b)\big) \land (y =_X z)                 & \iff (x, z) = (a, b) \\
+            (x =_X y) \land \big((y, z) = (a, b)\big)                 & \iff (x, z) = (a, b) \\
+            (x =_X y) \land (y =_X z)                                 & \iff x =_X y =_X z
+        \end{cases}                                                             \\
+        \iff & (\text{false}) \lor \big((x, z) = (a, b)\big) \lor (x =_X z)                           \\
+        \iff & x \leq_T z,                                                  & \text{(vacuously true)}
     \end{align*}
+    we know that \((X, \leq_T)\) is transitive.
+    Since \((X, \leq_T)\) is reflexive, anti-symmetric and transitive, by Definition \ref{8.5.1} we know that \((X, \leq_T)\) is partially ordered.
+    Thus \(\leq_T \in P\).
+    Then we must have \(\leq_T \preceq \leq_{\max}\).
+    But we know that \(a \leq_T b\) does not implies \(a \leq_{\max} b\), a contradiction.
+    Thus \((X, \leq_{\max})\) is totally ordered.
+
+    Finally we show that any partial order \((X, \leq)\), there exists a total order \(\leq'\) such that \(\leq \preceq \leq'\).
+    Since \(\leq \preceq \leq_{\max}\) and \(\leq_{\max}\) is totally ordered, the claim follows.
 \end{proof}
 
 \begin{exercise}\label{ex 8.5.17}
