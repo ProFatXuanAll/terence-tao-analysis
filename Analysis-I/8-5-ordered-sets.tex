@@ -1023,9 +1023,73 @@
 
 \begin{exercise}\label{ex 8.5.17}
     Use Zorn's lemma (Lemma \ref{8.5.15}) to give another proof of the claim in Exercise \ref{ex 8.4.2}.
-    Deduce that Zorn's lemma (Lemma \ref{8.5.15}) and the axiom of choice are in fact logically equivalent
+    Deduce that Zorn's lemma (Lemma \ref{8.5.15}) and the axiom of choice (Axiom \ref{8.1}) are in fact logically equivalent
     (i.e., they can be deduced from each other).
 \end{exercise}
+
+\begin{proof}
+    Let \(I\) be a set, and for each \(\alpha \in I\) let \(X_{\alpha}\) be a non-empty set.
+    Suppose that all the sets \(X_{\alpha}\) are disjoint from each other, i.e., \(X_{\alpha} \cap X_{\beta} = \emptyset\) for all distinct \(\alpha, \beta \in I\).
+    We want to show that there exists a set \(Y\) such that \(\#(Y \cap X_{\alpha}) = 1\) for all \(\alpha \in I\).
+
+    We define a set \(\Omega\) as follow:
+    \[
+        \Omega = \{Y \subseteq \bigcup_{\alpha \in I} X_{\alpha} : \#(Y \cap X_{\alpha}) \leq 1 \text{ for all } \alpha \in I\}.
+    \]
+    Clearly, \(\emptyset \in \Omega\), thus \(\Omega \neq \emptyset\).
+    By Example \ref{8.5.2} we know that \((\Omega, \subseteq)\) is partially ordered.
+
+    Let \(S\) be a totally ordered subset of \(\Omega\).
+    We show that \(\bigcup S \in \Omega\).
+    If \(S = \emptyset\) or \(S = \{\emptyset\}\), then \(\bigcup S = \emptyset\) and \(\emptyset \in \Omega\).
+    So suppose that \(S \neq \emptyset\) and \(S \neq \{\emptyset\}\).
+    Since
+    \begin{align*}
+                 & \forall\ x \in \bigcup S, \exists\ Y \in S : x \in Y                                                                  \\
+        \implies & \#(Y) \neq 0                                                                                                          \\
+        \implies & \exists\ \beta \in I : x \in X_{\beta}               & (\forall\ \alpha \in I, \#(Y \cap X_{\alpha}) \leq 1)          \\
+        \implies & \exists!\ \beta \in I : x \in X_{\beta}              & (\forall\ \alpha \in I, X_{\alpha} \cap X_{\beta} = \emptyset)
+    \end{align*}
+    and
+    \begin{align*}
+                 & \forall\ \beta \in I, \forall\ x_1, x_2 \in \Big(X_{\beta} \cap \bigcup S\Big)                                                \\
+        \implies & \exists\ Y_1, Y_2 \in S : (x_1 \in X_{\beta} \cap Y_1) \land (x_2 \in X_{\beta} \cap Y_2)                                     \\
+                 & \land (Y_1 \subseteq Y_2 \lor Y_2 \subseteq Y_1)                                          & \text{(\(S\) is totally ordered)} \\
+        \implies & (x_1, x_2 \in X_{\beta} \cap Y_1) \lor (x_1, x_2 \in X_{\beta} \cap Y_2)                                                      \\
+        \implies & \big(\#(X_{\beta} \cap Y_1) = \#(X_{\beta} \cap Y_2) = 1\big) \land (x_1 = x_2)                                               \\
+        \implies & \#\Big(X_{\beta} \cap \bigcup S\Big) = 1,
+    \end{align*}
+    we know that \(\bigcup S \in \Omega\).
+    Thus we conclude that if \(S\) is a totally ordered subset of \(\Omega\), then \(\bigcup S \in \Omega\).
+
+    Now we show that every totally ordered subset of \(\Omega\) has a upper bound.
+    Let \(S\) be a totally ordered subset of \(\Omega\).
+    If \(S = \emptyset\), then \(\emptyset \subseteq \emptyset\) and the claim follows vacuously.
+    So suppose that \(S \neq \emptyset\).
+    Since \(\bigcup S \in \Omega\) and
+    \[
+        \forall\ Y \in S, Y \subseteq \bigcup S,
+    \]
+    by Definition \ref{8.5.12} we know that \(\bigcup S\) is an upper bound of \(S\) (under the relation \(\subseteq\)).
+    Thus we conclude that every totally ordered subset of \(\Omega\) has a upper bound.
+    By Zorn's lemma (Lemma \ref{8.5.15}) we know that \(M = \max(\Omega)\) exists.
+    We claim that \(\#(M \cap X_{\alpha}) = 1\) for every \(\alpha \in I\).
+    Suppose for sake of contradiction that \(\exists\ \beta \in I\) such that \(\#(M \cap X_{\beta}) = \#(\emptyset) = 0\).
+    Let \(x_{\beta} \in X_{\beta}\).
+    Now we define a set \(Y_{\beta} = \{x_{\beta}\}\).
+    Clearly, \(\#(Y_{\beta} \cap X_{\alpha}) = \#(\emptyset) = 0\) for every \(\alpha \in I \setminus \{\beta\}\), and \(\#(Y_{\beta} \cap X_{\beta}) = \#(\{x_{\beta}\}) = 1\).
+    Thus we have \(Y_{\beta} \in \Omega\).
+    But then we have
+    \begin{align*}
+                 & Y_{\beta} \subseteq M           \\
+        \implies & x_{\beta} \in M                 \\
+        \implies & M \cap X_{\beta} \neq \emptyset \\
+        \implies & \#(M \cap X_{\beta}) \neq 0,
+    \end{align*}
+    a contradiction.
+    Thus we have \(\#(M \cap X_{\alpha}) = 1\) for every \(\alpha \in I\).
+    By Exercise \ref{ex 8.4.2} this means Zorn's lemma and the axiom of choice are in fact logically equivalent.
+\end{proof}
 
 \begin{exercise}\label{ex 8.5.18}
     Using Zorn's lemma (Lemma \ref{8.5.15}), prove \emph{Hausdorff's maximality principle}:
