@@ -1099,6 +1099,92 @@
     Thus by Exercise \ref{ex 8.5.17}, these two statements are logically equivalent to the axiom of choice.
 \end{exercise}
 
+\begin{proof}
+    We first show that Zorn's lemma (Lemma \ref{8.5.15}) implies Hausdorff's maximality principle.
+    Suppose that \((X, \leq)\) is partially ordered.
+    Let \(X_T = \{Y \subseteq X : (Y, \leq) \text{ is totally ordered}\}\).
+    By Exercise \ref{ex 8.5.1} we know that \(\emptyset\) is totally ordered, thus \(\emptyset \in X_T\) and \(X_T \neq \emptyset\).
+    By Example \ref{8.5.2} we know that \((X_T, \subseteq)\) is partially ordered.
+
+    Let \(S \subseteq X_T\) such that \((S, \subseteq)\) is totally ordered.
+    We claim that \(\bigcup S \in X_T\).
+    Clearly \(\bigcup S \subseteq X\).
+    If \(S = \emptyset\), then \(\bigcup S = \emptyset\) and \(\emptyset \in X_T\).
+    So suppose that \(S \neq \emptyset\).
+    Since
+    \[
+        \forall\ x \in \bigcup S, \exists\ Y \in S : x \in Y \implies x \leq x,
+    \]
+    we know that \((\bigcup S, \leq)\) is reflexive.
+    Since
+    \begin{align*}
+        & \forall\ x_1, x_2 \in \bigcup S, (x_1 \leq x_2) \land (x_2 \leq x_1) \\
+        \implies & \exists\ Y_1, Y_2 \in S : (x_1 \in Y_1) \land (x_2 \in Y_2) \\
+        & \land (Y_1 \subseteq Y_2 \lor Y_2 \subseteq Y_1) & \text{(\((S, \subseteq)\) is totally ordered)} \\
+        \implies & (x_1, x_2 \in Y_1) \lor (x_1, x_2 \in Y_2) \\
+        \implies & x_1 = x_2,
+    \end{align*}
+    (the last implication follows since \((Y_1, \leq)\), \((Y_2, \leq)\) are partially ordered)
+    we know that \((\bigcup S, \leq)\) is anti-symmetric.
+    Since
+    \begin{align*}
+        & \forall\ x_1, x_2, x_3 \in \bigcup S, (x_1 \leq x_2) \land (x_2 \leq x_3) \\
+        \implies & \exists\ Y_1, Y_2, Y_3 \in S : \\
+        & (x_1 \in Y_1) \land (x_2 \in Y_2) \land (x_3 \in Y_3) \\
+        & \land (Y_1 \subseteq Y_2 \lor Y_2 \subseteq Y_1) & \text{(\((S, \subseteq)\) is totally ordered)} \\
+        & \land (Y_1 \subseteq Y_3 \lor Y_3 \subseteq Y_1) \\
+        & \land (Y_2 \subseteq Y_3 \lor Y_3 \subseteq Y_2) \\
+        \implies & (x_1, x_2, x_3 \in Y_1) \lor (x_1, x_2, x_3 \in Y_2) \lor (x_1, x_2, x_3 \in Y_3) \\
+        \implies & x_1 \leq x_3,
+    \end{align*}
+    (the last implication follows since \((Y_1, \leq)\), \((Y_2, \leq)\), \((Y_3, \leq)\) are partially ordered)
+    we know that \((\bigcup S, \leq)\) is transitive.
+    Since \((\bigcup S, \leq)\) is reflexive, anti-symmetric and transitive, by Definition \ref{8.5.1} we know that \((\bigcup S, \leq)\) is partially ordered.
+    Since
+    \begin{align*}
+        & \forall\ x_1, x_2 \in \bigcup S, \exists\ Y_1, Y_2 \in S : \\
+        & (x_1 \in Y_1) \land (x_2 \in Y_2) \\
+        & \land (Y_1 \subseteq Y_2 \lor Y_2 \subseteq Y_1) & \text{(\((S, \subseteq)\) is totally ordered)} \\
+        \implies & (x_1, x_2 \in Y_1) \lor (x_1, x_2 \in Y_2) \\
+        \implies & (x_1 \leq x_2) \lor (x_2 \leq x_1), & \text{(\((Y_1, \leq)\), \((Y_2, \leq)\) are totally ordered)}
+    \end{align*}
+    by Definition \ref{8.5.3} we know that \((\bigcup S, \leq)\) is totally ordered.
+    Thus \(\bigcup S \in X_T\).
+
+    Next we show that every totally ordered subset of \(X_T\) has a upper bound.
+    Let \(S \subseteq X_T\) such that \((S, \subseteq)\) is totally ordered.
+    Since \(\bigcup S \in X_T\) and
+    \[
+        \forall\ Y \in S, Y \subseteq \bigcup S,
+    \]
+    by Definition \ref{8.5.12} we know that \(\bigcup S\) is an upper bound of \(S\) (under the relation \(\subseteq\)).
+    Thus the claim follows.
+
+    By Zorn's lemma (Lemma \ref{8.5.15}) we know that \(\max((X_T, \subseteq))\) exists.
+    By Definition \ref{8.5.5} we know that
+    \[
+        \forall\ Y \in X_T, Y \subseteq \max((X_T, \subseteq)).
+    \]
+    Thus we conclude that Zorn's lemma implies Hausdorff's maximality principle.
+
+    Finally we show that Hausdorff's maximality principle implies Zorn's lemma.
+    Suppose that \((X, \leq)\) is partially ordered and every totally ordered subset of \(X\) has a upper bound.
+    Let \(X_T = \{Y \subseteq X : (Y, \leq) \text{ is totally ordered}\}\).
+    By hypothesis we know that \(Y_{\max} = \max\big((X_T, \subseteq)\big)\) exists.
+    We want to show that \(\max\big((X, \leq)\big)\) exists.
+
+    Suppose for sake of contradiction that \(\max\big((X, \leq)\big)\) does not exists.
+    Then every totally ordered subset of \(X\) must have a strictly upper bound.
+    To be precise, let \(Y \subseteq X\) such that \((Y, \leq)\) is totally ordered.
+    Let \(u(Y)\) be the upper bound of \(Y\).
+    Then \(\exists\ s(Y) \in X\) such that \(s(Y)\) is a strict upper bound of \(Y\), i.e., \(u(Y) < s(Y)\).
+    If such strict upper bound \(s(Y)\) does not exists, then by Definition \ref{8.5.5} we must have \(u(Y) = \max\big((X, \leq)\big)\), a contradiction.
+    Since \((Y_{\max}, \leq)\) is totally ordered, we know that \(\exists\ s(Y_{\max}) \in X\) such that \(u(Y_{\max}) < s(Y_{\max})\).
+    But then \(\big(Y_{\max} \cup \{s(Y_{\max}\big)\}, \leq)\) is totally ordered and \(Y_{\max} \subseteq Y_{\max} \cup \{s(Y_{\max})\}\), a contradiction.
+    Thus \(\max\big((X, \leq)\big)\) must exists.
+    We conclude that Zorn's lemma, Hausdorff's maximality principle and axiom of choice are logically equivalent.
+\end{proof}
+
 \begin{exercise}\label{ex 8.5.19}
     Let \(X\) be a set, and let \(\Omega\) be the space of all pairs \((Y, \leq)\), where \(Y\) is a subset of \(X\) and \(\leq\) is a well-ordering of \(Y\).
     If \((Y, \leq)\) and \((Y', \leq')\) are elements of \(\Omega\), we say that \((Y, \leq)\) is an \emph{initial segment} of \((Y', \leq')\) if there exists an \(x \in Y'\) such that \(Y \coloneqq \{y \in Y' : y <' x\}\) (so in particular \(Y \subsetneq Y'\)), and for any \(y, y' \in Y\), \(y \leq y'\) if and only if \(y \leq' y'\).
