@@ -116,7 +116,7 @@
 
 \begin{proof}
     The intuition behind this lemma is that one is trying to perform the following algorithm:
-    we initalize \(Y \coloneqq \{x_0\}\).
+    we initialize \(Y \coloneqq \{x_0\}\).
     If \(Y\) has no strict upper bound, then we are done;
     otherwise, we choose a strict upper bound and add it to \(Y\).
     Then we look again to see if \(Y\) has a strict upper bound or not.
@@ -965,22 +965,22 @@
     Since \((X, \leq_S)\) is reflexive, anti-symmetric and transitive, by Definition \ref{8.5.1} we know that \((X, \leq_S)\) is partially ordered.
     Thus \((X, \leq_S) \in P\).
 
-    Next we show that every totally ordered subset of \(P\) has a upper bound.
+    Next we show that every totally ordered subset of \(P\) has an upper bound.
     Let \(S \subseteq P\) such that \((S, \preceq)\) is totally ordered.
     If \(S = \emptyset\), by Exercise \ref{ex 8.5.1} we know that \((\emptyset, \preceq)\) is totally ordered, and the statement
     \[
         \forall\ (X, \leq) \in \emptyset, \leq \preceq \leq'
     \]
     is vacuously true for every \((X, \leq') \in P\).
-    Thus \((\emptyset, \preceq)\) has a upper bound in \(P\).
+    Thus \((\emptyset, \preceq)\) has an upper bound in \(P\).
     So suppose that \(S \neq \emptyset\).
-    Then the relation \((S, \leq_S)\) defined as above is a upper bound of \(S\) since for every \((X, \leq) \in S\), we have
+    Then the relation \((S, \leq_S)\) defined as above is an upper bound of \(S\) since for every \((X, \leq) \in S\), we have
     \begin{align*}
                  & \forall\ x, y \in X, x \leq y                                                 \\
         \implies & x \leq_S y                    & \text{(by the definition of \((X, \leq_S)\))} \\
         \implies & \leq \preceq \leq_S.
     \end{align*}
-    Thus every totally ordered subset of \(P\) has a upper bound.
+    Thus every totally ordered subset of \(P\) has an upper bound.
 
     By Zorn's lemma (Lemma \ref{8.5.15}) we know that \((X, \leq_{\max}) = \max\big((P, \preceq)\big)\) exists.
     We show that \((X, \leq_{\max})\) is totally ordered.
@@ -1067,7 +1067,7 @@
     we know that \(\bigcup S \in \Omega\).
     Thus we conclude that if \(S \subseteq \Omega\) and \((S, \subseteq)\) is totally ordered, then \(\bigcup S \in \Omega\).
 
-    Now we show that every totally ordered subset of \(\Omega\) has a upper bound.
+    Now we show that every totally ordered subset of \(\Omega\) has an upper bound.
     Let \(S \subseteq \Omega\) such that \((S, \subseteq)\) is totally ordered.
     If \(S = \emptyset\), then \(\emptyset \subseteq \emptyset\) and the claim follows vacuously.
     So suppose that \(S \neq \emptyset\).
@@ -1076,7 +1076,7 @@
         \forall\ Y \in S, Y \subseteq \bigcup S,
     \]
     by Definition \ref{8.5.12} we know that \(\bigcup S\) is an upper bound of \(S\) (under the relation \(\subseteq\)).
-    Thus we conclude that every totally ordered subset of \(\Omega\) has a upper bound.
+    Thus we conclude that every totally ordered subset of \(\Omega\) has an upper bound.
     By Zorn's lemma (Lemma \ref{8.5.15}) we know that \(M = \max\big((\Omega, \subseteq)\big)\) exists.
     We claim that \(\#(M \cap X_{\alpha}) = 1\) for every \(\alpha \in I\).
     Suppose for sake of contradiction that \(\exists\ \beta \in I\) such that \(\#(M \cap X_{\beta}) = \#(\emptyset) = 0\).
@@ -1156,7 +1156,7 @@
     by Definition \ref{8.5.3} we know that \((\bigcup S, \leq)\) is totally ordered.
     Thus \(\bigcup S \in X_T\).
 
-    Next we show that every totally ordered subset of \(X_T\) has a upper bound.
+    Next we show that every totally ordered subset of \(X_T\) has an upper bound.
     Let \(S \subseteq X_T\) such that \((S, \subseteq)\) is totally ordered.
     Since \(\bigcup S \in X_T\) and
     \[
@@ -1173,7 +1173,7 @@
     Thus we conclude that Zorn's lemma implies Hausdorff's maximality principle.
 
     Finally we show that Hausdorff's maximality principle implies Zorn's lemma.
-    Suppose that \((X, \leq)\) is partially ordered and every totally ordered subset of \(X\) has a upper bound.
+    Suppose that \((X, \leq)\) is partially ordered and every totally ordered subset of \(X\) has an upper bound.
     Let \(X_T = \{Y \subseteq X : (Y, \leq) \text{ is totally ordered}\}\).
     By hypothesis we know that \(Y_{\max} = \max\big((X_T, \subseteq)\big)\) exists.
     We want to show that \(\max\big((X, \leq)\big)\) exists.
@@ -1198,11 +1198,153 @@
     There is exactly one minimal element of \(\Omega\);
     what is it?
     Show that the maximal elements of \(\Omega\) are precisely the well-orderings \((X, \leq)\) of \(X\).
-    Using Zorn's lemma (Lemma \ref{8.5.15}), conclude the well ordering principle:
+    Using Zorn's lemma (Lemma \ref{8.5.15}), conclude the \emph{well-ordering principle}:
     every set \(X\) has at least one well-ordering.
     Conversely, use the well-ordering principle to prove the axiom of choice, Axiom \ref{8.1}.
     We thus see that the axiom of choice, Zorn's lemma (Lemma \ref{8.5.15}), and the well-ordering principle are all logically equivalent to each other.
 \end{exercise}
+
+\begin{proof}
+    We first show that \((\Omega, \preceq)\) is partially ordered.
+    Since
+    \[
+        \forall\ (Y, \leq), \in \Omega, (Y, \leq) = (Y, \leq) \implies (Y, \leq) \preceq (Y, \leq),
+    \]
+    we know that \((\Omega, \preceq)\) is reflexive.
+    Since
+    \begin{align*}
+             & \forall\ (Y_1, \leq_1), (Y_2, \leq_2) \in \Omega, \big((Y_1, \leq_1) \preceq (Y_2, \leq_2)\big) \land \big((Y_2, \leq_2) \preceq (Y_1, \leq_1)\big) \\
+        \iff & \begin{cases}
+            \big((Y_1, \leq_1) = (Y_2, \leq_2)\big) \land \big((Y_2, \leq_2) = (Y_1, \leq_1)\big)     \\
+            \big((Y_1, \leq_1) = (Y_2, \leq_2)\big) \land (Y_2 \text{ is an initial segment of } Y_1) \\
+            (Y_1 \text{ is an initial segment of } Y_2) \land \big((Y_2, \leq_2) = (Y_1, \leq_1)\big) \\
+            (Y_1 \text{ is an initial segment of } Y_2) \land (Y_2 \text{ is an initial segment of } Y_1)
+        \end{cases}                                                                                                                          \\
+        \iff & \begin{cases}
+            (Y_1, \leq_1) = (Y_2, \leq_2)          \\
+            (Y_1 = Y_2) \land (Y_2 \subsetneq Y_1) \\
+            (Y_1 \subsetneq Y_2) \land (Y_1 = Y_2) \\
+            (Y_1 \subsetneq Y_2) \land (Y_2 \subsetneq Y_1)
+        \end{cases}                                                                                                                          \\
+        \iff & \big((Y_1, \leq_1) = (Y_2, \leq_2)\big) \lor (\text{false})                                                                                         \\
+        \iff & (Y_1, \leq_1) = (Y_2, \leq_2),
+    \end{align*}
+    we know that \((\Omega, \preceq)\) is anti-symmetric.
+    Since
+    \begin{align*}
+             & \forall\ (Y_1, \leq_1), (Y_2, \leq_2), (Y_3, \leq_3) \in \Omega, \big((Y_1, \leq_1) \preceq (Y_2, \leq_2)\big) \land \big((Y_2, \leq_2) \preceq (Y_3, \leq_3)\big) \\
+        \iff & \begin{cases}
+            \big((Y_1, \leq_1) = (Y_2, \leq_2)\big) \land \big((Y_2, \leq_2) = (Y_3, \leq_3)\big)     \\
+            \big((Y_1, \leq_1) = (Y_2, \leq_2)\big) \land (Y_2 \text{ is an initial segment of } Y_3) \\
+            (Y_1 \text{ is an initial segment of } Y_2) \land \big((Y_2, \leq_2) = (Y_3, \leq_3)\big) \\
+            (Y_1 \text{ is an initial segment of } Y_2) \land (Y_2 \text{ is an initial segment of } Y_3)
+        \end{cases}                                                                                                                                         \\
+        \iff & \begin{cases}
+            (Y_1, \leq_1) = (Y_3, \leq_3)                                                  \\
+            Y_1 \text{ is an initial segment of } Y_3                                      \\
+            Y_1 \text{ is an initial segment of } Y_3                                      \\
+            \big((\exists\ y_2 \in Y_2 : Y_1 = \{y \in Y_2 : y <_2 y_2\})                  \\
+            \quad \land (\forall\ y_1, y_1' \in Y_1, y_1 \leq_1 y_1' \iff y_1 \leq_2 y_1') \\
+            \quad \land (\exists\ y_3 \in Y_3 : Y_2 = \{y \in Y_3 : y <_3 y_3\})           \\
+            \quad \land (\forall\ y_2, y_2' \in Y_2, y_2 \leq_2 y_2' \iff y_2 \leq_3 y_2')\big)
+        \end{cases}                                                                                                                                         \\
+        \iff & \begin{cases}
+            (Y_1, \leq_1) = (Y_3, \leq_3)                                 \\
+            Y_1 \text{ is an initial segment of } Y_3                     \\
+            Y_1 \text{ is an initial segment of } Y_3                     \\
+            \big((\exists\ y_3 \in Y_3 : Y_1 = \{y \in Y_3 : y <_2 y_3\}) \\
+            \quad \land (\forall\ y_1, y_1' \in Y_1, y_1 \leq_1 y_1' \iff y_1 \leq_3 y_1')\big)
+        \end{cases}                                                                                                                                         \\
+        \iff & \big((Y_1, \leq_1) = (Y_3, \leq_3)\big) \lor (Y_1 \text{ is an initial segment of } Y_3)                                                                           \\
+        \iff & (Y_1, \leq_1) \preceq (Y_3, \leq_3),
+    \end{align*}
+    we know that \((\Omega, \preceq)\) is transitive.
+    Since \((\Omega, \preceq)\) is reflexive, anti-symmetric and transitive, by Definition \ref{8.5.1} we know that \((\Omega, \preceq)\) is partially ordered.
+
+    Next we show that \(\min\big((\Omega, \preceq)\big)\) exists.
+    We claim that \((\emptyset, \leq_{\emptyset}) = \min\big((\Omega, \preceq)\big)\).
+    By Exercise \ref{ex 8.5.1} we know that \((\emptyset, \leq_{\emptyset})\) is well-ordered.
+    Let \((Y, \leq) \in \Omega\).
+    Now we split into two cases:
+    \begin{itemize}
+        \item If \(Y = \emptyset\), then we know that
+              \[
+                  \forall\ y_1, y_2 \in \emptyset, y_1 \leq_{\emptyset} y_2 \iff y_1 \leq y_2
+              \]
+              is vacuously true.
+              Thus we have \((\emptyset, \leq_{\emptyset}) = (\emptyset, \leq)\) and \((\emptyset, \leq_{\emptyset}) \preceq (\emptyset, \leq)\).
+        \item If \(Y \neq \emptyset\), then by Definition \ref{8.5.8} we know that \(y_{\min} = \min\big((Y, \leq)\big)\) exists.
+              By Definition \ref{8.5.5} we know that
+              \[
+                  \emptyset = \{y \in Y : y < y_{\min}\}.
+              \]
+              Since
+              \[
+                  \forall\ y_1, y_2 \in \emptyset, y_1 \leq_{\emptyset} y_2 \iff y_1 \leq y_2
+              \]
+              is vacuously true, we know that \(\emptyset\) is an initial segment of \((Y, \leq)\).
+              Thus \((\emptyset, \leq_{\emptyset}) \preceq (\emptyset, \leq)\).
+    \end{itemize}
+    From all cases above we conclude that \((\emptyset, \leq_{\emptyset}) \preceq (\emptyset, \leq)\).
+    Since \((Y, \leq)\) is arbitrary, we know that \((\emptyset, \leq_{\emptyset}) = \min\big((\Omega, \preceq)\big)\).
+
+    Next we show that if \(S \subseteq \Omega\) and \((S, \preceq)\) is well-ordered, then there exists a well-ordered relation \(\leq_S\) on \(\bigcup S\) and \((\bigcup S, \leq_S) \in \Omega\).
+    If \(S = \emptyset \lor S = \{\emptyset\}\), then \(\bigcup S = \emptyset\).
+    By Exercise \ref{ex 8.5.1} we know that \((\emptyset, \leq_{\emptyset})\) is well-ordered, thus \((\emptyset, \leq_{\emptyset}) \in \Omega\).
+    So suppose that \(S \neq \emptyset \land S \neq \{\emptyset\}\).
+    Observe that
+    \begin{align*}
+                 & \forall\ y_1, y_2 \in \bigcup S                                                                                                              \\
+        \implies & \exists\ (Y_1, \leq_1), (Y_2, \leq_2) \in S : (y_1 \in Y_1) \land (y_2 \in Y_2)                                                              \\
+        \implies & \big((Y_1, \leq_1) \preceq (Y_2, \leq_2)\big) \lor \big((Y_2, \leq_2) \preceq (Y_1, \leq_1)\big) & \text{(\((S, \preceq)\) is well-ordered)} \\
+        \implies & \begin{cases}
+            (Y_1, \leq_1) = (Y_2, \leq_2)             \\
+            Y_1 \text{ is an initial segment of } Y_2 \\
+            Y_2 \text{ is an initial segment of } Y_1
+        \end{cases}                                                                                                                   \\
+        \implies & (Y_1 \subseteq Y_2) \lor (Y_2 \subseteq Y_1)                                                                                                 \\
+        \implies & (y_1 \leq_1 y_2) \lor (y_1 \leq_2 y_2).
+    \end{align*}
+    We know that \(\exists\ (Y_S, \leq_S) \in S\) such that \(\forall\ y \in \bigcup S \implies y \in Y_S\).
+    If not, then we would have some \(y_1, y_2 \in \bigcup S\) such that
+    \[
+        (y_1 \in Y_S) \land (y_2 \in Y_S') \land (y_1 \notin Y_S' \lor y_2 \notin Y_S) \text{ for some } (Y_S, \leq_S), (Y_S', \leq_S') \in S.
+    \]
+    But this contradict to \(Y_S \subseteq Y_S' \lor Y_S' \subseteq Y_S\).
+    So such \((Y_S, \leq_S)\) must exists.
+    Since \((Y_S, \leq_S)\) is well-ordered and \(\bigcup S \subseteq Y_S\), by Definition \ref{8.5.8} \((\bigcup S, \leq_S) \in \Omega\).
+
+    Next we show that if \(S \subseteq \Omega\) and \((S, \preceq)\) is totally ordered, then there exists an upper bound of \((S, \preceq)\) in \(\Omega\).
+    Since \((\bigcup S, \leq_S) \in \Omega\) and
+    \begin{align*}
+                 & \forall\ (Y, \leq) \in S, Y \subseteq \bigcup S \\
+        \implies & \begin{cases}
+            Y = \bigcup S \\
+            Y \subsetneq \bigcup S
+        \end{cases}                      \\
+        \implies & \begin{cases}
+            (Y, \leq) = (\bigcup S, \leq_S) \\
+            Y \text{ is an initial segment of } \bigcup S
+        \end{cases}                      \\
+        \implies & (Y, \leq) \preceq (\bigcup S, \leq_S),
+    \end{align*}
+    we know that \((\bigcup S, \leq_S)\) is an upper bound of \((S, \preceq)\).
+    Since \(S\) is arbitrary, we conclude that every totally ordered subset of \(\Omega\) has an upper bound.
+    By Zorn's lemma (Lemma \ref{8.5.15}) we know that \((Y_{\max}, \leq_{\max}) = \max\big((\Omega, \preceq)\big)\) exists.
+    By the definition of \(\Omega\) we know that \((Y_{\max}, \leq_{\max})\) is well-ordered.
+    We conclude that the well-ordering principle is true, i.e., every \(X\) has at least one well-ordering \(\max\big((\Omega, \preceq)\big)\).
+
+    Finally we use well-ordering principle to prove axiom of choice (Axiom \ref{8.1}).
+    Suppose that every set has at least one well-ordering.
+    Let \(I\) be a set and let every \(\alpha \in I\) map to a set \(X_{\alpha}\).
+    Since \(\bigcup_{\alpha \in I} X_{\alpha}\) is a set, we know that there exists a well-ordering \(\leq\) on \(\bigcup_{\alpha \in I} X_{\alpha}\).
+    Since \(X_{\beta} \subseteq \bigcup_{\alpha \in I} X_{\alpha}\) for every \(\beta \in I\), by Definition \ref{8.5.8} we know that \(\min\big((X_{\beta}, \leq)\big)\) exists.
+    Now we define \(f : I \to \bigcup_{\alpha \in I} X_{\alpha}\) as follow:
+    \[
+        \forall\ \alpha \in I, f(\alpha) = \min\big((X_{\alpha}, \leq)\big)
+    \]
+    Then we know that \(f \in \prod_{\alpha \in I} X_{\alpha}\), so \(\prod_{\alpha \in I} X_{\alpha} \neq \emptyset\) and axiom of choice is true.
+\end{proof}
 
 \begin{exercise}\label{ex 8.5.20}
     Let \(X\) be a set, and let \(\Omega \subseteq 2^X\) be a collection of subsets of \(X\).
