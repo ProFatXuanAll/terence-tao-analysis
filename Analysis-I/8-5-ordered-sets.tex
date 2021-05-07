@@ -278,7 +278,7 @@
               \[
                   (1 \leq_X 1) \land (1 \leq_X 2) \land (2 \leq_X 2) \land (2 \leq_X 4) \land (4 \leq_X 4),
               \]
-              we know that when pairs of \(a, b \in X\) satisfing \(a \leq_X b \land b \leq_X a\) we must have \(a = b\), thus \((X, \leq_X)\) is anti-symmetric.
+              we know that when pairs of \(a, b \in X\) satisfying \(a \leq_X b \land b \leq_X a\) we must have \(a = b\), thus \((X, \leq_X)\) is anti-symmetric.
               Since we have \((1 \leq_X 2) \land (2 \leq_X 4)\) but not \(1 \leq_X 4\), we know that \((X, \leq_X)\) is not transitive.
         \item Let \(X = \mathbf{Z}\) be a set and let \(\leq_X\) be the relation
               \[
@@ -1372,3 +1372,85 @@
     Using Zorn's lemma, show that there is a subcollection \(\Omega' \subseteq \Omega\) such that all the elements of \(\Omega'\) are disjoint from each other (i.e., \(A \cap B = \emptyset\) whenever \(A, B\) are distinct elements of \(\Omega'\)), but that all the elements of \(\Omega\) intersect at least one element of \(\Omega'\) (i.e., for all \(C \in \Omega\) there exists \(A \in \Omega'\) such that \(C \cap A \neq \emptyset\)).
     Conversely, if the above claim is true, show that it implies the claim in Exercise \ref{ex 8.4.2}, and thus this is yet another claim which is logically equivalent to the axiom of choice.
 \end{exercise}
+
+\begin{proof}
+    Let \(S\) be the set
+    \[
+        S = \{A \subseteq \Omega : \forall\ A_1, A_2 \in A, A_1 \neq A_2 \implies A_1 \cap A_2 = \emptyset\}.
+    \]
+    By Example \ref{8.5.2} we know that \((S, \subseteq)\) is partially ordered.
+    Let \(S_T \subseteq S\) such that \((S_T, \subseteq)\) is totally ordered.
+    We claim that \(\bigcup S_T \in S\) and \(\bigcup S_T\) is an upper bound of \((S_T, \subseteq)\).
+    Clearly, \(\bigcup S_T \subseteq \Omega\).
+    Since
+    \begin{align*}
+                 & \forall\ A_1, A_2 \in \bigcup S_T, A_1 \neq A_2                                                                  \\
+        \implies & \exists\ S_1, S_2 \in S_T : (A_1 \in S_1) \land (A_2 \in S_2)                                                    \\
+        \implies & (S_1 \subseteq S_2) \lor (S_2 \subseteq S_1)                  & \text{(\((S_T, \subseteq)\) is totally ordered)} \\
+        \implies & (A_1, A_2 \in S_1) \lor (A_1, A_2 \in S_2)                                                                       \\
+        \implies & A_1 \cap A_2 = \emptyset,
+    \end{align*}
+    we know that \(\bigcup S_T \in S\).
+    Since \(\bigcup S_T \in S\) and
+    \[
+        \forall\ A \in S_T, A \subseteq \bigcup S_T,
+    \]
+    we know that \(\bigcup S_T\) is an upper bound of \((S_T, \subseteq)\).
+    Thus we conclude that every totally ordered subset of \(S\) has an upper bounded.
+
+    By Zorn's lemma (Lemma \ref{8.5.15}) we know that \(\Omega' = \max\big((S, \subseteq)\big)\) exists.
+    Clearly, \(\Omega' \subseteq \Omega\).
+    Since \(\Omega' \in S\), we know that all the elements of \(\Omega'\) are disjoint from each other.
+    Now we show that \(\forall\ C \in \Omega\), \(\exists\ A \in \Omega'\) such that \(C \cap A \neq \emptyset\).
+    Suppose for sake of contradiction that \(\exists\ C \in \Omega\) such that \(\forall\ A \in \Omega'\), \(C \cap A = \emptyset\).
+    By hypothesis we know that \(C \neq \emptyset\).
+    Then we have \(\{C\} \cup \Omega' \in S\) and \(\Omega' \subsetneq \{C\} \cup \Omega'\), a contradiction.
+    Thus the claim is true.
+
+    Now we show that if for any set \(X\), \(\Omega \subseteq 2^X\) and \(\exists\ \Omega' \subseteq \Omega\) such that
+    \[
+        \forall\ A_1, A_2 \in \Omega', A_1 \neq A_2 \implies A_1 \cap A_2
+    \]
+    and
+    \[
+        \forall\ C \in \Omega, \exists\ A \in \Omega' : C \cap A \neq \emptyset,
+    \]
+    then Exercise \ref{ex 8.4.2} is true.
+    Suppose that \(I\) is a set and for each \(\alpha \in I\), \(X_{\alpha}\) is a set and \(X_{\alpha} \neq \emptyset\).
+    Suppose that \(\forall\ \alpha, \beta \in I\), \(X_{\alpha} \cap X_{\beta} = \emptyset\).
+    We want to show that \(\exists\ Y\) such that \(\#(Y \cap X_{\alpha}) = 1\) for all \(\alpha \in I\).
+    Let \(X\) be the set
+    \[
+        X = (\{0\} \times I) \cup (\{1\} \times \bigcup_{\alpha \in I} X_{\alpha}),
+    \]
+    let \(\Omega \subseteq 2^X\) be the set
+    \[
+        \Omega = \big\{\{(0, \alpha), (1, x_{\alpha})\} : (\alpha \in I) \land (x_{\alpha} \in X_{\alpha})\big\}.
+    \]
+    We know that \(\exists\ \Omega' \subseteq \Omega\) satisfying the hypothesis.
+    Let \(Y\) be the set
+    \[
+        Y = \big\{x_{\beta} \in \bigcup_{\alpha \in I} X_{\alpha} | \exists\ \beta \in I : \{(0, \beta), (1, x_{\beta})\} \in \Omega'\big\}.
+    \]
+    We claim that \(\#(Y \cap X_{\alpha}) = 1\) for all \(\alpha \in I\).
+    Since
+    \begin{align*}
+                 & \forall\ \alpha \in I, X_{\alpha} \neq \emptyset                                                                               \\
+        \implies & \exists\ x_{\alpha} \in X_{\alpha}                                                                                             \\
+        \implies & \exists\ \{(0, \alpha), (1, x_{\alpha}) \in \Omega                                                                             \\
+        \implies & \exists\ \{(0, \beta), (1, x_{\beta})\} \in \Omega' :                                                 & \text{(by hypothesis)} \\
+                 & \{(0, \alpha), (1, x_{\alpha})\} \cap \{(0, \beta), (1, x_{\beta})\} \neq \emptyset                                            \\
+        \implies & (\alpha \neq \beta \implies X_{\alpha} \cap X_{\beta} = \emptyset \implies x_{\alpha} \neq x_{\beta}) & \text{(by hypothesis)} \\
+        \implies & (\alpha = \beta) \land (x_{\alpha}, x_{\beta} \in X_{\alpha} = X_{\beta})                                                      \\
+        \implies & (x_\alpha \in Y) \land (Y \cap X_{\alpha} \neq \emptyset)
+    \end{align*}
+    and
+    \begin{align*}
+                 & \forall\ x_{\alpha}, x_{\beta} \in Y                                                                                                 \\
+        \implies & \exists\ \alpha, \beta \in I : \{(0, \alpha), (1, x_{\alpha})\}, \{(0, \beta), (1, x_{\beta})\} \in \Omega'                          \\
+        \implies & \{(0, \alpha), (1, x_{\alpha})\} \cap \{(0, \beta), (1, x_{\beta})\} = \emptyset                            & \text{(by hypothesis)} \\
+        \implies & (\alpha \neq \beta) \land (x_{\alpha} \neq x_{\beta})                                                                                \\
+        \implies & \#(Y \cap X_{\alpha}) = \#(Y \cap X_{\beta}) = 1,
+    \end{align*}
+    we conclude that Exercise \ref{ex 8.4.2} is true.
+\end{proof}
