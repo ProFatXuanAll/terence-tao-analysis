@@ -143,21 +143,18 @@
     If \(x = b\) then \(x\) is also adherent to \((a, b)\).
     Otherwise \(\exists\ \varepsilon \in \mathbf{R}^+\) such that
     \[
-        \forall\ y \in (a, b), \abs*{x - y} > \varepsilon.
+        \forall\ y \in (a, b), \abs*{b - y} > \varepsilon.
     \]
     But this means
     \begin{align*}
-                 & \abs*{x - y} > \varepsilon                                                               \\
-        \implies & \abs*{b - y} > \varepsilon                        & (x = b)                              \\
-        \implies & b - y > \varepsilon                               & (y < b)                              \\
-        \implies & b - \varepsilon > y                                                                      \\
-        \implies & b > b - \varepsilon > y > a                       & (\varepsilon > 0 \land y \in (a, b)) \\
-        \implies & b - \varepsilon \in (a, b)                        & \text{(by Definition \ref{9.1.1})}   \\
-        \implies & 0 = \abs*{b - (b - \varepsilon)} \leq \varepsilon                                        \\
-        \implies & \abs*{x - (b - \varepsilon)} \leq \varepsilon,
+                 & \abs*{b - y} = b - y > \varepsilon                        & (y \in (a, b))                                    \\
+        \implies & b - \varepsilon > y                                                                                           \\
+        \implies & b > b - \varepsilon > y > a                               & (\varepsilon \in \mathbf{R}^+ \land y \in (a, b)) \\
+        \implies & b - \varepsilon \in (a, b)                                & \text{(by Definition \ref{9.1.1})}                \\
+        \implies & \varepsilon < \abs*{b - (b - \varepsilon)} = \varepsilon,
     \end{align*}
     a contradiction.
-    Thus \(x = b\) implies \(x\) is also adherent to \((a, b)\).
+    Thus \(b\) is adherent to \((a, b)\).
     Similarly when \(x = a\).
     Thus every point in \([a, b]\) is adherent to \((a, b)\).
 
@@ -167,13 +164,35 @@
     (by setting \(\varepsilon = x - b\) we have \(\forall\ y \in (a, b)\), \(\abs*{x - y} = x - y > x - b = \varepsilon\)).
     Similarly, if \(x < a\), then \(x\) is not \((a - x)\)-adherent to \((a, b)\), and is hence not an adherent point to \((a, b)\).
     This contradiction shows that \(x\) is in fact in \([a, b]\) as claimed.
+    Using similar arguments we can show that \(\overline{(a, b]} = \overline{[a, b)} = \overline{[a, b]} = [a, b]\).
 
-    Using similar arguments we can show that every point in \([a, b]\) is also adherent to \((a, b]\) and \([a, b)\), and every point \(x\) that is adherent to \((a, b]\) and \([a, b)\) lies in \([a, b]\).
+    Now we show that \(\overline{(a, \infty)} = [a, \infty)\).
+    By Lemma \ref{9.1.11} we know that \((a, \infty) \subseteq \overline{(a, \infty)}\).
+    We also know that \(a\) is an adherent point of \((a, \infty)\).
+    If not, then \(\exists\ \varepsilon \in \mathbf{R}^+\) such that
+    \[
+        \forall\ y \in (a, \infty), \abs*{a - y} > \varepsilon.
+    \]
+    But this means
+    \begin{align}
+                 & \abs*{a - y} = y - a > \varepsilon                        & (y \in (a, \infty))                               \\
+        \implies & y > a + \varepsilon                                                                                           \\
+        \implies & b > y > a + \varepsilon > a                               & (\varepsilon \in \mathbf{R}^+ \land y \in (a, b)) \\
+        \implies & a + \varepsilon \in (a, b)                                & \text{(by Definition \ref{9.1.1})}                \\
+        \implies & \varepsilon < \abs*{a - (a - \varepsilon)} = \varepsilon,
+    \end{align}
+    a contradiction.
+    Thus \(a\) is an adherent point of \((a, \infty)\) and \([a, \infty) \subseteq \overline{(a, \infty)}\).
+    Suppose for sake of contradiction that \(\exists\ x \in \overline{(a, \infty)}\) such that \(x \notin [a, \infty)\).
+    Then \(x < a\) (by Definition \ref{9.1.8} \(x \in \mathbf{R}\) so \(x \neq \infty\)).
+    But we know \(x\) is not \((a - x)\)-adherent to \((a, \infty)\), and is hence not an adherent point to \((a, b)\), a contradiction.
+    Thus \(\overline{(a, \infty)} = [a, \infty)\).
+    Using similar arguments we can show that \(\overline{[a, \infty)} = [a, \infty)\) and \(\overline{(-\infty, b)} = \overline{(-\infty, b]} = (-\infty, b]\).
 
-    Now we show that the closure of \((a, \infty)\) or \([a, \infty)\) is \([a, \infty)\).
-    From the proof above we know that the closure of \((a, \infty)\) and \([a, \infty)\) is \([a, \infty]\).
-    But since \(\forall\ x \in (a, \infty)\) the statement \(\abs*{x - \infty} \leq \varepsilon\) is undefined, thus we can only have \([a, \infty)\) as the closure of \((a, \infty)\) and \([a, \infty)\).
-                    Similar arguments show that the closure of \((-\infty, a)\) or \((-\infty, a]\) is \((-\infty, a]\), and the closure of \((-\infty, \infty)\) is \((-\infty, \infty)\).
+    Finally we show that \(\overline{(-\infty, \infty)} = (-\infty, \infty)\).
+    By Lemma \ref{9.1.11} we know that \((-\infty, \infty) \subseteq \overline{(-\infty, \infty)}\).
+    By Definition \ref{9.1.8} we know that \(\overline{(-\infty, \infty)} \subseteq \mathbf{R} = (-\infty, \infty)\).
+    Thus \(\overline{(-\infty, \infty)} = (-\infty, \infty)\).
 \end{proof}
 
 \begin{lemma}\label{9.1.13}
