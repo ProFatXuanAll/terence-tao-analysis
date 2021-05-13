@@ -189,7 +189,7 @@
 
 \begin{note}
     If \(f\) converges to \(L\) at \(x_0\) in \(X\), and \(Y\) is any subset of \(X\) such that \(x_0\) is still an adherent point of \(Y\), then \(f\) will also converge to \(L\) at \(x_0\) in \(Y\)
-    (Since \(Y \subseteq X \subseteq \mathbf{R}\)).
+    (since \(Y \subseteq X\) and \(x \in \overline{Y}\)).
     Thus convergence on a large set implies convergence on a smaller set.
     The converse, however, is not true.
 \end{note}
@@ -204,7 +204,7 @@
         \end{cases}
     \]
     Then \(\lim_{x \to 0 ; x \in (0, \infty)} \text{sgn}(x) = 1\), whereas \(\lim_{x \to 0 ; x \in (-\infty, 0)} = -1\) and \(\lim_{x \to 0 ; x \in \mathbf{R}} \text{sgn}(x)\) is undefined.
-    Thus it is sometimes dangerous to drop the set \(X\) from the notation of limit.
+    Thus it is sometimes dangerous to drop the set \(E\) from the notation of limit.
     However, in many cases it is safe to do so.
 \end{example}
 
@@ -241,27 +241,23 @@
 \end{proposition}
 
 \begin{proof}
-    We first show that \(\lim_{x \to x_0 ; x \in E} f(x) = L \implies \lim_{x \to x_0 ; x \in E \cap (x_0 - \delta, x_0 + \delta)} f(x) = L\).
-    This is true since \(E \cap (x_0 - \delta, x_0 + \delta) \subseteq E\).
-
-    Now we show that \(\lim_{x \to x_0 ; x \in E \cap (x_0 - \delta, x_0 + \delta)} f(x) = L \implies \lim_{x \to x_0 ; x \in E} f(x) = L\).
-    This is true since by Definition \ref{9.3.6} we have
+    We know that \(\lim_{x \to x_0 ; x \in E} f(x) = L \implies \lim_{x \to x_0 ; x \in E \cap (x_0 - \delta, x_0 + \delta)} f(x) = L\) since \(E \cap (x_0 - \delta, x_0 + \delta) \subseteq E\).
+    We also know that \(\lim_{x \to x_0 ; x \in E \cap (x_0 - \delta, x_0 + \delta)} f(x) = L \implies \lim_{x \to x_0 ; x \in E} f(x) = L\) since
     \begin{align*}
-                 & \lim_{x \to x_0 ; x \in E \cap (x_0 - \delta, x_0 + \delta)} f(x) = L                                                                          \\
-        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ :                                                                     \\
-                 & \bigg(\forall\ x \in E \cap (x_0 - \delta, x_0 + \delta), \abs*{x - x_0} < \delta' \implies \abs*{f(x) - L} \leq \varepsilon\bigg)             \\
-        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ :                                                                     \\
-                 & \bigg(\forall\ x \in E \land x \in (x_0 - \delta, x_0 + \delta) \land \abs*{x - x_0} < \delta' \implies \abs*{f(x) - L} \leq \varepsilon\bigg) \\
-        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ :                                                                     \\
-                 & \bigg(\forall\ x \in E \land (x_0 - \delta < x < x_0 + \delta) \land \abs*{x - x_0} < \delta' \implies \abs*{f(x) - L} \leq \varepsilon\bigg)  \\
-        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ :                                                                     \\
-                 & \bigg(\forall\ x \in E \land (-\delta < x - x_0 < \delta) \land \abs*{x - x_0} < \delta' \implies \abs*{f(x) - L} \leq \varepsilon\bigg)       \\
-        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ :                                                                     \\
-                 & \bigg(\forall\ x \in E \land \abs*{x - x_0} < \delta \land \abs*{x - x_0} < \delta' \implies \abs*{f(x) - L} \leq \varepsilon\bigg)            \\
-        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ :                                                                     \\
-                 & \bigg(\forall\ x \in E \land \abs*{x - x_0} < \min(\delta, \delta') \implies \abs*{f(x) - L} \leq \varepsilon\bigg)                            \\
+                 & \lim_{x \to x_0 ; x \in E \cap (x_0 - \delta, x_0 + \delta)} f(x) = L                                                                    \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ :                                                               \\
+                 & \big(\forall\ x \in E \cap (x_0 - \delta, x_0 + \delta), \abs*{x - x_0} < \delta' \implies \abs*{f(x) - L} \leq \varepsilon\big)         \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ :                                                               \\
+                 & \big(\forall\ x \in E, (x_0 - \delta < x < x_0 + \delta) \land (\abs*{x - x_0} < \delta') \implies \abs*{f(x) - L} \leq \varepsilon\big) \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ :                                                               \\
+                 & \big(\forall\ x \in E, (-\delta < x - x_0 < \delta) \land (\abs*{x - x_0} < \delta') \implies \abs*{f(x) - L} \leq \varepsilon\big)      \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ :                                                               \\
+                 & \big(\forall\ x \in E, (\abs*{x - x_0} < \delta) \land (\abs*{x - x_0} < \delta') \implies \abs*{f(x) - L} \leq \varepsilon\big)         \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ :                                                               \\
+                 & \big(\forall\ x \in E, \abs*{x - x_0} < \min(\delta, \delta') \implies \abs*{f(x) - L} \leq \varepsilon\big)                             \\
         \implies & \lim_{x \to x_0 ; x \in E} f(x) = L.
     \end{align*}
+    Thus we conclude that \(\lim_{x \to x_0 ; x \in E} f(x) = \lim_{x \to x_0 ; x \in E \cap (x_0 - \delta, x_0 + \delta)} f(x) = L\).
 \end{proof}
 
 \begin{note}
