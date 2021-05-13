@@ -40,51 +40,52 @@
 \end{proposition}
 
 \begin{proof}
-    We first show that the first statement implies the second statement.
+    We first show that statement (a) implies statement (b).
     Since \(f\) converges to \(L\) at \(x_0\) in \(E\), by Definition \ref{9.3.6} we have
     \[
-        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in E, \abs*{x - x_0} < \delta \implies \abs*{f(x) - L} \leq \varepsilon\bigg).
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall\ x \in E, \abs*{x - x_0} < \delta \implies \abs*{f(x) - L} \leq \varepsilon\big).
     \]
     Now we fix \(\varepsilon\), and we have some \(\delta\) satisfying the statement above, we also fix such \(\delta\).
     Let \((a_n)_{n = 0}^\infty\) be a sequence which consists entirely of elements of \(E\) and \(\lim_{n \to \infty} a_n = x_0\).
+    Such sequence exists since Lemma \ref{9.1.14}.
     By Definition \ref{6.1.5} we have
     \[
-        \forall\ \varepsilon' \in \mathbf{R}^+, \exists\ n \in \mathbf{N} : \abs*{a_N - x_0} \leq \varepsilon' \ \forall\ N \geq n.
+        \forall\ \varepsilon' \in \mathbf{R}^+, \exists\ N \in \mathbf{N} : \forall\ n \geq N, \abs*{a_n - x_0} \leq \varepsilon'.
     \]
     In particular, we have
     \[
-        \forall\ \varepsilon' < \delta, \exists\ n \in \mathbf{N} : \abs*{a_N - x_0} \leq \varepsilon' < \delta \ \forall\ N \geq n.
+        \exists\ N \in \mathbf{N} : \forall\ n \geq N, \abs*{a_n - x_0} \leq \frac{\delta}{2} < \delta.
     \]
     Since \((a_n)_{n = 0}^\infty\) consists entirely of elements of \(E\), we have
     \[
-        \abs*{a_N - x_0} < \delta \implies \abs*{f(a_N) - L} \leq \varepsilon.
+        \abs*{a_n - x_0} < \delta \implies \abs*{f(a_n) - L} \leq \varepsilon.
     \]
-    Since \(\varepsilon\) is arbitrary, we have showed that
+    Since \(\varepsilon\) is arbitrary, we have
     \[
-        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ n \in \mathbf{N} : \abs*{f(a_N) - L} \leq \varepsilon \ \forall\ N \geq n
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{N} : \forall\ n \geq N, \abs*{f(a_n) - L} \leq \varepsilon
     \]
     and by Definition \ref{6.1.5} we have \(\lim_{n \to \infty} f(a_n) = L\).
 
-    Now we show that the second statement implies the first statement.
+    Now we show that statement (b) implies statement (a).
     Suppose for sake of contradiction that \(f\) does not converge to \(L\) at \(x_0\) in \(E\).
     Then by Definition \ref{9.3.6} we have
     \[
-        \exists\ \varepsilon \in \mathbf{R}^+ : \forall\ \delta \in \mathbf{R}^+, \bigg(\forall\ x \in E, \big(\abs*{x - x_0} < \delta\big) \land \big(\abs*{f(x) - L} > \varepsilon\big)\bigg).
+        \exists\ \varepsilon \in \mathbf{R}^+ : \forall\ \delta \in \mathbf{R}^+, \Big(\forall\ x \in E, (\abs*{x - x_0} < \delta) \land \big(\abs*{f(x) - L} > \varepsilon\big)\Big).
     \]
     Let \((a_n)_{n = 0}^\infty\) be a sequence which consists entirely of elements of \(E\) and \(\lim_{n \to \infty} a_n = x_0\).
     By hypothesis we have \(\lim_{n \to \infty} f(a_n) = L\).
-    By Definition \ref{6.1.5}, the following two statements are true:
+    By Definition \ref{6.1.5} the following two statements are true:
     \begin{align*}
-         & \exists\ n_1 \in \mathbf{N} : \abs*{a_{N_1} - x_0} \leq \frac{\delta}{2} < \delta \ \forall\ N_1 \geq n_1 \\
-         & \exists\ n_2 \in \mathbf{N} : \abs*{f(a_{N_2}) - L} \leq \varepsilon \ \forall\ N_2 \geq n_2
+         & \exists\ N_1 \in \mathbf{N} : \forall\ n_1 \geq N_1, \abs*{a_{n_1} - x_0} \leq \frac{\delta}{2} < \delta \\
+         & \exists\ N_2 \in \mathbf{N} : \forall\ n_2 \geq N_2, \abs*{f(a_{n_2}) - L} \leq \varepsilon
     \end{align*}
-    Let \(n = \max(n_1, n_2)\).
+    Let \(N = \max(N_1, N_2)\).
     Then we have
     \[
-        \forall\ N \geq n, \big(\abs*{a_N - x_0} < \delta\big) \land \big(\abs*{f(a_N) - L} \leq \varepsilon\big).
+        \forall\ n \geq N, (\abs*{a_n - x_0} < \delta) \land \big(\abs*{f(a_n) - L} \leq \varepsilon\big).
     \]
-    But \(a_N \in E\), so this contradict to \(\abs*{f(a_N) - L} > \varepsilon\).
-    Thus \(f\) must converge to \(L\) at \(x_0\) in \(E\).
+    But \(a_n \in E\), so this contradict to \(\abs*{f(a_n) - L} > \varepsilon\).
+    Thus \(\lim_{x \to x_0 ; x \in E} f(x) = L\).
 \end{proof}
 
 \begin{note}
