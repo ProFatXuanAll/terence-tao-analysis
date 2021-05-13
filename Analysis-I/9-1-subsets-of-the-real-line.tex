@@ -594,7 +594,7 @@
 \end{proof}
 
 \begin{exercise}\label{ex 9.1.9}
-    Let \(X\) be a subset of the real line, and \(x\) be a real number.
+    Let \(X\) be a subset of the real line.
     Show that every adherent point of \(X\) is either a limit point or an isolated point of \(X\), but cannot be both.
     Conversely, show that every limit point and every isolated point of \(X\) is an adherent point of \(X\).
 \end{exercise}
@@ -633,9 +633,8 @@
     Now suppose that \(x\) is a isolated point of \(X\).
     Then we have
     \begin{align*}
-                 & x \in X                                                                  & \text{(by Definition \ref{9.1.18})} \\
-        \implies & \forall\ \varepsilon \in \mathbf{R}^+, 0 = \abs*{x - x} \leq \varepsilon                                       \\
-        \implies & x \in \overline{X}.                                                      & \text{(by Definition \ref{9.1.10})}
+                 & (x \in X) \land (X \subseteq \overline{X}) & \text{(by Definition \ref{9.1.18})} \\
+        \implies & x \in \overline{X}.                        & \text{(by Definition \ref{9.1.10})}
     \end{align*}
     Since \(x\) is arbitrary limit point or isolated point of \(X\), we conclude that every limit point and every isolated point of \(X\) is an adherent point of \(X\).
 \end{proof}
@@ -653,17 +652,18 @@
         \implies & \forall\ x \in X : -M \leq x \leq M                            & \text{(by Definition \ref{9.1.1})}  \\
         \implies & \forall\ x \in X : -M \leq \inf(X) \leq x \leq \sup(X) \leq M, & \text{(by Theorem \ref{6.2.11})}
     \end{align*}
-    We know that \(\inf(X)\) and \(\sup(X)\) are finite.
+    we know that \(\inf(X)\) and \(\sup(X)\) are finite.
 
     Now we show that if \(\inf(X)\) and \(\sup(X)\) are finite then \(X\) is bounded.
-    Let \(M = \abs*{\max(\inf(X), \sup(X))}\).
+    Let \(M = \max\big(\abs*{\inf(X)}, \abs*{\sup(X)}\big)\).
     Then we have
     \begin{align*}
-                 & M = \abs*{\max(\inf(X), \sup(X))}                                          \\
-        \implies & -M \leq \max(\inf(X), \sup(X)) \leq M                                      \\
-        \implies & -M \leq \inf(X) \leq \sup(X) \leq M   & \text{(by Theorem \ref{6.2.11})}   \\
-        \implies & \forall\ x \in X : -M \leq x \leq M   & \text{(by Theorem \ref{6.2.11})}   \\
-        \implies & X \subseteq [-M, M].                  & \text{(by Definition \ref{9.1.1})}
+                 & M = \max\big(\abs*{\inf(X)}, \abs*{\sup(X)}\big)                                                                        \\
+        \implies & \big(\abs*{\inf(X)} \leq M\big) \land \big(\sup(X) \leq \abs*{\sup(X)} \leq M\big)                                      \\
+        \implies & \big(-M \leq \inf(X) \leq M\big) \land \big(\sup(X) \leq M\big)                                                         \\
+        \implies & -M \leq \inf(X) \leq \sup(X) \leq M                                                & \text{(by Theorem \ref{6.2.11})}   \\
+        \implies & \forall\ x \in X, -M \leq \inf(X) \leq x \leq \sup(X) \leq M                       & \text{(by Theorem \ref{6.2.11})}   \\
+        \implies & X \subseteq [-M, M].                                                               & \text{(by Definition \ref{9.1.1})}
     \end{align*}
     Thus by Definition \ref{9.1.22} \(X\) is bounded.
 \end{proof}
