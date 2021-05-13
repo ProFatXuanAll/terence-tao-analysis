@@ -729,8 +729,8 @@
 \end{exercise}
 
 \begin{proof}
-    Let \(n \in \mathbf{N}\) and \(\forall\ i \in \mathbf{N} \land i \leq n\), let \(x_i \in \mathbf{R}\).
-    Given any sequence \((a_m)_{m = 0}^\infty\) of real numbers which taks values in \(\{x_i\}\), we know that \(\forall\ m \in \mathbf{N}\), \(a_m = x_i\).
+    Let \(n \in \mathbf{N}\) and let \(x_i \in \mathbf{R}\) for every \(i \in \mathbf{N} \land i \leq n\).
+    Given any sequence \((a_m)_{m = 0}^\infty\) of real numbers which taks values in the singleton set \(\{x_i\}\), we know that \(\forall\ m \in \mathbf{N}\), \(a_m = x_i\).
     Thus by Theorem \ref{6.1.19} we have \(\lim_{m \to \infty} a_m = x_i\).
     Since \(x_i \in \{x_i\}\), by Heine-Borel theorem (Theorem \ref{9.1.24}) we know that \(\{x_i\}\) is closed and bounded.
     Let \(S = \bigcup_{i \in \mathbf{N} : i \leq n} \{x_i\}\).
@@ -747,22 +747,25 @@
 \begin{proof}
     We first show that \(S\) is an adherent point of \(E\).
     \(\forall\ \varepsilon \in \mathbf{R}^+\), we can always find \(x \in E\) such that \(S - \varepsilon < x \leq S\).
-    Otherwise \(S - \varepsilon < S\) and \(\forall\ x \in E \implies x \leq S - \varepsilon < S\), contradict to \(S = \sup(E)\).
+    If not, then \(\exists\ \varepsilon \in \mathbf{R}^+\) such that \(S - \varepsilon < S\) and
+    \[
+        \forall\ x \in E \implies x \leq S - \varepsilon < S \implies \sup(E) \neq S,
+    \]
+    a contradiction.
     Then we have
     \begin{align*}
                  & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ x \in E : S - \varepsilon < x \leq S                                                  \\
         \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ x \in E : S - \varepsilon < x < S + \varepsilon                                       \\
         \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ x \in E : -\varepsilon < x - S < \varepsilon                                          \\
         \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ x \in E : \abs*{x - S} < \varepsilon                                                  \\
-        \implies & S \in \overline{X}.                                                                             & \text{(by Definition \ref{9.1.10})}
+        \implies & S \in \overline{E}.                                                                             & \text{(by Definition \ref{9.1.10})}
     \end{align*}
 
     Now we show that \(S\) is an adherent point of \(\mathbf{R} \setminus E\).
     Let \(\varepsilon \in \mathbf{R}^+\).
     Then we have
     \begin{align*}
-                 & \forall\ x \in E                                                                                                 \\
-        \implies & x \leq S                                                                    & \text{(by Definition \ref{5.5.5})} \\
+                 & \forall\ x \in E, x \leq S                                                  & \text{(by Definition \ref{5.5.5})} \\
         \implies & x \leq S < S + \varepsilon                                                                                       \\
         \implies & x \notin (S, S + \varepsilon)                                               & \text{(by Definition \ref{9.1.1})} \\
         \implies & E \cap (S, S + \varepsilon) = \emptyset                                                                          \\
