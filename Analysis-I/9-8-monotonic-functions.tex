@@ -27,9 +27,9 @@
 \begin{proof}
     We first show that \(f\) is bijective from \([a, b]\) to \([f(a), f(b)]\).
     Since \(a < b\) and \(f\) is strictly monotone increasing, by Definition \ref{9.8.1} we know that \(f(a) < f(b)\).
-    In particular, \(\forall\ c \in (a, b)\), we have \(a < c < b\), and thus \(f(a) < f(c) < f(b)\).
-    By Definition \ref{9.6.5}, this means \(f\) attains its minimum at \(a\) and attains its maximum at \(b\).
-    By Corollary \ref{9.7.4}, we know that \(f([a, b]) = [f(a), f(b)]\), thus \(f\) is surjective from \([a, b]\) to \([f(a), f(b)]\).
+    In particular, \(\forall\ c \in (a, b)\), we have \(a < c < b\) and \(f(a) < f(c) < f(b)\).
+    By Definition \ref{9.6.5} this means \(f\) attains its minimum at \(a\) and attains its maximum at \(b\).
+    By Corollary \ref{9.7.4} we know that \(f([a, b]) = [f(a), f(b)]\), thus \(f\) is surjective from \([a, b]\) to \([f(a), f(b)]\).
     Since \(f\) is strictly monotone increasing, by Definition \ref{9.8.1} \(x \neq y \implies f(x) \neq f(y)\), thus \(f\) is injective from \([a, b]\) to \([f(a), f(b)]\).
     Since \(f\) is both injective and surjective from \([a, b]\) to \([f(a), f(b)]\), we know that \(f\) is bijective from \([a, b]\) to \([f(a), f(b)]\).
 
@@ -44,24 +44,25 @@
     \]
     By Definition \ref{9.3.6}, it suffice to show that
     \[
-        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ y \in [f(a), f(b)], \abs*{y - y_0} < \delta \implies \abs*{f^{-1}(y) - x_0} < \varepsilon\bigg).
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall\ y \in [f(a), f(b)], \abs*{y - y_0} < \delta \implies \abs*{f^{-1}(y) - x_0} \leq \varepsilon\big).
     \]
     Now fix \(\varepsilon\).
     Let \(x_L = \max(x_0 - \varepsilon, a)\) and \(x_H = \min(x_0 + \varepsilon, b)\).
     Then \(x_L, x_H \in [a, b]\) and \(f(x_L), f(x_H)\) are well-defined.
     Since \(x_L \leq x_0 \leq x_H\) and \(f\) is strictly monotone increasing, we have \(f(x_L) < y_0 < f(x_H)\) and thus \(f(x_L) - y_0 < 0 < f(x_H) - y_0\).
-    Let \(\delta = \min(-(f(x_L) - y_0), f(x_H) - y_0)\).
+    Let \(\delta = \min\big(y_0 - f(x_L), f(x_H) - y_0\big)\).
     Then we have
     \begin{align*}
-                 & \forall\ y \in [f(a), f(b)] \land \abs*{y - y_0} < \delta                                           \\
-        \implies & -\delta < y - y_0 < \delta                                                                          \\
-        \implies & f(x_L) - y_0 \leq -\delta < y - y_0 < \delta \leq f(x_H) - y_0                                      \\
-        \implies & f(x_L) \leq y \leq f(x_H)                                                                           \\
-        \implies & \exists\ x \in [x_L, x_H] : f(x) = y \land x_L \leq x \leq x_H    & \text{(by Theorem \ref{9.7.1})} \\
-        \implies & x_0 - \varepsilon \leq x_L \leq x \leq x_H \leq x_0 + \varepsilon                                   \\
-        \implies & -\varepsilon \leq x - x_0 \leq \varepsilon                                                          \\
-        \implies & \abs*{x - x_0} \leq \varepsilon                                                                     \\
-        \implies & \abs*{f^{-1}(y) - x_0} \leq \varepsilon.
+                 & \forall\ y \in [f(a), f(b)], \abs*{y - y_0} < \delta                                                                                \\
+        \implies & -\delta < y - y_0 < \delta                                                                                                          \\
+        \implies & f(x_L) - y_0 \leq -\delta < y - y_0 < \delta \leq f(x_H) - y_0                                                                      \\
+        \implies & f(x_L) \leq y \leq f(x_H)                                                                                                           \\
+        \implies & \exists\ x \in [x_L, x_H] : \big(f(x) = y\big) \land (x_L \leq x \leq x_H)                        & \text{(by Theorem \ref{9.7.1})} \\
+        \implies & \exists\ x \in [x_L, x_H] : \big(f(x) = y\big)                                                                                      \\
+                 & \land (x_0 - \varepsilon \leq x_L \leq x \leq x_H \leq x_0 + \varepsilon)                                                           \\
+        \implies & \exists\ x \in [x_L, x_H] : \big(f(x) = y\big) \land (-\varepsilon \leq x - x_0 \leq \varepsilon)                                   \\
+        \implies & \exists\ x \in [x_L, x_H] : \big(f(x) = y\big) \land (\abs*{x - x_0} \leq \varepsilon)                                              \\
+        \implies & \exists\ x \in [x_L, x_H] : \big(f(x) = y\big) \land (\abs*{f^{-1}(y) - x_0} \leq \varepsilon).
     \end{align*}
     Since \(\varepsilon\) is arbitrary, \(f^{-1}\) is continuous at \(y_0\).
     Since \(y_0\) is arbitrary, \(f^{-1}\) is continuous on \([f(a), f(b)]\).
@@ -72,8 +73,8 @@
     Suppose for sake of contradiction that \(f^{-1}(y_1) \geq f^{-1}(y_2)\).
     Since \(f\) is strictly monotone increasing, we know that
     \begin{align*}
-                 & f^{-1}(y_1) \geq f^{-1}(y_2)                                            \\
-        \implies & f(f^{-1}(y_1)) \geq f(f^{-1}(y_2)) & \text{(by Definition \ref{9.8.1})} \\
+                 & f^{-1}(y_1) \geq f^{-1}(y_2)                                                            \\
+        \implies & f\big(f^{-1}(y_1)\big) \geq f\big(f^{-1}(y_2)\big) & \text{(by Definition \ref{9.8.1})} \\
         \implies & y_1 \geq y_2.
     \end{align*}
     But this contradict to \(y_1 < y_2\), thus \(f^{-1}(y_1) < f^{-1}(y_2)\).
@@ -88,65 +89,51 @@
     \]
     Then \(f\) is not continuous and \(f([0, 1]) = [0, 0.5) \cup [1.5, 2] \neq [0, 2]\).
 
-    Next we show that if strict monotonicity is replaced just by monotonicity, then the proposition is false.
+    Finally we show that if strict monotonicity is replaced just by monotonicity, then the proposition is false.
     Let \(f : [0, 1] \to \mathbf{R}\) be a function where \(f(x) = 1\).
-    Then \(f\) is not bijective.
+    Then \(f\) is monotone but not bijective.
+\end{proof}
 
-    Next we deal with strictly monotone decreasing functions.
-    Let \(a < b\) be real numbers, and let \(g : [a, b] \to \mathbf{R}\) be a function which is both continuous and strictly monotone decreasing.
-    Then we claim that \(g\) is a bijection from \([a, b]\) to \([g(b), g(a)]\), and the inverse \(g^{-1} : [g(b), g(a)] \to [a, b]\) is also continuous and strictly monotone decreasing.
-    To proof the claim, We first show that \(g\) is bijective from \([a, b]\) to \([g(b), g(a)]\).
-    Since \(a < b\) and \(g\) is strictly monotone decreasing, by Definition \ref{9.8.1} we know that \(g(a) > g(b)\).
-    In particular, \(\forall\ c \in (a, b)\), we have \(a < c < b\), and thus \(g(a) > g(c) > g(b)\).
-    By Definition \ref{9.6.5}, this means \(g\) attains its minimum at \(b\) and attains its maximum at \(a\).
-    By Corollary \ref{9.7.4}, we know that \(g([a, b]) = [g(b), g(a)]\), thus \(g\) is surjective from \([a, b]\) to \([g(b), g(a)]\).
-    Since \(g\) is strictly monotone decreasing, by Definition \ref{9.8.1} \(x \neq y \implies g(x) \neq g(y)\), thus \(g\) is injective from \([a, b]\) to \([g(b), g(a)]\).
-    Since \(g\) is both injective and surjective from \([a, b]\) to \([g(b), g(a)]\), we know that \(g\) is bijective from \([a, b]\) to \([g(b), g(a)]\).
+\begin{additional corollary}\label{ac 9.8.1}
+Let \(a < b\) be real numbers, and let \(f : [a, b] \to \mathbf{R}\) be a function which is both continuous and strictly monotone decreasing.
+Then \(f\) is a bijection from \([a, b]\) to \([f(b), f(a)]\), and the inverse \(f^{-1} : [f(b), f(a)] \to [a, b]\) is also continuous and strictly monotone decreasing.
+\end{additional corollary}
 
-    Next we show that \(g^{-1}\) is continuous.
-    Let \(y_0 \in [g(b), g(a)]\).
-    By Lemma \ref{9.1.12} we know that \([g(b), g(a)]\) is closed, so \(y_0\) is an adherent point of \([g(b), g(a)]\).
-    Since \(g\) is bijective from \([a, b]\) to \([g(b), g(a)]\), we know that \(\exists!\ x_0 \in [a, b]\) such that \(g(x_0) = y_0\) and thus \(g^{-1}(y_0) = x_0\).
-    Again by Lemma \ref{9.1.12} we know that \([a, b]\) is closed, so \(x_0\) is an adherent point of \([a, b]\).
-    To show that \(g^{-1}\) is continuous at \(y_0\), by Definition \ref{9.4.1} we need to show that
-    \[
-        \lim_{y \to y_0 ; y \in [g(b), g(a)]} g^{-1}(y) = g^{-1}(y_0) = x_0.
-    \]
-    By Definition \ref{9.3.6}, it suffice to show that
-    \[
-        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ y \in [g(b), g(a)], \abs*{y - y_0} < \delta \implies \abs*{g^{-1}(y) - x_0} < \varepsilon\bigg).
-    \]
-    Now fix \(\varepsilon\).
-    Let \(x_L = \max(x_0 - \varepsilon, a)\) and \(x_H = \min(x_0 + \varepsilon, b)\).
-    Then \(x_L, x_H \in [a, b]\) and \(f(x_L), f(x_H)\) are well-defined.
-    Since \(x_L \leq x_0 \leq x_H\) and \(g\) is strictly monotone decreasing, we have \(g(x_L) > y_0 > g(x_H)\) and thus \(g(x_L) - y_0 > 0 > g(x_H) - y_0\).
-    Let \(\delta = \min(-(g(x_H) - y_0), g(x_L) - y_0)\).
-    Then we have
+\begin{proof}
+    Let \(h : \mathbf{R} \to \mathbf{R}\) be the function \(h(x) = -x\).
+    We define a function \(g : [a, b] \to \mathbf{R}\) by setting \(g = -f\).
+    Then we have \(g = h \circ f\) and \(f = h \circ g\).
+    By Proposition \ref{9.4.9} we know that \(h\) is continuous on \(\mathbf{R}\), thus by Proposition \ref{9.4.13} we know that \(g\) is continuous.
+    Since \(f\) is strictly monotone decreasing, we have
     \begin{align*}
-                 & \forall\ y \in [g(b), g(a)] \land \abs*{y - y_0} < \delta                                           \\
-        \implies & -\delta < y - y_0 < \delta                                                                          \\
-        \implies & g(x_H) - y_0 \leq -\delta < y - y_0 < \delta \leq g(x_L) - y_0                                      \\
-        \implies & g(x_H) \leq y \leq g(x_L)                                                                           \\
-        \implies & \exists\ x \in [x_L, x_H] : g(x) = y \land x_L \leq x \leq x_H    & \text{(by Theorem \ref{9.7.1})} \\
-        \implies & x_0 - \varepsilon \leq x_L \leq x \leq x_H \leq x_0 + \varepsilon                                   \\
-        \implies & -\varepsilon \leq x - x_0 \leq \varepsilon                                                          \\
-        \implies & \abs*{x - x_0} \leq \varepsilon                                                                     \\
-        \implies & \abs*{g^{-1}(y) - x_0} \leq \varepsilon.
+                 & \forall\ x_1, x_2 \in [a, b], x_1 < x_2                                      \\
+        \implies & f(x_1) > f(x_2)                         & \text{(by Definition \ref{9.8.1})} \\
+        \implies & -f(x_1) < -f(x_2)                                                            \\
+        \implies & g(x_1) < g(x_2)
     \end{align*}
-    Since \(\varepsilon\) is arbitrary, \(g^{-1}\) is continuous at \(y_0\).
-    Since \(y_0\) is arbitrary, \(g^{-1}\) is continuous on \([g(b), g(a)]\).
-
-    Finally we show that \(g^{-1}\) is strictly monotone decreasing.
-    Let \(y_1, y_2 \in [g(b), g(a)]\) and \(y_1 < y_2\).
-    We want to show that \(g^{-1}(y_1) > g^{-1}(y_2)\).
-    Suppose for sake of contradiction that \(g^{-1}(y_1) \leq g^{-1}(y_2)\).
-    Since \(g\) is strictly monotone decreasing, we know that
+    and \(g\) is strictly monotone increasing.
+    Since \(g\) is monotone increasing and continuous, by Proposition \ref{9.8.3} we know that \(g : [a, b] \to [g(a), g(b)]\) is bijective and \(g^{-1} : [g(a), g(b)] \to [a, b]\) is continuous and strictly monotone increasing.
+    Since \(h\) is bijective, by Exercise \ref{ex 3.3.7} we know that \(f = h \circ g\) is bijective from \([a, b]\) to \([-g(b), -g(a)] = [f(b), f(a)]\).
+    Again by Exercise \ref{ex 3.3.7} we know that
+    \[
+        f^{-1} = g^{-1} \circ h^{-1}|_{[f(a), f(b)]}.
+    \]
+    Since \(h^{-1} = h\) is continuous, by Proposition \ref{9.4.13} we know that \(f^{-1}\) is continuous.
+    Since \(g^{-1}\) is strictly monotone increasing, we have
     \begin{align*}
-                 & g^{-1}(y_1) \leq g^{-1}(y_2)                                            \\
-        \implies & g(g^{-1}(y_1)) \geq g(g^{-1}(y_2)) & \text{(by Definition \ref{9.8.1})} \\
-        \implies & y_1 \geq y_2.
+                 & \forall\ y_1, y_2 \in [f(b), f(a)], y_1 < y_2                                                                                \\
+        \implies & \exists\ x_1, x_2 \in [a, b] :                                                                                               \\
+                 & \big(x_1 = f^{-1}(y_1)\big) \land \big(x_2 = f^{-1}(y_2)\big) \land \big(y_1 < y_2\big)                                      \\
+        \implies & \exists\ x_1, x_2 \in [a, b] :                                                                                               \\
+                 & \big(g(x_1) = -y_1\big) \land \big(g(x_2) = -y_2\big) \land \big(y_1 < y_2\big)                                              \\
+        \implies & \exists\ x_1, x_2 \in [a, b] :                                                                                               \\
+                 & \big(g(x_1) = -y_1\big) \land \big(g(x_2) = -y_2\big) \land \big(g(x_1) > g(x_2)\big)                                        \\
+        \implies & \exists\ x_1, x_2 \in [a, b] :                                                                                               \\
+                 & \big(g(x_1) = -y_1\big) \land \big(g(x_2) = -y_2\big)                                                                        \\
+                 & \land \Big(x_1 = g^{-1}\big(g(x_1)\big) > g^{-1}\big(g(x_2)\big) = x_2\Big)             & \text{(by Definition \ref{9.8.1})} \\
+        \implies & f^{-1}(y_1) > f^{-1}(y_2)
     \end{align*}
-    But this contradict to \(y_1 < y_2\), thus \(g^{-1}(y_1) > g^{-1}(y_2)\).
+    and thus by Definition \ref{9.8.1} \(f^{-1}\) is strictly monotone decreasing.
 \end{proof}
 
 \begin{example}\label{9.8.4}
@@ -266,7 +253,7 @@
 \end{exercise}
 
 \begin{proof}
-    See Proposition \ref{9.8.3}.
+    See Proposition \ref{9.8.3} and Additional Corollary \ref{ac 9.8.1}.
 \end{proof}
 
 \begin{exercise}\label{ex 9.8.5}
