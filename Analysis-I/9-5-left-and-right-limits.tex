@@ -22,7 +22,7 @@
 \end{definition}
 
 \begin{note}
-    From Proposition \ref{9.4.7} we see that if the right limit \(f(x_0+)\) exists, and \((a_n)_{n = 0}^\infty\) is a sequence in \(X\) converging to \(x_0\) from the right (i.e., \(a_n > x_0\) for all \(n \in \mathbf{N}\)), then \(\lim_{n \to \infty} f(a_n) = f(x_0+)\).
+    From Proposition \ref{9.3.9} we see that if the right limit \(f(x_0+)\) exists, and \((a_n)_{n = 0}^\infty\) is a sequence in \(X\) converging to \(x_0\) from the right (i.e., \(a_n > x_0\) for all \(n \in \mathbf{N}\)), then \(\lim_{n \to \infty} f(a_n) = f(x_0+)\).
     Similarly, if \((b_n)_{n = 0}^\infty\) is a sequence converging to \(x_0\) from the left (i.e., \(a_n < x_0\) for all \(n \in \mathbf{N}\)) then \(\lim_{n \to \infty} f(a_n) = f(x_0-)\).
 \end{note}
 
@@ -34,18 +34,14 @@ If \(f\) is continuous at \(x_0\), then \(f(x_0+)\) and \(f(x_0-)\) both exists 
 \begin{proof}
     Since \(f\) is continuous at \(x_0\), by Definition \ref{9.4.1} we know that
     \[
-        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in X, \abs*{x - x_0} < \delta \implies \abs*{f(x) - f(x_0)} < \varepsilon\bigg).
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall\ x \in X, \abs*{x - x_0} < \delta \implies \abs*{f(x) - f(x_0)} < \varepsilon\big).
     \]
-    Since \(X \cap (-\infty, x_0) \subseteq X\) and \(X \cap (x_0, \infty) \subseteq X\), we know that the following two statements are true:
-    \begin{align*}
-                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                             \\
-                 & \bigg(\forall\ x \in X \cap (-\infty, x_0), \abs*{x - x_0} < \delta \implies \abs*{f(x) - f(x_0)} < \varepsilon\bigg) \\
-        \implies & \lim_{x \to x_0 ; x \in X \cap (-\infty, x_0)} f(x) = f(x_0).                                                         \\
-                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                             \\
-                 & \bigg(\forall\ x \in X \cap (x_0, \infty), \abs*{x - x_0} < \delta \implies \abs*{f(x) - f(x_0)} < \varepsilon\bigg)  \\
-        \implies & \lim_{x \to x_0 ; x \in X \cap (x_0, \infty)} f(x) = f(x_0).
-    \end{align*}
-    Thus by Definition \ref{9.5.1} we have \(f(x_0+) = f(x_0-) = f(x_0)\).
+    Since \(X \cap (-\infty, x_0) \subseteq X\), we must have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall\ x \in X \cap (-\infty, x_0), \abs*{x - x_0} < \delta \implies \abs*{f(x) - f(x_0)} < \varepsilon\big)
+    \]
+    and by Definition \ref{9.5.1} we have \(f(x_0+) = f(x_0)\).
+    Similarly we have \(f(x_0-) = f(x_0)\).
 \end{proof}
 
 \setcounter{theorem}{2}
@@ -71,10 +67,12 @@ If \(f\) is continuous at \(x_0\), then \(f(x_0+)\) and \(f(x_0-)\) both exists 
     Now let \(\delta \coloneqq \min(\delta_-, \delta_+)\);
     then \(\delta > 0\), and suppose that \(x \in X\) is such that \(\abs*{x - x_0} < \delta\).
     Then there are three cases:
-    \(x > x_0\), \(x = x_0\), and \(x < x_0\), but in all three cases we know that \(\abs*{f(x) - L} < \varepsilon\).
-    (If \(x > x_0\), then \(x \in X \cap (x_0, \infty)\), thus \(\abs*{x - x_0} < \delta \leq \delta_+ \implies \abs*{f(x) - L} < \varepsilon\).
-    Similarly, if \(x < x_0\), then \(x \in X \cap (-\infty, x_0)\), thus \(\abs*{x - x_0} < \delta \leq \delta_- \implies \abs*{f(x) - L} < \varepsilon\).
-    If \(x = x_0\), then we have \(\abs*{x_0 - x_0} = 0 < \delta\) and \(\abs*{f(x_0) - f(x_0)} = 0 < \varepsilon\).)
+    \(x > x_0\), \(x = x_0\), and \(x < x_0\), but in all three cases we know that \(\abs*{f(x) - L} < \varepsilon\) since
+    \begin{itemize}
+        \item If \(x > x_0\), then \(x \in X \cap (x_0, \infty)\) and \(\abs*{x - x_0} < \delta \leq \delta_+ \implies \abs*{f(x) - L} < \varepsilon\).
+        \item If \(x < x_0\), then \(x \in X \cap (-\infty, x_0)\) and \(\abs*{x - x_0} < \delta \leq \delta_- \implies \abs*{f(x) - L} < \varepsilon\).
+        \item If \(x = x_0\), then we have \(\abs*{x_0 - x_0} = 0 < \delta\) and \(\abs*{f(x_0) - f(x_0)} = 0 < \varepsilon\).
+    \end{itemize}
     By Proposition \ref{9.4.7} we thus have that \(f\) is continuous at \(x_0\), as desired.
 \end{proof}
 
