@@ -293,16 +293,14 @@ Then \(f\) is a bijection from \([a, b]\) to \([f(b), f(a)]\), and the inverse \
              & > f(\gamma) + g(\gamma)                                                                                                                          \\
              & = f(\gamma) + 2^{-n}.
     \end{align*}
-    Since \(f\) is strictly monotone increasing, we have
+    But this means
     \begin{align*}
-                 & x \in (\gamma, \infty)                                                                            \\
-        \implies & x > \gamma                                                  & \text{(by Definition \ref{9.1.1})}  \\
-        \implies & f(x) > f(\gamma)                                            & \text{(by Definition \ref{9.8.1})}  \\
-        \implies & f(x) - f(\gamma) > 2^{-n}                                                                         \\
-        \implies & \abs*{f(x) - f(\gamma)} = f(x) - f(\gamma) > 2^{-n}                                               \\
-        \implies & f(\gamma^+) \neq f(\gamma)                                  & \text{(by Definition \ref{9.5.1})}  \\
-        \implies & \lim_{r \to \gamma ; r \in \mathbf{R}} f(x) \neq f(\gamma). & \text{(by Proposition \ref{9.5.3})}
+                 & \forall\ x \in (\gamma, \infty), f(x) - f(\gamma) > 2^{-n}                                                          \\
+        \implies & \forall\ x \in (\gamma, \infty), \abs*{f(x) - f(\gamma)} > 2^{-n}                                                   \\
+        \implies & f(\gamma^+) \text{ does not exist}                                & \text{(by Definition \ref{9.5.1})}              \\
+        \implies & f \text{ is not continuous at } \gamma.                           & \text{(by Additional Corollary \ref{ac 9.5.1})}
     \end{align*}
+    Since \(\gamma\) is arbitrary, we conclude that \(f\) is discontinuous at each \(\gamma \in \mathbf{Q}\).
 \end{proof}
 
 \begin{proof}{(c)}
@@ -312,22 +310,28 @@ Then \(f\) is a bijection from \([a, b]\) to \([f(b), f(a)]\), and the inverse \
     \]
     and let \(f_n : \mathbf{R} \to \mathbf{R}\) be a function
     \[
-        f_n(x) = \sum_{r \in E_n : r < x} g(r) = \sum_{r \in \mathbf{Q} : r < x \land g(r) \geq 2^{-n}} g(r).
+        f_n(x) = \sum_{r \in E_n : r < x} g(r) = \sum_{r \in \mathbf{Q} : r < x, g(r) \geq 2^{-n}} g(r).
     \]
-    Since \(q\) is bijective, there are at most \(n + 1\) rationals satisfying \(r \in \mathbf{Q} \land g(r) \geq 2^{-n}\), thus \(E_n\) is finite and non-empty.
+    Since \(q\) is bijective, there are at most \(n + 1\) rationals satisfying \((r \in \mathbf{Q}) \land \big(g(r) \geq 2^{-n}\big)\), thus \(E_n\) is finite and non-empty.
     Since \(\mathbf{R} \setminus \mathbf{Q} \subseteq \mathbf{R}\), by Lemma \ref{9.1.11} \(\forall\ x_0 \in \mathbf{R} \setminus \mathbf{Q}\), \(x_0\) is an adherent point of \(\mathbf{R} \setminus \mathbf{Q}\).
     Let \(\varepsilon \in \mathbf{R}^+\) and let \(\delta = \min\{\abs*{r - x_0} : r \in E_n\}\).
     Since \(x_0 \notin \mathbf{Q}\), we have \(\delta > 0\).
     Then we have
     \begin{align*}
-                 & \forall\ x \in \mathbf{R} \setminus \mathbf{Q}, \abs*{x - x_0} < \delta   \\
-        \implies & \big(\forall\ r \in E_n, \abs*{x - x_0} < \delta \leq \abs*{r - x_0}\big) \\
-        \implies & \big(\forall\ r \in E_n, \abs*{x - x_0} < \abs*{r - x_0}\big)             \\
-        \implies & \big(\forall\ r \in E_n, -\abs*{r - x_0} < x - x_0 < \abs*{r - x_0}\big)  \\
-        \implies & \big(\forall\ r \in E_n \land r < x_0, r - x_0 < x - x_0 < x_0 - r\big)   \\
-        \implies & \big(\forall\ r \in E_n, r < x_0 \land r < x\big)                         \\
-        \implies & \{r \in E_n : r < x\} = \{r \in E_n : r < x_0\}                           \\
-        \implies & f_n(x) = f_n(x_0)                                                         \\
+                 & \forall\ x \in \mathbf{R} \setminus \mathbf{Q}, \abs*{x - x_0} < \delta \\
+        \implies & \forall\ r \in E_n, \abs*{x - x_0} < \delta \leq \abs*{r - x_0}         \\
+        \implies & \forall\ r \in E_n, \abs*{x - x_0} < \abs*{r - x_0}                     \\
+        \implies & \forall\ r \in E_n, -\abs*{r - x_0} < x - x_0 < \abs*{r - x_0}          \\
+        \implies & \forall\ r \in E_n, \begin{cases}
+            r - x_0 < x - x_0 < x_0 - r & \text{if } r < x_0 \\
+            x_0 - r < x - x_0 < r - x_0 & \text{if } r > x_0
+        \end{cases}                          \\
+        \implies & \forall\ r \in E_n, \begin{cases}
+            r < x & \text{if } r < x_0 \\
+            r > x & \text{if } r > x_0
+        \end{cases}                          \\
+        \implies & \{r \in E_n : r < x\} = \{r \in E_n : r < x_0\}                         \\
+        \implies & f_n(x) = f_n(x_0)                                                       \\
         \implies & 0 = \abs*{f_n(x) - f_n(x_0)} < \varepsilon.
     \end{align*}
     Since \(\varepsilon\) is arbitrary, by Definition \ref{9.3.6} we have \(\lim_{x \to x_0 ; x \in \mathbf{R} \setminus \mathbf{Q}} f_n(x) = f_n(x_0)\), and by Definition \ref{9.4.1} \(f_n\) is continuous at \(x_0\).
@@ -335,16 +339,16 @@ Then \(f\) is a bijection from \([a, b]\) to \([f(b), f(a)]\), and the inverse \
     Now we show that \(f\) is continuous at \(x_0\).
     We have
     \begin{align*}
-         & \forall\ x \in \mathbf{R} \setminus \mathbf{Q}, \abs*{f(x) - f_n(x)}                                                                                 \\
-         & = \abs*{\sum_{r \in \mathbf{Q} : r < x} g(r) - \sum_{r \in E_n : r < x} g(r)}                                                                        \\
-         & = \abs*{\sum_{r \in \mathbf{Q} : r < x} g(r) - \sum_{r \in \mathbf{Q} : r < x \land g(r) \geq 2^{-n}} g(r)}                                          \\
-         & = \abs*{\sum_{r \in \mathbf{Q} : r < x \land g(r) < 2^{-n}} g(r)}                                           & \text{(by Proposition \ref{8.2.6}(c))} \\
-         & = \sum_{r \in \mathbf{Q} : r < x \land g(r) < 2^{-n}} g(r)                                                                                           \\
-         & = \sum_{r \in \mathbf{Q} : r < x \land g(r) \leq 2^{-(n + 1)}} g(r)                                                                                  \\
-         & \leq \sum_{r \in \mathbf{Q} : g(r) \leq 2^{-(n + 1)}} g(r)                                                                                           \\
-         & \leq \sum_{k = n + 1}^\infty 2^{-k}                                                                                                                  \\
-         & = 2^{-(n + 1)} \bigg(\sum_{k = 0}^\infty 2^{-k}\bigg)                                                                                                \\
-         & = 2^{-n}.                                                                                                   & \text{(by Lemma \ref{7.3.3})}
+         & \forall\ x \in \mathbf{R} \setminus \mathbf{Q}, \abs*{f(x) - f_n(x)}                                                                            \\
+         & = \abs*{\sum_{r \in \mathbf{Q} : r < x} g(r) - \sum_{r \in E_n : r < x} g(r)}                                                                   \\
+         & = \abs*{\sum_{r \in \mathbf{Q} : r < x} g(r) - \sum_{r \in \mathbf{Q} : r < x, g(r) \geq 2^{-n}} g(r)}                                          \\
+         & = \abs*{\sum_{r \in \mathbf{Q} : r < x, g(r) < 2^{-n}} g(r)}                                           & \text{(by Proposition \ref{8.2.6}(c))} \\
+         & = \sum_{r \in \mathbf{Q} : r < x, g(r) < 2^{-n}} g(r)                                                                                           \\
+         & = \sum_{r \in \mathbf{Q} : r < x, g(r) \leq 2^{-(n + 1)}} g(r)                                                                                  \\
+         & \leq \sum_{r \in \mathbf{Q} : g(r) \leq 2^{-(n + 1)}} g(r)                                                                                      \\
+         & \leq \sum_{k = n + 1}^\infty 2^{-k}                                                                                                             \\
+         & = 2^{-(n + 1)} \bigg(\sum_{k = 0}^\infty 2^{-k}\bigg)                                                                                           \\
+         & = 2^{-n}.                                                                                              & \text{(by Lemma \ref{7.3.3})}
     \end{align*}
     By Proposition \ref{5.4.14}, \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ n \in \mathbf{N}\) such that \(2^{-n} < \varepsilon / 2\).
     From the proof above we also have
