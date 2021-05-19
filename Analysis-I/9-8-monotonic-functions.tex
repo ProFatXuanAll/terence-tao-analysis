@@ -186,64 +186,59 @@ Then \(f\) is a bijection from \([a, b]\) to \([f(b), f(a)]\), and the inverse \
 \begin{proof}
     Since \(a < b\) and \(f\) is injective, we cannot have \(f(a) = f(b)\).
     So we have two cases:
-    \begin{enumerate}
+    \begin{itemize}
         \item \(f(a) < f(b)\).
               Suppose for sake of contradiction that \(f\) is not strictly monotone.
-              Then \(\exists\ c \in [a, b]\) such that
+              Then \(\exists\ c \in (a, b)\) such that
               \[
-                  \bigg(f(c) \geq f(a) \land f(c) \geq f(b)\bigg) \lor \bigg(f(c) \leq f(a) \land f(c) \leq f(b)\bigg).
+                  \big(f(c) \leq f(a) < f(b)\big) \lor \big(f(a) < f(b) \leq f(c)\big).
               \]
-              Since \(f\) is injective, we cannot have \(c = a \land c = b\), thus \(f(c) \neq f(a) \lor f(c) \neq f(b)\).
-              Since \(f(a) < f(b)\), we have \(f(c) \neq f(a) \land f(c) \neq f(b)\).
-              Then we have
+              Since \(f\) is injective, we have \(\big(f(c) \neq f(a)\big) \land \big(f(c) \neq f(b)\big)\).
+              But then we have
               \begin{align*}
-                           & f(c) > f(a) \land f(c) > f(b)                                                                   \\
-                  \implies & \exists\ d \in (f(a), f(c)) \cap (f(b), f(c)) :                                                 \\
-                           & \bigg(f(c) > d > f(a)\bigg) \land \bigg(f(c) > d > f(b)\bigg)                                   \\
-                  \implies & \big(\exists\ c_1 \in (a, c) : f(c_1) = d\big)                & \text{(by Theorem \ref{9.7.1})} \\
-                           & \land \big(\exists\ c_2 \in (c, b) : f(c_2) = d\big)          & \text{(by Theorem \ref{9.7.1})} \\
+                           & \begin{cases}
+                      f(c) < f(a) < f(b) \\
+                      f(a) < f(b) < f(c)
+                  \end{cases}                                    \\
+                  \implies & \begin{cases}
+                      \exists\ x_1 \in (c, b) : f(x_1) = f(a) \\
+                      \exists\ x_2 \in (a, c) : f(x_2) = f(b) \\
+                  \end{cases}  & \text{(by Theorem \ref{9.7.1})} \\
+                  \implies & \begin{cases}
+                      x_1 = a \\
+                      x_2 = b
+                  \end{cases}, & \text{(\(f\) is injective)}
               \end{align*}
-              and
-              \begin{align*}
-                           & f(c) < f(a) \land f(c) < f(b)                                                                   \\
-                  \implies & \exists\ d \in (f(c), f(a)) \cap (f(c), f(b)) :                                                 \\
-                           & \bigg(f(c) < d < f(a)\bigg) \land \bigg(f(c) < d < f(b)\bigg)                                   \\
-                  \implies & \big(\exists\ c_1 \in (a, c) : f(c_1) = d\big)                & \text{(by Theorem \ref{9.7.1})} \\
-                           & \land \big(\exists\ c_2 \in (c, b) : f(c_2) = d\big).         & \text{(by Theorem \ref{9.7.1})} \\
-              \end{align*}
-              But \(f\) is injective, in both case we have \(c_1 \neq c_2\) and \(f(c_1) = f(c_2)\), a contradiction.
+              a contradiction.
               Thus \(f\) is strictly monotone.
               Since \(f(a) < f(b)\), by Definition \ref{9.8.1} \(f\) is strictly monotone increasing.
         \item \(f(a) > f(b)\).
               Suppose for sake of contradiction that \(f\) is not strictly monotone.
-              Then \(\exists\ c \in [a, b]\) such that
+              Then \(\exists\ c \in (a, b)\) such that
               \[
-                  \bigg(f(c) \geq f(a) \land f(c) \geq f(b)\bigg) \lor \bigg(f(c) \leq f(a) \land f(c) \leq f(b)\bigg).
+                  \big(f(c) \leq f(b) < f(a)\big) \lor \big(f(b) < f(a) \leq f(c)\big).
               \]
-              Since \(f\) is injective, we cannot have \(c = a \land c = b\), thus \(f(c) \neq f(a) \lor f(c) \neq f(b)\).
-              Since \(f(a) > f(b)\), we have \(f(c) \neq f(a) \land f(c) \neq f(b)\).
-              Then we have
+              Since \(f\) is injective, we have \(\big(f(c) \neq f(a)\big) \land \big(f(c) \neq f(b)\big)\).
+              But then we have
               \begin{align*}
-                           & f(c) > f(a) \land f(c) > f(b)                                                                   \\
-                  \implies & \exists\ d \in (f(a), f(c)) \cap (f(b), f(c)) :                                                 \\
-                           & \bigg(f(c) > d > f(a)\bigg) \land \bigg(f(c) > d > f(b)\bigg)                                   \\
-                  \implies & \big(\exists\ c_1 \in (a, c) : f(c_1) = d\big)                & \text{(by Theorem \ref{9.7.1})} \\
-                           & \land \big(\exists\ c_2 \in (c, b) : f(c_2) = d\big)          & \text{(by Theorem \ref{9.7.1})} \\
+                           & \begin{cases}
+                      f(c) < f(b) < f(a) \\
+                      f(b) < f(a) < f(c)
+                  \end{cases}                                    \\
+                  \implies & \begin{cases}
+                      \exists\ x_1 \in (a, c) : f(x_1) = f(b) \\
+                      \exists\ x_2 \in (c, b) : f(x_2) = f(a) \\
+                  \end{cases}  & \text{(by Theorem \ref{9.7.1})} \\
+                  \implies & \begin{cases}
+                      x_1 = b \\
+                      x_2 = a
+                  \end{cases}, & \text{(\(f\) is injective)}
               \end{align*}
-              and
-              \begin{align*}
-                           & f(c) < f(a) \land f(c) < f(b)                                                                   \\
-                  \implies & \exists\ d \in (f(c), f(a)) \cap (f(c), f(b)) :                                                 \\
-                           & \bigg(f(c) < d < f(a)\bigg) \land \bigg(f(c) < d < f(b)\bigg)                                   \\
-                  \implies & \big(\exists\ c_1 \in (a, c) : f(c_1) = d\big)                & \text{(by Theorem \ref{9.7.1})} \\
-                           & \land \big(\exists\ c_2 \in (c, b) : f(c_2) = d\big).         & \text{(by Theorem \ref{9.7.1})} \\
-              \end{align*}
-              But \(f\) is injective, in both case we have \(c_1 \neq c_2\) and \(f(c_1) = f(c_2)\), a contradiction.
+              a contradiction.
               Thus \(f\) is strictly monotone.
               Since \(f(a) > f(b)\), by Definition \ref{9.8.1} \(f\) is strictly monotone decreasing.
-    \end{enumerate}
-    In all cases above we have \(f\) is either strictly monotone increasing or strictly monotone decreasing.
-    Thus by Definition \ref{9.8.1} we know that \(f\) is strictly monotone.
+    \end{itemize}
+    From all cases above we conclude that \(f\) is strictly monotone.
 \end{proof}
 
 \begin{exercise}\label{ex 9.8.4}
