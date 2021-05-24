@@ -198,10 +198,10 @@
     By Definition \ref{9.1.18} we know that \(\exists\ \varepsilon' \in \mathbf{R}^+\) such that \(\abs*{x - x_0} > \varepsilon'\) for all \(x \in X \setminus \{x_0\}\).
     To show that \(f\) is continuous at \(x_0\), by Definition \ref{9.4.1} and Definition \ref{9.3.6} we need to show that
     \[
-        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \bigg(\forall\ x \in X, \abs*{x - x_0} < \delta \implies \abs*{f(x) - f(x_0)} \leq \varepsilon\bigg).
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall\ x \in X, \abs*{x - x_0} < \delta \implies \abs*{f(x) - f(x_0)} \leq \varepsilon\big).
     \]
     Let \(\delta = \varepsilon'\).
-    Since \(x_0\) is an isolated point, the only \(x \in X\) satisfying \(\abs*{x - x_0} < \delta\) is \(x_0\).
+    Since \(x_0\) is an isolated point, the only \(x \in X\) satisfying \(\abs*{x - x_0} < \varepsilon'\) is \(x_0\).
     Thus we have \(0 = \abs*{f(x_0) - f(x_0)} \leq \varepsilon\) and \(\lim_{x \to x_0 ; x \in X} f(x) = f(x_0)\).
 \end{proof}
 
@@ -228,10 +228,9 @@
 
 \begin{proof}{(a)}
     We have \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\forall\ \delta \in \mathbf{R}^+\) such that
-    \begin{align*}
-                 & \forall\ x \in X \setminus \{x_0\}, \abs*{x - x_0} < \delta                                       \\
-        \implies & \abs*{\frac{f(x) - f(x_0)}{x - x_0} - 0} = \abs*{\frac{c - c}{x - x_0} - 0} = 0 \leq \varepsilon.
-    \end{align*}
+    \[
+        \forall\ x \in X \setminus \{x_0\}, \abs*{x - x_0} < \delta \implies \abs*{\frac{f(x) - f(x_0)}{x - x_0} - 0} = \abs*{\frac{c - c}{x - x_0} - 0} = 0 \leq \varepsilon.
+    \]
     Thus by Definition \ref{9.3.6} we have
     \[
         \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = 0
@@ -241,10 +240,9 @@
 
 \begin{proof}{(b)}
     We have \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\forall\ \delta \in \mathbf{R}^+\) such that
-    \begin{align*}
-                 & \forall\ x \in X \setminus \{x_0\}, \abs*{x - x_0} < \delta                                         \\
-        \implies & \abs*{\frac{f(x) - f(x_0)}{x - x_0} - 1} = \abs*{\frac{x - x_0}{x - x_0} - 1} = 0 \leq \varepsilon.
-    \end{align*}
+    \[
+        \forall\ x \in X \setminus \{x_0\}, \abs*{x - x_0} < \delta \implies \abs*{\frac{f(x) - f(x_0)}{x - x_0} - 1} = \abs*{\frac{x - x_0}{x - x_0} - 1} = 0 \leq \varepsilon.
+    \]
     Thus by Definition \ref{9.3.6} we have
     \[
         \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = 1
@@ -269,15 +267,15 @@
 \begin{proof}{(d)}
     By Definition \ref{10.1.1} and Proposition \ref{9.3.14} we have
     \begin{align*}
-          & f'(x_0) g(x_0) + f(x_0) g'(x_0)                                                                                                                                                                         \\
-        = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}\bigg) \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} g(x)\bigg)                                                    \\
-          & + f(x_0) \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0}\bigg)                                                                                                         \\
-        = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{(f(x) - f(x_0)) g(x)}{x - x_0}\bigg) + \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x_0) (g(x) - g(x_0))}{x - x_0}\bigg)         \\
-        = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) g(x) - f(x_0) g(x)}{x - x_0}\bigg) + \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}\bigg) \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \bigg(\frac{f(x) g(x) - f(x_0) g(x)}{x - x_0} + \frac{f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}\bigg)                                                          \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) g(x) - f(x_0) g(x) + f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}                                                                                      \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) g(x) - f(x_0) g(x_0)}{x - x_0}                                                                                                                  \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{(fg)(x) - (fg)(x_0)}{x - x_0}                                                                                                                        \\
+          & f'(x_0) g(x_0) + f(x_0) g'(x_0)                                                                                                                                                                                 \\
+        = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}\bigg) \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} g(x)\bigg)                                                            \\
+          & + f(x_0) \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0}\bigg)                                                                                                                 \\
+        = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{\big(f(x) - f(x_0)\big) g(x)}{x - x_0}\bigg) + \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x_0) \big(g(x) - g(x_0)\big)}{x - x_0}\bigg) \\
+        = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) g(x) - f(x_0) g(x)}{x - x_0}\bigg) + \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}\bigg)         \\
+        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \bigg(\frac{f(x) g(x) - f(x_0) g(x)}{x - x_0} + \frac{f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}\bigg)                                                                  \\
+        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) g(x) - f(x_0) g(x) + f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}                                                                                              \\
+        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) g(x) - f(x_0) g(x_0)}{x - x_0}                                                                                                                          \\
+        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{(fg)(x) - (fg)(x_0)}{x - x_0}                                                                                                                                \\
         = & (fg)'(x_0).
     \end{align*}
     Thus \(fg\) is differentiable at \(x_0\) and \((fg)'(x_0) = f'(x_0) g(x_0) + f(x_0) g'(x_0)\).
@@ -298,11 +296,11 @@
 
 \begin{proof}{(f)}
     \begin{align*}
-          & f'(x_0) - g'(x_0)                                             \\
-        = & f'(x_0) + (-g'(x_0))                                          \\
-        = & f'(x_0) + ((-g)'(x_0)) & \text{(by Theorem \ref{10.1.13}(e))} \\
-        = & (f + (-g))'(x_0)       & \text{(by Theorem \ref{10.1.13}(c))} \\
-        = & (f - g)'(x_0).         & \text{(by Definition \ref{9.2.1})}
+          & f'(x_0) - g'(x_0)                                                     \\
+        = & f'(x_0) + \big(-g'(x_0)\big)                                          \\
+        = & f'(x_0) + \big((-g)'(x_0)\big) & \text{(by Theorem \ref{10.1.13}(e))} \\
+        = & \big(f + (-g)\big)'(x_0)       & \text{(by Theorem \ref{10.1.13}(c))} \\
+        = & (f - g)'(x_0).                 & \text{(by Definition \ref{9.2.1})}
     \end{align*}
     Thus \(f - g\) is differentiable at \(x_0\) and \((f - g)'(x_0) = f'(x_0) - g'(x_0)\).
 \end{proof}
@@ -355,59 +353,76 @@
 \end{theorem}
 
 \begin{proof}
-    Since \(f\) is differentiable at \(x_0\), by Proposition \ref{10.1.10} we know that \(f\) is continuous at \(x_0\), so we have \(\forall\ \varepsilon_1 \in \mathbf{R}^+\), \(\exists\ \delta_1 \in \mathbf{R}^+\) such that
-    \[
-        \forall\ x \in X, \abs*{x - x_0} \leq \delta_1 \implies \abs*{f(x) - f(x_0)} \leq \varepsilon_1.
-    \]
-    Since \(f\) is differentiable at \(x_0\) and \(g\) is differentiable at \(y_0\), by Newton's approximation (Proposition \ref{10.1.7}), we have \(\forall\ \varepsilon_2, \varepsilon_3 \in \mathbf{R}^+\), \(\exists\ \delta_2, \delta_3 \in \mathbf{R}^+\) such that
-    \[
-        \forall\ x \in X, \abs*{x - x_0} \leq \delta_2 \implies \abs*{f(x) - (f(x_0) + f'(x_0)(x - x_0))} \leq \varepsilon_2 \abs*{x - x_0}
-    \]
-    and
-    \[
-        \forall\ y \in Y, \abs*{y - y_0} \leq \delta_3 \implies \abs*{g(y) - (g(y_0) + g'(y_0)(y - y_0))} \leq \varepsilon_3 \abs*{y - y_0}.
-    \]
-    In particular, we have
+    By Proposition \ref{10.1.7} we want to show that
     \begin{align*}
-                 & \forall\ x \in X, \abs*{x - x_0} \leq \delta_2                                 \\
-        \implies & \abs*{f(x) - (f(x_0) + f'(x_0)(x - x_0))} \leq \varepsilon_2 \abs*{x - x_0}    \\
-        \implies & \abs*{f(x) - f(x_0)}                                                           \\
-                 & \leq \abs*{f(x) - (f(x_0) + f'(x_0)(x - x_0))} + \abs*{f'(x_0)(x - x_0)}       \\
-                 & \leq \varepsilon_2 \abs*{x - x_0} + \abs*{f'(x_0)(x - x_0)}                    \\
-        \implies & \abs*{f(x) - y_0} \leq \varepsilon_2 \abs*{x - x_0} + \abs*{f'(x_0)(x - x_0)}.
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in X, \abs*{x - x_0} \leq \delta \\
+        \implies & \abs*{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)} \leq \varepsilon \abs*{x - x_0}.
     \end{align*}
-    Let \(\delta = \min(\delta_2, \delta_3)\) and \(\varepsilon_1 = \delta\).
-    Then we have
+    Since \(g'(y_0)\) exists, by Proposition \ref{10.1.7} we have
     \begin{align*}
-                 & \forall\ x \in X, \abs*{x - x_0} \leq \delta_1                                                                         \\
-        \implies & \abs*{f(x) - f(x_0)} \leq \delta                                                                                       \\
-        \implies & \abs*{f(x) - y_0} \leq \delta                                                                                          \\
-        \implies & \abs*{g(f(x)) - \Big(g(y_0) + g'(y_0)\big(f(x) - y_0\big)\Big)} \leq \varepsilon_3 \abs*{f(x) - y_0}                   \\
-        \implies & \abs*{g(f(x)) - \Big(g(y_0) + g'(y_0)\big(f(x) - y_0\big)\Big)}                                                        \\
-                 & \leq \varepsilon_3 \abs*{f(x) - y_0}                                                                                   \\
-                 & \leq \varepsilon_3 \big(\varepsilon_2 \abs*{x - x_0} + \abs*{f'(x_0)(x - x_0)}\big)                                    \\
-                 & = \varepsilon_3 \varepsilon_2 \abs*{x - x_0} + \varepsilon_3 \abs*{f'(x_0)(x - x_0)}                                   \\
-        \implies & \abs*{g(f(x)) - \Big(g(y_0) + g'(y_0)\big(f(x) - y_0\big)\Big)}                                                        \\
-                 & + \abs*{g'(y_0) \Big(f(x) - \big(y_0 + f'(x_0)(x - x_0)\big)\Big)}                                                     \\
-                 & \leq \varepsilon_3 \varepsilon_2 \abs*{x - x_0} + \varepsilon_3 \abs*{f'(x_0)(x - x_0)} + \varepsilon_2 \abs*{x - x_0} \\
-        \implies & \abs*{g(f(x)) - \big(g(y_0) + g'(y_0) f'(x_0) (x - x_0)\big)}                                                          \\
-                 & \leq \big(\varepsilon_3 \varepsilon_2 + \varepsilon_3 \abs*{f'(x_0)} + \varepsilon_2\big) \abs*{x - x_0}               \\
-                 & = \Big(\varepsilon_3 \big(\varepsilon_2 + \abs*{f'(x_0)}\big) + \varepsilon_2\Big) \abs*{x - x_0}.
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta_g \in \mathbf{R}^+ : \forall\ y \in Y, \abs*{y - y_0} \leq \delta_g \\
+        \implies & \abs*{g(y) - g(y_0) - g'(y_0) (y - y_0)} \leq \varepsilon_g \abs*{y - y_0}
     \end{align*}
-    Let \(\varepsilon \in \mathbf{R}^+\), let \(\varepsilon_2 = \frac{\varepsilon}{2}\) and let \(\varepsilon_3 = \frac{\varepsilon}{2(\varepsilon_2 + \abs*{f'(x_0)})}\).
-    Then we have
+    where
+    \[
+        \varepsilon_g = \frac{-\big(\abs*{f'(x_0)} + \abs*{g'(y_0)}\big) + \sqrt{\big(\abs*{f'(x_0)} + \abs*{g'(y_0)}\big)^2 + 4 \varepsilon}}{2}.
+    \]
+    Note that \(\varepsilon_g \in \mathbf{R}^+\) since
+    \[
+        \sqrt{\big(\abs*{f'(x_0)} + \abs*{g'(y_0)}\big)^2 + 4 \varepsilon} > \sqrt{\big(\abs*{f'(x_0)} + \abs*{g'(y_0)}\big)^2} = \abs*{f'(x_0)} + \abs*{g'(y_0)}.
+    \]
+    Now fix such \(\varepsilon\) (and \(\varepsilon_g\)) and \(\delta_g\).
+    Since \(f'(x_0)\) exists, by Corollary \ref{10.1.12} \(f\) is continuous at \(x_0\) and by Definition \ref{9.4.1} \(\lim_{x \to x_0 ; x \in X} f(x) = f(x_0)\).
+    This means
     \begin{align*}
-                 & \forall\ x \in X, \abs*{x - x_0} \leq \delta_1                                                                                              \\
-        \implies & \abs*{g(f(x)) - \big(g(y_0) + g'(y_0) f'(x_0) (x - x_0)\big)}                                                                               \\
-                 & \leq \Big(\varepsilon_3 \big(\varepsilon_2 + \abs*{f'(x_0)}\big) + \varepsilon_2\Big) \abs*{x - x_0}                                        \\
-                 & = \bigg(\frac{\varepsilon \big(\varepsilon_2 + \abs*{f'(x_0)}\big)}{2(\varepsilon_2 + \abs*{f'(x_0)})} + \varepsilon_2\bigg) \abs*{x - x_0} \\
-                 & = (\frac{\varepsilon}{2} + \varepsilon_2) \abs*{x - x_0}                                                                                    \\
-                 & = (\frac{\varepsilon}{2} + \frac{\varepsilon}{2}) \abs*{x - x_0}                                                                            \\
-                 & = \varepsilon \abs*{x - x_0}                                                                                                                \\
-        \implies & \abs*{(g \circ f)(x) - \big((g \circ f)(x_0) + g'(y_0) f'(x_0) (x - x_0)\big)}                                                              \\
-                 & \leq \varepsilon \abs*{x - x_0}
+                 & \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in X, \abs*{x - x_0} \leq \delta \\
+        \implies & \begin{cases}
+            \abs*{f(x) - y_0} \leq \delta_g                                         & \text{(by Proposition \ref{9.4.7}(d))} \\
+            \abs*{f(x) - y_0 - f'(x_0) (x - x_0)} \leq \varepsilon_g \abs*{x - x_0} & \text{(by Proposition \ref{10.1.7})}
+        \end{cases}                                                      \\
+        \implies & \begin{cases}
+            \abs*{f(x) - y_0} \leq \delta_g                                         \\
+            \abs*{f(x) - y_0 - f'(x_0) (x - x_0)} \leq \varepsilon_g \abs*{x - x_0} \\
+            \abs*{f(x) - y_0} \leq \varepsilon_g \abs*{x - x_0} + \abs*{f'(x_0) (x - x_0)}
+        \end{cases}                                                      \\
+        \implies & \begin{cases}
+            \abs*{f(x) - y_0} \leq \delta_g                                         \\
+            \abs*{f(x) - y_0 - f'(x_0) (x - x_0)} \leq \varepsilon_g \abs*{x - x_0} \\
+            \abs*{f(x) - y_0} \leq \big(\varepsilon_g + \abs*{f'(x_0)}\big) \abs*{x - x_0}
+        \end{cases}
     \end{align*}
-    and thus by Newton's approximation (Proposition \ref{10.1.7}) we have \((g \circ f)'(x_0) = g'(y_0) f'(x_0)\).
+    We know that
+    \begin{align*}
+                 & \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in X, \abs*{x - x_0} \leq \delta                                          \\
+        \implies & \abs*{f(x) - y_0} \leq \delta_g                                                                                          \\
+        \implies & \abs*{g\big(f(x)\big) - g(y_0) - g'(y_0) \big(f(x_0) - y_0\big)} \leq \varepsilon_g \abs*{f(x) - y_0}                    \\
+        \implies & \abs*{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0) - g'(y_0) \big(f(x) - y_0 - f'(x_0) (x - x_0)\big)}           \\
+                 & \leq \varepsilon_g \abs*{f(x) - y_0}                                                                                     \\
+        \implies & \abs*{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)}                                                              \\
+                 & \leq \varepsilon_g \abs*{f(x) - y_0} + \abs*{g'(y_0) \big(f(x) - y_0 - f'(x_0) (x - x_0)\big)}                           \\
+        \implies & \abs*{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)}                                                              \\
+                 & \leq \varepsilon_g \abs*{f(x) - y_0} + \abs*{g'(y_0)} \abs*{f(x_0) - y_0 - f'(x_0) (x - x_0)}                            \\
+        \implies & \abs*{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)}                                                              \\
+                 & \leq \varepsilon_g \abs*{f(x) - y_0} + \varepsilon_g \abs*{g'(y_0)} \abs*{x - x_0}                                       \\
+        \implies & \abs*{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)}                                                              \\
+                 & \leq \varepsilon_g \big(\varepsilon_g + \abs*{f'(x_0)}\big) \abs*{x - x_0} + \varepsilon_g \abs*{g'(y_0)} \abs*{x - x_0} \\
+        \implies & \abs*{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)}                                                              \\
+                 & \leq \varepsilon_g \big(\varepsilon_g + \abs*{f'(x_0)} + \abs*{g'(y_0)}\big) \abs*{x - x_0}.
+    \end{align*}
+    Expanding \(\varepsilon_g\) we have
+    \begin{align*}
+         & \varepsilon_g \big(\varepsilon_g + \abs*{f'(x_0)} + \abs*{g'(y_0)}\big)                                                               \\
+         & = \frac{-\big(\abs*{f'(x_0)} + \abs*{g'(y_0)}\big) + \sqrt{\big(\abs*{f'(x_0)} + \abs*{g'(y_0)}\big)^2 + 4 \varepsilon}}{2}           \\
+         & \quad \times \frac{\big(\abs*{f'(x_0)} + \abs*{g'(y_0)}\big) + \sqrt{\big(\abs*{f'(x_0)} + \abs*{g'(y_0)}\big)^2 + 4 \varepsilon}}{2} \\
+         & = \frac{\big(\abs*{f'(x_0)} + \abs*{g'(y_0)}\big)^2 + 4 \varepsilon - \big(\abs*{f'(x_0)} + \abs*{g'(y_0)}\big)^2}{4}                 \\
+         & = \varepsilon.
+    \end{align*}
+    Thus we conclude that
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in X, \abs*{x - x_0} \leq \delta \\
+        \implies & \abs*{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)} \leq \varepsilon \abs*{x - x_0}
+    \end{align*}
+    and by Proposition \ref{10.1.7} we have \((g \circ f)'(x_0) = g'(y_0) f'(x_0)\).
 \end{proof}
 
 \setcounter{theorem}{16}
