@@ -12,29 +12,43 @@
 \begin{proof}
     Since \(g\) is differentiable at \(x_0\), by Newton's approximation (Proposition \ref{10.1.7}) we have \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ \delta \in \mathbf{R}^+\) such that
     \begin{align*}
-                 & \forall\ x \in X, \abs*{x - x_0} \leq \frac{\delta}{2} < \delta                                                         \\
-        \implies & x \in X \cap (x_0 - \delta, x_0 + \delta)                                                                               \\
-        \implies & \abs*{g(x) - (g(x_0) + g'(x_0)(x - x_0))} \leq \varepsilon \abs*{x - x_0}                                               \\
-        \implies & \abs*{g(x) - g'(x_0)(x - x_0)} \leq \varepsilon \abs*{x - x_0}                                                          \\
-        \implies & \abs*{g'(x_0)(x - x_0) - g(x)} \leq \varepsilon \abs*{x - x_0}                                                          \\
-        \implies & \abs*{g'(x_0)(x - x_0)} \leq \abs*{g'(x_0)(x - x_0) - g(x)} + \abs*{g(x)} \leq \varepsilon \abs*{x - x_0} + \abs*{g(x)} \\
-        \implies & \abs*{g'(x_0)(x - x_0)} - \varepsilon \abs*{x - x_0} \leq \abs*{g(x)}.
+                 & \forall\ x \in X, \abs*{x - x_0} \leq \frac{\delta}{2} < \delta                                \\
+        \implies & \abs*{g(x) - g(x_0) - g'(x_0)(x - x_0)} \leq \varepsilon \abs*{x - x_0}                        \\
+        \implies & \abs*{g(x) - g'(x_0)(x - x_0)} \leq \varepsilon \abs*{x - x_0}          & \big(g(x_0) = 0\big) \\
+        \implies & \abs*{g'(x_0)(x - x_0) - g(x)} \leq \varepsilon \abs*{x - x_0}                                 \\
+        \implies & \abs*{g'(x_0)(x - x_0)}                                                                        \\
+                 & \leq \abs*{g'(x_0)(x - x_0) - g(x)} + \abs*{g(x)}                                              \\
+                 & \leq \varepsilon \abs*{x - x_0} + \abs*{g(x)}                                                  \\
+        \implies & \abs*{g'(x_0)(x - x_0)} - \varepsilon \abs*{x - x_0} \leq \abs*{g(x)}                          \\
+        \implies & \big(\abs*{g'(x_0)} - \varepsilon\big)\abs*{x - x_0} \leq \abs*{g(x)}.
     \end{align*}
     Since \(g'(x_0) \neq 0\), we know \(\frac{\abs*{g'(x_0)}}{2} > 0\).
     By setting \(\varepsilon = \frac{\abs*{g'(x_0)}}{2}\) we know \(\exists\ \delta \in \mathbf{R}^+\) such that
     \begin{align*}
-                 & \forall\ x \in X \cap (x_0 - \delta, x_0 + \delta)                    \\
-        \implies & \abs*{g'(x_0)(x - x_0)} - \varepsilon \abs*{x - x_0} \leq \abs*{g(x)} \\
-        \implies & 0 < \frac{\abs*{g'(x_0) (x - x_0)}}{2} \leq \abs*{g(x)}.
+                 & \forall\ x \in X, \abs*{x - x_0} < \delta                                             \\
+        \implies & \bigg(\abs*{g'(x_0)} - \frac{\abs*{g'(x_0)}}{2}\bigg) \abs*{x - x_0} \leq \abs*{g(x)} \\
+        \implies & 0 \leq \frac{\abs*{g'(x_0)}}{2} \abs*{x - x_0} \leq \abs*{g(x)}.
     \end{align*}
-    The above statement also hold when \(x \in ((X \cap (x_0 - \delta, x_0 + \delta)) \setminus \{x_0\}\) since \((X \cap (x_0 - \delta, x_0 + \delta)) \setminus \{x_0\} \subseteq (X \cap (x_0 - \delta, x_0 + \delta)\).
-    Thus we have
+    Observe that
+    \[
+        (x \in X) \land (\abs*{x - x_0} < \delta) \iff x \in X \cap (x_0 - \delta, x_0 + \delta).
+    \]
+    Then we have
+    \[
+        \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in X \cap (x_0 - \delta, x_0 + \delta), 0 \leq \frac{\abs*{g'(x_0)}}{2} \abs*{x - x_0} \leq \abs*{g(x)}.
+    \]
+    In particular, we have
+    \[
+        \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \{x_0\}, 0 < \frac{\abs*{g'(x_0)}}{2} \abs*{x - x_0} \leq \abs*{g(x)}.
+    \]
+    This means \(g(x) \neq 0\) for every \(x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \{x_0\}\).
+    Thus
     \begin{align*}
-          & \lim_{x \to x_0 ; x \in ((X \cap (x_0 - \delta, x_0 + \delta)) \setminus \{x_0\}} \frac{f(x)}{g(x)}                                                                                                                                                                           \\
-        = & \lim_{x \to x_0 ; x \in ((X \cap (x_0 - \delta, x_0 + \delta)) \setminus \{x_0\}} \frac{f(x) - f(x_0)}{g(x) - g(x_0)}                                                                                                                   & (f(x_0) = g(x_0) = 0)               \\
-        = & \lim_{x \to x_0 ; x \in ((X \cap (x_0 - \delta, x_0 + \delta)) \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} \frac{x - x_0}{g(x) - g(x_0)}                                                                                           & (x \neq x_0)                        \\
-        = & \frac{\lim_{x \to x_0 ; x \in ((X \cap (x_0 - \delta, x_0 + \delta)) \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}}{\lim_{x \to x_0 ; x \in ((X \cap (x_0 - \delta, x_0 + \delta)) \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0}} & \text{(by Theorem \ref{9.3.14})}    \\
-        = & \frac{f'(x_0)}{g'(x_0)}.                                                                                                                                                                                                                & \text{(by Definition \ref{10.1.1})}
+          & \lim_{x \to x_0 ; x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \{x_0\}} \frac{f(x)}{g(x)}                                                                                                                                                                                  \\
+        = & \lim_{x \to x_0 ; x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \{x_0\}} \frac{f(x) - f(x_0)}{g(x) - g(x_0)}                                                                                                                          & (f(x_0) = g(x_0) = 0)               \\
+        = & \lim_{x \to x_0 ; x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} \frac{x - x_0}{g(x) - g(x_0)}                                                                                                  & (x \neq x_0)                        \\
+        = & \frac{\lim_{x \to x_0 ; x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}}{\lim_{x \to x_0 ; x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0}} & \text{(by Theorem \ref{9.3.14})}    \\
+        = & \frac{f'(x_0)}{g'(x_0)}.                                                                                                                                                                                                                              & \text{(by Definition \ref{10.1.1})}
     \end{align*}
 \end{proof}
 
