@@ -2,7 +2,7 @@
 
 \begin{definition}\label{11.1.1}
     Let \(X\) be a subset of \(\mathbf{R}\).
-    We say that \(X\) is \emph{connected} iff the following property is true:
+    We say that \(X\) is \emph{connected} iff \(X\) is nonempty and the following property is true:
     whenever \(x, y\) are elements in \(X\) such that \(x < y\), the bounded interval \([x, y]\) is a subset of \(X\)
     (i.e., every number between \(x\) and \(y\) is also in \(X\)).
 \end{definition}
@@ -18,21 +18,21 @@
 \end{lemma}
 
 \begin{proof}
-    Both statements are logically equivalent when \(X = \emptyset\) (which is vacuously true).
-    So suppose that \(X \neq \emptyset\).
-
     We first show that \(X\) is bounded and connected implies \(X\) is a bounded interval.
     Since \(X\) is bounded, by Theorem \ref{5.5.9} we know that \(\inf(X), \sup(X) \in \mathbf{R}\).
     Thus \(X \subseteq [\inf(X), \sup(X)]\).
-    Let \(x \in X\).
-    Then we must have \(\exists\ a, b \in X\) such that
-    \[
-        \inf(X) < a \leq x \leq b < \sup(X),
-    \]
-    otherwise contradict to the existence of \(\inf(X)\) and \(\sup(X)\).
-    Since \(X\) is connected, by Definition \ref{11.1.1} we know that \([a, b] \subseteq X\).
-    Since \(\inf(X) < a\) and \(b < \sup(X)\), we have \((\inf(X), \sup(X)) \subseteq [a, b] \subseteq X\).
-    Thus \(X\) is a bounded interval.
+    Now we split into four cases:
+    \begin{itemize}
+        \item If \(\sup(X) \in X\) and \(\inf(X) \in X\), then by Definition \ref{11.1.1} \(X\) is connected implies \([\inf(X), \sup(X)] \subseteq X\).
+              Thus by Proposition \ref{3.1.18} we have \(X = [\inf(X), \sup(X)]\).
+        \item If \(\sup(X) \in X\) and \(\inf(X) \notin X\), then we claim that \(\big(\inf(X), \sup(X)] \subseteq X\).
+              This is true since \(X\) is connected and by Definition \ref{11.1.1} we have \(\big(a, \sup(X)] \subseteq X\) for every \(a \in X\).
+        \item If \(\sup(X) \notin X\) and \(\inf(X) \in X\), then we claim that \([\inf(X), \sup(X)\big) \subseteq X\).
+              This is true since \(X\) is connected and by Definition \ref{11.1.1} we have \([\inf(X), b\big) \subseteq X\) for every \(b \in X\).
+        \item If \(\sup(X) \notin X\) and \(\inf(X) \notin X\), then we claim that \(\big(\inf(X), \sup(X)\big) \subseteq X\).
+              This is true since \(X\) is connected and by Definition \ref{11.1.1} we have \((a, b) \subseteq X\) for every \(a, b \in X\) and \(a < b\).
+    \end{itemize}
+    From all cases above we conclude that \(X\) is a bounded interval.
 
     Now we show that \(X\) is a bounded interval implies \(X\) is bounded and connected.
     Obviously \(X\) is bounded.
