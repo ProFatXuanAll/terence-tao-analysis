@@ -148,7 +148,7 @@
     Let \(I\) be a bounded interval, and let \(\mathbf{P}\) and \(\mathbf{P}'\) be two partitions of \(I\).
     We define the \emph{common refinement} \(\mathbf{P} \# \mathbf{P}'\) of \(\mathbf{P}\) and \(\mathbf{P}'\) to be the set
     \[
-        \mathbf{P} \# \mathbf{P}' \coloneqq \{K \cap J : K \in \mathbf{P} \land J \in \mathbf{P}'\}.
+        \mathbf{P} \# \mathbf{P}' \coloneqq \{K \cap J : K \in \mathbf{P} \text{ and } J \in \mathbf{P}'\}.
     \]
 \end{definition}
 
@@ -236,15 +236,14 @@
 
 \begin{proof}
     Let \(\mathbf{P} = \{I_1, \dots, I_n\}\).
-    If \(c = b\), then \((c, b) = \emptyset\), and thus by Definition \ref{11.1.10} \(\mathbf{P} \cup \emptyset\) is a partition of \(I\).
+    If \(c = b\), then \((c, b) = \emptyset\), and thus by Definition \ref{11.1.10} \(\mathbf{P} \cup \{\emptyset\}\) is a partition of \(I\).
     So we only need to proof the cases where \(a \leq c < b\).
-    Suppose for sake of contradiction that every interval \(I_j\) in the partition is not of the form \((c, b)\) or \([c, b)\).
-    By Definition \ref{11.1.10} this means \(\forall\ x \in I_j\), we have \(x \geq b\) or \(x < c\).
-    Since \(I = (a, b)\) or \(I = [a, b)\), we know that \(x < b\), thus we must have \(x < c\).
-    This means \(\sup(I_j) \leq c < b\).
-    But we know that \(\sup(I) = b\).
-    So we have \(\forall\ x \in I\), \(\exists!\ I_j \in \mathbf{P}\) such that \(x \in I_j\), and \(x \leq \sup(I_j) < b = \sup(I)\).
-    Thus \(\sup(I) \neq b\), a contradiction.
+    Suppose for sake of contradiction that every interval \(I_j\) in the partition \(\mathbf{P}\) is not of the form \((c, b)\) or \([c, b)\).
+    By Definition \ref{11.1.10} this means for every \(j \in \{1, \dots, n\}\), \(x \in I_j\) implies \(x \geq b\) or \(x < c\).
+    Since \(I = (a, b)\) or \(I = [a, b)\), we cannot have \(x \geq b\), thus we must have \(x < c\).
+    This means \(\sup(I_j) \leq c < b\) for every \(j \in \{1, \dots, n\}\).
+    But then we have \(\sup(I) = b > \max\big\{\sup(I_j) : j \in \{1, \dots, n\}\big\}\), a contradiction.
+    Thus we must have one interval \(I_j \in \mathbf{P}\) such that \(I_j = (c, b)\) for some \(a \leq c < b\).
 \end{proof}
 
 \begin{exercise}\label{ex 11.1.4}
