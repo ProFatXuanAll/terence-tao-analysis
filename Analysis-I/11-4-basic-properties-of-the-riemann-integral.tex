@@ -3,7 +3,7 @@
 \begin{theorem}[Laws of Riemann integration]\label{11.4.1}
     Let \(I\) be a bounded interval, and let \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) be Riemann integrable functions on \(I\).
     \begin{enumerate}
-        \item The function \(f + g\) is Riemann integrable, and we have \(\int_I f + \int_I g\).
+        \item The function \(f + g\) is Riemann integrable, and we have \(\int_I (f + g) = \int_I f + \int_I g\).
         \item For any real number \(c\), the function \(cf\) is Riemann integrable, and we have \(\int_I (cf) = c(\int_I f)\).
         \item The function \(f - g\) is Riemann integrable, and we have \(\int_I (f - g) = \int_I f - \int_I g\).
         \item If \(f(x) \geq 0\) for all \(x \in I\), then \(\int_I f \geq 0\).
@@ -34,8 +34,8 @@
     \[
         \int_I g = \overline{\int}_I g = \underline{\int}_I g.
     \]
-    Let \(f_U : I \to \mathbf{R}\) and \(g_U : I \to \mathbf{R}\) be piecewise constant functions on \(I\) which majorizes \(f\) and \(g\) respectively.
-    Let \(f_L : I \to \mathbf{R}\) and \(g_L : I \to \mathbf{R}\) be piecewise constant functions on \(I\) which minorizes \(f\) and \(g\) respectively.
+    Let \(f_U : I \to \mathbf{R}\) and \(g_U : I \to \mathbf{R}\) be piecewise constant functions on \(I\) which majorizes \(f\) and \(g\), respectively.
+    Let \(f_L : I \to \mathbf{R}\) and \(g_L : I \to \mathbf{R}\) be piecewise constant functions on \(I\) which minorizes \(f\) and \(g\), respectively.
     \(f_U, g_U, f_L, g_L\) are well-defined since by Definition \ref{11.3.4} \(f, g\) are bounded functions on a bounded interval \(I\).
     By Definition \ref{11.3.2} we have
     \[
@@ -50,24 +50,24 @@
     Similarly \(f_L + g_L\) minorizes \(f + g\).
     Then we have
     \begin{align*}
-                 & \overline{\int}_I (f + g) \leq p.c. \int_I (f + g)                       & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \overline{\int}_I (f + g) \leq p.c. \int_I f_U + p.c. \int_I g_U         & \text{(by Theorem \ref{11.2.16}(a))} \\
-        \implies & \overline{\int}_I (f + g) - p.c. \int_I g_U \leq p.c. \int_I f_U                                                \\
-        \implies & \overline{\int}_I (f + g) - p.c. \int_I g_U \leq \overline{\int}_I f     & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \overline{\int}_I (f + g) - \overline{\int}_I f \leq p.c. \int_I g_U                                            \\
-        \implies & \overline{\int}_I (f + g) - \overline{\int}_I f \leq \overline{\int}_I g & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \overline{\int}_I (f + g) \leq \overline{\int}_I f + \overline{\int}_I g &                                      \\
+                 & \overline{\int}_I (f + g) \leq p.c. \int_I (f_U + g_U)                   & \text{(by Definition \ref{11.3.2})}     \\
+        \implies & \overline{\int}_I (f + g) \leq p.c. \int_I f_U + p.c. \int_I g_U         & \text{(by Theorem \ref{11.2.16}(a))}    \\
+        \implies & \overline{\int}_I (f + g) - p.c. \int_I g_U \leq p.c. \int_I f_U         & \text{(note that \(f_U\) is arbitrary)} \\
+        \implies & \overline{\int}_I (f + g) - p.c. \int_I g_U \leq \overline{\int}_I f     & \text{(by Definition \ref{11.3.2})}     \\
+        \implies & \overline{\int}_I (f + g) - \overline{\int}_I f \leq p.c. \int_I g_U     & \text{(note that \(g_U\) is arbitrary)} \\
+        \implies & \overline{\int}_I (f + g) - \overline{\int}_I f \leq \overline{\int}_I g & \text{(by Definition \ref{11.3.2})}     \\
+        \implies & \overline{\int}_I (f + g) \leq \overline{\int}_I f + \overline{\int}_I g &                                         \\
         \implies & \overline{\int}_I (f + g) \leq \int_I f + \int_I g                       & \text{(by Definition \ref{11.3.4})}
     \end{align*}
     and
     \begin{align*}
-                 & \underline{\int}_I (f + g) \geq p.c. \int_I (f + g)                         & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \underline{\int}_I (f + g) \geq p.c. \int_I f_L + p.c. \int_I g_L           & \text{(by Theorem \ref{11.2.16}(a))} \\
-        \implies & \underline{\int}_I (f + g) - p.c. \int_I g_L \geq p.c. \int_I f_L                                                  \\
-        \implies & \underline{\int}_I (f + g) - p.c. \int_I g_L \geq \underline{\int}_I f      & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \underline{\int}_I (f + g) - \underline{\int}_I f \geq p.c. \int_I g_L                                             \\
-        \implies & \underline{\int}_I (f + g) - \underline{\int}_I f \geq \underline{\int}_I g & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \underline{\int}_I (f + g) \geq \underline{\int}_I f + \underline{\int}_I g &                                      \\
+                 & \underline{\int}_I (f + g) \geq p.c. \int_I (f_L + g_L)                     & \text{(by Definition \ref{11.3.2})}     \\
+        \implies & \underline{\int}_I (f + g) \geq p.c. \int_I f_L + p.c. \int_I g_L           & \text{(by Theorem \ref{11.2.16}(a))}    \\
+        \implies & \underline{\int}_I (f + g) - p.c. \int_I g_L \geq p.c. \int_I f_L           & \text{(note that \(f_L\) is arbitrary)} \\
+        \implies & \underline{\int}_I (f + g) - p.c. \int_I g_L \geq \underline{\int}_I f      & \text{(by Definition \ref{11.3.2})}     \\
+        \implies & \underline{\int}_I (f + g) - \underline{\int}_I f \geq p.c. \int_I g_L      & \text{(note that \(g_L\) is arbitrary)} \\
+        \implies & \underline{\int}_I (f + g) - \underline{\int}_I f \geq \underline{\int}_I g & \text{(by Definition \ref{11.3.2})}     \\
+        \implies & \underline{\int}_I (f + g) \geq \underline{\int}_I f + \underline{\int}_I g &                                         \\
         \implies & \underline{\int}_I (f + g) \geq \int_I f + \int_I g.                        & \text{(by Definition \ref{11.3.4})}
     \end{align*}
     By Lemma \ref{11.3.3} we have
@@ -105,20 +105,20 @@
     Since \(c > 0\), by Definition \ref{11.3.1} we know that \(c f_U\) majorizes \(c f\) and \(c f_L\) minorizes \(c f\).
     Then we have
     \begin{align*}
-                 & \overline{\int}_I (cf) \leq p.c. \int_I (c f_U)                         & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \overline{\int}_I (cf) \leq c \bigg(p.c. \int_I f_U\bigg)               & \text{(by Theorem \ref{11.2.16}(b))} \\
-        \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf)\bigg) \leq p.c. \int_I f_U                                            \\
-        \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf)\bigg) \leq \overline{\int}_I f & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \overline{\int}_I (cf) \leq c\bigg(\overline{\int}_I f\bigg)                                                   \\
+                 & \overline{\int}_I (cf) \leq p.c. \int_I (c f_U)                         & \text{(by Definition \ref{11.3.2})}     \\
+        \implies & \overline{\int}_I (cf) \leq c \bigg(p.c. \int_I f_U\bigg)               & \text{(by Theorem \ref{11.2.16}(b))}    \\
+        \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf)\bigg) \leq p.c. \int_I f_U     & \text{(note that \(f_U\) is arbitrary)} \\
+        \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf)\bigg) \leq \overline{\int}_I f & \text{(by Definition \ref{11.3.2})}     \\
+        \implies & \overline{\int}_I (cf) \leq c\bigg(\overline{\int}_I f\bigg)                                                      \\
         \implies & \overline{\int}_I (cf) \leq c\bigg(\int_I f\bigg)                       & \text{(by Definition \ref{11.3.4})}
     \end{align*}
     and
     \begin{align*}
-                 & \underline{\int}_I (cf) \geq p.c. \int_I (c f_L)                          & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \underline{\int}_I (cf) \geq c \bigg(p.c. \int_I f_L\bigg)                & \text{(by Theorem \ref{11.2.16}(b))} \\
-        \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf)\bigg) \geq p.c. \int_I f_L                                             \\
-        \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf)\bigg) \geq \underline{\int}_I f & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \underline{\int}_I (cf) \geq c\bigg(\underline{\int}_I f\bigg)                                                   \\
+                 & \underline{\int}_I (cf) \geq p.c. \int_I (c f_L)                          & \text{(by Definition \ref{11.3.2})}     \\
+        \implies & \underline{\int}_I (cf) \geq c \bigg(p.c. \int_I f_L\bigg)                & \text{(by Theorem \ref{11.2.16}(b))}    \\
+        \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf)\bigg) \geq p.c. \int_I f_L      & \text{(note that \(f_L\) is arbitrary)} \\
+        \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf)\bigg) \geq \underline{\int}_I f & \text{(by Definition \ref{11.3.2})}     \\
+        \implies & \underline{\int}_I (cf) \geq c\bigg(\underline{\int}_I f\bigg)                                                      \\
         \implies & \underline{\int}_I (cf) \geq c\bigg(\int_I f\bigg).                       & \text{(by Definition \ref{11.3.4})}
     \end{align*}
     By Lemma \ref{11.3.3} we have
@@ -130,60 +130,49 @@
         \int_I (cf) = \underline{\int}_I (cf) = \overline{\int}_I (cf) = c\bigg(\int_I f\bigg).
     \]
 
-    Next suppose that \(c = -1\).
+    Finally suppose that \(c < 0\).
     Using the same definition of \(f_U, f_L\) we have
     \begin{align*}
-                 & \overline{\int}_I (cf) \leq p.c. \int_I (c f_U)                         & \text{(by Definition \ref{11.3.2})}  \\
-                 & \overline{\int}_I (cf) \leq p.c. \int_I (c f_U)                         & \text{(by Lemma \ref{11.3.3})}       \\
-        \implies & \overline{\int}_I (cf) \leq c \bigg(p.c. \int_I f_U\bigg)               & \text{(by Theorem \ref{11.2.16}(b))} \\
-        \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf)\bigg) \geq p.c. \int_I f_U                                            \\
-        \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf)\bigg) \geq \overline{\int}_I f & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \overline{\int}_I (cf) \leq c\bigg(\overline{\int}_I f\bigg)                                                   \\
-        \implies & \overline{\int}_I (cf) \leq c\bigg(\int_I f\bigg)                       & \text{(by Definition \ref{11.3.4})}
+                 & \overline{\int}_I (cf) \leq p.c. \int_I (c f_U)                                              & \text{(by Definition \ref{11.3.2})}  \\
+        \implies & \overline{\int}_I (cf) \leq c \bigg(p.c. \int_I f_U\bigg)                                    & \text{(by Theorem \ref{11.2.16}(b))} \\
+        \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf)\bigg) \geq p.c. \int_I f_U                                                                 \\
+        \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf)\bigg) \geq p.c. \int_I f_U \geq \overline{\int}_I f & \text{(by Definition \ref{11.3.2})}  \\
+        \implies & \overline{\int}_I (cf) \leq c\bigg(\overline{\int}_I f\bigg)                                                                        \\
+        \implies & \overline{\int}_I (cf) \leq c\bigg(\int_I f\bigg)                                            & \text{(by Definition \ref{11.3.4})}
     \end{align*}
     and
     \begin{align*}
-                 & \underline{\int}_I (cf) \geq p.c. \int_I (c f_L)                          & \text{(by Definition \ref{11.3.2})}  \\
-                 & \underline{\int}_I (cf) \geq p.c. \int_I (c f_L)                          & \text{(by Lemma \ref{11.3.3})}       \\
-        \implies & \underline{\int}_I (cf) \geq c \bigg(p.c. \int_I f_L\bigg)                & \text{(by Theorem \ref{11.2.16}(b))} \\
-        \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf)\bigg) \leq p.c. \int_I f_L                                             \\
-        \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf)\bigg) \leq \underline{\int}_I f & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \underline{\int}_I (cf) \geq c\bigg(\underline{\int}_I f\bigg)                                                   \\
-        \implies & \underline{\int}_I (cf) \geq c\bigg(\int_I f\bigg).                       & \text{(by Definition \ref{11.3.4})}
+                 & \underline{\int}_I (cf) \geq p.c. \int_I (c f_L)                                               & \text{(by Definition \ref{11.3.2})}  \\
+        \implies & \underline{\int}_I (cf) \geq c \bigg(p.c. \int_I f_L\bigg)                                     & \text{(by Theorem \ref{11.2.16}(b))} \\
+        \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf)\bigg) \leq p.c. \int_I f_L                                                                  \\
+        \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf)\bigg) \leq p.c. \int_I f_L \leq \underline{\int}_I f & \text{(by Definition \ref{11.3.2})}  \\
+        \implies & \underline{\int}_I (cf) \geq c\bigg(\underline{\int}_I f\bigg)                                                                        \\
+        \implies & \underline{\int}_I (cf) \geq c\bigg(\int_I f\bigg).                                            & \text{(by Definition \ref{11.3.4})}
     \end{align*}
-    Again we have
+    By Lemma \ref{11.3.3} we have
+    \[
+        c\bigg(\int_I f\bigg) \leq \underline{\int}_I (cf) \leq \overline{\int}_I (cf) \leq c\bigg(\int_I f\bigg)
+    \]
+    and thus by Definition \ref{11.3.4} we have
     \[
         \int_I (cf) = \underline{\int}_I (cf) = \overline{\int}_I (cf) = c\bigg(\int_I f\bigg).
     \]
-
-    Finally suppose \(c < 0\).
-    Then we have
-    \begin{align*}
-        \int_I (cf) & = \int_I ((-1)(-c)f)              & \text{(by Definition \ref{9.2.1})} \\
-                    & = (-1) \bigg(\int_I ((-c)f)\bigg)                                      \\
-                    & = (-1)(-c) \bigg(\int_I f\bigg)   & (-c > 0)                           \\
-                    & = c \bigg(\int_I f\bigg).
-    \end{align*}
     We conclude that \(\forall\ c \in \mathbf{R}\), \(\int_I (cf) = c (\int_I f)\).
 \end{proof}
 
 \begin{proof}{(c)}
     We have
     \begin{align*}
-        \int_I f - \int_I g & = \int_I f + \int_I (-g) & \text{(by Theorem \ref{11.4.1}(b))} \\
-                            & = \int_I (f + (-g))      & \text{(by Theorem \ref{11.4.1}(a))} \\
-                            & = \int_I (f - g).        & \text{(by Definition \ref{9.2.1})}
+        \int_I f - \int_I g & = \int_I f + \int_I (-g)    & \text{(by Theorem \ref{11.4.1}(b))} \\
+                            & = \int_I \big(f + (-g)\big) & \text{(by Theorem \ref{11.4.1}(a))} \\
+                            & = \int_I (f - g).           & \text{(by Definition \ref{9.2.1})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(d)}
     Let \(f_U : I \to \mathbf{R}\) be a piecewise constant function on \(I\) which majorizes \(f\).
     \(f_U\) is well-defined since by Definition \ref{11.3.4} \(f\) is a bounded function on a bounded interval \(I\).
-    Then by Definition \ref{11.3.2} we have
-    \[
-        \overline{\int}_I f \leq p.c. \int_I f_U.
-    \]
-    Since \(\forall\ x \in I\), \(0 \leq f(x) \leq f_U(x)\), we have
+    Since \(0 \leq f(x) \leq f_U(x)\) for every \(x \in I\), we have
     \begin{align*}
                  & 0 \leq p.c. \int_I f_U     & \text{(by Theorem \ref{11.2.16}(d))} \\
         \implies & 0 \leq \overline{\int}_I f & \text{(by Definition \ref{11.3.2})}  \\
@@ -192,7 +181,7 @@
 \end{proof}
 
 \begin{proof}{(e)}
-    We have \(\forall\ x \in I\), \(f(x) - g(x) \geq 0\) and by Theorem \ref{11.4.1}(c) \(f - g\) is Riemann integrable.
+    We have \(f(x) - g(x) \geq 0\) for every \(x \in I\) and by Theorem \ref{11.4.1}(c) \(f - g\) is Riemann integrable.
     Thus
     \begin{align*}
                  & \int_I (f - g) \geq 0      & \text{(by Theorem \ref{11.4.1}(d))} \\
@@ -234,16 +223,16 @@
     We know that \(F_U\) majorizes \(F\) and \(F_L\) minorizes \(F\), and by Theorem \ref{11.2.16}(g) we have \(p.c. \int_J F_U = p.c. \int_I f_U\) and \(p.c. \int_J F_L = p.c. \int_I f_L\).
     Thus \(F\) is a bounded function on a bounded interval \(I\), and we have
     \begin{align*}
-                 & \overline{\int}_J F \leq p.c. \int_J F_U     & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \overline{\int}_J F \leq p.c. \int_I f_U     & \text{(by Theorem \ref{11.2.16}(g))} \\
-        \implies & \overline{\int}_J F \leq \overline{\int}_I f & \text{(by Definition \ref{11.3.2})}  \\
+                 & \overline{\int}_J F \leq p.c. \int_J F_U     & \text{(by Definition \ref{11.3.2})}                          \\
+        \implies & \overline{\int}_J F \leq p.c. \int_I f_U     & \text{(by Theorem \ref{11.2.16}(g))}                         \\
+        \implies & \overline{\int}_J F \leq \overline{\int}_I f & \text{(by Definition \ref{11.3.2} and \(f_U\) is arbitrary)} \\
         \implies & \overline{\int}_J F \leq \int_I f            & \text{(by Definition \ref{11.3.4})}
     \end{align*}
     and
     \begin{align*}
-                 & \underline{\int}_J F \geq p.c. \int_J F_L      & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \underline{\int}_J F \geq p.c. \int_I f_L      & \text{(by Theorem \ref{11.2.16}(g))} \\
-        \implies & \underline{\int}_J F \geq \underline{\int}_I f & \text{(by Definition \ref{11.3.2})}  \\
+                 & \underline{\int}_J F \geq p.c. \int_J F_L      & \text{(by Definition \ref{11.3.2})}                          \\
+        \implies & \underline{\int}_J F \geq p.c. \int_I f_L      & \text{(by Theorem \ref{11.2.16}(g))}                         \\
+        \implies & \underline{\int}_J F \geq \underline{\int}_I f & \text{(by Definition \ref{11.3.2} and \(f_L\) is arbitrary)} \\
         \implies & \underline{\int}_J F \geq \int_I f.            & \text{(by Definition \ref{11.3.4})}
     \end{align*}
     By Lemma \ref{11.3.3} we have
@@ -256,7 +245,7 @@
     \]
 \end{proof}
 
-\begin{proof}
+\begin{proof}{(h)}
     Let \(f_U : I \to \mathbf{R}\) be a piecewise constant function on \(I\) which majorizes \(f\).
     Let \(f_L : I \to \mathbf{R}\) be a piecewise constant function on \(I\) which minorizes \(f\).
     \(f_U, f_L\) are well-defined since by Definition \ref{11.3.4} \(f\) is a bounded function on a bounded interval \(I\).
@@ -265,9 +254,10 @@
         p.c. \int_I f_L \leq \underline{\int}_I f = \int_I f = \overline{\int}_I f \leq p.c. \int_I f_U.
     \]
     By Theorem \ref{11.2.16}(h) we know that \(f_U|_J : J \to \mathbf{R}\), \(f_L|_J : J \to \mathbf{R}\) are piecewise constant function on \(J\) and \(f_U|_K : K \to \mathbf{R}\), \(f_L|_K : K \to \mathbf{R}\) are piecewise constant functions on \(K\).
-    We also have \(f_U|_J\) majorizes \(f|_J\) and \(f_L|_J\) minorizes \(f|_J\), similarly \(f_U|_K\) majorizes \(f|_K\) and \(f_L|_K\) minorizes \(f|_K\).
-    Thus \(f|_J\), \(f|_K\) are bounded functions on bounded intervals \(J, K\) respectively, and \(\overline{\int}_J f|_J\), \(\overline{\int}_K f|_K\), \(\underline{\int}_J f|_J\), \(\underline{\int}_K f|_K\) are well-defined.
-    Now we have
+    By Definition \ref{11.3.1} we know that \(f_U|_J\) majorizes \(f|_J\) and \(f_L|_J\) minorizes \(f|_J\), similarly \(f_U|_K\) majorizes \(f|_K\) and \(f_L|_K\) minorizes \(f|_K\).
+    Thus \(f|_J\), \(f|_K\) are bounded functions on bounded intervals \(J, K\), respectively.
+    So \(\overline{\int}_J f|_J\), \(\overline{\int}_K f|_K\), \(\underline{\int}_J f|_J\), \(\underline{\int}_K f|_K\) are well-defined.
+    Then we have
     \begin{align*}
                  & \overline{\int}_J f|_J + \overline{\int}_K f|_K \leq p.c. \int_J f_U|_J + p.c. \int_K f_U|_K & \text{(by Definition \ref{11.3.2})}  \\
         \implies & \overline{\int}_J f|_J + \overline{\int}_K f|_K \leq p.c. \int_I f_U                         & \text{(by Theorem \ref{11.2.16}(h))} \\
@@ -285,10 +275,22 @@
     \[
         \int_I f \leq \underline{\int}_J f|_J + \underline{\int}_K f|_K \leq \overline{\int}_J f|_J + \overline{\int}_K f|_K \leq \int_I f
     \]
-    and thus by Definition \ref{11.3.4} we have
+    and thus we have
     \[
-        \int_J f|_J + \int_K f|_K = \underline{\int}_J f|_J + \underline{\int}_K f|_K = \overline{\int}_J F + \overline{\int}_J F = \int_I f.
+        \underline{\int}_J f|_J + \underline{\int}_K f|_K = \overline{\int}_J f|_J + \overline{\int}_J f|_K = \int_I f.
     \]
+    Since
+    \begin{align*}
+                 & \underline{\int}_J f|_J + \underline{\int}_K f|_K = \overline{\int}_J f|_J + \overline{\int}_J f|_K                                                \\
+        \implies & 0 \geq \underline{\int}_J f|_J - \overline{\int}_J f|_J = \overline{\int}_J f|_K - \underline{\int}_K f|_K \geq 0 & \text{(by Lemma \ref{11.3.3})} \\
+        \implies & \underline{\int}_J f|_J - \overline{\int}_J f|_J = \overline{\int}_J f|_K - \underline{\int}_K f|_K = 0,
+    \end{align*}
+    by Definition \ref{11.4.1} we have
+    \begin{align*}
+         & \int_J f|_J = \underline{\int}_J f|_J = \overline{\int}_J f|_J, \\
+         & \int_K f|_K = \underline{\int}_K f|_K = \overline{\int}_K f|_K, \\
+         & \int_J f|_J + \int_K f|_K = \int_I f.
+    \end{align*}
 \end{proof}
 
 \begin{remark}\label{11.4.2}
