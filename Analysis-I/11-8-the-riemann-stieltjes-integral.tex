@@ -1,26 +1,149 @@
 \section{The Riemann-Stieltjes integral}\label{sec 11.8}
 
+\begin{additional corollary}\label{ac 11.8.1}
+Let \(I\) be a bounded interval, and let \(f : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\).
+Then we have
+\[
+    f(x_0+) = \lim_{x \to x_0^+ ; x \in X} f(x) = \inf_{x \in X \cap (x_0, \infty)} f(x)
+\]
+and
+\[
+    f(x_0-) = \lim_{x \to x_0^- ; x \in X} f(x) = \sup_{x \in X \cap (-\infty, x_0)} f(x)
+\]
+for every \(x_0 \in I\) and \(x_0\) is not an endpoint of \(X\).
+\end{additional corollary}
+
+\begin{proof}
+    Let \(U = \inf_{x \in X \cap (x_0, \infty)} f(x)\) and let \(L = \sup_{x \in X \cap (-\infty, x_0)} f(x)\).
+    Since \(x_0 \in X\) and \(x_0\) is not an endpoint of \(X\), we know that \(X \cap (x_0, \infty) \neq \emptyset\) and \(X \cap (-\infty, x_0) \neq \emptyset\).
+    Since \(f\) is monotone increasing, we have
+    \[
+        U = \inf_{x \in X \cap (x_0, \infty)} f(x) \geq f(x_0)
+    \]
+    and
+    \[
+        L = \sup_{x \in X \cap (-\infty, x_0)} f(x) \leq f(x_0).
+    \]
+    Thus \(U, L\) are finite.
+
+    First we show that \(f(x_0+) = U\).
+    By the definition of \(U\) we know that
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ x \in X \cap (x_0, \infty) : 0 \leq f(x) - U \leq \varepsilon.
+    \]
+    Now fix such \(\varepsilon\) and \(x\).
+    Since \(f\) is monotone increasing, we know that
+    \[
+        \forall\ y \in X \cap (x_0, \infty), y < x \implies 0 \leq f(y) - U \leq f(x) - U \leq \varepsilon.
+    \]
+    Thus by setting \(\delta = x - x_0\) we have
+    \[
+        \forall\ y \in X \cap (x_0, \infty), \abs*{y - x_0} < \delta \implies \abs*{f(y) - U} \leq \varepsilon.
+    \]
+    Since \(\varepsilon\) is arbitrary, by Definition \ref{9.3.6} and Definition \ref{9.5.1} we have \(f(x_0+) = U\).
+
+    Now we show that \(f(x_0-) = L\).
+    By the definition of \(L\) we know that
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ x \in X \cap (-\infty, x_0) : 0 \leq L - f(x) \leq \varepsilon.
+    \]
+    Now fix such \(\varepsilon\) and \(x\).
+    Since \(f\) is monotone increasing, we know that
+    \[
+        \forall\ y \in X \cap (-\infty, x_0), y > x \implies 0 \leq L - f(y) \leq L - f(x) \leq \varepsilon.
+    \]
+    Thus by setting \(\delta = x_0 - x\) we have
+    \[
+        \forall\ y \in X \cap (-\infty, x_0), \abs*{y - x_0} < \delta \implies \abs*{f(y) - L} \leq \varepsilon.
+    \]
+    Since \(\varepsilon\) is arbitrary, by Definition \ref{9.3.6} and Definition \ref{9.5.1} we have \(f(x_0-) = L\).
+\end{proof}
+
+\begin{additional corollary}\label{ac 11.8.2}
+Let \(I\) be a bounded interval, and let \(f : X \to \mathbf{R}\) be a monotone decreasing function defined on some interval \(X\) which contains \(I\).
+Then we have
+\[
+    f(x_0+) = \lim_{x \to x_0^+ ; x \in X} f(x) = \sup_{x \in X \cap (x_0, \infty)} f(x)
+\]
+and
+\[
+    f(x_0-) = \lim_{x \to x_0^- ; x \in X} f(x) = \inf_{x \in X \cap (-\infty, x_0)} f(x)
+\]
+for every \(x_0 \in I\) and \(x_0\) is not an endpoint of \(X\).
+\end{additional corollary}
+
+\begin{proof}
+    Let \(U = \sup_{x \in X \cap (x_0, \infty)} f(x)\) and let \(L = \inf_{x \in X \cap (-\infty, x_0)} f(x)\).
+    Since \(x_0 \in X\) and \(x_0\) is not an endpoint of \(X\), we know that \(X \cap (x_0, \infty) \neq \emptyset\) and \(X \cap (-\infty, x_0) \neq \emptyset\).
+    Since \(f\) is monotone decreasing, we have
+    \[
+        U = \sup_{x \in X \cap (x_0, \infty)} f(x) \leq f(x_0)
+    \]
+    and
+    \[
+        L = \inf_{x \in X \cap (-\infty, x_0)} f(x) \geq f(x_0).
+    \]
+    Thus \(U, L\) are finite.
+
+    First we show that \(f(x_0+) = U\).
+    By the definition of \(U\) we know that
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ x \in X \cap (x_0, \infty) : 0 \leq U - f(x) \leq \varepsilon.
+    \]
+    Now fix such \(\varepsilon\) and \(x\).
+    Since \(f\) is monotone decreasing, we know that
+    \[
+        \forall\ y \in X \cap (x_0, \infty), y < x \implies 0 \leq U - f(y) \leq U - f(x) \leq \varepsilon.
+    \]
+    Thus by setting \(\delta = x - x_0\) we have
+    \[
+        \forall\ y \in X \cap (x_0, \infty), \abs*{y - x_0} < \delta \implies \abs*{f(y) - U} \leq \varepsilon.
+    \]
+    Since \(\varepsilon\) is arbitrary, by Definition \ref{9.3.6} and Definition \ref{9.5.1} we have \(f(x_0+) = U\).
+
+    Now we show that \(f(x_0-) = L\).
+    By the definition of \(L\) we know that
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ x \in X \cap (-\infty, x_0) : 0 \leq f(x) - L \leq \varepsilon.
+    \]
+    Now fix such \(\varepsilon\) and \(x\).
+    Since \(f\) is monotone decreasing, we know that
+    \[
+        \forall\ y \in X \cap (-\infty, x_0), y > x \implies 0 \leq f(y) - L \leq f(x) - L \leq \varepsilon.
+    \]
+    Thus by setting \(\delta = x_0 - x\) we have
+    \[
+        \forall\ y \in X \cap (-\infty, x_0), \abs*{y - x_0} < \delta \implies \abs*{f(y) - L} \leq \varepsilon.
+    \]
+    Since \(\varepsilon\) is arbitrary, by Definition \ref{9.3.6} and Definition \ref{9.5.1} we have \(f(x_0-) = L\).
+\end{proof}
+
 \begin{definition}[\(\alpha\)-length]\label{11.8.1}
     Let \(I\) be a bounded interval, and let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\).
     Then we define the \emph{\(\alpha\)-length} \(\alpha[I]\) of \(I\) as follows.
-    If \(I\) is the empty set, we set \(\alpha[I] = 0\).
-    If \(I\) is a point of the form \(\{a\}\) a point for some real number \(a\), we set
-    \[
-        \alpha[\{\alpha\}] \coloneqq \lim_{x \to a^+ ; x \in X} \alpha(x) - \lim_{x \to a^- ; x \in X} \alpha(x),
-    \]
-    with the convention that \(\lim_{x \to a^+ ; x \in X} \alpha(x)\) (resp. \(\lim_{x \to a^- ; x \in X} \alpha(x)\)) is \(\alpha(a)\) when \(a\) is the right (resp. left) endpoint of \(X\).
-    If \(I\) is an interval of the form \((a, b)\) for some real numbers \(b > a\), set
-    \[
-        \alpha[(a, b)] \coloneqq \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x).
-    \]
-    If \(I\) is an interval of the form \([a, b)\), \((a, b]\), or \([a, b]\) for some real numbers \(b > a\), then we set
-    \[
-        \alpha[I] = \begin{cases}
-            \alpha(\{a\}) + \alpha((a, b))                 & \text{if } I = [a, b) \\
-            \alpha((a, b)) + \alpha(\{b\})                 & \text{if } I = (a, b] \\
-            \alpha(\{a\}) + \alpha((a, b)) + \alpha(\{b\}) & \text{if } I = [a, b]
-        \end{cases}
-    \]
+    \begin{itemize}
+        \item If \(I\) is the empty set, we set
+              \[
+                  \alpha[\emptyset] \coloneqq 0.
+              \]
+        \item If \(I\) is a point of the form \(\{a\}\) for some real number \(a\), we set
+              \[
+                  \alpha[\{a\}] \coloneqq \lim_{x \to a^+ ; x \in X} \alpha(x) - \lim_{x \to a^- ; x \in X} \alpha(x),
+              \]
+              with the convention that \(\lim_{x \to a^+ ; x \in X} \alpha(x)\) (resp. \(\lim_{x \to a^- ; x \in X} \alpha(x)\)) is \(\alpha(a)\) when \(a\) is the right (resp. left) endpoint of \(X\).
+        \item If \(I\) is an interval of the form \((a, b)\) for some real numbers \(b > a\), set
+              \[
+                  \alpha[(a, b)] \coloneqq \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x).
+              \]
+        \item If \(I\) is an interval of the form \([a, b)\), \((a, b]\), or \([a, b]\) for some real numbers \(b > a\), then we set
+              \[
+                  \alpha[I] = \begin{cases}
+                      \alpha(\{a\}) + \alpha\big((a, b)\big)                 & \text{if } I = [a, b) \\
+                      \alpha\big((a, b)\big) + \alpha(\{b\})                 & \text{if } I = (a, b] \\
+                      \alpha(\{a\}) + \alpha\big((a, b)\big) + \alpha(\{b\}) & \text{if } I = [a, b]
+                  \end{cases}
+              \]
+    \end{itemize}
 \end{definition}
 
 \begin{note}
