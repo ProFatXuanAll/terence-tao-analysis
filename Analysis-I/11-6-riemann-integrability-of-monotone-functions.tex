@@ -95,7 +95,7 @@
 \end{proposition}
 
 \begin{proof}
-    Let \(N \in \mathbf{N}\) and \(N > 0\).
+    Let \(N \in \mathbf{Z}^+\).
     Since \(f\) is monotone decreasing, by Proposition \ref{11.6.1} we know that \(f\) is Riemann integrable on both \([0, N]\) and every interval \([a, b] \subseteq [0, N]\).
     Then we have
     \begin{align*}
@@ -145,36 +145,47 @@
 \end{corollary}
 
 \begin{proof}
-    First suppose that \(p > 1\).
     Let \(f : [1, \infty) \to \mathbf{R}\) be the function \(f(x) = \frac{1}{x^p}\).
-    By Proposition \ref{6.7.3}(a)(d) we know that \(f\) is positive and monotone decreasing.
-    Let \(N \in \mathbf{N}\) and \(N > 1\).
-    Then by Proposition \ref{11.6.1} we know that \(\int_{[1, N]} f\) is Riemann integrable.
-    Let \(x \in [1, \infty)\).
-    Since \(p > 1\), we have \(p - 1 > 0\) and by Archimedean property (Corollary \ref{5.4.13}) we know that \(\exists\ M \in \mathbf{N}\) and \(M > 0\) such that \(M(N - 1)(p - 1) > 1 = 1^p > x^p\).
-    This means \(\frac{1}{x^p} < \frac{1}{M(N - 1)(p - 1)}\) and thus
+    By Proposition \ref{6.7.3}(a)(d) we know that \(f\) is positive and
+    \[
+        \begin{cases}
+            f \text{ is monotone decreasing if } p > 1; \\
+            f \text{ is monotone increasing if } p < 1; \\
+            f \text{ is both monotone increasing and decreasing if } p = 1.
+        \end{cases}
+    \]
+    By Proposition \ref{11.6.1} \(f\) is Riemann integrable on \([1, N]\) for every \(N \in \mathbf{R}\) and \(N \geq 1\).
+    If \(p \neq 1\), then we have
     \begin{align*}
-        \int_{[1, N]} f & \leq \int_{[1, N]} \frac{1}{M(N - 1)(p - 1)}   & \text{(by Theorem \ref{11.4.1}(e))} \\
-                        & = p.c. \int_{[1, N]} \frac{1}{M(N - 1)(p - 1)} & \text{(by Lemma \ref{11.3.7})}      \\
-                        & = \frac{N - 1}{M(N - 1)(p - 1)}                & \text{(by Definition \ref{11.2.9})} \\
-                        & = \frac{1}{M(p - 1)}                                                                 \\
-                        & \leq \frac{1}{p - 1}.
+        \int_{[1, N]} f & = \frac{1}{1 - p} (N^{1 - p} - 1^{1 - p}) & \text{(by Theorem \ref{11.9.4})} \\
+                        & = \frac{1}{1 - p} (N^{1 - p} - 1).
     \end{align*}
-    Since \(\int_{[1, N]} f \leq \frac{1}{p - 1}\) for all \(N > 1\), we have \(\sup_{N > 1} \int_{[1, N]} f \leq \frac{1}{p - 1}\), and thus by Proposition \ref{11.6.4} we know that \(\sum_{n = 1}^\infty f(n)\) is convergent.
+    If \(p = 1\), then we have
+    \[
+        \int_{[1, N]} f = \ln N - \ln 1 = \ln N.
+    \]
+    Note that we use Theorem \ref{11.9.4} and logarithm without circularity.
+
+    First suppose that \(p > 1\).
+    Since
+    \begin{align*}
+        \int_{[1, N]} f & = \frac{1}{1 - p} (N^{1 - p} - 1)                      \\
+                        & = \frac{1}{p - 1} (1 - N^{1 - p})                      \\
+                        & \leq \frac{1}{p - 1}              & (N^{1 - p} \leq 1)
+    \end{align*}
+    and \(N\) is arbitrary, we know that \(\sup_{N > 1} \int_{[1, N]} f \leq \frac{1}{p - 1}\).
+    Thus \(\sup_{N > 1} \int_{[1, N]} f\) is finite and by Proposition \ref{11.6.4} \(\sum_{n = 1}^\infty \frac{1}{n^p}\) is convergent.
 
     Next suppose that \(p = 1\).
-    By Corollary \ref{7.3.7} we know that \(\sum_{n = 1}^\infty \frac{1}{n}\) is divergent.
+    Since \(\int_{[1, N]} f = \ln N\) and \(\ln N\) is unbounded, we know that \(\sup_{N > 1} \int_{[1, N]} f = +\infty\) and by Proposition \ref{11.6.4} \(\sum_{n = 1}^\infty \frac{1}{n^p}\) is divergent.
 
     Next suppose that \(0 < p < 1\).
-    By Proposition \ref{5.4.14} \(\exists\ q \in \mathbf{Q}\) such that \(p < q < 1\).
-    By Proposition \ref{6.7.3}(d) we know that \(x^p < x^q\) for all \(x \in [1, \infty)\), so we have \(1 / x^q < 1 / x^p\) and \(\sum_{n = 1}^N \frac{1}{x^q} < \sum_{n = 1}^N \frac{1}{x^p}\) for all \(N \in \mathbf{N}\) and \(N > 0\).
-    But by Corollary \ref{7.3.7} we know that \(\sum_{n = 1}^\infty \frac{1}{n^q}\) diverges.
-    Thus by Comparison test (Corollary \ref{7.3.1}) \(\sum_{n = 1}^N \frac{1}{x^p}\) also diverges.
+    Since \(\int_{[1, N]} f = \frac{1}{1 - p} (N^{1 - p} - 1)\) and \(\{N^{1 - p} : N \in \mathbf{R}^+\}\) is unbounded, we know that \(\sup_{N > 1} \int_{[1, N]} f = +\infty\) and by Proposition \ref{11.6.4} \(\sum_{n = 1}^\infty \frac{1}{n^p}\) is divergent.
 
     Finally suppose that \(p \leq 0\).
     By Proposition \ref{6.7.3}(e) we know that \(1 = x^0 \geq x^p\) for all \(x \in [1, \infty)\), thus \(1 = \frac{1}{x^0} \leq \frac{1}{x^p}\).
-    By Zero test (Corollary \ref{7.2.6}) we know that \(\lim_{n \to \infty} 1 \neq 0\) implies \(\sum_{n = 0}^\infty \frac{1}{x^0}\) diverges.
-    Thus by Comparison test (Corollary \ref{7.3.1}) \(\sum_{n = 1}^N \frac{1}{x^p}\) also diverges.
+    By zero test (Corollary \ref{7.2.6}) we know that \(\lim_{n \to \infty} 1 \neq 0\) implies \(\sum_{n = 0}^\infty \frac{1}{x^0}\) diverges.
+    Thus by comparison test (Corollary \ref{7.3.1}) \(\sum_{n = 1}^N \frac{1}{x^p}\) is divergent.
 \end{proof}
 
 \exercisesection
@@ -235,7 +246,7 @@
         \end{cases}
     \]
     Then we know that \(f_1\) is not monotone decreasing and \(\sum_{n = 0}^\infty f_1(n)\) diverges.
-    But \(\int_{[0, N]} f_1 = 0\) for all \(N \in \mathbf{N}\) and \(N > 0\), thus \(\sup_{N > 0} \int_{[0, N]} f_1\) is finite.
+    But \(\int_{[0, N]} f_1 = 0\) for all \(N \in \mathbf{Z}^+\), thus \(\sup_{N > 0} \int_{[0, N]} f_1\) is finite.
 
     Let \(f_2 : [0, \infty) \to \mathbf{R}\) be the function
     \[
