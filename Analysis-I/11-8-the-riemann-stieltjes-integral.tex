@@ -128,19 +128,19 @@ for every \(x_0 \in I\) and \(x_0\) is not an endpoint of \(X\).
               \]
         \item If \(I\) is a point of the form \(\{a\}\) for some real number \(a\), we set
               \[
-                  \alpha[\{a\}] \coloneqq \lim_{x \to a^+ ; x \in X} \alpha(x) - \lim_{x \to a^- ; x \in X} \alpha(x),
+                  \alpha\big[\{a\}\big] \coloneqq \lim_{x \to a^+ ; x \in X} \alpha(x) - \lim_{x \to a^- ; x \in X} \alpha(x),
               \]
               with the convention that \(\lim_{x \to a^+ ; x \in X} \alpha(x)\) (resp. \(\lim_{x \to a^- ; x \in X} \alpha(x)\)) is \(\alpha(a)\) when \(a\) is the right (resp. left) endpoint of \(X\).
         \item If \(I\) is an interval of the form \((a, b)\) for some real numbers \(b > a\), set
               \[
-                  \alpha[(a, b)] \coloneqq \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x).
+                  \alpha\big[(a, b)\big] \coloneqq \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x).
               \]
         \item If \(I\) is an interval of the form \([a, b)\), \((a, b]\), or \([a, b]\) for some real numbers \(b > a\), then we set
               \[
                   \alpha[I] = \begin{cases}
-                      \alpha(\{a\}) + \alpha\big((a, b)\big)                 & \text{if } I = [a, b) \\
-                      \alpha\big((a, b)\big) + \alpha(\{b\})                 & \text{if } I = (a, b] \\
-                      \alpha(\{a\}) + \alpha\big((a, b)\big) + \alpha(\{b\}) & \text{if } I = [a, b]
+                      \alpha\big[\{a\}\big] + \alpha\big[(a, b)\big]                         & \text{if } I = [a, b) \\
+                      \alpha\big[(a, b)\big] + \alpha\big[\{b\}\big]                         & \text{if } I = (a, b] \\
+                      \alpha\big[\{a\}\big] + \alpha\big[(a, b)\big] + \alpha\big[\{b\}\big] & \text{if } I = [a, b]
                   \end{cases}
               \]
     \end{itemize}
@@ -151,7 +151,7 @@ for every \(x_0 \in I\) and \(x_0\) is not an endpoint of \(X\).
 \end{note}
 
 \begin{note}
-    We sometimes write \(\alpha\big|_a^b\) or \(\alpha(x)\big|_{x = a}^{x = b}\) instead of \(\alpha[[a, b]]\).
+    We sometimes write \(\alpha\big|_a^b\) or \(\alpha(x)\big|_{x = a}^{x = b}\) instead of \(\alpha\big[[a, b]\big]\).
 \end{note}
 
 \setcounter{theorem}{3}
@@ -186,29 +186,33 @@ for every \(x_0 \in I\) and \(x_0\) is not an endpoint of \(X\).
     Since \(b \in I\), we know that one of the intervals \(K\) in \(\mathbf{P}\) contains \(b\).
     Since \(K\) is contained in \(I\), it must therefore be of the form \((c, b]\), \([c, b]\), or \(\{b\}\) for some real number \(c\), with \(a \leq c \leq b\) (in the latter case of \(K = \{b\}\), we set \(c \coloneqq b\)).
     In particular, this means that the set \(I \setminus K\) is also an interval of the form \([a, c]\), \((a, c)\), \((a, c]\), \([a, c)\) when \(c > a\), or a point or empty set when \(a = c\).
-            Either way, by Definition \ref{11.8.1} we see that
-            \begin{align*}
-                \alpha[I] & = \alpha[(a, b)] + \alpha(\{b\})                                                              \\
-                          & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) + \alpha(\{b\}) \\
-                          & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to c^+ ; x \in X} \alpha(x)                 \\
-                          & + \lim_{x \to c^+ ; x \in X} \alpha(x) - \lim_{x \to c^- ; x \in X} \alpha(x)                 \\
-                          & + \lim_{x \to c^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) + \alpha(\{b\}) \\
-                          & = \alpha[(c, b)] + \alpha[\{c\}] + \alpha[(a, c)] + \alpha(\{b\})                             \\
-                          & = \alpha[(a, c)] + \alpha[[c, b]]                                                             \\
-                          & = \alpha[K] + \alpha[I \setminus K]
-            \end{align*}
-            when \(I = (a, b]\) and
+    Either way, by Definition \ref{11.8.1} we see that
     \begin{align*}
-        \alpha[I] & = \alpha(\{a\}) + \alpha[(a, b)] + \alpha(\{b\})                                                              \\
-                  & = \alpha(\{a\}) + \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) + \alpha(\{b\}) \\
-                  & = \alpha(\{a\}) + \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to c^+ ; x \in X} \alpha(x)                 \\
-                  & + \lim_{x \to c^+ ; x \in X} \alpha(x) - \lim_{x \to c^- ; x \in X} \alpha(x)                                 \\
-                  & + \lim_{x \to c^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) + \alpha(\{b\})                 \\
-                  & = \alpha(\{a\}) + \alpha[(c, b)] + \alpha[\{c\}] + \alpha[(a, c)] + \alpha(\{b\})                             \\
-                  & = \alpha[[a, c)] + \alpha[[c, b]]                                                                             \\
-                  & = \alpha[K] + \alpha[I \setminus K].
+        \alpha\big[(a, b]\big] & = \alpha\big[(a, b)\big] + \alpha\big[\{b\}\big]                                                            \\
+                               & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) + \alpha\big[\{b\}\big]       \\
+                               & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to c^+ ; x \in X} \alpha(x)                               \\
+                               & \quad + \lim_{x \to c^+ ; x \in X} \alpha(x) - \lim_{x \to c^- ; x \in X} \alpha(x)                         \\
+                               & \quad + \lim_{x \to c^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) + \alpha\big[\{b\}\big] \\
+                               & = \alpha\big[(c, b)\big] + \alpha\big[\{c\}\big] + \alpha\big[(a, c)\big] + \alpha\big[\{b\}\big]           \\
+                               & = \begin{cases}
+            \alpha\big[(a, c)\big] + \alpha\big[[c, b]\big] \\
+            \alpha\big[(a, c]\big] + \alpha\big[(c, b]\big]
+        \end{cases}                                                                                 \\
+                               & = \alpha[K] + \alpha[I \setminus K]
     \end{align*}
-    when \(I = [a, b]\).
+    and
+    \begin{align*}
+        \alpha\big[[a, b]\big] & = \alpha\big[\{a\}\big] + \alpha\big[(a, b]\big] \\
+                               & = \begin{cases}
+            \alpha\big[\{a\}\big] + \alpha\big[(a, c)\big] + \alpha\big[[c, b]\big] \\
+            \alpha\big[\{a\}\big] + \alpha\big[(a, c]\big] + \alpha\big[(c, b]\big]
+        \end{cases}                      \\
+                               & = \begin{cases}
+            \alpha\big[[a, c)\big] + \alpha\big[[c, b]\big] \\
+                \alpha\big[[a, c]\big] + \alpha\big[(c, b]\big]
+        \end{cases}                      \\
+                               & = \alpha[K] + \alpha[I \setminus K].
+    \end{align*}
     On the other hand, since \(\mathbf{P}\) forms a partition of \(I\), we see that \(\mathbf{P} \setminus \{K\}\) forms a partition of \(I \setminus K\).
     By the induction hypothesis, we thus have
     \[
@@ -225,27 +229,30 @@ for every \(x_0 \in I\) and \(x_0\) is not an endpoint of \(X\).
             In particular, this means that the set \(I \setminus K\) is also an interval of the form \([a, c]\), \((a, c)\), \((a, c]\), \([a, c)\) when \(c > a\), or a point or empty set when \(a = c\).
     By Definition \ref{11.8.1} we see that
     \begin{align*}
-        \alpha[I] & = \alpha[(a, b)]                                                              \\
-                  & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) \\
-                  & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to c^+ ; x \in X} \alpha(x) \\
-                  & + \lim_{x \to c^+ ; x \in X} \alpha(x) - \lim_{x \to c^- ; x \in X} \alpha(x) \\
-                  & + \lim_{x \to c^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) \\
-                  & = \alpha[(c, b)] + \alpha[\{c\}] + \alpha[(a, c)]                             \\
-                  & = \alpha[(a, c)] + \alpha[[c, b)]                                             \\
-                  & = \alpha[K] + \alpha[I \setminus K]
+        \alpha\big[(a, b)\big] & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x)       \\
+                               & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to c^+ ; x \in X} \alpha(x)       \\
+                               & \quad + \lim_{x \to c^+ ; x \in X} \alpha(x) - \lim_{x \to c^- ; x \in X} \alpha(x) \\
+                               & \quad + \lim_{x \to c^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) \\
+                               & = \alpha\big[(c, b)\big] + \alpha\big[\{c\}\big] + \alpha\big[(a, c)\big]           \\
+                               & = \begin{cases}
+            \alpha\big[(a, c)\big] + \alpha\big[[c, b)\big] \\
+                \alpha\big[(a, c]\big] + \alpha\big[(c, b)\big]
+        \end{cases}                                                        \\
+                               & = \alpha[K] + \alpha[I \setminus K]
     \end{align*}
-    when \(I = (a, b)\) and
+    and
     \begin{align*}
-        \alpha[I] & = \alpha(\{a\}) + \alpha[(a, b)]                                                              \\
-                  & = \alpha(\{a\}) + \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) \\
-                  & = \alpha(\{a\}) + \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to c^+ ; x \in X} \alpha(x) \\
-                  & + \lim_{x \to c^+ ; x \in X} \alpha(x) - \lim_{x \to c^- ; x \in X} \alpha(x)                 \\
-                  & + \lim_{x \to c^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x)                 \\
-                  & = \alpha(\{a\}) + \alpha[(c, b)] + \alpha[\{c\}] + \alpha[(a, c)]                             \\
-                  & = \alpha[[a, c)] + \alpha[[c, b)]                                                             \\
-                  & = \alpha[K] + \alpha[I \setminus K].
+        \alpha\big[[a, b)\big] & = \alpha\big[\{a\}\big] + \alpha\big[(a, b)\big] \\
+                               & = \begin{cases}
+            \alpha\big[\{a\}\big] + \alpha\big[(a, c)\big] + \alpha\big[[c, b)\big] \\
+                \alpha\big[\{a\}\big] + \alpha\big[(a, c]\big] + \alpha\big[(c, b)\big]
+        \end{cases}                     \\
+                               & = \begin{cases}
+            \alpha\big[[a, c)\big] + \alpha\big[[c, b)\big] \\
+            \alpha\big[[a, c]\big] + \alpha\big[(c, b)\big]
+        \end{cases}                     \\
+                               & = \alpha[K] + \alpha[I \setminus K].
     \end{align*}
-    when \(I = [a, b)\).
     The rest of the argument then proceeds as above.
 \end{proof}
 
