@@ -261,54 +261,52 @@ for every \(x_0 \in I\) and \(x_0\) is not an endpoint of \(X\).
     Let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) be a function which is piecewise constant with respect to \(\mathbf{P}\).
     Then we define
     \[
-        p.c. \int_{[\mathbf{P}]} f \; d \alpha \coloneqq \sum_{J \in \mathbf{P}} c_J \alpha[J]
+        p.c. \int_{[\mathbf{P}]} f \; d \alpha \coloneqq \sum_{J \in \mathbf{P}} c_J \cdot \alpha[J]
     \]
     where \(c_J\) is the constant value of \(f\) on \(J\).
 \end{definition}
+
+\begin{additional corollary}\label{ac 11.8.3}
+Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) be a function.
+Suppose that \(\mathbf{P}\) and \(\mathbf{P}'\) are partitions of \(I\) such that \(f\) is piecewise constant both with respect to \(\mathbf{P}\) and with respect to \(\mathbf{P}'\).
+Also suppose that both \(p.c. \int_{[\mathbf{P}]} f \; d \alpha\) and \(p.c. \int_{[\mathbf{P}']} f \; d \alpha\) are well-defined.
+Then \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d \alpha\).
+\end{additional corollary}
+
+\begin{proof}
+    By Lemma \ref{11.1.18} we know that \(\mathbf{P} \# \mathbf{P}'\) is a partition of \(I\) and is both finer than \(\mathbf{P}\) and finer than \(\mathbf{P}'\), thus by Definition \ref{11.8.5} we have
+    \[
+        p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f \; d \alpha = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \cdot \alpha[J].
+    \]
+    By Lemma \ref{11.8.4} we know that
+    \[
+        \alpha[I] = \sum_{J \in \mathbf{P}} \alpha[J] = \sum_{J \in \mathbf{P} \# \mathbf{P}'} \alpha[J].
+    \]
+    For each \(K \in \mathbf{P}\), let \(\mathbf{P}_K\) be the set
+    \[
+        \mathbf{P}_K = \{S \in \mathbf{P} \# \mathbf{P}' : S \subseteq K\}.
+    \]
+    Since \(\mathbf{P} \# \mathbf{P}'\) is finer than \(\mathbf{P}\), by Additional Corollary \ref{ac 11.1.4} we know that \(\mathbf{P}_K\) is a partition of \(K\), and \(\bigcup_{K \in \mathbf{P}} \mathbf{P}_K = \mathbf{P} \# \mathbf{P}'\).
+    Since \(f\) is piecewise constant with respect to \(\mathbf{P}\), by Lemma \ref{11.2.7} we know that \(f\) is piecewise constant with respect to \(\mathbf{P} \# \mathbf{P}'\).
+    So we have
+    \begin{align*}
+        p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f \; d \alpha & = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \cdot \alpha[J]                  & \text{(by Definition \ref{11.8.5})}     \\
+                                                              & = \sum_{J \in \bigcup_{K \in \mathbf{P}} \mathbf{P}_K} c_J \cdot \alpha[J]                                              \\
+                                                              & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_J \cdot \alpha[J]       & \text{(by Proposition \ref{7.1.11}(e))} \\
+                                                              & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_K \cdot \alpha[J]       & (J \subseteq K)                         \\
+                                                              & = \sum_{K \in \mathbf{P}} c_K \bigg(\sum_{J \in \mathbf{P}_K} \alpha[J]\bigg)                                           \\
+                                                              & = \sum_{K \in \mathbf{P}} c_K \cdot \alpha[K]                                 & \text{(by Lemma \ref{11.8.4})}          \\
+                                                              & = p.c. \int_{[\mathbf{P}]} f \; d \alpha.                                     & \text{(by Definition \ref{11.8.5})}
+    \end{align*}
+    Using similar arguments we can show that \(p.c. \int_{[\mathbf{P}']} f \; d \alpha = p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f \; d \alpha\).
+    Thus we have \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d \alpha\).
+\end{proof}
 
 \setcounter{theorem}{6}
 \begin{example}\label{11.8.7}
     Let \(\alpha : \mathbf{R} \to \mathbf{R}\) be the identity function \(\alpha(x) \coloneqq x\).
     Then for any bounded interval \(I\), any partition \(\mathbf{P}\) of \(I\), and any function \(f\) that is piecewise constant with respect to \(P\), we have \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}]} f\).
 \end{example}
-
-\begin{proposition}\label{11.8.8}
-    Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) be a function.
-    Suppose that \(\mathbf{P}\) and \(\mathbf{P}'\) are partitions of \(I\) such that \(f\) is piecewise constant both with respect to \(\mathbf{P}\) and with respect to \(\mathbf{P}'\).
-    Also suppose that both \(p.c. \int_{[\mathbf{P}]} f \; d \alpha\) and \(p.c. \int_{[\mathbf{P}']} f \; d \alpha\) are well-defined.
-    Then \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d \alpha\).
-\end{proposition}
-
-\begin{proof}
-    By Lemma \ref{11.1.18} we know that \(\mathbf{P} \# \mathbf{P}'\) is a partition of \(I\) and is both finer than \(\mathbf{P}\) and finer than \(\mathbf{P}'\), thus by Definition \ref{11.8.5} we have
-    \[
-        p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f \; d \alpha = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \alpha[J].
-    \]
-    By Lemma \ref{11.8.4}, we know that
-    \[
-        \alpha[I] = \sum_{J \in \mathbf{P}} \alpha[J] = \sum_{J \in \mathbf{P} \# \mathbf{P}'} \alpha[J].
-    \]
-    By Definition \ref{11.1.14}, \(\forall\ S \in \mathbf{P} \# \mathbf{P}'\), \(\exists\ K \in \mathbf{P}\) such that \(S \subseteq K\).
-    Now we fix such \(K\) and let \(\mathbf{P}_K\) be the set
-    \[
-        \mathbf{P}_K = \{S \in \mathbf{P} \# \mathbf{P}' : S \subseteq K\}.
-    \]
-    We know that \(\mathbf{P}_K\) is a partition of \(K\) and \(\bigcup_{K \in \mathbf{P}} \mathbf{P}_K = \mathbf{P} \# \mathbf{P}'\).
-    (See the proof of Proposition \ref{11.2.13})
-    Since \(f\) is piecewise constant with respect to \(\mathbf{P}\), by Lemma \ref{11.2.7} we know that \(f\) is piecewise constant with respect to \(\mathbf{P} \# \mathbf{P}'\).
-    So we have
-    \begin{align*}
-        p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f \; d \alpha & = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \alpha[J]                        & \text{(by Definition \ref{11.8.5})}     \\
-                                                              & = \sum_{J \in \bigcup_{K \in \mathbf{P}} \mathbf{P}_K} c_J \alpha[J]                                                    \\
-                                                              & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_J \alpha[J]             & \text{(by Proposition \ref{7.1.11}(e))} \\
-                                                              & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_K \alpha[J]             & (J \subseteq K)                         \\
-                                                              & = \sum_{K \in \mathbf{P}} c_K \bigg(\sum_{J \in \mathbf{P}_K} \alpha[J]\bigg)                                           \\
-                                                              & = \sum_{K \in \mathbf{P}} c_K \alpha[K]                                       & \text{(by Lemma \ref{11.8.4})}          \\
-                                                              & = p.c. \int_{[\mathbf{P}]} f \; d \alpha.                                     & \text{(by Definition \ref{11.8.5})}
-    \end{align*}
-    Using similar arguments we can show that \(p.c. \int_{[\mathbf{P}']} f \; d \alpha = p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f \; d \alpha\).
-    Thus we have \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d \alpha\).
-\end{proof}
 
 \begin{definition}\label{11.8.9}
     Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) be a piecewise constant function on \(I\).
@@ -317,7 +315,7 @@ for every \(x_0 \in I\) and \(x_0\) is not an endpoint of \(X\).
         p.c. \int_I f \; d \alpha \coloneqq p.c. \int_{[\mathbf{P}]} f \; d \alpha,
     \]
     where \(\mathbf{P}\) is any partition of \(I\) with respect to which \(f\) is piecewise constant.
-    (Note that Proposition \ref{11.8.8} tells us that the precise choice of this partition is irrelevant.)
+    (Note that Additional Corollary \ref{ac 11.8.3} tells us that the precise choice of this partition is irrelevant.)
 \end{definition}
 
 \begin{theorem}\label{11.8.10}
@@ -577,7 +575,7 @@ for every \(x_0 \in I\) and \(x_0\) is not an endpoint of \(X\).
 \end{exercise}
 
 \begin{proof}
-    See Proposition \ref{11.8.8}.
+    See Additional Corollary \ref{ac 11.8.3}.
 \end{proof}
 
 \begin{exercise}\label{ex 11.8.3}
