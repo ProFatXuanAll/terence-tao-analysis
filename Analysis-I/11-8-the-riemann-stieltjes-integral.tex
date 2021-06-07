@@ -261,10 +261,16 @@ for every \(x_0 \in I\) and \(x_0\) is not an endpoint of \(X\).
     Let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) be a function which is piecewise constant with respect to \(\mathbf{P}\).
     Then we define
     \[
-        p.c. \int_{[\mathbf{P}]} f \; d \alpha \coloneqq \sum_{J \in \mathbf{P}} c_J \cdot \alpha[J]
+        p.c. \int_{[\mathbf{P}]} f \; d \alpha \coloneqq \sum_{J \in \mathbf{P}} c_J \alpha[J]
     \]
     where \(c_J\) is the constant value of \(f\) on \(J\).
 \end{definition}
+
+\setcounter{theorem}{6}
+\begin{example}\label{11.8.7}
+    Let \(\alpha : \mathbf{R} \to \mathbf{R}\) be the identity function \(\alpha(x) \coloneqq x\).
+    Then for any bounded interval \(I\), any partition \(\mathbf{P}\) of \(I\), and any function \(f\) that is piecewise constant with respect to \(P\), we have \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}]} f\).
+\end{example}
 
 \begin{additional corollary}\label{ac 11.8.3}
 Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) be a function.
@@ -276,7 +282,7 @@ Then \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d
 \begin{proof}
     By Lemma \ref{11.1.18} we know that \(\mathbf{P} \# \mathbf{P}'\) is a partition of \(I\) and is both finer than \(\mathbf{P}\) and finer than \(\mathbf{P}'\), thus by Definition \ref{11.8.5} we have
     \[
-        p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f \; d \alpha = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \cdot \alpha[J].
+        p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f \; d \alpha = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \alpha[J].
     \]
     By Lemma \ref{11.8.4} we know that
     \[
@@ -290,121 +296,129 @@ Then \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d
     Since \(f\) is piecewise constant with respect to \(\mathbf{P}\), by Lemma \ref{11.2.7} we know that \(f\) is piecewise constant with respect to \(\mathbf{P} \# \mathbf{P}'\).
     So we have
     \begin{align*}
-        p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f \; d \alpha & = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \cdot \alpha[J]                  & \text{(by Definition \ref{11.8.5})}     \\
-                                                              & = \sum_{J \in \bigcup_{K \in \mathbf{P}} \mathbf{P}_K} c_J \cdot \alpha[J]                                              \\
-                                                              & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_J \cdot \alpha[J]       & \text{(by Proposition \ref{7.1.11}(e))} \\
-                                                              & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_K \cdot \alpha[J]       & (J \subseteq K)                         \\
+        p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f \; d \alpha & = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \alpha[J]                        & \text{(by Definition \ref{11.8.5})}     \\
+                                                              & = \sum_{J \in \bigcup_{K \in \mathbf{P}} \mathbf{P}_K} c_J \alpha[J]                                                    \\
+                                                              & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_J \alpha[J]             & \text{(by Proposition \ref{7.1.11}(e))} \\
+                                                              & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_K \alpha[J]             & (J \subseteq K)                         \\
                                                               & = \sum_{K \in \mathbf{P}} c_K \bigg(\sum_{J \in \mathbf{P}_K} \alpha[J]\bigg)                                           \\
-                                                              & = \sum_{K \in \mathbf{P}} c_K \cdot \alpha[K]                                 & \text{(by Lemma \ref{11.8.4})}          \\
+                                                              & = \sum_{K \in \mathbf{P}} c_K \alpha[K]                                       & \text{(by Lemma \ref{11.8.4})}          \\
                                                               & = p.c. \int_{[\mathbf{P}]} f \; d \alpha.                                     & \text{(by Definition \ref{11.8.5})}
     \end{align*}
     Using similar arguments we can show that \(p.c. \int_{[\mathbf{P}']} f \; d \alpha = p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f \; d \alpha\).
     Thus we have \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d \alpha\).
 \end{proof}
 
-\setcounter{theorem}{6}
-\begin{example}\label{11.8.7}
-    Let \(\alpha : \mathbf{R} \to \mathbf{R}\) be the identity function \(\alpha(x) \coloneqq x\).
-    Then for any bounded interval \(I\), any partition \(\mathbf{P}\) of \(I\), and any function \(f\) that is piecewise constant with respect to \(P\), we have \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}]} f\).
-\end{example}
+\begin{additional corollary}\label{ac 11.8.4}
+Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) be a piecewise constant function on \(I\).
+Then we define
+\[
+    p.c. \int_I f \; d \alpha \coloneqq p.c. \int_{[\mathbf{P}]} f \; d \alpha,
+\]
+where \(\mathbf{P}\) is any partition of \(I\) with respect to which \(f\) is piecewise constant.
+(Note that Additional Corollary \ref{ac 11.8.3} tells us that the precise choice of this partition is irrelevant.)
+\end{additional corollary}
 
-\begin{definition}\label{11.8.9}
-    Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) be a piecewise constant function on \(I\).
-    Then we define
-    \[
-        p.c. \int_I f \; d \alpha \coloneqq p.c. \int_{[\mathbf{P}]} f \; d \alpha,
-    \]
-    where \(\mathbf{P}\) is any partition of \(I\) with respect to which \(f\) is piecewise constant.
-    (Note that Additional Corollary \ref{ac 11.8.3} tells us that the precise choice of this partition is irrelevant.)
-\end{definition}
-
-\begin{theorem}\label{11.8.10}
-    Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) be piecewise constant functions on \(I\) such that both \(p.c. \int_I f \; d \alpha\) and \(p.c. \int_I g \; d \alpha\) are well-defined.
-    \begin{enumerate}
-        \item We have \(p.c. \int_I (f + g) \; d \alpha = p.c. \int_I f \; d \alpha + p.c. \int_I g \; d \alpha\).
-        \item For any real number \(c\), we have \(p.c. \int_I (cf) \; d \alpha = c (p.c. \int_I f \; d \alpha)\).
-        \item We have \(p.c. \int_I (f - g) \; d \alpha = p.c. \int_I f \; d \alpha - p.c. \int_I g \; d \alpha\).
-        \item If \(f(x) \geq 0\) for all \(x \in I\), then \(p.c. \int_I f \; d \alpha \geq 0\).
-        \item If \(f(x) \geq g(x)\) for all \(x \in I\), then \(p.c. \int_I f \; d \alpha \geq p.c. \int_I g \; d \alpha\).
-        \item If \(f\) is the constant function \(f(x) = c\) for all \(x \in I\), then \(p.c. \int_I f \; d \alpha = c \alpha[I]\).
-        \item Let \(J\) be a bounded interval containing \(I\) (i.e., \(I \subseteq J\)), and let \(F : J \to \mathbf{R}\) be the function
-              \[
-                  F(x) \coloneqq \begin{cases}
-                      f(x) & \text{if } x \in I    \\
-                      0    & \text{if } x \notin I
-                  \end{cases}
-              \]
-              Then \(F\) is piecewise constant on \(J\), and \(p.c. \int_J F \; d \alpha = p.c. \int_I f \; d \alpha\).
-        \item Suppose that \(\{J, K\}\) is a partition of \(I\) into two intervals \(J\) and \(K\).
-              Then the function \(f|_J : J \to \mathbf{R}\) and \(f|_K : K \to \mathbf{R}\) are piecewise constant on \(J\) and \(K\) respectively, and we have
-              \[
-                  p.c. \int_I f \; d \alpha = p.c. \int_J f|_J \; d \alpha + p.c. \int_K f|_K \; d \alpha.
-              \]
-    \end{enumerate}
-\end{theorem}
+\begin{additional corollary}\label{ac 11.8.5}
+Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) be piecewise constant functions on \(I\) such that both \(p.c. \int_I f \; d \alpha\) and \(p.c. \int_I g \; d \alpha\) are well-defined.
+\begin{enumerate}
+    \item We have \(p.c. \int_I (f + g) \; d \alpha = p.c. \int_I f \; d \alpha + p.c. \int_I g \; d \alpha\).
+    \item For any real number \(c\), we have \(p.c. \int_I (cf) \; d \alpha = c (p.c. \int_I f \; d \alpha)\).
+    \item We have \(p.c. \int_I (f - g) \; d \alpha = p.c. \int_I f \; d \alpha - p.c. \int_I g \; d \alpha\).
+    \item If \(f(x) \geq 0\) for all \(x \in I\), then \(p.c. \int_I f \; d \alpha \geq 0\).
+    \item If \(f(x) \geq g(x)\) for all \(x \in I\), then \(p.c. \int_I f \; d \alpha \geq p.c. \int_I g \; d \alpha\).
+    \item If \(f\) is the constant function \(f(x) = c\) for all \(x \in I\), then \(p.c. \int_I f \; d \alpha = c \alpha[I]\).
+    \item Let \(J\) be a bounded interval containing \(I\) (i.e., \(I \subseteq J\)), and let \(F : J \to \mathbf{R}\) be the function
+          \[
+              F(x) \coloneqq \begin{cases}
+                  f(x) & \text{if } x \in I    \\
+                  0    & \text{if } x \notin I
+              \end{cases}
+          \]
+          Then \(F\) is piecewise constant on \(J\), and \(p.c. \int_J F \; d \alpha = p.c. \int_I f \; d \alpha\).
+    \item Suppose that \(\{J, K\}\) is a partition of \(I\) into two intervals \(J\) and \(K\).
+          Then the function \(f|_J : J \to \mathbf{R}\) and \(f|_K : K \to \mathbf{R}\) are piecewise constant on \(J\) and \(K\) respectively, and we have
+          \[
+              p.c. \int_I f \; d \alpha = p.c. \int_J f|_J \; d \alpha + p.c. \int_K f|_K \; d \alpha.
+          \]
+\end{enumerate}
+\end{additional corollary}
 
 \begin{proof}{(a)}
-    Since \(f, g\) are both piecewise constant on \(I\), by Lemma \ref{11.2.8} \(f + g\) is also piecewise constant on \(I\).
-    By Definition \ref{11.2.3}, \(\exists\ \mathbf{P}_f, \mathbf{P}_g\) such that \(\mathbf{P}_f, \mathbf{P}_g\) are partitions of \(I\), \(f\) is piecewise constant with respect to \(\mathbf{P}_f\) and \(g\) is piecewise constant with respect to \(\mathbf{P}_g\).
-    Let \(\mathbf{P} = \mathbf{P}_f \# \mathbf{P}_g\).
-    Then by Lemma \ref{11.1.18} we know that \(\mathbf{P}\) is also a partition of \(I\) and by Lemma \ref{11.2.7} \(f, g\) are piecewise constant with respect to \(\mathbf{P}\).
-    Now let \(J \in \mathbf{P}\), let \(f_J \in \mathbf{R}\) be the constant value of \(f\) on \(J\) and \(g_J \in \mathbf{R}\) be the constant value of \(g\) on \(J\).
-    Then by Definition \ref{11.2.1} \(f_J + g_J\) is also a constant of \(f + g\) on \(J\).
-    Thus we have \(f + g\) is piecewise constant with respect to \(\mathbf{P}\) and
+    Let \(\mathbf{P}\) be a partition of \(I\).
+    By Theorem \ref{11.2.16}(a) we know that \(f + g\) is piecewise constant with respect to \(\mathbf{P}\).
+    For each \(J \in \mathbf{P}\), we define \(c_{f|_J}, c_{g|_J} \in \mathbf{R}\) to be the constant value of \(f|_J, g|_J\), respectively.
+    Then by Definition \ref{11.2.1} \(c_{f|_J} + c_{g|_J}\) is the constant value of \((f + g)|_J\) for each \(J \in P\).
+    Thus we have
     \begin{align*}
-        p.c. \int_I f \; d \alpha + p.c. \int_I g \; d \alpha & = p.c. \int_{[\mathbf{P}]} f \; d \alpha + p.c. \int_{[\mathbf{P}]} g \; d \alpha & \text{(by Definition \ref{11.8.9})}     \\
-                                                              & = \sum_{J \in \mathbf{P}} f_J \alpha[J] + \sum_{J \in \mathbf{P}} g_J \alpha[J]   & \text{(by Definition \ref{11.8.5})}     \\
-                                                              & = \sum_{J \in \mathbf{P}} (f_J + g_J) \alpha[J]                                   & \text{(by Proposition \ref{7.1.11}(f))} \\
-                                                              & = p.c. \int_{[\mathbf{P}]} (f_J + g_J) \; d \alpha                                & \text{(by Definition \ref{11.8.5})}     \\
-                                                              & = p.c. \int_I (f_J + g_J) \; d \alpha.                                            & \text{(by Definition \ref{11.8.9})}
+         & p.c. \int_I f \; d \alpha + p.c. \int_I g \; d \alpha                                                                                \\
+         & = p.c. \int_{[\mathbf{P}]} f \; d \alpha + p.c. \int_{[\mathbf{P}]} g \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.4})} \\
+         & = \sum_{J \in \mathbf{P}} f_J \alpha[J] + \sum_{J \in \mathbf{P}} g_J \alpha[J]   & \text{(by Definition \ref{11.8.5})}              \\
+         & = \sum_{J \in \mathbf{P}} (f_J + g_J) \alpha[J]                                   & \text{(by Proposition \ref{7.1.11}(f))}          \\
+         & = p.c. \int_{[\mathbf{P}]} (f_J + g_J) \; d \alpha                                & \text{(by Definition \ref{11.8.5})}              \\
+         & = p.c. \int_I (f_J + g_J) \; d \alpha.                                            & \text{(by Additional Corollary \ref{ac 11.8.4})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(b)}
-    Since \(f\) is piecewise constant on \(I\), by Lemma \ref{11.2.8} \(cf\) is also piecewise constant on \(I\) (since \(c\) is constant on \(I\)).
-    By Definition \ref{11.2.3}, \(\exists\ \mathbf{P}\) such that \(\mathbf{P}\) is a partition of \(I\) and \(f\) is piecewise constant with respect to \(\mathbf{P}\).
-    Now let \(J \in \mathbf{P}\) and let \(f_J \in \mathbf{R}\) be the constant value of \(f\) on \(J\).
-    Then by Definition \ref{11.2.1} \(c f_J\) is also a constant of \(cf\) on \(J\).
-    Thus we have \(cf\) is piecewise constant with respect to \(\mathbf{P}\) and
+    Let \(\mathbf{P}\) be a partition of \(I\).
+    By Theorem \ref{11.2.16}(b) we know that \(cf\) is piecewise constant with respect to \(\mathbf{P}\).
+    For each \(J \in \mathbf{P}\), we define \(c_J \in \mathbf{R}\) to be the constant value of \(f|_J\).
+    Then by Definition \ref{11.2.1} \(c \cdot c_J\) is the constant value of \((cf)|_J\).
+    Thus we have
     \begin{align*}
-        c (p.c. \int_I f \; d \alpha) & = c (p.c. \int_{[\mathbf{P}]} f \; d \alpha) & \text{(by Definition \ref{11.8.9})}     \\
-                                      & = c (\sum_{J \in \mathbf{P}} f_J \alpha[J])  & \text{(by Definition \ref{11.8.5})}     \\
-                                      & = \sum_{J \in \mathbf{P}} c f_J \alpha[J]    & \text{(by Proposition \ref{7.1.11}(g))} \\
-                                      & = p.c. \int_{[\mathbf{P}]} (c f) \; d \alpha & \text{(by Definition \ref{11.8.5})}     \\
-                                      & = p.c. \int_I (c f) \; d \alpha.             & \text{(by Definition \ref{11.8.9})}
+        c \bigg(p.c. \int_I f \; d \alpha\bigg) & = c \bigg(p.c. \int_{[\mathbf{P}]} f \; d \alpha\bigg) & \text{(by Additional Corollary \ref{ac 11.8.4})} \\
+                                                & = c \bigg(\sum_{J \in \mathbf{P}} c_J \alpha[J]\bigg)  & \text{(by Definition \ref{11.8.5})}              \\
+                                                & = \sum_{J \in \mathbf{P}} c \cdot c_J \alpha[J]        & \text{(by Proposition \ref{7.1.11}(g))}          \\
+                                                & = p.c. \int_{[\mathbf{P}]} (c f) \; d \alpha           & \text{(by Definition \ref{11.8.5})}              \\
+                                                & = p.c. \int_I (c f) \; d \alpha.                       & \text{(by Additional Corollary \ref{ac 11.8.4})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(c)}
     We have
     \begin{align*}
-        p.c. \int_I f \; d \alpha - p.c. \int_I g \; d \alpha & = p.c. \int_I f \; d \alpha + (-1) p.c. \int_I g \; d \alpha                                        \\
-                                                              & = p.c. \int_I f \; d \alpha + p.c. \int_I (-g) \; d \alpha   & \text{(by Theorem \ref{11.8.10}(b))} \\
-                                                              & = p.c. \int_I (f + (-g)) \; d \alpha                         & \text{(by Theorem \ref{11.8.10}(a))} \\
-                                                              & = p.c. \int_I (f - g) \; d \alpha.                           & \text{(by Definition \ref{9.2.1})}
+         & p.c. \int_I f \; d \alpha - p.c. \int_I g \; d \alpha                                                              \\
+         & = p.c. \int_I f \; d \alpha + (-1) p.c. \int_I g \; d \alpha                                                       \\
+         & = p.c. \int_I f \; d \alpha + p.c. \int_I (-g) \; d \alpha   & \text{(by Additional Corollary \ref{ac 11.8.5}(b))} \\
+         & = p.c. \int_I \big(f + (-g)\big) \; d \alpha                 & \text{(by Additional Corollary \ref{ac 11.8.5}(a))} \\
+         & = p.c. \int_I (f - g) \; d \alpha.                           & \text{(by Definition \ref{9.2.1})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(d)}
-    By Definition \ref{11.2.3}, \(\exists\ \mathbf{P}\) such that \(\mathbf{P}\) is a partition of \(I\) and \(f\) is piecewise constant with respect to \(\mathbf{P}\).
-    Let \(J \in \mathbf{P}\) and let \(f_J \in \mathbf{R}\) be the constant value of \(f\) on \(J\).
+    By Additional Corollary \ref{ac 11.8.4} \(f\) is piecewise constant with respect to \(\mathbf{P}\) for some partition \(\mathbf{P}\) of \(I\).
+    Let \(J \in \mathbf{P}\) and let \(c_J \in \mathbf{R}\) be the constant value of \(f|_J\).
     Since \(\alpha\) is monotone increasing and \(p.c. \int_I f \; d \alpha\) is well-defined, we know that \(\alpha[J]\) is well-defined.
-    So for any \(a, b \in J\) and \(a \leq b\) we have
-    \begin{align*}
-        \alpha[J] & = \alpha[(a, b)]                                                                                                                                             \\
-                  & = \lim_{x \to b^- ; x \in (a, b)} \alpha(x) - \lim_{x \to a^+ ; x \in (a, b)} \alpha(x)                                & \text{(by Definition \ref{11.8.1})} \\
-                  & = \lim_{x \to b ; x \in (a, b) \cap (-\infty, b)} \alpha(x) - \lim_{x \to a ; x \in (a, b) \cap (a, \infty)} \alpha(x) & \text{(by Definition \ref{9.5.1})}  \\
-                  & = \lim_{x \to b ; x \in (a, b)} \alpha(x) - \lim_{x \to a ; x \in (a, b)} \alpha(x)                                                                          \\
-                  & \geq 0                                                                                                                 & (a \leq b)
-    \end{align*}
-    when \(J\) is a point or a open interval, and \(\alpha[J] = 0\) when \(J = \emptyset\).
-    Similar arguments work for the cases \([a, b), (a, b], [a, b]\), and we conclude that \(\alpha[J] \geq 0\).
-    Since \(\forall\ x \in I\), \(f(x) \geq 0\), we then have \(f_J \geq 0\) and \(f_J \alpha[J] \geq 0\).
+    Now we split into four cases:
+    \begin{itemize}
+        \item If \(J = \emptyset\), then \(\alpha[J] = 0\).
+        \item If \(J = \{a\}\) is a point for some \(a \in \mathbf{R}\), then by Definition \ref{11.8.1} we have
+              \[
+                  \alpha\big[\{a\}\big] = \lim_{x \to a^+} \alpha(x) - \lim_{x \to a^-} \alpha(x)
+              \]
+              Since \(\alpha\) is monoton increasing, we know that \(\alpha[J] \geq 0\).
+        \item If \(J = (a, b)\) for some \(a, b \in \mathbf{R}\) and \(a < b\), then we have
+              \begin{align*}
+                   & \alpha\big[(a, b)\big]                                                                                                                                \\
+                   & = \lim_{x \to b^- ; x \in (a, b)} \alpha(x) - \lim_{x \to a^+ ; x \in (a, b)} \alpha(x)            & \text{(by Definition \ref{11.8.1})}              \\
+                   & = \sup_{x \in (a, b) \cap (-\infty, b)} \alpha(x) - \inf_{x \in (a, b) \cap (a, \infty)} \alpha(x) & \text{(by Additional Corollary \ref{ac 11.8.1})} \\
+                   & = \sup_{x \in (a, b)} \alpha(x) - \inf_{x \in (a, b)} \alpha(x)                                                                                       \\
+                   & \geq 0.
+              \end{align*}
+        \item If \(J\) is one of \([a, b), (a, b], [a, b]\), then from the proof above we have
+              \begin{align*}
+                  \alpha\big[[a, b)\big] & = \alpha\big[\{a\}\big] + \alpha\big[(a, b)\big] \geq 0 \\
+                  \alpha\big[(a, b]\big] & = \alpha\big[(a, b]\big] + \alpha\big[\{b\}\big] \geq 0 \\
+                  \alpha\big[[a, b]\big] & = \alpha\big[\{a\}\big] + \alpha\big[(a, b]\big] \geq 0
+              \end{align*}
+    \end{itemize}
+    From all cases above we conclude that \(\alpha[J] \geq 0\) for all \(J \in \mathbf{P}\).
+    Since \(f(x) \geq 0\) for all \(x \in I\), we have \(c_J \geq 0\) and \(c_J \alpha[J] \geq 0\) for all \(J \in \mathbf{P}\).
     Thus
     \begin{align*}
-        p.c. \int_I f \; d \alpha & = p.c. \int_{[\mathbf{P}]} f \; d \alpha & \text{(by Definition \ref{11.8.9})}     \\
-                                  & = \sum_{J \in \mathbf{P}} f_J \alpha[J]  & \text{(by Definition \ref{11.8.5})}     \\
-                                  & \geq \sum_{J \in \mathbf{P}} 0           & \text{(by Proposition \ref{7.1.11}(h))} \\
+        p.c. \int_I f \; d \alpha & = p.c. \int_{[\mathbf{P}]} f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.4})} \\
+                                  & = \sum_{J \in \mathbf{P}} c_J \alpha[J]  & \text{(by Definition \ref{11.8.5})}              \\
+                                  & \geq \sum_{J \in \mathbf{P}} 0           & \text{(by Proposition \ref{7.1.11}(h))}          \\
                                   & = 0.
     \end{align*}
 \end{proof}
@@ -412,8 +426,8 @@ Then \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d
 \begin{proof}{(e)}
     Since \(f(x) \geq g(x)\) for all \(x \in I\), we have \(f(x) - g(x) \geq 0\) and
     \begin{align*}
-        p.c. \int_I f \; d \alpha - p.c. \int_I g \; d \alpha & = p.c. \int_I (f - g) \; d \alpha & \text{(by Theorem \ref{11.8.10}(c))} \\
-                                                              & \geq 0.                           & \text{(by Theorem \ref{11.8.10}(d))}
+        p.c. \int_I f \; d \alpha - p.c. \int_I g \; d \alpha & = p.c. \int_I (f - g) \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.5}(c))} \\
+                                                              & \geq 0.                           & \text{(by Additional Corollary \ref{ac 11.8.5}(d))}
     \end{align*}
     Thus
     \[
@@ -424,61 +438,77 @@ Then \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d
 \begin{proof}{(f)}
     Since \(I\) is a partition of \(I\), we have
     \begin{align*}
-        p.c. \int_I f \; d \alpha & = p.c. \int_{[I]} f \; d \alpha & \text{(by Definition \ref{11.8.9})}     \\
-                                  & = \sum_{J \in I} c \alpha[J]    & \text{(by Definition \ref{11.8.5})}     \\
-                                  & = c \sum_{J \in I} \alpha[J]    & \text{(by Proposition \ref{7.1.11}(g))} \\
+        p.c. \int_I f \; d \alpha & = p.c. \int_{[I]} f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.4})} \\
+                                  & = \sum_{J \in I} c \alpha[J]    & \text{(by Definition \ref{11.8.5})}              \\
+                                  & = c \sum_{J \in I} \alpha[J]    & \text{(by Proposition \ref{7.1.11}(g))}          \\
                                   & = c \alpha[I].                  & \text{(by Lemma \ref{11.8.4})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(g)}
+    If \(I = \emptyset\), then by Definition \ref{11.2.3} \(F\) is piecewise constant with respect to \(\{J\}\), and by Additional Corollary \ref{ac 11.8.5}(f) we have
+    \[
+        p.c. \int_J F \; d \alpha = 0 \alpha[J] = 0 = p.c \int_I f \; d \alpha.
+    \]
+    So suppose that \(I \neq \emptyset\).
+    By Definition \ref{11.2.3}, \(f\) is piecewise constant with respect to \(\mathbf{P}\) for some partition \(\mathbf{P}\) of \(I\).
     Let \(I_1, I_2\) be the sets
     \[
-        I_1 = \{x \in J, x \leq \inf(I) \land x \notin I\}
+        I_1 = \Big\{x \in J, \big(x \leq \inf(I)\big) \land (x \notin I)\Big\}
     \]
     and
     \[
-        I_2 = \{x \in J, x \geq \sup(I) \land x \notin I \cup I_1\}.
+        I_2 = \Big\{x \in J, \big(x \geq \sup(I)\big) \land (x \notin I)\Big\}.
     \]
-    Then we know that \(I \cap I_1 = I \cap I_2 = I_1 \cap I_2 = \emptyset\).
-    Let \(\mathbf{P} = \{I_1, I, I_2\}\).
-    We know that \(\mathbf{P}\) is a partition of \(J\) and \(F\) is piecewise constant on \(J\)
-    (See the proof of Theorem \ref{11.2.16}(g)).
-    Since \(f\) is piecewise constant on \(I\), by Definition \ref{11.2.5} \(\exists\ \mathbf{P}_I\) such that \(\mathbf{P}_I\) be the partition of \(I\) and \(f\) is piecewise constant with respect to \(\mathbf{P}_I\).
-    Thus we have
+    By Additional Corollary \ref{ac 11.1.5} we know that \(\mathbf{P} \cup \{I_1, I_2\}\) is a partition of \(J\).
+    By hypothesis we know that
+    \[
+        \forall\ x \in J, F(x) = \begin{cases}
+            f(x) & \text{if } x \in K \text{ for some } K \in \mathbf{P} \\
+            0    & \text{if } x \in I_1 \text{ or } x \in I_2
+        \end{cases}
+    \]
+    Thus by Definition \ref{11.2.5} \(F\) is piecewise constant on \(J\).
+    For each \(K \in \mathbf{P} \cup \{I_1, I_2\}\), we define \(c_K \in \mathbf{R}\) to be the constant value of \(F|_K\).
+    Then we have
     \begin{align*}
-        p.c. \int_J F \; d \alpha & = p.c. \int_{[\mathbf{P}]} F \; d \alpha                                              & \text{(by Definition \ref{11.8.9})}     \\
-                                  & = \sum_{K \in \mathbf{P}} c_K \alpha[K]                                               & \text{(by Definition \ref{11.8.5})}     \\
-                                  & = c_{I_1} \alpha[I_1] + \sum_{K \in \mathbf{P}_I} c_K \alpha[K] + c_{I_2} \alpha[I_2] & \text{(by Proposition \ref{7.1.11}(e))} \\
-                                  & = 0 \alpha[I_1] + \sum_{K \in \mathbf{P}_I} c_K \alpha[K] + 0 \alpha[I_2]             & \text{(by hypothesis)}                  \\
-                                  & = \sum_{K \in \mathbf{P}_I} c_K \alpha[K]                                                                                       \\
-                                  & = p.c. \int_{[\mathbf{P}_I]} f \; d \alpha                                            & \text{(by Definition \ref{11.8.5})}     \\
-                                  & = p.c. \int_I f \; d \alpha.                                                          & \text{(by Definition \ref{11.8.9})}
+        p.c. \int_J F \; d \alpha & = p.c. \int_{[\mathbf{P} \cup \{I_1, I_2\}]} F \; d \alpha                          & \text{(by Additional Corollary \ref{ac 11.8.4})} \\
+                                  & = \sum_{K \in \mathbf{P}} c_K \alpha[K]                                             & \text{(by Definition \ref{11.8.5})}              \\
+                                  & = c_{I_1} \alpha[I_1] + \sum_{K \in \mathbf{P}} c_K \alpha[K] + c_{I_2} \alpha[I_2] & \text{(by Proposition \ref{7.1.11}(e))}          \\
+                                  & = 0 \alpha[I_1] + \sum_{K \in \mathbf{P}} c_K \alpha[K] + 0 \alpha[I_2]             & \text{(by hypothesis)}                           \\
+                                  & = \sum_{K \in \mathbf{P}} c_K \alpha[K]                                                                                                \\
+                                  & = p.c. \int_{[\mathbf{P}]} f \; d \alpha                                            & \text{(by Definition \ref{11.8.5})}              \\
+                                  & = p.c. \int_I f \; d \alpha.                                                        & \text{(by Additional Corollary \ref{ac 11.8.4})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(h)}
-    By Theorem \ref{11.2.16}(h) we know that \(f|_J\) is piecewise constant on \(J\) and \(f|_K\) is piecewise constant on \(K\).
-    Since \(f\) is a piecewise constant function on \(I\), by Definition \ref{11.2.5} \(\exists\ \mathbf{P}\) such that \(\mathbf{P}\) is a partition of \(I\) and \(f\) is piecewise constant with respect to \(\mathbf{P}\).
-    Let \(\mathbf{P}_J, \mathbf{P}_K\) be the sets
+    Let \(\mathbf{P} = \{J, K\}\).
+    By Definition \ref{11.2.3} \(f\) is piecewise constant with respect to \(\mathbf{P}'\) for some partition \(\mathbf{P}'\) of \(I\).
+    Now we define \(\mathbf{P}_J\) as
     \[
-        \mathbf{P}_J = \{S \cap J : S \in \mathbf{P}\}
+        \mathbf{P}_J = \{S \in \mathbf{P} \# \mathbf{P}' : S \subseteq J\}
     \]
-    and
+    and define \(\mathbf{P}_K\) as
     \[
-        \mathbf{P}_K = \{S \cap K : S \in \mathbf{P}\}.
+        \mathbf{P}_K = \{S \in \mathbf{P} \# \mathbf{P}' : S \subseteq K\}.
     \]
-    We know that \(\mathbf{P}_J\) is a partition of \(J\), \(\mathbf{P}_K\) is a partition of \(K\) and \(\mathbf{P} = \mathbf{P}_J \cup \mathbf{P}_K\)
-    (See the proof of Theorem \ref{11.2.16}(h)).
-    Thus we have
+    By Lemma \ref{11.1.8} we know that \(\mathbf{P} \# \mathbf{P}'\) is a partition of \(I\) and is finer than \(\mathbf{P}\).
+    Since \(\mathbf{P} \# \mathbf{P}'\) is finer than \(\mathbf{P}\), by Additional Corollary \ref{ac 11.1.4} we know that \(\mathbf{P}_J, \mathbf{P}_K\) are partitions of \(J, K\), respectively.
+    Again by Additional Corollary \ref{ac 11.1.4} we know that \(\mathbf{P}_J \cup \mathbf{P}_K\) is a partition of \(I\).
+    Then by Lemma \ref{11.2.7} \(f\) is piecewise constant with respect to \(\mathbf{P}_J \cup \mathbf{P}_K\).
+    Without the loss of generality suppose that \(\emptyset \notin \mathbf{P}_J \cup \mathbf{P}_K\).
+    For each \(S \in \mathbf{P}_J\), we define \(c_S \in \mathbf{R}\) to be the constant value of \(f|_J\).
+    Similarly, for each \(S \in \mathbf{P}_K\), we define \(c_S \in \mathbf{R}\) to be the constant value of \(f|_K\).
+    Then we have
     \begin{align*}
-          & p.c. \int_J f|_J \; d \alpha + p.c. \int_K f|_K \; d \alpha                                                                         \\
-        = & p.c. \int_{[\mathbf{P}_J]} f|_J \; d \alpha + p.c. \int_{[\mathbf{P}_K]} f|_K \; d \alpha & \text{(by Definition \ref{11.8.9})}     \\
-        = & \sum_{S \in \mathbf{P}_J} c_S \alpha[S] + \sum_{S \in \mathbf{P}_K} c_S \alpha[S]         & \text{(by Proposition \ref{7.1.11}(e))} \\
-        = & \sum_{S \in \mathbf{P}_J \cup \mathbf{P}_K} c_S \alpha[S]                                 & \text{(by Definition \ref{11.8.5})}     \\
-        = & \sum_{S \in \mathbf{P}} c_S \alpha[S]                                                                                               \\
-        = & p.c. \int_{[\mathbf{P}]} f \; d \alpha                                                    & \text{(by Definition \ref{11.8.5})}     \\
-        = & p.c. \int_I f \; d \alpha.                                                                & \text{(by Definition \ref{11.8.9})}
+          & p.c. \int_J f|_J \; d \alpha + p.c. \int_K f|_K \; d \alpha                                                                                  \\
+        = & p.c. \int_{[\mathbf{P}_J]} f|_J \; d \alpha + p.c. \int_{[\mathbf{P}_K]} f|_K \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.4})} \\
+        = & \sum_{S \in \mathbf{P}_J} c_S \alpha[S] + \sum_{S \in \mathbf{P}_K} c_S \alpha[S]         & \text{(by Proposition \ref{7.1.11}(e))}          \\
+        = & \sum_{S \in \mathbf{P}_J \cup \mathbf{P}_K} c_S \alpha[S]                                 & \text{(by Definition \ref{11.8.5})}              \\
+        = & \sum_{S \in \mathbf{P}} c_S \alpha[S]                                                                                                        \\
+        = & p.c. \int_{[\mathbf{P}]} f \; d \alpha                                                    & \text{(by Definition \ref{11.8.5})}              \\
+        = & p.c. \int_I f \; d \alpha.                                                                & \text{(by Additional Corollary \ref{ac 11.8.4})}
     \end{align*}
 \end{proof}
 
@@ -583,7 +613,7 @@ Then \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d
 \end{exercise}
 
 \begin{proof}
-    See Theorem \ref{11.8.10}.
+    See Additional Corollary \ref{ac 11.8.5}.
 \end{proof}
 
 \begin{exercise}\label{ex 11.8.4}
