@@ -1048,7 +1048,7 @@ Then \(f\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\).
 \end{exercise}
 
 \begin{proof}
-    See Additional \ref{ac 11.8.14}.
+    See Additional Corollary \ref{ac 11.8.14}.
 \end{proof}
 
 \begin{exercise}\label{ex 11.8.5}
@@ -1073,12 +1073,18 @@ Then \(f\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\).
     Since \(\text{sgn}\) is monoton increasing, by Additional Corollary \ref{ac 11.8.14} we know that \(f\) is Riemann-Stieltjes integrable on \([-1, 1]\) with respect to \(\text{sgn}\).
 
     Now we show that \(\int_{[-1, 1]} f \; d \, \text{sgn} = 2f(0)\).
-    Since \(f\) is continuous, by Proposition \ref{9.4.7} \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ \delta \in \mathbf{R}^+\) such that
+    Since \(f\) is continuous, by Proposition \ref{9.4.7} we have
     \begin{align*}
-        \forall\ x \in [-1, 1], \abs*{x - 0} \leq \delta \implies & \abs*{f(x) - f(0)} \leq \varepsilon                   \\
-        \implies                                                  & f(0) - \varepsilon \leq f(x) \leq f(0) + \varepsilon.
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in [-1, 1], \abs*{x - 0} \leq \delta \\
+        \implies & \abs*{f(x) - f(0)} \leq \varepsilon                                                                                        \\
+        \implies & f(0) - \varepsilon \leq f(x) \leq f(0) + \varepsilon.
     \end{align*}
-    Since \(f\) is bounded, \(\exists\ M \in \mathbf{R}\) such that \(\abs*{f(x)} \leq M\) for all \(x \in [-1, 1]\).
+    In particular, we can choose some \(\delta \leq 1\) such that
+    \begin{align*}
+         & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                              \\
+         & \forall\ x \in [-1, 1], \abs*{x - 0} \leq \delta \leq 1 \implies f(0) - \varepsilon \leq f(x) \leq f(0) + \varepsilon.
+    \end{align*}
+    Since \(f\) is bounded, \(\exists\ M \in \mathbf{R}^+\) such that \(\abs*{f(x)} \leq M\) for all \(x \in [-1, 1]\).
     Let \(f_U : [-1, 1] \to \mathbf{R}\) be the function
     \[
         f_U(x) = \begin{cases}
@@ -1093,22 +1099,22 @@ Then \(f\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\).
             -M                 & \text{if } x \in [-1, 1] \setminus [-\delta, \delta]
         \end{cases}
     \]
-    Clearly \(f_U\) majorizes \(f\) and \(f_L\) minorizes \(f\).
+    Clearly \(f_U, f_L\) are piecewise constant on \([-1, 1]\), \(f_U\) majorizes \(f\) and \(f_L\) minorizes \(f\).
     Then we have
     \begin{align*}
-        \overline{\int}_{[-1, 1]} f \; d \text{sgn} & \leq p.c. \int f_U \; d \text{sgn}                                & \text{(by Additional Corollary \ref{ac 11.8.7})} \\
-                                                    & = M (\text{sgn}(-\delta) - \text{sgn}(-1))                        & \text{(by Definition \ref{11.8.5})}              \\
-                                                    & + (f(0) + \varepsilon) (\text{sgn}(\delta) - \text{sgn}(-\delta))                                                    \\
-                                                    & + M (\text{sgn}(1) - \text{sgn}(\delta))                                                                             \\
-                                                    & = 2(f(0) + \varepsilon)
+        \overline{\int}_{[-1, 1]} f \; d \, \text{sgn} & \leq p.c. \int f_U \; d \, \text{sgn}                                   & \text{(by Additional Corollary \ref{ac 11.8.7})} \\
+                                                       & = M \big(\text{sgn}(-\delta) - \text{sgn}(-1)\big)                      & \text{(by Definition \ref{11.8.5})}              \\
+                                                       & \quad + (f(0) + \varepsilon) (\text{sgn}(\delta) - \text{sgn}(-\delta))                                                    \\
+                                                       & \quad + M \big(\text{sgn}(1) - \text{sgn}(\delta)\big)                                                                     \\
+                                                       & = 2\big(f(0) + \varepsilon\big)
     \end{align*}
     and
     \begin{align*}
-        \underline{\int}_{[-1, 1]} f \; d \text{sgn} & \geq p.c. \int f_L \; d \text{sgn}                                & \text{(by Additional Corollary \ref{ac 11.8.7})} \\
-                                                     & = M (\text{sgn}(-\delta) - \text{sgn}(-1))                        & \text{(by Definition \ref{11.8.5})}              \\
-                                                     & + (f(0) - \varepsilon) (\text{sgn}(\delta) - \text{sgn}(-\delta))                                                    \\
-                                                     & + M (\text{sgn}(1) - \text{sgn}(\delta))                                                                             \\
-                                                     & = 2(f(0) - \varepsilon).
+        \underline{\int}_{[-1, 1]} f \; d \, \text{sgn} & \geq p.c. \int f_L \; d \, \text{sgn}                                   & \text{(by Additional Corollary \ref{ac 11.8.7})} \\
+                                                        & = M \big(\text{sgn}(-\delta) - \text{sgn}(-1)\big)                      & \text{(by Definition \ref{11.8.5})}              \\
+                                                        & \quad + (f(0) - \varepsilon) (\text{sgn}(\delta) - \text{sgn}(-\delta))                                                    \\
+                                                        & \quad + M \big(\text{sgn}(1) - \text{sgn}(\delta)\big)                                                                     \\
+                                                        & = 2\big(f(0) - \varepsilon\big).
     \end{align*}
     Combining results above we have
     \[
