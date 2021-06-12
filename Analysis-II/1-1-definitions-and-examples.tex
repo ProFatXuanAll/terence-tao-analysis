@@ -280,6 +280,26 @@ Then
     \end{align*}
 \end{proof}
 
+\begin{additional corollary}\label{ac 1.1.2}
+Let \(n \in \mathbf{Z}^+\) and let \(\vec{u}, \vec{v}\) be two vectors in \(\mathbf{R}^n\) such that \(\abs*{\vec{v}} \neq 0\).
+Let \(\alpha \in \mathbf{R}\) and let \(\alpha \vec{v}\) be the vector \(\vec{u}\) project onto \(\vec{v}\).
+Then
+\[
+    \alpha = \frac{\vec{u} \cdot \vec{v}}{\abs*{\vec{v}}^2}.
+\]
+\end{additional corollary}
+
+\begin{proof}
+    We can use \(\vec{u}\) and \(\vec{v}\) to form a linear combination \(\vec{z} \in \mathbf{R}^n\) such that \(\vec{z} \bot \vec{v}\).
+    Since \(\alpha \vec{v}\) is the vector \(\vec{u}\) project onto \(\vec{v}\), we know that \(\exists\ \beta \in \mathbf{R}\) such that \(\alpha \vec{v} + \beta \vec{z} = \vec{u}\).
+    Then we have \(\beta \vec{z} \cdot \vec{v} = 0\) and
+    \begin{align*}
+                 & \alpha \vec{v} + \beta \vec{z} = \vec{u}                                                                       \\
+        \implies & \alpha \vec{v} \cdot \vec{v} + \beta \vec{z} \cdot \vec{v} = \vec{u} \cdot \vec{v}                             \\
+        \implies & \alpha = \frac{\vec{u} \cdot \vec{v}}{\vec{v} \cdot \vec{v}} = \frac{\vec{u} \cdot \vec{v}}{\abs*{\vec{v}}^2}.
+    \end{align*}
+\end{proof}
+
 \exercisesection
 
 \begin{exercise}\label{ex 1.1.1}
@@ -444,17 +464,19 @@ Then
 \end{exercise}
 
 \begin{proof}
-    Let \(n \in \mathbf{N}\), let \(x, y, z \in \mathbf{R}^n\), let \(i \in \mathbf{N}\) and \(1 \leq i \leq n\), and let \(x_i, y_i, z_i\) be the \(i^{\text{th}}\) coordinate of \(x, y, z\) respectively.
+    Let \(n \in \mathbf{N}\) and let \(x, y, z \in \mathbf{R}^n\).
+    For each \(n \in \mathbf{N}\), we define \(I_n = \{i \in \mathbf{N} : 1 \leq i \leq n\}\).
+    For each \(i \in I_n\), we define \(x_i, y_i, z_i\) to be the \(i^{\text{th}}\) coordinate of \(x, y, z\), respectively.
     For indentity:
     We have
     \[
         d_{l^2}(x, x) = \bigg(\sum_{i = 1}^n (x_i - x_i)^2\bigg)^{1 / 2} = 0.
     \]
     For positivity:
-    If \(x \neq y\), then \(\exists\ j \in \mathbf{N}\) and \(1 \leq j \leq n\) such that \(x_j \neq y_j\).
+    If \(x \neq y\), then \(\exists\ j \in I_n\) such that \(x_j \neq y_j\).
     So
     \[
-        d_{l^2}(x, y) = \bigg(\sum_{i = 1}^n (x_i - y_i)^2\bigg)^{1 / 2} \geq ((x_j - y_j)^2)^{1 / 2} > 0.
+        d_{l^2}(x, y) = \bigg(\sum_{i = 1}^n (x_i - y_i)^2\bigg)^{1 / 2} \geq \big((x_j - y_j)^2\big)^{1 / 2} > 0.
     \]
     For symmetry:
     We have
@@ -462,7 +484,7 @@ Then
         d_{l^2}(x, y) = \bigg(\sum_{i = 1}^n (x_i - y_i)^2\bigg)^{1 / 2} = \bigg(\sum_{i = 1}^n (y_i - x_i)^2\bigg)^{1 / 2} = d_{l^2}(y, x).
     \]
     For triangle inequality:
-    Let \(a_i = x_i - y_i\) and \(b_i = y_i - z_i\).
+    We define \(a_i = x_i - y_i\) and \(b_i = y_i - z_i\) for each \(i \in I_n\).
     Then we have
     \begin{align*}
         d_{l^2}(x, z) & = \bigg(\sum_{i = 1}^n (x_i - z_i)^2\bigg)^{1 / 2}                                                    \\
@@ -480,14 +502,16 @@ Then
 \end{exercise}
 
 \begin{proof}
-    Let \(n \in \mathbf{N}\), let \(x, y, z \in \mathbf{R}^n\), let \(i \in \mathbf{N}\) and \(1 \leq i \leq n\), and let \(x_i, y_i, z_i\) be the \(i^{\text{th}}\) coordinate of \(x, y, z\) respectively.
+    Let \(n \in \mathbf{N}\) and let \(x, y, z \in \mathbf{R}^n\).
+    For each \(n \in \mathbf{N}\), we define \(I_n = \{i \in \mathbf{N} : 1 \leq i \leq n\}\).
+    For each \(i \in I_n\), we define \(x_i, y_i, z_i\) to be the \(i^{\text{th}}\) coordinate of \(x, y, z\), respectively.
     For indentity:
     We have
     \[
         d_{l^1}(x, x) = \sum_{i = 1}^n \abs*{x_i - x_i} = 0.
     \]
     For positivity:
-    If \(x \neq y\), then \(\exists\ j \in \mathbf{N}\) and \(1 \leq j \leq n\) such that \(x_j \neq y_j\).
+    If \(x \neq y\), then \(\exists\ j \in I_n\) such that \(x_j \neq y_j\).
     So
     \[
         d_{l^1}(x, y) = \sum_{i = 1}^n \abs*{x_i - y_i} \geq \abs*{x_j - y_j} > 0.
@@ -517,19 +541,21 @@ Then
 \end{exercise}
 
 \begin{proof}
-    Let \(n \in \mathbf{N}\), let \(x, y \in \mathbf{R}^n\), let \(i \in \mathbf{N}\) and \(1 \leq i \leq n\), and let \(x_i, y_i\) be the \(i^{\text{th}}\) coordinate of \(x, y\) respectively.
+    Let \(n \in \mathbf{N}\) and let \(x, y \in \mathbf{R}^n\).
+    For each \(n \in \mathbf{N}\), we define \(I_n = \{i \in \mathbf{N} : 1 \leq i \leq n\}\).
+    For each \(i \in I_n\), we define \(x_i, y_i\) to be the \(i^{\text{th}}\) coordinate of \(x, y\), respectively.
     We have
     \begin{align*}
-        (d_{l^2}(x, y))^2 & = \sum_{i = 1}^n (x_i - y_i)^2                                                                                                                                               \\
-                          & = \sum_{i = 1}^n \abs*{x_i - y_i}^2                                                                                                                                          \\
-                          & \leq \sum_{i = 1}^n \abs*{x_i - y_i}^2 + \sum_{i = 1}^n \Bigg(\abs*{x_i - y_i} \bigg(\sum_{j = 1}^{i - 1} \abs*{x_j - y_j} + \sum_{j = i + 1}^n \abs*{x_j - y_j}\bigg)\Bigg) \\
-                          & = \sum_{i = 1}^n \abs*{x_i - y_i} \bigg(\sum_{j = 1}^{i - 1} \abs*{x_j - y_j} + \abs*{x_i - y_i} + \sum_{j = i + 1}^n \abs*{x_j - y_j}\bigg)                                 \\
-                          & = \sum_{i = 1}^n \abs*{x_i - y_i} \bigg(\sum_{j = 1}^n \abs*{x_j - y_j}\bigg)                                                                                                \\
-                          & = \bigg(\sum_{i = 1}^n \abs*{x_i - y_i}\bigg)^2                                                                                                                              \\
-                          & = (d_{l^1}(x, y))^2
+        \big(d_{l^2}(x, y)\big)^2 & = \sum_{i = 1}^n (x_i - y_i)^2                                                                                                                                               \\
+                                  & = \sum_{i = 1}^n \abs*{x_i - y_i}^2                                                                                                                                          \\
+                                  & \leq \sum_{i = 1}^n \abs*{x_i - y_i}^2 + \sum_{i = 1}^n \Bigg(\abs*{x_i - y_i} \bigg(\sum_{j = 1}^{i - 1} \abs*{x_j - y_j} + \sum_{j = i + 1}^n \abs*{x_j - y_j}\bigg)\Bigg) \\
+                                  & = \sum_{i = 1}^n \Bigg(\abs*{x_i - y_i} \bigg(\sum_{j = 1}^{i - 1} \abs*{x_j - y_j} + \abs*{x_i - y_i} + \sum_{j = i + 1}^n \abs*{x_j - y_j}\bigg)\Bigg)                     \\
+                                  & = \bigg(\sum_{i = 1}^n \abs*{x_i - y_i}\bigg) \bigg(\sum_{j = 1}^n \abs*{x_j - y_j}\bigg)                                                                                    \\
+                                  & = \bigg(\sum_{i = 1}^n \abs*{x_i - y_i}\bigg)^2                                                                                                                              \\
+                                  & = \big(d_{l^1}(x, y)\big)^2
     \end{align*}
     and thus \(d_{l^2}(x, y) \leq d_{l^1}(x, y)\).
-    Now let \(a_i = \abs*{x_i - y_i}\) and \(b_i = 1\).
+    Now let \(a_i = \abs*{x_i - y_i}\) and \(b_i = 1\) for each \(i \in I_n\).
     Then we have
     \begin{align*}
         d_{l^1}(x, y) & = \sum_{i = 1}^n \abs*{x_i - y_i}                                                                                                 \\
@@ -550,30 +576,32 @@ Then
 \end{exercise}
 
 \begin{proof}
-    Let \(n \in \mathbf{N}\), let \(x, y, z \in \mathbf{R}^n\), let \(i \in \mathbf{N}\) and \(1 \leq i \leq n\), and let \(x_i, y_i, z_i\) be the \(i^{\text{th}}\) coordinate of \(x, y, z\) respectively.
+    Let \(n \in \mathbf{N}\) and let \(x, y, z \in \mathbf{R}^n\).
+    For each \(n \in \mathbf{N}\), we define \(I_n = \{i \in \mathbf{N} : 1 \leq i \leq n\}\).
+    For each \(i \in I_n\), we define \(x_i, y_i, z_i\) to be the \(i^{\text{th}}\) coordinate of \(x, y, z\), respectively.
     For indentity:
     We have
     \[
-        d_{l^\infty}(x, x) = \sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{x_i - x_i}\} = 0.
+        d_{l^\infty}(x, x) = \sup \{\abs*{x_i - x_i} : i \in I_n\} = 0.
     \]
     For positivity:
     If \(x \neq y\), then \(\exists\ j \in \mathbf{N}\) and \(1 \leq j \leq n\) such that \(x_j \neq y_j\).
     So
     \[
-        d_{l^\infty}(x, y) = \sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{x_i - y_i}\} \geq \abs*{x_j - y_j} > 0.
+        d_{l^\infty}(x, y) = \sup \{\abs*{x_i - y_i} : i \in I_n\} \geq \abs*{x_j - y_j} > 0.
     \]
     For symmetry:
     We have
     \[
-        d_{l^\infty}(x, y) = \sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{x_i - y_i}\} = \sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{y_i - x_i}\} = d_{l^\infty}(y, x).
+        d_{l^\infty}(x, y) = \sup \{\abs*{x_i - y_i} : i \in I_n\} = \sup \{\abs*{y_i - x_i} : i \in I_n\} = d_{l^\infty}(y, x).
     \]
     For triangle inequality:
     We have
     \begin{align*}
-        d_{l^\infty}(x, z) & = \sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{x_i - z_i}\}                                                                     \\
-                           & = \sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{x_i - y_i + y_i - z_i}\}                                                         \\
-                           & \leq \sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{x_i - y_i} + \abs*{y_i - z_i}\}                                               \\
-                           & \leq \sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{x_i - y_i}\} + \sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{y_i - z_i}\} \\
+        d_{l^\infty}(x, z) & = \sup \{\abs*{x_i - z_i} : i \in I_n\}                                            \\
+                           & = \sup \{\abs*{x_i - y_i + y_i - z_i} : i \in I_n\}                                \\
+                           & \leq \sup \{\abs*{x_i - y_i} + \abs*{y_i - z_i} : i \in I_n\}                      \\
+                           & \leq \sup \{\abs*{x_i - y_i} : i \in I_n\} + \sup \{\abs*{y_i - z_i} : i \in I_n\} \\
                            & = d_{l^\infty}(x, y) + d_{l^\infty}(y, z).
     \end{align*}
     Thus by Definition \ref{1.1.2} \((\mathbf{R}^n, d_{l^\infty})\) is a metric space.
@@ -588,16 +616,18 @@ Then
 \end{exercise}
 
 \begin{proof}
-    Let \(n \in \mathbf{N}\), let \(x, y \in \mathbf{R}^n\), let \(i \in \mathbf{N}\) and \(1 \leq i \leq n\), and let \(x_i, y_i\) be the \(i^{\text{th}}\) coordinate of \(x, y\) respectively.
+    Let \(n \in \mathbf{N}\) and let \(x, y \in \mathbf{R}^n\).
+    For each \(n \in \mathbf{N}\), we define \(I_n = \{i \in \mathbf{N} : 1 \leq i \leq n\}\).
+    For each \(i \in I_n\), we define \(x_i, y_i\) to be the \(i^{\text{th}}\) coordinate of \(x, y\), respectively.
     Since
     \begin{align*}
-        \frac{1}{\sqrt{n}} d_{l^2}(x, y) & = \frac{1}{\sqrt{n}} \bigg(\sum_{i = 1}^n (x_i - y_i)^2\bigg)^{1 / 2}                                                         \\
-                                         & \leq \frac{1}{\sqrt{n}} \bigg(\sum_{i = 1}^n (\sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{x_i - y_i}\})^2\bigg)^{1 / 2} \\
-                                         & = \frac{1}{\sqrt{n}} \bigg(n (\sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{x_i - y_i}\})^2\bigg)^{1 / 2}                 \\
-                                         & = \sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{x_i - y_i}\}                                                              \\
-                                         & = d_{l^\infty}(x, y)                                                                                                          \\
-                                         & = ((\sup_{i \in \mathbf{N} : 1 \leq i \leq n} \{\abs*{x_i - y_i}\})^2)^{1 / 2}                                                \\
-                                         & \leq \bigg(\sum_{i = 1}^n (x_i - y_i)^2\bigg)^{1 / 2}                                                                         \\
+        \frac{1}{\sqrt{n}} d_{l^2}(x, y) & = \frac{1}{\sqrt{n}} \bigg(\sum_{i = 1}^n (x_i - y_i)^2\bigg)^{1 / 2}                                        \\
+                                         & \leq \frac{1}{\sqrt{n}} \bigg(\sum_{i = 1}^n \big(\sup \{\abs*{x_i - y_i} : i \in I_n\}\big)^2\bigg)^{1 / 2} \\
+                                         & = \frac{1}{\sqrt{n}} \Big(n \big(\sup \{\abs*{x_i - y_i} : i \in I_n\}\big)^2\Big)^{1 / 2}                   \\
+                                         & = \sup \{\abs*{x_i - y_i} : i \in I_n\}                                                                      \\
+                                         & = d_{l^\infty}(x, y)                                                                                         \\
+                                         & = \Big(\big(\sup \{\abs*{x_i - y_i} : i \in I_n\}\big)^2\Big)^{1 / 2}                                        \\
+                                         & \leq \bigg(\sum_{i = 1}^n (x_i - y_i)^2\bigg)^{1 / 2}                                                        \\
                                          & = d_{l^2}(x, y),
     \end{align*}
     we have
