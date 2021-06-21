@@ -648,31 +648,28 @@ Then
         d_{\text{disc}}(x, x) = 0.
     \]
     For positivity:
-    If \(x \neq y\), then \(\exists\ j \in \mathbf{N}\) and \(1 \leq j \leq n\) such that \(x_j \neq y_j\).
-    So
+    If \(x \neq y\), then we have
     \[
         d_{\text{disc}}(x, y) = 1 > 0.
     \]
     For symmetry:
     We have
     \[
-        d_{\text{disc}}(x, y) = 0 = d_{\text{disc}}(y, x).
+        x = y \iff d_{\text{disc}}(x, y) = 0 = d_{\text{disc}}(y, x)
     \]
-    if \(x = y\) and
+    and
     \[
-        d_{\text{disc}}(x, y) = 1 = d_{\text{disc}}(y, x).
+        x \neq y \iff d_{\text{disc}}(x, y) = 1 = d_{\text{disc}}(y, x).
     \]
-    if \(x \neq y\).
     For triangle inequality:
     We have
     \[
-        d_{\text{disc}}(x, z) = 0 \leq d_{\text{disc}}(x, y) + d_{\text{disc}}(y, z)
+        x = z \iff d_{\text{disc}}(x, z) = 0 \leq d_{\text{disc}}(x, y) + d_{\text{disc}}(y, z)
     \]
-    if \(x = z\) and
+    and
     \[
-        d_{\text{disc}}(x, z) = 1 \leq d_{\text{disc}}(x, y) + d_{\text{disc}}(y, z)
+        x \neq z \iff d_{\text{disc}}(x, z) = 1 \leq d_{\text{disc}}(x, y) + d_{\text{disc}}(y, z).
     \]
-    if \(x \neq z\).
     Thus by Definition \ref{1.1.2} \((X, d_{\text{disc}})\) is a metric space.
 \end{proof}
 
@@ -708,59 +705,69 @@ Then
     be the space of absolutely convergent sequences. Define the \(l^1\) and \(l^\infty\) metrics
     on this space by
     \begin{align*}
-        d_{l^1}((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty)      & \coloneqq \sum_{n = 0}^\infty \abs*{a_n - b_n};     \\
-        d_{l^\infty}((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty) & \coloneqq \sup_{n \in \mathbf{N}} \abs*{a_n - b_n}.
+        d_{l^1}\big((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty\big)      & \coloneqq \sum_{n = 0}^\infty \abs*{a_n - b_n};     \\
+        d_{l^\infty}\big((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty\big) & \coloneqq \sup_{n \in \mathbf{N}} \abs*{a_n - b_n}.
     \end{align*}
     Show that these are both metrics on \(X\), but show that there exist sequences \(x^{(1)}, x^{(2)}, \dots\) of elements of \(X\) (i.e., sequences of sequences) which are convergent with respect to the \(d_{l^\infty}\) metric but not with respect to the \(d_{l^1}\) metric.
     Conversely, show that any sequence which converges in the \(d_{l^1}\) metric automatically converges in the \(d_{l^\infty}\) metric.
 \end{exercise}
 
 \begin{proof}
-    Let \((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty, (c_n)_{n = 0}^\infty \in X\) and let \(A = \sum_{n = 0}^\infty \abs*{a_n}, B = \sum_{n = 0}^\infty \abs*{b_n}, C = \sum_{n = 0}^\infty \abs*{c_n}\).
+    Let \((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty, (c_n)_{n = 0}^\infty \in X\).
+    Since \(\sum_{n = 0}^\infty a_n\) and \(\sum_{n = 0}^\infty b_n\) converge absolutely, we know that
+    \begin{align*}
+        \sum_{n = 0}^\infty \abs*{a_n} + \sum_{n = 0}^\infty \abs*{b_n} & = \lim_{N \to \infty} \sum_{n = 0}^N \abs*{a_n} + \lim_{N \to \infty} \sum_{n = 0}^N \abs*{b_n} \\
+                                                                        & = \lim_{N \to \infty} \sum_{n = 0}^N \big(\abs*{a_n} + \abs*{b_n}\big)                          \\
+                                                                        & \geq \lim_{N \to \infty} \sum_{n = 0}^N \abs*{a_n - b_n}                                        \\
+                                                                        & = \sum_{n = 0}^\infty \abs*{a_n - b_n}                                                          \\
+                                                                        & \geq \sup_{n \in N} \abs*{a_n - b_n}.
+    \end{align*}
+    Thus both \(\sum_{n = 0}^\infty \abs*{a_n - b_n}\) and \(\sup_{n \in N} \abs*{a_n - b_n}\) are well-defined and finite.
+
     We first show that \((X, d_{l^1})\) and \((X, d_{l^\infty})\) are metric spaces.
     For indentity:
     We have
     \[
-        d_{l^1}((a_n)_{n = 0}^\infty, (a_n)_{n = 0}^\infty) = \sum_{n = 0}^\infty \abs*{a_n - a_n} = 0
+        d_{l^1}\big((a_n)_{n = 0}^\infty, (a_n)_{n = 0}^\infty\big) = \sum_{n = 0}^\infty \abs*{a_n - a_n} = 0
     \]
     and
     \[
-        d_{l^1}((a_n)_{n = 0}^\infty, (a_n)_{n = 0}^\infty) = \sup_{n \in \mathbf{N}} \abs*{a_n - a_n} = 0.
+        d_{l^1}\big((a_n)_{n = 0}^\infty, (a_n)_{n = 0}^\infty\big) = \sup_{n \in \mathbf{N}} \abs*{a_n - a_n} = 0.
     \]
     For positivity:
     If \((a_n)_{n = 0}^\infty \neq (b_n)_{n = 0}^\infty\), then \(\exists\ N \in \mathbf{N}\) such that \(a_N \neq b_N\).
     So we have
     \[
-        d_{l^1}((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty) = \sum_{n = 0}^\infty \abs*{a_n - b_n} \geq \abs*{a_N - b_N} > 0
+        d_{l^1}\big((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty\big) = \sum_{n = 0}^\infty \abs*{a_n - b_n} \geq \abs*{a_N - b_N} > 0
     \]
     and
     \[
-        d_{l^\infty}((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty) = \sup_{n \in \mathbf{N}} \abs*{a_n - b_n} \geq \abs*{a_N - b_N} > 0.
+        d_{l^\infty}\big((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty\big) = \sup_{n \in \mathbf{N}} \abs*{a_n - b_n} \geq \abs*{a_N - b_N} > 0.
     \]
     For symmetry:
     We have
     \[
-        d_{l^1}((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty) = \sum_{n = 0}^\infty \abs*{a_n - b_n} = \sum_{n = 0}^\infty \abs*{b_n - a_n} = d_{l^1}((b_n)_{n = 0}^\infty, (a_n)_{n = 0}^\infty)
+        d_{l^1}\big((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty\big) = \sum_{n = 0}^\infty \abs*{a_n - b_n} = \sum_{n = 0}^\infty \abs*{b_n - a_n} = d_{l^1}\big((b_n)_{n = 0}^\infty, (a_n)_{n = 0}^\infty\big)
     \]
     and
     \[
-        d_{l^\infty}((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty) = \sup_{n \in \mathbf{N}} \abs*{a_n - b_n} = \sup_{n \in \mathbf{N}} \abs*{b_n - a_n} = d_{l^\infty}((b_n)_{n = 0}^\infty, (a_n)_{n = 0}^\infty).
+        d_{l^\infty}\big((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty\big) = \sup_{n \in \mathbf{N}} \abs*{a_n - b_n} = \sup_{n \in \mathbf{N}} \abs*{b_n - a_n} = d_{l^\infty}\big((b_n)_{n = 0}^\infty, (a_n)_{n = 0}^\infty\big).
     \]
     For triangle inequality:
     We have
     \begin{align*}
-        d_{l^1}((a_n)_{n = 0}^\infty, (c_n)_{n = 0}^\infty) & = \sum_{n = 0}^\infty \abs*{a_n - c_n}                                                                      \\
-                                                            & = \sum_{n = 0}^\infty \abs*{a_n - b_n + b_n - c_n}                                                          \\
-                                                            & \leq \sum_{n = 0}^\infty \abs*{a_n - b_n} + \sum_{n = 0}^\infty \abs*{b_n - c_n}                            \\
-                                                            & = d_{l^1}((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty) + d_{l^1}((b_n)_{n = 0}^\infty, (c_n)_{n = 0}^\infty)
+        d_{l^1}\big((a_n)_{n = 0}^\infty, (c_n)_{n = 0}^\infty\big) & = \sum_{n = 0}^\infty \abs*{a_n - c_n}                                                                                      \\
+                                                                    & = \sum_{n = 0}^\infty \abs*{a_n - b_n + b_n - c_n}                                                                          \\
+                                                                    & \leq \sum_{n = 0}^\infty \abs*{a_n - b_n} + \sum_{n = 0}^\infty \abs*{b_n - c_n}                                            \\
+                                                                    & = d_{l^1}\big((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty\big) + d_{l^1}\big((b_n)_{n = 0}^\infty, (c_n)_{n = 0}^\infty\big)
     \end{align*}
     and
     \begin{align*}
-        d_{l^\infty}((a_n)_{n = 0}^\infty, (c_n)_{n = 0}^\infty) & = \sup_{n \in \mathbf{N}} \abs*{a_n - c_n}                                                                             \\
-                                                                 & = \sup_{n \in \mathbf{N}} \abs*{a_n - b_n + b_n - c_n}                                                                 \\
-                                                                 & \leq \sup_{n \in \mathbf{N}} (\abs*{a_n - b_n} + \abs*{b_n - c_n})                                                     \\
-                                                                 & \leq \sup_{n \in \mathbf{N}} \abs*{a_n - b_n} + \sup_{n \in \mathbf{N}} \abs*{b_n - c_n}                               \\
-                                                                 & = d_{l^\infty}((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty) + d_{l^\infty}((b_n)_{n = 0}^\infty, (c_n)_{n = 0}^\infty).
+        d_{l^\infty}\big((a_n)_{n = 0}^\infty, (c_n)_{n = 0}^\infty\big) & = \sup_{n \in \mathbf{N}} \abs*{a_n - c_n}                                                                                             \\
+                                                                         & = \sup_{n \in \mathbf{N}} \abs*{a_n - b_n + b_n - c_n}                                                                                 \\
+                                                                         & \leq \sup_{n \in \mathbf{N}} (\abs*{a_n - b_n} + \abs*{b_n - c_n})                                                                     \\
+                                                                         & \leq \sup_{n \in \mathbf{N}} \abs*{a_n - b_n} + \sup_{n \in \mathbf{N}} \abs*{b_n - c_n}                                               \\
+                                                                         & = d_{l^\infty}\big((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty\big) + d_{l^\infty}\big((b_n)_{n = 0}^\infty, (c_n)_{n = 0}^\infty\big).
     \end{align*}
     Thus by Definition \ref{1.1.2} \((X, d_{l^1})\) and \((X, d_{l^\infty})\) are metric spaces.
 
@@ -768,8 +775,8 @@ Then
     Let \((x^{(k)})_{k = 1}^\infty\) be the sequence of sequence \((x_n^{(k)})_{n = 0}^\infty\) where
     \[
         x_n^{(k)} = \begin{cases}
-            0                           & \text{if } n = 0    \\
-            \frac{1}{n^2} + \frac{1}{k} & \text{if } n \leq k \\
+            0                           & \text{if } n = 0,    \\
+            \frac{1}{n^2} + \frac{1}{k} & \text{if } n \leq k, \\
             \frac{1}{n^2}               & \text{if } n > k.
         \end{cases}
     \]
@@ -777,7 +784,7 @@ Then
     Let \((y_n)_{n = 0}^\infty\) be a sequence where
     \[
         y_n = \begin{cases}
-            0             & \text{if } n = 0  \\
+            0             & \text{if } n = 0, \\
             \frac{1}{n^2} & \text{if } n > 0.
         \end{cases}
     \]
@@ -785,43 +792,43 @@ Then
     Now we show that \((x^{(k)})_{k = 1}^\infty\) converges to \((y_n)_{n = 0}^\infty\) with respect to \(d_{l^\infty}\).
     By Definition \ref{1.1.14} we need to show that
     \[
-        \lim_{k \to \infty} d_{l^\infty}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) = 0.
+        \lim_{k \to \infty} d_{l^\infty}\big((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty\big) = 0.
     \]
     We have
     \begin{align*}
-        d_{l^\infty}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) & = \sup_{n \in \mathbf{N}} \abs*{x_n^{(k)} - y_n} \\
-                                                                       & = \sup \{0, \frac{1}{k}\}                        \\
-                                                                       & = \frac{1}{k}
+        d_{l^\infty}\big((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty\big) & = \sup_{n \in \mathbf{N}} \abs*{x_n^{(k)} - y_n} \\
+                                                                               & = \sup \bigg\{0, \frac{1}{k}\bigg\}              \\
+                                                                               & = \frac{1}{k}
     \end{align*}
     and thus
     \[
-        \lim_{k \to \infty} d_{l^\infty}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) = \lim_{k \to \infty} \frac{1}{k} = 0.
+        \lim_{k \to \infty} d_{l^\infty}\big((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty\big) = \lim_{k \to \infty} \frac{1}{k} = 0.
     \]
     But we also have
     \begin{align*}
-        d_{l^1}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) & = \sum_{n = 0}^\infty \abs*{x_n^{(k)} - y_n} \\
-                                                                  & = \sum_{n = 1}^k \frac{1}{k}                 \\
-                                                                  & = 1
+        d_{l^1}\big((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty\big) & = \sum_{n = 0}^\infty \abs*{x_n^{(k)} - y_n} \\
+                                                                          & = \sum_{n = 1}^k \frac{1}{k}                 \\
+                                                                          & = 1
     \end{align*}
     and thus
     \[
-        \lim_{k \to \infty} d_{l^1}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) = \lim_{k \to \infty} 1 = 1 \neq 0
+        \lim_{k \to \infty} d_{l^1}\big((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty\big) = \lim_{k \to \infty} 1 = 1 \neq 0.
     \]
-    and we conclude that \((x^{(k)})_{k = 1}^\infty\) converges to \((y_n)_{n = 0}^\infty\) with respect to \(d_{l^\infty}\) but not \(d_{l^1}\).
+    We conclude that \((x^{(k)})_{k = 1}^\infty\) converges to \((y_n)_{n = 0}^\infty\) with respect to \(d_{l^\infty}\) but not \(d_{l^1}\).
 
     Finally we show that any sequence which converges in the \(d_{l^1}\) metric automatically converges in the \(d_{l^\infty}\) metric.
     Suppose that \((x^{(k)})_{k = 1}^\infty\) converges to \((y_n)_{n = 0}^\infty\) with respect to \(d_{l^1}\).
     Since
     \begin{align*}
-        d_{l^1}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) & = \sum_{n = 0}^\infty \abs*{x_n^{(k)} - y_n}                      \\
-                                                                  & \geq \sup_{n \in N} \abs*{x_n^{(k)} - y_n}                        \\
-                                                                  & = d_{l^\infty}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty),
+        d_{l^1}\big((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty\big) & = \sum_{n = 0}^\infty \abs*{x_n^{(k)} - y_n}                              \\
+                                                                          & \geq \sup_{n \in N} \abs*{x_n^{(k)} - y_n}                                \\
+                                                                          & = d_{l^\infty}\big((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty\big),
     \end{align*}
     by squeeze test we have
     \begin{align*}
-                 & 0 \leq d_{l^\infty}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) \leq d_{l^1}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty)                                                                     \\
-        \implies & 0 = \lim_{k \to \infty} 0 \leq \lim_{k \to \infty} d_{l^\infty}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) \leq \lim_{k \to \infty} d_{l^1}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) = 0 \\
-        \implies & \lim_{k \to \infty} d_{l^\infty}((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty) = 0.
+                 & 0 \leq d_{l^\infty}\big((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty\big) \leq d_{l^1}\big((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty\big)                                                                     \\
+        \implies & 0 = \lim_{k \to \infty} 0 \leq \lim_{k \to \infty} d_{l^\infty}\big((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty\big) \leq \lim_{k \to \infty} d_{l^1}\big((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty\big) = 0 \\
+        \implies & \lim_{k \to \infty} d_{l^\infty}\big((x_n^{(k)})_{n = 0}^\infty, (y_n)_{n = 0}^\infty\big) = 0.
     \end{align*}
     Thus any sequence which converges in the \(d_{l^1}\) metric automatically converges in the \(d_{l^\infty}\) metric.
 \end{proof}
