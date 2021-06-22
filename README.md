@@ -222,6 +222,5 @@ a_n^2                      % do not enclose with {}
 
 - Analysis I
   - 8.1.10
-  - 9.3.4
 - Analysis II
   - not start yet
