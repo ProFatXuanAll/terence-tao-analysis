@@ -279,7 +279,11 @@ and define \emph{limit inferior at \(x_0\) in \(E\)} as
 \[
     \liminf_{x \to x_0 ; x \in E} f(x) = \sup\Big\{\inf\big\{f(x) : x \in E \land \abs*{x - x_0} < \delta\big\} : \delta \in \mathbf{R}^+\Big\}.
 \]
-Let \(L \in \mathbf{R}^*\).
+\end{additional corollary}
+
+\begin{additional corollary}\label{ac 9.3.2}
+Let \(X\) be a subset of \(\mathbf{R}\), let \(f : X \to \mathbf{R}\) be a function, let \(E\) be a subset of \(X\), and let \(x_0\) be an adherent point of \(E\).
+Let \(L \in \mathbf{R}\).
 We claim that the following statements are equivalent:
 \begin{enumerate}
     \item \(\limsup_{x \to x_0 ; x \in E} f(x) = L\)
@@ -337,70 +341,26 @@ Similarly, the following statements are equivalent:
         \implies & \forall\ \delta \in \mathbf{R}^+, \limsup_{n \to \infty} f(a_n) \leq \sup(S_{\delta})           & \text{(by Proposition \ref{6.4.12}(c))} \\
         \implies & \limsup_{n \to \infty} f(a_n) \leq \inf\{\sup(S_{\delta}) : \delta \in \mathbf{R}^+\} = L.      & \text{(by Remark \ref{5.5.15})}
     \end{align*}
-    Since \(L \in \mathbf{R}^*\), we split into three cases:
-    \begin{itemize}
-        \item \(L = +\infty\).
-              For each \(n \in \mathbf{Z}^+\), define \(Y_n = \{x \in X_{\frac{1}{n}} : f(x) > n\}\).
-              We must have \(Y_n \neq \emptyset\) for each \(n \in \mathbf{Z}^+\), otherwise
-              \begin{align*}
-                           & Y_n = \emptyset                                                                                 \\
-                  \implies & \forall\ x \in X_{\frac{1}{n}}, f(x) \leq n                                                     \\
-                  \implies & \sup(S_{\frac{1}{n}}) \leq n                                                                    \\
-                  \implies & +\infty = \inf\{\sup(S_{\delta}) : \delta \in \mathbf{R}^+\} \leq \sup(S_{\frac{1}{n}}) \leq n,
-              \end{align*}
-              a contradiction.
-              By axiom of choice (Axiom \ref{8.1}) we know that \(\prod_{n \in \mathbf{Z}^+} Y_n \neq \emptyset\).
-              Let \(g \in \prod_{n \in \mathbf{Z}^+} Y_n\) and define \((b_n)_{n = 1}^\infty\) by setting \(b_n = g(n)\) for each \(n \in \mathbf{Z}^+\).
-              Then we have \(\lim_{n \to \infty} b_n = x_0\) and \(\limsup_{n \to \infty} f(b_n) = +\infty\).
-        \item \(L = -\infty\).
-              For each \(n \in \mathbf{Z}^+\), define \(Y_n = \{x \in X_{\frac{1}{n}} : f(x) < -n\}\).
-              We must have \(Y_n \neq \emptyset\) for each \(n \in \mathbf{Z}^+\), otherwise
-              \begin{align*}
-                           & Y_n = \emptyset                                                       \\
-                  \implies & \forall\ x \in X_{\frac{1}{n}}, f(x) \geq -n                          \\
-                  \implies & \sup(S_{\frac{1}{n}}) \geq -n                                         \\
-                  \implies & \forall\ \delta \in \mathbf{R}^+, \begin{cases}
-                      X_{\delta} \subseteq X_{\frac{1}{n}} & \text{if } \delta < \frac{1}{n}    \\
-                      X_{\frac{1}{n}} \subseteq X_{\delta} & \text{if } \delta \geq \frac{1}{n}
-                  \end{cases}          \\
-                  \implies & \forall\ \delta \in \mathbf{R}^+, \begin{cases}
-                      \forall\ x \in X_{\delta}, f(x) \geq -n & \text{if } \delta < \frac{1}{n}    \\
-                      S_{\frac{1}{n}} \subseteq S_{\delta}    & \text{if } \delta \geq \frac{1}{n}
-                  \end{cases}          \\
-                  \implies & \forall\ \delta \in \mathbf{R}^+, \begin{cases}
-                      \sup(S_{\delta}) \geq -n                    & \text{if } \delta < \frac{1}{n}    \\
-                      \sup(S_{\frac{1}{n}}) \leq \sup(S_{\delta}) & \text{if } \delta \geq \frac{1}{n}
-                  \end{cases}          \\
-                  \implies & \forall\ \delta \in \mathbf{R}^+, \sup(X_{\delta}) \geq -n            \\
-                  \implies & -\infty = \inf\{\sup(S_{\delta}) : \delta \in \mathbf{R}^+\} \geq -n,
-              \end{align*}
-              a contradiction.
-              By axiom of choice (Axiom \ref{8.1}) we know that \(\prod_{n \in \mathbf{Z}^+} Y_n \neq \emptyset\).
-              Let \(g \in \prod_{n \in \mathbf{Z}^+} Y_n\) and define \((b_n)_{n = 1}^\infty\) by setting \(b_n = g(n)\) for each \(n \in \mathbf{Z}^+\).
-              Then we have \(\lim_{n \to \infty} b_n = x_0\) and \(\limsup_{n \to \infty} f(b_n) = -\infty\).
-        \item \(L \in \mathbf{R}\).
-              For each \(n \in \mathbf{Z}^+\), define \(Y_n\) as follow:
-              \[
-                  Y_n = \{x \in X_{\frac{1}{n}} : L - \frac{1}{n} < f(x) \leq L\}.
-              \]
-              We must have \(Y_n \neq \emptyset\) for each \(n \in \mathbf{N}\), otherwise
-              \begin{align*}
-                           & Y_n = \emptyset                                                                                         \\
-                  \implies & \forall\ x \in X_{\frac{1}{n}}, f(x) \leq L - \frac{1}{n}                                               \\
-                  \implies & \sup(S_{\frac{1}{n}}) \leq L - \frac{1}{n}                                                              \\
-                  \implies & L = \inf\{\sup(S_{\delta}) : \delta \in \mathbf{R}^+\} \leq \sup(S_{\frac{1}{n}}) \leq L - \frac{1}{n},
-              \end{align*}
-              a contradiction.
-              By axiom of choice (Axiom \ref{8.1}) we know that \(\prod_{n \in \mathbf{Z}^+} Y_n \neq \emptyset\).
-              Let \(g \in \prod_{n \in \mathbf{Z}^+} Y_n\) and define \((b_n)_{n = 1}^\infty\) by setting \(b_n = g(n)\) for each \(n \in \mathbf{Z}^+\).
-              Then we have \(\lim_{n \to \infty} b_n = x_0\) and \(L - \frac{1}{n} < f(b_n) \leq L\) for each \(n \in \mathbf{Z}^+\).
-              By squeeze test (Corollary \ref{6.4.14}) we have \(\lim_{n \to \infty} f(b_n) = L\).
-              By Proposition \ref{6.4.12}(f) we have \(\limsup_{n \to \infty} f(b_n) = \lim_{n \to \infty} f(b_n) = L\).
-    \end{itemize}
-    From all cases above we conclude that there must exists a sequence \((b_n)_{n = 1}^\infty\) in \(E\) such that \(\lim_{n \to \infty} b_n = x_0 \implies \limsup_{n \to \infty} f(b_n) = L\).
+    For each \(n \in \mathbf{Z}^+\), define \(Y_n\) as follow:
+    \[
+        Y_n = \{x \in X_{\frac{1}{n}} : L - \frac{1}{n} < f(x) \leq L\}.
+    \]
+    We must have \(Y_n \neq \emptyset\) for each \(n \in \mathbf{N}\), otherwise
+    \begin{align*}
+                 & Y_n = \emptyset                                                                                         \\
+        \implies & \forall\ x \in X_{\frac{1}{n}}, f(x) \leq L - \frac{1}{n}                                               \\
+        \implies & \sup(S_{\frac{1}{n}}) \leq L - \frac{1}{n}                                                              \\
+        \implies & L = \inf\{\sup(S_{\delta}) : \delta \in \mathbf{R}^+\} \leq \sup(S_{\frac{1}{n}}) \leq L - \frac{1}{n},
+    \end{align*}
+    a contradiction.
+    By axiom of choice (Axiom \ref{8.1}) we know that \(\prod_{n \in \mathbf{Z}^+} Y_n \neq \emptyset\).
+    Let \(g \in \prod_{n \in \mathbf{Z}^+} Y_n\) and define \((b_n)_{n = 1}^\infty\) by setting \(b_n = g(n)\) for each \(n \in \mathbf{Z}^+\).
+    Then we have \(\lim_{n \to \infty} b_n = x_0\) and \(L - \frac{1}{n} < f(b_n) \leq L\) for each \(n \in \mathbf{Z}^+\).
+    By squeeze test (Corollary \ref{6.4.14}) we have \(\lim_{n \to \infty} f(b_n) = L\).
+    By Proposition \ref{6.4.12}(f) we have \(\limsup_{n \to \infty} f(b_n) = \lim_{n \to \infty} f(b_n) = L\).
 
     Now we show that statement (b) implies statement (a).
-    Suppose that \(L \in \mathbf{R}^*\), and for every sequence \((a_n)_{n = 1}^\infty\) in \(E\), \(\lim_{n \to \infty} a_n = x_0 \implies \limsup_{n \to \infty} f(a_n) \leq L\).
+    Suppose that for every sequence \((a_n)_{n = 1}^\infty\) in \(E\), \(\lim_{n \to \infty} a_n = x_0 \implies \limsup_{n \to \infty} f(a_n) \leq L\).
     Suppose also that there exists a sequence \((b_n)_{n = 1}^\infty\) in \(E\) such that \(\lim_{n \to \infty} b_n = x_0 \implies \limsup_{n \to \infty} f(b_n) = L\).
     Observe that
     \begin{align*}
@@ -414,25 +374,15 @@ Similarly, the following statements are equivalent:
         \implies & \forall\ \delta \in \mathbf{R}^+, L = \limsup_{n \to \infty} f(b_n) \leq \sup(S_{\delta})       & \text{(by Proposition \ref{6.4.12}(c))} \\
         \implies & L \leq \inf\{\sup(S_{\delta}) : \delta \in \mathbf{R}^+\}.                                      & \text{(by Remark \ref{5.5.15})}
     \end{align*}
-    Since \(L \in \mathbf{R}^*\), we split into three cases:
-    \begin{itemize}
-        \item \(L = +\infty\).
-              Then by Definition \ref{6.2.3} we know that
-              \[
-                  +\infty \leq \inf\{\sup(S_{\delta}) : \delta \in \mathbf{R}^+\} \implies \inf\{\sup(S_{\delta}) : \delta \in \mathbf{R}^+\} = +\infty.
-              \]
-        \item \(L = -\infty\).
-              We have
-              \begin{align*}
-                           & \forall\ (a_n)_{n = 1}^\infty \in \prod_{n \in \mathbf{Z}^+} X_{\frac{1}{n}}, \lim_{n \to \infty} a_n = x_0                                  & \text{(by previous claim)}         \\
-                  \implies & \forall\ (a_n)_{n = 1}^\infty \in \prod_{n \in \mathbf{Z}^+} X_{\frac{1}{n}}, \limsup_{n \to \infty} f(a_n) \leq -\infty                     & \text{(by hypothesis)}             \\
-                  \implies & \forall\ (a_n)_{n = 1}^\infty \in \prod_{n \in \mathbf{Z}^+} X_{\frac{1}{n}}, \limsup_{n \to \infty} f(a_n) = -\infty                        & \text{(by Definition \ref{6.2.3})} \\
-                  \implies & \forall\ (a_n)_{n = 1}^\infty \in \prod_{n \in \mathbf{Z}^+} X_{\frac{1}{n}}, \inf\Big\{\sup\big(f(a_n)\big)_{n = 1}^\infty\Big\} = -\infty. & \text{(by Definition \ref{6.4.6})}
-              \end{align*}
-              We claim that there exists a sequence \((a_n)_{n = 1}^\infty \in \prod_{n \in \mathbf{Z}^+} X_{\frac{1}{n}}\) such that \(\sup(S_\frac{1}{m}) \leq \sup\big(f(a_n)\big)_{n = m}^\infty\) for each \(m \in \mathbf{Z}^+\).
-              Suppose for sake of contradiction that \(\exists\ m \in \mathbf{Z}^+\) such that \(\sup(S_\frac{1}{m}) > \sup\big(f(a_n)\big)_{n = m}^\infty\).
-        \item \(L \in \mathbf{R}\).
-    \end{itemize}
+    Suppose for sake of contradiction that \(L < \inf\{\sup(S_\delta) : \delta \in \mathbf{R}^+\}\).
+    Then we know that
+    \[
+        \inf\{\sup(S_\delta) : \delta \in \mathbf{R}^+\} = L + \varepsilon
+    \]
+    for some \(\varepsilon \in \mathbf{R}^+\).
+    Since statement (a) implies statement (b), we know that there exist a sequence \((c_n)_{n = 1}^\infty\) in \(E\) such that \(\lim_{n \to \infty} c_n = x_0\) and \(\lim_{n \to \infty} f(c_n) = L + \varepsilon\).
+    But this contradict to the hypothesis that \(\lim_{n \to \infty} f(c_n) \leq L\).
+    Thus we must have \(L = \inf\{\sup(S_{\delta}) : \delta \in \mathbf{R}^+\}\).
 \end{proof}
 
 \exercisesection
@@ -467,7 +417,7 @@ Similarly, the following statements are equivalent:
 \end{exercise}
 
 \begin{proof}
-    Need helped for Addtional Corollary \ref{ac 9.3.1}.
+    See Addtional Corollary \ref{ac 9.3.1} and Addtional Corollary \ref{ac 9.3.2}.
 \end{proof}
 
 \begin{exercise}[Continuous version of squeeze test]\label{ex 9.3.5}
