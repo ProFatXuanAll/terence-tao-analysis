@@ -83,27 +83,30 @@
 \begin{proof}
     We first show that statement (a) implies statement (b).
     Suppose that \(x_0\) is an adherent point of \(E\).
-    By Definition \ref{1.2.9}, \(\forall\ r \in \mathbf{R}^+\), we have \(B_{(X, d)}(x_0, r) \cap E \neq \emptyset\).
-    Thus by Definition \ref{1.2.5} \(x_0\) is not a exterior point.
-    Now we have either \(B_{(X, d)}(x_0, r) \subseteq E\) or \(B_{(X, d)}(x_0, r) \not\subseteq E\), and again by Definition \ref{1.2.5} we have \(x_0\) is either an interior point or a boundary point of \(E\).
+    By Definition \ref{1.2.9}, for all \(r \in \mathbf{R}^+\), we have \(B_{(X, d)}(x_0, r) \cap E \neq \emptyset\).
+    Thus by Definition \ref{1.2.5} \(x_0\) is not an exterior point.
+    We have either \(B_{(X, d)}(x_0, r) \subseteq E\) or \(B_{(X, d)}(x_0, r) \not\subseteq E\), and by Definition \ref{1.2.5} \(x_0\) is either an interior point or a boundary point of \(E\).
 
     Next we show that statement (b) implies statement (c).
-    First suppose that \(x_0\) is an interior point of \(E\).
-    Then by setting \(x_n = x_0\) for all \(n \in \mathbf{N}\) and \(n \geq 1\) we have \(\lim_{n \to \infty} d(x_n, x_0) = \lim_{n \to \infty} 0 = 0\).
-    Now suppose that \(x_0\) is a boundary point of \(E\).
-    By Definition \ref{1.2.5} \(\forall\ r \in \mathbf{R}^+\) we have \(B_{(X, d)}(x_0, r) \cap E \neq \emptyset\).
-    Let \(X_n = B_{(X, d)}(x_0, \frac{1}{n})\).
-    Since \(X_n \cap E \neq \emptyset\), by axiom of choice we can choose \(x_n \in X_n \cap E\) for all \(n \in \mathbf{N}\) and \(n \geq 1\).
-    So we have \(\lim_{n \to \infty} d(x_n, x_0) \leq \lim_{n \to \infty} \frac{1}{n} = 0\), and by sequeeze test we have \(\lim_{n \to \infty} d(x_n, x_0) = 0\).
-    In both cases we have \(\lim_{n \to \infty} d(x_n, x_0) = 0\), thus by Definition \ref{1.1.14} \((x_n)_{n = 1}^\infty\) converges to \(x_0\) with respect to \(d\).
+    \begin{itemize}
+        \item Suppose that \(x_0\) is an interior point of \(E\).
+              Then by setting \(x_n = x_0\) for all \(n \in \mathbf{Z}^+\) we have \(\lim_{n \to \infty} d(x_n, x_0) = \lim_{n \to \infty} 0 = 0\).
+        \item Suppose that \(x_0\) is a boundary point of \(E\).
+              By Definition \ref{1.2.5}, for all \(r \in \mathbf{R}^+\) we have \(B_{(X, d)}(x_0, r) \cap E \neq \emptyset\).
+              In particular, we have \(B_{(X, d)}(x_0, \frac{1}{n}) \cap E \neq \emptyset\) for all \(n \in \mathbf{Z}^+\).
+              Let \(X_n = B_{(X, d)}(x_0, \frac{1}{n}) \cap E\).
+              Since \(X_n \neq \emptyset\), by axiom of choice we can choose \((x_n)_{n = 1}^\infty \in \prod_{n \in \mathbf{Z}^+} X_n\).
+              Thus \(d(x_n, x_0) < \frac{1}{n}\) for all \(n \in \mathbf{Z}^+\) and by squeeze test we have \(\lim_{n \to \infty} d(x_n, x_0) = 0\).
+    \end{itemize}
+    From all cases above we conclude that there exists a sequence \((x_n)_{n = 1}^\infty\) in \(E\) which converges to \(x_0\) with respect to \(d\).
 
     Finally we show that statement (c) implies statement (a).
     Suppose that there exists a sequence \((x_n)_{n = 1}^\infty\) in \(E\) which converges to \(x_0\) with respect to \(d\).
-    By Definition \ref{1.1.14} \(\forall\ r \in \mathbf{R}^+\), \(\exists\ N \in \mathbf{N}\) and \(N \geq 1\) such that
+    By Definition \ref{1.1.14} we have
     \[
-        \forall\ n \in \mathbf{N} \land n \geq N, d(x_n, x_0) \leq r.
+        \forall\ r \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \in \mathbf{N}, n \geq N \implies d(x_n, x_0) \leq r.
     \]
-    Since \(x_n \in E\) and \(E \subseteq X\), we know that the set \(B_{(X, d)}(x_0, r) \cap E \neq \emptyset\).
+    Since \(x_N \in E\) and \(E \subseteq X\), we know that the set \(B_{(X, d)}(x_0, r) \cap E \neq \emptyset\).
     Since \(r\) is arbitrary, by Definition \ref{1.2.9} we know that \(x_0\) is an adherent point of \(E\).
 \end{proof}
 
