@@ -132,7 +132,7 @@
     For instance, in a metric space \((X, d)\), the whole space \(X\) has no boundary (every point in \(X\) is an interior point), and so \(X\) is both open and closed.
     The empty set \(\emptyset\) also has no boundary (every point in \(X\) is an exterior point), and so is both open and closed.
     In many cases these are the only sets that are simultaneously open and closed, but there are exceptions.
-    For instance, using the discrete metric \(d_{\text{disc}}\), \emph{every} set is both open and closed! (by Example \ref{1.2.8})
+    For instance, using the discrete metric \(d_{\text{disc}}\), \emph{every} set is both open and closed! (See Example \ref{1.2.8})
 \end{remark}
 
 \begin{note}
@@ -167,71 +167,62 @@
 \end{proposition}
 
 \begin{proof}{(a)}
-    If \(E = \emptyset\), then \(\text{int}(E) = \emptyset = E\) and \(\partial E \cap E = \emptyset\).
-    So we only consider the case \(E \neq \emptyset\).
-
-    First suppose that \(E\) is open.
-    By Definition \ref{1.2.12} we have \(\partial E \cap E = \emptyset\).
-    Thus \(\forall\ x_0 \in E\), we have \(x_0 \notin \partial E\).
-    Since \(x_0 \in B_{(X, d)}(x_0, r)\) for all \(r \in \mathbf{R}^+\) and \(x_0 \in E\), we have \(B_{(X, d)}(x_0, r) \cap E \neq \emptyset\).
-    By Definition \ref{1.2.9} \(x_0\) is an adherent point of \(E\), thus by Proposition \ref{1.2.10} \(x_0\) is an interior point of \(E\), i.e., \(x_0 \in \text{int}(E)\).
-    This means \(E \subseteq \text{int}(E)\), and by Remark \ref{1.2.6} we have \(\text{int}(E) \subseteq E\), thus \(\text{int}(E) = E\).
-
-    Now suppose that \(\text{int}(E) = E\).
-    Since \(\forall\ x_0 \in E\), \(x_0 \in \text{int}(E)\), by Definition \ref{1.2.5} we know that \(x_0\) is not a boundary point.
-    Thus \(x_0 \notin \partial E\), and \(\partial E \cap E = \emptyset\).
-    By Definition \ref{1.2.12} \(E\) is open.
+    \begin{align*}
+             & E \text{ is open}                                                                         \\
+        \iff & \partial E \cap E = \emptyset                       & \text{(by Definition \ref{1.2.12})} \\
+        \iff & \forall\ x \in E, x \text{ is not a boundary point}                                       \\
+        \iff & \forall\ x \in E, x \text{ is an interior point}    & \text{(by Remark \ref{1.2.6})}      \\
+        \iff & \text{int}(E) = E.                                  & \text{(by Definition \ref{1.2.5})}
+    \end{align*}
 \end{proof}
 
 \begin{proof}{(b)}
-    If \(E = \emptyset\), then \(X = \text{ext}(E)\), \(\partial E = \emptyset \subseteq E\) and by Proposition \ref{1.2.10} \(\overline{E} = \emptyset \subseteq E\).
-    So we only consider the case \(E \neq \emptyset\).
-
-    First suppose that \(E\) is closed.
-    By Definition \ref{1.2.12} we have \(\partial E \subseteq E\).
-    By Remark \ref{1.2.6} we have \(\text{int}(E) \subseteq E\).
-    Thus by Proposition \ref{1.2.10} we have \(\overline{E} = \text{int}(E) \cup \partial E \subseteq E\).
-
-    Now suppose that \(\overline{E} \subseteq E\).
-    By Proposition \ref{1.2.10} we know that \(\overline{E} = \text{int}(E) \cup \partial E\).
-    Thus we have \(\partial E \subseteq E\) and by Definition \ref{1.2.12} \(E\) is closed.
+    \begin{align*}
+             & E \text{ is closed}                                                                           \\
+        \iff & \partial E \subseteq E                           & \text{(by Definition \ref{1.2.12})}        \\
+        \iff & E = \text{int}(E) \cup \partial E                & \text{(by Remark \ref{1.2.6})}             \\
+        \iff & \forall\ x \in E, x \text{ is an adherent point} & \text{(by Proposition \ref{1.2.10}(a)(b))} \\
+        \iff & E = \overline{E}.                                & \text{(by Definition \ref{1.2.9})}
+    \end{align*}
 \end{proof}
 
 \begin{proof}{(c)}
-    Let \(x_0 \in X\) and let \(r \in \mathbf{R}^+\).
     We first show that \(B_{(X, d)}(x_0, r)\) is an open set.
     Since \(x_0 \in B_{(X, d)}(x_0, r)\), we know that \(B_{(X, d)}(x_0, r) \neq \emptyset\).
     Let \(x \in B_{(X, d)}(x_0, r)\) and let \(r' = r - d(x, x_0)\).
     By Definition \ref{1.2.1} we have \(d(x, x_0) < r\), so \(r' > 0\).
     Then we have
     \begin{align*}
-                 & \forall\ y \in B_{(X, d)}(x, r')                                            \\
-        \implies & d(y, x) < r'                        & \text{(by Definition \ref{1.2.1})}    \\
-        \implies & d(y, x) < r - d(x, x_0)                                                     \\
-        \implies & d(y, x) + d(x, x_0) < r                                                     \\
-        \implies & d(y, x_0) < d(y, x) + d(x, x_0) < r & \text{(by Definition \ref{1.1.2}(d))} \\
-        \implies & y \in B_{(X, d)}(x_0, r)            & \text{(by Definition \ref{1.2.1})}
+                 & \forall\ y \in B_{(X, d)}(x, r')                                               \\
+        \implies & d(y, x) < r'                           & \text{(by Definition \ref{1.2.1})}    \\
+        \implies & d(y, x) < r - d(x, x_0)                                                        \\
+        \implies & d(y, x) + d(x, x_0) < r                                                        \\
+        \implies & d(y, x_0) \leq d(y, x) + d(x, x_0) < r & \text{(by Definition \ref{1.1.2}(d))} \\
+        \implies & y \in B_{(X, d)}(x_0, r)               & \text{(by Definition \ref{1.2.1})}
     \end{align*}
     and thus \(B_{(X, d)}(x, r') \subseteq B_{(X, d)}(x_0, r)\).
-    By Definition \ref{1.2.5} this means \(B_{(X, d)}(x_0, r) \subseteq \text{int}(B_{(X, d)}(x_0, r))\).
-    By Remark \ref{1.2.6} we then have \(B_{(X, d)}(x_0, r) = \text{int}(B_{(X, d)}(x_0, r))\), so by Proposition \ref{1.2.15}(a) \(B_{(X, d)}(x_0, r)\) is closed.
+    Since \(x\) is arbitrary, by Definition \ref{1.2.5} we have \(B_{(X, d)}(x_0, r) \subseteq \text{int}\big(B_{(X, d)}(x_0, r)\big)\).
+    By Remark \ref{1.2.6} we have \(B_{(X, d)}(x_0, r) = \text{int}\big(B_{(X, d)}(x_0, r)\big)\), thus by Proposition \ref{1.2.15}(a) \(B_{(X, d)}(x_0, r)\) is open.
 
-    Now we show that \(\{x \in X : d(x, x_0) \leq r\}\) is closed.
-    Let \(E = \{x \in X : d(x, x_0) \leq r\}\).
-    Since \(B_{(X, d)}(x_0, r) \neq \emptyset\) and \(B_{(X, d)}(x_0, r) \subseteq E\), by Definition \ref{1.2.5} we know that \(x_0 \in \text{int}(E)\).
-    By Corollary \ref{1.2.11} we know that \(\overline{E} = \text{int}(E) \cup \partial E\), thus \(x_0 \in \overline{E}\) and \(\overline{E} \neq \emptyset\).
-    Let \(y \in \overline{E}\).
+    Now we show that \(E = \{x \in X : d(x, x_0) \leq r\}\) is closed.
+    By Proposition \ref{1.2.15}(b) we know that \(E\) is closed iff \(E = \overline{E}\).
+    By Proposition \ref{1.2.10}(c) we know that \(E \subseteq \overline{E}\).
+    So we only need to show that \(\overline{E} \subseteq E\).
+    Suppose for sake of contradiction that \(\overline{E} \setminus E \neq \emptyset\).
+    Let \(y \in \overline{E} \setminus E\).
     By Proposition \ref{1.2.10}(c), \(\exists\ (y_n)_{n = 1}^\infty\) such that \(y_n \in E\) for all \(n \in \mathbf{Z}^+\) and \(\lim_{n \to \infty} y_n = y\).
-    Suppose for sake of contradiction that \(y \notin E\).
-    Then we have \(d(y, x_0) > r\).
-    By Definition \ref{1.1.14}, \(\exists\ N \in \mathbf{Z}^+\) such that \(\forall\ n \in \mathbf{N}\) and \(n \geq N\), we have
-    \[
-        d(y_n, y) \leq \frac{d(y, x_0) - r}{2} < d(y, x_0) - r.
-    \]
-    Then by Definition \ref{1.1.2} we have \(r < d(y, x_0) - d(y_n, y) \leq d(y_n, x_0)\).
+    Since \(y \notin E\), we have \(d(y, x_0) > r\).
+    Then \(d(y, x_0) - r > 0\) and we have
+    \begin{align*}
+                 & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N,                                                            \\
+                 & d(y_n, y) \leq \frac{d(y, x_0) - r}{2} < d(y, x_0) - r                & \text{(by Definition \ref{1.1.14})} \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N,                                                            \\
+                 & r < d(y, x_0) - d(y_n, y) \leq d(y, x_0) + d(y_n, y) \leq d(y_n, x_0) & \text{(by Definition \ref{1.1.2})}  \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, r < d(y_n, x_0).
+    \end{align*}
     But \(d(y_n, x_0) > r\) means \(y_n \notin E\), a contradiction.
-    Thus we must have \(y \in E\).
-    Since \(y\) is arbitrary, we have \(\overline{E} \subseteq E\) and by Proposition \ref{1.2.15}(b) \(E\) is closed.
+    Thus we must have \(\overline{E} \setminus E = \emptyset\) and \(\overline{E} \subseteq E\).
+    We conclude that \(E\) is closed.
 \end{proof}
 
 \begin{proof}{(d)}
