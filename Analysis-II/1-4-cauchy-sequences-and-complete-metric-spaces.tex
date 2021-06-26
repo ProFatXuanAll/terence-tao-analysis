@@ -93,9 +93,9 @@
     Let \(k \in \mathbf{N}\) and \(k \geq N\).
     Then we have
     \begin{align*}
-        d(x^{(n)}, x^{(k)}) & \leq d(x^{(n)}, x_0) + d(x_0, x^{(k)}) & \text{(by Definition \ref{1.1.2}(d))} \\
-                            & = d(x^{(n)}, x_0) + d(x^{(k)}, x_0)    & \text{(by Definition \ref{1.1.2}(c))} \\
-                            & \leq \varepsilon / 2 + \varepsilon / 2                                         \\
+        d(x^{(n)}, x^{(k)}) & \leq d(x^{(n)}, x_0) + d(x_0, x^{(k)})             & \text{(by Definition \ref{1.1.2}(d))} \\
+                            & = d(x^{(n)}, x_0) + d(x^{(k)}, x_0)                & \text{(by Definition \ref{1.1.2}(c))} \\
+                            & \leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2}                                         \\
                             & = \varepsilon
     \end{align*}
     and by Definition \ref{1.4.6} \((x^{(n)})_{n = m}^\infty\) is a Cauchy sequence.
@@ -109,13 +109,20 @@
 \end{lemma}
 
 \begin{proof}
-    Since \(\lim_{j \to \infty} d(x^{(n_j)}, x_0) = 0\), by Definition \ref{1.1.14} we know that \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ N_1 \in \mathbf{N}\) and \(N_1 \geq 1\) such that \(\forall\ j \geq N_1\), we have \(d(x^{(n_j)}, x_0) \leq \varepsilon / 2\).
-    Since \((x^{(n)})_{n = m}^\infty\) is a Cauchy sequence, by Definition \ref{1.4.6} we know that \(\exists\ N_2 \in \mathbf{N}\) and \(N_2 \geq m\) such that \(\forall\ i, k \in \mathbf{N}\) and \(i, k \geq N\) we have \(d(x^{(i)}, x^{(k)}) \leq \varepsilon / 2\).
+    Let \(N_1, N_2, i, k \in \mathbf{N}\).
+    Since \(\lim_{j \to \infty} d(x^{(n_j)}, x_0) = 0\), by Definition \ref{1.1.14} we know that
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N_1 \geq 1 : \forall\ j \geq N_1, d(x^{(n_j)}, x_0) \leq \frac{\varepsilon}{2}.
+    \]
+    Since \((x^{(n)})_{n = m}^\infty\) is a Cauchy sequence, by Definition \ref{1.4.6} we know that
+    \[
+        \exists\ N_2 \geq m : \forall\ i, k \geq N_2, d(x^{(i)}, x^{(k)}) \leq \frac{\varepsilon}{2}.
+    \]
     Let \(N = \max(N_1, N_2)\).
     Then \(\forall\ i, j \geq N\), we have
     \begin{align*}
-        d(x^{(i)}, x_0) & \leq d(x^{(i)}, x^{(n_j)}) + d(x^{(n_j)}, x_0) & \text{(by Definition \ref{1.1.2}(d))} \\
-                        & \leq \varepsilon / 2 + \varepsilon / 2         & (n_j \geq j \geq N)                   \\
+        d(x^{(i)}, x_0) & \leq d(x^{(i)}, x^{(n_j)}) + d(x^{(n_j)}, x_0)     & \text{(by Definition \ref{1.1.2}(d))} \\
+                        & \leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2} & (n_j \geq j \geq N)                   \\
                         & = \varepsilon
     \end{align*}
     and thus by Definition \ref{1.1.14} \(\lim_{n \to \infty} d(x^{(n)}, x_0) = 0\).
