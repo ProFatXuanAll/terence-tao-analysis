@@ -39,22 +39,34 @@
 \end{proposition}
 
 \begin{proof}
-    We first show that if \(L\) is a limit point of \((x^{(n)})_{n = 0}^\infty\), then there exists a subsequence of \((x^{(n)})_{n = 0}^\infty\) which converges to \(L\).
-    Let \(f : \mathbf{N} \to \mathbf{N}\) be a function where \(f(0) = 0\) and \(f(n_j) = \min\{n > n_{j - 1} : d(x^{(n)}, L) \leq 1 / j\}\).
-    Since \(L\) is a limit point of \((x^{(n)})_{n = 0}^\infty\), by Definition \ref{1.4.4} \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\forall\ n_j \geq m\), \(\exists\ n \geq n_j\) such that \(d(x^{(n)}, L) \leq \varepsilon\).
-    In particular, \(d(x^{(n)}, L) \leq 1 / j\).
-    Thus such \(f\) exists and \((x^{(n_j)})_{j = 1}^\infty\) is a subsequence of \((x^{(n)})_{n = m}^\infty\).
-    Since \(\forall\ j \geq 1\) we have \(d(x^{(n_j)}, L) \leq 1 / j\), by squeeze test we have
+    We first show that if \(L\) is a limit point of \((x^{(n)})_{n = m}^\infty\), then there exists a subsequence of \((x^{(n)})_{n = m}^\infty\) which converges to \(L\).
+    Let \(N \in \mathbf{N}\).
+    Since \(L\) is a limit point of \((x^{(n)})_{n = m}^\infty\), by Definition \ref{1.4.4} we know that
     \[
-        0 = \lim_{j \to \infty} 0 \leq \lim_{j \to \infty} d(x^{(n_j)}, L) \leq \lim_{j \to \infty} 1 / j = 0
+        \forall\ \varepsilon \in \mathbf{R}^+, \forall\ N \geq m, \exists\ n \geq N : d(x^{(n)}, L) \leq \varepsilon.
     \]
-    and thus by Definition \ref{1.1.14} the sequence \((x^{(n_j)})_{n = 1}^\infty\) converges to \(L\).
+    In particular, for every \(j \in \mathbf{Z}^+\), we have
+    \[
+        \forall\ N \geq m, \exists\ n \geq N : d(x^{(n)}, L) \leq \frac{1}{j}.
+    \]
+    Note that such \(n\) depends on the choice of \(j\), thus we can write \(x^{(n_j)}\) instead of \(x^{(n)}\) (here we use axiom of choice).
+    By applying squeeze test to the subsequence \((x^{(n_j)})_{j = 1}^\infty\) we have
+    \begin{align*}
+                 & 0 \leq d(x^{(n_j)}, L) \leq \frac{1}{j}                                                                     \\
+        \implies & 0 = \lim_{j \to \infty} 0 \leq \lim_{j \to \infty} d(x^{(n_j)}, L) \leq \lim_{j \to \infty} \frac{1}{j} = 0 \\
+        \implies & \lim_{j \to \infty} d(x^{(n_j)}, L) = 0
+    \end{align*}
+    and thus by Definition \ref{1.1.14} the sequence \((x^{(n_j)})_{j = 1}^\infty\) converges to \(L\).
 
-    Now we show that if a subsequence of \((x^{(n)})_{n = 0}^\infty\) converges to \(L\), then \(L\) is a limit point of \((x^{(n)})_{n = 0}^\infty\).
-    Let \((a_n)_{n = 1}^\infty\) be a subsequence of \((x^{(n)})_{n = 0}^\infty\) and \(\lim_{n \to \infty} d(a_n, L) = 0\).
-    Since \(\lim_{n \to \infty} d(a_n, L) = 0\), by Definition \ref{1.1.14} \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ n \geq 0\) such that \(d(a_n, L) \leq \varepsilon\).
-    This means \(\forall\ N \in \mathbf{N}\) and \(N \geq 1\), \(\exists\ n \geq N\) such that \(d(a_n, L) = d(x^{(n_j)}, L) \leq \varepsilon\).
-    Thus by Definition \ref{1.4.4} \(L\) is a limit point of \((x^{(n)})_{n = 0}^\infty\), and we are done.
+    Now we show that if a subsequence of \((x^{(n)})_{n = m}^\infty\) converges to \(L\), then \(L\) is a limit point of \((x^{(n)})_{n = m}^\infty\).
+    Let \(N \in \mathbf{N}\) and let \((x^{(n_j)})_{j = 1}^\infty\) be a subsequence of \((x^{(n)})_{n = 0}^\infty\) where \(\lim_{j \to \infty} d(x^{(n_j)}, L) = 0\).
+    Then we have
+    \begin{align*}
+                 & \lim_{n \to \infty} d(x^{(n_j)}, L) = 0                                                                                                                      \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ j \geq 1 : d(x^{(n_j)}, L) \leq \varepsilon                            & \text{(by Definition \ref{1.1.14})} \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+,  \forall\ N \geq m, \exists\ n \geq n_j \geq N : d(x^{(n)}, L) \leq \varepsilon                                       \\
+        \implies & L \text{ is a limit point of } (x^{(n)})_{n = m}^\infty.                                                               & \text{(by Definition \ref{1.4.4})}
+    \end{align*}
 \end{proof}
 
 \begin{definition}[Cauchy sequences]\label{1.4.6}
