@@ -260,94 +260,126 @@
 \begin{proof}{(a)}
     Let \((x^{(n)})_{n = m}^\infty\), \((y^{(n)})_{n = m}^\infty\), \((z^{(n)})_{n = m}^\infty\) be Cauchy sequences in \((X, d)\).
 
-    For reflexive:
-    By Definition \ref{1.1.2}(a) we have \(\lim_{n \to \infty} d(x_n, x_n) = \lim_{n \to \infty} 0 = 0\), thus \(\text{LIM}_{n \to \infty} x_n = \text{LIM}_{n \to \infty} x_n\).
-
-    For symmetry:
-    By Definition \ref{1.1.2}(c) we have \(\lim_{n \to \infty} d(x_n, y_n) = \lim_{n \to \infty} d(y_n, x_n)\), thus \(\text{LIM}_{n \to \infty} x_n = \text{LIM}_{n \to \infty} y_n\) iff \(\text{LIM}_{n \to \infty} y_n = \text{LIM}_{n \to \infty} x_n\).
-
-    For transitive:
-    We have
+    First suppose that \(\text{LIM}_{n \to \infty} x^{(n)}\) is well-defined.
+    Then we have
     \begin{align*}
-                 & (\text{LIM}_{n \to \infty} x_n = \text{LIM}_{n \to \infty} y_n) \land (\text{LIM}_{n \to \infty} y_n = \text{LIM}_{n \to \infty} z_n)                                      \\
-        \implies & (\lim_{n \to \infty} d(x_n, y_n) = 0) \land (\lim_{n \to \infty} d(y_n, z_n) = 0)                                                                                          \\
-        \implies & \lim_{n \to \infty} d(x_n, y_n) + d(y_n, z_n) = 0                                                                                                                          \\
-        \implies & 0 \leq \lim_{n \to \infty} d(x_n, z_n) \leq \lim_{n \to \infty} d(x_n, y_n) + d(y_n, z_n) = 0                                         & \text{(by Definition \ref{1.1.2})} \\
-        \implies & \lim_{n \to \infty} d(x_n, z_n) = 0                                                                                                   & \text{(by squeeze test)}           \\
-        \implies & \text{LIM}_{n \to \infty} x_n = \text{LIM}_{n \to \infty} z_n.
+                 & \lim_{n \to \infty} d(x^{(n)}, x^{(n)}) = \lim_{n \to \infty} 0 = 0   & \text{(by Definition \ref{1.1.2}(a))} \\
+        \implies & \text{LIM}_{n \to \infty} x^{(n)} = \text{LIM}_{n \to \infty} x^{(n)} & \text{(by definition)}
     \end{align*}
-\end{proof}
+    and thus the equality relation of Exercise \ref{ex 1.4.8}(a) is reflexive.
 
-\begin{proof}{(b)}
-    Let \((x^{(n)})_{n = m}^\infty\), \((y^{(n)})_{n = m}^\infty\) be Cauchy sequences in \((X, d)\) with formal limits in \(\overline{X}\).
-    We first show that the limit
-    \[
-        d_{\overline{X}}(\text{LIM}_{n \to \infty} x_n, \text{LIM}_{n \to \infty} y_n) \coloneqq \lim_{n \to \infty} d(x_n, y_n)
-    \]
-    exists.
-    Let \((a_n)_{n = m}^\infty\) be the sequence \(a_n = d(x_n, y_n)\).
-    To show that the above limit exists, it will suffice to show that \((a_n)_{n = m}^\infty\) converges in \(\mathbf{R}\).
-    Let \(\varepsilon \in \mathbf{R}^+\).
-    Since \((x^{(n)})_{n = m}^\infty\) is a Cauchy sequence, by Definition \ref{1.4.6} we know that \(\exists\ N_1 \in \mathbf{N}\) and \(N_1 \geq m\) such that \(\forall\ j, k \in \mathbf{N}\) and \(j, k \geq N_1\) we have \(d(x_j, x_k) \leq \varepsilon / 2\).
-    Similarly, \(\exists\ N_2 \in \mathbf{N}\) and \(N_2 \geq m\) such that \(\forall\ j, k \in \mathbf{N}\) and \(j, k \geq N_2\) we have \(d(y_j, y_k) \leq \varepsilon / 2\).
-    Let \(N = \max(N_1, N_2)\).
-    Then \(\forall\ j, k \geq N\), we have
+    Next suppose that \(\text{LIM}_{n \to \infty} x^{(n)}, \text{LIM}_{n \to \infty} y^{(n)}\) are well-defined and \(\text{LIM}_{n \to \infty} x^{(n)} = \text{LIM}_{n \to \infty} y^{(n)}\).
+    Then we have
     \begin{align*}
-        \abs*{a_j - a_k} & = \abs*{d(x_j, y_j) - d(x_k, y_k)}                                                                               \\
-                         & = \abs*{d(x_j, y_j) + d(y_j, x_k) - d(y_j, x_k) - d(x_k, y_k)}                                                   \\
-                         & \leq \abs*{d(x_j, y_j) + d(y_j, x_k)} + \abs*{d(y_j, x_k) + d(x_k, y_k)}                                         \\
-                         & = d(x_j, y_j) + d(y_j, x_k) + d(y_j, x_k) + d(x_k, y_k)                                                          \\
-                         & \leq d(x_j, x_k) + d(y_j, y_k)                                           & \text{(by Definition \ref{1.1.2}(d))} \\
-                         & \leq \varepsilon / 2 + \varepsilon / 2                                                                           \\
-                         & = \varepsilon
+             & \text{LIM}_{n \to \infty} x^{(n)} = \text{LIM}_{n \to \infty} y^{(n)}                                         \\
+        \iff & \lim_{n \to \infty} d(x^{(n)}, y^{(n)}) = 0                           & \text{(by definition)}                \\
+        \iff & \lim_{n \to \infty} d(y^{(n)}, x^{(n)}) = 0                           & \text{(by Definition \ref{1.1.2}(c))} \\
+        \iff & \text{LIM}_{n \to \infty} y^{(n)} = \text{LIM}_{n \to \infty} x^{(n)} & \text{(by definition)}
     \end{align*}
-    and thus \((a_n)_{n = m}^\infty\) is a Cauchy sequence in \(\mathbf{R}\) and we know that \((a_n)_{n = m}^\infty\) converges in \(\mathbf{R}\).
+    and thus the equality relation of Exercise \ref{ex 1.4.8}(a) is symmetry.
 
-    Next we show that \(d_{\overline{X}}\) obeys the axiom of substitution.
-    Let \((z^{(n)})_{n = m}^\infty\) be a Cauchy sequence in \((X, d)\) such that \(\text{LIM}_{n \to \infty} x_n = \text{LIM}_{n \to \infty} z_n\).
+    Finally suppose that \(\text{LIM}_{n \to \infty} x^{(n)}, \text{LIM}_{n \to \infty} y^{(n)}, \text{LIM}_{n \to \infty} z^{(n)}\) are well-defined.
+    Suppose also that \(\text{LIM}_{n \to \infty} x^{(n)} = \text{LIM}_{n \to \infty} y^{(n)}\) and \(\text{LIM}_{n \to \infty} y^{(n)} = \text{LIM}_{n \to \infty} z^{(n)}\).
     Then we have
     \begin{align*}
                  & \begin{cases}
-            d(x_n, y_n) \leq d(x_n, z_n) + d(z_n, y_n) \\
-            d(z_n, y_n) \leq d(x_n, y_n) + d(x_n, z_n)
-        \end{cases}                                                                                           & \text{(by Definition \ref{1.1.2}(c)(d))} \\
+            \text{LIM}_{n \to \infty} x^{(n)} = \text{LIM}_{n \to \infty} y^{(n)} \\
+            \text{LIM}_{n \to \infty} y^{(n)} = \text{LIM}_{n \to \infty} z^{(n)}
+        \end{cases}                                                                                                  \\
         \implies & \begin{cases}
-            d(x_n, y_n) - d(z_n, y_n) \leq d(x_n, z_n) \\
-            d(z_n, y_n) - d(x_n, y_n) \leq d(x_n, z_n)
-        \end{cases}                                                                                                                                      \\
-        \implies & 0 \leq \abs*{d(x_n, y_n) - d(z_n, y_n)} \leq d(x_n, z_n)                                                                                                        \\
-        \implies & \lim_{n \to \infty} 0 \leq \lim_{n \to \infty} \abs*{d(x_n, y_n) - d(z_n, y_n)} \leq \lim_{n \to \infty} d(x_n, z_n)                                            \\
-        \implies & 0 \leq \lim_{n \to \infty} \abs*{d(x_n, y_n) - d(z_n, y_n)} \leq 0                                                   & \text{(by Exercise \ref{ex 1.4.8}(a))}   \\
-        \implies & \lim_{n \to \infty} \abs*{d(x_n, y_n) - d(z_n, y_n)} = 0                                                             & \text{(by squeeze test)}                 \\
-        \implies & \lim_{n \to \infty} d(x_n, y_n) - d(z_n, y_n) = 0                                                                                                               \\
-        \implies & \lim_{n \to \infty} d(x_n, y_n) = \lim_{n \to \infty} d(z_n, y_n)
+            \lim_{n \to \infty} d(x^{(n)}, y^{(n)}) = 0 \\
+            \lim_{n \to \infty} d(y^{(n)}, z^{(n)}) = 0
+        \end{cases}                                                             & \text{(by definition)}             \\
+        \implies & \lim_{n \to \infty} \big(d(x^{(n)}, y^{(n)}) + d(y^{(n)}, z^{(n)})\big) = 0                                                 \\
+        \implies & 0 \leq \lim_{n \to \infty} d(x^{(n)}, z^{(n)})                                                                              \\
+                 & \quad \leq \lim_{n \to \infty} \big(d(x^{(n)}, y^{(n)}) + d(y^{(n)}, z^{(n)})\big) = 0 & \text{(by Definition \ref{1.1.2})} \\
+        \implies & \lim_{n \to \infty} d(x^{(n)}, z^{(n)}) = 0                                            & \text{(by squeeze test)}           \\
+        \implies & \text{LIM}_{n \to \infty} x^{(n)} = \text{LIM}_{n \to \infty} z^{(n)}                  & \text{(by definition)}
     \end{align*}
-    and thus \(d_{\overline{X}}(\text{LIM}_{n \to \infty} x_n, \text{LIM}_{n \to \infty} y_n) = d_{\overline{X}}(\text{LIM}_{n \to \infty} z_n, \text{LIM}_{n \to \infty} y_n)\).
+    and thus the equality relation of Exercise \ref{ex 1.4.8}(a) is transitive.
+\end{proof}
+
+\begin{proof}{(b)}
+    Let \((x^{(n)})_{n = m}^\infty\), \((y^{(n)})_{n = m}^\infty\), \((z^{(n)})_{n = m}^\infty\) be Cauchy sequences in \((X, d)\) with formal limits in \(\overline{X}\).
+    We first show that the limit
+    \[
+        d_{\overline{X}}(\text{LIM}_{n \to \infty} x^{(n)}, \text{LIM}_{n \to \infty} y^{(n)}) \coloneqq \lim_{n \to \infty} d(x^{(n)}, y^{(n)})
+    \]
+    exists.
+    Let \((a^{(n)})_{n = m}^\infty\) be the sequence \(a^{(n)} = d(x^{(n)}, y^{(n)})\).
+    To show that the above limit exists, it will suffice to show that \((a^{(n)})_{n = m}^\infty\) converges in \(\mathbf{R}\).
+    Let \(N_1, N_2, j, k \in \mathbf{N}\).
+    Since \((x^{(n)})_{n = m}^\infty\) is a Cauchy sequence, by Definition \ref{1.4.6} we know that
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N_1 \geq m : \forall\ j, k \geq N_1, d(x^{(j)}, x^{(k)}) \leq \frac{\varepsilon}{2}.
+    \]
+    Similarly,
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N_2 \geq m : \forall\ j, k \geq N_2, d(y^{(j)}, y^{(k)}) \leq \frac{\varepsilon}{2}.
+    \]
+    Let \(N = \max(N_1, N_2)\).
+    Then by Definition \ref{1.1.2} we have
+    \begin{align*}
+         & \forall\ j, k \geq N, \abs*{a_j - a_k}                                                            \\
+         & = \abs*{d(x^{(j)}, y^{(j)}) - d(x^{(k)}, y^{(k)})}                                                \\
+         & = \abs*{d(x^{(j)}, y^{(j)}) + d(y^{(j)}, x^{(k)}) - d(y^{(j)}, x^{(k)}) - d(x^{(k)}, y^{(k)})}    \\
+         & \leq \abs*{d(x^{(j)}, y^{(j)}) + d(y^{(j)}, x^{(k)}) + d(y^{(j)}, x^{(k)}) + d(x^{(k)}, y^{(k)})} \\
+         & = d(x^{(j)}, y^{(j)}) + d(y^{(j)}, x^{(k)}) + d(y^{(j)}, x^{(k)}) + d(x^{(k)}, y^{(k)})           \\
+         & \leq d(x^{(j)}, x^{(k)}) + d(y^{(j)}, y^{(k)})                                                    \\
+         & \leq \varepsilon / 2 + \varepsilon / 2                                                            \\
+         & = \varepsilon
+    \end{align*}
+    and thus \((a^{(n)})_{n = m}^\infty\) is a Cauchy sequence in \(\mathbf{R}\).
+    Since \(\mathbf{R}\) is complete, we know that \((a^{(n)})_{n = m}^\infty\) converges in \(\mathbf{R}\).
+
+    Next we show that \(d_{\overline{X}}\) obeys the axiom of substitution.
+    Suppose that \(\text{LIM}_{n \to \infty} x^{(n)} = \text{LIM}_{n \to \infty} z^{(n)}\) and \(\lim_{n \to \infty} d(x^{(n)}, y^{(n)})\) exists.
+    Then we have
+    \begin{align*}
+                 & \begin{cases}
+            d(x^{(n)}, y^{(n)}) \leq d(x^{(n)}, z^{(n)}) + d(z^{(n)}, y^{(n)}) \\
+            d(z^{(n)}, y^{(n)}) \leq d(x^{(n)}, y^{(n)}) + d(x^{(n)}, z^{(n)})
+        \end{cases}                                                                          & \text{(by Definition \ref{1.1.2}(c)(d))}                    \\
+        \implies & \begin{cases}
+            d(x^{(n)}, y^{(n)}) - d(z^{(n)}, y^{(n)}) \leq d(x^{(n)}, z^{(n)}) \\
+            d(z^{(n)}, y^{(n)}) - d(x^{(n)}, y^{(n)}) \leq d(x^{(n)}, z^{(n)})
+        \end{cases}                                                                                                                                        \\
+        \implies & 0 \leq \abs*{d(x^{(n)}, y^{(n)}) - d(z^{(n)}, y^{(n)})} \leq d(x^{(n)}, z^{(n)})                                                                                  \\
+        \implies & 0 = \lim_{n \to \infty} 0 \leq \lim_{n \to \infty} \abs*{d(x^{(n)}, y^{(n)}) - d(z^{(n)}, y^{(n)})}                                                               \\
+                 & \quad \leq \lim_{n \to \infty} d(x^{(n)}, z^{(n)}) = 0                                              & \text{(by Exercise \ref{ex 1.4.8}(a))}                      \\
+        \implies & \lim_{n \to \infty} \abs*{d(x^{(n)}, y^{(n)}) - d(z^{(n)}, y^{(n)})} = 0                            & \text{(by squeeze test)}                                    \\
+        \implies & \lim_{n \to \infty} \big(d(x^{(n)}, y^{(n)}) - d(z^{(n)}, y^{(n)})\big) = 0                                                                                       \\
+        \implies & \lim_{n \to \infty} d(x^{(n)}, y^{(n)}) = \lim_{n \to \infty} d(z^{(n)}, y^{(n)})                   & \text{(\(\lim_{n \to \infty} d(x^{(n)}, y^{(n)})\) exists)}
+    \end{align*}
+    and thus \(d_{\overline{X}}(\text{LIM}_{n \to \infty} x^{(n)}, \text{LIM}_{n \to \infty} y^{(n)}) = d_{\overline{X}}(\text{LIM}_{n \to \infty} z^{(n)}, \text{LIM}_{n \to \infty} y^{(n)})\).
 
     Now we show that \((\overline{X}, d_{\overline{X}})\) is a metric space.
-    Let \((x^{(n)})_{n = m}^\infty\), \((y^{(n)})_{n = m}^\infty\), \((z^{(n)})_{n = m}^\infty\) be Cauchy sequences in \((X, d)\) with formal limits \(a, b, c\) in \(\overline{X}\) respectively.
     For identify:
-    We have
+    By Definition \ref{1.1.2}(a) we have
     \[
-        d_{\overline{X}}(a, a) = \lim_{n \to \infty} d(x_n, x_n) = 0.
+        d_{\overline{X}}(\text{LIM}_{n \to \infty} x^{(n)}, \text{LIM}_{n \to \infty} x^{(n)}) = \lim_{n \to \infty} d(x^{(n)}, x^{(n)}) = 0.
     \]
     For positivity:
-    If \(a \neq b\), then by Exercise \ref{ex 1.4.8}(a) we have
+    If \(\text{LIM}_{n \to \infty} x^{(n)} \neq \text{LIM}_{n \to \infty} y^{(n)}\), then by Exercise \ref{ex 1.4.8}(a) we have
     \[
-        d_{\overline{X}}(a, b) = \lim_{n \to \infty} d(x_n, y_n) \neq 0.
+        d_{\overline{X}}(\text{LIM}_{n \to \infty} x^{(n)}, \text{LIM}_{n \to \infty} y^{(n)}) = \lim_{n \to \infty} d(x^{(n)}, y^{(n)}) \neq 0.
     \]
     For symmetry:
-    By Definition \ref{1.1.2}(c) we have
-    \[
-        d_{\overline{X}}(a, b) = \lim_{n \to \infty} d(x_n, y_n) = \lim_{n \to \infty} d(y_n, x_n) = d_{\overline{X}}(b, a).
-    \]
+    We have
+    \begin{align*}
+         & d_{\overline{X}}(\text{LIM}_{n \to \infty} x^{(n)}, \text{LIM}_{n \to \infty} y^{(n)})                                            \\
+         & = \lim_{n \to \infty} d(x^{(n)}, y^{(n)})                                                 & \text{(by definition)}                \\
+         & = \lim_{n \to \infty} d(y^{(n)}, x^{(n)})                                                 & \text{(by Definition \ref{1.1.2}(c))} \\
+         & = d_{\overline{X}}(\text{LIM}_{n \to \infty} y^{(n)}, \text{LIM}_{n \to \infty} x^{(n)}). & \text{(by definition)}
+    \end{align*}
     For transitive:
     We have
     \begin{align*}
-        d_{\overline{X}}(a, c) & = \lim_{n \to \infty} d(x_n, z_n)                                   \\
-                               & \leq \lim_{n \to \infty} d(x_n, y_n) + d(y_n, z_n)                  \\
-                               & = \lim_{n \to \infty} d(x_n, y_n) + \lim_{n \to \infty} d(y_n, z_n) \\
-                               & = d_{\overline{X}}(a, b) + d_{\overline{X}}(b, c).
+         & d_{\overline{X}}(\text{LIM}_{n \to \infty} x^{(n)}, \text{LIM}_{n \to \infty} z^{(n)})                                                                                             \\
+         & = \lim_{n \to \infty} d(x^{(n)}, z^{(n)})                                                                                                                                          \\
+         & \leq \lim_{n \to \infty} \big(d(x^{(n)}, y^{(n)}) + d(y^{(n)}, z^{(n)})\big)                                                                                                       \\
+         & = \lim_{n \to \infty} d(x^{(n)}, y^{(n)}) + \lim_{n \to \infty} d(y^{(n)}, z^{(n)})                                                                                                \\
+         & = d_{\overline{X}}(\text{LIM}_{n \to \infty} x^{(n)}, \text{LIM}_{n \to \infty} y^{(n)}) + d_{\overline{X}}(\text{LIM}_{n \to \infty} y^{(n)}, \text{LIM}_{n \to \infty} z^{(n)}).
     \end{align*}
     Thus by Definition \ref{1.1.2} \((\overline{X}, d_{\overline{X}})\) is a metric space.
 \end{proof}
