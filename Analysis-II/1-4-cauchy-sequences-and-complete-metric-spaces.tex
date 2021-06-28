@@ -385,93 +385,103 @@
 \end{proof}
 
 \begin{proof}{(c)}
-    To show that \((\overline{X}, d_{\overline{X}})\) is complete, by Definition \ref{1.4.10} we need to show that for any Cauchy sequence \((a^{(n)})_{n = 1}^\infty\) in \((\overline{X}, d_{\overline{X}})\), \(\exists\ x \in \overline{X}\) such that \(\lim_{n \to \infty} d_{\overline{X}}(a^{(n)}, x) = 0\).
-    Since \(a^{(n)} \in \overline{X}\), by the definition of \(\overline{X}\) we know that \(\forall\ n \geq 1\), there exists a Cauchy sequence \((a_k^{(n)})_{k = 1}^\infty\) in \((X, d)\) such that \(\text{LIM}_{k \to \infty} a_k^{(n)} = a^{(n)}\).
-    Similarly since \(x \in \overline{X}\), there exists a Cauchy sequence \((b_k)_{k = 1}^{\infty}\) in \((X, d)\) such that \(\text{LIM}_{n \to \infty} b_k = x\).
-    Thus by Exercise \ref{ex 1.4.8}(b) it will suffice to show that
+    Let \(I, J, K, N, k_1, k_2, n_1, n_2 \in \mathbf{Z}^+\).
+    Since \((a^{(n)})_{n = m}^\infty\) is a Cauchy sequence in \((\overline{X}, d_{\overline{X}})\), by Definition \ref{1.4.6} we know that
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \geq m : \forall\ n_1, n_2 \geq N,                                                                               \\
+                 & d_{\overline{X}}(a^{(n_1)}, a^{(n_2)}) \leq \frac{\varepsilon}{4}                                                                                                  \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \geq m : \forall\ n_1, n_2 \geq N,                                                                               \\
+                 & d_{\overline{X}}(\text{LIM}_{k \to \infty} a_k^{(n_1)}, \text{LIM}_{k \to \infty} a_k^{(n_2)}) \leq \frac{\varepsilon}{4} & \text{(by Exercise \ref{ex 1.4.8}(a))} \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \geq m : \forall\ n_1, n_2 \geq N,                                                                               \\
+                 & \lim_{k \to \infty} d(a_k^{(n_1)}, a_k^{(n_2)}) \leq \frac{\varepsilon}{4}.                                               & \text{(by Exercise \ref{ex 1.4.8}(b))}
+    \end{align*}
+    Since the choice of \(N\) depends on \(\varepsilon\), we denote such \(N\) as \(N_\varepsilon\).
+    We can use axiom of choice to fix \(N_\varepsilon\) for each \(\varepsilon \in \mathbf{R}^+\), and we rewrite the above statement as
     \[
-        \lim_{n \to \infty} d_{\overline{X}}(a^{(n)}, x) = \lim_{n \to \infty} d_{\overline{X}}(\text{LIM}_{k \to \infty} a_k^{(n)}, \text{LIM}_{k \to \infty} b_k) = \lim_{n \to \infty} (\lim_{k \to \infty} d(a_k^{(n)}, b_k)) = 0
+        \forall\ \varepsilon \in \mathbf{R}^+, \forall\ n_1, n_2 \geq N_\varepsilon, \lim_{k \to \infty} d(a_k^{(n_1)}, a_k^{(n_2)}) \leq \frac{\varepsilon}{4}.
     \]
-    for some Cauchy sequence \((b_k)_{k = 1}^{\infty}\) in \((X, d)\).
+    Let \(L = \lim_{k \to \infty} d(a_k^{(n_1)}, a_k^{(n_2)})\).
+    Since \(\Big(d(a_k^{(n_1)}, a_k^{(n_2)})\Big)_{k = 1}^\infty\) is a sequence in \(\mathbf{R}\) and converges to \(L\), we have
+    \begin{align*}
+                 & \exists\ I \geq 1 : \forall\ k \geq I, \abs*{d(a_k^{(n_1)}, a_k^{(n_2)}) - L} \leq \frac{\varepsilon}{4}                                                                                           \\
+        \implies & \exists\ I \geq 1 : \forall\ k \geq I, -\frac{\varepsilon}{4} \leq d(a_k^{(n_1)}, a_k^{(n_2)}) - L \leq \frac{\varepsilon}{4}                                                                      \\
+        \implies & \exists\ I \geq 1 : \forall\ k \geq I, 0 \leq d(a_k^{(n_1)}, a_k^{(n_2)}) - L + \frac{\varepsilon}{4} \leq \frac{\varepsilon}{2}                                                                   \\
+        \implies & \exists\ I \geq 1 : \forall\ k \geq I, 0 \leq d(a_k^{(n_1)}, a_k^{(n_2)}) \leq d(a_k^{(n_1)}, a_k^{(n_2)}) - L + \frac{\varepsilon}{4} \leq \frac{\varepsilon}{2} & (L \leq \frac{\varepsilon}{4})
+    \end{align*}
+    Since such \(I\) depends on the choice of \(\varepsilon\), we denote such \(I\) as \(I_\varepsilon\).
+    Again we can use axiom of choice to fix \(I_\varepsilon\) for each \(\varepsilon \in \mathbf{R}^+\), and we rewrite the above statement as
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \forall\ n_1, n_2 \geq N_\varepsilon, \forall\ k \geq I_\varepsilon, d(a_k^{(n_1)}, a_k^{(n_2)}) \leq \frac{\varepsilon}{2}.
+    \]
+    If we let \(M_\varepsilon = \max(N_\varepsilon, I_\varepsilon)\), then we can further reduce the statement as
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \forall\ n_1, n_2, k \geq M_\varepsilon, d(a_k^{(n_1)}, a_k^{(n_2)}) \leq \frac{\varepsilon}{2}.
+    \]
 
-    Let \(j, K, k_1, k_2, L, N, n_1, n_2 \in \mathbf{Z}^+\).
-    Since \((a_k^{(n)})_{k = 1}^\infty\) is a Cauchy sequence, by Definition \ref{1.4.6} we know that \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ K \geq 1\) such that \(\forall\ k_1, k_2 \geq K\),
+    Since \(a^{(n)} \in \overline{X}\) for each \(n \geq m\), by Exercise \ref{ex 1.4.8}(b) we know that there exists a Cauchy sequence \((a_k^{(n)})_{k = 1}^\infty\) in \((X, d)\) such that \(\text{LIM}_{k \to \infty} a_k^{(n)} = a^{(n)}\) for each \(n \geq m\).
+    By Definition \ref{1.4.6} we know that
     \[
-        d(a_{k_1}^{(n)}, a_{k_2}^{(n)}) \leq \varepsilon.
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ J \geq 1 : \forall\ k_1, k_2 \geq J, d(a_{k_1}^{(n)}, a_{k_2}^{(n)}) \leq \frac{\varepsilon}{2}.
     \]
-    In particular, \(\exists\ K \geq 1\) such that \(\forall\ k_1, k_2 \geq K\),
+    Since such \(J\) depends on the choice of \(n\) and \(\varepsilon\), we denote such \(J\) as \(J_\varepsilon^{(n)}\).
+    We can use axiom of choice to fix \(J_\varepsilon^{(n)}\) for each \(\varepsilon \in \mathbf{R}^+\) and for each \(n \geq m\), and we rewrite the above statement as
     \[
-        d(a_{k_1}^{(n)}, a_{k_2}^{(n)}) \leq \frac{1}{n}.
+        \forall\ \varepsilon \in \mathbf{R}^+, \forall\ k_1, k_2 \geq J_\varepsilon^{(n)}, d(a_{k_1}^{(n)}, a_{k_2}^{(n)}) \leq \frac{\varepsilon}{2}.
     \]
-    Since the existence of \(K\) depends on \(n\), we denote such \(K\) as \(K_n\).
-    Note that we can always choose such \(K_n \geq n\)
-    (If \(K_n < n\), then we can simply set \(K_n = n\)).
-    Since \((a^{(n)})_{n = 1}^\infty\) is a Cauchy sequence, by Definition \ref{1.4.6} \(\exists\ N \geq 1\) such that \(\forall\ n_1, n_2 \geq N\),
-    \begin{align*}
-                 & d_{\overline{X}}(a^{(n_1)}, a^{(n_2)}) \leq \varepsilon / 2 < \varepsilon                                                                             \\
-        \implies & d_{\overline{X}}(\text{LIM}_{k \to \infty} a_k^{(n_1)}, \text{LIM}_{k \to \infty} a_k^{(n_2)}) < \varepsilon & \text{(by Exercise \ref{ex 1.4.8}(a))} \\
-        \implies & \lim_{k \to \infty} d(a_k^{(n_1)}, a_k^{(n_2)}) < \varepsilon.                                               & \text{(by Exercise \ref{ex 1.4.8}(b))}
-    \end{align*}
-    Since \(\lim_{k \to \infty} d(a_k^{(n_1)}, a_k^{(n_2)}) \in \mathbf{R}\), we know that \(\exists\ L \geq 1\) such that \(\forall\ k \geq L\),
-    \[
-        d(a_k^{(n_1)}, a_k^{(n_2)}) < \varepsilon
-    \]
-    (otherwise by squeeze test we would have \(\lim_{k \to \infty} d(a_k^{(n_1)}, a_k^{(n_2)}) \geq \varepsilon\)).
-    Let \(M = \max(L, N)\).
-    Then we can rewrite the statements above as:
-    \(\exists\ M \geq 1\) such that \(\forall\ n_1, n_2, k \geq M\), we have
-    \[
-        d(a_k^{(n_1)}, a_k^{(n_2)}) < \varepsilon.
-    \]
-    In particular, \(\exists\ M \geq 1\) such that \(\forall\ n_1, n_2, k \geq M\), we have
-    \[
-        d(a_k^{(n_1)}, a_k^{(n_2)}) < \frac{1}{j}
-    \]
-    for all \(j \geq 1\).
-    Since the existence of \(M\) depends on \(j\), we denote such \(M\) as \(M_j\).
-    Note that we can always choose such \(M_j \geq j\)
-    (If \(M_j < j\), then we can simply set \(M_j = j\)).
 
-    Let \(P(j, n) = \max(M_j, K_n)\).
-    This means \(P(j, n) \geq \max(j, n)\) (since \(K_n \geq n\) and \(M_j \geq j\)) and \(\forall\ k, k_1, k_2, n, n_1, n_2 \geq P(j, n)\), we have
-    \begin{align*}
-        d(a_{k_1}^{(n)}, a_{k_2}^{(n)}) & < \frac{1}{P(j, n)} \leq \frac{1}{n}     \\
-        d(a_k^{(n_1)}, a_k^{(n_2)})     & \leq \frac{1}{P(j, n)} \leq \frac{1}{j}.
-    \end{align*}
-    By axiom of choice, we can choose \(a_{P(j, j)}^{(P(j, j))}\) for every \(j \geq 1\) and let \((b_j)_{j = 1}^\infty\) be a sequence in \(X\) where \(b_j = a_{P(j, j)}^{(P(j, j))}\).
-    Then we have
-    \begin{align*}
-        d(b_{k_1}, b_{k_2}) & = d(a_{P(k_1, k_1)}^{(P(k_1, k_1))}, a_{P(k_2, k_2)}^{(P(k_2, k_2))})                                                                                                                  \\
-                            & \leq d(a_{P(k_1, k_1)}^{(P(k_1, k_1))}, a_{P(k_2, k_2)}^{(P(k_1, k_1))}) + d(a_{P(k_2, k_2)}^{(P(k_1, k_1))}, a_{P(k_2, k_2)}^{(P(k_2, k_2))}) & \text{(by Definition \ref{1.1.2}(d))} \\
-                            & \leq \frac{1}{k_1} + \frac{1}{k_2}                                                                                                                                                     \\
-                            & \leq \frac{2}{\min(k_1, k_2)}.
-    \end{align*}
-    Since \(\varepsilon \in \mathbf{R}^+\), we can always find a \(K \in \mathbf{Z}^+\) such that
+    We now define a sequence \((b_k)_{k = 1}^\infty\) in \((X, d)\) by setting \(b_k = a_k^{(m + k - 1)}\) for all \(k \geq 1\).
+    Informally, \((b_k)_{k = 1}^\infty\) is consist of diagonal elements in \(\big((a_k^{(n)})_{k = 1}^\infty\big)_{n = m}^\infty\).
+    We claim that \((b_k)_{k = 1}^\infty\) is a Cauchy sequence in \((X, d)\).
+    By Definition \ref{1.4.6} it suffices to show that
     \[
-        0 < \frac{2}{K} \leq \varepsilon.
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ K \geq 1 : \forall\ k_1, k_2 \geq K, d(b_{k_1}, b_{k_2}) \leq \varepsilon.
     \]
-    Combine the results above we have \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ K \geq 1\) such that \(\forall\ k_1, k_2 \geq K\),
+    For each \(\varepsilon \in \mathbf{R}^+\), we have
+    \begin{align*}
+         & \forall\ k_1, k_2 \geq M_\varepsilon, d(b_{k_1}, b_{k_2})                                                                                                                        \\
+         & = d\Big(a_{k_1}^{(m + k_1 - 1)}, a_{k_2}^{(m + k_2 - 1)}\Big)                                                                                                                    \\
+         & \leq d\Big(a_{k_1}^{(m + k_1 - 1)}, a_{k_2}^{(m + k_1 - 1)}\Big) + d\Big(a_{k_2}^{(m + k_1 - 1)}, a_{k_2}^{(m + k_2 - 1)}\Big) & \text{(by Definition \ref{1.1.2}(d))}           \\
+         & \leq d\Big(a_{k_1}^{(m + k_1 - 1)}, a_{k_2}^{(m + k_1 - 1)}\Big) + \frac{\varepsilon}{2}.                                      & \text{(by the definition of \(M_\varepsilon\))}
+    \end{align*}
+    By choosing \(K = \max(M_\varepsilon, J_\varepsilon^{(M_\varepsilon)})\) we have
+    \begin{align*}
+         & \forall\ k_1, k_2 \geq K, d(b_{k_1}, b_{k_2})                                                                                                                \\
+         & \leq d\Big(a_{k_1}^{(m + k_1 - 1)}, a_{k_2}^{(m + k_1 - 1)}\Big) + \frac{\varepsilon}{2}                                                                     \\
+         & \leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2}                                       & \text{(by the definition of \(J_\varepsilon^{(M_\varepsilon)}\))} \\
+         & = \varepsilon.
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary, we have showed that
     \[
-        d(b_{k_1}, b_{k_2}) \leq \frac{2}{\min(k_1, k_2)} \leq \frac{2}{K} \leq \varepsilon.
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ K \geq 1 : \forall\ k_1, k_2 \geq K, d(b_{k_1}, b_{k_2}) \leq \varepsilon.
     \]
-    By Definition \ref{1.4.6} this means \((b_j)_{j = 1}^\infty\) is a Cauchy sequence.
-    Thus by Exercise \ref{ex 1.4.8}(b) we have \(\text{LIM}_{j \to \infty} b_j \in \overline{X}\).
+    Thus by Definition \ref{1.4.6} \((b_k)_{k = 1}^\infty\) is a Cauchy sequence.
 
-    Now we show that \(\lim_{n \to \infty} (\lim_{k \to \infty} d(a_k^{(n)}, b_k)) = 0\).
-    Since \(\forall\ k \geq P(n, n)\), we have
+    Finally we show that \((a^{(n)})_{n = m}^\infty\) converges in \((\overline{X}, d_{\overline{X}})\).
+    From the proof above we know that \((b_k)_{k = 1}^\infty\) is a Cauchy sequence, so \(\text{LIM}_{k \to \infty} b_k \in \overline{X}\).
+    We claim that \((a^{(n)})_{n = m}^\infty\) converges to \(\text{LIM}_{k \to \infty} b_k\) with respect to \(d_{\overline{X}}\).
+    It suffices to show that
     \begin{align*}
-        d(a_k^{(n)}, b_k) & = d(a_k^{(n)}, a_{P(k, k)}^{(P(k, k))})                                                                                      \\
-                          & \leq d(a_k^{(n)}, a_{P(k, k)}^{(n)}) + d(a_{P(k, k)}^{(n)}, a_{P(k, k)}^{(P(k, k))}) & \text{(by Definition \ref{1.1.2}(d))} \\
-                          & \leq \frac{1}{n} + \frac{1}{k},
+             & \lim_{n \to \infty} d_{\overline{X}}\Big(a^{(n)}, \text{LIM}_{k \to \infty} b_k\Big) = 0                             & \text{(by Definition \ref{1.1.14})}    \\
+        \iff & \lim_{n \to \infty} d_{\overline{X}}\Big(\text{LIM}_{k \to \infty} a_k^{(n)}, \text{LIM}_{k \to \infty} b_k\Big) = 0 & \text{(by Exercise \ref{ex 1.4.8}(a))} \\
+        \iff & \lim_{n \to \infty} \big(\lim_{k \to \infty} d(a_k^{(n)}, b_k)\big) = 0                                              & \text{(by Exercise \ref{ex 1.4.8}(b))} \\
+        \iff & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \geq m : \forall\ n \geq m,                                                                                 \\
+             & \abs*{\lim_{k \to \infty} d(a_k^{(n)}, b_k) - 0} \leq \varepsilon.
     \end{align*}
-    we then have
+    Since
     \begin{align*}
-                 & 0 \leq d(a_k^{(n)}, b_k) \leq \frac{1}{n} + \frac{1}{k}                                                      \\
-        \implies & 0 \leq \lim_{k \to \infty} d(a_k^{(n)}, b_k) \leq \frac{1}{n}             & \text{(by comparison principle)} \\
-        \implies & 0 \leq \lim_{n \to \infty} (\lim_{k \to \infty} d(a_k^{(n)}, b_k)) \leq 0 & \text{(by comparison principle)} \\
-        \implies & \lim_{n \to \infty} (\lim_{k \to \infty} d(a_k^{(n)}, b_k)) = 0.          & \text{(by squeeze test)}
+         & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ M_\varepsilon \geq 1 : \forall\ k \geq M_\varepsilon, d(a_k^{(M_\varepsilon)}, b_k)                                                   \\
+         & = d\Big(a_k^{(M_\varepsilon)}, a_k^{(m + k - 1)}\Big)                                                                                                                                 \\
+         & \leq \frac{\varepsilon}{2}                                                                                                          & \text{(by the definition of \(M_\varepsilon\))} \\
+         & < \varepsilon,
     \end{align*}
-    Thus \((\overline{X}, d_{\overline{X}})\) is complete.
+    we know that \(\lim_{k \to \infty} d(a_k^{(M_\varepsilon)}, b_k)\) exists.
+    Since
+    \begin{align*}
+                 & \forall\ n, k \geq M_\varepsilon, 0 \leq d(a_k^{(n)}, b_k) \leq \frac{\varepsilon}{2} < \varepsilon & \text{(by the definition of \(M_\varepsilon\))} \\
+        \implies & \forall\ n \geq M_\varepsilon, 0 \leq \lim_{k \to \infty} d(a_k^{(n)}, b_k) \leq \varepsilon        & \text{(by comparison test)}                     \\
+        \implies & \forall\ n \geq M_\varepsilon, \abs*{\lim_{k \to \infty} d(a_k^{(n)}, b_k) - 0} \leq \varepsilon.
+    \end{align*}
+    by setting \(N = M_\varepsilon\) we are done.
 \end{proof}
 
 \begin{proof}{(d)}
