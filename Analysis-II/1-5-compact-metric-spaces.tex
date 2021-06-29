@@ -156,6 +156,11 @@
     Thus \((E, d_{l^2}|_{\mathbf{R}^n \times \mathbf{R}^n})\) and \((E, d_{l^\infty}|_{\mathbf{R}^n \times \mathbf{R}^n})\) are also compact when \((E, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\) is closed and bounded.
 \end{proof}
 
+\begin{note}
+    The Heine-Borel theorem is not true for more general metric spaces.
+    However, a version of the Heine-Borel theorem is available if one is willing to replace closedness with the stronger notion of completeness, and boundedness with the stronger notion of \emph{total boundedness}.
+\end{note}
+
 \begin{theorem}\label{1.5.8}
     Let \((X, d)\) be a metric space, and let \(Y\) be a compact subset of \(X\).
     Let \((V_{\alpha})_{\alpha \in A}\) be a collection of open sets in \(X\), and suppose that
@@ -194,25 +199,25 @@
               (we can do this because of the axiom of choice, see Proposition 8.4.7 in Analysis I).
               In particular we have \(\lim_{n \to \infty} r(y^{(n)}) = 0\), by the squeeze test.
               The sequence \((y^{(n)})_{n = 1}^\infty\) is a sequence in \(Y\);
-              since \(Y\) is compact, we can thus find a subsequence \((y^{(n_j)})_{j = 1}^\infty\) which converges to a point \(y_0 \in Y\).
+              since \(Y\) is compact, we can thus find a subsequence \((y^{(n_j)})_{j = 1}^\infty\) which converges to a point \(y_0 \in Y\) with respect to \(d|_{Y \times Y}\).
 
-              As before, we know that there exists some \(\alpha \in A\) such that \(y_0 \in V_{\alpha}\), and hence (since \(V_{\alpha}\) is open) there exists some \(\varepsilon > 0\) such that \(B(y_0, \varepsilon) \subseteq V_{\alpha}\).
-              Since \(y^{(n_j)}\) converges to \(y_0\), there must exist an \(N \geq 1\) such that \(y^{(n_j)} \in B(y_0, \varepsilon / 2)\) for all \(n_j \geq N\).
-              In particular, by the triangle inequality we have \(B(y^{(n_j)}, \varepsilon / 2) \subseteq B(y_0, \varepsilon)\), and thus \(B(y^{(n_j)}, \varepsilon / 2) \subseteq V_{\alpha}\).
+              As before, we know that there exists some \(\alpha \in A\) such that \(y_0 \in V_{\alpha}\), and hence (since \(V_{\alpha}\) is open) there exists some \(\varepsilon > 0\) such that \(B_{(X, d)}(y_0, \varepsilon) \subseteq V_{\alpha}\).
+              Since \((y^{(n_j)})_{j = 1}^\infty\) converges to \(y_0\), there must exist an \(N \geq 1\) such that \(y^{(n_j)} \in B_{(X, d)}(y_0, \varepsilon / 2)\) for all \(n_j \geq N\).
+              In particular, by the triangle inequality we have \(B_{(X, d)}(y^{(n_j)}, \varepsilon / 2) \subseteq B_{(X, d)}(y_0, \varepsilon)\), and thus \(B_{(X, d)}(y^{(n_j)}, \varepsilon / 2) \subseteq V_{\alpha}\).
               By definition of \(r(y^{(n_j)})\), this implies that \(r(y^{(n_j)}) \geq \varepsilon / 2\) for all \(n_j \geq N\).
               But this contradicts the fact that \(\lim_{n \to \infty} r(y^{(n)}) = 0\).
         \item Case 2:
               \(0 < r_0 < \infty\).
               In this case we now have \(r(y) > r_0 / 2\) for all \(y \in Y\).
-              This implies that for every \(y \in Y\) there exists an \(\alpha \in A\) such that \(B(y, r_0 / 2) \subseteq V_{\alpha}\) (by the definition of \(r(y)\)).
+              This implies that for every \(y \in Y\) there exists an \(\alpha \in A\) such that \(B_{(X, d)}(y, r_0 / 2) \subseteq V_{\alpha}\) (by the definition of \(r(y)\)).
 
               We now construct a sequence \(y^{(1)}, y^{(2)}, \dots\) by the following recursive procedure.
               We let \(y^{(1)}\) be any point in \(Y\).
-              The ball \(B(y^{(1)}, r_0 / 2)\) is contained in one of the \(V_{\alpha}\) and thus cannot cover all of \(Y\), since we would then obtain a finite cover, a contradiction.
-              Thus there exists a point \(y^{(2)}\) which does not lie in \(B(y^{(1)}, r_0 / 2)\), so in particular \(d(y^{(2)}, y^{(1)}) \geq r_0 / 2\).
+              The ball \(B_{(X, d)}(y^{(1)}, r_0 / 2)\) is contained in one of the \(V_{\alpha}\) and thus cannot cover all of \(Y\), since we would then obtain a finite cover, a contradiction.
+              Thus there exists a point \(y^{(2)}\) which does not lie in \(B_{(X, d)}(y^{(1)}, r_0 / 2)\), so in particular \(d(y^{(2)}, y^{(1)}) \geq r_0 / 2\).
               Choose such a point \(y^{(2)}\).
-              The set \(B(y^{(1)}, r_0 / 2) \cup B(y^{(2)}, r_0 / 2)\) cannot cover all of \(Y\), since we would then obtain two sets \(V_{\alpha_1}\) and \(V_{\alpha_2}\) which covered \(Y\), a contradiction again.
-              So we can choose a point \(y^{(3)}\) which does not lie in \(B(y^{(1)}, r_0 / 2) \cup B(y^{(2)}, r_0 / 2)\), so in particular \(d(y^{(3)}, y^{(1)}) \geq r_0 / 2\) and \(d(y^{(3)}, y^{(2)}) \geq r_0 / 2\).
+              The set \(B_{(X, d)}(y^{(1)}, r_0 / 2) \cup B_{(X, d)}(y^{(2)}, r_0 / 2)\) cannot cover all of \(Y\), since we would then obtain two sets \(V_{\alpha_1}\) and \(V_{\alpha_2}\) which covered \(Y\), a contradiction again.
+              So we can choose a point \(y^{(3)}\) which does not lie in \(B_{(X, d)}(y^{(1)}, r_0 / 2) \cup B_{(X, d)}(y^{(2)}, r_0 / 2)\), so in particular \(d(y^{(3)}, y^{(1)}) \geq r_0 / 2\) and \(d(y^{(3)}, y^{(2)}) \geq r_0 / 2\).
               Continuing in this fashion we obtain a sequence \((y^{(n)})_{n = 1}^\infty\) in \(Y\) with the property that \(d(y^{(k)}, y^{(j)}) \geq r_0 / 2\) for all \(k > j\).
               In particular the sequence \((y^{(n)})_{n = 1}^\infty\) is not a Cauchy sequence, and in fact no subsequence of \((y^{(n)})_{n = 1}^\infty\) can be a Cauchy sequence either.
               But this contradicts the assumption that \(Y\) is compact (by Lemma \ref{1.4.7}).
