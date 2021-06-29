@@ -12,6 +12,11 @@
 \end{remark}
 
 \begin{note}
+    The notion of a set \(Y\) being compact only depends on the metric function \(d_{Y \times Y}\) but not ambient space \(X\) since the elements of a sequence in \(Y\) stays the same no matter which spaces \(Y\) is subset to.
+    But the notion of a set being open or close depends on the definition of a metric ball, which may be different when given different ambient spaces.
+\end{note}
+
+\begin{note}
     Heine-Borel theorem shows that in the real line \(\mathbf{R}\) with the usual metric, every closed and bounded set is compact, and conversely every compact set is closed and bounded.
 \end{note}
 
@@ -32,42 +37,49 @@
 
 \begin{proof}
     If \(X = \emptyset\), then every Cauchy sequence \((a_n)_{n = 1}^\infty\) in \((\emptyset, d)\) converges in \((\emptyset, d)\) trivially, thus by Definition \ref{1.4.10} \((\emptyset, d)\) is complete.
-    Also, \(\forall\ x \in \emptyset\), \(\forall\ r \in \mathbf{R}^+\), we have \(\emptyset \subseteq B_{(\emptyset, d)}(x, r)\) (again the statement is trivially true), thus by Definition \ref{1.5.3} \((\emptyset, d)\) is bounded.
+    Also, for every \(x \in \emptyset\) and every \(r \in \mathbf{R}^+\), we have \(\emptyset \subseteq B_{(\emptyset, d)}(x, r)\) (again the statement is trivially true), thus by Definition \ref{1.5.3} \((\emptyset, d)\) is bounded.
+    So we only consider the case \(X \neq \emptyset\).
 
-    Now suppose that \(X \neq \emptyset\).
-    We show that \((X, d)\) is complete by contradiction.
-    So suppose for sake of contradiction that \((X, d)\) is not complete.
-    Then by Definition \ref{1.4.10} we know that there exists a Cauchy sequence \((a_n)_{n = 1}^\infty\) in \((X, d)\) does not converge to \(X\).
-    We know that \((a_n)_{n = 1}^\infty\) must converge by Exercise \ref{ex 1.4.8}.
+    We first show that \((X, d)\) is complete.
+    Let \((a_n)_{n = 1}^\infty\) be a Cauchy sequence in \((X, d)\).
     Since \((X, d)\) is compact, by Definition \ref{1.5.1} we know that there exists a subsequence of \((a_n)_{n = 1}^\infty\) which converges to some \(x_0 \in X\).
-    But since \((a_n)_{n = 1}^\infty\) is a Cauchy sequence, by Lemma \ref{1.4.9} we know that \((a_n)_{n = 1}^\infty\) must also converge to \(x_0 \in X\), a contradiction.
-    Thus \((X, d)\) is complete.
+    Since \((a_n)_{n = 1}^\infty\) is a Cauchy sequence, by Lemma \ref{1.4.9} we know that \((a_n)_{n = 1}^\infty\) must converge to \(x_0 \in X\).
+    Since \((a_n)_{n = 1}^\infty\) is arbitrary, by Definition \ref{1.4.10} we know that \((X, d)\) is complete.
 
     Finally, we show that \((X, d)\) is bounded by contradiction.
     Suppose for sake of contradiction that \((X, d)\) is not bounded.
-    Then by Definition \ref{1.5.3} \(\exists\ x_0 \in X\) such that \(\forall\ r \in \mathbf{R}^+\), we have \(X \not\subseteq B_{(X, d)}(x_0, r)\).
-    In particular, we know that \(X \not\subseteq B_{(X, d)}(x_0, r)\) for all \(r \in \mathbf{Z}^+\).
-    Let \((a_n)_{n = 1}^\infty\) be the sequence where \(a_n \in X \setminus B_{(X, d)}(x_0, r)\).
+    Then by Definition \ref{1.5.3} we have
+    \begin{align*}
+                 & \exists\ x_0 \in X : \forall\ r \in \mathbf{R}^+, X \not\subseteq B_{(X, d)}(x_0, r)                       \\
+        \implies & \exists\ x_0 \in X : \forall\ r \in \mathbf{R}^+, \big(X \setminus B_{(X, d)}(x_0, r)\big) \neq \emptyset  \\
+        \implies & \exists\ x_0 \in X : \forall\ n \in \mathbf{Z}^+, \big(X \setminus B_{(X, d)}(x_0, n)\big) \neq \emptyset.
+    \end{align*}
+    Let \((a_n)_{n = 1}^\infty\) be the sequence where \(a_n \in X \setminus B_{(X, d)}(x_0, n)\).
     Note that such sequence is well-defined by axiom of choice.
-    Since \(a_n \in X \setminus B_{(X, d)}(x_0, r)\), by Definition \ref{1.2.1} we know that \(d(a_n, x_0) \geq r\).
+    Since \(a_n \in X \setminus B_{(X, d)}(x_0, n)\), by Definition \ref{1.2.1} we know that \(d(a_n, x_0) \geq n\).
     Since \((X, d)\) is compact, by Definition \ref{1.5.1} there exists a subsequence \((a_{n_j})_{j = 1}^\infty\) of \((a_n)_{n = 1}^\infty\) such that \((a_{n_j})_{j = 1}^\infty\) converges in \(X\).
     Let \(\lim_{j \to \infty} a_{n_j} = L\).
-    By Definition \ref{1.1.14} we know that \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ J \in \mathbf{Z}^+\) such that \(\forall\ j \geq J\), we have \(d(a_{n_j}, L) \leq \varepsilon\).
-    In particular, \(\exists\ J \in \mathbf{Z}^+\) such that \(\forall\ j \geq J\), we have \(d(a_{n_j}, L) \leq 1\).
-    We fix such \(J\) and let \(i = \max(J + 1, \ceil{d(L, x_0)} + 2)\).
+    By Definition \ref{1.1.14} we know that
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ J \in \mathbf{Z}^+ : \forall\ j \geq J, d(a_{n_j}, L) \leq \varepsilon.
+    \]
+    In particular,
+    \[
+        \exists\ J \in \mathbf{Z}^+ : \forall\ j \geq J, d(a_{n_j}, L) \leq 1.
+    \]
+    Now we fix such \(J\) and let \(i = \max\big(J + 1, \ceil{d(L, x_0)} + 2\big)\).
     Then we have
     \begin{align*}
-        d(a_{n_i}, x_0) & \leq d(a_{n_i}, L) + d(L, x_0) \\
-                        & \leq 1 + d(L, x_0)             \\
-                        & < 2 + d(L, x_0)
+        d(a_{n_i}, x_0) & \leq d(a_{n_i}, L) + d(L, x_0) & \text{(by Definition \ref{1.1.2}(d))} \\
+                        & \leq 1 + d(L, x_0)             & (i > J)
     \end{align*}
     and
     \begin{align*}
-        d(a_{n_i}, x_0) & \geq n_i            \\
-                        & \geq i              \\
-                        & \geq d(L, x_0) + 2.
+        d(a_{n_i}, x_0) & \geq n_i            & \text{(by the definition of \(a_{n_i}\))} \\
+                        & \geq i                                                          \\
+                        & \geq d(L, x_0) + 2. & \text{(by the definition of \(i\))}
     \end{align*}
-    But this means \(d(L, x_0) + 2 < d(L, x_0) + 2\), a contradiction.
+    But this means \(d(L, x_0) + 2 \leq d(L, x_0) + 1\), a contradiction.
     Thus \((X, d)\) is bounded.
 \end{proof}
 
