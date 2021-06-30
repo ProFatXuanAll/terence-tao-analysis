@@ -7,7 +7,7 @@
 
 \begin{remark}\label{1.5.2}
     The notion of a set \(Y\) being compact is \emph{intrinsic}, in the sense that it only depends on the metric function \(d|_{Y \times Y}\) restricted to \(Y\), and not on the choice of the ambient space \(X\).
-    The notions of completeness in Definition \ref{1.4.10}, and of boundedness below in Definition 1.5.3, are also intrinsic, but the notions of open and closed are not
+    The notions of completeness in Definition \ref{1.4.10}, and of boundedness in Definition \ref{1.5.3}, are also intrinsic, but the notions of open and closed are not
     (see the discussion in Section \ref{sec 1.3}).
 \end{remark}
 
@@ -36,29 +36,28 @@
 \end{proposition}
 
 \begin{proof}
-    If \(X = \emptyset\), then every Cauchy sequence \((a_n)_{n = 1}^\infty\) in \((\emptyset, d)\) converges in \((\emptyset, d)\) trivially, thus by Definition \ref{1.4.10} \((\emptyset, d)\) is complete.
-    Also, for every \(x \in \emptyset\) and every \(r \in \mathbf{R}^+\), we have \(\emptyset \subseteq B_{(\emptyset, d)}(x, r)\) (again the statement is trivially true), thus by Definition \ref{1.5.3} \((\emptyset, d)\) is bounded.
-    So we only consider the case \(X \neq \emptyset\).
-
     We first show that \((X, d)\) is complete.
     Let \((a_n)_{n = 1}^\infty\) be a Cauchy sequence in \((X, d)\).
     Since \((X, d)\) is compact, by Definition \ref{1.5.1} we know that there exists a subsequence of \((a_n)_{n = 1}^\infty\) which converges to some \(x_0 \in X\).
     Since \((a_n)_{n = 1}^\infty\) is a Cauchy sequence, by Lemma \ref{1.4.9} we know that \((a_n)_{n = 1}^\infty\) must converge to \(x_0 \in X\).
     Since \((a_n)_{n = 1}^\infty\) is arbitrary, by Definition \ref{1.4.10} we know that \((X, d)\) is complete.
 
-    Finally, we show that \((X, d)\) is bounded by contradiction.
+    Now we show that \((X, d)\) is bounded by contradiction.
     Suppose for sake of contradiction that \((X, d)\) is not bounded.
     Then by Definition \ref{1.5.3} we have
     \begin{align*}
-                 & \exists\ x_0 \in X : \forall\ r \in \mathbf{R}^+, X \not\subseteq B_{(X, d)}(x_0, r)                       \\
+                 & \lnot\big(\forall\ x_0 \in X, \exists\ r \in \mathbf{R}^+ : X \subseteq B_{(X, d)}(x_0, r)\big)            \\
+        \implies & \exists\ x_0 \in X : \forall\ r \in \mathbf{R}^+, X \not\subseteq B_{(X, d)}(x_0, r)                       \\
         \implies & \exists\ x_0 \in X : \forall\ r \in \mathbf{R}^+, \big(X \setminus B_{(X, d)}(x_0, r)\big) \neq \emptyset  \\
         \implies & \exists\ x_0 \in X : \forall\ n \in \mathbf{Z}^+, \big(X \setminus B_{(X, d)}(x_0, n)\big) \neq \emptyset.
     \end{align*}
-    Let \((a_n)_{n = 1}^\infty\) be the sequence where \(a_n \in X \setminus B_{(X, d)}(x_0, n)\).
+    If \(X = \emptyset\), then we must have \((\emptyset, d)\) is bound (since \(x_0 \notin \emptyset\)).
+    So we only considered the cases \(X \neq \emptyset\).
+    Let \((a_n)_{n = 1}^\infty\) be the sequence where \(a_n \in X \setminus B_{(X, d)}(x_0, n)\) for all \(n \in \mathbf{Z}^+\).
     Note that such sequence is well-defined by axiom of choice.
-    Since \(a_n \in X \setminus B_{(X, d)}(x_0, n)\), by Definition \ref{1.2.1} we know that \(d(a_n, x_0) \geq n\).
+    Since \(a_n \in X \setminus B_{(X, d)}(x_0, n)\), by Definition \ref{1.2.1} we know that \(d(a_n, x_0) \geq n\) for all \(n \in \mathbf{Z}^+\).
     Since \((X, d)\) is compact, by Definition \ref{1.5.1} there exists a subsequence \((a_{n_j})_{j = 1}^\infty\) of \((a_n)_{n = 1}^\infty\) such that \((a_{n_j})_{j = 1}^\infty\) converges in \(X\).
-    Let \(\lim_{j \to \infty} a_{n_j} = L\).
+    Let \(\lim_{j \to \infty} d(a_{n_j}, L) = 0\) for some \(L \in X\).
     By Definition \ref{1.1.14} we know that
     \[
         \forall\ \varepsilon \in \mathbf{R}^+, \exists\ J \in \mathbf{Z}^+ : \forall\ j \geq J, d(a_{n_j}, L) \leq \varepsilon.
@@ -161,6 +160,11 @@
     However, a version of the Heine-Borel theorem is available if one is willing to replace closedness with the stronger notion of completeness, and boundedness with the stronger notion of \emph{total boundedness}.
 \end{note}
 
+\begin{note}
+    One can characterize compactness topologically via Theorem \ref{1.5.8}:
+    every open cover of a compact set has a ﬁnite subcover.
+\end{note}
+
 \begin{theorem}\label{1.5.8}
     Let \((X, d)\) be a metric space, and let \(Y\) be a compact subset of \(X\).
     Let \((V_{\alpha})_{\alpha \in A}\) be a collection of open sets in \(X\), and suppose that
@@ -182,12 +186,12 @@
     Since each \(V_{\alpha}\) is open, by Proposition \ref{1.2.15}(a) there must therefore be an \(r > 0\) such that \(B_{(X, d)}(y, r) \subseteq V_{\alpha}\).
     Now let \(r(y)\) denote the quantity
     \[
-        r(y) \coloneqq \sup\{r \in (0, \infty) : B_{(X, d)}(y, r) \subseteq V_{\alpha} \text{ for some } \alpha \in A\}.
+        r(y) \coloneqq \sup\big\{r \in (0, \infty) : B_{(X, d)}(y, r) \subseteq V_{\alpha} \text{ for some } \alpha \in A\big\}.
     \]
     By the above discussion, we know that \(r(y) > 0\) for all \(y \in Y\).
     Now, let \(r_0\) denote the quantity
     \[
-        r_0 \coloneqq \inf\{r(y) : y \in Y\}.
+        r_0 \coloneqq \inf\big\{r(y) : y \in Y\big\}.
     \]
     Since \(r(y) > 0\) for all \(y \in Y\), we have \(r_0 \geq 0\).
     There are three cases: \(r_0 = 0\), \(0 < r_0 < \infty\) and \(r_0 = \infty\).
