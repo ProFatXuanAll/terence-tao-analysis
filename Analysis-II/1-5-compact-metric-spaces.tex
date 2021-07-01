@@ -247,9 +247,9 @@
 \end{corollary}
 
 \begin{proof}
-    Since \((K_n, d)\) is compact and \(K_n \subseteq K_1\) for every \(n \geq 1\), by Corollary \ref{1.5.6} we know that \((K_n, d)\) is closed in \(K_1\).
+    Since for every \(n \geq 1\), \((K_n, d)\) is compact and \(K_n \subseteq K_1\), by Corollary \ref{1.5.6} we know that \((K_n, d)\) is closed in \(K_1\).
     Let \(V_n = K_1 \setminus K_n\) for every \(n \geq 1\).
-    Then for every \(n \geq 1\), \(V_n \subseteq K_1\) and by Proposition \ref{1.2.15}(e) we know that \((V_n, d)\) is open in \(K_1\).
+    Then for every \(n \geq 1\), we have \(V_n \subseteq K_1\) and by Proposition \ref{1.2.15}(e) \((V_n, d)\) is open in \(K_1\).
 
     Suppose for sake of contradiction that \(\bigcap_{n = 1}^\infty K_n = \emptyset\).
     Since
@@ -284,48 +284,55 @@
 \end{theorem}
 
 \begin{proof}{(a)}
-    By Corollary \ref{1.5.6} we know that if \(Z\) is compact then \(Z\) is closed.
-    Now we show that if \(Z\) is closed then \(Z\) is compact.
+    By Corollary \ref{1.5.6} we know that if \((Z, d|_{Y \times Y})\) is compact then \((Z, d|_{Y \times Y})\) is closed in \(Y\).
+    Now we show that if \((Z, d|_{Y \times Y})\) is closed in \(Y\) then \((Z, d|_{Y \times Y})\) is compact.
 
-    Since \(Y\) is a compact subset of \(X\) and \(Z \subseteq Y\), by Definition \ref{1.5.1} we know that every sequence \((z^{(n)})_{n = 1}^\infty\) in \(Z\) has a convergent subsequence \((z^{(n_j)})_{j = 1}^\infty\) which converges in \(Y\).
-    Since \(Z\) is closed, by Proposition \ref{1.2.15}(b) we know that \((z^{(n_j)})_{j = 1}^\infty\) converges in \(Z\).
-    Since \((z^{(n)})_{n = 1}^\infty\) is arbitrary, by Definition \ref{1.5.1} we know that \(Z\) is compact.
+    Since \((Y, d|_{Y \times Y})\) is compact and \(Z \subseteq Y\), by Definition \ref{1.5.1} we know that every sequence \((z^{(n)})_{n = 1}^\infty\) in \(Z\) has a convergent subsequence \((z^{(n_j)})_{j = 1}^\infty\) which converges in \(Y\) with respect to \(d|_{Y \times Y}\).
+    Since \((Z, d|_{Y \times Y})\) is closed in \(Y\), by Proposition \ref{1.2.15}(b) we know that \((z^{(n_j)})_{j = 1}^\infty\) converges in \(Z\) with respect to \(d|_{Y \times Y}\).
+    Since \((z^{(n)})_{n = 1}^\infty\) is arbitrary, by Definition \ref{1.5.1} we know that \((Z, d|_{Y \times Y})\) is compact.
 \end{proof}
 
 \begin{proof}{(b)}
-    We use induction on \(n\) to show that \(\bigcup_{i = 1}^n Y_i\) is compact for every \(n \in \mathbf{Z}^+\).
-    For \(n = 1\), we know that \(\bigcup_{i = 1}^1 Y_i = Y_1\) and by hypothesis \(Y_1\) is compact, thus the base case holds.
-    Suppose inductively that \(\bigcup_{i = 1}^n Y_i\) is compact for some \(n \geq 1\).
-    Then for \(n + 1\), we need to show that \(\bigcup_{i = 1}^{n + 1} Y_i\) is compact.
+    We use induction on \(n\) to show that \((\bigcup_{i = 1}^n Y_i, d)\) is compact for every \(n \in \mathbf{Z}^+\).
+    For \(n = 1\), we know that \(\bigcup_{i = 1}^1 Y_i = Y_1\) and by hypothesis \((Y_1, d)\) is compact, thus the base case holds.
+    Suppose inductively that \((\bigcup_{i = 1}^n Y_i, d)\) is compact for some \(n \geq 1\).
+    Then for \(n + 1\), we need to show that \((\bigcup_{i = 1}^{n + 1} Y_i, d)\) is compact.
     Let \((y^{(k)})_{k = 1}^\infty\) be a sequence in \(\bigcup_{i = 1}^{n + 1} Y_i\).
-    We now split into following two cases:
+    We now split into two cases:
     \begin{itemize}
-        \item If there exists a subsequence \((y^{(k_j)})_{j = 1}^\infty\) which elements are in \(\bigcup_{i = 1}^n Y_i\), then by induction hypothesis we know that \((y^{(k_j)})_{j = 1}^\infty\) converges in \(\bigcup_{i = 1}^n Y_i\).
-              Since \(\bigcup_{i = 1}^n Y_i \subseteq \bigcup_{i = 1}^{n + 1} Y_i\), this means \((y^{(k_j)})_{j = 1}^\infty\) also converges in \(\bigcup_{i = 1}^{n + 1} Y_i\).
-        \item If there does not exist a subsequence \((y^{(k_j)})_{j = 1}^\infty\) which elements are in \(\bigcup_{i = 1}^n Y_i\), then there is only finitely many elements in \((y^{(k)})_{k = 1}^\infty\) which are in \(\bigcup_{i = 1}^n Y_i\).
-              This means there exists a subsequence \((y^{(k_j)})_{j = 1}^\infty\) which elements are in \(Y_{n + 1}\).
-              By hypothesis we know that \(Y_{n + 1}\) is compact, thus there exists a subsequence \((y^{(k_{j_p})})_{p = 1}^\infty\) of \((y^{(k_j)})_{j = 1}^\infty\) converges in \(Y_{n + 1}\).
-              Since \(Y_{n + 1} \subseteq \bigcup_{i = 1}^{n + 1} Y_i\), we know that \((y^{(k_{j_p})})_{p = 1}^\infty\) also converges in \(\bigcup_{i = 1}^{n + 1} Y_i\).
+        \item If there exists a subsequence \((y^{(k_j)})_{j = 1}^\infty\) whose elements are in \(\bigcup_{i = 1}^n Y_i\), then by induction hypothesis we know that \((y^{(k_j)})_{j = 1}^\infty\) converges in \(\bigcup_{i = 1}^n Y_i\) with respect to \(d\).
+              This means \((y^{(k_j)})_{j = 1}^\infty\) also converges in \(\bigcup_{i = 1}^{n + 1} Y_i\) with respect to \(d\) since \(\bigcup_{i = 1}^n Y_i \subseteq \bigcup_{i = 1}^{n + 1} Y_i\).
+        \item If there does not exist a subsequence \((y^{(k_j)})_{j = 1}^\infty\) whose elements are in \(\bigcup_{i = 1}^n Y_i\), then there is only finitely many elements in \((y^{(k)})_{k = 1}^\infty\) which are in \(\bigcup_{i = 1}^n Y_i\).
+              This means there exists a subsequence \((y^{(k_j)})_{j = 1}^\infty\) whose elements are in \(Y_{n + 1}\).
+              By hypothesis we know that \((Y_{n + 1}, d)\) is compact, thus by Definition \ref{1.5.1} there exists a subsequence \((y^{(k_{j_p})})_{p = 1}^\infty\) of \((y^{(k_j)})_{j = 1}^\infty\) converges in \(Y_{n + 1}\) with respect to \(d\).
+              Since \(Y_{n + 1} \subseteq \bigcup_{i = 1}^{n + 1} Y_i\), we know that \((y^{(k_{j_p})})_{p = 1}^\infty\) also converges in \(\bigcup_{i = 1}^{n + 1} Y_i\) with respect to \(d\).
     \end{itemize}
-    From all cases above we can conclude that there exists a subsequence in \((y^{(k)})_{k = 1}^\infty\) which converges in \(\bigcup_{i = 1}^{n + 1} Y_i\).
-    Thus by Definition \ref{1.5.1} \(\bigcup_{i = 1}^{n + 1} Y_i\) is compact and this close the induction.
+    From all cases above we conclude that there exists a subsequence of \((y^{(k)})_{k = 1}^\infty\) which converges in \(\bigcup_{i = 1}^{n + 1} Y_i\) with respect to \(d\).
+    Since \((y^{(k)})_{k = 1}^\infty\) is arbitrary, by Definition \ref{1.5.1} \((\bigcup_{i = 1}^{n + 1} Y_i, d)\) is compact.
+    This close the induction.
 \end{proof}
 
 \begin{proof}{(c)}
-    Let \(x_0 \in X\).
-    Since \(\#\{x_0\} = 1\), every sequence \((x^{(n)})_{n = 1}^\infty\) in \(\{x_0\}\) must have \(x^{(n)} = x_0\) for every \(n \geq 1\).
-    Thus every subsequence in \((x^{(n)})_{n = 1}^\infty\) converges to \(x_0\).
-    By Definition \ref{1.5.1} we know that \(\{x_0\}\) is compact.
-    Since \(x_0\) is arbitrary, we conclude that any singleton set is compact.
-
-    Now let \(Y \neq \emptyset\) be a finite subset of \(X\).
-    Let \(\alpha \in Y\) and let \(Y_{\alpha} = \{\alpha\}\).
-    Since \(Y\) is finite and \(Y_{\alpha}\) is compact, by Theorem \ref{1.5.10}(b) we know that \(\bigcup_{\alpha \in Y} Y_{\alpha}\) is compact.
-
-    Finally we show that \(\emptyset\) is compact.
-    By Remark \ref{1.2.14} we know that \(\emptyset\) is closed.
-    Let \(x_0 \in X\).
-    Since \(\emptyset \subseteq \{x_0\}\) and \(\{x_0\}\) is compact, by Theorem \ref{1.5.10}(a) we know that \(\emptyset\) is compact.
+    Let \(Y \subseteq X\) and \(\#(Y) = n\).
+    Let \(P(n)\) be the statement ``\(\#(Y) = n\) and for every sequence \((y^{(k)})_{k = 1}^\infty\) in \(Y\), there exists a subsequence of \((y^{(k)})_{k = 1}^\infty\) which converges in \(Y\) with respect to \(d\)''.
+    We use induction on \(n\) to show that \(P(n)\) is true for all \(n \in \mathbf{N}\).
+    For \(n = 0\), we have \(Y = \emptyset\) and the statement \(P(0)\) is trivially true.
+    Thus by Definition \ref{1.5.1} \((\emptyset, d)\) is compact and the base case holds.
+    Suppose inductively that \(P(n)\) is true for some \(n \geq 0\).
+    Then we need to show that \(P(n + 1)\) is true.
+    Let \(Y \subseteq X\) such that \(\#(Y) = n + 1\) and let \(x_0 \in Y\).
+    Let \((y^{(k)})_{k = 1}^\infty\) be arbitrary sequence in \(Y\).
+    Now we split into two cases:
+    \begin{itemize}
+        \item If the set \(\{k \in \mathbf{N} : y^{(k)} = x_0\}\) is finite, then we can have a subsequence \((y^{(k_j)})_{j = 1}^\infty\) whose elements are in \(Y \setminus \{x_0\}\).
+              Since \((y^{(k_j)})_{j = 1}^\infty\) is in \(Y \setminus \{x_0\}\) and \(\#(Y \setminus \{x_0\}) = n\), by induction hypothesis we know that there exists a subsequence of \((y^{(k_j)})_{j = 1}^\infty\) which converges in \(Y \setminus \{x_0\}\) with respect to \(d\).
+              But \((y^{(k_j)})_{j = 1}^\infty\) is also in \(Y\), thus we know that there exists a subsequence of \((y^{(k_j)})_{j = 1}^\infty\) which converges in \(Y\) with respect to \(d\).
+        \item If the set \(\{k \in \mathbf{N} : y^{(k)} = x_0\}\) is finite, then we can have a subsequence \((y^{(k_j)})_{j = 1}^\infty\) whose elements are all \(x_0\) and obviously \((y^{(k_j)})_{j = 1}^\infty\) converges to \(x_0\) with respect to \(d\).
+              Since \(x_0 \in Y\), we know that \((y^{(k_j)})_{j = 1}^\infty\) converges in \(Y\) with respect to \(d\).
+    \end{itemize}
+    From all cases above we conclude that there exists a subsequence of \((y^{(k)})_{k = 1}^\infty\) which converges in \(Y\) with respect to \(d\).
+    Thus \(P(n + 1)\) is true and this close the induction.
+    Since \(P(n)\) is true for every \(n \in \mathbf{N}\), by Definition \ref{1.5.1} we know that if \(Y\) is a finite subset of \(X\), then \((Y, d)\) is compact.
 \end{proof}
 
 \exercisesection
