@@ -440,57 +440,73 @@
 
 \begin{proof}
     Let \(E = \{e^{(n)} : n \in \mathbf{N}\}\).
-    We first show that \(E\) is bounded.
+    We first show that \((E, d_{l^1})\) is bounded in \(X\).
     Since
     \[
         \sum_{j = 0}^\infty \abs*{e_j^{(n)}} = 1
     \]
     for every \(n \in \mathbf{N}\), we know that \(e^{(n)}\) is absolutely convergent and by Exercise \ref{ex 1.1.15} \(e^{(n)} \in X\).
+    By Exercise \ref{ex 1.1.15} we know that
+    \[
+        \forall\ (a_j)_{j = 0}^\infty, (b_j)_{j = 0}^\infty \in X, d_{l^1}\big((a_j)_{j = 0}^\infty, (b_j)_{j = 0}^\infty\big)
+    \]
+    is well-defined, thus \(d_{l^1}\big((a_j)_{j = 0}^\infty, (e_j^{(n)})_{j = 0}^\infty\big)\) is well-defined for every \(n \in \mathbf{N}\).
     Since
     \begin{align*}
-        d_{l^1}(e^{(0)}, e^{(n)}) & = \sum_{j = 0}^\infty \abs*{e_j^{(0)} - e_j^{(n)}}            \\
-                                  & = \abs*{e_0^{(0)} - e_0^{(n)}} + \abs*{e_n^{(0)} - e_n^{(n)}} \\
-                                  & = \abs*{1 - e_0^{(n)}} + \abs*{e_n^{(0)} - 1}                 \\
-                                  & = \begin{cases}
-            0 & \text{if } n = 0    \\
-            2 & \text{if } n \neq 0
-        \end{cases}                                  \\
-                                  & < 3,
+         & \forall\ (a_j)_{j = 0}^\infty \in X, d_{l^1}\big((a_j)_{j = 0}^\infty, (e_j^{(n)})_{j = 0}^\infty\big)                                                              \\
+         & = \sum_{j = 0}^\infty \abs*{a_j - e_j^{(n)}}                                                                                                                        \\
+         & = \sum_{j = 0 : j \neq n}^\infty \abs*{a_j} + \abs*{a_n - 1}                                                                                                        \\
+         & \leq \sum_{j = 0}^\infty \abs*{a_j} + \abs*{a_n - 1}                                                   & \text{(well-defined since \((a_j)_{j = 0}^\infty \in X\))} \\
+         & \leq \sum_{j = 0}^\infty \abs*{a_j} + \sup_{n \in \mathbf{N}}\abs*{a_n - 1}                            & \text{(well-defined since \((a_j)_{j = 0}^\infty \in X\))} \\
+         & < \sum_{j = 0}^\infty \abs*{a_j} + \sup_{n \in \mathbf{N}}\abs*{a_n - 1} + 1,
     \end{align*}
-    by Definition \ref{1.2.1} we know that the ball \(B_{(X, d_{l^1})}(e^{(0)}, 3)\) contains the set \(E\).
-    Thus by Definition \ref{1.5.3} we know that the set \(E\) is bounded.
+    by Definition \ref{1.2.1} we know that the ball
+    \[
+        B_{(X, d_{l^1})}\bigg((a_j)_{j = 0}^\infty, \sum_{j = 0}^\infty \abs*{a_j} + \sup_{n \in \mathbf{N}}\abs*{a_n - 1} + 1\bigg)
+    \]
+    contains the set \(E\) for every \((a_j)_{j = 0}^\infty \in X\).
+    Thus by Definition \ref{1.5.3} we know that \((E, d_{l^1})\) is bounded in \(X\).
 
-    Next we show that \(E\) is closed.
-    Let \(\overline{E}\) be the closure of \(E\) and let \(a \in \overline{E}\).
-    By Proposition \ref{1.2.10}(c) we know that there exists a sequence \((a^{(k)})_{k = 0}^\infty\) in \(E\) such that \(\lim_{k \to \infty} d(a, a^{(k)}) = 0\).
-    By Lemma \ref{1.4.7}, \((a^{(k)})_{k = 0}^\infty\) is a Cauchy sequence.
-    By Definition \ref{1.4.6}, this means \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ N \in \mathbf{N}\) such that \(\forall\ k, k' \in \mathbf{N}\) and \(k, k' \geq N\), we have
+    Next we show that \((E, d_{l^1})\) is closed.
+    Let \(\overline{E}\) be the closure of \((E, d_{l^1})\) in \(X\) and let \(x \in \overline{E}\).
+    By Proposition \ref{1.2.10}(c) we know that there exists a sequence \((a^{(k)})_{k = 0}^\infty\) in \(E\) such that \(\lim_{k \to \infty} d_{l^1}\big((a_j^{(k)})_{j = 0}^\infty, x\big) = 0\).
+    By Lemma \ref{1.4.7} we know that \((a^{(k)})_{k = 0}^\infty\) is a Cauchy sequence in \((X, d_{l^1})\).
+    Let \(k, k' \in \mathbf{N}\).
+    By Definition \ref{1.4.6} we have
     \[
-        d(a^{(k)}, a^{(k')}) \leq \varepsilon.
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{N} : \forall\ k, k' \geq N, d_{l^1}(a^{(k)}, a^{(k')}) \leq \varepsilon.
     \]
-    In particular, \(\exists\ N \in \mathbf{N}\) such that \(\forall\ k, k' \geq N\), we have
+    In particular,
     \[
-        d(a^{(k)}, a^{(k')}) \leq \frac{1}{2} < 1.
+        \exists\ N \in \mathbf{N} : \forall\ k, k' \geq N, d_{l^1}(a^{(k)}, a^{(k')}) \leq \frac{1}{2} < 1.
     \]
-    Since \(a^{(k)}, a^{(k')} \in E\), we know that
+    Since \(a^{(k)}, a^{(k')} \in E\), we know that \(a^{(k)} = e^{(n)}\) and \(a^{(k')} = e^{(n')}\) for some \(n, n' \in \mathbf{N}\) and
     \[
-        d(a^{(k)}, a^{(k')}) = \begin{cases}
-            0 & \text{if } a^{(k)} = a^{(k')};    \\
-            2 & \text{if } a^{(k)} \neq a^{(k')}.
+        d(a^{(k)}, a^{(k')}) = d(e^{(n)}, e^{(n')}) = \begin{cases}
+            0 & \text{if } n = n';    \\
+            2 & \text{if } n \neq n'.
         \end{cases}
     \]
-    Thus we must have \(a^{(k)} = a^{(N)}\) for all \(k \geq N\).
-    By Definition \ref{1.1.14}, we know that \(a\) converges to \(a^{(N)}\), thus \(a \in E\).
-    Since \(a\) is arbitrary adherent point, by Proposition \ref{1.2.15}(b) we know that \(E\) is closed.
+    This means
+    \begin{align*}
+                 & \exists\ N \in \mathbf{N} : \forall\ k, k' \geq N, d_{l^1}(a^{(k)}, a^{(k')}) \leq \frac{1}{2} < 1                                        \\
+        \implies & \exists\ N \in \mathbf{N} : \forall\ k, k' \geq N, d_{l^1}(a^{(k)}, a^{(k')}) = 0                                                         \\
+        \implies & \exists\ N \in \mathbf{N} : \forall\ k \geq N, d_{l^1}(a^{(k)}, a^{(N)}) = 0                                                              \\
+        \implies & \exists\ N \in \mathbf{N} : \lim_{k \to \infty} d_{l^1}(a^{(k)}, a^{(N)}) = 0                      & \text{(by Definition \ref{1.1.14})}  \\
+        \implies & \exists\ N \in \mathbf{N} : a^{(N)} = x                                                            & \text{(by Proposition \ref{1.1.20})} \\
+        \implies & x \in E
+    \end{align*}
+    Since \(x\) is arbitrary adherent point, by Proposition \ref{1.2.15}(b) we know that \((E, d_{l^1})\) is closed in \(X\).
 
     Finally we show that \(E\) is not compact.
-    Let \((e^{(n)})_{n = 0}^\infty\) be a sequence.
-    Since \((e^{(n)})_{n = 0}^\infty\) in \(E\), we know that \(\forall\ N \in \mathbf{N}\), \(\forall\ n, n' \in \mathbf{N}\) and \(n, n' \geq N\), we have
+    Let \((e^{(n)})_{n = 0}^\infty\) be a sequence and let \(n, n' \in \mathbf{N}\).
+    Since \((e^{(n)})_{n = 0}^\infty\) is a sequence in \(E\), we know that
     \[
-        d(e^{(n)}, e^{(n')}) = 2.
+        \forall\ N \in \mathbf{N}, \forall\ n, n' \geq N, d(e^{(n)}, e^{(n')}) = 2.
     \]
-    Thus by Definition \ref{1.4.6} \((e^{(n)})_{n = 0}^\infty\) is not a Cauchy sequence.
-    Similarly any subsequence of \((e^{(n)})_{n = 0}^\infty\) is not a Cauchy sequence, by Lemma \ref{1.4.7} this means no subsequence is convergent, and by Definition \ref{1.5.1} \(E\) is not compact.
+    Thus by Definition \ref{1.4.6} \((e^{(n)})_{n = 0}^\infty\) is not a Cauchy sequence in \((E, d_{l^1})\).
+    Similarly any subsequence of \((e^{(n)})_{n = 0}^\infty\) is not a Cauchy sequence in \((E, d_{l^1})\).
+    By Lemma \ref{1.4.7} this means no subsequence is convergent in \((E, d_{l^1})\), and by Definition \ref{1.5.1} \((E, d_{l^1})\) is not compact.
 \end{proof}
 
 \begin{exercise}\label{ex 1.5.9}
