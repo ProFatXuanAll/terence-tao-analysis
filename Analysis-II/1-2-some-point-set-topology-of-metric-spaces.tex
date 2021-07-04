@@ -34,6 +34,10 @@
     The set of boundary points of \(E\) is called the boundary of \(E\) and is sometimes denoted \(\partial E\).
 \end{note}
 
+\begin{note}
+    We use the same notation of metric balls for the set of interior points \(\text{int}_{(X, d)}(E)\), the set of exterior points \(\text{ext}_{(X, d)}(E)\) and the set of boundary points \(\partial_{(X, d)}E\).
+\end{note}
+
 \begin{remark}\label{1.2.6}
     If \(x_0\) is an interior point of \(E\), then \(x_0\) must actually be an element of \(E\), since balls \(B(x_0, r)\) always contain their center \(x_0\).
     Conversely, if \(x_0\) is an exterior point of \(E\), then \(x_0\) cannot be an element of \(E\).
@@ -41,23 +45,40 @@
     If \(x_0\) is a boundary point of \(E\), then it could be an element of \(E\), but it could also not lie in \(E\).
 \end{remark}
 
+\begin{note}
+    By Remark \ref{1.2.6} we thus have
+    \begin{align*}
+         & \text{int}_{(X, d)}(E) \subseteq E             \\
+         & \text{ext}_{(X, d)}(E) \subseteq X \setminus E
+    \end{align*}
+    for any metric space \((X, d)\) and any subset \(E\) of \(X\).
+\end{note}
+
 \setcounter{theorem}{7}
 \begin{example}\label{1.2.8}
     When we give a set \(X\) the discrete metric \(d_{\text{disc}}\), and \(E\) is any subset of \(X\), then every element of \(E\) is an interior point of \(E\), every point not contained in \(E\) is an exterior point of \(E\), and there are no boundary points.
 \end{example}
 
 \begin{proof}
-    For all \(x_0 \in E\), we have \(d_{\text{disc}}(x_0, x_0) = 0\) and \(B_{(X, d_{\text{disc}})}(x_0, 1) = \{x_0\} \subseteq E\), thus by Definition \ref{1.2.5} \(x_0 \in \text{int}(E)\) and \(E \subseteq \text{int}(E)\).
-    By Remark \ref{1.2.6}, we also have \(\text{int}(E) \subseteq E\), thus \(\text{int}(E) = E\).
-
-    Since \(\text{int}(E) = E\), for all \(x_0 \in X \setminus E\), we have \(x_0 \notin \text{int}(E)\).
-    By Definition \ref{1.2.5} this means for all \(r \in \mathbf{R}^+\), we have \(B_{(X, d_{\text{disc}})}(x_0, r) \not\subseteq E\).
-    In particular, we have \(B_{(X, d_{\text{disc}})}(x_0, 1) = \{x_0\} \not\subseteq E\).
-    Since \(x_0\) is the only element of \(\{x_0\}\) and \(x_0 \notin E\), we have \(\{x_0\} \cap E = \emptyset\).
-    Thus by Definition \ref{1.2.5} \(x_0 \in \text{ext}(E)\) and \(X \setminus E \subseteq \text{ext}(E)\).
-    By Remark \ref{1.2.6} we also have \(\text{ext}(E) \subseteq X \setminus E\), thus \(\text{ext}(E) = X \setminus E\).
-
-    Since \(X = (X \setminus E) \cup E = \text{ext}(E) \cup \text{int}(E)\), every point in \(X\) is either a exterior point or interior point, thus there are no boundary points in \(X\) when given metric \(d_{\text{disc}}\).
+    We have
+    \begin{align*}
+                 & \forall\ x_0 \in E, d_{\text{disc}}(x_0, x_0) = 0                          & \text{(by Example \ref{1.1.11})}   \\
+        \implies & \forall\ x_0 \in E, B_{(X, d_{\text{disc}})}(x_0, 1) = \{x_0\} \subseteq E & \text{(by Definition \ref{1.2.1})} \\
+        \implies & \forall\ x_0 \in E, x_0 \in \text{int}_{(X, d_{\text{disc}})}(E)           & \text{(by Definition \ref{1.2.5})} \\
+        \implies & E \subseteq \text{int}_{(X, d_{\text{disc}})}(E)                                                                \\
+        \implies & E = \text{int}_{(X, d_{\text{disc}})}(E)                                   & \text{(by Remark \ref{1.2.6})}
+    \end{align*}
+    and
+    \begin{align*}
+                 & E = \text{int}_{(X, d_{\text{disc}})}(E)                                                                                                              \\
+        \implies & \forall\ x_0 \in X \setminus E, x_0 \notin \text{int}_{(X, d_{\text{disc}})}(E)                                                                       \\
+        \implies & \forall\ x_0 \in X \setminus E, \forall\ r \in \mathbf{R}^+, B_{(X, d_{\text{disc}})}(x_0, r) \not\subseteq E    & \text{(by Definition \ref{1.2.5})} \\
+        \implies & \forall\ x_0 \in X \setminus E, \forall\ r \in \mathbf{R}^+, B_{(X, d_{\text{disc}})}(x_0, r) \cap E = \emptyset                                      \\
+        \implies & \forall\ x_0 \in X \setminus E, x_0 \in \text{ext}_{(X, d_{\text{disc}})}(E)                                                                          \\
+        \implies & X \setminus E \subseteq \text{ext}_{(X, d_{\text{disc}})}(E)                                                                                          \\
+        \implies & X \setminus E = \text{ext}_{(X, d_{\text{disc}})}(E).                                                            & \text{(by Remark \ref{1.2.6})}
+    \end{align*}
+    Since \(X = (X \setminus E) \cup E = \text{ext}(E) \cup \text{int}(E)\), every point in \((X, d_{\text{disc}})\) is either a exterior point or interior point, thus by Definition \ref{1.2.5} there are no boundary points in \((X, d_{\text{disc}})\).
 \end{proof}
 
 \begin{definition}[Closure]\label{1.2.9}
