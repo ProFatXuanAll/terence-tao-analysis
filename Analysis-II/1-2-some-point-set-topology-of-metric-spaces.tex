@@ -35,7 +35,7 @@
 \end{note}
 
 \begin{note}
-    We use the same notation of metric balls for the set of interior points \(\text{int}_{(X, d)}(E)\), the set of exterior points \(\text{ext}_{(X, d)}(E)\) and the set of boundary points \(\partial_{(X, d)}E\).
+    We use the same notation of metric balls for the set of interior points \(\text{int}_{(X, d)}(E)\), the set of exterior points \(\text{ext}_{(X, d)}(E)\) and the set of boundary points \(\partial_{(X, d)}(E)\).
 \end{note}
 
 \begin{remark}\label{1.2.6}
@@ -91,6 +91,10 @@
     Notions in Definition \ref{1.2.9} are consistent with the corresponding notions on the real line.
 \end{note}
 
+\begin{note}
+    Since the closure of a set \(E\) depends on metric \((X, d)\), we denote the closure of \(E\) with \(\overline{E}_{(X, d)}\).
+\end{note}
+
 \begin{proposition}\label{1.2.10}
     Let \((X, d)\) be a metric space, let \(E\) be a subset of \(X\), and let \(x_0\) be a point in \(X\).
     Then the following statements are logically equivalent.
@@ -103,17 +107,19 @@
 
 \begin{proof}
     We first show that statement (a) implies statement (b).
-    Suppose that \(x_0\) is an adherent point of \(E\).
-    By Definition \ref{1.2.9}, for all \(r \in \mathbf{R}^+\), we have \(B_{(X, d)}(x_0, r) \cap E \neq \emptyset\).
-    Thus by Definition \ref{1.2.5} \(x_0\) is not an exterior point.
-    We have either \(B_{(X, d)}(x_0, r) \subseteq E\) or \(B_{(X, d)}(x_0, r) \not\subseteq E\), and by Definition \ref{1.2.5} \(x_0\) is either an interior point or a boundary point of \(E\).
+    \begin{align*}
+                 & \forall\ x_0 \in \overline{E}_{(X, d)}, \forall\ r \in \mathbf{R}^+, B_{(X, d)}(x_0, r) \cap E \neq \emptyset & \text{(by Definition \ref{1.2.9})} \\
+        \implies & \forall\ x_0 \in \overline{E}_{(X, d)}, x_0 \notin \text{ext}_{(X, d)}(E)                                     & \text{(by Definition \ref{1.2.5})} \\
+        \implies & \forall\ x_0 \in \overline{E}_{(X, d)}, x_0 \in \big(\text{int}_{(X, d)}(E) \cup \partial_{(X, d)}(E)\big)    & \text{(by Definition \ref{1.2.5})} \\
+        \implies & \overline{E}_{(X, d)} \subseteq \big(\text{int}_{(X, d)}(E) \cup \partial_{(X, d)}(E)\big)
+    \end{align*}
 
     Next we show that statement (b) implies statement (c).
     \begin{itemize}
-        \item Suppose that \(x_0\) is an interior point of \(E\).
+        \item Suppose that \(x_0 \in \text{int}_{(X, d)}(E)\).
               Then by setting \(x_n = x_0\) for all \(n \in \mathbf{Z}^+\) we have \(\lim_{n \to \infty} d(x_n, x_0) = \lim_{n \to \infty} 0 = 0\).
-        \item Suppose that \(x_0\) is a boundary point of \(E\).
-              By Definition \ref{1.2.5}, for all \(r \in \mathbf{R}^+\) we have \(B_{(X, d)}(x_0, r) \cap E \neq \emptyset\).
+        \item Suppose that \(x_0 \in \partial_{(X, d)}(E)\).
+              By Definition \ref{1.2.5} for all \(r \in \mathbf{R}^+\), we have \(B_{(X, d)}(x_0, r) \cap E \neq \emptyset\).
               In particular, we have \(B_{(X, d)}(x_0, \frac{1}{n}) \cap E \neq \emptyset\) for all \(n \in \mathbf{Z}^+\).
               Let \(X_n = B_{(X, d)}(x_0, \frac{1}{n}) \cap E\).
               Since \(X_n \neq \emptyset\), by axiom of choice we can choose \((x_n)_{n = 1}^\infty \in \prod_{n \in \mathbf{Z}^+} X_n\).
