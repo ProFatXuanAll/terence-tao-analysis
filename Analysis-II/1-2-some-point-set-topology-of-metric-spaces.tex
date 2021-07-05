@@ -195,26 +195,26 @@
 
 \begin{proof}{(a)}
     \begin{align*}
-             & E \text{ is open}                                                                         \\
-        \iff & \partial E \cap E = \emptyset                       & \text{(by Definition \ref{1.2.12})} \\
-        \iff & \forall\ x \in E, x \text{ is not a boundary point}                                       \\
-        \iff & \forall\ x \in E, x \text{ is an interior point}    & \text{(by Remark \ref{1.2.6})}      \\
-        \iff & \text{int}(E) = E.                                  & \text{(by Definition \ref{1.2.5})}
+             & (E, d) \text{ is open in } X                                                                                                                    \\
+        \iff & \partial_{(X, d)}(E) \cap E = \emptyset                                                                   & \text{(by Definition \ref{1.2.12})} \\
+        \iff & \forall\ x \in E, \big(x \notin \partial_{(X, d)}(E)\big) \land \big(x \notin \text{ext}_{(X, d)}(E)\big) & \text{(by Remark \ref{1.2.6})}      \\
+        \iff & \forall\ x \in E, x \in \text{int}_{(X, d)}(E)                                                            & \text{(by Definition \ref{1.2.5})}  \\
+        \iff & E \subseteq \text{int}_{(X, d)}(E)                                                                                                              \\
+        \iff & \text{int}(E) = E.                                                                                        & \text{(by Remark \ref{1.2.6})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(b)}
     \begin{align*}
-             & E \text{ is closed}                                                                           \\
-        \iff & \partial E \subseteq E                           & \text{(by Definition \ref{1.2.12})}        \\
-        \iff & E = \text{int}(E) \cup \partial E                & \text{(by Remark \ref{1.2.6})}             \\
-        \iff & \forall\ x \in E, x \text{ is an adherent point} & \text{(by Proposition \ref{1.2.10}(a)(b))} \\
-        \iff & E = \overline{E}.                                & \text{(by Definition \ref{1.2.9})}
+             & (E, d) \text{ is closed in } X                                                                    \\
+        \iff & \partial_{(X, d)}(E) \subseteq E                     & \text{(by Definition \ref{1.2.12})}        \\
+        \iff & E = \text{int}_{(X, d)}(E) \cup \partial_{(X, d)}(E) & \text{(by Remark \ref{1.2.6})}             \\
+        \iff & E = \overline{E}_{(X, d)}.                           & \text{(by Proposition \ref{1.2.10}(a)(b))}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(c)}
-    We first show that \(B_{(X, d)}(x_0, r)\) is an open set.
+    We first show that \(\big(B_{(X, d)}(x_0, r), d\big)\) is open in \(X\).
     Since \(x_0 \in B_{(X, d)}(x_0, r)\), we know that \(B_{(X, d)}(x_0, r) \neq \emptyset\).
     Let \(x \in B_{(X, d)}(x_0, r)\) and let \(r' = r - d(x, x_0)\).
     By Definition \ref{1.2.1} we have \(d(x, x_0) < r\), so \(r' > 0\).
@@ -228,16 +228,21 @@
         \implies & y \in B_{(X, d)}(x_0, r)               & \text{(by Definition \ref{1.2.1})}
     \end{align*}
     and thus \(B_{(X, d)}(x, r') \subseteq B_{(X, d)}(x_0, r)\).
-    Since \(x\) is arbitrary, by Definition \ref{1.2.5} we have \(B_{(X, d)}(x_0, r) \subseteq \text{int}\big(B_{(X, d)}(x_0, r)\big)\).
-    By Remark \ref{1.2.6} we have \(B_{(X, d)}(x_0, r) = \text{int}\big(B_{(X, d)}(x_0, r)\big)\), thus by Proposition \ref{1.2.15}(a) \(B_{(X, d)}(x_0, r)\) is open.
+    Since \(x\) is arbitrary, we have
+    \begin{align*}
+                 & B_{(X, d)}(x_0, r) \subseteq \text{int}_{(X, d)}\big(B_{(X, d)}(x_0, r)\big) & \text{(by Definition \ref{1.2.5})}      \\
+        \implies & B_{(X, d)}(x_0, r) = \text{int}_{(X, d)}\big(B_{(X, d)}(x_0, r)\big)         & \text{(by Remark \ref{1.2.6})}          \\
+        \implies & \big(B_{(X, d)}(x_0, r), d\big) \text{ is open in } X.                       & \text{(by Proposition \ref{1.2.15}(a))}
+    \end{align*}
 
-    Now we show that \(E = \{x \in X : d(x, x_0) \leq r\}\) is closed.
-    By Proposition \ref{1.2.15}(b) we know that \(E\) is closed iff \(E = \overline{E}\).
-    By Proposition \ref{1.2.10}(c) we know that \(E \subseteq \overline{E}\).
-    So we only need to show that \(\overline{E} \subseteq E\).
-    Suppose for sake of contradiction that \(\overline{E} \setminus E \neq \emptyset\).
-    Let \(y \in \overline{E} \setminus E\).
-    By Proposition \ref{1.2.10}(c), \(\exists\ (y_n)_{n = 1}^\infty\) such that \(y_n \in E\) for all \(n \in \mathbf{Z}^+\) and \(\lim_{n \to \infty} y_n = y\).
+    Let \(E = \{x \in X : d(x, x_0) \leq r\}\).
+    Now we show that \((E, d)\) is closed in \(X\).
+    By Proposition \ref{1.2.15}(b) we know that \((E, d)\) is closed in \(X\) iff \(E = \overline{E}_{(X, d)}\).
+    By Proposition \ref{1.2.10}(c) we know that \(E \subseteq \overline{E}_{(X, d)}\).
+    So we only need to show that \(\overline{E}_{(X, d)} \subseteq E\), or equivalently \(\overline{E}_{(X, d)} \setminus E = \emptyset\).
+    Suppose for sake of contradiction that \(\overline{E}_{(X, d)} \setminus E \neq \emptyset\).
+    Let \(y \in \overline{E}_{(X, d)} \setminus E\).
+    By Proposition \ref{1.2.10}(c), \(\exists\ (y_n)_{n = 1}^\infty\) such that \(y_n \in E\) for all \(n \in \mathbf{Z}^+\) and \(\lim_{n \to \infty} d(y_n, y) = 0\).
     Since \(y \notin E\), we have \(d(y, x_0) > r\).
     Then \(d(y, x_0) - r > 0\) and we have
     \begin{align*}
@@ -248,158 +253,172 @@
         \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, r < d(y_n, x_0).
     \end{align*}
     But \(d(y_n, x_0) > r\) means \(y_n \notin E\), a contradiction.
-    Thus we must have \(\overline{E} \setminus E = \emptyset\) and \(\overline{E} \subseteq E\).
-    We conclude that \(E\) is closed.
+    Thus we must have \(\overline{E}_{(X, d)} \setminus E = \emptyset\), as desired.
 \end{proof}
 
 \begin{proof}{(d)}
-    By Proposition \ref{1.2.15}(b) we know that \(\{x_0\}\) is closed iff \(\{x_0\} = \overline{\{x_0\}}\).
-    By Proposition \ref{1.2.10}(c) we know that \(\{x_0\} \subseteq \overline{\{x_0\}}\).
-    So we only need to show that \(\overline{\{x_0\}} \subseteq \{x_0\}\).
-    Let \(y \in \overline{\{x_0\}}\).
+    By Proposition \ref{1.2.15}(b) we know that \(\big(\{x_0\}, d\big)\) is closed in \(X\) iff \(\{x_0\} = \overline{\{x_0\}}_{(X, d)}\).
+    By Proposition \ref{1.2.10}(c) we know that \(\{x_0\} \subseteq \overline{\{x_0\}}_{(X, d)}\).
+    So we only need to show that \(\overline{\{x_0\}}_{(X, d)} \subseteq \{x_0\}\).
+    Let \(y \in \overline{\{x_0\}}_{(X, d)}\).
     By Proposition \ref{1.2.10}(c) we know that \(\exists\ (y_n)_{n = 1}^\infty\) such that \(y_n \in \{x_0\}\) for all \(n \in \mathbf{Z}^+\) and \(\lim_{n \to \infty} d(y_n, y) = 0\).
     But \(y_n \in \{x_0\}\) implies \(y_n = x_0\) for all \(n \in \mathbf{Z}^+\), thus
     \[
-        \lim_{n \to \infty} d(y_n, y) = \lim_{n \to \infty} d(x_0, y) = d(x_0, y) = 0
+        \lim_{n \to \infty} d(y_n, y) = \lim_{n \to \infty} d(x_0, y) = d(x_0, y) = 0.
     \]
-    and by Definition \ref{1.1.2}(a) we have \(x_0 = y\).
-    This means \(\overline{\{x_0\}} \subseteq \{x_0\}\) and thus \(\overline{\{x_0\}} = \{x_0\}\).
-    We conclude thatt \(\{x_0\}\) is closed.
+    By Definition \ref{1.1.2}(a) we have \(x_0 = y\).
+    This means \(\overline{\{x_0\}}_{(X, d)} \subseteq \{x_0\}\), as desired.
 \end{proof}
 
 \begin{proof}{(e)}
     Since
     \begin{align*}
-             & x_0 \in \text{int}(E)                                                                                                  \\
+             & x_0 \in \text{int}_{(X, d)}(E)                                                                                         \\
         \iff & \exists\ r \in \mathbf{R}^+ : B_{(X, d)}(x_0, r) \subseteq E                      & \text{(by Definition \ref{1.2.5})} \\
         \iff & \exists\ r \in \mathbf{R}^+ : B_{(X, d)}(x_0, r) \cap (X \setminus E) = \emptyset                                      \\
         \iff & x_0 \in \text{ext}(X \setminus E),                                                & \text{(by Definition \ref{1.2.5})}
     \end{align*}
-    we know that \(\text{int}(E) = \text{ext}(X \setminus E)\) for any subset \(E\) of \(X\).
+    we know that \(\text{int}_{(X, d)}(E) = \text{ext}_{(X, d)}(X \setminus E)\) for any subset \(E\) of \(X\).
     Then we have
     \begin{align*}
-        \partial E & = X \setminus \big(\text{int}(E) \cup \text{ext}(E)\big)                         & \text{(by Definition \ref{1.2.5})} \\
-                   & = X \setminus \big(\text{ext}(X \setminus E) \cup \text{int}(X \setminus E)\big)                                      \\
-                   & = \partial (X \setminus E)                                                       & \text{(by Definition \ref{1.2.5})}
+        \partial_{(X, d)}(E) & = X \setminus \big(\text{int}_{(X, d)}(E) \cup \text{ext}_{(X, d)}(E)\big)                         & \text{(by Definition \ref{1.2.5})} \\
+                             & = X \setminus \big(\text{ext}_{(X, d)}(X \setminus E) \cup \text{int}_{(X, d)}(X \setminus E)\big)                                      \\
+                             & = \partial_{(X, d)}(X \setminus E)                                                                 & \text{(by Definition \ref{1.2.5})}
     \end{align*}
     and
     \begin{align*}
-             & E \text{ is open}                                                                        \\
-        \iff & \partial E \cap E = \emptyset                      & \text{(by Definition \ref{1.2.12})} \\
-        \iff & \partial E \subseteq (X \setminus E)               & \text{(by Definition \ref{1.2.5})}  \\
-        \iff & \partial (X \setminus E) \subseteq (X \setminus E)                                       \\
-        \iff & X \setminus E \text{ is closed}.                   & \text{(by Definition \ref{1.2.12})}
+             & (E, d) \text{ is open in } X                                                                     \\
+        \iff & \partial_{(X, d)}(E) \cap E = \emptyset                    & \text{(by Definition \ref{1.2.12})} \\
+        \iff & \partial_{(X, d)}(E) \subseteq (X \setminus E)             & \text{(by Definition \ref{1.2.5})}  \\
+        \iff & \partial_{(X, d)}(X \setminus E) \subseteq (X \setminus E)                                       \\
+        \iff & (X \setminus E, d) \text{ is closed in } X.                & \text{(by Definition \ref{1.2.12})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(f)}
-    We first show that if \(\{E_1, \dots, E_n\}\) is a finite collection of open sets in \(X\), then \(E_1 \cap E_2 \cap \dots \cap E_n\) is also open.
     Let \(I_n = \{i \in \mathbf{N} : 1 \leq i \leq n\}\).
+    First suppose that \((E_i, d)\) is open in \(X\) for every \(i \in I_n\).
+    Let \(x_0 \in \bigcap_{i \in I_n} E_i\).
     Then we have
     \begin{align*}
-                 & \forall\ x_0 \in \bigcap_{i \in I_n} E_i                                                                                         \\
+                 & x_0 \in \bigcap_{i \in I_n} E_i                                                                                                  \\
         \implies & \forall\ i \in I_n, x_0 \in E_i                                                                                                  \\
-        \implies & \forall\ i \in I_n, x_0 \in \text{int}(E_i)                                            & \text{(by Proposition \ref{1.2.15}(a))} \\
+        \implies & \forall\ i \in I_n, x_0 \in \text{int}_{(X, d)}(E_i)                                   & \text{(by Proposition \ref{1.2.15}(a))} \\
         \implies & \forall\ i \in I_n, \exists\ r_i \in \mathbf{R}^+ : B_{(X, d)}(x_0, r_i) \subseteq E_i & \text{(by Definition \ref{1.2.5})}      \\
         \implies & \forall\ i \in I_n, B_{(X, d)}\big(x_0, \min_{j \in I_n}(r_j)\big) \subseteq E_i       & \text{(\(I_n\) is finite)}              \\
         \implies & B_{(X, d)}\big(x_0, \min_{j \in I_n}(r_j)\big) \subseteq \bigcap_{i \in I_n} E_i                                                 \\
-        \implies & x_0 \in \text{int}\bigg(\bigcap_{i \in I_n} E_i\bigg)                                  & \text{(by Definition \ref{1.2.5})}
+        \implies & x_0 \in \text{int}_{(X, d)}\bigg(\bigcap_{i \in I_n} E_i\bigg).                        & \text{(by Definition \ref{1.2.5})}
     \end{align*}
-    and thus \(\bigcap_{i \in I_n} E_i \subseteq \text{int}(\bigcap_{i \in I_n} E_i)\).
-    By Remark \ref{1.2.6} we know that \(\text{int}(\bigcap_{i \in I_n} E_i) \subseteq \bigcap_{i \in I_n} E_i\), thus \(\bigcap_{i \in I_n} E_i = \text{int}(\bigcap_{i \in I_n} E_i)\) and by Proposition \ref{1.2.15}(a) \(\bigcap_{i \in I_n} E_i\) is open.
+    Since \(x_0\) is arbitrary, we have
+    \begin{align*}
+                 & \bigcap_{i \in I_n} E_i \subseteq \text{int}_{(X, d)}\bigg(\bigcap_{i \in I_n} E_i\bigg)                                           \\
+        \implies & \bigcap_{i \in I_n} E_i = \text{int}_{(X, d)}\bigg(\bigcap_{i \in I_n} E_i\bigg)         & \text{(by Remark \ref{1.2.6})}          \\
+        \implies & \bigg(\bigcap_{i \in I_n} E_i, d\bigg) \text{ is open in } X.                            & \text{(by Proposition \ref{1.2.15}(a))}
+    \end{align*}
 
-    Now we show that if \(\{F_1, \dots, F_n\}\) is a finite collection of closed sets in \(X\), then \(F_1 \cup F_2 \cup \dots \cup F_n\) is also closed.
-    Let \(I_n = \{i \in \mathbf{N} : 1 \leq i \leq n\}\).
+    Now suppose that \((F_i, d)\) is closed in \(X\) for every \(i \in I_n\).
     Then we have
     \begin{align*}
-                 & \forall\ i \in I_n, F_i \text{ is closed}                                                                                 \\
-        \implies & \forall\ i \in I_n, X \setminus F_i \text{ is open}                             & \text{(by Proposition \ref{1.2.15}(e))} \\
-        \implies & \bigcap_{i \in I_n} (X \setminus F_i) \text{ is open}                           & \text{(from prove above)}               \\
-        \implies & X \setminus \bigg(\bigcap_{i \in I_n} (X \setminus F_i)\bigg) \text{ is closed} & \text{(by Proposition \ref{1.2.15}(e))} \\
-        \implies & \bigcup_{i \in I_n} F_i \text{ is closed}.
+                 & \forall\ i \in I_n, (F_i, d) \text{ is closed in } X                                                                                           \\
+        \implies & \forall\ i \in I_n, (X \setminus F_i, d) \text{ is open in } X                                       & \text{(by Proposition \ref{1.2.15}(e))} \\
+        \implies & \bigg(\bigcap_{i \in I_n} (X \setminus F_i), d\bigg) \text{ is open in } X                           & \text{(from prove above)}               \\
+        \implies & \Bigg(X \setminus \bigg(\bigcap_{i \in I_n} (X \setminus F_i)\bigg), d\Bigg) \text{ is closed in } X & \text{(by Proposition \ref{1.2.15}(e))} \\
+        \implies & \bigg(\bigcup_{i \in I_n} F_i, d\bigg) \text{ is closed in } X.
     \end{align*}
 \end{proof}
 
 \begin{proof}{(g)}
-    We first show that if \(\{E_\alpha\}_{\alpha \in I}\) is a collection of open sets in \(X\), then \(\bigcup_{\alpha \in I} E_\alpha\) is also open.
-    We have
+    First that \((E_\alpha, d)\) is open in \(X\) for every \(\alpha \in I\).
+    Let \(x_0 \in \bigcup_{\alpha \in I} E_\alpha\).
+    Then we have
     \begin{align*}
-                 & \forall\ x_0 \in \bigcup_{\alpha \in I} E_\alpha                                                             \\
-        \implies & \exists\ \beta \in I : x_0 \in E_\beta                                                                       \\
-        \implies & x_0 \in \text{int}(E_\beta)                                        & \text{(by Proposition \ref{1.2.15}(a))} \\
-        \implies & \exists\ r \in \mathbf{R}^+ : B_{(X, d)}(x_0, r) \subseteq E_\beta & \text{(by Definition \ref{1.2.5})}      \\
-        \implies & B_{(X, d)}(x_0, r) \subseteq \bigcup_{\alpha \in I} E_\alpha                                                 \\
-        \implies & x_0 \in \text{int}\bigg(\bigcup_{\alpha \in I} E_\alpha\bigg)      & \text{(by Definition \ref{1.2.5})}
+                 & x_0 \in \bigcup_{\alpha \in I} E_\alpha                                                                                              \\
+        \implies & \exists\ \beta \in I : x_0 \in E_\beta                                                                                               \\
+        \implies & \exists\ \beta \in I : x_0 \in \text{int}_{(X, d)}(E_\beta)                                & \text{(by Proposition \ref{1.2.15}(a))} \\
+        \implies & \exists\ \beta \in I : \exists\ r \in \mathbf{R}^+ : B_{(X, d)}(x_0, r) \subseteq E_\beta  & \text{(by Definition \ref{1.2.5})}      \\
+        \implies & \exists\ r \in \mathbf{R}^+ : B_{(X, d)}(x_0, r) \subseteq \bigcup_{\alpha \in I} E_\alpha                                           \\
+        \implies & x_0 \in \text{int}_{(X, d)}\bigg(\bigcup_{\alpha \in I} E_\alpha\bigg).                    & \text{(by Definition \ref{1.2.5})}
     \end{align*}
-    and thus \(\bigcup_{\alpha \in I} E_\alpha \subseteq \text{int}(\bigcup_{\alpha \in I} E_\alpha)\).
-    By Remark \ref{1.2.6} we know that \(\text{int}(\bigcup_{\alpha \in I} E_\alpha) \subseteq \bigcup_{\alpha \in I} E_\alpha\), thus \(\bigcup_{\alpha \in I} E_\alpha = \text{int}(\bigcup_{\alpha \in I} E_\alpha)\) and by Proposition \ref{1.2.15}(a) \(\bigcup_{\alpha \in I} E_\alpha\) is open.
-
-    Now we show that if \(\{F_\alpha\}_{\alpha \in I}\) is a collection of closed sets in \(X\), then \(\bigcap_{\alpha \in I} F_\alpha\) is also closed.
-    We have
+    Since \(x_0\) is arbitrary, we have
     \begin{align*}
-                 & \forall\ \alpha \in I, F_\alpha \text{ is closed}                                                                                 \\
-        \implies & \forall\ \alpha \in I, X \setminus F_\alpha \text{ is open}                             & \text{(by Proposition \ref{1.2.15}(e))} \\
-        \implies & \bigcup_{\alpha \in I} (X \setminus F_\alpha) \text{ is open}                                                                     \\
-        \implies & X \setminus \bigg(\bigcup_{\alpha \in I} (X \setminus F_\alpha)\bigg) \text{ is closed} & \text{(by Proposition \ref{1.2.15}(e))} \\
-        \implies & \bigcap_{\alpha \in I} F_\alpha \text{ is closed}.
+                 & \bigcup_{\alpha \in I} E_\alpha \subseteq \text{int}_{(X, d)}\bigg(\bigcup_{\alpha \in I} E_\alpha\bigg)                                           \\
+        \implies & \bigcup_{\alpha \in I} E_\alpha = \text{int}_{(X, d)}\bigg(\bigcup_{\alpha \in I} E_\alpha\bigg)         & \text{(by Remark \ref{1.2.6})}          \\
+        \implies & \bigg(\bigcup_{\alpha \in I} E_\alpha, d\bigg) \text{ is open in } X.                                    & \text{(by Proposition \ref{1.2.15}(a))}
+    \end{align*}
+
+    Now suppose that \((F_\alpha, d)\) is closed in \(X\) for every \(\alpha \in I\).
+    Then we have
+    \begin{align*}
+                 & \forall\ \alpha \in I, (F_\alpha, d) \text{ is closed in } X                                                                                           \\
+        \implies & \forall\ \alpha \in I, (X \setminus F_\alpha, d) \text{ is open in } X                                       & \text{(by Proposition \ref{1.2.15}(e))} \\
+        \implies & \bigg(\bigcup_{\alpha \in I} (X \setminus F_\alpha), d\bigg) \text{ is open in } X                                                                     \\
+        \implies & \Bigg(X \setminus \bigg(\bigcup_{\alpha \in I} (X \setminus F_\alpha)\bigg), d\Bigg) \text{ is closed in } X & \text{(by Proposition \ref{1.2.15}(e))} \\
+        \implies & \bigg(\bigcap_{\alpha \in I} F_\alpha, d\bigg) \text{ is closed in } X.
     \end{align*}
 \end{proof}
 
 \begin{proof}{(h)}
-    We first show that \(\text{int}(E)\) is open.
-    We have
+    We first show that \(\text{int}_{(X, d)}(E)\) is open in \(X\).
+    Let \(x_0 \in \text{int}_{(X, d)}(E)\).
+    Then we have
     \begin{align*}
-                 & \forall\ x_0 \in \text{int}(E)                                                                              \\
-        \implies & \exists\ r \in \mathbf{R}^+ : B_{(X, d)}(x_0, r) \subseteq E      & \text{(by Definition \ref{1.2.5})}      \\
-        \implies & B_{(X, d)}(x_0, r) \text{ is open}                                & \text{(by Proposition \ref{1.2.15}(c))} \\
-        \implies & \forall\ y \in B_{(X, d)}(x_0, r), \exists\ r' \in \mathbf{R}^+ :                                           \\
-                 & B_{(X, d)}(y, r') \subseteq B_{(X, d)}(x_0, r) \subseteq E        & \text{(by Definition \ref{1.2.5})}      \\
-        \implies & \forall\ y \in B_{(X, d)}(x_0, r), y \in \text{int}(E)            & \text{(by Definition \ref{1.2.5})}      \\
-        \implies & B_{(X, d)}(x_0, r) \subseteq \text{int}(E)                                                                  \\
-        \implies & x_0 \in \text{int}\big(\text{int}(E)\big)                         & \text{(by Definition \ref{1.2.5})}
+                 & x_0 \in \text{int}_{(X, d)}(E)                                                                                                            \\
+        \implies & \exists\ r \in \mathbf{R}^+ : B_{(X, d)}(x_0, r) \subseteq E                                    & \text{(by Definition \ref{1.2.5})}      \\
+        \implies & \exists\ r \in \mathbf{R}^+ : \forall\ y \in B_{(X, d)}(x_0, r), \exists\ r' \in \mathbf{R}^+ :                                           \\
+                 & B_{(X, d)}(y, r') \subseteq B_{(X, d)}(x_0, r) \subseteq E                                      & \text{(by Proposition \ref{1.2.15}(c))} \\
+        \implies & \exists\ r \in \mathbf{R}^+ : \forall\ y \in B_{(X, d)}(x_0, r), y \in \text{int}_{(X, d)}(E)   & \text{(by Definition \ref{1.2.5})}      \\
+        \implies & \exists\ r \in \mathbf{R}^+ : B_{(X, d)}(x_0, r) \subseteq \text{int}_{(X, d)}(E)                                                         \\
+        \implies & x_0 \in \text{int}_{(X, d)}\big(\text{int}_{(X, d)}(E)\big).                                    & \text{(by Definition \ref{1.2.5})}
     \end{align*}
-    and thus \(\text{int}(E) \subseteq \text{int}\big(\text{int}(E)\big)\).
-    By Remark \ref{1.2.6} we know that \(\text{int}\big(\text{int}(E)\big) \subseteq \text{int}(E)\), thus \(\text{int}(E) = \text{int}\big(\text{int}(E)\big)\) and by Proposition \ref{1.2.15}(a) \(\text{int}(E)\) is open.
-
-    Next we show that if \(V \subseteq E\) and \(V\) is open, then \(V \subseteq \text{int}(E)\).
-    We have
+    Since \(x_0\) is arbitrary, we have
     \begin{align*}
-                 & \forall\ V \subseteq E, V \text{ is open}                                                   \\
-        \implies & V = \text{int}(V) \subseteq E                     & \text{(by Proposition \ref{1.2.15}(a))} \\
-        \implies & \forall\ x_0 \in V, \exists\ r \in \mathbf{R}^+ :                                           \\
-                 & B_{(X, d)}(x_0, r) \subseteq V \subseteq E        & \text{(by Definition \ref{1.2.5})}      \\
-        \implies & \forall\ x_0 \in V, x_0 \in \text{int}(E)         & \text{(by Definition \ref{1.2.5})}      \\
-        \implies & V \subseteq \text{int}(E).
+                 & \text{int}_{(X, d)}(E) \subseteq \text{int}_{(X, d)}\big(\text{int}_{(X, d)}(E)\big)                                           \\
+        \implies & \text{int}_{(X, d)}(E) = \text{int}_{(X, d)}\big(\text{int}_{(X, d)}(E)\big)         & \text{(by Remark \ref{1.2.6})}          \\
+        \implies & \big(\text{int}_{(X, d)}(E), d\big) \text{ is open in } X.                           & \text{(by Proposition \ref{1.2.15}(a))}
     \end{align*}
 
-    Next we show that \(\overline{E}\) is closed.
-    We have
+    Next we show that if \(V \subseteq E\) and \((V, d)\) is open in \(X\), then \(V \subseteq \text{int}_{(X, d)}(E)\).
     \begin{align*}
-                 & \forall\ x_0 \in X \setminus \overline{E}                                                                     \\
-        \implies & \exists\ r \in \mathbf{R}^+ : B_{(X, d)}(x_0, r) \cap E = \emptyset & \text{(by Definition \ref{1.2.9})}      \\
-        \implies & B_{(X, d)}(x_0, r) \text{ is open}                                  & \text{(by Proposition \ref{1.2.15}(c))} \\
-        \implies & \forall\ y \in B_{(X, d)}(x_0, r), \exists\ r' \in \mathbf{R}^+ :                                             \\
-                 & B_{(X, d)}(y, r') \subseteq B_{(X, d)}(x_0, r)                      & \text{(by Definition \ref{1.2.5})}      \\
-        \implies & \forall\ y \in B_{(X, d)}(x_0, r), \exists\ r' \in \mathbf{R}^+ :                                             \\
-                 & B_{(X, d)}(y, r') \cap E = \emptyset                                                                          \\
-        \implies & y \in X \setminus \overline{E}                                      & \text{(by Definition \ref{1.2.9})}      \\
-        \implies & B_{(X, d)}(x_0, r) \subseteq X \setminus \overline{E}                                                         \\
-        \implies & x_0 \in \text{int}(X \setminus \overline{E})                        & \text{(by Definition \ref{1.2.5})}
+                 & (V \subseteq E) \land \big((V, d) \text{ is open in } X\big)                                           \\
+        \implies & V = \text{int}_{(X, d)}(V) \subseteq E                       & \text{(by Proposition \ref{1.2.15}(a))} \\
+        \implies & \forall\ x_0 \in V, \exists\ r \in \mathbf{R}^+ :                                                      \\
+                 & B_{(X, d)}(x_0, r) \subseteq V \subseteq E                   & \text{(by Definition \ref{1.2.5})}      \\
+        \implies & \forall\ x_0 \in V, x_0 \in \text{int}_{(X, d)}(E)           & \text{(by Definition \ref{1.2.5})}      \\
+        \implies & V \subseteq \text{int}_{(X, d)}(E).
     \end{align*}
-    and thus \(X \setminus \overline{E} \subseteq \text{int}(X \setminus \overline{E})\).
-    By Remark \ref{1.2.6} we know that \(\text{int}(X \setminus \overline{E}) \subseteq X \setminus \overline{E}\), thus \(X \setminus \overline{E} = \text{int}(X \setminus \overline{E})\) and by Proposition \ref{1.2.15}(a) \(X \setminus \overline{E}\) is open.
-    By Proposition \ref{1.2.15}(e) we know that \(\overline{E}\) is closed.
 
-    Finally we show that if \(E \subseteq K \subseteq X\) and \(K\) is closed, then \(\overline{E} \subseteq K\).
-    We have
+    Next we show that \((\overline{E}_{(X, d)}, d)\) is closed in \(X\).
+    Let \(x_0 \in X \setminus \overline{E}_{(X, d)}\).
+    Then we have
     \begin{align*}
-                 & \forall\ x_0 \in \overline{E}                                                                                   \\
-        \implies & \forall\ r \in \mathbf{R}^+, B_{(X, d)}(x_0, r) \cap E \neq \emptyset & \text{(by Definition \ref{1.2.9})}      \\
-        \implies & \forall\ r \in \mathbf{R}^+, B_{(X, d)}(x_0, r) \cap K \neq \emptyset & (E \subseteq K)                         \\
-        \implies & x_0 \in \overline{K}                                                  & \text{(by Definition \ref{1.2.9})}      \\
-        \implies & x_0 \in K                                                             & \text{(by Proposition \ref{1.2.15}(b))}
+                 & x_0 \in X \setminus \overline{E}_{(X, d)}                                                                                                          \\
+        \implies & \exists\ r \in \mathbf{R}^+ : B_{(X, d)}(x_0, r) \cap E = \emptyset                                      & \text{(by Definition \ref{1.2.9})}      \\
+        \implies & \exists\ r \in \mathbf{R}^+ : \forall\ y \in B_{(X, d)}(x_0, r), \exists\ r' \in \mathbf{R}^+ :                                                    \\
+                 & \begin{cases}
+            B_{(X, d)}(y, r') \subseteq B_{(X, d)}(x_0, r) \\
+            B_{(X, d)}(y, r') \cap E = \emptyset
+        \end{cases}                                                                               & \text{(by Proposition \ref{1.2.15}(c))} \\
+        \implies & \exists\ r \in \mathbf{R}^+ : \forall\ y \in B_{(X, d)}(x_0, r), y \in X \setminus \overline{E}_{(X, d)} & \text{(by Definition \ref{1.2.9})}      \\
+        \implies & \exists\ r \in \mathbf{R}^+ : B_{(X, d)}(x_0, r) \subseteq X \setminus \overline{E}_{(X, d)}                                                       \\
+        \implies & x_0 \in \text{int}_{(X, d)}(X \setminus \overline{E}_{(X, d)}).                                          & \text{(by Definition \ref{1.2.5})}
     \end{align*}
-    and thus \(\overline{E} \subseteq K\).
+    Since \(x_0\) is arbitrary, we have
+    \begin{align*}
+                 & X \setminus \overline{E}_{(X, d)} \subseteq \text{int}_{(X, d)}(X \setminus \overline{E}_{(X, d)})                                           \\
+        \implies & X \setminus \overline{E}_{(X, d)} = \text{int}_{(X, d)}(X \setminus \overline{E}_{(X, d)})         & \text{(by Remark \ref{1.2.6})}          \\
+        \implies & \big(X \setminus \overline{E}_{(X, d)}, d\big) \text{ is open in } X                               & \text{(by Proposition \ref{1.2.15}(a))} \\
+        \implies & \big(\overline{E}_{(X, d)}, d\big) \text{ is closed in } X.                                        & \text{(by Proposition \ref{1.2.15}(e))}
+    \end{align*}
+
+    Finally we show that if \(E \subseteq K \subseteq X\) and \((K, d)\) is closed in \(X\), then \(\overline{E}_{(X, d)} \subseteq K\).
+    \begin{align*}
+                 & (E \subseteq K) \land \big((K, d) \text{ is closed in } X\big)                                                                                          \\
+        \implies & \forall\ x_0 \in \overline{E}_{(X, d)}, \forall\ r \in \mathbf{R}^+, B_{(X, d)}(x_0, r) \cap E \neq \emptyset & \text{(by Definition \ref{1.2.9})}      \\
+        \implies & \forall\ x_0 \in \overline{E}_{(X, d)}, \forall\ r \in \mathbf{R}^+, B_{(X, d)}(x_0, r) \cap K \neq \emptyset & (E \subseteq K)                         \\
+        \implies & \forall\ x_0 \in \overline{E}_{(X, d)}, x_0 \in \overline{K}_{(X, d)}                                         & \text{(by Definition \ref{1.2.9})}      \\
+        \implies & \overline{E}_{(X, d)} \subseteq \overline{K}_{(X, d)}                                                                                                   \\
+        \implies & \overline{E}_{(X, d)} \subseteq K.                                                                            & \text{(by Proposition \ref{1.2.15}(b))}
+    \end{align*}
 \end{proof}
 
 \exercisesection
