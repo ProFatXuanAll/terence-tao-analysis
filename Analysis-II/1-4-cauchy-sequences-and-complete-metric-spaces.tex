@@ -39,9 +39,9 @@
 \end{proposition}
 
 \begin{proof}
-    We first show that if \(L\) is a limit point of \((x^{(n)})_{n = m}^\infty\), then there exists a subsequence of \((x^{(n)})_{n = m}^\infty\) which converges to \(L\).
+    We first show that if \(L\) is a limit point of \((x^{(n)})_{n = m}^\infty\) in \((X, d)\), then there exists a subsequence of \((x^{(n)})_{n = m}^\infty\) which converges to \(L\) with respect to \(d\).
     Let \(N \in \mathbf{N}\).
-    Since \(L\) is a limit point of \((x^{(n)})_{n = m}^\infty\), by Definition \ref{1.4.4} we know that
+    Since \(L\) is a limit point of \((x^{(n)})_{n = m}^\infty\) in \((X, d)\), by Definition \ref{1.4.4} we know that
     \[
         \forall\ \varepsilon \in \mathbf{R}^+, \forall\ N \geq m, \exists\ n \geq N : d(x^{(n)}, L) \leq \varepsilon.
     \]
@@ -49,23 +49,30 @@
     \[
         \forall\ N \geq m, \exists\ n \geq N : d(x^{(n)}, L) \leq \frac{1}{j}.
     \]
-    Note that such \(n\) depends on the choice of \(j\), thus we can write \(x^{(n_j)}\) instead of \(x^{(n)}\) (here we use axiom of choice).
+    Now we define \(n_j\) as follow:
+    \[
+        n_j = \begin{cases}
+            \min\big\{n \in \mathbf{Z}^+ : d(x^{(n)}, L) \leq 1\big\}                                           & \text{if } j = 1    \\
+            \min\Big\{n \in \mathbf{Z}^+ : (n > n_{j - 1}) \land \big(d(x^{(n)}, L) \leq \frac{1}{j}\big)\Big\} & \text{if } j \neq 1
+        \end{cases}
+    \]
+    By well-ordering theorem \(n_j\) is well-defined for every \(j \in \mathbf{Z}^+\).
     By applying squeeze test to the subsequence \((x^{(n_j)})_{j = 1}^\infty\) we have
     \begin{align*}
                  & 0 \leq d(x^{(n_j)}, L) \leq \frac{1}{j}                                                                     \\
         \implies & 0 = \lim_{j \to \infty} 0 \leq \lim_{j \to \infty} d(x^{(n_j)}, L) \leq \lim_{j \to \infty} \frac{1}{j} = 0 \\
         \implies & \lim_{j \to \infty} d(x^{(n_j)}, L) = 0
     \end{align*}
-    and thus by Definition \ref{1.1.14} the sequence \((x^{(n_j)})_{j = 1}^\infty\) converges to \(L\).
+    and thus by Definition \ref{1.1.14} the sequence \((x^{(n_j)})_{j = 1}^\infty\) converges to \(L\) with respect to \(d\).
 
-    Now we show that if a subsequence of \((x^{(n)})_{n = m}^\infty\) converges to \(L\), then \(L\) is a limit point of \((x^{(n)})_{n = m}^\infty\).
+    Now we show that if a subsequence of \((x^{(n)})_{n = m}^\infty\) converges to \(L\) with respect to \(d\), then \(L\) is a limit point of \((x^{(n)})_{n = m}^\infty\) in \((X, d)\).
     Let \(N \in \mathbf{N}\) and let \((x^{(n_j)})_{j = 1}^\infty\) be a subsequence of \((x^{(n)})_{n = 0}^\infty\) where \(\lim_{j \to \infty} d(x^{(n_j)}, L) = 0\).
     Then we have
     \begin{align*}
                  & \lim_{n \to \infty} d(x^{(n_j)}, L) = 0                                                                                                                      \\
         \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ j \geq 1 : d(x^{(n_j)}, L) \leq \varepsilon                            & \text{(by Definition \ref{1.1.14})} \\
         \implies & \forall\ \varepsilon \in \mathbf{R}^+,  \forall\ N \geq m, \exists\ n \geq n_j \geq N : d(x^{(n)}, L) \leq \varepsilon                                       \\
-        \implies & L \text{ is a limit point of } (x^{(n)})_{n = m}^\infty.                                                               & \text{(by Definition \ref{1.4.4})}
+        \implies & L \text{ is a limit point of } (x^{(n)})_{n = m}^\infty \text{ in } (X, d).                                            & \text{(by Definition \ref{1.4.4})}
     \end{align*}
 \end{proof}
 
