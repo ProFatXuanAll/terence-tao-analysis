@@ -89,7 +89,7 @@
 
 \begin{proof}
     Since \((Y, d|_{Y \times Y})\) is compact, by Proposition \ref{1.5.5} we know that \((Y, d)\) is complete and bounded.
-    Thus by Proposition \ref{1.4.12}(a) we know that \(Y\) is closed in \(X\).
+    Thus by Proposition \ref{1.4.12}(a) we know that \(Y\) is closed in \((X, d)\).
 \end{proof}
 
 \begin{theorem}[Heine-Borel theorem]\label{1.5.7}
@@ -99,10 +99,10 @@
 \end{theorem}
 
 \begin{proof}
-    We first show that for any \(E \subseteq \mathbf{R}^n\), \((E, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\) is closed and bounded iff \((E, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\) is compact.
-    By Exercise \ref{ex 1.1.7} we know that \((\mathbf{R}^n, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\) is a metric space, and by Corollary \ref{1.5.6} we know that if \((E, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\) is compact, then \((E, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\) is closed and bounded.
-    So we only need to show that if \((E, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\) is closed and bounded, then \((E, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\) is compact.
-    Suppose that \(E \subseteq \mathbf{R}^n\) and \((E, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\) is closed and bounded.
+    We first show that for any \(E \subseteq \mathbf{R}^n\), \(E\) is closed and bounded in \((\mathbf{R}^n, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\) iff \((E, d_{l^1}|_{E \times E})\) is compact.
+    By Exercise \ref{ex 1.1.7} we know that \((\mathbf{R}^n, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\) is a metric space, and by Corollary \ref{1.5.6} we know that if \((E, d_{l^1}|_{E \times E})\) is compact, then \(E\) is closed and bounded in \((\mathbf{R}^n, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\).
+    So we only need to show that if \(E\) is closed and bounded in \((\mathbf{R}^n, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\), then \((E, d_{l^1}|_{E \times E})\) is compact.
+    Suppose that \(E \subseteq \mathbf{R}^n\), \(E\) is closed and bounded in \((\mathbf{R}^n, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\).
     Since \(E \subseteq \mathbf{R}^n\), we know that for every \(x \in E\), \(x\) is in the form \(x = (x_1, \dots, x_n) = (x_i)_{i = 1}^n \in \mathbf{R}^n\).
     Let \(I_n = \{i \in \mathbf{N} : 1 \leq i \leq n\}\).
     For each \(i \in I_n\), let \(E_i\) be the set
@@ -110,10 +110,10 @@
         E_i = \{y \in \mathbf{R} | \exists\ x \in E : x_i = y\},
     \]
     i.e., \(E_i\) is the collection of \(i^{\text{th}}\) coordinate of all element \(x \in E\).
-    We claim that for every \(i \in I_n\), \(E_i\) is a subset of some closed interval and thus \((E_i, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) is bounded.
+    We claim that for every \(i \in I_n\), \(E_i\) is a subset of some closed interval and thus \(E_i\) is bounded in \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
     This is true since
     \begin{align*}
-                 & (E, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n}) \text{ is bounded}                                                                                                                           \\
+                 & E \text{ is bounded in } (\mathbf{R}^n, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})                                                                                                          \\
         \implies & \forall\ y \in \mathbf{R}^n, \exists\ r \in \mathbf{R}^+ : E \subseteq B_{(\mathbf{R}^n, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})}(y, r)             & \text{(by Definition \ref{1.5.3})} \\
         \implies & \forall\ y \in \mathbf{R}^n, \exists\ r \in \mathbf{R}^+ : \forall\ x \in E, x \in B_{(\mathbf{R}^n, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})}(y, r)                                      \\
         \implies & \forall\ y \in \mathbf{R}^n, \exists\ r \in \mathbf{R}^+ : \forall\ x \in E,                                                                                                                  \\
@@ -126,19 +126,19 @@
                  & E_i \subseteq (y_i - r, y_i + r) \subseteq [y_i - r, y_i + r]                                                                                                                                 \\
         \implies & \forall\ y \in \mathbf{R}^n, \exists\ r \in \mathbf{R}^+ : \forall\ i \in I_n,                                                                                                                \\
                  & E_i \subseteq B_{(\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})}(y_i, r)                                                                          & \text{(by Definition \ref{1.2.1})} \\
-        \implies & \forall\ i \in I_n, (E_i, d_{l^1}|_{\mathbf{R} \times \mathbf{R}}) \text{ is bounded}.                                                                   & \text{(by Definition \ref{1.5.3})}
+        \implies & \forall\ i \in I_n, E_i \text{ is bounded in } (\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}}).                                                    & \text{(by Definition \ref{1.5.3})}
     \end{align*}
 
-    Let \(P(n)\) be the statement ``If \(F \subseteq \mathbf{R}^n\) such that for every \(i \in I_n\), \((F_i, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) is bounded and \(F_i \subseteq C_i\) for some closed interval \(C_i \subseteq \mathbf{R}\), then for any sequence in \(F\) there exists a subsequence which converges in \(\mathbf{R}^n\) with respect to \(d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n}\)''.
+    Let \(P(n)\) be the statement ``If \(F \subseteq \mathbf{R}^n\) such that for every \(i \in I_n\), \(F_i\) is bounded in \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) and \(F_i \subseteq C_i\) for some closed interval \(C_i \subseteq \mathbf{R}\), then for any sequence in \(F\) there exists a subsequence which converges in \(\mathbf{R}^n\) with respect to \(d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n}\)''.
     We use induction on \(n\) to show that \(P(n)\) is true for all \(n \in \mathbf{Z}^+\).
 
-    For \(n = 1\), by hypothesis we have \((F, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n}) = (F_1, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) is bounded and \(F_1 \subseteq C_1\) for some closed interval \(C_1 \subseteq \mathbf{R}\).
+    For \(n = 1\), by hypothesis we have \(F = F_1\) is bounded in \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) and \(F_1 \subseteq C_1\) for some closed interval \(C_1 \subseteq \mathbf{R}\).
     By Heine-Borel theorem on real line (Theorem 9.1.24 in Analysis I) we know that for every sequence \((a^{(k)})_{k = 1}^\infty\) in \(F\), there exists a subsequence \((a^{(k_j)})_{j = 1}^\infty\) which converges in \(C_1 \subseteq \mathbf{R}\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
     Thus the base case holds.
 
     Suppose inductively that \(P(n)\) is true for some \(n \geq 1\).
     Then we need to show that \(P(n + 1)\) is true.
-    Let \(F \subseteq \mathbf{R}^{n + 1}\) such that for every \(i \in I_{n + 1}\), \((F_i, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) is bounded and \(F_i \subseteq C_i\) for some closed interval \(C_i \in \mathbf{R}\).
+    Let \(F \subseteq \mathbf{R}^{n + 1}\) such that for every \(i \in I_{n + 1}\), \(F_i\) is bounded in \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) and \(F_i \subseteq C_i\) for some closed interval \(C_i \in \mathbf{R}\).
     Let \((a^{(k)})_{k = 1}^\infty\) be arbitrary sequence in \(F\).
     We define \((b^{(k)})_{k = 1}^\infty\) by setting \(b^{(k)} = (a_1^{(k)}, \dots, a_n^{(k)})\) for each \(k \geq 1\), i.e., \(b^{(k)}\) is the first \(n\) coordinates of \(a^{(k)}\).
     Since for all \(k \geq 1\), \(b^{(k)} \in \mathbf{R}^n\) and \(b_i^{(k)} \in F_i\) for all \(i \in I_n\), by induction hypothesis there exists a subsequence \((b^{(k_j)})_{j = 1}^\infty\) which converges in \(\mathbf{R}^n\) with respect to \(d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n}\).
@@ -147,12 +147,13 @@
     In particular, \((b^{k_{j_p}})_{p = 1}^\infty\) converges in \(\mathbf{R}^n\) with respect to \(d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n}\).
     Thus by Proposition \ref{1.1.18}(b)(d) we know that \((a^{(k_{j_p})})_{p = 1}^\infty\) converges in \(\mathbf{R}^{n + 1}\) with respect to \(d_{l^1}|_{\mathbf{R}^{n + 1} \times \mathbf{R}^{n + 1}}\), and this close the induction.
 
-    From the proof above we know that if \(E \subseteq \mathbf{R}^n\) such that \((E, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\) is closed and bounded, then for every \(i \in I_n\), \((E_i, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) is bounded and \(E_i \subseteq C_i\) for some closed interval \(C_i \subseteq \mathbf{R}\).
+    From the proof above we know that if \(E \subseteq \mathbf{R}^n\) such that \(E\) is closed and bounded in \((\mathbf{R}^n, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\), then for every \(i \in I_n\), \(E_i\) is bounded in \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) and \(E_i \subseteq C_i\) for some closed interval \(C_i \subseteq \mathbf{R}\).
     Thus we know that for every sequence in \(E\) there exists a subsequence which converges in \(\mathbf{R}^n\) with respect to \(d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n}\).
-    Since \(E\) is closed, by Proposition \ref{1.2.15}(b) we know that such subsequence must converges in \(E\) with respect to \(d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n}\).
-    Thus by Definition \ref{1.5.1} \((E, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\) is compact.
-    Since every sequence in \(E\) has a subsequence which converges in \(E\) with respect to \(d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n}\), by Proposition \ref{1.1.18} we know that such subsequence also converges with respect to \(d_{l^2}|_{\mathbf{R}^n \times \mathbf{R}^n}\) and \(d_{l^\infty}|_{\mathbf{R}^n \times \mathbf{R}^n}\).
-    Thus \((E, d_{l^2}|_{\mathbf{R}^n \times \mathbf{R}^n})\) and \((E, d_{l^\infty}|_{\mathbf{R}^n \times \mathbf{R}^n})\) are also compact when \((E, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\) is closed and bounded.
+    Since \(E\) is closed in \((\mathbf{R}^n, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\), by Proposition \ref{1.2.15}(b) we know that such subsequence must converges in \(E\) with respect to \(d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n}\).
+    Thus by Definition \ref{1.5.1} \((E, d_{l^1}|_{E \times E})\) is compact.
+
+    Since every sequence in \(E\) has a subsequence which converges in \(E\) with respect to \(d_{l^1}|_{E \times E}\), by Proposition \ref{1.1.18} we know that such subsequence also converges with respect to \(d_{l^2}|_{E \times E}\) and \(d_{l^\infty}|_{E \times E}\).
+    Thus \((E, d_{l^2}|_{E \times E})\) and \((E, d_{l^\infty}|_{E \times E})\) are compact iff \((E, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\) is compact.
 \end{proof}
 
 \begin{note}
