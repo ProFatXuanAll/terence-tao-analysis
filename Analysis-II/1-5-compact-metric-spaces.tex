@@ -441,7 +441,7 @@
 
 \begin{proof}
     Let \(E = \{e^{(n)} : n \in \mathbf{N}\}\).
-    We first show that \((E, d_{l^1})\) is bounded in \(X\).
+    We first show that \(E\) is bounded in \((X, d_{l^1})\).
     Since
     \[
         \sum_{j = 0}^\infty \abs*{e_j^{(n)}} = 1
@@ -466,10 +466,10 @@
         B_{(X, d_{l^1})}\bigg((a_j)_{j = 0}^\infty, \sum_{j = 0}^\infty \abs*{a_j} + \sup_{n \in \mathbf{N}}\abs*{a_n - 1} + 1\bigg)
     \]
     contains the set \(E\) for every \((a_j)_{j = 0}^\infty \in X\).
-    Thus by Definition \ref{1.5.3} we know that \((E, d_{l^1})\) is bounded in \(X\).
+    Thus by Definition \ref{1.5.3} we know that \(E\) is bounded in \((X, d_{l^1})\).
 
-    Next we show that \((E, d_{l^1})\) is closed.
-    Let \(\overline{E}\) be the closure of \((E, d_{l^1})\) in \(X\) and let \(x \in \overline{E}\).
+    Next we show that \(E\) is closed in \((X, d_{l^1})\).
+    Let \(\overline{E}_{(X, d_{l^1})}\) be the closure of \(E\) and let \(x \in \overline{E}_{(X, d_{l^1})}\).
     By Proposition \ref{1.2.10}(c) we know that there exists a sequence \((a^{(k)})_{k = 0}^\infty\) in \(E\) such that \(\lim_{k \to \infty} d_{l^1}\big((a_j^{(k)})_{j = 0}^\infty, x\big) = 0\).
     By Lemma \ref{1.4.7} we know that \((a^{(k)})_{k = 0}^\infty\) is a Cauchy sequence in \((X, d_{l^1})\).
     Let \(k, k' \in \mathbf{N}\).
@@ -483,7 +483,7 @@
     \]
     Since \(a^{(k)}, a^{(k')} \in E\), we know that \(a^{(k)} = e^{(n)}\) and \(a^{(k')} = e^{(n')}\) for some \(n, n' \in \mathbf{N}\) and
     \[
-        d(a^{(k)}, a^{(k')}) = d(e^{(n)}, e^{(n')}) = \begin{cases}
+        d_{l^1}(a^{(k)}, a^{(k')}) = d_{l^1}(e^{(n)}, e^{(n')}) = \begin{cases}
             0 & \text{if } n = n';    \\
             2 & \text{if } n \neq n'.
         \end{cases}
@@ -495,19 +495,24 @@
         \implies & \exists\ N \in \mathbf{N} : \forall\ k \geq N, d_{l^1}(a^{(k)}, a^{(N)}) = 0                                                              \\
         \implies & \exists\ N \in \mathbf{N} : \lim_{k \to \infty} d_{l^1}(a^{(k)}, a^{(N)}) = 0                      & \text{(by Definition \ref{1.1.14})}  \\
         \implies & \exists\ N \in \mathbf{N} : a^{(N)} = x                                                            & \text{(by Proposition \ref{1.1.20})} \\
-        \implies & x \in E
+        \implies & x \in E.
     \end{align*}
-    Since \(x\) is arbitrary adherent point, by Proposition \ref{1.2.15}(b) we know that \((E, d_{l^1})\) is closed in \(X\).
+    Since \(x\) is arbitrary adherent point of \(E\) in \((X, d_{l^1})\), we have
+    \begin{align*}
+                 & \overline{E}_{(X, d_{l^1})} \subseteq E                                           \\
+        \implies & \overline{E}_{(X, d_{l^1})} = E         & \text{(by Proposition \ref{1.2.10}(c))} \\
+        \implies & E \text{ is closed in } (X, d_{l^1}).   & \text{(by Proposition \ref{1.2.15}(b))}
+    \end{align*}
 
-    Finally we show that \(E\) is not compact.
+    Finally we show that \((E, d_{l^1}|_{E \times E})\) is not compact.
     Let \((e^{(n)})_{n = 0}^\infty\) be a sequence and let \(n, n' \in \mathbf{N}\).
     Since \((e^{(n)})_{n = 0}^\infty\) is a sequence in \(E\), we know that
     \[
-        \forall\ N \in \mathbf{N}, \forall\ n, n' \geq N, d(e^{(n)}, e^{(n')}) = 2.
+        \forall\ N \in \mathbf{N}, \forall\ n, n' \geq N, d_{l^1}(e^{(n)}, e^{(n')}) = 2.
     \]
-    Thus by Definition \ref{1.4.6} \((e^{(n)})_{n = 0}^\infty\) is not a Cauchy sequence in \((E, d_{l^1})\).
-    Similarly any subsequence of \((e^{(n)})_{n = 0}^\infty\) is not a Cauchy sequence in \((E, d_{l^1})\).
-    By Lemma \ref{1.4.7} this means no subsequence is convergent in \((E, d_{l^1})\), and by Definition \ref{1.5.1} \((E, d_{l^1})\) is not compact.
+    Thus by Definition \ref{1.4.6} \((e^{(n)})_{n = 0}^\infty\) is not a Cauchy sequence in \((E, d_{l^1}|_{E \times E})\).
+    Similarly any subsequence of \((e^{(n)})_{n = 0}^\infty\) is not a Cauchy sequence in \((E, d_{l^1}|_{E \times E})\).
+    By Lemma \ref{1.4.7} this means no subsequence is convergent in \((E, d_{l^1}|_{E \times E})\), and by Definition \ref{1.5.1} \((E, d_{l^1}|_{E \times E})\) is not compact.
 \end{proof}
 
 \begin{exercise}\label{ex 1.5.9}
