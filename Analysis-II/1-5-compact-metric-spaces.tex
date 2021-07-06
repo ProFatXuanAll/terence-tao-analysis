@@ -529,7 +529,7 @@
 \end{proof}
 
 \begin{exercise}\label{ex 1.5.10}
-    A metric space \((X, d)\) is called \emph{totally bounded} if for every \(\varepsilon > 0\), there exists a integer \(n\) and a finite number of balls \(B(x^{(1)}, \varepsilon), \dots, B(x^{(n)}, \varepsilon)\) which cover \(X\) (i.e., \(X = \bigcup_{i = 1}^n B(x^{(i)}, \varepsilon)\)).
+    A metric space \((X, d)\) is called \emph{totally bounded} if for every \(\varepsilon > 0\), there exists a natural number \(n\) and a finite number of balls \(B(x^{(1)}, \varepsilon), \dots, B(x^{(n)}, \varepsilon)\) which cover \(X\) (i.e., \(X = \bigcup_{i = 1}^n B(x^{(i)}, \varepsilon)\)).
     (Note that \(x^{(1)}, \dots, x^{(n)} \in X\))
     \begin{enumerate}
         \item Show that every totally bounded space is bounded.
@@ -540,20 +540,47 @@
 \end{exercise}
 
 \begin{proof}{(a)}
-    Suppose that \((X, d)\) is totally bounded.
-    Then \(\forall\ \varepsilon \in \mathbf{R}^+\), \(\exists\ n \in \mathbf{N}\) such that \(X = \bigcup_{i = 1}^n B_{(X, d)}(x^{(i)}, \varepsilon)\).
-    Fix such \(\varepsilon\) and let \(r_{\varepsilon} = \max_{1 \leq i \leq n} d(x_1, x_i)\).
+    Suppose that \(X\) is totally bounded in \((X, d)\).
+    Let \(i, j, n \in \mathbf{N}\).
+    Then by definition we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ n \in \mathbf{N} : X = \bigcup_{i = 1}^n B_{(X, d)}(x^{(i)}, \varepsilon).
+    \]
+    In particular, we have
+    \[
+        \exists\ n \in \mathbf{N} : X = \bigcup_{i = 1}^n B_{(X, d)}(x^{(i)}, 1).
+    \]
+    If \(n = 0\), then we have \(X = \emptyset\) and by Definition \ref{1.5.3} \(\emptyset\) is bounded in \((\emptyset, d)\).
+    So suppose that \(n > 0\).
+    Now we use axiom of choice to choose one finite collection of \(x^{(1)}, \dots, x^{(n)} \in X\).
+    Let \(I_n = \{i \in \mathbf{N} : 1 \leq i \leq n\}\) and let \(r = \max\{d(x^{(i)}, x^{(1)}) : i \in I_n\}\).
+    We know that \(r\) is well-defined since \(I_n\) is finite.
     Then have
     \begin{align*}
-                 & \forall\ y \in X                                                                                                                    \\
-        \implies & y \in \bigcup_{i = 1}^n B_{(X, d)}(x^{(i)}, \varepsilon)                                                                            \\
-        \implies & \exists\ j \in \mathbf{N} \land 1 \leq j \leq n : y \in B_{(X, d)}(x^{(j)}, \varepsilon)                                            \\
-        \implies & d(y, x^{(j)}) < \varepsilon                                                              & \text{(by Definition \ref{1.2.1})}       \\
-        \implies & d(y, x^{(j)}) + d(x^{(j)}, x^{(1)}) < \varepsilon + r_{\varepsilon}                                                                 \\
-        \implies & d(y, x^{(1)}) < \varepsilon + r_{\varepsilon}                                            & \text{(by Definition \ref{1.1.2}(c)(d))} \\
-        \implies & y \in B_{(X, d)}(x^{(1)}, \varepsilon + r_{\varepsilon}).                                & \text{(by Definition \ref{1.2.1})}
+                 & \forall\ i \in I_n, \forall\ y \in B_{(X, d)}(x^{(i)}, 1), d(y, x^{(i)}) < 1   & \text{(by Definition \ref{1.2.1})}             \\
+        \implies & \forall\ i \in I_n, \forall\ y \in B_{(X, d)}(x^{(i)}, 1),                                                                      \\
+                 & d(y, x^{(1)}) \leq d(y, x^{(i)}) + d(x^{(i)}, x^{(1)}) < 1 + r                 & \text{(by Definition \ref{1.1.2}(d))}          \\
+        \implies & \forall\ y \in \bigcup_{i = 1}^n B_{(X, d)}(x^{(i)}, 1), d(y, x^{(1)}) < 1 + r                                                  \\
+        \implies & \forall\ y \in X, d(y, x^{(1)}) < 1 + r                                        & (X = \bigcup_{i = 1}^n B_{(X, d)}(x^{(i)}, 1)) \\
+        \implies & \forall\ y \in X, y \in B_{(X, d)}(x^{(1)}, 1 + r)                             & \text{(by Definition \ref{1.2.1})}             \\
+        \implies & X \subseteq B_{(X, d)}(x^{(1)}, 1 + r)                                                                                          \\
+        \implies & \forall\ y \in X, X \subseteq B_{(X, d)}\big(y, d(y, x^{(1)}) + 1 + r\big)     & \text{(by Definition \ref{1.1.2}(d))}          \\
+        \implies & X \text{ is bounded in } (X, d).                                               & \text{(by Definition \ref{1.5.3})}
     \end{align*}
-    Thus \(X \subseteq B_{(X, d)}(x^{(1)}, \varepsilon + r_{\varepsilon})\) and by Definition \ref{1.5.3} \((X, d)\) is bounded.
+\end{proof}
+
+\begin{proof}{(b)}
+    By Proposition \ref{1.5.5} we know that if \((X, d)\) is compact then \((X, d)\) is complete.
+    Thus we only need to show that \(X\) is totally bound in \((X, d)\).
+    Let \(\varepsilon \in \mathbf{R}^+\).
+    Then we have
+    \begin{align*}
+                 & \forall\ y \in X, y \in B_{(X, d)}(y, \varepsilon)                                                                         & \text{(by Definition \ref{1.2.1})}         \\
+        \implies & X \subseteq \bigcup_{y \in X} B_{(X, d)}(y, \varepsilon)                                                                                                                \\
+        \implies & \bigcup_{y \in X} B_{(X, d)}(y, \varepsilon) \text{ is open in } (X, d)                                                    & \text{(by Proposition \ref{1.2.15}(c)(g))} \\
+        \implies & \exists\ F \subseteq X : (F \text{ is finite}) \land \bigg(X \subseteq \bigcup_{y \in F} B_{(X, d)}(y, \varepsilon)\bigg). & \text{(by Theorem \ref{1.5.8})}
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary, by definition we know that \(X\) is totally bounded in \((X, d)\).
 \end{proof}
 
 \begin{exercise}\label{ex 1.5.11}
