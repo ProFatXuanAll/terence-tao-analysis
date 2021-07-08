@@ -585,7 +585,20 @@
 
 \begin{proof}{(c)}
     Suppose that \((X, d)\) is complete and \(X\) is totally bounded in \((X, d)\).
-    Let \((x^{(n)})_{n = 1}^\infty\) be a sequence in \(X\) and let \(E = \{x^{(n)} : n \in \mathbf{Z}^+\}\).
+    If \(X = \emptyset\), then we know that \((\emptyset, d)\) is compact is trivially true.
+    So suppose that \(X \neq \emptyset\).
+    To show that \((X, d)\) is compact, by Definition \ref{1.5.1} we need to show that every sequence in \(X\) has a convergent subsequence which converges in \(X\) with respect to \(d\).
+    So let \((x^{(n)})_{n = 1}^\infty\) be a sequence in \(X\).
+    If we have
+    \[
+        \exists\ N \in \mathbf{Z}^+ : \big\{n \in \mathbf{Z}^+ : x^{(n)} = x^{(N)}\big\} \text{ is infinite},
+    \]
+    then there must exist a subsequence of \((x^{(n)})_{n = 1}^\infty\) which converges to \(x^{(N)}\) with respect to \(d\) for some \(N \in \mathbf{Z}^+\).
+    So suppose that
+    \[
+        \forall\ N \in \mathbf{Z}^+, \big\{n \in \mathbf{Z}^+ : x^{(n)} = x^{(N)}\big\} \text{ is finite}.
+    \]
+    Let \(E = \{x^{(n)} : n \in \mathbf{Z}^+\}\).
     For each \(\varepsilon \in \mathbf{R}^+\), we define \(F_\varepsilon\) to be the set
     \[
         F_\varepsilon = \Bigg\{F \subseteq X : (F \text{ is finite}) \land \bigg(X \subseteq \bigcup_{y \in F} B_{(X, d)}(y, \varepsilon)\bigg)\Bigg\}.
@@ -681,6 +694,46 @@
     Let \((X, d)\) have the property that every open cover of \(X\) has a finite subcover.
     Show that \(X\) is compact.
 \end{exercise}
+
+\begin{proof}
+    Suppose that \((X, d)\) is a metric space such that every open cover of \(X\) has a finite subcover.
+    We want to show that \((X, d)\) is compact.
+    Suppose for sake of contradiction that \((X, d)\) is not compact.
+    Then by Definition \ref{1.5.1} we know that there exists a sequence \((x^{(n)})_{n = 1}^\infty\) in \(X\) which has no convergent subsequence which converges in \(X\) with respect to \(d\).
+    We know that
+    \[
+        \forall\ N \in \mathbf{Z}^+, \big\{n \in \mathbf{Z}^+ : x^{(n)} = x^{(N)}\big\} \text{ is finite}.
+    \]
+    If not, then we would have a subsequence which converges to \(x^{(N)}\) with respect to \(d\) for some \(N \in \mathbf{Z}^+\), a contradiction.
+    Thus we know that \(\big\{x^{(n)} : n \in \mathbf{Z}^+\big\}\) is infinite.
+    By Exercise \ref{ex 1.5.9} we know that \((x^{(n)})_{n = 1}^\infty\) cannot have a limit point in \(X\) with respect to \(d\).
+    By Definition \ref{1.4.4} this means
+    \begin{align*}
+                 & \lnot\big(\exists\ y \in X : \forall\ \varepsilon \in \mathbf{R}^+, \forall\ N \in \mathbf{Z}^+, \exists\ n \geq N : d(x^{(n)}, y) \leq \varepsilon\big) \\
+        \implies & \forall\ y \in X, \exists\ \varepsilon \in \mathbf{R}^+ : \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, d(x^{(n)}, y) > \varepsilon                   \\
+        \implies & \forall\ y \in X, \exists\ \varepsilon \in \mathbf{R}^+ : \big\{x^{(n)} : n \in \mathbf{Z}^+\big\} \cap B_{(X, d)}(y, \varepsilon) \text{ is finite}.
+    \end{align*}
+    Now we fix such \(\varepsilon\).
+    Since
+    \begin{align*}
+                 & \forall\ y \in X, B_{(X, d)}(y, \varepsilon) \text{ is open in } (X, d) & \text{(by Proposition \ref{1.2.15}(c))} \\
+        \implies & X = \bigcup_{y \in X} B_{(X, d)}(y, \varepsilon)                        & \text{(by Definition \ref{1.2.1})}
+    \end{align*}
+    and \(\bigcup_{y \in X} B_{(X, d)}(y, \varepsilon)\) is an open cover of \(X\) in \((X, d)\), we know that
+    \[
+        \exists\ F \subseteq X : (F \text{ is finite}) \land \bigg(X = \bigcup_{y \in F} B_{(X, d)}(y, \varepsilon)\bigg).
+    \]
+    Now we fix such \(F\).
+    Then we have
+    \begin{align*}
+        \{x^{(n)} : n \in \mathbf{Z}^+\} & = \{x^{(n)} : n \in \mathbf{Z}^+\} \cap X                                                        \\
+                                         & = \{x^{(n)} : n \in \mathbf{Z}^+\} \cap \bigg(\bigcup_{y \in F} B_{(X, d)}(y, \varepsilon)\bigg) \\
+                                         & = \bigcup_{y \in F} \big(\{x^{(n)} : n \in \mathbf{Z}^+\} \cap B_{(X, d)}(y, \varepsilon)\big).
+    \end{align*}
+    But we know that \(\bigcup_{y \in F} \big(\{x^{(n)} : n \in \mathbf{Z}^+\} \cap B_{(X, d)}(y, \varepsilon)\big)\) is finite since \(F\) is finite and \(\{x^{(n)} : n \in \mathbf{Z}^+\} \cap B_{(X, d)}(y, \varepsilon)\) is finite for every \(y \in F\).
+    This means \(\{x^{(n)} : n \in \mathbf{Z}^+\}\) is finite, a contradiction.
+    Thus \((X, d)\) is compact.
+\end{proof}
 
 \begin{exercise}\label{ex 1.5.12}
     Let \((X, d_{\text{disc}})\) be a metric space with the discrete metric \(d_{\text{disc}}\).
