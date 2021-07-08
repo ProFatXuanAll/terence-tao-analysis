@@ -577,10 +577,77 @@
     \begin{align*}
                  & \forall\ y \in X, y \in B_{(X, d)}(y, \varepsilon)                                                                         & \text{(by Definition \ref{1.2.1})}         \\
         \implies & X \subseteq \bigcup_{y \in X} B_{(X, d)}(y, \varepsilon)                                                                                                                \\
-        \implies & \bigcup_{y \in X} B_{(X, d)}(y, \varepsilon) \text{ is open in } (X, d)                                                    & \text{(by Proposition \ref{1.2.15}(c)(g))} \\
+        \implies & \bigcup_{y \in X} B_{(X, d)}(y, \varepsilon) \text{ is an open cover of } X \text{ in } (X, d)                             & \text{(by Proposition \ref{1.2.15}(c)(g))} \\
         \implies & \exists\ F \subseteq X : (F \text{ is finite}) \land \bigg(X \subseteq \bigcup_{y \in F} B_{(X, d)}(y, \varepsilon)\bigg). & \text{(by Theorem \ref{1.5.8})}
     \end{align*}
     Since \(\varepsilon\) is arbitrary, by definition we know that \(X\) is totally bounded in \((X, d)\).
+\end{proof}
+
+\begin{proof}{(c)}
+    Suppose that \((X, d)\) is complete and \(X\) is totally bounded in \((X, d)\).
+    Let \((x^{(n)})_{n = 1}^\infty\) be a sequence in \(X\) and let \(E = \{x^{(n)} : n \in \mathbf{Z}^+\}\).
+    Since \(X\) is totally bounded in \((X, d)\), by definition we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ F \subseteq X : (F \text{ is finite}) \land \bigg(X \subseteq \bigcup_{y \in F} B_{(X, d)}(y, \varepsilon)\bigg).
+    \]
+    Since \(E \subseteq X\), we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ F \subseteq X : (F \text{ is finite}) \land \bigg(E \subseteq X \subseteq \bigcup_{y \in F} B_{(X, d)}(y, \varepsilon)\bigg).
+    \]
+    Since the choice of \(F\) depends on \(\varepsilon\) (and do not depends on \(E\)), we denote \(F\) as \(F_\varepsilon\) for every \(\varepsilon \in \mathbf{R}^+\).
+    Note that here we use axiom of choice.
+
+    Since \(E\) is infinite and \(F_\varepsilon\) is finite for every \(\varepsilon \in \mathbf{R}^+\), we know that there exists a \(y \in F_\varepsilon\) such that \(E \cap B_{(X, d)}(y, \varepsilon)\) is infinite.
+    If not, then we would have
+    \begin{align*}
+                 & \exists\ \varepsilon \in \mathbf{R}^+ : \forall\ y \in F_\varepsilon, E \cap B_{(X, d)}(y, \varepsilon) \text{ is finite}                                                          \\
+        \implies & \exists\ \varepsilon \in \mathbf{R}^+ : \bigcup_{y \in F_\varepsilon} \bigg(E \cap B_{(X, d)}(y, \varepsilon)\bigg) \text{ is finite} & \text{(since \(F_\varepsilon\) is finite)} \\
+        \implies & \exists\ \varepsilon \in \mathbf{R}^+ : E \cap \bigg(\bigcup_{y \in F_\varepsilon} B_{(X, d)}(y, \varepsilon)\bigg) \text{ is finite}                                              \\
+        \implies & \exists\ \varepsilon \in \mathbf{R}^+ : E \subseteq E \cap \bigg(\bigcup_{y \in F_\varepsilon} B_{(X, d)}(y, \varepsilon)\bigg)
+    \end{align*}
+    and \(E\) would be finite, a contradiction.
+    Since the choice of \(y\) depends on \(F_\varepsilon\) (which depends on \(\varepsilon\)), we denote \(y\) as \(y_\varepsilon\) for every \(\varepsilon \in \mathbf{R}^+\).
+    Again we use axiom of choice.
+
+    Now we construct a subsequence of \(x^{(n)}\).
+    For each \(j \in \mathbf{Z}^+\) we define \(N_j\) as follow:
+    \[
+        N_j = \bigg\{n \in \mathbf{Z}^+ : x^{(n)} \in E \cap B_{(X, d)}(y_{\frac{1}{j}}, \frac{1}{j})\bigg\}.
+    \]
+    From the claim above we know that \(N_j\) is infinite for every \(j \in \mathbf{Z}^+\).
+    Now we recursively define \(n_j\) for each \(j \in \mathbf{Z}^+\) as follow:
+    \[
+        n_j = \begin{cases}
+            \min N_1                                & \text{if } j = 1 \\
+            \min\{n \in N_{j - 1} : n > n_{j - 1}\} & \text{if } j > 1
+        \end{cases}
+    \]
+    Since \(N_j\) is infinite for each \(j \in \mathbf{Z}^+\), we know that the set \(\{n \in N_{j - 1} : n > n_{j - 1}\}\) is also infinite.
+    If not, then the maximum element of \(N_{j - 1}\) would be \(n_{j - 1}\) and \(N_{j - 1}\) is finite, a contradiction.
+    Since \(N_j \subseteq \mathbf{Z}^+\) for each \(j \in \mathbf{Z}^+\), by well-ordering principle we know that the minimum of \(N_j\) or the subsets of \(N_j\) are well-defined.
+    Thus \(n_j\) is well-defined for each \(j \in \mathbf{Z}^+\) and \((x^{(n_j)})_{j = 1}^\infty\) is a subsequence of \((x^{(n)})_{n = 1}^\infty\).
+
+    Now we claim that the subsequence \((x^{(n_j)})_{j = 1}^\infty\) converges in \(X\) with respect to \(d\).
+    We have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ J \in \mathbf{Z}^+ : \frac{1}{J} < \varepsilon                            & \text{(by Archimedean property)} \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ J \in \mathbf{Z}^+ :                                                                                         \\
+                 & (\frac{1}{J} < \varepsilon) \land (\forall\ j \geq J, N_j \subseteq N_J)                                                                                     \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ J \in \mathbf{Z}^+ :                                                                                         \\
+                 & (\frac{1}{J} < \varepsilon) \land \big(\forall\ j \geq J, d(x^{(n_j)}, y_{\frac{1}{J}}) < \frac{1}{J} < \varepsilon\big),
+    \end{align*}
+    If we fix \(J\) for each \(\varepsilon\), then we have
+    \begin{align*}
+        \forall\ i, j \geq 2J, d(x^{(n_i)}, x^{(n_j)}) & \leq d(x^{(n_i)}, y_{\frac{1}{2J}}) + d(x^{(n_j)}, y_{\frac{1}{2J}}) & \text{(by Definition \ref{1.1.2}(d))} \\
+                                                       & < \frac{1}{2J} + \frac{1}{2J} = \frac{1}{J} < \varepsilon.
+    \end{align*}
+    Thus we conclude that
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ J \in \mathbf{Z}^+ : \forall\ i, j \geq J, d(x^{(n_i)}, d^{(n_j)}) < \varepsilon
+    \]
+    and by Definition \ref{1.4.6} \((x^{(n_j)})_{j = 1}^\infty\) is a Cauchy sequence in \((X, d)\).
+    Since \((X, d)\) is compatible, by Definition \ref{1.4.10} we know that \((x^{(n_j)})_{j = 1}^\infty\) converges in \(X\) with respect to \(d\).
+    Since \((x^{(n)})_{n = 1}^\infty\) is arbitrary, we know that any sequence in \(X\) has a subsequence converges in \(X\) with respect to \(d\), and by Definition \ref{1.5.1} \((X, d)\) is compact.
 \end{proof}
 
 \begin{exercise}\label{ex 1.5.11}
