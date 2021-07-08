@@ -586,35 +586,58 @@
 \begin{proof}{(c)}
     Suppose that \((X, d)\) is complete and \(X\) is totally bounded in \((X, d)\).
     Let \((x^{(n)})_{n = 1}^\infty\) be a sequence in \(X\) and let \(E = \{x^{(n)} : n \in \mathbf{Z}^+\}\).
-    Since \(X\) is totally bounded in \((X, d)\), by definition we have
+    For each \(\varepsilon \in \mathbf{R}^+\), we define \(F_\varepsilon\) to be the set
     \[
-        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ F \subseteq X : (F \text{ is finite}) \land \bigg(X \subseteq \bigcup_{y \in F} B_{(X, d)}(y, \varepsilon)\bigg).
+        F_\varepsilon = \Bigg\{F \subseteq X : (F \text{ is finite}) \land \bigg(X \subseteq \bigcup_{y \in F} B_{(X, d)}(y, \varepsilon)\bigg)\Bigg\}.
     \]
-    Since \(E \subseteq X\), we have
+    Since \(X\) is totally bounded in \((X, d)\), by definition we know that \(F_\varepsilon \neq \emptyset\) for every \(\varepsilon \in \mathbf{R}^+\).
+    For arbitrary \(\varepsilon \in \mathbf{R}^+\) and arbitrary \(F \in F_\varepsilon\), we claim that
     \[
-        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ F \subseteq X : (F \text{ is finite}) \land \bigg(E \subseteq X \subseteq \bigcup_{y \in F} B_{(X, d)}(y, \varepsilon)\bigg).
+        \exists\ y \in F : E \cap B_{(X, d)}(y, \varepsilon) \text{ is infinite}.
     \]
-    Since the choice of \(F\) depends on \(\varepsilon\) (and do not depends on \(E\)), we denote \(F\) as \(F_\varepsilon\) for every \(\varepsilon \in \mathbf{R}^+\).
-    Note that here we use axiom of choice.
-
-    Since \(E\) is infinite and \(F_\varepsilon\) is finite for every \(\varepsilon \in \mathbf{R}^+\), we know that there exists a \(y \in F_\varepsilon\) such that \(E \cap B_{(X, d)}(y, \varepsilon)\) is infinite.
-    If not, then we would have
+    Suppose for sake of contradiction that the claim is false.
+    Then we have
     \begin{align*}
-                 & \exists\ \varepsilon \in \mathbf{R}^+ : \forall\ y \in F_\varepsilon, E \cap B_{(X, d)}(y, \varepsilon) \text{ is finite}                                                          \\
-        \implies & \exists\ \varepsilon \in \mathbf{R}^+ : \bigcup_{y \in F_\varepsilon} \bigg(E \cap B_{(X, d)}(y, \varepsilon)\bigg) \text{ is finite} & \text{(since \(F_\varepsilon\) is finite)} \\
-        \implies & \exists\ \varepsilon \in \mathbf{R}^+ : E \cap \bigg(\bigcup_{y \in F_\varepsilon} B_{(X, d)}(y, \varepsilon)\bigg) \text{ is finite}                                              \\
-        \implies & \exists\ \varepsilon \in \mathbf{R}^+ : E \subseteq E \cap \bigg(\bigcup_{y \in F_\varepsilon} B_{(X, d)}(y, \varepsilon)\bigg)
+                 & \forall\ y \in F, E \cap B_{(X, d)}(y, \varepsilon) \text{ is finite}                                                   \\
+        \implies & \bigcup_{y \in F} \bigg(E \cap B_{(X, d)}(y, \varepsilon)\bigg) \text{ is finite}      & \text{(since \(F\) is finite)} \\
+        \implies & E \cap \bigg(\bigcup_{y \in F} B_{(X, d)}(y, \varepsilon)\bigg) \text{ is finite}                                       \\
+        \implies & E = E \cap X \subseteq E \cap \bigg(\bigcup_{y \in F} B_{(X, d)}(y, \varepsilon)\bigg)
     \end{align*}
-    and \(E\) would be finite, a contradiction.
-    Since the choice of \(y\) depends on \(F_\varepsilon\) (which depends on \(\varepsilon\)), we denote \(y\) as \(y_\varepsilon\) for every \(\varepsilon \in \mathbf{R}^+\).
-    Again we use axiom of choice.
+    and thus \(E\) is finite.
+    But by the definition of \(E\) we know that \(E\) is infinite, a contradiction.
+    Thus the claim is true.
+
+    Using the claim above we can now define the set \(A_\varepsilon\) for each \(\varepsilon \in \mathbf{R}^+\).
+    \[
+        A_\varepsilon = \big\{y \in F : (F \in F_\varepsilon) \land (E \cap B_{(X, d)}(y, \varepsilon) \text{ is infinite})\big\}
+    \]
+    From the claim above we know that \(A_\varepsilon \neq \emptyset\) for every \(\varepsilon \in \mathbf{R}^+\).
+    Now we claim that
+    \[
+        \forall\ \delta, \varepsilon \in \mathbf{R}^+, \delta < \varepsilon \implies A_\delta \subseteq A_\varepsilon.
+    \]
+    Let \(\delta, \varepsilon \in \mathbf{R}^+\) and \(\delta < \varepsilon\).
+    Then we have
+    \begin{align*}
+                 & \forall\ y \in A_\delta, E \cap B_{(X, d)}(y, \delta) \text{ is infinite}                                                              \\
+        \implies & \forall\ y \in A_\delta, B_{(X, d)}(y, \delta) \text{ is infinite}                                & \text{(since \(E\) is infinite)}   \\
+        \implies & \forall\ y \in A_\delta, B_{(X, d)}(y, \delta) \subseteq B_{(X, d)}(y, \varepsilon)               & \text{(by Definition \ref{1.2.1})} \\
+        \implies & \forall\ y \in A_\delta, E \cap B_{(X, d)}(y, \delta) \subseteq E \cap B_{(X, d)}(y, \varepsilon)                                      \\
+        \implies & \forall\ y \in A_\delta, E \cap B_{(X, d)}(y, \varepsilon) \text{ is infinite}                                                         \\
+        \implies & \forall\ y \in A_\delta, y \in A_\varepsilon                                                                                           \\
+        \implies & A_\delta \subseteq A_\varepsilon
+    \end{align*}
+    and thus the claim is true.
 
     Now we construct a subsequence of \(x^{(n)}\).
     For each \(j \in \mathbf{Z}^+\) we define \(N_j\) as follow:
     \[
-        N_j = \bigg\{n \in \mathbf{Z}^+ : x^{(n)} \in E \cap B_{(X, d)}(y_{\frac{1}{j}}, \frac{1}{j})\bigg\}.
+        N_j = \bigg\{n \in \mathbf{Z}^+ : x^{(n)} \in E \cap B_{(X, d)}(y, \frac{1}{j}) \text{ for some } y \in A_{\frac{1}{j}}\bigg\}.
     \]
-    From the claim above we know that \(N_j\) is infinite for every \(j \in \mathbf{Z}^+\).
+    From the claim above we know that \(A_{\frac{1}{j}}\) is infinite for every \(j \in \mathbf{Z}^+\), thus \(N_j\) is infinite and we have
+    \[
+        \forall\ i, j \in \mathbf{Z}^+, i < j \implies \frac{1}{j} < \frac{1}{i} \implies A_{\frac{1}{j}} \subseteq A_{\frac{1}{i}} \implies N_j \subseteq N_i.
+    \]
     Now we recursively define \(n_j\) for each \(j \in \mathbf{Z}^+\) as follow:
     \[
         n_j = \begin{cases}
@@ -622,24 +645,28 @@
             \min\{n \in N_{j - 1} : n > n_{j - 1}\} & \text{if } j > 1
         \end{cases}
     \]
-    Since \(N_j\) is infinite for each \(j \in \mathbf{Z}^+\), we know that the set \(\{n \in N_{j - 1} : n > n_{j - 1}\}\) is also infinite.
+    Since \(N_j\) is infinite for each \(j \in \mathbf{Z}^+\), we know that the set \(\{n \in N_{j - 1} : n > n_{j - 1}\}\) is also infinite for every \(j \geq 2\).
     If not, then the maximum element of \(N_{j - 1}\) would be \(n_{j - 1}\) and \(N_{j - 1}\) is finite, a contradiction.
-    Since \(N_j \subseteq \mathbf{Z}^+\) for each \(j \in \mathbf{Z}^+\), by well-ordering principle we know that the minimum of \(N_j\) or the subsets of \(N_j\) are well-defined.
+    Since \(\{n \in N_j : n > n_{j - 1}\} \subseteq \mathbf{Z}^+\) for each \(j \in \mathbf{Z}^+\) and \(j \geq 2\), by well-ordering principle we know that \(\min\{n \in N_j : n > n_{j - 1}\}\) is well-defined.
     Thus \(n_j\) is well-defined for each \(j \in \mathbf{Z}^+\) and \((x^{(n_j)})_{j = 1}^\infty\) is a subsequence of \((x^{(n)})_{n = 1}^\infty\).
 
     Now we claim that the subsequence \((x^{(n_j)})_{j = 1}^\infty\) converges in \(X\) with respect to \(d\).
     We have
     \begin{align*}
-                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ J \in \mathbf{Z}^+ : \frac{1}{J} < \varepsilon                            & \text{(by Archimedean property)} \\
-        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ J \in \mathbf{Z}^+ :                                                                                         \\
-                 & (\frac{1}{J} < \varepsilon) \land (\forall\ j \geq J, N_j \subseteq N_J)                                                                                     \\
-        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ J \in \mathbf{Z}^+ :                                                                                         \\
-                 & (\frac{1}{J} < \varepsilon) \land \big(\forall\ j \geq J, d(x^{(n_j)}, y_{\frac{1}{J}}) < \frac{1}{J} < \varepsilon\big),
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ J \in \mathbf{Z}^+ : \frac{1}{J} < \varepsilon                                    & \text{(by Archimedean property)}                  \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ J \in \mathbf{Z}^+ :                                                                                                                  \\
+                 & (\frac{1}{J} < \varepsilon) \land (\forall\ j \geq J, N_j \subseteq N_J)                                                          & \text{(from the claim above)}                     \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ J \in \mathbf{Z}^+ :                                                                                                                  \\
+                 & (\frac{1}{J} < \varepsilon)                                                                                                                                                           \\
+                 & \land \big(\exists\ y \in A_{\frac{1}{j}} : \forall\ j \geq J, d(x^{(n_j)}, y) < \frac{1}{j} \leq \frac{1}{J} < \varepsilon\big). & \text{(by the definition of \(A_{\frac{1}{j}}\))}
     \end{align*}
     If we fix \(J\) for each \(\varepsilon\), then we have
     \begin{align*}
-        \forall\ i, j \geq 2J, d(x^{(n_i)}, x^{(n_j)}) & \leq d(x^{(n_i)}, y_{\frac{1}{2J}}) + d(x^{(n_j)}, y_{\frac{1}{2J}}) & \text{(by Definition \ref{1.1.2}(d))} \\
-                                                       & < \frac{1}{2J} + \frac{1}{2J} = \frac{1}{J} < \varepsilon.
+                 & \forall\ i, j \geq 2J, \exists\ y \in A_{\frac{1}{2J}} :                                                                               \\
+                 & d(x^{(n_i)}, y) + d(x^{(n_j)}, y) < \frac{1}{2J} + \frac{1}{2J} = \frac{1}{J} < \varepsilon                                            \\
+        \implies & \forall\ i, j \geq 2J, \exists\ y \in A_{\frac{1}{2J}} :                                                                               \\
+                 & d(x^{(n_i)}, x^{(n_j)}) \leq d(x^{(n_i)}, y) + d(x^{(n_j)}, y) < \varepsilon                & \text{(by Definition \ref{1.1.2}(c)(d))} \\
+        \implies & \forall\ i, j \geq 2J, d(x^{(n_i)}, x^{(n_j)}) < \varepsilon.
     \end{align*}
     Thus we conclude that
     \[
