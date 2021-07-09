@@ -816,6 +816,38 @@
     i.e., \(x\) is the closest point in \(E\) to \(x_0\).
 \end{exercise}
 
+\begin{proof}
+    Let \(R = \inf\{d(x_0, y) : y \in E\}\).
+    Since \(d(x_0, y) \geq 0\) for every \(y \in E\), we know that the set \(\{d(x_0, y) : y \in E\}\) is bounded below and thus \(R\) is well-defined.
+    Since \(R\) is well-defined, we can construct a sequence \((x^{(n)})_{n = 1}^\infty\) in \(E\) such that \(d(x_0, x^{(n)}) \leq R + \frac{1}{n}\) for every \(n \in \mathbf{Z}^+\).
+    If not, then we would have
+    \[
+        \exists\ n \in \mathbf{Z}^+ : \forall\ y \in E, d(x_0, y) > R + \frac{1}{n}
+    \]
+    and thus \(\inf\{d(x_0, y) : y \in E\} \geq R + \frac{1}{n} > R\), a contradiction.
+    Since \(\big(d(x_0, x^{(n)})\big)_{n = 1}^\infty\) is a sequence in \(\mathbf{R}\), we have
+    \begin{align*}
+                 & \forall\ n \in \mathbf{Z}^+, R \leq d(x_0, x^{(n)}) \leq R + \frac{1}{n}                            \\
+        \implies & \lim_{n \to \infty} d(x_0, x^{(n)}) = R.                                 & \text{(by squeeze test)}
+    \end{align*}
+    Since \((E, d)\) is compact, by Definition \ref{1.5.1} we know that there exists a subsequence \((x^{(n_j)})_{j = 1}^\infty\) such that
+    \[
+        \lim_{j \to \infty} d(x^{(n_j)}, x) = 0
+    \]
+    for some \(x \in E\).
+    Then we have
+    \begin{align*}
+                 & \lim_{n \to \infty} d(x_0, x^{(n)}) = R                                                                                                          \\
+        \implies & \lim_{j \to \infty} d(x_0, x^{(n_j)}) = R                                                                & \text{(by Lemma \ref{1.4.3})}         \\
+        \implies & \lim_{j \to \infty} d(x_0, x^{(n_j)}) + \lim_{j \to \infty} d(x^{(n_j)}, x) = R + 0 = R                                                          \\
+        \implies & \lim_{j \to \infty} \big(d(x_0, x^{(n_j)}) + d(x^{(n_j)}, x)\big) = R                                                                            \\
+        \implies & \lim_{j \to \infty} d(x_0, x) \leq \lim_{j \to \infty} \big(d(x_0, x^{(n_j)}) + d(x^{(n_j)}, x)\big) = R & \text{(by Definition \ref{1.1.2}(d))} \\
+        \implies & R \leq d(x_0, x) \leq R                                                                                                                          \\
+        \implies & d(x_0, x) = R
+    \end{align*}
+    and thus \(x\) is the closest point in \(E\) to \(x_0\).
+\end{proof}
+
 \begin{exercise}\label{ex 1.5.15}
     Let \((X, d)\) be a compact metric space.
     Suppose that \((K_{\alpha})_{\alpha \in I}\) is a collection of closed sets in \(X\) with the property that any finite subcollection of these sets necessarily has non-empty intersection, thus \(\bigcap_{\alpha \in F} K_{\alpha} \neq \emptyset\) for all finite \(F \subseteq I\).
