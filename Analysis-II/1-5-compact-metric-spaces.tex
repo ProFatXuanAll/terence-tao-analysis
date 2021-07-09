@@ -764,8 +764,28 @@
         \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ i \geq N, x^{(i)} = x^{(N)}.
     \]
     and by Definition \ref{1.1.14} we have \(\lim_{n \to \infty} d_{\text{disc}}(x^{(n)}, x^{(N)}) = 0\).
-    This means \((x^{(n)})_{n = 1}^\infty\) converges to some \(x^{(N)} \in X\) with respect to \(d\).
-    Since \((x^{(n)})_{n = 1}^\infty\) is arbitrary, by Definition \ref{1.4.10} we know that \((X, d)\) is complete.
+    This means \((x^{(n)})_{n = 1}^\infty\) converges to some \(x^{(N)} \in X\) with respect to \(d_{\text{disc}}\).
+    Since \((x^{(n)})_{n = 1}^\infty\) is arbitrary, by Definition \ref{1.4.10} we know that \((X, d_{\text{disc}})\) is complete.
+\end{proof}
+
+\begin{proof}{(b)}
+    We claim that \((X, d_{\text{disc}})\) is compact iff \(X\) is finite.
+    By Theorem \ref{1.5.10}(c) we know that if \(X\) is finite then \((X, d_{\text{disc}})\) is compact.
+    So we only need to show that if \((X, d_{\text{disc}})\) is compact then \(X\) is finite.
+    Suppose that \((X, d_{\text{disc}})\) is compact.
+    By Theorem \ref{1.5.8} we know that every open cover of \(X\) in \((X, d_{\text{disc}})\) has a finite subcover.
+    In particular, we know that
+    \[
+        \exists\ F \subseteq X : (F \text{ is finite}) \land \bigg(X = \bigcup_{y \in F} B_{(X, d_{\text{disc}})}(y, \frac{1}{2})\bigg).
+    \]
+    Now we fix such \(F\).
+    We know that
+    \begin{align*}
+                 & \forall\ y \in F, B_{(X, d)}(y, \frac{1}{2}) = \{z \in X : d(z, y) < \frac{1}{2}\} & \text{(by Definition \ref{1.2.1})} \\
+        \implies & \forall\ y \in F, B_{(X, d)}(y, \frac{1}{2}) = \{y\}                               & \text{(by Example \ref{1.1.11})}   \\
+        \implies & X = \bigcup_{y \in F} B_{(X, d)}(y, \frac{1}{2}) = F
+    \end{align*}
+    Thus \(X\) is finite.
 \end{proof}
 
 \begin{exercise}\label{ex 1.5.13}
