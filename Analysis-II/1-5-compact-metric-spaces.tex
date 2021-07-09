@@ -855,3 +855,54 @@
     Show that the \emph{entire} collection has non-empty intersection, thus \(\bigcap_{\alpha \in I} K_{\alpha} \neq \emptyset\).
     Show by counterexample that this statement fails if \(X\) is not compact.
 \end{exercise}
+
+\begin{proof}
+    Suppose for sake of contradiction that \(\bigcap_{\alpha \in I} K_\alpha = \emptyset\).
+    Since
+    \[
+        X = X \setminus \emptyset = X \setminus \bigcap_{\alpha \in I} K_\alpha = \bigcup_{\alpha \in I} (X \setminus K_\alpha),
+    \]
+    we know that
+    \begin{align*}
+                 & \forall\ \alpha \in I, K_\alpha \text{ is closed in } (X, d)                                                                                                \\
+        \implies & \forall\ \alpha \in I, X \setminus K_\alpha \text{ is open in } (X, d)                                            & \text{(by Proposition \ref{1.2.15}(e))} \\
+        \implies & X = \bigcup_{\alpha \in I} (X \setminus K_\alpha) \text{ is an open cover of } X \text{ in } (X, d)                                                         \\
+        \implies & \exists F \subseteq I : (F \text{ is finite}) \land \bigg(X = \bigcup_{\alpha \in F} (X \setminus K_\alpha)\bigg) & \text{(by Theorem \ref{1.5.8})}         \\
+        \implies & \exists F \subseteq I : (F \text{ is finite}) \land \bigg(X = X \setminus \bigcap_{\alpha \in F} K_\alpha\bigg)                                             \\
+        \implies & \exists F \subseteq I : (F \text{ is finite}) \land \bigg(\bigcap_{\alpha \in F} K_\alpha = \emptyset\bigg).
+    \end{align*}
+    But by hypothesis we know such \(F\) does not exist, a contradiction.
+    Thus we must have \(\bigcap_{\alpha \in I} K_\alpha \neq \emptyset\).
+
+    Now we show an counterexample when \(X, d\) is not compact.
+    Let \(X = I = \mathbf{R}^+\) and let \(d = d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+    We know that the sequence \((n)_{n = 1}^\infty\) in \(\mathbf{R}^+\) has no convergent subsequence with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\), thus by Definition \ref{1.5.1} \((\mathbf{R}^+, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) is not compact.
+    For each \(\varepsilon \in \mathbf{R}^+\), we define \(K_\varepsilon = [\varepsilon, \infty)\) (which is an interval in \(\mathbf{R}\)).
+    Then we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \overline{K_\varepsilon}_{(\mathbf{R}^+, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})} = \{\varepsilon\} & \text{(by Definition \ref{1.2.5})}      \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, K_\varepsilon \text{ is closed in } (\mathbf{R}^+, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})          & \text{(by Proposition \ref{1.2.15}(b))}
+    \end{align*}
+    Let \(F \subseteq \mathbf{R}^+\) such that \(F \neq \emptyset\) and \(F\) is finite.
+    Since \(F\) is finite, we know that \(\max(F)\) is well-defined.
+    Then we have
+    \begin{align*}
+                 & \forall\ i \in F, i \leq \max(F)                                                           \\
+        \implies & \forall\ i \in F, [\max(F), \infty) \subseteq [i, \infty)                                  \\
+        \implies & \forall\ i \in F, K_i \subseteq K_{\max(F)}                                                \\
+        \implies & \bigcap_{i \in F} K_i = K_{\max(F)}.                      & \text{(since \(F\) is finite)}
+    \end{align*}
+    Since \(F\) is arbitrary, we know that every finite subcollection of \((K_\varepsilon)_{\varepsilon \in \mathbf{R}^+}\) has non-empty intersection.
+    Suppose for sake of contradiction that \(\bigcap_{\varepsilon \in \mathbf{R}^+} K_\varepsilon \neq \emptyset\).
+    Let \(r \in \bigcap_{\varepsilon \in \mathbf{R}^+} K_\varepsilon\).
+    Then we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, r \in K_\varepsilon \\
+        \implies & r \in K_{2r}                                               \\
+        \implies & r \in [2r, \infty)                                         \\
+        \implies & r = 0.
+    \end{align*}
+    But we know that \(0 \notin K_\varepsilon\) for every \(\varepsilon \in \mathbf{R}^+\).
+    Thus \(0 \notin \bigcap_{\varepsilon \in \mathbf{R}^+} K_\varepsilon\), a contradiction.
+    So we must have \(\bigcap_{\varepsilon \in \mathbf{R}^+} K_\varepsilon = \emptyset\).
+\end{proof}
