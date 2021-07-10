@@ -246,3 +246,44 @@
     but this is not true;
     see Exercises \ref{ex 1.5.4}, \ref{ex 1.5.5}.
 \end{remark}
+
+\begin{corollary}[Continuity preserved by composition]\label{2.1.7}
+    Let \((X, d_X)\), \((Y, d_Y)\), and \((Z, d_Z)\) be metric spaces.
+    \begin{enumerate}
+        \item If \(f : X \to Y\) is continuous at a point \(x_0 \in X\), and \(g : Y \to Z\) is continuous at \(f(x_0)\), then the composition \(g \circ f : X \to Z\), defined by \(g \circ f(x) \coloneqq g(f(x))\), is continuous at \(x_0\).
+        \item If \(f : X \to Y\) is continuous, and \(g : Y \to Z\) is continuous, then \(g \circ f : X \to Z\) is also continuous.
+    \end{enumerate}
+\end{corollary}
+
+\begin{proof}{(a)}
+    Since \(f\) is continuous at \(x_0\) in \((X, d_X)\), by Theorem \ref{2.1.4}(a)(c) we know that
+    \begin{align*}
+                 & \forall\ V \subseteq Y, \big(V \text{ is open in } (Y, d_Y)\big) \land \big(f(x_0) \in V\big)                        \\
+        \implies & \exists\ U \subseteq X : \big(U \text{ is open in } (X, d_X)\big) \land (x_0 \in U) \land \big(f(U) \subseteq V\big)
+    \end{align*}
+    Now we choose such \(U\) for each open set \(V\) in \((Y, d_Y)\) and denote it as \(U_V\).
+    Since \(g\) is continuous at \(f(x_0)\) in \((Y, d_Y)\), by Theorem \ref{2.1.4}(a)(c) we know that
+    \begin{align*}
+                 & \forall\ W \subseteq Z, \big(W \text{ is open in } (Z, d_Z)\big) \land \Big(g\big(f(x_0)\big) \in W\Big)                                                \\
+        \implies & \exists\ V \subseteq Y : \big(V \text{ is open in } (Y, d_Y)\big) \land (y_0 \in V) \land \big(g(V) \subseteq W\big)                                    \\
+        \implies & \exists\ U_V \subseteq X : \big(U_V \text{ is open in } (X, d_X)\big) \land (x_0 \in U_V) \land \big(f(U_V) \subseteq V\big)                            \\
+        \implies & \exists\ U_V \subseteq X : \big(U_V \text{ is open in } (X, d_X)\big) \land (x_0 \in U_V) \land \Big(g\big(f(U_V)\big) \subseteq g(V) \subseteq W\Big).
+    \end{align*}
+    Thus by Theorem \ref{2.1.4}(a)(c) we know that \(g \circ f\) is continuous at \(x_0\) in \((X, d_X)\).
+\end{proof}
+
+\begin{proof}{(b)}
+    Let \(x_0 \in X\).
+    Then we have
+    \begin{align*}
+                 & f \text{ is continuous in } (X, d_X)                                                       \\
+        \implies & f \text{ is continuous at } x_0 \text{ in } (X, d_X). & \text{(by Definition \ref{2.1.1})}
+    \end{align*}
+    Since \(f(x_0) \in Y\), we have
+    \begin{align*}
+                 & g \text{ is continuous in } (Y, d_Y)                                                                 \\
+        \implies & g \text{ is continuous at } f(x_0) \text{ in } (Y, d_Y)       & \text{(by Definition \ref{2.1.1})}   \\
+        \implies & g \circ f \text{ is continuous at } x_0 \text{ in } (X, d_X). & \text{(by Corollary \ref{2.1.7}(a))}
+    \end{align*}
+    Since \(x_0\) is arbitrary, by Definition \ref{2.1.1} we know that \(g \circ f\) is continuous in \((X, d_X)\).
+\end{proof}
