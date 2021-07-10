@@ -37,3 +37,114 @@
         \implies & f|_K : K \to Y \text{ is continuous in } (K, d_X|_{K \times K}).                       & \text{(by Definition \ref{2.1.1})}
     \end{align*}
 \end{proof}
+
+\begin{theorem}[Continuity preserves convergence]\label{2.1.4}
+    Suppose that \((X, d_X)\) and \((Y, d_Y)\) are metric spaces.
+    Let \(f : X \to Y\) be a function, and let \(x_0 \in X\) be a point in \(X\).
+    Then the following three statements are logically equivalent:
+    \begin{enumerate}
+        \item \(f\) is continuous at \(x_0\).
+        \item Whenever \((x^{(n)})_{n = 1}^\infty\) is a sequence in \(X\) which converges to \(x_0\) with respect to the metric \(d_X\), the sequence \((f(x^{(n)}))_{n = 1}^\infty\) converges to \(f(x_0)\) with respect to the metric \(d_Y\).
+        \item For every open set \(V \subseteq Y\) that contains \(f(x_0)\), there exists an open set \(U \subseteq X\) containing \(x_0\) such that \(f(U) \subseteq V\).
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    We first show that statement (a) implies statement (b).
+    Suppose that \(f : X \to Y\) is continuous at \(x_0\).
+    Then by Definition \ref{2.1.1} we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ d \in \mathbf{R}^+ : \Big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f(x), f(x_0)\big) < \varepsilon\Big).
+    \]
+    Now we fix \(\delta\) for each \(\varepsilon \in \mathbf{R}^+\) and denoted it as \(\delta_\varepsilon\).
+    Note that here we use axiom of choice.
+    Let \((x^{(n)})_{n = 1}^\infty\) be a sequence in \(X\) such that \(\lim_{n \to \infty} d_X(x^{(n)}, x_0) = 0\).
+    Then we have
+    \begin{align*}
+                 & \lim_{n \to \infty} d_X(x^{(n)}, x_0) = 0                                                                                                                                   \\
+        \implies & \forall\ \delta \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, d_X(x^{(n)}, x_0) \leq \delta                      & \text{(by Definition \ref{1.1.14})} \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta_\varepsilon \in \mathbf{R}^+ :                                                                                       \\
+                 & \bigg(\exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, d_X(x^{(n)}, x_0) \leq \frac{\delta_\varepsilon}{2} < \delta_\varepsilon\bigg)                                       \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta_\varepsilon \in \mathbf{R}^+ :                                                                                       \\
+                 & \bigg(\exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, d_Y\big(f(x^{(n)}), f(x_0)\big) < \varepsilon\bigg)                            & \text{(by hypothesis)}              \\
+        \implies & \lim_{n \to \infty} d_Y\big(f(x^{(n)}), f(x_0)\big) = 0.                                                                              & \text{(by Definition \ref{1.1.14})}
+    \end{align*}
+
+    Next we show that statement (b) implies statement (c).
+    Suppose that
+    \[
+        \forall\ (x^{(n)})_{n = 1}^\infty \text{ in } X, \lim_{n \to \infty} d_X(x^{(n)}, x_0) = 0 \implies \lim_{n \to \infty} d_Y\big(f(x^{(n)}), f(x_0)\big) = 0.
+    \]
+    Let \(V\) be an open set in \((Y, d_Y)\) such that \(f(x_0) \in V\).
+    Then we have
+    \begin{align*}
+                 & V \text{ is open in } (Y, d_Y)                                                                                                           \\
+        \implies & V = \text{int}_{(Y, d_Y)}(V)                                                                   & \text{(by Proposition \ref{1.2.15}(a))} \\
+        \implies & \exists\ \varepsilon \in \mathbf{R}^+ : B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big) \subseteq V. & \text{(by Definition \ref{1.2.5})}
+    \end{align*}
+    Now we fix such \(\varepsilon\) and denote \(V_\varepsilon = B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big)\).
+    Note that here we use axiom of choice.
+    By Remark \ref{1.2.4} we know that \(f(x_0) \in V_\varepsilon\), thus we have \(x_0 \in f^{-1}(V_\varepsilon)\) and \(f^{-1}(V_\varepsilon) \neq \emptyset\).
+    Now we claim that
+    \[
+        \exists\ \delta \in \mathbf{R}^+ : B_{(X, d_X)}(x_0, \delta) \subseteq f^{-1}(V_\varepsilon).
+    \]
+    Suppose the claim is false.
+    Then we have
+    \begin{align*}
+                 & \forall\ \delta \in \mathbf{R}^+, B_{(X, d_X)}(x_0, \delta) \not\subseteq f^{-1}(V_\varepsilon)                                                 \\
+        \implies & \forall\ \delta \in \mathbf{R}^+, B_{(X, d_X)}(x_0, \delta) \setminus f^{-1}(V_\varepsilon) \neq \emptyset                                      \\
+        \implies & \forall\ \delta \in \mathbf{R}^+, \exists\ x \in X :                                                                                            \\
+                 & (d_X(x, x_0) < \delta) \land \Big(d_Y\big(f(x), f(x_0)\big) \geq \varepsilon\Big)                          & \text{(by Definition \ref{1.2.1})} \\
+        \implies & \forall\ n \in \mathbf{Z}^+, \exists\ x \in X :                                                                                                 \\
+                 & (d_X(x, x_0) < \frac{1}{n}) \land \Big(d_Y\big(f(x), f(x_0)\big) \geq \varepsilon\Big).
+    \end{align*}
+    For each \(n \in \mathbf{Z}^+\), we define \(X_n = B_{(X, d_X)}(x_0, \frac{1}{n}) \setminus f^{-1}(V_\varepsilon)\).
+    Using axiom of choice we can choose some sequence \((x^{(n)})_{n = 1}^\infty \in \prod_{n \in \mathbf{Z}^+} X_n\).
+    Then we have
+    \begin{align*}
+                 & \forall\ n \in \mathbf{Z}^+, d_X(x^{(n)}, x_0) < \frac{1}{n}                                                                                       \\
+        \implies & \lim_{n \to \infty} d_X(x^{(n)}, x_0) = 0                                                                                                          \\
+        \implies & \lim_{n \to \infty} d_Y\big(f(x^{(n)}), f(x_0)\big) = 0                                                                                            \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, d_Y\big(f(x^{(n)}), f(x_0)\big) \leq \frac{\varepsilon}{2}. & \text{(by Definition \ref{1.1.14})}
+    \end{align*}
+    But by the definition of \((x^{(n)})_{n = 1}^\infty\) we know that
+    \[
+        \forall\ n \in \mathbf{Z}^+, d_Y\big(f(x^{(n)}), f(x_0)\big) \geq \varepsilon,
+    \]
+    a contradiction.
+    Thus the claim is true.
+    Using the claim and axiom of choice we fix such \(\delta\) and define \(U = B_{(X, d_X)}(x_0, \delta)\).
+    By Proposition \ref{1.2.15}(c) we know that \(U\) is open in \((X, d_X)\).
+    By Remark \ref{1.2.4} we know that \(x_0 \in U\).
+    Since \(U \subseteq f^{-1}(V_\varepsilon) \subseteq X\), we know that \(f(U) \subseteq V\).
+
+    Finally we show that statement (c) implies statement (a).
+    Suppose that
+    \begin{align*}
+                 & \forall\ V \subseteq Y, \big(V \text{ is open in } (Y, d_Y)\big) \land \big(f(x_0) \in V\big)                         \\
+        \implies & \exists\ U \subseteq X : \big(U \text{ is open in } (X, d_X)\big) \land (x_0 \in U) \land \big(f(U) \subseteq V\big).
+    \end{align*}
+    Let \(\varepsilon \in \mathbf{R}^+\).
+    By Proposition \ref{1.2.15}(c) we know that \(B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big)\) is open in \((Y, d_Y)\).
+    By hypothesis we know that
+    \[
+        \exists\ U \subseteq X : \big(U \text{ is open in } (X, d_X)\big) \land (x_0 \in U) \land \Big(f(U) \subseteq B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big)\Big).
+    \]
+    Now we fix such \(U\).
+    Note that here we use axiom of choice.
+    Since \(U\) is open in \((X, d_X)\) and \(x_0 \in U\), we have
+    \begin{align*}
+                 & x_0 \in \text{int}_{(X, d_X)}(U)                                                                                            & \text{(by Proposition \ref{1.2.15}(a))} \\
+        \implies & \exists\ \delta \in \mathbf{R}^+ : B_{(X, d_X)}(x_0, \delta) \subseteq U                                                    & \text{(by Definition \ref{1.2.5})}      \\
+        \implies & \exists\ \delta \in \mathbf{R}^+ : f\big(B_{(X, d_X)}(x_0, \delta)\big) \subseteq f(U)                                                                                \\
+        \implies & \exists\ \delta \in \mathbf{R}^+ : f\big(B_{(X, d_X)}(x_0, \delta)\big) \subseteq B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big)                                           \\
+        \implies & \exists\ \delta \in \mathbf{R}^+ :                                                                                                                                    \\
+                 & \Big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f(x), f(x_0)\big) < \varepsilon\Big).                          & \text{(by Definition \ref{1.2.1})}
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary, we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \Big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f(x), f(x_0)\big) < \varepsilon\Big).
+    \]
+    Thus by Definition \ref{2.1.1} \(f\) is continuous at \(x_0\).
+\end{proof}
