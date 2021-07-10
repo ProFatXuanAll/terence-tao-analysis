@@ -1,1 +1,51 @@
 \section{Continuity and product spaces}\label{sec 2.2}
+
+\begin{note}
+    Given two functions \(f : X \to Y\) and \(g : X \to Z\), one can define their \emph{direct sum} \(f \oplus g : X \to Y \times Z\) defined by \(f \oplus g(x) \coloneqq \big(f(x), g(x)\big)\), i.e., this is the function taking values in the Cartesian product \(Y \times Z\) whose first co-ordinate is \(f(x)\) and whose second co-ordinate is \(g(x)\)
+    (cf. Exercise 3.5.7 in Analysis I).
+\end{note}
+
+\begin{lemma}\label{2.2.1}
+    Let \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) be functions, and let \(f \oplus g : X \to \mathbf{R}^2\) be their direct sum.
+    We give \(\mathbf{R}^2\) the Euclidean metric.
+    \begin{enumerate}
+        \item If \(x_0 \in X\), then \(f\) and \(g\) are both continuous at \(x_0\) if and only if \(f \oplus g\) is continuous at \(x_0\).
+        \item \(f\) and \(g\) are both continuous if and only if \(f \oplus g\) is continuous.
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}{(a)}
+    We have
+    \begin{align*}
+             & \begin{cases}
+            f \text{ is continuous at } x_0 \text{ in } (X, d_X) \\
+            g \text{ is continuous at } x_0 \text{ in } (X, d_X)
+        \end{cases}                                                                                                                                                       \\
+        \iff & \text{every sequence } (x^{(n)})_{n = 1}^\infty \text{ in } X \text{ satisfies the following:}                                                                                  \\
+             & \lim_{n \to \infty} d_X\big(x^{(n)}, x_0\big) = 0 \text{ implies }                                                                                                              \\
+             & \begin{cases}
+            \lim_{n \to \infty} d_{l^2}|_{\mathbf{R} \times \mathbf{R}}\big(f(x^{(n)}), f(x_0)\big) = 0 \\
+            \lim_{n \to \infty} d_{l^2}|_{\mathbf{R} \times \mathbf{R}}\big(g(x^{(n)}), g(x_0)\big) = 0
+        \end{cases}                                                                                                               & \text{(by Theorem \ref{2.1.4}(a)(b))} \\
+        \iff & \text{every sequence } (x^{(n)})_{n = 1}^\infty \text{ in } X \text{ satisfies the following:}                                                                                  \\
+             & \lim_{n \to \infty} d_X\big(x^{(n)}, x_0\big) = 0 \text{ implies }                                                                                                              \\
+             & \lim_{n \to \infty} d_{l^2}|_{\mathbf{R}^2 \times \mathbf{R}^2}\Big(\big(f(x^{(n)}), g(x^{(n)})\big), \big(f(x_0), g(x_0)\big)\Big) = 0 & \text{(by Proposition \ref{1.1.18})}  \\
+        \iff & f \oplus g \text{ is continuous at } x_0 \text{ in } (X, d_X).                                                                          & \text{(by Theorem \ref{2.1.4}(a)(b))}
+    \end{align*}
+\end{proof}
+
+\begin{proof}
+    We have
+    \begin{align*}
+             & \begin{cases}
+            f \text{ is continuous in } (X, d_X) \\
+            g \text{ is continuous in } (X, d_X)
+        \end{cases}                                                                                              \\
+        \iff & \forall\ x_0 \in X, \begin{cases}
+            f \text{ is continuous at } x_0 \text{ in } (X, d_X) \\
+            g \text{ is continuous at } x_0 \text{ in } (X, d_X)
+        \end{cases}                                     & \text{(by Definition \ref{2.1.1})} \\
+        \iff & \forall\ x_0 \in X, f \oplus g \text{ is continuous at } x_0 \text{ in } (X, d_X) & \text{(by Lemma \ref{2.2.1}(a))}   \\
+        \iff & f \oplus g \text{ is continuous in } (X, d_X).                                    & \text{(by Definition \ref{2.1.1})}
+    \end{align*}
+\end{proof}
