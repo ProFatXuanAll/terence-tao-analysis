@@ -44,20 +44,19 @@
     Then the following three statements are logically equivalent:
     \begin{enumerate}
         \item \(f\) is continuous at \(x_0\).
-        \item Whenever \((x^{(n)})_{n = 1}^\infty\) is a sequence in \(X\) which converges to \(x_0\) with respect to the metric \(d_X\), the sequence \((f(x^{(n)}))_{n = 1}^\infty\) converges to \(f(x_0)\) with respect to the metric \(d_Y\).
+        \item Whenever \((x^{(n)})_{n = 1}^\infty\) is a sequence in \(X\) which converges to \(x_0\) with respect to the metric \(d_X\), the sequence \(\big(f(x^{(n)})\big)_{n = 1}^\infty\) converges to \(f(x_0)\) with respect to the metric \(d_Y\).
         \item For every open set \(V \subseteq Y\) that contains \(f(x_0)\), there exists an open set \(U \subseteq X\) containing \(x_0\) such that \(f(U) \subseteq V\).
     \end{enumerate}
 \end{theorem}
 
 \begin{proof}
     We first show that statement (a) implies statement (b).
-    Suppose that \(f : X \to Y\) is continuous at \(x_0\).
+    Suppose that \(f : X \to Y\) is continuous at \(x_0\) in \((X, d_X)\).
     Then by Definition \ref{2.1.1} we have
     \[
         \forall\ \varepsilon \in \mathbf{R}^+, \exists\ d \in \mathbf{R}^+ : \Big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f(x), f(x_0)\big) < \varepsilon\Big).
     \]
-    Now we fix \(\delta\) for each \(\varepsilon \in \mathbf{R}^+\) and denoted it as \(\delta_\varepsilon\).
-    Note that here we use axiom of choice.
+    Now we choose \(\delta\) for each \(\varepsilon \in \mathbf{R}^+\) and denoted it as \(\delta_\varepsilon\).
     Let \((x^{(n)})_{n = 1}^\infty\) be a sequence in \(X\) such that \(\lim_{n \to \infty} d_X(x^{(n)}, x_0) = 0\).
     Then we have
     \begin{align*}
@@ -69,6 +68,7 @@
                  & \bigg(\exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, d_Y\big(f(x^{(n)}), f(x_0)\big) < \varepsilon\bigg)                            & \text{(by hypothesis)}              \\
         \implies & \lim_{n \to \infty} d_Y\big(f(x^{(n)}), f(x_0)\big) = 0.                                                                              & \text{(by Definition \ref{1.1.14})}
     \end{align*}
+    Since \((x^{(n)})_{n = 1}^\infty\) is arbitrary, we know that statement (a) implies statement (b).
 
     Next we show that statement (b) implies statement (c).
     Suppose that
@@ -82,8 +82,7 @@
         \implies & V = \text{int}_{(Y, d_Y)}(V)                                                                   & \text{(by Proposition \ref{1.2.15}(a))} \\
         \implies & \exists\ \varepsilon \in \mathbf{R}^+ : B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big) \subseteq V. & \text{(by Definition \ref{1.2.5})}
     \end{align*}
-    Now we fix such \(\varepsilon\) and denote \(V_\varepsilon = B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big)\).
-    Note that here we use axiom of choice.
+    Now we choose one \(\varepsilon\) and define \(V_\varepsilon = B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big)\).
     By Remark \ref{1.2.4} we know that \(f(x_0) \in V_\varepsilon\), thus we have \(x_0 \in f^{-1}(V_\varepsilon)\) and \(f^{-1}(V_\varepsilon) \neq \emptyset\).
     Now we claim that
     \[
@@ -100,7 +99,7 @@
                  & (d_X(x, x_0) < \frac{1}{n}) \land \Big(d_Y\big(f(x), f(x_0)\big) \geq \varepsilon\Big).
     \end{align*}
     For each \(n \in \mathbf{Z}^+\), we define \(X_n = B_{(X, d_X)}(x_0, \frac{1}{n}) \setminus f^{-1}(V_\varepsilon)\).
-    Using axiom of choice we can choose some sequence \((x^{(n)})_{n = 1}^\infty \in \prod_{n \in \mathbf{Z}^+} X_n\).
+    We choose one sequence \((x^{(n)})_{n = 1}^\infty \in \prod_{n \in \mathbf{Z}^+} X_n\).
     Then we have
     \begin{align*}
                  & \forall\ n \in \mathbf{Z}^+, d_X(x^{(n)}, x_0) < \frac{1}{n}                                                                                       \\
@@ -114,7 +113,7 @@
     \]
     a contradiction.
     Thus the claim is true.
-    Using the claim and axiom of choice we fix such \(\delta\) and define \(U = B_{(X, d_X)}(x_0, \delta)\).
+    Using the claim we choose one \(\delta\) and define \(U = B_{(X, d_X)}(x_0, \delta)\).
     By Proposition \ref{1.2.15}(c) we know that \(U\) is open in \((X, d_X)\).
     By Remark \ref{1.2.4} we know that \(x_0 \in U\).
     Since \(U \subseteq f^{-1}(V_\varepsilon) \subseteq X\), we know that \(f(U) \subseteq V\).
@@ -131,8 +130,7 @@
     \[
         \exists\ U \subseteq X : \big(U \text{ is open in } (X, d_X)\big) \land (x_0 \in U) \land \Big(f(U) \subseteq B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big)\Big).
     \]
-    Now we fix such \(U\).
-    Note that here we use axiom of choice.
+    Now we choose one such \(U\).
     Since \(U\) is open in \((X, d_X)\) and \(x_0 \in U\), we have
     \begin{align*}
                  & x_0 \in \text{int}_{(X, d_X)}(U)                                                                                            & \text{(by Proposition \ref{1.2.15}(a))} \\
@@ -146,5 +144,98 @@
     \[
         \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \Big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f(x), f(x_0)\big) < \varepsilon\Big).
     \]
-    Thus by Definition \ref{2.1.1} \(f\) is continuous at \(x_0\).
+    Thus by Definition \ref{2.1.1} \(f\) is continuous at \(x_0\) in \((X, d_X)\).
+    We conclude that statements (a)(b)(c) are equivalent.
+\end{proof}
+
+\begin{theorem}\label{2.1.5}
+    Let \((X, d_X)\) be a metric space, and let \((Y, d_Y)\) be another metric space.
+    Let \(f : X \to Y\) be a function.
+    Then the following four statements are equivalent:
+    \begin{enumerate}
+        \item \(f\) is continuous.
+        \item Whenever \((x^{(n)})_{n = 1}^\infty\) is a sequence in \(X\) which converges to some point \(x_0 \in X\) with respect to the metric \(d_X\), the sequence \(\big(f(x^{(n)})\big)_{n = 1}^\infty\) converges to \(f(x_0)\) with respect to the metric \(d_Y\).
+        \item Whenever \(V\) is an open set in \(Y\), the set \(f^{-1}(V) \coloneqq \{x \in X : f(x) \in V\}\) is an open set in \(X\).
+        \item Whenever \(F\) is a closed set in \(Y\), the set \(f^{-1}(F) \coloneqq \{x \in X : f(x) \in F\}\) is a closed set in \(X\).
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    We first show that statements (a)(b) are equivalent.
+    \begin{align*}
+             & f \text{ is continuous in } (X, d_X)                                                                             \\
+        \iff & \forall\ x_0 \in X, f \text{ is continuous at } x_0 \text{ in } (X, d_X) & \text{(by Definition \ref{2.1.1})}    \\
+        \iff & \forall\ x_0 \in X, \Big(\lim_{n \to \infty} d_X(x^{(n)}, x_0) = 0                                               \\
+             & \implies \lim_{n \to \infty} d_Y\big(f(x^{(n)}), f(x_0)\big) = 0\Big).   & \text{(by Theorem \ref{2.1.4}(a)(b))}
+    \end{align*}
+
+    Next we show that statements (a) implies statement (c).
+    Suppose that \(f\) is continuous in \((X, d_X)\).
+    Let \(V\) be an open set in \((Y, d_Y)\).
+    Then we have
+    \begin{align*}
+                 & f \text{ is continuous in } (X, d_X)                                                                                                       \\
+        \implies & f \text{ is continuous in } (f^{-1}(V), d_X)                                                     & \text{(by Remark \ref{2.1.3})}          \\
+        \implies & \forall\ x_0 \in f^{-1}(V), f \text{ is continuous at } x_0 \text{ in } (f^{-1}(V), d_X)         & \text{(by Definition \ref{2.1.1})}      \\
+        \implies & \forall\ x_0 \in f^{-1}(V), \exists\ U \subseteq X :                                                                                       \\
+                 & \big(U \text{ is open in } (X, d_X)\big) \land (x_0 \in U) \land \big(f(U) \subseteq V\big)      & \text{(by Theorem \ref{2.1.4}(a)(c))}   \\
+        \implies & \forall\ x_0 \in f^{-1}(V), \exists\ U \subseteq X :                                                                                       \\
+                 & \big(U \text{ is open in } (X, d_X)\big) \land (x_0 \in U) \land \big(U \subseteq f^{-1}(V)\big)                                           \\
+        \implies & \forall\ x_0 \in f^{-1}(V), \exists\ U \subseteq X :                                                                                       \\
+                 & \big(\exists\ r \in \mathbf{R}^+ : B_{(X, d_X)}(x_0, r) \subseteq U \subseteq f^{-1}(V)\big)     & \text{(by Proposition \ref{1.2.15}(a))} \\
+        \implies & f^{(-1)}(V) \text{ is open in } (X, d_X).                                                        & \text{(by Proposition \ref{1.2.15}(a))}
+    \end{align*}
+    Since \(V\) is arbitrary, we know that statement (a) implies statement (c).
+
+    Next we show that statements (c) implies statement (a).
+    Suppose that
+    \[
+        \forall\ V \subseteq Y, V \text{ is open in } (Y, d_Y) \implies f^{-1}(V) \text{ is open in } (X, d_X).
+    \]
+    Let \(x_0 \in X\).
+    Then we have
+    \begin{align*}
+                 & \forall\ V \subseteq Y, \big(V \text{ is open in } (Y, d_Y)\big) \land \big(f(x_0) \in V\big)                          \\
+        \implies & \big(f^{-1}(V) \text{ is open in } (X, d_X)\big) \land \big(x_0 \in f^{-1}(V)\big)            & \text{(by hypothesis)}
+    \end{align*}
+    and by Theorem \ref{2.1.4}(a)(c) we know that \(f\) is continuous at \(x_0\) in \((X, d_X)\).
+    Since \(x_0\) is arbitrary, we know that \(f\) is continuous in \((X, d_X)\).
+    Thus statements (c) implies statement (a) and from the proof above we conclude that statements (a)(c) are equivalent.
+
+    Next we show that statements (c) implies statement (d).
+    Suppose that
+    \[
+        \forall\ V \subseteq Y, V \text{ is open in } (Y, d_Y) \implies f^{-1}(V) \text{ is open in } (X, d_X).
+    \]
+    Let \(F\) be an closed set in \((Y, d_Y)\).
+    Then we have
+    \begin{align*}
+                 & F \text{ is closed in } (Y, d_Y)                                                                                          \\
+        \implies & Y \setminus F \text{ is open in } (Y, d_Y)                                      & \text{(by Proposition \ref{1.2.15}(e))} \\
+        \implies & f^{-1}(Y \setminus F) \text{ is open in } (X, d_X)                              & \text{(by hypothesis)}                  \\
+        \implies & X \setminus f^{-1}(Y \setminus F) \text{ is closed in } (X, d_X)                & \text{(by Proposition \ref{1.2.15}(e))} \\
+        \implies & X \setminus \{x \in X : f(x) \in Y \setminus F\} \text{ is closed in } (X, d_X)                                           \\
+        \implies & \{x \in X : f(x) \in F\} \text{ is closed in } (X, d_X)                                                                   \\
+        \implies & f^{-1}(F) \text{ is closed in } (X, d_X).
+    \end{align*}
+    Since \(F\) is arbitrary, we know that statement (c) implies statement (d).
+
+    Finally we show that statements (d) implies statement (c).
+    Suppose that
+    \[
+        \forall\ F \subseteq Y, F \text{ is closed in } (Y, d_Y) \implies f^{-1}(F) \text{ is closed in } (X, d_X).
+    \]
+    Let \(V\) be an open set in \((Y, d_Y)\).
+    Then we have
+    \begin{align*}
+                 & V \text{ is open in } (Y, d_Y)                                                                                          \\
+        \implies & Y \setminus V \text{ is closed in } (Y, d_Y)                                  & \text{(by Proposition \ref{1.2.15}(e))} \\
+        \implies & f^{-1}(Y \setminus V) \text{ is closed in } (X, d_X)                          & \text{(by hypothesis)}                  \\
+        \implies & X \setminus f^{-1}(Y \setminus V) \text{ is open in } (X, d_X)                & \text{(by Proposition \ref{1.2.15}(e))} \\
+        \implies & X \setminus \{x \in X : f(x) \in Y \setminus V\} \text{ is open in } (X, d_X)                                           \\
+        \implies & \{x \in X : f(x) \in V\} \text{ is open in } (X, d_X)                                                                   \\
+        \implies & f^{-1}(V) \text{ is open in } (X, d_X).
+    \end{align*}
+    Since \(V\) is arbitrary, we know that statement (d) implies statement (c).
+    We conclude that statements (a)(b)(c)(d) are all equivalent.
 \end{proof}
