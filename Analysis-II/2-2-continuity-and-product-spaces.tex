@@ -118,7 +118,7 @@ Let \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) be functions, and let 
 \end{corollary}
 
 \begin{proof}
-    We first prove (a). Since \(f, g\) are continuous at \(x_0\) from \((X, d)\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\), then by Additional Corollary \ref{ac 2.2.1} \(f \oplus g : X \to \mathbf{R}^2\) is also continuous at \(x_0\) from \((X, d)\) to \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\).
+    We first prove (a). Since \(f, g\) are continuous at \(x_0\) from \((X, d)\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\), then by Additional Corollary \ref{ac 2.2.1}(a) \(f \oplus g : X \to \mathbf{R}^2\) is also continuous at \(x_0\) from \((X, d)\) to \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\).
     On the other hand, from Lemma \ref{2.2.2} the function \((x, y) \mapsto x + y\) is continuous from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\), and in particular is continuous at \(f \oplus g(x_0)\) from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
     If we then compose these two functions using Corollary \ref{2.1.7} we conclude that \(f + g : X \to \mathbf{R}\) is continuous from \((X, d)\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
     A similar argument gives the continuity of \(f - g\), \(fg\), \(\max(f, g)\), \(\min(f, g)\) and \(cf\).
@@ -218,6 +218,39 @@ Let \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) be functions, and let 
     Show that \(P\) is continuous.
     Conclude that if \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) are continuous functions, then the function \(P(f, g) : X \to \mathbf{R}\) defined by \(P(f, g)(x) \coloneqq P\big(f(x), g(x)\big)\) is also continuous.
 \end{exercise}
+
+\begin{proof}
+    First we show that \(P\) is continuous from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+    Let \((x, y) \in \mathbf{R}^2\).
+    Let \(\pi_1, \pi_2\) be the functions defined in Exercise \ref{ex 2.2.4}.
+    Since \(\pi_1\) is continuous from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\), by Corollary \ref{2.2.3}(b) we know that
+    \[
+        x^i = \prod_{k = 1}^i x = \prod_{k = 1}^i \pi_1(x, y)
+    \]
+    is continuous at \((x, y)\) from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) for every \(0 \leq i \leq n\).
+    Similarly
+    \[
+        y^j = \prod_{k = 1}^j y = \prod_{k = 1}^j \pi_2(x, y)
+    \]
+    is continuous at \((x, y)\) from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) for every \(0 \leq j \leq m\).
+    Thus by Corollary \ref{2.2.3}(b) we know that \(c_{ij} x^i y^j\) is continuous at \((x, y)\) from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) for every \(0 \leq i \leq n\) and \(0 \leq j \leq m\), and
+    \[
+        \sum_{i = 0}^n \sum_{j = 0}^m c_{ij} x^i y^j = P(x, y)
+    \]
+    is continuous at \((x, y)\) from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+    Since \((x, y)\) is arbitrary, by Definition \ref{2.1.1} we know that \(P\) is continuous from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+
+    Now suppose that \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) are to continuous functions from \((X, d)\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+    Then we have
+    \begin{align*}
+                 & f \oplus g \text{ is continuous }                                                                                                                \\
+                 & \text{from } (X, d) \text{ to } (\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2}) & \text{(by Additional Corollary \ref{ac 2.2.1}(b))} \\
+        \implies & P \circ (f \oplus g) \text{ is continuous }                                                                                                      \\
+                 & \text{from } (X, d) \text{ to } (\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})       & \text{(by Corollary \ref{2.1.7}(b))}               \\
+        \implies & P(f, g) \text{ is continuous }                                                                                                                   \\
+                 & \text{from } (X, d) \text{ to } (\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}}).      & \text{(by the definition of \(P\))}
+    \end{align*}
+\end{proof}
 
 \begin{exercise}\label{ex 2.2.6}
     Let \(\mathbf{R}^m\) and \(\mathbf{R}^n\) be Euclidean spaces.
