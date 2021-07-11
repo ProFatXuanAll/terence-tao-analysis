@@ -17,10 +17,8 @@
 \begin{proof}{(a)}
     We have
     \begin{align*}
-             & \begin{cases}
-            f \text{ is continuous at } x_0 \text{ in } (X, d_X) \\
-            g \text{ is continuous at } x_0 \text{ in } (X, d_X)
-        \end{cases}                                                                                                                                                       \\
+             & f, g \text{ are continuous at } x_0                                                                                                                                             \\
+             & \text{from } (X, d_X) \text{ to } (\mathbf{R}, d_{l^2}|_{\mathbf{R} \times \mathbf{R}})                                                                                         \\
         \iff & \text{every sequence } (x^{(n)})_{n = 1}^\infty \text{ in } X \text{ satisfies the following:}                                                                                  \\
              & \lim_{n \to \infty} d_X\big(x^{(n)}, x_0\big) = 0 \text{ implies }                                                                                                              \\
              & \begin{cases}
@@ -30,24 +28,36 @@
         \iff & \text{every sequence } (x^{(n)})_{n = 1}^\infty \text{ in } X \text{ satisfies the following:}                                                                                  \\
              & \lim_{n \to \infty} d_X\big(x^{(n)}, x_0\big) = 0 \text{ implies }                                                                                                              \\
              & \lim_{n \to \infty} d_{l^2}|_{\mathbf{R}^2 \times \mathbf{R}^2}\Big(\big(f(x^{(n)}), g(x^{(n)})\big), \big(f(x_0), g(x_0)\big)\Big) = 0 & \text{(by Proposition \ref{1.1.18})}  \\
-        \iff & f \oplus g \text{ is continuous at } x_0 \text{ in } (X, d_X).                                                                          & \text{(by Theorem \ref{2.1.4}(a)(b))}
+        \iff & f \oplus g \text{ is continuous at } x_0                                                                                                                                        \\
+             & \text{from } (X, d_X) \text{ to } (\mathbf{R}^2, d_{l^2}|_{\mathbf{R}^2 \times \mathbf{R}^2}).                                          & \text{(by Theorem \ref{2.1.4}(a)(b))}
     \end{align*}
 \end{proof}
 
-\begin{proof}
+\begin{proof}{(b)}
     We have
     \begin{align*}
-             & \begin{cases}
-            f \text{ is continuous in } (X, d_X) \\
-            g \text{ is continuous in } (X, d_X)
-        \end{cases}                                                                                              \\
-        \iff & \forall\ x_0 \in X, \begin{cases}
-            f \text{ is continuous at } x_0 \text{ in } (X, d_X) \\
-            g \text{ is continuous at } x_0 \text{ in } (X, d_X)
-        \end{cases}                                     & \text{(by Definition \ref{2.1.1})} \\
-        \iff & \forall\ x_0 \in X, f \oplus g \text{ is continuous at } x_0 \text{ in } (X, d_X) & \text{(by Lemma \ref{2.2.1}(a))}   \\
-        \iff & f \oplus g \text{ is continuous in } (X, d_X).                                    & \text{(by Definition \ref{2.1.1})}
+             & f, g \text{ are continuous from } (X, d_X) \text{ to } (\mathbf{R}, d_{l^2}|_{\mathbf{R} \times \mathbf{R}})                                                  \\
+        \iff & \forall\ x_0 \in X, f, g \text{ are continuous at } x_0                                                                                                       \\
+             & \text{from } (X, d_X) \text{ to } (\mathbf{R}, d_{l^2}|_{\mathbf{R} \times \mathbf{R}})                                  & \text{(by Definition \ref{2.1.1})} \\
+        \iff & \forall\ x_0 \in X, f \oplus g \text{ is continuous at } x_0                                                             & \text{(by Lemma \ref{2.2.1}(a))}   \\
+             & \text{from } (X, d_X) \text{ to } (\mathbf{R}^2, d_{l^2}|_{\mathbf{R}^2 \times \mathbf{R}^2})                                                                 \\
+        \iff & f \oplus g \text{ is continuous from } (X, d_X) \text{ to } (\mathbf{R}^2, d_{l^2}|_{\mathbf{R}^2 \times \mathbf{R}^2}). & \text{(by Definition \ref{2.1.1})}
     \end{align*}
+\end{proof}
+
+\begin{additional corollary}\label{ac 2.2.1}
+Let \((X, d)\) be a metric space.
+Let \((\mathbf{R}, d_{\mathbf{R}})\) be a metric space where \(d_{\mathbf{R}}\) can be \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\), \(d_{l^2}|_{\mathbf{R} \times \mathbf{R}}\) or \(d_{l^\infty}|_{\mathbf{R} \times \mathbf{R}}\).
+Let \((\mathbf{R}^2, d_{\mathbf{R}^2})\) be a metric space where \(d_{\mathbf{R}^2}\) can be \(d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2}\), \(d_{l^2}|_{\mathbf{R}^2 \times \mathbf{R}^2}\) or \(d_{l^\infty}|_{\mathbf{R}^2 \times \mathbf{R}^2}\).
+Let \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) be functions, and let \(f \oplus g : X \to \mathbf{R}^2\) be their direct sum.
+\begin{enumerate}
+    \item If \(x_0 \in X\), then \(f\) and \(g\) are both continuous at \(x_0\) from \((X, d)\) to \((\mathbf{R}, d_{\mathbf{R}})\) if and only if \(f \oplus g\) is continuous at \(x_0\) from \((X, d)\) to \((\mathbf{R}^2, d_{\mathbf{R}^2})\).
+    \item \(f\) and \(g\) are both continuous from \((X, d)\) to \((\mathbf{R}, d_{\mathbf{R}})\) if and only if \(f \oplus g\) is continuous from \((X, d)\) to \((\mathbf{R}^2, d_{\mathbf{R}^2})\).
+\end{enumerate}
+\end{additional corollary}
+
+\begin{proof}
+    By Proposition \ref{1.1.18} and Lemma \ref{2.2.1} we are done.
 \end{proof}
 
 \begin{lemma}\label{2.2.2}
@@ -57,7 +67,7 @@
 \end{lemma}
 
 \begin{proof}
-    First we show that the addition, subtraction, multiplication, maximum and minimum functions from \(\mathbf{R}^2\) to \(\mathbf{R}\) are continuous in \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\).
+    First we show that the addition, subtraction, multiplication, maximum and minimum functions from \(\mathbf{R}^2\) to \(\mathbf{R}\) are continuous from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
     Let \((x, y) \in \mathbf{R}^2\) and let \((x^{(n)}, y^{(n)})_{n = 1}^\infty\) be a sequence in \(\mathbf{R}^2\) such that
     \[
         \lim_{n \to \infty} d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2}\big((x^{(n)}, y^{(n)}), (x, y)\big) = 0
@@ -70,10 +80,10 @@
          & \lim_{n \to \infty} d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\big(\max(x^{(n)}, y^{(n)}), \max(x, y)\big) = 0 \\
          & \lim_{n \to \infty} d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\big(\min(x^{(n)}, y^{(n)}), \min(x, y)\big) = 0 \\
     \end{align*}
-    Since \((x^{(n)}, y^{(n)})_{n = 1}^\infty\) is arbitrary, by Theorem \ref{2.1.4}(a)(b) we know that the addition, subtraction, multiplication, maximum and minimum functions from \(\mathbf{R}^2\) to \(\mathbf{R}\) are continuous at \((x, y)\) in \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\).
-    Since \((x, y)\) is arbitrary, by Theorem \ref{2.1.5}(a)(b) we know that the addition, subtraction, multiplication, maximum and minimum functions from \(\mathbf{R}^2\) to \(\mathbf{R}\) are continuous in \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\).
+    Since \((x^{(n)}, y^{(n)})_{n = 1}^\infty\) is arbitrary, by Theorem \ref{2.1.4}(a)(b) we know that the addition, subtraction, multiplication, maximum and minimum functions from \(\mathbf{R}^2\) to \(\mathbf{R}\) are continuous at \((x, y)\) from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+    Since \((x, y)\) is arbitrary, by Theorem \ref{2.1.5}(a)(b) we know that the addition, subtraction, multiplication, maximum and minimum functions from \(\mathbf{R}^2\) to \(\mathbf{R}\) are continuous from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
 
-    Next we show that the division function from \(E = \mathbf{R} \times (\mathbf{R} \setminus \{0\})\) to \(\mathbf{R}\) is continuous in \(E, d_{l^1}|_{E \times E}\).
+    Next we show that the division function from \(E = \mathbf{R} \times (\mathbf{R} \setminus \{0\})\) to \(\mathbf{R}\) is continuous from \((E, d_{l^1}|_{E \times E})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
     Let \((x, y) \in E\) and let \((x^{(n)}, y^{(n)})_{n = 1}^\infty\) be a sequence in \(E\) such that
     \[
         \lim_{n \to \infty} d_{l^1}|_{E \times E}\big((x^{(n)}, y^{(n)}), (x, y)\big) = 0
@@ -82,9 +92,9 @@
     \[
         \lim_{n \to \infty} d_{l^1}|_{\mathbf{R} \times \mathbf{R}}(x^{(n)} / y^{(n)}, x / y) = 0.
     \]
-    Thus using similar arguments as above we know that the division function from \(E\) to \(\mathbf{R}\) is continuous in \((E, d_{l^1}|_{E \times E})\).
+    Thus using similar arguments as above we know that the division function from \(E\) to \(\mathbf{R}\) is continuous from \((E, d_{l^1}|_{E \times E})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
 
-    Finally we show that the constant multiplication function from \(\mathbf{R}\) to \(\mathbf{R}\) is continuous in \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+    Finally we show that the constant multiplication function from \(\mathbf{R}\) to \(\mathbf{R}\) is continuous from \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
     Let \(c, x \in \mathbf{R}\) and let \((x^{(n)})_{n = 1}^\infty\) be a sequence in \(\mathbf{R}\) such that
     \[
         \lim_{n \to \infty} d_{l^1}|_{\mathbf{R} \times \mathbf{R}}(x^{(n)}, x) = 0.
@@ -93,7 +103,7 @@
     \[
         \lim_{n \to \infty} d_{l^1}|_{\mathbf{R} \times \mathbf{R}}(cx^{(n)}, cx) = 0.
     \]
-    Thus using similar arguments as above we know that the constant function from \(\mathbf{R}\) to \(\mathbf{R}\) is continuous in \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+    Thus using similar arguments as above we know that the constant function from \(\mathbf{R}\) to \(\mathbf{R}\) is continuous from \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
 \end{proof}
 
 \begin{corollary}\label{2.2.3}
@@ -102,15 +112,15 @@
     \begin{enumerate}
         \item If \(x_0 \in X\) and \(f\) and \(g\) are continuous at \(x_0\), then the functions \(f + g : X \to \mathbf{R}\), \(f - g : X \to \mathbf{R}\), \(fg : X \to \mathbf{R}\), \(\max(f, g) : X \to \mathbf{R}\), \(\min(f, g) : X \to \mathbf{R}\), and \(cf : X \to \mathbf{R}\) (see Definition 9.2.1 in Analysis I for definitions) are also continuous at \(x_0\).
               If \(g(x) \neq 0\) for all \(x \in X\), then \(f / g : X \to \mathbf{R}\) is also continuous at \(x_0\).
-        \item If \(f\) and \(g\) are continuous, then the functions \(f + g : X \to \mathbf{R}\), \(f - g : X \to \mathbf{R}\), \(fg : X \to \mathbf{R}\), \(\max(f, g) : X \to \mathbf{R}\), \(\min(f, g) : X \to \mathbf{R}\), and \(cf : X \to \mathbf{R}\) are also continuous at \(x_0\).
-              If \(g(x) \neq 0\) for all \(x \in X\), then \(f / g : X \to \mathbf{R}\) is also continuous at \(x_0\).
+        \item If \(f\) and \(g\) are continuous, then the functions \(f + g : X \to \mathbf{R}\), \(f - g : X \to \mathbf{R}\), \(fg : X \to \mathbf{R}\), \(\max(f, g) : X \to \mathbf{R}\), \(\min(f, g) : X \to \mathbf{R}\), and \(cf : X \to \mathbf{R}\) are also continuous.
+              If \(g(x) \neq 0\) for all \(x \in X\), then \(f / g : X \to \mathbf{R}\) is also continuous.
     \end{enumerate}
 \end{corollary}
 
 \begin{proof}
-    We first prove (a). Since \(f\) and \(g\) are continuous at \(x_0\), then by Lemma \ref{2.2.1} \(f \oplus g : X \to \mathbf{R}^2\) is also continuous at \(x_0\).
-    On the other hand, from Lemma \ref{2.2.2} the function \((x, y) \mapsto x + y\) is continuous at every point in \(\mathbf{R}^2\), and in particular is continuous at \(f \oplus g(x_0)\).
-    If we then compose these two functions using Corollary \ref{2.1.7} we conclude that \(f + g : X \to \mathbf{R}\) is continuous.
+    We first prove (a). Since \(f, g\) are continuous at \(x_0\) from \((X, d)\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\), then by Additional Corollary \ref{ac 2.2.1} \(f \oplus g : X \to \mathbf{R}^2\) is also continuous at \(x_0\) from \((X, d)\) to \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\).
+    On the other hand, from Lemma \ref{2.2.2} the function \((x, y) \mapsto x + y\) is continuous from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\), and in particular is continuous at \(f \oplus g(x_0)\) from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+    If we then compose these two functions using Corollary \ref{2.1.7} we conclude that \(f + g : X \to \mathbf{R}\) is continuous from \((X, d)\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
     A similar argument gives the continuity of \(f - g\), \(fg\), \(\max(f, g)\), \(\min(f, g)\) and \(cf\).
     To prove the claim for \(f / g\), we first use Exercise \ref{ex 2.1.7} to restrict the range of \(g\) from \(\mathbf{R}\) to \(\mathbf{R} \setminus \{0\}\), and then one can argue as before.
     The claim (b) follows immediately from (a).
@@ -139,7 +149,7 @@
 \end{exercise}
 
 \begin{proof}
-    Let \((X, d_X)\) be a metric space and let \(f : X \to \mathbf{R}\) be a function which is continuous in \((X, d_X)\).
+    Let \((X, d_X)\) be a metric space and let \(f : X \to \mathbf{R}\) be a function which is continuous from \((X, d_X)\) to \(\).
     Since
     \begin{align*}
                  & \forall\ x_0 \in X, \abs*{f}(x) = \abs*{f(x)} = \max\big(-f(x), f(x)\big) \\
@@ -147,10 +157,10 @@
     \end{align*}
     we have
     \begin{align*}
-                 & f \text{ is continuous in } (X, d_X)                                                  \\
-        \implies & -f \text{ is continuous in } (X, d_X)          & \text{(by Corollary \ref{2.2.3}(b))} \\
-        \implies & \max(f, -f) \text{ is continuous in } (X, d_X) & \text{(by Corollary \ref{2.2.3}(b))} \\
-        \implies & \abs*{f} \text{ is continuous in } (X, d_X).
+                 & f \text{ is continuous from } (X, d_X) \text{ to } (\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})                                                  \\
+        \implies & -f \text{ is continuous from } (X, d_X) \text{ to } (\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})          & \text{(by Corollary \ref{2.2.3}(b))} \\
+        \implies & \max(f, -f) \text{ is continuous from } (X, d_X) \text{ to } (\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}}) & \text{(by Corollary \ref{2.2.3}(b))} \\
+        \implies & \abs*{f} \text{ is continuous from } (X, d_X) \text{ to } (\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}}).
     \end{align*}
 \end{proof}
 
@@ -159,6 +169,43 @@
     Show that \(\pi_1\) and \(\pi_2\) are continuous.
     Conclude that if \(f : \mathbf{R} \to X\) is any continuous function into a metric space \((X, d)\), then the functions \(g_1 : \mathbf{R}^2 \to X\) and \(g_2 : \mathbf{R}^2 \to X\) defined by \(g_1(x, y) \coloneqq f(x)\) and \(g_2(x, y) \coloneqq f(y)\) are also continuous.
 \end{exercise}
+
+\begin{proof}
+    Let \((x, y) \in \mathbf{R}^2\).
+    We know that
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \forall\ (x', y') \in \mathbf{R}^2,                                                            \\
+                 & d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2}\big((x, y), (x', y')\big) < \varepsilon                                                   \\
+        \implies & \abs*{x - x'} + \abs*{y - y'} < \varepsilon                                                & \text{(by Example \ref{1.1.7})}          \\
+        \implies & \abs*{x - x'} < \varepsilon                                                                & \text{(by Definition \ref{1.1.2}(a)(b))} \\
+        \implies & d_{l^1}|_{\mathbf{R} \times \mathbf{R}}(x, x') < \varepsilon                               & \text{(by Example \ref{1.1.7})}          \\
+        \implies & d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\big(\pi_1(x, y), \pi_1(x', y')\big) < \varepsilon. & \text{(by the definition of \(\pi_1\))}
+    \end{align*}
+    Thus by setting \(\delta = \varepsilon\) we have
+    \begin{align*}
+         & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                                                                                                                                        \\
+         & \Big(\forall\ (x', y') \in \mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2}\big((x, y), (x', y')\big) < \delta \implies d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\big(\pi_1(x, y), \pi_1(x', y')\big) < \varepsilon\Big).
+    \end{align*}
+    Since \((x, y)\) is arbitrary, by Definition \ref{2.1.1} \(\pi_1\) is continuous from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+    Using similar arguments we can show that \(\pi_2\) is continuous from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+
+    Let \(f : \mathbf{R} \to X\) be a function which is continuous from \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) to \((X, d)\).
+    Let \(g_1 : \mathbf{R}^2 \to X\) and \(g_2 : \mathbf{R}^2 \to X\) be functions where
+    \[
+        \forall\ (x, y) \in \mathbf{R}^2, \begin{cases}
+            g_1(x, y) = f(x) \\
+            g_2(x, y) = f(y)
+        \end{cases}
+    \]
+    Since
+    \begin{align*}
+         & \forall\ (x, y) \in \mathbf{R}^2,                                \\
+         & f \circ \pi_1(x, y) = f\big(\pi_1(x, y)\big) = f(x) = g_1(x, y); \\
+         & f \circ \pi_2(x, y) = f\big(\pi_2(x, y)\big) = f(y) = g_2(x, y),
+    \end{align*}
+    we know that \(g_1 = f \circ \pi_1\) and \(g_2 = f \circ \pi_2\).
+    Thus by Corollary \ref{2.1.7}(b) \(g_1, g_2\) are continuous from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((X, d)\).
+\end{proof}
 
 \begin{exercise}\label{ex 2.2.5}
     Let \(n, m \geq 0\) be integers.
