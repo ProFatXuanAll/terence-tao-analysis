@@ -457,6 +457,58 @@ Let \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) be functions, and let 
     Discuss the comparison between this result and Example 1.2.7.
 \end{exercise}
 
+\begin{proof}
+    Let \(d_1 = d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\) and let \(d_2 = d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2}\).
+    Since \(f\) is continuous at \((x_0, y_0)\) from \((\mathbf{R}^2, d_2)\) to \((\mathbf{R}, d_1)\), by Definition \ref{2.1.1} we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ (x, y) \in \mathbf{R}^2,                                                          \\
+                 & d_2\big((x, y), (x_0, y_0)\big) < \delta \text{ implies } d_1\big(f(x, y), f(x_0, y_0)\big) < \varepsilon                                                            \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ (x, y) \in \mathbf{R}^2,                                                          \\
+                 & \abs*{x - x_0} + \abs*{y - y_0} < \delta \text{ implies } \abs*{f(x, y) - f(x_0, y_0)} < \varepsilon                                                                 \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ (x, y) \in \mathbf{R}^2,                                                          \\
+                 & \abs*{x - x_0} + \abs*{y - y_0} < \delta \text{ implies}                                                                                                             \\
+                 & f(x_0, y_0) - \varepsilon < f(x, y) < f(x_0, y_0) + \varepsilon                                                                                                      \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in \mathbf{R}, \abs*{x - x_0} < \frac{\delta}{2} \text{ implies}               \\
+                 & f(x_0, y_0) - \varepsilon \leq \inf_{\abs*{y - y_0} < \frac{\delta}{2}} f(x, y) \leq \sup_{\abs*{y - y_0} < \frac{\delta}{2}} f(x, y) \leq f(x_0, y_0) + \varepsilon \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in \mathbf{R}, \abs*{x - x_0} < \frac{\delta}{2} \text{ implies}               \\
+                 & \begin{cases}
+            \inf\big\{\sup_{\abs*{y - y_0} < r} f(x, y) : r \in \mathbf{R}^+\big\} \leq \sup_{\abs*{y - y_0} < \frac{\delta}{2}} f(x, y) \leq f(x_0, y_0) + \varepsilon \\
+            f(x_0, y_0) - \varepsilon \leq \inf_{\abs*{y - y_0} < \frac{\delta}{2}} f(x, y) \leq \sup\big\{\inf_{\abs*{y - y_0} < r} f(x, y) : r \in \mathbf{R}^+\big\}
+        \end{cases}                                                                                                                                           \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in \mathbf{R}, \abs*{x - x_0} < \frac{\delta}{2} \text{ implies}               \\
+                 & \begin{cases}
+            \limsup_{y \to y_0} f(x, y) \leq f(x_0, y_0) + \varepsilon \\
+            f(x_0, y_0) - \varepsilon \leq \liminf_{y \to y_0} f(x, y)
+        \end{cases}                                                                                                                                           \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in \mathbf{R}, \abs*{x - x_0} < \frac{\delta}{2} \text{ implies}               \\
+                 & \begin{cases}
+            \abs*{\limsup_{y \to y_0} f(x, y) - f(x_0, y_0)} = \limsup_{y \to y_0} f(x, y) - f(x_0, y_0) \leq \varepsilon \\
+            \abs*{\liminf_{y \to y_0} f(x, y) - f(x_0, y_0)} = f(x_0, y_0) - \liminf_{y \to y_0} f(x, y) \leq \varepsilon
+        \end{cases}                                                                                                                                           \\
+        \implies & \begin{cases}
+            \lim_{x \to x_0} \big(\limsup_{y \to y_0} f(x, y)\big) = f(x_0, y_0) \\
+            \lim_{x \to x_0} \big(\liminf_{y \to y_0} f(x, y)\big) = f(x_0, y_0)
+        \end{cases}
+    \end{align*}
+    Then we have
+    \begin{align*}
+                 & \forall\ x \in X, \liminf_{y \to y_0} f(x, y) \leq \lim_{y \to y_0} f(x, y) \leq \limsup_{y \to y_0} f(x, y)                             \\
+        \implies & f(x_0, y_0) = \lim_{x \to x_0} \big(\liminf_{y \to y_0} f(x, y)\big)                                                                     \\
+                 & \quad \leq \lim_{x \to x_0} \big(\lim_{y \to y_0} f(x, y)\big) \leq \lim_{x \to x_0} \big(\limsup_{y \to y_0} f(x, y)\big) = f(x_0, y_0) \\
+        \implies & \lim_{x \to x_0} \big(\lim_{y \to y_0} f(x, y)\big) = f(x_0, y_0).
+    \end{align*}
+    Using similar arguments we can show that
+    \begin{align*}
+         & \lim_{y \to y_0} \big(\limsup_{x \to x_0} f(x, y)\big) = f(x_0, y_0) \\
+         & \lim_{y \to y_0} \big(\liminf_{x \to x_0} f(x, y)\big) = f(x_0, y_0) \\
+         & \lim_{y \to y_0} \big(\lim_{x \to x_0} f(x, y)\big) = f(x_0, y_0)
+    \end{align*}
+    and we conclude that
+    \[
+        \lim_{x \to x_0} \big(\lim_{y \to y_0} f(x, y)\big) = \lim_{y \to y_0} \big(\lim_{x \to x_0} f(x, y)\big) = f(x_0, y_0).
+    \]
+\end{proof}
+
 \begin{exercise}\label{ex 2.2.10}
     Let \(f : \mathbf{R}^2 \to \mathbf{R}\) be a continuous function.
     Show that for each \(x \in \mathbf{R}\), the function \(y \mapsto f(x, y)\) is continuous on \(\mathbf{R}\), and for each \(y \in \mathbf{R}\), the function \(x \mapsto f(x, y)\) is continuous on \(\mathbf{R}\).
