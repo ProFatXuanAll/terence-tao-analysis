@@ -296,6 +296,55 @@ Let \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) be functions, and let 
     Show that \(P\) is continuous.
 \end{exercise}
 
+\begin{proof}
+    For each \(k \in \mathbf{Z}^+\), let \(I_k\) be the finite subset of \(\mathbf{N}^k\), let \(d_k = d_{l^1}|_{\mathbf{R}^k \times \mathbf{R}^k}\), and let \(P_k\) be a polynomial of \(k\) variables, i.e.,
+    \[
+        P_k(x_1, \dots, x_k) = \sum_{(i_1, \dots, i_k) \in I_k} \big(c(i_1, \dots, i_k) x_1^{i_1} \cdots x_k^{i_k}\big).
+    \]
+    We use induction on \(k\) to show that \(P_k\) is continuous from \((\mathbf{R}^k, d_k)\) to \((\mathbf{R}, d_1)\) for every \(k \in \mathbf{Z}^+\).
+    We start with \(k = 1\).
+    For \(k = 1\), we have
+    \begin{align*}
+                 & \forall\ i_1 \in I_1, c(i_1) x_1^{i_1} \text{ is continuous from } (\mathbf{R}, d_1) \text{ to } (\mathbf{R}, d_1) & \text{(by Lemma \ref{2.2.2}(b))}     \\
+        \implies & P_1(x_1) = \sum_{i_1 \in I_1} \big(c(i_1) x_1^{i_1}\big) \text{ is continuous}                                     & \text{(note that \(I_1\) is finite)} \\
+                 & \text{from } (\mathbf{R}, d_1) \text{ to } (\mathbf{R}, d_1)                                                       & \text{(by Lemma \ref{2.2.2}(b))}
+    \end{align*}
+    and thus the base case holds.
+    Suppose inductively that for some \(k \geq 1\), \(P_k\) is continuous from \((\mathbf{R}^k, d_k)\) to \((\mathbf{R}, d_1)\).
+    Then for \(k + 1\), we need to show that \(P_{k + 1}\) is continuous from \((\mathbf{R}^{k + 1}, d_{k + 1})\) to \((\mathbf{R}, d_1)\).
+    Let \(F : \mathbf{R}^k \to 2^\mathbf{R}\) be the function
+    \[
+        \forall\ (x_1, \dots, x_k, x_{k + 1}) \in \mathbf{R}^{k + 1}, F(x_1, \dots, x_k) = \big\{x_{k + 1} \in \mathbf{R} : (x_1, \dots, x_k, x_{k + 1}) \in I_{k + 1}\big\},
+    \]
+    and let \(A = \big\{(i_1, \dots, i_k) \in \mathbf{R}^k : (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1}\big\}\).
+    Then we have
+    \begin{align*}
+         & P_{k + 1}(x_1, \dots, x_k, x_{k + 1})                                                                                                                                                                                \\
+         & = \sum_{(i_1 \dots, i_k, i_{k + 1}) \in I_{k + 1}} c(i_1, \dots, i_k, i_{k + 1}) x_1^{i_1} \cdots x_k^{i_k} x_{k + 1}^{i_{k + 1}}                                                                                    \\
+         & = \sum_{(i_1 \dots, i_k) \in A} \bigg(\sum_{i_{k + 1} \in \mathbf{R} : (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1}} c(i_1, \dots, i_k, i_{k + 1}) x_1^{i_1} \cdots x_k^{i_k} x_{k + 1}^{i_{k + 1}}\bigg)              \\
+         & = \sum_{(i_1 \dots, i_k) \in A} \Bigg(x_1^{i_1} \cdots x_k^{i_k} \bigg(\sum_{i_{k + 1} \in \mathbf{R} : (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1}} c(i_1, \dots, i_k, i_{k + 1}) x_{k + 1}^{i_{k + 1}}\bigg)\Bigg).
+    \end{align*}
+    By induction hypothesis we know that
+    \[
+        \sum_{i_{k + 1} \in \mathbf{R} : (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1}} c(i_1, \dots, i_k, i_{k + 1}) x_{k + 1}^{i_{k + 1}}
+    \]
+    is continuous from \((\mathbf{R}, d_1)\) to \((\mathbf{R}, d_1)\) and
+    \[
+        x_1^{i_1} \cdots x_k^{i_k}
+    \]
+    is continuous from \((\mathbf{R}^k, d_k)\) to \((\mathbf{R}, d_1)\).
+    Thus by Lemma \ref{2.2.2} we know that
+    \begin{align*}
+                 & \forall\ (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1},                                                                                                                                                              \\
+                 & (x_1^{i_1} \cdots x_k^{i_k}) \bigg(\sum_{i_{k + 1} \in \mathbf{R} : (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1}} c(i_1, \dots, i_k, i_{k + 1}) x_{k + 1}^{i_{k + 1}}\bigg)                                         \\
+                 & \text{is continuous from } (\mathbf{R}^{k + 1}, d_{k + 1}) \text{ to } (\mathbf{R}, d_1)                                                                                                                          \\
+        \implies & \sum_{(i_1 \dots, i_k) \in A} \Bigg(x_1^{i_1} \cdots x_k^{i_k} \bigg(\sum_{i_{k + 1} \in \mathbf{R} : (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1}} c(i_1, \dots, i_k, i_{k + 1}) x_{k + 1}^{i_{k + 1}}\bigg)\Bigg) \\
+                 & \text{is continuous from } (\mathbf{R}^{k + 1}, d_{k + 1}) \text{ to } (\mathbf{R}, d_1)                                                                                                                          \\
+        \implies & P_{k + 1} \text{ is continuous from } (\mathbf{R}^{k + 1}, d_{k + 1}) \text{ to } (\mathbf{R}, d_1)
+    \end{align*}
+    and this close the induction.
+\end{proof}
+
 \begin{exercise}\label{ex 2.2.8}
     Let \((X, d_X)\) and \((Y, d_Y)\) be metric spaces.
     Define the metric \(d_{X \times Y} : (X \times Y) \times (X \times Y) \to [0, \infty)\) by the formula
