@@ -333,7 +333,7 @@ Let \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) be functions, and let 
         x_1^{i_1} \cdots x_k^{i_k}
     \]
     is continuous from \((\mathbf{R}^k, d_k)\) to \((\mathbf{R}, d_1)\).
-    Thus by Lemma \ref{2.2.2} we know that
+    Thus by Lemma \ref{2.2.2}(b) we know that
     \begin{align*}
                  & \forall\ (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1},                                                                                                                                                              \\
                  & (x_1^{i_1} \cdots x_k^{i_k}) \bigg(\sum_{i_{k + 1} \in \mathbf{R} : (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1}} c(i_1, \dots, i_k, i_{k + 1}) x_{k + 1}^{i_{k + 1}}\bigg)                                         \\
@@ -353,6 +353,84 @@ Let \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) be functions, and let 
     \]
     Show that \((X \times Y, d_{X \times Y})\) is a metric space, and deduce an analogue of Proposition \ref{1.1.18} and Lemma \ref{2.2.1}.
 \end{exercise}
+
+\begin{proof}
+    We first show that \((X \times Y, d_{X \times Y})\) is a metric space.
+    For any \((x, y) \in X \times Y\), we have
+    \begin{align*}
+        d_{X \times Y}\big((x, y), (x, y)\big) & = d_X(x, x) + d_Y(y, y)                                         \\
+                                               & = 0 + 0 = 0             & \text{(by Definition \ref{1.1.2}(a))}
+    \end{align*}
+    and thus \((X \times Y, d_{X \times Y})\) satisfies Definition \ref{1.1.2}(a).
+    For any \((x_1, y_1), (x_2, y_2) \in X \times Y\), we have
+    \begin{align*}
+                 & (x_1, y_1) \neq (x_2, y_2)                                                                                                    \\
+        \implies & (x_1 \neq x_2) \lor (y_1 \neq y_2)                                                                                            \\
+        \implies & d_{X \times Y}\big((x_1, y_1), (x_2, y_2)\big) = d_X(x_1, x_2) + d_Y(y_1, y_2) \neq 0 & \text{(by Definition \ref{1.1.2}(b))}
+    \end{align*}
+    and thus \((X \times Y, d_{X \times Y})\) satisfies Definition \ref{1.1.2}(b).
+    For any \((x_1, y_1), (x_2, y_2) \in X \times Y\), we have
+    \begin{align*}
+         & d_{X \times Y}\big((x_1, y_1), (x_2, y_2)\big)                                           \\
+         & = d_X(x_1, x_2) + d_Y(y_1, y_2)                                                          \\
+         & = d_X(x_2, x_1) + d_Y(y_2, y_1)                  & \text{(by Definition \ref{1.1.2}(c))} \\
+         & = d_{X \times Y}\big((x_2, y_2), (x_1, y_1)\big)
+    \end{align*}
+    and thus \((X \times Y, d_{X \times Y})\) satisfies Definition \ref{1.1.2}(c).
+    For any \((x_1, y_1), (x_2, y_2), (x_3, y_3) \in X \times Y\), we have
+    \begin{align*}
+         & d_{X \times Y}\big((x_1, y_1), (x_2, y_2)\big) + d_{X \times Y}\big((x_2, y_2), (x_3, y_3)\big)                                         \\
+         & = d_X(x_1, x_2) + d_Y(y_1, y_2) + d_X(x_2, x_3) + d_Y(y_2, y_3)                                                                         \\
+         & \geq d_X(x_1, x_3) + d_Y(y_1, y_3)                                                              & \text{(by Definition \ref{1.1.2}(d))} \\
+         & = d_{X \times Y}\big((x_1, y_1), (x_3, y_3)\big)
+    \end{align*}
+    and thus \((X \times Y, d_{X \times Y})\) satisfies Definition \ref{1.1.2}(d).
+    By Definition \ref{1.1.2} we conclude that \((X \times Y, d_{X \times Y})\) is a metric space.
+
+    Next we propose an analogue of Proposition \ref{1.1.18} and proof it.
+    Let \((X, d_X)\), \((Y, d_Y)\) be two metric spaces, let \((x, y) \in X \times Y\) and let \((x^{(n)}, y^{(n)})_{n = 1}^\infty\) be a sequence in \(X \times Y\).
+    We claim that the follow two statements are equivalent:
+    \begin{itemize}
+        \item \(\lim_{n \to \infty} d_{X \times Y}\big((x^{(n)}, y^{(n)}), (x, y)\big) = 0\).
+        \item \(\lim_{n \to \infty} d_X(x^{(n)}, x) = 0\) and \(\lim_{n \to \infty} d_Y(y^{(n)}, y) = 0\).
+    \end{itemize}
+    The claim is true since
+    \begin{align*}
+             & \lim_{n \to \infty} d_{X \times Y}\big((x^{(n)}, y^{(n)}), (x, y)\big) = 0 \\
+        \iff & \lim_{n \to \infty} \big(d_X(x^{(n)}, x) + d_Y(y^{(n)}, y)\big) = 0        \\
+        \iff & \begin{cases}
+            0 \leq \lim_{n \to \infty} d_X(x^{(n)}, x) \leq \lim_{n \to \infty} \big(d_X(x^{(n)}, x) + d_Y(y^{(n)}, y)\big) \leq 0 \\
+            0 \leq \lim_{n \to \infty} d_Y(y^{(n)}, y) \leq \lim_{n \to \infty} \big(d_X(x^{(n)}, x) + d_Y(y^{(n)}, y)\big) \leq 0
+        \end{cases}                                                 \\
+        \iff & \begin{cases}
+            \lim_{n \to \infty} d_X(x^{(n)}, x) = 0 \\
+            \lim_{n \to \infty} d_Y(y^{(n)}, y) = 0
+        \end{cases}
+    \end{align*}
+
+    Finally we propose an analogue of Lemma \ref{2.2.1} and proof it.
+    Let \((X, d_X)\), \((Y_1, d_{Y_1})\), \((Y_2, d_{Y_2})\) be metric spaces, let \(f_1 : X \to Y_1\) and \(f_2 : X \to Y_2\) be two functions, let \(f_1 \oplus f_2 : X \to (Y_1 \times Y_2)\) and let \(x_0 \in X\).
+    We claim that the follow two statements are equivalent:
+    \begin{itemize}
+        \item \(f_1\) is continuous at \(x_0\) from \((X, d_X)\) to \((Y_1, d_{Y_1})\) and \(f_2\) is continuous at \(x_0\) from \((X, d_X)\) to \((Y_2, d_{Y_2})\).
+        \item \(f_1 \oplus f_2\) is continuous at \(x_0\) from \((X, d_X)\) to \((Y_1 \times Y_2, d_{Y_1 \times Y_2})\).
+    \end{itemize}
+    The claim is true since by Definition \ref{2.1.1} we have
+    \begin{align*}
+             & \begin{cases}
+            f_1 \text{ is continuous at } x_0 \text{ from } (X, d_X) \text{ to } (Y_1, d_{Y_1}) \\
+            f_2 \text{ is continuous at } x_0 \text{ from } (X, d_X) \text{ to } (Y_2, d_{Y_2})
+        \end{cases}                                                                                                                             \\
+        \iff & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta_1, \delta_2 \in \mathbf{R}^+ :                                                                  \\
+             & \begin{cases}
+            \big(\forall\ x \in X, d_X(x, x_0) < \delta_1 \implies d_{Y_1}\big(f_1(x), f_1(x_0)\big) < \frac{\varepsilon}{2}) \\
+            \big(\forall\ x \in X, d_X(x, x_0) < \delta_2 \implies d_{Y_2}\big(f_2(x), f_2(x_0)\big) < \frac{\varepsilon}{2})
+        \end{cases}                                                                                                                             \\
+        \iff & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta = \min(\delta_1, \delta_2) \in \mathbf{R}^+ :                                                   \\
+             & \big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_{Y_1 \times Y_2}\Big(\big(f_1(x), f_2(x)\big), \big(f_1(x_0), f_2(x_0)\big)\Big) < \varepsilon) \\
+        \iff & f_1 \oplus f_2 \text{ is continuous at } x_0 \text{ from } (X, d_X) \text{ to } (Y_1 \times Y_2, d_{Y_1 \times Y_2}).
+    \end{align*}
+\end{proof}
 
 \begin{exercise}\label{ex 2.2.9}
     Let \(f : \mathbf{R}^2 \to \mathbf{R}\) be a function from \(\mathbf{R}^2\) to \(\mathbf{R}\).
