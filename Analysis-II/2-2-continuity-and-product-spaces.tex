@@ -586,3 +586,47 @@ Let \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) be functions, and let 
     Show that \(\lim_{t \to 0} f(tx, ty) = f(0, 0)\) for every \((x, y) \in \mathbf{R}^2\), but that \(f\) is not continuous at the origin.
     Thus being continuous on every line through the origin is not enough to guarantee continuity at the origin!
 \end{exercise}
+
+\begin{proof}
+    Let \((x_0, y_0) \in \mathbf{R}^2\).
+    We split into two cases:
+    \begin{itemize}
+        \item If \(y_0 = 0\), then we have
+              \[
+                  \forall\ t \in \mathbf{R}, f(t x_0, t0) = f(t x_0, 0) = 0 = f(0, 0)
+              \]
+              and thus \(t \mapsto f(t x_0, t0)\) is constant function and is continuous from \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+        \item If \(x_0 = 0\), then we have
+              \[
+                  \forall\ t \in \mathbf{R}, f(t0, t y_0) = f(0, t y_0) = \frac{0}{t y_0} = 0 = f(0, 0)
+              \]
+              and thus \(t \mapsto f(t0, t y_0)\) is constant function and is continuous from \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+        \item If \(x_0 \neq 0\) and \(y_0 \neq 0\), then we have
+              \begin{align*}
+                           & \forall\ t \in \mathbf{R}, f(t x_0, t y_0) = \begin{cases}
+                      \frac{t^2 x_0^2}{t y_0} = \frac{t x_0^2}{y_0} & \text{if } t \neq 0 \\
+                      0                                             & \text{if } t = 0
+                  \end{cases}                                                                                                                     \\
+                  \implies & \forall\ \varepsilon \in \mathbf{R}^+, \bigg(\forall\ t \in \mathbf{R}, \abs*{t - 0} < \varepsilon \abs*{\frac{y_0}{x_0^2}} \implies \abs*{\frac{t x_0^2}{y_0} - 0} < \varepsilon\bigg)     \\
+                  \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists \delta \in \mathbf{R}^+ : \big(\forall\ t \in \mathbf{R}, \abs*{t - 0} < \delta \implies \abs*{f(t x_0, t y_0) - f(0, 0)} < \varepsilon\big) \\
+                  \implies & \lim_{t \to \infty} f(t x_0, t y_0) = 0 = f(0, 0).
+              \end{align*}
+              Thus \(t \mapsto f(t x_0, t y_0)\) is continuous from \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+    \end{itemize}
+    From all cases above we conclude that \(t \mapsto f(t x_0, t y_0)\) is  continuous from \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+    Since \((x_0, y_0)\) is arbitrary, we conclude that for any \((x, y) \in \mathbf{R}^2\), \(t \mapsto f(tx, ty)\) is continuous from \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+
+    Now we show that \(f\) is not continuous at \((0, 0)\) from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+    Consider the sequence \((\frac{1}{n}, \frac{1}{n^2})_{n = 1}^\infty\) in \(\mathbf{R}^2\).
+    Since
+    \begin{align*}
+                 & \lim_{n \to \infty} \frac{1}{n} = \lim_{n \to \infty} \frac{1}{n^2} = 0                                                                                        \\
+        \implies & \lim_{n \to \infty} d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2}\big((\frac{1}{n}, \frac{1}{n^2}), (0, 0)\big) = 0 & \text{(by Proposition \ref{1.1.18}(b)(d))}
+    \end{align*}
+    and
+    \begin{align*}
+                 & \forall\ n \in \mathbf{Z}^+, f(\frac{1}{n}, \frac{1}{n^2}) = \frac{\frac{1}{n^2}}{\frac{1}{n^2}} = 1 \\
+        \implies & \lim_{n \to \infty} f(\frac{1}{n}, \frac{1}{n^2}) = 1 \neq 0 = f(0, 0),
+    \end{align*}
+    by Theorem \ref{2.1.4}(a)(b) we know that \(f\) is not continuous at \((0, 0)\) from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+\end{proof}
