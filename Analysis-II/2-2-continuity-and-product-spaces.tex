@@ -515,6 +515,28 @@ Let \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) be functions, and let 
     Thus a function \(f(x, y)\) which is jointly continuous in \((x, y)\) is also continuous in each variable \(x, y\) separately.
 \end{exercise}
 
+\begin{proof}
+    Let \(d_1 = d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\) and let \(d_2 = d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2}\).
+    Let \(x_0, y_0 \in \mathbf{R}\).
+    Since \(f\) is continuous from \((\mathbf{R}^2, d_2)\) to \((\mathbf{R}, d_1)\), by Definition \ref{2.1.1} we know that \(f\) is continuous at \((x_0, y_0)\) from \((\mathbf{R}^2, d_2)\) to \((\mathbf{R}, d_1)\) and we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ (x, y) \in \mathbf{R}^2, \\
+                 & d_2\big((x, y), (x_0, y_0)\big) < \delta \text{ implies } d_1\big(f(x, y), f(x_0, y_0)\big) < \varepsilon   \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ (x, y) \in \mathbf{R}^2, \\
+                 & \abs*{x - x_0} + \abs*{y - y_0} < \delta \text{ implies } \abs*{f(x, y) - f(x_0, y_0)} < \varepsilon        \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                   \\
+                 & \begin{cases}
+            \forall\ x \in \mathbf{R}, \abs*{x - x_0} < \delta \implies \abs*{f(x, y_0) - f(x_0, y_0)} < \varepsilon \\
+            \forall\ y \in \mathbf{R}, \abs*{y - y_0} < \delta \implies \abs*{f(x_0, y) - f(x_0, y_0)} < \varepsilon
+        \end{cases}                                                                                  \\
+        \implies & \begin{cases}
+            x \mapsto f(x, y_0) \text{ is continuous at } x_0 \text{ from } (\mathbf{R}, d_1) \text{ to } (\mathbf{R}, d_1) \\
+            y \mapsto f(x_0, y) \text{ is continuous at } y_0 \text{ from } (\mathbf{R}, d_1) \text{ to } (\mathbf{R}, d_1)
+        \end{cases}
+    \end{align*}
+    Since \(x_0, y_0\) are arbitrary, we conclude thatt \(x \mapsto f(x, y)\) is continuous from \((\mathbf{R}, d_1)\) to \((\mathbf{R}, d_1)\) and \(y \mapsto f(x, y)\) is continuous from \((\mathbf{R}, d_1)\) to \((\mathbf{R}, d_1)\).
+\end{proof}
+
 \begin{exercise}\label{ex 2.2.11}
     Let \(f : \mathbf{R}^2 \to \mathbf{R}\) be the function defined by \(f(x, y) = \frac{xy}{x^2 + y^2}\) when \((x, y) \neq (0, 0)\), and \(f(x, y) = 0\) otherwise.
     Show that for each fixed \(x \in \mathbf{R}\), the function \(y \mapsto f(x, y)\) is continuous on \(\mathbf{R}\), and that for each fixed \(y \in \mathbf{R}\), the function \(x \mapsto f(x, y)\) is continuous on \(\mathbf{R}\), but that the function \(f : \mathbf{R}^2 \to \mathbf{R}\) is not continuous on \(\mathbf{R}^2\).
