@@ -21,3 +21,58 @@
     we know that there exists an finite subcover of \(f(K)\) with respect to \(\bigcup_{\alpha \in I} V_\alpha\) in \((Y, d_Y)\).
     Since \(I\) is arbitrary open cover of \(f(K)\) in \((Y, d_Y)\), by Exercise \ref{ex 1.5.11} we know that \(\big(f(K), d_Y|_{Y \times Y}\big)\) is compact.
 \end{proof}
+
+\begin{proposition}[Maximum principle]\label{2.3.2}
+    Let \((X, d)\) be a compact metric space, and let \(f : X \to \mathbf{R}\) be a continuous function.
+    Then \(f\) is bounded.
+    Furthermore, \(f\) attains its maximum at some point \(x_{\max} \in X\), and also attains its minimum at some point \(x_{\min} \in X\).
+\end{proposition}
+
+\begin{proof}
+    We have
+    \begin{align*}
+                 & \begin{cases}
+            (X, d) \text{ is compact} \\
+            f \text{ is continuous from } (X, d) \text{ to } (\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})
+        \end{cases}                                                                            \\
+        \implies & \big(f(X), d_{l^1}|_{f(X) \times f(X)}\big) \text{ is compact} & \text{(by Theorem \ref{2.3.1})}     \\
+        \implies & \begin{cases}
+            f(X) \text{ is closed in } (\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}}) \\
+            \big(f(X), d_{l^1}|_{f(X) \times f(X)}\big) \text{ is bounded}
+        \end{cases}                                      & \text{(by Corollary \ref{1.5.6})}   \\
+        \implies & \begin{cases}
+            f(X) \text{ is closed in } (\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}}) \\
+            f(X) \text{ is bounded subset of } \mathbf{R}
+        \end{cases}                                      & \text{(by Exercise \ref{ex 1.5.1})}
+    \end{align*}
+
+    Now we show that
+    \[
+        \exists\ x_{\min}, x_{\max} \in X : \forall\ x \in X, f(x_{\min}) \leq f(x) \leq f(x_{\max}).
+    \]
+    Let \(U = \sup\big(f(X)\big)\) and let \(L = \inf\big(f(X)\big)\).
+    Since \(f\) is bounded subset of \(\mathbf{R}\), we know that \(U, L \in \mathbf{R}\).
+    By the definition of \(U\) and \(L\) we know that
+    \[
+        \forall\ n \in \mathbf{Z}^+, \exists\ u_n, l_n \in f(X) : \begin{cases}
+            U - u_n < \frac{1}{n} \\
+            l_n - L < \frac{1}{n}
+        \end{cases}
+    \]
+    Thus we have
+    \begin{align*}
+                 & \begin{cases}
+            0 = \lim_{n \to \infty} U - u_n = \lim_{n \to \infty} \frac{1}{n} = 0 \\
+            0 = \lim_{n \to \infty} l_n - L = \lim_{n \to \infty} \frac{1}{n} = 0
+        \end{cases} \\
+        \implies & \begin{cases}
+            \lim_{n \to \infty} u_n = U \\
+            \lim_{n \to \infty} l_n = L
+        \end{cases}
+    \end{align*}
+    Since \(f(X)\) is closed in \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) and \((u_n)_{n = 1}^\infty\), \((l_n)_{n = 1}^\infty\) are convergent sequences in \(\mathbf{R}\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\), by Proposition \ref{1.2.15}(b) we know that \(U, L \in f(X)\).
+    Since \(U, L \in f(X)\), we know that
+    \[
+        \exists\ x_{\min}, x_{\max} \in X : \big(f(x_{\min}) = L\big) \land \big(f(x_{\max}) = U\big).
+    \]
+\end{proof}
