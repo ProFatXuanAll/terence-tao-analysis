@@ -205,3 +205,113 @@
     Give an example to show that \(fg : X \to \mathbf{R}\) need not be uniformly continuous.
     What is the situation for \(\max(f, g)\), \(\min(f, g)\), \(f / g\), and \(cf\) for a real number \(c\)?
 \end{exercise}
+
+\begin{proof}
+    Let \(d_1 = d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\) and let \(d_2 = d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2}\).
+    We first show that \((x, y) \mapsto x + y\) and \((x, y) \mapsto x - y\) are uniformly continuous from \((\mathbf{R}^2, d_2)\) to \((\mathbf{R}, d_1)\).
+    Since
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \forall\ (x_1, y_1), (x_2, y_2) \in \mathbf{R}^2,                    \\
+                 & \big(\abs*{x_1 - x_2} < \frac{\varepsilon}{2}\big) \land \big(\abs*{y_1 - y_2} < \frac{\varepsilon}{2}\big) \\
+        \implies & \begin{cases}
+            \abs*{x_1 - x_2 + y_1 - y_2} \leq \abs*{x_1 - x_2} + \abs*{y_1 - y_2} < \varepsilon \\
+            \abs*{x_1 - x_2 - y_1 + y_2} \leq \abs*{x_1 - x_2} + \abs*{y_2 - y_1} < \varepsilon \\
+        \end{cases}                                                                                  \\
+        \implies & \begin{cases}
+            d_1(x_1 + y_1, x_2 + y_2) \leq d_2\big((x_1, y_1), (x_2, y_2)\big) < \varepsilon \\
+            d_1(x_1 - y_1, x_2 - y_2) \leq d_2\big((x_1, y_1), (x_2, y_2)\big) < \varepsilon
+        \end{cases}
+    \end{align*}
+    by choosing \(\delta = \varepsilon\) we have
+    \begin{align*}
+         & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ (x_1, y_1), (x_2, y_2) \in \mathbf{R}^2, \\
+         & d_2\big((x_1, y_1), (x_2, y_2)\big) < \delta \implies \begin{cases}
+            d_1(x_1 + y_1, x_2 + y_2) < \varepsilon \\
+            d_1(x_1 - y_1, x_2 - y_2) < \varepsilon
+        \end{cases}
+    \end{align*}
+    and thus by Definition \ref{2.3.4} \((x, y) \mapsto x + y\) and \((x, y) \mapsto x - y\) are uniformly continuous from \((\mathbf{R}^2, d_2)\) to \((\mathbf{R}, d_1)\).
+
+    Next we show that \((x, y) \mapsto xy\) is not uniformly continuous from \((\mathbf{R}^2, d_2)\) to \((\mathbf{R}, d_1)\).
+    Since
+    \[
+        \forall\ n \in \mathbf{Z}^+, \begin{cases}
+            d_2\big((n, n), (n + \frac{1}{n}, n)\big) = \frac{1}{n} \\
+            d_1\big(n \times n, (n + \frac{1}{n}) \times n\big) = 1
+        \end{cases}
+    \]
+    no matter which \(\delta \in \mathbf{R}^+\) we choose, we cannot make \(d_1(n^2, n^2 + 1) < \frac{1}{2}\) for every \(n \in \mathbf{Z}^+\).
+    Thus by Definition \ref{2.3.4} \((x, y) \mapsto xy\) is not uniformly continuous from \((\mathbf{R}^2, d_2)\) to \((\mathbf{R}, d_1)\).
+
+    Next we show that \((x, y) \mapsto \max(x, y)\) and \((x, y) \mapsto \min(x, y)\) are uniformly continuous from \((X, d)\) to \((\mathbf{R}, d_1)\).
+    Since
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \forall\ (x_1, y_1), (x_2, y_2) \in \mathbf{R}^2, \\
+                 & \big(\abs*{x_1 - x_2} < \varepsilon\big) \land \big(\abs*{y_2 - y_1} < \varepsilon\big)  \\
+        \implies & \begin{cases}
+            x_2 - \varepsilon < x_1 < x_2 + \varepsilon \\
+            y_2 - \varepsilon < y_1 < y_2 + \varepsilon \\
+        \end{cases}                                                               \\
+        \implies & \begin{cases}
+            \max(x_2, y_2) - \varepsilon < \max(x_1, y_1) < \max(x_2, y_2) + \varepsilon \\
+            \min(x_2, y_2) - \varepsilon < \min(x_1, y_1) < \min(x_2, y_2) + \varepsilon
+        \end{cases}                                                               \\
+        \implies & \begin{cases}
+            \abs*{\max(x_1, y_1) - \max(x_2, y_2)} < \varepsilon \\
+            \abs*{\min(x_1, y_1) - \min(x_2, y_2)} < \varepsilon
+        \end{cases}
+    \end{align*}
+    by choosing \(\delta = \varepsilon\) we have
+    \begin{align*}
+         & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                      \\
+         & \forall\ (x_1, y_1), (x_2, y_2) \in \mathbf{R}^2, d_2\big((x_1, y_1), (x_2, y_2)\big) < \delta \\
+         & \implies \begin{cases}
+            d_1\big(\max(x_1, y_1), \max(x_2, y_2)\big) < \varepsilon \\
+            d_1\big(\min(x_1, y_1), \min(x_2, y_2)\big) < \varepsilon
+        \end{cases}
+    \end{align*}
+    and thus by Definition \ref{2.3.4} \((x, y) \mapsto \max(x, y)\) and \((x, y) \mapsto \min(x, y)\) are uniformly continuous from \((\mathbf{R}^2, d_2)\) to \((\mathbf{R}, d_1)\).
+
+    Next we show that \(f + g\), \(f - g\), \(\max(f, g)\), \(\min(f, g)\) are uniformly continuous from \((X, d)\) to \((\mathbf{R}, d_1)\) given \(f, g\) are uniformly continuous from \((X, d)\) to \((\mathbf{R}, d_1)\).
+    \begin{align*}
+                 & f, g \text{ are uniformly continuous from } (X, d) \text{ to } (\mathbf{R}, d_1)                                              \\
+        \implies & f \oplus g \text{ is uniformly continuous from } (X, d) \text{ to } (\mathbf{R}^2, d_2) & \text{(by Exercise \ref{ex 2.3.5})} \\
+        \implies & \begin{cases}
+            f \oplus g(x) \mapsto f(x) + g(x) \text{ is uniformly continuous}              \\
+            \text{from } (X, d) \text{ to } (\mathbf{R}, d_1);                             \\
+            f \oplus g(x) \mapsto f(x) - g(x) \text{ is uniformly continuous}              \\
+            \text{from } (X, d) \text{ to } (\mathbf{R}, d_1);                             \\
+            f \oplus g(x) \mapsto \max\big(f(x), g(x)\big) \text{ is uniformly continuous} \\
+            \text{from } (X, d) \text{ to } (\mathbf{R}, d_1);                             \\
+            f \oplus g(x) \mapsto \min\big(f(x), g(x)\big) \text{ is uniformly continuous} \\
+            \text{from } (X, d) \text{ to } (\mathbf{R}, d_1).
+        \end{cases}                                                              & \text{(by Exercise \ref{ex 2.3.4})} \\
+        \implies & f + g, f - g, \max(f, g), \min(f, g) \text{ are uniformly continuous}                                                         \\
+                 & \text{from } (X, d) \text{ to } (\mathbf{R}, d_1).
+    \end{align*}
+
+    Next we give a example where \(fg\) is not continuous from \((X, d)\) to \((\mathbf{R}, d_1)\) given \(f, g\) are uniformly continuous from \((X, d)\) to \((\mathbf{R}, d_1)\).
+    Let \(f(x) = g(x) = x\).
+    Then \(fg(x) = x^2\) and by Example 9.9.11 in Analysis I we know that \(x^2\) is not uniformly continuous from \((\mathbf{R}, d_1)\) to \((\mathbf{R}, d_1)\).
+
+    Next we give a example where \(f / g\) is not continuous from \((X, d)\) to \((\mathbf{R}, d_1)\) given \(f, g\) are uniformly continuous from \((X, d)\) to \((\mathbf{R}, d_1)\).
+    Let \(f(x) = 1\) and let \(g(x) = x\).
+    Then \(f / g(x) = 1 / x\) and by Example 9.9.10 in Analysis I we know that \(1 / x\) is not uniformly continuous from \((\mathbf{R}, d_1)\) to \((\mathbf{R}, d_1)\).
+
+    Finally we show that for each \(c \in \mathbf{R}\), \(cf\) is uniformly continuous from \((X, d)\) to \((\mathbf{R}, d_1)\) given \(f\) is uniformly continuous from \((X, d)\) to \((\mathbf{R}, d_1)\).
+    If \(c = 0\), then \(f\) is a constant function.
+    Thus
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \forall\ x \in X, d(x_1, x_2) < \varepsilon \implies d_1\big(f(x_1), f(x_2)\big) = 0 < \varepsilon
+    \]
+    and by Definition \ref{2.3.4} \(f\) is uniformly continuous from \((X, d)\) to \((\mathbf{R}, d_1)\).
+    Suppose that \(c \neq 0\).
+    Since \(f\) is uniformly continuous from \((X, d)\) to \((\mathbf{R}, d_1)\), by Definition \ref{2.3.4} we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+:                                                    \\
+                 & \Big(\forall\ x_1, x_2 \in X, d(x_1, x_2) < \delta \implies d_1\big(f(x_1), f(x_2)\big) < \frac{\varepsilon}{\abs*{c}}\Big) \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+:                                                    \\
+                 & \Big(\forall\ x_1, x_2 \in X, d(x_1, x_2) < \delta \implies d_1\big(cf(x_1), cf(x_2)\big) < \varepsilon\Big)
+    \end{align*}
+    and thus by Definition \ref{2.3.4} \(cf\) is uniformly continuous from \((X, d)\) to \((\mathbf{R}, d_1)\).
+\end{proof}
