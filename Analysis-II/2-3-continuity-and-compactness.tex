@@ -1,1 +1,23 @@
 \section{Continuity and compactness}\label{sec 2.3}
+
+\begin{theorem}[Continuous maps preserve compactness]\label{2.3.1}
+    Let \(f : X \to Y\) be a continuous map from one metric space \((X, d_X)\) to another \((Y, d_Y)\).
+    Let \(K \subseteq X\) be any compact subset of \(X\).
+    Then the image \(f(K) \coloneqq \{f(x) : x \in K\}\) of \(K\) is also compact.
+\end{theorem}
+
+\begin{proof}
+    Let \(\bigcup_{\alpha \in I} V_\alpha\) be an open cover of \(f(K)\) in \((Y, d_Y)\), i.e., \(I \subseteq Y\) and for each \(\alpha \in I\), \(V_{\alpha}\) is an open set in \((Y, d_Y)\) such that \(f(K) \subseteq \bigcup_{\alpha \in I} V_\alpha\).
+    Since
+    \begin{align*}
+                 & f \text{ is continuous from } (X, d_X) \text{ to } (Y, d_Y)                                                                                                             \\
+        \implies & f|_K \text{ is continuous from } (K, d_X|_{K \times K}) \text{ to } (Y, d_Y)                                                  & \text{(by Remark \ref{2.1.3})}          \\
+        \implies & \forall\ \alpha \in I, f|_K^{-1}(V_\alpha) \text{ is open in } (K, d_X|_{K \times K})                                         & \text{(by Theorem \ref{2.1.5}(a)(d))}   \\
+        \implies & K = \bigcup_{\alpha \in I} f|_K^{-1}(V_\alpha) \text{ is open in } (K, d_X|_{K \times K})                                     & \text{(by Proposition \ref{1.2.15}(g))} \\
+        \implies & \exists\ F \subseteq I : (F \text{ is finite}) \land \bigg(K = \bigcup_{\alpha \in F} f|_K^{-1}(V_\alpha)\bigg)               & \text{(by Theorem \ref{1.5.8})}         \\
+        \implies & \exists\ F \subseteq I : (F \text{ is finite}) \land \bigg(f(K) = f\big(\bigcup_{\alpha \in F} f|_K^{-1}(V_\alpha)\big)\bigg)                                           \\
+        \implies & \exists\ F \subseteq I : (F \text{ is finite}) \land \bigg(f(K) \subseteq \bigcup_{\alpha \in F} V_\alpha)\bigg),
+    \end{align*}
+    we know that there exists an finite subcover of \(f(K)\) with respect to \(\bigcup_{\alpha \in I} V_\alpha\) in \((Y, d_Y)\).
+    Since \(I\) is arbitrary open cover of \(f(K)\) in \((Y, d_Y)\), by Exercise \ref{ex 1.5.11} we know that \(\big(f(K), d_Y|_{Y \times Y}\big)\) is compact.
+\end{proof}
