@@ -544,6 +544,43 @@ Let \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) be functions, and let 
     it is possible to be continuous in each variable separately without being jointly continuous.
 \end{exercise}
 
+\begin{proof}
+    We have
+    \[
+        \forall\ y \in \mathbf{R}, f(0, y) = 0
+    \]
+    and thus by Lemma \ref{2.2.2} \(y \mapsto f(0, y)\) is continuous from \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+    By Lemma \ref{2.2.2} and Exercise \ref{ex 2.2.10} we also have
+    \begin{align*}
+                 & \begin{cases}
+            (x, y) \mapsto x y \text{ is continuous from } (\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2}) \text{ to } (\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}}); \\
+            (x, y) \mapsto x^2 + y^2 \text{ is continuous}                                                                                                                                \\
+            \text{from } \big((\mathbf{R} \setminus \{0\} \times \mathbf{R}), d_{l^1}|_{\big((\mathbf{R} \setminus \{0\}) \times \mathbf{R}\big) \times \big((\mathbf{R} \setminus \{0\}) \times \mathbf{R}\big)}\big) \text{ to } (\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})
+        \end{cases}                                                                                                                                                                                                                                                   \\
+        \implies & (x, y) \mapsto \frac{xy}{x^2 + y^2} \text{ is continuous}                                                                                                                                                                                                                    \\
+                 & \text{from } \big((\mathbf{R} \setminus \{0\} \times \mathbf{R}), d_{l^1}|_{\big((\mathbf{R} \setminus \{0\}) \times \mathbf{R}\big) \times \big((\mathbf{R} \setminus \{0\}) \times \mathbf{R}\big)}\big) \text{ to } (\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}}) \\
+        \implies & \forall\ x \in \mathbf{R} \setminus \{0\}, y \mapsto \frac{xy}{x^2 + y^2} \text{ is continuous}                                                                                                                                                                              \\
+                 & \text{from } (\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}}) \text{ to } (\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}}).
+    \end{align*}
+    Thus we conclude that \(\forall\ x \in \mathbf{R}\), \(y \mapsto f(x, y)\) is continuous from \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+    Using similar arguments as above we also have \(\forall\ y \in \mathbf{R}\), \(x \mapsto f(x, y)\) is continuous from \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+
+    Now we show that \(f\) is not continuous from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+    In particular, we do this by showing \(f\) is not continuous at \((0, 0)\) from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+    Consider the sequence \((\frac{1}{n}, \frac{1}{n})_{n = 1}^\infty\) in \(\mathbf{R}^2\).
+    We have
+    \begin{align*}
+                 & \lim_{n \to \infty} d_{l^1}|_{\mathbf{R}, \mathbf{R}}(\frac{1}{n}, 0) = 0                                                                              \\
+        \implies & \lim_{n \to \infty} d_{l^1}|_{\mathbf{R}^2, \mathbf{R}^2}\big((\frac{1}{n}, \frac{1}{n}), (0, 0)\big) = 0 & \text{(by Proposition \ref{1.1.18}(b)(d))}
+    \end{align*}
+    and
+    \begin{align*}
+                 & \forall\ n \in \mathbf{Z}^+, f(\frac{1}{n}, \frac{1}{n}) = \frac{\frac{1}{n^2}}{\frac{1}{n^2} + \frac{1}{n^2}} = \frac{1}{2} \\
+        \implies & \lim_{n \to \infty} f(\frac{1}{n}, \frac{1}{n}) = \frac{1}{2} \neq 0 = f(0, 0).
+    \end{align*}
+    Thus by Theorem \ref{2.1.4}(a)(b) \(f\) is not continuous at \((0, 0)\) from \((\mathbf{R}^2, d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+\end{proof}
+
 \begin{exercise}\label{ex 2.2.12}
     Let \(f: \mathbf{R}^2 \to \mathbf{R}\) be the function defined by \(f(x, y) \coloneqq x^2 / y\) when \(y \neq 0\), and \(f(x, y) \coloneqq 0\) when \(y = 0\).
     Show that \(\lim_{t \to 0} f(tx, ty) = f(0, 0)\) for every \((x, y) \in \mathbf{R}^2\), but that \(f\) is not continuous at the origin.
