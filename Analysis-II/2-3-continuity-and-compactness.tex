@@ -182,6 +182,23 @@
     Show that the direct sum \(f \oplus g : X \to \mathbf{R}^2\) defined by \(f \oplus g(x) \coloneqq \big(f(x), g(x)\big)\) is uniformly continuous.
 \end{exercise}
 
+\begin{proof}
+    Let \(d_1 = d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\) and let \(d_2 = d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2}\).
+    Since \(f, g\) are uniformly continuous from \((X, d_X)\) to \((\mathbf{R}, d_1)\), by Definition \ref{2.3.4} we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                                                           \\
+                 & \begin{cases}
+            \forall\ x_1, x_2 \in X, d_X(x_1, x_2) < \delta \implies d_1\big(f(x_1), f(x_2)\big) < \frac{\varepsilon}{2} \\
+            \forall\ x_1, x_2 \in X, d_X(x_1, x_2) < \delta \implies d_1\big(g(x_1), g(x_2)\big) < \frac{\varepsilon}{2}
+        \end{cases}                                                                                                                          \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                                                           \\
+                 & \Big(\forall\ x_1, x_2 \in X, d_X(x_1, x_2) < \delta \implies d_1\big(f(x_1), f(x_2)\big) + d_1\big(g(x_1), g(x_2)\big) < \varepsilon\Big)          \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                                                           \\
+                 & \bigg(\forall\ x_1, x_2 \in X, d_X(x_1, x_2) < \delta \implies d_2\Big(\big(f(x_1), g(x_1)\big), \big(f(x_2), g(x_2)\big)\Big) < \varepsilon\bigg).
+    \end{align*}
+    Thus by Definition \ref{2.3.4} \(f \oplus g\) is uniformly continuous from \((X, d_X)\) to \((\mathbf{R}^2, d_2)\).
+\end{proof}
+
 \begin{exercise}\label{ex 2.3.6}
     Show that the addition function \((x, y) \mapsto x + y\) and the subtraction function \((x, y) \mapsto x - y\) are uniformly continuous from \(\mathbf{R}^2\) to \(\mathbf{R}\), but the multiplication function \((x, y) \mapsto xy\) is not.
     Conclude that if \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) are uniformly continuous functions on a metric space \((X, d)\), then \(f + g : X \to \mathbf{R}\) and \(f - g : X \to \mathbf{R}\) are also uniformly continuous.
