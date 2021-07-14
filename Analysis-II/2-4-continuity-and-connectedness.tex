@@ -23,3 +23,72 @@
     This definition is intrinsic;
     whether a set \(Y\) is connected or not depends only on what the metric is doing on \(Y\), but not on what ambient space \(X\) one placing \(Y\) in.
 \end{remark}
+
+\begin{theorem}\label{2.4.5}
+    Let \(X\) be a subset of the real line \(\mathbf{R}\).
+    Then the following statements are equivalent.
+    \begin{enumerate}
+        \item \(X\) is connected.
+        \item Whenever \(x, y \in X\) and \(x < y\), the interval \([x, y]\) is also contained in \(X\).
+        \item \(X\) is an interval (in the sense of Definition 9.1.1 in Analysis I).
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    First we show that (a) implies (b).
+    Let \(d = d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+    Suppose that \((X, d)\) is connected, and suppose for sake of contradiction that we could find points \(x < y\) in \(X\) such that \([x, y]\) is not contained in \(X\).
+    Then there exists a real number \(x < z < y\) such that \(z \notin X\).
+    Thus the sets \((-\infty, z) \cap X\) and \((z, \infty) \cap X\) will cover \(X\).
+    But these sets are non-empty (because they contain \(x\) and \(y\) respectively) and are open relative to \((X, d)\), and so \(X\) is disconnected, a contradiction.
+
+    Now we show that (b) implies (a).
+    Let \(X\) be a set obeying the property (b).
+    Suppose for sake of contradiction that \(X\) is disconnected.
+    Then there exist disjoint non-empty sets \(V , W\) which are open relative to \(X\), such that \(V \cup W = X\).
+    Since \(V\) and \(W\) are non-empty, we may choose an \(x \in V\) and \(y \in W\).
+    Since \(V\) and \(W\) are disjoint, we have \(x \neq y\);
+    without loss of generality we may assume \(x < y\).
+    By property (b), we know that the entire interval \([x, y]\) is contained in \(X\).
+
+    Now consider the set \([x, y] \cap V\).
+    This set is both bounded and non-empty (because it contains \(x\)).
+    Thus it has a supremum
+    \[
+        z \coloneqq \sup([x, y] \cap V).
+    \]
+    Clearly \(z \in [x, y]\), and hence \(z \in X\).
+    Thus either \(z \in V\) or \(z \in W\).
+    Suppose first that \(z \in V\).
+    Then \(z \neq y\) (since \(y \in W\) and \(V\) is disjoint from \(W\)).
+    But \(V\) is open relative to \(X\), which contains \([x, y]\), so there is some ball \(B_{\big([x,y], d\big)}(z, r) = (z - r, z + r)\) which is contained in \(V\).
+    But this contradicts the fact that \(z\) is the supremum of \([x, y] \cap V\).
+    Now suppose that \(z \in W\).
+    Then \(z \neq x\) (since \(x \in V\) and \(V\) is disjoint from \(W\)).
+    But \(W\) is open relative to \(X\), which contains \([x, y]\), so there is some ball \(B_{\big([x,y], d\big)}(z, r) = (z - r, z + r)\) which is contained in \(W\).
+    But this again contradicts the fact that \(z\) is the supremum of \([x, y] \cap V\).
+    Thus in either case we obtain a contradiction, which means that \(X\) cannot be disconnected, and must therefore be connected.
+
+    Next we show that (b) implies (c).
+    Suppose that
+    \[
+        \forall\ x, y \in X, x < y \implies [x, y] \subseteq X.
+    \]
+    Suppose for sake of contradiction that \(X\) is not an interval.
+    Then we would have
+    \[
+        \exists\ x, y \in X : x < y \implies \exists\ z \in \mathbf{R} \setminus X : x < z < y.
+    \]
+    Clearly this contradicts to hypothesis, thus \(X\) is an interval.
+
+    Finally we show that (c) implies (b).
+    Suppose that \(X\) is an interval.
+    Then we have
+    \begin{align*}
+                 & \forall\ x, y \in X, x < y                                                                \\
+        \implies & \inf(X) \leq x < y \leq \sup(X)                                                           \\
+        \implies & \big(\forall\ z \in \mathbf{R}, x \leq z \leq y \implies \inf(X) \leq z \leq \sup(X)\big) \\
+        \implies & \big(\forall\ z \in \mathbf{R}, x \leq z \leq y \implies z \in X\big)                     \\
+        \implies & [x, y] \subseteq X.
+    \end{align*}
+\end{proof}
