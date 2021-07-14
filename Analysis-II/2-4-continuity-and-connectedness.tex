@@ -25,7 +25,7 @@
 \end{remark}
 
 \begin{theorem}\label{2.4.5}
-    Let \(X\) be a subset of the real line \(\mathbf{R}\).
+    Let \(X\) be a non-empty subset of the real line \(\mathbf{R}\).
     Then the following statements are equivalent.
     \begin{enumerate}
         \item \(X\) is connected.
@@ -91,4 +91,24 @@
         \implies & \big(\forall\ z \in \mathbf{R}, x \leq z \leq y \implies z \in X\big)                     \\
         \implies & [x, y] \subseteq X.
     \end{align*}
+\end{proof}
+
+\begin{theorem}[Continuity preserves connectedness]\label{2.4.6}
+    Let f : \(X \to Y\) be a continuous map from one metric space \((X, d_X)\) to another \((Y, d_Y)\).
+    Let \(E\) be any connected subset of \(X\).
+    Then \(f(E)\) is also connected.
+\end{theorem}
+
+\begin{proof}
+    Suppose for sake of contradiction that \(\big(f(E), d_Y|_{f(E) \times f(E)}\big)\) is disconnected.
+    Then there exists two open set \(V_1, V_2\) in \(\big(f(E), d_Y|_{f(E) \times f(E)}\big)\) such that \(V_1 \cap V_2 = \emptyset\) and \(V_1 \cup V_2 = f(E)\).
+    But then we have
+    \begin{align*}
+                 & f \text{ is continuous from } (X, d_X) \text{ to } (Y, d_Y)                                                                                 \\
+        \implies & f^{-1}(V_1), f^{-1}(V_2) \text{ are open in } (E, d_X|_{E \times E})                                & \text{(by Theorem \ref{2.1.5}(a)(c))} \\
+        \implies & \big(f^{-1}(V_1) \cap f^{-1}(V_2) = \emptyset\big) \land \big(f^{-1}(V_1) \cup f^{-1}(V_2) = E\big)                                         \\
+        \implies & (E, d_X|_{E \times E}) \text{ is disconnected},                                                     & \text{(by Definition \ref{2.4.1})}
+    \end{align*}
+    a contradiction.
+    Thus \(\big(f(E), d_Y|_{f(E) \times f(E)}\big)\) is connected.
 \end{proof}
