@@ -201,6 +201,37 @@
     Show that \(\bigcup_{\alpha \in I} E_\alpha\) is connected.
 \end{exercise}
 
+\begin{proof}
+    Let
+    \[
+        d_E = d|_{(\bigcup_{\alpha \in I} V_\alpha) \times (\bigcup_{\alpha \in I} V_\alpha)}.
+    \]
+    Suppose for sake of contradiction that \((\bigcup_{\alpha \in I} E_\alpha, d_E)\) is disconnected.
+    By Definition \ref{2.4.1} we know that
+    \[
+        \exists\ V, W \subseteq \bigcup_{\alpha \in I} E_\alpha : \begin{cases}
+            V, W \text{ are open in } \bigg(\bigcup_{\alpha \in I} E_\alpha, d_E\bigg) \\
+            V \cap W = \emptyset                                                       \\
+            V \cup W = \bigcup_{\alpha \in I} E_\alpha
+        \end{cases}
+    \]
+    Let \(\beta \in I\).
+    Since \(\bigcap_{\alpha \in I} E_\alpha \neq \emptyset\), we know that \(E_\beta \neq \emptyset\).
+    But then we have
+    \begin{align*}
+                 & E_\beta \subseteq \bigcup_{\alpha \in I} E_\alpha = V \cup W                                               \\
+        \implies & \begin{cases}
+            V \cap E_\beta \text{ is open in } (E_\beta, d_E|_{E_\beta \times E_\beta}) \\
+            W \cap E_\beta \text{ is open in } (E_\beta, d_E|_{E_\beta \times E_\beta}) \\
+            (V \cap E_\beta) \cap (W \cap E_\beta) = \emptyset                          \\
+            (V \cap E_\beta) \cup (W \cap E_\beta) = E_\beta
+        \end{cases}                                        & \text{(by Proposition \ref{1.3.4}(a))} \\
+        \implies & (E_\beta, d_E|_{E_\beta \times E_\beta}) \text{ is disconnected}, & \text{(by Definition \ref{2.4.1})}
+    \end{align*}
+    which contradict to the hypothesis that \((E_\beta, d_E|_{E_\beta \times E_\beta})\) is connected.
+    Thus we know that \((\bigcup_{\alpha \in I} E_\alpha, d_E)\) is connected.
+\end{proof}
+
 \begin{exercise}\label{ex 2.4.7}
     Let \((X, d)\) be a metric space, and let \(E\) be a subset of \(X\).
     We say that \(E\) is \emph{path-connected} iff, for every \(x, y \in E\), there exists a continuous function \(\gamma : [0, 1] \to E\) from the unit interval \([0, 1]\) to \(E\) such that \(\gamma(0) = x\) and \(\gamma(1) = y\).
