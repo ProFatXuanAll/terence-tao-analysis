@@ -130,6 +130,34 @@
     Show that this topological space is both compact and connected.
 \end{exercise}
 
+\begin{proof}
+    Let \(X\) be a set and let \(\mathcal{F} = \{\emptyset, X\}\).
+    First we show that \((X, \mathcal{F})\) is a topology.
+    Let \(n \in \mathbf{N}\), let \(S_1, \dots, S_n \in \mathcal{F}\) and let \(i, j \in \mathbf{Z}^+\).
+    If there exists some \(1 \leq j \leq n\) such that \(S_j = \emptyset\), then we know that \(\bigcap_{i = 1}^n S_i = \emptyset \in \mathcal{F}\).
+    If such \(j\) does not exist, then we have \(S_i = X\) for every \(1 \leq i \leq n\) and \(\bigcap_{i = 1}^n S_i = X \in \mathcal{F}\).
+    Since \(n\) is arbitrary, we conclude that for arbitrary finite collection of element in \(\mathcal{F}\) there intersection is still in \(\mathcal{F}\).
+
+    Let \(S \subseteq 2^{\mathcal{F}}\).
+    Then we have
+    \[
+        \forall\ s \in S, (s = \emptyset) \lor (s = X) \implies \bigcup S \in F
+    \]
+    and we conclude that any union of open sets is open.
+
+    Since \(\emptyset, X \in \mathcal{F}\) and the claims above, by Definition \ref{2.5.1} we know that \((X, \mathcal{F})\) is a topology.
+
+    Next we show that if \(X\) contains more than one element, then \((X, \mathcal{F})\) cannot be obtained from by placing a metric \(d\) on \(X\).
+    Let \((X, \mathcal{F})\) be a trivial topology and let \(x, y \in X\) such that \(x \neq y\).
+    Given arbitrary metric \(d\), by Definition \ref{1.1.2}(b) we know that \(d(x, y) > \mathbf{R}^+\).
+    But by Proposition \ref{1.2.15}(c) we know that \(B_{(X, d)}\big(x, \frac{d(x, y)}{2}\big)\) is open in \((X, d)\), thus by Definition \ref{2.5.1} we must have \(B_{(X, d)}\big(x, \frac{d(x, y)}{2}\big) \in \mathcal{F}\), which means \((X, \mathcal{F})\) is a not trivial topology.
+
+    Finally we show that if \(X\) contains more than one element, then \((X, \mathcal{F})\) is compact and connected.
+    Since \(\emptyset, X\) are the only two open sets in \(\mathcal{F}\), we know that an open cover of \(X\) is either \(\{X\}\) or \(\{\emptyset, X\}\), and both are finite.
+    Thus by Definition \ref{2.5.9} \((X, \mathcal{F})\) is compact.
+    Since \(X\) is the only non-empty open set in \(\mathcal{F}\), by Definition \ref{2.4.3} we know that \((X, \mathcal{F})\) is connected.
+\end{proof}
+
 \begin{exercise}\label{ex 2.5.2}
     Let \((X, d)\) be a metric space
     (and hence a topological space).
