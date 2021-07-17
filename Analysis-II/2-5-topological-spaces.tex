@@ -434,6 +434,139 @@
     Since \(x\) is arbitrary, we know that \(\bigcup S\) is open in \((X, \mathcal{F})\).
     Combine all the results above we know that \((X, \mathcal{F})\) is a topological space by Definition \ref{2.5.1}.
 
+    Next we show that \((X, \mathcal{F})\) is Hausdorff.
+    Let \(x_1, x_2 \in X\) such that \(x_1 \neq x_2\).
+    Since \((X, \leq)\) is totally ordered, we have either \(x_1 < x_2\) or \(x_2 < x_1\).
+    Without the loss of generality suppose that \(x_1 < x_2\).
+    Let \(I_1 = \{y \in X : y < x_2\}\) and let \(I_2 = \{y \in X : x_1 < y\}\).
+    Then we have \(x_1 \in I_1\) and \(x_2 \in I_2\).
+    By definition we know that \(I_1, I_2 \in \mathcal{F}\).
+    If \(I_1 \cap I_2 = \emptyset\), then we are done.
+    So suppose that \(I_1 \cap I_2 \neq \emptyset\).
+    Let \(x \in I_1 \cap I_2\), let \(J_1 = \{y \in X : y < x\}\) and let \(J_2 = \{y \in X : x < y\}\).
+    Then we have \(x_1 \in J_1\) and \(x_2 \in J_2\).
+    By definition we know that \(J_1, J_2 \in \mathcal{F}\).
+    Since \((X, \leq)\) is totally ordered, we know that \(J_1 \cap J_2 = \emptyset\).
+    Since \(x_1, x_2\) are arbitrary, by Exercise \ref{ex 2.5.4} we know that \((X, \mathcal{F})\) is Hausdorff.
+
+    Next we show that the order topology in \(\mathbf{R}\) with order relation \(\leq\) matches standard topology.
+    Let \(\mathcal{F}_o\) be the order topology in \(\mathbf{R}\) and let \(\mathcal{F}_s\) be the standard topology in \(\mathbf{R}\).
+    We want to show that \(\mathcal{F}_o = \mathcal{F}_s\).
+
+    Let \(V \in \mathcal{F}_o\) and let \(x \in V\).
+    Then we have
+    \[
+        \exists\ I \subseteq \mathbf{R} : \begin{cases}
+            I \text{ is an open interval in } \mathbf{R} \\
+            x \in I                                      \\
+            I \subseteq V
+        \end{cases}
+    \]
+    Now we split into four cases:
+    \begin{itemize}
+        \item If \(I = (a, b)\) for some \(a, b \in \mathbf{R}\), then we have
+              \begin{align*}
+                           & x \in (a, b)                                                                                                                      \\
+                  \implies & r = \min(\abs*{x - a}, \abs*{x - b}) = \min(x - a, b - x) > 0                                                                     \\
+                  \implies & (x - r, x + r) \subseteq (a, b) \subseteq V                                                                                       \\
+                  \implies & B_{(\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})}(x, r) \subseteq (a, b) \subseteq V & \text{(by Definition \ref{1.2.1})} \\
+                  \implies & x \in \text{int}_{(\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})}(V).                 & \text{(by Definition \ref{1.2.5})}
+              \end{align*}
+        \item If \(I = (a, \infty)\) for some \(a \in \mathbf{R}\), then we have
+              \begin{align*}
+                           & x \in (a, \infty)                                                                                                                      \\
+                  \implies & r = \abs*{x - a} = x - a > 0                                                                                                           \\
+                  \implies & (x - r, x + r) \subseteq (a, \infty) \subseteq V                                                                                       \\
+                  \implies & B_{(\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})}(x, r) \subseteq (a, \infty) \subseteq V & \text{(by Definition \ref{1.2.1})} \\
+                  \implies & x \in \text{int}_{(\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})}(V).                      & \text{(by Definition \ref{1.2.5})}
+              \end{align*}
+        \item If \(I = (-\infty, b)\) for some \(b \in \mathbf{R}\), then we have
+              \begin{align*}
+                           & x \in (-\infty, b)                                                                                                                      \\
+                  \implies & r = \abs*{x - b} = b - x > 0                                                                                                            \\
+                  \implies & (x - r, x + r) \subseteq (-\infty, b) \subseteq V                                                                                       \\
+                  \implies & B_{(\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})}(x, r) \subseteq (-\infty, b) \subseteq V & \text{(by Definition \ref{1.2.1})} \\
+                  \implies & x \in \text{int}_{(\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})}(V).                       & \text{(by Definition \ref{1.2.5})}
+              \end{align*}
+        \item If \(I = \mathbf{R}\), then we have \(V = \mathbf{R}\) and \(x \in \text{int}_{(\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})}(V) = \mathbf{R}\).
+    \end{itemize}
+    From all cases above we conclude that \(x \in \text{int}_{(\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})}(V)\).
+    Since \(x\) is arbitrary, by Proposition \ref{1.2.15}(a) we know that \(V\) is open in \((X, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) and thus \(V \in \mathcal{F}_s\).
+    Since \(V\) is arbitrary, we have \(\mathcal{F}_o \subseteq \mathcal{F}_s\).
+
+    Let \(W \in \mathcal{F}_s\).
+    Since \(W\) is open in \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\), we have
+    \begin{align*}
+                 & \forall\ x \in W, \exists\ r \in \mathbf{R}^+ : B_{(\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})}(x, r) \subseteq W & \text{(by Proposition \ref{1.2.15}(a))} \\
+        \implies & \forall\ x \in W, (x - r, x + r) \subseteq W                                                                                & \text{(by Definition \ref{1.2.1})}      \\
+        \implies & W \in \mathcal{F}_o.
+    \end{align*}
+    Since \(W\) is arbitrary, we have \(\mathcal{F}_s \subseteq \mathcal{F}_o\).
+    From the proof above we thus have \(\mathcal{F}_o = \mathcal{F}_s\).
+
+    Next we show that \(\mathbf{R}\) is open in \((\mathbf{R}^*, \mathcal{F}_o)\).
+    Since \((\mathbf{R}^*, \leq)\) is totally ordered, we know that \((\mathbf{R}^*, \mathcal{F}_o)\) is an ordering topology.
+    Since
+    \[
+        \forall\ x \in \mathbf{R}, (x - 1, x + 1) \subseteq \mathbf{R},
+    \]
+    by definition we know that \(\mathbf{R}\) is open in \((\mathbf{R}^*, \mathcal{F}_o)\).
+
+    Next we show that the boundary points of \(\mathbf{R}\) in \((\mathbf{R}^*, \mathcal{F}_o)\) are \(-\infty, \infty\).
+    Since \(\infty \notin \mathbf{R}\) and \(\mathbf{R}\) is open in \((\mathbf{R}^*, \mathcal{F}_o)\), by Definition \ref{2.5.5} we know that \(\infty\) is either an exterior point or a boundary point of \(\mathbf{R}\) in \((\mathbf{R}^*, \mathcal{F}_o)\).
+    Suppose for sake of contradiction that \(\infty\) is an exterior point of \(\mathbf{R}\) in \((\mathbf{R}^*, \mathcal{F}_o)\).
+    Then by Definition \ref{2.5.5} we have
+    \[
+        \exists\ V \in \mathcal{F}_o : (\infty \in V) \land (\mathbf{R} \cap V = \emptyset).
+    \]
+    Since \(V \cap \mathbf{R} = \emptyset\), we know that the only possible choices of \(V\) are \(\{\infty\}\) or \(\{-\infty, \infty\}\).
+    But in either cases we cannot find an interval \(I \subseteq \mathbf{R}^*\) such that \(I \subseteq V\), a contradiction.
+    Thus \(\infty\) is a boundary point of \(\mathbf{R}\) in \((\mathbf{R}^*, \mathcal{F}_o)\).
+    Using similar arguments as above we can show that \(-\infty\) is a boundary point of \(\mathbf{R}\) in \((\mathbf{R}^*, \mathcal{F}_o)\).
+
+    Finally we show that if \((x^{(n)})_{n = 1}^\infty\), \((y^{(n)})_{n = 1}^\infty\) are sequence in \(\mathbf{R}\), then we have
+    \[
+        \begin{cases}
+            x_n \text{ converges to } \infty \text{ in } (\mathbf{R}^*, \mathcal{F}_o)  \\
+            y_n \text{ converges to } -\infty \text{ in } (\mathbf{R}^*, \mathcal{F}_o) \\
+        \end{cases} \iff \begin{cases}
+            \liminf_{n \to \infty} x_n = \infty \\
+            \limsup_{n \to \infty} y_n = -\infty
+        \end{cases}
+    \]
+    This is true since
+    \begin{align*}
+             & \begin{cases}
+            \liminf_{n \to \infty} x^{(n)} = \infty \\
+            \limsup_{n \to \infty} y^{(n)} = -\infty
+        \end{cases} \\
+        \iff & \begin{cases}
+            \sup\big\{\inf\{x^{(n)} : n \geq N\} : N \geq 1\big\} = \infty \\
+            \inf\big\{\sup\{y^{(n)} : n \geq N\} : N \geq 1\big\} = -\infty
+        \end{cases} \\
+        \iff & \begin{cases}
+            \sup\{x^{(n)} : n \geq 1\} = \infty \\
+            \inf\{y^{(n)} : n \geq 1\} = -\infty
+        \end{cases} \\
+        \iff & \begin{cases}
+            \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \geq 1 : \forall\ n \geq N, x^{(n)} > \varepsilon \\
+            \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \geq 1 : \forall\ n \geq N, y^{(n)} < -\varepsilon
+        \end{cases} \\
+        \iff & \begin{cases}
+            \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \geq 1 : \forall\ n \geq N, x^{(n)} \in (\varepsilon, \infty] \\
+            \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \geq 1 : \forall\ n \geq N, y^{(n)} \in [-\infty, -\varepsilon)
+        \end{cases} \\
+        \iff & \begin{cases}
+            \forall\ V \in \mathcal{F}_0, \infty \in V \implies \exists\ \varepsilon \in \mathbf{R}^+ : \begin{cases}
+                (\varepsilon, \infty] \subseteq V \\
+                \exists\ N \geq 1 : \forall\ n \geq N, x^{(n)} \in V
+            \end{cases} \\
+            \forall\ V \in \mathcal{F}_0, -\infty \in V \implies \exists\ \varepsilon \in \mathbf{R}^+ : \begin{cases}
+                [-\infty, -\varepsilon) \subseteq V \\
+                \exists\ N \geq 1 : \forall\ n \geq N, x^{(n)} \in V
+            \end{cases}
+        \end{cases}
+    \end{align*}
 \end{proof}
 
 \begin{exercise}\label{ex 2.5.6}
