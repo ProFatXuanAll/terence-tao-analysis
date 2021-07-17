@@ -200,6 +200,88 @@
     \ref{1.2.5} and Definition \ref{2.5.5} coincide.
 \end{exercise}
 
+\begin{proof}
+    Let \(\mathcal{F}\) be the set of all open sets in \((X, d)\), let \(E \subseteq X\) and let \(x_0 \in X\).
+    First suppose that \(x_0\) is an interior point of \(E\) in the sense of Definition \ref{1.2.5}.
+    Then we have
+    \begin{align*}
+                 & x_0 \in \text{int}_{(X, d)}(E)                                                                         \\
+        \implies & \exists\ r \in \mathbf{R}^+ : B_{(X, d)}(x_0, r) \subseteq E & \text{(by Definition \ref{1.2.5})}      \\
+        \implies & \exists\ r \in \mathbf{R}^+ : \begin{cases}
+            B_{(X, d)}(x_0, r) \in \mathcal{F} \\
+            B_{(X, d)}(x_0, r) \subseteq E
+        \end{cases}     & \text{(by Proposition \ref{1.2.15}(c))} \\
+        \implies & x_0 \in \text{int}_{(X, \mathcal{F})}(E).                    & \text{(by Definition \ref{2.5.5})}
+    \end{align*}
+
+    Next suppose that \(x_0\) is an interior point of \(E\) in the sense of Definition \ref{2.5.5}.
+    Then we have
+    \begin{align*}
+                 & x_0 \in \text{int}_{(X, \mathcal{F})}(E)                                                                           \\
+        \implies & \exists\ V \in \mathcal{F} : (x_0 \in V) \land (V \subseteq E)           & \text{(by Definition \ref{2.5.5})}      \\
+        \implies & \exists\ r \in \mathbf{R}^+ : B_{(X, d)}(x_0, r) \subseteq V \subseteq E & \text{(by Proposition \ref{1.2.15}(a))} \\
+        \implies & x_0 \in \text{int}_{(X, d)}(E).                                          & \text{(by Definition \ref{1.2.5})}
+    \end{align*}
+
+    Next suppose that \(x_0\) is an exterior point of \(E\) in the sense of Definition \ref{1.2.5}.
+    Then we have
+    \begin{align*}
+                 & x_0 \in \text{ext}_{(X, d)}(E)                                                                                \\
+        \implies & \exists\ r \in \mathbf{R}^+ : B_{(X, d)}(x_0, r) \cap E = \emptyset & \text{(by Definition \ref{1.2.5})}      \\
+        \implies & \exists\ r \in \mathbf{R}^+ : \begin{cases}
+            B_{(X, d)}(x_0, r) \in \mathcal{F} \\
+            B_{(X, d)}(x_0, r) \cap E = \emptyset
+        \end{cases}            & \text{(by Proposition \ref{1.2.15}(c))} \\
+        \implies & x_0 \in \text{ext}_{(X, \mathcal{F})}(E).                           & \text{(by Definition \ref{2.5.5})}
+    \end{align*}
+
+    Next suppose that \(x_0\) is an exterior point of \(E\) in the sense of Definition \ref{2.5.5}.
+    Then we have
+    \begin{align*}
+                 & x_0 \in \text{ext}_{(X, \mathcal{F})}(E)                                                                        \\
+        \implies & \exists\ V \in \mathcal{F} : (x_0 \in V) \land (V \cap E = \emptyset) & \text{(by Definition \ref{2.5.5})}      \\
+        \implies & \exists\ r \in \mathbf{R}^+ : \begin{cases}
+            B_{(X, d)}(x_0, r) \subseteq V \\
+            B_{(X, d)}(x_0, r) \cap E = \emptyset
+        \end{cases}              & \text{(by Proposition \ref{1.2.15}(a))} \\
+        \implies & x_0 \in \text{ext}_{(X, d)}(E).                                       & \text{(by Definition \ref{1.2.5})}
+    \end{align*}
+
+    Next suppose that \(x_0\) is an boundary point of \(E\) in the sense of Definition \ref{1.2.5}.
+    Then we have
+    \begin{align*}
+                 & x_0 \in \partial_{(X, d)}(E)                                                                      \\
+        \implies & \forall\ r \in \mathbf{R}^+, \begin{cases}
+            B_{(X, d)}(x_0, r) \not\subseteq E \\
+            B_{(X, d)}(x_0, r) \cap E \neq \emptyset
+        \end{cases} & \text{(by Definition \ref{1.2.5})}      \\
+        \implies & \forall\ V \in \mathcal{F}, x_0 \in V \text{ implies}                                             \\
+                 & \begin{cases}
+            \exists\ r \in \mathbf{R}^+ : B_{(X, d)}(x_0, r) \subseteq V \\
+            V \not\subseteq E                                            \\
+            V \cap E \neq \emptyset
+        \end{cases}                              & \text{(by Proposition \ref{1.2.15}(a))} \\
+        \implies & x_0 \in \partial_{(X, \mathcal{F})}(E).                 & \text{(by Definition \ref{2.5.5})}
+    \end{align*}
+
+    Finally suppose that \(x_0\) is an boundary point of \(E\) in the sense of Definition \ref{2.5.5}.
+    Then we have
+    \begin{align*}
+                 & x_0 \in \partial_{(X, \mathcal{F})}(E)                                                                                     \\
+        \implies & \forall\ V \in \mathcal{F}, x_0 \in V \text{ implies} \begin{cases}
+            V \not\subseteq E \\
+            V \cap E \neq \emptyset
+        \end{cases} & \text{(by Definition \ref{2.5.5})}      \\
+        \implies & \forall\ r \in \mathbf{R}^+, \begin{cases}
+            B_{(X, d)}(x_0, r) \in \mathcal{F} \\
+            B_{(X, d)}(x_0, r) \not\subseteq E \\
+            B_{(X, d)}(x_0, r) \cap E \neq \emptyset
+        \end{cases}                          & \text{(by Proposition \ref{1.2.15}(c))} \\
+        \implies & x_0 \in \partial_{(X, d)}(E).                                                    & \text{(by Definition \ref{1.2.5})}
+    \end{align*}
+    Thus Definition \ref{1.2.5} and Definition \ref{2.5.5} coincide.
+\end{proof}
+
 \begin{exercise}\label{ex 2.5.4}
     A topological space \((X, \mathcal{F})\) is said to be \emph{Hausdorff} if given any two distinct points \(x, y \in X\), there exists a neighbourhood \(V\) of \(x\) and a neighbourhood \(W\) of \(y\) such that \(V \cap W = \emptyset\).
     Show that any topological space coming from a metric space is Hausdorff, and show that the trivial topology is not Hausdorff if the space contains at least two elements.
