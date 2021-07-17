@@ -290,6 +290,72 @@
     non-Hausdorff topological spaces tend to be so pathological that it is not very profitable to work with them.)
 \end{exercise}
 
+\begin{proof}
+    We first show that every topological space coming from a metric space is Hausdorff.
+    Let \((X, d)\) be a metric space and let \(\mathcal{F}\) be the set of all open sets in \((X, d)\).
+    Let \(x, y \in X\).
+    Then we have
+    \begin{align*}
+                 & x \neq y                                                                                                                                                             \\
+        \implies & d(x, y) \in \mathbf{R}^+                                                                                                   & \text{(by Definition \ref{1.1.2}(b))}   \\
+        \implies & \begin{cases}
+            B_{(X, d)}\big(x, \frac{d(x, y)}{2}\big) \in \mathcal{F} \\
+            B_{(X, d)}\big(y, \frac{d(x, y)}{2}\big) \in \mathcal{F}
+        \end{cases}                                                                                                 & \text{(by Proposition \ref{1.2.15}(c))} \\
+        \implies & \bigg(B_{(X, d)}\big(x, \frac{d(x, y)}{2}\big)\bigg) \cap \bigg(B_{(X, d)}\big(y, \frac{d(x, y)}{2}\big)\bigg) = \emptyset & \text{(by Definition \ref{1.1.2}(d))}   \\
+        \implies & (X, \mathcal{F}) \text{ is a Hausdorff space}.                                                                             & \text{(by definition)}
+    \end{align*}
+
+    Next we show that if a trivial topological space contains at least two elements, then it is not Hausdorff.
+    Let \(X\) be a set such that \(x, y \in X\) and \(x \neq y\).
+    Let \(\mathcal{F} = \{\emptyset, X\}\).
+    By Definition \ref{2.5.2} the only neighbourhood of \(x\) in \(\mathcal{F}\) is \(X\), similarly the only neighbourhood of \(y\) in \(\mathcal{F}\) is \(X\).
+    But \(X \cap X \neq \emptyset\) implies \((X, \mathcal{F})\) is not Hausdorff.
+
+    Next we show that every convergent sequence in a Hausdorff space has only one limit.
+    Let \((X, \mathcal{F})\) be a Hausdorff space, let \((x^{(n)})_{n = 1}^\infty\) be a sequence in \(X\) and let \(x, x' \in X\) such that \((x^{(n)})_{n = 1}^\infty\) converges to \(x, x'\), respectively.
+    Suppose for sake of contradiction that \(x \neq x'\).
+    Since \(x \neq x'\) and \((X, \mathcal{F})\) is Hausdorff, by definition we know that
+    \[
+        \exists\ V, V' \in \mathcal{F} : \begin{cases}
+            x \in V   \\
+            x' \in V' \\
+            V \cap V' = \emptyset
+        \end{cases}
+    \]
+    But then we have
+    \begin{align*}
+                 & \begin{cases}
+            (x^{(n)})_{n = 1}^\infty \text{ converges to } x \\
+            (x^{(n)})_{n = 1}^\infty \text{ converges to } x'
+        \end{cases}                                                                                                \\
+        \implies & \begin{cases}
+            \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, x^{(n)} \in V \\
+            \exists\ N' \in \mathbf{Z}^+ : \forall\ n \geq N', x^{(n)} \in V'
+        \end{cases}                                                           & \text{(by Definition \ref{2.5.4})} \\
+        \implies & \exists\ N, N' \in \mathbf{Z}^+ : \forall\ n \geq \max(N, N'), x^{(n)} \in V \cap V'                                      \\
+        \implies & V \cap V' \neq \emptyset,
+    \end{align*}
+    a contradiction.
+    Thus we must have \(x = x'\).
+
+    Finally we give an non-Hausdorff topology space in which Proposition \ref{1.1.20} fails.
+    Let \(X = \{0, 1\}\) and let \(\mathcal{F} = \{\emptyset, X\}\).
+    From the proof above we know that \((X, \mathcal{F})\) is not Hausdorff.
+    Let \((x^{(n)})_{n = 1}^\infty\) be a sequence in \(X\).
+    By Definition \ref{2.5.2} we know that the only neighbourhood of \(0\) in \(\mathcal{F}\) is \(X\).
+    Similarly the only neighbourhood of \(1\) in \(\mathcal{F}\) is \(X\).
+    Thus we have
+    \begin{align*}
+                 & \forall\ n \in \mathbf{Z}^+, x^{(n)} \in X                                      \\
+        \implies & \begin{cases}
+            (x^{(n)})_{n = 1}^\infty \text{ converges to } 0 \\
+            (x^{(n)})_{n = 1}^\infty \text{ converges to } 1
+        \end{cases}                 & \text{(by Definition \ref{2.5.4})}
+    \end{align*}
+    but \(0 \neq 1\).
+\end{proof}
+
 \begin{exercise}\label{ex 2.5.5}
     Given any totally ordered set \(X\) with order relation \(\leq\), declare a set \(V \subseteq X\) to be \emph{open} if for every \(x \in V\) there exists a set \(I\) which is an interval \(\{y \in X : a < y < b\}\) for some \(a, b \in X\), a ray \(\{y \in X : a < y\}\) for some \(a \in X\), the ray \(\{y \in X : y < b\}\) for some \(b \in X\), or the whole space \(X\), which contains \(x\) and is contained in \(V\).
     Let \(\mathcal{F}\) be the set of all open subsets of \(X\).
