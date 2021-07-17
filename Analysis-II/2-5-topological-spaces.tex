@@ -360,10 +360,81 @@
     Given any totally ordered set \(X\) with order relation \(\leq\), declare a set \(V \subseteq X\) to be \emph{open} if for every \(x \in V\) there exists a set \(I\) which is an interval \(\{y \in X : a < y < b\}\) for some \(a, b \in X\), a ray \(\{y \in X : a < y\}\) for some \(a \in X\), the ray \(\{y \in X : y < b\}\) for some \(b \in X\), or the whole space \(X\), which contains \(x\) and is contained in \(V\).
     Let \(\mathcal{F}\) be the set of all open subsets of \(X\).
     Show that \((X, \mathcal{F})\) is a topology (this is the \emph{order topology} on the totally ordered set \((X, \leq)\)) which is Hausdorff in the sense of Exercise \ref{ex 2.5.4}.
-    Show that on the real line \(R\) (with the standard ordering \(\leq\)), the order topology matches the standard topology (i.e., the topology arising from the standard metric).
+    Show that on the real line \(\mathbf{R}\) (with the standard ordering \(\leq\)), the order topology matches the standard topology (i.e., the topology arising from the standard metric).
     If instead one applies this to the extended real line \(\mathbf{R}^*\), show that \(\mathbf{R}\) is an open set with boundary \(\{-\infty, +\infty\}\).
     If \((x_n)_{n = 1}^\infty\) is a sequence of numbers in \(\mathbf{R}\) (and hence in \(\mathbf{R}^*\)), show that \(x_n\) converges to \(+\infty\) if and only if \(\liminf_{n \to \infty} x_n = +\infty\), and \(x_n\) converges to \(-\infty\) if and only if \(\limsup_{n \to \infty} x_n = -\infty\).
 \end{exercise}
+
+\begin{proof}
+    We first show that \((X, \mathcal{F})\) is a topology space.
+    By definition we know that \(X\) is open and \(\emptyset\) is open trivially, thus \(X, \emptyset \in \mathcal{F}\).
+    Let \(n \in \mathbf{N}\) and let \(S_n \subseteq \mathcal{F}\) such that \(\#(S_n) = n\).
+    We use induction on \(n\) to show that \(\bigcap S_n \in \mathcal{F}\) for every \(n \in \mathbf{N}\).
+    For \(n = 0\), we have \(S_0 = \emptyset\) and \(\bigcap S_0 = \emptyset\).
+    From the proof above we know that \(\emptyset \in \mathcal{F}\), thus the base case holds.
+    Suppose inductively that \(\bigcap S_n \in \mathcal{F}\) for some \(n \geq 0\).
+    Let \(S_{n + 1} \subseteq \mathcal{F}\) such that \(\#(S_{n + 1}) = n + 1\).
+    Then we have \(S_{n + 1} = \{V_1, \dots, V_{n + 1} : \forall\ i \in \mathbf{Z}^+, V_i \in \mathcal{F}\}\) and \(\bigcap S_{n + 1} = \bigcap_{i = 1}^{n + 1} V_i\).
+    If \(\bigcap S_{n + 1} = \emptyset\), then from the proof above we know that \(\emptyset \in \mathcal{F}\).
+    So suppose that \(\bigcap S_{n + 1} \neq \emptyset\).
+    Let \(x \in \bigcap S_{n + 1}\).
+    Since \(x \in \bigcap_{i = 1}^n V_i\) and \(\#(\{V_1, \dots, V_n\}) = n\), by induction hypothesis we know that there exists a set \(I\) in one of the following forms
+    \[
+        I = \begin{cases}
+            \{y \in X : a < y < b\} \text{ for some } a, b \in X \\
+            \{y \in X : a < y\} \text{ for some } a \in X        \\
+            \{y \in X : y < b\} \text{ for some } b \in X        \\
+            X
+        \end{cases}
+    \]
+    such that \(x \in I\) and \(I \subseteq \bigcap_{i = 1}^n V_i\).
+    Since \(x \in V_{n + 1}\) and \(V_{n + 1} \in \mathcal{F}\), we know that there exists a set \(I'\) in one of the following forms
+    \[
+        I' = \begin{cases}
+            \{y \in X : a' < y < b'\} \text{ for some } a', b' \in X \\
+            \{y \in X : a' < y\} \text{ for some } a' \in X          \\
+            \{y \in X : y < b'\} \text{ for some } b' \in X          \\
+            X
+        \end{cases}
+    \]
+    such that \(x \in I'\) and \(I' \subseteq V_{n + 1}\).
+    Then we have \(x \in I \cap I'\) and \(I \cap I' \subseteq \bigcap_{i = 1}^{n + 1} V_i\).
+    Since \((X, \leq)\) is totally ordered, we know that \(I \cap I'\) is in one of the following forms
+    \[
+        I \cap I' = \begin{cases}
+            \{y \in X : \max_{(X, \leq)}(a, a') < y < \min_{(X, \leq)}(b, b')\} \\
+            \{y \in X : \max_{(X, \leq)}(a, a') < y < b\}                       \\
+            \{y \in X : a < y < \min_{(X, \leq)}(b, b')\}                       \\
+            \{y \in X : a < y < b\}                                             \\
+            \{y \in X : \max_{(X, \leq)}(a, a') < y < b'\}                      \\
+            \{y \in X : \max_{(X, \leq)}(a, a') < y\}                           \\
+            \{y \in X : a < y < b'\}                                            \\
+            \{y \in X : a < y\}                                                 \\
+            \{y \in X : a' < y < \min_{(X, \leq)}(b, b')\}                      \\
+            \{y \in X : a' < y < b\}                                            \\
+            \{y \in X : y < \min_{(X, \leq)}(b, b')\}                           \\
+            \{y \in X : y < b\}                                                 \\
+            \{y \in X : a' < y < b'\}                                           \\
+            \{y \in X : a' < y\}                                                \\
+            \{y \in X : y < b'\}                                                \\
+            X
+        \end{cases}
+    \]
+    Thus by definition \(I \cap I'\) is an interval.
+    Since \(x\) is arbitrary, we know that \(\bigcap S_{n + 1}\) is open in \((X, \mathcal{F})\), and this closes the induction.
+    We conclude that for any finite collection of open sets, their intersection is again open in \((X, \mathcal{F})\).
+
+    Let \(S \subseteq \mathcal{F}\).
+    If \(\bigcup S = \emptyset\), then from proof above we know that \(\emptyset \in \mathcal{F}\).
+    So suppose that \(\bigcup S \neq \emptyset\).
+    Let \(x \in \bigcup S\).
+    We know that there exists an \(V \in S\) such that \(x \in V\).
+    Since \(V \in S\), we know that \(V\) is open in \((X, \mathcal{F})\) and by definition there exists an interval \(I\) such that \(x \in I\) and \(I \subseteq V\).
+    Then we have \(I \subseteq V \subseteq \bigcup S\).
+    Since \(x\) is arbitrary, we know that \(\bigcup S\) is open in \((X, \mathcal{F})\).
+    Combine all the results above we know that \((X, \mathcal{F})\) is a topological space by Definition \ref{2.5.1}.
+
+\end{proof}
 
 \begin{exercise}\label{ex 2.5.6}
     Let \(X\) be an uncountable set, and let \(\mathcal{F}\) be the collection of all subsets \(E\) in \(X\) which are either empty or co-finite (which means that \(X \setminus E\) is finite).
