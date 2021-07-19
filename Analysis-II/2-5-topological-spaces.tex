@@ -582,6 +582,124 @@
     Use this to show that the cofinite topology cannot be obtained by placing a metric \(d\) on \(X\).
 \end{exercise}
 
+\begin{proof}
+    We first show that \((X, \mathcal{F})\) is a topological space.
+    By definition we have \(\emptyset \in \mathcal{F}\).
+    Since \(X \setminus X = \emptyset\) is finite, we know that \(X\) is co-finite and \(X \in \mathcal{F}\).
+    Let \(n \in \mathbf{N}\), let \(I_n = \{i \in \mathbf{N} : 1 \leq i \leq n\}\) and let \(A = \{V_i \in \mathcal{F} : i \in I_n\}\) be a finite collection of open sets in \((X, \mathcal{F})\).
+    If \(\bigcap A = \emptyset\), then from the proof above we know that \(\emptyset \in \mathcal{F}\).
+    So suppose that \(A \neq \emptyset\).
+    Then we have
+    \begin{align*}
+                 & \forall\ i \in I_n, V_i \text{ is cofinite}                     \\
+        \implies & \forall\ i \in I_n, X \setminus V_i \text{ is finite}           \\
+        \implies & \bigcup_{i = 1}^n (X \setminus V_i) \text{ is finite}           \\
+        \implies & X \setminus \bigg(\bigcap_{i = 1}^n V_i\bigg) \text{ is finite} \\
+        \implies & X \setminus \bigg(\bigcap A\bigg) \text{ is finite}             \\
+        \implies & \bigcap A \text{ is cofinite}
+    \end{align*}
+    and thus \(\bigcap A \in \mathcal{F}\).
+    Since \(n\) is arbitrary, we conclude that the intersection of any finite collection of open sets in \((X, \mathcal{F})\) is open in \((X, \mathcal{F})\).
+
+    Let \(S \subseteq \mathcal{F}\).
+    Then we have
+    \begin{align*}
+                 & \forall\ V \in S, V \text{ is cofinite}             \\
+        \implies & \forall\ V \in S, X \setminus V \text{ is finite}   \\
+        \implies & \bigcap_{V \in S} (X \setminus V) \text{ is finite} \\
+        \implies & X \setminus \bigg(\bigcup S\bigg) \text{ is finite} \\
+        \implies & \bigcup S \text{ is cofinite}
+    \end{align*}
+    and thus \(\bigcup S \in \mathcal{F}\).
+    Since \(S\) is arbitrary, we conclude that the union of arbitrary open sets in \((X, \mathcal{F})\) is open in \((X, \mathcal{F})\).
+    Combine all the proofs above we conclude that \((X, \mathcal{F})\) is a topological space by Definition \ref{2.5.1}.
+
+    Next we show that \((X, \mathcal{F})\) is not Hausdorff.
+    Suppose for sake of contradiction that \((X, \mathcal{F})\) is Hausdorff.
+    Let \(x_1, x_2 \in X\) such that \(x_1 \neq x_2\).
+    By Exercise \ref{ex 2.5.4} we know that
+    \[
+        \exists\ V_1, V_2 \in \mathcal{F} : \begin{cases}
+            x_1 \in V_1 \\
+            x_2 \in V_2 \\
+            V_1 \cap V_2 = \emptyset
+        \end{cases}
+    \]
+    But then we have
+    \begin{align*}
+                 & V_1, V_2 \text{ are cofinite}                                                           \\
+        \implies & X \setminus V_1, X \setminus V_2 \text{ are finite}                                     \\
+        \implies & (X \setminus V_1) \cup (X \setminus V_2) \text{ is finite}                              \\
+        \implies & X \setminus (V_1 \cap V_2) \text{ is finite}                                            \\
+        \implies & X \text{ is finite},                                       & (V_1 \cap V_2 = \emptyset)
+    \end{align*}
+    a contradiction.
+    Thus \((X, \mathcal{F})\) is not Hausdorff.
+
+    Next we show that \((X, \mathcal{F})\) is compact.
+    Let \(S\) be an open cover of \(X\) in \((X, \mathcal{F})\).
+    Let \(V_0 \in S\).
+    Since \(V_0\) is cofinite, we know that \(X \setminus V_0\) is finite.
+    Let \(n = \#(X \setminus V_0)\), let \(I_n = \{i \in \mathbf{N} : 1 \leq i \leq n\}\) and let \(X \setminus V_0 = \{x_i \in X : i \in I_n\}\).
+    Then we have
+    \begin{align*}
+                 & \forall\ i \in I_n, x_i \in X                        \\
+        \implies & \forall\ i \in I_n, \exists\ V_i \in S : x_i \in V_i \\
+        \implies & X = V_0 \cup \bigg(\bigcup_{i \in I_n} V_i\bigg).
+    \end{align*}
+    Since \(S\) is arbitrary, by Definition \ref{2.5.9} we know that \((X, \mathcal{F})\) is compact.
+
+    Next we show that \((X, \mathcal{F})\) is connected.
+    Suppose for sake of contradiction that \((X, \mathcal{F})\) is disconnected.
+    Then by Definition \ref{2.4.1} we have
+    \[
+        \exists\ V, W \in \mathcal{F} : \begin{cases}
+            V \neq \emptyset \neq W \\
+            V \cup W = X            \\
+            V \cap W = \emptyset
+        \end{cases}
+    \]
+    But then we have
+    \begin{align*}
+                 & V, W \text{ are cofinite}                                                       \\
+        \implies & X \setminus V, X \setminus W \text{ are finite}                                 \\
+        \implies & (X \setminus V) \cup (X \setminus W) \text{ is finite}                          \\
+        \implies & X \setminus (V \cap W) \text{ is finite}                                        \\
+        \implies & X \text{ is finite},                                   & (V \cap W = \emptyset)
+    \end{align*}
+    a contradiction.
+    Thus \((X, \mathcal{F})\) is connected.
+
+    Next we show that if \(x \in X\) and \((V_n)_{n = 1}^\infty\) is any countable collection of open sets in \((X, \mathcal{F})\) such that \(x \in V_n\) for all \(n \in \mathbf{Z}^+\), then \(\bigcap_{n = 1}^\infty V_n \neq \{x\}\).
+    This is true since
+    \begin{align*}
+                 & \forall\ n \in \mathbf{Z}^+, V_n \text{ is cofinite}                                                                                         \\
+        \implies & \forall\ n \in \mathbf{Z}^+, X \setminus V_n \text{ is finite}                                                                               \\
+        \implies & \bigcup_{n = 1}^\infty (X \setminus V_n) \text{ is at most countable}                             & \text{(by Exercise 8.1.9 in Analysis I)} \\
+        \implies & X \setminus \bigg(\bigcap_{n = 1}^\infty V_n\bigg) \text{ is at most countable}                                                              \\
+        \implies & X \setminus \Bigg(X \setminus \bigg(\bigcap_{n = 1}^\infty V_n\bigg)\Bigg) \text{ is uncountable} & \text{(\(X\) is uncountable)}            \\
+        \implies & \bigcap_{n = 1}^\infty V_n \text{ is uncountable}                                                                                            \\
+        \implies & \bigcap_{n = 1}^\infty V_n \neq \{x\}.
+    \end{align*}
+
+    Finally we show that the cofinite topology \((X, \mathcal{F})\) cannot be obtained by placing a metric \(d\) on \(X\).
+    Suppose for sake of contradiction that there exists some metric \(d\) such that \(\mathcal{F} = \{V \subseteq X : V \text{ is open in } (X, d)\}\).
+    Let \(x \in X\) and for each \(n \in \mathbf{Z}^+\) let \(V_n = B_{(X, d)}(x, \frac{1}{n})\).
+    By Proposition \ref{1.2.15}(c) we know that \(V_n\) is open in \((X, d)\) for each \(n \in \mathbf{Z}^+\).
+    From the proof above we must have \(\bigcap_{n = 1}^\infty V_n \neq \{x\}\).
+    So let \(y \in \bigcap_{n = 1}^\infty V_n\) such that \(y \neq x\).
+    By Definition \ref{1.1.2}(b) we know that \(d(y, x) \in \mathbf{R}^+\).
+    But then we have
+    \begin{align*}
+                 & \exists\ n \in \mathbf{Z}^+ : d(y, x) > \frac{1}{n}               & \text{(by Archimedean property)}   \\
+        \implies & \exists\ n \in \mathbf{Z}^+ : y \notin B_{(X, d)}(x, \frac{1}{n}) & \text{(by Definition \ref{1.2.1})} \\
+        \implies & \exists\ n \in \mathbf{Z}^+ : y \notin V_n                                                             \\
+        \implies & y \notin \bigcap_{n = 1}^\infty V_n,
+    \end{align*}
+    a contradiction.
+    Thus the cofinite topology \((X, \mathcal{F})\) cannot be obtained by placing a metric \(d\) on \(X\).
+\end{proof}
+
 \begin{exercise}\label{ex 2.5.7}
     Let \(X\) be an uncountable set, and let \(\mathcal{F}\) be the collection of all subsets \(E\) in \(X\) which are either empty or co-countable
     (which means that \(X \setminus E\) is at most countable).
