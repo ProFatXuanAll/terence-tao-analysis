@@ -444,7 +444,9 @@
     If \(I_1 \cap I_2 = \emptyset\), then we are done.
     So suppose that \(I_1 \cap I_2 \neq \emptyset\).
     Let \(x \in I_1 \cap I_2\), let \(J_1 = \{y \in X : y < x\}\) and let \(J_2 = \{y \in X : x < y\}\).
-    Then we have \(x_1 \in J_1\) and \(x_2 \in J_2\).
+    Since \(I_1 \cap I_2 = \{y \in X : x_1 < y < x_2\}\), we know that \(x \neq x_1\) and \(x \neq x_2\).
+    Since \(x_1 < x\), we have \(x_1 \in J_1\).
+    Similarly we have \(x_2 \in J_2\).
     By definition we know that \(J_1, J_2 \in \mathcal{F}\).
     Since \((X, \leq)\) is totally ordered, we know that \(J_1 \cap J_2 = \emptyset\).
     Since \(x_1, x_2\) are arbitrary, by Exercise \ref{ex 2.5.4} we know that \((X, \mathcal{F})\) is Hausdorff.
@@ -498,37 +500,37 @@
     Since \(W\) is open in \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\), we have
     \begin{align*}
                  & \forall\ x \in W, \exists\ r \in \mathbf{R}^+ : B_{(\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})}(x, r) \subseteq W & \text{(by Proposition \ref{1.2.15}(a))} \\
-        \implies & \forall\ x \in W, (x - r, x + r) \subseteq W                                                                                & \text{(by Definition \ref{1.2.1})}      \\
-        \implies & W \in \mathcal{F}_o.
+        \implies & \forall\ x \in W, \exists\ r \in \mathbf{R}^+ : (x - r, x + r) \subseteq W                                                  & \text{(by Definition \ref{1.2.1})}      \\
+        \implies & W \in \mathcal{F}_o.                                                                                                        & \text{(by definition)}
     \end{align*}
     Since \(W\) is arbitrary, we have \(\mathcal{F}_s \subseteq \mathcal{F}_o\).
     From the proof above we thus have \(\mathcal{F}_o = \mathcal{F}_s\).
 
-    Next we show that \(\mathbf{R}\) is open in \((\mathbf{R}^*, \mathcal{F}_o)\).
-    Since \((\mathbf{R}^*, \leq)\) is totally ordered, we know that \((\mathbf{R}^*, \mathcal{F}_o)\) is an ordering topology.
+    Next we show that if \((\mathbf{R}^*, \mathcal{F})\) is an order topology with order relation \(\leq\), then \(\mathbf{R}\) is open in \((\mathbf{R}^*, \mathcal{F})\).
+    Since \((\mathbf{R}^*, \leq)\) is totally ordered, we know that \((\mathbf{R}^*, \mathcal{F})\) is an order topology.
     Since
     \[
         \forall\ x \in \mathbf{R}, (x - 1, x + 1) \subseteq \mathbf{R},
     \]
-    by definition we know that \(\mathbf{R}\) is open in \((\mathbf{R}^*, \mathcal{F}_o)\).
+    by definition we know that \(\mathbf{R}\) is open in \((\mathbf{R}^*, \mathcal{F})\).
 
-    Next we show that the boundary points of \(\mathbf{R}\) in \((\mathbf{R}^*, \mathcal{F}_o)\) are \(-\infty, \infty\).
-    Since \(\infty \notin \mathbf{R}\) and \(\mathbf{R}\) is open in \((\mathbf{R}^*, \mathcal{F}_o)\), by Definition \ref{2.5.5} we know that \(\infty\) is either an exterior point or a boundary point of \(\mathbf{R}\) in \((\mathbf{R}^*, \mathcal{F}_o)\).
-    Suppose for sake of contradiction that \(\infty\) is an exterior point of \(\mathbf{R}\) in \((\mathbf{R}^*, \mathcal{F}_o)\).
+    Next we show that if \((\mathbf{R}^*, \mathcal{F})\) is an order topology with order relation \(\leq\), then the boundary points of \(\mathbf{R}\) in \((\mathbf{R}^*, \mathcal{F})\) are \(-\infty\) and \(\infty\).
+    Since \(\infty \notin \mathbf{R}\) and \(\mathbf{R}\) is open in \((\mathbf{R}^*, \mathcal{F})\), by Definition \ref{2.5.5} we know that \(\infty\) is either an exterior point or a boundary point of \(\mathbf{R}\) in \((\mathbf{R}^*, \mathcal{F})\).
+    Suppose for sake of contradiction that \(\infty\) is an exterior point of \(\mathbf{R}\) in \((\mathbf{R}^*, \mathcal{F})\).
     Then by Definition \ref{2.5.5} we have
     \[
-        \exists\ V \in \mathcal{F}_o : (\infty \in V) \land (\mathbf{R} \cap V = \emptyset).
+        \exists\ V \in \mathcal{F} : (\infty \in V) \land (\mathbf{R} \cap V = \emptyset).
     \]
     Since \(V \cap \mathbf{R} = \emptyset\), we know that the only possible choices of \(V\) are \(\{\infty\}\) or \(\{-\infty, \infty\}\).
-    But in either cases we cannot find an interval \(I \subseteq \mathbf{R}^*\) such that \(I \subseteq V\), a contradiction.
-    Thus \(\infty\) is a boundary point of \(\mathbf{R}\) in \((\mathbf{R}^*, \mathcal{F}_o)\).
-    Using similar arguments as above we can show that \(-\infty\) is a boundary point of \(\mathbf{R}\) in \((\mathbf{R}^*, \mathcal{F}_o)\).
+    But in either cases we cannot find an open interval \(I \subseteq \mathbf{R}^*\) such that \(I \subseteq V\), a contradiction.
+    Thus \(\infty\) is a boundary point of \(\mathbf{R}\) in \((\mathbf{R}^*, \mathcal{F})\).
+    Using similar arguments as above we can show that \(-\infty\) is a boundary point of \(\mathbf{R}\) in \((\mathbf{R}^*, \mathcal{F})\).
 
-    Finally we show that if \((x^{(n)})_{n = 1}^\infty\), \((y^{(n)})_{n = 1}^\infty\) are sequence in \(\mathbf{R}\), then we have
+    Finally we show that if  \((\mathbf{R}^*, \mathcal{F})\) is an order topology with order relation \(\leq\) and \((x^{(n)})_{n = 1}^\infty\), \((y^{(n)})_{n = 1}^\infty\) are sequence in \(\mathbf{R}\), then we have
     \[
         \begin{cases}
-            x_n \text{ converges to } \infty \text{ in } (\mathbf{R}^*, \mathcal{F}_o)  \\
-            y_n \text{ converges to } -\infty \text{ in } (\mathbf{R}^*, \mathcal{F}_o) \\
+            x_n \text{ converges to } \infty \text{ in } (\mathbf{R}^*, \mathcal{F})  \\
+            y_n \text{ converges to } -\infty \text{ in } (\mathbf{R}^*, \mathcal{F}) \\
         \end{cases} \iff \begin{cases}
             \liminf_{n \to \infty} x_n = \infty \\
             \limsup_{n \to \infty} y_n = -\infty
@@ -557,14 +559,18 @@
             \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \geq 1 : \forall\ n \geq N, y^{(n)} \in [-\infty, -\varepsilon)
         \end{cases} \\
         \iff & \begin{cases}
-            \forall\ V \in \mathcal{F}_0, \infty \in V \implies \exists\ \varepsilon \in \mathbf{R}^+ : \begin{cases}
+            \forall\ V \in \mathcal{F}, \infty \in V \implies \exists\ \varepsilon \in \mathbf{R}^+ : \begin{cases}
                 (\varepsilon, \infty] \subseteq V \\
                 \exists\ N \geq 1 : \forall\ n \geq N, x^{(n)} \in V
             \end{cases} \\
-            \forall\ V \in \mathcal{F}_0, -\infty \in V \implies \exists\ \varepsilon \in \mathbf{R}^+ : \begin{cases}
+            \forall\ V \in \mathcal{F}, -\infty \in V \implies \exists\ \varepsilon \in \mathbf{R}^+ : \begin{cases}
                 [-\infty, -\varepsilon) \subseteq V \\
-                \exists\ N \geq 1 : \forall\ n \geq N, x^{(n)} \in V
+                \exists\ N \geq 1 : \forall\ n \geq N, y^{(n)} \in V
             \end{cases}
+        \end{cases} \\
+        \iff & \begin{cases}
+            x_n \text{ converges to } \infty \text{ in } (\mathbf{R}^*, \mathcal{F})  \\
+            y_n \text{ converges to } -\infty \text{ in } (\mathbf{R}^*, \mathcal{F}) \\
         \end{cases}
     \end{align*}
 \end{proof}
