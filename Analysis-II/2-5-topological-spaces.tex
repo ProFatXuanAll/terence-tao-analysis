@@ -844,6 +844,83 @@
     Show that every sequence in \(X\) has a convergent subsequence, by modifying Exercise \ref{ex 1.5.11}.
 \end{exercise}
 
+\begin{proof}
+    If \(X = \emptyset\), then the statement is trivial.
+    So suppose that \(X \neq \emptyset\).
+    Let \((x^{(n)})_{n = 1}^\infty\) be a sequence in \(X\).
+    If the set \(E = \{x^{(n)} : n \in \mathbf{Z}^+\}\) is finite, then there exists a subsequence \((x^{(n_j)})_{j = 1}^\infty\) such that \(x^{(n_j)} = x^{(n_1)}\) for every \(j \in \mathbf{Z}^+\).
+    By Definition \ref{2.5.4} we know that \((x^{(n_j)})_{j = 1}^\infty\) converges to \(x\).
+
+    Now suppose that \(E\) is infinite.
+    We claim that
+    \[
+        \exists\ y \in X : \forall\ W \in \mathcal{F}, y \in W \implies W \cap E \text{ is infinite}.
+    \]
+    Suppose for sake of contradiction that the claim is false.
+    Then we have
+    \[
+        \forall\ y \in X, \exists\ W \in \mathcal{F} : \begin{cases}
+            y \in W; \\
+            W \cap E \text{ is finite}.
+        \end{cases}
+    \]
+    We choose one such \(W\) for each \(y \in X\) and denote it as \(W_y\).
+    But then we have
+    \begin{align*}
+                 & X = \bigcup_{y \in X} W_y                                                                \\
+        \implies & \exists\ Y \subseteq X : \begin{cases}
+            Y \text{ is finite} \\
+            X = \bigcup_{y \in Y} W_y
+        \end{cases} & \text{(by Definition \ref{2.5.9})} \\
+        \implies & \exists\ Y \subseteq X : \begin{cases}
+            Y \text{ is finite} \\
+            E = \bigcup_{y \in Y} (W_y \cap E) \text{ is finite}
+        \end{cases}
+    \end{align*}
+    which contradict to the fact that \(E\) is infinite.
+    Thus the claim is true and we can choose one \(y \in X\) such that every neighbourhood of \(y\) contains infinitely many elements of \((x^{(n)})_{n = 1}^\infty\).
+    Since \((X, \mathcal{F})\) is first countable, we know that there exists a countable collection \((V_j)_{j = 1}^\infty\) of neighbourhoods of \(y\) such that
+    \[
+        \forall\ W \in \mathcal{F}, y \in W \implies \exists\ j \in \mathbf{Z}^+ : V_j \subseteq W.
+    \]
+    We fix such \((V_j)_{j = 1}^\infty\) and define \(U_j = \bigcap_{i = 1}^j V_j\) for each \(j \in \mathbf{Z}^+\).
+    Since \(y \in V_j\) for every \(j \in \mathbf{Z}^+\), we know that \(y \in \bigcap_{j = 1}^\infty V_j\).
+    Thus we have \(y \in U_j\) and \(U_j \neq \emptyset\) for every \(j \in \mathbf{Z}^+\).
+    Observe that
+    \[
+        \forall\ p_1, p_2 \in \mathbf{Z}^+, p_1 < p_2 \implies \bigcap_{i = 1}^{p_2} V_i \subseteq \bigcap_{i = 1}^{p_1} V_i \implies U_{p_2} \subseteq U_{p_1}.
+    \]
+    Now we construct a subsequence \((x^{(n_j)})_{j = 1}^\infty\) which converges to \(y\).
+    Let
+    \[
+        A_1 = \{n \in \mathbf{Z}^+ : x^{(n)} \in U_1\}.
+    \]
+    Since \(U_1 = V_1\) is a neighbourhood of \(y\), by the definition of \(y\) we know that \(A_1\) is infinite.
+    Since \(A_1 \subseteq \mathbf{Z}^+\), by well-ordering principle we know that \(\min(A_1)\) is well-defined.
+    Let \(n_1 = \min(A_1)\).
+    Suppose that \(n_j\) is already defined for some \(j \geq 1\).
+    Then we define \(n_{j + 1}\) as follow:
+    \begin{align*}
+         & A_{j + 1} = \{n \in \mathbf{Z}^+ : (n > n_j) \land (x^{(n)} \in U_{j + 1})\} \\
+         & n_{j + 1} = \min(A_{j + 1})
+    \end{align*}
+    Since \(U_{j + 1} = \bigcap_{i = 1}^{j + 1} V_i\), by Definition \ref{2.5.1} we know that \(U_{j + 1}\) is a neighbourhood of \(y\).
+    Thus by the definition of \(y\) we know that \(A_{j + 1}\) is infinite.
+    Since \(A_{j + 1} \subseteq \mathbf{Z}^+\), by well-ordering principle we know that \(n_{j + 1}\) is well-defined.
+    Thus we have construct a subsequence \((x^{(n_j)})_{j = 1}^\infty\).
+    Let \(W\) be a neighbourhood of \(y\).
+    Since \((X, \mathcal{F})\) is first countable, we know that
+    \begin{align*}
+                 & \exists\ N \in \mathbf{Z}^+ : V_N \subseteq W                                                                                \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : U_N \subseteq V_N \subseteq W                    & \text{(by the definition of \(U_N\))}       \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ j \geq N, U_j \subseteq U_N \subseteq W & \text{(by the definition of \(U_N\))}       \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ j \geq N, x^{(n_j)} \in W.              & \text{(by the definition of \(x^{(n_j)}\))}
+    \end{align*}
+    Since \(W\) is arbitrary, by Definition \ref{2.5.4} we know that \((x^{(n_j)})_{j = 1}^\infty\) converges to \(y\) in \((X, \mathcal{F})\).
+    Thus we have found a subsequence of \((x^{(n)})_{n = 1}^\infty\) which converges in \((X, \mathcal{F})\).
+    Since \((x^{(n)})_{n = 1}^\infty\) is arbitrary, we conclude that \((X, \mathcal{F})\) is sequentially compact, i.e., every sequence in \(X\) has a convergent subsequence.
+\end{proof}
+
 \begin{exercise}\label{ex 2.5.10}
     Prove the following partial analogue of Proposition \ref{1.2.10} for topological spaces:
     (c) implies both (a) and (b), which are equivalent to each other.
