@@ -927,6 +927,72 @@
     Show that in the co-countable topology in Exercise \ref{ex 2.5.7}, it is possible for (a) and (b) to hold without (c) holding.
 \end{exercise}
 
+\begin{proof}
+    Let \((X, \mathcal{F})\) be a topological space, let \(E \subseteq X\), let \(x_0 \in X\).
+    We first show that if there exists a sequence \((x^{(n)})_{n = 1}^\infty\) in \(E\) which converges to \(x_0\) in \((X, \mathcal{F})\), then \(x_0\) is an adherent point of \(E\) in \((X, \mathcal{F})\).
+    This is true since
+    \begin{align*}
+                 & (x^{(n)})_{n = 1}^\infty \text{ converges to } x_0 \text{ in } (X, \mathcal{F})                                                                              \\
+        \implies & \big(\forall\ V \in \mathcal{F}, x_0 \in V \implies \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, x^{(n)} \in V\big) & \text{(by Definition \ref{2.5.4})} \\
+        \implies & \big(\forall\ V \in \mathcal{F}, x_0 \in V \implies \exists\ N \in \mathbf{Z}^+ : x^{(N)} \in V \cap E\big)                                                  \\
+        \implies & \big(\forall\ V \in \mathcal{F}, x_0 \in V \implies V \cap E \neq \emptyset\big)                                                                             \\
+        \implies & x_0 \in \overline{E}_{(X, \mathcal{F})}.                                                                                & \text{(by Definition \ref{2.5.6})}
+    \end{align*}
+
+    Next we show that \(x_0\) is an adherent point of \(E\) in \((X, \mathcal{F})\) iff \(x_0\) is an interior point or a boundary point of \(E\) in \((X, \mathcal{F})\).
+    This is true since
+    \begin{align*}
+             & x_0 \in \overline{E}_{(X, \mathcal{F})}                                                                                                        \\
+        \iff & \forall\ V \in \mathcal{F}, x_0 \in V \implies V \cap E \neq \emptyset                                    & \text{(by Definition \ref{2.5.6})} \\
+        \iff & x_0 \notin \text{ext}_{(X, \mathcal{F})}(E)                                                               & \text{(by Definition \ref{2.5.5})} \\
+        \iff & \big(x_0 \in \text{int}_{(X, \mathcal{F})}(E)\big) \lor \big(x_0 \in \partial_{(X, \mathcal{F})}(E)\big). & \text{(by Definition \ref{2.5.5})}
+    \end{align*}
+
+    Finally we show that if \(X\) is uncountable, \((X, \mathcal{F})\) is a co-countable topology and \(x_0 \in E\) for some \(E \in \mathcal{F}\), then there may not exist a sequence in \(E\) which coverges to \(x_0\) in \((X, \mathcal{F})\).
+    Let \(C \subseteq X\) such that \(C\) is countable and let \(E = X \setminus C\).
+    Then by Exercise \ref{ex 2.5.7} we know that \(E \in \mathcal{F}\) and \(E \neq \emptyset\).
+
+    Let \(x_0 \in C\).
+    Since \(x_0 \in C\), we know that \(x_0 \notin E\) and by Definition \ref{2.5.5} we know that \(x_0 \notin \text{int}_{(X, \mathcal{F})}(E)\).
+    This means \(x_0 \in \text{ext}_{(X, \mathcal{F})}(E)\) or \(x_0 \in \partial_{(X, \mathcal{F})}(E)\).
+    Now we claim that \(x_0 \in \partial_{(X, \mathcal{F})}(E)\).
+    Suppose for sake of contradiction that the claim is false.
+    Then we have \(x_0 \in \text{ext}_{(X, \mathcal{F})}(E)\), i.e.,
+    \[
+        \exists\ V \in \mathcal{F} : x_0 \in V \implies V \cap E = \emptyset.
+    \]
+    Fix this \(V\).
+    Since \((X, \mathcal{F})\) is a co-countable, by Exercise \ref{ex 2.5.7} we know that \(X \setminus V\) is at most countable.
+    But then we have
+    \begin{align*}
+                 & (X \setminus V) \cup C \text{ is countable}                                                   \\
+        \implies & X \setminus \big((X \setminus V) \cup C\big) \text{ is co-countable}                          \\
+        \implies & V \cap (X \setminus C) \text{ is co-countable}                                                \\
+        \implies & V \cap E \text{ is co-countable}                                                              \\
+        \implies & X \setminus (V \cap E) \text{ is at most countable}                                           \\
+        \implies & X \text{ is at most countable},                                      & (V \cap E = \emptyset)
+    \end{align*}
+    which contradict to the hypothesis that \(X\) is uncountable.
+    Thus the claim is true.
+    From the proof above we know that \(x_0 \in \partial_{(X, \mathcal{F})}(E)\) implies \(x_0 \in \overline{E}_{(X, \mathcal{F})}\).
+
+    Suppose for sake of contradiction that there exists a sequence \((x^{(n)})_{n = 1}^\infty\) in \(E\) which converges to \(x_0\) in \((X, \mathcal{F})\).
+    Then we have
+    \begin{align*}
+                 & \{x^{(n)} : n \in \mathbf{Z}^+\} \text{ is countable}                \\
+        \implies & X \setminus \{x^{(n)} : n \in \mathbf{Z}^+\} \text{ is co-countable} \\
+        \implies & X \setminus \{x^{(n)} : n \in \mathbf{Z}^+\} \in \mathcal{F}.
+    \end{align*}
+    Since \(x_0 \notin E\), we have
+    \begin{align*}
+                 & x_0 \notin \{x^{(n)} : n \in \mathbf{Z}^+\}           \\
+        \implies & x_0 \in X \setminus \{x^{(n)} : n \in \mathbf{Z}^+\}.
+    \end{align*}
+    But \(X \setminus \{x^{(n)} : n \in \mathbf{Z}^+\} \in \mathcal{F}\) means we have found one neighbourhood of \(x_0\) which does not contain any elements of \((x^{(n)})_{n = 1}^\infty\).
+    By Definition \ref{2.5.4} this means \((x^{(n)})_{n = 1}^\infty\) does not coverges to \(x_0\) in \((X, \mathcal{F})\), a contradiction.
+    Thus we conclude that there does not exist a sequence in \(E\) which converges to \(x_0\) when \(x_0\) is an adherent point of \(E\) in \((X, \mathcal{F})\).
+\end{proof}
+
 \begin{exercise}\label{ex 2.5.11}
     Let \(E\) be a subset of a topological space \((X, \mathcal{F})\)
     Show that \(E\) is open if and only if every element of \(E\) is an interior point, and show that \(E\) is closed if and only if \(E\) contains all of its adherent points.
