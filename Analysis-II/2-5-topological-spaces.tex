@@ -1587,3 +1587,51 @@
 \begin{exercise}\label{ex 2.5.17}
     Generalize both Theorem \ref{2.3.1} and Proposition \ref{2.3.2} to compact sets in a topological space.
 \end{exercise}
+
+\begin{proof}
+    Let \((X, \mathcal{F}_X)\) and \((Y, \mathcal{F}_Y)\) be two topological spaces.
+    Let \(f : X \to Y\) be continuous function from \((X, \mathcal{F}_X)\) to \((Y, \mathcal{F}_Y)\), and let \(K \subseteq X\) such that \((K, \mathcal{F}_K)\) is compact.
+    We want to show that \(\big(f(K), \mathcal{F}_{f(K)}\big)\) is also compact.
+    Let \(S \subseteq \mathcal{F}_{f(K)}\) be an open cover of \(f(K)\), i.e., \(f(K) = \bigcup_{V_K \in S} V_K\).
+    By Definition \ref{2.5.7} we know that the set \(S_Y = \{V \in \mathcal{F}_Y : V \cap f(K) \in S\}\) is non-empty.
+    Then we have
+    \begin{align*}
+                 & \forall\ V \in S_Y, f^{-1}(V) \in \mathcal{F}_X                                                    & \text{(by Exercise \ref{ex 2.5.16})} \\
+        \implies & \forall\ V \in S_Y, f^{-1}(V) \cap K \in \mathcal{F}_K                                             & \text{(by Definition \ref{2.5.7})}   \\
+        \implies & \forall\ V \in S_Y, f\big(f^{-1}(V) \cap K\big) = V \cap f(K)                                                                             \\
+        \implies & f(K) = \bigcup_{V \in S_Y} f\big(f^{-1}(V) \cap K\big) = \bigcup_{V \in S_Y} \big(V \cap f(K)\big)                                        \\
+        \implies & K \subseteq \bigcup_{V \in S_Y} \big(f^{-1}(V) \cap K\big)                                                                                \\
+        \implies & \exists\ S_Y' \subseteq S_Y : \begin{cases}
+            S_Y' \text{ is finite}                                      \\
+            K \subseteq \bigcup_{V \in S_Y'} \big(f^{-1}(V) \cap K\big) \\
+            f(K) = \bigcup_{V \in S_Y'} \big(V \cap f(K)\big)
+        \end{cases}                                          & \text{(by Definition \ref{2.5.9})}   \\
+    \end{align*}
+    Since \(S\) is arbitrary, by Definition \ref{2.5.9} we know that \(\big(f(K), \mathcal{F}_{f(K)}\big)\) is compact.
+
+    Now let \((X, \mathcal{F})\) be a compact topological space.
+    Define
+    \[
+        \mathcal{F}_{\mathbf{R}} = \{V \subseteq \mathbf{R} : V \text{ is open in } (\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\}.
+    \]
+    Let \(f : X \to \mathbf{R}\) be a continuous function from \((X, \mathcal{F})\) to \((\mathbf{R}, \mathcal{F}_{\mathbf{R}})\).
+    We want to show that \(f\) is bounded.
+    Furthermore, if \(X \neq \emptyset\), then there exists some \(x_{\min}, x_{\max} \in X\) such that \(f(x_{\min}) \leq f(x) \leq f(x_{\max})\) for each \(x \in X\).
+    We have
+    \begin{align*}
+                 & \begin{cases}
+            (X, \mathcal{F}) \text{ is compact} \\
+            f \text{ is continuous from } (X, \mathcal{F}) \text{ to } (\mathbf{R}, \mathcal{F}_{\mathbf{R}})
+        \end{cases}                                                                 \\
+        \implies & \big(f(X), \mathcal{F}_{f(X)}\big) \text{ is compact} & \text{(from the proof above)}       \\
+        \implies & \begin{cases}
+            f(X) \text{ is closed in } (\mathbf{R}, \mathcal{F}_{\mathbf{R}}) \\
+            \big(f(X), d_{l^1}|_{f(X) \times f(X)}\big) \text{ is bounded}
+        \end{cases}                           & \text{(by Theorem \ref{1.5.7})}     \\
+        \implies & \begin{cases}
+            f(X) \text{ is closed in } (\mathbf{R}, \mathcal{F}_{\mathbf{R}}) \\
+            f(X) \text{ is bounded subset of } \mathbf{R}
+        \end{cases}                           & \text{(by Exercise \ref{ex 1.5.1})}
+    \end{align*}
+    The rest follows as in Proposition \ref{2.3.2}.
+\end{proof}
