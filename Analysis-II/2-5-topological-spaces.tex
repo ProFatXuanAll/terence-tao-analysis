@@ -1504,6 +1504,86 @@
     (Again, the converse implications are false, but diffcult to prove.)
 \end{exercise}
 
+\begin{proof}
+    Let \((X, \mathcal{F}_X)\) and \((Y, \mathcal{F}_Y)\) be two topological spaces.
+    Let \(f : X \to Y\) be a function.
+    Let \(x_0 \in X\).
+    We first show that if \(f\) is continuous at \(x_0\) from \((X, \mathcal{F}_X)\) to \((Y, \mathcal{F}_Y)\) and \((x^{(n)})_{n = 1}^\infty\) is a sequence in \(X\) which converges to \(x_0\) in \((X, \mathcal{F}_X)\), then \(\big(f(x)\big)_{n = 1}^\infty\) converges to \(f(x_0)\) in \((Y, \mathcal{F}_Y)\).
+    Since \(f\) is continuous at \(x_0\) from \((X, \mathcal{F}_X)\) to \((Y, \mathcal{F}_Y)\), by Definition \ref{2.5.8} we know that
+    \[
+        \forall\ V \in \mathcal{F}_Y, f(x_0) \in V \implies \exists\ U \in \mathcal{F}_X : \begin{cases}
+            x_0 \in U \\
+            f(U) \subseteq V
+        \end{cases}
+    \]
+    Since \((x^{(n)})_{n = 1}^\infty\) converges to \(x_0\) in \((X, \mathcal{F}_X)\), by Definition \ref{2.5.4} we have
+    \[
+        \forall\ U \in \mathcal{F}_X, x_0 \in U \implies \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, x^{(n)} \in U
+    \]
+    This means
+    \[
+        \forall\ V \in \mathcal{F}_Y, f(x_0) \in V \implies \exists\ U \in \mathcal{F}_X : \begin{cases}
+            x_0 \in U        \\
+            f(U) \subseteq V \\
+            \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, f(x^{(n)}) \in f(U) \subseteq V
+        \end{cases}
+    \]
+    and we have
+    \[
+        \forall\ V \in \mathcal{F}_Y, f(x_0) \in V \implies \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, f(x^{(n)}) \in V.
+    \]
+    By Definition \ref{2.5.4} we know that \(\big(f(x^{(n)})\big)_{n = 1}^\infty\) converges to \(f(x_0)\) in \((Y, \mathcal{F}_Y)\).
+    Since \(x_0\) is arbitrary, we conclude that if \(f\) is continuous on \(X\) from \((X, \mathcal{F}_X)\) to \((Y, \mathcal{F}_Y)\), then whenever \((x^{(n)})_{n = 1}^\infty\) is a sequence in \(X\) which converges to some \(x_0 \in X\) in \((X, \mathcal{F})\), the sequence \(\big(f(x^{(n)})\big)_{n = 1}^\infty\) converges to \(f(x_0)\) in \((Y, \mathcal{F}_Y)\).
+
+    Next we show that if \(f\) is continuous on \(X\) from \((X, \mathcal{F}_X)\) to \((Y, \mathcal{F}_Y)\), then whenever \(V \in \mathcal{F}_Y\), the set \(f^{-1}(V) \in \mathcal{F}_X\).
+    Let \(V \in \mathcal{F}_Y\) and let \(x_0 \in f^{-1}(V)\).
+    Since \(f\) is continuous at \(x_0\) from \((X, \mathcal{F}_X)\) to \((Y, \mathcal{F}_Y)\), we know that
+    \[
+        \exists\ U \in \mathcal{F}_X : \begin{cases}
+            x_0 \in U \\
+            f(U) \subseteq V
+        \end{cases}
+    \]
+    Since \(f(U) \subseteq V\), we know that \(U \subseteq f^{-1}(V)\).
+    Since \(U \in \mathcal{F}_X\), by Definition \ref{2.5.5} we know that \(x_0 \in \text{int}_{(X, \mathcal{F}_X)}\big(f^{-1}(V)\big)\).
+    Since \(x_0\) is arbitrary, by Exercise \ref{ex 2.5.11} we know that \(f^{-1}(V) \in \mathcal{F}_X\).
+
+    Next we show that if \(V \in \mathcal{F}_Y\) implies \(f^{-1}(V) \in \mathcal{F}_X\), then \(U\) is closed in \((Y, \mathcal{F}_Y)\) implies \(f^{-1}(U)\) is closed in \((X, \mathcal{F}_X)\).
+    Let \(U \subseteq Y\) such that \(U\) is closed in \((Y, \mathcal{F}_Y)\).
+    Then we have
+    \begin{align*}
+                 & U \text{ is closed in } (Y, \mathcal{F}_Y)                                                                 \\
+        \implies & Y \setminus U \text{ is open in } (Y, \mathcal{F}_Y)                                                       \\
+        \implies & f^{-1}(Y \setminus U) \text{ is open in } (X, \mathcal{F}_X)               & \text{(from the proof above)} \\
+        \implies & X \setminus f^{-1}(Y \setminus U) \text{ is closed in } (X, \mathcal{F}_X)                                 \\
+        \implies & f^{-1}(U) \text{ is closed in } (X, \mathcal{F}_X).
+    \end{align*}
+
+    Next we show that if \(U\) is closed in \((Y, \mathcal{F}_Y)\) implies \(f^{-1}(U)\) is closed in \((X, \mathcal{F}_X)\), then \(f\) is continuous on \(X\) from \((X, \mathcal{F}_X)\) to \((Y, \mathcal{F}_Y)\).
+    Let \(x_0 \in X\) and let \(V \in \mathcal{F}_Y\) such that \(f(x_0) \in V\).
+    We have
+    \begin{align*}
+                 & V \in \mathcal{F}_Y                                                                               \\
+        \implies & V \text{ is open in } (Y, \mathcal{F}_Y)                                                          \\
+        \implies & Y \setminus V \text{ is closed in } (Y, \mathcal{F}_Y)                                            \\
+        \implies & f^{-1}(Y \setminus V) \text{ is closed in } (Y, \mathcal{F}_Y)           & \text{(by hypothesis)} \\
+        \implies & X \setminus f^{-1}(Y \setminus V) \text{ is open in } (Y, \mathcal{F}_Y)                          \\
+        \implies & f^{-1}(V) \text{ is open in } (Y, \mathcal{F}_Y)                                                  \\
+        \implies & f^{-1}(V) \in \mathcal{F}_X.
+    \end{align*}
+    Since \(V\) is arbitrary, we know that
+    \[
+        \forall\ V \in \mathcal{F}_Y, f(x_0) \in V \implies \exists\ U \in \mathcal{F}_X : \begin{cases}
+            x_0 \in U \\
+            f(U) \subseteq V
+        \end{cases}
+    \]
+    and by Definition \ref{2.5.8} \(f\) is continuous at \(x_0\) from \((X, \mathcal{F}_X)\) to \((Y, \mathcal{F}_Y)\).
+    Since \(x_0\) is arbitrary, we conclude that \(f\) is continuous on \(X\) from \((X, \mathcal{F}_X)\) to \((Y, \mathcal{F}_Y)\).
+
+    From all proofs above we conclude that Theorem \ref{2.1.5}(a)(c)(d) are equivalent in the topological version.
+\end{proof}
+
 \begin{exercise}\label{ex 2.5.17}
     Generalize both Theorem \ref{2.3.1} and Proposition \ref{2.3.2} to compact sets in a topological space.
 \end{exercise}
