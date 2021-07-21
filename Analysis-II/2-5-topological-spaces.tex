@@ -1438,6 +1438,65 @@
     Show that the two notions continuity (both at a point, and on the whole domain) of a function \(f : X \to Y\) in Definition \ref{2.1.1} and Definition \ref{2.5.8} coincide.
 \end{exercise}
 
+\begin{proof}
+    Let
+    \begin{align*}
+         & \mathcal{F}_X = \{V \subseteq X : V \text{ is open in } (X, d_X)\}; \\
+         & \mathcal{F}_Y = \{V \subseteq Y : V \text{ is open in } (Y, d_Y)\}.
+    \end{align*}
+    Since \((X, d_X)\) and \((Y, d_Y)\) are metric spaces, we know that \((X, \mathcal{F}_X)\) and \((Y, \mathcal{F}_Y)\) are topological spaces.
+
+    Let \(x_0 \in X\).
+    First suppose that \(f\) is continuous at \(x_0\) in the sense of Definition \ref{2.1.1}.
+    Then we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                               \\
+                 & \Big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f(x), f(x_0)\big) < \varepsilon\Big)                       \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                               \\
+                 & \Big(\forall\ x \in X, x \in B_{(X, d_X)}(x_0, \delta) \implies f(x) \in B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big)\Big) \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                               \\
+                 & f\big(B_{(X, d_X)}(x_0, \delta)\big) \subseteq B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big)
+    \end{align*}
+    Let \(V \in \mathcal{F}_Y\) such that \(f(x_0) \in V\).
+    Then we have
+    \begin{align*}
+                 & f(x_0) \in V                                                                                                                                                                       \\
+        \implies & \exists\ \varepsilon \in \mathbf{R}^+ : B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big) \subseteq V                                            & \text{(by Proposition \ref{1.2.15}(a))} \\
+        \implies & \exists\ \delta \in \mathbf{R}^+ : f\big(B_{(X, d_X)}(x_0, \delta)\big) \subseteq B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big) \subseteq V.
+    \end{align*}
+    By Proposition \ref{1.2.15}(c) we know that \(B_{(X, d_X)}(x_0, \delta) \in \mathcal{F}_X\).
+    Since \(V\) is arbitrary, by Definition \ref{2.5.8} we know that \(f\) is continuous at \(x_0\) from \((X, \mathcal{F}_X)\) to \((Y, \mathcal{F}_Y)\).
+
+    Now suppose that \(f\) is continuous at \(x_0\) in the sense of Definition \ref{2.5.8}.
+    Then we have
+    \[
+        \forall\ V \in \mathcal{F}_Y, f(x_0) \in V \implies \exists\ U \in \mathcal{F}_X : \begin{cases}
+            x_0 \in U \\
+            f(U) \subseteq V
+        \end{cases}
+    \]
+    Let \(\varepsilon \in \mathbf{R}^+\).
+    Then we have
+    \begin{align*}
+                 & B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big) \in \mathcal{F}_Y                                        & \text{(by Proposition \ref{1.2.15}(c))} \\
+        \implies & \exists\ U \in \mathcal{F}_X : \begin{cases}
+            x_0 \in U \\
+            f(U) \subseteq B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big)
+        \end{cases}                                                                                   \\
+        \implies & \exists\ \delta \in \mathbf{R}^+ : \begin{cases}
+            B_{(X, d_X)}(x_0, \delta) \subseteq U \\
+            f(U) \subseteq B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big)
+        \end{cases}                                     & \text{(by Proposition \ref{1.2.15}(a))} \\
+        \implies & \exists\ \delta \in \mathbf{R}^+ :                                                                                                           \\
+                 & f\big(B_{(X, d_X)}(x_0, \delta)\big) \subseteq B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big)                                                     \\
+        \implies & \exists\ \delta \in \mathbf{R}^+ :                                                                                                           \\
+                 & \Big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f(x), f(x_0)\big) < \varepsilon\Big).
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary, by Definition \ref{2.1.1} we know that \(f\) is continuous at \(x_0\) from \((X, d_X)\) to \((Y, d_Y)\).
+
+    Since \(x_0\) is arbitrary, we conclude that \(f\) is continuous on \(X\) from \((X, d_X)\) to \((Y, d_Y)\) iff \(f\) is continuous on \(X\) from \((X, \mathcal{F}_X)\) to \((Y, \mathcal{F}_Y)\).
+\end{proof}
+
 \begin{exercise}\label{ex 2.5.16}
     Show that when Theorem \ref{2.1.4} is extended to topological spaces, that (a) implies (b).
     (The converse is false, but constructing an example is diffcult.)
