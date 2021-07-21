@@ -1213,6 +1213,117 @@
     Generalize Corollary \ref{1.5.9} to compact sets in a Hausdorff topological space.
 \end{exercise}
 
+\begin{proof}
+    Let \((X, \mathcal{F})\) be a Hausdorff space, and let \((K_n)_{n = 1}^\infty\) be a countable collection of non-empty compact topological subspaces of \(X\) such that
+    \[
+        K_1 \supseteq K_2 \supseteq K_3 \supseteq \dots.
+    \]
+    We want to show that the intersection \(\bigcap_{n = 1}^\infty K_n\) is non-empty.
+
+    Since \(K_n \subseteq K_1\) for each \(n \in \mathbf{Z}^+\), by Definition \ref{2.5.7} we know that
+    \begin{align*}
+        \forall\ n \in \mathbf{Z}^+, \mathcal{F}_{K_n} & = \{K_n \cap V : V \in \mathcal{F}\}                                  \\
+                                                       & = \{(K_1 \cap K_n) \cap V : V \in \mathcal{F}\} & (K_n \subseteq K_1) \\
+                                                       & = \{K_n \cap (K_1 \cap V) : V \in \mathcal{F}\}                       \\
+                                                       & = \{K_n \cap V : V \in \mathcal{F}_{K_1}\}.
+    \end{align*}
+    Thus by Definition \ref{2.5.7} we know that for every \(n \in \mathbf{Z}^+\), \((K_n, \mathcal{F}_{K_n})\) induced by \((X, \mathcal{F})\) can also induced by \((K_1, \mathcal{F}_{K_1})\).
+    By Definition \ref{2.5.9} we have
+    \begin{align*}
+                 & \forall\ n \in \mathbf{Z}^+, (K_n, \mathcal{F}_{K_n}) \text{ is compact topological subspace of } (X, \mathcal{F})          \\
+        \implies & \forall\ n \in \mathbf{Z}^+, \exists\ S_n \subseteq \mathcal{F}_{K_n} : \begin{cases}
+            S_n \text{ is finite} \\
+            K_n = \bigcup \mathcal{F}_{K_n} = \bigcup S_n
+        \end{cases}                         \\
+        \implies & \forall\ n \in \mathbf{Z}^+, \exists\ S_n \subseteq \mathcal{F}_{K_n} : \begin{cases}
+            S_n' = \{V \cap W : (V, W) \in S_1 \times S_n\} \text{ is finite}  \\
+            S_n' \subseteq \mathcal{F}_{K_n} \text{ by Definition \ref{2.5.7}} \\
+            \forall\ S \subseteq \mathcal{F}, K_n \subseteq K_1 \subseteq \bigcup S \implies K_n \subseteq \bigcup S_n'
+        \end{cases}                         \\
+        \implies & \forall\ n \in \mathbf{Z}^+, (K_n, \mathcal{F}_{K_n}) \text{ is compact topological subspace of } (K_1, \mathcal{F}_{K_1}).
+    \end{align*}
+
+    Now we fix one \(n \in \mathbf{Z}^+\).
+    Since \((X, \mathcal{F})\) is Hausdorff, we know that
+    \begin{align*}
+                 & \forall\ x, y \in K_n, x \neq y                                                                                    \\
+        \implies & \exists\ V, W \in \mathcal{F} : \begin{cases}
+            V \neq \emptyset \neq W \\
+            x \in V                 \\
+            y \in W                 \\
+            V \cap W = \emptyset
+        \end{cases}                   & (K_n \subseteq X)                  \\
+        \implies & \exists\ V_{K_n}, W_{K_n} \in \mathcal{F}_{K_n} : \begin{cases}
+            V_{K_n} = V \cap K_n                \\
+            W_{K_n} = W \cap K_n                \\
+            x \in V_{K_n}                       \\
+            y \in W_{K_n}                       \\
+            V_{K_n} \neq \emptyset \neq W_{K_n} \\
+            V_{K_n} \cap W_{K_n} = \emptyset
+        \end{cases} & \text{(by Definition \ref{2.5.7})}
+    \end{align*}
+    Thus \((K_n, \mathcal{F}_{K_n})\) is Hausdorff.
+    Since \(n\) is arbitrary, we know that for each \(n \in \mathbf{Z}^+\), \((K_n, \mathcal{F}_{K_n})\) is Hausdorff.
+
+    We claim that for each \(n \in \mathbf{Z}^+\), \((K_n, \mathcal{F}_{K_n})\) is closed in \((K_1, \mathcal{F}_{K_1})\).
+    Suppose for sake of contradiction that there exists some \(n \in \mathbf{Z}^+\) such that \((K_n, \mathcal{F}_{K_n})\) is not closed in \((K_1, \mathcal{F}_{K_1})\).
+    Then by Exercise \ref{ex 2.5.11} we know that \(\overline{K_n}_{(K_1, \mathcal{F}_{K_1})} \setminus K_n = \emptyset\).
+    Let \(y \in \overline{K_n}_{(K_1, \mathcal{F}_{K_1})} \setminus K_n\).
+    Since \((K_1, \mathcal{F}_{K_1})\) is Hausdorff, we know that
+    \[
+        \forall\ x \in K_n, \exists\ V_x, W_x \in \mathcal{F}_{K_1} : \begin{cases}
+            V_x \neq \emptyset \neq W_x \\
+            x \in V_x                   \\
+            y \in W_x                   \\
+            V_x \cap W_x = \emptyset
+        \end{cases}
+    \]
+    Since \((K_n, \mathcal{F}_{K_n})\) is a compact topological subspace of \((K_1, \mathcal{F}_{K_1})\), by Definition \ref{2.5.9} we have
+    \[
+        K_n \subseteq \bigcup_{x \in K_n} V_x \implies \exists\ S \subseteq K_n : \begin{cases}
+            S \text{ is finite} \\
+            K_n \subseteq \bigcup_{x \in S} V_x
+        \end{cases}
+    \]
+    By Definition \ref{2.5.1} we have
+    \begin{align*}
+                 & \begin{cases}
+            \forall\ x \in S, V_x \in \mathcal{F}_{K_1} \\
+            y \in \bigcap_{x \in S} W_x \in \mathcal{F}_{K_1}
+        \end{cases}                                                              \\
+        \implies & \forall\ x \in S, V_x \cap \bigg(\bigcap_{x' \in S} W_{x'}\bigg) = \emptyset             \\
+        \implies & \bigcup_{x \in S} \Bigg(V_x \cap \bigg(\bigcap_{x' \in S} W_{x'}\bigg)\Bigg) = \emptyset \\
+        \implies & \bigg(\bigcup_{x \in S} V_x\bigg) \cap \bigg(\bigcap_{x' \in S} W_{x'}\bigg) = \emptyset \\
+        \implies & K_n \cap \bigg(\bigcap_{x' \in S} W_{x'}\bigg) = \emptyset
+    \end{align*}
+    But this contradict to the fact that \(y \in \overline{K_n}_{(K_1, \mathcal{F}_{K_1})}\).
+    Thus \((K_n, \mathcal{F}_{K_n})\) is closed in \((K_1, \mathcal{F}_{K_1})\) for each \(n \in \mathbf{Z}^+\).
+
+    Let \(V_n = K_1 \setminus K_n\) for every \(n \geq 1\).
+    Then for every \(n \geq 1\), we have \(V_n \subseteq K_1\) and \(V_n\) is open in \((K_1, \mathcal{F}_{K_1})\).
+    Suppose for sake of contradiction that \(\bigcap_{n = 1}^\infty K_n = \emptyset\).
+    Since
+    \[
+        \bigcup_{n = 1}^\infty V_n = \bigcup_{n = 1}^\infty (K_1 \setminus K_n) = K_1 \setminus \bigg(\bigcap_{n = 1}^\infty K_n\bigg) = K_1
+    \]
+    and \((K_1, \mathcal{F}_{K_1})\) is compact, by Theorem \ref{1.5.8} we know that there exists a finite set \(F \subseteq \mathbf{Z}^+\) such that
+    \[
+        K_1 \subseteq \bigcup_{i \in F} V_i.
+    \]
+    Since \(F\) is finite subset of \(\mathbf{Z}^+\), we know that \(\min(F)\) is well-defined.
+    Then we have
+    \begin{align*}
+                 & K_1 \subseteq \bigcup_{i \in F} V_i \subseteq \bigcup_{n = 1}^\infty V_i = K_1                                                          \\
+        \implies & K_1 = \bigcup_{i \in F} V_i                                                                                                             \\
+        \implies & K_1 = \bigcup_{i \in F} (K_1 \setminus K_i)                                                                                             \\
+        \implies & K_1 = K_1 \setminus \bigg(\bigcap_{i \in F} K_i\bigg)                                                                                   \\
+        \implies & \bigcap_{i \in F} K_i = \emptyset                                              & \text{(since \(\bigcap_{i \in F} K_i \subseteq K_1)\)} \\
+        \implies & K_{\min(F)} = \emptyset.                                                       & \text{(since \(K_{\min(F)} = \bigcap_{i \in F} K_i)\)}
+    \end{align*}
+    But by hypothesis we know that \(K_{\min(F)} \neq \emptyset\), a contradiction.
+    Thus \(\bigcap_{n = 1}^\infty K_n \neq \emptyset\).
+\end{proof}
+
 \begin{exercise}\label{ex 2.5.14}
     Generalize Theorem \ref{1.5.10} to compact sets in a Hausdorff topological space.
 \end{exercise}
