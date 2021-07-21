@@ -1328,6 +1328,111 @@
     Generalize Theorem \ref{1.5.10} to compact sets in a Hausdorff topological space.
 \end{exercise}
 
+\begin{proof}
+    Let \((X, \mathcal{F})\) be a Hausdorff topological space.
+    We first show that if \(Z \subseteq Y \subseteq X\) such that \((Y, \mathcal{F}_Y)\) is compact, then \((Z, \mathcal{F}_Z)\) is compact iff \(Z\) is closed in \((Y, \mathcal{F}_Y)\).
+    By Exercise \ref{ex 2.5.13} we know that if \((Z, \mathcal{F}_Z)\) is compact then \(Z\) is closed in \((Y, \mathcal{F}_Y)\).
+    So we only need to show that if \(Z\) is closed in \((Y, \mathcal{F}_Y)\) then \((Z, \mathcal{F}_Z)\) is compact.
+    Let \(S_Z \subseteq \mathcal{F}_Z\) be an open cover of \(Z\).
+    Then we have
+    \begin{align*}
+                 & Z \text{ is closed in } (Y, \mathcal{F}_Y)           \\
+        \implies & Y \setminus Z \text{ is open in } (Y, \mathcal{F}_Y)
+    \end{align*}
+    and
+    \begin{align*}
+                 & Z = \bigcup S_Z                                                                                                                   \\
+        \implies & Z \subseteq \bigcup \{V \in \mathcal{F}_Y : V \cap Z \in S_Z\}                               & \text{(by Definition \ref{2.5.7})} \\
+        \implies & Y = \bigg(\bigcup \{V \in \mathcal{F}_Y : V \cap Z \in S_Z\}\bigg) \cup (Y \setminus Z)                                           \\
+        \implies & \exists\ S_Y \subseteq \mathcal{F}_Y : \begin{cases}
+            S_Y \text{ is finite}                                    \\
+            Y = \bigg(\bigcup \{V \in S_Y : V \cap Z \in S_Z\}\bigg) \\
+            \quad \cup (Y \setminus Z)
+        \end{cases}                           & \text{(by Definition \ref{2.5.9})} \\
+        \implies & \exists\ S_Y \subseteq \mathcal{F}_Y : \begin{cases}
+            S_Y \text{ is finite} \\
+            Z = \bigcup \{V \cap Z : V \in S_Y\}
+        \end{cases}                                                                \\
+        \implies & \{V \cap Z : V \in S_Y\} \text{ is an finite subcover of } Z \text{ in } (Z, \mathcal{F}_Z).
+    \end{align*}
+    Since \(S_Z\) is arbitrary, by Definition \ref{2.5.9} we know that \((Z, \mathcal{F}_Z)\) is compact.
+
+    Next we show that if \((Y_i)_{i = 1}^n\) is a finite collection of compact topological subspaces of \((X, \mathcal{F})\), then \(\big(\bigcup_{i = 1}^n Y_i, \mathcal{F}_{\bigcup_{i = 1}^n Y_i}\big)\) is also a compact topological subspace of \((X, \mathcal{F})\).
+    By Definition \ref{2.5.7} we have
+    \[
+        \mathcal{F}_{\bigcup_{i = 1}^n Y_i} = \bigg\{V \cap \bigg(\bigcup_{i = 1}^n Y_i\bigg) : V \in \mathcal{F}\bigg\}.
+    \]
+    Observe that
+    \begin{align*}
+                 & \begin{cases}
+            X \in \mathcal{F} \\
+            \emptyset \in \mathcal{F}
+        \end{cases} \\
+        \implies & \begin{cases}
+            X \cap \bigg(\bigcup_{i = 1}^n Y_i\bigg) = \bigcup_{i = 1}^n Y_i \in \mathcal{F}_{\bigcup_{i = 1}^n Y_i} \\
+            \emptyset \cap \bigg(\bigcup_{i = 1}^n Y_i\bigg) = \emptyset \in \mathcal{F}_{\bigcup_{i = 1}^n Y_i}
+        \end{cases}
+    \end{align*}
+    Let \((V^{(j)})_{j = 1}^m\) be a finite collection of elements in \(\mathcal{F}_{\bigcup_{i = 1}^n Y_i}\).
+    Then we have
+    \begin{align*}
+                 & \forall\ 1 \leq j \leq m, \exists\ V_X^{(j)} \in \mathcal{F} : V_X^{(j)} \cap \bigg(\bigcup_{i = 1}^n Y_i\bigg) = V^{(j)}                           & \text{(by Definition \ref{2.5.7})} \\
+        \implies & \bigcap_{j = 1}^m V_X^{(j)} \in \mathcal{F}                                                                                                         & \text{(by Definition \ref{2.5.1})} \\
+        \implies & \bigg(\bigcap_{j = 1}^m V_X^{(j)}\bigg) \cap \bigg(\bigcup_{i = 1}^n Y_i\bigg) \in \mathcal{F}_{\bigcup_{i = 1}^n Y_i}                              & \text{(by Definition \ref{2.5.7})} \\
+        \implies & \bigcap_{j = 1}^m \Bigg(V_X^{(j)} \cap \bigg(\bigcup_{i = 1}^n Y_i\bigg)\Bigg) = \bigcap_{j = 1}^m V^{(j)} \in \mathcal{F}_{\bigcup_{i = 1}^n Y_i}.
+    \end{align*}
+    Since \((V^{(j)})_{j = 1}^m\) is arbitrary, we conclude that the intersection of any finite collection of open sets in \(\big(\bigcup_{i = 1}^n Y_i, \mathcal{F}_{\bigcup_{i = 1}^n Y_i}\big)\) is open in \(\big(\bigcup_{i = 1}^n Y_i, \mathcal{F}_{\bigcup_{i = 1}^n Y_i}\big)\).
+    Let \(S \subseteq \mathcal{F}_{\bigcup_{i = 1}^n Y_i}\).
+    Then we have
+    \begin{align*}
+                 & \forall\ V \in S, \exists\ V_X \in \mathcal{F} : V_X \cap \bigg(\bigcup_{i = 1}^n Y_i\bigg) = V                                                                                                         & \text{(by Definition \ref{2.5.7})} \\
+        \implies & \bigcup_{V_x \in \mathcal{F} : V_X \cap (\bigcup_{i = 1}^n Y_i) \in \mathcal{F}_{\bigcup_{i = 1}^n Y_i}} V_x \in \mathcal{F}                                                                            & \text{(by Definition \ref{2.5.1})} \\
+        \implies & \bigg(\bigcup_{V_x \in \mathcal{F} : V_X \cap (\bigcup_{i = 1}^n Y_i) \in \mathcal{F}_{\bigcup_{i = 1}^n Y_i}} V_x\bigg) \cap \bigg(\bigcup_{i = 1}^n Y_i\bigg) \in \mathcal{F}_{\bigcup_{i = 1}^n Y_i} & \text{(by Definition \ref{2.5.7})} \\
+        \implies & \bigcup_{V \in S} V \in \mathcal{F}_{\bigcup_{i = 1}^n Y_i}.
+    \end{align*}
+    Since \(S\) is arbitrary, we conclude that the union of arbitrary many open sets in \(\big(\bigcup_{i = 1}^n Y_i, \mathcal{F}_{\bigcup_{i = 1}^n Y_i}\big)\) is open in \(\big(\bigcup_{i = 1}^n Y_i, \mathcal{F}_{\bigcup_{i = 1}^n Y_i}\big)\).
+    By Definition \ref{2.5.1} and all the proofs above we conclude that \(\big(\bigcup_{i = 1}^n Y_i, \mathcal{F}_{\bigcup_{i = 1}^n Y_i}\big)\) is a topological subspace of \((X, \mathcal{F})\).
+
+    Let \(S \subseteq \mathcal{F}_{\bigcup_{i = 1}^n Y_i}\) be an open cover of \(\bigcup_{i = 1}^n Y_i\) in \(\big(\bigcup_{i = 1}^n Y_i, \mathcal{F}_{\bigcup_{i = 1}^n Y_i}\big)\).
+    Then we have
+    \begin{align*}
+                 & \forall\ 1 \leq i \leq n, Y_i \subseteq \bigcup_{j = 1}^n Y_i = \bigcup S                                             \\
+        \implies & \forall\ 1 \leq i \leq n, \exists\ S_i \in \mathcal{F}_{\bigcup_{j = 1}^n Y_j} :                                      \\
+                 & \begin{cases}
+            S_i \text{ is finite} \\
+            Y_i \subseteq \bigcup S_i \subseteq \bigcup_{i = 1}^n Y_i = \bigcup S
+        \end{cases}                                                      & \text{(by Definition \ref{2.5.9})} \\
+        \implies & \bigcup_{i = 1}^n Y_i = \bigcup \bigg(\bigcup_{i = 1}^n S_i\bigg).
+    \end{align*}
+    Since \(S_i\) is finite for each \(1 \leq i \leq n\), we know that \(\bigcup_{i = 1}^n S_i\) is a finite subcover of \(\bigcup_{i = 1}^n Y_i\) in \(\big(\bigcup_{i = 1}^n Y_i, \mathcal{F}_{\bigcup_{i = 1}^n Y_i}\big)\).
+    Since \(S\) is arbitrary, by Definition \ref{2.5.9} we know that \(\big(\bigcup_{i = 1}^n Y_i, \mathcal{F}_{\bigcup_{i = 1}^n Y_i}\big)\) is a compact topological subspace of \((X, \mathcal{F})\).
+
+    Finally we show that every finite subset of \(X\) is compact.
+    Let \(x_0 \in X\) and let \(\mathcal{F}_{\{x_0\}} = \big\{V \cap \{x_0\} : V \in \mathcal{F}\big\}\).
+    We have
+    \begin{align*}
+                 & \begin{cases}
+            X \in \mathcal{F} \\
+            \emptyset \in \mathcal{F}
+        \end{cases} & \text{(by Definition \ref{2.5.1})} \\
+        \implies & \begin{cases}
+            X \cap \{x_0\} = \{x_0\} \in \mathcal{F}_{\{x_0\}} \\
+            \emptyset \cap \{x_0\} = \emptyset \in \mathcal{F}_{\{x_0\}}
+        \end{cases}
+    \end{align*}
+    Since \(\mathcal{F}_{\{x_0\}} = \big\{\emptyset, \{x_0\}\big\}\), by Exercise \ref{ex 2.5.1} we know that \((\{x_0\}, \mathcal{F}_{\{x_0\}})\) is a topological space.
+    Let \(S \subseteq \mathcal{F}_{\{x_0\}}\) such that \(\{x_0\} \subseteq \bigcup S\).
+    Then we have
+    \begin{align*}
+                 & \{x_0\} \subseteq \bigcup S  \\
+        \implies & \exists\ V \in S : x_0 \in V \\
+        \implies & \{x_0\} \subseteq V.
+    \end{align*}
+    Since \(S\) is arbitrary, we conclude that every open cover of \(\{x_0\}\) has a finite subcover in \((\{x_0\}, \mathcal{F}_{\{x_0\}})\), and by Definition \ref{2.5.9} we know that \((\{x_0\}, \mathcal{F}_{\{x_0\}})\) is compact.
+    Since \(x_0\) is arbitrary, we conclude that every singleton subset of \(X\) is compact.
+    And from the proof above we conclude that every finite subset of \(X\) is compact.
+\end{proof}
+
 \begin{exercise}\label{ex 2.5.15}
     Let \((X, d_X)\) and \((Y, d_Y)\) be metric spaces (and hence a topological space).
     Show that the two notions continuity (both at a point, and on the whole domain) of a function \(f : X \to Y\) in Definition \ref{2.1.1} and Definition \ref{2.5.8} coincide.
