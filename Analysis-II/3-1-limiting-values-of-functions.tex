@@ -50,9 +50,182 @@
         \item For every sequence \((x^{(n)})_{n = 1}^\infty\) in \(E\) which converges to \(x_0\) with respect to the metric \(d_X\), the sequence \(\big(f(x^{(n)})\big)_{n = 1}^\infty\) converges to \(L\) with respect to the metric \(d_Y\).
         \item For every open set \(V \subseteq Y\) which contains \(L\), there exists an open set \(U \subseteq X\) containing \(x_0\) such that \(f(U \cap E) \subseteq V\).
         \item If one defines the function \(g : E \cup \{x_0\} \to Y\) by defining \(g(x_0) \coloneqq L\), and \(g(x) \coloneqq f(x)\) for \(x \in E \setminus \{x_0\}\), then \(g\) is continuous at \(x_0\).
-              Furthermore, if \(x_0 \in E\), then \(f(x_0) = L\).
     \end{enumerate}
 \end{proposition}
+
+\begin{proof}
+    We first show that statement (a) implies statement (b).
+    Suppose that
+    \[
+        d_Y - \lim_{x \to x_0 ; x \in E} f(x) = L.
+    \]
+    By Definition \ref{3.1.1} we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \Big(\forall\ x \in E, d_X(x, x_0) < \delta \implies d_Y\big(f(x), L\big) < \varepsilon\Big).
+    \]
+    Let \((x^{(n)})_{n = 1}^\infty\) be a sequence in \(E\) such that \(\lim_{n \to \infty} d_X(x^{(n)}, x_0) = 0\).
+    By Definition \ref{1.1.14} we have
+    \[
+        \forall\ \delta \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, d_X(x^{(n)}, x_0) < \delta.
+    \]
+    Since \((x^{(n)})_{n = 1}^\infty\) is in \(E\), we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \begin{cases}
+            \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, d_X(x^{(n)}, x_0) < \delta \\
+            d_X(x^{(n)}, x_0) < \delta \implies d_Y\big(f(x^{(n)}), L\big) < \varepsilon
+        \end{cases}
+    \]
+    and
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, d_Y\big(f(x^{(n)}, L)\big) < \varepsilon.
+    \]
+    By Definition \ref{1.1.14} we have \(\lim_{n \to \infty} d_Y\big(f(x^{(n)}), L\big) = 0\).
+    Since \((x^{(n)})_{n = 1}^\infty\) is arbitrary, we conclude that (a) implies (b).
+
+    Next we show that statement (b) implies statement (a).
+    Suppose that if \((x^{(n)})_{n = 1}^\infty\) is a sequence in \(X\) such that \(\lim_{n \to \infty} d_X(x^{(n)}, x_0) = 0\), then \(\lim_{n \to \infty} d_Y\big(f(x), L\big) = 0\).
+    Suppose for sake of contradiction that
+    \[
+        d_Y - \lim_{x \to x_0 ; x \in X} f(x) \neq L.
+    \]
+    Then by Definition \ref{3.1.1} we have
+    \[
+        \exists\ \varepsilon \in \mathbf{R}^+ : \forall\ \delta \in \mathbf{R}^+, \exists\ x \in X : \begin{cases}
+            d_X(x, x_0) < \delta \\
+            d_Y\big(f(x), L\big) \geq \varepsilon
+        \end{cases}
+    \]
+    Thus we can choose one sequence \((x^{(n)})_{n = 1}^\infty\) which satsifies
+    \[
+        \forall\ n \in \mathbf{Z}^+, \begin{cases}
+            d_X(x^{(n)}, x_0) < \frac{1}{n} \\
+            d_Y\big(f(x^{(n)}), L\big) \geq \varepsilon
+        \end{cases}
+    \]
+    By squeeze test we have \(\lim_{n \to \infty} d_X(x^{(n)}, x_0) = 0\).
+    But by hypothesis we know that \(\lim_{n \to \infty} d_Y\big(f(x^{(n)}), L\big) = 0\), which means
+    \[
+        \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, d_Y\big(f(x^{(n)}), L\big) < \varepsilon,
+    \]
+    a contradiction.
+    Thus we have
+    \[
+        d_Y - \lim_{x \to x_0 ; x \in X} f(x) = L
+    \]
+    and we conclude that statements (a)(b) are equivalent.
+
+    Next we show that statement (a) implies statement (c).
+    Suppose that
+    \[
+        d_Y - \lim_{x \to x_0 ; x \in E} f(x) = L.
+    \]
+    By Definition \ref{3.1.1} we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \Big(\forall\ x \in E, d_X(x, x_0) < \delta \implies d_Y\big(f(x), L\big) < \varepsilon\Big)  \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \Big(x \in B_{(X, d_X)}(x_0, \delta) \cap E \implies d_Y\big(f(x), L\big) < \varepsilon\Big).
+    \end{align*}
+    Let \(V\) be an open set in \((Y, d_Y)\) such that \(L \in V\).
+    Then we have
+    \begin{align*}
+                 & V = \text{int}_{(Y, d_Y)}(V)                                                     & \text{(by Proposition \ref{1.2.15}(a))} \\
+        \implies & \exists\ \varepsilon \in \mathbf{R}^+ : B_{(Y, d_Y)}(L, \varepsilon) \subseteq V & \text{(by Definition \ref{1.2.5})}      \\
+        \implies & \exists\ \delta \in \mathbf{R}^+ :                                                                                         \\
+                 & \begin{cases}
+            x \in B_{(X, d_X)}(x_0, \delta) \cap E \implies d_Y\big(f(x), L\big) < \varepsilon \\
+            f\big(B_{(X, d_X)}(x_0, \delta) \cap E\big) \subseteq B_{(Y, d_Y)}\big(L, \varepsilon\big) \subseteq V
+        \end{cases}
+    \end{align*}
+    and by Proposition \ref{1.2.15}(c) we know that \(B_{(X, d_X)}(x_0, \delta)\) is open in \((X, d_X)\).
+    Since \(V\) is arbitrary, we conclude that statement (a) implies statement (c).
+
+    Next we show that statement (c) implies statement (a).
+    Suppose that
+    \[
+        \forall\ V \subseteq Y, \begin{cases}
+            L \in V \\
+            V \text{ is open in } (Y, d_Y)
+        \end{cases} \implies \exists\ U \subseteq X : \begin{cases}
+            x_0 \in U                      \\
+            U \text{ is open in } (X, d_X) \\
+            f(U \cap E) \subseteq V
+        \end{cases}
+    \]
+    Let \(\varepsilon \in \mathbf{R}^+\).
+    By Proposition \ref{1.2.15}(c) we know that \(B_{(Y, d_Y)}(L, \varepsilon)\) is open in \((Y, d_Y)\).
+    By hypothesis we know that there exists some \(U \subseteq X\) such that
+    \[
+        \begin{cases}
+            x_0 \in U                      \\
+            U \text{ is open in } (X, d_X) \\
+            f(U \cap E) \subseteq B_{(Y, d_Y)}(L, \varepsilon)
+        \end{cases}
+    \]
+    Then we have
+    \begin{align*}
+                 & \begin{cases}
+            x_0 \in U \\
+            U = \text{int}_{(X, d_X)}(U)
+        \end{cases}                                                                               & \text{(by Proposition \ref{1.2.15}(a))} \\
+        \implies & \exists\ \delta \in \mathbf{R}^+ : B_{(X, d_X)}(x_0, \delta) \subseteq U                                 & \text{(by Definition \ref{1.2.5})}      \\
+        \implies & \exists\ \delta \in \mathbf{R}^+ : B_{(X, d_X)}(x_0, \delta) \cap E \subseteq U \cap E                                                             \\
+        \implies & \exists\ \delta \in \mathbf{R}^+ :                                                                                                                 \\
+                 & f\big(B_{(X, d_X)}(x_0, \delta) \cap E\big) \subseteq f(U \cap E) \subseteq B_{(Y, d_Y)}(L, \varepsilon)                                           \\
+        \implies & \exists\ \delta \in \mathbf{R}^+ :                                                                                                                 \\
+                 & \Big(\forall\ x \in E, d_X(x, x_0) < \delta \implies d_Y\big(f(x), L\big) < \varepsilon\Big).
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary, by Definition \ref{3.1.1} we have
+    \[
+        d_Y - \lim_{x \to x_0 ; x \in E} f(x) = L
+    \]
+    and we conclude that statements (a)(c) are equivalent.
+
+    Next we show that statement (a) implies statement (d).
+    Suppose that
+    \[
+        d_Y - \lim_{x \to x_0 ; x \in E} f(x) = L.
+    \]
+    Then by Definition \ref{3.1.1} we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \Big(\forall\ x \in E, d_X(x, x_0) < \delta \implies d_Y\big(f(x), L\big) < \varepsilon\Big).
+    \]
+    Let \(g : E \cup \{x_0\} \to Y\) be a function where
+    \[
+        \forall\ x \in E \cup \{x_0\}, g(x) = \begin{cases}
+            L    & \text{if } x = x_0    \\
+            f(x) & \text{if } x \neq x_0
+        \end{cases}
+    \]
+    Then we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                       \\
+                 & \Big(\forall\ x \in E, d_X(x, x_0) < \delta \implies d_Y\big(f(x), L\big) < \varepsilon\Big)                    \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                       \\
+                 & \Big(\forall\ x \in E \cup \{x_0\}, d_X(x, x_0) < \delta \implies d_Y\big(g(x), g(x_0)\big) < \varepsilon\Big).
+    \end{align*}
+    Thus by Definition \ref{2.1.1} \(g\) is continuous at \(x_0\) from \((E \cup \{x_0\}, d_X|_{(E \cup \{x_0\}) \times (E \cup \{x_0\})})\) to \((Y, d_Y)\).
+
+    Finally we show that statement (d) implies statement (a).
+    Suppose that \(g : E \cup \{x_0\} \to Y\) is a function where
+    \[
+        \forall\ x \in E \cup \{x_0\}, g(x) = \begin{cases}
+            L    & \text{if } x = x_0    \\
+            f(x) & \text{if } x \neq x_0
+        \end{cases}
+    \]
+    and \(g\) is continuous from \((E \cup \{x_0\}, d_X|_{(E \cup \{x_0\}) \times (E \cup \{x_0\})})\) to \((Y, d_Y)\).
+    Then by Definition \ref{2.1.1} we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                      \\
+                 & \Big(\forall\ x \in E \cup \{x_0\}, d_X(x, x_0) < \delta \implies d_Y\big(g(x), g(x_0)\big) < \varepsilon\Big) \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                      \\
+                 & \Big(\forall\ x \in E, d_X(x, x_0) < \delta \implies d_Y\big(f(x), L\big) < \varepsilon\Big).
+    \end{align*}
+    By Definition \ref{3.1.1} this means
+    \[
+        d_Y - \lim_{x \to x_0 ; x \in E} f(x) = L.
+    \]
+    We conclude that statements (a)(b)(c)(d) are all equivalent.
+\end{proof}
 
 \begin{remark}\label{3.1.6}
     Observe from Proposition \ref{3.1.5}(b) and Proposition \ref{1.1.20} that a function \(f(x)\) can converge to at most one limit \(L\) as \(x\) converges to \(x_0\).

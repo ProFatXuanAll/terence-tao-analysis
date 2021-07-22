@@ -223,14 +223,9 @@ a_n^2                      % do not enclose with {}
 - Analysis I
   - 8.1.10
 - Analysis II
-  - 2.5.6
-  - 2.5.7
-  - 2.5.9
-  - 2.5.10
-  - 2.5.11
-  - 2.5.12
-  - 2.5.13
-  - 2.5.14
-  - 2.5.15
-  - 2.5.16
-  - 2.5.17
+  - Chapter 3
+  - Chapter 4
+  - Chapter 5
+  - Chapter 6
+  - Chapter 7
+  - Chapter 8
