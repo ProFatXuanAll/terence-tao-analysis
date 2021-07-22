@@ -50,6 +50,7 @@
         \item For every sequence \((x^{(n)})_{n = 1}^\infty\) in \(E\) which converges to \(x_0\) with respect to the metric \(d_X\), the sequence \(\big(f(x^{(n)})\big)_{n = 1}^\infty\) converges to \(L\) with respect to the metric \(d_Y\).
         \item For every open set \(V \subseteq Y\) which contains \(L\), there exists an open set \(U \subseteq X\) containing \(x_0\) such that \(f(U \cap E) \subseteq V\).
         \item If one defines the function \(g : E \cup \{x_0\} \to Y\) by defining \(g(x_0) \coloneqq L\), and \(g(x) \coloneqq f(x)\) for \(x \in E \setminus \{x_0\}\), then \(g\) is continuous at \(x_0\).
+              Furthermore, if \(x_0 \in E\), then \(f(x_0) = L\).
     \end{enumerate}
 \end{proposition}
 
@@ -204,6 +205,19 @@
     \end{align*}
     Thus by Definition \ref{2.1.1} \(g\) is continuous at \(x_0\) from \((E \cup \{x_0\}, d_X|_{(E \cup \{x_0\}) \times (E \cup \{x_0\})})\) to \((Y, d_Y)\).
 
+    Now suppose that \(x_0 \in E\).
+    We claim that \(f(x_0) = L\).
+    Suppose for sake of contradiction that \(f(x_0) \neq L\).
+    Then by Definition \ref{1.1.2}(b) we have \(d_Y\big(f(x_0), L\big) > 0\).
+    Let \(r = d_Y\big(f(x_0), L\big)\).
+    By Definition \ref{3.1.1} we have
+    \[
+        \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in E, d_X(x, x_0) < \delta \implies d_Y\big(f(x), L\big) < r.
+    \]
+    Since \(x_0 \in E\), we have \(d_X(x_0, x_0) = 0 < \delta\).
+    But then we have \(d_Y\big(f(x_0), L\big) < r = d_Y\big(f(x_0), L\big)\), a contradiction.
+    Thus we have \(f(x_0) = L\).
+
     Finally we show that statement (d) implies statement (a).
     Suppose that \(g : E \cup \{x_0\} \to Y\) is a function where
     \[
@@ -290,6 +304,104 @@
     If \(X\) is a topological space and \(Y\) is a Hausdorff topological space (see Exercise \ref{ex 2.5.4}), prove the equivalence of Proposition \ref{3.1.5}(c) and \ref{3.1.5}(d) in this setting, as well as an analogue of Remark \ref{3.1.6}.
     What happens to these statements of \(Y\) is not Hausdorff?
 \end{exercise}
+
+\begin{proof}
+    Let \((X, \mathcal{F}_X)\), \((Y, \mathcal{F}_Y)\) be topological spaces, let \(E \subseteq X\), let \(f : E \to Y\) be a function, let \(x_0 \in \overline{E}_{(X, \mathcal{F}_X)}\), and let \(L \in Y\).
+    We say that \(f(x)\) converges to \(L\) in \(Y\) as \(x\) converges to \(x_0\) in \(E\) iff
+    \[
+        \forall\ V \in \mathcal{F}_Y, L \in V \implies \exists\ U \in \mathcal{F}_X : \begin{cases}
+            x_0 \in U \\
+            f(U \cap E) \subseteq V
+        \end{cases}
+    \]
+    We want to show that if \((Y, \mathcal{F}_Y)\) is Hausdorff, then the definition above is equivalent to the follow:
+    If \(g : E \cup \{x_0\} \to Y\) is a function such that
+    \[
+        \forall\ x \in E \cup \{x_0\}, g(x) = \begin{cases}
+            L    & \text{if } x = x_0    \\
+            f(x) & \text{if } x \neq x_0
+        \end{cases}
+    \]
+    and \((E \cup \{x_0\}, \mathcal{F}_{E \cup \{x_0\}})\) is a topological subspace induced by \((X, \mathcal{F}_X)\), then \(g\) is continuous at \(x_0\) from \((E \cup \{x_0\}, \mathcal{F}_{E \cup \{x_0\}})\) to \((Y, \mathcal{F}_Y)\).
+
+    First suppose that \(f(x)\) converges to \(L\) in \(Y\) as \(x\) converges to \(x_0\) in \(E\).
+    Let \(g\) be the function in the definition and let \(V \in \mathcal{F}_Y\) such that \(L \in V\).
+    By hypothesis we know that
+    \[
+        \exists\ U \in \mathcal{F}_X : \begin{cases}
+            x_0 \in U \\
+            f(U \cap E) \subseteq V
+        \end{cases}
+    \]
+    Then by Definition \ref{2.5.7} we have \(U \cap (E \cup \{x_0\}) \in \mathcal{F}_{E \cup \{x_0\}}\) and
+    \begin{align*}
+        g\big(U \cap (E \cup \{x_0\})\big) & = g\big((U \cap E) \cup \{x_0\}\big)                      \\
+                                           & = g\big((U \cap E) \setminus \{x_0\}\big) \cup g(\{x_0\}) \\
+                                           & = f\big((U \cap E) \setminus \{x_0\}\big) \cup \{L\}      \\
+                                           & \subseteq f(U \cap E) \cup \{L\}                          \\
+                                           & \subseteq V.
+    \end{align*}
+    Since \(V\) is arbitrary, by Definition \ref{2.5.8} we know that \(g\) is continuous at \(x_0\) from \((E \cup \{x_0\}, \mathcal{F}_{E \cup \{x_0\}})\) to \((Y, \mathcal{F}_Y)\).
+
+    Next suppose that \(x_0 \in E\) and \(f(x)\) converges to \(L\) in \(Y\) as \(x\) converges to \(x_0\) in \(E\).
+    We want to show that \(f(x_0) = L\).
+    Suppose for sake of contradiction that \(f(x_0) \neq L\).
+    Since \((Y, \mathcal{F}_Y)\) is Hausdorff, by Exercise \ref{ex 2.5.4} we know that
+    \[
+        \exists\ V, W \in \mathcal{F}_Y : \begin{cases}
+            L \in V      \\
+            f(x_0) \in W \\
+            V \cap W = \emptyset
+        \end{cases}
+    \]
+    By definition we have
+    \[
+        \exists\ U_V, U_W \in \mathcal{F}_X : \begin{cases}
+            x_0 \in U_V               \\
+            x_0 \in U_W               \\
+            f(U_V \cap E) \subseteq V \\
+            f(U_W \cap E) \subseteq W
+        \end{cases}
+    \]
+    By Definition \ref{2.5.1} we know that \(U_V \cap U_W \in \mathcal{F}_X\).
+    But then we have
+    \[
+        \begin{cases}
+            x_0 \in U_V \cap U_W                                       \\
+            f(U_V \cap U_W \cap E) \subseteq f(U_V \cap E) \subseteq V \\
+            f(U_V \cap U_W \cap E) \subseteq f(U_W \cap E) \subseteq W
+        \end{cases}
+    \]
+    which means \(V \cap W \neq \emptyset\), a contradiction.
+    Thus we have \(f(x_0) = L\).
+
+    Now suppose that \(g\) is the function in the definition such that \(g\) is continuous at \(x_0\) from \((E \cup \{x_0\}, \mathcal{F}_{E \cup \{x_0\}})\) to \((Y, \mathcal{F}_Y)\).
+    Also suppose that if \(x_0 \in E\), then \(f(x_0) = L\).
+    Let \(V \in \mathcal{F}_Y\) such that \(g(x_0) = L \in V\).
+    By Definition \ref{2.5.8} we know that
+    \[
+        \exists\ U \in \mathcal{F}_{E \cup \{x_0\}} : \begin{cases}
+            x_0 \in U \\
+            g(U) \subseteq V
+        \end{cases}
+    \]
+    By Definition \ref{2.5.7} we know that
+    \[
+        \exists\ U_X \in \mathcal{F}_X : U_X \cap (E \cup \{x_0\}) = U.
+    \]
+    Since \(x_0 \in U\), we know that \(x_0 \in U_X\).
+    Thus we have
+    \begin{align*}
+        f(U_X \cap E) & = f\big((U_X \cap E) \setminus \{x_0\}\big) \cup f(E \cap \{x_0\})  & (f(E \cap \{x_0\}) = \emptyset \iff x_0 \notin E) \\
+                      & \subseteq g\big((U_X \cap E) \setminus \{x_0\}\big) \cup g(\{x_0\}) & (x_0 \in E \iff f(x_0) = L = g(x_0))              \\
+                      & = g\big(U_X \cap (E \cup \{x_0\})\big)                                                                                  \\
+                      & = g(U)                                                                                                                  \\
+                      & \subseteq V.
+    \end{align*}
+    Since \(V\) is arbitrary, we conclude that \(f(x)\) converges to \(L\) in \(Y\) as \(x\) converges to \(x_0\) in \(E\).
+
+    If \((Y, \mathcal{F}_Y)\) is not Hausdorff, then \(x_0 \in E\) may not implies \(f(x_0) = L\).
+\end{proof}
 
 \begin{exercise}\label{ex 3.1.4}
     Recall from Exercise \ref{ex 2.5.5} that the extended real line \(\mathbf{R}^*\) comes with a standard topology (the order topology).
