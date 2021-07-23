@@ -61,7 +61,7 @@
 \end{note}
 
 \begin{note}
-    If a sequence \(f^{(n)} : X \to Y\) of functions converges pointwise (or uniformly) to a function \(f : X \to Y\), then the restrictions \(f^{(n)}|_E : E \to Y\) of \(f^{(n)}\) to some subset \(E\) of \(X\) will also converge pointwise (or uniformly) to \(f|_Y\).
+    If a sequence \(f^{(n)} : X \to Y\) of functions converges pointwise (or uniformly) to a function \(f : X \to Y\), then the restrictions \(f^{(n)}|_E : E \to Y\) of \(f^{(n)}\) to some subset \(E\) of \(X\) will also converge pointwise (or uniformly) to \(f|_E\).
 \end{note}
 
 \exercisesection
@@ -173,6 +173,91 @@
               What would happen if we replaced the open interval \((-1, 1)\) with the closed interval \([-1, 1]\)?
     \end{enumerate}
 \end{exercise}
+
+\begin{proof}{(a)}
+    Let \(x_0 \in X\).
+    Since
+    \begin{align*}
+                 & (f^{(n)})_{n = 1}^\infty \text{ converges uniformly to } f \text{ on } X                                               \\
+                 & \text{ with respect to } d_Y                                                                                           \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ :                                                   \\
+                 & \forall\ n \geq N, \forall\ x \in X, d_Y\big(f^{(n)}(x), f(x)\big) < \varepsilon & \text{(by Definition \ref{3.2.7})}  \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ :                                                   \\
+                 & \forall\ n \geq N, d_Y\big(f^{(n)}(x_0), f(x_0)\big) < \varepsilon                                                     \\
+        \implies & \lim_{n \to \infty} d_Y\big(f^{(n)}(x_0), f(x_0)\big) = 0                        & \text{(by Definition \ref{1.1.14})}
+    \end{align*}
+    and \(x_0\) is arbitrary, by Definition \ref{3.2.1} we know that \((f^{(n)})_{n = 1}^\infty\) converges pointwise to \(f\) on \(X\) with respect to \(d_Y\).
+\end{proof}
+
+\begin{proof}{(b)}
+    Let \(z : (-1, 1) \to \mathbf{R}\) be the zero function, i.e., \(z(x) = 0\) for each \(x \in (-1, 1)\).
+    Then we have
+    \begin{align*}
+                 & \forall\ x \in (-1, 1), \lim_{n \to \infty} x^n = 0                                                                 \\
+        \implies & \forall\ x \in (-1, 1), \lim_{n \to \infty} f^{(n)}(x) = 0 = z(x)                                                   \\
+        \implies & (f^{(n)})_{n = 1}^\infty \text{ converges pointwise to } z \text{ on } (-1, 1)                                      \\
+                 & \text{with respect to } d_{l^1}|_{\mathbf{R} \times \mathbf{R}}.               & \text{(by Definition \ref{3.2.1})}
+    \end{align*}
+    Suppose for sake of contradiction that there exists a \(f : (-1, 1) \to \mathbf{R}\) such that \((f^{(n)})_{n = 1}^\infty\) converges uniformly to \(f\) on \((-1, 1)\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+    By Exercise \ref{ex 3.2.2}(a) and Proposition \ref{1.1.20} we know that \(f = z\).
+    Then we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ :                                                   \\
+                 & \forall\ n \geq N, \forall\ x \in (-1, 1), \abs*{f^{(n)}(x) - z(x)} < \varepsilon & \text{(by Definition \ref{3.2.7})} \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ :                                                   \\
+                 & \forall\ n \geq N, \forall\ x \in (-1, 1), \abs*{x^n} < \varepsilon.
+    \end{align*}
+    Now consider \(\varepsilon = \frac{1}{2}\).
+    Then we have
+    \begin{align*}
+                 & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \forall\ x \in (-1, 1), \abs*{x^n} < \frac{1}{2} \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \begin{cases}
+            (\frac{1}{2})^{\frac{1}{n}} \in (-1, 1) \\
+            \abs*{\big((\frac{1}{2})^{\frac{1}{n}}\big)^n} = \frac{1}{2} < \frac{1}{2}
+        \end{cases}
+    \end{align*}
+    a contradiction.
+    Thus \((f^{(n)})_{n = 1}^\infty\) does not converge uniformly to any \(f\) on \((-1, 1)\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+\end{proof}
+
+\begin{proof}{(c)}
+    By Lemma 7.3.3 in Analysis I we have
+    \begin{align*}
+        \forall\ x \in (-1, 1), \lim_{N \to \infty} \sum_{n = 1}^N f^{(n)}(x) & = \lim_{N \to \infty} \sum_{n = 1}^N x^n                 \\
+                                                                              & = \lim_{N \to \infty} \bigg(\sum_{n = 0}^N x^n - 1\bigg) \\
+                                                                              & = \bigg(\lim_{N \to \infty} \sum_{n = 0}^N x^n\bigg) - 1 \\
+                                                                              & = \frac{1}{1 - x} - 1                                    \\
+                                                                              & = \frac{x}{1 - x}                                        \\
+                                                                              & = g(x).
+    \end{align*}
+    Thus by Definition \ref{3.2.1} we know that \((\sum_{n = 1}^N f^{(n)})_{N = 1}^\infty\) converges pointwise to \(g\) on \((-1, 1)\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+    Suppose for sake of contradiction that \((\sum_{n = 1}^N f^{(n)})_{N = 1}^\infty\) converges uniformly to \(g\) on \((-1, 1)\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+    Then by Definition \ref{3.2.7} we know that
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ M \in \mathbf{Z}^+ : \forall\ N \geq M, \forall\ x \in (-1, 1), \abs*{\sum_{n = 1}^N f^{(n)}(x) - g(x)} < \varepsilon                           \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ M \in \mathbf{Z}^+ : \forall\ N \geq M, \forall\ x \in (-1, 1), \abs*{\frac{x(1 - x^N)}{1 - x} - \frac{x}{1 - x}} < \varepsilon                 \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ M \in \mathbf{Z}^+ : \forall\ N \geq M, \forall\ x \in (-1, 1), \abs*{\frac{-x^{N + 1}}{1 - x}} = \abs*{\frac{x^{N + 1}}{1 - x}} < \varepsilon.
+    \end{align*}
+    Now consider \(\varepsilon = \frac{1}{2}\).
+    Then we have
+    \begin{align*}
+                 & \exists\ N \geq M : \forall\ n \geq N, \forall\ x \in (-1, 1), \abs*{\frac{x^{N + 1}}{1 - x}} < \frac{1}{2} \\
+        \implies & \exists\ N \geq M : \begin{cases}
+            (\frac{1}{2})^{\frac{1}{N + 1}} \in (-1, 1) \\
+            \abs*{\frac{\big((\frac{1}{2})^{\frac{1}{N + 1}}\big)^{N + 1}}{1 - (\frac{1}{2})^{\frac{1}{N + 1}}}} = \frac{\frac{1}{2}}{1 - (\frac{1}{2})^{\frac{1}{N + 1}}} < \frac{1}{2}
+        \end{cases}
+    \end{align*}
+    But we know that
+    \begin{align*}
+                 & (\frac{1}{2})^{\frac{1}{N + 1}} > \frac{1}{2}                       \\
+        \implies & 1 - (\frac{1}{2})^{\frac{1}{N + 1}} < 1 - \frac{1}{2} = \frac{1}{2} \\
+        \implies & \frac{\frac{1}{2}}{1 - (\frac{1}{2})^{\frac{1}{N + 1}}} > 1,
+    \end{align*}
+    a contradiction.
+    Thus \((\sum_{n = 1}^N f^{(n)})_{N = 1}^\infty\) does not converge uniformly to \(g\) on \((-1, 1)\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+
+    If we replace \((-1, 1)\) with \([-1, 1]\), then by Lemma 7.3.3 in Analysis I \(\sum_{n = 1}^\infty 1\) and \(\sum_{n = 1}^\infty -1\) does not converge, thus by Definition \ref{3.2.1} \((\sum_{n = 1}^N f^{(n)})_{N = 1}^\infty\) does not converge pointwise to \(g\) on \([-1, 1]\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+\end{proof}
 
 \begin{exercise}\label{ex 3.2.3}
     Let \((X, d_X)\) a metric space, and for every integer \(n \geq 1\), let \(f_n : X \to \mathbf{R}\) be a real-valued function.
