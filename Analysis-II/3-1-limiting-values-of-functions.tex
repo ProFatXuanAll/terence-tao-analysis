@@ -227,10 +227,16 @@
         \end{cases}
     \]
     and \(g\) is continuous from \((E \cup \{x_0\}, d_X|_{(E \cup \{x_0\}) \times (E \cup \{x_0\})})\) to \((Y, d_Y)\).
+    Suppose also that if \(x_0 \in E\), then \(f(x_0) = L\).
     Then by Definition \ref{2.1.1} we have
     \begin{align*}
                  & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                      \\
                  & \Big(\forall\ x \in E \cup \{x_0\}, d_X(x, x_0) < \delta \implies d_Y\big(g(x), g(x_0)\big) < \varepsilon\Big) \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                      \\
+                 & \begin{cases}
+            \forall\ x \in E \setminus \{x_0\}, d_X(x, x_0) < \delta \implies d_Y\big(f(x), L\big) < \varepsilon \\
+            x_0 \in E \implies d_X(x_0, x_0) = 0 < \delta \implies f(x_0) = L \implies d_Y\big(f(x_0), L\big) < \varepsilon
+        \end{cases}                                                                                     \\
         \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                      \\
                  & \Big(\forall\ x \in E, d_X(x, x_0) < \delta \implies d_Y\big(f(x), L\big) < \varepsilon\Big).
     \end{align*}
@@ -410,6 +416,64 @@
     Show that \(\lim_{n \to +\infty ; n \in \mathbf{N}} a_n = L\) (in the sense of Exercise \ref{ex 3.1.3}) if and only if \(\lim_{n \to \infty} a_n = L\) (in the sense of Definition \ref{2.5.4}).
     This shows that the notions of limiting values of a sequence, and limiting values of a function, are compatible.
 \end{exercise}
+
+\begin{proof}
+    Let \((\mathbf{R}^*, \mathcal{F}_{\mathbf{R}^*})\) be the order topology in Exercise \ref{ex 2.5.5}.
+    Let \(f : \mathbf{N} \to Y\) be the function where \(f(n) = a_n\) for each \(n \in \mathbf{N}\).
+    First suppose that
+    \[
+        \lim_{n \to +\infty ; n \in \mathbf{N}} a_n = \lim_{n \to +\infty ; n \in \mathbf{N}} f(n) = L.
+    \]
+    By Exercise \ref{ex 3.1.3} we have
+    \[
+        \forall\ V \in \mathcal{F}_Y, L \in V \implies \exists\ U \in \mathcal{F}_{\mathbf{R}^*} : \begin{cases}
+            +\infty \in U \\
+            f(U \cap \mathbf{N}) \subseteq V
+        \end{cases}
+    \]
+    Since \(U \in \mathcal{F}_{\mathbf{R}^*}\), by Exercise \ref{ex 2.5.5} we know that there exists an interval \(I \subseteq \mathbf{R}^*\) such that \(I \subseteq U\) and \(+\infty \in I\).
+    We know that \(I\) must in the form \((a, +\infty]\) for some \(a \in \mathbf{R}\).
+    By Archimedean property we know that there exists some \(N \in \mathbf{N}\) such that \(N > a\).
+    Then we have
+    \begin{align*}
+                 & \begin{cases}
+            I \subseteq U \subseteq \mathbf{R}^*            \\
+            I = (a, +\infty] \in \mathcal{F}_{\mathbf{R}^*} \\
+            N > a
+        \end{cases}                           \\
+        \implies & \forall\ n \geq N + 1, n \in I                       \\
+        \implies & \forall\ n \geq N + 1, n \in U \cap \mathbf{N}       \\
+        \implies & \forall\ n \geq N + 1, f(n) \in f(U \cap \mathbf{N}) \\
+        \implies & \forall\ n \geq N + 1, f(n) \in V.
+    \end{align*}
+    Since this is true for arbitrary \(V\), we have
+    \[
+        \lim_{n \to \infty} a_n = \lim_{n \to \infty} f(n) = L
+    \]
+    in the sense of Definition \ref{2.5.4}.
+
+    Now suppose that
+    \[
+        \lim_{n \to \infty} a_n = \lim_{n \to \infty} f(n) = L
+    \]
+    in the sense of Definition \ref{2.5.4}.
+    Then we have
+    \[
+        \forall\ V \in \mathcal{F}_Y, L \in V \implies \exists\ N \in \mathbf{N} : \forall\ n \geq N, f(n) \in V.
+    \]
+    Let \(I = (N, +\infty]\).
+    Then we know that \(I\) is an interval of \(\mathbf{R}^*\) and by Exercise \ref{ex 2.5.5} we have \(I \in \mathcal{F}_{\mathbf{R}^*}\).
+    Observe that
+    \begin{align*}
+                 & I \cap \mathbf{N} = \{m \in \mathbf{N} : m \geq N + 1\} \\
+        \implies & \forall\ n \in I \cap \mathbf{N}, f(n) \in V            \\
+        \implies & f(I \cap \mathbf{N}) \subseteq V.
+    \end{align*}
+    Since this is true for arbitrary \(V \in \mathcal{F}_Y\), by Exercise \ref{ex 3.1.3} we have
+    \[
+        \lim_{n \to +\infty ; n \in \mathbf{N}} a_n = \lim_{n \to +\infty ; n \in \mathbf{N}} f(n) = L.
+    \]
+\end{proof}
 
 \begin{exercise}\label{ex 3.1.5}
     Let \((X, d_X)\), \((Y, d_Y)\), \((Z, d Z)\) be metric spaces, and let \(x_0 \in X\), \(y_0 \in Y\), \(z_0 \in Z\).
