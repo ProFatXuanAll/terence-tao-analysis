@@ -484,13 +484,13 @@
 \begin{proof}
     By Definition \ref{3.1.1} we have
     \begin{align*}
-                 & \lim_{y \to y_0 ; y \in f(E)} g(y) = z_0                                                           \\
+                 & d_Z - \lim_{y \to y_0 ; y \in f(E)} g(y) = z_0                                                     \\
         \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta' \in \mathbf{R}^+ :                         \\
                  & \Big(\forall\ y \in f(E), d_Y(y, y_0) < \delta' \implies d_Z\big(g(y), z_0\big) < \varepsilon\Big)
     \end{align*}
     and
     \begin{align*}
-                 & \lim_{x \to x_0 ; x \in E} f(x) = y_0                                                       \\
+                 & d_Y - \lim_{x \to x_0 ; x \in E} f(x) = y_0                                                 \\
         \implies & \forall\ \delta' \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                       \\
                  & \Big(\forall\ x \in E, d_X(x, x_0) < \delta \implies d_Y\big(f(x), y_0\big) < \delta'\Big).
     \end{align*}
@@ -499,9 +499,106 @@
          & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                                                             \\
          & \bigg(\forall\ x \in E, d_X(x, x_0) < \delta \implies d_Y\big(f(x), y_0\big) < \delta' \implies d_Z\Big(g\big(f(x)\big), z_0\Big) < \varepsilon\bigg)
     \end{align*}
-    and by Definition \ref{3.1.1} \(\lim_{x \to x_0 ; x \in E} g \circ f(x) = z_0\).
+    and by Definition \ref{3.1.1} \(d_Z - \lim_{x \to x_0 ; x \in E} g \circ f(x) = z_0\).
 \end{proof}
 
 \begin{exercise}\label{ex 3.1.6}
     State and prove an analogue of the limit laws in Proposition 9.3.14 in Analysis I when \(X\) is now a metric space rather than a subset of \(\mathbf{R}\).
 \end{exercise}
+
+\begin{proof}
+    Let \((X, d)\) be a metric space, let \(d_1 = d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\), let \(E \subseteq X\), let \(x_0 \in \overline{E}_{(X, d)}\), let \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) be functions, and let \(c \in \mathbf{R}\).
+    Suppose that
+    \begin{align*}
+         & d_1 - \lim_{x \to x_0 ; x \in E} f(x) = L \\
+         & d_1 - \lim_{x \to x_0 ; x \in E} g(x) = M
+    \end{align*}
+    We want to show that
+    \begin{align*}
+         & d_1 - \lim_{x \to x_0 ; x \in E} (f + g)(x) = L + M                                        \\
+         & d_1 - \lim_{x \to x_0 ; x \in E} (f - g)(x) = L - M                                        \\
+         & d_1 - \lim_{x \to x_0 ; x \in E} (fg)(x) = LM                                              \\
+         & d_1 - \lim_{x \to x_0 ; x \in E} \min(f, g)(x) = \min(L, M)                                \\
+         & d_1 - \lim_{x \to x_0 ; x \in E} \max(f, g)(x) = \max(L, M)                                \\
+         & d_1 - \lim_{x \to x_0 ; x \in E} (cf)(x) = cL                                              \\
+         & d_1 - \lim_{x \to x_0 ; x \in E} (f / g)(x) = L / M \text{ if } \begin{cases}
+            \forall\ x \in E, g(x) \neq 0 \\
+            M \neq 0
+        \end{cases}
+    \end{align*}
+    Let \(f^* : E \cup \{x_0\} \to \mathbf{R}\) be the function
+    \[
+        \forall\ x \in E, f^*(x) = \begin{cases}
+            L    & \text{if } x = x_0    \\
+            f(x) & \text{if } x \neq x_0
+        \end{cases}
+    \]
+    and let \(g^* : E \cup \{x_0\} \to \mathbf{R}\) be the function
+    \[
+        \forall\ x \in E, g^*(x) = \begin{cases}
+            M    & \text{if } x = x_0    \\
+            g(x) & \text{if } x \neq x_0
+        \end{cases}
+    \]
+    By Proposition \ref{3.1.5}(c) we know that \(f^*\) and \(g^*\) are continuous at \(x_0\) from \((X, d)\) to \((\mathbf{R}, d_1)\).
+    Thus by Corollary \ref{2.2.3} we have
+    \begin{align*}
+         & f^* + g^* \text{ is continuous at } x_0 \text{ from } (X, d) \text{ to } (\mathbf{R}, d_1)                                        \\
+         & f^* - g^* \text{ is continuous at } x_0 \text{ from } (X, d) \text{ to } (\mathbf{R}, d_1)                                        \\
+         & f^* g^* \text{ is continuous at } x_0 \text{ from } (X, d) \text{ to } (\mathbf{R}, d_1)                                          \\
+         & \min(f^*, g^*) \text{ is continuous at } x_0 \text{ from } (X, d) \text{ to } (\mathbf{R}, d_1)                                   \\
+         & \max(f^*, g^*) \text{ is continuous at } x_0 \text{ from } (X, d) \text{ to } (\mathbf{R}, d_1)                                   \\
+         & c f^* \text{ is continuous at } x_0 \text{ from } (X, d) \text{ to } (\mathbf{R}, d_1)                                            \\
+         & f^* / g^* \text{ is continuous at } x_0 \text{ from } (X, d) \text{ to } (\mathbf{R}, d_1) \text{ if } \begin{cases}
+            \forall\ x \in E, g(x) \neq 0 \\
+            M \neq 0
+        \end{cases}
+    \end{align*}
+    Since
+    \begin{align*}
+        \forall\ x \in E \cup \{x_0\}, & (f^* + g^*)(x) = \begin{cases}
+            L + M       & \text{if } x = x_0    \\
+            f(x) + g(x) & \text{if } x \neq x_0
+        \end{cases}                                          \\
+                                       & (f^* - g^*)(x) = \begin{cases}
+            L - M       & \text{if } x = x_0    \\
+            f(x) - g(x) & \text{if } x \neq x_0
+        \end{cases}                                          \\
+                                       & (f^* g^*)(x) = \begin{cases}
+            LM        & \text{if } x = x_0    \\
+            f(x) g(x) & \text{if } x \neq x_0
+        \end{cases}                                            \\
+                                       & \min(f^*, g^*)(x) = \begin{cases}
+            \min(L, M)               & \text{if } x = x_0    \\
+            \min\big(f(x), g(x)\big) & \text{if } x \neq x_0
+        \end{cases}                                       \\
+                                       & \max(f^*, g^*)(x) = \begin{cases}
+            \max(L, M)               & \text{if } x = x_0    \\
+            \max\big(f(x), g(x)\big) & \text{if } x \neq x_0
+        \end{cases}                                       \\
+                                       & (c f^*)(x) = \begin{cases}
+            cL     & \text{if } x = x_0    \\
+            c f(x) & \text{if } x \neq x_0
+        \end{cases}                                              \\
+                                       & (f^* / g^*)(x) = \begin{cases}
+            L / M       & \text{if } x = x_0    \\
+            f(x) / g(x) & \text{if } x \neq x_0
+        \end{cases} \text{ when } \begin{cases}
+            \forall\ x \in E, g(x) \neq 0 \\
+            M \neq 0
+        \end{cases}
+    \end{align*}
+    by Proposition \ref{3.1.5}(a)(d) we know that
+    \begin{align*}
+         & d_1 - \lim_{x \to x_0 ; x \in E} (f + g)(x) = L + M                                        \\
+         & d_1 - \lim_{x \to x_0 ; x \in E} (f - g)(x) = L - M                                        \\
+         & d_1 - \lim_{x \to x_0 ; x \in E} (fg)(x) = LM                                              \\
+         & d_1 - \lim_{x \to x_0 ; x \in E} \min(f, g)(x) = \min(L, M)                                \\
+         & d_1 - \lim_{x \to x_0 ; x \in E} \max(f, g)(x) = \max(L, M)                                \\
+         & d_1 - \lim_{x \to x_0 ; x \in E} (cf)(x) = cL                                              \\
+         & d_1 - \lim_{x \to x_0 ; x \in E} (f / g)(x) = L / M \text{ if } \begin{cases}
+            \forall\ x \in E, g(x) \neq 0 \\
+            M \neq 0
+        \end{cases}
+    \end{align*}
+\end{proof}
