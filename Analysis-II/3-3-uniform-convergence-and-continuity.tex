@@ -6,6 +6,29 @@
     If the functions \(f^{(n)}\) are continuous at \(x_0\) for each \(n\), then the limiting function \(f\) is also continuous at \(x_0\).
 \end{theorem}
 
+\begin{proof}
+    We have
+    \begin{align*}
+                 & (f^{(n)})_{n = 1}^\infty \text{ converges uniformly to } f \text{ on } X                                                     \\
+                 & \text{with respect to } d_Y                                                                                                  \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ :                                                         \\
+                 & \forall\ n \geq N, \forall\ x \in X, d_Y\big(f_n(x), f(x)\big) < \frac{\varepsilon}{3}. & \text{(by Definition \ref{3.2.7})}
+    \end{align*}
+    We choose one pair of \(\varepsilon\) and \(N\).
+    For each \(n \in \mathbf{Z}^+\), since \(f_n\) is continuous at \(x_0\) from \((X, d_X)\) to \((Y, d_Y)\), by Definition \ref{2.1.1} we have
+    \begin{align*}
+                 & \forall\ n \geq N, f_n \text{ is continuous at } x_0 \text{ from } (X, d_X) \text{ to } (Y, d_Y)                                                                            \\
+        \implies & \forall\ n \geq N, \exists\ \delta \in \mathbf{R}^+ :                                                                                                                       \\
+                 & \Big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f_n(x), f_n(x_0)\big) < \frac{\varepsilon}{3}\Big)                                                             \\
+        \implies & \forall\ n \geq N, \exists\ \delta \in \mathbf{R}^+ :                                                                                                                       \\
+                 & \Big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f(x), f(x_0)\big)                                                                                              \\
+                 & \leq d_Y\big(f(x), f_n(x)\big) + d_Y\big(f_n(x), f_n(x_0)\big) + d_Y\big(f_n(x_0), f(x_0)\big) < \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3}\Big) \\
+        \implies & \forall\ n \geq N, \exists\ \delta \in \mathbf{R}^+ :                                                                                                                       \\
+                 & \Big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f(x), f(x_0)\big) < \varepsilon.
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary, by Definition \ref{2.1.1} we know that \(f\) is continuous at \(x_0\) from \((X, d_X)\) to \((Y, d_Y)\).
+\end{proof}
+
 \begin{corollary}[Uniform limits preserve continuity II]\label{3.3.2}
     Let \((f^{(n)})_{n = 1}^\infty\) be a sequence of functions from one metric space \((X, d_X)\) to another \((Y, d_Y)\), and suppose that this sequence converges uniformly to another function \(f : X \to Y\).
     If the functions \(f^{(n)}\) are continuous on \(X\) for each \(n\), then the limiting function \(f\) is also continuous on \(X\).
