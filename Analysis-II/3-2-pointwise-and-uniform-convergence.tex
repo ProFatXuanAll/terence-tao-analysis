@@ -267,6 +267,30 @@
     Show that the functions \(h \circ f_n\) converge pointwise to \(h \circ f\) on \(X\), where \(h \circ f_n : X \to \mathbf{R}\) is the function \(h \circ f_n(x) \coloneqq h\big(f_n(x)\big)\), and similarly for \(h \circ f\).
 \end{exercise}
 
+\begin{proof}
+    Let \(x_0 \in X\).
+    We have
+    \begin{align*}
+                 & h \text{ is continuous on } \mathbf{R} \text{ with respect to } d                                         \\
+        \implies & h \text{ is continuous at } x_0 \text{ with respect to } d                                                \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                 \\
+                 & \big(\forall\ x \in \mathbf{R}, \abs*{x - x_0} < \delta \implies \abs*{h(x) - h(x_0)} < \varepsilon\big).
+    \end{align*}
+    Fix one pair of \(\varepsilon\) and \(\delta\).
+    Then we have
+    \begin{align*}
+                 & (f_n)_{n = 1}^\infty \text{ converges pointwise to } f \text{ on } X \text{ with respect to } d                                                     \\
+        \implies & \lim_{n \to \infty} \abs*{f_n(x_0) - f(x_0)} = 0                                                               & \text{(by Definition \ref{3.2.1})} \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \abs*{f_n(x_0) - f(x_0)} < \delta                                                                  \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \abs*{h\big(f_n(x_0)\big) - h\big(f(x_0)\big)} < \varepsilon.
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary, by Definition \ref{1.1.14} we know that
+    \[
+        \lim_{n \to \infty} \abs*{h\big(f_n(x_0)\big) - h\big(f(x_0)\big)} = \lim_{n \to \infty} \abs*{(h \circ f_n)(x_0) - (h \circ f)(x_0)} = 0.
+    \]
+    Since \(x_0\) is arbitrary, by Definition \ref{3.2.1} we know \((h \circ f_n)_{n = 1}^\infty\) converges pointwise to \(h \circ f\) on \(X\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+\end{proof}
+
 \begin{exercise}\label{ex 3.2.4}
     Let \(f_n : X \to Y\) be a sequence of bounded functions from one metric space \((X, d_X)\) to another metric space \((Y, d_Y)\).
     Suppose that \(f_n\) converges uniformly to another function \(f : X \to Y\).
