@@ -9,21 +9,21 @@
 \begin{proof}
     We have
     \begin{align*}
-                 & (f^{(n)})_{n = 1}^\infty \text{ converges uniformly to } f \text{ on } X                                                     \\
-                 & \text{with respect to } d_Y                                                                                                  \\
-        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ :                                                         \\
-                 & \forall\ n \geq N, \forall\ x \in X, d_Y\big(f_n(x), f(x)\big) < \frac{\varepsilon}{3}. & \text{(by Definition \ref{3.2.7})}
+                 & (f^{(n)})_{n = 1}^\infty \text{ converges uniformly to } f \text{ on } X                                                         \\
+                 & \text{with respect to } d_Y                                                                                                      \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ :                                                             \\
+                 & \forall\ n \geq N, \forall\ x \in X, d_Y\big(f^{(n)}(x), f(x)\big) < \frac{\varepsilon}{3}. & \text{(by Definition \ref{3.2.7})}
     \end{align*}
     We choose one pair of \(\varepsilon\) and \(N\).
-    For each \(n \in \mathbf{Z}^+\), since \(f_n\) is continuous at \(x_0\) from \((X, d_X)\) to \((Y, d_Y)\), by Definition \ref{2.1.1} we have
+    For each \(n \in \mathbf{Z}^+\), since \(f^{(n)}\) is continuous at \(x_0\) from \((X, d_X)\) to \((Y, d_Y)\), by Definition \ref{2.1.1} we have
     \begin{align*}
-                 & \forall\ n \geq N, f_n \text{ is continuous at } x_0 \text{ from } (X, d_X) \text{ to } (Y, d_Y)                                                                            \\
-        \implies & \forall\ n \geq N, \exists\ \delta \in \mathbf{R}^+ :                                                                                                                       \\
-                 & \Big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f_n(x), f_n(x_0)\big) < \frac{\varepsilon}{3}\Big)                                                             \\
-        \implies & \forall\ n \geq N, \exists\ \delta \in \mathbf{R}^+ :                                                                                                                       \\
-                 & \Big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f(x), f(x_0)\big)                                                                                              \\
-                 & \leq d_Y\big(f(x), f_n(x)\big) + d_Y\big(f_n(x), f_n(x_0)\big) + d_Y\big(f_n(x_0), f(x_0)\big) < \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3}\Big) \\
-        \implies & \forall\ n \geq N, \exists\ \delta \in \mathbf{R}^+ :                                                                                                                       \\
+                 & \forall\ n \geq N, f^{(n)} \text{ is continuous at } x_0 \text{ from } (X, d_X) \text{ to } (Y, d_Y)                                                                                        \\
+        \implies & \forall\ n \geq N, \exists\ \delta \in \mathbf{R}^+ :                                                                                                                                       \\
+                 & \Big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f^{(n)}(x), f^{(n)}(x_0)\big) < \frac{\varepsilon}{3}\Big)                                                                     \\
+        \implies & \forall\ n \geq N, \exists\ \delta \in \mathbf{R}^+ :                                                                                                                                       \\
+                 & \Big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f(x), f(x_0)\big)                                                                                                              \\
+                 & \leq d_Y\big(f(x), f^{(n)}(x)\big) + d_Y\big(f^{(n)}(x), f^{(n)}(x_0)\big) + d_Y\big(f^{(n)}(x_0), f(x_0)\big) < \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3}\Big) \\
+        \implies & \forall\ n \geq N, \exists\ \delta \in \mathbf{R}^+ :                                                                                                                                       \\
                  & \Big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f(x), f(x_0)\big) < \varepsilon.
     \end{align*}
     Since \(\varepsilon\) is arbitrary, by Definition \ref{2.1.1} we know that \(f\) is continuous at \(x_0\) from \((X, d_X)\) to \((Y, d_Y)\).
@@ -49,6 +49,59 @@
         \lim_{n \to \infty} \lim_{x \to x_0 ; x \in E} f^{(n)}(x) = \lim_{x \to x_0 ; x \in E} \lim_{n \to \infty} f^{(n)}(x).
     \]
 \end{proposition}
+
+\begin{proof}
+    For each \(n \in \mathbf{Z}^+\), we define \(d_Y - \lim_{x \to x_0 ; x \in E} f^{(n)}(x) = L^{(n)}\).
+    We claim that the sequence \((L^{(n)})_{n = 1}^\infty\) converges in \(Y\) with respect to \(d_Y\).
+    Since \((Y, d_Y)\) is complete, by Definition \ref{1.4.10} it suffices to show that \((L^{(n)})_{n = 1}^\infty\) is a Cauchy sequence in \((Y, d_Y)\).
+    Let \(n_1, n_2 \in \mathbf{Z}^+\).
+    Then by Definition \ref{3.2.7} we have
+    \begin{align*}
+                 & (f^{(n)})_{n = 1}^\infty \text{ converges uniformly to } f \text{ on } X \text{ with respect to } d_Y                                                           \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \forall\ x \in X, d_Y\big(f^{(n)}(x), f(x)\big) < \frac{\varepsilon}{4}
+    \end{align*}
+    Now fix one pair of \(\varepsilon\) and \(N\).
+    Since \(L^{(n)}\) exists for each \(n \in \mathbf{N}\), by Definition \ref{3.1.1} we have
+    \begin{align*}
+                 & \forall\ n \geq N, d_Y - \lim_{x \to x_0 ; x \in E} f^{(n)}(x) = L^{(n)}                                                                                                 \\
+        \implies & \forall\ n \geq N, \exists\ \delta \in \mathbf{R}^+ : \Big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f^{(n)}(x), L^{(n)}\big) < \frac{\varepsilon}{4}\Big) \\
+        \implies & \forall\ n_1, n_2 \geq N, \exists\ \delta \in \mathbf{R}^+ :                                                                                                             \\
+                 & \Big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(L^{(n_1)}, L^{(n_2)}\big)                                                                                   \\
+                 & \leq d_Y\big(L^{(n_1)}, f^{(n_1)}(x)\big) + d_Y\big(f^{(n_1)}(x), f(x)\big)                                                                                              \\
+                 & \quad + d_Y\big(f(x), f^{(n_2)}(x)\big) + d_Y\big(f^{(n_2)}(x), L^{(n_2)}\big)                                                                                           \\
+                 & < \frac{\varepsilon}{4} + \frac{\varepsilon}{4} + \frac{\varepsilon}{4} + \frac{\varepsilon}{4}\Big)                                                                     \\
+        \implies & \forall\ n_1, n_2 \geq N, d_Y\big(L^{(n_1)}, L^{(n_2)}\big) < \varepsilon
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary, we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n_1, n_2 \geq N, d_Y\big(L^{(n_1)}, L^{(n_2)}\big) < \varepsilon
+    \]
+    and by Definition \ref{1.4.6} \((L^{(n)})_{n = 1}^\infty\) is a Cauchy sequence in \((Y, d_Y)\).
+
+    Let \(L \in Y\) such that \(d_Y - \lim_{n \to \infty} L^{(n)} = L\).
+    Again by Definition \ref{3.2.7} we have
+    \begin{align*}
+                 & (f^{(n)})_{n = 1}^\infty \text{ converges uniformly to } f \text{ on } X \text{with respect to } d_Y                                                                 \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N_1 \in \mathbf{Z}^+ : \forall\ n \geq N_1, \forall\ x \in X, d_Y\big(f^{(n)}(x), f(x)\big) < \frac{\varepsilon}{3}.
+    \end{align*}
+    Again we choose one pair of \(\varepsilon\) and \(N_1\).
+    Since \(L\) exists, by Definition \ref{3.1.1} we have
+    \begin{align*}
+                 & \lim_{n \to \infty} d_Y\big(L^{(n)}, L\big) = 0                                                                                                                              \\
+        \implies & \exists\ N_2 \in \mathbf{Z}^+ : \forall\ n \geq N_2, d_Y(L^{(n)}, L) < \frac{\varepsilon}{3}                                                                                 \\
+        \implies & \exists\ N = \max(N_1, N_2) : \forall\ n \geq N,                                                                                                                             \\
+                 & \begin{cases}
+            \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f^{(n)}(x), L^{(n)}\big) < \frac{\varepsilon}{3} \\
+            d_Y(L^{(n)}, L) < \frac{\varepsilon}{3}                                                                                                     \\
+            \forall\ x \in X, d_Y\big(f^{(n)}(x), f(x)\big) < \frac{\varepsilon}{3}
+        \end{cases}                                                                                                                                                   \\
+        \implies & \exists\ N = \max(N_1, N_2) : \forall\ n \geq N, \exists\ \delta \in \mathbf{R}^+ :                                                                                          \\
+                 & \Big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f(x), L\big)                                                                                                    \\
+                 & \leq d_Y\big(f(x), f^{(n)}(x)\big) + d_Y\big(f^{(n)}(x), L^{(n)}\big) + d_Y\big(L^{(n)}, L\big) < \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3}\Big) \\
+        \implies & \exists\ \delta \in \mathbf{R}^+ : \Big(\forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f(x), L\big) < \varepsilon\Big).
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary, by Definition \ref{3.1.1} we know that \(d_Y - \lim_{x \to x_0 ; x \in E} f(x) = L\).
+\end{proof}
 
 \begin{proposition}\label{3.3.4}
     Let \((f^{(n)})_{n = 1}^\infty\) be a sequence of continuous functions from one metric space \((X, d_X)\) to another \((Y, d_Y)\), and suppose that this sequence converges uniformly to another function \(f : X \to Y\).
