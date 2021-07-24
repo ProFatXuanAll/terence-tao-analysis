@@ -297,5 +297,45 @@
     Suppose that \(f\) is a bounded function;
     i.e., there exists a ball \(B_{(Y, d_Y)}(y_0, R)\) in \(Y\) such that \(f(x) \in B_{(Y, d_Y)}(y_0, R)\) for all \(x \in X\).
     Show that the sequence \(f_n\) is \emph{uniformly bounded};
-    i.e. there exists a ball \(B_{(Y, d_Y)}(y_0, R)\) in \(Y\) such that \(f_n(x) \in B_{(Y, d_Y)}(y_0, R)\) for all \(x \in X\) and all positive integers \(n\).
+    i.e., there exists a ball \(B_{(Y, d_Y)}(y_0, R)\) in \(Y\) such that \(f_n(x) \in B_{(Y, d_Y)}(y_0, R)\) for all \(x \in X\) and all positive integers \(n\).
 \end{exercise}
+
+\begin{proof}
+    Since \(f\) is bounded, by Definition \ref{1.5.3} we have
+    \[
+        \forall\ y \in Y, \exists\ \varepsilon \in \mathbf{R}^+ : f(X) \subseteq B_{(Y, d_Y)}(y, \varepsilon).
+    \]
+    We choose one pair of \(y\) and \(\varepsilon\).
+    Since \((f_n)_{n = 1}^\infty\) converges uniformly to \(f\) on \(X\) with respect to \(d_Y\), we have
+    \begin{align*}
+                 & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \forall\ x \in X, d_Y\big(f_n(x), f(x)\big) < \varepsilon          & \text{(by Definition \ref{3.2.7})}    \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \forall\ x \in X,                                                                                          \\
+                 & d_Y\big(f_n(x), y\big) \leq d_Y\big(f_n(x), f(x)\big) + d_Y\big(f(x), y\big) < \varepsilon + \varepsilon            & \text{(by Definition \ref{1.1.2}(d))} \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \forall\ x \in X, f_n(x) \in B_{(Y, d_Y)}\big(y, 2\varepsilon\big)                                         \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, f_n(X) \subseteq B_{(Y, d_Y)}\big(y, 2\varepsilon\big)
+    \end{align*}
+    Now fix \(N\).
+    Let \(S = \{n \in \mathbf{Z}^+ : n < N\}\).
+    Then \(S\) is finite.
+    If \(S = \emptyset\), then we have \(N = 1\) and thus by definition \((f_n)_{n = 1}^\infty\) is uniformly bounded.
+    So suppose that \(S \neq \emptyset\).
+    By hypothesis we know that \(f_n\) is bounded for each \(n \in S\), thus by Definition \ref{1.5.3} we have
+    \[
+        \forall\ n \in S, \exists\ \delta_n \in \mathbf{R}^+ : f_n(X) \subseteq B_{(Y, d_Y)}(y, \delta_n).
+    \]
+    We choose one \(\delta_n\) for each \(n \in S\).
+    Since \(S\) is finite, we know that \(\delta_{\max} = \max\{\delta_n : n \in S\}\) is well-defined.
+    Then we have
+    \begin{align*}
+                 & \begin{cases}
+            \forall\ n \in S, f_n(X) \subseteq B_{(Y, d_Y)}(y, \delta_{\max}) \\
+            \forall\ n \geq N, f_n(X) \subseteq B_{(Y, d_Y)}(y, 2\varepsilon)
+        \end{cases}                                                                   \\
+        \implies & \forall\ n \in \mathbf{Z}^+, f_n(X) \subseteq B_{(Y, d_Y)}(y, 2\varepsilon + \delta_{\max}).
+    \end{align*}
+    Since \(y\) is arbitrary, by Definition \ref{1.5.3} we know that \(f_n\) is bounded for each \(n \in \mathbf{Z}^+\), i.e.,
+    \[
+        \forall\ y \in Y, \exists\ r \in \mathbf{R}^+ : \forall\ n \in \mathbf{Z}^+, f_n(X) \subseteq B_{(Y, d_Y)}(y, r).
+    \]
+    And by definition \((f_n)_{n = 1}^\infty\) is uniformly bounded.
+\end{proof}
