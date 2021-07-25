@@ -156,6 +156,29 @@
     If the functions \(f^{(n)}\) are bounded on \(X\) for each \(n\), then the limiting function \(f\) is also bounded on \(X\).
 \end{proposition}
 
+\begin{proof}
+    Since \(f^{(n)}\) is bounded in \((Y, d_Y)\) for each \(n \in \mathbf{Z}^+\), by Definition \ref{3.3.5} and Definition \ref{1.5.3} we have
+    \begin{align*}
+                 & \forall\ n \in \mathbf{Z}^+, \forall\ y \in Y, \exists\ \varepsilon \in \mathbf{R}^+ : f^{(n)}(X) \subseteq B_{(Y, d_Y)}(y, \varepsilon)           \\
+        \implies & \forall\ n \in \mathbf{Z}^+, \forall\ y \in Y, \exists\ \varepsilon \in \mathbf{R}^+ : \forall\ x \in X, d_Y\big(f^{(n)}(x), y\big) < \varepsilon.
+    \end{align*}
+    Now we choose \(y\) and \(\varepsilon\) for each \(n \in \mathbf{Z}^+\) and we denote them as \(y^{(n)}\) and \(\varepsilon^{(n)}\).
+    Since \((f^{(n)})_{n = 1}^\infty\) converges uniformly to \(f\) on \(X\) with respect to \(d_Y\), by Definition \ref{3.2.7} we have
+    \begin{align*}
+                 & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \forall\ x \in X, d_Y\big(f^{(n)}(x), f(x)\big) < 1                     \\
+                 & \exists\ N \in \mathbf{Z}^+ : \forall\ x \in X, d_Y\big(f^{(N)}(x), f(x)\big) < 1                                        \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ x \in X,                                                                          \\
+                 & d_Y\big(f(x), y^{(N)}\big) \leq d_Y\big(f(x), f^{(N)}(x)\big) + d_Y\big(f^{(N)}(x), y^{(N)}\big) < \varepsilon^{(N)} + 1 \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ x \in X, d_Y\big(f(x), y^{(N)}\big) < \varepsilon^{(N)} + 1                       \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : f(X) \subseteq B_{(Y, d_Y)}(y^{(N)}, \varepsilon^{(N)} + 1).
+    \end{align*}
+    Since \(y^{(N)}\) is arbitrary, we have
+    \[
+        \forall\ y \in Y, \exists\ \varepsilon \in \mathbf{R}^+ : f(X) \subseteq B_{(Y, d_Y)}(y, \varepsilon)
+    \]
+    and by Definition \ref{1.5.3} and Definition \ref{3.3.5} \(f\) is bounded in \((Y, d_Y)\).
+\end{proof}
+
 \begin{remark}\label{3.3.7}
     The above propositions sound very reasonable, but one should caution that it only works if one assumes uniform convergence;
     pointwise convergence is not enough.
