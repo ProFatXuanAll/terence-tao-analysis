@@ -195,16 +195,24 @@
     Prove Proposition \ref{3.4.4}.
 \end{exercise}
 
+\begin{proof}
+    See Proposition \ref{3.4.4}.
+\end{proof}
+
 \begin{exercise}\label{ex 3.4.3}
     Prove Theorem \ref{3.4.5}.
 \end{exercise}
 
+\begin{proof}
+    See Theorem \ref{3.4.5}.
+\end{proof}
+
 \begin{exercise}\label{ex 3.4.4}
     Let \((X, d_X)\) and \((Y, d_Y)\) be metric spaces, and let \(Y^X \coloneqq \{f | f : X \to Y \}\) be the space of all functions from \(X\) to \(Y\)
     (cf. Axiom 3.10 in Analysis I).
-    If \(x_0 \in X\) and \(V\) is an open set in \(Y\), let \(V(x_0) \subseteq Y^X\) be the set
+    If \(x_0 \in X\) and \(V\) is an open set in \(Y\), let \(V^{(x_0)} \subseteq Y^X\) be the set
     \[
-        V^{(x_0)} \coloneqq \{f \in Y^X : f(x_0) \in V\}.
+        V^{(x_0)} \coloneqq \big\{f \in Y^X : f(x_0) \in V\big\}.
     \]
     If \(E\) is a subset of \(Y^X\), we say that \(E\) is \emph{open} if for every \(f \in E\), there exists a finite number of points \(x_1, \dots, x_n \in X\) and open sets \(V_1, \dots, V_n \subseteq Y\) such that
     \[
@@ -219,3 +227,100 @@
     it is also known as the \emph{product topology}.
     It shows that the concept of pointwise convergence can be viewed as a special case of the more general concept of convergence in a topological space.
 \end{exercise}
+
+\begin{proof}
+    We know that \(\emptyset \in \mathcal{F}\) trivially.
+    First we show that \(Y^X \in \mathcal{F}\).
+    Let \(f \in Y^X\) and let \(x_0 \in X\).
+    By Proposition \ref{1.2.15}(c) we know that \(B_{(Y, d_Y)}\big(f(x_0), 1\big)\) is open in \((Y, d_Y)\).
+    Then we have
+    \[
+        f \in \Big(B_{(Y, d_Y)}\big(f(x_0), 1\big)\Big)^{(x_0)} \subseteq Y^X.
+    \]
+    Since \(f\) is arbitrary, by definition we know that \(Y^X \in \mathcal{F}\).
+
+    Next we show that the intersection of any finite collection of open sets in \((Y^X, \mathcal{F})\) is open in \((Y^X, \mathcal{F})\).
+    Let \(n \in \mathbf{N}\) and let \((U_i)_{i = 1}^n\) be a finite collection of open sets in \((Y^X, \mathcal{F})\).
+    If \(\bigcap_{i = 1}^n U_i = \emptyset\), then from the proof above we know that \(\emptyset \in \mathcal{F}\).
+    So suppose that \(\bigcap_{i = 1}^n U_i \neq \emptyset\).
+    Let \(f \in \bigcap_{i = 1}^n U_i\).
+    Since
+    \begin{align*}
+                 & \forall\ 1 \leq i \leq n, f \in U_i                                                                                 \\
+        \implies & \forall\ 1 \leq i \leq n, \exists\ m_i \in \mathbf{Z}^+ : \begin{cases}
+            x_{(i, 1)}, \dots, x_{(i, m_i)} \in X                              \\
+            V_{(i, 1)}, \dots, V_{(i, m_i)} \text{ are open sets in } (Y, d_Y) \\
+            f \in \bigcap_{j = 1}^{m_i} V_{(i, j)}^{(x_{(i, j)})} \subseteq U_i
+        \end{cases}                                \\
+        \implies & f \in \bigcap_{i = 1}^n \bigg(\bigcap_{j = 1}^{m_i} V_{(i, j)}^{(x_{(i, j)})}\bigg) \subseteq \bigcap_{i = 1}^n U_i
+    \end{align*}
+    and \(f\) is arbitrary, we know that \(\bigcap_{i = 1}^n U_i \in \mathcal{F}\).
+    Since \(n\) is arbitrary, we know that the intersection of any finite collection of open sets in \((Y^X, \mathcal{F})\) is open in \((Y^X, \mathcal{F})\).
+
+    Next we show that the union of arbitrary open sets in \((Y^X, \mathcal{F})\) is open in \((Y^X, \mathcal{F})\).
+    Let \(S \subseteq \mathcal{F}\) and let \(f \in \bigcup S\).
+    Since
+    \begin{align*}
+                 & f \in \bigcup S                               \\
+        \implies & \exists\ U \in S : f \in U                    \\
+        \implies & \exists\ U \in S : \begin{cases}
+            x_1, \dots, x_n \in X                              \\
+            V_1, \dots, V_n \text{ are open sets in } (Y, d_Y) \\
+            f \in \bigcap_{i = 1}^n V_i^{(x_i)} \subseteq U \subseteq \bigcup S
+        \end{cases}
+    \end{align*}
+    and \(f\) is arbitrary, we know that \(\bigcup S \in \mathcal{F}\).
+    Since \(S\) is arbitrary, we know that the union of arbitrary open sets in \((Y^X, \mathcal{F})\) is open in \((Y^X, \mathcal{F})\).
+    Combine all the proofs above we conclude by Definition \ref{2.5.1} that \((Y^X, \mathcal{F})\) is a topological space.
+
+    Next suppose that \((f^{(n)})_{n = 1}^\infty\) is a sequence in \(Y^X\) and \(f \in Y^X\).
+    Suppose also that \((f^{(n)})_{n = 1}^\infty\) converges to \(f\) in \((Y^X, \mathcal{F})\).
+    Then by Definition \ref{2.5.4} we have
+    \[
+        \forall\ E \in \mathcal{F}, f \in E \implies \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, f^{(n)} \in E.
+    \]
+    Let \(x_0 \in X\).
+    Then we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big) \text{ is open in } (Y, d_Y)            & \text{(by Proposition \ref{1.2.15}(c))} \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, f \in \Big(B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big)\Big)^{(x_0)} \in \mathcal{F} & \text{(by definition)}                  \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N,                                                                            \\
+                 & f^{(n)} \in \Big(B_{(Y, d_Y)}\big(f(x_0), \varepsilon\big)\Big)^{(x_0)}                                                  & \text{(by Definition \ref{2.5.4})}      \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N,                                                                            \\
+                 & d_Y\big(f^{(n)}(x_0), f(x_0)\big) < \varepsilon                                                                          & \text{(by definition)}                  \\
+        \implies & \lim_{n \to \infty} d_Y\big(f^{(n)}(x_0), f(x_0)\big).                                                                   & \text{(by Definition \ref{1.1.14})}
+    \end{align*}
+    Since \(x_0\) is arbitrary, by Definition \ref{3.2.1} \((f^{(n)})_{n = 1}^\infty\) converges pointwise to \(f\) on \(X\) with respect to \(d_Y\).
+
+    Finally suppose that \((f^{(n)})_{n = 1}^\infty\) is a sequence in \(Y^X\) and \(f \in Y^X\).
+    Suppose also that \((f^{(n)})_{n = 1}^\infty\) converges pointwise to \(f\) on \(X\) with respect to \(d_Y\).
+    Then we have
+    \begin{align*}
+                 & \forall\ x \in X, \lim_{n \to \infty} d_Y\big(f^{(n)}(x), f(x)\big)                                       & \text{(by Definition \ref{3.2.1})}  \\
+        \implies & \forall\ x \in X, \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N,                                       \\
+                 & d_Y\big(f^{(n)}(x), f(x)\big) < \varepsilon.                                                              & \text{(by Definition \ref{1.1.14})}
+    \end{align*}
+    We choose one \(N\) for each pair of \((x, \varepsilon)\) and denote it as \(N_{(x, \varepsilon)}\).
+    Let \(E \in \mathcal{F}\) such that \(f \in E\).
+    By definition we know that
+    \[
+        \exists\ m \in \mathbf{Z}^+ : \begin{cases}
+            x_1, \dots, x_m \in X                              \\
+            V_1, \dots, V_m \text{ are open sets in } (Y, d_Y) \\
+            f \in \bigcap_{i = 1}^m V_i^{(x_i)} \subseteq E
+        \end{cases}
+    \]
+    Then we have
+    \begin{align*}
+                 & \forall\ 1 \leq i \leq m, f \in V_i^{(x_i)}                                                                                                                                        \\
+        \implies & \forall\ 1 \leq i \leq m, \begin{cases}
+            f(x_i) \in V_i \\
+            V_i \text{ is open in } (Y, d_Y)
+        \end{cases}                                                                                                                               \\
+        \implies & \forall\ 1 \leq i \leq m, \exists\ \varepsilon_i \in \mathbf{R}^+ : B_{(Y, d_Y)}\big(f(x_i), \varepsilon_i\big) \subseteq V_i            & \text{(by Proposition \ref{1.2.15}(a))} \\
+        \implies & \forall\ 1 \leq i \leq m, \exists\ \varepsilon_i \in \mathbf{R}^+ : \exists\ N_{(x_i, \varepsilon_i)} \in \mathbf{Z}^+ :                                                           \\
+                 & \forall\ n \geq N_{(x_i, \varepsilon_i)}, f^{(n)}(x_i) \in B_{(Y, d_Y)}\big(f(x_i), \varepsilon_i\big) \subseteq V_i                                                               \\
+        \implies & \exists\ N = \max_{1 \leq i \leq m} N_{(x_i, \varepsilon_i)} : \forall\ n \geq N, f^{(n)} \in \bigcap_{i = 1}^m V_i^{(x_i)} \subseteq E.
+    \end{align*}
+    Since \(E\) is arbitrary, by Definition \ref{2.5.4} we know that \((f^{(n)})_{n = 1}^\infty\) converges to \(f\) in \((Y^X, \mathcal{F})\).
+\end{proof}
