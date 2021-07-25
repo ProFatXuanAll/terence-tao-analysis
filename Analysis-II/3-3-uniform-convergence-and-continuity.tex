@@ -273,3 +273,36 @@
     Suppose also that the functions \((f_n)_{n = 1}^\infty\) and \((g_n)_{n = 1}^\infty\) are uniformly bounded, i.e., there exists an \(M > 0\) such that \(\abs*{f_n(x)} \leq M\) and \(\abs*{g_n(x)} \leq M\) for all \(n \geq 1\) and \(x \in X\).
     Prove that the functions \(f_n g_n : X \to \mathbf{R}\) converge uniformly to \(fg : X \to \mathbf{R}\).
 \end{exercise}
+
+\begin{proof}
+    Let \(d_1 = d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+    Since \((f_n)_{n = 1}^\infty\) and \((g_n)_{n = 1}^\infty\) are uniformly bounded, by Definition \ref{3.3.5} we know that \(f_n\) and \(g_n\) are bounded in \((\mathbf{R}, d_1)\) for each \(n \in \mathbf{Z}^+\).
+    By Proposition \ref{3.3.6} we know that \(f\) and \(g\) are bounded in \((\mathbf{R}, d_1)\), i.e.,
+    \[
+        \exists\ U \in \mathbf{R}^+ : \forall\ x \in X, \begin{cases}
+            \abs*{f(x)} < U \\
+            \abs*{g(x)} < U
+        \end{cases}
+    \]
+    Since \((f_n)_{n = 1}^\infty\) and \((g_n)_{n = 1}^\infty\) converge uniformly to \(f\) on \(X\) with respect to \(d_1\), by Definition \ref{3.2.7} we have
+    \begin{align*}
+         & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N_1 \in \mathbf{Z}^+ : \forall\ n \geq N_1, \forall\ x \in X, \abs*{f_n(x) - f(x)} < \frac{\varepsilon}{2M}; \\
+         & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N_2 \in \mathbf{Z}^+ : \forall\ n \geq N_2, \forall\ x \in X, \abs*{g_n(x) - g(x)} < \frac{\varepsilon}{2U}.
+    \end{align*}
+    Now we fix one \(\varepsilon\) and its corresponding \(N_1, N_2\).
+    Let \(N = \max(N_1, N_2)\).
+    Then we have
+    \begin{align*}
+        \forall\ n \geq N, \forall\ x \in X, & \abs*{f_n(x) g_n(x) - f(x) g(x)}                                         \\
+                                             & = \abs*{f_n(x) g_n(x) - f(x) g_n(x) + f(x) g_n(x) - f(x) g(x)}           \\
+                                             & \leq \abs*{f_n(x) g_n(x) - f(x) g_n(x)} + \abs*{f(x) g_n(x) - f(x) g(x)} \\
+                                             & = \abs*{f_n(x) - f(x)} \abs*{g_n(x)} + \abs*{f(x)} \abs*{g_n(x) - g(x)}  \\
+                                             & < \frac{\varepsilon}{2M} M + U \frac{\varepsilon}{2U}                    \\
+                                             & = \varepsilon.
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary, we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \forall\ x \in X, \abs*{f_n(x) g_n(x) - f(x) g(x)} < \varepsilon
+    \]
+    and by Definition \ref{3.2.7} \((f_n g_n)_{n = 1}^\infty\) converges uniformly to \(fg\) on \(X\) with respect to \(d_1\).
+\end{proof}
