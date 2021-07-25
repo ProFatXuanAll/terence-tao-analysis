@@ -1,1 +1,106 @@
 \section{The metric of uniform convergence}\label{sec 3.4}
+
+\begin{note}
+    We have now developed at least four, apparently separate, notions of limit in this text:
+    \begin{enumerate}
+        \item limits \(\lim_{n \to \infty} x^{(n)}\) of sequences of points in a metric space
+              (Definition \ref{1.1.14};
+              see also Definition \ref{2.5.4});
+        \item limiting values \(\lim_{x \to x_0 ; x \in E} f(x)\) of functions at a point
+              (Definition \ref{3.1.1});
+        \item pointwise limits \(f\) of functions \(f^{(n)}\)
+              (Definition \ref{3.2.1});
+              and
+        \item uniform limits \(f\) of functions \(f^{(n)}\)
+              (Definition \ref{3.2.7}).
+    \end{enumerate}
+
+    This proliferation of limits may seem rather complicated.
+    However, we can reduce the complexity slightly by observing that (d) can be viewed as a special case of (a), though in doing so it should be cautioned that because we are now dealing with functions instead of points, the convergence is not in \(X\) or in \(Y\), but rather in a new space, the space of functions from \(X\) to \(Y\).
+\end{note}
+
+\begin{remark}\label{3.4.1}
+    If one is willing to work in topological spaces instead of metric spaces, we can also view (b) as a special case of (a), see Exercise \ref{ex 3.1.4}, and (c) is also a special case of (a), see Exercise \ref{ex 3.4.4}.
+    Thus the notion of convergence in a topological space can be used to unify all the notions of limits we have encountered so far.
+\end{remark}
+
+\begin{definition}[Metric space of bounded functions]\label{3.4.2}
+    Suppose \((X, d_X)\) and \((Y, d_Y)\) are metric spaces.
+    We let \(B(X \to Y)\) denote the space of bounded functions from \(X\) to \(Y\) :
+    \[
+        B(X \to Y) \coloneqq \{f | f : X \to Y \text{ is a bounded function}\}.
+    \]
+    We define a metric \(d_\infty : B(X \to Y) \times B(X \to Y) \to \mathbf{R}^+\) by defining
+    \[
+        d_\infty(f, g) \coloneqq \sup_{x \in X} d_Y\big(f(x), g(x)\big) = \sup\{d_Y\big(f(x), g(x)\big) : x \in X\}
+    \]
+    for all \(f, g \in B(X \to Y)\).
+    This metric is sometimes known as the \emph{sup norm metric} or the \(L^\infty\) metric.
+    We will also use \(d_{B(X \to Y)}\) as a synonym for \(d_\infty\).
+\end{definition}
+
+\begin{note}
+    \(B(X \to Y)\) is a set, thanks to the power set axiom (Axiom 3.10 in Analysis I) and the axiom of specification (Axiom 3.5 in Analysis I).
+\end{note}
+
+\begin{note}
+    The distance \(d_\infty(f, g)\) is always finite because \(f\) and \(g\) are assumed to be bounded on \(X\).
+\end{note}
+
+\setcounter{theorem}{3}
+\begin{proposition}\label{3.4.4}
+    Let \((X, d_X)\) and \((Y, d_Y)\) be metric spaces.
+    Let \((f^{(n)})_{n = 1}^\infty\) be a sequence of functions in \(B(X \to Y)\), and let \(f\) be another function in \(B(X \to Y)\).
+    Then \((f^{(n)})_{n = 1}^\infty\) converges to \(f\) in the metric \(d_{B(X \to Y)}\) if and only if \((f^{(n)})_{n = 1}^\infty\) converges uniformly to \(f\).
+\end{proposition}
+
+\begin{note}
+    Now let \(C(X \to Y)\) be the space of bounded continuous functions from \(X\) to \(Y\) :
+    \[
+        C(X \to Y) \coloneqq \{f \in B(X \to Y) | f \text{ is continuous}\}.
+    \]
+    This set \(C(X \to Y)\) is clearly a subset of \(B(X \to Y)\).
+    Corollary \ref{3.3.2} asserts that this space \(C(X \to Y)\) is closed in \(B(X \to Y)\).
+\end{note}
+
+\begin{theorem}[The space of continuous functions is complete]\label{3.4.5}
+    Let \((X, d_X)\) be a metric space, and let \((Y, d_Y)\) be a complete metric space.
+    The space \(\big(C(X \to Y), d_{B(X \to Y)}|_{C(X \to Y) \times C(X \to Y)}\big)\) is a complete subspace of \(\big(B(X \to Y), d_{B(X \to Y)}\big)\).
+    In other words, every Cauchy sequence of functions in \(C(X \to Y)\) converges to a function in \(C(X \to Y)\).
+\end{theorem}
+
+\exercisesection
+
+\begin{exercise}\label{ex 3.4.1}
+    Let \((X, d_X)\) and \((Y, d_Y)\) be metric spaces.
+    Show that the space \(B(X \to Y)\) defined in Definition \ref{3.4.2}, with the metric \(d_{B(X \to Y)}\), is indeed a metric space.
+\end{exercise}
+
+\begin{exercise}\label{ex 3.4.2}
+    Prove Proposition \ref{3.4.4}.
+\end{exercise}
+
+\begin{exercise}\label{ex 3.4.3}
+    Prove Theorem \ref{3.4.5}.
+\end{exercise}
+
+\begin{exercise}\label{ex 3.4.4}
+    Let \((X, d_X)\) and \((Y, d_Y)\) be metric spaces, and let \(Y^X \coloneqq \{f | f : X \to Y \}\) be the space of all functions from \(X\) to \(Y\)
+    (cf. Axiom 3.10 in Analysis I).
+    If \(x_0 \in X\) and \(V\) is an open set in \(Y\), let \(V(x_0) \subseteq Y^X\) be the set
+    \[
+        V^{(x_0)} \coloneqq \{f \in Y^X : f(x_0) \in V\}.
+    \]
+    If \(E\) is a subset of \(Y^X\), we say that \(E\) is \emph{open} if for every \(f \in E\), there exists a finite number of points \(x_1, \dots, x_n \in X\) and open sets \(V_1, \dots, V_n \subseteq Y\) such that
+    \[
+        f \in V_1^{(x_1)} \cap \dots \cap V_n^{(x_n)} \subseteq E.
+    \]
+    \begin{itemize}
+        \item Show that if \(\mathcal{F}\) is the collection of open sets in \(Y^X\), then \((Y^X , \mathcal{F})\) is a topological space.
+        \item For each natural number \(n\), let \(f^{(n)} : X \to Y\) be a function from \(X\) to \(Y\), and let \(f : X \to Y\) be another function from \(X\) to \(Y\).
+              Show that \(f^{(n)}\) converges to \(f\) in the topology \(\mathcal{F}\) (in the sense of Definition \ref{2.5.4}) if and only if \(f^{(n)}\) converges to \(f\) pointwise (in the sense of Definition \ref{3.2.1}).
+    \end{itemize}
+    The topology \(\mathcal{F}\) is known as the \emph{topology of pointwise convergence}, for obvious reasons;
+    it is also known as the \emph{product topology}.
+    It shows that the concept of pointwise convergence can be viewed as a special case of the more general concept of convergence in a topological space.
+\end{exercise}
