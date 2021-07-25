@@ -109,6 +109,44 @@
     Then \(f^{(n)}(x^{(n)})\) converges (in \(Y\)) to \(f(x)\).
 \end{proposition}
 
+\begin{proof}
+    Let \(x_0 \in X\).
+    Suppose that \((x^{(n)})_{n = 1}^\infty\) is a sequence in \(X\) such that
+    \[
+        \lim_{n \to \infty} d_X(x^{(n)}, x_0) = 0.
+    \]
+    By Theorem \ref{3.3.1} we know that \(f\) is continuous at \(x_0\) from \((X, d_X)\) to \((Y, d_Y)\).
+    Thus by Theorem \ref{2.1.4}(a)(b) we have
+    \[
+        \lim_{n \to \infty} d_Y\big(f(x^{(n)}), f(x_0)\big) = 0
+    \]
+    and by Definition \ref{1.1.14} we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N_1 \in \mathbf{Z}^+ : \forall\ n \geq N_1, d_Y\big(f(x^{(n)}), f(x_0)\big) < \frac{\varepsilon}{2}.
+    \]
+    Now we choose one pair of \(\varepsilon\) and \(N_1\).
+    Since \((f^{(n)})_{n = 1}^\infty\) converges uniformly to \(f\) on \(X\) with respect to \(d_Y\), by Definition \ref{3.2.7} we have
+    \begin{align*}
+                 & \exists\ N_2 \in \mathbf{Z}^+ : \forall\ n \geq N_2, \forall\ x \in X, d_Y\big(f^{(n)}(x), f(x)\big) < \frac{\varepsilon}{2}                                           \\
+        \implies & \exists\ N_2 \in \mathbf{Z}^+ : \forall\ n \geq N_2, d_Y\big(f^{(n)}(x^{(n)}), f(x^{(n)})\big) < \frac{\varepsilon}{2}                                                 \\
+        \implies & \exists\ N = \max(N_1, N_2) : \forall\ n \geq N,                                                                                                                       \\
+                 & d_Y\big(f^{(n)}(x^{(n)}), f(x_0)\big) \leq d_Y\big(f^{(n)}(x^{(n)}), f(x^{(n)})\big) + d_Y\big(f(x^{(n)}), f(x_0)\big) < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} \\
+        \implies & \exists\ N = \max(N_1, N_2) : \forall\ n \geq N, d_Y\big(f^{(n)}(x^{(n)}), f(x_0)\big) < \varepsilon.
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary, by Definition \ref{1.1.14} we know that
+    \[
+        \lim_{n \to \infty} d_Y\big(f^{(n)}(x^{(n)}), f(x_0)\big) = 0.
+    \]
+    Since \(x_0\) is arbitrary, we conclude that for any \(x_0 \in X\), if \((x^{(n)})_{n = 1}^\infty\) is a sequence in \(X\) such that
+    \[
+        \lim_{n \to \infty} d_X(x^{(n)}, x_0) = 0,
+    \]
+    then we have
+    \[
+        \lim_{n \to \infty} d_Y\big(f^{(n)}(x^{(n)}), f(x_0)\big) = 0.
+    \]
+\end{proof}
+
 \begin{definition}[Bounded functions]\label{3.3.5}
     A function \(f : X \to Y\) from one metric space \((X, d_X)\) to another \((Y, d_Y)\) is \emph{bounded} if \(f(X)\) is a bounded set, i.e., there exists a ball \(B_{(Y, d_Y)}(y_0, R)\) in \(Y\) such that \(f(x) \in B_{(Y, d_Y)}(y_0, R)\) for all \(x \in X\).
 \end{definition}
