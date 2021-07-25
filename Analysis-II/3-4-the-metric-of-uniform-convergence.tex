@@ -77,7 +77,7 @@
         C(X \to Y) \coloneqq \{f \in B(X \to Y) | f \text{ is continuous}\}.
     \]
     This set \(C(X \to Y)\) is clearly a subset of \(B(X \to Y)\).
-    Corollary \ref{3.3.2} asserts that this space \(C(X \to Y)\) is closed in \(B(X \to Y)\).
+    Corollary \ref{3.3.2} asserts that this space \(C(X \to Y)\) is closed in \(\big(B(X \to Y), d_{B(X \to Y)}\big)\).
 \end{note}
 
 \begin{theorem}[The space of continuous functions is complete]\label{3.4.5}
@@ -85,6 +85,60 @@
     The space \(\big(C(X \to Y), d_{B(X \to Y)}|_{C(X \to Y) \times C(X \to Y)}\big)\) is a complete subspace of \(\big(B(X \to Y), d_{B(X \to Y)}\big)\).
     In other words, every Cauchy sequence of functions in \(C(X \to Y)\) converges to a function in \(C(X \to Y)\).
 \end{theorem}
+
+\begin{proof}
+    Let \(d_{C(X \to Y)} = d_{B(X \to Y)}|_{C(X \to Y) \times C(X \to Y)}\) and let \(n_1, n_2 \in \mathbf{Z}^+\).
+    Let \((f^{(n)})_{n = 1}^\infty\) be a Cauchy sequence in \(\big(C(X \to Y), d_{C(X \to Y)}\big)\).
+    Observe that
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n_1, n_2 \geq N,                                        \\
+                 & d_{C(X \to Y)}\big(f^{(n_1)}, f^{(n_2)}\big) < \varepsilon                                       & \text{(by Definition \ref{1.4.6})} \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n_1, n_2 \geq N,                                        \\
+                 & \sup_{x \in X} d_Y\big(f^{(n_1)}(x), f^{(n_2)}(x)\big) < \varepsilon                             & \text{(by Definition \ref{3.4.2})} \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n_1, n_2 \geq N,                                        \\
+                 & \forall\ x \in X, d_Y\big(f^{(n_1)}(x), f^{(n_2)}(x)\big) < \varepsilon                                                               \\
+        \implies & \forall\ x \in X, \big(f^{(n)}(x)\big)_{n = 1}^\infty \text{ is a Cauchy sequence in } (Y, d_Y). & \text{(by Definition \ref{1.4.6})}
+    \end{align*}
+    By hypothesis we know that \((Y, d_Y)\) is complete, thus by Definition \ref{1.4.10} we have
+    \[
+        \forall\ x \in X, d_Y - \lim_{n \to \infty} f^{(n)}(x) \in Y
+    \]
+    and we can define a function \(f : X \to Y\) such that
+    \[
+        \forall\ x \in X, f(x) = d_Y - \lim_{n \to \infty} f^{(n)}(x).
+    \]
+    By Definition \ref{3.2.1} this means \((f^{(n)})_{n = 1}^\infty\) converges pointwise to \(f\) on \(X\) with respect to \(d_Y\).
+    By Definition \ref{1.1.14} we have
+    \begin{align*}
+                 & \forall\ x \in X, f(x) = d_Y - \lim_{n \to \infty} f^{(n)}(x)                                                                                                        \\
+        \implies & \forall\ x \in X, \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N_1 \in \mathbf{Z}^+ : \forall\ n \geq N_1, d_Y\big(f^{(n)}(x), f(x)\big) < \frac{\varepsilon}{2}.
+    \end{align*}
+    We choose one \(N_1\) for each pair of \((x, \varepsilon)\).
+    Since \((f^{(n)})_{n = 1}^\infty\) is a Cauchy sequence in \(\big(C(X \to Y), d_{C(X \to Y)}\big)\), we have
+    \begin{align*}
+                 & \exists\ N_2 \in \mathbf{Z}^+ : \forall\ n \geq N_2, d_{C(X \to Y)}(f^{(n)}, f^{(N)}) < \frac{\varepsilon}{2}                   & \text{(by Definition \ref{1.4.6})}    \\
+        \implies & \exists\ N_2 \in \mathbf{Z}^+ : \forall\ n \geq N_2, \sup_{x \in X} d_Y\big(f^{(n)}(x), f^{(N)}(x)\big) < \frac{\varepsilon}{2} & \text{(by Definition \ref{3.4.2})}    \\
+        \implies & \exists\ N_2 \in \mathbf{Z}^+ : \forall\ n \geq N_2, \forall\ x \in X,                                                                                                  \\
+                 & d_Y\big(f^{(n)}(x), f^{(N)}(x)\big) < \frac{\varepsilon}{2}                                                                                                             \\
+        \implies & \exists\ N = \max(N_1, N_2) : \forall\ n \geq N, \forall\ x \in X,                                                                                                      \\
+                 & d_Y\big(f^{(n)}(x), f(x)\big)                                                                                                                                           \\
+                 & \leq d_Y\big(f^{(n)}(x), f^{(N)}(x)\big) + d_Y\big(f^{(N)}(x), f(x)\big)                                                        & \text{(by Definition \ref{1.1.2}(d))} \\
+                 & < \frac{\varepsilon}{2} + \frac{\varepsilon}{2}                                                                                                                         \\
+        \implies & \exists\ N = \max(N_1, N_2) : \forall\ n \geq N, \forall\ x \in X,                                                                                                      \\
+                 & d_Y\big(f^{(n)}(x), f(x)\big) < \varepsilon.
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary, we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \forall\ x \in X, d_Y\big(f^{(n)}(x), f(x)\big) < \varepsilon
+    \]
+    and by Definition \ref{3.2.7} \((f^{(n)})_{n = 1}^\infty\) converges uniformly to \(f\) on \(X\) with respect to \(d_Y\).
+    By Proposition \ref{3.3.6} we know that \(f \in B(X \to Y)\), and by Corollary \ref{3.3.2} we know that \(f \in C(X \to Y)\).
+    Thus by Proposition \ref{3.4.4} we have
+    \[
+        d_{B(X \to Y)} \lim_{n \to \infty} f^{(n)} = f = d_{C(X \to Y)} \lim_{n \to \infty} f^{(n)}.
+    \]
+    Since \((f^{(n)})_{n = 1}^\infty\) is arbitrary, by Definition \ref{1.4.10} \(\big(C(X \to Y), d_{C(X \to Y)}\big)\) is complete.
+\end{proof}
 
 \exercisesection
 
@@ -108,7 +162,7 @@
                                                         & = \sup \{0\}                             & \text{(by Definition \ref{1.1.2}(a))} \\
                                                         & = 0,
     \end{align*}
-    we know that \(d_{B(X \to Y)}\) is reflexive.
+    by Definition \ref{1.1.2}(a) we know that \(\big(B(X \to Y), d_{B(X \to Y)}\big)\) is reflexive.
     Since
     \begin{align*}
                  & \forall\ f, g \in B(X \to Y), f \neq g                                                                     \\
@@ -116,14 +170,14 @@
         \implies & \exists\ x \in X : d_Y\big(f(x), g(x)\big) > 0                     & \text{(by Definition \ref{1.1.2}(b))} \\
         \implies & d_{B(X \to Y)}(f, g) = \sup_{x \in X} d_Y\big(f(x), g(x)\big) > 0, & \text{(by Definition \ref{3.4.2})}
     \end{align*}
-    we know that \(d_{B(X \to Y)}\) is positive given pair of inequivalent inputs.
+    by Definition \ref{1.1.2}(b) we know that \(\big(B(X \to Y), d_{B(X \to Y)}\big)\) is positive.
     Since
     \begin{align*}
         \forall\ f, g \in B(X \to Y), d_{B(X \to Y)}(f, g) & = \sup_{x \in X} d_Y\big(f(x), g(x)\big) & \text{(by Definition \ref{3.4.2})}    \\
                                                            & = \sup_{x \in X} d_Y\big(g(x), f(x)\big) & \text{(by Definition \ref{1.1.2}(c))} \\
                                                            & = d_{B(X \to Y)}(g, f),                  & \text{(by Definition \ref{3.4.2})}
     \end{align*}
-    we know that \(d_{B(X \to Y)}\) is symmetry.
+    by Definition \ref{1.1.2}(c) we know that \(\big(B(X \to Y), d_{B(X \to Y)}\big)\) is symmetry.
     Since
     \begin{align*}
          & \forall\ f, g, h \in B(X \to Y),                                                                                          \\
@@ -133,7 +187,7 @@
          & \geq \sup_{x \in X} d_Y\big(f(x), h(x)\big)                                       & \text{(by Definition \ref{1.1.2}(d))} \\
          & = d_{B(X \to Y)}(f, h),                                                           & \text{(by Definition \ref{3.4.2})}
     \end{align*}
-    we know that \(d_{B(X \to Y)}\) is transitive.
+    by Definition \ref{1.1.2}(d) we know that \(\big(B(X \to Y), d_{B(X \to Y)}\big)\) is transitive.
     Combine all the proofs above we conclude by Definition \ref{1.1.2} that \(\big(B(X \to Y), d_{B(X \to Y)}\big)\) is a metric space.
 \end{proof}
 
