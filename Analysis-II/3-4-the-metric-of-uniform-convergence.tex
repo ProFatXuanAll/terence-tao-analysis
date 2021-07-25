@@ -78,6 +78,50 @@
     Show that the space \(B(X \to Y)\) defined in Definition \ref{3.4.2}, with the metric \(d_{B(X \to Y)}\), is indeed a metric space.
 \end{exercise}
 
+\begin{proof}
+    If \(X = \emptyset\), then by Definition \ref{3.4.2} we have
+    \begin{itemize}
+        \item If \(f \in B(\emptyset \to Y)\), then \(d_{B(X \to Y)}(f, f) = 0\).
+        \item If \(f, g \in B(\emptyset \to Y)\), then \(d_{B(X \to Y)}(f, g) = 0 = d_{B(X \to Y)}(g, f)\).
+        \item If \(f, g, h \in B(\emptyset \to Y)\), then \(d_{B(X \to Y)}(f, h) = 0 = d_{B(X \to Y)}(f, g) + d_{B(X \to Y)}(g, h)\).
+    \end{itemize}
+    Thus by Definition \ref{1.1.2} \(\big(B(\emptyset \to Y), d_{B(X \to Y)}\big)\) is a metric space.
+    Now suppose that \(X \neq \emptyset\).
+    Since
+    \begin{align*}
+        \forall\ f \in B(X \to Y), d_{B(X \to Y)}(f, f) & = \sup_{x \in X} d_Y\big(f(x), f(x)\big) & \text{(by Definition \ref{3.4.2})}    \\
+                                                        & = \sup \{0\}                             & \text{(by Definition \ref{1.1.2}(a))} \\
+                                                        & = 0,
+    \end{align*}
+    we know that \(d_{B(X \to Y)}\) is reflexive.
+    Since
+    \begin{align*}
+                 & \forall\ f, g \in B(X \to Y), f \neq g                                                                     \\
+        \implies & \exists\ x \in X : f(x) \neq g(x)                                                                          \\
+        \implies & \exists\ x \in X : d_Y\big(f(x), g(x)\big) > 0                     & \text{(by Definition \ref{1.1.2}(b))} \\
+        \implies & d_{B(X \to Y)}(f, g) = \sup_{x \in X} d_Y\big(f(x), g(x)\big) > 0, & \text{(by Definition \ref{3.4.2})}
+    \end{align*}
+    we know that \(d_{B(X \to Y)}\) is positive given pair of inequivalent inputs.
+    Since
+    \begin{align*}
+        \forall\ f, g \in B(X \to Y), d_{B(X \to Y)}(f, g) & = \sup_{x \in X} d_Y\big(f(x), g(x)\big) & \text{(by Definition \ref{3.4.2})}    \\
+                                                           & = \sup_{x \in X} d_Y\big(g(x), f(x)\big) & \text{(by Definition \ref{1.1.2}(c))} \\
+                                                           & = d_{B(X \to Y)}(g, f),                  & \text{(by Definition \ref{3.4.2})}
+    \end{align*}
+    we know that \(d_{B(X \to Y)}\) is symmetry.
+    Since
+    \begin{align*}
+         & \forall\ f, g, h \in B(X \to Y),                                                                                          \\
+         & d_{B(X \to Y)}(f, g) + d_{B(X \to Y)}(g, h)                                                                               \\
+         & = \sup_{x \in X} d_Y\big(f(x), g(x)\big) + \sup_{x \in X} d_Y\big(g(x), h(x)\big) & \text{(by Definition \ref{3.4.2})}    \\
+         & \geq \sup_{x \in X} \Big(d_Y\big(f(x), g(x)\big) + d_Y\big(g(x), h(x)\big)\Big)                                           \\
+         & \geq \sup_{x \in X} d_Y\big(f(x), h(x)\big)                                       & \text{(by Definition \ref{1.1.2}(d))} \\
+         & = d_{B(X \to Y)}(f, h),                                                           & \text{(by Definition \ref{3.4.2})}
+    \end{align*}
+    we know that \(d_{B(X \to Y)}\) is transitive.
+    Combine all the proofs above we conclude by Definition \ref{1.1.2} that \(\big(B(X \to Y), d_{B(X \to Y)}\big)\) is a metric space.
+\end{proof}
+
 \begin{exercise}\label{ex 3.4.2}
     Prove Proposition \ref{3.4.4}.
 \end{exercise}
