@@ -1,1 +1,89 @@
 \section{Uniform convergence and derivatives}\label{sec 3.7}
+
+\begin{note}
+    In particular we have
+    \[
+        \frac{d}{dx} \lim_{n \to \infty} f_n(x) \neq \lim_{n \to \infty} \frac{d}{dx} f_n(x)
+    \]
+    So, in summary, uniform convergence of the functions \(f_n\) says nothing about the convergence of the derivatives \(f_n'\).
+\end{note}
+
+\begin{theorem}\label{3.7.1}
+    Let \([a, b]\) be an interval, and for every integer \(n \geq 1\), let \(f_n : [a, b] \to \mathbf{R}\) be a differentiable function whose derivative \(f_n' : [a, b] \to \mathbf{R}\) is continuous.
+    Suppose that the derivatives \(f_n'\) converge uniformly to a function \(g : [a, b] \to \mathbf{R}\).
+    Suppose also that there exists a point \(x_0\) such that the limit \(\lim_{n \to \infty} f_n(x_0)\) exists.
+    Then the functions \(f_n\) converge uniformly to a differentiable function \(f\), and the derivative of \(f\) equals \(g\).
+\end{theorem}
+
+\begin{proof}
+    Since \(f_n'\) is continuous, we see from the fundamental theorem of calculus (Theorem 11.9.4 in Analysis I) that
+    \[
+        f_n(x) - f_n(x_0) = \int_{[x_0, x]} f_n'
+    \]
+    when \(x \in [x_0, b]\), and
+    \[
+        f_n(x) - f_n(x_0) = -\int_{[x, x_0]} f_n'
+    \]
+    when \(x \in [a, x_0]\).
+    Let \(L\) be the limit of \(f_n(x_0)\) as \(n \to \infty\):
+    \[
+        L \coloneqq \lim_{n \to \infty} f_n(x_0).
+    \]
+    By hypothesis, \(L\) exists.
+    Now, since each \(f_n'\) is continuous on \([a, b]\), and \(f_n'\) converges uniformly to \(g\), we see by Corollary \ref{3.3.2} that \(g\) is also continuous.
+    Now define the function \(f : [a, b] \to \mathbf{R}\) by setting
+    \[
+        f(x) \coloneqq L - \int_{[a, x_0]} g + \int_{[a, x]} g
+    \]
+    for all \(x \in [a, b]\).
+    To finish the proof, we have to show that \(f_n\) converges uniformly to \(f\), and that \(f\) is differentiable with derivative \(g\);
+\end{proof}
+
+\begin{note}
+    Informally, Theorem \ref{3.7.1} says that if \(f_n'\) converges uniformly, and \(f_n(x_0)\) converges for some \(x_0\), then \(f_n\) also converges uniformly, and
+    \[
+        \frac{d}{dx} \lim_{n \to \infty} f_n(x) = \lim_{n \to \infty} \frac{d}{dx} f_n(x)
+    \]
+\end{note}
+
+\begin{remark}\label{3.7.2}
+    It turns out that Theorem \ref{3.7.1} is still true when the functions \(f_n'\) are not assumed to be continuous, but the proof is more difficult;
+    see Exercise \ref{ex 3.7.2}.
+\end{remark}
+
+\begin{corollary}\label{3.7.3}
+    Let \([a, b]\) be an interval, and for every integer \(n \geq 1\), let \(f_n : [a, b] \to \mathbf{R}\) be a differentiable function whose derivative \(f_n' : [a, b] \to \mathbf{R}\) is continuous.
+    Suppose that the series \(\sum_{n = 1}^\infty \norm*{f_n'}_\infty\) is absolutely convergent, where
+    \[
+        \norm*{f_n'}_\infty \coloneqq \sup_{x \in [a, b]} \abs*{f_n'(x)}
+    \]
+    is the sup norm of \(f_n'\), as defined in Definition \ref{3.5.5}.
+    Suppose also that the series \(\sum_{n = 1}^\infty f_n(x_0)\) is convergent for some \(x_0 \in [a, b]\).
+    Then the series \(\sum_{n = 1}^\infty f_n\) converges uniformly on \([a, b]\) to a differentiable function, and in fact
+    \[
+        \frac{d}{dx} \sum_{n = 1}^\infty f_n(x) = \sum_{n = 1}^\infty \frac{d}{dx} f_n(x)
+    \]
+    for all \(x \in [a, b]\).
+\end{corollary}
+
+\exercisesection
+
+\begin{exercise}\label{ex 3.7.1}
+    Complete the proof of Theorem \ref{3.7.1}.
+    Compare this theorem with Example 1.2.10 in Analysis I, and explain why this example does not contradict the theorem.
+\end{exercise}
+
+\begin{exercise}\label{ex 3.7.2}
+    Prove Theorem \ref{3.7.1} without assuming that \(f_n'\) is continuous.
+    (This means that you cannot use the fundamental theorem of calculus.
+    However, the mean value theorem (Corollary 10.2.9 in Analysis I) is still available.
+    Use this to show that if \(d_\infty(f_n', f_m') \leq \varepsilon\), then \(\abs*{\big(f_n(x) - f_m(x)\big) - \big(f_n(x_0) - f_m(x_0)\big)} \leq \varepsilon \abs*{x - x_0}\) for all \(x \in [a, b]\), and then use this to complete the proof of Theorem \ref{3.7.1}.)
+\end{exercise}
+
+\begin{exercise}\label{ex 3.7.3}
+    Prove Corollary \ref{3.7.3}.
+\end{exercise}
+
+\begin{proof}
+    See Corollary \ref{3.7.3}.
+\end{proof}
