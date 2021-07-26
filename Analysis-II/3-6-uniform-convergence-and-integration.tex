@@ -1,1 +1,76 @@
 \section{Uniform convergence and integration}\label{sec 3.6}
+
+\begin{theorem}\label{3.6.1}
+    Let \([a, b]\) be an interval, and for each integer \(n \geq 1\), let \(f^{(n)} : [a, b] \to \mathbf{R}\) be a Riemann-integrable function.
+    Suppose \(f^{(n)}\) converges uniformly on \([a, b]\) to a function \(f : [a, b] \to \mathbf{R}\).
+    Then \(f\) is also Riemann integrable, and
+    \[
+        \lim_{n \to \infty} \int_{[a, b]} f^{(n)} = \int_{[a, b]} f.
+    \]
+\end{theorem}
+
+\begin{proof}
+    We first show that \(f\) is Riemann integrable on \([a, b]\).
+    This is the same as showing that the upper and lower Riemann integrals of \(f\) match:
+    \(\underline{\int}_{[a, b]} f = \overline{\int}_{[a, b]} f\).
+
+    Let \(\varepsilon > 0\).
+    Since \(f^{(n)}\) converges uniformly to \(f\), we see that there exists an \(N > 0\) such that \(\abs*{f^{(n)}(x) - f(x)} < \varepsilon\) for all \(n > N\) and \(x \in [a, b]\).
+    In particular we have
+    \[
+        f^{(n)}(x) - \varepsilon < f(x) < f^{(n)}(x) + \varepsilon
+    \]
+    for all \(x \in [a, b]\).
+    Integrating this on \([a, b]\) we obtain
+    \[
+        \underline{\int}_{[a, b]} (f^{(n)} - \varepsilon) \leq \underline{\int}_{[a, b]} f \leq \overline{\int}_{[a, b]} f \leq \overline{\int}_{[a, b]} (f^{(n)} + \varepsilon).
+    \]
+    Since \(f^{(n)}\) is assumed to be Riemann integrable, we thus see
+    \[
+        \Bigg(\int_{[a, b]} f^{(n)}\Bigg) - \varepsilon (b - a) \leq \underline{\int}_{[a, b]} f \leq \overline{\int}_{[a, b]} f \leq \Bigg(\int_{[a, b]} f^{(n)}\Bigg) + \varepsilon (b - a).
+    \]
+    In particular, we see that
+    \[
+        0 \leq \overline{\int}_{[a, b]} f - \underline{\int}_{[a, b]} f \leq 2 \varepsilon (b - a).
+    \]
+    Since this is true for every \(\varepsilon > 0\), we obtain \(\underline{\int}_{[a, b]} f = \overline{\int}_{[a, b]} f\) as desired.
+
+    The above argument also shows that for every \(\varepsilon > 0\) there exists an \(N > 0\) such that
+    \[
+        \abs*{\int_{[a, b]} f^{(n)} - \int_{[a, b]} f} \leq \varepsilon (b - a)
+    \]
+    for all \(n \geq N\).
+    Since \(\varepsilon\) is arbitrary, we see that \(\int_{[a, b]} f^{(n)}\) converges to \(\int_{[a, b]} f\) as desired.
+\end{proof}
+
+\begin{note}
+    To rephrase Theorem \ref{3.6.1}:
+    we can rearrange limits and integrals (on compact intervals \([a, b]\)),
+    \[
+        \lim_{n \to \infty} \int_{[a, b]} f^{(n)} = \int_{[a, b]} \lim_{n \to \infty} f^{(n)},
+    \]
+    \emph{provided that} the convergence is uniform.
+\end{note}
+
+\begin{corollary}\label{3.6.2}
+    Let \([a, b]\) be an interval, and let \((f^{(n)})_{n = 1}^\infty\) be a sequence of Riemann integrable functions on \([a, b]\) such that the series \(\sum_{n = 1}^\infty f^{(n)}\) is uniformly convergent.
+    Then we have
+    \[
+        \sum_{n = 1}^\infty \int_{[a, b]} f^{(n)} = \int_{[a, b]} \sum_{n = 1}^\infty f^{(n)}.
+    \]
+\end{corollary}
+
+\begin{note}
+    Corollary \ref{3.6.2} works particularly well in conjunction with the Weierstrass \(M\)-test
+    (Theorem \ref{3.5.7}).
+\end{note}
+
+\exercisesection
+
+\begin{exercise}\label{ex 3.6.1}
+    Use Theorem \ref{3.6.1} to prove Corollary \ref{3.6.2}.
+\end{exercise}
+
+\begin{proof}
+    See Corollary \ref{3.6.2}.
+\end{proof}
