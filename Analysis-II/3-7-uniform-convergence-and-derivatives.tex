@@ -124,6 +124,36 @@
     for all \(x \in [a, b]\).
 \end{corollary}
 
+\begin{proof}
+    Let \(F_N = \sum_{n = 1}^N f_n\) for each \(N \in \mathbf{Z}^+\).
+    Then by Theorem 10.1.13(c) in Analysis I we have
+    \[
+        \forall\ N \in \mathbf{Z}^+, F_N' = \bigg(\sum_{n = 1}^N f_n\bigg)' = \sum_{n = 1}^N f_n'.
+    \]
+    Since \(f_n'\) is continuous on \([a, b]\) for each \(n \in \mathbf{Z}^+\), by Proposition 9.6.7 in Analysis I we know that \(f_n' \in B\big([a, b] \to \mathbf{R}\big)\) and thus \(f_n' \in C\big([a, b] \to \mathbf{R}\big)\).
+    By Exercise \ref{ex 3.5.1} we know that
+    \[
+        \forall\ N \in \mathbf{Z}^+, F_N' = \sum_{n = 1}^N f_n' \in C([a, b] \to \mathbf{R}).
+    \]
+    Since \(\sum_{n = 1}^\infty \norm*{f_n'}_\infty\) converges and \(f_n' \in C\big([a, b] \to \mathbf{R}\big)\) for each \(n \in \mathbf{Z}^+\), by Theorem \ref{3.5.7} we know that there exists some \(G : [a, b] \to \mathbf{R}\) such that \(\big(\sum_{n = 1}^N f_n'\big)_{N = 1}^\infty\) converges uniformly to \(G\) on \([a, b]\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+    Equivalently, \((F_N')_{N = 1}^\infty\) converges uniformly to \(G\) on \([a, b]\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+    Since
+    \[
+        \sum_{n = 1}^\infty f_n(x_0) = \lim_{N \to \infty} \sum_{n = 1}^N f_n(x_0) = \lim_{N \to \infty} F_N(x_0),
+    \]
+    by Theorem \ref{3.7.1} we know that there exists some \(F : [a, b] \to \mathbf{R}\) such that \((F_N)_{N = 1}^\infty\) converges uniformly to \(F\) on \([a, b]\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\) and \(F' = G\).
+    Then we have
+    \begin{align*}
+                 & \forall\ x \in [a, b], \begin{cases}
+            F(x) = \lim_{N \to \infty} F_N(x) = \lim_{N \to \infty} \sum_{n = 1}^N f_n(x) = \sum_{n = 1}^\infty f_n(x)    \\
+            G(x) = \lim_{N \to \infty} F_N'(x) = \lim_{N \to \infty} \sum_{n = 1}^N f_n'(x) = \sum_{n = 1}^\infty f_n'(x) \\
+            F'(x) = G(x)
+        \end{cases}                                             \\
+        \implies & \forall\ x \in [a, b], \bigg(\sum_{n = 1}^\infty f_n\bigg)'(x) = \sum_{n = 1}^\infty f_n'(x) \\
+        \implies & \bigg(\sum_{n = 1}^\infty f_n\bigg)' = \sum_{n = 1}^\infty f_n'.
+    \end{align*}
+\end{proof}
+
 \exercisesection
 
 \begin{exercise}\label{ex 3.7.1}
