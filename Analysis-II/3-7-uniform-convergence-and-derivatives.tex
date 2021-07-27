@@ -16,7 +16,8 @@
 \end{theorem}
 
 \begin{proof}
-    Since \(f_n'\) is continuous, we see from the fundamental theorem of calculus (Theorem 11.9.4 in Analysis I) that
+    Since \(f_n'\) is continuous, by Corollary 11.5.2 in Analysis I we know that \(f_n'\) is Riemann integrable.
+    We see from the fundamental theorem of calculus (Theorem 11.9.4 in Analysis I) that
     \[
         f_n(x) - f_n(x_0) = \int_{[x_0, x]} f_n'
     \]
@@ -31,12 +32,69 @@
     \]
     By hypothesis, \(L\) exists.
     Now, since each \(f_n'\) is continuous on \([a, b]\), and \(f_n'\) converges uniformly to \(g\), we see by Corollary \ref{3.3.2} that \(g\) is also continuous.
+    By Theorem \ref{3.6.1} we have
+    \[
+        \forall\ x \in [a, b], \lim_{n \to \infty} \big(f_n(x) - f_n(a)\big) = \lim_{n \to \infty} \int_{[a, x]} f_n' = \int_{[a, x]} \big(\lim_{n \to \infty} f_n'\big) = \int_{[a, x]} g.
+    \]
     Now define the function \(f : [a, b] \to \mathbf{R}\) by setting
     \[
         f(x) \coloneqq L - \int_{[a, x_0]} g + \int_{[a, x]} g
     \]
     for all \(x \in [a, b]\).
-    To finish the proof, we have to show that \(f_n\) converges uniformly to \(f\), and that \(f\) is differentiable with derivative \(g\);
+    To finish the proof, we have to show that \(f_n\) converges uniformly to \(f\), and that \(f\) is differentiable with derivative \(g\).
+
+    We know that \(a \neq b\) since if \(a = b\), then we have \(x_0 = a = b\) and
+    \[
+        \forall\ n \in \mathbf{Z}^+, \lim_{x \to x_0; x \in \{x_0\} \setminus \{x_0\}} \frac{f_n(x) - f_n(x_0)}{x - x_0} \text{ is undefined}
+    \]
+    which contradict to the hypothesis that \(f_n\) is differentiable on \([a, b]\).
+    Observe that
+    \begin{align*}
+                 & L = \lim_{n \to \infty} f_n(x_0)                                                                                                                \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N_1 \in \mathbf{Z}^+ : \forall\ n \geq N_1, \abs*{f_n(x_0) - L} < \frac{\varepsilon}{3(b - a)}.
+    \end{align*}
+    Now we fix one pair of \(\varepsilon\) and \(N_1\).
+    Since \((f_n')_{n = 1}^\infty\) converges uniformly to \(g\) on \([a, b]\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\), by Definition \ref{3.2.7} we have
+    \begin{align*}
+                 & \exists\ N_2 \in \mathbf{Z}^+ : \forall\ n \geq N_2, \forall\ x \in [a, b],                                                     \\
+                 & \abs*{f_n'(x) - g(x)} < \frac{\varepsilon}{3(b - a)}                                                                            \\
+        \implies & \exists\ N_2 \in \mathbf{Z}^+ : \forall\ n \geq N_2, \forall\ x \in [a, b],                                                     \\
+                 & \frac{-\varepsilon}{3(b - a)} < f_n'(x) - g(x) < \frac{\varepsilon}{3(b - a)}                                                   \\
+        \implies & \exists\ N_2 \in \mathbf{Z}^+ : \forall\ n \geq N_2, \forall\ x \in [a, b],                                                     \\
+                 & \frac{-\varepsilon (x - a)}{3(b - a)} \leq \int_{[a, x]} f_n'(x) - \int_{[a, x]} g(x) \leq \frac{\varepsilon (x - a)}{3(b - a)} \\
+        \implies & \exists\ N_2 \in \mathbf{Z}^+ : \forall\ n \geq N_2, \forall\ x \in [a, b],                                                     \\
+                 & \frac{-\varepsilon (x - a)}{3(b - a)} \leq f_n(x) - f_n(a) - \int_{[a, x]} g(x) \leq \frac{\varepsilon (x - a)}{3(b - a)}       \\
+        \implies & \exists\ N_2 \in \mathbf{Z}^+ : \forall\ n \geq N_2, \forall\ x \in [a, b],                                                     \\
+                 & \abs*{f_n(x) - f_n(a) - \int_{[a, x]} g(x)} \leq \frac{\varepsilon \abs*{x - a}}{3(b - a)}.
+    \end{align*}
+    Let \(N = \max(N_1, N_2)\).
+    Then we have
+    \begin{align*}
+         & \forall\ n \geq N, \forall\ x \in [a, b], \abs*{f_n(x) - f(x)}                                                           \\
+         & = \abs*{f_n(x) - f_n(x_0) + f_n(x_0) - f_n(a) + f_n(a) - L + \int_{[a, x_0]} g - \int_{[a, x]} g}                        \\
+         & \leq \abs*{f_n(x) - f_n(a) - \int_{[a, x]} g} + \abs*{f_n(x_0) - L} + \abs*{f_n(x_0) - f_n(a) - \int_{[a, x_0]} g}       \\
+         & < \frac{\varepsilon \abs*{x - a}}{3(b - a)} + \frac{\varepsilon \abs*{x_0 - a}}{3(b - a)} + \frac{\varepsilon}{3(b - a)} \\
+         & < \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon.
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary, we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \forall\ x \in [a, b], \abs*{f_n(x) - f(x)} < \varepsilon
+    \]
+    and by Definition \ref{3.2.7} \((f_n)_{n = 1}^\infty\) converges uniformly to \(f\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+
+    Since \(f_n\) is continuous on \([a, b]\) for each \(n \in \mathbf{Z}^+\), by Corollary \ref{3.3.2} we know that \(f\) is also continuous on \([a, b]\).
+    Since \(g\) is continuous on \([a, b]\), by fundamental theorem of calculus (Theorem 11.9.1 in Analysis) we know that
+    \[
+        \forall\ x \in X, G(x) = \int_{[a, x]} g \text{ is differentiable at } x.
+    \]
+    Since \(L + \int_{[a, x_0]} g\) is constant, we know that
+    \[
+        \forall\ x \in X, f(x) = L + \int_{[a, x_0]} g + G(x) = L + \int_{[a, x_0]} g + \int_{[a, x]} g \text{ is differentiable at } x
+    \]
+    and by fundamental theorem of calculus (Theorem 11.9.1 in Analysis) we have
+    \[
+        \forall\ x \in X, f'(x) = \bigg(\int_{[a, x]} g\bigg)' = g(x).
+    \]
 \end{proof}
 
 \begin{note}
