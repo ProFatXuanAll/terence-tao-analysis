@@ -1,1 +1,292 @@
 \section{Uniform approximation by polynomials}\label{sec 3.8}
+
+\begin{note}
+    As we have just seen, continuous functions can be very badly behaved, for instance they can be nowhere differentiable (Example \ref{3.7.4}).
+    On the other hand, functions such as polynomials are always very well behaved, in particular being always differentiable.
+    Fortunately, while most continuous functions are not as well behaved as polynomials, they can always be \emph{uniformly approximated} by polynomials; this important (but difficult) result is known as the \emph{Weierstrass approximation theorem},
+\end{note}
+
+\begin{definition}\label{3.8.1}
+    Let \([a, b]\) be an interval.
+    A \emph{polynomial on \([a, b]\)} is a
+    function \(f : [a, b] \to \mathbf{R}\) of the form \(f(x) \coloneqq \sum_{j = 0}^n c_j x^j\), where \(n \geq 0\) is an integer and \(c_0, \dots, c_n\) are real numbers.
+    If \(c_n \neq 0\), then \(n\) is called the \emph{degree} of \(f\).
+\end{definition}
+
+\setcounter{theorem}{2}
+\begin{theorem}[Weierstrass approximation theorem]\label{3.8.3}
+    If \([a, b]\) is an interval, \(f : [a, b] \to \mathbf{R}\) is a continuous function, and \(\varepsilon > 0\), then there exists a polynomial \(P\) on \([a, b]\) such that \(d_\infty(P, f) \leq \varepsilon\)
+    (i.e., \(\abs*{P(x) - f(x)} \leq \varepsilon\) for all \(x \in [a, b]\)).
+\end{theorem}
+
+\begin{proof}
+    Let \(f : [a, b] \to \mathbf{R}\) be a continuous function on \([a, b]\).
+    Let \(g : [0, 1] \to \mathbf{R}\) denote the function
+    \[
+        g(x) \coloneqq f\big(a + (b - a) x\big) \text{ for all } x \in [0, 1]
+    \]
+    Observe then that
+    \[
+        f(y) = g(\frac{y - a}{b - a}) \text{ for all } y \in [a, b].
+    \]
+    The function \(g\) is continuous on \([0, 1]\) (why?), and so by Corollary \ref{3.8.19} we may find a polynomial \(Q : [0, 1] \to \mathbf{R}\) such that \(\abs*{Q(x) - g(x)} \leq \varepsilon\) for all \(x \in [0, 1]\).
+    In particular, for any \(y \in [a, b]\), we have
+    \[
+        \abs*{Q(\frac{y - a}{b - a}) - g(\frac{y - a}{b - a})} \leq \varepsilon.
+    \]
+    If we thus set \(P(y) \coloneqq Q(\frac{y - a}{b - a})\), then we observe that \(P\) is also a polynomial (why?), and so we have \(\abs*{P(y) - f(y)} \leq \varepsilon\) for all \(y \in [a, b]\), as desired.
+\end{proof}
+
+\begin{definition}[Compactly supported functions]\label{3.8.4}
+    Let \([a, b]\) be an interval.
+    A function \(f : \mathbf{R} \to \mathbf{R}\) is said to be \emph{supported} on \([a, b]\) iff \(f(x) = 0\) for all \(x \notin [a, b]\).
+    We say that \(f\) is \emph{compactly supported} iff it is supported on some interval \([a, b]\).
+    If \(f\) is continuous and supported on \([a, b]\), we define the improper integral \(\int_{-\infty}^\infty f\) to be \(\int_{-\infty}^\infty f \coloneqq \int_{[a, b]} f\).
+\end{definition}
+
+\begin{lemma}\label{3.8.5}
+    If \(f : \mathbf{R} \to \mathbf{R}\) is continuous and supported on an interval \([a, b]\), and is also supported on another interval \([c, d]\), then \(\int_{[a, b]} f = \int_{[c, d]} f\).
+\end{lemma}
+
+\begin{definition}[Approximation to the identity]\label{3.8.6}
+    Let \(\varepsilon > 0\) and \(0 < \delta < 1\).
+    A function \(f : \mathbf{R} \to \mathbf{R}\) is said to be an \emph{\((\varepsilon, \delta)\)-approximation to the identity} if it obeys the following three properties:
+    \begin{enumerate}
+        \item \(f\) is supported on \([-1, 1]\), and \(f(x) \geq 0\) for all \(-1 \leq x \leq 1\).
+        \item \(f\) is continuous, and \(\int_{-\infty}^\infty f = 1\).
+        \item \(\abs*{f(x)} \leq \varepsilon\) for all \(\delta \leq \abs*{x} \leq 1\).
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}\label{3.8.7}
+    For those of you who are familiar with the Dirac delta function, approximations to the identity are ways to approximate this (very discontinuous) delta function by a continuous function (which is easier to analyze).
+\end{remark}
+
+\begin{lemma}[Polynomials can approximate the identity]\label{3.8.8}
+    For every \(\varepsilon > 0\) and \(0 < \delta < 1\) there exists an \((\varepsilon, \delta)\)-approximation to the identity which is a polynomial \(P\) on \([-1, 1]\).
+\end{lemma}
+
+\begin{definition}[Convolution]\label{3.8.9}
+    Let \(f : \mathbf{R} \to \mathbf{R}\) and \(g : \mathbf{R} \to \mathbf{R}\) be continuous, compactly supported functions.
+    We define the \emph{convolution} \(f * g : \mathbf{R} \to \mathbf{R}\) of \(f\) and \(g\) to be the function
+    \[
+        (f * g)(x) \coloneqq \int_{-\infty}^\infty f(y) g(x - y) \; dy.
+    \]
+\end{definition}
+
+\begin{note}
+    If \(f\) and \(g\) are continuous and compactly supported, then for each \(x\) the function \(f(y) g(x - y)\) (thought of as a function of \(y\)) is also continuous and compactly supported, so Definition \ref{3.8.9} makes sense.
+\end{note}
+
+\begin{remark}\label{3.8.10}
+    Convolutions play an important role in Fourier analysis and in partial differential equations (PDE), and are also important in physics, engineering, and signal processing.
+\end{remark}
+
+\begin{proposition}[Basic properties of convolution]\label{3.8.11}
+    Let \(f : \mathbf{R} \to \mathbf{R}\), \(g : \mathbf{R} \to \mathbf{R}\), and \(h : \mathbf{R} \to \mathbf{R}\) be continuous, compactly supported functions.
+    Then the following statements are true.
+    \begin{enumerate}
+        \item The convolution \(f * g\) is also a continuous, compactly supported function.
+        \item (Convolution is commutative)
+              We have \(f * g = g * f\);
+              in other words
+              \begin{align*}
+                  f * g(x) & = \int_{-\infty}^\infty f(y) g(x - y) \; dy \\
+                           & = \int_{-\infty}^\infty g(y) f(x - y) \; dy \\
+                           & = g * f(x).
+              \end{align*}
+        \item (Convolution is linear)
+              We have \(f * (g + h) = f * g + f * h\).
+              Also, for any real number \(c\), we have \(f * (cg) = (cf) * g = c(f * g)\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{remark}\label{3.8.12}
+    There are many other important properties of convolution, for instance it is associative, \((f * g) * h = f * (g * h)\), and it commutes with derivatives, \((f * g)' = f' * g = f * g'\), when \(f\) and \(g\) are differentiable.
+    The Dirac delta function \(\delta\) mentioned earlier is an identity for convolution:
+    \(f * \delta = \delta * f = f\).
+    These results are slightly harder to prove than the ones in Proposition \ref{3.8.11}, however, and we will not need them in this text.
+\end{remark}
+
+\begin{lemma}\label{3.8.13}
+    Let \(f : \mathbf{R} \to \mathbf{R}\) be a continuous function supported on \([0, 1]\), and let \(g : \mathbf{R} \to \mathbf{R}\) be a continuous function supported on \([-1, 1]\) which is a polynomial on \([-1, 1]\).
+    Then \(f * g\) is a polynomial on \([0, 1]\).
+    (Note however that it may be non-polynomial outside of \([0, 1].\))
+\end{lemma}
+
+\begin{proof}
+    Since \(g\) is polynomial on \([-1, 1]\), we may find an integer \(n \geq 0\) and real numbers \(c_0, c_1, \dots, c_n\) such that
+    \[
+        g(x) = \sum_{j = 0}^n c_j x^j \text{ for all } x \in [-1, 1].
+    \]
+    On the other hand, for all \(x \in [0, 1]\), we have
+    \[
+        f * g(x) = \int_{-\infty}^\infty f(y) g(x - y) \; dy = \int_{[0, 1]} f(y) g(x - y) \; dy
+    \]
+    since \(f\) is supported on \([0, 1]\).
+    Since \(x \in [0, 1]\) and the variable of integration \(y\) is also in \([0, 1]\), we have \(x - y \in [-1, 1]\).
+    Thus we may substitute in our formula for \(g\) to obtain
+    \[
+        f * g(x) = \int_{[0, 1]} f(y) \sum_{j = 0}^n c_j (x - y)^j \; dy.
+    \]
+    We expand this using the binomial formula (Exercise 7.1.4 in Analysis I) to obtain
+    \[
+        f * g(x) = \int_{[0, 1]} f(y) \sum_{j = 0}^n c_j \sum_{k = 0}^j \frac{j!}{k! (j - k)!} x^k (-y)^{j - k} \; dy.
+    \]
+    We can interchange the two summations (by Corollary 7.1.14 in Analysis I) to obtain
+    \[
+        f * g(x) = \int_{[0, 1]} f(y) \sum_{k = 0}^n \sum_{j = k}^n c_j \frac{j!}{k! (j - k)!} x^k (-y)^{j - k} \; dy.
+    \]
+    (why did the limits of summation change? It may help to plot \(j\) and \(k\) on a graph).
+    Now we interchange the \(k\) summation with the integral, and observe that \(x^k\) is independent of \(y\), to obtain
+    \[
+        f * g(x) = \sum_{k = 0}^n x^k \int_{[0, 1]} f(y) \sum_{j = k}^n c_j \frac{j!}{k! (j - k)!} (-y)^{j - k} \; dy.
+    \]
+    If we thus define
+    \[
+        C_k \coloneqq \int_{[0, 1]} f(y) \sum_{j = k}^n c_j \frac{j!}{k! (j - k)!} (-y)^{j - k} \; dy
+    \]
+    for each \(k = 0, \dots, n\), then \(C_k\) is a number which is independent of \(x\), and we have
+    \[
+        f * g(x) = \sum_{k = 0}^n C_k x^k
+    \]
+    for all \(x \in [0, 1]\).
+    Thus \(f * g\) is a polynomial on \([0, 1]\).
+\end{proof}
+
+\begin{lemma}\label{3.8.14}
+    Let \(f : \mathbf{R} \to \mathbf{R}\) be a continuous function supported on \([0, 1]\), which is bounded by some \(M > 0\) (i.e., \(\abs*{f(x)} \leq M\) for all \(x \in \mathbf{R}\)), and let \(\varepsilon > 0\) and \(0 < \delta < 1\) be such that one has \(\abs*{f(x) - f(y)} < \varepsilon\) whenever \(x, y \in \mathbf{R}\) and \(\abs*{x - y} < \delta\).
+    Let \(g\) be any \((\varepsilon, \delta)\)-approximation to the identity.
+    Then we have
+    \[
+        \abs*{f * g(x) - f(x)} \leq (1 + 4M) \varepsilon
+    \]
+    for all \(x \in [0, 1]\).
+\end{lemma}
+
+\begin{corollary}[Weierstrass approximation theorem I]\label{3.8.15}
+    Let \(f : \mathbf{R} \to \mathbf{R}\) be a continuous function supported on \([0, 1]\).
+    Then for every \(\varepsilon > 0\), there exists a function \(P : \mathbf{R} \to \mathbf{R}\) which is polynomial on \([0, 1]\) and such that \(\abs*{P(x) - f(x)} \leq \varepsilon\) for all \(x \in [0, 1]\).
+\end{corollary}
+
+\begin{lemma}\label{3.8.16}
+    Let \(f : [0, 1] \to \mathbf{R}\) be a continuous function which equals \(0\) on the boundary of \([0, 1]\), i.e., \(f(0) = f(1) = 0\).
+    Let \(F : \mathbf{R} \to \mathbf{R}\) be the function defined by setting \(F(x) \coloneqq f(x)\) for \(x \in [0, 1]\) and \(F(x) \coloneqq 0\) for \(x \notin [0, 1]\).
+    Then \(F\) is also continuous.
+\end{lemma}
+
+\begin{remark}\label{3.8.17}
+    The function \(F\) obtained in Lemma \ref{3.8.16} is sometimes known as the \emph{extension of \(f\) by zero}.
+\end{remark}
+
+\begin{corollary}[Weierstrass approximation theorem II]\label{3.8.18}
+    Let \(f : [0, 1] \to \mathbf{R}\) be a continuous function such that \(f(0) = f(1) = 0\).
+    Then for every \(\varepsilon > 0\) there exists a polynomial \(P : [0, 1] \to \mathbf{R}\) such that \(\abs*{P(x) - f(x)} \leq \varepsilon\) for all \(x \in [0, 1]\).
+\end{corollary}
+
+\begin{corollary}[Weierstrass approximation theorem III]\label{3.8.19}
+    Let \(f : [0, 1] \to \mathbf{R}\) be a continuous function.
+    Then for every \(\varepsilon > 0\) there exists a polynomial \(P : [0, 1] \to \mathbf{R}\) such that \(\abs*{P(x) - f(x)} \leq \varepsilon\) for all \(x \in [0, 1]\).
+\end{corollary}
+
+\begin{proof}
+    Let \(F : [0, 1] \to \mathbf{R}\) denote the function
+    \[
+        F(x) \coloneqq f(x) - f(0) - x \big(f(1) - f(0)\big).
+    \]
+    Observe that \(F\) is also continuous (why?), and that \(F(0) = F(1) = 0\).
+    By Corollary \ref{3.8.18}, we can thus find a polynomial \(Q : [0, 1] \to \mathbf{R}\) such that \(\abs*{Q(x) - F(x)} \leq \varepsilon\) for all \(x \in [0, 1]\).
+    But
+    \[
+        Q(x) - F(x) = Q(x) + f(0) + x \big(f(1) - f(0)\big) - f(x),
+    \]
+    so the claim follows by setting \(P\) to be the polynomial \(P(x) \coloneqq Q(x) + f(0) + x \big(f(1) - f(0)\big)\).
+\end{proof}
+
+\begin{remark}\label{3.8.20}
+    Note that the Weierstrass approximation theorem only works on bounded intervals \([a, b]\);
+    continuous functions on \(\mathbf{R}\) cannot be uniformly approximated by polynomials.
+    For instance, the exponential function \(f : \mathbf{R} \to \mathbf{R}\) defined by \(f(x) \coloneqq e^x\) (which we shall study rigorously in Section 4.5) cannot be approximated by any polynomial, because exponential functions grow faster than any polynomial (Exercise 4.5.9) and so there is no way one can even make the sup metric between \(f\) and a polynomial finite.
+\end{remark}
+
+\begin{remark}\label{3.8.21}
+    There is a generalization of the Weierstrass approximation theorem to higher dimensions:
+    if \(K\) is any compact subset of \(\mathbf{R}^n\) (with the Euclidean metric \(d_{l^2}\)), and \(f : K \to \mathbf{R}\) is a continuous function, then for every \(\varepsilon > 0\) there exists a polynomial \(P : K \to \mathbf{R}\) of \(n\) variables \(x_1, \dots, x_n\) such that \(d_\infty(f, P) < \varepsilon\).
+    This general theorem can be proven by a more complicated variant of the arguments here, but we will not do so.
+    (There is in fact an even more general version of this theorem applicable to an arbitrary metric space, known as the \emph{Stone-Weierstrass theorem}, but this is beyond the scope of this text.)
+\end{remark}
+
+\exercisesection
+
+\begin{exercise}\label{ex 3.8.1}
+    Prove Lemma \ref{3.8.5}.
+\end{exercise}
+
+\begin{proof}
+    See Lemma \ref{3.8.5}.
+\end{proof}
+
+\begin{exercise}\label{ex 3.8.2}
+    \begin{enumerate}
+        \item Prove that for any real number \(0 \leq y \leq 1\) and any natural number \(n \geq 0\), that \((1 - y)^n \geq 1 - ny\).
+        \item Show that \(\int_{-1}^1 (1 - x^2)^n \; dx \geq \frac{1}{\sqrt{n}}\).
+        \item Prove Lemma \ref{3.8.8}.
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}{(c)}
+    See Lemma \ref{3.8.8}.
+\end{proof}
+
+\begin{exercise}\label{ex 3.8.3}
+    Let \(f : \mathbf{R} \to \mathbf{R}\) be a compactly supported, continuous function.
+    Show that \(f\) is bounded and uniformly continuous.
+\end{exercise}
+
+\begin{exercise}\label{ex 3.8.4}
+    Prove Proposition \ref{3.8.11}.
+\end{exercise}
+
+\begin{proof}
+    See Proposition \ref{3.8.11}.
+\end{proof}
+
+\begin{exercise}\label{ex 3.8.5}
+    Let \(f : \mathbf{R} \to \mathbf{R}\) and \(g : \mathbf{R} \to \mathbf{R}\) be continuous, compactly supported functions.
+    Suppose that \(f\) is supported on the interval \([0, 1]\), and \(g\) is constant on the interval \([0, 2]\)
+    (i.e., there is a real number \(c\) such that \(g(x) = c\) for all \(x \in [0, 2]\)).
+    Show that the convolution \(f * g\) is constant on the interval \([1, 2]\).
+\end{exercise}
+
+\begin{exercise}\label{ex 3.8.6}
+    \begin{enumerate}
+        \item Let \(g\) be an \((\varepsilon, \delta)\) approximation to the identity.
+              Show that \(1 - 2 \varepsilon \leq \int_{[-\delta, \delta]} g \leq 1\).
+        \item Prove Lemma \ref{3.8.14}.
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}{(b)}
+    See Lemma \ref{3.8.14}.
+\end{proof}
+
+\begin{exercise}\label{ex 3.8.7}
+    Prove Corollary \ref{3.8.15}.
+\end{exercise}
+
+\begin{proof}
+    See Corollary \ref{3.8.15}.
+\end{proof}
+
+\begin{exercise}\label{ex 3.8.8}
+    Let \(f : [0, 1] \to \mathbf{R}\) be a continuous function, and suppose that \(\int_{[0, 1]} f(x) x^n \; dx = 0\) for all non-negative integers \(n = 0, 1, 2, \dots\).
+    Show that \(f\) must be the zero function \(f \equiv 0\).
+\end{exercise}
+
+\begin{exercise}\label{ex 3.8.9}
+    Prove Lemma \ref{3.8.16}.
+\end{exercise}
+
+\begin{proof}
+    See Lemma \ref{3.8.16}.
+\end{proof}
