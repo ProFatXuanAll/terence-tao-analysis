@@ -124,6 +124,52 @@
     For every \(\varepsilon > 0\) and \(0 < \delta < 1\) there exists an \((\varepsilon, \delta)\)-approximation to the identity which is a polynomial \(P\) on \([-1, 1]\).
 \end{lemma}
 
+\begin{proof}
+    Let \(\varepsilon \in \mathbf{R}^+\) and let \(\delta \in (0, 1)\).
+    We have
+    \begin{align*}
+                 & \forall\ x \in [-1, 1], \delta \leq \abs*{x} \leq 1                                                                                  \\
+        \implies & \delta^2 \leq x^2 \leq 1                                                                                                             \\
+        \implies & 0 \leq 1 - x^2 \leq 1 - \delta^2 < 1                                                                                                 \\
+        \implies & \lim_{n \to \infty} \sqrt{n} (1 - \delta^2)^n = 0                                         & \text{(by Exercise 7.5.2 in Analysis I)} \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \sqrt{n} (1 - \delta^2)^n < \varepsilon.
+    \end{align*}
+    Now we fix such \(N\).
+    Define \(g : \mathbf{R} \to \mathbf{R}\) to be the function
+    \[
+        \forall\ x \in \mathbf{R}, g(x) = \begin{cases}
+            (1 - x^2)^N & \text{if } x \in [-1, 1]    \\
+            0           & \text{if } x \notin [-1, 1]
+        \end{cases}
+    \]
+    We know that \(g(x) \geq 0\) for all \(x \in \mathbf{R}\).
+    By Definition \ref{3.8.4} we know that \(g\) is supported on \([-1, 1]\).
+    By Exercise 9.4.7 in Analysis I we know that \(g\) is continuous on \([-1, 1]\), thus by Corollary 11.5.2 in Analysis I \(g\) is Riemann integrable on \([-1, 1]\).
+    By Exercise \ref{ex 3.8.2}(b) we know that
+    \[
+        \int_{[-1, 1]} g = \int_{[-1, 1]} (1 - x^2)^N \geq \frac{1}{\sqrt{N}} > 0,
+    \]
+    so we can define \(c = (\int_{[-1, 1]} g)^{-1}\) and we have
+    \[
+        0 < c = \bigg(\int_{[-1, 1]} g\bigg)^{-1} \leq \sqrt{N}.
+    \]
+    Now we define \(f : \mathbf{R} \to \mathbf{R}\) to be the function \(f = cg\).
+    Again we have \(f\) is continuous and supported on \([-1, 1]\).
+    Since \(c > 0\), we know that \(f(x) \geq 0\) for all \(x \in \mathbf{R}\).
+    By Definition \ref{3.8.4} we have
+    \[
+        \int_{-\infty}^\infty f = \int_{[-1, 1]} f = \int_{[-1, 1]} cg = c \int_{[-1, 1]} g = \bigg(\int_{[-1, 1]} g\bigg)^{-1} \bigg(\int_{[-1, 1]} g\bigg) = 1.
+    \]
+    Since
+    \begin{align*}
+                 & \forall\ x \in [-1, 1], \delta \leq \abs*{x} \leq 1                                       \\
+        \implies & 0 \leq 1 - x^2 \leq 1 - \delta^2 < 1                                                      \\
+        \implies & 0 \leq \sqrt{N} (1 - x^2)^N \leq \sqrt{N} (1 - \delta^2)^N < \varepsilon                  \\
+        \implies & 0 \leq \abs*{f(x)} \leq \abs*{\sqrt{N} (1 - x^2)^N} = \sqrt{N} (1 - x^2)^N < \varepsilon,
+    \end{align*}
+    combine all the proofs above we conclude by Definition \ref{3.8.6} that \(f\) is an \((\varepsilon, \delta)\)-approximation to the identity.
+\end{proof}
+
 \begin{definition}[Convolution]\label{3.8.9}
     Let \(f : \mathbf{R} \to \mathbf{R}\) and \(g : \mathbf{R} \to \mathbf{R}\) be continuous, compactly supported functions.
     We define the \emph{convolution} \(f * g : \mathbf{R} \to \mathbf{R}\) of \(f\) and \(g\) to be the function
