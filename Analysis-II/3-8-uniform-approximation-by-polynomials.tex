@@ -285,12 +285,34 @@
 \end{proof}
 
 \begin{exercise}\label{ex 3.8.2}
+    \quad
     \begin{enumerate}
         \item Prove that for any real number \(0 \leq y \leq 1\) and any natural number \(n \geq 0\), that \((1 - y)^n \geq 1 - ny\).
         \item Show that \(\int_{-1}^1 (1 - x^2)^n \; dx \geq \frac{1}{\sqrt{n}}\).
         \item Prove Lemma \ref{3.8.8}.
     \end{enumerate}
 \end{exercise}
+
+\begin{proof}{(a)}
+    For each \(n \in \mathbf{N}\), let \(P(n)\) be the statement ``for each \(y \in \mathbf{R}\), if \(0 \leq y \leq 1\), then \((1 - y)^n \geq 1 - ny\).''
+    We use induction on \(n\) to show that \(P(n)\) is true for all \(n \in \mathbf{N}\).
+    For \(n = 0\), we have
+    \[
+        \forall\ y \in \mathbf{R}, 0 \leq y \leq 1 \implies (1 - y)^0 = 1 \geq 1 - 0y = 1.
+    \]
+    Thus the base case holds.
+    Suppose inductively that \(P(n)\) is true for some \(n \geq 0\).
+    Then we want to show that \(P(n + 1)\) is true.
+    Let \(y \in \mathbf{R}\) such that \(0 \leq y \leq 1\).
+    Then we have
+    \begin{align*}
+        (1 - y)^{n + 1} & = (1 - y)^n (1 - y)                                       \\
+                        & \geq (1 - ny) (1 - y)  & \text{(by induction hypothesis)} \\
+                        & = 1 - (n + 1)y + n y^2                                    \\
+                        & \geq 1 - (n + 1)y.     & (0 \leq y \leq 1)
+    \end{align*}
+    Since \(y\) is arbitrary, we know that \(P(n + 1)\) is true and this closes the induction.
+\end{proof}
 
 \begin{proof}{(c)}
     See Lemma \ref{3.8.8}.
@@ -317,6 +339,7 @@
 \end{exercise}
 
 \begin{exercise}\label{ex 3.8.6}
+    \quad
     \begin{enumerate}
         \item Let \(g\) be an \((\varepsilon, \delta)\) approximation to the identity.
               Show that \(1 - 2 \varepsilon \leq \int_{[-\delta, \delta]} g \leq 1\).
