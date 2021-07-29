@@ -314,6 +314,43 @@
     Since \(y\) is arbitrary, we know that \(P(n + 1)\) is true and this closes the induction.
 \end{proof}
 
+\begin{proof}{(b)}
+    Let \(n \in \mathbf{Z}^+\).
+    Since \(f(x) = 1 - x^2\) is continuous and bounded on \([-1, 1]\), by Proposition 9.4.9 and 9.6.7 in Analysis I we know that \(f^n(x) = (1 - x^2)^n\) is continuous and bounded on \([-1, 1]\).
+    Thus by Corollary 11.5.2 in Analysis I we know that \(f^n\) is Riemann integrable.
+    By Corollary 11.10.3 in Analysis I we have
+    \[
+        \int_{[-1, 1]} f^n = \int_{[-1, 1]} f^n \cdot 1 = \int_{[-1, 1]} f^n \cdot x' = \int_{[-1, 1]} f^n \; dx = \int_{-1}^1 f^n \; dx.
+    \]
+    Thus
+    \[
+        \int_{-1}^1 (1 - x^2)^n \; dx = \int_{[-1, 1]} (1 - x^2)^n = \int_{[-1, \frac{-1}{\sqrt{n}}]} (1 - x^2)^n + \int_{[\frac{-1}{\sqrt{n}}, \frac{1}{\sqrt{n}}]} (1 - x^2)^n + \int_{[\frac{1}{\sqrt{n}}, 1]} (1 - x^2)^n.
+    \]
+    Since
+    \[
+        \forall\ x \in [-1, 1], 1 \geq \abs*{x} \geq \frac{1}{\sqrt{n}} \implies 1 \geq x^2 \geq \frac{1}{n} \implies 0 \leq 1 - x^2 \leq \frac{n - 1}{n},
+    \]
+    we know that
+    \[
+        \int_{-1}^1 (1 - x^2)^n \; dx \geq \int_{[\frac{-1}{\sqrt{n}}, \frac{1}{\sqrt{n}}]} (1 - x^2)^n.
+    \]
+    By Exercise \ref{ex 3.8.2}(a) we have
+    \[
+        \int_{-1}^1 (1 - x^2)^n \; dx \geq \int_{[\frac{-1}{\sqrt{n}}, \frac{1}{\sqrt{n}}]} (1 - x^2)^n \geq \int_{[\frac{-1}{\sqrt{n}}, \frac{1}{\sqrt{n}}]} (1 - n x^2).
+    \]
+    Since
+    \begin{align*}
+        \int_{[\frac{-1}{\sqrt{n}}, \frac{1}{\sqrt{n}}]} (1 - n x^2) & = \int_{[\frac{-1}{\sqrt{n}}, \frac{1}{\sqrt{n}}]} 1 - n \int_{[\frac{-1}{\sqrt{n}}, \frac{1}{\sqrt{n}}]} x^2 \\
+                                                                     & = \frac{2}{\sqrt{n}} - \frac{n}{3} \bigg(\frac{1}{n \sqrt{n}} - \frac{-1}{n \sqrt{n}}\bigg)                   \\
+                                                                     & = \frac{2}{\sqrt{n}} - \frac{2}{3 \sqrt{n}}                                                                   \\
+                                                                     & = \frac{4}{3 \sqrt{n}} \geq \frac{1}{\sqrt{n}},
+    \end{align*}
+    we have
+    \[
+        \int_{-1}^1 (1 - x^2)^n \; dx \geq \frac{1}{\sqrt{n}}.
+    \]
+\end{proof}
+
 \begin{proof}{(c)}
     See Lemma \ref{3.8.8}.
 \end{proof}
