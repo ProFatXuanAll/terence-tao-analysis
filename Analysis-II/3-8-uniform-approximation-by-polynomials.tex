@@ -37,6 +37,20 @@
     If we thus set \(P(y) \coloneqq Q(\frac{y - a}{b - a})\), then we observe that \(P\) is also a polynomial (why?), and so we have \(\abs*{P(y) - f(y)} \leq \varepsilon\) for all \(y \in [a, b]\), as desired.
 \end{proof}
 
+\begin{note}
+    Another way of stating Theorem \ref{3.8.3} is as follows.
+    Recall that \(C([a, b] \to \mathbf{R})\) was the space of continuous functions from \([a, b]\) to \(\mathbf{R}\), with the uniform metric \(d_\infty\).
+    Let \(P([a, b] \to \mathbf{R})\) be the space of all polynomials on \([a, b]\);
+    this is a subspace of \(C([a, b] \to \mathbf{R})\), since all polynomials are continuous (Exercise 9.4.7 in Analysis I).
+    The Weierstrass approximation theorem then asserts that every continuous function is an adherent point of \(P([a, b] \to \mathbf{R})\);
+    or in other words, that the closure of the space of polynomials is the space of continuous functions (see Corollary \ref{3.3.2}):
+    \[
+        \overline{P([a, b] \to \mathbf{R})}_{\big(C([a, b] \to \mathbf{R}), d_\infty\big)} = C([a, b] \to \mathbf{R}).
+    \]
+    In particular, every continuous function on \([a, b]\) is the uniform limit of polynomials (see Proposition \ref{3.4.4}).
+    Another way of saying this is that the space of polynomials is \emph{dense} in the space of continuous functions, in the \emph{uniform topology}.
+\end{note}
+
 \begin{definition}[Compactly supported functions]\label{3.8.4}
     Let \([a, b]\) be an interval.
     A function \(f : \mathbf{R} \to \mathbf{R}\) is said to be \emph{supported} on \([a, b]\) iff \(f(x) = 0\) for all \(x \notin [a, b]\).
@@ -44,9 +58,53 @@
     If \(f\) is continuous and supported on \([a, b]\), we define the improper integral \(\int_{-\infty}^\infty f\) to be \(\int_{-\infty}^\infty f \coloneqq \int_{[a, b]} f\).
 \end{definition}
 
+\begin{note}
+    A function can be supported on more than one interval, for instance a function which is supported on \([3, 4]\) is also automatically supported on \([2, 5]\).
+\end{note}
+
 \begin{lemma}\label{3.8.5}
     If \(f : \mathbf{R} \to \mathbf{R}\) is continuous and supported on an interval \([a, b]\), and is also supported on another interval \([c, d]\), then \(\int_{[a, b]} f = \int_{[c, d]} f\).
 \end{lemma}
+
+\begin{proof}
+    Since
+    \begin{align*}
+                 & \begin{cases}
+            f \text{ is supported on } [a, b] \\
+            f \text{ is supported on } [c, d]
+        \end{cases}                                       \\
+        \implies & \begin{cases}
+            \forall\ x \notin [a, b], f(x) = 0 \\
+            \forall\ x \notin [c, d], f(x) = 0
+        \end{cases} & \text{(by Definition \ref{3.8.4})} \\
+        \implies & \begin{cases}
+            \forall\ x \in \mathbf{R}, (x < a) \lor (x > b) \implies f(x) = 0 \\
+            \forall\ x \in \mathbf{R}, (x < c) \lor (x > d) \implies f(x) = 0
+        \end{cases}
+    \end{align*}
+    we have
+    \begin{align*}
+        \int_{-\infty}^\infty f & = \int_{[a, b]} f            & \text{(by Definition \ref{3.8.4})} \\
+                                & = \begin{cases}
+            \int_{[a, c]} f + \int_{[c, b]} f & \text{if } a \leq c \\
+            0 + \int_{[a, b]} f               & \text{if } a > c
+        \end{cases}                                      \\
+                                & = \begin{cases}
+            0 + \int_{[c, b]} f               & \text{if } a \leq c \\
+            \int_{[c, a]} f + \int_{[a, b]} f & \text{if } a > c
+        \end{cases}                                      \\
+                                & = \int_{[c, b]} f                                                 \\
+                                & = \begin{cases}
+            \int_{[c, b]} f + 0               & \text{if } b \leq d \\
+            \int_{[c, d]} f + \int_{[d, b]} f & \text{if } b > d
+        \end{cases}                                      \\
+                                & = \begin{cases}
+            \int_{[c, b]} f + \int_{[b, d]} f & \text{if } b \leq d \\
+            \int_{[c, d]} f + 0               & \text{if } b > d
+        \end{cases}                                      \\
+                                & = \int_{[c, d]} f.
+    \end{align*}
+\end{proof}
 
 \begin{definition}[Approximation to the identity]\label{3.8.6}
     Let \(\varepsilon > 0\) and \(0 < \delta < 1\).
