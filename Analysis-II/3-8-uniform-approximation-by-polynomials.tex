@@ -162,10 +162,10 @@
     \]
     Since
     \begin{align*}
-                 & \forall\ x \in [-1, 1], \delta \leq \abs*{x} \leq 1                                       \\
-        \implies & 0 \leq 1 - x^2 \leq 1 - \delta^2 < 1                                                      \\
-        \implies & 0 \leq \sqrt{N} (1 - x^2)^N \leq \sqrt{N} (1 - \delta^2)^N < \varepsilon                  \\
-        \implies & 0 \leq \abs*{f(x)} \leq \abs*{\sqrt{N} (1 - x^2)^N} = \sqrt{N} (1 - x^2)^N < \varepsilon,
+                 & \forall\ x \in [-1, 1], \delta \leq \abs*{x} \leq 1                                                      \\
+        \implies & 0 \leq 1 - x^2 \leq 1 - \delta^2 < 1                                                                     \\
+        \implies & 0 \leq \sqrt{N} (1 - x^2)^N \leq \sqrt{N} (1 - \delta^2)^N < \varepsilon                                 \\
+        \implies & 0 \leq \abs*{f(x)} = \abs*{cg(x)} \leq \abs*{\sqrt{N} (1 - x^2)^N} = \sqrt{N} (1 - x^2)^N < \varepsilon,
     \end{align*}
     combine all the proofs above we conclude by Definition \ref{3.8.6} that \(f\) is an \((\varepsilon, \delta)\)-approximation to the identity.
 \end{proof}
@@ -405,6 +405,74 @@
     Let \(f : \mathbf{R} \to \mathbf{R}\) be a compactly supported, continuous function.
     Show that \(f\) is bounded and uniformly continuous.
 \end{exercise}
+
+\begin{proof}
+    Since \(f\) is compactly supported, by Definition \ref{3.8.4} we know that there exists some \(a, b \in \mathbf{R}\) such that
+    \[
+        \forall\ x \notin [a, b], f(x) = 0.
+    \]
+    Since \([a, b]\) is closed and bounded in \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\), by Theorem \ref{1.5.7} we know that \(\big([a, b], d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\big)\) is compact.
+    Since \(\big([a, b], d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\big)\) is compact and \(f\) is continuous on \([a, b]\), by Proposition \ref{2.3.2} we know that \(f\) is bounded.
+    Since \(f\) is bounded and continuous on \([a, b]\), by Theorem \ref{2.3.5} \(f\) is uniformly continuous on \([a, b]\).
+
+    Since \(f\) is continuous at \(a\), we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall\ x \in \mathbf{R}, \abs*{x - a} < \delta \implies \abs*{f(x) - f(a)} < \varepsilon\big)               \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall\ x \in \mathbf{R}, x \in (a - \delta, a + \delta) \implies \abs*{f(x) - f(a)} < \varepsilon\big)      \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall\ x \in \mathbf{R}, x \in (a - \delta, a) \implies \abs*{f(x) - f(a)} = \abs*{f(a)} < \varepsilon\big) \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \abs*{f(a)} < \varepsilon                                                                                                                             \\
+        \implies & f(a) = 0.
+    \end{align*}
+    Similarly, we have \(f(b) = 0\).
+    If \(a = b\), then \(f\) is zero function, and we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \forall\ \delta \in \mathbf{R}^+, \forall\ x_1, x_2 \in \mathbf{R}, \abs*{x_1 - x_2} < \delta \implies \abs*{f(x_1) - f(x_2)} = 0 < \varepsilon.
+    \]
+    Thus \(f\) is uniformly continuous on \(\mathbf{R}\).
+    Suppose that \(a \neq b\).
+    Since \(f\) in uniformly continuous on \([a, b]\), by Definition \ref{2.3.4} we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta_1 \in \mathbf{R}^+ : \forall\ x_1, x_2 \in [a, b], \abs*{x_1 - x_2} < \delta_1 \implies \abs*{f(x_1) - f(x_2)} < \varepsilon.
+    \]
+    Now fix one pair of \(\varepsilon\) and \(\delta_1\).
+    Since \(\lim_{x \to a ; x \in \mathbf{R}} f(x) = f(a) = 0\), we have
+    \[
+        \exists\ \delta_2 \in \mathbf{R}^+ : \forall\ x \in \mathbf{R}, \abs*{x - a} < \delta_2 < b - a \implies \abs*{f(x) - f(a)} = \abs*{f(x)} < \varepsilon.
+    \]
+    Similarly, we have
+    \[
+        \exists\ \delta_3 \in \mathbf{R}^+ : \forall\ x \in \mathbf{R}, \abs*{x - b} < \delta_3 < b - a \implies \abs*{f(x) - f(b)} = \abs*{f(x)} < \varepsilon.
+    \]
+    Let \(\delta = \min(\delta_1, \delta_2, \delta_3)\).
+    Then we have
+    \begin{align*}
+                 & \forall\ x_1, x_2 \in \mathbf{R}, \abs*{x_1 - x_2} < \delta \\
+        \implies & \begin{cases}
+            \abs*{x_1 - x_2} < \delta_1 \implies \abs*{f(x_1) - f(x_2)} < \varepsilon & \text{if } \big(x_1, x_2 \in [a, b]\big)                                 \\
+            x_1 - x_2 < \delta_2 \implies a \leq x_1 < x_2 + \delta_2                 & \text{if } \big(x_1 \in [a, b]\big) \land \big(x_2 \in (-\infty, a)\big) \\
+            x_2 - x_1 < \delta_3 \implies x_2 - \delta_3 < x_1 \leq b                 & \text{if } \big(x_1 \in [a, b]\big) \land \big(x_2 \in (b, \infty)\big)  \\
+            \abs*{f(x_1) - f(x_2)} = 0 < \varepsilon                                  & \text{if } \big(x_1, x_2 \notin [a, b]\big)
+        \end{cases}                                  \\
+        \implies & \begin{cases}
+            \abs*{f(x_1) - f(x_2)} < \varepsilon    & \text{if } \big(x_1, x_2 \in [a, b]\big)                                 \\
+            x_1 - a < x_2 - a + \delta_2 < \delta_2 & \text{if } \big(x_1 \in [a, b]\big) \land \big(x_2 \in (-\infty, a)\big) \\
+            \delta_3 > b - x_2 + \delta_3 > b - x_1 & \text{if } \big(x_1 \in [a, b]\big) \land \big(x_2 \in (b, \infty)\big)  \\
+            \abs*{f(x_1) - f(x_2)} < \varepsilon    & \text{if } \big(x_1, x_2 \notin [a, b]\big)
+        \end{cases}                                  \\
+        \implies & \begin{cases}
+            \abs*{f(x_1) - f(x_2)} < \varepsilon                           & \text{if } \big(x_1, x_2 \in [a, b]\big)                                 \\
+            \abs*{x_1 - a} < \delta_2 \implies \abs*{f(x_1)} < \varepsilon & \text{if } \big(x_1 \in [a, b]\big) \land \big(x_2 \in (-\infty, a)\big) \\
+            \abs*{x_1 - b} < \delta_3 \implies \abs*{f(x_1)} < \varepsilon & \text{if } \big(x_1 \in [a, b]\big) \land \big(x_2 \in (b, \infty)\big)  \\
+            \abs*{f(x_1) - f(x_2)} < \varepsilon                           & \text{if } \big(x_1, x_2 \notin [a, b]\big)
+        \end{cases}                                  \\
+        \implies & \abs*{f(x_1) - f(x_2)} < \varepsilon.
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary, we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x_1, x_2 \in \mathbf{R}, \abs*{x_1 - x_2} < \delta \implies \abs*{f(x_1) - f(x_2)} < \varepsilon
+    \]
+    and \(f\) is uniformly continuous on \(\mathbf{R}\).
+\end{proof}
 
 \begin{exercise}\label{ex 3.8.4}
     Prove Proposition \ref{3.8.11}.
