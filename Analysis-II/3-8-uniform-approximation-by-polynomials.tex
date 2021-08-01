@@ -205,6 +205,101 @@
     \end{enumerate}
 \end{proposition}
 
+\begin{proof}{(a)}
+    Since \(f, g\) are compactly supported, by Definition \ref{3.8.4} we know that
+    \[
+        \exists\ L_f, L_g, U_f, U_g \in \mathbf{R} : \begin{cases}
+            \forall\ y \in \mathbf{R} \setminus [L_f, U_f], f(y) = 0 \\
+            \forall\ y \in \mathbf{R} \setminus [L_g, U_g], g(y) = 0
+        \end{cases}
+    \]
+    Note that we can choose \(L_f \neq U_f\).
+    Let \(L = \min(L_f, L_g)\), let \(U = \max(U_f, U_g)\) and let \(M = \max(\abs*{L}, \abs*{U})\).
+    Then we have
+    \begin{align*}
+                 & \forall\ y \in \mathbf{R} \setminus [-M, M], \begin{cases}
+            y < -M \leq L \leq L_f \implies f(y) = 0 \\
+            y < -M \leq L \leq L_g \implies g(y) = 0 \\
+            y > M \geq U \geq U_f \implies f(y) = 0  \\
+            y > M \geq U \geq U_g \implies g(y) = 0
+        \end{cases} \\
+        \implies & f(y) = g(y) = 0
+    \end{align*}
+    and
+    \[
+        \forall\ y \in \mathbf{R} \setminus [-2M, 2M], (y < -2M \leq -M) \lor (y > 2M \geq M) \implies f(y) = g(y) = 0.
+    \]
+    Thus by Definition \ref{3.8.4} \(f, g\) are supported on \([-M, M]\) and \([-2M, 2M]\).
+    Observe that
+    \begin{align*}
+                 & \forall\ x \in (-\infty, -2M), \forall\ y \in \mathbf{R}, \begin{cases}
+            x - y < -M \text{ or } \\
+            x - y \geq -M
+        \end{cases} \\
+        \implies & \forall\ x \in (-\infty, -2M), \forall\ y \in \mathbf{R}, \begin{cases}
+            x - y < -M \text{ or } \\
+            -M > x + M \geq y
+        \end{cases} \\
+        \implies & \forall\ x \in (-\infty, -2M), \forall\ y \in \mathbf{R}, \begin{cases}
+            g(x - y) = 0 & \text{if } x - y < -M        \\
+            f(y) = 0     & \text{if } -M > x + M \geq y
+        \end{cases} \\
+        \implies & \forall\ x \in (-\infty, -2M), \forall\ y \in \mathbf{R}, f(y) g(x - y) = 0
+    \end{align*}
+    and
+    \begin{align*}
+                 & \forall\ x \in (2M, +\infty), \forall\ y \in \mathbf{R}, \begin{cases}
+            x - y > M \text{ or } \\
+            x - y \leq M
+        \end{cases} \\
+        \implies & \forall\ x \in (2M, +\infty), \forall\ y \in \mathbf{R}, \begin{cases}
+            x - y > M \text{ or } \\
+            M < x - M \leq y
+        \end{cases} \\
+        \implies & \forall\ x \in (2M, +\infty), \forall\ y \in \mathbf{R}, \begin{cases}
+            g(x - y) = 0 & \text{if } x - y > M        \\
+            f(y) = 0     & \text{if } M < x - M \leq y
+        \end{cases} \\
+        \implies & \forall\ x \in (2M, +\infty), \forall\ y \in \mathbf{R}, f(y) g(x - y) = 0.
+    \end{align*}
+    This means
+    \[
+        \forall\ x \in \mathbf{R} \setminus [-2M, 2M], \forall\ y \in \mathbf{R}, f(y) g(x - y) = 0.
+    \]
+    For each \(x \in \mathbf{R} \setminus [-2M, 2M]\), we define \(z_x : \mathbf{R} \to \mathbf{R}\) by setting \(z_x(y) = f(y) g(x - y)\).
+    Then by Definition \ref{3.8.4} and Definition \ref{3.8.9} we have
+    \begin{align*}
+                 & \forall\ x \in \mathbf{R} \setminus [-2M, 2M], \forall\ y \in \mathbf{R}, z_x(y) = 0                                \\
+        \implies & \forall\ x \in \mathbf{R} \setminus [-2M, 2M], \forall\ y \in \mathbf{R} \setminus [-M, M], z_x(y) = 0              \\
+        \implies & \forall\ x \in \mathbf{R} \setminus [-2M, 2M], z_x \text{ is supported on } [-M, M]                                 \\
+        \implies & \forall\ x \in \mathbf{R} \setminus [-2M, 2M], \int_{-\infty}^\infty z_x = \int_{[-M, M]} z_x = 0                   \\
+        \implies & \forall\ x \in \mathbf{R} \setminus [-2M, 2M], \int_{-\infty}^\infty z_x(y) \; dy = \int_{[-M, M]} z_x(y) \; dy = 0 \\
+        \implies & \forall\ x \in \mathbf{R} \setminus [-2M, 2M], (f * g)(x) = \int_{[-M, M]} f(y) g(x - y) \; dy = 0                  \\
+        \implies & f * g \text{ is supported on } [-2M, 2M]                                                                            \\
+        \implies & f * g \text{ is compactly supported}.
+    \end{align*}
+    Since \(f, g\) are compactly supported and continuous on \(\mathbf{R}\), by Exercise \ref{ex 3.8.3} we know that
+    \[
+        \exists\ N \in \mathbf{R}^+ : \forall\ x \in \mathbf{R}, \abs*{f(x)} \leq N
+    \]
+    and
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x_1, x_2 \in \mathbf{R}, \abs*{x_1 - x_2} < \delta \implies \abs*{g(x_1) - g(x_2)} < \frac{\varepsilon}{N (U_f - L_f)}.
+    \]
+    Fix \(N\) and one pair of \(\varepsilon\) and \(\delta\).
+    Let \(x_0 \in \mathbf{R}\).
+    Then we have
+    \begin{align*}
+                 & \forall\ x \in \mathbf{R}, \abs*{x - x_0} < \delta                                                                                \\
+        \implies & \abs*{(f * g)(x) - (f * g)(x_0)} = \abs*{\int_{-\infty}^\infty f(y) g(x - y) \; dy - \int_{-\infty}^\infty f(y) g(x_0 - y) \; dy} \\
+                 & = \abs*{\int_{[L_f, U_f]} f(y) g(x - y) \; dy - \int_{[L_f, U_f]} f(y) g(x_0 - y) \; dy}                                          \\
+                 & = \abs*{\int_{[L_f, U_f]} f(y) \big(g(x - y) - g(x_0 - y)\big) \; dy}                                                             \\
+                 & \leq \abs*{\int_{[L_f, U_f]} N \frac{\varepsilon}{N (U_f - L_f)} \; dy} = \varepsilon.
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary, we know that \(f * g\) is continuous at \(x_0\).
+    Since \(x_0\) is arbitrary, we know that \(f * g\) is continuous on \(\mathbf{R}\).
+\end{proof}
+
 \begin{remark}\label{3.8.12}
     There are many other important properties of convolution, for instance it is associative, \((f * g) * h = f * (g * h)\), and it commutes with derivatives, \((f * g)' = f' * g = f * g'\), when \(f\) and \(g\) are differentiable.
     The Dirac delta function \(\delta\) mentioned earlier is an identity for convolution:
