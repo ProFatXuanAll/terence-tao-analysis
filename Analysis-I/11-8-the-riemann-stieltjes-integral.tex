@@ -154,6 +154,11 @@ for every \(x_0 \in I\) and \(x_0\) is not an endpoint of \(X\).
     We sometimes write \(\alpha\big|_a^b\) or \(\alpha(x)\big|_{x = a}^{x = b}\) instead of \(\alpha\big[[a, b]\big]\).
 \end{note}
 
+\begin{note}
+    Definition \ref{11.8.1} is well-defined thanks to Additional Corollary \ref{ac 11.8.1}.
+    Definition \ref{11.8.1} is can also be applied when \(\alpha\) is monotone decreasing, thanks to Additional Corollary \ref{ac 11.8.2}.
+\end{note}
+
 \setcounter{theorem}{3}
 \begin{lemma}\label{11.8.4}
     Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(\mathbf{P}\) be a partition of \(I\).
@@ -210,7 +215,7 @@ for every \(x_0 \in I\) and \(x_0\) is not an endpoint of \(X\).
                                & = \begin{cases}
             \alpha\big[[a, c)\big] + \alpha\big[[c, b]\big] \\
                 \alpha\big[[a, c]\big] + \alpha\big[(c, b]\big]
-        \end{cases}                      \\
+        \end{cases}                     \\
                                & = \alpha[K] + \alpha[I \setminus K].
     \end{align*}
     On the other hand, since \(\mathbf{P}\) forms a partition of \(I\), we see that \(\mathbf{P} \setminus \{K\}\) forms a partition of \(I \setminus K\).
@@ -256,6 +261,24 @@ for every \(x_0 \in I\) and \(x_0\) is not an endpoint of \(X\).
     The rest of the argument then proceeds as above.
 \end{proof}
 
+\begin{additional corollary}\label{ac 11.8.3}
+Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone decreasing function defined on some interval \(X\) which contains \(I\), and let \(\mathbf{P}\) be a partition of \(I\).
+Then we have
+\[
+    \alpha[I] = \sum_{J \in \mathbf{P}} \alpha[J].
+\]
+\end{additional corollary}
+
+\begin{proof}
+    Since \(\alpha\) is monotone decreasing, we know that \(-\alpha\) is monotone increasing.
+    Thus by Lemma \ref{11.8.4} we have
+    \begin{align*}
+                 & (-\alpha)[I] = \sum_{J \in \mathbf{P}} (-\alpha)[J]                                                                               \\
+        \implies & -\big(\alpha[I]\big) = \sum_{J \in \mathbf{P}} -\big(\alpha[J]\big) = -\sum_{J \in \mathbf{P}} \alpha[J] & \text{(by limit laws)} \\
+        \implies & \alpha[I] = \sum_{J \in \mathbf{P}} \alpha[J].
+    \end{align*}
+\end{proof}
+
 \begin{definition}[piecewise constant Riemann-Stieltjes integral]\label{11.8.5}
     Let \(I\) be a bounded interval, and let \(\mathbf{P}\) be a partition of \(I\).
     Let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) be a function which is piecewise constant with respect to \(\mathbf{P}\).
@@ -266,14 +289,18 @@ for every \(x_0 \in I\) and \(x_0\) is not an endpoint of \(X\).
     where \(c_J\) is the constant value of \(f\) on \(J\).
 \end{definition}
 
+\begin{note}
+    Definition \ref{11.8.5} can also be applied when \(\alpha\) is monotone decreasing.
+\end{note}
+
 \setcounter{theorem}{6}
 \begin{example}\label{11.8.7}
     Let \(\alpha : \mathbf{R} \to \mathbf{R}\) be the identity function \(\alpha(x) \coloneqq x\).
     Then for any bounded interval \(I\), any partition \(\mathbf{P}\) of \(I\), and any function \(f\) that is piecewise constant with respect to \(P\), we have \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}]} f\).
 \end{example}
 
-\begin{additional corollary}\label{ac 11.8.3}
-Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) be a function.
+\begin{additional corollary}\label{ac 11.8.4}
+Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) be a function.
 Suppose that \(\mathbf{P}\) and \(\mathbf{P}'\) are partitions of \(I\) such that \(f\) is piecewise constant both with respect to \(\mathbf{P}\) and with respect to \(\mathbf{P}'\).
 Also suppose that both \(p.c. \int_{[\mathbf{P}]} f \; d \alpha\) and \(p.c. \int_{[\mathbf{P}']} f \; d \alpha\) are well-defined.
 Then \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d \alpha\).
@@ -284,7 +311,7 @@ Then \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d
     \[
         p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f \; d \alpha = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \alpha[J].
     \]
-    By Lemma \ref{11.8.4} we know that
+    By Lemma \ref{11.8.4} and Additional Corollary \ref{ac 11.8.3} we know that
     \[
         \alpha[I] = \sum_{J \in \mathbf{P}} \alpha[J] = \sum_{J \in \mathbf{P} \# \mathbf{P}'} \alpha[J].
     \]
@@ -308,33 +335,46 @@ Then \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d
     Thus we have \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d \alpha\).
 \end{proof}
 
-\begin{additional corollary}\label{ac 11.8.4}
-Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) be a piecewise constant function on \(I\).
+\begin{additional corollary}\label{ac 11.8.5}
+Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) be a piecewise constant function on \(I\).
 Then we define
 \[
     p.c. \int_I f \; d \alpha \coloneqq p.c. \int_{[\mathbf{P}]} f \; d \alpha,
 \]
 where \(\mathbf{P}\) is any partition of \(I\) with respect to which \(f\) is piecewise constant.
-(Note that Additional Corollary \ref{ac 11.8.3} tells us that the precise choice of this partition is irrelevant.)
+(Note that Additional Corollary \ref{ac 11.8.4} tells us that the precise choice of this partition is irrelevant.)
 \end{additional corollary}
 
-\begin{additional corollary}\label{ac 11.8.5}
-Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\).
-Then \(\alpha[I] \geq 0\).
+\begin{additional corollary}\label{ac 11.8.6}
+Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone function defined on some interval \(X\) which contains \(I\).
+\begin{itemize}
+    \item If \(\alpha\) is monotone increasing, then \(\alpha[I] \geq 0\).
+    \item If \(\alpha\) is monotone decreasing, then \(\alpha[I] \leq 0\).
+\end{itemize}
 \end{additional corollary}
 
 \begin{proof}
     We split into four cases:
     \begin{itemize}
-        \item If \(I = \emptyset\), then by Definition \ref{11.8.1} we have \(\alpha[\emptyset] = 0\).
-        \item If \(I = \{x_0\}\) is a point for some \(x_0 \in \mathbf{R}\), then we have
+        \item \(I = \emptyset\).
+              Then by Definition \ref{11.8.1} we have \(\alpha[\emptyset] = 0\).
+        \item \(I = \{x_0\}\) for some \(x_0 \in \mathbf{R}\).
+              If \(\alpha\) is monotone increasing, then we have
               \begin{align*}
                   \alpha\big[\{x_0\}\big] & = \lim_{x \to x_0^+} \alpha(x) - \lim_{x \to x_0^-} \alpha(x)                      & \text{(by Definition \ref{11.8.1})}              \\
                                           & = \inf_{x \in X \cap (x_0, \infty)} f(x) - \sup_{x \in X \cap (-\infty, x_0)} f(x) & \text{(by Additional Corollary \ref{ac 11.8.1})} \\
-                                          & \geq f(x_0) - f(x_0)                                                               & \text{(since \(f\) is monotone increasing)}      \\
+                                          & \geq f(x_0) - f(x_0)                                                               & \text{(since \(\alpha\) is monotone increasing)} \\
                                           & = 0.
               \end{align*}
-        \item If \(I = (a, b)\) for some \(a, b \in \mathbf{R}\) and \(a < b\), then we have
+              If \(\alpha\) is monotone decreasing, then we have
+              \begin{align*}
+                  \alpha\big[\{x_0\}\big] & = \lim_{x \to x_0^+} \alpha(x) - \lim_{x \to x_0^-} \alpha(x)                      & \text{(by Definition \ref{11.8.1})}              \\
+                                          & = \sup_{x \in X \cap (x_0, \infty)} f(x) - \inf_{x \in X \cap (-\infty, x_0)} f(x) & \text{(by Additional Corollary \ref{ac 11.8.2})} \\
+                                          & \leq f(x_0) - f(x_0)                                                               & \text{(since \(\alpha\) is monotone decreasing)} \\
+                                          & = 0.
+              \end{align*}
+        \item \(I = (a, b)\) for some \(a, b \in \mathbf{R}\) and \(a < b\).
+              If \(\alpha\) is monotone increasing, then we have
               \begin{align*}
                    & \alpha\big[(a, b)\big]                                                                                                                                \\
                    & = \lim_{x \to b^- ; x \in (a, b)} \alpha(x) - \lim_{x \to a^+ ; x \in (a, b)} \alpha(x)            & \text{(by Definition \ref{11.8.1})}              \\
@@ -342,17 +382,32 @@ Then \(\alpha[I] \geq 0\).
                    & = \sup_{x \in (a, b)} \alpha(x) - \inf_{x \in (a, b)} \alpha(x)                                                                                       \\
                    & \geq 0.
               \end{align*}
-        \item If \(I\) is one of \([a, b), (a, b], [a, b]\), then from the proof above we have
+              If \(\alpha\) is monotone decreasing, then we have
+              \begin{align*}
+                   & \alpha\big[(a, b)\big]                                                                                                                                \\
+                   & = \lim_{x \to b^- ; x \in (a, b)} \alpha(x) - \lim_{x \to a^+ ; x \in (a, b)} \alpha(x)            & \text{(by Definition \ref{11.8.1})}              \\
+                   & = \inf_{x \in (a, b) \cap (-\infty, b)} \alpha(x) - \sup_{x \in (a, b) \cap (a, \infty)} \alpha(x) & \text{(by Additional Corollary \ref{ac 11.8.2})} \\
+                   & = \inf_{x \in (a, b)} \alpha(x) - \sup_{x \in (a, b)} \alpha(x)                                                                                       \\
+                   & \leq 0.
+              \end{align*}
+        \item \(I\) is one of \([a, b), (a, b], [a, b]\).
+              If \(\alpha\) is monotone increasing, then from the proof above we have
               \begin{align*}
                   \alpha\big[[a, b)\big] & = \alpha\big[\{a\}\big] + \alpha\big[(a, b)\big] \geq 0 \\
-                  \alpha\big[(a, b]\big] & = \alpha\big[(a, b]\big] + \alpha\big[\{b\}\big] \geq 0 \\
+                  \alpha\big[(a, b]\big] & = \alpha\big[(a, b)\big] + \alpha\big[\{b\}\big] \geq 0 \\
                   \alpha\big[[a, b]\big] & = \alpha\big[\{a\}\big] + \alpha\big[(a, b]\big] \geq 0
               \end{align*}
+              If \(\alpha\) is monotone decreasing, then from the proof above we have
+              \begin{align*}
+                  \alpha\big[[a, b)\big] & = \alpha\big[\{a\}\big] + \alpha\big[(a, b)\big] \leq 0 \\
+                  \alpha\big[(a, b]\big] & = \alpha\big[(a, b)\big] + \alpha\big[\{b\}\big] \leq 0 \\
+                  \alpha\big[[a, b]\big] & = \alpha\big[\{a\}\big] + \alpha\big[(a, b]\big] \leq 0
+              \end{align*}
     \end{itemize}
-    From all cases above we conclude that \(\alpha[I] \geq 0\).
+    From all cases above we conclude that \(\alpha[I] \geq 0\) if \(\alpha\) is monotone increasing and \(\alpha[I] \leq 0\) if \(\alpha\) is monotone decreasing.
 \end{proof}
 
-\begin{additional corollary}\label{ac 11.8.6}
+\begin{additional corollary}\label{ac 11.8.7}
 Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) be piecewise constant functions on \(I\) such that both \(p.c. \int_I f \; d \alpha\) and \(p.c. \int_I g \; d \alpha\) are well-defined.
 \begin{enumerate}
     \item We have \(p.c. \int_I (f + g) \; d \alpha = p.c. \int_I f \; d \alpha + p.c. \int_I g \; d \alpha\).
@@ -385,11 +440,11 @@ Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone
     Thus we have
     \begin{align*}
          & p.c. \int_I f \; d \alpha + p.c. \int_I g \; d \alpha                                                                                \\
-         & = p.c. \int_{[\mathbf{P}]} f \; d \alpha + p.c. \int_{[\mathbf{P}]} g \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.4})} \\
+         & = p.c. \int_{[\mathbf{P}]} f \; d \alpha + p.c. \int_{[\mathbf{P}]} g \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.5})} \\
          & = \sum_{J \in \mathbf{P}} f_J \alpha[J] + \sum_{J \in \mathbf{P}} g_J \alpha[J]   & \text{(by Definition \ref{11.8.5})}              \\
          & = \sum_{J \in \mathbf{P}} (f_J + g_J) \alpha[J]                                   & \text{(by Proposition \ref{7.1.11}(f))}          \\
          & = p.c. \int_{[\mathbf{P}]} (f_J + g_J) \; d \alpha                                & \text{(by Definition \ref{11.8.5})}              \\
-         & = p.c. \int_I (f_J + g_J) \; d \alpha.                                            & \text{(by Additional Corollary \ref{ac 11.8.4})}
+         & = p.c. \int_I (f_J + g_J) \; d \alpha.                                            & \text{(by Additional Corollary \ref{ac 11.8.5})}
     \end{align*}
 \end{proof}
 
@@ -400,11 +455,11 @@ Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone
     Then by Definition \ref{11.2.1} \(c \cdot c_J\) is the constant value of \((cf)|_J\).
     Thus we have
     \begin{align*}
-        c \bigg(p.c. \int_I f \; d \alpha\bigg) & = c \bigg(p.c. \int_{[\mathbf{P}]} f \; d \alpha\bigg) & \text{(by Additional Corollary \ref{ac 11.8.4})} \\
+        c \bigg(p.c. \int_I f \; d \alpha\bigg) & = c \bigg(p.c. \int_{[\mathbf{P}]} f \; d \alpha\bigg) & \text{(by Additional Corollary \ref{ac 11.8.5})} \\
                                                 & = c \bigg(\sum_{J \in \mathbf{P}} c_J \alpha[J]\bigg)  & \text{(by Definition \ref{11.8.5})}              \\
                                                 & = \sum_{J \in \mathbf{P}} c \cdot c_J \alpha[J]        & \text{(by Proposition \ref{7.1.11}(g))}          \\
                                                 & = p.c. \int_{[\mathbf{P}]} (c f) \; d \alpha           & \text{(by Definition \ref{11.8.5})}              \\
-                                                & = p.c. \int_I (c f) \; d \alpha.                       & \text{(by Additional Corollary \ref{ac 11.8.4})}
+                                                & = p.c. \int_I (c f) \; d \alpha.                       & \text{(by Additional Corollary \ref{ac 11.8.5})}
     \end{align*}
 \end{proof}
 
@@ -413,20 +468,20 @@ Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone
     \begin{align*}
          & p.c. \int_I f \; d \alpha - p.c. \int_I g \; d \alpha                                                              \\
          & = p.c. \int_I f \; d \alpha + (-1) p.c. \int_I g \; d \alpha                                                       \\
-         & = p.c. \int_I f \; d \alpha + p.c. \int_I (-g) \; d \alpha   & \text{(by Additional Corollary \ref{ac 11.8.6}(b))} \\
-         & = p.c. \int_I \big(f + (-g)\big) \; d \alpha                 & \text{(by Additional Corollary \ref{ac 11.8.6}(a))} \\
+         & = p.c. \int_I f \; d \alpha + p.c. \int_I (-g) \; d \alpha   & \text{(by Additional Corollary \ref{ac 11.8.7}(b))} \\
+         & = p.c. \int_I \big(f + (-g)\big) \; d \alpha                 & \text{(by Additional Corollary \ref{ac 11.8.7}(a))} \\
          & = p.c. \int_I (f - g) \; d \alpha.                           & \text{(by Definition \ref{9.2.1})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(d)}
-    By Additional Corollary \ref{ac 11.8.4} \(f\) is piecewise constant with respect to \(\mathbf{P}\) for some partition \(\mathbf{P}\) of \(I\).
+    By Additional Corollary \ref{ac 11.8.5} \(f\) is piecewise constant with respect to \(\mathbf{P}\) for some partition \(\mathbf{P}\) of \(I\).
     Let \(J \in \mathbf{P}\) and let \(c_J \in \mathbf{R}\) be the constant value of \(f|_J\).
-    Since \(\alpha\) is monotone increasing, by Additional Corollary \ref{ac 11.8.5} we know that \(\alpha[J] \geq 0\) for all \(J \in \mathbf{P}\).
+    Since \(\alpha\) is monotone increasing, by Additional Corollary \ref{ac 11.8.6} we know that \(\alpha[J] \geq 0\) for all \(J \in \mathbf{P}\).
     Since \(f(x) \geq 0\) for all \(x \in I\), we have \(c_J \geq 0\) and \(c_J \alpha[J] \geq 0\) for all \(J \in \mathbf{P}\).
     Thus
     \begin{align*}
-        p.c. \int_I f \; d \alpha & = p.c. \int_{[\mathbf{P}]} f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.4})} \\
+        p.c. \int_I f \; d \alpha & = p.c. \int_{[\mathbf{P}]} f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.5})} \\
                                   & = \sum_{J \in \mathbf{P}} c_J \alpha[J]  & \text{(by Definition \ref{11.8.5})}              \\
                                   & \geq \sum_{J \in \mathbf{P}} 0           & \text{(by Proposition \ref{7.1.11}(h))}          \\
                                   & = 0.
@@ -436,8 +491,8 @@ Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone
 \begin{proof}{(e)}
     Since \(f(x) \geq g(x)\) for all \(x \in I\), we have \(f(x) - g(x) \geq 0\) and
     \begin{align*}
-        p.c. \int_I f \; d \alpha - p.c. \int_I g \; d \alpha & = p.c. \int_I (f - g) \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.6}(c))} \\
-                                                              & \geq 0.                           & \text{(by Additional Corollary \ref{ac 11.8.6}(d))}
+        p.c. \int_I f \; d \alpha - p.c. \int_I g \; d \alpha & = p.c. \int_I (f - g) \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.7}(c))} \\
+                                                              & \geq 0.                           & \text{(by Additional Corollary \ref{ac 11.8.7}(d))}
     \end{align*}
     Thus
     \[
@@ -448,7 +503,7 @@ Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone
 \begin{proof}{(f)}
     Since \(I\) is a partition of \(I\), we have
     \begin{align*}
-        p.c. \int_I f \; d \alpha & = p.c. \int_{[I]} f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.4})} \\
+        p.c. \int_I f \; d \alpha & = p.c. \int_{[I]} f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.5})} \\
                                   & = \sum_{J \in I} c \alpha[J]    & \text{(by Definition \ref{11.8.5})}              \\
                                   & = c \sum_{J \in I} \alpha[J]    & \text{(by Proposition \ref{7.1.11}(g))}          \\
                                   & = c \alpha[I].                  & \text{(by Lemma \ref{11.8.4})}
@@ -456,7 +511,7 @@ Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone
 \end{proof}
 
 \begin{proof}{(g)}
-    If \(I = \emptyset\), then by Definition \ref{11.2.3} \(F\) is piecewise constant with respect to \(\{J\}\), and by Additional Corollary \ref{ac 11.8.6}(f) we have
+    If \(I = \emptyset\), then by Definition \ref{11.2.3} \(F\) is piecewise constant with respect to \(\{J\}\), and by Additional Corollary \ref{ac 11.8.7}(f) we have
     \[
         p.c. \int_J F \; d \alpha = 0 \alpha[J] = 0 = p.c \int_I f \; d \alpha.
     \]
@@ -482,13 +537,13 @@ Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone
     For each \(K \in \mathbf{P} \cup \{I_1, I_2\}\), we define \(c_K \in \mathbf{R}\) to be the constant value of \(F|_K\).
     Then we have
     \begin{align*}
-        p.c. \int_J F \; d \alpha & = p.c. \int_{[\mathbf{P} \cup \{I_1, I_2\}]} F \; d \alpha                          & \text{(by Additional Corollary \ref{ac 11.8.4})} \\
+        p.c. \int_J F \; d \alpha & = p.c. \int_{[\mathbf{P} \cup \{I_1, I_2\}]} F \; d \alpha                          & \text{(by Additional Corollary \ref{ac 11.8.5})} \\
                                   & = \sum_{K \in \mathbf{P}} c_K \alpha[K]                                             & \text{(by Definition \ref{11.8.5})}              \\
                                   & = c_{I_1} \alpha[I_1] + \sum_{K \in \mathbf{P}} c_K \alpha[K] + c_{I_2} \alpha[I_2] & \text{(by Proposition \ref{7.1.11}(e))}          \\
                                   & = 0 \alpha[I_1] + \sum_{K \in \mathbf{P}} c_K \alpha[K] + 0 \alpha[I_2]             & \text{(by hypothesis)}                           \\
                                   & = \sum_{K \in \mathbf{P}} c_K \alpha[K]                                                                                                \\
                                   & = p.c. \int_{[\mathbf{P}]} f \; d \alpha                                            & \text{(by Definition \ref{11.8.5})}              \\
-                                  & = p.c. \int_I f \; d \alpha.                                                        & \text{(by Additional Corollary \ref{ac 11.8.4})}
+                                  & = p.c. \int_I f \; d \alpha.                                                        & \text{(by Additional Corollary \ref{ac 11.8.5})}
     \end{align*}
 \end{proof}
 
@@ -513,16 +568,16 @@ Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone
     Then we have
     \begin{align*}
           & p.c. \int_J f|_J \; d \alpha + p.c. \int_K f|_K \; d \alpha                                                                                  \\
-        = & p.c. \int_{[\mathbf{P}_J]} f|_J \; d \alpha + p.c. \int_{[\mathbf{P}_K]} f|_K \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.4})} \\
+        = & p.c. \int_{[\mathbf{P}_J]} f|_J \; d \alpha + p.c. \int_{[\mathbf{P}_K]} f|_K \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.5})} \\
         = & \sum_{S \in \mathbf{P}_J} c_S \alpha[S] + \sum_{S \in \mathbf{P}_K} c_S \alpha[S]         & \text{(by Proposition \ref{7.1.11}(e))}          \\
         = & \sum_{S \in \mathbf{P}_J \cup \mathbf{P}_K} c_S \alpha[S]                                 & \text{(by Definition \ref{11.8.5})}              \\
         = & \sum_{S \in \mathbf{P}} c_S \alpha[S]                                                                                                        \\
         = & p.c. \int_{[\mathbf{P}]} f \; d \alpha                                                    & \text{(by Definition \ref{11.8.5})}              \\
-        = & p.c. \int_I f \; d \alpha.                                                                & \text{(by Additional Corollary \ref{ac 11.8.4})}
+        = & p.c. \int_I f \; d \alpha.                                                                & \text{(by Additional Corollary \ref{ac 11.8.5})}
     \end{align*}
 \end{proof}
 
-\begin{additional corollary}\label{ac 11.8.7}
+\begin{additional corollary}\label{ac 11.8.8}
 Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) be a bounded function.
 We define the \emph{upper Riemann-Stieltjes integral} \(\overline{\int}_I f \; d \alpha\) by the formula
 \[
@@ -539,7 +594,7 @@ If \(\underline{\int}_I f \; d \alpha = \overline{\int}_I f \; d \alpha\), then 
 If the upper and lower Riemann-Stieltjes integrals are unequal, we say that \(f\) is not Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\).
 \end{additional corollary}
 
-\begin{additional corollary}\label{ac 11.8.8}
+\begin{additional corollary}\label{ac 11.8.9}
 Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\).
 Let \(f : I \to \mathbf{R}\) be a function which is bounded by some real number \(M\), i.e., \(-M \leq f(x) \leq M\) for all \(x \in I\).
 Then we have
@@ -566,24 +621,24 @@ in particular, both the lower and upper Riemann-Stieltjes integrals are real num
     We sometimes write \(\int_I f\) as \(\int_I f \; dx\) or \(\int_I f(x) \; dx\).
 \end{note}
 
-\begin{additional corollary}\label{ac 11.8.9}
+\begin{additional corollary}\label{ac 11.8.10}
 Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\).
 Let \(f : I \to \mathbf{R}\) be a piecewise constant function.
 Then \(f\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\), and \(\int_I f \; d \alpha = p.c. \int_I f \; d \alpha\).
 \end{additional corollary}
 
 \begin{proof}
-    Since \(f(x) \leq f(x)\) for every \(x \in I\), by Additional Corollary \ref{ac 11.8.7} and Additional Corollary \ref{ac 11.8.8} we have
+    Since \(f(x) \leq f(x)\) for every \(x \in I\), by Additional Corollary \ref{ac 11.8.8} and Additional Corollary \ref{ac 11.8.9} we have
     \[
         p.c. \int_I f \; d \alpha \leq \underline{\int}_I f \; d \alpha \leq \overline{\int}_I f \; d \alpha \leq p.c. \int_I f \; d \alpha
     \]
-    Thus by Additional Corollary \ref{ac 11.8.7} we have
+    Thus by Additional Corollary \ref{ac 11.8.8} we have
     \[
         \int_I f \; d \alpha = \underline{\int}_I f \; d \alpha = \overline{\int}_I f \; d \alpha = p.c. \int_I f \; d \alpha.
     \]
 \end{proof}
 
-\begin{additional corollary}[Laws of Riemann-Stieltjes integration]\label{ac 11.8.10}
+\begin{additional corollary}[Laws of Riemann-Stieltjes integration]\label{ac 11.8.11}
 Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\).
 Let \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) be Riemann-Stieltjes integrable functions on \(I\) with respect to \(\alpha\).
 \begin{enumerate}
@@ -604,7 +659,7 @@ Let \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) be Riemann-Stieltjes i
 \begin{proof}{(a)}
     Let \(f_U : I \to \mathbf{R}\) and \(g_U : I \to \mathbf{R}\) be piecewise constant functions on \(I\) which majorizes \(f\) and \(g\), respectively.
     Let \(f_L : I \to \mathbf{R}\) and \(g_L : I \to \mathbf{R}\) be piecewise constant functions on \(I\) which minorizes \(f\) and \(g\), respectively.
-    \(f_U, g_U, f_L, g_L\) are well-defined since by Additional Corollary \ref{ac 11.8.7} \(f, g\) are bounded functions on a bounded interval \(I\).
+    \(f_U, g_U, f_L, g_L\) are well-defined since by Additional Corollary \ref{ac 11.8.8} \(f, g\) are bounded functions on a bounded interval \(I\).
     Then we have
     \[
         p.c. \int_I f_L \; d \alpha \leq \underline{\int}_I f \; d \alpha = \int_I f \; d \alpha = \overline{\int}_I f \; d \alpha \leq p.c. \int_I f_U \; d \alpha
@@ -613,91 +668,91 @@ Let \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) be Riemann-Stieltjes i
     \[
         p.c. \int_I g_L \; d \alpha \leq \underline{\int}_I g \; d \alpha = \int_I g \; d \alpha = \overline{\int}_I g \; d \alpha \leq p.c. \int_I g_U \; d \alpha.
     \]
-    By Additional Corollary \ref{ac 11.8.7} both \(f, g\) are bounded functions, so \(f + g\) is bounded function, and \(\underline{\int}_I (f + g) \; d \alpha, \overline{\int}_I (f + g) \; d \alpha\) are well-defined (by Additional Corollary \ref{ac 11.8.7}).
+    By Additional Corollary \ref{ac 11.8.8} both \(f, g\) are bounded functions, so \(f + g\) is bounded function, and \(\underline{\int}_I (f + g) \; d \alpha, \overline{\int}_I (f + g) \; d \alpha\) are well-defined (by Additional Corollary \ref{ac 11.8.8}).
     By Exercise \ref{ex 11.3.2} we know that \(f_U + g_U\) majorizes \(f + g_U\) and \(f + g_U\) majorizes \(f + g\), thus \(f_U + g_U\) majorizes \(f + g\).
     Similarly \(f_L + g_L\) minorizes \(f + g\).
     Then we have
     \begin{align*}
-                 & \overline{\int}_I (f + g) \; d \alpha \leq p.c. \int_I (f_U + g_U) \; d \alpha                               & \text{(by Additional Corollary \ref{ac 11.8.7})}    \\
+                 & \overline{\int}_I (f + g) \; d \alpha \leq p.c. \int_I (f_U + g_U) \; d \alpha                               & \text{(by Additional Corollary \ref{ac 11.8.8})}    \\
         \implies & \overline{\int}_I (f + g) \; d \alpha                                                                                                                              \\
-                 & \quad \leq p.c. \int_I f_U \; d \alpha + p.c. \int_I g_U \; d \alpha                                         & \text{(by Additional Corollary \ref{ac 11.8.6}(a))} \\
+                 & \quad \leq p.c. \int_I f_U \; d \alpha + p.c. \int_I g_U \; d \alpha                                         & \text{(by Additional Corollary \ref{ac 11.8.7}(a))} \\
         \implies & \overline{\int}_I (f + g) \; d \alpha - p.c. \int_I g_U \; d \alpha                                                                                                \\
                  & \quad \leq p.c. \int_I f_U \; d \alpha                                                                       & \text{(note that \(f_U\) is arbitrary)}             \\
-        \implies & \overline{\int}_I (f + g) \; d \alpha - p.c. \int_I g_U \; d \alpha \leq \overline{\int}_I f \; d \alpha     & \text{(by Additional Corollary \ref{ac 11.8.7})}    \\
+        \implies & \overline{\int}_I (f + g) \; d \alpha - p.c. \int_I g_U \; d \alpha \leq \overline{\int}_I f \; d \alpha     & \text{(by Additional Corollary \ref{ac 11.8.8})}    \\
         \implies & \overline{\int}_I (f + g) \; d \alpha - \overline{\int}_I f \; d \alpha \leq p.c. \int_I g_U \; d \alpha     & \text{(note that \(g_U\) is arbitrary)}             \\
-        \implies & \overline{\int}_I (f + g) \; d \alpha - \overline{\int}_I f \; d \alpha \leq \overline{\int}_I g \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.7})}    \\
+        \implies & \overline{\int}_I (f + g) \; d \alpha - \overline{\int}_I f \; d \alpha \leq \overline{\int}_I g \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.8})}    \\
         \implies & \overline{\int}_I (f + g) \; d \alpha \leq \overline{\int}_I f \; d \alpha + \overline{\int}_I g \; d \alpha &                                                     \\
-        \implies & \overline{\int}_I (f + g) \; d \alpha \leq \int_I f \; d \alpha + \int_I g \; d \alpha                       & \text{(by Additional Corollary \ref{ac 11.8.7})}
+        \implies & \overline{\int}_I (f + g) \; d \alpha \leq \int_I f \; d \alpha + \int_I g \; d \alpha                       & \text{(by Additional Corollary \ref{ac 11.8.8})}
     \end{align*}
     and
     \begin{align*}
-                 & \underline{\int}_I (f + g) \; d \alpha \geq p.c. \int_I (f_L + g_L) \; d \alpha                                 & \text{(by Additional Corollary \ref{ac 11.8.7})}    \\
+                 & \underline{\int}_I (f + g) \; d \alpha \geq p.c. \int_I (f_L + g_L) \; d \alpha                                 & \text{(by Additional Corollary \ref{ac 11.8.8})}    \\
         \implies & \underline{\int}_I (f + g) \; d \alpha                                                                                                                                \\
-                 & \quad \geq p.c. \int_I f_L \; d \alpha + p.c. \int_I g_L \; d \alpha                                            & \text{(by Additional Corollary \ref{ac 11.8.6}(a))} \\
+                 & \quad \geq p.c. \int_I f_L \; d \alpha + p.c. \int_I g_L \; d \alpha                                            & \text{(by Additional Corollary \ref{ac 11.8.7}(a))} \\
         \implies & \underline{\int}_I (f + g) \; d \alpha - p.c. \int_I g_L \; d \alpha                                                                                                  \\
                  & \quad \geq p.c. \int_I f_L \; d \alpha                                                                          & \text{(note that \(f_L\) is arbitrary)}             \\
-        \implies & \underline{\int}_I (f + g) \; d \alpha - p.c. \int_I g_L \; d \alpha \geq \underline{\int}_I f \; d \alpha      & \text{(by Additional Corollary \ref{ac 11.8.7})}    \\
+        \implies & \underline{\int}_I (f + g) \; d \alpha - p.c. \int_I g_L \; d \alpha \geq \underline{\int}_I f \; d \alpha      & \text{(by Additional Corollary \ref{ac 11.8.8})}    \\
         \implies & \underline{\int}_I (f + g) \; d \alpha - \underline{\int}_I f \; d \alpha \geq p.c. \int_I g_L \; d \alpha      & \text{(note that \(g_L\) is arbitrary)}             \\
-        \implies & \underline{\int}_I (f + g) \; d \alpha - \underline{\int}_I f \; d \alpha \geq \underline{\int}_I g \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.7})}    \\
+        \implies & \underline{\int}_I (f + g) \; d \alpha - \underline{\int}_I f \; d \alpha \geq \underline{\int}_I g \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.8})}    \\
         \implies & \underline{\int}_I (f + g) \; d \alpha \geq \underline{\int}_I f \; d \alpha + \underline{\int}_I g \; d \alpha &                                                     \\
-        \implies & \underline{\int}_I (f + g) \; d \alpha \geq \int_I f \; d \alpha + \int_I g \; d \alpha.                        & \text{(by Additional Corollary \ref{ac 11.8.7})}
+        \implies & \underline{\int}_I (f + g) \; d \alpha \geq \int_I f \; d \alpha + \int_I g \; d \alpha.                        & \text{(by Additional Corollary \ref{ac 11.8.8})}
     \end{align*}
-    By Additional Corollary \ref{ac 11.8.8} we have
+    By Additional Corollary \ref{ac 11.8.9} we have
     \[
         \int_I f \; d \alpha + \int_I g \; d \alpha \leq \underline{\int}_I (f + g) \; d \alpha \leq \overline{\int}_I (f + g) \; d \alpha \leq \int_I f \; d \alpha + \int_I g \; d \alpha
     \]
-    and thus by Additional Corollary \ref{ac 11.8.7} we have
+    and thus by Additional Corollary \ref{ac 11.8.8} we have
     \[
         \int_I (f + g) \; d \alpha = \underline{\int}_I (f + g) \; d \alpha = \overline{\int}_I (f + g) \; d \alpha = \int_I f \; d \alpha + \int_I g \; d \alpha.
     \]
 \end{proof}
 
 \begin{proof}{(b)}
-    Since \(f\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\), by Additional Corollary \ref{ac 11.8.7} we have
+    Since \(f\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\), by Additional Corollary \ref{ac 11.8.8} we have
     \[
         \int_I f \; d \alpha = \overline{\int}_I f \; d \alpha = \underline{\int}_I f \; d \alpha.
     \]
     First suppose that \(c = 0\).
     Then we have \((cf)(x) = 0\) for all \(x \in 0\), thus we have
     \begin{align*}
-        \int_I (cf) \; d \alpha & = p.c. \int_I (cf) \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.9})} \\
-                                & = 0                                                                               \\
+        \int_I (cf) \; d \alpha & = p.c. \int_I (cf) \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.10})} \\
+                                & = 0                                                                                \\
                                 & = c \int_I f \; d \alpha.
     \end{align*}
 
     Next suppose that \(c > 0\).
     Let \(f_U : I \to \mathbf{R}\) be a piecewise constant function on \(I\) which majorizes \(f\).
     Let \(f_L : I \to \mathbf{R}\) be a piecewise constant function on \(I\) which minorizes \(f\).
-    \(f_U, f_L\) are well-defined since by Additional Corollary \ref{ac 11.8.7} \(f\) is a bounded function on a bounded interval \(I\).
-    Then by Additional Corollary \ref{ac 11.8.7} we have
+    \(f_U, f_L\) are well-defined since by Additional Corollary \ref{ac 11.8.8} \(f\) is a bounded function on a bounded interval \(I\).
+    Then by Additional Corollary \ref{ac 11.8.8} we have
     \[
         p.c. \int_I f_L \; d \alpha \leq \underline{\int}_I f \; d \alpha = \int_I f \; d \alpha = \overline{\int}_I f \; d \alpha \leq p.c. \int_I f_U \; d \alpha.
     \]
-    Since \(f\) is a bounded function, \(cf\) is also a bounded function, by Additional Corollary \ref{ac 11.8.7} both \(\overline{\int}_I (cf) \; d \alpha, \underline{\int}_I (cf) \; d \alpha\) are well-defined.
+    Since \(f\) is a bounded function, \(cf\) is also a bounded function, by Additional Corollary \ref{ac 11.8.8} both \(\overline{\int}_I (cf) \; d \alpha, \underline{\int}_I (cf) \; d \alpha\) are well-defined.
     Since \(c > 0\), by Definition \ref{11.3.1} we know that \(c f_U\) majorizes \(c f\) and \(c f_L\) minorizes \(c f\).
     Then we have
     \begin{align*}
-                 & \overline{\int}_I (cf) \; d \alpha \leq p.c. \int_I (c f_U) \; d \alpha                         & \text{(by Additional Corollary \ref{ac 11.8.7})}    \\
-        \implies & \overline{\int}_I (cf) \; d \alpha \leq c \bigg(p.c. \int_I f_U \; d \alpha\bigg)               & \text{(by Additional Corollary \ref{ac 11.8.6}(b))} \\
+                 & \overline{\int}_I (cf) \; d \alpha \leq p.c. \int_I (c f_U) \; d \alpha                         & \text{(by Additional Corollary \ref{ac 11.8.8})}    \\
+        \implies & \overline{\int}_I (cf) \; d \alpha \leq c \bigg(p.c. \int_I f_U \; d \alpha\bigg)               & \text{(by Additional Corollary \ref{ac 11.8.7}(b))} \\
         \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf) \; d \alpha\bigg) \leq p.c. \int_I f_U \; d \alpha     & \text{(note that \(f_U\) is arbitrary)}             \\
-        \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf) \; d \alpha\bigg) \leq \overline{\int}_I f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.7})}    \\
+        \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf) \; d \alpha\bigg) \leq \overline{\int}_I f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.8})}    \\
         \implies & \overline{\int}_I (cf) \; d \alpha \leq c\bigg(\overline{\int}_I f \; d \alpha\bigg)                                                                  \\
-        \implies & \overline{\int}_I (cf) \; d \alpha \leq c\bigg(\int_I f \; d \alpha\bigg)                       & \text{(by Additional Corollary \ref{ac 11.8.7})}
+        \implies & \overline{\int}_I (cf) \; d \alpha \leq c\bigg(\int_I f \; d \alpha\bigg)                       & \text{(by Additional Corollary \ref{ac 11.8.8})}
     \end{align*}
     and
     \begin{align*}
-                 & \underline{\int}_I (cf) \; d \alpha \geq p.c. \int_I (c f_L) \; d \alpha                          & \text{(by Additional Corollary \ref{ac 11.8.7})}    \\
-        \implies & \underline{\int}_I (cf) \; d \alpha \geq c \bigg(p.c. \int_I f_L \; d \alpha\bigg)                & \text{(by Additional Corollary \ref{ac 11.8.6}(b))} \\
+                 & \underline{\int}_I (cf) \; d \alpha \geq p.c. \int_I (c f_L) \; d \alpha                          & \text{(by Additional Corollary \ref{ac 11.8.8})}    \\
+        \implies & \underline{\int}_I (cf) \; d \alpha \geq c \bigg(p.c. \int_I f_L \; d \alpha\bigg)                & \text{(by Additional Corollary \ref{ac 11.8.7}(b))} \\
         \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf) \; d \alpha\bigg) \geq p.c. \int_I f_L \; d \alpha      & \text{(note that \(f_L\) is arbitrary)}             \\
-        \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf) \; d \alpha\bigg) \geq \underline{\int}_I f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.7})}    \\
+        \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf) \; d \alpha\bigg) \geq \underline{\int}_I f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.8})}    \\
         \implies & \underline{\int}_I (cf) \; d \alpha \geq c\bigg(\underline{\int}_I f \; d \alpha\bigg)                                                                  \\
-        \implies & \underline{\int}_I (cf) \; d \alpha \geq c\bigg(\int_I f \; d \alpha\bigg).                       & \text{(by Additional Corollary \ref{ac 11.8.7})}
+        \implies & \underline{\int}_I (cf) \; d \alpha \geq c\bigg(\int_I f \; d \alpha\bigg).                       & \text{(by Additional Corollary \ref{ac 11.8.8})}
     \end{align*}
-    By Additional Corollary \ref{ac 11.8.8} we have
+    By Additional Corollary \ref{ac 11.8.9} we have
     \[
         c\bigg(\int_I f \; d \alpha\bigg) \leq \underline{\int}_I (cf) \; d \alpha \leq \overline{\int}_I (cf) \; d \alpha \leq c\bigg(\int_I f \; d \alpha\bigg)
     \]
-    and thus by Additional Corollary \ref{ac 11.8.7} we have
+    and thus by Additional Corollary \ref{ac 11.8.8} we have
     \[
         \int_I (cf) \; d \alpha = \underline{\int}_I (cf) \; d \alpha = \overline{\int}_I (cf) \; d \alpha = c\bigg(\int_I f \; d \alpha\bigg).
     \]
@@ -705,27 +760,27 @@ Let \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) be Riemann-Stieltjes i
     Finally suppose that \(c < 0\).
     Using the same definition of \(f_U, f_L\) we have
     \begin{align*}
-                 & \overline{\int}_I (cf \; d \alpha) \leq p.c. \int_I (c f_U \; d \alpha)                                                          & \text{(by Additional Corollary \ref{ac 11.8.7})}    \\
-        \implies & \overline{\int}_I (cf \; d \alpha) \leq c \bigg(p.c. \int_I f_U \; d \alpha\bigg)                                                & \text{(by Additional Corollary \ref{ac 11.8.6}(b))} \\
+                 & \overline{\int}_I (cf \; d \alpha) \leq p.c. \int_I (c f_U \; d \alpha)                                                          & \text{(by Additional Corollary \ref{ac 11.8.8})}    \\
+        \implies & \overline{\int}_I (cf \; d \alpha) \leq c \bigg(p.c. \int_I f_U \; d \alpha\bigg)                                                & \text{(by Additional Corollary \ref{ac 11.8.7}(b))} \\
         \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf) \; d \alpha\bigg) \geq p.c. \int_I f_U \; d \alpha                                                                                            \\
-        \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf) \; d \alpha\bigg) \geq p.c. \int_I f_U \; d \alpha \geq \overline{\int}_I f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.7})}    \\
+        \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf) \; d \alpha\bigg) \geq p.c. \int_I f_U \; d \alpha \geq \overline{\int}_I f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.8})}    \\
         \implies & \overline{\int}_I (cf) \; d \alpha \leq c\bigg(\overline{\int}_I f \; d \alpha\bigg)                                                                                                   \\
-        \implies & \overline{\int}_I (cf) \; d \alpha \leq c\bigg(\int_I f \; d \alpha\bigg)                                                        & \text{(by Additional Corollary \ref{ac 11.8.7})}
+        \implies & \overline{\int}_I (cf) \; d \alpha \leq c\bigg(\int_I f \; d \alpha\bigg)                                                        & \text{(by Additional Corollary \ref{ac 11.8.8})}
     \end{align*}
     and
     \begin{align*}
-                 & \underline{\int}_I (cf) \; d \alpha \geq p.c. \int_I (c f_L) \; d \alpha                                                           & \text{(by Additional Corollary \ref{ac 11.8.7})}    \\
-        \implies & \underline{\int}_I (cf) \; d \alpha \geq c \bigg(p.c. \int_I f_L \; d \alpha\bigg)                                                 & \text{(by Additional Corollary \ref{ac 11.8.6}(b))} \\
+                 & \underline{\int}_I (cf) \; d \alpha \geq p.c. \int_I (c f_L) \; d \alpha                                                           & \text{(by Additional Corollary \ref{ac 11.8.8})}    \\
+        \implies & \underline{\int}_I (cf) \; d \alpha \geq c \bigg(p.c. \int_I f_L \; d \alpha\bigg)                                                 & \text{(by Additional Corollary \ref{ac 11.8.7}(b))} \\
         \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf) \; d \alpha\bigg) \leq p.c. \int_I f_L \; d \alpha                                                                                             \\
-        \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf) \; d \alpha\bigg) \leq p.c. \int_I f_L \; d \alpha \leq \underline{\int}_I f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.7})}    \\
+        \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf) \; d \alpha\bigg) \leq p.c. \int_I f_L \; d \alpha \leq \underline{\int}_I f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.8})}    \\
         \implies & \underline{\int}_I (cf) \; d \alpha \geq c\bigg(\underline{\int}_I f \; d \alpha\bigg)                                                                                                   \\
-        \implies & \underline{\int}_I (cf) \; d \alpha \geq c\bigg(\int_I f \; d \alpha\bigg).                                                        & \text{(by Additional Corollary \ref{ac 11.8.7})}
+        \implies & \underline{\int}_I (cf) \; d \alpha \geq c\bigg(\int_I f \; d \alpha\bigg).                                                        & \text{(by Additional Corollary \ref{ac 11.8.8})}
     \end{align*}
-    By Additional Corollary \ref{ac 11.8.8} we have
+    By Additional Corollary \ref{ac 11.8.9} we have
     \[
         c\bigg(\int_I f \; d \alpha\bigg) \leq \underline{\int}_I (cf) \; d \alpha \leq \overline{\int}_I (cf) \; d \alpha \leq c\bigg(\int_I f \; d \alpha\bigg)
     \]
-    and thus by Additional Corollary \ref{ac 11.8.7} we have
+    and thus by Additional Corollary \ref{ac 11.8.8} we have
     \[
         \int_I (cf) \; d \alpha = \underline{\int}_I (cf) \; d \alpha = \overline{\int}_I (cf) \; d \alpha = c\bigg(\int_I f \; d \alpha\bigg).
     \]
@@ -735,29 +790,29 @@ Let \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) be Riemann-Stieltjes i
 \begin{proof}{(c)}
     We have
     \begin{align*}
-        \int_I f \; d \alpha - \int_I g \; d \alpha & = \int_I f \; d \alpha + \int_I (-g) \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.10}(b))} \\
-                                                    & = \int_I \big(f + (-g) \; d \alpha\big)          & \text{(by Additional Corollary \ref{ac 11.8.10}(a))} \\
+        \int_I f \; d \alpha - \int_I g \; d \alpha & = \int_I f \; d \alpha + \int_I (-g) \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.11}(b))} \\
+                                                    & = \int_I \big(f + (-g) \; d \alpha\big)          & \text{(by Additional Corollary \ref{ac 11.8.11}(a))} \\
                                                     & = \int_I (f - g) \; d \alpha.                    & \text{(by Definition \ref{9.2.1})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(d)}
     Let \(f_U : I \to \mathbf{R}\) be a piecewise constant function on \(I\) which majorizes \(f\).
-    \(f_U\) is well-defined since by Additional Corollary \ref{ac 11.8.7} \(f\) is a bounded function on a bounded interval \(I\).
+    \(f_U\) is well-defined since by Additional Corollary \ref{ac 11.8.8} \(f\) is a bounded function on a bounded interval \(I\).
     Since \(0 \leq f(x) \leq f_U(x)\) for every \(x \in I\), we have
     \begin{align*}
-                 & 0 \leq p.c. \int_I f_U \; d \alpha     & \text{(by Additional Corollary \ref{ac 11.8.6}(d))} \\
-        \implies & 0 \leq \overline{\int}_I f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.7})}    \\
-        \implies & 0 \leq \int_I f \; d \alpha.           & \text{(by Additional Corollary \ref{ac 11.8.7})}
+                 & 0 \leq p.c. \int_I f_U \; d \alpha     & \text{(by Additional Corollary \ref{ac 11.8.7}(d))} \\
+        \implies & 0 \leq \overline{\int}_I f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.8})}    \\
+        \implies & 0 \leq \int_I f \; d \alpha.           & \text{(by Additional Corollary \ref{ac 11.8.8})}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(e)}
-    We have \(f(x) - g(x) \geq 0\) for every \(x \in I\) and by Additional Corollary \ref{ac 11.8.10}(c) \(f - g\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\).
+    We have \(f(x) - g(x) \geq 0\) for every \(x \in I\) and by Additional Corollary \ref{ac 11.8.11}(c) \(f - g\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\).
     Thus
     \begin{align*}
-                 & \int_I (f - g) \; d \alpha \geq 0                  & \text{(by Additional Corollary \ref{ac 11.8.10}(d))} \\
-        \implies & \int_I f \; d \alpha - \int_I g \; d \alpha \geq 0 & \text{(by Additional Corollary \ref{ac 11.8.10}(c))} \\
+                 & \int_I (f - g) \; d \alpha \geq 0                  & \text{(by Additional Corollary \ref{ac 11.8.11}(d))} \\
+        \implies & \int_I f \; d \alpha - \int_I g \; d \alpha \geq 0 & \text{(by Additional Corollary \ref{ac 11.8.11}(c))} \\
         \implies & \int_I f \; d \alpha \geq \int_I g \; d \alpha.
     \end{align*}
 \end{proof}
@@ -765,40 +820,40 @@ Let \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) be Riemann-Stieltjes i
 \begin{proof}{(f)}
     We have
     \begin{align*}
-        \int_I f \; d \alpha & = p.c. \int_I f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.9})}    \\
-                             & = c \alpha[I].              & \text{(by Additional Corollary \ref{ac 11.8.6}(f))}
+        \int_I f \; d \alpha & = p.c. \int_I f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.10})}   \\
+                             & = c \alpha[I].              & \text{(by Additional Corollary \ref{ac 11.8.7}(f))}
     \end{align*}
 \end{proof}
 
 \begin{proof}{(g)}
     Let \(f_U : I \to \mathbf{R}\) be a piecewise constant function on \(I\) which majorizes \(f\).
     Let \(f_L : I \to \mathbf{R}\) be a piecewise constant function on \(I\) which minorizes \(f\).
-    \(f_U, f_L\) are well-defined since by Additional Corollary \ref{ac 11.8.7} \(f\) is a bounded function on a bounded interval \(I\).
+    \(f_U, f_L\) are well-defined since by Additional Corollary \ref{ac 11.8.8} \(f\) is a bounded function on a bounded interval \(I\).
     Then we have
     \[
         p.c. \int_I f_L \leq \underline{\int}_I f = \int_I f = \overline{\int}_I f \leq p.c. \int_I f_U.
     \]
-    By Additional Corollary \ref{ac 11.8.6}(h) we know that \(f_U|_J : J \to \mathbf{R}\), \(f_L|_J : J \to \mathbf{R}\) are piecewise constant function on \(J\) and \(f_U|_K : K \to \mathbf{R}\), \(f_L|_K : K \to \mathbf{R}\) are piecewise constant functions on \(K\).
+    By Additional Corollary \ref{ac 11.8.7}(h) we know that \(f_U|_J : J \to \mathbf{R}\), \(f_L|_J : J \to \mathbf{R}\) are piecewise constant function on \(J\) and \(f_U|_K : K \to \mathbf{R}\), \(f_L|_K : K \to \mathbf{R}\) are piecewise constant functions on \(K\).
     By Definition \ref{11.3.1} we know that \(f_U|_J\) majorizes \(f|_J\) and \(f_L|_J\) minorizes \(f|_J\), similarly \(f_U|_K\) majorizes \(f|_K\) and \(f_L|_K\) minorizes \(f|_K\).
     Thus \(f|_J\), \(f|_K\) are bounded functions on bounded intervals \(J, K\), respectively.
     So \(\overline{\int}_J f|_J \; d \alpha\), \(\overline{\int}_K f|_K \; d \alpha\), \(\underline{\int}_J f|_J \; d \alpha\), \(\underline{\int}_K f|_K \; d \alpha\) are well-defined.
     Then we have
     \begin{align*}
                  & \overline{\int}_J f|_J \; d \alpha + \overline{\int}_K f|_K \; d \alpha                                                                                            \\
-                 & \quad \leq p.c. \int_J f_U|_J \; d \alpha + p.c. \int_K f_U|_K \; d \alpha                                   & \text{(by Additional Corollary \ref{ac 11.8.7})}    \\
-        \implies & \overline{\int}_J f|_J \; d \alpha + \overline{\int}_K f|_K \; d \alpha \leq p.c. \int_I f_U \; d \alpha     & \text{(by Additional Corollary \ref{ac 11.8.6}(h))} \\
-        \implies & \overline{\int}_J f|_J \; d \alpha + \overline{\int}_K f|_K \; d \alpha \leq \overline{\int}_I f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.7})}    \\
-        \implies & \overline{\int}_J f|_J \; d \alpha + \overline{\int}_K f|_K \; d \alpha \leq \int_I f \; d \alpha            & \text{(by Additional Corollary \ref{ac 11.8.7})}
+                 & \quad \leq p.c. \int_J f_U|_J \; d \alpha + p.c. \int_K f_U|_K \; d \alpha                                   & \text{(by Additional Corollary \ref{ac 11.8.8})}    \\
+        \implies & \overline{\int}_J f|_J \; d \alpha + \overline{\int}_K f|_K \; d \alpha \leq p.c. \int_I f_U \; d \alpha     & \text{(by Additional Corollary \ref{ac 11.8.7}(h))} \\
+        \implies & \overline{\int}_J f|_J \; d \alpha + \overline{\int}_K f|_K \; d \alpha \leq \overline{\int}_I f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.8})}    \\
+        \implies & \overline{\int}_J f|_J \; d \alpha + \overline{\int}_K f|_K \; d \alpha \leq \int_I f \; d \alpha            & \text{(by Additional Corollary \ref{ac 11.8.8})}
     \end{align*}
     and
     \begin{align*}
                  & \underline{\int}_J f|_J \; d \alpha + \underline{\int}_K f|_K \; d \alpha                                                                                             \\
-                 & \quad \geq p.c. \int_J f_L|_J \; d \alpha + p.c. \int_K f_L|_K \; d \alpha                                      & \text{(by Additional Corollary \ref{ac 11.8.7})}    \\
-        \implies & \underline{\int}_J f|_J \; d \alpha + \underline{\int}_K f|_K \; d \alpha \geq p.c. \int_I f_L \; d \alpha      & \text{(by Additional Corollary \ref{ac 11.8.6}(h))} \\
-        \implies & \underline{\int}_J f|_J \; d \alpha + \underline{\int}_K f|_K \; d \alpha \geq \underline{\int}_I f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.7})}    \\
-        \implies & \underline{\int}_J f|_J \; d \alpha + \underline{\int}_K f|_K \; d \alpha \geq \int_I f \; d \alpha.            & \text{(by Additional Corollary \ref{ac 11.8.7})}
+                 & \quad \geq p.c. \int_J f_L|_J \; d \alpha + p.c. \int_K f_L|_K \; d \alpha                                      & \text{(by Additional Corollary \ref{ac 11.8.8})}    \\
+        \implies & \underline{\int}_J f|_J \; d \alpha + \underline{\int}_K f|_K \; d \alpha \geq p.c. \int_I f_L \; d \alpha      & \text{(by Additional Corollary \ref{ac 11.8.7}(h))} \\
+        \implies & \underline{\int}_J f|_J \; d \alpha + \underline{\int}_K f|_K \; d \alpha \geq \underline{\int}_I f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.8})}    \\
+        \implies & \underline{\int}_J f|_J \; d \alpha + \underline{\int}_K f|_K \; d \alpha \geq \int_I f \; d \alpha.            & \text{(by Additional Corollary \ref{ac 11.8.8})}
     \end{align*}
-    By Additional Corollary \ref{ac 11.8.8} we have
+    By Additional Corollary \ref{ac 11.8.9} we have
     \[
         \int_I f \; d \alpha \leq \underline{\int}_J f|_J \; d \alpha + \underline{\int}_K f|_K \; d \alpha \leq \overline{\int}_J f|_J \; d \alpha + \overline{\int}_K f|_K \; d \alpha \leq \int_I f \; d \alpha
     \]
@@ -811,11 +866,11 @@ Let \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) be Riemann-Stieltjes i
                  & \underline{\int}_J f|_J \; d \alpha + \underline{\int}_K f|_K \; d \alpha                                                                  \\
                  & \quad = \overline{\int}_J f|_J \; d \alpha + \overline{\int}_J f|_K \; d \alpha                                                            \\
         \implies & 0 \geq \underline{\int}_J f|_J \; d \alpha - \overline{\int}_J f|_J \; d \alpha                                                            \\
-                 & \quad = \overline{\int}_J f|_K \; d \alpha - \underline{\int}_K f|_K \; d \alpha \geq 0 & \text{(by Additional Corollary \ref{ac 11.8.8})} \\
+                 & \quad = \overline{\int}_J f|_K \; d \alpha - \underline{\int}_K f|_K \; d \alpha \geq 0 & \text{(by Additional Corollary \ref{ac 11.8.9})} \\
         \implies & \underline{\int}_J f|_J \; d \alpha - \overline{\int}_J f|_J \; d \alpha                                                                   \\
                  & \quad = \overline{\int}_J f|_K \; d \alpha - \underline{\int}_K f|_K \; d \alpha = 0,
     \end{align*}
-    by Additional Corollary \ref{ac 11.8.7} we have
+    by Additional Corollary \ref{ac 11.8.8} we have
     \begin{align*}
          & \int_J f|_J \; d \alpha = \underline{\int}_J f|_J \; d \alpha = \overline{\int}_J f|_J \; d \alpha, \\
          & \int_K f|_K \; d \alpha = \underline{\int}_K f|_K \; d \alpha = \overline{\int}_K f|_K \; d \alpha, \\
@@ -823,7 +878,7 @@ Let \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) be Riemann-Stieltjes i
     \end{align*}
 \end{proof}
 
-\begin{additional corollary}[Laws of Riemann-Stieltjes integration]\label{ac 11.8.11}
+\begin{additional corollary}[Laws of Riemann-Stieltjes integration]\label{ac 11.8.12}
 Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\).
 Let \(f : I \to \mathbf{R}\) be a bounded function, and let \(\mathbf{P}\) be a partition of \(I\).
 We define the \emph{upper Riemann-Stieltjes sum} \(U(f, \alpha, \mathbf{P})\) and the \emph{lower Riemann-Stieltjes sum} \(L(f, \alpha, \mathbf{P})\) by
@@ -836,7 +891,7 @@ and
 \]
 \end{additional corollary}
 
-\begin{additional corollary}\label{ac 11.8.12}
+\begin{additional corollary}\label{ac 11.8.13}
 Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\).
 Let \(f : I \to \mathbf{R}\) be a bounded function, and let \(g\) be a function which majorizes \(f\) and which is piecewise constant with respect to some partition \(\mathbf{P}\) of \(I\).
 Then
@@ -860,23 +915,23 @@ Similarly, if \(h\) is a function which minorizes \(f\) and is piecewise constan
     Let \(c_{g|_J}, c_{h|_J}\) be constant values of \(g|_J, h|_J\), respectively.
     Then we have
     \begin{align*}
-        U(f, \alpha, \mathbf{P}) & = \sum_{J \in \mathbf{P} : J \neq \emptyset} \big(\sup_{x \in J} f(x)\big) \alpha[J] & \text{(by Additional Corollary \ref{ac 11.8.11})} \\
+        U(f, \alpha, \mathbf{P}) & = \sum_{J \in \mathbf{P} : J \neq \emptyset} \big(\sup_{x \in J} f(x)\big) \alpha[J] & \text{(by Additional Corollary \ref{ac 11.8.12})} \\
                                  & \leq \sum_{J \in \mathbf{P} : J \neq \emptyset} c_{g|_J} \alpha[J]                   & \text{(by Proposition \ref{7.1.11}(h))}           \\
                                  & = \sum_{J \in \mathbf{P}} c_{g|_J} \alpha[J]                                         & \text{(by Proposition \ref{7.1.11}(a)(e))}        \\
                                  & = p.c. \int_{[\mathbf{P}]} g \; d \alpha                                             & \text{(by Definition \ref{11.8.5})}               \\
-                                 & = p.c. \int_I g \; d \alpha                                                          & \text{(by Additional Corollary \ref{ac 11.8.4})}
+                                 & = p.c. \int_I g \; d \alpha                                                          & \text{(by Additional Corollary \ref{ac 11.8.5})}
     \end{align*}
     and
     \begin{align*}
-        L(f, \alpha, \mathbf{P}) & = \sum_{J \in \mathbf{P} : J \neq \emptyset} \big(\inf_{x \in J} f(x)\big) \alpha[J] & \text{(by Additional Corollary \ref{ac 11.8.11})} \\
+        L(f, \alpha, \mathbf{P}) & = \sum_{J \in \mathbf{P} : J \neq \emptyset} \big(\inf_{x \in J} f(x)\big) \alpha[J] & \text{(by Additional Corollary \ref{ac 11.8.12})} \\
                                  & \geq \sum_{J \in \mathbf{P} : J \neq \emptyset} c_{h|_J} \alpha[J]                   & \text{(by Proposition \ref{7.1.11}(h))}           \\
                                  & = \sum_{J \in \mathbf{P}} c_{h|_J} \alpha[J]                                         & \text{(by Proposition \ref{7.1.11}(a)(e))}        \\
                                  & = p.c. \int_{[\mathbf{P}]} h \; d \alpha                                             & \text{(by Definition \ref{11.8.5})}               \\
-                                 & = p.c. \int_I h \; d \alpha.                                                         & \text{(by Additional Corollary \ref{ac 11.8.4})}
+                                 & = p.c. \int_I h \; d \alpha.                                                         & \text{(by Additional Corollary \ref{ac 11.8.5})}
     \end{align*}
 \end{proof}
 
-\begin{additional corollary}\label{ac 11.8.13}
+\begin{additional corollary}\label{ac 11.8.14}
 Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\).
 Let \(f : I \to \mathbf{R}\) be a bounded function.
 Then
@@ -893,7 +948,7 @@ and
     Let \(g\) be a function which majorizes \(f\) and which is piecewise constant with respect to some partition \(\mathbf{P}_g\) of \(I\).
     Let \(h\) be a function which minorizes \(f\) and which is piecewise constant with respect to some partition \(\mathbf{P}_h\) of \(I\).
     Both functions are well defined since \(f\) is bounded function on a bounded interval \(I\).
-    By Additional Corollary \ref{ac 11.8.12} we have
+    By Additional Corollary \ref{ac 11.8.13} we have
     \[
         \inf\big\{U(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\big\} \leq U(f, \alpha, \mathbf{P}_g) \leq p.c. \int_I g \; d \alpha
     \]
@@ -901,7 +956,7 @@ and
     \[
         \sup\big\{L(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\big\} \geq L(f, \alpha, \mathbf{P}_h) \geq p.c. \int_I h \; d \alpha.
     \]
-    Since \(g, h\) are arbitrary, by Additional Corollary \ref{ac 11.8.7} we have
+    Since \(g, h\) are arbitrary, by Additional Corollary \ref{ac 11.8.8} we have
     \[
         \inf\big\{U(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\big\} \leq \overline{\int}_I f \; d \alpha
     \]
@@ -916,19 +971,19 @@ and
     By Definition \ref{11.2.3} we know that \(G, H\) are piecewise constant functions with respect to \(\mathbf{P}\).
     Thus we have
     \begin{align*}
-        U(f, \alpha, \mathbf{P}) & = \sum_{J \in \mathbf{P} : J \neq \emptyset} \big(\sup_{x \in J} f(x)\big) \alpha[J] & \text{(by Additional Corollary \ref{ac 11.8.11})} \\
+        U(f, \alpha, \mathbf{P}) & = \sum_{J \in \mathbf{P} : J \neq \emptyset} \big(\sup_{x \in J} f(x)\big) \alpha[J] & \text{(by Additional Corollary \ref{ac 11.8.12})} \\
                                  & = \sum_{J \in \mathbf{P}} \big(\sup_{x \in J} f(x)\big) \alpha[J]                    & \text{(by Proposition \ref{7.1.11}(a)(e))}        \\
                                  & = p.c. \int_{[\mathbf{P}]} G \; d \alpha                                             & \text{(by Definition \ref{11.8.5})}               \\
-                                 & = p.c. \int_I G \; d \alpha                                                          & \text{(by Additional Corollary \ref{ac 11.8.4})}
+                                 & = p.c. \int_I G \; d \alpha                                                          & \text{(by Additional Corollary \ref{ac 11.8.5})}
     \end{align*}
     and
     \begin{align*}
-        L(f, \alpha, \mathbf{P}) & = \sum_{J \in \mathbf{P} : J \neq \emptyset} \big(\inf_{x \in J} f(x)\big) \alpha[J] & \text{(by Additional Corollary \ref{ac 11.8.11})} \\
+        L(f, \alpha, \mathbf{P}) & = \sum_{J \in \mathbf{P} : J \neq \emptyset} \big(\inf_{x \in J} f(x)\big) \alpha[J] & \text{(by Additional Corollary \ref{ac 11.8.12})} \\
                                  & = \sum_{J \in \mathbf{P}} \big(\inf_{x \in J} f(x)\big) \alpha[J]                    & \text{(by Proposition \ref{7.1.11}(a)(e))}        \\
                                  & = p.c. \int_{[\mathbf{P}]} H \; d \alpha                                             & \text{(by Definition \ref{11.8.5})}               \\
-                                 & = p.c. \int_I H \; d \alpha.                                                         & \text{(by Additional Corollary \ref{ac 11.8.4})}
+                                 & = p.c. \int_I H \; d \alpha.                                                         & \text{(by Additional Corollary \ref{ac 11.8.5})}
     \end{align*}
-    By Additional Corollary \ref{ac 11.8.7} we have
+    By Additional Corollary \ref{ac 11.8.8} we have
     \[
         \overline{\int}_I f \; d \alpha \leq p.c. \int_I G \; d \alpha = U(f, \alpha, \mathbf{P})
     \]
@@ -954,7 +1009,7 @@ and
     \]
 \end{proof}
 
-\begin{additional corollary}\label{ac 11.8.14}
+\begin{additional corollary}\label{ac 11.8.15}
 Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\).
 Let \(f\) be a function which is uniformly continuous on \(I\).
 Then \(f\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\).
@@ -962,7 +1017,7 @@ Then \(f\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\).
 
 \begin{proof}
     From Proposition \ref{9.9.15} we see that \(f\) is bounded.
-    By Additional Corollary \ref{ac 11.8.7} we have to show that \(\underline{\int}_I f \; d \alpha = \overline{\int}_I f \; d \alpha\).
+    By Additional Corollary \ref{ac 11.8.8} we have to show that \(\underline{\int}_I f \; d \alpha = \overline{\int}_I f \; d \alpha\).
 
     If \(I\) is a point or the empty set then the theorem is trivial, so let us assume that \(I\) is one of the four intervals \([a, b]\), \((a, b)\), \((a, b]\), or \([a, b)\) for some real numbers \(a < b\).
 
@@ -974,7 +1029,7 @@ Then \(f\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\).
     \]
 
     Note that we can partition \(I\) into \(N\) intervals \(J_1, \dots, J_N\), each of length \((b - a) / N\).
-    By Additional Corollary \ref{ac 11.8.13}, we thus have
+    By Additional Corollary \ref{ac 11.8.14}, we thus have
     \[
         \overline{\int}_I f \; d \alpha \leq \sum_{k = 1}^N \big(\sup_{x \in J_k} f(x)\big) \alpha[J_k]
     \]
@@ -1014,7 +1069,7 @@ Then \(f\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\).
     \]
     But \(\varepsilon > 0\) was arbitrary, while \(\alpha[I]\) is fixed.
     Thus \(\overline{\int}_I f \; d \alpha - \underline{\int}_I f \; d \alpha\) cannot be positive.
-    By Additional Corollary \ref{ac 11.8.7} we thus have that \(f\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\).
+    By Additional Corollary \ref{ac 11.8.8} we thus have that \(f\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\).
 \end{proof}
 
 \exercisesection
@@ -1032,7 +1087,7 @@ Then \(f\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\).
 \end{exercise}
 
 \begin{proof}
-    See Additional Corollary \ref{ac 11.8.3}.
+    See Additional Corollary \ref{ac 11.8.4}.
 \end{proof}
 
 \begin{exercise}\label{ex 11.8.3}
@@ -1040,7 +1095,7 @@ Then \(f\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\).
 \end{exercise}
 
 \begin{proof}
-    See Additional Corollary \ref{ac 11.8.6}.
+    See Additional Corollary \ref{ac 11.8.7}.
 \end{proof}
 
 \begin{exercise}\label{ex 11.8.4}
@@ -1048,7 +1103,7 @@ Then \(f\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\).
 \end{exercise}
 
 \begin{proof}
-    See Additional Corollary \ref{ac 11.8.14}.
+    See Additional Corollary \ref{ac 11.8.15}.
 \end{proof}
 
 \begin{exercise}\label{ex 11.8.5}
@@ -1070,7 +1125,7 @@ Then \(f\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\).
 \begin{proof}
     We first show that \(f\) is Riemann-Stieltjes integrable on \([-1, 1]\) with respect to \(\text{sgn}\).
     By Theorem \ref{9.9.16} \(f\) is uniformly continuous, and thus by Proposition \ref{9.9.15} \(f\) is bounded.
-    Since \(\text{sgn}\) is monoton increasing, by Additional Corollary \ref{ac 11.8.14} we know that \(f\) is Riemann-Stieltjes integrable on \([-1, 1]\) with respect to \(\text{sgn}\).
+    Since \(\text{sgn}\) is monotone increasing, by Additional Corollary \ref{ac 11.8.15} we know that \(f\) is Riemann-Stieltjes integrable on \([-1, 1]\) with respect to \(\text{sgn}\).
 
     Now we show that \(\int_{[-1, 1]} f \; d \, \text{sgn} = 2f(0)\).
     Since \(f\) is continuous, by Proposition \ref{9.4.7} we have
@@ -1102,7 +1157,7 @@ Then \(f\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\).
     Clearly \(f_U, f_L\) are piecewise constant on \([-1, 1]\), \(f_U\) majorizes \(f\) and \(f_L\) minorizes \(f\).
     Then we have
     \begin{align*}
-        \overline{\int}_{[-1, 1]} f \; d \, \text{sgn} & \leq p.c. \int f_U \; d \, \text{sgn}                                   & \text{(by Additional Corollary \ref{ac 11.8.7})} \\
+        \overline{\int}_{[-1, 1]} f \; d \, \text{sgn} & \leq p.c. \int f_U \; d \, \text{sgn}                                   & \text{(by Additional Corollary \ref{ac 11.8.8})} \\
                                                        & = M \big(\text{sgn}(-\delta) - \text{sgn}(-1)\big)                      & \text{(by Definition \ref{11.8.5})}              \\
                                                        & \quad + (f(0) + \varepsilon) (\text{sgn}(\delta) - \text{sgn}(-\delta))                                                    \\
                                                        & \quad + M \big(\text{sgn}(1) - \text{sgn}(\delta)\big)                                                                     \\
@@ -1110,7 +1165,7 @@ Then \(f\) is Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\).
     \end{align*}
     and
     \begin{align*}
-        \underline{\int}_{[-1, 1]} f \; d \, \text{sgn} & \geq p.c. \int f_L \; d \, \text{sgn}                                   & \text{(by Additional Corollary \ref{ac 11.8.7})} \\
+        \underline{\int}_{[-1, 1]} f \; d \, \text{sgn} & \geq p.c. \int f_L \; d \, \text{sgn}                                   & \text{(by Additional Corollary \ref{ac 11.8.8})} \\
                                                         & = M \big(\text{sgn}(-\delta) - \text{sgn}(-1)\big)                      & \text{(by Definition \ref{11.8.5})}              \\
                                                         & \quad + (f(0) - \varepsilon) (\text{sgn}(\delta) - \text{sgn}(-\delta))                                                    \\
                                                         & \quad + M \big(\text{sgn}(1) - \text{sgn}(\delta)\big)                                                                     \\
