@@ -183,6 +183,51 @@
     \end{align*}
 \end{proof}
 
+\begin{additional corollary}[Change of variables formula IV]\label{ac 11.10.1}
+Let \([a, b]\) be a closed interval, and let \(\phi : [a, b] \to [\phi(a), \phi(b)]\) be a differentiable function such that \(\phi'\) is Riemann integrable.
+Let \(f : [\phi(a), \phi(b)] \to \mathbf{R}\) be a continuous function on \([\phi(a), \phi(b)]\).
+Then \((f \circ \phi) \phi' : [a, b] \to \mathbf{R}\) is Riemann integrable on \([a, b]\), and
+\[
+    \int_{[a, b]} (f \circ \phi) \phi' = \int_{[\phi(a), \phi(b)]} f.
+\]
+\end{additional corollary}
+
+\begin{proof}
+    Since \(\phi\) is differentiable on \([a, b]\), by Corollary \ref{10.1.12} we know that \(\phi\) is continuous on \([a, b]\).
+    Since \(f\) is continuous on \([\phi(a), \phi(b)]\) and \(\phi\) is continuous on \([a, b]\), by Proposition \ref{9.4.13} we know that \(f \circ \phi\) is continuous on \([a, b]\).
+    By Corollary \ref{11.5.2} we know that \(f \circ \phi\) is Riemann integrable on \([a, b]\).
+    Since \(\phi'\) is Riemann integrable on \([a, b]\), by Theorem \ref{11.4.5} we know that \((f \circ \phi) \phi'\) is Riemann integrable on \([a, b]\).
+    Thus
+    \[
+        \int_{[a, b]} (f \circ \phi) \phi'
+    \]
+    is well-defined.
+    Since \(f\) is continuous on \([\phi(a), \phi(b)]\), by Corollary \ref{11.5.2} we know that \(f\) is Riemann integrable on \([\phi(a), \phi(b)]\).
+    Thus
+    \[
+        \int_{[\phi(a), \phi(b)]} f
+    \]
+    is well-defined.
+    Let \(F : [\phi(a), \phi(b)] \to \mathbf{R}\) be the function
+    \[
+        F(x) = \int_{[\phi(a), x]} f
+    \]
+    Since \(f\) is continuous on \([\phi(a), \phi(b)]\), by Theorem \ref{11.9.1} we know that \(F'(x) = f(x)\) for each \(x \in [\phi(a), \phi(b)]\).
+    Then by Proposition \ref{10.1.15} we have
+    \[
+        \forall\ x \in [a, b], (F \circ \phi)'(x) = F'\big(\phi(x)\big) \phi'(x) = f\big(\phi(x)\big) \phi'(x) = (f \circ \phi)(x) \cdot \phi(x)
+    \]
+    and \((F \circ \phi)' = (f \circ \phi) \phi'\).
+    Thus
+    \begin{align*}
+        \int_{[a, b]} (f \circ \phi) \phi' & = \int_{[a, b]} (F \circ \phi)'                                                                \\
+                                           & = (F \circ \phi)(b) - (F \circ \phi)(a)                     & \text{(by Theorem \ref{11.9.4})} \\
+                                           & = F\big(\phi(b)\big) - F\big(\phi(a)\big)                                                      \\
+                                           & = \int_{[\phi(a), \phi(b)]} f - \int_{[\phi(a), \phi(a)]} f                                    \\
+                                           & = \int_{[\phi(a), \phi(b)]} f.
+    \end{align*}
+\end{proof}
+
 \exercisesection
 
 \begin{exercise}\label{ex 11.10.1}

@@ -408,13 +408,13 @@ Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone
 \end{proof}
 
 \begin{additional corollary}\label{ac 11.8.7}
-Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) be piecewise constant functions on \(I\) such that both \(p.c. \int_I f \; d \alpha\) and \(p.c. \int_I g \; d \alpha\) are well-defined.
+Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) be piecewise constant functions on \(I\) such that both \(p.c. \int_I f \; d \alpha\) and \(p.c. \int_I g \; d \alpha\) are well-defined.
 \begin{enumerate}
     \item We have \(p.c. \int_I (f + g) \; d \alpha = p.c. \int_I f \; d \alpha + p.c. \int_I g \; d \alpha\).
     \item For any real number \(c\), we have \(p.c. \int_I (cf) \; d \alpha = c (p.c. \int_I f \; d \alpha)\).
     \item We have \(p.c. \int_I (f - g) \; d \alpha = p.c. \int_I f \; d \alpha - p.c. \int_I g \; d \alpha\).
-    \item If \(f(x) \geq 0\) for all \(x \in I\), then \(p.c. \int_I f \; d \alpha \geq 0\).
-    \item If \(f(x) \geq g(x)\) for all \(x \in I\), then \(p.c. \int_I f \; d \alpha \geq p.c. \int_I g \; d \alpha\).
+    \item If \(f(x) \geq 0\) for all \(x \in I\), then \(p.c. \int_I f \; d \alpha \geq 0\) if \(\alpha\) is monotone increasing and \(p.c. \int_I f \; d \alpha \leq 0\) if \(\alpha\) is monotone decreasing.
+    \item If \(f(x) \geq g(x)\) for all \(x \in I\), then \(p.c. \int_I f \; d \alpha \geq p.c. \int_I g \; d \alpha\) if \(\alpha\) is monotone increasing and \(p.c. \int_I f \; d \alpha \leq p.c. \int_I g \; d \alpha\) if \(\alpha\) is monotone decreasing.
     \item If \(f\) is the constant function \(f(x) = c\) for all \(x \in I\), then \(p.c. \int_I f \; d \alpha = c \alpha[I]\).
     \item Let \(J\) be a bounded interval containing \(I\) (i.e., \(I \subseteq J\)), and let \(F : J \to \mathbf{R}\) be the function
           \[
@@ -477,27 +477,50 @@ Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone
 \begin{proof}{(d)}
     By Additional Corollary \ref{ac 11.8.5} \(f\) is piecewise constant with respect to \(\mathbf{P}\) for some partition \(\mathbf{P}\) of \(I\).
     Let \(J \in \mathbf{P}\) and let \(c_J \in \mathbf{R}\) be the constant value of \(f|_J\).
-    Since \(\alpha\) is monotone increasing, by Additional Corollary \ref{ac 11.8.6} we know that \(\alpha[J] \geq 0\) for all \(J \in \mathbf{P}\).
-    Since \(f(x) \geq 0\) for all \(x \in I\), we have \(c_J \geq 0\) and \(c_J \alpha[J] \geq 0\) for all \(J \in \mathbf{P}\).
-    Thus
-    \begin{align*}
-        p.c. \int_I f \; d \alpha & = p.c. \int_{[\mathbf{P}]} f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.5})} \\
-                                  & = \sum_{J \in \mathbf{P}} c_J \alpha[J]  & \text{(by Definition \ref{11.8.5})}              \\
-                                  & \geq \sum_{J \in \mathbf{P}} 0           & \text{(by Proposition \ref{7.1.11}(h))}          \\
-                                  & = 0.
-    \end{align*}
+    Now we split into two cases:
+    \begin{itemize}
+        \item \(\alpha\) is monotone increasing.
+              By Additional Corollary \ref{ac 11.8.6} we know that \(\alpha[J] \geq 0\) for all \(J \in \mathbf{P}\).
+              Since \(f(x) \geq 0\) for all \(x \in I\), we have \(c_J \geq 0\) and \(c_J \alpha[J] \geq 0\) for all \(J \in \mathbf{P}\).
+              Thus
+              \begin{align*}
+                  p.c. \int_I f \; d \alpha & = p.c. \int_{[\mathbf{P}]} f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.5})} \\
+                                            & = \sum_{J \in \mathbf{P}} c_J \alpha[J]  & \text{(by Definition \ref{11.8.5})}              \\
+                                            & \geq \sum_{J \in \mathbf{P}} 0           & \text{(by Proposition \ref{7.1.11}(h))}          \\
+                                            & = 0.
+              \end{align*}
+        \item \(\alpha\) is monotone decreasing.
+              By Additional Corollary \ref{ac 11.8.6} we know that \(\alpha[J] \leq 0\) for all \(J \in \mathbf{P}\).
+              Since \(f(x) \geq 0\) for all \(x \in I\), we have \(c_J \geq 0\) and \(c_J \alpha[J] \leq 0\) for all \(J \in \mathbf{P}\).
+              Thus
+              \begin{align*}
+                  p.c. \int_I f \; d \alpha & = p.c. \int_{[\mathbf{P}]} f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.5})} \\
+                                            & = \sum_{J \in \mathbf{P}} c_J \alpha[J]  & \text{(by Definition \ref{11.8.5})}              \\
+                                            & \leq \sum_{J \in \mathbf{P}} 0           & \text{(by Proposition \ref{7.1.11}(h))}          \\
+                                            & = 0.
+              \end{align*}
+    \end{itemize}
 \end{proof}
 
 \begin{proof}{(e)}
     Since \(f(x) \geq g(x)\) for all \(x \in I\), we have \(f(x) - g(x) \geq 0\) and
-    \begin{align*}
-        p.c. \int_I f \; d \alpha - p.c. \int_I g \; d \alpha & = p.c. \int_I (f - g) \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.7}(c))} \\
-                                                              & \geq 0.                           & \text{(by Additional Corollary \ref{ac 11.8.7}(d))}
-    \end{align*}
-    Thus
+    By Additional Corollary \ref{ac 11.8.7}(c) we have
     \[
-        p.c. \int_I f \; d \alpha \geq p.c. \int_I g \; d \alpha.
+        p.c. \int_I f \; d \alpha - p.c. \int_I g \; d \alpha = p.c. \int_I (f - g) \; d \alpha.
     \]
+    Now we split into two cases:
+    \begin{itemize}
+        \item \(\alpha\) is monotone increasing.
+              Then by Additional Corollary \ref{ac 11.8.7}(d) we have
+              \[
+                  p.c. \int_I (f - g) \; d \alpha \geq 0 \implies p.c. \int_I f \; d \alpha \geq p.c. \int_I g \; d \alpha.
+              \]
+        \item \(\alpha\) is monotone decreasing.
+              Then by Additional Corollary \ref{ac 11.8.7}(d) we have
+              \[
+                  p.c. \int_I (f - g) \; d \alpha \leq 0 \implies p.c. \int_I f \; d \alpha \leq p.c. \int_I g \; d \alpha.
+              \]
+    \end{itemize}
 \end{proof}
 
 \begin{proof}{(f)}
