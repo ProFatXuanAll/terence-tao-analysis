@@ -360,6 +360,102 @@
     \]
 \end{proof}
 
+\begin{proof}{(c)}
+    Let \(x_0 \in \mathbf{R}\).
+    Since \(g, h\) are compactly supported, by Definition \ref{3.8.4} we know that
+    \[
+        \exists\ L_g, L_h, U_g, U_h \in \mathbf{R} : \begin{cases}
+            \forall\ y \in \mathbf{R} \setminus [L_g, U_g], g(y) = 0 \\
+            \forall\ y \in \mathbf{R} \setminus [L_h, U_h], h(y) = 0
+        \end{cases}
+    \]
+    Let \(L = \min(L_g, L_h)\) and let \(U = \min(U_g, U_h)\).
+    Then we have
+    \begin{align*}
+                 & \forall\ y \in \mathbf{R} \setminus [L, U], \begin{cases}
+            y < L \leq L_g & \implies g(y) = 0 \\
+            y > U \geq U_g & \implies g(y) = 0 \\
+            y < L \leq L_h & \implies h(y) = 0 \\
+            y > U \geq U_h & \implies h(y) = 0
+        \end{cases}                              \\
+        \implies & \forall\ y \in \mathbf{R} \setminus [L, U], g(y) = h(y) = 0                                         \\
+        \implies & \forall\ y \in \mathbf{R} \setminus [-U, -L], g(-y) = h(-y) = 0                                     \\
+        \implies & \forall\ y \in \mathbf{R} \setminus [x_0 - U, x_0 - L], g(x_0 - y) = h(x_0 - y) = 0                 \\
+        \implies & \forall\ y \in \mathbf{R} \setminus [x_0 - U, x_0 - L], f(y) g(x_0 - y) = f(y) h(x_0 - y) = 0       \\
+        \implies & \forall\ y \in \mathbf{R} \setminus [x_0 - U, x_0 - L], f(y) \big(g(x_0 - y) + h(x_0 - y)\big) = 0.
+    \end{align*}
+    Since \(f, g, h\) are continuous on \(\mathbf{R}\), we know that
+    \begin{align*}
+                 & \forall\ y_0 \in \mathbf{R}, \begin{cases}
+            f \text{ is continuous at } y_0 \\
+            g \text{ is continuous at } y_0 \\
+            h \text{ is continuous at } y_0 \\
+            y \mapsto x_0 - y \text{ is continuous at } y_0
+        \end{cases}                                                                                                 \\
+        \implies & \forall\ y_0 \in \mathbf{R}, \begin{cases}
+            \lim_{y \to y_0 ; y \in \mathbf{R}} f(y) = f(y_0)             \\
+            \lim_{y \to y_0 ; y \in \mathbf{R}} g(x_0 - y) = g(x_0 - y_0) \\
+            \lim_{y \to y_0 ; y \in \mathbf{R}} h(x_0 - y) = h(x_0 - y_0)
+        \end{cases}                                                                                                 \\
+        \implies & \forall\ y_0 \in \mathbf{R}, \begin{cases}
+            \lim_{y \to y_0 ; y \in \mathbf{R}} f(y) g(x_0 - y) = f(y_0) g(x_0 - y_0) \\
+            \lim_{y \to y_0 ; y \in \mathbf{R}} f(y) h(x_0 - y) = f(y_0) h(x_0 - y_0)
+        \end{cases}                                                                                                 \\
+        \implies & \forall\ y_0 \in \mathbf{R}, \lim_{y \to y_0 ; y \in \mathbf{R}} f(y) \big(g(x_0 - y) + h(x_0 - y)\big) = f(y_0) \big(g(x_0 - y_0) + h(x_0 - y_0)\big).
+    \end{align*}
+    Thus we have
+    \begin{align*}
+         & \big(f * (g + h)\big)(x_0)                                                                                                                    \\
+         & = \int_{-\infty}^\infty f(y) (g + h)(x_0 - y) \; dy                                                      & \text{(by Definition \ref{3.8.9})} \\
+         & = \int_{-\infty}^\infty f(y) \big(g(x_0 - y) + h(x_0 - y)\big) \; dy                                                                          \\
+         & = \int_{[x_0 - U, x_0 - L]} f(y) \big(g(x_0 - y) + h(x_0 - y)\big) \; dy                                 & \text{(by Definition \ref{3.8.4})} \\
+         & = \int_{[x_0 - U, x_0 - L]} f(y) g(x_0 - y) \; dy + \int_{[x_0 - U, x_0 - L]} f(y) h(x_0 - y)\big) \; dy                                      \\
+         & = \int_{-\infty}^\infty f(y) g(x_0 - y) \; dy + \int_{-\infty}^\infty f(y) h(x_0 - y) \; dy              & \text{(by Definition \ref{3.8.4})} \\
+         & = (f * g)(x_0) + (f * h)(x_0).                                                                           & \text{(by Definition \ref{3.8.9})}
+    \end{align*}
+    Observe that
+    \[
+        \forall\ y \in \mathbf{R} \setminus [x_0 - U, x_0 - L], f(y) g(x_0 - y) = c f(y) g(x_0 - y) = 0.
+    \]
+    Since \(f\) is continuous on \(\mathbf{R}\), we know that \(cf\) is also continuous on \(\mathbf{R}\) and
+    \begin{align*}
+                 & \forall\ y_0 \in \mathbf{R}, \begin{cases}
+            cf \text{ is continuous at } y_0 \\
+            g \text{ is continuous at } y_0  \\
+            y \mapsto x_0 - y \text{ is continuous at } y_0
+        \end{cases} \\
+        \implies & \forall\ y_0 \in \mathbf{R}, \begin{cases}
+            \lim_{y \to y_0 ; y \in \mathbf{R}} cf(y) = cf(y_0) \\
+            \lim_{y \to y_0 ; y \in \mathbf{R}} g(x_0 - y) = g(x_0 - y_0)
+        \end{cases} \\
+        \implies & \forall\ y_0 \in \mathbf{R}, \begin{cases}
+            \lim_{y \to y_0 ; y \in \mathbf{R}} cf(y) g(x_0 - y) = cf(y_0) g(x_0 - y_0)
+        \end{cases}
+    \end{align*}
+    Thus we have
+    \begin{align*}
+         & \big((cf) * g\big)(x_0)                                                                  \\
+         & = \int_{-\infty}^\infty (cf)(y) g(x_0 - y) \; dy    & \text{(by Definition \ref{3.8.9})} \\
+         & = \int_{-\infty}^\infty c f(y) g(x_0 - y) \; dy                                          \\
+         & = \int_{[x_0 - U, x_0 - L]} c f(y) g(x_0 - y) \; dy & \text{(by Definition \ref{3.8.4})} \\
+         & = c \int_{[x_0 - U, x_0 - L]} f(y) g(x_0 - y) \; dy                                      \\
+         & = c \int_{-\infty}^\infty f(y) g(x_0 - y) \; dy     & \text{(by Definition \ref{3.8.4})} \\
+         & = c (f * g)(x_0).                                   & \text{(by Definition \ref{3.8.9})}
+    \end{align*}
+    Using similar arguments we can show that \(\big((cg) * f\big)(x_0) = c (g * f)(x_0)\).
+    By Proposition \ref{3.8.11}(b) we thus have
+    \[
+        \big(f * (cg)\big)(x_0) = \big((cg) * f\big)(x_0) = c(g * f)(x_0) = c(f * g)(x_0) = \big((cf) * g\big)(x_0).
+    \]
+    Since \(x_0\) is arbitrary, we conclude that
+    \[
+        \forall\ x \in \mathbf{R}, \begin{cases}
+            \big(f * (g + h)\big)(x) = (f * g)(x) + (f * h)(x) \\
+            \big(f * (cg)\big)(x) = \big((cf) * g\big)(x) = c(f * g)(x)
+        \end{cases}
+    \]
+\end{proof}
+
 \begin{remark}\label{3.8.12}
     There are many other important properties of convolution, for instance it is associative, \((f * g) * h = f * (g * h)\), and it commutes with derivatives, \((f * g)' = f' * g = f * g'\), when \(f\) and \(g\) are differentiable.
     The Dirac delta function \(\delta\) mentioned earlier is an identity for convolution:
