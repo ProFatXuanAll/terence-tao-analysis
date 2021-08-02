@@ -267,14 +267,14 @@
         \forall\ x \in \mathbf{R} \setminus [-2M, 2M], \forall\ y \in \mathbf{R}, f(y) g(x - y) = 0.
     \]
     For each \(x \in \mathbf{R} \setminus [-2M, 2M]\), we define \(z_x : \mathbf{R} \to \mathbf{R}\) by setting \(z_x(y) = f(y) g(x - y)\).
-    Then by Definition \ref{3.8.4} and Definition \ref{3.8.9} we have
+    Since \(z_x\) is continuous on \(\mathbf{R}\), by Definition \ref{3.8.4} and Definition \ref{3.8.9} we have
     \begin{align*}
                  & \forall\ x \in \mathbf{R} \setminus [-2M, 2M], \forall\ y \in \mathbf{R}, z_x(y) = 0                                \\
-        \implies & \forall\ x \in \mathbf{R} \setminus [-2M, 2M], \forall\ y \in \mathbf{R} \setminus [-M, M], z_x(y) = 0              \\
-        \implies & \forall\ x \in \mathbf{R} \setminus [-2M, 2M], z_x \text{ is supported on } [-M, M]                                 \\
-        \implies & \forall\ x \in \mathbf{R} \setminus [-2M, 2M], \int_{-\infty}^\infty z_x = \int_{[-M, M]} z_x = 0                   \\
-        \implies & \forall\ x \in \mathbf{R} \setminus [-2M, 2M], \int_{-\infty}^\infty z_x(y) \; dy = \int_{[-M, M]} z_x(y) \; dy = 0 \\
-        \implies & \forall\ x \in \mathbf{R} \setminus [-2M, 2M], (f * g)(x) = \int_{[-M, M]} f(y) g(x - y) \; dy = 0                  \\
+        \implies & \forall\ x \in \mathbf{R} \setminus [-2M, 2M], \forall\ y \in \mathbf{R} \setminus [-1, 1], z_x(y) = 0              \\
+        \implies & \forall\ x \in \mathbf{R} \setminus [-2M, 2M], z_x \text{ is supported on } [-1, 1]                                 \\
+        \implies & \forall\ x \in \mathbf{R} \setminus [-2M, 2M], \int_{-\infty}^\infty z_x = \int_{[-1, 1]} z_x = 0                   \\
+        \implies & \forall\ x \in \mathbf{R} \setminus [-2M, 2M], \int_{-\infty}^\infty z_x(y) \; dy = \int_{[-1, 1]} z_x(y) \; dy = 0 \\
+        \implies & \forall\ x \in \mathbf{R} \setminus [-2M, 2M], (f * g)(x) = \int_{[-1, 1]} f(y) g(x - y) \; dy = 0                  \\
         \implies & f * g \text{ is supported on } [-2M, 2M]                                                                            \\
         \implies & f * g \text{ is compactly supported}.
     \end{align*}
@@ -298,6 +298,66 @@
     \end{align*}
     Since \(\varepsilon\) is arbitrary, we know that \(f * g\) is continuous at \(x_0\).
     Since \(x_0\) is arbitrary, we know that \(f * g\) is continuous on \(\mathbf{R}\).
+\end{proof}
+
+\begin{proof}{(b)}
+    Let \(x_0 \in \mathbf{R}\).
+    Since \(f\) is compactly supported, we know that
+    \[
+        \exists\ L, U \in \mathbf{R} : \forall\ y \in \mathbf{R} \setminus [L, U], f(y) = 0.
+    \]
+    Then we have
+    \begin{align*}
+                 & \forall\ y \in \mathbf{R} \setminus [L, U], f(y) = 0             \\
+        \implies & \forall\ y \in \mathbf{R} \setminus [L, U], f(y) g(x_0 - y) = 0.
+    \end{align*}
+    Observe that
+    \begin{align*}
+                 & \forall\ y \in \mathbf{R} \setminus [L, U], f(y) = 0                         \\
+        \implies & \forall\ y \in \mathbf{R} \setminus [-U, -L], f(-y) = 0                      \\
+        \implies & \forall\ y \in \mathbf{R} \setminus [x_0 - U, x_0 - L], f(x_0 - y) = 0       \\
+        \implies & \forall\ y \in \mathbf{R} \setminus [x_0 - U, x_0 - L], g(y) f(x_0 - y) = 0.
+    \end{align*}
+    Since \(f, g\) are continuous on \(\mathbf{R}\), we know that
+    \begin{align*}
+                 & \forall\ y_0 \in \mathbf{R}, \begin{cases}
+            f \text{ is continuous at } y_0       \\
+            g \text{ is continuous at } y_0       \\
+            f \text{ is continuous at } x_0 - y_0 \\
+            g \text{ is continuous at } x_0 - y_0 \\
+            y \mapsto x_0 - y \text{ is continuous at } y_0
+        \end{cases} \\
+        \implies & \forall\ y_0 \in \mathbf{R}, \begin{cases}
+            \lim_{y \to y_0 ; y \in \mathbf{R}} f(y) = f(y_0)             \\
+            \lim_{y \to y_0 ; y \in \mathbf{R}} g(y) = g(y_0)             \\
+            \lim_{y \to y_0 ; y \in \mathbf{R}} f(x_0 - y) = f(x_0 - y_0) \\
+            \lim_{y \to y_0 ; y \in \mathbf{R}} g(x_0 - y) = g(x_0 - y_0)
+        \end{cases} \\
+        \implies & \forall\ y_0 \in \mathbf{R}, \begin{cases}
+            \lim_{y \to y_0 ; y \in \mathbf{R}} f(y) g(x_0 - y) = f(y_0) g(x_0 - y_0) \\
+            \lim_{y \to y_0 ; y \in \mathbf{R}} g(y) f(x_0 - y) = g(y_0) f(x_0 - y_0)
+        \end{cases}
+    \end{align*}
+    This means
+    \begin{align*}
+        (f * g)(x_0) & = \int_{-\infty}^\infty f(y) g(x_0 - y) \; dy      & \text{(by Definition \ref{3.8.9})} \\
+                     & = \int_{[L, U]} f(y) g(x_0 - y) \; dy;             & \text{(by Definition \ref{3.8.4})} \\
+        (g * f)(x_0) & = \int_{-\infty}^\infty g(y) f(x_0 - y) \; dy      & \text{(by Definition \ref{3.8.9})} \\
+                     & = \int_{[x_0 - U, x_0 - L]} g(y) f(x_0 - y) \; dy; & \text{(by Definition \ref{3.8.4})}
+    \end{align*}
+    Let \(\phi : \mathbf{R} \to \mathbf{R}\) be the function \(\phi(y) = x_0 - y\).
+    By the formula of changing variable (Additional Corollary 11.10.1 in Analysis I) we have
+    \begin{align*}
+         & \int_{[L, U]} f(y) g(x_0 - y) \; dy                \\
+         & = -\int_{[x_0 - L, x_0 - U]} f(x_0 - y) g(y) \; dy \\
+         & = \int_{[x_0 - U, x_0 - L]} f(x_0 - y) g(y) \; dy  \\
+         & = \int_{[x_0 - U, x_0 - L]} g(y) f(x_0 - y) \; dy.
+    \end{align*}
+    Thus \((f * g)(x_0) = (g * f)(x_0)\).
+    Since \(x_0\) is arbitrary, we conclude that
+    \[
+        \forall\ x \in \mathbf{R}, (f * g)(x) = (g * f)(x).
+    \]
 \end{proof}
 
 \begin{remark}\label{3.8.12}
