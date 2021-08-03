@@ -519,6 +519,85 @@
     for all \(x \in [0, 1]\).
 \end{lemma}
 
+\begin{proof}
+    Since \(g\) is an \((\varepsilon, \delta)\)-approximation to the identity, by Definition \ref{3.8.6} we have
+    \begin{itemize}
+        \item \(g\) is supported on \([-1, 1]\) and \(g(x) \geq 0\) for all \(x \in [-1, 1]\).
+        \item \(g\) is continuous on \(\mathbf{R}\) and \(\int_{-\infty}^\infty g = 1\).
+        \item \(\abs*{g(x)} \leq \varepsilon\) for all \(\delta \leq \abs*{x} \leq 1\).
+    \end{itemize}
+    Since \(f\) is continuous on \(\mathbf{R}\), by Definition \ref{3.8.9} we have
+    \begin{align*}
+         & \forall\ x \in [0, 1], (f * g)(x)                                                                                                   \\
+         & = \int_{-\infty}^\infty g(y) f(x - y) \; dy                                                                                         \\
+         & = \int_{[-1, 1]} g(y) f(x - y) \; dy                                                                                                \\
+         & = \int_{[-1, -\delta]} g(y) f(x - y) \; dy + \int_{[-\delta, \delta]} g(y) f(x - y) \; dy + \int_{[\delta, 1]} g(y) f(x - y) \; dy.
+    \end{align*}
+    By Exercise \ref{ex 3.8.6} we have
+    \[
+        1 - 2 \varepsilon \leq \int_{[-\delta, \delta]} g = \int_{[-\delta, \delta]} g(y) \; dy \leq 1.
+    \]
+    Since
+    \begin{align*}
+                 & \begin{cases}
+            \forall\ x \in \mathbf{R}, \abs*{f(x)} \leq M \\
+            \forall\ y \in \mathbf{R}, \delta \leq \abs*{y} \leq 1 \implies \abs*{g(y)} < \varepsilon
+        \end{cases}                                                                                                                              \\
+        \implies & \forall\ x \in \mathbf{R}, \forall\ \delta \leq \abs*{y} \leq 1, g(y) f(x - y) \leq M \varepsilon                                                       \\
+        \implies & \forall\ x \in \mathbf{R}, \begin{cases}
+            -M \varepsilon (1 - \delta) \leq \int_{[-1, -\delta]} g(y) f(x - y) \; dy \leq M \varepsilon (1 - \delta) \\
+            -M \varepsilon (1 - \delta) \leq \int_{[\delta, 1]} g(y) f(x - y) \; dy \leq M \varepsilon (1 - \delta)
+        \end{cases}                                                                                                   \\
+        \implies & \forall\ x \in \mathbf{R}, \begin{cases}
+            -M \varepsilon \leq \int_{[-1, -\delta]} g(y) f(x - y) \; dy \leq M \varepsilon \\
+            -M \varepsilon \leq \int_{[\delta, 1]} g(y) f(x - y) \; dy \leq M \varepsilon
+        \end{cases}                                                                                    & (\delta < 1) \\
+        \implies & \forall\ x \in \mathbf{R}, \abs*{\int_{[-1, -\delta]} g(y) f(x - y) \; dy + \int_{[\delta, 1]} g(y) f(x - y) \; dy} \leq 2 M \varepsilon
+    \end{align*}
+    and
+    \begin{align*}
+                 & \forall\ x \in [0, 1], \forall\ y \in [-\delta, \delta], \abs*{(x - y) - x} = \abs*{y} < \delta                                                                     \\
+        \implies & \forall\ x \in [0, 1], \forall\ y \in [-\delta, \delta], \abs*{f(x - y) - f(x)} < \varepsilon                                 & \text{(by hypothesis)}              \\
+        \implies & \forall\ x \in [0, 1], \forall\ y \in [-\delta, \delta],                                                                                                            \\
+                 & \abs*{g(y) f(x - y) - g(y) f(x)} \leq \varepsilon g(y)                                                                        & (g(y) \geq 0)                       \\
+        \implies & \forall\ x \in [0, 1], \forall\ y \in [-\delta, \delta],                                                                                                            \\
+                 & g(y) f(x) - \varepsilon g(y) \leq g(y) f(x - y) \leq g(y) f(x) + \varepsilon g(y)                                                                                   \\
+        \implies & \forall\ x \in [0, 1],                                                                                                                                              \\
+                 & f(x) \int_{[-\delta, \delta]} g(y) \; dy - \varepsilon \int_{[-\delta, \delta]} g(y) \; dy                                                                          \\
+                 & \leq \int_{[-\delta, \delta]} g(y) f(x - y) \; dy                                                                                                                   \\
+                 & \leq f(x) \int_{[-\delta, \delta]} g(y) \; dy + \varepsilon \int_{[-\delta, \delta]} g(y) \; dy                                                                     \\
+        \implies & \forall\ x \in [0, 1],                                                                                                                                              \\
+                 & \big(f(x) - \varepsilon\big) \int_{[-\delta, \delta]} g(y) \; dy                                                                                                    \\
+                 & \leq \int_{[-\delta, \delta]} g(y) f(x - y) \; dy                                                                                                                   \\
+                 & \leq \big(f(x) + \varepsilon\big) \int_{[-\delta, \delta]} g(y) \; dy                                                                                               \\
+        \implies & \forall\ x \in [0, 1],                                                                                                                                              \\
+                 & \big(f(x) - \varepsilon\big) (1 - 2 \varepsilon) \leq \int_{[-\delta, \delta]} g(y) f(x - y) \; dy \leq f(x) + \varepsilon    & \text{(by Exercise \ref{ex 3.8.6})} \\
+        \implies & \forall\ x \in [0, 1],                                                                                                                                              \\
+                 & -2 \varepsilon f(x) - \varepsilon + 2 \varepsilon^2 \leq \int_{[-\delta, \delta]} g(y) f(x - y) \; dy - f(x) \leq \varepsilon                                       \\
+        \implies & \forall\ x \in [0, 1],                                                                                                                                              \\
+                 & -2 \varepsilon M - \varepsilon + 2 \varepsilon^2 \leq \int_{[-\delta, \delta]} g(y) f(x - y) \; dy - f(x) \leq \varepsilon    & (f(x) \leq M)                       \\
+        \implies & \forall\ x \in [0, 1],                                                                                                                                              \\
+                 & -2 \varepsilon M - \varepsilon \leq \int_{[-\delta, \delta]} g(y) f(x - y) \; dy - f(x) \leq \varepsilon                      & (\varepsilon \in \mathbf{R}^+)      \\
+        \implies & \forall\ x \in [0, 1],                                                                                                                                              \\
+                 & -\varepsilon (2M + 1) \leq \int_{[-\delta, \delta]} g(y) f(x - y) \; dy - f(x) \leq \varepsilon (2M + 1)                      & (2M + 1 > 1)                        \\
+        \implies & \forall\ x \in [0, 1], \abs*{\int_{[-\delta, \delta]} g(y) f(x - y) \; dy - f(x)} \leq \varepsilon (2M + 1),
+    \end{align*}
+    we know that
+    \begin{align*}
+         & \forall\ x \in [0, 1], \abs*{(f * g)(x) - f(x)}                                                                                                            \\
+         & = \abs*{\int_{[-1, -\delta]} g(y) f(x - y) \; dy + \int_{[-\delta, \delta]} g(y) f(x - y) \; dy - f(x) + \int_{[\delta, 1]} g(y) f(x - y) \; dy}           \\
+         & \leq \abs*{\int_{[-1, -\delta]} g(y) f(x - y) \; dy + \int_{[\delta, 1]} g(y) f(x - y) \; dy} + \abs*{\int_{[-\delta, \delta]} g(y) f(x - y) \; dy - f(x)} \\
+         & \leq 2 M \varepsilon + \varepsilon (2M + 1)                                                                                                                \\
+         & = (1 + 4M) \varepsilon.
+    \end{align*}
+
+    % Since \(f\) is supported on \([0, 1]\), by Definition \ref{3.8.4} we have
+    % \begin{align*}
+    %              & \forall\ y \in \mathbf{R} \setminus [0, 1], f(y) = 0                                      \\
+    %     \implies & \forall\ x \in \mathbf{R}, \forall\ y \in \mathbf{R} \setminus [0, 1], f(y) g(x - y) = 0.
+    % \end{align*}
+\end{proof}
+
 \begin{corollary}[Weierstrass approximation theorem I]\label{3.8.15}
     Let \(f : \mathbf{R} \to \mathbf{R}\) be a continuous function supported on \([0, 1]\).
     Then for every \(\varepsilon > 0\), there exists a function \(P : \mathbf{R} \to \mathbf{R}\) which is polynomial on \([0, 1]\) and such that \(\abs*{P(x) - f(x)} \leq \varepsilon\) for all \(x \in [0, 1]\).
