@@ -590,18 +590,36 @@
          & \leq 2 M \varepsilon + \varepsilon (2M + 1)                                                                                                                \\
          & = (1 + 4M) \varepsilon.
     \end{align*}
-
-    % Since \(f\) is supported on \([0, 1]\), by Definition \ref{3.8.4} we have
-    % \begin{align*}
-    %              & \forall\ y \in \mathbf{R} \setminus [0, 1], f(y) = 0                                      \\
-    %     \implies & \forall\ x \in \mathbf{R}, \forall\ y \in \mathbf{R} \setminus [0, 1], f(y) g(x - y) = 0.
-    % \end{align*}
 \end{proof}
 
 \begin{corollary}[Weierstrass approximation theorem I]\label{3.8.15}
     Let \(f : \mathbf{R} \to \mathbf{R}\) be a continuous function supported on \([0, 1]\).
     Then for every \(\varepsilon > 0\), there exists a function \(P : \mathbf{R} \to \mathbf{R}\) which is polynomial on \([0, 1]\) and such that \(\abs*{P(x) - f(x)} \leq \varepsilon\) for all \(x \in [0, 1]\).
 \end{corollary}
+
+\begin{proof}
+    Let \(\varepsilon \in \mathbf{R}^+\).
+    Since \(f\) is continuous on \(\mathbf{R}\) and supported on \([0, 1]\), by Exercise \ref{ex 3.8.3} we know that \(f\) is bounded by some \(M \in \mathbf{R}^+\) and \(f\) is uniformly continuous on \(\mathbf{R}\).
+    This means
+    \[
+        \exists\ \delta \in \mathbf{R}^+ : \forall\ x_1, x_2 \in \mathbf{R}, \abs*{x_1 - x_2} < \delta \implies \abs*{f(x_1) - f(x_2)} < \frac{\varepsilon}{1 + 4M}.
+    \]
+    In particular, we can choose some \(\delta\) such that \(0 < \delta < 1\).
+    By Lemma \ref{3.8.8} we know that there exists a polynomial \(P\) on \([-1, 1]\) such that \(P\) is an \((\frac{\varepsilon}{1 + 4M}, \delta)\)-approximation to the identity.
+    By Definition \ref{3.8.6} we know that \(P\) is continuous on \(\mathbf{R}\) and supported on \([-1, 1]\).
+    Since \(f\) is continuous on \(\mathbf{R}\) and supported on \([0, 1]\), by Lemma \ref{3.8.13} we know that \(f * P\) is a polynomial on \([0, 1]\).
+    Then by Lemma \ref{3.8.14} we have
+    \[
+        \forall\ x \in [0, 1], \abs*{(f * P)(x) - f(x)} \leq (1 + 4M) \frac{\varepsilon}{1 + 4M} = \varepsilon.
+    \]
+    Since \(\varepsilon\) is arbitrary, we conclude that
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ P \in \mathbf{R}^{\mathbf{R}} : \begin{cases}
+            P \text{ is polynomial on } [0, 1] \\
+            \forall\ x \in [0, 1], \abs*{P(x) - f(x)} \leq \varepsilon
+        \end{cases}
+    \]
+\end{proof}
 
 \begin{lemma}\label{3.8.16}
     Let \(f : [0, 1] \to \mathbf{R}\) be a continuous function which equals \(0\) on the boundary of \([0, 1]\), i.e., \(f(0) = f(1) = 0\).
