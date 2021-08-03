@@ -1,1 +1,98 @@
 \section{Formal power series}\label{sec 4.1}
+
+\begin{definition}[Formal power series]\label{4.1.1}
+    Let \(a\) be a real number.
+    A \emph{formal power series centered at \(a\)} is any series of the form
+    \[
+        \sum_{n = 0}^\infty c_n (x - a)^n
+    \]
+    where \(c_0, c_1, \dots\) is a sequence of real numbers (not depending on \(x\));
+    we refer to \(c_n\) as the \emph{\(n^{\text{th}}\) coefficient} of this series.
+    Note that each term \(c_n (x - a)^n\) in this series is a function of a real variable \(x\).
+\end{definition}
+
+\begin{note}
+    We call these power series \emph{formal} because we do not yet assume that these series converge for any \(x\).
+    However, these series are automatically guaranteed to converge when \(x = a\).
+    In general, the closer \(x\) gets to \(a\), the easier it is for this series to converge.
+\end{note}
+
+\setcounter{theorem}{2}
+\begin{definition}[Radius of convergence]\label{4.1.3}
+    Let \(\sum_{n = 0}^\infty c_n (x - a)^n\) be a formal power series.
+    We define the \emph{radius of convergence \(R\)} of this series to be the quantity
+    \[
+        R \coloneqq \frac{1}{\limsup_{n \to \infty} \abs*{c_n}^{\frac{1}{n}}}
+    \]
+    where we adopt the convention that \(\frac{1}{0} = +\infty\) and \(\frac{1}{+\infty} = 0\).
+\end{definition}
+
+\begin{remark}\label{4.1.4}
+    Each number \(\abs*{c_n}^{1 / n}\) is non-negative, so the limit \(\limsup_{n \to \infty} \abs*{c_n}^{1 / n}\) can take on any value from \(0\) to \(+\infty\), inclusive.
+    Thus \(R\) can also take on any value between \(0\) and \(+\infty\) inclusive
+    (in particular it is not necessarily a real number).
+    Note that the radius of convergence always exists, even if the sequence \(\abs*{c_n}^{1 / n}\) is not convergent, because the lim sup of any sequence always exists
+    (though it might be \(+\infty\) or \(-\infty\)).
+\end{remark}
+
+\setcounter{theorem}{5}
+\begin{theorem}\label{4.1.6}
+    Let \(\sum_{n = 0}^\infty c_n (x - a)^n\) be a formal power series, and let \(R\) be its radius of convergence.
+    \begin{enumerate}
+        \item (Divergence outside of the radius of convergence)
+              If \(x \in \mathbf{R}\) is such that \(\abs*{x - a} > R\), then the series \(\sum_{n = 0}^\infty c_n (x - a)^n\) is divergent for that value of \(x\).
+        \item (Convergence inside the radius of convergence)
+              If \(x \in \mathbf{R}\) is such that \(\abs*{x - a} < R\), then the series \(\sum_{n = 0}^\infty c_n (x - a)^n\) is absolutely convergent for that value of \(x\).
+    \end{enumerate}
+    For parts (c)-(e) we assume that \(R > 0\)
+    (i.e., the series converges at at least one other point than \(x = a\)).
+    Let \(f : (a - R, a + R) \to \mathbf{R}\) be the function \(f(x) \coloneqq \sum_{n = 0}^\infty c_n (x - a)^n\);
+    this function is guaranteed to exist by (b).
+    \begin{enumerate}
+        \setcounter{enumi}{2}
+        \item (Uniform convergence on compact sets)
+              For any \(0 < r < R\), the series \(\sum_{n = 0}^\infty c_n (x - a)^n\) converges uniformly to \(f\) on the compact interval \([a - r, a + r]\).
+              In particular, \(f\) is continuous on \((a - R, a + R)\).
+        \item (Differentiation of power series)
+              The function \(f\) is differentiable on \((a - R, a + R)\), and for any \(0 < r < R\), the series \(\sum_{n = 0}^\infty n c_n (x - a)^{n - 1}\) converges uniformly to \(f'\) on the interval \([a - r, a + r]\).
+        \item (Integration of power series)
+              For any closed interval \([y, z]\) contained in \((a - R, a + R)\), we have
+              \[
+                  \int_{[y, z]} f = \sum_{n = 0}^\infty c_n \frac{(z - a)^{n + 1} - (y - a)^{n + 1}}{n + 1}.
+              \]
+    \end{enumerate}
+\end{theorem}
+
+\setcounter{theorem}{7}
+\begin{remark}\label{4.1.8}
+    Theorem \ref{4.1.6} is silent on what happens when \(\abs*{x - a} = R\), i.e., at the points \(a - R\) and \(a + R\).
+    Indeed, one can have either convergence or divergence at those points.
+\end{remark}
+
+\begin{remark}\label{4.1.9}
+    Note that while Theorem \ref{4.1.6} assures us that the power series \(\sum_{n = 0}^\infty c_n (x - a)^n\) will converge pointwise on the interval \((a - R, a + R)\), it need not converge uniformly on that interval
+    (see Exercise \ref{ex 4.1.2}(e)).
+    On the other hand, Theorem \ref{4.1.6}(c) assures us that the power series will converge on any smaller interval \([a - r, a + r]\).
+    In particular, being uniformly convergent on every closed subinterval of \((a - R, a + R)\) is not enough to guarantee being uniformly convergent on all of \((a - R, a + R)\).
+\end{remark}
+
+\exercisesection
+
+\begin{exercise}\label{ex 4.1.1}
+    Prove Theorem \ref{4.1.6}.
+\end{exercise}
+
+\begin{proof}
+    See Theorem \ref{4.1.6}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.1.2}
+    Give examples of a formal power series \(\sum_{n = 0}^\infty c_n x^n\) centered at \(0\) with radius of convergence \(1\), which
+    \begin{enumerate}
+        \item diverges at both \(x = 1\) and \(x = -1\);
+        \item diverges at \(x = 1\) but converges at \(x = -1\);
+        \item converges at \(x = 1\) but diverges at \(x = -1\);
+        \item converges at both \(x = 1\) and \(x = -1\).
+        \item converges pointwise on \((-1, 1)\), but does not converge uniformly on \((-1, 1)\).
+    \end{enumerate}
+\end{exercise}
