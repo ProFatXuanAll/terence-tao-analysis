@@ -902,6 +902,51 @@
     Show that \(f\) must be the zero function \(f \equiv 0\).
 \end{exercise}
 
+\begin{proof}
+    Let \(P : \mathbf{R} \to \mathbf{R}\) be a polynomial with degree \(n\).
+    Then by Definition \ref{3.8.1} we have
+    \[
+        \forall\ x \in \mathbf{R}, P(x) = \sum_{j = 0}^n c_j x^j.
+    \]
+    By hypothesis we have
+    \begin{align*}
+        \int_{[0, 1]} f(x) P(x) \; dx & = \int_{[0, 1]} f(x) \sum_{j = 0}^n c_j x^j \; dx \\
+                                      & = \sum_{j = 0}^n c_j \int_{[0, 1]} f(x) x^j \; dx \\
+                                      & = 0.
+    \end{align*}
+    Since \([0, 1]\) is closed and bounded in \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\), by Theorem \ref{1.5.7} we know that \(\big([0, 1], d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\big)\) is compact.
+    By Proposition \ref{2.3.2} we know that \(f\) is bounded, i.e., there exists a \(M \in \mathbf{R}^+\) such that \(\abs*{f(x)} \leq M\) for all \(x \in [0, 1]\).
+
+    Since \(f\) is continuous on \([0, 1]\), by Theorem \ref{3.8.3} we know that
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ P \in \mathbf{R}^{\mathbf{R}} : \begin{cases}
+            P \text{ is a polynomial on } [0, 1] \\
+            d_{\infty}(P, f) \leq \frac{\varepsilon}{M}
+        \end{cases}
+    \]
+    Fix one pair of \(\varepsilon\) and \(P\).
+    Then we have
+    \begin{align*}
+                 & d_\infty(P, f) \leq \frac{\varepsilon}{M}                                                                                                                                     \\
+        \implies & \sup_{x \in [0, 1]} \abs*{P(x) - f(x)} \leq \frac{\varepsilon}{M}                                                                        & \text{(by Definition \ref{3.4.2})} \\
+        \implies & \forall\ x \in [0, 1], \abs*{P(x) - f(x)} \leq \frac{\varepsilon}{M}                                                                                                          \\
+        \implies & \forall\ x \in [0, 1], \abs*{f(x) P(x) - f(x) f(x)} \leq \frac{\varepsilon \abs*{f(x)}}{M} \leq \frac{\varepsilon M}{M} \leq \varepsilon                                      \\
+        \implies & \forall\ x \in [0, 1], f(x) P(x) - \varepsilon \leq \big(f(x)\big)^2 \leq f(x) P(x) + \varepsilon                                                                             \\
+        \implies & \forall\ x \in [0, 1], \int_{[0, 1]} f(x) P(x) - \varepsilon \; dx = -\varepsilon                                                                                             \\
+                 & \leq \int_{[0, 1]} \big(f(x)\big)^2 \; dx \leq \int_{[0, 1]} f(x) P(x) + \varepsilon \; dx = \varepsilon                                 & \text{(by hypothesis)}             \\
+        \implies & \forall\ x \in [0, 1], -\varepsilon \leq \int_{[0, 1]} \big(f(x)\big)^2 \; dx \leq \varepsilon.
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary, we know that
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \abs*{\int_{[0, 1]} \big(f(x)\big)^2 \; dx} \leq \varepsilon \implies \abs*{\int_{[0, 1]} \big(f(x)\big)^2 \; dx} = \int_{[0, 1]} \big(f(x)\big)^2 \; dx = 0.
+    \]
+    Since \(f\) is continuous on \([0, 1]\) and \(\big(f(x)\big)^2 \geq 0\) for all \(x \in [0, 1]\), by Exercise 11.4.2 in Analysis I we know that
+    \[
+        \forall\ x \in [0, 1], \big(f(x)\big)^2 = 0.
+    \]
+    Thus we have \(f(x) = 0\) for all \(x \in [0, 1]\).
+\end{proof}
+
 \begin{exercise}\label{ex 3.8.9}
     Prove Lemma \ref{3.8.16}.
 \end{exercise}
