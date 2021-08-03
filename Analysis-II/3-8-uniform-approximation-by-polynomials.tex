@@ -627,6 +627,82 @@
     Then \(F\) is also continuous.
 \end{lemma}
 
+\begin{proof}
+    Since \(f\) is continuous on \([0, 1]\), we know that \(f\) is continuous at \(0\) and \(1\).
+    Thus we have
+    \begin{align*}
+                 & \lim_{x \to 0 ; x \in [0, 1]} f(x) = f(0) = 0                                                                                                                                                      \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall\ x \in [0, 1], \abs*{x} < \delta \implies \abs*{f(x)} < \varepsilon\big)                                    \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall\ x \in [0, \delta], \abs*{f(x)} < \varepsilon\big)                                                          \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall\ x \in [0, \delta], \abs*{F(x)} < \varepsilon\big)                                                          \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall\ x \in \mathbf{R}, \abs*{x} < \delta \implies \abs*{F(x)} < \varepsilon\big) & (F(x) = 0 \text{ if } x < 0) \\
+        \implies & \lim_{x \to 0 ; x \in \mathbf{R}} F(x) = F(0) = 0.
+    \end{align*}
+    Similarly we have \(\lim_{x \to 1 ; x \in \mathbf{R}} F(x) = F(1) = 0\).
+    This means \(F\) is continuous at \(0\) and \(1\).
+
+    Since \(f\) is continuous on \([0, 1]\), we know that \(f\) is continuous on \((0, 1)\).
+    Let \(x_0 \in (0, 1)\).
+    Then we have
+    \begin{align*}
+                 & \lim_{x \to x_0 ; x \in (0, 1)} f(x) = f(x_0)                                                                                                                                   \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall\ x \in (0, 1), \abs*{x - x_0} < \delta \implies \abs*{f(x) - f(x_0)} < \varepsilon\big)  \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall\ x \in (0, 1), \abs*{x - x_0} < \delta \implies \abs*{F(x) - F(x_0)} < \varepsilon\big).
+    \end{align*}
+    Now we fix one pair of \(\varepsilon\) and \(\delta\).
+    Let \(\delta' = \min(\delta, \abs*{x_0 - 0}, \abs*{1 - x_0})\).
+    Then we have \(\delta' \in \mathbf{R}^+\) and
+    \begin{align*}
+                 & \forall\ x \in \mathbf{R}, \abs*{x - x_0} < \delta' \\
+        \implies & \begin{cases}
+            \abs*{x - x_0} < \abs*{x_0 - 0} \\
+            \abs*{x - x_0} < \abs*{1 - x_0}
+        \end{cases}                          \\
+        \implies & \begin{cases}
+            \abs*{x - x_0} < x_0 \\
+            \abs*{x - x_0} < 1 - x_0
+        \end{cases}                          \\
+        \implies & \begin{cases}
+            0 < x < 2x_0 \\
+            2x_0 - 1 < x < 1
+        \end{cases}                          \\
+        \implies & \max(0, 2x_0 - 1) < x < \min(2x_0, 1)               \\
+        \implies & 0 < x < 1.
+    \end{align*}
+    Thus
+    \[
+        \forall\ x \in \mathbf{R}, \abs*{x - x_0} < \delta' \implies \abs*{F(x) - F(x_0)} < \varepsilon.
+    \]
+    Since \(\varepsilon\) is arbitrary, we conclude that \(\lim_{x \to x_0 ; x \in \mathbf{R}} F(x) = F(x_0)\).
+    Since \(x_0\) is arbitrary, we conclude that \(\lim_{x \to x_0 ; x \in \mathbf{R}} F(x) = F(x_0)\) for each \(x_0 \in (0, 1)\).
+
+    Let \(x_0 \in (-\infty, 0)\) and let \(\delta = \abs*{0 - x_0}\).
+    Since \(F(x) = 0\) for all \(x \in (-\infty, 0)\), we have \(F(x_0) = 0\) and
+    \begin{align*}
+                 & \forall\ x \in \mathbf{R}, \abs*{x - x_0} < \delta                                \\
+        \implies & \abs*{x - x_0} < \abs*{0 - x_0}                                                   \\
+        \implies & \abs*{x - x_0} < -x_0                                                             \\
+        \implies & 2x_0 < x < 0                                                                      \\
+        \implies & F(x) = 0                                                                          \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \abs*{F(x) - F(x_0)} = 0 \leq \varepsilon.
+    \end{align*}
+    Thus we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in \mathbf{R}, \abs*{x - x_0} < \delta \implies \abs*{F(x) - F(x_0)} < \varepsilon
+    \]
+    and \(\lim_{x \to x_0 ; x \in \mathbf{R}} F(x) = F(x_0) = 0\).
+    Since \(x_0\) is arbitrary, we conclude that
+    \[
+        \forall\ x_0 \in (-\infty, 0), \lim_{x \to x_0 ; x \in \mathbf{R}} F(x) = F(x_0) = 0.
+    \]
+    Using similar arguments we can show that \(\lim_{x \to x_0 ; x \in \mathbf{R}} F(x) = F(x_0) = 0\) for all \(x_0 \in (1, \infty)\).
+    Combine all proofs above we have
+    \[
+        \forall\ x_0 \in \mathbf{R}, \lim_{x \to x_0 ; x \in \mathbf{R}} F(x) = F(x_0) = 0
+    \]
+    and thus \(F\) is continuous on \(\mathbf{R}\).
+\end{proof}
+
 \begin{remark}\label{3.8.17}
     The function \(F\) obtained in Lemma \ref{3.8.16} is sometimes known as the \emph{extension of \(f\) by zero}.
 \end{remark}
