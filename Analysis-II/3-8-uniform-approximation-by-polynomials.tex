@@ -760,6 +760,34 @@
     \end{enumerate}
 \end{exercise}
 
+\begin{proof}{(a)}
+    By Definition \ref{3.8.6} we know that
+    \begin{itemize}
+        \item \(\varepsilon \in \mathbf{R}^+\).
+        \item \(\delta \in \mathbf{R}^+\) such that \(0 < \delta < 1\).
+        \item \(g\) is supported on \([-1, 1]\) and \(g(x) \geq 0\) for all \(x \in [-1, 1]\).
+        \item \(g\) is continuous on \(\mathbf{R}\) and \(\int_{-\infty}^\infty g = 1\).
+        \item \(\abs*{g(x)} \leq \varepsilon\) for each \(\delta \leq \abs*{x} \leq 1\).
+    \end{itemize}
+    By Definition \ref{3.8.4} we have
+    \[
+        \int_{-\infty}^\infty g = \int_{[-1, 1]} g = 1.
+    \]
+    Thus
+    \begin{align*}
+                 & \forall\ \delta \leq \abs*{x} \leq 1, \abs*{g(x)} \leq \varepsilon                                                                             \\
+        \implies & 1 = \int_{[-1, 1]} g                                                                                                                           \\
+                 & = \int_{[-1, -\delta]} g + \int_{[-\delta, \delta]} g + \int_{[\delta, 1]} g                                                                   \\
+                 & \leq (-\delta + 1) \varepsilon + \int_{[-\delta, \delta]} g + (1 - \delta) \varepsilon                                                         \\
+                 & = 2 \varepsilon (1 - \delta) + \int_{[-\delta, \delta]} g                                                                                      \\
+                 & \leq 2 \varepsilon + \int_{[-\delta, \delta]} g                                                 & (1 - \delta < 1)                             \\
+                 & \leq 2 \varepsilon + \int_{[-1, -\delta]} g + \int_{[-\delta, \delta]} g + \int_{[\delta, 1]} g & (g(x) \geq 0 \text{ for all } x \in [-1, 1]) \\
+                 & = 2 \varepsilon + \int_{[-1, 1]} g                                                                                                             \\
+                 & = 2 \varepsilon + 1                                                                                                                            \\
+        \implies & 1 - 2 \varepsilon \leq \int_{[-\delta, \delta]} g \leq 1.
+    \end{align*}
+\end{proof}
+
 \begin{proof}{(b)}
     See Lemma \ref{3.8.14}.
 \end{proof}
