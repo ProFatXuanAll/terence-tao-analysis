@@ -113,6 +113,34 @@
     \]
 \end{proof}
 
+\begin{proof}{(c)}
+    Let \(r \in (0, R)\).
+    Since
+    \[
+        \forall\ x \in [a - r, a + r] \implies \abs*{x - a} < r < R,
+    \]
+    by Theorem \ref{4.1.6}(b) we know that \(\sum_{n = 0}^\infty c_n (x - a)^n\) is absolutely convergent for all \(x \in [a - r, a + r]\).
+    For each \(n \in \mathbf{N}\), we define \(f^{(n)} : [a - r, a + r] \to \mathbf{R}\) by setting \(f^{(n)}(x) = c_n (x - a)^n\) for all \(x \in [a - r, a + r]\).
+    Since
+    \begin{align*}
+                 & \forall\ n \in \mathbf{N}, \forall\ x \in [a - r, a + r], (x - a)^n \leq r^n                                      \\
+        \implies & \forall\ n \in \mathbf{N}, \norm*{f^{(n)}}_\infty \leq r^n                   & \text{(by Definition \ref{3.5.5})} \\
+        \implies & \sum_{n = 0}^\infty \norm*{f^{(n)}}_\infty \leq \sum_{n = 0}^\infty c_n r^n,
+    \end{align*}
+    by Theorem \ref{3.5.7} we know that \(\big(\sum_{n = 0}^N f^{(n)}\big)_{N = 0}^\infty\) converges uniformly to some function \(g : [a - r, a + r] \to \mathbf{R}\) on \([a - r, a + r]\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\) and \(g\) is continuous on \([a - r, a + r]\).
+    But by Definition \ref{3.5.2} we know that
+    \[
+        \forall\ x \in [a - r, a + r], g(x) = \sum_{n = 0}^\infty f^{(n)}(x) = \sum_{n = 0}^\infty c_n (x - a)^n = f(x).
+    \]
+    Thus \(f\) is continuous on \([a - r, a + r]\).
+    Since \(r\) is arbitrary, we conclude that
+    \begin{align*}
+         & \forall\ r \in (0, R), \bigg(\sum_{n = 0}^N c_n (x - a)^n\bigg)_{N = 0}^\infty \text{ converges uniformly to } \sum_{n = 0}^\infty c_n (x - a)^n \\
+         & \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\mathbf{R} \times \mathbf{R}}
+    \end{align*}
+    and \(f\) is continuous on \((a - R, a + R)\).
+\end{proof}
+
 \setcounter{theorem}{7}
 \begin{remark}\label{4.1.8}
     Theorem \ref{4.1.6} is silent on what happens when \(\abs*{x - a} = R\), i.e., at the points \(a - R\) and \(a + R\).
