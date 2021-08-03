@@ -135,9 +135,9 @@
     Thus \(f\) is continuous on \([a - r, a + r]\).
     Since \(r\) is arbitrary, we conclude that
     \begin{align*}
-         & \forall\ r \in (0, R), \bigg(x \mapsto \sum_{n = 0}^N c_n (x - a)^n\bigg)_{N = 0}^\infty \text{ converges uniformly to }                            \\
-         & \bigg(x \mapsto \sum_{n = 0}^\infty c_n (x - a)^n\bigg) \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\mathbf{R} \times \mathbf{R}} \\
-         & \text{ and } \bigg(x \mapsto \sum_{n = 0}^\infty c_n (x - a)^n\bigg) \text{ is continuous on } (a - R, a + R).
+         & \forall\ r \in (0, R), \bigg(x \mapsto \sum_{n = 0}^N c_n (x - a)^n\bigg)_{N = 0}^\infty \text{ converges uniformly to }                                \\
+         & f = \bigg(x \mapsto \sum_{n = 0}^\infty c_n (x - a)^n\bigg) \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\mathbf{R} \times \mathbf{R}} \\
+         & \text{ and } f \text{ is continuous on } (a - R, a + R).
     \end{align*}
 \end{proof}
 
@@ -202,9 +202,55 @@
     \]
     Since \(r\) is arbitrary, we conclude that \(f\) is differentiable on \((a - R, a + R)\) and
     \begin{align*}
-         & \forall\ r \in (0, R), \bigg(x \mapsto \sum_{n = 1}^N n c_n (x - a)^{n - 1}\bigg)_{N = 1}^\infty \text{ converges uniformly to }                             \\
-         & \bigg(x \mapsto \sum_{n = 1}^\infty n c_n (x - a)^{n - 1}\bigg) \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\mathbf{R} \times \mathbf{R}}.
+         & \forall\ r \in (0, R), \bigg(x \mapsto \sum_{n = 1}^N n c_n (x - a)^{n - 1}\bigg)_{N = 1}^\infty \text{ converges uniformly to }                                  \\
+         & f' = \bigg(x \mapsto \sum_{n = 1}^\infty n c_n (x - a)^{n - 1}\bigg) \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\mathbf{R} \times \mathbf{R}}.
     \end{align*}
+\end{proof}
+
+\begin{proof}{(e)}
+    If \(y = z = a\), then we have
+    \[
+        \int_{[a, a]} f = 0 = \sum_{n = 0}^\infty c_n \frac{(a - a)^{n + 1} - (a - a)^{n + 1}}{n + 1}.
+    \]
+    So suppose that \((y \neq a) \lor (z \neq a)\).
+    Without the loss of generality, suppose that \(y \neq a\).
+    Let \(r = \max(\abs*{y - a}, \abs*{z - a})\).
+    Since \([y, z] \subseteq (a - R, a + R)\), we have
+    \begin{align*}
+                 & a - R < y \leq z < a + R              \\
+        \implies & -R < y - a \leq z - a < R             \\
+        \implies & \begin{cases}
+            0 < \abs*{y - a} < R \\
+            0 \leq \abs*{z - a} < R
+        \end{cases}            \\
+        \implies & \begin{cases}
+            0 < \abs*{y - a} \leq r < R \\
+            0 \leq \abs*{z - a} \leq r < R
+        \end{cases}            \\
+        \implies & -R < -r \leq y - a < z - a \leq r < R \\
+        \implies & [y, z] \subseteq [a - r, a + r].
+    \end{align*}
+    By Theorem \ref{4.1.6}(c) we know that
+    \begin{align*}
+         & \bigg(x \mapsto \sum_{n = 0}^N c_n (x - a)^n\bigg)_{N = 0}^\infty \text{ converges uniformly to }                                                       \\
+         & f = \bigg(x \mapsto \sum_{n = 0}^\infty c_n (x - a)^n\bigg) \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\mathbf{R} \times \mathbf{R}} \\
+         & \text{ and } f \text{ is continuous on } [a - r, a + r].
+    \end{align*}
+    Thus we have
+    \begin{align*}
+         & \bigg(x \mapsto \sum_{n = 0}^N c_n (x - a)^n\bigg)_{N = 0}^\infty \text{ converges uniformly to }                                               \\
+         & f = \bigg(x \mapsto \sum_{n = 0}^\infty c_n (x - a)^n\bigg) \text{ on } [y, z] \text{ with respect to } d_{l^1}|_{\mathbf{R} \times \mathbf{R}} \\
+         & \text{ and } f \text{ is continuous on } [y, z].
+    \end{align*}
+    By Corollary 11.5.2 we know that \(\int_{[y, z]} f\) is well-defined.
+    Thus we have
+    \begin{align*}
+        \int_{[y, z]} f & = \int_{[y, z]} f(x) \; dx                                                                                     \\
+                        & = \int_{[y, z]} \bigg(\sum_{n = 0}^\infty c_n (x - a)^n\bigg) \; dx                                            \\
+                        & = \sum_{n = 0}^\infty \bigg(\int_{[y, z]} c_n (x - a)^n \; dx\bigg)        & \text{(by Corollary \ref{3.6.2})} \\
+                        & = \sum_{n = 0}^\infty c_n \frac{(z - a)^{n + 1} - (y - a)^{n + 1}}{n + 1}.
+    \end{align*}
+    % \ref{3.6.2}
 \end{proof}
 
 \setcounter{theorem}{7}
