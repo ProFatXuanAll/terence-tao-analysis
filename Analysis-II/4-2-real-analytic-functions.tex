@@ -1,1 +1,208 @@
 \section{Real analytic functions}\label{sec 4.2}
+
+\begin{definition}[Real analytic functions]\label{4.2.1}
+    Let \(E\) be a subset of \(\mathbf{R}\), and let \(f : E \to \mathbf{R}\) be a function.
+    If \(a\) is an interior point of \(E\), we say that \(f\) is \emph{real analytic at \(a\)} if there exists an open interval \((a - r, a + r)\) in \(E\) for some \(r > 0\) such that there exists a power series \(\sum_{n = 0}^\infty c_n (x - a)^n\) centered at \(a\) which has a radius of convergence greater than or equal to \(r\), and which converges to \(f\) on \((a - r, a + r)\).
+    If \(E\) is an open set, and \(f\) is real analytic at every point a of \(E\), we say that \(f\) is \emph{real analytic on \(E\)}.
+\end{definition}
+
+\setcounter{theorem}{2}
+\begin{remark}\label{4.2.3}
+    The notion of being real analytic is closely related to another notion, that of being \emph{complex analytic}, but this is a topic for complex analysis, and will not be discussed here.
+\end{remark}
+
+\begin{definition}[\(k\)-times differentiability]\label{4.2.4}
+    Let \(E\) be a subset of \(\mathbf{R}\).
+    We say a function \(f : E \to \mathbf{R}\) is \emph{once differentiable on \(E\)} iff it is differentiable.
+    More generally, for any \(k \geq 2\) we say that \(f : E \to \mathbf{R}\) is \emph{\(k\) times differentiable on \(E\)}, or just \emph{\(k\) times differentiable}, iff \(f\) is differentiable, and \(f'\) is \(k - 1\) times differentiable.
+    If \(f\) is \(k\) times differentiable, we define the \(k^{\text{th}}\) derivative \(f^{(k)} : E \to \mathbf{R}\) by the recursive rule \(f^{(1)} \coloneqq f'\), and \(f^{(k)} = (f^{(k - 1)})'\) for all \(k \geq 2\).
+    We also define \(f^{(0)} \coloneqq f\) (this is \(f\) differentiated \(0\) times), and we allow every function to be zero times differentiable (since clearly \(f^{(0)}\) exists for every \(f\)).
+    A function is said to be \emph{infinitely differentiable} (or \emph{smooth}) iff it is \(k\) times differentiable for every \(k \geq 0\).
+\end{definition}
+
+\setcounter{theorem}{5}
+\begin{proposition}[Real analytic functions are \(k\)-times differentiable]\label{4.2.6}
+    Let \(E\) be a subset of \(\mathbf{R}\), let \(a\) be an interior point of \(E\), and and let \(f\) be a function which is real analytic at \(a\), thus there is an \(r > 0\) for which we have the power series expansion
+    \[
+        f(x) = \sum_{n = 0}^\infty c_n (x - a)^n
+    \]
+    for all \(x \in (a - r, a + r)\).
+    Then for every \(k \geq 0\), the function \(f\) is \(k\)-times differentiable on \((a - r, a + r)\), and for each \(k \geq 0\) the \(k^{\text{th}}\) derivative is given by
+    \begin{align*}
+        f^{(k)}(x) & = \sum_{n = 0}^\infty c_{n + k} (n + 1) (n + 2) \dots (n + k) (x - a)^n \\
+                   & = \sum_{n = 0}^\infty c_{n + k} \frac{(n + k)!}{n!} (x - a)^n
+    \end{align*}
+    for all \(x \in (a - r, a + r)\).
+\end{proposition}
+
+\begin{corollary}[Real analytic functions are infinitely differentiable]\label{4.2.7}
+    Let \(E\) be an open subset of \(\mathbf{R}\), and let \(f : E \to \mathbf{R}\) be a real analytic function on \(E\).
+    Then \(f\) is infinitely differentiable on \(E\).
+    Also, all derivatives of \(f\) are also real analytic on \(E\).
+\end{corollary}
+
+\begin{proof}
+    For every point \(a \in E\) and \(k \geq 0\), we know from Proposition \ref{4.2.6} that \(f\) is \(k\)-times differentiable at \(a\)
+    (we will have to apply Exercise 10.1.1 in Analysis I \(k\) times here, why?).
+    Thus \(f\) is \(k\)-times differentiable on \(E\) for every \(k \geq 0\) and is hence infinitely differentiable.
+    Also, from Proposition \ref{4.2.6} we see that each derivative \(f^{(k)}\) of \(f\) has a convergent power series expansion at every \(x \in E\) and thus \(f^{(k)}\) is real analytic.
+\end{proof}
+
+\setcounter{theorem}{8}
+\begin{remark}\label{4.2.9}
+    The converse statement to Corollary \ref{4.2.7} is not true;
+    there are infinitely differentiable functions which are not real analytic.
+\end{remark}
+
+\begin{note}
+    Proposition \ref{4.2.6} has an important corollary, due to Brook Taylor (1685 -- 1731).
+\end{note}
+
+\begin{corollary}[Taylor's formula]\label{4.2.10}
+    Let \(E\) be a subset of \(\mathbf{R}\), let \(a\) be an interior point of \(E\), and let \(f : E \to \mathbf{R}\) be a function which is real analytic at \(a\) and has the power series expansion
+    \[
+        f(x) = \sum_{n = 0}^\infty c_n (x - a)^n
+    \]
+    for all \(x \in (a - r, a + r)\) and some \(r > 0\).
+    Then for any integer \(k \geq 0\), we have
+    \[
+        f^{(k)}(a) = k! c_k,
+    \]
+    where \(k! \coloneqq 1 \times 2 \times \dots \times k\)
+    (and we adopt the convention that \(0! = 1\)).
+    In particular, we have Taylor's formula
+    \[
+        f(x) = \sum_{n = 0}^\infty \frac{f^{(n)}(a)}{n!} (x - a)^n
+    \]
+    for all \(x\) in \((a - r, a + r)\).
+\end{corollary}
+
+\begin{note}
+    The power series \(\sum_{n = 0}^\infty \frac{f^{(n)}(a)}{n!} (x - a)^n\) is sometimes called the \emph{Taylor series} of \(f\) around \(a\).
+    Taylor's formula thus asserts that if a function is real analytic, then it is equal to its Taylor series.
+\end{note}
+
+\begin{remark}\label{4.2.11}
+    Note that Taylor's formula only works for functions which are real analytic;
+    there are examples of functions which are infinitely differentiable but for which Taylor's theorem fails.
+\end{remark}
+
+\begin{corollary}[Uniqueness of power series]\label{4.2.12}
+    Let \(E\) be a subset of \(\mathbf{R}\), let \(a\) be an interior point of \(E\), and let \(f : E \to \mathbf{R}\) be a function which is real analytic at \(a\).
+    Suppose that \(f\) has two power series expansions
+    \[
+        f(x) = \sum_{n = 0}^\infty c_n (x - a)^n
+    \]
+    and
+    \[
+        f(x) = \sum_{n = 0}^\infty d_n (x - a)^n
+    \]
+    centered at \(a\), each with a non-zero radius of convergence.
+    Then \(c_n = d_n\) for all \(n \geq 0\).
+\end{corollary}
+
+\begin{proof}
+    By Corollary \ref{4.2.10}, we have \(f^{(k)}(a) = k! c_k\) for all \(k \geq 0\).
+    But we also have \(f^{(k)}(a) = k! d_k\), by similar reasoning.
+    Since \(k!\) is never zero, we can cancel it and obtain \(c_k = d_k\) for all \(k \geq 0\), as desired.
+\end{proof}
+
+\begin{remark}\label{4.2.13}
+    While a real analytic function has a unique power series around any given point, it can certainly have different power series at different points.
+    For instance, the function \(f(x) \coloneqq \frac{1}{1 - x}\), defined on \(\mathbf{R} \setminus \{1\}\), has the power series
+    \[
+        f(x) \coloneqq \sum_{n = 0}^\infty x^n
+    \]
+    around \(0\), on the interval \((-1, 1)\), but also has the power series
+    \begin{align*}
+        f(x) & = \frac{1}{1 - x}                                                  \\
+             & = \frac{2}{1 - 2(x - \frac{1}{2})}                                 \\
+             & = \sum_{n = 0}^\infty 2 \bigg(2\bigg(x - \frac{1}{2}\bigg)\bigg)^n \\
+             & = \sum_{n = 0}^\infty 2^{n + 1} \bigg(x - \frac{1}{2}\bigg)^n
+    \end{align*}
+    around \(1 / 2\), on the interval \((0, 1)\)
+    (note that the above power series has a radius of convergence of \(1 / 2\), thanks to the root test).
+\end{remark}
+
+\exercisesection
+
+\begin{exercise}\label{ex 4.2.1}
+    Let \(n \geq 0\) be an integer, let \(c, a\) be real numbers, and let \(f\) be the function \(f(x) \coloneqq c (x - a)^n\).
+    Show that \(f\) is infinitely differentiable, and that \(f^{(k)}(x) = c \frac{n!}{(n - k)!} (x - a)^{n - k}\) for all integers \(0 \leq k \leq n\).
+    What happens when \(k > n\)?
+\end{exercise}
+
+\begin{exercise}\label{ex 4.2.2}
+    Show that the function \(f\) defined in Example 4.2.2 is real analytic on all of \(\mathbf{R} \setminus \{1\}\).
+\end{exercise}
+
+\begin{exercise}\label{ex 4.2.3}
+    Prove Proposition \ref{4.2.6}.
+\end{exercise}
+
+\begin{proof}
+    See Proposition \ref{4.2.6}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.2.4}
+    Use Proposition \ref{4.2.6} and Exercise \ref{ex 4.2.1} to prove Corollary \ref{4.2.10}.
+\end{exercise}
+
+\begin{proof}
+    See Corollary \ref{4.2.10}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.2.5}
+    Let \(a, b\) be real numbers, and let \(n \geq 0\) be an integer.
+    Prove the identity
+    \[
+        (x - a)^n = \sum_{m = 0}^n \frac{n!}{m! (n - m)!} (b - a)^{n - m} (x - b)^m
+    \]
+    or any real number \(x\).
+    Explain why this identity is consistent with Taylor's theorem and Exercise \ref{ex 4.2.1}.
+    (Note however that Taylor's theorem cannot be rigorously applied until one verifies Exercise \ref{ex 4.2.6} below.)
+\end{exercise}
+
+\begin{exercise}\label{ex 4.2.6}
+    Using Exercise \ref{ex 4.2.5}, show that every polynomial \(P(x)\) of one variable is real analytic on \(\mathbf{R}\).
+\end{exercise}
+
+\begin{exercise}\label{ex 4.2.7}
+    Let \(m \geq 0\) be a positive integer, and let \(0 < x < r\) be real numbers.
+    Use Lemma 7.3.3 in Analysis I to establish the identity
+    \[
+        \frac{r}{r - x} = \sum_{n = 0}^\infty x^n r^{-n}
+    \]
+    for all \(x \in (-r, r)\).
+    Using Proposition \ref{4.2.6}, conclude the identity
+    \[
+        \frac{r}{(r - x)^{m + 1}} = \sum_{n = m}^\infty \frac{n!}{m! (n - m)!} x^{n - m} r^{-n}
+    \]
+    for all integers \(m \geq 0\) and \(x \in (-r, r)\).
+    Also explain why the series on the right-hand side is absolutely convergent.
+\end{exercise}
+
+\begin{exercise}\label{ex 4.2.8}
+    Let \(E\) be a subset of \(\mathbf{R}\), let \(a\) be an interior point of \(E\), and let \(f : E \to \mathbf{R}\) be a function which is real analytic in \(a\), and has a power series expansion
+    \[
+        f(x) = \sum_{n = 0}^\infty c_n (x - a)^n
+    \]
+    at \(a\) which converges on the interval \((a - r, a + r)\).
+    Let \((b - s, b + s)\) be any sub-interval of \((a - r, a + r)\) for some \(s > 0\).
+    \begin{enumerate}
+        \item Prove that \(\abs*{a - b} \leq r - s\), so in particular \(\abs*{a - b} < r\).
+        \item Show that for every \(0 < \varepsilon < r\), there exists a \(C > 0\) such that \(\abs*{c_n} \leq C(r - \varepsilon)^{-n}\) for all integers \(n \geq 0\).
+        \item Show that the numbers \(d_0, d_1, \dots\) given by the formula
+              \[
+                  d_m \coloneqq \sum_{n = m}^\infty \frac{n!}{m! (n - m)!} (b - a)^{n - m} c_n \text{ for all integers } m \geq 0
+              \]
+              are well-defined, in the sense that the above series is absolutely convergent.
+        \item Show that for every \(0 < \varepsilon < s\) there exists a \(C > 0\) such that
+              \[
+                  \abs*{d_m} \leq C(s - \varepsilon)^{-m}
+              \]
+              for all integers \(m \geq 0\).
+        \item Show that the power series \(\sum_{m = 0}^\infty d_m (x - b)^m\) is absolutely convergent for \(x \in (b - s, b + s)\) and converges to \(f(x)\).
+        \item Conclude that \(f\) is real analytic at every point in \((a - r, a + r)\).
+    \end{enumerate}
+\end{exercise}
