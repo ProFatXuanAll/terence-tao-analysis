@@ -32,6 +32,52 @@
     A function is said to be \emph{infinitely differentiable} (or \emph{smooth}) iff it is \(k\) times differentiable for every \(k \geq 0\).
 \end{definition}
 
+\begin{additional corollary}\label{ac 4.2.1}
+For each \(k \in \mathbf{N}\), we have
+\[
+    \lim_{n \to \infty} \bigg(\frac{(n + k)!}{n!}\bigg)^{\frac{1}{n}} = 1.
+\]
+\end{additional corollary}
+
+\begin{proof}
+    We use induction on \(k\).
+    For \(k = 0\), we have
+    \[
+        \lim_{n \to \infty} \bigg(\frac{(n + 0)!}{n!}\bigg)^{\frac{1}{n}} = \lim_{n \to \infty} 1^{\frac{1}{n}} = \lim_{n \to \infty} 1 = 1.
+    \]
+    Thus the base case holds.
+    Suppose inductively that
+    \[
+        \lim_{n \to \infty} \bigg(\frac{(n + k)!}{n!}\bigg)^{\frac{1}{n}} = 1
+    \]
+    for some \(k \geq 0\).
+    We want to show that \(k + 1\) is also true.
+    Observe that
+    \begin{align*}
+                 & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, Nn > k + 1                                                        \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, (N + 1)n > n + k + 1                                              \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, Nn > n + k + 1 > n                                                \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, (Nn)^{\frac{1}{n}} > (n + k + 1)^{\frac{1}{n}} > n^{\frac{1}{n}}.
+    \end{align*}
+    Now we fix such \(N\).
+    Since
+    \begin{align*}
+                 & \begin{cases}
+            \lim_{n \to \infty} (Nn)^{\frac{1}{n}} = 1 & \text{(by Lemma 6.5.3 in Analysis I )} \\
+            \lim_{n \to \infty} n^{\frac{1}{n}} = 1    & \text{(by Lemma 7.5.4 in Analysis I)}
+        \end{cases}                                                     \\
+        \implies & \lim_{n \to \infty} (n + k + 1)^{\frac{1}{n}} = 1, & \text{(by squeeze test)}
+    \end{align*}
+    we have
+    \begin{align*}
+                 & \lim_{n \to \infty} \bigg(\frac{(n + k)!}{n!}\bigg)^{\frac{1}{n}} = 1                                                                       & \text{(by induction hypothesis)} \\
+        \implies & \Bigg(\lim_{n \to \infty} \bigg(\frac{(n + k)!}{n!}\bigg)^{\frac{1}{n}}\Bigg) \bigg(\lim_{n \to \infty} (n + k + 1)^{\frac{1}{n}}\bigg) = 1                                    \\
+        \implies & \lim_{n \to \infty} \Bigg(\bigg(\frac{(n + k)!}{n!}\bigg)^{\frac{1}{n}} (n + k + 1)^{\frac{1}{n}}\Bigg) = 1                                                                    \\
+        \implies & \lim_{n \to \infty} \bigg(\frac{(n + k + 1)!}{n!}\bigg)^{\frac{1}{n}} = 1.
+    \end{align*}
+    This closes the induction.
+\end{proof}
+
 \setcounter{theorem}{5}
 \begin{proposition}[Real analytic functions are \(k\)-times differentiable]\label{4.2.6}
     Let \(E\) be a subset of \(\mathbf{R}\), let \(a\) be an interior point of \(E\), and and let \(f\) be a function which is real analytic at \(a\), thus there is an \(r > 0\) for which we have the power series expansion
@@ -46,6 +92,46 @@
     \end{align*}
     for all \(x \in (a - r, a + r)\).
 \end{proposition}
+
+\begin{proof}
+    Let \(R\) be the radius of convergence of \(f\).
+    By Definition \ref{4.2.1} we know that \(r \leq R\) and thus
+    \[
+        \forall\ x \in (a - r, a + r), \abs*{x - a} < r \leq R.
+    \]
+    We use induction on \(k\).
+    For \(k = 0\), by Definition \ref{4.2.4} we have
+    \[
+        \forall\ x \in (a - r, a + r), f^{(0)}(x) = f(x) = \sum_{n = 0}^\infty c_n (x - a)^n = \sum_{n = 0}^\infty c_{n + 0} \frac{(n + 0)!}{n!} (x - a)^n.
+    \]
+    Thus the base case holds.
+    Suppose inductively that
+    \[
+        \forall\ x \in (a - r, a + r), f^{(k)}(x) = \sum_{n = 0}^\infty c_{n + k} \frac{(n + k)!}{n!} (x - a)^n
+    \]
+    for some \(k \geq 0\).
+    By Additional Corollary \ref{ac 4.2.1} we know that
+    \begin{align*}
+                 & \limsup_{n \to \infty} \abs*{c_{n + k}}^{\frac{1}{n}} = \limsup_{n \to \infty} \abs*{c_n}^{\frac{1}{n}} = \frac{1}{R}                                            \\
+        \implies & \Bigg(\limsup_{n \to \infty} \abs*{c_{n + k}}^{\frac{1}{n}}\Bigg) \Bigg(\limsup_{n \to \infty} \bigg(\frac{(n + k)!}{n!}\bigg)^{\frac{1}{n}}\Bigg) = \frac{1}{R} \\
+        \implies & \limsup_{n \to \infty} \abs*{c_{n + k} \frac{(n + k)!}{n!}}^{\frac{1}{n}} = \frac{1}{R}.
+    \end{align*}
+    Thus by Theorem \ref{4.1.6}(b) we know that \(f^{(k)}(x)\) converges for all \(x \in (a - r, a + r)\).
+    Now we define
+    \[
+        \forall\ n \in \mathbf{N}, b_n = c_{n + k} \frac{(n + k)!}{n!}.
+    \]
+    Then by Theorem \ref{4.1.6}(d) we have
+    \begin{align*}
+                 & \forall\ x \in (a - r, a + r), f^{(k)}(x) = \sum_{n = 0}^\infty c_{n + k} \frac{(n + k)!}{n!} (x - a)^n = \sum_{n = 0}^\infty b_n (x - a)^n                     \\
+        \implies & \forall\ x \in (a - r, a + r), f^{(k + 1)}(x) = (f^{(k)})'(x) = \sum_{n = 1}^\infty n b_n (x - a)^{n - 1}                                                       \\
+        \implies & \forall\ x \in (a - r, a + r), f^{(k + 1)}(x) = \sum_{n = 1}^\infty n c_{n + k} \frac{(n + k)!}{n!} (x - a)^{n - 1}                                             \\
+        \implies & \forall\ x \in (a - r, a + r), f^{(k + 1)}(x) = \sum_{n = 1}^\infty c_{n + k} \frac{(n + k)!}{(n - 1)!} (x - a)^{n - 1}                                         \\
+        \implies & \forall\ x \in (a - r, a + r), f^{(k + 1)}(x) = \sum_{n = 0}^\infty c_{(n + 1) + k} \frac{\big((n + 1) + k\big)!}{\big((n + 1) - 1\big)!} (x - a)^{(n + 1) - 1} \\
+        \implies & \forall\ x \in (a - r, a + r), f^{(k + 1)}(x) = \sum_{n = 0}^\infty c_{n + k + 1} \frac{(n + k + 1)!}{n!} (x - a)^n
+    \end{align*}
+    and this closes the induction.
+\end{proof}
 
 \begin{corollary}[Real analytic functions are infinitely differentiable]\label{4.2.7}
     Let \(E\) be an open subset of \(\mathbf{R}\), and let \(f : E \to \mathbf{R}\) be a real analytic function on \(E\).
@@ -214,7 +300,7 @@
     \end{align*}
     Since \(x\) is arbitrary, we know that \(\sum_{n = 0}^\infty c_n (x - a)^n\) converges to \(f\) on \((a - r, a + r)\).
     By Definition \ref{4.2.1} we know that \(f\) is real analytic at \(a\).
-    Since \(a\) is arbitrary, by Definition \ref{4.2.1} we know that \(f\) is real analysis on \(\mathbf{R} \setminus \{1\}\).
+    Since \(a\) is arbitrary, by Definition \ref{4.2.1} we know that \(f\) is real analysis at \(a\) for each \(a \in \mathbf{R} \setminus \{1\}\).
 \end{proof}
 
 \begin{exercise}\label{ex 4.2.3}
