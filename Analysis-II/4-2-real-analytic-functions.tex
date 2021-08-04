@@ -197,6 +197,26 @@
     Show that the function \(f\) defined in Example \ref{4.2.2} is real analytic on all of \(\mathbf{R} \setminus \{1\}\).
 \end{exercise}
 
+\begin{proof}
+    Let \(a \in \mathbf{R} \setminus \{1\}\), let \(r = \abs*{1 - a}\), let \(x \in (a - r, a + r)\) and let \(c_n = (\frac{1}{1 - a})^{n + 1}\) for all \(n \in \mathbf{N}\).
+    Then we have
+    \begin{align*}
+                 & a - r < x < a + r              \\
+        \implies & \abs*{x - a} < r               \\
+        \implies & \abs*{\frac{x - a}{1 - a}} < 1
+    \end{align*}
+    and by Lemma 7.3.3 in Analysis I we know that
+    \begin{align*}
+        \sum_{n = 0}^\infty c_n (x - a)^n & = \sum_{n = 0}^\infty \bigg(\frac{1}{1 - a}\bigg)^{n + 1} (x - a)^n     \\
+                                          & = \frac{1}{1 - a} \sum_{n = 0}^\infty \bigg(\frac{x - a}{1 - a}\bigg)^n \\
+                                          & = \frac{1}{1 - a} \frac{1}{1 - \frac{x - a}{1 - a}}                     \\
+                                          & = \frac{1}{1 - x}.
+    \end{align*}
+    Since \(x\) is arbitrary, we know that \(\sum_{n = 0}^\infty c_n (x - a)^n\) converges to \(f\) on \((a - r, a + r)\).
+    By Definition \ref{4.2.1} we know that \(f\) is real analytic at \(a\).
+    Since \(a\) is arbitrary, by Definition \ref{4.2.1} we know that \(f\) is real analysis on \(\mathbf{R} \setminus \{1\}\).
+\end{proof}
+
 \begin{exercise}\label{ex 4.2.3}
     Prove Proposition \ref{4.2.6}.
 \end{exercise}
