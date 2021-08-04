@@ -19,6 +19,10 @@
     The notion of being real analytic is closely related to another notion, that of being \emph{complex analytic}, but this is a topic for complex analysis, and will not be discussed here.
 \end{remark}
 
+\begin{note}
+    From Theorem \ref{4.1.6}(c) and (d) we see that if \(f\) is real analytic at a point \(a\), then \(f\) is both continuous and diﬀerentiable on \((a - r, a + r)\) for some \(r > 0\).
+\end{note}
+
 \begin{definition}[\(k\)-times differentiability]\label{4.2.4}
     Let \(E\) be a subset of \(\mathbf{R}\) with the property that every element of \(E\) is a limit point of \(E\).
     We say a function \(f : E \to \mathbf{R}\) is \emph{once differentiable on \(E\)} iff it is differentiable, in particular \(f': E \to \mathbf{R}\) is also a function on \(E\).
@@ -139,6 +143,55 @@
     Show that \(f\) is infinitely differentiable, and that \(f^{(k)}(x) = c \frac{n!}{(n - k)!} (x - a)^{n - k}\) for all integers \(0 \leq k \leq n\).
     What happens when \(k > n\)?
 \end{exercise}
+
+\begin{proof}
+    For each \(n \in \mathbf{N}\), let \(P(n)\) be the statement ``If \(f(x) = c (x - a)^n\), then \(f^{(k)}(x) = c \frac{n!}{(n - k)!} (x - a)^{n - k}\) for all \(0 \leq k \leq n\)''.
+    We use induction on \(n\) to show that \(P(n)\) is true for all \(n \in \mathbf{N}\).
+    For \(n = 0\), we have \(0 \leq k \leq 0 \implies k = 0\).
+    By Definition \ref{4.2.4} we have
+    \[
+        f^{(0)} = f = c (x - a)^0 = c = c \frac{0!}{(0 - 0)!} (x - a)^{0 - 0}
+    \]
+    and thus the base case holds.
+    Suppose inductive that \(P(n)\) is true for some \(n \geq 0\).
+    Then we want to show that \(P(n + 1)\) is true.
+    Let \(f(x) = c (x - a)^{n + 1}\).
+    Then we have
+    \[
+        f'(x) = c (n + 1) (x - a)^n.
+    \]
+    By induction hypothesis we know that
+    \begin{align*}
+                 & \frac{f'(x)}{n + 1} = c (x - a)^n                                                                                                            \\
+        \implies & \forall\ 0 \leq k \leq n, \bigg(\frac{f'(x)}{n + 1}\bigg)^{(k)} = c \frac{n!}{(n - k)!} (x - a)^{n - k}                                      \\
+        \implies & \forall\ 0 \leq k \leq n, \big(f'(x)\big)^{(k)} = c \frac{(n + 1)!}{(n - k)!} (x - a)^{n - k}                                                \\
+        \implies & \forall\ 0 \leq k \leq n, f(x)^{(k + 1)} = c \frac{(n + 1)!}{(n - k)!} (x - a)^{n - k}                  & \text{(by Definition \ref{4.2.4})} \\
+        \implies & \forall\ 1 \leq k \leq n + 1,                                                                                                                \\
+                 & f(x)^{\big((k - 1) + 1\big)} = c \frac{(n + 1)!}{\big(n - (k - 1)\big)!} (x - a)^{n - (k - 1)}                                               \\
+        \implies & \forall\ 1 \leq k \leq n + 1, f(x)^{(k)} = c \frac{(n + 1)!}{(n + 1 - k)!} (x - a)^{n + 1 - k}
+    \end{align*}
+    and we know that
+    \[
+        f(x)^{(0)} = f(x) = c (x - a)^{n + 1} = c \frac{(n + 1)!}{(n + 1 - 0)!} (x - a)^{n + 1 - 0}.
+    \]
+    Thus we have
+    \[
+        \forall\ 0 \leq k \leq n + 1, f(x)^{(k)} = c \frac{(n + 1)!}{(n + 1 - k)!} (x - a)^{n + 1 - k}
+    \]
+    and this closes the induction.
+
+    Now let \(n \in \mathbf{N}\) and let \(f(x) = c (x - a)^n\).
+    From the proof above we know that
+    \[
+        f^{(n)}(x) = c \frac{n!}{(n - n)!} (x - a)^{n - n} = c n!
+    \]
+    is a constant function.
+    Thus we have
+    \[
+        \forall\ k > n, f^{(k)}(x) = 0
+    \]
+    and by Definition \ref{4.2.4} \(f\) is infinitely differentiable.
+\end{proof}
 
 \begin{exercise}\label{ex 4.2.2}
     Show that the function \(f\) defined in Example \ref{4.2.2} is real analytic on all of \(\mathbf{R} \setminus \{1\}\).
