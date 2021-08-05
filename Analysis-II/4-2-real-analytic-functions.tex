@@ -442,6 +442,86 @@ For each \(k \in \mathbf{N}\), we have
     Also explain why the series on the right-hand side is absolutely convergent.
 \end{exercise}
 
+\begin{proof}
+    By Lemma 7.3.3 in Analysis I we have
+    \begin{align*}
+                 & 0 < x < r                                                                                                                     \\
+        \implies & \frac{x}{r} < 1                                                                                                               \\
+        \implies & \sum_{n = 0}^\infty \bigg(\frac{x}{r}\bigg)^n = \sum_{n = 0}^\infty x^n r^{-n} = \frac{1}{1 - \frac{x}{r}} = \frac{r}{r - x}.
+    \end{align*}
+    Since
+    \[
+        x = 0 \implies \sum_{n = 0}^\infty 0^n r^{-n} = 0^0 r^{0} + \sum_{n = 1}^\infty 0^n r^{-n} = 1 = \frac{r}{r - 0},
+    \]
+    we know that
+    \[
+        \forall\ x \in (-r, r), \frac{r}{r - x} = \sum_{n = 0}^\infty x^n r^{-n}
+    \]
+    and by Definition \ref{4.2.1} \(x \mapsto \frac{r}{r - x}\) is real analytic at \(0\).
+
+    Next we use induction on \(m\) to show that
+    \[
+        \forall\ m \in \mathbf{N}, \forall\ x \in (-r, r), \bigg(y \mapsto \frac{r}{r - y}\bigg)^{(m)}(x) = \frac{m! r}{(r - x)^{m + 1}}.
+    \]
+    For \(m = 0\), we have
+    \[
+        \forall\ x \in (-r, r), \bigg(y \mapsto \frac{r}{r - y}\bigg)^{(0)}(x) = \frac{r}{r - x} = \frac{0! r}{(r - x)^{0 + 1}}
+    \]
+    and thus the base case holds.
+    Suppose inductively that
+    \[
+        \forall\ x \in (-r, r), \bigg(y \mapsto \frac{r}{r - y}\bigg)^{(m)}(x) = \frac{m! r}{(r - x)^{m + 1}}
+    \]
+    for some \(m \geq 0\).
+    Then by Definition \ref{4.2.4} we have
+    \[
+        \forall\ x \in (-r, r), \bigg(y \mapsto \frac{r}{r - y}\bigg)^{(m + 1)}(x) = \bigg(\frac{m! r}{(r - x)^{m + 1}}\bigg)'(x) = \frac{(m + 1)! r}{(r - x)^{m + 2}}.
+    \]
+    This closes the induction.
+
+    Now we show that
+    \[
+        \forall\ m \in \mathbf{N}, \frac{r}{(r - x)^{m + 1}} = \sum_{n = m}^\infty \frac{n!}{m! (n - m)!} x^{n - m} r^{-n}.
+    \]
+    From the proof above we know that
+    \[
+        \forall\ m \in \mathbf{N}, \forall\ x \in (-r, r), \frac{r}{(r - x)^{m + 1}} = \frac{1}{m!} \bigg(y \mapsto \frac{r}{r - y}\bigg)^{(m)}.
+    \]
+    By Proposition \ref{4.2.6} we know that
+    \begin{align*}
+        \forall\ m \in \mathbf{N}, \forall\ x \in (-r, r), & \bigg(y \mapsto \frac{r}{r - y}\bigg)^{(m)}                       \\
+                                                           & = \sum_{n = 0}^\infty r^{-(n + m)} \frac{(n + m)!}{n!} x^n        \\
+                                                           & = \sum_{n = m}^\infty r^{-n} \frac{n!}{(n - m)!} x^{n - m}        \\
+                                                           & = m! \sum_{n = m}^\infty r^{-n} \frac{n!}{m! (n - m)!} x^{n - m}.
+    \end{align*}
+    Thus we have
+    \[
+        \forall\ m \in \mathbf{N}, \forall\ x \in (-r, r), \frac{r}{(r - x)^{m + 1}} = \sum_{n = m}^\infty r^{-n} \frac{n!}{m! (n - m)!} x^{n - m}.
+    \]
+
+    Since
+    \begin{align*}
+                 & \forall\ m \in \mathbf{N}, \lim_{n \to \infty} \bigg(\frac{(n + m)!}{n!}\bigg)^{\frac{1}{n}} = 1        & \text{(by Additional Corollary \ref{ac 4.2.1})} \\
+        \implies & \forall\ m \in \mathbf{N}, \lim_{n \to \infty} \bigg(\frac{n!}{(n - m)!}\bigg)^{\frac{1}{n - m}} = 1                                                      \\
+        \implies & \forall\ m \in \mathbf{N}, \lim_{n \to \infty} \bigg(\frac{n!}{(n - m)!}\bigg)^{\frac{1}{n}} = 1                                                          \\
+        \implies & \forall\ m \in \mathbf{N}, \lim_{n \to \infty} \bigg(\frac{n!}{m! (n - m)!}\bigg)^{\frac{1}{n}} \leq 1,
+    \end{align*}
+    we have
+    \begin{align*}
+                 & \forall\ m \in \mathbf{N}, \limsup_{n \to \infty} \abs*{\bigg(\frac{n!}{m! (n - m)!}\bigg)^{\frac{1}{n}}} \leq 1                         \\
+        \implies & \forall\ m \in \mathbf{N}, \limsup_{n \to \infty} \abs*{\bigg(\frac{n!}{m! (n - m)!}\bigg)^{\frac{1}{n}} \frac{x}{r}} < 1                \\
+        \implies & \forall\ m \in \mathbf{N}, \limsup_{n \to \infty} \abs*{\bigg(\frac{n!}{m! (n - m)!}\bigg)^{\frac{1}{n}} (x^n r^{-n})^{\frac{1}{n}}} < 1
+    \end{align*}
+    and by root test
+    \[
+        \sum_{n = m}^\infty \frac{n!}{m! (n - m)!} x^n r^{-n}
+    \]
+    is absolutely converges, and so does
+    \[
+        x^{-m} \sum_{n = m}^\infty \frac{n!}{m! (n - m)!} x^n r^{-n} = \sum_{n = m}^\infty \frac{n!}{m! (n - m)!} x^{n - m} r^{-n}.
+    \]
+\end{proof}
+
 \begin{exercise}\label{ex 4.2.8}
     Let \(E\) be a subset of \(\mathbf{R}\), let \(a\) be an interior point of \(E\), and let \(f : E \to \mathbf{R}\) be a function which is real analytic at \(a\), and has a power series expansion
     \[
