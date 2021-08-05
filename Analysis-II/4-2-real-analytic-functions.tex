@@ -344,6 +344,46 @@ For each \(k \in \mathbf{N}\), we have
     (Note however that Taylor's theorem cannot be rigorously applied until one verifies Exercise \ref{ex 4.2.6} below.)
 \end{exercise}
 
+\begin{proof}
+    Let \(f : \mathbf{R} \to \mathbf{R}\) be the function by setting \(f(x) = (x - a)^n\) for all \(x \in \mathbf{R}\).
+    By Exercise 7.1.4 in Analysis I we have
+    \begin{align*}
+        \forall\ x \in \mathbf{R}, f(x) & = (x - a)^n                                                        \\
+                                        & = (x - b + b - a)^n                                                \\
+                                        & = \sum_{m = 0}^n \frac{n!}{m! (n - m)!} (x - b)^m (b - a)^{n - m}.
+    \end{align*}
+    If we define
+    \[
+        \forall\ m \in \mathbf{N}, c_m = \begin{cases}
+            \frac{n! (b - a)^{n - m}}{m! (n - m)!} & \text{if } m \leq n \\
+            0                                      & \text{if } m > n
+        \end{cases}
+    \]
+    then we have
+    \[
+        \forall\ x \in \mathbf{R}, f(x) = \sum_{m = 0}^\infty c_m (x - b)^m = \sum_{m = 0}^n c_m (x - b)^m.
+    \]
+    Thus for arbitrary \(r \in \mathbf{R}^+\), \(f(x)\) is convergent on \((b - r, b + r)\).
+    By Definition \ref{4.2.1} we know that \(f\) is real analytic at \(b\).
+    By Corollary \ref{4.2.10} we have
+    \begin{align*}
+        \forall\ x \in \mathbf{R}, f(x) = \sum_{m = 0}^\infty \frac{f^{(m)}(b)}{m!} (x - b)^m.
+    \end{align*}
+    By Exercise \ref{ex 4.2.1} we have
+    \[
+        \forall\ m \in \mathbf{N}, \forall\ x \in \mathbf{R}, f^{(m)}(x) = \begin{cases}
+            \frac{n!}{(n - m)!} (x - a)^{n - m} & \text{if } 0 \leq m \leq n \\
+            0                                   & \text{if } m > n
+        \end{cases}
+    \]
+    Thus
+    \begin{align*}
+        \forall\ x \in \mathbf{R}, f(x) & = \sum_{m = 0}^\infty \frac{f^{(m)}(b)}{m!} (x - b)^m              \\
+                                        & = \sum_{m = 0}^n \frac{f^{(m)}(b)}{m!} (x - b)^m                   \\
+                                        & = \sum_{m = 0}^n \frac{n!}{m! (n - m)!} (x - b)^m (b - a)^{n - m}.
+    \end{align*}
+\end{proof}
+
 \begin{exercise}\label{ex 4.2.6}
     Using Exercise \ref{ex 4.2.5}, show that every polynomial \(P(x)\) of one variable is real analytic on \(\mathbf{R}\).
 \end{exercise}
