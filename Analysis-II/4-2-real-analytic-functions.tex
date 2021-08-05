@@ -363,7 +363,7 @@ For each \(k \in \mathbf{N}\), we have
     \[
         \forall\ x \in \mathbf{R}, f(x) = \sum_{m = 0}^\infty c_m (x - b)^m = \sum_{m = 0}^n c_m (x - b)^m.
     \]
-    Thus for arbitrary \(r \in \mathbf{R}^+\), \(f(x)\) is convergent on \((b - r, b + r)\).
+    Thus for arbitrary \(r \in \mathbf{R}^+\), \(\sum_{m = 0}^\infty c_m (x - b)^m\) converges to \(f(x)\) for all \(x \in (b - r, b + r)\).
     By Definition \ref{4.2.1} we know that \(f\) is real analytic at \(b\).
     By Corollary \ref{4.2.10} we have
     \begin{align*}
@@ -387,6 +387,45 @@ For each \(k \in \mathbf{N}\), we have
 \begin{exercise}\label{ex 4.2.6}
     Using Exercise \ref{ex 4.2.5}, show that every polynomial \(P(x)\) of one variable is real analytic on \(\mathbf{R}\).
 \end{exercise}
+
+\begin{proof}
+    Let \(P : \mathbf{R} \to \mathbf{R}\) be a polynomial with degree \(n\).
+    First we show that \(P\) is real analytic at \(0\).
+    By Definition \ref{3.8.1} we know that
+    \[
+        \forall\ x \in \mathbf{R}, P(x) = \sum_{i = 0}^n c_i x^i
+    \]
+    where \(c_0, \dots, c_n \in \mathbf{R}\) and \(c_n \neq 0\).
+    If we define \(c_i = 0\) for all \(i > n\), then we have
+    \[
+        \forall\ x \in \mathbf{R}, \sum_{i = 0}^\infty c_i (x - 0)^i = \sum_{i = 0}^\infty c_i x^i = \sum_{i = 0}^n c_i x^i = P(x).
+    \]
+    Thus for arbitrary \(r \in \mathbf{R}^+\), \(\sum_{i = 0}^\infty c_i (x - 0)^i\) converges to \(P(x)\) for all \(x \in (-r, r)\).
+    By Definition \ref{4.2.1} \(P\) is real analytic at \(0\).
+
+    Now we show that \(P\) is real analytic at \(a \in \mathbf{R} \setminus \{0\}\).
+    Since \(a \neq 0\), we have
+    \begin{align*}
+        \forall\ x \in \mathbf{R}, P(x) & = \sum_{i = 0}^n c_i x^i                                                                                                                         \\
+                                        & = \sum_{i = 0}^n c_i \bigg(\sum_{m = 0}^i \frac{i!}{m! (i - m)!} a^{i - m} (x - a)^m\bigg)                 & \text{(by Exercise \ref{ex 4.2.5})} \\
+                                        & = \sum_{i = 0}^n c_i \bigg(\sum_{m = 0}^i \frac{i!}{m! (i - m)!} a^{i - m} (x - a)^{m - i}\bigg) (x - a)^i
+    \end{align*}
+    If we define
+    \[
+        \forall\ i \in \mathbf{N}, d_i = \begin{cases}
+            c_i \bigg(\sum_{m = 0}^i \frac{i!}{m! (i - m)!} a^{i - m} (x - a)^{m - i}\bigg) & \text{if } 0 \leq i \leq n \\
+            0                                                                               & \text{if } i > n
+        \end{cases}
+    \]
+    Then we have
+    \[
+        \forall\ x \in \mathbf{R}, \sum_{i = 0}^\infty d_i (x - a)^i = \sum_{i = 0}^n d_i (x - a)^i = P(x).
+    \]
+    Thus for arbitrary \(r \in \mathbf{R}^+\), \(\sum_{i = 0}^\infty d_i (x - a)^i\) converges to \(P(x)\) for all \(x \in (-r, r)\).
+    By Definition \ref{4.2.1} \(P\) is real analytic at \(a\).
+    Combine the proof above we conclude that \(P\) is real analytic on \(\mathbf{R}\).
+    Since \(P\) is arbitrary, we conclude that polynomials of one variable are real analytic on \(\mathbf{R}\).
+\end{proof}
 
 \begin{exercise}\label{ex 4.2.7}
     Let \(m \geq 0\) be a positive integer, and let \(0 < x < r\) be real numbers.
