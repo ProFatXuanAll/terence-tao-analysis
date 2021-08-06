@@ -63,9 +63,10 @@ For each \(k \in \mathbf{N}\), we have
     Since
     \begin{align*}
                  & \begin{cases}
-            \lim_{n \to \infty} (Nn)^{\frac{1}{n}} = 1 & \text{(by Lemma 6.5.3 in Analysis I )} \\
-            \lim_{n \to \infty} n^{\frac{1}{n}} = 1    & \text{(by Lemma 7.5.4 in Analysis I)}
+            \lim_{n \to \infty} N^{\frac{1}{n}} = 1 & \text{(by Lemma 6.5.3 in Analysis I )} \\
+            \lim_{n \to \infty} n^{\frac{1}{n}} = 1 & \text{(by Lemma 7.5.4 in Analysis I)}
         \end{cases}                                                     \\
+        \implies & \lim_{n \to \infty} (Nn)^{\frac{1}{n}} = 1                                    \\
         \implies & \lim_{n \to \infty} (n + k + 1)^{\frac{1}{n}} = 1, & \text{(by squeeze test)}
     \end{align*}
     we have
@@ -554,4 +555,48 @@ For each \(k \in \mathbf{N}\), we have
         \implies & s - r \leq a - b \leq r - s                       \\
         \implies & \abs*{a - b} \leq r - s < r.            & (s > 0)
     \end{align*}
+\end{proof}
+
+\begin{proof}{(b)}
+    Let \(\varepsilon \in (0, r)\).
+    Since
+    \begin{align*}
+                 & 0 < \varepsilon < r                                                                                                               \\
+        \implies & 0 < r - \varepsilon < r                                                                                                           \\
+        \implies & (a - r + \varepsilon, a + r - \varepsilon) \subseteq (a - r, a + r)                                                               \\
+        \implies & \forall\ x \in (a, a + r) \setminus (a, a + r - \varepsilon), r - \varepsilon \leq x - a < r                                      \\
+        \implies & \forall\ n \in \mathbf{N}, \forall\ x \in (a, a + r) \setminus (a, a + r - \varepsilon), (r - \varepsilon)^n \leq (x - a)^n < r^n
+    \end{align*}
+    and
+    \begin{align*}
+                 & \forall\ x \in (a, a + r) \setminus (a, a + r - \varepsilon),                                                                        \\
+                 & r - \varepsilon < x - a < r \leq \frac{1}{\limsup_{n \to \infty} \abs*{c_n}^\frac{1}{n}} & \text{(by Definition \ref{4.2.1})}        \\
+        \implies & \forall\ x \in (a, a + r) \setminus (a, a + r - \varepsilon),                                                                        \\
+                 & \sum_{n = 0}^\infty c_n (x - a)^n \text{ is absolutely convergent}                       & \text{(by Theorem \ref{4.1.6}(b))}        \\
+        \implies & \forall\ x \in (a, a + r) \setminus (a, a + r - \varepsilon),                                                                        \\
+                 & \lim_{n \to \infty} c_n (x - a)^n = 0                                                    & \text{(by Corollary 7.2.6 in Analysis I)} \\
+        \implies & \forall\ x \in (a, a + r) \setminus (a, a + r - \varepsilon),                                                                        \\
+                 & \lim_{n \to \infty} \abs*{c_n} (x - a)^n = 0                                                                                         \\
+        \implies & \lim_{n \to \infty} \abs*{c_n} (r - \varepsilon)^n = 0,                                  & \text{(by squeeze test)}
+    \end{align*}
+    we know that
+    \begin{align*}
+                 & \lim_{n \to \infty} \abs*{c_n} (r - \varepsilon)^n = 0                                \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \abs*{c_n (r - \varepsilon)^n} < 1   \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \abs*{c_n} < (r - \varepsilon)^{-n}.
+    \end{align*}
+    Now we fix such \(N\).
+    If we define
+    \[
+        C = 1 + \max\bigg(\abs*{c_0} (r - \varepsilon)^0, \dots, \abs*{c_{N - 1}} (r - \varepsilon)^{N - 1}\bigg),
+    \]
+    then we have
+    \begin{align*}
+                 & \begin{cases}
+            \forall\ n \geq N, \abs*{c_n} < (r - \varepsilon)^{-n} \\
+            \forall\ 0 \leq n \leq N - 1, \abs*{c_n} \leq C
+        \end{cases}                                                \\
+        \implies & \forall\ n \geq N, \abs*{c_n} \leq C (r - \varepsilon)^{-n}. & (C \geq 1)
+    \end{align*}
+    Thus we have found a \(C \in \mathbf{R}^+\) such that \(\abs*{c_n} \leq C (r - \varepsilon)^{-n}\) for all \(n \in \mathbf{N}\).
 \end{proof}
