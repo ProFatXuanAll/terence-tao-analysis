@@ -95,13 +95,50 @@
 \end{proof}
 
 \begin{lemma}[Summation by parts formula]\label{4.3.2}
-    Let \((a_n)_{n = 0}^\infty\) and \((b_n)_{n = 0}^\infty\) be sequences of real numbers which converge to limits \(A\) and \(B\) respectively, i.e., \(lim_{n \to \infty} a_n = A\) and \(lim_{n \to \infty} b_n = B\).
+    Let \((a_n)_{n = 0}^\infty\) and \((b_n)_{n = 0}^\infty\) be sequences of real numbers which converge to limits \(A\) and \(B\) respectively, i.e., \(\lim_{n \to \infty} a_n = A\) and \(\lim_{n \to \infty} b_n = B\).
     Suppose that the sum \(\sum_{n = 0}^\infty (a_{n + 1} - a_n) b_n\) is convergent.
     Then the sum \(\sum_{n = 0}^\infty a_{n + 1} (b_{n + 1} - b_n)\) is also convergent, and
     \[
         \sum_{n = 0}^\infty (a_{n + 1} - a_n) b_n = AB - a_0 b_0 - \sum_{n = 0}^\infty a_{n + 1} (b_{n + 1} - b_n).
     \]
 \end{lemma}
+
+\begin{proof}
+    Since
+    \begin{align*}
+        \forall\ N \in \mathbf{N}, & \sum_{n = 0}^N (a_{n + 1} - a_n) b_n + \sum_{n = 0}^N a_{n + 1} (b_{n + 1} - b_n) \\
+                                   & = \sum_{n = 0}^N a_{n + 1} (b_n - a_n b_n + a_{n + 1} b_{n + 1} - a_{n + 1} b_n)  \\
+                                   & = \sum_{n = 0}^N a_{n + 1} (b_{n + 1} - a_n b_n)                                  \\
+                                   & = a_{N + 1} b_{N + 1} - a_0 b_0
+    \end{align*}
+    and
+    \begin{align*}
+                 & \begin{cases}
+            \lim_{n \to \infty} a_n = A \\
+            \lim_{n \to \infty} b_n = B
+        \end{cases}         \\
+        \implies & \lim_{n \to \infty} a_n b_n = AB,
+    \end{align*}
+    we have
+    \begin{align*}
+         & \lim_{N \to \infty} \bigg(\sum_{n = 0}^N (a_{n + 1} - a_n) b_n + \sum_{n = 0}^N a_{n + 1} (b_{n + 1} - b_n)\bigg) \\
+         & = \lim_{N \to \infty} (a_{N + 1} b_{N + 1} - a_0 b_0)                                                             \\
+         & = \lim_{N \to \infty} (a_{N + 1} b_{N + 1}) - a_0 b_0                                                             \\
+         & = AB - a_0 b_0.
+    \end{align*}
+    Thus
+    \begin{align*}
+         & \bigg(\sum_{n = 0}^\infty (a_{n + 1} - a_n) b_n\bigg) - AB + a_0 b_0                                                                                                                       \\
+         & = \lim_{N \to \infty} \bigg(\sum_{n = 0}^N (a_{n + 1} - a_n) b_n\bigg) - \lim_{N \to \infty} \bigg(\sum_{n = 0}^N (a_{n + 1} - a_n) b_n + \sum_{n = 0}^N a_{n + 1} (b_{n + 1} - b_n)\bigg) \\
+         & = \lim_{N \to \infty} - \bigg(\sum_{n = 0}^N a_{n + 1} (b_{n + 1} - b_n)\bigg)                                                                                                             \\
+         & = - \lim_{N \to \infty} \bigg(\sum_{n = 0}^N a_{n + 1} (b_{n + 1} - b_n)\bigg)                                                                                                             \\
+         & = - \sum_{n = 0}^\infty a_{n + 1} (b_{n + 1} - b_n)
+    \end{align*}
+    and
+    \[
+        \sum_{n = 0}^\infty (a_{n + 1} - a_n) b_n = AB - a_0 b_0 - \sum_{n = 0}^\infty a_{n + 1} (b_{n + 1} - b_n).
+    \]
+\end{proof}
 
 \begin{remark}\label{4.3.3}
     One should compare this formula with the more well-known \emph{integration by parts formula}
