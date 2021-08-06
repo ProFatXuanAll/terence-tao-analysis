@@ -598,7 +598,10 @@ For each \(k \in \mathbf{N}\), we have
         \end{cases}                                                \\
         \implies & \forall\ n \geq N, \abs*{c_n} \leq C (r - \varepsilon)^{-n}. & (C \geq 1)
     \end{align*}
-    Thus we have found a \(C \in \mathbf{R}^+\) such that \(\abs*{c_n} \leq C (r - \varepsilon)^{-n}\) for all \(n \in \mathbf{N}\).
+    Since \(\varepsilon\) is arbitrary, we conclude that
+    \[
+        \forall\ \varepsilon \in (0, r), \exists\ C \in \mathbf{R}^+ : \forall\ n \in \mathbf{N}, \abs*{c_n} \leq C (r - \varepsilon)^{-n}.
+    \]
 \end{proof}
 
 \begin{proof}{(c)}
@@ -620,12 +623,49 @@ For each \(k \in \mathbf{N}\), we have
     Fix such \(C\).
     Since
     \begin{align*}
-         & \forall\ m \in \mathbf{N}, \frac{r - \varepsilon}{r - \varepsilon - \abs*{b - a}}                                                         \\
+         & \forall\ m \in \mathbf{N}, \frac{r - \varepsilon}{(r - \varepsilon - \abs*{b - a})^{m + 1}}                                               \\
          & = \sum_{n = m}^\infty \frac{n!}{m! (n - m)!} \abs*{b - a}^{n - m} (r - \varepsilon)^{-n}               & \text{(by Exercise \ref{4.2.7})} \\
          & = \frac{1}{C} \sum_{n = m}^\infty \frac{n!}{m! (n - m)!} \abs*{b - a}^{n - m} C (r - \varepsilon)^{-n}                                    \\
          & \geq \frac{1}{C} \sum_{n = m}^\infty \frac{n!}{m! (n - m)!} \abs*{b - a}^{n - m} \abs*{c_n}                                               \\
          & \geq \frac{1}{C} \sum_{n = m}^\infty \frac{n!}{m! (n - m)!} (b - a)^{n - m} c_n                        & \text{(by comparison test)}      \\
          & = \frac{1}{C} d_m,
     \end{align*}
-    we know that \(d_m\) are well-defined for all \(m \in \mathbf{N}\).
+    we know that \(d_m\) are absolutely convergent for all \(m \in \mathbf{N}\).
+\end{proof}
+
+\begin{proof}{(d)}
+    Let \(\varepsilon \in (0, s)\).
+    By Exercise \ref{ex 4.2.8}(a) we have
+    \begin{align*}
+                 & \abs*{a - b} \leq r - s                                                            \\
+        \implies & \abs*{a - b} + s \leq r                                                            \\
+        \implies & s \leq r                                                                           \\
+        \implies & 0 < \varepsilon < r                                                                \\
+        \implies & 0 < s - \varepsilon \leq r - \varepsilon                                           \\
+        \implies & \forall\ n \in \mathbf{N}, 0 < (r - \varepsilon)^{-n} \leq (s - \varepsilon)^{-n}.
+    \end{align*}
+    By Exercise \ref{ex 4.2.8}(b) we know that
+    \[
+        \exists\ C \in \mathbf{R}^+ : \forall\ n \in \mathbf{N}, \abs*{c_n} \leq C (r - \varepsilon)^{-n} \leq C (s - \varepsilon)^{-n}.
+    \]
+    Since
+    \begin{align*}
+                 & \abs*{a - b} \leq r - s                                     \\
+        \implies & \forall\ m \in \mathbf{N}, \abs*{a - b}^{m} \leq (r - s)^m,
+    \end{align*}
+    we know that
+    \begin{align*}
+        \forall\ m \in \mathbf{N}, \abs*{d_m} & = \abs*{\sum_{n = m}^\infty \frac{n!}{m! (n - m)!} (b - a)^{n - m} c_n}                                                            \\
+                                              & \leq \sum_{n = m}^\infty \abs*{\frac{n!}{m! (n - m)!} (b - a)^{n - m} c_n}                      & \text{(by comparison test)}      \\
+                                              & \leq C \sum_{n = m}^\infty \abs*{\frac{n!}{m! (n - m)!} (b - a)^{n - m} (r - \varepsilon)^{-n}}                                    \\
+                                              & = C \sum_{n = m}^\infty \frac{n!}{m! (n - m)!} \abs*{b - a}^{n - m} (r - \varepsilon)^{-n}                                         \\
+                                              & \leq C \sum_{n = m}^\infty \frac{n!}{m! (n - m)!} (r - s)^{n - m} (r - \varepsilon)^{-n}                                           \\
+                                              & = C \frac{r - \varepsilon}{\big((r - \varepsilon) - (r - s)\big)^{m + 1}}                       & \text{(by Exercise \ref{4.2.7})} \\
+                                              & = C \frac{r - \varepsilon}{(s - \varepsilon)^{m + 1}}                                                                              \\
+                                              & = C \frac{r - \varepsilon}{s - \varepsilon} (s - \varepsilon)^{-m}.
+    \end{align*}
+    Thus by setting \(C' = C \frac{r - \varepsilon}{s - \varepsilon}\) we have
+    \[
+        \forall\ m \in \mathbf{N}, \abs*{d_m} \leq C' (s - \varepsilon)^{-m}.
+    \]
 \end{proof}
