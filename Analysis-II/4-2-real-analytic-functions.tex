@@ -650,8 +650,9 @@ For each \(k \in \mathbf{N}\), we have
     \]
     Since
     \begin{align*}
-                 & \abs*{a - b} \leq r - s                                     \\
-        \implies & \forall\ m \in \mathbf{N}, \abs*{a - b}^{m} \leq (r - s)^m,
+                 & \abs*{a - b} \leq r - s < r - \varepsilon                                                \\
+        \implies & \forall\ m \in \mathbf{N}, \abs*{a - b}^{m} \leq (r - s)^m                               \\
+        \implies & \forall\ m \in \mathbf{N}, \forall\ n \geq m, \abs*{a - b}^{n - m} \leq (r - s)^{n - m},
     \end{align*}
     we know that
     \begin{align*}
@@ -668,4 +669,63 @@ For each \(k \in \mathbf{N}\), we have
     \[
         \forall\ m \in \mathbf{N}, \abs*{d_m} \leq C' (s - \varepsilon)^{-m}.
     \]
+    Since \(\varepsilon\) is arbitrary, we conclude that
+    \[
+        \forall\ \varepsilon \in (0, s), \exists\ C \in \mathbf{R}^+ : \forall\ m \in \mathbf{N}, \abs*{d_m} \leq C (s - \varepsilon)^{-m}.
+    \]
+\end{proof}
+
+\begin{proof}{(e)}
+    Let \(x \in (b - s, b + s)\).
+    We have
+    \begin{align*}
+                 & x \in (b - s, b + s)                                                                                                   \\
+        \implies & 0 \leq \abs*{x - b} < s                                                                                                \\
+        \implies & \exists\ \varepsilon \in \mathbf{R}^+ : 0 \leq \abs*{x - b} < s - \varepsilon                                          \\
+        \implies & \exists\ \varepsilon \in \mathbf{R}^+ : \begin{cases}
+            0 \leq \abs*{\frac{x - b}{s - \varepsilon}} < 1 \\
+            \exists\ C \in \mathbf{R}^+ : \forall\ m \in \mathbf{N}, \abs*{d_m} \leq C (s - \varepsilon)^{-m}
+        \end{cases}            & \text{(by Exercise \ref{ex 4.2.8}(e))}
+    \end{align*}
+    Fix such \(\varepsilon\) and \(C\).
+    Since
+    \begin{align*}
+                 & \abs*{\frac{x - b}{s - \varepsilon}} < 1                                                                                             \\
+        \implies & \sum_{m = 0}^\infty \abs*{\frac{x - b}{s - \varepsilon}}^m \text{ is absolutely convergent}, & \text{(by Lemma 7.3.3 in Analysis I)}
+    \end{align*}
+    we have
+    \begin{align*}
+                 & \forall\ m \in \mathbf{N}, \abs*{d_m} \leq C (s - \varepsilon)^{-m}                                                                                                                                         \\
+        \implies & \forall\ m \in \mathbf{N}, \abs*{d_m (x - b)^m} \leq C \abs*{\frac{x - b}{s - \varepsilon}}^{m}                                                                                                             \\
+        \implies & \sum_{m = 0}^\infty \abs*{d_m (x - b)^m} \leq \sum_{m = 0}^\infty C \abs*{\frac{x - b}{s - \varepsilon}}^{m} = C \sum_{m = 0}^\infty \abs*{\frac{x - b}{s - \varepsilon}}^{m}                               \\
+        \implies & \sum_{m = 0}^\infty d_m (x - b)^m \text{ is absolutely convergent}.                                                                                                           & \text{(by comparison test)}
+    \end{align*}
+    Since \(\mathbf{N} \times \mathbf{N}\) is countable, we know that \(\mathbf{N} \times S\) is also countable for every non-empty subset \(S\) of \(\mathbf{N}\).
+    Thus
+    \begin{align*}
+         & \sum_{m = 0}^\infty d_m (x - b)^m                                                                                                                \\
+         & = \sum_{m = 0}^\infty \bigg(\sum_{n = m}^\infty \frac{n!}{m! (n - m)!} (b - a)^{n - m} c_n\bigg) (x - b)^m                                       \\
+         & = \sum_{m = 0}^\infty \bigg(\sum_{n = m}^\infty \frac{c_n n!}{m! (n - m)!} (b - a)^{n - m} (x - b)^m\bigg)                                       \\
+         & = \sum_{n = 0}^\infty \bigg(\sum_{m = 0}^n \frac{c_n n!}{m! (n - m)!} (b - a)^{n - m} (x - b)^m\bigg)      & \text{(by Fubini's theorem)}        \\
+         & = \sum_{n = 0}^\infty c_n \bigg(\sum_{m = 0}^n \frac{n!}{m! (n - m)!} (b - a)^{n - m} (x - b)^m\bigg)                                            \\
+         & = \sum_{n = 0}^\infty c_n (x - a)                                                                          & \text{(by Exercise \ref{ex 4.2.5})} \\
+         & = f(x).
+    \end{align*}
+    Since \(x\) is arbitrary, we conclude that
+    \[
+        \forall\ x \in (b - s, b + s), \sum_{m = 0}^\infty d_m (x - b)^m = f(x) \text{ is absolutely convergent}.
+    \]
+\end{proof}
+
+\begin{proof}{(f)}
+    Let \(b \in (a - r, a + r)\).
+    Since
+    \begin{align*}
+                 & \abs*{b - a} < r                                             \\
+        \implies & \exists\ s \in \mathbf{R}^+ : \abs*{b - a} < r - s           \\
+        \implies & \exists\ s \in \mathbf{R}^+ : s - r < b - a < r - s          \\
+        \implies & \exists\ s \in \mathbf{R}^+ : a - r < b - s < b + s < a + r,
+    \end{align*}
+    by Exercise \ref{ex 4.2.8}(e) we know that \(f\) is real analytic at \(b\).
+    Since \(b\) is arbitrary, we conclude that \(f\) is real analytic at \(x\) for all \(x \in (a - r, a + r)\).
 \end{proof}
