@@ -1,1 +1,122 @@
 \section{Abel's theorem}\label{sec 4.3}
+
+\begin{note}
+    Let \(f(x) = \sum_{n = 0}^\infty c_n (x - a)^n\) be a power series centered at \(a\) with a radius of convergence \(0 < R < \infty\) strictly between \(0\) and infinity.
+    From Theorem \ref{4.1.6} we know that the power series converges absolutely whenever \(\abs*{x - a} < R\), and diverges when \(\abs*{x - a} > R\).
+    However, at the boundary \(\abs*{x - a} = R\) the situation is more complicated;
+    the series may either converge or diverge (see Exercise \ref{ex 4.1.2}).
+    However, if the series does converge at the boundary point, then it is reasonably well behaved;
+    in particular, it is continuous at that boundary point.
+\end{note}
+
+\begin{theorem}[Abel's theorem]\label{4.3.1}
+    Let \(f(x) = \sum_{n = 0}^\infty c_n (x - a)^n\) be a power series centered at \(a\) with radius of convergence \(0 < R < \infty\).
+    If the power series converges at \(a + R\), then \(f\) is continuous at \(a + R\), i.e.
+    \[
+        \lim_{x \to a + R ; x \in (a - R, a + R)} \sum_{n = 0}^\infty c_n (x - a)^n = \sum_{n = 0}^\infty c_n R^n.
+    \]
+    Similarly, if the power series converges at \(a - R\), then \(f\) is continuous at \(a - R\), i.e.
+    \[
+        \lim_{x \to a - R ; x \in (a - R, a + R)} \sum_{n = 0}^\infty c_n (x - a)^n = \sum_{n = 0}^\infty c_n (-R)^n.
+    \]
+\end{theorem}
+
+\begin{proof}
+    It will suffice to prove the first claim, i.e., that
+    \[
+        \lim_{x \to a + R ; x \in (a - R, a + R)} \sum_{n = 0}^\infty c_n (x - a)^n = \sum_{n = 0}^\infty c_n R^n.
+    \]
+    whenever the sum \(\sum_{n = 0}^\infty c_n R^n\) converges;
+    the second claim will then follow by replacing \(c_n\) by \((-1)^n c_n\) in the above claim.
+    If we make the substitutions \(d_n \coloneqq c_n R^n\) and \(y \coloneqq \frac{x - a}{R}\), then the above claim can be rewritten as
+    \[
+        \lim_{y \to 1 ; y \in (-1, 1)} \sum_{n = 0}^\infty d_n y^n = \sum_{n = 0}^\infty d_n
+    \]
+    whenever the sum \(\sum_{n = 0}^\infty d_n\) converges.
+
+    Write \(D \coloneqq \sum_{n = 0}^\infty d_n\), and for every \(N \geq 0\) write
+    \[
+        S_N \coloneqq \bigg(\sum_{n = 0}^{N - 1} d_n\bigg) - D
+    \]
+    so in particular \(S_0 = -D\).
+    Then observe that \(\lim_{N \to \infty} S_N = 0\), and that \(d_n = S_{n + 1} - S_n\).
+    Thus for any \(y \in (-1, 1)\) we have
+    \[
+        \sum_{n = 0}^\infty d_n y^n = \sum_{n = 0}^\infty (S_{n + 1} - S_n) y^n.
+    \]
+    Applying the summation by parts formula (Lemma \ref{4.3.2}), and noting that \(\lim_{n \to \infty} y^n = 0\), we obtain
+    \[
+        \sum_{n = 0}^\infty d_n y^n = - S_0 y^0 - \sum_{n = 0}^\infty S_{n + 1} (y^{n + 1} - y^n).
+    \]
+    Observe that \(- S_0 y^0 = +D\).
+    Thus to finish the proof of Abel's theorem,
+    it will suffice to show that
+    \[
+        \lim_{y \to 1 ; y \in (-1, 1)} \sum_{n = 0}^\infty S_{n + 1} (y^{n + 1} - y^n) = 0.
+    \]
+    Since \(y\) converges to \(1\), we may as well restrict \(y\) to \([0, 1)\) instead of \((-1, 1)\);
+    in particular we may take \(y\) to be positive.
+
+    From the triangle inequality for series (Proposition 7.2.9 in Analysis I), we have
+    \begin{align*}
+        \abs*{\sum_{n = 0}^\infty S_{n + 1} (y^{n + 1} - y^n)} & \leq \sum_{n = 0}^\infty \abs*{S_{n + 1} (y^{n + 1} - y^n)} \\
+                                                               & = \sum_{n = 0}^\infty \abs*{S_{n + 1}} (y^n - y^{n + 1}),
+    \end{align*}
+    so by the squeeze test (Corollary 6.4.14 in Analysis I) it suffices to show that
+    \[
+        \lim_{y \to 1 ; y \in [0, 1)} \sum_{n = 0}^\infty \abs*{S_{n + 1}} (y^n - y^{n + 1}) = 0.
+    \]
+    The expression \(\sum_{n = 0}^\infty \abs*{S_{n + 1}} (y^n - y^{n + 1})\) is clearly non-negative, so it will suffice to show that
+    \[
+        \limsup_{y \to 1 ; y \in [0, 1)} \sum_{n = 0}^\infty \abs*{S_{n + 1}} (y^n - y^{n + 1}).
+    \]
+    Let \(\varepsilon > 0\).
+    Since \(S_n\) converges to \(0\), there exists an \(N\) such that \(\abs*{S_n} \leq \varepsilon\) for all \(n > N\).
+    Thus we have
+    \[
+        \sum_{n = 0}^\infty \abs*{S_{n + 1}} (y^n - y^{n + 1}) \leq \sum_{n = 0}^N \abs*{S_{n + 1}} (y^n - y^{n + 1}) + \sum_{n = N + 1}^\infty \varepsilon (y^n - y^{n + 1}).
+    \]
+    The last summation is a telescoping series, which sums to \(\varepsilon y^{N + 1}\) (See Lemma 7.2.15 in Analysis I, recalling from Lemma 6.5.2 in Analysis I that \(y^n \to 0\) as \(n \to \infty\)), and thus
+    \[
+        \sum_{n = 0}^\infty \abs*{S_{n + 1}} (y^n - y^{n + 1}) \leq \sum_{n = 0}^N \abs*{S_{n + 1}} (y^n - y^{n + 1}) + \varepsilon y^{N + 1}.
+    \]
+    Now take limits as \(y \to 1\).
+    Observe that \(y^n - y^{n + 1} \to 0\) as \(y \to 1\) for every \(n \in 0, 1, \dots, N\).
+    Since we can interchange limits and \emph{finite} sums (Exercise 7.1.5 in Analysis I), we thus have
+    \[
+        \limsup_{n \to \infty} \sum_{n = 0}^\infty \abs*{S_{n + 1}} (y^n - y^{n + 1}) \leq \varepsilon.
+    \]
+    But \(\varepsilon > 0\) was arbitrary, and thus we must have
+    \[
+        \limsup_{n \to \infty} \sum_{n = 0}^\infty \abs*{S_{n + 1}} (y^n - y^{n + 1}) = 0
+    \]
+    since the left-hand side must be non-negative.
+    The claim follows.
+\end{proof}
+
+\begin{lemma}[Summation by parts formula]\label{4.3.2}
+    Let \((a_n)_{n = 0}^\infty\) and \((b_n)_{n = 0}^\infty\) be sequences of real numbers which converge to limits \(A\) and \(B\) respectively, i.e., \(lim_{n \to \infty} a_n = A\) and \(lim_{n \to \infty} b_n = B\).
+    Suppose that the sum \(\sum_{n = 0}^\infty (a_{n + 1} - a_n) b_n\) is convergent.
+    Then the sum \(\sum_{n = 0}^\infty a_{n + 1} (b_{n + 1} - b_n)\) is also convergent, and
+    \[
+        \sum_{n = 0}^\infty (a_{n + 1} - a_n) b_n = AB - a_0 b_0 - \sum_{n = 0}^\infty a_{n + 1} (b_{n + 1} - b_n).
+    \]
+\end{lemma}
+
+\begin{remark}\label{4.3.3}
+    One should compare this formula with the more well-known \emph{integration by parts formula}
+    \[
+        \int_0^\infty f'(x) g(x) \; dx = f(x) g(x) |_0^\infty - \int_0^\infty f(x) g'(x) \; dx,
+    \]
+    see Proposition 11.10.1 in Analysis I.
+\end{remark}
+
+\exercisesection
+
+\begin{exercise}\label{ex 4.3.1}
+    Prove Lemma \ref{4.3.2}.
+\end{exercise}
+
+\begin{proof}
+    See Lemma \ref{4.3.2}.
+\end{proof}
