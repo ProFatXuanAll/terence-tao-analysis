@@ -72,6 +72,63 @@
     \]
 \end{proof}
 
+\begin{proof}{(d)}
+    If \(x = 0\), then we have
+    \[
+        \exp(0) = \sum_{n = 0}^\infty \frac{0^n}{n!} = \frac{0^0}{0!} + \sum_{n = 1}^\infty \frac{0^n}{n!} = 1
+    \]
+    and thus
+    \[
+        \forall\ y \in \mathbf{R}, \exp(0 + y) = \exp(y) = \exp(0) \exp(y).
+    \]
+    Since addition and multiplication of real numbers are commutative, we have
+    \[
+        \forall\ x \in \mathbf{R}, \exp(x + 0) = \exp(0 + x) = \exp(0) \exp(x) = \exp(x) \exp(0).
+    \]
+    So suppose that \(x, y \in \mathbf{R} \setminus \{0\}\).
+    By Theorem \ref{4.5.2}(a) we know that \(\sum_{n = 0}^\infty \frac{x^n}{n!}\) and \(\sum_{n = 0}^\infty \frac{y^n}{n!}\) are absolutely convergent.
+    Thus we know that
+    \begin{align*}
+        X & = \sum_{n = 0}^\infty \abs*{\frac{x^n}{n!}} \\
+        Y & = \sum_{n = 0}^\infty \abs*{\frac{y^n}{n!}}
+    \end{align*}
+    are well-defined.
+    Since
+    \begin{align*}
+        \forall\ N \in \mathbf{N}, & \sum_{n = 0}^N \sum_{m = 0}^\infty \abs*{\frac{x^n y^m}{n! m!}}                              \\
+                                   & = \sum_{n = 0}^N \bigg(\abs*{\frac{x^n}{n!}} \sum_{m = 0}^\infty \abs*{\frac{y^m}{m!}}\bigg) \\
+                                   & = \sum_{n = 0}^N \bigg(\abs*{\frac{x^n}{n!}} Y\bigg)                                         \\
+                                   & = Y \sum_{n = 0}^N \abs*{\frac{x^n}{n!}}                                                     \\
+                                   & \leq Y X,
+    \end{align*}
+    and \((\sum_{n = 0}^N \sum_{m = 0}^\infty \abs*{\frac{x^n y^m}{n! m!}})_{N = 0}^\infty\) is monotone increasing, we know that \(\sum_{n = 0}^\infty \sum_{m = 0}^\infty \frac{x^n y^m}{n! m!}\) is absolutely convergent.
+    Now we define
+    \[
+        \forall\ n \in \mathbf{Z}, c_n = \begin{cases}
+            \frac{1}{n!} & \text{if } n \geq 0; \\
+            0            & \text{if } n < 0.
+        \end{cases}
+    \]
+    Then we have
+    \begin{align*}
+         & \exp(x) \exp(y)                                                                                                                            \\
+         & = \sum_{n = 0}^\infty \sum_{m = 0}^\infty \frac{x^n y^m}{n! m!}                                                                            \\
+         & = \sum_{n = 0}^\infty \sum_{m = 0}^\infty c_n c_m x^n y^m                                                                                  \\
+         & = \sum_{n = 0}^\infty \sum_{m = n}^\infty c_n c_{m - n} x^n y^{m - n}                                                                      \\
+         & = \sum_{n = 0}^\infty \sum_{m = 0}^\infty c_n c_{m - n} x^n y^{m - n}                                & (c_{m - n} = 0 \text{ if } m < n)   \\
+         & = \sum_{m = 0}^\infty \sum_{n = 0}^\infty c_n c_{m - n} x^n y^{m - n}                                & \text{(by Fubini's theorem)}        \\
+         & = \sum_{m = 0}^\infty \sum_{n = 0}^m c_n c_{m - n} x^n y^{m - n}                                     & (c_{m - n} = 0 \text{ if } n > m)   \\
+         & = \sum_{m = 0}^\infty \sum_{n = 0}^m \frac{x^n y^{m - n}}{n! (m - n)!}                                                                     \\
+         & = \sum_{m = 0}^\infty \bigg(\frac{1}{m!} \sum_{n = 0}^m \frac{m!}{n! (m - n)!} (x^n y^{m - n})\bigg)                                       \\
+         & = \sum_{m = 0}^\infty \frac{(x + y)^m}{m!}                                                           & \text{(by Exercise \ref{ex 4.2.5})} \\
+         & = \exp(x + y).                                                                                       & \text{(by Definition \ref{4.5.1})}
+    \end{align*}
+    Combine all proofs above we conclude that
+    \[
+        \forall\ x, y \in \mathbf{R}, \exp(x + y) = \exp(x) \exp(y).
+    \]
+\end{proof}
+
 \begin{note}
     One can write the exponential function in a more compact form, introducing famous \emph{Euler's number} \(e = 2.71828183 \dots\), also known as the \emph{base of the natural logarithm}.
 \end{note}
