@@ -45,9 +45,30 @@
 \end{proof}
 
 \begin{proof}{(b)}
-    By Theorem \ref{4.5.2}(a) we know that \(\exp\) is real analytic on \((-\infty, \infty)\), thus by Theorem \ref{4.1.6}(d) we know that \(\exp\) is differentiable on \((-\infty, \infty)\) and
+    By Theorem \ref{4.5.2}(a) we know that \(\exp\) is real analytic on \(\mathbf{R}\), thus by Theorem \ref{4.1.6}(d) we know that \(\exp\) is differentiable on \(\mathbf{R}\) and
     \[
         \forall\ x \in \mathbf{R}, \exp'(x) = \sum_{n = 1}^\infty n \frac{x^{n - 1}}{n!} = \sum_{n = 1}^\infty \frac{x^{n - 1}}{(n - 1)!} = \sum_{n = 0}^\infty \frac{x^n}{n!} = \exp(x).
+    \]
+\end{proof}
+
+\begin{proof}{(c)}
+    By Theorem \ref{4.5.2}(a) we know that \(\exp\) is real analytic on \(\mathbf{R}\), thus by Theorem \ref{4.1.6}(c) we know that \(\exp\) is continuous on \(\mathbf{R}\).
+    Let \(a, b \in \mathbf{R}\) such that \(a \leq b\).
+    Then by Theorem \ref{4.5.2}(a) we know that \(\exp(a)\) and \(\exp(b)\) are well-defined.
+    Since \([a, b] \subseteq \mathbf{R}\), by Theorem \ref{4.1.6}(e) we know that \(\exp\) is Riemann integrable on \([a, b]\) and
+    \begin{align*}
+        \int_{[a, b]} \exp & = \int_a^b \exp(x) \; dx                                                                                                \\
+                           & = \sum_{n = 0}^\infty \frac{1}{n!} \frac{(b - 0)^{n + 1} - (a - 0)^{n + 1}}{n + 1} & \text{(by Theorem \ref{4.1.6}(e))} \\
+                           & = \sum_{n = 0}^\infty \frac{b^{n + 1} - a^{n + 1}}{(n + 1)!}                                                            \\
+                           & = \sum_{n = 1}^\infty \frac{b^n - a^n}{n!}                                                                              \\
+                           & = \frac{b^0 - a^0}{0!} + \sum_{n = 1}^\infty \frac{b^n - a^n}{n!}                                                       \\
+                           & = \sum_{n = 0}^\infty \frac{b^n - a^n}{n!}                                                                              \\
+                           & = \sum_{n = 0}^\infty \frac{b^n}{n!} - \sum_{n = 0}^\infty \frac{a^n}{n!}                                               \\
+                           & = \exp(b) - \exp(a).                                                               & \text{(by Definition \ref{4.5.1})}
+    \end{align*}
+    Since \(a, b\) is arbitrary, we conclude that
+    \[
+        \forall\ [a, b] \subseteq \mathbf{R}, \int_{[a, b]} \exp = \exp(b) - \exp(a).
     \]
 \end{proof}
 
