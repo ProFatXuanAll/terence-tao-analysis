@@ -181,6 +181,69 @@
     For every real number \(x\), we have \(\exp(x) = e^x\).
 \end{proposition}
 
+\begin{proof}
+    First we use induction on \(x\) to show that \(e^x = \exp(x)\) for all \(x \in \mathbf{N}\).
+    For \(x = 0\), we have
+    \begin{align*}
+        e^0 & = \big(\exp(1)\big)^0 & \text{(by Definition \ref{4.5.3})} \\
+            & = 1                   & \text{(by Theorem \ref{4.5.2}(a))} \\
+            & = \exp(0)             & \text{(by Theorem \ref{4.5.2}(e))}
+    \end{align*}
+    and the base case holds.
+    Suppose inductively that \(e^x = \exp(x)\) for some \(x \geq 0\).
+    Then for \(x + 1\), we have
+    \begin{align*}
+        e^{x + 1} & = \exp(1)^{x + 1}   & \text{(by Definition \ref{4.5.3})} \\
+                  & = \exp(1) \exp(1)^x & \text{(by Theorem \ref{4.5.2}(a))} \\
+                  & = \exp(1) e^x       & \text{(by Definition \ref{4.5.3})} \\
+                  & = \exp(1) \exp(x)   & \text{(by induction hypothesis)}   \\
+                  & = \exp(x + 1)       & \text{(by Theorem \ref{4.5.2}(d))}
+    \end{align*}
+    and this closes the induction.
+
+    Next we show that \(e^x = \exp(x)\) for all \(x \in \mathbf{Z}\).
+    Let \(x \in \mathbf{Z}^-\).
+    Since \(-x \in \mathbf{N}\), we know that
+    \begin{align*}
+        e^{-x} & = \exp(-x)               & \text{(from the proof above)}      \\
+               & = \frac{1}{\exp(x)}      & \text{(by Theorem \ref{4.5.2}(e))} \\
+               & = \big(\exp(x)\big)^{-1}
+    \end{align*}
+    and thus \(e^x = \exp(x)\).
+    Since \(x\) is arbitrary, combine the proofs above we conclude that \(e^x = \exp(x)\) for all \(x \in \mathbf{Z}\).
+
+    Next we show that \(e^x = \exp(x)\) for all \(x \in \mathbf{Q}\).
+    Let \(x \in \mathbf{Q}\).
+    Since \(x = \frac{a}{b}\) for some \(a \in \mathbf{Z}\) and \(b \in \mathbf{Z}^+\), we know that
+    \begin{align*}
+        e^a & = \exp(a)                           & \text{(from the proof above)}      \\
+            & = \exp(\frac{ab}{b})                                                     \\
+            & = \exp(\sum_{i = 1}^b \frac{a}{b})                                       \\
+            & = \prod_{i = 1}^b \exp(\frac{a}{b}) & \text{(by Theorem \ref{4.5.2}(d))} \\
+            & = \exp(\frac{a}{b})^b                                                    \\
+            & = \exp(x)^b
+    \end{align*}
+    and thus
+    \begin{align*}
+        e^x & = e^{\frac{a}{b}}                                                             \\
+            & = \big(e^a\big)^{\frac{1}{b}}                                                 \\
+            & = \Big(\big(\exp(x)\big)^b\Big)^{\frac{1}{b}} & \text{(from the proof above)} \\
+            & = \exp(x).
+    \end{align*}
+    Since \(x\) is arbitrary, we conclude that \(e^x = \exp(x)\) for all \(x \in \mathbf{Q}\).
+
+    Finally we show that \(e^x = \exp(x)\) for all \(x \in \mathbf{R}\).
+    Let \(x \in \mathbf{R}\).
+    Then we know that there exists a Cauchy sequence \((q_n)_{n = 1}^\infty\) in \(Q\) such that \(\lim_{n \to \infty} q_n = x\).
+    Thus
+    \begin{align*}
+        e^x & = \lim_{n \to \infty} e^{q_n}                                        \\
+            & = \lim_{n \to \infty} \exp(q_n) & \text{(from the proof above)}      \\
+            & = \exp(x).                      & \text{(by Theorem \ref{4.5.2}(c))}
+    \end{align*}
+    Since \(x\) is arbitrary, we conclude that \(e^x = \exp(x)\) for all \(x \in \mathbf{R}\).
+\end{proof}
+
 \begin{note}
     In light of Proposition \ref{4.5.3} we can and will use \(e^x\) and \(\exp(x)\) interchangeably.
 \end{note}
