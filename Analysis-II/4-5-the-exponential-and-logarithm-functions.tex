@@ -284,14 +284,28 @@
 \end{theorem}
 
 \begin{proof}{(a)}
-    Since \(\exp\) is continuous and strictly monotone increasing, we see that \(\log\) is also continuous and strictly monotone increasing (see Proposition 9.8.3 in Analysis I).
-    Since \(\exp\) is also differentiable, and the derivative is never zero, we see from the inverse function theorem (Theorem 10.4.2 in Analysis I) that \(\log\) is also differentiable.
+    Since \(\exp\) is continuous and strictly monotone increasing, we see that \(\ln\) is also continuous and strictly monotone increasing (see Proposition 9.8.3 in Analysis I).
+    Since \(\exp\) is also differentiable, and the derivative is never zero, we see from the inverse function theorem (Theorem 10.4.2 in Analysis I) that \(\ln\) is also differentiable.
     Thus we have
     \begin{align*}
-                 & \forall\ x \in (0, \infty), \exp(\ln(x)) = x                          & \text{(by Definition \ref{4.5.5})}    \\
+                 & \forall\ x \in (0, \infty), \exp\big(\ln(x)\big) = x                  & \text{(by Definition \ref{4.5.5})}    \\
         \implies & \forall\ x \in (0, \infty), \ln'(x) = \frac{1}{\exp'\big(\ln(x)\big)} & \text{(Theorem 10.4.2 in Analysis I)} \\
         \implies & \forall\ x \in (0, \infty), \ln'(x) = \frac{1}{\exp\big(\ln(x)\big)}  & \text{(by Theorem \ref{4.5.2}(b))}    \\
         \implies & \forall\ x \in (0, \infty), \ln'(x) = \frac{1}{x}.                    & \text{(by Definition \ref{4.5.5})}
+    \end{align*}
+    Since \(\frac{1}{x}\) is continuous on arbitrary interval \([a, b] \subseteq (0, \infty)\), by Corollary 11.5.2 in Analysis I we know that \(\frac{1}{x}\) is Riemann integrable on \([a, b]\).
+    By the fundamental theorem of calculus (Theorem 11.9.4) we thus have
+    \[
+        \int_a^b \frac{1}{x} \; dx = \ln(b) - \ln(a).
+    \]
+\end{proof}
+
+\begin{proof}{(b)}
+    We have
+    \begin{align*}
+        \forall\ x, y \in (0, \infty), \ln(xy) & = \ln(e^{\ln(x)} e^{\ln(y)}) & \text{(by Definition \ref{4.5.5})} \\
+                                               & = \ln(e^{\ln(x) + \ln(y)})   & \text{(by Theorem \ref{4.5.2}(d))} \\
+                                               & = \ln(x) + \ln(y).           & \text{(by Definition \ref{4.5.5})}
     \end{align*}
 \end{proof}
 
