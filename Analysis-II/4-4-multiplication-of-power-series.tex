@@ -1,1 +1,112 @@
 \section{Multiplication of power series}\label{sec 4.4}
+
+\begin{theorem}\label{4.4.1}
+    Let \(f : (a - r, a + r) \to \mathbf{R}\) and \(g : (a - r, a + r) \to \mathbf{R}\) be functions analytic on \((a - r, a + r)\), with power series expansions
+    \[
+        f(x) = \sum_{n = 0}^\infty c_n (x - a)^n
+    \]
+    and
+    \[
+        g(x) = \sum_{n = 0}^\infty d_n (x - a)^n
+    \]
+    respectively.
+    Then \(fg : (a - r, a + r) \to \mathbf{R}\) is also analytic on \((a - r, a + r)\), with power series expansion
+    \[
+        f(x) g(x) = \sum_{n = 0}^\infty e_n (x - a)^n
+    \]
+    where \(e_n \coloneqq \sum_{m = 0}^n c_m d_{n - m}\).
+\end{theorem}
+
+\begin{proof}
+    We have to show that the series \(\sum_{n = 0}^\infty e_n (x - a)^n\) converges to \(f(x) g(x)\) for all \(x \in (a - r, a + r)\).
+    Now fix \(x\) to be any point in \((a - r, a + r)\).
+    By Theorem \ref{4.1.6}, we see that both \(f\) and \(g\) have radii of convergence at least \(r\).
+    In particular, the series \(\sum_{n = 0}^\infty c_n (x - a)^n\) and \(\sum_{n = 0}^\infty d_n (x - a)^n\) are absolutely convergent.
+    Thus if we define
+    \[
+        C \coloneqq \sum_{n = 0}^\infty \abs*{c_n (x - a)^n}
+    \]
+    and
+    \[
+        D \coloneqq \sum_{n = 0}^\infty \abs*{d_n (x - a)^n}
+    \]
+    then \(C\) and \(D\) are both finite.
+
+    For any \(N \geq 0\), consider the partial sum
+    \[
+        \sum_{n = 0}^N \sum_{m = 0}^\infty \abs*{c_m (x - a)^m d_n (x - a)^n}.
+    \]
+    We can rewrite this as
+    \[
+        \sum_{n = 0}^N \abs*{d_n (x - a)^n} \sum_{m = 0}^\infty \abs*{c_m (x - a)^m},
+    \]
+    which by definition of \(C\) is equal to
+    \[
+        \sum_{n = 0}^N \abs*{d_n (x - a)^n} C,
+    \]
+    which by definition of \(D\) is less than or equal to \(DC\).
+    Thus the above partial sums are bounded by \(DC\) for every \(N\).
+    In particular, the series
+    \[
+        \sum_{n = 0}^\infty \sum_{m = 0}^\infty \abs*{c_m (x - a)^m d_n (x - a)^n}
+    \]
+    is convergent, which means that the sum
+    \[
+        \sum_{n = 0}^\infty \sum_{m = 0}^\infty c_m (x - a)^m d_n (x - a)^n
+    \]
+    is absolutely convergent.
+
+    Let us now compute this sum in two ways.
+    First of all, we can pull the \(d_n (x - a)^n\) factor out of the \(\sum_{m = 0}^\infty\) summation, to obtain
+    \[
+        \sum_{n = 0}^\infty d_n (x - a)^n \sum_{m = 0}^\infty c_m (x - a)^m.
+    \]
+    By our formula for \(f(x)\), this is equal to
+    \[
+        \sum_{n = 0}^\infty d_n (x - a)^n f(x);
+    \]
+    by our formula for \(g(x)\), this is equal to \(f(x) g(x)\).
+    Thus
+    \[
+        f(x) g(x) = \sum_{n = 0}^\infty \sum_{m = 0}^\infty c_m (x - a)^m d_n (x - a)^n.
+    \]
+    Now we compute this sum in a different way.
+    We rewrite it as
+    \[
+        f(x) g(x) = \sum_{n = 0}^\infty \sum_{m = 0}^\infty c_m d_n (x - a)^{n + m}.
+    \]
+    By Fubini's theorem for series (Theorem 8.2.2 in Analysis I), because the series was absolutely convergent, we may rewrite it as
+    \[
+        f(x) g(x) = \sum_{m = 0}^\infty \sum_{n = 0}^\infty c_m d_n (x - a)^{n + m}.
+    \]
+    Now make the substitution \(n' \coloneqq n + m\), to rewrite this as
+    \[
+        f(x) g(x) = \sum_{m = 0}^\infty \sum_{n' = m}^\infty c_m d_{n' - m} (x - a)^{n'}.
+    \]
+    If we adopt the convention that \(d_j = 0\) for all negative \(j\), then this is equal to
+    \[
+        f(x) g(x) = \sum_{m = 0}^\infty \sum_{n' = 0}^\infty c_m d_{n' - m} (x - a)^{n'}.
+    \]
+    Applying Fubini's theorem again, we obtain
+    \[
+        f(x) g(x) = \sum_{n' = 0}^\infty \sum_{m = 0}^\infty c_m d_{n' - m} (x - a)^{n'},
+    \]
+    which we can rewrite as
+    \[
+        f(x) g(x) = \sum_{n' = 0}^\infty (x - a)^{n'} \sum_{m = 0}^\infty c_m d_{n' - m}.
+    \]
+    Since \(d_j\) was \(0\) when \(j\) is negative, we can rewrite this as
+    \[
+        f(x) g(x) = \sum_{n' = 0}^\infty (x - a)^{n'} \sum_{m = 0}^{n'} c_m d_{n' - m},
+    \]
+    which by definition of \(e\) is
+    \[
+        f(x) g(x) = \sum_{n' = 0}^\infty e_{n'} (x - a)^{n'},
+    \]
+    as desired.
+\end{proof}
+
+\begin{remark}\label{4.4.2}
+    The sequence \((e_n)_{n = 0}^\infty\) is sometimes referred to as the \emph{convolution} of the sequences \((c_n)_{n = 0}^\infty\) and \((d_n)_{n = 0}^\infty\);
+    it is closely related (though not identical) to the notion of convolution introduced in Definition \ref{3.8.9}.
+\end{remark}
