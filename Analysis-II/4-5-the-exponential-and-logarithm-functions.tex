@@ -337,6 +337,67 @@
     \]
 \end{proof}
 
+\begin{proof}{(e)}
+    Since
+    \[
+        x \in (-1, 1) \iff 1 - x \in (0, 2),
+    \]
+    by Definition \ref{4.5.5} we know that \(\ln(1 - x)\) is well-defined.
+    Observe that
+    \begin{align*}
+        \forall\ x \in (-1, 1), & \ln'(1 - x)                                                                                                  \\
+                                & = \big(\ln'(y)|_{y = 1 - x}\big) \times \big((y \mapsto 1 - y)'(x)\big) & \text{(by chain rule)}             \\
+                                & = \frac{1}{1 - x} \times (-1)                                           & \text{(by Theorem \ref{4.5.6}(a))} \\
+                                & = \frac{-1}{1 - x}
+    \end{align*}
+    and
+    \begin{align*}
+                 & x \in (-1, 1)                                                                        \\
+        \implies & \forall\ n \in \mathbf{Z}^+, x^n \in (-1, 1)                                         \\
+        \implies & \sum_{n = 0}^\infty x^n = \frac{1}{1 - x}.   & \text{(by Lemma 7.3.3 in Analysis I)}
+    \end{align*}
+
+    First suppose that \(x = 0\).
+    Then we have
+    \begin{align*}
+        \ln(1 - 0) & = \ln(1)                                                                    \\
+                   & = 0                                    & \text{(by Theorem \ref{4.5.6}(c))} \\
+                   & = - \sum_{n = 1}^\infty \frac{0^n}{n}.
+    \end{align*}
+
+    Now suppose that \(x \in (0, 1)\).
+    Then we have
+    \begin{align*}
+                 & - \sum_{n = 0}^\infty x^n = \ln'(1 - x)                                                                                              \\
+        \implies & \int_0^x \bigg(- \sum_{n = 0}^\infty y^n\bigg) \; dy = \int_0^x \ln'(1 - y) \; dy      & \text{(by Theorem \ref{4.5.6}(a))}          \\
+        \implies & - \sum_{n = 0}^\infty \frac{x^{n + 1} - 0^{n + 1}}{n + 1} = \int_0^x \ln'(1 - y) \; dy & \text{(by Theorem \ref{4.1.6}(e))}          \\
+        \implies & - \sum_{n = 0}^\infty \frac{x^{n + 1}}{n + 1} = \ln(1 - x) - \ln(1 - 0)                & \text{(by fundamental theorem of calculus)} \\
+        \implies & - \sum_{n = 0}^\infty \frac{x^{n + 1}}{n + 1} = \ln(1 - x)                             & \text{(by Theorem \ref{4.5.6}(c))}          \\
+        \implies & - \sum_{n = 1}^\infty \frac{x^n}{n} = \ln(1 - x).
+    \end{align*}
+
+    Now suppose that \(x \in (-1, 0)\).
+    Then we have
+    \begin{align*}
+                 & - \sum_{n = 0}^\infty x^n = \ln'(1 - x)                                                                                              \\
+        \implies & \int_x^0 \bigg(- \sum_{n = 0}^\infty y^n\bigg) \; dy = \int_x^0 \ln'(1 - y) \; dy      & \text{(by Theorem \ref{4.5.6}(a))}          \\
+        \implies & - \sum_{n = 0}^\infty \frac{0^{n + 1} - x^{n + 1}}{n + 1} = \int_x^0 \ln'(1 - y) \; dy & \text{(by Theorem \ref{4.1.6}(e))}          \\
+        \implies & \sum_{n = 0}^\infty \frac{x^{n + 1}}{n + 1} = \ln(1 - 0) - \ln(1 - x)                  & \text{(by fundamental theorem of calculus)} \\
+        \implies & \sum_{n = 0}^\infty \frac{x^{n + 1}}{n + 1} = -\ln(1 - x)                              & \text{(by Theorem \ref{4.5.6}(c))}          \\
+        \implies & - \sum_{n = 1}^\infty \frac{x^n}{n} = \ln(1 - x).
+    \end{align*}
+
+    Combine all proofs above we conclude that
+    \begin{align*}
+                 & \forall\ x \in (-1, 1), \ln(1 - x) = - \sum_{n = 1}^\infty \frac{x^n}{n}                                                  \\
+        \implies & \forall\ -x \in (-1, 1), \ln\big(1 - (-x)\big) = - \sum_{n = 1}^\infty \frac{(-x)^n}{n}                                   \\
+        \implies & \forall\ -(x - 1) \in (-1, 1), \ln\Big(1 - \big(-(x - 1)\big)\Big) = - \sum_{n = 1}^\infty \frac{\big(-(x - 1)\big)^n}{n} \\
+        \implies & \forall\ x \in (0, 2), \ln(x) = - \sum_{n = 1}^\infty \frac{(-1)^n (x - 1)^n}{n}                                          \\
+        \implies & \forall\ x \in (0, 2), \ln(x) = \sum_{n = 1}^\infty \frac{(-1)^{n + 1} (x - 1)^n}{n}.
+    \end{align*}
+    By Definition \ref{4.2.1} \(\ln\) is real analytic at \(1\) with radius of convergence \(1\).
+\end{proof}
+
 \exercisesection
 
 \begin{exercise}\label{ex 4.5.1}
