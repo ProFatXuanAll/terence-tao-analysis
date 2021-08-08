@@ -430,6 +430,89 @@
     Deduce from this that \(e\) is irrational.
 \end{exercise}
 
+\begin{proof}
+    We first show that \((n + k)! > 2^k n!\) for all \(n \geq 3\) and \(k \in \mathbf{Z}^+\).
+    We use induction on \(k\).
+    For \(k = 1\), we have
+    \[
+        \forall\ n \geq 3, (n + 1)! = (n + 1) (n!) \geq 4 (n!) > 2^1 (n!)
+    \]
+    and the base case holds.
+    Suppose inductively that \((n + k)! > 2^k n!\) for some \(k \geq 1\).
+    Then for \(k + 1\), we have
+    \begin{align*}
+        \forall\ n \geq 3, (n + k + 1)! & = (n + k + 1) (n + k)!                                    \\
+                                        & \geq (4 + k)(n + k)!                                      \\
+                                        & > 2 (n + k)!                                              \\
+                                        & > 2 (2^k) (n!)         & \text{(by induction hypothesis)} \\
+                                        & = 2^{k + 1} (n!)
+    \end{align*}
+    and this closes the induction.
+
+    Next we show that
+    \[
+        \forall\ n \geq 3, 0 < \frac{1}{(n + 1)!} + \frac{1}{(n + 2)!} + \dots < \frac{1}{n!}.
+    \]
+    Since
+    \begin{align*}
+                 & \forall\ n \geq 3, \forall\ k \geq 1, \frac{1}{(n + k)!} < \frac{1}{2^k (n!)}                                                                                                                  & \text{(from the proof above)} \\
+        \implies & \forall\ n \geq 3,                                                                                                                                                                                                             \\
+                 & \sum_{k = 1}^\infty \frac{1}{(n + k)!} \leq \sum_{k = 1}^\infty \frac{1}{2^k (n!)} = \frac{1}{n!} \sum_{k = 1}^\infty \frac{1}{2^k} = \frac{1}{2 (n!)} \sum_{k = 1}^\infty \frac{1}{2^{k - 1}} & \text{(geometric series)}     \\
+                 & = \frac{1}{2 (n!)} \sum_{k = 0}^\infty \frac{1}{2^k} = \frac{2}{2 (n!)} = \frac{1}{n!}                                                                                                                                         \\
+        \implies & \forall\ n \geq 3, \sum_{k = 1}^\infty \frac{1}{(n + k)!} \leq \frac{1}{n!},
+    \end{align*}
+    we only need to show that
+    \[
+        \forall\ n \geq 3, \sum_{k = 1}^\infty \frac{1}{(n + k)!} \neq \frac{1}{n!}.
+    \]
+    So suppose for sake of contradiction that there exists some \(n \geq 3\) such that the identity above holds.
+    Then we have
+    \begin{align*}
+                 & \sum_{k = 1}^\infty \frac{1}{(n + k)!} = \frac{1}{n!} = \sum_{k = 1}^\infty \frac{1}{2^k (n!)} \\
+        \implies & \sum_{k = 1}^\infty \bigg(\frac{1}{2^k (n!)} - \frac{1}{(n + k)!}\bigg) = 0.
+    \end{align*}
+    But we know that
+    \[
+        \forall\ k \geq 1, \frac{1}{2^k (n!)} - \frac{1}{(n + k)!} > 0 \implies \sum_{k = 1}^\infty \bigg(\frac{1}{2^k (n!)} - \frac{1}{(n + k)!}\bigg) > 0,
+    \]
+    a contradiction.
+    Thus we have
+    \[
+        \forall\ n \geq 3, \sum_{k = 1}^\infty \frac{1}{(n + k)!} < \frac{1}{n!}.
+    \]
+
+    Now we show that \(n! e\) is not an integer for all \(n \geq 3\).
+    Since
+    \begin{align*}
+                 & \forall\ n \geq 3, \sum_{m = n + 1}^\infty \frac{1}{m!} < \frac{1}{n!} \\
+        \implies & \forall\ n \geq 3, \sum_{m = n + 1}^\infty \frac{n!}{m!} < 1
+    \end{align*}
+    and
+    \[
+        \forall\ n \geq 3, \sum_{m = 0}^n \frac{n!}{m!} = \sum_{m = 0}^n (n - m)! \in \mathbf{N},
+    \]
+    we have
+    \begin{align*}
+        \forall\ n \geq 3, n! e & = n! \sum_{m = 0}^\infty \frac{1}{m!}                                                         & \text{(by Definition \ref{4.5.3})} \\
+                                & = \sum_{m = 0}^\infty \frac{n!}{m!}                                                                                                \\
+                                & = \sum_{m = 0}^n \frac{n!}{m!} + \sum_{m = n + 1}^\infty \frac{n!}{m!}                                                             \\
+                                & = \sum_{m = 0}^n (n - m)! + \sum_{m = n + 1}^\infty \frac{n!}{m!}                                                                  \\
+                                & \in \Bigg(\bigg(\sum_{m = 0}^n (n - m)!\bigg), \bigg(\sum_{m = 0}^n (n - m)! + 1\bigg)\Bigg).
+    \end{align*}
+    Thus \(n! e\) is not an integer for all \(n \geq 3\).
+
+    Finally we show that \(e\) is irrational.
+    Suppose for sake of contradiction that \(e \in \mathbf{Q}\).
+    Then we know that \(e = \frac{a}{b}\) for some \(a \in \mathbf{Z}\) and \(b \in \mathbf{Z}^+\).
+    But then we have
+    \begin{align*}
+                 & e = \frac{a}{b} = \frac{3a}{3b}                                  \\
+        \implies & (3b)! e = \frac{(3a) (3b)!}{3b} = (3a) (3b - 1)! \in \mathbf{N},
+    \end{align*}
+    a contradiction.
+    Thus \(e \in \mathbf{R} \setminus \mathbf{Q}\).
+\end{proof}
+
 \begin{exercise}\label{ex 4.5.3}
     Prove Proposition \ref{4.5.4}.
 \end{exercise}
