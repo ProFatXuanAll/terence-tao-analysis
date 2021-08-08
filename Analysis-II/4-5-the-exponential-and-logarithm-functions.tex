@@ -526,6 +526,46 @@
     Prove that \(f\) is infinitely differentiable, and \(f^{(k)}(0) = 0\) for every integer \(k \geq 0\), but that \(f\) is not real analytic at \(0\).
 \end{exercise}
 
+\begin{proof}
+    First we show that
+    \[
+        \forall\ k \in \mathbf{N}, \forall\ x \in \mathbf{R}^+, \bigg(y \mapsto \frac{-1}{y}\bigg)^{(k)}(x) = (-1)^{k + 1} (k!) x^{-(k + 1)}.
+    \]
+    We use induction on \(k\).
+    For \(k = 0\), we have
+    \[
+        \forall\ x \in \mathbf{R}^+, \bigg(y \mapsto \frac{-1}{y}\bigg)^{(0)}(x) = \frac{-1}{x} = (-1)^{0 + 1} (0!) x^{-(0 + 1)}
+    \]
+    and the base case holds.
+    Suppose inductively that
+    \[
+        \forall\ x \in \mathbf{R}^+, \bigg(y \mapsto \frac{-1}{y}\bigg)^{(k)}(x) = (-1)^{k + 1} (k!) x^{-(k + 1)}.
+    \]
+    for some \(k \geq 0\).
+    Then for \(k + 1\), we have
+    \begin{align*}
+        \forall\ x \in \mathbf{R}^+, & \bigg(y \mapsto \frac{-1}{y}\bigg)^{(k + 1)}(x)                                                 \\
+                                     & = \bigg((y \mapsto \frac{-1}{y})^{(k)}\bigg)'(x)           & \text{(by Definition \ref{4.2.4})} \\
+                                     & = \bigg(y \mapsto (-1)^{k + 1} (k!) y^{-(k + 1)}\bigg)'(x) & \text{(by induction hypothesis)}   \\
+                                     & = (-1)^{k + 2} \big((k + 1)!\big) x^{-(k + 2)}
+    \end{align*}
+    and this closes the induction.
+    By Definition \ref{4.2.4} this means \(y \mapsto \frac{-1}{y}\) is infinitely differentiable on \(\mathbf{R}^+\).
+
+    By Theorem \ref{4.5.2}(a) we know that \(\exp\) is real analytic on \(\mathbf{R}\), thus by Corollary \ref{4.2.7} we know that \(\exp\) is infinitely differentiable on \(\mathbf{R}\).
+    Since \(x \mapsto \frac{-1}{x}\) is infinitely differentiable on \(\mathbf{R}^+\) and \(\exp\) is infinitely differentiable on \(\mathbf{R}\), by chain rule we know that \(f(x) = \exp(\frac{-1}{x})\) is infinitely differentiable on \(\mathbf{R}^+\).
+    Since \(f(x) = 0\) for all \(x \in \mathbf{R}^-\), we know that \(f\) infinitely differentiable on \(\in \mathbf{R}^-\).
+    So we only left to show that \(f\) is infinitely differentiable at \(0\).
+    Since
+    \begin{align*}
+         & \lim_{x \to 0^+ ; x \in \mathbf{R}} \frac{f(x) - f(0)}{x - 0}                                 \\
+         & = \lim_{x \to 0^+ ; x \in \mathbf{R}} \frac{e^{\frac{-1}{x}}}{x}                              \\
+         & = \lim_{x \to 0^+ ; x \in \mathbf{R}} \frac{1}{e^{\frac{1}{x}} x}                             \\
+         & = \lim_{x \to 0^+ ; x \in (0, 1)} \frac{1}{e^{\frac{1}{x}} x}                                 \\
+         & \leq \lim_{x \to 0^+ ; x \in (0, 1)} \frac{1}{e^{\frac{1}{x}}}    & (x < 1 < e^{\frac{1}{x}})
+    \end{align*}
+\end{proof}
+
 \begin{exercise}\label{ex 4.5.5}
     Prove Theorem \ref{4.5.6}.
 \end{exercise}
