@@ -223,8 +223,8 @@ a_n^2                      % do not enclose with {}
 - Analysis I
   - 8.1.10
 - Analysis II
-  - Chapter 3
   - Chapter 4
+    - Exercise 4.5.4
   - Chapter 5
   - Chapter 6
   - Chapter 7
