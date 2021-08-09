@@ -639,25 +639,31 @@
     Now we show that \(\sup(\frac{e^n}{n^m})_{n = N}^\infty = +\infty\).
     Since
     \begin{align*}
-                 & \forall\ n \geq N, \frac{e^{n + 1}}{(n + 1)^m} > \frac{e^{n + 1}}{2 n^m}                                                                      \\
-        \implies & \forall\ n \geq N, \frac{e^{n + 1}}{(n + 1)^m} > \bigg(\frac{e}{2} - 1 + 1\bigg) \frac{e^n}{n^m}                                              \\
-        \implies & \forall\ n \geq N, \frac{e^{n + 1}}{(n + 1)^m} - \frac{e^n}{n^m} > \bigg(\frac{e}{2} - 1\bigg) \frac{e^n}{n^m}                                \\
-        \implies & \forall\ n \geq N, \frac{e^{n + 1}}{(n + 1)^m} - \frac{e^n}{n^m} > \frac{e^n}{n^m}                             & (e > 2)                      \\
-        \implies & \forall\ n \geq N, \frac{e^{n + 1}}{(n + 1)^m} - \frac{e^n}{n^m} > \frac{e^N}{N^m} > 0,                        & \text{(monotone increasing)}
+                 & \forall\ n \geq N, \frac{e^{n + 1}}{(n + 1)^m} > \frac{e^{n + 1}}{2 n^m}                                                                           \\
+        \implies & \forall\ n \geq N, \frac{e^{n + 1}}{(n + 1)^m} > \bigg(\frac{e}{2} - 1 + 1\bigg) \frac{e^n}{n^m}                                                   \\
+        \implies & \forall\ n \geq N, \frac{e^{n + 1}}{(n + 1)^m} - \frac{e^n}{n^m} > \bigg(\frac{e}{2} - 1\bigg) \frac{e^n}{n^m}                                     \\
+        \implies & \forall\ n \geq N, \frac{e^{n + 1}}{(n + 1)^m} - \frac{e^n}{n^m} > \bigg(\frac{e}{2} - 1\bigg) \frac{e^N}{N^m} > 0, & \text{(monotone increasing)}
     \end{align*}
     we know that
     \begin{align*}
-        \forall\ n \geq N, & \frac{e^{n + 1}}{(n + 1)^m} - \frac{e^N}{N^m}                                                          \\
-                           & = \sum_{j = N}^n \bigg(\frac{e^{j + 1}}{(j + 1)^m} - \frac{e^j}{j^m}\bigg) & \text{(telescope series)} \\
-                           & > \sum_{j = N}^n \frac{e^N}{N^m}                                                                       \\
-                           & = (n - N) \frac{e^N}{N^m}.
+        \forall\ n \geq N, & \frac{e^{n + 1}}{(n + 1)^m} - \frac{e^N}{N^m}                                                              \\
+                           & = \sum_{j = N}^n \bigg(\frac{e^{j + 1}}{(j + 1)^m} - \frac{e^j}{j^m}\bigg) & \text{(telescope series)}     \\
+                           & > \sum_{j = N}^n \Bigg(\bigg(\frac{e}{2} - 1\bigg) \frac{e^N}{N^m}\Bigg)   & \text{(from the proof above)} \\
+                           & = (n - N) \Bigg(\bigg(\frac{e}{2} - 1\bigg) \frac{e^N}{N^m}\Bigg)
+    \end{align*}
+    and
+    \begin{align*}
+                 & \forall\ n \geq N, \frac{e^{n + 1}}{(n + 1)^m} - \frac{e^N}{N^m} > (n - N) \Bigg(\bigg(\frac{e}{2} - 1\bigg) \frac{e^N}{N^m}\Bigg)                                       \\
+        \implies & \forall\ n \geq N, \frac{e^{n + 1}}{(n + 1)^m} > (n - N) \Bigg(\bigg(\frac{e}{2} - 1\bigg) \frac{e^N}{N^m}\Bigg) + \frac{e^N}{N^m}                                       \\
+        \implies & \forall\ n \geq N, \frac{e^{n + 1}}{(n + 1)^m} > (n - N) \Bigg(\bigg(\frac{e}{2} - 1\bigg) \frac{e^N}{N^m}\Bigg) + \bigg(\frac{e}{2} - 1\bigg) \frac{e^N}{N^m} & (e < 3) \\
+        \implies & \forall\ n \geq N, \frac{e^{n + 1}}{(n + 1)^m} > (n + 1 - N) \Bigg(\bigg(\frac{e}{2} - 1\bigg) \frac{e^N}{N^m}\Bigg)
     \end{align*}
     Since \(\frac{e^N}{N^m} > 0\), by Archimedean property we know that
     \begin{align*}
-                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ K \in \mathbf{Z}^+ : K \frac{e^N}{N^m} > \varepsilon                                                  \\
-        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ K \in \mathbf{Z}^+ : \frac{e^{N + K + 1}}{(N + K + 1)^m} > \varepsilon                                \\
-        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ K \in \mathbf{Z}^+ : \frac{e^K}{K^m} > \varepsilon                                                    \\
-        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ K \in \mathbf{Z}^+ : \forall\ n \geq K, \frac{e^n}{n^m} > \varepsilon  & \text{(monotone increasing)} \\
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ K \in \mathbf{Z}^+ : K \Bigg(\bigg(\frac{e}{2} - 1\bigg) \frac{e^N}{N^m}\Bigg) > \varepsilon                                \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ K \in \mathbf{Z}^+ : \frac{e^{N + K}}{(N + K)^m} > \varepsilon                                                              \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ K \in \mathbf{Z}^+ : \frac{e^K}{K^m} > \varepsilon                                                                          \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ K \in \mathbf{Z}^+ : \forall\ n \geq K, \frac{e^n}{n^m} > \varepsilon                        & \text{(monotone increasing)} \\
         \implies & \lim_{n \to \infty} \frac{e^n}{n^m} = +\infty.
     \end{align*}
     Since \(m\) is arbitrary, we conclude that
@@ -671,6 +677,34 @@
     Show that there exists a real number \(N > 0\) such that \(e^{cx} > \abs*{P(x)}\) for all \(x > N\);
     thus an exponentially growing function, no matter how small the growth rate \(c\), will eventually overtake any given polynomial \(P(x)\), no matter how large.
 \end{exercise}
+
+\begin{proof}
+    By Definition \ref{3.8.1} we know that
+    \[
+        \forall\ x \in \mathbf{R}, P(x) = \sum_{i = 0}^m a_i x^i
+    \]
+    for some \(m \in \mathbf{N}\).
+    Fix such \(m\).
+    Since \(m\) is finite, \(a = \max_{i = 0}^m \abs*{a_i}\) is well-defined.
+    Let \(b = \ceil{a} + 1 \in \mathbf{Z}^+\).
+    By Exercise \ref{ex 4.5.8} we have
+    \begin{align*}
+                 & \forall\ 0 \leq i \leq m, \exists\ N_i \in \mathbf{Z}^+ : \forall\ n \geq N_i, \frac{e^n}{n^i} > 1       \\
+        \implies & \forall\ 0 \leq i \leq m, \exists\ N_i \in \mathbf{Z}^+ : \forall\ n \geq N_i, \frac{e^{bn}}{(bn)^i} > 1 \\
+        \implies & \forall\ 0 \leq i \leq m, \exists\ N_i \in \mathbf{Z}^+ : \forall\ n \geq N_i, e^{bn} > (bn)^i.
+    \end{align*}
+    Let \(K = \max_{i = 0}^m(N_i) + 1\).
+    Then we have
+    \begin{align*}
+                 & \forall\ n \geq K, e^{bn} > (bn)^m                                                                                     \\
+        \implies & \forall\ x \in (K, +\infty), e^{bx} > (bx)^m > (ax)^m                                                                  \\
+        \implies & \forall\ x \in (K, +\infty),                                                                                           \\
+                 & e^{b (m + 1) x} > \big(b (m + 1) x\big)^m > \big(a (m + 1) x\big)^m                 & \text{(by Archimedean property)} \\
+        \implies & \forall\ x \in (K, +\infty),                                                                                           \\
+                 & e^{b (m + 1) x} > \big(a (m + 1) x\big)^m = \sum_{i = 0}^m (ax)^m \geq \abs*{P(x)}.
+    \end{align*}
+    By setting \(N = \frac{b K (m + 1)}{c}\) we are done.
+\end{proof}
 
 \begin{exercise}\label{ex 4.5.10}
     Let \(f : (0, +\infty) \times \mathbf{R} \to \mathbf{R}\) be the exponential function \(f(x, y) \coloneqq x^y\).
