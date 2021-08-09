@@ -1,1 +1,276 @@
 \section{A digression on complex numbers}\label{sec 4.6}
+
+\setcounter{theorem}{1}
+\begin{definition}[Formal definition of complex numbers]\label{4.6.2}
+    A \emph{complex number} is any pair of the form \((a, b)\), where \(a, b\) are real numbers.
+    Two complex numbers \((a, b)\), \((c, d)\) are said to be equal iff \(a = c\) and \(b = d\).
+    The set of all complex numbers is denoted \(\mathbf{C}\).
+\end{definition}
+
+\begin{note}
+    At this stage the complex numbers \(\mathbf{C}\) are indistinguishable from the Cartesian product \(\mathbf{R}^2 = \mathbf{R} \times \mathbf{R}\)
+    (also known as the \emph{Cartesian plane}).
+    However, we will introduce a number of operations on the complex numbers, notably that of \emph{complex multiplication}, which are not normally placed on the Cartesian plane \(\mathbf{R}^2\).
+    Thus one can think of the complex number system \(\mathbf{C}\) as the Cartesian plane \(\mathbf{R}^2\) equipped with a number of additional structures.
+\end{note}
+
+\begin{definition}[Complex addition, negation, and zero]\label{4.6.3}
+    If \(z = (a, b)\) and \(w = (c, d)\) are two complex numbers, we define their \emph{sum} \(z + w\) to be the complex number \(z + w \coloneqq (a + c, b + d)\).
+    We also define the \emph{negation} \(-z\) of \(z\) to be the complex number \(-z \coloneqq (-a, -b)\).
+    We also define the \emph{complex zero} \(0_{\mathbf{C}}\) to be the complex number \(0_{\mathbf{C}} = (0, 0)\).
+\end{definition}
+
+\begin{additional corollary}\label{ac 4.6.1}
+If \(w, w', z, z' \in \mathbf{C}\) and \(w = w'\) and \(z = z'\), then \(w + z = w' + z'\) and \(-w = -w'\).
+\end{additional corollary}
+
+\begin{lemma}[The complex numbers are an additive group]\label{4.6.4}
+    If \(z_1, z_2, z_3\) are complex numbers, then we have the commutative property \(z_1 + z_2 = z_2 + z_1\), the associative property \((z_1 + z_2) + z_3 = z_1 + (z_2 + z_3)\), the identity property \(z_1 + 0_{\mathbf{C}} = 0_{\mathbf{C}} + z_1 = z_1\), and the inverse property \(z_1 + (-z_1) = (-z_1) + z_1 = 0_{\mathbf{C}}\).
+\end{lemma}
+
+\begin{definition}[Complex multiplication]\label{4.6.5}
+    If \(z = (a, b)\) and \(w = (c, d)\) are complex numbers, then we define their \emph{product} \(zw\) to be the complex number \(zw \coloneqq (ac - bd, ad + bc)\).
+    We also introduce the \emph{complex identity} \(1_{\mathbf{C}} \coloneqq (1, 0)\).
+\end{definition}
+
+\begin{additional corollary}\label{ac 4.6.2}
+If \(w, w', z, z' \in \mathbf{C}\) and \(w = w'\) and \(z = z'\), then \(wz = w'z'\).
+\end{additional corollary}
+
+\begin{lemma}\label{4.6.6}
+    If \(z_1, z_2, z_3\) are complex numbers, then we have the commutative property \(z_1 z_2 = z_2 z_1\), the associative property \((z_1 z_2) z_3 = z_1 (z_2 z_3)\), the identity property \(z_1 1_{\mathbf{C}} = 1_{\mathbf{C}} z_1 = z_1\), and the distributivity properties \(z_1 (z_2 + z_3) = z_1 z_2 + z_1 z_3\) and \((z_2 + z_3) z_1 = z_2 z_1 + z_3 z_1\).
+\end{lemma}
+
+\begin{note}
+    Lemma \ref{4.6.6} can also be stated more succinctly, as the assertion that \(\mathbf{C}\) is a commutative ring.
+    As is usual, we now write \(z - w\) as shorthand for \(z + (-w)\).
+\end{note}
+
+\begin{note}
+    We now identify the real numbers \(\mathbf{R}\) with a subset of the complex numbers \(\mathbf{C}\) by identifying any real number \(x\) with the complex number \((x, 0)\), thus \(x \equiv (x, 0)\).
+    Note that this identification is consistent with equality (thus \(x = y\) iff \((x, 0) = (y, 0)\)), with addition (\(x_1 + x_2 = x_3\) iff \((x_1, 0) + (x_2, 0) = (x_3, 0)\)), with negation (\(x = -y\) iff \((x, 0) = -(y, 0)\)), and multiplication (\(x_1 x_2 = x_3\) iff \((x_1, 0) (x_2, 0) = (x_3, 0)\)), so we will no longer need to distinguish between ``real addition'' and ``complex addition'', and similarly for equality, negation, and multiplication.
+    Note also that \(0 \equiv 0_\mathbf{C}\) and \(1 \equiv 1_\mathbf{C}\), so we can now drop the \(\mathbf{C}\) subscripts from the zero \(0\) and the identity \(1\).
+\end{note}
+
+\begin{note}
+    We now define \(i\) to be the complex number \(i \coloneqq (0, 1)\).
+\end{note}
+
+\begin{lemma}\label{4.6.7}
+    Every complex number \(z \in \mathbf{C}\) can be written as \(z = a + bi\) for exactly one pair \(a, b\) of real numbers.
+    Also, we have \(i^2 = -1\), and \(-z = (-1)z\).
+\end{lemma}
+
+\begin{note}
+    Because Lemma \ref{4.6.7}, we will now refer to complex numbers in the more usual notation \(a + bi\), and discard the formal notation \((a, b)\) henceforth.
+\end{note}
+
+\begin{definition}[Real and imaginary parts]\label{4.6.8}
+    If \(z\) is a complex number with the representation \(z = a + bi\) for some real numbers \(a, b\), we shall call \(a\) the \emph{real part} of \(z\) and denote \(\Re(z) \coloneqq a\), and call \(b\) the \emph{imaginary part} of \(z\) and denote \(\Im(z) \coloneqq b\).
+    In general \(z = \Re(z) + i \Im(z)\).
+    Note that \(z\) is real iff \(\Im(z) = 0\).
+    We say that \(z\) is \emph{imaginary} iff \(\Re(z) = 0\).
+    \(0\) is both real and imaginary.
+    We define the \emph{complex conjugate} \(\overline{z}\) of \(z\) to be the complex number \(z \coloneqq \Re(z) - i \Im(z)\).
+\end{definition}
+
+\begin{lemma}[Complex conjugation is an involution]\label{4.6.9}
+    Let \(z, w\) be complex numbers, then \(\overline{z + w} = \overline{z} + \overline{w}\), \(\overline{-z} = -\overline{z}\), and \(\overline{zw} = \overline{z} \overline{w}\).
+    Also \(\overline{\overline{z}} = z\).
+    Finally, we have \(\overline{z} = \overline{w}\) if and only if \(z = w\), and \(\overline{z} = z\) if and only if \(z\) is real.
+\end{lemma}
+
+\begin{note}
+    We cannot extend the definition of absolute value directly to the complex numbers, as most complex numbers are neither positive nor negative.
+    (For instance, we do not classify \(i\) as either a positive or negative number)
+\end{note}
+
+\begin{definition}[Complex absolute value]\label{4.6.10}
+    If \(z = a + bi\) is a complex number, we define the \emph{absolute value} \(\abs*{z}\) of \(z\) to be the real number \(\abs*{z} \coloneqq \sqrt{a^2 + b^2} = (a^2 + b^2)^{1 / 2}\).
+\end{definition}
+
+\begin{note}
+    From Exercise 5.6.3 in Analysis I we see that Definition \ref{4.6.10} generalizes the notion of real absolute value.
+\end{note}
+
+\begin{lemma}[Properties of complex absolute value]\label{4.6.11}
+    Let \(z, w\) be complex numbers.
+    Then \(\abs*{z}\) is a non-negative real number, and \(\abs*{z} = 0\) if and only if \(z = 0\).
+    Also we have the identity \(z \overline{z} = \abs*{z}^2\), and so \(\abs*{z} = \sqrt{z \overline{z}}\).
+    As a consequence we have \(\abs*{zw} = \abs*{z} \abs*{w}\) and \(\abs*{\overline{z}} = \abs*{z}\).
+    Finally, we have the inequalities
+    \[
+        -\abs*{z} \leq \Re(z) \leq \abs*{z}; \quad -\abs*{z} \leq \Im(z) \leq \abs*{z}; \quad \abs*{z} \leq \abs*{\Re(z)} + \abs*{\Im(z)}
+    \]
+    as well as the triangle inequality \(\abs*{z + w} \leq \abs*{z} + \abs*{w}\).
+\end{lemma}
+
+\begin{definition}[Complex reciprocal]\label{4.6.12}
+    If \(z\) is a non-zero complex number, we define the \emph{reciprocal} \(z^{-1}\) of \(z\) to be the complex number \(z^{-1} \coloneqq \abs*{z}^{-2} \overline{z}\)
+    (note that \(\abs*{z}^{-2}\) is well-defined as a positive real number because \(\abs*{z}\) is positive real, thanks to Lemma \ref{4.6.11}).
+    If \(z\) is zero, \(z = 0\), we leave the reciprocal \(0^{-1}\) undefined.
+\end{definition}
+
+\begin{note}
+    From the Definition \ref{4.6.12} and Lemma \ref{4.6.11}, we see that
+    \[
+        z z^{-1} = z^{-1} z = \abs*{z}^{-2} \overline{z} z = \abs*{z}^{-2} \abs*{z}^2 = 1,
+    \]
+    and so \(z^{-1}\) is indeed the reciprocal of \(z\).
+    We can thus define a notion of quotient \(z / w\) for any two complex numbers \(z, w\) with \(w \neq 0\) in the usual manner by the formula \(z / w \coloneqq z w^{-1}\).
+\end{note}
+
+\begin{lemma}\label{4.6.13}
+    If we define \(d(z, w) = \abs*{z - w}\), then the complex numbers \(\mathbf{C}\) with the distance \(d\) form a metric space.
+    If \((z_n)_{n = 1}^\infty\) is a sequence of complex numbers, and \(z\) is another complex number, then we have \(\lim_{n \to \infty} z_n = z\) in this metric space if and only if \(\lim_{n \to \infty} \Re(z_n) = \Re(z)\) and \(\lim_{n \to \infty} \Im(z_n) = \Im(z)\).
+\end{lemma}
+
+\begin{lemma}[Complex limit laws]\label{4.6.14}
+    Let \((z_n)_{n = 1}^\infty\) and \((w_n)_{n = 1}^\infty\) be convergent sequences of complex numbers, and let \(c\) be a complex number.
+    Then the sequences \((z_n + w_n)_{n = 1}^\infty\), \((z_n - w_n)_{n = 1}^\infty\), \((c z_n)_{n = 1}^\infty\), \((z_n w_n)_{n = 1}^\infty\), and \((\overline{z_n})_{n = 1}^\infty\) are also convergent, with
+    \begin{align*}
+        \lim_{n \to \infty} z_n + w_n      & = \lim_{n \to \infty} z_n + \lim_{n \to \infty} w_n                       \\
+        \lim_{n \to \infty} z_n - w_n      & = \lim_{n \to \infty} z_n - \lim_{n \to \infty} w_n                       \\
+        \lim_{n \to \infty} c z_n          & = c \lim_{n \to \infty} z_n                                               \\
+        \lim_{n \to \infty} z_n w_n        & = \bigg(\lim_{n \to \infty} z_n\bigg) \bigg(\lim_{n \to \infty} w_n\bigg) \\
+        \lim_{n \to \infty} \overline{z_n} & = \overline{\lim_{n \to \infty} z_n}
+    \end{align*}
+    Also, if the \(w_n\) are all non-zero and \(\lim_{n \to \infty} w_n\) is also non-zero, then \((z_n / w_n)_{n = 1}^\infty\) is also a convergent sequence, with
+    \[
+        \lim_{n \to \infty} z_n / w_n = \bigg(\lim_{n \to \infty} z_n\bigg) / \bigg(\lim_{n \to \infty} w_n\bigg).
+    \]
+\end{lemma}
+
+\begin{note}
+    Observe that the real and complex number systems are in fact quite similar;
+    they both obey similar laws of arithmetic, and they have similar structure as metric spaces.
+    Indeed many of the results in this textbook that were proven for real-valued functions, are also valid for complex-valued functions, simply by replacing ``real'' with ``complex'' in the proofs but otherwise leaving all the other details of the proof unchanged.
+    Alternatively, one can always split a complex-valued function \(f\) into real and imaginary parts \(\Re(f)\), \(\Im(f)\), thus \(f = \Re(f) + i \Im(f)\), and then deduce results for the complex-valued function \(f\) from the corresponding results for the real-valued functions \(\Re(f)\), \(\Im(f)\).
+    For instance, the theory of pointwise and uniform convergence from Chapter \ref{ch 3}, or the theory of power series from this chapter, extends without any difficulty to complex-valued functions.
+    In particular, we can define the complex exponential function in exactly the same manner as for real numbers.
+\end{note}
+
+\begin{definition}[Complex exponential]\label{4.6.15}
+    If \(z\) is a complex number, we define the function \(\exp(z)\) by the formula
+    \[
+        \exp(z) \coloneqq \sum_{n = 0}^\infty \frac{z^n}{n!}.
+    \]
+\end{definition}
+
+\begin{note}
+    Inspired by Proposition \ref{4.5.4}, we shall use \(\exp(z)\) and \(e^z\) interchangeably.
+    It is also possible to define \(a^z\) for complex \(z\) and real \(a > 0\), but we will not need to do so in this text.
+\end{note}
+
+\exercisesection
+
+\begin{exercise}\label{ex 4.6.1}
+    Prove Lemma \ref{4.6.4}.
+\end{exercise}
+
+\begin{proof}
+    See Lemma \ref{4.6.4}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.6.2}
+    Prove Lemma \ref{4.6.6}.
+\end{exercise}
+
+\begin{proof}
+    See Lemma \ref{4.6.6}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.6.3}
+    Prove Lemma \ref{4.6.7}.
+\end{exercise}
+
+\begin{proof}
+    See Lemma \ref{4.6.7}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.6.4}
+    Prove Lemma \ref{4.6.9}.
+\end{exercise}
+
+\begin{proof}
+    See Lemma \ref{4.6.9}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.6.5}
+    If \(z\) is a complex number, show that \(\Re(z) = \frac{z + \overline{z}}{2}\) and \(\Im(z) = \frac{z - \overline{z}}{2}\).
+\end{exercise}
+
+\begin{exercise}\label{ex 4.6.6}
+    Prove Lemma \ref{4.6.11}.
+\end{exercise}
+
+\begin{proof}
+    See Lemma \ref{4.6.11}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.6.7}
+    Show that if \(z, w\) are complex numbers with \(w \neq 0\), then \(\abs*{z / w} = \abs*{z} / \abs*{w}\).
+\end{exercise}
+
+\begin{exercise}\label{ex 4.6.8}
+    Let \(z, w\) be non-zero complex numbers.
+    Show that \(\abs*{z + w} = \abs*{z} + \abs*{w}\) if and only if there exists a positive real number \(c > 0\) such that \(z = cw\).
+\end{exercise}
+
+\begin{exercise}\label{ex 4.6.9}
+    Prove Lemma \ref{4.6.13}.
+\end{exercise}
+
+\begin{proof}
+    See Lemma \ref{4.6.13}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.6.10}
+    Show that the complex numbers \(\mathbf{C}\) (with the usual metric \(d\)) form a complete metric space.
+\end{exercise}
+
+\begin{exercise}\label{ex 4.6.11}
+    Let \(f : \mathbf{R}^2 \to \mathbf{C}\) be the map \(f(a, b) \coloneqq a + bi\).
+    Show that \(f\) is a bijection, and that \(f\) and \(f^{-1}\) are both continuous maps.
+\end{exercise}
+
+\begin{exercise}\label{ex 4.6.12}
+    Show that the complex numbers \(\mathbf{C}\) (with the usual metric \(d\)) form a connected metric space.
+\end{exercise}
+
+\begin{exercise}\label{ex 4.6.13}
+    Let \(E\) be a subset of \(\mathbf{C}\).
+    Show that \(E\) is compact if and only if \(E\) is closed and bounded.
+    In particular, show that \(\mathbf{C}\) is not compact.
+\end{exercise}
+
+\begin{exercise}\label{ex 4.6.14}
+    Prove Lemma \ref{4.6.14}.
+\end{exercise}
+
+\begin{proof}
+    See Lemma \ref{4.6.14}.
+\end{proof}
+
+\begin{exercise}\label{ex 4.6.15}
+    The purpose of this exercise is to explain why we do not try to organize the complex numbers into positive and negative parts.
+    Suppose that there was a notion of a ``positive complex number'' and a ``negative complex number'' which obeyed the following reasonable axioms (cf. Proposition 4.2.9 in Analysis I):
+    \begin{itemize}
+        \item (Trichotomy)
+              For every complex number \(z\), exactly one of the following statements is true:
+              \(z\) is positive, \(z\) is negative, \(z\) is zero.
+        \item (Negation)
+              If \(z\) is a positive complex number, then \(-z\) is negative.
+              If \(z\) is a negative complex number, then \(-z\) is positive.
+        \item (Additivity)
+              If \(z\) and \(w\) are positive complex numbers, then \(z + w\) is also positive.
+        \item (Multiplicativity)
+              If \(z\) and \(w\) are positive complex numbers, then \(zw\) is also positive.
+    \end{itemize}
+    Show that these four axioms are inconsistent, i.e., one can use these axioms to deduce a contradiction.
+\end{exercise}
+
+\begin{exercise}\label{ex 4.6.16}
+    Prove the ratio test for complex series, and use it to show that the series used to define the complex exponential is absolutely convergent.
+    Then prove that \(\exp(z + w) = \exp(z) \exp(w)\) for all complex numbers \(z, w\).
+\end{exercise}
