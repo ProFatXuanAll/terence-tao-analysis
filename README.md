@@ -224,7 +224,6 @@ a_n^2                      % do not enclose with {}
   - 8.1.10
 - Analysis II
   - Chapter 4
-    - Exercise 4.5.4
   - Chapter 5
   - Chapter 6
   - Chapter 7
