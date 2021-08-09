@@ -753,3 +753,26 @@
     Let \(f : (0, +\infty) \times \mathbf{R} \to \mathbf{R}\) be the exponential function \(f(x, y) \coloneqq x^y\).
     Show that \(f\) is continuous.
 \end{exercise}
+
+\begin{proof}
+    Let \(d = d_{l^1}|_{(\mathbf{R}^+ \times \mathbf{R}) \times (\mathbf{R}^+ \times \mathbf{R})}\).
+    We have
+    \begin{align*}
+        \forall\ (x, y) \in \mathbf{R}^+ \times \mathbf{R}, f(x, y) & = x^y                                                         \\
+                                                                    & = \exp\big(\ln(x^y)\big) & \text{(by Definition \ref{4.5.5})} \\
+                                                                    & = \exp(y \ln(x)).        & \text{(by Theorem \ref{4.5.6}(d))}
+    \end{align*}
+    Let \((x_n, y_n)_{n = 1}^\infty\) be a sequence in \(\mathbf{R}^+ \times \mathbf{R}\) such that
+    \[
+        \lim_{n \to \infty} d\big((x_n, y_n), (x, y)\big) = 0.
+    \]
+    By Proposition 9.8.3 in Analysis I and Definition \ref{4.5.5} we know that \(\ln\) is continuous on \(\mathbf{R}^+\).
+    Thus we have
+    \begin{align*}
+                 & \lim_{n \to \infty} \ln(x_n) = \ln(x)                                    & \text{(by Theorem \ref{2.1.4}(a)(b))} \\
+        \implies & \lim_{n \to \infty} y_n \ln(x_n) = y \ln(x)                              & \text{(by Lemma \ref{2.2.2})}         \\
+        \implies & \lim_{n \to \infty} \exp\big(y_n \ln(x_n)\big) = \exp\big(y \ln(x)\big). & \text{(by Theorem \ref{4.5.2}(c))}
+    \end{align*}
+    Since \((x_n, y_n)_{n = 1}^\infty\) is arbitrary, by Theorem \ref{2.1.4}(a)(b) we conclude that \(f\) is continuous at \((x, y)\) from \((\mathbf{R}^+ \times \mathbf{R}, d)\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+    Since \(x, y\) are arbitrary, we conclude that \(f\) is continuous on \(\mathbf{R}^+ \times \mathbf{R}\) from \((\mathbf{R}^+ \times \mathbf{R}, d)\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+\end{proof}
