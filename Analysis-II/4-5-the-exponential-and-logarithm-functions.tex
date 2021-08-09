@@ -411,6 +411,26 @@
     \]
 \end{example}
 
+\begin{additional corollary}\label{ac 4.5.1}
+\(e^x > x\) for all \(x \in \mathbf{R}\).
+\end{additional corollary}
+
+\begin{proof}
+    We have \(e^0 = 1 > 0\).
+    Suppose that \(x \in \mathbf{R}^+\).
+    Then we have
+    \begin{align*}
+        e^x & = \sum_{n = 0}^\infty \frac{x^n}{n!}                                   & \text{(by Definition \ref{4.5.1})} \\
+            & = \frac{x^0}{0!} + \frac{x^1}{1!} + \sum_{n = 2}^\infty \frac{x^n}{n!}                                      \\
+            & = 1 + x + \sum_{n = 2}^\infty \frac{x^n}{n!}                                                                \\
+            & > 1 + x                                                                & (x > 0)                            \\
+            & > x.
+    \end{align*}
+    Now suppose that \(x \in \mathbf{R}^-\).
+    Then by Theorem \ref{4.5.2}(e) we have \(e^x > 0 > x\).
+    Combine all proofs above we conclude that \(e^x > x\) for all \(x \in \mathbf{R}\).
+\end{proof}
+
 \exercisesection
 
 \begin{exercise}\label{ex 4.5.1}
@@ -588,9 +608,63 @@
     Let \(m > 0\) be an integer.
     Show that
     \[
-        \lim_{x \to +\infty} \frac{e^x}{x^m} +\infty.
+        \lim_{x \to +\infty} \frac{e^x}{x^m} = +\infty.
     \]
 \end{exercise}
+
+\begin{proof}
+    Let \(m \in \mathbf{Z}^+\).
+    Observe that
+    \begin{align*}
+                 & \lim_{n \to \infty} \frac{1}{n + 1} = 0                                     \\
+        \implies & \lim_{n \to \infty} \bigg(1 - \frac{1}{n + 1}\bigg) = 1                     \\
+        \implies & \lim_{n \to \infty} \frac{n}{n + 1} = 1                                     \\
+        \implies & \lim_{n \to \infty} \bigg(\frac{n}{n + 1}\bigg)^m = 1^m = 1                 \\
+        \implies & \lim_{n \to \infty} e \bigg(\frac{n}{n + 1}\bigg)^m = e                     \\
+        \implies & \lim_{n \to \infty} \frac{e^{n + 1}}{e^n} \bigg(\frac{n}{n + 1}\bigg)^m = e
+    \end{align*}
+    and
+    \[
+        e = \exp(1) = \sum_{n = 0}^\infty \frac{1}{n!} = \frac{1}{0!} + \frac{1}{1!} + \sum_{n = 2}^\infty \frac{1}{n!} > 2.
+    \]
+    We know that
+    \begin{align*}
+                 & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \abs*{\frac{e^{n + 1}}{e^n} \bigg(\frac{n}{n + 1}\bigg)^m - e} < \frac{e}{2}         & (e > 2) \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \abs*{\frac{e^{n + 1}}{(n + 1)^m} - \frac{e^{n + 1}}{n^m}} < \frac{e^{n + 1}}{2 n^m}           \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \frac{e^{n + 1}}{2 n^m} < \frac{e^{n + 1}}{(n + 1)^m} < \frac{3 e^{n + 1}}{2 n^m}              \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \frac{e^n}{n^m} < \frac{e^{n + 1}}{2 n^m} < \frac{e^{n + 1}}{(n + 1)^m}              & (e > 2) \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : (\frac{e^n}{n^m})_{n = N}^\infty \text{ is monotone increasing sequence}.
+    \end{align*}
+    Fix such \(N\).
+    Now we show that \(\sup(\frac{e^n}{n^m})_{n = N}^\infty = +\infty\).
+    Since
+    \begin{align*}
+                 & \forall\ n \geq N, \frac{e^{n + 1}}{(n + 1)^m} > \frac{e^{n + 1}}{2 n^m}                                                                      \\
+        \implies & \forall\ n \geq N, \frac{e^{n + 1}}{(n + 1)^m} > \bigg(\frac{e}{2} - 1 + 1\bigg) \frac{e^n}{n^m}                                              \\
+        \implies & \forall\ n \geq N, \frac{e^{n + 1}}{(n + 1)^m} - \frac{e^n}{n^m} > \bigg(\frac{e}{2} - 1\bigg) \frac{e^n}{n^m}                                \\
+        \implies & \forall\ n \geq N, \frac{e^{n + 1}}{(n + 1)^m} - \frac{e^n}{n^m} > \frac{e^n}{n^m}                             & (e > 2)                      \\
+        \implies & \forall\ n \geq N, \frac{e^{n + 1}}{(n + 1)^m} - \frac{e^n}{n^m} > \frac{e^N}{N^m} > 0,                        & \text{(monotone increasing)}
+    \end{align*}
+    we know that
+    \begin{align*}
+        \forall\ n \geq N, & \frac{e^{n + 1}}{(n + 1)^m} - \frac{e^N}{N^m}                                                          \\
+                           & = \sum_{j = N}^n \bigg(\frac{e^{j + 1}}{(j + 1)^m} - \frac{e^j}{j^m}\bigg) & \text{(telescope series)} \\
+                           & > \sum_{j = N}^n \frac{e^N}{N^m}                                                                       \\
+                           & = (n - N) \frac{e^N}{N^m}.
+    \end{align*}
+    Since \(\frac{e^N}{N^m} > 0\), by Archimedean property we know that
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ K \in \mathbf{Z}^+ : K \frac{e^N}{N^m} > \varepsilon                                                  \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ K \in \mathbf{Z}^+ : \frac{e^{N + K + 1}}{(N + K + 1)^m} > \varepsilon                                \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ K \in \mathbf{Z}^+ : \frac{e^K}{K^m} > \varepsilon                                                    \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ K \in \mathbf{Z}^+ : \forall\ n \geq K, \frac{e^n}{n^m} > \varepsilon  & \text{(monotone increasing)} \\
+        \implies & \lim_{n \to \infty} \frac{e^n}{n^m} = +\infty.
+    \end{align*}
+    Since \(m\) is arbitrary, we conclude that
+    \[
+        \forall\ m \in \mathbf{Z}^+, \lim_{n \to \infty} \frac{e^n}{n^m} = +\infty.
+    \]
+\end{proof}
 
 \begin{exercise}\label{ex 4.5.9}
     Let \(P(x)\) be a polynomial, and let \(c > 0\).
