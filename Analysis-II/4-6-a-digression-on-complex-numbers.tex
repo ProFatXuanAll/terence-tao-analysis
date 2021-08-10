@@ -380,6 +380,88 @@ If \(z, z' \in \mathbf{C}\) such that \(z = z'\), then \(\Re(z) = \Re(z')\), \(\
     as well as the triangle inequality \(\abs*{z + w} \leq \abs*{z} + \abs*{w}\).
 \end{lemma}
 
+\begin{proof}
+    We have
+    \begin{align*}
+        \abs*{z} & = \abs*{\Re(z) + i \Im(z)}                       & \text{(by Definition \ref{4.6.8})}  \\
+                 & = \sqrt{\big(\Re(z)\big)^2 + \big(\Im(z)\big)^2} & \text{(by Definition \ref{4.6.10})} \\
+                 & \geq 0                                           & (\Re(z), \Im(z) \in \mathbf{R})
+    \end{align*}
+    and
+    \begin{align*}
+             & \abs*{z} = 0                                                                             \\
+        \iff & \abs*{\Re(z) + i \Im(z)} = 0                       & \text{(by Definition \ref{4.6.8})}  \\
+        \iff & \sqrt{\big(\Re(z)\big)^2 + \big(\Im(z)\big)^2} = 0 & \text{(by Definition \ref{4.6.10})} \\
+        \iff & \big(\Re(z) = 0\big) \land \big(\Im(z) = 0\big)    & (\Re(z), \Im(z) \in \mathbf{R})     \\
+        \iff & z = 0.                                             & \text{(by Definition \ref{4.6.2})}
+    \end{align*}
+    Since
+    \begin{align*}
+        z \overline{z} & = \big(\Re(z) + i \Im(z)\big) \times \big(\overline{\Re(z) + i \Im(z)}\big)                     & \text{(by Definition \ref{4.6.8})}      \\
+                       & = \big(\Re(z) + i \Im(z)\big) \times \big(\Re(z) - i \Im(z)\big)                                & \text{(by Definition \ref{4.6.8})}      \\
+                       & = \big(\Re(z) + i \Im(z)\big) \times \big(\Re(z) + (-1) i \Im(z)\big)                           & \text{(by Lemma \ref{4.6.7})}           \\
+                       & = \big(\Re(z) + i \Im(z)\big) \times \big(\Re(z) + i (-1) \Im(z)\big)                           & \text{(by Lemma \ref{4.6.6})}           \\
+                       & = \big(\Re(z)\big)^2 - (-1) \big(\Im(z)\big)^2 + i \big((-1) \Re(z) \Im(z) + \Re(z) \Im(z)\big) & \text{(by Definition \ref{4.6.5})}      \\
+                       & = \big(\Re(z)\big)^2 + \big(\Im(z)\big)^2                                                       & (\Re(z), \Im(z) \in \mathbf{R})         \\
+                       & = \Big(\sqrt{\big(\Re(z)\big)^2 + \big(\Im(z)\big)^2}\Big)^2                                    & \big(\Re(z)\big)^2 + \big(\Im(z)\big)^2 \\
+                       & = \abs*{z}^2,                                                                                   & \text{(by Definition \ref{4.6.10})}
+    \end{align*}
+    we know that \(\abs*{z} = \sqrt{\abs*{z}^2} = \sqrt{z \overline{z}}\).
+    Thus
+    \begin{align*}
+        \abs*{z} \abs*{w} & = \sqrt{z \overline{z}} \sqrt{w \overline{w}} & \text{(from the proof above)}                   \\
+                          & = \sqrt{z \overline{z} w \overline{w}}        & (z \overline{z}, w \overline{w} \in \mathbf{R}) \\
+                          & = \sqrt{zw \overline{z} \; \overline{w}}      & \text{(by Lemma \ref{4.6.6})}                   \\
+                          & = \sqrt{zw \overline{zw}}                     & \text{(by Lemma \ref{4.6.9})}                   \\
+                          & = \abs*{zw}                                   & \text{(from the proof above)}
+    \end{align*}
+    and
+    \begin{align*}
+        \abs*{\overline{z}} & = \sqrt{\overline{z} \; \overline{\overline{z}}} & \text{(from the proof above)} \\
+                            & = \sqrt{\overline{z} z}                          & \text{(by Lemma \ref{4.6.9})} \\
+                            & = \sqrt{z \overline{z}}                          & \text{(by Lemma \ref{4.6.6})} \\
+                            & = \abs*{z}.                                      & \text{(from the proof above)}
+    \end{align*}
+    Since
+    \begin{align*}
+                 & \begin{cases}
+            \abs*{\Re(z)} = \sqrt{\abs*{\Re(z)}^2} \leq \sqrt{\big(\Re(z)\big)^2 + \big(\Im(z)\big)^2} \\
+            \abs*{\Im(z)} = \sqrt{\abs*{\Im(z)}^2} \leq \sqrt{\big(\Re(z)\big)^2 + \big(\Im(z)\big)^2} \\
+            \big(\abs*{\Re(z)} + \abs*{\Im(z)}\big)^2 \geq \big(\Re(z)\big)^2 + \big(\Im(z)\big)^2
+        \end{cases} & (\Re(z), \Im(z) \in \mathbf{R})     \\
+        \implies & \begin{cases}
+            \abs*{\Re(z)} \leq \abs*{z} \\
+            \abs*{\Im(z)} \leq \abs*{z} \\
+            \abs*{\Re(z)} + \abs*{\Im(z)} \geq \sqrt{\big(\Re(z)\big)^2 + \big(\Im(z)\big)^2} = \abs*{z}
+        \end{cases} & \text{(by Definition \ref{4.6.10})} \\
+        \implies & \begin{cases}
+            -\abs*{z} \leq \Re(z) \leq \abs*{z} \\
+            -\abs*{z} \leq \Im(z) \leq \abs*{z} \\
+            \abs*{\Re(z)} + \abs*{\Im(z)} \geq \abs*{z}
+        \end{cases}
+    \end{align*}
+    we know that
+    \begin{align*}
+        \Re(z \overline{w}) & \leq \abs*{z \overline{w}}     & \text{(from the proof above)} \\
+                            & = \abs*{z} \abs*{\overline{w}} & \text{(from the proof above)} \\
+                            & = \abs*{z} \abs*{w}.           & \text{(from the proof above)}
+    \end{align*}
+    Thus
+    \begin{align*}
+                 & \overline{z \overline{w}} = \overline{z} \; \overline{\overline{w}} = \overline{z} w                         & \text{(by Lemma \ref{4.6.9})}                     \\
+        \implies & \Re(z \overline{w}) = \frac{z \overline{w} + \overline{z} w}{2}                                              & \text{(by Exercise \ref{ex 4.6.5})}               \\
+        \implies & \frac{z \overline{w} + \overline{z} w}{2} \leq \abs*{z} \abs*{w}                                             & \text{(from the proof above)}                     \\
+        \implies & z \overline{w} + \overline{z} w \leq 2 \abs*{z} \abs*{w}                                                                                                         \\
+        \implies & \abs*{z}^2 + z \overline{w} + \overline{z} w + \abs*{w}^2 \leq \abs*{z}^2 + 2 \abs*{z} \abs*{w} + \abs*{w}^2                                                     \\
+        \implies & \abs*{z}^2 + z \overline{w} + \overline{z} w + \abs*{w}^2 \leq (\abs*{z} + \abs*{w})^2                                                                           \\
+        \implies & z \overline{z} + z \overline{w} + \overline{z} w + w \overline{w} \leq (\abs*{z} + \abs*{w})^2               & \text{(from the proof above)}                     \\
+        \implies & (z + w) (\overline{z} + \overline{w}) \leq (\abs*{z} + \abs*{w})^2                                           & \text{(by Lemma \ref{4.6.6})}                     \\
+        \implies & (z + w) (\overline{z + w}) \leq (\abs*{z} + \abs*{w})^2                                                      & \text{(by Lemma \ref{4.6.9})}                     \\
+        \implies & \abs*{z + w}^2 \leq (\abs*{z} + \abs*{w})^2                                                                  & \text{(from the proof above)}                     \\
+        \implies & \abs*{z + w} \leq \abs*{z} + \abs*{w}.                                                                       & (\abs*{z + w}, \abs*{z}, \abs*{w} \in \mathbf{R})
+    \end{align*}
+\end{proof}
+
 \begin{definition}[Complex reciprocal]\label{4.6.12}
     If \(z\) is a non-zero complex number, we define the \emph{reciprocal} \(z^{-1}\) of \(z\) to be the complex number \(z^{-1} \coloneqq \abs*{z}^{-2} \overline{z}\)
     (note that \(\abs*{z}^{-2}\) is well-defined as a positive real number because \(\abs*{z}\) is positive real, thanks to Lemma \ref{4.6.11}).
