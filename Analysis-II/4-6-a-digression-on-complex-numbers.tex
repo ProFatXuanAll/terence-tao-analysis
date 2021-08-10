@@ -280,10 +280,80 @@ If \(z, z' \in \mathbf{C}\) such that \(z = z'\), then \(\Re(z) = \Re(z')\), \(\
 \end{proof}
 
 \begin{lemma}[Complex conjugation is an involution]\label{4.6.9}
-    Let \(z, w\) be complex numbers, then \(\overline{z + w} = \overline{z} + \overline{w}\), \(\overline{-z} = -\overline{z}\), and \(\overline{zw} = \overline{z} \overline{w}\).
+    Let \(z, w\) be complex numbers, then \(\overline{z + w} = \overline{z} + \overline{w}\), \(\overline{-z} = -\overline{z}\), and \(\overline{zw} = \overline{z} \; \overline{w}\).
     Also \(\overline{\overline{z}} = z\).
     Finally, we have \(\overline{z} = \overline{w}\) if and only if \(z = w\), and \(\overline{z} = z\) if and only if \(z\) is real.
 \end{lemma}
+
+\begin{proof}
+    First we show that \(\overline{z + w} = \overline{z} + \overline{w}\).
+    \begin{align*}
+        \overline{z + w} & = \overline{\Re(z) + i \Im(z) + \Re(w) + i \Im(w)}                     & \text{(by Definition \ref{4.6.8})} \\
+                         & = \overline{\big(\Re(z) + \Re(w)\big) + \big(i \Im(z) + i \Im(w)\big)} & \text{(by Lemma \ref{4.6.4})}      \\
+                         & = \overline{\big(\Re(z) + \Re(w)\big) + i \big(\Im(z) + \Im(w)\big)}   & \text{(by Lemma \ref{4.6.6})}      \\
+                         & = \big(\Re(z) + \Re(w)\big) - i \big(\Im(z) + \Im(w)\big)              & \text{(by Definition \ref{4.6.8})} \\
+                         & = \big(\Re(z) + \Re(w)\big) + (-1) i \big(\Im(z) + \Im(w)\big)         & \text{(by Lemma \ref{4.6.7})}      \\
+                         & = \big(\Re(z) + \Re(w)\big) + \big((-1) i \Im(z) + (-1) i \Im(w)\big)  & \text{(by Lemma \ref{4.6.6})}      \\
+                         & = \big(\Re(z) + (-1) i \Im(z)\big) + \big(\Re(w) + (-1) i \Im(w)\big)  & \text{(by Lemma \ref{4.6.4})}      \\
+                         & = \big(\Re(z) - i \Im(z)\big) + \big(\Re(w) - i \Im(w)\big)            & \text{(by Lemma \ref{4.6.7})}      \\
+                         & = \overline{\Re(z) + i \Im(z)} + \overline{\Re(w) + i \Im(w)}          & \text{(by Definition \ref{4.6.8})} \\
+                         & = \overline{z} + \overline{w}.                                         & \text{(by Definition \ref{4.6.8})}
+    \end{align*}
+
+    Next we show that \(\overline{-z} = -\overline{z}\).
+    \begin{align*}
+        \overline{-z} & = \overline{-\Re(z) - i \Im(z)}          & \text{(by Definition \ref{4.6.8})} \\
+                      & = \overline{(-1) \Re(z) + (-1) i \Im(z)} & \text{(by Lemma \ref{4.6.7})}      \\
+                      & = (-1) \Re(z) - (-1) i \Im(z)            & \text{(by Definition \ref{4.6.8})} \\
+                      & = (-1) \big(\Re(z) - i \Im(z)\big)       & \text{(by Lemma \ref{4.6.6})}      \\
+                      & = (-1) \overline{\Re(z) + i \Im(z)}      & \text{(by Definition \ref{4.6.8})} \\
+                      & = (-1) \overline{z}                      & \text{(by Definition \ref{4.6.8})} \\
+                      & = -\overline{z}.                         & \text{(by Lemma \ref{4.6.7})}
+    \end{align*}
+
+    Next we show that \(\overline{zw} = \overline{z} \; \overline{w}\).
+    \begin{align*}
+        \overline{zw} & = \overline{\big(\Re(z) + i \Im(z)\big) \times \big(\Re(w) + i \Im(w)\big)}            & \text{(by Definition \ref{4.6.8})} \\
+                      & = \overline{\Re(z) \Re(w) - \Im(z) \Im(w) + i \big(\Re(z) \Im(w) + \Im(z) \Re(w)\big)} & \text{(by Definition \ref{4.6.5})} \\
+                      & = \Re(z) \Re(w) - \Im(z) \Im(w) - i \big(\Re(z) \Im(w) + \Im(z) \Re(w)\big)            & \text{(by Definition \ref{4.6.8})} \\
+                      & = \big(\Re(z) - i \Im(z)\big) \times \big(\Re(w) - i \Im(w)\big)                       & \text{(by Definition \ref{4.6.5})} \\
+                      & = \overline{\Re(z) + i \Im(z)} \; \overline{\Re(w) + i \Im(w)}                         & \text{(by Definition \ref{4.6.8})} \\
+                      & = \overline{z} \; \overline{w}.                                                        & \text{(by Definition \ref{4.6.5})}
+    \end{align*}
+
+    Next we show that \(\overline{\overline{z}} = z\).
+    \begin{align*}
+        \overline{\overline{z}} & = \overline{\overline{\Re(z) + i \Im(z)}} & \text{(by Definition \ref{4.6.8})} \\
+                                & = \overline{\Re(z) - i \Im(z)}            & \text{(by Definition \ref{4.6.8})} \\
+                                & = \overline{\Re(z) + (-1) i \Im(z)}       & \text{(by Lemma \ref{4.6.7})}      \\
+                                & = \overline{\Re(z) + i (-1) \Im(z)}       & \text{(by Lemma \ref{4.6.6})}      \\
+                                & = \Re(z) - i (-1) \Im(z)                  & \text{(by Definition \ref{4.6.8})} \\
+                                & = \Re(z) + (-1) i (-1) \Im(z)             & \text{(by Lemma \ref{4.6.7})}      \\
+                                & = \Re(z) + (-1) (-1) i \Im(z)             & \text{(by Lemma \ref{4.6.7})}      \\
+                                & = \Re(z) + i \Im(z)                       & \text{(by Definition \ref{4.6.5})} \\
+                                & = z.                                      & \text{(by Definition \ref{4.6.8})}
+    \end{align*}
+
+    Next we show that \(\overline{z} = \overline{w} \iff z = w\).
+    \begin{align*}
+                 & \overline{z} = \overline{w}                                                                         \\
+        \implies & \overline{\overline{z}} = \overline{\overline{w}} & \text{(by Additional Corollary \ref{ac 4.6.4})} \\
+        \implies & z = w                                             & \text{(from the proof above)}                   \\
+        \implies & \overline{z} = \overline{w}.                      & \text{(by Additional Corollary \ref{ac 4.6.4})}
+    \end{align*}
+
+    Finally we show that \(\overline{z} = z \iff \Im(z) = 0\).
+    \begin{align*}
+             & \overline{z} = z                                                                                    \\
+        \iff & \overline{\Re(z) + i \Im(z)} = \Re(z) + i \Im(z)               & \text{(by Definition \ref{4.6.8})} \\
+        \iff & \Re(z) - i \Im(z) = \Re(z) + i \Im(z)                          & \text{(by Definition \ref{4.6.8})} \\
+        \iff & \Re(z) + (-1) i \Im(z) = \Re(z) + i \Im(z)                     & \text{(by Lemma \ref{4.6.7})}      \\
+        \iff & \Re(z) + i (-1) \Im(z) = \Re(z) + i \Im(z)                     & \text{(by Lemma \ref{4.6.6})}      \\
+        \iff & \big(\Re(z) = \Re(z)\big) \land \big((-1) \Im(z) = \Im(z)\big) & \text{(by Definition \ref{4.6.2})} \\
+        \iff & (-1) \Im(z) = \Im(z)                                                                                \\
+        \iff & \Im(z) = 0.                                                    & (\Im(z) \in \mathbf{R})
+    \end{align*}
+\end{proof}
 
 \begin{note}
     We cannot extend the definition of absolute value directly to the complex numbers, as most complex numbers are neither positive nor negative.
