@@ -570,7 +570,7 @@ If \(z, w \in \mathbf{C}\) such that \(z = w \neq 0\), then \(z^{-1} = w^{-1}\).
 \end{proof}
 
 \begin{exercise}\label{ex 4.6.5}
-    If \(z\) is a complex number, show that \(\Re(z) = \frac{z + \overline{z}}{2}\) and \(\Im(z) = \frac{z - \overline{z}}{2}\).
+    If \(z\) is a complex number, show that \(\Re(z) = \frac{z + \overline{z}}{2}\) and \(\Im(z) = \frac{z - \overline{z}}{2i}\).
 \end{exercise}
 
 \begin{proof}
@@ -584,13 +584,13 @@ If \(z, w \in \mathbf{C}\) such that \(z = w \neq 0\), then \(z^{-1} = w^{-1}\).
     \end{align*}
     and
     \begin{align*}
-        \frac{z - \overline{z}}{2} & = \frac{\Re(z) + i \Im(z) - \overline{\Re(z) + i \Im(z)}}{2}            & \text{(by Definition \ref{4.6.8})} \\
-                                   & = \frac{\Re(z) + i \Im(z) + \overline{-\big(\Re(z) + i \Im(z)\big)}}{2} & \text{(by Lemma \ref{4.6.9})}      \\
-                                   & = \frac{\Re(z) + i \Im(z) + \overline{-\Re(z) - i \Im(z)\big)}}{2}      & \text{(by Definition \ref{4.6.3})} \\
-                                   & = \frac{\Re(z) + i \Im(z) - \Re(z) + i \Im(z)}{2}                       & \text{(by Definition \ref{4.6.8})} \\
-                                   & = \frac{\Re(z) - \Re(z) + i \Im(z) + i \Im(z)}{2}                       & \text{(by Lemma \ref{4.6.4})}      \\
-                                   & = \frac{2 \Im(z)}{2}                                                    & \text{(by Lemma \ref{4.6.4})}      \\
-                                   & = \Im(z).                                                               & (\Im(z) \in \mathbf{R})
+        \frac{z - \overline{z}}{2i} & = \frac{\Re(z) + i \Im(z) - \overline{\Re(z) + i \Im(z)}}{2i}            & \text{(by Definition \ref{4.6.8})}  \\
+                                    & = \frac{\Re(z) + i \Im(z) + \overline{-\big(\Re(z) + i \Im(z)\big)}}{2i} & \text{(by Lemma \ref{4.6.9})}       \\
+                                    & = \frac{\Re(z) + i \Im(z) + \overline{-\Re(z) - i \Im(z)\big)}}{2i}      & \text{(by Definition \ref{4.6.3})}  \\
+                                    & = \frac{\Re(z) + i \Im(z) - \Re(z) + i \Im(z)}{2i}                       & \text{(by Definition \ref{4.6.8})}  \\
+                                    & = \frac{\Re(z) - \Re(z) + i \Im(z) + i \Im(z)}{2i}                       & \text{(by Lemma \ref{4.6.4})}       \\
+                                    & = \frac{2i \Im(z)}{2i}                                                   & \text{(by Lemma \ref{4.6.4})}       \\
+                                    & = \Im(z).                                                                & \text{(by Definition \ref{4.6.12})}
     \end{align*}
 \end{proof}
 
@@ -621,6 +621,76 @@ If \(z, w \in \mathbf{C}\) such that \(z = w \neq 0\), then \(z^{-1} = w^{-1}\).
     Let \(z, w\) be non-zero complex numbers.
     Show that \(\abs*{z + w} = \abs*{z} + \abs*{w}\) if and only if there exists a positive real number \(c > 0\) such that \(z = cw\).
 \end{exercise}
+
+\begin{proof}
+    Since
+    \begin{align*}
+        \abs*{z + w} & = \abs*{\Re(z) + \Re(w) + i \big(\Im(z) + \Im(w)\big)}             & \text{(by Definition \ref{4.6.8})}  \\
+                     & = \sqrt{\big(\Re(z) + \Re(w)\big)^2 + \big(\Im(z) + \Im(w)\big)^2} & \text{(by Definition \ref{4.6.10})}
+    \end{align*}
+    and
+    \begin{align*}
+        \abs*{z} + \abs*{w} & = \abs*{\Re(z) + i \Im(z)} + \abs*{\Re(w) + i \Im(w)}                                              & \text{(by Definition \ref{4.6.8})}  \\
+                            & = \sqrt{\big(\Re(z)\big)^2 + \big(\Im(z)\big)^2} + \sqrt{\big(\Re(w)\big)^2 + \big(\Im(w)\big)^2}, & \text{(by Definition \ref{4.6.10})}
+    \end{align*}
+    we know that
+    \begin{align*}
+             & \abs*{z + w} = \abs*{z} + \abs*{w}                                                                              \\
+        \iff & \abs*{z + w}^2 = \abs*{z}^2 + 2 \abs*{z} \abs*{w} + \abs*{w}^2                                                  \\
+        \iff & \big(\Re(z) + \Re(w)\big)^2 + \big(\Im(z) + \Im(w)\big)^2                                                       \\
+             & = \big(\Re(z)\big)^2 + \big(\Im(z)\big)^2 + 2 \abs*{z} \abs*{w} + \big(\Re(w)\big)^2 + \big(\Im(w)\big)^2       \\
+        \iff & \Re(z) \Re(w) + \Im(z) \Im(w) = \abs*{z} \abs*{w}                                                               \\
+        \iff & \big(\Re(z) \Re(w)\big)^2 + 2 \Re(z) \Re(w) \Im(z) \Im(w) + \big(\Im(z) \Im(w)\big)^2                           \\
+             & = \big(\Re(z) \Re(w)\big)^2 + \big(\Re(z) \Im(w)\big)^2 + \big(\Im(z) \Re(w)\big)^2 + \big(\Im(z) \Im(w)\big)^2 \\
+        \iff & 2 \Re(z) \Re(w) \Im(z) \Im(w) = \big(\Re(z) \Im(w)\big)^2 + \big(\Im(z) \Re(w)\big)^2                           \\
+        \iff & \big(\Re(z) \Im(w)\big)^2 - 2 \Re(z) \Re(w) \Im(z) \Im(w) + \big(\Im(z) \Re(w)\big)^2 = 0                       \\
+        \iff & \big(\Re(z) \Im(w) - \Im(z) \Re(w)\big)^2 = 0                                                                   \\
+        \iff & \Re(z) \Im(w) - \Im(z) \Re(w) = 0                                                                               \\
+        \iff & \Re(z) \Im(w) = \Im(z) \Re(w).
+    \end{align*}
+    By hypothesis we know that \(w \neq 0 \neq z\).
+    Thus we can split into two cases:
+    \begin{itemize}
+        \item \(\Re(z) \neq 0\) and \(\Re(w) \neq 0\).
+              Then we have
+              \begin{align*}
+                       & \abs*{z + w} = \abs*{z} + \abs*{w}            \\
+                  \iff & \Re(z) \Im(w) = \Im(z) \Re(w)                 \\
+                  \iff & \frac{\Im(z)}{\Re(z)} = \frac{\Im(w)}{\Re(w)} \\
+                  \iff & \exists\ c \in \mathbf{R}^+ : z = cw.
+              \end{align*}
+        \item \(\Re(z) \neq 0\) and \(\Im(w) \neq 0\).
+              Then we have
+              \begin{align*}
+                       & \abs*{z + w} = \abs*{z} + \abs*{w}            \\
+                  \iff & \Re(z) \Im(w) = \Im(z) \Re(w) \neq 0          \\
+                  \iff & \frac{\Im(z)}{\Re(z)} = \frac{\Im(w)}{\Re(w)} \\
+                  \iff & \exists\ c \in \mathbf{R}^+ : z = cw.
+              \end{align*}
+        \item \(\Im(z) \neq 0\) and \(\Re(w) \neq 0\).
+              Then we have
+              \begin{align*}
+                       & \abs*{z + w} = \abs*{z} + \abs*{w}            \\
+                  \iff & \Re(z) \Im(w) = \Im(z) \Re(w) \neq 0          \\
+                  \iff & \frac{\Im(z)}{\Re(z)} = \frac{\Im(w)}{\Re(w)} \\
+                  \iff & \exists\ c \in \mathbf{R}^+ : z = cw.
+              \end{align*}
+        \item \(\Im(z) \neq 0\) and \(\Im(w) \neq 0\).
+              Then we have
+              \begin{align*}
+                       & \abs*{z + w} = \abs*{z} + \abs*{w}            \\
+                  \iff & \Re(z) \Im(w) = \Im(z) \Re(w)                 \\
+                  \iff & \frac{\Re(z)}{\Im(z)} = \frac{\Re(w)}{\Im(w)} \\
+                  \iff & \exists\ c \in \mathbf{R}^+ : z = cw.
+              \end{align*}
+    \end{itemize}
+    From all cases above we conclude that
+    \begin{align*}
+             & \abs*{z + w} = \abs*{z} + \abs*{w}    \\
+        \iff & \Re(z) \Im(w) = \Im(z) \Re(w)         \\
+        \iff & \exists\ c \in \mathbf{R}^+ : z = cw.
+    \end{align*}
+\end{proof}
 
 \begin{exercise}\label{ex 4.6.9}
     Prove Lemma \ref{4.6.13}.
