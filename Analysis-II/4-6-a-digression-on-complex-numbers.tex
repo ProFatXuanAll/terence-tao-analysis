@@ -498,6 +498,90 @@ If \(z, w \in \mathbf{C}\) such that \(z = w \neq 0\), then \(z^{-1} = w^{-1}\).
     If \((z_n)_{n = 1}^\infty\) is a sequence of complex numbers, and \(z\) is another complex number, then we have \(\lim_{n \to \infty} z_n = z\) in this metric space if and only if \(\lim_{n \to \infty} \Re(z_n) = \Re(z)\) and \(\lim_{n \to \infty} \Im(z_n) = \Im(z)\).
 \end{lemma}
 
+\begin{proof}
+    First we show that \((\mathbf{C}, d)\) is a metric space.
+    Since
+    \[
+        \forall\ z \in \mathbf{C}, d(z, z) = \abs*{z - z} = \abs*{0} = 0,
+    \]
+    we know that \((\mathbf{C}, d)\) is a reflexive.
+    Since
+    \begin{align*}
+                 & \forall\ w, z \in \mathbf{C}, w \neq z                                                                                         \\
+        \implies & \big(\Re(w) \neq \Re(z)\big) \lor \big(\Im(w) \neq \Im(z)\big)                           & \text{(by Definition \ref{4.6.2})}  \\
+        \implies & \Big(\big(\Re(w) - \Re(z)\big)^2 > 0\Big) \lor \Big(\big(\Im(w) - \Im(z)\big)^2 > 0\Big)                                       \\
+        \implies & \sqrt{\big(\Re(w) - \Re(z)\big)^2 + \big(\Im(w) - \Im(z)\big)^2} > 0                                                           \\
+        \implies & d(w, z) = \abs*{w - z} > 0,                                                              & \text{(by Definition \ref{4.6.10})}
+    \end{align*}
+    we know that \((\mathbf{C}, d)\) is a positive.
+    Since
+    \begin{align*}
+        \forall\ w, z \in \mathbf{C}, d(w, z) & = \abs*{w - z}                                            \\
+                                              & = \abs*{-1} \abs*{w - z}                                  \\
+                                              & = \abs*{(-1) (w - z)}    & \text{(by Lemma \ref{4.6.11})} \\
+                                              & = \abs*{z - w}           & \text{(by Lemma \ref{4.6.4})}  \\
+                                              & = d(z, w),
+    \end{align*}
+    we know that \((\mathbf{C}, d)\) is a symmetry.
+    Since
+    \begin{align*}
+        \forall\ x, y, z \in \mathbf{C}, d(x, z) & = \abs*{x - z}                                                    \\
+                                                 & = \abs*{x - y + y - z}                                            \\
+                                                 & \leq \abs*{x - y} + \abs*{y - z} & \text{(by Lemma \ref{4.6.11})} \\
+                                                 & = d(x, y) + d(y, z),
+    \end{align*}
+    we know that \((\mathbf{C}, d)\) is a transitive.
+    Combine all proofs above we conclude by Definition \ref{1.1.2} that \((\mathbf{C}, d)\) is a metric space.
+
+    Now we show that
+    \[
+        d - \lim_{n \to \infty} z_n = z \iff \begin{cases}
+            \lim_{n \to \infty} \Re(z_n) = \Re(z) \\
+            \lim_{n \to \infty} \Im(z_n) = \Im(z)
+        \end{cases}
+    \]
+    This is true since
+    \begin{align*}
+                 & d - \lim_{n \to \infty} z_n = z                                                                                                                                            \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, d(z_n, z) < \varepsilon                                                            \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \abs*{z_n - z} < \varepsilon                                                       \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \sqrt{\big(\Re(z_n) - \Re(z)\big)^2 + \big(\Im(z_n) - \Im(z)\big)^2} < \varepsilon \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \begin{cases}
+            \sqrt{\big(\Re(z_n) - \Re(z)\big)^2} < \varepsilon \\
+            \sqrt{\big(\Im(z_n) - \Im(z)\big)^2} < \varepsilon
+        \end{cases}                                                         \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \begin{cases}
+            \abs*{\Re(z_n) - \Re(z)} < \varepsilon \\
+            \abs*{\Im(z_n) - \Im(z)} < \varepsilon
+        \end{cases}                                                         \\
+        \implies & \begin{cases}
+            \lim_{n \to \infty} \Re(z_n) = \Re(z) \\
+            \lim_{n \to \infty} \Im(z_n) = \Im(z)
+        \end{cases}
+    \end{align*}
+    and
+    \begin{align*}
+                 & \begin{cases}
+            \lim_{n \to \infty} \Re(z_n) = \Re(z) \\
+            \lim_{n \to \infty} \Im(z_n) = \Im(z)
+        \end{cases}                                                                                                                                                                                \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \begin{cases}
+            \abs*{\Re(z_n) - \Re(z)} < \frac{\varepsilon}{2} \\
+            \abs*{\Im(z_n) - \Im(z)} < \frac{\varepsilon}{2}
+        \end{cases}                                                                                        \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \begin{cases}
+            \big(\Re(z_n) - \Re(z)\big)^2 < \frac{\varepsilon^2}{4} \\
+            \big(\Im(z_n) - \Im(z)\big)^2 < \frac{\varepsilon^2}{4}
+        \end{cases}                                                                                        \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \big(\Re(z_n) - \Re(z)\big)^2 + \big(\Im(z_n) - \Im(z)\big)^2 < \frac{\varepsilon^2}{2}                           \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \sqrt{\big(\Re(z_n) - \Re(z)\big)^2 + \big(\Im(z_n) - \Im(z)\big)^2} < \frac{\varepsilon}{\sqrt{2}} < \varepsilon \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \abs*{\Re(z_n) - \Re(z) + i \big(\Im(z_n) - \Im(z)\big)} < \varepsilon                                            \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \abs*{z_n - z} < \varepsilon                                                                                      \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, d(z_n, z) < \varepsilon                                                                                           \\
+        \implies & d - \lim_{n \to \infty} z_n = z.
+    \end{align*}
+\end{proof}
+
 \begin{lemma}[Complex limit laws]\label{4.6.14}
     Let \((z_n)_{n = 1}^\infty\) and \((w_n)_{n = 1}^\infty\) be convergent sequences of complex numbers, and let \(c\) be a complex number.
     Then the sequences \((z_n + w_n)_{n = 1}^\infty\), \((z_n - w_n)_{n = 1}^\infty\), \((c z_n)_{n = 1}^\infty\), \((z_n w_n)_{n = 1}^\infty\), and \((\overline{z_n})_{n = 1}^\infty\) are also convergent, with
