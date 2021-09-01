@@ -1053,6 +1053,39 @@ If \(z, w \in \mathbf{C}\) such that \(z = w \neq 0\), then \(z^{-1} = w^{-1}\).
     In particular, show that \(\mathbf{C}\) is not compact.
 \end{exercise}
 
+\begin{proof}
+    Let \(d\) be the metric defined in Definition \ref{4.6.10}.
+    By Corollary \ref{1.5.6} we know that \((E, d|_{E \times E})\) is compact implies \((E, d|_{E \times E})\) is closed and bounded.
+    So we only need to show that \((E, d|_{E \times E})\) is closed and bounded implies \((E, d|_{E \times E})\) is compact.
+    Suppose that \((E, d|_{E \times E})\) is closed and bounded.
+    Let \(d_2 = d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2}\) and let \(f : \mathbf{R}^2 \to \mathbf{C}\) be the function defined in Exercise \ref{ex 4.6.11}.
+    Then we know that \(f^{-1}\) is well-defined and both \(f, f^{-1}\) are continuous.
+    Since \((E, d|_{E \times E})\) is closed, by Theorem \ref{2.1.5}(a)(d) we know that \(\big(f^{-1}(E), d_2|_{f^{-1}(E) \times f^{-1}(E)}\big)\) is closed.
+    Since \((E, d|_{E \times E})\) is bounded, we know that
+    \begin{align*}
+                 & \forall\ z \in \mathbf{C}, \exists\ r \in \mathbf{R}^+ : E \subseteq B_{(\mathbf{C}, d)}(z, r)     & \text{(by Definition \ref{1.5.3})}  \\
+        \implies & \exists\ r \in \mathbf{R}^+ : E \subseteq B_{(\mathbf{C}, d)}(0, r)                                                                      \\
+        \implies & \exists\ r \in \mathbf{R}^+ : f^{-1}(E) \subseteq f^{-1}\big(B_{(\mathbf{C}, d)}(0, r)\big)                                              \\
+        \implies & \exists\ r \in \mathbf{R}^+ : \forall\ x \in E, \sqrt{\big(\Re(x)\big)^2 + \big(\Im(x)\big)^2} < r & \text{(by Definition \ref{4.6.10})} \\
+        \implies & \exists\ r \in \mathbf{R}^+ : \forall\ x \in E, \big(\Re(x)\big)^2 + \big(\Im(x)\big)^2 < r^2                                            \\
+        \implies & \exists\ r \in \mathbf{R}^+ : \forall\ x \in E, \begin{cases}
+            \big(\Re(x)\big)^2 < r^2 \\
+            \big(\Im(x)\big)^2 < r^2
+        \end{cases}                                                              \\
+        \implies & \exists\ r \in \mathbf{R}^+ : \forall\ x \in E, \begin{cases}
+            \abs*{\Re(x)} < r \\
+            \abs*{\Im(x)} < r
+        \end{cases}                                                              \\
+        \implies & \exists\ r \in \mathbf{R}^+ : f^{-1}(E) \subseteq B_{(\mathbf{R}^2, d_2)}(0, r).
+    \end{align*}
+    Thus \(\big(f^{-1}(E), d_2|_{f^{-1}(E) \times f^{-1}(E)}\big)\) is bounded.
+    Since \(\big(f^{-1}(E), d_2|_{f^{-1}(E) \times f^{-1}(E)}\big)\) is closed and bounded, by Theorem \ref{1.5.7} we know that \(\big(f^{-1}(E), d_2|_{f^{-1}(E) \times f^{-1}(E)}\big)\) is compact.
+    Since \(E = f\big(f^{-1}(E)\big)\), by Theorem \ref{2.3.1} we know that \((E, d|_{E \times E})\) is compact.
+    Thus we conclude that \((E, d|_{E \times E})\) is compact iff \((E, d|_{E \times E})\) is closed and bounded.
+
+    Since \(\mathbf{R} \subseteq \mathbf{C}\) and \((\mathbf{R}, d|_{\mathbf{R} \times \mathbf{R}})\) is not compact, we conclude that \((\mathbf{C}, d)\) is not compact.
+\end{proof}
+
 \begin{exercise}\label{ex 4.6.14}
     Prove Lemma \ref{4.6.14}.
 \end{exercise}
