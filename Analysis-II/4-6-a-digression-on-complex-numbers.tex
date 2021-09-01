@@ -963,6 +963,65 @@ If \(z, w \in \mathbf{C}\) such that \(z = w \neq 0\), then \(z^{-1} = w^{-1}\).
     Show that \(f\) is a bijection, and that \(f\) and \(f^{-1}\) are both continuous maps.
 \end{exercise}
 
+\begin{proof}
+    First we show that \(f\) is injective.
+    Let \(a, b, c, d \in \mathbf{R}\) such that \(f(a, b) = f(c, d)\).
+    Then we have
+    \begin{align*}
+                 & f(a, b) = f(c, d)     & \text{(by hypothesis)}              \\
+        \implies & a + bi = c + di       & \text{(by the definition of \(f\))} \\
+        \implies & (a = c) \land (b = d) & \text{(by Definition \ref{4.6.2})}  \\
+        \implies & (a, b) = (c, d).
+    \end{align*}
+    Thus \(f\) is injective.
+
+    Next we show that \(f\) is surjective.
+    Let \(x \in \mathbf{C}\).
+    Then by Definition \ref{4.6.2} we know that there exist some \(a, b \in \mathbf{R}\) such that \(x = a + bi\).
+    By the definition of \(f\) we know that \(f(a, b) = x\).
+    Since \(x\) is arbitrary, we know that \(f\) is surjective.
+    Since \(f\) is both injective and surjective, we know that \(f\) is bijective, thus \(f^{-1}\) is well-defined.
+
+    Next we show that \(f\) is a continuous map.
+    Let \((a, b) \in \mathbf{R}^2\).
+    Let \(d_2 = d_{l^1}|_{\mathbf{R}^2 \times \mathbf{R}^2}\) and let \(d\) be the metric defined in Definition \ref{4.6.10}.
+    We want to show that \(f\) is continuous at \((a, b)\) from \((\mathbf{R}^2, d_2)\) to \((\mathbf{C}, d)\).
+    By Definition \ref{2.1.1} we need to show that
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ (x, y) \in \mathbf{R}^2, d_2\big((x, y), (a, b)\big) < \delta \implies d\big(f(x, y), f(a, b)\big) < \varepsilon.
+    \]
+    Now fix one \(\varepsilon\).
+    Then we have
+    \begin{align*}
+                 & \forall\ (x, y) \in \mathbf{R}^2, d\big(f(x, y), f(a, b)\big) < \varepsilon                                                         \\
+        \implies & \sqrt{(x - a)^2 + (y - b)^2} < \varepsilon                                                    & \text{(by Definition \ref{4.6.10})} \\
+        \implies & \sqrt{2} \sqrt{(x - a)^2 + (y - b)^2} < \sqrt{2} \varepsilon                                                                        \\
+        \implies & \abs*{x - a} + \abs*{y - b} \leq \sqrt{2} \sqrt{(x - a)^2 + (y - b)^2} < \sqrt{2} \varepsilon & \text{(by Exercise \ref{ex 1.1.8})} \\
+        \implies & d_2\big((x, y), (a, b)\big) \leq \sqrt{2} \varepsilon.
+    \end{align*}
+    By setting \(\delta = \sqrt{2} \varepsilon\) we are done.
+    Since \((a, b)\) is arbitrary, we know that \(f\) is continuous on \(\mathbf{R}^2\) from \((\mathbf{R}^2, d_2)\) to \((\mathbf{C}, d)\).
+
+    Finally we show that \(f^{-1}\) is a continuous map.
+    Let \(x \in \mathbf{C}\).
+    We want to show that \(f^{-1}\) is continuous at \(x\) from \((\mathbf{C}, d)\) to \((\mathbf{R}^2, d_2)\).
+    By Definition \ref{2.1.1} we need to show that
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ y \in \mathbf{C}, d\big(x, y\big) < \delta \implies d_2\big(f^{-1}(x), f^{-1}(y)\big) < \varepsilon.
+    \]
+    Now fix one \(\varepsilon\).
+    Then we have
+    \begin{align*}
+                 & \forall\ y \in \mathbf{C}, d_2\big(f^{-1}(x), f^{-1}(y)\big) < \varepsilon                                           \\
+        \implies & d_2\Big(\big(\Re(x), \Im(x)\big), \big(\Re(y), \Im(y)\big)\Big) < \varepsilon  & \text{(by Definition \ref{4.6.8})}  \\
+        \implies & \abs*{\Re(x) - \Re(y)} + \abs*{\Im(x) - \Im(y)} < \varepsilon                                                        \\
+        \implies & \sqrt{\big(\Re(x) - \Re(y)\big)^2 + \big(\Im(x) - \Im(y)\big)^2} < \varepsilon & \text{(by Exercise \ref{ex 1.1.8})} \\
+        \implies & d(x, y) < \varepsilon.
+    \end{align*}
+    By setting \(\delta = \varepsilon\) we are done.
+    Since \(x\) is arbitrary, we know that \(f^{-1}\) is continuous on \(\mathbf{C}\) from \((\mathbf{C}, d)\) to \((\mathbf{R}^2, d_2)\).
+\end{proof}
+
 \begin{exercise}\label{ex 4.6.12}
     Show that the complex numbers \(\mathbf{C}\) (with the usual metric \(d\)) form a connected metric space.
 \end{exercise}
