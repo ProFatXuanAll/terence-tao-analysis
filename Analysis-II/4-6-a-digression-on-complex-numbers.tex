@@ -930,6 +930,34 @@ If \(z, w \in \mathbf{C}\) such that \(z = w \neq 0\), then \(z^{-1} = w^{-1}\).
     Show that the complex numbers \(\mathbf{C}\) (with the usual metric \(d\)) form a complete metric space.
 \end{exercise}
 
+\begin{proof}
+    Suppose that \((\mathbf{C}, d)\) is not complete.
+    By Definition \ref{1.4.10} we know that there is a Cauchy sequence \((a_n)_{n = 1}^\infty\) in \((\mathbf{C}, d)\) which does not converge.
+    Let \(x \in \mathbf{C}\).
+    Then we have
+    \[
+        \exists\ \varepsilon \in \mathbf{R}^+ : \forall\ N_1 \in \mathbf{Z}^+, \exists\ n \geq N_1 : d(a_n, x) \geq \varepsilon.
+    \]
+    Fix such \(\varepsilon\).
+    Let \(i, j \in \mathbf{Z}^+\).
+    Since \((a_n)_{n = 1}^\infty\) is a Cauchy sequence in \((\mathbf{C}, d)\), by Definition \ref{1.4.6} we know that
+    \[
+        \exists\ N_2 \in \mathbf{Z}^+ : \forall\ i, j \geq N_2, d(a_i, a_j) < \varepsilon.
+    \]
+    Let \(N = \max(N_1, N_2)\).
+    Then we have
+    \begin{align*}
+                 & \exists\ n \geq N : \begin{cases}
+            d(a_n, x) \geq \varepsilon \\
+            \forall\ i, j \geq n, d(a_i, a_j) < \varepsilon
+        \end{cases}                                                                     \\
+        \implies & \exists\ n \geq N : \forall\ i, j \geq n, 2\varepsilon \leq d(a_i, x) + d(a_j, x) \leq d(a_i, a_j) \leq \varepsilon \\
+        \implies & 2\varepsilon \leq \varepsilon.
+    \end{align*}
+    But \(\varepsilon \in \mathbf{R}^+\), a contradiction.
+    Thus such Cauchy sequence does not exists, and \((\mathbf{C}, d)\) must be complete.
+\end{proof}
+
 \begin{exercise}\label{ex 4.6.11}
     Let \(f : \mathbf{R}^2 \to \mathbf{C}\) be the map \(f(a, b) \coloneqq a + bi\).
     Show that \(f\) is a bijection, and that \(f\) and \(f^{-1}\) are both continuous maps.
