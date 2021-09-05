@@ -1350,3 +1350,81 @@ Then we have
     Prove the ratio test for complex series, and use it to show that the series used to define the complex exponential is absolutely convergent.
     Then prove that \(\exp(z + w) = \exp(z) \exp(w)\) for all complex numbers \(z, w\).
 \end{exercise}
+
+\begin{proof}
+    Let \(d\) be the metric in Definition \ref{4.6.10}.
+    First we proof the ratio test of complex series.
+    Let \((a_n)_{n = m}^\infty\) be a sequence in \(\mathbf{C} \setminus \{0\}\) and let \(b_n = \abs*{a_n}\) for all \(n \in \{k \in \mathbf{N} : k \geq m\}\).
+    Then we know that \((b_n)_{n = 0}^\infty\) is a sequence in \(\mathbf{R}\).
+    Observe that
+    \[
+        \forall\ n \geq m, \frac{\abs*{b_{n + 1}}}{\abs*{b_n}} = \frac{\abs*{\abs*{a_{n + 1}}}}{\abs*{\abs*{a_n}}} \frac{\abs*{b_{n + 1}}}{\abs*{b_n}} = \frac{\abs*{a_{n + 1}}}{\abs*{a_n}}.
+    \]
+    By ratio test of real series we now split into three cases.
+    \begin{itemize}
+        \item \(\limsup_{n \to \infty} \frac{\abs*{b_{n + 1}}}{\abs*{b_n}} < 1\).
+              Then the series \(\sum_{n = 0}^\infty b_n\) is absolutely convergent.
+              But we have
+              \[
+                  \limsup_{n \to \infty} \frac{\abs*{b_{n + 1}}}{\abs*{b_n}} < 1 \implies \limsup_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} < 1
+              \]
+              and
+              \[
+                  \sum_{n = 0}^\infty b_n = \sum_{n = 0}^\infty \abs*{a_n}.
+              \]
+              By Additional Corollary \ref{ac 4.6.8} we know that \(\sum_{n = 0}^\infty \abs*{a_n} \in \mathbf{R}\) implies \(\sum_{n = 0}^\infty a_n \in \mathbf{C}\).
+        \item \(\liminf_{n \to \infty} \frac{\abs*{b_{n + 1}}}{\abs*{b_n}} > 1\).
+              Then the series \(\sum_{n = 0}^\infty b_n\) is divergent.
+              Since
+              \begin{align*}
+                           & \liminf_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} > 1 \\
+                  \implies & \lim_{n \to \infty} \abs*{a_n} \neq 0                          \\
+                  \implies & d - \lim_{n \to \infty} a_n \neq 0,
+              \end{align*}
+              by Additional Corollary \ref{ac 4.6.7} we know that \(\sum_{n = 0}^\infty a_n\) is divergent.
+        \item The remaining cases.
+              As in real series we cannot assert any conclusion.
+    \end{itemize}
+    Thus we conclude that
+    \begin{itemize}
+        \item If \(\limsup_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} < 1\), then the series \(\sum_{n = 0}^\infty a_n\) is absolutely convergent.
+        \item If \(\liminf_{n \to \infty} \frac{\abs*{a_{n + 1}}}{\abs*{a_n}} > 1\), then the series \(\sum_{n = 0}^\infty a_n\) is divergent.
+        \item In the remaining cases, we cannot assert any conclusion.
+    \end{itemize}
+
+    Next we show that Definition \ref{4.6.15} is absolutely convergent.
+    Let \(z \in \mathbf{C}\).
+    Suppose that \(z = 0\).
+    Then we have
+    \begin{align*}
+                 & \abs*{z} = 0                                 & \text{(by Lemma \ref{4.6.11})}      \\
+        \implies & \exp(0) = \sum_{n = 0}^\infty \frac{0^n}{n!} & \text{(by Definition \ref{4.6.15})} \\
+        \implies & \exp(0) = 1.                                 & \text{(by Theorem \ref{4.5.2}(e))}
+    \end{align*}
+    Thus complex exponential is absolutely convergent at \(0\).
+    Now suppose that \(z \neq 0\).
+    By Definition \ref{4.6.10} we know that \(\abs*{z} \in \mathbf{R}\).
+    Since
+    \begin{align*}
+        \forall\ n \in \mathbf{N}, \frac{\abs*{\frac{z^{n + 1}}{(n + 1)!}}}{\abs*{\frac{z^n}{n!}}} & = \frac{\abs*{z^{n + 1}} \abs*{n!}}{\abs*{z^n} \abs*{(n + 1)!}} & \text{(by Exercise \ref{ex 4.6.7})} \\
+                                                                                                   & = \frac{\abs*{z}^{n + 1} \abs*{n!}}{\abs*{z}^n \abs*{(n + 1)!}} & \text{(by Lemma \ref{4.6.11})}      \\
+                                                                                                   & = \frac{\abs*{z}}{n + 1},
+    \end{align*}
+    we know that
+    \begin{align*}
+        \limsup_{n \to \infty} \frac{\abs*{\frac{z^{n + 1}}{(n + 1)!}}}{\abs*{\frac{z^n}{n!}}} & = \limsup_{n \to \infty} \frac{\abs*{z}}{n + 1}   \\
+                                                                                               & = \abs*{z} \limsup_{n \to \infty} \frac{1}{n + 1} \\
+                                                                                               & = \abs*{z} 0 = 0 < 1.
+    \end{align*}
+    By ratio test above we know that \(\exp(z) = \sum_{n = 0}^\infty \frac{z^n}{n!}\) is absolutely convergent.
+
+    Finally we show that \(\exp(z + w) = \exp(z) \exp(w)\) for any \(z, w \in \mathbf{C}\).
+    \begin{align*}
+         & \exp(z) \exp(w)                                                                                                                                                  \\
+         & = \bigg(\sum_{n = 0}^\infty \frac{z^n}{n!}\bigg) \bigg(\sum_{n = 0}^\infty \frac{w^n}{n!}\bigg)                & \text{(by Definition \ref{4.6.15})}             \\
+         & = \sum_{n = 0}^\infty \bigg(\sum_{k = 0}^n (\frac{z^k}{k!} \frac{w^{n - k}}{(n - k)!})\bigg)                   & \text{(by Additional Corollary \ref{ac 4.6.9})} \\
+         & = \sum_{n = 0}^\infty \Bigg(\frac{1}{n!} \sum_{k = 0}^n \bigg(\frac{n!}{k! (n - k)!} z^k w^{n - k}\bigg)\Bigg)                                                   \\
+         & = \sum_{n = 0}^\infty \frac{(z + w)^n}{n!}                                                                     & \text{(by Exercise \ref{ex 4.2.5})}             \\
+         & = \exp(z + w).                                                                                                 & \text{(by Definition \ref{4.6.15})}
+    \end{align*}
+\end{proof}
