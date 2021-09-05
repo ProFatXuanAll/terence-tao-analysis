@@ -599,6 +599,7 @@ If \(z, w \in \mathbf{C}\) such that \(z = w \neq 0\), then \(z^{-1} = w^{-1}\).
 \end{lemma}
 
 \begin{proof}
+    Let \(d\) be the metric in Definition \ref{4.6.10}.
     Suppose that \(d - \lim_{n \to \infty} w_n = w\) and \(d - \lim_{n \to \infty} z_n = z\) for some \(z, w \in \mathbf{C}\).
     By Lemma \ref{4.6.13} this means
     \begin{align*}
@@ -748,6 +749,215 @@ If \(z, w \in \mathbf{C}\) such that \(z = w \neq 0\), then \(z^{-1} = w^{-1}\).
     For instance, the theory of pointwise and uniform convergence from Chapter \ref{ch 3}, or the theory of power series from this chapter, extends without any difficulty to complex-valued functions.
     In particular, we can define the complex exponential function in exactly the same manner as for real numbers.
 \end{note}
+
+\begin{additional corollary}[Complex series]\label{ac 4.6.6}
+Let \(d\) be the metric in Definition \ref{4.6.10} and let \((a_n)_{n = 0}^\infty\) be a sequence in \(\mathbf{C}\).
+If \(d - \lim_{N \to \infty} \sum_{n = 0}^N a_n \in \mathbf{C}\), we define
+\[
+    \sum_{n = 0}^\infty a_n = d - \lim_{N \to \infty} \sum_{n = 0}^N a_n.
+\]
+Then \(\sum_{n = 0}^\infty a_n\) converges iff both \(\sum_{n = 0}^\infty \Re(a_n)\) and \(\sum_{n = 0}^\infty \Im(a_n)\) converges, and we have
+\[
+    \sum_{n = 0}^\infty a_n = \sum_{n = 0}^\infty \Re(a_n) + i \bigg(\sum_{n = 0}^\infty \Im(a_n)\bigg).
+\]
+\end{additional corollary}
+
+\begin{proof}
+    First suppose that \(\sum_{n = 0}^\infty \Re(a_n)\) and \(\sum_{n = 0}^\infty \Im(a_n)\) converges.
+    Then we have
+    \begin{align*}
+         & \sum_{n = 0}^\infty \Re(a_n) + i \bigg(\sum_{n = 0}^\infty \Im(a_n)\bigg)                                                                              \\
+         & = d - \lim_{N \to \infty} \sum_{n = 0}^N \Re(a_n) + i \bigg(d - \lim_{N \to \infty} \sum_{n = 0}^N \Im(a_n)\bigg)                                      \\
+         & = d - \lim_{N \to \infty} \Bigg(\sum_{n = 0}^N \Re(a_n) + i \bigg(\sum_{n = 0}^N \Im(a_n)\bigg)\Bigg)             & \text{(by Lemma \ref{4.6.14})}     \\
+         & = d - \lim_{N \to \infty} \bigg(\sum_{n = 0}^N \Re(a_n) + \sum_{n = 0}^N \big(i \Im(a_n)\big)\bigg)               & \text{(by Lemma \ref{4.6.6})}      \\
+         & = d - \lim_{N \to \infty} \sum_{n = 0}^N \big(\Re(a_n) + i \Im(a_n)\big)                                          & \text{(by Lemma \ref{4.6.4})}      \\
+         & = d - \lim_{N \to \infty} \sum_{n = 0}^N a_n                                                                      & \text{(by Definition \ref{4.6.8})} \\
+         & = \sum_{n = 0}^\infty a_n.
+    \end{align*}
+
+    Now suppose that \(\sum_{n = 0}^\infty a_n\) converges.
+    Then we have
+    \begin{align*}
+         & \sum_{n = 0}^\infty a_n                                                                                                                                                                \\
+         & = \Re\bigg(\sum_{n = 0}^\infty a_n\bigg) + i \Im\bigg(\sum_{n = 0}^\infty a_n\bigg)                                                               & \text{(by Definition \ref{4.6.8})} \\
+         & = \Re\bigg(d - \lim_{N \to \infty} \sum_{n = 0}^N a_n\bigg) + i \Im\bigg(d - \lim_{N \to \infty} \sum_{n = 0}^N a_n\bigg)                                                              \\
+         & = \Bigg(d - \lim_{N \to \infty} \Re\bigg(\sum_{n = 0}^N a_n\bigg)\Bigg) + i \Bigg(d - \lim_{N \to \infty} \Im\bigg(\sum_{n = 0}^N a_n\bigg)\Bigg) & \text{(by Lemma \ref{4.6.13})}     \\
+         & = \bigg(d - \lim_{N \to \infty} \sum_{n = 0}^N \Re(a_n)\bigg) + i \bigg(d - \lim_{N \to \infty} \sum_{n = 0}^N \Im(a_n)\bigg)                     & \text{(by Definition \ref{4.6.3})} \\
+         & = \sum_{n = 0}^\infty \Re(a_n) + i \bigg(\sum_{n = 0}^\infty \Im(a_n)\bigg).
+    \end{align*}
+\end{proof}
+
+\begin{additional corollary}[Zero test of complex series]\label{ac 4.6.7}
+Let \(d\) be the metric in Definition \ref{4.6.10} and let \((a_n)_{n = 0}^\infty\) be a sequence in \(\mathbf{C}\).
+Suppose that \(\sum_{n = 0}^\infty a_n \in \mathbf{C}\).
+Then \(d - \lim_{n \to \infty} a_n = 0\).
+\end{additional corollary}
+
+\begin{proof}
+    By Additional Corollary \ref{ac 4.6.6} we have
+    \[
+        \sum_{n = 0}^\infty a_n = \sum_{n = 0}^\infty \Re(a_n) + i \bigg(\sum_{n = 0}^\infty \Im(a_n)\bigg).
+    \]
+    By Definition \ref{4.6.8} we know that \(\sum_{n = 0}^\infty \Re(a_n) \in \mathbf{R}\) and \(\sum_{n = 0}^\infty \Im(a_n) \in \mathbf{R}\).
+    By zero test of real series (Corollary 7.2.6 in Analysis I) this means
+    \begin{align*}
+         & \lim_{n \to \infty} \Re(a_n) = 0; \\
+         & \lim_{n \to \infty} \Im(a_n) = 0.
+    \end{align*}
+    Then we have
+    \begin{align*}
+                 & \begin{cases}
+            \lim_{n \to \infty} \Re(a_n) = 0 = \Re(d - \lim_{n \to \infty} a_n) \\
+            \lim_{n \to \infty} \Im(a_n) = 0 = \Im(d - \lim_{n \to \infty} a_n)
+        \end{cases}                                                                               & \text{(by Lemma \ref{4.6.13})}     \\
+        \implies & d - \lim_{n \to \infty} a_n = \Re(d - \lim_{n \to \infty} a_n) + i \Im(d - \lim_{n \to \infty} a_n) = 0. & \text{(by Definition \ref{4.6.8})}
+    \end{align*}
+\end{proof}
+
+\begin{additional corollary}[Absolutely convergent of complex series]\label{ac 4.6.8}
+Let \(d\) be the metric in Definition \ref{4.6.10} and let \((a_n)_{n = 0}^\infty\) be a sequence in \(\mathbf{C}\).
+We say that \(\sum_{n = 0}^\infty a_n\) is absolutely convergent if \(\sum_{n = 0}^\infty \abs*{a_n} \in \mathbf{R}\).
+Then we have
+\[
+    \sum_{n = 0}^\infty \abs*{a_n} \in \mathbf{R} \implies \sum_{n = 0}^\infty a_n \in \mathbf{C}.
+\]
+\end{additional corollary}
+
+\begin{proof}
+    By Definition \ref{4.6.10} we know that \(\abs*{a_n} \in \mathbf{R}\) for all \(n \in \mathbf{N}\), thus \(\sum_{n = 0}^\infty \abs*{a_n}\) is well-defined.
+    Let \(N_1, N_2 \in \mathbf{N}\).
+    Since
+    \[
+        \sum_{n = 0}^\infty \abs*{a_n} = \lim_{N \to \infty} \sum_{n = 0}^N \abs*{a_n},
+    \]
+    we know that the sequence \((\sum_{n = 0}^N \abs*{a_n})_{N = 0}^\infty\) is a Cauchy sequence in \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+    Then we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ M \in \mathbf{N} : \forall\ N_1, N_2 \geq M, \abs*{\sum_{n = 0}^{N_1} \abs*{a_n} - \sum_{n = 0}^{N_2} \abs*{a_n}} < \varepsilon                                  \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ M \in \mathbf{N} : \forall\ N_1, N_2 \geq M,                                                                                                                     \\
+                 & \begin{cases}
+            \sum_{n = N_1 + 1}^{N_2} \abs*{a_n} = \abs*{\sum_{n = N_1 + 1}^{N_2} \abs*{a_n}} < \varepsilon & \text{if } N_1 \leq N_2 \\
+            \sum_{n = N_2 + 1}^{N_1} \abs*{a_n} = \abs*{\sum_{n = N_2 + 1}^{N_1} \abs*{a_n}} < \varepsilon & \text{if } N_1 > N_2
+        \end{cases}                                                                                                                                                                                       \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ M \in \mathbf{N} : \forall\ N_1, N_2 \geq M,                                                                                                                     \\
+                 & \begin{cases}
+            \abs*{\sum_{n = N_1 + 1}^{N_2} a_n} \leq \sum_{n = N_1 + 1}^{N_2} \abs*{a_n} < \varepsilon & \text{if } N_1 \leq N_2 \\
+            \abs*{\sum_{n = N_2 + 1}^{N_1} a_n} \leq \sum_{n = N_2 + 1}^{N_1} \abs*{a_n} < \varepsilon & \text{if } N_1 > N_2
+        \end{cases}                                                                                                                                                      & \text{(by Lemma \ref{4.6.11})} \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ M \in \mathbf{N} : \forall\ N_1, N_2 \geq M, \abs*{\sum_{n = 0}^{N_1} a_n - \sum_{n = 0}^{N_2} a_n} < \varepsilon.
+    \end{align*}
+    This means \((\sum_{n = 0}^N a_n)_{N = 0}^\infty\) is a Cauchy sequence in \((\mathbf{C}, d)\).
+    By Exercise \ref{ex 4.6.10} we know that \((\mathbf{C}, d)\) is complete, thus \(\sum_{n = 0}^\infty a_n\) converges in \(\mathbf{C}\) with respect to \(d\).
+\end{proof}
+
+\begin{additional corollary}[Cauchy Product]\label{ac 4.6.9}
+Let \((a_n)_{n = 0}^\infty\), \((b_n)_{n = 0}^\infty\) be sequences in \(\mathbf{C}\).
+Suppose that \(\sum_{n = 0}^\infty a_n\), \(\sum_{n = 0}^\infty b_n\) are absolutely convergent.
+Then we have
+\[
+    \bigg(\sum_{n = 0}^\infty a_n\bigg) \bigg(\sum_{n = 0}^\infty b_n\bigg) = \sum_{n = 0}^\infty \bigg(\sum_{k = 0}^n \big(a_k b_{n - k}\big)\bigg).
+\]
+\end{additional corollary}
+
+\begin{proof}
+    Let \(d\) be the metric in Definition \ref{4.6.10}.
+    Let \(A = \sum_{n = 0}^\infty a_n\) and \(B = \sum_{n = 0}^\infty b_n\).
+    By Additional Corollary \ref{ac 4.6.8} we know that \(A, B\) are well-defined.
+    We define partial sums
+    \begin{align*}
+         & \forall\ N \in \mathbf{N}, A_N = \sum_{n = 0}^N a_n                          \\
+         & \forall\ N \in \mathbf{N}, B_N = \sum_{n = 0}^N b_n                          \\
+         & \forall\ N \in \mathbf{N}, C_N = \sum_{n = 0}^N \sum_{k = 0}^n a_k b_{n - k}
+    \end{align*}
+    By Additional Corollary \ref{ac 4.6.6} we know that \(d - \lim_{N \to \infty} (B_N - B) = 0\).
+    Thus if we define
+    \[
+        \forall\ N \in \mathbf{N}, \beta_N = B_N - B,
+    \]
+    then \(d - \lim_{N \to \infty} \beta_N = 0\).
+    Observe that
+    \begin{align*}
+        \forall\ N \in \mathbf{N}, C_N & = \sum_{n = 0}^N \sum_{k = 0}^n (a_k b_{n - k})                                                         \\
+                                       & = \sum_{(n, k) \in \mathbf{N}^2 : n + k \leq N} (a_n b_k)                                               \\
+                                       & = \sum_{n = 0}^N \sum_{k = 0}^{N - n} (a_n b_k)                                                         \\
+                                       & = \sum_{n = 0}^N a_n \bigg(\sum_{k = 0}^{N - n} b_k\bigg)               & \text{(by Lemma \ref{4.6.6})} \\
+                                       & = \sum_{n = 0}^N (a_n B_{N - n})                                                                        \\
+                                       & = \sum_{n = 0}^N \big(a_n (B_{N - n} - B + B)\big)                      & \text{(by Lemma \ref{4.6.4})} \\
+                                       & = \sum_{n = 0}^N \big(a_n (\beta_{N - n} + B)\big)                      & \text{(by Lemma \ref{4.6.6})} \\
+                                       & = \sum_{n = 0}^N (a_n \beta_{N - n} + a_n B)                            & \text{(by Lemma \ref{4.6.6})} \\
+                                       & = \sum_{n = 0}^N (a_n \beta_{N - n}) + \sum_{n = 0}^N (a_n B)           & \text{(by Lemma \ref{4.6.4})} \\
+                                       & = \sum_{n = 0}^N (a_n \beta_{N - n}) + \bigg(\sum_{n = 0}^N a_n\bigg) B & \text{(by Lemma \ref{4.6.6})} \\
+                                       & = \sum_{n = 0}^N (a_n \beta_{N - n}) + A_N B.
+    \end{align*}
+    By Additional Corollary \ref{ac 4.6.6} we want to show that
+    \[
+        AB = \lim_{N \to \infty} C_N.
+    \]
+    Since
+    \[
+        AB = (\lim_{N \to \infty} A_N) B = \lim_{N \to \infty} (A_N B),
+    \]
+    if we define
+    \[
+        \forall\ N \in \mathbf{N}, \gamma_N = \sum_{n = 0}^N (a_n \beta_{N - n}),
+    \]
+    then it suffices to show that
+    \[
+        \lim_{N \to \infty} \gamma_N = \lim_{N \to \infty} (C_N - A_N B) = 0.
+    \]
+
+    Let \(\varepsilon \in \mathbf{R}^+\) and let \(\alpha = \sum_{n = 0}^\infty \abs*{a_n}\).
+    By hypothesis we know that \(\sum_{n = 0}^\infty a_n\) is absolutely convergent, so \(\alpha\) is well-defined.
+    Since \(d - \lim_{N \to \infty} \beta_N = 0\), we know that
+    \[
+        \exists\ M_1 \in \mathbf{N} : \forall\ N \geq M_1, \abs*{\beta_N - 0} = \abs*{\beta_N} < \frac{\varepsilon}{2 \alpha}.
+    \]
+    Fix such \(M_1\).
+    Since \(\sum_{n = 0}^\infty a_n \in \mathbf{C}\), by Additional Corollary \ref{ac 4.6.7} we know that \(d - \lim_{N \to \infty} a_N = 0\).
+    Thus we have
+    \[
+        \exists\ M_2 \in \mathbf{N} : \forall\ N \geq M_2, \abs*{a_N - 0} = \abs*{a_N} < \frac{\varepsilon}{2 M_1 (\max_{k = 0}^{M_1} \abs*{\beta_k})}.
+    \]
+    Let \(M = M_1 + M_2\) and choose one \(N \geq M\).
+    Then we have
+    \begin{align*}
+         & \abs*{\gamma_N} = \abs*{\sum_{n = 0}^N (a_n \beta_{N - n})} = \abs*{\sum_{n = 0}^N (a_{N - n} \beta_n)}                                           \\
+         & \leq \sum_{n = 0}^N \abs*{a_{N - n} \beta_n} = \sum_{n = 0}^N (\abs*{a_{N - n}} \abs*{\beta_n})                  & \text{(by Lemma \ref{4.6.11})} \\
+         & = \sum_{n = 0}^{M_1} (\abs*{a_{N - n}} \abs*{\beta_n}) + \sum_{n = M_1 + 1}^N (\abs*{a_{N - n}} \abs*{\beta_n}). & \text{(by Lemma \ref{4.6.4})}
+    \end{align*}
+    Since
+    \begin{align*}
+             & 0 \leq n \leq M_1                                     \\
+        \iff & 0 \geq -n \geq -M_1                                   \\
+        \iff & N \geq N - n \geq N - M_1 \geq M_1 + M_2 - M_1 = M_2,
+    \end{align*}
+    we know that
+    \begin{align*}
+        \sum_{n = 0}^{M_1} (\abs*{a_{N - n}} \abs*{\beta_n}) & \leq \sum_{n = 0}^{M_1} \frac{\varepsilon \abs*{\beta_n}}{2 M_1 (\max_{k = 0}^{M_1} \abs*{\beta_k})}                                      \\
+                                                             & = \frac{\varepsilon}{2 M_1} \bigg(\sum_{n = 0}^{M_1} \frac{\abs*{\beta_n}}{\max_{k = 0}^{M_1} \abs*{\beta_k}}\bigg)                       \\
+                                                             & \leq \frac{\varepsilon}{2 M_1} \bigg(\sum_{n = 0}^{M_1} \frac{\max_{k = 0}^{M_1} \abs*{\beta_k}}{\max_{k = 0}^{M_1} \abs*{\beta_k}}\bigg) \\
+                                                             & = \frac{\varepsilon}{2 M_1} M_1                                                                                                           \\
+                                                             & = \frac{\varepsilon}{2}.
+    \end{align*}
+    Thus we have
+    \begin{align*}
+        \abs*{\gamma_N} & \leq \sum_{n = 0}^{M_1} (\abs*{a_{N - n}} \abs*{\beta_n}) + \sum_{n = M_1 + 1}^N (\abs*{a_{N - n}} \abs*{\beta_n})                                                                      \\
+                        & \leq \frac{\varepsilon}{2} + \sum_{n = M_1 + 1}^N (\abs*{a_{N - n}} \abs*{\beta_n})                                                                                                     \\
+                        & \leq \frac{\varepsilon}{2} + \sum_{n = M_1 + 1}^N (\abs*{a_{N - n}} \frac{\varepsilon}{2 \alpha})                  & \text{(by the definition of \(M_1\))}                              \\
+                        & = \frac{\varepsilon}{2} + \bigg(\sum_{n = M_1 + 1}^N \abs*{a_{N - n}}\bigg) \frac{\varepsilon}{2 \alpha}                                                                                \\
+                        & \leq \frac{\varepsilon}{2} + \alpha \frac{\varepsilon}{2 \alpha}                                                   & \text{(\(\sum_{n = 0}^\infty \abs*{a_n}\) is monotone increasing)} \\
+                        & = \varepsilon.
+    \end{align*}
+    Since \(N\) is arbitrary, we have
+    \[
+        \forall\ N \geq M, \abs*{\gamma_N} \leq \varepsilon.
+    \]
+    Since \(\varepsilon\) is arbitrary, we have
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ M \in \mathbf{N} : \forall\ N \geq M, \abs*{\gamma_N} \leq \varepsilon
+    \]
+    and thus \(d - \lim_{N \to \infty} \gamma_N = 0\), as desired.
+\end{proof}
 
 \begin{definition}[Complex exponential]\label{4.6.15}
     If \(z\) is a complex number, we define the function \(\exp(z)\) by the formula
