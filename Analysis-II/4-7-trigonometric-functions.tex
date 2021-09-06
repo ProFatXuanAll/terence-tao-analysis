@@ -23,12 +23,12 @@
 
 \begin{note}
     Definition \ref{4.7.1} were discovered by Leonhard Euler (1707 -- 1783) in 1748, who recognized the link between the complex exponential and the trigonometric functions.
-    Note that since we have defined the sine and cosine for complex numbers \(z\), we automatically have defined them also for real numbers \(x\).
+    Since we have defined the sine and cosine for complex numbers \(z\), we automatically have defined them also for real numbers \(x\).
     In fact in most applications one is only interested in the trigonometric functions when applied to real numbers.
 \end{note}
 
 \begin{additional corollary}\label{ac 4.7.1}
-From the Definition \ref{4.6.15}, we have
+From Definition \ref{4.6.15}, we have
 \[
     e^{i z} = 1 + i z - \frac{z^2}{2!} - \frac{i z^3}{3!} + \frac{z^4}{4!} + \dots
 \]
@@ -64,6 +64,156 @@ In particular the sine and cosine functions are continuous and differentiable (s
               In particular \(\cos(x) = \Re(e^{i x})\) and \(\sin(x) = \Im(e^{i x})\).
     \end{enumerate}
 \end{theorem}
+
+\begin{proof}{(a)}
+    Let \(x \in \mathbf{R}\).
+    Then we have
+    \begin{align*}
+         & \big(\sin(x)\big)^2 + \big(\cos(x)\big)^2                                                                                                                                               \\
+         & = \bigg(\frac{e^{i x} - e^{- i x}}{2i}\bigg)^2 + \bigg(\frac{e^{i x} + e^{- i x}}{2}\bigg)^2                                                     & \text{(by Definition \ref{4.7.1})}   \\
+         & = \frac{e^{i x} e^{i x} - 2 e^{i x} e^{- i x} + e^{- i x} e^{- i x}}{-4} + \frac{e^{i x} e^{i x} + 2 e^{i x} e^{- i x} + e^{- i x} e^{- i x}}{4} & \text{(by Definition \ref{4.6.5})}   \\
+         & = \frac{4 e^{i x} e^{- i x}}{4}                                                                                                                  & \text{(by Lemma \ref{4.6.4})}        \\
+         & = e^{i x} e^{- i x}                                                                                                                                                                     \\
+         & = e^{i x - i x}                                                                                                                                  & \text{(by Exercise \ref{ex 4.6.16})} \\
+         & = e^0                                                                                                                                                                                   \\
+         & = 1.                                                                                                                                             & \text{(by Theorem \ref{4.5.2}(d))}
+    \end{align*}
+    By Additional Corollary \ref{ac 4.7.1} we know that \(\sin(x), \cos(x) \in \mathbf{R}\) when \(x \in \mathbf{R}\).
+    Thus we have
+    \begin{align*}
+                 & \begin{cases}
+            \big(\sin(x)\big)^2 \leq 1 \\
+            \big(\cos(x)\big)^2 \leq 1
+        \end{cases} \\
+        \implies & \begin{cases}
+            \sin(x) \in [-1, 1] \\
+            \cos(x) \in [-1, 1]
+        \end{cases}
+    \end{align*}
+\end{proof}
+
+\begin{proof}{(b)}
+    Let \(x \in \mathbf{R}\).
+    By Additional Corollary \ref{ac 4.7.1} we know that \(\sin'\) and \(\cos'\) are well-defined.
+    Then we have
+    \begin{align*}
+         & \sin'(x)                                                                                                                                                                   \\
+         & = \bigg(y \mapsto \frac{e^{i y} - e^{- i y}}{2i}\bigg)'(x)                                                               & \text{(by Definition \ref{4.7.1})}              \\
+         & = \bigg(y \mapsto \frac{\sum_{n = 0}^\infty \frac{(i y)^n}{n!} - \sum_{n = 0}^\infty \frac{(- i y)^n}{n!}}{2i}\bigg)'(x) & \text{(by Definition \ref{4.6.15})}             \\
+         & = \bigg(y \mapsto \sum_{n = 0}^\infty \frac{(i y)^n - (- i y)^n}{(2i) (n!)}\bigg)'(x)                                    & \text{(by Lemma \ref{4.6.14})}                  \\
+         & = \bigg(y \mapsto \sum_{n = 0}^\infty \frac{i^n y^n - (-1)^n i^n y^n}{(2i) (n!)}\bigg)'(x)                               & \text{(by Lemma \ref{4.6.6})}                   \\
+         & = \Bigg(y \mapsto \sum_{n = 0}^\infty \bigg(\frac{\big(1 - (-1)^n\big) i^n}{(2i) (n!)} y^n\bigg)\Bigg)'(x)               & \text{(by Lemma \ref{4.6.6})}                   \\
+         & = \Bigg(y \mapsto \sum_{n = 1}^\infty \bigg(\frac{n \big(1 - (-1)^n\big) i^n}{(2i) (n!)} y^{n - 1}\bigg)\Bigg)(x)        & \text{(by Theorem \ref{4.1.6}(d))}              \\
+         & = \Bigg(y \mapsto \sum_{n = 1}^\infty \bigg(\frac{\big(1 - (-1)^n\big) i^n}{(2i) (n - 1)!} y^{n - 1}\bigg)\Bigg)(x)                                                        \\
+         & = \bigg(y \mapsto 1 - \frac{y^2}{2!} + \frac{y^4}{4!} - \frac{y^6}{6!} + \dots\bigg)(x)                                                                                    \\
+         & = \bigg(y \mapsto \sum_{n = 0}^\infty \frac{(-1)^n y^{2n}}{(2n)!}\bigg)(x)                                                                                                 \\
+         & = \cos(x)                                                                                                                & \text{(by Additional Corollary \ref{ac 4.7.1})}
+    \end{align*}
+    and
+    \begin{align*}
+         & \cos'(x)                                                                                                                                                                  \\
+         & = \bigg(y \mapsto \frac{e^{i y} + e^{- i y}}{2}\bigg)'(x)                                                               & \text{(by Definition \ref{4.7.1})}              \\
+         & = \bigg(y \mapsto \frac{\sum_{n = 0}^\infty \frac{(i y)^n}{n!} + \sum_{n = 0}^\infty \frac{(- i y)^n}{n!}}{2}\bigg)'(x) & \text{(by Definition \ref{4.6.15})}             \\
+         & = \bigg(y \mapsto \sum_{n = 0}^\infty \frac{(i y)^n + (- i y)^n}{2 (n!)}\bigg)'(x)                                      & \text{(by Lemma \ref{4.6.14})}                  \\
+         & = \bigg(y \mapsto \sum_{n = 0}^\infty \frac{i^n y^n + (-1)^n i^n y^n}{2 (n!)}\bigg)'(x)                                 & \text{(by Lemma \ref{4.6.6})}                   \\
+         & = \Bigg(y \mapsto \sum_{n = 0}^\infty \bigg(\frac{\big(1 + (-1)^n\big) i^n}{2 (n!)} y^n\bigg)\Bigg)'(x)                 & \text{(by Lemma \ref{4.6.6})}                   \\
+         & = \Bigg(y \mapsto \sum_{n = 1}^\infty \bigg(\frac{n \big(1 + (-1)^n\big) i^n}{2 (n!)} y^{n - 1}\bigg)\Bigg)(x)          & \text{(by Theorem \ref{4.1.6}(d))}              \\
+         & = \Bigg(y \mapsto \sum_{n = 1}^\infty \bigg(\frac{\big(1 + (-1)^n\big) i^n}{2 (n - 1)!} y^{n - 1}\bigg)\Bigg)(x)                                                          \\
+         & = \bigg(y \mapsto -y + \frac{y^3}{3!} - \frac{y^5}{5!} + \frac{y^7}{7!} + \dots\bigg)(x)                                                                                  \\
+         & = \bigg(y \mapsto \sum_{n = 0}^\infty \frac{(-1)^{n + 1} y^{2n + 1}}{(2n + 1)!}\bigg)(x)                                                                                  \\
+         & = \Bigg(y \mapsto -\bigg(\sum_{n = 0}^\infty \frac{(-1)^n y^{2n + 1}}{(2n + 1)!}\bigg)\Bigg)(x)                         & \text{(by Lemma \ref{4.6.14})}                  \\
+         & = \big(y \mapsto -\sin(y)\big)(x)                                                                                       & \text{(by Additional Corollary \ref{ac 4.7.1})} \\
+         & = -\sin(x).
+    \end{align*}
+\end{proof}
+
+\begin{proof}{(c)}
+    Let \(x \in \mathbf{R}\).
+    Then we have
+    \begin{align*}
+        \sin(-x) & = \frac{e^{i (-x)} - e^{- i (-x)}}{2i} & \text{(by Definition \ref{4.7.1})} \\
+                 & = \frac{e^{- i x} - e^{i x}}{2i}       & \text{(by Lemma \ref{4.6.6})}      \\
+                 & = -\frac{e^{i x} - e^{- i x}}{2i}      & \text{(by Lemma \ref{4.6.6})}      \\
+                 & = -\sin(x)                             & \text{(by Definition \ref{4.7.1})}
+    \end{align*}
+    and
+    \begin{align*}
+        \cos(-x) & = \frac{e^{i (-x)} + e^{- i (-x)}}{2} & \text{(by Definition \ref{4.7.1})} \\
+                 & = \frac{e^{- i x} + e^{i x}}{2}       & \text{(by Lemma \ref{4.6.6})}      \\
+                 & = \frac{e^{i x} + e^{- i x}}{2}       & \text{(by Lemma \ref{4.6.4})}      \\
+                 & = \cos(x).                            & \text{(by Definition \ref{4.7.1})}
+    \end{align*}
+\end{proof}
+
+\begin{proof}{(d)}
+    Let \(x, y \in \mathbf{R}\).
+    Then we have
+    \begin{align*}
+         & \sin(x) \cos(y) + \cos(x) \sin(y)                                                                                                                                     \\
+         & = \frac{e^{i x} - e^{- i x}}{2 i} \frac{e^{i y} + e^{- i y}}{2} + \frac{e^{i x} + e^{- i x}}{2} \frac{e^{i y} - e^{- i y}}{2i} & \text{(by Definition \ref{4.7.1})}   \\
+         & = \frac{e^{i x} e^{i y} + e^{i x} e^{- i y} - e^{- i x} e^{i y} - e^{- i x} e^{- i y}}{4i}                                     & \text{(by Lemma \ref{4.6.6})}        \\
+         & \quad + \frac{e^{i x} e^{i y} - e^{i x} e^{- i y} + e^{- i x} e^{i y} - e^{- i x} e^{- i y}}{4i}                                                                      \\
+         & = \frac{2 e^{i x} e^{i y} - 2 e^{- i x} e^{- i y}}{4i}                                                                         & \text{(by Lemma \ref{4.6.4})}        \\
+         & = \frac{e^{i x} e^{i y} - e^{- i x} e^{- i y}}{2i}                                                                             & \text{(by Definition \ref{4.6.12})}  \\
+         & = \frac{e^{i x + i y} - e^{- i x - i y}}{2i}                                                                                   & \text{(by Exercise \ref{ex 4.6.16})} \\
+         & = \frac{e^{i (x + y)} - e^{- i (x + y)}}{2i}                                                                                   & \text{(by Lemma \ref{4.6.6})}        \\
+         & = \sin(x + y)                                                                                                                  & \text{(by Definition \ref{4.7.1})}
+    \end{align*}
+    and
+    \begin{align*}
+         & \cos(x) \cos(y) - \sin(x) \sin(y)                                                                                                                                    \\
+         & = \frac{e^{i x} + e^{- i x}}{2} \frac{e^{i y} + e^{- i y}}{2} - \frac{e^{i x} - e^{- i x}}{2i} \frac{e^{i y} - e^{- i y}}{2i} & \text{(by Definition \ref{4.7.1})}   \\
+         & = \frac{e^{i x} e^{i y} + e^{i x} e^{- i y} + e^{- i x} e^{i y} + e^{- i x} e^{- i y}}{4}                                     & \text{(by Lemma \ref{4.6.6})}        \\
+         & \quad + \frac{e^{i x} e^{i y} - e^{i x} e^{- i y} - e^{- i x} e^{i y} + e^{- i x} e^{- i y}}{4}                                                                      \\
+         & = \frac{2 e^{i x} e^{i y} + 2 e^{- i x} e^{- i y}}{4}                                                                         & \text{(by Lemma \ref{4.6.4})}        \\
+         & = \frac{e^{i x} e^{i y} + e^{- i x} e^{- i y}}{2}                                                                             & \text{(by Definition \ref{4.6.12})}  \\
+         & = \frac{e^{i x + i y} + e^{- i x - i y}}{2}                                                                                   & \text{(by Exercise \ref{ex 4.6.16})} \\
+         & = \frac{e^{i (x + y)} + e^{- i (x + y)}}{2}                                                                                   & \text{(by Lemma \ref{4.6.6})}        \\
+         & = \cos(x + y).                                                                                                                & \text{(by Definition \ref{4.7.1})}
+    \end{align*}
+\end{proof}
+
+\begin{proof}{(e)}
+    We have
+    \begin{align*}
+                 & \sin(-0) = -\sin(0) & \text{(by Theorem \ref{4.7.2}(c))} \\
+        \implies & 2 \sin(0) = 0                                            \\
+        \implies & \sin(0) = 0
+    \end{align*}
+    and
+    \begin{align*}
+        \cos(0) & = \frac{e^{i 0} + e^{- i 0}}{2} & \text{(by Definition \ref{4.7.1})} \\
+                & = \frac{e^{0} + e^{0}}{2}       & \text{(by Definition \ref{4.6.5})} \\
+                & = e^0 = 1.                      & \text{(by Theorem \ref{4.5.2}(e))}
+    \end{align*}
+\end{proof}
+
+\begin{proof}{(f)}
+    Let \(x \in \mathbf{R}\).
+    Then we have
+    \begin{align*}
+         & \cos(x) + i \sin(x)                                                                                      \\
+         & = \frac{e^{i x} + e^{- i x}}{2} + i \frac{e^{i x} - e^{- i x}}{2i} & \text{(by Definition \ref{4.7.1})}  \\
+         & = \frac{e^{i x} + e^{- i x}}{2} + \frac{e^{i x} - e^{- i x}}{2}    & \text{(by Definition \ref{4.6.12})} \\
+         & = e^{i x}                                                          & \text{(by Lemma \ref{4.6.4})}
+    \end{align*}
+    and
+    \begin{align*}
+         & \cos(x) - i \sin(x)                                                                                      \\
+         & = \frac{e^{i x} + e^{- i x}}{2} - i \frac{e^{i x} - e^{- i x}}{2i} & \text{(by Definition \ref{4.7.1})}  \\
+         & = \frac{e^{i x} + e^{- i x}}{2} - \frac{e^{i x} - e^{- i x}}{2}    & \text{(by Definition \ref{4.6.12})} \\
+         & = e^{- i x}.                                                       & \text{(by Lemma \ref{4.6.4})}
+    \end{align*}
+    By Theorem \ref{4.7.2}(a) we know that \(\sin(x), \cos(x) \in \mathbf{R}\).
+    Thus we have
+    \[
+        \Re(e^{i x}) = \Re\big(\cos(x) + i \sin(x)\big) = \cos(x)
+    \]
+    and
+    \[
+        \Im(e^{i x}) = \Im\big(\cos(x) + i \sin(x)\big) = \sin(x).
+    \]
+\end{proof}
 
 \begin{lemma}\label{4.7.3}
     There exists a positive number \(x\) such that \(\sin(x)\) is equal to \(0\).
