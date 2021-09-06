@@ -310,6 +310,33 @@ since \(\big(\sin(\pi)\big)^2 + \big(\cos(\pi)\big)^2 = 1\) and \(\sin(\pi) = 0\
     Conclude in particular that there exists a \(c > 0\) such that \(\sin(x) \neq 0\) for all \(0 < x < c\).
 \end{exercise}
 
+\begin{proof}
+    Since
+    \begin{align*}
+                 & f'(x_0) \neq 0                                                                                                                                                                                                          \\
+        \implies & \lim_{y \to x_0 ; y \in \mathbf{R} \setminus \{x_0\}} \frac{f(y) - f(x_0)}{y - x_0} = \lim_{y \to x_0 ; y \in \mathbf{R} \setminus \{x_0\}} \frac{f(y)}{y - x_0} \neq 0                                                 \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ y \in \mathbf{R} \setminus \{x_0\}, \bigg(\abs*{y - x_0} < \delta \implies \abs*{\frac{f(y)}{y - x_0} - f'(x_0)} < \varepsilon\bigg) \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ y \in \mathbf{R}, \bigg(0 < \abs*{y - x_0} < \delta \implies \abs*{\frac{f(y)}{y - x_0} - f'(x_0)} < \varepsilon\bigg)               \\
+        \implies & \exists\ \delta \in \mathbf{R}^+ : \forall\ y \in \mathbf{R}, \bigg(0 < \abs*{y - x_0} < \delta \implies \abs*{\frac{f(y)}{y - x_0} - f'(x_0)} < \frac{\abs*{f'(x_0)}}{2}\bigg)                                         \\
+        \implies & \exists\ \delta \in \mathbf{R}^+ : \forall\ y \in \mathbf{R},                                                                                                                                                           \\
+                 & \bigg(0 < \abs*{y - x_0} < \delta \implies f'(x_0) - \frac{\abs*{f'(x_0)}}{2} < \frac{f(y)}{y - x_0} < f'(x_0) + \frac{\abs*{f'(x_0)}}{2}\bigg),
+    \end{align*}
+    by setting \(c = \delta\) we know that
+    \begin{align*}
+                 & 0 < \abs*{x - x_0} < c                        \\
+        \implies & \begin{cases}
+            \frac{3 f'(x_0)}{2} < \frac{f(y)}{y - x_0} < \frac{f'(x_0)}{2} < 0 & \text{if} f'(x_0) < 0 \\
+            0 < \frac{f'(x_0)}{2} < \frac{f(y)}{y - x_0} < \frac{3 f'(x_0)}{2} & \text{if} f'(x_0) > 0
+        \end{cases}                    \\
+        \implies & f(y) \neq 0.               & (y - x_0 \neq 0)
+    \end{align*}
+
+    By Theorem \ref{4.7.2}(b)(e) we know that \(\sin'(0) = \cos(0) = 1\), thus we conclude that
+    \[
+        \exists\ c \in \mathbf{R}^+ : \forall\ x \in (0, c), \sin(x) \neq 0.
+    \]
+\end{proof}
+
 \begin{exercise}\label{ex 4.7.3}
     Prove Theorem \ref{4.7.5}.
 \end{exercise}
