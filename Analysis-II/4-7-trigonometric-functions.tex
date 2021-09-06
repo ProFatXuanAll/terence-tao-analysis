@@ -222,16 +222,35 @@ In particular the sine and cosine functions are continuous and differentiable (s
 \begin{proof}
     Suppose for sake of contradiction that \(\sin(x) \neq 0\) for all \(x \in (0, \infty)\).
     Observe that this would also imply that \(\cos(x) \neq 0\) for all \(x \in (0, \infty)\), since if \(\cos(x) = 0\) then \(\sin(2x) = 0\) by Theorem \ref{4.7.2}(d).
-    Since \(\cos(0) = 1\), this implies by the intermediate value theorem (Theorem 9.7.1 in Analysis I) that \(\cos(x) > 0\) for all \(x > 0\) (why?).
-    Also, since \(\sin(0) = 0\) and \(\sin'(0) = 1 > 0\), we see that \(\sin\) increasing near \(0\), hence is positive to the right of \(0\).
+    Since \(\cos(0) = 1\), this implies by the intermediate value theorem (Theorem 9.7.1 in Analysis I) that \(\cos(x) > 0\) for all \(x > 0\)
+    (since by Additional Corollary \ref{ac 4.7.1} we know that \(\cos\) is continuous on \(\mathbf{R}\) and by Theorem \ref{4.7.2}(a) this means \(\cos(x) \in (0, 1]\)).
+    Also, since \(\sin(0) = 0\) and \(\sin'(0) = 1 > 0\), we see that \(\sin\) is increasing near \(0\), hence is positive to the right of \(0\).
     By the intermediate value theorem again we conclude that \(\sin(x) > 0\) for all \(x > 0\)
-    (otherwise \(\sin\) would have a zero on \((0, \infty)\)).
+    (otherwise \(\sin\) would have a zero on \((0, +\infty)\)).
 
-    In particular if we define the cotangent function \(\cot(x) \coloneqq \cos(x) / \sin(x)\), then \(\cot(x)\) would be positive and differentiable on all of \((0, \infty)\).
-    From the quotient rule (Theorem 10.1.13(h) in Analysis I) and Theorem \ref{4.7.2} we see that the derivative of \(\cot(x)\) is \(-1 / \sin(x)^2\) (why?).
+    In particular if we define the cotangent function \(\cot(x) \coloneqq \cos(x) / \sin(x)\), then \(\cot(x)\) would be positive and differentiable on all of \((0, +\infty)\).
+    From the quotient rule (Theorem 10.1.13(h) in Analysis I) and Theorem \ref{4.7.2} we see that the derivative of \(\cot(x)\) is
+    \begin{align*}
+        \cot'(x) & = \frac{\cos'(x) \sin(x) - \cos(x) \sin'(x)}{\big(\sin(x)\big)^2}                                             \\
+                 & = \frac{-\big(\sin(x)\big)^2 - \big(\cos(x)\big)^2}{\big(\sin(x)\big)^2} & \text{(by Theorem \ref{4.7.2}(b))} \\
+                 & = \frac{-1}{\big(\sin(x)\big)^2}.                                        & \text{(by Theorem \ref{4.7.2}(a))}
+    \end{align*}
     In particular, we have \(\cot'(x) \leq -1\) for all \(x > 0\).
-    By the fundamental theorem of calculus (Theorem 11.9.1 in Analysis I) this implies that \(\cot(x + s) \leq \cot(x) - s\) for all \(x > 0\) and \(s > 0\).
-    But letting \(s \to \infty\) we see that this contradicts our assertion that \(\cot\) is positive on \((0, \infty)\) (why?).
+    By the fundamental theorem of calculus (Theorem 11.9.1 in Analysis I) this implies that
+    \begin{align*}
+                 & \int_x^{x + s} \cot'(t) \; dt \leq \int_x^{x + s} -1 \; dt \\
+        \implies & \cot(x + s) - \cot(x) \leq -s                              \\
+        \implies & \cot(x + s) \leq \cot(x) - s
+    \end{align*}
+    for all \(x > 0\) and \(s > 0\).
+    Now fix one \(x > 0\) and let \(s = \cot(x)\).
+    Since \(s > 0\), we know that \(x + s + 1 > 0\), and thus \(\cot(x + s + 1) > 0\).
+    But
+    \[
+        \cot(x + s + 1) \leq \cot(x) - (s + 1) = \cot(x) - \cot(x) - 1 < 0,
+    \]
+    a contradiction.
+    Thus by letting \(s \to \infty\) we see that this contradicts our assertion that \(\cot\) is positive on \((0, \infty)\).
 \end{proof}
 
 \begin{note}
