@@ -594,6 +594,85 @@ The following statements are true.
     Show that if \(r, s > 0\) are positive real numbers, and \(\theta, \alpha\) are real numbers such that \(r e^{i \theta} = s e^{i \alpha}\), then \(r = s\) and \(\theta = \alpha + 2 \pi k\) for some integer \(k\).
 \end{exercise}
 
+\begin{proof}
+    By Additional Corollary \ref{ac 4.7.2}(g) we know that
+    \begin{align*}
+        r e^{i \theta} & = r \big(\cos(\theta) + i \sin(\theta)\big); \\
+        s e^{i \alpha} & = s \big(\cos(\alpha) + i \sin(\alpha)\big).
+    \end{align*}
+    Since
+    \begin{align*}
+                 & r e^{i \theta} = s e^{i \alpha}                                                       \\
+        \implies & r \big(\cos(\theta) + i \sin(\theta)\big) = s \big(\cos(\alpha) + i \sin(\alpha)\big) \\
+        \implies & r \cos(\theta) - s \cos(\alpha) + i \big(r \sin(\theta) - s \sin(\alpha)\big) = 0     \\
+        \implies & \begin{cases}
+            r \cos(\theta) - s \cos(\alpha) = 0 \\
+            r \sin(\theta) - s \sin(\alpha) = 0
+        \end{cases}                                                            \\
+        \implies & \begin{cases}
+            r \cos(\theta) = s \cos(\alpha) \\
+            r \sin(\theta) = s \sin(\alpha)
+        \end{cases}
+    \end{align*}
+    we know that
+    \begin{align*}
+                 & (r \sin(\theta))^2 + (r \cos(\theta))^2 = (s \sin(\alpha))^2 + (s \cos(\alpha))^2                                                                                          \\
+        \implies & r^2 \Big(\big(\sin(\theta)\big)^2 + \big(\cos(\theta)\big)^2\Big) = s^2 \Big(\big(\sin(\alpha)\big)^2 + \big(\cos(\alpha)\big)^2\Big)                                      \\
+        \implies & r^2 = s^2                                                                                                                             & \text{(by Theorem \ref{4.7.2}(a))} \\
+        \implies & r = s.                                                                                                                                & (r, s \in \mathbf{R}^+)
+    \end{align*}
+    Thus we have
+    \begin{align*}
+                 & \begin{cases}
+            r \cos(\theta) = s \cos(\alpha) \\
+            r \sin(\theta) = s \sin(\alpha)
+        \end{cases}                            \\
+        \implies & \begin{cases}
+            \cos(\theta) = \cos(\alpha) \\
+            \sin(\theta) = \sin(\alpha)
+        \end{cases} & (r = s \in \mathbf{R}^+)
+    \end{align*}
+    and
+    \begin{align*}
+        \sin(\theta - \alpha) & = \sin(\theta) \cos(-\alpha) + \cos(\theta) \sin(-\alpha) & \text{(by Theorem \ref{4.7.2}(d))} \\
+                              & = \sin(\theta) \cos(\alpha) - \cos(\theta) \sin(\alpha)   & \text{(by Theorem \ref{4.7.2}(c))} \\
+                              & = \sin(\alpha) \cos(\alpha) - \cos(\alpha) \sin(\alpha)   & \text{(from the proof above)}      \\
+                              & = 0.
+    \end{align*}
+    By Theorem \ref{4.7.5}(b) we know that
+    \begin{align*}
+             & \sin(\theta - \alpha) = 0                                   \\
+        \iff & \frac{\theta - \alpha}{\pi} \in \mathbf{Z}                  \\
+        \iff & \exists\ k \in \mathbf{Z} : k = \frac{\theta - \alpha}{\pi} \\
+        \iff & \exists\ k \in \mathbf{Z} : k \pi = \theta - \alpha         \\
+        \iff & \exists\ k \in \mathbf{Z} : \theta = \alpha + k \pi.
+    \end{align*}
+    By Theorem \ref{4.7.5} we know that for any \(\alpha \in \mathbf{R}\), \(\cos(\alpha + k \pi) = \cos(\alpha)\) when \(k\) is even.
+    So we only need to show that for any \(\alpha \in \mathbf{R}\), \(\cos(\alpha + k \pi) \neq \cos(\alpha)\) when \(k\) is odd.
+    Suppose for sake of contradiction that for any \(\alpha \in \mathbf{R}\), \(\cos(\alpha + k \pi) = \cos(\alpha)\) when \(k\) is odd.
+    Let \(k = 2n + 1\) for some \(n \in \mathbf{Z}\).
+    Then we have
+    \begin{align*}
+        \cos(\theta) & = \cos(\alpha + k \pi)                                                     \\
+                     & = \cos\big(\alpha + (2n + 1) \pi\big)                                      \\
+                     & = \cos(\alpha + 2 n \pi + \pi)                                             \\
+                     & = -\cos(\alpha + 2 n \pi)             & \text{(by Theorem \ref{4.7.5}(a))} \\
+                     & = -\cos(\alpha)                       & \text{(by Theorem \ref{4.7.5}(a))} \\
+                     & = -\cos(\theta).                      & \text{(from the proof above)}
+    \end{align*}
+    This means \(\cos(\theta) = 0\).
+    But by Theorem \ref{4.7.5}(c) we know that
+    \begin{align*}
+                 & \exists\ m \in \mathbf{Z} : m + \frac{1}{2} = \frac{\theta}{\pi} = \frac{\alpha}{\pi} + k \\
+        \implies & \exists\ m \in \mathbf{Z} : m - k + \frac{1}{2} = \frac{\alpha}{\pi} \notin \mathbf{Z}.
+    \end{align*}
+    Thus when \(\alpha = \pi\) we derive contradiction.
+    We conclude that
+    \[
+        \forall\ k \in \mathbf{Z}, \theta = \alpha + 2 k \pi.
+    \]
+\end{proof}
+
 \begin{exercise}\label{ex 4.7.6}
     Let \(z\) be a non-zero complex number.
     Using Exercise \ref{ex 4.7.4}, show that there is exactly one pair of real numbers \(r, \theta\) such that \(r > 0\), \(\theta \in (-\pi, \pi]\), and \(z = r e^{i \theta}\).
