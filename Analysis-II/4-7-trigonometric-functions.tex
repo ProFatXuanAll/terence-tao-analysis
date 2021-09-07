@@ -792,6 +792,60 @@ The following statements are true.
     Show that \(\tan^{-1}\) is differentiable and \(\frac{d}{dx} \tan^{-1}(x) = \frac{1}{1 + x^2}\).
 \end{exercise}
 
+\begin{proof}
+    By Theorem \ref{4.7.5}(c) we know that \(\cos(-\frac{\pi}{2}) = \cos(\frac{\pi}{2}) = 0\) and \(\cos(x) \neq 0\) for all \(x \in (-\frac{\pi}{2}, \frac{\pi}{2})\).
+    Thus \(\tan(x)\) is well-defined on \((-\frac{\pi}{2}, \frac{\pi}{2})\).
+    By Additional Corollary \ref{ac 4.7.1} we know that \(\sin\) and \(\cos\) are differentiable on \(\mathbf{R}\), thus by Theorem 10.1.13(h) in Analysis I we know that \(\tan\) is differentiable on \((-\frac{\pi}{2}, \frac{\pi}{2})\).
+    In particular, for all \(x \in (-\frac{\pi}{2}, \frac{\pi}{2})\), we have
+    \begin{align*}
+        \tan'(x) & = \frac{\sin'(x) \cos(x) - \sin(x) \cos'(x)}{\big(\cos(x)\big)^2}                                            \\
+                 & = \frac{\big(\cos(x)\big)^2 + \big(\sin(x)\big)^2}{\big(\cos(x)\big)^2} & \text{(by Theorem \ref{4.7.2}(b))} \\
+                 & = 1 + \big(\tan(x)\big)^2.
+    \end{align*}
+    Since \(\tan'(x) > 0\) for all \(x \in (-\frac{\pi}{2}, \frac{\pi}{2})\), by Proposition 10.3.3 we know that \(\tan\) is strictly monotone increasing on \((-\frac{\pi}{2}, \frac{\pi}{2})\).
+
+    Since \(\sin(\frac{\pi}{2}) = 1\) (cf. the proof of Theorem \ref{4.7.5}(c)), by Theorem \ref{4.7.2}(b) we know that \(\sin(-\frac{\pi}{2}) = -1\).
+    Since \(\sin\) and \(\cos\) are continuous on \(\mathbf{R}\), we know that
+    \begin{align*}
+         & \lim_{x \to \frac{\pi}{2}} \sin(x) = \sin(\frac{\pi}{2}) = 1    \\
+         & \lim_{x \to -\frac{\pi}{2}} \sin(x) = \sin(-\frac{\pi}{2}) = -1 \\
+         & \lim_{x \to \frac{\pi}{2}} \cos(x) = \cos(\frac{\pi}{2}) = 0    \\
+         & \lim_{x \to -\frac{\pi}{2}} \cos(x) = \cos(-\frac{\pi}{2}) = 0
+    \end{align*}
+    Since \(\tan\) is monotone increasing on \((-\frac{\pi}{2}, \frac{\pi}{2})\) and \(\tan(0) = \frac{\sin(0)}{\cos(0)} = 0\), we know that \(\tan(x) > 0\) for all \(x \in (0, \frac{\pi}{2})\) and \(\tan(x) < 0\) for all \(x \in (-\frac{\pi}{2})\).
+    Suppose for sake of contradiction that \(\lim_{x \to \frac{\pi}{2}} \tan(x) \in \mathbf{R}\).
+    Then we have
+    \begin{align*}
+                 & \begin{cases}
+            \forall\ x \in (0, \frac{\pi}{2}), \tan(x) > 0 \\
+            \tan \text{ is strictly monotone increasing on } (-\frac{\pi}{2}, \frac{\pi}{2})
+        \end{cases}                                                                                                                                                                                                                                           \\
+        \implies & \lim_{x \to \frac{\pi}{2}} \tan(x) \in \mathbf{R}^+                                                                                                                                                                                                                  \\
+        \implies & \frac{\lim_{x \to \frac{\pi}{2}} \tan(x)}{\sin(\frac{\pi}{2})} = \frac{\lim_{x \to \frac{\pi}{2}} \tan(x)}{\lim_{x \to \frac{\pi}{2}} \sin(x)} = \lim_{x \to \frac{\pi}{2}} \frac{\tan(x)}{\sin(x)} = \lim_{x \to \frac{\pi}{2}} \frac{1}{\cos(x)} \in \mathbf{R}^+.
+    \end{align*}
+    But this contradict to the fact that \(\lim_{x \to \frac{\pi}{2}} \frac{1}{\cos(x)} = +\infty\).
+    Thus we know that
+    \[
+        \lim_{x \to \frac{\pi}{2}} \tan(x) \in \{-\infty, \infty\}.
+    \]
+    But strictly monotone increasing implies
+    \[
+        \lim_{x \to \frac{\pi}{2}} \tan(x) = +\infty.
+    \]
+    Using similar arguments we can show that
+    \[
+        \lim_{x \to -\frac{\pi}{2}} \tan(x) = -\infty.
+    \]
+    This means \(\tan\) is a bijection from \((-\frac{\pi}{2}, \frac{\pi}{2})\) to \(\mathbf{R}\).
+    Thus \(\tan^{-1} : \mathbf{R} \to (-\frac{\pi}{2}, \frac{\pi}{2})\) is well-defined.
+
+    Since \(\tan'(x) > 0\) for all \(x \in (-\frac{\pi}{2}, \frac{\pi}{2})\), by inverse function theorem (Theorem 10.4.2 in Analysis I) we have
+    \begin{align*}
+                 & \forall\ x \in (-\frac{\pi}{2}, \frac{\pi}{2}), \tan(x) = y                                   \\
+        \implies & (\tan^{-1})'(y) = \frac{1}{\tan'(x)} = \frac{1}{1 + \big(\tan(x)\big)^2} = \frac{1}{1 + y^2}.
+    \end{align*}
+\end{proof}
+
 \begin{exercise}\label{ex 4.7.9}
     Recall the arctangent function \(\tan^{-1}\) from Exercise \ref{ex 4.7.8}.
     By modifying the proof of Theorem \ref{4.5.6}(e), establish the identity
