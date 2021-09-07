@@ -486,6 +486,110 @@ The following statements are true.
     Show that there is exactly one real number \(\theta \in (-\pi, \pi]\) such that \(x = \sin(\theta)\) and \(y = \cos(\theta)\).
 \end{exercise}
 
+\begin{proof}
+    Observe that
+    \begin{align*}
+                 & x^2 + y^2 = 1     \\
+        \implies & x, y \in [-1, 1].
+    \end{align*}
+    We split into three cases:
+    \begin{itemize}
+        \item \(x = 0\).
+              Then we know that \(y = \pm 1\).
+              Since
+              \begin{align*}
+                           & \theta \in (-\pi, \pi]                                                                               \\
+                  \implies & \frac{\theta}{\pi} \in (-1, 1]                                                                       \\
+                  \implies & \bigg(\sin(\theta) = 0 \iff \frac{\theta}{\pi} = \{0, 1\}\bigg) & \text{(by Theorem \ref{4.7.5}(b))} \\
+                  \implies & \bigg(\sin(\theta) = 0 \iff \theta = \{0, \pi\}\bigg)
+              \end{align*}
+              and
+              \begin{align*}
+                   & \cos(0) = 1;    & \text{(by Theorem \ref{4.7.2}(e))}                 \\
+                   & \cos(\pi) = -1, & \text{(by Additional Corollary \ref{ac 4.7.2}(f))}
+              \end{align*}
+              we know that
+              \begin{align*}
+                   & (x, y) = (0, 1) = \big(\sin(0), \cos(0)\big) \iff \theta = 0;        \\
+                   & (x, y) = (0, -1) = \big(\sin(\pi), \cos(\pi)\big) \iff \theta = \pi.
+              \end{align*}
+        \item \(x \in (0, 1]\).
+              Then we have
+              \[
+                  x^2 + y^2 = 1 \implies y = \pm \sqrt{1 - x^2} \in (-1, 1).
+              \]
+              Since
+              \begin{align*}
+                           & z \in (0, \pi)                                                      \\
+                  \implies & \sin(z) > 0    & \text{(by Additional Corollary \ref{ac 4.7.2}(d))} \\
+                  \implies & -\sin(z) < 0                                                        \\
+                  \implies & \sin(-z) < 0,  & \text{(by Theorem \ref{4.7.2}(c))}
+              \end{align*}
+              we know that
+              \[
+                  \forall\ z \in (-\pi, 0), \sin(z) < 0.
+              \]
+              Thus
+              \begin{align*}
+                           & \sin(\theta) = x > 0 \\
+                  \implies & \theta \in (0, \pi).
+              \end{align*}
+              Since \(\sin(\frac{\pi}{2}) = 1\) (cf. the proof of Theorem \ref{4.7.5}(c)) and \(\sin\) is continuous on \(\mathbf{R}\) (by Additional Corollary \ref{ac 4.7.1}), by intermediate value theorem we know that
+              \begin{align*}
+                   & \exists\ \theta_1 \in (0, \frac{\pi}{2}] : \sin(\theta_1) = x   & \text{since } \sin\big((0, \frac{\pi}{2}]\big) \subseteq (0, 1]   \\
+                   & \exists\ \theta_2 \in [\frac{\pi}{2}, \pi) : \sin(\theta_2) = x & \text{since } \sin\big([\frac{\pi}{2}, \pi)\big) \subseteq (0, 1]
+              \end{align*}
+              Since \(\cos(0) = 1\) (by Theorem \ref{4.7.2}(e)) and \(\cos(\frac{\pi}{2}) = 0\) (cf. the proof of Theorem \ref{4.7.5}(c)), we know that
+              \begin{align*}
+                           & \cos \text{ is strictly decreasing on } (0, \pi)   & \text{(by Additional Corollary \ref{ac 4.7.2}(e))} \\
+                  \implies & \cos\big((0, \frac{\pi}{2}]\big) \subseteq [0, 1).
+              \end{align*}
+              Using similar arguments we can show that \(\cos\big([\frac{\pi}{2}, \pi)\big) \subseteq (-1, 0]\).
+              Thus we have
+              \begin{align*}
+                   & \big(x \in (0, 1]\big) \land \big(y \in [0, 1)\big) \implies \exists\ \theta_1 \in (0, \frac{\pi}{2}] : \big(\sin(\theta_1) = x\big) \land \big(\cos(\theta_1) = y\big);    \\
+                   & \big(x \in (0, 1]\big) \land \big(y \in (-1, 0]\big) \implies \exists\ \theta_2 \in [\frac{\pi}{2}, \pi) : \big(\sin(\theta_2) = x\big) \land \big(\cos(\theta_2) = y\big).
+              \end{align*}
+              But \(\cos\) is strictly decreasing on \((0, \pi)\) implies the choices of \(\theta_1\) and \(\theta_2\) are unique.
+              And we conclude that
+              \[
+                  \forall\ x \in (0, 1], \exists!\ \theta \in (0, \pi) : \begin{cases}
+                      \sin(\theta) = x \\
+                      \cos(\theta) = y \\
+                      x^2 + y^2 = 1
+                  \end{cases}
+              \]
+        \item \(x \in [-1, 0)\).
+              Then we have
+              \begin{align*}
+                           & -x \in (0, 1]                                                                                    \\
+                  \implies & \exists!\ \theta \in (0, \pi) : \begin{cases}
+                      \sin(\theta) = -x \\
+                      \cos(\theta) = y  \\
+                      (-x)^2 + y^2 = x^2 + y^2 = 1
+                  \end{cases}  & \text{(from the proof above)}      \\
+                  \implies & \exists!\ \theta \in (0, \pi) : \begin{cases}
+                      \sin(-\theta) = -\sin(\theta) = x \\
+                      \cos(-\theta) = \cos(\theta) = y  \\
+                      x^2 + y^2 = 1
+                  \end{cases}  & \text{(by Theorem \ref{4.7.2}(c))} \\
+                  \implies & \exists!\ \theta \in (-\pi, 0) : \begin{cases}
+                      \sin(\theta) = x \\
+                      \cos(\theta) = y \\
+                      x^2 + y^2 = 1
+                  \end{cases}
+              \end{align*}
+    \end{itemize}
+    From all cases above we conclude that
+    \[
+        \exists!\ \theta \in (-\pi, \pi] : \begin{cases}
+            \sin(\theta) = x \\
+            \cos(\theta) = y \\
+            x^2 + y^2 = 1
+        \end{cases}
+    \]
+\end{proof}
+
 \begin{exercise}\label{ex 4.7.5}
     Show that if \(r, s > 0\) are positive real numbers, and \(\theta, \alpha\) are real numbers such that \(r e^{i \theta} = s e^{i \alpha}\), then \(r = s\) and \(\theta = \alpha + 2 \pi k\) for some integer \(k\).
 \end{exercise}
