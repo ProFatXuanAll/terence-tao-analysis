@@ -701,9 +701,84 @@ The following statements are true.
 \begin{exercise}\label{ex 4.7.7}
     For any real number \(\theta\) and integer \(n\), prove the \emph{de Moivre identities}
     \[
-        \cos(n \theta) = \Re\big((\cos \theta + i \sin \theta)^n\big); \quad \sin(n \theta) = \Im\big((\cos \theta + i \sin \theta)^n\big).
+        \cos(n \theta) = \Re\Big(\big(\cos(\theta) + i \sin(\theta)\big)^n\Big); \quad \sin(n \theta) = \Im\Big(\big(\cos(\theta) + i \sin(\theta)\big)^n\Big).
     \]
 \end{exercise}
+
+\begin{proof}
+    By Theorem \ref{4.7.2}(a) we know that \(\big(\cos(\theta)\big)^2 + \big(\sin(\theta)\big)^2 = 1\), thus we cannot have \(\cos(\theta) = 0\) and \(\sin(\theta) = 0\) at the same time.
+    By Definition \ref{4.6.12} this means \(\big(\cos(\theta) + i \sin(\theta)\big)^{-1}\) is well-defined and
+    \[
+        \big(\cos(\theta) + i \sin(\theta)\big)^0 = \big(\cos(\theta) + i \sin(\theta)\big) \big(\cos(\theta) + i \sin(\theta)\big)^{-1} = 1.
+    \]
+    First suppose that \(n = 0\).
+    Then we have
+    \begin{align*}
+        \cos(0 \theta) & = \cos(0)                                                                                      \\
+                       & = 1                                                      & \text{(by Theorem \ref{4.7.2}(e))}  \\
+                       & = \Re(1)                                                 & \text{(by Definition \ref{4.6.8})}  \\
+                       & = \Re\Big(\big(\cos(\theta) + i \sin(\theta)\big)^0\Big) & \text{(by Definition \ref{4.6.12})}
+    \end{align*}
+    and
+    \begin{align*}
+        \sin(0 \theta) & = \sin(0)                                                                                      \\
+                       & = 0                                                      & \text{(by Theorem \ref{4.7.2}(e))}  \\
+                       & = \Im(1)                                                 & \text{(by Definition \ref{4.6.8})}  \\
+                       & = \Im\Big(\big(\cos(\theta) + i \sin(\theta)\big)^0\Big) & \text{(by Definition \ref{4.6.12})}
+    \end{align*}
+
+    Next suppose that \(n \in \mathbf{Z}^+\).
+    Since
+    \begin{align*}
+        \big(\cos(\theta) + i \sin(\theta)\big)^n & = (e^{i \theta})^n & \text{(by Theorem \ref{4.7.2}(f))}   \\
+                                                  & = e^{n i \theta}   & \text{(by Exercise \ref{ex 4.6.16})} \\
+                                                  & = e^{i n \theta},  & \text{(by Lemma \ref{4.6.6})}
+    \end{align*}
+    we know that
+    \begin{align*}
+        \cos(n \theta) & = \Re(e^{i n \theta})                                    & \text{(by Theorem \ref{4.7.2}(f))} \\
+                       & = \Re\Big(\big(\cos(\theta) + i \sin(\theta)\big)^n\Big) & \text{(from the proof above)}
+    \end{align*}
+    and
+    \begin{align*}
+        \sin(n \theta) & = \Im(e^{i n \theta})                                     & \text{(by Theorem \ref{4.7.2}(f))} \\
+                       & = \Im\Big(\big(\cos(\theta) + i \sin(\theta)\big)^n\Big). & \text{(from the proof above)}
+    \end{align*}
+
+    Finally suppose that \(n \in \mathbf{Z}^-\).
+    Let \(k \in \mathbf{Z}^+\) such that \(-k = n\).
+    Since
+    \begin{align*}
+         & \big(\cos(\theta) + i \sin(\theta)\big)^{-1}                                                                                                             \\
+         & = \abs*{\cos(\theta) + i \sin(\theta)}^{-2} \big(\overline{\cos(\theta) + i \sin(\theta)}\big)                     & \text{(by Definition \ref{4.6.12})} \\
+         & = \Big(\big(\cos(\theta)\big)^2 + \big(\sin(\theta)\big)^2\Big) \big(\overline{\cos(\theta) + i \sin(\theta)}\big) & \text{(by Definition \ref{4.6.10})} \\
+         & = \overline{\cos(\theta) + i \sin(\theta)}                                                                         & \text{(by Theorem \ref{4.7.2}(a))}  \\
+         & = \cos(\theta) - i \sin(\theta)                                                                                                                          \\
+         & = e^{- i \theta},                                                                                                  & \text{(by Theorem \ref{4.7.2}(f))}
+    \end{align*}
+    we know that
+    \begin{align*}
+         & \big(\cos(\theta) + i \sin(\theta)\big)^n                                                         \\
+         & = \big(\cos(\theta) + i \sin(\theta)\big)^{-k}                                                    \\
+         & = \Big(\big(\cos(\theta) + i \sin(\theta)\big)^{-1}\Big)^k & \text{(by Definition \ref{4.6.12})}  \\
+         & = (e^{- i \theta})^k                                       & \text{(from the proof above)}        \\
+         & = e^{k (- i \theta)}                                       & \text{(by Exercise \ref{ex 4.6.16})} \\
+         & = e^{- i k \theta}                                         & \text{(by Lemma \ref{4.6.6})}        \\
+         & = \cos(k \theta) - i \sin(k \theta)                        & \text{(by Theorem \ref{4.7.2}(f))}   \\
+         & = \cos(- k \theta) + i \sin(- k \theta)                    & \text{(by Theorem \ref{4.7.2}(c))}   \\
+         & = \cos(n \theta) + i \sin(n \theta).
+    \end{align*}
+    Thus we have
+    \begin{align*}
+        \cos(n \theta) & = \Re\big(\cos(n \theta) + i \sin(n \theta)\big)         & \text{(by Definition \ref{4.6.8})} \\
+                       & = \Re\Big(\big(\cos(\theta) + i \sin(\theta)\big)^n\Big) & \text{(from the proof above)}
+    \end{align*}
+    and
+    \begin{align*}
+        \sin(n \theta) & = \Im\big(\cos(n \theta) + i \sin(n \theta)\big)          & \text{(by Definition \ref{4.6.8})} \\
+                       & = \Im\Big(\big(\cos(\theta) + i \sin(\theta)\big)^n\Big). & \text{(from the proof above)}
+    \end{align*}
+\end{proof}
 
 \begin{exercise}\label{ex 4.7.8}
     Let \(\tan : (- \pi / 2, \pi / 2) \to \mathbf{R}\) be the tangent function \(\tan(x) \coloneqq \sin(x) / \cos(x)\).
