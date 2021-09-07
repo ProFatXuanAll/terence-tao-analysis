@@ -301,6 +301,135 @@ The following statements are true.
     \end{enumerate}
 \end{theorem}
 
+\begin{proof}{(a)}
+    We have
+    \begin{align*}
+        \cos(x + \pi) & = \cos(x) \cos(\pi) - \sin(x) \sin(\pi) & \text{(by Theorem \ref{4.7.2}(d))}                    \\
+                      & = \cos(x) (-1) - \sin(x) 0              & \text{(by Additional Corollary \ref{ac 4.7.2}(b)(f))} \\
+                      & = -\cos(x)
+    \end{align*}
+    and
+    \begin{align*}
+        \sin(x + \pi) & = \sin(x) \cos(\pi) + \cos(x) \sin(\pi) & \text{(by Theorem \ref{4.7.2}(d))}                    \\
+                      & = \sin(x) (-1) - \cos(x) 0              & \text{(by Additional Corollary \ref{ac 4.7.2}(b)(f))} \\
+                      & = -\sin(x).
+    \end{align*}
+    Thus
+    \begin{align*}
+        \cos(x + 2\pi) & = \cos(x + \pi + \pi)                                 \\
+                       & = -\cos(x + \pi)      & \text{(from the proof above)} \\
+                       & = -\big(-\cos(x)\big) & \text{(from the proof above)} \\
+                       & = \cos(x)
+    \end{align*}
+    and
+    \begin{align*}
+        \sin(x + 2\pi) & = \sin(x + \pi + \pi)                                 \\
+                       & = -\sin(x + \pi)      & \text{(from the proof above)} \\
+                       & = -\big(-\sin(x)\big) & \text{(from the proof above)} \\
+                       & = \sin(x).
+    \end{align*}
+\end{proof}
+
+\begin{proof}{(b)}
+    First we show that \(\frac{x}{\pi} \in \mathbf{Z}\) implies \(\sin(x) = 0\).
+    Let \(P(n)\) be the statement ``\(n = \frac{x}{\pi}\) implies \(\sin(x) = 0\)''.
+    We use induction to show that \(P(n)\) is true for all \(n \in \mathbf{N}\).
+    For \(n = 0\), we have
+    \begin{align*}
+                 & 0 = \frac{x}{\pi}                                           \\
+        \implies & x = 0                                                       \\
+        \implies & \sin(x) = \sin(0) = 0. & \text{(by Theorem \ref{4.7.2}(e))}
+    \end{align*}
+    Thus the base holds.
+    Suppose inductively that \(P(n)\) is true for some \(n \geq 0\).
+    Then for \(n + 1\), we have
+    \begin{align*}
+                 & n + 1 = \frac{x}{\pi}                                                           \\
+        \implies & x = n \pi + \pi                                                                 \\
+        \implies & \sin(x) = \sin(n \pi + \pi) = -\sin(n \pi) & \text{(by Theorem \ref{4.7.4}(a))} \\
+        \implies & \sin(x) = -\sin(n \pi) = 0.                & \text{(by induction hypothesis)}
+    \end{align*}
+    This closes the induction.
+    Thus \(P(n)\) is true for all \(n \in \mathbf{N}\).
+    Since
+    \begin{align*}
+                 & \forall\ n \in \mathbf{Z}^-, n = \frac{x}{\pi}                                      \\
+        \implies & -n = -\frac{x}{\pi} \in \mathbf{Z}^+                                                \\
+        \implies & \sin(-x) = \sin(- n \pi) = 0                   & \text{(from the proof above)}      \\
+        \implies & -\sin(x) = 0                                   & \text{(by Theorem \ref{4.7.2}(c))} \\
+        \implies & \sin(x) = 0,
+    \end{align*}
+    we know that \(P(n)\) is true for all \(n \in \mathbf{Z}\).
+
+    Now we show that \(\sin(x) = 0\) implies \(\frac{x}{\pi}\) is an integer.
+    Let \(x \in \mathbf{R}\).
+    Suppose that \(\sin(x) = 0\).
+    Now we split into three cases:
+    \begin{itemize}
+        \item \(x = 0\).
+              By Additional Corollary \ref{ac 4.7.2}(b) we know that \(\pi > 0\), thus we know that \(\frac{0}{\pi} = 0 \in \mathbf{N}\) and by Theorem \ref{4.7.2}(e) we have \(\sin(0) = 0\).
+        \item \(x \in \mathbf{R}^+\).
+              Since \(\pi > 0\), by Archimedean property we know that
+              \begin{align*}
+                           & \exists\ n \in \mathbf{N} : n \pi \leq x < (n + 1) \pi \\
+                  \implies & \exists\ n \in \mathbf{N} : 0 \leq x - n \pi < \pi.
+              \end{align*}
+              Fix such \(n\).
+              By Additional Corollary \ref{ac 4.7.2}(d) we know that \(\sin(y) > 0\) for all \(y \in (0, \pi)\).
+              Thus we must have \(x - n \pi = 0\).
+              This means \(\frac{x}{\pi} = n \in \mathbf{N}\).
+        \item \(x \in \mathbf{R}^-\).
+              Then we have
+              \begin{align*}
+                           & \sin(x) = 0                                                        \\
+                  \implies & -\big(-\sin(x)\big) = 0                                            \\
+                  \implies & -\sin(-x) = 0                 & \text{(by Theorem \ref{4.7.2}(e))} \\
+                  \implies & \sin(-x) = 0                                                       \\
+                  \implies & \frac{-x}{\pi} \in \mathbf{N} & \text{(from the proof above)}      \\
+                  \implies & \frac{x}{\pi} \in \mathbf{Z}.
+              \end{align*}
+    \end{itemize}
+    From all cases above we conclude that
+    \[
+        \sin(x) = 0 \implies \frac{x}{\pi} \in \mathbf{Z}.
+    \]
+\end{proof}
+
+\begin{proof}{(c)}
+    By Additional Corollary \ref{ac 4.7.2}(d) we know that \(\sin(\frac{\pi}{2}) > 0\).
+    Since
+    \begin{align*}
+        0 & = \sin(\pi)                                                                         & \text{(by Additional Corollary \ref{ac 4.7.2}(c))} \\
+          & = \sin(\frac{\pi}{2} + \frac{\pi}{2})                                                                                                    \\
+          & = \sin(\frac{\pi}{2}) \cos(\frac{\pi}{2}) + \cos(\frac{\pi}{2}) \sin(\frac{\pi}{2}) & \text{(by Theorem \ref{4.7.2}(d))}                 \\
+          & = 2 \sin(\frac{\pi}{2}) \cos(\frac{\pi}{2}),
+    \end{align*}
+    we know that \(\cos(\frac{\pi}{2}) = 0\).
+    Since
+    \begin{align*}
+                 & \big(\sin(\frac{\pi}{2})\big)^2 + \big(\cos(\frac{\pi}{2})\big)^2 = 1 & \text{(by Theorem \ref{4.7.2}(a))}                 \\
+        \implies & \big(\sin(\frac{\pi}{2})\big)^2 = 1                                   & \text{(from the proof above)}                      \\
+        \implies & \sin(\frac{\pi}{2}) = 1,                                              & \text{(by Additional Corollary \ref{ac 4.7.2}(d))}
+    \end{align*}
+    We know that
+    \begin{align*}
+        \forall\ x \in \mathbf{R}, \cos(x) & = \cos(x + \frac{\pi}{2} - \frac{\pi}{2})                                                                                          \\
+                                           & = \cos(x + \frac{\pi}{2}) \cos(-\frac{\pi}{2}) - \sin(x + \frac{\pi}{2}) \sin(-\frac{\pi}{2}) & \text{(by Theorem \ref{4.7.2}(d))} \\
+                                           & = \cos(x + \frac{\pi}{2}) \cos(\frac{\pi}{2}) + \sin(x + \frac{\pi}{2}) \sin(\frac{\pi}{2})   & \text{(by Theorem \ref{4.7.2}(c))} \\
+                                           & = \cos(x + \frac{\pi}{2}) \times 0 + \sin(x + \frac{\pi}{2}) \times 1                         & \text{(from the proof above)}      \\
+                                           & = \sin(x + \frac{\pi}{2}).
+    \end{align*}
+    Thus we have
+    \begin{align*}
+             & \forall\ x \in \mathbf{R}, \bigg(\sin(x + \frac{\pi}{2}) = 0 \iff \frac{x + \frac{\pi}{2}}{\pi} \in \mathbf{Z}\bigg)    & \text{(by Theorem \ref{4.7.5}(b))} \\
+        \iff & \forall\ x \in \mathbf{R}, \bigg(\sin(x + \frac{\pi}{2}) = 0 \iff \frac{x}{\pi} + \frac{1}{2} \in \mathbf{Z}\bigg)                                           \\
+        \iff & \forall\ x \in \mathbf{R}, \bigg(\cos(x) = 0 \iff \frac{x}{\pi} + \frac{1}{2} \in \mathbf{Z}\bigg)                      & \text{(from the proof above)}      \\
+        \iff & \forall\ x \in \mathbf{R}, \bigg(\cos(x) = 0 \iff \exists\ n \in \mathbf{Z} : n = \frac{x}{\pi} + \frac{1}{2}\bigg)                                          \\
+        \iff & \forall\ x \in \mathbf{R}, \bigg(\cos(x) = 0 \iff \exists\ n \in \mathbf{Z} : n + 1 = \frac{x}{\pi} + \frac{1}{2}\bigg)                                      \\
+        \iff & \forall\ x \in \mathbf{R}, \bigg(\cos(x) = 0 \iff \exists\ n \in \mathbf{Z} : n + \frac{1}{2} = \frac{x}{\pi}\bigg).
+    \end{align*}
+\end{proof}
+
 \exercisesection
 
 \begin{exercise}\label{ex 4.7.1}
