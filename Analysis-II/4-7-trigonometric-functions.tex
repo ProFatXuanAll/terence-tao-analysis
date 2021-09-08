@@ -952,7 +952,7 @@ The following statements are true.
 \begin{exercise}\label{ex 4.7.10}
     Let \(f : \mathbf{R} \to \mathbf{R}\) be the function
     \[
-        f(x) \coloneqq \sum_{n = 1}^\infty 4^{-n} \cos(32^n \pi x).
+        f(x) \coloneqq \sum_{n = 1}^\infty \big(4^{-n} \cos(32^n \pi x)\big).
     \]
     \begin{enumerate}
         \item Show that this series is uniformly convergent, and that \(f\) is continuous.
@@ -964,3 +964,152 @@ The following statements are true.
         \item Explain briefly why the result in (c) does not contradict Corollary \ref{3.7.3}.
     \end{enumerate}
 \end{exercise}
+
+\begin{proof}{(a)}
+    Since
+    \begin{align*}
+         & \sum_{n = 1}^\infty \norm*{4^{-n} \cos(32^n \pi x)}_{\infty}                                                                 \\
+         & = \sum_{n = 1}^\infty \sup\big\{\abs*{4^{-n} \cos(32^n \pi x)} : x \in \mathbf{R}\big\} & \text{(by Definition \ref{3.5.5})} \\
+         & = \sum_{n = 1}^\infty 4^{-n}                                                                                                 \\
+         & = \frac{1}{1 - \frac{1}{4}}                                                             & \text{(by geometric series)}
+    \end{align*}
+    By Weierstrass \(M\)-test (Theorem \ref{3.5.7}) we know that \(\sum_{n = 1}^\infty \big(4^{-n} \cos(32^n \pi x)\big)\) converges uniformly to \(f\) on \(\mathbf{R}\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+\end{proof}
+
+\begin{proof}{(b)}
+    First we show that
+    \[
+        \forall\ x, y \in \mathbf{R}, \abs*{\cos(x) - \cos(y)} \leq \abs*{x - y}.
+    \]
+    Fix one pair of \(x, y\) and without the loss of generality suppose that \(y \leq x\).
+    By Theorem \ref{4.7.2}(a)(b) we know that \(\sin\) is continuous and bounded on \([y, x]\), thus by Corollary 11.5.2 in Analysis I we know that \(\sin\) is Riemann integrable on \([y, x]\).
+    Then we have
+    \begin{align*}
+                 & \int_y^x -1 \; dz \leq \int_y^x \sin(z) \; dz \leq \int_y^x 1 \; dz & \text{(by Theorem \ref{4.7.2}(a))} \\
+        \implies & -(x - y) \leq -\big(\cos(x) - \cos(y)\big) \leq x - y               & \text{(by Theorem \ref{4.7.2}(b))} \\
+        \implies & \abs*{\cos(x) - \cos(y)} \leq \abs*{x - y}.
+    \end{align*}
+    The case \(x \leq y\) can be proven similarly.
+
+    Define
+    \[
+        \forall\ (j, m, n) \in \mathbf{Z} \times \mathbf{Z}^+ \times \mathbf{Z}^+, a_n^{(j, m)} = 4^{-n} \Bigg(\cos\bigg(\frac{32^n \pi (j + 1)}{32^m}\bigg) - \cos\bigg(\frac{32^n \pi j}{32^m}\bigg)\Bigg).
+    \]
+    Then we have
+    \begin{align*}
+         & \abs*{f\bigg(\frac{j + 1}{32^m}\bigg) - f\bigg(\frac{j}{32^m}\bigg)}                                                                                                           \\
+         & = \abs*{\sum_{n = 1}^\infty \Bigg(4^{-n} \cos\bigg(\frac{32^n \pi (j + 1)}{32^m}\bigg)\Bigg) - \sum_{n = 1}^\infty \Bigg(4^{-n} \cos\bigg(\frac{32^n \pi j}{32^m}\bigg)\Bigg)} \\
+         & = \abs*{\sum_{n = 1}^\infty \Bigg(4^{-n} \cos\bigg(\frac{32^n \pi (j + 1)}{32^m}\bigg) - 4^{-n} \cos\bigg(\frac{32^n \pi j}{32^m}\bigg)\Bigg)}                                 \\
+         & = \abs*{\sum_{n = 1}^\infty a_n^{(j, m)}}.
+    \end{align*}
+    Now we split into three cases:
+    \begin{itemize}
+        \item If \(n < m\), then we have
+              \begin{align*}
+                  \abs*{a_n^{(j, m)}} & = \abs*{4^{-n} \Bigg(\cos\bigg(\frac{32^n \pi (j + 1)}{32^m}\bigg) - \cos\bigg(\frac{32^n \pi j}{32^m}\bigg)\Bigg)}                                       \\
+                                      & \leq \abs*{4^{-n} \bigg(\frac{32^n \pi (j + 1)}{32^m} - \frac{32^n \pi j}{32^m}\bigg)}                              & \text{(from the proof above)}       \\
+                                      & = 4^{-n} \frac{32^n \pi}{32^m} = \frac{8^n \pi}{32^m} = \frac{8^n \pi}{8^m 4^m} = \frac{\pi}{8^{m - n} 4^m}                                               \\
+                                      & \leq \frac{4}{8^{m - n} 4^m}                                                                                        & \text{(by Exercise \ref{ex 4.7.9})} \\
+                                      & \leq \frac{4^{m - n}}{8^{m - n} 4^m}                                                                                & (m > n)                             \\
+                                      & = \frac{4^{m - n}}{4^{m - n} 2^{m - n} 4^m} = 2^{n - m} 4^{-m}.
+              \end{align*}
+        \item If \(n = m\), then we have
+              \begin{align*}
+                   & \abs*{a_m^{(j, m)}}                                                                                                    \\
+                   & = \abs*{4^{-m} \Big(\cos\big(\pi (j + 1)\big) - \cos(\pi j)\Big)}                                                      \\
+                   & = \abs*{4^{-m} \big(-2 \cos(\pi j)\big)}                          & \text{(by Theorem \ref{4.7.5}(a))}                 \\
+                   & = 2 \cdot 4^{-m}.                                                 & \text{(by Additional Corollary \ref{ac 4.7.2}(f))}
+              \end{align*}
+        \item If \(n > m\), then we have
+              \begin{align*}
+                   & a_n^{(j, m)}                                                                                                             \\
+                   & = 4^{-n} \Big(\cos\big(32^{n - m} \pi (j + 1)\big) - \cos(32^{n - m} \pi j)\Big)                                         \\
+                   & = 4^{-n} \Big(\cos(32^{n - m} \pi j + 32^{n - m} \pi) - \cos(32^{n - m} \pi j)\Big)                                      \\
+                   & = 4^{-n} \Big(\cos(32^{n - m} \pi j) - \cos(32^{n - m} \pi j)\Big)                  & \text{(by Theorem \ref{4.7.5}(a))} \\
+                   & = 0.
+              \end{align*}
+    \end{itemize}
+    From all cases above we conclude that
+    \begin{align*}
+         & \abs*{f\bigg(\frac{j + 1}{32^m}\bigg) - f\bigg(\frac{j}{32^m}\bigg)}                                                                       \\
+         & = \abs*{\sum_{n = 1}^\infty a_n^{(j, m)}}                                                                                                  \\
+         & = \abs*{\sum_{n = 1}^{m - 1} a_n^{(j, m)} + a_m^{(j, m)} + \sum_{n = m + 1}^\infty a_n^{(j, m)}}                                           \\
+         & = \abs*{\sum_{n = 1}^{m - 1} a_n^{(j, m)} + a_m^{(j, m)}}                                        & \text{(from the proof above)}           \\
+         & \geq \abs*{a_m^{(j, m)}} - \abs*{\sum_{n = 1}^{m - 1} a_n^{(j, m)}}                              & (\abs*{x + y} \geq \abs*{x} - \abs*{y}) \\
+         & \geq \abs*{a_m^{(j, m)}} - \sum_{n = 1}^{m - 1} \abs*{a_n^{(j, m)}}                                                                        \\
+         & \geq 2 \cdot 4^{-m} - \sum_{n = 1}^{m - 1} (2^{n - m} 4^{-m})                                    & \text{(from the proof above)}           \\
+         & = 2 \cdot 4^{-m} - 4^{-m} \bigg(\sum_{n = 1}^{m - 1} 2^{n - m}\bigg)                                                                       \\
+         & \geq 2 \cdot 4^{-m} - 4^{-m} \bigg(\sum_{n = 1}^\infty 2^{-n}\bigg)                                                                        \\
+         & = 2 \cdot 4^{-m} - 4^{-m} \bigg(-1 + \sum_{n = 0}^\infty 2^{-n}\bigg)                                                                      \\
+         & = 2 \cdot 4^{-m} - 4^{-m} \bigg(-1 + \frac{1}{1 - \frac{1}{2}}\bigg)                             & \text{(geometric series)}               \\
+         & = 2 \cdot 4^{-m} - 4^{-m} = 4^{-m}.
+    \end{align*}
+\end{proof}
+
+\begin{proof}{(c)}
+    Suppose for sake of contradiction that there exists a \(x_0 \in \mathbf{R}\) such that \(f'(x_0) \in \mathbf{R}\).
+    Then by Proposition 10.1.7 in Analysis I we have
+    \begin{align*}
+         & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ :                                                                    \\
+         & \forall\ x \in \mathbf{R}, \abs*{x - x_0} < \delta \implies \abs*{\big(f(x) - f(x_0)\big) - f'(x_0) (x - x_0)} < \varepsilon \abs*{x - x_0}.
+    \end{align*}
+    In particular, we have
+    \begin{align*}
+                 & \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in \mathbf{R}, \abs*{x - x_0} < \delta                                           \\
+        \implies & \abs*{f(x) - f(x_0) - f'(x_0) (x - x_0)} < \abs*{x - x_0}                                                                       \\
+        \implies & \abs*{f(x) - f(x_0)} - \abs*{f'(x_0) (x - x_0)} < \abs*{x - x_0}                      & (\abs*{a} - \abs*{b} \leq \abs*{a - b}) \\
+        \implies & \abs*{f(x) - f(x_0)} < \abs*{f'(x_0) (x - x_0)} + \abs*{x - x_0}                                                                \\
+        \implies & \abs*{f(x) - f(x_0)} < \big(\abs*{f'(x_0)} + 1\big) \abs*{x - x_0}.
+    \end{align*}
+    Fix such \(\delta\).
+    Since \(\lim_{m \to \infty} 32^m = +\infty\), we know that
+    \[
+        \exists\ m_1 \in \mathbf{Z}^+ : 32^{m_1} > \frac{1}{\delta} \implies \exists\ m_1 \in \mathbf{Z}^+ : \frac{1}{32^{m_1}} < \delta.
+    \]
+    Similarly, since \(\lim_{m \to \infty} 8^m = +\infty\), we know that
+    \[
+        \exists\ m_2 \in \mathbf{Z}^+ : 8^{m_2} > \abs*{f'(x_0)} + 1.
+    \]
+    Let \(m = \max(m_1, m_2)\).
+    By Exercise 5.4.3 in Analysis I we know that
+    \begin{align*}
+                 & 32^m x_0 \in \mathbf{R}                                                   \\
+        \implies & \exists\ j \in \mathbf{Z} : j \leq 32^m x_0 < j + 1                       \\
+        \implies & \exists\ j \in \mathbf{Z} : \frac{j}{32^m} \leq x_0 < \frac{j + 1}{32^m}.
+    \end{align*}
+    Fix such \(j\).
+    Then we have
+    \begin{align*}
+                 & \frac{j + 1}{32^m} - \frac{j}{32^m} = \frac{1}{32^m} < \delta                                                                             \\
+        \implies & \begin{cases}
+            \frac{j + 1}{32^m} - x_0 < \delta \\
+            x_0 - \frac{j}{32^m} < \delta
+        \end{cases}                                                                                                               \\
+        \implies & \begin{cases}
+            \abs*{f\bigg(\frac{j + 1}{32^m}\bigg) - f(x_0)} < \big(\abs*{f'(x_0)} + 1\big) \bigg(\frac{j + 1}{32^m} - x_0\bigg) \\
+            \abs*{f\bigg(\frac{j}{32^m}\bigg) - f(x_0)} < \big(\abs*{f'(x_0)} + 1\big) \bigg(x_0 - \frac{j}{32^m}\bigg)
+        \end{cases}                                                                        & \text{(from the proof above)}        \\
+        \implies & 4^{-m} \leq \abs*{f\bigg(\frac{j + 1}{32^m}\bigg) - f\bigg(\frac{j}{32^m}\bigg)}                   & \text{(by Exercise \ref{ex 4.7.10})} \\
+                 & \leq \abs*{f\bigg(\frac{j + 1}{32^m}\bigg) - f(x_0)} + \abs*{f\bigg(\frac{j}{32^m}\bigg) - f(x_0)}                                        \\
+                 & < \frac{\abs*{f'(x_0)} + 1}{32^m}                                                                                                         \\
+        \implies & 8^m < \abs*{f'(x_0)} + 1.
+    \end{align*}
+    But this contradict to the fact that \(8^m > \abs*{f'(x_0)} + 1\).
+    Thus such \(x_0\) does not exist and \(f\) is not differentiable on \(\mathbf{R}\).
+\end{proof}
+
+\begin{proof}{(d)}
+    Let \(f_n(x) = 4^{-n} \cos(32^n \pi x)\) for all \(n \in \mathbf{Z}^+\).
+    By Theorem \ref{4.7.2}(b) we know that \(f_n\) is differentiable on \(\mathbf{R}\) and by chain rule we have
+    \[
+        \forall\ n \in \mathbf{Z}^+, f_n'(x) = 4^{-n} \big(-\sin(32^n \pi x)\big) (32^n \pi) = - 8^n \pi \sin(32^n \pi x).
+    \]
+    Since
+    \begin{align*}
+        \sum_{n = 1}^\infty \norm*{f_n'}_\infty & = \sum_{n = 1}^\infty \sup\{\abs*{f_n'(x)} : x \in \mathbf{R}\} & \text{(by Definition \ref{3.5.5})} \\
+                                                & = \sum_{n = 1}^\infty 8^n \pi                                                                        \\
+                                                & = +\infty,                                                      & \text{(by ratio test)}
+    \end{align*}
+    the condition in Corollary \ref{3.7.3} is not satisfied.
+    Thus this does not contradict to Corollary \ref{3.7.3}.
+\end{proof}
