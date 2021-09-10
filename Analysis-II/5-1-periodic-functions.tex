@@ -53,8 +53,7 @@
     \begin{enumerate}
         \item (Boundedness)
               If \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), then \(f\) is bounded
-              (i.e., there
-              exists a real number \(M > 0\) such that \(\abs*{f(x)} \leq M\) for all \(x \in \mathbf{R}\)).
+              (i.e., there exists a real number \(M > 0\) such that \(\abs*{f(x)} \leq M\) for all \(x \in \mathbf{R}\)).
         \item (Vector space and algebra properties)
               If \(f, g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), then the functions \(f + g\), \(f - g\), and \(f g\) are also in \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
               Also, if \(c\) is any complex number, then the function \(cf\) is also in \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
@@ -62,6 +61,80 @@
               If \((f_n)_{n = 1}^\infty\) is a sequence of functions in \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) which converges uniformly to another function \(f : \mathbf{R} \to \mathbf{C}\), then \(f\) is also in \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
     \end{enumerate}
 \end{lemma}
+
+\begin{proof}{(a)}
+    Since \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), by Definition \ref{5.1.1} we have
+    \[
+        \big\{f(x) : x \in \mathbf{R}\big\} = \big\{f(x) : x \in [0, 1)\big\} = \big\{f(x) : x \in [0, 1]\big\}.
+    \]
+    So it suffices to show that \(\{f(x) : x \in [0, 1]\}\) is bounded.
+    Let \(d_{\mathbf{R}} = d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\) and let \(d_{\mathbf{C}}\) be the metric in Definition \ref{4.6.10}.
+    Since \([0, 1]\) is closed and bounded in \((\mathbf{R}, d_{\mathbf{R}})\), by Heine-Borel theorem (Theorem \ref{1.5.7}) we know that \(([0, 1], d_{\mathbf{R}}|_{[0, 1] \times [0, 1]})\) is compact.
+    Since \(f\) is continuous on \([0, 1]\), by Theorem \ref{2.3.1} we know that \(\big(f([0, 1]), d_{\mathbf{C}}|_{f([0, 1]) \times f([0, 1])}\big)\) is also compact.
+    By Corollary \ref{1.5.6} we know that compactness implies boundness, thus we have
+    \begin{align*}
+                 & \forall\ z \in \mathbf{C}, \exists\ r \in \mathbf{R}^+ : f([0, 1]) \subseteq B_{(\mathbf{C}, d_{\mathbf{C}})}(z, r) & \text{(by Definition \ref{1.5.3})} \\
+        \implies & \exists\ r \in \mathbf{R}^+ : f([0, 1]) \subseteq B_{(\mathbf{C}, d_{\mathbf{C}})}(1, r)                                                                 \\
+        \implies & \exists\ r \in \mathbf{R}^+ : \forall\ y \in f([0, 1]), \abs*{y - 1} < r                                            & \text{(by Definition \ref{1.2.1})} \\
+        \implies & \exists\ r \in \mathbf{R}^+ : \forall\ y \in f([0, 1]),                                                                                                  \\
+                 & \abs*{y} = \abs*{y - 1 + 1} \leq \abs*{y - 1} + 1 < r + 1.                                                          & \text{(by Lemma \ref{4.6.11})}
+    \end{align*}
+    By setting \(M = r + 1\) we are done.
+\end{proof}
+
+\begin{proof}{(b)}
+    We have
+    \begin{align*}
+        (f + g)(x + 1) & = f(x + 1) + g(x + 1)                                      \\
+                       & = f(x) + g(x)         & \text{(by Definition \ref{5.1.1})} \\
+                       & = (f + g)(x)                                               \\
+        (f - g)(x + 1) & = f(x + 1) - g(x + 1)                                      \\
+                       & = f(x) - g(x)         & \text{(by Definition \ref{5.1.1})} \\
+                       & = (f - g)(x)                                               \\
+        (f g)(x + 1)   & = f(x + 1) g(x + 1)                                        \\
+                       & = f(x) g(x)           & \text{(by Definition \ref{5.1.1})} \\
+                       & = (f g)(x)
+    \end{align*}
+    and
+    \begin{align*}
+        \forall\ c \in \mathbf{C}, (c f)(x + 1) & = c f(x + 1)                                      \\
+                                                & = c f(x)     & \text{(by Definition \ref{5.1.1})} \\
+                                                & = (c f)(x).
+    \end{align*}
+\end{proof}
+
+\begin{proof}{(c)}
+    Let \(d_{\mathbf{R}} = d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\) and let \(d_{\mathbf{C}}\) be the metric in Definition \ref{4.6.10}.
+    Since \((f_n)_{n = 0}^\infty\) converges uniformly to \(f\) on \(\mathbf{C}\) with respect to \(d_{\mathbf{C}}\), by Corollary \ref{3.3.2} we know that \(f\) is continuous from \((\mathbf{R}, d_{\mathbf{R}})\) to \((\mathbf{C}, d_{\mathbf{C}})\).
+    Suppose for sake of contradiction that \(f \notin C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
+    By Definition \ref{5.1.1} this means
+    \[
+        \exists\ x \in \mathbf{R} : f(x + 1) \neq f(x).
+    \]
+    By Exercise \ref{ex 3.2.2} we know that \((f_n)_{n = 0}^\infty\) converges pointwise to \(f\) on \(\mathbf{C}\) with respect to \(d_{\mathbf{C}}\), thus by Definition \ref{3.2.1} we have
+    \begin{align*}
+                 & \begin{cases}
+            d - \lim_{n \to \infty} f_n(x) = f(x) \\
+            d - \lim_{n \to \infty} f_n(x + 1) = f(x + 1)
+        \end{cases}                                                                                                                            \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N,                                                                 \\
+                 & \begin{cases}
+            \abs*{f_n(x) - f(x)} < \frac{\varepsilon}{2} \\
+            \abs*{f_n(x + 1) - f(x + 1)} < \frac{\varepsilon}{2}
+        \end{cases}                                                                                                                            \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \begin{cases}
+            \abs*{f_n(x) - f(x)} < \frac{\varepsilon}{2} \\
+            \abs*{f_n(x) - f(x + 1)} < \frac{\varepsilon}{2}
+        \end{cases} & \text{(by Definition \ref{5.1.1})} \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N,                                                                 \\
+                 & \abs*{f(x) - f(x + 1)} \leq \abs*{f(x) - f_n(x)} + \abs*{f_n(x) - f(x + 1)}                                                                           \\
+                 & < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon                                                                                         \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \abs*{f(x) - f(x + 1)} < \varepsilon                                                                           \\
+        \implies & f(x) = f(x + 1).
+    \end{align*}
+    But this contradict to the definition of \(x\).
+    Thus \(f in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
+\end{proof}
 
 \begin{note}
     One can make \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) into a metric space by re-introducing the now familiar sup-norm metric
