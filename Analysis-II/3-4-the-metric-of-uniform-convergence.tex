@@ -88,56 +88,49 @@
 
 \begin{proof}
     Let \(d_{C(X \to Y)} = d_{B(X \to Y)}|_{C(X \to Y) \times C(X \to Y)}\) and let \(n_1, n_2 \in \mathbf{Z}^+\).
-    Let \((f^{(n)})_{n = 1}^\infty\) be a Cauchy sequence in \(\big(C(X \to Y), d_{C(X \to Y)}\big)\).
+    Let \((f_n)_{n = 1}^\infty\) be a Cauchy sequence in \(\big(C(X \to Y), d_{C(X \to Y)}\big)\).
     Observe that
     \begin{align*}
-                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n_1, n_2 \geq N,                                        \\
-                 & d_{C(X \to Y)}\big(f^{(n_1)}, f^{(n_2)}\big) < \varepsilon                                       & \text{(by Definition \ref{1.4.6})} \\
-        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n_1, n_2 \geq N,                                        \\
-                 & \sup_{x \in X} d_Y\big(f^{(n_1)}(x), f^{(n_2)}(x)\big) < \varepsilon                             & \text{(by Definition \ref{3.4.2})} \\
-        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n_1, n_2 \geq N,                                        \\
-                 & \forall\ x \in X, d_Y\big(f^{(n_1)}(x), f^{(n_2)}(x)\big) < \varepsilon                                                               \\
-        \implies & \forall\ x \in X, \big(f^{(n)}(x)\big)_{n = 1}^\infty \text{ is a Cauchy sequence in } (Y, d_Y). & \text{(by Definition \ref{1.4.6})}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n_1, n_2 \geq N,                                                         \\
+                 & d_{C(X \to Y)}\big(f^{(n_1)}, f^{(n_2)}\big) < \varepsilon                                                        & \text{(by Definition \ref{1.4.6})} \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n_1, n_2 \geq N,                                                         \\
+                 & \sup_{x \in X} d_Y\big(f^{(n_1)}(x), f^{(n_2)}(x)\big) < \varepsilon                                              & \text{(by Definition \ref{3.4.2})} \\
+        \implies & \forall\ x \in X, \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n_1, n_2 \geq N,                                       \\
+                 & d_Y\big(f^{(n_1)}(x), f^{(n_2)}(x)\big) \leq \sup_{x \in X} d_Y\big(f^{(n_1)}(x), f^{(n_2)}(x)\big) < \varepsilon                                      \\
+        \implies & \forall\ x \in X, \big(f_n(x)\big)_{n = 1}^\infty \text{ is a Cauchy sequence in } (Y, d_Y).                      & \text{(by Definition \ref{1.4.6})}
     \end{align*}
     By hypothesis we know that \((Y, d_Y)\) is complete, thus by Definition \ref{1.4.10} we have
     \[
-        \forall\ x \in X, d_Y - \lim_{n \to \infty} f^{(n)}(x) \in Y
+        \forall\ x \in X, d_Y - \lim_{n \to \infty} f_n(x) \in Y
     \]
     and we can define a function \(f : X \to Y\) such that
     \[
-        \forall\ x \in X, f(x) = d_Y - \lim_{n \to \infty} f^{(n)}(x).
+        \forall\ x \in X, f(x) = d_Y - \lim_{n \to \infty} f_n(x).
     \]
-    By Definition \ref{3.2.1} this means \((f^{(n)})_{n = 1}^\infty\) converges pointwise to \(f\) on \(X\) with respect to \(d_Y\).
     By Definition \ref{1.1.14} we have
-    \begin{align*}
-                 & \forall\ x \in X, f(x) = d_Y - \lim_{n \to \infty} f^{(n)}(x)                                                                                                        \\
-        \implies & \forall\ x \in X, \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N_1 \in \mathbf{Z}^+ : \forall\ n \geq N_1, d_Y\big(f^{(n)}(x), f(x)\big) < \frac{\varepsilon}{2}.
-    \end{align*}
-    We choose one \(N_1\) for each pair of \((x, \varepsilon)\).
-    Since \((f^{(n)})_{n = 1}^\infty\) is a Cauchy sequence in \(\big(C(X \to Y), d_{C(X \to Y)}\big)\), we have
-    \begin{align*}
-                 & \exists\ N_2 \in \mathbf{Z}^+ : \forall\ n \geq N_2, d_{C(X \to Y)}(f^{(n)}, f^{(N)}) < \frac{\varepsilon}{2}                   & \text{(by Definition \ref{1.4.6})}    \\
-        \implies & \exists\ N_2 \in \mathbf{Z}^+ : \forall\ n \geq N_2, \sup_{x \in X} d_Y\big(f^{(n)}(x), f^{(N)}(x)\big) < \frac{\varepsilon}{2} & \text{(by Definition \ref{3.4.2})}    \\
-        \implies & \exists\ N_2 \in \mathbf{Z}^+ : \forall\ n \geq N_2, \forall\ x \in X,                                                                                                  \\
-                 & d_Y\big(f^{(n)}(x), f^{(N)}(x)\big) < \frac{\varepsilon}{2}                                                                                                             \\
-        \implies & \exists\ N = \max(N_1, N_2) : \forall\ n \geq N, \forall\ x \in X,                                                                                                      \\
-                 & d_Y\big(f^{(n)}(x), f(x)\big)                                                                                                                                           \\
-                 & \leq d_Y\big(f^{(n)}(x), f^{(N)}(x)\big) + d_Y\big(f^{(N)}(x), f(x)\big)                                                        & \text{(by Definition \ref{1.1.2}(d))} \\
-                 & < \frac{\varepsilon}{2} + \frac{\varepsilon}{2}                                                                                                                         \\
-        \implies & \exists\ N = \max(N_1, N_2) : \forall\ n \geq N, \forall\ x \in X,                                                                                                      \\
-                 & d_Y\big(f^{(n)}(x), f(x)\big) < \varepsilon.
-    \end{align*}
-    Since \(\varepsilon\) is arbitrary, we have
     \[
-        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \forall\ x \in X, d_Y\big(f^{(n)}(x), f(x)\big) < \varepsilon
+        \forall\ x \in X, \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, d_Y\big(f_n(x), f(x)\big) < \frac{\varepsilon}{3}.
     \]
-    and by Definition \ref{3.2.7} \((f^{(n)})_{n = 1}^\infty\) converges uniformly to \(f\) on \(X\) with respect to \(d_Y\).
-    By Proposition \ref{3.3.6} we know that \(f \in B(X \to Y)\), and by Corollary \ref{3.3.2} we know that \(f \in C(X \to Y)\).
-    Thus by Proposition \ref{3.4.4} we have
+    We choose one \(N\) for each pairs of \(x\) and \(\varepsilon\) and denote it as \(N_{x, \varepsilon}\).
+    Since \(f_n \in C(X \to Y)\) for all \(n \in \mathbf{Z}^+\), by Definition \ref{2.1.1} we know that
     \[
-        d_{B(X \to Y)} \lim_{n \to \infty} f^{(n)} = f = d_{C(X \to Y)} \lim_{n \to \infty} f^{(n)}.
+        \forall\ x_0 \in X, \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in X, d_X(x, x_0) < \delta \implies d_Y\big(f_n(x), f_n(x_0)\big) < \frac{\varepsilon}{3}.
     \]
-    Since \((f^{(n)})_{n = 1}^\infty\) is arbitrary, by Definition \ref{1.4.10} \(\big(C(X \to Y), d_{C(X \to Y)}\big)\) is complete.
+    If we denote \(M_{x, x_0, \varepsilon} = \max(N_{x, \varepsilon}, N_{x_0, \varepsilon})\), then by Definition \ref{1.1.2}(d) we have
+    \begin{align*}
+                 & \forall\ x_0 \in X, \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in X, d_X(x, x_0) < \delta \\
+        \implies & \begin{cases}
+            \forall\ n \geq M_{x, x_0, \varepsilon}, d_Y\big(f_n(x), f(x)\big) < \frac{\varepsilon}{3}     \\
+            \forall\ n \geq M_{x, x_0, \varepsilon}, d_Y\big(f_n(x_0), f(x_0)\big) < \frac{\varepsilon}{3} \\
+            d_Y\big(f_n(x), f_n(x_0)\big) < \frac{\varepsilon}{3}
+        \end{cases}                                                                                                           \\
+        \implies & \forall\ n \geq M_{x, x_0, \varepsilon},                                                                                             \\
+                 & d_Y\big(f(x), f(x_0)\big) \leq d_Y\big(f_n(x), f(x)\big) + d_Y\big(f_n(x), f_n(x_0)\big) + d_Y\big(f_n(x_0), f(x_0)\big)             \\
+                 & < \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon                                                \\
+        \implies & d_Y\big(f(x), f(x_0)\big) < \varepsilon.
+    \end{align*}
+    By Definition \ref{2.1.1} this means \(f \in C(X \to Y)\).
+    Since \((f_n)_{n = 1}^\infty\) is arbitrary, by Definition \ref{1.4.10} \(\big(C(X \to Y), d_{C(X \to Y)}\big)\) is complete.
 \end{proof}
 
 \exercisesection
