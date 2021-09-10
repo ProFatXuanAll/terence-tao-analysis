@@ -199,3 +199,72 @@ We often use \(x \mod n\) instead of \(\text{mod}_n(x)\).
     Show that \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) with the sup-norm metric \(d_\infty\) is a metric space.
     Furthermore, show that this metric space is complete.
 \end{exercise}
+
+\begin{proof}
+    First we show that \(\big(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C}), d_\infty\big)\) is a metric space.
+    Since
+    \[
+        \forall\ f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C}), d_\infty(f, f) = \sup_{x \in [0, 1)} \abs*{f(x) - f(x)} = 0,
+    \]
+    we know that \(d_\infty\) satisfied Definition \ref{1.1.2}(a).
+    Since
+    \begin{align*}
+                 & \forall\ f, g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C}), f \neq g                                      \\
+        \implies & \exists\ x \in \mathbf{R} : f(x) \neq g(x)                                                               \\
+        \implies & \exists\ x \in [0, 1) : f(x) \neq g(x)                              & \text{(by Definition \ref{5.1.1})} \\
+        \implies & 0 < \sup_{x \in [0, 1)} \abs*{f(x) - g(x)} < +\infty                & \text{(by Lemma \ref{5.1.5}(a))}   \\
+        \implies & 0 < d_\infty(f, g) < +\infty,
+    \end{align*}
+    we know that \(d_\infty\) satisfied Definition \ref{1.1.2}(b).
+    Since
+    \begin{align*}
+        \forall\ f, g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C}), d_\infty(f, g) & = \sup_{x \in [0, 1)} \abs*{f(x) - g(x)}                                       \\
+                                                                                  & = \sup_{x \in [0, 1)} \abs*{g(x) - f(x)} & \text{(by Definition \ref{4.6.10})} \\
+                                                                                  & = d_\infty(g, f),
+    \end{align*}
+    we know that \(d_\infty\) satisfied Definition \ref{1.1.2}(c).
+    Since
+    \begin{align*}
+         & \forall\ f, g, h \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C}), d_\infty(f, h)                                  \\
+         & = \sup_{x \in [0, 1)} \abs*{f(x) - h(x)}                                                                      \\
+         & = \sup_{x \in [0, 1)} \abs*{f(x) - g(x) + g(x) - h(x)}                                                        \\
+         & \leq \sup_{x \in [0, 1)} \big(\abs*{f(x) - g(x)} + \abs*{g(x) - h(x)}\big)   & \text{(by Lemma \ref{4.6.11})} \\
+         & = d_\infty(f, g) + d_\infty(g, h),
+    \end{align*}
+    we know that \(d_\infty\) satisfied Definition \ref{1.1.2}(d).
+    From all proofs above we conclude by Definition \ref{1.1.2} that \(\big(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C}), d_\infty\big)\) is a metric space.
+
+    Now we show that \(\big(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C}), d_\infty\big)\) is complete.
+    Let \(d_{\mathbf{R}} = d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\) and let \(d_{\mathbf{C}}\) be the metric in Definition \ref{4.6.10}.
+    Let \((f_n)_{n = 1}^\infty\) be a Cauchy sequence in \(\big(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C}), d_\infty\big)\) and let \(n_1, n_2 \in \mathbf{Z}^+\).
+    Then by Definition \ref{1.4.6} we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n_1, n_2 \geq N, d_\infty(f_{n_1}, f_{n_2}) < \varepsilon \\
+        \implies & \forall\ x \in \mathbf{R}, \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n_1, n_2 \geq N,               \\
+                 & \abs*{f_{n_1}(x) - f_{n_2}(x)} \leq \sup_{y \in \mathbf{R}} \abs*{f_{n_1}(y) - f_{n_2}(y)} = d_\infty(f_{n_1}, f_{n_2}) < \varepsilon   \\
+        \implies & \forall\ x \in \mathbf{R}, \big(f_n(x)\big)_{n = 1}^\infty \text{ is a Cauchy sequence in } (\mathbf{C}, d_{\mathbf{C}}).
+    \end{align*}
+    Since \((\mathbf{C}, d_{\mathbf{C}})\) is complete (by Exercise \ref{ex 4.6.10}), we know that
+    \[
+        \forall\ x \in \mathbf{C}, \lim_{n \to \infty} f_n(x) \in \mathbf{C}.
+    \]
+    Thus we can define \(f : \mathbf{R} \to \mathbf{C}\) as follow:
+    \[
+        \forall\ x \in \mathbf{R}, f(x) = \lim_{n \to \infty} f_n(x).
+    \]
+    And we have
+    \begin{align*}
+                 & \forall\ x \in \mathbf{R}, \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N,                                                     \\
+                 & \begin{cases}
+            \abs*{f(x) - f_n(x)} < \frac{\varepsilon}{2} \\
+            \abs*{f(x + 1) - f_n(x + 1)} = \abs*{f(x + 1) - f_n(x)} < \frac{\varepsilon}{2}
+        \end{cases}                                                                                         & (f_n \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})) \\
+        \implies & \forall\ x \in \mathbf{R}, \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N,                                                     \\
+                 & \abs*{f(x) - f(x + 1)} \leq \abs*{f(x) - f_n(x)} + \abs*{f(x + 1) - f_n(x)}                                                                                            \\
+                 & < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon                                                                                                          \\
+        \implies & \forall\ x \in \mathbf{R}, \forall\ \varepsilon \in \mathbf{R}^+, \abs*{f(x) - f(x + 1)} < \varepsilon                                                                 \\
+        \implies & \forall\ x \in \mathbf{R}, f(x) = f(x + 1)                                                                                                                             \\
+        \implies & f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C}).
+    \end{align*}
+    Since \((f_n)_{n = 1}^\infty\) is arbitrary, by Definition \ref{1.4.10} we know that \(\big(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C}), d_\infty\big)\) is complete.
+\end{proof}
