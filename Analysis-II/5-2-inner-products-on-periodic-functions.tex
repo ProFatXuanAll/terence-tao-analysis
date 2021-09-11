@@ -1,7 +1,7 @@
 \section{Inner products on periodic functions}\label{sec 5.2}
 
 \begin{definition}[Inner product]\label{5.2.1}
-    If \(f, g \in \big(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C}), d_\infty\big)\), we define the \emph{inner product} \(\inner*{f, g}\) to be the quantity
+    If \(f, g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), we define the \emph{inner product} \(\inner*{f, g}\) to be the quantity
     \[
         \inner*{f, g} = \int_{[0, 1]} f(x) \overline{g(x)} \; dx.
     \]
@@ -15,6 +15,37 @@
     i.e., we integrate the real and imaginary parts of the function separately.
     It is easy to verify that all the standard rules of calculus (integration by parts, fundamental theorem of calculus, substitution, etc.) still hold when the functions are complex-valued instead of real-valued.
 \end{remark}
+
+\begin{proof}
+    Let \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), let \(d_{\mathbf{R}} = d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\) and let \(d_{\mathbf{C}}\) be the metric in Definition \ref{4.6.10}.
+    Let \(x_0 \in \mathbf{R}\) and let \((a_n)_{n = 1}^\infty\) be a sequence in \(\mathbf{R}\) such that \(\lim_{n \to \infty} a_n = x_0\).
+    Since \(f\) is continuous on \(\mathbf{R}\) from \((\mathbf{R}, d_{\mathbf{R}})\) to \((\mathbf{C}, d_{\mathbf{C}})\), we know that
+    \begin{align*}
+                 & \lim_{n \to \infty} f(a_n) = f(x_0) & \text{(by Theorem \ref{2.1.4})} \\
+        \implies & \begin{cases}
+            \lim_{n \to \infty} \Re(f\big(a_n)\big) = \Re\big(f(x_0)\big) \\
+            \lim_{n \to \infty} \Im(f\big(a_n)\big) = \Im\big(f(x_0)\big)
+        \end{cases}           & \text{(by Lemma \ref{4.6.13})}
+    \end{align*}
+    Since \((a_n)_{n = 0}^\infty\) is arbitrary, by Theorem \ref{2.1.4} we know that \(\Re \circ f\) is continuous at \(x_0\) from \((\mathbf{R}, d_{\mathbf{R}})\) to \((\mathbf{R}, d_{\mathbf{R}})\).
+    Since \(x_0\) is arbitrary, by Theorem \ref{2.1.5} we know that \(\Re \circ f\) is continuous on \(\mathbf{R}\) from \((\mathbf{R}, d_{\mathbf{R}})\) to \((\mathbf{R}, d_{\mathbf{R}})\).
+    Using similar arguments we can show that \(\Im \circ f\) is continuous on \(\mathbf{R}\) from \((\mathbf{R}, d_{\mathbf{R}})\) to \((\mathbf{R}, d_{\mathbf{R}})\).
+    Since
+    \begin{align*}
+         & \forall\ x \in \mathbf{R}, \Re(f(x + 1)) = \Re(f(x)) \implies \Re \circ f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C}); \\
+         & \forall\ x \in \mathbf{R}, \Im(f(x + 1)) = \Im(f(x)) \implies \Im \circ f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C}),
+    \end{align*}
+    by Lemma \ref{5.1.5}(a) we know that both \(\Re \circ f\) and \(\Im \circ f\) are bounded in \((\mathbf{C}, d_{\mathbf{C}})\).
+    In particular, by Definition \ref{4.6.8} we know that \((\Re \circ f)(\mathbf{R}) \subseteq \mathbf{R}\) and \((\Im \circ f)(\mathbf{R}) \subseteq \mathbf{R}\).
+    Thus both \(\Re \circ f\) and \(\Im \circ f\) are bounded in \((\mathbf{R}, d_{\mathbf{R}})\).
+    Since \(\Re \circ f\) and \(\Im \circ f\) are continuous and bounded on \([0, 1]\), by Corollary 11.5.2 in Analysis I we know that \(\Re \circ f\) and \(\Im \circ f\) are Riemann integrable on \([0, 1]\).
+    Thus
+    \[
+        \int_{[0, 1]} f(x) \; dx = \int_{[0, 1]} \Re\big(f(x)\big) \; dx + i \bigg(\int_{[0, 1]} \Im\big(f(x)\big) \; dx\bigg) \in \mathbf{C}
+    \]
+    is well-defined.
+    The same argument holds on arbitrary closed interval \([a, b]\) since \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
+\end{proof}
 
 \begin{example}\label{5.2.3}
     Let \(f\) be the constant function \(f(x) \coloneqq 1\), and let \(g(x)\) be the function \(g(x) \coloneqq e^{2 \pi i x}\).
