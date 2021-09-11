@@ -99,6 +99,7 @@
                                  & = \int_{[0, 1]} \Re\big(\overline{f(x) \overline{g(x)}}\big) \; dx + i \bigg(\int_{[0, 1]} \Im\big(\overline{f(x) \overline{g(x)}}\big) \; dx\bigg) & \text{(by Definition \ref{4.6.8})} \\
                                  & = \int_{[0, 1]} \Re\big(\overline{f(x)} g(x)\big) \; dx + i \bigg(\int_{[0, 1]} \Im\big(\overline{f(x)} g(x)\big) \; dx\bigg)                       & \text{(by Lemma \ref{4.6.9})}      \\
                                  & = \int_{[0, 1]} \Re\big(g(x) \overline{f(x)}\big) \; dx + i \bigg(\int_{[0, 1]} \Im\big(g(x) \overline{f(x)}\big) \; dx\bigg)                       & \text{(by Lemma \ref{4.6.6})}      \\
+                                 & = \int_{[0, 1]} g(x) \overline{f(x)} \; dx                                                                                                          & \text{(by Remark \ref{5.2.2})}     \\
                                  & = \inner*{g, f}.                                                                                                                                    & \text{(by Definition \ref{5.2.1})}
     \end{align*}
 \end{proof}
@@ -125,14 +126,15 @@
     \begin{align*}
          & \inner*{f + g, h}                                                                                                                                                                                                  \\
          & = \int_{[0, 1]} (f + g)(x) \overline{h(x)} \; dx                                                                                    & \text{(by Definition \ref{5.2.1})}                                           \\
-         & = \int_{[0, 1]} \Re\big((f + g)(x) \overline{h(x)}\big) \; dx                                                                                                                                                      \\
-         & \quad + i \bigg(\int_{[0, 1]} \Im\big((f + g)(x) \overline{h(x)}\big) \; dx\bigg)                                                   & \text{(by Remark \ref{5.2.2})}                                               \\
+         & = \int_{[0, 1]} \Re\big((f + g)(x) \overline{h(x)}\big) \; dx                                                                       & \text{(by Remark \ref{5.2.2})}                                               \\
+         & \quad + i \bigg(\int_{[0, 1]} \Im\big((f + g)(x) \overline{h(x)}\big) \; dx\bigg)                                                                                                                                  \\
          & = \int_{[0, 1]} \Re\big(f(x) \overline{h(x)} + g(x) \overline{h(x)}\big) \; dx                                                                                                                                     \\
          & \quad + i \bigg(\int_{[0, 1]} \Im\big(f(x) \overline{h(x)} + g(x) \overline{h(x)}\big) \; dx\bigg)                                                                                                                 \\
          & = \int_{[0, 1]} \Re\big(f(x) \overline{h(x)}) + \Re\big(g(x) \overline{h(x)}\big) \; dx                                             & \text{(by Definition \ref{4.6.8})}                                           \\
          & \quad + i \bigg(\int_{[0, 1]} \Im\big(f(x) \overline{h(x)}\big) + \Im\big(g(x) \overline{h(x)}\big) \; dx\bigg)                                                                                                    \\
          & = \int_{[0, 1]} \Re\big(f(x) \overline{h(x)}) \; dx + \int_{[0, 1]} \Re\big(g(x) \overline{h(x)}\big) \; dx                         & (f \overline{h}, g \overline{h} \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})) \\
          & \quad + i \bigg(\int_{[0, 1]} \Im\big(f(x) \overline{h(x)}\big) \; dx + \int_{[0, 1]} \Im\big(g(x) \overline{h(x)}\big) \; dx\bigg)                                                                                \\
+         & = \int_{[0, 1]} f(x) \overline{h(x)} \; dx + \int_{[0, 1]} g(x) \overline{h(x)} \; dx                                               & \text{(by Remark \ref{5.2.2})}                                               \\
          & = \inner*{f, h} + \inner*{g, h}                                                                                                     & \text{(by Definition \ref{5.2.1})}
     \end{align*}
     and
@@ -149,9 +151,39 @@
          & \quad + i \Im(c) \bigg(\int_{[0, 1]} \Re\big(f(x) \overline{g(x)}\big) \; dx\bigg)                                                                                                                          \\
          & = \Re(c) \Bigg(\int_{[0, 1]} \Re\big(f(x) \overline{g(x)}\big) \; dx + i \int_{[0, 1]} \Im\big(f(x) \overline{g(x)}\big) \; dx\Bigg)         & \text{(by Lemma \ref{4.6.6})}                                \\
          & \quad + i \Im(c) \Bigg(\int_{[0, 1]} \Re\big(f(x) \overline{g(x)}\big) \; dx + i \int_{[0, 1]} \Im\big(f(x) \overline{g(x)}\big) \; dx\Bigg) & \text{(by Definition \ref{4.6.5})}                           \\
+         & = \Re(c) \int_{[0, 1]} f(x) \overline{g(x)} \; dx + i \Im(c) \int_{[0, 1]} f(x) \overline{g(x)} \; dx                                        & \text{(by Remark \ref{5.2.2})}                               \\
          & = \Re(c) \inner*{f, g} + i \Im(c) \inner*{f, g}                                                                                              & \text{(by Definition \ref{5.2.1})}                           \\
          & = \big(\Re(c) + i \Im(c)\big) \inner*{f, g}                                                                                                  & \text{(by Lemma \ref{4.6.6})}                                \\
          & = c \inner*{f, g}.                                                                                                                           & \text{(by Definition \ref{4.6.8})}
+    \end{align*}
+\end{proof}
+
+\begin{proof}{(d)}
+    We have
+    \begin{align*}
+         & \inner*{f, g + h}                                                                                                                                                                                                  \\
+         & = \int_{[0, 1]} f(x) \overline{(g + h)(x)} \; dx                                                                                    & \text{(by Definition \ref{5.2.1})}                                           \\
+         & = \int_{[0, 1]} \Re\big(f(x) \overline{(g + h)(x)}\big) \; dx                                                                                                                                                      \\
+         & \quad + i \bigg(\int_{[0, 1]} \Im\big(f(x) \overline{(g + h)(x)}\big) \; dx\bigg)                                                   & \text{(by Remark \ref{5.2.2})}                                               \\
+         & = \int_{[0, 1]} \Re\big(f(x) \overline{g(x)} + f(x) \overline{h(x)}\big) \; dx                                                      & \text{(by Lemma \ref{4.6.9})}                                                \\
+         & \quad + i \bigg(\int_{[0, 1]} \Im\big(f(x) \overline{g(x)} + f(x) \overline{h(x)}\big) \; dx\bigg)                                                                                                                 \\
+         & = \int_{[0, 1]} \Re\big(f(x) \overline{g(x)}) + \Re\big(f(x) \overline{h(x)}\big) \; dx                                             & \text{(by Definition \ref{4.6.8})}                                           \\
+         & \quad + i \bigg(\int_{[0, 1]} \Im\big(f(x) \overline{g(x)}\big) + \Im\big(f(x) \overline{h(x)}\big) \; dx\bigg)                                                                                                    \\
+         & = \int_{[0, 1]} \Re\big(f(x) \overline{g(x)}) \; dx + \int_{[0, 1]} \Re\big(f(x) \overline{h(x)}\big) \; dx                         & (f \overline{g}, f \overline{h} \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})) \\
+         & \quad + i \bigg(\int_{[0, 1]} \Im\big(f(x) \overline{g(x)}\big) \; dx + \int_{[0, 1]} \Im\big(f(x) \overline{h(x)}\big) \; dx\bigg)                                                                                \\
+         & = \int_{[0, 1]} f(x) \overline{g(x)} \; dx + \int_{[0, 1]} f(x) \overline{h(x)} \; dx                                               & \text{(by Remark \ref{5.2.2})}                                               \\
+         & = \inner*{f, g} + \inner*{f, h}                                                                                                     & \text{(by Definition \ref{5.2.1})}
+    \end{align*}
+    and
+    \begin{align*}
+         & \inner*{f, cg}                                                                                                                                                                                   \\
+         & = \int_{[0, 1]} (x) \overline{(cg)(x)} \; dx                                                                                                                & \text{(by Definition \ref{5.2.1})} \\
+         & = \int_{[0, 1]} \Re\big(f(x) \overline{(cg)(x)}\big) \; dx + i \bigg(\int_{[0, 1]} \Im\big(f(x) \overline{(cg)(x)}\big) \; dx\bigg)                         & \text{(by Remark \ref{5.2.2})}     \\
+         & = \int_{[0, 1]} \Re\big(\overline{c} f(x) \overline{g(x)}\big) \; dx + i \bigg(\int_{[0, 1]} \Im\big(\overline{c} f(x) \overline{g(x)}\big) \; dx\bigg)     & \text{(by Lemma \ref{4.6.9})}      \\
+         & = \int_{[0, 1]} \Re\big((\overline{c} f)(x) \overline{g(x)}\big) \; dx + i \bigg(\int_{[0, 1]} \Im\big((\overline{c} f)(x) \overline{g(x)}\big) \; dx\bigg)                                      \\
+         & = \int_{[0, 1]} (\overline{c} f)(x) \overline{g(x)} \; dx                                                                                                   & \text{(by Remark \ref{5.2.2})}     \\
+         & = \inner*{\overline{c} f, g}                                                                                                                                & \text{(by Definition \ref{5.2.1})} \\
+         & = \overline{c} \inner*{f, g}.                                                                                                                               & \text{(by Lemma \ref{5.2.5}(c))}
     \end{align*}
 \end{proof}
 
