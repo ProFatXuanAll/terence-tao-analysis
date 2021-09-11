@@ -187,14 +187,14 @@
     \end{align*}
 \end{proof}
 
-\begin{note}
-    From the positivity property, it makes sense to define the \(L^2\) norm \(\norm*{f}_2\) of a function \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) by the formula
-    \[
-        \norm*{f}_2 = \sqrt{\inner*{f, f}} = \bigg(\int_{[0, 1]} f(x) \overline{f(x)} \; dx\bigg)^{1 / 2} = \bigg(\int_{[0, 1]} \abs*{f(x)}^2 \; dx\bigg)^{1 / 2}.
-    \]
-    Thus \(\norm*{f}_2 \geq 0\) for all \(f\).
-    The norm \(\norm*{f}_2\) is sometimes called the \emph{root mean square} of \(f\).
-\end{note}
+\begin{additional corollary}\label{ac 5.2.1}
+From the positivity property (Lemma \ref{5.2.5}(b)), it makes sense to define the \(L^2\) norm \(\norm*{f}_2\) of a function \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) by the formula
+\[
+    \norm*{f}_2 \coloneqq \sqrt{\inner*{f, f}} = \bigg(\int_{[0, 1]} f(x) \overline{f(x)} \; dx\bigg)^{1 / 2} = \bigg(\int_{[0, 1]} \abs*{f(x)}^2 \; dx\bigg)^{1 / 2}.
+\]
+Thus \(\norm*{f}_2 \geq 0\) for all \(f\).
+The norm \(\norm*{f}_2\) is sometimes called the \emph{root mean square} of \(f\).
+\end{additional corollary}
 
 \begin{note}
     This \(L^2\) norm is related to, but is distinct from, the \(L^\infty\) norm
@@ -220,6 +220,63 @@
               We have \(\norm*{cf}_2 = \abs*{c} \norm*{f}_2\) for all \(c \in \mathbf{C}\).
     \end{enumerate}
 \end{lemma}
+
+\begin{proof}{(a)}
+    We have
+    \begin{align*}
+             & \norm*{f}_2 = 0                                                            \\
+        \iff & \sqrt{\inner*{f, f}} = 0 & \text{(by Additional Corollary \ref{ac 5.2.1})} \\
+        \iff & \inner*{f, f} = 0                                                          \\
+        \iff & f = 0.                   & \text{(by Lemma \ref{5.2.5}(b))}
+    \end{align*}
+\end{proof}
+
+\begin{proof}{(b)}
+    If \(g\) is zero function on \([0, 1]\), then we have
+    \begin{align*}
+        \abs*{\inner*{f, g}} & = \abs*{\int_{[0, 1]} f(x) \overline{g(x)} \; dx} & \text{(by Definition \ref{5.2.1})} \\
+                             & = \abs*{\int_{[0, 1]} f(x) \cdot 0 \; dx}                                              \\
+                             & = \abs*{\int_{[0, 1]} 0 \; dx}                                                         \\
+                             & = 0                                                                                    \\
+                             & = \norm*{f}_2 \norm*{g}_2.                        & \text{(by Lemma \ref{5.2.7}(a))}
+    \end{align*}
+    So suppose that \(g\) is not zero function on \([0, 1]\).
+    Observe that
+    \begin{align*}
+                 & \norm*{g}_2 \in \mathbf{R}                                                                 & \text{(by Additional Corollary \ref{ac 5.2.1})} \\
+        \implies & \norm*{g}_2^2 \in \mathbf{R}                                                                                                                 \\
+        \implies & \norm*{g}_2^2 \cdot f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})                          & \text{(by Lemma \ref{5.1.5}(b))}                \\
+        \implies & \norm*{g}_2^2 \cdot f - \inner*{f, g} \cdot g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C}). & \text{(by Lemma \ref{5.1.5}(b))}
+    \end{align*}
+    If we let \(h = \norm*{g}_2^2 \cdot f - \inner*{f, g} \cdot g\), then by Additional Corollary \ref{ac 5.2.1} we know that \(\inner*{h, h}\) is well-defined.
+    Thus we have
+    \begin{align*}
+         & \inner*{h, h}                                                                                                                                                              \\
+         & = \inner*{\norm*{g}_2^2 \cdot f - \inner*{f, g} \cdot g, \norm*{g}_2^2 \cdot f - \inner*{f, g} \cdot g}                                                                    \\
+         & = \inner*{\norm*{g}_2^2 \cdot f, \norm*{g}_2^2 \cdot f - \inner*{f, g} \cdot g}                                          & \text{(by Lemma \ref{5.2.5}(c))}                \\
+         & \quad + \inner*{-\inner*{f, g} \cdot g, \norm*{g}_2^2 \cdot f - \inner*{f, g} \cdot g}                                                                                     \\
+         & = \inner*{\norm*{g}_2^2 \cdot f, \norm*{g}_2^2 \cdot f} + \inner*{\norm*{g}_2^2 \cdot f, -\inner*{f, g} \cdot g}         & \text{(by Lemma \ref{5.2.5}(d))}                \\
+         & \quad + \inner*{-\inner*{f, g} \cdot g, \norm*{g}_2^2 \cdot f} + \inner*{-\inner*{f, g} \cdot g, -\inner*{f, g} \cdot g}                                                   \\
+         & = \norm*{g}_2^2 \inner*{f, \norm*{g}_2^2 \cdot f} + \norm*{g}_2^2 \inner*{f, -\inner*{f, g} \cdot g}                     & \text{(by Lemma \ref{5.2.5}(c))}                \\
+         & \quad - \inner*{f, g} \inner*{g, \norm*{g}_2^2 \cdot f} - \inner*{f, g} \inner*{g, -\inner*{f, g} \cdot g}                                                                 \\
+         & = \norm*{g}_2^2 \overline{\norm*{g}_2^2} \inner*{f, f} + \norm*{g}_2^2 \overline{-\inner*{f, g}} \inner*{f, g}           & \text{(by Lemma \ref{5.2.5}(d))}                \\
+         & \quad - \inner*{f, g} \overline{\norm*{g}_2^2} \inner*{g, f} - \inner*{f, g} \overline{-\inner*{f, g}} \inner*{g, g}                                                       \\
+         & = \norm*{g}_2^4 \inner*{f, f} - \norm*{g}_2^2 \overline{\inner*{f, g}} \inner*{f, g}                                     & \text{(by Lemma \ref{4.6.9})}                   \\
+         & \quad - \inner*{f, g} \norm*{g}_2^2 \inner*{g, f} + \inner*{f, g} \overline{\inner*{f, g}} \inner*{g, g}                                                                   \\
+         & = \norm*{g}_2^4 \inner*{f, f} - \norm*{g}_2^2 \overline{\inner*{f, g}} \inner*{f, g}                                                                                       \\
+         & \quad - \inner*{f, g} \norm*{g}_2^2 \overline{\inner*{f, g}} + \inner*{f, g} \overline{\inner*{f, g}} \inner*{g, g}      & \text{(by Lemma \ref{5.2.5}(a))}                \\
+         & = \norm*{g}_2^4 \inner*{f, f} - 2 \norm*{g}_2^2 \abs*{\inner*{f, g}}^2 + \abs*{\inner*{f, g}}^2 \inner*{g, g}            & \text{(by Definition \ref{4.6.10})}             \\
+         & = \norm*{g}_2^4 \norm*{f}_2^2 - 2 \norm*{g}_2^2 \abs*{\inner*{f, g}}^2 + \abs*{\inner*{f, g}}^2 \norm*{g}_2^2            & \text{(by Additional Corollary \ref{ac 5.2.1})} \\
+         & = \norm*{g}_2^4 \norm*{f}_2^2 - \norm*{g}_2^2 \abs*{\inner*{f, g}}^2
+    \end{align*}
+    and
+    \begin{align*}
+                 & \inner*{h, h} \geq 0                                                      & \text{(by Lemma \ref{5.2.5}(b))} \\
+        \implies & \norm*{g}_2^4 \norm*{f}_2^2 - \norm*{g}_2^2 \abs*{\inner*{f, g}}^2 \geq 0                                    \\
+        \implies & \norm*{g}_2^2 \norm*{f}_2^2 - \abs*{\inner*{f, g}}^2 \geq 0               & \text{(by Lemma \ref{5.2.7}(a))} \\
+        \implies & \norm*{g}_2 \norm*{f}_2 \geq \abs*{\inner*{f, g}}.                        & \text{(by Lemma \ref{5.2.5}(b))}
+    \end{align*}
+\end{proof}
 
 \begin{note}
     In light of Pythagoras' theorem, we sometimes say that \(f\) and \(g\) are \emph{orthogonal} iff \(\inner*{f, g} = 0\).
