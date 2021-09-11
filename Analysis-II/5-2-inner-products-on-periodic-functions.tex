@@ -215,7 +215,7 @@ The norm \(\norm*{f}_2\) is sometimes called the \emph{root mean square} of \(f\
         \item (Triangle inequality)
               We have \(\norm*{f + g}_2 \leq \norm*{f}_2 + \norm*{g}_2\).
         \item (Pythagoras’ theorem)
-              If \(\inner*{f, g} = 0\), then \(\norm*{f + g}_2^2 = \norm*{f}2^2 + \norm*{g}_2^2\).
+              If \(\inner*{f, g} = 0\), then \(\norm*{f + g}_2^2 = \norm*{f}_2^2 + \norm*{g}_2^2\).
         \item (Homogeneity)
               We have \(\norm*{cf}_2 = \abs*{c} \norm*{f}_2\) for all \(c \in \mathbf{C}\).
     \end{enumerate}
@@ -275,6 +275,44 @@ The norm \(\norm*{f}_2\) is sometimes called the \emph{root mean square} of \(f\
         \implies & \norm*{g}_2^4 \norm*{f}_2^2 - \norm*{g}_2^2 \abs*{\inner*{f, g}}^2 \geq 0                                    \\
         \implies & \norm*{g}_2^2 \norm*{f}_2^2 - \abs*{\inner*{f, g}}^2 \geq 0               & \text{(by Lemma \ref{5.2.7}(a))} \\
         \implies & \norm*{g}_2 \norm*{f}_2 \geq \abs*{\inner*{f, g}}.                        & \text{(by Lemma \ref{5.2.5}(b))}
+    \end{align*}
+\end{proof}
+
+\begin{proof}{(c)}
+    We have
+    \begin{align*}
+        \norm*{f + g}_2^2 & = \inner*{f + g, f + g}                                         & \text{(by Additional Corollary \ref{ac 5.2.1})} \\
+                          & = \inner*{f, f} + \inner*{f, g} + \inner*{g, f} + \inner*{g, g} & \text{(by Lemma \ref{5.2.5}(c)(d))}             \\
+                          & = \norm*{f}_2^2 + \inner*{f, g} + \inner*{g, f} + \norm*{g}_2^2 & \text{(by Additional Corollary \ref{ac 5.2.1})} \\
+                          & \leq \norm*{f}_2^2 + 2 \norm*{f}_2 \norm*{g}_2 + \norm*{g}_2^2  & \text{(by Lemma \ref{5.2.7}(b))}                \\
+                          & = \big(\norm*{f}_2 + \norm*{g}_2\big)^2.
+    \end{align*}
+    Thus
+    \begin{align*}
+                 & \norm*{f + g}_2^2 \leq (\norm*{f}_2 + \norm*{g}_2)^2                                    \\
+        \implies & \norm*{f + g}_2 \leq \norm*{f}_2 + \norm*{g}_2.      & \text{(by Lemma \ref{5.2.5}(b))}
+    \end{align*}
+\end{proof}
+
+\begin{proof}{(d)}
+    We have
+    \begin{align*}
+        \norm*{f + g}_2^2 & = \inner*{f + g, f + g}                                                    & \text{(by Additional Corollary \ref{ac 5.2.1})} \\
+                          & = \inner*{f, f} + \inner*{f, g} + \inner*{g, f} + \inner*{g, g}            & \text{(by Lemma \ref{5.2.5}(c)(d))}             \\
+                          & = \inner*{f, f} + \inner*{f, g} + \overline{\inner*{f, g}} + \inner*{g, g} & \text{(by Lemma \ref{5.2.5}(a))}                \\
+                          & = \inner*{f, f} + \inner*{g, g}                                            & \text{(by hypothesis)}                          \\
+                          & = \norm*{f}_2^2 + \norm*{g}_2^2.                                           & \text{(by Additional Corollary \ref{ac 5.2.1})}
+    \end{align*}
+\end{proof}
+
+\begin{proof}{(e)}
+    We have
+    \begin{align*}
+        \norm*{cf}_2 & = \sqrt{\inner*{cf, cf}}              & \text{(by Additional Corollary \ref{ac 5.2.1})} \\
+                     & = \sqrt{c \overline{c} \inner*{f, f}} & \text{(by Lemma \ref{5.2.5}(c)(d))}             \\
+                     & = \sqrt{\abs*{c}^2 \inner*{f, f}}     & \text{(by Lemma \ref{4.6.11})}                  \\
+                     & = \abs*{c} \sqrt{\inner*{f, f}}                                                         \\
+                     & = \abs*{c} \norm*{f}_2.               & \text{(by Additional Corollary \ref{ac 5.2.1})}
     \end{align*}
 \end{proof}
 
