@@ -74,7 +74,7 @@
     Let \(f, g, h \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
     \begin{enumerate}
         \item (Hermitian property)
-              We have \(\inner*{g, f} = \inner*{f, g}\).
+              We have \(\inner*{g, f} = \overline{\inner*{f, g}}\).
         \item (Positivity)
               We have \(\inner*{f, f} \geq 0\).
               Furthermore, we have \(\inner*{f, f} = 0\) if and only if \(f = 0\)
@@ -87,6 +87,21 @@
               For any complex number \(c\), we have \(\inner*{f, cg} = c \inner*{f, g}\).
     \end{enumerate}
 \end{lemma}
+
+\begin{proof}{(a)}
+    We have
+    \begin{align*}
+        \overline{\inner*{f, g}} & = \overline{\int_{[0, 1]} f(x) \overline{g(x)} \; dx}                                                                                               & \text{(by Definition \ref{5.2.1})} \\
+                                 & = \overline{\int_{[0, 1]} \Re\big(f(x) \overline{g(x)}\big) \; dx + i \bigg(\int_{[0, 1]} \Im\big(f(x) \overline{g(x)}\big) \; dx\bigg)}            & \text{(by Remark \ref{5.2.2})}     \\
+                                 & = \int_{[0, 1]} \Re\big(f(x) \overline{g(x)}\big) \; dx - i \bigg(\int_{[0, 1]} \Im\big(f(x) \overline{g(x)}\big) \; dx\bigg)                       & \text{(by Definition \ref{4.6.8})} \\
+                                 & = \int_{[0, 1]} \Re\big(f(x) \overline{g(x)}\big) \; dx + i \bigg(-\int_{[0, 1]} \Im\big(f(x) \overline{g(x)}\big) \; dx\bigg)                      & \text{(by Lemma \ref{4.6.6})}      \\
+                                 & = \int_{[0, 1]} \Re\big(f(x) \overline{g(x)}\big) \; dx + i \bigg(\int_{[0, 1]} -\Im\big(f(x) \overline{g(x)}\big) \; dx\bigg)                                                           \\
+                                 & = \int_{[0, 1]} \Re\big(\overline{f(x) \overline{g(x)}}\big) \; dx + i \bigg(\int_{[0, 1]} \Im\big(\overline{f(x) \overline{g(x)}}\big) \; dx\bigg) & \text{(by Definition \ref{4.6.8})} \\
+                                 & = \int_{[0, 1]} \Re\big(\overline{f(x)} g(x)\big) \; dx + i \bigg(\int_{[0, 1]} \Im\big(\overline{f(x)} g(x)\big) \; dx\bigg)                       & \text{(by Lemma \ref{4.6.9})}      \\
+                                 & = \int_{[0, 1]} \Re\big(g(x) \overline{f(x)}\big) \; dx + i \bigg(\int_{[0, 1]} \Im\big(g(x) \overline{f(x)}\big) \; dx\bigg)                       & \text{(by Lemma \ref{4.6.6})}      \\
+                                 & = \inner*{g, f}.                                                                                                                                    & \text{(by Definition \ref{5.2.1})}
+    \end{align*}
+\end{proof}
 
 \begin{note}
     From the positivity property, it makes sense to define the \(L^2\) norm \(\norm*{f}_2\) of a function \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) by the formula
