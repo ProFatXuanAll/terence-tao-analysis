@@ -320,12 +320,12 @@ The norm \(\norm*{f}_2\) is sometimes called the \emph{root mean square} of \(f\
     In light of Pythagoras' theorem, we sometimes say that \(f\) and \(g\) are \emph{orthogonal} iff \(\inner*{f, g} = 0\).
 \end{note}
 
-\begin{note}
-    We can now define the \(L^2\) metric \(d_{L^2}\) on \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) by defining
-    \[
-        d_{L^2}(f, g) \coloneqq \norm*{f - g}_2 = \bigg(\int_{[0, 1]} \abs*{f(x) - g(x)}^2 \; dx\bigg)^{1 / 2}.
-    \]
-\end{note}
+\begin{additional corollary}\label{ac 5.2.2}
+We can now define the \(L^2\) metric \(d_{L^2}\) on \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) by defining
+\[
+    d_{L^2}(f, g) \coloneqq \norm*{f - g}_2 = \bigg(\int_{[0, 1]} \abs*{f(x) - g(x)}^2 \; dx\bigg)^{1 / 2}.
+\]
+\end{additional corollary}
 
 \begin{remark}\label{5.2.8}
     One can verify that \(d_{L^2}\) is indeed a metric.
@@ -334,7 +334,7 @@ The norm \(\norm*{f}_2\) is sometimes called the \emph{root mean square} of \(f\
 \end{remark}
 
 \begin{note}
-    a sequence \(f_n\) of functions in \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) will \emph{converge in the \(L^2\) metric} to \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) if \(d_{L^2}(f_n, f) \to 0\) as \(n \to \infty\), or in other words that
+    A sequence \(f_n\) of functions in \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) will \emph{converge in the \(L^2\) metric} to \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) if \(d_{L^2}(f_n, f) \to 0\) as \(n \to \infty\), or in other words that
     \[
         \lim_{n \to \infty} \int_{[0, 1]} \abs*{f_n(x) - f(x)}^2 \; dx = 0.
     \]
@@ -371,6 +371,90 @@ The norm \(\norm*{f}_2\) is sometimes called the \emph{root mean square} of \(f\
     If \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) is a non-zero function, show that \(0 < \norm*{f}_2 \leq \norm*{f}_\infty\).
     Conversely, if \(0 < A \leq B\) are real numbers, show that there exists a non-zero function \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) such that \(\norm*{f}_2 = A\) and \(\norm*{f}_\infty = B\).
 \end{exercise}
+
+\begin{proof}
+    First we show that \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) and \(f \neq 0\) implies \(0 < \norm*{f}_2 \leq \norm*{f}_{\infty}\).
+    By Lemma \ref{5.2.7}(a) we know that \(0 < \norm*{f}_2\).
+    Thus we only need to show that \(\norm*{f}_2 \leq \norm*{f}_\infty\).
+    By Lemma \ref{5.1.5}(a) we know that \(f\) is bounded, thus by Definition \ref{3.5.5}
+    \[
+        \norm*{f}_{\infty} = \sup_{y \in \mathbf{R}} \abs*{f(x)} = \sup_{y \in [0, 1]} \abs*{f(x)} \in \mathbf{R}^+ \cup \{0\}.
+    \]
+    Since
+    \begin{align*}
+        \norm*{f}_2^2 & = \int_{[0, 1]} \abs*{f(x)}^2 \; dx                                  & \text{(by Additional Corollary \ref{ac 5.2.1})} \\
+                      & \leq \int_{[0, 1]} \big(\sup_{y \in [0, 1]} \abs*{f(y)}\big)^2 \; dx                                                   \\
+                      & = \big(\sup_{y \in [0, 1]} \abs*{f(y)}\big)^2                                                                          \\
+                      & = \norm*{f}_{\infty}^2,                                              & \text{(by Definition \ref{3.5.5})}
+    \end{align*}
+    we know that
+    \[
+        \norm*{f}_2^2 \leq \norm*{f}_{\infty}^2 \implies \norm*{f}_2 \leq \norm*{f}_{\infty}.
+    \]
+
+    Now we show that for arbitrary \(A, B \in \mathbf{R}\), we have
+    \[
+        0 < A \leq B \implies \exists\ f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C}) : \begin{cases}
+            f \neq 0        \\
+            \norm*{f}_2 = A \\
+            \norm*{f}_{\infty} = B
+        \end{cases}
+    \]
+    So let \(A, B \in \mathbf{R}\) such that \(0 < A \leq B\).
+    We want to find some \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) such that
+    \begin{align*}
+        A^2 & = \norm*{f}_2^2 = \int_{[0, 1]} \abs*{f(x)}^2 \; dx;                  \\
+        B^2 & = \norm*{f}_{\infty}^2 = \big(\sup_{x \in [0, 1]} \abs*{f(x)}\big)^2.
+    \end{align*}
+    In particular, we want our \(f\) to look like
+    \[
+        \forall\ x \in [0, 1], f(x) = \sqrt{c + d g(x)},
+    \]
+    where \(c, d \in \mathbf{R}^+\) and \(g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) such that \(g(\mathbf{R}) \subseteq \mathbf{R}^+ \cup \{0\}\).
+    So we are trying to solve the following equations:
+    \begin{align*}
+        A^2 & = \int_{[0, 1]} \abs*{\sqrt{c + dg(x)}}^2 \; dx           \\
+            & = \int_{[0, 1]} c + dg(x) \; dx                           \\
+            & = c + d \int_{[0, 1]} g(x) \; dx;                         \\
+        B^2 & = \big(\sup_{x \in [0, 1]} \abs*{\sqrt{c + dg(x)}}\big)^2 \\
+            & = \sup_{x \in [0, 1]} \abs*{\sqrt{c + dg(x)}}^2           \\
+            & = \sup_{x \in [0, 1]} \big(c + dg(x)\big)                 \\
+            & = c + d \big(\sup_{x \in [0, 1]} g(x)\big).
+    \end{align*}
+    By setting
+    \begin{align*}
+         & c = \frac{A^2}{2};                                        \\
+         & d = \frac{1}{2};                                          \\
+         & \forall\ x \in [0, 1], g(x) = \begin{cases}
+            \frac{(2 B^2 - A^2)^2}{A^2} x                    & \text{if } x \in [0, \frac{A^2}{2 B^2 - A^2})                         \\
+            \frac{-(2 B^2 - A^2)^2}{A^2} x + 2 (2 B^2 - A^2) & \text{if } x \in [\frac{A^2}{2 B^2 - A^2}, \frac{2 A^2}{2 B^2 - A^2}) \\
+            0                                                & \text{if } x \in [\frac{2 A^2}{2 B^2 - A^2}, 1]
+        \end{cases},
+    \end{align*}
+    we have
+    \begin{align*}
+         & \int_{[0, 1]} g(x) \; dx                                                                                                                                                                                              \\
+         & = \int_{[0, \frac{A^2}{2 B^2 - A^2}]} \frac{(2 B^2 - A^2)^2}{A^2} x \; dx + \int_{[\frac{A^2}{2 B^2 - A^2}, \frac{2 A^2}{2 B^2 - A^2}]} \frac{-(2 B^2 - A^2)^2}{A^2} x + 2 (2 B^2 - A^2) \; dx                        \\
+         & = \frac{(2 B^2 - A^2)^2}{A^2} \bigg(\frac{x^2}{2}|_{x = 0}^{x = \frac{A^2}{2 B^2 - A^2}}\bigg) - \frac{(2 B^2 - A^2)^2}{A^2} \bigg(\frac{x^2}{2}|_{x = \frac{A^2}{2 B^2 - A^2}}^{x = \frac{2 A^2}{2 B^2 - A^2}}\bigg) \\
+         & \quad + 2 (2 B^2 - A^2) \bigg(\frac{2 A^2}{2 B^2 - A^2} - \frac{A^2}{2 B^2 - A^2}\bigg)                                                                                                                               \\
+         & = \frac{A^2}{2} - 2 A^2 + \frac{A^2}{2} + 2 A^2                                                                                                                                                                       \\
+         & = A^2
+    \end{align*}
+    and
+    \begin{align*}
+        \sup_{[0, 1]} g(x) & = \frac{(2 B^2 - A^2)^2}{A^2} \frac{A^2}{2 B^2 - A^2} \\
+                           & = 2 B^2 - A^2.
+    \end{align*}
+    Thus
+    \begin{align*}
+        c + d \int_{[0, 1]} g(x) \; dx           & = \frac{A^2}{2} + \frac{A^2}{2}         \\
+                                                 & = A^2;                                  \\
+        c + d \big(\sup_{x \in [0, 1]} g(x)\big) & = \frac{A^2}{2} + \frac{2 B^2 - A^2}{2} \\
+                                                 & = B^2.
+    \end{align*}
+    Note that the idea behind the definition of \(g\) is we try to build a triangle in the interval \([0, 1]\) with height equals to \(2 B^2 - A^2\) (this explains the result of supremum), and we want that triangle's area equals to \(A^2\) (this explains the result of integration).
+    One can easily show that by extended \(g\) periodically we know that \(g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
+\end{proof}
 
 \begin{exercise}\label{ex 5.2.4}
     Prove that the \(L^2\) metric on \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) does indeed turn \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) into a metric space.
