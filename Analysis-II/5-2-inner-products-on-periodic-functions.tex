@@ -453,7 +453,7 @@ We can now define the \(L^2\) metric \(d_{L^2}\) on \(C(\mathbf{R} / \mathbf{Z} 
                                                  & = B^2.
     \end{align*}
     Note that the idea behind the definition of \(g\) is we try to build a triangle in the interval \([0, 1]\) with height equals to \(2 B^2 - A^2\) (this explains the result of supremum), and we want that triangle's area equals to \(A^2\) (this explains the result of integration).
-    One can easily show that by extended \(g\) periodically we know that \(g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
+    One can easily show that by extended \(g\) periodically with period \(1\) we know that \(g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
 \end{proof}
 
 \begin{exercise}\label{ex 5.2.4}
@@ -500,6 +500,51 @@ We can now define the \(L^2\) metric \(d_{L^2}\) on \(C(\mathbf{R} / \mathbf{Z} 
 \begin{exercise}\label{ex 5.2.5}
     Find a sequence of continuous periodic functions which converge in \(L^2\) to a discontinuous periodic function.
 \end{exercise}
+
+\begin{proof}
+    By Example \ref{5.1.4} we can define a \(\mathbf{Z}\)-periodic square wave function \(f : \mathbf{R} \to \mathbf{C}\) as follow:
+    \[
+        \forall\ x \in \mathbf{R}, f(x) = \begin{cases}
+            1 & \text{if } x \in [n, n + \frac{1}{2}) \text{ for some } n \in \mathbf{Z}     \\
+            0 & \text{if } x \in [n + \frac{1}{2}, n + 1) \text{ for some } n \in \mathbf{Z}
+        \end{cases}
+    \]
+    Note that \(f\) is \(1\)-periodic but \(f\) is not continuous on \(\mathbf{R}\).
+    For each \(k \in \mathbf{Z}^+\) and \(k \geq 10\), we define \(f_k : [0, 1) \to \mathbf{C}\) to be the function:
+    \[
+        \forall\ x \in [0, 1), f_k(x) = \begin{cases}
+            kx                & \text{if } x \in [0, \frac{1}{k})                         \\
+            1                 & \text{if } x \in [\frac{1}{k}, \frac{1}{2} - \frac{1}{k}) \\
+            -kx + \frac{k}{2} & \text{if } x \in [\frac{1}{2} - \frac{1}{k}, \frac{1}{2}) \\
+            0                 & \text{if } x \in [0 + \frac{1}{2}, 1)
+        \end{cases}
+    \]
+    If we extended \(f_k\) periodically with period \(1\), then \(f_k \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) for all \(k \geq 10\).
+    Note that the choice of \(10\) is to make sure \(\frac{1}{k} < \frac{1}{2} - \frac{1}{k} < \frac{1}{2}\).
+    Now we show that \((f_k)_{k = 10}^\infty\) converges to \(f\) on \([0, 1)\) with respect to \(d_{L^2}\).
+    In particular, we want to show that
+    \begin{align*}
+             & \lim_{k \to \infty} d_{L^2}(f_k, f) = 0                                                                                                  \\
+        \iff & \lim_{k \to \infty} \bigg(\int_{[0, 1]} \abs*{f_k(x) - f(x)}^2 \; dx\bigg)^{1 / 2} = 0 & \text{(by Additional Corollary \ref{ac 5.2.2})} \\
+        \iff & \lim_{k \to \infty} \int_{[0, 1]} \abs*{f_k(x) - f(x)}^2 \; dx = 0.
+    \end{align*}
+    Since
+    \begin{align*}
+         & \int_{[0, 1]} \abs*{f_k(x) - f(x)}^2 \; dx                                                                                                                                                                                         \\
+         & = \int_{[0, \frac{1}{k}]} (1 - kx)^2 \; dx + \int_{[\frac{1}{2} - \frac{1}{k}, \frac{1}{2}]} \bigg(1 - \frac{k}{2} + kx\bigg)^2 \; dx                                                                                              \\
+         & = \int_{[0, \frac{1}{k}]} 1 - 2kx + k^2 x^2 \; dx + \int_{[\frac{1}{2} - \frac{1}{k}, \frac{1}{2}]} 1 - k + \frac{k^2}{4} + 2kx - k^2 x + k^2 x^2 \; dx                                                                            \\
+         & = \frac{1}{k} - 2k \bigg(\frac{x^2}{2}|_{x = 0}^{x = \frac{1}{k}}\bigg) + k^2 \bigg(\frac{x^3}{3}|_{x = 0}^{x = \frac{1}{k}}\bigg)                                                                                                 \\
+         & \quad + \frac{1}{k} \bigg(1 - k + \frac{k^2}{4}\bigg) + (2k - k^2) \bigg(\frac{x^2}{2}|_{x = \frac{1}{2} - \frac{1}{k}}^{x = \frac{1}{2}}\bigg) + k^2 \bigg(\frac{x^3}{3}|_{x = \frac{1}{2} - \frac{1}{k}}^{x = \frac{1}{2}}\bigg) \\
+         & = \frac{1}{k} - \frac{1}{k} + \frac{1}{3k} + \frac{1}{k} - 1 + \frac{k}{4} + \frac{2k - k^2}{2} \bigg(\frac{1}{k} - \frac{1}{k^2}\bigg) + \frac{k^2}{3} \bigg(\frac{3}{4k} - \frac{3}{2k^2} + \frac{1}{k^3}\bigg)                  \\
+         & = \frac{2}{3k},
+    \end{align*}
+    we know that
+    \[
+        \lim_{k \to \infty} \int_{[0, 1]} \abs*{f_k(x) - f(x)}^2 \; dx = \lim_{k \to \infty} \frac{2}{3k} = 0.
+    \]
+    Thus \((f_k)_{k = 10}^\infty\) converges to \(f\) on \([0, 1)\) with respect to \(d_{L^2}\).
+    Since \(f\) and \(f_k\) are \(1\)-periodic for all \(k \geq 10\), we know that \((f_k)_{k = 10}^\infty\) converges to \(f\) on \(\mathbf{R}\) with respect to \(d_{L^2}\).
+\end{proof}
 
 \begin{exercise}\label{5.2.6}
     Let \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), and let \((f_n)_{n = 1}^\infty\) be a sequence of functions in \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
