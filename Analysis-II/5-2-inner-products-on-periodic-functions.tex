@@ -510,7 +510,8 @@ We can now define the \(L^2\) metric \(d_{L^2}\) on \(C(\mathbf{R} / \mathbf{Z} 
         \end{cases}
     \]
     Note that \(f\) is \(1\)-periodic but \(f\) is not continuous on \(\mathbf{R}\).
-    For each \(k \in \mathbf{Z}^+\) and \(k \geq 10\), we define \(f_k : [0, 1) \to \mathbf{C}\) to be the function:
+    Let \(\mathbf{N}_{\geq 10} = \{n \in \mathbf{N} : n \geq 10\}\).
+    For each \(k \in \mathbf{N}_{\geq 10}\), we define \(f_k : [0, 1) \to \mathbf{C}\) to be the function:
     \[
         \forall\ x \in [0, 1), f_k(x) = \begin{cases}
             kx                & \text{if } x \in [0, \frac{1}{k})                         \\
@@ -519,7 +520,7 @@ We can now define the \(L^2\) metric \(d_{L^2}\) on \(C(\mathbf{R} / \mathbf{Z} 
             0                 & \text{if } x \in [0 + \frac{1}{2}, 1)
         \end{cases}
     \]
-    If we extended \(f_k\) periodically with period \(1\), then \(f_k \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) for all \(k \geq 10\).
+    If we extended \(f_k\) periodically with period \(1\), then \(f_k \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) for all \(k \in \mathbf{N}_{\geq 10}\).
     Note that the choice of \(10\) is to make sure \(\frac{1}{k} < \frac{1}{2} - \frac{1}{k} < \frac{1}{2}\).
     Now we show that \((f_k)_{k = 10}^\infty\) converges to \(f\) on \([0, 1)\) with respect to \(d_{L^2}\).
     In particular, we want to show that
@@ -528,7 +529,7 @@ We can now define the \(L^2\) metric \(d_{L^2}\) on \(C(\mathbf{R} / \mathbf{Z} 
         \iff & \lim_{k \to \infty} \bigg(\int_{[0, 1]} \abs*{f_k(x) - f(x)}^2 \; dx\bigg)^{1 / 2} = 0 & \text{(by Additional Corollary \ref{ac 5.2.2})} \\
         \iff & \lim_{k \to \infty} \int_{[0, 1]} \abs*{f_k(x) - f(x)}^2 \; dx = 0.
     \end{align*}
-    Since
+    Since for each \(k \in \mathbf{N}_{\geq 10}\), we have
     \begin{align*}
          & \int_{[0, 1]} \abs*{f_k(x) - f(x)}^2 \; dx                                                                                                                                                                                         \\
          & = \int_{[0, \frac{1}{k}]} (1 - kx)^2 \; dx + \int_{[\frac{1}{2} - \frac{1}{k}, \frac{1}{2}]} \bigg(1 - \frac{k}{2} + kx\bigg)^2 \; dx                                                                                              \\
@@ -543,7 +544,7 @@ We can now define the \(L^2\) metric \(d_{L^2}\) on \(C(\mathbf{R} / \mathbf{Z} 
         \lim_{k \to \infty} \int_{[0, 1]} \abs*{f_k(x) - f(x)}^2 \; dx = \lim_{k \to \infty} \frac{2}{3k} = 0.
     \]
     Thus \((f_k)_{k = 10}^\infty\) converges to \(f\) on \([0, 1)\) with respect to \(d_{L^2}\).
-    Since \(f\) and \(f_k\) are \(1\)-periodic for all \(k \geq 10\), we know that \((f_k)_{k = 10}^\infty\) converges to \(f\) on \(\mathbf{R}\) with respect to \(d_{L^2}\).
+    Since \(f\) and \(f_k\) are \(1\)-periodic for all \(k \in \mathbf{N}_{\geq 10}\), we know that \((f_k)_{k = 10}^\infty\) converges to \(f\) on \(\mathbf{R}\) with respect to \(d_{L^2}\).
 \end{proof}
 
 \begin{exercise}\label{5.2.6}
@@ -555,3 +556,58 @@ We can now define the \(L^2\) metric \(d_{L^2}\) on \(C(\mathbf{R} / \mathbf{Z} 
         \item Give an example where \(f_n\) converges to \(f\) pointwise, but does not converge to \(f\) in the \(L^2\) metric.
     \end{enumerate}
 \end{exercise}
+
+\begin{proof}{(a)}
+    We have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \forall\ x \in \mathbf{R},              & \text{(by Definition \ref{3.2.7})}              \\
+                 & \abs*{f_n(x) - f(x)} < \frac{\varepsilon^{\frac{1}{2}}}{2}                                                                                                                        \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \forall\ x \in [0, 1],                                                                    \\
+                 & \abs*{f_n(x) - f(x)} < \frac{\varepsilon^{\frac{1}{2}}}{2}                                                                                                                        \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \forall\ x \in [0, 1],                                                                    \\
+                 & \abs*{f_n(x) - f(x)}^2 < \frac{\varepsilon}{4}                                                                                                                                    \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \forall\ x \in [0, 1],                                                                    \\
+                 & \int_{[0, 1]} \abs*{f_n(x) - f(x)}^2 \; dx \leq \int_{[0, 1]} \frac{\varepsilon}{4} \; dx = \frac{\varepsilon}{4} < \varepsilon                                                   \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \forall\ x \in [0, 1],                                                                    \\
+                 & d_{L^2}(f_n, f) < \varepsilon                                                                                                   & \text{(by Additional Corollary \ref{ac 5.2.2})} \\
+        \implies & d_{L^2} - \lim_{n \to \infty} f_n = f.                                                                                          & \text{(by Definition \ref{1.1.14})}
+    \end{align*}
+\end{proof}
+
+\begin{proof}{(b)}
+    Let \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) such that \(f = 0\) and let \(\mathbf{N}_{\geq 2} = \{n \in \mathbf{N} : n \geq 2\}\).
+    For all \(n \in \mathbf{N}_{\geq 2}\), we define \(f_n \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) as follow:
+    \[
+        \forall\ x \in [0, 1), f_n(x) = \begin{cases}
+            n^4 x       & \text{if } x \in [0, \frac{1}{n^3})             \\
+            -n^4 x + 2n & \text{if } x \in [\frac{1}{n^3}, \frac{2}{n^3}) \\
+            0           & \text{if } x \in [\frac{2}{n^3}, 1)
+        \end{cases}
+    \]
+    Since for all \(n \in \mathbf{N}_{\geq 2}\), we have
+    \begin{align*}
+         & \int_{[0, 1]} \abs*{f_n(x) - f(x)}^2 \; dx                                                                                                                                                                                           \\
+         & = \int_{[0, \frac{1}{n^3}]} (n^4 x)^2 \; dx + \int_{[\frac{1}{n^3}, \frac{2}{n^3}]} (-n^4 x + 2n)^2 \; dx                                                                                                                            \\
+         & = \int_{[0, \frac{1}{n^3}]} n^8 x^2 \; dx + \int_{[\frac{1}{n^3}, \frac{2}{n^3}]} n^8 x^2 - 4 n^5 x + 4n^2 \; dx                                                                                                                     \\
+         & = n^8 \bigg(\frac{x^3}{3}|_{x = 0}^{x = \frac{1}{n^3}}\bigg) + n^8 \bigg(\frac{x^3}{3}|_{x = \frac{1}{n^3}}^{x = \frac{2}{n^3}}\bigg) - 4n^5 \bigg(\frac{x^2}{2}|_{x = \frac{1}{n^3}}^{x = \frac{2}{n^3}}\bigg) + 4n^2 \frac{1}{n^3} \\
+         & = \frac{1}{3n} + \frac{8}{3n} - \frac{1}{3n} - \frac{8}{n} + \frac{2}{n} + \frac{4}{n}                                                                                                                                               \\
+         & = \frac{2}{3n},
+    \end{align*}
+    we know that
+    \begin{align*}
+        \lim_{n \to \infty} d_{L^2}(f_n, f) & = \lim_{n \to \infty} \int_{[0, 1]} \abs*{f_n(x) - f(x)}^2 \; dx & \text{(by Additional Corollary \ref{ac 5.2.2})} \\
+                                            & = \lim_{n \to \infty} \frac{2}{3n}                                                                                 \\
+                                            & = 0.
+    \end{align*}
+    Thus by Definition \ref{1.1.14} we have
+    \[
+        d_{L^2} - \lim_{n \to \infty} f_n = f.
+    \]
+    But for all \(n \in \mathbf{N}_{\geq 2}\), we have
+    \begin{align*}
+                 & f_n(\frac{1}{n^3}) = n                                                                                                                   \\
+        \implies & \abs*{f_n(\frac{1}{n^3}) - f(\frac{1}{n^3})} = \abs*{f_n(\frac{1}{n^3})} \geq n > 1                                                      \\
+        \implies & \exists\ \varepsilon \in \mathbf{R}^+ : \forall\ n \geq \mathbf{N}_{\geq 2}, \exists\ x \in [0, 1) : \abs*{f_n(x) - f(x)} > \varepsilon.
+    \end{align*}
+    Thus by Definition \ref{3.2.7} \((f_n)_{n = 2}^\infty\) does not converges uniformly to \(f\) on \(\mathbf{R}\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+\end{proof}
