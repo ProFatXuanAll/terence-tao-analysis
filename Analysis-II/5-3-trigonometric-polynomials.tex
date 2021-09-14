@@ -88,7 +88,7 @@
     Let \(m \in \mathbf{N}\).
     Then we have
     \begin{align*}
-        \inner*{f, e_m} & = \inner*{\sum_{n = -N}^N c_n e_n, e_m}           & \text{(by hypothesis)}           \\
+        \inner*{f, e_m} & = \inner*{\sum_{n = -N}^N (c_n e_n), e_m}         & \text{(by hypothesis)}           \\
                         & = \sum_{n = -N}^N \inner*{c_n e_n, e_m}           & \text{(by Lemma \ref{5.2.5}(c))} \\
                         & = \sum_{n = -N}^N \big(c_n \inner*{e_n, e_m}\big) & \text{(by Lemma \ref{5.2.5}(c))} \\
                         & = \begin{cases}
@@ -99,7 +99,7 @@
     and
     \begin{align*}
         \norm*{f}_2^2 & = \inner*{f, f}                                            & \text{(by Additional Corollary \ref{ac 5.2.1})} \\
-                      & = \inner*{f, \sum_{n = -N}^N c_n e_n}                      & \text{(by hypothesis)}                          \\
+                      & = \inner*{f, \sum_{n = -N}^N (c_n e_n)}                    & \text{(by hypothesis)}                          \\
                       & = \sum_{n = -N}^N \inner*{f, c_n e_n}                      & \text{(by Lemma \ref{5.2.5}(d))}                \\
                       & = \sum_{n = -N}^N \big(\overline{c_n} \inner*{f, e_n}\big) & \text{(by Lemma \ref{5.2.5}(d))}                \\
                       & = \sum_{n = -N}^N \big(\overline{c_n} c_n\big)             & \text{(from the proof above)}                   \\
@@ -158,6 +158,64 @@ Also, from the second identity of Corollary \ref{5.3.6} we have the \emph{Planch
 \begin{exercise}\label{ex 5.3.1}
     Show that the sum or product of any two trigonometric polynomials is again a trigonometric polynomial.
 \end{exercise}
+
+\begin{proof}
+    Let \(f, g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) such that
+    \begin{align*}
+         & \exists\ N \in \mathbf{N} : \big((c_n)_{n = -N}^N \text{ is in } \mathbf{C}\big) \land \bigg(f = \sum_{n = -N}^N c_n e_n\bigg); \\
+         & \exists\ M \in \mathbf{N} : \big((d_n)_{n = -M}^M \text{ is in } \mathbf{C}\big) \land \bigg(g = \sum_{n = -M}^M d_n e_n\bigg).
+    \end{align*}
+    Without the loss of generality suppose that \(N \leq M\).
+    Then we have
+    \begin{align*}
+        f + g & = \sum_{n = -N}^N (c_n e_n) + \sum_{n = -M}^M (d_n e_n) \\
+              & = \sum_{n = -M}^M (a_n e_n)
+    \end{align*}
+    where
+    \[
+        a_n = \begin{cases}
+            c_n + d_n & \text{if } -N \leq n \leq N                     \\
+            d_n       & \text{if } (-M \leq n < -N) \lor (N < n \leq M)
+        \end{cases}
+    \]
+    For \(fg\), we use induction on \(M\) to show that \(fg\) is trigonometric polynomial.
+    For \(M = 0\), we have
+    \begin{align*}
+        fg & = \bigg(\sum_{n = -N}^N (c_n e_n)\bigg) (d_0 e^0)                                      \\
+           & = \bigg(\sum_{n = -N}^N (c_n e_n)\bigg) d_0       & \text{(by Theorem \ref{4.5.2}(e))} \\
+           & = \sum_{n = -N}^N (c_n d_0 e_n).
+    \end{align*}
+    Clearly \(fg\) is trigonometric polynomial and thus the base case holds.
+    Suppose inductively that \(fg\) is trigonometric polynomial for some \(M \geq 0\).
+    Then for \(M + 1\), we have
+    \begin{align*}
+        f g & = \bigg(\sum_{n = -N}^N (c_n e_n)\bigg) \bigg(\sum_{m = -(M + 1)}^{M + 1} (d_m e_m)\bigg)                                                        \\
+            & = \bigg(\sum_{n = -N}^N (c_n e_n)\bigg) \bigg(\sum_{m = -M}^M (d_m e_m) + d_{-M - 1} e_{-M - 1} + d_{M + 1} e_{M + 1}\bigg)                      \\
+            & = \bigg(\sum_{n = -N}^N (c_n e_n)\bigg) \bigg(\sum_{m = -M}^M (d_m e_m)\bigg) + \bigg(\sum_{n = -N}^N (c_n e_n)\bigg) (d_{-M - 1} e_{-M - 1})    \\
+            & \quad + \bigg(\sum_{n = -N}^N (c_n e_n)\bigg) (d_{M + 1} e_{M + 1})                                                                              \\
+            & = \bigg(\sum_{n = -N}^N (c_n e_n)\bigg) \bigg(\sum_{m = -M}^M (d_m e_m)\bigg) + \sum_{n = -N}^N (c_n d_{-M - 1} e_{n - M - 1})                   \\
+            & \quad + \sum_{n = -N}^N (c_n d_{M + 1} e_{n + M + 1})                                                                                            \\
+            & = \bigg(\sum_{n = -N}^N (c_n e_n)\bigg) \bigg(\sum_{m = -M}^M (d_m e_m)\bigg) + \sum_{n = -N - M - 1}^{N - M - 1} (c_{n + M + 1} d_{-M - 1} e_n) \\
+            & \quad + \sum_{n = -N + M + 1}^{N + M + 1} (c_{n - M - 1} d_{M + 1} e_n).
+    \end{align*}
+    By setting
+    \begin{align*}
+         & a_n = \begin{cases}
+            c_{n + M + 1} d_{-M - 1} & \text{if } -N - M - 1 \leq n \leq N - M - 1 \\
+            0                        & \text{if } N - M - 1 < n \leq N + M + 1
+        \end{cases} \\
+         & b_n = \begin{cases}
+            c_{n - M - 1} d_{M + 1} & \text{if } -N + M + 1 \leq n \leq N + M + 1 \\
+            0                       & \text{if } -N - M - 1 \leq n < -N + M + 1
+        \end{cases}
+    \end{align*}
+    we have
+    \[
+        fg = \bigg(\sum_{n = -N}^N (c_n e_n)\bigg) \bigg(\sum_{m = -M}^M (d_m e_m)\bigg) + \sum_{n = -N - M - 1}^{N + M + 1} (a_n e_n) + \sum_{n = -N - M - 1}^{N + M + 1} (b_n e_n).
+    \]
+    By induction hypothesis we know that \(\bigg(\sum_{n = -N}^N (c_n e_n)\bigg) \bigg(\sum_{m = -M}^M (d_m e_m)\bigg)\) is trigonometric polynomial.
+    Thus from the proof above we know that \(fg\) is trigonometric polynomial, and this closes the induction.
+\end{proof}
 
 \begin{exercise}\label{ex 5.3.2}
     Prove Lemma \ref{5.3.5}.
