@@ -33,6 +33,43 @@
     Also, we have \(\norm*{e_n}_2 = 1\).
 \end{lemma}
 
+\begin{proof}
+    Let \(n, m \in \mathbf{Z}\).
+    Observe that
+    \begin{align*}
+        \inner*{e_n, e_m} & = \int_{[0, 1]} e_n(x) \overline{e_m(x)} \; dx                   & \text{(by Definition \ref{5.2.1})}    \\
+                          & = \int_{[0, 1]} e^{2 \pi i n x} \overline{e^{2 \pi i m x}} \; dx & \text{(by Definition \ref{5.3.1})}    \\
+                          & = \int_{[0, 1]} e^{2 \pi i n x} e^{- 2 \pi i m x} \; dx          & \text{(by Theorem \ref{4.7.2}(c)(f))} \\
+                          & = \int_{[0, 1]} e^{2 \pi i n x - 2 \pi i m x} \; dx              & \text{(by Exercise \ref{ex 4.6.16})}  \\
+                          & = \int_{[0, 1]} e^{2 \pi i (n - m) x} \; dx.
+    \end{align*}
+    If \(n = m\), then we have
+    \begin{align*}
+        \inner*{e_n, e_n} & = \int_{[0, 1]} e^{2 \pi i (n - n) x} \; dx                                      \\
+                          & = \int_{[0, 1]} e^0 \; dx                                                        \\
+                          & = \int_{[0, 1]} 1 \; dx                     & \text{(by Theorem \ref{4.5.2}(e))} \\
+                          & = 1
+    \end{align*}
+    and
+    \begin{align*}
+        \norm*{e_n}_2 & = \sqrt{\inner*{e_n, e_n}} & \text{(by Additional Corollary \ref{ac 5.2.1})} \\
+                      & = \sqrt{1} = 1.
+    \end{align*}
+    If \(n \neq m\), then we have
+    \begin{align*}
+         & \inner*{e_n, e_m}                                                                                                                                \\
+         & = \int_{[0, 1]} e^{2 \pi i (n - m) x} \; dx                                                                                                      \\
+         & = \int_{[0, 1]} \cos\big(2 \pi (n - m) x\big) + i \sin\big(2 \pi (n - m) x\big) \; dx       & \text{(by Theorem \ref{4.7.2}(f))}                 \\
+         & = \int_{[0, 1]} \cos\big(2 \pi (n - m) x\big) \; dx                                         & \text{(by Remark \ref{5.2.2})}                     \\
+         & \quad + i \int_{[0, 1]} \sin\big(2 \pi (n - m) x\big) \; dx                                                                                      \\
+         & = \bigg(\frac{\sin\big(2 \pi (n - m) x\big)}{2 \pi (n - m)}|_{x = 0}^{x = 1}\bigg)          & \text{(by Theorem \ref{4.7.2}(b))}                 \\
+         & \quad + i \bigg(\frac{-\cos\big(2 \pi (n - m) x\big)}{2 \pi (n - m)}|_{x = 0}^{x = 1}\bigg)                                                      \\
+         & = 0 - 0                                                                                     & \text{(by Additional Corollary \ref{ac 4.7.2}(c))} \\
+         & \quad + i \bigg(\frac{- (-1) + (-1)}{2 \pi (n - m)}\bigg)                                   & \text{(by Additional Corollary \ref{ac 4.7.2}(f))} \\
+         & = 0.
+    \end{align*}
+\end{proof}
+
 \begin{corollary}\label{5.3.6}
     Let \(f = \sum_{n = -N}^N c_n e_n\) be a trigonometric polynomial.
     Then we have the formula
