@@ -1,1 +1,175 @@
 \section{Periodic convolutions}\label{sec 5.4}
+
+\begin{theorem}\label{5.4.1}
+    Let \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), and let \(\varepsilon > 0\).
+    Then there exists a trigonometric polynomial \(P\) such that \(\norm*{f - P}_{\infty} \leq \varepsilon\).
+\end{theorem}
+
+\begin{proof}
+    Let \(f\) be any element of \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\);
+    we know that \(f\) is bounded, so that we have some \(M > 0\) such that \(\abs*{f(x)} \leq M\) for all \(x \in \mathbf{R}\).
+
+    Let \(\varepsilon > 0\) be arbitrary.
+    Since \(f\) is uniformly continuous, there exists a \(\delta > 0\) such that \(\abs*{f(x) - f(y)} \leq \varepsilon\) whenever \(\abs*{x - y} \leq \delta\).
+    Now use Lemma \ref{5.4.6} to find a trigonometric polynomial \(P\) which is a \((\varepsilon, \delta)\) approximation to the identity.
+    Then \(f * P\) is also a trigonometric polynomial.
+    We now estimate \(\norm*{f - f * P}_{\infty}\).
+
+    Let \(x\) be any real number.
+    We have
+    \begin{align*}
+        \abs*{f(x) - f * P(x)} & = \abs*{f(x) - P * f(x)}                                                   \\
+                               & = \abs*{f(x) - \int_{[0, 1]} f(x - y) P(y) \; dy}                          \\
+                               & = \abs*{\int_{[0, 1]} f(x) P(y) \; dy - \int_{[0, 1]} f(x - y) P(y) \; dy} \\
+                               & = \abs*{\int_{[0, 1]} \big(f(x) - f(x - y)\big) P(y) \; dy}                \\
+                               & \leq \int_{[0, 1]} \abs*{f(x) - f(x - y)} P(y) \; dy.
+    \end{align*}
+    The right-hand side can be split as
+    \begin{align*}
+        \int_{[0, \delta]} \abs*{f(x) - f(x - y)} P(y) \; dy & + \int_{[\delta, 1 - \delta]} \abs*{f(x) - f(x - y)} P(y) \; dy \\
+                                                             & + \int_{[1 - \delta, 1]} \abs*{f(x) - f(x - y)} P(y) \; dy
+    \end{align*}
+    which we can bound from above by
+    \begin{align*}
+         & \leq \int_{[0, \delta]} \varepsilon P(y) \; dy + \int_{[\delta, 1 - \delta]} 2 M \varepsilon \; dy                                                 \\
+         & \quad + \int_{[1 - \delta, 1]} \abs*{f(x - 1) - f(x - y)} P(y) \; dy                                                                               \\
+         & \leq \int_{[0, \delta]} \varepsilon P(y) \; dy + \int_{[\delta, 1 - \delta]} 2 M \varepsilon \; dy + \int_{[1 - \delta, 1]} \varepsilon P(y) \; dy \\
+         & \leq \varepsilon + 2 M \varepsilon + \varepsilon                                                                                                   \\
+         & = (2M + 2) \varepsilon.
+    \end{align*}
+    Thus we have \(\norm*{f - f * P}_{\infty} \leq (2M + 2) \varepsilon\).
+    Since \(M\) is fixed and \(\varepsilon\) is arbitrary, we can thus make \(f * P\) arbitrarily close to \(f\) in sup norm, which proves the periodic Weierstrass approximation theorem.
+\end{proof}
+
+\begin{note}
+    Theorem \ref{5.4.1} asserts that any continuous periodic function can be uniformly approximated by trigonometric polynomials.
+    To put it another way, if we let
+    \[
+        P(\mathbf{R} / \mathbf{Z} ; \mathbf{C})
+    \]
+    denote the space of all trigonometric polynomials, then the closure of \(P(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) in the \(L^\infty\) metric is \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
+\end{note}
+
+\begin{note}
+    It is possible to prove this theorem directly from the Weierstrass approximation theorem for polynomials (Theorem \ref{3.8.3}), and both theorems are a special case of a much more general theorem known as the \emph{Stone-Weierstrass theorem}, which we will not discuss here.
+    However we shall instead prove this theorem from scratch, in order to introduce a couple of interesting notions, notably that of periodic convolution.
+    The proof here, though, should strongly remind you of the arguments used to prove Theorem \ref{3.8.3}.
+\end{note}
+
+\begin{definition}[Periodic convolution]\label{5.4.2}
+    Let \(f, g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
+    Then we define the periodic convolution \(f * g : \mathbf{R} \to \mathbf{C}\) of \(f\) and \(g\) by the formula
+    \[
+        f * g(x) \coloneqq \int_{[0, 1]} f(y) g(x - y) \; dy
+    \]
+\end{definition}
+
+\begin{remark}\label{5.4.3}
+    Note that Definition \ref{5.4.2} is slightly different from the convolution for compactly supported functions defined in Definition \ref{3.8.9}, because we are only integrating over \([0, 1]\) and not on all of \(\mathbf{R}\).
+    Thus, in principle we have given the symbol \(f * g\) two conflicting meanings.
+    However, in practice there will be no confusion, because it is not possible for a non-zero function to both be periodic and compactly supported.
+\end{remark}
+
+\begin{lemma}[Basic properties of periodic convolution]\label{5.4.4}
+    Let \(f, g, h \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
+    \begin{enumerate}
+        \item (Closure)
+              The convolution \(f * g\) is continuous and \(\mathbf{Z}\)-periodic.
+              In other words, \(f * g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
+        \item (Commutativity)
+              We have \(f * g = g * f\).
+        \item (Bilinearity)
+              We have \(f * (g + h) = f * g + f * h\) and \((f + g) * h = f * h + g * h\).
+              For any complex number \(c\), we have \(c(f * g) = (cf) * g = f * (cg)\).
+    \end{enumerate}
+\end{lemma}
+
+\begin{note}
+    Now we observe an interesting identity:
+    for any \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) and any integer \(n\), we have
+    \[
+        f * e_n = \hat{f}(n) e_n.
+    \]
+    To prove this, we compute
+    \begin{align*}
+        f * e_n(x) & = \int_{[0, 1]} f(y) e^{2 \pi i n (x - y)} \; dy             \\
+                   & = e^{2 \pi i n x} \int_{[0, 1]} f(y) e^{- 2 \pi i n y} \; dy \\
+                   & = \hat{f}(n) e^{2 \pi i n x} = \hat{f}(n) e_n
+    \end{align*}
+    as desired.
+    More generally, we see from Lemma \ref{5.4.4}(c) that for any trigonometric polynomial \(P = \sum_{n = -N}^N c_n e_n\), we have
+    \[
+        f * P = \sum_{n = -N}^N c_n (f * e_n) = \sum_{n = -N}^N \hat{f}(n) c_n e_n.
+    \]
+    Thus the periodic convolution of any function in \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) with a trigonometric polynomial, is again a trigonometric polynomial.
+    (Compare with Lemma \ref{3.8.13}.)
+\end{note}
+
+\begin{definition}[Periodic approximation to the identity]\label{5.4.5}
+    Let \(\varepsilon > 0\) and \(0 < \delta < 1 / 2\).
+    A function \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) is said to be a \emph{periodic \((\varepsilon, \delta)\) approximation to the identity} if the following properties are true:
+    \begin{enumerate}
+        \item \(f(x) \geq 0\) for all \(x \in \mathbf{R}\), and \(\int_{[0, 1]} f(x) \; dx = 1\).
+        \item We have \(f(x) < \varepsilon\) for all \(\delta \leq \abs*{x} \leq 1 - \delta\).
+    \end{enumerate}
+\end{definition}
+
+\begin{lemma}\label{5.4.6}
+    For every \(\varepsilon > 0\) and \(0 < \delta < 1 / 2\), there exists a trigonometric polynomial \(P\) which is an \((\varepsilon, \delta)\) approximation to the identity.
+\end{lemma}
+
+\begin{proof}
+    Let \(N \geq 1\) be an integer.
+    We define the \emph{Fejér kernel} \(F_N\) to be the function
+    \[
+        F_N = \sum_{n = -N}^N \bigg(1 - \frac{\abs*{n}}{N}\bigg) e_n.
+    \]
+    Clearly \(F_N\) is a trigonometric polynomial.
+    We observe the identity
+    \[
+        F_N = \frac{1}{N} \abs*{\sum_{n = 0}^{N - 1} e_n}^2.
+    \]
+    But from the geometric series formula (Lemma 7.3.3 in Analysis I) we have
+    \[
+        \sum_{n = 0}^{N - 1} e_n(x) = \frac{e_N - e_0}{e_1 - e_0} = \frac{e^{\pi i (N - 1) x} \sin(\pi N x)}{\sin(\pi x)}
+    \]
+    when \(x\) is not an integer, and hence we have the formula
+    \[
+        F_N(x) = \frac{\big(\sin(\pi N x)\big)^2}{N \big(\sin(\pi x)\big)^2}.
+    \]
+    When \(x\) is an integer, the geometric series formula does not apply, but one has \(F_N(x) = N\) in that case, as one can see by direct computation.
+    In either case we see that \(F_N(x) \geq 0\) for any \(x\).
+    Also, we have
+    \[
+        \int_{[0, 1]} F_N(x) \; dx = \sum_{n = -N}^N \bigg(1 - \frac{\abs*{n}}{N}\bigg) \int_{[0, 1] e_n} = \bigg(1 - \frac{\abs*{0}}{N}\bigg) 1 = 1.
+    \]
+    Finally, since \(\sin(\pi N x) \leq 1\), we have
+    \[
+        F_N(x) \leq \frac{1}{N \big(\sin(\pi x)\big)^2} \leq \frac{1}{N \big(\sin(\pi \delta)\big)^2}
+    \]
+    whenever \(\delta < \abs*{x} < 1 - \delta\)
+    (this is because \(\sin\) is increasing on \([0, \pi / 2]\) and decreasing on \([\pi / 2, \pi]\)).
+    Thus by choosing \(N\) large enough, we can make \(F_N (x) \leq \varepsilon\) for all \(\delta < \abs*{x} < 1 - \delta\).
+\end{proof}
+
+\exercisesection
+
+\begin{exercise}\label{ex 5.4.1}
+    Show that if \(f : \mathbf{R} \to \mathbf{C}\) is both compactly supported and \(\mathbf{Z}\)-periodic, then it is identically zero.
+\end{exercise}
+
+\begin{exercise}\label{ex 5.4.2}
+    Prove Lemma \ref{5.4.4}.
+\end{exercise}
+
+\begin{proof}
+    See Lemma \ref{5.4.4}.
+\end{proof}
+
+\begin{exercise}\label{ex 5.4.3}
+    Fill in the gaps marked in Lemma \ref{5.4.6}.
+\end{exercise}
+
+\begin{proof}
+    See Lemma \ref{5.4.6}.
+\end{proof}
