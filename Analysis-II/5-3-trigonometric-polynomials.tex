@@ -1,1 +1,116 @@
 \section{Trigonometric polynomials}\label{sec 5.3}
+
+\begin{note}
+    We now define the concept of a \emph{trigonometric polynomial}.
+    Just as polynomials are combinations of the functions \(x^n\) (sometimes called \emph{monomials}), trigonometric polynomials are combinations of the functions \(e^{2 \pi i n x}\) (sometimes called \emph{characters}).
+\end{note}
+
+\begin{definition}[Characters]\label{5.3.1}
+    For every integer \(n\), we let \(e_n \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) denote the function
+    \[
+        e_n(x) \coloneqq e^{2 \pi i n x}.
+    \]
+    This is sometimes referred to as the \emph{character with frequency \(n\)}.
+\end{definition}
+
+\begin{definition}[Trigonometric polynomials]\label{5.3.2}
+    A function \(f\) in \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) is said to be a \emph{trigonometric polynomial} if we can write
+    \(f = \sum_{n = -N}^N c_n e_n\) for some integer \(N \geq 0\) and some complex numbers \((c_n)_{n = -N}^N\).
+\end{definition}
+
+\setcounter{theorem}{3}
+\begin{example}\label{5.3.4}
+    For any integer \(n\), the function \(\cos(2 \pi n x)\) is a trigonometric polynomial, since
+    \[
+        \cos(2 \pi n x) = \frac{e^{2 \pi n x} + e^{- 2 \pi n x}}{2} = \frac{1}{2} e_{-n} + \frac{1}{2} e_n.
+    \]
+    Similarly the function \(\sin(2 \pi n x) = \frac{-1}{2i} e_{-n} + \frac{1}{2i} e_n\) is a trigonometric polynomial.
+    In fact, any linear combination of sines and cosines is also a trigonometric polynomial.
+\end{example}
+
+\begin{lemma}[Characters are an orthonormal system]\label{5.3.5}
+    For any integers \(n\) and \(m\), we have \(\inner*{e_n, e_m} = 1\) when \(n = m\) and \(\inner*{e_n, e_m} = 0\) when \(n \neq m\).
+    Also, we have \(\norm*{e_n}_2 = 1\).
+\end{lemma}
+
+\begin{corollary}\label{5.3.6}
+    Let \(f = \sum_{n = -N}^N c_n e_n\) be a trigonometric polynomial.
+    Then we have the formula
+    \[
+        c_n = \inner*{f, e_n}
+    \]
+    for all integers \(-N \leq n \leq N\).
+    Also, we have \(0 = \inner*{f, e_n}\) whenever \(n > N\) or \(n < -N\).
+    Also, we have the identity
+    \[
+        \norm*{f}_2^2 = \sum_{n = -N}^N \abs*{c_n}^2.
+    \]
+\end{corollary}
+
+\begin{definition}[Fourier transform]\label{5.3.7}
+    For any function \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), and any integer \(n \in \mathbf{Z}\), we define the \(n^{\text{th}}\) \emph{Fourier coefficient of} \(f\), denoted \(\hat{f}(n)\), by the formula
+    \[
+        \hat{f}(n) \coloneqq \inner*{f, e_n} = \int_{[0, 1]} f(x) e^{- 2 \pi i n x} \; dx.
+    \]
+    The function \(\hat{f} : \mathbf{Z} \to \mathbf{C}\) is called the \emph{Fourier transform} of \(f\).
+\end{definition}
+
+\begin{additional corollary}\label{ac 5.3.1}
+From Corollary \ref{5.3.6}, we see that whenever
+\[
+    f = \sum_{n = -N}^N c_n e_n
+\]
+is a trigonometric polynomial, we have
+\[
+    f = \sum_{n = -N}^N \inner*{f, e_n} e_n = \sum_{n = -\infty}^\infty \inner*{f, e_n} e_n
+\]
+and in particular we have the \emph{Fourier inversion formula}
+\[
+    f = \sum_{n = -\infty}^\infty \hat{f}(n) e_n
+\]
+or in other words
+\[
+    f(x) = \sum_{n = -\infty}^\infty \hat{f}(n) e^{2 \pi i n x}.
+\]
+The right-hand side is referred to as the \emph{Fourier series} of \(f\).
+Also, from the second identity of Corollary \ref{5.3.6} we have the \emph{Plancherel formula}
+\[
+    \norm*{f}_2^2 = \sum_{n = -\infty}^\infty \abs*{\hat{f}(n)}^2.
+\]
+\end{additional corollary}
+
+\begin{remark}\label{5.3.8}
+    We stress that at present we have only proven the Fourier inversion and Plancherel formulae in the case when \(f\) is a trigonometric polynomial.
+    Note that in this case that the Fourier coefficients \(\hat{f}(n)\) are mostly zero (indeed, they can only be non-zero when \(-N \leq n \leq N\)), and so this infinite sum is really just a finite sum in disguise.
+    In particular there are no issues about what sense the above series converge in;
+    they both converge pointwise, uniformly, and in \(L^2\) metric, since they are just finite sums.
+\end{remark}
+
+\begin{note}
+    In the next few sections we will extend the Fourier inversion and Plancherel formulae to general functions in \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), not just trigonometric polynomials.
+    (It is also possible to extend the formula to discontinuous functions such as the square wave, but we will not do so here.)
+    To do this we will need a version of the Weierstrass approximation theorem, this time requiring that a continuous periodic function be approximated uniformly by \emph{trigonometric} polynomials.
+    Just as convolutions were used in the proof of the polynomial Weierstrass approximation theorem, we will also need a notion of convolution tailored for periodic functions.
+\end{note}
+
+\exercisesection
+
+\begin{exercise}\label{ex 5.3.1}
+    Show that the sum or product of any two trigonometric polynomials is again a trigonometric polynomial.
+\end{exercise}
+
+\begin{exercise}\label{ex 5.3.2}
+    Prove Lemma \ref{5.3.5}.
+\end{exercise}
+
+\begin{proof}
+    See Lemma \ref{5.3.5}.
+\end{proof}
+
+\begin{exercise}\label{ex 5.3.3}
+    Prove Corollary \ref{5.3.6}.
+\end{exercise}
+
+\begin{proof}
+    See Corollary \ref{5.3.6}.
+\end{proof}
