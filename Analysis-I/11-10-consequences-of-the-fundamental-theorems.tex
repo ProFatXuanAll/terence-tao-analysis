@@ -286,9 +286,57 @@ Then \((f \circ \phi) \phi' : [a, b] \to \mathbf{R}\) is Riemann integrable on \
 
 \begin{proof}
     Let \([a, b]\) be a closed interval, and let \(\phi : [a, b] \to \big[\phi(b), \phi(a)\big]\) be a differentiable monotone decreasing function such that \(\phi'\) is Riemann integrable.
-    Let \(f : \big[-\phi(a), -\phi(b)\big] \to \mathbf{R}\) be a Riemann integrable function on \(\big[-\phi(a), -\phi(b)\big]\).
-    Then \(\big(f \circ (-\phi)\big) (-\phi)' : [a, b] \to \mathbf{R}\) is Riemann integrable on \([a, b]\), and
+    Let \(f : \big[\phi(b), \phi(a)\big] \to \mathbf{R}\) be a Riemann integrable function on \(\big[\phi(b), \phi(a)\big]\).
+    Then \((f \circ \phi) \phi' : [a, b] \to \mathbf{R}\) is Riemann integrable on \([a, b]\), and
     \[
-        \int_{[a, b]} \big(f \circ (-\phi)\big) (-\phi)' = \int_{[-\phi(a), -\phi(b)]} f.
+        \int_{[a, b]} (f \circ \phi) \phi' = -\int_{[\phi(b), \phi(a)]} f.
+    \]
+
+    Now we proof the statement.
+    Let \(\eta : [-b, -a] \to [a, b]\) be the function \(\eta = x \mapsto -x\).
+    Let \(\gamma : [-b, -a] \to [\phi(b), \phi(a)]\) be the function
+    \[
+        \forall\ x \in [-b, -a], \gamma(x) = \phi(-x) = (\phi \circ \eta)(x).
+    \]
+    Since \(\eta\) is differentiable on \([-b, -a]\), by chain rule (Theorem \ref{10.1.15}) we know that
+    \[
+        \forall\ x \in [-b, -a], \gamma'(x) = (\phi \circ \eta)'(x) = \phi'\big(\eta(x)\big) \eta'(x) = \phi'\big(\eta(x)\big) (-1) = - (\phi' \circ \eta)(x).
+    \]
+    Observe that
+    \begin{align*}
+                 & \forall\ x, y \in [-b, -a], x \leq y                                            \\
+        \implies & -x \geq -y                                                                      \\
+        \implies & \phi(-x) \leq \phi(-y)               & \text{(\(\phi\) is monotone decreasing)} \\
+        \implies & \gamma(x) \leq \gamma(y).
+    \end{align*}
+    Thus \(\gamma\) is monotone increasing and by Proposition \ref{11.10.7} we have
+    \[
+        \int_{[-b, -a]} (f \circ \gamma) \gamma' = \int_{[\gamma(-b), \gamma(-a)]} f.
+    \]
+    Since
+    \begin{align*}
+         & \int_{[-b, -a]} (f \circ \gamma) \gamma'                                                                              \\
+         & = \int_{[-b, -a]} (f \circ \phi \circ \eta) \cdot (\phi \circ \eta)'                                                  \\
+         & = \int_{[-b, -a]} (f \circ \phi \circ \eta) \cdot \big(-(\phi' \circ \eta)\big) & \text{(from the proof above)}       \\
+         & = -\int_{[-b, -a]} (f \circ \phi \circ \eta) \cdot (\phi' \circ \eta)           & \text{(by Theorem \ref{11.4.1}(b))}
+    \end{align*}
+    and
+    \[
+        \int_{[\gamma(-b), \gamma(-a)]} f = \int_{\big[\phi(b), \phi(a)\big]} f,
+    \]
+    we know that
+    \[
+        \int_{[-b, -a]} (f \circ \phi \circ \eta) \cdot (\phi' \circ \eta) = -\int_{\big[\phi(b), \phi(a)\big]} f.
+    \]
+    Since
+    \begin{align*}
+        \forall\ x \in [a, b], & \big((f \circ \phi) \cdot \phi'\big)(x)                                                                   \\
+                               & = (f \circ \phi)(x) \cdot \phi'(x)                                  & \text{(by Definition \ref{9.2.1})}  \\
+                               & = (f \circ \phi \circ \eta)(-x) \cdot (\phi' \circ \eta)(-x)        & \text{(by Definition \ref{3.3.10})} \\
+                               & = \big((f \circ \phi \circ \eta) \cdot (\phi' \circ \eta)\big)(-x), & \text{(by Definition \ref{9.2.1})}
+    \end{align*}
+    By Exercise \ref{ex 11.10.3} we know that
+    \[
+        \int_{[a, b]} (f \circ \phi) \phi' = \int_{[-b, -a]} (f \circ \phi \circ \eta) \cdot (\phi' \circ \eta).
     \]
 \end{proof}

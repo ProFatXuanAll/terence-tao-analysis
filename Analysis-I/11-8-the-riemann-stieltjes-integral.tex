@@ -4,7 +4,7 @@
 Let \(I\) be a bounded interval, and let \(f : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\).
 Then we have
 \[
-    f(x_0+) = \lim_{x \to x_0^+ ; x \in X} f(x) = \inf_{x \in X \cap (x_0, \infty)} f(x)
+    f(x_0+) = \lim_{x \to x_0^+ ; x \in X} f(x) = \inf_{x \in X \cap (x_0, +\infty)} f(x)
 \]
 and
 \[
@@ -14,31 +14,37 @@ for every \(x_0 \in I\) and \(x_0\) is not an endpoint of \(X\).
 \end{additional corollary}
 
 \begin{proof}
-    Let \(U = \inf_{x \in X \cap (x_0, \infty)} f(x)\) and let \(L = \sup_{x \in X \cap (-\infty, x_0)} f(x)\).
-    Since \(x_0 \in X\) and \(x_0\) is not an endpoint of \(X\), we know that \(X \cap (x_0, \infty) \neq \emptyset\) and \(X \cap (-\infty, x_0) \neq \emptyset\).
+    If \(I = \emptyset\), then the statement are vacuously true.
+    So suppose that \(I \neq \emptyset\).
+    Define
+    \begin{align*}
+        U & = \inf_{x \in X \cap (x_0, +\infty)} f(x); \\
+        L & = \sup_{x \in X \cap (-\infty, x_0)} f(x).
+    \end{align*}
+    Since \(x_0 \in X\) and \(x_0\) is not an endpoint of \(X\), we know that \(X \cap (x_0, +\infty) \neq \emptyset\) and \(X \cap (-\infty, x_0) \neq \emptyset\).
     Since \(f\) is monotone increasing, we have
     \[
-        U = \inf_{x \in X \cap (x_0, \infty)} f(x) \geq f(x_0)
+        U = \inf_{x \in X \cap (x_0, +\infty)} f(x) \geq f(x_0)
     \]
     and
     \[
         L = \sup_{x \in X \cap (-\infty, x_0)} f(x) \leq f(x_0).
     \]
-    Thus \(U, L\) are finite.
+    Thus \(U, L \in \mathbf{R}\).
 
     First we show that \(f(x_0+) = U\).
     By the definition of \(U\) we know that
     \[
-        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ x \in X \cap (x_0, \infty) : 0 \leq f(x) - U \leq \varepsilon.
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ x \in X \cap (x_0, +\infty) : 0 \leq f(x) - U \leq \varepsilon.
     \]
-    Now fix such \(\varepsilon\) and \(x\).
+    Now fix one pair of \(\varepsilon\) and \(x\).
     Since \(f\) is monotone increasing, we know that
     \[
-        \forall\ y \in X \cap (x_0, \infty), y < x \implies 0 \leq f(y) - U \leq f(x) - U \leq \varepsilon.
+        \forall\ y \in X \cap (x_0, +\infty), y < x \implies 0 \leq f(y) - U \leq f(x) - U \leq \varepsilon.
     \]
     Thus by setting \(\delta = x - x_0\) we have
     \[
-        \forall\ y \in X \cap (x_0, \infty), \abs*{y - x_0} < \delta \implies \abs*{f(y) - U} \leq \varepsilon.
+        \forall\ y \in X \cap (x_0, +\infty), \abs*{y - x_0} < \delta \implies \abs*{f(y) - U} \leq \varepsilon.
     \]
     Since \(\varepsilon\) is arbitrary, by Definition \ref{9.3.6} and Definition \ref{9.5.1} we have \(f(x_0+) = U\).
 
@@ -47,7 +53,7 @@ for every \(x_0 \in I\) and \(x_0\) is not an endpoint of \(X\).
     \[
         \forall\ \varepsilon \in \mathbf{R}^+, \exists\ x \in X \cap (-\infty, x_0) : 0 \leq L - f(x) \leq \varepsilon.
     \]
-    Now fix such \(\varepsilon\) and \(x\).
+    Now fix one pair of \(\varepsilon\) and \(x\).
     Since \(f\) is monotone increasing, we know that
     \[
         \forall\ y \in X \cap (-\infty, x_0), y > x \implies 0 \leq L - f(y) \leq L - f(x) \leq \varepsilon.
@@ -73,31 +79,37 @@ for every \(x_0 \in I\) and \(x_0\) is not an endpoint of \(X\).
 \end{additional corollary}
 
 \begin{proof}
-    Let \(U = \sup_{x \in X \cap (x_0, \infty)} f(x)\) and let \(L = \inf_{x \in X \cap (-\infty, x_0)} f(x)\).
-    Since \(x_0 \in X\) and \(x_0\) is not an endpoint of \(X\), we know that \(X \cap (x_0, \infty) \neq \emptyset\) and \(X \cap (-\infty, x_0) \neq \emptyset\).
+    If \(I = \emptyset\), then the statement are vacuously true.
+    So suppose that \(I \neq \emptyset\).
+    Define
+    \begin{align*}
+        U & = \sup_{x \in X \cap (x_0, +\infty)} f(x); \\
+        L & = \inf_{x \in X \cap (-\infty, x_0)} f(x).
+    \end{align*}
+    Since \(x_0 \in X\) and \(x_0\) is not an endpoint of \(X\), we know that \(X \cap (x_0, +\infty) \neq \emptyset\) and \(X \cap (-\infty, x_0) \neq \emptyset\).
     Since \(f\) is monotone decreasing, we have
     \[
-        U = \sup_{x \in X \cap (x_0, \infty)} f(x) \leq f(x_0)
+        U = \sup_{x \in X \cap (x_0, +\infty)} f(x) \leq f(x_0)
     \]
     and
     \[
         L = \inf_{x \in X \cap (-\infty, x_0)} f(x) \geq f(x_0).
     \]
-    Thus \(U, L\) are finite.
+    Thus \(U, L \in \mathbf{R}\).
 
     First we show that \(f(x_0+) = U\).
     By the definition of \(U\) we know that
     \[
-        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ x \in X \cap (x_0, \infty) : 0 \leq U - f(x) \leq \varepsilon.
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ x \in X \cap (x_0, +\infty) : 0 \leq U - f(x) \leq \varepsilon.
     \]
-    Now fix such \(\varepsilon\) and \(x\).
+    Now fix one pair of \(\varepsilon\) and \(x\).
     Since \(f\) is monotone decreasing, we know that
     \[
-        \forall\ y \in X \cap (x_0, \infty), y < x \implies 0 \leq U - f(y) \leq U - f(x) \leq \varepsilon.
+        \forall\ y \in X \cap (x_0, +\infty), y < x \implies 0 \leq U - f(y) \leq U - f(x) \leq \varepsilon.
     \]
     Thus by setting \(\delta = x - x_0\) we have
     \[
-        \forall\ y \in X \cap (x_0, \infty), \abs*{y - x_0} < \delta \implies \abs*{f(y) - U} \leq \varepsilon.
+        \forall\ y \in X \cap (x_0, +\infty), \abs*{y - x_0} < \delta \implies \abs*{f(y) - U} \leq \varepsilon.
     \]
     Since \(\varepsilon\) is arbitrary, by Definition \ref{9.3.6} and Definition \ref{9.5.1} we have \(f(x_0+) = U\).
 
@@ -106,7 +118,7 @@ for every \(x_0 \in I\) and \(x_0\) is not an endpoint of \(X\).
     \[
         \forall\ \varepsilon \in \mathbf{R}^+, \exists\ x \in X \cap (-\infty, x_0) : 0 \leq f(x) - L \leq \varepsilon.
     \]
-    Now fix such \(\varepsilon\) and \(x\).
+    Now fix one pair of \(\varepsilon\) and \(x\).
     Since \(f\) is monotone decreasing, we know that
     \[
         \forall\ y \in X \cap (-\infty, x_0), y > x \implies 0 \leq f(y) - L \leq f(x) - L \leq \varepsilon.
@@ -155,7 +167,7 @@ for every \(x_0 \in I\) and \(x_0\) is not an endpoint of \(X\).
 \end{note}
 
 \begin{note}
-    Definition \ref{11.8.1} is well-defined thanks to Additional Corollary \ref{ac 11.8.1}.
+    Definition \ref{11.8.1} is well-defined, thanks to Additional Corollary \ref{ac 11.8.1}.
     Definition \ref{11.8.1} is can also be applied when \(\alpha\) is monotone decreasing, thanks to Additional Corollary \ref{ac 11.8.2}.
 \end{note}
 
@@ -290,7 +302,10 @@ Then we have
 \end{definition}
 
 \begin{note}
-    Definition \ref{11.8.5} can also be applied when \(\alpha\) is monotone decreasing.
+    When \(\alpha\) is monotone decreasing, by Definition \ref{11.8.5} we have
+    \[
+        p.c. \int_{[\mathbf{P}]} f \; d (-\alpha) = \sum_{J \in \mathbf{P}} c_J (-\alpha)[J] = - \sum_{J \in \mathbf{P}} c_J \alpha[J].
+    \]
 \end{note}
 
 \setcounter{theorem}{6}
@@ -300,7 +315,7 @@ Then we have
 \end{example}
 
 \begin{additional corollary}\label{ac 11.8.4}
-Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) be a function.
+Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) be a function.
 Suppose that \(\mathbf{P}\) and \(\mathbf{P}'\) are partitions of \(I\) such that \(f\) is piecewise constant both with respect to \(\mathbf{P}\) and with respect to \(\mathbf{P}'\).
 Also suppose that both \(p.c. \int_{[\mathbf{P}]} f \; d \alpha\) and \(p.c. \int_{[\mathbf{P}']} f \; d \alpha\) are well-defined.
 Then \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d \alpha\).
@@ -311,7 +326,7 @@ Then \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d
     \[
         p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f \; d \alpha = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \alpha[J].
     \]
-    By Lemma \ref{11.8.4} and Additional Corollary \ref{ac 11.8.3} we know that
+    By Lemma \ref{11.8.4} we know that
     \[
         \alpha[I] = \sum_{J \in \mathbf{P}} \alpha[J] = \sum_{J \in \mathbf{P} \# \mathbf{P}'} \alpha[J].
     \]
@@ -336,7 +351,7 @@ Then \(p.c. \int_{[\mathbf{P}]} f \; d \alpha = p.c. \int_{[\mathbf{P}']} f \; d
 \end{proof}
 
 \begin{additional corollary}\label{ac 11.8.5}
-Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) be a piecewise constant function on \(I\).
+Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) be a piecewise constant function on \(I\).
 Then we define
 \[
     p.c. \int_I f \; d \alpha \coloneqq p.c. \int_{[\mathbf{P}]} f \; d \alpha,
@@ -408,13 +423,13 @@ Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone
 \end{proof}
 
 \begin{additional corollary}\label{ac 11.8.7}
-Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) be piecewise constant functions on \(I\) such that both \(p.c. \int_I f \; d \alpha\) and \(p.c. \int_I g \; d \alpha\) are well-defined.
+Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \mathbf{R}\) and \(g : I \to \mathbf{R}\) be piecewise constant functions on \(I\) such that both \(p.c. \int_I f \; d \alpha\) and \(p.c. \int_I g \; d \alpha\) are well-defined.
 \begin{enumerate}
     \item We have \(p.c. \int_I (f + g) \; d \alpha = p.c. \int_I f \; d \alpha + p.c. \int_I g \; d \alpha\).
     \item For any real number \(c\), we have \(p.c. \int_I (cf) \; d \alpha = c (p.c. \int_I f \; d \alpha)\).
     \item We have \(p.c. \int_I (f - g) \; d \alpha = p.c. \int_I f \; d \alpha - p.c. \int_I g \; d \alpha\).
-    \item If \(f(x) \geq 0\) for all \(x \in I\), then \(p.c. \int_I f \; d \alpha \geq 0\) if \(\alpha\) is monotone increasing and \(p.c. \int_I f \; d \alpha \leq 0\) if \(\alpha\) is monotone decreasing.
-    \item If \(f(x) \geq g(x)\) for all \(x \in I\), then \(p.c. \int_I f \; d \alpha \geq p.c. \int_I g \; d \alpha\) if \(\alpha\) is monotone increasing and \(p.c. \int_I f \; d \alpha \leq p.c. \int_I g \; d \alpha\) if \(\alpha\) is monotone decreasing.
+    \item If \(f(x) \geq 0\) for all \(x \in I\), then \(p.c. \int_I f \; d \alpha \geq 0\).
+    \item If \(f(x) \geq g(x)\) for all \(x \in I\), then \(p.c. \int_I f \; d \alpha \geq p.c. \int_I g \; d \alpha\).
     \item If \(f\) is the constant function \(f(x) = c\) for all \(x \in I\), then \(p.c. \int_I f \; d \alpha = c \alpha[I]\).
     \item Let \(J\) be a bounded interval containing \(I\) (i.e., \(I \subseteq J\)), and let \(F : J \to \mathbf{R}\) be the function
           \[
@@ -477,50 +492,27 @@ Let \(I\) be a bounded interval, let \(\alpha : X \to \mathbf{R}\) be a monotone
 \begin{proof}{(d)}
     By Additional Corollary \ref{ac 11.8.5} \(f\) is piecewise constant with respect to \(\mathbf{P}\) for some partition \(\mathbf{P}\) of \(I\).
     Let \(J \in \mathbf{P}\) and let \(c_J \in \mathbf{R}\) be the constant value of \(f|_J\).
-    Now we split into two cases:
-    \begin{itemize}
-        \item \(\alpha\) is monotone increasing.
-              By Additional Corollary \ref{ac 11.8.6} we know that \(\alpha[J] \geq 0\) for all \(J \in \mathbf{P}\).
-              Since \(f(x) \geq 0\) for all \(x \in I\), we have \(c_J \geq 0\) and \(c_J \alpha[J] \geq 0\) for all \(J \in \mathbf{P}\).
-              Thus
-              \begin{align*}
-                  p.c. \int_I f \; d \alpha & = p.c. \int_{[\mathbf{P}]} f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.5})} \\
-                                            & = \sum_{J \in \mathbf{P}} c_J \alpha[J]  & \text{(by Definition \ref{11.8.5})}              \\
-                                            & \geq \sum_{J \in \mathbf{P}} 0           & \text{(by Proposition \ref{7.1.11}(h))}          \\
-                                            & = 0.
-              \end{align*}
-        \item \(\alpha\) is monotone decreasing.
-              By Additional Corollary \ref{ac 11.8.6} we know that \(\alpha[J] \leq 0\) for all \(J \in \mathbf{P}\).
-              Since \(f(x) \geq 0\) for all \(x \in I\), we have \(c_J \geq 0\) and \(c_J \alpha[J] \leq 0\) for all \(J \in \mathbf{P}\).
-              Thus
-              \begin{align*}
-                  p.c. \int_I f \; d \alpha & = p.c. \int_{[\mathbf{P}]} f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.5})} \\
-                                            & = \sum_{J \in \mathbf{P}} c_J \alpha[J]  & \text{(by Definition \ref{11.8.5})}              \\
-                                            & \leq \sum_{J \in \mathbf{P}} 0           & \text{(by Proposition \ref{7.1.11}(h))}          \\
-                                            & = 0.
-              \end{align*}
-    \end{itemize}
+    By Additional Corollary \ref{ac 11.8.6} we know that \(\alpha[J] \geq 0\) for all \(J \in \mathbf{P}\).
+    Since \(f(x) \geq 0\) for all \(x \in I\), we have \(c_J \geq 0\) and \(c_J \alpha[J] \geq 0\) for all \(J \in \mathbf{P}\).
+    Thus
+    \begin{align*}
+        p.c. \int_I f \; d \alpha & = p.c. \int_{[\mathbf{P}]} f \; d \alpha & \text{(by Additional Corollary \ref{ac 11.8.5})} \\
+                                  & = \sum_{J \in \mathbf{P}} c_J \alpha[J]  & \text{(by Definition \ref{11.8.5})}              \\
+                                  & \geq \sum_{J \in \mathbf{P}} 0           & \text{(by Proposition \ref{7.1.11}(h))}          \\
+                                  & = 0.
+    \end{align*}
 \end{proof}
 
 \begin{proof}{(e)}
-    Since \(f(x) \geq g(x)\) for all \(x \in I\), we have \(f(x) - g(x) \geq 0\) and
+    Since \(f(x) \geq g(x)\) for all \(x \in I\), we have \(f(x) - g(x) \geq 0\).
     By Additional Corollary \ref{ac 11.8.7}(c) we have
     \[
         p.c. \int_I f \; d \alpha - p.c. \int_I g \; d \alpha = p.c. \int_I (f - g) \; d \alpha.
     \]
-    Now we split into two cases:
-    \begin{itemize}
-        \item \(\alpha\) is monotone increasing.
-              Then by Additional Corollary \ref{ac 11.8.7}(d) we have
-              \[
-                  p.c. \int_I (f - g) \; d \alpha \geq 0 \implies p.c. \int_I f \; d \alpha \geq p.c. \int_I g \; d \alpha.
-              \]
-        \item \(\alpha\) is monotone decreasing.
-              Then by Additional Corollary \ref{ac 11.8.7}(d) we have
-              \[
-                  p.c. \int_I (f - g) \; d \alpha \leq 0 \implies p.c. \int_I f \; d \alpha \leq p.c. \int_I g \; d \alpha.
-              \]
-    \end{itemize}
+    Then by Additional Corollary \ref{ac 11.8.7}(d) we have
+    \[
+        p.c. \int_I (f - g) \; d \alpha \geq 0 \implies p.c. \int_I f \; d \alpha \geq p.c. \int_I g \; d \alpha.
+    \]
 \end{proof}
 
 \begin{proof}{(f)}
