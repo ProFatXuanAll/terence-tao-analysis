@@ -84,6 +84,87 @@
     \end{enumerate}
 \end{lemma}
 
+\begin{proof}{(a)}
+    By Remark \ref{5.2.2} we know that \(f * g\) is continuous on \(\mathbf{R}\).
+    Since
+    \begin{align*}
+        \forall\ x \in \mathbf{R}, f * g(x + 1) & = \int_{[0, 1]} f(y) g(x + 1 - y) \; dy & \text{(by Definition \ref{5.4.2})}              \\
+                                                & = \int_{[0, 1]} f(y) g(x - y) \; dy     & (g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})) \\
+                                                & = f * g(x),                             & \text{(by Definition \ref{5.4.2})}
+    \end{align*}
+    we know that \(f * g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
+\end{proof}
+
+\begin{proof}{(b)}
+    Let \(x \in \mathbf{R}\) and let \(\phi : [x - 1, x] \mapsto [0, 1]\) be the function \(\phi(y) = x - y\).
+    Then we have
+    \begin{align*}
+         & f * g(x)                                                                                                                   \\
+         & = \int_{[0, 1]} f(y) g(x - y) \; dy                                           & \text{(by Definition \ref{5.4.2})}         \\
+         & = \int_{\big[\phi(x), \phi(x - 1)\big]} f(y) g(x - y) \; dy                                                                \\
+         & = -\int_{[x - 1, x]} f\big(\phi(y)\big) g\big(x - \phi(y)\big) \phi'(y) \; dy & \text{(by Exercise 11.10.4 in Analysis I)} \\
+         & = \int_{[x - 1, x]} f(x - y) g(y) \; dy                                                                                    \\
+         & = \int_{[x - 1, x]} g(y) f(x - y) \; dy.                                                                                   \\
+    \end{align*}
+    Let \([x]\) be the integer defined in Exercise \ref{ex 5.1.1}.
+    Then we have
+    \begin{align*}
+                 & [x] \leq x < [x] + 1     \\
+        \implies & [x] - 1 \leq x - 1 < [x]
+    \end{align*}
+    and
+    \begin{align*}
+         & f * g(x)                                                                                                                                             \\
+         & = \int_{[x - 1, x]} g(y) f(x - y) \; dy                                                                                                              \\
+         & = \int_{\big[x - 1, [x]\big]} g(y) f(x - y) \; dy + \int_{\big[[x], x\big]} g(y) f(x - y) \; dy                                                      \\
+         & = \int_{\big[[x], x\big]} g(y) f(x - y) \; dy + \int_{\big[x - 1, [x]\big]} g(y) f(x - y) \; dy                                                      \\
+         & = \int_{\big[[x], x\big]} g(y) f(x - y) \; dy                                                                                                        \\
+         & \quad + \int_{\big[x - 1 + 1, [x] + 1\big]} g(y - 1) f(x - y - 1) \; dy                                                                              \\
+         & = \int_{\big[[x], x\big]} g(y) f(x - y) \; dy + \int_{\big[x, [x] + 1\big]} g(y) f(x - y) \; dy & (f, g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})) \\
+         & = \int_{\big[[x], [x] + 1\big]} g(y) f(x - y) \; dy                                                                                                  \\
+         & = \int_{\big[[x] - [x], [x] + 1 - [x]\big]} g(y + [x]) f(x - y + [x]) \; dy                                                                          \\
+         & = \int_{[0, 1]} g(y) f(x - y) \; dy                                                             & (f, g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})) \\
+         & = g * f(x).                                                                                     & \text{(by Definition \ref{5.4.2})}
+    \end{align*}
+    Since \(x\) is arbitrary, we conclude that \(f * g = g * f\).
+\end{proof}
+
+\begin{proof}{(c)}
+    By Lemma \ref{5.1.5}(b) we know that \(f + g, g + h, cf, cg \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
+    Thus \(f * (g + h), (f + g) * h, (cf) * g, f * (cg)\) are well-defined.
+    Let \(x \in \mathbf{R}\).
+    Then we have
+    \begin{align*}
+         & \big(f * (g + h)\big)(x)                                                                                                \\
+         & = \int_{[0, 1]} f(y) \cdot (g + h)(x - y) \; dy                         & \text{(by Definition \ref{5.4.2})}            \\
+         & = \int_{[0, 1]} f(y) \cdot \big(g(x - y) + h(x - y)\big) \; dy                                                          \\
+         & = \int_{[0, 1]} f(y) g(x - y) + f(y) h(x - y) \; dy                                                                     \\
+         & = \int_{[0, 1]} f(y) g(x - y) \; dy + \int_{[0, 1]} f(y) h(x - y) \; dy & \text{(cf the proof of Lemma \ref{5.2.5}(c))} \\
+         & = (f * g)(x) + (f * h)(x)                                               & \text{(by Definition \ref{5.4.2})}            \\
+         & = (f * g + f * h)(x)
+    \end{align*}
+    and
+    \begin{align*}
+        \big((cf) * g\big)(x) & = \int_{[0, 1]} (cf)(y) \cdot g(x - y) \; dy & \text{(by Definition \ref{5.4.2})}            \\
+                              & = \int_{[0, 1]} c f(y) g(x - y) \; dy                                                        \\
+                              & = c \int_{[0, 1]} f(y) g(x - y) \; dy        & \text{(cf the proof of Lemma \ref{5.2.5}(c))} \\
+                              & = c (f * g)(x).                              & \text{(by Definition \ref{5.4.2})}
+    \end{align*}
+    Since \(x\) is arbitrary, we conclude that \(f * (g + h) = f * g + f * h\) and \((cf) * g = c (f * g)\).
+    This implies
+    \begin{align*}
+        (f + g) * h & = h * (f + g)   & \text{(by Lemma \ref{5.4.4}(b))} \\
+                    & = h * f + h * g & \text{(from the proof above)}    \\
+                    & = f * h + g * h & \text{(by Lemma \ref{5.4.4}(b))}
+    \end{align*}
+    and
+    \begin{align*}
+        f * (cg) & = (cg) * f  & \text{(by Lemma \ref{5.4.4}(b))} \\
+                 & = c(g * f)  & \text{(from the proof above)}    \\
+                 & = c(f * g). & \text{(by Lemma \ref{5.4.4}(b))}
+    \end{align*}
+\end{proof}
+
 \begin{note}
     Now we observe an interesting identity:
     for any \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) and any integer \(n\), we have
