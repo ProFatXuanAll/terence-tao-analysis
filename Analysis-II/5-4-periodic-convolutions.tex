@@ -7,22 +7,23 @@
 
 \begin{proof}
     Let \(f\) be any element of \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\);
-    we know that \(f\) is bounded, so that we have some \(M > 0\) such that \(\abs*{f(x)} \leq M\) for all \(x \in \mathbf{R}\).
+    we know that \(f\) is bounded (by Lemma \ref{5.1.5}(a)), so that we have some \(M > 0\) such that \(\abs*{f(x)} \leq M\) for all \(x \in \mathbf{R}\).
 
     Let \(\varepsilon > 0\) be arbitrary.
-    Since \(f\) is uniformly continuous, there exists a \(\delta > 0\) such that \(\abs*{f(x) - f(y)} \leq \varepsilon\) whenever \(\abs*{x - y} \leq \delta\).
+    Since \(f\) is uniformly continuous (by Theorem \ref{2.3.5}), there exists a \(\delta > 0\) such that \(\abs*{f(x) - f(y)} \leq \varepsilon\) whenever \(\abs*{x - y} \leq \delta\).
     Now use Lemma \ref{5.4.6} to find a trigonometric polynomial \(P\) which is a \((\varepsilon, \delta)\) approximation to the identity.
-    Then \(f * P\) is also a trigonometric polynomial.
+    Then \(f * P\) is also a trigonometric polynomial (by Additional Corollary \ref{ac 5.4.1}).
     We now estimate \(\norm*{f - f * P}_{\infty}\).
 
     Let \(x\) be any real number.
     We have
     \begin{align*}
-        \abs*{f(x) - f * P(x)} & = \abs*{f(x) - P * f(x)}                                                   \\
-                               & = \abs*{f(x) - \int_{[0, 1]} f(x - y) P(y) \; dy}                          \\
-                               & = \abs*{\int_{[0, 1]} f(x) P(y) \; dy - \int_{[0, 1]} f(x - y) P(y) \; dy} \\
-                               & = \abs*{\int_{[0, 1]} \big(f(x) - f(x - y)\big) P(y) \; dy}                \\
-                               & \leq \int_{[0, 1]} \abs*{f(x) - f(x - y)} P(y) \; dy.
+         & \abs*{f(x) - f * P(x)}                                                                                             \\
+         & = \abs*{f(x) - P * f(x)}                                                   & \text{(by Lemma \ref{5.4.4}(a)(b))}   \\
+         & = \abs*{f(x) - \int_{[0, 1]} f(x - y) P(y) \; dy}                          & \text{(by Definition \ref{5.4.2})}    \\
+         & = \abs*{\int_{[0, 1]} f(x) P(y) \; dy - \int_{[0, 1]} f(x - y) P(y) \; dy} & \text{(by Definition \ref{5.4.5}(a))} \\
+         & = \abs*{\int_{[0, 1]} \big(f(x) - f(x - y)\big) P(y) \; dy}                                                        \\
+         & \leq \int_{[0, 1]} \abs*{f(x) - f(x - y)} P(y) \; dy.                      & \text{(by Remark \ref{5.2.2})}
     \end{align*}
     The right-hand side can be split as
     \begin{align*}
@@ -31,10 +32,9 @@
     \end{align*}
     which we can bound from above by
     \begin{align*}
-         & \leq \int_{[0, \delta]} \varepsilon P(y) \; dy + \int_{[\delta, 1 - \delta]} 2 M \varepsilon \; dy                                                 \\
-         & \quad + \int_{[1 - \delta, 1]} \abs*{f(x - 1) - f(x - y)} P(y) \; dy                                                                               \\
-         & \leq \int_{[0, \delta]} \varepsilon P(y) \; dy + \int_{[\delta, 1 - \delta]} 2 M \varepsilon \; dy + \int_{[1 - \delta, 1]} \varepsilon P(y) \; dy \\
-         & \leq \varepsilon + 2 M \varepsilon + \varepsilon                                                                                                   \\
+         & \leq \int_{[0, \delta]} \varepsilon P(y) \; dy + \int_{[\delta, 1 - \delta]} 2 M \varepsilon \; dy + \int_{[1 - \delta, 1]} \abs*{f(x - 1) - f(x - y)} P(y) \; dy \\
+         & \leq \int_{[0, \delta]} \varepsilon P(y) \; dy + \int_{[\delta, 1 - \delta]} 2 M \varepsilon \; dy + \int_{[1 - \delta, 1]} \varepsilon P(y) \; dy                \\
+         & \leq \varepsilon + 2 M \varepsilon + \varepsilon                                                                                                                  \\
          & = (2M + 2) \varepsilon.
     \end{align*}
     Thus we have \(\norm*{f - f * P}_{\infty} \leq (2M + 2) \varepsilon\).
@@ -241,12 +241,10 @@ Then we have
          & = \sum_{n = 0}^{N - 1} n e_n + \sum_{n = N}^{2N - 2} (2N - n) \cdot e_n                                                        & \text{(by Lemma \ref{4.6.4})}    \\
          & \quad + \sum_{n = 0}^{N - 1} e_n - \sum_{n = N}^{2N - 2} e_n + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                                 \\
          & = \sum_{n = 0}^{N - 1} (N - \abs*{n - N}) \cdot e_n + \sum_{n = N}^{2N - 2} (N - \abs*{n - N}) \cdot e_n                                                          \\
-         & \quad + \sum_{n = 0}^{N - 1} e_n - \sum_{n = N}^{2N - 2} e_n + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                                 \\
-         & = \sum_{n = 0}^{2N - 2} (N - \abs*{n - N}) \cdot e_n                                                                           & \text{(by Lemma \ref{4.6.4})}    \\
          & \quad + \sum_{n = 0}^{N - 1} e_n - \sum_{n = N}^{2N - 2} e_n + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2
     \end{align*}
     \begin{align*}
-         & \sum_{n = 0}^{2N - 2} (N - \abs*{n - N}) \cdot e_n                                                                & \text{(conti. from above)}           \\
+         & = \sum_{n = 0}^{2N - 2} (N - \abs*{n - N}) \cdot e_n                                                              & \text{(conti. from above)}           \\
          & \quad + \sum_{n = 0}^{N - 1} e_n - \sum_{n = N}^{2N - 2} e_n + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                        \\
          & = \sum_{n = 0}^{2N - 2} (N + 1 - \abs*{n - N}) \cdot e_n - \sum_{n = 0}^{2N - 2} e_n                              & \text{(by Lemma \ref{4.6.6})}        \\
          & \quad + \sum_{n = 0}^{N - 1} e_n - \sum_{n = N}^{2N - 2} e_n + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                        \\
