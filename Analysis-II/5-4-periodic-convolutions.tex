@@ -165,26 +165,29 @@
     \end{align*}
 \end{proof}
 
-\begin{note}
-    Now we observe an interesting identity:
-    for any \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) and any integer \(n\), we have
-    \[
-        f * e_n = \hat{f}(n) e_n.
-    \]
-    To prove this, we compute
-    \begin{align*}
-        f * e_n(x) & = \int_{[0, 1]} f(y) e^{2 \pi i n (x - y)} \; dy             \\
-                   & = e^{2 \pi i n x} \int_{[0, 1]} f(y) e^{- 2 \pi i n y} \; dy \\
-                   & = \hat{f}(n) e^{2 \pi i n x} = \hat{f}(n) e_n
-    \end{align*}
-    as desired.
-    More generally, we see from Lemma \ref{5.4.4}(c) that for any trigonometric polynomial \(P = \sum_{n = -N}^N c_n e_n\), we have
-    \[
-        f * P = \sum_{n = -N}^N c_n (f * e_n) = \sum_{n = -N}^N \hat{f}(n) c_n e_n.
-    \]
-    Thus the periodic convolution of any function in \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) with a trigonometric polynomial, is again a trigonometric polynomial.
-    (Compare with Lemma \ref{3.8.13}.)
-\end{note}
+\begin{additional corollary}\label{ac 5.4.1}
+Now we observe an interesting identity:
+for any \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) and any integer \(n\), we have
+\[
+    f * e_n = \hat{f}(n) e_n.
+\]
+To prove this, we compute
+\begin{align*}
+    f * e_n(x) & = \int_{[0, 1]} f(y) e_n(x - y) \; dy                        & \text{(by Definition \ref{5.4.2})}            \\
+               & = \int_{[0, 1]} f(y) e^{2 \pi i n (x - y)} \; dy             & \text{(by Definition \ref{5.3.1})}            \\
+               & = e^{2 \pi i n x} \int_{[0, 1]} f(y) e^{- 2 \pi i n y} \; dy & \text{(cf the proof of Lemma \ref{5.2.5}(c))} \\
+               & = \inner*{f, e_n} e^{2 \pi i n x}                            & \text{(by Definition \ref{5.2.1})}            \\
+               & = \hat{f}(n) e^{2 \pi i n x}                                 & \text{(by Definition \ref{5.3.7})}            \\
+               & = \hat{f}(n) e_n                                             & \text{(by Definition \ref{5.3.1})}
+\end{align*}
+as desired.
+More generally, we see from Lemma \ref{5.4.4}(c) that for any trigonometric polynomial \(P = \sum_{n = -N}^N c_n e_n\), we have
+\[
+    f * P = \sum_{n = -N}^N c_n (f * e_n) = \sum_{n = -N}^N \hat{f}(n) c_n e_n.
+\]
+Thus the periodic convolution of any function in \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) with a trigonometric polynomial, is again a trigonometric polynomial.
+(Compare with Lemma \ref{3.8.13}.)
+\end{additional corollary}
 
 \begin{definition}[Periodic approximation to the identity]\label{5.4.5}
     Let \(\varepsilon > 0\) and \(0 < \delta < 1 / 2\).
@@ -194,6 +197,91 @@
         \item We have \(f(x) < \varepsilon\) for all \(\delta \leq \abs*{x} \leq 1 - \delta\).
     \end{enumerate}
 \end{definition}
+
+\begin{additional corollary}[Fejér kernel]\label{ac 5.4.2}
+Let \(N \geq 1\) be an integer.
+Then we have
+\[
+    \sum_{n = -N}^N \bigg(1 - \frac{\abs*{n}}{N}\bigg) e_n = \frac{1}{N} \abs*{\sum_{n = 0}^{N - 1} e_n}^2.
+\]
+\end{additional corollary}
+
+\begin{proof}
+    First we claim that
+    \[
+        \sum_{n = 0}^{2N - 2} (N - \abs*{n - N + 1}) \cdot e_n = \bigg(\sum_{n = 0}^{N - 1} e_n\bigg)^2.
+    \]
+    We proof the claim by induction on \(N\) and we start with \(N = 1\).
+    For \(N = 1\), we have
+    \begin{align*}
+        \sum_{n = 0}^0 (1 - \abs*{n - 1 + 1}) \cdot e_n & = \sum_{n = 0}^0 (1 - \abs*{n}) e_n                                      \\
+                                                        & = 1 e_0                                                                  \\
+                                                        & = 1                                 & \text{(by Theorem \ref{4.5.2}(e))} \\
+                                                        & = e_0^2                             & \text{(by Theorem \ref{4.5.2}(e))} \\
+                                                        & = \bigg(\sum_{n = 0}^0 e_n\bigg)^2.
+    \end{align*}
+    Thus the base case holds.
+    Suppose inductively that the claim is true for some \(N \geq 1\).
+    Then for \(N + 1\), we want to show that
+    \[
+        \sum_{n = 0}^{2(N + 1) - 2} \big(N + 1 - \abs*{n - (N + 1) + 1}\big) \cdot e_n = \sum_{n = 0}^{2N} (N + 1 - \abs*{n - N}) \cdot e_n = \bigg(\sum_{n = 0}^N e_n\bigg)^2.
+    \]
+    This is true since
+    \begin{align*}
+         & \bigg(\sum_{n = 0}^N e_n\bigg)^2                                                                                                                                  \\
+         & = \Bigg(\bigg(\sum_{n = 0}^{N - 1} e_n\bigg) + e_N\Bigg)^2                                                                     & \text{(by Lemma \ref{4.6.4})}    \\
+         & = \bigg(\sum_{n = 0}^{N - 1} e_n\bigg)^2 + 2 e_N \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) + e_N^2                                  & \text{(by Lemma \ref{4.6.6})}    \\
+         & = \sum_{n = 0}^{2N - 2} (N - \abs*{n - N + 1}) \cdot e_n + 2 e_N \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) + e_N^2                  & \text{(by induction hypothesis)} \\
+         & = \sum_{n = 0}^{N - 1} (N - \abs*{n - N + 1}) \cdot e_n + \sum_{n = N}^{2N - 2} (N - \abs*{n - N + 1}) \cdot e_n               & \text{(by Lemma \ref{4.6.4})}    \\
+         & \quad + 2 e_N \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) + e_N^2                                                                                                        \\
+         & = \sum_{n = 0}^{N - 1} (n + 1) \cdot e_n + \sum_{n = N}^{2N - 2} (2N - n - 1) \cdot e_n                                                                           \\
+         & \quad + 2 e_N \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) + e_N^2                                                                                                        \\
+         & = \sum_{n = 0}^{N - 1} n e_n + \sum_{n = 0}^{N - 1} e_n + \sum_{n = N}^{2N - 2} (2N - n) \cdot e_n - \sum_{n = N}^{2N - 2} e_n & \text{(by Lemma \ref{4.6.6})}    \\
+         & \quad + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                                                     & \text{(by Lemma \ref{4.6.6})}    \\
+         & = \sum_{n = 0}^{N - 1} n e_n + \sum_{n = N}^{2N - 2} (2N - n) \cdot e_n                                                        & \text{(by Lemma \ref{4.6.4})}    \\
+         & \quad + \sum_{n = 0}^{N - 1} e_n - \sum_{n = N}^{2N - 2} e_n + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                                 \\
+         & = \sum_{n = 0}^{N - 1} (N - \abs*{n - N}) \cdot e_n + \sum_{n = N}^{2N - 2} (N - \abs*{n - N}) \cdot e_n                                                          \\
+         & \quad + \sum_{n = 0}^{N - 1} e_n - \sum_{n = N}^{2N - 2} e_n + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                                 \\
+         & = \sum_{n = 0}^{2N - 2} (N - \abs*{n - N}) \cdot e_n                                                                           & \text{(by Lemma \ref{4.6.4})}    \\
+         & \quad + \sum_{n = 0}^{N - 1} e_n - \sum_{n = N}^{2N - 2} e_n + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2
+    \end{align*}
+    \begin{align*}
+         & \sum_{n = 0}^{2N - 2} (N - \abs*{n - N}) \cdot e_n                                                                & \text{(conti. from above)}           \\
+         & \quad + \sum_{n = 0}^{N - 1} e_n - \sum_{n = N}^{2N - 2} e_n + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                        \\
+         & = \sum_{n = 0}^{2N - 2} (N + 1 - \abs*{n - N}) \cdot e_n - \sum_{n = 0}^{2N - 2} e_n                              & \text{(by Lemma \ref{4.6.6})}        \\
+         & \quad + \sum_{n = 0}^{N - 1} e_n - \sum_{n = N}^{2N - 2} e_n + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                        \\
+         & = \sum_{n = 0}^{2N - 2} (N + 1 - \abs*{n - N}) \cdot e_n                                                          & \text{(by Lemma \ref{4.6.6})}        \\
+         & \quad - 2 \bigg(\sum_{n = N}^{2N - 2} e_n\bigg) + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                                     \\
+         & = \sum_{n = 0}^{2N} (N + 1 - \abs*{n - N}) \cdot e_n - 2 e_{2N - 1} - e_{2N}                                      & \text{(by Lemma \ref{4.6.6})}        \\
+         & \quad - 2 \bigg(\sum_{n = N}^{2N - 2} e_n\bigg) + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                                     \\
+         & = \sum_{n = 0}^{2N} (N + 1 - \abs*{n - N}) \cdot e_n - 2 e_{2N - 1} - e_{2N}                                                                             \\
+         & \quad - 2 \bigg(\sum_{n = N}^{2N - 2} e_n\bigg) + 2 \bigg(\sum_{n = 0}^{N - 1} e_{n + N}\bigg) + e_{2N}           & \text{(by Exercise \ref{ex 4.6.16})} \\
+         & = \sum_{n = 0}^{2N} (N + 1 - \abs*{n - N}) \cdot e_n                                                              & \text{(by Lemma \ref{4.6.4})}        \\
+         & \quad - 2 \bigg(\sum_{n = N}^{2N - 1} e_n\bigg) + 2 \bigg(\sum_{n = 0}^{N - 1} e_{n + N}\bigg)                                                           \\
+         & = \sum_{n = 0}^{2N} (N + 1 - \abs*{n - N}) \cdot e_n                                                                                                     \\
+         & \quad - 2 \bigg(\sum_{n = N}^{2N - 1} e_n\bigg) + 2 \bigg(\sum_{n = N}^{2N - 1} e_n\bigg)                                                                \\
+         & = \sum_{n = 0}^{2N} (N + 1 - \abs*{n - N}) \cdot e_n.
+    \end{align*}
+    This closes the induction.
+
+    Using the claim above we have
+    \begin{align*}
+         & \sum_{n = -N}^N \bigg(1 - \frac{\abs*{n}}{N}\bigg) e_n                                                                                    \\
+         & = \frac{1}{N} \sum_{n = -N}^N (N - \abs*{n}) e_n                                                   & \text{(by Lemma \ref{4.6.6})}        \\
+         & = \frac{1}{N} \sum_{n = -(N - 1)}^{N - 1} (N - \abs*{n}) \cdot e_n                                                                        \\
+         & = \frac{1}{N} \sum_{n = 0}^{2N - 2} (N - \abs*{n - N + 1}) \cdot e_{n - N + 1}                                                            \\
+         & = \frac{1}{N} \sum_{n = 0}^{2N - 2} (N - \abs*{n - N + 1}) \cdot e_n \cdot e_{-N + 1}              & \text{(by Exercise \ref{ex 4.6.16})} \\
+         & = \frac{e_{-N + 1}}{N} \sum_{n = 0}^{2N - 2} (N - \abs*{n - N + 1}) \cdot e_n                      & \text{(by Lemma \ref{4.6.6})}        \\
+         & = \frac{e_{-N + 1}}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg)^2                                      & \text{(from the claim above)}        \\
+         & = \frac{e_{-N + 1}}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\sum_{n = 0}^{N - 1} e_n\bigg)                                          \\
+         & = \frac{1}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\sum_{n = 0}^{N - 1} e_{-N + 1} e_n\bigg) & \text{(by Lemma \ref{4.6.6})}        \\
+         & = \frac{1}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\sum_{n = 0}^{N - 1} e_{n - N + 1}\bigg)  & \text{(by Exercise \ref{ex 4.6.16})} \\
+         & = \frac{1}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\sum_{n = 0}^{N - 1} e_{-n}\bigg)         & \text{(by Lemma \ref{4.6.4})}        \\
+         & = \frac{1}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\sum_{n = 0}^{N - 1} \overline{e_n}\bigg) & \text{(by Definition \ref{4.6.15})}  \\
+         & = \frac{1}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\overline{\sum_{n = 0}^{N - 1} e_n}\bigg) & \text{(by Lemma \ref{4.6.9})}        \\
+         & = \frac{1}{N} \abs*{\sum_{n = 0}^{N - 1} e_n}^2.                                                   & \text{(by Lemma \ref{4.6.11})}
+    \end{align*}
+\end{proof}
 
 \begin{lemma}\label{5.4.6}
     For every \(\varepsilon > 0\) and \(0 < \delta < 1 / 2\), there exists a trigonometric polynomial \(P\) which is an \((\varepsilon, \delta)\) approximation to the identity.
@@ -208,8 +296,9 @@
     Clearly \(F_N\) is a trigonometric polynomial.
     We observe the identity
     \[
-        F_N = \frac{1}{N} \abs*{\sum_{n = 0}^{N - 1} e_n}^2.
+        F_N = \frac{1}{N} \abs*{\sum_{n = 0}^{N - 1} e_n}^2
     \]
+    by Additional Corollary \ref{ac 5.4.2}.
     But from the geometric series formula (Lemma 7.3.3 in Analysis I) we have
     \[
         \sum_{n = 0}^{N - 1} e_n(x) = \frac{e_N - e_0}{e_1 - e_0} = \frac{e^{\pi i (N - 1) x} \sin(\pi N x)}{\sin(\pi x)}
