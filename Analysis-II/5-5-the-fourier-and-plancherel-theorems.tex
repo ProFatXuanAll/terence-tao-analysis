@@ -51,7 +51,7 @@
     However, we will prove one theorem about when one can improve the \(L^2\) convergence to uniform convergence.
 \end{remark}
 
-\begin{theorem}\label{5.3.3}
+\begin{theorem}\label{5.5.3}
     Let \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), and suppose that the series \(\sum_{n = -\infty}^\infty \abs*{\hat{f}(n)}\) is absolutely convergent.
     Then the series \(\sum_{n = -\infty}^\infty \hat{f}(n) e_n\) converges uniformly to \(f\).
     In other words, we have
@@ -143,6 +143,104 @@
         \item Show that if \(\sum_{n = 1}^\infty a_n\) and \(\sum_{n = 1}^\infty b_n\) are absolutely convergent, then the above series actually converges uniformly to \(f\), and not just in \(L_2\) metric.
     \end{enumerate}
 \end{exercise}
+
+\begin{proof}{(a)}
+    Observe that for all \(n \in \mathbf{Z}\), we have
+    \begin{align*}
+         & \hat{f}(n)                                                                                                                                              \\
+         & = \int_{[0, 1]} f(x) e^{- 2 \pi i n x} \; dx                                                                       & \text{(by Definition \ref{5.3.7})} \\
+         & = \int_{[0, 1]} f(x) \big(\cos(2 \pi n x) - i \sin(2 \pi n x)\big) \; dx                                           & \text{(by Theorem \ref{4.7.2}(f))} \\
+         & = \int_{[0, 1]} f(x) \cos(2 \pi n x) \; dx - i \int_{[0, 1]} f(x) \sin(2 \pi n x) \; dx                            & \text{(by Remark \ref{5.2.2})}     \\
+         & = \frac{1}{2} \bigg(2 \int_{[0, 1]} f(x) \cos(2 \pi n x) \; dx - 2i \int_{[0, 1]} f(x) \sin(2 \pi n x) \; dx\bigg)                                      \\
+         & = \frac{1}{2} (a_n - i b_n)
+    \end{align*}
+    and
+    \begin{align*}
+         & \hat{f}(-n)                                                                                                                                             \\
+         & = \frac{1}{2} (a_{-n} - i b_{-n})                                                                                  & \text{(from the proof above)}      \\
+         & = \frac{1}{2} \bigg(2 \int_{[0, 1]} f(x) \cos(- 2 \pi n x) \; dx                                                                                        \\
+         & \quad - 2i \int_{[0, 1]} f(x) \sin(- 2 \pi n x) \; dx\bigg)                                                                                             \\
+         & = \frac{1}{2} \bigg(2 \int_{[0, 1]} f(x) \cos(2 \pi n x) \; dx                                                                                          \\
+         & \quad - 2i \int_{[0, 1]} -f(x) \sin(2 \pi n x) \; dx\bigg)                                                         & \text{(by Theorem \ref{4.7.2}(c))} \\
+         & = \frac{1}{2} \bigg(2 \int_{[0, 1]} f(x) \cos(2 \pi n x) \; dx + 2i \int_{[0, 1]} f(x) \sin(2 \pi n x) \; dx\bigg) & \text{(by Remark \ref{5.2.2})}     \\
+         & = \frac{1}{2} (a_n + i b_n).
+    \end{align*}
+    By Fourier theroem (Theorem \ref{5.5.1}) we know that
+    \[
+        \lim_{N \to \infty} \norm*{f - \sum_{n = -N}^N \hat{f}(n) e_n}_2 = 0.
+    \]
+    Since for all \(N \in \mathbf{Z}^+\), we have
+    \begin{align*}
+         & \sum_{n = -N}^N \hat{f}(n) e_n                                                                                                                                  \\
+         & = \hat{f}(0) e_0 + \sum_{n = 1}^N \hat{f}(n) e_n + \sum_{n = -N}^{-1} \hat{f}(n) e_n                                                                            \\
+         & = \hat{f}(0) e_0 + \sum_{n = 1}^N \hat{f}(n) e_n + \sum_{n = 1}^N \hat{f}(-n) e_{-n}                                                                            \\
+         & = \frac{(a_0 - i b_0) e_0}{2} + \sum_{n = 1}^N \frac{(a_n - i b_n) e_n}{2} + \sum_{n = 1}^N \frac{(a_n + i b_n) e_{-n}}{2} & \text{(from the proof above)}      \\
+         & = \frac{a_0 e_0}{2} + \sum_{n = 1}^N \frac{(a_n - i b_n) e_n}{2} + \sum_{n = 1}^N \frac{(a_n + i b_n) e_{-n}}{2}           & \text{(by Theorem \ref{4.7.2}(e))} \\
+         & = \frac{a_0}{2} + \sum_{n = 1}^N \frac{(a_n - i b_n) e_n}{2} + \sum_{n = 1}^N \frac{(a_n + i b_n) e_{-n}}{2}               & \text{(by Theorem \ref{4.5.2}(e))} \\
+         & = \frac{a_0}{2} + \sum_{n = 1}^N \frac{a_n (e_n + e_{-n}) - i b_n (e_n - e_{-n})}{2}                                       & \text{(by Lemma \ref{4.6.6})}      \\
+         & = \frac{a_0}{2} + \sum_{n = 1}^N a_n \cos(2 \pi n x) + b_n \sin(2 \pi n x),                                                & \text{(by Definition \ref{4.7.1})}
+    \end{align*}
+    we know that
+    \[
+        \lim_{N \to \infty} \norm*{f - \bigg(\frac{a_0}{2} + \sum_{n = 1}^N a_n \cos(2 \pi n x) + b_n \sin(2 \pi n x)\bigg)}_2 = 0.
+    \]
+    Thus by Definition \ref{1.1.14} we have
+    \begin{align*}
+         & d_{L^2} - \lim_{N \to \infty} \bigg(\frac{a_0}{2} + \sum_{n = 1}^N a_n \cos(2 \pi n x) + b_n \sin(2 \pi n x)\bigg) \\
+         & = \frac{a_0}{2} + \sum_{n = 1}^\infty a_n \cos(2 \pi n x) + b_n \sin(2 \pi n x)                                    \\
+         & = f.
+    \end{align*}
+\end{proof}
+
+\begin{proof}{(b)}
+    Observe that
+    \begin{align*}
+         & \frac{a_0}{2} + \sum_{n = 1}^\infty \abs*{a_n} + \sum_{n = 1}^\infty \abs*{b_n}                                                             & \text{(by hypothesis)}                          \\
+         & = \frac{a_0}{2} + \lim_{N \to \infty} \sum_{n = 1}^N \abs*{a_n} + \lim_{N \to \infty} \sum_{n = 1}^N \abs*{b_n}                             & \text{(by Additional Corollary \ref{ac 4.6.6})} \\
+         & = \frac{a_0}{2} + \lim_{N \to \infty} \sum_{n = 1}^N \abs*{a_n} + \abs*{b_n}                                                                & \text{(by Lemma \ref{4.6.14})}                  \\
+         & = \frac{a_0}{2} + 2 \bigg(\lim_{N \to \infty} \sum_{n = 1}^N \frac{\abs*{a_n} + \abs*{b_n}}{2}\bigg)                                        & \text{(by Lemma \ref{4.6.14})}                  \\
+         & = \frac{a_0}{2} + 2 \sum_{n = 1}^\infty \frac{\abs*{a_n} + \abs*{b_n}}{2}                                                                   & \text{(by Additional Corollary \ref{ac 4.6.6})} \\
+         & = \frac{a_0}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_n} + \abs*{b_n}}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_n} + \abs*{b_n}}{2}                                                               \\
+         & = \frac{a_0}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_n} + \abs*{i b_n}}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_n} + \abs*{-i b_n}}{2}        & \text{(by Lemma \ref{4.6.11})}                  \\
+         & \geq \frac{a_0}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_n + i b_n}}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_n - i b_n}}{2}                    & \text{(by Lemma \ref{4.6.11})}                  \\
+         & = \frac{a_0}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_{-n} - i b_{-n}}}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_n - i b_n}}{2}                 & \text{(by Theorem \ref{4.7.2}(c))}              \\
+         & = \frac{a_0}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_{-n} - i b_{-n}}}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_n - i b_n}}{2}                 & \text{(by Theorem \ref{4.7.2}(e))}              \\
+         & = \lim_{N \to \infty} \frac{a_0}{2} + \sum_{n = 1}^N \frac{\abs*{a_{-n} - i b_{-n}}}{2} + \sum_{n = 1}^N \frac{\abs*{a_n - i b_n}}{2}       & \text{(by Lemma \ref{4.6.14})}                  \\
+         & = \lim_{N \to \infty} \frac{a_0}{2} + \sum_{n = -N}^{-1} \frac{\abs*{a_n - i b_n}}{2} + \sum_{n = 1}^N \frac{\abs*{a_n - i b_n}}{2}                                                           \\
+         & = \lim_{N \to \infty} \frac{a_0 - i b_0}{2} + \sum_{n = -N}^{-1} \frac{\abs*{a_n - i b_n}}{2} + \sum_{n = 1}^N \frac{\abs*{a_n - i b_n}}{2} & \text{(by Theorem \ref{4.7.2}(e))}              \\
+         & = \lim_{N \to \infty} \sum_{n = -N}^N \frac{\abs*{a_{-n} - i b_{-n}}}{2}                                                                                                                      \\
+         & = \sum_{n = -\infty}^\infty \frac{\abs*{a_{-n} - i b_{-n}}}{2}.
+    \end{align*}
+    Since
+    \[
+        \hat{f}(n) = \frac{1}{2} (a_n - i b_n)
+    \]
+    for all \(n \in \mathbf{Z}\) (cf. the proof of Exercise \ref{ex 5.5.1}(a)), we know that
+    \begin{align*}
+        \sum_{n = -\infty}^\infty \abs*{\hat{f}(n)} & = \sum_{n = -\infty}^\infty \abs*{\frac{a_n - i b_n}{2}}                                                                    \\
+                                                    & = \sum_{n = -\infty}^\infty \frac{\abs*{a_n - i b_n}}{2}                              & \text{(by Exercise \ref{ex 4.6.7})} \\
+                                                    & \leq \frac{a_0}{2} + \sum_{n = 1}^\infty \abs*{a_n} + \sum_{n = 1}^\infty \abs*{b_n}. & \text{(from the proof above)}
+    \end{align*}
+    Thus \(\sum_{n = -\infty}^\infty \abs*{\hat{f}(n)}\) is absolutely convergent.
+    By Theorem \ref{5.5.3} we know that
+    \[
+        \lim_{N \to \infty} \norm*{f - \sum_{n = -N}^N \hat{f}(n) e_n}_{\infty} = 0.
+    \]
+    and \(\sum_{n = -\infty}^\infty \hat{f}(n) e_n\) converges uniformly to \(f\) on \(\mathbf{R}\) with respect to \(d_{l^1}|_{\mathbf{C} \times \mathbf{C}}\).
+    In particular, we have (by Exercise \ref{ex 5.2.3} and squeeze test)
+    \[
+        \lim_{N \to \infty} \norm*{f - \sum_{n = -N}^N \hat{f}(n) e_n}_2 = 0.
+    \]
+    By Exercise \ref{ex 5.5.1}(a) we know that
+    \[
+        \lim_{N \to \infty} \norm*{f - \bigg(\frac{a_0}{2} + \sum_{n = 1}^N a_n \cos(2 \pi n x) + b_n \sin(2 \pi n x)\bigg)}_2 = 0.
+    \]
+    Thus by Proposition \ref{1.1.20} we have
+    \[
+        \lim_{N \to \infty} \norm*{f - \bigg(\frac{a_0}{2} + \sum_{n = 1}^N a_n \cos(2 \pi n x) + b_n \sin(2 \pi n x)\bigg)}_{\infty} = 0.
+    \]
+    and \(\frac{a_0}{2} + \sum_{n = 1}^\infty a_n \cos(2 \pi n x) + b_n \sin(2 \pi n x)\) converges uniformly to \(f\) on \(\mathbf{R}\) with respect to \(d_{l^1}|_{\mathbf{C} \times \mathbf{C}}\).
+\end{proof}
 
 \begin{exercise}\label{ex 5.5.2}
     Let \(f(x)\) be the function defined by \(f(x) = (1 - 2x)^2\) when \(x \in [0, 1)\), and extended to be \(\mathbf{Z}\)-periodic for the rest of the real line.
