@@ -389,3 +389,51 @@ one can easily verify that \(L_A(x + y) = L_A(x) + L_A(y)\) and \(L_A(cx) = c L_
     Show that there exists a number \(M > 0\) such that \(\norm*{T(x)} \leq M \norm*{x}\) for all \(x \in \mathbf{R}^n\).
     Conclude in particular that every linear transformation from \(\mathbf{R}^n\) to \(\mathbf{R}^m\) is continuous.
 \end{exercise}
+
+\begin{proof}
+    Since \(T\) is a linear transformations from \(\mathbf{R}^n\) to \(\mathbf{R}^m\), by Lemma \ref{6.1.13} we know that there exists an \(m \times n\) matrix such that
+    \[
+        \forall\ x \in \mathbf{R}^n, \big(T(x)\big)^\top = Ax^\top.
+    \]
+    If we write
+    \[
+        A = (a_{ij})_{1 \leq i \leq m ; 1 \leq j \leq n},
+    \]
+    then
+    \[
+        M = \sum_{i = 1}^m \sum_{j = 1}^n \abs*{a_{ij}}
+    \]
+    is well-defined.
+
+    Let \(x \in \mathbf{R}^n\).
+    Then we have
+    \begin{align*}
+        \norm*{T(x)} & = \norm*{\bigg(\sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m}}    & \text{(by Definition \ref{6.1.11})} \\
+                     & = \sum_{i = 1}^m \abs*{\sum_{j = 1}^n a_{ij} x_j}                    & \text{(by Example \ref{1.1.7})}     \\
+                     & \leq \sum_{i = 1}^m \sum_{j = 1}^n \abs*{a_{ij} x_j}                                                       \\
+                     & = \sum_{i = 1}^m \sum_{j = 1}^n \abs*{a_{ij}} \abs*{x_j}                                                   \\
+                     & = \sum_{j = 1}^n \sum_{i = 1}^m \abs*{a_{ij}} \abs*{x_j}                                                   \\
+                     & = \sum_{j = 1}^n \bigg(\sum_{i = 1}^m \abs*{a_{ij}}\bigg) \abs*{x_j}                                       \\
+                     & \leq \sum_{j = 1}^n M \abs*{x_j}                                                                           \\
+                     & = M \sum_{j = 1}^n \abs*{x_j}                                                                              \\
+                     & = M \norm*{x}.
+    \end{align*}
+    Since \(x\) is arbitrary, we have \(\norm*{T(x)} \leq M \norm*{x}\) for all \(x \in \mathbf{R}^n\).
+
+    Now we show that \(T\) is continuous on \(\mathbf{R}^n\) from \((\mathbf{R}^n, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\) to \((\mathbf{R}^m, d_{l^1}|_{\mathbf{R}^m \times \mathbf{R}^m})\).
+    From the proof above we know that there exists a \(M \in \mathbf{R}^+\) such that \(\norm*{T(x)} \leq M \norm*{x}\) for all \(x \in \mathbf{R}^n\).
+    Fix such \(M\).
+    Let \(x_0 \in \mathbf{R}^n\).
+    Since
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \forall\ x \in \mathbf{R}^n, \norm*{x - x_0} < \frac{\varepsilon}{M}                                      \\
+        \implies & M \norm*{x - x_0} < \varepsilon                                                                                                                  \\
+        \implies & \norm*{T(x - x_0)} \leq M \norm*{x - x_0} < \varepsilon                                                                                          \\
+        \implies & \norm*{T(x) - T(x_0)} \leq M \norm*{x - x_0} < \varepsilon,                                                 & \text{(by Definition \ref{6.1.6})}
+    \end{align*}
+    by setting \(\delta = \frac{\varepsilon}{M}\) we know that
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in \mathbf{R}^n, \norm*{x - x_0} < \delta \implies \norm*{T(x) - T(x_0)} < \varepsilon.
+    \]
+    Since \(x_0\) is arbitrary, by Definition \ref{2.1.1} this means \(T\) is continuous on \(\mathbf{R}^n\) from \((\mathbf{R}^n, d_{l^1}|_{\mathbf{R}^n \times \mathbf{R}^n})\) to \((\mathbf{R}^m, d_{l^1}|_{\mathbf{R}^m \times \mathbf{R}^m})\).
+\end{proof}
