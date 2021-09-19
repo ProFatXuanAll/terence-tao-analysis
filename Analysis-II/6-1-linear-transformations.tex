@@ -239,7 +239,7 @@ one can easily verify that \(L_A(x + y) = L_A(x) + L_A(y)\) and \(L_A(cx) = c L_
 \begin{proof}
     Suppose \(T : \mathbf{R}^n \to \mathbf{R}^m\) is a linear transformation.
     Let \(e_1, e_2, \dots, e_n\) be the standard basis row vectors of \(\mathbf{R}^n\).
-    Then \(T(e_1, T(e_2), \dots, T(e_n)\) are vectors in \(\mathbf{R}^m\).
+    Then \(T(e_1), T(e_2), \dots, T(e_n)\) are vectors in \(\mathbf{R}^m\).
     For each \(1 \leq j \leq n\), we write \(T(e_j)\) in co-ordinates as
     \[
         T(e_j) = (a_{1j}, a_{2j}, \dots, a_{mj}) = (a_{ij})_{1 \leq i \leq m},
@@ -315,6 +315,33 @@ one can easily verify that \(L_A(x + y) = L_A(x) + L_A(y)\) and \(L_A(cx) = c L_
     Let \(A\) be an \(m \times n\) matrix, and let \(B\) be an \(n \times p\) matrix.
     Then \(L_A L_B = L_{AB}\).
 \end{lemma}
+
+\begin{proof}
+    Note that \(L_A L_B = L_A \circ L_B\), and we will work with the notation \(L_A \circ L_B\) instead.
+    By Definition \ref{6.1.11} \(AB\) is well-defined.
+    Let \(C = AB = (c_{ik})_{1 \leq i \leq m ; 1 \leq k \leq p}\).
+    Then by Definition \ref{6.1.11} we have
+    \[
+        (c_{ik})_{1 \leq i \leq m ; 1 \leq k \leq p} = \bigg(\sum_{j = 1}^n a_{ij} b_{jk}\bigg)_{1 \leq i \leq m ; 1 \leq k \leq p}.
+    \]
+    Let \(x \in \mathbf{R}^p\).
+    Then we have
+    \begin{align*}
+         & (L_A \circ L_B)(x)                                                                                                                            \\
+         & = L_A\big(L_B(x)\big)                                                                                                                         \\
+         & = L_A\Big(L_B\big((x_k)_{1 \leq k \leq p}\big)\Big)                                         & \text{(by Definition \ref{6.1.1})}              \\
+         & = L_A\Bigg(\bigg(\sum_{k = 1}^p b_{jk} x_k\bigg)_{1 \leq j \leq n}\Bigg)                    & \text{(by Additional Corollary \ref{ac 6.1.1})} \\
+         & = \Bigg(\sum_{j = 1}^n a_{ij} \bigg(\sum_{k = 1}^p b_{jk} x_k\bigg)\Bigg)_{1 \leq i \leq m} & \text{(by Additional Corollary \ref{ac 6.1.1})} \\
+         & = \Bigg(\sum_{j = 1}^n \bigg(\sum_{k = 1}^p a_{ij} b_{jk} x_k\bigg)\Bigg)_{1 \leq i \leq m}                                                   \\
+         & = \Bigg(\sum_{k = 1}^p \bigg(\sum_{j = 1}^n a_{ij} b_{jk} x_k\bigg)\Bigg)_{1 \leq i \leq m}                                                   \\
+         & = \Bigg(\sum_{k = 1}^p \bigg(\sum_{j = 1}^n a_{ij} b_{jk}\bigg) x_k\Bigg)_{1 \leq i \leq m}                                                   \\
+         & = \bigg(\sum_{k = 1}^p c_{ik} x_k\bigg)_{1 \leq i \leq m}                                   & \text{(by Definition \ref{6.1.11})}             \\
+         & = L_C\big((x_k)_{1 \leq k \leq p}\big)                                                      & \text{(by Additional Corollary \ref{ac 6.1.1})} \\
+         & = L_C(x)                                                                                    & \text{(by Definition \ref{6.1.1})}              \\
+         & = L_{AB}(x).
+    \end{align*}
+    Since \(x\) is arbitrary, we have \(L_A \circ L_B = L_{AB}\).
+\end{proof}
 
 \exercisesection
 
