@@ -365,16 +365,62 @@
 \begin{exercise}\label{ex 5.5.3}
     If \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) and \(P\) is a trigonometric polynomial, show that
     \[
-        \hat{f * P}(n) = \hat{f}(n) c_n = \hat{f}(n) \hat{P}(n)
+        \widehat{f * P}(n) = \hat{f}(n) c_n = \hat{f}(n) \hat{P}(n)
     \]
     for all integers \(n\).
     More generally, if \(f, g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), show that
     \[
-        \hat{f * g}(n) = \hat{f}(n) \hat{g}(n)
+        \widehat{f * g}(n) = \hat{f}(n) \hat{g}(n)
     \]
     for all integers \(n\).
     (A fancy way of saying this is that the Fourier transform \emph{intertwines} convolution and multiplication.)
 \end{exercise}
+
+\begin{proof}
+    Let \(P = \sum_{n = -N}^N c_n e_n\) for some \(N \in \mathbf{Z}^+\) and some \((c_n)_{n = -N}^N\) in \(\mathbf{C}\).
+    By Additional Corollary \ref{ac 5.4.1} we know that
+    \[
+        f * P = \sum_{n = -N}^N \hat{f}(n) c_n e_n.
+    \]
+    Thus we have
+    \begin{align*}
+        \forall\ m \in \mathbf{Z}, \widehat{f * P}(m) & = \inner{f * P, e_m}                               & \text{(by Definition \ref{5.3.7})} \\
+                                                      & = \sum_{n = -N}^N \hat{f}(n) c_n \inner{e_n, e_m}  & \text{(by Lemma \ref{5.2.5}(c))}   \\
+                                                      & = \begin{cases}
+            \hat{f}(m) c_m & \text{if } n = m    \\
+            0              & \text{if } n \neq m
+        \end{cases}                       & \text{(by Lemma \ref{5.3.5})}      \\
+                                                      & = \hat{f}(m) \sum_{n = -N}^N c_n \inner*{e_n, e_m} & \text{(by Lemma \ref{5.3.5})}      \\
+                                                      & = \hat{f}(m) \inner*{\sum_{n = -N}^N c_n e_n, e_m} & \text{(by Lemma \ref{5.2.5}(c))}   \\
+                                                      & = \hat{f}(m) \hat{P}(m).                           & \text{(by Definition \ref{5.3.7})}
+    \end{align*}
+
+    Now we show that \(\widehat{f * g}(n) = \hat{f}(n) \hat{g}(n)\) for all \(n \in \mathbf{Z}\).
+    In particular, we want to show that
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \abs*{\widehat{f * g}(n) - \hat{f}(n) \hat{g}(n)} \leq \varepsilon.
+    \]
+    Let \(\varepsilon \in \mathbf{R}^+\).
+    Since \(g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), by Theorem \ref{5.4.1} we know that there exists a trigonometric polynomial \(P\) such that
+    \[
+        \norm*{g - P}_{\infty} \leq \varepsilon.
+    \]
+    Fix such \(P\).
+    Since \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), by Theorem \ref{5.5.4} we know that \(\sum_{n = -\infty}^\infty \abs*{\hat{f}(n)}^2 \in \mathbf{R}\), thus
+    \[
+        \exists\ M \in \mathbf{R}^+ : \forall\ n \in \mathbf{Z}, \abs*{\hat{f}(n)} \leq M.
+    \]
+    Fix such \(M\).
+    Then for all \(n \in \mathbf{Z}\), we have
+    \begin{align*}
+        \abs*{\widehat{f * g}(n) - \widehat{f * P}(n)} & = \abs*{\inner*{f * g, e_n} - \inner*{f * P, e_n}} & \text{(by Definition \ref{5.3.7})} \\
+                                                       & = \abs*{\inner*{f * g - f * P, e_n}}               & \text{(by Lemma \ref{5.2.5}(c))}   \\
+                                                       & = \abs*{\inner*{f * (g - P), e_n}}                 & \text{(by Lemma \ref{5.4.4}(c))}   \\
+                                                       & \leq \norm*{f * (g - P)}_2 \norm*{e_n}_2           & \text{(by Lemma \ref{5.2.7}(b))}   \\
+                                                       & = \norm*{f * (g - P)}_2.                           & \text{(by Lemma \ref{5.3.5})}
+    \end{align*}
+    Need some helps.
+\end{proof}
 
 \begin{exercise}\label{ex 5.5.4}
     Let \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) be a function which is differentiable, and whose derivative \(f'\) is also continuous.

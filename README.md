@@ -223,7 +223,10 @@ a_n^2                      % do not enclose with {}
 - Analysis I
   - 8.1.10
 - Analysis II
-  - Chapter 5
+  - 5.5.3
+  - 5.5.4
+  - 5.5.5
+  - 5.5.6
   - Chapter 6
   - Chapter 7
   - Chapter 8
