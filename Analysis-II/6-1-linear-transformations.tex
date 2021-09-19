@@ -25,6 +25,84 @@
     Then we have the commutativity property \(x + y = y + x\), the additive associativity property \((x + y) + z = x + (y + z)\), the additive identity property \(x + 0 = 0 + x = x\), the additive inverse property \(x + (-x) = (-x) + x = 0\), the multiplicative associativity property \((cd)x = c(dx)\), the distributivity properties \(c(x + y) = cx + cy\) and \((c + d)x = cx + dx\), and the multiplicative identity property \(1x = x\).
 \end{lemma}
 
+\begin{proof}
+    First we show the commutative property.
+    \begin{align*}
+        x + y & = (x_i)_{1 \leq i \leq n} + (y_i)_{1 \leq i \leq n} & \text{(by Definition \ref{6.1.1})} \\
+              & = (x_i + y_i)_{1 \leq i \leq n}                     & \text{(by Definition \ref{6.1.1})} \\
+              & = (y_i + x_i)_{1 \leq i \leq n}                     & (x_i, y_i \in \mathbf{R})          \\
+              & = (y_i)_{1 \leq i \leq n} + (x_i)_{1 \leq i \leq n} & \text{(by Definition \ref{6.1.1})} \\
+              & = y + x.                                            & \text{(by Definition \ref{6.1.1})}
+    \end{align*}
+
+    Next we show the additive associativity property.
+    \begin{align*}
+        (x + y) + z & = \big((x_i)_{1 \leq i \leq n} + (y_i)_{1 \leq i \leq n}\big) + (z_i)_{1 \leq i \leq n} & \text{(by Definition \ref{6.1.1})} \\
+                    & = (x_i + y_i)_{1 \leq i \leq n} + (z_i)_{1 \leq i \leq n}                               & \text{(by Definition \ref{6.1.1})} \\
+                    & = \big((x_i + y_i) + z_i\big)_{1 \leq i \leq n}                                         & \text{(by Definition \ref{6.1.1})} \\
+                    & = \big(x_i + (y_i + z_i)\big)_{1 \leq i \leq n}                                         & (x_i, y_i, z_i \in \mathbf{R})     \\
+                    & = (x_i)_{1 \leq i \leq n} + (y_i + z_i)_{1 \leq i \leq n}                               & \text{(by Definition \ref{6.1.1})} \\
+                    & = (x_i)_{1 \leq i \leq n} + \big((y_i)_{1 \leq i \leq n} + (z_i)_{1 \leq i \leq n}\big) & \text{(by Definition \ref{6.1.1})} \\
+                    & = x + (y + z).                                                                          & \text{(by Definition \ref{6.1.1})}
+    \end{align*}
+
+    Next we show that \(0_{\mathbf{R}^n}\) is the additive identity.
+    \begin{align*}
+        x + 0_{\mathbf{R}^n} & = 0_{\mathbf{R}^n} + x                            & \text{(from the proof above)}      \\
+                             & = (0)_{1 \leq i \leq n} + (x_i)_{1 \leq i \leq n} & \text{(by Definition \ref{6.1.1})} \\
+                             & = (0 + x_i)_{1 \leq i \leq n}                     & \text{(by Definition \ref{6.1.1})} \\
+                             & = (x_i)_{1 \leq i \leq n}                         & (x_i \in \mathbf{R})               \\
+                             & = x.                                              & \text{(by Definition \ref{6.1.1})}
+    \end{align*}
+
+    Next we show that every \(-x\) is the additive inverse of \(x\).
+    \begin{align*}
+        x + (-x) & = (-x) + x                                                      & \text{(from the proof above)}      \\
+                 & = (-1)(x) + x                                                   & \text{(by Definition \ref{6.1.1})} \\
+                 & = (-1)(x_i)_{1 \leq i \leq n} + (x_i)_{1 \leq i \leq n}         & \text{(by Definition \ref{6.1.1})} \\
+                 & = \big((-1)x_i\big)_{1 \leq i \leq n} + (x_i)_{1 \leq i \leq n} & \text{(by Definition \ref{6.1.1})} \\
+                 & = \big((-1)x_i + x_i\big)_{1 \leq i \leq n}                     & \text{(by Definition \ref{6.1.1})} \\
+                 & = (0)_{1 \leq i \leq n}                                         & (x_i \in \mathbf{R})               \\
+                 & = 0_{\mathbf{R}^n}.                                             & \text{(by Definition \ref{6.1.1})}
+    \end{align*}
+
+    Next we show that multiplicative associativity property.
+    \begin{align*}
+        (cd)x & = (cd)(x_i)_{1 \leq i \leq n}          & \text{(by Definition \ref{6.1.1})} \\
+              & = \big((cd) x_i\big)_{1 \leq i \leq n} & \text{(by Definition \ref{6.1.1})} \\
+              & = \big(c(d x_i)\big)_{1 \leq i \leq n} & (c, d, x_i \in \mathbf{R})         \\
+              & = c(d x_i)_{1 \leq i \leq n}           & \text{(by Definition \ref{6.1.1})} \\
+              & = c(dx).                               & \text{(by Definition \ref{6.1.1})}
+    \end{align*}
+
+    Next we show that distributivity property.
+    \begin{align*}
+        c(x + y) & = c\big((x_i)_{1 \leq i \leq n} + (y_i)_{1 \leq i \leq n}\big) & \text{(by Definition \ref{6.1.1})} \\
+                 & = c(x_i + y_i)_{1 \leq i \leq n}                               & \text{(by Definition \ref{6.1.1})} \\
+                 & = \big(c(x_i + y_i)\big)_{1 \leq i \leq n}                     & \text{(by Definition \ref{6.1.1})} \\
+                 & = (c x_i + c y_i)_{1 \leq i \leq n}                            & (c, x_i, y_i \in \mathbf{R})       \\
+                 & = (c x_i)_{1 \leq i \leq n} + (c y_i)_{1 \leq i \leq n}        & \text{(by Definition \ref{6.1.1})} \\
+                 & = c(x_i)_{1 \leq i \leq n} + c(y_i)_{1 \leq i \leq n}          & \text{(by Definition \ref{6.1.1})} \\
+                 & = cx + cy.                                                     & \text{(by Definition \ref{6.1.1})}
+    \end{align*}
+    \begin{align*}
+        (c + d)x & = (c + d)(x_i)_{1 \leq i \leq n}                        & \text{(by Definition \ref{6.1.1})} \\
+                 & = \big((c + d) x_i\big)_{1 \leq i \leq n}               & \text{(by Definition \ref{6.1.1})} \\
+                 & = (c x_i + d x_i)_{1 \leq i \leq n}                     & (c, d, x_i \in \mathbf{R})         \\
+                 & = (c x_i)_{1 \leq i \leq n} + (d x_i)_{1 \leq i \leq n} & \text{(by Definition \ref{6.1.1})} \\
+                 & = c(x_i)_{1 \leq i \leq n} + d(x_i)_{1 \leq i \leq n}   & \text{(by Definition \ref{6.1.1})} \\
+                 & = cx + dx.                                              & \text{(by Definition \ref{6.1.1})}
+    \end{align*}
+
+    Finally we show that \(1\) is the multiplicative identity.
+    \begin{align*}
+        1 x & = 1 (x_i)_{1 \leq i \leq n} & \text{(by Definition \ref{6.1.1})} \\
+            & = (1 x_i)_{1 \leq i \leq n} & \text{(by Definition \ref{6.1.1})} \\
+            & = (x_i)_{1 \leq i \leq n}   & (x_i \in \mathbf{R})               \\
+            & = x.                        & \text{(by Definition \ref{6.1.1})}
+    \end{align*}
+\end{proof}
+
 \begin{definition}[Transpose]\label{6.1.3}
     If \((x_i)_{1 \leq i \leq n} = (x_1, x_2, \dots, x_n)\) is an \(n\)-dimensional row vector, we can define its \emph{transpose} \((x_i)_{1 \leq i \leq n}^\top\) by
     \[
