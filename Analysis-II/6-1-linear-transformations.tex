@@ -132,7 +132,7 @@
     \[
         x = x_1 e_1 + x_2 e_2 + \dots + x_n e_n = \sum_{j = 1}^n x_j e_j,
     \]
-    or in other words every vector in \(\mathbf{R}^n\) is a linear combination of the standard basis vectors \(e_1, \dots, e_n\).
+    or in other words every vector in \(\mathbf{R}^n\) is a \emph{linear combination} of the standard basis vectors \(e_1, \dots, e_n\).
     (The notation \(\sum_{j = 1}^n x_j e_j\) is unambiguous because the operation of vector addition is both commutative and associative).
     Of course, just as every row vector is a linear combination of standard basis row vectors, every column vector is a linear combination of standard basis column vectors:
     \[
@@ -183,28 +183,52 @@
     \]
 \end{definition}
 
-\begin{note}
-    We now relate matrices to linear transformations.
-    If \(A\) is an \(m \times n\) matrix, we can define the transformation \(L_A : \mathbf{R}^n \to \mathbf{R}^m\) by the formula
-    \[
-        \big(L_A(x)\big)^\top = Ax^\top.
-    \]
-    More generally, if
-    \[
-        A = \begin{pmatrix}
-            a_{11} & a_{12} & \dots  & a_{1n} \\
-            a_{21} & a_{22} & \dots  & a_{2n} \\
-            \vdots & \vdots & \ddots & \vdots \\
-            a_{m1} & a_{m2} & \dots  & a_{mn}
-        \end{pmatrix}
-    \]
-    then we have
-    \[
-        L_A(x_j)_{1 \leq j \leq n} = \bigg(\sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m}.
-    \]
-    For any \(m \times n\) matrix \(A\), the transformation \(L_A\) is automatically linear;
-    one can easily verify that \(L_A(x + y) = L_A(x) + L_A(y)\) and \(L_A(cx) = c L_A(x)\) for any \(n\)-dimensional row vectors \(x, y\) and any scalar \(c\).
-\end{note}
+\begin{additional corollary}\label{ac 6.1.1}
+We now relate matrices to linear transformations.
+If \(A\) is an \(m \times n\) matrix, we can define the transformation \(L_A : \mathbf{R}^n \to \mathbf{R}^m\) by the formula
+\[
+    \big(L_A(x)\big)^\top = Ax^\top.
+\]
+More generally, if
+\[
+    A = \begin{pmatrix}
+        a_{11} & a_{12} & \dots  & a_{1n} \\
+        a_{21} & a_{22} & \dots  & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \dots  & a_{mn}
+    \end{pmatrix}
+\]
+then we have
+\[
+    L_A\big((x_j)_{1 \leq j \leq n}\big) = \bigg(\sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m}.
+\]
+For any \(m \times n\) matrix \(A\), the transformation \(L_A\) is automatically linear;
+one can easily verify that \(L_A(x + y) = L_A(x) + L_A(y)\) and \(L_A(cx) = c L_A(x)\) for any \(n\)-dimensional row vectors \(x, y\) and any scalar \(c\).
+\end{additional corollary}
+
+\begin{proof}
+    We have
+    \begin{align*}
+        L_A(x + y) & = L_A\big((x_j)_{1 \leq j \leq n} + (y_j)_{1 \leq j \leq n}\big)                                                     & \text{(by Definition \ref{6.1.1})} \\
+                   & = L_A\big((x_j + y_j)_{1 \leq j \leq n}\big)                                                                         & \text{(by Definition \ref{6.1.1})} \\
+                   & = \bigg(\sum_{j = 1}^n a_{ij} (x_j + y_j)\bigg)_{1 \leq i \leq m}                                                                                         \\
+                   & = \bigg(\sum_{j = 1}^n a_{ij} x_j + \sum_{j = 1}^n a_{ij} y_j\bigg)_{1 \leq i \leq m}                                                                     \\
+                   & = \bigg(\sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m} + \bigg(\sum_{j = 1}^n a_{ij} y_j)\bigg)_{1 \leq i \leq m} & \text{(by Definition \ref{6.1.1})} \\
+                   & = L_A\big((x_j)_{1 \leq j \leq n}\big) + L_A\big((y_j)_{1 \leq j \leq n}\big)                                                                             \\
+                   & = L_A(x) + L_A(y)                                                                                                    & \text{(by Definition \ref{6.1.1})}
+    \end{align*}
+    and
+    \begin{align*}
+        L_A(cx) & = L_A\big(c(x_j)_{1 \leq j \leq n}\big)                       & \text{(by Definition \ref{6.1.1})} \\
+                & = L_A\big((cx_j)_{1 \leq j \leq n}\big)                       & \text{(by Definition \ref{6.1.1})} \\
+                & = \bigg(\sum_{j = 1}^n a_{ij} (c x_j)\bigg)_{1 \leq i \leq m}                                      \\
+                & = \bigg(c \sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m}                                        \\
+                & = c \bigg(\sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m}   & \text{(by Definition \ref{6.1.1})} \\
+                & = c L_A\big((x_j)_{1 \leq j \leq n}\big)                                                           \\
+                & = c L_A(x).                                                   & \text{(by Definition \ref{6.1.1})}
+    \end{align*}
+    Thus by Definition \ref{6.1.6} \(L_A\) is a linear transformation from \(\mathbf{R}^n\) to \(\mathbf{R}^m\).
+\end{proof}
 
 \setcounter{theorem}{12}
 \begin{lemma}\label{6.1.13}
