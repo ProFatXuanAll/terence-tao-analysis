@@ -84,15 +84,26 @@
     \begin{align*}
         \forall\ t \in \mathbf{R}, \norm*{x_0 + tv - x_0} & = \sqrt{\sum_{i = 1}^n \big((x_0 + tv - x_0)_i\big)^2} & \text{(by Example \ref{1.1.6})}    \\
                                                           & = \sqrt{\sum_{i = 1}^n (t v_i)^2}                      & \text{(by Definition \ref{6.1.1})} \\
-                                                          & = t \sqrt{\sum_{i = 1}^n (v_i)^2}.
+                                                          & = \abs*{t} \sqrt{\sum_{i = 1}^n (v_i)^2}.
     \end{align*}
-    Thus we have
+    Since \(\lim_{t \to 0 ; t \neq 0} \abs*{t} = 0\), we have
     \[
-        \lim_{t \to 0} \norm*{x_0 + tv - x_0} = 0
+        \lim_{t \to 0 ; t \neq 0} \norm*{x_0 + tv - x_0} = 0
     \]
     which means
     \[
-        \forall\ \varepsilon_t \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \abs*{t} < \delta \implies \norm*{x_0 + tv - x_0} < \varepsilon_t.
+        \forall\ \varepsilon_t \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ t \in \mathbf{R} \setminus \{0\}, \abs*{t} < \delta \implies \norm*{x_0 + tv - x_0} < \varepsilon_t.
+    \]
+    Since \(x_0\) is an interior point, by Definition \ref{1.2.5} we know that
+    \[
+        \exists\ t \in \mathbf{R} \setminus \{0\} : x_0 + tv \in E.
+    \]
+    Thus we have
+    \[
+        \forall\ \varepsilon_t \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ t \in \mathbf{R} \setminus \{0\}, \abs*{t} < \delta \implies \begin{cases}
+            \norm*{x_0 + tv - x_0} < \varepsilon_t; \\
+            x_0 + tv \in E.
+        \end{cases}
     \]
     Since \(f\) is differentiable at \(x_0\) with derivative \(L_1\), by Definition \ref{6.2.2} we know that
     \begin{align*}
@@ -107,12 +118,15 @@
     Let \(\varepsilon_t = \min(\delta_1, \delta_2)\).
     Then we have
     \begin{align*}
-                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \abs*{t} < \delta \\
-        \implies & \norm*{x_0 + tv - x_0} < \varepsilon_t                                                      \\
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ t \in \mathbf{R} \setminus \{x_0\}, \abs*{t} < \delta \\
+        \implies & \begin{cases}
+            \norm*{x_0 + tv - x_0} < \varepsilon_t \\
+            x_0 + tv \in E
+        \end{cases}                                                                                                               \\
         \implies & \begin{cases}
             \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_1(x_0 + tv - x_0)\big)}}{\norm*{x_0 + tv - x_0}} < \varepsilon \\
             \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_2(x_0 + tv - x_0)\big)}}{\norm*{x_0 + tv - x_0}} < \varepsilon
-        \end{cases}                                                                  \\
+        \end{cases}                                                                                                               \\
         \implies & \begin{cases}
             \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)}}{\norm*{tv}} < \varepsilon \\
             \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_2(tv)\big)}}{\norm*{tv}} < \varepsilon
@@ -120,14 +134,15 @@
     \end{align*}
     and thus
     \begin{align*}
-         & \lim_{t \to 0} \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)}}{\norm*{tv}} = 0; \\
-         & \lim_{t \to 0} \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_2(tv)\big)}}{\norm*{tv}} = 0.
+         & \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)}}{\norm*{tv}} = 0; \\
+         & \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_2(tv)\big)}}{\norm*{tv}} = 0.
     \end{align*}
     By limit laws we have
-    \[
-        \lim_{t \to 0} \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)} + \norm*{f(x_0 + tv) - \big(f(x_0) + L_2(tv)\big)}}{\norm*{tv}} = 0.
-    \]
-    By Example \ref{1.1.6} we know that
+    \begin{align*}
+         & \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)} + \norm*{f(x_0 + tv) - \big(f(x_0) + L_2(tv)\big)}}{\norm*{tv}} \\
+         & = 0.
+    \end{align*}
+    By Example \ref{1.1.6} and Definition \ref{1.1.2} we know that
     \begin{align*}
          & \norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)} + \norm*{f(x_0 + tv) - \big(f(x_0) + L_2(tv)\big)}   \\
          & = \norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)} + \norm*{\big(f(x_0) + L_2(tv)\big) - f(x_0 + tv)} \\
@@ -137,15 +152,16 @@
     \end{align*}
     Thus by squeeze test we have
     \[
-        \lim_{t \to 0} \frac{\norm*{L_2(tv) - L_1(tv)}}{\norm*{tv}} = 0
+        \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{L_2(tv) - L_1(tv)}}{\norm*{tv}} = 0
     \]
     which implies
     \begin{align*}
-        \lim_{t \to 0} \frac{\norm*{L_2(tv) - L_1(tv)}}{\norm*{tv}} & = \lim_{t \to 0} \frac{\norm*{t L_2(v) - t L_1(v)}}{\norm*{tv}} & \text{(by Definition \ref{6.1.6})} \\
-                                                                    & = \lim_{t \to 0} \frac{t \norm*{L_2(v) - L_1(v)}}{t \norm*{v}}                                       \\
-                                                                    & = \lim_{t \to 0} \frac{\norm*{L_2(v) - L_1(v)}}{\norm*{v}}                                           \\
-                                                                    & = \frac{\norm*{L_2(v) - L_1(v)}}{\norm*{v}}                                                          \\
-                                                                    & = 0.
+         & \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{L_2(tv) - L_1(tv)}}{\norm*{tv}}                                                                   \\
+         & = \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{t L_2(v) - t L_1(v)}}{\norm*{tv}}                          & \text{(by Definition \ref{6.1.6})} \\
+         & = \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\abs*{t} \cdot \norm*{L_2(v) - L_1(v)}}{\abs*{t} \cdot \norm*{v}}                                      \\
+         & = \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{L_2(v) - L_1(v)}}{\norm*{v}}                                                                    \\
+         & = \frac{\norm*{L_2(v) - L_1(v)}}{\norm*{v}}                                                                                                              \\
+         & = 0.
     \end{align*}
     But \(v \neq 0\) implies \(\norm*{v} \neq 0\) (by Definition \ref{1.1.2}(b)), so we must have \(L_2(v) = L_1(v)\), a contradiction.
     Thus \(L_1 = L_2\).
