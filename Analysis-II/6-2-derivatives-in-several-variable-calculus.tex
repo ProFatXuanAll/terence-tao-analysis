@@ -54,7 +54,7 @@
 \end{note}
 
 \begin{definition}[Differentiability]\label{6.2.2}
-    Let \(E\) be a subset of \(\mathbf{R}^n\), \(f : E \to \mathbf{R}^m\) be a function, \(x_0 \in E\) be a point, and let \(L : \mathbf{R}^n \to \mathbf{R}^m\) be a linear transformation.
+    Let \(E\) be a subset of \(\mathbf{R}^n\), \(f : E \to \mathbf{R}^m\) be a function, \(x_0 \in E\) be a limit point, and let \(L : \mathbf{R}^n \to \mathbf{R}^m\) be a linear transformation.
     We say that \(f\) is \emph{differentiable at \(x_0\) with derivative \(L\)} if we have
     \[
         \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\norm*{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\norm*{x - x_0}} = 0.
@@ -71,6 +71,85 @@
     Suppose that \(f\) is differentiable at \(x_0\) with derivative \(L_1\), and also differentiable at \(x_0\) with derivative \(L_2\).
     Then \(L_1 = L_2\).
 \end{lemma}
+
+\begin{proof}
+    Suppose for sake of contradiction that \(L_1 \neq L_2\).
+    Then there exists a \(v \in \mathbf{R}^n\) such that \(L_1(v) \neq L_2(v)\).
+    Fix such \(v\).
+    We know that \(v \neq 0_{\mathbf{R}^n}\) since if \(v = 0_{\mathbf{R}^n}\), then we would have
+    \[
+        L_1(0_{\mathbf{R}^n}) = L_1(0 \cdot 0_{\mathbf{R}^n}) = 0 L_1(0_{\mathbf{R}^n}) = 0_{\mathbf{R}^m} = 0 L_2(0_{\mathbf{R}^n}) = L_2(0 \cdot 0_{\mathbf{R}^n}) = L_2(0_{\mathbf{R}^n}).
+    \]
+    Observe that
+    \begin{align*}
+        \forall\ t \in \mathbf{R}, \norm*{x_0 + tv - x_0} & = \sqrt{\sum_{i = 1}^n \big((x_0 + tv - x_0)_i\big)^2} & \text{(by Example \ref{1.1.6})}    \\
+                                                          & = \sqrt{\sum_{i = 1}^n (t v_i)^2}                      & \text{(by Definition \ref{6.1.1})} \\
+                                                          & = t \sqrt{\sum_{i = 1}^n (v_i)^2}.
+    \end{align*}
+    Thus we have
+    \[
+        \lim_{t \to 0} \norm*{x_0 + tv - x_0} = 0
+    \]
+    which means
+    \[
+        \forall\ \varepsilon_t \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \abs*{t} < \delta \implies \norm*{x_0 + tv - x_0} < \varepsilon_t.
+    \]
+    Since \(f\) is differentiable at \(x_0\) with derivative \(L_1\), by Definition \ref{6.2.2} we know that
+    \begin{align*}
+         & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta_1 \in \mathbf{R}^+ : \forall\ x \in E \setminus \{x_0\},           \\
+         & \norm*{x - x_0} < \delta_1 \implies \frac{\norm*{f(x) - \big(f(x_0) + L_1(x - x_0)\big)}}{\norm*{x - x_0}} < \varepsilon.
+    \end{align*}
+    Similarly, we have
+    \begin{align*}
+         & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta_2 \in \mathbf{R}^+ : \forall\ x \in E \setminus \{x_0\},           \\
+         & \norm*{x - x_0} < \delta_2 \implies \frac{\norm*{f(x) - \big(f(x_0) + L_2(x - x_0)\big)}}{\norm*{x - x_0}} < \varepsilon.
+    \end{align*}
+    Let \(\varepsilon_t = \min(\delta_1, \delta_2)\).
+    Then we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \abs*{t} < \delta \\
+        \implies & \norm*{x_0 + tv - x_0} < \varepsilon_t                                                      \\
+        \implies & \begin{cases}
+            \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_1(x_0 + tv - x_0)\big)}}{\norm*{x_0 + tv - x_0}} < \varepsilon \\
+            \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_2(x_0 + tv - x_0)\big)}}{\norm*{x_0 + tv - x_0}} < \varepsilon
+        \end{cases}                                                                  \\
+        \implies & \begin{cases}
+            \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)}}{\norm*{tv}} < \varepsilon \\
+            \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_2(tv)\big)}}{\norm*{tv}} < \varepsilon
+        \end{cases}
+    \end{align*}
+    and thus
+    \begin{align*}
+         & \lim_{t \to 0} \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)}}{\norm*{tv}} = 0; \\
+         & \lim_{t \to 0} \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_2(tv)\big)}}{\norm*{tv}} = 0.
+    \end{align*}
+    By limit laws we have
+    \[
+        \lim_{t \to 0} \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)} + \norm*{f(x_0 + tv) - \big(f(x_0) + L_2(tv)\big)}}{\norm*{tv}} = 0.
+    \]
+    By Example \ref{1.1.6} we know that
+    \begin{align*}
+         & \norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)} + \norm*{f(x_0 + tv) - \big(f(x_0) + L_2(tv)\big)}   \\
+         & = \norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)} + \norm*{\big(f(x_0) + L_2(tv)\big) - f(x_0 + tv)} \\
+         & \geq \norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big) + \big(f(x_0) + L_2(tv)\big) - f(x_0 + tv)}      \\
+         & = \norm*{L_2(tv) - L_1(tv)}                                                                           \\
+         & \geq 0.
+    \end{align*}
+    Thus by squeeze test we have
+    \[
+        \lim_{t \to 0} \frac{\norm*{L_2(tv) - L_1(tv)}}{\norm*{tv}} = 0
+    \]
+    which implies
+    \begin{align*}
+        \lim_{t \to 0} \frac{\norm*{L_2(tv) - L_1(tv)}}{\norm*{tv}} & = \lim_{t \to 0} \frac{\norm*{t L_2(v) - t L_1(v)}}{\norm*{tv}} & \text{(by Definition \ref{6.1.6})} \\
+                                                                    & = \lim_{t \to 0} \frac{t \norm*{L_2(v) - L_1(v)}}{t \norm*{v}}                                       \\
+                                                                    & = \lim_{t \to 0} \frac{\norm*{L_2(v) - L_1(v)}}{\norm*{v}}                                           \\
+                                                                    & = \frac{\norm*{L_2(v) - L_1(v)}}{\norm*{v}}                                                          \\
+                                                                    & = 0.
+    \end{align*}
+    But \(v \neq 0\) implies \(\norm*{v} \neq 0\) (by Definition \ref{1.1.2}(b)), so we must have \(L_2(v) = L_1(v)\), a contradiction.
+    Thus \(L_1 = L_2\).
+\end{proof}
 
 \begin{note}
     Because of Lemma \ref{6.2.4}, we can now talk about \emph{the} derivative of \(f\) at interior points \(x_0\), and we will denote this derivative by \(f'(x_0)\).
