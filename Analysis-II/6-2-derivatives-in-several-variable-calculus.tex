@@ -1,1 +1,104 @@
 \section{Derivatives in several variable calculus}\label{sec 6.2}
+
+\begin{note}
+    In single variable calculus, when one wants to differentiate a function \(f : E \to \mathbf{R}\) at a point \(x_0\), where \(E\) is a subset of \(\mathbf{R}\) and \(x_0\) is a limit point of \(E\), this is given by
+    \[
+        f'(x_0) \coloneqq \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}.
+    \]
+    One could try to mimic this definition in the several variable case \(f : E \to \mathbf{R}^m\), where \(E\) is now a subset of \(\mathbf{R}^n\), however we encounter a difficulty in this case:
+    the quantity \(f(x) - f(x_0)\) will live in \(\mathbf{R}^m\), and \(x - x_0\) lives in \(\mathbf{R}^n\), and we do not know how to divide an \(m\)-dimensional vector by an \(n\)-dimensional vector.
+
+    To get around this problem, we first rewrite the concept of derivative (in one dimension) in a way which does not involve division of vectors.
+    Instead, we view differentiability at a point \(x_0\) as an assertion that a function \(f\) is ``approximately linear'' near \(x_0\).
+\end{note}
+
+\begin{lemma}\label{6.2.1}
+    Let \(E\) be a subset of \(\mathbf{R}\), \(f : E \to \mathbf{R}\) be a function, \(L \in \mathbf{R}\), and let \(x_0\) be a limit point of \(E\).
+    Then the following two statements are equivalent.
+    \begin{enumerate}
+        \item \(f\) is differentiable at \(x_0\), and \(f'(x_0) = L\).
+        \item We have
+              \[
+                  \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{f(x) - \big(f(x_0) + L (x - x_0)\big)}{\abs*{x - x_0}} = 0.
+              \]
+    \end{enumerate}
+\end{lemma}
+
+\begin{note}
+    In light of Lemma \ref{6.2.1}, we see that the derivative \(f'(x_0)\) can be interpreted as the number \(L\) for which \(\abs*{f(x) - \big(f(x_0) + L(x - x_0)\big)}\) is small, in the sense that it tends to zero as \(x\) tends to \(x_0\), even if we divide out by the very small number \(\abs*{x - x_0}\).
+    More informally, the derivative is the quantity \(L\) such that we have the approximation \(f(x) - f(x_0) \approx L(x - x_0)\).
+
+    This does not seem too different from the usual notion of differentiation, but the point is that we are no longer explicitly dividing by \(x - x_0\).
+    (We are still dividing by \(\abs*{x - x_0}\), but this will turn out to be OK.)
+    When we move to the several variable case \(f : E \to \mathbf{R}^m\), where \(E \subseteq \mathbf{R}^n\), we shall still want the derivative to be some quantity \(L\) such that \(f(x) - f(x_0) \approx L(x - x_0)\).
+    However, since \(f(x) - f(x_0)\) is now an \(m\)-dimensional vector and \(x - x_0\) is an \(n\)-dimensional vector, we no longer want \(L\) to be a scalar;
+    we want it to be a linear transformation.
+\end{note}
+
+\begin{definition}[Differentiability]\label{6.2.2}
+    Let \(E\) be a subset of \(\mathbf{R}^n\), \(f : E \to \mathbf{R}^m\) be a function, \(x_0 \in E\) be a point, and let \(L : \mathbf{R}^n \to \mathbf{R}^m\) be a linear transformation.
+    We say that \(f\) is \emph{differentiable at \(x_0\) with derivative \(L\)} if we have
+    \[
+        \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\norm*{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\norm*{x - x_0}} = 0.
+    \]
+    Here \(\norm*{x}\) is the length of \(x\) (as measured in the \(l^2\) metric)
+    \[
+        \norm*{(x_1, x_2, \dots, x_n)} = (x_1^2 + x_2^2 + \dots + x_n^2)^{1 / 2}.
+    \]
+\end{definition}
+
+\setcounter{theorem}{3}
+\begin{lemma}[Uniqueness of derivatives]\label{6.2.4}
+    Let \(E\) be a subset of \(\mathbf{R}^n\), \(f : E \to \mathbf{R}^m\) be a function, \(x_0 \in E\) be an \emph{interior point} of \(E\), and let \(L_1 : \mathbf{R}^n \to \mathbf{R}^m\) and \(L_2 : \mathbf{R}^n \to \mathbf{R}^m\) be linear transformations.
+    Suppose that \(f\) is differentiable at \(x_0\) with derivative \(L_1\), and also differentiable at \(x_0\) with derivative \(L_2\).
+    Then \(L_1 = L_2\).
+\end{lemma}
+
+\begin{note}
+    Because of Lemma \ref{6.2.4}, we can now talk about \emph{the} derivative of \(f\) at interior points \(x_0\), and we will denote this derivative by \(f'(x_0)\).
+    Thus \(f'(x_0)\) is the unique linear transformation from \(\mathbf{R}^n\) to \(\mathbf{R}^m\) such that
+    \[
+        \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\norm*{f(x) - \big(f(x_0) + f'(x_0)(x - x_0)\big)}}{\norm*{x - x_0}} = 0.
+    \]
+    Informally, this means that the derivative \(f'(x_0))\) is the linear transformation such that we have
+    \[
+        f(x) - f(x_0) \approx f'(x_0)(x - x_0)
+    \]
+    or equivalently
+    \[
+        f(x) \approx f(x_0) + f'(x_0)(x - x_0)
+    \]
+    (this is known as Newton's approximation;
+    compare with Proposition 10.1.7 in Analysis I).
+\end{note}
+
+\begin{note}
+    Another consequence of Lemma \ref{6.2.4} is that if you know that \(f(x) = g(x)\) for all \(x \in E\), and \(f, g\) are differentiable at \(x_0\), then you also know that \(f'(x_0) = g'(x_0)\) at every \emph{interior} point of \(E\).
+    However, this is not necessarily true if \(x_0\) is a boundary point of \(E\);
+    for instance, if \(E\) is just a single point \(E = \{x_0\}\), merely knowing that \(f(x_0) = g(x_0)\) does not imply that \(f'(x_0) = g'(x_0)\).
+    We will not deal with these boundary issues here, and only compute derivatives on the interior of the domain.
+\end{note}
+
+\begin{note}
+    We will sometimes refer to \(f'\) as the \emph{total derivative} of \(f\), to distinguish this concept from that of partial and directional derivatives below.
+    The total derivative \(f\) is also closely related to the \emph{derivative matrix} \(Df\),
+    which we shall define in the next section.
+\end{note}
+
+\exercisesection
+
+\begin{exercise}\label{ex 6.2.1}
+    Prove Lemma \ref{6.2.1}.
+\end{exercise}
+
+\begin{proof}
+    See Lemma \ref{6.2.1}.
+\end{proof}
+
+\begin{exercise}\label{ex 6.2.2}
+    Prove Lemma \ref{6.2.4}.
+\end{exercise}
+
+\begin{proof}
+    See Lemma \ref{6.2.4}.
+\end{proof}
