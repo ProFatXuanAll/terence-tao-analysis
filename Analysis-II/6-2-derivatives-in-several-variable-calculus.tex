@@ -19,10 +19,28 @@
         \item \(f\) is differentiable at \(x_0\), and \(f'(x_0) = L\).
         \item We have
               \[
-                  \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{f(x) - \big(f(x_0) + L (x - x_0)\big)}{\abs*{x - x_0}} = 0.
+                  \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\abs*{f(x) - \big(f(x_0) + L (x - x_0)\big)}}{\abs*{x - x_0}} = 0.
               \]
     \end{enumerate}
 \end{lemma}
+
+\begin{proof}
+    We have
+    \begin{align*}
+             & \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = L                                                           \\
+        \iff & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in E \setminus \{x_0\},                            \\
+             & \bigg(\abs*{x - x_0} < \delta \implies \abs*{\frac{f(x) - f(x_0)}{x - x_0} - L} < \varepsilon\bigg)                                      \\
+        \iff & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in E \setminus \{x_0\},                            \\
+             & \bigg(\abs*{x - x_0} < \delta \implies \abs*{\frac{f(x) - f(x_0) - L(x - x_0)}{x - x_0}} < \varepsilon\bigg)                             \\
+        \iff & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in E \setminus \{x_0\},                            \\
+             & \bigg(\abs*{x - x_0} < \delta \implies \abs*{\frac{f(x) - \big(f(x_0) + L(x - x_0)\big)}{x - x_0}} < \varepsilon\bigg)                   \\
+        \iff & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in E \setminus \{x_0\},                            \\
+             & \bigg(\abs*{x - x_0} < \delta \implies \abs*{\frac{\abs*{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\abs*{x - x_0}}} < \varepsilon\bigg)     \\
+        \iff & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in E \setminus \{x_0\},                            \\
+             & \bigg(\abs*{x - x_0} < \delta \implies \abs*{\frac{\abs*{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\abs*{x - x_0}} - 0} < \varepsilon\bigg) \\
+        \iff & \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\abs*{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\abs*{x - x_0}} = 0.
+    \end{align*}
+\end{proof}
 
 \begin{note}
     In light of Lemma \ref{6.2.1}, we see that the derivative \(f'(x_0)\) can be interpreted as the number \(L\) for which \(\abs*{f(x) - \big(f(x_0) + L(x - x_0)\big)}\) is small, in the sense that it tends to zero as \(x\) tends to \(x_0\), even if we divide out by the very small number \(\abs*{x - x_0}\).
