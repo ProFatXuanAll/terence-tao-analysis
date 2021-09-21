@@ -293,6 +293,30 @@ In particular, if \(f\) is scalar-valued (i.e., \(m = 1\)), then \(Df\) is the s
     furthermore, one has \(\frac{\partial f}{\partial x_j}(x_0) = D_{e_j} f(x_0)\) in this case.
 \end{exercise}
 
+\begin{proof}
+    We have
+    \begin{align*}
+         & \frac{\partial f}{\partial x_j}(x_0)                                                                                           \\
+         & = \lim_{t \to 0 ; t \neq 0, x_0 + t e_j \in E} \frac{f(x_0 + t e_j) - f(x_0)}{t} & \text{(by Definition \ref{6.3.7})}          \\
+         & = \begin{cases}
+            \lim_{t \to 0 ; t > 0, x_0 + t e_j \in E} \frac{f(x_0 + t e_j) - f(x_0)}{t} \\
+            \lim_{t \to 0 ; t < 0, x_0 + t e_j \in E} \frac{f(x_0 + t e_j) - f(x_0)}{t}
+        \end{cases}                                                     & \text{(by Proposition 9.5.3 in Analysis I)} \\
+         & = \begin{cases}
+            \lim_{t \to 0 ; t > 0, x_0 + t e_j \in E} \frac{f(x_0 + t e_j) - f(x_0)}{t} \\
+            \lim_{t \to 0 ; t > 0, x_0 + t e_j \in E} \frac{f(x_0 - t e_j) - f(x_0)}{-t}
+        \end{cases}                                                                                                   \\
+         & = \begin{cases}
+            \lim_{t \to 0 ; t > 0, x_0 + t e_j \in E} \frac{f(x_0 + t e_j) - f(x_0)}{t} \\
+            -\lim_{t \to 0 ; t > 0, x_0 + t e_j \in E} \frac{f\big(x_0 + t (-e_j)\big) - f(x_0)}{t}
+        \end{cases}                                                                                                   \\
+         & = \begin{cases}
+            D_{e_j} f(x_0) \\
+            - D_{-e_j} f(x_0)
+        \end{cases}.                                                    & \text{(by Definition \ref{6.3.1})}
+    \end{align*}
+\end{proof}
+
 \begin{exercise}\label{ex 6.3.3}
     Let \(f : \mathbf{R}^2 \to \mathbf{R}\) be the function deﬁned by \(f(x, y) \coloneqq \frac{x^3}{x^2 + y^2}\) when \((x, y) \neq (0, 0)\), and \(f(0, 0) \coloneqq 0\).
     Show that \(f\) is not differentiable at \((0, 0)\), despite being differentiable in every direction \(v \in \mathbf{R}^2\) at \((0, 0)\).
