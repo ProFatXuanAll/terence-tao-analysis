@@ -156,18 +156,18 @@ Thus one can write directional derivatives in terms of partial derivatives, \emp
     \[
         \frac{\norm*{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\norm*{x - x_0}} \leq \varepsilon
     \]
-    for all \(x \in B(x_0, \delta) \setminus \{x_0\}\).
+    for all \(x \in B_{(\mathbf{R}^n, d_{l^2})}(x_0, \delta) \setminus \{x_0\}\).
     Equivalently, we wish to show that
     \[
         \norm*{f(x) - f(x_0) - L(x - x_0)} \leq \varepsilon \norm*{x - x_0}
     \]
-    for all \(x \in B(x_0, \delta) \setminus \{x_0\}\).
+    for all \(x \in B_{(\mathbf{R}^n, d_{l^2})}(x_0, \delta) \setminus \{x_0\}\).
 
-    Because \(x_0\) is an interior point of \(F\), there exists a ball \(B(x_0, r)\) which is contained inside \(F\).
-    Because each partial derivative \(\frac{\partial f}{\partial x_j}\) is continuous on \(F\), there thus exists an \(0 < \delta_j < r\) such that \(\norm*{\frac{\partial f}{\partial x_j}(x) - \frac{\partial f}{\partial x_j}(x_0)} \leq \frac{\varepsilon}{nm}\) for every \(x \in B(x_0, \delta_j)\).
-    If we take \(\delta = \min(\delta_1, \dots, \delta_n)\), then we thus have \(\norm*{\frac{\partial f}{\partial x_j}(x) - \frac{\partial f}{\partial x_j}(x_0)} \leq \frac{\varepsilon}{nm}\) for every \(x \in B(x_0, \delta)\) and every \(1 \leq j \leq n\).
+    Because \(x_0\) is an interior point of \(F\), there exists a ball \(B_{(\mathbf{R}^n, d_{l^2})}(x_0, r)\) which is contained inside \(F\).
+    Because each partial derivative \(\frac{\partial f}{\partial x_j}\) exists on \(F\) and is continuous at \(x_0\), there thus exists an \(0 < \delta_j < r\) such that \(\norm*{\frac{\partial f}{\partial x_j}(x) - \frac{\partial f}{\partial x_j}(x_0)} \leq \frac{\varepsilon}{nm}\) for every \(x \in B_{(\mathbf{R}^n, d_{l^2})}(x_0, \delta_j)\).
+    If we take \(\delta = \min(\delta_1, \dots, \delta_n)\), then we thus have \(\norm*{\frac{\partial f}{\partial x_j}(x) - \frac{\partial f}{\partial x_j}(x_0)} \leq \frac{\varepsilon}{nm}\) for every \(x \in B_{(\mathbf{R}^n, d_{l^2})}(x_0, \delta)\) and every \(1 \leq j \leq n\).
 
-    Let \(x \in B(x_0, \delta)\).
+    Let \(x \in B_{(\mathbf{R}^n, d_{l^2})}(x_0, \delta)\).
     We write \(x = x_0 + v_1 e_1 + v_2 e_2 + \dots + v_n e_n\) for some scalars \(v_1, \dots, v_n\).
     Note that
     \[
@@ -244,7 +244,7 @@ which we can rewrite as
 \]
 where \(D f(x_0)\) is the \(m \times n\) matrix
 \begin{align*}
-    D f(x_0) & \coloneqq \bigg(\frac{\partial f_i}{\partial x_j}(x_0)\bigg)_{1 \leq i \leq m ; 1 \leq ; n} \\
+    D f(x_0) & \coloneqq \bigg(\frac{\partial f_i}{\partial x_j}(x_0)\bigg)_{1 \leq i \leq m ; 1 \leq j \leq n} \\
              & = \begin{pmatrix}
         \frac{\partial f_1}{\partial x_1}(x_0) & \frac{\partial f_1}{\partial x_2}(x_0) & \dots  & \frac{\partial f_1}{\partial x_n}(x_0) \\
         \frac{\partial f_2}{\partial x_1}(x_0) & \frac{\partial f_2}{\partial x_2}(x_0) & \dots  & \frac{\partial f_2}{\partial x_n}(x_0) \\
@@ -254,8 +254,9 @@ where \(D f(x_0)\) is the \(m \times n\) matrix
 \end{align*}
 Thus we have
 \[
-    \big(D_v f(x_0)\big)^\top = \big(f'(x_0) v\big)^\top = D f(x_0) v^\top.
+    \big(D_v f(x_0)\big)^\top = \big(f'(x_0)(v)\big)^\top = D f(x_0) v^\top.
 \]
+
 The matrix \(D f(x_0)\) is sometimes also called the \emph{derivative matrix} or \emph{differential matrix} of \(f\) at \(x_0\), and is closely related to the total derivative \(f'(x_0)\).
 One can also write \(Df\) as
 \[
