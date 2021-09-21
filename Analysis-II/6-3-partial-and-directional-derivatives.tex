@@ -318,10 +318,67 @@ In particular, if \(f\) is scalar-valued (i.e., \(m = 1\)), then \(Df\) is the s
 \end{proof}
 
 \begin{exercise}\label{ex 6.3.3}
-    Let \(f : \mathbf{R}^2 \to \mathbf{R}\) be the function deﬁned by \(f(x, y) \coloneqq \frac{x^3}{x^2 + y^2}\) when \((x, y) \neq (0, 0)\), and \(f(0, 0) \coloneqq 0\).
+    Let \(f : \mathbf{R}^2 \to \mathbf{R}\) be the function defined by \(f(x, y) \coloneqq \frac{x^3}{x^2 + y^2}\) when \((x, y) \neq (0, 0)\), and \(f(0, 0) \coloneqq 0\).
     Show that \(f\) is not differentiable at \((0, 0)\), despite being differentiable in every direction \(v \in \mathbf{R}^2\) at \((0, 0)\).
     Explain why this does not contradict Theorem \ref{6.3.8}.
 \end{exercise}
+
+\begin{proof}
+    First we show that \(f\) is differentiable in every direction \(v \in \mathbf{R}^2\) at \((0, 0)\).
+    Since
+    \begin{align*}
+        \forall\ v \in \mathbf{R} \setminus \{(0, 0)\}, & \lim_{t \to 0 ; t > 0, (0, 0) + tv \in \mathbf{R}^2} \frac{f\big((0, 0) + tv\big) - f(0, 0)}{t}    \\
+                                                        & = \lim_{t \to 0 ; t > 0, (0, 0) + tv \in \mathbf{R}^2} \frac{f(tv)}{t}                             \\
+                                                        & = \lim_{t \to 0 ; t > 0, (0, 0) + tv \in \mathbf{R}^2} \frac{t^3 v_1^3}{(t^2 v_1^2 + t^2 v_2^2) t} \\
+                                                        & = \lim_{t \to 0 ; t > 0, (0, 0) + tv \in \mathbf{R}^2} \frac{v_1^3}{v_1^2 + v_2^2}                 \\
+                                                        & = \frac{v_1^3}{v_1^2 + v_2^2}
+    \end{align*}
+    and
+    \begin{align*}
+         & \lim_{t \to 0 ; t > 0, (0, 0) + t (0, 0) \in \mathbf{R}^2} \frac{f\big((0, 0) + t(0, 0)\big) - f(0, 0)}{t} \\
+         & = \lim_{t \to 0 ; t > 0, (0, 0) + t (0, 0) \in \mathbf{R}^2} 0                                             \\
+         & = 0,
+    \end{align*}
+    by Definition \ref{6.3.1} we know that \(f\) is differentiable in every direction \(v \in \mathbf{R}^2\) at \((0, 0)\).
+
+    Next we show that \(f\) is not differentiable at \((0, 0)\).
+    Suppose for sake of contradiction that \(f\) is differentiable at \((0, 0)\).
+    Then by Additional Corollary \ref{ac 6.3.2} we know that
+    \[
+        \forall\ v \in \mathbf{R}^2, D_v f(0, 0) = f'(0, 0)(v) = \sum_{i = 1}^2 v_i f'(0, 0)(e_i).
+    \]
+    But
+    \[
+        f'(0, 0)(1, 1) = \frac{1^3}{1^2 + 1^2} = \frac{1}{2}
+    \]
+    is not equal to
+    \[
+        \sum_{i = 1}^2 1 f'(0, 0)(e_i) = f'(0, 0)\big((1, 0)\big) + f'(0, 0)\big((0, 1)\big) = \frac{1^3}{1^2 + 0^2} + \frac{0^3}{0^2 + 1^2} = 1,
+    \]
+    a contradiction.
+    Thus \(f\) is not differentiable at \((0, 0)\).
+
+    Now we show that this does not contradict Theorem \ref{6.3.8}.
+    We claim that \(\frac{\partial f}{\partial x}\) is not continuous at \((0, 0)\).
+    Since
+    \[
+        D_{e_1} f(0, 0) = \frac{1^3}{1^2 + 0^2} = 1 = -\frac{(-1)^3}{(-1)^2 + 0^2} = -D_{-e_1} f(0, 0),
+    \]
+    by Exercise \ref{ex 6.3.2} we know that \(\frac{\partial f}{\partial x}(0, 0) = 1\).
+    But for each \((x_0, y_0) \in \mathbf{R}^2 \setminus \{(0, 0)\}\), we have
+    \begin{align*}
+         & = \frac{\partial f}{\partial x}(x_0, y_0)                                                                                                                                                                                              \\
+         & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \mathbf{R}^2} \frac{f\big((x_0, y_0) + t(1, 0)\big) - f(x_0, y_0)}{t}                                                                                                             \\
+         & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \mathbf{R}^2} \frac{f(x_0 + t, y_0) - f(x_0, y_0)}{t}                                                                                                                             \\
+         & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \mathbf{R}^2} \frac{\frac{(x_0 + t)^3}{(x_0 + t)^2 + y_0^2} - \frac{x_0^3}{x_0^2 + y_0^2}}{t}                                                                                     \\
+         & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \mathbf{R}^2} \frac{(x_0 + t)^3 (x_0^2 + y_0^2) - x_0^3 \big((x_0 + t)^2 + y_0^2\big)}{t \big((x_0 + t)^2 + y_0^2\big) (x_0^2 + y_0^2)}                                           \\
+         & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \mathbf{R}^2} \frac{(x_0^3 + 3 x_0^2 t + 3 x_0 t^2 + t^3) (x_0^2 + y_0^2) - x_0^3 (x_0^2 + 2 t x_0 + t^2 + y_0^2)}{t (x_0^2 + 2 t x_0 + t^2 + y_0^2) (x_0^2 + y_0^2)}             \\
+         & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \mathbf{R}^2} \frac{(3 x_0^2 + 3 x_0 t + t^2) (x_0^2 + y_0^2) - x_0^3 (2 x_0 + t)}{(x_0^2 + 2 t x_0 + t^2 + y_0^2) (x_0^2 + y_0^2)}                                               \\
+         & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \mathbf{R}^2} \frac{x_0^4 + 2 t x_0^3 + t^2 x_0^2 + 3 x_0^2 y_0^2 + 3 t x_0 y_0^2 + t^2 y_0^2}{x_0^4 + 2 t x_0^3 + t^2 x_0^2 + 2 x_0^2 y_0^2 + 2 t x_0 y_0^2 + t^2 y_0^2 + y_0^4} \\
+         & = \frac{x_0^4 + 3 x_0^2 y_0^2}{x_0^4 + 2 x_0^2 y_0^2 + y_0^4}.
+    \end{align*}
+    Thus we see that \((x_0, y_0) \to (0, 0)\) implies \(\frac{\partial f}{\partial x}(x_0, y_0) \not\to 1\), which means \(\frac{\partial f}{\partial x}\) is not continuous at \((0, 0)\).
+\end{proof}
 
 \begin{exercise}\label{ex 6.3.4}
     Let \(f : \mathbf{R}^n \to \mathbf{R}^m\) be a differentiable function such that \(f'(x) = 0\) for all \(x \in \mathbf{R}^n\).
