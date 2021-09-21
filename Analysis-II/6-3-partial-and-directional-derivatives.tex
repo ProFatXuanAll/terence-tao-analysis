@@ -8,7 +8,7 @@
     \]
     exists, we say that \(f\) is \emph{differentiable in the direction \(v\) at \(x_0\)}, and we denote the above limit by \(D_v f(x_0)\):
     \[
-        D_v f(x_0) \coloneqq \lim_{t \to 0 ; t > 0} \frac{f(x_0 + tv) - f(x_0)}{t}.
+        D_v f(x_0) \coloneqq \lim_{t \to 0 ; t > 0, x_0 + tv \in E} \frac{f(x_0 + tv) - f(x_0)}{t}.
     \]
 \end{definition}
 
@@ -50,6 +50,35 @@
         D_v f(x_0) = f'(x_0)(v).
     \]
 \end{lemma}
+
+\begin{proof}
+    Since \(f\) is differentiable at \(x_0\), by Definition \ref{6.2.2} we know that \(f'(x_0) : \mathbf{R}^n \to \mathbf{R}^m\) exists and \(f'(x_0)\) is a linear transformation.
+    If \(v = 0_{\mathbf{R}^n}\), then we have
+    \begin{align*}
+         & f'(x_0)(0_{\mathbf{R}^n})                                                                                                                             \\
+         & = 0_{\mathbf{R}^m}                                                                                      & \text{(cf. the proof of Lemma \ref{6.2.4})} \\
+         & = \lim_{t \to 0 ; t > 0, x_0 + t 0_{\mathbf{R}^n} \in E} \frac{f(x_0 + t 0_{\mathbf{R}^n}) - f(x_0)}{t}                                               \\
+         & = D_{0_{\mathbf{R}^n}} f(x_0).                                                                          & \text{(by Definition \ref{6.3.1})}
+    \end{align*}
+    So suppose that \(v \neq 0_{\mathbf{R}^n}\).
+    Then we have
+    \begin{align*}
+                 & \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)}}{\norm*{x - x_0}} = 0                                  \\
+        \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \frac{\norm*{f(x_0 + tv) - f(x_0) - f'(x_0)(x_0 + tv - x_0)}}{\norm*{x_0 + tv - x_0}} = 0 \\
+        \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \frac{\norm*{f(x_0 + tv) - f(x_0) - f'(x_0)(tv)}}{\norm*{tv}} = 0                         \\
+        \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \frac{\norm*{t \frac{f(x_0 + tv) - f(x_0)}{t} - f'(x_0)(tv)}}{\norm*{tv}} = 0             \\
+        \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \frac{\norm*{t \frac{f(x_0 + tv) - f(x_0)}{t} - t f'(x_0)(v)}}{\norm*{tv}} = 0            \\
+        \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \frac{t \norm*{\frac{f(x_0 + tv) - f(x_0)}{t} - f'(x_0)(v)}}{t \norm*{v}} = 0             \\
+        \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \frac{\norm*{\frac{f(x_0 + tv) - f(x_0)}{t} - f'(x_0)(v)}}{\norm*{v}} = 0                 \\
+        \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \norm*{\frac{f(x_0 + tv) - f(x_0)}{t} - f'(x_0)(v)} = 0                                   \\
+        \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \frac{f(x_0 + tv) - f(x_0)}{t} = f'(x_0)(v)                                               \\
+        \implies & D_v f(x_0) = f'(x_0)(v).
+    \end{align*}
+    Thus we conclude that
+    \[
+        f'(x_0) \text{ exists } \implies \forall\ v \in \mathbf{R}^n, D_v f(x_0) = f'(x_0)(v).
+    \]
+\end{proof}
 
 \begin{remark}\label{6.3.6}
     One consequence of Lemma \ref{6.3.5} is that total differentiability implies directional differentiability.
