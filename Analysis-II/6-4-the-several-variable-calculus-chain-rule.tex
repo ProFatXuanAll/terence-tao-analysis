@@ -1,1 +1,108 @@
 \section{The several variable calculus chain rule}\label{sec 6.4}
+
+\begin{theorem}[Several variable calculus chain rule]\label{6.4.1}
+    Let \(E\) be a subset of \(\mathbf{R}^n\), and let \(F\) be a subset of \(\mathbf{R}^m\).
+    Let \(f : E \to F\) be a function, and let \(g : F \to \mathbf{R}^p\) be another function.
+    Let \(x_0\) be a point in the interior of \(E\).
+    Suppose that \(f\) is differentiable at \(x_0\), and that \(f(x_0)\) is in the interior of \(F\).
+    Suppose also that \(g\) is differentiable at \(f(x_0)\).
+    Then \(g \circ f : E \to \mathbf{R}^p\) is also differentiable at \(x_0\), and we have the formula
+    \[
+        (g \circ f)'(x_0) = g'\big(f(x_0)\big) \circ f'(x_0).
+    \]
+\end{theorem}
+
+\begin{note}
+    As a corollary of the chain rule and Lemma \ref{6.1.16} (and Lemma \ref{6.1.13}), we see that
+    \[
+        D (g \circ f)(x_0) = D g\big(f(x_0)\big) \cdot D f(x_0);
+    \]
+    i.e., we can write the chain rule in terms of matrices and matrix multiplication, instead of in terms of linear transformations and composition.
+\end{note}
+
+\begin{example}\label{6.4.2}
+    Let \(f : \mathbf{R}^n \to \mathbf{R}\) and \(g : \mathbf{R}^n \to \mathbf{R}\) be differentiable functions.
+    We form the combined function \(h : \mathbf{R}^n \to \mathbf{R}^2\) by defining \(h(x) \coloneqq \big(f(x), g(x)\big)\).
+    Now let \(k : \mathbf{R}^2 \to \mathbf{R}\) be the multiplication function \(k(a, b) \coloneqq ab\).
+    Note that
+    \[
+        D h(x_0) = \begin{pmatrix}
+            \nabla f(x_0) \\
+            \nabla g(x_0)
+        \end{pmatrix}
+    \]
+    while
+    \[
+        D k(a, b) = (b, a).
+    \]
+    By the chain rule, we thus see that
+    \[
+        D (k \circ h)(x_0) = \big(g(x_0), f(x_0)\big) \begin{pmatrix}
+            \nabla f(x_0) \\
+            \nabla g(x_0)
+        \end{pmatrix} = g(x_0) \nabla f(x_0) + f(x_0) \nabla g(x_0).
+    \]
+    But \(k \circ h = fg\), and \(D (fg) = \nabla (fg)\).
+    We have thus proven the \emph{product rule}
+    \[
+        \nabla (fg) = g \nabla f + f \nabla g.
+    \]
+    A similar argument gives the sum rule \(\nabla (f + g) = \nabla f + \nabla g\), or the difference rule \(\nabla (f - g) = \nabla f - \nabla g\), as well as the quotient rule (Exercise \ref{ex 6.4.4}).
+\end{example}
+
+\begin{note}
+    We do record one further useful application of the chain rule.
+    Let \(T : \mathbf{R}^n \to \mathbf{R}^m\) be a linear transformation.
+    From Exercise \ref{ex 6.4.1} we observe that \(T\) is continuously differentiable at every point, and in fact \(T'(x) = T\) for every \(x\).
+    (This equation may look a little strange, but perhaps it is easier to swallow if you view it in the form \(\frac{d}{dx} (Tx) = T\).)
+    Thus, for any differentiable function \(f : E \to \mathbf{R}^n\), we see that \(T f : E \to \mathbf{R}^m\) is also differentiable, and hence by the chain rule
+    \[
+        (T f)'(x_0) = T\big(f'(x_0)\big).
+    \]
+    This is a generalization of the single-variable calculus rule \((cf)' = c(f')\) for constant scalars \(c\).
+\end{note}
+
+\begin{note}
+    Another special case of the chain rule which is quite useful is the following:
+    if \(f : \mathbf{R}^n \to \mathbf{R}^m\) is some differentiable function, and \(x_j : \mathbf{R} \to \mathbf{R}\) are differentiable functions for each \(j = 1, \dots n\), then
+    \[
+        \frac{d}{dt} f\big(x_1(t), x_2(t), \dots, x_n(t)\big) = \sum_{j = 1}^n x_j'(t) \frac{\partial f}{\partial x_j} \big(x_1(t), x_2(t), \dots, x_n(t)\big).
+    \]
+\end{note}
+
+\exercisesection
+
+\begin{exercise}\label{ex 6.4.1}
+    Let \(T : \mathbf{R} \to \mathbf{R}^m\) be a linear transformation.
+    Show that \(T\) is continuously differentiable at every point, and in fact \(T'(x) = T\) for every \(x\).
+    What is \(D T\)?
+\end{exercise}
+
+\begin{exercise}\label{ex 6.4.2}
+    Let \(E\) be a subset of \(\mathbf{R}^n\).
+    Prove that if a function \(f : E \to \mathbf{R}^m\) is differentiable at an interior point \(x_0\) of \(E\), then it is also continuous at \(x_0\).
+\end{exercise}
+
+\begin{exercise}\label{ex 6.4.3}
+    Prove Theorem \ref{6.4.1}.
+\end{exercise}
+
+\begin{proof}
+    See Theorem \ref{6.4.1}.
+\end{proof}
+
+\begin{exercise}\label{ex 6.4.4}
+    State and prove some version of the quotient rule for functions of several variables (i.e., functions of the form \(f : E \to \mathbf{R}\) for some subset \(E\) of \(\mathbf{R}^n\)).
+    In other words, state a rule which gives a formula for the gradient of \(f / g\);
+    compare your answer with Theorem 10.1.13(h) in Analysis I.
+    Be sure to make clear what all your assumptions are.
+\end{exercise}
+
+\begin{exercise}\label{ex 6.4.5}
+    Let \(\vec{x} : \mathbf{R} \to \mathbf{R}^3\) be a differentiable function, and let \(r : \mathbf{R} \to \mathbf{R}\) be the function \(r(t) \coloneqq \norm*{\vec{x}(t)}\), where \(\norm*{x}\) denotes the length of \(\vec{x}\) as measured in the usual \(l^2\) metric.
+    Let \(t_0\) be a real number.
+    Show that if \(r(t_0) \neq 0\), then \(r\) is differentiable at \(t_0\), and
+    \[
+        r'(t_0) = \frac{\vec{x}'(t_0) \cdot \vec{x}(t_0)}{r(t_0)}.
+    \]
+\end{exercise}
