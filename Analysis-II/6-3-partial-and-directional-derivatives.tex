@@ -428,5 +428,89 @@ In particular, if \(f\) is scalar-valued (i.e., \(m = 1\)), then \(Df\) is the s
 \end{exercise}
 
 \begin{proof}
-    Need some help.
+    First we show the case when the domain of \(f\) is \(\mathbf{R}^n\).
+    By Additional Corollary \ref{ac 6.3.2} we know that
+    \begin{align*}
+                 & \forall\ x_0 \in \mathbf{R}^n, \forall\ y \in \mathbf{R}^n, f'(x_0)(y) = \sum_{j = 1}^n y_j \frac{\partial f}{\partial x_j}(x_0) = 0_{\mathbf{R}^m} \\
+        \implies & \forall\ x_0 \in \mathbf{R}^n, \forall\ 1 \leq j \leq n, \frac{\partial f}{\partial x_j}(x_0) = 0_{\mathbf{R}^m}.
+    \end{align*}
+    Let \(y \in \mathbf{R}^n\).
+    Since
+    \[
+        y = \sum_{j = 1}^n y_j e_j,
+    \]
+    by mean value theorem (cf. the proof of Theorem \ref{6.3.8}) we know that
+    \begin{align*}
+         & \exists\ t_i \in (y_1, 0) \cup (0, y_1) :                                                                                                      \\
+         & f_i(0_{\mathbf{R}^n} + y_1 e_1) - f_i(0_{\mathbf{R}^n}) = \frac{\partial f_i}{\partial x_1}(0_{\mathbf{R}^n} + t_i e_1) y_1 = 0_{\mathbf{R}^m}
+    \end{align*}
+    for all \(1 \leq i \leq m\).
+    Similar arguments show that
+    \[
+        f_i(0_{\mathbf{R}^n} + y_1 e_1 + y_2 e_2) - f_i(0_{\mathbf{R}^n} + y_1 e_1) = 0_{\mathbf{R}^m}
+    \]
+    and
+    \[
+        f_i(0_{\mathbf{R}^n} + \sum_{j = 1}^n y_j e_j) - f_i(0_{\mathbf{R}^n} + \sum_{j = 1}^{n - 1} y_j e_j) = 0_{\mathbf{R}^m}.
+    \]
+    Summing all \(n\) terms above we obtain a telescoping series
+    \[
+        f_i(0_{\mathbf{R}^n} + \sum_{j = 1}^n y_j e_j) - f_i(0_{\mathbf{R}^n}) = 0_{\mathbf{R}^m}
+    \]
+    which means
+    \[
+        f_i(y) - f_i(0_{\mathbf{R}^n}) = 0_{\mathbf{R}^m}.
+    \]
+    Thus we have \(f(y) = f(0_{\mathbf{R}^n})\).
+    Since \(y\) is arbitrary, we conclude that \(f\) is constant on \(\mathbf{R}^n\).
+
+    Now we show the case when \(\Omega\), the domain of \(f\), is an open connected subset of \(\mathbf{R}^n\).
+    By Additional Corollary \ref{ac 6.3.2} we know that
+    \begin{align*}
+                 & \forall\ x_0 \in \Omega, \forall\ y \in \Omega, f'(x_0)(y) = \sum_{j = 1}^n y_j \frac{\partial f}{\partial x_j}(x_0) = 0_{\mathbf{R}^m} \\
+        \implies & \forall\ x_0 \in \Omega, \forall\ 1 \leq j \leq n, \frac{\partial f}{\partial x_j}(x_0) = 0.
+    \end{align*}
+    Let \(x_0 \in \Omega\) and let \(d = d_{l^2}|_{\Omega \times \Omega}\).
+    Since \((\Omega, d)\) is open, by Proposition \ref{1.2.15}(a) we know that
+    \[
+        \exists\ \delta \in \mathbf{R}^+ : B_{(\Omega, d)}(x_0, \delta) \subseteq \Omega.
+    \]
+    We now claim that \(f\) is constant on \(B_{(\Omega, d)}(x_0, \delta)\).
+    Let \(y \in B_{(\Omega, d)}(x_0, \delta)\).
+    We write \(y = x_0 + v_1 e_1 + \dots + v_n e_n\).
+    By mean value theorem (cf. the proof of Theorem \ref{6.3.8}) we know that
+    \begin{align*}
+         & \exists\ t_i \in (v_1, 0) \cup (0, v_1) :                                                               \\
+         & f_i(x_0 + v_1 e_1) - f_i(x_0) = \frac{\partial f_i}{\partial x_1}(x_0 + t_i e_1) v_1 = 0_{\mathbf{R}^m}
+    \end{align*}
+    for all \(1 \leq i \leq m\).
+    Similar arguments show that
+    \[
+        f_i(x_0 + v_1 e_1 + v_2 e_2) - f_i(x_0 + v_1 e_1) = 0_{\mathbf{R}^m}
+    \]
+    and
+    \[
+        f_i(x_0 + \sum_{j = 1}^n v_j e_j) - f_i(x_0 + \sum_{j = 1}^{n - 1} v_j e_j) = 0_{\mathbf{R}^m}.
+    \]
+    Summing all \(n\) terms above we obtain a telescoping series
+    \[
+        f_i(x_0 + \sum_{j = 1}^n v_j e_j) - f_i(x_0) = 0_{\mathbf{R}^m}
+    \]
+    which means
+    \[
+        f_i(y) - f_i(x_0) = 0_{\mathbf{R}^m}.
+    \]
+    Thus we have \(f(y) = f(x_0)\).
+    Since \(y\) is arbitrary, we conclude that \(f\) is constant on \(B_{(\Omega, d)}(x_0, \delta)\).
+    Since \(x_0\) is arbitrary, we conclude that \(f\) is constant on every open ball of \(\Omega\).
+    But by Definition \ref{2.4.1} we know that \((\Omega, d)\) is connected implies
+    \begin{align*}
+                 & \forall\ x_0, y_0 \in \Omega, \exists\ \delta_1, \delta_2 \in \mathbf{R}^+ : \begin{cases}
+            B_{(\Omega, d)}(x_0, \delta_1) \subseteq \Omega \\
+            B_{(\Omega, d)}(y_0, \delta_2) \subseteq \Omega \\
+            B_{(\Omega, d)}(x_0, \delta_1) \cap B_{(\Omega, d)}(y_0, \delta_2) \neq \emptyset
+        \end{cases}    \\
+        \implies & \forall\ z \in B_{(\Omega, d)}(x_0, \delta_1) \cap B_{(\Omega, d)}(y_0, \delta_2), f(x_0) = f(z) = f(y_0).
+    \end{align*}
+    Thus \(f\) is constant on \(\Omega\).
 \end{proof}

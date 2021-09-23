@@ -227,7 +227,6 @@ a_n^2                      % do not enclose with {}
   - 5.5.4
   - 5.5.5
   - 5.5.6
-  - 6.3.4
   - Chapter 6
   - Chapter 7
   - Chapter 8
