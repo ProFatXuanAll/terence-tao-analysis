@@ -230,10 +230,29 @@ If \(f : \mathbf{R}^n \to \mathbf{R}^m\) is some differentiable function, and \(
 \exercisesection
 
 \begin{exercise}\label{ex 6.4.1}
-    Let \(T : \mathbf{R} \to \mathbf{R}^m\) be a linear transformation.
+    Let \(T : \mathbf{R}^n \to \mathbf{R}^m\) be a linear transformation.
     Show that \(T\) is continuously differentiable at every point, and in fact \(T'(x) = T\) for every \(x\).
     What is \(D T\)?
 \end{exercise}
+
+\begin{proof}
+    Let \(x_0 \in \mathbf{R}^n\).
+    Since
+    \begin{align*}
+         & \lim_{x \to x_0 ; x \in \mathbf{R}^n \setminus \{x_0\}} \frac{\norm*{T(x) - T(x_0) - T(x - x_0)}}{\norm*{x - x_0}}                                           \\
+         & = \lim_{x \to x_0 ; x \in \mathbf{R}^n \setminus \{x_0\}} \frac{\norm*{T(x) - T(x_0) - T(x) - T(x_0)}}{\norm*{x - x_0}} & \text{(by Definition \ref{6.1.6})} \\
+         & = \lim_{x \to x_0 ; x \in \mathbf{R}^n \setminus \{x_0\}} \frac{\norm*{0_{\mathbf{R}^m}}}{\norm*{x - x_0}}                                                   \\
+         & = 0
+    \end{align*}
+    and \(x_0\) is arbitrary, we conclude by Definition \ref{6.2.2} that
+    \[
+        \forall\ x \in \mathbf{R}^n, T'(x) = T.
+    \]
+    By Lemma \ref{6.1.13} we know that
+    \[
+        \forall\ x \in \mathbf{R}^n, D T(x) = \big(T(e_1)^\top, \dots, T(e_n)^\top\big).
+    \]
+\end{proof}
 
 \begin{exercise}\label{ex 6.4.2}
     Let \(E\) be a subset of \(\mathbf{R}^n\).
