@@ -99,17 +99,62 @@
     Let \(f : \mathbf{R}^n \to \mathbf{R}\) and \(g : \mathbf{R}^n \to \mathbf{R}\) be differentiable functions.
     We form the combined function \(h : \mathbf{R}^n \to \mathbf{R}^2\) by defining \(h(x) \coloneqq \big(f(x), g(x)\big)\).
     Now let \(k : \mathbf{R}^2 \to \mathbf{R}\) be the multiplication function \(k(a, b) \coloneqq ab\).
-    Note that
+
+    We first show that
     \[
         D h(x_0) = \begin{pmatrix}
             \nabla f(x_0) \\
             \nabla g(x_0)
-        \end{pmatrix}
+        \end{pmatrix}.
     \]
-    while
+    Let \(x_0 \in \mathbf{R}^n\).
+    Since
+    \begin{align*}
+         & \norm*{h(x) - h(x_0) - (x - x_0) D h(x_0)^\top}                                                                                  \\
+         & = \norm*{\big(f(x), g(x)\big) - \big(f(x_0), g(x_0)\big) - \big((x - x_0) \nabla f(x_0)^\top, (x - x_0) \nabla g(x_0)^\top\big)} \\
+         & = \norm*{\big(f(x) - f(x_0) - (x - x_0) \nabla f(x_0)^\top, g(x) - g(x_0) - (x - x_0) \nabla g(x_0)^\top\big)}                   \\
+         & \leq \norm*{f(x) - f(x_0) - (x - x_0) \nabla f(x_0)^\top} + \norm*{g(x) - g(x_0) - (x - x_0) \nabla g(x_0)^\top}
+    \end{align*}
+    (note that the last line follow by Exercise \ref{ex 1.1.8}),
+    by squeeze test we know that
+    \begin{align*}
+                 & \begin{cases}
+            \lim_{x \to x_0 ; x \in \mathbf{R}^n \setminus \{x_0\}} \frac{\norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)}}{\norm*{x - x_0}} = 0 \\
+            \lim_{x \to x_0 ; x \in \mathbf{R}^n \setminus \{x_0\}} \frac{\norm*{g(x) - g(x_0) - g'(x_0)(x - x_0)}}{\norm*{x - x_0}} = 0
+        \end{cases}                                                                                                           \\
+        \implies & \begin{cases}
+            \lim_{x \to x_0 ; x \in \mathbf{R}^n \setminus \{x_0\}} \frac{\norm*{f(x) - f(x_0) - (x - x_0) \nabla f(x_0)^\top}}{\norm*{x - x_0}} = 0 \\
+            \lim_{x \to x_0 ; x \in \mathbf{R}^n \setminus \{x_0\}} \frac{\norm*{g(x) - g(x_0) - (x - x_0) \nabla g(x_0)^\top}}{\norm*{x - x_0}} = 0
+        \end{cases}                                                                                                           \\
+        \implies & \lim_{x \to x_0 ; x \in \mathbf{R}^n \setminus \{x_0\}} \frac{\norm*{h(x) - h(x_0) - (x - x_0) D h(x_0)^\top}}{\norm*{x - x_0}} = 0.
+    \end{align*}
+    Since \(x_0\) is arbitrary, we conclude that the identity is true.
+
+    Now we show that
     \[
         D k(a, b) = (b, a).
     \]
+    Let \((a, b) \in \mathbf{R}^2\).
+    Observe that for any \((x, y) \in \mathbf{R}^2 \setminus \{(a, b)\}\), we have
+    \begin{align*}
+         & \frac{\norm*{k(x, y) - k(a, b) - \big((x, y) - (a, b)\big) (b, a)^\top}}{\norm*{(x, y) - (a, b)}} \\
+         & = \frac{\norm*{xy - ab - xb - ay + ab + ba}}{\norm*{(x - a, y - b)}}                              \\
+         & = \frac{\norm*{(x - a)(y - b)}}{\norm*{(x - a, y - b)}}                                           \\
+         & = \sqrt{\frac{(x - a)^2 (y - b)^2}{(x - a)^2 + (y - b)^2}}                                        \\
+         & \leq \sqrt{\frac{2 (x - a)^2 (y - b)^2}{(x - a)^2 + (y - b)^2}}                                   \\
+         & \leq \sqrt{\frac{(x - a)^4 + 2 (x - a)^2 (y - b)^2 + (y - b)^4}{(x - a)^2 + (y - b)^2}}           \\
+         & = \sqrt{\frac{\big((x - a)^2 + (y - b)^2\big)^2}{(x - a)^2 + (y - b)^2}}                          \\
+         & = \sqrt{(x - a)^2 + (y - b)^2}.
+    \end{align*}
+    Since
+    \begin{align*}
+                 & \lim_{(x, y) \to (a, b) ; (x, y) \in \mathbf{R}^2 \setminus \{(a, b)\}} (x - a)^2 + (y - b)^2 = 0                                                                             \\
+        \implies & \lim_{(x, y) \to (a, b) ; (x, y) \in \mathbf{R}^2 \setminus \{(a, b)\}} \sqrt{(x - a)^2 + (y - b)^2} = 0                                                                      \\
+        \implies & \lim_{(x, y) \to (a, b) ; (x, y) \in \mathbf{R}^2 \setminus \{(a, b)\}} \frac{\norm*{k(x, y) - k(a, b) - \big((x, y) - (a, b)\big) (b, a)^\top}}{\norm*{(x, y) - (a, b)}} = 0
+    \end{align*}
+    (note that the last line follow by squeeze test),
+    by Definition \ref{6.2.2} we know that the identity is true.
+
     By the chain rule, we thus see that
     \[
         D (k \circ h)(x_0) = \big(g(x_0), f(x_0)\big) \begin{pmatrix}
