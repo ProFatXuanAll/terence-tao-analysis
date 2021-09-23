@@ -12,6 +12,81 @@
     \]
 \end{theorem}
 
+\begin{proof}
+    By Definition \ref{6.2.2} we want to show that
+    \[
+        \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\norm*{(g \circ f)(x) - (g \circ f)(x_0) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big)(x - x_0)}}{\norm*{x - x_0}} = 0.
+    \]
+    Equivalently, we want to show that
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in E \setminus \{x_0\}, \norm*{x - x_0} < \delta \\
+        \implies & \frac{\norm*{(g \circ f)(x) - (g \circ f)(x_0) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big)(x - x_0)}}{\norm*{x - x_0}} < \varepsilon  \\
+        \implies & \norm*{(g \circ f)(x) - (g \circ f)(x_0) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big)(x - x_0)} < \varepsilon \norm*{x - x_0}.
+    \end{align*}
+    Since \(f'(x_0)\) exists, we know that
+    \[
+        \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)}}{\norm*{x - x_0}} = 0.
+    \]
+    Equivalently, we know that
+    \begin{align*}
+                 & \forall\ \varepsilon_f \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in E \setminus \{x_0\}, \norm*{x - x_0} < \delta \\
+        \implies & \frac{\norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)}}{\norm*{x - x_0}} < \varepsilon_f                                                         \\
+        \implies & \norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)} < \varepsilon_f \norm*{x - x_0}                                                                 \\
+        \implies & \norm*{f(x) - f(x_0)} < \varepsilon_f \norm*{x - x_0} + \norm*{f'(x_0)(x - x_0)}.
+    \end{align*}
+    Since \(g'\big(f(x_0)\big)\) exists, we know that
+    \[
+        \lim_{y \to f(x_0) ; x \in F \setminus \{f(x_0)\}} \frac{\norm*{g(y) - g\big(f(x_0)\big) - g'\big(f(x_0)\big)\big(y - f(x_0)\big)}}{\norm*{y - f(x_0)}} = 0.
+    \]
+    Equivalently, we know that
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta_g \in \mathbf{R}^+ : \forall\ y \in F \setminus \{f(x_0)\}, \norm*{y - f(x_0)} < \delta_g \\
+        \implies & \frac{\norm*{g(y) - g\big(f(x_0)\big) - g'\big(f(x_0)\big)\big(y - f(x_0)\big)}}{\norm*{y - f(x_0)}} < \varepsilon                               \\
+        \implies & \norm*{g(y) - g\big(f(x_0)\big) - g'\big(f(x_0)\big)\big(y - f(x_0)\big)} < \varepsilon \norm*{y - f(x_0)}.
+    \end{align*}
+    Fix one pair of \(\varepsilon\) and \(\delta_g\).
+    Then we have
+    \begin{align*}
+                 & \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in E \setminus \{x_0\}, \norm*{x - x_0} < \delta                    \\
+        \implies & \begin{cases}
+            \norm*{f(x) - f(x_0)} < \varepsilon \norm*{x - x_0} + \norm*{f'(x_0)(x - x_0)}; \\
+            \norm*{f(x) - f(x_0)} < \delta_g;
+        \end{cases}                                                                                          \\
+        \implies & \begin{cases}
+            \norm*{f(x) - f(x_0)} < \varepsilon \norm*{x - x_0} + \norm*{f'(x_0)(x - x_0)}; \\
+            \norm*{g\big(f(x)\big) - g\big(f(x_0)\big) - g'\big(f(x_0)\big) \big(f(x) - f(x_0)\big)} < \varepsilon \norm*{f(x) - f(x_0)};
+        \end{cases}                                                                                          \\
+        \implies & \norm*{g\big(f(x)\big) - g\big(f(x_0)\big) - g'\big(f(x_0)\big) \big(f(x) - f(x_0)\big)}                           \\
+                 & < \varepsilon^2 \norm*{x - x_0} + \varepsilon \norm*{f'(x_0)(x - x_0)}                                             \\
+        \implies & \norm*{g\big(f(x)\big) - g\big(f(x_0)\big) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big) (x - x_0)}                 \\
+                 & < \varepsilon^2 \norm*{x - x_0} + \varepsilon \norm*{f'(x_0)(x - x_0)}                                             \\
+                 & \quad + \norm*{g'\big(f(x_0)\big) \big(f(x) - f(x_0)\big) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big) (x - x_0)}.
+    \end{align*}
+    Since \(g'\big(f(x_0)\big)\) is a linear transformation, by Definition \ref{6.1.6} we know that
+    \begin{align*}
+         & \norm*{g'\big(f(x_0)\big) \big(f(x) - f(x_0)\big) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big) (x - x_0)} \\
+         & = \norm*{g'\big(f(x_0)\big) \big(f(x) - f(x_0) - f'(x_0) (x - x_0)\big)}.
+    \end{align*}
+    By Exercise \ref{ex 6.1.4} we know that
+    \begin{align*}
+        \exists\ M \in \mathbf{R}^+ : & \norm*{g'\big(f(x_0)\big) \big(f(x) - f(x_0) - f'(x_0) (x - x_0)\big)} \\
+                                      & \leq M \norm*{f(x) - f(x_0) - f'(x_0) (x - x_0)}                       \\
+                                      & \leq M \varepsilon \norm*{x - x_0}.
+    \end{align*}
+    Fix such \(M\).
+    Then we have
+    \begin{align*}
+                 & \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in E \setminus \{x_0\}, \norm*{x - x_0} < \delta         \\
+        \implies & \norm*{g\big(f(x)\big) - g\big(f(x_0)\big) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big) (x - x_0)}      \\
+                 & < \varepsilon^2 \norm*{x - x_0} + \varepsilon \norm*{f'(x_0)(x - x_0)} + M \varepsilon \norm*{x - x_0}.
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary, we conclude that
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in E \setminus \{x_0\}, \norm*{x - x_0} < \delta \\
+        \implies & \norm*{g\big(f(x)\big) - g\big(f(x_0)\big) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big) (x - x_0)} < \varepsilon.
+    \end{align*}
+\end{proof}
+
 \begin{note}
     As a corollary of the chain rule and Lemma \ref{6.1.16} (and Lemma \ref{6.1.13}), we see that
     \[
