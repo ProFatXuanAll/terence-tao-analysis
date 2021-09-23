@@ -185,6 +185,47 @@ Thus one can write directional derivatives in terms of partial derivatives, \emp
         f_i(x_0 + v_1 e_1) - f_i(x_0) = \frac{\partial f_i}{\partial x_1}(x_0 + t_i e_1) v_1
     \]
     for some \(t_i\) between \(0\) and \(v_1\).
+    This is done as follow:
+    If \(v_1 = 0\), then by setting \(t_i = 0\) we have
+    \[
+        f_i(x_0 + 0 e_1) - f_i(x_0) = 0_{\mathbf{R}^m} = \frac{\partial f_i}{\partial x_1}(x_0 + 0 e_1) \cdot 0.
+    \]
+    So suppose that \(0 < v_1\).
+    First observe that for any \(y \in F\), we have
+    \begin{align*}
+                 & \frac{\partial f}{\partial x_1}(y) \in \mathbf{R}^m                                                                                 \\
+        \implies & \lim_{t \to 0 ; t \neq 0, y + t e_1 \in F} \frac{f(y + t e_1) - f(y)}{t} \in \mathbf{R}^m    & \text{(by Definition \ref{6.3.7})}   \\
+        \implies & \forall\ 1 \leq i \leq m,                                                                                                           \\
+                 & \lim_{t \to 0 ; t \neq 0, y + t e_1 \in F} \frac{f_i(y + t e_1) - f_i(y)}{t} \in \mathbf{R}. & \text{(by Proposition \ref{1.1.18})}
+    \end{align*}
+    Since \(B_{(\mathbf{R}^n, l^2)}(x_0, \delta) \subseteq F\), by the definition of \(v_1\) we know that
+    \begin{align*}
+                 & \forall\ v \in [0, v_1], x_0 + v e_1 \in B_{(\mathbf{R}^n, l^2)}(x_0, \delta) \subseteq F                                                        \\
+        \implies & \forall\ 1 \leq i \leq m, \lim_{t \to 0 ; t \neq 0, x_0 + (v + t) e_1 \in F} \frac{f_i(x_0 + (v + t) e_1) - f_i(x_0 + v e_1)}{t} \in \mathbf{R}.
+    \end{align*}
+    If we define \(g_i : [0, v_1] \to \mathbf{R}\) for all \(1 \leq i \leq m\) as follow:
+    \[
+        \forall\ v \in [0, v_1], g_i(v) = f_i(x_0 + v e_1),
+    \]
+    then we know that
+    \begin{align*}
+                 & \lim_{t \to 0 ; t \neq 0, x_0 + (v + t) e_1 \in F} \frac{f_i(x_0 + (v + t) e_1) - f_i(x_0 + v e_1)}{t} \in \mathbf{R} \\
+        \implies & \lim_{t \to 0 ; t \neq 0, v + t \in [0, v_1]} \frac{g_i(v + t) - g_i(v)}{t} \in \mathbf{R}                            \\
+        \implies & \lim_{w \to v ; w \in [0, v_1] \setminus \{v\}} \frac{g_i(w) - g_i(v)}{w - v} \in \mathbf{R}                          \\
+        \implies & g_i'(v) \in \mathbf{R}
+    \end{align*}
+    for every \(1 \leq i \leq m\) and every \(v \in [0, v_1]\).
+    Thus by mean value theorem we know that
+    \begin{align*}
+                 & \exists\ t_i \in (0, v_1) : g_i'(t_i) = \frac{g_i(v_1) - g_i(0)}{v_1 - 0}                                                                                            \\
+        \implies & \exists\ t_i \in (0, v_1) : \lim_{t \to t_i; t \in [0, v_1] \setminus \{t_i\}} \frac{g_i(t) - g_i(t_i)}{t - t_i} = \frac{g_i(v_1) - g_i(0)}{v_1 - 0}                 \\
+        \implies & \exists\ t_i \in (0, v_1) : \lim_{t \to 0; t \neq 0, t + t_i \in [0, v_1] \setminus \{t_i\}} \frac{g_i(t + t_i) - g_i(t_i)}{t} = \frac{g_i(v_1) - g_i(0)}{v_1 - 0}   \\
+        \implies & \exists\ t_i \in (0, v_1) :                                                                                                                                          \\
+                 & \lim_{t \to 0; t \neq 0, t + t_i \in [0, v_1] \setminus \{t_i\}} \frac{f_i(x_0 + (t + t_i) e_1) - f_i(x_0 + t_i e_1)}{t} = \frac{f_i(x_0 + v_1 e_1) - f_i(x_0)}{v_1} \\
+        \implies & \exists\ t_i \in (0, v_1) : \frac{\partial f_i}{\partial x_1}(x_0 + t_i e_1) = \frac{f_i(x_0 + v_1 e_1) - f_i(x_0)}{v_1}                                             \\
+        \implies & \exists\ t_i \in (0, v_1) : \frac{\partial f_i}{\partial x_1}(x_0 + t_i e_1) v_1 = f_i(x_0 + v_1 e_1) - f_i(x_0).
+    \end{align*}
+    The case \(v_1 < 0\) can be proven similarly.
     But we have
     \[
         \abs*{\frac{\partial f_i}{\partial x_j}(x_0 + t_i e_1) - \frac{\partial f_i}{\partial x_j}(x_0)} \leq \norm*{\frac{\partial f}{\partial x_j}(x_0 + t_i e_1) - \frac{\partial f}{\partial x_j}(x_0)} \leq \frac{\varepsilon}{nm}
