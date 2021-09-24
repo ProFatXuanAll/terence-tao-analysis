@@ -303,6 +303,73 @@ If \(f : \mathbf{R}^n \to \mathbf{R}^m\) is some differentiable function, and \(
     Be sure to make clear what all your assumptions are.
 \end{exercise}
 
+\begin{proof}
+    Let \(E \subseteq \mathbf{R}^n\) and let \(x_0\) be an interior point of \(E\).
+    Let \(f : E \to \mathbf{R}\) and \(g : E \to \mathbf{R}\) be functions where \(g(x) \neq 0\) for all \(x \in E\).
+    If \(f, g\) are differentiable at \(x_0\), then \(f / g\) is differentiable at \(x_0\), and
+    \[
+        \nabla \bigg(\frac{f}{g}\bigg)(x_0) = \frac{g(x_0) \nabla f(x_0) - f(x_0) \nabla g(x_0)}{\big(g(x_0)\big)^2}.
+    \]
+    If \(f, g\) are differentiable on \(E\), then \(f / g\) is differentiable on \(E\), and
+    \[
+        \nabla \bigg(\frac{f}{g}\bigg) = \frac{g \nabla f - f \nabla g}{g^2}.
+    \]
+
+    Let \(k : \mathbf{R} \times (\mathbf{R} \setminus \{0\}) \to \mathbf{R}\) be the function
+    \[
+        \forall\ (a, b) \in \mathbf{R} \times (\mathbf{R} \setminus \{0\}), k(a, b) = \frac{a}{b}.
+    \]
+    We claim that \(k\) is differentiable on \(\mathbf{R} \times (\mathbf{R} \setminus \{0\})\) and
+    \[
+        \forall\ (a, b) \in \mathbf{R} \times (\mathbf{R} \setminus \{0\}), D k(a, b) = \bigg(\frac{1}{b}, \frac{-a}{b^2}\bigg).
+    \]
+    Let \((a, b) \in \mathbf{R} \times (\mathbf{R} \setminus \{0\})\).
+    Since for each \((x, y) \in \mathbf{R} \times (\mathbf{R} \setminus \{0\})\), we have
+    \begin{align*}
+         & \frac{\norm*{k(x, y) - k(a, b) - \big((x, y) - (a, b)\big) \bigg(\frac{1}{b}, \frac{-a}{b^2}\bigg)^\top}}{\norm*{(x, y) - (a, b)}} \\
+         & = \frac{\norm*{\frac{x}{y} - \frac{a}{b} - \frac{x - a}{b} + \frac{a(y - b)}{b^2}}}{\norm*{(x - a, y - b)}}                        \\
+         & = \frac{\norm*{\frac{b^2 x - bxy + ay^2 - aby}{b^2y}}}{\norm*{(x - a, y - b)}}                                                     \\
+         & = \frac{\norm*{\frac{(ay - bx)(y - b)}{b^2y}}}{\norm*{(x - a, y - b)}}                                                             \\
+         & = \sqrt{\frac{(ay - bx)^2 (y - b)^2}{b^4 y^2 \big((x - a)^2 + (y - b)^2\big)}}                                                     \\
+         & \leq \sqrt{\frac{(ay - bx)^2 \big((x - a)^2 + (y - b)^2\big)}{b^4 y^2 \big((x - a)^2 + (y - b)^2\big)}}                            \\
+         & = \sqrt{\frac{(ay - bx)^2}{b^4 y^2}},
+    \end{align*}
+    we know that
+    \begin{align*}
+                 & \lim_{(x, y) \to (a, b) ; (x, y) \in \big(\mathbf{R} \times (\mathbf{R} \setminus \{0\})\big) \setminus \{(a, b)\}} (ay - bx)^2 = 0                                                                                                                  \\
+        \implies & \lim_{(x, y) \to (a, b) ; (x, y) \in \big(\mathbf{R} \times (\mathbf{R} \setminus \{0\})\big) \setminus \{(a, b)\}} \frac{(ay - bx)^2}{b^4 y^2} = 0                                                                                                  \\
+        \implies & \lim_{(x, y) \to (a, b) ; (x, y) \in \big(\mathbf{R} \times (\mathbf{R} \setminus \{0\})\big) \setminus \{(a, b)\}} \sqrt{\frac{(ay - bx)^2}{b^4 y^2}} = 0                                                                                           \\
+        \implies & \lim_{(x, y) \to (a, b) ; (x, y) \in \big(\mathbf{R} \times (\mathbf{R} \setminus \{0\})\big) \setminus \{(a, b)\}} \frac{\norm*{k(x, y) - k(a, b) - \big((x, y) - (a, b)\big) \big(\frac{1}{b}, \frac{-a}{b^2}\big)^\top}}{\norm*{(x, y) - (a, b)}} \\
+                 & = 0.
+    \end{align*}
+    (note that the last line was done by squeeze test)
+    Since \((a, b)\) is arbitrary, by Definition \ref{6.2.2} we conclude that
+    \[
+        \forall\ (a, b) \in \mathbf{R} \times (\mathbf{R} \setminus \{0\}), D k(a, b) = \bigg(\frac{1}{b}, \frac{-a}{b^2}\bigg).
+    \]
+
+    Let \(h\) be the function in Example \ref{6.4.2}.
+    Using chain rule we have
+    \begin{align*}
+        D (k \circ h)(x_0) & = D k\big(h(x_0)\big) \cdot D h(x_0)                                                                & \text{(by Theorem \ref{6.4.1})} \\
+                           & = D k\big(f(x_0), g(x_0)\big) \cdot \begin{pmatrix}
+            \nabla f(x_0) \\
+            \nabla g(x_0)
+        \end{pmatrix}                                      & \text{(by Example \ref{6.4.2})} \\
+                           & = \bigg(\frac{1}{g(x_0)}, \frac{-f(x_0)}{\big(g(x_0)\big)^2}\bigg) \cdot \begin{pmatrix}
+            \nabla f(x_0) \\
+            \nabla g(x_0)
+        \end{pmatrix}                                   \\
+                           & = \frac{\nabla f(x_0)}{g(x_0)} - \frac{f(x_0) \nabla g(x_0)}{\big(g(x_0)\big)^2}                                                      \\
+                           & = \frac{g(x_0) \nabla f(x_0) - f(x_0) \nabla g(x_0)}{\big(g(x_0)\big)^2}.
+    \end{align*}
+    But \(k \circ h = f / g\).
+    Thus we have
+    \[
+        \nabla \bigg(\frac{f}{g}\bigg)(x_0) = \frac{g(x_0) \nabla f(x_0) - f(x_0) \nabla g(x_0)}{\big(g(x_0)\big)^2}.
+    \]
+\end{proof}
+
 \begin{exercise}\label{ex 6.4.5}
     Let \(\vec{x} : \mathbf{R} \to \mathbf{R}^3\) be a differentiable function, and let \(r : \mathbf{R} \to \mathbf{R}\) be the function \(r(t) \coloneqq \norm*{\vec{x}(t)}\), where \(\norm*{x}\) denotes the length of \(\vec{x}\) as measured in the usual \(l^2\) metric.
     Let \(t_0\) be a real number.
