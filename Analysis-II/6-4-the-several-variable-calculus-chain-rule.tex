@@ -380,5 +380,31 @@ If \(f : \mathbf{R}^n \to \mathbf{R}^m\) is some differentiable function, and \(
 \end{exercise}
 
 \begin{proof}
-    Need some help.
+    Let \(f : \mathbf{R}^3 \to \mathbf{R}\) be the function
+    \[
+        \forall\ x \in \mathbf{R}^3, f(x) = \norm*{x}.
+    \]
+    Since
+    \[
+        \forall\ y \in \mathbf{R}^3 \setminus \{0_{\mathbf{R}^3}\}, \forall\ 1 \leq i \leq 3, \frac{\partial f}{\partial x_i}(y) = \frac{y_i}{\norm*{y}},
+    \]
+    and \(\frac{\partial f}{\partial x_i}\) is continuous on \(\mathbf{R}^3 \setminus \{0_{\mathbf{R}^3}\}\), by Theorem \ref{6.3.8} we know that
+    \begin{align*}
+        \forall\ y \in \mathbf{R}^3 \setminus \{0_{\mathbf{R}^3}\}, D f(y) & = \nabla f(y)                                                                                                            \\
+                                                                           & = \bigg(\frac{\partial f}{\partial x_1}(y), \frac{\partial f}{\partial x_2}(y), \frac{\partial f}{\partial x_3}(y)\bigg) \\
+                                                                           & = \bigg(\frac{y_1}{\norm*{y}}, \frac{y_2}{\norm*{y}}, \frac{y_3}{\norm*{y}}\bigg)                                        \\
+                                                                           & = \frac{y}{\norm*{y}}.
+    \end{align*}
+    By chain rule (Theorem \ref{6.4.1}) we know that
+    \begin{align*}
+                 & \forall\ t \in \mathbf{R}, \vec{x}(t) \neq 0                                                                                        \\
+        \implies & D (f \circ \vec{x})(t) = D f\big(\vec{x}(t)\big) \cdot D \vec{x}(t) = \frac{\vec{x}(t)}{\norm*{\vec{x}(t)}} \cdot \vec{x}'(t)^\top.
+    \end{align*}
+    Since \(r = f \circ \vec{x}\), we know that
+    \begin{align*}
+                 & \forall\ t \in \mathbf{R}, \vec{x}(t) \neq 0             \\
+        \implies & \norm*{t} \neq 0                                         \\
+        \implies & r(t) \neq 0                                              \\
+        \implies & D r(t) = \frac{\vec{x}(t) \cdot \vec{x}'(t)^\top}{r(t)}.
+    \end{align*}
 \end{proof}

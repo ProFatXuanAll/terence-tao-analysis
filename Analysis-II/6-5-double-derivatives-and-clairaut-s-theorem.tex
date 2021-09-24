@@ -1,1 +1,93 @@
 \section{Double derivatives and Clairaut's theorem}\label{sec 6.5}
+
+\begin{definition}[Twice continuous differentiability]\label{6.5.1}
+    Let \(E\) be an open subset of \(\mathbf{R}^n\), and let \(f : E \to \mathbf{R}^m\) be a function.
+    We say that \(f\) is \emph{continuously differentiable} if the partial derivatives \(\frac{\partial f}{\partial x_1}, \dots, \frac{\partial f}{\partial x_n}\) exist and are continuous on \(E\).
+    We say that \(f\) is \emph{twice continuously differentiable} if it is continuously differentiable, and the partial derivatives \(\frac{\partial f}{\partial x_1}, \dots, \frac{\partial f}{\partial x_n}\) are themselves continuously differentiable.
+\end{definition}
+
+\begin{remark}\label{6.5.2}
+    Continuously differentiable functions are sometimes called \(C^1\) functions;
+    twice continuously differentiable functions are sometimes called \(C^2\) functions.
+    One can also define \(C^3\), \(C^4\), etc. but we shall not do so here.
+\end{remark}
+
+\setcounter{theorem}{3}
+\begin{theorem}[Clairaut's theorem]\label{6.5.4}
+    Let \(E\) be an open subset of \(\mathbf{R}^n\), and let \(f : E \to \mathbf{R}^m\) be a twice continuously differentiable function on \(E\).
+    Then we have \(\frac{\partial}{\partial x_j} \frac{\partial f}{\partial x_i}(x_0) = \frac{\partial}{\partial x_i} \frac{\partial f}{\partial x_j}(x_0)\) for all \(1 \leq i, j \leq n\).
+\end{theorem}
+
+\begin{proof}
+    By working with one component of \(f\) at a time we can assume that \(m = 1\).
+    The claim is trivial if \(i = j\), so we shall assume that \(i \neq j\).
+    We shall prove the theorem for \(x_0 = 0\);
+    the general case is similar.
+    (Actually, once one proves Clairaut's theorem for \(x_0 = 0\), one can immediately obtain it for general \(x_0\) by applying the theorem with \(f(x)\) replaced by \(f(x + x_0)\).)
+
+    Let \(a\) be the number \(a \coloneqq \frac{\partial}{\partial x_j} \frac{\partial f}{\partial x_i}(0)\), and \(a'\) denote the quantity \(a' \coloneqq \frac{\partial}{\partial x_i} \frac{\partial f}{\partial x_j}(0)\).
+    Our task is to show that \(a' = a\).
+
+    Let \(\varepsilon > 0\).
+    Because the double derivatives of \(f\) are continuous, we can find a \(\delta > 0\) such that
+    \[
+        \abs*{\frac{\partial}{\partial x_j} \frac{\partial f}{\partial x_i}(x) - a} \leq \varepsilon
+    \]
+    and
+    \[
+        \abs*{\frac{\partial}{\partial x_i} \frac{\partial f}{\partial x_j}(x) - a} \leq \varepsilon
+    \]
+    whenever \(\norm*{x} \leq 2\delta\).
+
+    Now we consider the quantity
+    \[
+        X \coloneqq f(\delta e_i + \delta e_j) - f(\delta e_i) - f(\delta e_j) + f(0).
+    \]
+    From the fundamental theorem of calculus in the \(e_i\) variable, we have
+    \[
+        f(\delta e_i + \delta e_j) - f(\delta e_j) = \int_0^{\delta} \frac{\partial f}{\partial x_i}(x_i e_i + \delta e_j) \; d x_i
+    \]
+    and
+    \[
+        f(\delta e_i) - f(0) = \int_0^{\delta} \frac{\partial f}{\partial x_i}(x_i e_i) \; d x_i
+    \]
+    and hence
+    \[
+        X = \int_0^{\delta} \bigg(\frac{\partial f}{\partial x_i} (x_i e_i + \delta e_j) - \frac{\partial f}{\partial x_i} (x_i e_i)\bigg) \; d x_i.
+    \]
+    But by the mean value theorem, for each \(x_i\) we have
+    \[
+        \frac{\partial f}{\partial x_i} (x_i e_i + \delta e_j) - \frac{\partial f}{\partial x_i} (x_i e_i) = \delta \frac{\partial}{\partial x_j} \frac{\partial f}{\partial x_i} (x_i e_i + x_j e_j)
+    \]
+    for some \(0 \leq x_j \leq \delta\).
+    By our construction of \(\delta\), we thus have
+    \[
+        \abs*{\frac{\partial f}{\partial x_i} (x_i e_i + \delta e_j) - \frac{\partial f}{\partial x_i} (x_i e_i) - \delta a} \leq \varepsilon \delta.
+    \]
+    Integrating this from \(0\) to \(\delta\), we thus obtain
+    \[
+        \abs*{X - \delta^2 a} \leq \varepsilon \delta^2.
+    \]
+
+    We can run the same argument with the rôle of \(i\) and \(j\) reversed (note that \(X\) is symmetric in \(i\) and \(j\)), to obtain
+    \[
+        \abs*{X - \delta^2 a'} \leq \varepsilon \delta^2.
+    \]
+    From the triangle inequality we thus obtain
+    \[
+        \abs*{\delta^2 a - \delta^2 a'} \leq 2 \varepsilon \delta^2,
+    \]
+    and thus
+    \[
+        \abs*{a - a'} \leq 2 \varepsilon.
+    \]
+    But this is true for all \(\varepsilon > 0\), and \(a\) and \(a'\) do not depend on \(\varepsilon\), and so we must have \(a = a'\), as desired.
+\end{proof}
+
+\exercisesection
+
+\begin{exercise}\label{ex 6.5.1}
+    Let \(f : \mathbf{R} \to \mathbf{R}\) be the function defined by \(f(x, y) \coloneqq \frac{x y^3}{x^2 + y^2}\) when \((x, y) \neq (0, 0)\), and \(f(0, 0) \coloneqq 0\).
+    Show that \(f\) is continuously differentiable, and the double derivatives \(\frac{\partial}{\partial y} \frac{\partial f}{\partial x}\) and \(\frac{\partial}{\partial x} \frac{\partial f}{\partial y}\) exist, but are not equal to each other at \((0, 0)\).
+    Explain why this does not contradict Clairaut's theorem.
+\end{exercise}
