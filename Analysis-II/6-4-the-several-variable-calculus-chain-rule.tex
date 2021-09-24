@@ -259,6 +259,35 @@ If \(f : \mathbf{R}^n \to \mathbf{R}^m\) is some differentiable function, and \(
     Prove that if a function \(f : E \to \mathbf{R}^m\) is differentiable at an interior point \(x_0\) of \(E\), then it is also continuous at \(x_0\).
 \end{exercise}
 
+\begin{proof}
+    By Definition \ref{6.2.2} we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta_1 \in \mathbf{R}^+ : \forall\ x \in E \setminus \{x_0\},                           \\
+                 & \bigg(\norm*{x - x_0} < \delta_1 \implies \frac{\norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)}}{\norm*{x - x_0}} < \frac{\varepsilon}{2}\bigg)  \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta_1 \in \mathbf{R}^+ : \forall\ x \in E \setminus \{x_0\},                           \\
+                 & \bigg(\norm*{x - x_0} < \delta_1 \implies \norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)} < \frac{\varepsilon}{2} \norm*{x - x_0}\bigg)          \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta_1 \in \mathbf{R}^+ : \forall\ x \in E \setminus \{x_0\},                           \\
+                 & \bigg(\norm*{x - x_0} < \delta_1 \implies \norm*{f(x) - f(x_0)} < \frac{\varepsilon}{2} \norm*{x - x_0} + \norm*{f'(x_0)(x - x_0)}\bigg)  \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta_1 \in \mathbf{R}^+ : \forall\ x \in E,                                             \\
+                 & \bigg(\norm*{x - x_0} < \delta_1 \implies \norm*{f(x) - f(x_0)} < \frac{\varepsilon}{2} \norm*{x - x_0} + \norm*{f'(x_0)(x - x_0)}\bigg).
+    \end{align*}
+    By Exercise \ref{ex 6.1.4} we know that every linear transformation is continuous.
+    Thus we know that
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta_2 \in \mathbf{R}^+ : \forall\ x \in E,                                                  \\
+                 & \bigg(\norm*{x - x_0} < \delta_2 \implies \norm*{f'(x_0)(x) - f'(x_0)(x_0)} < \frac{\varepsilon}{2}\bigg)                                      \\
+        \implies & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta_2 \in \mathbf{R}^+ : \forall\ x \in E,                                                  \\
+                 & \bigg(\norm*{x - x_0} < \delta_2 \implies \norm*{f'(x_0)(x - x_0)} < \frac{\varepsilon}{2}\bigg).         & \text{(by Definition \ref{6.1.6})}
+    \end{align*}
+    Let \(\delta = \min(\delta_1, \delta_2, 1)\).
+    Then we have
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall\ x \in E, \norm*{x - x_0} < \delta                                    \\
+        \implies & \norm*{f(x) - f(x_0)} < \frac{\varepsilon}{2} \norm*{x - x_0} + \norm*{f'(x_0)(x - x_0)} < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
+    \end{align*}
+    Thus \(f\) is continuous at \(x_0\) from \((E, d_{l^2}|_{E \times E})\) to \((\mathbf{R}^m, d_{l^2}|_{\mathbf{R}^m \times \mathbf{R}^m})\).
+\end{proof}
+
 \begin{exercise}\label{ex 6.4.3}
     Prove Theorem \ref{6.4.1}.
 \end{exercise}
