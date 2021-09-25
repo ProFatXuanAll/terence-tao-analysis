@@ -80,11 +80,125 @@
     We say that \(x\) is a \emph{fixed point} of \(f\) if \(f(x) = x\).
 \end{definition}
 
+\begin{note}
+    Contractions do not necessarily have any fixed points;
+    for instance, the map \(f : \mathbf{R} \to \mathbf{R}\) defined by \(f(x) = x + 1\) does not.
+    However, it turns out that \emph{strict} contractions always do, at least when \(X\) is complete.
+\end{note}
+
 \begin{theorem}[Contraction mapping theorem]\label{6.6.4}
     Let \((X, d)\) be a metric space, and let \(f : X \to X\) be a strict contraction.
     Then \(f\) can have at most one fixed point.
     Moreover, if we also assume that \(X\) is non-empty and complete, then \(f\) has exactly one fixed point.
 \end{theorem}
+
+\begin{proof}
+    We first show that \(f\) can have at most one fixed point.
+    Suppose for sake of contradiction that \(f\) has two fixed point \(x_1, x_2 \in X\).
+    Since \(f\) is a strict contraction, by Definition \ref{6.6.1} we know that there exists a \(c \in (0, 1)\) such that
+    \[
+        d\big(f(x_1), f(x_2)\big) \leq c d(x_1, x_2).
+    \]
+    Since \(x_1, x_2\) are fixed points, by Definition \ref{6.6.3} we know that
+    \[
+        d(x_1, x_2) \leq c d(x_1, x_2)
+    \]
+    which implies \(1 \leq c\), a contradiction.
+    Thus \(f\) can have at most one fixed point.
+
+    Now we show that when \(X \neq \emptyset\) and \((X, d)\) is complete, \(f\) has exactly one fixed point.
+    Let \(x_0 \in X\).
+    Since \(f\) is a strict contraction, by Definition \ref{6.6.1} we know that there exists a \(c \in (0, 1)\) such that
+    \[
+        \forall\ x, y \in X, d\big(f(x), f(y)\big) \leq c d(x, y).
+    \]
+    Now we define a sequence \((x_n)_{n = 1}^\infty\) as follow:
+    \[
+        \forall\ n \in \mathbf{Z}^+, x_n = f(x_{n - 1}).
+    \]
+    We claim that
+    \[
+        \forall\ n \in \mathbf{Z}^+, d(x_{n + 1}, x_n) \leq c^n d(x_1, x_0).
+    \]
+    We use induction on \(n\) to proof the claim.
+    For \(n = 0\), we have
+    \[
+        d(x_1, d_0) \leq c^0 d(x_1, x_0) = d(x_1, x_0).
+    \]
+    Thus the base case holds.
+    Suppose inductively that \(d(x_{n + 1}, x_n) \leq c^n d(x_1, x_0)\) for some \(n \geq 0\).
+    Then for \(n + 1\), we have
+    \begin{align*}
+        d(x_{n + 2}, x_{n + 1}) & = d\big(f(x_{n + 1}), f(x_n)\big) & \text{(by the definition of \((x_n)_{n = 1}^\infty\))} \\
+                                & \leq c d(x_{n + 1}, x_n)          & \text{(by Definition \ref{6.6.1})}                     \\
+                                & \leq c \cdot c^n d(x_1, x_0)                                                               \\
+                                & = c^{n + 1} d(x_1, x_0).
+    \end{align*}
+    This closes the induction.
+
+    Next we claim that \((x_n)_{n = 1}^\infty\) is a Cauchy sequence in \((X, d)\).
+    Let \(\varepsilon \in \mathbf{R}^+\).
+    Observe that
+    \begin{align*}
+                 & c \in (0, 1)                                                                                                                             \\
+        \implies & \lim_{n \to \infty} c^n = 0                                                                                                              \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, c^n < \frac{\varepsilon (1 - c)}{1 + d(x_1, x_0)}                                       \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \frac{d(x_1, x_0)}{1 - c} \leq \frac{1 + d(x_1, x_0)}{1 - c} < \frac{\varepsilon}{c^n}.
+    \end{align*}
+    Fix such \(N\).
+    Let \(n, m \geq N\) and without the loss of generality suppose that \(n \leq m\).
+    Since
+    \begin{align*}
+        d(x_n, x_m) & \leq \sum_{i = n}^m d(x_i, x_{i + 1})                    & \text{(by Definition \ref{1.1.2}(d))} \\
+                    & = \sum_{i = n}^m d(x_{i + 1}, x_i)                       & \text{(by Definition \ref{1.1.2}(c))} \\
+                    & \leq \sum_{i = n}^m c^i d(x_1, x_0)                      & \text{(from the claim above)}         \\
+                    & = d(x_1, x_0) \bigg(\sum_{i = n}^m c^i\bigg)                                                     \\
+                    & = d(x_1, x_0) c^n \bigg(\sum_{i = 0}^{m - n} c^i\bigg)                                           \\
+                    & \leq d(x_1, x_0) c^n \bigg(\sum_{i = 0}^\infty c^i\bigg) & (c \in (0, 1))                        \\
+                    & = \frac{d(x_1, x_0) c^n}{1 - c}                          & \text{(by geometric series)}          \\
+                    & < \frac{\varepsilon c^n}{c^n}                            & (n \geq N)                            \\
+                    & = \varepsilon
+    \end{align*}
+    and \(\varepsilon\) is arbitrary, we know that
+    \[
+        \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n, m \geq N, d(x_n, x_m) \leq \varepsilon.
+    \]
+    By Definition \ref{1.4.6} this means \((x_n)_{n = 1}^\infty\) is a Cauchy sequence in \((X, d)\).
+    By hypothesis we know that \((X, d)\) is complete, thus by Definition \ref{1.4.10} there exists a \(y_0 \in X\) such that \(\lim_{n \to \infty} d(y_0, x_n) = 0\).
+
+    Now we claim that \(y_0\) is the fixed point of \(f\).
+    Suppose for sake of contradiction that \(y_0\) is not the fixed point of \(f\).
+    By Definition \ref{6.6.3} this means \(f(y_0) \neq y_0\), in other words, \(d\big(f(y_0), y_0\big) > 0\).
+    Since \((x_n)_{n = 1}^\infty\) converges to \(y_0\) in \(X\) with respect to \(d\), we know that
+    \begin{align*}
+                 & \forall\ \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, d(y_0, x_n) < \varepsilon \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, d(y_0, x_n) < \frac{d\big(f(y_0), y_0\big)}{2}.
+    \end{align*}
+    Fix such \(N\).
+    But then we have
+    \begin{align*}
+                 & \begin{cases}
+            d(y_0, x_N) < \frac{d\big(f(y_0), y_0\big)}{2} \\
+            d(y_0, x_{N + 1}) < \frac{d\big(f(y_0), y_0\big)}{2}
+        \end{cases}                                                                    \\
+        \implies & \begin{cases}
+            c d(y_0, x_N) < c \frac{d\big(f(y_0), y_0\big)}{2} \\
+            d(y_0, x_{N + 1}) < \frac{d\big(f(y_0), y_0\big)}{2}
+        \end{cases}                                                                    \\
+        \implies & \begin{cases}
+            d\big(f(y_0), f(x_N)\big) < c d(y_0, x_N) < c \frac{d\big(f(y_0), y_0\big)}{2} \\
+            d(y_0, x_{N + 1}) < \frac{d\big(f(y_0), y_0\big)}{2}
+        \end{cases}                                                                    \\
+        \implies & \begin{cases}
+            d\big(f(y_0), x_{N + 1}\big) < c d(y_0, x_N) < c \frac{d\big(f(y_0), y_0\big)}{2} \\
+            d(y_0, x_{N + 1}) < \frac{d\big(f(y_0), y_0\big)}{2}
+        \end{cases}                                                                    \\
+        \implies & d\big(f(y_0), y_0\big) \leq d\big(f(y_0), x_{N + 1}\big) + d(y_0, x_{N + 1})                  \\
+                 & < (c + 1) \frac{d\big(f(y_0), y_0\big)}{2} < d\big(f(y_0), y_0\big),         & (c \in (0, 1))
+    \end{align*}
+    a contraction.
+    Thus \(y_0\) is the fixed point of \(f\).
+\end{proof}
 
 \begin{remark}\label{6.6.5}
     The contraction mapping theorem is one example of a \emph{fixed point theorem}
