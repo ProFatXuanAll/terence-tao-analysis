@@ -1,1 +1,125 @@
 \section{The contraction mapping theorem}\label{sec 6.6}
+
+\begin{definition}[Contraction]\label{6.6.1}
+    Let \((X, d)\) be a metric space, and let \(f : X \to X\) be a map.
+    We say that \(f\) is a \emph{contraction} if we have \(d\big(f(x), f(y)\big) \leq d(x, y)\) for all \(x, y \in X\).
+    We say that \(f\) is a \emph{strict contraction} if there exists a constant \(0 < c < 1\) such that \(d\big(f(x), f(y)\big) \leq c d(x, y)\) for all \(x, y \in X\);
+    we call \(c\) the \emph{contraction constant} of \(f\).
+\end{definition}
+
+\begin{example}\label{6.6.2}
+    The map \(f : \mathbf{R} \to \mathbf{R}\) defined by \(f(x) \coloneqq x + 1\) is a contraction but not a strict contraction.
+    The map \(f : \mathbf{R} \to \mathbf{R}\) defined by \(f(x) \coloneqq x / 2\) is a strict contraction.
+    The map \(f : [0, 1] \to [0, 1]\) defined by \(f(x) \coloneqq x - x^2\) is a contraction but not a strict contraction.
+\end{example}
+
+\begin{definition}[Fixed points]\label{6.6.3}
+    Let \(f : X \to X\) be a map, and \(x \in X\).
+    We say that \(x\) is a \emph{fixed point} of \(f\) if \(f(x) = x\).
+\end{definition}
+
+\begin{theorem}[Contraction mapping theorem]\label{6.6.4}
+    Let \((X, d)\) be a metric space, and let \(f : X \to X\) be a strict contraction.
+    Then \(f\) can have at most one fixed point.
+    Moreover, if we also assume that \(X\) is non-empty and complete, then \(f\) has exactly one fixed point.
+\end{theorem}
+
+\begin{remark}\label{6.6.5}
+    The contraction mapping theorem is one example of a \emph{fixed point theorem}
+    - a theorem which guarantees, assuming certain conditions, that a map will have a fixed point.
+    There are a number of other fixed point theorems which are also useful.
+    One amusing one is the so-called \emph{hairy ball theorem}, which (among other things) states that any continuous map \(f : S^2 \to S^2\) from the sphere \(S^2 \coloneqq \{(x, y, z) \in \mathbf{R}^3 : x^2 + y^2 + z^2 = 1\}\) to itself, must contain either a fixed point, or an anti-fixed point
+    (a point \(x \in S^2\) such that \(f(x) = -x\)).
+    A proof of this theorem can be found in any topology text;
+    it is beyond the scope of this text.
+\end{remark}
+
+\begin{lemma}\label{6.6.6}
+    Let \(B(0, r)\) be a ball in \(\mathbf{R}^n\) centered at the origin, and let \(g : B(0, r) \to \mathbf{R}^n\) be a map such that \(g(0) = 0\) and
+    \[
+        \norm*{g(x) - g(y)} \leq \frac{1}{2} \norm*{x - y}
+    \]
+    for all \(x, y \in B(0, r)\)
+    (here \(\norm*{x}\) denotes the length of \(x\) in \(\mathbf{R}^n\)).
+    Then the function \(f : B(0, r) \to \mathbf{R}^n\) defined by \(f(x) \coloneqq x + g(x)\) is one-to-one, and furthermore the image \(f\big(B(0, r)\big)\) of this map contains the ball \(B(0, r / 2)\).
+\end{lemma}
+
+\begin{proof}
+    We first show that \(f\) is one-to-one.
+    Suppose for sake of contradiction that we had two different points \(x, y \in B(0, r)\) such that \(f(x) = f(y)\).
+    But then we would have \(x + g(x) = y + g(y)\), and hence
+    \[
+        \norm*{g(x) - g(y)} = \norm*{x - y}.
+    \]
+    The only way this can be consistent with our hypothesis \(\norm*{g(x) - g(y)} \leq \frac{1}{2} \norm*{x - y}\) is if \(\norm*{x - y} = 0\), i.e., if \(x = y\), a contradiction.
+    Thus \(f\) is one-to-one.
+
+    Now we show that \(f\big(B(0, r)\big)\) contains \(B(0, r / 2)\).
+    Let \(y\) be any point in \(B(0, r / 2)\);
+    our objective is to find a point \(x \in B(0, r)\) such that \(f(x) = y\), or in other words that \(x = y - g(x)\).
+    So the problem is now to find a fixed point of the map \(x \mapsto y - g(x)\).
+
+    Let \(F : B(0, r) \to B(0, r)\) denote the function \(F(x) \coloneqq y - g(x)\).
+    Observe that if \(x \in B(0, r)\), then
+    \[
+        \norm*{F(x)} \leq \norm*{y} + \norm*{g(x)} \leq \frac{r}{2} + \norm*{g(x) - g(0)} \leq \frac{r}{2} + \frac{1}{2} \norm*{x - 0} < \frac{r}{2} + \frac{r}{2} = r,
+    \]
+    so \(F\) does indeed map \(B(0, r)\) to itself.
+    The same argument shows that for a sufficiently small \(\varepsilon > 0\), \(F\) maps the closed ball \(\overline{B(0, r - \varepsilon)}\) to itself.
+    Also, for any \(x, x'\) in \(B(0, r)\) we have
+    \[
+        \norm*{F(x) - F(x')} = \norm*{g(x') - g(x)} \leq \frac{1}{2} \norm*{x' - x}
+    \]
+    so \(F\) is a strict contraction on \(B(0, r)\), and hence on the complete space \(\overline{B(0, r - \varepsilon)}\).
+    By the contraction mapping theorem, \(F\) has a fixed point, i.e., there exists an \(x\) such that \(x = y - g(x)\).
+    But this means that \(f(x) = y\), as desired.
+\end{proof}
+
+\exercisesection
+
+\begin{exercise}\label{ex 6.6.1}
+    Let \(f : [a, b] \to [a, b]\) be a differentiable function of one variable such that \(\abs*{f'(x)} \leq 1\) for all \(x \in [a, b]\).
+    Prove that \(f\) is a contraction.
+    If in addition \(\abs*{f'(x)} < 1\) for all \(x \in [a, b]\) and \(f'\) is continuous, show that \(f\) is a strict contraction.
+\end{exercise}
+
+\begin{exercise}\label{ex 6.6.2}
+    Show that if \(f : [a, b] \to \mathbf{R}\) is differentiable and is a contraction, then \(\abs*{f'(x)} \leq 1\).
+\end{exercise}
+
+\begin{exercise}\label{ex 6.6.3}
+    Give an example of a function \(f : [a, b] \to \mathbf{R}\) which is continuously differentiable and such that \(\abs*{f(x) - f(y)} < \abs*{x - y}\) for all distinct \(x, y \in [a, b]\), but such that \(\abs*{f'(x)} = 1\) for at least one value of \(x \in [a, b]\).
+\end{exercise}
+
+\begin{exercise}\label{ex 6.6.4}
+    Given an example of a function \(f : [a, b] \to \mathbf{R}\) which is a strict contraction but which is not differentiable for at least one point \(x\) in \([a, b]\).
+\end{exercise}
+
+\begin{exercise}\label{ex 6.6.5}
+    Verify the claims in Examples \ref{6.6.2}.
+\end{exercise}
+
+\begin{proof}
+    See Example \ref{6.6.2}.
+\end{proof}
+
+\begin{exercise}\label{ex 6.6.6}
+    Show that every contraction on a metric space \(X\) is necessarily continuous.
+\end{exercise}
+
+\begin{exercise}\label{ex 6.6.7}
+    Prove Theorem \ref{6.6.4}.
+\end{exercise}
+
+\begin{proof}
+    See Theorem \ref{6.6.4}.
+\end{proof}
+
+\begin{exercise}\label{ex 6.6.8}
+    Let \((X, d)\) be a complete metric space, and let \(f : X \to X\) and \(g : X \to X\) be two strict contractions on \(X\) with contraction coefficients \(c\) and \(c'\) respectively.
+    From Theorem \ref{6.6.4} we know that \(f\) has some fixed point \(x_0\), and \(g\) has some fixed point \(y_0\).
+    Suppose we know that there is an \(\varepsilon > 0\) such that \(d\big(f(x), g(x)\big) \leq \varepsilon\) for all \(x \in X\)
+    (i.e., \(f\) and \(g\) are within \(\varepsilon\) of each other in the uniform metric).
+    Show that \(d(x_0, y_0) \leq \varepsilon / \big(1 - \min(c, c')\big)\).
+    Thus nearby contractions have nearby fixed points.
+\end{exercise}
