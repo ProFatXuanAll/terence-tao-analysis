@@ -35,7 +35,7 @@
     \]
     and
     \[
-        \abs*{\frac{\partial}{\partial x_i} \frac{\partial f}{\partial x_j}(x) - a} \leq \varepsilon
+        \abs*{\frac{\partial}{\partial x_i} \frac{\partial f}{\partial x_j}(x) - a'} \leq \varepsilon
     \]
     whenever \(\norm*{x} \leq 2\delta\).
 
@@ -87,7 +87,116 @@
 \exercisesection
 
 \begin{exercise}\label{ex 6.5.1}
-    Let \(f : \mathbf{R} \to \mathbf{R}\) be the function defined by \(f(x, y) \coloneqq \frac{x y^3}{x^2 + y^2}\) when \((x, y) \neq (0, 0)\), and \(f(0, 0) \coloneqq 0\).
+    Let \(f : \mathbf{R}^2 \to \mathbf{R}\) be the function defined by \(f(x, y) \coloneqq \frac{x y^3}{x^2 + y^2}\) when \((x, y) \neq (0, 0)\), and \(f(0, 0) \coloneqq 0\).
     Show that \(f\) is continuously differentiable, and the double derivatives \(\frac{\partial}{\partial y} \frac{\partial f}{\partial x}\) and \(\frac{\partial}{\partial x} \frac{\partial f}{\partial y}\) exist, but are not equal to each other at \((0, 0)\).
     Explain why this does not contradict Clairaut's theorem.
 \end{exercise}
+
+\begin{proof}
+    Let \((a, b) \in \mathbf{R}^2 \setminus \{(0, 0)\}\).
+    We have
+    \begin{align*}
+         & \frac{\partial f}{\partial x}(a, b)                                                                                                                                        \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{f\big((a, b) + t(1, 0)\big) - f(a, b)}{t}                                                           & \text{(by Definition \ref{6.3.7})} \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{f(a + t, b) - f(a, b)}{t}                                                                                                                \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{\frac{(a + t) b^3}{(a + t)^2 + b^2} - \frac{ab^3}{a^2 + b^2}}{t}                                                                         \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{b^3 (a + t) (a^2 + b^2) - a b^3 \big((a + t)^2 + b^2\big)}{t \big((a + t)^2 + b^2\big) (a^2 + b^2)}                                      \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{t b^5 - t a^2 b^3 - t^2 a b^3}{t \big((a + t)^2 + b^2\big) (a^2 + b^2)}                                                                  \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{b^5 - a^2 b^3 - t a b^3}{\big((a + t)^2 + b^2\big) (a^2 + b^2)}                                                                          \\
+         & = \frac{b^5 - a^2 b^3}{(a^2 + b^2)^2}
+    \end{align*}
+    and
+    \begin{align*}
+         & \frac{\partial f}{\partial y}(a, b)                                                                                                                                          \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{f\big((a, b) + t(0, 1)\big) - f(a, b)}{t}                                                             & \text{(by Definition \ref{6.3.7})} \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{f(a, b + t) - f(a, b)}{t}                                                                                                                  \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{\frac{a (b + t)^3}{a^2 + (b + t)^2} - \frac{ab^3}{a^2 + b^2}}{t}                                                                           \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{a (b + t)^3 (a^2 + b^2) - a b^3 \big(a^2 + (b + t)^2\big)}{t \big(a^2 + (b + t)^2\big) (a^2 + b^2)}                                        \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{(3 b^2 t + 3 b t^2 + t^3) (a^3 + a b^2) - a b^3 (2bt + t^2)}{t \big(a^2 + (b + t)^2\big) (a^2 + b^2)}                                      \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{(3 b^2 + 3 b t + t^2) (a^3 + a b^2) - a b^3 (2b + t)}{\big(a^2 + (b + t)^2\big) (a^2 + b^2)}                                               \\
+         & = \frac{3 a^3 b^2 + a b^4}{(a^2 + b^2)^2}.
+    \end{align*}
+    Since \((a, b)\) is arbitrary, by Lemma \ref{2.2.2} we know that \(\frac{\partial f}{\partial x}\) and \(\frac{\partial f}{\partial y}\) are continuous on \(\mathbf{R}^2 \setminus \{(0, 0)\}\) from \((\mathbf{R}^2, d_{l^2}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+    Observe that
+    \begin{align*}
+        \abs*{\frac{b^5 - a^2 b^3}{(a^2 + b^2)^2}} & = \frac{\abs*{b (b^4 - a^2 b^2)}}{(a^2 + b^2)^2}            \\
+                                                   & = \frac{\abs*{b} \abs*{b^4 - a^2 b^2}}{(a^2 + b^2)^2}       \\
+                                                   & \leq \frac{\abs*{b} (b^4 + 2 a^2 b^2 + a^4)}{(a^2 + b^2)^2} \\
+                                                   & = \frac{\abs*{b} (a^2 + b^2)^2}{(a^2 + b^2)^2}              \\
+                                                   & = \abs*{b}
+    \end{align*}
+    and
+    \begin{align*}
+        \abs*{\frac{3 a^3 b^2 + a b^4}{(a^2 + b^2)^2}} & = \frac{\abs*{a (2 a^2 b^2 + b^4) + a (a^2 b^2)}}{(a^2 + b^2)^2}                               \\
+                                                       & \leq \frac{\abs*{a} \abs*{2 a^2 b^2 + b^4} + \abs*{a} \abs*{a^2 b^2}}{(a^2 + b^2)^2}           \\
+                                                       & \leq \frac{\abs*{a} (a^4 + 2 a^2 b^2 + b^4) + \abs*{a} (a^4 + 2 a^2 b^2 + b^4)}{(a^2 + b^2)^2} \\
+                                                       & = \frac{\abs*{a} (a^2 + b^2)^2 + \abs*{a} (a^2 + b^2)^2}{(a^2 + b^2)^2}                        \\
+                                                       & = 2 \abs*{a}.
+    \end{align*}
+    Thus we have
+    \begin{align*}
+                 & \lim_{(a, b) \to (0, 0) ; (a, b) \neq (0, 0)} \abs*{b} = 0                                                              \\
+        \implies & \lim_{(a, b) \to (0, 0) ; (a, b) \neq (0, 0)} \abs*{\frac{b^5 - a^2 b^3}{(a^2 + b^2)^2}} = 0 & \text{(by squeeze test)} \\
+        \implies & \lim_{(a, b) \to (0, 0) ; (a, b) \neq (0, 0)} \frac{b^5 - a^2 b^3}{(a^2 + b^2)^2} = 0                                   \\
+        \implies & \lim_{(a, b) \to (0, 0) ; (a, b) \neq (0, 0)} \frac{\partial f}{\partial x}(a, b) = 0
+    \end{align*}
+    and
+    \begin{align*}
+                 & \lim_{(a, b) \to (0, 0) ; (a, b) \neq (0, 0)} 2 \abs*{a} = 0                                                                \\
+        \implies & \lim_{(a, b) \to (0, 0) ; (a, b) \neq (0, 0)} \abs*{\frac{3 a^3 b^2 + a b^4}{(a^2 + b^2)^2}} = 0 & \text{(by squeeze test)} \\
+        \implies & \lim_{(a, b) \to (0, 0) ; (a, b) \neq (0, 0)} \frac{3 a^3 b^2 + a b^4}{(a^2 + b^2)^2} = 0                                   \\
+        \implies & \lim_{(a, b) \to (0, 0) ; (a, b) \neq (0, 0)} \frac{\partial f}{\partial y}(a, b) = 0.
+    \end{align*}
+    Since
+    \begin{align*}
+        \frac{\partial f}{\partial x}(0, 0) & = \lim_{t \to 0 ; t \neq 0} \frac{f\big((0, 0) + t(1, 0)\big) - f(0, 0)}{t} & \text{(by Definition \ref{6.3.7})} \\
+                                            & = \lim_{t \to 0 ; t \neq 0} \frac{\frac{t 0^3}{t^2 + 0^2} - 0}{t}                                                \\
+                                            & = 0
+    \end{align*}
+    and
+    \begin{align*}
+        \frac{\partial f}{\partial y}(0, 0) & = \lim_{t \to 0 ; t \neq 0} \frac{f\big((0, 0) + t(0, 1)\big) - f(0, 0)}{t} & \text{(by Definition \ref{6.3.7})} \\
+                                            & = \lim_{t \to 0 ; t \neq 0} \frac{\frac{0 t^3}{0^2 + t^2} - 0}{t}                                                \\
+                                            & = 0,
+    \end{align*}
+    by Definition \ref{2.1.1} we know that \(\frac{\partial f}{\partial x}\) and \(\frac{\partial f}{\partial y}\) are continuous at \((0, 0)\) from \((\mathbf{R}^2, d_{l^2}|_{\mathbf{R}^2 \times \mathbf{R}^2})\) to \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
+    Combine the proof above we conclude by Definition \ref{6.5.1} that \(f\) is continuously differentiable on \(\mathbf{R}^2\).
+
+    Let \((a, b) \in \mathbf{R}^2 \setminus \{(0, 0)\}\).
+    Observe that
+    \begin{align*}
+         & \frac{\partial}{\partial y} \frac{\partial f}{\partial x}                                                                                                                       \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{\frac{\partial f}{\partial x}\big((a, b) + t(0, 1)\big) - \frac{\partial f}{\partial x}(a, b)}{t}                                             \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{\frac{\partial f}{\partial x}(a, b + t) - \frac{\partial f}{\partial x}(a, b)}{t}                                                             \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{\frac{(b + t)^5 - a^2 (b + t)^3}{\big(a^2 + (b + t)^2\big)^2} - \frac{b^5 - a^2 b^3}{(a^2 + b^2)^2}}{t}                                       \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{\big((b + t)^5 - a^2 (b + t)^3\big) (a^2 + b^2)^2 - (b^5 - a^2 b^3) \big(a^2 + (b + t)^2\big)^2}{t \big(a^2 + (b + t)^2\big)^2 (a^2 + b^2)^2} \\
+         & = \frac{-3 a^6 b^2 + 3 a^4 b^4 + 7 a^2 b^6 + b^8}{(a^2 + b^2)^4}
+    \end{align*}
+    and
+    \begin{align*}
+         & \frac{\partial}{\partial x} \frac{\partial f}{\partial y}                                                                                                                               \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{\frac{\partial f}{\partial y}\big((a, b) + t(1, 0)\big) - \frac{\partial f}{\partial y}(a, b)}{t}                                                     \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{\frac{\partial f}{\partial y}(a + t, b) - \frac{\partial f}{\partial y}(a, b)}{t}                                                                     \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{\frac{3 (a + t)^3 b^2 + (a + t) b^4}{\big((a + t)^2 + b^2\big)^2} - \frac{3 a^3 b^2 + a b^4}{(a^2 + b^2)^2}}{t}                                       \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{\big(3 (a + t)^3 b^2 + (a + t) b^4\big) (a^2 + b^2)^2 - (3 a^3 b^2 + a b^4) \big((a + t)^2 + b^2\big)^2}{t \big((a + t)^2 + b^2\big)^2 (a^2 + b^2)^2} \\
+         & = \frac{-3 a^6 b^2 + 3 a^4 b^4 + 7 a^2 b^6 + b^8}{(a^2 + b^2)^4}.
+    \end{align*}
+    Thus by Definition \ref{6.3.7} \(\frac{\partial}{\partial y} \frac{\partial f}{\partial x}\) and \(\frac{\partial}{\partial x} \frac{\partial f}{\partial y}\) exist for all \((a, b) \in \mathbf{R}^2 \setminus \{(0, 0)\}\).
+    Since
+    \begin{align*}
+         & \frac{\partial}{\partial y} \frac{\partial f}{\partial x}(0, 0)                                                                     \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{\frac{\partial f}{\partial x}\big((0, 0) - t(0, 1)\big) - \frac{\partial f}{\partial x}(0, 0)}{t} \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{\frac{t^5 - 0^2 t^3}{(0^2 + t^2)^2} - 0}{t}                                                       \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{t^5}{t^5}                                                                                         \\
+         & = 1
+    \end{align*}
+    and
+    \begin{align*}
+         & \frac{\partial}{\partial x} \frac{\partial f}{\partial y}(0, 0)                                                                     \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{\frac{\partial f}{\partial y}\big((0, 0) - t(1, 0)\big) - \frac{\partial f}{\partial y}(0, 0)}{t} \\
+         & = \lim_{t \to 0 ; t \neq 0} \frac{\frac{3 t^3 0^2 + t 0^4}{(t^2 + 0^2)^2} - 0}{t}                                                   \\
+         & = 0,
+    \end{align*}
+    we know that both \(\frac{\partial}{\partial y} \frac{\partial f}{\partial x}\) and \(\frac{\partial}{\partial x} \frac{\partial f}{\partial y}\) exist at \((0, 0)\) but are not equal to each other.
+    This does not contradict to Theorem \ref{6.5.4} since both \(\frac{\partial}{\partial y} \frac{\partial f}{\partial x}\) and \(\frac{\partial}{\partial x} \frac{\partial f}{\partial y}\) are not continuous at \((0, 0)\).
+\end{proof}
