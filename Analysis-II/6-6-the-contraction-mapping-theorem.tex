@@ -13,6 +13,68 @@
     The map \(f : [0, 1] \to [0, 1]\) defined by \(f(x) \coloneqq x - x^2\) is a contraction but not a strict contraction.
 \end{example}
 
+\begin{proof}
+    Since
+    \[
+        \forall\ x, y \in \mathbf{R}, \abs*{(x + 1) - (y + 1)} = \abs*{x - y} \leq \abs*{x - y},
+    \]
+    by Definition \ref{6.6.1} we know that \(x \mapsto x + 1\) is a contraction.
+    Suppose for sake of contradiction that \(x \mapsto x + 1\) is a strict contraction.
+    Then there exists a \(c \in (0, 1)\) such that
+    \[
+        \forall\ x, y \in \mathbf{R}, \abs*{(x + 1) - (y + 1)} \leq c \abs*{x - y}.
+    \]
+    But we see that when \(x \neq y\), we have
+    \[
+        \abs*{x - y} \leq c \abs*{x - y} \implies 1 \leq c,
+    \]
+    which contradict to the fact that \(c \in (0, 1)\).
+    Thus \(x \mapsto x + 1\) is not a strict contraction.
+
+    Since
+    \[
+        \forall\ x, y \in \mathbf{R}, \abs*{\frac{x}{2} - \frac{y}{2}} = \frac{1}{2} \abs*{x - y} \leq \frac{1}{2} \abs*{x - y},
+    \]
+    by Definition \ref{6.6.1} we know that \(x \mapsto \frac{x}{2}\) is a strict contraction.
+
+    Since
+    \begin{align*}
+                 & \forall\ x, y \in [0, 1], \begin{cases}
+            -1 \leq -x \leq 0 \\
+            -1 \leq -y \leq 0
+        \end{cases} \\
+        \implies & -2 \leq -x - y \leq 0                               \\
+        \implies & -1 \leq 1 - x - y \leq 1                            \\
+        \implies & 0 \leq \abs*{1 - x - y} \leq 1,
+    \end{align*}
+    we know that
+    \begin{align*}
+        \forall\ x, y \in [0, 1], \abs*{(x - x^2) - (y - y^2)} & = \abs*{x - y - (x^2 - y^2)}    \\
+                                                               & = \abs*{x - y - (x - y)(x + y)} \\
+                                                               & = \abs*{(x - y)(1 - x - y)}     \\
+                                                               & = \abs*{x - y} \abs*{1 - x - y} \\
+                                                               & \leq \abs*{x - y}.
+    \end{align*}
+    Thus by Definition \ref{6.6.1} we know that \(x \mapsto x - x^2\) is a contraction on \([0, 1]\).
+    Suppose for sake of contradiction that \(x \mapsto x - x^2\) is a strict contraction on \([0, 1]\).
+    Then there exists a \(c \in (0, 1)\) such that
+    \[
+        \forall\ x, y \in \mathbf{R}, \abs*{(x - x^2) - (y - y^2)} \leq c \abs*{x - y}.
+    \]
+    But when \((x, y) = (\frac{1 - c}{2}, 0)\) we have
+    \begin{align*}
+        \abs*{(x - x^2) - (y - y^2)} & = \abs*{\frac{1 - c}{2} - \bigg(\frac{1 - c}{2}\bigg)^2 - (0 - 0^2)}                  \\
+                                     & = \frac{1 - c}{2} \abs*{1 - \frac{1 - c}{2}}                                          \\
+                                     & = \frac{1 - c}{2} \frac{1 + c}{2}                                                     \\
+                                     & > \frac{1 - c}{2} \frac{c + c}{2}                                    & (c \in (0, 1)) \\
+                                     & = c \frac{1 - c}{2}                                                                   \\
+                                     & = c \abs*{\frac{1 - c}{2} - 0}                                                        \\
+                                     & = c \abs*{x - y},
+    \end{align*}
+    a contradiction.
+    Thus \(x \mapsto x - x^2\) is not a strict contraction on \([0, 1]\).
+\end{proof}
+
 \begin{definition}[Fixed points]\label{6.6.3}
     Let \(f : X \to X\) be a map, and \(x \in X\).
     We say that \(x\) is a \emph{fixed point} of \(f\) if \(f(x) = x\).
