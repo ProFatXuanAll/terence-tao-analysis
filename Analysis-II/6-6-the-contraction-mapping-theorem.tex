@@ -210,6 +210,11 @@
     it is beyond the scope of this text.
 \end{remark}
 
+\begin{note}
+    Basically, Lemma \ref{6.6.6} says that any map \(f\) on a ball which is a ``small'' perturbation (since \(g\) is a strict contraction) of the identity map (since \(f(x) = x + g(x)\)), remains one-to-one and cannot create any internal holes in the ball
+    (there is a smaller ball contained in the origin ball such that every element in the smaller ball can be mapped by \(f\)).
+\end{note}
+
 \begin{lemma}\label{6.6.6}
     Let \(B(0, r)\) be a ball in \(\mathbf{R}^n\) centered at the origin, and let \(g : B(0, r) \to \mathbf{R}^n\) be a map such that \(g(0) = 0\) and
     \[
@@ -246,7 +251,7 @@
     \[
         \norm*{F(x) - F(x')} = \norm*{g(x') - g(x)} \leq \frac{1}{2} \norm*{x' - x}
     \]
-    so \(F\) is a strict contraction on \(B(0, r)\), and hence on the complete space \(\overline{B(0, r - \varepsilon)}\).
+    so \(F\) is a strict contraction on \(B(0, r)\), and hence on the complete space \(\overline{B(0, r - \varepsilon)}\) (see Theorem \ref{1.5.7} and Proposition \ref{1.5.5}).
     By the contraction mapping theorem, \(F\) has a fixed point, i.e., there exists an \(x\) such that \(x = y - g(x)\).
     But this means that \(f(x) = y\), as desired.
 \end{proof}
@@ -258,6 +263,46 @@
     Prove that \(f\) is a contraction.
     If in addition \(\abs*{f'(x)} < 1\) for all \(x \in [a, b]\) and \(f'\) is continuous, show that \(f\) is a strict contraction.
 \end{exercise}
+
+\begin{proof}
+    First we show that \(\abs*{f'(x)} \leq 1\) for all \(x \in [a, b]\) implies \(f\) is a contraction.
+    Let \(x, y \in [a, b]\).
+    If \(x = y\), then we have
+    \[
+        \abs*{f(x) - f(y)} = 0 \leq 0 = \abs*{x - y}.
+    \]
+    So suppose that \(x \neq y\).
+    By mean value theorem (Corollary 10.2.9 in Analysis I) we know that
+    \begin{align*}
+                 & \exists\ c \in (x, y) \cup (y, x) : \frac{f(x) - f(y)}{x - y} = f'(c)                      \\
+        \implies & \exists\ c \in (x, y) \cup (y, x) : \abs*{\frac{f(x) - f(y)}{x - y}} = \abs*{f'(c)} \leq 1 \\
+        \implies & \abs*{f(x) - f(y)} \leq \abs{x - y}.
+    \end{align*}
+    Thus by Definition \ref{6.6.1} \(f\) is a contraction.
+
+    Now we show that \(\abs*{f'(x)} < 1\) for all \(x \in [a, b]\) and \(f'\) is continuous implies \(f\) is a strict contraction.
+    Since \(f'\) is continuous, by Proposition 9.6.7 in Analysis I we know that
+    \begin{align*}
+                 & \exists\ x_{\min}, x_{\max} \in [a, b] : \forall\ x \in [a, b], f'(x_{\min}) \leq f'(x) \leq f'(x_{\max})                                     \\
+        \implies & \exists\ x_{\min}, x_{\max} \in [a, b] : \forall\ x \in [a, b], \abs*{f'(x)} \leq \max\big(\abs*{f'(x_{\min})}, \abs*{f'(x_{\max})}\big) < 1.
+    \end{align*}
+    Let \(x, y \in [a, b]\).
+    If \(x = y\), then we have
+    \begin{align*}
+        \abs*{f(x) - f(y)} & = 0                                                                          \\
+                           & \leq 0                                                                       \\
+                           & = \max\big(\abs*{f'(x_{\min})}, \abs*{f'(x_{\max})}\big) \cdot 0             \\
+                           & = \max\big(\abs*{f'(x_{\min})}, \abs*{f'(x_{\max})}\big) \cdot \abs*{x - y}.
+    \end{align*}
+    So suppose that \(x \neq y\).
+    By mean value theorem (Corollary 10.2.9) we know that
+    \begin{align*}
+                 & \exists\ c \in (x, y) \cup (y, x) : \frac{f(x) - f(y)}{x - y} = f'(c)                                                                        \\
+        \implies & \exists\ c \in (x, y) \cup (y, x) : \abs*{\frac{f(x) - f(y)}{x - y}} = \abs*{f'(c)} < \max\big(\abs*{f'(x_{\min})}, \abs*{f'(x_{\max})}\big) \\
+        \implies & \abs*{f(x) - f(y)} \leq \max\big(\abs*{f'(x_{\min})}, \abs*{f'(x_{\max})}\big) \cdot \abs{x - y}.
+    \end{align*}
+    Thus by Definition \ref{6.6.1} \(f\) is a strict contraction.
+\end{proof}
 
 \begin{exercise}\label{ex 6.6.2}
     Show that if \(f : [a, b] \to \mathbf{R}\) is differentiable and is a contraction, then \(\abs*{f'(x)} \leq 1\).
