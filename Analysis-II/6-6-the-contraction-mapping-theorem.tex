@@ -417,3 +417,35 @@
     Show that \(d(x_0, y_0) \leq \varepsilon / \big(1 - \min(c, c')\big)\).
     Thus nearby contractions have nearby fixed points.
 \end{exercise}
+
+\begin{proof}
+    We have
+    \begin{align*}
+        d(x_0, y_0) & = d\big(f(x_0), g(y_0)\big)                                & \text{(by Definition \ref{6.6.3})}    \\
+                    & \leq d\big(f(x_0), g(x_0)\big) + d\big(g(x_0), g(y_0)\big) & \text{(by Definition \ref{1.1.2}(d))} \\
+                    & \leq \varepsilon + d\big(g(x_0), g(y_0)\big)               & \text{(by hypothesis)}                \\
+                    & \leq \varepsilon + c' d(x_0, y_0)                          & \text{(by Definition \ref{6.6.1})}
+    \end{align*}
+    and
+    \begin{align*}
+        d(x_0, y_0) & = d\big(f(x_0), g(y_0)\big)                                & \text{(by Definition \ref{6.6.3})}    \\
+                    & \leq d\big(f(x_0), f(y_0)\big) + d\big(f(y_0), g(y_0)\big) & \text{(by Definition \ref{1.1.2}(d))} \\
+                    & \leq d\big(f(x_0), f(y_0)\big) + \varepsilon               & \text{(by hypothesis)}                \\
+                    & \leq c d(x_0, y_0) + \varepsilon.                          & \text{(by Definition \ref{6.6.1})}
+    \end{align*}
+    Thus
+    \begin{align*}
+                 & \begin{cases}
+            d(x_0, y_0) \leq \varepsilon + \max(c, c') \cdot d(x_0, y_0) \\
+            d(x_0, y_0) \leq \varepsilon + \min(c, c') \cdot d(x_0, y_0)
+        \end{cases}  \\
+        \implies & \begin{cases}
+            \big(1 - \max(c, c')\big) d(x_0, y_0) \leq \varepsilon \\
+            \big(1 - \min(c, c')\big) d(x_0, y_0) \leq \varepsilon
+        \end{cases}  \\
+        \implies & \begin{cases}
+            d(x_0, y_0) \leq \frac{\varepsilon}{1 - \max(c, c')} \\
+            d(x_0, y_0) \leq \frac{\varepsilon}{1 - \min(c, c')}
+        \end{cases}.
+    \end{align*}
+\end{proof}
