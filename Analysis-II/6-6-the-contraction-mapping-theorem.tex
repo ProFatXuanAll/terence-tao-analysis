@@ -343,6 +343,38 @@
     Given an example of a function \(f : [a, b] \to \mathbf{R}\) which is a strict contraction but which is not differentiable for at least one point \(x\) in \([a, b]\).
 \end{exercise}
 
+\begin{proof}
+    Let \(f : [0, 1] \to \mathbf{R}\) be the function
+    \[
+        \forall\ x \in [0, 1], f(x) = \begin{cases}
+            \frac{x}{2} & \text{if } x \in [0.5, 1] \\
+            \frac{x}{3} & \text{if } x \in [0, 0.5)
+        \end{cases}.
+    \]
+    Observe that
+    \[
+        \lim_{x \to 0.5+} f(x) = \frac{0.5}{2} \neq \frac{0.5}{3} = \lim_{x \to 0.5-} f(x).
+    \]
+    Thus \(f\) is not continuous at \(0.5\) and by Proposition 10.1.10 in Analysis I \(f\) is not differentiable at \(0.5\).
+    Since
+    \begin{align*}
+                 & \forall\ x, y \in [0, 1], \begin{cases}
+            \abs*{f(x) - f(y)} = \frac{1}{2} \abs*{x - y}  & \text{if } x, y \in [0.5, 1]                   \\
+            \abs*{f(x) - f(y)} = \frac{1}{3} \abs*{x - y}  & \text{if } x, y \in [0, 0.5)                   \\
+            \abs*{f(x) - f(y)} = \frac{x}{2} - \frac{y}{3} & \text{if } x \in [0.5, 1] \land y \in [0, 0.5) \\
+            \abs*{f(x) - f(y)} = \frac{y}{2} - \frac{x}{3} & \text{if } x \in [0, 0.5) \land y \in [0.5, 1]
+        \end{cases} \\
+        \implies & \begin{cases}
+            \abs*{f(x) - f(y)} \leq \frac{1}{2} \abs*{x - y}                            & \text{if } x, y \in [0.5, 1]                   \\
+            \abs*{f(x) - f(y)} = \frac{1}{3} \abs*{x - y} \leq \frac{1}{2} \abs*{x - y} & \text{if } x, y \in [0, 0.5)                   \\
+            \abs*{f(x) - f(y)} < \frac{1}{3} (x - y) \leq \frac{1}{2} \abs*{x - y}      & \text{if } x \in [0.5, 1] \land y \in [0, 0.5) \\
+            \abs*{f(x) - f(y)} < \frac{1}{3} (y - x) \leq \frac{1}{2} \abs*{x - y}      & \text{if } x \in [0, 0.5) \land y \in [0.5, 1]
+        \end{cases}                           \\
+        \implies & \abs*{f(x) - f(y)} \leq \frac{1}{2} \abs*{x - y},
+    \end{align*}
+    by Definition \ref{6.6.1} we know that \(f\) is a strict contraction.
+\end{proof}
+
 \begin{exercise}\label{ex 6.6.5}
     Verify the claims in Examples \ref{6.6.2}.
 \end{exercise}
