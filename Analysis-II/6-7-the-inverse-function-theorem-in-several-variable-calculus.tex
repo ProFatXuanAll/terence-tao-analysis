@@ -1,1 +1,200 @@
 \section{The inverse function theorem in several variable calculus}\label{sec 6.7}
+
+\begin{note}
+    We recall the inverse function theorem in single variable calculus (Theorem 10.4.2 in Analysis I), which asserts that if a function \(f : \mathbf{R} \to \mathbf{R}\) is invertible, differentiable, and \(f'(x_0)\) is non-zero, then \(f^{-1}\) is differentiable at \(f(x_0)\), and
+    \[
+        (f^{-1})'\big(f(x_0)\big) = \frac{1}{f'(x_0)}.
+    \]
+
+    In fact, one can say something even when \(f'\) is not invertible, as long as we know that \(f\) is \emph{continuously} differentiable.
+    If \(f'(x_0)\) is non-zero, then \(f'(x_0)\) must be either strictly positive or strictly negative, which implies (since we are assuming \(f'\) to be continuous) that \(f'(x)\) is either strictly positive for \(x\) near \(x_0\), or strictly negative for \(x\) near \(x_0\).
+    In particular, \(f\) must be either strictly increasing near \(x_0\), or strictly decreasing near \(x_0\).
+    In either case, \(f\) will become invertible if we restrict the domain and range of \(f\) to be sufficiently close to \(x_0\) and to \(f(x_0)\) respectively.
+    (The technical terminology for this is that \(f\) is \emph{locally invertible near \(x_0\)}.)
+\end{note}
+
+\begin{lemma}\label{6.7.1}
+    Let \(T : \mathbf{R}^n \to \mathbf{R}^n\) be a linear transformation which is also invertible.
+    Then the inverse transformation \(T^{-1} : \mathbf{R}^n \to \mathbf{R}^n\) is also linear.
+\end{lemma}
+
+\begin{theorem}[Inverse function theorem]\label{6.7.2}
+    Let \(E\) be an open subset of \(\mathbf{R}^n\), and let \(f : E \to \mathbf{R}^n\) be a function which is continuously differentiable on \(E\).
+    Suppose \(x_0 \in E\) is such that the linear transformation \(f'(x_0) : \mathbf{R}^n \to \mathbf{R}^n\) is invertible.
+    Then there exists an open set \(U\) in \(E\) containing \(x_0\), and an open set \(V\) in \(\mathbf{R}^n\) containing \(f(x_0)\), such that \(f\) is a bijection from \(U\) to \(V\).
+    In particular, there is an inverse map \(f^{-1} : V \to U\).
+    Furthermore, this inverse map is differentiable at \(f(x_0)\), and
+    \[
+        (f^{-1})' \big(f(x_0)\big) = \big(f'(x_0)\big)^{-1}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    We first observe that once we know the inverse map \(f^{-1}\) is differentiable, the formula \((f^{-1})' \big(f(x_0)\big) = \big(f'(x_0)\big)^{-1}\) is automatic.
+    This comes from starting with the identity
+    \[
+        I = f^{-1} \circ f
+    \]
+    on \(U\), where \(I : \mathbf{R}^n \to \mathbf{R}^n\) is the identity map \(I(x) \coloneqq x\), and then differentiating both sides using the chain rule at \(x_0\) to obtain
+    \[
+        I'(x_0) = (f^{-1})' \big(f(x_0)\big) f'(x_0).
+    \]
+    Since \(I'(x_0) = I\), we thus have \((f^{-1})' \big(f(x_0)\big) = \big(f'(x_0)\big)^{-1}\) as desired.
+
+    We remark that this argument shows that if \(f'(x_0)\) is \emph{not} invertible, then there is no way that an inverse \(f^{-1}\) can exist and be differentiable at \(f(x_0)\).
+
+    Next, we observe that it suffices to prove the theorem under the additional assumption \(f(x_0) = 0\).
+    The general case then follows from the special case by replacing \(f\) by a new function \(\tilde{f}(x) \coloneqq f(x) - f(x_0)\) and then applying the special case to \(\tilde{f}\)
+    (note that \(V\) will have to shift by \(f(x_0)\)).
+    Note that \(f^{-1}(y) = \tilde{f}^{-1} \big(y - f(x_0)\big)\) (why?).
+    Henceforth we will always assume \(f(x_0) = 0\).
+
+    In a similar manner, one can make the assumption \(x_0 = 0\).
+    The general case then follows from this case by replacing \(f\) by a new function
+    \(\tilde{f}(x) \coloneqq f(x + x_0)\) and applying the special case to \(\tilde{f}\)
+    (note that \(E\) and \(U\) will have to shift by \(x_0\)).
+    Note that \(f^{-1}(y) = \tilde{f}^{-1} (y) + x_0\).
+    Henceforth we will always assume \(x_0 = 0\).
+    Thus we now have that \(f(0) = 0\) and that \(f'(0)\) is invertible.
+
+    Finally, one can assume that \(f'(0) = I\), where \(I : \mathbf{R}^n \to \mathbf{R}^n\) is the identity transformation \(I(x) = x\).
+    The general case then follows from this case by replacing \(f\) with a new function \(\tilde{f} : E \to \mathbf{R}^n\) defined by \(\tilde{f}(x) \coloneqq f'(0)^{-1}\big(f(x)\big)\), and applying the special case to this case.
+    Note from Lemma \ref{6.7.1} that \(f'(0)^{-1}\) is a linear transformation.
+    In particular, we note that \(\tilde{f}(0) = 0\) and that
+    \[
+        \tilde{f}'(0) = f'(0)^{-1} f'(0) = I,
+    \]
+    so by the special case of the inverse function theorem we know that there exists an open set \(U'\) containing \(0\), and an open set \(V'\) containing \(0\), such that \(\tilde{f}\) is a bijection from \(U'\) to \(V'\), and that \(\tilde{f}^{-1} : V' \to U'\) is differentiable at \(0\) with derivative \(I\).
+    But we have \(f(x) = f'(0) \tilde{f}(x)\), and hence \(f\) is a bijection from \(U'\) to \(f'(0)(V')\)
+    (note that \(f'(0)\) is also a bijection).
+    Since \(f'(0)\) and its inverse are both continuous, \(f'(0)(V')\) is open, and it certainly contains \(0\).
+    Now consider the inverse function \(f^{-1} : f'(0)(V') \to U'\).
+    Since \(f(x) = f'(0)\big(\tilde{f}(x)\big)\), we see that \(f^{-1}(y) = \tilde{f}^{-1}\big(f'(0)^{-1}(y)\big)\) for all \(y \in f'(0)(V')\)
+    (why? use the fact that \(\tilde{f}\) is a bijection from \(U'\) to \(V'\)).
+    In particular we see that \(f^{-1}\) is differentiable at \(0\).
+
+    So all we have to do now is prove the inverse function theorem in the special case, when \(x_0 = 0\), \(f(x_0) = 0\), and \(f'(x_0) = I\).
+    Let \(g : E \to \mathbf{R}^n\) denote the function \(g(x) = f(x) - x\).
+    Then \(g(0) = 0\) and \(g'(0) = 0\).
+    In particular
+    \[
+        \frac{\partial g}{\partial x_j}(0) = 0
+    \]
+    for \(j = 1, \dots, n\).
+    Since \(g\) is continuously differentiable, there thus exists a ball \(B(0, r)\) in \(E\) such that
+    \[
+        \norm*{\frac{\partial g}{\partial x_j}(x)} \leq \frac{1}{2 n^2}
+    \]
+    for all \(x \in B(0, r)\).
+    (There is nothing particularly special about \(\frac{1}{2 n^2}\), we just need a nice small number here.)
+    In particular, for any \(x \in B(0, r)\) and \(v = (v_1, \dots, v_n)\) we have
+    \begin{align*}
+        \norm*{D_v g(x)} & = \norm*{\sum_{j = 1}^n v_j \frac{\partial g}{\partial x_j} (x)}          \\
+                         & \leq \sum_{j = 1}^n \abs*{v_j} \norm*{\frac{\partial g}{\partial x_j}(x)} \\
+                         & \leq \sum_{j = 1}^n \norm*{v} \frac{1}{2 n^2}                             \\
+                         & \leq \frac{1}{2n} \norm*{v}.
+    \end{align*}
+    But now for any \(x, y \in B(0, r)\), we have by the fundamental theorem of calculus
+    \begin{align*}
+        g(y) - g(x) & = \int_0^1 \frac{d}{dt} g\big(x + t(y - x)\big) \; dt \\
+                    & = \int_0^1 D_{y - x} g\big(x + t(y - x)\big) \; dt
+    \end{align*}
+    where the integral of a vector-valued function is defined by integrating each component separately.
+    By the previous remark, the vectors \(D_{y - x} g\big(x + t(y - x)\big)\) have a magnitude of at most \(\frac{1}{2n} \norm*{y - x}\).
+    Thus every component of these vectors has magnitude at most \(\frac{1}{2n} \norm*{y - x}\).
+    Thus every component of \(g(y) - g(x)\) has magnitude at most \(\frac{1}{2n} \norm*{y - x}\), and hence \(g(y) - g(x)\) itself has magnitude at most \(\frac{1}{2} \norm*{y - x}\)
+    (actually, it will be substantially less than this, but this bound will be enough for our purposes).
+    In other words, \(g\) is a contraction.
+    By Lemma \ref{6.6.6}, the map \(f = g + I\) is thus one-to-one on \(B(0, r)\), and the image \(f\big(B(0, r)\big)\) contains \(B(0, \frac{r}{2})\).
+    In particular we have an inverse map \(f^{-1} : B(0, \frac{r}{2}) \to B(0, r)\) defined on \(B(0, \frac{r}{2})\).
+
+    Applying the contraction bound with \(y = 0\) we obtain in particular that
+    \[
+        \norm*{g(x)} \leq \frac{1}{2} \norm*{x}
+    \]
+    for all \(x \in B(0, r)\), and so by the triangle inequality
+    \[
+        \frac{1}{2} \norm*{x} \leq \norm*{f(x)} \leq \frac{3}{2} \norm*{x}
+    \]
+    for all \(x \in B(0, r)\).
+
+    Now we set \(V \coloneqq B(0, \frac{r}{2})\) and \(U \coloneqq f^{-1}(V) \cap B(0, r)\).
+    Then by construction \(f\) is a bijection from \(U\) to \(V\).
+    \(V\) is clearly open, and \(U\) is also open since \(f\) is continuous.
+    (Notice that if a set is open relative to \(B(0, r)\), then it is open in \(\mathbf{R}^n\) as well.)
+    Now we want to show that \(f^{-1} : V \to U\) is differentiable at \(0\) with derivative \(I^{-1} = I\).
+    In other words, we wish to show that
+    \[
+        \lim_{x \to 0 ; x \in V \setminus \{0\}} \frac{\norm*{f^{-1}(x) - f^{-1}(0) - I(x - 0)}}{\norm*{x}} = 0.
+    \]
+    Since \(f(0) = 0\), we have \(f^{-1}(0) = 0\), and the above simplifies to
+    \[
+        \lim_{x \to 0 ; x \in V \setminus \{0\}} \frac{f^{-1}(x) - x}{\norm*{x}} = 0.
+    \]
+    Let \((x_n)_{n = 1}^\infty\) be any sequence in \(V \setminus \{0\}\) that converges to \(0\).
+    By Proposition \ref{3.1.5}(b), it suffices to show that
+    \[
+        \lim_{n \to \infty} \frac{\norm*{f^{-1}(x_n) - x_n}}{\norm*{x_n}} = 0.
+    \]
+    Write \(y_n \coloneqq f^{-1}(x_n)\).
+    Then \(y_n \in B(0, r)\) and \(x_n = f(y_n)\).
+    In particular we have
+    \[
+        \frac{1}{2} \norm*{y_n} \leq \norm*{x_n} \leq \frac{3}{2} \norm*{y_n}
+    \]
+    and so since \(\norm*{x_n}\) goes to \(0\), \(\norm*{y_n}\) goes to \(0\) also, and their ratio remains bounded.
+    It will thus suffice to show that
+    \[
+        \lim_{n \to \infty} \frac{\norm*{y_n - f(y_n)}}{\norm*{y_n}} = 0.
+    \]
+    But since \(y_n\) is going to \(0\), and \(f\) is differentiable at \(0\), we have
+    \[
+        \lim_{n \to \infty} \frac{\norm*{f(y_n) - f(0) - f'(0)(y_n - 0)}}{\norm*{y_n}} = 0
+    \]
+    as desired (since \(f(0) = 0\) and \(f'(0) = I\)).
+\end{proof}
+
+\begin{note}
+    The inverse function theorem gives a useful criterion for when a function is (locally) invertible at a point \(x_0\)
+    - all we need is for its derivative \(f'(x_0)\) to be invertible
+    (and then we even get further information, for instance we can compute the derivative of \(f^{-1}\) at \(f(x_0)\)).
+    Of course, this begs the question of how one can tell whether the linear transformation \(f'(x_0)\) is invertible or not.
+    Recall that we have \(f'(x_0) = L_{D f(x_0)}\), so by Lemmas \ref{6.1.13} and \ref{6.1.16} we see that the linear transformation \(f'(x_0)\) is invertible if and only if the matrix \(D f(x_0)\) is.
+    There are many ways to check whether a matrix such as \(D f(x_0)\) is invertible;
+    for instance, one can use determinants, or alternatively Gaussian elimination methods.
+    We will not pursue this matter here, but refer the reader to any linear algebra text.
+\end{note}
+
+\begin{note}
+    If \(f'(x_0)\) exists but is non-invertible, then the inverse function theorem does not apply.
+    In such a situation it is not possible for \(f^{-1}\) to exist and be differentiable at \(f(x_0)\);
+    this was remarked in the proof of Theorem \ref{6.7.2}.
+    But it is still possible for \(f\) to be invertible.
+    For instance, the single-variable function \(f : \mathbf{R} \to \mathbf{R}\) defined by \(f(x) = x^3\) is invertible despite \(f'(0)\) not being invertible.
+\end{note}
+
+\exercisesection
+
+\begin{exercise}\label{ex 6.7.1}
+    Let \(f : \mathbf{R} \to \mathbf{R}\) be the function defined by \(f(x) \coloneqq x + x^2 \sin(1 / x^4)\) for \(x \neq 0\) and \(f(0) \coloneqq 0\).
+    Show that \(f\) is differentiable and \(f'(0) = 1\), but \(f\) is not increasing on any open set containing \(0\).
+\end{exercise}
+
+\begin{exercise}\label{ex 6.7.2}
+    Prove Lemma \ref{6.7.1}.
+\end{exercise}
+
+\begin{proof}
+    See Lemma \ref{6.7.1}.
+\end{proof}
+
+\begin{exercise}\label{ex 6.7.3}
+    Let \(f : \mathbf{R}^n \to \mathbf{R}^n\) be a continuously differentiable function such that \(f'(x)\) is an invertible linear transformation for every \(x \in \mathbf{R}^n\).
+    Show that whenever \(V\) is an open set in \(\mathbf{R}^n\), that \(f(V)\) is also open.
+\end{exercise}
+
+\begin{exercise}\label{ex 6.7.4}
+    Let the notation and hypotheses be as in Theorem \ref{6.7.2}.
+    Show that, after shrinking the open sets \(U, V\) if necessary (while still having \(x_0 \in U\), \(f(x_0) \in V\) of course), the derivative map \(f'(x)\) is invertible for all \(x \in U\), and that the inverse map \(f^{-1}\) is differentiable at every point of \(V\) with \((f^{-1})' \big(f(x)\big) = \big(f'(x)\big)^{-1}\) for all \(x \in U\).
+    Finally, show that \(f^{-1}\) is continuously differentiable on \(V\).
+\end{exercise}
