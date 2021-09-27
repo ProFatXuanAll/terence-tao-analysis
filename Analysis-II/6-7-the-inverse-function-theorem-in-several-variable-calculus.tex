@@ -301,6 +301,37 @@
     Show that whenever \(V\) is an open set in \(\mathbf{R}^n\), that \(f(V)\) is also open.
 \end{exercise}
 
+\begin{proof}
+    Let \(d = d_{l^2}|_{\mathbf{R}^n \times \mathbf{R}^n}\), let \(V\) be an open set in \((\mathbf{R}^n, d)\) and let \(y \in f(V)\).
+    We know that there exists a \(x \in V\) such that \(f(x) = y\).
+    Since \(f\) is continuously differentiable on \(\mathbf{R}^n\) and \(f'(x)\) is invertible, by inverse function theorem (Theorem \ref{6.7.2}) we know that
+    \[
+        \exists\ U, W \subseteq \mathbf{R}^n : \begin{cases}
+            U, W \text{ are open sets in } (\mathbf{R}^n, d) \\
+            x \in U                                          \\
+            y \in W                                          \\
+            f : U \to W \text{ is a bijection}               \\
+            (f^{-1})'(y) = (f^{-1})'\big(f(x)\big) = \big(f'(x)\big)^{-1}
+        \end{cases}.
+    \]
+    Fix such \(U, W\).
+    Since \(V\) is open in \((\mathbf{R}^n, d)\), we know that there exists a \(r \in \mathbf{R}^+\) such that \(B_{(\mathbf{R}^n, d)}(x, r) \subseteq V\).
+    Fix such \(r\).
+    By Proposition \ref{1.2.15}(f) we know that \(U \cap B_{(\mathbf{R}^n, d)}(x, r)\) is open in \((\mathbf{R}^n, d)\).
+    Since \(U \cap B_{(\mathbf{R}^n, d)}(x, r) \subseteq U\), we know that \(f\) is a bijection from \(U \cap B_{(\mathbf{R}^n, d)}(x, r)\) to \(f\big(U \cap B_{(\mathbf{R}^n, d)}(x, r)\big)\).
+    By hypotheses we know that \(f^{-1}\) is differentiable on \(f\big(U \cap B_{(\mathbf{R}^n, d)}(x, r)\big)\), by Exercise \ref{ex 6.4.2} we know that \(f^{-1}\) is continuous \(f\big(U \cap B_{(\mathbf{R}^n, d)}(x, r)\big)\).
+    Thus by Theorem \ref{2.1.5}(a)(c) we know that \(f\big(U \cap B_{(\mathbf{R}^n, d)}(x, r)\big)\) is open in \((\mathbf{R}, d)\).
+    Now we have
+    \begin{align*}
+                 & x \in U \cap B_{(\mathbf{R}^n, d)}(x, r)\big)                                                                                                                          \\
+        \implies & y \in f\big(U \cap B_{(\mathbf{R}^n, d)}(x, r)\big)                                                                                                                    \\
+        \implies & \exists\ r' \in \mathbf{R}^+ : B_{(\mathbf{R}^n, d)}(y, r') \subseteq f\big(U \cap B_{(\mathbf{R}^n, d)}(x, r)\big) & \text{(by Proposition \ref{1.2.15}(a))}          \\
+        \implies & \exists\ r' \in \mathbf{R}^+ : B_{(\mathbf{R}^n, d)}(y, r') \subseteq f(V).                                         & (U \cap B_{(\mathbf{R}^n, d)}(x, r) \subseteq V)
+    \end{align*}
+    Since \(y\) is arbitrary, we know that \(f(V)\) is open in \((\mathbf{R}^n, d)\).
+    Since \(V\) is arbitrary, we know that if \(V\) is an open set in \((\mathbf{R}^n, d)\), then \(f(V)\) is also an open set in \((\mathbf{R}^n, d)\).
+\end{proof}
+
 \begin{exercise}\label{ex 6.7.4}
     Let the notation and hypotheses be as in Theorem \ref{6.7.2}.
     Show that, after shrinking the open sets \(U, V\) if necessary (while still having \(x_0 \in U\), \(f(x_0) \in V\) of course), the derivative map \(f'(x)\) is invertible for all \(x \in U\), and that the inverse map \(f^{-1}\) is differentiable at every point of \(V\) with \((f^{-1})' \big(f(x)\big) = \big(f'(x)\big)^{-1}\) for all \(x \in U\).
