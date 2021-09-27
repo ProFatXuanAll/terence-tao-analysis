@@ -54,7 +54,7 @@
     \]
     on \(U\), where \(I : \mathbf{R}^n \to \mathbf{R}^n\) is the identity map \(I(x) \coloneqq x\), and then differentiating both sides using the chain rule at \(x_0\) to obtain
     \[
-        I'(x_0) = (f^{-1})' \big(f(x_0)\big) f'(x_0).
+        I'(x_0) = (f^{-1})' \big(f(x_0)\big) \circ f'(x_0).
     \]
     Since \(I'(x_0) = I\), we thus have \((f^{-1})' \big(f(x_0)\big) = \big(f'(x_0)\big)^{-1}\) as desired.
 
@@ -63,31 +63,73 @@
     Next, we observe that it suffices to prove the theorem under the additional assumption \(f(x_0) = 0\).
     The general case then follows from the special case by replacing \(f\) by a new function \(\tilde{f}(x) \coloneqq f(x) - f(x_0)\) and then applying the special case to \(\tilde{f}\)
     (note that \(V\) will have to shift by \(f(x_0)\)).
-    Note that \(f^{-1}(y) = \tilde{f}^{-1} \big(y - f(x_0)\big)\) (why?).
+    Note that if \(V_f = \{y \in \mathbf{R}^n : y - f(x_0) \in V\}\), then
+    \[
+        \begin{cases}
+            \tilde{f} : U \to V \\
+            \tilde{f}^{-1} : V \to U
+        \end{cases} \implies \begin{cases}
+            f : U \to V_f \\
+            f^{-1} : V_f \to U
+        \end{cases}
+    \]
+    (one can show that \(f\) is bijective using proof by contradiction)
+    and thus
+    \begin{align*}
+                 & \forall\ x \in U, f(x) = y                                                                                                         \\
+        \implies & f^{-1}(y) = x = \tilde{f}^{-1}\big(\tilde{f}(x)\big) = \tilde{f}^{-1}\big(f(x) - f(x_0)\big) = \tilde{f}^{-1}\big(y - f(x_0)\big).
+    \end{align*}
     Henceforth we will always assume \(f(x_0) = 0\).
 
     In a similar manner, one can make the assumption \(x_0 = 0\).
     The general case then follows from this case by replacing \(f\) by a new function
     \(\tilde{f}(x) \coloneqq f(x + x_0)\) and applying the special case to \(\tilde{f}\)
     (note that \(E\) and \(U\) will have to shift by \(x_0\)).
-    Note that \(f^{-1}(y) = \tilde{f}^{-1} (y) + x_0\).
+    Note that if \(U_f = \{x \in E : x - x_0 \in U\}\), then
+    \[
+        \begin{cases}
+            \tilde{f} : U \to V \\
+            \tilde{f}^{-1} : V \to U
+        \end{cases} \implies \begin{cases}
+            f : U_f \to V \\
+            f^{-1} : V \to U_f
+        \end{cases}
+    \]
+    (one can show that \(f\) is bijective using proof by contradiction)
+    and thus
+    \begin{align*}
+                 & \forall\ x \in U, \tilde{f}(x) = f(x + x_0) = y                                                                                        \\
+        \implies & f^{-1}(y) = x + x_0 = \tilde{f}^{-1}\big(\tilde{f}(x)\big) + x_0 = \tilde{f}^{-1}\big(f(x + x_0)\big) + x_0 = \tilde{f}^{-1}(y) + x_0.
+    \end{align*}
     Henceforth we will always assume \(x_0 = 0\).
     Thus we now have that \(f(0) = 0\) and that \(f'(0)\) is invertible.
 
     Finally, one can assume that \(f'(0) = I\), where \(I : \mathbf{R}^n \to \mathbf{R}^n\) is the identity transformation \(I(x) = x\).
-    The general case then follows from this case by replacing \(f\) with a new function \(\tilde{f} : E \to \mathbf{R}^n\) defined by \(\tilde{f}(x) \coloneqq f'(0)^{-1}\big(f(x)\big)\), and applying the special case to this case.
-    Note from Lemma \ref{6.7.1} that \(f'(0)^{-1}\) is a linear transformation.
+    The general case then follows from this case by replacing \(f\) with a new function \(\tilde{f} : E \to \mathbf{R}^n\) defined by \(\tilde{f}(x) \coloneqq \big(f'(0)\big)^{-1} \big(f(x)\big)\), and applying the special case to this case.
+    Note from Lemma \ref{6.7.1} that \(\big(f'(0)\big)^{-1}\) is a linear transformation.
     In particular, we note that \(\tilde{f}(0) = 0\) and that
-    \[
-        \tilde{f}'(0) = f'(0)^{-1} f'(0) = I,
-    \]
+    \begin{align*}
+        \tilde{f}'(0) & = \Big(\big(f'(0)\big)^{-1}\Big)'\big(f(0)\big) \circ f'(0) & \text{(by Theorem \ref{6.4.1})}     \\
+                      & = \big(f'(0)\big)^{-1} \circ f'(0)                          & \text{(by Exercise \ref{ex 6.4.1})} \\
+                      & = I,
+    \end{align*}
     so by the special case of the inverse function theorem we know that there exists an open set \(U'\) containing \(0\), and an open set \(V'\) containing \(0\), such that \(\tilde{f}\) is a bijection from \(U'\) to \(V'\), and that \(\tilde{f}^{-1} : V' \to U'\) is differentiable at \(0\) with derivative \(I\).
-    But we have \(f(x) = f'(0) \tilde{f}(x)\), and hence \(f\) is a bijection from \(U'\) to \(f'(0)(V')\)
+    But we have
+    \begin{align*}
+                 & \tilde{f}(x) = \big(f'(0)\big)^{-1} \big(f(x)\big)                                 \\
+        \implies & f'(0) \big(\tilde{f}(x)\big) = f'(0) \Big(\big(f'(0)\big)^{-1} \big(f(x)\big)\Big) \\
+        \implies & f(x) = f'(0) \big(\tilde{f}(x)\big),
+    \end{align*}
+    and hence \(f\) is a bijection from \(U'\) to \(f'(0)(V')\)
     (note that \(f'(0)\) is also a bijection).
-    Since \(f'(0)\) and its inverse are both continuous, \(f'(0)(V')\) is open, and it certainly contains \(0\).
+    Since \(f'(0)\) and its inverse are both continuous, \(f'(0)(V')\) is open (see Theorem \ref{2.1.5}(a)(c)), and it certainly contains \(0\).
     Now consider the inverse function \(f^{-1} : f'(0)(V') \to U'\).
-    Since \(f(x) = f'(0)\big(\tilde{f}(x)\big)\), we see that \(f^{-1}(y) = \tilde{f}^{-1}\big(f'(0)^{-1}(y)\big)\) for all \(y \in f'(0)(V')\)
-    (why? use the fact that \(\tilde{f}\) is a bijection from \(U'\) to \(V'\)).
+    Note that
+    \begin{align*}
+                 & f = f'(0) \circ \tilde{f}                                                              \\
+        \implies & f^{-1} = \tilde{f}^{-1} \circ \big(f'(0)\big)^{-1}                                     \\
+        \implies & \forall\ y \in f'(0)(V'), f^{-1}(y) = \tilde{f}^{-1}\Big(\big(f'(0)\big)^{-1}(y)\Big).
+    \end{align*}
     In particular we see that \(f^{-1}\) is differentiable at \(0\).
 
     So all we have to do now is prove the inverse function theorem in the special case, when \(x_0 = 0\), \(f(x_0) = 0\), and \(f'(x_0) = I\).
@@ -113,7 +155,8 @@
     \end{align*}
     But now for any \(x, y \in B(0, r)\), we have by the fundamental theorem of calculus
     \begin{align*}
-        g(y) - g(x) & = \int_0^1 \frac{d}{dt} g\big(x + t(y - x)\big) \; dt \\
+        g(y) - g(x) & = g\big(x + t(y - x)\big) \big|_{t = 0}^{t = 1}       \\
+                    & = \int_0^1 \frac{d}{dt} g\big(x + t(y - x)\big) \; dt \\
                     & = \int_0^1 D_{y - x} g\big(x + t(y - x)\big) \; dt
     \end{align*}
     where the integral of a vector-valued function is defined by integrating each component separately.
@@ -146,7 +189,7 @@
     \]
     Since \(f(0) = 0\), we have \(f^{-1}(0) = 0\), and the above simplifies to
     \[
-        \lim_{x \to 0 ; x \in V \setminus \{0\}} \frac{f^{-1}(x) - x}{\norm*{x}} = 0.
+        \lim_{x \to 0 ; x \in V \setminus \{0\}} \frac{\norm*{f^{-1}(x) - x}}{\norm*{x}} = 0.
     \]
     Let \((x_n)_{n = 1}^\infty\) be any sequence in \(V \setminus \{0\}\) that converges to \(0\).
     By Proposition \ref{3.1.5}(b), it suffices to show that
