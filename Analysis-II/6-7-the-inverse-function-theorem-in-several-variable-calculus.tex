@@ -240,6 +240,54 @@
     Show that \(f\) is differentiable and \(f'(0) = 1\), but \(f\) is not increasing on any open set containing \(0\).
 \end{exercise}
 
+\begin{proof}
+    Let \(x \in \mathbf{R} \setminus \{0\}\).
+    Then we have
+    \begin{align*}
+                 & (x \mapsto x^{-4})' = (-4) x^{-5}                                               \\
+        \implies & \big(x \mapsto \sin(x^{-4})\big)' = (-4) x^{-5} \cos(x^{-4})                    \\
+        \implies & \big(x \mapsto x^2 \sin(x^{-4})\big)' = 2x \sin(x^{-4}) - 4 x^{-3} \cos(x^{-4}) \\
+        \implies & f'(x) = 1 + 2 x \sin(x^{-4}) - 4 x^{-3} \cos(x^{-4}).
+    \end{align*}
+    Observe that
+    \[
+        \forall\ x \in \mathbf{R} \setminus \{0\}, \abs*{x \sin(x^{-4})} = \abs*{x} \abs*{\sin(x^{-4})} \leq \abs*{x} \cdot 1.
+    \]
+    Thus we have
+    \[
+        \lim_{x \to 0 ; x \in \mathbf{R} \setminus \{0\}} x = 0 \implies \lim_{x \to 0 ; x \in \mathbf{R} \setminus \{0\}} x \sin(x^{-4}) = 0
+    \]
+    and by squeeze test
+    \begin{align*}
+         & \lim_{x \to 0 ; x \in \mathbf{R} \setminus \{0\}} \frac{f(x) - f(0)}{x - 0}        \\
+         & = \lim_{x \to 0 ; x \in \mathbf{R} \setminus \{0\}} \frac{x + x^2 \sin(x^{-4})}{x} \\
+         & = \lim_{x \to 0 ; x \in \mathbf{R} \setminus \{0\}} 1 + x \sin(x^{-4})             \\
+         & = 1.
+    \end{align*}
+    We conclude that \(f\) is differentiable on \(\mathbf{R}\) and \(f'(0) = 1\).
+
+    Let \(E\) be an open set in \(\mathbf{R}\) containing \(0\).
+    By Proposition \ref{1.2.15}(a) we know that
+    \[
+        \exists\ r \in \mathbf{R}^+ : B(0, r) \subseteq E \implies (-r, r) \subseteq E.
+    \]
+    Fix such \(r\).
+    Since
+    \begin{align*}
+                 & \lim_{n \to \infty} \frac{1}{n} = 0                                               \\
+        \implies & \lim_{n \to \infty} \frac{1}{2 n \pi} = 0                                         \\
+        \implies & \lim_{n \to \infty} \sqrt[4]{\frac{1}{2 n \pi}} = 0                               \\
+        \implies & \exists\ N \in \mathbf{Z}^+ : \forall\ n \geq N, \sqrt[4]{\frac{1}{2 n \pi}} < r,
+    \end{align*}
+    by fixing such \(N\) we know that
+    \begin{align*}
+                 & \sqrt[4]{\frac{1}{2 N \pi}} \in (-r, r) \subseteq E                                                                                   \\
+        \implies & f'\bigg(\sqrt[4]{\frac{1}{2 N \pi}}\bigg) = 1 + 2 \sqrt[4]{\frac{1}{2 N \pi}} \sin(2 N \pi) - 4 (2 N \pi)^{\frac{3}{4}} \cos(2 N \pi) \\
+                 & = 1 - 4 (2 N \pi)^{\frac{3}{4}} \leq 1 - 4 = -3 < 0.
+    \end{align*}
+    Thus \(f\) is not increasing at \(\sqrt[4]{\frac{1}{2 N \pi}}\), and not increasing on \(E\).
+\end{proof}
+
 \begin{exercise}\label{ex 6.7.2}
     Prove Lemma \ref{6.7.1}.
 \end{exercise}
