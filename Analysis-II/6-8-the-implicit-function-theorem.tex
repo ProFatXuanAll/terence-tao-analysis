@@ -1,1 +1,152 @@
 \section{The implicit function theorem}\label{sec 6.8}
+
+\begin{note}
+    Any function \(g : \mathbf{R}^n \to \mathbf{R}\) gives rise to a graph \(\Big\{\big(x, g(x)\big) : x \in \mathbf{R}^n\Big\}\) in \(\mathbf{R}^{n + 1}\), which in general looks like some sort of \(n\)-dimensional surface in \(\mathbf{R}^{n + 1}\)
+    (the technical term for this is a \emph{hypersurface}).
+    Conversely, one may ask which hypersurfaces are actually graphs of some function, and whether that function is continuous or differentiable.
+\end{note}
+
+\begin{note}
+    If the hypersurface is given geometrically, then one can again invoke the vertical line test to work out whether it is a graph or not.
+    But what if the hypersurface is given algebraically, or more generally, the hypersurface is given as some function?
+    In this case, it is still possible to say whether the hypersurface is a graph, locally at least, by means of the \emph{implicit function theorem}.
+\end{note}
+
+\begin{theorem}[Implicit function theorem]\label{6.8.1}
+    Let \(E\) be an open subset of \(\mathbf{R}^n\), let \(f : E \to \mathbf{R}\) be continuously differentiable, and let \(y = (y_1, \dots, y_n)\) be a point in \(E\) such that \(f(y) = 0\) and \(\frac{\partial f}{\partial x_n}(y) \neq 0\).
+    Then there exists an open subset \(U\) of \(\mathbf{R}^{n - 1}\) containing \((y_1, \dots, y_n - 1)\), an open subset \(V\) of \(E\) containing \(y\), and a function \(g : U \to \mathbf{R}\) such that \(g(y_1, \dots, y_n - 1) = y_n\), and
+    \begin{align*}
+         & \{(x_1, \dots, x_n) \in V : f(x_1, \dots, x_n) = 0\}                                                     \\
+         & = \Big\{\big(x_1, \dots, x_{n - 1}, g(x_1, \dots, x_{n - 1})\big) : (x_1, \dots, x_{n - 1}) \in U\Big\}.
+    \end{align*}
+    In other words, the set \(\{x \in V : f(x) = 0\}\) is a graph of a function over \(U\).
+    Moreover, \(g\) is differentiable at \((y_1, \dots, y_{n - 1})\), and we have
+    \[
+        \frac{\partial g}{\partial x_j}(y_1, \dots, y_{n - 1}) = -\frac{\partial f}{\partial x_j}(y) / \frac{\partial f}{\partial x_n}(y) \tag{6.1}\label{eq 6.1}
+    \]
+    for all \(1 \leq j \leq n - 1\).
+\end{theorem}
+
+\begin{proof}
+    This theorem looks somewhat fearsome, but actually it is a fairly quick consequence of the inverse function theorem.
+    Let \(F : E \to \mathbf{R}^n\) be the function
+    \[
+        F(x_1, \dots, x_n) \coloneqq \big(x_1, \dots, x_{n - 1}, f(x_1, \dots, x_n)\big).
+    \]
+    This function is continuously differentiable.
+    Also note that
+    \[
+        F(y) = (y_1, \dots, y_{n - 1}, 0)
+    \]
+    and
+    \begin{align*}
+        D F(y) & = \bigg(\frac{\partial F}{\partial x_1}(y)^\top, \frac{\partial F}{\partial x_2}(y)^\top, \dots, \frac{\partial F}{\partial x_n}(y)^\top\bigg) \\
+               & = \begin{pmatrix}
+            1                                  & 0                                  & \dots  & 0                                        & 0                                  \\
+            0                                  & 1                                  & \dots  & 0                                        & 0                                  \\
+            \vdots                             & \vdots                             & \ddots & \vdots                                   & \vdots                             \\
+            0                                  & 0                                  & \dots  & 1                                        & 0                                  \\
+            \frac{\partial F}{\partial x_1}(y) & \frac{\partial F}{\partial x_2}(y) & \dots  & \frac{\partial F}{\partial x_{n - 1}}(y) & \frac{\partial F}{\partial x_n}(y)
+        \end{pmatrix}.
+    \end{align*}
+    Since \(\frac{\partial f}{\partial x_n}(y)\) is assumed by hypothesis to be non-zero, this matrix is invertible;
+    this can be seen either by computing the determinant, or using row reduction, or by computing the inverse explicitly, which is
+    \[
+        D F(y)^{-1} = \begin{pmatrix}
+            1                                       & 0                                       & \dots  & 0                                             & 0      \\
+            0                                       & 1                                       & \dots  & 0                                             & 0      \\
+            \vdots                                  & \vdots                                  & \ddots & \vdots                                        & \vdots \\
+            0                                       & 0                                       & \dots  & 1                                             & 0      \\
+            -\frac{\partial f}{\partial x_1}(y) / a & -\frac{\partial f}{\partial x_2}(y) / a & \dots  & -\frac{\partial f}{\partial x_{n - 1}}(y) / a & 1 / a
+        \end{pmatrix},
+    \]
+    where we have written \(a = \frac{\partial f}{\partial x_n}(y)\) for short.
+    Thus the inverse function theorem applies, and we can find an open set \(V\) in \(E\) containing \(y\), and an open set \(W\) in \(\mathbf{R}^n\) containing \(F(y) = (y_1, \dots, y_{n - 1}, 0)\), such that \(F\) is a bijection from \(V\) to \(W\), and that \(F^{-1}\) is differentiable at \((y_1, \dots, y_{n - 1}, 0)\).
+
+    Let us write \(F^{-1}\) in co-ordinates as
+    \[
+        F^{-1}(x) = \big(h_1(x), h_2(x), \dots, h_n(x)\big)
+    \]
+    where \(x \in W\).
+    Since \(F\big(F^{-1}(x)\big) = x\), we have \(h_j(x_1, \dots, x_n) = x_j\) for all \(1 \leq j \leq n - 1\) and \(x \in W\), and
+    \[
+        f\big(x_1, \dots, x_{n - 1}, h_n(x_1, \dots, x_n)\big) = x_n.
+    \]
+    Also, \(h_n\) is differentiable at \((y_1, \dots, y_{n - 1}, 0)\) since \(F^{-1}\) is.
+
+    Now we set \(U \coloneqq \{(x_1, \dots, x_{n - 1}) \in \mathbf{R}^{n - 1} : (x_1, \dots, x_{n - 1}, 0) \in W\}\).
+    Note that \(U\) is open and contains \((y_1, \dots, y_{n - 1})\).
+    Now we define \(g : U \to \mathbf{R}\) by \(g(x_1, \dots, x_{n - 1}) \coloneqq h_n(x_1, \dots, x_{n - 1}, 0)\).
+    Then \(g\) is differentiable at \((y_1, \dots, y_{n - 1})\).
+    Now we prove that
+    \begin{align*}
+         & \{(x_1, \dots, x_n) \in V : f(x_1, \dots, x_n) = 0\}                                                     \\
+         & = \Big\{\big(x_1, \dots, x_{n - 1}, g(x_1, \dots, x_{n - 1})\big) : (x_1, \dots, x_{n - 1}) \in U\Big\}.
+    \end{align*}
+    First suppose that \((x_1, \dots, x_n) \in V\) and \(f(x_1, \dots, x_n) = 0\).
+    Then we have
+    \[
+        F(x_1, \dots, x_n) = (x_1, \dots, x_{n - 1}, 0),
+    \]
+    which lies in \(W\).
+    Thus \((x_1, \dots, x_{n - 1})\) lies in \(U\).
+    Applying \(F^{-1}\), we see that
+    \[
+        (x_1, \dots, x_n) = F^{-1}(x_1, \dots, x_{n - 1}, 0).
+    \]
+    In particular \(x_n = h_n(x_1, \dots, x_{n - 1}, 0)\), and hence \(x_n = g(x_1, \dots, x_{n - 1})\).
+    Thus every element of the left-hand set lies in the right-hand set.
+    The reverse inclusion comes by reversing all the above steps and is left to the reader.
+
+    Finally, we show the formula for the partial derivatives of \(g\).
+    From the preceding discussion we have
+    \[
+        f\big(x_1, \dots, x_{n - 1}, g(x_1, \dots, x_{n - 1})\big) = 0
+    \]
+    for all \((x_1, \dots, x_{n - 1}) \in U\).
+    Since \(g\) is differentiable at \((y_1, \dots, y_{n - 1})\), and \(f\) is differentiable at \((y_1, \dots, y_{n - 1}, g(y_1, \dots, y_{n - 1})) = y\), we may use the chain rule, differentiating in \(x_j\), to obtain
+    \[
+        \frac{\partial f}{\partial x_j}(y) + \frac{\partial f}{\partial x_n}(y) \frac{\partial g}{\partial x_j}(y_1, \dots, y_{n - 1}) = 0
+    \]
+    and the claim follows by simple algebra.
+\end{proof}
+
+\begin{remark}\label{6.8.2}
+    The equation (\ref{eq 6.1}) is sometimes derived using \emph{implicit differentiation}.
+    Basically, the point is that if you know that
+    \[
+        f(x_1, \dots, x_n) = 0
+    \]
+    then (as long as \(\frac{\partial f}{\partial x_n} \neq 0\)) the variable \(x_n\) is ``implicitly'' defined in terms of the other \(n - 1\) variables, and one can differentiate the above identity in, say, the \(x_j\) direction using the chain rule to obtain
+    \[
+        \frac{\partial f}{\partial x_j} + \frac{\partial f}{\partial x_n} \frac{\partial x_n}{\partial x_j} = 0
+    \]
+    which is (\ref{eq 6.1}) in disguise
+    (we are using \(g\) to represent the implicit function defining \(x_n\) in terms of \(x_1, \dots, x_n\)).
+    Thus, the implicit function theorem allows one to define a dependence implicitly, by means of a constraint rather than by a direct formula of the form \(x_n = g(x_1, \dots, x_{n - 1})\).
+\end{remark}
+
+\begin{note}
+    In the implicit function theorem, if the derivative \(\frac{\partial f}{\partial x_n}\) equals zero at some point, then it is unlikely that the set \(\{x \in \mathbf{R}^n : f(x) = 0\}\) can be written as a graph of the \(x_n\) variable in terms of the other \(n - 1\) variables near that point.
+    However, if some other derivative \(\frac{\partial f}{\partial x_j}\) is non-zero, then it would be possible to write the \(x_j\) variable in terms of the other \(n - 1\) variables, by a variant of the implicit function theorem.
+    Thus as long as the gradient \(\nabla f\) is not entirely zero, one can write this set \(\{x \in \mathbf{R}^n : f(x) = 0\}\) as a graph of \emph{some} variable \(x_j\) in terms of the other \(n - 1\) variables.
+    (The circle \(\{(x, y) \in \mathbf{R}^2 : x^2 + y^2 - 1 = 0\}\) is a good example of this;
+    it is not a graph of \(y\) in terms of \(x\), or \(x\) in terms of \(y\), but near every point it is one of the two.
+    And this is because the gradient of \(x^2 + y^2 - 1\) is never zero on the circle.)
+    However, if \(\nabla f\) does vanish at some point \(x_0\), then we say that \(f\) has a \emph{critical point} at \(x_0\) and the behavior there is much more complicated.
+    For instance, the set \(\{(x, y) \in \mathbf{R}^2 : x^2 - y^2 = 0\}\) has a critical point at \((0, 0)\) and there the set does not look like a graph of any sort
+    (it is the union of two lines).
+\end{note}
+
+\begin{remark}\label{6.8.4}
+    Sets which look like graphs of continuous functions at every point have a name, they are called \emph{manifolds}.
+    Thus \(\{x \in \mathbf{R}^n : f(x) = 0\}\) will be a manifold if it contains no critical points of \(f\).
+    The theory of manifolds is very important in modern geometry (especially differential geometry and algebraic geometry), but we will not discuss it here as it is a graduate level topic.
+\end{remark}
+
+\exercisesection
+
+\begin{exercise}\label{ex 6.8.1}
+    Let the notation and hypotheses be as in Theorem \ref{6.8.1}.
+    Show that, after shrinking the open sets \(U, V\) if necessary, that the function \(g\) becomes continuously differentiable on all of \(U\), and the equation (\ref{eq 6.1}) holds at all points of \(U\).
+\end{exercise}
