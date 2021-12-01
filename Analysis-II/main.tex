@@ -1,33 +1,53 @@
+% We use chapter structure.
 \documentclass[12pt,oneside]{book}
+
+%==============================================================================
+% Preamble.
+%==============================================================================
+
+% Correctly showing characters outside ASCII.
 \usepackage[T1]{fontenc}
+% File is written and read with utf8 encoding.
 \usepackage[utf8]{inputenc}
+% Set paging layout.
 \usepackage[margin=1.2in]{geometry}
-\usepackage{amsthm}
+% Including `amsfonts'.  Must be loaded before `mathtools'.
 \usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{dsfont}
-\usepackage[inline]{enumitem}
+% Including `amsmath' and fixing bugs for `amsmath'.
 \usepackage{mathtools}
+% Must be loaded after `amsmath' and `mathtools'.
+\usepackage{amsthm}
+% Automatically adjust character spacing at margins.
+\usepackage{microtype}
+% Provide further utilities and fix bugs for `enumerate', `itemize' and
+% `description'.
+\usepackage{enumitem}
+% Provide better quoting environment.
 \usepackage{dirtytalk}
-
+% Parsing list inside `\newcommand'.
+\usepackage{listofitems}
+% Nice looking if-then-else structure with comparison functionality.
+\usepackage{ifthen}
+% Automatically add hyperlinks to labels/refs.  Must be loaded after all
+% packages above and before `cleveref'.  Recommend to use with `natbib' when
+% you need bibtex.
 \usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,
-    urlcolor=cyan,
+
+\hypersetup{         % This macro come with `hyperref'.
+	colorlinks=true, % Color hyperlinks.
+	linkcolor=blue,  % Color local hyperlinks with blue.
+	urlcolor=cyan,   % Color url links with cyan.
 }
-\urlstyle{same}
 
-\title{Analysis II}
-\author{ProFatXuanAll}
+%------------------------------------------------------------------------------
+% Define environments.
+%------------------------------------------------------------------------------
 
-\begin{document}
-
-\maketitle
-
-\tableofcontents{}
-
+% Text inside the body of theorem-like environments are set to Roman font.
+% theorem-like environments share their counters, counters follow section and
+% reset in every sections (except for axioms, axioms counters are reset in each
+% chapter).  Exercises has their owned counter.  Notes do not use counter.
+% See `amsthm' for details.
 \theoremstyle{definition}
 \newtheorem{axiom}{Axiom}[chapter]
 \newtheorem{additional corollary}{Additional Corollary}[section]
@@ -41,25 +61,73 @@
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem*{note}{Note}
 
+\theoremstyle{remark}
+\newtheorem*{meta-proof}{Meta-proof}
+
+% In `enumerate' enviroments, items' label are alphabets and surrounded by
+% parentheses.  See `enumitem' for details.
 \renewcommand{\labelenumi}{\textnormal{(}\alph{enumi}\textnormal{)}}
 
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}
-\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
-\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
-\DeclarePairedDelimiter\norm{\lVert}{\rVert}
-\DeclarePairedDelimiter\inner{\langle}{\rangle}
-
+% Formatting exercises section.
 \newcommand{\exercisesection}{
     \begin{center}
         --- Exercises ---
     \end{center}
 }
 
+%------------------------------------------------------------------------------
+% Define operators and symbols.
+%------------------------------------------------------------------------------
+
+% Absolute value.
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+% Ceiling.
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+% Floor.
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+% Norm.
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+% Inner product.
+\DeclarePairedDelimiter\inner{\langle}{\rangle}
+
+%==============================================================================
+% Document.
+%==============================================================================
+
+\begin{document}
+
+%------------------------------------------------------------------------------
+% Front matters.
+%------------------------------------------------------------------------------
+
+\frontmatter
+
+% Author informations.
+\title{Analysis II}
+\author{ProFatXuanAll}
+\maketitle
+
+% Table of contents.
+\tableofcontents{}
+
+%------------------------------------------------------------------------------
+% Main matters.
+%------------------------------------------------------------------------------
+
+\mainmatter
+
+% All chapters are in separated files.  We include them here.
 \input{1-metric-spaces.tex}
 \input{2-continuous-functions-on-metric-spaces.tex}
 \input{3-uniform-convergence.tex}
 \input{4-power-series.tex}
 \input{5-fourier-series.tex}
 \input{6-several-variable-differential-calculus.tex}
+
+%------------------------------------------------------------------------------
+% Back matters.
+%------------------------------------------------------------------------------
+
+\backmatter
 
 \end{document}
