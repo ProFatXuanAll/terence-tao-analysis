@@ -1,7 +1,7 @@
 \section{The Fourier and Plancherel theorems}\label{sec 5.5}
 
 \begin{theorem}[Fourier theorem]\label{5.5.1}
-    For any \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), the series \(\sum_{n = -\infty}^\infty \hat{f}(n) e_n\) converges in \(L^2\) metric to \(f\).
+    For any \(f \in C(\R / \Z ; \C)\), the series \(\sum_{n = -\infty}^\infty \hat{f}(n) e_n\) converges in \(L^2\) metric to \(f\).
     In other words, we have
     \[
         \lim_{N \to \infty} \norm*{f - \sum_{n = -N}^N \hat{f}(n) e_n}_2 = 0.
@@ -21,7 +21,7 @@
 
     Now let \(N > N_0\), and let \(F_N \coloneqq \sum_{n = -N}^N \hat{f}(n) e_n\).
     We claim that \(\norm*{f - F_N}_2 \leq \varepsilon\).
-    First observe that for any \(\abs*{m} \leq N\), we have
+    First observe that for any \(\abs{m} \leq N\), we have
     \[
         \inner*{f - F_N, e_m} = \inner*{f, e_m} - \sum_{n = -N}^N \hat{f}(n) \inner*{e_n, e_m} = \hat{f}(m) - \hat{f}(m) = 0,
     \]
@@ -30,7 +30,7 @@
     \[
         \inner*{f - F_N, F_N - P} = 0
     \]
-    since we can write \(F_N - P\) as a linear combination of the \(e_m\) for which \(\abs*{m} \leq N\).
+    since we can write \(F_N - P\) as a linear combination of the \(e_m\) for which \(\abs{m} \leq N\).
     By Pythagoras' theorem (Lemma \ref{5.2.7}(d)) we therefore have
     \[
         \norm*{f - P}_2^2 = \norm*{f - F_N}_2^2 + \norm*{F_N - P}_2^2
@@ -52,7 +52,7 @@
 \end{remark}
 
 \begin{theorem}\label{5.5.3}
-    Let \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), and suppose that the series \(\sum_{n = -\infty}^\infty \abs*{\hat{f}(n)}\) is absolutely convergent.
+    Let \(f \in C(\R / \Z ; \C)\), and suppose that the series \(\sum_{n = -\infty}^\infty \abs{\hat{f}(n)}\) is absolutely convergent.
     Then the series \(\sum_{n = -\infty}^\infty \hat{f}(n) e_n\) converges uniformly to \(f\).
     In other words, we have
     \[
@@ -61,7 +61,7 @@
 \end{theorem}
 
 \begin{proof}
-    By the Weierstrass \(M\)-test (Theorem \ref{3.5.7}), we see that \(\sum_{n = -\infty}^\infty \hat{f}(n) e_n\) converges to some function \(F\), which by Lemma \ref{5.1.5}(c) is also continuous and \(\mathbf{Z}\)-periodic.
+    By the Weierstrass \(M\)-test (Theorem \ref{3.5.7}), we see that \(\sum_{n = -\infty}^\infty \hat{f}(n) e_n\) converges to some function \(F\), which by Lemma \ref{5.1.5}(c) is also continuous and \(\Z\)-periodic.
     (Strictly speaking, the Weierstrass \(M\)-test was phrased for series from \(n = 1\) to \(n = +\infty\), but also works for series from \(n = -\infty\) to \(n = +\infty\);
     this can be seen by splitting the doubly infinite series into two pieces.)
     Thus
@@ -83,13 +83,13 @@
 \end{proof}
 
 \begin{theorem}[Plancherel theorem]\label{5.5.4}
-    For any \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), the series
+    For any \(f \in C(\R / \Z ; \C)\), the series
     \[
-        \sum_{n = -\infty}^\infty \abs*{\hat{f}(n)}^2
+        \sum_{n = -\infty}^\infty \abs{\hat{f}(n)}^2
     \]
     is absolutely convergent, and
     \[
-        \norm*{f}_2^2 = \sum_{n = -\infty}^\infty \abs*{\hat{f}(n)}^2.
+        \norm*{f}_2^2 = \sum_{n = -\infty}^\infty \abs{\hat{f}(n)}^2.
     \]
 \end{theorem}
 
@@ -106,19 +106,19 @@
     \]
     On the other hand, by Corollary \ref{5.3.6} we have
     \[
-        \norm*{\sum_{n = -N}^N \hat{f}(n) e_n}_2 = \bigg(\sum_{n = -N}^N \abs*{\hat{f}(n)}^2\bigg)^{1 / 2}
+        \norm*{\sum_{n = -N}^N \hat{f}(n) e_n}_2 = \bigg(\sum_{n = -N}^N \abs{\hat{f}(n)}^2\bigg)^{1 / 2}
     \]
     and hence
     \[
-        (\norm*{f}_2 - \varepsilon)^2 \leq \sum_{n = -N}^N \abs*{\hat{f}(n)}^2 \leq (\norm*{f}_2 + \varepsilon)^2.
+        (\norm*{f}_2 - \varepsilon)^2 \leq \sum_{n = -N}^N \abs{\hat{f}(n)}^2 \leq (\norm*{f}_2 + \varepsilon)^2.
     \]
     Taking \(\limsup\), we obtain
     \[
-        (\norm*{f}_2 - \varepsilon)^2 \leq \limsup_{N \to \infty} \sum_{n = -N}^N \abs*{\hat{f}(n)}^2 \leq (\norm*{f}_2 + \varepsilon)^2.
+        (\norm*{f}_2 - \varepsilon)^2 \leq \limsup_{N \to \infty} \sum_{n = -N}^N \abs{\hat{f}(n)}^2 \leq (\norm*{f}_2 + \varepsilon)^2.
     \]
     Since \(\varepsilon\) is arbitrary, we thus obtain by the squeeze test that
     \[
-        \limsup_{N \to \infty} \sum_{n = -N}^N \abs*{\hat{f}(n)}^2 = \norm*{f}_2^2
+        \limsup_{N \to \infty} \sum_{n = -N}^N \abs{\hat{f}(n)}^2 = \norm*{f}_2^2
     \]
     and the claim follows.
 \end{proof}
@@ -130,7 +130,7 @@
 \exercisesection
 
 \begin{exercise}\label{ex 5.5.1}
-    Let \(f\) be a function in \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), and define the \emph{trigonometric Fourier coefficients} \(a_n, b_n\) for \(n = 0, 1, 2, 3, \dots\) by
+    Let \(f\) be a function in \(C(\R / \Z ; \C)\), and define the \emph{trigonometric Fourier coefficients} \(a_n, b_n\) for \(n = 0, 1, 2, 3, \dots\) by
     \[
         a_n = 2 \int_{[0, 1]} f(x) \cos(2 \pi n x) \; dx; \quad b_n = 2 \int_{[0, 1]} f(x) \sin(2 \pi n x) \; dx.
     \]
@@ -145,7 +145,7 @@
 \end{exercise}
 
 \begin{proof}{(a)}
-    Observe that for all \(n \in \mathbf{Z}\), we have
+    Observe that for all \(n \in \Z\), we have
     \begin{align*}
          & \hat{f}(n)                                                                                                                                              \\
          & = \int_{[0, 1]} f(x) e^{- 2 \pi i n x} \; dx                                                                       & \text{(by Definition \ref{5.3.7})} \\
@@ -169,7 +169,7 @@
     \[
         \lim_{N \to \infty} \norm*{f - \sum_{n = -N}^N \hat{f}(n) e_n}_2 = 0.
     \]
-    Since for all \(N \in \mathbf{Z}^+\), we have
+    Since for all \(N \in \Z^+\), we have
     \begin{align*}
          & \sum_{n = -N}^N \hat{f}(n) e_n                                                                                                                                  \\
          & = \hat{f}(0) e_0 + \sum_{n = 1}^N \hat{f}(n) e_n + \sum_{n = -N}^{-1} \hat{f}(n) e_n                                                                            \\
@@ -195,38 +195,38 @@
 \begin{proof}{(b)}
     Observe that
     \begin{align*}
-         & \frac{a_0}{2} + \sum_{n = 1}^\infty \abs*{a_n} + \sum_{n = 1}^\infty \abs*{b_n}                                                             & \text{(by hypothesis)}                          \\
-         & = \frac{a_0}{2} + \lim_{N \to \infty} \sum_{n = 1}^N \abs*{a_n} + \lim_{N \to \infty} \sum_{n = 1}^N \abs*{b_n}                             & \text{(by Additional Corollary \ref{ac 4.6.6})} \\
-         & = \frac{a_0}{2} + \lim_{N \to \infty} \sum_{n = 1}^N \abs*{a_n} + \abs*{b_n}                                                                & \text{(by Lemma \ref{4.6.14})}                  \\
-         & = \frac{a_0}{2} + 2 \bigg(\lim_{N \to \infty} \sum_{n = 1}^N \frac{\abs*{a_n} + \abs*{b_n}}{2}\bigg)                                        & \text{(by Lemma \ref{4.6.14})}                  \\
-         & = \frac{a_0}{2} + 2 \sum_{n = 1}^\infty \frac{\abs*{a_n} + \abs*{b_n}}{2}                                                                   & \text{(by Additional Corollary \ref{ac 4.6.6})} \\
-         & = \frac{a_0}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_n} + \abs*{b_n}}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_n} + \abs*{b_n}}{2}                                                               \\
-         & = \frac{a_0}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_n} + \abs*{i b_n}}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_n} + \abs*{-i b_n}}{2}        & \text{(by Lemma \ref{4.6.11})}                  \\
-         & \geq \frac{a_0}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_n + i b_n}}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_n - i b_n}}{2}                    & \text{(by Lemma \ref{4.6.11})}                  \\
-         & = \frac{a_0}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_{-n} - i b_{-n}}}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_n - i b_n}}{2}                 & \text{(by Theorem \ref{4.7.2}(c))}              \\
-         & = \frac{a_0}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_{-n} - i b_{-n}}}{2} + \sum_{n = 1}^\infty \frac{\abs*{a_n - i b_n}}{2}                 & \text{(by Theorem \ref{4.7.2}(e))}              \\
-         & = \lim_{N \to \infty} \frac{a_0}{2} + \sum_{n = 1}^N \frac{\abs*{a_{-n} - i b_{-n}}}{2} + \sum_{n = 1}^N \frac{\abs*{a_n - i b_n}}{2}       & \text{(by Lemma \ref{4.6.14})}                  \\
-         & = \lim_{N \to \infty} \frac{a_0}{2} + \sum_{n = -N}^{-1} \frac{\abs*{a_n - i b_n}}{2} + \sum_{n = 1}^N \frac{\abs*{a_n - i b_n}}{2}                                                           \\
-         & = \lim_{N \to \infty} \frac{a_0 - i b_0}{2} + \sum_{n = -N}^{-1} \frac{\abs*{a_n - i b_n}}{2} + \sum_{n = 1}^N \frac{\abs*{a_n - i b_n}}{2} & \text{(by Theorem \ref{4.7.2}(e))}              \\
-         & = \lim_{N \to \infty} \sum_{n = -N}^N \frac{\abs*{a_{-n} - i b_{-n}}}{2}                                                                                                                      \\
-         & = \sum_{n = -\infty}^\infty \frac{\abs*{a_{-n} - i b_{-n}}}{2}.
+         & \frac{a_0}{2} + \sum_{n = 1}^\infty \abs{a_n} + \sum_{n = 1}^\infty \abs{b_n}                                                             & \text{(by hypothesis)}                          \\
+         & = \frac{a_0}{2} + \lim_{N \to \infty} \sum_{n = 1}^N \abs{a_n} + \lim_{N \to \infty} \sum_{n = 1}^N \abs{b_n}                             & \text{(by Additional Corollary \ref{ac 4.6.6})} \\
+         & = \frac{a_0}{2} + \lim_{N \to \infty} \sum_{n = 1}^N \abs{a_n} + \abs{b_n}                                                                & \text{(by Lemma \ref{4.6.14})}                  \\
+         & = \frac{a_0}{2} + 2 \bigg(\lim_{N \to \infty} \sum_{n = 1}^N \frac{\abs{a_n} + \abs{b_n}}{2}\bigg)                                        & \text{(by Lemma \ref{4.6.14})}                  \\
+         & = \frac{a_0}{2} + 2 \sum_{n = 1}^\infty \frac{\abs{a_n} + \abs{b_n}}{2}                                                                   & \text{(by Additional Corollary \ref{ac 4.6.6})} \\
+         & = \frac{a_0}{2} + \sum_{n = 1}^\infty \frac{\abs{a_n} + \abs{b_n}}{2} + \sum_{n = 1}^\infty \frac{\abs{a_n} + \abs{b_n}}{2}                                                                 \\
+         & = \frac{a_0}{2} + \sum_{n = 1}^\infty \frac{\abs{a_n} + \abs{i b_n}}{2} + \sum_{n = 1}^\infty \frac{\abs{a_n} + \abs{-i b_n}}{2}          & \text{(by Lemma \ref{4.6.11})}                  \\
+         & \geq \frac{a_0}{2} + \sum_{n = 1}^\infty \frac{\abs{a_n + i b_n}}{2} + \sum_{n = 1}^\infty \frac{\abs{a_n - i b_n}}{2}                    & \text{(by Lemma \ref{4.6.11})}                  \\
+         & = \frac{a_0}{2} + \sum_{n = 1}^\infty \frac{\abs{a_{-n} - i b_{-n}}}{2} + \sum_{n = 1}^\infty \frac{\abs{a_n - i b_n}}{2}                 & \text{(by Theorem \ref{4.7.2}(c))}              \\
+         & = \frac{a_0}{2} + \sum_{n = 1}^\infty \frac{\abs{a_{-n} - i b_{-n}}}{2} + \sum_{n = 1}^\infty \frac{\abs{a_n - i b_n}}{2}                 & \text{(by Theorem \ref{4.7.2}(e))}              \\
+         & = \lim_{N \to \infty} \frac{a_0}{2} + \sum_{n = 1}^N \frac{\abs{a_{-n} - i b_{-n}}}{2} + \sum_{n = 1}^N \frac{\abs{a_n - i b_n}}{2}       & \text{(by Lemma \ref{4.6.14})}                  \\
+         & = \lim_{N \to \infty} \frac{a_0}{2} + \sum_{n = -N}^{-1} \frac{\abs{a_n - i b_n}}{2} + \sum_{n = 1}^N \frac{\abs{a_n - i b_n}}{2}                                                           \\
+         & = \lim_{N \to \infty} \frac{a_0 - i b_0}{2} + \sum_{n = -N}^{-1} \frac{\abs{a_n - i b_n}}{2} + \sum_{n = 1}^N \frac{\abs{a_n - i b_n}}{2} & \text{(by Theorem \ref{4.7.2}(e))}              \\
+         & = \lim_{N \to \infty} \sum_{n = -N}^N \frac{\abs{a_{-n} - i b_{-n}}}{2}                                                                                                                     \\
+         & = \sum_{n = -\infty}^\infty \frac{\abs{a_{-n} - i b_{-n}}}{2}.
     \end{align*}
     Since
     \[
         \hat{f}(n) = \frac{1}{2} (a_n - i b_n)
     \]
-    for all \(n \in \mathbf{Z}\) (cf. the proof of Exercise \ref{ex 5.5.1}(a)), we know that
+    for all \(n \in \Z\) (cf. the proof of Exercise \ref{ex 5.5.1}(a)), we know that
     \begin{align*}
-        \sum_{n = -\infty}^\infty \abs*{\hat{f}(n)} & = \sum_{n = -\infty}^\infty \abs*{\frac{a_n - i b_n}{2}}                                                                    \\
-                                                    & = \sum_{n = -\infty}^\infty \frac{\abs*{a_n - i b_n}}{2}                              & \text{(by Exercise \ref{ex 4.6.7})} \\
-                                                    & \leq \frac{a_0}{2} + \sum_{n = 1}^\infty \abs*{a_n} + \sum_{n = 1}^\infty \abs*{b_n}. & \text{(from the proof above)}
+        \sum_{n = -\infty}^\infty \abs{\hat{f}(n)} & = \sum_{n = -\infty}^\infty \abs{\frac{a_n - i b_n}{2}}                                                                   \\
+                                                   & = \sum_{n = -\infty}^\infty \frac{\abs{a_n - i b_n}}{2}                             & \text{(by Exercise \ref{ex 4.6.7})} \\
+                                                   & \leq \frac{a_0}{2} + \sum_{n = 1}^\infty \abs{a_n} + \sum_{n = 1}^\infty \abs{b_n}. & \text{(from the proof above)}
     \end{align*}
-    Thus \(\sum_{n = -\infty}^\infty \abs*{\hat{f}(n)}\) is absolutely convergent.
+    Thus \(\sum_{n = -\infty}^\infty \abs{\hat{f}(n)}\) is absolutely convergent.
     By Theorem \ref{5.5.3} we know that
     \[
         \lim_{N \to \infty} \norm*{f - \sum_{n = -N}^N \hat{f}(n) e_n}_{\infty} = 0.
     \]
-    and \(\sum_{n = -\infty}^\infty \hat{f}(n) e_n\) converges uniformly to \(f\) on \(\mathbf{R}\) with respect to \(d_{l^1}|_{\mathbf{C} \times \mathbf{C}}\).
+    and \(\sum_{n = -\infty}^\infty \hat{f}(n) e_n\) converges uniformly to \(f\) on \(\R\) with respect to \(d_{l^1}|_{\C \times \C}\).
     In particular, we have (by Exercise \ref{ex 5.2.3} and squeeze test)
     \[
         \lim_{N \to \infty} \norm*{f - \sum_{n = -N}^N \hat{f}(n) e_n}_2 = 0.
@@ -239,11 +239,11 @@
     \[
         \lim_{N \to \infty} \norm*{f - \bigg(\frac{a_0}{2} + \sum_{n = 1}^N a_n \cos(2 \pi n x) + b_n \sin(2 \pi n x)\bigg)}_{\infty} = 0.
     \]
-    and \(\frac{a_0}{2} + \sum_{n = 1}^\infty a_n \cos(2 \pi n x) + b_n \sin(2 \pi n x)\) converges uniformly to \(f\) on \(\mathbf{R}\) with respect to \(d_{l^1}|_{\mathbf{C} \times \mathbf{C}}\).
+    and \(\frac{a_0}{2} + \sum_{n = 1}^\infty a_n \cos(2 \pi n x) + b_n \sin(2 \pi n x)\) converges uniformly to \(f\) on \(\R\) with respect to \(d_{l^1}|_{\C \times \C}\).
 \end{proof}
 
 \begin{exercise}\label{ex 5.5.2}
-    Let \(f(x)\) be the function defined by \(f(x) = (1 - 2x)^2\) when \(x \in [0, 1)\), and extended to be \(\mathbf{Z}\)-periodic for the rest of the real line.
+    Let \(f(x)\) be the function defined by \(f(x) = (1 - 2x)^2\) when \(x \in [0, 1)\), and extended to be \(\Z\)-periodic for the rest of the real line.
     \begin{enumerate}
         \item Using Exercise \ref{ex 5.5.1}, show that the series
               \[
@@ -256,8 +256,8 @@
 \end{exercise}
 
 \begin{proof}{(a)}
-    For each \(n \in \mathbf{N}\), we define \(a_n, b_n\) as in Exercise \ref{ex 5.5.1}.
-    Observe that for all \(n \in \mathbf{Z}^+\), we have
+    For each \(n \in \N\), we define \(a_n, b_n\) as in Exercise \ref{ex 5.5.1}.
+    Observe that for all \(n \in \Z^+\), we have
     \begin{align*}
         a_n & = 2 \int_{[0, 1]} (1 - 2x)^2 \cos(2 \pi n x) \; dx                                         & \text{(by Exercise \ref{ex 5.5.1})} \\
             & = \frac{2}{2 \pi n} \int_{[0, 1]} (1 - 2x)^2 \sin'(2 \pi n x) \; dx                        & \text{(by Theorem \ref{4.7.2}(b))}  \\
@@ -287,14 +287,14 @@
     \end{align*}
     Since
     \begin{align*}
-        \sum_{n = 1}^\infty \abs*{a_n} & = \sum_{n = 1}^\infty \frac{4}{\pi^2 n^2} \\
-        \sum_{n = 1}^\infty \abs*{b_n} & = \sum_{n = 1}^\infty 0
+        \sum_{n = 1}^\infty \abs{a_n} & = \sum_{n = 1}^\infty \frac{4}{\pi^2 n^2} \\
+        \sum_{n = 1}^\infty \abs{b_n} & = \sum_{n = 1}^\infty 0
     \end{align*}
     are absolutely convergent (by Corollary 7.3.7 in Analysis I), by Exercise \ref{ex 5.5.1}(b) we know that the series
     \[
         \frac{a_0}{2} + \sum_{n = 1}^\infty (a_n \cos(2 \pi n x) + b_n \sin(2 \pi n x))
     \]
-    converges uniformly to \(f\) on \(\mathbf{R}\) with respect to \(d_{l^1}|_{\mathbf{C} \times \mathbf{C}}\), and
+    converges uniformly to \(f\) on \(\R\) with respect to \(d_{l^1}|_{\C \times \C}\), and
     \begin{align*}
          & \frac{a_0}{2} + \sum_{n = 1}^\infty (a_n \cos(2 \pi n x) + b_n \sin(2 \pi n x))                                                                                                  \\
          & = \int_{[0, 1]} (1 - 2x)^2 \cos(0) \; dx + \sum_{n = 1}^\infty \frac{4}{\pi^2 n^2} \cos(2 \pi n x)                                          & \text{(from the proof above)}      \\
@@ -321,7 +321,7 @@
         f(x) = (1 - 2x)^2 = \frac{1}{3} + \sum_{n = 1}^\infty \frac{4}{\pi^2 n^2} \cos(2 \pi n x)
     \]
     and the series on the right hand side converges uniformly to \(f\).
-    Observe that for each \(m \in \mathbf{Z}\), we have
+    Observe that for each \(m \in \Z\), we have
     \begin{align*}
          & \hat{f}(m)                                                                                                                                                                                                     \\
          & = \int_{[0, 1]} \bigg(\frac{1}{3} + \sum_{n = 1}^\infty \frac{4}{\pi^2 n^2} \cos(2 \pi n x)\bigg) e^{-2 \pi i m x} \; dx                                                & \text{(by Definition \ref{5.3.7})}   \\
@@ -350,25 +350,25 @@
     \end{itemize}
     From all cases above we have
     \begin{align*}
-                 & \norm*{f}_2^2 = \sum_{n = -\infty}^\infty \abs*{\hat{f}(n)}^2                                                                      & \text{(by Theorem \ref{5.5.4})} \\
-        \implies & \int_{[0, 1]} (1 - 2x)^4 \; dx = \sum_{n = -\infty}^\infty \abs*{\hat{f}(n)}^2                                                                                       \\
-        \implies & \int_{[0, 1]} 1 - 8x + 24x^2 - 32x^3 + 16x^4 \; dx = \sum_{n = -\infty}^\infty \abs*{\hat{f}(n)}^2                                                                   \\
-        \implies & 1 - 4 (x^2|_{x = 0}^{x = 1}) + 8 (x^3|_{x = 0}^{x = 1}) - 8(x^4|_{x = 0}^{x = 1}) + \frac{16}{5}(x^5|_{x = 0}^{x = 1})                                               \\
-                 & = \sum_{n = -\infty}^\infty \abs*{\hat{f}(n)}^2                                                                                                                      \\
-        \implies & \frac{1}{5} = \frac{1}{9} + \sum_{n = 1}^\infty \abs*{\frac{2}{\pi^2 n^2}}^2 + \sum_{n = 1}^\infty \abs*{\frac{2}{\pi^2 (-n)^2}}^2 & \text{(from the proof above)}   \\
-        \implies & \frac{4}{45} = 2 \sum_{n = 1}^\infty \abs*{\frac{2}{\pi^2 n^2}}^2                                                                                                    \\
-        \implies & \frac{4}{45} = 8 \sum_{n = 1}^\infty \frac{1}{\pi^4 n^4}                                                                                                             \\
+                 & \norm*{f}_2^2 = \sum_{n = -\infty}^\infty \abs{\hat{f}(n)}^2                                                                     & \text{(by Theorem \ref{5.5.4})} \\
+        \implies & \int_{[0, 1]} (1 - 2x)^4 \; dx = \sum_{n = -\infty}^\infty \abs{\hat{f}(n)}^2                                                                                      \\
+        \implies & \int_{[0, 1]} 1 - 8x + 24x^2 - 32x^3 + 16x^4 \; dx = \sum_{n = -\infty}^\infty \abs{\hat{f}(n)}^2                                                                  \\
+        \implies & 1 - 4 (x^2|_{x = 0}^{x = 1}) + 8 (x^3|_{x = 0}^{x = 1}) - 8(x^4|_{x = 0}^{x = 1}) + \frac{16}{5}(x^5|_{x = 0}^{x = 1})                                             \\
+                 & = \sum_{n = -\infty}^\infty \abs{\hat{f}(n)}^2                                                                                                                     \\
+        \implies & \frac{1}{5} = \frac{1}{9} + \sum_{n = 1}^\infty \abs{\frac{2}{\pi^2 n^2}}^2 + \sum_{n = 1}^\infty \abs{\frac{2}{\pi^2 (-n)^2}}^2 & \text{(from the proof above)}   \\
+        \implies & \frac{4}{45} = 2 \sum_{n = 1}^\infty \abs{\frac{2}{\pi^2 n^2}}^2                                                                                                   \\
+        \implies & \frac{4}{45} = 8 \sum_{n = 1}^\infty \frac{1}{\pi^4 n^4}                                                                                                           \\
         \implies & \frac{\pi^4}{90} = \sum_{n = 1}^\infty \frac{1}{n^4}.
     \end{align*}
 \end{proof}
 
 \begin{exercise}\label{ex 5.5.3}
-    If \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) and \(P\) is a trigonometric polynomial, show that
+    If \(f \in C(\R / \Z ; \C)\) and \(P\) is a trigonometric polynomial, show that
     \[
         \widehat{f * P}(n) = \hat{f}(n) c_n = \hat{f}(n) \hat{P}(n)
     \]
     for all integers \(n\).
-    More generally, if \(f, g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), show that
+    More generally, if \(f, g \in C(\R / \Z ; \C)\), show that
     \[
         \widehat{f * g}(n) = \hat{f}(n) \hat{g}(n)
     \]
@@ -377,73 +377,73 @@
 \end{exercise}
 
 \begin{proof}
-    Let \(P = \sum_{n = -N}^N c_n e_n\) for some \(N \in \mathbf{Z}^+\) and some \((c_n)_{n = -N}^N\) in \(\mathbf{C}\).
+    Let \(P = \sum_{n = -N}^N c_n e_n\) for some \(N \in \Z^+\) and some \((c_n)_{n = -N}^N\) in \(\C\).
     By Additional Corollary \ref{ac 5.4.1} we know that
     \[
         f * P = \sum_{n = -N}^N \hat{f}(n) c_n e_n.
     \]
     Thus we have
     \begin{align*}
-        \forall m \in \mathbf{Z}, \widehat{f * P}(m) & = \inner{f * P, e_m}                               & \text{(by Definition \ref{5.3.7})} \\
-                                                     & = \sum_{n = -N}^N \hat{f}(n) c_n \inner{e_n, e_m}  & \text{(by Lemma \ref{5.2.5}(c))}   \\
-                                                     & = \begin{cases}
-                                                             \hat{f}(m) c_m & \text{if } n = m    \\
-                                                             0              & \text{if } n \neq m
-                                                         \end{cases}            & \text{(by Lemma \ref{5.3.5})}                                \\
-                                                     & = \hat{f}(m) \sum_{n = -N}^N c_n \inner*{e_n, e_m} & \text{(by Lemma \ref{5.3.5})}      \\
-                                                     & = \hat{f}(m) \inner*{\sum_{n = -N}^N c_n e_n, e_m} & \text{(by Lemma \ref{5.2.5}(c))}   \\
-                                                     & = \hat{f}(m) \hat{P}(m).                           & \text{(by Definition \ref{5.3.7})}
+        \forall m \in \Z, \widehat{f * P}(m) & = \inner{f * P, e_m}                               & \text{(by Definition \ref{5.3.7})} \\
+                                             & = \sum_{n = -N}^N \hat{f}(n) c_n \inner{e_n, e_m}  & \text{(by Lemma \ref{5.2.5}(c))}   \\
+                                             & = \begin{cases}
+                                                     \hat{f}(m) c_m & \text{if } n = m    \\
+                                                     0              & \text{if } n \neq m
+                                                 \end{cases}            & \text{(by Lemma \ref{5.3.5})}                                \\
+                                             & = \hat{f}(m) \sum_{n = -N}^N c_n \inner*{e_n, e_m} & \text{(by Lemma \ref{5.3.5})}      \\
+                                             & = \hat{f}(m) \inner*{\sum_{n = -N}^N c_n e_n, e_m} & \text{(by Lemma \ref{5.2.5}(c))}   \\
+                                             & = \hat{f}(m) \hat{P}(m).                           & \text{(by Definition \ref{5.3.7})}
     \end{align*}
 
-    Now we show that \(\widehat{f * g}(n) = \hat{f}(n) \hat{g}(n)\) for all \(n \in \mathbf{Z}\).
+    Now we show that \(\widehat{f * g}(n) = \hat{f}(n) \hat{g}(n)\) for all \(n \in \Z\).
     In particular, we want to show that
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \abs*{\widehat{f * g}(n) - \hat{f}(n) \hat{g}(n)} \leq \varepsilon.
+        \forall \varepsilon \in \R^+, \abs{\widehat{f * g}(n) - \hat{f}(n) \hat{g}(n)} \leq \varepsilon.
     \]
-    Let \(\varepsilon \in \mathbf{R}^+\).
-    Since \(g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), by Theorem \ref{5.4.1} we know that there exists a trigonometric polynomial \(P\) such that
+    Let \(\varepsilon \in \R^+\).
+    Since \(g \in C(\R / \Z ; \C)\), by Theorem \ref{5.4.1} we know that there exists a trigonometric polynomial \(P\) such that
     \[
         \norm*{g - P}_{\infty} \leq \varepsilon.
     \]
     Fix such \(P\).
-    Since \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), by Theorem \ref{5.5.4} we know that \(\sum_{n = -\infty}^\infty \abs*{\hat{f}(n)}^2 \in \mathbf{R}\), thus
+    Since \(f \in C(\R / \Z ; \C)\), by Theorem \ref{5.5.4} we know that \(\sum_{n = -\infty}^\infty \abs{\hat{f}(n)}^2 \in \R\), thus
     \[
-        \exists\ M \in \mathbf{R}^+ : \forall n \in \mathbf{Z}, \abs*{\hat{f}(n)} \leq M.
+        \exists\ M \in \R^+ : \forall n \in \Z, \abs{\hat{f}(n)} \leq M.
     \]
     Fix such \(M\).
-    Then for all \(n \in \mathbf{Z}\), we have
+    Then for all \(n \in \Z\), we have
     \begin{align*}
-        \abs*{\widehat{f * g}(n) - \widehat{f * P}(n)} & = \abs*{\inner*{f * g, e_n} - \inner*{f * P, e_n}} & \text{(by Definition \ref{5.3.7})} \\
-                                                       & = \abs*{\inner*{f * g - f * P, e_n}}               & \text{(by Lemma \ref{5.2.5}(c))}   \\
-                                                       & = \abs*{\inner*{f * (g - P), e_n}}                 & \text{(by Lemma \ref{5.4.4}(c))}   \\
-                                                       & \leq \norm*{f * (g - P)}_2 \norm*{e_n}_2           & \text{(by Lemma \ref{5.2.7}(b))}   \\
-                                                       & = \norm*{f * (g - P)}_2.                           & \text{(by Lemma \ref{5.3.5})}
+        \abs{\widehat{f * g}(n) - \widehat{f * P}(n)} & = \abs{\inner*{f * g, e_n} - \inner*{f * P, e_n}} & \text{(by Definition \ref{5.3.7})} \\
+                                                      & = \abs{\inner*{f * g - f * P, e_n}}               & \text{(by Lemma \ref{5.2.5}(c))}   \\
+                                                      & = \abs{\inner*{f * (g - P), e_n}}                 & \text{(by Lemma \ref{5.4.4}(c))}   \\
+                                                      & \leq \norm*{f * (g - P)}_2 \norm*{e_n}_2          & \text{(by Lemma \ref{5.2.7}(b))}   \\
+                                                      & = \norm*{f * (g - P)}_2.                          & \text{(by Lemma \ref{5.3.5})}
     \end{align*}
     Need some helps.
 \end{proof}
 
 \begin{exercise}\label{ex 5.5.4}
-    Let \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) be a function which is differentiable, and whose derivative \(f'\) is also continuous.
-    Show that \(f'\) also lies in \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), and that \(\hat{f}'(n) = 2 \pi i n \hat{f}(n)\) for all integers \(n\).
+    Let \(f \in C(\R / \Z ; \C)\) be a function which is differentiable, and whose derivative \(f'\) is also continuous.
+    Show that \(f'\) also lies in \(C(\R / \Z ; \C)\), and that \(\hat{f}'(n) = 2 \pi i n \hat{f}(n)\) for all integers \(n\).
     Here the derivative of a complex-valued function is defined in exactly the same fashion as for real-valued functions.
 \end{exercise}
 
 \begin{exercise}\label{ex 5.5.5}
-    Let \(f, g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
+    Let \(f, g \in C(\R / \Z ; \C)\).
     Prove the \emph{Parseval identity}
     \[
-        \Re\bigg(\int_0^1 f(x) \overline{g(x)} \; dx\bigg) = \Re\bigg(\sum_{n \in \mathbf{Z}} \hat{f}(n) \overline{\hat(g)(n)}\bigg).
+        \Re\bigg(\int_0^1 f(x) \overline{g(x)} \; dx\bigg) = \Re\bigg(\sum_{n \in \Z} \hat{f}(n) \overline{\hat(g)(n)}\bigg).
     \]
     Then conclude that the real parts can be removed, thus
     \[
-        \int_0^1 f(x) \overline{g(x)} \; dx = \sum_{n \in \mathbf{Z}} \hat{f}(n) \overline{\hat(g)(n)}.
+        \int_0^1 f(x) \overline{g(x)} \; dx = \sum_{n \in \Z} \hat{f}(n) \overline{\hat(g)(n)}.
     \]
 \end{exercise}
 
 \begin{exercise}\label{ex 5.5.6}
     In this exercise we shall develop the theory of Fourier series for functions of any fixed period \(L\).
 
-    Let \(L > 0\), and let \(f : \mathbf{R} \to \mathbf{C}\) be a complex-valued function which is continuous and \(L\)-periodic.
+    Let \(L > 0\), and let \(f : \R \to \C\) be a complex-valued function which is continuous and \(L\)-periodic.
     Define the numbers \(c_n\) for every integer \(n\) by
     \[
         c_n \coloneqq \frac{1}{L} \int_{[0, L]} f(x) e^{- 2 \pi i n x / L} \; dx.
@@ -456,16 +456,16 @@
               converges in \(L_2\) metric to \(f\).
               More precisely, show that
               \[
-                  \lim_{N \to \infty} \int_{[0, L]} \abs*{f(x) - \sum_{n = -N}^N c_n e^{2 \pi i n x / L}}^2 \; dx = 0.
+                  \lim_{N \to \infty} \int_{[0, L]} \abs{f(x) - \sum_{n = -N}^N c_n e^{2 \pi i n x / L}}^2 \; dx = 0.
               \]
-        \item If the series \(\sum_{n = -\infty}^\infty \abs*{c_n}\) is absolutely convergent, show that
+        \item If the series \(\sum_{n = -\infty}^\infty \abs{c_n}\) is absolutely convergent, show that
               \[
                   \sum_{n = -\infty}^\infty c_n e^{2 \pi i n x / L}
               \]
               converges uniformly to \(f\).
         \item Show that
               \[
-                  \frac{1}{L} \int_{[0, L]} \abs*{f(x)}^2 \; dx = \sum_{n = -\infty}^\infty \abs*{c_n}^2.
+                  \frac{1}{L} \int_{[0, L]} \abs{f(x)}^2 \; dx = \sum_{n = -\infty}^\infty \abs{c_n}^2.
               \]
     \end{enumerate}
 \end{exercise}

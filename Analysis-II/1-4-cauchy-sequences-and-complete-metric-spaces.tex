@@ -17,10 +17,10 @@
 
 \begin{proof}
     \begin{align*}
-                 & \lim_{n \to \infty} d(x^{(n)}, x_0) = 0                                                                                                                                                   \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{N} : \forall n \geq N, d(x^{(n)}, x_0) \leq \varepsilon                                & \text{(by Definition \ref{1.1.14})} \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \exists\ j \in \mathbf{N} : \forall j \geq N, (n_j \geq j) \land \big(d(x^{(n_j)}, x_0) \leq \varepsilon\big)                                       \\
-        \implies & \lim_{j \to \infty} d(x^{(n_j)}, x_0) = 0.                                                                                                          & \text{(by Definition \ref{1.1.14})}
+                 & \lim_{n \to \infty} d(x^{(n)}, x_0) = 0                                                                                                                                   \\
+        \implies & \forall \varepsilon \in \R^+, \exists\ N \in \N : \forall n \geq N, d(x^{(n)}, x_0) \leq \varepsilon                                & \text{(by Definition \ref{1.1.14})} \\
+        \implies & \forall \varepsilon \in \R^+, \exists\ j \in \N : \forall j \geq N, (n_j \geq j) \land \big(d(x^{(n_j)}, x_0) \leq \varepsilon\big)                                       \\
+        \implies & \lim_{j \to \infty} d(x^{(n_j)}, x_0) = 0.                                                                                          & \text{(by Definition \ref{1.1.14})}
     \end{align*}
 \end{proof}
 
@@ -40,23 +40,23 @@
 
 \begin{proof}
     We first show that if \(L\) is a limit point of \((x^{(n)})_{n = m}^\infty\) in \((X, d)\), then there exists a subsequence of \((x^{(n)})_{n = m}^\infty\) which converges to \(L\) with respect to \(d\).
-    Let \(N \in \mathbf{N}\).
+    Let \(N \in \N\).
     Since \(L\) is a limit point of \((x^{(n)})_{n = m}^\infty\) in \((X, d)\), by Definition \ref{1.4.4} we know that
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \forall N \geq m, \exists\ n \geq N : d(x^{(n)}, L) \leq \varepsilon.
+        \forall \varepsilon \in \R^+, \forall N \geq m, \exists\ n \geq N : d(x^{(n)}, L) \leq \varepsilon.
     \]
-    In particular, for every \(j \in \mathbf{Z}^+\), we have
+    In particular, for every \(j \in \Z^+\), we have
     \[
         \forall N \geq m, \exists\ n \geq N : d(x^{(n)}, L) \leq \frac{1}{j}.
     \]
     Now we define \(n_j\) as follow:
     \[
         n_j = \begin{cases}
-            \min\big\{n \in \mathbf{Z}^+ : d(x^{(n)}, L) \leq 1\big\}                                           & \text{if } j = 1    \\
-            \min\Big\{n \in \mathbf{Z}^+ : (n > n_{j - 1}) \land \big(d(x^{(n)}, L) \leq \frac{1}{j}\big)\Big\} & \text{if } j \neq 1
+            \min\big\{n \in \Z^+ : d(x^{(n)}, L) \leq 1\big\}                                           & \text{if } j = 1    \\
+            \min\Big\{n \in \Z^+ : (n > n_{j - 1}) \land \big(d(x^{(n)}, L) \leq \frac{1}{j}\big)\Big\} & \text{if } j \neq 1
         \end{cases}
     \]
-    By well-ordering theorem \(n_j\) is well-defined for every \(j \in \mathbf{Z}^+\).
+    By well-ordering theorem \(n_j\) is well-defined for every \(j \in \Z^+\).
     By applying squeeze test to the subsequence \((x^{(n_j)})_{j = 1}^\infty\) we have
     \begin{align*}
                  & 0 \leq d(x^{(n_j)}, L) \leq \frac{1}{j}                                                                     \\
@@ -66,13 +66,13 @@
     and thus by Definition \ref{1.1.14} the sequence \((x^{(n_j)})_{j = 1}^\infty\) converges to \(L\) with respect to \(d\).
 
     Now we show that if a subsequence of \((x^{(n)})_{n = m}^\infty\) converges to \(L\) with respect to \(d\), then \(L\) is a limit point of \((x^{(n)})_{n = m}^\infty\) in \((X, d)\).
-    Let \(N \in \mathbf{N}\) and let \((x^{(n_j)})_{j = 1}^\infty\) be a subsequence of \((x^{(n)})_{n = 0}^\infty\) where \(\lim_{j \to \infty} d(x^{(n_j)}, L) = 0\).
+    Let \(N \in \N\) and let \((x^{(n_j)})_{j = 1}^\infty\) be a subsequence of \((x^{(n)})_{n = 0}^\infty\) where \(\lim_{j \to \infty} d(x^{(n_j)}, L) = 0\).
     Then we have
     \begin{align*}
-                 & \lim_{n \to \infty} d(x^{(n_j)}, L) = 0                                                                                                                    \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \exists\ j \geq 1 : d(x^{(n_j)}, L) \leq \varepsilon                           & \text{(by Definition \ref{1.1.14})} \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+,  \forall N \geq m, \exists\ n \geq n_j \geq N : d(x^{(n)}, L) \leq \varepsilon                                       \\
-        \implies & L \text{ is a limit point of } (x^{(n)})_{n = m}^\infty \text{ in } (X, d).                                          & \text{(by Definition \ref{1.4.4})}
+                 & \lim_{n \to \infty} d(x^{(n_j)}, L) = 0                                                                                                            \\
+        \implies & \forall \varepsilon \in \R^+, \exists\ j \geq 1 : d(x^{(n_j)}, L) \leq \varepsilon                           & \text{(by Definition \ref{1.1.14})} \\
+        \implies & \forall \varepsilon \in \R^+,  \forall N \geq m, \exists\ n \geq n_j \geq N : d(x^{(n)}, L) \leq \varepsilon                                       \\
+        \implies & L \text{ is a limit point of } (x^{(n)})_{n = m}^\infty \text{ in } (X, d).                                  & \text{(by Definition \ref{1.4.4})}
     \end{align*}
 \end{proof}
 
@@ -92,12 +92,12 @@
 \end{lemma}
 
 \begin{proof}
-    Let \(N \in \mathbf{N}\).
+    Let \(N \in \N\).
     Since \(\lim_{n \to \infty} d(x^{(n)}, x_0) = 0\), by Definition \ref{1.1.14} we know that
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \exists\ N \geq m : \forall n \geq N, d(x^{(n)}, x_0) \leq \frac{\varepsilon}{2}.
+        \forall \varepsilon \in \R^+, \exists\ N \geq m : \forall n \geq N, d(x^{(n)}, x_0) \leq \frac{\varepsilon}{2}.
     \]
-    Let \(k \in \mathbf{N}\) and \(k \geq N\).
+    Let \(k \in \N\) and \(k \geq N\).
     Then we have
     \begin{align*}
         d(x^{(n)}, x^{(k)}) & \leq d(x^{(n)}, x_0) + d(x_0, x^{(k)})             & \text{(by Definition \ref{1.1.2}(d))} \\
@@ -116,10 +116,10 @@
 \end{lemma}
 
 \begin{proof}
-    Let \(N_1, N_2, i, k \in \mathbf{N}\).
+    Let \(N_1, N_2, i, k \in \N\).
     Since \(\lim_{j \to \infty} d(x^{(n_j)}, x_0) = 0\), by Definition \ref{1.1.14} we know that
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \exists\ N_1 \geq 1 : \forall j \geq N_1, d(x^{(n_j)}, x_0) \leq \frac{\varepsilon}{2}.
+        \forall \varepsilon \in \R^+, \exists\ N_1 \geq 1 : \forall j \geq N_1, d(x^{(n_j)}, x_0) \leq \frac{\varepsilon}{2}.
     \]
     Now fix such \(\varepsilon\).
     Since \((x^{(n)})_{n = m}^\infty\) is a Cauchy sequence in \((X, d)\), by Definition \ref{1.4.6} we know that
@@ -227,9 +227,9 @@
     Thus by Proposition \ref{1.2.10}(c) \(L \in \overline{E}_{(X, d)}\).
 
     Now we show that if \(L \in \overline{E}_{(X, d)}\), then \(L\) may not be a limit point of \((x^{(n)})_{n = m}^\infty\) in \((X, d)\).
-    Let \((X, d) = (\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) and let \(x^{(n)} = 1 / n\).
+    Let \((X, d) = (\R, d_{l^1}|_{\R \times \R})\) and let \(x^{(n)} = 1 / n\).
     Then by Definition \ref{1.2.9} we know that \(1 \in \overline{E}_{(X, d)}\).
-    But by Definition \ref{1.4.4} we know that \(1\) is not an limit point of \((x^{(n)})_{n = m}^\infty\) in \((\mathbf{R}, d_{l^1})\) since every subsequence of \((x^{(n)})_{n = 1}^\infty\) converges to \(0\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+    But by Definition \ref{1.4.4} we know that \(1\) is not an limit point of \((x^{(n)})_{n = m}^\infty\) in \((\R, d_{l^1})\) since every subsequence of \((x^{(n)})_{n = 1}^\infty\) converges to \(0\) with respect to \(d_{l^1}|_{\R \times \R}\).
     Thus if \(L\) is an adherent point of \(E\) in \((X, d)\), then \(L\) may not be a limit point of \((x^{(n)})_{n = m}^\infty\) in \((X, d)\).
 \end{proof}
 
@@ -327,30 +327,30 @@
     \]
     exists.
     Let \((a^{(n)})_{n = m}^\infty\) be the sequence \(a^{(n)} = d(x^{(n)}, y^{(n)})\).
-    To show that the above limit exists, it will suffice to show that \((a^{(n)})_{n = m}^\infty\) converges in \(\mathbf{R}\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
-    Let \(N_1, N_2, j, k \in \mathbf{N}\).
+    To show that the above limit exists, it will suffice to show that \((a^{(n)})_{n = m}^\infty\) converges in \(\R\) with respect to \(d_{l^1}|_{\R \times \R}\).
+    Let \(N_1, N_2, j, k \in \N\).
     Since \((x^{(n)})_{n = m}^\infty\) is a Cauchy sequence in \((X, d)\), by Definition \ref{1.4.6} we know that
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \exists\ N_1 \geq m : \forall j, k \geq N_1, d(x^{(j)}, x^{(k)}) \leq \frac{\varepsilon}{2}.
+        \forall \varepsilon \in \R^+, \exists\ N_1 \geq m : \forall j, k \geq N_1, d(x^{(j)}, x^{(k)}) \leq \frac{\varepsilon}{2}.
     \]
     Similarly,
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \exists\ N_2 \geq m : \forall j, k \geq N_2, d(y^{(j)}, y^{(k)}) \leq \frac{\varepsilon}{2}.
+        \forall \varepsilon \in \R^+, \exists\ N_2 \geq m : \forall j, k \geq N_2, d(y^{(j)}, y^{(k)}) \leq \frac{\varepsilon}{2}.
     \]
     Let \(N = \max(N_1, N_2)\).
     Then by Definition \ref{1.1.2} we have
     \begin{align*}
-         & \forall j, k \geq N, \abs*{a_j - a_k}                                                             \\
-         & = \abs*{d(x^{(j)}, y^{(j)}) - d(x^{(k)}, y^{(k)})}                                                \\
-         & = \abs*{d(x^{(j)}, y^{(j)}) + d(y^{(j)}, x^{(k)}) - d(y^{(j)}, x^{(k)}) - d(x^{(k)}, y^{(k)})}    \\
-         & \leq \abs*{d(x^{(j)}, y^{(j)}) + d(y^{(j)}, x^{(k)}) + d(y^{(j)}, x^{(k)}) + d(x^{(k)}, y^{(k)})} \\
-         & = d(x^{(j)}, y^{(j)}) + d(y^{(j)}, x^{(k)}) + d(y^{(j)}, x^{(k)}) + d(x^{(k)}, y^{(k)})           \\
-         & \leq d(x^{(j)}, x^{(k)}) + d(y^{(j)}, y^{(k)})                                                    \\
-         & \leq \varepsilon / 2 + \varepsilon / 2                                                            \\
+         & \forall j, k \geq N, \abs{a_j - a_k}                                                             \\
+         & = \abs{d(x^{(j)}, y^{(j)}) - d(x^{(k)}, y^{(k)})}                                                \\
+         & = \abs{d(x^{(j)}, y^{(j)}) + d(y^{(j)}, x^{(k)}) - d(y^{(j)}, x^{(k)}) - d(x^{(k)}, y^{(k)})}    \\
+         & \leq \abs{d(x^{(j)}, y^{(j)}) + d(y^{(j)}, x^{(k)}) + d(y^{(j)}, x^{(k)}) + d(x^{(k)}, y^{(k)})} \\
+         & = d(x^{(j)}, y^{(j)}) + d(y^{(j)}, x^{(k)}) + d(y^{(j)}, x^{(k)}) + d(x^{(k)}, y^{(k)})          \\
+         & \leq d(x^{(j)}, x^{(k)}) + d(y^{(j)}, y^{(k)})                                                   \\
+         & \leq \varepsilon / 2 + \varepsilon / 2                                                           \\
          & = \varepsilon
     \end{align*}
-    and thus \((a^{(n)})_{n = m}^\infty\) is a Cauchy sequence in \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\).
-    Since \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) is complete (see Theorem 6.4.18, Analysis I), we know that \((a^{(n)})_{n = m}^\infty\) converges in \(\mathbf{R}\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+    and thus \((a^{(n)})_{n = m}^\infty\) is a Cauchy sequence in \((\R, d_{l^1}|_{\R \times \R})\).
+    Since \((\R, d_{l^1}|_{\R \times \R})\) is complete (see Theorem 6.4.18, Analysis I), we know that \((a^{(n)})_{n = m}^\infty\) converges in \(\R\) with respect to \(d_{l^1}|_{\R \times \R}\).
 
     Next we show that \(d_{\overline{X}}\) obeys the axiom of substitution.
     Suppose that \(\text{LIM}_{n \to \infty} x^{(n)} = \text{LIM}_{n \to \infty} z^{(n)}\) and \(\lim_{n \to \infty} d(x^{(n)}, y^{(n)})\) exists.
@@ -359,17 +359,17 @@
                  & \begin{cases}
                        d(x^{(n)}, y^{(n)}) \leq d(x^{(n)}, z^{(n)}) + d(z^{(n)}, y^{(n)}) \\
                        d(z^{(n)}, y^{(n)}) \leq d(x^{(n)}, y^{(n)}) + d(x^{(n)}, z^{(n)})
-                   \end{cases}                               & \text{(by Definition \ref{1.1.2}(c)(d))}                                                                              \\
+                   \end{cases}                              & \text{(by Definition \ref{1.1.2}(c)(d))}                                                                              \\
         \implies & \begin{cases}
                        d(x^{(n)}, y^{(n)}) - d(z^{(n)}, y^{(n)}) \leq d(x^{(n)}, z^{(n)}) \\
                        d(z^{(n)}, y^{(n)}) - d(x^{(n)}, y^{(n)}) \leq d(x^{(n)}, z^{(n)})
-                   \end{cases}                                                                                                \\
-        \implies & 0 \leq \abs*{d(x^{(n)}, y^{(n)}) - d(z^{(n)}, y^{(n)})} \leq d(x^{(n)}, z^{(n)})                                                                                  \\
-        \implies & 0 = \lim_{n \to \infty} 0 \leq \lim_{n \to \infty} \abs*{d(x^{(n)}, y^{(n)}) - d(z^{(n)}, y^{(n)})}                                                               \\
-                 & \quad \leq \lim_{n \to \infty} d(x^{(n)}, z^{(n)}) = 0                                              & \text{(by Exercise \ref{ex 1.4.8}(a))}                      \\
-        \implies & \lim_{n \to \infty} \abs*{d(x^{(n)}, y^{(n)}) - d(z^{(n)}, y^{(n)})} = 0                            & \text{(by squeeze test)}                                    \\
-        \implies & \lim_{n \to \infty} \big(d(x^{(n)}, y^{(n)}) - d(z^{(n)}, y^{(n)})\big) = 0                                                                                       \\
-        \implies & \lim_{n \to \infty} d(x^{(n)}, y^{(n)}) = \lim_{n \to \infty} d(z^{(n)}, y^{(n)})                   & \text{(\(\lim_{n \to \infty} d(x^{(n)}, y^{(n)})\) exists)}
+                   \end{cases}                                                                                               \\
+        \implies & 0 \leq \abs{d(x^{(n)}, y^{(n)}) - d(z^{(n)}, y^{(n)})} \leq d(x^{(n)}, z^{(n)})                                                                                  \\
+        \implies & 0 = \lim_{n \to \infty} 0 \leq \lim_{n \to \infty} \abs{d(x^{(n)}, y^{(n)}) - d(z^{(n)}, y^{(n)})}                                                               \\
+                 & \quad \leq \lim_{n \to \infty} d(x^{(n)}, z^{(n)}) = 0                                             & \text{(by Exercise \ref{ex 1.4.8}(a))}                      \\
+        \implies & \lim_{n \to \infty} \abs{d(x^{(n)}, y^{(n)}) - d(z^{(n)}, y^{(n)})} = 0                            & \text{(by squeeze test)}                                    \\
+        \implies & \lim_{n \to \infty} \big(d(x^{(n)}, y^{(n)}) - d(z^{(n)}, y^{(n)})\big) = 0                                                                                      \\
+        \implies & \lim_{n \to \infty} d(x^{(n)}, y^{(n)}) = \lim_{n \to \infty} d(z^{(n)}, y^{(n)})                  & \text{(\(\lim_{n \to \infty} d(x^{(n)}, y^{(n)})\) exists)}
     \end{align*}
     and thus \(d_{\overline{X}}(\text{LIM}_{n \to \infty} x^{(n)}, \text{LIM}_{n \to \infty} y^{(n)}) = d_{\overline{X}}(\text{LIM}_{n \to \infty} z^{(n)}, \text{LIM}_{n \to \infty} y^{(n)})\).
 
@@ -405,49 +405,49 @@
 \end{proof}
 
 \begin{proof}{(c)}
-    Let \(I, J, K, N, k_1, k_2, n_1, n_2 \in \mathbf{Z}^+\).
+    Let \(I, J, K, N, k_1, k_2, n_1, n_2 \in \Z^+\).
     Let \((a^{(n)})_{n = m}^\infty\) be arbitrary Cauchy sequence in \((\overline{X}, d_{\overline{X}})\).
     Since \((a^{(n)})_{n = m}^\infty\) is a Cauchy sequence in \((\overline{X}, d_{\overline{X}})\), by Definition \ref{1.4.6} we know that
     \begin{align*}
-                 & \forall \varepsilon \in \mathbf{R}^+, \exists\ N \geq m : \forall n_1, n_2 \geq N,                                                                                 \\
+                 & \forall \varepsilon \in \R^+, \exists\ N \geq m : \forall n_1, n_2 \geq N,                                                                                         \\
                  & d_{\overline{X}}(a^{(n_1)}, a^{(n_2)}) \leq \frac{\varepsilon}{4}                                                                                                  \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \exists\ N \geq m : \forall n_1, n_2 \geq N,                                                                                 \\
+        \implies & \forall \varepsilon \in \R^+, \exists\ N \geq m : \forall n_1, n_2 \geq N,                                                                                         \\
                  & d_{\overline{X}}(\text{LIM}_{k \to \infty} a_k^{(n_1)}, \text{LIM}_{k \to \infty} a_k^{(n_2)}) \leq \frac{\varepsilon}{4} & \text{(by Exercise \ref{ex 1.4.8}(a))} \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \exists\ N \geq m : \forall n_1, n_2 \geq N,                                                                                 \\
+        \implies & \forall \varepsilon \in \R^+, \exists\ N \geq m : \forall n_1, n_2 \geq N,                                                                                         \\
                  & \lim_{k \to \infty} d(a_k^{(n_1)}, a_k^{(n_2)}) \leq \frac{\varepsilon}{4}.                                               & \text{(by Exercise \ref{ex 1.4.8}(b))}
     \end{align*}
     Since the choice of \(N\) depends on \(\varepsilon\), we denote such \(N\) as \(N_\varepsilon\).
-    We can use axiom of choice to fix \(N_\varepsilon\) for each \(\varepsilon \in \mathbf{R}^+\), and we rewrite the above statement as
+    We can use axiom of choice to fix \(N_\varepsilon\) for each \(\varepsilon \in \R^+\), and we rewrite the above statement as
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \forall n_1, n_2 \geq N_\varepsilon, \lim_{k \to \infty} d(a_k^{(n_1)}, a_k^{(n_2)}) \leq \frac{\varepsilon}{4}.
+        \forall \varepsilon \in \R^+, \forall n_1, n_2 \geq N_\varepsilon, \lim_{k \to \infty} d(a_k^{(n_1)}, a_k^{(n_2)}) \leq \frac{\varepsilon}{4}.
     \]
     Let \(L = \lim_{k \to \infty} d(a_k^{(n_1)}, a_k^{(n_2)})\).
-    Since \(\Big(d(a_k^{(n_1)}, a_k^{(n_2)})\Big)_{k = 1}^\infty\) is a sequence in \(\mathbf{R}\) and converges to \(L\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\), we have
+    Since \(\Big(d(a_k^{(n_1)}, a_k^{(n_2)})\Big)_{k = 1}^\infty\) is a sequence in \(\R\) and converges to \(L\) with respect to \(d_{l^1}|_{\R \times \R}\), we have
     \begin{align*}
-                 & \exists\ I \geq 1 : \forall k \geq I, \abs*{d(a_k^{(n_1)}, a_k^{(n_2)}) - L} \leq \frac{\varepsilon}{4}                                                                                           \\
+                 & \exists\ I \geq 1 : \forall k \geq I, \abs{d(a_k^{(n_1)}, a_k^{(n_2)}) - L} \leq \frac{\varepsilon}{4}                                                                                            \\
         \implies & \exists\ I \geq 1 : \forall k \geq I, -\frac{\varepsilon}{4} \leq d(a_k^{(n_1)}, a_k^{(n_2)}) - L \leq \frac{\varepsilon}{4}                                                                      \\
         \implies & \exists\ I \geq 1 : \forall k \geq I, 0 \leq d(a_k^{(n_1)}, a_k^{(n_2)}) - L + \frac{\varepsilon}{4} \leq \frac{\varepsilon}{2}                                                                   \\
         \implies & \exists\ I \geq 1 : \forall k \geq I, 0 \leq d(a_k^{(n_1)}, a_k^{(n_2)}) \leq d(a_k^{(n_1)}, a_k^{(n_2)}) - L + \frac{\varepsilon}{4} \leq \frac{\varepsilon}{2} & (L \leq \frac{\varepsilon}{4})
     \end{align*}
     Since such \(I\) depends on the choice of \(\varepsilon\), we denote such \(I\) as \(I_\varepsilon\).
-    Again we can use axiom of choice to fix \(I_\varepsilon\) for each \(\varepsilon \in \mathbf{R}^+\), and we rewrite the above statement as
+    Again we can use axiom of choice to fix \(I_\varepsilon\) for each \(\varepsilon \in \R^+\), and we rewrite the above statement as
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \forall n_1, n_2 \geq N_\varepsilon, \forall k \geq I_\varepsilon, d(a_k^{(n_1)}, a_k^{(n_2)}) \leq \frac{\varepsilon}{2}.
+        \forall \varepsilon \in \R^+, \forall n_1, n_2 \geq N_\varepsilon, \forall k \geq I_\varepsilon, d(a_k^{(n_1)}, a_k^{(n_2)}) \leq \frac{\varepsilon}{2}.
     \]
     If we let \(M_\varepsilon = \max(N_\varepsilon, I_\varepsilon)\), then we can further reduce the statement as
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \forall n_1, n_2, k \geq M_\varepsilon, d(a_k^{(n_1)}, a_k^{(n_2)}) \leq \frac{\varepsilon}{2}.
+        \forall \varepsilon \in \R^+, \forall n_1, n_2, k \geq M_\varepsilon, d(a_k^{(n_1)}, a_k^{(n_2)}) \leq \frac{\varepsilon}{2}.
     \]
 
     Since \(a^{(n)} \in \overline{X}\) for each \(n \geq m\), by Exercise \ref{ex 1.4.8}(b) we know that there exists a Cauchy sequence \((a_k^{(n)})_{k = 1}^\infty\) in \((X, d)\) such that \(\text{LIM}_{k \to \infty} a_k^{(n)} = a^{(n)}\) for each \(n \geq m\).
     By Definition \ref{1.4.6} we know that
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \exists\ J \geq 1 : \forall k_1, k_2 \geq J, d(a_{k_1}^{(n)}, a_{k_2}^{(n)}) \leq \frac{\varepsilon}{2}.
+        \forall \varepsilon \in \R^+, \exists\ J \geq 1 : \forall k_1, k_2 \geq J, d(a_{k_1}^{(n)}, a_{k_2}^{(n)}) \leq \frac{\varepsilon}{2}.
     \]
     Since such \(J\) depends on the choice of \(n\) and \(\varepsilon\), we denote such \(J\) as \(J_\varepsilon^{(n)}\).
-    We can use axiom of choice to fix \(J_\varepsilon^{(n)}\) for each \(\varepsilon \in \mathbf{R}^+\) and for each \(n \geq m\), and we rewrite the above statement as
+    We can use axiom of choice to fix \(J_\varepsilon^{(n)}\) for each \(\varepsilon \in \R^+\) and for each \(n \geq m\), and we rewrite the above statement as
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \forall k_1, k_2 \geq J_\varepsilon^{(n)}, d(a_{k_1}^{(n)}, a_{k_2}^{(n)}) \leq \frac{\varepsilon}{2}.
+        \forall \varepsilon \in \R^+, \forall k_1, k_2 \geq J_\varepsilon^{(n)}, d(a_{k_1}^{(n)}, a_{k_2}^{(n)}) \leq \frac{\varepsilon}{2}.
     \]
 
     We now define a sequence \((b_k)_{k = 1}^\infty\) in \((X, d)\) by setting \(b_k = a_k^{(m + k - 1)}\) for all \(k \geq 1\).
@@ -455,9 +455,9 @@
     We claim that \((b_k)_{k = 1}^\infty\) is a Cauchy sequence in \((X, d)\).
     By Definition \ref{1.4.6} it suffices to show that
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \exists\ K \geq 1 : \forall k_1, k_2 \geq K, d(b_{k_1}, b_{k_2}) \leq \varepsilon.
+        \forall \varepsilon \in \R^+, \exists\ K \geq 1 : \forall k_1, k_2 \geq K, d(b_{k_1}, b_{k_2}) \leq \varepsilon.
     \]
-    For each \(\varepsilon \in \mathbf{R}^+\), we have
+    For each \(\varepsilon \in \R^+\), we have
     \begin{align*}
          & \forall k_1, k_2 \geq M_\varepsilon, d(b_{k_1}, b_{k_2})                                                                                                                         \\
          & = d\Big(a_{k_1}^{(m + k_1 - 1)}, a_{k_2}^{(m + k_2 - 1)}\Big)                                                                                                                    \\
@@ -473,7 +473,7 @@
     \end{align*}
     Since \(\varepsilon\) is arbitrary, we have showed that
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \exists\ K \geq 1 : \forall k_1, k_2 \geq K, d(b_{k_1}, b_{k_2}) \leq \varepsilon.
+        \forall \varepsilon \in \R^+, \exists\ K \geq 1 : \forall k_1, k_2 \geq K, d(b_{k_1}, b_{k_2}) \leq \varepsilon.
     \]
     Thus by Definition \ref{1.4.6} \((b_k)_{k = 1}^\infty\) is a Cauchy sequence in \((X, d)\).
 
@@ -485,14 +485,14 @@
              & \lim_{n \to \infty} d_{\overline{X}}\Big(a^{(n)}, \text{LIM}_{k \to \infty} b_k\Big) = 0                             & \text{(by Definition \ref{1.1.14})}    \\
         \iff & \lim_{n \to \infty} d_{\overline{X}}\Big(\text{LIM}_{k \to \infty} a_k^{(n)}, \text{LIM}_{k \to \infty} b_k\Big) = 0 & \text{(by Exercise \ref{ex 1.4.8}(a))} \\
         \iff & \lim_{n \to \infty} \big(\lim_{k \to \infty} d(a_k^{(n)}, b_k)\big) = 0                                              & \text{(by Exercise \ref{ex 1.4.8}(b))} \\
-        \iff & \forall \varepsilon \in \mathbf{R}^+, \exists\ N \geq m : \forall n \geq m,                                                                                   \\
-             & \abs*{\lim_{k \to \infty} d(a_k^{(n)}, b_k) - 0} \leq \varepsilon.
+        \iff & \forall \varepsilon \in \R^+, \exists\ N \geq m : \forall n \geq m,                                                                                           \\
+             & \abs{\lim_{k \to \infty} d(a_k^{(n)}, b_k) - 0} \leq \varepsilon.
     \end{align*}
     Since
     \begin{align*}
-         & \forall \varepsilon \in \mathbf{R}^+, \exists\ M_\varepsilon \geq 1 : \forall k \geq M_\varepsilon, d(a_k^{(M_\varepsilon)}, b_k)                                                   \\
-         & = d\Big(a_k^{(M_\varepsilon)}, a_k^{(m + k - 1)}\Big)                                                                                                                               \\
-         & \leq \frac{\varepsilon}{2}                                                                                                        & \text{(by the definition of \(M_\varepsilon\))} \\
+         & \forall \varepsilon \in \R^+, \exists\ M_\varepsilon \geq 1 : \forall k \geq M_\varepsilon, d(a_k^{(M_\varepsilon)}, b_k)                                                   \\
+         & = d\Big(a_k^{(M_\varepsilon)}, a_k^{(m + k - 1)}\Big)                                                                                                                       \\
+         & \leq \frac{\varepsilon}{2}                                                                                                & \text{(by the definition of \(M_\varepsilon\))} \\
          & < \varepsilon,
     \end{align*}
     we know that \(\lim_{k \to \infty} d(a_k^{(M_\varepsilon)}, b_k)\) exists.
@@ -500,7 +500,7 @@
     \begin{align*}
                  & \forall n, k \geq M_\varepsilon, 0 \leq d(a_k^{(n)}, b_k) \leq \frac{\varepsilon}{2} < \varepsilon & \text{(by the definition of \(M_\varepsilon\))} \\
         \implies & \forall n \geq M_\varepsilon, 0 \leq \lim_{k \to \infty} d(a_k^{(n)}, b_k) \leq \varepsilon        & \text{(by comparison test)}                     \\
-        \implies & \forall n \geq M_\varepsilon, \abs*{\lim_{k \to \infty} d(a_k^{(n)}, b_k) - 0} \leq \varepsilon.
+        \implies & \forall n \geq M_\varepsilon, \abs{\lim_{k \to \infty} d(a_k^{(n)}, b_k) - 0} \leq \varepsilon.
     \end{align*}
     by setting \(N = M_\varepsilon\) we are done.
 

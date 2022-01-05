@@ -9,8 +9,8 @@
 \end{note}
 
 \begin{theorem}\label{3.7.1}
-    Let \([a, b]\) be an interval, and for every integer \(n \geq 1\), let \(f_n : [a, b] \to \mathbf{R}\) be a differentiable function whose derivative \(f_n' : [a, b] \to \mathbf{R}\) is continuous.
-    Suppose that the derivatives \(f_n'\) converge uniformly to a function \(g : [a, b] \to \mathbf{R}\).
+    Let \([a, b]\) be an interval, and for every integer \(n \geq 1\), let \(f_n : [a, b] \to \R\) be a differentiable function whose derivative \(f_n' : [a, b] \to \R\) is continuous.
+    Suppose that the derivatives \(f_n'\) converge uniformly to a function \(g : [a, b] \to \R\).
     Suppose also that there exists a point \(x_0\) such that the limit \(\lim_{n \to \infty} f_n(x_0)\) exists.
     Then the functions \(f_n\) converge uniformly to a differentiable function \(f\), and the derivative of \(f\) equals \(g\).
 \end{theorem}
@@ -36,7 +36,7 @@
     \[
         \forall x \in [a, b], \lim_{n \to \infty} \big(f_n(x) - f_n(a)\big) = \lim_{n \to \infty} \int_{[a, x]} f_n' = \int_{[a, x]} \big(\lim_{n \to \infty} f_n'\big) = \int_{[a, x]} g.
     \]
-    Now define the function \(f : [a, b] \to \mathbf{R}\) by setting
+    Now define the function \(f : [a, b] \to \R\) by setting
     \[
         f(x) \coloneqq L - \int_{[a, x_0]} g + \int_{[a, x]} g
     \]
@@ -45,44 +45,44 @@
 
     We know that \(a \neq b\) since if \(a = b\), then we have \(x_0 = a = b\) and
     \[
-        \forall n \in \mathbf{Z}^+, \lim_{x \to x_0; x \in \{x_0\} \setminus \{x_0\}} \frac{f_n(x) - f_n(x_0)}{x - x_0} \text{ is undefined}
+        \forall n \in \Z^+, \lim_{x \to x_0; x \in \{x_0\} \setminus \{x_0\}} \frac{f_n(x) - f_n(x_0)}{x - x_0} \text{ is undefined}
     \]
     which contradict to the hypothesis that \(f_n\) is differentiable on \([a, b]\).
     Observe that
     \begin{align*}
-                 & L = \lim_{n \to \infty} f_n(x_0)                                                                                                              \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \exists\ N_1 \in \mathbf{Z}^+ : \forall n \geq N_1, \abs*{f_n(x_0) - L} < \frac{\varepsilon}{3(b - a)}.
+                 & L = \lim_{n \to \infty} f_n(x_0)                                                                                             \\
+        \implies & \forall \varepsilon \in \R^+, \exists\ N_1 \in \Z^+ : \forall n \geq N_1, \abs{f_n(x_0) - L} < \frac{\varepsilon}{3(b - a)}.
     \end{align*}
     Now we fix one pair of \(\varepsilon\) and \(N_1\).
-    Since \((f_n')_{n = 1}^\infty\) converges uniformly to \(g\) on \([a, b]\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\), by Definition \ref{3.2.7} we have
+    Since \((f_n')_{n = 1}^\infty\) converges uniformly to \(g\) on \([a, b]\) with respect to \(d_{l^1}|_{\R \times \R}\), by Definition \ref{3.2.7} we have
     \begin{align*}
-                 & \exists\ N_2 \in \mathbf{Z}^+ : \forall n \geq N_2, \forall x \in [a, b],                                                       \\
-                 & \abs*{f_n'(x) - g(x)} < \frac{\varepsilon}{3(b - a)}                                                                            \\
-        \implies & \exists\ N_2 \in \mathbf{Z}^+ : \forall n \geq N_2, \forall x \in [a, b],                                                       \\
+                 & \exists\ N_2 \in \Z^+ : \forall n \geq N_2, \forall x \in [a, b],                                                               \\
+                 & \abs{f_n'(x) - g(x)} < \frac{\varepsilon}{3(b - a)}                                                                             \\
+        \implies & \exists\ N_2 \in \Z^+ : \forall n \geq N_2, \forall x \in [a, b],                                                               \\
                  & \frac{-\varepsilon}{3(b - a)} < f_n'(x) - g(x) < \frac{\varepsilon}{3(b - a)}                                                   \\
-        \implies & \exists\ N_2 \in \mathbf{Z}^+ : \forall n \geq N_2, \forall x \in [a, b],                                                       \\
+        \implies & \exists\ N_2 \in \Z^+ : \forall n \geq N_2, \forall x \in [a, b],                                                               \\
                  & \frac{-\varepsilon (x - a)}{3(b - a)} \leq \int_{[a, x]} f_n'(x) - \int_{[a, x]} g(x) \leq \frac{\varepsilon (x - a)}{3(b - a)} \\
-        \implies & \exists\ N_2 \in \mathbf{Z}^+ : \forall n \geq N_2, \forall x \in [a, b],                                                       \\
+        \implies & \exists\ N_2 \in \Z^+ : \forall n \geq N_2, \forall x \in [a, b],                                                               \\
                  & \frac{-\varepsilon (x - a)}{3(b - a)} \leq f_n(x) - f_n(a) - \int_{[a, x]} g(x) \leq \frac{\varepsilon (x - a)}{3(b - a)}       \\
-        \implies & \exists\ N_2 \in \mathbf{Z}^+ : \forall n \geq N_2, \forall x \in [a, b],                                                       \\
-                 & \abs*{f_n(x) - f_n(a) - \int_{[a, x]} g(x)} \leq \frac{\varepsilon \abs*{x - a}}{3(b - a)}.
+        \implies & \exists\ N_2 \in \Z^+ : \forall n \geq N_2, \forall x \in [a, b],                                                               \\
+                 & \abs{f_n(x) - f_n(a) - \int_{[a, x]} g(x)} \leq \frac{\varepsilon \abs{x - a}}{3(b - a)}.
     \end{align*}
     Let \(N = \max(N_1, N_2)\).
     Then we have
     \begin{align*}
-         & \forall n \geq N, \forall x \in [a, b], \abs*{f_n(x) - f(x)}                                                             \\
-         & = \abs*{f_n(x) - f_n(x_0) + f_n(x_0) - f_n(a) + f_n(a) - L + \int_{[a, x_0]} g - \int_{[a, x]} g}                        \\
-         & \leq \abs*{f_n(x) - f_n(a) - \int_{[a, x]} g} + \abs*{f_n(x_0) - L} + \abs*{f_n(x_0) - f_n(a) - \int_{[a, x_0]} g}       \\
-         & < \frac{\varepsilon \abs*{x - a}}{3(b - a)} + \frac{\varepsilon \abs*{x_0 - a}}{3(b - a)} + \frac{\varepsilon}{3(b - a)} \\
+         & \forall n \geq N, \forall x \in [a, b], \abs{f_n(x) - f(x)}                                                            \\
+         & = \abs{f_n(x) - f_n(x_0) + f_n(x_0) - f_n(a) + f_n(a) - L + \int_{[a, x_0]} g - \int_{[a, x]} g}                       \\
+         & \leq \abs{f_n(x) - f_n(a) - \int_{[a, x]} g} + \abs{f_n(x_0) - L} + \abs{f_n(x_0) - f_n(a) - \int_{[a, x_0]} g}        \\
+         & < \frac{\varepsilon \abs{x - a}}{3(b - a)} + \frac{\varepsilon \abs{x_0 - a}}{3(b - a)} + \frac{\varepsilon}{3(b - a)} \\
          & < \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon.
     \end{align*}
     Since \(\varepsilon\) is arbitrary, we have
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall n \geq N, \forall x \in [a, b], \abs*{f_n(x) - f(x)} < \varepsilon
+        \forall \varepsilon \in \R^+, \exists\ N \in \Z^+ : \forall n \geq N, \forall x \in [a, b], \abs{f_n(x) - f(x)} < \varepsilon
     \]
-    and by Definition \ref{3.2.7} \((f_n)_{n = 1}^\infty\) converges uniformly to \(f\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+    and by Definition \ref{3.2.7} \((f_n)_{n = 1}^\infty\) converges uniformly to \(f\) with respect to \(d_{l^1}|_{\R \times \R}\).
 
-    Since \(f_n\) is continuous on \([a, b]\) for each \(n \in \mathbf{Z}^+\), by Corollary \ref{3.3.2} we know that \(f\) is also continuous on \([a, b]\).
+    Since \(f_n\) is continuous on \([a, b]\) for each \(n \in \Z^+\), by Corollary \ref{3.3.2} we know that \(f\) is also continuous on \([a, b]\).
     Since \(g\) is continuous on \([a, b]\), by fundamental theorem of calculus (Theorem 11.9.1 in Analysis) we know that
     \[
         \forall x \in X, G(x) = \int_{[a, x]} g \text{ is differentiable at } x.
@@ -110,10 +110,10 @@
 \end{remark}
 
 \begin{corollary}\label{3.7.3}
-    Let \([a, b]\) be an interval, and for every integer \(n \geq 1\), let \(f_n : [a, b] \to \mathbf{R}\) be a differentiable function whose derivative \(f_n' : [a, b] \to \mathbf{R}\) is continuous.
+    Let \([a, b]\) be an interval, and for every integer \(n \geq 1\), let \(f_n : [a, b] \to \R\) be a differentiable function whose derivative \(f_n' : [a, b] \to \R\) is continuous.
     Suppose that the series \(\sum_{n = 1}^\infty \norm*{f_n'}_\infty\) is absolutely convergent, where
     \[
-        \norm*{f_n'}_\infty \coloneqq \sup_{x \in [a, b]} \abs*{f_n'(x)}
+        \norm*{f_n'}_\infty \coloneqq \sup_{x \in [a, b]} \abs{f_n'(x)}
     \]
     is the sup norm of \(f_n'\), as defined in Definition \ref{3.5.5}.
     Suppose also that the series \(\sum_{n = 1}^\infty f_n(x_0)\) is convergent for some \(x_0 \in [a, b]\).
@@ -125,23 +125,23 @@
 \end{corollary}
 
 \begin{proof}
-    Let \(F_N = \sum_{n = 1}^N f_n\) for each \(N \in \mathbf{Z}^+\).
+    Let \(F_N = \sum_{n = 1}^N f_n\) for each \(N \in \Z^+\).
     Then by Theorem 10.1.13(c) in Analysis I we have
     \[
-        \forall N \in \mathbf{Z}^+, F_N' = \bigg(\sum_{n = 1}^N f_n\bigg)' = \sum_{n = 1}^N f_n'.
+        \forall N \in \Z^+, F_N' = \bigg(\sum_{n = 1}^N f_n\bigg)' = \sum_{n = 1}^N f_n'.
     \]
-    Since \(f_n'\) is continuous on \([a, b]\) for each \(n \in \mathbf{Z}^+\), by Proposition 9.6.7 in Analysis I we know that \(f_n' \in B\big([a, b] \to \mathbf{R}\big)\) and thus \(f_n' \in C\big([a, b] \to \mathbf{R}\big)\).
+    Since \(f_n'\) is continuous on \([a, b]\) for each \(n \in \Z^+\), by Proposition 9.6.7 in Analysis I we know that \(f_n' \in B\big([a, b] \to \R\big)\) and thus \(f_n' \in C\big([a, b] \to \R\big)\).
     By Exercise \ref{ex 3.5.1} we know that
     \[
-        \forall N \in \mathbf{Z}^+, F_N' = \sum_{n = 1}^N f_n' \in C([a, b] \to \mathbf{R}).
+        \forall N \in \Z^+, F_N' = \sum_{n = 1}^N f_n' \in C([a, b] \to \R).
     \]
-    Since \(\sum_{n = 1}^\infty \norm*{f_n'}_\infty\) converges and \(f_n' \in C\big([a, b] \to \mathbf{R}\big)\) for each \(n \in \mathbf{Z}^+\), by Theorem \ref{3.5.7} we know that there exists some \(G : [a, b] \to \mathbf{R}\) such that \(\big(\sum_{n = 1}^N f_n'\big)_{N = 1}^\infty\) converges uniformly to \(G\) on \([a, b]\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
-    Equivalently, \((F_N')_{N = 1}^\infty\) converges uniformly to \(G\) on \([a, b]\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+    Since \(\sum_{n = 1}^\infty \norm*{f_n'}_\infty\) converges and \(f_n' \in C\big([a, b] \to \R\big)\) for each \(n \in \Z^+\), by Theorem \ref{3.5.7} we know that there exists some \(G : [a, b] \to \R\) such that \(\big(\sum_{n = 1}^N f_n'\big)_{N = 1}^\infty\) converges uniformly to \(G\) on \([a, b]\) with respect to \(d_{l^1}|_{\R \times \R}\).
+    Equivalently, \((F_N')_{N = 1}^\infty\) converges uniformly to \(G\) on \([a, b]\) with respect to \(d_{l^1}|_{\R \times \R}\).
     Since
     \[
         \sum_{n = 1}^\infty f_n(x_0) = \lim_{N \to \infty} \sum_{n = 1}^N f_n(x_0) = \lim_{N \to \infty} F_N(x_0),
     \]
-    by Theorem \ref{3.7.1} we know that there exists some \(F : [a, b] \to \mathbf{R}\) such that \((F_N)_{N = 1}^\infty\) converges uniformly to \(F\) on \([a, b]\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\) and \(F' = G\).
+    by Theorem \ref{3.7.1} we know that there exists some \(F : [a, b] \to \R\) such that \((F_N)_{N = 1}^\infty\) converges uniformly to \(F\) on \([a, b]\) with respect to \(d_{l^1}|_{\R \times \R}\) and \(F' = G\).
     Then we have
     \begin{align*}
                  & \forall x \in [a, b], \begin{cases}
@@ -159,7 +159,7 @@
 \end{note}
 
 \begin{example}\label{3.7.4}
-    Let \(f : \mathbf{R} \to \mathbf{R}\) be the function
+    Let \(f : \R \to \R\) be the function
     \[
         f(x) \coloneqq \sum_{n = 1}^\infty 4^{-n} \cos(32^n \pi x).
     \]
@@ -184,20 +184,20 @@
     Prove Theorem \ref{3.7.1} without assuming that \(f_n'\) is continuous.
     (This means that you cannot use the fundamental theorem of calculus.
     However, the mean value theorem (Corollary 10.2.9 in Analysis I) is still available.
-    Use this to show that if \(d_\infty(f_n', f_m') \leq \varepsilon\), then \(\abs*{\big(f_n(x) - f_m(x)\big) - \big(f_n(x_0) - f_m(x_0)\big)} \leq \varepsilon \abs*{x - x_0}\) for all \(x \in [a, b]\), and then use this to complete the proof of Theorem \ref{3.7.1}.)
+    Use this to show that if \(d_\infty(f_n', f_m') \leq \varepsilon\), then \(\abs{\big(f_n(x) - f_m(x)\big) - \big(f_n(x_0) - f_m(x_0)\big)} \leq \varepsilon \abs{x - x_0}\) for all \(x \in [a, b]\), and then use this to complete the proof of Theorem \ref{3.7.1}.)
 \end{exercise}
 
 \begin{proof}
-    Let \(m \in \mathbf{Z}^+\).
-    Let \(d_{C([a, b] \to \mathbf{R})} = d_{B([a, b] \to \mathbf{R})}|_{C([a, b] \to \mathbf{R}) \times C([a, b] \to \mathbf{R})}\).
-    Since \(f_n\) is differentiable on \([a, b]\), by Corollary 10.1.12 and Proposition 9.6.7 in Analysis I we know that \(f_n \in C([a, b] \to \mathbf{R})\) for each \(n \in \mathbf{Z}^+\).
-    Since \((f_n')_{n = 1}^\infty\) converges uniformly to \(g\) on \([a, b]\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\), by Definition \ref{3.2.7} we have
+    Let \(m \in \Z^+\).
+    Let \(d_{C([a, b] \to \R)} = d_{B([a, b] \to \R)}|_{C([a, b] \to \R) \times C([a, b] \to \R)}\).
+    Since \(f_n\) is differentiable on \([a, b]\), by Corollary 10.1.12 and Proposition 9.6.7 in Analysis I we know that \(f_n \in C([a, b] \to \R)\) for each \(n \in \Z^+\).
+    Since \((f_n')_{n = 1}^\infty\) converges uniformly to \(g\) on \([a, b]\) with respect to \(d_{l^1}|_{\R \times \R}\), by Definition \ref{3.2.7} we have
     \begin{align*}
-                 & \forall \varepsilon \in \mathbf{R}^+, \exists\ N_1 \in \mathbf{Z}^+ : \forall n \geq N_1, \forall x \in [a, b], \abs*{f_n'(x) - g(x)} < \frac{\varepsilon}{6(b - a)} \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \exists\ N_1 \in \mathbf{Z}^+ : \forall n, m \geq N_1, \forall x \in [a, b],                                                   \\
-                 & \abs*{f_n'(x) - f_m'(x)} \leq \abs*{f_n'(x) - g(x)} + \abs*{f_m'(x) - g(x)} < \frac{\varepsilon}{6(b - a)} + \frac{\varepsilon}{6(b - a)}                            \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \exists\ N_1 \in \mathbf{Z}^+ : \forall n, m \geq N_1, \forall x \in [a, b],                                                   \\
-                 & \abs*{(f_n' - f_m')(x)} < \frac{\varepsilon}{3(b - a)}.
+                 & \forall \varepsilon \in \R^+, \exists\ N_1 \in \Z^+ : \forall n \geq N_1, \forall x \in [a, b], \abs{f_n'(x) - g(x)} < \frac{\varepsilon}{6(b - a)} \\
+        \implies & \forall \varepsilon \in \R^+, \exists\ N_1 \in \Z^+ : \forall n, m \geq N_1, \forall x \in [a, b],                                                  \\
+                 & \abs{f_n'(x) - f_m'(x)} \leq \abs{f_n'(x) - g(x)} + \abs{f_m'(x) - g(x)} < \frac{\varepsilon}{6(b - a)} + \frac{\varepsilon}{6(b - a)}              \\
+        \implies & \forall \varepsilon \in \R^+, \exists\ N_1 \in \Z^+ : \forall n, m \geq N_1, \forall x \in [a, b],                                                  \\
+                 & \abs{(f_n' - f_m')(x)} < \frac{\varepsilon}{3(b - a)}.
     \end{align*}
     Now we fix one such \(\varepsilon\) and \(N_1\).
     Let \(x \in [a, b]\).
@@ -206,7 +206,7 @@
         \item \(x = x_0\).
               Then we have
               \[
-                  \forall n, m \geq N_1, \abs*{\big(f_n(x_0) - f_m(x_0)\big) - \big(f_n(x_0) - f_m(x_0)\big)} = 0 = \frac{\varepsilon \abs*{x_0 - x_0}}{3(b - a)}.
+                  \forall n, m \geq N_1, \abs{\big(f_n(x_0) - f_m(x_0)\big) - \big(f_n(x_0) - f_m(x_0)\big)} = 0 = \frac{\varepsilon \abs{x_0 - x_0}}{3(b - a)}.
               \]
         \item \(x \neq x_0\).
               Suppose that \(x < x_0\).
@@ -221,61 +221,61 @@
               \]
               In either cases we have
               \begin{align*}
-                           & \forall n, m \geq N_1, \exists\ y \in (a, b) :                                                                                            \\
-                           & \abs*{\frac{(f_n - f_m)(x) - (f_n - f_m)(x_0)}{x - x_0}} = \abs*{(f_n - f_m)'(y)}                                                         \\
-                  \implies & \forall n, m \geq N_1, \exists\ y \in (a, b) :                                                                                            \\
-                           & \abs*{\big(f_n(x) - f_m(x)\big) - \big(f_n(x_0) - f_m(x_0)\big)}                                                                          \\
-                           & = \abs*{f_n'(y) - f_m'(y)} \abs*{x - x_0}                                                                                                 \\
-                           & \leq \frac{\varepsilon \abs*{x - x_0}}{3(b - a)}                                                                                          \\
-                  \implies & \forall n, m \geq N_1, \abs*{\big(f_n(x) - f_m(x)\big) - \big(f_n(x_0) - f_m(x_0)\big)} \leq \frac{\varepsilon \abs*{x - x_0}}{3(b - a)}.
+                           & \forall n, m \geq N_1, \exists\ y \in (a, b) :                                                                                          \\
+                           & \abs{\frac{(f_n - f_m)(x) - (f_n - f_m)(x_0)}{x - x_0}} = \abs{(f_n - f_m)'(y)}                                                         \\
+                  \implies & \forall n, m \geq N_1, \exists\ y \in (a, b) :                                                                                          \\
+                           & \abs{\big(f_n(x) - f_m(x)\big) - \big(f_n(x_0) - f_m(x_0)\big)}                                                                         \\
+                           & = \abs{f_n'(y) - f_m'(y)} \abs{x - x_0}                                                                                                 \\
+                           & \leq \frac{\varepsilon \abs{x - x_0}}{3(b - a)}                                                                                         \\
+                  \implies & \forall n, m \geq N_1, \abs{\big(f_n(x) - f_m(x)\big) - \big(f_n(x_0) - f_m(x_0)\big)} \leq \frac{\varepsilon \abs{x - x_0}}{3(b - a)}.
               \end{align*}
     \end{itemize}
     From all cases above we conclude that
     \[
-        \forall n, m \geq N_1, \forall x \in [a, b], \abs*{\big(f_n(x) - f_m(x)\big) - \big(f_n(x_0) - f_m(x_0)\big)} \leq \frac{\varepsilon \abs*{x - x_0}}{3(b - a)}.
+        \forall n, m \geq N_1, \forall x \in [a, b], \abs{\big(f_n(x) - f_m(x)\big) - \big(f_n(x_0) - f_m(x_0)\big)} \leq \frac{\varepsilon \abs{x - x_0}}{3(b - a)}.
     \]
 
     Let \(L = \lim_{n \to \infty} f_n(x_0)\).
     Then we have
     \begin{align*}
-                 & \lim_{n \to \infty} f_n(x_0) = L                                                                \\
-        \implies & \exists\ N_2 \in \mathbf{Z}^+ : \forall n \geq N_2, \abs*{f_n(x_0) - L} < \frac{\varepsilon}{3}
+                 & \lim_{n \to \infty} f_n(x_0) = L                                                       \\
+        \implies & \exists\ N_2 \in \Z^+ : \forall n \geq N_2, \abs{f_n(x_0) - L} < \frac{\varepsilon}{3}
     \end{align*}
     Let \(N = \max(N_1, N_2)\).
     Then we have
     \begin{align*}
-         & \forall n, m \geq N, \forall x \in [a, b],                                                                        \\
-         & \abs*{f_n(x) - f_m(x)}                                                                                            \\
-         & = \abs*{\big(f_n(x) - f_m(x)\big) - \big(f_n(x_0) - f_m(x_0)\big) + \big(f_n(x_0) - f_m(x_0)\big) + L - L}        \\
-         & \leq \abs*{\big(f_n(x) - f_m(x)\big) - \big(f_n(x_0) - f_m(x_0)\big)} + \abs*{f_n(x_0) - L} + \abs*{f_m(x_0) - L} \\
-         & < \frac{\varepsilon \abs*{x - x_0}}{3(b - a)} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3}                     \\
+         & \forall n, m \geq N, \forall x \in [a, b],                                                                     \\
+         & \abs{f_n(x) - f_m(x)}                                                                                          \\
+         & = \abs{\big(f_n(x) - f_m(x)\big) - \big(f_n(x_0) - f_m(x_0)\big) + \big(f_n(x_0) - f_m(x_0)\big) + L - L}      \\
+         & \leq \abs{\big(f_n(x) - f_m(x)\big) - \big(f_n(x_0) - f_m(x_0)\big)} + \abs{f_n(x_0) - L} + \abs{f_m(x_0) - L} \\
+         & < \frac{\varepsilon \abs{x - x_0}}{3(b - a)} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3}                   \\
          & \leq \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon.
     \end{align*}
     Since \(\varepsilon\) is arbitrary, by Definition \ref{3.4.2} we have
     \begin{align*}
-                 & \forall \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall n, m \geq N, \forall x \in [a, b], \abs*{f_n(x) - f_m(x)} < \varepsilon \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall n, m \geq N, \sup_{x \in [a, b]}\abs*{f_n(x) - f_m(x)} < \varepsilon    \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \exists\ N \in \mathbf{Z}^+ : \forall n, m \geq N, d_{C([a, b] \to \mathbf{R})}(f_n, f_m) < \varepsilon.
+                 & \forall \varepsilon \in \R^+, \exists\ N \in \Z^+ : \forall n, m \geq N, \forall x \in [a, b], \abs{f_n(x) - f_m(x)} < \varepsilon \\
+        \implies & \forall \varepsilon \in \R^+, \exists\ N \in \Z^+ : \forall n, m \geq N, \sup_{x \in [a, b]}\abs{f_n(x) - f_m(x)} < \varepsilon    \\
+        \implies & \forall \varepsilon \in \R^+, \exists\ N \in \Z^+ : \forall n, m \geq N, d_{C([a, b] \to \R)}(f_n, f_m) < \varepsilon.
     \end{align*}
-    Thus by Definition \ref{1.4.6} \((f_n)_{n = 1}^\infty\) is a Cauchy sequence in \(\big(C([a, b] \to \mathbf{R}), d_{C([a, b] \to \mathbf{R})}\big)\).
-    Since \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\) is complete, by Theorem \ref{3.4.5} we know that there exists some \(f : [a, b] \to \mathbf{R}\) such that
+    Thus by Definition \ref{1.4.6} \((f_n)_{n = 1}^\infty\) is a Cauchy sequence in \(\big(C([a, b] \to \R), d_{C([a, b] \to \R)}\big)\).
+    Since \((\R, d_{l^1}|_{\R \times \R})\) is complete, by Theorem \ref{3.4.5} we know that there exists some \(f : [a, b] \to \R\) such that
     \[
         \begin{cases}
-            f \in C([a, b] \to \mathbf{R}) \\
-            d_{C([a, b] \to \mathbf{R})} - \lim_{n \to \infty} f_n = f
+            f \in C([a, b] \to \R) \\
+            d_{C([a, b] \to \R)} - \lim_{n \to \infty} f_n = f
         \end{cases}
     \]
-    By Proposition \ref{3.4.4} we know that \((f_n)_{n = 1}^\infty\) convergent uniformly to \(f\) on \([a, b]\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\).
+    By Proposition \ref{3.4.4} we know that \((f_n)_{n = 1}^\infty\) convergent uniformly to \(f\) on \([a, b]\) with respect to \(d_{l^1}|_{\R \times \R}\).
 
     Now we show that \(f\) is differentiable on \([a, b]\) and \(f' = g\).
     Let \(y \in [a, b]\).
-    Since \((f_n')_{n = 1}^\infty\) converges uniformly to \(g\) on \([a, b]\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\), we have
+    Since \((f_n')_{n = 1}^\infty\) converges uniformly to \(g\) on \([a, b]\) with respect to \(d_{l^1}|_{\R \times \R}\), we have
     \begin{align*}
         g(y) & = \lim_{n \to \infty} f_n'(y)                                                                                  & \text{(by Exercise \ref{ex 3.2.2}(a))} \\
              & = \lim_{n \to \infty} \bigg(\lim_{x \to y ; x \in [a, b] \setminus \{y\}} \frac{f_n(x) - f_n(y)}{x - y}\bigg)                                           \\
              & = \lim_{x \to y ; x \in [a, b] \setminus \{y\}} \bigg(\lim_{n \to \infty} \frac{f_n(x) - f_n(y)}{x - y}\bigg). & \text{(by Proposition \ref{3.3.3})}
     \end{align*}
-    Since \((f_n)_{n = 1}^\infty\) converges uniformly to \(f\) on \([a, b]\) with respect to \(d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\), we have
+    Since \((f_n)_{n = 1}^\infty\) converges uniformly to \(f\) on \([a, b]\) with respect to \(d_{l^1}|_{\R \times \R}\), we have
     \begin{align*}
                  & \forall x \in [a, b], f(x) = \lim_{n \to \infty} f_n(x)                                                                       & \text{(by Exercise \ref{ex 3.2.2}(a))} \\
         \implies & \forall x \in [a, b], f(x) - f(y) = \lim_{n \to \infty} f_n(x) - \lim_{n \to \infty} f_n(y)                                                                            \\

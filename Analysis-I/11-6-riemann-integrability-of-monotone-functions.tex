@@ -1,7 +1,7 @@
 \section{Riemann integrability of monotone functions}\label{sec 11.6}
 
 \begin{proposition}\label{11.6.1}
-    Let \([a, b]\) be a closed and bounded interval and let \(f : [a, b] \to \mathbf{R}\) be a monotone function.
+    Let \([a, b]\) be a closed and bounded interval and let \(f : [a, b] \to \R\) be a monotone function.
     Then \(f\) is Riemann integrable on \([a, b]\).
 \end{proposition}
 
@@ -43,7 +43,7 @@
 \end{remark}
 
 \begin{corollary}\label{11.6.3}
-    Let \(I\) be a bounded interval, and let \(f : I \to \mathbf{R}\) be both monotone and bounded.
+    Let \(I\) be a bounded interval, and let \(f : I \to \R\) be both monotone and bounded.
     Then \(f\) is Riemann integrable on \(I\).
 \end{corollary}
 
@@ -56,11 +56,11 @@
     We have a bound \(M\) for \(f\), so that \(-M \leq f(x) \leq M\) for all \(x \in I\).
     Now let \(0 < \varepsilon < (b - a) / 2\) be a small number.
     The function \(f\) when restricted to the interval \([a + \varepsilon, b - \varepsilon]\) is monotone, and hence Riemann integrable by Proposition \ref{11.6.1}.
-    In particular, we can find a piecewise constant function \(h : [a + \varepsilon, b - \varepsilon] \to \mathbf{R}\) which majorizes \(f\) on \([a + \varepsilon, b - \varepsilon]\) such that
+    In particular, we can find a piecewise constant function \(h : [a + \varepsilon, b - \varepsilon] \to \R\) which majorizes \(f\) on \([a + \varepsilon, b - \varepsilon]\) such that
     \[
         \int_{[a + \varepsilon, b - \varepsilon]} h \leq \int_{[a + \varepsilon, b - \varepsilon]} f + \varepsilon.
     \]
-    Define \(\tilde{h} : I \to \mathbf{R}\) by
+    Define \(\tilde{h} : I \to \R\) by
     \[
         \tilde{h}(x) \coloneqq \begin{cases}
             h(x) & \text{if } x \in [a + \varepsilon, b - \varepsilon]             \\
@@ -89,20 +89,20 @@
 \end{proof}
 
 \begin{proposition}[Integral test]\label{11.6.4}
-    Let \(f : [0, \infty) \to \mathbf{R}\) be a monotone decreasing function which is non-negative
+    Let \(f : [0, \infty) \to \R\) be a monotone decreasing function which is non-negative
     (i.e., \(f(x) \geq 0\) for all \(x \geq 0\)).
     Then the sum \(\sum_{n = 0}^\infty f(n)\) is convergent if and only if \(\sup_{N > 0} \int_{[0, N]} f\) is finite.
 \end{proposition}
 
 \begin{proof}
-    Let \(N \in \mathbf{Z}^+\).
+    Let \(N \in \Z^+\).
     Since \(f\) is monotone decreasing, by Proposition \ref{11.6.1} we know that \(f\) is Riemann integrable on both \([0, N]\) and every interval \([a, b] \subseteq [0, N]\).
     Then we have
     \begin{align*}
         \int_{[0, N]} f & = \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f|_{[n, n + 1)} + \int_{[N, N]} f|_{[N, N]} & \text{(by Exercise \ref{ex 11.4.3})}     \\
                         & = \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f|_{[n, n + 1)}                             & \text{(by Definition \ref{11.1.8})}      \\
                         & \leq \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f(n)                                     & \text{(by Theorem \ref{11.4.1}(e))}      \\
-                        & = \sum_{n = 0}^{N - 1} f(n) \abs*{n + 1 - n}                                         & \text{(by Definition \ref{11.2.9})}      \\
+                        & = \sum_{n = 0}^{N - 1} f(n) \abs{n + 1 - n}                                          & \text{(by Definition \ref{11.2.9})}      \\
                         & = \sum_{n = 0}^{N - 1} f(n)                                                                                                     \\
                         & \leq \sum_{n = 0}^N f(n)                                                             & (\forall x \in [0, \infty), f(x) \geq 0)
     \end{align*}
@@ -111,7 +111,7 @@
         \int_{[0, N]} f & = \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f|_{[n, n + 1)} + \int_{[N, N]} f|_{[N, N]} & \text{(by Exercise \ref{ex 11.4.3})} \\
                         & = \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f|_{[n, n + 1)}                             & \text{(by Definition \ref{11.1.8})}  \\
                         & \geq \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f(n + 1)                                 & \text{(by Theorem \ref{11.4.1}(e))}  \\
-                        & = \sum_{n = 0}^{N - 1} f(n + 1) \abs*{n + 1 - n}                                     & \text{(by Definition \ref{11.2.9})}  \\
+                        & = \sum_{n = 0}^{N - 1} f(n + 1) \abs{n + 1 - n}                                      & \text{(by Definition \ref{11.2.9})}  \\
                         & = \sum_{n = 0}^{N - 1} f(n + 1)                                                                                             \\
                         & = \sum_{n = 1}^N f(n).                                                               & \text{(by Lemma \ref{7.1.4}(b))}
     \end{align*}
@@ -123,7 +123,7 @@
         \sum_{n = 0}^\infty f(n) = \lim_{m \to \infty} \sum_{n = 0}^m f(n)
     \]
     and by Proposition \ref{6.1.12} \(\big(\sum_{n = 0}^m f(n)\big)_{m = 0}^\infty\) is a Cauchy sequence.
-    By Lemma \ref{5.1.15} we know that \(\big(\sum_{n = 0}^m f(n)\big)_{m = 0}^\infty\) is bounded by some \(M \in \mathbf{R}\).
+    By Lemma \ref{5.1.15} we know that \(\big(\sum_{n = 0}^m f(n)\big)_{m = 0}^\infty\) is bounded by some \(M \in \R\).
     By comparison principle (Lemma \ref{6.4.13}) we have
     \[
         \int_{[0, N]} f \leq \sum_{n = 0}^N f(n) \implies \sup\bigg(\int_{[0, N]} f\bigg)_{N = 1}^\infty \leq \sup\bigg(\sum_{n = 0}^N f(n)\bigg)_{N = 1}^\infty \leq M
@@ -145,7 +145,7 @@
 \end{corollary}
 
 \begin{proof}
-    Let \(f : [1, \infty) \to \mathbf{R}\) be the function \(f(x) = \frac{1}{x^p}\).
+    Let \(f : [1, \infty) \to \R\) be the function \(f(x) = \frac{1}{x^p}\).
     By Proposition \ref{6.7.3}(a)(d) we know that \(f\) is positive and
     \[
         \begin{cases}
@@ -154,7 +154,7 @@
             f \text{ is both monotone increasing and decreasing if } p = 1.
         \end{cases}
     \]
-    By Proposition \ref{11.6.1} \(f\) is Riemann integrable on \([1, N]\) for every \(N \in \mathbf{R}\) and \(N \geq 1\).
+    By Proposition \ref{11.6.1} \(f\) is Riemann integrable on \([1, N]\) for every \(N \in \R\) and \(N \geq 1\).
     If \(p \neq 1\), then we have
     \begin{align*}
         \int_{[1, N]} f & = \frac{1}{1 - p} (N^{1 - p} - 1^{1 - p}) & \text{(by Theorem \ref{11.9.4})} \\
@@ -180,7 +180,7 @@
     Since \(\int_{[1, N]} f = \ln N\) and \(\ln N\) is unbounded, we know that \(\sup_{N > 1} \int_{[1, N]} f = +\infty\) and by Proposition \ref{11.6.4} \(\sum_{n = 1}^\infty \frac{1}{n^p}\) is divergent.
 
     Next suppose that \(0 < p < 1\).
-    Since \(\int_{[1, N]} f = \frac{1}{1 - p} (N^{1 - p} - 1)\) and \(\{N^{1 - p} : N \in \mathbf{R}^+\}\) is unbounded, we know that \(\sup_{N > 1} \int_{[1, N]} f = +\infty\) and by Proposition \ref{11.6.4} \(\sum_{n = 1}^\infty \frac{1}{n^p}\) is divergent.
+    Since \(\int_{[1, N]} f = \frac{1}{1 - p} (N^{1 - p} - 1)\) and \(\{N^{1 - p} : N \in \R^+\}\) is unbounded, we know that \(\sup_{N > 1} \int_{[1, N]} f = +\infty\) and by Proposition \ref{11.6.4} \(\sum_{n = 1}^\infty \frac{1}{n^p}\) is divergent.
 
     Finally suppose that \(p \leq 0\).
     By Proposition \ref{6.7.3}(e) we know that \(1 = x^0 \geq x^p\) for all \(x \in [1, \infty)\), thus \(1 = \frac{1}{x^0} \leq \frac{1}{x^p}\).
@@ -203,14 +203,14 @@
 \end{exercise}
 
 \begin{proof}
-    Let \(I\) be a bounded interval, and let \(f : I \to \mathbf{R}\).
+    Let \(I\) be a bounded interval, and let \(f : I \to \R\).
     We say that \(f\) is \emph{piecewise monotone on \(I\)} iff there exists a partition \(\mathbf{P}\) of \(I\) such that \(f|_J\) is monotone on \(J\) for all \(J \in \mathbf{P}\).
 
     Now we show that all bounded piecewise monotone functions are Riemann integrable.
-    Suppose that \(f : I \to \mathbf{R}\) is a bounded piecewise monotone function.
+    Suppose that \(f : I \to \R\) is a bounded piecewise monotone function.
     Then by definition \(\exists\ \mathbf{P}\) such that \(\mathbf{P}\) is a partition of \(I\) and \(f|_J\) is monotone on \(J\) for all \(J \in \mathbf{P}\).
     Since \(f\) is bounded, \(f|_J\) is also bounded, by Corollary \ref{11.6.3} we know that \(f|_J\) is Riemann integrable on \(J\).
-    Let \(F_J : I \to \mathbf{R}\) be the function
+    Let \(F_J : I \to \R\) be the function
     \[
         F_J(x) = \begin{cases}
             f|_J(x) & \text{if } x \in J    \\
@@ -238,21 +238,21 @@
 \end{exercise}
 
 \begin{proof}
-    Let \(f_1 : [0, \infty) \to \mathbf{R}\) be the function
+    Let \(f_1 : [0, \infty) \to \R\) be the function
     \[
         f_1(x) = \begin{cases}
-            1 & \text{if } x \in \mathbf{N}    \\
-            0 & \text{if } x \notin \mathbf{N}
+            1 & \text{if } x \in \N    \\
+            0 & \text{if } x \notin \N
         \end{cases}
     \]
     Then we know that \(f_1\) is not monotone decreasing and \(\sum_{n = 0}^\infty f_1(n)\) diverges.
-    But \(\int_{[0, N]} f_1 = 0\) for all \(N \in \mathbf{Z}^+\), thus \(\sup_{N > 0} \int_{[0, N]} f_1\) is finite.
+    But \(\int_{[0, N]} f_1 = 0\) for all \(N \in \Z^+\), thus \(\sup_{N > 0} \int_{[0, N]} f_1\) is finite.
 
-    Let \(f_2 : [0, \infty) \to \mathbf{R}\) be the function
+    Let \(f_2 : [0, \infty) \to \R\) be the function
     \[
         f_2(x) = \begin{cases}
-            \frac{1}{x^2} & \text{if } x \in \mathbf{N}    \\
-            \frac{1}{x}   & \text{if } x \notin \mathbf{N}
+            \frac{1}{x^2} & \text{if } x \in \N    \\
+            \frac{1}{x}   & \text{if } x \notin \N
         \end{cases}
     \]
     Then we know that \(f_2\) is not monotone decreasing.

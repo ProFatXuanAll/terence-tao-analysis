@@ -20,9 +20,11 @@ Any helps are appreciated, especially for the followings:
 - Making **proofs** more **rigorous**.
 - **Proofs** I am struggled with.
 
-### Rules
+Please **fork** the repository and submit a **pull request**, or just open **issues** and I will response ASAP.
 
-Please **fork** the repository and submit a **pull request**.
+### Style Rules
+
+I use `latexindent` along side with the following rules:
 
 #### Math Symbols, Equations and Statements
 
@@ -147,29 +149,9 @@ a_n^2                      % do not enclose with {}
 \(x^2 y^2\)
 ```
 
-#### Absolute Values, Floor and Ceiling
-
-- **Absolute value** must be written as `\abs*{}`.
-
-```latex
-\(\abs*{a_j - a_k}\)
-```
-
-- **Floor** must be written as `\floor*{}`.
-
-```latex
-\(\floor*{x}\)
-```
-
-- **Ceiling** must be written as `\ceil*{}`.
-
-```latex
-\(\ceil*{x}\)
-```
-
 #### Enumerate and Itemize
 
-- Prefer **itemize** over **enumerate** when possible.
+- Prefer **itemize** over **enumerate** when order doesn't matter.
 - `\item` in enumerate environments must be **indented**.
 
 ```latex

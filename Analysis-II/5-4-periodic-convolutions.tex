@@ -1,16 +1,16 @@
 \section{Periodic convolutions}\label{sec 5.4}
 
 \begin{theorem}\label{5.4.1}
-    Let \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), and let \(\varepsilon > 0\).
+    Let \(f \in C(\R / \Z ; \C)\), and let \(\varepsilon > 0\).
     Then there exists a trigonometric polynomial \(P\) such that \(\norm*{f - P}_{\infty} \leq \varepsilon\).
 \end{theorem}
 
 \begin{proof}
-    Let \(f\) be any element of \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\);
-    we know that \(f\) is bounded (by Lemma \ref{5.1.5}(a)), so that we have some \(M > 0\) such that \(\abs*{f(x)} \leq M\) for all \(x \in \mathbf{R}\).
+    Let \(f\) be any element of \(C(\R / \Z ; \C)\);
+    we know that \(f\) is bounded (by Lemma \ref{5.1.5}(a)), so that we have some \(M > 0\) such that \(\abs{f(x)} \leq M\) for all \(x \in \R\).
 
     Let \(\varepsilon > 0\) be arbitrary.
-    Since \(f\) is uniformly continuous (by Theorem \ref{2.3.5}), there exists a \(\delta > 0\) such that \(\abs*{f(x) - f(y)} \leq \varepsilon\) whenever \(\abs*{x - y} \leq \delta\).
+    Since \(f\) is uniformly continuous (by Theorem \ref{2.3.5}), there exists a \(\delta > 0\) such that \(\abs{f(x) - f(y)} \leq \varepsilon\) whenever \(\abs{x - y} \leq \delta\).
     Now use Lemma \ref{5.4.6} to find a trigonometric polynomial \(P\) which is a \((\varepsilon, \delta)\) approximation to the identity.
     Then \(f * P\) is also a trigonometric polynomial (by Additional Corollary \ref{ac 5.4.1}).
     We now estimate \(\norm*{f - f * P}_{\infty}\).
@@ -18,23 +18,23 @@
     Let \(x\) be any real number.
     We have
     \begin{align*}
-         & \abs*{f(x) - f * P(x)}                                                                                             \\
-         & = \abs*{f(x) - P * f(x)}                                                   & \text{(by Lemma \ref{5.4.4}(a)(b))}   \\
-         & = \abs*{f(x) - \int_{[0, 1]} f(x - y) P(y) \; dy}                          & \text{(by Definition \ref{5.4.2})}    \\
-         & = \abs*{\int_{[0, 1]} f(x) P(y) \; dy - \int_{[0, 1]} f(x - y) P(y) \; dy} & \text{(by Definition \ref{5.4.5}(a))} \\
-         & = \abs*{\int_{[0, 1]} \big(f(x) - f(x - y)\big) P(y) \; dy}                                                        \\
-         & \leq \int_{[0, 1]} \abs*{f(x) - f(x - y)} P(y) \; dy.                      & \text{(by Remark \ref{5.2.2})}
+         & \abs{f(x) - f * P(x)}                                                                                             \\
+         & = \abs{f(x) - P * f(x)}                                                   & \text{(by Lemma \ref{5.4.4}(a)(b))}   \\
+         & = \abs{f(x) - \int_{[0, 1]} f(x - y) P(y) \; dy}                          & \text{(by Definition \ref{5.4.2})}    \\
+         & = \abs{\int_{[0, 1]} f(x) P(y) \; dy - \int_{[0, 1]} f(x - y) P(y) \; dy} & \text{(by Definition \ref{5.4.5}(a))} \\
+         & = \abs{\int_{[0, 1]} \big(f(x) - f(x - y)\big) P(y) \; dy}                                                        \\
+         & \leq \int_{[0, 1]} \abs{f(x) - f(x - y)} P(y) \; dy.                      & \text{(by Remark \ref{5.2.2})}
     \end{align*}
     The right-hand side can be split as
     \begin{align*}
-        \int_{[0, \delta]} \abs*{f(x) - f(x - y)} P(y) \; dy & + \int_{[\delta, 1 - \delta]} \abs*{f(x) - f(x - y)} P(y) \; dy \\
-                                                             & + \int_{[1 - \delta, 1]} \abs*{f(x) - f(x - y)} P(y) \; dy
+        \int_{[0, \delta]} \abs{f(x) - f(x - y)} P(y) \; dy & + \int_{[\delta, 1 - \delta]} \abs{f(x) - f(x - y)} P(y) \; dy \\
+                                                            & + \int_{[1 - \delta, 1]} \abs{f(x) - f(x - y)} P(y) \; dy
     \end{align*}
     which we can bound from above by
     \begin{align*}
-         & \leq \int_{[0, \delta]} \varepsilon P(y) \; dy + \int_{[\delta, 1 - \delta]} 2 M \varepsilon \; dy + \int_{[1 - \delta, 1]} \abs*{f(x - 1) - f(x - y)} P(y) \; dy \\
-         & \leq \int_{[0, \delta]} \varepsilon P(y) \; dy + \int_{[\delta, 1 - \delta]} 2 M \varepsilon \; dy + \int_{[1 - \delta, 1]} \varepsilon P(y) \; dy                \\
-         & \leq \varepsilon + 2 M \varepsilon + \varepsilon                                                                                                                  \\
+         & \leq \int_{[0, \delta]} \varepsilon P(y) \; dy + \int_{[\delta, 1 - \delta]} 2 M \varepsilon \; dy + \int_{[1 - \delta, 1]} \abs{f(x - 1) - f(x - y)} P(y) \; dy \\
+         & \leq \int_{[0, \delta]} \varepsilon P(y) \; dy + \int_{[\delta, 1 - \delta]} 2 M \varepsilon \; dy + \int_{[1 - \delta, 1]} \varepsilon P(y) \; dy               \\
+         & \leq \varepsilon + 2 M \varepsilon + \varepsilon                                                                                                                 \\
          & = (2M + 2) \varepsilon.
     \end{align*}
     Thus we have \(\norm*{f - f * P}_{\infty} \leq (2M + 2) \varepsilon\).
@@ -45,9 +45,9 @@
     Theorem \ref{5.4.1} asserts that any continuous periodic function can be uniformly approximated by trigonometric polynomials.
     To put it another way, if we let
     \[
-        P(\mathbf{R} / \mathbf{Z} ; \mathbf{C})
+        P(\R / \Z ; \C)
     \]
-    denote the space of all trigonometric polynomials, then the closure of \(P(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) in the \(L^\infty\) metric is \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
+    denote the space of all trigonometric polynomials, then the closure of \(P(\R / \Z ; \C)\) in the \(L^\infty\) metric is \(C(\R / \Z ; \C)\).
 \end{note}
 
 \begin{note}
@@ -57,25 +57,25 @@
 \end{note}
 
 \begin{definition}[Periodic convolution]\label{5.4.2}
-    Let \(f, g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
-    Then we define the periodic convolution \(f * g : \mathbf{R} \to \mathbf{C}\) of \(f\) and \(g\) by the formula
+    Let \(f, g \in C(\R / \Z ; \C)\).
+    Then we define the periodic convolution \(f * g : \R \to \C\) of \(f\) and \(g\) by the formula
     \[
         f * g(x) \coloneqq \int_{[0, 1]} f(y) g(x - y) \; dy
     \]
 \end{definition}
 
 \begin{remark}\label{5.4.3}
-    Note that Definition \ref{5.4.2} is slightly different from the convolution for compactly supported functions defined in Definition \ref{3.8.9}, because we are only integrating over \([0, 1]\) and not on all of \(\mathbf{R}\).
+    Note that Definition \ref{5.4.2} is slightly different from the convolution for compactly supported functions defined in Definition \ref{3.8.9}, because we are only integrating over \([0, 1]\) and not on all of \(\R\).
     Thus, in principle we have given the symbol \(f * g\) two conflicting meanings.
     However, in practice there will be no confusion, because it is not possible for a non-zero function to both be periodic and compactly supported.
 \end{remark}
 
 \begin{lemma}[Basic properties of periodic convolution]\label{5.4.4}
-    Let \(f, g, h \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
+    Let \(f, g, h \in C(\R / \Z ; \C)\).
     \begin{enumerate}
         \item (Closure)
-              The convolution \(f * g\) is continuous and \(\mathbf{Z}\)-periodic.
-              In other words, \(f * g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
+              The convolution \(f * g\) is continuous and \(\Z\)-periodic.
+              In other words, \(f * g \in C(\R / \Z ; \C)\).
         \item (Commutativity)
               We have \(f * g = g * f\).
         \item (Bilinearity)
@@ -85,18 +85,18 @@
 \end{lemma}
 
 \begin{proof}{(a)}
-    By Remark \ref{5.2.2} we know that \(f * g\) is continuous on \(\mathbf{R}\).
+    By Remark \ref{5.2.2} we know that \(f * g\) is continuous on \(\R\).
     Since
     \begin{align*}
-        \forall x \in \mathbf{R}, f * g(x + 1) & = \int_{[0, 1]} f(y) g(x + 1 - y) \; dy & \text{(by Definition \ref{5.4.2})}              \\
-                                               & = \int_{[0, 1]} f(y) g(x - y) \; dy     & (g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})) \\
-                                               & = f * g(x),                             & \text{(by Definition \ref{5.4.2})}
+        \forall x \in \R, f * g(x + 1) & = \int_{[0, 1]} f(y) g(x + 1 - y) \; dy & \text{(by Definition \ref{5.4.2})} \\
+                                       & = \int_{[0, 1]} f(y) g(x - y) \; dy     & (g \in C(\R / \Z ; \C))            \\
+                                       & = f * g(x),                             & \text{(by Definition \ref{5.4.2})}
     \end{align*}
-    we know that \(f * g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
+    we know that \(f * g \in C(\R / \Z ; \C)\).
 \end{proof}
 
 \begin{proof}{(b)}
-    Let \(x \in \mathbf{R}\) and let \(\phi : [x - 1, x] \mapsto [0, 1]\) be the function \(\phi(y) = x - y\).
+    Let \(x \in \R\) and let \(\phi : [x - 1, x] \mapsto [0, 1]\) be the function \(\phi(y) = x - y\).
     Then we have
     \begin{align*}
          & f * g(x)                                                                                                                   \\
@@ -114,25 +114,25 @@
     \end{align*}
     and
     \begin{align*}
-         & f * g(x)                                                                                                                                             \\
-         & = \int_{[x - 1, x]} g(y) f(x - y) \; dy                                                                                                              \\
-         & = \int_{\big[x - 1, [x]\big]} g(y) f(x - y) \; dy + \int_{\big[[x], x\big]} g(y) f(x - y) \; dy                                                      \\
-         & = \int_{\big[[x], x\big]} g(y) f(x - y) \; dy + \int_{\big[x - 1, [x]\big]} g(y) f(x - y) \; dy                                                      \\
-         & = \int_{\big[[x], x\big]} g(y) f(x - y) \; dy                                                                                                        \\
-         & \quad + \int_{\big[x - 1 + 1, [x] + 1\big]} g(y - 1) f(x - y - 1) \; dy                                                                              \\
-         & = \int_{\big[[x], x\big]} g(y) f(x - y) \; dy + \int_{\big[x, [x] + 1\big]} g(y) f(x - y) \; dy & (f, g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})) \\
-         & = \int_{\big[[x], [x] + 1\big]} g(y) f(x - y) \; dy                                                                                                  \\
-         & = \int_{\big[[x] - [x], [x] + 1 - [x]\big]} g(y + [x]) f(x - y + [x]) \; dy                                                                          \\
-         & = \int_{[0, 1]} g(y) f(x - y) \; dy                                                             & (f, g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})) \\
+         & f * g(x)                                                                                                                             \\
+         & = \int_{[x - 1, x]} g(y) f(x - y) \; dy                                                                                              \\
+         & = \int_{\big[x - 1, [x]\big]} g(y) f(x - y) \; dy + \int_{\big[[x], x\big]} g(y) f(x - y) \; dy                                      \\
+         & = \int_{\big[[x], x\big]} g(y) f(x - y) \; dy + \int_{\big[x - 1, [x]\big]} g(y) f(x - y) \; dy                                      \\
+         & = \int_{\big[[x], x\big]} g(y) f(x - y) \; dy                                                                                        \\
+         & \quad + \int_{\big[x - 1 + 1, [x] + 1\big]} g(y - 1) f(x - y - 1) \; dy                                                              \\
+         & = \int_{\big[[x], x\big]} g(y) f(x - y) \; dy + \int_{\big[x, [x] + 1\big]} g(y) f(x - y) \; dy & (f, g \in C(\R / \Z ; \C))         \\
+         & = \int_{\big[[x], [x] + 1\big]} g(y) f(x - y) \; dy                                                                                  \\
+         & = \int_{\big[[x] - [x], [x] + 1 - [x]\big]} g(y + [x]) f(x - y + [x]) \; dy                                                          \\
+         & = \int_{[0, 1]} g(y) f(x - y) \; dy                                                             & (f, g \in C(\R / \Z ; \C))         \\
          & = g * f(x).                                                                                     & \text{(by Definition \ref{5.4.2})}
     \end{align*}
     Since \(x\) is arbitrary, we conclude that \(f * g = g * f\).
 \end{proof}
 
 \begin{proof}{(c)}
-    By Lemma \ref{5.1.5}(b) we know that \(f + g, g + h, cf, cg \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\).
+    By Lemma \ref{5.1.5}(b) we know that \(f + g, g + h, cf, cg \in C(\R / \Z ; \C)\).
     Thus \(f * (g + h), (f + g) * h, (cf) * g, f * (cg)\) are well-defined.
-    Let \(x \in \mathbf{R}\).
+    Let \(x \in \R\).
     Then we have
     \begin{align*}
          & \big(f * (g + h)\big)(x)                                                                                                \\
@@ -167,7 +167,7 @@
 
 \begin{additional corollary}\label{ac 5.4.1}
 Now we observe an interesting identity:
-for any \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) and any integer \(n\), we have
+for any \(f \in C(\R / \Z ; \C)\) and any integer \(n\), we have
 \[
     f * e_n = \hat{f}(n) e_n.
 \]
@@ -185,16 +185,16 @@ More generally, we see from Lemma \ref{5.4.4}(c) that for any trigonometric poly
 \[
     f * P = \sum_{n = -N}^N c_n (f * e_n) = \sum_{n = -N}^N \hat{f}(n) c_n e_n.
 \]
-Thus the periodic convolution of any function in \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) with a trigonometric polynomial, is again a trigonometric polynomial.
+Thus the periodic convolution of any function in \(C(\R / \Z ; \C)\) with a trigonometric polynomial, is again a trigonometric polynomial.
 (Compare with Lemma \ref{3.8.13}.)
 \end{additional corollary}
 
 \begin{definition}[Periodic approximation to the identity]\label{5.4.5}
     Let \(\varepsilon > 0\) and \(0 < \delta < 1 / 2\).
-    A function \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) is said to be a \emph{periodic \((\varepsilon, \delta)\) approximation to the identity} if the following properties are true:
+    A function \(f \in C(\R / \Z ; \C)\) is said to be a \emph{periodic \((\varepsilon, \delta)\) approximation to the identity} if the following properties are true:
     \begin{enumerate}
-        \item \(f(x) \geq 0\) for all \(x \in \mathbf{R}\), and \(\int_{[0, 1]} f(x) \; dx = 1\).
-        \item We have \(f(x) < \varepsilon\) for all \(\delta \leq \abs*{x} \leq 1 - \delta\).
+        \item \(f(x) \geq 0\) for all \(x \in \R\), and \(\int_{[0, 1]} f(x) \; dx = 1\).
+        \item We have \(f(x) < \varepsilon\) for all \(\delta \leq \abs{x} \leq 1 - \delta\).
     \end{enumerate}
 \end{definition}
 
@@ -202,37 +202,37 @@ Thus the periodic convolution of any function in \(C(\mathbf{R} / \mathbf{Z} ; \
 Let \(N \geq 1\) be an integer.
 Then we have
 \[
-    \sum_{n = -N}^N \bigg(1 - \frac{\abs*{n}}{N}\bigg) e_n = \frac{1}{N} \abs*{\sum_{n = 0}^{N - 1} e_n}^2.
+    \sum_{n = -N}^N \bigg(1 - \frac{\abs{n}}{N}\bigg) e_n = \frac{1}{N} \abs{\sum_{n = 0}^{N - 1} e_n}^2.
 \]
 \end{additional corollary}
 
 \begin{proof}
     First we claim that
     \[
-        \sum_{n = 0}^{2N - 2} (N - \abs*{n - N + 1}) \cdot e_n = \bigg(\sum_{n = 0}^{N - 1} e_n\bigg)^2.
+        \sum_{n = 0}^{2N - 2} (N - \abs{n - N + 1}) \cdot e_n = \bigg(\sum_{n = 0}^{N - 1} e_n\bigg)^2.
     \]
     We proof the claim by induction on \(N\) and we start with \(N = 1\).
     For \(N = 1\), we have
     \begin{align*}
-        \sum_{n = 0}^0 (1 - \abs*{n - 1 + 1}) \cdot e_n & = \sum_{n = 0}^0 (1 - \abs*{n}) e_n                                      \\
-                                                        & = 1 e_0                                                                  \\
-                                                        & = 1                                 & \text{(by Theorem \ref{4.5.2}(e))} \\
-                                                        & = e_0^2                             & \text{(by Theorem \ref{4.5.2}(e))} \\
-                                                        & = \bigg(\sum_{n = 0}^0 e_n\bigg)^2.
+        \sum_{n = 0}^0 (1 - \abs{n - 1 + 1}) \cdot e_n & = \sum_{n = 0}^0 (1 - \abs{n}) e_n                                       \\
+                                                       & = 1 e_0                                                                  \\
+                                                       & = 1                                 & \text{(by Theorem \ref{4.5.2}(e))} \\
+                                                       & = e_0^2                             & \text{(by Theorem \ref{4.5.2}(e))} \\
+                                                       & = \bigg(\sum_{n = 0}^0 e_n\bigg)^2.
     \end{align*}
     Thus the base case holds.
     Suppose inductively that the claim is true for some \(N \geq 1\).
     Then for \(N + 1\), we want to show that
     \[
-        \sum_{n = 0}^{2(N + 1) - 2} \big(N + 1 - \abs*{n - (N + 1) + 1}\big) \cdot e_n = \sum_{n = 0}^{2N} (N + 1 - \abs*{n - N}) \cdot e_n = \bigg(\sum_{n = 0}^N e_n\bigg)^2.
+        \sum_{n = 0}^{2(N + 1) - 2} \big(N + 1 - \abs{n - (N + 1) + 1}\big) \cdot e_n = \sum_{n = 0}^{2N} (N + 1 - \abs{n - N}) \cdot e_n = \bigg(\sum_{n = 0}^N e_n\bigg)^2.
     \]
     This is true since
     \begin{align*}
          & \bigg(\sum_{n = 0}^N e_n\bigg)^2                                                                                                                                  \\
          & = \Bigg(\bigg(\sum_{n = 0}^{N - 1} e_n\bigg) + e_N\Bigg)^2                                                                     & \text{(by Lemma \ref{4.6.4})}    \\
          & = \bigg(\sum_{n = 0}^{N - 1} e_n\bigg)^2 + 2 e_N \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) + e_N^2                                  & \text{(by Lemma \ref{4.6.6})}    \\
-         & = \sum_{n = 0}^{2N - 2} (N - \abs*{n - N + 1}) \cdot e_n + 2 e_N \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) + e_N^2                  & \text{(by induction hypothesis)} \\
-         & = \sum_{n = 0}^{N - 1} (N - \abs*{n - N + 1}) \cdot e_n + \sum_{n = N}^{2N - 2} (N - \abs*{n - N + 1}) \cdot e_n               & \text{(by Lemma \ref{4.6.4})}    \\
+         & = \sum_{n = 0}^{2N - 2} (N - \abs{n - N + 1}) \cdot e_n + 2 e_N \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) + e_N^2                   & \text{(by induction hypothesis)} \\
+         & = \sum_{n = 0}^{N - 1} (N - \abs{n - N + 1}) \cdot e_n + \sum_{n = N}^{2N - 2} (N - \abs{n - N + 1}) \cdot e_n                 & \text{(by Lemma \ref{4.6.4})}    \\
          & \quad + 2 e_N \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) + e_N^2                                                                                                        \\
          & = \sum_{n = 0}^{N - 1} (n + 1) \cdot e_n + \sum_{n = N}^{2N - 2} (2N - n - 1) \cdot e_n                                                                           \\
          & \quad + 2 e_N \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) + e_N^2                                                                                                        \\
@@ -240,36 +240,36 @@ Then we have
          & \quad + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                                                     & \text{(by Lemma \ref{4.6.6})}    \\
          & = \sum_{n = 0}^{N - 1} n e_n + \sum_{n = N}^{2N - 2} (2N - n) \cdot e_n                                                        & \text{(by Lemma \ref{4.6.4})}    \\
          & \quad + \sum_{n = 0}^{N - 1} e_n - \sum_{n = N}^{2N - 2} e_n + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                                 \\
-         & = \sum_{n = 0}^{N - 1} (N - \abs*{n - N}) \cdot e_n + \sum_{n = N}^{2N - 2} (N - \abs*{n - N}) \cdot e_n                                                          \\
+         & = \sum_{n = 0}^{N - 1} (N - \abs{n - N}) \cdot e_n + \sum_{n = N}^{2N - 2} (N - \abs{n - N}) \cdot e_n                                                            \\
          & \quad + \sum_{n = 0}^{N - 1} e_n - \sum_{n = N}^{2N - 2} e_n + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2
     \end{align*}
     \begin{align*}
-         & = \sum_{n = 0}^{2N - 2} (N - \abs*{n - N}) \cdot e_n                                                              & \text{(conti. from above)}           \\
+         & = \sum_{n = 0}^{2N - 2} (N - \abs{n - N}) \cdot e_n                                                               & \text{(conti. from above)}           \\
          & \quad + \sum_{n = 0}^{N - 1} e_n - \sum_{n = N}^{2N - 2} e_n + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                        \\
-         & = \sum_{n = 0}^{2N - 2} (N + 1 - \abs*{n - N}) \cdot e_n - \sum_{n = 0}^{2N - 2} e_n                              & \text{(by Lemma \ref{4.6.6})}        \\
+         & = \sum_{n = 0}^{2N - 2} (N + 1 - \abs{n - N}) \cdot e_n - \sum_{n = 0}^{2N - 2} e_n                               & \text{(by Lemma \ref{4.6.6})}        \\
          & \quad + \sum_{n = 0}^{N - 1} e_n - \sum_{n = N}^{2N - 2} e_n + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                        \\
-         & = \sum_{n = 0}^{2N - 2} (N + 1 - \abs*{n - N}) \cdot e_n                                                          & \text{(by Lemma \ref{4.6.6})}        \\
+         & = \sum_{n = 0}^{2N - 2} (N + 1 - \abs{n - N}) \cdot e_n                                                           & \text{(by Lemma \ref{4.6.6})}        \\
          & \quad - 2 \bigg(\sum_{n = N}^{2N - 2} e_n\bigg) + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                                     \\
-         & = \sum_{n = 0}^{2N} (N + 1 - \abs*{n - N}) \cdot e_n - 2 e_{2N - 1} - e_{2N}                                      & \text{(by Lemma \ref{4.6.6})}        \\
+         & = \sum_{n = 0}^{2N} (N + 1 - \abs{n - N}) \cdot e_n - 2 e_{2N - 1} - e_{2N}                                       & \text{(by Lemma \ref{4.6.6})}        \\
          & \quad - 2 \bigg(\sum_{n = N}^{2N - 2} e_n\bigg) + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                                     \\
-         & = \sum_{n = 0}^{2N} (N + 1 - \abs*{n - N}) \cdot e_n - 2 e_{2N - 1} - e_{2N}                                                                             \\
+         & = \sum_{n = 0}^{2N} (N + 1 - \abs{n - N}) \cdot e_n - 2 e_{2N - 1} - e_{2N}                                                                              \\
          & \quad - 2 \bigg(\sum_{n = N}^{2N - 2} e_n\bigg) + 2 \bigg(\sum_{n = 0}^{N - 1} e_{n + N}\bigg) + e_{2N}           & \text{(by Exercise \ref{ex 4.6.16})} \\
-         & = \sum_{n = 0}^{2N} (N + 1 - \abs*{n - N}) \cdot e_n                                                              & \text{(by Lemma \ref{4.6.4})}        \\
+         & = \sum_{n = 0}^{2N} (N + 1 - \abs{n - N}) \cdot e_n                                                               & \text{(by Lemma \ref{4.6.4})}        \\
          & \quad - 2 \bigg(\sum_{n = N}^{2N - 1} e_n\bigg) + 2 \bigg(\sum_{n = 0}^{N - 1} e_{n + N}\bigg)                                                           \\
-         & = \sum_{n = 0}^{2N} (N + 1 - \abs*{n - N}) \cdot e_n                                                                                                     \\
+         & = \sum_{n = 0}^{2N} (N + 1 - \abs{n - N}) \cdot e_n                                                                                                      \\
          & \quad - 2 \bigg(\sum_{n = N}^{2N - 1} e_n\bigg) + 2 \bigg(\sum_{n = N}^{2N - 1} e_n\bigg)                                                                \\
-         & = \sum_{n = 0}^{2N} (N + 1 - \abs*{n - N}) \cdot e_n.
+         & = \sum_{n = 0}^{2N} (N + 1 - \abs{n - N}) \cdot e_n.
     \end{align*}
     This closes the induction.
 
     Using the claim above we have
     \begin{align*}
-         & \sum_{n = -N}^N \bigg(1 - \frac{\abs*{n}}{N}\bigg) e_n                                                                                    \\
-         & = \frac{1}{N} \sum_{n = -N}^N (N - \abs*{n}) e_n                                                   & \text{(by Lemma \ref{4.6.6})}        \\
-         & = \frac{1}{N} \sum_{n = -(N - 1)}^{N - 1} (N - \abs*{n}) \cdot e_n                                                                        \\
-         & = \frac{1}{N} \sum_{n = 0}^{2N - 2} (N - \abs*{n - N + 1}) \cdot e_{n - N + 1}                                                            \\
-         & = \frac{1}{N} \sum_{n = 0}^{2N - 2} (N - \abs*{n - N + 1}) \cdot e_n \cdot e_{-N + 1}              & \text{(by Exercise \ref{ex 4.6.16})} \\
-         & = \frac{e_{-N + 1}}{N} \sum_{n = 0}^{2N - 2} (N - \abs*{n - N + 1}) \cdot e_n                      & \text{(by Lemma \ref{4.6.6})}        \\
+         & \sum_{n = -N}^N \bigg(1 - \frac{\abs{n}}{N}\bigg) e_n                                                                                     \\
+         & = \frac{1}{N} \sum_{n = -N}^N (N - \abs{n}) e_n                                                    & \text{(by Lemma \ref{4.6.6})}        \\
+         & = \frac{1}{N} \sum_{n = -(N - 1)}^{N - 1} (N - \abs{n}) \cdot e_n                                                                         \\
+         & = \frac{1}{N} \sum_{n = 0}^{2N - 2} (N - \abs{n - N + 1}) \cdot e_{n - N + 1}                                                             \\
+         & = \frac{1}{N} \sum_{n = 0}^{2N - 2} (N - \abs{n - N + 1}) \cdot e_n \cdot e_{-N + 1}               & \text{(by Exercise \ref{ex 4.6.16})} \\
+         & = \frac{e_{-N + 1}}{N} \sum_{n = 0}^{2N - 2} (N - \abs{n - N + 1}) \cdot e_n                       & \text{(by Lemma \ref{4.6.6})}        \\
          & = \frac{e_{-N + 1}}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg)^2                                      & \text{(from the claim above)}        \\
          & = \frac{e_{-N + 1}}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\sum_{n = 0}^{N - 1} e_n\bigg)                                          \\
          & = \frac{1}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\sum_{n = 0}^{N - 1} e_{-N + 1} e_n\bigg) & \text{(by Lemma \ref{4.6.6})}        \\
@@ -277,7 +277,7 @@ Then we have
          & = \frac{1}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\sum_{n = 0}^{N - 1} e_{-n}\bigg)         & \text{(by Lemma \ref{4.6.4})}        \\
          & = \frac{1}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\sum_{n = 0}^{N - 1} \overline{e_n}\bigg) & \text{(by Definition \ref{4.6.15})}  \\
          & = \frac{1}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\overline{\sum_{n = 0}^{N - 1} e_n}\bigg) & \text{(by Lemma \ref{4.6.9})}        \\
-         & = \frac{1}{N} \abs*{\sum_{n = 0}^{N - 1} e_n}^2.                                                   & \text{(by Lemma \ref{4.6.11})}
+         & = \frac{1}{N} \abs{\sum_{n = 0}^{N - 1} e_n}^2.                                                    & \text{(by Lemma \ref{4.6.11})}
     \end{align*}
 \end{proof}
 
@@ -289,12 +289,12 @@ Then we have
     Let \(N \geq 1\) be an integer.
     We define the \emph{Fejér kernel} \(F_N\) to be the function
     \[
-        F_N = \sum_{n = -N}^N \bigg(1 - \frac{\abs*{n}}{N}\bigg) e_n.
+        F_N = \sum_{n = -N}^N \bigg(1 - \frac{\abs{n}}{N}\bigg) e_n.
     \]
     Clearly \(F_N\) is a trigonometric polynomial.
     We observe the identity
     \[
-        F_N = \frac{1}{N} \abs*{\sum_{n = 0}^{N - 1} e_n}^2
+        F_N = \frac{1}{N} \abs{\sum_{n = 0}^{N - 1} e_n}^2
     \]
     by Additional Corollary \ref{ac 5.4.2}.
     But from the geometric series formula (Lemma 7.3.3 in Analysis I) we have
@@ -312,10 +312,10 @@ Then we have
     \end{align*}
     when \(x\) is not an integer, and hence we have the formula
     \begin{align*}
-        F_N(x) & = \frac{1}{N} \abs*{\sum_{n = 0}^{N - 1} e_n(x)}^2                                                      & \text{(by Additional Corollary \ref{ac 5.4.2})} \\
-               & = \frac{1}{N} \abs*{\frac{e^{\pi i (N - 1) x} \sin(\pi N x)}{\sin(\pi x)}}^2                            & \text{(from the proof above)}                   \\
-               & = \frac{\abs*{e^{\pi i (N - 1) x}}^2 \abs*{\sin(\pi N x)}^2}{N \abs*{\sin(\pi x)}^2}                    & \text{(by Exercise \ref{ex 4.6.7})}             \\
-               & = \frac{\abs*{e^{\pi i (N - 1) x}}^2 \big(\sin(\pi N x)\big)^2}{N \big(\sin(\pi x)\big)^2}              & (x \in \mathbf{R})                              \\
+        F_N(x) & = \frac{1}{N} \abs{\sum_{n = 0}^{N - 1} e_n(x)}^2                                                       & \text{(by Additional Corollary \ref{ac 5.4.2})} \\
+               & = \frac{1}{N} \abs{\frac{e^{\pi i (N - 1) x} \sin(\pi N x)}{\sin(\pi x)}}^2                             & \text{(from the proof above)}                   \\
+               & = \frac{\abs{e^{\pi i (N - 1) x}}^2 \abs{\sin(\pi N x)}^2}{N \abs{\sin(\pi x)}^2}                       & \text{(by Exercise \ref{ex 4.6.7})}             \\
+               & = \frac{\abs{e^{\pi i (N - 1) x}}^2 \big(\sin(\pi N x)\big)^2}{N \big(\sin(\pi x)\big)^2}               & (x \in \R)                                      \\
                & = \frac{e^{\pi i (N - 1) x} e^{- \pi i (N - 1) x} \big(\sin(\pi N x)\big)^2}{N \big(\sin(\pi x)\big)^2} & \text{(by Lemma \ref{4.6.11})}                  \\
                & = \frac{e^0 \big(\sin(\pi N x)\big)^2}{N \big(\sin(\pi x)\big)^2}                                       & \text{(by Exercise \ref{ex 4.6.16})}            \\
                & = \frac{\big(\sin(\pi N x)\big)^2}{N \big(\sin(\pi x)\big)^2}.                                          & \text{(by Theorem \ref{4.5.2}(e))}
@@ -324,61 +324,61 @@ Then we have
     In either case we see that \(F_N(x) \geq 0\) for any \(x\).
     Also, we have
     \begin{align*}
-         & \int_{[0, 1]} F_N(x) \; dx                                                                                                                                    \\
-         & = \int_{[0, 1]} \sum_{n = -N}^N \bigg(1 - \frac{\abs*{n}}{N}\bigg) e_n(x) \; dx                                                                               \\
-         & = \sum_{n = -N}^N \Bigg(\bigg(1 - \frac{\abs*{n}}{N}\bigg) \int_{[0, 1]} e_n(x) \; dx\Bigg)                            & \text{(by Remark \ref{5.2.2})}       \\
-         & = \sum_{n = -N}^N \Bigg(\bigg(1 - \frac{\abs*{n}}{N}\bigg) \int_{[0, 1]} e_{n - 1}(x) e_1(x) \; dx\Bigg)               & \text{(by Exercise \ref{ex 4.6.16})} \\
-         & = \sum_{n = -N}^N \Bigg(\bigg(1 - \frac{\abs*{n}}{N}\bigg) \int_{[0, 1]} e_{n - 1}(x) \overline{e_{-1}(x)} \; dx\Bigg) & \text{(by Definition \ref{4.6.15})}  \\
-         & = \sum_{n = -N}^N \Bigg(\bigg(1 - \frac{\abs*{n}}{N}\bigg) \inner*{e_{n - 1}, e_{-1}}\Bigg)                            & \text{(by Definition \ref{5.2.1})}   \\
-         & = \bigg(1 - \frac{\abs*{0}}{N}\bigg) 1                                                                                 & \text{(by Lemma \ref{5.3.5})}        \\
+         & \int_{[0, 1]} F_N(x) \; dx                                                                                                                                   \\
+         & = \int_{[0, 1]} \sum_{n = -N}^N \bigg(1 - \frac{\abs{n}}{N}\bigg) e_n(x) \; dx                                                                               \\
+         & = \sum_{n = -N}^N \Bigg(\bigg(1 - \frac{\abs{n}}{N}\bigg) \int_{[0, 1]} e_n(x) \; dx\Bigg)                            & \text{(by Remark \ref{5.2.2})}       \\
+         & = \sum_{n = -N}^N \Bigg(\bigg(1 - \frac{\abs{n}}{N}\bigg) \int_{[0, 1]} e_{n - 1}(x) e_1(x) \; dx\Bigg)               & \text{(by Exercise \ref{ex 4.6.16})} \\
+         & = \sum_{n = -N}^N \Bigg(\bigg(1 - \frac{\abs{n}}{N}\bigg) \int_{[0, 1]} e_{n - 1}(x) \overline{e_{-1}(x)} \; dx\Bigg) & \text{(by Definition \ref{4.6.15})}  \\
+         & = \sum_{n = -N}^N \Bigg(\bigg(1 - \frac{\abs{n}}{N}\bigg) \inner*{e_{n - 1}, e_{-1}}\Bigg)                            & \text{(by Definition \ref{5.2.1})}   \\
+         & = \bigg(1 - \frac{\abs{0}}{N}\bigg) 1                                                                                 & \text{(by Lemma \ref{5.3.5})}        \\
          & = 1.
     \end{align*}
     Finally, since \(\sin(\pi N x) \leq 1\), we have
     \[
         F_N(x) \leq \frac{1}{N \big(\sin(\pi x)\big)^2} \leq \frac{1}{N \big(\sin(\pi \delta)\big)^2}
     \]
-    whenever \(\delta < \abs*{x} < 1 - \delta\)
+    whenever \(\delta < \abs{x} < 1 - \delta\)
     (this is because \(\sin\) is increasing on \([0, \pi / 2]\) and decreasing on \([\pi / 2, \pi]\)).
-    Thus by choosing \(N\) large enough, we can make \(F_N (x) \leq \varepsilon\) for all \(\delta < \abs*{x} < 1 - \delta\).
+    Thus by choosing \(N\) large enough, we can make \(F_N (x) \leq \varepsilon\) for all \(\delta < \abs{x} < 1 - \delta\).
     Note that since
     \begin{align*}
-        \big(\sin(\pi \abs*{x})\big)^2 & = \begin{cases}
-                                               \big(\sin(\pi x)\big)^2  & \text{if } x \geq 0 \\
-                                               \big(\sin(\pi -x)\big)^2 & \text{if } x < 0
-                                           \end{cases} \\
-                                       & = \begin{cases}
-                                               \big(\sin(\pi x)\big)^2  & \text{if } x \geq 0 \\
-                                               \big(-\sin(\pi x)\big)^2 & \text{if } x < 0
-                                           \end{cases} & \text{(by Theorem \ref{4.7.2}(c))} \\
-                                       & = \big(\sin(\pi x)\big)^2
+        \big(\sin(\pi \abs{x})\big)^2 & = \begin{cases}
+                                              \big(\sin(\pi x)\big)^2  & \text{if } x \geq 0 \\
+                                              \big(\sin(\pi -x)\big)^2 & \text{if } x < 0
+                                          \end{cases} \\
+                                      & = \begin{cases}
+                                              \big(\sin(\pi x)\big)^2  & \text{if } x \geq 0 \\
+                                              \big(-\sin(\pi x)\big)^2 & \text{if } x < 0
+                                          \end{cases} & \text{(by Theorem \ref{4.7.2}(c))} \\
+                                      & = \big(\sin(\pi x)\big)^2
     \end{align*}
     and
     \begin{align*}
                  & \begin{cases}
-                       \delta < \abs*{x} \leq \frac{1}{2}  & \text{if } \abs*{x} \leq \frac{1}{2} \\
-                       \frac{1}{2} < \abs*{x} < 1 - \delta & \text{if } \abs*{x} > \frac{1}{2}    \\
+                       \delta < \abs{x} \leq \frac{1}{2}  & \text{if } \abs{x} \leq \frac{1}{2} \\
+                       \frac{1}{2} < \abs{x} < 1 - \delta & \text{if } \abs{x} > \frac{1}{2}    \\
                    \end{cases}                               \\
         \implies & \begin{cases}
-                       \pi \delta < \pi \abs*{x} \leq \frac{\pi}{2}    & \text{if } \abs*{x} \leq \frac{1}{2} \\
-                       \frac{\pi}{2} < \pi \abs*{x} < \pi - \pi \delta & \text{if } \abs*{x} > \frac{1}{2}    \\
+                       \pi \delta < \pi \abs{x} \leq \frac{\pi}{2}    & \text{if } \abs{x} \leq \frac{1}{2} \\
+                       \frac{\pi}{2} < \pi \abs{x} < \pi - \pi \delta & \text{if } \abs{x} > \frac{1}{2}    \\
                    \end{cases}                   \\
         \implies & \begin{cases}
-                       \sin(\pi \delta) < \sin(\pi \abs*{x}) \leq \sin(\frac{\pi}{2})    & \text{if } \abs*{x} \leq \frac{1}{2} \\
-                       \sin(\frac{\pi}{2}) > \sin(\pi \abs*{x}) > \sin(\pi - \pi \delta) & \text{if } \abs*{x} > \frac{1}{2}    \\
+                       \sin(\pi \delta) < \sin(\pi \abs{x}) \leq \sin(\frac{\pi}{2})    & \text{if } \abs{x} \leq \frac{1}{2} \\
+                       \sin(\frac{\pi}{2}) > \sin(\pi \abs{x}) > \sin(\pi - \pi \delta) & \text{if } \abs{x} > \frac{1}{2}    \\
                    \end{cases} \\
         \implies & \begin{cases}
-                       \sin(\pi \delta) < \sin(\pi \abs*{x}) \leq \sin(\frac{\pi}{2}) & \text{if } \abs*{x} \leq \frac{1}{2} \\
-                       \sin(\frac{\pi}{2}) > \sin(\pi \abs*{x}) > -\sin(-\pi \delta)  & \text{if } \abs*{x} > \frac{1}{2}    \\
+                       \sin(\pi \delta) < \sin(\pi \abs{x}) \leq \sin(\frac{\pi}{2}) & \text{if } \abs{x} \leq \frac{1}{2} \\
+                       \sin(\frac{\pi}{2}) > \sin(\pi \abs{x}) > -\sin(-\pi \delta)  & \text{if } \abs{x} > \frac{1}{2}    \\
                    \end{cases}    & \text{(by Theorem \ref{4.7.5}(a))}    \\
         \implies & \begin{cases}
-                       \sin(\pi \delta) < \sin(\pi \abs*{x}) \leq \sin(\frac{\pi}{2}) & \text{if } \abs*{x} \leq \frac{1}{2} \\
-                       \sin(\frac{\pi}{2}) > \sin(\pi \abs*{x}) > \sin(\pi \delta)    & \text{if } \abs*{x} > \frac{1}{2}    \\
+                       \sin(\pi \delta) < \sin(\pi \abs{x}) \leq \sin(\frac{\pi}{2}) & \text{if } \abs{x} \leq \frac{1}{2} \\
+                       \sin(\frac{\pi}{2}) > \sin(\pi \abs{x}) > \sin(\pi \delta)    & \text{if } \abs{x} > \frac{1}{2}    \\
                    \end{cases}    & \text{(by Theorem \ref{4.7.2}(c))}    \\
-        \implies & \sin(\pi \delta) < \sin(\pi \abs*{x}),
+        \implies & \sin(\pi \delta) < \sin(\pi \abs{x}),
     \end{align*}
     we have
     \begin{align*}
-                 & 0 < \big(\sin(\pi \delta)\big)^2 < \big(\sin(\pi \abs*{x})\big)^2               & \text{(by Additional Corollary \ref{ac 4.7.2}(d))} \\
+                 & 0 < \big(\sin(\pi \delta)\big)^2 < \big(\sin(\pi \abs{x})\big)^2                & \text{(by Additional Corollary \ref{ac 4.7.2}(d))} \\
         \implies & 0 < \big(\sin(\pi \delta)\big)^2 < \big(\sin(\pi x)\big)^2                      & \text{(from the proof above)}                      \\
         \implies & 0 < \frac{1}{\big(\sin(\pi x)\big)^2} < \frac{1}{\big(\sin(\pi \delta)\big)^2}.
     \end{align*}
@@ -387,22 +387,22 @@ Then we have
 \exercisesection
 
 \begin{exercise}\label{ex 5.4.1}
-    Show that if \(f : \mathbf{R} \to \mathbf{C}\) is both compactly supported and \(\mathbf{Z}\)-periodic, then it is identically zero.
+    Show that if \(f : \R \to \C\) is both compactly supported and \(\Z\)-periodic, then it is identically zero.
 \end{exercise}
 
 \begin{proof}
     Since \(f\) is compactly supported, by Definition \ref{3.8.4} we know that
     \[
-        \exists\ L, U \in \mathbf{R} : \forall x \in \mathbf{R} \setminus [L, U], f(x) = 0.
+        \exists\ L, U \in \R : \forall x \in \R \setminus [L, U], f(x) = 0.
     \]
     Fix such \(L, U\).
     Let \([U - L]\) be the integer defined in Exercise \ref{ex 5.1.1}.
     Then we have
     \begin{align*}
-                 & \forall x \in [L, U], L \leq x                                                                         \\
-        \implies & L + [U - L] \leq x + [U - L]                                                                           \\
-        \implies & U = L + U - L < L + [U - L] + 1 \leq x + [U - L] + 1 & \text{(by Exercise \ref{ex 5.1.1})}             \\
-        \implies & f(x) = f(x + [U - L] + 1) = 0.                       & (f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C}))
+                 & \forall x \in [L, U], L \leq x                                                             \\
+        \implies & L + [U - L] \leq x + [U - L]                                                               \\
+        \implies & U = L + U - L < L + [U - L] + 1 \leq x + [U - L] + 1 & \text{(by Exercise \ref{ex 5.1.1})} \\
+        \implies & f(x) = f(x + [U - L] + 1) = 0.                       & (f \in C(\R / \Z ; \C))
     \end{align*}
     Thus \(f = 0\).
 \end{proof}

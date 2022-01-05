@@ -6,7 +6,7 @@
 \end{note}
 
 \begin{definition}[Characters]\label{5.3.1}
-    For every integer \(n\), we let \(e_n \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) denote the function
+    For every integer \(n\), we let \(e_n \in C(\R / \Z ; \C)\) denote the function
     \[
         e_n(x) \coloneqq e^{2 \pi i n x}.
     \]
@@ -14,7 +14,7 @@
 \end{definition}
 
 \begin{definition}[Trigonometric polynomials]\label{5.3.2}
-    A function \(f\) in \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) is said to be a \emph{trigonometric polynomial} if we can write
+    A function \(f\) in \(C(\R / \Z ; \C)\) is said to be a \emph{trigonometric polynomial} if we can write
     \(f = \sum_{n = -N}^N c_n e_n\) for some integer \(N \geq 0\) and some complex numbers \((c_n)_{n = -N}^N\).
 \end{definition}
 
@@ -34,7 +34,7 @@
 \end{lemma}
 
 \begin{proof}
-    Let \(n, m \in \mathbf{Z}\).
+    Let \(n, m \in \Z\).
     Observe that
     \begin{align*}
         \inner*{e_n, e_m} & = \int_{[0, 1]} e_n(x) \overline{e_m(x)} \; dx                   & \text{(by Definition \ref{5.2.1})}    \\
@@ -80,21 +80,21 @@
     Also, we have \(0 = \inner*{f, e_n}\) whenever \(n > N\) or \(n < -N\).
     Also, we have the identity
     \[
-        \norm*{f}_2^2 = \sum_{n = -N}^N \abs*{c_n}^2.
+        \norm*{f}_2^2 = \sum_{n = -N}^N \abs{c_n}^2.
     \]
 \end{corollary}
 
 \begin{proof}
-    Let \(m \in \mathbf{N}\).
+    Let \(m \in \N\).
     Then we have
     \begin{align*}
         \inner*{f, e_m} & = \inner*{\sum_{n = -N}^N (c_n e_n), e_m}         & \text{(by hypothesis)}           \\
                         & = \sum_{n = -N}^N \inner*{c_n e_n, e_m}           & \text{(by Lemma \ref{5.2.5}(c))} \\
                         & = \sum_{n = -N}^N \big(c_n \inner*{e_n, e_m}\big) & \text{(by Lemma \ref{5.2.5}(c))} \\
                         & = \begin{cases}
-            c_m & \text{if } -N \leq m \leq N         \\
-            0   & \text{if } m > N \text{ or } m < -N
-        \end{cases}                      & \text{(by Lemma \ref{5.3.5})}
+                                c_m & \text{if } -N \leq m \leq N         \\
+                                0   & \text{if } m > N \text{ or } m < -N
+                            \end{cases}      & \text{(by Lemma \ref{5.3.5})}
     \end{align*}
     and
     \begin{align*}
@@ -103,16 +103,16 @@
                       & = \sum_{n = -N}^N \inner*{f, c_n e_n}                      & \text{(by Lemma \ref{5.2.5}(d))}                \\
                       & = \sum_{n = -N}^N \big(\overline{c_n} \inner*{f, e_n}\big) & \text{(by Lemma \ref{5.2.5}(d))}                \\
                       & = \sum_{n = -N}^N \big(\overline{c_n} c_n\big)             & \text{(from the proof above)}                   \\
-                      & = \sum_{n = -N}^N \abs*{c_n}^2.                            & \text{(by Lemma \ref{4.6.11})}
+                      & = \sum_{n = -N}^N \abs{c_n}^2.                             & \text{(by Lemma \ref{4.6.11})}
     \end{align*}
 \end{proof}
 
 \begin{definition}[Fourier transform]\label{5.3.7}
-    For any function \(f \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), and any integer \(n \in \mathbf{Z}\), we define the \(n^{\text{th}}\) \emph{Fourier coefficient of} \(f\), denoted \(\hat{f}(n)\), by the formula
+    For any function \(f \in C(\R / \Z ; \C)\), and any integer \(n \in \Z\), we define the \(n^{\text{th}}\) \emph{Fourier coefficient of} \(f\), denoted \(\hat{f}(n)\), by the formula
     \[
         \hat{f}(n) \coloneqq \inner*{f, e_n} = \int_{[0, 1]} f(x) e^{- 2 \pi i n x} \; dx.
     \]
-    The function \(\hat{f} : \mathbf{Z} \to \mathbf{C}\) is called the \emph{Fourier transform} of \(f\).
+    The function \(\hat{f} : \Z \to \C\) is called the \emph{Fourier transform} of \(f\).
 \end{definition}
 
 \begin{additional corollary}\label{ac 5.3.1}
@@ -135,7 +135,7 @@ or in other words
 The right-hand side is referred to as the \emph{Fourier series} of \(f\).
 Also, from the second identity of Corollary \ref{5.3.6} we have the \emph{Plancherel formula}
 \[
-    \norm*{f}_2^2 = \sum_{n = -\infty}^\infty \abs*{\hat{f}(n)}^2.
+    \norm*{f}_2^2 = \sum_{n = -\infty}^\infty \abs{\hat{f}(n)}^2.
 \]
 \end{additional corollary}
 
@@ -147,7 +147,7 @@ Also, from the second identity of Corollary \ref{5.3.6} we have the \emph{Planch
 \end{remark}
 
 \begin{note}
-    In the next few sections we will extend the Fourier inversion and Plancherel formulae to general functions in \(C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\), not just trigonometric polynomials.
+    In the next few sections we will extend the Fourier inversion and Plancherel formulae to general functions in \(C(\R / \Z ; \C)\), not just trigonometric polynomials.
     (It is also possible to extend the formula to discontinuous functions such as the square wave, but we will not do so here.)
     To do this we will need a version of the Weierstrass approximation theorem, this time requiring that a continuous periodic function be approximated uniformly by \emph{trigonometric} polynomials.
     Just as convolutions were used in the proof of the polynomial Weierstrass approximation theorem, we will also need a notion of convolution tailored for periodic functions.
@@ -160,10 +160,10 @@ Also, from the second identity of Corollary \ref{5.3.6} we have the \emph{Planch
 \end{exercise}
 
 \begin{proof}
-    Let \(f, g \in C(\mathbf{R} / \mathbf{Z} ; \mathbf{C})\) such that
+    Let \(f, g \in C(\R / \Z ; \C)\) such that
     \begin{align*}
-         & \exists\ N \in \mathbf{N} : \big((c_n)_{n = -N}^N \text{ is in } \mathbf{C}\big) \land \bigg(f = \sum_{n = -N}^N c_n e_n\bigg); \\
-         & \exists\ M \in \mathbf{N} : \big((d_n)_{n = -M}^M \text{ is in } \mathbf{C}\big) \land \bigg(g = \sum_{n = -M}^M d_n e_n\bigg).
+         & \exists\ N \in \N : \big((c_n)_{n = -N}^N \text{ is in } \C\big) \land \bigg(f = \sum_{n = -N}^N c_n e_n\bigg); \\
+         & \exists\ M \in \N : \big((d_n)_{n = -M}^M \text{ is in } \C\big) \land \bigg(g = \sum_{n = -M}^M d_n e_n\bigg).
     \end{align*}
     Without the loss of generality suppose that \(N \leq M\).
     Then we have
@@ -201,13 +201,13 @@ Also, from the second identity of Corollary \ref{5.3.6} we have the \emph{Planch
     By setting
     \begin{align*}
          & a_n = \begin{cases}
-            c_{n + M + 1} d_{-M - 1} & \text{if } -N - M - 1 \leq n \leq N - M - 1 \\
-            0                        & \text{if } N - M - 1 < n \leq N + M + 1
-        \end{cases} \\
+                     c_{n + M + 1} d_{-M - 1} & \text{if } -N - M - 1 \leq n \leq N - M - 1 \\
+                     0                        & \text{if } N - M - 1 < n \leq N + M + 1
+                 \end{cases} \\
          & b_n = \begin{cases}
-            c_{n - M - 1} d_{M + 1} & \text{if } -N + M + 1 \leq n \leq N + M + 1 \\
-            0                       & \text{if } -N - M - 1 \leq n < -N + M + 1
-        \end{cases}
+                     c_{n - M - 1} d_{M + 1} & \text{if } -N + M + 1 \leq n \leq N + M + 1 \\
+                     0                       & \text{if } -N - M - 1 \leq n < -N + M + 1
+                 \end{cases}
     \end{align*}
     we have
     \[

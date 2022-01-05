@@ -1,7 +1,7 @@
 \section{Monotonic functions}\label{sec 9.8}
 
 \begin{definition}[Monotonic functions]\label{9.8.1}
-    Let \(X\) be a subset of \(\mathbf{R}\), and let \(f : X \to \mathbf{R}\) be a function.
+    Let \(X\) be a subset of \(\R\), and let \(f : X \to \R\) be a function.
     We say that \(f\) is \emph{monotone increasing} iff \(f(y) \geq f(x)\) whenever \(x, y \in X\) and \(y > x\).
     We say that \(f\) is \emph{strictly monotone increasing} iff \(f(y) > f(x)\) whenever \(x, y \in X\) and \(y > x\).
     Similarly, we say \(f\) is \emph{monotone decreasing} iff \(f(y) \leq f(x)\) whenever \(x, y \in X\) and \(y > x\), and \emph{strictly monotone decreasing} iff \(f(y) < f(x)\) whenever \(x, y \in X\) and \(y > x\).
@@ -10,7 +10,7 @@
 
 \begin{note}
     If a function is strictly monotone on a domain \(X\), it is automatically monotone as well on the same domain \(X\).
-    Constant functions, when restricted to an arbitrary domain \(X \subseteq \mathbf{R}\), are both monotone increasing and monotone decreasing, but is not strictly monotone
+    Constant functions, when restricted to an arbitrary domain \(X \subseteq \R\), are both monotone increasing and monotone decreasing, but is not strictly monotone
     (unless \(X\) consists of at most one point).
 \end{note}
 
@@ -20,7 +20,7 @@
 
 \setcounter{theorem}{2}
 \begin{proposition}\label{9.8.3}
-    Let \(a < b\) be real numbers, and let \(f : [a, b] \to \mathbf{R}\) be a function which is both continuous and strictly monotone increasing.
+    Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a function which is both continuous and strictly monotone increasing.
     Then \(f\) is a bijection from \([a, b]\) to \([f(a), f(b)]\), and the inverse \(f^{-1} : [f(a), f(b)] \to [a, b]\) is also continuous and strictly monotone increasing.
 \end{proposition}
 
@@ -44,7 +44,7 @@
     \]
     By Definition \ref{9.3.6}, it suffice to show that
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall y \in [f(a), f(b)], \abs*{y - y_0} < \delta \implies \abs*{f^{-1}(y) - x_0} \leq \varepsilon\big).
+        \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall y \in [f(a), f(b)], \abs{y - y_0} < \delta \implies \abs{f^{-1}(y) - x_0} \leq \varepsilon\big).
     \]
     Now fix \(\varepsilon\).
     Let \(x_L = \max(x_0 - \varepsilon, a)\) and \(x_H = \min(x_0 + \varepsilon, b)\).
@@ -53,7 +53,7 @@
     Let \(\delta = \min\big(y_0 - f(x_L), f(x_H) - y_0\big)\).
     Then we have
     \begin{align*}
-                 & \forall y \in [f(a), f(b)], \abs*{y - y_0} < \delta                                                                                 \\
+                 & \forall y \in [f(a), f(b)], \abs{y - y_0} < \delta                                                                                  \\
         \implies & -\delta < y - y_0 < \delta                                                                                                          \\
         \implies & f(x_L) - y_0 \leq -\delta < y - y_0 < \delta \leq f(x_H) - y_0                                                                      \\
         \implies & f(x_L) \leq y \leq f(x_H)                                                                                                           \\
@@ -61,8 +61,8 @@
         \implies & \exists\ x \in [x_L, x_H] : \big(f(x) = y\big)                                                                                      \\
                  & \land (x_0 - \varepsilon \leq x_L \leq x \leq x_H \leq x_0 + \varepsilon)                                                           \\
         \implies & \exists\ x \in [x_L, x_H] : \big(f(x) = y\big) \land (-\varepsilon \leq x - x_0 \leq \varepsilon)                                   \\
-        \implies & \exists\ x \in [x_L, x_H] : \big(f(x) = y\big) \land (\abs*{x - x_0} \leq \varepsilon)                                              \\
-        \implies & \exists\ x \in [x_L, x_H] : \big(f(x) = y\big) \land (\abs*{f^{-1}(y) - x_0} \leq \varepsilon).
+        \implies & \exists\ x \in [x_L, x_H] : \big(f(x) = y\big) \land (\abs{x - x_0} \leq \varepsilon)                                               \\
+        \implies & \exists\ x \in [x_L, x_H] : \big(f(x) = y\big) \land (\abs{f^{-1}(y) - x_0} \leq \varepsilon).
     \end{align*}
     Since \(\varepsilon\) is arbitrary, \(f^{-1}\) is continuous at \(y_0\).
     Since \(y_0\) is arbitrary, \(f^{-1}\) is continuous on \([f(a), f(b)]\).
@@ -80,7 +80,7 @@
     But this contradict to \(y_1 < y_2\), thus \(f^{-1}(y_1) < f^{-1}(y_2)\).
 
     Next we show that if the continuity assumption is dropped, then the proposition is false.
-    Let \(f : [0, 1] \to \mathbf{R}\) be a function
+    Let \(f : [0, 1] \to \R\) be a function
     \[
         f(x) = \begin{cases}
             x     & \text{if } x \in [0, 0.5)  \\
@@ -90,20 +90,20 @@
     Then \(f\) is not continuous and \(f([0, 1]) = [0, 0.5) \cup [1.5, 2] \neq [0, 2]\).
 
     Finally we show that if strict monotonicity is replaced just by monotonicity, then the proposition is false.
-    Let \(f : [0, 1] \to \mathbf{R}\) be a function where \(f(x) = 1\).
+    Let \(f : [0, 1] \to \R\) be a function where \(f(x) = 1\).
     Then \(f\) is monotone but not bijective.
 \end{proof}
 
 \begin{additional corollary}\label{ac 9.8.1}
-Let \(a < b\) be real numbers, and let \(f : [a, b] \to \mathbf{R}\) be a function which is both continuous and strictly monotone decreasing.
+Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a function which is both continuous and strictly monotone decreasing.
 Then \(f\) is a bijection from \([a, b]\) to \([f(b), f(a)]\), and the inverse \(f^{-1} : [f(b), f(a)] \to [a, b]\) is also continuous and strictly monotone decreasing.
 \end{additional corollary}
 
 \begin{proof}
-    Let \(h : \mathbf{R} \to \mathbf{R}\) be the function \(h(x) = -x\).
-    We define a function \(g : [a, b] \to \mathbf{R}\) by setting \(g = -f\).
+    Let \(h : \R \to \R\) be the function \(h(x) = -x\).
+    We define a function \(g : [a, b] \to \R\) by setting \(g = -f\).
     Then we have \(g = h \circ f\) and \(f = h \circ g\).
-    By Proposition \ref{9.4.9} we know that \(h\) is continuous on \(\mathbf{R}\), thus by Proposition \ref{9.4.13} we know that \(g\) is continuous.
+    By Proposition \ref{9.4.9} we know that \(h\) is continuous on \(\R\), thus by Proposition \ref{9.4.13} we know that \(g\) is continuous.
     Since \(f\) is strictly monotone decreasing, we have
     \begin{align*}
                  & \forall x_1, x_2 \in [a, b], x_1 < x_2                                      \\
@@ -149,7 +149,7 @@ Then \(f\) is a bijection from \([a, b]\) to \([f(b), f(a)]\), and the inverse \
 \end{exercise}
 
 \begin{proof}
-    Let \(a < b\) be real numbers, and let \(f : [a, b] \to \mathbf{R}\) be a function.
+    Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a function.
     Suppose that \(f\) is monotone.
     Then we have
     \begin{align*}
@@ -167,7 +167,7 @@ Then \(f\) is a bijection from \([a, b]\) to \([f(b), f(a)]\), and the inverse \
 \end{exercise}
 
 \begin{proof}
-    Let \(f : [0, 1] \to \mathbf{R}\) be a function where
+    Let \(f : [0, 1] \to \R\) be a function where
     \[
         f(x) = \begin{cases}
             x     & \text{if } x \in [0, 0.5); \\
@@ -175,11 +175,11 @@ Then \(f\) is a bijection from \([a, b]\) to \([f(b), f(a)]\), and the inverse \
         \end{cases}
     \]
     Then \(f\) is strictly monotone and thus monotone.
-    Since \(\forall y \in [0.5, 1.5)\), \(\nexists x \in \mathbf{N}\) such that \(f(x) = y\), the intermediate value theorem (Theorem \ref{9.7.1}) does not hold.
+    Since \(\forall y \in [0.5, 1.5)\), \(\nexists x \in \N\) such that \(f(x) = y\), the intermediate value theorem (Theorem \ref{9.7.1}) does not hold.
 \end{proof}
 
 \begin{exercise}\label{ex 9.8.3}
-    Let \(a < b\) be real numbers, and let \(f : [a, b] \to \mathbf{R}\) be a function which is both continuous and one-to-one.
+    Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a function which is both continuous and one-to-one.
     Show that \(f\) is strictly monotone.
 \end{exercise}
 
@@ -253,15 +253,15 @@ Then \(f\) is a bijection from \([a, b]\) to \([f(b), f(a)]\), and the inverse \
 
 \begin{exercise}\label{ex 9.8.5}
     In this exercise we give an example of a function which has a discontinuity at every rational point, but is continuous at every irrational.
-    Since the rationals are countable, we can write them as \(\mathbf{Q} = \{q(0), q(1), q(2), \dots\}\), where \(q : \mathbf{N} \to \mathbf{Q}\) is a bijection from \(\mathbf{N}\) to \(\mathbf{Q}\).
-    Now define a function \(g : \mathbf{Q} \to \mathbf{R}\) by setting \(g(q(n)) \coloneqq 2^{-n}\) for each natural number \(n\);
+    Since the rationals are countable, we can write them as \(\Q = \{q(0), q(1), q(2), \dots\}\), where \(q : \N \to \Q\) is a bijection from \(\N\) to \(\Q\).
+    Now define a function \(g : \Q \to \R\) by setting \(g(q(n)) \coloneqq 2^{-n}\) for each natural number \(n\);
     thus \(g\) maps \(q(0)\) to \(1\), \(q(1)\) to \(2^{-1}\), etc.
-    Since \(\sum_{n = 0}^\infty 2^{-n}\) is absolutely convergent, we see that \(\sum_{r \in \mathbf{Q}} g(r)\) is also absolutely convergent.
-    Now define the function \(f : \mathbf{R} \to \mathbf{R}\) by
+    Since \(\sum_{n = 0}^\infty 2^{-n}\) is absolutely convergent, we see that \(\sum_{r \in \Q} g(r)\) is also absolutely convergent.
+    Now define the function \(f : \R \to \R\) by
     \[
-        f(x) \coloneqq \sum_{r \in \mathbf{Q} : r < x} g(r).
+        f(x) \coloneqq \sum_{r \in \Q : r < x} g(r).
     \]
-    Since \(\sum_{r \in \mathbf{Q}} g(r)\) is absolutely convergent, we know that \(f(x)\) is well-defined for every real number \(x\).
+    Since \(\sum_{r \in \Q} g(r)\) is absolutely convergent, we know that \(f(x)\) is well-defined for every real number \(x\).
     \begin{enumerate}
         \item Show that \(f\) is strictly monotone increasing.
         \item Show that for every rational number \(r\), \(f\) is discontinuous at \(r\).
@@ -270,100 +270,100 @@ Then \(f\) is a bijection from \([a, b]\) to \([f(b), f(a)]\), and the inverse \
 \end{exercise}
 
 \begin{proof}{(a)}
-    Let \(a, b \in \mathbf{R}\) and \(a < b\).
-    By Proposition \ref{5.4.14}, \(\exists\ c \in \mathbf{Q}\) such that \(a < c < b\).
+    Let \(a, b \in \R\) and \(a < b\).
+    By Proposition \ref{5.4.14}, \(\exists\ c \in \Q\) such that \(a < c < b\).
     Then we have
     \begin{align*}
-        f(b) & = \sum_{r \in \mathbf{Q} : r < b} g(r)                                                                                                                                      \\
-             & = \sum_{r \in \mathbf{Q} : r < a} g(r) + \sum_{r \in \mathbf{Q} : a \leq r < c} g(r) + \sum_{r \in \mathbf{Q} : c \leq r < b} g(r) & \text{(by Proposition \ref{8.2.6}(c))} \\
-             & = f(a) + \sum_{r \in \mathbf{Q} : a \leq r < c} g(r) + g(c) + \sum_{r \in \mathbf{Q} : c < r < b} g(r)                             & \text{(by Proposition \ref{8.2.6}(c))} \\
+        f(b) & = \sum_{r \in \Q : r < b} g(r)                                                                                                                      \\
+             & = \sum_{r \in \Q : r < a} g(r) + \sum_{r \in \Q : a \leq r < c} g(r) + \sum_{r \in \Q : c \leq r < b} g(r) & \text{(by Proposition \ref{8.2.6}(c))} \\
+             & = f(a) + \sum_{r \in \Q : a \leq r < c} g(r) + g(c) + \sum_{r \in \Q : c < r < b} g(r)                     & \text{(by Proposition \ref{8.2.6}(c))} \\
              & > f(a).
     \end{align*}
     and by Definition \ref{9.8.1} \(f\) is strictly monotone increasing.
 \end{proof}
 
 \begin{proof}{(b)}
-    Let \(\gamma \in \mathbf{Q}\).
-    Since \(q\) is bijective, \(\exists!\ n \in \mathbf{N}\) such that \(q(n) = \gamma\).
+    Let \(\gamma \in \Q\).
+    Since \(q\) is bijective, \(\exists!\ n \in \N\) such that \(q(n) = \gamma\).
     Then \(\forall x \in (\gamma, \infty)\), we have
     \begin{align*}
-        f(x) & = \sum_{r \in \mathbf{Q} : r < x} g(r)                                                                                                           \\
-             & = \sum_{r \in \mathbf{Q} : r < \gamma} g(r) + g(\gamma) + \sum_{r \in \mathbf{Q} : \gamma < r < x} g(r) & \text{(by Proposition \ref{8.2.6}(c))} \\
-             & = f(\gamma) + g(\gamma) + \sum_{r \in \mathbf{Q} : \gamma < r < x} g(r)                                                                          \\
-             & > f(\gamma) + g(\gamma)                                                                                                                          \\
+        f(x) & = \sum_{r \in \Q : r < x} g(r)                                                                                                   \\
+             & = \sum_{r \in \Q : r < \gamma} g(r) + g(\gamma) + \sum_{r \in \Q : \gamma < r < x} g(r) & \text{(by Proposition \ref{8.2.6}(c))} \\
+             & = f(\gamma) + g(\gamma) + \sum_{r \in \Q : \gamma < r < x} g(r)                                                                  \\
+             & > f(\gamma) + g(\gamma)                                                                                                          \\
              & = f(\gamma) + 2^{-n}.
     \end{align*}
     But this means
     \begin{align*}
-                 & \forall x \in (\gamma, \infty), f(x) - f(\gamma) > 2^{-n}                                                          \\
-        \implies & \forall x \in (\gamma, \infty), \abs*{f(x) - f(\gamma)} > 2^{-n}                                                   \\
-        \implies & f(\gamma^+) \text{ does not exist}                               & \text{(by Definition \ref{9.5.1})}              \\
-        \implies & f \text{ is not continuous at } \gamma.                          & \text{(by Additional Corollary \ref{ac 9.5.1})}
+                 & \forall x \in (\gamma, \infty), f(x) - f(\gamma) > 2^{-n}                                                         \\
+        \implies & \forall x \in (\gamma, \infty), \abs{f(x) - f(\gamma)} > 2^{-n}                                                   \\
+        \implies & f(\gamma^+) \text{ does not exist}                              & \text{(by Definition \ref{9.5.1})}              \\
+        \implies & f \text{ is not continuous at } \gamma.                         & \text{(by Additional Corollary \ref{ac 9.5.1})}
     \end{align*}
-    Since \(\gamma\) is arbitrary, we conclude that \(f\) is discontinuous at each \(\gamma \in \mathbf{Q}\).
+    Since \(\gamma\) is arbitrary, we conclude that \(f\) is discontinuous at each \(\gamma \in \Q\).
 \end{proof}
 
 \begin{proof}{(c)}
-    Let \(n \in \mathbf{N}\), let \(E_n\) be a set where
+    Let \(n \in \N\), let \(E_n\) be a set where
     \[
-        E_n = \{r \in \mathbf{Q} : g(r) \geq 2^{-n}\},
+        E_n = \{r \in \Q : g(r) \geq 2^{-n}\},
     \]
-    and let \(f_n : \mathbf{R} \to \mathbf{R}\) be a function
+    and let \(f_n : \R \to \R\) be a function
     \[
-        f_n(x) = \sum_{r \in E_n : r < x} g(r) = \sum_{r \in \mathbf{Q} : r < x, g(r) \geq 2^{-n}} g(r).
+        f_n(x) = \sum_{r \in E_n : r < x} g(r) = \sum_{r \in \Q : r < x, g(r) \geq 2^{-n}} g(r).
     \]
-    Since \(q\) is bijective, there are at most \(n + 1\) rationals satisfying \((r \in \mathbf{Q}) \land \big(g(r) \geq 2^{-n}\big)\), thus \(E_n\) is finite and non-empty.
-    Since \(\mathbf{R} \setminus \mathbf{Q} \subseteq \mathbf{R}\), by Lemma \ref{9.1.11} \(\forall x_0 \in \mathbf{R} \setminus \mathbf{Q}\), \(x_0\) is an adherent point of \(\mathbf{R} \setminus \mathbf{Q}\).
-    Let \(\varepsilon \in \mathbf{R}^+\) and let \(\delta = \min\{\abs*{r - x_0} : r \in E_n\}\).
-    Since \(x_0 \notin \mathbf{Q}\), we have \(\delta > 0\).
+    Since \(q\) is bijective, there are at most \(n + 1\) rationals satisfying \((r \in \Q) \land \big(g(r) \geq 2^{-n}\big)\), thus \(E_n\) is finite and non-empty.
+    Since \(\R \setminus \Q \subseteq \R\), by Lemma \ref{9.1.11} \(\forall x_0 \in \R \setminus \Q\), \(x_0\) is an adherent point of \(\R \setminus \Q\).
+    Let \(\varepsilon \in \R^+\) and let \(\delta = \min\{\abs{r - x_0} : r \in E_n\}\).
+    Since \(x_0 \notin \Q\), we have \(\delta > 0\).
     Then we have
     \begin{align*}
-                 & \forall x \in \mathbf{R} \setminus \mathbf{Q}, \abs*{x - x_0} < \delta \\
-        \implies & \forall r \in E_n, \abs*{x - x_0} < \delta \leq \abs*{r - x_0}         \\
-        \implies & \forall r \in E_n, \abs*{x - x_0} < \abs*{r - x_0}                     \\
-        \implies & \forall r \in E_n, -\abs*{r - x_0} < x - x_0 < \abs*{r - x_0}          \\
+                 & \forall x \in \R \setminus \Q, \abs{x - x_0} < \delta               \\
+        \implies & \forall r \in E_n, \abs{x - x_0} < \delta \leq \abs{r - x_0}        \\
+        \implies & \forall r \in E_n, \abs{x - x_0} < \abs{r - x_0}                    \\
+        \implies & \forall r \in E_n, -\abs{r - x_0} < x - x_0 < \abs{r - x_0}         \\
         \implies & \forall r \in E_n, \begin{cases}
                                           r - x_0 < x - x_0 < x_0 - r & \text{if } r < x_0 \\
                                           x_0 - r < x - x_0 < r - x_0 & \text{if } r > x_0
-                                      \end{cases}    \\
+                                      \end{cases} \\
         \implies & \forall r \in E_n, \begin{cases}
                                           r < x & \text{if } r < x_0 \\
                                           r > x & \text{if } r > x_0
-                                      \end{cases}                          \\
-        \implies & \{r \in E_n : r < x\} = \{r \in E_n : r < x_0\}                        \\
-        \implies & f_n(x) = f_n(x_0)                                                      \\
-        \implies & 0 = \abs*{f_n(x) - f_n(x_0)} < \varepsilon.
+                                      \end{cases}                       \\
+        \implies & \{r \in E_n : r < x\} = \{r \in E_n : r < x_0\}                     \\
+        \implies & f_n(x) = f_n(x_0)                                                   \\
+        \implies & 0 = \abs{f_n(x) - f_n(x_0)} < \varepsilon.
     \end{align*}
-    Since \(\varepsilon\) is arbitrary, by Definition \ref{9.3.6} we have \(\lim_{x \to x_0 ; x \in \mathbf{R} \setminus \mathbf{Q}} f_n(x) = f_n(x_0)\), and by Definition \ref{9.4.1} \(f_n\) is continuous at \(x_0\).
+    Since \(\varepsilon\) is arbitrary, by Definition \ref{9.3.6} we have \(\lim_{x \to x_0 ; x \in \R \setminus \Q} f_n(x) = f_n(x_0)\), and by Definition \ref{9.4.1} \(f_n\) is continuous at \(x_0\).
 
     Now we show that \(f\) is continuous at \(x_0\).
     We have
     \begin{align*}
-         & \forall x \in \mathbf{R} \setminus \mathbf{Q}, \abs*{f(x) - f_n(x)}                                                                             \\
-         & = \abs*{\sum_{r \in \mathbf{Q} : r < x} g(r) - \sum_{r \in E_n : r < x} g(r)}                                                                   \\
-         & = \abs*{\sum_{r \in \mathbf{Q} : r < x} g(r) - \sum_{r \in \mathbf{Q} : r < x, g(r) \geq 2^{-n}} g(r)}                                          \\
-         & = \abs*{\sum_{r \in \mathbf{Q} : r < x, g(r) < 2^{-n}} g(r)}                                           & \text{(by Proposition \ref{8.2.6}(c))} \\
-         & = \sum_{r \in \mathbf{Q} : r < x, g(r) < 2^{-n}} g(r)                                                                                           \\
-         & = \sum_{r \in \mathbf{Q} : r < x, g(r) \leq 2^{-(n + 1)}} g(r)                                                                                  \\
-         & \leq \sum_{r \in \mathbf{Q} : g(r) \leq 2^{-(n + 1)}} g(r)                                                                                      \\
-         & \leq \sum_{k = n + 1}^\infty 2^{-k}                                                                                                             \\
-         & = 2^{-(n + 1)} \bigg(\sum_{k = 0}^\infty 2^{-k}\bigg)                                                                                           \\
-         & = 2^{-n}.                                                                                              & \text{(by Lemma \ref{7.3.3})}
+         & \forall x \in \R \setminus \Q, \abs{f(x) - f_n(x)}                                                                             \\
+         & = \abs{\sum_{r \in \Q : r < x} g(r) - \sum_{r \in E_n : r < x} g(r)}                                                           \\
+         & = \abs{\sum_{r \in \Q : r < x} g(r) - \sum_{r \in \Q : r < x, g(r) \geq 2^{-n}} g(r)}                                          \\
+         & = \abs{\sum_{r \in \Q : r < x, g(r) < 2^{-n}} g(r)}                                   & \text{(by Proposition \ref{8.2.6}(c))} \\
+         & = \sum_{r \in \Q : r < x, g(r) < 2^{-n}} g(r)                                                                                  \\
+         & = \sum_{r \in \Q : r < x, g(r) \leq 2^{-(n + 1)}} g(r)                                                                         \\
+         & \leq \sum_{r \in \Q : g(r) \leq 2^{-(n + 1)}} g(r)                                                                             \\
+         & \leq \sum_{k = n + 1}^\infty 2^{-k}                                                                                            \\
+         & = 2^{-(n + 1)} \bigg(\sum_{k = 0}^\infty 2^{-k}\bigg)                                                                          \\
+         & = 2^{-n}.                                                                             & \text{(by Lemma \ref{7.3.3})}
     \end{align*}
-    By Proposition \ref{5.4.14}, \(\forall \varepsilon \in \mathbf{R}^+\), \(\exists\ n \in \mathbf{N}\) such that \(2^{-n} < \varepsilon / 2\).
+    By Proposition \ref{5.4.14}, \(\forall \varepsilon \in \R^+\), \(\exists\ n \in \N\) such that \(2^{-n} < \varepsilon / 2\).
     From the proof above we also have
     \[
-        \forall x \in \mathbf{R} \setminus \mathbf{Q}, \abs*{x - x_0} < \delta \implies f_n(x) = f_n(x_0) \\
+        \forall x \in \R \setminus \Q, \abs{x - x_0} < \delta \implies f_n(x) = f_n(x_0) \\
     \]
     Combine the results above we have
     \begin{align*}
-         & \abs*{f(x) - f(x_0)}                               \\
-         & = \abs*{f(x) - f_n(x) + f_n(x) - f(x_0)}           \\
-         & \leq \abs*{f(x) - f_n(x)} + \abs*{f_n(x) - f(x_0)} \\
-         & = \abs*{f(x) - f_n(x)} + \abs*{f_n(x_0) - f(x_0)}  \\
-         & \leq 2^{-n} + 2^{-n}                               \\
-         & < \varepsilon / 2 + \varepsilon / 2                \\
+         & \abs{f(x) - f(x_0)}                              \\
+         & = \abs{f(x) - f_n(x) + f_n(x) - f(x_0)}          \\
+         & \leq \abs{f(x) - f_n(x)} + \abs{f_n(x) - f(x_0)} \\
+         & = \abs{f(x) - f_n(x)} + \abs{f_n(x_0) - f(x_0)}  \\
+         & \leq 2^{-n} + 2^{-n}                             \\
+         & < \varepsilon / 2 + \varepsilon / 2              \\
          & = \varepsilon.
     \end{align*}
-    Since \(\varepsilon\) is arbitrary, by Definition \ref{9.3.6} we have \(\lim_{x \to x_0 ; x \in \mathbf{R} \setminus \mathbf{Q}} f(x) = f(x_0)\), and by Definition \ref{9.4.1} \(f\) is continuous at \(x_0\).
+    Since \(\varepsilon\) is arbitrary, by Definition \ref{9.3.6} we have \(\lim_{x \to x_0 ; x \in \R \setminus \Q} f(x) = f(x_0)\), and by Definition \ref{9.4.1} \(f\) is continuous at \(x_0\).
 \end{proof}

@@ -12,24 +12,24 @@
     If \(I\) is a point or the empty set then the theorem is trivial, so let us assume that \(I\) is one of the four intervals \([a, b]\), \((a, b)\), \((a, b]\), or \([a, b)\) for some real numbers \(a < b\).
 
             Let \(\varepsilon > 0\) be arbitrary.
-            By uniform continuity, there exists a \(\delta > 0\) such that \(\abs*{f(x) - f(y)} < \varepsilon\) whenever \(x, y \in I\) are such that \(\abs*{x - y} < \delta\).
+            By uniform continuity, there exists a \(\delta > 0\) such that \(\abs{f(x) - f(y)} < \varepsilon\) whenever \(x, y \in I\) are such that \(\abs{x - y} < \delta\).
             By the Archimedean principle, there exists an integer \(N > 0\) such that \((b - a) / N < \delta\).
 
             Note that we can partition \(I\) into \(N\) intervals \(J_1, \dots, J_N\), each of length \((b - a) / N\).
             (How? One has to treat each of the cases \([a, b]\), \((a, b)\), \((a, b]\), \([a, b)\) slightly differently.)
     By Proposition \ref{11.3.12}, we thus have
     \[
-        \overline{\int}_I f \leq \sum_{k = 1}^N \big(\sup_{x \in J_k} f(x)\big) \abs*{J_k}
+        \overline{\int}_I f \leq \sum_{k = 1}^N \big(\sup_{x \in J_k} f(x)\big) \abs{J_k}
     \]
     and
     \[
-        \underline{\int}_I f \geq \sum_{k = 1}^N \big(\inf_{x \in J_k} f(x)\big) \abs*{J_k}
+        \underline{\int}_I f \geq \sum_{k = 1}^N \big(\inf_{x \in J_k} f(x)\big) \abs{J_k}
     \]
     so in particular
     \[
-        \overline{\int}_I f - \underline{\int}_I f \leq \sum_{k = 1}^N \big(\sup_{x \in J_k} f(x) - \inf_{x \in J_k} f(x)\big) \abs*{J_k}.
+        \overline{\int}_I f - \underline{\int}_I f \leq \sum_{k = 1}^N \big(\sup_{x \in J_k} f(x) - \inf_{x \in J_k} f(x)\big) \abs{J_k}.
     \]
-    However, we have \(\abs*{f(x) - f(y)} < \varepsilon\) for all \(x, y \in J_k\), since \(\abs*{J_k} = (b - a) / N < \delta\).
+    However, we have \(\abs{f(x) - f(y)} < \varepsilon\) for all \(x, y \in J_k\), since \(\abs{J_k} = (b - a) / N < \delta\).
     In particular we have
     \[
         f(x) < f(y) + \varepsilon \text{ for all } x, y \in J_k.
@@ -44,7 +44,7 @@
     \]
     Inserting this bound into our previous inequality, we obtain
     \[
-        \overline{\int}_I f - \underline{\int}_I f \leq \sum_{k = 1}^N \varepsilon \abs*{J_k},
+        \overline{\int}_I f - \underline{\int}_I f \leq \sum_{k = 1}^N \varepsilon \abs{J_k},
     \]
     but by Theorem \ref{11.1.13} we thus have
     \[
@@ -56,7 +56,7 @@
 \end{proof}
 
 \begin{corollary}\label{11.5.2}
-    Let \([a, b]\) be a closed interval, and let \(f : [a, b] \to \mathbf{R}\) be continuous.
+    Let \([a, b]\) be a closed interval, and let \(f : [a, b] \to \R\) be continuous.
     Then \(f\) is Riemann integrable.
 \end{corollary}
 
@@ -66,12 +66,12 @@
 
 \begin{note}
     Note that Corollary \ref{11.5.2} is not true if \([a, b]\) is replaced by any other sort of interval, since it is not even guaranteed then that continuous functions are bounded.
-    For instance, the function \(f : (0, 1) \to \mathbf{R}\) defined by \(f(x) \coloneqq 1 / x\) is continuous but not Riemann integrable.
+    For instance, the function \(f : (0, 1) \to \R\) defined by \(f(x) \coloneqq 1 / x\) is continuous but not Riemann integrable.
     However, if we assume that a function is both continuous \emph{and} bounded, we can recover Riemann integrability (see Proposition \ref{11.5.3}).
 \end{note}
 
 \begin{proposition}\label{11.5.3}
-    Let \(I\) be a bounded interval, and let \(f : I \to \mathbf{R}\) be both continuous and bounded.
+    Let \(I\) be a bounded interval, and let \(f : I \to \R\) be both continuous and bounded.
     Then \(f\) is Riemann integrable on \(I\).
 \end{proposition}
 
@@ -83,11 +83,11 @@
     We have a bound \(M\) for \(f\), so that \(-M \leq f(x) \leq M\) for all \(x \in I\).
     Now let \(0 < \varepsilon < (b - a) / 2\) be a small number.
     The function \(f\) when restricted to the interval \([a + \varepsilon, b - \varepsilon]\) is continuous, and hence Riemann integrable by Corollary \ref{11.5.2}.
-    In particular, we can find a piecewise constant function \(h : [a + \varepsilon, b - \varepsilon] \to \mathbf{R}\) which majorizes \(f\) on \([a + \varepsilon, b - \varepsilon]\) such that
+    In particular, we can find a piecewise constant function \(h : [a + \varepsilon, b - \varepsilon] \to \R\) which majorizes \(f\) on \([a + \varepsilon, b - \varepsilon]\) such that
     \[
         \int_{[a + \varepsilon, b - \varepsilon]} h \leq \int_{[a + \varepsilon, b - \varepsilon]} f + \varepsilon.
     \]
-    Define \(\tilde{h} : I \to \mathbf{R}\) by
+    Define \(\tilde{h} : I \to \R\) by
     \[
         \tilde{h}(x) \coloneqq \begin{cases}
             h(x) & \text{if } x \in [a + \varepsilon, b - \varepsilon]             \\
@@ -120,13 +120,13 @@
 \end{note}
 
 \begin{definition}\label{11.5.4}
-    Let \(I\) be a bounded interval, and let \(f : I \to \mathbf{R}\).
+    Let \(I\) be a bounded interval, and let \(f : I \to \R\).
     We say that \(f\) is \emph{piecewise continuous on \(I\)} iff there exists a partition \(\mathbf{P}\) of \(I\) such that \(f|_J\) is continuous on \(J\) for all \(J \in \mathbf{P}\).
 \end{definition}
 
 \setcounter{theorem}{5}
 \begin{proposition}\label{11.5.6}
-    Let \(I\) be a bounded interval, and let \(f : I \to \mathbf{R}\) be both piecewise continuous and bounded.
+    Let \(I\) be a bounded interval, and let \(f : I \to \R\) be both piecewise continuous and bounded.
     Then \(f\) is Riemann integrable.
 \end{proposition}
 
@@ -134,7 +134,7 @@
     Since \(f\) is piecewise continuous on \(I\), by Definition \ref{11.5.4} \(\exists\ \mathbf{P}\) such that \(\mathbf{P}\) is a partition of \(I\) and \(f|_J\) is continuous on \(J\) for all \(J \in \mathbf{P}\).
     Since \(f\) is bounded, we know that \(f|_J\) is bounded for all \(J \in \mathbf{P}\).
     Thus by Proposition \ref{11.5.3} \(f|_J\) is Riemann integrable on \(J\) for all \(J \in \mathbf{P}\).
-    For each \(J \in \mathbf{P}\), we define \(F_J : I \to \mathbf{R}\) to be the function
+    For each \(J \in \mathbf{P}\), we define \(F_J : I \to \R\) to be the function
     \[
         F_J(x) = \begin{cases}
             f|_J(x) & \text{if } x \in J    \\

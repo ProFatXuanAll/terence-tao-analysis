@@ -9,19 +9,19 @@
 \begin{definition}\label{3.8.1}
     Let \([a, b]\) be an interval.
     A \emph{polynomial on \([a, b]\)} is a
-    function \(f : [a, b] \to \mathbf{R}\) of the form \(f(x) \coloneqq \sum_{j = 0}^n c_j x^j\), where \(n \geq 0\) is an integer and \(c_0, \dots, c_n\) are real numbers.
+    function \(f : [a, b] \to \R\) of the form \(f(x) \coloneqq \sum_{j = 0}^n c_j x^j\), where \(n \geq 0\) is an integer and \(c_0, \dots, c_n\) are real numbers.
     If \(c_n \neq 0\), then \(n\) is called the \emph{degree} of \(f\).
 \end{definition}
 
 \setcounter{theorem}{2}
 \begin{theorem}[Weierstrass approximation theorem]\label{3.8.3}
-    If \([a, b]\) is an interval, \(f : [a, b] \to \mathbf{R}\) is a continuous function, and \(\varepsilon > 0\), then there exists a polynomial \(P\) on \([a, b]\) such that \(d_\infty(P, f) \leq \varepsilon\)
-    (i.e., \(\abs*{P(x) - f(x)} \leq \varepsilon\) for all \(x \in [a, b]\)).
+    If \([a, b]\) is an interval, \(f : [a, b] \to \R\) is a continuous function, and \(\varepsilon > 0\), then there exists a polynomial \(P\) on \([a, b]\) such that \(d_\infty(P, f) \leq \varepsilon\)
+    (i.e., \(\abs{P(x) - f(x)} \leq \varepsilon\) for all \(x \in [a, b]\)).
 \end{theorem}
 
 \begin{proof}
-    Let \(f : [a, b] \to \mathbf{R}\) be a continuous function on \([a, b]\).
-    Let \(g : [0, 1] \to \mathbf{R}\) denote the function
+    Let \(f : [a, b] \to \R\) be a continuous function on \([a, b]\).
+    Let \(g : [0, 1] \to \R\) denote the function
     \[
         g(x) \coloneqq f\big(a + (b - a) x\big) \text{ for all } x \in [0, 1]
     \]
@@ -29,23 +29,23 @@
     \[
         f(y) = g(\frac{y - a}{b - a}) \text{ for all } y \in [a, b].
     \]
-    The function \(g\) is continuous on \([0, 1]\) since \(y \mapsto \frac{y - a}{b - a}\) is bijective on \([a, b]\), and so by Corollary \ref{3.8.19} we may find a polynomial \(Q : [0, 1] \to \mathbf{R}\) such that \(\abs*{Q(x) - g(x)} \leq \varepsilon\) for all \(x \in [0, 1]\).
+    The function \(g\) is continuous on \([0, 1]\) since \(y \mapsto \frac{y - a}{b - a}\) is bijective on \([a, b]\), and so by Corollary \ref{3.8.19} we may find a polynomial \(Q : [0, 1] \to \R\) such that \(\abs{Q(x) - g(x)} \leq \varepsilon\) for all \(x \in [0, 1]\).
     In particular, for any \(y \in [a, b]\), we have
     \[
-        \abs*{Q(\frac{y - a}{b - a}) - g(\frac{y - a}{b - a})} \leq \varepsilon.
+        \abs{Q(\frac{y - a}{b - a}) - g(\frac{y - a}{b - a})} \leq \varepsilon.
     \]
-    If we thus set \(P(y) \coloneqq Q(\frac{y - a}{b - a})\), then we observe that \(P\) is also a polynomial since \(y \mapsto \frac{y - a}{b - a}\) is bijective on \([a, b]\), and so we have \(\abs*{P(y) - f(y)} \leq \varepsilon\) for all \(y \in [a, b]\), as desired.
+    If we thus set \(P(y) \coloneqq Q(\frac{y - a}{b - a})\), then we observe that \(P\) is also a polynomial since \(y \mapsto \frac{y - a}{b - a}\) is bijective on \([a, b]\), and so we have \(\abs{P(y) - f(y)} \leq \varepsilon\) for all \(y \in [a, b]\), as desired.
 \end{proof}
 
 \begin{note}
     Another way of stating Theorem \ref{3.8.3} is as follows.
-    Recall that \(C([a, b] \to \mathbf{R})\) was the space of continuous functions from \([a, b]\) to \(\mathbf{R}\), with the uniform metric \(d_\infty\).
-    Let \(P([a, b] \to \mathbf{R})\) be the space of all polynomials on \([a, b]\);
-    this is a subspace of \(C([a, b] \to \mathbf{R})\), since all polynomials are continuous (Exercise 9.4.7 in Analysis I).
-    The Weierstrass approximation theorem then asserts that every continuous function is an adherent point of \(P([a, b] \to \mathbf{R})\);
+    Recall that \(C([a, b] \to \R)\) was the space of continuous functions from \([a, b]\) to \(\R\), with the uniform metric \(d_\infty\).
+    Let \(P([a, b] \to \R)\) be the space of all polynomials on \([a, b]\);
+    this is a subspace of \(C([a, b] \to \R)\), since all polynomials are continuous (Exercise 9.4.7 in Analysis I).
+    The Weierstrass approximation theorem then asserts that every continuous function is an adherent point of \(P([a, b] \to \R)\);
     or in other words, that the closure of the space of polynomials is the space of continuous functions (see Corollary \ref{3.3.2}):
     \[
-        \overline{P([a, b] \to \mathbf{R})}_{\big(C([a, b] \to \mathbf{R}), d_\infty\big)} = C([a, b] \to \mathbf{R}).
+        \overline{P([a, b] \to \R)}_{\big(C([a, b] \to \R), d_\infty\big)} = C([a, b] \to \R).
     \]
     In particular, every continuous function on \([a, b]\) is the uniform limit of polynomials (see Proposition \ref{3.4.4}).
     Another way of saying this is that the space of polynomials is \emph{dense} in the space of continuous functions, in the \emph{uniform topology}.
@@ -53,7 +53,7 @@
 
 \begin{definition}[Compactly supported functions]\label{3.8.4}
     Let \([a, b]\) be an interval.
-    A function \(f : \mathbf{R} \to \mathbf{R}\) is said to be \emph{supported} on \([a, b]\) iff \(f(x) = 0\) for all \(x \notin [a, b]\).
+    A function \(f : \R \to \R\) is said to be \emph{supported} on \([a, b]\) iff \(f(x) = 0\) for all \(x \notin [a, b]\).
     We say that \(f\) is \emph{compactly supported} iff it is supported on some interval \([a, b]\).
     If \(f\) is continuous and supported on \([a, b]\), we define the improper integral \(\int_{-\infty}^\infty f\) to be \(\int_{-\infty}^\infty f \coloneqq \int_{[a, b]} f\).
 \end{definition}
@@ -63,7 +63,7 @@
 \end{note}
 
 \begin{lemma}\label{3.8.5}
-    If \(f : \mathbf{R} \to \mathbf{R}\) is continuous and supported on an interval \([a, b]\), and is also supported on another interval \([c, d]\), then \(\int_{[a, b]} f = \int_{[c, d]} f\).
+    If \(f : \R \to \R\) is continuous and supported on an interval \([a, b]\), and is also supported on another interval \([c, d]\), then \(\int_{[a, b]} f = \int_{[c, d]} f\).
 \end{lemma}
 
 \begin{proof}
@@ -72,14 +72,14 @@
                  & \begin{cases}
                        f \text{ is supported on } [a, b] \\
                        f \text{ is supported on } [c, d]
-                   \end{cases}                                               \\
+                   \end{cases}                                       \\
         \implies & \begin{cases}
                        \forall x \notin [a, b], f(x) = 0 \\
                        \forall x \notin [c, d], f(x) = 0
-                   \end{cases}                                & \text{(by Definition \ref{3.8.4})} \\
+                   \end{cases}                        & \text{(by Definition \ref{3.8.4})} \\
         \implies & \begin{cases}
-                       \forall x \in \mathbf{R}, (x < a) \lor (x > b) \implies f(x) = 0 \\
-                       \forall x \in \mathbf{R}, (x < c) \lor (x > d) \implies f(x) = 0
+                       \forall x \in \R, (x < a) \lor (x > b) \implies f(x) = 0 \\
+                       \forall x \in \R, (x < c) \lor (x > d) \implies f(x) = 0
                    \end{cases}
     \end{align*}
     we have
@@ -108,11 +108,11 @@
 
 \begin{definition}[Approximation to the identity]\label{3.8.6}
     Let \(\varepsilon > 0\) and \(0 < \delta < 1\).
-    A function \(f : \mathbf{R} \to \mathbf{R}\) is said to be an \emph{\((\varepsilon, \delta)\)-approximation to the identity} if it obeys the following three properties:
+    A function \(f : \R \to \R\) is said to be an \emph{\((\varepsilon, \delta)\)-approximation to the identity} if it obeys the following three properties:
     \begin{enumerate}
         \item \(f\) is supported on \([-1, 1]\), and \(f(x) \geq 0\) for all \(-1 \leq x \leq 1\).
         \item \(f\) is continuous, and \(\int_{-\infty}^\infty f = 1\).
-        \item \(\abs*{f(x)} \leq \varepsilon\) for all \(\delta \leq \abs*{x} \leq 1\).
+        \item \(\abs{f(x)} \leq \varepsilon\) for all \(\delta \leq \abs{x} \leq 1\).
     \end{enumerate}
 \end{definition}
 
@@ -125,24 +125,24 @@
 \end{lemma}
 
 \begin{proof}
-    Let \(\varepsilon \in \mathbf{R}^+\) and let \(\delta \in (0, 1)\).
+    Let \(\varepsilon \in \R^+\) and let \(\delta \in (0, 1)\).
     We have
     \begin{align*}
-                 & \forall x \in [-1, 1], \delta \leq \abs*{x} \leq 1                                                                                  \\
-        \implies & \delta^2 \leq x^2 \leq 1                                                                                                            \\
-        \implies & 0 \leq 1 - x^2 \leq 1 - \delta^2 < 1                                                                                                \\
-        \implies & \lim_{n \to \infty} \sqrt{n} (1 - \delta^2)^n = 0                                        & \text{(by Exercise 7.5.2 in Analysis I)} \\
-        \implies & \exists\ N \in \mathbf{Z}^+ : \forall n \geq N, \sqrt{n} (1 - \delta^2)^n < \varepsilon.
+                 & \forall x \in [-1, 1], \delta \leq \abs{x} \leq 1                                                                           \\
+        \implies & \delta^2 \leq x^2 \leq 1                                                                                                    \\
+        \implies & 0 \leq 1 - x^2 \leq 1 - \delta^2 < 1                                                                                        \\
+        \implies & \lim_{n \to \infty} \sqrt{n} (1 - \delta^2)^n = 0                                & \text{(by Exercise 7.5.2 in Analysis I)} \\
+        \implies & \exists\ N \in \Z^+ : \forall n \geq N, \sqrt{n} (1 - \delta^2)^n < \varepsilon.
     \end{align*}
     Now we fix such \(N\).
-    Define \(g : \mathbf{R} \to \mathbf{R}\) to be the function
+    Define \(g : \R \to \R\) to be the function
     \[
-        \forall x \in \mathbf{R}, g(x) = \begin{cases}
+        \forall x \in \R, g(x) = \begin{cases}
             (1 - x^2)^N & \text{if } x \in [-1, 1]    \\
             0           & \text{if } x \notin [-1, 1]
         \end{cases}
     \]
-    We know that \(g(x) \geq 0\) for all \(x \in \mathbf{R}\).
+    We know that \(g(x) \geq 0\) for all \(x \in \R\).
     By Definition \ref{3.8.4} we know that \(g\) is supported on \([-1, 1]\).
     By Exercise 9.4.7 in Analysis I we know that \(g\) is continuous on \([-1, 1]\), thus by Corollary 11.5.2 in Analysis I \(g\) is Riemann integrable on \([-1, 1]\).
     By Exercise \ref{ex 3.8.2}(b) we know that
@@ -153,26 +153,26 @@
     \[
         0 < c = \bigg(\int_{[-1, 1]} g\bigg)^{-1} \leq \sqrt{N}.
     \]
-    Now we define \(f : \mathbf{R} \to \mathbf{R}\) to be the function \(f = cg\).
+    Now we define \(f : \R \to \R\) to be the function \(f = cg\).
     Again we have \(f\) is continuous and supported on \([-1, 1]\).
-    Since \(c > 0\), we know that \(f(x) \geq 0\) for all \(x \in \mathbf{R}\).
+    Since \(c > 0\), we know that \(f(x) \geq 0\) for all \(x \in \R\).
     By Definition \ref{3.8.4} we have
     \[
         \int_{-\infty}^\infty f = \int_{[-1, 1]} f = \int_{[-1, 1]} cg = c \int_{[-1, 1]} g = \bigg(\int_{[-1, 1]} g\bigg)^{-1} \bigg(\int_{[-1, 1]} g\bigg) = 1.
     \]
     Since
     \begin{align*}
-                 & \forall x \in [-1, 1], \delta \leq \abs*{x} \leq 1                                                       \\
-        \implies & 0 \leq 1 - x^2 \leq 1 - \delta^2 < 1                                                                     \\
-        \implies & 0 \leq \sqrt{N} (1 - x^2)^N \leq \sqrt{N} (1 - \delta^2)^N < \varepsilon                                 \\
-        \implies & 0 \leq \abs*{f(x)} = \abs*{cg(x)} \leq \abs*{\sqrt{N} (1 - x^2)^N} = \sqrt{N} (1 - x^2)^N < \varepsilon,
+                 & \forall x \in [-1, 1], \delta \leq \abs{x} \leq 1                                                     \\
+        \implies & 0 \leq 1 - x^2 \leq 1 - \delta^2 < 1                                                                  \\
+        \implies & 0 \leq \sqrt{N} (1 - x^2)^N \leq \sqrt{N} (1 - \delta^2)^N < \varepsilon                              \\
+        \implies & 0 \leq \abs{f(x)} = \abs{cg(x)} \leq \abs{\sqrt{N} (1 - x^2)^N} = \sqrt{N} (1 - x^2)^N < \varepsilon,
     \end{align*}
     combine all the proofs above we conclude by Definition \ref{3.8.6} that \(f\) is an \((\varepsilon, \delta)\)-approximation to the identity.
 \end{proof}
 
 \begin{definition}[Convolution]\label{3.8.9}
-    Let \(f : \mathbf{R} \to \mathbf{R}\) and \(g : \mathbf{R} \to \mathbf{R}\) be continuous, compactly supported functions.
-    We define the \emph{convolution} \(f * g : \mathbf{R} \to \mathbf{R}\) of \(f\) and \(g\) to be the function
+    Let \(f : \R \to \R\) and \(g : \R \to \R\) be continuous, compactly supported functions.
+    We define the \emph{convolution} \(f * g : \R \to \R\) of \(f\) and \(g\) to be the function
     \[
         (f * g)(x) \coloneqq \int_{-\infty}^\infty f(y) g(x - y) \; dy.
     \]
@@ -187,7 +187,7 @@
 \end{remark}
 
 \begin{proposition}[Basic properties of convolution]\label{3.8.11}
-    Let \(f : \mathbf{R} \to \mathbf{R}\), \(g : \mathbf{R} \to \mathbf{R}\), and \(h : \mathbf{R} \to \mathbf{R}\) be continuous, compactly supported functions.
+    Let \(f : \R \to \R\), \(g : \R \to \R\), and \(h : \R \to \R\) be continuous, compactly supported functions.
     Then the following statements are true.
     \begin{enumerate}
         \item The convolution \(f * g\) is also a continuous, compactly supported function.
@@ -208,135 +208,135 @@
 \begin{proof}{(a)}
     Since \(f, g\) are compactly supported, by Definition \ref{3.8.4} we know that
     \[
-        \exists\ L_f, L_g, U_f, U_g \in \mathbf{R} : \begin{cases}
-            \forall y \in \mathbf{R} \setminus [L_f, U_f], f(y) = 0 \\
-            \forall y \in \mathbf{R} \setminus [L_g, U_g], g(y) = 0
+        \exists\ L_f, L_g, U_f, U_g \in \R : \begin{cases}
+            \forall y \in \R \setminus [L_f, U_f], f(y) = 0 \\
+            \forall y \in \R \setminus [L_g, U_g], g(y) = 0
         \end{cases}
     \]
     Note that we can choose \(L_f \neq U_f\).
-    Let \(L = \min(L_f, L_g)\), let \(U = \max(U_f, U_g)\) and let \(M = \max(\abs*{L}, \abs*{U})\).
+    Let \(L = \min(L_f, L_g)\), let \(U = \max(U_f, U_g)\) and let \(M = \max(\abs{L}, \abs{U})\).
     Then we have
     \begin{align*}
-                 & \forall y \in \mathbf{R} \setminus [-M, M], \begin{cases}
-                                                                   y < -M \leq L \leq L_f \implies f(y) = 0 \\
-                                                                   y < -M \leq L \leq L_g \implies g(y) = 0 \\
-                                                                   y > M \geq U \geq U_f \implies f(y) = 0  \\
-                                                                   y > M \geq U \geq U_g \implies g(y) = 0
-                                                               \end{cases} \\
+                 & \forall y \in \R \setminus [-M, M], \begin{cases}
+                                                           y < -M \leq L \leq L_f \implies f(y) = 0 \\
+                                                           y < -M \leq L \leq L_g \implies g(y) = 0 \\
+                                                           y > M \geq U \geq U_f \implies f(y) = 0  \\
+                                                           y > M \geq U \geq U_g \implies g(y) = 0
+                                                       \end{cases} \\
         \implies & f(y) = g(y) = 0
     \end{align*}
     and
     \[
-        \forall y \in \mathbf{R} \setminus [-2M, 2M], (y < -2M \leq -M) \lor (y > 2M \geq M) \implies f(y) = g(y) = 0.
+        \forall y \in \R \setminus [-2M, 2M], (y < -2M \leq -M) \lor (y > 2M \geq M) \implies f(y) = g(y) = 0.
     \]
     Thus by Definition \ref{3.8.4} \(f, g\) are supported on \([-M, M]\) and \([-2M, 2M]\).
     Observe that
     \begin{align*}
-                 & \forall x \in (-\infty, -2M), \forall y \in \mathbf{R}, \begin{cases}
-                                                                               x - y < -M \text{ or } \\
-                                                                               x - y \geq -M
-                                                                           \end{cases}                      \\
-        \implies & \forall x \in (-\infty, -2M), \forall y \in \mathbf{R}, \begin{cases}
-                                                                               x - y < -M \text{ or } \\
-                                                                               -M > x + M \geq y
-                                                                           \end{cases}                      \\
-        \implies & \forall x \in (-\infty, -2M), \forall y \in \mathbf{R}, \begin{cases}
-                                                                               g(x - y) = 0 & \text{if } x - y < -M        \\
-                                                                               f(y) = 0     & \text{if } -M > x + M \geq y
-                                                                           \end{cases} \\
-        \implies & \forall x \in (-\infty, -2M), \forall y \in \mathbf{R}, f(y) g(x - y) = 0
+                 & \forall x \in (-\infty, -2M), \forall y \in \R, \begin{cases}
+                                                                       x - y < -M \text{ or } \\
+                                                                       x - y \geq -M
+                                                                   \end{cases}                      \\
+        \implies & \forall x \in (-\infty, -2M), \forall y \in \R, \begin{cases}
+                                                                       x - y < -M \text{ or } \\
+                                                                       -M > x + M \geq y
+                                                                   \end{cases}                      \\
+        \implies & \forall x \in (-\infty, -2M), \forall y \in \R, \begin{cases}
+                                                                       g(x - y) = 0 & \text{if } x - y < -M        \\
+                                                                       f(y) = 0     & \text{if } -M > x + M \geq y
+                                                                   \end{cases} \\
+        \implies & \forall x \in (-\infty, -2M), \forall y \in \R, f(y) g(x - y) = 0
     \end{align*}
     and
     \begin{align*}
-                 & \forall x \in (2M, +\infty), \forall y \in \mathbf{R}, \begin{cases}
-                                                                              x - y > M \text{ or } \\
-                                                                              x - y \leq M
-                                                                          \end{cases}                      \\
-        \implies & \forall x \in (2M, +\infty), \forall y \in \mathbf{R}, \begin{cases}
-                                                                              x - y > M \text{ or } \\
-                                                                              M < x - M \leq y
-                                                                          \end{cases}                      \\
-        \implies & \forall x \in (2M, +\infty), \forall y \in \mathbf{R}, \begin{cases}
-                                                                              g(x - y) = 0 & \text{if } x - y > M        \\
-                                                                              f(y) = 0     & \text{if } M < x - M \leq y
-                                                                          \end{cases} \\
-        \implies & \forall x \in (2M, +\infty), \forall y \in \mathbf{R}, f(y) g(x - y) = 0.
+                 & \forall x \in (2M, +\infty), \forall y \in \R, \begin{cases}
+                                                                      x - y > M \text{ or } \\
+                                                                      x - y \leq M
+                                                                  \end{cases}                      \\
+        \implies & \forall x \in (2M, +\infty), \forall y \in \R, \begin{cases}
+                                                                      x - y > M \text{ or } \\
+                                                                      M < x - M \leq y
+                                                                  \end{cases}                      \\
+        \implies & \forall x \in (2M, +\infty), \forall y \in \R, \begin{cases}
+                                                                      g(x - y) = 0 & \text{if } x - y > M        \\
+                                                                      f(y) = 0     & \text{if } M < x - M \leq y
+                                                                  \end{cases} \\
+        \implies & \forall x \in (2M, +\infty), \forall y \in \R, f(y) g(x - y) = 0.
     \end{align*}
     This means
     \[
-        \forall x \in \mathbf{R} \setminus [-2M, 2M], \forall y \in \mathbf{R}, f(y) g(x - y) = 0.
+        \forall x \in \R \setminus [-2M, 2M], \forall y \in \R, f(y) g(x - y) = 0.
     \]
-    For each \(x \in \mathbf{R} \setminus [-2M, 2M]\), we define \(z_x : \mathbf{R} \to \mathbf{R}\) by setting \(z_x(y) = f(y) g(x - y)\).
-    Since \(z_x\) is continuous on \(\mathbf{R}\), by Definition \ref{3.8.4} and Definition \ref{3.8.9} we have
+    For each \(x \in \R \setminus [-2M, 2M]\), we define \(z_x : \R \to \R\) by setting \(z_x(y) = f(y) g(x - y)\).
+    Since \(z_x\) is continuous on \(\R\), by Definition \ref{3.8.4} and Definition \ref{3.8.9} we have
     \begin{align*}
-                 & \forall x \in \mathbf{R} \setminus [-2M, 2M], \forall y \in \mathbf{R}, z_x(y) = 0                                 \\
-        \implies & \forall x \in \mathbf{R} \setminus [-2M, 2M], \forall y \in \mathbf{R} \setminus [-1, 1], z_x(y) = 0               \\
-        \implies & \forall x \in \mathbf{R} \setminus [-2M, 2M], z_x \text{ is supported on } [-1, 1]                                 \\
-        \implies & \forall x \in \mathbf{R} \setminus [-2M, 2M], \int_{-\infty}^\infty z_x = \int_{[-1, 1]} z_x = 0                   \\
-        \implies & \forall x \in \mathbf{R} \setminus [-2M, 2M], \int_{-\infty}^\infty z_x(y) \; dy = \int_{[-1, 1]} z_x(y) \; dy = 0 \\
-        \implies & \forall x \in \mathbf{R} \setminus [-2M, 2M], (f * g)(x) = \int_{[-1, 1]} f(y) g(x - y) \; dy = 0                  \\
-        \implies & f * g \text{ is supported on } [-2M, 2M]                                                                           \\
+                 & \forall x \in \R \setminus [-2M, 2M], \forall y \in \R, z_x(y) = 0                                         \\
+        \implies & \forall x \in \R \setminus [-2M, 2M], \forall y \in \R \setminus [-1, 1], z_x(y) = 0                       \\
+        \implies & \forall x \in \R \setminus [-2M, 2M], z_x \text{ is supported on } [-1, 1]                                 \\
+        \implies & \forall x \in \R \setminus [-2M, 2M], \int_{-\infty}^\infty z_x = \int_{[-1, 1]} z_x = 0                   \\
+        \implies & \forall x \in \R \setminus [-2M, 2M], \int_{-\infty}^\infty z_x(y) \; dy = \int_{[-1, 1]} z_x(y) \; dy = 0 \\
+        \implies & \forall x \in \R \setminus [-2M, 2M], (f * g)(x) = \int_{[-1, 1]} f(y) g(x - y) \; dy = 0                  \\
+        \implies & f * g \text{ is supported on } [-2M, 2M]                                                                   \\
         \implies & f * g \text{ is compactly supported}.
     \end{align*}
-    Since \(f, g\) are compactly supported and continuous on \(\mathbf{R}\), by Exercise \ref{ex 3.8.3} we know that
+    Since \(f, g\) are compactly supported and continuous on \(\R\), by Exercise \ref{ex 3.8.3} we know that
     \[
-        \exists\ N \in \mathbf{R}^+ : \forall x \in \mathbf{R}, \abs*{f(x)} \leq N
+        \exists\ N \in \R^+ : \forall x \in \R, \abs{f(x)} \leq N
     \]
     and
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall x_1, x_2 \in \mathbf{R}, \abs*{x_1 - x_2} < \delta \implies \abs*{g(x_1) - g(x_2)} < \frac{\varepsilon}{N (U_f - L_f)}.
+        \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x_1, x_2 \in \R, \abs{x_1 - x_2} < \delta \implies \abs{g(x_1) - g(x_2)} < \frac{\varepsilon}{N (U_f - L_f)}.
     \]
     Fix \(N\) and one pair of \(\varepsilon\) and \(\delta\).
-    Let \(x_0 \in \mathbf{R}\).
+    Let \(x_0 \in \R\).
     Then we have
     \begin{align*}
-                 & \forall x \in \mathbf{R}, \abs*{x - x_0} < \delta                                                                                 \\
-        \implies & \abs*{(f * g)(x) - (f * g)(x_0)} = \abs*{\int_{-\infty}^\infty f(y) g(x - y) \; dy - \int_{-\infty}^\infty f(y) g(x_0 - y) \; dy} \\
-                 & = \abs*{\int_{[L_f, U_f]} f(y) g(x - y) \; dy - \int_{[L_f, U_f]} f(y) g(x_0 - y) \; dy}                                          \\
-                 & = \abs*{\int_{[L_f, U_f]} f(y) \big(g(x - y) - g(x_0 - y)\big) \; dy}                                                             \\
-                 & \leq \abs*{\int_{[L_f, U_f]} N \frac{\varepsilon}{N (U_f - L_f)} \; dy} = \varepsilon.
+                 & \forall x \in \R, \abs{x - x_0} < \delta                                                                                        \\
+        \implies & \abs{(f * g)(x) - (f * g)(x_0)} = \abs{\int_{-\infty}^\infty f(y) g(x - y) \; dy - \int_{-\infty}^\infty f(y) g(x_0 - y) \; dy} \\
+                 & = \abs{\int_{[L_f, U_f]} f(y) g(x - y) \; dy - \int_{[L_f, U_f]} f(y) g(x_0 - y) \; dy}                                         \\
+                 & = \abs{\int_{[L_f, U_f]} f(y) \big(g(x - y) - g(x_0 - y)\big) \; dy}                                                            \\
+                 & \leq \abs{\int_{[L_f, U_f]} N \frac{\varepsilon}{N (U_f - L_f)} \; dy} = \varepsilon.
     \end{align*}
     Since \(\varepsilon\) is arbitrary, we know that \(f * g\) is continuous at \(x_0\).
-    Since \(x_0\) is arbitrary, we know that \(f * g\) is continuous on \(\mathbf{R}\).
+    Since \(x_0\) is arbitrary, we know that \(f * g\) is continuous on \(\R\).
 \end{proof}
 
 \begin{proof}{(b)}
-    Let \(x_0 \in \mathbf{R}\).
+    Let \(x_0 \in \R\).
     Since \(f\) is compactly supported, we know that
     \[
-        \exists\ L, U \in \mathbf{R} : \forall y \in \mathbf{R} \setminus [L, U], f(y) = 0.
+        \exists\ L, U \in \R : \forall y \in \R \setminus [L, U], f(y) = 0.
     \]
     Then we have
     \begin{align*}
-                 & \forall y \in \mathbf{R} \setminus [L, U], f(y) = 0             \\
-        \implies & \forall y \in \mathbf{R} \setminus [L, U], f(y) g(x_0 - y) = 0.
+                 & \forall y \in \R \setminus [L, U], f(y) = 0             \\
+        \implies & \forall y \in \R \setminus [L, U], f(y) g(x_0 - y) = 0.
     \end{align*}
     Observe that
     \begin{align*}
-                 & \forall y \in \mathbf{R} \setminus [L, U], f(y) = 0                         \\
-        \implies & \forall y \in \mathbf{R} \setminus [-U, -L], f(-y) = 0                      \\
-        \implies & \forall y \in \mathbf{R} \setminus [x_0 - U, x_0 - L], f(x_0 - y) = 0       \\
-        \implies & \forall y \in \mathbf{R} \setminus [x_0 - U, x_0 - L], g(y) f(x_0 - y) = 0.
+                 & \forall y \in \R \setminus [L, U], f(y) = 0                         \\
+        \implies & \forall y \in \R \setminus [-U, -L], f(-y) = 0                      \\
+        \implies & \forall y \in \R \setminus [x_0 - U, x_0 - L], f(x_0 - y) = 0       \\
+        \implies & \forall y \in \R \setminus [x_0 - U, x_0 - L], g(y) f(x_0 - y) = 0.
     \end{align*}
-    Since \(f, g\) are continuous on \(\mathbf{R}\), we know that
+    Since \(f, g\) are continuous on \(\R\), we know that
     \begin{align*}
-                 & \forall y_0 \in \mathbf{R}, \begin{cases}
-                                                   f \text{ is continuous at } y_0       \\
-                                                   g \text{ is continuous at } y_0       \\
-                                                   f \text{ is continuous at } x_0 - y_0 \\
-                                                   g \text{ is continuous at } x_0 - y_0 \\
-                                                   y \mapsto x_0 - y \text{ is continuous at } y_0
-                                               \end{cases}                                         \\
-        \implies & \forall y_0 \in \mathbf{R}, \begin{cases}
-                                                   \lim_{y \to y_0 ; y \in \mathbf{R}} f(y) = f(y_0)             \\
-                                                   \lim_{y \to y_0 ; y \in \mathbf{R}} g(y) = g(y_0)             \\
-                                                   \lim_{y \to y_0 ; y \in \mathbf{R}} f(x_0 - y) = f(x_0 - y_0) \\
-                                                   \lim_{y \to y_0 ; y \in \mathbf{R}} g(x_0 - y) = g(x_0 - y_0)
-                                               \end{cases}             \\
-        \implies & \forall y_0 \in \mathbf{R}, \begin{cases}
-                                                   \lim_{y \to y_0 ; y \in \mathbf{R}} f(y) g(x_0 - y) = f(y_0) g(x_0 - y_0) \\
-                                                   \lim_{y \to y_0 ; y \in \mathbf{R}} g(y) f(x_0 - y) = g(y_0) f(x_0 - y_0)
-                                               \end{cases}
+                 & \forall y_0 \in \R, \begin{cases}
+                                           f \text{ is continuous at } y_0       \\
+                                           g \text{ is continuous at } y_0       \\
+                                           f \text{ is continuous at } x_0 - y_0 \\
+                                           g \text{ is continuous at } x_0 - y_0 \\
+                                           y \mapsto x_0 - y \text{ is continuous at } y_0
+                                       \end{cases}                    \\
+        \implies & \forall y_0 \in \R, \begin{cases}
+                                           \lim_{y \to y_0 ; y \in \R} f(y) = f(y_0)             \\
+                                           \lim_{y \to y_0 ; y \in \R} g(y) = g(y_0)             \\
+                                           \lim_{y \to y_0 ; y \in \R} f(x_0 - y) = f(x_0 - y_0) \\
+                                           \lim_{y \to y_0 ; y \in \R} g(x_0 - y) = g(x_0 - y_0)
+                                       \end{cases}             \\
+        \implies & \forall y_0 \in \R, \begin{cases}
+                                           \lim_{y \to y_0 ; y \in \R} f(y) g(x_0 - y) = f(y_0) g(x_0 - y_0) \\
+                                           \lim_{y \to y_0 ; y \in \R} g(y) f(x_0 - y) = g(y_0) f(x_0 - y_0)
+                                       \end{cases}
     \end{align*}
     This means
     \begin{align*}
@@ -345,7 +345,7 @@
         (g * f)(x_0) & = \int_{-\infty}^\infty g(y) f(x_0 - y) \; dy      & \text{(by Definition \ref{3.8.9})} \\
                      & = \int_{[x_0 - U, x_0 - L]} g(y) f(x_0 - y) \; dy; & \text{(by Definition \ref{3.8.4})}
     \end{align*}
-    Let \(\phi : \mathbf{R} \to \mathbf{R}\) be the function \(\phi = y \mapsto x_0 - y\).
+    Let \(\phi : \R \to \R\) be the function \(\phi = y \mapsto x_0 - y\).
     By the formula of changing variable (Exercise 11.10.4 in Analysis I) we have
     \begin{align*}
          & \int_{[L, U]} f(y) g(x_0 - y) \; dy                                                     \\
@@ -357,52 +357,52 @@
     Thus \((f * g)(x_0) = (g * f)(x_0)\).
     Since \(x_0\) is arbitrary, we conclude that
     \[
-        \forall x \in \mathbf{R}, (f * g)(x) = (g * f)(x).
+        \forall x \in \R, (f * g)(x) = (g * f)(x).
     \]
 \end{proof}
 
 \begin{proof}{(c)}
-    Let \(x_0 \in \mathbf{R}\).
+    Let \(x_0 \in \R\).
     Since \(g, h\) are compactly supported, by Definition \ref{3.8.4} we know that
     \[
-        \exists\ L_g, L_h, U_g, U_h \in \mathbf{R} : \begin{cases}
-            \forall y \in \mathbf{R} \setminus [L_g, U_g], g(y) = 0 \\
-            \forall y \in \mathbf{R} \setminus [L_h, U_h], h(y) = 0
+        \exists\ L_g, L_h, U_g, U_h \in \R : \begin{cases}
+            \forall y \in \R \setminus [L_g, U_g], g(y) = 0 \\
+            \forall y \in \R \setminus [L_h, U_h], h(y) = 0
         \end{cases}
     \]
     Let \(L = \min(L_g, L_h)\) and let \(U = \min(U_g, U_h)\).
     Then we have
     \begin{align*}
-                 & \forall y \in \mathbf{R} \setminus [L, U], \begin{cases}
-                                                                  y < L \leq L_g & \implies g(y) = 0 \\
-                                                                  y > U \geq U_g & \implies g(y) = 0 \\
-                                                                  y < L \leq L_h & \implies h(y) = 0 \\
-                                                                  y > U \geq U_h & \implies h(y) = 0
-                                                              \end{cases}                      \\
-        \implies & \forall y \in \mathbf{R} \setminus [L, U], g(y) = h(y) = 0                                         \\
-        \implies & \forall y \in \mathbf{R} \setminus [-U, -L], g(-y) = h(-y) = 0                                     \\
-        \implies & \forall y \in \mathbf{R} \setminus [x_0 - U, x_0 - L], g(x_0 - y) = h(x_0 - y) = 0                 \\
-        \implies & \forall y \in \mathbf{R} \setminus [x_0 - U, x_0 - L], f(y) g(x_0 - y) = f(y) h(x_0 - y) = 0       \\
-        \implies & \forall y \in \mathbf{R} \setminus [x_0 - U, x_0 - L], f(y) \big(g(x_0 - y) + h(x_0 - y)\big) = 0.
+                 & \forall y \in \R \setminus [L, U], \begin{cases}
+                                                          y < L \leq L_g & \implies g(y) = 0 \\
+                                                          y > U \geq U_g & \implies g(y) = 0 \\
+                                                          y < L \leq L_h & \implies h(y) = 0 \\
+                                                          y > U \geq U_h & \implies h(y) = 0
+                                                      \end{cases}                      \\
+        \implies & \forall y \in \R \setminus [L, U], g(y) = h(y) = 0                                         \\
+        \implies & \forall y \in \R \setminus [-U, -L], g(-y) = h(-y) = 0                                     \\
+        \implies & \forall y \in \R \setminus [x_0 - U, x_0 - L], g(x_0 - y) = h(x_0 - y) = 0                 \\
+        \implies & \forall y \in \R \setminus [x_0 - U, x_0 - L], f(y) g(x_0 - y) = f(y) h(x_0 - y) = 0       \\
+        \implies & \forall y \in \R \setminus [x_0 - U, x_0 - L], f(y) \big(g(x_0 - y) + h(x_0 - y)\big) = 0.
     \end{align*}
-    Since \(f, g, h\) are continuous on \(\mathbf{R}\), we know that
+    Since \(f, g, h\) are continuous on \(\R\), we know that
     \begin{align*}
-                 & \forall y_0 \in \mathbf{R}, \begin{cases}
-                                                   f \text{ is continuous at } y_0 \\
-                                                   g \text{ is continuous at } y_0 \\
-                                                   h \text{ is continuous at } y_0 \\
-                                                   y \mapsto x_0 - y \text{ is continuous at } y_0
-                                               \end{cases}                                                                             \\
-        \implies & \forall y_0 \in \mathbf{R}, \begin{cases}
-                                                   \lim_{y \to y_0 ; y \in \mathbf{R}} f(y) = f(y_0)             \\
-                                                   \lim_{y \to y_0 ; y \in \mathbf{R}} g(x_0 - y) = g(x_0 - y_0) \\
-                                                   \lim_{y \to y_0 ; y \in \mathbf{R}} h(x_0 - y) = h(x_0 - y_0)
-                                               \end{cases}                                                 \\
-        \implies & \forall y_0 \in \mathbf{R}, \begin{cases}
-                                                   \lim_{y \to y_0 ; y \in \mathbf{R}} f(y) g(x_0 - y) = f(y_0) g(x_0 - y_0) \\
-                                                   \lim_{y \to y_0 ; y \in \mathbf{R}} f(y) h(x_0 - y) = f(y_0) h(x_0 - y_0)
-                                               \end{cases}                                     \\
-        \implies & \forall y_0 \in \mathbf{R}, \lim_{y \to y_0 ; y \in \mathbf{R}} f(y) \big(g(x_0 - y) + h(x_0 - y)\big) = f(y_0) \big(g(x_0 - y_0) + h(x_0 - y_0)\big).
+                 & \forall y_0 \in \R, \begin{cases}
+                                           f \text{ is continuous at } y_0 \\
+                                           g \text{ is continuous at } y_0 \\
+                                           h \text{ is continuous at } y_0 \\
+                                           y \mapsto x_0 - y \text{ is continuous at } y_0
+                                       \end{cases}                                                                     \\
+        \implies & \forall y_0 \in \R, \begin{cases}
+                                           \lim_{y \to y_0 ; y \in \R} f(y) = f(y_0)             \\
+                                           \lim_{y \to y_0 ; y \in \R} g(x_0 - y) = g(x_0 - y_0) \\
+                                           \lim_{y \to y_0 ; y \in \R} h(x_0 - y) = h(x_0 - y_0)
+                                       \end{cases}                                                              \\
+        \implies & \forall y_0 \in \R, \begin{cases}
+                                           \lim_{y \to y_0 ; y \in \R} f(y) g(x_0 - y) = f(y_0) g(x_0 - y_0) \\
+                                           \lim_{y \to y_0 ; y \in \R} f(y) h(x_0 - y) = f(y_0) h(x_0 - y_0)
+                                       \end{cases}                                                  \\
+        \implies & \forall y_0 \in \R, \lim_{y \to y_0 ; y \in \R} f(y) \big(g(x_0 - y) + h(x_0 - y)\big) = f(y_0) \big(g(x_0 - y_0) + h(x_0 - y_0)\big).
     \end{align*}
     Thus we have
     \begin{align*}
@@ -416,22 +416,22 @@
     \end{align*}
     Observe that
     \[
-        \forall y \in \mathbf{R} \setminus [x_0 - U, x_0 - L], f(y) g(x_0 - y) = c f(y) g(x_0 - y) = 0.
+        \forall y \in \R \setminus [x_0 - U, x_0 - L], f(y) g(x_0 - y) = c f(y) g(x_0 - y) = 0.
     \]
-    Since \(f\) is continuous on \(\mathbf{R}\), we know that \(cf\) is also continuous on \(\mathbf{R}\) and
+    Since \(f\) is continuous on \(\R\), we know that \(cf\) is also continuous on \(\R\) and
     \begin{align*}
-                 & \forall y_0 \in \mathbf{R}, \begin{cases}
-                                                   cf \text{ is continuous at } y_0 \\
-                                                   g \text{ is continuous at } y_0  \\
-                                                   y \mapsto x_0 - y \text{ is continuous at } y_0
-                                               \end{cases}                                          \\
-        \implies & \forall y_0 \in \mathbf{R}, \begin{cases}
-                                                   \lim_{y \to y_0 ; y \in \mathbf{R}} cf(y) = cf(y_0) \\
-                                                   \lim_{y \to y_0 ; y \in \mathbf{R}} g(x_0 - y) = g(x_0 - y_0)
-                                               \end{cases}               \\
-        \implies & \forall y_0 \in \mathbf{R}, \begin{cases}
-                                                   \lim_{y \to y_0 ; y \in \mathbf{R}} cf(y) g(x_0 - y) = cf(y_0) g(x_0 - y_0)
-                                               \end{cases}
+                 & \forall y_0 \in \R, \begin{cases}
+                                           cf \text{ is continuous at } y_0 \\
+                                           g \text{ is continuous at } y_0  \\
+                                           y \mapsto x_0 - y \text{ is continuous at } y_0
+                                       \end{cases}                     \\
+        \implies & \forall y_0 \in \R, \begin{cases}
+                                           \lim_{y \to y_0 ; y \in \R} cf(y) = cf(y_0) \\
+                                           \lim_{y \to y_0 ; y \in \R} g(x_0 - y) = g(x_0 - y_0)
+                                       \end{cases}               \\
+        \implies & \forall y_0 \in \R, \begin{cases}
+                                           \lim_{y \to y_0 ; y \in \R} cf(y) g(x_0 - y) = cf(y_0) g(x_0 - y_0)
+                                       \end{cases}
     \end{align*}
     Thus we have
     \begin{align*}
@@ -450,7 +450,7 @@
     \]
     Since \(x_0\) is arbitrary, we conclude that
     \[
-        \forall x \in \mathbf{R}, \begin{cases}
+        \forall x \in \R, \begin{cases}
             \big(f * (g + h)\big)(x) = (f * g)(x) + (f * h)(x) \\
             \big(f * (cg)\big)(x) = \big((cf) * g\big)(x) = c(f * g)(x)
         \end{cases}
@@ -465,7 +465,7 @@
 \end{remark}
 
 \begin{lemma}\label{3.8.13}
-    Let \(f : \mathbf{R} \to \mathbf{R}\) be a continuous function supported on \([0, 1]\), and let \(g : \mathbf{R} \to \mathbf{R}\) be a continuous function supported on \([-1, 1]\) which is a polynomial on \([-1, 1]\).
+    Let \(f : \R \to \R\) be a continuous function supported on \([0, 1]\), and let \(g : \R \to \R\) be a continuous function supported on \([-1, 1]\) which is a polynomial on \([-1, 1]\).
     Then \(f * g\) is a polynomial on \([0, 1]\).
     (Note however that it may be non-polynomial outside of \([0, 1].\))
 \end{lemma}
@@ -511,11 +511,11 @@
 \end{proof}
 
 \begin{lemma}\label{3.8.14}
-    Let \(f : \mathbf{R} \to \mathbf{R}\) be a continuous function supported on \([0, 1]\), which is bounded by some \(M > 0\) (i.e., \(\abs*{f(x)} \leq M\) for all \(x \in \mathbf{R}\)), and let \(\varepsilon > 0\) and \(0 < \delta < 1\) be such that one has \(\abs*{f(x) - f(y)} < \varepsilon\) whenever \(x, y \in \mathbf{R}\) and \(\abs*{x - y} < \delta\).
+    Let \(f : \R \to \R\) be a continuous function supported on \([0, 1]\), which is bounded by some \(M > 0\) (i.e., \(\abs{f(x)} \leq M\) for all \(x \in \R\)), and let \(\varepsilon > 0\) and \(0 < \delta < 1\) be such that one has \(\abs{f(x) - f(y)} < \varepsilon\) whenever \(x, y \in \R\) and \(\abs{x - y} < \delta\).
     Let \(g\) be any \((\varepsilon, \delta)\)-approximation to the identity.
     Then we have
     \[
-        \abs*{f * g(x) - f(x)} \leq (1 + 4M) \varepsilon
+        \abs{f * g(x) - f(x)} \leq (1 + 4M) \varepsilon
     \]
     for all \(x \in [0, 1]\).
 \end{lemma}
@@ -524,10 +524,10 @@
     Since \(g\) is an \((\varepsilon, \delta)\)-approximation to the identity, by Definition \ref{3.8.6} we have
     \begin{itemize}
         \item \(g\) is supported on \([-1, 1]\) and \(g(x) \geq 0\) for all \(x \in [-1, 1]\).
-        \item \(g\) is continuous on \(\mathbf{R}\) and \(\int_{-\infty}^\infty g = 1\).
-        \item \(\abs*{g(x)} \leq \varepsilon\) for all \(\delta \leq \abs*{x} \leq 1\).
+        \item \(g\) is continuous on \(\R\) and \(\int_{-\infty}^\infty g = 1\).
+        \item \(\abs{g(x)} \leq \varepsilon\) for all \(\delta \leq \abs{x} \leq 1\).
     \end{itemize}
-    Since \(f\) is continuous on \(\mathbf{R}\), by Definition \ref{3.8.9} we have
+    Since \(f\) is continuous on \(\R\), by Definition \ref{3.8.9} we have
     \begin{align*}
          & \forall x \in [0, 1], (f * g)(x)                                                                                                    \\
          & = \int_{-\infty}^\infty g(y) f(x - y) \; dy                                                                                         \\
@@ -541,26 +541,26 @@
     Since
     \begin{align*}
                  & \begin{cases}
-                       \forall x \in \mathbf{R}, \abs*{f(x)} \leq M \\
-                       \forall y \in \mathbf{R}, \delta \leq \abs*{y} \leq 1 \implies \abs*{g(y)} < \varepsilon
-                   \end{cases}                                                                       \\
-        \implies & \forall x \in \mathbf{R}, \forall \delta \leq \abs*{y} \leq 1, g(y) f(x - y) \leq M \varepsilon                                                               \\
-        \implies & \forall x \in \mathbf{R}, \begin{cases}
-                                                 -M \varepsilon (1 - \delta) \leq \int_{[-1, -\delta]} g(y) f(x - y) \; dy \leq M \varepsilon (1 - \delta) \\
-                                                 -M \varepsilon (1 - \delta) \leq \int_{[\delta, 1]} g(y) f(x - y) \; dy \leq M \varepsilon (1 - \delta)
-                                             \end{cases} \\
-        \implies & \forall x \in \mathbf{R}, \begin{cases}
-                                                 -M \varepsilon \leq \int_{[-1, -\delta]} g(y) f(x - y) \; dy \leq M \varepsilon \\
-                                                 -M \varepsilon \leq \int_{[\delta, 1]} g(y) f(x - y) \; dy \leq M \varepsilon
-                                             \end{cases}                            & (\delta < 1)                           \\
-        \implies & \forall x \in \mathbf{R}, \abs*{\int_{[-1, -\delta]} g(y) f(x - y) \; dy + \int_{[\delta, 1]} g(y) f(x - y) \; dy} \leq 2 M \varepsilon
+                       \forall x \in \R, \abs{f(x)} \leq M \\
+                       \forall y \in \R, \delta \leq \abs{y} \leq 1 \implies \abs{g(y)} < \varepsilon
+                   \end{cases}                                                                         \\
+        \implies & \forall x \in \R, \forall \delta \leq \abs{y} \leq 1, g(y) f(x - y) \leq M \varepsilon                                                                \\
+        \implies & \forall x \in \R, \begin{cases}
+                                         -M \varepsilon (1 - \delta) \leq \int_{[-1, -\delta]} g(y) f(x - y) \; dy \leq M \varepsilon (1 - \delta) \\
+                                         -M \varepsilon (1 - \delta) \leq \int_{[\delta, 1]} g(y) f(x - y) \; dy \leq M \varepsilon (1 - \delta)
+                                     \end{cases} \\
+        \implies & \forall x \in \R, \begin{cases}
+                                         -M \varepsilon \leq \int_{[-1, -\delta]} g(y) f(x - y) \; dy \leq M \varepsilon \\
+                                         -M \varepsilon \leq \int_{[\delta, 1]} g(y) f(x - y) \; dy \leq M \varepsilon
+                                     \end{cases}                           & (\delta < 1)                           \\
+        \implies & \forall x \in \R, \abs{\int_{[-1, -\delta]} g(y) f(x - y) \; dy + \int_{[\delta, 1]} g(y) f(x - y) \; dy} \leq 2 M \varepsilon
     \end{align*}
     and
     \begin{align*}
-                 & \forall x \in [0, 1], \forall y \in [-\delta, \delta], \abs*{(x - y) - x} = \abs*{y} < \delta                                                                       \\
-        \implies & \forall x \in [0, 1], \forall y \in [-\delta, \delta], \abs*{f(x - y) - f(x)} < \varepsilon                                   & \text{(by hypothesis)}              \\
+                 & \forall x \in [0, 1], \forall y \in [-\delta, \delta], \abs{(x - y) - x} = \abs{y} < \delta                                                                         \\
+        \implies & \forall x \in [0, 1], \forall y \in [-\delta, \delta], \abs{f(x - y) - f(x)} < \varepsilon                                    & \text{(by hypothesis)}              \\
         \implies & \forall x \in [0, 1], \forall y \in [-\delta, \delta],                                                                                                              \\
-                 & \abs*{g(y) f(x - y) - g(y) f(x)} \leq \varepsilon g(y)                                                                        & (g(y) \geq 0)                       \\
+                 & \abs{g(y) f(x - y) - g(y) f(x)} \leq \varepsilon g(y)                                                                         & (g(y) \geq 0)                       \\
         \implies & \forall x \in [0, 1], \forall y \in [-\delta, \delta],                                                                                                              \\
                  & g(y) f(x) - \varepsilon g(y) \leq g(y) f(x - y) \leq g(y) f(x) + \varepsilon g(y)                                                                                   \\
         \implies & \forall x \in [0, 1],                                                                                                                                               \\
@@ -574,53 +574,53 @@
         \implies & \forall x \in [0, 1],                                                                                                                                               \\
                  & -2 \varepsilon M - \varepsilon + 2 \varepsilon^2 \leq \int_{[-\delta, \delta]} g(y) f(x - y) \; dy - f(x) \leq \varepsilon    & (f(x) \leq M)                       \\
         \implies & \forall x \in [0, 1],                                                                                                                                               \\
-                 & -2 \varepsilon M - \varepsilon \leq \int_{[-\delta, \delta]} g(y) f(x - y) \; dy - f(x) \leq \varepsilon                      & (\varepsilon \in \mathbf{R}^+)      \\
+                 & -2 \varepsilon M - \varepsilon \leq \int_{[-\delta, \delta]} g(y) f(x - y) \; dy - f(x) \leq \varepsilon                      & (\varepsilon \in \R^+)              \\
         \implies & \forall x \in [0, 1],                                                                                                                                               \\
                  & -\varepsilon (2M + 1) \leq \int_{[-\delta, \delta]} g(y) f(x - y) \; dy - f(x) \leq \varepsilon (2M + 1)                      & (2M + 1 > 1)                        \\
-        \implies & \forall x \in [0, 1], \abs*{\int_{[-\delta, \delta]} g(y) f(x - y) \; dy - f(x)} \leq \varepsilon (2M + 1),
+        \implies & \forall x \in [0, 1], \abs{\int_{[-\delta, \delta]} g(y) f(x - y) \; dy - f(x)} \leq \varepsilon (2M + 1),
     \end{align*}
     we know that
     \begin{align*}
-         & \forall x \in [0, 1], \abs*{(f * g)(x) - f(x)}                                                                                                             \\
-         & = \abs*{\int_{[-1, -\delta]} g(y) f(x - y) \; dy + \int_{[-\delta, \delta]} g(y) f(x - y) \; dy - f(x) + \int_{[\delta, 1]} g(y) f(x - y) \; dy}           \\
-         & \leq \abs*{\int_{[-1, -\delta]} g(y) f(x - y) \; dy + \int_{[\delta, 1]} g(y) f(x - y) \; dy} + \abs*{\int_{[-\delta, \delta]} g(y) f(x - y) \; dy - f(x)} \\
-         & \leq 2 M \varepsilon + \varepsilon (2M + 1)                                                                                                                \\
+         & \forall x \in [0, 1], \abs{(f * g)(x) - f(x)}                                                                                                            \\
+         & = \abs{\int_{[-1, -\delta]} g(y) f(x - y) \; dy + \int_{[-\delta, \delta]} g(y) f(x - y) \; dy - f(x) + \int_{[\delta, 1]} g(y) f(x - y) \; dy}          \\
+         & \leq \abs{\int_{[-1, -\delta]} g(y) f(x - y) \; dy + \int_{[\delta, 1]} g(y) f(x - y) \; dy} + \abs{\int_{[-\delta, \delta]} g(y) f(x - y) \; dy - f(x)} \\
+         & \leq 2 M \varepsilon + \varepsilon (2M + 1)                                                                                                              \\
          & = (1 + 4M) \varepsilon.
     \end{align*}
 \end{proof}
 
 \begin{corollary}[Weierstrass approximation theorem I]\label{3.8.15}
-    Let \(f : \mathbf{R} \to \mathbf{R}\) be a continuous function supported on \([0, 1]\).
-    Then for every \(\varepsilon > 0\), there exists a function \(P : \mathbf{R} \to \mathbf{R}\) which is polynomial on \([0, 1]\) and such that \(\abs*{P(x) - f(x)} \leq \varepsilon\) for all \(x \in [0, 1]\).
+    Let \(f : \R \to \R\) be a continuous function supported on \([0, 1]\).
+    Then for every \(\varepsilon > 0\), there exists a function \(P : \R \to \R\) which is polynomial on \([0, 1]\) and such that \(\abs{P(x) - f(x)} \leq \varepsilon\) for all \(x \in [0, 1]\).
 \end{corollary}
 
 \begin{proof}
-    Let \(\varepsilon \in \mathbf{R}^+\).
-    Since \(f\) is continuous on \(\mathbf{R}\) and supported on \([0, 1]\), by Exercise \ref{ex 3.8.3} we know that \(f\) is bounded by some \(M \in \mathbf{R}^+\) and \(f\) is uniformly continuous on \(\mathbf{R}\).
+    Let \(\varepsilon \in \R^+\).
+    Since \(f\) is continuous on \(\R\) and supported on \([0, 1]\), by Exercise \ref{ex 3.8.3} we know that \(f\) is bounded by some \(M \in \R^+\) and \(f\) is uniformly continuous on \(\R\).
     This means
     \[
-        \exists\ \delta \in \mathbf{R}^+ : \forall x_1, x_2 \in \mathbf{R}, \abs*{x_1 - x_2} < \delta \implies \abs*{f(x_1) - f(x_2)} < \frac{\varepsilon}{1 + 4M}.
+        \exists\ \delta \in \R^+ : \forall x_1, x_2 \in \R, \abs{x_1 - x_2} < \delta \implies \abs{f(x_1) - f(x_2)} < \frac{\varepsilon}{1 + 4M}.
     \]
     In particular, we can choose some \(\delta\) such that \(0 < \delta < 1\).
     By Lemma \ref{3.8.8} we know that there exists a polynomial \(P\) on \([-1, 1]\) such that \(P\) is an \((\frac{\varepsilon}{1 + 4M}, \delta)\)-approximation to the identity.
-    By Definition \ref{3.8.6} we know that \(P\) is continuous on \(\mathbf{R}\) and supported on \([-1, 1]\).
-    Since \(f\) is continuous on \(\mathbf{R}\) and supported on \([0, 1]\), by Lemma \ref{3.8.13} we know that \(f * P\) is a polynomial on \([0, 1]\).
+    By Definition \ref{3.8.6} we know that \(P\) is continuous on \(\R\) and supported on \([-1, 1]\).
+    Since \(f\) is continuous on \(\R\) and supported on \([0, 1]\), by Lemma \ref{3.8.13} we know that \(f * P\) is a polynomial on \([0, 1]\).
     Then by Lemma \ref{3.8.14} we have
     \[
-        \forall x \in [0, 1], \abs*{(f * P)(x) - f(x)} \leq (1 + 4M) \frac{\varepsilon}{1 + 4M} = \varepsilon.
+        \forall x \in [0, 1], \abs{(f * P)(x) - f(x)} \leq (1 + 4M) \frac{\varepsilon}{1 + 4M} = \varepsilon.
     \]
     Since \(\varepsilon\) is arbitrary, we conclude that
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \exists\ P \in \mathbf{R}^{\mathbf{R}} : \begin{cases}
+        \forall \varepsilon \in \R^+, \exists\ P \in \R^{\R} : \begin{cases}
             P \text{ is polynomial on } [0, 1] \\
-            \forall x \in [0, 1], \abs*{P(x) - f(x)} \leq \varepsilon
+            \forall x \in [0, 1], \abs{P(x) - f(x)} \leq \varepsilon
         \end{cases}
     \]
 \end{proof}
 
 \begin{lemma}\label{3.8.16}
-    Let \(f : [0, 1] \to \mathbf{R}\) be a continuous function which equals \(0\) on the boundary of \([0, 1]\), i.e., \(f(0) = f(1) = 0\).
-    Let \(F : \mathbf{R} \to \mathbf{R}\) be the function defined by setting \(F(x) \coloneqq f(x)\) for \(x \in [0, 1]\) and \(F(x) \coloneqq 0\) for \(x \notin [0, 1]\).
+    Let \(f : [0, 1] \to \R\) be a continuous function which equals \(0\) on the boundary of \([0, 1]\), i.e., \(f(0) = f(1) = 0\).
+    Let \(F : \R \to \R\) be the function defined by setting \(F(x) \coloneqq f(x)\) for \(x \in [0, 1]\) and \(F(x) \coloneqq 0\) for \(x \notin [0, 1]\).
     Then \(F\) is also continuous.
 \end{lemma}
 
@@ -628,76 +628,76 @@
     Since \(f\) is continuous on \([0, 1]\), we know that \(f\) is continuous at \(0\) and \(1\).
     Thus we have
     \begin{align*}
-                 & \lim_{x \to 0 ; x \in [0, 1]} f(x) = f(0) = 0                                                                                                                                                    \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall x \in [0, 1], \abs*{x} < \delta \implies \abs*{f(x)} < \varepsilon\big)                                    \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall x \in [0, \delta], \abs*{f(x)} < \varepsilon\big)                                                          \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall x \in [0, \delta], \abs*{F(x)} < \varepsilon\big)                                                          \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall x \in \mathbf{R}, \abs*{x} < \delta \implies \abs*{F(x)} < \varepsilon\big) & (F(x) = 0 \text{ if } x < 0) \\
-        \implies & \lim_{x \to 0 ; x \in \mathbf{R}} F(x) = F(0) = 0.
+                 & \lim_{x \to 0 ; x \in [0, 1]} f(x) = f(0) = 0                                                                                                                              \\
+        \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in [0, 1], \abs{x} < \delta \implies \abs{f(x)} < \varepsilon\big)                                \\
+        \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in [0, \delta], \abs{f(x)} < \varepsilon\big)                                                     \\
+        \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in [0, \delta], \abs{F(x)} < \varepsilon\big)                                                     \\
+        \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in \R, \abs{x} < \delta \implies \abs{F(x)} < \varepsilon\big)     & (F(x) = 0 \text{ if } x < 0) \\
+        \implies & \lim_{x \to 0 ; x \in \R} F(x) = F(0) = 0.
     \end{align*}
-    Similarly we have \(\lim_{x \to 1 ; x \in \mathbf{R}} F(x) = F(1) = 0\).
+    Similarly we have \(\lim_{x \to 1 ; x \in \R} F(x) = F(1) = 0\).
     This means \(F\) is continuous at \(0\) and \(1\).
 
     Since \(f\) is continuous on \([0, 1]\), we know that \(f\) is continuous on \((0, 1)\).
     Let \(x_0 \in (0, 1)\).
     Then we have
     \begin{align*}
-                 & \lim_{x \to x_0 ; x \in (0, 1)} f(x) = f(x_0)                                                                                                                                 \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall x \in (0, 1), \abs*{x - x_0} < \delta \implies \abs*{f(x) - f(x_0)} < \varepsilon\big)  \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall x \in (0, 1), \abs*{x - x_0} < \delta \implies \abs*{F(x) - F(x_0)} < \varepsilon\big).
+                 & \lim_{x \to x_0 ; x \in (0, 1)} f(x) = f(x_0)                                                                                                               \\
+        \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in (0, 1), \abs{x - x_0} < \delta \implies \abs{f(x) - f(x_0)} < \varepsilon\big)  \\
+        \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in (0, 1), \abs{x - x_0} < \delta \implies \abs{F(x) - F(x_0)} < \varepsilon\big).
     \end{align*}
     Now we fix one pair of \(\varepsilon\) and \(\delta\).
-    Let \(\delta' = \min(\delta, \abs*{x_0 - 0}, \abs*{1 - x_0})\).
-    Then we have \(\delta' \in \mathbf{R}^+\) and
+    Let \(\delta' = \min(\delta, \abs{x_0 - 0}, \abs{1 - x_0})\).
+    Then we have \(\delta' \in \R^+\) and
     \begin{align*}
-                 & \forall x \in \mathbf{R}, \abs*{x - x_0} < \delta' \\
+                 & \forall x \in \R, \abs{x - x_0} < \delta' \\
         \implies & \begin{cases}
-                       \abs*{x - x_0} < \abs*{x_0 - 0} \\
-                       \abs*{x - x_0} < \abs*{1 - x_0}
+                       \abs{x - x_0} < \abs{x_0 - 0} \\
+                       \abs{x - x_0} < \abs{1 - x_0}
+                   \end{cases}             \\
+        \implies & \begin{cases}
+                       \abs{x - x_0} < x_0 \\
+                       \abs{x - x_0} < 1 - x_0
                    \end{cases}                    \\
-        \implies & \begin{cases}
-                       \abs*{x - x_0} < x_0 \\
-                       \abs*{x - x_0} < 1 - x_0
-                   \end{cases}                            \\
         \implies & \begin{cases}
                        0 < x < 2x_0 \\
                        2x_0 - 1 < x < 1
-                   \end{cases}                                    \\
-        \implies & \max(0, 2x_0 - 1) < x < \min(2x_0, 1)              \\
+                   \end{cases}                           \\
+        \implies & \max(0, 2x_0 - 1) < x < \min(2x_0, 1)     \\
         \implies & 0 < x < 1.
     \end{align*}
     Thus
     \[
-        \forall x \in \mathbf{R}, \abs*{x - x_0} < \delta' \implies \abs*{F(x) - F(x_0)} < \varepsilon.
+        \forall x \in \R, \abs{x - x_0} < \delta' \implies \abs{F(x) - F(x_0)} < \varepsilon.
     \]
-    Since \(\varepsilon\) is arbitrary, we conclude that \(\lim_{x \to x_0 ; x \in \mathbf{R}} F(x) = F(x_0)\).
-    Since \(x_0\) is arbitrary, we conclude that \(\lim_{x \to x_0 ; x \in \mathbf{R}} F(x) = F(x_0)\) for each \(x_0 \in (0, 1)\).
+    Since \(\varepsilon\) is arbitrary, we conclude that \(\lim_{x \to x_0 ; x \in \R} F(x) = F(x_0)\).
+    Since \(x_0\) is arbitrary, we conclude that \(\lim_{x \to x_0 ; x \in \R} F(x) = F(x_0)\) for each \(x_0 \in (0, 1)\).
 
-    Let \(x_0 \in (-\infty, 0)\) and let \(\delta = \abs*{0 - x_0}\).
+    Let \(x_0 \in (-\infty, 0)\) and let \(\delta = \abs{0 - x_0}\).
     Since \(F(x) = 0\) for all \(x \in (-\infty, 0)\), we have \(F(x_0) = 0\) and
     \begin{align*}
-                 & \forall x \in \mathbf{R}, \abs*{x - x_0} < \delta                                \\
-        \implies & \abs*{x - x_0} < \abs*{0 - x_0}                                                  \\
-        \implies & \abs*{x - x_0} < -x_0                                                            \\
-        \implies & 2x_0 < x < 0                                                                     \\
-        \implies & F(x) = 0                                                                         \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \abs*{F(x) - F(x_0)} = 0 \leq \varepsilon.
+                 & \forall x \in \R, \abs{x - x_0} < \delta                                \\
+        \implies & \abs{x - x_0} < \abs{0 - x_0}                                           \\
+        \implies & \abs{x - x_0} < -x_0                                                    \\
+        \implies & 2x_0 < x < 0                                                            \\
+        \implies & F(x) = 0                                                                \\
+        \implies & \forall \varepsilon \in \R^+, \abs{F(x) - F(x_0)} = 0 \leq \varepsilon.
     \end{align*}
     Thus we have
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall x \in \mathbf{R}, \abs*{x - x_0} < \delta \implies \abs*{F(x) - F(x_0)} < \varepsilon
+        \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in \R, \abs{x - x_0} < \delta \implies \abs{F(x) - F(x_0)} < \varepsilon
     \]
-    and \(\lim_{x \to x_0 ; x \in \mathbf{R}} F(x) = F(x_0) = 0\).
+    and \(\lim_{x \to x_0 ; x \in \R} F(x) = F(x_0) = 0\).
     Since \(x_0\) is arbitrary, we conclude that
     \[
-        \forall x_0 \in (-\infty, 0), \lim_{x \to x_0 ; x \in \mathbf{R}} F(x) = F(x_0) = 0.
+        \forall x_0 \in (-\infty, 0), \lim_{x \to x_0 ; x \in \R} F(x) = F(x_0) = 0.
     \]
-    Using similar arguments we can show that \(\lim_{x \to x_0 ; x \in \mathbf{R}} F(x) = F(x_0) = 0\) for all \(x_0 \in (1, \infty)\).
+    Using similar arguments we can show that \(\lim_{x \to x_0 ; x \in \R} F(x) = F(x_0) = 0\) for all \(x_0 \in (1, \infty)\).
     Combine all proofs above we have
     \[
-        \forall x_0 \in \mathbf{R}, \lim_{x \to x_0 ; x \in \mathbf{R}} F(x) = F(x_0) = 0
+        \forall x_0 \in \R, \lim_{x \to x_0 ; x \in \R} F(x) = F(x_0) = 0
     \]
-    and thus \(F\) is continuous on \(\mathbf{R}\).
+    and thus \(F\) is continuous on \(\R\).
 \end{proof}
 
 \begin{remark}\label{3.8.17}
@@ -705,40 +705,40 @@
 \end{remark}
 
 \begin{corollary}[Weierstrass approximation theorem II]\label{3.8.18}
-    Let \(f : [0, 1] \to \mathbf{R}\) be a continuous function such that \(f(0) = f(1) = 0\).
-    Then for every \(\varepsilon > 0\) there exists a polynomial \(P : [0, 1] \to \mathbf{R}\) such that \(\abs*{P(x) - f(x)} \leq \varepsilon\) for all \(x \in [0, 1]\).
+    Let \(f : [0, 1] \to \R\) be a continuous function such that \(f(0) = f(1) = 0\).
+    Then for every \(\varepsilon > 0\) there exists a polynomial \(P : [0, 1] \to \R\) such that \(\abs{P(x) - f(x)} \leq \varepsilon\) for all \(x \in [0, 1]\).
 \end{corollary}
 
 \begin{proof}
-    Using Lemma \ref{3.8.6} we can define an \(F : \mathbf{R} \to \mathbf{R}\) such that
+    Using Lemma \ref{3.8.6} we can define an \(F : \R \to \R\) such that
     \[
-        \forall x \in \mathbf{R}, F(x) = \begin{cases}
-            0    & \text{if } x \in \mathbf{R} \setminus [0, 1] \\
+        \forall x \in \R, F(x) = \begin{cases}
+            0    & \text{if } x \in \R \setminus [0, 1] \\
             f(x) & \text{if } x \in [0, 1]
         \end{cases}
     \]
     and \(F\) is continuous and supported on \([0, 1]\).
     Then by Corollary \ref{3.8.15} we have
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \exists\ P \in \mathbf{R}^{\mathbf{R}} : \begin{cases}
+        \forall \varepsilon \in \R^+, \exists\ P \in \R^{\R} : \begin{cases}
             P \text{ is a polynomial on } [0, 1] \\
-            \forall x \in [0, 1], \abs*{P(x) - f(x)} = \abs*{P(x) - F(x)} \leq \varepsilon
+            \forall x \in [0, 1], \abs{P(x) - f(x)} = \abs{P(x) - F(x)} \leq \varepsilon
         \end{cases}
     \]
 \end{proof}
 
 \begin{corollary}[Weierstrass approximation theorem III]\label{3.8.19}
-    Let \(f : [0, 1] \to \mathbf{R}\) be a continuous function.
-    Then for every \(\varepsilon > 0\) there exists a polynomial \(P : [0, 1] \to \mathbf{R}\) such that \(\abs*{P(x) - f(x)} \leq \varepsilon\) for all \(x \in [0, 1]\).
+    Let \(f : [0, 1] \to \R\) be a continuous function.
+    Then for every \(\varepsilon > 0\) there exists a polynomial \(P : [0, 1] \to \R\) such that \(\abs{P(x) - f(x)} \leq \varepsilon\) for all \(x \in [0, 1]\).
 \end{corollary}
 
 \begin{proof}
-    Let \(F : [0, 1] \to \mathbf{R}\) denote the function
+    Let \(F : [0, 1] \to \R\) denote the function
     \[
         F(x) \coloneqq f(x) - f(0) - x \big(f(1) - f(0)\big).
     \]
     Observe that \(F\) is also continuous, and that \(F(0) = F(1) = 0\).
-    By Corollary \ref{3.8.18}, we can thus find a polynomial \(Q : [0, 1] \to \mathbf{R}\) such that \(\abs*{Q(x) - F(x)} \leq \varepsilon\) for all \(x \in [0, 1]\).
+    By Corollary \ref{3.8.18}, we can thus find a polynomial \(Q : [0, 1] \to \R\) such that \(\abs{Q(x) - F(x)} \leq \varepsilon\) for all \(x \in [0, 1]\).
     But
     \[
         Q(x) - F(x) = Q(x) + f(0) + x \big(f(1) - f(0)\big) - f(x),
@@ -748,13 +748,13 @@
 
 \begin{remark}\label{3.8.20}
     Note that the Weierstrass approximation theorem only works on bounded intervals \([a, b]\);
-    continuous functions on \(\mathbf{R}\) cannot be uniformly approximated by polynomials.
-    For instance, the exponential function \(f : \mathbf{R} \to \mathbf{R}\) defined by \(f(x) \coloneqq e^x\) (which we shall study rigorously in Section 4.5) cannot be approximated by any polynomial, because exponential functions grow faster than any polynomial (Exercise 4.5.9) and so there is no way one can even make the sup metric between \(f\) and a polynomial finite.
+    continuous functions on \(\R\) cannot be uniformly approximated by polynomials.
+    For instance, the exponential function \(f : \R \to \R\) defined by \(f(x) \coloneqq e^x\) (which we shall study rigorously in Section 4.5) cannot be approximated by any polynomial, because exponential functions grow faster than any polynomial (Exercise 4.5.9) and so there is no way one can even make the sup metric between \(f\) and a polynomial finite.
 \end{remark}
 
 \begin{remark}\label{3.8.21}
     There is a generalization of the Weierstrass approximation theorem to higher dimensions:
-    if \(K\) is any compact subset of \(\mathbf{R}^n\) (with the Euclidean metric \(d_{l^2}\)), and \(f : K \to \mathbf{R}\) is a continuous function, then for every \(\varepsilon > 0\) there exists a polynomial \(P : K \to \mathbf{R}\) of \(n\) variables \(x_1, \dots, x_n\) such that \(d_\infty(f, P) < \varepsilon\).
+    if \(K\) is any compact subset of \(\R^n\) (with the Euclidean metric \(d_{l^2}\)), and \(f : K \to \R\) is a continuous function, then for every \(\varepsilon > 0\) there exists a polynomial \(P : K \to \R\) of \(n\) variables \(x_1, \dots, x_n\) such that \(d_\infty(f, P) < \varepsilon\).
     This general theorem can be proven by a more complicated variant of the arguments here, but we will not do so.
     (There is in fact an even more general version of this theorem applicable to an arbitrary metric space, known as the \emph{Stone-Weierstrass theorem}, but this is beyond the scope of this text.)
 \end{remark}
@@ -779,16 +779,16 @@
 \end{exercise}
 
 \begin{proof}{(a)}
-    For each \(n \in \mathbf{N}\), let \(P(n)\) be the statement ``for each \(y \in \mathbf{R}\), if \(0 \leq y \leq 1\), then \((1 - y)^n \geq 1 - ny\).''
-    We use induction on \(n\) to show that \(P(n)\) is true for all \(n \in \mathbf{N}\).
+    For each \(n \in \N\), let \(P(n)\) be the statement ``for each \(y \in \R\), if \(0 \leq y \leq 1\), then \((1 - y)^n \geq 1 - ny\).''
+    We use induction on \(n\) to show that \(P(n)\) is true for all \(n \in \N\).
     For \(n = 0\), we have
     \[
-        \forall y \in \mathbf{R}, 0 \leq y \leq 1 \implies (1 - y)^0 = 1 \geq 1 - 0y = 1.
+        \forall y \in \R, 0 \leq y \leq 1 \implies (1 - y)^0 = 1 \geq 1 - 0y = 1.
     \]
     Thus the base case holds.
     Suppose inductively that \(P(n)\) is true for some \(n \geq 0\).
     Then we want to show that \(P(n + 1)\) is true.
-    Let \(y \in \mathbf{R}\) such that \(0 \leq y \leq 1\).
+    Let \(y \in \R\) such that \(0 \leq y \leq 1\).
     Then we have
     \begin{align*}
         (1 - y)^{n + 1} & = (1 - y)^n (1 - y)                                       \\
@@ -800,7 +800,7 @@
 \end{proof}
 
 \begin{proof}{(b)}
-    Let \(n \in \mathbf{Z}^+\).
+    Let \(n \in \Z^+\).
     Since \(f(x) = 1 - x^2\) is continuous and bounded on \([-1, 1]\), by Proposition 9.4.9 and 9.6.7 in Analysis I we know that \(f^n(x) = (1 - x^2)^n\) is continuous and bounded on \([-1, 1]\).
     Thus by Corollary 11.5.2 in Analysis I we know that \(f^n\) is Riemann integrable.
     By Corollary 11.10.3 in Analysis I we have
@@ -813,7 +813,7 @@
     \]
     Since
     \[
-        \forall x \in [-1, 1], 1 \geq \abs*{x} \geq \frac{1}{\sqrt{n}} \implies 1 \geq x^2 \geq \frac{1}{n} \implies 0 \leq 1 - x^2 \leq \frac{n - 1}{n},
+        \forall x \in [-1, 1], 1 \geq \abs{x} \geq \frac{1}{\sqrt{n}} \implies 1 \geq x^2 \geq \frac{1}{n} \implies 0 \leq 1 - x^2 \leq \frac{n - 1}{n},
     \]
     we know that
     \[
@@ -841,76 +841,76 @@
 \end{proof}
 
 \begin{exercise}\label{ex 3.8.3}
-    Let \(f : \mathbf{R} \to \mathbf{R}\) be a compactly supported, continuous function.
+    Let \(f : \R \to \R\) be a compactly supported, continuous function.
     Show that \(f\) is bounded and uniformly continuous.
 \end{exercise}
 
 \begin{proof}
-    Since \(f\) is compactly supported, by Definition \ref{3.8.4} we know that there exists some \(a, b \in \mathbf{R}\) such that
+    Since \(f\) is compactly supported, by Definition \ref{3.8.4} we know that there exists some \(a, b \in \R\) such that
     \[
         \forall x \notin [a, b], f(x) = 0.
     \]
-    Since \([a, b]\) is closed and bounded in \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\), by Theorem \ref{1.5.7} we know that \(\big([a, b], d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\big)\) is compact.
-    Since \(\big([a, b], d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\big)\) is compact and \(f\) is continuous on \([a, b]\), by Proposition \ref{2.3.2} we know that \(f\) is bounded.
+    Since \([a, b]\) is closed and bounded in \((\R, d_{l^1}|_{\R \times \R})\), by Theorem \ref{1.5.7} we know that \(\big([a, b], d_{l^1}|_{\R \times \R}\big)\) is compact.
+    Since \(\big([a, b], d_{l^1}|_{\R \times \R}\big)\) is compact and \(f\) is continuous on \([a, b]\), by Proposition \ref{2.3.2} we know that \(f\) is bounded.
     Since \(f\) is bounded and continuous on \([a, b]\), by Theorem \ref{2.3.5} \(f\) is uniformly continuous on \([a, b]\).
 
     Since \(f\) is continuous at \(a\), we have
     \begin{align*}
-                 & \forall \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall x \in \mathbf{R}, \abs*{x - a} < \delta \implies \abs*{f(x) - f(a)} < \varepsilon\big)               \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall x \in \mathbf{R}, x \in (a - \delta, a + \delta) \implies \abs*{f(x) - f(a)} < \varepsilon\big)      \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \big(\forall x \in \mathbf{R}, x \in (a - \delta, a) \implies \abs*{f(x) - f(a)} = \abs*{f(a)} < \varepsilon\big) \\
-        \implies & \forall \varepsilon \in \mathbf{R}^+, \abs*{f(a)} < \varepsilon                                                                                                                            \\
+                 & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in \R, \abs{x - a} < \delta \implies \abs{f(x) - f(a)} < \varepsilon\big)               \\
+        \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in \R, x \in (a - \delta, a + \delta) \implies \abs{f(x) - f(a)} < \varepsilon\big)     \\
+        \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in \R, x \in (a - \delta, a) \implies \abs{f(x) - f(a)} = \abs{f(a)} < \varepsilon\big) \\
+        \implies & \forall \varepsilon \in \R^+, \abs{f(a)} < \varepsilon                                                                                                           \\
         \implies & f(a) = 0.
     \end{align*}
     Similarly, we have \(f(b) = 0\).
     If \(a = b\), then \(f\) is zero function, and we have
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \forall \delta \in \mathbf{R}^+, \forall x_1, x_2 \in \mathbf{R}, \abs*{x_1 - x_2} < \delta \implies \abs*{f(x_1) - f(x_2)} = 0 < \varepsilon.
+        \forall \varepsilon \in \R^+, \forall \delta \in \R^+, \forall x_1, x_2 \in \R, \abs{x_1 - x_2} < \delta \implies \abs{f(x_1) - f(x_2)} = 0 < \varepsilon.
     \]
-    Thus \(f\) is uniformly continuous on \(\mathbf{R}\).
+    Thus \(f\) is uniformly continuous on \(\R\).
     Suppose that \(a \neq b\).
     Since \(f\) in uniformly continuous on \([a, b]\), by Definition \ref{2.3.4} we have
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \exists\ \delta_1 \in \mathbf{R}^+ : \forall x_1, x_2 \in [a, b], \abs*{x_1 - x_2} < \delta_1 \implies \abs*{f(x_1) - f(x_2)} < \varepsilon.
+        \forall \varepsilon \in \R^+, \exists\ \delta_1 \in \R^+ : \forall x_1, x_2 \in [a, b], \abs{x_1 - x_2} < \delta_1 \implies \abs{f(x_1) - f(x_2)} < \varepsilon.
     \]
     Now fix one pair of \(\varepsilon\) and \(\delta_1\).
-    Since \(\lim_{x \to a ; x \in \mathbf{R}} f(x) = f(a) = 0\), we have
+    Since \(\lim_{x \to a ; x \in \R} f(x) = f(a) = 0\), we have
     \[
-        \exists\ \delta_2 \in \mathbf{R}^+ : \forall x \in \mathbf{R}, \abs*{x - a} < \delta_2 < b - a \implies \abs*{f(x) - f(a)} = \abs*{f(x)} < \varepsilon.
+        \exists\ \delta_2 \in \R^+ : \forall x \in \R, \abs{x - a} < \delta_2 < b - a \implies \abs{f(x) - f(a)} = \abs{f(x)} < \varepsilon.
     \]
     Similarly, we have
     \[
-        \exists\ \delta_3 \in \mathbf{R}^+ : \forall x \in \mathbf{R}, \abs*{x - b} < \delta_3 < b - a \implies \abs*{f(x) - f(b)} = \abs*{f(x)} < \varepsilon.
+        \exists\ \delta_3 \in \R^+ : \forall x \in \R, \abs{x - b} < \delta_3 < b - a \implies \abs{f(x) - f(b)} = \abs{f(x)} < \varepsilon.
     \]
     Let \(\delta = \min(\delta_1, \delta_2, \delta_3)\).
     Then we have
     \begin{align*}
-                 & \forall x_1, x_2 \in \mathbf{R}, \abs*{x_1 - x_2} < \delta                                                                                                   \\
+                 & \forall x_1, x_2 \in \R, \abs{x_1 - x_2} < \delta                                                                                                          \\
         \implies & \begin{cases}
-                       \abs*{x_1 - x_2} < \delta_1 \implies \abs*{f(x_1) - f(x_2)} < \varepsilon & \text{if } \big(x_1, x_2 \in [a, b]\big)                                 \\
-                       x_1 - x_2 < \delta_2 \implies a \leq x_1 < x_2 + \delta_2                 & \text{if } \big(x_1 \in [a, b]\big) \land \big(x_2 \in (-\infty, a)\big) \\
-                       x_2 - x_1 < \delta_3 \implies x_2 - \delta_3 < x_1 \leq b                 & \text{if } \big(x_1 \in [a, b]\big) \land \big(x_2 \in (b, \infty)\big)  \\
-                       \abs*{f(x_1) - f(x_2)} = 0 < \varepsilon                                  & \text{if } \big(x_1, x_2 \notin [a, b]\big)
+                       \abs{x_1 - x_2} < \delta_1 \implies \abs{f(x_1) - f(x_2)} < \varepsilon & \text{if } \big(x_1, x_2 \in [a, b]\big)                                 \\
+                       x_1 - x_2 < \delta_2 \implies a \leq x_1 < x_2 + \delta_2               & \text{if } \big(x_1 \in [a, b]\big) \land \big(x_2 \in (-\infty, a)\big) \\
+                       x_2 - x_1 < \delta_3 \implies x_2 - \delta_3 < x_1 \leq b               & \text{if } \big(x_1 \in [a, b]\big) \land \big(x_2 \in (b, \infty)\big)  \\
+                       \abs{f(x_1) - f(x_2)} = 0 < \varepsilon                                 & \text{if } \big(x_1, x_2 \notin [a, b]\big)
                    \end{cases} \\
         \implies & \begin{cases}
-                       \abs*{f(x_1) - f(x_2)} < \varepsilon    & \text{if } \big(x_1, x_2 \in [a, b]\big)                                 \\
+                       \abs{f(x_1) - f(x_2)} < \varepsilon     & \text{if } \big(x_1, x_2 \in [a, b]\big)                                 \\
                        x_1 - a < x_2 - a + \delta_2 < \delta_2 & \text{if } \big(x_1 \in [a, b]\big) \land \big(x_2 \in (-\infty, a)\big) \\
                        \delta_3 > b - x_2 + \delta_3 > b - x_1 & \text{if } \big(x_1 \in [a, b]\big) \land \big(x_2 \in (b, \infty)\big)  \\
-                       \abs*{f(x_1) - f(x_2)} < \varepsilon    & \text{if } \big(x_1, x_2 \notin [a, b]\big)
-                   \end{cases}                                   \\
+                       \abs{f(x_1) - f(x_2)} < \varepsilon     & \text{if } \big(x_1, x_2 \notin [a, b]\big)
+                   \end{cases}                                 \\
         \implies & \begin{cases}
-                       \abs*{f(x_1) - f(x_2)} < \varepsilon                           & \text{if } \big(x_1, x_2 \in [a, b]\big)                                 \\
-                       \abs*{x_1 - a} < \delta_2 \implies \abs*{f(x_1)} < \varepsilon & \text{if } \big(x_1 \in [a, b]\big) \land \big(x_2 \in (-\infty, a)\big) \\
-                       \abs*{x_1 - b} < \delta_3 \implies \abs*{f(x_1)} < \varepsilon & \text{if } \big(x_1 \in [a, b]\big) \land \big(x_2 \in (b, \infty)\big)  \\
-                       \abs*{f(x_1) - f(x_2)} < \varepsilon                           & \text{if } \big(x_1, x_2 \notin [a, b]\big)
+                       \abs{f(x_1) - f(x_2)} < \varepsilon                          & \text{if } \big(x_1, x_2 \in [a, b]\big)                                 \\
+                       \abs{x_1 - a} < \delta_2 \implies \abs{f(x_1)} < \varepsilon & \text{if } \big(x_1 \in [a, b]\big) \land \big(x_2 \in (-\infty, a)\big) \\
+                       \abs{x_1 - b} < \delta_3 \implies \abs{f(x_1)} < \varepsilon & \text{if } \big(x_1 \in [a, b]\big) \land \big(x_2 \in (b, \infty)\big)  \\
+                       \abs{f(x_1) - f(x_2)} < \varepsilon                          & \text{if } \big(x_1, x_2 \notin [a, b]\big)
                    \end{cases}            \\
-        \implies & \abs*{f(x_1) - f(x_2)} < \varepsilon.
+        \implies & \abs{f(x_1) - f(x_2)} < \varepsilon.
     \end{align*}
     Since \(\varepsilon\) is arbitrary, we have
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \exists\ \delta \in \mathbf{R}^+ : \forall x_1, x_2 \in \mathbf{R}, \abs*{x_1 - x_2} < \delta \implies \abs*{f(x_1) - f(x_2)} < \varepsilon
+        \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x_1, x_2 \in \R, \abs{x_1 - x_2} < \delta \implies \abs{f(x_1) - f(x_2)} < \varepsilon
     \]
-    and \(f\) is uniformly continuous on \(\mathbf{R}\).
+    and \(f\) is uniformly continuous on \(\R\).
 \end{proof}
 
 \begin{exercise}\label{ex 3.8.4}
@@ -922,7 +922,7 @@
 \end{proof}
 
 \begin{exercise}\label{ex 3.8.5}
-    Let \(f : \mathbf{R} \to \mathbf{R}\) and \(g : \mathbf{R} \to \mathbf{R}\) be continuous, compactly supported functions.
+    Let \(f : \R \to \R\) and \(g : \R \to \R\) be continuous, compactly supported functions.
     Suppose that \(f\) is supported on the interval \([0, 1]\), and \(g\) is constant on the interval \([0, 2]\)
     (i.e., there is a real number \(c\) such that \(g(x) = c\) for all \(x \in [0, 2]\)).
     Show that the convolution \(f * g\) is constant on the interval \([1, 2]\).
@@ -951,11 +951,11 @@
 \begin{proof}{(a)}
     By Definition \ref{3.8.6} we know that
     \begin{itemize}
-        \item \(\varepsilon \in \mathbf{R}^+\).
-        \item \(\delta \in \mathbf{R}^+\) such that \(0 < \delta < 1\).
+        \item \(\varepsilon \in \R^+\).
+        \item \(\delta \in \R^+\) such that \(0 < \delta < 1\).
         \item \(g\) is supported on \([-1, 1]\) and \(g(x) \geq 0\) for all \(x \in [-1, 1]\).
-        \item \(g\) is continuous on \(\mathbf{R}\) and \(\int_{-\infty}^\infty g = 1\).
-        \item \(\abs*{g(x)} \leq \varepsilon\) for each \(\delta \leq \abs*{x} \leq 1\).
+        \item \(g\) is continuous on \(\R\) and \(\int_{-\infty}^\infty g = 1\).
+        \item \(\abs{g(x)} \leq \varepsilon\) for each \(\delta \leq \abs{x} \leq 1\).
     \end{itemize}
     By Definition \ref{3.8.4} we have
     \[
@@ -963,7 +963,7 @@
     \]
     Thus
     \begin{align*}
-                 & \forall \delta \leq \abs*{x} \leq 1, \abs*{g(x)} \leq \varepsilon                                                                              \\
+                 & \forall \delta \leq \abs{x} \leq 1, \abs{g(x)} \leq \varepsilon                                                                                \\
         \implies & 1 = \int_{[-1, 1]} g                                                                                                                           \\
                  & = \int_{[-1, -\delta]} g + \int_{[-\delta, \delta]} g + \int_{[\delta, 1]} g                                                                   \\
                  & \leq (-\delta + 1) \varepsilon + \int_{[-\delta, \delta]} g + (1 - \delta) \varepsilon                                                         \\
@@ -989,15 +989,15 @@
 \end{proof}
 
 \begin{exercise}\label{ex 3.8.8}
-    Let \(f : [0, 1] \to \mathbf{R}\) be a continuous function, and suppose that \(\int_{[0, 1]} f(x) x^n \; dx = 0\) for all non-negative integers \(n = 0, 1, 2, \dots\).
+    Let \(f : [0, 1] \to \R\) be a continuous function, and suppose that \(\int_{[0, 1]} f(x) x^n \; dx = 0\) for all non-negative integers \(n = 0, 1, 2, \dots\).
     Show that \(f\) must be the zero function \(f \equiv 0\).
 \end{exercise}
 
 \begin{proof}
-    Let \(P : \mathbf{R} \to \mathbf{R}\) be a polynomial with degree \(n\).
+    Let \(P : \R \to \R\) be a polynomial with degree \(n\).
     Then by Definition \ref{3.8.1} we have
     \[
-        \forall x \in \mathbf{R}, P(x) = \sum_{j = 0}^n c_j x^j.
+        \forall x \in \R, P(x) = \sum_{j = 0}^n c_j x^j.
     \]
     By hypothesis we have
     \begin{align*}
@@ -1005,12 +1005,12 @@
                                       & = \sum_{j = 0}^n c_j \int_{[0, 1]} f(x) x^j \; dx \\
                                       & = 0.
     \end{align*}
-    Since \([0, 1]\) is closed and bounded in \((\mathbf{R}, d_{l^1}|_{\mathbf{R} \times \mathbf{R}})\), by Theorem \ref{1.5.7} we know that \(\big([0, 1], d_{l^1}|_{\mathbf{R} \times \mathbf{R}}\big)\) is compact.
-    By Proposition \ref{2.3.2} we know that \(f\) is bounded, i.e., there exists a \(M \in \mathbf{R}^+\) such that \(\abs*{f(x)} \leq M\) for all \(x \in [0, 1]\).
+    Since \([0, 1]\) is closed and bounded in \((\R, d_{l^1}|_{\R \times \R})\), by Theorem \ref{1.5.7} we know that \(\big([0, 1], d_{l^1}|_{\R \times \R}\big)\) is compact.
+    By Proposition \ref{2.3.2} we know that \(f\) is bounded, i.e., there exists a \(M \in \R^+\) such that \(\abs{f(x)} \leq M\) for all \(x \in [0, 1]\).
 
     Since \(f\) is continuous on \([0, 1]\), by Theorem \ref{3.8.3} we know that
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \exists\ P \in \mathbf{R}^{\mathbf{R}} : \begin{cases}
+        \forall \varepsilon \in \R^+, \exists\ P \in \R^{\R} : \begin{cases}
             P \text{ is a polynomial on } [0, 1] \\
             d_{\infty}(P, f) \leq \frac{\varepsilon}{M}
         \end{cases}
@@ -1018,18 +1018,18 @@
     Fix one pair of \(\varepsilon\) and \(P\).
     Then we have
     \begin{align*}
-                 & d_\infty(P, f) \leq \frac{\varepsilon}{M}                                                                                                                                    \\
-        \implies & \sup_{x \in [0, 1]} \abs*{P(x) - f(x)} \leq \frac{\varepsilon}{M}                                                                       & \text{(by Definition \ref{3.4.2})} \\
-        \implies & \forall x \in [0, 1], \abs*{P(x) - f(x)} \leq \frac{\varepsilon}{M}                                                                                                          \\
-        \implies & \forall x \in [0, 1], \abs*{f(x) P(x) - f(x) f(x)} \leq \frac{\varepsilon \abs*{f(x)}}{M} \leq \frac{\varepsilon M}{M} \leq \varepsilon                                      \\
-        \implies & \forall x \in [0, 1], f(x) P(x) - \varepsilon \leq \big(f(x)\big)^2 \leq f(x) P(x) + \varepsilon                                                                             \\
-        \implies & \forall x \in [0, 1], \int_{[0, 1]} f(x) P(x) - \varepsilon \; dx = -\varepsilon                                                                                             \\
-                 & \leq \int_{[0, 1]} \big(f(x)\big)^2 \; dx \leq \int_{[0, 1]} f(x) P(x) + \varepsilon \; dx = \varepsilon                                & \text{(by hypothesis)}             \\
+                 & d_\infty(P, f) \leq \frac{\varepsilon}{M}                                                                                                                                  \\
+        \implies & \sup_{x \in [0, 1]} \abs{P(x) - f(x)} \leq \frac{\varepsilon}{M}                                                                      & \text{(by Definition \ref{3.4.2})} \\
+        \implies & \forall x \in [0, 1], \abs{P(x) - f(x)} \leq \frac{\varepsilon}{M}                                                                                                         \\
+        \implies & \forall x \in [0, 1], \abs{f(x) P(x) - f(x) f(x)} \leq \frac{\varepsilon \abs{f(x)}}{M} \leq \frac{\varepsilon M}{M} \leq \varepsilon                                      \\
+        \implies & \forall x \in [0, 1], f(x) P(x) - \varepsilon \leq \big(f(x)\big)^2 \leq f(x) P(x) + \varepsilon                                                                           \\
+        \implies & \forall x \in [0, 1], \int_{[0, 1]} f(x) P(x) - \varepsilon \; dx = -\varepsilon                                                                                           \\
+                 & \leq \int_{[0, 1]} \big(f(x)\big)^2 \; dx \leq \int_{[0, 1]} f(x) P(x) + \varepsilon \; dx = \varepsilon                              & \text{(by hypothesis)}             \\
         \implies & \forall x \in [0, 1], -\varepsilon \leq \int_{[0, 1]} \big(f(x)\big)^2 \; dx \leq \varepsilon.
     \end{align*}
     Since \(\varepsilon\) is arbitrary, we know that
     \[
-        \forall \varepsilon \in \mathbf{R}^+, \abs*{\int_{[0, 1]} \big(f(x)\big)^2 \; dx} \leq \varepsilon \implies \abs*{\int_{[0, 1]} \big(f(x)\big)^2 \; dx} = \int_{[0, 1]} \big(f(x)\big)^2 \; dx = 0.
+        \forall \varepsilon \in \R^+, \abs{\int_{[0, 1]} \big(f(x)\big)^2 \; dx} \leq \varepsilon \implies \abs{\int_{[0, 1]} \big(f(x)\big)^2 \; dx} = \int_{[0, 1]} \big(f(x)\big)^2 \; dx = 0.
     \]
     Since \(f\) is continuous on \([0, 1]\) and \(\big(f(x)\big)^2 \geq 0\) for all \(x \in [0, 1]\), by Exercise 11.4.2 in Analysis I we know that
     \[

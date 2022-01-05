@@ -62,7 +62,7 @@
               Let \(m \leq n\) be integers, and let \(a_i\) be a real number assigned to each integer \(m \leq i \leq n\).
               Then we have
               \[
-                  \abs*{\sum_{i = m}^n a_i} \leq \sum_{i = m}^n \abs*{a_i}.
+                  \abs{\sum_{i = m}^n a_i} \leq \sum_{i = m}^n \abs{a_i}.
               \]
         \item (Comparison test for finite series) Let \(m \leq n\) be integers, and let \(a_i\), \(b_i\) be real numbers assigned to each integer \(m \leq i \leq n\).
               Suppose that \(a_i \leq b_i\) for all \(m \leq i \leq n\).
@@ -169,20 +169,20 @@
     Now we use induction on \(p\) to show that Lemma \ref{7.1.4}(e) is true.
     For \(p = 0\), we have \(n = m\) and
     \begin{align*}
-        \abs*{\sum_{i = m}^m a_i} & = \abs*{\Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + a_m}        & \text{(by Definition \ref{7.1.1})} \\
-                                  & = \abs*{0 + a_m}                                           & \text{(by Definition \ref{7.1.1})} \\
-                                  & = 0 + \abs*{a_m}                                                                                \\
-                                  & = \Bigg(\sum_{i = m}^{m - 1} \abs*{a_i}\Bigg) + \abs*{a_m} & \text{(by Definition \ref{7.1.1})} \\
-                                  & = \sum_{i = m}^m \abs*{a_i}.                               & \text{(by Definition \ref{7.1.1})}
+        \abs{\sum_{i = m}^m a_i} & = \abs{\Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + a_m}       & \text{(by Definition \ref{7.1.1})} \\
+                                 & = \abs{0 + a_m}                                          & \text{(by Definition \ref{7.1.1})} \\
+                                 & = 0 + \abs{a_m}                                                                               \\
+                                 & = \Bigg(\sum_{i = m}^{m - 1} \abs{a_i}\Bigg) + \abs{a_m} & \text{(by Definition \ref{7.1.1})} \\
+                                 & = \sum_{i = m}^m \abs{a_i}.                              & \text{(by Definition \ref{7.1.1})}
     \end{align*}
     So the base case holds.
     Suppose inductively that for some \(p \geq 0\) Lemma \ref{7.1.4}(e) is true.
     Then for \(p + 1 = n - m\), we have \(p = n - m - 1\) and
     \begin{align*}
-        \abs*{\sum_{i = m}^n a_i} & = \abs*{\Bigg(\sum_{i = m}^{n - 1} a_i\Bigg) + a_n} & \text{(by Definition \ref{7.1.1})} \\
-                                  & \leq \abs*{\sum_{i = m}^{n - 1} a_i} + \abs*{a_n}                                        \\
-                                  & \leq \sum_{i = m}^{n - 1} \abs*{a_i} + \abs*{a_n}   & \text{(by induction hypothesis)}   \\
-                                  & = \sum_{i = m}^n \abs*{a_i}.                        & \text{(by Definition \ref{7.1.1})}
+        \abs{\sum_{i = m}^n a_i} & = \abs{\Bigg(\sum_{i = m}^{n - 1} a_i\Bigg) + a_n} & \text{(by Definition \ref{7.1.1})} \\
+                                 & \leq \abs{\sum_{i = m}^{n - 1} a_i} + \abs{a_n}                                         \\
+                                 & \leq \sum_{i = m}^{n - 1} \abs{a_i} + \abs{a_n}    & \text{(by induction hypothesis)}   \\
+                                 & = \sum_{i = m}^n \abs{a_i}.                        & \text{(by Definition \ref{7.1.1})}
     \end{align*}
     This closes the induction.
 \end{proof}
@@ -218,22 +218,22 @@
 \end{remark}
 
 \begin{definition}[Summations over finite sets]\label{7.1.6}
-    Let \(X\) be a finite set with \(n\) elements (where \(n \in \mathbf{N}\)), and let \(f : X \to \mathbf{R}\) be a function from \(X\) to the real numbers
+    Let \(X\) be a finite set with \(n\) elements (where \(n \in \N\)), and let \(f : X \to \R\) be a function from \(X\) to the real numbers
     (i.e., \(f\) assigns a real number \(f(x)\) to each element \(x\) of \(X\)).
     Then we can define the finite sum \(\sum_{x \in X} f(x)\) as follows.
-    We first select any bijection \(g\) from \(\{i \in \mathbf{N} : 1 \leq i \leq n\}\) to \(X\);
+    We first select any bijection \(g\) from \(\{i \in \N : 1 \leq i \leq n\}\) to \(X\);
     such a bijection exists since \(X\) is assumed to have \(n\) elements.
     We then define
     \[
         \sum_{x \in X} f(x) \coloneqq \sum_{i = 1}^n f(g(i)).
     \]
-    In some cases we would like to define the sum \(\sum_{x \in X} f(x)\) when \(f : Y \to \mathbf{R}\) is defined on a larger set \(Y\) than \(X\).
+    In some cases we would like to define the sum \(\sum_{x \in X} f(x)\) when \(f : Y \to \R\) is defined on a larger set \(Y\) than \(X\).
     In such cases we use exactly the same definition as is given above.
 \end{definition}
 
 \setcounter{theorem}{7}
 \begin{proposition}[Finite summations are well-defined]\label{7.1.8}
-    Let \(X\) be a finite set with \(n\) elements (where \(n \in \mathbf{N}\)), let \(f : X \to \mathbf{R}\) be a function, and let \(g : \{i \in \mathbf{N} : 1 \leq i \leq n\} \to X\) and \(h : \{i \in \mathbf{N} : 1 \leq i \leq n\} \to X\) be bijections.
+    Let \(X\) be a finite set with \(n\) elements (where \(n \in \N\)), let \(f : X \to \R\) be a function, and let \(g : \{i \in \N : 1 \leq i \leq n\} \to X\) and \(h : \{i \in \N : 1 \leq i \leq n\} \to X\) be bijections.
     Then we have
     \[
         \sum_{i = 1}^n f(g(i)) = \sum_{i = 1}^n f(h(i)).
@@ -242,7 +242,7 @@
 
 \begin{proof}
     We use induction on \(n\);
-    more precisely, we let \(P(n)\) be the assertion that ``For any set \(X\) of \(n\) elements, any function \(f : X \to \mathbf{R}\), and any two bijections \(g, h\) from \(\{i \in \mathbf{N} : 1 \leq i \leq n\}\) to \(X\), we have \(\sum_{i = 1}^n f(g(i)) = \sum_{i = 1}^n f(h(i))\)''.
+    more precisely, we let \(P(n)\) be the assertion that ``For any set \(X\) of \(n\) elements, any function \(f : X \to \R\), and any two bijections \(g, h\) from \(\{i \in \N : 1 \leq i \leq n\}\) to \(X\), we have \(\sum_{i = 1}^n f(g(i)) = \sum_{i = 1}^n f(h(i))\)''.
     (More informally, \(P(n)\) is the assertion that Proposition \ref{7.1.8} is true for that value of \(n\).)
     We want to prove that \(P(n)\) is true for all natural numbers \(n\).
 
@@ -251,7 +251,7 @@
 
     Now suppose inductively that \(P(n)\) is true;
     we now prove that \(P(n + 1)\) is true.
-    Thus, let \(X\) be a set with \(n + 1\) elements, let \(f : X \to \mathbf{R}\) be a function, and let \(g\) and \(h\) be bijections from \(\{i \in N : 1 \leq i \leq n + 1\}\) to \(X\).
+    Thus, let \(X\) be a set with \(n + 1\) elements, let \(f : X \to \R\) be a function, and let \(g\) and \(h\) be bijections from \(\{i \in N : 1 \leq i \leq n + 1\}\) to \(X\).
     We have to prove that
     \[
         \sum_{i = 1}^{n + 1} f(g(i)) = \sum_{i = 1}^{n + 1} f(h(i)). \tag{7.1}\label{eq 7.1}
@@ -273,7 +273,7 @@
                                      & = \Bigg(\sum_{i = 1}^{j - 1} f(h(i))\Bigg) + f(h(j)) + \Bigg(\sum_{i = j + 1}^{n + 1} f(h(i))\Bigg) \\
                                      & = \Bigg(\sum_{i = 1}^{j - 1} f(h(i))\Bigg) + f(x) + \Bigg(\sum_{i = j}^n f(h(i + 1))\Bigg).
     \end{align*}
-    We now define the function \(\tilde{h} : \{i \in \mathbf{N} : 1 \leq i \leq n\} \to X - \{x\}\) by setting \(\tilde{h}(i) \coloneqq h(i)\) when \(i < j\) and \(\tilde{h}(i) \coloneqq h(i + 1)\) when \(i \geq j\).
+    We now define the function \(\tilde{h} : \{i \in \N : 1 \leq i \leq n\} \to X - \{x\}\) by setting \(\tilde{h}(i) \coloneqq h(i)\) when \(i < j\) and \(\tilde{h}(i) \coloneqq h(i + 1)\) when \(i \geq j\).
     We can thus write the right-hand side of \eqref{eq 7.1} as
     \[
         = \Bigg(\sum_{i = 1}^{j - 1} f(\tilde{h}(i))\Bigg) + f(x) + \Bigg(\sum_{i = j}^n f(\tilde{h}(i))\Bigg) = \Bigg(\sum_{i = 1}^n f(\tilde{h}(i))\Bigg) + f(x)
@@ -283,8 +283,8 @@
     \[
         \sum_{i = 1}^n f(g(i)) = \sum_{i = 1}^n f(\tilde{h}(i)). \tag{7.2}\label{eq 7.2}
     \]
-    But the function \(g\) (when restricted to \(\{i \in \mathbf{N} : 1 \leq i \leq n\}\)) is a bijection from \(\{i \in \mathbf{N} : 1 \leq i \leq n\} \to X - \{x\}\).
-    The function \(\tilde{h}\) is also a bijection from \(\{i \in \mathbf{N} : 1 \leq i \leq n\} \to X - \{x\}\) (cf. Lemma \ref{3.6.9}).
+    But the function \(g\) (when restricted to \(\{i \in \N : 1 \leq i \leq n\}\)) is a bijection from \(\{i \in \N : 1 \leq i \leq n\} \to X - \{x\}\).
+    The function \(\tilde{h}\) is also a bijection from \(\{i \in \N : 1 \leq i \leq n\} \to X - \{x\}\) (cf. Lemma \ref{3.6.9}).
     Since \(X - \{x\}\) has \(n\) elements (by Lemma \ref{3.6.9}), the claim \eqref{eq 7.2} then follows directly from the induction hypothesis \(P(n)\).
 \end{proof}
 
@@ -294,7 +294,7 @@
 \end{remark}
 
 \begin{remark}\label{7.1.10}
-    Suppose that \(X\) is a set, that \(P(x)\) is a property pertaining to an element \(x\) of \(X\), and \(f : \{y \in X : P(y) \text{ is true}\} \to \mathbf{R}\) is a function.
+    Suppose that \(X\) is a set, that \(P(x)\) is a property pertaining to an element \(x\) of \(X\), and \(f : \{y \in X : P(y) \text{ is true}\} \to \R\) is a function.
     Then we will often abbreviate
     \[
         \sum_{x \in \{y \in X : P(y) \text{ is true}\}} f(x)
@@ -305,52 +305,52 @@
 \begin{proposition}[Basic properties of summation over finite sets]\label{7.1.11}
     \mbox{}
     \begin{enumerate}
-        \item If \(X\) is empty, and \(f : X \to \mathbf{R}\) is a function (i.e., \(f\) is the empty function), we have
+        \item If \(X\) is empty, and \(f : X \to \R\) is a function (i.e., \(f\) is the empty function), we have
               \[
                   \sum_{x \in X} f(x) = 0.
               \]
-        \item If \(X\) consists of a single element, \(X = \{x_0\}\), and \(f : X \to \mathbf{R}\) is a function, we have
+        \item If \(X\) consists of a single element, \(X = \{x_0\}\), and \(f : X \to \R\) is a function, we have
               \[
                   \sum_{x \in X} f(x) = f(x_0).
               \]
-        \item (Substitution, part I) If \(X\) is a finite set, \(f : X \to \mathbf{R}\) is a function, and \(g : Y \to X\) is a bijection, then
+        \item (Substitution, part I) If \(X\) is a finite set, \(f : X \to \R\) is a function, and \(g : Y \to X\) is a bijection, then
               \[
                   \sum_{x \in X} f(x) = \sum_{y \in Y} f(g(y)).
               \]
-        \item (Substitution, part II) Let \(n \leq m\) be integers, and let \(X\) be the set \(X \coloneqq \{i \in \mathbf{Z} : n \leq i \leq m\}\).
+        \item (Substitution, part II) Let \(n \leq m\) be integers, and let \(X\) be the set \(X \coloneqq \{i \in \Z : n \leq i \leq m\}\).
               If \(a_i\) is a real number assigned to each integer \(i \in X\), then we have
               \[
                   \sum_{i = n}^m a_i = \sum_{i \in X} a_i.
               \]
-        \item Let \(X, Y\) be disjoint finite sets (so \(X \cap Y = \emptyset\)), and \(f : X \cup Y \to \mathbf{R}\) is a function.
+        \item Let \(X, Y\) be disjoint finite sets (so \(X \cap Y = \emptyset\)), and \(f : X \cup Y \to \R\) is a function.
               Then we have
               \[
                   \sum_{z \in X \cup Y} f(z) = \Bigg(\sum_{x \in X} f(x)\Bigg) + \Bigg(\sum_{y \in Y} f(y)\Bigg).
               \]
-        \item (Linearity, part I) Let \(X\) be a finite set, and let \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) be functions.
+        \item (Linearity, part I) Let \(X\) be a finite set, and let \(f : X \to \R\) and \(g : X \to \R\) be functions.
               Then
               \[
                   \sum_{x \in X} (f(x) + g(x)) = \sum_{x \in X} f(x) + \sum_{x \in X} g(x).
               \]
-        \item (Linearity, part II) Let \(X\) be a finite set, let \(f : X \to \mathbf{R}\) be a function, and let \(c\) be a real number.
+        \item (Linearity, part II) Let \(X\) be a finite set, let \(f : X \to \R\) be a function, and let \(c\) be a real number.
               Then
               \[
                   \sum_{x \in X} cf(x) = c \sum_{x \in X} f(x).
               \]
-        \item (Monotonicity) Let \(X\) be a finite set, and let \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) be functions such that \(f(x) \leq g(x)\) for all \(x \in \mathbf{X}\).
+        \item (Monotonicity) Let \(X\) be a finite set, and let \(f : X \to \R\) and \(g : X \to \R\) be functions such that \(f(x) \leq g(x)\) for all \(x \in \mathbf{X}\).
               Then we have
               \[
                   \sum_{x \in X} f(x) \leq \sum_{x \in X} g(x).
               \]
-        \item (Triangle inequality) Let \(X\) be a finite set, and let \(f : X \to \mathbf{R}\) be a function, then
+        \item (Triangle inequality) Let \(X\) be a finite set, and let \(f : X \to \R\) be a function, then
               \[
-                  \abs*{\sum_{x \in X} f(x)} \leq \sum_{x \in X} \abs*{f(x)}.
+                  \abs{\sum_{x \in X} f(x)} \leq \sum_{x \in X} \abs{f(x)}.
               \]
     \end{enumerate}
 \end{proposition}
 
 \begin{proof}{(a)}
-    Let \(g : \{i \in \mathbf{N} : 1 \leq i \leq 0\} \to \emptyset\) be a function.
+    Let \(g : \{i \in \N : 1 \leq i \leq 0\} \to \emptyset\) be a function.
     Then \(g\) is a bijection and
     \begin{align*}
         \sum_{x \in X} f(x) & = \sum_{i = 1}^0 f(g(i)) & \text{(by Definition \ref{7.1.6})} \\
@@ -370,9 +370,9 @@
 \end{proof}
 
 \begin{proof}{(c)}
-    Let \(h : \{i \in \mathbf{N} : 1 \leq i \leq \#(Y)\} \to Y\) be a bijection.
+    Let \(h : \{i \in \N : 1 \leq i \leq \#(Y)\} \to Y\) be a bijection.
     Since \(X\) is finite and \(g\) is a bijection between \(X\) and \(Y\), we know that \(Y\) is finite and thus such \(h\) is well-defined.
-    Then we know that \(g \circ h : \{i \in \mathbf{N} : 1 \leq i \leq \#(Y)\} \to X\) is also a bijection and
+    Then we know that \(g \circ h : \{i \in \N : 1 \leq i \leq \#(Y)\} \to X\) is also a bijection and
     \begin{align*}
         \sum_{x \in X} f(x) & = \sum_{i = 1}^{\#(Y)} f((g \circ h)(i)) & \text{(by Definition \ref{7.1.6})} \\
                             & = \sum_{i = 1}^{\#(Y)} f(g(h(i)))                                             \\
@@ -383,8 +383,8 @@
 \end{proof}
 
 \begin{proof}{(d)}
-    Let \(f : X \to \{a_i \in \mathbf{R} : n \leq i \leq m\}\) be a function where \(f = i \mapsto a_i\).
-    Let \(g : \{i \in \mathbf{N} : 1 \leq i \leq m - n + 1\} \to X\) be a function where \(g = i \mapsto i + n - 1\).
+    Let \(f : X \to \{a_i \in \R : n \leq i \leq m\}\) be a function where \(f = i \mapsto a_i\).
+    Let \(g : \{i \in \N : 1 \leq i \leq m - n + 1\} \to X\) be a function where \(g = i \mapsto i + n - 1\).
     Then \(g\) is a bijection and
     \begin{align*}
         \sum_{i \in X} a_i & = \sum_{i \in X} f(i)                                                                                 \\
@@ -397,9 +397,9 @@
 \end{proof}
 
 \begin{proof}{(e)}
-    Let \(g : \{i \in \mathbf{N} : 1 \leq i \leq \#(X)\} \to X\) and \(h : \{i \in \mathbf{N} : 1 \leq i \leq \#(Y)\} \to Y\) be bijections.
+    Let \(g : \{i \in \N : 1 \leq i \leq \#(X)\} \to X\) and \(h : \{i \in \N : 1 \leq i \leq \#(Y)\} \to Y\) be bijections.
     Since \(X, Y\) are finite, we know that \(g, h\) are well-defined and \(X \cup Y\) is finite.
-    Let \(k : \{i \in \mathbf{N} : 1 \leq i \leq \#(X \cup Y)\} \to X \cup Y\) be a bijection where
+    Let \(k : \{i \in \N : 1 \leq i \leq \#(X \cup Y)\} \to X \cup Y\) be a bijection where
     \[
         k(i) = \begin{cases}
             g(i)         & \text{if } 1 \leq i \leq \#(X)                  \\
@@ -418,7 +418,7 @@
 \end{proof}
 
 \begin{proof}{(f)}
-    Let \(h : \{i \in \mathbf{N} : 1 \leq i \leq \#(X)\} \to X\) be a bijection.
+    Let \(h : \{i \in \N : 1 \leq i \leq \#(X)\} \to X\) be a bijection.
     Since \(X\) is finite, we know that \(h\) is well-defined and
     \begin{align*}
         \sum_{x \in X} (f(x) + g(x)) & = \sum_{x \in X} (f + g)(x)                                                                        \\
@@ -430,7 +430,7 @@
 \end{proof}
 
 \begin{proof}{(g)}
-    Let \(g : \{i \in \mathbf{N} : 1 \leq i \leq \#(X)\} \to X\) be a bijection.
+    Let \(g : \{i \in \N : 1 \leq i \leq \#(X)\} \to X\) be a bijection.
     Since \(X\) is finite, we know that \(g\) is well-defined and
     \begin{align*}
         \sum_{x \in X} cf(x) & = \sum_{x \in X} (cf)(x)                                               \\
@@ -442,7 +442,7 @@
 \end{proof}
 
 \begin{proof}{(h)}
-    Let \(h : \{i \in \mathbf{N} : 1 \leq i \leq \#(X)\} \to X\) be a bijection.
+    Let \(h : \{i \in \N : 1 \leq i \leq \#(X)\} \to X\) be a bijection.
     Since \(X\) is finite, we know that \(h\) is well-defined and
     \begin{align*}
         \sum_{x \in X} f(x) & = \sum_{i = 1}^{\#(X)} f(h(i))    & \text{(by Definition \ref{7.1.6})} \\
@@ -452,12 +452,12 @@
 \end{proof}
 
 \begin{proof}{(i)}
-    Let \(g : \{i \in \mathbf{N} : 1 \leq i \leq \#(X)\} \to X\) be a bijection.
+    Let \(g : \{i \in \N : 1 \leq i \leq \#(X)\} \to X\) be a bijection.
     Since \(X\) is finite, we know that \(g\) is well-defined and
     \begin{align*}
-        \abs*{\sum_{x \in X} f(x)} & = \abs*{\sum_{i = 1}^{\#(X)} f(g(i))}    & \text{(by Definition \ref{7.1.6})} \\
-                                   & \leq \sum_{i = 1}^{\#(X)} \abs*{f(g(i))} & \text{(by Lemma \ref{7.1.4}(e))}   \\
-                                   & = \sum_{x \in X} \abs*{f(x)}.            & \text{(by Definition \ref{7.1.6})}
+        \abs{\sum_{x \in X} f(x)} & = \abs{\sum_{i = 1}^{\#(X)} f(g(i))}    & \text{(by Definition \ref{7.1.6})} \\
+                                  & \leq \sum_{i = 1}^{\#(X)} \abs{f(g(i))} & \text{(by Lemma \ref{7.1.4}(e))}   \\
+                                  & = \sum_{x \in X} \abs{f(x)}.            & \text{(by Definition \ref{7.1.6})}
     \end{align*}
 \end{proof}
 
@@ -468,12 +468,12 @@
     \[
         \sum_{i = n}^m a_i = \sum_{i = n}^m a_{f(i)}
     \]
-    for any bijection \(f\) from the set \(\{i \in \mathbf{Z} : n \leq i \leq m\}\) to itself.
+    for any bijection \(f\) from the set \(\{i \in \Z : n \leq i \leq m\}\) to itself.
     Informally, this means that we can rearrange the elements of a finite sequence at will and still obtain the same value.
 \end{remark}
 
 \begin{lemma}\label{7.1.13}
-    Let \(X, Y\) be finite sets, and let \(f : X \times Y \to \mathbf{R}\) be a function.
+    Let \(X, Y\) be finite sets, and let \(f : X \times Y \to \R\) be a function.
     Then
     \[
         \sum_{x \in X} \bigg(\sum_{y \in Y} f(x, y)\bigg) = \sum_{(x, y) \in X \times Y} f(x, y).
@@ -483,7 +483,7 @@
 \begin{proof}
     Let \(n\) be the number of elements in \(X\).
     We will use induction on \(n\) (cf. Proposition \ref{7.1.8});
-    i.e., we let \(P(n)\) be the assertion that Lemma \ref{7.1.13} is true for any set \(X\) with \(n\) elements, and any finite set \(Y\) and any function \(f : X \times Y \to \mathbf{R}\).
+    i.e., we let \(P(n)\) be the assertion that Lemma \ref{7.1.13} is true for any set \(X\) with \(n\) elements, and any finite set \(Y\) and any function \(f : X \times Y \to \R\).
     We wish to prove \(P(n)\) for all natural numbers \(n\).
 
     The base case \(P(0)\) is easy, following from Proposition \ref{7.1.11}(a).
@@ -511,7 +511,7 @@
 \end{proof}
 
 \begin{corollary}[Fubini's theorem for finite series]\label{7.1.14}
-    Let \(X, Y\) be finite sets, and let \(f : X \times Y \to \mathbf{R}\) be a function.
+    Let \(X, Y\) be finite sets, and let \(f : X \times Y \to \R\) be a function.
     Then
     \begin{align*}
         \sum_{x \in X} \bigg(\sum_{y \in Y} f(x, y)\bigg) & = \sum_{(x, y) \in X \times Y} f(x, y)               \\
@@ -568,7 +568,7 @@ Then we define the finite product \(\prod_{i = m}^n a_i\) by the recursive formu
     \item Let \(m \leq n\) be integers, and let \(a_i\) be a real number assigned to each integer \(m \leq i \leq n\).
           Then we have
           \[
-              \abs*{\prod_{i = m}^n a_i} = \prod_{i = m}^n \abs*{a_i}.
+              \abs{\prod_{i = m}^n a_i} = \prod_{i = m}^n \abs{a_i}.
           \]
 \end{enumerate}
 \end{additional corollary}
@@ -669,29 +669,29 @@ Then we define the finite product \(\prod_{i = m}^n a_i\) by the recursive formu
     Now we use induction on \(p\) to show that Additional Corollary \ref{ac 7.1.2}(e) is true.
     For \(p = 0\), we have \(n = m\) and
     \begin{align*}
-        \abs*{\prod_{i = m}^m a_i} & = \abs*{\Bigg(\prod_{i = m}^{m - 1} a_i\Bigg) \times a_m}        & \text{(by Additional Corollary \ref{ac 7.1.1})} \\
-                                   & = \abs*{1a_m}                                                    & \text{(by Additional Corollary \ref{ac 7.1.1})} \\
-                                   & = \abs*{1}\abs*{a_m}                                                                                               \\
-                                   & = \Bigg(\prod_{i = m}^{m - 1} \abs*{a_i}\Bigg) \times \abs*{a_m} & \text{(by Additional Corollary \ref{ac 7.1.1})} \\
-                                   & = \prod_{i = m}^m \abs*{a_i}.                                    & \text{(by Additional Corollary \ref{ac 7.1.1})}
+        \abs{\prod_{i = m}^m a_i} & = \abs{\Bigg(\prod_{i = m}^{m - 1} a_i\Bigg) \times a_m}       & \text{(by Additional Corollary \ref{ac 7.1.1})} \\
+                                  & = \abs{1a_m}                                                   & \text{(by Additional Corollary \ref{ac 7.1.1})} \\
+                                  & = \abs{1}\abs{a_m}                                                                                               \\
+                                  & = \Bigg(\prod_{i = m}^{m - 1} \abs{a_i}\Bigg) \times \abs{a_m} & \text{(by Additional Corollary \ref{ac 7.1.1})} \\
+                                  & = \prod_{i = m}^m \abs{a_i}.                                   & \text{(by Additional Corollary \ref{ac 7.1.1})}
     \end{align*}
     So the base case holds.
     Suppose inductively that for some \(p \geq 0\) Additional Corollary \ref{ac 7.1.2}(e) is true.
     Then for \(p + 1 = n - m\), we have \(p = n - m - 1\) and
     \begin{align*}
-        \abs*{\prod_{i = m}^n a_i} & = \abs*{\Bigg(\prod_{i = m}^{n - 1} a_i\Bigg) \times a_n}        & \text{(by Additional Corollary \ref{ac 7.1.1})} \\
-                                   & = \abs*{\prod_{i = m}^{n - 1} a_i} \times \abs*{a_n}                                                               \\
-                                   & = \Bigg(\prod_{i = m}^{n - 1} \abs*{a_i}\Bigg) \times \abs*{a_n} & \text{(by induction hypothesis)}                \\
-                                   & = \prod_{i = m}^n \abs*{a_i}.                                    & \text{(by Additional Corollary \ref{ac 7.1.1})}
+        \abs{\prod_{i = m}^n a_i} & = \abs{\Bigg(\prod_{i = m}^{n - 1} a_i\Bigg) \times a_n}       & \text{(by Additional Corollary \ref{ac 7.1.1})} \\
+                                  & = \abs{\prod_{i = m}^{n - 1} a_i} \times \abs{a_n}                                                               \\
+                                  & = \Bigg(\prod_{i = m}^{n - 1} \abs{a_i}\Bigg) \times \abs{a_n} & \text{(by induction hypothesis)}                \\
+                                  & = \prod_{i = m}^n \abs{a_i}.                                   & \text{(by Additional Corollary \ref{ac 7.1.1})}
     \end{align*}
     This closes the induction.
 \end{proof}
 
 \begin{additional corollary}\label{ac 7.1.3}
-Let \(X\) be a finite set with \(n\) elements (where \(n \in \mathbf{N}\)), and let \(f : X \to \mathbf{R}\) be a function from \(X\) to the real numbers
+Let \(X\) be a finite set with \(n\) elements (where \(n \in \N\)), and let \(f : X \to \R\) be a function from \(X\) to the real numbers
 (i.e., \(f\) assigns a real number \(f(x)\) to each element \(x\) of \(X\)).
 Then we can define the finite product \(\prod_{x \in X} f(x)\) as follows.
-We first select any bijection \(g\) from \(\{i \in \mathbf{N} : 1 \leq i \leq n\}\) to \(X\);
+We first select any bijection \(g\) from \(\{i \in \N : 1 \leq i \leq n\}\) to \(X\);
 such a bijection exists since \(X\) is assumed to have \(n\) elements.
 We then define
 \[
@@ -700,7 +700,7 @@ We then define
 \end{additional corollary}
 
 \begin{additional corollary}[Finite products are well-defined]\label{ac 7.1.4}
-Let \(X\) be a finite set with \(n\) elements (where \(n \in \mathbf{N}\)), let \(f : X \to \mathbf{R}\) be a function, and let \(g : \{i \in \mathbf{N} : 1 \leq i \leq n\} \to X\) and \(h : \{i \in \mathbf{N} : 1 \leq i \leq n\} \to X\) be bijections.
+Let \(X\) be a finite set with \(n\) elements (where \(n \in \N\)), let \(f : X \to \R\) be a function, and let \(g : \{i \in \N : 1 \leq i \leq n\} \to X\) and \(h : \{i \in \N : 1 \leq i \leq n\} \to X\) be bijections.
 Then we have
 \[
     \prod_{i = 1}^n f(g(i)) = \prod_{i = 1}^n f(h(i)).
@@ -708,7 +708,7 @@ Then we have
 \end{additional corollary}
 
 \begin{proof}
-    Let \(P(n)\) be the assertion that ``For any set \(X\) of \(n\) elements, any function \(f : X \to \mathbf{R}\), and any two bijections \(g, h\) from \(\{i \in \mathbf{N} : 1 \leq i \leq n\}\) to \(X\), we have \(\prod_{i = 1}^n f(g(i)) = \prod_{i = 1}^n f(h(i))\)''.
+    Let \(P(n)\) be the assertion that ``For any set \(X\) of \(n\) elements, any function \(f : X \to \R\), and any two bijections \(g, h\) from \(\{i \in \N : 1 \leq i \leq n\}\) to \(X\), we have \(\prod_{i = 1}^n f(g(i)) = \prod_{i = 1}^n f(h(i))\)''.
     (More informally, \(P(n)\) is the assertion that Additional Corollary \ref{ac 7.1.4} is true for that value of \(n\).)
     We use induction on \(n\);
 
@@ -717,7 +717,7 @@ Then we have
 
     Now suppose inductively that \(P(n)\) is true;
     we now prove that \(P(n + 1)\) is true.
-    Thus, let \(X\) be a set with \(n + 1\) elements, let \(f : X \to \mathbf{R}\) be a function, and let \(g\) and \(h\) be bijections from \(\{i \in N : 1 \leq i \leq n + 1\}\) to \(X\).
+    Thus, let \(X\) be a set with \(n + 1\) elements, let \(f : X \to \R\) be a function, and let \(g\) and \(h\) be bijections from \(\{i \in N : 1 \leq i \leq n + 1\}\) to \(X\).
     We have to prove that
     \[
         \prod_{i = 1}^{n + 1} f(g(i)) = \prod_{i = 1}^{n + 1} f(h(i)). \tag{ac 7.1}\label{eq ac 7.1}
@@ -736,7 +736,7 @@ Then we have
                                       & = \Bigg(\prod_{i = 1}^{j - 1} f(h(i))\Bigg) \times f(h(j)) \times \Bigg(\prod_{i = j + 1}^{n + 1} f(h(i))\Bigg) \\
                                       & = \Bigg(\prod_{i = 1}^{j - 1} f(h(i))\Bigg) \times f(x) \times \Bigg(\prod_{i = j}^n f(h(i + 1))\Bigg).
     \end{align*}
-    We now define the function \(\tilde{h} : \{i \in \mathbf{N} : 1 \leq i \leq n\} \to X - \{x\}\) by setting \(\tilde{h}(i) \coloneqq h(i)\) when \(i < j\) and \(\tilde{h}(i) \coloneqq h(i + 1)\) when \(i \geq j\).
+    We now define the function \(\tilde{h} : \{i \in \N : 1 \leq i \leq n\} \to X - \{x\}\) by setting \(\tilde{h}(i) \coloneqq h(i)\) when \(i < j\) and \(\tilde{h}(i) \coloneqq h(i + 1)\) when \(i \geq j\).
     We can thus write the right-hand side of \eqref{eq ac 7.1} as
     \[
         = \Bigg(\prod_{i = 1}^{j - 1} f(\tilde{h}(i))\Bigg) \times f(x) \times \Bigg(\prod_{i = j}^n f(\tilde{h}(i))\Bigg) = \Bigg(\prod_{i = 1}^n f(\tilde{h}(i))\Bigg) \times f(x)
@@ -746,55 +746,55 @@ Then we have
     \[
         \prod_{i = 1}^n f(g(i)) = \prod_{i = 1}^n f(\tilde{h}(i)). \tag{ac 7.2}\label{eq ac 7.2}
     \]
-    But the function \(g\) (when restricted to \(\{i \in \mathbf{N} : 1 \leq i \leq n\}\)) is a bijection from \(\{i \in \mathbf{N} : 1 \leq i \leq n\} \to X - \{x\}\).
-    The function \(\tilde{h}\) is also a bijection from \(\{i \in \mathbf{N} : 1 \leq i \leq n\} \to X - \{x\}\) (cf. Lemma \ref{3.6.9}).
+    But the function \(g\) (when restricted to \(\{i \in \N : 1 \leq i \leq n\}\)) is a bijection from \(\{i \in \N : 1 \leq i \leq n\} \to X - \{x\}\).
+    The function \(\tilde{h}\) is also a bijection from \(\{i \in \N : 1 \leq i \leq n\} \to X - \{x\}\) (cf. Lemma \ref{3.6.9}).
     Since \(X - \{x\}\) has \(n\) elements (by Lemma \ref{3.6.9}), the claim \eqref{eq ac 7.2} then follows directly from the induction hypothesis \(P(n)\).
 \end{proof}
 
 \begin{additional corollary}[Basic properties of product over finite sets]\label{ac 7.1.5}
 \mbox{}
 \begin{enumerate}
-    \item If \(X\) is empty, and \(f : X \to \mathbf{R}\) is a function (i.e., \(f\) is the empty function), we have
+    \item If \(X\) is empty, and \(f : X \to \R\) is a function (i.e., \(f\) is the empty function), we have
           \[
               \prod_{x \in X} f(x) = 1.
           \]
-    \item If \(X\) consists of a single element, \(X = \{x_0\}\), and \(f : X \to \mathbf{R}\) is a function, we have
+    \item If \(X\) consists of a single element, \(X = \{x_0\}\), and \(f : X \to \R\) is a function, we have
           \[
               \prod_{x \in X} f(x) = f(x_0).
           \]
-    \item (Substitution, part I) If \(X\) is a finite set, \(f : X \to \mathbf{R}\) is a function, and \(g : Y \to X\) is a bijection, then
+    \item (Substitution, part I) If \(X\) is a finite set, \(f : X \to \R\) is a function, and \(g : Y \to X\) is a bijection, then
           \[
               \prod_{x \in X} f(x) = \prod_{y \in Y} f(g(y)).
           \]
-    \item (Substitution, part II) Let \(n \leq m\) be integers, and let \(X\) be the set \(X \coloneqq \{i \in \mathbf{Z} : n \leq i \leq m\}\).
+    \item (Substitution, part II) Let \(n \leq m\) be integers, and let \(X\) be the set \(X \coloneqq \{i \in \Z : n \leq i \leq m\}\).
           If \(a_i\) is a real number assigned to each integer \(i \in X\), then we have
           \[
               \prod_{i = n}^m a_i = \prod_{i \in X} a_i.
           \]
-    \item Let \(X, Y\) be disjoint finite sets (so \(X \cap Y = \emptyset\)), and \(f : X \cup Y \to \mathbf{R}\) is a function.
+    \item Let \(X, Y\) be disjoint finite sets (so \(X \cap Y = \emptyset\)), and \(f : X \cup Y \to \R\) is a function.
           Then we have
           \[
               \prod_{z \in X \cup Y} f(z) = \Bigg(\prod_{x \in X} f(x)\Bigg) \times \Bigg(\prod_{y \in Y} f(y)\Bigg).
           \]
-    \item Let \(X\) be a finite set, and let \(f : X \to \mathbf{R}\) and \(g : X \to \mathbf{R}\) be functions.
+    \item Let \(X\) be a finite set, and let \(f : X \to \R\) and \(g : X \to \R\) be functions.
           Then
           \[
               \prod_{x \in X} (f(x) \times g(x)) = \prod_{x \in X} f(x) \times \prod_{x \in X} g(x).
           \]
-    \item Let \(X\) be a finite set, let \(f : X \to \mathbf{R}\) be a function, and let \(c\) be a real number.
+    \item Let \(X\) be a finite set, let \(f : X \to \R\) be a function, and let \(c\) be a real number.
           Then
           \[
               \prod_{x \in X} cf(x) = c^{\#(X)} \prod_{x \in X} f(x).
           \]
-    \item Let \(X\) be a finite set, and let \(f : X \to \mathbf{R}\) be a function, then
+    \item Let \(X\) be a finite set, and let \(f : X \to \R\) be a function, then
           \[
-              \abs*{\prod_{x \in X} f(x)} = \prod_{x \in X} \abs*{f(x)}.
+              \abs{\prod_{x \in X} f(x)} = \prod_{x \in X} \abs{f(x)}.
           \]
 \end{enumerate}
 \end{additional corollary}
 
 \begin{proof}{(a)}
-    Let \(g : \{i \in \mathbf{N} : 1 \leq i \leq 0\} \to \emptyset\) be a function.
+    Let \(g : \{i \in \N : 1 \leq i \leq 0\} \to \emptyset\) be a function.
     Then \(g\) is a bijection and
     \begin{align*}
         \prod_{x \in X} f(x) & = \prod_{i = 1}^0 f(g(i)) & \text{(by Additional Corollary \ref{ac 7.1.3})} \\
@@ -814,9 +814,9 @@ Then we have
 \end{proof}
 
 \begin{proof}{(c)}
-    Let \(h : \{i \in \mathbf{N} : 1 \leq i \leq \#(Y)\} \to Y\) be a bijection.
+    Let \(h : \{i \in \N : 1 \leq i \leq \#(Y)\} \to Y\) be a bijection.
     Since \(X\) is finite and \(g\) is a bijection between \(X\) and \(Y\), we know that \(Y\) is finite and thus such \(h\) is well-defined.
-    Then we know that \(g \circ h : \{i \in \mathbf{N} : 1 \leq i \leq \#(Y)\} \to X\) is also a bijection and
+    Then we know that \(g \circ h : \{i \in \N : 1 \leq i \leq \#(Y)\} \to X\) is also a bijection and
     \begin{align*}
         \prod_{x \in X} f(x) & = \prod_{i = 1}^{\#(Y)} f((g \circ h)(i)) & \text{(by Additional Corollary \ref{ac 7.1.3})} \\
                              & = \prod_{i = 1}^{\#(Y)} f(g(h(i)))                                                          \\
@@ -827,8 +827,8 @@ Then we have
 \end{proof}
 
 \begin{proof}{(d)}
-    Let \(f : X \to \{a_i \in \mathbf{R} : n \leq i \leq m\}\) be a function where \(f = i \mapsto a_i\).
-    Let \(g : \{i \in \mathbf{N} : 1 \leq i \leq m - n + 1\} \to X\) be a function where \(g = i \mapsto i + n - 1\).
+    Let \(f : X \to \{a_i \in \R : n \leq i \leq m\}\) be a function where \(f = i \mapsto a_i\).
+    Let \(g : \{i \in \N : 1 \leq i \leq m - n + 1\} \to X\) be a function where \(g = i \mapsto i + n - 1\).
     Then \(g\) is a bijection and
     \begin{align*}
         \prod_{i \in X} a_i & = \prod_{i \in X} f(i)                                                                                                 \\
@@ -841,9 +841,9 @@ Then we have
 \end{proof}
 
 \begin{proof}{(e)}
-    Let \(g : \{i \in \mathbf{N} : 1 \leq i \leq \#(X)\} \to X\) and \(h : \{i \in \mathbf{N} : 1 \leq i \leq \#(Y)\} \to Y\) be bijections.
+    Let \(g : \{i \in \N : 1 \leq i \leq \#(X)\} \to X\) and \(h : \{i \in \N : 1 \leq i \leq \#(Y)\} \to Y\) be bijections.
     Since \(X, Y\) are finite, we know that \(g, h\) are well-defined and \(X \cup Y\) is finite.
-    Let \(k : \{i \in \mathbf{N} : 1 \leq i \leq \#(X \cup Y)\} \to X \cup Y\) be a bijection where
+    Let \(k : \{i \in \N : 1 \leq i \leq \#(X \cup Y)\} \to X \cup Y\) be a bijection where
     \[
         k(i) = \begin{cases}
             g(i)         & \text{if } 1 \leq i \leq \#(X)                  \\
@@ -863,7 +863,7 @@ Then we have
 \end{proof}
 
 \begin{proof}{(f)}
-    Let \(h : \{i \in \mathbf{N} : 1 \leq i \leq \#(X)\} \to X\) be a bijection.
+    Let \(h : \{i \in \N : 1 \leq i \leq \#(X)\} \to X\) be a bijection.
     Since \(X\) is finite, we know that \(h\) is well-defined and
     \begin{align*}
          & \prod_{x \in X} (f(x) \times g(x))                                                                                        \\
@@ -876,7 +876,7 @@ Then we have
 \end{proof}
 
 \begin{proof}{(g)}
-    Let \(g : \{i \in \mathbf{N} : 1 \leq i \leq \#(X)\} \to X\) be a bijection.
+    Let \(g : \{i \in \N : 1 \leq i \leq \#(X)\} \to X\) be a bijection.
     Since \(X\) is finite, we know that \(g\) is well-defined and
     \begin{align*}
         \prod_{x \in X} cf(x) & = \prod_{x \in X} (cf)(x)                                                                      \\
@@ -888,17 +888,17 @@ Then we have
 \end{proof}
 
 \begin{proof}{(h)}
-    Let \(g : \{i \in \mathbf{N} : 1 \leq i \leq \#(X)\} \to X\) be a bijection.
+    Let \(g : \{i \in \N : 1 \leq i \leq \#(X)\} \to X\) be a bijection.
     Since \(X\) is finite, we know that \(g\) is well-defined and
     \begin{align*}
-        \abs*{\prod_{x \in X} f(x)} & = \abs*{\prod_{i = 1}^{\#(X)} f(g(i))} & \text{(by Additional Corollary \ref{ac 7.1.3})}    \\
-                                    & = \prod_{i = 1}^{\#(X)} \abs*{f(g(i))} & \text{(by Additional Corollary \ref{ac 7.1.2}(e))} \\
-                                    & = \prod_{x \in X} \abs*{f(x)}.         & \text{(by Additional Corollary \ref{ac 7.1.3})}
+        \abs{\prod_{x \in X} f(x)} & = \abs{\prod_{i = 1}^{\#(X)} f(g(i))} & \text{(by Additional Corollary \ref{ac 7.1.3})}    \\
+                                   & = \prod_{i = 1}^{\#(X)} \abs{f(g(i))} & \text{(by Additional Corollary \ref{ac 7.1.2}(e))} \\
+                                   & = \prod_{x \in X} \abs{f(x)}.         & \text{(by Additional Corollary \ref{ac 7.1.3})}
     \end{align*}
 \end{proof}
 
 \begin{additional corollary}\label{ac 7.1.6}
-Let \(X, Y\) be finite sets, and let \(f : X \times Y \to \mathbf{R}\) be a function.
+Let \(X, Y\) be finite sets, and let \(f : X \times Y \to \R\) be a function.
 Then
 \[
     \prod_{x \in X} \bigg(\prod_{y \in Y} f(x, y)\bigg) = \prod_{(x, y) \in X \times Y} f(x, y).
@@ -908,7 +908,7 @@ Then
 \begin{proof}
     Let \(n\) be the number of elements in \(X\).
     We will use induction on \(n\) (cf. Additional Corollary \ref{ac 7.1.4});
-    i.e., we let \(P(n)\) be the assertion that Additional Corollary \ref{ac 7.1.6} is true for any set \(X\) with \(n\) elements, and any finite set \(Y\) and any function \(f : X \times Y \to \mathbf{R}\).
+    i.e., we let \(P(n)\) be the assertion that Additional Corollary \ref{ac 7.1.6} is true for any set \(X\) with \(n\) elements, and any finite set \(Y\) and any function \(f : X \times Y \to \R\).
     We wish to prove \(P(n)\) for all natural numbers \(n\).
 
     The base case \(P(0)\) is easy, following from Additional Corollary \ref{ac 7.1.5}(a).
@@ -936,7 +936,7 @@ Then
 \end{proof}
 
 \begin{additional corollary}\label{ac 7.1.7}
-Let \(X, Y\) be finite sets, and let \(f : X \times Y \to \mathbf{R}\) be a function.
+Let \(X, Y\) be finite sets, and let \(f : X \times Y \to \R\) be a function.
 Then
 \begin{align*}
     \prod_{x \in X} \bigg(\prod_{y \in Y} f(x, y)\bigg) & = \prod_{(x, y) \in X \times Y} f(x, y)                \\
