@@ -147,15 +147,6 @@ a_n^2                      % do not enclose with {}
 \(x^2 y^2\)
 ```
 
-#### Quantifiers
-
-- **Quantifiers** must be **followed with additional space**.
-
-```latex
-\(\exists\ n \geq 1\) such that ...
-\(\forall n \geq 1\) we have ...
-```
-
 #### Absolute Values, Floor and Ceiling
 
 - **Absolute value** must be written as `\abs*{}`.
