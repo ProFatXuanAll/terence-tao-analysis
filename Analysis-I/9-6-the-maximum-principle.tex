@@ -1,240 +1,240 @@
 \section{The maximum principle}\label{sec 9.6}
 
 \begin{definition}\label{9.6.1}
-    Let \(X\) be a subset of \(\R\), and let \(f : X \to \R\) be a function.
-    We say that \(f\) is \emph{bounded from above} iff there exists a real number \(M\) such that \(f(x) \leq M\) for all \(x \in X\).
-    We say that \(f\) is \emph{bounded from below} iff there exists a real number \(M\) such that \(f(x) \geq -M\) for all \(x \in X\).
-    We say that \(f\) is \emph{bounded} iff there exists a real number \(M\) such that \(\abs{f(x)} \leq M\) for all \(x \in X\).
+  Let \(X\) be a subset of \(\R\), and let \(f : X \to \R\) be a function.
+  We say that \(f\) is \emph{bounded from above} iff there exists a real number \(M\) such that \(f(x) \leq M\) for all \(x \in X\).
+  We say that \(f\) is \emph{bounded from below} iff there exists a real number \(M\) such that \(f(x) \geq -M\) for all \(x \in X\).
+  We say that \(f\) is \emph{bounded} iff there exists a real number \(M\) such that \(\abs{f(x)} \leq M\) for all \(x \in X\).
 \end{definition}
 
 \begin{remark}\label{9.6.2}
-    A function is bounded if and only if it is bounded both from above and below.
-    Also, a function \(f : X \to \R\) is bounded if and only if its image \(f(X)\) is a bounded set in the sense of Definition \ref{9.1.22}.
+  A function is bounded if and only if it is bounded both from above and below.
+  Also, a function \(f : X \to \R\) is bounded if and only if its image \(f(X)\) is a bounded set in the sense of \cref{9.1.22}.
 \end{remark}
 
 \begin{lemma}\label{9.6.3}
-    Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a function continuous on \([a, b]\).
-    Then \(f\) is a bounded function.
+  Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a function continuous on \([a, b]\).
+  Then \(f\) is a bounded function.
 \end{lemma}
 
 \begin{proof}
-    Suppose for sake of contradiction that \(f\) is not bounded.
-    Thus for every real number \(M\) there exists an element \(x \in [a, b]\) such that \(\abs{f(x)} \geq M\).
+  Suppose for sake of contradiction that \(f\) is not bounded.
+  Thus for every real number \(M\) there exists an element \(x \in [a, b]\) such that \(\abs{f(x)} \geq M\).
 
-    In particular, for every natural number \(n\), the set \(\{x \in [a, b] : \abs{f(x)} \geq n\}\) is non-empty.
-    We can thus choose a sequence \((x_n)_{n = 0}^\infty\) in \([a, b]\) such that \(\abs{f(x_n)} \geq n\) for all \(n\).
-    This sequence lies in \([a, b]\), and so by Theorem \ref{9.1.24} there exists a subsequence \((x_{n_j})_{j = 0}^\infty\) which converges to some limit \(L \in [a, b]\), where \(n_0 < n_1 < n_2 < \dots\) is an increasing sequence of natural numbers.
-    In particular, we see that \(n_j \geq j\) for all \(j \in \N\) (use induction).
+  In particular, for every natural number \(n\), the set \(\{x \in [a, b] : \abs{f(x)} \geq n\}\) is non-empty.
+  We can thus choose a sequence \((x_n)_{n = 0}^\infty\) in \([a, b]\) such that \(\abs{f(x_n)} \geq n\) for all \(n\).
+  This sequence lies in \([a, b]\), and so by \cref{9.1.24} there exists a subsequence \((x_{n_j})_{j = 0}^\infty\) which converges to some limit \(L \in [a, b]\), where \(n_0 < n_1 < n_2 < \dots\) is an increasing sequence of natural numbers.
+  In particular, we see that \(n_j \geq j\) for all \(j \in \N\) (use induction).
 
-    Since \(f\) is continuous on \([a, b]\), it is continuous at \(L\), and in particular we see that
-    \[
-        \lim_{j \to \infty} f(x_{n_j}) = f(L).
-    \]
-    Thus the sequence \((f(x_{n_j}))_{j = 0}^\infty\) is convergent, and hence it is bounded.
-    On the other hand, we know from the construction that \(\abs{f(x_{n_j})} \geq n_j \geq j\) for all \(j\), and hence the sequence \((f(x_{n_j}))_{j = 0}^\infty\) is not bounded, a contradiction.
+  Since \(f\) is continuous on \([a, b]\), it is continuous at \(L\), and in particular we see that
+  \[
+    \lim_{j \to \infty} f(x_{n_j}) = f(L).
+  \]
+  Thus the sequence \((f(x_{n_j}))_{j = 0}^\infty\) is convergent, and hence it is bounded.
+  On the other hand, we know from the construction that \(\abs{f(x_{n_j})} \geq n_j \geq j\) for all \(j\), and hence the sequence \((f(x_{n_j}))_{j = 0}^\infty\) is not bounded, a contradiction.
 \end{proof}
 
 \begin{remark}\label{9.6.4}
-    There are two things about the proof of Lemma \ref{9.6.3} that are worth noting.
-    Firstly, it shows how useful the Heine-Borel theorem (Theorem \ref{9.1.24}) is.
-    Secondly, it is an indirect proof;
-    it doesn't say \emph{how} to find the bound for \(f\), but it shows that having \(f\) unbounded leads to a contradiction.
+  There are two things about the proof of \cref{9.6.3} that are worth noting.
+  Firstly, it shows how useful the Heine-Borel theorem (\cref{9.1.24}) is.
+  Secondly, it is an indirect proof;
+  it doesn't say \emph{how} to find the bound for \(f\), but it shows that having \(f\) unbounded leads to a contradiction.
 \end{remark}
 
 \begin{definition}[Maxima and minima]\label{9.6.5}
-    Let \(X\) be a subset of \(\R\), and let \(f : X \to \R\) be a function, and let \(x_0 \in X\).
-    We say that \emph{\(f\) attains its maximum at \(x_0\)} if we have \(f(x_0) \geq f(x)\) for all \(x \in X\)
-    (i.e., the value of \(f\) at the point \(x_0\) is larger than or equal to the value of \(f\) at any other point in \(X\)).
-    We say that \emph{\(f\) attains its minimum at \(x_0\)} if we have \(f(x_0) \leq f(x)\) for all \(x \in X\).
+  Let \(X\) be a subset of \(\R\), and let \(f : X \to \R\) be a function, and let \(x_0 \in X\).
+  We say that \emph{\(f\) attains its maximum at \(x_0\)} if we have \(f(x_0) \geq f(x)\) for all \(x \in X\)
+  (i.e., the value of \(f\) at the point \(x_0\) is larger than or equal to the value of \(f\) at any other point in \(X\)).
+  We say that \emph{\(f\) attains its minimum at \(x_0\)} if we have \(f(x_0) \leq f(x)\) for all \(x \in X\).
 \end{definition}
 
 \begin{remark}\label{9.6.6}
-    If a function attains its maximum somewhere, then it must be bounded from above.
-    Similarly if it attains its minimum somewhere, then it must be bounded from below.
-    These notions of maxima and minima are \emph{global}.
+  If a function attains its maximum somewhere, then it must be bounded from above.
+  Similarly if it attains its minimum somewhere, then it must be bounded from below.
+  These notions of maxima and minima are \emph{global}.
 \end{remark}
 
 \begin{proposition}[Maximum principle]\label{9.6.7}
-    Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a function continuous on \([a, b]\).
-    Then \(f\) attains its maximum at some point \(x_{\max} \in [a, b]\), and also attains its minimum at some point \(x_{\min} \in [a, b]\).
+  Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a function continuous on \([a, b]\).
+  Then \(f\) attains its maximum at some point \(x_{\max} \in [a, b]\), and also attains its minimum at some point \(x_{\min} \in [a, b]\).
 \end{proposition}
 
 \begin{proof}
-    From Lemma \ref{9.6.3} we know that \(f\) is bounded, thus there exists an \(M\) such that \(-M \leq f(x) \leq M\) for each \(x \in [a, b]\).
-    Now let \(E\) denote the
-    set
-    \[
-        E \coloneqq \{f(x) : x \in [a, b]\}.
-    \]
-    (In other words, \(E \coloneqq f([a, b])\).)
-    By what we just said, this set is a subset of \([-M, M]\).
-    It is also non-empty, since it contains for instance the point \(f(a)\).
-    Hence by the least upper bound principle, it has a supremum \(\sup(E)\) which is a real number.
+  From \cref{9.6.3} we know that \(f\) is bounded, thus there exists an \(M\) such that \(-M \leq f(x) \leq M\) for each \(x \in [a, b]\).
+  Now let \(E\) denote the
+  set
+  \[
+    E \coloneqq \{f(x) : x \in [a, b]\}.
+  \]
+  (In other words, \(E \coloneqq f([a, b])\).)
+  By what we just said, this set is a subset of \([-M, M]\).
+  It is also non-empty, since it contains for instance the point \(f(a)\).
+  Hence by the least upper bound principle, it has a supremum \(\sup(E)\) which is a real number.
 
-    Write \(m \coloneqq \sup(E)\).
-    By definition of supremum, we know that \(y \leq m\) for all \(y \in E\);
-    by definition of \(E\), this means that \(f(x) \leq m\) for all \(x \in [a, b]\).
-    Thus to show that \(f\) attains its maximum somewhere, it will suffice to find an \(x_{\max} \in [a, b]\) such that \(f(x_{\max}) = m\).
+  Write \(m \coloneqq \sup(E)\).
+  By definition of supremum, we know that \(y \leq m\) for all \(y \in E\);
+  by definition of \(E\), this means that \(f(x) \leq m\) for all \(x \in [a, b]\).
+  Thus to show that \(f\) attains its maximum somewhere, it will suffice to find an \(x_{\max} \in [a, b]\) such that \(f(x_{\max}) = m\).
 
-    Let \(n \geq 1\) be any integer.
-    Then \(m - \frac{1}{n} < m = \sup(E)\).
-    As \(\sup(E)\) is the least upper bound for \(E\), \(m - \frac{1}{n}\) cannot be an upper bound for \(E\), thus there exists a \(y \in E\) such that \(m - \frac{1}{n} < y\).
-    By definition of \(E\), this implies that there exists an \(x \in [a, b]\) such that \(m - \frac{1}{n} < f(x)\).
+  Let \(n \geq 1\) be any integer.
+  Then \(m - \frac{1}{n} < m = \sup(E)\).
+  As \(\sup(E)\) is the least upper bound for \(E\), \(m - \frac{1}{n}\) cannot be an upper bound for \(E\), thus there exists a \(y \in E\) such that \(m - \frac{1}{n} < y\).
+  By definition of \(E\), this implies that there exists an \(x \in [a, b]\) such that \(m - \frac{1}{n} < f(x)\).
 
-    We now choose a sequence \((x_n)_{n = 1}^\infty\) by choosing, for each \(n\), \(x_n\) to be an element of \([a, b]\) such that \(m - \frac{1}{n} < f(x_n)\).
-    (Again, this requires the axiom of choice;
-    however it is possible to prove this principle without the axiom of choice.
-    For instance, you will see a better proof of this proposition using the notion of \emph{compactness})
-    This is a sequence in \([a, b]\);
-    by the Heine-Borel theorem (Theorem \ref{9.1.24}), we can thus find a subsequence \((x_{n_j})_{j = 1}^\infty\), where \(n_1 < n_2 < \dots\), which converges to some limit \(x_{\max} \in [a, b]\).
-    Since \((x_{n_j})_{j = 1}^\infty\) converges to \(x_{\max}\), and \(f\) is continuous at \(x_{\max}\), we have as before that
-    \[
-        \lim_{j \to \infty} f(x_{n_j}) = f(x_{\max})
-    \]
-    On the other hand, by construction we know that
-    \[
-        f(x_{n_j}) > m - \frac{1}{n_j} \geq m - \frac{1}{j},
-    \]
-    and so by taking limits of both sides we see that
-    \[
-        f(x_{\max}) = \lim_{j \to \infty} f(x_{n_j}) \geq \lim_{j \to \infty} m - \frac{1}{j} = m.
-    \]
-    On the other hand, we know that \(f(x) \leq m\) for all \(x \in [a, b]\), so in particular \(f(x_{\max}) \leq m\).
-    Combining these two inequalities we see that \(f(x_{\max}) = m\) as desired.
+  We now choose a sequence \((x_n)_{n = 1}^\infty\) by choosing, for each \(n\), \(x_n\) to be an element of \([a, b]\) such that \(m - \frac{1}{n} < f(x_n)\).
+  (Again, this requires the axiom of choice;
+  however it is possible to prove this principle without the axiom of choice.
+  For instance, you will see a better proof of this proposition using the notion of \emph{compactness})
+  This is a sequence in \([a, b]\);
+  by the Heine-Borel theorem (\cref{9.1.24}), we can thus find a subsequence \((x_{n_j})_{j = 1}^\infty\), where \(n_1 < n_2 < \dots\), which converges to some limit \(x_{\max} \in [a, b]\).
+  Since \((x_{n_j})_{j = 1}^\infty\) converges to \(x_{\max}\), and \(f\) is continuous at \(x_{\max}\), we have as before that
+  \[
+    \lim_{j \to \infty} f(x_{n_j}) = f(x_{\max})
+  \]
+  On the other hand, by construction we know that
+  \[
+    f(x_{n_j}) > m - \frac{1}{n_j} \geq m - \frac{1}{j},
+  \]
+  and so by taking limits of both sides we see that
+  \[
+    f(x_{\max}) = \lim_{j \to \infty} f(x_{n_j}) \geq \lim_{j \to \infty} m - \frac{1}{j} = m.
+  \]
+  On the other hand, we know that \(f(x) \leq m\) for all \(x \in [a, b]\), so in particular \(f(x_{\max}) \leq m\).
+  Combining these two inequalities we see that \(f(x_{\max}) = m\) as desired.
 
-    By the least upper bound principle again, \(E\) has a infimum \(\inf(E)\) which is a real number.
-    Write \(m \coloneqq \inf(E)\).
-    By definition of infimum, we know that \(y \geq m\) for all \(y \in E\);
-    by definition of \(E\), this means that \(f(x) \geq m\) for all \(x \in [a, b]\).
-    Thus to show that \(f\) attains its minimum somewhere, it will suffice to find an \(x_{\min} \in [a, b]\) such that \(f(x_{\min}) = m\).
+  By the least upper bound principle again, \(E\) has a infimum \(\inf(E)\) which is a real number.
+  Write \(m \coloneqq \inf(E)\).
+  By definition of infimum, we know that \(y \geq m\) for all \(y \in E\);
+  by definition of \(E\), this means that \(f(x) \geq m\) for all \(x \in [a, b]\).
+  Thus to show that \(f\) attains its minimum somewhere, it will suffice to find an \(x_{\min} \in [a, b]\) such that \(f(x_{\min}) = m\).
 
-    Let \(n \geq 1\) be any integer.
-    Then \(m + \frac{1}{n} > m = \inf(E)\).
-    As \(\inf(E)\) is the greatest lower bound for \(E\), \(m + \frac{1}{n}\) cannot be an lower bound for \(E\), thus there exists a \(y \in E\) such that \(m + \frac{1}{n} > y\).
-    By definition of \(E\), this implies that there exists an \(x \in [a, b]\) such that \(m + \frac{1}{n} > f(x)\).
+  Let \(n \geq 1\) be any integer.
+  Then \(m + \frac{1}{n} > m = \inf(E)\).
+  As \(\inf(E)\) is the greatest lower bound for \(E\), \(m + \frac{1}{n}\) cannot be an lower bound for \(E\), thus there exists a \(y \in E\) such that \(m + \frac{1}{n} > y\).
+  By definition of \(E\), this implies that there exists an \(x \in [a, b]\) such that \(m + \frac{1}{n} > f(x)\).
 
-    We now choose a sequence \((x_n)_{n = 1}^\infty\) by choosing, for each \(n\), \(x_n\) to be an element of \([a, b]\) such that \(m + \frac{1}{n} > f(x_n)\).
-    (Again, this requires the axiom of choice)
-    This is a sequence in \([a, b]\);
-    by the Heine-Borel theorem (Theorem \ref{9.1.24}), we can thus find a subsequence \((x_{n_j})_{j = 1}^\infty\), where \(n_1 < n_2 < \dots\), which converges to some limit \(x_{\min} \in [a, b]\).
-    Since \((x_{n_j})_{j = 1}^\infty\) converges to \(x_{\min}\), and \(f\) is continuous at \(x_{\min}\), we have as before that
-    \[
-        \lim_{j \to \infty} f(x_{n_j}) = f(x_{\min})
-    \]
-    On the other hand, by construction we know that
-    \[
-        f(x_{n_j}) < m + \frac{1}{n_j} \leq m + \frac{1}{j},
-    \]
-    and so by taking limits of both sides we see that
-    \[
-        f(x_{\min}) = \lim_{j \to \infty} f(x_{n_j}) \leq \lim_{j \to \infty} m + \frac{1}{j} = m.
-    \]
-    On the other hand, we know that \(f(x) \geq m\) for all \(x \in [a, b]\), so in particular \(f(x_{\min}) \geq m\).
-    Combining these two inequalities we see that \(f(x_{\min}) = m\) as desired.
+  We now choose a sequence \((x_n)_{n = 1}^\infty\) by choosing, for each \(n\), \(x_n\) to be an element of \([a, b]\) such that \(m + \frac{1}{n} > f(x_n)\).
+  (Again, this requires the axiom of choice)
+  This is a sequence in \([a, b]\);
+  by the Heine-Borel theorem (\cref{9.1.24}), we can thus find a subsequence \((x_{n_j})_{j = 1}^\infty\), where \(n_1 < n_2 < \dots\), which converges to some limit \(x_{\min} \in [a, b]\).
+  Since \((x_{n_j})_{j = 1}^\infty\) converges to \(x_{\min}\), and \(f\) is continuous at \(x_{\min}\), we have as before that
+  \[
+    \lim_{j \to \infty} f(x_{n_j}) = f(x_{\min})
+  \]
+  On the other hand, by construction we know that
+  \[
+    f(x_{n_j}) < m + \frac{1}{n_j} \leq m + \frac{1}{j},
+  \]
+  and so by taking limits of both sides we see that
+  \[
+    f(x_{\min}) = \lim_{j \to \infty} f(x_{n_j}) \leq \lim_{j \to \infty} m + \frac{1}{j} = m.
+  \]
+  On the other hand, we know that \(f(x) \geq m\) for all \(x \in [a, b]\), so in particular \(f(x_{\min}) \geq m\).
+  Combining these two inequalities we see that \(f(x_{\min}) = m\) as desired.
 \end{proof}
 
 \begin{remark}\label{9.6.8}
-    Strictly speaking, ``maximum principle'' is a misnomer, since the principle also concerns the minimum.
-    Perhaps a more precise name would have been ``extremum principle'';
-    the word ``extremum'' is used to denote either a maximum or a minimum.
+  Strictly speaking, ``maximum principle'' is a misnomer, since the principle also concerns the minimum.
+  Perhaps a more precise name would have been ``extremum principle'';
+  the word ``extremum'' is used to denote either a maximum or a minimum.
 \end{remark}
 
 \begin{note}
-    The maximum principle (Proposition \ref{9.6.7}) does not prevent a function from attaining its maximum or minimum at more than one point.
+  The maximum principle (\cref{9.6.7}) does not prevent a function from attaining its maximum or minimum at more than one point.
 \end{note}
 
 \begin{note}
-    Let us write \(\sup_{x \in [a, b]} f(x)\) as short-hand for \(\sup\{f(x) : x \in [a, b]\}\), and similarly define \(\inf_{x \in [a, b]} f(x)\).
-    The maximum principle (Proposition \ref{9.6.7}) thus asserts that \(m \coloneqq \sup_{x \in [a, b]} f(x)\) is a real number and is the maximum value of \(f\) on \([a, b]\), i.e., there is at least one point \(x_{\max}\) in \([a, b]\) for which \(f(x_{\max}) = m\), and for every other \(x \in [a, b]\), \(f(x)\) is less than or equal to \(m\).
-    Similarly \(\inf_{x \in [a, b]} f(x)\) is the minimum value of \(f\) on \([a, b]\).
+  Let us write \(\sup_{x \in [a, b]} f(x)\) as short-hand for \(\sup\{f(x) : x \in [a, b]\}\), and similarly define \(\inf_{x \in [a, b]} f(x)\).
+  The maximum principle (\cref{9.6.7}) thus asserts that \(m \coloneqq \sup_{x \in [a, b]} f(x)\) is a real number and is the maximum value of \(f\) on \([a, b]\), i.e., there is at least one point \(x_{\max}\) in \([a, b]\) for which \(f(x_{\max}) = m\), and for every other \(x \in [a, b]\), \(f(x)\) is less than or equal to \(m\).
+  Similarly \(\inf_{x \in [a, b]} f(x)\) is the minimum value of \(f\) on \([a, b]\).
 \end{note}
 
 \begin{remark}\label{9.6.9}
-    You may encounter a rather different ``maximum principle'' in complex analysis or partial differential equations, involving analytic functions and harmonic functions respectively, instead of continuous functions.
-    Those maximum principles are not directly related to this one
-    (though they are also concerned with whether maxima exist, and where the maxima are located).
+  You may encounter a rather different ``maximum principle'' in complex analysis or partial differential equations, involving analytic functions and harmonic functions respectively, instead of continuous functions.
+  Those maximum principles are not directly related to this one
+  (though they are also concerned with whether maxima exist, and where the maxima are located).
 \end{remark}
 
 \exercisesection
 
 \begin{exercise}\label{ex 9.6.1}
-    Give example of
-    \begin{enumerate}
-        \item a function \(f : (1, 2) \to \R\) which is continuous and bounded, attains its minimum somewhere, but does not attain its maximum anywhere;
-        \item a function \(f : [0, \infty) \to \R\) which is continuous, bounded, attains its maximum somewhere, but does not attain its minimum anywhere;
-        \item a function \(f : [-1, 1] \to \R\) which is bounded but does not attain its minimum anywhere or its maximum anywhere.
-        \item a function \(f : [-1, 1] \to \R\) which has no upper bound and no lower bound.
-    \end{enumerate}
-    Explain why none of the examples you construct violate the maximum principle.
+  Give example of
+  \begin{enumerate}
+    \item a function \(f : (1, 2) \to \R\) which is continuous and bounded, attains its minimum somewhere, but does not attain its maximum anywhere;
+    \item a function \(f : [0, \infty) \to \R\) which is continuous, bounded, attains its maximum somewhere, but does not attain its minimum anywhere;
+    \item a function \(f : [-1, 1] \to \R\) which is bounded but does not attain its minimum anywhere or its maximum anywhere.
+    \item a function \(f : [-1, 1] \to \R\) which has no upper bound and no lower bound.
+  \end{enumerate}
+  Explain why none of the examples you construct violate the maximum principle.
 \end{exercise}
 
 \begin{proof}
-    Let \(f_a : (1, 2) \to \R\) be a function where \(f_a(x) = \abs{x - 1.5}\).
-    Then by Proposition \ref{9.4.12} and Proposition \ref{9.4.13} \(f_a\) is continuous.
-    Since \(f_a\big((1, 2)\big) = [0, 0.5)\), by Definition \ref{9.6.1} \(f_a\) is bounded.
-    Since \(f_a\big((1, 2)\big) = [0, 0.5)\), by Definition \ref{9.6.5} \(f_a\) attains its minimum at \(x = 1.5\).
-    Since \(0.5 \notin f_a\big((1, 2)\big)\), by Definition \ref{9.6.5} \(f_a\) does not attain its maximum anywhere.
-    Since the domain of \(f_a\) is not closed, \(f_a\) does not violate the maximum principle (Proposition \ref{9.6.7}).
+  Let \(f_a : (1, 2) \to \R\) be a function where \(f_a(x) = \abs{x - 1.5}\).
+  Then by \cref{9.4.12} and \cref{9.4.13} \(f_a\) is continuous.
+  Since \(f_a\big((1, 2)\big) = [0, 0.5)\), by \cref{9.6.1} \(f_a\) is bounded.
+  Since \(f_a\big((1, 2)\big) = [0, 0.5)\), by \cref{9.6.5} \(f_a\) attains its minimum at \(x = 1.5\).
+  Since \(0.5 \notin f_a\big((1, 2)\big)\), by \cref{9.6.5} \(f_a\) does not attain its maximum anywhere.
+  Since the domain of \(f_a\) is not closed, \(f_a\) does not violate the maximum principle (\cref{9.6.7}).
 
-    Let \(f_b : [0, \infty) \to \R\) be a function where \(f_b(x) = 0.5^x\).
-    Then by Proposition \ref{9.4.10} \(f_b\) is continuous.
-    Since \(f_b\big([0, \infty)\big) = (0, 1]\), by Definition \ref{9.6.1} \(f_b\) is bounded.
-    Since \(f_b\big([0, \infty)\big) = (0, 1]\), by Definition \ref{9.6.5} \(f_b\) attains its maximum at \(x = 0\).
-    Since \(0 \notin f_b\big([0, \infty)\big)\), by Definition \ref{9.6.5} \(f_b\) does not attain its minimum anywhere.
-    Since the domain of \(f_b\) is not closed, \(f_b\) does not violate the maximum principle (Proposition \ref{9.6.7}).
+  Let \(f_b : [0, \infty) \to \R\) be a function where \(f_b(x) = 0.5^x\).
+  Then by \cref{9.4.10} \(f_b\) is continuous.
+  Since \(f_b\big([0, \infty)\big) = (0, 1]\), by \cref{9.6.1} \(f_b\) is bounded.
+  Since \(f_b\big([0, \infty)\big) = (0, 1]\), by \cref{9.6.5} \(f_b\) attains its maximum at \(x = 0\).
+  Since \(0 \notin f_b\big([0, \infty)\big)\), by \cref{9.6.5} \(f_b\) does not attain its minimum anywhere.
+  Since the domain of \(f_b\) is not closed, \(f_b\) does not violate the maximum principle (\cref{9.6.7}).
 
-    Let \(f_c : [-1, 1] \to \R\) be a function where
-    \[
-        f(x) = \begin{cases}
-            0 & \text{if } x = -1;        \\
-            x & \text{if } x \in (-1, 1); \\
-            0 & \text{if } x = 1.
-        \end{cases}
-    \]
-    Since \(f_c\big([-1, 1]\big) = (-1, 1)\), by Definition \ref{9.6.1} \(f_c\) is bounded.
-    Since \(-1 \notin f_c\big([-1, 1]\big)\), by Definition \ref{9.6.5} \(f_c\) does not attain its minimum anywhere.
-    Since \(1 \notin f_c\big([-1, 1]\big)\), by Definition \ref{9.6.5} \(f_c\) does not attain its maximum anywhere.
-    Since \(f_c\) is not continuous on its domain, \(f_c\) does not violate the maximum principle (Proposition \ref{9.6.7}).
+  Let \(f_c : [-1, 1] \to \R\) be a function where
+  \[
+    f(x) = \begin{cases}
+      0 & \text{if } x = -1;        \\
+      x & \text{if } x \in (-1, 1); \\
+      0 & \text{if } x = 1.
+    \end{cases}
+  \]
+  Since \(f_c\big([-1, 1]\big) = (-1, 1)\), by \cref{9.6.1} \(f_c\) is bounded.
+  Since \(-1 \notin f_c\big([-1, 1]\big)\), by \cref{9.6.5} \(f_c\) does not attain its minimum anywhere.
+  Since \(1 \notin f_c\big([-1, 1]\big)\), by \cref{9.6.5} \(f_c\) does not attain its maximum anywhere.
+  Since \(f_c\) is not continuous on its domain, \(f_c\) does not violate the maximum principle (\cref{9.6.7}).
 
-    Let \(f_d : [-1, 1] \to \R\) be a function where
-    \[
-        f(x) = \begin{cases}
-            1 / x & \text{if } x \in [-1, 0) \cap (0, 1]; \\
-            0     & \text{if } x = 0.
-        \end{cases}
-    \]
-    Since \(f_d\big([-1, 1]\big) = (-\infty, -1) \cup \{0\} \cup (1, \infty)\), by Definition \ref{9.6.1} \(f_d\) is unbounded.
-    Since \(f_d\) is not bounded, \(f_d\) does not violate the maximum principle (Proposition \ref{9.6.7}).
+  Let \(f_d : [-1, 1] \to \R\) be a function where
+  \[
+    f(x) = \begin{cases}
+      1 / x & \text{if } x \in [-1, 0) \cap (0, 1]; \\
+      0     & \text{if } x = 0.
+    \end{cases}
+  \]
+  Since \(f_d\big([-1, 1]\big) = (-\infty, -1) \cup \{0\} \cup (1, \infty)\), by \cref{9.6.1} \(f_d\) is unbounded.
+  Since \(f_d\) is not bounded, \(f_d\) does not violate the maximum principle (\cref{9.6.7}).
 \end{proof}
 
 \begin{exercise}\label{ex 9.6.2}
-    Let \(X \subseteq \R\).
-    If \(f, g: X \to \R\) are bounded functions, show that \(f + g\), \(f - g\), and \(f \cdot g\) are also bounded functions.
-    If we furthermore assume that \(g(x) \neq 0\) for all \(x \in X\), is it true that \(f / g\) is bounded?
-    Prove this or give a counterexample.
+  Let \(X \subseteq \R\).
+  If \(f, g: X \to \R\) are bounded functions, show that \(f + g\), \(f - g\), and \(f \cdot g\) are also bounded functions.
+  If we furthermore assume that \(g(x) \neq 0\) for all \(x \in X\), is it true that \(f / g\) is bounded?
+  Prove this or give a counterexample.
 \end{exercise}
 
 \begin{proof}
-    Suppose that \(f\) is bounded by \(M \in \R^+\) and \(g\) is bounded by \(N \in \R^+\).
-    Then we have
-    \begin{align*}
-                 & \forall x \in X, \big(\abs{f(x)} \leq M\big) \land \big(\abs{g(x)} \leq N\big) & \text{(by Definition \ref{9.6.1})} \\
-        \implies & \big(-M \leq f(x) \leq M\big) \land \big(-N \leq g(x) \leq N\big)                                                   \\
-        \implies & \big(-M \leq f(x) \leq M\big) \land \big(N \geq -g(x) \geq -N\big)                                                  \\
-        \implies & \begin{cases}
-                       -(M + N) \leq f(x) + g(x) \leq M + N \\
-                       -(M + N) \leq f(x) - g(x) \leq M + N \\
-                       -MN \leq f(x) g(x) \leq MN
-                   \end{cases}                                                                                \\
-        \implies & \begin{cases}
-                       \abs{f(x) + g(x)} \leq M + N \\
-                       \abs{f(x) - g(x)} \leq M + N \\
-                       \abs{f(x) g(x)} \leq MN
-                   \end{cases}
-    \end{align*}
-    Thus by Definition \ref{9.6.1} \(f + g\), \(f - g\), \(f \cdot g\) are bounded.
+  Suppose that \(f\) is bounded by \(M \in \R^+\) and \(g\) is bounded by \(N \in \R^+\).
+  Then we have
+  \begin{align*}
+             & \forall x \in X, \big(\abs{f(x)} \leq M\big) \land \big(\abs{g(x)} \leq N\big) & \text{(by \cref{9.6.1})} \\
+    \implies & \big(-M \leq f(x) \leq M\big) \land \big(-N \leq g(x) \leq N\big)                                         \\
+    \implies & \big(-M \leq f(x) \leq M\big) \land \big(N \geq -g(x) \geq -N\big)                                        \\
+    \implies & \begin{cases}
+                 -(M + N) \leq f(x) + g(x) \leq M + N \\
+                 -(M + N) \leq f(x) - g(x) \leq M + N \\
+                 -MN \leq f(x) g(x) \leq MN
+               \end{cases}                                                                      \\
+    \implies & \begin{cases}
+                 \abs{f(x) + g(x)} \leq M + N \\
+                 \abs{f(x) - g(x)} \leq M + N \\
+                 \abs{f(x) g(x)} \leq MN
+               \end{cases}
+  \end{align*}
+  Thus by \cref{9.6.1} \(f + g\), \(f - g\), \(f \cdot g\) are bounded.
 
-    Now we show an counterexample when \(g(x) \neq 0\) for all \(x \in X\).
-    Let \(X = (0, \infty)\), let \(f(x) = 1\) and let \(g(x) = 1 / x\).
-    Then \(g(x) \neq 0\) for all \(x \in X\) and is bounded by \(1\), but \((f / g)(X) = (0, \infty)\) is unbounded.
+  Now we show an counterexample when \(g(x) \neq 0\) for all \(x \in X\).
+  Let \(X = (0, \infty)\), let \(f(x) = 1\) and let \(g(x) = 1 / x\).
+  Then \(g(x) \neq 0\) for all \(x \in X\) and is bounded by \(1\), but \((f / g)(X) = (0, \infty)\) is unbounded.
 \end{proof}

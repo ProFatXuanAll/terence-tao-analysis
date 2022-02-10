@@ -1,50 +1,50 @@
 \section{Continuity and product spaces}\label{sec 2.2}
 
 \begin{note}
-    Given two functions \(f : X \to Y\) and \(g : X \to Z\), one can define their \emph{direct sum} \(f \oplus g : X \to Y \times Z\) defined by \(f \oplus g(x) \coloneqq \big(f(x), g(x)\big)\), i.e., this is the function taking values in the Cartesian product \(Y \times Z\) whose first co-ordinate is \(f(x)\) and whose second co-ordinate is \(g(x)\)
-    (cf. Exercise 3.5.7 in Analysis I).
+  Given two functions \(f : X \to Y\) and \(g : X \to Z\), one can define their \emph{direct sum} \(f \oplus g : X \to Y \times Z\) defined by \(f \oplus g(x) \coloneqq \big(f(x), g(x)\big)\), i.e., this is the function taking values in the Cartesian product \(Y \times Z\) whose first co-ordinate is \(f(x)\) and whose second co-ordinate is \(g(x)\)
+  (cf. Exercise 3.5.7 in Analysis I).
 \end{note}
 
 \begin{lemma}\label{2.2.1}
-    Let \(f : X \to \R\) and \(g : X \to \R\) be functions, and let \(f \oplus g : X \to \R^2\) be their direct sum.
-    We give \(\R^2\) the Euclidean metric.
-    \begin{enumerate}
-        \item If \(x_0 \in X\), then \(f\) and \(g\) are both continuous at \(x_0\) if and only if \(f \oplus g\) is continuous at \(x_0\).
-        \item \(f\) and \(g\) are both continuous if and only if \(f \oplus g\) is continuous.
-    \end{enumerate}
+  Let \(f : X \to \R\) and \(g : X \to \R\) be functions, and let \(f \oplus g : X \to \R^2\) be their direct sum.
+  We give \(\R^2\) the Euclidean metric.
+  \begin{enumerate}
+    \item If \(x_0 \in X\), then \(f\) and \(g\) are both continuous at \(x_0\) if and only if \(f \oplus g\) is continuous at \(x_0\).
+    \item \(f\) and \(g\) are both continuous if and only if \(f \oplus g\) is continuous.
+  \end{enumerate}
 \end{lemma}
 
 \begin{proof}{(a)}
-    Let \((X, d)\) be a metric space.
-    Then we have
-    \begin{align*}
-             & f, g \text{ are continuous at } x_0                                                                                                                             \\
-             & \text{from } (X, d) \text{ to } (\R, d_{l^2}|_{\R \times \R})                                                                                                   \\
-        \iff & \text{every sequence } (x^{(n)})_{n = 1}^\infty \text{ in } X \text{ satisfies the following:}                                                                  \\
-             & \lim_{n \to \infty} d\big(x^{(n)}, x_0\big) = 0 \text{ implies }                                                                                                \\
-             & \begin{cases}
-                   \lim_{n \to \infty} d_{l^2}|_{\R \times \R}\big(f(x^{(n)}), f(x_0)\big) = 0 \\
-                   \lim_{n \to \infty} d_{l^2}|_{\R \times \R}\big(g(x^{(n)}), g(x_0)\big) = 0
-               \end{cases}                                          & \text{(by Theorem \ref{2.1.4}(a)(b))}                                                                    \\
-        \iff & \text{every sequence } (x^{(n)})_{n = 1}^\infty \text{ in } X \text{ satisfies the following:}                                                                  \\
-             & \lim_{n \to \infty} d\big(x^{(n)}, x_0\big) = 0 \text{ implies }                                                                                                \\
-             & \lim_{n \to \infty} d_{l^2}|_{\R^2 \times \R^2}\Big(\big(f(x^{(n)}), g(x^{(n)})\big), \big(f(x_0), g(x_0)\big)\Big) = 0 & \text{(by Proposition \ref{1.1.18})}  \\
-        \iff & f \oplus g \text{ is continuous at } x_0                                                                                                                        \\
-             & \text{from } (X, d) \text{ to } (\R^2, d_{l^2}|_{\R^2 \times \R^2}).                                                    & \text{(by Theorem \ref{2.1.4}(a)(b))}
-    \end{align*}
+  Let \((X, d)\) be a metric space.
+  Then we have
+  \begin{align*}
+         & f, g \text{ are continuous at } x_0                                                                                                                      \\
+         & \text{from } (X, d) \text{ to } (\R, d_{l^2}|_{\R \times \R})                                                                                            \\
+    \iff & \text{every sequence } (x^{(n)})_{n = 1}^\infty \text{ in } X \text{ satisfies the following:}                                                           \\
+         & \lim_{n \to \infty} d\big(x^{(n)}, x_0\big) = 0 \text{ implies }                                                                                         \\
+         & \begin{cases}
+             \lim_{n \to \infty} d_{l^2}|_{\R \times \R}\big(f(x^{(n)}), f(x_0)\big) = 0 \\
+             \lim_{n \to \infty} d_{l^2}|_{\R \times \R}\big(g(x^{(n)}), g(x_0)\big) = 0
+           \end{cases}                                          & \text{(by \cref{2.1.4}(a)(b))}                                                                    \\
+    \iff & \text{every sequence } (x^{(n)})_{n = 1}^\infty \text{ in } X \text{ satisfies the following:}                                                           \\
+         & \lim_{n \to \infty} d\big(x^{(n)}, x_0\big) = 0 \text{ implies }                                                                                         \\
+         & \lim_{n \to \infty} d_{l^2}|_{\R^2 \times \R^2}\Big(\big(f(x^{(n)}), g(x^{(n)})\big), \big(f(x_0), g(x_0)\big)\Big) = 0 & \text{(by \cref{1.1.18})}      \\
+    \iff & f \oplus g \text{ is continuous at } x_0                                                                                                                 \\
+         & \text{from } (X, d) \text{ to } (\R^2, d_{l^2}|_{\R^2 \times \R^2}).                                                    & \text{(by \cref{2.1.4}(a)(b))}
+  \end{align*}
 \end{proof}
 
 \begin{proof}{(b)}
-    Let \((X, d)\) be a metric space.
-    Then we have
-    \begin{align*}
-             & f, g \text{ are continuous from } (X, d) \text{ to } (\R, d_{l^2}|_{\R \times \R})                                                  \\
-        \iff & \forall x_0 \in X, f, g \text{ are continuous at } x_0                                                                              \\
-             & \text{from } (X, d) \text{ to } (\R, d_{l^2}|_{\R \times \R})                                  & \text{(by Definition \ref{2.1.1})} \\
-        \iff & \forall x_0 \in X, f \oplus g \text{ is continuous at } x_0                                    & \text{(by Lemma \ref{2.2.1}(a))}   \\
-             & \text{from } (X, d) \text{ to } (\R^2, d_{l^2}|_{\R^2 \times \R^2})                                                                 \\
-        \iff & f \oplus g \text{ is continuous from } (X, d) \text{ to } (\R^2, d_{l^2}|_{\R^2 \times \R^2}). & \text{(by Definition \ref{2.1.1})}
-    \end{align*}
+  Let \((X, d)\) be a metric space.
+  Then we have
+  \begin{align*}
+         & f, g \text{ are continuous from } (X, d) \text{ to } (\R, d_{l^2}|_{\R \times \R})                                           \\
+    \iff & \forall x_0 \in X, f, g \text{ are continuous at } x_0                                                                       \\
+         & \text{from } (X, d) \text{ to } (\R, d_{l^2}|_{\R \times \R})                                  & \text{(by \cref{2.1.1})}    \\
+    \iff & \forall x_0 \in X, f \oplus g \text{ is continuous at } x_0                                    & \text{(by \cref{2.2.1}(a))} \\
+         & \text{from } (X, d) \text{ to } (\R^2, d_{l^2}|_{\R^2 \times \R^2})                                                          \\
+    \iff & f \oplus g \text{ is continuous from } (X, d) \text{ to } (\R^2, d_{l^2}|_{\R^2 \times \R^2}). & \text{(by \cref{2.1.1})}
+  \end{align*}
 \end{proof}
 
 \begin{additional corollary}\label{ac 2.2.1}
@@ -53,580 +53,580 @@ Let \((\R, d_{\R})\) be a metric space where \(d_{\R}\) can be \(d_{l^1}|_{\R \t
 Let \((\R^2, d_{\R^2})\) be a metric space where \(d_{\R^2}\) can be \(d_{l^1}|_{\R^2 \times \R^2}\), \(d_{l^2}|_{\R^2 \times \R^2}\) or \(d_{l^\infty}|_{\R^2 \times \R^2}\).
 Let \(f : X \to \R\) and \(g : X \to \R\) be functions, and let \(f \oplus g : X \to \R^2\) be their direct sum.
 \begin{enumerate}
-    \item If \(x_0 \in X\), then \(f\) and \(g\) are both continuous at \(x_0\) from \((X, d)\) to \((\R, d_{\R})\) if and only if \(f \oplus g\) is continuous at \(x_0\) from \((X, d)\) to \((\R^2, d_{\R^2})\).
-    \item \(f\) and \(g\) are both continuous from \((X, d)\) to \((\R, d_{\R})\) if and only if \(f \oplus g\) is continuous from \((X, d)\) to \((\R^2, d_{\R^2})\).
+  \item If \(x_0 \in X\), then \(f\) and \(g\) are both continuous at \(x_0\) from \((X, d)\) to \((\R, d_{\R})\) if and only if \(f \oplus g\) is continuous at \(x_0\) from \((X, d)\) to \((\R^2, d_{\R^2})\).
+  \item \(f\) and \(g\) are both continuous from \((X, d)\) to \((\R, d_{\R})\) if and only if \(f \oplus g\) is continuous from \((X, d)\) to \((\R^2, d_{\R^2})\).
 \end{enumerate}
 \end{additional corollary}
 
 \begin{proof}
-    By Proposition \ref{1.1.18} and Lemma \ref{2.2.1} we are done.
+  By \cref{1.1.18} and \cref{2.2.1} we are done.
 \end{proof}
 
 \begin{lemma}\label{2.2.2}
-    The addition function \((x, y) \mapsto x + y\), the subtraction function \((x, y) \mapsto x - y\), the multiplication function \((x, y) \mapsto xy\), the maximum function \((x, y) \mapsto \max(x, y)\), and the minimum function \((x, y) \mapsto \min(x, y)\), are all continuous functions from \(\R^2\) to \(\R\).
-    The division function \((x, y) \mapsto x / y\) is a continuous function from \(\R \times (\R \setminus \{0\}) = \{(x, y) \in \R^2 : y \neq 0\}\) to \(\R\).
-    For any real number \(c\), the function \(x \mapsto cx\) is a continuous function from \(\R\) to \(\R\).
+  The addition function \((x, y) \mapsto x + y\), the subtraction function \((x, y) \mapsto x - y\), the multiplication function \((x, y) \mapsto xy\), the maximum function \((x, y) \mapsto \max(x, y)\), and the minimum function \((x, y) \mapsto \min(x, y)\), are all continuous functions from \(\R^2\) to \(\R\).
+  The division function \((x, y) \mapsto x / y\) is a continuous function from \(\R \times (\R \setminus \{0\}) = \{(x, y) \in \R^2 : y \neq 0\}\) to \(\R\).
+  For any real number \(c\), the function \(x \mapsto cx\) is a continuous function from \(\R\) to \(\R\).
 \end{lemma}
 
 \begin{proof}
-    First we show that the addition, subtraction, multiplication, maximum and minimum functions from \(\R^2\) to \(\R\) are continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
-    Let \((x, y) \in \R^2\) and let \((x^{(n)}, y^{(n)})_{n = 1}^\infty\) be a sequence in \(\R^2\) such that
-    \[
-        \lim_{n \to \infty} d_{l^1}|_{\R^2 \times \R^2}\big((x^{(n)}, y^{(n)}), (x, y)\big) = 0
-    \]
-    By limit laws we know that
-    \begin{align*}
-         & \lim_{n \to \infty} d_{l^1}|_{\R \times \R}(x^{(n)} + y^{(n)}, x + y) = 0                   \\
-         & \lim_{n \to \infty} d_{l^1}|_{\R \times \R}(x^{(n)} - y^{(n)}, x - y) = 0                   \\
-         & \lim_{n \to \infty} d_{l^1}|_{\R \times \R}(x^{(n)} y^{(n)}, xy) = 0                        \\
-         & \lim_{n \to \infty} d_{l^1}|_{\R \times \R}\big(\max(x^{(n)}, y^{(n)}), \max(x, y)\big) = 0 \\
-         & \lim_{n \to \infty} d_{l^1}|_{\R \times \R}\big(\min(x^{(n)}, y^{(n)}), \min(x, y)\big) = 0 \\
-    \end{align*}
-    Since \((x^{(n)}, y^{(n)})_{n = 1}^\infty\) is arbitrary, by Theorem \ref{2.1.4}(a)(b) we know that the addition, subtraction, multiplication, maximum and minimum functions from \(\R^2\) to \(\R\) are continuous at \((x, y)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
-    Since \((x, y)\) is arbitrary, by Theorem \ref{2.1.5}(a)(b) we know that the addition, subtraction, multiplication, maximum and minimum functions from \(\R^2\) to \(\R\) are continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  First we show that the addition, subtraction, multiplication, maximum and minimum functions from \(\R^2\) to \(\R\) are continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Let \((x, y) \in \R^2\) and let \((x^{(n)}, y^{(n)})_{n = 1}^\infty\) be a sequence in \(\R^2\) such that
+  \[
+    \lim_{n \to \infty} d_{l^1}|_{\R^2 \times \R^2}\big((x^{(n)}, y^{(n)}), (x, y)\big) = 0
+  \]
+  By limit laws we know that
+  \begin{align*}
+     & \lim_{n \to \infty} d_{l^1}|_{\R \times \R}(x^{(n)} + y^{(n)}, x + y) = 0                   \\
+     & \lim_{n \to \infty} d_{l^1}|_{\R \times \R}(x^{(n)} - y^{(n)}, x - y) = 0                   \\
+     & \lim_{n \to \infty} d_{l^1}|_{\R \times \R}(x^{(n)} y^{(n)}, xy) = 0                        \\
+     & \lim_{n \to \infty} d_{l^1}|_{\R \times \R}\big(\max(x^{(n)}, y^{(n)}), \max(x, y)\big) = 0 \\
+     & \lim_{n \to \infty} d_{l^1}|_{\R \times \R}\big(\min(x^{(n)}, y^{(n)}), \min(x, y)\big) = 0 \\
+  \end{align*}
+  Since \((x^{(n)}, y^{(n)})_{n = 1}^\infty\) is arbitrary, by \cref{2.1.4}(a)(b) we know that the addition, subtraction, multiplication, maximum and minimum functions from \(\R^2\) to \(\R\) are continuous at \((x, y)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Since \((x, y)\) is arbitrary, by \cref{2.1.5}(a)(b) we know that the addition, subtraction, multiplication, maximum and minimum functions from \(\R^2\) to \(\R\) are continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
 
-    Next we show that the division function from \(E = \R \times (\R \setminus \{0\})\) to \(\R\) is continuous from \((E, d_{l^1}|_{E \times E})\) to \((\R, d_{l^1}|_{\R \times \R})\).
-    Let \((x, y) \in E\) and let \((x^{(n)}, y^{(n)})_{n = 1}^\infty\) be a sequence in \(E\) such that
-    \[
-        \lim_{n \to \infty} d_{l^1}|_{E \times E}\big((x^{(n)}, y^{(n)}), (x, y)\big) = 0
-    \]
-    By limit laws we know that
-    \[
-        \lim_{n \to \infty} d_{l^1}|_{\R \times \R}(x^{(n)} / y^{(n)}, x / y) = 0.
-    \]
-    Thus using similar arguments as above we know that the division function from \(E\) to \(\R\) is continuous from \((E, d_{l^1}|_{E \times E})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Next we show that the division function from \(E = \R \times (\R \setminus \{0\})\) to \(\R\) is continuous from \((E, d_{l^1}|_{E \times E})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Let \((x, y) \in E\) and let \((x^{(n)}, y^{(n)})_{n = 1}^\infty\) be a sequence in \(E\) such that
+  \[
+    \lim_{n \to \infty} d_{l^1}|_{E \times E}\big((x^{(n)}, y^{(n)}), (x, y)\big) = 0
+  \]
+  By limit laws we know that
+  \[
+    \lim_{n \to \infty} d_{l^1}|_{\R \times \R}(x^{(n)} / y^{(n)}, x / y) = 0.
+  \]
+  Thus using similar arguments as above we know that the division function from \(E\) to \(\R\) is continuous from \((E, d_{l^1}|_{E \times E})\) to \((\R, d_{l^1}|_{\R \times \R})\).
 
-    Finally we show that the constant multiplication function from \(\R\) to \(\R\) is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
-    Let \(c, x \in \R\) and let \((x^{(n)})_{n = 1}^\infty\) be a sequence in \(\R\) such that
-    \[
-        \lim_{n \to \infty} d_{l^1}|_{\R \times \R}(x^{(n)}, x) = 0.
-    \]
-    By limit laws we know that
-    \[
-        \lim_{n \to \infty} d_{l^1}|_{\R \times \R}(cx^{(n)}, cx) = 0.
-    \]
-    Thus using similar arguments as above we know that the constant function from \(\R\) to \(\R\) is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Finally we show that the constant multiplication function from \(\R\) to \(\R\) is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Let \(c, x \in \R\) and let \((x^{(n)})_{n = 1}^\infty\) be a sequence in \(\R\) such that
+  \[
+    \lim_{n \to \infty} d_{l^1}|_{\R \times \R}(x^{(n)}, x) = 0.
+  \]
+  By limit laws we know that
+  \[
+    \lim_{n \to \infty} d_{l^1}|_{\R \times \R}(cx^{(n)}, cx) = 0.
+  \]
+  Thus using similar arguments as above we know that the constant function from \(\R\) to \(\R\) is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
 \end{proof}
 
 \begin{corollary}\label{2.2.3}
-    Let \((X, d)\) be a metric space, let \(f : X \to \R\) and \(g : X \to \R\) be functions.
-    Let \(c\) be a real number.
-    \begin{enumerate}
-        \item If \(x_0 \in X\) and \(f\) and \(g\) are continuous at \(x_0\), then the functions \(f + g : X \to \R\), \(f - g : X \to \R\), \(fg : X \to \R\), \(\max(f, g) : X \to \R\), \(\min(f, g) : X \to \R\), and \(cf : X \to \R\) (see Definition 9.2.1 in Analysis I for definitions) are also continuous at \(x_0\).
-              If \(g(x) \neq 0\) for all \(x \in X\), then \(f / g : X \to \R\) is also continuous at \(x_0\).
-        \item If \(f\) and \(g\) are continuous, then the functions \(f + g : X \to \R\), \(f - g : X \to \R\), \(fg : X \to \R\), \(\max(f, g) : X \to \R\), \(\min(f, g) : X \to \R\), and \(cf : X \to \R\) are also continuous.
-              If \(g(x) \neq 0\) for all \(x \in X\), then \(f / g : X \to \R\) is also continuous.
-    \end{enumerate}
+  Let \((X, d)\) be a metric space, let \(f : X \to \R\) and \(g : X \to \R\) be functions.
+  Let \(c\) be a real number.
+  \begin{enumerate}
+    \item If \(x_0 \in X\) and \(f\) and \(g\) are continuous at \(x_0\), then the functions \(f + g : X \to \R\), \(f - g : X \to \R\), \(fg : X \to \R\), \(\max(f, g) : X \to \R\), \(\min(f, g) : X \to \R\), and \(cf : X \to \R\) (see Definition 9.2.1 in Analysis I for definitions) are also continuous at \(x_0\).
+          If \(g(x) \neq 0\) for all \(x \in X\), then \(f / g : X \to \R\) is also continuous at \(x_0\).
+    \item If \(f\) and \(g\) are continuous, then the functions \(f + g : X \to \R\), \(f - g : X \to \R\), \(fg : X \to \R\), \(\max(f, g) : X \to \R\), \(\min(f, g) : X \to \R\), and \(cf : X \to \R\) are also continuous.
+          If \(g(x) \neq 0\) for all \(x \in X\), then \(f / g : X \to \R\) is also continuous.
+  \end{enumerate}
 \end{corollary}
 
 \begin{proof}
-    We first prove (a). Since \(f, g\) are continuous at \(x_0\) from \((X, d)\) to \((\R, d_{l^1}|_{\R \times \R})\), then by Additional Corollary \ref{ac 2.2.1}(a) \(f \oplus g : X \to \R^2\) is also continuous at \(x_0\) from \((X, d)\) to \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\).
-    On the other hand, from Lemma \ref{2.2.2} the function \((x, y) \mapsto x + y\) is continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\), and in particular is continuous at \(f \oplus g(x_0)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
-    If we then compose these two functions using Corollary \ref{2.1.7} we conclude that \(f + g : X \to \R\) is continuous from \((X, d)\) to \((\R, d_{l^1}|_{\R \times \R})\).
-    A similar argument gives the continuity of \(f - g\), \(fg\), \(\max(f, g)\), \(\min(f, g)\) and \(cf\).
-    To prove the claim for \(f / g\), we first use Exercise \ref{ex 2.1.7} to restrict the range of \(g\) from \(\R\) to \(\R \setminus \{0\}\), and then one can argue as before.
-    The claim (b) follows immediately from (a).
+  We first prove (a). Since \(f, g\) are continuous at \(x_0\) from \((X, d)\) to \((\R, d_{l^1}|_{\R \times \R})\), then by \cref{ac 2.2.1}(a) \(f \oplus g : X \to \R^2\) is also continuous at \(x_0\) from \((X, d)\) to \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\).
+  On the other hand, from \cref{2.2.2} the function \((x, y) \mapsto x + y\) is continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\), and in particular is continuous at \(f \oplus g(x_0)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  If we then compose these two functions using \cref{2.1.7} we conclude that \(f + g : X \to \R\) is continuous from \((X, d)\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  A similar argument gives the continuity of \(f - g\), \(fg\), \(\max(f, g)\), \(\min(f, g)\) and \(cf\).
+  To prove the claim for \(f / g\), we first use \cref{ex 2.1.7} to restrict the range of \(g\) from \(\R\) to \(\R \setminus \{0\}\), and then one can argue as before.
+  The claim (b) follows immediately from (a).
 \end{proof}
 
 \exercisesection
 
 \begin{exercise}\label{ex 2.2.1}
-    Prove Lemma \ref{2.2.1}.
+  Prove \cref{2.2.1}.
 \end{exercise}
 
 \begin{proof}
-    See Lemma \ref{2.2.1}.
+  See \cref{2.2.1}.
 \end{proof}
 
 \begin{exercise}\label{ex 2.2.2}
-    Prove Lemma \ref{2.2.2}.
+  Prove \cref{2.2.2}.
 \end{exercise}
 
 \begin{proof}
-    See Lemma \ref{2.2.2}.
+  See \cref{2.2.2}.
 \end{proof}
 
 \begin{exercise}\label{ex 2.2.3}
-    Show that if \(f : X \to \R\) is a continuous function, so is the function \(\abs{f} : X \to \R\) defined by \(\abs{f}(x) \coloneqq \abs{f(x)}\).
+  Show that if \(f : X \to \R\) is a continuous function, so is the function \(\abs{f} : X \to \R\) defined by \(\abs{f}(x) \coloneqq \abs{f(x)}\).
 \end{exercise}
 
 \begin{proof}
-    Let \((X, d_X)\) be a metric space and let \(f : X \to \R\) be a function which is continuous from \((X, d_X)\) to \(\).
-    Since
-    \begin{align*}
-                 & \forall x_0 \in X, \abs{f}(x) = \abs{f(x)} = \max\big(-f(x), f(x)\big) \\
-        \implies & \abs{f} = \max(-f, f),
-    \end{align*}
-    we have
-    \begin{align*}
-                 & f \text{ is continuous from } (X, d_X) \text{ to } (\R, d_{l^1}|_{\R \times \R})                                                  \\
-        \implies & -f \text{ is continuous from } (X, d_X) \text{ to } (\R, d_{l^1}|_{\R \times \R})          & \text{(by Corollary \ref{2.2.3}(b))} \\
-        \implies & \max(f, -f) \text{ is continuous from } (X, d_X) \text{ to } (\R, d_{l^1}|_{\R \times \R}) & \text{(by Corollary \ref{2.2.3}(b))} \\
-        \implies & \abs{f} \text{ is continuous from } (X, d_X) \text{ to } (\R, d_{l^1}|_{\R \times \R}).
-    \end{align*}
+  Let \((X, d_X)\) be a metric space and let \(f : X \to \R\) be a function which is continuous from \((X, d_X)\) to \(\).
+  Since
+  \begin{align*}
+             & \forall x_0 \in X, \abs{f}(x) = \abs{f(x)} = \max\big(-f(x), f(x)\big) \\
+    \implies & \abs{f} = \max(-f, f),
+  \end{align*}
+  we have
+  \begin{align*}
+             & f \text{ is continuous from } (X, d_X) \text{ to } (\R, d_{l^1}|_{\R \times \R})                                         \\
+    \implies & -f \text{ is continuous from } (X, d_X) \text{ to } (\R, d_{l^1}|_{\R \times \R})          & \text{(by \cref{2.2.3}(b))} \\
+    \implies & \max(f, -f) \text{ is continuous from } (X, d_X) \text{ to } (\R, d_{l^1}|_{\R \times \R}) & \text{(by \cref{2.2.3}(b))} \\
+    \implies & \abs{f} \text{ is continuous from } (X, d_X) \text{ to } (\R, d_{l^1}|_{\R \times \R}).
+  \end{align*}
 \end{proof}
 
 \begin{exercise}\label{ex 2.2.4}
-    Let \(\pi_1 : \R^2 \to \R\) and \(\pi_2 : \R^2 \to \R\) be the functions \(\pi_1(x, y) \coloneqq x\) and \(\pi_2(x, y) \coloneqq y\) (these two functions are sometimes called the \emph{co-ordinate functions} on \(\R^2\)).
-    Show that \(\pi_1\) and \(\pi_2\) are continuous.
-    Conclude that if \(f : \R \to X\) is any continuous function into a metric space \((X, d)\), then the functions \(g_1 : \R^2 \to X\) and \(g_2 : \R^2 \to X\) defined by \(g_1(x, y) \coloneqq f(x)\) and \(g_2(x, y) \coloneqq f(y)\) are also continuous.
+  Let \(\pi_1 : \R^2 \to \R\) and \(\pi_2 : \R^2 \to \R\) be the functions \(\pi_1(x, y) \coloneqq x\) and \(\pi_2(x, y) \coloneqq y\) (these two functions are sometimes called the \emph{co-ordinate functions} on \(\R^2\)).
+  Show that \(\pi_1\) and \(\pi_2\) are continuous.
+  Conclude that if \(f : \R \to X\) is any continuous function into a metric space \((X, d)\), then the functions \(g_1 : \R^2 \to X\) and \(g_2 : \R^2 \to X\) defined by \(g_1(x, y) \coloneqq f(x)\) and \(g_2(x, y) \coloneqq f(y)\) are also continuous.
 \end{exercise}
 
 \begin{proof}
-    Let \((x, y) \in \R^2\).
-    We know that
-    \begin{align*}
-                 & \forall \varepsilon \in \R^+, \forall (x', y') \in \R^2,                                                              \\
-                 & d_{l^1}|_{\R^2 \times \R^2}\big((x, y), (x', y')\big) < \varepsilon                                                   \\
-        \implies & \abs{x - x'} + \abs{y - y'} < \varepsilon                                  & \text{(by Example \ref{1.1.7})}          \\
-        \implies & \abs{x - x'} < \varepsilon                                                 & \text{(by Definition \ref{1.1.2}(a)(b))} \\
-        \implies & d_{l^1}|_{\R \times \R}(x, x') < \varepsilon                               & \text{(by Example \ref{1.1.7})}          \\
-        \implies & d_{l^1}|_{\R \times \R}\big(\pi_1(x, y), \pi_1(x', y')\big) < \varepsilon. & \text{(by the definition of \(\pi_1\))}
-    \end{align*}
-    Thus by setting \(\delta = \varepsilon\) we have
-    \begin{align*}
-         & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ :                                                                                                                                \\
-         & \Big(\forall (x', y') \in \R^2, d_{l^1}|_{\R^2 \times \R^2}\big((x, y), (x', y')\big) < \delta \implies d_{l^1}|_{\R \times \R}\big(\pi_1(x, y), \pi_1(x', y')\big) < \varepsilon\Big).
-    \end{align*}
-    Since \((x, y)\) is arbitrary, by Definition \ref{2.1.1} \(\pi_1\) is continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
-    Using similar arguments we can show that \(\pi_2\) is continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Let \((x, y) \in \R^2\).
+  We know that
+  \begin{align*}
+             & \forall \varepsilon \in \R^+, \forall (x', y') \in \R^2,                                                             \\
+             & d_{l^1}|_{\R^2 \times \R^2}\big((x, y), (x', y')\big) < \varepsilon                                                  \\
+    \implies & \abs{x - x'} + \abs{y - y'} < \varepsilon                                  & \text{(by \cref{1.1.7})}                \\
+    \implies & \abs{x - x'} < \varepsilon                                                 & \text{(by \cref{1.1.2}(a)(b))}          \\
+    \implies & d_{l^1}|_{\R \times \R}(x, x') < \varepsilon                               & \text{(by \cref{1.1.7})}                \\
+    \implies & d_{l^1}|_{\R \times \R}\big(\pi_1(x, y), \pi_1(x', y')\big) < \varepsilon. & \text{(by the definition of \(\pi_1\))}
+  \end{align*}
+  Thus by setting \(\delta = \varepsilon\) we have
+  \begin{align*}
+     & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ :                                                                                                                                \\
+     & \Big(\forall (x', y') \in \R^2, d_{l^1}|_{\R^2 \times \R^2}\big((x, y), (x', y')\big) < \delta \implies d_{l^1}|_{\R \times \R}\big(\pi_1(x, y), \pi_1(x', y')\big) < \varepsilon\Big).
+  \end{align*}
+  Since \((x, y)\) is arbitrary, by \cref{2.1.1} \(\pi_1\) is continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Using similar arguments we can show that \(\pi_2\) is continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
 
-    Let \(f : \R \to X\) be a function which is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((X, d)\).
-    Let \(g_1 : \R^2 \to X\) and \(g_2 : \R^2 \to X\) be functions where
-    \[
-        \forall (x, y) \in \R^2, \begin{cases}
-            g_1(x, y) = f(x) \\
-            g_2(x, y) = f(y)
-        \end{cases}
-    \]
-    Since
-    \begin{align*}
-         & \forall (x, y) \in \R^2,                                         \\
-         & f \circ \pi_1(x, y) = f\big(\pi_1(x, y)\big) = f(x) = g_1(x, y); \\
-         & f \circ \pi_2(x, y) = f\big(\pi_2(x, y)\big) = f(y) = g_2(x, y),
-    \end{align*}
-    we know that \(g_1 = f \circ \pi_1\) and \(g_2 = f \circ \pi_2\).
-    Thus by Corollary \ref{2.1.7}(b) \(g_1, g_2\) are continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((X, d)\).
+  Let \(f : \R \to X\) be a function which is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((X, d)\).
+  Let \(g_1 : \R^2 \to X\) and \(g_2 : \R^2 \to X\) be functions where
+  \[
+    \forall (x, y) \in \R^2, \begin{cases}
+      g_1(x, y) = f(x) \\
+      g_2(x, y) = f(y)
+    \end{cases}
+  \]
+  Since
+  \begin{align*}
+     & \forall (x, y) \in \R^2,                                         \\
+     & f \circ \pi_1(x, y) = f\big(\pi_1(x, y)\big) = f(x) = g_1(x, y); \\
+     & f \circ \pi_2(x, y) = f\big(\pi_2(x, y)\big) = f(y) = g_2(x, y),
+  \end{align*}
+  we know that \(g_1 = f \circ \pi_1\) and \(g_2 = f \circ \pi_2\).
+  Thus by \cref{2.1.7}(b) \(g_1, g_2\) are continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((X, d)\).
 \end{proof}
 
 \begin{exercise}\label{ex 2.2.5}
-    Let \(n, m \geq 0\) be integers.
-    Suppose that for every \(0 \leq i \leq n\) and \(0 \leq j \leq m\) we have a real number \(c_{ij}\).
-    Form the function \(P : \R^2 \to \R\) defined by
-    \[
-        P(x, y) \coloneqq \sum_{i = 0}^n \sum_{j = 0}^m c_{ij} x^i y^j.
-    \]
-    (Such a function is known as a \emph{polynomial of two variables})
-    Show that \(P\) is continuous.
-    Conclude that if \(f : X \to \R\) and \(g : X \to \R\) are continuous functions, then the function \(P(f, g) : X \to \R\) defined by \(P(f, g)(x) \coloneqq P\big(f(x), g(x)\big)\) is also continuous.
+  Let \(n, m \geq 0\) be integers.
+  Suppose that for every \(0 \leq i \leq n\) and \(0 \leq j \leq m\) we have a real number \(c_{ij}\).
+  Form the function \(P : \R^2 \to \R\) defined by
+  \[
+    P(x, y) \coloneqq \sum_{i = 0}^n \sum_{j = 0}^m c_{ij} x^i y^j.
+  \]
+  (Such a function is known as a \emph{polynomial of two variables})
+  Show that \(P\) is continuous.
+  Conclude that if \(f : X \to \R\) and \(g : X \to \R\) are continuous functions, then the function \(P(f, g) : X \to \R\) defined by \(P(f, g)(x) \coloneqq P\big(f(x), g(x)\big)\) is also continuous.
 \end{exercise}
 
 \begin{proof}
-    First we show that \(P\) is continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
-    Let \((x, y) \in \R^2\).
-    Let \(\pi_1, \pi_2\) be the functions defined in Exercise \ref{ex 2.2.4}.
-    Since \(\pi_1\) is continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\), by Corollary \ref{2.2.3}(b) we know that
-    \[
-        x^i = \prod_{k = 1}^i x = \prod_{k = 1}^i \pi_1(x, y)
-    \]
-    is continuous at \((x, y)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\) for every \(0 \leq i \leq n\).
-    Similarly
-    \[
-        y^j = \prod_{k = 1}^j y = \prod_{k = 1}^j \pi_2(x, y)
-    \]
-    is continuous at \((x, y)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\) for every \(0 \leq j \leq m\).
-    Thus by Corollary \ref{2.2.3}(b) we know that \(c_{ij} x^i y^j\) is continuous at \((x, y)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\) for every \(0 \leq i \leq n\) and \(0 \leq j \leq m\), and
-    \[
-        \sum_{i = 0}^n \sum_{j = 0}^m c_{ij} x^i y^j = P(x, y)
-    \]
-    is continuous at \((x, y)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
-    Since \((x, y)\) is arbitrary, by Definition \ref{2.1.1} we know that \(P\) is continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  First we show that \(P\) is continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Let \((x, y) \in \R^2\).
+  Let \(\pi_1, \pi_2\) be the functions defined in \cref{ex 2.2.4}.
+  Since \(\pi_1\) is continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\), by \cref{2.2.3}(b) we know that
+  \[
+    x^i = \prod_{k = 1}^i x = \prod_{k = 1}^i \pi_1(x, y)
+  \]
+  is continuous at \((x, y)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\) for every \(0 \leq i \leq n\).
+  Similarly
+  \[
+    y^j = \prod_{k = 1}^j y = \prod_{k = 1}^j \pi_2(x, y)
+  \]
+  is continuous at \((x, y)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\) for every \(0 \leq j \leq m\).
+  Thus by \cref{2.2.3}(b) we know that \(c_{ij} x^i y^j\) is continuous at \((x, y)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\) for every \(0 \leq i \leq n\) and \(0 \leq j \leq m\), and
+  \[
+    \sum_{i = 0}^n \sum_{j = 0}^m c_{ij} x^i y^j = P(x, y)
+  \]
+  is continuous at \((x, y)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Since \((x, y)\) is arbitrary, by \cref{2.1.1} we know that \(P\) is continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
 
-    Now suppose that \(f : X \to \R\) and \(g : X \to \R\) are to continuous functions from \((X, d)\) to \((\R, d_{l^1}|_{\R \times \R})\).
-    Then we have
-    \begin{align*}
-                 & f \oplus g \text{ is continuous }                                                                                        \\
-                 & \text{from } (X, d) \text{ to } (\R^2, d_{l^1}|_{\R^2 \times \R^2}) & \text{(by Additional Corollary \ref{ac 2.2.1}(b))} \\
-        \implies & P \circ (f \oplus g) \text{ is continuous }                                                                              \\
-                 & \text{from } (X, d) \text{ to } (\R, d_{l^1}|_{\R \times \R})       & \text{(by Corollary \ref{2.1.7}(b))}               \\
-        \implies & P(f, g) \text{ is continuous }                                                                                           \\
-                 & \text{from } (X, d) \text{ to } (\R, d_{l^1}|_{\R \times \R}).      & \text{(by the definition of \(P\))}
-    \end{align*}
+  Now suppose that \(f : X \to \R\) and \(g : X \to \R\) are to continuous functions from \((X, d)\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Then we have
+  \begin{align*}
+             & f \oplus g \text{ is continuous }                                                                         \\
+             & \text{from } (X, d) \text{ to } (\R^2, d_{l^1}|_{\R^2 \times \R^2}) & \text{(by \cref{ac 2.2.1}(b))}      \\
+    \implies & P \circ (f \oplus g) \text{ is continuous }                                                               \\
+             & \text{from } (X, d) \text{ to } (\R, d_{l^1}|_{\R \times \R})       & \text{(by \cref{2.1.7}(b))}         \\
+    \implies & P(f, g) \text{ is continuous }                                                                            \\
+             & \text{from } (X, d) \text{ to } (\R, d_{l^1}|_{\R \times \R}).      & \text{(by the definition of \(P\))}
+  \end{align*}
 \end{proof}
 
 \begin{exercise}\label{ex 2.2.6}
-    Let \(\R^m\) and \(\R^n\) be Euclidean spaces.
-    If \(f : X \to \R^m\) and \(g : X \to \R^n\) are continuous functions, show that \(f \oplus g : X \to \R^{m + n}\) is also continuous, where we have identified \(\R^m \times \R^n\) with \(\R^{m + n}\) in the obvious manner.
-    Is the converse statement true?
+  Let \(\R^m\) and \(\R^n\) be Euclidean spaces.
+  If \(f : X \to \R^m\) and \(g : X \to \R^n\) are continuous functions, show that \(f \oplus g : X \to \R^{m + n}\) is also continuous, where we have identified \(\R^m \times \R^n\) with \(\R^{m + n}\) in the obvious manner.
+  Is the converse statement true?
 \end{exercise}
 
 \begin{proof}
-    Let \((X, d)\) be a metric space.
-    For each \(k \in \Z^+\), let \(d_k\) be one of the metric functions \(d_{l^1}|_{\R^k \times \R^k}\), \(d_{l^2}|_{\R^k \times \R^k}\) or \(d_{l^\infty}|_{\R^k \times \R^k}\).
-    Let \(f : X \to \R^m\) be a continuous function from \((X, d)\) to \((\R^m, d_m)\), and let \(g : X \to \R^n\) be a continuous function from \((X, d)\) to \((\R^n, d_n)\).
-    Let \(x_0 \in X\).
-    Then we have
-    \begin{align*}
-             & \begin{cases}
-                   f \text{ is continuous from } (X, d) \text{ to } (\R^m, d_m) \\
-                   g \text{ is continuous from } (X, d) \text{ to } (\R^n, d_n)
-               \end{cases}                                                                                              \\
-        \iff & \text{every sequence } (x^{(k)})_{k = 1}^\infty \text{ in } X \text{ satisfies the following:}                                                            \\
-             & \lim_{k \to \infty} d\big(x^{(k)}, x_0\big) = 0 \text{ implies }                                                                                          \\
-             & \begin{cases}
-                   \lim_{k \to \infty} d_m\big(f(x^{(k)}), f(x_0)\big) = 0 \\
-                   \lim_{k \to \infty} d_n\big(g(x^{(k)}), g(x_0)\big) = 0
-               \end{cases}                                                        & \text{(by Theorem \ref{2.1.4}(a)(b))}                                                \\
-        \iff & \text{every sequence } (x^{(k)})_{k = 1}^\infty \text{ in } X \text{ satisfies the following:}                                                            \\
-             & \lim_{k \to \infty} d\big(x^{(k)}, x_0\big) = 0 \text{ implies }                                                                                          \\
-             & \lim_{k \to \infty} d_{m + n}\Big(\big(f(x^{(k)}) \oplus g(x^{(k)})\big), \big(f(x_0) \oplus g(x_0)\big)\Big) = 0 & \text{(by Proposition \ref{1.1.18})}  \\
-        \iff & f \oplus g \text{ is continuous at } x_0                                                                                                                  \\
-             & \text{from } (X, d) \text{ to } (\R^{m + n}, d_{m + n}).                                                          & \text{(by Theorem \ref{2.1.4}(a)(b))}
-    \end{align*}
-    Thus the statment is true and the converse is also true.
+  Let \((X, d)\) be a metric space.
+  For each \(k \in \Z^+\), let \(d_k\) be one of the metric functions \(d_{l^1}|_{\R^k \times \R^k}\), \(d_{l^2}|_{\R^k \times \R^k}\) or \(d_{l^\infty}|_{\R^k \times \R^k}\).
+  Let \(f : X \to \R^m\) be a continuous function from \((X, d)\) to \((\R^m, d_m)\), and let \(g : X \to \R^n\) be a continuous function from \((X, d)\) to \((\R^n, d_n)\).
+  Let \(x_0 \in X\).
+  Then we have
+  \begin{align*}
+         & \begin{cases}
+             f \text{ is continuous from } (X, d) \text{ to } (\R^m, d_m) \\
+             g \text{ is continuous from } (X, d) \text{ to } (\R^n, d_n)
+           \end{cases}                                                                                       \\
+    \iff & \text{every sequence } (x^{(k)})_{k = 1}^\infty \text{ in } X \text{ satisfies the following:}                                                     \\
+         & \lim_{k \to \infty} d\big(x^{(k)}, x_0\big) = 0 \text{ implies }                                                                                   \\
+         & \begin{cases}
+             \lim_{k \to \infty} d_m\big(f(x^{(k)}), f(x_0)\big) = 0 \\
+             \lim_{k \to \infty} d_n\big(g(x^{(k)}), g(x_0)\big) = 0
+           \end{cases}                                                        & \text{(by \cref{2.1.4}(a)(b))}                                                \\
+    \iff & \text{every sequence } (x^{(k)})_{k = 1}^\infty \text{ in } X \text{ satisfies the following:}                                                     \\
+         & \lim_{k \to \infty} d\big(x^{(k)}, x_0\big) = 0 \text{ implies }                                                                                   \\
+         & \lim_{k \to \infty} d_{m + n}\Big(\big(f(x^{(k)}) \oplus g(x^{(k)})\big), \big(f(x_0) \oplus g(x_0)\big)\Big) = 0 & \text{(by \cref{1.1.18})}      \\
+    \iff & f \oplus g \text{ is continuous at } x_0                                                                                                           \\
+         & \text{from } (X, d) \text{ to } (\R^{m + n}, d_{m + n}).                                                          & \text{(by \cref{2.1.4}(a)(b))}
+  \end{align*}
+  Thus the statment is true and the converse is also true.
 \end{proof}
 
 \begin{exercise}\label{ex 2.2.7}
-    Let \(k \geq 1\), let \(I\) be a finite subset of \(\N^k\), and let \(c : I \to \R\) be a function.
-    Form the function \(P : \R^k \to \R\) defined by
-    \[
-        P(x_1, \dots, x_k) \coloneqq \sum_{(i_1, \dots, i_k) \in I} c(i_1, \dots, i_k) x_1^{i_1} \dots x_k^{i_k}.
-    \]
-    (Such a function is known as a \emph{polynomial of \(k\) variables};
-    Show that \(P\) is continuous.
+  Let \(k \geq 1\), let \(I\) be a finite subset of \(\N^k\), and let \(c : I \to \R\) be a function.
+  Form the function \(P : \R^k \to \R\) defined by
+  \[
+    P(x_1, \dots, x_k) \coloneqq \sum_{(i_1, \dots, i_k) \in I} c(i_1, \dots, i_k) x_1^{i_1} \dots x_k^{i_k}.
+  \]
+  (Such a function is known as a \emph{polynomial of \(k\) variables};
+  Show that \(P\) is continuous.
 \end{exercise}
 
 \begin{proof}
-    For each \(k \in \Z^+\), let \(I_k\) be the finite subset of \(\N^k\), let \(d_k = d_{l^1}|_{\R^k \times \R^k}\), and let \(P_k\) be a polynomial of \(k\) variables, i.e.,
-    \[
-        P_k(x_1, \dots, x_k) = \sum_{(i_1, \dots, i_k) \in I_k} \big(c(i_1, \dots, i_k) x_1^{i_1} \cdots x_k^{i_k}\big).
-    \]
-    We use induction on \(k\) to show that \(P_k\) is continuous from \((\R^k, d_k)\) to \((\R, d_1)\) for every \(k \in \Z^+\).
-    We start with \(k = 1\).
-    For \(k = 1\), we have
-    \begin{align*}
-                 & \forall i_1 \in I_1, c(i_1) x_1^{i_1} \text{ is continuous from } (\R, d_1) \text{ to } (\R, d_1) & \text{(by Lemma \ref{2.2.2}(b))}     \\
-        \implies & P_1(x_1) = \sum_{i_1 \in I_1} \big(c(i_1) x_1^{i_1}\big) \text{ is continuous}                    & \text{(note that \(I_1\) is finite)} \\
-                 & \text{from } (\R, d_1) \text{ to } (\R, d_1)                                                      & \text{(by Lemma \ref{2.2.2}(b))}
-    \end{align*}
-    and thus the base case holds.
-    Suppose inductively that for some \(k \geq 1\), \(P_k\) is continuous from \((\R^k, d_k)\) to \((\R, d_1)\).
-    Then for \(k + 1\), we need to show that \(P_{k + 1}\) is continuous from \((\R^{k + 1}, d_{k + 1})\) to \((\R, d_1)\).
-    Let \(F : \R^k \to 2^\R\) be the function
-    \[
-        \forall (x_1, \dots, x_k, x_{k + 1}) \in \R^{k + 1}, F(x_1, \dots, x_k) = \big\{x_{k + 1} \in \R : (x_1, \dots, x_k, x_{k + 1}) \in I_{k + 1}\big\},
-    \]
-    and let \(A = \big\{(i_1, \dots, i_k) \in \R^k : (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1}\big\}\).
-    Then we have
-    \begin{align*}
-         & P_{k + 1}(x_1, \dots, x_k, x_{k + 1})                                                                                                                                                                        \\
-         & = \sum_{(i_1 \dots, i_k, i_{k + 1}) \in I_{k + 1}} c(i_1, \dots, i_k, i_{k + 1}) x_1^{i_1} \cdots x_k^{i_k} x_{k + 1}^{i_{k + 1}}                                                                            \\
-         & = \sum_{(i_1 \dots, i_k) \in A} \bigg(\sum_{i_{k + 1} \in \R : (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1}} c(i_1, \dots, i_k, i_{k + 1}) x_1^{i_1} \cdots x_k^{i_k} x_{k + 1}^{i_{k + 1}}\bigg)              \\
-         & = \sum_{(i_1 \dots, i_k) \in A} \Bigg(x_1^{i_1} \cdots x_k^{i_k} \bigg(\sum_{i_{k + 1} \in \R : (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1}} c(i_1, \dots, i_k, i_{k + 1}) x_{k + 1}^{i_{k + 1}}\bigg)\Bigg).
-    \end{align*}
-    By induction hypothesis we know that
-    \[
-        \sum_{i_{k + 1} \in \R : (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1}} c(i_1, \dots, i_k, i_{k + 1}) x_{k + 1}^{i_{k + 1}}
-    \]
-    is continuous from \((\R, d_1)\) to \((\R, d_1)\) and
-    \[
-        x_1^{i_1} \cdots x_k^{i_k}
-    \]
-    is continuous from \((\R^k, d_k)\) to \((\R, d_1)\).
-    Thus by Lemma \ref{2.2.2}(b) we know that
-    \begin{align*}
-                 & \forall (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1},                                                                                                                                                       \\
-                 & (x_1^{i_1} \cdots x_k^{i_k}) \bigg(\sum_{i_{k + 1} \in \R : (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1}} c(i_1, \dots, i_k, i_{k + 1}) x_{k + 1}^{i_{k + 1}}\bigg)                                         \\
-                 & \text{is continuous from } (\R^{k + 1}, d_{k + 1}) \text{ to } (\R, d_1)                                                                                                                                  \\
-        \implies & \sum_{(i_1 \dots, i_k) \in A} \Bigg(x_1^{i_1} \cdots x_k^{i_k} \bigg(\sum_{i_{k + 1} \in \R : (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1}} c(i_1, \dots, i_k, i_{k + 1}) x_{k + 1}^{i_{k + 1}}\bigg)\Bigg) \\
-                 & \text{is continuous from } (\R^{k + 1}, d_{k + 1}) \text{ to } (\R, d_1)                                                                                                                                  \\
-        \implies & P_{k + 1} \text{ is continuous from } (\R^{k + 1}, d_{k + 1}) \text{ to } (\R, d_1)
-    \end{align*}
-    and this closes the induction.
+  For each \(k \in \Z^+\), let \(I_k\) be the finite subset of \(\N^k\), let \(d_k = d_{l^1}|_{\R^k \times \R^k}\), and let \(P_k\) be a polynomial of \(k\) variables, i.e.,
+  \[
+    P_k(x_1, \dots, x_k) = \sum_{(i_1, \dots, i_k) \in I_k} \big(c(i_1, \dots, i_k) x_1^{i_1} \cdots x_k^{i_k}\big).
+  \]
+  We use induction on \(k\) to show that \(P_k\) is continuous from \((\R^k, d_k)\) to \((\R, d_1)\) for every \(k \in \Z^+\).
+  We start with \(k = 1\).
+  For \(k = 1\), we have
+  \begin{align*}
+             & \forall i_1 \in I_1, c(i_1) x_1^{i_1} \text{ is continuous from } (\R, d_1) \text{ to } (\R, d_1) & \text{(by \cref{2.2.2}(b))}          \\
+    \implies & P_1(x_1) = \sum_{i_1 \in I_1} \big(c(i_1) x_1^{i_1}\big) \text{ is continuous}                    & \text{(note that \(I_1\) is finite)} \\
+             & \text{from } (\R, d_1) \text{ to } (\R, d_1)                                                      & \text{(by \cref{2.2.2}(b))}
+  \end{align*}
+  and thus the base case holds.
+  Suppose inductively that for some \(k \geq 1\), \(P_k\) is continuous from \((\R^k, d_k)\) to \((\R, d_1)\).
+  Then for \(k + 1\), we need to show that \(P_{k + 1}\) is continuous from \((\R^{k + 1}, d_{k + 1})\) to \((\R, d_1)\).
+  Let \(F : \R^k \to 2^\R\) be the function
+  \[
+    \forall (x_1, \dots, x_k, x_{k + 1}) \in \R^{k + 1}, F(x_1, \dots, x_k) = \big\{x_{k + 1} \in \R : (x_1, \dots, x_k, x_{k + 1}) \in I_{k + 1}\big\},
+  \]
+  and let \(A = \big\{(i_1, \dots, i_k) \in \R^k : (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1}\big\}\).
+  Then we have
+  \begin{align*}
+     & P_{k + 1}(x_1, \dots, x_k, x_{k + 1})                                                                                                                                                                        \\
+     & = \sum_{(i_1 \dots, i_k, i_{k + 1}) \in I_{k + 1}} c(i_1, \dots, i_k, i_{k + 1}) x_1^{i_1} \cdots x_k^{i_k} x_{k + 1}^{i_{k + 1}}                                                                            \\
+     & = \sum_{(i_1 \dots, i_k) \in A} \bigg(\sum_{i_{k + 1} \in \R : (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1}} c(i_1, \dots, i_k, i_{k + 1}) x_1^{i_1} \cdots x_k^{i_k} x_{k + 1}^{i_{k + 1}}\bigg)              \\
+     & = \sum_{(i_1 \dots, i_k) \in A} \Bigg(x_1^{i_1} \cdots x_k^{i_k} \bigg(\sum_{i_{k + 1} \in \R : (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1}} c(i_1, \dots, i_k, i_{k + 1}) x_{k + 1}^{i_{k + 1}}\bigg)\Bigg).
+  \end{align*}
+  By induction hypothesis we know that
+  \[
+    \sum_{i_{k + 1} \in \R : (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1}} c(i_1, \dots, i_k, i_{k + 1}) x_{k + 1}^{i_{k + 1}}
+  \]
+  is continuous from \((\R, d_1)\) to \((\R, d_1)\) and
+  \[
+    x_1^{i_1} \cdots x_k^{i_k}
+  \]
+  is continuous from \((\R^k, d_k)\) to \((\R, d_1)\).
+  Thus by \cref{2.2.2}(b) we know that
+  \begin{align*}
+             & \forall (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1},                                                                                                                                                       \\
+             & (x_1^{i_1} \cdots x_k^{i_k}) \bigg(\sum_{i_{k + 1} \in \R : (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1}} c(i_1, \dots, i_k, i_{k + 1}) x_{k + 1}^{i_{k + 1}}\bigg)                                         \\
+             & \text{is continuous from } (\R^{k + 1}, d_{k + 1}) \text{ to } (\R, d_1)                                                                                                                                  \\
+    \implies & \sum_{(i_1 \dots, i_k) \in A} \Bigg(x_1^{i_1} \cdots x_k^{i_k} \bigg(\sum_{i_{k + 1} \in \R : (i_1, \dots, i_k, i_{k + 1}) \in I_{k + 1}} c(i_1, \dots, i_k, i_{k + 1}) x_{k + 1}^{i_{k + 1}}\bigg)\Bigg) \\
+             & \text{is continuous from } (\R^{k + 1}, d_{k + 1}) \text{ to } (\R, d_1)                                                                                                                                  \\
+    \implies & P_{k + 1} \text{ is continuous from } (\R^{k + 1}, d_{k + 1}) \text{ to } (\R, d_1)
+  \end{align*}
+  and this closes the induction.
 \end{proof}
 
 \begin{exercise}\label{ex 2.2.8}
-    Let \((X, d_X)\) and \((Y, d_Y)\) be metric spaces.
-    Define the metric \(d_{X \times Y} : (X \times Y) \times (X \times Y) \to [0, \infty)\) by the formula
-    \[
-        d_{X \times Y}\big((x, y), (x', y')\big) \coloneqq d_X(x, x') + d_Y(y, y').
-    \]
-    Show that \((X \times Y, d_{X \times Y})\) is a metric space, and deduce an analogue of Proposition \ref{1.1.18} and Lemma \ref{2.2.1}.
+  Let \((X, d_X)\) and \((Y, d_Y)\) be metric spaces.
+  Define the metric \(d_{X \times Y} : (X \times Y) \times (X \times Y) \to [0, \infty)\) by the formula
+  \[
+    d_{X \times Y}\big((x, y), (x', y')\big) \coloneqq d_X(x, x') + d_Y(y, y').
+  \]
+  Show that \((X \times Y, d_{X \times Y})\) is a metric space, and deduce an analogue of \cref{1.1.18} and \cref{2.2.1}.
 \end{exercise}
 
 \begin{proof}
-    We first show that \((X \times Y, d_{X \times Y})\) is a metric space.
-    For any \((x, y) \in X \times Y\), we have
-    \begin{align*}
-        d_{X \times Y}\big((x, y), (x, y)\big) & = d_X(x, x) + d_Y(y, y)                                         \\
-                                               & = 0 + 0 = 0             & \text{(by Definition \ref{1.1.2}(a))}
-    \end{align*}
-    and thus \((X \times Y, d_{X \times Y})\) satisfies Definition \ref{1.1.2}(a).
-    For any \((x_1, y_1), (x_2, y_2) \in X \times Y\), we have
-    \begin{align*}
-                 & (x_1, y_1) \neq (x_2, y_2)                                                                                                    \\
-        \implies & (x_1 \neq x_2) \lor (y_1 \neq y_2)                                                                                            \\
-        \implies & d_{X \times Y}\big((x_1, y_1), (x_2, y_2)\big) = d_X(x_1, x_2) + d_Y(y_1, y_2) \neq 0 & \text{(by Definition \ref{1.1.2}(b))}
-    \end{align*}
-    and thus \((X \times Y, d_{X \times Y})\) satisfies Definition \ref{1.1.2}(b).
-    For any \((x_1, y_1), (x_2, y_2) \in X \times Y\), we have
-    \begin{align*}
-         & d_{X \times Y}\big((x_1, y_1), (x_2, y_2)\big)                                           \\
-         & = d_X(x_1, x_2) + d_Y(y_1, y_2)                                                          \\
-         & = d_X(x_2, x_1) + d_Y(y_2, y_1)                  & \text{(by Definition \ref{1.1.2}(c))} \\
-         & = d_{X \times Y}\big((x_2, y_2), (x_1, y_1)\big)
-    \end{align*}
-    and thus \((X \times Y, d_{X \times Y})\) satisfies Definition \ref{1.1.2}(c).
-    For any \((x_1, y_1), (x_2, y_2), (x_3, y_3) \in X \times Y\), we have
-    \begin{align*}
-         & d_{X \times Y}\big((x_1, y_1), (x_2, y_2)\big) + d_{X \times Y}\big((x_2, y_2), (x_3, y_3)\big)                                         \\
-         & = d_X(x_1, x_2) + d_Y(y_1, y_2) + d_X(x_2, x_3) + d_Y(y_2, y_3)                                                                         \\
-         & \geq d_X(x_1, x_3) + d_Y(y_1, y_3)                                                              & \text{(by Definition \ref{1.1.2}(d))} \\
-         & = d_{X \times Y}\big((x_1, y_1), (x_3, y_3)\big)
-    \end{align*}
-    and thus \((X \times Y, d_{X \times Y})\) satisfies Definition \ref{1.1.2}(d).
-    By Definition \ref{1.1.2} we conclude that \((X \times Y, d_{X \times Y})\) is a metric space.
+  We first show that \((X \times Y, d_{X \times Y})\) is a metric space.
+  For any \((x, y) \in X \times Y\), we have
+  \begin{align*}
+    d_{X \times Y}\big((x, y), (x, y)\big) & = d_X(x, x) + d_Y(y, y)                               \\
+                                           & = 0 + 0 = 0             & \text{(by \cref{1.1.2}(a))}
+  \end{align*}
+  and thus \((X \times Y, d_{X \times Y})\) satisfies \cref{1.1.2}(a).
+  For any \((x_1, y_1), (x_2, y_2) \in X \times Y\), we have
+  \begin{align*}
+             & (x_1, y_1) \neq (x_2, y_2)                                                                                          \\
+    \implies & (x_1 \neq x_2) \lor (y_1 \neq y_2)                                                                                  \\
+    \implies & d_{X \times Y}\big((x_1, y_1), (x_2, y_2)\big) = d_X(x_1, x_2) + d_Y(y_1, y_2) \neq 0 & \text{(by \cref{1.1.2}(b))}
+  \end{align*}
+  and thus \((X \times Y, d_{X \times Y})\) satisfies \cref{1.1.2}(b).
+  For any \((x_1, y_1), (x_2, y_2) \in X \times Y\), we have
+  \begin{align*}
+     & d_{X \times Y}\big((x_1, y_1), (x_2, y_2)\big)                                 \\
+     & = d_X(x_1, x_2) + d_Y(y_1, y_2)                                                \\
+     & = d_X(x_2, x_1) + d_Y(y_2, y_1)                  & \text{(by \cref{1.1.2}(c))} \\
+     & = d_{X \times Y}\big((x_2, y_2), (x_1, y_1)\big)
+  \end{align*}
+  and thus \((X \times Y, d_{X \times Y})\) satisfies \cref{1.1.2}(c).
+  For any \((x_1, y_1), (x_2, y_2), (x_3, y_3) \in X \times Y\), we have
+  \begin{align*}
+     & d_{X \times Y}\big((x_1, y_1), (x_2, y_2)\big) + d_{X \times Y}\big((x_2, y_2), (x_3, y_3)\big)                               \\
+     & = d_X(x_1, x_2) + d_Y(y_1, y_2) + d_X(x_2, x_3) + d_Y(y_2, y_3)                                                               \\
+     & \geq d_X(x_1, x_3) + d_Y(y_1, y_3)                                                              & \text{(by \cref{1.1.2}(d))} \\
+     & = d_{X \times Y}\big((x_1, y_1), (x_3, y_3)\big)
+  \end{align*}
+  and thus \((X \times Y, d_{X \times Y})\) satisfies \cref{1.1.2}(d).
+  By \cref{1.1.2} we conclude that \((X \times Y, d_{X \times Y})\) is a metric space.
 
-    Next we propose an analogue of Proposition \ref{1.1.18} and proof it.
-    Let \((X, d_X)\), \((Y, d_Y)\) be two metric spaces, let \((x, y) \in X \times Y\) and let \((x^{(n)}, y^{(n)})_{n = 1}^\infty\) be a sequence in \(X \times Y\).
-    We claim that the follow two statements are equivalent:
-    \begin{itemize}
-        \item \(\lim_{n \to \infty} d_{X \times Y}\big((x^{(n)}, y^{(n)}), (x, y)\big) = 0\).
-        \item \(\lim_{n \to \infty} d_X(x^{(n)}, x) = 0\) and \(\lim_{n \to \infty} d_Y(y^{(n)}, y) = 0\).
-    \end{itemize}
-    The claim is true since
-    \begin{align*}
-             & \lim_{n \to \infty} d_{X \times Y}\big((x^{(n)}, y^{(n)}), (x, y)\big) = 0                                             \\
-        \iff & \lim_{n \to \infty} \big(d_X(x^{(n)}, x) + d_Y(y^{(n)}, y)\big) = 0                                                    \\
-        \iff & \begin{cases}
-                   0 \leq \lim_{n \to \infty} d_X(x^{(n)}, x) \leq \lim_{n \to \infty} \big(d_X(x^{(n)}, x) + d_Y(y^{(n)}, y)\big) \leq 0 \\
-                   0 \leq \lim_{n \to \infty} d_Y(y^{(n)}, y) \leq \lim_{n \to \infty} \big(d_X(x^{(n)}, x) + d_Y(y^{(n)}, y)\big) \leq 0
-               \end{cases} \\
-        \iff & \begin{cases}
-                   \lim_{n \to \infty} d_X(x^{(n)}, x) = 0 \\
-                   \lim_{n \to \infty} d_Y(y^{(n)}, y) = 0
-               \end{cases}
-    \end{align*}
+  Next we propose an analogue of \cref{1.1.18} and proof it.
+  Let \((X, d_X)\), \((Y, d_Y)\) be two metric spaces, let \((x, y) \in X \times Y\) and let \((x^{(n)}, y^{(n)})_{n = 1}^\infty\) be a sequence in \(X \times Y\).
+  We claim that the follow two statements are equivalent:
+  \begin{itemize}
+    \item \(\lim_{n \to \infty} d_{X \times Y}\big((x^{(n)}, y^{(n)}), (x, y)\big) = 0\).
+    \item \(\lim_{n \to \infty} d_X(x^{(n)}, x) = 0\) and \(\lim_{n \to \infty} d_Y(y^{(n)}, y) = 0\).
+  \end{itemize}
+  The claim is true since
+  \begin{align*}
+         & \lim_{n \to \infty} d_{X \times Y}\big((x^{(n)}, y^{(n)}), (x, y)\big) = 0                                             \\
+    \iff & \lim_{n \to \infty} \big(d_X(x^{(n)}, x) + d_Y(y^{(n)}, y)\big) = 0                                                    \\
+    \iff & \begin{cases}
+             0 \leq \lim_{n \to \infty} d_X(x^{(n)}, x) \leq \lim_{n \to \infty} \big(d_X(x^{(n)}, x) + d_Y(y^{(n)}, y)\big) \leq 0 \\
+             0 \leq \lim_{n \to \infty} d_Y(y^{(n)}, y) \leq \lim_{n \to \infty} \big(d_X(x^{(n)}, x) + d_Y(y^{(n)}, y)\big) \leq 0
+           \end{cases} \\
+    \iff & \begin{cases}
+             \lim_{n \to \infty} d_X(x^{(n)}, x) = 0 \\
+             \lim_{n \to \infty} d_Y(y^{(n)}, y) = 0
+           \end{cases}
+  \end{align*}
 
-    Finally we propose an analogue of Lemma \ref{2.2.1} and proof it.
-    Let \((X, d_X)\), \((Y_1, d_{Y_1})\), \((Y_2, d_{Y_2})\) be metric spaces, let \(f_1 : X \to Y_1\) and \(f_2 : X \to Y_2\) be two functions, let \(f_1 \oplus f_2 : X \to (Y_1 \times Y_2)\) and let \(x_0 \in X\).
-    We claim that the follow two statements are equivalent:
-    \begin{itemize}
-        \item \(f_1\) is continuous at \(x_0\) from \((X, d_X)\) to \((Y_1, d_{Y_1})\) and \(f_2\) is continuous at \(x_0\) from \((X, d_X)\) to \((Y_2, d_{Y_2})\).
-        \item \(f_1 \oplus f_2\) is continuous at \(x_0\) from \((X, d_X)\) to \((Y_1 \times Y_2, d_{Y_1 \times Y_2})\).
-    \end{itemize}
-    The claim is true since by Definition \ref{2.1.1} we have
-    \begin{align*}
-             & \begin{cases}
-                   f_1 \text{ is continuous at } x_0 \text{ from } (X, d_X) \text{ to } (Y_1, d_{Y_1}) \\
-                   f_2 \text{ is continuous at } x_0 \text{ from } (X, d_X) \text{ to } (Y_2, d_{Y_2})
-               \end{cases}                                                                   \\
-        \iff & \forall \varepsilon \in \R^+, \exists\ \delta_1, \delta_2 \in \R^+ :                                                                                  \\
-             & \begin{cases}
-                   \big(\forall x \in X, d_X(x, x_0) < \delta_1 \implies d_{Y_1}\big(f_1(x), f_1(x_0)\big) < \frac{\varepsilon}{2}) \\
-                   \big(\forall x \in X, d_X(x, x_0) < \delta_2 \implies d_{Y_2}\big(f_2(x), f_2(x_0)\big) < \frac{\varepsilon}{2})
-               \end{cases}                                      \\
-        \iff & \forall \varepsilon \in \R^+, \exists\ \delta = \min(\delta_1, \delta_2) \in \R^+ :                                                                   \\
-             & \big(\forall x \in X, d_X(x, x_0) < \delta \implies d_{Y_1 \times Y_2}\Big(\big(f_1(x), f_2(x)\big), \big(f_1(x_0), f_2(x_0)\big)\Big) < \varepsilon) \\
-        \iff & f_1 \oplus f_2 \text{ is continuous at } x_0 \text{ from } (X, d_X) \text{ to } (Y_1 \times Y_2, d_{Y_1 \times Y_2}).
-    \end{align*}
+  Finally we propose an analogue of \cref{2.2.1} and proof it.
+  Let \((X, d_X)\), \((Y_1, d_{Y_1})\), \((Y_2, d_{Y_2})\) be metric spaces, let \(f_1 : X \to Y_1\) and \(f_2 : X \to Y_2\) be two functions, let \(f_1 \oplus f_2 : X \to (Y_1 \times Y_2)\) and let \(x_0 \in X\).
+  We claim that the follow two statements are equivalent:
+  \begin{itemize}
+    \item \(f_1\) is continuous at \(x_0\) from \((X, d_X)\) to \((Y_1, d_{Y_1})\) and \(f_2\) is continuous at \(x_0\) from \((X, d_X)\) to \((Y_2, d_{Y_2})\).
+    \item \(f_1 \oplus f_2\) is continuous at \(x_0\) from \((X, d_X)\) to \((Y_1 \times Y_2, d_{Y_1 \times Y_2})\).
+  \end{itemize}
+  The claim is true since by \cref{2.1.1} we have
+  \begin{align*}
+         & \begin{cases}
+             f_1 \text{ is continuous at } x_0 \text{ from } (X, d_X) \text{ to } (Y_1, d_{Y_1}) \\
+             f_2 \text{ is continuous at } x_0 \text{ from } (X, d_X) \text{ to } (Y_2, d_{Y_2})
+           \end{cases}                                                                   \\
+    \iff & \forall \varepsilon \in \R^+, \exists\ \delta_1, \delta_2 \in \R^+ :                                                                                  \\
+         & \begin{cases}
+             \big(\forall x \in X, d_X(x, x_0) < \delta_1 \implies d_{Y_1}\big(f_1(x), f_1(x_0)\big) < \frac{\varepsilon}{2}) \\
+             \big(\forall x \in X, d_X(x, x_0) < \delta_2 \implies d_{Y_2}\big(f_2(x), f_2(x_0)\big) < \frac{\varepsilon}{2})
+           \end{cases}                                      \\
+    \iff & \forall \varepsilon \in \R^+, \exists\ \delta = \min(\delta_1, \delta_2) \in \R^+ :                                                                   \\
+         & \big(\forall x \in X, d_X(x, x_0) < \delta \implies d_{Y_1 \times Y_2}\Big(\big(f_1(x), f_2(x)\big), \big(f_1(x_0), f_2(x_0)\big)\Big) < \varepsilon) \\
+    \iff & f_1 \oplus f_2 \text{ is continuous at } x_0 \text{ from } (X, d_X) \text{ to } (Y_1 \times Y_2, d_{Y_1 \times Y_2}).
+  \end{align*}
 \end{proof}
 
 \begin{exercise}\label{ex 2.2.9}
-    Let \(f : \R^2 \to \R\) be a function from \(\R^2\) to \(\R\).
-    Let \((x_0, y_0)\) be a point in \(\R^2\).
-    If \(f\) is continuous at \((x_0, y_0)\), show that
-    \[
-        \lim_{x \to x_0} \limsup_{y \to y_0} f(x, y) = \lim_{y \to y_0} \limsup_{x \to x_0} f(x, y) = f(x_0, y_0)
-    \]
-    and
-    \[
-        \lim_{x \to x_0} \liminf_{y \to y_0} f(x, y) = \lim_{y \to y_0} \liminf_{x \to x_0} f(x, y) = f(x_0, y_0).
-    \]
-    Recall that
-    \begin{align*}
-         & \limsup_{x \to x_0} f(x) \coloneqq \inf_{r > 0} \sup_{\abs{x - x_0} < r} f(x) \\
-         & \liminf_{x \to x_0} f(x) \coloneqq \sup_{r > 0} \inf_{\abs{x - x_0} < r} f(x)
-    \end{align*}
-    In particular, we have
-    \[
-        \lim_{x \to x_0} \lim_{y \to y_0} f(x, y) = \lim_{y \to y_0} \lim_{x \to x_0} f(x, y)
-    \]
-    whenever the limits on both sides exist.
-    (Note that the limits do not necessarily exist in general.)
-    Discuss the comparison between this result and Example 1.2.7.
+  Let \(f : \R^2 \to \R\) be a function from \(\R^2\) to \(\R\).
+  Let \((x_0, y_0)\) be a point in \(\R^2\).
+  If \(f\) is continuous at \((x_0, y_0)\), show that
+  \[
+    \lim_{x \to x_0} \limsup_{y \to y_0} f(x, y) = \lim_{y \to y_0} \limsup_{x \to x_0} f(x, y) = f(x_0, y_0)
+  \]
+  and
+  \[
+    \lim_{x \to x_0} \liminf_{y \to y_0} f(x, y) = \lim_{y \to y_0} \liminf_{x \to x_0} f(x, y) = f(x_0, y_0).
+  \]
+  Recall that
+  \begin{align*}
+     & \limsup_{x \to x_0} f(x) \coloneqq \inf_{r > 0} \sup_{\abs{x - x_0} < r} f(x) \\
+     & \liminf_{x \to x_0} f(x) \coloneqq \sup_{r > 0} \inf_{\abs{x - x_0} < r} f(x)
+  \end{align*}
+  In particular, we have
+  \[
+    \lim_{x \to x_0} \lim_{y \to y_0} f(x, y) = \lim_{y \to y_0} \lim_{x \to x_0} f(x, y)
+  \]
+  whenever the limits on both sides exist.
+  (Note that the limits do not necessarily exist in general.)
+  Discuss the comparison between this result and Example 1.2.7.
 \end{exercise}
 
 \begin{proof}
-    Let \(d_1 = d_{l^1}|_{\R \times \R}\) and let \(d_2 = d_{l^1}|_{\R^2 \times \R^2}\).
-    Since \(f\) is continuous at \((x_0, y_0)\) from \((\R^2, d_2)\) to \((\R, d_1)\), by Definition \ref{2.1.1} we have
-    \begin{align*}
-                 & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall (x, y) \in \R^2,                                                                                            \\
-                 & d_2\big((x, y), (x_0, y_0)\big) < \delta \text{ implies } d_1\big(f(x, y), f(x_0, y_0)\big) < \varepsilon                                                                    \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall (x, y) \in \R^2,                                                                                            \\
-                 & \abs{x - x_0} + \abs{y - y_0} < \delta \text{ implies } \abs{f(x, y) - f(x_0, y_0)} < \varepsilon                                                                            \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall (x, y) \in \R^2,                                                                                            \\
-                 & \abs{x - x_0} + \abs{y - y_0} < \delta \text{ implies}                                                                                                                       \\
-                 & f(x_0, y_0) - \varepsilon < f(x, y) < f(x_0, y_0) + \varepsilon                                                                                                              \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in \R, \abs{x - x_0} < \frac{\delta}{2} \text{ implies}                                                  \\
-                 & f(x_0, y_0) - \varepsilon \leq \inf_{\abs{y - y_0} < \frac{\delta}{2}} f(x, y) \leq \sup_{\abs{y - y_0} < \frac{\delta}{2}} f(x, y) \leq f(x_0, y_0) + \varepsilon           \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in \R, \abs{x - x_0} < \frac{\delta}{2} \text{ implies}                                                  \\
-                 & \begin{cases}
-                       \inf\big\{\sup_{\abs{y - y_0} < r} f(x, y) : r \in \R^+\big\} \leq \sup_{\abs{y - y_0} < \frac{\delta}{2}} f(x, y) \leq f(x_0, y_0) + \varepsilon \\
-                       f(x_0, y_0) - \varepsilon \leq \inf_{\abs{y - y_0} < \frac{\delta}{2}} f(x, y) \leq \sup\big\{\inf_{\abs{y - y_0} < r} f(x, y) : r \in \R^+\big\}
-                   \end{cases} \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in \R, \abs{x - x_0} < \frac{\delta}{2} \text{ implies}                                                  \\
-                 & \begin{cases}
-                       \limsup_{y \to y_0} f(x, y) \leq f(x_0, y_0) + \varepsilon \\
-                       f(x_0, y_0) - \varepsilon \leq \liminf_{y \to y_0} f(x, y)
-                   \end{cases}                                                                                                                   \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in \R, \abs{x - x_0} < \frac{\delta}{2} \text{ implies}                                                  \\
-                 & \begin{cases}
-                       \abs{\limsup_{y \to y_0} f(x, y) - f(x_0, y_0)} = \limsup_{y \to y_0} f(x, y) - f(x_0, y_0) \leq \varepsilon \\
-                       \abs{\liminf_{y \to y_0} f(x, y) - f(x_0, y_0)} = f(x_0, y_0) - \liminf_{y \to y_0} f(x, y) \leq \varepsilon
-                   \end{cases}                                                             \\
-        \implies & \begin{cases}
-                       \lim_{x \to x_0} \big(\limsup_{y \to y_0} f(x, y)\big) = f(x_0, y_0) \\
-                       \lim_{x \to x_0} \big(\liminf_{y \to y_0} f(x, y)\big) = f(x_0, y_0)
-                   \end{cases}
-    \end{align*}
-    Then we have
-    \begin{align*}
-                 & \forall x \in X, \liminf_{y \to y_0} f(x, y) \leq \lim_{y \to y_0} f(x, y) \leq \limsup_{y \to y_0} f(x, y)                              \\
-        \implies & f(x_0, y_0) = \lim_{x \to x_0} \big(\liminf_{y \to y_0} f(x, y)\big)                                                                     \\
-                 & \quad \leq \lim_{x \to x_0} \big(\lim_{y \to y_0} f(x, y)\big) \leq \lim_{x \to x_0} \big(\limsup_{y \to y_0} f(x, y)\big) = f(x_0, y_0) \\
-        \implies & \lim_{x \to x_0} \big(\lim_{y \to y_0} f(x, y)\big) = f(x_0, y_0).
-    \end{align*}
-    Using similar arguments we can show that
-    \begin{align*}
-         & \lim_{y \to y_0} \big(\limsup_{x \to x_0} f(x, y)\big) = f(x_0, y_0) \\
-         & \lim_{y \to y_0} \big(\liminf_{x \to x_0} f(x, y)\big) = f(x_0, y_0) \\
-         & \lim_{y \to y_0} \big(\lim_{x \to x_0} f(x, y)\big) = f(x_0, y_0)
-    \end{align*}
-    and we conclude that
-    \[
-        \lim_{x \to x_0} \big(\lim_{y \to y_0} f(x, y)\big) = \lim_{y \to y_0} \big(\lim_{x \to x_0} f(x, y)\big) = f(x_0, y_0).
-    \]
+  Let \(d_1 = d_{l^1}|_{\R \times \R}\) and let \(d_2 = d_{l^1}|_{\R^2 \times \R^2}\).
+  Since \(f\) is continuous at \((x_0, y_0)\) from \((\R^2, d_2)\) to \((\R, d_1)\), by \cref{2.1.1} we have
+  \begin{align*}
+             & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall (x, y) \in \R^2,                                                                                            \\
+             & d_2\big((x, y), (x_0, y_0)\big) < \delta \text{ implies } d_1\big(f(x, y), f(x_0, y_0)\big) < \varepsilon                                                                    \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall (x, y) \in \R^2,                                                                                            \\
+             & \abs{x - x_0} + \abs{y - y_0} < \delta \text{ implies } \abs{f(x, y) - f(x_0, y_0)} < \varepsilon                                                                            \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall (x, y) \in \R^2,                                                                                            \\
+             & \abs{x - x_0} + \abs{y - y_0} < \delta \text{ implies}                                                                                                                       \\
+             & f(x_0, y_0) - \varepsilon < f(x, y) < f(x_0, y_0) + \varepsilon                                                                                                              \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in \R, \abs{x - x_0} < \frac{\delta}{2} \text{ implies}                                                  \\
+             & f(x_0, y_0) - \varepsilon \leq \inf_{\abs{y - y_0} < \frac{\delta}{2}} f(x, y) \leq \sup_{\abs{y - y_0} < \frac{\delta}{2}} f(x, y) \leq f(x_0, y_0) + \varepsilon           \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in \R, \abs{x - x_0} < \frac{\delta}{2} \text{ implies}                                                  \\
+             & \begin{cases}
+                 \inf\big\{\sup_{\abs{y - y_0} < r} f(x, y) : r \in \R^+\big\} \leq \sup_{\abs{y - y_0} < \frac{\delta}{2}} f(x, y) \leq f(x_0, y_0) + \varepsilon \\
+                 f(x_0, y_0) - \varepsilon \leq \inf_{\abs{y - y_0} < \frac{\delta}{2}} f(x, y) \leq \sup\big\{\inf_{\abs{y - y_0} < r} f(x, y) : r \in \R^+\big\}
+               \end{cases} \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in \R, \abs{x - x_0} < \frac{\delta}{2} \text{ implies}                                                  \\
+             & \begin{cases}
+                 \limsup_{y \to y_0} f(x, y) \leq f(x_0, y_0) + \varepsilon \\
+                 f(x_0, y_0) - \varepsilon \leq \liminf_{y \to y_0} f(x, y)
+               \end{cases}                                                                                                                   \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in \R, \abs{x - x_0} < \frac{\delta}{2} \text{ implies}                                                  \\
+             & \begin{cases}
+                 \abs{\limsup_{y \to y_0} f(x, y) - f(x_0, y_0)} = \limsup_{y \to y_0} f(x, y) - f(x_0, y_0) \leq \varepsilon \\
+                 \abs{\liminf_{y \to y_0} f(x, y) - f(x_0, y_0)} = f(x_0, y_0) - \liminf_{y \to y_0} f(x, y) \leq \varepsilon
+               \end{cases}                                                             \\
+    \implies & \begin{cases}
+                 \lim_{x \to x_0} \big(\limsup_{y \to y_0} f(x, y)\big) = f(x_0, y_0) \\
+                 \lim_{x \to x_0} \big(\liminf_{y \to y_0} f(x, y)\big) = f(x_0, y_0)
+               \end{cases}
+  \end{align*}
+  Then we have
+  \begin{align*}
+             & \forall x \in X, \liminf_{y \to y_0} f(x, y) \leq \lim_{y \to y_0} f(x, y) \leq \limsup_{y \to y_0} f(x, y)                              \\
+    \implies & f(x_0, y_0) = \lim_{x \to x_0} \big(\liminf_{y \to y_0} f(x, y)\big)                                                                     \\
+             & \quad \leq \lim_{x \to x_0} \big(\lim_{y \to y_0} f(x, y)\big) \leq \lim_{x \to x_0} \big(\limsup_{y \to y_0} f(x, y)\big) = f(x_0, y_0) \\
+    \implies & \lim_{x \to x_0} \big(\lim_{y \to y_0} f(x, y)\big) = f(x_0, y_0).
+  \end{align*}
+  Using similar arguments we can show that
+  \begin{align*}
+     & \lim_{y \to y_0} \big(\limsup_{x \to x_0} f(x, y)\big) = f(x_0, y_0) \\
+     & \lim_{y \to y_0} \big(\liminf_{x \to x_0} f(x, y)\big) = f(x_0, y_0) \\
+     & \lim_{y \to y_0} \big(\lim_{x \to x_0} f(x, y)\big) = f(x_0, y_0)
+  \end{align*}
+  and we conclude that
+  \[
+    \lim_{x \to x_0} \big(\lim_{y \to y_0} f(x, y)\big) = \lim_{y \to y_0} \big(\lim_{x \to x_0} f(x, y)\big) = f(x_0, y_0).
+  \]
 \end{proof}
 
 \begin{exercise}\label{ex 2.2.10}
-    Let \(f : \R^2 \to \R\) be a continuous function.
-    Show that for each \(x \in \R\), the function \(y \mapsto f(x, y)\) is continuous on \(\R\), and for each \(y \in \R\), the function \(x \mapsto f(x, y)\) is continuous on \(\R\).
-    Thus a function \(f(x, y)\) which is jointly continuous in \((x, y)\) is also continuous in each variable \(x, y\) separately.
+  Let \(f : \R^2 \to \R\) be a continuous function.
+  Show that for each \(x \in \R\), the function \(y \mapsto f(x, y)\) is continuous on \(\R\), and for each \(y \in \R\), the function \(x \mapsto f(x, y)\) is continuous on \(\R\).
+  Thus a function \(f(x, y)\) which is jointly continuous in \((x, y)\) is also continuous in each variable \(x, y\) separately.
 \end{exercise}
 
 \begin{proof}
-    Let \(d_1 = d_{l^1}|_{\R \times \R}\) and let \(d_2 = d_{l^1}|_{\R^2 \times \R^2}\).
-    Let \(x_0, y_0 \in \R\).
-    Since \(f\) is continuous from \((\R^2, d_2)\) to \((\R, d_1)\), by Definition \ref{2.1.1} we know that \(f\) is continuous at \((x_0, y_0)\) from \((\R^2, d_2)\) to \((\R, d_1)\) and we have
-    \begin{align*}
-                 & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall (x, y) \in \R^2,                         \\
-                 & d_2\big((x, y), (x_0, y_0)\big) < \delta \text{ implies } d_1\big(f(x, y), f(x_0, y_0)\big) < \varepsilon \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall (x, y) \in \R^2,                         \\
-                 & \abs{x - x_0} + \abs{y - y_0} < \delta \text{ implies } \abs{f(x, y) - f(x_0, y_0)} < \varepsilon         \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ :                                                  \\
-                 & \begin{cases}
-                       \forall x \in \R, \abs{x - x_0} < \delta \implies \abs{f(x, y_0) - f(x_0, y_0)} < \varepsilon \\
-                       \forall y \in \R, \abs{y - y_0} < \delta \implies \abs{f(x_0, y) - f(x_0, y_0)} < \varepsilon
-                   \end{cases}             \\
-        \implies & \begin{cases}
-                       x \mapsto f(x, y_0) \text{ is continuous at } x_0 \text{ from } (\R, d_1) \text{ to } (\R, d_1) \\
-                       y \mapsto f(x_0, y) \text{ is continuous at } y_0 \text{ from } (\R, d_1) \text{ to } (\R, d_1)
-                   \end{cases}
-    \end{align*}
-    Since \(x_0, y_0\) are arbitrary, we conclude thatt \(x \mapsto f(x, y)\) is continuous from \((\R, d_1)\) to \((\R, d_1)\) and \(y \mapsto f(x, y)\) is continuous from \((\R, d_1)\) to \((\R, d_1)\).
+  Let \(d_1 = d_{l^1}|_{\R \times \R}\) and let \(d_2 = d_{l^1}|_{\R^2 \times \R^2}\).
+  Let \(x_0, y_0 \in \R\).
+  Since \(f\) is continuous from \((\R^2, d_2)\) to \((\R, d_1)\), by \cref{2.1.1} we know that \(f\) is continuous at \((x_0, y_0)\) from \((\R^2, d_2)\) to \((\R, d_1)\) and we have
+  \begin{align*}
+             & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall (x, y) \in \R^2,                         \\
+             & d_2\big((x, y), (x_0, y_0)\big) < \delta \text{ implies } d_1\big(f(x, y), f(x_0, y_0)\big) < \varepsilon \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall (x, y) \in \R^2,                         \\
+             & \abs{x - x_0} + \abs{y - y_0} < \delta \text{ implies } \abs{f(x, y) - f(x_0, y_0)} < \varepsilon         \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ :                                                  \\
+             & \begin{cases}
+                 \forall x \in \R, \abs{x - x_0} < \delta \implies \abs{f(x, y_0) - f(x_0, y_0)} < \varepsilon \\
+                 \forall y \in \R, \abs{y - y_0} < \delta \implies \abs{f(x_0, y) - f(x_0, y_0)} < \varepsilon
+               \end{cases}             \\
+    \implies & \begin{cases}
+                 x \mapsto f(x, y_0) \text{ is continuous at } x_0 \text{ from } (\R, d_1) \text{ to } (\R, d_1) \\
+                 y \mapsto f(x_0, y) \text{ is continuous at } y_0 \text{ from } (\R, d_1) \text{ to } (\R, d_1)
+               \end{cases}
+  \end{align*}
+  Since \(x_0, y_0\) are arbitrary, we conclude thatt \(x \mapsto f(x, y)\) is continuous from \((\R, d_1)\) to \((\R, d_1)\) and \(y \mapsto f(x, y)\) is continuous from \((\R, d_1)\) to \((\R, d_1)\).
 \end{proof}
 
 \begin{exercise}\label{ex 2.2.11}
-    Let \(f : \R^2 \to \R\) be the function defined by \(f(x, y) = \frac{xy}{x^2 + y^2}\) when \((x, y) \neq (0, 0)\), and \(f(x, y) = 0\) otherwise.
-    Show that for each fixed \(x \in \R\), the function \(y \mapsto f(x, y)\) is continuous on \(\R\), and that for each fixed \(y \in \R\), the function \(x \mapsto f(x, y)\) is continuous on \(\R\), but that the function \(f : \R^2 \to \R\) is not continuous on \(\R^2\).
-    This shows that the converse to Exercise \ref{ex 2.2.10} fails;
-    it is possible to be continuous in each variable separately without being jointly continuous.
+  Let \(f : \R^2 \to \R\) be the function defined by \(f(x, y) = \frac{xy}{x^2 + y^2}\) when \((x, y) \neq (0, 0)\), and \(f(x, y) = 0\) otherwise.
+  Show that for each fixed \(x \in \R\), the function \(y \mapsto f(x, y)\) is continuous on \(\R\), and that for each fixed \(y \in \R\), the function \(x \mapsto f(x, y)\) is continuous on \(\R\), but that the function \(f : \R^2 \to \R\) is not continuous on \(\R^2\).
+  This shows that the converse to \cref{ex 2.2.10} fails;
+  it is possible to be continuous in each variable separately without being jointly continuous.
 \end{exercise}
 
 \begin{proof}
-    We have
-    \[
-        \forall y \in \R, f(0, y) = 0
-    \]
-    and thus by Lemma \ref{2.2.2} \(y \mapsto f(0, y)\) is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
-    By Lemma \ref{2.2.2} and Exercise \ref{ex 2.2.10} we also have
-    \begin{align*}
-                 & \begin{cases}
-                       (x, y) \mapsto x y \text{ is continuous from } (\R^2, d_{l^1}|_{\R^2 \times \R^2}) \text{ to } (\R, d_{l^1}|_{\R \times \R}); \\
-                       (x, y) \mapsto x^2 + y^2 \text{ is continuous}                                                                                \\
-                       \text{from } \big((\R \setminus \{0\} \times \R), d_{l^1}|_{\big((\R \setminus \{0\}) \times \R\big) \times \big((\R \setminus \{0\}) \times \R\big)}\big) \text{ to } (\R, d_{l^1}|_{\R \times \R})
-                   \end{cases}  \\
-        \implies & (x, y) \mapsto \frac{xy}{x^2 + y^2} \text{ is continuous}                                                                                                                                            \\
-                 & \text{from } \big((\R \setminus \{0\} \times \R), d_{l^1}|_{\big((\R \setminus \{0\}) \times \R\big) \times \big((\R \setminus \{0\}) \times \R\big)}\big) \text{ to } (\R, d_{l^1}|_{\R \times \R}) \\
-        \implies & \forall x \in \R \setminus \{0\}, y \mapsto \frac{xy}{x^2 + y^2} \text{ is continuous}                                                                                                               \\
-                 & \text{from } (\R, d_{l^1}|_{\R \times \R}) \text{ to } (\R, d_{l^1}|_{\R \times \R}).
-    \end{align*}
-    Thus we conclude that \(\forall x \in \R\), \(y \mapsto f(x, y)\) is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
-    Using similar arguments as above we also have \(\forall y \in \R\), \(x \mapsto f(x, y)\) is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  We have
+  \[
+    \forall y \in \R, f(0, y) = 0
+  \]
+  and thus by \cref{2.2.2} \(y \mapsto f(0, y)\) is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  By \cref{2.2.2} and \cref{ex 2.2.10} we also have
+  \begin{align*}
+             & \begin{cases}
+                 (x, y) \mapsto x y \text{ is continuous from } (\R^2, d_{l^1}|_{\R^2 \times \R^2}) \text{ to } (\R, d_{l^1}|_{\R \times \R}); \\
+                 (x, y) \mapsto x^2 + y^2 \text{ is continuous}                                                                                \\
+                 \text{from } \big((\R \setminus \{0\} \times \R), d_{l^1}|_{\big((\R \setminus \{0\}) \times \R\big) \times \big((\R \setminus \{0\}) \times \R\big)}\big) \text{ to } (\R, d_{l^1}|_{\R \times \R})
+               \end{cases}  \\
+    \implies & (x, y) \mapsto \frac{xy}{x^2 + y^2} \text{ is continuous}                                                                                                                                            \\
+             & \text{from } \big((\R \setminus \{0\} \times \R), d_{l^1}|_{\big((\R \setminus \{0\}) \times \R\big) \times \big((\R \setminus \{0\}) \times \R\big)}\big) \text{ to } (\R, d_{l^1}|_{\R \times \R}) \\
+    \implies & \forall x \in \R \setminus \{0\}, y \mapsto \frac{xy}{x^2 + y^2} \text{ is continuous}                                                                                                               \\
+             & \text{from } (\R, d_{l^1}|_{\R \times \R}) \text{ to } (\R, d_{l^1}|_{\R \times \R}).
+  \end{align*}
+  Thus we conclude that \(\forall x \in \R\), \(y \mapsto f(x, y)\) is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Using similar arguments as above we also have \(\forall y \in \R\), \(x \mapsto f(x, y)\) is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
 
-    Now we show that \(f\) is not continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
-    In particular, we do this by showing \(f\) is not continuous at \((0, 0)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
-    Consider the sequence \((\frac{1}{n}, \frac{1}{n})_{n = 1}^\infty\) in \(\R^2\).
-    We have
-    \begin{align*}
-                 & \lim_{n \to \infty} d_{l^1}|_{\R, \R}(\frac{1}{n}, 0) = 0                                                                              \\
-        \implies & \lim_{n \to \infty} d_{l^1}|_{\R^2, \R^2}\big((\frac{1}{n}, \frac{1}{n}), (0, 0)\big) = 0 & \text{(by Proposition \ref{1.1.18}(b)(d))}
-    \end{align*}
-    and
-    \begin{align*}
-                 & \forall n \in \Z^+, f(\frac{1}{n}, \frac{1}{n}) = \frac{\frac{1}{n^2}}{\frac{1}{n^2} + \frac{1}{n^2}} = \frac{1}{2} \\
-        \implies & \lim_{n \to \infty} f(\frac{1}{n}, \frac{1}{n}) = \frac{1}{2} \neq 0 = f(0, 0).
-    \end{align*}
-    Thus by Theorem \ref{2.1.4}(a)(b) \(f\) is not continuous at \((0, 0)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Now we show that \(f\) is not continuous from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  In particular, we do this by showing \(f\) is not continuous at \((0, 0)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Consider the sequence \((\frac{1}{n}, \frac{1}{n})_{n = 1}^\infty\) in \(\R^2\).
+  We have
+  \begin{align*}
+             & \lim_{n \to \infty} d_{l^1}|_{\R, \R}(\frac{1}{n}, 0) = 0                                                                   \\
+    \implies & \lim_{n \to \infty} d_{l^1}|_{\R^2, \R^2}\big((\frac{1}{n}, \frac{1}{n}), (0, 0)\big) = 0 & \text{(by \cref{1.1.18}(b)(d))}
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall n \in \Z^+, f(\frac{1}{n}, \frac{1}{n}) = \frac{\frac{1}{n^2}}{\frac{1}{n^2} + \frac{1}{n^2}} = \frac{1}{2} \\
+    \implies & \lim_{n \to \infty} f(\frac{1}{n}, \frac{1}{n}) = \frac{1}{2} \neq 0 = f(0, 0).
+  \end{align*}
+  Thus by \cref{2.1.4}(a)(b) \(f\) is not continuous at \((0, 0)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
 \end{proof}
 
 \begin{exercise}\label{ex 2.2.12}
-    Let \(f: \R^2 \to \R\) be the function defined by \(f(x, y) \coloneqq x^2 / y\) when \(y \neq 0\), and \(f(x, y) \coloneqq 0\) when \(y = 0\).
-    Show that \(\lim_{t \to 0} f(tx, ty) = f(0, 0)\) for every \((x, y) \in \R^2\), but that \(f\) is not continuous at the origin.
-    Thus being continuous on every line through the origin is not enough to guarantee continuity at the origin!
+  Let \(f: \R^2 \to \R\) be the function defined by \(f(x, y) \coloneqq x^2 / y\) when \(y \neq 0\), and \(f(x, y) \coloneqq 0\) when \(y = 0\).
+  Show that \(\lim_{t \to 0} f(tx, ty) = f(0, 0)\) for every \((x, y) \in \R^2\), but that \(f\) is not continuous at the origin.
+  Thus being continuous on every line through the origin is not enough to guarantee continuity at the origin!
 \end{exercise}
 
 \begin{proof}
-    Let \((x_0, y_0) \in \R^2\).
-    We split into two cases:
-    \begin{itemize}
-        \item If \(y_0 = 0\), then we have
-              \[
-                  \forall t \in \R, f(t x_0, t0) = f(t x_0, 0) = 0 = f(0, 0)
-              \]
-              and thus \(t \mapsto f(t x_0, t0)\) is constant function and is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
-        \item If \(x_0 = 0\), then we have
-              \[
-                  \forall t \in \R, f(t0, t y_0) = f(0, t y_0) = \frac{0}{t y_0} = 0 = f(0, 0)
-              \]
-              and thus \(t \mapsto f(t0, t y_0)\) is constant function and is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
-        \item If \(x_0 \neq 0\) and \(y_0 \neq 0\), then we have
-              \begin{align*}
-                           & \forall t \in \R, f(t x_0, t y_0) = \begin{cases}
-                                                                     \frac{t^2 x_0^2}{t y_0} = \frac{t x_0^2}{y_0} & \text{if } t \neq 0 \\
-                                                                     0                                             & \text{if } t = 0
-                                                                 \end{cases}                                                            \\
-                  \implies & \forall \varepsilon \in \R^+, \bigg(\forall t \in \R, \abs{t - 0} < \varepsilon \abs{\frac{y_0}{x_0^2}} \implies \abs{\frac{t x_0^2}{y_0} - 0} < \varepsilon\bigg) \\
-                  \implies & \forall \varepsilon \in \R^+, \exists \delta \in \R^+ : \big(\forall t \in \R, \abs{t - 0} < \delta \implies \abs{f(t x_0, t y_0) - f(0, 0)} < \varepsilon\big)    \\
-                  \implies & \lim_{t \to \infty} f(t x_0, t y_0) = 0 = f(0, 0).
-              \end{align*}
-              Thus \(t \mapsto f(t x_0, t y_0)\) is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
-    \end{itemize}
-    From all cases above we conclude that \(t \mapsto f(t x_0, t y_0)\) is  continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
-    Since \((x_0, y_0)\) is arbitrary, we conclude that for any \((x, y) \in \R^2\), \(t \mapsto f(tx, ty)\) is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Let \((x_0, y_0) \in \R^2\).
+  We split into two cases:
+  \begin{itemize}
+    \item If \(y_0 = 0\), then we have
+          \[
+            \forall t \in \R, f(t x_0, t0) = f(t x_0, 0) = 0 = f(0, 0)
+          \]
+          and thus \(t \mapsto f(t x_0, t0)\) is constant function and is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+    \item If \(x_0 = 0\), then we have
+          \[
+            \forall t \in \R, f(t0, t y_0) = f(0, t y_0) = \frac{0}{t y_0} = 0 = f(0, 0)
+          \]
+          and thus \(t \mapsto f(t0, t y_0)\) is constant function and is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+    \item If \(x_0 \neq 0\) and \(y_0 \neq 0\), then we have
+          \begin{align*}
+                     & \forall t \in \R, f(t x_0, t y_0) = \begin{cases}
+                                                             \frac{t^2 x_0^2}{t y_0} = \frac{t x_0^2}{y_0} & \text{if } t \neq 0 \\
+                                                             0                                             & \text{if } t = 0
+                                                           \end{cases}                                                            \\
+            \implies & \forall \varepsilon \in \R^+, \bigg(\forall t \in \R, \abs{t - 0} < \varepsilon \abs{\frac{y_0}{x_0^2}} \implies \abs{\frac{t x_0^2}{y_0} - 0} < \varepsilon\bigg) \\
+            \implies & \forall \varepsilon \in \R^+, \exists \delta \in \R^+ : \big(\forall t \in \R, \abs{t - 0} < \delta \implies \abs{f(t x_0, t y_0) - f(0, 0)} < \varepsilon\big)    \\
+            \implies & \lim_{t \to \infty} f(t x_0, t y_0) = 0 = f(0, 0).
+          \end{align*}
+          Thus \(t \mapsto f(t x_0, t y_0)\) is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  \end{itemize}
+  From all cases above we conclude that \(t \mapsto f(t x_0, t y_0)\) is  continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Since \((x_0, y_0)\) is arbitrary, we conclude that for any \((x, y) \in \R^2\), \(t \mapsto f(tx, ty)\) is continuous from \((\R, d_{l^1}|_{\R \times \R})\) to \((\R, d_{l^1}|_{\R \times \R})\).
 
-    Now we show that \(f\) is not continuous at \((0, 0)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
-    Consider the sequence \((\frac{1}{n}, \frac{1}{n^2})_{n = 1}^\infty\) in \(\R^2\).
-    Since
-    \begin{align*}
-                 & \lim_{n \to \infty} \frac{1}{n} = \lim_{n \to \infty} \frac{1}{n^2} = 0                                                                        \\
-        \implies & \lim_{n \to \infty} d_{l^1}|_{\R^2 \times \R^2}\big((\frac{1}{n}, \frac{1}{n^2}), (0, 0)\big) = 0 & \text{(by Proposition \ref{1.1.18}(b)(d))}
-    \end{align*}
-    and
-    \begin{align*}
-                 & \forall n \in \Z^+, f(\frac{1}{n}, \frac{1}{n^2}) = \frac{\frac{1}{n^2}}{\frac{1}{n^2}} = 1 \\
-        \implies & \lim_{n \to \infty} f(\frac{1}{n}, \frac{1}{n^2}) = 1 \neq 0 = f(0, 0),
-    \end{align*}
-    by Theorem \ref{2.1.4}(a)(b) we know that \(f\) is not continuous at \((0, 0)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Now we show that \(f\) is not continuous at \((0, 0)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Consider the sequence \((\frac{1}{n}, \frac{1}{n^2})_{n = 1}^\infty\) in \(\R^2\).
+  Since
+  \begin{align*}
+             & \lim_{n \to \infty} \frac{1}{n} = \lim_{n \to \infty} \frac{1}{n^2} = 0                                                             \\
+    \implies & \lim_{n \to \infty} d_{l^1}|_{\R^2 \times \R^2}\big((\frac{1}{n}, \frac{1}{n^2}), (0, 0)\big) = 0 & \text{(by \cref{1.1.18}(b)(d))}
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall n \in \Z^+, f(\frac{1}{n}, \frac{1}{n^2}) = \frac{\frac{1}{n^2}}{\frac{1}{n^2}} = 1 \\
+    \implies & \lim_{n \to \infty} f(\frac{1}{n}, \frac{1}{n^2}) = 1 \neq 0 = f(0, 0),
+  \end{align*}
+  by \cref{2.1.4}(a)(b) we know that \(f\) is not continuous at \((0, 0)\) from \((\R^2, d_{l^1}|_{\R^2 \times \R^2})\) to \((\R, d_{l^1}|_{\R \times \R})\).
 \end{proof}

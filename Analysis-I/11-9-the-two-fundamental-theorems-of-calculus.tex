@@ -1,268 +1,268 @@
 \section{The two fundamental theorems of calculus}\label{sec 11.9}
 
 \begin{theorem}[First Fundamental Theorem of Calculus]\label{11.9.1}
-    Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a Riemann integrable function.
-    Let \(F : [a, b] \to \R\) be the function
-    \[
-        F(x) \coloneqq \int_{[a, x]} f.
-    \]
-    Then \(F\) is continuous.
-    Furthermore, if \(x_0 \in [a, b]\) and \(f\) is continuous at \(x_0\), then \(F\) is differentiable at \(x_0\), and \(F'(x_0) = f(x_0)\).
+  Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a Riemann integrable function.
+  Let \(F : [a, b] \to \R\) be the function
+  \[
+    F(x) \coloneqq \int_{[a, x]} f.
+  \]
+  Then \(F\) is continuous.
+  Furthermore, if \(x_0 \in [a, b]\) and \(f\) is continuous at \(x_0\), then \(F\) is differentiable at \(x_0\), and \(F'(x_0) = f(x_0)\).
 \end{theorem}
 
 \begin{proof}
-    Since \(f\) is Riemann integrable, it is bounded (by Definition \ref{11.3.4}).
-    Thus we have some real number \(M\) such that \(-M \leq f(x) \leq M\) for all \(x \in [a, b]\).
+  Since \(f\) is Riemann integrable, it is bounded (by \cref{11.3.4}).
+  Thus we have some real number \(M\) such that \(-M \leq f(x) \leq M\) for all \(x \in [a, b]\).
 
-    Now let \(x < y\) be two elements of \([a, b]\).
-    Then notice that
-    \[
-        F(y) - F(x) = \int_{[a, y]} f - \int_{[a, x]} f = \int_{[x, y]} f
-    \]
-    by Theorem \ref{11.4.1}(h).
-    By Theorem \ref{11.4.1}(e) we thus have
-    \[
-        \int_{[x, y]} f \leq \int_{[x, y]} M = p.c. \int_{[x, y]} M = M(y - x)
-    \]
-    and
-    \[
-        \int_{[x, y]} f \geq \int_{[x, y]} -M = p.c. \int_{[x, y]} -M = -M(y - x)
-    \]
-    and thus
-    \[
-        \abs{F(y) - F(x)} \leq M(y - x).
-    \]
-    This is for \(y > x\).
-    By interchanging \(x\) and \(y\) we thus see that
-    \[
-        \abs{F(y) - F(x)} \leq M(x - y)
-    \]
-    when \(x > y\).
-    Also, we have \(F(y) - F(x) = 0\) when \(x = y\).
-    Thus in all
-    three cases we have
-    \[
-        \abs{F(y) - F(x)} \leq M \abs{x - y}.
-    \]
-    Now let \(z \in [a, b]\), and let \((z_n)_{n = 0}^\infty\) be any sequence in \([a, b]\) converging to \(z\).
-    Then we have
-    \[
-        -M \abs{z_n - z} \leq F(z_n) - F(z) \leq M \abs{z_n - z}
-    \]
-    for each \(n\).
-    But \(-M \abs{z_n - z}\) and \(M \abs{z_n - z}\) both converge to \(0\) as \(n \to \infty\), so by the squeeze test \(F(z_n) - F(z)\) converges to \(0\) as \(n \to \infty\), and thus \(\lim_{n \to \infty} F(z_n) = F(z)\).
-    Since this is true for all sequences \(z_n \in [a, b]\) converging to \(z\), we thus see that \(F\) is continuous at \(z\) (by Proposition \ref{9.4.7}).
-    Since \(z\) was an arbitrary element of \([a, b]\), we thus see that \(F\) is continuous
-    (The above proof also show that when \(F\) is Lipschitz continuous, \(F\) is also continuous, see Exercise \ref{ex 10.2.6}).
+  Now let \(x < y\) be two elements of \([a, b]\).
+  Then notice that
+  \[
+    F(y) - F(x) = \int_{[a, y]} f - \int_{[a, x]} f = \int_{[x, y]} f
+  \]
+  by \cref{11.4.1}(h).
+  By \cref{11.4.1}(e) we thus have
+  \[
+    \int_{[x, y]} f \leq \int_{[x, y]} M = p.c. \int_{[x, y]} M = M(y - x)
+  \]
+  and
+  \[
+    \int_{[x, y]} f \geq \int_{[x, y]} -M = p.c. \int_{[x, y]} -M = -M(y - x)
+  \]
+  and thus
+  \[
+    \abs{F(y) - F(x)} \leq M(y - x).
+  \]
+  This is for \(y > x\).
+  By interchanging \(x\) and \(y\) we thus see that
+  \[
+    \abs{F(y) - F(x)} \leq M(x - y)
+  \]
+  when \(x > y\).
+  Also, we have \(F(y) - F(x) = 0\) when \(x = y\).
+  Thus in all
+  three cases we have
+  \[
+    \abs{F(y) - F(x)} \leq M \abs{x - y}.
+  \]
+  Now let \(z \in [a, b]\), and let \((z_n)_{n = 0}^\infty\) be any sequence in \([a, b]\) converging to \(z\).
+  Then we have
+  \[
+    -M \abs{z_n - z} \leq F(z_n) - F(z) \leq M \abs{z_n - z}
+  \]
+  for each \(n\).
+  But \(-M \abs{z_n - z}\) and \(M \abs{z_n - z}\) both converge to \(0\) as \(n \to \infty\), so by the squeeze test \(F(z_n) - F(z)\) converges to \(0\) as \(n \to \infty\), and thus \(\lim_{n \to \infty} F(z_n) = F(z)\).
+  Since this is true for all sequences \(z_n \in [a, b]\) converging to \(z\), we thus see that \(F\) is continuous at \(z\) (by \cref{9.4.7}).
+  Since \(z\) was an arbitrary element of \([a, b]\), we thus see that \(F\) is continuous
+  (The above proof also show that when \(F\) is Lipschitz continuous, \(F\) is also continuous, see \cref{ex 10.2.6}).
 
-    Now suppose that \(x_0 \in [a, b]\), and \(f\) is continuous at \(x_0\).
-    Choose any \(\varepsilon > 0\).
-    Then by continuity, we can find a \(\delta > 0\) such that \(\abs{f(x) - f(x_0)} \leq \varepsilon\) for all \(x\) in the interval \(I \coloneqq [x_0 - \delta, x_0 + \delta] \cap [a, b]\), or in other words
-    \[
-        f(x_0) - \varepsilon \leq f(x) \leq f(x_0) + \varepsilon \text{ for all } x \in I.
-    \]
-    We now show that
-    \[
-        \abs{F(y) - F(x_0) - f(x_0)(y - x_0)} \leq \varepsilon \abs{y - x_0}
-    \]
-    for all \(y \in I\), since Proposition \ref{10.1.7} will then imply that \(F\) is differentiable at \(x_0\) with derivative \(F'(x_0) = f(x_0)\) as desired.
+  Now suppose that \(x_0 \in [a, b]\), and \(f\) is continuous at \(x_0\).
+  Choose any \(\varepsilon > 0\).
+  Then by continuity, we can find a \(\delta > 0\) such that \(\abs{f(x) - f(x_0)} \leq \varepsilon\) for all \(x\) in the interval \(I \coloneqq [x_0 - \delta, x_0 + \delta] \cap [a, b]\), or in other words
+  \[
+    f(x_0) - \varepsilon \leq f(x) \leq f(x_0) + \varepsilon \text{ for all } x \in I.
+  \]
+  We now show that
+  \[
+    \abs{F(y) - F(x_0) - f(x_0)(y - x_0)} \leq \varepsilon \abs{y - x_0}
+  \]
+  for all \(y \in I\), since \cref{10.1.7} will then imply that \(F\) is differentiable at \(x_0\) with derivative \(F'(x_0) = f(x_0)\) as desired.
 
-    Now fix \(y \in I\).
-    There are three cases.
-    If \(y = x_0\), then \(F(y) - F(x_0) - f(x_0)(y - x_0) = 0\) and so the claim is obvious.
-    If \(y > x_0\), then
-    \[
-        F(y) - F(x_0) = \int_{[x_0, y]} f.
-    \]
-    Since \(x_0\), \(y \in I\), and \(I\) is a connected set (by Corollary \ref{11.1.6}), then \([x_0, y]\) is a subset of \(I\), and thus we have
-    \[
-        f(x_0) - \varepsilon \leq f(x) \leq f(x_0) + \varepsilon \text{ for all } x \in [x_0, y],
-    \]
-    and thus by Theorem \ref{11.4.1}(e)
-    \[
-        \big(f(x_0) - \varepsilon\big) (y - x_0) \leq \int_{[x_0, y]} f \leq \big(f(x_0) + \varepsilon\big) (y - x_0)
-    \]
-    and so in particular
-    \[
-        \abs{F(y) - F(x_0) - f(x_0)(y - x_0)} \leq \varepsilon \abs{y - x_0}
-    \]
-    as desired.
-    If \(y < x_0\), then
-    \[
-        F(y) - F(x_0) = -\big(F(x_0) - F(y)\big) = -\int_{[y, x_0]} f.
-    \]
-    Since \(x_0\), \(y \in I\), and \(I\) is a connected set (by Corollary \ref{11.1.6}), then \([y, x_0]\) is a subset of \(I\), and thus we have
-    \[
-        f(x_0) - \varepsilon \leq f(x) \leq f(x_0) + \varepsilon \text{ for all } x \in [y, x_0],
-    \]
-    and thus by Theorem \ref{11.4.1}(e)
-    \begin{align*}
-                 & \big(f(x_0) - \varepsilon\big) (x_0 - y) \leq \int_{[y, x_0]} f \leq \big(f(x_0) + \varepsilon\big) (x_0 - y)                  \\
-        \implies & \big(f(x_0) - \varepsilon\big) (y - x_0) \geq -\int_{[y, x_0]} f = F(y) - F(x_0) \geq \big(f(x_0) + \varepsilon\big) (y - x_0) \\
-        \implies & -\varepsilon (y - x_0) \geq F(y) - F(x_0) - f(x_0)(y - x_0) \geq \varepsilon (y - x_0)                                         \\
-        \implies & \abs{F(y) - F(x_0) - f(x_0)(y - x_0)} \leq \varepsilon \abs{y - x_0}
-    \end{align*}
-    as desired.
+  Now fix \(y \in I\).
+  There are three cases.
+  If \(y = x_0\), then \(F(y) - F(x_0) - f(x_0)(y - x_0) = 0\) and so the claim is obvious.
+  If \(y > x_0\), then
+  \[
+    F(y) - F(x_0) = \int_{[x_0, y]} f.
+  \]
+  Since \(x_0\), \(y \in I\), and \(I\) is a connected set (by \cref{11.1.6}), then \([x_0, y]\) is a subset of \(I\), and thus we have
+  \[
+    f(x_0) - \varepsilon \leq f(x) \leq f(x_0) + \varepsilon \text{ for all } x \in [x_0, y],
+  \]
+  and thus by \cref{11.4.1}(e)
+  \[
+    \big(f(x_0) - \varepsilon\big) (y - x_0) \leq \int_{[x_0, y]} f \leq \big(f(x_0) + \varepsilon\big) (y - x_0)
+  \]
+  and so in particular
+  \[
+    \abs{F(y) - F(x_0) - f(x_0)(y - x_0)} \leq \varepsilon \abs{y - x_0}
+  \]
+  as desired.
+  If \(y < x_0\), then
+  \[
+    F(y) - F(x_0) = -\big(F(x_0) - F(y)\big) = -\int_{[y, x_0]} f.
+  \]
+  Since \(x_0\), \(y \in I\), and \(I\) is a connected set (by \cref{11.1.6}), then \([y, x_0]\) is a subset of \(I\), and thus we have
+  \[
+    f(x_0) - \varepsilon \leq f(x) \leq f(x_0) + \varepsilon \text{ for all } x \in [y, x_0],
+  \]
+  and thus by \cref{11.4.1}(e)
+  \begin{align*}
+             & \big(f(x_0) - \varepsilon\big) (x_0 - y) \leq \int_{[y, x_0]} f \leq \big(f(x_0) + \varepsilon\big) (x_0 - y)                  \\
+    \implies & \big(f(x_0) - \varepsilon\big) (y - x_0) \geq -\int_{[y, x_0]} f = F(y) - F(x_0) \geq \big(f(x_0) + \varepsilon\big) (y - x_0) \\
+    \implies & -\varepsilon (y - x_0) \geq F(y) - F(x_0) - f(x_0)(y - x_0) \geq \varepsilon (y - x_0)                                         \\
+    \implies & \abs{F(y) - F(x_0) - f(x_0)(y - x_0)} \leq \varepsilon \abs{y - x_0}
+  \end{align*}
+  as desired.
 \end{proof}
 
 \begin{note}
-    Informally, the first fundamental theorem of calculus asserts that
-    \[
-        \bigg(\int_{[a, x]} f\bigg)'(x) = f(x)
-    \]
-    given a certain number of assumptions on \(f\).
-    Roughly, this means that the derivative of an integral recovers the original function.
+  Informally, the first fundamental theorem of calculus asserts that
+  \[
+    \bigg(\int_{[a, x]} f\bigg)'(x) = f(x)
+  \]
+  given a certain number of assumptions on \(f\).
+  Roughly, this means that the derivative of an integral recovers the original function.
 \end{note}
 
 \setcounter{theorem}{2}
 \begin{definition}[Antiderivatives]\label{11.9.3}
-    Let \(I\) be a bounded interval, and let \(f : I \to \R\) be a function.
-    We say that a function \(F : I \to \R\) is an \emph{antiderivative} of \(f\) if \(F\) is differentiable on \(I\) and \(F'(x) = f(x)\) for all limit points \(x\) of \(I\).
+  Let \(I\) be a bounded interval, and let \(f : I \to \R\) be a function.
+  We say that a function \(F : I \to \R\) is an \emph{antiderivative} of \(f\) if \(F\) is differentiable on \(I\) and \(F'(x) = f(x)\) for all limit points \(x\) of \(I\).
 \end{definition}
 
 \begin{theorem}[Second Fundamental Theorem of Calculus]\label{11.9.4}
-    Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a Riemann integrable function.
-    If \(F : [a, b] \to \R\) is an antiderivative of \(f\), then
-    \[
-        \int_{[a, b]} f = F(b) - F(a).
-    \]
+  Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a Riemann integrable function.
+  If \(F : [a, b] \to \R\) is an antiderivative of \(f\), then
+  \[
+    \int_{[a, b]} f = F(b) - F(a).
+  \]
 \end{theorem}
 
 \begin{proof}
-    The claim is trivial when \(b = a\), so assume \(b > a\), so in particular all points of \([a, b]\) are limit points.
-    We will use Riemann sums.
-    The idea is to show that
-    \[
-        U(f, \mathbf{P}) \geq F(b) - F(a) \geq L(f, \mathbf{P})
-    \]
-    for every partition \(\mathbf{P}\) of \([a, b]\).
-    The left inequality asserts that \(F(b) - F(a)\) is a lower bound for \(\{U(f, \mathbf{P}) : \mathbf{P} \text{ is a partition of } [a, b]\}\), while the right inequality asserts that \(F(b) - F(a)\) is an upper bound for \(\{L(f, \mathbf{P}) : \mathbf{P} \text{ is a partition of } [a, b]\}\).
-    But by Proposition \ref{11.3.12}, this means that
-    \[
-        \overline{\int}_{[a, b]} f \geq F(b) - F(a) \geq \underline{\int}_{[a, b]} f,
-    \]
-    but since \(f\) is assumed to be Riemann integrable, both the upper and lower Riemann integral equal \(\int_{[a, b]} f\).
-    The claim follows.
+  The claim is trivial when \(b = a\), so assume \(b > a\), so in particular all points of \([a, b]\) are limit points.
+  We will use Riemann sums.
+  The idea is to show that
+  \[
+    U(f, \mathbf{P}) \geq F(b) - F(a) \geq L(f, \mathbf{P})
+  \]
+  for every partition \(\mathbf{P}\) of \([a, b]\).
+  The left inequality asserts that \(F(b) - F(a)\) is a lower bound for \(\{U(f, \mathbf{P}) : \mathbf{P} \text{ is a partition of } [a, b]\}\), while the right inequality asserts that \(F(b) - F(a)\) is an upper bound for \(\{L(f, \mathbf{P}) : \mathbf{P} \text{ is a partition of } [a, b]\}\).
+  But by \cref{11.3.12}, this means that
+  \[
+    \overline{\int}_{[a, b]} f \geq F(b) - F(a) \geq \underline{\int}_{[a, b]} f,
+  \]
+  but since \(f\) is assumed to be Riemann integrable, both the upper and lower Riemann integral equal \(\int_{[a, b]} f\).
+  The claim follows.
 
-    We have to show the bound \(U(f, \mathbf{P}) \geq F(b) - F(a) \geq L(f, \mathbf{P})\).
-    We shall just show the first inequality \(U(f, \mathbf{P}) \geq F(b) - F(a)\);
-    the other inequality is similar.
+  We have to show the bound \(U(f, \mathbf{P}) \geq F(b) - F(a) \geq L(f, \mathbf{P})\).
+  We shall just show the first inequality \(U(f, \mathbf{P}) \geq F(b) - F(a)\);
+  the other inequality is similar.
 
-    Let \(\mathbf{P}\) be a partition of \([a, b]\).
-    From Lemma \ref{11.8.4} we have
-    \[
-        F(b) - F(a) = \sum_{J \in \mathbf{P}} F[J] = \sum_{J \in \mathbf{P} : J \neq \emptyset} F[J],
-    \]
-    while from definition we have
-    \[
-        U(f, \mathbf{P}) = \sum_{J \in \mathbf{P} : J \neq \emptyset} \sup_{x \in J} f(x) \abs{J}.
-    \]
-    Thus it will suffice to show that
-    \[
-        F[J] \leq \sup_{x \in J} f(x) \abs{J}
-    \]
-    for all \(J \in \mathbf{P}\)
-    (other than the empty set).
+  Let \(\mathbf{P}\) be a partition of \([a, b]\).
+  From \cref{11.8.4} we have
+  \[
+    F(b) - F(a) = \sum_{J \in \mathbf{P}} F[J] = \sum_{J \in \mathbf{P} : J \neq \emptyset} F[J],
+  \]
+  while from definition we have
+  \[
+    U(f, \mathbf{P}) = \sum_{J \in \mathbf{P} : J \neq \emptyset} \sup_{x \in J} f(x) \abs{J}.
+  \]
+  Thus it will suffice to show that
+  \[
+    F[J] \leq \sup_{x \in J} f(x) \abs{J}
+  \]
+  for all \(J \in \mathbf{P}\)
+  (other than the empty set).
 
-    When \(J\) is a point then the claim is clear, since both sides are zero.
-    Now suppose that \(J = [c, d], (c, d], [c, d)\), or \((c, d)\) for some \(c < d\).
-    Then the left-hand side is \(F[J] = F(d) - F(c)\).
-    Note that \(F\), being differentiable, is continuous, so we may use the simplified formula for the \(F\)-length as opposed to the more complicated one in Definition \ref{11.8.1}.
-    By the mean-value theorem (Corollary \ref{10.2.9}), this is equal to \((d - c) F'(e)\) for some \(e \in J\).
-    But since \(F'(e) = f(e)\), we thus have
-    \[
-        F[J] = (d - c) f(e) = f(e) \abs{J} \leq \sup_{x \in J} f(x) \abs{J}
-    \]
-    as desired.
+  When \(J\) is a point then the claim is clear, since both sides are zero.
+  Now suppose that \(J = [c, d], (c, d], [c, d)\), or \((c, d)\) for some \(c < d\).
+  Then the left-hand side is \(F[J] = F(d) - F(c)\).
+  Note that \(F\), being differentiable, is continuous, so we may use the simplified formula for the \(F\)-length as opposed to the more complicated one in \cref{11.8.1}.
+  By the mean-value theorem (\cref{10.2.9}), this is equal to \((d - c) F'(e)\) for some \(e \in J\).
+  But since \(F'(e) = f(e)\), we thus have
+  \[
+    F[J] = (d - c) f(e) = f(e) \abs{J} \leq \sup_{x \in J} f(x) \abs{J}
+  \]
+  as desired.
 \end{proof}
 
 \begin{note}
-    One can use the second fundamental theorem of calculus to compute integrals relatively easily provided that you can find an anti-derivative of the integrand \(f\).
-    The first fundamental theorem of calculus ensures that every \emph{continuous} Riemann integrable function has an anti-derivative.
-    For discontinuous functions, the situation is more complicated.
-    Also, not every function with an anti-derivative is Riemann integrable.
+  One can use the second fundamental theorem of calculus to compute integrals relatively easily provided that you can find an anti-derivative of the integrand \(f\).
+  The first fundamental theorem of calculus ensures that every \emph{continuous} Riemann integrable function has an anti-derivative.
+  For discontinuous functions, the situation is more complicated.
+  Also, not every function with an anti-derivative is Riemann integrable.
 \end{note}
 
 \begin{lemma}\label{11.9.5}
-    Let \(I\) be a bounded interval, and let \(f : I \to \R\) be a function.
-    Let \(F : I \to \R\) and \(G : I \to \R\) be two antiderivatives of \(f\).
-    Then there exists a real number \(C\) such that \(F(x) = G(x) + C\) for all \(x \in I\).
+  Let \(I\) be a bounded interval, and let \(f : I \to \R\) be a function.
+  Let \(F : I \to \R\) and \(G : I \to \R\) be two antiderivatives of \(f\).
+  Then there exists a real number \(C\) such that \(F(x) = G(x) + C\) for all \(x \in I\).
 \end{lemma}
 
 \begin{proof}
-    If \(I = \emptyset\), then the claim is trivially true.
-    If \(I = \{a\}\) for some \(a \in \R\), then we can simply set \(C = F(a) - G(a)\).
-    So suppose that \(I\) is one of \((a, b), [a, b), (a, b], [a, b]\) for some \(a, b \in \R\) and \(a < b\).
-    Since \(I\) is a bounded interval, for all \(x \in I\) we know that \(x\) is a limit point.
-    Since \(F, G\) are antiderivatives of \(f\), by Definition \ref{11.9.3} we know that \(F, G\) are differentiable on \(I\).
-    By Theorem \ref{10.1.13}(f) we know that \(F - G\) is differentiable on \(I\), and thus by Corollary \ref{10.1.12} we know that \(F - G\) are continuous on \(I\).
-    Let \(x, y \in I\) and \(x < y\).
-    Since \(I\) is a bounded interval, by Lemma \ref{11.1.10} we know that \(I\) is connected, and thus by Definition \ref{11.1.1} \([x, y] \subseteq I\).
-    By the mean-value theorem (Corollary \ref{10.2.9}) we know that
-    \[
-        \exists\ c \in I : \frac{(F - G)(x) - (F - G)(y)}{x - y} = (F - G)'(c).
-    \]
-    Thus we have
-    \begin{align*}
-                 & \frac{(F - G)(x) - (F - G)(y)}{x - y} = (F - G)'(c)                                          \\
-        \implies & \frac{(F - G)(x) - (F - G)(y)}{x - y} = F'(c) - G'(c) & \text{(by Theorem \ref{10.1.13}(f))} \\
-        \implies & \frac{(F - G)(x) - (F - G)(y)}{x - y} = 0             & \text{(by hypothesis)}               \\
-        \implies & (F - G)(x) = (F - G)(y)                                                                      \\
-        \implies & F(x) - G(x) = F(y) - G(y)                             & \text{(by Definition \ref{9.2.1})}   \\
-        \implies & F(x) = G(x) + F(y) - G(y).
-    \end{align*}
-    By setting \(C = F(y) - G(y)\) we are done.
+  If \(I = \emptyset\), then the claim is trivially true.
+  If \(I = \{a\}\) for some \(a \in \R\), then we can simply set \(C = F(a) - G(a)\).
+  So suppose that \(I\) is one of \((a, b), [a, b), (a, b], [a, b]\) for some \(a, b \in \R\) and \(a < b\).
+  Since \(I\) is a bounded interval, for all \(x \in I\) we know that \(x\) is a limit point.
+  Since \(F, G\) are antiderivatives of \(f\), by \cref{11.9.3} we know that \(F, G\) are differentiable on \(I\).
+  By \cref{10.1.13}(f) we know that \(F - G\) is differentiable on \(I\), and thus by \cref{10.1.12} we know that \(F - G\) are continuous on \(I\).
+  Let \(x, y \in I\) and \(x < y\).
+  Since \(I\) is a bounded interval, by \cref{11.1.10} we know that \(I\) is connected, and thus by \cref{11.1.1} \([x, y] \subseteq I\).
+  By the mean-value theorem (\cref{10.2.9}) we know that
+  \[
+    \exists\ c \in I : \frac{(F - G)(x) - (F - G)(y)}{x - y} = (F - G)'(c).
+  \]
+  Thus we have
+  \begin{align*}
+             & \frac{(F - G)(x) - (F - G)(y)}{x - y} = (F - G)'(c)                                   \\
+    \implies & \frac{(F - G)(x) - (F - G)(y)}{x - y} = F'(c) - G'(c) & \text{(by \cref{10.1.13}(f))} \\
+    \implies & \frac{(F - G)(x) - (F - G)(y)}{x - y} = 0             & \text{(by hypothesis)}        \\
+    \implies & (F - G)(x) = (F - G)(y)                                                               \\
+    \implies & F(x) - G(x) = F(y) - G(y)                             & \text{(by \cref{9.2.1})}      \\
+    \implies & F(x) = G(x) + F(y) - G(y).
+  \end{align*}
+  By setting \(C = F(y) - G(y)\) we are done.
 \end{proof}
 
 \exercisesection
 
 \begin{exercise}\label{ex 11.9.1}
-    Let \(f : [0, 1] \to \R\) be the function in Exercise \ref{ex 9.8.5}.
-    Show that for every rational number \(q \in \Q \cap (0, 1)\), the function \(F : [0, 1] \to \R\) defined by the formula \(F(x) \coloneqq \int_{[0, x]} f\) is not differentiable at \(q\).
+  Let \(f : [0, 1] \to \R\) be the function in \cref{ex 9.8.5}.
+  Show that for every rational number \(q \in \Q \cap (0, 1)\), the function \(F : [0, 1] \to \R\) defined by the formula \(F(x) \coloneqq \int_{[0, x]} f\) is not differentiable at \(q\).
 \end{exercise}
 
 \begin{proof}
-    By Exercise \ref{ex 9.8.5} we know that \(f\) is strictly monotone increasing, thus by Proposition \ref{11.6.1} we know that \(f\) is Riemann integrable and \(F\) is well-defined.
-    By Exercise \ref{ex 9.8.5} \(f\) is not continuous at \(q\), thus by Exercise \ref{ex 11.9.3} we know that \(F\) is not differentiable at \(q\).
+  By \cref{ex 9.8.5} we know that \(f\) is strictly monotone increasing, thus by \cref{11.6.1} we know that \(f\) is Riemann integrable and \(F\) is well-defined.
+  By \cref{ex 9.8.5} \(f\) is not continuous at \(q\), thus by \cref{ex 11.9.3} we know that \(F\) is not differentiable at \(q\).
 \end{proof}
 
 \begin{exercise}\label{ex 11.9.2}
-    Prove Lemma \ref{11.9.5}.
+  Prove \cref{11.9.5}.
 \end{exercise}
 
 \begin{proof}
-    See Lemma \ref{11.9.5}.
+  See \cref{11.9.5}.
 \end{proof}
 
 \begin{exercise}\label{ex 11.9.3}
-    Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a monotone increasing function.
-    Let \(F : [a, b] \to \R\) be the function \(F(x) \coloneqq \int_{[a, x]} f\).
-    Let \(x_0\) be an element of \((a, b)\).
-    Show that \(F\) is differentiable at \(x_0\) if and only if \(f\) is continuous at \(x_0\).
+  Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a monotone increasing function.
+  Let \(F : [a, b] \to \R\) be the function \(F(x) \coloneqq \int_{[a, x]} f\).
+  Let \(x_0\) be an element of \((a, b)\).
+  Show that \(F\) is differentiable at \(x_0\) if and only if \(f\) is continuous at \(x_0\).
 \end{exercise}
 
 \begin{proof}
-    Since \(f\) is monotone increasing, by Proposition \ref{11.6.1} we know that \(f\) is Riemann integrable and \(F\) is well-defined.
-    If \(f\) is continuous at \(x_0\), then by Theorem \ref{11.9.1} we know that \(F\) is differentiable at \(x_0\).
-    So we only need to show that if \(F\) is differentiable at \(x_0\), then \(f\) is continuous at \(x_0\).
+  Since \(f\) is monotone increasing, by \cref{11.6.1} we know that \(f\) is Riemann integrable and \(F\) is well-defined.
+  If \(f\) is continuous at \(x_0\), then by \cref{11.9.1} we know that \(F\) is differentiable at \(x_0\).
+  So we only need to show that if \(F\) is differentiable at \(x_0\), then \(f\) is continuous at \(x_0\).
 
-    Suppose that \(F\) is differentiable at \(x_0\).
-    Suppose for sake of contradiction that \(f\) is not continuous at \(x_0\).
-    Since \(f\) is monotone increasing, by Additional Corollary \ref{ac 11.8.1} we know that both \(f(x_0+)\) and \(f(x_0-)\) exist and \(f(x_0-) \leq f(x_0+)\).
-    Since \(f\) is not continuous at \(x_0\), by Proposition \ref{9.5.3} we have \(f(x_0-) < f(x_0+)\).
+  Suppose that \(F\) is differentiable at \(x_0\).
+  Suppose for sake of contradiction that \(f\) is not continuous at \(x_0\).
+  Since \(f\) is monotone increasing, by \cref{ac 11.8.1} we know that both \(f(x_0+)\) and \(f(x_0-)\) exist and \(f(x_0-) \leq f(x_0+)\).
+  Since \(f\) is not continuous at \(x_0\), by \cref{9.5.3} we have \(f(x_0-) < f(x_0+)\).
 
-    If \(x \in [a, b] \cap (-\infty, x_0)\), then we have \(f(x) \leq f(x_0-)\) and
-    \[
-        \frac{F(x) - F(x_0)}{x - x_0} = \frac{-\int_{[x, x_0]} f}{x - x_0} = \frac{\int_{[x, x_0]} f}{x_0 - x} \leq \frac{p.c. \int_{[x, x_0]} f(x_0-)}{x_0 - x} = f(x_0-).
-    \]
-    If \(x \in [a, b] \cap (x_0, \infty)\), then we have \(f(x) \geq f(x_0+)\) and
-    \[
-        \frac{F(x) - F(x_0)}{x - x_0} = \frac{\int_{[x_0, x]} f}{x - x_0} \geq \frac{p.c. \int_{[x_0, x]} f(x_0+)}{x - x_0} = f(x_0+).
-    \]
-    Thus by Proposition \ref{9.3.14} we have
-    \[
-        F'(x_0-) \leq f(x_0-) < f(x_0+) \leq F'(x_0+).
-    \]
-    But by Definition \ref{9.3.6} \(F'(x_0-) \neq F'(x_0+)\) implies \(F'(x_0)\) does not exist, a contradiction.
-    So we conclude that \(f\) is continuous at \(x_0\).
+  If \(x \in [a, b] \cap (-\infty, x_0)\), then we have \(f(x) \leq f(x_0-)\) and
+  \[
+    \frac{F(x) - F(x_0)}{x - x_0} = \frac{-\int_{[x, x_0]} f}{x - x_0} = \frac{\int_{[x, x_0]} f}{x_0 - x} \leq \frac{p.c. \int_{[x, x_0]} f(x_0-)}{x_0 - x} = f(x_0-).
+  \]
+  If \(x \in [a, b] \cap (x_0, \infty)\), then we have \(f(x) \geq f(x_0+)\) and
+  \[
+    \frac{F(x) - F(x_0)}{x - x_0} = \frac{\int_{[x_0, x]} f}{x - x_0} \geq \frac{p.c. \int_{[x_0, x]} f(x_0+)}{x - x_0} = f(x_0+).
+  \]
+  Thus by \cref{9.3.14} we have
+  \[
+    F'(x_0-) \leq f(x_0-) < f(x_0+) \leq F'(x_0+).
+  \]
+  But by \cref{9.3.6} \(F'(x_0-) \neq F'(x_0+)\) implies \(F'(x_0)\) does not exist, a contradiction.
+  So we conclude that \(f\) is continuous at \(x_0\).
 \end{proof}

@@ -1,581 +1,581 @@
 \section{Basic properties of the Riemann integral}\label{sec 11.4}
 
 \begin{theorem}[Laws of Riemann integration]\label{11.4.1}
-    Let \(I\) be a bounded interval, and let \(f : I \to \R\) and \(g : I \to \R\) be Riemann integrable functions on \(I\).
-    \begin{enumerate}
-        \item The function \(f + g\) is Riemann integrable, and we have \(\int_I (f + g) = \int_I f + \int_I g\).
-        \item For any real number \(c\), the function \(cf\) is Riemann integrable, and we have \(\int_I (cf) = c(\int_I f)\).
-        \item The function \(f - g\) is Riemann integrable, and we have \(\int_I (f - g) = \int_I f - \int_I g\).
-        \item If \(f(x) \geq 0\) for all \(x \in I\), then \(\int_I f \geq 0\).
-        \item If \(f(x) \geq g(x)\) for all \(x \in I\), then \(\int_I f \geq \int_I g\).
-        \item If \(f\) is the constant function \(f(x) = c\) for all \(x \in I\), then \(\int_I f = c \abs{I}\).
-        \item Let \(J\) be a bounded interval containing \(I\) (i.e., \(I \subseteq J\)), and let \(F : J \to \R\) be the function
-              \[
-                  F(x) \coloneqq \begin{cases}
-                      f(x) & \text{if } x \in I    \\
-                      0    & \text{if } x \notin I \\
-                  \end{cases}
-              \]
-              Then \(F\) is Riemann integrable on \(J\), and \(\int_J F = \int_I f\).
-        \item Suppose that \(\{J, K\}\) is a partition of \(I\) into two intervals \(J\) and \(K\).
-              Then the functions \(f|_J : J \to \R\) and \(f|_K : K \to \R\) are Riemann integrable on \(J\) and \(K\) respectively, and we have
-              \[
-                  \int_I f = \int_J f|_J + \int_K f|_K.
-              \]
-    \end{enumerate}
+  Let \(I\) be a bounded interval, and let \(f : I \to \R\) and \(g : I \to \R\) be Riemann integrable functions on \(I\).
+  \begin{enumerate}
+    \item The function \(f + g\) is Riemann integrable, and we have \(\int_I (f + g) = \int_I f + \int_I g\).
+    \item For any real number \(c\), the function \(cf\) is Riemann integrable, and we have \(\int_I (cf) = c(\int_I f)\).
+    \item The function \(f - g\) is Riemann integrable, and we have \(\int_I (f - g) = \int_I f - \int_I g\).
+    \item If \(f(x) \geq 0\) for all \(x \in I\), then \(\int_I f \geq 0\).
+    \item If \(f(x) \geq g(x)\) for all \(x \in I\), then \(\int_I f \geq \int_I g\).
+    \item If \(f\) is the constant function \(f(x) = c\) for all \(x \in I\), then \(\int_I f = c \abs{I}\).
+    \item Let \(J\) be a bounded interval containing \(I\) (i.e., \(I \subseteq J\)), and let \(F : J \to \R\) be the function
+          \[
+            F(x) \coloneqq \begin{cases}
+              f(x) & \text{if } x \in I    \\
+              0    & \text{if } x \notin I \\
+            \end{cases}
+          \]
+          Then \(F\) is Riemann integrable on \(J\), and \(\int_J F = \int_I f\).
+    \item Suppose that \(\{J, K\}\) is a partition of \(I\) into two intervals \(J\) and \(K\).
+          Then the functions \(f|_J : J \to \R\) and \(f|_K : K \to \R\) are Riemann integrable on \(J\) and \(K\) respectively, and we have
+          \[
+            \int_I f = \int_J f|_J + \int_K f|_K.
+          \]
+  \end{enumerate}
 \end{theorem}
 
 \begin{proof}{(a)}
-    Since \(f, g\) are Riemann integrable on \(I\), by Definition \ref{11.3.4} we have
-    \[
-        \int_I f = \overline{\int}_I f = \underline{\int}_I f
-    \]
-    and
-    \[
-        \int_I g = \overline{\int}_I g = \underline{\int}_I g.
-    \]
-    Let \(f_U : I \to \R\) and \(g_U : I \to \R\) be piecewise constant functions on \(I\) which majorizes \(f\) and \(g\), respectively.
-    Let \(f_L : I \to \R\) and \(g_L : I \to \R\) be piecewise constant functions on \(I\) which minorizes \(f\) and \(g\), respectively.
-    \(f_U, g_U, f_L, g_L\) are well-defined since by Definition \ref{11.3.4} \(f, g\) are bounded functions on a bounded interval \(I\).
-    By Definition \ref{11.3.2} we have
-    \[
-        p.c. \int_I f_L \leq \underline{\int}_I f = \int_I f = \overline{\int}_I f \leq p.c. \int_I f_U
-    \]
-    and
-    \[
-        p.c. \int_I g_L \leq \underline{\int}_I g = \int_I g = \overline{\int}_I g \leq p.c. \int_I g_U.
-    \]
-    By Definition \ref{11.3.4} both \(f, g\) are bounded functions, so \(f + g\) is bounded function, and \(\underline{\int}_I (f + g), \overline{\int}_I (f + g)\) are well-defined (by Definition \ref{11.3.2}).
-    By Exercise \ref{ex 11.3.2} we know that \(f_U + g_U\) majorizes \(f + g_U\) and \(f + g_U\) majorizes \(f + g\), thus \(f_U + g_U\) majorizes \(f + g\).
-    Similarly \(f_L + g_L\) minorizes \(f + g\).
-    Then we have
-    \begin{align*}
-                 & \overline{\int}_I (f + g) \leq p.c. \int_I (f_U + g_U)                   & \text{(by Definition \ref{11.3.2})}     \\
-        \implies & \overline{\int}_I (f + g) \leq p.c. \int_I f_U + p.c. \int_I g_U         & \text{(by Theorem \ref{11.2.16}(a))}    \\
-        \implies & \overline{\int}_I (f + g) - p.c. \int_I g_U \leq p.c. \int_I f_U         & \text{(note that \(f_U\) is arbitrary)} \\
-        \implies & \overline{\int}_I (f + g) - p.c. \int_I g_U \leq \overline{\int}_I f     & \text{(by Definition \ref{11.3.2})}     \\
-        \implies & \overline{\int}_I (f + g) - \overline{\int}_I f \leq p.c. \int_I g_U     & \text{(note that \(g_U\) is arbitrary)} \\
-        \implies & \overline{\int}_I (f + g) - \overline{\int}_I f \leq \overline{\int}_I g & \text{(by Definition \ref{11.3.2})}     \\
-        \implies & \overline{\int}_I (f + g) \leq \overline{\int}_I f + \overline{\int}_I g &                                         \\
-        \implies & \overline{\int}_I (f + g) \leq \int_I f + \int_I g                       & \text{(by Definition \ref{11.3.4})}
-    \end{align*}
-    and
-    \begin{align*}
-                 & \underline{\int}_I (f + g) \geq p.c. \int_I (f_L + g_L)                     & \text{(by Definition \ref{11.3.2})}     \\
-        \implies & \underline{\int}_I (f + g) \geq p.c. \int_I f_L + p.c. \int_I g_L           & \text{(by Theorem \ref{11.2.16}(a))}    \\
-        \implies & \underline{\int}_I (f + g) - p.c. \int_I g_L \geq p.c. \int_I f_L           & \text{(note that \(f_L\) is arbitrary)} \\
-        \implies & \underline{\int}_I (f + g) - p.c. \int_I g_L \geq \underline{\int}_I f      & \text{(by Definition \ref{11.3.2})}     \\
-        \implies & \underline{\int}_I (f + g) - \underline{\int}_I f \geq p.c. \int_I g_L      & \text{(note that \(g_L\) is arbitrary)} \\
-        \implies & \underline{\int}_I (f + g) - \underline{\int}_I f \geq \underline{\int}_I g & \text{(by Definition \ref{11.3.2})}     \\
-        \implies & \underline{\int}_I (f + g) \geq \underline{\int}_I f + \underline{\int}_I g &                                         \\
-        \implies & \underline{\int}_I (f + g) \geq \int_I f + \int_I g.                        & \text{(by Definition \ref{11.3.4})}
-    \end{align*}
-    By Lemma \ref{11.3.3} we have
-    \[
-        \int_I f + \int_I g \leq \underline{\int}_I (f + g) \leq \overline{\int}_I (f + g) \leq \int_I f + \int_I g
-    \]
-    and thus by Definition \ref{11.3.4} we have
-    \[
-        \int_I (f + g) = \underline{\int}_I (f + g) = \overline{\int}_I (f + g) = \int_I f + \int_I g.
-    \]
+  Since \(f, g\) are Riemann integrable on \(I\), by \cref{11.3.4} we have
+  \[
+    \int_I f = \overline{\int}_I f = \underline{\int}_I f
+  \]
+  and
+  \[
+    \int_I g = \overline{\int}_I g = \underline{\int}_I g.
+  \]
+  Let \(f_U : I \to \R\) and \(g_U : I \to \R\) be piecewise constant functions on \(I\) which majorizes \(f\) and \(g\), respectively.
+  Let \(f_L : I \to \R\) and \(g_L : I \to \R\) be piecewise constant functions on \(I\) which minorizes \(f\) and \(g\), respectively.
+  \(f_U, g_U, f_L, g_L\) are well-defined since by \cref{11.3.4} \(f, g\) are bounded functions on a bounded interval \(I\).
+  By \cref{11.3.2} we have
+  \[
+    p.c. \int_I f_L \leq \underline{\int}_I f = \int_I f = \overline{\int}_I f \leq p.c. \int_I f_U
+  \]
+  and
+  \[
+    p.c. \int_I g_L \leq \underline{\int}_I g = \int_I g = \overline{\int}_I g \leq p.c. \int_I g_U.
+  \]
+  By \cref{11.3.4} both \(f, g\) are bounded functions, so \(f + g\) is bounded function, and \(\underline{\int}_I (f + g), \overline{\int}_I (f + g)\) are well-defined (by \cref{11.3.2}).
+  By \cref{ex 11.3.2} we know that \(f_U + g_U\) majorizes \(f + g_U\) and \(f + g_U\) majorizes \(f + g\), thus \(f_U + g_U\) majorizes \(f + g\).
+  Similarly \(f_L + g_L\) minorizes \(f + g\).
+  Then we have
+  \begin{align*}
+             & \overline{\int}_I (f + g) \leq p.c. \int_I (f_U + g_U)                   & \text{(by \cref{11.3.2})}               \\
+    \implies & \overline{\int}_I (f + g) \leq p.c. \int_I f_U + p.c. \int_I g_U         & \text{(by \cref{11.2.16}(a))}           \\
+    \implies & \overline{\int}_I (f + g) - p.c. \int_I g_U \leq p.c. \int_I f_U         & \text{(note that \(f_U\) is arbitrary)} \\
+    \implies & \overline{\int}_I (f + g) - p.c. \int_I g_U \leq \overline{\int}_I f     & \text{(by \cref{11.3.2})}               \\
+    \implies & \overline{\int}_I (f + g) - \overline{\int}_I f \leq p.c. \int_I g_U     & \text{(note that \(g_U\) is arbitrary)} \\
+    \implies & \overline{\int}_I (f + g) - \overline{\int}_I f \leq \overline{\int}_I g & \text{(by \cref{11.3.2})}               \\
+    \implies & \overline{\int}_I (f + g) \leq \overline{\int}_I f + \overline{\int}_I g &                                         \\
+    \implies & \overline{\int}_I (f + g) \leq \int_I f + \int_I g                       & \text{(by \cref{11.3.4})}
+  \end{align*}
+  and
+  \begin{align*}
+             & \underline{\int}_I (f + g) \geq p.c. \int_I (f_L + g_L)                     & \text{(by \cref{11.3.2})}               \\
+    \implies & \underline{\int}_I (f + g) \geq p.c. \int_I f_L + p.c. \int_I g_L           & \text{(by \cref{11.2.16}(a))}           \\
+    \implies & \underline{\int}_I (f + g) - p.c. \int_I g_L \geq p.c. \int_I f_L           & \text{(note that \(f_L\) is arbitrary)} \\
+    \implies & \underline{\int}_I (f + g) - p.c. \int_I g_L \geq \underline{\int}_I f      & \text{(by \cref{11.3.2})}               \\
+    \implies & \underline{\int}_I (f + g) - \underline{\int}_I f \geq p.c. \int_I g_L      & \text{(note that \(g_L\) is arbitrary)} \\
+    \implies & \underline{\int}_I (f + g) - \underline{\int}_I f \geq \underline{\int}_I g & \text{(by \cref{11.3.2})}               \\
+    \implies & \underline{\int}_I (f + g) \geq \underline{\int}_I f + \underline{\int}_I g &                                         \\
+    \implies & \underline{\int}_I (f + g) \geq \int_I f + \int_I g.                        & \text{(by \cref{11.3.4})}
+  \end{align*}
+  By \cref{11.3.3} we have
+  \[
+    \int_I f + \int_I g \leq \underline{\int}_I (f + g) \leq \overline{\int}_I (f + g) \leq \int_I f + \int_I g
+  \]
+  and thus by \cref{11.3.4} we have
+  \[
+    \int_I (f + g) = \underline{\int}_I (f + g) = \overline{\int}_I (f + g) = \int_I f + \int_I g.
+  \]
 \end{proof}
 
 \begin{proof}{(b)}
-    Since \(f\) is Riemann integrable on \(I\), by Definition \ref{11.3.4} we have
-    \[
-        \int_I f = \overline{\int}_I f = \underline{\int}_I f.
-    \]
-    First suppose that \(c = 0\).
-    Then we have \((cf)(x) = 0\) for all \(x \in 0\), thus we have
-    \begin{align*}
-        \int_I (cf) & = p.c. \int_I (cf) & \text{(by Lemma \ref{11.3.7})} \\
-                    & = 0                                                 \\
-                    & = c \int_I f.
-    \end{align*}
+  Since \(f\) is Riemann integrable on \(I\), by \cref{11.3.4} we have
+  \[
+    \int_I f = \overline{\int}_I f = \underline{\int}_I f.
+  \]
+  First suppose that \(c = 0\).
+  Then we have \((cf)(x) = 0\) for all \(x \in 0\), thus we have
+  \begin{align*}
+    \int_I (cf) & = p.c. \int_I (cf) & \text{(by \cref{11.3.7})} \\
+                & = 0                                            \\
+                & = c \int_I f.
+  \end{align*}
 
-    Next suppose that \(c > 0\).
-    Let \(f_U : I \to \R\) be a piecewise constant function on \(I\) which majorizes \(f\).
-    Let \(f_L : I \to \R\) be a piecewise constant function on \(I\) which minorizes \(f\).
-    \(f_U, f_L\) are well-defined since by Definition \ref{11.3.4} \(f\) is a bounded function on a bounded interval \(I\).
-    Then by Definition \ref{11.3.2} we have
-    \[
-        p.c. \int_I f_L \leq \underline{\int}_I f = \int_I f = \overline{\int}_I f \leq p.c. \int_I f_U.
-    \]
-    Since \(f\) is a bounded function, \(cf\) is also a bounded function, by Definition \ref{11.3.2} both \(\overline{\int}_I (cf), \underline{\int}_I (cf)\) are well-defined.
-    Since \(c > 0\), by Definition \ref{11.3.1} we know that \(c f_U\) majorizes \(c f\) and \(c f_L\) minorizes \(c f\).
-    Then we have
-    \begin{align*}
-                 & \overline{\int}_I (cf) \leq p.c. \int_I (c f_U)                         & \text{(by Definition \ref{11.3.2})}     \\
-        \implies & \overline{\int}_I (cf) \leq c \bigg(p.c. \int_I f_U\bigg)               & \text{(by Theorem \ref{11.2.16}(b))}    \\
-        \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf)\bigg) \leq p.c. \int_I f_U     & \text{(note that \(f_U\) is arbitrary)} \\
-        \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf)\bigg) \leq \overline{\int}_I f & \text{(by Definition \ref{11.3.2})}     \\
-        \implies & \overline{\int}_I (cf) \leq c\bigg(\overline{\int}_I f\bigg)                                                      \\
-        \implies & \overline{\int}_I (cf) \leq c\bigg(\int_I f\bigg)                       & \text{(by Definition \ref{11.3.4})}
-    \end{align*}
-    and
-    \begin{align*}
-                 & \underline{\int}_I (cf) \geq p.c. \int_I (c f_L)                          & \text{(by Definition \ref{11.3.2})}     \\
-        \implies & \underline{\int}_I (cf) \geq c \bigg(p.c. \int_I f_L\bigg)                & \text{(by Theorem \ref{11.2.16}(b))}    \\
-        \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf)\bigg) \geq p.c. \int_I f_L      & \text{(note that \(f_L\) is arbitrary)} \\
-        \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf)\bigg) \geq \underline{\int}_I f & \text{(by Definition \ref{11.3.2})}     \\
-        \implies & \underline{\int}_I (cf) \geq c\bigg(\underline{\int}_I f\bigg)                                                      \\
-        \implies & \underline{\int}_I (cf) \geq c\bigg(\int_I f\bigg).                       & \text{(by Definition \ref{11.3.4})}
-    \end{align*}
-    By Lemma \ref{11.3.3} we have
-    \[
-        c\bigg(\int_I f\bigg) \leq \underline{\int}_I (cf) \leq \overline{\int}_I (cf) \leq c\bigg(\int_I f\bigg)
-    \]
-    and thus by Definition \ref{11.3.4} we have
-    \[
-        \int_I (cf) = \underline{\int}_I (cf) = \overline{\int}_I (cf) = c\bigg(\int_I f\bigg).
-    \]
+  Next suppose that \(c > 0\).
+  Let \(f_U : I \to \R\) be a piecewise constant function on \(I\) which majorizes \(f\).
+  Let \(f_L : I \to \R\) be a piecewise constant function on \(I\) which minorizes \(f\).
+  \(f_U, f_L\) are well-defined since by \cref{11.3.4} \(f\) is a bounded function on a bounded interval \(I\).
+  Then by \cref{11.3.2} we have
+  \[
+    p.c. \int_I f_L \leq \underline{\int}_I f = \int_I f = \overline{\int}_I f \leq p.c. \int_I f_U.
+  \]
+  Since \(f\) is a bounded function, \(cf\) is also a bounded function, by \cref{11.3.2} both \(\overline{\int}_I (cf), \underline{\int}_I (cf)\) are well-defined.
+  Since \(c > 0\), by \cref{11.3.1} we know that \(c f_U\) majorizes \(c f\) and \(c f_L\) minorizes \(c f\).
+  Then we have
+  \begin{align*}
+             & \overline{\int}_I (cf) \leq p.c. \int_I (c f_U)                         & \text{(by \cref{11.3.2})}               \\
+    \implies & \overline{\int}_I (cf) \leq c \bigg(p.c. \int_I f_U\bigg)               & \text{(by \cref{11.2.16}(b))}           \\
+    \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf)\bigg) \leq p.c. \int_I f_U     & \text{(note that \(f_U\) is arbitrary)} \\
+    \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf)\bigg) \leq \overline{\int}_I f & \text{(by \cref{11.3.2})}               \\
+    \implies & \overline{\int}_I (cf) \leq c\bigg(\overline{\int}_I f\bigg)                                                      \\
+    \implies & \overline{\int}_I (cf) \leq c\bigg(\int_I f\bigg)                       & \text{(by \cref{11.3.4})}
+  \end{align*}
+  and
+  \begin{align*}
+             & \underline{\int}_I (cf) \geq p.c. \int_I (c f_L)                          & \text{(by \cref{11.3.2})}               \\
+    \implies & \underline{\int}_I (cf) \geq c \bigg(p.c. \int_I f_L\bigg)                & \text{(by \cref{11.2.16}(b))}           \\
+    \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf)\bigg) \geq p.c. \int_I f_L      & \text{(note that \(f_L\) is arbitrary)} \\
+    \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf)\bigg) \geq \underline{\int}_I f & \text{(by \cref{11.3.2})}               \\
+    \implies & \underline{\int}_I (cf) \geq c\bigg(\underline{\int}_I f\bigg)                                                      \\
+    \implies & \underline{\int}_I (cf) \geq c\bigg(\int_I f\bigg).                       & \text{(by \cref{11.3.4})}
+  \end{align*}
+  By \cref{11.3.3} we have
+  \[
+    c\bigg(\int_I f\bigg) \leq \underline{\int}_I (cf) \leq \overline{\int}_I (cf) \leq c\bigg(\int_I f\bigg)
+  \]
+  and thus by \cref{11.3.4} we have
+  \[
+    \int_I (cf) = \underline{\int}_I (cf) = \overline{\int}_I (cf) = c\bigg(\int_I f\bigg).
+  \]
 
-    Finally suppose that \(c < 0\).
-    Using the same definition of \(f_U, f_L\) we have
-    \begin{align*}
-                 & \overline{\int}_I (cf) \leq p.c. \int_I (c f_U)                                              & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \overline{\int}_I (cf) \leq c \bigg(p.c. \int_I f_U\bigg)                                    & \text{(by Theorem \ref{11.2.16}(b))} \\
-        \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf)\bigg) \geq p.c. \int_I f_U                                                                 \\
-        \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf)\bigg) \geq p.c. \int_I f_U \geq \overline{\int}_I f & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \overline{\int}_I (cf) \leq c\bigg(\overline{\int}_I f\bigg)                                                                        \\
-        \implies & \overline{\int}_I (cf) \leq c\bigg(\int_I f\bigg)                                            & \text{(by Definition \ref{11.3.4})}
-    \end{align*}
-    and
-    \begin{align*}
-                 & \underline{\int}_I (cf) \geq p.c. \int_I (c f_L)                                               & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \underline{\int}_I (cf) \geq c \bigg(p.c. \int_I f_L\bigg)                                     & \text{(by Theorem \ref{11.2.16}(b))} \\
-        \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf)\bigg) \leq p.c. \int_I f_L                                                                  \\
-        \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf)\bigg) \leq p.c. \int_I f_L \leq \underline{\int}_I f & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \underline{\int}_I (cf) \geq c\bigg(\underline{\int}_I f\bigg)                                                                        \\
-        \implies & \underline{\int}_I (cf) \geq c\bigg(\int_I f\bigg).                                            & \text{(by Definition \ref{11.3.4})}
-    \end{align*}
-    By Lemma \ref{11.3.3} we have
-    \[
-        c\bigg(\int_I f\bigg) \leq \underline{\int}_I (cf) \leq \overline{\int}_I (cf) \leq c\bigg(\int_I f\bigg)
-    \]
-    and thus by Definition \ref{11.3.4} we have
-    \[
-        \int_I (cf) = \underline{\int}_I (cf) = \overline{\int}_I (cf) = c\bigg(\int_I f\bigg).
-    \]
-    We conclude that \(\forall c \in \R\), \(\int_I (cf) = c (\int_I f)\).
+  Finally suppose that \(c < 0\).
+  Using the same definition of \(f_U, f_L\) we have
+  \begin{align*}
+             & \overline{\int}_I (cf) \leq p.c. \int_I (c f_U)                                              & \text{(by \cref{11.3.2})}     \\
+    \implies & \overline{\int}_I (cf) \leq c \bigg(p.c. \int_I f_U\bigg)                                    & \text{(by \cref{11.2.16}(b))} \\
+    \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf)\bigg) \geq p.c. \int_I f_U                                                          \\
+    \implies & \frac{1}{c} \bigg(\overline{\int}_I (cf)\bigg) \geq p.c. \int_I f_U \geq \overline{\int}_I f & \text{(by \cref{11.3.2})}     \\
+    \implies & \overline{\int}_I (cf) \leq c\bigg(\overline{\int}_I f\bigg)                                                                 \\
+    \implies & \overline{\int}_I (cf) \leq c\bigg(\int_I f\bigg)                                            & \text{(by \cref{11.3.4})}
+  \end{align*}
+  and
+  \begin{align*}
+             & \underline{\int}_I (cf) \geq p.c. \int_I (c f_L)                                               & \text{(by \cref{11.3.2})}     \\
+    \implies & \underline{\int}_I (cf) \geq c \bigg(p.c. \int_I f_L\bigg)                                     & \text{(by \cref{11.2.16}(b))} \\
+    \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf)\bigg) \leq p.c. \int_I f_L                                                           \\
+    \implies & \frac{1}{c} \bigg(\underline{\int}_I (cf)\bigg) \leq p.c. \int_I f_L \leq \underline{\int}_I f & \text{(by \cref{11.3.2})}     \\
+    \implies & \underline{\int}_I (cf) \geq c\bigg(\underline{\int}_I f\bigg)                                                                 \\
+    \implies & \underline{\int}_I (cf) \geq c\bigg(\int_I f\bigg).                                            & \text{(by \cref{11.3.4})}
+  \end{align*}
+  By \cref{11.3.3} we have
+  \[
+    c\bigg(\int_I f\bigg) \leq \underline{\int}_I (cf) \leq \overline{\int}_I (cf) \leq c\bigg(\int_I f\bigg)
+  \]
+  and thus by \cref{11.3.4} we have
+  \[
+    \int_I (cf) = \underline{\int}_I (cf) = \overline{\int}_I (cf) = c\bigg(\int_I f\bigg).
+  \]
+  We conclude that \(\forall c \in \R\), \(\int_I (cf) = c (\int_I f)\).
 \end{proof}
 
 \begin{proof}{(c)}
-    We have
-    \begin{align*}
-        \int_I f - \int_I g & = \int_I f + \int_I (-g)    & \text{(by Theorem \ref{11.4.1}(b))} \\
-                            & = \int_I \big(f + (-g)\big) & \text{(by Theorem \ref{11.4.1}(a))} \\
-                            & = \int_I (f - g).           & \text{(by Definition \ref{9.2.1})}
-    \end{align*}
+  We have
+  \begin{align*}
+    \int_I f - \int_I g & = \int_I f + \int_I (-g)    & \text{(by \cref{11.4.1}(b))} \\
+                        & = \int_I \big(f + (-g)\big) & \text{(by \cref{11.4.1}(a))} \\
+                        & = \int_I (f - g).           & \text{(by \cref{9.2.1})}
+  \end{align*}
 \end{proof}
 
 \begin{proof}{(d)}
-    Let \(f_U : I \to \R\) be a piecewise constant function on \(I\) which majorizes \(f\).
-    \(f_U\) is well-defined since by Definition \ref{11.3.4} \(f\) is a bounded function on a bounded interval \(I\).
-    Since \(0 \leq f(x) \leq f_U(x)\) for every \(x \in I\), we have
-    \begin{align*}
-                 & 0 \leq p.c. \int_I f_U     & \text{(by Theorem \ref{11.2.16}(d))} \\
-        \implies & 0 \leq \overline{\int}_I f & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & 0 \leq \int_I f.           & \text{(by Definition \ref{11.3.4})}
-    \end{align*}
+  Let \(f_U : I \to \R\) be a piecewise constant function on \(I\) which majorizes \(f\).
+  \(f_U\) is well-defined since by \cref{11.3.4} \(f\) is a bounded function on a bounded interval \(I\).
+  Since \(0 \leq f(x) \leq f_U(x)\) for every \(x \in I\), we have
+  \begin{align*}
+             & 0 \leq p.c. \int_I f_U     & \text{(by \cref{11.2.16}(d))} \\
+    \implies & 0 \leq \overline{\int}_I f & \text{(by \cref{11.3.2})}     \\
+    \implies & 0 \leq \int_I f.           & \text{(by \cref{11.3.4})}
+  \end{align*}
 \end{proof}
 
 \begin{proof}{(e)}
-    We have \(f(x) - g(x) \geq 0\) for every \(x \in I\) and by Theorem \ref{11.4.1}(c) \(f - g\) is Riemann integrable on \(I\).
-    Thus
-    \begin{align*}
-                 & \int_I (f - g) \geq 0      & \text{(by Theorem \ref{11.4.1}(d))} \\
-        \implies & \int_I f - \int_I g \geq 0 & \text{(by Theorem \ref{11.4.1}(c))} \\
-        \implies & \int_I f \geq \int_I g.
-    \end{align*}
+  We have \(f(x) - g(x) \geq 0\) for every \(x \in I\) and by \cref{11.4.1}(c) \(f - g\) is Riemann integrable on \(I\).
+  Thus
+  \begin{align*}
+             & \int_I (f - g) \geq 0      & \text{(by \cref{11.4.1}(d))} \\
+    \implies & \int_I f - \int_I g \geq 0 & \text{(by \cref{11.4.1}(c))} \\
+    \implies & \int_I f \geq \int_I g.
+  \end{align*}
 \end{proof}
 
 \begin{proof}{(f)}
-    We have
-    \begin{align*}
-        \int_I f & = p.c. \int_I f & \text{(by Lemma \ref{11.3.7})}       \\
-                 & = c \abs{I}.    & \text{(by Theorem \ref{11.2.16}(f))}
-    \end{align*}
+  We have
+  \begin{align*}
+    \int_I f & = p.c. \int_I f & \text{(by \cref{11.3.7})}     \\
+             & = c \abs{I}.    & \text{(by \cref{11.2.16}(f))}
+  \end{align*}
 \end{proof}
 
 \begin{proof}{(g)}
-    Let \(f_U : I \to \R\) be a piecewise constant function on \(I\) which majorizes \(f\).
-    Let \(f_L : I \to \R\) be a piecewise constant function on \(I\) which minorizes \(f\).
-    \(f_U, f_L\) are well-defined since by Definition \ref{11.3.4} \(f\) is a bounded function on a bounded interval \(I\).
-    Then by Definition \ref{11.3.2} we have
-    \[
-        p.c. \int_I f_L \leq \underline{\int}_I f = \int_I f = \overline{\int}_I f \leq p.c. \int_I f_U.
-    \]
-    Let \(F_U : J \to \R\) be the function
-    \[
-        F_U(x) = \begin{cases}
-            f_U(x) & \text{if } x \in I    \\
-            0      & \text{if } x \notin I
-        \end{cases}
-    \]
-    and let \(F_L : J \to \R\) be the function
-    \[
-        F_L(x) = \begin{cases}
-            f_L(x) & \text{if } x \in I     \\
-            0      & \text{if } x \notin I.
-        \end{cases}
-    \]
-    We know that \(F_U\) majorizes \(F\) and \(F_L\) minorizes \(F\), and by Theorem \ref{11.2.16}(g) we have \(p.c. \int_J F_U = p.c. \int_I f_U\) and \(p.c. \int_J F_L = p.c. \int_I f_L\).
-    Thus \(F\) is a bounded function on a bounded interval \(I\), and we have
-    \begin{align*}
-                 & \overline{\int}_J F \leq p.c. \int_J F_U     & \text{(by Definition \ref{11.3.2})}                          \\
-        \implies & \overline{\int}_J F \leq p.c. \int_I f_U     & \text{(by Theorem \ref{11.2.16}(g))}                         \\
-        \implies & \overline{\int}_J F \leq \overline{\int}_I f & \text{(by Definition \ref{11.3.2} and \(f_U\) is arbitrary)} \\
-        \implies & \overline{\int}_J F \leq \int_I f            & \text{(by Definition \ref{11.3.4})}
-    \end{align*}
-    and
-    \begin{align*}
-                 & \underline{\int}_J F \geq p.c. \int_J F_L      & \text{(by Definition \ref{11.3.2})}                          \\
-        \implies & \underline{\int}_J F \geq p.c. \int_I f_L      & \text{(by Theorem \ref{11.2.16}(g))}                         \\
-        \implies & \underline{\int}_J F \geq \underline{\int}_I f & \text{(by Definition \ref{11.3.2} and \(f_L\) is arbitrary)} \\
-        \implies & \underline{\int}_J F \geq \int_I f.            & \text{(by Definition \ref{11.3.4})}
-    \end{align*}
-    By Lemma \ref{11.3.3} we have
-    \[
-        \int_I f \leq \underline{\int}_J F \leq \overline{\int}_J F \leq \int_I f
-    \]
-    and thus by Definition \ref{11.3.4} we have
-    \[
-        \int_J F = \underline{\int}_J F = \overline{\int}_J F = \int_I f.
-    \]
+  Let \(f_U : I \to \R\) be a piecewise constant function on \(I\) which majorizes \(f\).
+  Let \(f_L : I \to \R\) be a piecewise constant function on \(I\) which minorizes \(f\).
+  \(f_U, f_L\) are well-defined since by \cref{11.3.4} \(f\) is a bounded function on a bounded interval \(I\).
+  Then by \cref{11.3.2} we have
+  \[
+    p.c. \int_I f_L \leq \underline{\int}_I f = \int_I f = \overline{\int}_I f \leq p.c. \int_I f_U.
+  \]
+  Let \(F_U : J \to \R\) be the function
+  \[
+    F_U(x) = \begin{cases}
+      f_U(x) & \text{if } x \in I    \\
+      0      & \text{if } x \notin I
+    \end{cases}
+  \]
+  and let \(F_L : J \to \R\) be the function
+  \[
+    F_L(x) = \begin{cases}
+      f_L(x) & \text{if } x \in I     \\
+      0      & \text{if } x \notin I.
+    \end{cases}
+  \]
+  We know that \(F_U\) majorizes \(F\) and \(F_L\) minorizes \(F\), and by \cref{11.2.16}(g) we have \(p.c. \int_J F_U = p.c. \int_I f_U\) and \(p.c. \int_J F_L = p.c. \int_I f_L\).
+  Thus \(F\) is a bounded function on a bounded interval \(I\), and we have
+  \begin{align*}
+             & \overline{\int}_J F \leq p.c. \int_J F_U     & \text{(by \cref{11.3.2})}                          \\
+    \implies & \overline{\int}_J F \leq p.c. \int_I f_U     & \text{(by \cref{11.2.16}(g))}                      \\
+    \implies & \overline{\int}_J F \leq \overline{\int}_I f & \text{(by \cref{11.3.2} and \(f_U\) is arbitrary)} \\
+    \implies & \overline{\int}_J F \leq \int_I f            & \text{(by \cref{11.3.4})}
+  \end{align*}
+  and
+  \begin{align*}
+             & \underline{\int}_J F \geq p.c. \int_J F_L      & \text{(by \cref{11.3.2})}                          \\
+    \implies & \underline{\int}_J F \geq p.c. \int_I f_L      & \text{(by \cref{11.2.16}(g))}                      \\
+    \implies & \underline{\int}_J F \geq \underline{\int}_I f & \text{(by \cref{11.3.2} and \(f_L\) is arbitrary)} \\
+    \implies & \underline{\int}_J F \geq \int_I f.            & \text{(by \cref{11.3.4})}
+  \end{align*}
+  By \cref{11.3.3} we have
+  \[
+    \int_I f \leq \underline{\int}_J F \leq \overline{\int}_J F \leq \int_I f
+  \]
+  and thus by \cref{11.3.4} we have
+  \[
+    \int_J F = \underline{\int}_J F = \overline{\int}_J F = \int_I f.
+  \]
 \end{proof}
 
 \begin{proof}{(h)}
-    Let \(f_U : I \to \R\) be a piecewise constant function on \(I\) which majorizes \(f\).
-    Let \(f_L : I \to \R\) be a piecewise constant function on \(I\) which minorizes \(f\).
-    \(f_U, f_L\) are well-defined since by Definition \ref{11.3.4} \(f\) is a bounded function on a bounded interval \(I\).
-    Then by Definition \ref{11.3.2} we have
-    \[
-        p.c. \int_I f_L \leq \underline{\int}_I f = \int_I f = \overline{\int}_I f \leq p.c. \int_I f_U.
-    \]
-    By Theorem \ref{11.2.16}(h) we know that \(f_U|_J : J \to \R\), \(f_L|_J : J \to \R\) are piecewise constant function on \(J\) and \(f_U|_K : K \to \R\), \(f_L|_K : K \to \R\) are piecewise constant functions on \(K\).
-    By Definition \ref{11.3.1} we know that \(f_U|_J\) majorizes \(f|_J\) and \(f_L|_J\) minorizes \(f|_J\), similarly \(f_U|_K\) majorizes \(f|_K\) and \(f_L|_K\) minorizes \(f|_K\).
-    Thus \(f|_J\), \(f|_K\) are bounded functions on bounded intervals \(J, K\), respectively.
-    So \(\overline{\int}_J f|_J\), \(\overline{\int}_K f|_K\), \(\underline{\int}_J f|_J\), \(\underline{\int}_K f|_K\) are well-defined.
-    Then we have
-    \begin{align*}
-                 & \overline{\int}_J f|_J + \overline{\int}_K f|_K \leq p.c. \int_J f_U|_J + p.c. \int_K f_U|_K & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \overline{\int}_J f|_J + \overline{\int}_K f|_K \leq p.c. \int_I f_U                         & \text{(by Theorem \ref{11.2.16}(h))} \\
-        \implies & \overline{\int}_J f|_J + \overline{\int}_K f|_K \leq \overline{\int}_I f                     & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \overline{\int}_J f|_J + \overline{\int}_K f|_K \leq \int_I f                                & \text{(by Definition \ref{11.3.4})}
-    \end{align*}
-    and
-    \begin{align*}
-                 & \underline{\int}_J f|_J + \underline{\int}_K f|_K \geq p.c. \int_J f_L|_J + p.c. \int_K f_L|_K & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \underline{\int}_J f|_J + \underline{\int}_K f|_K \geq p.c. \int_I f_L                         & \text{(by Theorem \ref{11.2.16}(h))} \\
-        \implies & \underline{\int}_J f|_J + \underline{\int}_K f|_K \geq \underline{\int}_I f                    & \text{(by Definition \ref{11.3.2})}  \\
-        \implies & \underline{\int}_J f|_J + \underline{\int}_K f|_K \geq \int_I f.                               & \text{(by Definition \ref{11.3.4})}
-    \end{align*}
-    By Lemma \ref{11.3.3} we have
-    \[
-        \int_I f \leq \underline{\int}_J f|_J + \underline{\int}_K f|_K \leq \overline{\int}_J f|_J + \overline{\int}_K f|_K \leq \int_I f
-    \]
-    and thus we have
-    \[
-        \underline{\int}_J f|_J + \underline{\int}_K f|_K = \overline{\int}_J f|_J + \overline{\int}_J f|_K = \int_I f.
-    \]
-    Since
-    \begin{align*}
-                 & \underline{\int}_J f|_J + \underline{\int}_K f|_K = \overline{\int}_J f|_J + \overline{\int}_J f|_K                                                \\
-        \implies & 0 \geq \underline{\int}_J f|_J - \overline{\int}_J f|_J = \overline{\int}_J f|_K - \underline{\int}_K f|_K \geq 0 & \text{(by Lemma \ref{11.3.3})} \\
-        \implies & \underline{\int}_J f|_J - \overline{\int}_J f|_J = \overline{\int}_J f|_K - \underline{\int}_K f|_K = 0,
-    \end{align*}
-    by Definition \ref{11.3.4} we have
-    \begin{align*}
-         & \int_J f|_J = \underline{\int}_J f|_J = \overline{\int}_J f|_J, \\
-         & \int_K f|_K = \underline{\int}_K f|_K = \overline{\int}_K f|_K, \\
-         & \int_J f|_J + \int_K f|_K = \int_I f.
-    \end{align*}
+  Let \(f_U : I \to \R\) be a piecewise constant function on \(I\) which majorizes \(f\).
+  Let \(f_L : I \to \R\) be a piecewise constant function on \(I\) which minorizes \(f\).
+  \(f_U, f_L\) are well-defined since by \cref{11.3.4} \(f\) is a bounded function on a bounded interval \(I\).
+  Then by \cref{11.3.2} we have
+  \[
+    p.c. \int_I f_L \leq \underline{\int}_I f = \int_I f = \overline{\int}_I f \leq p.c. \int_I f_U.
+  \]
+  By \cref{11.2.16}(h) we know that \(f_U|_J : J \to \R\), \(f_L|_J : J \to \R\) are piecewise constant function on \(J\) and \(f_U|_K : K \to \R\), \(f_L|_K : K \to \R\) are piecewise constant functions on \(K\).
+  By \cref{11.3.1} we know that \(f_U|_J\) majorizes \(f|_J\) and \(f_L|_J\) minorizes \(f|_J\), similarly \(f_U|_K\) majorizes \(f|_K\) and \(f_L|_K\) minorizes \(f|_K\).
+  Thus \(f|_J\), \(f|_K\) are bounded functions on bounded intervals \(J, K\), respectively.
+  So \(\overline{\int}_J f|_J\), \(\overline{\int}_K f|_K\), \(\underline{\int}_J f|_J\), \(\underline{\int}_K f|_K\) are well-defined.
+  Then we have
+  \begin{align*}
+             & \overline{\int}_J f|_J + \overline{\int}_K f|_K \leq p.c. \int_J f_U|_J + p.c. \int_K f_U|_K & \text{(by \cref{11.3.2})}     \\
+    \implies & \overline{\int}_J f|_J + \overline{\int}_K f|_K \leq p.c. \int_I f_U                         & \text{(by \cref{11.2.16}(h))} \\
+    \implies & \overline{\int}_J f|_J + \overline{\int}_K f|_K \leq \overline{\int}_I f                     & \text{(by \cref{11.3.2})}     \\
+    \implies & \overline{\int}_J f|_J + \overline{\int}_K f|_K \leq \int_I f                                & \text{(by \cref{11.3.4})}
+  \end{align*}
+  and
+  \begin{align*}
+             & \underline{\int}_J f|_J + \underline{\int}_K f|_K \geq p.c. \int_J f_L|_J + p.c. \int_K f_L|_K & \text{(by \cref{11.3.2})}     \\
+    \implies & \underline{\int}_J f|_J + \underline{\int}_K f|_K \geq p.c. \int_I f_L                         & \text{(by \cref{11.2.16}(h))} \\
+    \implies & \underline{\int}_J f|_J + \underline{\int}_K f|_K \geq \underline{\int}_I f                    & \text{(by \cref{11.3.2})}     \\
+    \implies & \underline{\int}_J f|_J + \underline{\int}_K f|_K \geq \int_I f.                               & \text{(by \cref{11.3.4})}
+  \end{align*}
+  By \cref{11.3.3} we have
+  \[
+    \int_I f \leq \underline{\int}_J f|_J + \underline{\int}_K f|_K \leq \overline{\int}_J f|_J + \overline{\int}_K f|_K \leq \int_I f
+  \]
+  and thus we have
+  \[
+    \underline{\int}_J f|_J + \underline{\int}_K f|_K = \overline{\int}_J f|_J + \overline{\int}_J f|_K = \int_I f.
+  \]
+  Since
+  \begin{align*}
+             & \underline{\int}_J f|_J + \underline{\int}_K f|_K = \overline{\int}_J f|_J + \overline{\int}_J f|_K                                           \\
+    \implies & 0 \geq \underline{\int}_J f|_J - \overline{\int}_J f|_J = \overline{\int}_J f|_K - \underline{\int}_K f|_K \geq 0 & \text{(by \cref{11.3.3})} \\
+    \implies & \underline{\int}_J f|_J - \overline{\int}_J f|_J = \overline{\int}_J f|_K - \underline{\int}_K f|_K = 0,
+  \end{align*}
+  by \cref{11.3.4} we have
+  \begin{align*}
+     & \int_J f|_J = \underline{\int}_J f|_J = \overline{\int}_J f|_J, \\
+     & \int_K f|_K = \underline{\int}_K f|_K = \overline{\int}_K f|_K, \\
+     & \int_J f|_J + \int_K f|_K = \int_I f.
+  \end{align*}
 \end{proof}
 
 \begin{remark}\label{11.4.2}
-    We often abbreviate \(\int_J f|_J\) as \(\int_J f\) even though \(f\) is really defined on a larger domain than just \(J\).
-    We also observe from Theorem \ref{11.4.1}(h) and Remark \ref{11.3.8} that if \(f : [a, b] \to \R\) is Riemann integrable on a closed interval \([a, b]\), then \(\int_{[a, b]} f = \int_{(a, b]} f = \int_{[a, b)} f = \int_{(a, b)} f\).
+  We often abbreviate \(\int_J f|_J\) as \(\int_J f\) even though \(f\) is really defined on a larger domain than just \(J\).
+  We also observe from \cref{11.4.1}(h) and \cref{11.3.8} that if \(f : [a, b] \to \R\) is Riemann integrable on a closed interval \([a, b]\), then \(\int_{[a, b]} f = \int_{(a, b]} f = \int_{[a, b)} f = \int_{(a, b)} f\).
 \end{remark}
 
 \begin{theorem}[Max and min preserve integrability]\label{11.4.3}
-    Let \(I\) be a bounded interval, and let \(f : I \to \R\) and \(g : I \to \R\) be a Riemann integrable function.
-    Then the functions \(\max(f, g) : I \to \R\) and \(\min(f, g) : I \to \R\) defined by \(\max(f, g)(x) \coloneqq \max\big(f(x), g(x)\big)\) and \(\min(f, g)(x) \coloneqq \min\big(f(x), g(x)\big)\) are also Riemann integrable.
+  Let \(I\) be a bounded interval, and let \(f : I \to \R\) and \(g : I \to \R\) be a Riemann integrable function.
+  Then the functions \(\max(f, g) : I \to \R\) and \(\min(f, g) : I \to \R\) defined by \(\max(f, g)(x) \coloneqq \max\big(f(x), g(x)\big)\) and \(\min(f, g)(x) \coloneqq \min\big(f(x), g(x)\big)\) are also Riemann integrable.
 \end{theorem}
 
 \begin{proof}
-    We shall just prove the claim for \(\max(f, g)\), the case of \(\min(f, g)\) being similar.
-    First note that since \(f\) and \(g\) are bounded, then \(\max(f, g)\) is also bounded.
+  We shall just prove the claim for \(\max(f, g)\), the case of \(\min(f, g)\) being similar.
+  First note that since \(f\) and \(g\) are bounded, then \(\max(f, g)\) is also bounded.
 
-    Let \(\varepsilon > 0\).
-    Since \(\int_I f = \underline{\int}_I f\), there exists a piecewise constant function \(\underline{f} : I \to \R\) which minorizes \(f\) on \(I\) such that
-    \[
-        \int_I \underline{f} \geq \int_I f - \varepsilon.
-    \]
-    Similarly we can find a piecewise constant \(g : I \to \R\) which minorizes \(g\) on \(I\) such that
-    \[
-        \int_I \underline{g} \geq \int_I g - \varepsilon,
-    \]
-    and we can find piecewise functions \(\overline{f}, \overline{g}\) which majorize \(f, g\) respectively on \(I\) such that
-    \[
-        \int_I \overline{f} \leq \int_I f + \varepsilon
-    \]
-    and
-    \[
-        \int_I \overline{g} \leq \int_I g + \varepsilon.
-    \]
-    In particular, if \(h : I \to \R\) denotes the function
-    \[
-        h \coloneqq (\overline{f} - \underline{f}) + (\overline{g} - \underline{g})
-    \]
-    we have
-    \[
-        \int_I h \leq 4 \varepsilon.
-    \]
-    On the other hand, \(\max(\underline{f}, \underline{g})\) is a piecewise constant function on \(I\) which minorizes \(\max(f, g)\), while \(\max(\overline{f}, \overline{g})\) is similarly a piecewise constant function on \(I\) which majorizes \(\max(f, g)\).
-    Thus
-    \[
-        \int_I \max(\underline{f}, \underline{g}) \leq \underline{\int}_I \max(f, g) \leq \overline{\int}_I \max(f, g) \leq \int_I \max(\overline{f}, \overline{g}),
-    \]
-    and so
-    \[
-        0 \leq \overline{\int}_I \max(f, g) - \underline{\int}_I \max(f, g) \leq \int_I \max(\overline{f}, \overline{g}) - \max(\underline{f}, \underline{g}).
-    \]
-    But we have
-    \[
-        \overline{f}(x) = \underline{f}(x) + (\overline{f} - \underline{f})(x) \leq \underline{f}(x) + h(x)
-    \]
-    and similarly
-    \[
-        \overline{g}(x) = \underline{g}(x) + (\overline{g} - \underline{g})(x) \leq \underline{g}(x) + h(x)
-    \]
-    and thus
-    \[
-        \max\big(\overline{f}(x), \overline{g}(x)\big) \leq \max\big(\underline{f}(x), \underline{g}(x)\big) + h(x).
-    \]
-    Inserting this into the previous inequality, we obtain
-    \[
-        0 \leq \overline{\int}_I \max(f, g) - \underline{\int}_I \max(f, g) \leq \int_I h \leq 4 \varepsilon.
-    \]
-    To summarize, we have shown that
-    \[
-        0 \leq \overline{\int}_I \max(f, g) - \underline{\int}_I \max(f, g) \leq 4 \varepsilon
-    \]
-    for every \(\varepsilon\).
-    Since \(\overline{\int}_I \max(f, g) - \underline{\int}_I \max(f, g)\) does not depend on \(\varepsilon\), we thus see that
-    \[
-        \overline{\int}_I \max(f, g) - \underline{\int}_I \max(f, g) = 0
-    \]
-    and hence that \(\max(f, g)\) is Riemann integrable.
+  Let \(\varepsilon > 0\).
+  Since \(\int_I f = \underline{\int}_I f\), there exists a piecewise constant function \(\underline{f} : I \to \R\) which minorizes \(f\) on \(I\) such that
+  \[
+    \int_I \underline{f} \geq \int_I f - \varepsilon.
+  \]
+  Similarly we can find a piecewise constant \(g : I \to \R\) which minorizes \(g\) on \(I\) such that
+  \[
+    \int_I \underline{g} \geq \int_I g - \varepsilon,
+  \]
+  and we can find piecewise functions \(\overline{f}, \overline{g}\) which majorize \(f, g\) respectively on \(I\) such that
+  \[
+    \int_I \overline{f} \leq \int_I f + \varepsilon
+  \]
+  and
+  \[
+    \int_I \overline{g} \leq \int_I g + \varepsilon.
+  \]
+  In particular, if \(h : I \to \R\) denotes the function
+  \[
+    h \coloneqq (\overline{f} - \underline{f}) + (\overline{g} - \underline{g})
+  \]
+  we have
+  \[
+    \int_I h \leq 4 \varepsilon.
+  \]
+  On the other hand, \(\max(\underline{f}, \underline{g})\) is a piecewise constant function on \(I\) which minorizes \(\max(f, g)\), while \(\max(\overline{f}, \overline{g})\) is similarly a piecewise constant function on \(I\) which majorizes \(\max(f, g)\).
+  Thus
+  \[
+    \int_I \max(\underline{f}, \underline{g}) \leq \underline{\int}_I \max(f, g) \leq \overline{\int}_I \max(f, g) \leq \int_I \max(\overline{f}, \overline{g}),
+  \]
+  and so
+  \[
+    0 \leq \overline{\int}_I \max(f, g) - \underline{\int}_I \max(f, g) \leq \int_I \max(\overline{f}, \overline{g}) - \max(\underline{f}, \underline{g}).
+  \]
+  But we have
+  \[
+    \overline{f}(x) = \underline{f}(x) + (\overline{f} - \underline{f})(x) \leq \underline{f}(x) + h(x)
+  \]
+  and similarly
+  \[
+    \overline{g}(x) = \underline{g}(x) + (\overline{g} - \underline{g})(x) \leq \underline{g}(x) + h(x)
+  \]
+  and thus
+  \[
+    \max\big(\overline{f}(x), \overline{g}(x)\big) \leq \max\big(\underline{f}(x), \underline{g}(x)\big) + h(x).
+  \]
+  Inserting this into the previous inequality, we obtain
+  \[
+    0 \leq \overline{\int}_I \max(f, g) - \underline{\int}_I \max(f, g) \leq \int_I h \leq 4 \varepsilon.
+  \]
+  To summarize, we have shown that
+  \[
+    0 \leq \overline{\int}_I \max(f, g) - \underline{\int}_I \max(f, g) \leq 4 \varepsilon
+  \]
+  for every \(\varepsilon\).
+  Since \(\overline{\int}_I \max(f, g) - \underline{\int}_I \max(f, g)\) does not depend on \(\varepsilon\), we thus see that
+  \[
+    \overline{\int}_I \max(f, g) - \underline{\int}_I \max(f, g) = 0
+  \]
+  and hence that \(\max(f, g)\) is Riemann integrable.
 \end{proof}
 
 \begin{corollary}[Absolute values preserve Riemann integrability]\label{11.4.4}
-    \quad
-    Let \(I\) be a bounded interval.
-    If \(f : I \to \R\) is a Riemann integrable function, then the positive part \(f_+ \coloneqq \max(f, 0)\) and the negative part \(f_- \coloneqq \min(f, 0)\) are also Riemann integrable on \(I\).
-    Also, the absolute value \(\abs{f}\), defined by \(\abs{f}(x) = \abs{f(x)}\) is also Riemann integrable on \(I\).
-    (observe that \(\abs{f} = f_+ - f_-\))
+  \quad
+  Let \(I\) be a bounded interval.
+  If \(f : I \to \R\) is a Riemann integrable function, then the positive part \(f_+ \coloneqq \max(f, 0)\) and the negative part \(f_- \coloneqq \min(f, 0)\) are also Riemann integrable on \(I\).
+  Also, the absolute value \(\abs{f}\), defined by \(\abs{f}(x) = \abs{f(x)}\) is also Riemann integrable on \(I\).
+  (observe that \(\abs{f} = f_+ - f_-\))
 \end{corollary}
 
 \begin{proof}
-    By Theorem \ref{11.4.3} we know that \(f_+, f_-\) are Riemann integrable.
-    Since \(\abs{f} = f_+ - f_-\), by Theorem \ref{11.4.1}(a) we know that \(\abs{f}\) is Riemann integrable.
+  By \cref{11.4.3} we know that \(f_+, f_-\) are Riemann integrable.
+  Since \(\abs{f} = f_+ - f_-\), by \cref{11.4.1}(a) we know that \(\abs{f}\) is Riemann integrable.
 \end{proof}
 
 \begin{theorem}[Products preserve Riemann integrability]\label{11.4.5}
-    Let \(I\) be a bounded interval.
-    If \(f : I \to \R\) and \(g : I \to \R\) are Riemann integrable, then \(fg : I \to \R\) is also Riemann integrable.
+  Let \(I\) be a bounded interval.
+  If \(f : I \to \R\) and \(g : I \to \R\) are Riemann integrable, then \(fg : I \to \R\) is also Riemann integrable.
 \end{theorem}
 
 \begin{proof}
-    We split \(f = f_+ + f_-\) and \(g = g_+ + g_-\) into positive and negative parts;
-    by Corollary \ref{11.4.4}, the functions \(f_+\), \(f_-\), \(g_+\), \(g_-\) are Riemann integrable.
-    Since
-    \[
-        fg = f_+ g_+ + f_+ g_- + f_- g_+ + f_- g_-
-    \]
-    then it suffices to show that the functions \(f_+ g_+\), \(f_+ g_-\), \(f_- g_+\), \(f_- g_-\) are individually Riemann integrable.
-    We will just show this for \(f_+ g_+\);
-    the other three are similar.
+  We split \(f = f_+ + f_-\) and \(g = g_+ + g_-\) into positive and negative parts;
+  by \cref{11.4.4}, the functions \(f_+\), \(f_-\), \(g_+\), \(g_-\) are Riemann integrable.
+  Since
+  \[
+    fg = f_+ g_+ + f_+ g_- + f_- g_+ + f_- g_-
+  \]
+  then it suffices to show that the functions \(f_+ g_+\), \(f_+ g_-\), \(f_- g_+\), \(f_- g_-\) are individually Riemann integrable.
+  We will just show this for \(f_+ g_+\);
+  the other three are similar.
 
-    Since \(f_+\) and \(g_+\) are bounded and positive, there are \(M_1, M_2 > 0\) such that
-    \[
-        0 \leq f_+(x) \leq M_1 \text{ and } 0 \leq g_+(x) \leq M_2
-    \]
-    for all \(x \in I\).
-    Now let \(\varepsilon > 0\) be arbitrary.
-    Then, as in the proof of Theorem \ref{11.4.3}, we can find a piecewise constant function \(\underline{f_+}\) minorizing \(f_+\) on \(I\), and a piecewise constant function \(\overline{f_+}\) majorizing \(f_+\) on \(I\), such that
-    \[
-        \int_I \overline{f_+} \leq \int_I f_+ + \varepsilon
-    \]
-    and
-    \[
-        \int_I \underline{f_+} \geq \int_I f_+ - \varepsilon.
-    \]
-    Note that \(\underline{f_+}\) may be negative at places, but we can fix this by replacing \(\underline{f_+}\) by \(\max(\underline{f_+}, 0)\), since this still minorizes \(f_+\) and still has integral greater than or equal to \(\int_I f_+ - \varepsilon\).
-    So without loss of generality we may assume that \(\underline{f_+}(x) \geq 0\) for all \(x \in I\).
-    Similarly we may assume that \(\overline{f_+}(x) \leq M_1\) for all \(x \in I\);
-    thus
-    \[
-        0 \leq \underline{f_+}(x) \leq f_+(x) \leq \overline{f_+}(x) \leq M_1
-    \]
-    for all \(x \in I\).
+  Since \(f_+\) and \(g_+\) are bounded and positive, there are \(M_1, M_2 > 0\) such that
+  \[
+    0 \leq f_+(x) \leq M_1 \text{ and } 0 \leq g_+(x) \leq M_2
+  \]
+  for all \(x \in I\).
+  Now let \(\varepsilon > 0\) be arbitrary.
+  Then, as in the proof of \cref{11.4.3}, we can find a piecewise constant function \(\underline{f_+}\) minorizing \(f_+\) on \(I\), and a piecewise constant function \(\overline{f_+}\) majorizing \(f_+\) on \(I\), such that
+  \[
+    \int_I \overline{f_+} \leq \int_I f_+ + \varepsilon
+  \]
+  and
+  \[
+    \int_I \underline{f_+} \geq \int_I f_+ - \varepsilon.
+  \]
+  Note that \(\underline{f_+}\) may be negative at places, but we can fix this by replacing \(\underline{f_+}\) by \(\max(\underline{f_+}, 0)\), since this still minorizes \(f_+\) and still has integral greater than or equal to \(\int_I f_+ - \varepsilon\).
+  So without loss of generality we may assume that \(\underline{f_+}(x) \geq 0\) for all \(x \in I\).
+  Similarly we may assume that \(\overline{f_+}(x) \leq M_1\) for all \(x \in I\);
+  thus
+  \[
+    0 \leq \underline{f_+}(x) \leq f_+(x) \leq \overline{f_+}(x) \leq M_1
+  \]
+  for all \(x \in I\).
 
-    Similar reasoning allows us to find piecewise constant \(\underline{g_+}\) minorizing \(g_+\), and \(\overline{g_+}\) majorizing \(g_+\), such that
-    \[
-        \int_I \overline{g_+} \leq \int_I g_+ + \varepsilon
-    \]
-    and
-    \[
-        \int_I \underline{g_+} \geq \int_I g_+ - \varepsilon,
-    \]
-    and
-    \[
-        0 \leq \underline{g_+}(x) \leq g_+(x) \leq \overline{g_+}(x) \leq M_2
-    \]
-    for all \(x \in I\).
+  Similar reasoning allows us to find piecewise constant \(\underline{g_+}\) minorizing \(g_+\), and \(\overline{g_+}\) majorizing \(g_+\), such that
+  \[
+    \int_I \overline{g_+} \leq \int_I g_+ + \varepsilon
+  \]
+  and
+  \[
+    \int_I \underline{g_+} \geq \int_I g_+ - \varepsilon,
+  \]
+  and
+  \[
+    0 \leq \underline{g_+}(x) \leq g_+(x) \leq \overline{g_+}(x) \leq M_2
+  \]
+  for all \(x \in I\).
 
-    Notice that \(\underline{f_+} \underline{g_+}\) is piecewise constant and minorizes \(f_+ g_+\), while \(\overline{f_+} \overline{g_+}\) is piecewise constant and majorizes \(f_+ g_+\).
-    Thus
-    \[
-        0 \leq \overline{\int}_I f_+ g_+ - \underline{\int}_I f_+ g_+ \leq \int_I \overline{f}_+ \overline{g_+} - \underline{f_+} \underline{g_+}.
-    \]
-    However, we have
-    \begin{align*}
-        \overline{f_+}(x) \overline{g_+}(x) - \underline{f_+}(x) \underline{g_+}(x) & = \overline{f_+}(x) (\overline{g_+} - \underline{g_+})(x) + \underline{g_+}(x) (\overline{f_+} - \underline{f_+})(x) \\
-                                                                                    & \leq M_1 (\overline{g_+} - \underline{g_+})(x) + M_2 (\overline{f_+} - \underline{f_+})(x)
-    \end{align*}
-    for all \(x \in I\), and thus
-    \begin{align*}
-        0 \leq \overline{\int}_I f_+ g_+ - \underline{\int}_I f_+ g_+ & \leq M_1 \int_I (\overline{g_+} - \underline{g_+}) + M_2 \int_I (\overline{f_+} - \underline{f_+}) \\
-                                                                      & \leq M_1 (2\varepsilon) + M_2 (2\varepsilon).
-    \end{align*}
-    Again, since \(\varepsilon\) was arbitrary, we can conclude that \(f_+ g_+\) is Riemann integrable, as before.
-    Similar argument show that \(f_+ g_-\), \(f_- g_+\), \(f_- g_-\) are Riemann integrable;
-    combining them we obtain that \(fg\) is Riemann integrable.
+  Notice that \(\underline{f_+} \underline{g_+}\) is piecewise constant and minorizes \(f_+ g_+\), while \(\overline{f_+} \overline{g_+}\) is piecewise constant and majorizes \(f_+ g_+\).
+  Thus
+  \[
+    0 \leq \overline{\int}_I f_+ g_+ - \underline{\int}_I f_+ g_+ \leq \int_I \overline{f}_+ \overline{g_+} - \underline{f_+} \underline{g_+}.
+  \]
+  However, we have
+  \begin{align*}
+    \overline{f_+}(x) \overline{g_+}(x) - \underline{f_+}(x) \underline{g_+}(x) & = \overline{f_+}(x) (\overline{g_+} - \underline{g_+})(x) + \underline{g_+}(x) (\overline{f_+} - \underline{f_+})(x) \\
+                                                                                & \leq M_1 (\overline{g_+} - \underline{g_+})(x) + M_2 (\overline{f_+} - \underline{f_+})(x)
+  \end{align*}
+  for all \(x \in I\), and thus
+  \begin{align*}
+    0 \leq \overline{\int}_I f_+ g_+ - \underline{\int}_I f_+ g_+ & \leq M_1 \int_I (\overline{g_+} - \underline{g_+}) + M_2 \int_I (\overline{f_+} - \underline{f_+}) \\
+                                                                  & \leq M_1 (2\varepsilon) + M_2 (2\varepsilon).
+  \end{align*}
+  Again, since \(\varepsilon\) was arbitrary, we can conclude that \(f_+ g_+\) is Riemann integrable, as before.
+  Similar argument show that \(f_+ g_-\), \(f_- g_+\), \(f_- g_-\) are Riemann integrable;
+  combining them we obtain that \(fg\) is Riemann integrable.
 \end{proof}
 
 \exercisesection
 
 \begin{exercise}\label{ex 11.4.1}
-    Prove Theorem \ref{11.4.1}.
+  Prove \cref{11.4.1}.
 \end{exercise}
 
 \begin{proof}
-    See Theorem \ref{11.4.1}.
+  See \cref{11.4.1}.
 \end{proof}
 
 \begin{exercise}\label{ex 11.4.2}
-    Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a continuous, non-negative function
-    (so \(f(x) \geq 0\) for all \(x \in [a, b]\)).
-    Suppose that \(\int_{[a, b]} f = 0\).
-    Show that \(f(x) = 0\) for all \(x \in [a, b]\).
+  Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a continuous, non-negative function
+  (so \(f(x) \geq 0\) for all \(x \in [a, b]\)).
+  Suppose that \(\int_{[a, b]} f = 0\).
+  Show that \(f(x) = 0\) for all \(x \in [a, b]\).
 \end{exercise}
 
 \begin{proof}
-    Suppose for sake of contradiction that \(\exists\ x_0 \in [a, b]\) such that \(f(x_0) > 0\).
-    Since \(f\) is continuous, by Proposition \ref{9.4.7} we have
-    \[
-        \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in [a, b], \abs{x - x_0} < \delta \implies \abs{f(x) - f(x_0)} \leq \varepsilon\big),
-    \]
-    or equivalently
-    \[
-        \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in [a, b] \cap (x_0 - \delta, x_0 + \delta) \implies \abs{f(x) - f(x_0)} \leq \varepsilon\big).
-    \]
-    In particular, we have
-    \[
-        \exists\ \delta \in \R^+ : \bigg(\forall x \in [a, b] \cap (x_0 - \delta, x_0 + \delta) \implies \abs{f(x) - f(x_0)} \leq \frac{f(x_0)}{2}\bigg),
-    \]
-    or equivalently
-    \[
-        \exists\ \delta \in \R^+ : \bigg(\forall x \in [a, b] \cap (x_0 - \delta, x_0 + \delta) \implies \frac{f(x_0)}{2} \leq f(x) \leq \frac{3 f(x_0)}{2}\bigg).
-    \]
-    Since \(\delta \neq 0\), we know that \([a, b] \cap (x_0 - \delta, x_0 + \delta) \neq \emptyset\).
-    Since \(a \neq b\), we know that
-    \[
-        \sup\big([a, b] \cap (x_0 - \delta, x_0 + \delta)\big) \neq \inf\big([a, b] \cap (x_0 - \delta, x_0 + \delta)\big).
-    \]
-    Thus by Definition \ref{11.1.8} we have \(\abs{[a, b] \cap (x_0 - \delta, x_0 + \delta)} > 0\).
-    By Corollary \ref{11.1.6} we know that \([a, b] \cap (x_0 - \delta, x_0 + \delta)\) is a bounded interval.
-    Let \(f_L : [a, b] \to \R\) be the function
-    \[
-        f_L(x) = \begin{cases}
-            \frac{f(x_0)}{2} & \text{if } x \in [a, b] \cap (x_0 - \delta, x_0 + \delta)    \\
-            0                & \text{if } x \notin [a, b] \cap (x_0 - \delta, x_0 + \delta)
-        \end{cases}
-    \]
-    Since \(f(x) \geq 0\) for all \(x \in [a, b]\), we know that \(f_L\) minorizes \(f\).
-    By Theorem \ref{11.2.16}(g) we know that \(f_L\) is a piecewise constant function.
-    By Lemma \ref{11.3.7} we have
-    \[
-        \int_{[a, b]} f_L = p.c. \int_{[a, b]} f_L = \frac{f(x_0)}{2}\abs{[a, b] \cap (x_0 - \delta, x_0 + \delta)} > 0.
-    \]
-    But by Definition \ref{11.3.2} and Definition \ref{11.3.4} we have
-    \[
-        0 < \int_{[a, b]} f_L \leq \underline{\int}_{[a, b]} f = \int_{[a, b]} f = 0,
-    \]
-    a contradiction.
-    Thus we must have \(f(x) = 0\) for all \(x \in [a, b]\).
+  Suppose for sake of contradiction that \(\exists\ x_0 \in [a, b]\) such that \(f(x_0) > 0\).
+  Since \(f\) is continuous, by \cref{9.4.7} we have
+  \[
+    \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in [a, b], \abs{x - x_0} < \delta \implies \abs{f(x) - f(x_0)} \leq \varepsilon\big),
+  \]
+  or equivalently
+  \[
+    \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in [a, b] \cap (x_0 - \delta, x_0 + \delta) \implies \abs{f(x) - f(x_0)} \leq \varepsilon\big).
+  \]
+  In particular, we have
+  \[
+    \exists\ \delta \in \R^+ : \bigg(\forall x \in [a, b] \cap (x_0 - \delta, x_0 + \delta) \implies \abs{f(x) - f(x_0)} \leq \frac{f(x_0)}{2}\bigg),
+  \]
+  or equivalently
+  \[
+    \exists\ \delta \in \R^+ : \bigg(\forall x \in [a, b] \cap (x_0 - \delta, x_0 + \delta) \implies \frac{f(x_0)}{2} \leq f(x) \leq \frac{3 f(x_0)}{2}\bigg).
+  \]
+  Since \(\delta \neq 0\), we know that \([a, b] \cap (x_0 - \delta, x_0 + \delta) \neq \emptyset\).
+  Since \(a \neq b\), we know that
+  \[
+    \sup\big([a, b] \cap (x_0 - \delta, x_0 + \delta)\big) \neq \inf\big([a, b] \cap (x_0 - \delta, x_0 + \delta)\big).
+  \]
+  Thus by \cref{11.1.8} we have \(\abs{[a, b] \cap (x_0 - \delta, x_0 + \delta)} > 0\).
+  By \cref{11.1.6} we know that \([a, b] \cap (x_0 - \delta, x_0 + \delta)\) is a bounded interval.
+  Let \(f_L : [a, b] \to \R\) be the function
+  \[
+    f_L(x) = \begin{cases}
+      \frac{f(x_0)}{2} & \text{if } x \in [a, b] \cap (x_0 - \delta, x_0 + \delta)    \\
+      0                & \text{if } x \notin [a, b] \cap (x_0 - \delta, x_0 + \delta)
+    \end{cases}
+  \]
+  Since \(f(x) \geq 0\) for all \(x \in [a, b]\), we know that \(f_L\) minorizes \(f\).
+  By \cref{11.2.16}(g) we know that \(f_L\) is a piecewise constant function.
+  By \cref{11.3.7} we have
+  \[
+    \int_{[a, b]} f_L = p.c. \int_{[a, b]} f_L = \frac{f(x_0)}{2}\abs{[a, b] \cap (x_0 - \delta, x_0 + \delta)} > 0.
+  \]
+  But by \cref{11.3.2} and \cref{11.3.4} we have
+  \[
+    0 < \int_{[a, b]} f_L \leq \underline{\int}_{[a, b]} f = \int_{[a, b]} f = 0,
+  \]
+  a contradiction.
+  Thus we must have \(f(x) = 0\) for all \(x \in [a, b]\).
 \end{proof}
 
 \begin{exercise}\label{ex 11.4.3}
-    Let \(I\) be a bounded interval, let \(f : I \to \R\) be a Riemann integrable function, and let \(\mathbf{P}\) be a partition of \(I\).
-    Show that
-    \[
-        \int_I f = \sum_{J \in \mathbf{P}} \int_J f|_J.
-    \]
+  Let \(I\) be a bounded interval, let \(f : I \to \R\) be a Riemann integrable function, and let \(\mathbf{P}\) be a partition of \(I\).
+  Show that
+  \[
+    \int_I f = \sum_{J \in \mathbf{P}} \int_J f|_J.
+  \]
 \end{exercise}
 
 \begin{proof}
-    Let \(P(n)\) be the statement ``\(\#(\mathbf{P}) = n\) and \(\int_I f = \sum_{J \in \mathbf{P}} \int_J f|_J\)''.
-    We use induction on \(n\) to show that \(P(n)\) is true \(\forall n \in \N\).
-    For \(n = 0\), we have \(\mathbf{P} = \emptyset\) and \(I = \emptyset\).
-    Thus
-    \begin{align*}
-        p.c. \int_{[\emptyset]} f & = \sum_{J \in \emptyset} c_J \abs{J} & \text{(by Definition \ref{11.2.9})}     \\
-                                  & = 0                                  & \text{(by Proposition \ref{7.1.11}(a))} \\
-                                  & = p.c. \int_{\emptyset} f            & \text{(by Definition \ref{11.2.14})}    \\
-                                  & = \int_{\emptyset} f                 & \text{(by Lemma \ref{11.3.7})}          \\
-                                  & = \sum_{J \in \emptyset} \int_J f|_J & \text{(by Proposition \ref{7.1.11}(a))}
-    \end{align*}
-    and the base case holds.
-    Suppose inductively that \(P(n)\) is true for some \(n \geq 0\).
-    Then we need to show that \(P(n + 1)\) is true.
-    Let \(K \in \mathbf{P}\) such that \(x < y\) for every \(x \in K\) and \(y \in I \setminus K\).
-    Then \(\big\{K, \bigcup (\mathbf{P} \setminus \{K\})\big\}\) is a partition of \(I\), and
-    \begin{align*}
-        \int_I f & = \int_K f|_K + \int_{\bigcup (\mathbf{P} \setminus \{K\})} f|_{\bigcup (\mathbf{P} \setminus \{K\})} & \text{(by Theorem \ref{11.4.1}(h))}     \\
-                 & = \int_K f|_K + \sum_{J \in \mathbf{P} \setminus \{K\}} \int_J f|_J                                   & \text{(by induction hypothesis)}        \\
-                 & = \sum_{J \in \mathbf{P}} \int_J f|_J.                                                                & \text{(by Proposition \ref{7.1.11}(e))}
-    \end{align*}
-    This closes the induction.
+  Let \(P(n)\) be the statement ``\(\#(\mathbf{P}) = n\) and \(\int_I f = \sum_{J \in \mathbf{P}} \int_J f|_J\)''.
+  We use induction on \(n\) to show that \(P(n)\) is true \(\forall n \in \N\).
+  For \(n = 0\), we have \(\mathbf{P} = \emptyset\) and \(I = \emptyset\).
+  Thus
+  \begin{align*}
+    p.c. \int_{[\emptyset]} f & = \sum_{J \in \emptyset} c_J \abs{J} & \text{(by \cref{11.2.9})}    \\
+                              & = 0                                  & \text{(by \cref{7.1.11}(a))} \\
+                              & = p.c. \int_{\emptyset} f            & \text{(by \cref{11.2.14})}   \\
+                              & = \int_{\emptyset} f                 & \text{(by \cref{11.3.7})}    \\
+                              & = \sum_{J \in \emptyset} \int_J f|_J & \text{(by \cref{7.1.11}(a))}
+  \end{align*}
+  and the base case holds.
+  Suppose inductively that \(P(n)\) is true for some \(n \geq 0\).
+  Then we need to show that \(P(n + 1)\) is true.
+  Let \(K \in \mathbf{P}\) such that \(x < y\) for every \(x \in K\) and \(y \in I \setminus K\).
+  Then \(\big\{K, \bigcup (\mathbf{P} \setminus \{K\})\big\}\) is a partition of \(I\), and
+  \begin{align*}
+    \int_I f & = \int_K f|_K + \int_{\bigcup (\mathbf{P} \setminus \{K\})} f|_{\bigcup (\mathbf{P} \setminus \{K\})} & \text{(by \cref{11.4.1}(h))}     \\
+             & = \int_K f|_K + \sum_{J \in \mathbf{P} \setminus \{K\}} \int_J f|_J                                   & \text{(by induction hypothesis)} \\
+             & = \sum_{J \in \mathbf{P}} \int_J f|_J.                                                                & \text{(by \cref{7.1.11}(e))}
+  \end{align*}
+  This closes the induction.
 \end{proof}
 
 \begin{exercise}\label{ex 11.4.4}
-    Without repeating all the computations in the above proofs, give a short explanation as to why the remaining cases of Theorem \ref{11.4.3} and Theorem \ref{11.4.5} follow automatically from the cases presented in the text.
+  Without repeating all the computations in the above proofs, give a short explanation as to why the remaining cases of \cref{11.4.3} and \cref{11.4.5} follow automatically from the cases presented in the text.
 \end{exercise}
 
 \begin{proof}
-    We first show that the remaining case of Theorem \ref{11.4.3} is true.
-    By Theorem \ref{11.4.1}(b) \(-f\) and \(-g\) are Riemann integrable on \(I\).
-    Since \(\max(-f, -g)\) is Riemann integrable and \(\min(f, g) = -\max(-f, -g)\), by Theorem \ref{11.4.1}(b) we know that \(\min(f, g)\) is Riemann integrable.
+  We first show that the remaining case of \cref{11.4.3} is true.
+  By \cref{11.4.1}(b) \(-f\) and \(-g\) are Riemann integrable on \(I\).
+  Since \(\max(-f, -g)\) is Riemann integrable and \(\min(f, g) = -\max(-f, -g)\), by \cref{11.4.1}(b) we know that \(\min(f, g)\) is Riemann integrable.
 
-    Now we show that the remaining cases of Theorem \ref{11.4.5} are true.
-    By Corollary \ref{11.4.4} \((-f)_+\) and \((-g)_+\) are Riemann integrable on \(I\).
-    Since for any Riemann integrable functions \(p\) and \(q\), \(p_+ q_+\) are Riemann integrable (which is showed in the proof of Theorem \ref{11.4.5}), we have
-    \begin{align*}
-        f_+ g_- & = f_+ \cdot \big(\min(g, 0)\big)                      & \text{(by Corollary \ref{11.4.4})} \\
-                & = f_+ \cdot \big(-\max(-g, 0)\big)                                                         \\
-                & = f_+ \cdot \big(-(-g)_+\big)                         & \text{(by Corollary \ref{11.4.4})} \\
-                & = -\big(f_+ \cdot (-g)_+\big)                         & \text{(by Definition \ref{9.2.1})} \\
-        f_- g_+ & = \big(\min(f, 0)\big) \cdot g_+                      & \text{(by Corollary \ref{11.4.4})} \\
-                & = \big(-\max(-f, 0)\big) \cdot g_+                                                         \\
-                & = \big(-(-f)_+\big) \cdot g_+                         & \text{(by Corollary \ref{11.4.4})} \\
-                & = -\big((-f)_+ \cdot g_+\big)                         & \text{(by Definition \ref{9.2.1})} \\
-        f_- g_- & = \big(\min(f, 0)\big) \cdot \big(\min(g, 0)\big)     & \text{(by Corollary \ref{11.4.4})} \\
-                & = \big(-\max(-f, 0)\big) \cdot \big(-\max(-g, 0)\big)                                      \\
-                & = \big(-(-f)_+\big) \big(-(-g)_+\big)                 & \text{(by Corollary \ref{11.4.4})} \\
-                & = (-f)_+ \cdot (-g)_+                                 & \text{(by Definition \ref{9.2.1})}
-    \end{align*}
-    and thus \(f_+ g_-\), \(f_- g_+\), \(f_- g_-\) are Riemann integrable.
+  Now we show that the remaining cases of \cref{11.4.5} are true.
+  By \cref{11.4.4} \((-f)_+\) and \((-g)_+\) are Riemann integrable on \(I\).
+  Since for any Riemann integrable functions \(p\) and \(q\), \(p_+ q_+\) are Riemann integrable (which is showed in the proof of \cref{11.4.5}), we have
+  \begin{align*}
+    f_+ g_- & = f_+ \cdot \big(\min(g, 0)\big)                      & \text{(by \cref{11.4.4})} \\
+            & = f_+ \cdot \big(-\max(-g, 0)\big)                                                \\
+            & = f_+ \cdot \big(-(-g)_+\big)                         & \text{(by \cref{11.4.4})} \\
+            & = -\big(f_+ \cdot (-g)_+\big)                         & \text{(by \cref{9.2.1})}  \\
+    f_- g_+ & = \big(\min(f, 0)\big) \cdot g_+                      & \text{(by \cref{11.4.4})} \\
+            & = \big(-\max(-f, 0)\big) \cdot g_+                                                \\
+            & = \big(-(-f)_+\big) \cdot g_+                         & \text{(by \cref{11.4.4})} \\
+            & = -\big((-f)_+ \cdot g_+\big)                         & \text{(by \cref{9.2.1})}  \\
+    f_- g_- & = \big(\min(f, 0)\big) \cdot \big(\min(g, 0)\big)     & \text{(by \cref{11.4.4})} \\
+            & = \big(-\max(-f, 0)\big) \cdot \big(-\max(-g, 0)\big)                             \\
+            & = \big(-(-f)_+\big) \big(-(-g)_+\big)                 & \text{(by \cref{11.4.4})} \\
+            & = (-f)_+ \cdot (-g)_+                                 & \text{(by \cref{9.2.1})}
+  \end{align*}
+  and thus \(f_+ g_-\), \(f_- g_+\), \(f_- g_-\) are Riemann integrable.
 \end{proof}

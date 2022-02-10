@@ -1,534 +1,534 @@
 \section{Basic definitions}\label{sec 10}
 
 \begin{note}
-    We can now define derivatives analyti cally, using limits, in contrast to the geometric definition of derivatives, which uses tangents.
-    The advantage of working analytically is that
-    (a) we do not need to know the axioms of geometry, and
-    (b) these definitions can be modified to handle functions of several variables, or functions whose values are vectors instead of scalar.
-    Furthermore, one's geometric intuition becomes difficult to rely on once one has more than three dimensions in play.
-    (Conversely, one can use one's experience in analytic rigour to extend one's geometric intuition to such abstract settings;
-    as mentioned earlier, the two viewpoints complement rather than oppose each other.)
+  We can now define derivatives analyti cally, using limits, in contrast to the geometric definition of derivatives, which uses tangents.
+  The advantage of working analytically is that
+  (a) we do not need to know the axioms of geometry, and
+  (b) these definitions can be modified to handle functions of several variables, or functions whose values are vectors instead of scalar.
+  Furthermore, one's geometric intuition becomes difficult to rely on once one has more than three dimensions in play.
+  (Conversely, one can use one's experience in analytic rigour to extend one's geometric intuition to such abstract settings;
+  as mentioned earlier, the two viewpoints complement rather than oppose each other.)
 \end{note}
 
 \begin{definition}[Differentiability at a point]\label{10.1.1}
-    Let \(X\) be a subset of \(\R\), and let \(x_0 \in X\) be an element of \(X\) which is also a limit point of \(X\).
-    Let \(f : X \to \R\) be a function.
-    If the limit
-    \[
-        \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}
-    \]
-    converges to some real number \(L\), then we say that \(f\) is \emph{differentiable at \(x_0\) on \(X\) with derivative \(L\)}, and write \(f'(x_0) \coloneqq L\).
-    If the limit does not exist, or if \(x_0\) is not an element of \(X\) or not a limit point of \(X\), we leave \(f'(x_0)\) undefined, and say that \(f\) is \emph{not differentiable at \(x_0\) on \(X\)}.
+  Let \(X\) be a subset of \(\R\), and let \(x_0 \in X\) be an element of \(X\) which is also a limit point of \(X\).
+  Let \(f : X \to \R\) be a function.
+  If the limit
+  \[
+    \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}
+  \]
+  converges to some real number \(L\), then we say that \(f\) is \emph{differentiable at \(x_0\) on \(X\) with derivative \(L\)}, and write \(f'(x_0) \coloneqq L\).
+  If the limit does not exist, or if \(x_0\) is not an element of \(X\) or not a limit point of \(X\), we leave \(f'(x_0)\) undefined, and say that \(f\) is \emph{not differentiable at \(x_0\) on \(X\)}.
 \end{definition}
 
 \begin{remark}\label{10.1.2}
-    Note that we need \(x_0\) to be a limit point in order for \(x_0\) to be adherent to \(X \setminus \{x_0\}\), otherwise the limit
-    \[
-        \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}
-    \]
-    would automatically be undefined.
-    In particular, we do not define the derivative of a function at an isolated point;
-    In practice, the domain \(X\) will almost always be an interval, and so by Lemma \ref{9.1.21} all elements \(x_0\) of \(X\) will automatically be limit points and we will not have to care much about these issues.
+  Note that we need \(x_0\) to be a limit point in order for \(x_0\) to be adherent to \(X \setminus \{x_0\}\), otherwise the limit
+  \[
+    \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}
+  \]
+  would automatically be undefined.
+  In particular, we do not define the derivative of a function at an isolated point;
+  In practice, the domain \(X\) will almost always be an interval, and so by \cref{9.1.21} all elements \(x_0\) of \(X\) will automatically be limit points and we will not have to care much about these issues.
 \end{remark}
 
 \setcounter{theorem}{3}
 \begin{remark}\label{10.1.4}
-    This point is trivial, but it is worth mentioning:
-    if \(f : X \to \R\) is differentiable at \(x_0\), and \(g : X \to \R\) is equal to \(f\) (i.e., \(g(x) = f(x)\) for all \(x \in X\)), then \(g\) is also differentiable at \(x_0\) and \(g'(x_0) = f'(x_0)\).
-    However, if two functions \(f\) and \(g\) merely have the same value at \(x_0\), i.e., \(g(x_0) = f(x_0)\), this does not imply that \(g'(x_0) = f'(x_0)\).
-    Thus there is a big difference between two functions being equal on their whole domain, and merely being equal at one point.
+  This point is trivial, but it is worth mentioning:
+  if \(f : X \to \R\) is differentiable at \(x_0\), and \(g : X \to \R\) is equal to \(f\) (i.e., \(g(x) = f(x)\) for all \(x \in X\)), then \(g\) is also differentiable at \(x_0\) and \(g'(x_0) = f'(x_0)\).
+  However, if two functions \(f\) and \(g\) merely have the same value at \(x_0\), i.e., \(g(x_0) = f(x_0)\), this does not imply that \(g'(x_0) = f'(x_0)\).
+  Thus there is a big difference between two functions being equal on their whole domain, and merely being equal at one point.
 \end{remark}
 
 \begin{remark}\label{10.1.5}
-    One sometimes writes \(\frac{df}{dx}\) instead of \(f'\).
-    This notation is of course very familiar and convenient, but one has to be a little careful, because it is only safe to use as long as \(x\) is the only variable used to represent the input for \(f\);
-    otherwise one can get into all sorts of trouble.
-    Because of this possible source of confusion, we will refrain from using the notation \(\frac{df}{dx}\) whenever it could possibly lead to confusion.
-    (This confusion becomes even worse in the calculus of several variables, and the standard notation of \(\frac{\partial f}{\partial x}\) can lead to some serious ambiguities.
-    There are ways to resolve these ambiguities, most notably by introducing the notion of differentiation along vector fields, but this is beyond the scope of this text.)
+  One sometimes writes \(\frac{df}{dx}\) instead of \(f'\).
+  This notation is of course very familiar and convenient, but one has to be a little careful, because it is only safe to use as long as \(x\) is the only variable used to represent the input for \(f\);
+  otherwise one can get into all sorts of trouble.
+  Because of this possible source of confusion, we will refrain from using the notation \(\frac{df}{dx}\) whenever it could possibly lead to confusion.
+  (This confusion becomes even worse in the calculus of several variables, and the standard notation of \(\frac{\partial f}{\partial x}\) can lead to some serious ambiguities.
+  There are ways to resolve these ambiguities, most notably by introducing the notion of differentiation along vector fields, but this is beyond the scope of this text.)
 \end{remark}
 
 \begin{example}\label{10.1.6}
-    Let \(f : \R \to \R\) be the function \(f(x) \coloneqq \abs{x}\), and let \(x_0 = 0\).
-    To see whether \(f\) is differentiable at \(0\) on \(\R\), we compute the limit
-    \[
-        \lim_{x \to 0 ; x \in \R \setminus \{0\}} \frac{f(x) - f(0)}{x - 0} = \lim_{x \to 0 ; x \in \R \setminus \{0\}} \frac{\abs{x}}{x}.
+  Let \(f : \R \to \R\) be the function \(f(x) \coloneqq \abs{x}\), and let \(x_0 = 0\).
+  To see whether \(f\) is differentiable at \(0\) on \(\R\), we compute the limit
+  \[
+    \lim_{x \to 0 ; x \in \R \setminus \{0\}} \frac{f(x) - f(0)}{x - 0} = \lim_{x \to 0 ; x \in \R \setminus \{0\}} \frac{\abs{x}}{x}.
+  \]
+  Now we take left limits and right limits.
+  The right limit is
+  \[
+    \lim_{x \to 0 ; x \in (0, \infty)} \frac{\abs{x}}{x} = \lim_{x \to 0 ; x \in (0, \infty)} \frac{x}{x} = \lim_{x \to 0 ; x \in (0, \infty)} 1 = 1,
+  \]
+  while the left limit is
+  \[
+    \lim_{x \to 0 ; x \in (-\infty, 0)} \frac{\abs{x}}{x} = \lim_{x \to 0 ; x \in (-\infty, 0)} \frac{-x}{x} = \lim_{x \to 0 ; x \in (-\infty, 0)} -1 = -1,
+  \]
+  and these limits do not match.
+  Thus \(\lim_{x \to 0 ; x \in (0, \infty)} \frac{\abs{x}}{x}\) does not exist, and \(f\) is not differentiable at \(0\) on \(\R\).
+  However, if one restricts \(f\) to \([0, \infty)\), then the restricted function \(f|_{[0, \infty)}\) \emph{is} differentiable at \(0\) on \([0, \infty)\), with derivative \(1\):
+  \[
+  \lim_{x \to 0 ; x \in [0, \infty) \setminus \{0\}} \frac{f(x) - f(0)}{x - 0} = \lim_{x \to 0 ; x \in (0, \infty)} \frac{\abs{x}}{x} = 1.
     \]
-    Now we take left limits and right limits.
-    The right limit is
-    \[
-        \lim_{x \to 0 ; x \in (0, \infty)} \frac{\abs{x}}{x} = \lim_{x \to 0 ; x \in (0, \infty)} \frac{x}{x} = \lim_{x \to 0 ; x \in (0, \infty)} 1 = 1,
-    \]
-    while the left limit is
-    \[
-        \lim_{x \to 0 ; x \in (-\infty, 0)} \frac{\abs{x}}{x} = \lim_{x \to 0 ; x \in (-\infty, 0)} \frac{-x}{x} = \lim_{x \to 0 ; x \in (-\infty, 0)} -1 = -1,
-    \]
-    and these limits do not match.
-    Thus \(\lim_{x \to 0 ; x \in (0, \infty)} \frac{\abs{x}}{x}\) does not exist, and \(f\) is not differentiable at \(0\) on \(\R\).
-    However, if one restricts \(f\) to \([0, \infty)\), then the restricted function \(f|_{[0, \infty)}\) \emph{is} differentiable at \(0\) on \([0, \infty)\), with derivative \(1\):
-    \[
-    \lim_{x \to 0 ; x \in [0, \infty) \setminus \{0\}} \frac{f(x) - f(0)}{x - 0} = \lim_{x \to 0 ; x \in (0, \infty)} \frac{\abs{x}}{x} = 1.
-        \]
-        Similarly, when one restricts \(f\) to \((-\infty, 0]\), the restricted function \(f|_{(-\infty, 0]}\) is differentiable at \(0\) on \((-\infty, 0]\), with derivative \(-1\).
-    Thus even when a function is not differentiable, it is sometimes possible to restore the differentiability by restricting the domain of the function.
+    Similarly, when one restricts \(f\) to \((-\infty, 0]\), the restricted function \(f|_{(-\infty, 0]}\) is differentiable at \(0\) on \((-\infty, 0]\), with derivative \(-1\).
+  Thus even when a function is not differentiable, it is sometimes possible to restore the differentiability by restricting the domain of the function.
 \end{example}
 
 \begin{proposition}[Newton's approximation]\label{10.1.7}
-    Let \(X\) be a subset of \(\R\), let \(x_0 \in X\) be a limit point of \(X\), let \(f : X \to \R\) be a function, and let \(L\) be a real number.
-    Then the following statements are logically equivalent:
-    \begin{enumerate}
-        \item \(f\) is differentiable at \(x_0\) on \(X\) with derivative \(L\).
-        \item For every \(\varepsilon > 0\), there exists a \(\delta > 0\) such that \(f(x)\) is \(\varepsilon \abs{x - x_0}\)-close to \(f(x_0) + L(x - x_0)\) whenever \(x \in X\) is \(\delta\)-close to \(x_0\), i.e., we have
-              \[
-                  \abs{f(x) - (f(x_0) + L(x - x_0))} \leq \varepsilon \abs{x - x_0}
-              \]
-              whenever \(x \in X\) and \(\abs{x - x_0} \leq \delta\).
-    \end{enumerate}
+  Let \(X\) be a subset of \(\R\), let \(x_0 \in X\) be a limit point of \(X\), let \(f : X \to \R\) be a function, and let \(L\) be a real number.
+  Then the following statements are logically equivalent:
+  \begin{enumerate}
+    \item \(f\) is differentiable at \(x_0\) on \(X\) with derivative \(L\).
+    \item For every \(\varepsilon > 0\), there exists a \(\delta > 0\) such that \(f(x)\) is \(\varepsilon \abs{x - x_0}\)-close to \(f(x_0) + L(x - x_0)\) whenever \(x \in X\) is \(\delta\)-close to \(x_0\), i.e., we have
+          \[
+            \abs{f(x) - (f(x_0) + L(x - x_0))} \leq \varepsilon \abs{x - x_0}
+          \]
+          whenever \(x \in X\) and \(\abs{x - x_0} \leq \delta\).
+  \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-    We first show that the first statement implies the second statement.
-    Since \(f\) is differentiable at \(x_0\) on \(X\) with derivative \(L\), by Definition \ref{10.1.1} we have
-    \[
-        \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = L.
-    \]
-    By Definition \ref{9.3.6} this means
-    \[
-        \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \bigg(\forall x \in X \setminus \{x_0\}, \abs{x - x_0} < \delta \implies \abs{\frac{f(x) - f(x_0)}{x - x_0} - L} \leq \varepsilon\bigg).
-    \]
-    Thus we have
-    \begin{align*}
-                 & \forall x \in X \setminus \{x_0\}, \abs{x - x_0} \leq \delta / 2 < \delta            \\
-        \implies & \abs{\frac{f(x) - f(x_0)}{x - x_0} - L} \leq \varepsilon                             \\
-        \implies & \abs{\frac{f(x) - f(x_0)}{x - x_0} - L} \abs{x - x_0} \leq \varepsilon \abs{x - x_0} \\
-        \implies & \abs{(f(x) - f(x_0)) - L(x - x_0)} \leq \varepsilon \abs{x - x_0}                    \\
-        \implies & \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} \leq \varepsilon \abs{x - x_0}.
-    \end{align*}
-    If \(x = x_0\), then we have
-    \begin{align*}
-                 & 0 = \abs{x_0 - x_0} \leq \delta / 2 < \delta                                             \\
-        \implies & 0 = \abs{f(x_0) - \big(f(x_0) + L(x_0 - x_0)\big)} \leq \varepsilon \abs{x_0 - x_0} = 0.
-    \end{align*}
-    Thus we have \(\forall \varepsilon \in \R^+\), \(\exists\ \delta \in \R^+\) such that
-    \[
-        \forall x \in X, \abs{x - x_0} \leq \delta / 2 \implies \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} \leq \varepsilon \abs{x - x_0}.
-    \]
+  We first show that the first statement implies the second statement.
+  Since \(f\) is differentiable at \(x_0\) on \(X\) with derivative \(L\), by \cref{10.1.1} we have
+  \[
+    \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = L.
+  \]
+  By \cref{9.3.6} this means
+  \[
+    \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \bigg(\forall x \in X \setminus \{x_0\}, \abs{x - x_0} < \delta \implies \abs{\frac{f(x) - f(x_0)}{x - x_0} - L} \leq \varepsilon\bigg).
+  \]
+  Thus we have
+  \begin{align*}
+             & \forall x \in X \setminus \{x_0\}, \abs{x - x_0} \leq \delta / 2 < \delta            \\
+    \implies & \abs{\frac{f(x) - f(x_0)}{x - x_0} - L} \leq \varepsilon                             \\
+    \implies & \abs{\frac{f(x) - f(x_0)}{x - x_0} - L} \abs{x - x_0} \leq \varepsilon \abs{x - x_0} \\
+    \implies & \abs{(f(x) - f(x_0)) - L(x - x_0)} \leq \varepsilon \abs{x - x_0}                    \\
+    \implies & \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} \leq \varepsilon \abs{x - x_0}.
+  \end{align*}
+  If \(x = x_0\), then we have
+  \begin{align*}
+             & 0 = \abs{x_0 - x_0} \leq \delta / 2 < \delta                                             \\
+    \implies & 0 = \abs{f(x_0) - \big(f(x_0) + L(x_0 - x_0)\big)} \leq \varepsilon \abs{x_0 - x_0} = 0.
+  \end{align*}
+  Thus we have \(\forall \varepsilon \in \R^+\), \(\exists\ \delta \in \R^+\) such that
+  \[
+    \forall x \in X, \abs{x - x_0} \leq \delta / 2 \implies \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} \leq \varepsilon \abs{x - x_0}.
+  \]
 
-    Now we show that the second statement implies the first statement.
-    By hypothesis we have \(\forall \varepsilon \in \R^+\), \(\exists\ \delta \in \R^+\) such that
-    \[
-        \forall x \in X, \abs{x - x_0} \leq \delta \implies \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} \leq \varepsilon \abs{x - x_0}.
-    \]
-    In particular, we have
-    \[
-        \forall x \in X \setminus \{x_0\}, \abs{x - x_0} \leq \delta \implies \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} \leq \varepsilon \abs{x - x_0}.
-    \]
-    Thus we have
-    \begin{align*}
-                 & \forall x \in X \setminus \{x_0\}, \abs{x - x_0} \leq \delta                      \\
-        \implies & \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} \leq \varepsilon \abs{x - x_0}         \\
-        \implies & \frac{\abs{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\abs{x - x_0}} \leq \varepsilon \\
-        \implies & \abs{\frac{f(x) - f(x_0)}{x - x_0} - L} \leq \varepsilon.
-    \end{align*}
-    By Definition \ref{9.3.6} this means
-    \[
-        \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = L
-    \]
-    and by Definition \ref{10.1.1} we know that \(f\) is differentiable at \(x_0\) on \(X\) with derivative \(L\).
+  Now we show that the second statement implies the first statement.
+  By hypothesis we have \(\forall \varepsilon \in \R^+\), \(\exists\ \delta \in \R^+\) such that
+  \[
+    \forall x \in X, \abs{x - x_0} \leq \delta \implies \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} \leq \varepsilon \abs{x - x_0}.
+  \]
+  In particular, we have
+  \[
+    \forall x \in X \setminus \{x_0\}, \abs{x - x_0} \leq \delta \implies \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} \leq \varepsilon \abs{x - x_0}.
+  \]
+  Thus we have
+  \begin{align*}
+             & \forall x \in X \setminus \{x_0\}, \abs{x - x_0} \leq \delta                      \\
+    \implies & \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} \leq \varepsilon \abs{x - x_0}         \\
+    \implies & \frac{\abs{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\abs{x - x_0}} \leq \varepsilon \\
+    \implies & \abs{\frac{f(x) - f(x_0)}{x - x_0} - L} \leq \varepsilon.
+  \end{align*}
+  By \cref{9.3.6} this means
+  \[
+    \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = L
+  \]
+  and by \cref{10.1.1} we know that \(f\) is differentiable at \(x_0\) on \(X\) with derivative \(L\).
 \end{proof}
 
 \begin{remark}\label{10.1.8}
-    Newton's approximation is of course named after the great scientist and mathematician Isaac Newton (1642 -- 1727), one of the founders of differential and integral calculus.
+  Newton's approximation is of course named after the great scientist and mathematician Isaac Newton (1642 -- 1727), one of the founders of differential and integral calculus.
 \end{remark}
 
 \begin{remark}\label{10.1.9}
-    We can phrase Proposition \ref{10.1.7} in a more informal way:
-    if \(f\) is differentiable at \(x_0\), then one has the approximation \(f(x) \approx f(x_0) + f'(x_0)(x - x_0)\), and conversely.
+  We can phrase \cref{10.1.7} in a more informal way:
+  if \(f\) is differentiable at \(x_0\), then one has the approximation \(f(x) \approx f(x_0) + f'(x_0)(x - x_0)\), and conversely.
 \end{remark}
 
 \begin{proposition}[Differentiability implies continuity]\label{10.1.10}
-    Let \(X\) be a subset of \(\R\), let \(x_0 \in X\) be a limit point of \(X\), and let \(f : X \to \R\) be a function.
-    If \(f\) is differentiable at \(x_0\), then \(f\) is also continuous at \(x_0\).
+  Let \(X\) be a subset of \(\R\), let \(x_0 \in X\) be a limit point of \(X\), and let \(f : X \to \R\) be a function.
+  If \(f\) is differentiable at \(x_0\), then \(f\) is also continuous at \(x_0\).
 \end{proposition}
 
 \begin{proof}
-    Since \(f\) is differentiable at \(x_0\), by Definition \ref{10.1.1} we have
-    \[
-        L = \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}
-    \]
-    for some \(L \in \R\).
-    By Proposition \ref{10.1.7}, we have \(\forall \varepsilon \in \R^+\), \(\exists\ \delta \in \R^+\) such that
-    \begin{align*}
-                 & \forall x \in X, \abs{x - x_0} \leq \delta                                                                      \\
-        \implies & \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} \leq \varepsilon \abs{x - x_0}                                       \\
-        \implies & \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} + \abs{L(x - x_0)} \leq \varepsilon \abs{x - x_0} + \abs{L(x - x_0)} \\
-        \implies & \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} + \abs{L(x - x_0)} \leq (\varepsilon + \abs{L}) \abs{x - x_0}        \\
-        \implies & \abs{f(x) - \big(f(x_0) + L(x - x_0)\big) + L(x - x_0)}                                                         \\
-                 & \leq \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} + \abs{L(x - x_0)}                                              \\
-                 & \leq (\varepsilon + \abs{L}) \abs{x - x_0}                                                                      \\
-        \implies & \abs{f(x) - f(x_0)} \leq (\varepsilon + \abs{L}) \abs{x - x_0}.
-    \end{align*}
-    Let \(\delta' = \min(\delta, \varepsilon / (\varepsilon + \abs{L}))\).
-    Then we have
-    \begin{align*}
-                 & \forall x \in X, \abs{x - x_0} < \delta' \leq \delta                                                                                                                       \\
-        \implies & \abs{f(x) - f(x_0)} \leq (\varepsilon + \abs{L}) \abs{x - x_0}                                                                                                             \\
-        \implies & \abs{f(x) - f(x_0)} \leq (\varepsilon + \abs{L}) \abs{x - x_0} \leq (\varepsilon + \abs{L}) \delta' \leq (\varepsilon + \abs{L}) \frac{\varepsilon}{\varepsilon + \abs{L}} \\
-        \implies & \abs{f(x) - f(x_0)} \leq \varepsilon.
-    \end{align*}
-    Thus by Definition \ref{9.3.6} we have \(\lim_{x \to x_0 ; x \in X} f(x) = f(x_0)\), and by Definition \ref{9.4.1} \(f\) is continuous at \(x_0\).
+  Since \(f\) is differentiable at \(x_0\), by \cref{10.1.1} we have
+  \[
+    L = \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}
+  \]
+  for some \(L \in \R\).
+  By \cref{10.1.7}, we have \(\forall \varepsilon \in \R^+\), \(\exists\ \delta \in \R^+\) such that
+  \begin{align*}
+             & \forall x \in X, \abs{x - x_0} \leq \delta                                                                      \\
+    \implies & \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} \leq \varepsilon \abs{x - x_0}                                       \\
+    \implies & \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} + \abs{L(x - x_0)} \leq \varepsilon \abs{x - x_0} + \abs{L(x - x_0)} \\
+    \implies & \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} + \abs{L(x - x_0)} \leq (\varepsilon + \abs{L}) \abs{x - x_0}        \\
+    \implies & \abs{f(x) - \big(f(x_0) + L(x - x_0)\big) + L(x - x_0)}                                                         \\
+             & \leq \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} + \abs{L(x - x_0)}                                              \\
+             & \leq (\varepsilon + \abs{L}) \abs{x - x_0}                                                                      \\
+    \implies & \abs{f(x) - f(x_0)} \leq (\varepsilon + \abs{L}) \abs{x - x_0}.
+  \end{align*}
+  Let \(\delta' = \min(\delta, \varepsilon / (\varepsilon + \abs{L}))\).
+  Then we have
+  \begin{align*}
+             & \forall x \in X, \abs{x - x_0} < \delta' \leq \delta                                                                                                                       \\
+    \implies & \abs{f(x) - f(x_0)} \leq (\varepsilon + \abs{L}) \abs{x - x_0}                                                                                                             \\
+    \implies & \abs{f(x) - f(x_0)} \leq (\varepsilon + \abs{L}) \abs{x - x_0} \leq (\varepsilon + \abs{L}) \delta' \leq (\varepsilon + \abs{L}) \frac{\varepsilon}{\varepsilon + \abs{L}} \\
+    \implies & \abs{f(x) - f(x_0)} \leq \varepsilon.
+  \end{align*}
+  Thus by \cref{9.3.6} we have \(\lim_{x \to x_0 ; x \in X} f(x) = f(x_0)\), and by \cref{9.4.1} \(f\) is continuous at \(x_0\).
 \end{proof}
 
 \begin{definition}[Differentiability on a domain]\label{10.1.11}
-    Let \(X\) be a subset of \(\R\), and let \(f : X \to \R\) be a function.
-    We say that \(f\) is \emph{differentiable on} \(X\) if, for every limit point \(x_0 \in X\), the function \(f\) is differentiable at \(x_0\) on \(X\).
+  Let \(X\) be a subset of \(\R\), and let \(f : X \to \R\) be a function.
+  We say that \(f\) is \emph{differentiable on} \(X\) if, for every limit point \(x_0 \in X\), the function \(f\) is differentiable at \(x_0\) on \(X\).
 \end{definition}
 
 \begin{corollary}\label{10.1.12}
-    Let \(X\) be a subset of \(\R\), and let \(f : X \to \R\) be a function which is differentiable on \(X\).
-    Then \(f\) is also continuous on \(X\).
+  Let \(X\) be a subset of \(\R\), and let \(f : X \to \R\) be a function which is differentiable on \(X\).
+  Then \(f\) is also continuous on \(X\).
 \end{corollary}
 
 \begin{proof}
-    By Lemma \ref{9.1.11} we know that \(\forall x_0 \in X\), \(x_0\) is an adherent point.
-    By Exercise \ref{ex 9.1.9} we know that \(x_0\) is either a limit point or an isolated point.
-    By Proposition \ref{10.1.10} and Definition \ref{10.1.11} we know that if \(x_0\) is a limit point then \(f\) is continuous at \(x_0\).
-    So we only need to show that if \(x_0\) is an isolated point, then \(f\) is also continuous at \(x_0\).
-    Suppose that \(x_0\) is an isolated point of \(X\).
-    By Definition \ref{9.1.18} we know that \(\exists\ \varepsilon' \in \R^+\) such that \(\abs{x - x_0} > \varepsilon'\) for all \(x \in X \setminus \{x_0\}\).
-    To show that \(f\) is continuous at \(x_0\), by Definition \ref{9.4.1} and Definition \ref{9.3.6} we need to show that
-    \[
-        \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in X, \abs{x - x_0} < \delta \implies \abs{f(x) - f(x_0)} \leq \varepsilon\big).
-    \]
-    Let \(\delta = \varepsilon'\).
-    Since \(x_0\) is an isolated point, the only \(x \in X\) satisfying \(\abs{x - x_0} < \varepsilon'\) is \(x_0\).
-    Thus we have \(0 = \abs{f(x_0) - f(x_0)} \leq \varepsilon\) and \(\lim_{x \to x_0 ; x \in X} f(x) = f(x_0)\).
+  By \cref{9.1.11} we know that \(\forall x_0 \in X\), \(x_0\) is an adherent point.
+  By \cref{ex 9.1.9} we know that \(x_0\) is either a limit point or an isolated point.
+  By \cref{10.1.10} and \cref{10.1.11} we know that if \(x_0\) is a limit point then \(f\) is continuous at \(x_0\).
+  So we only need to show that if \(x_0\) is an isolated point, then \(f\) is also continuous at \(x_0\).
+  Suppose that \(x_0\) is an isolated point of \(X\).
+  By \cref{9.1.18} we know that \(\exists\ \varepsilon' \in \R^+\) such that \(\abs{x - x_0} > \varepsilon'\) for all \(x \in X \setminus \{x_0\}\).
+  To show that \(f\) is continuous at \(x_0\), by \cref{9.4.1} and \cref{9.3.6} we need to show that
+  \[
+    \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in X, \abs{x - x_0} < \delta \implies \abs{f(x) - f(x_0)} \leq \varepsilon\big).
+  \]
+  Let \(\delta = \varepsilon'\).
+  Since \(x_0\) is an isolated point, the only \(x \in X\) satisfying \(\abs{x - x_0} < \varepsilon'\) is \(x_0\).
+  Thus we have \(0 = \abs{f(x_0) - f(x_0)} \leq \varepsilon\) and \(\lim_{x \to x_0 ; x \in X} f(x) = f(x_0)\).
 \end{proof}
 
 \begin{theorem}[Differential calculus]\label{10.1.13}
-    Let \(X\) be a subset of \(\R\), let \(x_0 \in X\) be a limit point of \(X\), and let \(f : X \to \R\) and \(g : X \to \R\) be functions.
-    \begin{enumerate}
-        \item If \(f\) is a constant function, i.e., there exists a real number \(c\) such that \(f(x) = c\) for all \(x \in X\), then \(f\) is differentiable at \(x_0\) and \(f'(x_0) = 0\).
-        \item If \(f\) is the identity function, i.e., \(f(x) = x\) for all \(x \in X\), then \(f\) is differentiable at \(x_0\) and \(f'(x_0) = 1\).
-        \item (Sum rule)
-              If \(f\) and \(g\) are differentiable at \(x_0\), then \(f + g\) is also differentiable at \(x_0\), and \((f + g)'(x_0) = f'(x_0) + g'(x_0)\).
-        \item (Product rule)
-              If \(f\) and \(g\) are differentiable at \(x_0\), then \(fg\) is also differentiable at \(x_0\), and \((fg)'(x_0) = f'(x_0)g(x_0) + f(x_0)g'(x_0)\).
-        \item If \(f\) is differentiable at \(x_0\) and \(c\) is a real number, then \(cf\) is also differentiable at \(x_0\), and \((cf)'(x_0) = cf'(x_0)\).
-        \item (Difference rule)
-              If \(f\) and \(g\) are differentiable at \(x_0\), then \(f - g\) is also differentiable at \(x_0\), and \((f - g)'(x_0) = f'(x_0) - g'(x_0)\).
-        \item If \(g\) is differentiable at \(x_0\), and \(g\) is non-zero on \(X\) (i.e., \(g(x) \neq 0\) for all \(x \in X\)), then \(1 / g\) is also differentiable at \(x_0\), and \((\frac{1}{g})'(x_0) = -\frac{g'(x_0)}{g(x_0)^2}\).
-        \item (Quotient rule)
-              If \(f\) and \(g\) are differentiable at \(x_0\), and \(g\) is non-zero on \(X\), then \(f / g\) is also differentiable at \(x_0\), and
-              \[
-                  (\frac{f}{g})'(x_0) = \frac{f'(x_0) g(x_0) - f(x_0) g'(x_0)}{g(x_0)^2}.
-              \]
-    \end{enumerate}
+  Let \(X\) be a subset of \(\R\), let \(x_0 \in X\) be a limit point of \(X\), and let \(f : X \to \R\) and \(g : X \to \R\) be functions.
+  \begin{enumerate}
+    \item If \(f\) is a constant function, i.e., there exists a real number \(c\) such that \(f(x) = c\) for all \(x \in X\), then \(f\) is differentiable at \(x_0\) and \(f'(x_0) = 0\).
+    \item If \(f\) is the identity function, i.e., \(f(x) = x\) for all \(x \in X\), then \(f\) is differentiable at \(x_0\) and \(f'(x_0) = 1\).
+    \item (Sum rule)
+          If \(f\) and \(g\) are differentiable at \(x_0\), then \(f + g\) is also differentiable at \(x_0\), and \((f + g)'(x_0) = f'(x_0) + g'(x_0)\).
+    \item (Product rule)
+          If \(f\) and \(g\) are differentiable at \(x_0\), then \(fg\) is also differentiable at \(x_0\), and \((fg)'(x_0) = f'(x_0)g(x_0) + f(x_0)g'(x_0)\).
+    \item If \(f\) is differentiable at \(x_0\) and \(c\) is a real number, then \(cf\) is also differentiable at \(x_0\), and \((cf)'(x_0) = cf'(x_0)\).
+    \item (Difference rule)
+          If \(f\) and \(g\) are differentiable at \(x_0\), then \(f - g\) is also differentiable at \(x_0\), and \((f - g)'(x_0) = f'(x_0) - g'(x_0)\).
+    \item If \(g\) is differentiable at \(x_0\), and \(g\) is non-zero on \(X\) (i.e., \(g(x) \neq 0\) for all \(x \in X\)), then \(1 / g\) is also differentiable at \(x_0\), and \((\frac{1}{g})'(x_0) = -\frac{g'(x_0)}{g(x_0)^2}\).
+    \item (Quotient rule)
+          If \(f\) and \(g\) are differentiable at \(x_0\), and \(g\) is non-zero on \(X\), then \(f / g\) is also differentiable at \(x_0\), and
+          \[
+            (\frac{f}{g})'(x_0) = \frac{f'(x_0) g(x_0) - f(x_0) g'(x_0)}{g(x_0)^2}.
+          \]
+  \end{enumerate}
 \end{theorem}
 
 \begin{proof}{(a)}
-    We have \(\forall \varepsilon \in \R^+\), \(\forall \delta \in \R^+\) such that
-    \[
-        \forall x \in X \setminus \{x_0\}, \abs{x - x_0} < \delta \implies \abs{\frac{f(x) - f(x_0)}{x - x_0} - 0} = \abs{\frac{c - c}{x - x_0} - 0} = 0 \leq \varepsilon.
-    \]
-    Thus by Definition \ref{9.3.6} we have
-    \[
-        \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = 0
-    \]
-    and by Definition \ref{10.1.1} we have \(f'(x_0) = 0\).
+  We have \(\forall \varepsilon \in \R^+\), \(\forall \delta \in \R^+\) such that
+  \[
+    \forall x \in X \setminus \{x_0\}, \abs{x - x_0} < \delta \implies \abs{\frac{f(x) - f(x_0)}{x - x_0} - 0} = \abs{\frac{c - c}{x - x_0} - 0} = 0 \leq \varepsilon.
+  \]
+  Thus by \cref{9.3.6} we have
+  \[
+    \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = 0
+  \]
+  and by \cref{10.1.1} we have \(f'(x_0) = 0\).
 \end{proof}
 
 \begin{proof}{(b)}
-    We have \(\forall \varepsilon \in \R^+\), \(\forall \delta \in \R^+\) such that
-    \[
-        \forall x \in X \setminus \{x_0\}, \abs{x - x_0} < \delta \implies \abs{\frac{f(x) - f(x_0)}{x - x_0} - 1} = \abs{\frac{x - x_0}{x - x_0} - 1} = 0 \leq \varepsilon.
-    \]
-    Thus by Definition \ref{9.3.6} we have
-    \[
-        \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = 1
-    \]
-    and by Definition \ref{10.1.1} we have \(f'(x_0) = 1\).
+  We have \(\forall \varepsilon \in \R^+\), \(\forall \delta \in \R^+\) such that
+  \[
+    \forall x \in X \setminus \{x_0\}, \abs{x - x_0} < \delta \implies \abs{\frac{f(x) - f(x_0)}{x - x_0} - 1} = \abs{\frac{x - x_0}{x - x_0} - 1} = 0 \leq \varepsilon.
+  \]
+  Thus by \cref{9.3.6} we have
+  \[
+    \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = 1
+  \]
+  and by \cref{10.1.1} we have \(f'(x_0) = 1\).
 \end{proof}
 
 \begin{proof}{(c)}
-    By Definition \ref{10.1.1} and Proposition \ref{9.3.14} we have
-    \begin{align*}
-          & f'(x_0) + g'(x_0)                                                                                                                                       \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} + \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0} \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} + \frac{g(x) - g(x_0)}{x - x_0}                                              \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0) + g(x) - g(x_0)}{x - x_0}                                                              \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) + g(x) - (f(x_0) + g(x_0))}{x - x_0}                                                            \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{(f + g)(x) - (f + g)(x_0)}{x - x_0}                                                                  \\
-        = & (f + g)'(x_0).
-    \end{align*}
-    Thus \(f + g\) is differentiable at \(x_0\) and \((f + g)'(x_0) = f'(x_0) + g'(x_0)\).
+  By \cref{10.1.1} and \cref{9.3.14} we have
+  \begin{align*}
+      & f'(x_0) + g'(x_0)                                                                                                                                       \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} + \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0} \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} + \frac{g(x) - g(x_0)}{x - x_0}                                              \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0) + g(x) - g(x_0)}{x - x_0}                                                              \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) + g(x) - (f(x_0) + g(x_0))}{x - x_0}                                                            \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{(f + g)(x) - (f + g)(x_0)}{x - x_0}                                                                  \\
+    = & (f + g)'(x_0).
+  \end{align*}
+  Thus \(f + g\) is differentiable at \(x_0\) and \((f + g)'(x_0) = f'(x_0) + g'(x_0)\).
 \end{proof}
 
 \begin{proof}{(d)}
-    By Definition \ref{10.1.1} and Proposition \ref{9.3.14} we have
-    \begin{align*}
-          & f'(x_0) g(x_0) + f(x_0) g'(x_0)                                                                                                                                                                                 \\
-        = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}\bigg) \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} g(x)\bigg)                                                            \\
-          & + f(x_0) \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0}\bigg)                                                                                                                 \\
-        = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{\big(f(x) - f(x_0)\big) g(x)}{x - x_0}\bigg) + \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x_0) \big(g(x) - g(x_0)\big)}{x - x_0}\bigg) \\
-        = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) g(x) - f(x_0) g(x)}{x - x_0}\bigg) + \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}\bigg)         \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \bigg(\frac{f(x) g(x) - f(x_0) g(x)}{x - x_0} + \frac{f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}\bigg)                                                                  \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) g(x) - f(x_0) g(x) + f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}                                                                                              \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) g(x) - f(x_0) g(x_0)}{x - x_0}                                                                                                                          \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{(fg)(x) - (fg)(x_0)}{x - x_0}                                                                                                                                \\
-        = & (fg)'(x_0).
-    \end{align*}
-    Thus \(fg\) is differentiable at \(x_0\) and \((fg)'(x_0) = f'(x_0) g(x_0) + f(x_0) g'(x_0)\).
+  By \cref{10.1.1} and \cref{9.3.14} we have
+  \begin{align*}
+      & f'(x_0) g(x_0) + f(x_0) g'(x_0)                                                                                                                                                                                 \\
+    = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}\bigg) \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} g(x)\bigg)                                                            \\
+      & + f(x_0) \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0}\bigg)                                                                                                                 \\
+    = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{\big(f(x) - f(x_0)\big) g(x)}{x - x_0}\bigg) + \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x_0) \big(g(x) - g(x_0)\big)}{x - x_0}\bigg) \\
+    = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) g(x) - f(x_0) g(x)}{x - x_0}\bigg) + \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}\bigg)         \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \bigg(\frac{f(x) g(x) - f(x_0) g(x)}{x - x_0} + \frac{f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}\bigg)                                                                  \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) g(x) - f(x_0) g(x) + f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}                                                                                              \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) g(x) - f(x_0) g(x_0)}{x - x_0}                                                                                                                          \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{(fg)(x) - (fg)(x_0)}{x - x_0}                                                                                                                                \\
+    = & (fg)'(x_0).
+  \end{align*}
+  Thus \(fg\) is differentiable at \(x_0\) and \((fg)'(x_0) = f'(x_0) g(x_0) + f(x_0) g'(x_0)\).
 \end{proof}
 
 \begin{proof}{(e)}
-    By Definition \ref{10.1.1} and Proposition \ref{9.3.14} we have
-    \begin{align*}
-          & cf'(x_0)                                                                                 \\
-        = & c \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}\bigg) \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \bigg(c \frac{f(x) - f(x_0)}{x - x_0}\bigg) \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{cf(x) - cf(x_0)}{x - x_0}             \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{(cf)(x) - (cf)(x_0)}{x - x_0}         \\
-        = & (cf)'(x_0).
-    \end{align*}
-    Thus \(cf\) is differentiable at \(x_0\) and \((cf)'(x_0) = cf'(x_0)\).
+  By \cref{10.1.1} and \cref{9.3.14} we have
+  \begin{align*}
+      & cf'(x_0)                                                                                 \\
+    = & c \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}\bigg) \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \bigg(c \frac{f(x) - f(x_0)}{x - x_0}\bigg) \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{cf(x) - cf(x_0)}{x - x_0}             \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{(cf)(x) - (cf)(x_0)}{x - x_0}         \\
+    = & (cf)'(x_0).
+  \end{align*}
+  Thus \(cf\) is differentiable at \(x_0\) and \((cf)'(x_0) = cf'(x_0)\).
 \end{proof}
 
 \begin{proof}{(f)}
-    \begin{align*}
-          & f'(x_0) - g'(x_0)                                                     \\
-        = & f'(x_0) + \big(-g'(x_0)\big)                                          \\
-        = & f'(x_0) + \big((-g)'(x_0)\big) & \text{(by Theorem \ref{10.1.13}(e))} \\
-        = & \big(f + (-g)\big)'(x_0)       & \text{(by Theorem \ref{10.1.13}(c))} \\
-        = & (f - g)'(x_0).                 & \text{(by Definition \ref{9.2.1})}
-    \end{align*}
-    Thus \(f - g\) is differentiable at \(x_0\) and \((f - g)'(x_0) = f'(x_0) - g'(x_0)\).
+  \begin{align*}
+      & f'(x_0) - g'(x_0)                                              \\
+    = & f'(x_0) + \big(-g'(x_0)\big)                                   \\
+    = & f'(x_0) + \big((-g)'(x_0)\big) & \text{(by \cref{10.1.13}(e))} \\
+    = & \big(f + (-g)\big)'(x_0)       & \text{(by \cref{10.1.13}(c))} \\
+    = & (f - g)'(x_0).                 & \text{(by \cref{9.2.1})}
+  \end{align*}
+  Thus \(f - g\) is differentiable at \(x_0\) and \((f - g)'(x_0) = f'(x_0) - g'(x_0)\).
 \end{proof}
 
 \begin{proof}{(g)}
-    By Definition \ref{10.1.1} and Proposition \ref{9.3.14} we have
-    \begin{align*}
-          & -\frac{g'(x_0)}{g(x_0)^2}                                                                                                                                                     \\
-        = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\frac{-1}{g(x_0)^2}\bigg)                                                        \\
-        = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\frac{-g(x_0)}{g(x_0) g(x_0)^2}\bigg)                                            \\
-        = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{-g(x_0)}{g(x) g(x_0)^2}\bigg) \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \Bigg(\bigg(\frac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\frac{-g(x_0)}{g(x) g(x_0)^2}\bigg)\Bigg)                                  \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{\frac{g(x_0)(g(x_0) - g(x))}{g(x) g(x_0)^2}}{x - x_0}                                                                      \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{\frac{g(x_0) - g(x)}{g(x) g(x_0)}}{x - x_0}                                                                                \\
-        = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{\frac{1}{g(x)} - \frac{1}{g(x_0)}}{x - x_0}                                                                                \\
-        = & (\frac{1}{g})'(x_0).
-    \end{align*}
-    Thus \(1 / g\) is differentiable at \(x_0\) and \((1 / g)'(x_0) = -\frac{g'(x_0)}{g(x_0)^2}\).
+  By \cref{10.1.1} and \cref{9.3.14} we have
+  \begin{align*}
+      & -\frac{g'(x_0)}{g(x_0)^2}                                                                                                                                                     \\
+    = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\frac{-1}{g(x_0)^2}\bigg)                                                        \\
+    = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\frac{-g(x_0)}{g(x_0) g(x_0)^2}\bigg)                                            \\
+    = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{-g(x_0)}{g(x) g(x_0)^2}\bigg) \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \Bigg(\bigg(\frac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\frac{-g(x_0)}{g(x) g(x_0)^2}\bigg)\Bigg)                                  \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{\frac{g(x_0)(g(x_0) - g(x))}{g(x) g(x_0)^2}}{x - x_0}                                                                      \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{\frac{g(x_0) - g(x)}{g(x) g(x_0)}}{x - x_0}                                                                                \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \frac{\frac{1}{g(x)} - \frac{1}{g(x_0)}}{x - x_0}                                                                                \\
+    = & (\frac{1}{g})'(x_0).
+  \end{align*}
+  Thus \(1 / g\) is differentiable at \(x_0\) and \((1 / g)'(x_0) = -\frac{g'(x_0)}{g(x_0)^2}\).
 \end{proof}
 
 \begin{proof}{(h)}
-    \begin{align*}
-          & (\frac{f}{g})'(x_0)                                                                                      \\
-        = & (f \cdot \frac{1}{g})'(x_0)                                       & \text{(by Definition \ref{9.2.1})}   \\
-        = & f'(x_0) \frac{1}{g}(x_0) + f(x_0) (\frac{1}{g})'(x_0)             & \text{(by Theorem \ref{10.1.13}(d))} \\
-        = & \frac{f'(x_0)}{g(x_0)} + f(x_0) (\frac{1}{g})'(x_0)               & \text{(by Definition \ref{9.2.1})}   \\
-        = & \frac{f'(x_0)}{g(x_0)} + f(x_0) \frac{-g'(x_0)}{g(x_0)^2}         & \text{(by Theorem \ref{10.1.13}(g))} \\
-        = & \frac{f'(x_0) g(x_0)}{g(x_0)^2} - \frac{f(x_0) g'(x_0)}{g(x_0)^2}                                        \\
-        = & \frac{f'(x_0) g(x_0) - f(x_0) g'(x_0)}{g(x_0)^2}.                                                        \\
-    \end{align*}
-    Thus \(f / g\) is differentiable at \(x_0\) and \((f / g)'(x_0) = \frac{f'(x_0) g(x_0) - f(x_0) g'(x_0)}{g(x_0)^2}\).
+  \begin{align*}
+      & (\frac{f}{g})'(x_0)                                                                               \\
+    = & (f \cdot \frac{1}{g})'(x_0)                                       & \text{(by \cref{9.2.1})}      \\
+    = & f'(x_0) \frac{1}{g}(x_0) + f(x_0) (\frac{1}{g})'(x_0)             & \text{(by \cref{10.1.13}(d))} \\
+    = & \frac{f'(x_0)}{g(x_0)} + f(x_0) (\frac{1}{g})'(x_0)               & \text{(by \cref{9.2.1})}      \\
+    = & \frac{f'(x_0)}{g(x_0)} + f(x_0) \frac{-g'(x_0)}{g(x_0)^2}         & \text{(by \cref{10.1.13}(g))} \\
+    = & \frac{f'(x_0) g(x_0)}{g(x_0)^2} - \frac{f(x_0) g'(x_0)}{g(x_0)^2}                                 \\
+    = & \frac{f'(x_0) g(x_0) - f(x_0) g'(x_0)}{g(x_0)^2}.                                                 \\
+  \end{align*}
+  Thus \(f / g\) is differentiable at \(x_0\) and \((f / g)'(x_0) = \frac{f'(x_0) g(x_0) - f(x_0) g'(x_0)}{g(x_0)^2}\).
 \end{proof}
 
 \begin{remark}\label{10.1.14}
-    The product rule is also known as the \emph{Leibniz rule}, after Gottfried Leibniz (1646 -- 1716), who was the other founder of differential and integral calculus besides Newton.
+  The product rule is also known as the \emph{Leibniz rule}, after Gottfried Leibniz (1646 -- 1716), who was the other founder of differential and integral calculus besides Newton.
 \end{remark}
 
 \begin{note}
-    The trick of adding and subtracting an intermediate term is sometimes known as the ``middle-man trick'' and is very useful in analysis.
+  The trick of adding and subtracting an intermediate term is sometimes known as the ``middle-man trick'' and is very useful in analysis.
 \end{note}
 
 \begin{theorem}[Chain rule]\label{10.1.15}
-    Let \(X, Y\) be subsets of \(\R\), let \(x_0 \in X\) be a limit point of \(X\), and let \(y_0 \in Y\) be a limit point of \(Y\).
-    Let \(f : X \to Y\) be a function such that \(f(x_0) = y_0\), and such that \(f\) is differentiable at \(x_0\).
-    Suppose that \(g : Y \to \R\) is a function which is differentiable at \(y_0\).
-    Then the function \(g \circ f : X \to \R\) is differentiable at \(x_0\), and
-    \[
-        (g \circ f)'(x_0) = g'(y_0) f'(x_0)
-    \]
+  Let \(X, Y\) be subsets of \(\R\), let \(x_0 \in X\) be a limit point of \(X\), and let \(y_0 \in Y\) be a limit point of \(Y\).
+  Let \(f : X \to Y\) be a function such that \(f(x_0) = y_0\), and such that \(f\) is differentiable at \(x_0\).
+  Suppose that \(g : Y \to \R\) is a function which is differentiable at \(y_0\).
+  Then the function \(g \circ f : X \to \R\) is differentiable at \(x_0\), and
+  \[
+    (g \circ f)'(x_0) = g'(y_0) f'(x_0)
+  \]
 \end{theorem}
 
 \begin{proof}
-    By Proposition \ref{10.1.7} we want to show that
-    \begin{align*}
-                 & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in X, \abs{x - x_0} \leq \delta \\
-        \implies & \abs{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)} \leq \varepsilon \abs{x - x_0}.
-    \end{align*}
-    Since \(g'(y_0)\) exists, by Proposition \ref{10.1.7} we have
-    \begin{align*}
-                 & \forall \varepsilon \in \R^+, \exists\ \delta_g \in \R^+ : \forall y \in Y, \abs{y - y_0} \leq \delta_g \\
-        \implies & \abs{g(y) - g(y_0) - g'(y_0) (y - y_0)} \leq \varepsilon_g \abs{y - y_0}
-    \end{align*}
-    where
-    \[
-        \varepsilon_g = \frac{-\big(\abs{f'(x_0)} + \abs{g'(y_0)}\big) + \sqrt{\big(\abs{f'(x_0)} + \abs{g'(y_0)}\big)^2 + 4 \varepsilon}}{2}.
-    \]
-    Note that \(\varepsilon_g \in \R^+\) since
-    \[
-        \sqrt{\big(\abs{f'(x_0)} + \abs{g'(y_0)}\big)^2 + 4 \varepsilon} > \sqrt{\big(\abs{f'(x_0)} + \abs{g'(y_0)}\big)^2} = \abs{f'(x_0)} + \abs{g'(y_0)}.
-    \]
-    Now fix such \(\varepsilon\) (and \(\varepsilon_g\)) and \(\delta_g\).
-    Since \(f'(x_0)\) exists, by Corollary \ref{10.1.12} \(f\) is continuous at \(x_0\) and by Definition \ref{9.4.1} \(\lim_{x \to x_0 ; x \in X} f(x) = f(x_0)\).
-    This means
-    \begin{align*}
-                 & \exists\ \delta \in \R^+ : \forall x \in X, \abs{x - x_0} \leq \delta                                                     \\
-        \implies & \begin{cases}
-                       \abs{f(x) - y_0} \leq \delta_g                                        & \text{(by Proposition \ref{9.4.7}(d))} \\
-                       \abs{f(x) - y_0 - f'(x_0) (x - x_0)} \leq \varepsilon_g \abs{x - x_0} & \text{(by Proposition \ref{10.1.7})}
-                   \end{cases} \\
-        \implies & \begin{cases}
-                       \abs{f(x) - y_0} \leq \delta_g                                        \\
-                       \abs{f(x) - y_0 - f'(x_0) (x - x_0)} \leq \varepsilon_g \abs{x - x_0} \\
-                       \abs{f(x) - y_0} \leq \varepsilon_g \abs{x - x_0} + \abs{f'(x_0) (x - x_0)}
-                   \end{cases}                                                \\
-        \implies & \begin{cases}
-                       \abs{f(x) - y_0} \leq \delta_g                                        \\
-                       \abs{f(x) - y_0 - f'(x_0) (x - x_0)} \leq \varepsilon_g \abs{x - x_0} \\
-                       \abs{f(x) - y_0} \leq \big(\varepsilon_g + \abs{f'(x_0)}\big) \abs{x - x_0}
-                   \end{cases}
-    \end{align*}
-    We know that
-    \begin{align*}
-                 & \exists\ \delta \in \R^+ : \forall x \in X, \abs{x - x_0} \leq \delta                                                \\
-        \implies & \abs{f(x) - y_0} \leq \delta_g                                                                                       \\
-        \implies & \abs{g\big(f(x)\big) - g(y_0) - g'(y_0) \big(f(x_0) - y_0\big)} \leq \varepsilon_g \abs{f(x) - y_0}                  \\
-        \implies & \abs{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0) - g'(y_0) \big(f(x) - y_0 - f'(x_0) (x - x_0)\big)}        \\
-                 & \leq \varepsilon_g \abs{f(x) - y_0}                                                                                  \\
-        \implies & \abs{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)}                                                           \\
-                 & \leq \varepsilon_g \abs{f(x) - y_0} + \abs{g'(y_0) \big(f(x) - y_0 - f'(x_0) (x - x_0)\big)}                         \\
-        \implies & \abs{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)}                                                           \\
-                 & \leq \varepsilon_g \abs{f(x) - y_0} + \abs{g'(y_0)} \abs{f(x_0) - y_0 - f'(x_0) (x - x_0)}                           \\
-        \implies & \abs{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)}                                                           \\
-                 & \leq \varepsilon_g \abs{f(x) - y_0} + \varepsilon_g \abs{g'(y_0)} \abs{x - x_0}                                      \\
-        \implies & \abs{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)}                                                           \\
-                 & \leq \varepsilon_g \big(\varepsilon_g + \abs{f'(x_0)}\big) \abs{x - x_0} + \varepsilon_g \abs{g'(y_0)} \abs{x - x_0} \\
-        \implies & \abs{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)}                                                           \\
-                 & \leq \varepsilon_g \big(\varepsilon_g + \abs{f'(x_0)} + \abs{g'(y_0)}\big) \abs{x - x_0}.
-    \end{align*}
-    Expanding \(\varepsilon_g\) we have
-    \begin{align*}
-         & \varepsilon_g \big(\varepsilon_g + \abs{f'(x_0)} + \abs{g'(y_0)}\big)                                                             \\
-         & = \frac{-\big(\abs{f'(x_0)} + \abs{g'(y_0)}\big) + \sqrt{\big(\abs{f'(x_0)} + \abs{g'(y_0)}\big)^2 + 4 \varepsilon}}{2}           \\
-         & \quad \times \frac{\big(\abs{f'(x_0)} + \abs{g'(y_0)}\big) + \sqrt{\big(\abs{f'(x_0)} + \abs{g'(y_0)}\big)^2 + 4 \varepsilon}}{2} \\
-         & = \frac{\big(\abs{f'(x_0)} + \abs{g'(y_0)}\big)^2 + 4 \varepsilon - \big(\abs{f'(x_0)} + \abs{g'(y_0)}\big)^2}{4}                 \\
-         & = \varepsilon.
-    \end{align*}
-    Thus we conclude that
-    \begin{align*}
-                 & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in X, \abs{x - x_0} \leq \delta \\
-        \implies & \abs{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)} \leq \varepsilon \abs{x - x_0}
-    \end{align*}
-    and by Proposition \ref{10.1.7} we have \((g \circ f)'(x_0) = g'(y_0) f'(x_0)\).
+  By \cref{10.1.7} we want to show that
+  \begin{align*}
+             & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in X, \abs{x - x_0} \leq \delta \\
+    \implies & \abs{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)} \leq \varepsilon \abs{x - x_0}.
+  \end{align*}
+  Since \(g'(y_0)\) exists, by \cref{10.1.7} we have
+  \begin{align*}
+             & \forall \varepsilon \in \R^+, \exists\ \delta_g \in \R^+ : \forall y \in Y, \abs{y - y_0} \leq \delta_g \\
+    \implies & \abs{g(y) - g(y_0) - g'(y_0) (y - y_0)} \leq \varepsilon_g \abs{y - y_0}
+  \end{align*}
+  where
+  \[
+    \varepsilon_g = \frac{-\big(\abs{f'(x_0)} + \abs{g'(y_0)}\big) + \sqrt{\big(\abs{f'(x_0)} + \abs{g'(y_0)}\big)^2 + 4 \varepsilon}}{2}.
+  \]
+  Note that \(\varepsilon_g \in \R^+\) since
+  \[
+    \sqrt{\big(\abs{f'(x_0)} + \abs{g'(y_0)}\big)^2 + 4 \varepsilon} > \sqrt{\big(\abs{f'(x_0)} + \abs{g'(y_0)}\big)^2} = \abs{f'(x_0)} + \abs{g'(y_0)}.
+  \]
+  Now fix such \(\varepsilon\) (and \(\varepsilon_g\)) and \(\delta_g\).
+  Since \(f'(x_0)\) exists, by \cref{10.1.12} \(f\) is continuous at \(x_0\) and by \cref{9.4.1} \(\lim_{x \to x_0 ; x \in X} f(x) = f(x_0)\).
+  This means
+  \begin{align*}
+             & \exists\ \delta \in \R^+ : \forall x \in X, \abs{x - x_0} \leq \delta                                         \\
+    \implies & \begin{cases}
+                 \abs{f(x) - y_0} \leq \delta_g                                        & \text{(by \cref{9.4.7}(d))} \\
+                 \abs{f(x) - y_0 - f'(x_0) (x - x_0)} \leq \varepsilon_g \abs{x - x_0} & \text{(by \cref{10.1.7})}
+               \end{cases} \\
+    \implies & \begin{cases}
+                 \abs{f(x) - y_0} \leq \delta_g                                        \\
+                 \abs{f(x) - y_0 - f'(x_0) (x - x_0)} \leq \varepsilon_g \abs{x - x_0} \\
+                 \abs{f(x) - y_0} \leq \varepsilon_g \abs{x - x_0} + \abs{f'(x_0) (x - x_0)}
+               \end{cases}                                    \\
+    \implies & \begin{cases}
+                 \abs{f(x) - y_0} \leq \delta_g                                        \\
+                 \abs{f(x) - y_0 - f'(x_0) (x - x_0)} \leq \varepsilon_g \abs{x - x_0} \\
+                 \abs{f(x) - y_0} \leq \big(\varepsilon_g + \abs{f'(x_0)}\big) \abs{x - x_0}
+               \end{cases}
+  \end{align*}
+  We know that
+  \begin{align*}
+             & \exists\ \delta \in \R^+ : \forall x \in X, \abs{x - x_0} \leq \delta                                                \\
+    \implies & \abs{f(x) - y_0} \leq \delta_g                                                                                       \\
+    \implies & \abs{g\big(f(x)\big) - g(y_0) - g'(y_0) \big(f(x_0) - y_0\big)} \leq \varepsilon_g \abs{f(x) - y_0}                  \\
+    \implies & \abs{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0) - g'(y_0) \big(f(x) - y_0 - f'(x_0) (x - x_0)\big)}        \\
+             & \leq \varepsilon_g \abs{f(x) - y_0}                                                                                  \\
+    \implies & \abs{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)}                                                           \\
+             & \leq \varepsilon_g \abs{f(x) - y_0} + \abs{g'(y_0) \big(f(x) - y_0 - f'(x_0) (x - x_0)\big)}                         \\
+    \implies & \abs{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)}                                                           \\
+             & \leq \varepsilon_g \abs{f(x) - y_0} + \abs{g'(y_0)} \abs{f(x_0) - y_0 - f'(x_0) (x - x_0)}                           \\
+    \implies & \abs{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)}                                                           \\
+             & \leq \varepsilon_g \abs{f(x) - y_0} + \varepsilon_g \abs{g'(y_0)} \abs{x - x_0}                                      \\
+    \implies & \abs{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)}                                                           \\
+             & \leq \varepsilon_g \big(\varepsilon_g + \abs{f'(x_0)}\big) \abs{x - x_0} + \varepsilon_g \abs{g'(y_0)} \abs{x - x_0} \\
+    \implies & \abs{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)}                                                           \\
+             & \leq \varepsilon_g \big(\varepsilon_g + \abs{f'(x_0)} + \abs{g'(y_0)}\big) \abs{x - x_0}.
+  \end{align*}
+  Expanding \(\varepsilon_g\) we have
+  \begin{align*}
+     & \varepsilon_g \big(\varepsilon_g + \abs{f'(x_0)} + \abs{g'(y_0)}\big)                                                             \\
+     & = \frac{-\big(\abs{f'(x_0)} + \abs{g'(y_0)}\big) + \sqrt{\big(\abs{f'(x_0)} + \abs{g'(y_0)}\big)^2 + 4 \varepsilon}}{2}           \\
+     & \quad \times \frac{\big(\abs{f'(x_0)} + \abs{g'(y_0)}\big) + \sqrt{\big(\abs{f'(x_0)} + \abs{g'(y_0)}\big)^2 + 4 \varepsilon}}{2} \\
+     & = \frac{\big(\abs{f'(x_0)} + \abs{g'(y_0)}\big)^2 + 4 \varepsilon - \big(\abs{f'(x_0)} + \abs{g'(y_0)}\big)^2}{4}                 \\
+     & = \varepsilon.
+  \end{align*}
+  Thus we conclude that
+  \begin{align*}
+             & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in X, \abs{x - x_0} \leq \delta \\
+    \implies & \abs{g\big(f(x)\big) - g(y_0) - g'(y_0) f'(x_0) (x - x_0)} \leq \varepsilon \abs{x - x_0}
+  \end{align*}
+  and by \cref{10.1.7} we have \((g \circ f)'(x_0) = g'(y_0) f'(x_0)\).
 \end{proof}
 
 \setcounter{theorem}{16}
 \begin{remark}\label{10.1.17}
-    If one writes \(y\) for \(f(x)\), and \(z\) for \(g(y)\), then the chain rule can be written in the more visually appealing manner \(\frac{dz}{dx} = \frac{dz}{dy} \frac{dy}{dx}\).
-    However, this notation can be misleading (for instance it blurs the distinction between dependent variable and independent variable, especially for \(y\)), and leads one to believe that the quantities \(dz, dy, dx\) can be manipulated like real numbers.
-    However, these quantities are not real numbers (in fact, we have not assigned any meaning to them at all), and treating them as such can lead to problems in the future.
-    For instance, if \(f\) depends on \(x_1\) and \(x_2\), which depend on \(t\), then chain rule for several variables asserts that \(\frac{df}{dt} = \frac{\partial f}{\partial x_1} \frac{dx_1}{dt} + \frac{\partial f}{\partial x_2} \frac{dx_2}{dt}\), but this rule might seem suspect if one treated \(df, dt\), etc. as real numbers.
-    It is possible to think of \(dy, dx\), etc. as ``infinitesimal real numbers'' if one knows what one is doing, but for those just starting out in analysis, I would not recommend this approach, especially if one wishes to work rigorously.
-    (There is a way to make all of this rigorous, even for the calculus of several variables, but it requires the notion of a tangent vector, and the derivative map, both of which are beyond the scope of this text.)
+  If one writes \(y\) for \(f(x)\), and \(z\) for \(g(y)\), then the chain rule can be written in the more visually appealing manner \(\frac{dz}{dx} = \frac{dz}{dy} \frac{dy}{dx}\).
+  However, this notation can be misleading (for instance it blurs the distinction between dependent variable and independent variable, especially for \(y\)), and leads one to believe that the quantities \(dz, dy, dx\) can be manipulated like real numbers.
+  However, these quantities are not real numbers (in fact, we have not assigned any meaning to them at all), and treating them as such can lead to problems in the future.
+  For instance, if \(f\) depends on \(x_1\) and \(x_2\), which depend on \(t\), then chain rule for several variables asserts that \(\frac{df}{dt} = \frac{\partial f}{\partial x_1} \frac{dx_1}{dt} + \frac{\partial f}{\partial x_2} \frac{dx_2}{dt}\), but this rule might seem suspect if one treated \(df, dt\), etc. as real numbers.
+  It is possible to think of \(dy, dx\), etc. as ``infinitesimal real numbers'' if one knows what one is doing, but for those just starting out in analysis, I would not recommend this approach, especially if one wishes to work rigorously.
+  (There is a way to make all of this rigorous, even for the calculus of several variables, but it requires the notion of a tangent vector, and the derivative map, both of which are beyond the scope of this text.)
 \end{remark}
 
 \exercisesection
 
 \begin{exercise}\label{ex 10.1.1}
-    Suppose that \(X\) is a subset of \(\R\), \(x_0\) is a limit point of \(X\), and \(f : X \to \R\) is a function which is differentiable at \(x_0\).
-    Let \(Y \subseteq X\) be such that \(x_0 \in Y\), and \(x_0\) is also a limit point of \(Y\).
-    Prove that the restricted function \(f|_Y : Y \to \R\) is also differentiable at \(x_0\), and has the same derivative as \(f\) at \(x_0\).
-    Explain why this does not contradict the discussion in Remark \ref{10.1.2}.
+  Suppose that \(X\) is a subset of \(\R\), \(x_0\) is a limit point of \(X\), and \(f : X \to \R\) is a function which is differentiable at \(x_0\).
+  Let \(Y \subseteq X\) be such that \(x_0 \in Y\), and \(x_0\) is also a limit point of \(Y\).
+  Prove that the restricted function \(f|_Y : Y \to \R\) is also differentiable at \(x_0\), and has the same derivative as \(f\) at \(x_0\).
+  Explain why this does not contradict the discussion in \cref{10.1.2}.
 \end{exercise}
 
 \begin{proof}
-    Since \(f\) is differentiable at \(x_0\), by Newton's approximation (Proposition \ref{10.1.7}) we have \(\forall \varepsilon \in \R^+\), \(\exists\ \delta \in \R^+\) such that
-    \[
-        \forall x \in X, \abs{x - x_0} \leq \delta \implies \abs{f(x) - (f(x_0) + f'(x_0)(x - x_0))} \leq \varepsilon \abs{x - x_0}.
-    \]
-    Since \(Y \subseteq X\), we have
-    \begin{align*}
-                 & \forall x \in Y, \abs{x - x_0} \leq \delta                                             \\
-        \implies & (x \in X) \land (\abs{x - x_0} \leq \delta)                                            \\
-        \implies & \abs{f(x) - \big(f(x_0) + f'(x_0)(x - x_0)\big)} \leq \varepsilon \abs{x - x_0}        \\
-        \implies & \abs{f|_Y(x) - \big(f|_Y(x_0) + f'(x_0)(x - x_0)\big)} \leq \varepsilon \abs{x - x_0}.
-    \end{align*}
-    Thus by Newton's approximation (Proposition \ref{10.1.7}) we know that \(f|_Y'(x_0) = f'(x_0)\).
-    This does not contradict to Remark \ref{10.1.2} since \(x_0\) is a limit point of \(Y\) implies \(x_0\) is also a limit point of \(X\).
+  Since \(f\) is differentiable at \(x_0\), by Newton's approximation (\cref{10.1.7}) we have \(\forall \varepsilon \in \R^+\), \(\exists\ \delta \in \R^+\) such that
+  \[
+    \forall x \in X, \abs{x - x_0} \leq \delta \implies \abs{f(x) - (f(x_0) + f'(x_0)(x - x_0))} \leq \varepsilon \abs{x - x_0}.
+  \]
+  Since \(Y \subseteq X\), we have
+  \begin{align*}
+             & \forall x \in Y, \abs{x - x_0} \leq \delta                                             \\
+    \implies & (x \in X) \land (\abs{x - x_0} \leq \delta)                                            \\
+    \implies & \abs{f(x) - \big(f(x_0) + f'(x_0)(x - x_0)\big)} \leq \varepsilon \abs{x - x_0}        \\
+    \implies & \abs{f|_Y(x) - \big(f|_Y(x_0) + f'(x_0)(x - x_0)\big)} \leq \varepsilon \abs{x - x_0}.
+  \end{align*}
+  Thus by Newton's approximation (\cref{10.1.7}) we know that \(f|_Y'(x_0) = f'(x_0)\).
+  This does not contradict to \cref{10.1.2} since \(x_0\) is a limit point of \(Y\) implies \(x_0\) is also a limit point of \(X\).
 \end{proof}
 
 \begin{exercise}\label{ex 10.1.2}
-    Prove Proposition \ref{10.1.7}.
+  Prove \cref{10.1.7}.
 \end{exercise}
 
 \begin{proof}
-    See Proposition \ref{10.1.7}.
+  See \cref{10.1.7}.
 \end{proof}
 
 \begin{exercise}\label{ex 10.1.3}
-    Prove Proposition \ref{10.1.10}.
+  Prove \cref{10.1.10}.
 \end{exercise}
 
 \begin{proof}
-    See Proposition \ref{10.1.10}.
+  See \cref{10.1.10}.
 \end{proof}
 
 \begin{exercise}\label{ex 10.1.4}
-    Prove Theorem \ref{10.1.13}.
+  Prove \cref{10.1.13}.
 \end{exercise}
 
 \begin{proof}
-    See Theorem \ref{10.1.13}.
+  See \cref{10.1.13}.
 \end{proof}
 
 \begin{exercise}\label{ex 10.1.5}
-    Let \(n\) be a natural number, and let \(f : \R \to \R\) be the function \(f(x) \coloneqq x^n\).
-    Show that \(f\) is differentiable on \(\R\) and \(f'(x) = n x^{n - 1}\) for all \(x \in \R\) with the convention that \(n x^{n - 1} = 0\) when \(n = 0\).
+  Let \(n\) be a natural number, and let \(f : \R \to \R\) be the function \(f(x) \coloneqq x^n\).
+  Show that \(f\) is differentiable on \(\R\) and \(f'(x) = n x^{n - 1}\) for all \(x \in \R\) with the convention that \(n x^{n - 1} = 0\) when \(n = 0\).
 \end{exercise}
 
 \begin{proof}
-    We use induction on \(n\) to show that \(\forall n \in \N\), \(f_n(x) = x^n\) is differentiable on \(\R\) and \(f_n'(x) = n x^{n - 1}\).
-    For \(n = 0\), we have \(f_0(x) = x^0 = 1\).
-    By Theorem \ref{10.1.13}(a) we know that \(f_0\) is differentiable on \(\R\) and \(f_0'(x) = 0\) for every \(x \in X\).
-    Thus (by convention) the base case holds.
-    Suppose inductively that for some \(n \geq 0\) we have \(f_n(x) = x^n\) is differentiable on \(\R\) and \(f_n'(x) = n x^{n - 1}\).
-    Then for \(n + 1\), we have \(f_{n + 1}(x) = x^{n + 1} = x^n \cdot x^1 = f_n(x) f_1(x) = (f_n \cdot f_1)(x)\) and
-    \begin{align*}
-          & (f_n \cdot f_1)'(x)                                                        \\
-        = & f_n'(x) f_1(x) + f_n(x) f_1'(x)     & \text{(by Theorem \ref{10.1.13}(d))} \\
-        = & (n x^{n - 1})(x^1) + f_n(x) f_1'(x) & \text{(by induction hypothesis)}     \\
-        = & (n x^{n - 1})(x^1) + (x^n)(1 x^0)   & \text{(by Theorem \ref{10.1.13}(b))} \\
-        = & n x^n + x^n                                                                \\
-        = & (n + 1) x^n.
-    \end{align*}
-    This closes the induction.
+  We use induction on \(n\) to show that \(\forall n \in \N\), \(f_n(x) = x^n\) is differentiable on \(\R\) and \(f_n'(x) = n x^{n - 1}\).
+  For \(n = 0\), we have \(f_0(x) = x^0 = 1\).
+  By \cref{10.1.13}(a) we know that \(f_0\) is differentiable on \(\R\) and \(f_0'(x) = 0\) for every \(x \in X\).
+  Thus (by convention) the base case holds.
+  Suppose inductively that for some \(n \geq 0\) we have \(f_n(x) = x^n\) is differentiable on \(\R\) and \(f_n'(x) = n x^{n - 1}\).
+  Then for \(n + 1\), we have \(f_{n + 1}(x) = x^{n + 1} = x^n \cdot x^1 = f_n(x) f_1(x) = (f_n \cdot f_1)(x)\) and
+  \begin{align*}
+      & (f_n \cdot f_1)'(x)                                                    \\
+    = & f_n'(x) f_1(x) + f_n(x) f_1'(x)     & \text{(by \cref{10.1.13}(d))}    \\
+    = & (n x^{n - 1})(x^1) + f_n(x) f_1'(x) & \text{(by induction hypothesis)} \\
+    = & (n x^{n - 1})(x^1) + (x^n)(1 x^0)   & \text{(by \cref{10.1.13}(b))}    \\
+    = & n x^n + x^n                                                            \\
+    = & (n + 1) x^n.
+  \end{align*}
+  This closes the induction.
 \end{proof}
 
 \begin{exercise}\label{ex 10.1.6}
-    Let \(n\) be a \emph{negative} integer, and let \(f : \R \setminus \{0\} \to \R\) be the function \(f(x) \coloneqq x^n\).
-    Show that \(f\) is differentiable on \(\R \setminus \{0\}\) and \(f'(x) = n x^{n - 1}\) for all \(x \in \R \setminus \{0\}\).
+  Let \(n\) be a \emph{negative} integer, and let \(f : \R \setminus \{0\} \to \R\) be the function \(f(x) \coloneqq x^n\).
+  Show that \(f\) is differentiable on \(\R \setminus \{0\}\) and \(f'(x) = n x^{n - 1}\) for all \(x \in \R \setminus \{0\}\).
 \end{exercise}
 
 \begin{proof}
-    Let \(x \in \R \setminus \{0\}\).
-    Since \(n \in \Z^-\), \(-n \in \Z^+\).
-    Then we have \((1 / f)(x) = 1 / x^n = x^{-n}\) and \(f(x) = \big(1 / (1 / f)\big)(x)\).
-    Thus \(f\) is differentiable at \(x\) and
-    \begin{align*}
-        f'(x) & = \big(1 / (1 / f)\big)'(x)                                                          \\
-              & = -\frac{(1 / f)'(x)}{\big((1 / f)(x)\big)^2} & \text{(by Theorem \ref{10.1.13}(g))} \\
-              & = -\frac{(-n) x^{-n - 1}}{x^{-2n}}            & \text{(by Exercise \ref{ex 10.1.5})} \\
-              & = n x^{n - 1}.
-    \end{align*}
+  Let \(x \in \R \setminus \{0\}\).
+  Since \(n \in \Z^-\), \(-n \in \Z^+\).
+  Then we have \((1 / f)(x) = 1 / x^n = x^{-n}\) and \(f(x) = \big(1 / (1 / f)\big)(x)\).
+  Thus \(f\) is differentiable at \(x\) and
+  \begin{align*}
+    f'(x) & = \big(1 / (1 / f)\big)'(x)                                                   \\
+          & = -\frac{(1 / f)'(x)}{\big((1 / f)(x)\big)^2} & \text{(by \cref{10.1.13}(g))} \\
+          & = -\frac{(-n) x^{-n - 1}}{x^{-2n}}            & \text{(by \cref{ex 10.1.5})}  \\
+          & = n x^{n - 1}.
+  \end{align*}
 \end{proof}
 
 \begin{exercise}\label{ex 10.1.7}
-    Prove Theorem \ref{10.1.15}.
+  Prove \cref{10.1.15}.
 \end{exercise}
 
 \begin{proof}
-    See Theorem \ref{10.1.15}.
+  See \cref{10.1.15}.
 \end{proof}

@@ -1,228 +1,228 @@
 \section{Local maxima, local minima, and derivatives}\label{sec 10.2}
 
 \begin{definition}[Local maxima and minima]\label{10.2.1}
-    Let \(X\) be a subset of \(\R\), and let \(f : X \to \R\) be a function, and let \(x_0 \in X\).
-    We say that \(f\) attains a \emph{local maximum} at \(x_0\) iff there exists a \(\delta > 0\) such that the restriction \(f|_{X \cap (x_0 - \delta, x_0 + \delta)}\) of \(f\) to \(X \cap (x_0 - \delta, x_0 + \delta)\) attains a maximum at \(x_0\).
-    We say that \(f\) attains a \emph{local minimum} at \(x_0\) iff there exists a \(\delta > 0\) such that the restriction \(f|_{X \cap (x_0 - \delta, x_0 + \delta)}\) of \(f\) to \(X \cap (x_0 - \delta, x_0 + \delta)\) attains a minimum at \(x_0\).
+  Let \(X\) be a subset of \(\R\), and let \(f : X \to \R\) be a function, and let \(x_0 \in X\).
+  We say that \(f\) attains a \emph{local maximum} at \(x_0\) iff there exists a \(\delta > 0\) such that the restriction \(f|_{X \cap (x_0 - \delta, x_0 + \delta)}\) of \(f\) to \(X \cap (x_0 - \delta, x_0 + \delta)\) attains a maximum at \(x_0\).
+  We say that \(f\) attains a \emph{local minimum} at \(x_0\) iff there exists a \(\delta > 0\) such that the restriction \(f|_{X \cap (x_0 - \delta, x_0 + \delta)}\) of \(f\) to \(X \cap (x_0 - \delta, x_0 + \delta)\) attains a minimum at \(x_0\).
 \end{definition}
 
 \begin{remark}\label{10.2.2}
-    If \(f\) attains a maximum at \(x_0\), we sometimes say that \(f\) attains a \emph{global} maximum at \(x_0\), in order to distinguish it from the local maxima defined in Definition \ref{10.2.1}.
-    Note that if \(f\) attains a global maximum at \(x_0\), then it certainly also attains a local maximum at this \(x_0\), and similarly for minima.
+  If \(f\) attains a maximum at \(x_0\), we sometimes say that \(f\) attains a \emph{global} maximum at \(x_0\), in order to distinguish it from the local maxima defined in \cref{10.2.1}.
+  Note that if \(f\) attains a global maximum at \(x_0\), then it certainly also attains a local maximum at this \(x_0\), and similarly for minima.
 \end{remark}
 
 \setcounter{theorem}{4}
 \begin{remark}\label{10.2.5}
-    If \(f : X \to \R\) attains a local maximum at a point \(x_0\) in \(X\), and \(Y \subseteq X\) is a subset of \(X\) which contains \(x_0\), then the restriction \(f|_Y : Y \to \R\) also attains a local maximum at \(x_0\).
-    Similarly for minima.
+  If \(f : X \to \R\) attains a local maximum at a point \(x_0\) in \(X\), and \(Y \subseteq X\) is a subset of \(X\) which contains \(x_0\), then the restriction \(f|_Y : Y \to \R\) also attains a local maximum at \(x_0\).
+  Similarly for minima.
 \end{remark}
 
 \begin{proposition}[Local extrema are stationary]\label{10.2.6}
-    Let \(a < b\) be real numbers, and let \(f : (a, b) \to \R\) be a function.
-    If \(x_0 \in (a, b)\), \(f\) is differentiable at \(x_0\), and \(f\) attains either a local maximum or local minimum at \(x_0\), then \(f'(x_0) = 0\).
+  Let \(a < b\) be real numbers, and let \(f : (a, b) \to \R\) be a function.
+  If \(x_0 \in (a, b)\), \(f\) is differentiable at \(x_0\), and \(f\) attains either a local maximum or local minimum at \(x_0\), then \(f'(x_0) = 0\).
 \end{proposition}
 
 \begin{proof}
-    Suppose \(f\) attains local maximum at \(x_0\).
-    Then by Definition \ref{10.2.1} we know that
-    \[
-        \exists\ \delta \in \R^+ : \forall x \in (a, b) \cap (x_0 - \delta, x_0 + \delta), f(x) \leq f(x_0).
-    \]
-    Since \(f\) is differentiable at \(x_0\), by Definition \ref{10.1.1} we know that
-    \[
-        \lim_{x \to x_0 ; x \in (a, b) \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0)
-    \]
-    By Definition \ref{9.3.6} we know that \(\forall \varepsilon \in \R^+\), \(\exists\ \delta' \in \R^+\) such that
-    \[
-        \forall x \in (a, b) \setminus \{x_0\}, \abs{x - x_0} < \delta' \implies \abs{\frac{f(x) - f(x_0)}{x - x_0} - f'(x_0)} \leq \varepsilon.
-    \]
-    In particular, we have
-    \[
-        \forall x \in (a, b) \cap (x_0, x_0 + \delta), \abs{x - x_0} < \delta' \implies \abs{\frac{f(x) - f(x_0)}{x - x_0} - f'(x_0)} \leq \varepsilon
-    \]
-    and
-    \[
-        \forall x \in (a, b) \cap (x_0 - \delta, x_0), \abs{x - x_0} < \delta' \implies \abs{\frac{f(x) - f(x_0)}{x - x_0} - f'(x_0)} \leq \varepsilon.
-    \]
-    Thus by Definition \ref{9.3.6} we must have
-    \[
-        \lim_{x \to x_0 ; x \in (a, b) \cap (x_0, x_0 + \delta)} \frac{f(x) - f(x_0)}{x - x_0} = \lim_{x \to x_0 ; x \in (a, b) \cap (x_0 - \delta, x_0)} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0).
-    \]
-    Since
-    \begin{align*}
-                 & \forall x \in (a, b) \cap (x_0, x_0 + \delta)                                                                                        \\
-        \implies & f(x) \leq f(x_0)                                                                                                                     \\
-        \implies & f(x) - f(x_0) \leq 0                                                                                                                 \\
-        \implies & \frac{f(x) - f(x_0)}{x - x_0} \leq 0                                                                                                 \\
-        \implies & \lim_{x \to x_0 ; x \in (a, b) \cap (x_0, x_0 + \delta)} \frac{f(x) - f(x_0)}{x - x_0} \leq 0 & \text{(by Proposition \ref{9.3.14})} \\
-        \implies & f'(x_0) \leq 0
-    \end{align*}
-    and
-    \begin{align*}
-                 & \forall x \in (a, b) \cap (x_0 - \delta, x_0)                                                                                         \\
-        \implies & f(x) \leq f(x_0)                                                                                                                      \\
-        \implies & f(x) - f(x_0) \leq 0                                                                                                                  \\
-        \implies & \frac{f(x) - f(x_0)}{x - x_0} \geq 0                                                                                                  \\
-        \implies & \lim_{x \to x_0 ; x \in (a, b) \cap (x_0 - \delta, x_0)} \frac{f(x) - f(x_0)}{x - x_0} \geq 0, & \text{(by Proposition \ref{9.3.14})} \\
-        \implies & f'(x_0) \geq 0,
-    \end{align*}
-    we must have \(f'(x_0) = 0\).
-    Similar arguments work for the case \(f\) attains local minimum at \(x_0\).
+  Suppose \(f\) attains local maximum at \(x_0\).
+  Then by \cref{10.2.1} we know that
+  \[
+    \exists\ \delta \in \R^+ : \forall x \in (a, b) \cap (x_0 - \delta, x_0 + \delta), f(x) \leq f(x_0).
+  \]
+  Since \(f\) is differentiable at \(x_0\), by \cref{10.1.1} we know that
+  \[
+    \lim_{x \to x_0 ; x \in (a, b) \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0)
+  \]
+  By \cref{9.3.6} we know that \(\forall \varepsilon \in \R^+\), \(\exists\ \delta' \in \R^+\) such that
+  \[
+    \forall x \in (a, b) \setminus \{x_0\}, \abs{x - x_0} < \delta' \implies \abs{\frac{f(x) - f(x_0)}{x - x_0} - f'(x_0)} \leq \varepsilon.
+  \]
+  In particular, we have
+  \[
+    \forall x \in (a, b) \cap (x_0, x_0 + \delta), \abs{x - x_0} < \delta' \implies \abs{\frac{f(x) - f(x_0)}{x - x_0} - f'(x_0)} \leq \varepsilon
+  \]
+  and
+  \[
+    \forall x \in (a, b) \cap (x_0 - \delta, x_0), \abs{x - x_0} < \delta' \implies \abs{\frac{f(x) - f(x_0)}{x - x_0} - f'(x_0)} \leq \varepsilon.
+  \]
+  Thus by \cref{9.3.6} we must have
+  \[
+    \lim_{x \to x_0 ; x \in (a, b) \cap (x_0, x_0 + \delta)} \frac{f(x) - f(x_0)}{x - x_0} = \lim_{x \to x_0 ; x \in (a, b) \cap (x_0 - \delta, x_0)} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0).
+  \]
+  Since
+  \begin{align*}
+             & \forall x \in (a, b) \cap (x_0, x_0 + \delta)                                                                             \\
+    \implies & f(x) \leq f(x_0)                                                                                                          \\
+    \implies & f(x) - f(x_0) \leq 0                                                                                                      \\
+    \implies & \frac{f(x) - f(x_0)}{x - x_0} \leq 0                                                                                      \\
+    \implies & \lim_{x \to x_0 ; x \in (a, b) \cap (x_0, x_0 + \delta)} \frac{f(x) - f(x_0)}{x - x_0} \leq 0 & \text{(by \cref{9.3.14})} \\
+    \implies & f'(x_0) \leq 0
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall x \in (a, b) \cap (x_0 - \delta, x_0)                                                                              \\
+    \implies & f(x) \leq f(x_0)                                                                                                           \\
+    \implies & f(x) - f(x_0) \leq 0                                                                                                       \\
+    \implies & \frac{f(x) - f(x_0)}{x - x_0} \geq 0                                                                                       \\
+    \implies & \lim_{x \to x_0 ; x \in (a, b) \cap (x_0 - \delta, x_0)} \frac{f(x) - f(x_0)}{x - x_0} \geq 0, & \text{(by \cref{9.3.14})} \\
+    \implies & f'(x_0) \geq 0,
+  \end{align*}
+  we must have \(f'(x_0) = 0\).
+  Similar arguments work for the case \(f\) attains local minimum at \(x_0\).
 \end{proof}
 
 \begin{note}
-    \(f\) must be differentiable for Proposition \ref{10.2.6} to work.
-    Also, Proposition \ref{10.2.6} does not work if the open interval \((a, b)\) is replaced by a closed interval \([a, b]\).
-    For instance, the function \(f : [1, 2] \to \R\) defined by \(f(x) \coloneqq x\) has a local maximum at \(x_0 = 2\) and a local minimum \(x_0 = 1\) (in fact, these local extrema are global extrema), but at both points the derivative is \(f'(x_0) = 1\), not \(f'(x_0) = 0\).
-    Thus the endpoints of an interval can be local maxima or minima even if the derivative is not zero there.
-    Finally, the converse of this proposition is false.
+  \(f\) must be differentiable for \cref{10.2.6} to work.
+  Also, \cref{10.2.6} does not work if the open interval \((a, b)\) is replaced by a closed interval \([a, b]\).
+  For instance, the function \(f : [1, 2] \to \R\) defined by \(f(x) \coloneqq x\) has a local maximum at \(x_0 = 2\) and a local minimum \(x_0 = 1\) (in fact, these local extrema are global extrema), but at both points the derivative is \(f'(x_0) = 1\), not \(f'(x_0) = 0\).
+  Thus the endpoints of an interval can be local maxima or minima even if the derivative is not zero there.
+  Finally, the converse of this proposition is false.
 \end{note}
 
 \begin{theorem}[Rolle's theorem]\label{10.2.7}
-    Let \(a < b\) be real numbers, and let \(g : [a, b] \to \R\) be a continuous function which is differentiable on \((a, b)\).
-    Suppose also that \(g(a) = g(b)\).
-    Then there exists an \(x \in (a, b)\) such that \(g'(x) = 0\).
+  Let \(a < b\) be real numbers, and let \(g : [a, b] \to \R\) be a continuous function which is differentiable on \((a, b)\).
+  Suppose also that \(g(a) = g(b)\).
+  Then there exists an \(x \in (a, b)\) such that \(g'(x) = 0\).
 \end{theorem}
 
 \begin{proof}
-    Since \(g\) is continuous on \([a, b]\), by Proposition \ref{9.6.7} \(g\) attains its maximum at some point \(x_{\max} \in [a, b]\), and also attains its minimum at some point \(x_{\min} \in [a, b]\).
-    If \((x_{\min} \in \{a, b\}) \land (x_{\max} \in \{a, b\})\) is true, then by Definition \ref{9.6.5} we have \(g(x) = g(a) = g(b)\) for every \(x \in [a, b]\), and by Theorem \ref{10.1.13}(a) we know that \(g'(x) = 0\).
-    So suppose that at least one of \(x_{\min}, x_{\max} \notin \{a, b\}\), i.e., \(\big(x_{\min} \in (a, b)\big) \lor \big(x_{\max} \in (a, b)\big)\) is true.
-    If \(x_{\min} \in (a, b)\), then by Proposition \ref{10.2.6} we know that \(f'(x_{\min}) = 0\).
-    Similarly, if \(x_{\max} \in (a, b)\), then by Proposition \ref{10.2.6} we know that \(f'(x_{\max}) = 0\).
-    Thus there exists an \(x \in (a, b)\) such that \(g'(x) = 0\).
+  Since \(g\) is continuous on \([a, b]\), by \cref{9.6.7} \(g\) attains its maximum at some point \(x_{\max} \in [a, b]\), and also attains its minimum at some point \(x_{\min} \in [a, b]\).
+  If \((x_{\min} \in \{a, b\}) \land (x_{\max} \in \{a, b\})\) is true, then by \cref{9.6.5} we have \(g(x) = g(a) = g(b)\) for every \(x \in [a, b]\), and by \cref{10.1.13}(a) we know that \(g'(x) = 0\).
+  So suppose that at least one of \(x_{\min}, x_{\max} \notin \{a, b\}\), i.e., \(\big(x_{\min} \in (a, b)\big) \lor \big(x_{\max} \in (a, b)\big)\) is true.
+  If \(x_{\min} \in (a, b)\), then by \cref{10.2.6} we know that \(f'(x_{\min}) = 0\).
+  Similarly, if \(x_{\max} \in (a, b)\), then by \cref{10.2.6} we know that \(f'(x_{\max}) = 0\).
+  Thus there exists an \(x \in (a, b)\) such that \(g'(x) = 0\).
 \end{proof}
 
 \begin{remark}\label{10.2.8}
-    We only assume \(f\) is differentiable on the open interval \((a, b)\), though of course Theorem \ref{10.2.7} also holds if we assume \(f\) is differentiable on the closed interval \([a, b]\), since this is larger than \((a, b)\).
+  We only assume \(f\) is differentiable on the open interval \((a, b)\), though of course \cref{10.2.7} also holds if we assume \(f\) is differentiable on the closed interval \([a, b]\), since this is larger than \((a, b)\).
 \end{remark}
 
 \begin{corollary}[Mean value theorem]\label{10.2.9}
-    Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a function which is continuous on \([a, b]\) and differentiable on \((a, b)\).
-    Then there exists an \(x \in (a, b)\) such that \(f'(x) = \frac{f(b) - f(a)}{b - a}\).
+  Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a function which is continuous on \([a, b]\) and differentiable on \((a, b)\).
+  Then there exists an \(x \in (a, b)\) such that \(f'(x) = \frac{f(b) - f(a)}{b - a}\).
 \end{corollary}
 
 \begin{proof}
-    Let \(g : [a, b] \to \R\) be a function where \(g(x) = f(x) - \frac{f(a) - f(b)}{a - b} x\).
-    Since \(a < b\), we know that \(g\) is well-defined.
-    Since \(f\) is differentiable on \((a, b)\), we know that
-    \begin{align*}
-                 & x \text{ is differentiable on } (a, b)                                  & \text{(by Theorem \ref{10.1.13}(b))} \\
-        \implies & \frac{f(a) - f(b)}{a - b} x \text{ is differentiable on } (a, b)        & \text{(by Theorem \ref{10.1.13}(e))} \\
-        \implies & f(x) - \frac{f(a) - f(b)}{a - b} x \text{ is differentiable on } (a, b) & \text{(by Theorem \ref{10.1.13}(f))} \\
-        \implies & g(x) \text{ is differentiable on } (a, b)                                                                      \\
-        \implies & g'(x) = f'(x) - \frac{f(a) - f(b)}{a - b}.
-    \end{align*}
-    Since
-    \[
-        g(a) = f(a) - \frac{f(a) - f(b)}{a - b} a = \frac{af(a) - bf(a) - af(a) + af(b)}{a - b} = \frac{af(b) - bf(a)}{a - b}
-    \]
-    and
-    \[
-        g(b) = f(b) - \frac{f(a) - f(b)}{a - b} b = \frac{af(b) - bf(b) - bf(a) + bf(b)}{a - b} = \frac{af(b) - bf(a)}{a - b},
-    \]
-    we have \(g(a) = g(b)\) and by Theorem \ref{10.2.7} \(\exists\ x_0 \in (a, b)\) such that \(g'(x_0) = 0\).
-    Thus
-    \begin{align*}
-                 & g'(x_0) = 0                             \\
-        \implies & f'(x_0) - \frac{f(a) - f(b)}{a - b} = 0 \\
-        \implies & f'(x_0) = \frac{f(a) - f(b)}{a - b}.
-    \end{align*}
+  Let \(g : [a, b] \to \R\) be a function where \(g(x) = f(x) - \frac{f(a) - f(b)}{a - b} x\).
+  Since \(a < b\), we know that \(g\) is well-defined.
+  Since \(f\) is differentiable on \((a, b)\), we know that
+  \begin{align*}
+             & x \text{ is differentiable on } (a, b)                                  & \text{(by \cref{10.1.13}(b))} \\
+    \implies & \frac{f(a) - f(b)}{a - b} x \text{ is differentiable on } (a, b)        & \text{(by \cref{10.1.13}(e))} \\
+    \implies & f(x) - \frac{f(a) - f(b)}{a - b} x \text{ is differentiable on } (a, b) & \text{(by \cref{10.1.13}(f))} \\
+    \implies & g(x) \text{ is differentiable on } (a, b)                                                               \\
+    \implies & g'(x) = f'(x) - \frac{f(a) - f(b)}{a - b}.
+  \end{align*}
+  Since
+  \[
+    g(a) = f(a) - \frac{f(a) - f(b)}{a - b} a = \frac{af(a) - bf(a) - af(a) + af(b)}{a - b} = \frac{af(b) - bf(a)}{a - b}
+  \]
+  and
+  \[
+    g(b) = f(b) - \frac{f(a) - f(b)}{a - b} b = \frac{af(b) - bf(b) - bf(a) + bf(b)}{a - b} = \frac{af(b) - bf(a)}{a - b},
+  \]
+  we have \(g(a) = g(b)\) and by \cref{10.2.7} \(\exists\ x_0 \in (a, b)\) such that \(g'(x_0) = 0\).
+  Thus
+  \begin{align*}
+             & g'(x_0) = 0                             \\
+    \implies & f'(x_0) - \frac{f(a) - f(b)}{a - b} = 0 \\
+    \implies & f'(x_0) = \frac{f(a) - f(b)}{a - b}.
+  \end{align*}
 \end{proof}
 
 \exercisesection
 
 \begin{exercise}\label{ex 10.2.1}
-    Prove Proposition \ref{10.2.6}.
+  Prove \cref{10.2.6}.
 \end{exercise}
 
 \begin{proof}
-    See Proposition \ref{10.2.6}.
+  See \cref{10.2.6}.
 \end{proof}
 
 \begin{exercise}\label{ex 10.2.2}
-    Give an example of a function \(f : (-1, 1) \to \R\) which is continuous and attains a global maximum at \(0\), but which is not differentiable at \(0\).
-    Explain why this does not contradict Proposition \ref{10.2.6}.
+  Give an example of a function \(f : (-1, 1) \to \R\) which is continuous and attains a global maximum at \(0\), but which is not differentiable at \(0\).
+  Explain why this does not contradict \cref{10.2.6}.
 \end{exercise}
 
 \begin{proof}
-    Let \(f(x) = -\abs{x}\).
-    Then \(f\) is continuous and attains a global maximum at \(0\), but which is not differentiable at \(0\).
-    The fact that \(f\) is not differentiable at \(0\) does not contradict to Proposition \ref{10.2.6}.
+  Let \(f(x) = -\abs{x}\).
+  Then \(f\) is continuous and attains a global maximum at \(0\), but which is not differentiable at \(0\).
+  The fact that \(f\) is not differentiable at \(0\) does not contradict to \cref{10.2.6}.
 \end{proof}
 
 \begin{exercise}\label{ex 10.2.3}
-    Give an example of a function \(f : (-1, 1) \to \R\) which is differentiable, and whose derivative equals \(0\) at \(0\), but such that \(0\) is neither a local minimum nor a local maximum.
-    Explain why this does not contradict Proposition \ref{10.2.6}.
+  Give an example of a function \(f : (-1, 1) \to \R\) which is differentiable, and whose derivative equals \(0\) at \(0\), but such that \(0\) is neither a local minimum nor a local maximum.
+  Explain why this does not contradict \cref{10.2.6}.
 \end{exercise}
 
 \begin{proof}
-    Let \(f(x) = x^3\).
-    Then by Exercise \ref{ex 10.1.5} we know that \(f'(x) = 3x^2\).
-    Then we have \(f(0) = 0\) and \(f'(0) = 0\).
-    But \(f(x) < f(0)\) for every \(x \in (-1, 0)\) and \(f(x) > f(0)\) for every \(x \in (0, 1)\).
-    Thus \(0\) is neither a local minimum nor a local maximum.
-    This does not contradict to Proposition \ref{10.2.6} since \(0\) is not given to be a local minimum or local maximum.
+  Let \(f(x) = x^3\).
+  Then by \cref{ex 10.1.5} we know that \(f'(x) = 3x^2\).
+  Then we have \(f(0) = 0\) and \(f'(0) = 0\).
+  But \(f(x) < f(0)\) for every \(x \in (-1, 0)\) and \(f(x) > f(0)\) for every \(x \in (0, 1)\).
+  Thus \(0\) is neither a local minimum nor a local maximum.
+  This does not contradict to \cref{10.2.6} since \(0\) is not given to be a local minimum or local maximum.
 \end{proof}
 
 \begin{exercise}\label{ex 10.2.4}
-    Prove Theorem \ref{10.2.7}.
+  Prove \cref{10.2.7}.
 \end{exercise}
 
 \begin{proof}
-    See Theorem \ref{10.2.7}.
+  See \cref{10.2.7}.
 \end{proof}
 
 \begin{exercise}\label{ex 10.2.5}
-    Use Theorem \ref{10.2.7} to prove Corollary \ref{10.2.9}.
+  Use \cref{10.2.7} to prove \cref{10.2.9}.
 \end{exercise}
 
 \begin{proof}
-    See Corollary \ref{10.2.9}.
+  See \cref{10.2.9}.
 \end{proof}
 
 \begin{exercise}\label{ex 10.2.6}
-    Let \(M > 0\), and let \(f : [a, b] \to \R\) be a function which is continuous on \([a, b]\) and differentiable on \((a, b)\), and such that \(\abs{f'(x)} \leq M\) for all \(x \in (a, b)\) (i.e., the derivative of \(f\) is bounded).
-    Show that for any \(x, y \in [a, b]\) we have the inequality \(\abs{f(x) - f(y)} \leq M \abs{x - y}\).
-    Functions which obey the bound \(\abs{f(x) - f(y)} \leq M \abs{x - y}\) are known as \emph{Lipschitz continuous functions} with \emph{Lipschitz constant} \(M\);
-    thus this exercise shows that functions with bounded derivative are Lipschitz continuous.
+  Let \(M > 0\), and let \(f : [a, b] \to \R\) be a function which is continuous on \([a, b]\) and differentiable on \((a, b)\), and such that \(\abs{f'(x)} \leq M\) for all \(x \in (a, b)\) (i.e., the derivative of \(f\) is bounded).
+  Show that for any \(x, y \in [a, b]\) we have the inequality \(\abs{f(x) - f(y)} \leq M \abs{x - y}\).
+  Functions which obey the bound \(\abs{f(x) - f(y)} \leq M \abs{x - y}\) are known as \emph{Lipschitz continuous functions} with \emph{Lipschitz constant} \(M\);
+  thus this exercise shows that functions with bounded derivative are Lipschitz continuous.
 \end{exercise}
 
 \begin{proof}
-    Let \(x, y \in [a, b]\).
-    If \(x = y\), then we have \(0 = \abs{f(x) - f(y)} \leq M \abs{x - y} = 0\).
-    So suppose that \(x \neq y\).
-    We have either \(x < y\) or \(x > y\).
-    Without the loss of generality suppose that \(x < y\).
-    Then we have \([x, y] \subseteq [a, b]\) and \((x, y) \subseteq (a, b)\).
-    By Exercise \ref{ex 9.4.6} we know that \(f|_{[x, y]}\) is continuous on \([x, y]\).
-    By Exercise \ref{ex 10.1.1} we know that \(f|_{[x, y]}\) is differentiable on \((x, y)\).
-    By mean value theorem (Corollary \ref{10.2.9}) we know that \(\exists\ c \in (x, y)\) such that
-    \[
-        f'(c) = \frac{f(y) - f(x)}{y - x}.
-    \]
-    Since \(c \in (x, y)\), we have \(c \in (a, b)\).
-    By hypothesis we have
-    \begin{align*}
-                 & \abs{f'(c)} = \abs{\frac{f(y) - f(x)}{y - x}} \leq M \\
-        \implies & \abs{f(y) - f(x)} \leq M \abs{y - x}                 \\
-        \implies & \abs{f(x) - f(y)} \leq M \abs{x - y}.
-    \end{align*}
-    Thus we conclude that \(\forall x, y \in [a, b]\), we have \(\abs{f(x) - f(y)} \leq M \abs{x - y}\).
+  Let \(x, y \in [a, b]\).
+  If \(x = y\), then we have \(0 = \abs{f(x) - f(y)} \leq M \abs{x - y} = 0\).
+  So suppose that \(x \neq y\).
+  We have either \(x < y\) or \(x > y\).
+  Without the loss of generality suppose that \(x < y\).
+  Then we have \([x, y] \subseteq [a, b]\) and \((x, y) \subseteq (a, b)\).
+  By \cref{ex 9.4.6} we know that \(f|_{[x, y]}\) is continuous on \([x, y]\).
+  By \cref{ex 10.1.1} we know that \(f|_{[x, y]}\) is differentiable on \((x, y)\).
+  By mean value theorem (\cref{10.2.9}) we know that \(\exists\ c \in (x, y)\) such that
+  \[
+    f'(c) = \frac{f(y) - f(x)}{y - x}.
+  \]
+  Since \(c \in (x, y)\), we have \(c \in (a, b)\).
+  By hypothesis we have
+  \begin{align*}
+             & \abs{f'(c)} = \abs{\frac{f(y) - f(x)}{y - x}} \leq M \\
+    \implies & \abs{f(y) - f(x)} \leq M \abs{y - x}                 \\
+    \implies & \abs{f(x) - f(y)} \leq M \abs{x - y}.
+  \end{align*}
+  Thus we conclude that \(\forall x, y \in [a, b]\), we have \(\abs{f(x) - f(y)} \leq M \abs{x - y}\).
 \end{proof}
 
 \begin{exercise}\label{ex 10.2.7}
-    Let \(f : \R \to \R\) be a differentiable function such that \(f'\) is bounded.
-    Show that \(f\) is uniformly continuous.
+  Let \(f : \R \to \R\) be a differentiable function such that \(f'\) is bounded.
+  Show that \(f\) is uniformly continuous.
 \end{exercise}
 
 \begin{proof}
-    Since \(f'\) is bounded, by Definition \ref{9.6.1} we know that \(\exists\ M \in \R^+\) such that \(\abs{f'(x)} \leq M\) for every \(x \in \R\).
-    By Exercise \ref{ex 10.2.6} we know that \(\abs{f(x) - f(y)} \leq M \abs{x - y}\) for every \(x, y \in \R\).
-    Then we have
-    \begin{align*}
-                 & \forall \varepsilon \in \R^+, \exists\ \delta = \varepsilon / M : \forall x, y \in \R, \abs{x - y} \leq \delta \\
-        \implies & \abs{f(x) - f(y)} \leq M \abs{x - y} \leq M \delta = M \frac{\varepsilon}{M} = \varepsilon
-    \end{align*}
-    and by Definition \ref{9.9.2} \(f\) is uniformly continuous.
+  Since \(f'\) is bounded, by \cref{9.6.1} we know that \(\exists\ M \in \R^+\) such that \(\abs{f'(x)} \leq M\) for every \(x \in \R\).
+  By \cref{ex 10.2.6} we know that \(\abs{f(x) - f(y)} \leq M \abs{x - y}\) for every \(x, y \in \R\).
+  Then we have
+  \begin{align*}
+             & \forall \varepsilon \in \R^+, \exists\ \delta = \varepsilon / M : \forall x, y \in \R, \abs{x - y} \leq \delta \\
+    \implies & \abs{f(x) - f(y)} \leq M \abs{x - y} \leq M \delta = M \frac{\varepsilon}{M} = \varepsilon
+  \end{align*}
+  and by \cref{9.9.2} \(f\) is uniformly continuous.
 \end{proof}

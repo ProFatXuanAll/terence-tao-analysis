@@ -1,276 +1,276 @@
 \section{Real exponentiation, part II}\label{sec 6.7}
 
 \begin{lemma}[Continuity of exponentiation]\label{6.7.1}
-    Let \(x > 0\), and let \(\alpha\) be a real number.
-    Let \((q_n)_{n = 1}^\infty\) be any sequence of rational numbers converging to \(\alpha\).
-    Then \((x^{q_n})_{n = 1}^\infty\) is also a convergent sequence.
-    Furthermore, if \((q_n')_{n = 1}^\infty\) is any other sequence of rational numbers converging to \(\alpha\), then \((x^{q_n'})_{n = 1}^\infty\) has the same limit as \((x^{q_n})_{n = 1}^\infty\):
-    \[
-        \lim_{n \to \infty} x^{q_n} = \lim_{n \to \infty} x^{q_n'}.
-    \]
+  Let \(x > 0\), and let \(\alpha\) be a real number.
+  Let \((q_n)_{n = 1}^\infty\) be any sequence of rational numbers converging to \(\alpha\).
+  Then \((x^{q_n})_{n = 1}^\infty\) is also a convergent sequence.
+  Furthermore, if \((q_n')_{n = 1}^\infty\) is any other sequence of rational numbers converging to \(\alpha\), then \((x^{q_n'})_{n = 1}^\infty\) has the same limit as \((x^{q_n})_{n = 1}^\infty\):
+  \[
+    \lim_{n \to \infty} x^{q_n} = \lim_{n \to \infty} x^{q_n'}.
+  \]
 \end{lemma}
 
 \begin{proof}
-    There are three cases: \(x < 1\), \(x = 1\), and \(x > 1\).
-    The case \(x = 1\) is rather easy (because then \(x^q = 1\) for all rational \(q\)).
+  There are three cases: \(x < 1\), \(x = 1\), and \(x > 1\).
+  The case \(x = 1\) is rather easy (because then \(x^q = 1\) for all rational \(q\)).
 
-    We first show that if \(x > 1\) then \((x^{q_n})_{n = 1}^\infty\) converges.
-    By Proposition \ref{6.4.18} it is enough to show that \((x^{q_n})_{n = 1}^\infty\) is a Cauchy sequence.
+  We first show that if \(x > 1\) then \((x^{q_n})_{n = 1}^\infty\) converges.
+  By \cref{6.4.18} it is enough to show that \((x^{q_n})_{n = 1}^\infty\) is a Cauchy sequence.
 
-    To do this, we need to estimate the distance between \(x^{q_n}\) and \(x^{q_m}\);
-    let us say for the time being that \(q_n \geq q_m\), so that \(x^{q_n} \geq x^{q_m}\) (since \(x > 1\)).
-    We have
-    \[
-        d(x^{q_n}, x^{q_m}) = x^{q_n} - x^{q_m} = x^{q_m} (x^{q_n - q_m} - 1).
-    \]
-    Since \((q_n)_{n = 1}^\infty\) is a convergent sequence, it has some upper bound \(M\);
-    since \(x > 1\), we have \(x^{q_m} \leq x^M\).
-    Thus
-    \[
-        d(x^{q_n}, x^{q_m}) = \abs{x^{q_n} - x^{q_m}} \leq x^M (x^{q_n - q_m} - 1).
-    \]
-    Now let \(\varepsilon > 0\).
-    We know by Lemma \ref{6.5.3} that the sequence \((x^{1 / k})_{k = 1}^\infty\) is eventually \(\varepsilon x^{-M}\)-close to \(1\).
-    Thus there exists some \(K \geq 1\) such that
-    \[
-        \abs{x^{1 / K} - 1} \leq \varepsilon x^{-M}.
-    \]
-    Now since \((q_n)_{n = 1}^\infty\) is convergent, it is a Cauchy sequence, and so there is an \(N \geq 1\) such that \(q_n\) and \(q_m\) are \(1 / K\)-close for all \(n, m \geq N\).
-    Thus we have
-    \[
-        d(x^{q_n}, x^{q_m}) \leq x^M (x^{q_n - q_m} - 1) \leq x^M (x^{1 / K} - 1) \leq x^M \varepsilon x^{-M} = \varepsilon.
-    \]
-    for every \(n, m \geq N\) such that \(q_n \geq q_m\).
-    By symmetry we also have this bound when \(n, m \geq N\) and \(q_n \leq q_m\).
-    Thus the sequence \((x^{q_n})_{n = 1}^\infty\) is \(\varepsilon\)-steady.
-    Thus the sequence \((x^{q_n})_{n = 1}^\infty\) is eventually \(\varepsilon\)-steady for every \(\varepsilon > 0\), and is thus a Cauchy sequence as desired.
-    This proves the convergence of \((x^{q_n})_{n = 1}^\infty\) when \(x > 1\).
+  To do this, we need to estimate the distance between \(x^{q_n}\) and \(x^{q_m}\);
+  let us say for the time being that \(q_n \geq q_m\), so that \(x^{q_n} \geq x^{q_m}\) (since \(x > 1\)).
+  We have
+  \[
+    d(x^{q_n}, x^{q_m}) = x^{q_n} - x^{q_m} = x^{q_m} (x^{q_n - q_m} - 1).
+  \]
+  Since \((q_n)_{n = 1}^\infty\) is a convergent sequence, it has some upper bound \(M\);
+  since \(x > 1\), we have \(x^{q_m} \leq x^M\).
+  Thus
+  \[
+    d(x^{q_n}, x^{q_m}) = \abs{x^{q_n} - x^{q_m}} \leq x^M (x^{q_n - q_m} - 1).
+  \]
+  Now let \(\varepsilon > 0\).
+  We know by \cref{6.5.3} that the sequence \((x^{1 / k})_{k = 1}^\infty\) is eventually \(\varepsilon x^{-M}\)-close to \(1\).
+  Thus there exists some \(K \geq 1\) such that
+  \[
+    \abs{x^{1 / K} - 1} \leq \varepsilon x^{-M}.
+  \]
+  Now since \((q_n)_{n = 1}^\infty\) is convergent, it is a Cauchy sequence, and so there is an \(N \geq 1\) such that \(q_n\) and \(q_m\) are \(1 / K\)-close for all \(n, m \geq N\).
+  Thus we have
+  \[
+    d(x^{q_n}, x^{q_m}) \leq x^M (x^{q_n - q_m} - 1) \leq x^M (x^{1 / K} - 1) \leq x^M \varepsilon x^{-M} = \varepsilon.
+  \]
+  for every \(n, m \geq N\) such that \(q_n \geq q_m\).
+  By symmetry we also have this bound when \(n, m \geq N\) and \(q_n \leq q_m\).
+  Thus the sequence \((x^{q_n})_{n = 1}^\infty\) is \(\varepsilon\)-steady.
+  Thus the sequence \((x^{q_n})_{n = 1}^\infty\) is eventually \(\varepsilon\)-steady for every \(\varepsilon > 0\), and is thus a Cauchy sequence as desired.
+  This proves the convergence of \((x^{q_n})_{n = 1}^\infty\) when \(x > 1\).
 
-    Next we show that if \(x < 1\) then \((x^{q_n})_{n = 1}^\infty\) also converges.
-    By Proposition \ref{6.4.18} it is enough to show that \((x^{q_n})_{n = 1}^\infty\) is a Cauchy sequence.
+  Next we show that if \(x < 1\) then \((x^{q_n})_{n = 1}^\infty\) also converges.
+  By \cref{6.4.18} it is enough to show that \((x^{q_n})_{n = 1}^\infty\) is a Cauchy sequence.
 
-    To do this, we need to estimate the distance between \(x^{q_n}\) and \(x^{q_m}\);
-    let us say for the time being that \(q_n \leq q_m\), so that \(x^{q_n} \geq x^{q_m}\) (since \(x < 1\)).
-    We have
-    \[
-        d(x^{q_n}, x^{q_m}) = x^{q_n} - x^{q_m} = x^{q_m} (x^{q_n - q_m} - 1).
-    \]
-    Since \((q_n)_{n = 1}^\infty\) is a convergent sequence, it has some lower bound \(M\);
-    since \(x < 1\), we have \(x^{q_m} \leq x^M\).
-    Thus
-    \[
-        d(x^{q_n}, x^{q_m}) = \abs{x^{q_n} - x^{q_m}} \leq x^M (x^{q_n - q_m} - 1).
-    \]
-    Now let \(\varepsilon > 0\).
-    We know by Lemma \ref{6.5.3} that the sequence \((x^{1 / k})_{k = 1}^\infty\) is eventually \(\varepsilon x^{-M}\)-close to \(1\).
-    Thus there exists some \(K \geq 1\) such that
-    \[
-        \abs{x^{1 / K} - 1} \leq \varepsilon x^{-M}.
-    \]
-    Now since \((q_n)_{n = 1}^\infty\) is convergent, it is a Cauchy sequence, and so there is an \(N \geq 1\) such that \(q_n\) and \(q_m\) are \(1 / K\)-close for all \(n, m \geq N\).
-    Thus we have
-    \[
-        d(x^{q_n}, x^{q_m}) \leq x^M (x^{q_n - q_m} - 1) \leq x^M (x^{1 / K} - 1) \leq x^M \varepsilon x^{-M} = \varepsilon.
-    \]
-    for every \(n, m \geq N\) such that \(q_n \leq q_m\).
-    By symmetry we also have this bound when \(n, m \geq N\) and \(q_n \geq q_m\).
-    Thus the sequence \((x^{q_n})_{n = 1}^\infty\) is \(\varepsilon\)-steady.
-    Thus the sequence \((x^{q_n})_{n = 1}^\infty\) is eventually \(\varepsilon\)-steady for every \(\varepsilon > 0\), and is thus a Cauchy sequence as desired.
-    This proves the convergence of \((x^{q_n})_{n = 1}^\infty\) when \(x < 1\).
+  To do this, we need to estimate the distance between \(x^{q_n}\) and \(x^{q_m}\);
+  let us say for the time being that \(q_n \leq q_m\), so that \(x^{q_n} \geq x^{q_m}\) (since \(x < 1\)).
+  We have
+  \[
+    d(x^{q_n}, x^{q_m}) = x^{q_n} - x^{q_m} = x^{q_m} (x^{q_n - q_m} - 1).
+  \]
+  Since \((q_n)_{n = 1}^\infty\) is a convergent sequence, it has some lower bound \(M\);
+  since \(x < 1\), we have \(x^{q_m} \leq x^M\).
+  Thus
+  \[
+    d(x^{q_n}, x^{q_m}) = \abs{x^{q_n} - x^{q_m}} \leq x^M (x^{q_n - q_m} - 1).
+  \]
+  Now let \(\varepsilon > 0\).
+  We know by \cref{6.5.3} that the sequence \((x^{1 / k})_{k = 1}^\infty\) is eventually \(\varepsilon x^{-M}\)-close to \(1\).
+  Thus there exists some \(K \geq 1\) such that
+  \[
+    \abs{x^{1 / K} - 1} \leq \varepsilon x^{-M}.
+  \]
+  Now since \((q_n)_{n = 1}^\infty\) is convergent, it is a Cauchy sequence, and so there is an \(N \geq 1\) such that \(q_n\) and \(q_m\) are \(1 / K\)-close for all \(n, m \geq N\).
+  Thus we have
+  \[
+    d(x^{q_n}, x^{q_m}) \leq x^M (x^{q_n - q_m} - 1) \leq x^M (x^{1 / K} - 1) \leq x^M \varepsilon x^{-M} = \varepsilon.
+  \]
+  for every \(n, m \geq N\) such that \(q_n \leq q_m\).
+  By symmetry we also have this bound when \(n, m \geq N\) and \(q_n \geq q_m\).
+  Thus the sequence \((x^{q_n})_{n = 1}^\infty\) is \(\varepsilon\)-steady.
+  Thus the sequence \((x^{q_n})_{n = 1}^\infty\) is eventually \(\varepsilon\)-steady for every \(\varepsilon > 0\), and is thus a Cauchy sequence as desired.
+  This proves the convergence of \((x^{q_n})_{n = 1}^\infty\) when \(x < 1\).
 
-    Now we prove the second claim.
-    It will suffice to show that
-    \[
-        \lim_{n \to \infty} x^{q_n - q_n'} = 1,
-    \]
-    since the claim would then follow from limit laws
-    (since \(x^{q_n} = x^{q_n - q_n'} x^{q_n'}\)).
+  Now we prove the second claim.
+  It will suffice to show that
+  \[
+    \lim_{n \to \infty} x^{q_n - q_n'} = 1,
+  \]
+  since the claim would then follow from limit laws
+  (since \(x^{q_n} = x^{q_n - q_n'} x^{q_n'}\)).
 
-    Write \(r_n \coloneqq q_n - q_n'\);
-    by limit laws we know that \((r_n)_{n = 1}^\infty\) converges to \(0\).
-    We have to show that for every \(\varepsilon > 0\), the sequence \((x^{r_n})_{n = 1}^\infty\) is eventually \(\varepsilon\)-close to \(1\).
-    But from Lemma \ref{6.5.3} we know that the sequence \((x^{1 / k})_{k = 1}^\infty\) is eventually \(\varepsilon\)-close to \(1\).
-    Since \(\lim_{k \to \infty} x^{-1 / k}\) is also equal to \(1\) by Lemma \ref{6.5.3}, we know that \((x^{-1 / k})_{k = 1}^\infty\) is also eventually \(\varepsilon\)-close to \(1\).
-    Thus we can find a \(K\) such that \(x^{1 / K}\) and \(x^{-1 / K}\) are both \(\varepsilon\)-close to \(1\).
-    But since \((r_n)_{n = 1}^\infty\) is convergent to \(0\), it is eventually \(1 / K\)-close to \(0\), so that eventually \(-1 / K \leq r_n \leq 1 / K\), and thus when \(x > 1\) we have \(x^{-1 / K} \leq x^{r_n} \leq x^{1 / K}\), when \(x < 1\) we have \(x^{1 / K} \leq x^{r_n} \leq x^{-1 / K}\).
-    In particular \(x^{r_n}\) is also eventually \(\varepsilon\)-close to \(1\) (see Proposition \ref{4.3.7}(f)), as desired.
+  Write \(r_n \coloneqq q_n - q_n'\);
+  by limit laws we know that \((r_n)_{n = 1}^\infty\) converges to \(0\).
+  We have to show that for every \(\varepsilon > 0\), the sequence \((x^{r_n})_{n = 1}^\infty\) is eventually \(\varepsilon\)-close to \(1\).
+  But from \cref{6.5.3} we know that the sequence \((x^{1 / k})_{k = 1}^\infty\) is eventually \(\varepsilon\)-close to \(1\).
+  Since \(\lim_{k \to \infty} x^{-1 / k}\) is also equal to \(1\) by \cref{6.5.3}, we know that \((x^{-1 / k})_{k = 1}^\infty\) is also eventually \(\varepsilon\)-close to \(1\).
+  Thus we can find a \(K\) such that \(x^{1 / K}\) and \(x^{-1 / K}\) are both \(\varepsilon\)-close to \(1\).
+  But since \((r_n)_{n = 1}^\infty\) is convergent to \(0\), it is eventually \(1 / K\)-close to \(0\), so that eventually \(-1 / K \leq r_n \leq 1 / K\), and thus when \(x > 1\) we have \(x^{-1 / K} \leq x^{r_n} \leq x^{1 / K}\), when \(x < 1\) we have \(x^{1 / K} \leq x^{r_n} \leq x^{-1 / K}\).
+  In particular \(x^{r_n}\) is also eventually \(\varepsilon\)-close to \(1\) (see \cref{4.3.7}(f)), as desired.
 \end{proof}
 
 \begin{definition}[Exponentiation to a real exponent]\label{6.7.2}
-    Let \(x > 0\) be real, and let \(\alpha\) be a real number.
-    We define the quantity \(x^\alpha\) by the formula \(x^\alpha = \lim_{n \to \infty} x^{q_n}\), where \((q_n)_{n = 1}^\infty\) is any sequence of rational numbers converging to \(\alpha\).
+  Let \(x > 0\) be real, and let \(\alpha\) be a real number.
+  We define the quantity \(x^\alpha\) by the formula \(x^\alpha = \lim_{n \to \infty} x^{q_n}\), where \((q_n)_{n = 1}^\infty\) is any sequence of rational numbers converging to \(\alpha\).
 \end{definition}
 
 \begin{note}
-    Let us check that Definition \ref{6.7.2} is well-defined.
-    First of all, given any real number \(\alpha\) we always have at least one sequence \((q_n)_{n = 1}^\infty\) of rational numbers converging to \(\alpha\), by the definition of real numbers (and Proposition \ref{6.1.15}).
-    Secondly, given any such sequence \((q_n)_{n = 1}^\infty\), the limit \(\lim_{n \to \infty} x^{q_n}\) exists by Lemma \ref{6.7.1}.
-    Finally, even though there can be multiple choices for the sequence \((q_n)_{n = 1}^\infty\), they all give the same limit by Lemma \ref{6.7.1}.
-    Thus Definition \ref{6.7.2} is well-defined.
+  Let us check that \cref{6.7.2} is well-defined.
+  First of all, given any real number \(\alpha\) we always have at least one sequence \((q_n)_{n = 1}^\infty\) of rational numbers converging to \(\alpha\), by the definition of real numbers (and \cref{6.1.15}).
+  Secondly, given any such sequence \((q_n)_{n = 1}^\infty\), the limit \(\lim_{n \to \infty} x^{q_n}\) exists by \cref{6.7.1}.
+  Finally, even though there can be multiple choices for the sequence \((q_n)_{n = 1}^\infty\), they all give the same limit by \cref{6.7.1}.
+  Thus \cref{6.7.2} is well-defined.
 \end{note}
 
 \begin{note}
-    If \(\alpha\) is not just real but rational, i.e., \(\alpha = q\) for some rational \(q\), then Definition \ref{6.7.2} could in principle be inconsistent with our earlier definition of exponentiation in Section \ref{sec 5.6}.
-    But in this case \(\alpha\) is clearly the limit of the sequence \((q)_{n = 1}^\infty\), so by definition \(x^\alpha = \lim_{n \to \infty} x^q = x^q\).
-    Thus the new definition of exponentiation is consistent with the old one.
+  If \(\alpha\) is not just real but rational, i.e., \(\alpha = q\) for some rational \(q\), then \cref{6.7.2} could in principle be inconsistent with our earlier definition of exponentiation in \cref{sec 5.6}.
+  But in this case \(\alpha\) is clearly the limit of the sequence \((q)_{n = 1}^\infty\), so by definition \(x^\alpha = \lim_{n \to \infty} x^q = x^q\).
+  Thus the new definition of exponentiation is consistent with the old one.
 \end{note}
 
 \begin{proposition}\label{6.7.3}
-    All the results of Lemma \ref{5.6.9}, which held for rational numbers \(q\) and \(r\), continue to hold for real numbers \(q\) and \(r\).
+  All the results of \cref{5.6.9}, which held for rational numbers \(q\) and \(r\), continue to hold for real numbers \(q\) and \(r\).
 \end{proposition}
 
 \begin{proof}{(a)}
-    Let \(r\) be a real number.
-    Then we can write \(r = \lim_{n \to \infty} r_n\) for some sequences \((r_n)_{n = 1}^\infty\) of rationals, by the definition of real numbers (and Proposition \ref{6.1.15}).
-    Since \((r_n)_{n = 1}^\infty\) is a Cauchy sequence, it is bounded by some \(M \in \Q^+\), i.e, \(-M \leq r_n \leq M\) for every \(n \geq 1\).
-    By Lemma \ref{5.6.9}, both \(x^M\) and \(x^{-M}\) are positive real numbers.
-    If \(0 < x < 1\), then \(x^M \leq x^{r_n} \leq x^{-M}\).
-    If \(x \geq 1\), then \(x^{-M} \leq x^{r_n} \leq x^M\).
-    By Theorem \ref{6.1.19}(h) we have
-    \begin{align*}
-         & \lim_{n \to \infty} \min(x^{-M}, x^M, x^{r_n})                                           \\
-         & = \min(\lim_{n \to \infty} x^{-M}, \lim_{n \to \infty} x^M, \lim_{n \to \infty} x^{r_n}) \\
-         & = \min(x^M, x^{-M}).
-    \end{align*}
-    Since \(\min(x^M, x^{-M})\) is positive real number, we know that \(x^r\) must also be a positive real number.
+  Let \(r\) be a real number.
+  Then we can write \(r = \lim_{n \to \infty} r_n\) for some sequences \((r_n)_{n = 1}^\infty\) of rationals, by the definition of real numbers (and \cref{6.1.15}).
+  Since \((r_n)_{n = 1}^\infty\) is a Cauchy sequence, it is bounded by some \(M \in \Q^+\), i.e, \(-M \leq r_n \leq M\) for every \(n \geq 1\).
+  By \cref{5.6.9}, both \(x^M\) and \(x^{-M}\) are positive real numbers.
+  If \(0 < x < 1\), then \(x^M \leq x^{r_n} \leq x^{-M}\).
+  If \(x \geq 1\), then \(x^{-M} \leq x^{r_n} \leq x^M\).
+  By \cref{6.1.19}(h) we have
+  \begin{align*}
+     & \lim_{n \to \infty} \min(x^{-M}, x^M, x^{r_n})                                           \\
+     & = \min(\lim_{n \to \infty} x^{-M}, \lim_{n \to \infty} x^M, \lim_{n \to \infty} x^{r_n}) \\
+     & = \min(x^M, x^{-M}).
+  \end{align*}
+  Since \(\min(x^M, x^{-M})\) is positive real number, we know that \(x^r\) must also be a positive real number.
 \end{proof}
 
 \begin{proof}{(b)}
-    Let \(q\) and \(r\) be real numbers.
-    Then we can write \(q = \lim_{n \to \infty} q_n\) and \(r = \lim_{n \to \infty} r_n\) for some sequences \((q_n)_{n = 1}^\infty\) and \((r_n)_{n = 1}^\infty\) of rationals, by the definition of real numbers (and Proposition \ref{6.1.15}).
-    Then by the limit laws, \(q + r\) is the limit of \((q_n + r_n)_{n = 1}^\infty\).
-    By definition of real exponentiation, we have
-    \[
-        x^{q + r} = \lim_{n \to \infty} x^{q_n + r_n} ; x^q = \lim_{n \to \infty} x^{q_n} ;  x^r = \lim_{n \to \infty} x^{r_n}.
-    \]
-    But by Lemma \ref{5.6.9}(b) (applied to \emph{rational} exponents) we have \(x^{q_n + r_n} = x^{q_n} x^{r_n}\).
-    Thus by limit laws we have \(x^{q + r} = x^q x^r\), as desired.
+  Let \(q\) and \(r\) be real numbers.
+  Then we can write \(q = \lim_{n \to \infty} q_n\) and \(r = \lim_{n \to \infty} r_n\) for some sequences \((q_n)_{n = 1}^\infty\) and \((r_n)_{n = 1}^\infty\) of rationals, by the definition of real numbers (and \cref{6.1.15}).
+  Then by the limit laws, \(q + r\) is the limit of \((q_n + r_n)_{n = 1}^\infty\).
+  By definition of real exponentiation, we have
+  \[
+    x^{q + r} = \lim_{n \to \infty} x^{q_n + r_n} ; x^q = \lim_{n \to \infty} x^{q_n} ;  x^r = \lim_{n \to \infty} x^{r_n}.
+  \]
+  But by \cref{5.6.9}(b) (applied to \emph{rational} exponents) we have \(x^{q_n + r_n} = x^{q_n} x^{r_n}\).
+  Thus by limit laws we have \(x^{q + r} = x^q x^r\), as desired.
 
-    Now we show that \((x^q)^r = \lim_{n \to \infty} (x^{q_n})^{r_n}\).
-    By Theorem \ref{6.1.19}(c) we know that \(q r_n = \lim_{m \to \infty} q_m r_n\).
-    Thus we have
-    \begin{align*}
-        (x^q)^r & = \lim_{n \to \infty} (x^q)^{r_n}                         & \text{(by Definition \ref{6.7.2})} \\
-                & = \lim_{n \to \infty} (\lim_{m \to \infty} x^{q_m})^{r_n} & \text{(by Definition \ref{6.7.2})} \\
-                & = \lim_{n \to \infty} (\lim_{m \to \infty} x^{q_m r_n})   & \text{(by Lemma \ref{5.6.9}(b))}   \\
-                & = \lim_{n \to \infty} x^{q r_n}                           & \text{(by Definition \ref{6.7.2})} \\
-                & = x^{qr}.                                                 & \text{(by Definition \ref{6.7.2})}
-    \end{align*}
+  Now we show that \((x^q)^r = \lim_{n \to \infty} (x^{q_n})^{r_n}\).
+  By \cref{6.1.19}(c) we know that \(q r_n = \lim_{m \to \infty} q_m r_n\).
+  Thus we have
+  \begin{align*}
+    (x^q)^r & = \lim_{n \to \infty} (x^q)^{r_n}                         & \text{(by \cref{6.7.2})}    \\
+            & = \lim_{n \to \infty} (\lim_{m \to \infty} x^{q_m})^{r_n} & \text{(by \cref{6.7.2})}    \\
+            & = \lim_{n \to \infty} (\lim_{m \to \infty} x^{q_m r_n})   & \text{(by \cref{5.6.9}(b))} \\
+            & = \lim_{n \to \infty} x^{q r_n}                           & \text{(by \cref{6.7.2})}    \\
+            & = x^{qr}.                                                 & \text{(by \cref{6.7.2})}
+  \end{align*}
 \end{proof}
 
 \begin{proof}{(c)}
-    Let \(r \in \R\) where \(r = \lim_{n \to \infty} r_n\) for some sequences \((r_n)_{n = 1}^\infty\) of rationals.
-    By Proposition \ref{6.1.15} \(r\) is well-defined and by Theorem \ref{6.1.19}(c) we know that \(-r\) is the limit of \((-r_n)_{n = 1}^\infty\).
-    By Proposition \ref{6.7.3}(a) we know that \(x^{-r} > 0\) and by Proposition \ref{5.6.9}(a) we know that \(x^{r_n} > 0\) for every \(n \in \Z^+\).
-    Thus we have
-    \begin{align*}
-        x^{-r} & = \lim_{n \to \infty} x^{-r_n}    & \text{(by Definition \ref{6.7.2})}  \\
-               & = 1 / \lim_{n \to \infty} x^{r_n} & \text{(by Theorem \ref{6.1.19}(e))} \\
-               & = 1 / x^r.                        & \text{(by Definition \ref{6.7.2})}
-    \end{align*}
+  Let \(r \in \R\) where \(r = \lim_{n \to \infty} r_n\) for some sequences \((r_n)_{n = 1}^\infty\) of rationals.
+  By \cref{6.1.15} \(r\) is well-defined and by \cref{6.1.19}(c) we know that \(-r\) is the limit of \((-r_n)_{n = 1}^\infty\).
+  By \cref{6.7.3}(a) we know that \(x^{-r} > 0\) and by \cref{5.6.9}(a) we know that \(x^{r_n} > 0\) for every \(n \in \Z^+\).
+  Thus we have
+  \begin{align*}
+    x^{-r} & = \lim_{n \to \infty} x^{-r_n}    & \text{(by \cref{6.7.2})}     \\
+           & = 1 / \lim_{n \to \infty} x^{r_n} & \text{(by \cref{6.1.19}(e))} \\
+           & = 1 / x^r.                        & \text{(by \cref{6.7.2})}
+  \end{align*}
 \end{proof}
 
 \begin{proof}{(d)}
-    Let \(x, y, r \in \R^+\) where \(r = \lim_{n \to \infty} r_n\) for some sequences \((r_n)_{n = 1}^\infty\) of rationals.
-    By Proposition \ref{6.1.15} \(r\) is well-defined.
-    Since \(r \in \R^+\), by Definition \ref{5.4.3} we know that \(\exists\ c \in \R^+\) such that \(r_n \geq c\) for every \(n \in \Z^+\).
+  Let \(x, y, r \in \R^+\) where \(r = \lim_{n \to \infty} r_n\) for some sequences \((r_n)_{n = 1}^\infty\) of rationals.
+  By \cref{6.1.15} \(r\) is well-defined.
+  Since \(r \in \R^+\), by \cref{5.4.3} we know that \(\exists\ c \in \R^+\) such that \(r_n \geq c\) for every \(n \in \Z^+\).
 
-    We first show that \(x > y \implies x^r > y^r\).
-    \begin{align*}
-                 & x > y                                                                                                 \\
-        \implies & \forall n \in \Z^+, x^{r_n} > y^{r_n}                        & \text{(by Proposition \ref{5.6.9}(d))} \\
-        \implies & \lim_{n \to \infty} x^{r_n} \geq \lim_{n \to \infty} y^{r_n} & \text{(by Lemma \ref{6.4.13})}         \\
-        \implies & x^r \geq y^r.                                                & \text{(by Definition \ref{6.7.2})}
-    \end{align*}
-    Now we show that \(x^r \neq y^r\).
-    Suppose for sake of contradiction that \(x^r = y^r\).
-    Then we have
-    \begin{align*}
-                 & x^r = y^r                                                                                                                                            \\
-        \implies & \lim_{n \to \infty} x^{r_n} = \lim_{n \to \infty} y^{r_n}                                                       & \text{(by Definition \ref{6.7.2})} \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ N \in \Z^+ : \forall n \geq N, \abs{x^{r_n} - y^{r_n}} \leq \varepsilon. & \text{(by Definition \ref{5.3.1})}
-    \end{align*}
-    But by Proposition \ref{5.6.9}(d) we know that \(x > y \implies x^{r_n} > y^{r_n}\), thus by setting \(\varepsilon = (x^{r_n} - y^{r_n}) / 2\) we get
-    \[
-        \abs{x^{r_n} - y^{r_n}} = x^{r_n} - y^{r_n} \leq \frac{x^{r_n} - y^{r_n}}{2},
-    \]
-    a contradiction.
-    Thus we must have \(x^r > y^r\).
+  We first show that \(x > y \implies x^r > y^r\).
+  \begin{align*}
+             & x > y                                                                                      \\
+    \implies & \forall n \in \Z^+, x^{r_n} > y^{r_n}                        & \text{(by \cref{5.6.9}(d))} \\
+    \implies & \lim_{n \to \infty} x^{r_n} \geq \lim_{n \to \infty} y^{r_n} & \text{(by \cref{6.4.13})}   \\
+    \implies & x^r \geq y^r.                                                & \text{(by \cref{6.7.2})}
+  \end{align*}
+  Now we show that \(x^r \neq y^r\).
+  Suppose for sake of contradiction that \(x^r = y^r\).
+  Then we have
+  \begin{align*}
+             & x^r = y^r                                                                                                                                  \\
+    \implies & \lim_{n \to \infty} x^{r_n} = \lim_{n \to \infty} y^{r_n}                                                       & \text{(by \cref{6.7.2})} \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ N \in \Z^+ : \forall n \geq N, \abs{x^{r_n} - y^{r_n}} \leq \varepsilon. & \text{(by \cref{5.3.1})}
+  \end{align*}
+  But by \cref{5.6.9}(d) we know that \(x > y \implies x^{r_n} > y^{r_n}\), thus by setting \(\varepsilon = (x^{r_n} - y^{r_n}) / 2\) we get
+  \[
+    \abs{x^{r_n} - y^{r_n}} = x^{r_n} - y^{r_n} \leq \frac{x^{r_n} - y^{r_n}}{2},
+  \]
+  a contradiction.
+  Thus we must have \(x^r > y^r\).
 
-    Finally we show that \(x^r > y^r \implies x > y\).
-    Suppose for sake of contradiction that \(x \leq y\).
-    Then from the proof above we know that \(x^r \leq y^r\), a contradiction.
-    Thus we must have \(x > y\).
-    We conclude that if \(r > 0\), then \(x > y \iff x^r > y^r\).
+  Finally we show that \(x^r > y^r \implies x > y\).
+  Suppose for sake of contradiction that \(x \leq y\).
+  Then from the proof above we know that \(x^r \leq y^r\), a contradiction.
+  Thus we must have \(x > y\).
+  We conclude that if \(r > 0\), then \(x > y \iff x^r > y^r\).
 \end{proof}
 
 \begin{proof}{(e)}
-    Let \(x, q, r \in \R^+\) where \(q = \lim_{n \to \infty} q_n\) and \(r = \lim_{n \to \infty} r_n\) for some sequences \((q_n)_{n = 1}^\infty\), \((r_n)_{n = 1}^\infty\) of rationals.
-    By Proposition \ref{6.1.15} \(q, r\) are well-defined.
-    Since \(q, r \in \R^+\), by Definition \ref{5.4.3} we know that \(\exists\ c_1, c_2 \in \R^+\) such that \(q_n \geq c_1\) and \(r_n \geq c_2\) for every \(n \in \Z^+\).
-    Thus by Proposition \ref{5.6.9}(a) we know that \(x^{q_n}, x^{r_n} > 0\) for every \(n \in \Z^+\).
+  Let \(x, q, r \in \R^+\) where \(q = \lim_{n \to \infty} q_n\) and \(r = \lim_{n \to \infty} r_n\) for some sequences \((q_n)_{n = 1}^\infty\), \((r_n)_{n = 1}^\infty\) of rationals.
+  By \cref{6.1.15} \(q, r\) are well-defined.
+  Since \(q, r \in \R^+\), by \cref{5.4.3} we know that \(\exists\ c_1, c_2 \in \R^+\) such that \(q_n \geq c_1\) and \(r_n \geq c_2\) for every \(n \in \Z^+\).
+  Thus by \cref{5.6.9}(a) we know that \(x^{q_n}, x^{r_n} > 0\) for every \(n \in \Z^+\).
 
-    We first show that if \(x > 1\), then \(x^q > x^r \implies q > r\).
-    We have
-    \begin{align*}
-                 & x^q > x^r > 0                          & \text{(by Proposition \ref{6.7.3}(a))}    \\
-        \implies & x^{q - r} > 1                          & \text{(by Proposition \ref{6.7.3}(b)(c))} \\
-        \implies & \lim_{n \to \infty} x^{q_n - r_n} > 1. & \text{(by Definition \ref{6.7.2})}        \\
-    \end{align*}
-    Now we show that \(\exists\ N \in \Z^+\) such that \(q_n - r_n > 0\) for every \(n \geq N\).
-    Suppose for sake of contradiction that \(\forall N \in \Z^+\), \(\exists\ n \geq N\) such that \(q_n - r_n \leq 0\).
-    Then we have
-    \begin{align*}
-                 & q_n - r_n \leq 0                                                                   \\
-        \implies & r_n - q_n \geq 0                                                                   \\
-        \implies & x^{r_n - q_n} \geq 1^{r_n - q_n} = 1      & \text{(by Proposition \ref{6.7.3}(d))} \\
-        \implies & x^{q_n - r_n} \leq 1                      & \text{(by Proposition \ref{6.7.3}(c))} \\
-        \implies & \lim_{n \to \infty} x^{q_n - r_n} \leq 1, & \text{(by Lemma \ref{6.4.13})}
-    \end{align*}
-    which contradict to \(\lim_{n \to \infty} x^{q_n - r_n} > 1\).
-    Thus \(\exists\ N \in \Z^+\) such that \(q_n - r_n > 0\) for every \(n \geq N\).
-    This means \(q_n > r_n\) for every \(n \geq N\), and by Lemma \ref{6.4.13} we know that \(q = \lim_{n \to \infty} q_n \geq \lim_{n \to \infty} r_n = r\).
+  We first show that if \(x > 1\), then \(x^q > x^r \implies q > r\).
+  We have
+  \begin{align*}
+             & x^q > x^r > 0                          & \text{(by \cref{6.7.3}(a))}    \\
+    \implies & x^{q - r} > 1                          & \text{(by \cref{6.7.3}(b)(c))} \\
+    \implies & \lim_{n \to \infty} x^{q_n - r_n} > 1. & \text{(by \cref{6.7.2})}       \\
+  \end{align*}
+  Now we show that \(\exists\ N \in \Z^+\) such that \(q_n - r_n > 0\) for every \(n \geq N\).
+  Suppose for sake of contradiction that \(\forall N \in \Z^+\), \(\exists\ n \geq N\) such that \(q_n - r_n \leq 0\).
+  Then we have
+  \begin{align*}
+             & q_n - r_n \leq 0                                                        \\
+    \implies & r_n - q_n \geq 0                                                        \\
+    \implies & x^{r_n - q_n} \geq 1^{r_n - q_n} = 1      & \text{(by \cref{6.7.3}(d))} \\
+    \implies & x^{q_n - r_n} \leq 1                      & \text{(by \cref{6.7.3}(c))} \\
+    \implies & \lim_{n \to \infty} x^{q_n - r_n} \leq 1, & \text{(by \cref{6.4.13})}
+  \end{align*}
+  which contradict to \(\lim_{n \to \infty} x^{q_n - r_n} > 1\).
+  Thus \(\exists\ N \in \Z^+\) such that \(q_n - r_n > 0\) for every \(n \geq N\).
+  This means \(q_n > r_n\) for every \(n \geq N\), and by \cref{6.4.13} we know that \(q = \lim_{n \to \infty} q_n \geq \lim_{n \to \infty} r_n = r\).
 
-    Next we show that if \(x > 1\), then \(q > r \implies x^q > x^r\).
-    \begin{align*}
-                 & q > r                                                                                                          \\
-        \implies & q - r > 0                                                                                                      \\
-        \implies & x^{q - r} > 1^{q - r}                                                     & \text{(by Lemma \ref{6.7.3}(d))}   \\
-        \implies & x^{q - r} > \lim_{n \to \infty} 1^{q_n - r_n} = \lim_{n \to \infty} 1 = 1 & \text{(by Definition \ref{6.7.2})} \\
-        \implies & x^{q - r} x^r > x^r                                                       & \text{(by Lemma \ref{6.7.3}(a))}   \\
-        \implies & x^{q - r + r} > x^r                                                       & \text{(by Lemma \ref{6.7.3}(b))}   \\
-        \implies & x^q > x^r.                                                                & \text{(by Lemma \ref{5.6.8})}
-    \end{align*}
-    Thus we conclude that if \(x > 1\), then \(x^q > x^r \iff q > r\).
+  Next we show that if \(x > 1\), then \(q > r \implies x^q > x^r\).
+  \begin{align*}
+             & q > r                                                                                                   \\
+    \implies & q - r > 0                                                                                               \\
+    \implies & x^{q - r} > 1^{q - r}                                                     & \text{(by \cref{6.7.3}(d))} \\
+    \implies & x^{q - r} > \lim_{n \to \infty} 1^{q_n - r_n} = \lim_{n \to \infty} 1 = 1 & \text{(by \cref{6.7.2})}    \\
+    \implies & x^{q - r} x^r > x^r                                                       & \text{(by \cref{6.7.3}(a))} \\
+    \implies & x^{q - r + r} > x^r                                                       & \text{(by \cref{6.7.3}(b))} \\
+    \implies & x^q > x^r.                                                                & \text{(by \cref{5.6.8})}
+  \end{align*}
+  Thus we conclude that if \(x > 1\), then \(x^q > x^r \iff q > r\).
 
-    Finally we show that if \(x < 1\), then \(x^q > x^r \iff q < r\).
-    \begin{align*}
-                 & x < 1                                                                                    \\
-        \implies & x^{-1} > 1                                                                               \\
-        \implies & \big((x^{-1})^q < (x^{-1})^r \iff q < r\big) & \text{(from proof above)}                 \\
-        \implies & (x^{-q} < x^{-r} \iff q < r)                 & \text{(by Proposition \ref{6.7.3}(b))}    \\
-        \implies & (x^q > x^r \iff q < r).                      & \text{(by Proposition \ref{6.7.3}(a)(c))}
-    \end{align*}
+  Finally we show that if \(x < 1\), then \(x^q > x^r \iff q < r\).
+  \begin{align*}
+             & x < 1                                                                         \\
+    \implies & x^{-1} > 1                                                                    \\
+    \implies & \big((x^{-1})^q < (x^{-1})^r \iff q < r\big) & \text{(from proof above)}      \\
+    \implies & (x^{-q} < x^{-r} \iff q < r)                 & \text{(by \cref{6.7.3}(b))}    \\
+    \implies & (x^q > x^r \iff q < r).                      & \text{(by \cref{6.7.3}(a)(c))}
+  \end{align*}
 \end{proof}
 
 \begin{proof}{(f)}
-    Let \(x, y, r \in \R^+\) where \(r = \lim_{n \to \infty} r_n\) for some sequences \((r_n)_{n = 1}^\infty\) of rationals.
-    By Proposition \ref{6.1.15} \(r\) is well-defined.
-    Then we have
-    \begin{align*}
-        (xy)^r & = \lim_{n \to \infty} (xy)^{r_n}                             & \text{(by Definition \ref{6.7.2})}     \\
-               & = \lim_{n \to \infty} x^{r_n} y^{r_n}                        & \text{(by Proposition \ref{5.6.9}(f))} \\
-               & = (\lim_{n \to \infty} x^{r_n})(\lim_{n \to \infty} y^{r_n}) & \text{(by Theorem \ref{6.1.19}(b))}    \\
-               & = x^r y^r.                                                   & \text{(by Definition \ref{6.7.2})}
-    \end{align*}
+  Let \(x, y, r \in \R^+\) where \(r = \lim_{n \to \infty} r_n\) for some sequences \((r_n)_{n = 1}^\infty\) of rationals.
+  By \cref{6.1.15} \(r\) is well-defined.
+  Then we have
+  \begin{align*}
+    (xy)^r & = \lim_{n \to \infty} (xy)^{r_n}                             & \text{(by \cref{6.7.2})}     \\
+           & = \lim_{n \to \infty} x^{r_n} y^{r_n}                        & \text{(by \cref{5.6.9}(f))}  \\
+           & = (\lim_{n \to \infty} x^{r_n})(\lim_{n \to \infty} y^{r_n}) & \text{(by \cref{6.1.19}(b))} \\
+           & = x^r y^r.                                                   & \text{(by \cref{6.7.2})}
+  \end{align*}
 \end{proof}
 
 \exercisesection
 
 \begin{exercise}\label{ex 6.7.1}
-    Prove the remaining components of Proposition \ref{6.7.3}.
+  Prove the remaining components of \cref{6.7.3}.
 \end{exercise}
 
 \begin{proof}
-    See Proposition \ref{6.7.3}.
+  See \cref{6.7.3}.
 \end{proof}

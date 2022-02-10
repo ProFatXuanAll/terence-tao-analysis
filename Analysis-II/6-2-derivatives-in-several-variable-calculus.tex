@@ -1,217 +1,217 @@
 \section{Derivatives in several variable calculus}\label{sec 6.2}
 
 \begin{note}
-    In single variable calculus, when one wants to differentiate a function \(f : E \to \R\) at a point \(x_0\), where \(E\) is a subset of \(\R\) and \(x_0\) is a limit point of \(E\), this is given by
-    \[
-        f'(x_0) \coloneqq \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}.
-    \]
-    One could try to mimic this definition in the several variable case \(f : E \to \R^m\), where \(E\) is now a subset of \(\R^n\), however we encounter a difficulty in this case:
-    the quantity \(f(x) - f(x_0)\) will live in \(\R^m\), and \(x - x_0\) lives in \(\R^n\), and we do not know how to divide an \(m\)-dimensional vector by an \(n\)-dimensional vector.
+  In single variable calculus, when one wants to differentiate a function \(f : E \to \R\) at a point \(x_0\), where \(E\) is a subset of \(\R\) and \(x_0\) is a limit point of \(E\), this is given by
+  \[
+    f'(x_0) \coloneqq \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}.
+  \]
+  One could try to mimic this definition in the several variable case \(f : E \to \R^m\), where \(E\) is now a subset of \(\R^n\), however we encounter a difficulty in this case:
+  the quantity \(f(x) - f(x_0)\) will live in \(\R^m\), and \(x - x_0\) lives in \(\R^n\), and we do not know how to divide an \(m\)-dimensional vector by an \(n\)-dimensional vector.
 
-    To get around this problem, we first rewrite the concept of derivative (in one dimension) in a way which does not involve division of vectors.
-    Instead, we view differentiability at a point \(x_0\) as an assertion that a function \(f\) is ``approximately linear'' near \(x_0\).
+  To get around this problem, we first rewrite the concept of derivative (in one dimension) in a way which does not involve division of vectors.
+  Instead, we view differentiability at a point \(x_0\) as an assertion that a function \(f\) is ``approximately linear'' near \(x_0\).
 \end{note}
 
 \begin{lemma}\label{6.2.1}
-    Let \(E\) be a subset of \(\R\), \(f : E \to \R\) be a function, \(L \in \R\), and let \(x_0\) be a limit point of \(E\).
-    Then the following two statements are equivalent.
-    \begin{enumerate}
-        \item \(f\) is differentiable at \(x_0\), and \(f'(x_0) = L\).
-        \item We have
-              \[
-                  \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\abs{f(x) - \big(f(x_0) + L (x - x_0)\big)}}{\abs{x - x_0}} = 0.
-              \]
-    \end{enumerate}
+  Let \(E\) be a subset of \(\R\), \(f : E \to \R\) be a function, \(L \in \R\), and let \(x_0\) be a limit point of \(E\).
+  Then the following two statements are equivalent.
+  \begin{enumerate}
+    \item \(f\) is differentiable at \(x_0\), and \(f'(x_0) = L\).
+    \item We have
+          \[
+            \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\abs{f(x) - \big(f(x_0) + L (x - x_0)\big)}}{\abs{x - x_0}} = 0.
+          \]
+  \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-    We have
-    \begin{align*}
-             & \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = L                                                       \\
-        \iff & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\},                                          \\
-             & \bigg(\abs{x - x_0} < \delta \implies \abs{\frac{f(x) - f(x_0)}{x - x_0} - L} < \varepsilon\bigg)                                    \\
-        \iff & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\},                                          \\
-             & \bigg(\abs{x - x_0} < \delta \implies \abs{\frac{f(x) - f(x_0) - L(x - x_0)}{x - x_0}} < \varepsilon\bigg)                           \\
-        \iff & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\},                                          \\
-             & \bigg(\abs{x - x_0} < \delta \implies \abs{\frac{f(x) - \big(f(x_0) + L(x - x_0)\big)}{x - x_0}} < \varepsilon\bigg)                 \\
-        \iff & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\},                                          \\
-             & \bigg(\abs{x - x_0} < \delta \implies \abs{\frac{\abs{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\abs{x - x_0}}} < \varepsilon\bigg)     \\
-        \iff & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\},                                          \\
-             & \bigg(\abs{x - x_0} < \delta \implies \abs{\frac{\abs{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\abs{x - x_0}} - 0} < \varepsilon\bigg) \\
-        \iff & \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\abs{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\abs{x - x_0}} = 0.
-    \end{align*}
+  We have
+  \begin{align*}
+         & \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = L                                                       \\
+    \iff & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\},                                          \\
+         & \bigg(\abs{x - x_0} < \delta \implies \abs{\frac{f(x) - f(x_0)}{x - x_0} - L} < \varepsilon\bigg)                                    \\
+    \iff & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\},                                          \\
+         & \bigg(\abs{x - x_0} < \delta \implies \abs{\frac{f(x) - f(x_0) - L(x - x_0)}{x - x_0}} < \varepsilon\bigg)                           \\
+    \iff & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\},                                          \\
+         & \bigg(\abs{x - x_0} < \delta \implies \abs{\frac{f(x) - \big(f(x_0) + L(x - x_0)\big)}{x - x_0}} < \varepsilon\bigg)                 \\
+    \iff & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\},                                          \\
+         & \bigg(\abs{x - x_0} < \delta \implies \abs{\frac{\abs{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\abs{x - x_0}}} < \varepsilon\bigg)     \\
+    \iff & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\},                                          \\
+         & \bigg(\abs{x - x_0} < \delta \implies \abs{\frac{\abs{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\abs{x - x_0}} - 0} < \varepsilon\bigg) \\
+    \iff & \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\abs{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\abs{x - x_0}} = 0.
+  \end{align*}
 \end{proof}
 
 \begin{note}
-    In light of Lemma \ref{6.2.1}, we see that the derivative \(f'(x_0)\) can be interpreted as the number \(L\) for which \(\abs{f(x) - \big(f(x_0) + L(x - x_0)\big)}\) is small, in the sense that it tends to zero as \(x\) tends to \(x_0\), even if we divide out by the very small number \(\abs{x - x_0}\).
-    More informally, the derivative is the quantity \(L\) such that we have the approximation \(f(x) - f(x_0) \approx L(x - x_0)\).
+  In light of \cref{6.2.1}, we see that the derivative \(f'(x_0)\) can be interpreted as the number \(L\) for which \(\abs{f(x) - \big(f(x_0) + L(x - x_0)\big)}\) is small, in the sense that it tends to zero as \(x\) tends to \(x_0\), even if we divide out by the very small number \(\abs{x - x_0}\).
+  More informally, the derivative is the quantity \(L\) such that we have the approximation \(f(x) - f(x_0) \approx L(x - x_0)\).
 
-    This does not seem too different from the usual notion of differentiation, but the point is that we are no longer explicitly dividing by \(x - x_0\).
-    (We are still dividing by \(\abs{x - x_0}\), but this will turn out to be OK.)
-    When we move to the several variable case \(f : E \to \R^m\), where \(E \subseteq \R^n\), we shall still want the derivative to be some quantity \(L\) such that \(f(x) - f(x_0) \approx L(x - x_0)\).
-    However, since \(f(x) - f(x_0)\) is now an \(m\)-dimensional vector and \(x - x_0\) is an \(n\)-dimensional vector, we no longer want \(L\) to be a scalar;
-    we want it to be a linear transformation.
+  This does not seem too different from the usual notion of differentiation, but the point is that we are no longer explicitly dividing by \(x - x_0\).
+  (We are still dividing by \(\abs{x - x_0}\), but this will turn out to be OK.)
+  When we move to the several variable case \(f : E \to \R^m\), where \(E \subseteq \R^n\), we shall still want the derivative to be some quantity \(L\) such that \(f(x) - f(x_0) \approx L(x - x_0)\).
+  However, since \(f(x) - f(x_0)\) is now an \(m\)-dimensional vector and \(x - x_0\) is an \(n\)-dimensional vector, we no longer want \(L\) to be a scalar;
+  we want it to be a linear transformation.
 \end{note}
 
 \begin{definition}[Differentiability]\label{6.2.2}
-    Let \(E\) be a subset of \(\R^n\), \(f : E \to \R^m\) be a function, \(x_0 \in E\) be a limit point, and let \(L : \R^n \to \R^m\) be a linear transformation.
-    We say that \(f\) is \emph{differentiable at \(x_0\) with derivative \(L\)} if we have
-    \[
-        \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\norm*{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\norm*{x - x_0}} = 0.
-    \]
-    Here \(\norm*{x}\) is the length of \(x\) (as measured in the \(l^2\) metric)
-    \[
-        \norm*{(x_1, x_2, \dots, x_n)} = (x_1^2 + x_2^2 + \dots + x_n^2)^{1 / 2}.
-    \]
+  Let \(E\) be a subset of \(\R^n\), \(f : E \to \R^m\) be a function, \(x_0 \in E\) be a limit point, and let \(L : \R^n \to \R^m\) be a linear transformation.
+  We say that \(f\) is \emph{differentiable at \(x_0\) with derivative \(L\)} if we have
+  \[
+    \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\norm*{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\norm*{x - x_0}} = 0.
+  \]
+  Here \(\norm*{x}\) is the length of \(x\) (as measured in the \(l^2\) metric)
+  \[
+    \norm*{(x_1, x_2, \dots, x_n)} = (x_1^2 + x_2^2 + \dots + x_n^2)^{1 / 2}.
+  \]
 \end{definition}
 
 \setcounter{theorem}{3}
 \begin{lemma}[Uniqueness of derivatives]\label{6.2.4}
-    Let \(E\) be a subset of \(\R^n\), \(f : E \to \R^m\) be a function, \(x_0 \in E\) be an \emph{interior point} of \(E\), and let \(L_1 : \R^n \to \R^m\) and \(L_2 : \R^n \to \R^m\) be linear transformations.
-    Suppose that \(f\) is differentiable at \(x_0\) with derivative \(L_1\), and also differentiable at \(x_0\) with derivative \(L_2\).
-    Then \(L_1 = L_2\).
+  Let \(E\) be a subset of \(\R^n\), \(f : E \to \R^m\) be a function, \(x_0 \in E\) be an \emph{interior point} of \(E\), and let \(L_1 : \R^n \to \R^m\) and \(L_2 : \R^n \to \R^m\) be linear transformations.
+  Suppose that \(f\) is differentiable at \(x_0\) with derivative \(L_1\), and also differentiable at \(x_0\) with derivative \(L_2\).
+  Then \(L_1 = L_2\).
 \end{lemma}
 
 \begin{proof}
-    Suppose for sake of contradiction that \(L_1 \neq L_2\).
-    Then there exists a \(v \in \R^n\) such that \(L_1(v) \neq L_2(v)\).
-    Fix such \(v\).
-    We know that \(v \neq 0_{\R^n}\) since if \(v = 0_{\R^n}\), then we would have
-    \[
-        L_1(0_{\R^n}) = L_1(0 \cdot 0_{\R^n}) = 0 L_1(0_{\R^n}) = 0_{\R^m} = 0 L_2(0_{\R^n}) = L_2(0 \cdot 0_{\R^n}) = L_2(0_{\R^n}).
-    \]
-    Observe that
-    \begin{align*}
-        \forall t \in \R, \norm*{x_0 + tv - x_0} & = \sqrt{\sum_{i = 1}^n \big((x_0 + tv - x_0)_i\big)^2} & \text{(by Example \ref{1.1.6})}    \\
-                                                 & = \sqrt{\sum_{i = 1}^n (t v_i)^2}                      & \text{(by Definition \ref{6.1.1})} \\
-                                                 & = \abs{t} \sqrt{\sum_{i = 1}^n (v_i)^2}.
-    \end{align*}
-    Since \(\lim_{t \to 0 ; t \neq 0} \abs{t} = 0\), we have
-    \[
-        \lim_{t \to 0 ; t \neq 0} \norm*{x_0 + tv - x_0} = 0
-    \]
-    which means
-    \[
-        \forall \varepsilon_t \in \R^+, \exists\ \delta \in \R^+ : \forall t \in \R \setminus \{0\}, \abs{t} < \delta \implies \norm*{x_0 + tv - x_0} < \varepsilon_t.
-    \]
-    Since \(x_0\) is an interior point, by Definition \ref{1.2.5} we know that
-    \[
-        \exists\ t \in \R \setminus \{0\} : x_0 + tv \in E.
-    \]
-    Thus we have
-    \[
-        \forall \varepsilon_t \in \R^+, \exists\ \delta \in \R^+ : \forall t \in \R \setminus \{0\}, \abs{t} < \delta \implies \begin{cases}
-            \norm*{x_0 + tv - x_0} < \varepsilon_t; \\
-            x_0 + tv \in E.
-        \end{cases}
-    \]
-    Since \(f\) is differentiable at \(x_0\) with derivative \(L_1\), by Definition \ref{6.2.2} we know that
-    \begin{align*}
-         & \forall \varepsilon \in \R^+, \exists\ \delta_1 \in \R^+ : \forall x \in E \setminus \{x_0\},                             \\
-         & \norm*{x - x_0} < \delta_1 \implies \frac{\norm*{f(x) - \big(f(x_0) + L_1(x - x_0)\big)}}{\norm*{x - x_0}} < \varepsilon.
-    \end{align*}
-    Similarly, we have
-    \begin{align*}
-         & \forall \varepsilon \in \R^+, \exists\ \delta_2 \in \R^+ : \forall x \in E \setminus \{x_0\},                             \\
-         & \norm*{x - x_0} < \delta_2 \implies \frac{\norm*{f(x) - \big(f(x_0) + L_2(x - x_0)\big)}}{\norm*{x - x_0}} < \varepsilon.
-    \end{align*}
-    Let \(\varepsilon_t = \min(\delta_1, \delta_2)\).
-    Then we have
-    \begin{align*}
-                 & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall t \in \R \setminus \{x_0\}, \abs{t} < \delta \\
-        \implies & \begin{cases}
-                       \norm*{x_0 + tv - x_0} < \varepsilon_t \\
-                       x_0 + tv \in E
-                   \end{cases}                                                                        \\
-        \implies & \begin{cases}
-                       \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_1(x_0 + tv - x_0)\big)}}{\norm*{x_0 + tv - x_0}} < \varepsilon \\
-                       \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_2(x_0 + tv - x_0)\big)}}{\norm*{x_0 + tv - x_0}} < \varepsilon
-                   \end{cases}                                           \\
-        \implies & \begin{cases}
-                       \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)}}{\norm*{tv}} < \varepsilon \\
-                       \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_2(tv)\big)}}{\norm*{tv}} < \varepsilon
-                   \end{cases}
-    \end{align*}
-    and thus
-    \begin{align*}
-         & \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)}}{\norm*{tv}} = 0; \\
-         & \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_2(tv)\big)}}{\norm*{tv}} = 0.
-    \end{align*}
-    By limit laws we have
-    \begin{align*}
-         & \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)} + \norm*{f(x_0 + tv) - \big(f(x_0) + L_2(tv)\big)}}{\norm*{tv}} \\
-         & = 0.
-    \end{align*}
-    By Example \ref{1.1.6} and Definition \ref{1.1.2} we know that
-    \begin{align*}
-         & \norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)} + \norm*{f(x_0 + tv) - \big(f(x_0) + L_2(tv)\big)}   \\
-         & = \norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)} + \norm*{\big(f(x_0) + L_2(tv)\big) - f(x_0 + tv)} \\
-         & \geq \norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big) + \big(f(x_0) + L_2(tv)\big) - f(x_0 + tv)}      \\
-         & = \norm*{L_2(tv) - L_1(tv)}                                                                           \\
-         & \geq 0.
-    \end{align*}
-    Thus by squeeze test we have
-    \[
-        \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{L_2(tv) - L_1(tv)}}{\norm*{tv}} = 0
-    \]
-    which implies
-    \begin{align*}
-         & \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{L_2(tv) - L_1(tv)}}{\norm*{tv}}                                                                 \\
-         & = \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{t L_2(v) - t L_1(v)}}{\norm*{tv}}                        & \text{(by Definition \ref{6.1.6})} \\
-         & = \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\abs{t} \cdot \norm*{L_2(v) - L_1(v)}}{\abs{t} \cdot \norm*{v}}                                      \\
-         & = \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{L_2(v) - L_1(v)}}{\norm*{v}}                                                                  \\
-         & = \frac{\norm*{L_2(v) - L_1(v)}}{\norm*{v}}                                                                                                            \\
-         & = 0.
-    \end{align*}
-    But \(v \neq 0\) implies \(\norm*{v} \neq 0\) (by Definition \ref{1.1.2}(b)), so we must have \(L_2(v) = L_1(v)\), a contradiction.
-    Thus \(L_1 = L_2\).
+  Suppose for sake of contradiction that \(L_1 \neq L_2\).
+  Then there exists a \(v \in \R^n\) such that \(L_1(v) \neq L_2(v)\).
+  Fix such \(v\).
+  We know that \(v \neq 0_{\R^n}\) since if \(v = 0_{\R^n}\), then we would have
+  \[
+    L_1(0_{\R^n}) = L_1(0 \cdot 0_{\R^n}) = 0 L_1(0_{\R^n}) = 0_{\R^m} = 0 L_2(0_{\R^n}) = L_2(0 \cdot 0_{\R^n}) = L_2(0_{\R^n}).
+  \]
+  Observe that
+  \begin{align*}
+    \forall t \in \R, \norm*{x_0 + tv - x_0} & = \sqrt{\sum_{i = 1}^n \big((x_0 + tv - x_0)_i\big)^2} & \text{(by \cref{1.1.6})} \\
+                                             & = \sqrt{\sum_{i = 1}^n (t v_i)^2}                      & \text{(by \cref{6.1.1})} \\
+                                             & = \abs{t} \sqrt{\sum_{i = 1}^n (v_i)^2}.
+  \end{align*}
+  Since \(\lim_{t \to 0 ; t \neq 0} \abs{t} = 0\), we have
+  \[
+    \lim_{t \to 0 ; t \neq 0} \norm*{x_0 + tv - x_0} = 0
+  \]
+  which means
+  \[
+    \forall \varepsilon_t \in \R^+, \exists\ \delta \in \R^+ : \forall t \in \R \setminus \{0\}, \abs{t} < \delta \implies \norm*{x_0 + tv - x_0} < \varepsilon_t.
+  \]
+  Since \(x_0\) is an interior point, by \cref{1.2.5} we know that
+  \[
+    \exists\ t \in \R \setminus \{0\} : x_0 + tv \in E.
+  \]
+  Thus we have
+  \[
+    \forall \varepsilon_t \in \R^+, \exists\ \delta \in \R^+ : \forall t \in \R \setminus \{0\}, \abs{t} < \delta \implies \begin{cases}
+      \norm*{x_0 + tv - x_0} < \varepsilon_t; \\
+      x_0 + tv \in E.
+    \end{cases}
+  \]
+  Since \(f\) is differentiable at \(x_0\) with derivative \(L_1\), by \cref{6.2.2} we know that
+  \begin{align*}
+     & \forall \varepsilon \in \R^+, \exists\ \delta_1 \in \R^+ : \forall x \in E \setminus \{x_0\},                             \\
+     & \norm*{x - x_0} < \delta_1 \implies \frac{\norm*{f(x) - \big(f(x_0) + L_1(x - x_0)\big)}}{\norm*{x - x_0}} < \varepsilon.
+  \end{align*}
+  Similarly, we have
+  \begin{align*}
+     & \forall \varepsilon \in \R^+, \exists\ \delta_2 \in \R^+ : \forall x \in E \setminus \{x_0\},                             \\
+     & \norm*{x - x_0} < \delta_2 \implies \frac{\norm*{f(x) - \big(f(x_0) + L_2(x - x_0)\big)}}{\norm*{x - x_0}} < \varepsilon.
+  \end{align*}
+  Let \(\varepsilon_t = \min(\delta_1, \delta_2)\).
+  Then we have
+  \begin{align*}
+             & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall t \in \R \setminus \{x_0\}, \abs{t} < \delta \\
+    \implies & \begin{cases}
+                 \norm*{x_0 + tv - x_0} < \varepsilon_t \\
+                 x_0 + tv \in E
+               \end{cases}                                                                        \\
+    \implies & \begin{cases}
+                 \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_1(x_0 + tv - x_0)\big)}}{\norm*{x_0 + tv - x_0}} < \varepsilon \\
+                 \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_2(x_0 + tv - x_0)\big)}}{\norm*{x_0 + tv - x_0}} < \varepsilon
+               \end{cases}                                           \\
+    \implies & \begin{cases}
+                 \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)}}{\norm*{tv}} < \varepsilon \\
+                 \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_2(tv)\big)}}{\norm*{tv}} < \varepsilon
+               \end{cases}
+  \end{align*}
+  and thus
+  \begin{align*}
+     & \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)}}{\norm*{tv}} = 0; \\
+     & \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_2(tv)\big)}}{\norm*{tv}} = 0.
+  \end{align*}
+  By limit laws we have
+  \begin{align*}
+     & \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)} + \norm*{f(x_0 + tv) - \big(f(x_0) + L_2(tv)\big)}}{\norm*{tv}} \\
+     & = 0.
+  \end{align*}
+  By \cref{1.1.6} and \cref{1.1.2} we know that
+  \begin{align*}
+     & \norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)} + \norm*{f(x_0 + tv) - \big(f(x_0) + L_2(tv)\big)}   \\
+     & = \norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big)} + \norm*{\big(f(x_0) + L_2(tv)\big) - f(x_0 + tv)} \\
+     & \geq \norm*{f(x_0 + tv) - \big(f(x_0) + L_1(tv)\big) + \big(f(x_0) + L_2(tv)\big) - f(x_0 + tv)}      \\
+     & = \norm*{L_2(tv) - L_1(tv)}                                                                           \\
+     & \geq 0.
+  \end{align*}
+  Thus by squeeze test we have
+  \[
+    \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{L_2(tv) - L_1(tv)}}{\norm*{tv}} = 0
+  \]
+  which implies
+  \begin{align*}
+     & \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{L_2(tv) - L_1(tv)}}{\norm*{tv}}                                                       \\
+     & = \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{t L_2(v) - t L_1(v)}}{\norm*{tv}}                        & \text{(by \cref{6.1.6})} \\
+     & = \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\abs{t} \cdot \norm*{L_2(v) - L_1(v)}}{\abs{t} \cdot \norm*{v}}                            \\
+     & = \lim_{t \to 0 ; t \neq 0, x_0 + tv \in E} \frac{\norm*{L_2(v) - L_1(v)}}{\norm*{v}}                                                        \\
+     & = \frac{\norm*{L_2(v) - L_1(v)}}{\norm*{v}}                                                                                                  \\
+     & = 0.
+  \end{align*}
+  But \(v \neq 0\) implies \(\norm*{v} \neq 0\) (by \cref{1.1.2}(b)), so we must have \(L_2(v) = L_1(v)\), a contradiction.
+  Thus \(L_1 = L_2\).
 \end{proof}
 
 \begin{note}
-    Because of Lemma \ref{6.2.4}, we can now talk about \emph{the} derivative of \(f\) at interior points \(x_0\), and we will denote this derivative by \(f'(x_0)\).
-    Thus \(f'(x_0)\) is the unique linear transformation from \(\R^n\) to \(\R^m\) such that
-    \[
-        \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\norm*{f(x) - \big(f(x_0) + f'(x_0)(x - x_0)\big)}}{\norm*{x - x_0}} = 0.
-    \]
-    Informally, this means that the derivative \(f'(x_0))\) is the linear transformation such that we have
-    \[
-        f(x) - f(x_0) \approx f'(x_0)(x - x_0)
-    \]
-    or equivalently
-    \[
-        f(x) \approx f(x_0) + f'(x_0)(x - x_0)
-    \]
-    (this is known as Newton's approximation;
-    compare with Proposition 10.1.7 in Analysis I).
+  Because of \cref{6.2.4}, we can now talk about \emph{the} derivative of \(f\) at interior points \(x_0\), and we will denote this derivative by \(f'(x_0)\).
+  Thus \(f'(x_0)\) is the unique linear transformation from \(\R^n\) to \(\R^m\) such that
+  \[
+    \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\norm*{f(x) - \big(f(x_0) + f'(x_0)(x - x_0)\big)}}{\norm*{x - x_0}} = 0.
+  \]
+  Informally, this means that the derivative \(f'(x_0))\) is the linear transformation such that we have
+  \[
+    f(x) - f(x_0) \approx f'(x_0)(x - x_0)
+  \]
+  or equivalently
+  \[
+    f(x) \approx f(x_0) + f'(x_0)(x - x_0)
+  \]
+  (this is known as Newton's approximation;
+  compare with Proposition 10.1.7 in Analysis I).
 \end{note}
 
 \begin{note}
-    Another consequence of Lemma \ref{6.2.4} is that if you know that \(f(x) = g(x)\) for all \(x \in E\), and \(f, g\) are differentiable at \(x_0\), then you also know that \(f'(x_0) = g'(x_0)\) at every \emph{interior} point of \(E\).
-    However, this is not necessarily true if \(x_0\) is a boundary point of \(E\);
-    for instance, if \(E\) is just a single point \(E = \{x_0\}\), merely knowing that \(f(x_0) = g(x_0)\) does not imply that \(f'(x_0) = g'(x_0)\).
-    We will not deal with these boundary issues here, and only compute derivatives on the interior of the domain.
+  Another consequence of \cref{6.2.4} is that if you know that \(f(x) = g(x)\) for all \(x \in E\), and \(f, g\) are differentiable at \(x_0\), then you also know that \(f'(x_0) = g'(x_0)\) at every \emph{interior} point of \(E\).
+  However, this is not necessarily true if \(x_0\) is a boundary point of \(E\);
+  for instance, if \(E\) is just a single point \(E = \{x_0\}\), merely knowing that \(f(x_0) = g(x_0)\) does not imply that \(f'(x_0) = g'(x_0)\).
+  We will not deal with these boundary issues here, and only compute derivatives on the interior of the domain.
 \end{note}
 
 \begin{note}
-    We will sometimes refer to \(f'\) as the \emph{total derivative} of \(f\), to distinguish this concept from that of partial and directional derivatives below.
-    The total derivative \(f\) is also closely related to the \emph{derivative matrix} \(Df\),
-    which we shall define in the next section.
+  We will sometimes refer to \(f'\) as the \emph{total derivative} of \(f\), to distinguish this concept from that of partial and directional derivatives below.
+  The total derivative \(f\) is also closely related to the \emph{derivative matrix} \(Df\),
+  which we shall define in the next section.
 \end{note}
 
 \exercisesection
 
 \begin{exercise}\label{ex 6.2.1}
-    Prove Lemma \ref{6.2.1}.
+  Prove \cref{6.2.1}.
 \end{exercise}
 
 \begin{proof}
-    See Lemma \ref{6.2.1}.
+  See \cref{6.2.1}.
 \end{proof}
 
 \begin{exercise}\label{ex 6.2.2}
-    Prove Lemma \ref{6.2.4}.
+  Prove \cref{6.2.4}.
 \end{exercise}
 
 \begin{proof}
-    See Lemma \ref{6.2.4}.
+  See \cref{6.2.4}.
 \end{proof}

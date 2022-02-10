@@ -1,348 +1,348 @@
 \section{Formal power series}\label{sec 4.1}
 
 \begin{definition}[Formal power series]\label{4.1.1}
-    Let \(a\) be a real number.
-    A \emph{formal power series centered at \(a\)} is any series of the form
-    \[
-        \sum_{n = 0}^\infty c_n (x - a)^n
-    \]
-    where \(c_0, c_1, \dots\) is a sequence of real numbers (not depending on \(x\));
-    we refer to \(c_n\) as the \emph{\(n^{\text{th}}\) coefficient} of this series.
-    Note that each term \(c_n (x - a)^n\) in this series is a function of a real variable \(x\).
+  Let \(a\) be a real number.
+  A \emph{formal power series centered at \(a\)} is any series of the form
+  \[
+    \sum_{n = 0}^\infty c_n (x - a)^n
+  \]
+  where \(c_0, c_1, \dots\) is a sequence of real numbers (not depending on \(x\));
+  we refer to \(c_n\) as the \emph{\(n^{\text{th}}\) coefficient} of this series.
+  Note that each term \(c_n (x - a)^n\) in this series is a function of a real variable \(x\).
 \end{definition}
 
 \begin{note}
-    We call these power series \emph{formal} because we do not yet assume that these series converge for any \(x\).
-    However, these series are automatically guaranteed to converge when \(x = a\).
-    In general, the closer \(x\) gets to \(a\), the easier it is for this series to converge.
+  We call these power series \emph{formal} because we do not yet assume that these series converge for any \(x\).
+  However, these series are automatically guaranteed to converge when \(x = a\).
+  In general, the closer \(x\) gets to \(a\), the easier it is for this series to converge.
 \end{note}
 
 \setcounter{theorem}{2}
 \begin{definition}[Radius of convergence]\label{4.1.3}
-    Let \(\sum_{n = 0}^\infty c_n (x - a)^n\) be a formal power series.
-    We define the \emph{radius of convergence \(R\)} of this series to be the quantity
-    \[
-        R \coloneqq \frac{1}{\limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}}}
-    \]
-    where we adopt the convention that \(\frac{1}{0} = +\infty\) and \(\frac{1}{+\infty} = 0\).
+  Let \(\sum_{n = 0}^\infty c_n (x - a)^n\) be a formal power series.
+  We define the \emph{radius of convergence \(R\)} of this series to be the quantity
+  \[
+    R \coloneqq \frac{1}{\limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}}}
+  \]
+  where we adopt the convention that \(\frac{1}{0} = +\infty\) and \(\frac{1}{+\infty} = 0\).
 \end{definition}
 
 \begin{remark}\label{4.1.4}
-    Each number \(\abs{c_n}^{1 / n}\) is non-negative, so the limit \(\limsup_{n \to \infty} \abs{c_n}^{1 / n}\) can take on any value from \(0\) to \(+\infty\), inclusive.
-    Thus \(R\) can also take on any value between \(0\) and \(+\infty\) inclusive
-    (in particular it is not necessarily a real number).
-    Note that the radius of convergence always exists, even if the sequence \(\abs{c_n}^{1 / n}\) is not convergent, because the lim sup of any sequence always exists
-    (though it might be \(+\infty\) or \(-\infty\)).
+  Each number \(\abs{c_n}^{1 / n}\) is non-negative, so the limit \(\limsup_{n \to \infty} \abs{c_n}^{1 / n}\) can take on any value from \(0\) to \(+\infty\), inclusive.
+  Thus \(R\) can also take on any value between \(0\) and \(+\infty\) inclusive
+  (in particular it is not necessarily a real number).
+  Note that the radius of convergence always exists, even if the sequence \(\abs{c_n}^{1 / n}\) is not convergent, because the lim sup of any sequence always exists
+  (though it might be \(+\infty\) or \(-\infty\)).
 \end{remark}
 
 \setcounter{theorem}{5}
 \begin{theorem}\label{4.1.6}
-    Let \(\sum_{n = 0}^\infty c_n (x - a)^n\) be a formal power series, and let \(R\) be its radius of convergence.
-    \begin{enumerate}
-        \item (Divergence outside of the radius of convergence)
-              If \(x \in \R\) is such that \(\abs{x - a} > R\), then the series \(\sum_{n = 0}^\infty c_n (x - a)^n\) is divergent for that value of \(x\).
-        \item (Convergence inside the radius of convergence)
-              If \(x \in \R\) is such that \(\abs{x - a} < R\), then the series \(\sum_{n = 0}^\infty c_n (x - a)^n\) is absolutely convergent for that value of \(x\).
-    \end{enumerate}
-    For parts (c)-(e) we assume that \(R > 0\)
-    (i.e., the series converges at at least one other point than \(x = a\)).
-    Let \(f : (a - R, a + R) \to \R\) be the function \(f(x) \coloneqq \sum_{n = 0}^\infty c_n (x - a)^n\);
-    this function is guaranteed to exist by (b).
-    \begin{enumerate}
-        \setcounter{enumi}{2}
-        \item (Uniform convergence on compact sets)
-              For any \(0 < r < R\), the series \(\sum_{n = 0}^\infty c_n (x - a)^n\) converges uniformly to \(f\) on the compact interval \([a - r, a + r]\).
-              In particular, \(f\) is continuous on \((a - R, a + R)\).
-        \item (Differentiation of power series)
-              The function \(f\) is differentiable on \((a - R, a + R)\), and for any \(0 < r < R\), the series \(\sum_{n = 1}^\infty n c_n (x - a)^{n - 1}\) converges uniformly to \(f'\) on the interval \([a - r, a + r]\).
-        \item (Integration of power series)
-              For any closed interval \([y, z]\) contained in \((a - R, a + R)\), we have
-              \[
-                  \int_{[y, z]} f = \sum_{n = 0}^\infty c_n \frac{(z - a)^{n + 1} - (y - a)^{n + 1}}{n + 1}.
-              \]
-    \end{enumerate}
+  Let \(\sum_{n = 0}^\infty c_n (x - a)^n\) be a formal power series, and let \(R\) be its radius of convergence.
+  \begin{enumerate}
+    \item (Divergence outside of the radius of convergence)
+          If \(x \in \R\) is such that \(\abs{x - a} > R\), then the series \(\sum_{n = 0}^\infty c_n (x - a)^n\) is divergent for that value of \(x\).
+    \item (Convergence inside the radius of convergence)
+          If \(x \in \R\) is such that \(\abs{x - a} < R\), then the series \(\sum_{n = 0}^\infty c_n (x - a)^n\) is absolutely convergent for that value of \(x\).
+  \end{enumerate}
+  For parts (c)-(e) we assume that \(R > 0\)
+  (i.e., the series converges at at least one other point than \(x = a\)).
+  Let \(f : (a - R, a + R) \to \R\) be the function \(f(x) \coloneqq \sum_{n = 0}^\infty c_n (x - a)^n\);
+  this function is guaranteed to exist by (b).
+  \begin{enumerate}
+    \setcounter{enumi}{2}
+    \item (Uniform convergence on compact sets)
+          For any \(0 < r < R\), the series \(\sum_{n = 0}^\infty c_n (x - a)^n\) converges uniformly to \(f\) on the compact interval \([a - r, a + r]\).
+          In particular, \(f\) is continuous on \((a - R, a + R)\).
+    \item (Differentiation of power series)
+          The function \(f\) is differentiable on \((a - R, a + R)\), and for any \(0 < r < R\), the series \(\sum_{n = 1}^\infty n c_n (x - a)^{n - 1}\) converges uniformly to \(f'\) on the interval \([a - r, a + r]\).
+    \item (Integration of power series)
+          For any closed interval \([y, z]\) contained in \((a - R, a + R)\), we have
+          \[
+            \int_{[y, z]} f = \sum_{n = 0}^\infty c_n \frac{(z - a)^{n + 1} - (y - a)^{n + 1}}{n + 1}.
+          \]
+  \end{enumerate}
 \end{theorem}
 
 \begin{proof}{(a)}{(b)}
-    We split into three cases:
-    \begin{itemize}
-        \item \(R = +\infty\).
-              Since \(\abs{x - a} \geq 0\), we cannot have \(\abs{x - a} > +\infty\).
-              Thus we only consider the case \(\abs{x - a} < +\infty\).
-              \begin{align*}
-                           & \abs{x - a} < +\infty = \frac{1}{0}                                  & \text{(by Definition \ref{4.1.3})}      \\
-                  \implies & \limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}} = 0                   & \text{(by Definition \ref{4.1.3})}      \\
-                  \implies & \abs{x - a} \cdot \limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}} = 0                                           \\
-                  \implies & \limsup_{n \to \infty} \abs{c_n (x - a)^n}^{\frac{1}{n}} = 0 < 1                                               \\
-                  \implies & \sum_{n = 0}^\infty c_n (x - a)^n \text{ is absolutely convergent}.  & \text{(by Theorem 7.5.1 in Analysis I)}
-              \end{align*}
-        \item \(R = 0\).
-              Since \(\abs{x - a} \geq 0\), we cannot have \(\abs{x - a} < 0\).
-              Thus we only consider the case \(\abs{x - a} > 0\).
-              \begin{align*}
-                           & \abs{x - a} > 0 = \frac{1}{+\infty}                                            & \text{(by Definition \ref{4.1.3})}      \\
-                  \implies & \limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}} = +\infty                       & \text{(by Definition \ref{4.1.3})}      \\
-                  \implies & \limsup_{n \to \infty} \big(\abs{c_n}^{\frac{1}{n}} \abs{x - a}\big) = +\infty & \text{(proof by contradiction)}         \\
-                  \implies & \limsup_{n \to \infty} \abs{c_n (x - a)^n}^{\frac{1}{n}} = +\infty > 1                                                   \\
-                  \implies & \sum_{n = 0}^\infty c_n (x - a)^n \text{ is divergent}.                        & \text{(by Theorem 7.5.1 in Analysis I)}
-              \end{align*}
-        \item \(R \in \R^+\).
-              First suppose that \(\abs{x - a} > R\).
-              Then we have
-              \begin{align*}
-                           & \abs{x - a} > \frac{1}{\limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}}} & \text{(by Definition \ref{4.1.3})}      \\
-                  \implies & \abs{x - a} \cdot \limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}} > 1                                             \\
-                  \implies & \limsup_{n \to \infty} \abs{c_n (x - a)^n}^{\frac{1}{n}} > 1                                                     \\
-                  \implies & \sum_{n = 0}^\infty c_n (x - a)^n \text{ is divergent}.                & \text{(by Theorem 7.5.1 in Analysis I)}
-              \end{align*}
-              Now suppose that \(\abs{x - a} < R\).
-              Then we have
-              \begin{align*}
-                           & \abs{x - a} < \frac{1}{\limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}}} & \text{(by Definition \ref{4.1.3})}      \\
-                  \implies & \abs{x - a} \cdot \limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}} < 1                                             \\
-                  \implies & \limsup_{n \to \infty} \abs{c_n (x - a)^n}^{\frac{1}{n}} < 1                                                     \\
-                  \implies & \sum_{n = 0}^\infty c_n (x - a)^n \text{ is absolutely convergent}.    & \text{(by Theorem 7.5.1 in Analysis I)}
-              \end{align*}
-    \end{itemize}
-    From all cases above we conclude that
-    \[
-        \begin{cases}
-            \abs{x - a} < R \implies \sum_{n = 0}^\infty c_n (x - a)^n \text{ is absolutely convergent} \\
-            \abs{x - a} > R \implies \sum_{n = 0}^\infty c_n (x - a)^n \text{ is divergent}
-        \end{cases}
-    \]
+  We split into three cases:
+  \begin{itemize}
+    \item \(R = +\infty\).
+          Since \(\abs{x - a} \geq 0\), we cannot have \(\abs{x - a} > +\infty\).
+          Thus we only consider the case \(\abs{x - a} < +\infty\).
+          \begin{align*}
+                     & \abs{x - a} < +\infty = \frac{1}{0}                                  & \text{(by \cref{4.1.3})}                \\
+            \implies & \limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}} = 0                   & \text{(by \cref{4.1.3})}                \\
+            \implies & \abs{x - a} \cdot \limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}} = 0                                           \\
+            \implies & \limsup_{n \to \infty} \abs{c_n (x - a)^n}^{\frac{1}{n}} = 0 < 1                                               \\
+            \implies & \sum_{n = 0}^\infty c_n (x - a)^n \text{ is absolutely convergent}.  & \text{(by Theorem 7.5.1 in Analysis I)}
+          \end{align*}
+    \item \(R = 0\).
+          Since \(\abs{x - a} \geq 0\), we cannot have \(\abs{x - a} < 0\).
+          Thus we only consider the case \(\abs{x - a} > 0\).
+          \begin{align*}
+                     & \abs{x - a} > 0 = \frac{1}{+\infty}                                            & \text{(by \cref{4.1.3})}                \\
+            \implies & \limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}} = +\infty                       & \text{(by \cref{4.1.3})}                \\
+            \implies & \limsup_{n \to \infty} \big(\abs{c_n}^{\frac{1}{n}} \abs{x - a}\big) = +\infty & \text{(proof by contradiction)}         \\
+            \implies & \limsup_{n \to \infty} \abs{c_n (x - a)^n}^{\frac{1}{n}} = +\infty > 1                                                   \\
+            \implies & \sum_{n = 0}^\infty c_n (x - a)^n \text{ is divergent}.                        & \text{(by Theorem 7.5.1 in Analysis I)}
+          \end{align*}
+    \item \(R \in \R^+\).
+          First suppose that \(\abs{x - a} > R\).
+          Then we have
+          \begin{align*}
+                     & \abs{x - a} > \frac{1}{\limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}}} & \text{(by \cref{4.1.3})}                \\
+            \implies & \abs{x - a} \cdot \limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}} > 1                                             \\
+            \implies & \limsup_{n \to \infty} \abs{c_n (x - a)^n}^{\frac{1}{n}} > 1                                                     \\
+            \implies & \sum_{n = 0}^\infty c_n (x - a)^n \text{ is divergent}.                & \text{(by Theorem 7.5.1 in Analysis I)}
+          \end{align*}
+          Now suppose that \(\abs{x - a} < R\).
+          Then we have
+          \begin{align*}
+                     & \abs{x - a} < \frac{1}{\limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}}} & \text{(by \cref{4.1.3})}                \\
+            \implies & \abs{x - a} \cdot \limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}} < 1                                             \\
+            \implies & \limsup_{n \to \infty} \abs{c_n (x - a)^n}^{\frac{1}{n}} < 1                                                     \\
+            \implies & \sum_{n = 0}^\infty c_n (x - a)^n \text{ is absolutely convergent}.    & \text{(by Theorem 7.5.1 in Analysis I)}
+          \end{align*}
+  \end{itemize}
+  From all cases above we conclude that
+  \[
+    \begin{cases}
+      \abs{x - a} < R \implies \sum_{n = 0}^\infty c_n (x - a)^n \text{ is absolutely convergent} \\
+      \abs{x - a} > R \implies \sum_{n = 0}^\infty c_n (x - a)^n \text{ is divergent}
+    \end{cases}
+  \]
 \end{proof}
 
 \begin{proof}{(c)}
-    Let \(r \in (0, R)\).
-    Since
-    \[
-        \forall x \in [a - r, a + r] \implies \abs{x - a} < r < R,
-    \]
-    by Theorem \ref{4.1.6}(b) we know that \(\sum_{n = 0}^\infty c_n (x - a)^n\) is absolutely convergent for all \(x \in [a - r, a + r]\).
-    For each \(n \in \N\), we define \(f_n : [a - r, a + r] \to \R\) by setting \(f_n(x) = c_n (x - a)^n\) for all \(x \in [a - r, a + r]\).
-    Since
-    \begin{align*}
-                 & r < R                                                                                                                                                    \\
-        \implies & \frac{r}{R} < 1                                                                                                                                          \\
-        \implies & r \big(\limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}}\big) = \limsup_{n \to \infty} \abs{c_n r^n}^{\frac{1}{n}} < 1 & \text{(by Definition \ref{4.1.3})} \\
-        \implies & \sum_{n = 0}^\infty c_n r^n \text{ is absolutely convergent}                                                        & \text{(by root test)}
-    \end{align*}
-    and
-    \begin{align*}
-                 & \forall n \in \N, \forall x \in [a - r, a + r], (x - a)^n \leq r^n                                              \\
-        \implies & \forall n \in \N, \forall x \in [a - r, a + r], c_n (x - a)^n \leq c_n r^n                                      \\
-        \implies & \forall n \in \N, \norm*{f_n}_\infty \leq c_n r^n                          & \text{(by Definition \ref{3.5.5})} \\
-        \implies & \sum_{n = 0}^\infty \norm*{f_n}_\infty \leq \sum_{n = 0}^\infty c_n r^n,
-    \end{align*}
-    by Theorem \ref{3.5.7} we know that \(\big(\sum_{n = 0}^N f_n\big)_{N = 0}^\infty\) converges uniformly to some function \(g : [a - r, a + r] \to \R\) on \([a - r, a + r]\) with respect to \(d_{l^1}|_{\R \times \R}\) and \(g\) is continuous on \([a - r, a + r]\).
-    But by Definition \ref{3.5.2} we know that
-    \[
-        \forall x \in [a - r, a + r], g(x) = \sum_{n = 0}^\infty f_n(x) = \sum_{n = 0}^\infty c_n (x - a)^n = f(x).
-    \]
-    Thus \(f\) is continuous on \([a - r, a + r]\).
-    Since \(r\) is arbitrary, we conclude that
-    \begin{align*}
-         & \forall r \in (0, R), \bigg(x \mapsto \sum_{n = 0}^N c_n (x - a)^n\bigg)_{N = 0}^\infty \text{ converges uniformly to }                 \\
-         & f = \bigg(x \mapsto \sum_{n = 0}^\infty c_n (x - a)^n\bigg) \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\R \times \R} \\
-         & \text{ and } f \text{ is continuous on } (a - R, a + R).
-    \end{align*}
+  Let \(r \in (0, R)\).
+  Since
+  \[
+    \forall x \in [a - r, a + r] \implies \abs{x - a} < r < R,
+  \]
+  by \cref{4.1.6}(b) we know that \(\sum_{n = 0}^\infty c_n (x - a)^n\) is absolutely convergent for all \(x \in [a - r, a + r]\).
+  For each \(n \in \N\), we define \(f_n : [a - r, a + r] \to \R\) by setting \(f_n(x) = c_n (x - a)^n\) for all \(x \in [a - r, a + r]\).
+  Since
+  \begin{align*}
+             & r < R                                                                                                                                          \\
+    \implies & \frac{r}{R} < 1                                                                                                                                \\
+    \implies & r \big(\limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}}\big) = \limsup_{n \to \infty} \abs{c_n r^n}^{\frac{1}{n}} < 1 & \text{(by \cref{4.1.3})} \\
+    \implies & \sum_{n = 0}^\infty c_n r^n \text{ is absolutely convergent}                                                        & \text{(by root test)}
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall n \in \N, \forall x \in [a - r, a + r], (x - a)^n \leq r^n                                    \\
+    \implies & \forall n \in \N, \forall x \in [a - r, a + r], c_n (x - a)^n \leq c_n r^n                            \\
+    \implies & \forall n \in \N, \norm*{f_n}_\infty \leq c_n r^n                          & \text{(by \cref{3.5.5})} \\
+    \implies & \sum_{n = 0}^\infty \norm*{f_n}_\infty \leq \sum_{n = 0}^\infty c_n r^n,
+  \end{align*}
+  by \cref{3.5.7} we know that \(\big(\sum_{n = 0}^N f_n\big)_{N = 0}^\infty\) converges uniformly to some function \(g : [a - r, a + r] \to \R\) on \([a - r, a + r]\) with respect to \(d_{l^1}|_{\R \times \R}\) and \(g\) is continuous on \([a - r, a + r]\).
+  But by \cref{3.5.2} we know that
+  \[
+    \forall x \in [a - r, a + r], g(x) = \sum_{n = 0}^\infty f_n(x) = \sum_{n = 0}^\infty c_n (x - a)^n = f(x).
+  \]
+  Thus \(f\) is continuous on \([a - r, a + r]\).
+  Since \(r\) is arbitrary, we conclude that
+  \begin{align*}
+     & \forall r \in (0, R), \bigg(x \mapsto \sum_{n = 0}^N c_n (x - a)^n\bigg)_{N = 0}^\infty \text{ converges uniformly to }                 \\
+     & f = \bigg(x \mapsto \sum_{n = 0}^\infty c_n (x - a)^n\bigg) \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\R \times \R} \\
+     & \text{ and } f \text{ is continuous on } (a - R, a + R).
+  \end{align*}
 \end{proof}
 
 \begin{proof}{(d)}
-    Let \(r \in (0, R)\).
-    For each \(n \in \Z^+\), we define \(f_n : [a - r, a + r] \to \R\) by setting \(f_n(x) = c_n (x - a)^n\) for all \(x \in [a - r, a + r]\).
-    Since \(f_n\) is polynomial for all \(n \in \Z^+\), we know that \(f_n'\) is well-defined and
-    \[
-        \forall n \in \Z^+, \forall x \in [a - r, a + r], f_n'(x) = n c_n (x - a)^{n - 1}.
-    \]
-    Again, \(f_n'\) is polynomial and thus is continuous on \([a - r, a + r]\) for all \(n \in \Z^+\).
-    By limit laws we have
-    \begin{align*}
-                 & \forall N \in \Z^+, \forall x \in [a - r, a + r], \bigg(\sum_{n = 1}^N f_n\bigg)'(x) = \sum_{n = 1}^N f_n'(x) \\
-        \implies & \forall N \in \Z^+, \bigg(\sum_{n = 1}^N f_n\bigg)' = \sum_{n = 1}^N f_n'.
-    \end{align*}
-    Since
-    \begin{align*}
-                 & \limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}} = \frac{1}{R}                                                            & \text{(by Definition \ref{4.1.3})}              \\
-        \implies & \limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}} \in \R                                                                   & (R > 0)                                         \\
-        \implies & \big(\lim_{n \to \infty} n^{\frac{1}{n}}\big) \big(\limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}}\big) = \frac{1}{R}    & \text{(by Proposition 7.5.4 in Analysis I)}     \\
-        \implies & \big(\limsup_{n \to \infty} n^{\frac{1}{n}}\big) \big(\limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}}\big) = \frac{1}{R} & \text{(by Proposition 6.4.12(f) in Analysis I)} \\
-        \implies & \limsup_{n \to \infty} \abs{n c_n}^{\frac{1}{n}} = \frac{1}{R}                                                                                                            \\
-        \implies & \limsup_{n \to \infty} \abs{n c_n (x - a)^n}^{\frac{1}{n}} = \frac{\abs{x - a}}{R} < 1,                                 & \text{(if \(\abs{x - a} < r\))}
-    \end{align*}
-    by root test we know that \(\sum_{n = 1}^\infty n c_n (x - a)^n\) is absolutely convergent.
-    Since
-    \[
-        \sum_{n = 1}^\infty n c_n (x - a)^n = (x - a) \bigg(\sum_{n = 1}^\infty n c_n (x - a)^{n - 1}\bigg),
-    \]
-    we know that \(\sum_{n = 1}^\infty n c_n (x - a)^{n - 1}\) is convergent.
-    For each \(n \in \Z^+\), we define \(c_{n - 1}' = n c_n\).
-    Then by Proposition 7.2.14 in Analysis I we have
-    \[
-        \forall x \in [a - r, a + r], \sum_{n = 1}^\infty f_n'(x) = \sum_{n = 1}^\infty n c_n (x - a)^{n - 1} = \sum_{n = 1}^\infty c_{n - 1}' (x - a)^{n - 1} = \sum_{n = 0}^\infty c_n' (x - a)^n.
-    \]
-    For each \(n \in \N\), we define \(g_n : [a - r, a + r] \to \R\) by setting \(g_n(x) = c_n' (x - a)^n\) for all \(x \in [a - r, a + r]\).
-    By Theorem \ref{4.1.6}(c) we know that
-    \begin{align*}
-                 & \bigg(\sum_{n = 0}^N g_n\bigg)_{N = 0}^\infty \text{ converges uniformly to some } g : [a - r, a + r] \to \R              \\
-                 & \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\R \times \R}                                               \\
-        \implies & \Bigg(\bigg(\sum_{n = 1}^N f_n\bigg)'\Bigg)_{N = 1}^\infty \text{ converges uniformly to some } g : [a - r, a + r] \to \R \\
-                 & \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\R \times \R}
-    \end{align*}
-    By Definition \ref{3.5.2} we know that
-    \[
-        \forall x \in [a - r, a + r], g(x) = \sum_{n = 0}^\infty c_n' (x - a)^n = \sum_{n = 1}^\infty n c_n (x - a)^{n - 1} = \sum_{n = 1}^\infty f_n'(x).
-    \]
-    Since
-    \[
-        \lim_{N \to \infty} \sum_{n = 1}^N f_n(a) = \lim_{N \to \infty} \sum_{n = 1}^N c_n (a - a)^n = \lim_{N \to \infty} 0 = 0,
-    \]
-    by Theorem \ref{3.7.1} we have
-    \begin{align*}
-         & \bigg(\sum_{n = 1}^N f_n\bigg)_{N = 1}^\infty \text{ converges uniformly to } f \\
-         & \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\R \times \R}
-    \end{align*}
-    and \(f' = g\).
-    By Definition \ref{3.5.2} this means
-    \[
-        \forall x \in [a - r, a + r], f'(x) = \bigg(\sum_{n = 1}^\infty f_n\bigg)'(x) = \sum_{n = 1}^\infty n c_n \abs{x - a}^{n - 1}.
-    \]
-    Since \(r\) is arbitrary, we conclude that \(f\) is differentiable on \((a - R, a + R)\) and
-    \begin{align*}
-         & \forall r \in (0, R), \bigg(x \mapsto \sum_{n = 1}^N n c_n (x - a)^{n - 1}\bigg)_{N = 1}^\infty \text{ converges uniformly to }                   \\
-         & f' = \bigg(x \mapsto \sum_{n = 1}^\infty n c_n (x - a)^{n - 1}\bigg) \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\R \times \R}.
-    \end{align*}
+  Let \(r \in (0, R)\).
+  For each \(n \in \Z^+\), we define \(f_n : [a - r, a + r] \to \R\) by setting \(f_n(x) = c_n (x - a)^n\) for all \(x \in [a - r, a + r]\).
+  Since \(f_n\) is polynomial for all \(n \in \Z^+\), we know that \(f_n'\) is well-defined and
+  \[
+    \forall n \in \Z^+, \forall x \in [a - r, a + r], f_n'(x) = n c_n (x - a)^{n - 1}.
+  \]
+  Again, \(f_n'\) is polynomial and thus is continuous on \([a - r, a + r]\) for all \(n \in \Z^+\).
+  By limit laws we have
+  \begin{align*}
+             & \forall N \in \Z^+, \forall x \in [a - r, a + r], \bigg(\sum_{n = 1}^N f_n\bigg)'(x) = \sum_{n = 1}^N f_n'(x) \\
+    \implies & \forall N \in \Z^+, \bigg(\sum_{n = 1}^N f_n\bigg)' = \sum_{n = 1}^N f_n'.
+  \end{align*}
+  Since
+  \begin{align*}
+             & \limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}} = \frac{1}{R}                                                            & \text{(by \cref{4.1.3})}                        \\
+    \implies & \limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}} \in \R                                                                   & (R > 0)                                         \\
+    \implies & \big(\lim_{n \to \infty} n^{\frac{1}{n}}\big) \big(\limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}}\big) = \frac{1}{R}    & \text{(by Proposition 7.5.4 in Analysis I)}     \\
+    \implies & \big(\limsup_{n \to \infty} n^{\frac{1}{n}}\big) \big(\limsup_{n \to \infty} \abs{c_n}^{\frac{1}{n}}\big) = \frac{1}{R} & \text{(by Proposition 6.4.12(f) in Analysis I)} \\
+    \implies & \limsup_{n \to \infty} \abs{n c_n}^{\frac{1}{n}} = \frac{1}{R}                                                                                                            \\
+    \implies & \limsup_{n \to \infty} \abs{n c_n (x - a)^n}^{\frac{1}{n}} = \frac{\abs{x - a}}{R} < 1,                                 & \text{(if \(\abs{x - a} < r\))}
+  \end{align*}
+  by root test we know that \(\sum_{n = 1}^\infty n c_n (x - a)^n\) is absolutely convergent.
+  Since
+  \[
+    \sum_{n = 1}^\infty n c_n (x - a)^n = (x - a) \bigg(\sum_{n = 1}^\infty n c_n (x - a)^{n - 1}\bigg),
+  \]
+  we know that \(\sum_{n = 1}^\infty n c_n (x - a)^{n - 1}\) is convergent.
+  For each \(n \in \Z^+\), we define \(c_{n - 1}' = n c_n\).
+  Then by Proposition 7.2.14 in Analysis I we have
+  \[
+    \forall x \in [a - r, a + r], \sum_{n = 1}^\infty f_n'(x) = \sum_{n = 1}^\infty n c_n (x - a)^{n - 1} = \sum_{n = 1}^\infty c_{n - 1}' (x - a)^{n - 1} = \sum_{n = 0}^\infty c_n' (x - a)^n.
+  \]
+  For each \(n \in \N\), we define \(g_n : [a - r, a + r] \to \R\) by setting \(g_n(x) = c_n' (x - a)^n\) for all \(x \in [a - r, a + r]\).
+  By \cref{4.1.6}(c) we know that
+  \begin{align*}
+             & \bigg(\sum_{n = 0}^N g_n\bigg)_{N = 0}^\infty \text{ converges uniformly to some } g : [a - r, a + r] \to \R              \\
+             & \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\R \times \R}                                               \\
+    \implies & \Bigg(\bigg(\sum_{n = 1}^N f_n\bigg)'\Bigg)_{N = 1}^\infty \text{ converges uniformly to some } g : [a - r, a + r] \to \R \\
+             & \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\R \times \R}
+  \end{align*}
+  By \cref{3.5.2} we know that
+  \[
+    \forall x \in [a - r, a + r], g(x) = \sum_{n = 0}^\infty c_n' (x - a)^n = \sum_{n = 1}^\infty n c_n (x - a)^{n - 1} = \sum_{n = 1}^\infty f_n'(x).
+  \]
+  Since
+  \[
+    \lim_{N \to \infty} \sum_{n = 1}^N f_n(a) = \lim_{N \to \infty} \sum_{n = 1}^N c_n (a - a)^n = \lim_{N \to \infty} 0 = 0,
+  \]
+  by \cref{3.7.1} we have
+  \begin{align*}
+     & \bigg(\sum_{n = 1}^N f_n\bigg)_{N = 1}^\infty \text{ converges uniformly to } f \\
+     & \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\R \times \R}
+  \end{align*}
+  and \(f' = g\).
+  By \cref{3.5.2} this means
+  \[
+    \forall x \in [a - r, a + r], f'(x) = \bigg(\sum_{n = 1}^\infty f_n\bigg)'(x) = \sum_{n = 1}^\infty n c_n \abs{x - a}^{n - 1}.
+  \]
+  Since \(r\) is arbitrary, we conclude that \(f\) is differentiable on \((a - R, a + R)\) and
+  \begin{align*}
+     & \forall r \in (0, R), \bigg(x \mapsto \sum_{n = 1}^N n c_n (x - a)^{n - 1}\bigg)_{N = 1}^\infty \text{ converges uniformly to }                   \\
+     & f' = \bigg(x \mapsto \sum_{n = 1}^\infty n c_n (x - a)^{n - 1}\bigg) \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\R \times \R}.
+  \end{align*}
 \end{proof}
 
 \begin{proof}{(e)}
-    If \(y = z = a\), then we have
-    \[
-        \int_{[a, a]} f = 0 = \sum_{n = 0}^\infty c_n \frac{(a - a)^{n + 1} - (a - a)^{n + 1}}{n + 1}.
-    \]
-    So suppose that \((y \neq a) \lor (z \neq a)\).
-    Without the loss of generality, suppose that \(y \neq a\).
-    Let \(r = \max(\abs{y - a}, \abs{z - a})\).
-    Since \([y, z] \subseteq (a - R, a + R)\), we have
-    \begin{align*}
-                 & a - R < y \leq z < a + R              \\
-        \implies & -R < y - a \leq z - a < R             \\
-        \implies & \begin{cases}
-                       0 < \abs{y - a} < R \\
-                       0 \leq \abs{z - a} < R
-                   \end{cases}                 \\
-        \implies & \begin{cases}
-                       0 < \abs{y - a} \leq r < R \\
-                       0 \leq \abs{z - a} \leq r < R
-                   \end{cases}          \\
-        \implies & -R < -r \leq y - a < z - a \leq r < R \\
-        \implies & [y, z] \subseteq [a - r, a + r].
-    \end{align*}
-    By Theorem \ref{4.1.6}(c) we know that
-    \begin{align*}
-         & \bigg(x \mapsto \sum_{n = 0}^N c_n (x - a)^n\bigg)_{N = 0}^\infty \text{ converges uniformly to }                                       \\
-         & f = \bigg(x \mapsto \sum_{n = 0}^\infty c_n (x - a)^n\bigg) \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\R \times \R} \\
-         & \text{ and } f \text{ is continuous on } [a - r, a + r].
-    \end{align*}
-    Thus we have
-    \begin{align*}
-         & \bigg(x \mapsto \sum_{n = 0}^N c_n (x - a)^n\bigg)_{N = 0}^\infty \text{ converges uniformly to }                               \\
-         & f = \bigg(x \mapsto \sum_{n = 0}^\infty c_n (x - a)^n\bigg) \text{ on } [y, z] \text{ with respect to } d_{l^1}|_{\R \times \R} \\
-         & \text{ and } f \text{ is continuous on } [y, z].
-    \end{align*}
-    By Corollary 11.5.2 we know that \(\int_{[y, z]} f\) is well-defined.
-    Thus we have
-    \begin{align*}
-        \int_{[y, z]} f & = \int_{[y, z]} f(x) \; dx                                                                                     \\
-                        & = \int_{[y, z]} \bigg(\sum_{n = 0}^\infty c_n (x - a)^n\bigg) \; dx                                            \\
-                        & = \sum_{n = 0}^\infty \bigg(\int_{[y, z]} c_n (x - a)^n \; dx\bigg)        & \text{(by Corollary \ref{3.6.2})} \\
-                        & = \sum_{n = 0}^\infty c_n \frac{(z - a)^{n + 1} - (y - a)^{n + 1}}{n + 1}.
-    \end{align*}
+  If \(y = z = a\), then we have
+  \[
+    \int_{[a, a]} f = 0 = \sum_{n = 0}^\infty c_n \frac{(a - a)^{n + 1} - (a - a)^{n + 1}}{n + 1}.
+  \]
+  So suppose that \((y \neq a) \lor (z \neq a)\).
+  Without the loss of generality, suppose that \(y \neq a\).
+  Let \(r = \max(\abs{y - a}, \abs{z - a})\).
+  Since \([y, z] \subseteq (a - R, a + R)\), we have
+  \begin{align*}
+             & a - R < y \leq z < a + R              \\
+    \implies & -R < y - a \leq z - a < R             \\
+    \implies & \begin{cases}
+                 0 < \abs{y - a} < R \\
+                 0 \leq \abs{z - a} < R
+               \end{cases}                 \\
+    \implies & \begin{cases}
+                 0 < \abs{y - a} \leq r < R \\
+                 0 \leq \abs{z - a} \leq r < R
+               \end{cases}          \\
+    \implies & -R < -r \leq y - a < z - a \leq r < R \\
+    \implies & [y, z] \subseteq [a - r, a + r].
+  \end{align*}
+  By \cref{4.1.6}(c) we know that
+  \begin{align*}
+     & \bigg(x \mapsto \sum_{n = 0}^N c_n (x - a)^n\bigg)_{N = 0}^\infty \text{ converges uniformly to }                                       \\
+     & f = \bigg(x \mapsto \sum_{n = 0}^\infty c_n (x - a)^n\bigg) \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\R \times \R} \\
+     & \text{ and } f \text{ is continuous on } [a - r, a + r].
+  \end{align*}
+  Thus we have
+  \begin{align*}
+     & \bigg(x \mapsto \sum_{n = 0}^N c_n (x - a)^n\bigg)_{N = 0}^\infty \text{ converges uniformly to }                               \\
+     & f = \bigg(x \mapsto \sum_{n = 0}^\infty c_n (x - a)^n\bigg) \text{ on } [y, z] \text{ with respect to } d_{l^1}|_{\R \times \R} \\
+     & \text{ and } f \text{ is continuous on } [y, z].
+  \end{align*}
+  By Corollary 11.5.2 we know that \(\int_{[y, z]} f\) is well-defined.
+  Thus we have
+  \begin{align*}
+    \int_{[y, z]} f & = \int_{[y, z]} f(x) \; dx                                                                            \\
+                    & = \int_{[y, z]} \bigg(\sum_{n = 0}^\infty c_n (x - a)^n\bigg) \; dx                                   \\
+                    & = \sum_{n = 0}^\infty \bigg(\int_{[y, z]} c_n (x - a)^n \; dx\bigg)        & \text{(by \cref{3.6.2})} \\
+                    & = \sum_{n = 0}^\infty c_n \frac{(z - a)^{n + 1} - (y - a)^{n + 1}}{n + 1}.
+  \end{align*}
 \end{proof}
 
 \begin{note}
-    Theorem \ref{4.1.6} (a) and (b) of the above theorem give another way to find the radius of convergence, by using your favorite convergence test to work out the range of \(x\) for which the power series converges.
+  \cref{4.1.6} (a) and (b) of the above theorem give another way to find the radius of convergence, by using your favorite convergence test to work out the range of \(x\) for which the power series converges.
 \end{note}
 
 \setcounter{theorem}{7}
 \begin{remark}\label{4.1.8}
-    Theorem \ref{4.1.6} is silent on what happens when \(\abs{x - a} = R\), i.e., at the points \(a - R\) and \(a + R\).
-    Indeed, one can have either convergence or divergence at those points.
+  \cref{4.1.6} is silent on what happens when \(\abs{x - a} = R\), i.e., at the points \(a - R\) and \(a + R\).
+  Indeed, one can have either convergence or divergence at those points.
 \end{remark}
 
 \begin{remark}\label{4.1.9}
-    Note that while Theorem \ref{4.1.6} assures us that the power series \(\sum_{n = 0}^\infty c_n (x - a)^n\) will converge pointwise on the interval \((a - R, a + R)\), it need not converge uniformly on that interval
-    (see Exercise \ref{ex 4.1.2}(e)).
-    On the other hand, Theorem \ref{4.1.6}(c) assures us that the power series will converge uniformly on any smaller interval \([a - r, a + r]\).
-    In particular, being uniformly convergent on every closed subinterval of \((a - R, a + R)\) is not enough to guarantee being uniformly convergent on all of \((a - R, a + R)\).
+  Note that while \cref{4.1.6} assures us that the power series \(\sum_{n = 0}^\infty c_n (x - a)^n\) will converge pointwise on the interval \((a - R, a + R)\), it need not converge uniformly on that interval
+  (see \cref{ex 4.1.2}(e)).
+  On the other hand, \cref{4.1.6}(c) assures us that the power series will converge uniformly on any smaller interval \([a - r, a + r]\).
+  In particular, being uniformly convergent on every closed subinterval of \((a - R, a + R)\) is not enough to guarantee being uniformly convergent on all of \((a - R, a + R)\).
 \end{remark}
 
 \exercisesection
 
 \begin{exercise}\label{ex 4.1.1}
-    Prove Theorem \ref{4.1.6}.
+  Prove \cref{4.1.6}.
 \end{exercise}
 
 \begin{proof}
-    See Theorem \ref{4.1.6}.
+  See \cref{4.1.6}.
 \end{proof}
 
 \begin{exercise}\label{ex 4.1.2}
-    Give examples of a formal power series \(\sum_{n = 0}^\infty c_n x^n\) centered at \(0\) with radius of convergence \(1\), which
-    \begin{enumerate}
-        \item diverges at both \(x = 1\) and \(x = -1\);
-        \item diverges at \(x = 1\) but converges at \(x = -1\);
-        \item converges at \(x = 1\) but diverges at \(x = -1\);
-        \item converges at both \(x = 1\) and \(x = -1\).
-        \item converges pointwise on \((-1, 1)\), but does not converge uniformly on \((-1, 1)\).
-    \end{enumerate}
+  Give examples of a formal power series \(\sum_{n = 0}^\infty c_n x^n\) centered at \(0\) with radius of convergence \(1\), which
+  \begin{enumerate}
+    \item diverges at both \(x = 1\) and \(x = -1\);
+    \item diverges at \(x = 1\) but converges at \(x = -1\);
+    \item converges at \(x = 1\) but diverges at \(x = -1\);
+    \item converges at both \(x = 1\) and \(x = -1\).
+    \item converges pointwise on \((-1, 1)\), but does not converge uniformly on \((-1, 1)\).
+  \end{enumerate}
 \end{exercise}
 
 \begin{proof}{(a)}
-    Let \(c_n = 1\) for all \(n \in \N\).
-    Then we have
-    \[
-        \frac{1}{\limsup_{n \to \infty} \abs{c_n}} = \frac{1}{\limsup_{n \to \infty} 1} = \frac{1}{1} = 1.
-    \]
-    But we know that \(\sum_{n = 0}^\infty 1^n\) and \(\sum_{n = 0}^\infty (-1)^n\) are divergent.
+  Let \(c_n = 1\) for all \(n \in \N\).
+  Then we have
+  \[
+    \frac{1}{\limsup_{n \to \infty} \abs{c_n}} = \frac{1}{\limsup_{n \to \infty} 1} = \frac{1}{1} = 1.
+  \]
+  But we know that \(\sum_{n = 0}^\infty 1^n\) and \(\sum_{n = 0}^\infty (-1)^n\) are divergent.
 \end{proof}
 
 \begin{proof}{(b)}
-    Let \(c_n = \frac{1}{n + 1}\) for all \(n \in \N\).
-    Then we have
-    \[
-        \frac{1}{\limsup_{n \to \infty} \abs{c_n}} = \frac{1}{\limsup_{n \to \infty} \frac{1}{n + 1}} = \frac{1}{1} = 1.
-    \]
-    By Corollary 7.3.7 in Analysis I we know that \(\sum_{n = 0}^\infty \frac{1}{n + 1}\) diverges.
-    By Corollary 7.2.12 in Analysis I we know that \(\sum_{n = 0}^\infty \frac{(-1)^n}{n + 1}\) converges.
+  Let \(c_n = \frac{1}{n + 1}\) for all \(n \in \N\).
+  Then we have
+  \[
+    \frac{1}{\limsup_{n \to \infty} \abs{c_n}} = \frac{1}{\limsup_{n \to \infty} \frac{1}{n + 1}} = \frac{1}{1} = 1.
+  \]
+  By Corollary 7.3.7 in Analysis I we know that \(\sum_{n = 0}^\infty \frac{1}{n + 1}\) diverges.
+  By Corollary 7.2.12 in Analysis I we know that \(\sum_{n = 0}^\infty \frac{(-1)^n}{n + 1}\) converges.
 \end{proof}
 
 \begin{proof}{(c)}
-    Let \(c_n = \frac{(-1)^n}{n + 1}\) for all \(n \in \N\).
-    Then we have
-    \[
-        \frac{1}{\limsup_{n \to \infty} \abs{c_n}} = \frac{1}{\limsup_{n \to \infty} \frac{1}{n + 1}} = \frac{1}{1} = 1.
-    \]
-    By Corollary 7.2.12 in Analysis I we know that \(\sum_{n = 0}^\infty \frac{(-1)^n 1^n}{n + 1}\) converges.
-    By Corollary 7.3.7 in Analysis I we know that \(\sum_{n = 0}^\infty \frac{(-1)^{2n}}{n + 1}\) diverges.
+  Let \(c_n = \frac{(-1)^n}{n + 1}\) for all \(n \in \N\).
+  Then we have
+  \[
+    \frac{1}{\limsup_{n \to \infty} \abs{c_n}} = \frac{1}{\limsup_{n \to \infty} \frac{1}{n + 1}} = \frac{1}{1} = 1.
+  \]
+  By Corollary 7.2.12 in Analysis I we know that \(\sum_{n = 0}^\infty \frac{(-1)^n 1^n}{n + 1}\) converges.
+  By Corollary 7.3.7 in Analysis I we know that \(\sum_{n = 0}^\infty \frac{(-1)^{2n}}{n + 1}\) diverges.
 \end{proof}
 
 \begin{proof}{(d)}
-    Let \(c_n = \frac{1}{n^2 - 1 / 2}\) for all \(n \in \N\).
-    Then we have
-    \[
-        \frac{1}{\limsup_{n \to \infty} \abs{c_n}} = \frac{1}{\limsup_{n \to \infty} \frac{1}{n^2 - 1 / 2}} = \frac{1}{1} = 1.
-    \]
-    By Corollary 7.3.7 in Analysis I we know that \(\sum_{n = 0}^\infty \frac{1}{n^2 - 1 / 2}\) converges.
-    By Corollary 7.2.12 in Analysis I we know that \(\sum_{n = 0}^\infty \frac{(-1)^n}{n^2 - 1 / 2}\) converges.
+  Let \(c_n = \frac{1}{n^2 - 1 / 2}\) for all \(n \in \N\).
+  Then we have
+  \[
+    \frac{1}{\limsup_{n \to \infty} \abs{c_n}} = \frac{1}{\limsup_{n \to \infty} \frac{1}{n^2 - 1 / 2}} = \frac{1}{1} = 1.
+  \]
+  By Corollary 7.3.7 in Analysis I we know that \(\sum_{n = 0}^\infty \frac{1}{n^2 - 1 / 2}\) converges.
+  By Corollary 7.2.12 in Analysis I we know that \(\sum_{n = 0}^\infty \frac{(-1)^n}{n^2 - 1 / 2}\) converges.
 \end{proof}
 
 \begin{proof}{(e)}
-    Let \(c_n = 1\) for all \(n \in \N\).
-    Then we have
-    \[
-        \frac{1}{\limsup_{n \to \infty} \abs{c_n}} = \frac{1}{\limsup_{n \to \infty} 1} = \frac{1}{1} = 1.
-    \]
-    By Lemma 7.3.3 in Analysis I we know that \(\sum_{n = 0}^\infty x^n\) converges for all \(x \in (-1, 1)\).
-    But by Example \ref{3.5.8} we know that \(\sum_{n = 0}^\infty x^n\) does not converge uniformly on \((-1, 1)\).
+  Let \(c_n = 1\) for all \(n \in \N\).
+  Then we have
+  \[
+    \frac{1}{\limsup_{n \to \infty} \abs{c_n}} = \frac{1}{\limsup_{n \to \infty} 1} = \frac{1}{1} = 1.
+  \]
+  By Lemma 7.3.3 in Analysis I we know that \(\sum_{n = 0}^\infty x^n\) converges for all \(x \in (-1, 1)\).
+  But by \cref{3.5.8} we know that \(\sum_{n = 0}^\infty x^n\) does not converge uniformly on \((-1, 1)\).
 \end{proof}

@@ -1,291 +1,291 @@
 \section{Uncountable sets}\label{sec 8.3}
 
 \begin{note}
-    It was great shock when Georg Cantor (1845 -- 1918) showed in 1873 that certain sets
-    - including the real numbers \(\R\) are in fact uncountable -
-    no matter how hard you try, you cannot arrange the real numbers \(\R\) as a sequence \(a_0, a_1, a_2, \dots\).
-    (Of course, the real numbers \(\R\) can contain many infinite sequences, e.g., the sequence \(0, 1, 2, 3, 4, \dots\).
-    However, what Cantor proved is that no such sequence can ever exhaust the real numbers;
-    no matter what sequence of real numbers you choose, there will always be some real numbers that are not covered by that sequence.)
+  It was great shock when Georg Cantor (1845 -- 1918) showed in 1873 that certain sets
+  - including the real numbers \(\R\) are in fact uncountable -
+  no matter how hard you try, you cannot arrange the real numbers \(\R\) as a sequence \(a_0, a_1, a_2, \dots\).
+  (Of course, the real numbers \(\R\) can contain many infinite sequences, e.g., the sequence \(0, 1, 2, 3, 4, \dots\).
+  However, what Cantor proved is that no such sequence can ever exhaust the real numbers;
+  no matter what sequence of real numbers you choose, there will always be some real numbers that are not covered by that sequence.)
 \end{note}
 
 \begin{theorem}[Cantor's theorem]\label{8.3.1}
-    Let \(X\) be an arbitrary set (finite or infinite).
-    Then the sets \(X\) and \(2^X\) cannot have equal cardinality.
+  Let \(X\) be an arbitrary set (finite or infinite).
+  Then the sets \(X\) and \(2^X\) cannot have equal cardinality.
 \end{theorem}
 
 \begin{proof}
-    Suppose for sake of contradiction that the sets \(X\) and \(2^X\) had equal cardinality.
-    Then there exists a bijection \(f : X \to 2^X\) between \(X\) and the power set of \(X\).
-    Now consider the set
-    \[
-        A \coloneqq \{x \in X : x \notin f(x)\}.
-    \]
-    Note that this set is well-defined since \(f(x)\) is an element of \(2^X\) and is hence a subset of \(X\).
-    Clearly \(A\) is a subset of \(X\), hence is an element of \(2^X\).
-    Since \(f\) is a bijection, there must therefore exist \(x \in X\) such that \(f(x) = A\).
-    There are now two cases, depending on whether \(x \in A\) or \(x \notin A\).
-    If \(x \in A\), then by definition of \(A\) we have \(x \notin f(x)\), hence \(x \notin A\), a contradiction.
-    But if \(x \notin A\), then \(x \notin f(x)\), hence by definition of \(A\) we have \(x \in A\), a contradiction.
-    Thus in either case we have a contradiction.
+  Suppose for sake of contradiction that the sets \(X\) and \(2^X\) had equal cardinality.
+  Then there exists a bijection \(f : X \to 2^X\) between \(X\) and the power set of \(X\).
+  Now consider the set
+  \[
+    A \coloneqq \{x \in X : x \notin f(x)\}.
+  \]
+  Note that this set is well-defined since \(f(x)\) is an element of \(2^X\) and is hence a subset of \(X\).
+  Clearly \(A\) is a subset of \(X\), hence is an element of \(2^X\).
+  Since \(f\) is a bijection, there must therefore exist \(x \in X\) such that \(f(x) = A\).
+  There are now two cases, depending on whether \(x \in A\) or \(x \notin A\).
+  If \(x \in A\), then by definition of \(A\) we have \(x \notin f(x)\), hence \(x \notin A\), a contradiction.
+  But if \(x \notin A\), then \(x \notin f(x)\), hence by definition of \(A\) we have \(x \in A\), a contradiction.
+  Thus in either case we have a contradiction.
 \end{proof}
 
 \begin{remark}\label{8.3.2}
-    The reader should compare the proof of Cantor's theorem with the statement of Russell's paradox (Section \ref{sec 3.2}).
-    The point is that a bijection between \(X\) and \(2^X\) would come dangerously close to the concept of a set \(X\) ``containing itself''.
+  The reader should compare the proof of Cantor's theorem with the statement of Russell's paradox (\cref{sec 3.2}).
+  The point is that a bijection between \(X\) and \(2^X\) would come dangerously close to the concept of a set \(X\) ``containing itself''.
 \end{remark}
 
 \begin{corollary}\label{8.3.3}
-    \(2^{\N}\) is uncountable.
+  \(2^{\N}\) is uncountable.
 \end{corollary}
 
 \begin{proof}
-    By Theorem \ref{8.3.1}, \(2^{\N}\) cannot have equal cardinality with \(\N\), hence is either uncountable or finite.
-    However, \(2^{\N}\) contains as a subset the set of singletons \(\{\{n\} : n \in \N\}\), which is clearly bijective to \(\N\) and hence countably infinite.
-    Thus \(2^{\N}\) cannot be finite (by Proposition \ref{3.6.14}), and is hence uncountable.
+  By \cref{8.3.1}, \(2^{\N}\) cannot have equal cardinality with \(\N\), hence is either uncountable or finite.
+  However, \(2^{\N}\) contains as a subset the set of singletons \(\{\{n\} : n \in \N\}\), which is clearly bijective to \(\N\) and hence countably infinite.
+  Thus \(2^{\N}\) cannot be finite (by \cref{3.6.14}), and is hence uncountable.
 \end{proof}
 
 \begin{corollary}\label{8.3.4}
-    \(\R\) is uncountable.
+  \(\R\) is uncountable.
 \end{corollary}
 
 \begin{proof}
-    Let us define the map \(f : 2^{\N} \to \R\) by the formula
-    \[
-        f(A) \coloneqq \sum_{n \in A} 10^{-n}.
-    \]
-    Observe that since \(\sum_{n = 0}^\infty 10^{-n}\) is an absolutely convergent series (by Lemma \ref{7.3.3}), the series \(\sum_{n \in A} 10^{-n}\) is also absolutely convergent (by Proposition \ref{8.2.6}(c)).
-    Thus the map \(f\)  is well defined.
-    We now claim that \(f\) is injective.
-    Suppose for sake of contradiction that there were two distinct sets \(A, B \in 2^{\N}\) such that \(f(A) = f(B)\).
-    Since \(A \neq B\), the set \((A \setminus B) \cup (B \setminus A)\) is a non-empty subset of \(\N\).
-    By the well-ordering principle (Proposition \ref{8.1.4}), we can then define the minimum of this set, say \(n_0 \coloneqq \min(A \setminus B) \cup (B \setminus A)\).
-    Thus \(n_0\) either lies in \(A \setminus B\) or \(B \setminus A\).
-    By symmetry we may assume it lies in \(A \setminus B\).
-    Then \(n_0 \in A\), \(n_0 \notin B\), and for all \(n < n_0\) we either have \(n \in A, B\) or \(n \notin A, B\).
-    Thus
-    \begin{align*}
-        0 & = f(A) - f(B)                                                                                 \\
-          & = \sum_{n \in A} 10^{-n} - \sum_{n \in B} 10^{-n}                                             \\
-          & = \Bigg(\sum_{n < n_0 : n \in A} 10^{-n} + 10^{-n_0} + \sum_{n > n_0 : n \in A} 10^{-n}\Bigg) \\
-          & \quad - \Bigg(\sum_{n < n_0 : n \in B} 10^{-n} + \sum_{n > n_0 : n \in B} 10^{-n}\Bigg)       \\
-          & = 10^{-n_0} + \sum_{n > n_0 : n \in A} 10^{-n} - \sum_{n > n_0 : n \in B} 10^{-n}             \\
-          & \geq 10^{-n_0} + 0 - \sum_{n > n_0} 10^{-n}                                                   \\
-          & \geq 10^{-n_0} - \frac{1}{9} 10^{-n_0}                                                        \\
-          & > 0,
-    \end{align*}
-    a contradiction, where we have used the geometric series lemma (Lemma \ref{7.3.3}) to sum
-    \[
-        \sum_{n > n_0} 10^{-n} = \sum_{m = 0}^\infty 10^{-(n_0 + 1 + m)} = 10^{-n_0 - 1} \sum_{m = 0}^\infty 10^{-m} = \frac{1}{9} 10^{-n_0}.
-    \]
-    Thus \(f\) is injective, which means that \(f(2^{\N})\) has the same cardinality as \(2^{\N}\) and is thus uncountable.
-    Since \(f(2^{\N})\) is a subset of \(\R\), this forces \(\R\) to be uncountable also (otherwise this would contradict Corollary \ref{8.1.7}), and we are done.
+  Let us define the map \(f : 2^{\N} \to \R\) by the formula
+  \[
+    f(A) \coloneqq \sum_{n \in A} 10^{-n}.
+  \]
+  Observe that since \(\sum_{n = 0}^\infty 10^{-n}\) is an absolutely convergent series (by \cref{7.3.3}), the series \(\sum_{n \in A} 10^{-n}\) is also absolutely convergent (by \cref{8.2.6}(c)).
+  Thus the map \(f\)  is well defined.
+  We now claim that \(f\) is injective.
+  Suppose for sake of contradiction that there were two distinct sets \(A, B \in 2^{\N}\) such that \(f(A) = f(B)\).
+  Since \(A \neq B\), the set \((A \setminus B) \cup (B \setminus A)\) is a non-empty subset of \(\N\).
+  By the well-ordering principle (\cref{8.1.4}), we can then define the minimum of this set, say \(n_0 \coloneqq \min(A \setminus B) \cup (B \setminus A)\).
+  Thus \(n_0\) either lies in \(A \setminus B\) or \(B \setminus A\).
+  By symmetry we may assume it lies in \(A \setminus B\).
+  Then \(n_0 \in A\), \(n_0 \notin B\), and for all \(n < n_0\) we either have \(n \in A, B\) or \(n \notin A, B\).
+  Thus
+  \begin{align*}
+    0 & = f(A) - f(B)                                                                                 \\
+      & = \sum_{n \in A} 10^{-n} - \sum_{n \in B} 10^{-n}                                             \\
+      & = \Bigg(\sum_{n < n_0 : n \in A} 10^{-n} + 10^{-n_0} + \sum_{n > n_0 : n \in A} 10^{-n}\Bigg) \\
+      & \quad - \Bigg(\sum_{n < n_0 : n \in B} 10^{-n} + \sum_{n > n_0 : n \in B} 10^{-n}\Bigg)       \\
+      & = 10^{-n_0} + \sum_{n > n_0 : n \in A} 10^{-n} - \sum_{n > n_0 : n \in B} 10^{-n}             \\
+      & \geq 10^{-n_0} + 0 - \sum_{n > n_0} 10^{-n}                                                   \\
+      & \geq 10^{-n_0} - \frac{1}{9} 10^{-n_0}                                                        \\
+      & > 0,
+  \end{align*}
+  a contradiction, where we have used the geometric series lemma (\cref{7.3.3}) to sum
+  \[
+    \sum_{n > n_0} 10^{-n} = \sum_{m = 0}^\infty 10^{-(n_0 + 1 + m)} = 10^{-n_0 - 1} \sum_{m = 0}^\infty 10^{-m} = \frac{1}{9} 10^{-n_0}.
+  \]
+  Thus \(f\) is injective, which means that \(f(2^{\N})\) has the same cardinality as \(2^{\N}\) and is thus uncountable.
+  Since \(f(2^{\N})\) is a subset of \(\R\), this forces \(\R\) to be uncountable also (otherwise this would contradict \cref{8.1.7}), and we are done.
 \end{proof}
 
 \setcounter{theorem}{5}
 \begin{remark}\label{8.3.6}
-    Corollary \ref{8.3.4} shows that the reals have strictly larger cardinality than the natural numbers (in the sense of Exercise \ref{ex 3.6.7}).
-    One could ask whether there exist any sets which have strictly larger cardinality than the natural numbers, but strictly smaller cardinality than the reals.
-    The \emph{Continuum Hypothesis} asserts that no such sets exist.
-    Interestingly, it was shown in separate works of Kurt Gödel (1906 -- 1978) and Paul Cohen (1934 -- 2007) that this hypothesis is independent of the other axioms of set theory;
-    it can neither be proved nor disproved in that set of axioms
-    (unless those axioms are inconsistent, which is highly unlikely).
+  \cref{8.3.4} shows that the reals have strictly larger cardinality than the natural numbers (in the sense of \cref{ex 3.6.7}).
+  One could ask whether there exist any sets which have strictly larger cardinality than the natural numbers, but strictly smaller cardinality than the reals.
+  The \emph{Continuum Hypothesis} asserts that no such sets exist.
+  Interestingly, it was shown in separate works of Kurt Gödel (1906 -- 1978) and Paul Cohen (1934 -- 2007) that this hypothesis is independent of the other axioms of set theory;
+  it can neither be proved nor disproved in that set of axioms
+  (unless those axioms are inconsistent, which is highly unlikely).
 \end{remark}
 
 \exercisesection
 
 \begin{exercise}\label{ex 8.3.1}
-    Let \(X\) be a finite set of cardinality \(n\).
-    Show that \(2^X\) is a finite set of cardinality \(2^n\).
+  Let \(X\) be a finite set of cardinality \(n\).
+  Show that \(2^X\) is a finite set of cardinality \(2^n\).
 \end{exercise}
 
 \begin{proof}
-    We use induction on \(n\).
-    For \(n = 0\), \(X = \emptyset\) and \(2^{\emptyset} = \{\emptyset\}\).
-    Clearly \(\#(2^{\emptyset}) = 1\).
-    So the base case holds.
-    Suppose inductively that \(\#(2^X) = 2^n\) for some \(n \geq 0\).
-    We need to show that for \(n + 1\), \(\#(2^X) = 2^{n + 1}\).
-    Since \(\#(X) = n + 1\), we have \(X \neq \emptyset\).
-    Let \(x \in X\).
-    Then we have
-    \begin{align*}
-        \#(2^X) & = \#(2^{(X \setminus \{x\}) \cup \{x\}})                                               \\
-                & = \#(2^{X \setminus \{x\}}) \times \#(2^{\{x\}}) & \text{(by Exercise \ref{ex 3.6.6})} \\
-                & = 2^n \times \#(2^{\{x\}})                       & \text{(by induction hypothesis)}    \\
-                & = 2^n \times \#(\{\emptyset, \{x\}\})                                                  \\
-                & = 2^n \times 2                                                                         \\
-                & = 2^{n + 1}.
-    \end{align*}
-    This closes the induction.
+  We use induction on \(n\).
+  For \(n = 0\), \(X = \emptyset\) and \(2^{\emptyset} = \{\emptyset\}\).
+  Clearly \(\#(2^{\emptyset}) = 1\).
+  So the base case holds.
+  Suppose inductively that \(\#(2^X) = 2^n\) for some \(n \geq 0\).
+  We need to show that for \(n + 1\), \(\#(2^X) = 2^{n + 1}\).
+  Since \(\#(X) = n + 1\), we have \(X \neq \emptyset\).
+  Let \(x \in X\).
+  Then we have
+  \begin{align*}
+    \#(2^X) & = \#(2^{(X \setminus \{x\}) \cup \{x\}})                                            \\
+            & = \#(2^{X \setminus \{x\}}) \times \#(2^{\{x\}}) & \text{(by \cref{ex 3.6.6})}      \\
+            & = 2^n \times \#(2^{\{x\}})                       & \text{(by induction hypothesis)} \\
+            & = 2^n \times \#(\{\emptyset, \{x\}\})                                               \\
+            & = 2^n \times 2                                                                      \\
+            & = 2^{n + 1}.
+  \end{align*}
+  This closes the induction.
 \end{proof}
 
 \begin{exercise}\label{ex 8.3.2}
-    Let \(A, B, C\) be sets such that \(A \subseteq B \subseteq C\), and suppose that there is a injection \(f : C \to A\).
-    Define the sets \(D_0, D_1, D_2, \dots\) recursively by setting \(D_0 \coloneqq B \setminus A\), and then \(D_{n + 1} \coloneqq f(D_n)\) for all natural numbers \(n\).
-    Prove that the sets \(D_0, D_1, \dots\) are all disjoint from each other
-    (i.e., \(D_n \cap D_m = \emptyset\) whenever \(n \neq m\)).
-    Also show that if \(g : A \to B\) is the function defined by setting \(g(x) \coloneqq f^{-1}(x)\) when \(x \in \bigcup_{n = 1}^\infty D_n\), and \(g(x) \coloneqq x\) when \(x \notin \bigcup_{n = 1}^\infty D_n\), then \(g\) does indeed map \(A\) to \(B\) and is a bijection between the two.
-    In particular, \(A\) and \(B\) have the same cardinality.
+  Let \(A, B, C\) be sets such that \(A \subseteq B \subseteq C\), and suppose that there is a injection \(f : C \to A\).
+  Define the sets \(D_0, D_1, D_2, \dots\) recursively by setting \(D_0 \coloneqq B \setminus A\), and then \(D_{n + 1} \coloneqq f(D_n)\) for all natural numbers \(n\).
+  Prove that the sets \(D_0, D_1, \dots\) are all disjoint from each other
+  (i.e., \(D_n \cap D_m = \emptyset\) whenever \(n \neq m\)).
+  Also show that if \(g : A \to B\) is the function defined by setting \(g(x) \coloneqq f^{-1}(x)\) when \(x \in \bigcup_{n = 1}^\infty D_n\), and \(g(x) \coloneqq x\) when \(x \notin \bigcup_{n = 1}^\infty D_n\), then \(g\) does indeed map \(A\) to \(B\) and is a bijection between the two.
+  In particular, \(A\) and \(B\) have the same cardinality.
 \end{exercise}
 
 \begin{proof}
-    We first show that \(\forall n, m \in \N\), \(n \neq m \implies D_n \cap D_m = \emptyset\).
-    Let \(P(n)\) be the statement ``\(\forall k \in \Z^+ : D_n \cap D_{n + k} = \emptyset\)''.
-    We use induction on \(n\) to show that \(P(n)\) is true.
-    For \(n = 0\), we have \(D_0 = B \setminus A\) and \(D_k = f(D_{k - 1}) \subseteq A\).
-    Thus we have \(D_0 \cap D_k = \emptyset\) and the base case holds.
-    Suppose inductively that \(P(n)\) is true for some \(n \geq 0\).
-    Then for \(n + 1\), we need to show that \(P(n + 1)\) is also true.
-    Suppose for sake of contradiction that \(D_{n + 1} \cap D_{n + k + 1} \neq \emptyset\).
-    Then we have
-    \begin{align*}
-                 & \exists\ x : (x \in D_{n + 1} \cap D_{n + k + 1})                                                            \\
-        \implies & \exists\ x : \big(x \in f(D_n) \cap f(D_{n + k})\big)                                                        \\
-        \implies & \exists\ z, z' : \big(z \in D_n \land z' \in D_{n + k} \land f(z) = f(z')\big)                               \\
-        \implies & z = z'.                                                                        & \text{(\(f\) is injective)}
-    \end{align*}
-    But by induction hypothesis we know that \(D_n \cap D_{n + k} = \emptyset\), a contradiction.
-    Thus \(D_{n + 1} \cap D_{n + k + 1} = \emptyset\).
-    This closes the induction.
+  We first show that \(\forall n, m \in \N\), \(n \neq m \implies D_n \cap D_m = \emptyset\).
+  Let \(P(n)\) be the statement ``\(\forall k \in \Z^+ : D_n \cap D_{n + k} = \emptyset\)''.
+  We use induction on \(n\) to show that \(P(n)\) is true.
+  For \(n = 0\), we have \(D_0 = B \setminus A\) and \(D_k = f(D_{k - 1}) \subseteq A\).
+  Thus we have \(D_0 \cap D_k = \emptyset\) and the base case holds.
+  Suppose inductively that \(P(n)\) is true for some \(n \geq 0\).
+  Then for \(n + 1\), we need to show that \(P(n + 1)\) is also true.
+  Suppose for sake of contradiction that \(D_{n + 1} \cap D_{n + k + 1} \neq \emptyset\).
+  Then we have
+  \begin{align*}
+             & \exists\ x : (x \in D_{n + 1} \cap D_{n + k + 1})                                                            \\
+    \implies & \exists\ x : \big(x \in f(D_n) \cap f(D_{n + k})\big)                                                        \\
+    \implies & \exists\ z, z' : \big(z \in D_n \land z' \in D_{n + k} \land f(z) = f(z')\big)                               \\
+    \implies & z = z'.                                                                        & \text{(\(f\) is injective)}
+  \end{align*}
+  But by induction hypothesis we know that \(D_n \cap D_{n + k} = \emptyset\), a contradiction.
+  Thus \(D_{n + 1} \cap D_{n + k + 1} = \emptyset\).
+  This closes the induction.
 
-    Now we use \(P(n)\) to show that \(\forall n, m \in \N\), \(n \neq m \implies D_n \cap D_m = \emptyset\).
-    Since \(m \neq n\), we have
-    \[
-        \begin{cases}
-            n = m + k & \text{if } m < n, \\
-            m = n + k & \text{if } n < m,
-        \end{cases}
-    \]
-    where \(k \in \Z^+\).
-    Using \(P(n)\) we can thus have \(D_n \cap D_m = \emptyset\).
+  Now we use \(P(n)\) to show that \(\forall n, m \in \N\), \(n \neq m \implies D_n \cap D_m = \emptyset\).
+  Since \(m \neq n\), we have
+  \[
+    \begin{cases}
+      n = m + k & \text{if } m < n, \\
+      m = n + k & \text{if } n < m,
+    \end{cases}
+  \]
+  where \(k \in \Z^+\).
+  Using \(P(n)\) we can thus have \(D_n \cap D_m = \emptyset\).
 
-    Finally we show that if \(g : A \to B\) is a function where
-    \[
-        \forall x \in A : g(x) = \begin{cases}
-            f^{-1}(x) & \text{if } x \in \bigcup_{n = 1}^\infty D_n, \\
-            x         & \text{otherwise},
-        \end{cases}
-    \]
-    then \(g\) is bijective.
-    Since \(f\) is injective, \(f\) is thus bijective from \(\bigcup_{n = 0}^\infty D_n\) to \(f(\bigcup_{n = 0}^\infty D_n)\).
-    By definition we have \(f(\bigcup_{n = 0}^\infty D_n) = \bigcup_{n = 1}^\infty D_n\).
-    Thus \(g\) is well-defined.
+  Finally we show that if \(g : A \to B\) is a function where
+  \[
+    \forall x \in A : g(x) = \begin{cases}
+      f^{-1}(x) & \text{if } x \in \bigcup_{n = 1}^\infty D_n, \\
+      x         & \text{otherwise},
+    \end{cases}
+  \]
+  then \(g\) is bijective.
+  Since \(f\) is injective, \(f\) is thus bijective from \(\bigcup_{n = 0}^\infty D_n\) to \(f(\bigcup_{n = 0}^\infty D_n)\).
+  By definition we have \(f(\bigcup_{n = 0}^\infty D_n) = \bigcup_{n = 1}^\infty D_n\).
+  Thus \(g\) is well-defined.
 
-    We now show that \(g\) is bijective.
-    We start by showing that \(g\) is injective.
-    Let \(x, x' \in A\) such that \(g(x) = g(x')\).
-    We split into four cases:
-    \begin{itemize}
-        \item If \(x, x' \in \bigcup_{n = 1}^\infty D_n\), then since \(f\) is bijective from \(\bigcup_{n = 0}^\infty D_n\) to \(\bigcup_{n = 1}^\infty D_n\), we have \(f^{-1}(x) = f^{-1}(x') \implies x = x'\).
-        \item If \(x, x' \in A \setminus \bigcup_{n = 1}^\infty D_n\), then we have \(g(x) = x = x' = g(x')\).
-        \item One of \(x, x'\) is in \(A \setminus \bigcup_{n = 1}^\infty D_n\) and the other is in \(\bigcup_{n = 1}^\infty D_n\).
-              Without the loss of generality suppose that \(x \in \bigcup_{n = 1}^\infty D_n\) and \(x' \in A \setminus \bigcup_{n = 1}^\infty D_n\).
-              Then we show that this case is impossible.
-              Since \(x \in \bigcup_{n = 1}^\infty D_n\), we have
-              \[
-                  f^{-1}(x) \in \bigcup_{n = 0}^\infty D_n = D_0 \cup (\bigcup_{n = 1}^\infty D_n) = (B \setminus A) \cup (\bigcup_{n = 1}^\infty D_n).
-              \]
-              But \(g(x) = f^{-1}(x) = x' = g(x')\) implies \(x' \in (B \setminus A) \cup (\bigcup_{n = 1}^\infty D_n)\), a contradiction.
-              Thus this case is impossible.
-    \end{itemize}
-    From all possible cases above we conclude that \(x = x'\).
-    Thus \(g\) is injective.
+  We now show that \(g\) is bijective.
+  We start by showing that \(g\) is injective.
+  Let \(x, x' \in A\) such that \(g(x) = g(x')\).
+  We split into four cases:
+  \begin{itemize}
+    \item If \(x, x' \in \bigcup_{n = 1}^\infty D_n\), then since \(f\) is bijective from \(\bigcup_{n = 0}^\infty D_n\) to \(\bigcup_{n = 1}^\infty D_n\), we have \(f^{-1}(x) = f^{-1}(x') \implies x = x'\).
+    \item If \(x, x' \in A \setminus \bigcup_{n = 1}^\infty D_n\), then we have \(g(x) = x = x' = g(x')\).
+    \item One of \(x, x'\) is in \(A \setminus \bigcup_{n = 1}^\infty D_n\) and the other is in \(\bigcup_{n = 1}^\infty D_n\).
+          Without the loss of generality suppose that \(x \in \bigcup_{n = 1}^\infty D_n\) and \(x' \in A \setminus \bigcup_{n = 1}^\infty D_n\).
+          Then we show that this case is impossible.
+          Since \(x \in \bigcup_{n = 1}^\infty D_n\), we have
+          \[
+            f^{-1}(x) \in \bigcup_{n = 0}^\infty D_n = D_0 \cup (\bigcup_{n = 1}^\infty D_n) = (B \setminus A) \cup (\bigcup_{n = 1}^\infty D_n).
+          \]
+          But \(g(x) = f^{-1}(x) = x' = g(x')\) implies \(x' \in (B \setminus A) \cup (\bigcup_{n = 1}^\infty D_n)\), a contradiction.
+          Thus this case is impossible.
+  \end{itemize}
+  From all possible cases above we conclude that \(x = x'\).
+  Thus \(g\) is injective.
 
-    Next we show that \(g\) is surjective.
-    Let \(y \in B\).
-    We split into two cases:
-    \begin{itemize}
-        \item If \(y \in \bigcup_{n = 0}^\infty D_n\), then \(\exists\ x \in \bigcup_{n = 1}^\infty D_n\) such that \(f^{-1}(x) = y\).
-              This is true since \(f\) is bijective from \(\bigcup_{n = 0}^\infty D_n\) to \(\bigcup_{n = 1}^\infty D_n\).
-        \item If \(y \in B \setminus (\bigcup_{n = 0}^\infty D_n)\), then we know that \(y \in A\) since
-              \begin{align*}
-                  B \setminus \bigcup_{n = 0}^\infty D_n & = B \setminus \bigg((B \setminus A) \cup (\bigcup_{n = 1}^\infty D_n)\bigg)                                                                \\
-                                                         & = \bigg(B \setminus (B \setminus A)\bigg) \cap \bigg(B \setminus (\bigcup_{n = 1}^\infty D_n)\bigg) & \text{(by Proposition \ref{3.1.28})} \\
-                                                         & = (A \cap B) \cap \bigg(B \setminus (\bigcup_{n = 1}^\infty D_n)\bigg)                                                                     \\
-                                                         & \subseteq A.
-              \end{align*}
-              Since \(y \notin \bigcup_{n = 0}^\infty D_n\), we have \(g(y) = y\).
-    \end{itemize}
-    From all cases above we can find a \(x \in A\) such that \(g(x) = y\).
-    Thus \(g\) is surjective.
-    Since \(g\) is both injective and surjective, we know that \(g\) is bijective.
+  Next we show that \(g\) is surjective.
+  Let \(y \in B\).
+  We split into two cases:
+  \begin{itemize}
+    \item If \(y \in \bigcup_{n = 0}^\infty D_n\), then \(\exists\ x \in \bigcup_{n = 1}^\infty D_n\) such that \(f^{-1}(x) = y\).
+          This is true since \(f\) is bijective from \(\bigcup_{n = 0}^\infty D_n\) to \(\bigcup_{n = 1}^\infty D_n\).
+    \item If \(y \in B \setminus (\bigcup_{n = 0}^\infty D_n)\), then we know that \(y \in A\) since
+          \begin{align*}
+            B \setminus \bigcup_{n = 0}^\infty D_n & = B \setminus \bigg((B \setminus A) \cup (\bigcup_{n = 1}^\infty D_n)\bigg)                                                     \\
+                                                   & = \bigg(B \setminus (B \setminus A)\bigg) \cap \bigg(B \setminus (\bigcup_{n = 1}^\infty D_n)\bigg) & \text{(by \cref{3.1.28})} \\
+                                                   & = (A \cap B) \cap \bigg(B \setminus (\bigcup_{n = 1}^\infty D_n)\bigg)                                                          \\
+                                                   & \subseteq A.
+          \end{align*}
+          Since \(y \notin \bigcup_{n = 0}^\infty D_n\), we have \(g(y) = y\).
+  \end{itemize}
+  From all cases above we can find a \(x \in A\) such that \(g(x) = y\).
+  Thus \(g\) is surjective.
+  Since \(g\) is both injective and surjective, we know that \(g\) is bijective.
 \end{proof}
 
 \begin{exercise}\label{ex 8.3.3}
-    Recall from Exercise \ref{ex 3.6.7} that a set \(A\) is said to have lesser or equal cardinality than a set \(B\) iff there is an injective map \(f : A \to B\) from \(A\) to \(B\).
-    Using Exercise \ref{ex 8.3.2}, show that if \(A, B\) are sets such that \(A\) has lesser or equal cardinality to \(B\) and \(B\) has lesser or equal cardinality to \(A\), then \(A\) and \(B\) have equal cardinality.
-    (This is known as the \emph{Schröder-Bernstein theorem}, after Ernst Schröder (1841 -- 1902) and Felix Bernstein (1878 -- 1956).)
+  Recall from \cref{ex 3.6.7} that a set \(A\) is said to have lesser or equal cardinality than a set \(B\) iff there is an injective map \(f : A \to B\) from \(A\) to \(B\).
+  Using \cref{ex 8.3.2}, show that if \(A, B\) are sets such that \(A\) has lesser or equal cardinality to \(B\) and \(B\) has lesser or equal cardinality to \(A\), then \(A\) and \(B\) have equal cardinality.
+  (This is known as the \emph{Schröder-Bernstein theorem}, after Ernst Schröder (1841 -- 1902) and Felix Bernstein (1878 -- 1956).)
 \end{exercise}
 
 \begin{proof}
-    Suppose that \(A, B\) are sets, \(A\) has lesser or equal cardinality to \(B\) and \(B\) has lesser or equal cardinality to \(A\).
-    Then by Exercise \ref{ex 3.6.7} we know that \(\exists\ f : A \to B, g : B \to A\) such that both \(f, g\) are injective.
-    By Exercise \ref{ex 3.3.2} we have \(f \circ g : B \to B\) is injective.
-    By Definition \ref{3.4.1} we know that \(f \circ g : B \to f\big(g(B)\big)\) is bijective and
-    \[
-        f\big(g(B)\big) \subseteq f(A) \subseteq B.
-    \]
-    Define the sets \(D_n\) recursively by setting
-    \begin{align*}
-        D_0       & = f(A) \setminus f\big(g(B)\big), \\
-        D_{n + 1} & = f\big(g(D_n)\big),
-    \end{align*}
-    where \(n \in \N\).
-    By Exercise \ref{ex 8.3.2} we know that \(\forall i, j \in \N\), \(i \neq j \implies D_i \cap D_j = \emptyset\).
-    Now let \(h : f\big(g(B)\big) \to f(A)\) be a function as follow:
-    \[
-        \forall x \in f\big(g(B)\big), h(x) = \begin{cases}
-            (g^{-1} \circ f^{-1})(x) & \text{if } x \in \bigcup_{n = 1}^\infty D_n,    \\
-            x                        & \text{if } x \notin \bigcup_{n = 1}^\infty D_n.
-        \end{cases}
-    \]
-    By Exercise \ref{ex 8.3.2} we know that \(h\) is bijective.
-    Thus by Definition \ref{3.6.1} we know \(f(A)\) and \(f\big(g(B)\big)\) have the same cardinality.
-    Since \(f \circ g\) is bijective, we know that \(B, f\big(g(B)\big)\) have the same cardinality, thus by Proposition \ref{3.6.4} \(f(A), B\) have the same cardinality.
-    But since \(f\) is injective, we know that \(f\) is bijective from \(A\) to \(f(A)\), which means \(A, f(A)\) have the same cardinality.
-    Thus by Proposition \ref{3.6.4} \(A, B\) have the same cardinality.
+  Suppose that \(A, B\) are sets, \(A\) has lesser or equal cardinality to \(B\) and \(B\) has lesser or equal cardinality to \(A\).
+  Then by \cref{ex 3.6.7} we know that \(\exists\ f : A \to B, g : B \to A\) such that both \(f, g\) are injective.
+  By \cref{ex 3.3.2} we have \(f \circ g : B \to B\) is injective.
+  By \cref{3.4.1} we know that \(f \circ g : B \to f\big(g(B)\big)\) is bijective and
+  \[
+    f\big(g(B)\big) \subseteq f(A) \subseteq B.
+  \]
+  Define the sets \(D_n\) recursively by setting
+  \begin{align*}
+    D_0       & = f(A) \setminus f\big(g(B)\big), \\
+    D_{n + 1} & = f\big(g(D_n)\big),
+  \end{align*}
+  where \(n \in \N\).
+  By \cref{ex 8.3.2} we know that \(\forall i, j \in \N\), \(i \neq j \implies D_i \cap D_j = \emptyset\).
+  Now let \(h : f\big(g(B)\big) \to f(A)\) be a function as follow:
+  \[
+    \forall x \in f\big(g(B)\big), h(x) = \begin{cases}
+      (g^{-1} \circ f^{-1})(x) & \text{if } x \in \bigcup_{n = 1}^\infty D_n,    \\
+      x                        & \text{if } x \notin \bigcup_{n = 1}^\infty D_n.
+    \end{cases}
+  \]
+  By \cref{ex 8.3.2} we know that \(h\) is bijective.
+  Thus by \cref{3.6.1} we know \(f(A)\) and \(f\big(g(B)\big)\) have the same cardinality.
+  Since \(f \circ g\) is bijective, we know that \(B, f\big(g(B)\big)\) have the same cardinality, thus by \cref{3.6.4} \(f(A), B\) have the same cardinality.
+  But since \(f\) is injective, we know that \(f\) is bijective from \(A\) to \(f(A)\), which means \(A, f(A)\) have the same cardinality.
+  Thus by \cref{3.6.4} \(A, B\) have the same cardinality.
 \end{proof}
 
 \begin{exercise}\label{ex 8.3.4}
-    Let us say that a set \(A\) has \emph{strictly lesser cardinality} than a set \(B\) if \(A\) has lesser than or equal cardinality to \(B\) (in the sense of Exercise \ref{ex 3.6.7}) but \(A\) does not have equal cardinality to \(B\).
-    Show that for any set \(X\), that \(X\) has strictly lesser cardinality than \(2^X\).
-    Also, show that if \(A\) has strictly lesser cardinality than \(B\), and \(B\) has strictly lesser cardinality than \(C\), then \(A\) has strictly lesser cardinality than \(C\).
+  Let us say that a set \(A\) has \emph{strictly lesser cardinality} than a set \(B\) if \(A\) has lesser than or equal cardinality to \(B\) (in the sense of \cref{ex 3.6.7}) but \(A\) does not have equal cardinality to \(B\).
+  Show that for any set \(X\), that \(X\) has strictly lesser cardinality than \(2^X\).
+  Also, show that if \(A\) has strictly lesser cardinality than \(B\), and \(B\) has strictly lesser cardinality than \(C\), then \(A\) has strictly lesser cardinality than \(C\).
 \end{exercise}
 
 \begin{proof}
-    We first show that \(X\) has strictly lesser cardinality than \(2^X\).
-    Suppose that \(X\) is a set.
-    Since \(2^X\) has a subset \(S = \{\{x\} : x \in X\}\), we have a bijection \(f : X \to S\) which maps \(x \mapsto \{x\}\) for every \(x \in X\).
-    Now we define \(g : X \to 2^X\) where \(\forall x \in X : g(x) = f(x)\).
-    By Theorem \ref{8.3.1} we know that \(g\) is not bijective.
-    Since \(f\) is bijective, we know that \(g\) is injective.
-    Thus by definition \(X\) has strictly lesser cardinality than \(2^X\).
+  We first show that \(X\) has strictly lesser cardinality than \(2^X\).
+  Suppose that \(X\) is a set.
+  Since \(2^X\) has a subset \(S = \{\{x\} : x \in X\}\), we have a bijection \(f : X \to S\) which maps \(x \mapsto \{x\}\) for every \(x \in X\).
+  Now we define \(g : X \to 2^X\) where \(\forall x \in X : g(x) = f(x)\).
+  By \cref{8.3.1} we know that \(g\) is not bijective.
+  Since \(f\) is bijective, we know that \(g\) is injective.
+  Thus by definition \(X\) has strictly lesser cardinality than \(2^X\).
 
-    Now we show that if \(A\) has strictly lesser cardinality than \(B\), and \(B\) has strictly lesser cardinality than \(C\), then \(A\) has strictly lesser cardinality than \(C\).
-    By Exercise \ref{ex 3.6.7} \(\exists\ f : A \to B, g : B \to C\) such that both \(f, g\) are injective.
-    By Exercise \ref{ex 3.3.2} we know that \(g \circ f : A \to C\) is injective.
-    Thus to show that \(A\) has strictly lesser cardinality than \(B\), by definition it suffices to show that \(A\) does not have equal cardinality to \(C\).
+  Now we show that if \(A\) has strictly lesser cardinality than \(B\), and \(B\) has strictly lesser cardinality than \(C\), then \(A\) has strictly lesser cardinality than \(C\).
+  By \cref{ex 3.6.7} \(\exists\ f : A \to B, g : B \to C\) such that both \(f, g\) are injective.
+  By \cref{ex 3.3.2} we know that \(g \circ f : A \to C\) is injective.
+  Thus to show that \(A\) has strictly lesser cardinality than \(B\), by definition it suffices to show that \(A\) does not have equal cardinality to \(C\).
 
-    Suppose for sake of contradiction that \(A, C\) have the same cardinality.
-    Then by Definition \ref{3.6.1} \(\exists\ h : C \to A\) such that \(h\) is bijective.
-    Since \(g\) is injective, by Exercise \ref{ex 3.3.2} we know that \(h \circ g : B \to A\) is injective.
-    But \(f\) is also injective, by Exercise \ref{ex 8.3.3} we know that \(A, B\) have the same cardinality, a contradiction.
-    Thus \(A, C\) does not have the same cardinality, therefore \(A\) has strictly lesser cardinality than \(C\).
+  Suppose for sake of contradiction that \(A, C\) have the same cardinality.
+  Then by \cref{3.6.1} \(\exists\ h : C \to A\) such that \(h\) is bijective.
+  Since \(g\) is injective, by \cref{ex 3.3.2} we know that \(h \circ g : B \to A\) is injective.
+  But \(f\) is also injective, by \cref{ex 8.3.3} we know that \(A, B\) have the same cardinality, a contradiction.
+  Thus \(A, C\) does not have the same cardinality, therefore \(A\) has strictly lesser cardinality than \(C\).
 \end{proof}
 
 \begin{exercise}\label{ex 8.3.5}
-    Show that no power set (i.e., a set of the form \(2^X\) for some set \(X\)) can be countably infinite.
+  Show that no power set (i.e., a set of the form \(2^X\) for some set \(X\)) can be countably infinite.
 \end{exercise}
 
 \begin{proof}
-    Suppose for sake of contradiction that there exists a set \(X\) such that \(2^X\) is countable.
-    By Exercise \ref{ex 8.3.4} \(X\) has strictly lesser cardinality than \(2^X\).
-    Since \(2^X\) is countable, by Definition \ref{8.1.1} we know that \(X\) has strictly lesser cardinality than \(\N\) and \(X\) can not be countable.
-    Since \(X\) has strictly lesser cardinality than \(\N\), by Exercise \ref{ex 3.6.7}, \(\exists\ f : X \to \N\) such that \(f\) is injective.
-    Since \(f\) is injective, we know that \(f\) is bijective from \(X\) to \(f(X)\).
-    Since \(f(X) \subseteq \N\), by Corollary \ref{8.1.6} \(f(X)\) is at most countable.
-    Since \(X, f(X)\) have the same cardinality and \(X\) is not countable, \(X\) must be finite.
-    But by Exercise \ref{ex 8.3.1} we know that \(X\) is finite implies \(2^X\) is finite, a contradiction.
-    Thus such \(X\) does not exists.
+  Suppose for sake of contradiction that there exists a set \(X\) such that \(2^X\) is countable.
+  By \cref{ex 8.3.4} \(X\) has strictly lesser cardinality than \(2^X\).
+  Since \(2^X\) is countable, by \cref{8.1.1} we know that \(X\) has strictly lesser cardinality than \(\N\) and \(X\) can not be countable.
+  Since \(X\) has strictly lesser cardinality than \(\N\), by \cref{ex 3.6.7}, \(\exists\ f : X \to \N\) such that \(f\) is injective.
+  Since \(f\) is injective, we know that \(f\) is bijective from \(X\) to \(f(X)\).
+  Since \(f(X) \subseteq \N\), by \cref{8.1.6} \(f(X)\) is at most countable.
+  Since \(X, f(X)\) have the same cardinality and \(X\) is not countable, \(X\) must be finite.
+  But by \cref{ex 8.3.1} we know that \(X\) is finite implies \(2^X\) is finite, a contradiction.
+  Thus such \(X\) does not exists.
 \end{proof}

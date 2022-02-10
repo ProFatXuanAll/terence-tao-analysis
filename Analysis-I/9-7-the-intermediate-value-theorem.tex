@@ -1,137 +1,137 @@
 \section{The intermediate value theorem}\label{sec 9.7}
 
 \begin{theorem}[Intermediate value theorem]\label{9.7.1}
-    Let \(a < b\), and let \(f : [a, b] \to \R\) be a continuous function on \([a, b]\).
-    Let \(y\) be a real number between \(f(a)\) and \(f(b)\), i.e., either \(f(a) \leq y \leq f(b)\) or \(f(a) \geq y \geq f(b)\).
-    Then there exists \(c \in [a, b]\) such that \(f(c) = y\).
+  Let \(a < b\), and let \(f : [a, b] \to \R\) be a continuous function on \([a, b]\).
+  Let \(y\) be a real number between \(f(a)\) and \(f(b)\), i.e., either \(f(a) \leq y \leq f(b)\) or \(f(a) \geq y \geq f(b)\).
+  Then there exists \(c \in [a, b]\) such that \(f(c) = y\).
 \end{theorem}
 
 \begin{proof}
-    We have two cases: \(f(a) \leq y \leq f(b)\) or \(f(a) \geq y \geq f(b)\).
-    We will assume the former, that \(f(a) \leq y \leq f(b)\);
-    the latter is proven similarly.
+  We have two cases: \(f(a) \leq y \leq f(b)\) or \(f(a) \geq y \geq f(b)\).
+  We will assume the former, that \(f(a) \leq y \leq f(b)\);
+  the latter is proven similarly.
 
-    If \(y = f(a)\) or \(y = f(b)\) then the claim is easy, as one can simply set \(c = a\) or \(c = b\), so we will assume that \(f(a) < y < f(b)\).
-    Let \(E\) denote the set
-    \[
-        E \coloneqq \{x \in [a, b] : f(x) < y\}.
-    \]
-    Clearly \(E\) is a subset of \([a, b]\), and is hence bounded.
-    Also, since \(f(a) < y\), we see that \(a\) is an element of \(E\), so \(E\) is non-empty.
-    By the least upper bound principle, the supremum
-    \[
-        c \coloneqq \sup(E)
-    \]
-    is thus finite.
-    Since \(E\) is bounded by \(b\), we know that \(c \leq b\);
-    since \(E\) contains \(a\), we know that \(c \geq a\).
-    Thus we have \(c \in [a, b]\).
-    To complete the proof we now show that \(f(c) = y\).
-    The idea is to work from the left of \(c\) to show that \(f(c) \leq y\), and to work from the right of \(c\) to show that \(f(c) \geq y\).
+  If \(y = f(a)\) or \(y = f(b)\) then the claim is easy, as one can simply set \(c = a\) or \(c = b\), so we will assume that \(f(a) < y < f(b)\).
+  Let \(E\) denote the set
+  \[
+    E \coloneqq \{x \in [a, b] : f(x) < y\}.
+  \]
+  Clearly \(E\) is a subset of \([a, b]\), and is hence bounded.
+  Also, since \(f(a) < y\), we see that \(a\) is an element of \(E\), so \(E\) is non-empty.
+  By the least upper bound principle, the supremum
+  \[
+    c \coloneqq \sup(E)
+  \]
+  is thus finite.
+  Since \(E\) is bounded by \(b\), we know that \(c \leq b\);
+  since \(E\) contains \(a\), we know that \(c \geq a\).
+  Thus we have \(c \in [a, b]\).
+  To complete the proof we now show that \(f(c) = y\).
+  The idea is to work from the left of \(c\) to show that \(f(c) \leq y\), and to work from the right of \(c\) to show that \(f(c) \geq y\).
 
-    Let \(n \geq 1\) be an integer.
-    The number \(c - \frac{1}{n}\) is less than \(c = \sup(E)\) and hence cannot be an upper bound for \(E\).
-    Thus there exists a point, call it \(x_n\), which lies in \(E\) and which is greater than \(c - \frac{1}{n}\).
-    Also \(x_n \leq c\) since \(c\) is an upper bound for \(E\).
-    Thus
-    \[
-        c - \frac{1}{n} \leq x_n \leq c.
-    \]
-    By the squeeze test (Corollary \ref{6.4.14}) we thus have \(\lim_{n \to \infty} x_n = c\).
-    Since \(f\) is continuous at \(c\), this implies that \(\lim_{n \to \infty} f(x_n) = f(c)\).
-    But since \(x_n\) lies in \(E\) for every \(n\), we have \(f(x_n) < y\) for every \(n\).
-    By the comparison principle (Lemma \ref{6.4.13}) we thus have \(f(c) \leq y\).
-    Since \(f(b) > f(c)\), we conclude \(c \neq b\).
+  Let \(n \geq 1\) be an integer.
+  The number \(c - \frac{1}{n}\) is less than \(c = \sup(E)\) and hence cannot be an upper bound for \(E\).
+  Thus there exists a point, call it \(x_n\), which lies in \(E\) and which is greater than \(c - \frac{1}{n}\).
+  Also \(x_n \leq c\) since \(c\) is an upper bound for \(E\).
+  Thus
+  \[
+    c - \frac{1}{n} \leq x_n \leq c.
+  \]
+  By the squeeze test (\cref{6.4.14}) we thus have \(\lim_{n \to \infty} x_n = c\).
+  Since \(f\) is continuous at \(c\), this implies that \(\lim_{n \to \infty} f(x_n) = f(c)\).
+  But since \(x_n\) lies in \(E\) for every \(n\), we have \(f(x_n) < y\) for every \(n\).
+  By the comparison principle (\cref{6.4.13}) we thus have \(f(c) \leq y\).
+  Since \(f(b) > f(c)\), we conclude \(c \neq b\).
 
-    Since \(c \neq b\) and \(c \in [a, b]\), we must have \(c < b\).
-    In particular there is an \(N > 0\) such that \(c + \frac{1}{n} < b\) for all \(n > N\)
-    (since \(c + \frac{1}{n}\) converges to \(c\) as \(n \to \infty\)).
-    Since \(c\) is the supremum of \(E\) and \(c + \frac{1}{n} > c\), we thus have \(c + \frac{1}{n} \notin E\) for all \(n > N\).
-    Since \(c + \frac{1}{n} \in [a, b]\), we thus have \(f(c + \frac{1}{n}) \geq y\) for all \(n \geq N\).
-    But \(c + \frac{1}{n}\) converges to \(c\), and \(f\) is continuous at \(c\), thus \(f(c) \geq y\).
-    But we already knew that \(f(c) \leq y\), thus \(f(c) = y\), as desired.
+  Since \(c \neq b\) and \(c \in [a, b]\), we must have \(c < b\).
+  In particular there is an \(N > 0\) such that \(c + \frac{1}{n} < b\) for all \(n > N\)
+  (since \(c + \frac{1}{n}\) converges to \(c\) as \(n \to \infty\)).
+  Since \(c\) is the supremum of \(E\) and \(c + \frac{1}{n} > c\), we thus have \(c + \frac{1}{n} \notin E\) for all \(n > N\).
+  Since \(c + \frac{1}{n} \in [a, b]\), we thus have \(f(c + \frac{1}{n}) \geq y\) for all \(n \geq N\).
+  But \(c + \frac{1}{n}\) converges to \(c\), and \(f\) is continuous at \(c\), thus \(f(c) \geq y\).
+  But we already knew that \(f(c) \leq y\), thus \(f(c) = y\), as desired.
 \end{proof}
 
 \begin{note}
-    The intermediate value theorem says that if \(f\) takes the values \(f(a)\) and \(f(b)\), then it must also take all the values in between.
-    If \(f\) is not assumed to be continuous, then the intermediate value theorem no longer applies.
-    If a function is discontinuous, it can ``jump'' past intermediate values;
-    however continuous functions cannot do so.
+  The intermediate value theorem says that if \(f\) takes the values \(f(a)\) and \(f(b)\), then it must also take all the values in between.
+  If \(f\) is not assumed to be continuous, then the intermediate value theorem no longer applies.
+  If a function is discontinuous, it can ``jump'' past intermediate values;
+  however continuous functions cannot do so.
 \end{note}
 
 \begin{remark}\label{9.7.2}
-    A continuous function may take an intermediate value multiple times.
+  A continuous function may take an intermediate value multiple times.
 \end{remark}
 
 \begin{remark}\label{9.7.3}
-    The intermediate value theorem gives another way to show that one can take \(n^{\text{th}}\) roots of a number.
-    For instance, to construct the square root of \(2\), consider the function \(f : [0, 2] \to \R\) defined by \(f(x) = x^2\).
-    This function is continuous, with \(f(0) = 0\) and \(f(2) = 4\).
-    Thus there exists a \(c \in [0, 2]\) such that \(f(c) = 2\), i.e., \(c^2 = 2\).
-    (This argument does not show that there is just one square root of \(2\), but it does prove that there is \emph{at least} one square root of \(2\).)
+  The intermediate value theorem gives another way to show that one can take \(n^{\text{th}}\) roots of a number.
+  For instance, to construct the square root of \(2\), consider the function \(f : [0, 2] \to \R\) defined by \(f(x) = x^2\).
+  This function is continuous, with \(f(0) = 0\) and \(f(2) = 4\).
+  Thus there exists a \(c \in [0, 2]\) such that \(f(c) = 2\), i.e., \(c^2 = 2\).
+  (This argument does not show that there is just one square root of \(2\), but it does prove that there is \emph{at least} one square root of \(2\).)
 \end{remark}
 
 \begin{corollary}[Images of continuous functions]\label{9.7.4}
-    Let \(a < b\), and let \(f : [a, b] \to \R\) be a continuous function on \([a, b]\).
-    Let \(M \coloneqq \sup_{x \in [a, b]} f(x)\) be the maximum value of \(f\), and let \(m \coloneqq \inf_{x \in [a, b]} f(x)\) be the minimum value.
-    Let \(y\) be a real number between \(m\) and \(M\) (i.e., \(m \leq y \leq M\)).
-    Then there exists a \(c \in [a, b]\) such that \(f(c) = y\).
-    Furthermore, we have \(f([a, b]) = [m, M]\).
+  Let \(a < b\), and let \(f : [a, b] \to \R\) be a continuous function on \([a, b]\).
+  Let \(M \coloneqq \sup_{x \in [a, b]} f(x)\) be the maximum value of \(f\), and let \(m \coloneqq \inf_{x \in [a, b]} f(x)\) be the minimum value.
+  Let \(y\) be a real number between \(m\) and \(M\) (i.e., \(m \leq y \leq M\)).
+  Then there exists a \(c \in [a, b]\) such that \(f(c) = y\).
+  Furthermore, we have \(f([a, b]) = [m, M]\).
 \end{corollary}
 
 \begin{proof}
-    We first show that \(\exists\ c \in [a, b]\) such that \(f(c) = y\).
-    By maximum principle (Proposition \ref{9.6.7}) we know that \(\exists\ x_M, x_m \in [a, b]\) such that \(f(x_M) = M\) and \(f(x_m) = m\).
-    We have either \(x_m \leq x_M\) or \(x_m \geq x_M\).
-    Without the loss of generality suppose that \(x_m \leq x_M\).
-    Then we have \([x_m, x_M] \subseteq [a, b]\) and by Exercise \ref{ex 9.4.6} we know that \(f\) is continuous on \([x_m, x_M]\).
-    Since \(m \leq y \leq M\), by Theorem \ref{9.7.1} \(\exists\ c \in [x_m, x_M]\) such that \(f(c) = y\).
-    Since \([x_m, x_M] \subseteq [a, b]\), we have \(c \in [a, b]\).
+  We first show that \(\exists\ c \in [a, b]\) such that \(f(c) = y\).
+  By maximum principle (\cref{9.6.7}) we know that \(\exists\ x_M, x_m \in [a, b]\) such that \(f(x_M) = M\) and \(f(x_m) = m\).
+  We have either \(x_m \leq x_M\) or \(x_m \geq x_M\).
+  Without the loss of generality suppose that \(x_m \leq x_M\).
+  Then we have \([x_m, x_M] \subseteq [a, b]\) and by \cref{ex 9.4.6} we know that \(f\) is continuous on \([x_m, x_M]\).
+  Since \(m \leq y \leq M\), by \cref{9.7.1} \(\exists\ c \in [x_m, x_M]\) such that \(f(c) = y\).
+  Since \([x_m, x_M] \subseteq [a, b]\), we have \(c \in [a, b]\).
 
-    Now we show that \(f([a, b]) = [m, M]\).
-    Since
-    \begin{align*}
-                 & \big(M = \sup_{x \in [a, b]} f(x)\big) \land \big(m = \inf_{x \in [a, b]} f(x)\big)                                       \\
-        \implies & \forall y \in f([a, b], m \leq y \leq M                                             & \text{(by Definition \ref{9.6.5})}  \\
-        \implies & \forall y \in f([a, b], y \in [m, M]                                                & \text{(by Definition \ref{9.1.1})}  \\
-        \implies & f([a, b]) \subseteq [m, M]                                                          & \text{(by Definition \ref{3.1.15})}
-    \end{align*}
-    and
-    \begin{align*}
-                 & \forall y \in [m, M], \exists\ c \in [a, b] : f(c) = y & \text{(by proof above)}             \\
-        \implies & \forall y \in [m, M], y \in f([a, b])                                                        \\
-        \implies & [m, M] \subseteq f([a, b]),                            & \text{(by Definition \ref{3.1.15})}
-    \end{align*}
-    by Proposition \ref{3.1.18} we know that \(f([a, b]) = [m ,M]\).
+  Now we show that \(f([a, b]) = [m, M]\).
+  Since
+  \begin{align*}
+             & \big(M = \sup_{x \in [a, b]} f(x)\big) \land \big(m = \inf_{x \in [a, b]} f(x)\big)                             \\
+    \implies & \forall y \in f([a, b], m \leq y \leq M                                             & \text{(by \cref{9.6.5})}  \\
+    \implies & \forall y \in f([a, b], y \in [m, M]                                                & \text{(by \cref{9.1.1})}  \\
+    \implies & f([a, b]) \subseteq [m, M]                                                          & \text{(by \cref{3.1.15})}
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall y \in [m, M], \exists\ c \in [a, b] : f(c) = y & \text{(by proof above)}   \\
+    \implies & \forall y \in [m, M], y \in f([a, b])                                              \\
+    \implies & [m, M] \subseteq f([a, b]),                            & \text{(by \cref{3.1.15})}
+  \end{align*}
+  by \cref{3.1.18} we know that \(f([a, b]) = [m ,M]\).
 \end{proof}
 
 \exercisesection
 
 \begin{exercise}\label{ex 9.7.1}
-    Prove Corollary \ref{9.7.4}.
+  Prove \cref{9.7.4}.
 \end{exercise}
 
 \begin{proof}
-    See Corollary \ref{9.7.4}.
+  See \cref{9.7.4}.
 \end{proof}
 
 \begin{exercise}\label{ex 9.7.2}
-    Let \(f : [0, 1] \to [0, 1]\) be a continuous function.
-    Show that there exists a real number \(x\) in \([0, 1]\) such that \(f(x) = x\).
-    This point \(x\) is known as a \emph{fixed point} of \(f\), and this result is a basic example of a \emph{fixed point theorem}, which play an important role in certain types of analysis.
+  Let \(f : [0, 1] \to [0, 1]\) be a continuous function.
+  Show that there exists a real number \(x\) in \([0, 1]\) such that \(f(x) = x\).
+  This point \(x\) is known as a \emph{fixed point} of \(f\), and this result is a basic example of a \emph{fixed point theorem}, which play an important role in certain types of analysis.
 \end{exercise}
 
 \begin{proof}
-    Let \(F : [0, 1] \to \R\) be a function where \(F(x) = f(x) - x\).
-    Since \(x \mapsto x\) is continuous on \([0, 1]\), by Proposition \ref{9.4.9} \(F\) is continuous on \([0, 1]\).
-    Since \(f([0, 1]) \subseteq [0, 1]\), we know that \(0 \leq f(0)\) and \(f(1) \leq 1\).
-    Thus
-    \begin{align*}
-                 & \big(0 \leq f(0)\big) \land \big(f(1) \leq 1\big)                                                         \\
-        \implies & \big(0 \leq F(0) = f(0) - 0\big) \land \big(F(1) = f(1) - 1 \leq 0\big)                                   \\
-        \implies & F(1) \leq 0 \leq F(0)                                                                                     \\
-        \implies & \exists\ x \in [0, 1] : F(x) = 0                                        & \text{(by Theorem \ref{9.7.1})} \\
-        \implies & \exists\ x \in [0, 1] : f(x) - x = 0                                                                      \\
-        \implies & \exists\ x \in [0, 1] : f(x) = x.
-    \end{align*}
+  Let \(F : [0, 1] \to \R\) be a function where \(F(x) = f(x) - x\).
+  Since \(x \mapsto x\) is continuous on \([0, 1]\), by \cref{9.4.9} \(F\) is continuous on \([0, 1]\).
+  Since \(f([0, 1]) \subseteq [0, 1]\), we know that \(0 \leq f(0)\) and \(f(1) \leq 1\).
+  Thus
+  \begin{align*}
+             & \big(0 \leq f(0)\big) \land \big(f(1) \leq 1\big)                                                  \\
+    \implies & \big(0 \leq F(0) = f(0) - 0\big) \land \big(F(1) = f(1) - 1 \leq 0\big)                            \\
+    \implies & F(1) \leq 0 \leq F(0)                                                                              \\
+    \implies & \exists\ x \in [0, 1] : F(x) = 0                                        & \text{(by \cref{9.7.1})} \\
+    \implies & \exists\ x \in [0, 1] : f(x) - x = 0                                                               \\
+    \implies & \exists\ x \in [0, 1] : f(x) = x.
+  \end{align*}
 \end{proof}

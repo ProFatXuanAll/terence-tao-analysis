@@ -1,335 +1,335 @@
 \section{Continuous functions}\label{sec 9.4}
 
 \begin{definition}[Continuity]\label{9.4.1}
-    Let \(X\) be a subset of \(\R\), and let \(f : X \to \R\) be a function.
-    Let \(x_0\) be an element of \(X\).
-    We say that \(f\) is \emph{continuous at \(x_0\)} iff we have
-    \[
-        \lim_{x \to x_0 ; x \in X} f(x) = f(x_0);
-    \]
-    in other words, the limit of \(f(x)\) as \(x\) converges to \(x_0\) in \(X\) exists and is equal to \(f(x_0)\).
-    We say that \(f\) is \emph{continuous on \(X\)} (or simply \emph{continuous}) iff \(f\) is continuous at \(x_0\) for every \(x_0 \in X\).
-    We say that \(f\) is \emph{discontinuous at \(x_0\)} iff it is not continuous at \(x_0\).
-    We also extend these notions to functions \(f : X \to Y\) that take values in a subset \(Y\) of \(\R\), by identifying such functions (by abuse of notation) with the function \(\tilde{f} : X \to \R\) that agrees everywhere with \(f\) (so \(\tilde{f(x)} = f(x)\) for all \(x \in X\)) but where the codomain has been enlarged from \(Y\) to \(\R\).
+  Let \(X\) be a subset of \(\R\), and let \(f : X \to \R\) be a function.
+  Let \(x_0\) be an element of \(X\).
+  We say that \(f\) is \emph{continuous at \(x_0\)} iff we have
+  \[
+    \lim_{x \to x_0 ; x \in X} f(x) = f(x_0);
+  \]
+  in other words, the limit of \(f(x)\) as \(x\) converges to \(x_0\) in \(X\) exists and is equal to \(f(x_0)\).
+  We say that \(f\) is \emph{continuous on \(X\)} (or simply \emph{continuous}) iff \(f\) is continuous at \(x_0\) for every \(x_0 \in X\).
+  We say that \(f\) is \emph{discontinuous at \(x_0\)} iff it is not continuous at \(x_0\).
+  We also extend these notions to functions \(f : X \to Y\) that take values in a subset \(Y\) of \(\R\), by identifying such functions (by abuse of notation) with the function \(\tilde{f} : X \to \R\) that agrees everywhere with \(f\) (so \(\tilde{f(x)} = f(x)\) for all \(x \in X\)) but where the codomain has been enlarged from \(Y\) to \(\R\).
 \end{definition}
 
 \begin{note}
-    Restricting the domain of a function can make a discontinuous function continuous again.
+  Restricting the domain of a function can make a discontinuous function continuous again.
 \end{note}
 
 \setcounter{theorem}{6}
 \begin{proposition}[Equivalent formulations of continuity]\label{9.4.7}
-    Let \(X\) be a subset of \(\R\), let \(f : X \to \R\) be a function, and let \(x_0\) be an element of \(X\).
-    Then the following four statements are logically equivalent:
-    \begin{enumerate}
-        \item \(f\) is continuous at \(x_0\).
-        \item For every sequence \((a_n)_{n = 0}^\infty\) consisting of elements of \(X\) with \(\lim_{n \to \infty} a_n = x_0\), we have \(\lim_{n \to \infty} f(a_n) = f(x_0)\).
-        \item For every \(\varepsilon > 0\), there exists a \(\delta > 0\) such that \(\abs{f(x) - f(x_0)} < \varepsilon\) for all \(x \in X\) with \(\abs{x - x_0} < \delta\).
-        \item For every \(\varepsilon > 0\), there exists a \(\delta > 0\) such that \(\abs{f(x) - f(x_0)} \leq \varepsilon\) for all \(x \in X\) with \(\abs{x - x_0} \leq \delta\).
-    \end{enumerate}
+  Let \(X\) be a subset of \(\R\), let \(f : X \to \R\) be a function, and let \(x_0\) be an element of \(X\).
+  Then the following four statements are logically equivalent:
+  \begin{enumerate}
+    \item \(f\) is continuous at \(x_0\).
+    \item For every sequence \((a_n)_{n = 0}^\infty\) consisting of elements of \(X\) with \(\lim_{n \to \infty} a_n = x_0\), we have \(\lim_{n \to \infty} f(a_n) = f(x_0)\).
+    \item For every \(\varepsilon > 0\), there exists a \(\delta > 0\) such that \(\abs{f(x) - f(x_0)} < \varepsilon\) for all \(x \in X\) with \(\abs{x - x_0} < \delta\).
+    \item For every \(\varepsilon > 0\), there exists a \(\delta > 0\) such that \(\abs{f(x) - f(x_0)} \leq \varepsilon\) for all \(x \in X\) with \(\abs{x - x_0} \leq \delta\).
+  \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-    We first show that the statement (a) and the statement (b) are equivalent.
-    By Definition \ref{9.4.1}, \(f\) is continuous at \(x_0\) iff \(f\) converges to \(f(x_0)\) at \(x_0\) in \(X\).
-    Thus by Proposition \ref{9.3.9} we know that the statement (a) and the statement (b) are equivalent.
+  We first show that the statement (a) and the statement (b) are equivalent.
+  By \cref{9.4.1}, \(f\) is continuous at \(x_0\) iff \(f\) converges to \(f(x_0)\) at \(x_0\) in \(X\).
+  Thus by \cref{9.3.9} we know that the statement (a) and the statement (b) are equivalent.
 
-    Next we show that the statement (a) and the statement (c) are equivalent.
-    By Definition \ref{9.4.1}, \(f\) is continuous at \(x_0\) iff \(f\) converges to \(f(x_0)\) at \(x_0\) in \(X\).
-    By Definition \ref{9.3.6} this is equivalent to the statement
-    \[
-        \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in X, \abs{x - x_0} < \delta \implies \abs{f(x) - f(x_0)} \leq \frac{\varepsilon}{2} < \varepsilon\big).
-    \]
-    Thus the statement (a) and the statement (c) are equivalent.
+  Next we show that the statement (a) and the statement (c) are equivalent.
+  By \cref{9.4.1}, \(f\) is continuous at \(x_0\) iff \(f\) converges to \(f(x_0)\) at \(x_0\) in \(X\).
+  By \cref{9.3.6} this is equivalent to the statement
+  \[
+    \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in X, \abs{x - x_0} < \delta \implies \abs{f(x) - f(x_0)} \leq \frac{\varepsilon}{2} < \varepsilon\big).
+  \]
+  Thus the statement (a) and the statement (c) are equivalent.
 
-    Finally we show that the statement (a) and the statement (d) are equivalent.
-    By Definition \ref{9.4.1}, \(f\) is continuous at \(x_0\) iff \(f\) converges to \(f(x_0)\) at \(x_0\) in \(X\).
-    By Definition \ref{9.3.6} this is equivalent to the statement
-    \[
-        \forall \varepsilon \in \R^+, \exists\ \delta' \in \R^+ : \big(\forall x \in X, \abs{x - x_0} < \delta' \implies \abs{f(x) - f(x_0)} \leq \varepsilon\big).
-    \]
-    Let \(\delta \in \R^+\) and \(\abs{x - x_0} \leq \delta < \delta'\).
-    By Proposition \ref{5.4.14} we know such \(\delta\) exists.
-    Then we have
-    \[
-        \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in X, \abs{x - x_0} \leq \delta \implies \abs{f(x) - f(x_0)} \leq \varepsilon\big).
-    \]
-    Thus the statement (a) and the statement (d) are equivalent.
+  Finally we show that the statement (a) and the statement (d) are equivalent.
+  By \cref{9.4.1}, \(f\) is continuous at \(x_0\) iff \(f\) converges to \(f(x_0)\) at \(x_0\) in \(X\).
+  By \cref{9.3.6} this is equivalent to the statement
+  \[
+    \forall \varepsilon \in \R^+, \exists\ \delta' \in \R^+ : \big(\forall x \in X, \abs{x - x_0} < \delta' \implies \abs{f(x) - f(x_0)} \leq \varepsilon\big).
+  \]
+  Let \(\delta \in \R^+\) and \(\abs{x - x_0} \leq \delta < \delta'\).
+  By \cref{5.4.14} we know such \(\delta\) exists.
+  Then we have
+  \[
+    \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in X, \abs{x - x_0} \leq \delta \implies \abs{f(x) - f(x_0)} \leq \varepsilon\big).
+  \]
+  Thus the statement (a) and the statement (d) are equivalent.
 \end{proof}
 
 \begin{remark}\label{9.4.8}
-    A particularly useful consequence of Proposition \ref{9.4.7} is the following:
-    if \(f\) is continuous at \(x_0\), and \(a_n \to x_0\) as \(n \to \infty\), then \(f(a_n) \to f(x_0)\) as \(n \to \infty\)
-    (provided that all the elements of the sequence \((a_n)_{n = 0}^\infty\) lie in the domain of \(f\), of course).
-    Thus continuous functions are very useful in computing limits.
+  A particularly useful consequence of \cref{9.4.7} is the following:
+  if \(f\) is continuous at \(x_0\), and \(a_n \to x_0\) as \(n \to \infty\), then \(f(a_n) \to f(x_0)\) as \(n \to \infty\)
+  (provided that all the elements of the sequence \((a_n)_{n = 0}^\infty\) lie in the domain of \(f\), of course).
+  Thus continuous functions are very useful in computing limits.
 \end{remark}
 
 \begin{proposition}[Arithmetic preserves continuity]\label{9.4.9}
-    Let \(X\) be a subset of \(\R\), and let \(f : X \to \R\) and \(g : X \to \R\) be functions.
-    Let \(x_0 \in X\).
-    Then if \(f\) and \(g\) are both continuous at \(x_0\), then the functions \(f + g\), \(f - g\), \(\max(f, g)\), \(\min(f, g)\) and \(fg\) are also continuous at \(x_0\).
-    If \(g\) is non-zero on \(X\), then \(f / g\) is also continuous at \(x_0\).
+  Let \(X\) be a subset of \(\R\), and let \(f : X \to \R\) and \(g : X \to \R\) be functions.
+  Let \(x_0 \in X\).
+  Then if \(f\) and \(g\) are both continuous at \(x_0\), then the functions \(f + g\), \(f - g\), \(\max(f, g)\), \(\min(f, g)\) and \(fg\) are also continuous at \(x_0\).
+  If \(g\) is non-zero on \(X\), then \(f / g\) is also continuous at \(x_0\).
 \end{proposition}
 
 \begin{proof}
-    By Proposition \ref{9.3.14}, we have
-    \begin{align*}
-        \lim_{x \to x_0 ; x \in X} f(x) + g(x)      & = \lim_{x \to x_0 ; x \in X} f(x) + \lim_{x \to x_0 ; x \in X} g(x)                                                            \\
-                                                    & = f(x_0) + g(x_0);                                                                       & \text{(by Definition \ref{9.4.1})}  \\
-        \lim_{x \to x_0 ; x \in X} f(x) - g(x)      & = \lim_{x \to x_0 ; x \in X} f(x) - \lim_{x \to x_0 ; x \in X} g(x)                                                            \\
-                                                    & = f(x_0) - g(x_0);                                                                       & \text{(by Definition \ref{9.4.1})}  \\
-        \lim_{x \to x_0 ; x \in X} \max(f(x), g(x)) & = \max(\lim_{x \to x_0 ; x \in X} f(x), \lim_{x \to x_0 ; x \in X} g(x))                                                       \\
-                                                    & = \max(f(x_0), g(x_0));                                                                  & \text{(by Definition \ref{9.4.1})}  \\
-        \lim_{x \to x_0 ; x \in X} \min(f(x), g(x)) & = \min(\lim_{x \to x_0 ; x \in X} f(x), \lim_{x \to x_0 ; x \in X} g(x))                                                       \\
-                                                    & = \min(f(x_0), g(x_0));                                                                  & \text{(by Definition \ref{9.4.1})}  \\
-        \lim_{x \to x_0 ; x \in X} f(x) g(x)        & = \bigg(\lim_{x \to x_0 ; x \in X} f(x)\bigg)\bigg(\lim_{x \to x_0 ; x \in X} g(x)\bigg)                                       \\
-                                                    & = f(x_0) g(x_0);                                                                         & \text{(by Definition \ref{9.4.1})}  \\
-        \lim_{x \to x_0 ; x \in X} f(x) / g(x)      & = \lim_{x \to x_0 ; x \in X} f(x) / \lim_{x \to x_0 ; x \in X} g(x)                      & \text{(\(g\) is non-zero on \(X\))} \\
-                                                    & = f(x_0) / g(x_0).                                                                       & \text{(by Definition \ref{9.4.1})}  \\
-    \end{align*}
+  By \cref{9.3.14}, we have
+  \begin{align*}
+    \lim_{x \to x_0 ; x \in X} f(x) + g(x)      & = \lim_{x \to x_0 ; x \in X} f(x) + \lim_{x \to x_0 ; x \in X} g(x)                                                            \\
+                                                & = f(x_0) + g(x_0);                                                                       & \text{(by \cref{9.4.1})}            \\
+    \lim_{x \to x_0 ; x \in X} f(x) - g(x)      & = \lim_{x \to x_0 ; x \in X} f(x) - \lim_{x \to x_0 ; x \in X} g(x)                                                            \\
+                                                & = f(x_0) - g(x_0);                                                                       & \text{(by \cref{9.4.1})}            \\
+    \lim_{x \to x_0 ; x \in X} \max(f(x), g(x)) & = \max(\lim_{x \to x_0 ; x \in X} f(x), \lim_{x \to x_0 ; x \in X} g(x))                                                       \\
+                                                & = \max(f(x_0), g(x_0));                                                                  & \text{(by \cref{9.4.1})}            \\
+    \lim_{x \to x_0 ; x \in X} \min(f(x), g(x)) & = \min(\lim_{x \to x_0 ; x \in X} f(x), \lim_{x \to x_0 ; x \in X} g(x))                                                       \\
+                                                & = \min(f(x_0), g(x_0));                                                                  & \text{(by \cref{9.4.1})}            \\
+    \lim_{x \to x_0 ; x \in X} f(x) g(x)        & = \bigg(\lim_{x \to x_0 ; x \in X} f(x)\bigg)\bigg(\lim_{x \to x_0 ; x \in X} g(x)\bigg)                                       \\
+                                                & = f(x_0) g(x_0);                                                                         & \text{(by \cref{9.4.1})}            \\
+    \lim_{x \to x_0 ; x \in X} f(x) / g(x)      & = \lim_{x \to x_0 ; x \in X} f(x) / \lim_{x \to x_0 ; x \in X} g(x)                      & \text{(\(g\) is non-zero on \(X\))} \\
+                                                & = f(x_0) / g(x_0).                                                                       & \text{(by \cref{9.4.1})}            \\
+  \end{align*}
 \end{proof}
 
 \begin{proposition}[Exponentiation is continuous, I]\label{9.4.10}
-    Let \(a > 0\) be a positive real number.
-    Then the function \(f : \R \to \R\) defined by \(f(x) \coloneqq a^x\) is continuous.
+  Let \(a > 0\) be a positive real number.
+  Then the function \(f : \R \to \R\) defined by \(f(x) \coloneqq a^x\) is continuous.
 \end{proposition}
 
 \begin{proof}
-    Let \(x_0 \in \R\).
-    By Lemma \ref{9.1.13} \(x_0\) is an adherent point.
-    By Proposition \ref{6.7.3} we know that \(a^{x_0} > 0\).
-    By Lemma \ref{6.5.3} we know that \(\lim_{n \to \infty} a^{\frac{1}{n}} = 1\), thus
-    \begin{align*}
-        a^{x_0} & = a^{x_0} \lim_{n \to \infty} a^{\pm \frac{1}{n}}   & \text{(by Proposition \ref{6.7.3})} \\
-                & = \lim_{n \to \infty} (a^{x_0} a^{\pm \frac{1}{n}}) & \text{(by Theorem \ref{6.1.19})}    \\
-                & = \lim_{n \to \infty} a^{x_0 \pm \frac{1}{n}}.
-    \end{align*}
-    Observe that
-    \begin{align*}
-                 & \lim_{n \to \infty} a^{x_0 \pm \frac{1}{n}} = a^{x_0}                                                                                                              \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ N \in \N : \forall n \geq N, \abs{a^{x_0 \pm \frac{1}{n}} - a^{x_0}} \leq \varepsilon                                       \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ N \in \N : \abs{a^{x_0 \pm \frac{1}{N}} - a^{x_0}} \leq \varepsilon                                                         \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ N \in \N : -\varepsilon \leq a^{x_0 \pm \frac{1}{N}} - a^{x_0} \leq \varepsilon.      & \text{(by Proposition \ref{6.7.3})}
-    \end{align*}
-    Now fix \(N\) for each \(\varepsilon \in \R^+\).
-    By Proposition \ref{6.7.3} we have
-    \begin{align*}
-                 & \forall x \in \R, \abs{x - x_0} < \frac{1}{N}                                                                                                              \\
-        \implies & \frac{-1}{N} < x - x_0 < \frac{1}{N}                                                                                                                       \\
-        \implies & x_0 - \frac{1}{N} < x < x_0 + \frac{1}{N}                                                                                                                  \\
-        \implies & \begin{cases}
-                       a^{x_0 - \frac{1}{N}} < a^{x} < a^{x_0 + \frac{1}{N}} & \text{if } a \geq 1 \\
-                       a^{x_0 + \frac{1}{N}} < a^{x} < a^{x_0 - \frac{1}{N}} & \text{if } a < 1
-                   \end{cases}                                                          \\
-        \implies & \begin{cases}
-                       -\varepsilon < a^{x_0 - \frac{1}{N}} - a^{x_0} < a^x - a^{x_0} < a^{x_0 + \frac{1}{N}} - a^{x_0} < \varepsilon & \text{if } a \geq 1 \\
-                       -\varepsilon < a^{x_0 + \frac{1}{N}} - a^{x_0} < a^x - a^{x_0} < a^{x_0 - \frac{1}{N}} - a^{x_0} < \varepsilon & \text{if } a < 1
-                   \end{cases} \\
-        \implies & \abs{a^x - a^{x_0}} < \varepsilon.
-    \end{align*}
-    By setting \(\delta = \frac{1}{N}\) we have
-    \[
-        \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in \R, \abs{x - x_0} < \delta \implies \abs{a^x - a^{x_0}} < \varepsilon\big).
-    \]
-    Thus by Definition \ref{9.3.6} we have \(\lim_{x \to x_0 ; x \in \R} a^x = a^{x_0}\).
-    Since \(x_0\) is arbitrary, by Definition \ref{9.4.1} \(a^x\) is continuous on \(\R\).
+  Let \(x_0 \in \R\).
+  By \cref{9.1.13} \(x_0\) is an adherent point.
+  By \cref{6.7.3} we know that \(a^{x_0} > 0\).
+  By \cref{6.5.3} we know that \(\lim_{n \to \infty} a^{\frac{1}{n}} = 1\), thus
+  \begin{align*}
+    a^{x_0} & = a^{x_0} \lim_{n \to \infty} a^{\pm \frac{1}{n}}   & \text{(by \cref{6.7.3})}  \\
+            & = \lim_{n \to \infty} (a^{x_0} a^{\pm \frac{1}{n}}) & \text{(by \cref{6.1.19})} \\
+            & = \lim_{n \to \infty} a^{x_0 \pm \frac{1}{n}}.
+  \end{align*}
+  Observe that
+  \begin{align*}
+             & \lim_{n \to \infty} a^{x_0 \pm \frac{1}{n}} = a^{x_0}                                                                                                   \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ N \in \N : \forall n \geq N, \abs{a^{x_0 \pm \frac{1}{n}} - a^{x_0}} \leq \varepsilon                            \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ N \in \N : \abs{a^{x_0 \pm \frac{1}{N}} - a^{x_0}} \leq \varepsilon                                              \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ N \in \N : -\varepsilon \leq a^{x_0 \pm \frac{1}{N}} - a^{x_0} \leq \varepsilon.      & \text{(by \cref{6.7.3})}
+  \end{align*}
+  Now fix \(N\) for each \(\varepsilon \in \R^+\).
+  By \cref{6.7.3} we have
+  \begin{align*}
+             & \forall x \in \R, \abs{x - x_0} < \frac{1}{N}                                                                                                              \\
+    \implies & \frac{-1}{N} < x - x_0 < \frac{1}{N}                                                                                                                       \\
+    \implies & x_0 - \frac{1}{N} < x < x_0 + \frac{1}{N}                                                                                                                  \\
+    \implies & \begin{cases}
+                 a^{x_0 - \frac{1}{N}} < a^{x} < a^{x_0 + \frac{1}{N}} & \text{if } a \geq 1 \\
+                 a^{x_0 + \frac{1}{N}} < a^{x} < a^{x_0 - \frac{1}{N}} & \text{if } a < 1
+               \end{cases}                                                          \\
+    \implies & \begin{cases}
+                 -\varepsilon < a^{x_0 - \frac{1}{N}} - a^{x_0} < a^x - a^{x_0} < a^{x_0 + \frac{1}{N}} - a^{x_0} < \varepsilon & \text{if } a \geq 1 \\
+                 -\varepsilon < a^{x_0 + \frac{1}{N}} - a^{x_0} < a^x - a^{x_0} < a^{x_0 - \frac{1}{N}} - a^{x_0} < \varepsilon & \text{if } a < 1
+               \end{cases} \\
+    \implies & \abs{a^x - a^{x_0}} < \varepsilon.
+  \end{align*}
+  By setting \(\delta = \frac{1}{N}\) we have
+  \[
+    \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in \R, \abs{x - x_0} < \delta \implies \abs{a^x - a^{x_0}} < \varepsilon\big).
+  \]
+  Thus by \cref{9.3.6} we have \(\lim_{x \to x_0 ; x \in \R} a^x = a^{x_0}\).
+  Since \(x_0\) is arbitrary, by \cref{9.4.1} \(a^x\) is continuous on \(\R\).
 \end{proof}
 
 \begin{proposition}[Exponentiation is continuous, II]\label{9.4.11}
-    Let \(p\) be a real number.
-    Then the function \(f : (0, \infty) \to \R\) defined by \(f(x) \coloneqq x^p\) is continuous.
+  Let \(p\) be a real number.
+  Then the function \(f : (0, \infty) \to \R\) defined by \(f(x) \coloneqq x^p\) is continuous.
 \end{proposition}
 
 \begin{proof}
-    By Proposition \ref{9.3.14} we know that
-    \[
-        \forall n \in \N, \lim_{x \to 1 ; x \in (0, \infty)} x^n = 1.
-    \]
-    Again by Proposition \ref{9.3.14} we know that
-    \[
-        \forall n \in \N, \lim_{x \to 1 ; x \in (0, \infty)} x^{-n} = \lim_{x \to 1 ; x \in (0, \infty)} 1 / x^n = 1.
-    \]
-    By Exercise \ref{ex 5.4.3} we have
-    \[
-        \forall p \in \R, \exists\ N \in \Z : N \leq p < N + 1.
-    \]
-    By Proposition \ref{6.7.3} we have
-    \[
-        \forall x \in (0, \infty), \begin{cases}
-            x^N \leq x^p < x^{N + 1}   & \text{if } x \in (0, 1)      \\
-            x^{N + 1} < x^p \leq x^{N} & \text{if } x \in [1, \infty)
-        \end{cases}
-    \]
-    Thus by squeeze test (Exercise \ref{ex 9.3.5}) we have \(\lim_{x \to 1 ; x \in (0, \infty)} x^p = 1\).
+  By \cref{9.3.14} we know that
+  \[
+    \forall n \in \N, \lim_{x \to 1 ; x \in (0, \infty)} x^n = 1.
+  \]
+  Again by \cref{9.3.14} we know that
+  \[
+    \forall n \in \N, \lim_{x \to 1 ; x \in (0, \infty)} x^{-n} = \lim_{x \to 1 ; x \in (0, \infty)} 1 / x^n = 1.
+  \]
+  By \cref{ex 5.4.3} we have
+  \[
+    \forall p \in \R, \exists\ N \in \Z : N \leq p < N + 1.
+  \]
+  By \cref{6.7.3} we have
+  \[
+    \forall x \in (0, \infty), \begin{cases}
+      x^N \leq x^p < x^{N + 1}   & \text{if } x \in (0, 1)      \\
+      x^{N + 1} < x^p \leq x^{N} & \text{if } x \in [1, \infty)
+    \end{cases}
+  \]
+  Thus by squeeze test (\cref{ex 9.3.5}) we have \(\lim_{x \to 1 ; x \in (0, \infty)} x^p = 1\).
 
-    Let \(x_0 \in (0, \infty)\).
-    By Lemma \ref{9.1.12} \(x_0\) is an adherent point.
-    By Proposition \ref{6.7.3} \(x_0^p > 0\).
-    Since \(\lim_{x \to 1 ; x \in (0, \infty)} x^p = 1\), by Definition \ref{9.3.6} we have
-    \[
-        \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in (0, \infty), \abs{x - 1} < \delta \implies \abs{x^p - 1} \leq \varepsilon\big).
-    \]
-    Let \(y = x \cdot x_0\).
-    Then \(x = y / x_0\) and
-    \[
-        \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall y \in (0, \infty), \abs{y / x_0 - 1} < \delta \implies \abs{(\frac{y}{x_0})^p - 1} \leq \varepsilon\big).
-    \]
-    Since \(\delta / x_0 < \delta\), we have
-    \[
-        \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall y \in (0, \infty), \abs{y / x_0 - 1} < \delta / x_0 \implies \abs{(\frac{y}{x_0})^p - 1} \leq \varepsilon\big).
-    \]
-    This means
-    \[
-        \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall y \in (0, \infty), \abs{y - x_0} < \delta \implies \abs{(\frac{y}{x_0})^p - 1} \leq \varepsilon\big).
-    \]
-    In particular, we have
-    \[
-        \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall y \in (0, \infty), \abs{y - x_0} < \delta \implies \abs{(\frac{y}{x_0})^p - 1} \leq \frac{\varepsilon}{x_0^p}\big).
-    \]
-    This means
-    \[
-        \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall y \in (0, \infty), \abs{y - x_0} < \delta \implies \abs{y^p - x_0^p} \leq \varepsilon\big).
-    \]
-    Thus by Definition \ref{9.3.6} we have \(\lim_{y \to x_0 ; y \in (0, \infty)} y^p = x_0^p\).
-    Since \(x_0\) is arbitrary, by Definition \ref{9.4.1} \(x^p\) is continuous on \((0, \infty)\).
+  Let \(x_0 \in (0, \infty)\).
+  By \cref{9.1.12} \(x_0\) is an adherent point.
+  By \cref{6.7.3} \(x_0^p > 0\).
+  Since \(\lim_{x \to 1 ; x \in (0, \infty)} x^p = 1\), by \cref{9.3.6} we have
+  \[
+    \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall x \in (0, \infty), \abs{x - 1} < \delta \implies \abs{x^p - 1} \leq \varepsilon\big).
+  \]
+  Let \(y = x \cdot x_0\).
+  Then \(x = y / x_0\) and
+  \[
+    \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall y \in (0, \infty), \abs{y / x_0 - 1} < \delta \implies \abs{(\frac{y}{x_0})^p - 1} \leq \varepsilon\big).
+  \]
+  Since \(\delta / x_0 < \delta\), we have
+  \[
+    \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall y \in (0, \infty), \abs{y / x_0 - 1} < \delta / x_0 \implies \abs{(\frac{y}{x_0})^p - 1} \leq \varepsilon\big).
+  \]
+  This means
+  \[
+    \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall y \in (0, \infty), \abs{y - x_0} < \delta \implies \abs{(\frac{y}{x_0})^p - 1} \leq \varepsilon\big).
+  \]
+  In particular, we have
+  \[
+    \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall y \in (0, \infty), \abs{y - x_0} < \delta \implies \abs{(\frac{y}{x_0})^p - 1} \leq \frac{\varepsilon}{x_0^p}\big).
+  \]
+  This means
+  \[
+    \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \big(\forall y \in (0, \infty), \abs{y - x_0} < \delta \implies \abs{y^p - x_0^p} \leq \varepsilon\big).
+  \]
+  Thus by \cref{9.3.6} we have \(\lim_{y \to x_0 ; y \in (0, \infty)} y^p = x_0^p\).
+  Since \(x_0\) is arbitrary, by \cref{9.4.1} \(x^p\) is continuous on \((0, \infty)\).
 \end{proof}
 
 \begin{proposition}[Absolute value is continuous]\label{9.4.12}
-    The function \(f : \R \to \R\) defined by \(f(x) \coloneqq \abs{x}\) is continuous.
+  The function \(f : \R \to \R\) defined by \(f(x) \coloneqq \abs{x}\) is continuous.
 \end{proposition}
 
 \begin{proof}
-    This follows since \(\abs{x} = \max(x, -x)\) and the functions \(x, -x\) are already continuous.
+  This follows since \(\abs{x} = \max(x, -x)\) and the functions \(x, -x\) are already continuous.
 \end{proof}
 
 \begin{proposition}[Composition preserves continuity]\label{9.4.13}
-    Let \(X\) and \(Y\) be subsets of \(\R\), and let \(f : X \to Y\) and \(g : Y \to \R\) be functions.
-    Let \(x_0\) be a point in \(X\).
-    If \(f\) is continuous at \(x_0\), and \(g\) is continuous at \(f(x_0)\), then the composition \(g \circ f : X \to \R\) is continuous at \(x_0\).
+  Let \(X\) and \(Y\) be subsets of \(\R\), and let \(f : X \to Y\) and \(g : Y \to \R\) be functions.
+  Let \(x_0\) be a point in \(X\).
+  If \(f\) is continuous at \(x_0\), and \(g\) is continuous at \(f(x_0)\), then the composition \(g \circ f : X \to \R\) is continuous at \(x_0\).
 \end{proposition}
 
 \begin{proof}
-    Since \(\lim_{y \to f(x_0) ; y \in Y} g(x) = g\big(f(x_0)\big)\), by Definition \ref{9.3.6} we have
-    \[
-        \forall \varepsilon \in \R^+, \exists\ \delta' \in \R^+ : \Big(\forall y \in Y, \abs{y - f(x_0)} < \delta' \implies \abs{g(y) - g\big(f(x_0)\big)} < \varepsilon\Big).
-    \]
-    Since \(\lim_{x \to x_0 ; x \in X} f(x) = f(x_0)\), by Definition \ref{9.3.6} we have
-    \[
-        \forall \varepsilon' \in \R^+, \exists\ \delta \in \R^+ : \Big(\forall x \in X, \abs{x - x_0} < \delta \implies \abs{f(x) - f(x_0)} < \varepsilon'\Big).
-    \]
-    In particular, we have
-    \[
-        \exists\ \delta \in \R^+ : \Big(\forall x \in X, \abs{x - x_0} < \delta \implies \abs{f(x) - f(x_0)} < \delta'\Big).
-    \]
-    Since \(f(x) \in Y\) and \(\abs{f(x) - f(x_0)} < \delta'\) implies \(\abs{g\big(f(x)\big) - g\big(f(x_0)\big)} < \varepsilon\), we have
-    \[
-        \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \Big(\forall x \in X, \abs{x - x_0} < \delta \implies \abs{g\big(f(x)\big) - g\big(f(x_0)\big)} < \varepsilon\Big).
-    \]
-    Thus by Definition \ref{9.3.6} we have \(\lim_{x \to x_0 ; x \in X} g\big(f(x)\big) = g\big(f(x_0)\big)\).
-    By Definition \ref{9.4.1} \(g \circ f\) is continuous at \(x_0\).
+  Since \(\lim_{y \to f(x_0) ; y \in Y} g(x) = g\big(f(x_0)\big)\), by \cref{9.3.6} we have
+  \[
+    \forall \varepsilon \in \R^+, \exists\ \delta' \in \R^+ : \Big(\forall y \in Y, \abs{y - f(x_0)} < \delta' \implies \abs{g(y) - g\big(f(x_0)\big)} < \varepsilon\Big).
+  \]
+  Since \(\lim_{x \to x_0 ; x \in X} f(x) = f(x_0)\), by \cref{9.3.6} we have
+  \[
+    \forall \varepsilon' \in \R^+, \exists\ \delta \in \R^+ : \Big(\forall x \in X, \abs{x - x_0} < \delta \implies \abs{f(x) - f(x_0)} < \varepsilon'\Big).
+  \]
+  In particular, we have
+  \[
+    \exists\ \delta \in \R^+ : \Big(\forall x \in X, \abs{x - x_0} < \delta \implies \abs{f(x) - f(x_0)} < \delta'\Big).
+  \]
+  Since \(f(x) \in Y\) and \(\abs{f(x) - f(x_0)} < \delta'\) implies \(\abs{g\big(f(x)\big) - g\big(f(x_0)\big)} < \varepsilon\), we have
+  \[
+    \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \Big(\forall x \in X, \abs{x - x_0} < \delta \implies \abs{g\big(f(x)\big) - g\big(f(x_0)\big)} < \varepsilon\Big).
+  \]
+  Thus by \cref{9.3.6} we have \(\lim_{x \to x_0 ; x \in X} g\big(f(x)\big) = g\big(f(x_0)\big)\).
+  By \cref{9.4.1} \(g \circ f\) is continuous at \(x_0\).
 \end{proof}
 
 \exercisesection
 
 \begin{exercise}\label{ex 9.4.1}
-    Prove Proposition \ref{9.4.7}.
+  Prove \cref{9.4.7}.
 \end{exercise}
 
 \begin{proof}
-    See Proposition \ref{9.4.7}
+  See \cref{9.4.7}
 \end{proof}
 
 \begin{exercise}\label{ex 9.4.2}
-    Let \(X\) be a subset of \(\R\), and let \(c \in \R\).
-    Show that the constant function \(f : X \to \R\) defined by \(f(x) \coloneqq c\) is continuous, and show that the identity function \(g : X \to \R\) defined by \(g(x) \coloneqq x\) is also continuous.
+  Let \(X\) be a subset of \(\R\), and let \(c \in \R\).
+  Show that the constant function \(f : X \to \R\) defined by \(f(x) \coloneqq c\) is continuous, and show that the identity function \(g : X \to \R\) defined by \(g(x) \coloneqq x\) is also continuous.
 \end{exercise}
 
 \begin{proof}
-    We first show that the constant functions \(f\) is continuous.
-    Let \(x_0 \in X\).
-    By Lemma \ref{9.1.11} we know that \(X \subseteq \overline{X}\), thus \(x_0\) is an adherent point of \(X\).
-    Since
-    \[
-        \forall \varepsilon \in \R^+, \forall \delta \in \R^+, \abs{x - x_0} < \delta \implies \abs{f(x) - c} = \abs{c - c} = 0 < \varepsilon,
-    \]
-    we know that \(\lim_{x \to x_0 ; x \in X} f(x) = c\).
-    Since \(f(x_0) = c\) and \(x_0\) is arbitrary, by Definition \ref{9.4.1} we know that the constant functions \(f\) is continuous on \(X\).
+  We first show that the constant functions \(f\) is continuous.
+  Let \(x_0 \in X\).
+  By \cref{9.1.11} we know that \(X \subseteq \overline{X}\), thus \(x_0\) is an adherent point of \(X\).
+  Since
+  \[
+    \forall \varepsilon \in \R^+, \forall \delta \in \R^+, \abs{x - x_0} < \delta \implies \abs{f(x) - c} = \abs{c - c} = 0 < \varepsilon,
+  \]
+  we know that \(\lim_{x \to x_0 ; x \in X} f(x) = c\).
+  Since \(f(x_0) = c\) and \(x_0\) is arbitrary, by \cref{9.4.1} we know that the constant functions \(f\) is continuous on \(X\).
 
-    Now we show that the identity function \(g\) is continuous.
-    Let \(x_0 \in X\).
-    By Lemma \ref{9.1.11} we know that \(X \subseteq \overline{X}\), thus \(x_0\) is an adherent point of \(X\).
-    Since
-    \[
-        \forall \varepsilon \in \R^+, \abs{x - x_0} < \varepsilon \implies \abs{g(x) - x_0} = \abs{x - x_0} < \varepsilon,
-    \]
-    we know that \(\lim_{x \to x_0 ; x \in X} g(x) = x_0\).
-    Since \(g(x_0) = x_0\) and \(x_0\) is arbitrary, by Definition \ref{9.4.1} we know that the constant functions \(g\) is continuous on \(X\).
+  Now we show that the identity function \(g\) is continuous.
+  Let \(x_0 \in X\).
+  By \cref{9.1.11} we know that \(X \subseteq \overline{X}\), thus \(x_0\) is an adherent point of \(X\).
+  Since
+  \[
+    \forall \varepsilon \in \R^+, \abs{x - x_0} < \varepsilon \implies \abs{g(x) - x_0} = \abs{x - x_0} < \varepsilon,
+  \]
+  we know that \(\lim_{x \to x_0 ; x \in X} g(x) = x_0\).
+  Since \(g(x_0) = x_0\) and \(x_0\) is arbitrary, by \cref{9.4.1} we know that the constant functions \(g\) is continuous on \(X\).
 \end{proof}
 
 \begin{exercise}\label{ex 9.4.3}
-    Prove Proposition \ref{9.4.10}.
+  Prove \cref{9.4.10}.
 \end{exercise}
 
 \begin{proof}
-    See Proposition \ref{9.4.10}.
+  See \cref{9.4.10}.
 \end{proof}
 
 \begin{exercise}\label{ex 9.4.4}
-    Prove Proposition \ref{9.4.11}.
+  Prove \cref{9.4.11}.
 \end{exercise}
 
 \begin{proof}
-    See Proposition \ref{9.4.11}.
+  See \cref{9.4.11}.
 \end{proof}
 
 \begin{exercise}\label{ex 9.4.5}
-    Prove Proposition \ref{9.4.13}.
+  Prove \cref{9.4.13}.
 \end{exercise}
 
 \begin{proof}
-    See Proposition \ref{9.4.13}.
+  See \cref{9.4.13}.
 \end{proof}
 
 \begin{exercise}\label{ex 9.4.6}
-    Let \(X\) be a subset of \(\R\), and let \(f : X \to \R\) be a continuous function.
-    If \(Y\) is a subset of \(X\), show that the restriction \(f|_Y : Y \to \R\) of \(f\) to \(Y\) is also a continuous function.
+  Let \(X\) be a subset of \(\R\), and let \(f : X \to \R\) be a continuous function.
+  If \(Y\) is a subset of \(X\), show that the restriction \(f|_Y : Y \to \R\) of \(f\) to \(Y\) is also a continuous function.
 \end{exercise}
 
 \begin{proof}
-    By Definition \ref{9.4.1}, \(\forall x_0 \in X\), we have \(\lim_{x \to x_0 ; x \in X} f(x) = f(x_0)\).
-    Since \(Y \subseteq X\), we have \(\forall y \in Y \implies y \in X\).
-    Thus \(\forall y_0 \in Y\) we have \(\lim_{y \to y_0 ; y \in Y} f(y) = f(y_0)\).
-    By Definition \ref{9.4.1}, \(f|_Y\) is continuous on \(Y\).
+  By \cref{9.4.1}, \(\forall x_0 \in X\), we have \(\lim_{x \to x_0 ; x \in X} f(x) = f(x_0)\).
+  Since \(Y \subseteq X\), we have \(\forall y \in Y \implies y \in X\).
+  Thus \(\forall y_0 \in Y\) we have \(\lim_{y \to y_0 ; y \in Y} f(y) = f(y_0)\).
+  By \cref{9.4.1}, \(f|_Y\) is continuous on \(Y\).
 \end{proof}
 
 \begin{exercise}\label{ex 9.4.7}
-    Let \(n \geq 0\) be an integer, and for each \(0 \leq i \leq n\) let \(c_i\) be a real number.
-    Let \(P : \R \to \R\) be the function
-    \[
-        P(x) \coloneqq \sum_{i = 0}^n c_i x^i;
-    \]
-    Such a function is known as a \emph{polynomial of one variable};
-    Show that \(P\) is continuous.
+  Let \(n \geq 0\) be an integer, and for each \(0 \leq i \leq n\) let \(c_i\) be a real number.
+  Let \(P : \R \to \R\) be the function
+  \[
+    P(x) \coloneqq \sum_{i = 0}^n c_i x^i;
+  \]
+  Such a function is known as a \emph{polynomial of one variable};
+  Show that \(P\) is continuous.
 \end{exercise}
 
 \begin{proof}
-    Let \(F_n = \{\text{all polynomial function with the highest order being \(n\)}\}\).
-    Let \(Q(n)\) be the statement ``all function \(f \in F_n\) are continuous''.
-    We use induction on \(n\) to show that \(\forall n \in \N\), \(Q(n)\) is true.
-    For \(n = 0\), we have
-    \[
-        \sum_{n = 0}^0 c_i x^i = c_0 x^0 = c_0.
-    \]
-    By Exercise \ref{ex 9.4.2} we know that constant functions are continuous, and thus the base case holds.
-    Suppose inductively that \(Q(n)\) is true for some \(n \geq 0\).
-    To show that \(Q(n + 1)\) is true, observe that every function \(f \in F_{n + 1}\) are in the form
-    \begin{align*}
-        f(x) & = \sum_{i = 0}^{n + 1} c_i x^i                      \\
-             & = \sum_{i = 0}^n c_i x^i + c_{n + 1} x^{n + 1}      \\
-             & = \sum_{i = 0}^n c_i x^i + c_{n + 1} (x^n \cdot x).
-    \end{align*}
-    By induction hypothesis we know that \(\sum_{i = 0}^n c_i x^i\) and \(x^n\) are continuous.
-    By Exercise \ref{ex 9.4.2} we know that \(c_{n + 1}\) and \(x\) are continuous.
-    Thus by Proposition \ref{9.4.9} we know that \(f\) is continuous.
-    This closes the induction.
+  Let \(F_n = \{\text{all polynomial function with the highest order being \(n\)}\}\).
+  Let \(Q(n)\) be the statement ``all function \(f \in F_n\) are continuous''.
+  We use induction on \(n\) to show that \(\forall n \in \N\), \(Q(n)\) is true.
+  For \(n = 0\), we have
+  \[
+    \sum_{n = 0}^0 c_i x^i = c_0 x^0 = c_0.
+  \]
+  By \cref{ex 9.4.2} we know that constant functions are continuous, and thus the base case holds.
+  Suppose inductively that \(Q(n)\) is true for some \(n \geq 0\).
+  To show that \(Q(n + 1)\) is true, observe that every function \(f \in F_{n + 1}\) are in the form
+  \begin{align*}
+    f(x) & = \sum_{i = 0}^{n + 1} c_i x^i                      \\
+         & = \sum_{i = 0}^n c_i x^i + c_{n + 1} x^{n + 1}      \\
+         & = \sum_{i = 0}^n c_i x^i + c_{n + 1} (x^n \cdot x).
+  \end{align*}
+  By induction hypothesis we know that \(\sum_{i = 0}^n c_i x^i\) and \(x^n\) are continuous.
+  By \cref{ex 9.4.2} we know that \(c_{n + 1}\) and \(x\) are continuous.
+  Thus by \cref{9.4.9} we know that \(f\) is continuous.
+  This closes the induction.
 \end{proof}

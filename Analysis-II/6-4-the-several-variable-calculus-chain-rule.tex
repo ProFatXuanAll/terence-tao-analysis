@@ -1,410 +1,410 @@
 \section{The several variable calculus chain rule}\label{sec 6.4}
 
 \begin{theorem}[Several variable calculus chain rule]\label{6.4.1}
-    Let \(E\) be a subset of \(\R^n\), and let \(F\) be a subset of \(\R^m\).
-    Let \(f : E \to F\) be a function, and let \(g : F \to \R^p\) be another function.
-    Let \(x_0\) be a point in the interior of \(E\).
-    Suppose that \(f\) is differentiable at \(x_0\), and that \(f(x_0)\) is in the interior of \(F\).
-    Suppose also that \(g\) is differentiable at \(f(x_0)\).
-    Then \(g \circ f : E \to \R^p\) is also differentiable at \(x_0\), and we have the formula
-    \[
-        (g \circ f)'(x_0) = g'\big(f(x_0)\big) \circ f'(x_0).
-    \]
+  Let \(E\) be a subset of \(\R^n\), and let \(F\) be a subset of \(\R^m\).
+  Let \(f : E \to F\) be a function, and let \(g : F \to \R^p\) be another function.
+  Let \(x_0\) be a point in the interior of \(E\).
+  Suppose that \(f\) is differentiable at \(x_0\), and that \(f(x_0)\) is in the interior of \(F\).
+  Suppose also that \(g\) is differentiable at \(f(x_0)\).
+  Then \(g \circ f : E \to \R^p\) is also differentiable at \(x_0\), and we have the formula
+  \[
+    (g \circ f)'(x_0) = g'\big(f(x_0)\big) \circ f'(x_0).
+  \]
 \end{theorem}
 
 \begin{proof}
-    By Definition \ref{6.2.2} we want to show that
-    \[
-        \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\norm*{(g \circ f)(x) - (g \circ f)(x_0) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big)(x - x_0)}}{\norm*{x - x_0}} = 0.
-    \]
-    Equivalently, we want to show that
-    \begin{align*}
-                 & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\}, \norm*{x - x_0} < \delta                  \\
-        \implies & \frac{\norm*{(g \circ f)(x) - (g \circ f)(x_0) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big)(x - x_0)}}{\norm*{x - x_0}} < \varepsilon \\
-        \implies & \norm*{(g \circ f)(x) - (g \circ f)(x_0) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big)(x - x_0)} < \varepsilon \norm*{x - x_0}.
-    \end{align*}
-    Since \(f'(x_0)\) exists, we know that
-    \[
-        \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)}}{\norm*{x - x_0}} = 0.
-    \]
-    Equivalently, we know that
-    \begin{align*}
-                 & \forall \varepsilon_f \in \R^+, \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\}, \norm*{x - x_0} < \delta \\
-        \implies & \frac{\norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)}}{\norm*{x - x_0}} < \varepsilon_f                                       \\
-        \implies & \norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)} < \varepsilon_f \norm*{x - x_0}                                               \\
-        \implies & \norm*{f(x) - f(x_0)} < \varepsilon_f \norm*{x - x_0} + \norm*{f'(x_0)(x - x_0)}.
-    \end{align*}
-    Since \(g'\big(f(x_0)\big)\) exists, we know that
-    \[
-        \lim_{y \to f(x_0) ; x \in F \setminus \{f(x_0)\}} \frac{\norm*{g(y) - g\big(f(x_0)\big) - g'\big(f(x_0)\big)\big(y - f(x_0)\big)}}{\norm*{y - f(x_0)}} = 0.
-    \]
-    Equivalently, we know that
-    \begin{align*}
-                 & \forall \varepsilon \in \R^+, \exists\ \delta_g \in \R^+ : \forall y \in F \setminus \{f(x_0)\}, \norm*{y - f(x_0)} < \delta_g \\
-        \implies & \frac{\norm*{g(y) - g\big(f(x_0)\big) - g'\big(f(x_0)\big)\big(y - f(x_0)\big)}}{\norm*{y - f(x_0)}} < \varepsilon             \\
-        \implies & \norm*{g(y) - g\big(f(x_0)\big) - g'\big(f(x_0)\big)\big(y - f(x_0)\big)} < \varepsilon \norm*{y - f(x_0)}.
-    \end{align*}
-    Fix one pair of \(\varepsilon\) and \(\delta_g\).
-    Then we have
-    \begin{align*}
-                 & \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\}, \norm*{x - x_0} < \delta                                       \\
-        \implies & \begin{cases}
-                       \norm*{f(x) - f(x_0)} < \varepsilon \norm*{x - x_0} + \norm*{f'(x_0)(x - x_0)}; \\
-                       \norm*{f(x) - f(x_0)} < \delta_g;
-                   \end{cases}                                              \\
-        \implies & \begin{cases}
-                       \norm*{f(x) - f(x_0)} < \varepsilon \norm*{x - x_0} + \norm*{f'(x_0)(x - x_0)}; \\
-                       \norm*{g\big(f(x)\big) - g\big(f(x_0)\big) - g'\big(f(x_0)\big) \big(f(x) - f(x_0)\big)} < \varepsilon \norm*{f(x) - f(x_0)};
-                   \end{cases} \\
-        \implies & \norm*{g\big(f(x)\big) - g\big(f(x_0)\big) - g'\big(f(x_0)\big) \big(f(x) - f(x_0)\big)}                                     \\
-                 & < \varepsilon^2 \norm*{x - x_0} + \varepsilon \norm*{f'(x_0)(x - x_0)}                                                       \\
-        \implies & \norm*{g\big(f(x)\big) - g\big(f(x_0)\big) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big) (x - x_0)}                           \\
-                 & < \varepsilon^2 \norm*{x - x_0} + \varepsilon \norm*{f'(x_0)(x - x_0)}                                                       \\
-                 & \quad + \norm*{g'\big(f(x_0)\big) \big(f(x) - f(x_0)\big) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big) (x - x_0)}.
-    \end{align*}
-    Since \(g'\big(f(x_0)\big)\) is a linear transformation, by Definition \ref{6.1.6} we know that
-    \begin{align*}
-         & \norm*{g'\big(f(x_0)\big) \big(f(x) - f(x_0)\big) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big) (x - x_0)} \\
-         & = \norm*{g'\big(f(x_0)\big) \big(f(x) - f(x_0) - f'(x_0) (x - x_0)\big)}.
-    \end{align*}
-    By Exercise \ref{ex 6.1.4} we know that
-    \begin{align*}
-        \exists\ M \in \R^+ : & \norm*{g'\big(f(x_0)\big) \big(f(x) - f(x_0) - f'(x_0) (x - x_0)\big)} \\
-                              & \leq M \norm*{f(x) - f(x_0) - f'(x_0) (x - x_0)}                       \\
-                              & \leq M \varepsilon \norm*{x - x_0}.
-    \end{align*}
-    Fix such \(M\).
-    Then we have
-    \begin{align*}
-                 & \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\}, \norm*{x - x_0} < \delta                  \\
-        \implies & \norm*{g\big(f(x)\big) - g\big(f(x_0)\big) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big) (x - x_0)}      \\
-                 & < \varepsilon^2 \norm*{x - x_0} + \varepsilon \norm*{f'(x_0)(x - x_0)} + M \varepsilon \norm*{x - x_0}.
-    \end{align*}
-    Since \(\varepsilon\) is arbitrary, we conclude that
-    \begin{align*}
-                 & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\}, \norm*{x - x_0} < \delta \\
-        \implies & \norm*{g\big(f(x)\big) - g\big(f(x_0)\big) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big) (x - x_0)} < \varepsilon.
-    \end{align*}
+  By \cref{6.2.2} we want to show that
+  \[
+    \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\norm*{(g \circ f)(x) - (g \circ f)(x_0) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big)(x - x_0)}}{\norm*{x - x_0}} = 0.
+  \]
+  Equivalently, we want to show that
+  \begin{align*}
+             & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\}, \norm*{x - x_0} < \delta                  \\
+    \implies & \frac{\norm*{(g \circ f)(x) - (g \circ f)(x_0) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big)(x - x_0)}}{\norm*{x - x_0}} < \varepsilon \\
+    \implies & \norm*{(g \circ f)(x) - (g \circ f)(x_0) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big)(x - x_0)} < \varepsilon \norm*{x - x_0}.
+  \end{align*}
+  Since \(f'(x_0)\) exists, we know that
+  \[
+    \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)}}{\norm*{x - x_0}} = 0.
+  \]
+  Equivalently, we know that
+  \begin{align*}
+             & \forall \varepsilon_f \in \R^+, \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\}, \norm*{x - x_0} < \delta \\
+    \implies & \frac{\norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)}}{\norm*{x - x_0}} < \varepsilon_f                                       \\
+    \implies & \norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)} < \varepsilon_f \norm*{x - x_0}                                               \\
+    \implies & \norm*{f(x) - f(x_0)} < \varepsilon_f \norm*{x - x_0} + \norm*{f'(x_0)(x - x_0)}.
+  \end{align*}
+  Since \(g'\big(f(x_0)\big)\) exists, we know that
+  \[
+    \lim_{y \to f(x_0) ; x \in F \setminus \{f(x_0)\}} \frac{\norm*{g(y) - g\big(f(x_0)\big) - g'\big(f(x_0)\big)\big(y - f(x_0)\big)}}{\norm*{y - f(x_0)}} = 0.
+  \]
+  Equivalently, we know that
+  \begin{align*}
+             & \forall \varepsilon \in \R^+, \exists\ \delta_g \in \R^+ : \forall y \in F \setminus \{f(x_0)\}, \norm*{y - f(x_0)} < \delta_g \\
+    \implies & \frac{\norm*{g(y) - g\big(f(x_0)\big) - g'\big(f(x_0)\big)\big(y - f(x_0)\big)}}{\norm*{y - f(x_0)}} < \varepsilon             \\
+    \implies & \norm*{g(y) - g\big(f(x_0)\big) - g'\big(f(x_0)\big)\big(y - f(x_0)\big)} < \varepsilon \norm*{y - f(x_0)}.
+  \end{align*}
+  Fix one pair of \(\varepsilon\) and \(\delta_g\).
+  Then we have
+  \begin{align*}
+             & \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\}, \norm*{x - x_0} < \delta                                       \\
+    \implies & \begin{cases}
+                 \norm*{f(x) - f(x_0)} < \varepsilon \norm*{x - x_0} + \norm*{f'(x_0)(x - x_0)}; \\
+                 \norm*{f(x) - f(x_0)} < \delta_g;
+               \end{cases}                                              \\
+    \implies & \begin{cases}
+                 \norm*{f(x) - f(x_0)} < \varepsilon \norm*{x - x_0} + \norm*{f'(x_0)(x - x_0)}; \\
+                 \norm*{g\big(f(x)\big) - g\big(f(x_0)\big) - g'\big(f(x_0)\big) \big(f(x) - f(x_0)\big)} < \varepsilon \norm*{f(x) - f(x_0)};
+               \end{cases} \\
+    \implies & \norm*{g\big(f(x)\big) - g\big(f(x_0)\big) - g'\big(f(x_0)\big) \big(f(x) - f(x_0)\big)}                                     \\
+             & < \varepsilon^2 \norm*{x - x_0} + \varepsilon \norm*{f'(x_0)(x - x_0)}                                                       \\
+    \implies & \norm*{g\big(f(x)\big) - g\big(f(x_0)\big) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big) (x - x_0)}                           \\
+             & < \varepsilon^2 \norm*{x - x_0} + \varepsilon \norm*{f'(x_0)(x - x_0)}                                                       \\
+             & \quad + \norm*{g'\big(f(x_0)\big) \big(f(x) - f(x_0)\big) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big) (x - x_0)}.
+  \end{align*}
+  Since \(g'\big(f(x_0)\big)\) is a linear transformation, by \cref{6.1.6} we know that
+  \begin{align*}
+     & \norm*{g'\big(f(x_0)\big) \big(f(x) - f(x_0)\big) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big) (x - x_0)} \\
+     & = \norm*{g'\big(f(x_0)\big) \big(f(x) - f(x_0) - f'(x_0) (x - x_0)\big)}.
+  \end{align*}
+  By \cref{ex 6.1.4} we know that
+  \begin{align*}
+    \exists\ M \in \R^+ : & \norm*{g'\big(f(x_0)\big) \big(f(x) - f(x_0) - f'(x_0) (x - x_0)\big)} \\
+                          & \leq M \norm*{f(x) - f(x_0) - f'(x_0) (x - x_0)}                       \\
+                          & \leq M \varepsilon \norm*{x - x_0}.
+  \end{align*}
+  Fix such \(M\).
+  Then we have
+  \begin{align*}
+             & \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\}, \norm*{x - x_0} < \delta                  \\
+    \implies & \norm*{g\big(f(x)\big) - g\big(f(x_0)\big) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big) (x - x_0)}      \\
+             & < \varepsilon^2 \norm*{x - x_0} + \varepsilon \norm*{f'(x_0)(x - x_0)} + M \varepsilon \norm*{x - x_0}.
+  \end{align*}
+  Since \(\varepsilon\) is arbitrary, we conclude that
+  \begin{align*}
+             & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in E \setminus \{x_0\}, \norm*{x - x_0} < \delta \\
+    \implies & \norm*{g\big(f(x)\big) - g\big(f(x_0)\big) - \Big(g'\big(f(x_0)\big) \circ f'(x_0)\Big) (x - x_0)} < \varepsilon.
+  \end{align*}
 \end{proof}
 
 \begin{note}
-    As a corollary of the chain rule and Lemma \ref{6.1.16} (and Lemma \ref{6.1.13}), we see that
-    \[
-        D (g \circ f)(x_0) = D g\big(f(x_0)\big) \cdot D f(x_0);
-    \]
-    i.e., we can write the chain rule in terms of matrices and matrix multiplication, instead of in terms of linear transformations and composition.
+  As a corollary of the chain rule and \cref{6.1.16} (and \cref{6.1.13}), we see that
+  \[
+    D (g \circ f)(x_0) = D g\big(f(x_0)\big) \cdot D f(x_0);
+  \]
+  i.e., we can write the chain rule in terms of matrices and matrix multiplication, instead of in terms of linear transformations and composition.
 \end{note}
 
 \begin{example}\label{6.4.2}
-    Let \(f : \R^n \to \R\) and \(g : \R^n \to \R\) be differentiable functions.
-    We form the combined function \(h : \R^n \to \R^2\) by defining \(h(x) \coloneqq \big(f(x), g(x)\big)\).
-    Now let \(k : \R^2 \to \R\) be the multiplication function \(k(a, b) \coloneqq ab\).
+  Let \(f : \R^n \to \R\) and \(g : \R^n \to \R\) be differentiable functions.
+  We form the combined function \(h : \R^n \to \R^2\) by defining \(h(x) \coloneqq \big(f(x), g(x)\big)\).
+  Now let \(k : \R^2 \to \R\) be the multiplication function \(k(a, b) \coloneqq ab\).
 
-    We first show that
-    \[
-        D h(x_0) = \begin{pmatrix}
-            \nabla f(x_0) \\
-            \nabla g(x_0)
-        \end{pmatrix}.
-    \]
-    Let \(x_0 \in \R^n\).
-    Since
-    \begin{align*}
-         & \norm*{h(x) - h(x_0) - (x - x_0) D h(x_0)^\top}                                                                                  \\
-         & = \norm*{\big(f(x), g(x)\big) - \big(f(x_0), g(x_0)\big) - \big((x - x_0) \nabla f(x_0)^\top, (x - x_0) \nabla g(x_0)^\top\big)} \\
-         & = \norm*{\big(f(x) - f(x_0) - (x - x_0) \nabla f(x_0)^\top, g(x) - g(x_0) - (x - x_0) \nabla g(x_0)^\top\big)}                   \\
-         & \leq \norm*{f(x) - f(x_0) - (x - x_0) \nabla f(x_0)^\top} + \norm*{g(x) - g(x_0) - (x - x_0) \nabla g(x_0)^\top}
-    \end{align*}
-    (note that the last line follow by Exercise \ref{ex 1.1.8}),
-    by squeeze test we know that
-    \begin{align*}
-                 & \begin{cases}
-                       \lim_{x \to x_0 ; x \in \R^n \setminus \{x_0\}} \frac{\norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)}}{\norm*{x - x_0}} = 0 \\
-                       \lim_{x \to x_0 ; x \in \R^n \setminus \{x_0\}} \frac{\norm*{g(x) - g(x_0) - g'(x_0)(x - x_0)}}{\norm*{x - x_0}} = 0
-                   \end{cases}                    \\
-        \implies & \begin{cases}
-                       \lim_{x \to x_0 ; x \in \R^n \setminus \{x_0\}} \frac{\norm*{f(x) - f(x_0) - (x - x_0) \nabla f(x_0)^\top}}{\norm*{x - x_0}} = 0 \\
-                       \lim_{x \to x_0 ; x \in \R^n \setminus \{x_0\}} \frac{\norm*{g(x) - g(x_0) - (x - x_0) \nabla g(x_0)^\top}}{\norm*{x - x_0}} = 0
-                   \end{cases}                    \\
-        \implies & \lim_{x \to x_0 ; x \in \R^n \setminus \{x_0\}} \frac{\norm*{h(x) - h(x_0) - (x - x_0) D h(x_0)^\top}}{\norm*{x - x_0}} = 0.
-    \end{align*}
-    Since \(x_0\) is arbitrary, we conclude that the identity is true.
+  We first show that
+  \[
+    D h(x_0) = \begin{pmatrix}
+      \nabla f(x_0) \\
+      \nabla g(x_0)
+    \end{pmatrix}.
+  \]
+  Let \(x_0 \in \R^n\).
+  Since
+  \begin{align*}
+     & \norm*{h(x) - h(x_0) - (x - x_0) D h(x_0)^\top}                                                                                  \\
+     & = \norm*{\big(f(x), g(x)\big) - \big(f(x_0), g(x_0)\big) - \big((x - x_0) \nabla f(x_0)^\top, (x - x_0) \nabla g(x_0)^\top\big)} \\
+     & = \norm*{\big(f(x) - f(x_0) - (x - x_0) \nabla f(x_0)^\top, g(x) - g(x_0) - (x - x_0) \nabla g(x_0)^\top\big)}                   \\
+     & \leq \norm*{f(x) - f(x_0) - (x - x_0) \nabla f(x_0)^\top} + \norm*{g(x) - g(x_0) - (x - x_0) \nabla g(x_0)^\top}
+  \end{align*}
+  (note that the last line follow by \cref{ex 1.1.8}),
+  by squeeze test we know that
+  \begin{align*}
+             & \begin{cases}
+                 \lim_{x \to x_0 ; x \in \R^n \setminus \{x_0\}} \frac{\norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)}}{\norm*{x - x_0}} = 0 \\
+                 \lim_{x \to x_0 ; x \in \R^n \setminus \{x_0\}} \frac{\norm*{g(x) - g(x_0) - g'(x_0)(x - x_0)}}{\norm*{x - x_0}} = 0
+               \end{cases}                    \\
+    \implies & \begin{cases}
+                 \lim_{x \to x_0 ; x \in \R^n \setminus \{x_0\}} \frac{\norm*{f(x) - f(x_0) - (x - x_0) \nabla f(x_0)^\top}}{\norm*{x - x_0}} = 0 \\
+                 \lim_{x \to x_0 ; x \in \R^n \setminus \{x_0\}} \frac{\norm*{g(x) - g(x_0) - (x - x_0) \nabla g(x_0)^\top}}{\norm*{x - x_0}} = 0
+               \end{cases}                    \\
+    \implies & \lim_{x \to x_0 ; x \in \R^n \setminus \{x_0\}} \frac{\norm*{h(x) - h(x_0) - (x - x_0) D h(x_0)^\top}}{\norm*{x - x_0}} = 0.
+  \end{align*}
+  Since \(x_0\) is arbitrary, we conclude that the identity is true.
 
-    Now we show that
-    \[
-        D k(a, b) = (b, a).
-    \]
-    Let \((a, b) \in \R^2\).
-    Observe that for any \((x, y) \in \R^2 \setminus \{(a, b)\}\), we have
-    \begin{align*}
-         & \frac{\norm*{k(x, y) - k(a, b) - \big((x, y) - (a, b)\big) (b, a)^\top}}{\norm*{(x, y) - (a, b)}} \\
-         & = \frac{\norm*{xy - ab - xb - ay + ab + ba}}{\norm*{(x - a, y - b)}}                              \\
-         & = \frac{\norm*{(x - a)(y - b)}}{\norm*{(x - a, y - b)}}                                           \\
-         & = \sqrt{\frac{(x - a)^2 (y - b)^2}{(x - a)^2 + (y - b)^2}}                                        \\
-         & \leq \sqrt{\frac{2 (x - a)^2 (y - b)^2}{(x - a)^2 + (y - b)^2}}                                   \\
-         & \leq \sqrt{\frac{(x - a)^4 + 2 (x - a)^2 (y - b)^2 + (y - b)^4}{(x - a)^2 + (y - b)^2}}           \\
-         & = \sqrt{\frac{\big((x - a)^2 + (y - b)^2\big)^2}{(x - a)^2 + (y - b)^2}}                          \\
-         & = \sqrt{(x - a)^2 + (y - b)^2}.
-    \end{align*}
-    Since
-    \begin{align*}
-                 & \lim_{(x, y) \to (a, b) ; (x, y) \in \R^2 \setminus \{(a, b)\}} (x - a)^2 + (y - b)^2 = 0                                                                             \\
-        \implies & \lim_{(x, y) \to (a, b) ; (x, y) \in \R^2 \setminus \{(a, b)\}} \sqrt{(x - a)^2 + (y - b)^2} = 0                                                                      \\
-        \implies & \lim_{(x, y) \to (a, b) ; (x, y) \in \R^2 \setminus \{(a, b)\}} \frac{\norm*{k(x, y) - k(a, b) - \big((x, y) - (a, b)\big) (b, a)^\top}}{\norm*{(x, y) - (a, b)}} = 0
-    \end{align*}
-    (note that the last line follow by squeeze test),
-    by Definition \ref{6.2.2} we know that the identity is true.
+  Now we show that
+  \[
+    D k(a, b) = (b, a).
+  \]
+  Let \((a, b) \in \R^2\).
+  Observe that for any \((x, y) \in \R^2 \setminus \{(a, b)\}\), we have
+  \begin{align*}
+     & \frac{\norm*{k(x, y) - k(a, b) - \big((x, y) - (a, b)\big) (b, a)^\top}}{\norm*{(x, y) - (a, b)}} \\
+     & = \frac{\norm*{xy - ab - xb - ay + ab + ba}}{\norm*{(x - a, y - b)}}                              \\
+     & = \frac{\norm*{(x - a)(y - b)}}{\norm*{(x - a, y - b)}}                                           \\
+     & = \sqrt{\frac{(x - a)^2 (y - b)^2}{(x - a)^2 + (y - b)^2}}                                        \\
+     & \leq \sqrt{\frac{2 (x - a)^2 (y - b)^2}{(x - a)^2 + (y - b)^2}}                                   \\
+     & \leq \sqrt{\frac{(x - a)^4 + 2 (x - a)^2 (y - b)^2 + (y - b)^4}{(x - a)^2 + (y - b)^2}}           \\
+     & = \sqrt{\frac{\big((x - a)^2 + (y - b)^2\big)^2}{(x - a)^2 + (y - b)^2}}                          \\
+     & = \sqrt{(x - a)^2 + (y - b)^2}.
+  \end{align*}
+  Since
+  \begin{align*}
+             & \lim_{(x, y) \to (a, b) ; (x, y) \in \R^2 \setminus \{(a, b)\}} (x - a)^2 + (y - b)^2 = 0                                                                             \\
+    \implies & \lim_{(x, y) \to (a, b) ; (x, y) \in \R^2 \setminus \{(a, b)\}} \sqrt{(x - a)^2 + (y - b)^2} = 0                                                                      \\
+    \implies & \lim_{(x, y) \to (a, b) ; (x, y) \in \R^2 \setminus \{(a, b)\}} \frac{\norm*{k(x, y) - k(a, b) - \big((x, y) - (a, b)\big) (b, a)^\top}}{\norm*{(x, y) - (a, b)}} = 0
+  \end{align*}
+  (note that the last line follow by squeeze test),
+  by \cref{6.2.2} we know that the identity is true.
 
-    By the chain rule, we thus see that
-    \[
-        D (k \circ h)(x_0) = \big(g(x_0), f(x_0)\big) \begin{pmatrix}
-            \nabla f(x_0) \\
-            \nabla g(x_0)
-        \end{pmatrix} = g(x_0) \nabla f(x_0) + f(x_0) \nabla g(x_0).
-    \]
-    But \(k \circ h = fg\), and \(D (fg) = \nabla (fg)\).
-    We have thus proven the \emph{product rule}
-    \[
-        \nabla (fg) = g \nabla f + f \nabla g.
-    \]
-    A similar argument gives the sum rule \(\nabla (f + g) = \nabla f + \nabla g\), or the difference rule \(\nabla (f - g) = \nabla f - \nabla g\), as well as the quotient rule (Exercise \ref{ex 6.4.4}).
+  By the chain rule, we thus see that
+  \[
+    D (k \circ h)(x_0) = \big(g(x_0), f(x_0)\big) \begin{pmatrix}
+      \nabla f(x_0) \\
+      \nabla g(x_0)
+    \end{pmatrix} = g(x_0) \nabla f(x_0) + f(x_0) \nabla g(x_0).
+  \]
+  But \(k \circ h = fg\), and \(D (fg) = \nabla (fg)\).
+  We have thus proven the \emph{product rule}
+  \[
+    \nabla (fg) = g \nabla f + f \nabla g.
+  \]
+  A similar argument gives the sum rule \(\nabla (f + g) = \nabla f + \nabla g\), or the difference rule \(\nabla (f - g) = \nabla f - \nabla g\), as well as the quotient rule (\cref{ex 6.4.4}).
 \end{example}
 
 \begin{note}
-    We do record one further useful application of the chain rule.
-    Let \(T : \R^n \to \R^m\) be a linear transformation.
-    From Exercise \ref{ex 6.4.1} we observe that \(T\) is continuously differentiable at every point, and in fact \(T'(x) = T\) for every \(x\).
-    (This equation may look a little strange, but perhaps it is easier to swallow if you view it in the form \(\frac{d}{dx} (Tx) = T\).)
-    Thus, for any differentiable function \(f : E \to \R^n\), we see that \(T f : E \to \R^m\) is also differentiable, and hence by the chain rule
-    \[
-        (T f)'(x_0) = T\big(f'(x_0)\big).
-    \]
-    This is a generalization of the single-variable calculus rule \((cf)' = c(f')\) for constant scalars \(c\).
+  We do record one further useful application of the chain rule.
+  Let \(T : \R^n \to \R^m\) be a linear transformation.
+  From \cref{ex 6.4.1} we observe that \(T\) is continuously differentiable at every point, and in fact \(T'(x) = T\) for every \(x\).
+  (This equation may look a little strange, but perhaps it is easier to swallow if you view it in the form \(\frac{d}{dx} (Tx) = T\).)
+  Thus, for any differentiable function \(f : E \to \R^n\), we see that \(T f : E \to \R^m\) is also differentiable, and hence by the chain rule
+  \[
+    (T f)'(x_0) = T\big(f'(x_0)\big).
+  \]
+  This is a generalization of the single-variable calculus rule \((cf)' = c(f')\) for constant scalars \(c\).
 \end{note}
 
 \begin{additional corollary}\label{ac 6.4.1}
 If \(f : \R^n \to \R^m\) is some differentiable function, and \(x_j : \R \to \R\) are differentiable functions for each \(j = 1, \dots n\), then
 \[
-    \frac{d}{dt} f\big(x_1(t), x_2(t), \dots, x_n(t)\big) = \sum_{j = 1}^n x_j'(t) \frac{\partial f}{\partial x_j} \big(x_1(t), x_2(t), \dots, x_n(t)\big).
+  \frac{d}{dt} f\big(x_1(t), x_2(t), \dots, x_n(t)\big) = \sum_{j = 1}^n x_j'(t) \frac{\partial f}{\partial x_j} \big(x_1(t), x_2(t), \dots, x_n(t)\big).
 \]
 \end{additional corollary}
 
 \begin{proof}
-    Let \(h : \R \to \R^n\) be the function
-    \[
-        \forall t \in \R, h(t) = \big(x_1(t), \dots, x_n(t)\big).
-    \]
-    We claim that \(h\) is differentiable on \(\R\), and
-    \[
-        \forall t \in \R, D h(t) = \big(x_1'(t), \dots, x_n'(t)\big)^\top.
-    \]
-    Let \(t_0 \in \R\).
-    Since
-    \begin{align*}
-         & \frac{\norm*{h(t) - h(t_0) - (t - t_0) D_h(t_0)^\top}}{\norm*{t - t_0}}                                                                                  \\
-         & = \frac{\norm*{\big(x_1(t), \dots, x_n(t)\big) - \big(x_1(t_0), \dots, x_n(t_0)\big) - (t - t_0) \big(x_1'(t), \dots, x_n'(t)\big)^\top}}{\abs{t - t_0}} \\
-         & = \frac{\norm*{\big(x_1(t) - x_1(t_0) - x_1'(t_0)(t - t_0), \dots, x_n(t) - x_n(t_0) - x_n'(t_0)(t - t_0)\big)}}{\abs{t - t_0}}                          \\
-         & \leq \frac{\sum_{i = 1}^n \abs{\big(x_i(t) - x_i(t_0) - x_i'(t_0)(t - t_0)\big)}}{\abs{t - t_0}}                                                         \\
-         & = \sum_{i = 1}^n \frac{\abs{\big(x_i(t) - x_i(t_0) - x_i'(t_0)(t - t_0)\big)}}{\abs{t - t_0}},
-    \end{align*}
-    we know that
-    \begin{align*}
-                 & \forall 1 \leq i \leq n, \lim_{t \to t_0 ; t \in \R \setminus \{t_0\}} \frac{\abs{x_i(t) - x_i(t_0) - x_i'(t_0)(x - x_0)}}{\abs{t - t_0}} = 0                            \\
-        \implies & \lim_{t \to t_0 ; t \in \R \setminus \{t_0\}} \sum_{i = 1}^n \frac{\abs{x_i(t) - x_i(t_0) - x_i'(t_0)(x - x_0)}}{\abs{t - t_0}} = 0           & \text{(by limit laws)}   \\
-        \implies & \lim_{t \to t_0 ; t \in \R \setminus \{t_0\}} \frac{\norm*{h(t) - h(t_0) - (t - t_0) D_h(t_0)^\top}}{\norm*{t - t_0}}.                        & \text{(by squeeze test)}
-    \end{align*}
-    Since \(t_0\) is arbitrary, by Definition \ref{6.2.2} we know that
-    \[
-        \forall t \in \R, D h(t) = \big(x_1'(t), \dots, x_n'(t)\big)^\top.
-    \]
-    Using chain rule we have
-    \begin{align*}
-        \forall t \in \R, & D (f \circ h)(t)                                                                                                                           \\
-                          & = D f\big(h(t)\big) \cdot D h(t)                                                         & \text{(by Theorem \ref{6.4.1})}                 \\
-                          & = D f\big(x_1(t), \dots, x_n(t)\big) \cdot \big(x_1'(t), \dots, x_n'(t)\big)^\top                                                          \\
-                          & = D_{\big(x_1'(t), \dots, x_n'(t)\big)} f\big(x_1(t), \dots, x_n(t)\big)                 & \text{(by Lemma \ref{6.3.5})}                   \\
-                          & = \sum_{j = 1}^n x_j'(t) \frac{\partial f}{\partial x_j}\big(x_1(t), \dots, x_n(t)\big). & \text{(by Additional Corollary \ref{ac 6.3.2})}
-    \end{align*}
+  Let \(h : \R \to \R^n\) be the function
+  \[
+    \forall t \in \R, h(t) = \big(x_1(t), \dots, x_n(t)\big).
+  \]
+  We claim that \(h\) is differentiable on \(\R\), and
+  \[
+    \forall t \in \R, D h(t) = \big(x_1'(t), \dots, x_n'(t)\big)^\top.
+  \]
+  Let \(t_0 \in \R\).
+  Since
+  \begin{align*}
+     & \frac{\norm*{h(t) - h(t_0) - (t - t_0) D_h(t_0)^\top}}{\norm*{t - t_0}}                                                                                  \\
+     & = \frac{\norm*{\big(x_1(t), \dots, x_n(t)\big) - \big(x_1(t_0), \dots, x_n(t_0)\big) - (t - t_0) \big(x_1'(t), \dots, x_n'(t)\big)^\top}}{\abs{t - t_0}} \\
+     & = \frac{\norm*{\big(x_1(t) - x_1(t_0) - x_1'(t_0)(t - t_0), \dots, x_n(t) - x_n(t_0) - x_n'(t_0)(t - t_0)\big)}}{\abs{t - t_0}}                          \\
+     & \leq \frac{\sum_{i = 1}^n \abs{\big(x_i(t) - x_i(t_0) - x_i'(t_0)(t - t_0)\big)}}{\abs{t - t_0}}                                                         \\
+     & = \sum_{i = 1}^n \frac{\abs{\big(x_i(t) - x_i(t_0) - x_i'(t_0)(t - t_0)\big)}}{\abs{t - t_0}},
+  \end{align*}
+  we know that
+  \begin{align*}
+             & \forall 1 \leq i \leq n, \lim_{t \to t_0 ; t \in \R \setminus \{t_0\}} \frac{\abs{x_i(t) - x_i(t_0) - x_i'(t_0)(x - x_0)}}{\abs{t - t_0}} = 0                            \\
+    \implies & \lim_{t \to t_0 ; t \in \R \setminus \{t_0\}} \sum_{i = 1}^n \frac{\abs{x_i(t) - x_i(t_0) - x_i'(t_0)(x - x_0)}}{\abs{t - t_0}} = 0           & \text{(by limit laws)}   \\
+    \implies & \lim_{t \to t_0 ; t \in \R \setminus \{t_0\}} \frac{\norm*{h(t) - h(t_0) - (t - t_0) D_h(t_0)^\top}}{\norm*{t - t_0}}.                        & \text{(by squeeze test)}
+  \end{align*}
+  Since \(t_0\) is arbitrary, by \cref{6.2.2} we know that
+  \[
+    \forall t \in \R, D h(t) = \big(x_1'(t), \dots, x_n'(t)\big)^\top.
+  \]
+  Using chain rule we have
+  \begin{align*}
+    \forall t \in \R, & D (f \circ h)(t)                                                                                                       \\
+                      & = D f\big(h(t)\big) \cdot D h(t)                                                         & \text{(by \cref{6.4.1})}    \\
+                      & = D f\big(x_1(t), \dots, x_n(t)\big) \cdot \big(x_1'(t), \dots, x_n'(t)\big)^\top                                      \\
+                      & = D_{\big(x_1'(t), \dots, x_n'(t)\big)} f\big(x_1(t), \dots, x_n(t)\big)                 & \text{(by \cref{6.3.5})}    \\
+                      & = \sum_{j = 1}^n x_j'(t) \frac{\partial f}{\partial x_j}\big(x_1(t), \dots, x_n(t)\big). & \text{(by \cref{ac 6.3.2})}
+  \end{align*}
 \end{proof}
 
 \exercisesection
 
 \begin{exercise}\label{ex 6.4.1}
-    Let \(T : \R^n \to \R^m\) be a linear transformation.
-    Show that \(T\) is continuously differentiable at every point, and in fact \(T'(x) = T\) for every \(x\).
-    What is \(D T\)?
+  Let \(T : \R^n \to \R^m\) be a linear transformation.
+  Show that \(T\) is continuously differentiable at every point, and in fact \(T'(x) = T\) for every \(x\).
+  What is \(D T\)?
 \end{exercise}
 
 \begin{proof}
-    Let \(x_0 \in \R^n\).
-    Since
-    \begin{align*}
-         & \lim_{x \to x_0 ; x \in \R^n \setminus \{x_0\}} \frac{\norm*{T(x) - T(x_0) - T(x - x_0)}}{\norm*{x - x_0}}                                           \\
-         & = \lim_{x \to x_0 ; x \in \R^n \setminus \{x_0\}} \frac{\norm*{T(x) - T(x_0) - T(x) - T(x_0)}}{\norm*{x - x_0}} & \text{(by Definition \ref{6.1.6})} \\
-         & = \lim_{x \to x_0 ; x \in \R^n \setminus \{x_0\}} \frac{\norm*{0_{\R^m}}}{\norm*{x - x_0}}                                                           \\
-         & = 0
-    \end{align*}
-    and \(x_0\) is arbitrary, we conclude by Definition \ref{6.2.2} that
-    \[
-        \forall x \in \R^n, T'(x) = T.
-    \]
-    By Lemma \ref{6.1.13} we know that
-    \[
-        \forall x \in \R^n, D T(x) = \big(T(e_1)^\top, \dots, T(e_n)^\top\big).
-    \]
+  Let \(x_0 \in \R^n\).
+  Since
+  \begin{align*}
+     & \lim_{x \to x_0 ; x \in \R^n \setminus \{x_0\}} \frac{\norm*{T(x) - T(x_0) - T(x - x_0)}}{\norm*{x - x_0}}                                 \\
+     & = \lim_{x \to x_0 ; x \in \R^n \setminus \{x_0\}} \frac{\norm*{T(x) - T(x_0) - T(x) - T(x_0)}}{\norm*{x - x_0}} & \text{(by \cref{6.1.6})} \\
+     & = \lim_{x \to x_0 ; x \in \R^n \setminus \{x_0\}} \frac{\norm*{0_{\R^m}}}{\norm*{x - x_0}}                                                 \\
+     & = 0
+  \end{align*}
+  and \(x_0\) is arbitrary, we conclude by \cref{6.2.2} that
+  \[
+    \forall x \in \R^n, T'(x) = T.
+  \]
+  By \cref{6.1.13} we know that
+  \[
+    \forall x \in \R^n, D T(x) = \big(T(e_1)^\top, \dots, T(e_n)^\top\big).
+  \]
 \end{proof}
 
 \begin{exercise}\label{ex 6.4.2}
-    Let \(E\) be a subset of \(\R^n\).
-    Prove that if a function \(f : E \to \R^m\) is differentiable at an interior point \(x_0\) of \(E\), then it is also continuous at \(x_0\).
+  Let \(E\) be a subset of \(\R^n\).
+  Prove that if a function \(f : E \to \R^m\) is differentiable at an interior point \(x_0\) of \(E\), then it is also continuous at \(x_0\).
 \end{exercise}
 
 \begin{proof}
-    By Definition \ref{6.2.2} we have
-    \begin{align*}
-                 & \forall \varepsilon \in \R^+, \exists\ \delta_1 \in \R^+ : \forall x \in E \setminus \{x_0\},                                             \\
-                 & \bigg(\norm*{x - x_0} < \delta_1 \implies \frac{\norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)}}{\norm*{x - x_0}} < \frac{\varepsilon}{2}\bigg)  \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ \delta_1 \in \R^+ : \forall x \in E \setminus \{x_0\},                                             \\
-                 & \bigg(\norm*{x - x_0} < \delta_1 \implies \norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)} < \frac{\varepsilon}{2} \norm*{x - x_0}\bigg)          \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ \delta_1 \in \R^+ : \forall x \in E \setminus \{x_0\},                                             \\
-                 & \bigg(\norm*{x - x_0} < \delta_1 \implies \norm*{f(x) - f(x_0)} < \frac{\varepsilon}{2} \norm*{x - x_0} + \norm*{f'(x_0)(x - x_0)}\bigg)  \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ \delta_1 \in \R^+ : \forall x \in E,                                                               \\
-                 & \bigg(\norm*{x - x_0} < \delta_1 \implies \norm*{f(x) - f(x_0)} < \frac{\varepsilon}{2} \norm*{x - x_0} + \norm*{f'(x_0)(x - x_0)}\bigg).
-    \end{align*}
-    By Exercise \ref{ex 6.1.4} we know that every linear transformation is continuous.
-    Thus we know that
-    \begin{align*}
-                 & \forall \varepsilon \in \R^+, \exists\ \delta_2 \in \R^+ : \forall x \in E,                                                                    \\
-                 & \bigg(\norm*{x - x_0} < \delta_2 \implies \norm*{f'(x_0)(x) - f'(x_0)(x_0)} < \frac{\varepsilon}{2}\bigg)                                      \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ \delta_2 \in \R^+ : \forall x \in E,                                                                    \\
-                 & \bigg(\norm*{x - x_0} < \delta_2 \implies \norm*{f'(x_0)(x - x_0)} < \frac{\varepsilon}{2}\bigg).         & \text{(by Definition \ref{6.1.6})}
-    \end{align*}
-    Let \(\delta = \min(\delta_1, \delta_2, 1)\).
-    Then we have
-    \begin{align*}
-                 & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in E, \norm*{x - x_0} < \delta                                                      \\
-        \implies & \norm*{f(x) - f(x_0)} < \frac{\varepsilon}{2} \norm*{x - x_0} + \norm*{f'(x_0)(x - x_0)} < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
-    \end{align*}
-    Thus \(f\) is continuous at \(x_0\) from \((E, d_{l^2}|_{E \times E})\) to \((\R^m, d_{l^2}|_{\R^m \times \R^m})\).
+  By \cref{6.2.2} we have
+  \begin{align*}
+             & \forall \varepsilon \in \R^+, \exists\ \delta_1 \in \R^+ : \forall x \in E \setminus \{x_0\},                                             \\
+             & \bigg(\norm*{x - x_0} < \delta_1 \implies \frac{\norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)}}{\norm*{x - x_0}} < \frac{\varepsilon}{2}\bigg)  \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ \delta_1 \in \R^+ : \forall x \in E \setminus \{x_0\},                                             \\
+             & \bigg(\norm*{x - x_0} < \delta_1 \implies \norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)} < \frac{\varepsilon}{2} \norm*{x - x_0}\bigg)          \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ \delta_1 \in \R^+ : \forall x \in E \setminus \{x_0\},                                             \\
+             & \bigg(\norm*{x - x_0} < \delta_1 \implies \norm*{f(x) - f(x_0)} < \frac{\varepsilon}{2} \norm*{x - x_0} + \norm*{f'(x_0)(x - x_0)}\bigg)  \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ \delta_1 \in \R^+ : \forall x \in E,                                                               \\
+             & \bigg(\norm*{x - x_0} < \delta_1 \implies \norm*{f(x) - f(x_0)} < \frac{\varepsilon}{2} \norm*{x - x_0} + \norm*{f'(x_0)(x - x_0)}\bigg).
+  \end{align*}
+  By \cref{ex 6.1.4} we know that every linear transformation is continuous.
+  Thus we know that
+  \begin{align*}
+             & \forall \varepsilon \in \R^+, \exists\ \delta_2 \in \R^+ : \forall x \in E,                                                          \\
+             & \bigg(\norm*{x - x_0} < \delta_2 \implies \norm*{f'(x_0)(x) - f'(x_0)(x_0)} < \frac{\varepsilon}{2}\bigg)                            \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ \delta_2 \in \R^+ : \forall x \in E,                                                          \\
+             & \bigg(\norm*{x - x_0} < \delta_2 \implies \norm*{f'(x_0)(x - x_0)} < \frac{\varepsilon}{2}\bigg).         & \text{(by \cref{6.1.6})}
+  \end{align*}
+  Let \(\delta = \min(\delta_1, \delta_2, 1)\).
+  Then we have
+  \begin{align*}
+             & \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in E, \norm*{x - x_0} < \delta                                                      \\
+    \implies & \norm*{f(x) - f(x_0)} < \frac{\varepsilon}{2} \norm*{x - x_0} + \norm*{f'(x_0)(x - x_0)} < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
+  \end{align*}
+  Thus \(f\) is continuous at \(x_0\) from \((E, d_{l^2}|_{E \times E})\) to \((\R^m, d_{l^2}|_{\R^m \times \R^m})\).
 \end{proof}
 
 \begin{exercise}\label{ex 6.4.3}
-    Prove Theorem \ref{6.4.1}.
+  Prove \cref{6.4.1}.
 \end{exercise}
 
 \begin{proof}
-    See Theorem \ref{6.4.1}.
+  See \cref{6.4.1}.
 \end{proof}
 
 \begin{exercise}\label{ex 6.4.4}
-    State and prove some version of the quotient rule for functions of several variables (i.e., functions of the form \(f : E \to \R\) for some subset \(E\) of \(\R^n\)).
-    In other words, state a rule which gives a formula for the gradient of \(f / g\);
-    compare your answer with Theorem 10.1.13(h) in Analysis I.
-    Be sure to make clear what all your assumptions are.
+  State and prove some version of the quotient rule for functions of several variables (i.e., functions of the form \(f : E \to \R\) for some subset \(E\) of \(\R^n\)).
+  In other words, state a rule which gives a formula for the gradient of \(f / g\);
+  compare your answer with Theorem 10.1.13(h) in Analysis I.
+  Be sure to make clear what all your assumptions are.
 \end{exercise}
 
 \begin{proof}
-    Let \(E \subseteq \R^n\) and let \(x_0\) be an interior point of \(E\).
-    Let \(f : E \to \R\) and \(g : E \to \R\) be functions where \(g(x) \neq 0\) for all \(x \in E\).
-    If \(f, g\) are differentiable at \(x_0\), then \(f / g\) is differentiable at \(x_0\), and
-    \[
-        \nabla \bigg(\frac{f}{g}\bigg)(x_0) = \frac{g(x_0) \nabla f(x_0) - f(x_0) \nabla g(x_0)}{\big(g(x_0)\big)^2}.
-    \]
-    If \(f, g\) are differentiable on \(E\), then \(f / g\) is differentiable on \(E\), and
-    \[
-        \nabla \bigg(\frac{f}{g}\bigg) = \frac{g \nabla f - f \nabla g}{g^2}.
-    \]
+  Let \(E \subseteq \R^n\) and let \(x_0\) be an interior point of \(E\).
+  Let \(f : E \to \R\) and \(g : E \to \R\) be functions where \(g(x) \neq 0\) for all \(x \in E\).
+  If \(f, g\) are differentiable at \(x_0\), then \(f / g\) is differentiable at \(x_0\), and
+  \[
+    \nabla \bigg(\frac{f}{g}\bigg)(x_0) = \frac{g(x_0) \nabla f(x_0) - f(x_0) \nabla g(x_0)}{\big(g(x_0)\big)^2}.
+  \]
+  If \(f, g\) are differentiable on \(E\), then \(f / g\) is differentiable on \(E\), and
+  \[
+    \nabla \bigg(\frac{f}{g}\bigg) = \frac{g \nabla f - f \nabla g}{g^2}.
+  \]
 
-    Let \(k : \R \times (\R \setminus \{0\}) \to \R\) be the function
-    \[
-        \forall (a, b) \in \R \times (\R \setminus \{0\}), k(a, b) = \frac{a}{b}.
-    \]
-    We claim that \(k\) is differentiable on \(\R \times (\R \setminus \{0\})\) and
-    \[
-        \forall (a, b) \in \R \times (\R \setminus \{0\}), D k(a, b) = \bigg(\frac{1}{b}, \frac{-a}{b^2}\bigg).
-    \]
-    Let \((a, b) \in \R \times (\R \setminus \{0\})\).
-    Since for each \((x, y) \in \big(\R \times (\R \setminus \{0\})\big) \setminus \{(a, b)\}\), we have
-    \begin{align*}
-         & \frac{\norm*{k(x, y) - k(a, b) - \big((x, y) - (a, b)\big) \bigg(\frac{1}{b}, \frac{-a}{b^2}\bigg)^\top}}{\norm*{(x, y) - (a, b)}} \\
-         & = \frac{\norm*{\frac{x}{y} - \frac{a}{b} - \frac{x - a}{b} + \frac{a(y - b)}{b^2}}}{\norm*{(x - a, y - b)}}                        \\
-         & = \frac{\norm*{\frac{b^2 x - bxy + ay^2 - aby}{b^2y}}}{\norm*{(x - a, y - b)}}                                                     \\
-         & = \frac{\norm*{\frac{(ay - bx)(y - b)}{b^2y}}}{\norm*{(x - a, y - b)}}                                                             \\
-         & = \sqrt{\frac{(ay - bx)^2 (y - b)^2}{b^4 y^2 \big((x - a)^2 + (y - b)^2\big)}}                                                     \\
-         & \leq \sqrt{\frac{(ay - bx)^2 \big((x - a)^2 + (y - b)^2\big)}{b^4 y^2 \big((x - a)^2 + (y - b)^2\big)}}                            \\
-         & = \sqrt{\frac{(ay - bx)^2}{b^4 y^2}},
-    \end{align*}
-    we know that
-    \begin{align*}
-                 & \lim_{(x, y) \to (a, b) ; (x, y) \in \big(\R \times (\R \setminus \{0\})\big) \setminus \{(a, b)\}} (ay - bx)^2 = 0                                                                                                                  \\
-        \implies & \lim_{(x, y) \to (a, b) ; (x, y) \in \big(\R \times (\R \setminus \{0\})\big) \setminus \{(a, b)\}} \frac{(ay - bx)^2}{b^4 y^2} = 0                                                                                                  \\
-        \implies & \lim_{(x, y) \to (a, b) ; (x, y) \in \big(\R \times (\R \setminus \{0\})\big) \setminus \{(a, b)\}} \sqrt{\frac{(ay - bx)^2}{b^4 y^2}} = 0                                                                                           \\
-        \implies & \lim_{(x, y) \to (a, b) ; (x, y) \in \big(\R \times (\R \setminus \{0\})\big) \setminus \{(a, b)\}} \frac{\norm*{k(x, y) - k(a, b) - \big((x, y) - (a, b)\big) \big(\frac{1}{b}, \frac{-a}{b^2}\big)^\top}}{\norm*{(x, y) - (a, b)}} \\
-                 & = 0.
-    \end{align*}
-    (note that the last line was done by squeeze test)
-    Since \((a, b)\) is arbitrary, by Definition \ref{6.2.2} we conclude that
-    \[
-        \forall (a, b) \in \R \times (\R \setminus \{0\}), D k(a, b) = \bigg(\frac{1}{b}, \frac{-a}{b^2}\bigg).
-    \]
+  Let \(k : \R \times (\R \setminus \{0\}) \to \R\) be the function
+  \[
+    \forall (a, b) \in \R \times (\R \setminus \{0\}), k(a, b) = \frac{a}{b}.
+  \]
+  We claim that \(k\) is differentiable on \(\R \times (\R \setminus \{0\})\) and
+  \[
+    \forall (a, b) \in \R \times (\R \setminus \{0\}), D k(a, b) = \bigg(\frac{1}{b}, \frac{-a}{b^2}\bigg).
+  \]
+  Let \((a, b) \in \R \times (\R \setminus \{0\})\).
+  Since for each \((x, y) \in \big(\R \times (\R \setminus \{0\})\big) \setminus \{(a, b)\}\), we have
+  \begin{align*}
+     & \frac{\norm*{k(x, y) - k(a, b) - \big((x, y) - (a, b)\big) \bigg(\frac{1}{b}, \frac{-a}{b^2}\bigg)^\top}}{\norm*{(x, y) - (a, b)}} \\
+     & = \frac{\norm*{\frac{x}{y} - \frac{a}{b} - \frac{x - a}{b} + \frac{a(y - b)}{b^2}}}{\norm*{(x - a, y - b)}}                        \\
+     & = \frac{\norm*{\frac{b^2 x - bxy + ay^2 - aby}{b^2y}}}{\norm*{(x - a, y - b)}}                                                     \\
+     & = \frac{\norm*{\frac{(ay - bx)(y - b)}{b^2y}}}{\norm*{(x - a, y - b)}}                                                             \\
+     & = \sqrt{\frac{(ay - bx)^2 (y - b)^2}{b^4 y^2 \big((x - a)^2 + (y - b)^2\big)}}                                                     \\
+     & \leq \sqrt{\frac{(ay - bx)^2 \big((x - a)^2 + (y - b)^2\big)}{b^4 y^2 \big((x - a)^2 + (y - b)^2\big)}}                            \\
+     & = \sqrt{\frac{(ay - bx)^2}{b^4 y^2}},
+  \end{align*}
+  we know that
+  \begin{align*}
+             & \lim_{(x, y) \to (a, b) ; (x, y) \in \big(\R \times (\R \setminus \{0\})\big) \setminus \{(a, b)\}} (ay - bx)^2 = 0                                                                                                                  \\
+    \implies & \lim_{(x, y) \to (a, b) ; (x, y) \in \big(\R \times (\R \setminus \{0\})\big) \setminus \{(a, b)\}} \frac{(ay - bx)^2}{b^4 y^2} = 0                                                                                                  \\
+    \implies & \lim_{(x, y) \to (a, b) ; (x, y) \in \big(\R \times (\R \setminus \{0\})\big) \setminus \{(a, b)\}} \sqrt{\frac{(ay - bx)^2}{b^4 y^2}} = 0                                                                                           \\
+    \implies & \lim_{(x, y) \to (a, b) ; (x, y) \in \big(\R \times (\R \setminus \{0\})\big) \setminus \{(a, b)\}} \frac{\norm*{k(x, y) - k(a, b) - \big((x, y) - (a, b)\big) \big(\frac{1}{b}, \frac{-a}{b^2}\big)^\top}}{\norm*{(x, y) - (a, b)}} \\
+             & = 0.
+  \end{align*}
+  (note that the last line was done by squeeze test)
+  Since \((a, b)\) is arbitrary, by \cref{6.2.2} we conclude that
+  \[
+    \forall (a, b) \in \R \times (\R \setminus \{0\}), D k(a, b) = \bigg(\frac{1}{b}, \frac{-a}{b^2}\bigg).
+  \]
 
-    Let \(h\) be the function in Example \ref{6.4.2}.
-    Using chain rule we have
-    \begin{align*}
-        D (k \circ h)(x_0) & = D k\big(h(x_0)\big) \cdot D h(x_0)                                                     & \text{(by Theorem \ref{6.4.1})} \\
-                           & = D k\big(f(x_0), g(x_0)\big) \cdot \begin{pmatrix}
-                                                                     \nabla f(x_0) \\
-                                                                     \nabla g(x_0)
-                                                                 \end{pmatrix}                                      & \text{(by Example \ref{6.4.2})}   \\
-                           & = \bigg(\frac{1}{g(x_0)}, \frac{-f(x_0)}{\big(g(x_0)\big)^2}\bigg) \cdot \begin{pmatrix}
-                                                                                                          \nabla f(x_0) \\
-                                                                                                          \nabla g(x_0)
-                                                                                                      \end{pmatrix}                                    \\
-                           & = \frac{\nabla f(x_0)}{g(x_0)} - \frac{f(x_0) \nabla g(x_0)}{\big(g(x_0)\big)^2}                                           \\
-                           & = \frac{g(x_0) \nabla f(x_0) - f(x_0) \nabla g(x_0)}{\big(g(x_0)\big)^2}.
-    \end{align*}
-    But \(k \circ h = f / g\).
-    Thus we have
-    \[
-        \nabla \bigg(\frac{f}{g}\bigg)(x_0) = \frac{g(x_0) \nabla f(x_0) - f(x_0) \nabla g(x_0)}{\big(g(x_0)\big)^2}.
-    \]
+  Let \(h\) be the function in \cref{6.4.2}.
+  Using chain rule we have
+  \begin{align*}
+    D (k \circ h)(x_0) & = D k\big(h(x_0)\big) \cdot D h(x_0)                                                     & \text{(by \cref{6.4.1})} \\
+                       & = D k\big(f(x_0), g(x_0)\big) \cdot \begin{pmatrix}
+                                                               \nabla f(x_0) \\
+                                                               \nabla g(x_0)
+                                                             \end{pmatrix}                                      & \text{(by \cref{6.4.2})}   \\
+                       & = \bigg(\frac{1}{g(x_0)}, \frac{-f(x_0)}{\big(g(x_0)\big)^2}\bigg) \cdot \begin{pmatrix}
+                                                                                                    \nabla f(x_0) \\
+                                                                                                    \nabla g(x_0)
+                                                                                                  \end{pmatrix}                             \\
+                       & = \frac{\nabla f(x_0)}{g(x_0)} - \frac{f(x_0) \nabla g(x_0)}{\big(g(x_0)\big)^2}                                    \\
+                       & = \frac{g(x_0) \nabla f(x_0) - f(x_0) \nabla g(x_0)}{\big(g(x_0)\big)^2}.
+  \end{align*}
+  But \(k \circ h = f / g\).
+  Thus we have
+  \[
+    \nabla \bigg(\frac{f}{g}\bigg)(x_0) = \frac{g(x_0) \nabla f(x_0) - f(x_0) \nabla g(x_0)}{\big(g(x_0)\big)^2}.
+  \]
 \end{proof}
 
 \begin{exercise}\label{ex 6.4.5}
-    Let \(\vec{x} : \R \to \R^3\) be a differentiable function, and let \(r : \R \to \R\) be the function \(r(t) \coloneqq \norm*{\vec{x}(t)}\), where \(\norm*{\vec{x}}\) denotes the length of \(\vec{x}\) as measured in the usual \(l^2\) metric.
-    Let \(t_0\) be a real number.
-    Show that if \(r(t_0) \neq 0\), then \(r\) is differentiable at \(t_0\), and
-    \[
-        r'(t_0) = \frac{\vec{x}'(t_0) \cdot \vec{x}(t_0)}{r(t_0)}.
-    \]
+  Let \(\vec{x} : \R \to \R^3\) be a differentiable function, and let \(r : \R \to \R\) be the function \(r(t) \coloneqq \norm*{\vec{x}(t)}\), where \(\norm*{\vec{x}}\) denotes the length of \(\vec{x}\) as measured in the usual \(l^2\) metric.
+  Let \(t_0\) be a real number.
+  Show that if \(r(t_0) \neq 0\), then \(r\) is differentiable at \(t_0\), and
+  \[
+    r'(t_0) = \frac{\vec{x}'(t_0) \cdot \vec{x}(t_0)}{r(t_0)}.
+  \]
 \end{exercise}
 
 \begin{proof}
-    Let \(f : \R^3 \to \R\) be the function
-    \[
-        \forall x \in \R^3, f(x) = \norm*{x}.
-    \]
-    Since
-    \[
-        \forall y \in \R^3 \setminus \{0_{\R^3}\}, \forall 1 \leq i \leq 3, \frac{\partial f}{\partial x_i}(y) = \frac{y_i}{\norm*{y}},
-    \]
-    and \(\frac{\partial f}{\partial x_i}\) is continuous on \(\R^3 \setminus \{0_{\R^3}\}\), by Theorem \ref{6.3.8} we know that
-    \begin{align*}
-        \forall y \in \R^3 \setminus \{0_{\R^3}\}, D f(y) & = \nabla f(y)                                                                                                            \\
-                                                          & = \bigg(\frac{\partial f}{\partial x_1}(y), \frac{\partial f}{\partial x_2}(y), \frac{\partial f}{\partial x_3}(y)\bigg) \\
-                                                          & = \bigg(\frac{y_1}{\norm*{y}}, \frac{y_2}{\norm*{y}}, \frac{y_3}{\norm*{y}}\bigg)                                        \\
-                                                          & = \frac{y}{\norm*{y}}.
-    \end{align*}
-    By chain rule (Theorem \ref{6.4.1}) we know that
-    \begin{align*}
-                 & \forall t \in \R, \vec{x}(t) \neq 0                                                                                                 \\
-        \implies & D (f \circ \vec{x})(t) = D f\big(\vec{x}(t)\big) \cdot D \vec{x}(t) = \frac{\vec{x}(t)}{\norm*{\vec{x}(t)}} \cdot \vec{x}'(t)^\top.
-    \end{align*}
-    Since \(r = f \circ \vec{x}\), we know that
-    \begin{align*}
-                 & \forall t \in \R, \vec{x}(t) \neq 0                      \\
-        \implies & \norm*{t} \neq 0                                         \\
-        \implies & r(t) \neq 0                                              \\
-        \implies & D r(t) = \frac{\vec{x}(t) \cdot \vec{x}'(t)^\top}{r(t)}.
-    \end{align*}
+  Let \(f : \R^3 \to \R\) be the function
+  \[
+    \forall x \in \R^3, f(x) = \norm*{x}.
+  \]
+  Since
+  \[
+    \forall y \in \R^3 \setminus \{0_{\R^3}\}, \forall 1 \leq i \leq 3, \frac{\partial f}{\partial x_i}(y) = \frac{y_i}{\norm*{y}},
+  \]
+  and \(\frac{\partial f}{\partial x_i}\) is continuous on \(\R^3 \setminus \{0_{\R^3}\}\), by \cref{6.3.8} we know that
+  \begin{align*}
+    \forall y \in \R^3 \setminus \{0_{\R^3}\}, D f(y) & = \nabla f(y)                                                                                                            \\
+                                                      & = \bigg(\frac{\partial f}{\partial x_1}(y), \frac{\partial f}{\partial x_2}(y), \frac{\partial f}{\partial x_3}(y)\bigg) \\
+                                                      & = \bigg(\frac{y_1}{\norm*{y}}, \frac{y_2}{\norm*{y}}, \frac{y_3}{\norm*{y}}\bigg)                                        \\
+                                                      & = \frac{y}{\norm*{y}}.
+  \end{align*}
+  By chain rule (\cref{6.4.1}) we know that
+  \begin{align*}
+             & \forall t \in \R, \vec{x}(t) \neq 0                                                                                                 \\
+    \implies & D (f \circ \vec{x})(t) = D f\big(\vec{x}(t)\big) \cdot D \vec{x}(t) = \frac{\vec{x}(t)}{\norm*{\vec{x}(t)}} \cdot \vec{x}'(t)^\top.
+  \end{align*}
+  Since \(r = f \circ \vec{x}\), we know that
+  \begin{align*}
+             & \forall t \in \R, \vec{x}(t) \neq 0                      \\
+    \implies & \norm*{t} \neq 0                                         \\
+    \implies & r(t) \neq 0                                              \\
+    \implies & D r(t) = \frac{\vec{x}(t) \cdot \vec{x}'(t)^\top}{r(t)}.
+  \end{align*}
 \end{proof}

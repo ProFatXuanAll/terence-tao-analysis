@@ -1,173 +1,173 @@
 \section{Series of functions; the Weierstrass \emph{M}-test}\label{sec 3.5}
 
 \begin{note}
-    Functions whose range is \(\R\) are sometimes called \emph{real-valued} functions.
+  Functions whose range is \(\R\) are sometimes called \emph{real-valued} functions.
 \end{note}
 
 \begin{note}
-    given any finite collection \(f^{(1)}, \dots, f^{(N)}\) of functions from \(X\) to \(\R\), we can define the finite sum \(\sum_{i = 1}^N f^{(i)} : X \to \R\) by
-    \[
-        \bigg(\sum_{i = 1}^N f^{(i)}\bigg)(x) \coloneqq \sum_{i = 1}^N f^{(i)}(x).
-    \]
+  given any finite collection \(f^{(1)}, \dots, f^{(N)}\) of functions from \(X\) to \(\R\), we can define the finite sum \(\sum_{i = 1}^N f^{(i)} : X \to \R\) by
+  \[
+    \bigg(\sum_{i = 1}^N f^{(i)}\bigg)(x) \coloneqq \sum_{i = 1}^N f^{(i)}(x).
+  \]
 \end{note}
 
 \setcounter{theorem}{1}
 \begin{definition}[Infinite series]\label{3.5.2}
-    Let \((X, d_X)\) be a metric space.
-    Let \((f^{(n)})_{n = 1}^\infty\) be a sequence of functions from \(X\) to \(\R\), and let \(f\) be another function from \(X\) to \(\R\).
-    If the partial sums \(\sum_{n = 1}^N f^{(n)}\) converges pointwise to \(f\) on \(X\) as \(N \to \infty\), we say that the infinite series \(\sum_{n = 1}^\infty f^{(n)}\) \emph{converges pointwise} to \(f\), and write \(f = \sum_{n = 1}^\infty f^{(n)}\).
-    If the partial sums \(\sum_{n = 1}^N f^{(n)}\) converge uniformly to \(f\) on \(X\) as \(N \to \infty\), we say that the infinite series \(\sum_{n = 1}^\infty f^{(n)}\) \emph{converges uniformly} to \(f\), and again write \(f = \sum_{n = 1}^\infty f^{(n)}\).
-    (Thus when one sees an expression such as \(f = \sum_{n = 1}^\infty f^{(n)}\), one should look at the context to see in what sense this infinite series converges.)
+  Let \((X, d_X)\) be a metric space.
+  Let \((f^{(n)})_{n = 1}^\infty\) be a sequence of functions from \(X\) to \(\R\), and let \(f\) be another function from \(X\) to \(\R\).
+  If the partial sums \(\sum_{n = 1}^N f^{(n)}\) converges pointwise to \(f\) on \(X\) as \(N \to \infty\), we say that the infinite series \(\sum_{n = 1}^\infty f^{(n)}\) \emph{converges pointwise} to \(f\), and write \(f = \sum_{n = 1}^\infty f^{(n)}\).
+  If the partial sums \(\sum_{n = 1}^N f^{(n)}\) converge uniformly to \(f\) on \(X\) as \(N \to \infty\), we say that the infinite series \(\sum_{n = 1}^\infty f^{(n)}\) \emph{converges uniformly} to \(f\), and again write \(f = \sum_{n = 1}^\infty f^{(n)}\).
+  (Thus when one sees an expression such as \(f = \sum_{n = 1}^\infty f^{(n)}\), one should look at the context to see in what sense this infinite series converges.)
 \end{definition}
 
 \begin{remark}\label{3.5.3}
-    A series \(\sum_{n = 1}^\infty f^{(n)}\) converges pointwise to \(f\) on \(X\) if and only if \(\sum_{n = 1}^\infty f^{(n)}(x)\) converges to \(f(x)\) for \emph{every} \(x \in X\).
-    (Thus if \(\sum_{n = 1}^\infty f^{(n)}\) does not converge pointwise to \(f\), this does not mean that it diverges pointwise;
-    it may just be that it converges for some points \(x\) but diverges at other points \(x\).)
+  A series \(\sum_{n = 1}^\infty f^{(n)}\) converges pointwise to \(f\) on \(X\) if and only if \(\sum_{n = 1}^\infty f^{(n)}(x)\) converges to \(f(x)\) for \emph{every} \(x \in X\).
+  (Thus if \(\sum_{n = 1}^\infty f^{(n)}\) does not converge pointwise to \(f\), this does not mean that it diverges pointwise;
+  it may just be that it converges for some points \(x\) but diverges at other points \(x\).)
 \end{remark}
 
 \begin{note}
-    If a series \(\sum_{n = 1}^\infty f^{(n)}\) converges uniformly to \(f\), then it also converges pointwise to \(f\);
-    but not vice versa.
+  If a series \(\sum_{n = 1}^\infty f^{(n)}\) converges uniformly to \(f\), then it also converges pointwise to \(f\);
+  but not vice versa.
 \end{note}
 
 \setcounter{theorem}{4}
 \begin{definition}[Sup norm]\label{3.5.5}
-    If \(f : X \to \R\) is a bounded real-valued function, we define the \emph{sup norm} \(\norm*{f}_\infty\) of \(f\) to be the number
-    \[
-        \norm*{f}_\infty \coloneqq \sup\big\{\abs{f(x)} : x \in X\big\}.
-    \]
-    In other words, \(\norm*{f}_\infty = d_\infty(f, 0)\), where \(0 : X \to \R\) is the zero function \(0(x) \coloneqq 0\), and \(d_\infty\) was defined in Definition \ref{3.4.2}.
-    We restrict the definition of \(\norm*{f}_\infty\) to the case when \(X \neq \emptyset\).
-    If \(X = \emptyset\), then we instead define \(\norm*{f}_\infty = 0\).
+  If \(f : X \to \R\) is a bounded real-valued function, we define the \emph{sup norm} \(\norm*{f}_\infty\) of \(f\) to be the number
+  \[
+    \norm*{f}_\infty \coloneqq \sup\big\{\abs{f(x)} : x \in X\big\}.
+  \]
+  In other words, \(\norm*{f}_\infty = d_\infty(f, 0)\), where \(0 : X \to \R\) is the zero function \(0(x) \coloneqq 0\), and \(d_\infty\) was defined in \cref{3.4.2}.
+  We restrict the definition of \(\norm*{f}_\infty\) to the case when \(X \neq \emptyset\).
+  If \(X = \emptyset\), then we instead define \(\norm*{f}_\infty = 0\).
 \end{definition}
 
 \begin{note}
-    When \(f\) is bounded then \(\norm*{f}_\infty\) will always be a non-negative real number.
+  When \(f\) is bounded then \(\norm*{f}_\infty\) will always be a non-negative real number.
 \end{note}
 
 \setcounter{theorem}{6}
 \begin{theorem}[Weierstrass \(M\)-test]\label{3.5.7}
-    Let \((X, d)\) be a metric space, and let \((f^{(n)})_{n = 1}^\infty\) be a sequence of bounded real-valued continuous functions on \(X\) such that the series \(\sum_{n = 1}^\infty \norm*{f^{(n)}}_\infty\) is convergent.
-    (Note that this is a series of plain old real numbers, not of functions.)
-    Then the series \(\sum_{n = 1}^\infty f^{(n)}\) converges uniformly to some function \(f\) on \(X\), and that function \(f\) is also continuous.
+  Let \((X, d)\) be a metric space, and let \((f^{(n)})_{n = 1}^\infty\) be a sequence of bounded real-valued continuous functions on \(X\) such that the series \(\sum_{n = 1}^\infty \norm*{f^{(n)}}_\infty\) is convergent.
+  (Note that this is a series of plain old real numbers, not of functions.)
+  Then the series \(\sum_{n = 1}^\infty f^{(n)}\) converges uniformly to some function \(f\) on \(X\), and that function \(f\) is also continuous.
 \end{theorem}
 
 \begin{proof}
-    Let \(N_1, N_2 \in \Z^+\).
-    Let \(d_{C(X \to \R)} = d_{B(X \to \R)}|_{C(X \to \R) \times C(X \to \R)}\).
-    We have
-    \begin{align*}
-                 & \sum_{n = 1}^\infty \norm*{f^{(n)}}_\infty = \lim_{N \to \infty} \sum_{n = 1}^N \norm*{f^{(n)}}_\infty                                                   \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ M \in \Z^+ : \forall N \geq M,                                                                                    \\
-                 & \abs{\sum_{n = 1}^\infty \norm*{f^{(n)}}_\infty - \sum_{n = 1}^N \norm*{f^{(n)}}_\infty} < \varepsilon & \text{(by Definition \ref{1.1.14})}             \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ M \in \Z^+ : \forall N \geq M,                                                                                    \\
-                 & \abs{\sum_{n = N + 1}^\infty \norm*{f^{(n)}}_\infty} < \varepsilon                                     & \text{(by Proposition 7.2.14(c) in Analysis I)} \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ M \in \Z^+ : \forall N \geq M,                                                                                    \\
-                 & \sum_{n = N + 1}^\infty \norm*{f^{(n)}}_\infty < \varepsilon                                           & (\norm*{f^{(n)}}_\infty \geq 0)                 \\
-        \implies & \forall \varepsilon \in \R^+, \exists\ M \in \Z^+ : \forall N \geq M,                                                                                    \\
-                 & \sum_{n = N + 1}^\infty \sup_{x \in X} \abs{f^{(n)}(x)} < \varepsilon.                                 & \text{(by Definition \ref{3.5.5})}
-    \end{align*}
-    Fix one \(\varepsilon\) and \(M\).
-    Since \(f^{(n)} \in C(X \to \R)\), by Exercise \ref{ex 3.5.1} we know that \(\sum_{n = 1}^N f^{(n)} \in C(X \to \R)\) for each \(N \in \Z^+\).
-    Thus \(d_{C(X \to \R)}\bigg(\sum_{n = 1}^{N_1} f^{(n)}, \sum_{n = 1}^{N_2} f^{(n)}\bigg)\) is well defined for each \(N_1, N_2 \geq M\) and
-    \begin{align*}
-        \forall N_1, N_2 \geq M, & d_{C(X \to \R)}\bigg(\sum_{n = 1}^{N_1} f^{(n)}, \sum_{n = 1}^{N_2} f^{(n)}\bigg)                                                    \\
-                                 & = \sup_{x \in X} \abs{\sum_{n = 1}^{N_1} f^{(n)}(x) - \sum_{n = 1}^{N_2} f^{(n)}(x)}            & \text{(by Definition \ref{3.4.2})} \\
-                                 & = \sup_{x \in X} \abs{\sum_{n = \min(N_1, N_2) + 1}^{\max(N_1, N_2)} f^{(n)}(x)}                                                     \\
-                                 & \leq \sup_{x \in X} \bigg(\sum_{n = \min(N_1, N_2) + 1}^{\max(N_1, N_2)} \abs{f^{(n)}(x)}\bigg)                                      \\
-                                 & \leq \sup_{x \in X} \bigg(\sum_{n = M + 1}^\infty \abs{f^{(n)}(x)}\bigg)                                                             \\
-                                 & \leq \sum_{n = M + 1}^\infty \sup_{x \in X} \abs{f^{(n)}(x)} < \varepsilon.
-    \end{align*}
-    Since \(\varepsilon\) is arbitrary, we have
-    \[
-        \forall \varepsilon \in \R^+, \exists\ M \in \Z^+ : \forall N_1, N_2 \geq M, d_{C(X \to \R)}\bigg(\sum_{n = 1}^{N_1} f^{(n)}, \sum_{n = 1}^{N_2} f^{(n)}\bigg) < \varepsilon.
-    \]
-    By Definition \ref{1.4.6} \(\bigg(\sum_{n = 1}^N f^{(n)}\bigg)_{N = 1}^\infty\) is a Cauchy sequence in \(\big(C(X \to \R), d_{C(X \to \R)}\big)\).
-    Since \((\R, d_{l^1}|_{\R \times \R})\) is complete, by Theorem \ref{3.4.5} we know that \(\bigg(\sum_{n = 1}^N f^{(n)}\bigg)_{N = 1}^\infty\) converges uniformly to some \(f \in C(X \to \R)\) on \(X\) with respect to \(d_{l^1}|_{\R \times \R}\).
+  Let \(N_1, N_2 \in \Z^+\).
+  Let \(d_{C(X \to \R)} = d_{B(X \to \R)}|_{C(X \to \R) \times C(X \to \R)}\).
+  We have
+  \begin{align*}
+             & \sum_{n = 1}^\infty \norm*{f^{(n)}}_\infty = \lim_{N \to \infty} \sum_{n = 1}^N \norm*{f^{(n)}}_\infty                                                   \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ M \in \Z^+ : \forall N \geq M,                                                                                    \\
+             & \abs{\sum_{n = 1}^\infty \norm*{f^{(n)}}_\infty - \sum_{n = 1}^N \norm*{f^{(n)}}_\infty} < \varepsilon & \text{(by \cref{1.1.14})}                       \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ M \in \Z^+ : \forall N \geq M,                                                                                    \\
+             & \abs{\sum_{n = N + 1}^\infty \norm*{f^{(n)}}_\infty} < \varepsilon                                     & \text{(by Proposition 7.2.14(c) in Analysis I)} \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ M \in \Z^+ : \forall N \geq M,                                                                                    \\
+             & \sum_{n = N + 1}^\infty \norm*{f^{(n)}}_\infty < \varepsilon                                           & (\norm*{f^{(n)}}_\infty \geq 0)                 \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ M \in \Z^+ : \forall N \geq M,                                                                                    \\
+             & \sum_{n = N + 1}^\infty \sup_{x \in X} \abs{f^{(n)}(x)} < \varepsilon.                                 & \text{(by \cref{3.5.5})}
+  \end{align*}
+  Fix one \(\varepsilon\) and \(M\).
+  Since \(f^{(n)} \in C(X \to \R)\), by \cref{ex 3.5.1} we know that \(\sum_{n = 1}^N f^{(n)} \in C(X \to \R)\) for each \(N \in \Z^+\).
+  Thus \(d_{C(X \to \R)}\bigg(\sum_{n = 1}^{N_1} f^{(n)}, \sum_{n = 1}^{N_2} f^{(n)}\bigg)\) is well defined for each \(N_1, N_2 \geq M\) and
+  \begin{align*}
+    \forall N_1, N_2 \geq M, & d_{C(X \to \R)}\bigg(\sum_{n = 1}^{N_1} f^{(n)}, \sum_{n = 1}^{N_2} f^{(n)}\bigg)                                          \\
+                             & = \sup_{x \in X} \abs{\sum_{n = 1}^{N_1} f^{(n)}(x) - \sum_{n = 1}^{N_2} f^{(n)}(x)}            & \text{(by \cref{3.4.2})} \\
+                             & = \sup_{x \in X} \abs{\sum_{n = \min(N_1, N_2) + 1}^{\max(N_1, N_2)} f^{(n)}(x)}                                           \\
+                             & \leq \sup_{x \in X} \bigg(\sum_{n = \min(N_1, N_2) + 1}^{\max(N_1, N_2)} \abs{f^{(n)}(x)}\bigg)                            \\
+                             & \leq \sup_{x \in X} \bigg(\sum_{n = M + 1}^\infty \abs{f^{(n)}(x)}\bigg)                                                   \\
+                             & \leq \sum_{n = M + 1}^\infty \sup_{x \in X} \abs{f^{(n)}(x)} < \varepsilon.
+  \end{align*}
+  Since \(\varepsilon\) is arbitrary, we have
+  \[
+    \forall \varepsilon \in \R^+, \exists\ M \in \Z^+ : \forall N_1, N_2 \geq M, d_{C(X \to \R)}\bigg(\sum_{n = 1}^{N_1} f^{(n)}, \sum_{n = 1}^{N_2} f^{(n)}\bigg) < \varepsilon.
+  \]
+  By \cref{1.4.6} \(\bigg(\sum_{n = 1}^N f^{(n)}\bigg)_{N = 1}^\infty\) is a Cauchy sequence in \(\big(C(X \to \R), d_{C(X \to \R)}\big)\).
+  Since \((\R, d_{l^1}|_{\R \times \R})\) is complete, by \cref{3.4.5} we know that \(\bigg(\sum_{n = 1}^N f^{(n)}\bigg)_{N = 1}^\infty\) converges uniformly to some \(f \in C(X \to \R)\) on \(X\) with respect to \(d_{l^1}|_{\R \times \R}\).
 \end{proof}
 
 \begin{note}
-    To put the Weierstrass \(M\)-test succinctly:
-    absolute convergence of sup norms implies uniform convergence of functions.
+  To put the Weierstrass \(M\)-test succinctly:
+  absolute convergence of sup norms implies uniform convergence of functions.
 \end{note}
 
 \begin{example}\label{3.5.8}
-    Let \(0 < r < 1\) be a real number, and let \(f^{(n)} : [-r, r] \to \R\) be the series of functions \(f^{(n)}(x) \coloneqq x^n\).
-    Then each \(f^{(n)}\) is continuous and bounded, and \(\norm*{f^{(n)}}_\infty = r^n\).
-    Since the series \(\sum_{n = 1}^\infty r^n\) is absolutely convergent (e.g., by the root test, Theorem 7.5.1 in Analysis I), we thus see that \(\sum_{n = 1}^\infty f^{(n)}\) converges uniformly in \([-r, r]\) to some continuous function;
-    in Exercise \ref{ex 3.2.2}(c) we see that this function must in fact be the function \(f : [-r, r] \to \R\) defined by \(f(x) \coloneqq x / (1 - x)\).
-    In other words, the series \(\sum_{n = 1}^\infty x^n\) is pointwise convergent, but not uniformly convergent, on \((-1, 1)\), but is uniformly convergent on the smaller interval \([-r, r]\) for any \(0 < r < 1\).
+  Let \(0 < r < 1\) be a real number, and let \(f^{(n)} : [-r, r] \to \R\) be the series of functions \(f^{(n)}(x) \coloneqq x^n\).
+  Then each \(f^{(n)}\) is continuous and bounded, and \(\norm*{f^{(n)}}_\infty = r^n\).
+  Since the series \(\sum_{n = 1}^\infty r^n\) is absolutely convergent (e.g., by the root test, Theorem 7.5.1 in Analysis I), we thus see that \(\sum_{n = 1}^\infty f^{(n)}\) converges uniformly in \([-r, r]\) to some continuous function;
+  in \cref{ex 3.2.2}(c) we see that this function must in fact be the function \(f : [-r, r] \to \R\) defined by \(f(x) \coloneqq x / (1 - x)\).
+  In other words, the series \(\sum_{n = 1}^\infty x^n\) is pointwise convergent, but not uniformly convergent, on \((-1, 1)\), but is uniformly convergent on the smaller interval \([-r, r]\) for any \(0 < r < 1\).
 \end{example}
 
 \begin{note}
-    The Weierstrass \(M\)-test is especially useful in relation to power series.
+  The Weierstrass \(M\)-test is especially useful in relation to power series.
 \end{note}
 
 \exercisesection
 
 \begin{exercise}\label{ex 3.5.1}
-    Let \(f^{(1)}, \dots, f^{(N)}\) be a finite sequence of bounded functions from a metric space \((X, d_X)\) to \(\R\).
-    Show that \(\sum_{i = 1}^N f^{(i)}\) is also bounded.
-    Prove a similar claim when ``bounded'' is replaced by ``continuous''.
-    What if ``continuous'' was replaced by ``uniformly continuous''?
+  Let \(f^{(1)}, \dots, f^{(N)}\) be a finite sequence of bounded functions from a metric space \((X, d_X)\) to \(\R\).
+  Show that \(\sum_{i = 1}^N f^{(i)}\) is also bounded.
+  Prove a similar claim when ``bounded'' is replaced by ``continuous''.
+  What if ``continuous'' was replaced by ``uniformly continuous''?
 \end{exercise}
 
 \begin{proof}
-    Let \(d_1 = d_{l^1}|_{\R \times \R}\).
-    We first show that \(\sum_{n = 1}^N f^{(n)}\) is bounded on \(X\) with respect to \(d_1\) for each \(N \in \Z^+\).
-    Suppose that \(f^{(n)}\) is bounded on \(X\) with respect to \(d_1\) for each \(n \in \Z^+\).
-    We use induction on \(N\).
-    For \(N = 1\), by hypothesis we know that \(\sum_{n = 1}^1 f^{(n)} = f^{(1)}\) is bounded on \(X\).
-    Thus the base case holds.
-    Suppose inductively that \(\sum_{n = 1}^N f^{(n)}\) is bounded on \(X\) with respect to \(d_1\) for some \(N \geq 1\).
-    By induction hypothesis we have
-    \[
-        \exists\ M \in \R^+ : \bigg(\sum_{n = 1}^N f^{(n)}\bigg)(X) \subseteq [-M, M].
-    \]
-    By hypothesis we know that \(f^{(N + 1)}\) is bounded on \(X\) with respect to \(d_1\), thus we have
-    \[
-        \exists\ M' \in \R^+ : f^{(N + 1)}(X) \subseteq [-M', M'].
-    \]
-    Then we have
-    \begin{align*}
-        \bigg(\sum_{n = 1}^{N + 1} f^{(n)}\bigg)(X) & = \bigg\{\sum_{n = 1}^{N + 1} f^{(n)}(x) : x \in X\bigg\}            \\
-                                                    & = \bigg\{\sum_{n = 1}^N f^{(n)}(x) + f^{(N + 1)}(x) : x \in X\bigg\} \\
-                                                    & \subseteq [-(M + M'), M + M'].
-    \end{align*}
-    This closes the induction.
+  Let \(d_1 = d_{l^1}|_{\R \times \R}\).
+  We first show that \(\sum_{n = 1}^N f^{(n)}\) is bounded on \(X\) with respect to \(d_1\) for each \(N \in \Z^+\).
+  Suppose that \(f^{(n)}\) is bounded on \(X\) with respect to \(d_1\) for each \(n \in \Z^+\).
+  We use induction on \(N\).
+  For \(N = 1\), by hypothesis we know that \(\sum_{n = 1}^1 f^{(n)} = f^{(1)}\) is bounded on \(X\).
+  Thus the base case holds.
+  Suppose inductively that \(\sum_{n = 1}^N f^{(n)}\) is bounded on \(X\) with respect to \(d_1\) for some \(N \geq 1\).
+  By induction hypothesis we have
+  \[
+    \exists\ M \in \R^+ : \bigg(\sum_{n = 1}^N f^{(n)}\bigg)(X) \subseteq [-M, M].
+  \]
+  By hypothesis we know that \(f^{(N + 1)}\) is bounded on \(X\) with respect to \(d_1\), thus we have
+  \[
+    \exists\ M' \in \R^+ : f^{(N + 1)}(X) \subseteq [-M', M'].
+  \]
+  Then we have
+  \begin{align*}
+    \bigg(\sum_{n = 1}^{N + 1} f^{(n)}\bigg)(X) & = \bigg\{\sum_{n = 1}^{N + 1} f^{(n)}(x) : x \in X\bigg\}            \\
+                                                & = \bigg\{\sum_{n = 1}^N f^{(n)}(x) + f^{(N + 1)}(x) : x \in X\bigg\} \\
+                                                & \subseteq [-(M + M'), M + M'].
+  \end{align*}
+  This closes the induction.
 
-    Next we show that \(\sum_{n = 1}^N f^{(n)}\) is continuous from \((X, d_X)\) to \((\R, d_1)\) for each \(N \in \Z^+\).
-    Suppose that \(f^{(n)}\) is continuous from \((X, d_X)\) to \((\R, d_1)\) for each \(n \in \Z^+\).
-    We use induction on \(N\).
-    For \(N = 1\), by hypothesis we know that \(\sum_{n = 1}^1 f^{(n)} = f^{(1)}\) is continuous from \((X, d_X)\) to \((\R, d_1)\).
-    Thus the base case holds.
-    Suppose inductively that \(\sum_{n = 1}^N f^{(n)}\) is continuous from \((X, d_X)\) to \((\R, d_1)\) for some \(N \geq 1\).
-    Then by Additional Corollary \ref{ac 2.2.1}
-    \[
-        \sum_{n = 1}^{N + 1} f^{(n)} = \bigg(\sum_{n = 1}^N f^{(n)}\bigg) \oplus f^{(N + 1)}
-    \]
-    is continuous from \((X, d_X)\) to \((\R, d_1)\).
-    This closes the induction.
+  Next we show that \(\sum_{n = 1}^N f^{(n)}\) is continuous from \((X, d_X)\) to \((\R, d_1)\) for each \(N \in \Z^+\).
+  Suppose that \(f^{(n)}\) is continuous from \((X, d_X)\) to \((\R, d_1)\) for each \(n \in \Z^+\).
+  We use induction on \(N\).
+  For \(N = 1\), by hypothesis we know that \(\sum_{n = 1}^1 f^{(n)} = f^{(1)}\) is continuous from \((X, d_X)\) to \((\R, d_1)\).
+  Thus the base case holds.
+  Suppose inductively that \(\sum_{n = 1}^N f^{(n)}\) is continuous from \((X, d_X)\) to \((\R, d_1)\) for some \(N \geq 1\).
+  Then by \cref{ac 2.2.1}
+  \[
+    \sum_{n = 1}^{N + 1} f^{(n)} = \bigg(\sum_{n = 1}^N f^{(n)}\bigg) \oplus f^{(N + 1)}
+  \]
+  is continuous from \((X, d_X)\) to \((\R, d_1)\).
+  This closes the induction.
 
-    Finally we show that \(\sum_{n = 1}^N f^{(n)}\) is uniformly continuous from \((X, d_X)\) to \((\R, d_1)\) for each \(N \in \Z^+\).
-    Suppose that \(f^{(n)}\) is uniformly continuous from \((X, d_X)\) to \((\R, d_1)\) for each \(n \in \Z^+\).
-    We use induction on \(N\).
-    For \(N = 1\), by hypothesis we know that \(\sum_{n = 1}^1 f^{(n)} = f^{(1)}\) is uniformly continuous from \((X, d_X)\) to \((\R, d_1)\).
-    Thus the base case holds.
-    Suppose inductively that \(\sum_{n = 1}^N f^{(n)}\) is uniformly continuous from \((X, d_X)\) to \((\R, d_1)\) for some \(N \geq 1\).
-    Then by Exercise \ref{ex 2.3.5}
-    \[
-        \sum_{n = 1}^{N + 1} f^{(n)} = \bigg(\sum_{n = 1}^N f^{(n)}\bigg) \oplus f^{(N + 1)}
-    \]
-    is uniformly continuous from \((X, d_X)\) to \((\R, d_1)\).
-    This closes the induction.
+  Finally we show that \(\sum_{n = 1}^N f^{(n)}\) is uniformly continuous from \((X, d_X)\) to \((\R, d_1)\) for each \(N \in \Z^+\).
+  Suppose that \(f^{(n)}\) is uniformly continuous from \((X, d_X)\) to \((\R, d_1)\) for each \(n \in \Z^+\).
+  We use induction on \(N\).
+  For \(N = 1\), by hypothesis we know that \(\sum_{n = 1}^1 f^{(n)} = f^{(1)}\) is uniformly continuous from \((X, d_X)\) to \((\R, d_1)\).
+  Thus the base case holds.
+  Suppose inductively that \(\sum_{n = 1}^N f^{(n)}\) is uniformly continuous from \((X, d_X)\) to \((\R, d_1)\) for some \(N \geq 1\).
+  Then by \cref{ex 2.3.5}
+  \[
+    \sum_{n = 1}^{N + 1} f^{(n)} = \bigg(\sum_{n = 1}^N f^{(n)}\bigg) \oplus f^{(N + 1)}
+  \]
+  is uniformly continuous from \((X, d_X)\) to \((\R, d_1)\).
+  This closes the induction.
 \end{proof}
 
 \begin{exercise}\label{ex 3.5.2}
-    Prove Theorem \ref{3.5.7}.
+  Prove \cref{3.5.7}.
 \end{exercise}
 
 \begin{proof}
-    See Theorem \ref{3.5.7}.
+  See \cref{3.5.7}.
 \end{proof}

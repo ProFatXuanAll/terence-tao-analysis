@@ -1,439 +1,439 @@
 \section{Linear transformations}\label{sec 6.1}
 
 \begin{definition}[Row vector]\label{6.1.1}
-    Let \(n \geq 1\) be an integer.
-    We refer to elements of \(\R^n\) as \emph{\(n\)-dimensional row vectors}.
-    A typical \(n\)-dimensional row vector may take the form \(x = (x_1, x_2, \dots, x_n)\), which we abbreviate as \((x_i)_{1 \leq i \leq n}\);
-    the quantities \(x_1, x_2, \dots, x_n\) are of course real numbers.
-    If \((x_i)_{1 \leq i \leq n}\) and \((y_i)_{1 \leq i \leq n}\) are \(n\)-dimensional row vectors, we can define their vector sum by
-    \[
-        (x_i)_{1 \leq i \leq n} + (y_i)_{1 \leq i \leq n} = (x_i + y_i)_{1 \leq i \leq n},
-    \]
-    and also if \(c \in \R\) is any scalar, we can define the scalar product \(c (x_i)_{1 \leq i \leq n}\) by
-    \[
-        c (x_i)_{1 \leq i \leq n} \coloneqq (cx_i)_{1 \leq i \leq n}.
-    \]
-    Of course one has similar operations on \(\R^m\) as well.
-    However, if \(n \neq m\), then we do not define any operation of vector addition between vectors in \(\R^n\) and vectors in \(\R^m\).
-    We also refer to the vector \((0, \dots, 0)\) in \(\R^n\) as the \emph{zero vector} and also denote it by \(0\).
-    (Strictly speaking, we should denote the zero vector of \(\R^n\) by \(0_{\R^n}\), as they are technically distinct from each other and from the number zero, but we shall not take care to make this distinction.)
-    We abbreviate \((-1) x\) as \(-x\).
+  Let \(n \geq 1\) be an integer.
+  We refer to elements of \(\R^n\) as \emph{\(n\)-dimensional row vectors}.
+  A typical \(n\)-dimensional row vector may take the form \(x = (x_1, x_2, \dots, x_n)\), which we abbreviate as \((x_i)_{1 \leq i \leq n}\);
+  the quantities \(x_1, x_2, \dots, x_n\) are of course real numbers.
+  If \((x_i)_{1 \leq i \leq n}\) and \((y_i)_{1 \leq i \leq n}\) are \(n\)-dimensional row vectors, we can define their vector sum by
+  \[
+    (x_i)_{1 \leq i \leq n} + (y_i)_{1 \leq i \leq n} = (x_i + y_i)_{1 \leq i \leq n},
+  \]
+  and also if \(c \in \R\) is any scalar, we can define the scalar product \(c (x_i)_{1 \leq i \leq n}\) by
+  \[
+    c (x_i)_{1 \leq i \leq n} \coloneqq (cx_i)_{1 \leq i \leq n}.
+  \]
+  Of course one has similar operations on \(\R^m\) as well.
+  However, if \(n \neq m\), then we do not define any operation of vector addition between vectors in \(\R^n\) and vectors in \(\R^m\).
+  We also refer to the vector \((0, \dots, 0)\) in \(\R^n\) as the \emph{zero vector} and also denote it by \(0\).
+  (Strictly speaking, we should denote the zero vector of \(\R^n\) by \(0_{\R^n}\), as they are technically distinct from each other and from the number zero, but we shall not take care to make this distinction.)
+  We abbreviate \((-1) x\) as \(-x\).
 \end{definition}
 
 \begin{lemma}[\(\R^n\) is a vector space]\label{6.1.2}
-    Let \(x, y, z\) be vectors in \(\R^n\), and let \(c, d\) be real numbers.
-    Then we have the commutativity property \(x + y = y + x\), the additive associativity property \((x + y) + z = x + (y + z)\), the additive identity property \(x + 0 = 0 + x = x\), the additive inverse property \(x + (-x) = (-x) + x = 0\), the multiplicative associativity property \((cd)x = c(dx)\), the distributivity properties \(c(x + y) = cx + cy\) and \((c + d)x = cx + dx\), and the multiplicative identity property \(1x = x\).
+  Let \(x, y, z\) be vectors in \(\R^n\), and let \(c, d\) be real numbers.
+  Then we have the commutativity property \(x + y = y + x\), the additive associativity property \((x + y) + z = x + (y + z)\), the additive identity property \(x + 0 = 0 + x = x\), the additive inverse property \(x + (-x) = (-x) + x = 0\), the multiplicative associativity property \((cd)x = c(dx)\), the distributivity properties \(c(x + y) = cx + cy\) and \((c + d)x = cx + dx\), and the multiplicative identity property \(1x = x\).
 \end{lemma}
 
 \begin{proof}
-    First we show the commutative property.
-    \begin{align*}
-        x + y & = (x_i)_{1 \leq i \leq n} + (y_i)_{1 \leq i \leq n} & \text{(by Definition \ref{6.1.1})} \\
-              & = (x_i + y_i)_{1 \leq i \leq n}                     & \text{(by Definition \ref{6.1.1})} \\
-              & = (y_i + x_i)_{1 \leq i \leq n}                     & (x_i, y_i \in \R)                  \\
-              & = (y_i)_{1 \leq i \leq n} + (x_i)_{1 \leq i \leq n} & \text{(by Definition \ref{6.1.1})} \\
-              & = y + x.                                            & \text{(by Definition \ref{6.1.1})}
-    \end{align*}
+  First we show the commutative property.
+  \begin{align*}
+    x + y & = (x_i)_{1 \leq i \leq n} + (y_i)_{1 \leq i \leq n} & \text{(by \cref{6.1.1})} \\
+          & = (x_i + y_i)_{1 \leq i \leq n}                     & \text{(by \cref{6.1.1})} \\
+          & = (y_i + x_i)_{1 \leq i \leq n}                     & (x_i, y_i \in \R)        \\
+          & = (y_i)_{1 \leq i \leq n} + (x_i)_{1 \leq i \leq n} & \text{(by \cref{6.1.1})} \\
+          & = y + x.                                            & \text{(by \cref{6.1.1})}
+  \end{align*}
 
-    Next we show the additive associativity property.
-    \begin{align*}
-        (x + y) + z & = \big((x_i)_{1 \leq i \leq n} + (y_i)_{1 \leq i \leq n}\big) + (z_i)_{1 \leq i \leq n} & \text{(by Definition \ref{6.1.1})} \\
-                    & = (x_i + y_i)_{1 \leq i \leq n} + (z_i)_{1 \leq i \leq n}                               & \text{(by Definition \ref{6.1.1})} \\
-                    & = \big((x_i + y_i) + z_i\big)_{1 \leq i \leq n}                                         & \text{(by Definition \ref{6.1.1})} \\
-                    & = \big(x_i + (y_i + z_i)\big)_{1 \leq i \leq n}                                         & (x_i, y_i, z_i \in \R)             \\
-                    & = (x_i)_{1 \leq i \leq n} + (y_i + z_i)_{1 \leq i \leq n}                               & \text{(by Definition \ref{6.1.1})} \\
-                    & = (x_i)_{1 \leq i \leq n} + \big((y_i)_{1 \leq i \leq n} + (z_i)_{1 \leq i \leq n}\big) & \text{(by Definition \ref{6.1.1})} \\
-                    & = x + (y + z).                                                                          & \text{(by Definition \ref{6.1.1})}
-    \end{align*}
+  Next we show the additive associativity property.
+  \begin{align*}
+    (x + y) + z & = \big((x_i)_{1 \leq i \leq n} + (y_i)_{1 \leq i \leq n}\big) + (z_i)_{1 \leq i \leq n} & \text{(by \cref{6.1.1})} \\
+                & = (x_i + y_i)_{1 \leq i \leq n} + (z_i)_{1 \leq i \leq n}                               & \text{(by \cref{6.1.1})} \\
+                & = \big((x_i + y_i) + z_i\big)_{1 \leq i \leq n}                                         & \text{(by \cref{6.1.1})} \\
+                & = \big(x_i + (y_i + z_i)\big)_{1 \leq i \leq n}                                         & (x_i, y_i, z_i \in \R)   \\
+                & = (x_i)_{1 \leq i \leq n} + (y_i + z_i)_{1 \leq i \leq n}                               & \text{(by \cref{6.1.1})} \\
+                & = (x_i)_{1 \leq i \leq n} + \big((y_i)_{1 \leq i \leq n} + (z_i)_{1 \leq i \leq n}\big) & \text{(by \cref{6.1.1})} \\
+                & = x + (y + z).                                                                          & \text{(by \cref{6.1.1})}
+  \end{align*}
 
-    Next we show that \(0_{\R^n}\) is the additive identity.
-    \begin{align*}
-        x + 0_{\R^n} & = 0_{\R^n} + x                                    & \text{(from the proof above)}      \\
-                     & = (0)_{1 \leq i \leq n} + (x_i)_{1 \leq i \leq n} & \text{(by Definition \ref{6.1.1})} \\
-                     & = (0 + x_i)_{1 \leq i \leq n}                     & \text{(by Definition \ref{6.1.1})} \\
-                     & = (x_i)_{1 \leq i \leq n}                         & (x_i \in \R)                       \\
-                     & = x.                                              & \text{(by Definition \ref{6.1.1})}
-    \end{align*}
+  Next we show that \(0_{\R^n}\) is the additive identity.
+  \begin{align*}
+    x + 0_{\R^n} & = 0_{\R^n} + x                                    & \text{(from the proof above)} \\
+                 & = (0)_{1 \leq i \leq n} + (x_i)_{1 \leq i \leq n} & \text{(by \cref{6.1.1})}      \\
+                 & = (0 + x_i)_{1 \leq i \leq n}                     & \text{(by \cref{6.1.1})}      \\
+                 & = (x_i)_{1 \leq i \leq n}                         & (x_i \in \R)                  \\
+                 & = x.                                              & \text{(by \cref{6.1.1})}
+  \end{align*}
 
-    Next we show that every \(-x\) is the additive inverse of \(x\).
-    \begin{align*}
-        x + (-x) & = (-x) + x                                                      & \text{(from the proof above)}      \\
-                 & = (-1)(x) + x                                                   & \text{(by Definition \ref{6.1.1})} \\
-                 & = (-1)(x_i)_{1 \leq i \leq n} + (x_i)_{1 \leq i \leq n}         & \text{(by Definition \ref{6.1.1})} \\
-                 & = \big((-1)x_i\big)_{1 \leq i \leq n} + (x_i)_{1 \leq i \leq n} & \text{(by Definition \ref{6.1.1})} \\
-                 & = \big((-1)x_i + x_i\big)_{1 \leq i \leq n}                     & \text{(by Definition \ref{6.1.1})} \\
-                 & = (0)_{1 \leq i \leq n}                                         & (x_i \in \R)                       \\
-                 & = 0_{\R^n}.                                                     & \text{(by Definition \ref{6.1.1})}
-    \end{align*}
+  Next we show that every \(-x\) is the additive inverse of \(x\).
+  \begin{align*}
+    x + (-x) & = (-x) + x                                                      & \text{(from the proof above)} \\
+             & = (-1)(x) + x                                                   & \text{(by \cref{6.1.1})}      \\
+             & = (-1)(x_i)_{1 \leq i \leq n} + (x_i)_{1 \leq i \leq n}         & \text{(by \cref{6.1.1})}      \\
+             & = \big((-1)x_i\big)_{1 \leq i \leq n} + (x_i)_{1 \leq i \leq n} & \text{(by \cref{6.1.1})}      \\
+             & = \big((-1)x_i + x_i\big)_{1 \leq i \leq n}                     & \text{(by \cref{6.1.1})}      \\
+             & = (0)_{1 \leq i \leq n}                                         & (x_i \in \R)                  \\
+             & = 0_{\R^n}.                                                     & \text{(by \cref{6.1.1})}
+  \end{align*}
 
-    Next we show that multiplicative associativity property.
-    \begin{align*}
-        (cd)x & = (cd)(x_i)_{1 \leq i \leq n}          & \text{(by Definition \ref{6.1.1})} \\
-              & = \big((cd) x_i\big)_{1 \leq i \leq n} & \text{(by Definition \ref{6.1.1})} \\
-              & = \big(c(d x_i)\big)_{1 \leq i \leq n} & (c, d, x_i \in \R)                 \\
-              & = c(d x_i)_{1 \leq i \leq n}           & \text{(by Definition \ref{6.1.1})} \\
-              & = c(dx).                               & \text{(by Definition \ref{6.1.1})}
-    \end{align*}
+  Next we show that multiplicative associativity property.
+  \begin{align*}
+    (cd)x & = (cd)(x_i)_{1 \leq i \leq n}          & \text{(by \cref{6.1.1})} \\
+          & = \big((cd) x_i\big)_{1 \leq i \leq n} & \text{(by \cref{6.1.1})} \\
+          & = \big(c(d x_i)\big)_{1 \leq i \leq n} & (c, d, x_i \in \R)       \\
+          & = c(d x_i)_{1 \leq i \leq n}           & \text{(by \cref{6.1.1})} \\
+          & = c(dx).                               & \text{(by \cref{6.1.1})}
+  \end{align*}
 
-    Next we show that distributivity property.
-    \begin{align*}
-        c(x + y) & = c\big((x_i)_{1 \leq i \leq n} + (y_i)_{1 \leq i \leq n}\big) & \text{(by Definition \ref{6.1.1})} \\
-                 & = c(x_i + y_i)_{1 \leq i \leq n}                               & \text{(by Definition \ref{6.1.1})} \\
-                 & = \big(c(x_i + y_i)\big)_{1 \leq i \leq n}                     & \text{(by Definition \ref{6.1.1})} \\
-                 & = (c x_i + c y_i)_{1 \leq i \leq n}                            & (c, x_i, y_i \in \R)               \\
-                 & = (c x_i)_{1 \leq i \leq n} + (c y_i)_{1 \leq i \leq n}        & \text{(by Definition \ref{6.1.1})} \\
-                 & = c(x_i)_{1 \leq i \leq n} + c(y_i)_{1 \leq i \leq n}          & \text{(by Definition \ref{6.1.1})} \\
-                 & = cx + cy.                                                     & \text{(by Definition \ref{6.1.1})}
-    \end{align*}
-    \begin{align*}
-        (c + d)x & = (c + d)(x_i)_{1 \leq i \leq n}                        & \text{(by Definition \ref{6.1.1})} \\
-                 & = \big((c + d) x_i\big)_{1 \leq i \leq n}               & \text{(by Definition \ref{6.1.1})} \\
-                 & = (c x_i + d x_i)_{1 \leq i \leq n}                     & (c, d, x_i \in \R)                 \\
-                 & = (c x_i)_{1 \leq i \leq n} + (d x_i)_{1 \leq i \leq n} & \text{(by Definition \ref{6.1.1})} \\
-                 & = c(x_i)_{1 \leq i \leq n} + d(x_i)_{1 \leq i \leq n}   & \text{(by Definition \ref{6.1.1})} \\
-                 & = cx + dx.                                              & \text{(by Definition \ref{6.1.1})}
-    \end{align*}
+  Next we show that distributivity property.
+  \begin{align*}
+    c(x + y) & = c\big((x_i)_{1 \leq i \leq n} + (y_i)_{1 \leq i \leq n}\big) & \text{(by \cref{6.1.1})} \\
+             & = c(x_i + y_i)_{1 \leq i \leq n}                               & \text{(by \cref{6.1.1})} \\
+             & = \big(c(x_i + y_i)\big)_{1 \leq i \leq n}                     & \text{(by \cref{6.1.1})} \\
+             & = (c x_i + c y_i)_{1 \leq i \leq n}                            & (c, x_i, y_i \in \R)     \\
+             & = (c x_i)_{1 \leq i \leq n} + (c y_i)_{1 \leq i \leq n}        & \text{(by \cref{6.1.1})} \\
+             & = c(x_i)_{1 \leq i \leq n} + c(y_i)_{1 \leq i \leq n}          & \text{(by \cref{6.1.1})} \\
+             & = cx + cy.                                                     & \text{(by \cref{6.1.1})}
+  \end{align*}
+  \begin{align*}
+    (c + d)x & = (c + d)(x_i)_{1 \leq i \leq n}                        & \text{(by \cref{6.1.1})} \\
+             & = \big((c + d) x_i\big)_{1 \leq i \leq n}               & \text{(by \cref{6.1.1})} \\
+             & = (c x_i + d x_i)_{1 \leq i \leq n}                     & (c, d, x_i \in \R)       \\
+             & = (c x_i)_{1 \leq i \leq n} + (d x_i)_{1 \leq i \leq n} & \text{(by \cref{6.1.1})} \\
+             & = c(x_i)_{1 \leq i \leq n} + d(x_i)_{1 \leq i \leq n}   & \text{(by \cref{6.1.1})} \\
+             & = cx + dx.                                              & \text{(by \cref{6.1.1})}
+  \end{align*}
 
-    Finally we show that \(1\) is the multiplicative identity.
-    \begin{align*}
-        1 x & = 1 (x_i)_{1 \leq i \leq n} & \text{(by Definition \ref{6.1.1})} \\
-            & = (1 x_i)_{1 \leq i \leq n} & \text{(by Definition \ref{6.1.1})} \\
-            & = (x_i)_{1 \leq i \leq n}   & (x_i \in \R)                       \\
-            & = x.                        & \text{(by Definition \ref{6.1.1})}
-    \end{align*}
+  Finally we show that \(1\) is the multiplicative identity.
+  \begin{align*}
+    1 x & = 1 (x_i)_{1 \leq i \leq n} & \text{(by \cref{6.1.1})} \\
+        & = (1 x_i)_{1 \leq i \leq n} & \text{(by \cref{6.1.1})} \\
+        & = (x_i)_{1 \leq i \leq n}   & (x_i \in \R)             \\
+        & = x.                        & \text{(by \cref{6.1.1})}
+  \end{align*}
 \end{proof}
 
 \begin{definition}[Transpose]\label{6.1.3}
-    If \((x_i)_{1 \leq i \leq n} = (x_1, x_2, \dots, x_n)\) is an \(n\)-dimensional row vector, we can define its \emph{transpose} \((x_i)_{1 \leq i \leq n}^\top\) by
-    \[
-        (x_i)_{1 \leq i \leq n}^\top = (x_1, x_2, \dots, x_n)^\top \coloneqq \begin{pmatrix}
-            x_1    \\
-            x_2    \\
-            \vdots \\
-            x_n
-        \end{pmatrix}.
-    \]
-    We refer to objects such as \((x_i)_{1 \leq i \leq n}^\top\) as \emph{\(n\)-dimensional column vectors}.
+  If \((x_i)_{1 \leq i \leq n} = (x_1, x_2, \dots, x_n)\) is an \(n\)-dimensional row vector, we can define its \emph{transpose} \((x_i)_{1 \leq i \leq n}^\top\) by
+  \[
+    (x_i)_{1 \leq i \leq n}^\top = (x_1, x_2, \dots, x_n)^\top \coloneqq \begin{pmatrix}
+      x_1    \\
+      x_2    \\
+      \vdots \\
+      x_n
+    \end{pmatrix}.
+  \]
+  We refer to objects such as \((x_i)_{1 \leq i \leq n}^\top\) as \emph{\(n\)-dimensional column vectors}.
 \end{definition}
 
 \begin{remark}\label{6.1.4}
-    There is no functional difference between a row vector and a column vector (e.g., one can add and scalar multiply column vectors just as well as we can row vectors), however we shall (rather annoyingly) need to transpose our row vectors into column vectors in order to be consistent with the conventions of matrix multiplication, which we will see later.
-    Note that we view row vectors and column vectors as residing in different spaces;
-    thus for instance we will not define the sum of a row vector with a column vector, even when they have the same number of elements.
+  There is no functional difference between a row vector and a column vector (e.g., one can add and scalar multiply column vectors just as well as we can row vectors), however we shall (rather annoyingly) need to transpose our row vectors into column vectors in order to be consistent with the conventions of matrix multiplication, which we will see later.
+  Note that we view row vectors and column vectors as residing in different spaces;
+  thus for instance we will not define the sum of a row vector with a column vector, even when they have the same number of elements.
 \end{remark}
 
 \begin{definition}[Standard basis row vectors]\label{6.1.5}
-    We identify \(n\) special vectors in \(\R^n\), the \emph{standard basis row vectors} \(e_1, \dots, e_n\).
-    For each \(1 \leq j \leq n\), \(e_j\) is the vector which has \(0\) in all entries except for the \(j^{\text{th}}\) entry, which is equal to \(1\).
+  We identify \(n\) special vectors in \(\R^n\), the \emph{standard basis row vectors} \(e_1, \dots, e_n\).
+  For each \(1 \leq j \leq n\), \(e_j\) is the vector which has \(0\) in all entries except for the \(j^{\text{th}}\) entry, which is equal to \(1\).
 \end{definition}
 
 \begin{note}
-    If \(x = (x_i)_{1 \leq i \leq n}\) is a vector in \(\R^n\), then
-    \[
-        x = x_1 e_1 + x_2 e_2 + \dots + x_n e_n = \sum_{j = 1}^n x_j e_j,
-    \]
-    or in other words every vector in \(\R^n\) is a \emph{linear combination} of the standard basis vectors \(e_1, \dots, e_n\).
-    (The notation \(\sum_{j = 1}^n x_j e_j\) is unambiguous because the operation of vector addition is both commutative and associative).
-    Of course, just as every row vector is a linear combination of standard basis row vectors, every column vector is a linear combination of standard basis column vectors:
-    \[
-        x^\top = x_1 e_1^\top + x_2 e_2^\top + \dots + x_n e_n^\top = \sum_{j = 1}^n x_j e_j^\top.
-    \]
+  If \(x = (x_i)_{1 \leq i \leq n}\) is a vector in \(\R^n\), then
+  \[
+    x = x_1 e_1 + x_2 e_2 + \dots + x_n e_n = \sum_{j = 1}^n x_j e_j,
+  \]
+  or in other words every vector in \(\R^n\) is a \emph{linear combination} of the standard basis vectors \(e_1, \dots, e_n\).
+  (The notation \(\sum_{j = 1}^n x_j e_j\) is unambiguous because the operation of vector addition is both commutative and associative).
+  Of course, just as every row vector is a linear combination of standard basis row vectors, every column vector is a linear combination of standard basis column vectors:
+  \[
+    x^\top = x_1 e_1^\top + x_2 e_2^\top + \dots + x_n e_n^\top = \sum_{j = 1}^n x_j e_j^\top.
+  \]
 \end{note}
 
 \begin{definition}[Linear transformations]\label{6.1.6}
-    A \emph{linear transformation} \(T : \R^n \to \R^m\) is any function from one Euclidean space \(\R^n\) to another \(\R^m\) which obeys the following two axioms:
-    \begin{enumerate}
-        \item (Additivity)
-              For every \(x, x' \in \R^n\), we have \(T(x + x') = T(x) + T(x')\).
-        \item (Homogeneity)
-              For every \(x \in \R^n\) and every \(c \in \R\), we have \(T(cx) = cT(x)\).
-    \end{enumerate}
+  A \emph{linear transformation} \(T : \R^n \to \R^m\) is any function from one Euclidean space \(\R^n\) to another \(\R^m\) which obeys the following two axioms:
+  \begin{enumerate}
+    \item (Additivity)
+          For every \(x, x' \in \R^n\), we have \(T(x + x') = T(x) + T(x')\).
+    \item (Homogeneity)
+          For every \(x \in \R^n\) and every \(c \in \R\), we have \(T(cx) = cT(x)\).
+  \end{enumerate}
 \end{definition}
 
 \setcounter{theorem}{9}
 \begin{definition}[Matrices]\label{6.1.10}
-    An \(m \times n\) matrix is an object \(A\) of the form
-    \[
-        A = \begin{pmatrix}
-            a_{11} & a_{12} & \dots  & a_{1n} \\
-            a_{21} & a_{22} & \dots  & a_{2n} \\
-            \vdots & \vdots & \ddots & \vdots \\
-            a_{m1} & a_{m2} & \dots  & a_{mn}
-        \end{pmatrix};
-    \]
-    we shall abbreviate this as
-    \[
-        A = (a_{ij})_{1 \leq i \leq m ; 1 \leq j \leq n}.
-    \]
-    In particular, \(n\)-dimensional row vectors are \(1 \times n\) matrices, while \(n\)-dimensional column vectors are \(n \times 1\) matrices.
+  An \(m \times n\) matrix is an object \(A\) of the form
+  \[
+    A = \begin{pmatrix}
+      a_{11} & a_{12} & \dots  & a_{1n} \\
+      a_{21} & a_{22} & \dots  & a_{2n} \\
+      \vdots & \vdots & \ddots & \vdots \\
+      a_{m1} & a_{m2} & \dots  & a_{mn}
+    \end{pmatrix};
+  \]
+  we shall abbreviate this as
+  \[
+    A = (a_{ij})_{1 \leq i \leq m ; 1 \leq j \leq n}.
+  \]
+  In particular, \(n\)-dimensional row vectors are \(1 \times n\) matrices, while \(n\)-dimensional column vectors are \(n \times 1\) matrices.
 \end{definition}
 
 \begin{definition}[Matrix product]\label{6.1.11}
-    Given an \(m \times n\) matrix \(A\) and an \(n \times p\) matrix \(B\), we can define the matrix product \(AB\) to be the \(m \times p\) matrix defined as
-    \[
-        (a_{ij})_{1 \leq i \leq m ; 1 \leq j \leq n} (b_{jk})_{1 \leq j \leq n ; 1 \leq k \leq p} \coloneqq \bigg(\sum_{j = 1}^n a_{ij} b_{jk}\bigg)_{1 \leq i \leq m ; 1 \leq k \leq p}.
-    \]
-    In particular, if \(x^\top = (x_i)_{1 \leq i \leq n}^\top\) is an \(n\)-dimensional column vector, and
-    \[
-        A = (a_{ij})_{1 \leq i \leq m ; 1 \leq j \leq n}
-    \]
-    is an \(m \times n\) matrix, then \(A x^\top\) is an \(m\)-dimensional column vector:
-    \[
-        A x^\top = \bigg(\sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m}^\top.
-    \]
+  Given an \(m \times n\) matrix \(A\) and an \(n \times p\) matrix \(B\), we can define the matrix product \(AB\) to be the \(m \times p\) matrix defined as
+  \[
+    (a_{ij})_{1 \leq i \leq m ; 1 \leq j \leq n} (b_{jk})_{1 \leq j \leq n ; 1 \leq k \leq p} \coloneqq \bigg(\sum_{j = 1}^n a_{ij} b_{jk}\bigg)_{1 \leq i \leq m ; 1 \leq k \leq p}.
+  \]
+  In particular, if \(x^\top = (x_i)_{1 \leq i \leq n}^\top\) is an \(n\)-dimensional column vector, and
+  \[
+    A = (a_{ij})_{1 \leq i \leq m ; 1 \leq j \leq n}
+  \]
+  is an \(m \times n\) matrix, then \(A x^\top\) is an \(m\)-dimensional column vector:
+  \[
+    A x^\top = \bigg(\sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m}^\top.
+  \]
 \end{definition}
 
 \begin{additional corollary}\label{ac 6.1.1}
 We now relate matrices to linear transformations.
 If \(A\) is an \(m \times n\) matrix, we can define the transformation \(L_A : \R^n \to \R^m\) by the formula
 \[
-    \big(L_A(x)\big)^\top = Ax^\top.
+  \big(L_A(x)\big)^\top = Ax^\top.
 \]
 More generally, if
 \[
-    A = \begin{pmatrix}
-        a_{11} & a_{12} & \dots  & a_{1n} \\
-        a_{21} & a_{22} & \dots  & a_{2n} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        a_{m1} & a_{m2} & \dots  & a_{mn}
-    \end{pmatrix}
+  A = \begin{pmatrix}
+    a_{11} & a_{12} & \dots  & a_{1n} \\
+    a_{21} & a_{22} & \dots  & a_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{m1} & a_{m2} & \dots  & a_{mn}
+  \end{pmatrix}
 \]
 then we have
 \[
-    L_A\big((x_j)_{1 \leq j \leq n}\big) = \bigg(\sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m}.
+  L_A\big((x_j)_{1 \leq j \leq n}\big) = \bigg(\sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m}.
 \]
 For any \(m \times n\) matrix \(A\), the transformation \(L_A\) is automatically linear;
 one can easily verify that \(L_A(x + y) = L_A(x) + L_A(y)\) and \(L_A(cx) = c L_A(x)\) for any \(n\)-dimensional row vectors \(x, y\) and any scalar \(c\).
 \end{additional corollary}
 
 \begin{proof}
-    We have
-    \begin{align*}
-        L_A(x + y) & = L_A\big((x_j)_{1 \leq j \leq n} + (y_j)_{1 \leq j \leq n}\big)                                                     & \text{(by Definition \ref{6.1.1})} \\
-                   & = L_A\big((x_j + y_j)_{1 \leq j \leq n}\big)                                                                         & \text{(by Definition \ref{6.1.1})} \\
-                   & = \bigg(\sum_{j = 1}^n a_{ij} (x_j + y_j)\bigg)_{1 \leq i \leq m}                                                                                         \\
-                   & = \bigg(\sum_{j = 1}^n a_{ij} x_j + \sum_{j = 1}^n a_{ij} y_j\bigg)_{1 \leq i \leq m}                                                                     \\
-                   & = \bigg(\sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m} + \bigg(\sum_{j = 1}^n a_{ij} y_j)\bigg)_{1 \leq i \leq m} & \text{(by Definition \ref{6.1.1})} \\
-                   & = L_A\big((x_j)_{1 \leq j \leq n}\big) + L_A\big((y_j)_{1 \leq j \leq n}\big)                                                                             \\
-                   & = L_A(x) + L_A(y)                                                                                                    & \text{(by Definition \ref{6.1.1})}
-    \end{align*}
-    and
-    \begin{align*}
-        L_A(cx) & = L_A\big(c(x_j)_{1 \leq j \leq n}\big)                       & \text{(by Definition \ref{6.1.1})} \\
-                & = L_A\big((cx_j)_{1 \leq j \leq n}\big)                       & \text{(by Definition \ref{6.1.1})} \\
-                & = \bigg(\sum_{j = 1}^n a_{ij} (c x_j)\bigg)_{1 \leq i \leq m}                                      \\
-                & = \bigg(c \sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m}                                        \\
-                & = c \bigg(\sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m}   & \text{(by Definition \ref{6.1.1})} \\
-                & = c L_A\big((x_j)_{1 \leq j \leq n}\big)                                                           \\
-                & = c L_A(x).                                                   & \text{(by Definition \ref{6.1.1})}
-    \end{align*}
-    Thus by Definition \ref{6.1.6} \(L_A\) is a linear transformation from \(\R^n\) to \(\R^m\).
+  We have
+  \begin{align*}
+    L_A(x + y) & = L_A\big((x_j)_{1 \leq j \leq n} + (y_j)_{1 \leq j \leq n}\big)                                                     & \text{(by \cref{6.1.1})} \\
+               & = L_A\big((x_j + y_j)_{1 \leq j \leq n}\big)                                                                         & \text{(by \cref{6.1.1})} \\
+               & = \bigg(\sum_{j = 1}^n a_{ij} (x_j + y_j)\bigg)_{1 \leq i \leq m}                                                                               \\
+               & = \bigg(\sum_{j = 1}^n a_{ij} x_j + \sum_{j = 1}^n a_{ij} y_j\bigg)_{1 \leq i \leq m}                                                           \\
+               & = \bigg(\sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m} + \bigg(\sum_{j = 1}^n a_{ij} y_j)\bigg)_{1 \leq i \leq m} & \text{(by \cref{6.1.1})} \\
+               & = L_A\big((x_j)_{1 \leq j \leq n}\big) + L_A\big((y_j)_{1 \leq j \leq n}\big)                                                                   \\
+               & = L_A(x) + L_A(y)                                                                                                    & \text{(by \cref{6.1.1})}
+  \end{align*}
+  and
+  \begin{align*}
+    L_A(cx) & = L_A\big(c(x_j)_{1 \leq j \leq n}\big)                       & \text{(by \cref{6.1.1})} \\
+            & = L_A\big((cx_j)_{1 \leq j \leq n}\big)                       & \text{(by \cref{6.1.1})} \\
+            & = \bigg(\sum_{j = 1}^n a_{ij} (c x_j)\bigg)_{1 \leq i \leq m}                            \\
+            & = \bigg(c \sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m}                              \\
+            & = c \bigg(\sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m}   & \text{(by \cref{6.1.1})} \\
+            & = c L_A\big((x_j)_{1 \leq j \leq n}\big)                                                 \\
+            & = c L_A(x).                                                   & \text{(by \cref{6.1.1})}
+  \end{align*}
+  Thus by \cref{6.1.6} \(L_A\) is a linear transformation from \(\R^n\) to \(\R^m\).
 \end{proof}
 
 \setcounter{theorem}{12}
 \begin{lemma}\label{6.1.13}
-    Let \(T : \R^n \to \R^m\) be a linear transformation.
-    Then there exists exactly one \(m \times n\) matrix \(A\) such that \(T = L_A\).
+  Let \(T : \R^n \to \R^m\) be a linear transformation.
+  Then there exists exactly one \(m \times n\) matrix \(A\) such that \(T = L_A\).
 \end{lemma}
 
 \begin{proof}
-    Suppose \(T : \R^n \to \R^m\) is a linear transformation.
-    Let \(e_1, e_2, \dots, e_n\) be the standard basis row vectors of \(\R^n\).
-    Then \(T(e_1), T(e_2), \dots, T(e_n)\) are vectors in \(\R^m\).
-    For each \(1 \leq j \leq n\), we write \(T(e_j)\) in co-ordinates as
-    \[
-        T(e_j) = (a_{1j}, a_{2j}, \dots, a_{mj}) = (a_{ij})_{1 \leq i \leq m},
-    \]
-    i.e., we define \(a_{ij}\) to be the \(i^{\text{th}}\) component of \(T(e_j)\).
-    Then for any \(n\)- dimensional row vector \(x = (x_1, \dots, x_n)\), we have
-    \[
-        T(x) = T\bigg(\sum_{j = 1}^n x_j e_j\bigg),
-    \]
-    which (since \(T\) is linear) is equal to
-    \begin{align*}
-         & = \sum_{j = 1}^n T(x_j e_j)                                \\
-         & = \sum_{j = 1}^n x_j T(e_j)                                \\
-         & = \sum_{j = 1}^n x_j (a_{ij})_{1 \leq i \leq m}            \\
-         & = \sum_{j = 1}^n (a_{ij} x_j)_{1 \leq i \leq m}            \\
-         & = \bigg(\sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m}.
-    \end{align*}
-    But if we let \(A\) be the matrix
-    \[
-        A = \begin{pmatrix}
-            a_{11} & a_{12} & \dots  & a_{1n} \\
-            a_{21} & a_{22} & \dots  & a_{2n} \\
-            \vdots & \vdots & \ddots & \vdots \\
-            a_{m1} & a_{m2} & \dots  & a_{mn}
-        \end{pmatrix}
-    \]
-    then the previous vector is precisely \(L_A(x)\).
-    Thus \(T(x) = L_A(x)\) for all \(n\)-dimensional vectors \(x\), and thus \(T = L_A\).
+  Suppose \(T : \R^n \to \R^m\) is a linear transformation.
+  Let \(e_1, e_2, \dots, e_n\) be the standard basis row vectors of \(\R^n\).
+  Then \(T(e_1), T(e_2), \dots, T(e_n)\) are vectors in \(\R^m\).
+  For each \(1 \leq j \leq n\), we write \(T(e_j)\) in co-ordinates as
+  \[
+    T(e_j) = (a_{1j}, a_{2j}, \dots, a_{mj}) = (a_{ij})_{1 \leq i \leq m},
+  \]
+  i.e., we define \(a_{ij}\) to be the \(i^{\text{th}}\) component of \(T(e_j)\).
+  Then for any \(n\)- dimensional row vector \(x = (x_1, \dots, x_n)\), we have
+  \[
+    T(x) = T\bigg(\sum_{j = 1}^n x_j e_j\bigg),
+  \]
+  which (since \(T\) is linear) is equal to
+  \begin{align*}
+     & = \sum_{j = 1}^n T(x_j e_j)                                \\
+     & = \sum_{j = 1}^n x_j T(e_j)                                \\
+     & = \sum_{j = 1}^n x_j (a_{ij})_{1 \leq i \leq m}            \\
+     & = \sum_{j = 1}^n (a_{ij} x_j)_{1 \leq i \leq m}            \\
+     & = \bigg(\sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m}.
+  \end{align*}
+  But if we let \(A\) be the matrix
+  \[
+    A = \begin{pmatrix}
+      a_{11} & a_{12} & \dots  & a_{1n} \\
+      a_{21} & a_{22} & \dots  & a_{2n} \\
+      \vdots & \vdots & \ddots & \vdots \\
+      a_{m1} & a_{m2} & \dots  & a_{mn}
+    \end{pmatrix}
+  \]
+  then the previous vector is precisely \(L_A(x)\).
+  Thus \(T(x) = L_A(x)\) for all \(n\)-dimensional vectors \(x\), and thus \(T = L_A\).
 
-    Now we show that \(A\) is unique, i.e., there does not exist any other matrix
-    \[
-        B = \begin{pmatrix}
-            b_{11} & b_{12} & \dots  & b_{1n} \\
-            b_{21} & b_{22} & \dots  & b_{2n} \\
-            \vdots & \vdots & \ddots & \vdots \\
-            b_{m1} & b_{m2} & \dots  & b_{mn}
-        \end{pmatrix}
-    \]
-    for which \(T\) is equal to \(L_B\).
-    Suppose for sake of contradiction that we could find such a matrix \(B\) which was different from \(A\).
-    Then we would have \(L_A = L_B\).
-    In particular, we have \(L_A(e_j) = L_B(e_j)\) for every \(1 \leq j \leq n\).
-    But from the definition of \(L_A\) we see that
-    \[
-        L_A(e_j) = (a_{ij})_{1 \leq i \leq m}
-    \]
-    and
-    \[
-        L_B(e_j) = (b_{ij})_{1 \leq i \leq m}
-    \]
-    and thus we have \(a_{ij} = b_{ij}\) for every \(1 \leq i \leq m\) and \(1 \leq j \leq n\), thus \(A\) and \(B\) are equal, a contradiction.
+  Now we show that \(A\) is unique, i.e., there does not exist any other matrix
+  \[
+    B = \begin{pmatrix}
+      b_{11} & b_{12} & \dots  & b_{1n} \\
+      b_{21} & b_{22} & \dots  & b_{2n} \\
+      \vdots & \vdots & \ddots & \vdots \\
+      b_{m1} & b_{m2} & \dots  & b_{mn}
+    \end{pmatrix}
+  \]
+  for which \(T\) is equal to \(L_B\).
+  Suppose for sake of contradiction that we could find such a matrix \(B\) which was different from \(A\).
+  Then we would have \(L_A = L_B\).
+  In particular, we have \(L_A(e_j) = L_B(e_j)\) for every \(1 \leq j \leq n\).
+  But from the definition of \(L_A\) we see that
+  \[
+    L_A(e_j) = (a_{ij})_{1 \leq i \leq m}
+  \]
+  and
+  \[
+    L_B(e_j) = (b_{ij})_{1 \leq i \leq m}
+  \]
+  and thus we have \(a_{ij} = b_{ij}\) for every \(1 \leq i \leq m\) and \(1 \leq j \leq n\), thus \(A\) and \(B\) are equal, a contradiction.
 \end{proof}
 
 \begin{remark}\label{6.1.14}
-    Lemma \ref{6.1.13} establishes a one-to-one correspondence between linear transformations and matrices, and is one of the fundamental reasons why matrices are so important in linear algebra.
-    One may ask then why we bother dealing with linear transformations at all, and why we don't just work with matrices all the time.
-    The reason is that sometimes one does not want to work with the standard basis \(e_1, \dots, e_n\), but instead wants to use some other basis.
-    In that case, the correspondence between linear transformations and matrices changes, and so it is still important to keep the notions of linear transformation and matrix distinct.
-    More discussion on this somewhat subtle issue can be found in any linear algebra text.
+  \cref{6.1.13} establishes a one-to-one correspondence between linear transformations and matrices, and is one of the fundamental reasons why matrices are so important in linear algebra.
+  One may ask then why we bother dealing with linear transformations at all, and why we don't just work with matrices all the time.
+  The reason is that sometimes one does not want to work with the standard basis \(e_1, \dots, e_n\), but instead wants to use some other basis.
+  In that case, the correspondence between linear transformations and matrices changes, and so it is still important to keep the notions of linear transformation and matrix distinct.
+  More discussion on this somewhat subtle issue can be found in any linear algebra text.
 \end{remark}
 
 \begin{remark}\label{6.1.15}
-    If \(T = L_A\), then \(A\) is sometimes called the \emph{matrix representation} of \(T\), and is sometimes denoted \(A = [T]\).
-    We shall avoid this notation here, however.
+  If \(T = L_A\), then \(A\) is sometimes called the \emph{matrix representation} of \(T\), and is sometimes denoted \(A = [T]\).
+  We shall avoid this notation here, however.
 \end{remark}
 
 \begin{note}
-    The composition \(T \circ S\) of two linear transformations \(T, S\) is again a linear transformation (Exercise \ref{ex 6.1.2}).
-    It is customary in linear algebra to abbreviate such compositions \(T \circ S\) of linear transformations by droppinng the \(\circ\) symbol, thus \(T \circ S = TS\).
+  The composition \(T \circ S\) of two linear transformations \(T, S\) is again a linear transformation (\cref{ex 6.1.2}).
+  It is customary in linear algebra to abbreviate such compositions \(T \circ S\) of linear transformations by droppinng the \(\circ\) symbol, thus \(T \circ S = TS\).
 \end{note}
 
 \begin{lemma}\label{6.1.16}
-    Let \(A\) be an \(m \times n\) matrix, and let \(B\) be an \(n \times p\) matrix.
-    Then \(L_A L_B = L_{AB}\).
+  Let \(A\) be an \(m \times n\) matrix, and let \(B\) be an \(n \times p\) matrix.
+  Then \(L_A L_B = L_{AB}\).
 \end{lemma}
 
 \begin{proof}
-    Note that \(L_A L_B = L_A \circ L_B\), and we will work with the notation \(L_A \circ L_B\) instead.
-    By Definition \ref{6.1.11} \(AB\) is well-defined.
-    Let \(C = AB = (c_{ik})_{1 \leq i \leq m ; 1 \leq k \leq p}\).
-    Then by Definition \ref{6.1.11} we have
-    \[
-        (c_{ik})_{1 \leq i \leq m ; 1 \leq k \leq p} = \bigg(\sum_{j = 1}^n a_{ij} b_{jk}\bigg)_{1 \leq i \leq m ; 1 \leq k \leq p}.
-    \]
-    Let \(x \in \R^p\).
-    Then we have
-    \begin{align*}
-         & (L_A \circ L_B)(x)                                                                                                                            \\
-         & = L_A\big(L_B(x)\big)                                                                                                                         \\
-         & = L_A\Big(L_B\big((x_k)_{1 \leq k \leq p}\big)\Big)                                         & \text{(by Definition \ref{6.1.1})}              \\
-         & = L_A\Bigg(\bigg(\sum_{k = 1}^p b_{jk} x_k\bigg)_{1 \leq j \leq n}\Bigg)                    & \text{(by Additional Corollary \ref{ac 6.1.1})} \\
-         & = \Bigg(\sum_{j = 1}^n a_{ij} \bigg(\sum_{k = 1}^p b_{jk} x_k\bigg)\Bigg)_{1 \leq i \leq m} & \text{(by Additional Corollary \ref{ac 6.1.1})} \\
-         & = \Bigg(\sum_{j = 1}^n \bigg(\sum_{k = 1}^p a_{ij} b_{jk} x_k\bigg)\Bigg)_{1 \leq i \leq m}                                                   \\
-         & = \Bigg(\sum_{k = 1}^p \bigg(\sum_{j = 1}^n a_{ij} b_{jk} x_k\bigg)\Bigg)_{1 \leq i \leq m}                                                   \\
-         & = \Bigg(\sum_{k = 1}^p \bigg(\sum_{j = 1}^n a_{ij} b_{jk}\bigg) x_k\Bigg)_{1 \leq i \leq m}                                                   \\
-         & = \bigg(\sum_{k = 1}^p c_{ik} x_k\bigg)_{1 \leq i \leq m}                                   & \text{(by Definition \ref{6.1.11})}             \\
-         & = L_C\big((x_k)_{1 \leq k \leq p}\big)                                                      & \text{(by Additional Corollary \ref{ac 6.1.1})} \\
-         & = L_C(x)                                                                                    & \text{(by Definition \ref{6.1.1})}              \\
-         & = L_{AB}(x).
-    \end{align*}
-    Since \(x\) is arbitrary, we have \(L_A \circ L_B = L_{AB}\).
+  Note that \(L_A L_B = L_A \circ L_B\), and we will work with the notation \(L_A \circ L_B\) instead.
+  By \cref{6.1.11} \(AB\) is well-defined.
+  Let \(C = AB = (c_{ik})_{1 \leq i \leq m ; 1 \leq k \leq p}\).
+  Then by \cref{6.1.11} we have
+  \[
+    (c_{ik})_{1 \leq i \leq m ; 1 \leq k \leq p} = \bigg(\sum_{j = 1}^n a_{ij} b_{jk}\bigg)_{1 \leq i \leq m ; 1 \leq k \leq p}.
+  \]
+  Let \(x \in \R^p\).
+  Then we have
+  \begin{align*}
+     & (L_A \circ L_B)(x)                                                                                                        \\
+     & = L_A\big(L_B(x)\big)                                                                                                     \\
+     & = L_A\Big(L_B\big((x_k)_{1 \leq k \leq p}\big)\Big)                                         & \text{(by \cref{6.1.1})}    \\
+     & = L_A\Bigg(\bigg(\sum_{k = 1}^p b_{jk} x_k\bigg)_{1 \leq j \leq n}\Bigg)                    & \text{(by \cref{ac 6.1.1})} \\
+     & = \Bigg(\sum_{j = 1}^n a_{ij} \bigg(\sum_{k = 1}^p b_{jk} x_k\bigg)\Bigg)_{1 \leq i \leq m} & \text{(by \cref{ac 6.1.1})} \\
+     & = \Bigg(\sum_{j = 1}^n \bigg(\sum_{k = 1}^p a_{ij} b_{jk} x_k\bigg)\Bigg)_{1 \leq i \leq m}                               \\
+     & = \Bigg(\sum_{k = 1}^p \bigg(\sum_{j = 1}^n a_{ij} b_{jk} x_k\bigg)\Bigg)_{1 \leq i \leq m}                               \\
+     & = \Bigg(\sum_{k = 1}^p \bigg(\sum_{j = 1}^n a_{ij} b_{jk}\bigg) x_k\Bigg)_{1 \leq i \leq m}                               \\
+     & = \bigg(\sum_{k = 1}^p c_{ik} x_k\bigg)_{1 \leq i \leq m}                                   & \text{(by \cref{6.1.11})}   \\
+     & = L_C\big((x_k)_{1 \leq k \leq p}\big)                                                      & \text{(by \cref{ac 6.1.1})} \\
+     & = L_C(x)                                                                                    & \text{(by \cref{6.1.1})}    \\
+     & = L_{AB}(x).
+  \end{align*}
+  Since \(x\) is arbitrary, we have \(L_A \circ L_B = L_{AB}\).
 \end{proof}
 
 \exercisesection
 
 \begin{exercise}\label{ex 6.1.1}
-    Prove Lemma \ref{6.1.2}.
+  Prove \cref{6.1.2}.
 \end{exercise}
 
 \begin{proof}
-    See Lemma \ref{6.1.2}.
+  See \cref{6.1.2}.
 \end{proof}
 
 \begin{exercise}\label{ex 6.1.2}
-    If \(T : \R^n \to \R^m\) is a linear transformation, and \(S : \R^p \to \R^n\) is a linear transformation, show that the composition \(T \circ S : \R^p \to \R^m\) of the two transforms, defined by \(T \circ S(x) \coloneqq T\big(S(x)\big)\), is also a linear transformation.
+  If \(T : \R^n \to \R^m\) is a linear transformation, and \(S : \R^p \to \R^n\) is a linear transformation, show that the composition \(T \circ S : \R^p \to \R^m\) of the two transforms, defined by \(T \circ S(x) \coloneqq T\big(S(x)\big)\), is also a linear transformation.
 \end{exercise}
 
 \begin{proof}
-    Let \(x, y \in \R^p\) and let \(c \in \R\).
-    Then we have
-    \begin{align*}
-        (T \circ S)(x + y) & = T\big(S(x + y)\big)                                                    \\
-                           & = T\big(S(x) + S(y)\big)            & \text{(by Definition \ref{6.1.6})} \\
-                           & = T\big(S(x)\big) + T\big(S(y)\big) & \text{(by Definition \ref{6.1.6})} \\
-                           & = (T \circ S)(x) + (T \circ S)(y)
-    \end{align*}
-    and
-    \begin{align*}
-        (T \circ S)(cx) & = T\big(S(cx)\big)                                       \\
-                        & = T\big(c S(x)\big) & \text{(by Definition \ref{6.1.6})} \\
-                        & = c T\big(S(x)\big) & \text{(by Definition \ref{6.1.6})} \\
-                        & = c (T \circ S)(x).
-    \end{align*}
-    Thus by Definition \ref{6.1.6} we know that \(T \circ S\) is a linear transformation from \(\R^p\) to \(\R^m\).
+  Let \(x, y \in \R^p\) and let \(c \in \R\).
+  Then we have
+  \begin{align*}
+    (T \circ S)(x + y) & = T\big(S(x + y)\big)                                          \\
+                       & = T\big(S(x) + S(y)\big)            & \text{(by \cref{6.1.6})} \\
+                       & = T\big(S(x)\big) + T\big(S(y)\big) & \text{(by \cref{6.1.6})} \\
+                       & = (T \circ S)(x) + (T \circ S)(y)
+  \end{align*}
+  and
+  \begin{align*}
+    (T \circ S)(cx) & = T\big(S(cx)\big)                             \\
+                    & = T\big(c S(x)\big) & \text{(by \cref{6.1.6})} \\
+                    & = c T\big(S(x)\big) & \text{(by \cref{6.1.6})} \\
+                    & = c (T \circ S)(x).
+  \end{align*}
+  Thus by \cref{6.1.6} we know that \(T \circ S\) is a linear transformation from \(\R^p\) to \(\R^m\).
 \end{proof}
 
 \begin{exercise}\label{ex 6.1.3}
-    Prove Lemma \ref{6.1.16}.
+  Prove \cref{6.1.16}.
 \end{exercise}
 
 \begin{proof}
-    See Lemma \ref{6.1.16}.
+  See \cref{6.1.16}.
 \end{proof}
 
 \begin{exercise}\label{ex 6.1.4}
-    Let \(T : \R^n \to \R^m\) be a linear transformation.
-    Show that there exists a number \(M > 0\) such that \(\norm*{T(x)} \leq M \norm*{x}\) for all \(x \in \R^n\).
-    Conclude in particular that every linear transformation from \(\R^n\) to \(\R^m\) is continuous.
+  Let \(T : \R^n \to \R^m\) be a linear transformation.
+  Show that there exists a number \(M > 0\) such that \(\norm*{T(x)} \leq M \norm*{x}\) for all \(x \in \R^n\).
+  Conclude in particular that every linear transformation from \(\R^n\) to \(\R^m\) is continuous.
 \end{exercise}
 
 \begin{proof}
-    Since \(T\) is a linear transformations from \(\R^n\) to \(\R^m\), by Lemma \ref{6.1.13} we know that there exists an \(m \times n\) matrix such that
-    \[
-        \forall x \in \R^n, \big(T(x)\big)^\top = Ax^\top.
-    \]
-    If we write
-    \[
-        A = (a_{ij})_{1 \leq i \leq m ; 1 \leq j \leq n},
-    \]
-    then
-    \[
-        M = \sum_{i = 1}^m \sum_{j = 1}^n \abs{a_{ij}}
-    \]
-    is well-defined.
+  Since \(T\) is a linear transformations from \(\R^n\) to \(\R^m\), by \cref{6.1.13} we know that there exists an \(m \times n\) matrix such that
+  \[
+    \forall x \in \R^n, \big(T(x)\big)^\top = Ax^\top.
+  \]
+  If we write
+  \[
+    A = (a_{ij})_{1 \leq i \leq m ; 1 \leq j \leq n},
+  \]
+  then
+  \[
+    M = \sum_{i = 1}^m \sum_{j = 1}^n \abs{a_{ij}}
+  \]
+  is well-defined.
 
-    Let \(x \in \R^n\).
-    Then we have
-    \begin{align*}
-        \norm*{T(x)} & = \norm*{\bigg(\sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m}}                 & \text{(by Definition \ref{6.1.11})} \\
-                     & \leq \abs{\bigg(\sum_{i = 1}^m \sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m}} & \text{(by Exercise \ref{ex 1.1.8})} \\
-                     & \leq \sum_{i = 1}^m \sum_{j = 1}^n \abs{a_{ij} x_j}                                                                     \\
-                     & = \sum_{i = 1}^m \sum_{j = 1}^n \abs{a_{ij}} \abs{x_j}                                                                  \\
-                     & = \sum_{j = 1}^n \sum_{i = 1}^m \abs{a_{ij}} \abs{x_j}                                                                  \\
-                     & = \sum_{j = 1}^n \bigg(\sum_{i = 1}^m \abs{a_{ij}}\bigg) \abs{x_j}                                                      \\
-                     & \leq \sum_{j = 1}^n M \abs{x_j}                                                                                         \\
-                     & = M \sum_{j = 1}^n \abs{x_j}                                                                                            \\
-                     & \leq M \sqrt{n} \norm*{x}.                                                        & \text{(by Exercise \ref{ex 1.1.8})}
-    \end{align*}
-    Since \(x\) is arbitrary, we have \(\norm*{T(x)} \leq M \sqrt{n} \norm*{x}\) for all \(x \in \R^n\).
+  Let \(x \in \R^n\).
+  Then we have
+  \begin{align*}
+    \norm*{T(x)} & = \norm*{\bigg(\sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m}}                 & \text{(by \cref{6.1.11})}   \\
+                 & \leq \abs{\bigg(\sum_{i = 1}^m \sum_{j = 1}^n a_{ij} x_j\bigg)_{1 \leq i \leq m}} & \text{(by \cref{ex 1.1.8})} \\
+                 & \leq \sum_{i = 1}^m \sum_{j = 1}^n \abs{a_{ij} x_j}                                                             \\
+                 & = \sum_{i = 1}^m \sum_{j = 1}^n \abs{a_{ij}} \abs{x_j}                                                          \\
+                 & = \sum_{j = 1}^n \sum_{i = 1}^m \abs{a_{ij}} \abs{x_j}                                                          \\
+                 & = \sum_{j = 1}^n \bigg(\sum_{i = 1}^m \abs{a_{ij}}\bigg) \abs{x_j}                                              \\
+                 & \leq \sum_{j = 1}^n M \abs{x_j}                                                                                 \\
+                 & = M \sum_{j = 1}^n \abs{x_j}                                                                                    \\
+                 & \leq M \sqrt{n} \norm*{x}.                                                        & \text{(by \cref{ex 1.1.8})}
+  \end{align*}
+  Since \(x\) is arbitrary, we have \(\norm*{T(x)} \leq M \sqrt{n} \norm*{x}\) for all \(x \in \R^n\).
 
-    Now we show that \(T\) is continuous on \(\R^n\) from \((\R^n, d_{l^1}|_{\R^n \times \R^n})\) to \((\R^m, d_{l^1}|_{\R^m \times \R^m})\).
-    From the proof above we know that there exists a \(M \in \R^+\) such that \(\norm*{T(x)} \leq M \norm*{x}\) for all \(x \in \R^n\).
-    Fix such \(M\).
-    Let \(x_0 \in \R^n\).
-    Since
-    \begin{align*}
-                 & \forall \varepsilon \in \R^+, \forall x \in \R^n, \norm*{x - x_0} < \frac{\varepsilon}{M}                                      \\
-        \implies & M \norm*{x - x_0} < \varepsilon                                                                                                \\
-        \implies & \norm*{T(x - x_0)} \leq M \norm*{x - x_0} < \varepsilon                                                                        \\
-        \implies & \norm*{T(x) - T(x_0)} \leq M \norm*{x - x_0} < \varepsilon,                               & \text{(by Definition \ref{6.1.6})}
-    \end{align*}
-    by setting \(\delta = \frac{\varepsilon}{M}\) we know that
-    \[
-        \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in \R^n, \norm*{x - x_0} < \delta \implies \norm*{T(x) - T(x_0)} < \varepsilon.
-    \]
-    Since \(x_0\) is arbitrary, by Definition \ref{2.1.1} this means \(T\) is continuous on \(\R^n\) from \((\R^n, d_{l^1}|_{\R^n \times \R^n})\) to \((\R^m, d_{l^1}|_{\R^m \times \R^m})\).
+  Now we show that \(T\) is continuous on \(\R^n\) from \((\R^n, d_{l^1}|_{\R^n \times \R^n})\) to \((\R^m, d_{l^1}|_{\R^m \times \R^m})\).
+  From the proof above we know that there exists a \(M \in \R^+\) such that \(\norm*{T(x)} \leq M \norm*{x}\) for all \(x \in \R^n\).
+  Fix such \(M\).
+  Let \(x_0 \in \R^n\).
+  Since
+  \begin{align*}
+             & \forall \varepsilon \in \R^+, \forall x \in \R^n, \norm*{x - x_0} < \frac{\varepsilon}{M}                            \\
+    \implies & M \norm*{x - x_0} < \varepsilon                                                                                      \\
+    \implies & \norm*{T(x - x_0)} \leq M \norm*{x - x_0} < \varepsilon                                                              \\
+    \implies & \norm*{T(x) - T(x_0)} \leq M \norm*{x - x_0} < \varepsilon,                               & \text{(by \cref{6.1.6})}
+  \end{align*}
+  by setting \(\delta = \frac{\varepsilon}{M}\) we know that
+  \[
+    \forall \varepsilon \in \R^+, \exists\ \delta \in \R^+ : \forall x \in \R^n, \norm*{x - x_0} < \delta \implies \norm*{T(x) - T(x_0)} < \varepsilon.
+  \]
+  Since \(x_0\) is arbitrary, by \cref{2.1.1} this means \(T\) is continuous on \(\R^n\) from \((\R^n, d_{l^1}|_{\R^n \times \R^n})\) to \((\R^m, d_{l^1}|_{\R^m \times \R^m})\).
 \end{proof}

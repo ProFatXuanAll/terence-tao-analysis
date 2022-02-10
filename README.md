@@ -84,21 +84,7 @@ Let \(x, y\) be real numbers. % enclose comma seperated variables
 \end{proof}
 ```
 
-- All **references** to theorem-like statements must be enclosed by `\ref{}`, and specify the **type** of theorem-like statement with **capital initials**.
-
-```latex
-Axiom \ref{2.1}                     % reference axiom
-Definition \ref{2.2.1}              % reference definition
-Corollary \ref{2.2.9}               % reference corollary
-Example \ref{5.5.4}                 % reference example
-Lemma \ref{2.2.2}                   % reference lemma
-Proposition \ref{2.2.4}             % reference proposition
-Remark \ref{2.2.15}                 % reference remark
-Theorem \ref{5.5.9}                 % reference theorem
-Exercise \ref{ex 2.2.1}             % reference exercise
-Additional Corollary \ref{ac 2.2.1} % reference additional corollary
-```
-
+- All **references** to theorem-like statements must be enclosed by `\cref{}`, and specify the **type** of theorem-like statement with **capital initials**.
 - All statements must be enclosed either by the environment `\begin{note}` and `\end{note}` or by other theroem-like statements.
 - If there are some statements which might help prove others and must be included, use the environment `\begin{additional corollary}` and `\end{additional corollary}`.
   - **Additional Corollaries** must also come with **proofs**.
