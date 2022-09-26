@@ -1,56 +1,56 @@
-\section{Cauchy sequences}\label{sec 5.1}
+\section{Cauchy sequences}\label{sec:5.1}
 
-\begin{definition}[Sequences]\label{5.1.1}
+\begin{defn}[Sequences]\label{5.1.1}
   Let \(m\) be an integer.
   A \emph{sequence \((a_n)_{n = m}^{\infty}\) of rational numbers} is any function from the set \(\{n \in \Z : n \geq m\}\) to \(\Q\), i.e., a mapping which assigns to each integer \(n\) greater than or equal to \(m\), a rational number \(a_n\).
   More informally, a sequence \((a_n)_{n = m}^{\infty}\) of rational numbers is a collection of rationals \(a_m, a_{m + 1}, a_{m + 2}, \dots\).
-\end{definition}
+\end{defn}
 
-\setcounter{theorem}{2}
-\begin{definition}[\(\varepsilon\)-steadiness]\label{5.1.3}
+\setcounter{thm}{2}
+\begin{defn}[\(\varepsilon\)-steadiness]\label{5.1.3}
   Let \(\varepsilon > 0\).
   A sequence \((a_n)_{n = 0}^{\infty}\) is said to be \emph{\(\varepsilon\)-steady} iff each pair \(a_j\), \(a_k\) of sequence elements is \(\varepsilon\)-close for every natural number \(j, k\).
   In other words, the sequence \(a_0, a_1, a_2, \dots\) is \(\varepsilon\)-steady iff \(d(a_j, a_k) \leq \varepsilon\) for all \(j, k\).
-\end{definition}
+\end{defn}
 
-\begin{remark}\label{5.1.4}
+\begin{rmk}\label{5.1.4}
   \cref{5.1.3} is not standard in the literature;
   we will not need it outside of this section;
   similarly for the concept of ``eventual \(\varepsilon\)-steadiness'' below.
   We have defined \(\varepsilon\)-steadiness for sequences whose index starts at \(0\), but clearly we can make a similar notion for sequences whose indices start from any other number:
   a sequence \(a_N, a_{N + 1}, \dots\) is \(\varepsilon\)-steady if one has \(d(a_j, a_k) \leq \varepsilon\) for all \(j, k \geq N\).
-\end{remark}
+\end{rmk}
 
 \begin{note}
   The notion of \(\varepsilon\)-steadiness of a sequence is simple, but does not really capture the \emph{limiting} behavior of a sequence, because it is too sensitive to the initial members of the sequence.
   So we need a more robust notion of steadiness that does not care about the initial members of a sequence.
 \end{note}
 
-\setcounter{theorem}{5}
-\begin{definition}[Eventual \(\varepsilon\)-steadiness]\label{5.1.6}
+\setcounter{thm}{5}
+\begin{defn}[Eventual \(\varepsilon\)-steadiness]\label{5.1.6}
   Let \(\varepsilon > 0\).
   A sequence \((a_n)_{n = 0}^{\infty}\) is said to be \emph{eventually \(\varepsilon\)-steady} iff the sequence \(a_N, a_{N + 1}, a_{N + 2}, \dots\) is \(\varepsilon\)-steady for some natural number \(N \geq 0\).
   In other words, the sequence \(a_0, a_1, a_2, \dots\) is eventually \(\varepsilon\)-steady iff there exists an \(N \geq 0\) such that \(\abs{a_j - a_k} \leq \varepsilon\) for all \(j, k \geq N\).
-\end{definition}
+\end{defn}
 
-\setcounter{theorem}{7}
-\begin{definition}[Cauchy sequences]\label{5.1.8}
+\setcounter{thm}{7}
+\begin{defn}[Cauchy sequences]\label{5.1.8}
   A sequence \((a_n)_{n = 0}^{\infty}\) of rational numbers is said to be a \emph{Cauchy sequence} iff for every rational \(\varepsilon > 0\), the sequence \((a_n)_{n = 0}^{\infty}\) is eventually \(\varepsilon\)-steady.
   In other words, the sequence \(a_0, a_1, a_2, \dots\) is a Cauchy sequence iff for every \(\varepsilon > 0\), there exists an \(N \geq 0\) such that \(\abs{a_j - a_k} \leq \varepsilon\) for all \(j, k \geq N\).
-\end{definition}
+\end{defn}
 
-\begin{remark}\label{5.1.9}
+\begin{rmk}\label{5.1.9}
   At present, the parameter \(\varepsilon\) is restricted to be a positive rational;
   we cannot take \(\varepsilon\) to be an arbitrary positive real number, because the real numbers have not yet been constructed.
   However, once we do construct the real numbers, we shall see that \cref{5.1.8} will not change if we require \(\varepsilon\) to be real instead of rational.
   In other words, we will eventually prove that a sequence is eventually \(\varepsilon\)-steady for every rational \(\varepsilon > 0\) if and only if it is eventually \(\varepsilon\)-steady for every real \(\varepsilon > 0\).
   This rather subtle distinction between a rational \(\varepsilon\) and a real \(\varepsilon\) turns out not to be very important in the long run, and the reader is advised not to pay too much attention as to what type of number \(\varepsilon\) should be.
-\end{remark}
+\end{rmk}
 
-\setcounter{theorem}{10}
-\begin{proposition}\label{5.1.11}
+\setcounter{thm}{10}
+\begin{prop}\label{5.1.11}
   The sequence \(a_1, a_2, a_3, \dots\) defined by \(a_n \coloneqq 1 / n\) (i.e., the sequence \(1, 1 / 2, 1 / 3, \dots\)) is a Cauchy sequence.
-\end{proposition}
+\end{prop}
 
 \begin{proof}
   We have to show that for every \(\varepsilon > 0\), the sequence \(a_1, a_2, \dots\) is eventually \(\varepsilon\)-steady.
@@ -74,7 +74,7 @@
       0 \leq \frac{1}{j} \leq \frac{1}{N}   \\
       \frac{-1}{N} \leq \frac{-1}{k} \leq 0 \\
     \end{cases}
-             & \text{(by \cref{ex 4.2.6})}                                                             \\
+             & \text{(by \cref{ex:4.2.6})}                                                             \\
     \implies & \frac{-1}{N} \leq \frac{1}{j} - \frac{1}{k} \leq \frac{1}{N} & \text{(by \cref{4.2.9})} \\
     \implies & \abs{\frac{1}{j} - \frac{1}{k}} \leq \frac{1}{N}.            & \text{(by \cref{4.3.3})}
   \end{align*}
@@ -90,17 +90,17 @@
   Later we will develop some limit laws which allow us to determine when a sequence is Cauchy more easily.
 \end{note}
 
-\begin{definition}[Bounded sequences]\label{5.1.12}
+\begin{defn}[Bounded sequences]\label{5.1.12}
   Let \(M \geq 0\) be rational.
   A finite sequence \(a_1, a_2, \dots, a_n\) is \emph{bounded by \(M\)} iff \(\abs{a_i} \leq M\) for all \(1 \leq i \leq n\).
   An infinite sequence \((a_n)_{n = 1}^{\infty}\) is \emph{bounded by \(M\)} iff \(\abs{a_i} \leq M\) for all \(i \geq 1\).
   A sequence is said to be \emph{bounded} iff it is bounded by \(M\) for some rational \(M \geq 0\).
-\end{definition}
+\end{defn}
 
-\setcounter{theorem}{13}
-\begin{lemma}[Finite sequences are bounded]\label{5.1.14}
+\setcounter{thm}{13}
+\begin{lem}[Finite sequences are bounded]\label{5.1.14}
   Every finite sequence \(a_1, a_2, \dots, a_n\) is bounded.
-\end{lemma}
+\end{lem}
 
 \begin{proof}
   We prove this by induction on \(n\).
@@ -119,9 +119,9 @@
   infinity is not a natural number.
 \end{note}
 
-\begin{lemma}[Cauchy sequences are bounded]\label{5.1.15}
+\begin{lem}[Cauchy sequences are bounded]\label{5.1.15}
   Every Cauchy sequence \((a_n)_{n = 1}^{\infty}\) is bounded.
-\end{lemma}
+\end{lem}
 
 \begin{proof}
   Let \(n \in \N\) and \((a_n)_{n = 1}^{\infty}\) be a rational Cauchy sequence.
@@ -160,9 +160,9 @@
 
 \exercisesection
 
-\begin{exercise}\label{ex 5.1.1}
-  Prove \cref{5.1.15}.
-\end{exercise}
+\begin{ex}\label{ex:5.1.1}
+Prove \cref{5.1.15}.
+\end{ex}
 
 \begin{proof}
   See \cref{5.1.15}.

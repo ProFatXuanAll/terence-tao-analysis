@@ -57,25 +57,25 @@ Let \(x, y\) be real numbers. % enclose comma seperated variables
 
 ```latex
 % for axiom
-\begin{axiom}[axiom name]\label{chapter_no.axiom_no}
+\begin{ax}[axiom name]\label{chapter_no.axiom_no}
   ... % axiom goes here
-\end{axiom}
+\end{ax}
 
 % for definition
 % similarly for corollary, example, lemma, proposition, remark, theorem
-\begin{definition}[definition name]\label{chapter_no.section_no.statement_no}
+\begin{defn}[definition name]\label{chapter_no.section_no.statement_no}
   ... % definition goes here
-\end{definition}
+\end{defn}
 
 % for exercise
-\begin{exercise}[exercise name]\label{ex chapter_no.section_no.exercise_no}
+\begin{ex}[exercise name]\label{ex:chapter_no.section_no.exercise_no}
   ... % exercise goes here
-\end{exercise}
+\end{ex}
 
 % for additional corollary
-\begin{additional corollary}\label{ac chapter_no.section_no.corollary_no}
+\begin{ac}\label{ac:chapter_no.section_no.corollary_no}
   ... % additional corollary goes here
-\end{additional corollary}
+\end{ac}
 
 % for proof
 % similarly for meta-proof, note
@@ -86,7 +86,7 @@ Let \(x, y\) be real numbers. % enclose comma seperated variables
 
 - All **references** to theorem-like statements must be enclosed by `\cref{}`, and specify the **type** of theorem-like statement with **capital initials**.
 - All statements must be enclosed either by the environment `\begin{note}` and `\end{note}` or by other theroem-like statements.
-- If there are some statements which might help prove others and must be included, use the environment `\begin{additional corollary}` and `\end{additional corollary}`.
+- If there are some statements which might help prove others and must be included, use the environment `\begin{ac}` and `\end{ac}`.
   - **Additional Corollaries** must also come with **proofs**.
 
 #### Quotes and Emphasis

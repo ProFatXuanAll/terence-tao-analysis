@@ -1,19 +1,19 @@
-\section{Real exponentiation, part I}\label{sec 5.6}
+\section{Real exponentiation, part I}\label{sec:5.6}
 
-\begin{definition}[Exponentiating a real by a natural number]\label{5.6.1}
+\begin{defn}[Exponentiating a real by a natural number]\label{5.6.1}
   Let \(x\) be a real number.
   To raise \(x\) to the power \(0\), we define \(x^0 \coloneqq 1\).
   Now suppose recursively that \(x^n\) has been defined for some natural number \(n\), then we define \(x^{n + 1} \coloneqq x^n \times x\).
-\end{definition}
+\end{defn}
 
-\begin{definition}[Exponentiating a real by an integer]\label{5.6.2}
+\begin{defn}[Exponentiating a real by an integer]\label{5.6.2}
   Let \(x\) be a non-zero real number.
   Then for any negative integer \(-n\), we define \(x^{-n} \coloneqq 1 / x^n\).
-\end{definition}
+\end{defn}
 
-\begin{proposition}\label{5.6.3}
+\begin{prop}\label{5.6.3}
   All the properties in \cref{4.3.10,4.3.12} remain valid if \(x\) and \(y\) are assumed to be real numbers instead of rational numbers.
-\end{proposition}
+\end{prop}
 
 \begin{meta-proof}
 If one inspects the proof of \cref{4.3.10,4.3.12} we see that they rely on the laws of algebra and the laws of order for the rationals (\cref{4.2.4,4.2.9}).
@@ -26,14 +26,14 @@ Thus we can modify the proof of \cref{4.3.10,4.3.12} to hold in the case when \(
   (an argument appealing to the nature of proofs, rather than the nature of real and rational numbers).
 \end{note}
 
-\begin{definition}\label{5.6.4}
+\begin{defn}\label{5.6.4}
   Let \(x \geq 0\) be a non-negative real, and let \(n \geq 1\) be a positive integer.
   We define \(x^{1 / n}\), also known as the \emph{\(n^{\text{th}}\) root of \(x\)}, by the formula
   \[
     x^{1 / n} \coloneqq \sup\{y \in \R : y \geq 0 \text{ and } y^n \leq x\}.
   \]
   We often write \(\sqrt{x}\) for \(x^{1 / 2}\).
-\end{definition}
+\end{defn}
 
 \begin{note}
   we do not define the \(n^{\text{th}}\) roots of a negative number.
@@ -41,11 +41,11 @@ Thus we can modify the proof of \cref{4.3.10,4.3.12} to hold in the case when \(
   (one can define these \(n^{\text{th}}\) roots once one defines the complex numbers, but we shall refrain from doing so).
 \end{note}
 
-\begin{lemma}[Existence of \(n^{\text{th}}\) roots]\label{5.6.5}
+\begin{lem}[Existence of \(n^{\text{th}}\) roots]\label{5.6.5}
   Let \(x \geq 0\) be a non-negative real, and let \(n \geq 1\) be a positive integer.
   Then the set \(E \coloneqq \{y \in R : y \geq 0 \text{ and } y^n \leq x\}\) is non-empty and is also bounded above.
   In particular, \(x^{1 / n}\) is a real number.
-\end{lemma}
+\end{lem}
 
 \begin{proof}
   The set \(E\) contains \(0\), so it is certainly not empty.
@@ -64,7 +64,7 @@ Thus we can modify the proof of \cref{4.3.10,4.3.12} to hold in the case when \(
   Thus in both cases \(E\) has an upper bound, and so \(x^{1 / n}\) is finite.
 \end{proof}
 
-\begin{lemma}\label{5.6.6}
+\begin{lem}\label{5.6.6}
   Let \(x, y \geq 0\) be non-negative reals, and let \(n, m \geq 1\) be positive integers.
   \begin{enumerate}
     \item If \(y = x^{1 / n}\), then \(y^n = x\).
@@ -78,7 +78,7 @@ Thus we can modify the proof of \cref{4.3.10,4.3.12} to hold in the case when \(
     \item We have \((xy)^{1 / n} = x^{1 / n} y^{1 / n}\).
     \item We have \((x^{1 / n})^{1 / m} = x^{1 / nm}\).
   \end{enumerate}
-\end{lemma}
+\end{lem}
 
 \begin{proof}{(a)}
   Let \(E = \{z \in \R : (z \geq 0) \land (z^n \leq x)\}\) and let \(y = x^{1 / n} = \sup(E)\).
@@ -93,14 +93,14 @@ Thus we can modify the proof of \cref{4.3.10,4.3.12} to hold in the case when \(
           Then we have
           \begin{align*}
             \text{LIM}_{m \to \infty} \bigg(y + \frac{1}{m}\bigg) & = \text{LIM}_{m \to \infty} y + \text{LIM}_{m \to \infty} \frac{1}{m} & \text{(by \cref{5.3.4})}    \\
-                                                                  & = \text{LIM}_{m \to \infty} y + 0                                     & \text{(by \cref{ex 5.3.5})} \\
+                                                                  & = \text{LIM}_{m \to \infty} y + 0                                     & \text{(by \cref{ex:5.3.5})} \\
                                                                   & = y.                                                                  & \text{(by \cref{6.1.15})}
           \end{align*}
           Note that we use \cref{6.1.15} without circularity.
           But then we have
           \begin{align*}
                      & \forall m \in \Z^+, y^n < x \leq \bigg(y + \frac{1}{m}\bigg)^n                                                 \\
-            \implies & y^n < x \leq \text{LIM}_{m \to \infty} \bigg(y + \frac{1}{m}\bigg)^n             & \text{(by \cref{ex 5.4.8})} \\
+            \implies & y^n < x \leq \text{LIM}_{m \to \infty} \bigg(y + \frac{1}{m}\bigg)^n             & \text{(by \cref{ex:5.4.8})} \\
             \implies & y^n < x \leq \Bigg(\text{LIM}_{m \to \infty} \bigg(y + \frac{1}{m}\bigg)\Bigg)^n & \text{(by \cref{5.3.9})}    \\
             \implies & y^n < x \leq y^n                                                                                               \\
             \implies & y^n < y^n,
@@ -116,14 +116,14 @@ Thus we can modify the proof of \cref{4.3.10,4.3.12} to hold in the case when \(
           Then we have
           \begin{align*}
             \text{LIM}_{m \to \infty} \bigg(y - \frac{1}{m}\bigg) & = \text{LIM}_{m \to \infty} y - \text{LIM}_{m \to \infty} \frac{1}{m} & \text{(by \cref{5.3.4})}    \\
-                                                                  & = \text{LIM}_{m \to \infty} y - 0                                     & \text{(by \cref{ex 5.3.5})} \\
+                                                                  & = \text{LIM}_{m \to \infty} y - 0                                     & \text{(by \cref{ex:5.3.5})} \\
                                                                   & = y.                                                                  & \text{(by \cref{6.1.15})}
           \end{align*}
           Note that we use \cref{6.1.15} without circularity.
           But then we have
           \begin{align*}
                      & \forall m \in \Z^+, \bigg(y - \frac{1}{m}\bigg)^n \leq x < y^n                                                 \\
-            \implies & \text{LIM}_{m \to \infty} \bigg(y - \frac{1}{m}\bigg)^n \leq x < y^n             & \text{(by \cref{ex 5.4.8})} \\
+            \implies & \text{LIM}_{m \to \infty} \bigg(y - \frac{1}{m}\bigg)^n \leq x < y^n             & \text{(by \cref{ex:5.4.8})} \\
             \implies & \Bigg(\text{LIM}_{m \to \infty} \bigg(y - \frac{1}{m}\bigg)\Bigg)^n \leq x < y^n & \text{(by \cref{5.3.9})}    \\
             \implies & y^n \leq x < y^n                                                                                               \\
             \implies & y^n < y^n,
@@ -312,13 +312,13 @@ Thus we can modify the proof of \cref{4.3.10,4.3.12} to hold in the case when \(
   for instance, \((-3)^2 = 3^2\), but we cannot conclude from this that \(-3 = 3\).
 \end{note}
 
-\begin{definition}\label{5.6.7}
+\begin{defn}\label{5.6.7}
   Let \(x > 0\) be a positive real number, and let \(q\) be a rational number.
   To define \(x^q\), we write \(q = a / b\) for some integer \(a\) and positive integer \(b\), and define
   \[
     x^q \coloneqq (x^{1 / b})^a.
   \]
-\end{definition}
+\end{defn}
 
 \begin{note}
   Every rational \(q\), whether positive, negative, or zero, can be written in the form \(a / b\) where \(a\) is an integer and \(b\) is positive.
@@ -326,10 +326,10 @@ Thus we can modify the proof of \cref{4.3.10,4.3.12} to hold in the case when \(
   So to ensure that \cref{5.6.7} is well-defined, we need to check that different expressions \(a / b\) give the same formula for \(x^q\).
 \end{note}
 
-\begin{lemma}\label{5.6.8}
+\begin{lem}\label{5.6.8}
   Let \(a, a'\) be integers and \(b, b'\) be positive integers such that \(a / b = a' / b'\), and let \(x\) be a positive real number.
   Then we have \((x^{1 / b'})^{a'} = (x^{1 / b})^a\).
-\end{lemma}
+\end{lem}
 
 \begin{proof}
   There are three cases: \(a = 0, a > 0, a < 0\).
@@ -357,7 +357,7 @@ Thus we can modify the proof of \cref{4.3.10,4.3.12} to hold in the case when \(
   \cref{5.6.7} is consistent with our old definition for \(x^{1 / n}\) (since \(x^{1 / n} = (x^{1 / n})^1\)) and is also consistent with our old definition for \(x^n\) (since \(x^n = (x^{1 / 1})^n\)).
 \end{note}
 
-\begin{lemma}\label{5.6.9}
+\begin{lem}\label{5.6.9}
   Let \(x, y > 0\) be positive reals, and let \(q, r\) be rationals.
   \begin{enumerate}
     \item \(x^q\) is a positive real.
@@ -368,7 +368,7 @@ Thus we can modify the proof of \cref{4.3.10,4.3.12} to hold in the case when \(
           If \(x < 1\), then \(x^q > x^r\) if and only if \(q < r\).
     \item \((xy)^q = x^q y^q\).
   \end{enumerate}
-\end{lemma}
+\end{lem}
 
 \begin{proof}{(a)}
   Let \(q = a / b\) where \(a \in \Z\) and \(b \in \Z^+\).
@@ -515,25 +515,25 @@ Thus we can modify the proof of \cref{4.3.10,4.3.12} to hold in the case when \(
 
 \exercisesection
 
-\begin{exercise}\label{ex 5.6.1}
+\begin{ex}\label{ex:5.6.1}
   Prove \cref{5.6.6}.
-\end{exercise}
+\end{ex}
 
 \begin{proof}
   See \cref{5.6.6}.
 \end{proof}
 
-\begin{exercise}\label{ex 5.6.2}
+\begin{ex}\label{ex:5.6.2}
   Prove \cref{5.6.9}.
-\end{exercise}
+\end{ex}
 
 \begin{proof}
   See \cref{5.6.9}.
 \end{proof}
 
-\begin{exercise}\label{ex 5.6.3}
+\begin{ex}\label{ex:5.6.3}
   If \(x\) is a real number, show that \(\abs{x} = (x^2)^{1 / 2}\).
-\end{exercise}
+\end{ex}
 
 \begin{proof}
   By \cref{5.4.7} exactly one of the following three statements is true:

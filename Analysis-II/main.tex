@@ -11,12 +11,45 @@
 \usepackage[utf8]{inputenc}
 % Set paging layout.
 \usepackage[margin=1.2in]{geometry}
-% Including `amsfonts'.  Must be loaded before `mathtools'.
+% Including `amsfonts'.
+% Must be loaded before `mathtools'.
 \usepackage{amssymb}
 % Including `amsmath' and fixing bugs for `amsmath'.
 \usepackage{mathtools}
 % Must be loaded after `amsmath' and `mathtools'.
 \usepackage{amsthm}
+% Define page header and footer layout.
+\usepackage{fancyhdr}
+% LaTex 3 new command tools.
+\usepackage{xparse}
+
+% Use `fancyhdr' page style.  All page style settings must be called only after
+% this command.  See `fancyhdr' for details.
+\pagestyle{fancy}
+
+% Make header height enough to fit chapter / section titles.
+\setlength{\headheight}{15pt}
+% Change chapter and section marks' formatting.  Note that I use `\markright'
+% to make sure header use chapter information when section information is not
+% available (this is need for appendix).
+\renewcommand{\chaptermark}[1]{\markright{\textsf{\small Chap. \thechapter \quad #1}}}
+\renewcommand{\sectionmark}[1]{\markright{\textsf{\small Sec. \thesection \quad #1}}}
+% Cleanup page header settings.
+\fancyhead{}
+% Put page number on the left of page header.
+\fancyhead[L]{\textbf{\textsf{\small \thepage}}}
+% Put chapter / section information on the right of page header.
+\fancyhead[R]{\rightmark}
+% Cleanup page footer settings.
+\fancyfoot{}
+
+% Reset `plain' page style which is used for the first page of each chapter.
+% I set this to make page number style consistent.
+\fancypagestyle{plain}{%
+  \fancyhf{}% clear all fields
+  \fancyfoot[C]{\textbf{\textsf{\small \thepage}}}%
+  \renewcommand{\headrulewidth}{0pt}%
+}
 % Automatically adjust character spacing at margins.
 \usepackage{microtype}
 % Provide further utilities and fix bugs for `enumerate', `itemize' and
@@ -33,7 +66,7 @@
 % you need bibtex.
 \usepackage{hyperref}
 
-\hypersetup{         % This macro come with `hyperref'.
+\hypersetup{       % This macro come with `hyperref'.
 	colorlinks=true, % Color hyperlinks.
 	linkcolor=blue,  % Color local hyperlinks with blue.
 	urlcolor=cyan,   % Color url links with cyan.
@@ -43,50 +76,57 @@
 % type name.  See `cleveref' for details.
 \usepackage[capitalize]{cleveref}
 
+% Allow page break in the middle of multi-line equations.
+\allowdisplaybreaks
+
 %------------------------------------------------------------------------------
 % Define environments.
 %------------------------------------------------------------------------------
 
 % Text inside the body of theorem-like environments are set to Roman font.
-% theorem-like environments share their counters, counters follow section and
-% reset in every sections (except for axioms, axioms counters are reset in each
-% chapter).  Exercises has their owned counter.  Notes do not use counter.
+% Theorem-like environments share their counters, counters follow section and reset in every sections
+% (except for axioms, axioms counters are reset in each chapter).
+% Exercises has their owned counter.
+% Notes do not use counter.
 % See `amsthm' for details.
 \theoremstyle{definition}
-\newtheorem{axiom}{Axiom}[chapter]
-\newtheorem{additional corollary}{Additional Corollary}[section]
-\newtheorem{exercise}{Exercise}[section]
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{remark}[theorem]{Remark}
+\newtheorem{ax}{Ax.}[chapter]
+\newtheorem{ac}{A.Cor.}[section]
+\newtheorem{ex}{Ex.}[section]
+\newtheorem{thm}{Thm.}[section]
+\newtheorem{cor}[thm]{Cor.}
+\newtheorem{defn}[thm]{Def.}
+\newtheorem{eg}[thm]{E.g.}
+\newtheorem{lem}[thm]{Lem.}
+\newtheorem{prop}[thm]{Prop.}
+\newtheorem{rmk}[thm]{Rmk.}
 \newtheorem*{note}{Note}
 
 \theoremstyle{remark}
 \newtheorem*{meta-proof}{Meta-proof}
 
 % Define plural form for theorem-like environments. See `cleveref' for details.
-\crefname{axiom}{Axiom}{Axioms}
-\crefname{additional corollary}{Additional Corollary}{Additional Corollaries}
-\crefname{corollary}{Corollary}{Corollaries}
-\crefname{definition}{Definition}{Definitions}
-\crefname{example}{Example}{Examples}
-\crefname{exercise}{Exercise}{Exercises}
-\crefname{lemma}{Lemma}{Lemmas} % We don not use Lemmata.
+\crefname{ax}{Ax.}{Ax.}
+\crefname{ac}{A.Cor.}{A.Cor.}
+\crefname{chapter}{Ch.}{Ch.}
+\crefname{cor}{Cor.}{Cor.}
+\crefname{defn}{Def.}{Def.}
+\crefname{eg}{E.g.}{E.g.}
+\crefname{ex}{Ex.}{Ex.}
+\crefname{lem}{Lem.}{Lem.}
 \crefname{note}{Note}{Notes}
-\crefname{proposition}{Proposition}{Propositions}
-\crefname{remark}{Remark}{Remarks}
-\crefname{theorem}{Theorem}{Theorems}
+\crefname{prop}{Prop.}{Prop.}
+\crefname{rmk}{Rmk.}{Rmk.}
+\crefname{section}{Sec.}{Sec.}
+\crefname{thm}{Thm.}{Thm.}
+
 
 % In `enumerate' enviroments, items' label are alphabets and surrounded by
 % parentheses.  See `enumitem' for details.
 \renewcommand{\labelenumi}{\textnormal{(}\alph{enumi}\textnormal{)}}
 
 % Formatting exercises section.
-\newcommand{\exercisesection}{
+\NewDocumentCommand{\exercisesection}{}{
   \begin{center}
     --- Exercises ---
   \end{center}
@@ -98,46 +138,49 @@
 
 % Absolute value.
 \DeclarePairedDelimiter{\absTmp}{\lvert}{\rvert}
-\newcommand{\abs}[1]{\absTmp*{#1}}
+\NewDocumentCommand{\abs}{m}{\absTmp*{#1}}
 % Ceiling.
 \DeclarePairedDelimiter{\ceilTmp}{\lceil}{\rceil}
-\newcommand{\ceil}[1]{\ceilTmp*{#1}}
+\NewDocumentCommand{\ceil}{m}{\ceilTmp*{#1}}
 % Floor.
 \DeclarePairedDelimiter{\floorTmp}{\lfloor}{\rfloor}
-\newcommand{\floor}[1]{\floorTmp*{#1}}
+\NewDocumentCommand{\floor}{m}{\floorTmp*{#1}}
 % Evaluate.
 \DeclarePairedDelimiter{\evalTmp}{.}{\rvert}
-\newcommand{\eval}[1]{\evalTmp*{#1}}
+\NewDocumentCommand{\eval}{m}{\evalTmp*{#1}}
 % Parenthese.
 \DeclarePairedDelimiter{\paTmp}{\lparen}{\rparen}
-\newcommand{\pa}[1]{\paTmp*{#1}}
+\NewDocumentCommand{\pa}{m}{\paTmp*{#1}}
 % Bracket.
 \DeclarePairedDelimiter{\brTmp}{\lbrack}{\rbrack}
-\newcommand{\br}[1]{\brTmp*{#1}}
+\NewDocumentCommand{\br}{m}{\brTmp*{#1}}
 % Brace.
 \DeclarePairedDelimiter{\BTmp}{\lbrace}{\rbrace}
-\newcommand{\B}[1]{\BTmp*{#1}}
+\NewDocumentCommand{\B}{m}{\BTmp*{#1}}
 % Set.
-\newcommand{\set}[1]{\B{#1}}
+\NewDocumentCommand{\set}{m}{\B{#1}}
 % Norm.
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}
 % Inner product.
 \DeclarePairedDelimiter\inner{\langle}{\rangle}
 
-% Define common symbols.  See `amsmath' section 9.2 for details.
+% Define common symbols.
+% See `amsmath' section 9.2 for details.
 
 % Fields.
-\newcommand{\field}[1]{\mathbf{#1}}
-% Complex number field.
-\newcommand{\C}{\field{C}}
-% Natural number field.
-\newcommand{\N}{\field{N}}
-% Rational number field.
-\newcommand{\Q}{\field{Q}}
-% Real number field.
-\newcommand{\R}{\field{R}}
-% Integer number field.
-\newcommand{\Z}{\field{Z}}
+\NewDocumentCommand{\field}{m}{\mathbf{#1}}
+% General field.
+\NewDocumentCommand{\F}{}{\field{F}}
+% Complex number.
+\NewDocumentCommand{\C}{}{\mathbb{C}}
+% Natural number.
+\NewDocumentCommand{\N}{}{\mathbb{N}}
+% Rational number.
+\NewDocumentCommand{\Q}{}{\mathbb{Q}}
+% Real number.
+\NewDocumentCommand{\R}{}{\mathbb{R}}
+% Integer number.
+\NewDocumentCommand{\Z}{}{\mathbb{Z}}
 
 %==============================================================================
 % Document.
@@ -157,7 +200,7 @@
 \maketitle
 
 % Table of contents.
-\tableofcontents{}
+\tableofcontents
 
 %------------------------------------------------------------------------------
 % Main matters.
@@ -165,7 +208,8 @@
 
 \mainmatter
 
-% All chapters are in separated files.  We include them here.
+% All chapters are in separated files.
+% We include them here.
 \input{1-metric-spaces.tex}
 \input{2-continuous-functions-on-metric-spaces.tex}
 \input{3-uniform-convergence.tex}

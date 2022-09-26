@@ -1,11 +1,11 @@
-\section{Upper and lower Riemann integrals}\label{sec 11.3}
+\section{Upper and lower Riemann integrals}\label{sec:11.3}
 
-\begin{definition}[Majorization of functions]\label{11.3.1}
+\begin{defn}[Majorization of functions]\label{11.3.1}
   Let \(f : I \to \R\) and \(g : I \to \R\).
   We say that \(g\) \emph{majorizes} \(f\) on \(I\) if we have \(g(x) \geq f(x)\) for all \(x \in I\), and that \(g\) \emph{minorizes} \(f\) on \(I\) if \(g(x) \leq f(x)\) for all \(x \in I\).
-\end{definition}
+\end{defn}
 
-\begin{definition}[Upper and lower Riemann integrals]\label{11.3.2}
+\begin{defn}[Upper and lower Riemann integrals]\label{11.3.2}
   Let \(f : I \to \R\) be a bounded function defined on a bounded interval \(I\).
   We define the \emph{upper Riemann integral} \(\overline{\int}_I f\) by the formula
   \[
@@ -15,16 +15,16 @@
   \[
     \underline{\int}_I f \coloneqq \sup\bigg\{p.c. \int_I g : g \text{ is a piecewise constant function on \(I\) which minorizes } f\bigg\}.
   \]
-\end{definition}
+\end{defn}
 
-\begin{lemma}\label{11.3.3}
+\begin{lem}\label{11.3.3}
   Let \(f : I \to \R\) be a function on a bounded interval \(I\) which is bounded by some real number \(M\), i.e., \(-M \leq f(x) \leq M\) for all \(x \in I\).
   Then we have
   \[
     -M \abs{I} \leq \underline{\int}_I f \leq \overline{\int}_I f \leq M \abs{I}.
   \]
   in particular, both the lower and upper Riemann integrals are real numbers (i.e., they are not infinite).
-\end{lemma}
+\end{lem}
 
 \begin{proof}
   The function \(g : I \to \R\) defined by \(g(x) = M\) is constant, hence piecewise constant, and majorizes \(f\);
@@ -37,32 +37,32 @@
   Taking infima in \(g\), we thus obtain \(\underline{\int}_I f \leq \overline{\int}_I f\), as desired.
 \end{proof}
 
-\begin{definition}[Riemann integral]\label{11.3.4}
+\begin{defn}[Riemann integral]\label{11.3.4}
   Let \(f : I \to \R\) be a bounded function on a bounded interval \(I\).
   If \(\underline{\int}_I f = \overline{\int}_I f\), then we say that \(f\) is \emph{Riemann integrable on \(I\)} and define
   \[
     \int_I f \coloneqq \underline{\int}_I f = \overline{\int}_I f.
   \]
   If the upper and lower Riemann integrals are unequal, we say that \(f\) is not Riemann integrable.
-\end{definition}
+\end{defn}
 
-\begin{remark}\label{11.3.5}
+\begin{rmk}\label{11.3.5}
   Compare this definition to the relationship between the \(\limsup\), \(liminf\), and limit of a sequence \(a_n\) that was established in \cref{6.4.12}(f);
   the \(\limsup\) is always greater than or equal to the \(\liminf\), but they are only equal when the sequence converges, and in this case they are both equal to the limit of the sequence.
   The definition given above may differ from the definition you may have encountered in your calculus courses, based on Riemann sums.
   However, the two definitions turn out to be equivalent.
-\end{remark}
+\end{rmk}
 
-\begin{remark}\label{11.3.6}
+\begin{rmk}\label{11.3.6}
   Note that we do not consider unbounded functions to be Riemann integrable;
   an integral involving such functions is known as an \emph{improper integral}.
   It is possible to still evaluate such integrals using more sophisticated integration methods (such as the Lebesgue integral).
-\end{remark}
+\end{rmk}
 
-\begin{lemma}\label{11.3.7}
+\begin{lem}\label{11.3.7}
   Let \(f : I \to \R\) be a piecewise constant function on a bounded interval \(I\).
   Then \(f\) is Riemann integrable, and \(\int_I f = p.c. \int_I f\).
-\end{lemma}
+\end{lem}
 
 \begin{proof}
   Since \(f(x) \leq f(x)\) for every \(x \in I\), by \cref{11.3.2} we have
@@ -83,15 +83,15 @@
   \]
 \end{proof}
 
-\begin{remark}\label{11.3.8}
+\begin{rmk}\label{11.3.8}
   Because of \cref{11.3.7}, we will not refer to the piecewise constant integral \(p.c. \int_I\) again, and just use the Riemann integral \(\int_I\) throughout
   (until this integral is itself superceded by the Lebesgue integral).
   We observe one special case of \cref{11.3.7}:
   if \(I\) is a point or the empty set, then \(\int_I f = 0\) for all functions \(f : I \to \R\).
   (Note that all such functions are automatically constant.)
-\end{remark}
+\end{rmk}
 
-\begin{definition}[Riemann sums]\label{11.3.9}
+\begin{defn}[Riemann sums]\label{11.3.9}
   Let \(f : I \to \R\) be a bounded function on a bounded interval \(I\), and let \(\mathbf{P}\) be a partition of \(I\).
   We define the \emph{upper Riemann sum} \(U(f, \mathbf{P})\) and the \emph{lower Riemann sum} \(L(f, \mathbf{P})\) by
   \[
@@ -101,13 +101,13 @@
   \[
     L(f, \mathbf{P}) \coloneqq \sum_{J \in \mathbf{P} : J \neq \emptyset} \big(\inf_{x \in J} f(x)\big) \abs{J}.
   \]
-\end{definition}
+\end{defn}
 
-\begin{remark}\label{11.3.10}
+\begin{rmk}\label{11.3.10}
   The restriction \(J \neq \emptyset\) is required because the quantities \(\inf_{x \in J} f(x)\) and \(\sup_{x \in J} f(x)\) are infinite (or negative infinite) if \(J\) is empty.
-\end{remark}
+\end{rmk}
 
-\begin{lemma}\label{11.3.11}
+\begin{lem}\label{11.3.11}
   Let \(f : I \to \R\) be a bounded function on a bounded interval \(I\), and let \(g\) be a function which majorizes \(f\) and which is piecewise constant with respect to some partition \(\mathbf{P}\) of \(I\).
   Then
   \[
@@ -117,7 +117,7 @@
   \[
     p.c. \int_I h \leq L(f, \mathbf{P}).
   \]
-\end{lemma}
+\end{lem}
 
 \begin{proof}
   Since \(g\) majorizes \(f\) and \(h\) minorizes \(f\), by \cref{11.3.1} we have \(h(x) \leq f(x) \leq g(x)\) for every \(x \in I\).
@@ -146,7 +146,7 @@
   \end{align*}
 \end{proof}
 
-\begin{proposition}\label{11.3.12}
+\begin{prop}\label{11.3.12}
   Let \(f : I \to \R\) be a bounded function on a bounded interval \(I\).
   Then
   \[
@@ -156,7 +156,7 @@
   \[
     \underline{\int}_I f = \sup\{L(f, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\}.
   \]
-\end{proposition}
+\end{prop}
 
 \begin{proof}
   Let \(g\) be a function which majorizes \(f\) and which is piecewise constant with respect to some partition \(\mathbf{P}_g\) of \(I\).
@@ -225,11 +225,11 @@
 
 \exercisesection
 
-\begin{exercise}\label{ex 11.3.1}
+\begin{ex}\label{ex:11.3.1}
   Let \(f : I \to \R\), \(g : I \to \R\), and \(h : I \to \R\) be functions.
   Show that if \(f\) majorizes \(g\) and \(g\) majorizes \(h\), then \(f\) majorizes \(h\).
   Show that if \(f\) and \(g\) majorize each other, then they must be equal.
-\end{exercise}
+\end{ex}
 
 \begin{proof}
   We first show that if \(f\) majorizes \(g\) and \(g\) majorizes \(h\), then \(f\) majorizes \(h\).
@@ -249,12 +249,12 @@
   by \cref{3.3.7} we know that \(f = g\).
 \end{proof}
 
-\begin{exercise}\label{ex 11.3.2}
+\begin{ex}\label{ex:11.3.2}
   Let \(f : I \to \R\), \(g : I \to \R\), and \(h : I \to \R\) be functions.
   If \(f\) majorizes \(g\), is it true that \(f + h\) majorizes \(g + h\)?
   Is it true that \(f \cdot h\) majorizes \(g \cdot h\)?
   If \(c\) is a real number, is it true that \(cf\) majorizes \(cg\)?
-\end{exercise}
+\end{ex}
 
 \begin{proof}
   We first show that if \(f\) majorizes \(g\), then \(f + h\) majorizes \(g + h\).
@@ -277,26 +277,26 @@
   In this case \(f \cdot h\) does not majorized \(g \cdot h\) and \(cf\) does not majorized \(cg\).
 \end{proof}
 
-\begin{exercise}\label{ex 11.3.3}
+\begin{ex}\label{ex:11.3.3}
   Prove \cref{11.3.7}.
-\end{exercise}
+\end{ex}
 
 \begin{proof}
   See \cref{11.3.7}.
 \end{proof}
 
-\begin{exercise}\label{ex 11.3.4}
+\begin{ex}\label{ex:11.3.4}
   Prove \cref{11.3.11}.
-\end{exercise}
+\end{ex}
 
 \begin{proof}
   See \cref{11.3.11}.
 \end{proof}
 
-\begin{exercise}\label{ex 11.3.5}
+\begin{ex}\label{ex:11.3.5}
   Prove \cref{11.3.12}.
-\end{exercise}
+\end{ex}
 
-\begin{proposition}
+\begin{prop}
   See \cref{11.3.12}.
-\end{proposition}
+\end{prop}
