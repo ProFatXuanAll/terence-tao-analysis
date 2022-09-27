@@ -20,7 +20,7 @@
   The sum \(n + m\) of two natural numbers \(n, m\) is again a natural number.
 \end{ac}
 
-\begin{proof}
+\begin{proof}[\pf{ac:2.2.1}]
   Let \(m, n\) be a natural number.
   We use induction on \(n\).
   For \(n = 0\), by \cref{2.2.1} we have \(0 + m = m\), which is a natural number by definition.
@@ -37,7 +37,7 @@
   For any natural number \(n\), \(n + 0 = n\).
 \end{lem}
 
-\begin{proof}
+\begin{proof}[\pf{2.2.2}]
   We use induction on \(n\).
   The base case \(0 + 0 = 0\) follows since we know that \(0 + m = m\) for every natural number \(m\) (\cref{2.2.1}), and \(0\) is a natural number (\cref{2.1}).
   Now suppose inductively that \(n + 0 = n\).
@@ -50,7 +50,7 @@
   For any natural numbers \(n\) and \(m\), \(n + (m\pp) = (n + m)\pp\).
 \end{lem}
 
-\begin{proof}
+\begin{proof}[\pf{2.2.3}]
   We induct on \(n\) (keeping \(m\) fixed).
   We first consider the base case \(n = 0\).
   In this case we have to prove \(0 + (m\pp) = (0 + m)\pp\).
@@ -66,7 +66,7 @@
   For any natural number \(n\), we have \(n\pp = n + 1\).
 \end{ac}
 
-\begin{proof}
+\begin{proof}[\pf{ac:2.2.2}]
   Since \(n\) is a natural number, by \cref{2.2} we know that \(n\pp\) is also a natural number.
   Thus we can apply \cref{2.2.2} to derive the following fact:
   \begin{align*}
@@ -81,7 +81,7 @@
   For any natural numbers \(n\) and \(m\), \(n + m = m + n\).
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{2.2.4}]
   We shall use induction on \(n\) (keeping \(m\) fixed).
   First we do the base case \(n = 0\), i.e., we show \(0 + m = m + 0\).
   By \cref{2.2.1}, \(0 + m = m\), while by \cref{2.2.2}, \(m + 0 = m\).
@@ -96,7 +96,7 @@
   For any natural numbers \(a\), \(b\), \(c\), we have \((a + b) + c = a + (b + c)\).
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{2.2.5}]
   We use induction on \(c\) and keep both \(a\) and \(b\) fixed.
   For \(c = 0\), we have
   \begin{align*}
@@ -117,15 +117,15 @@
 \end{proof}
 
 \begin{note}
-  Because of this associativity we can write sums such as \(a + b + c\) without having to worry about which order the numbers are being added together.
+  Because of associativity showed in \cref{2.2.5} we can write sums such as \(a + b + c\) without having to worry about which order the numbers are being added together.
 \end{note}
 
 \begin{prop}[Cancellation law]\label{2.2.6}
-  Let \(a\), \(b\), \(c\) be natural numbers such that \(a + b = a + c\).
+  Let \(a, b, c\) be natural numbers such that \(a + b = a + c\).
   Then we have \(b = c\).
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{2.2.6}]
   We prove this by induction on \(a\).
   First consider the base case \(a = 0\).
   Then we have \(0 + b = 0 + c\), which by \cref{2.2.1} implies that \(b = c\) as desired.
@@ -143,12 +143,12 @@
 \end{defn}
 
 \begin{prop}\label{2.2.8}
-  If \(a\) is positive natural number and \(b\) is a natural number, then \(a + b\) is positive (and hence \(b + a\) is also, by \cref{2.2.4}).
+  If \(a\) is a positive natural number and \(b\) is a natural number, then \(a + b\) is positive (and hence \(b + a\) is also, by \cref{2.2.4}).
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{2.2.8}]
   We use induction on \(b\).
-  If \(b = 0\), then \(a + b = a + 0 = a\), which is positive, so this proves the base case.
+  If \(b = 0\), then \(a + b = a + 0 = a\), which is positive by \cref{2.2.7}, so this proves the base case.
   Now suppose inductively that \(a + b\) is positive.
   Then \(a + (b\pp) = (a + b)\pp\), which cannot be zero by \cref{2.3}, and is hence positive.
   This closes the induction.
@@ -158,7 +158,7 @@
   If \(a\) and \(b\) are natural numbers such that \(a + b = 0\), then \(a = 0\) and \(b = 0\).
 \end{cor}
 
-\begin{proof}
+\begin{proof}[\pf{2.2.9}]
   Suppose for sake of contradiction that \(a \neq 0\) or \(b \neq 0\).
   If \(a \neq 0\) then \(a\) is positive, and hence \(a + b = 0\) is positive by \cref{2.2.8}, a contradiction.
   Similarly if \(b \neq 0\) then \(b\) is positive, and again \(a + b = 0\) is positive by \cref{2.2.8}, a contradiction.
@@ -166,31 +166,40 @@
 \end{proof}
 
 \begin{lem}\label{2.2.10}
-  Let \(a\) be a positive number.
+  Let \(a\) be a positive natural number.
   Then there exists exactly one natural number \(b\) such that \(b\pp = a\).
 \end{lem}
 
-\begin{proof}
-  We use induction.
-  If \(a = 1\) and \(b\pp = a\), then \(b = 0\).
-  We want to show that \(0\) is unique, so assume that \(0'\) is a natural number and \(0'\pp = 1\).
-  By \cref{2.4}, if \(0\pp = 0'\pp\), then \(0 = 0'\), thus \(0\) is unique, and this proves the base case.
-  Suppose inductively that \(a\) is positive, there exist exactly one natural number \(b\) such that \(b\pp = a\).
-  Then \(a\pp = (b\pp)\pp\) by induction hypothesis, so there exist a natural number \(b\pp\) such that \((b\pp)\pp = a\pp\).
-  Now we need to show that \(b\pp\) is unique.
-  Assume that there exist another natural number \(c\) such that \(a\pp = c\pp\).
-  Then by \cref{2.4}, \(a = c\), and by induction hypothesis, \(c = b\pp\), so \(c\pp = (b\pp)\pp\), which means \(b\pp\) is unique.
-  This closes the induction.
+\begin{proof}[\pf{2.2.10}]
+  Let \(P(n)\) be the statement ``either \(n = 0\) or there exists a natural number \(m\) such that \(m\pp = n\)''.
+  We use induction to show that \(P(n)\) is true for all natural number \(n\).
+  Clearly \(P(0)\) is true.
+  So suppose that \(P(n)\) is true for some natural number \(n\).
+  We want to show that \(P(n\pp)\) is true.
+  By \cref{2.3} we know that \(n\pp \neq 0\).
+  So we have to show that there exists a natural number \(m\) such that \(m\pp = n\pp\).
+  By \cref{2.4} we see that \(m = n\).
+  Thus \(P(n\pp)\) is true and this closes the induction.
+
+  Now we prove the existence of \(b\).
+  From first part of the proof we know that \(P(a)\) is true.
+  Since \(a\) is a positive natural number, by \cref{2.2.7} we know that \(a \neq 0\).
+  Thus there must exist a natural number \(b\) such that \(b\pp = a\).
+
+  Finally we prove the uniqueness of \(b\).
+  Suppose that there exists another natural number \(c\) such that \(c\pp = a\).
+  But this means \(b\pp = c\pp\).
+  Thus by \cref{2.4} we have \(b = c\).
 \end{proof}
 
 \begin{defn}[Ordering of the natural numbers]\label{2.2.11}
   Let \(n\) and \(m\) be natural numbers.
-  We say that \(n\) is greater than or equal to \(m\), and write \(n \geq m\) or \(m \leq n\), iff we have \(n = m + a\) for some natural number \(a\).
-  We say that \(n\) is strictly greater than \(m\), and write \(n > m\) or \(m < n\), iff \(n \geq m\) and \(n \neq m\).
+  We say that \(n\) is \emph{greater than or equal to} \(m\), and write \(n \geq m\) or \(m \leq n\), iff we have \(n = m + a\) for some natural number \(a\).
+  We say that \(n\) is \emph{strictly greater than} \(m\), and write \(n > m\) or \(m < n\), iff \(n \geq m\) and \(n \neq m\).
 \end{defn}
 
 \begin{note}
-  There is no largest natural number \(n\), because the next number \(n\pp\) is always larger.
+  Since \(n\pp > n\) for any natural number \(n\), there is no largest natural number \(n\), because the next number \(n\pp\) is always larger.
 \end{note}
 
 \begin{prop}[Basic properties of order for natural numbers]\label{2.2.12}
@@ -206,72 +215,112 @@
   \end{enumerate}
 \end{prop}
 
-\begin{proof}{(a)}
+\begin{proof}[\pf{2.2.12}(a)]
   Let \(a\) be a natural number.
   Then
   \begin{align*}
-             & a = a + 0 &  & \by{2.2.1}                \\
-    \implies & a \geq a. &  & \text{(by \cref{2.2.11})}
+             & \begin{dcases}
+                 0 \text{ is a natural number} \\
+                 a = a + 0
+               \end{dcases} &  & \by{2.1,2.2.2}                  \\
+    \implies & a \geq a.                        &  & \by{2.2.11}
   \end{align*}
 \end{proof}
 
-\begin{proof}{(b)}
-  Let \(a, b, c\) be natural numbers and suppose that \(a \geq b \land b \geq c\).
-  By \cref{2.2.11} \(\exists\ d, e\) are natural numbers such that \(a = b + d\) and \(b = c + e\).
-  Then
+\begin{proof}[\pf{2.2.12}(b)]
+  Let \(a, b, c\) be natural numbers and suppose that \(a \geq b\) and \(b \geq c\).
+  By \cref{2.2.11} there exist some natural numbers \(d\) and \(e\) such that \(a = b + d\) and \(b = c + e\).
+  Then we have
   \begin{align*}
-             & a = b + d = (c + e) + d = c + (e + d) &  & \by{2.2.5}                  \\
-    \implies & e + d \text{ is a natural number}     &  & \text{(by \cref{ac:2.2.1})} \\
-    \implies & a \geq c.                             &  & \text{(by \cref{2.2.11})}   \\
+             & \begin{dcases}
+                 a = b + d = (c + e) + d = c + (e + d) \\
+                 e + d \text{ is a natural number}
+               \end{dcases} &  & \by{2.2.5,ac:2.2.1}                     \\
+    \implies & a \geq c.                                &  & \by{2.2.11}
   \end{align*}
 \end{proof}
 
-\begin{proof}{(c)}
-  Let \(a, b\) be natural numbers and suppose that \(a \geq b \land b \geq a\).
-  By \cref{2.2.11} \(\exists\ c, d\) are natural numbers such that \(a = b + c\) and \(b = a + d\).
-  Then
+\begin{proof}[\pf{2.2.12}(c)]
+  Let \(a, b\) be natural numbers and suppose that \(a \geq b\) and \(b \geq a\).
+  By \cref{2.2.11} there exist some natural numbers \(c\) and \(d\) such that \(a = b + c\) and \(b = a + d\).
+  Then we have
   \begin{align*}
-             & a = b + c = (a + d) + c = a + (d + c) &  & \by{2.2.5} \\
+             & \begin{dcases}
+                 a = a + 0 \\
+                 a = b + c = (a + d) + c = a + (d + c)
+               \end{dcases} &  & \by{2.2.2,2.2.5}                  \\
     \implies & 0 = d + c                             &  & \by{2.2.6} \\
     \implies & d = c = 0                             &  & \by{2.2.9} \\
     \implies & a = b + 0 = b.                        &  & \by{2.2.2}
   \end{align*}
 \end{proof}
 
-\begin{proof}{(d)}
-  Let \(a, b, c, d\) be natural numbers.
-  Then
+\begin{proof}[\pf{2.2.12}(d)]
+  Let \(a, b, c\) be natural numbers.
+  Then we have
   \begin{align*}
-         & a \geq b                                                         \\
-    \iff & a = b + d           &  & \text{(by \cref{2.2.11})}               \\
-    \iff & c + a = c + (b + d) &  & \text{(by \cref{2.4} and \cref{2.2.6})} \\
-    \iff & c + a = (c + b) + d &  & \by{2.2.5}                              \\
-    \iff & a + c = (b + c) + d &  & \by{2.2.4}                              \\
-    \iff & a + c \geq b + c.   &  & \text{(by \cref{2.2.11})}
+             & a \geq b                                                           \\
+    \implies & a = b + d \text{ for some natural number } d &  & \by{2.2.11}      \\
+    \implies & a + c = c + a = c + (b + d)                  &  & \by{2.2.4}       \\
+             & = (c + b) + d = (b + c) + d                  &  & \by{2.2.4,2.2.5} \\
+    \implies & a + c \geq b + c                             &  & \by{2.2.11}
   \end{align*}
+  and
+  \begin{align*}
+             & a + c \geq b + c                                                             \\
+    \implies & a + c = (b + c) + d \text{ for some natural number } d &  & \by{2.2.11}      \\
+    \implies & c + a = (c + b) + d = c + (b + d)                      &  & \by{2.2.4,2.2.5} \\
+    \implies & a = b + d                                              &  & \by{2.2.6}       \\
+    \implies & a \geq b.                                              &  & \by{2.2.11}
+  \end{align*}
+  Thus we conclude that \(a \geq b \iff a + c \geq b + c\).
 \end{proof}
 
-\begin{proof}{(e)}
-  Let \(a, b, c, d\) be natural numbers.
-  Then
+\begin{proof}[\pf{2.2.12}(e)]
+  Let \(a, b\) be natural numbers.
+  First suppose that \(a < b\).
+  Then we have
   \begin{align*}
-         & a < b                                                        \\
-    \iff & b = a + c \land a \neq b      &  & \text{(by \cref{2.2.11})} \\
-    \iff & b = a + c \land c \neq 0      &  & \by{2.2.2}                \\
-    \iff & b = a + (d\pp) \land c = d\pp &  & \text{(by \cref{2.2.10})} \\
-    \iff & b = (a\pp) + d                &  & \by{2.2.5}                \\
-    \iff & a\pp \leq b.                  &  & \text{(by \cref{2.2.11})}
+             & a < b                                                                                     \\
+    \implies & \begin{dcases}
+                 a \leq b \\
+                 a \neq b
+               \end{dcases}                                                      &  & \by{2.2.11}        \\
+    \implies & \begin{dcases}
+                 b = a + c \text{ for some natural number } c \\
+                 a \neq b
+               \end{dcases}                     &  & \by{2.2.11}                                         \\
+    \implies & c \neq 0                                                            &  & \by{2.2.2}       \\
+    \implies & c \text{ is a positive natural number}                              &  & \by{2.2.8}       \\
+    \implies & \text{there exists a natural number } d \text{ such that } d\pp = c &  & \by{2.2.10}      \\
+    \implies & b = a + (d\pp) = (a + d)\pp = (a\pp) + d                            &  & \by{2.2.1,2.2.3} \\
+    \implies & a\pp \leq b.                                                        &  & \by{2.2.11}
   \end{align*}
+
+  Now suppose that \(a\pp \leq b\).
+  Then we have
+  \begin{align*}
+             & a\pp \leq b                                                             \\
+    \implies & b = (a\pp) + c \text{ for some natural number } c &  & \by{2.2.11}      \\
+    \implies & b = (a\pp) + c = (a + c)\pp = a + (c\pp)          &  & \by{2.2.1,2.2.3} \\
+    \implies & a \leq b.                                         &  & \by{2.2.11}
+  \end{align*}
+  By \cref{2.3} we know that \(c\pp \neq 0\).
+  Thus by \cref{2.2.6} we must have \(b \neq a\).
+  (If \(b = a\), then \(b = a + c\pp = a + 0\) implies \(c\pp = 0\), a contradiction.)
+  By \cref{2.2.11} this means \(a < b\).
+  From all proofs above we conclude that \(a < b \iff a\pp \leq b\).
 \end{proof}
 
-\begin{proof}{(f)}
-  Let \(a, b, d\) be natural numbers.
-  Then
+\begin{proof}[\pf{2.2.12}(f)]
+  Let \(a, b\) be natural numbers.
+  Then we have
   \begin{align*}
-         & a < b                                                                 \\
-    \iff & b = a + d \land a \neq b               &  & \text{(by \cref{2.2.11})} \\
-    \iff & b = a + d \land d \neq 0               &  & \by{2.2.2}                \\
-    \iff & b = a + d \land d \text{ is positive}. &  & \by{2.2.7}
+         & a < b                                                                        \\
+    \iff & a\pp \leq b                                            &  & \by{2.2.12}[e]   \\
+    \iff & b = (a\pp) + c \text{ for some natural number } c      &  & \by{2.2.11}      \\
+    \iff & b = (a\pp) + c = (a + c)\pp = a + (c\pp)               &  & \by{2.2.1,2.2.3} \\
+    \iff & b = a + d \text{ for some positive natural number } d. &  & \by{2.3,2.2.10}
   \end{align*}
 \end{proof}
 
@@ -288,14 +337,22 @@
 
   Now we show that at least one of the statements is true.
   We keep \(b\) fixed and induct on \(a\).
-  When \(a = 0\) we have \(0 \leq b\) for all \(b\) (by \cref{2.2.11}), so we have either \(0 = b\) or \(0 < b\), which proves the base case.
+  When \(a = 0\), by \cref{2.2.1} we have \(b = 0 + b\) and thus by \cref{2.2.11} we have \(0 \leq b\) for any natural number \(b\).
+  So we have either \(0 = b\) or \(0 < b\), which proves the base case.
   Now suppose we have proven the proposition for \(a\), and now we prove the proposition for \(a\pp\).
   From the trichotomy for \(a\), there are three cases: \(a < b\), \(a = b\), and \(a > b\).
-  If \(a > b\), then \(a\pp > b\) (since \(a\pp > a\) and \(a > b\) implies \(a\pp \geq b\) by \cref{2.2.12}(b), but \(a\pp \neq b\) otherwise \(b > a\) contradict to \(a > b\)).
-  If \(a = b\), then \(a\pp > b\) (since \(a\pp = b\pp > b\)).
-  Now suppose that \(a < b\).
-  Then by \cref{2.2.12}(e), we have \(a\pp \leq b\).
-  Thus either \(a\pp = b\) or \(a\pp < b\), and in either case we are done.
+  \begin{itemize}
+    \item If \(a > b\), then by \cref{2.2.12}(d) we have \(a\pp \geq b\pp\).
+          Since \(b\pp > b\), by \cref{2.2.12}(b) we have \(a\pp \geq b\).
+          Then we must have \(a\pp > b\), otherwise by \cref{2.2.11} we would have \(a\pp = b\) and by \cref{2.2.12}(e) this implies \(a < b\) and contradicts to \(a > b\)
+          (the contradiction is proved by the first paragraph).
+    \item If \(a = b\), then by \cref{2.4} we have \(a\pp = b\pp\).
+          Since \(b\pp > b\), by \cref{2.2.12}(b) we have \(a\pp \geq b\).
+          Then we must have \(a\pp > b\), otherwise by \cref{2.2.11} we would have \(a\pp = b\) and by \cref{2.2.12}(e) this implies \(a < b\) and contradicts to \(a = b\)
+          (the contradiction is proved by the first paragraph).
+    \item If \(a < b\), then by \cref{2.2.12}(e) we have \(a\pp \leq b\).
+          Thus either \(a\pp = b\) or \(a\pp < b\), and in either case we are done.
+  \end{itemize}
   This closes the induction.
 \end{proof}
 
@@ -307,20 +364,30 @@
 \end{prop}
 
 \begin{proof}
-  Let \(n\) be a natural number and let \(Q(n)\) be the property that \(P(m)\) is true for all \(m_0 \leq m < n\).
-  Using induction on \(n\), for the base case \(n = 0\), we want to show that \(Q(0)\) is true.
+  Let \(n\) be a natural number and let \(Q(n)\) be the statement ``\(P(m)\) is true for all natural number \(m\) satisfying \(m_0 \leq m < n\)''.
+  We use induction to show that \(Q(n)\) is true for all natural number \(n\).
+
+  For \(n = 0\), we want to show that \(Q(0)\) is true.
   However, we know that \(0 \leq m_0\) for all natural number \(m_0\).
   Thus, either \(0 = m_0\) or \(0 < m_0\) and so we split into cases.
-  If \(n = 0 < m_0\), the statement ``\(P(m)\) is true \(\forall m_0 \leq m < n\)'' is vacuously true (since the hypothesis only applies for \(n \geq m_0\)) and thus \(Q(0)\) is true in this case.
-  For the second case, if \(n = 0 = m_0\), then the statement ``\(P(m)\) is true \(\forall m_0 \leq m < n\)'' is also vacuously true since there is no natural number \(m'\) such that \(0 \leq m' < 0\). Hence, \(Q(0)\) is true for this case and that completes the base case of the induction.
+  \begin{itemize}
+    \item If \(0 < m_0\), the statement ``\(P(m)\) is true for all natural number \(m\) satisfying \(m_0 \leq m < n\)'' is vacuously true since there does not exist a natural number \(m\) satisfying \(0 < m_0 \leq m < n = 0\).
+          Thus \(Q(0)\) is true in this case.
+    \item If \(0 = m_0\), then the statement ``\(P(m)\) is true for all natural number \(m\) satisfying \(m_0 \leq m < n\)'' is vacuously true since there does not exist a natural number \(m\) satisfying \(0 = m_0 \leq m < n = 0\).
+          Hence, \(Q(0)\) is true in this case.
+  \end{itemize}
+  From all cases above we see that \(Q(0)\) is true.
+  Thus the base case holds.
 
-  Now suppose inductively that for some \(n \geq m_0\), \(Q(n)\) is true, i.e \(P(m)\) is true \(\forall m_0 \leq m < n\).
+  Suppose inductively that \(Q(n)\) is true for some natural number \(n\).
   We need to show that \(Q(n\pp)\) is true.
-  By the definition of \(P\) in the hypothesis, \(P(n)\) is also true (because \(Q(n)\) is true).
-  Since \(n < n\pp\), then \(P(m)\) is true \(\forall m_0 \leq m \leq n < n\pp\).
-  So \(P(m)\) is true \(\forall m_0 \leq m < n\pp\) which in turn implies that \(Q(n\pp)\) is true.
+  Using induction hypothesis (\(Q(n)\) is true) and the hypothesis of \(P\) we see that \(P(n)\) is true.
+  Since \(n < n\pp\), we know that \(P(m)\) is true for all natural number \(m\) satisfying \(m_0 \leq m \leq n < n\pp\).
+  So \(P(m)\) is true for all natural number \(m\) satisfying \(m_0 \leq m < n\pp\) which in turn implies that \(Q(n\pp)\) is true.
   This closes the induction and hence we can conclude that \(Q(n)\) is true for any natural number \(n\).
-  However, \(Q(n)\) is true implies \(P(m)\) is true \(\forall m_0 \leq m < n\) for all \(n \geq m_0\) and by the definition of \(P\), \(P(n)\) is also true for all \(n \geq m_0\) which concludes the proof.
+
+  Since \(Q(n)\) is true for all natural number \(n\), by the hypothesis of \(P\) we know that \(P(n)\) is true for all natural number \(n\).
+  In particular, we see that \(P(n)\) is true for all natural number \(n\) satisfying \(n \geq m_0\).
 \end{proof}
 
 \begin{rmk}\label{2.2.15}
@@ -376,10 +443,15 @@
 \end{ex}
 
 \begin{proof}
-  We use induction.
-  The base case \(n = 0\) is trivially true because \(\forall m \leq 0\) means \(m = 0\), thus \(P(m) = P(n) = P(0)\) is true.
-  Suppose inductively that \(P(n)\) is true, and \(P(m)\) is true \(\forall m \leq n\).
-  Then when \(P(n\pp)\) is true, by the given condition \(P(n)\) is true.
-  And by induction hypothesis \(P(m)\) is true \(\forall m \leq n \leq n\pp\), so \(P(n\pp)\) is true implies \(P(m)\) is true \(\forall m \leq n\pp\).
+  We use induction on \(n\).
+  For \(n = 0\), the only natural number \(m\) satisfying \(m \leq n = 0\) is \(0\).
+  By hypothesis \(P(0)\) is true.
+  Therefore, the base case holds trivially.
+
+  Suppose inductively that for some natural number \(n\) we have the implication ``\(P(n)\) is true implies \(P(m)\) is true for all natural number \(m\) satisfying \(m \leq n\)''.
+  We want to show the implication ``\(P(n\pp)\) is true implies \(P(m)\) is true for all natural number \(m\) satisfying \(m \leq n\pp\)''.
+  But when \(P(n\pp)\) is true, by the hypothesis of \(P\) we know that \(P(n)\) is true.
+  Thus we can apply induction hypothesis to derive ``\(P(m)\) is true for all natural number \(m\) satisfying \(m \leq n\)''.
+  Combining the statement ``\(P(n\pp)\) is true'' we see that the statement ``\(P(m)\) is true for all natural number \(m\) satisfying \(m \leq n\pp\)'' is true.
   This closes the induction.
 \end{proof}
