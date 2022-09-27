@@ -4,11 +4,11 @@
   Let \(E\) be a subset of \(\R^n\), \(f : E \to \R^m\) be a function, let \(x_0\) be an interior point of \(E\), and let \(v\) be a vector in \(\R^n\).
   If the limit
   \[
-    \lim_{t \to 0 ; t > 0, x_0 + tv \in E} \frac{f(x_0 + tv) - f(x_0)}{t}
+    \lim_{t \to 0 ; t > 0, x_0 + tv \in E} \dfrac{f(x_0 + tv) - f(x_0)}{t}
   \]
   exists, we say that \(f\) is \emph{differentiable in the direction \(v\) at \(x_0\)}, and we denote the above limit by \(D_v f(x_0)\):
   \[
-    D_v f(x_0) \coloneqq \lim_{t \to 0 ; t > 0, x_0 + tv \in E} \frac{f(x_0 + tv) - f(x_0)}{t}.
+    D_v f(x_0) \coloneqq \lim_{t \to 0 ; t > 0, x_0 + tv \in E} \dfrac{f(x_0 + tv) - f(x_0)}{t}.
   \]
 \end{defn}
 
@@ -27,17 +27,17 @@
 \begin{proof}
   We have
   \begin{align*}
-    D_{+1} f(x) & = \lim_{t \to 0 ; t > 0} \frac{f(x_0 + t) - f(x_0)}{t}                           & \text{(by \cref{6.3.1})} \\
-                & = \lim_{x \to x_0 ; x > x_0} \frac{f\big(x_0 + (x - x_0)\big) - f(x_0)}{x - x_0}                            \\
-                & = \lim_{x \to x_0 ; x > x_0} \frac{f(x) - f(x_0)}{x - x_0}                                                  \\
+    D_{+1} f(x) & = \lim_{t \to 0 ; t > 0} \dfrac{f(x_0 + t) - f(x_0)}{t}                           &  & \text{(by \cref{6.3.1})} \\
+                & = \lim_{x \to x_0 ; x > x_0} \dfrac{f\big(x_0 + (x - x_0)\big) - f(x_0)}{x - x_0}                               \\
+                & = \lim_{x \to x_0 ; x > x_0} \dfrac{f(x) - f(x_0)}{x - x_0}                                                     \\
                 & = f(x_0+)
   \end{align*}
   and
   \begin{align*}
-    D_{-1} f(x) & = \lim_{t \to 0 ; t > 0} \frac{f(x_0 - t) - f(x_0)}{t}                           & \text{(by \cref{6.3.1})} \\
-                & = \lim_{x \to x_0 ; x < x_0} \frac{f\big(x_0 - (x_0 - x)\big) - f(x_0)}{x_0 - x}                            \\
-                & = \lim_{x \to x_0 ; x < x_0} \frac{f(x) - f(x_0)}{x_0 - x}                                                  \\
-                & = -\lim_{x \to x_0 ; x < x_0} \frac{f(x) - f(x_0)}{x - x_0}                                                 \\
+    D_{-1} f(x) & = \lim_{t \to 0 ; t > 0} \dfrac{f(x_0 - t) - f(x_0)}{t}                           &  & \text{(by \cref{6.3.1})} \\
+                & = \lim_{x \to x_0 ; x < x_0} \dfrac{f\big(x_0 - (x_0 - x)\big) - f(x_0)}{x_0 - x}                               \\
+                & = \lim_{x \to x_0 ; x < x_0} \dfrac{f(x) - f(x_0)}{x_0 - x}                                                     \\
+                & = -\lim_{x \to x_0 ; x < x_0} \dfrac{f(x) - f(x_0)}{x - x_0}                                                    \\
                 & = -f(x_0-).
   \end{align*}
 \end{proof}
@@ -55,23 +55,23 @@
   Since \(f\) is differentiable at \(x_0\), by \cref{6.2.2} we know that \(f'(x_0) : \R^n \to \R^m\) exists and \(f'(x_0)\) is a linear transformation.
   If \(v = 0_{\R^n}\), then we have
   \begin{align*}
-     & f'(x_0)(0_{\R^n})                                                                                                                \\
-     & = 0_{\R^m}                                                                              & \text{(cf. the proof of \cref{6.2.4})} \\
-     & = \lim_{t \to 0 ; t > 0, x_0 + t 0_{\R^n} \in E} \frac{f(x_0 + t 0_{\R^n}) - f(x_0)}{t}                                          \\
-     & = D_{0_{\R^n}} f(x_0).                                                                  & \text{(by \cref{6.3.1})}
+     & f'(x_0)(0_{\R^n})                                                                                                                    \\
+     & = 0_{\R^m}                                                                               &  & \text{(cf. the proof of \cref{6.2.4})} \\
+     & = \lim_{t \to 0 ; t > 0, x_0 + t 0_{\R^n} \in E} \dfrac{f(x_0 + t 0_{\R^n}) - f(x_0)}{t}                                             \\
+     & = D_{0_{\R^n}} f(x_0).                                                                   &  & \text{(by \cref{6.3.1})}
   \end{align*}
   So suppose that \(v \neq 0_{\R^n}\).
   Then we have
   \begin{align*}
-             & \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)}}{\norm*{x - x_0}} = 0                                  \\
-    \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \frac{\norm*{f(x_0 + tv) - f(x_0) - f'(x_0)(x_0 + tv - x_0)}}{\norm*{x_0 + tv - x_0}} = 0 \\
-    \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \frac{\norm*{f(x_0 + tv) - f(x_0) - f'(x_0)(tv)}}{\norm*{tv}} = 0                         \\
-    \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \frac{\norm*{t \frac{f(x_0 + tv) - f(x_0)}{t} - f'(x_0)(tv)}}{\norm*{tv}} = 0             \\
-    \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \frac{\norm*{t \frac{f(x_0 + tv) - f(x_0)}{t} - t f'(x_0)(v)}}{\norm*{tv}} = 0            \\
-    \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \frac{t \norm*{\frac{f(x_0 + tv) - f(x_0)}{t} - f'(x_0)(v)}}{t \norm*{v}} = 0             \\
-    \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \frac{\norm*{\frac{f(x_0 + tv) - f(x_0)}{t} - f'(x_0)(v)}}{\norm*{v}} = 0                 \\
-    \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \norm*{\frac{f(x_0 + tv) - f(x_0)}{t} - f'(x_0)(v)} = 0                                   \\
-    \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \frac{f(x_0 + tv) - f(x_0)}{t} = f'(x_0)(v)                                               \\
+             & \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \dfrac{\norm*{f(x) - f(x_0) - f'(x_0)(x - x_0)}}{\norm*{x - x_0}} = 0                                  \\
+    \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \dfrac{\norm*{f(x_0 + tv) - f(x_0) - f'(x_0)(x_0 + tv - x_0)}}{\norm*{x_0 + tv - x_0}} = 0 \\
+    \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \dfrac{\norm*{f(x_0 + tv) - f(x_0) - f'(x_0)(tv)}}{\norm*{tv}} = 0                         \\
+    \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \dfrac{\norm*{t \dfrac{f(x_0 + tv) - f(x_0)}{t} - f'(x_0)(tv)}}{\norm*{tv}} = 0            \\
+    \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \dfrac{\norm*{t \dfrac{f(x_0 + tv) - f(x_0)}{t} - t f'(x_0)(v)}}{\norm*{tv}} = 0           \\
+    \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \dfrac{t \norm*{\dfrac{f(x_0 + tv) - f(x_0)}{t} - f'(x_0)(v)}}{t \norm*{v}} = 0            \\
+    \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \dfrac{\norm*{\dfrac{f(x_0 + tv) - f(x_0)}{t} - f'(x_0)(v)}}{\norm*{v}} = 0                \\
+    \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \norm*{\dfrac{f(x_0 + tv) - f(x_0)}{t} - f'(x_0)(v)} = 0                                   \\
+    \implies & \lim_{t \to 0 ; t > 0, x_0 + tv \in E \setminus \{x_0\}} \dfrac{f(x_0 + tv) - f(x_0)}{t} = f'(x_0)(v)                                               \\
     \implies & D_v f(x_0) = f'(x_0)(v).
   \end{align*}
   Thus we conclude that
@@ -88,35 +88,35 @@
 
 \begin{defn}[Partial derivative]\label{6.3.7}
   Let \(E\) be a subset of \(\R^n\), let \(f : E \to \R^m\) be a function, let \(x_0\) be an interior point of \(E\), and let \(1 \leq j \leq n\).
-  Then the \emph{partial derivative of \(f\) with respect to the \(x_j\) variable} at \(x_0\), denoted \(\frac{\partial f}{\partial x_j}(x_0)\), is defined by
+  Then the \emph{partial derivative of \(f\) with respect to the \(x_j\) variable} at \(x_0\), denoted \(\dfrac{\partial f}{\partial x_j}(x_0)\), is defined by
   \[
-    \frac{\partial f}{\partial x_j}(x_0) \coloneqq \lim_{t \to 0 ; t \neq 0, x_0 + t e_j \in E} \frac{f(x_0 + t e_j) - f(x_0)}{t} = \frac{d}{dt} f(x_0 + t e_j)|_{t = 0}
+    \dfrac{\partial f}{\partial x_j}(x_0) \coloneqq \lim_{t \to 0 ; t \neq 0, x_0 + t e_j \in E} \dfrac{f(x_0 + t e_j) - f(x_0)}{t} = \dfrac{d}{dt} f(x_0 + t e_j)|_{t = 0}
   \]
   provided of course that the limit exists.
-  (If the limit does not exist, we leave \(\frac{\partial f}{\partial x_j}(x_0)\) undefined).
+  (If the limit does not exist, we leave \(\dfrac{\partial f}{\partial x_j}(x_0)\) undefined).
 \end{defn}
 
 \begin{ac}\label{ac:6.3.1}
   Informally, the partial derivative can be obtained by holding all the variables other than \(x_j\) fixed, and then applying the single-variable calculus derivative in the \(x_j\) variable.
-  Note that if \(f\) takes values in \(\R^m\), then so will \(\frac{\partial f}{\partial x_j}\).
+  Note that if \(f\) takes values in \(\R^m\), then so will \(\dfrac{\partial f}{\partial x_j}\).
   Indeed, if we write \(f\) in components as \(f = (f_1, \dots, f_m)\), it is easy to see (by \cref{1.1.18}) that
   \[
-    \frac{\partial f}{\partial x_j}(x_0) = \bigg(\frac{\partial f_1}{\partial x_j}(x_0), \dots, \frac{\partial f_m}{\partial x_j}(x_0)\bigg)
+    \dfrac{\partial f}{\partial x_j}(x_0) = \bigg(\dfrac{\partial f_1}{\partial x_j}(x_0), \dots, \dfrac{\partial f_m}{\partial x_j}(x_0)\bigg)
   \]
   i.e., to differentiate a vector-valued function one just has to differentiate each of the components separately.
 \end{ac}
 
 \begin{note}
-  We sometimes replace the variables \(x_j\) in \(\frac{\partial f}{\partial x_j}\) with other symbols.
+  We sometimes replace the variables \(x_j\) in \(\dfrac{\partial f}{\partial x_j}\) with other symbols.
   One should caution however that one should only relabel the variables if it is absolutely clear which symbol refers to the first variable, which symbol refers to the second variable, etc.;
   otherwise one may become unintentionally confused.
-  The operation of total differentiation \(\frac{d}{dx}\) is not the same as that of partial differentiation \(\frac{\partial}{\partial x}\).
+  The operation of total differentiation \(\dfrac{d}{dx}\) is not the same as that of partial differentiation \(\dfrac{\partial}{\partial x}\).
 \end{note}
 
 \begin{ac}\label{ac:6.3.2}
-  From \cref{6.3.5} (and Proposition 9.5.3 from Analysis I), we know that if a function is differentiable at a point \(x_0\), then all the partial derivatives \(\frac{\partial f}{\partial x_j}\) exists at \(x_0\), and that
+  From \cref{6.3.5} (and Proposition 9.5.3 from Analysis I), we know that if a function is differentiable at a point \(x_0\), then all the partial derivatives \(\dfrac{\partial f}{\partial x_j}\) exists at \(x_0\), and that
   \[
-    \frac{\partial f}{\partial x_j}(x_0) = D_{e_j} f(x_0) = - D_{-e_j} f(x_0) = f'(x_0)(e_j).
+    \dfrac{\partial f}{\partial x_j}(x_0) = D_{e_j} f(x_0) = - D_{-e_j} f(x_0) = f'(x_0)(e_j).
   \]
   Also, if \(v = (v_1, \dots, v_n) = \sum_{j = 1}^n v_j e_j\), then we have
   \[
@@ -124,7 +124,7 @@
   \]
   (since \(f'(x_0)\) is linear) and thus
   \[
-    D_v f(x_0) = \sum_{j = 1}^n v_j \frac{\partial f}{\partial x_j}(x_0).
+    D_v f(x_0) = \sum_{j = 1}^n v_j \dfrac{\partial f}{\partial x_j}(x_0).
   \]
   Thus one can write directional derivatives in terms of partial derivatives, \emph{provided that} the function is actually differentiable at that point.
 \end{ac}
@@ -136,25 +136,25 @@
 
 \begin{thm}\label{6.3.8}
   Let \(E\) be a subset of \(\R^n\), \(f : E \to \R^m\) be a function, \(F\) be a subset of \(E\), and \(x_0\) be an interior point of \(F\).
-  If all the partial derivatives \(\frac{\partial f}{\partial x_j}\) exist on \(F\) and are continuous at \(x_0\), then \(f\) is differentiable at \(x_0\), and the linear transformation \(f'(x_0) : \R^n \to \R^m\) is defined by
+  If all the partial derivatives \(\dfrac{\partial f}{\partial x_j}\) exist on \(F\) and are continuous at \(x_0\), then \(f\) is differentiable at \(x_0\), and the linear transformation \(f'(x_0) : \R^n \to \R^m\) is defined by
   \[
-    f'(x_0)\big((v_j)_{1 \leq j \leq n}\big) = \sum_{j = 1}^n v_j \frac{\partial f}{\partial x_j}(x_0).
+    f'(x_0)\big((v_j)_{1 \leq j \leq n}\big) = \sum_{j = 1}^n v_j \dfrac{\partial f}{\partial x_j}(x_0).
   \]
 \end{thm}
 
 \begin{proof}
   Let \(L : \R^n \to \R^m\) be the linear transformation
   \[
-    L\big((v_j)_{1 \leq j \leq n}\big) \coloneqq \sum_{j = 1}^n v_j \frac{\partial f}{\partial x_j}(x_0).
+    L\big((v_j)_{1 \leq j \leq n}\big) \coloneqq \sum_{j = 1}^n v_j \dfrac{\partial f}{\partial x_j}(x_0).
   \]
   We have to prove that
   \[
-    \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \frac{\norm*{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\norm*{x - x_0}} = 0.
+    \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} \dfrac{\norm*{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\norm*{x - x_0}} = 0.
   \]
   Let \(\varepsilon > 0\).
   It will suffice to find a radius \(\delta > 0\) such that
   \[
-    \frac{\norm*{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\norm*{x - x_0}} \leq \varepsilon
+    \dfrac{\norm*{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\norm*{x - x_0}} \leq \varepsilon
   \]
   for all \(x \in B_{(\R^n, d_{l^2})}(x_0, \delta) \setminus \{x_0\}\).
   Equivalently, we wish to show that
@@ -164,8 +164,8 @@
   for all \(x \in B_{(\R^n, d_{l^2})}(x_0, \delta) \setminus \{x_0\}\).
 
   Because \(x_0\) is an interior point of \(F\), there exists a ball \(B_{(\R^n, d_{l^2})}(x_0, r)\) which is contained inside \(F\).
-  Because each partial derivative \(\frac{\partial f}{\partial x_j}\) exists on \(F\) and is continuous at \(x_0\), there thus exists an \(0 < \delta_j < r\) such that \(\norm*{\frac{\partial f}{\partial x_j}(x) - \frac{\partial f}{\partial x_j}(x_0)} \leq \frac{\varepsilon}{nm}\) for every \(x \in B_{(\R^n, d_{l^2})}(x_0, \delta_j)\).
-  If we take \(\delta = \min(\delta_1, \dots, \delta_n)\), then we thus have \(\norm*{\frac{\partial f}{\partial x_j}(x) - \frac{\partial f}{\partial x_j}(x_0)} \leq \frac{\varepsilon}{nm}\) for every \(x \in B_{(\R^n, d_{l^2})}(x_0, \delta)\) and every \(1 \leq j \leq n\).
+  Because each partial derivative \(\dfrac{\partial f}{\partial x_j}\) exists on \(F\) and is continuous at \(x_0\), there thus exists an \(0 < \delta_j < r\) such that \(\norm*{\dfrac{\partial f}{\partial x_j}(x) - \dfrac{\partial f}{\partial x_j}(x_0)} \leq \dfrac{\varepsilon}{nm}\) for every \(x \in B_{(\R^n, d_{l^2})}(x_0, \delta_j)\).
+  If we take \(\delta = \min(\delta_1, \dots, \delta_n)\), then we thus have \(\norm*{\dfrac{\partial f}{\partial x_j}(x) - \dfrac{\partial f}{\partial x_j}(x_0)} \leq \dfrac{\varepsilon}{nm}\) for every \(x \in B_{(\R^n, d_{l^2})}(x_0, \delta)\) and every \(1 \leq j \leq n\).
 
   Let \(x \in B_{(\R^n, d_{l^2})}(x_0, \delta)\).
   We write \(x = x_0 + v_1 e_1 + v_2 e_2 + \dots + v_n e_n\) for some scalars \(v_1, \dots, v_n\).
@@ -176,32 +176,32 @@
   and in particular we have \(\abs{v_j} \leq \norm*{x - x_0}\) for all \(1 \leq j \leq n\).
   Our task is to show that
   \[
-    \norm*{f(x_0 + v_1 e_1 + \dots + v_n e_n) - f(x_0) - \sum_{j = 1}^n v_j \frac{\partial f}{\partial x_j}(x_0)} \leq \varepsilon \norm*{x - x_0}.
+    \norm*{f(x_0 + v_1 e_1 + \dots + v_n e_n) - f(x_0) - \sum_{j = 1}^n v_j \dfrac{\partial f}{\partial x_j}(x_0)} \leq \varepsilon \norm*{x - x_0}.
   \]
   Write \(f\) in components as \(f = (f_1 , f_2, \dots, f_m)\)
   (so each \(f_i\) is a function from \(E\) to \(\R\)).
   From the mean value theorem in the \(x_1\) variable, we see that
   \[
-    f_i(x_0 + v_1 e_1) - f_i(x_0) = \frac{\partial f_i}{\partial x_1}(x_0 + t_i e_1) v_1
+    f_i(x_0 + v_1 e_1) - f_i(x_0) = \dfrac{\partial f_i}{\partial x_1}(x_0 + t_i e_1) v_1
   \]
   for some \(t_i\) between \(0\) and \(v_1\).
   This is done as follow:
   If \(v_1 = 0\), then by setting \(t_i = 0\) we have
   \[
-    f_i(x_0 + 0 e_1) - f_i(x_0) = 0_{\R^m} = \frac{\partial f_i}{\partial x_1}(x_0 + 0 e_1) \cdot 0.
+    f_i(x_0 + 0 e_1) - f_i(x_0) = 0_{\R^m} = \dfrac{\partial f_i}{\partial x_1}(x_0 + 0 e_1) \cdot 0.
   \]
   So suppose that \(0 < v_1\).
   First observe that for any \(y \in F\), we have
   \begin{align*}
-             & \frac{\partial f}{\partial x_1}(y) \in \R^m                                                                      \\
-    \implies & \lim_{t \to 0 ; t \neq 0, y + t e_1 \in F} \frac{f(y + t e_1) - f(y)}{t} \in \R^m    & \text{(by \cref{6.3.7})}  \\
-    \implies & \forall 1 \leq i \leq m,                                                                                         \\
-             & \lim_{t \to 0 ; t \neq 0, y + t e_1 \in F} \frac{f_i(y + t e_1) - f_i(y)}{t} \in \R. & \text{(by \cref{1.1.18})}
+             & \dfrac{\partial f}{\partial x_1}(y) \in \R^m                                                                         \\
+    \implies & \lim_{t \to 0 ; t \neq 0, y + t e_1 \in F} \dfrac{f(y + t e_1) - f(y)}{t} \in \R^m    &  & \text{(by \cref{6.3.7})}  \\
+    \implies & \forall 1 \leq i \leq m,                                                                                             \\
+             & \lim_{t \to 0 ; t \neq 0, y + t e_1 \in F} \dfrac{f_i(y + t e_1) - f_i(y)}{t} \in \R. &  & \text{(by \cref{1.1.18})}
   \end{align*}
   Since \(B_{(\R^n, l^2)}(x_0, \delta) \subseteq F\), by the definition of \(v_1\) we know that
   \begin{align*}
-             & \forall v \in [0, v_1], x_0 + v e_1 \in B_{(\R^n, l^2)}(x_0, \delta) \subseteq F                                                        \\
-    \implies & \forall 1 \leq i \leq m, \lim_{t \to 0 ; t \neq 0, x_0 + (v + t) e_1 \in F} \frac{f_i(x_0 + (v + t) e_1) - f_i(x_0 + v e_1)}{t} \in \R.
+             & \forall v \in [0, v_1], x_0 + v e_1 \in B_{(\R^n, l^2)}(x_0, \delta) \subseteq F                                                         \\
+    \implies & \forall 1 \leq i \leq m, \lim_{t \to 0 ; t \neq 0, x_0 + (v + t) e_1 \in F} \dfrac{f_i(x_0 + (v + t) e_1) - f_i(x_0 + v e_1)}{t} \in \R.
   \end{align*}
   If we define \(g_i : [0, v_1] \to \R\) for all \(1 \leq i \leq m\) as follow:
   \[
@@ -209,51 +209,51 @@
   \]
   then we know that
   \begin{align*}
-             & \lim_{t \to 0 ; t \neq 0, x_0 + (v + t) e_1 \in F} \frac{f_i(x_0 + (v + t) e_1) - f_i(x_0 + v e_1)}{t} \in \R \\
-    \implies & \lim_{t \to 0 ; t \neq 0, v + t \in [0, v_1]} \frac{g_i(v + t) - g_i(v)}{t} \in \R                            \\
-    \implies & \lim_{w \to v ; w \in [0, v_1] \setminus \{v\}} \frac{g_i(w) - g_i(v)}{w - v} \in \R                          \\
+             & \lim_{t \to 0 ; t \neq 0, x_0 + (v + t) e_1 \in F} \dfrac{f_i(x_0 + (v + t) e_1) - f_i(x_0 + v e_1)}{t} \in \R \\
+    \implies & \lim_{t \to 0 ; t \neq 0, v + t \in [0, v_1]} \dfrac{g_i(v + t) - g_i(v)}{t} \in \R                            \\
+    \implies & \lim_{w \to v ; w \in [0, v_1] \setminus \{v\}} \dfrac{g_i(w) - g_i(v)}{w - v} \in \R                          \\
     \implies & g_i'(v) \in \R
   \end{align*}
   for every \(1 \leq i \leq m\) and every \(v \in [0, v_1]\).
   Thus by mean value theorem we know that
   \begin{align*}
-             & \exists\ t_i \in (0, v_1) : g_i'(t_i) = \frac{g_i(v_1) - g_i(0)}{v_1 - 0}                                                                                            \\
-    \implies & \exists\ t_i \in (0, v_1) : \lim_{t \to t_i; t \in [0, v_1] \setminus \{t_i\}} \frac{g_i(t) - g_i(t_i)}{t - t_i} = \frac{g_i(v_1) - g_i(0)}{v_1 - 0}                 \\
-    \implies & \exists\ t_i \in (0, v_1) : \lim_{t \to 0; t \neq 0, t + t_i \in [0, v_1] \setminus \{t_i\}} \frac{g_i(t + t_i) - g_i(t_i)}{t} = \frac{g_i(v_1) - g_i(0)}{v_1 - 0}   \\
-    \implies & \exists\ t_i \in (0, v_1) :                                                                                                                                          \\
-             & \lim_{t \to 0; t \neq 0, t + t_i \in [0, v_1] \setminus \{t_i\}} \frac{f_i(x_0 + (t + t_i) e_1) - f_i(x_0 + t_i e_1)}{t} = \frac{f_i(x_0 + v_1 e_1) - f_i(x_0)}{v_1} \\
-    \implies & \exists\ t_i \in (0, v_1) : \frac{\partial f_i}{\partial x_1}(x_0 + t_i e_1) = \frac{f_i(x_0 + v_1 e_1) - f_i(x_0)}{v_1}                                             \\
-    \implies & \exists\ t_i \in (0, v_1) : \frac{\partial f_i}{\partial x_1}(x_0 + t_i e_1) v_1 = f_i(x_0 + v_1 e_1) - f_i(x_0).
+             & \exists\ t_i \in (0, v_1) : g_i'(t_i) = \dfrac{g_i(v_1) - g_i(0)}{v_1 - 0}                                                                                             \\
+    \implies & \exists\ t_i \in (0, v_1) : \lim_{t \to t_i; t \in [0, v_1] \setminus \{t_i\}} \dfrac{g_i(t) - g_i(t_i)}{t - t_i} = \dfrac{g_i(v_1) - g_i(0)}{v_1 - 0}                 \\
+    \implies & \exists\ t_i \in (0, v_1) : \lim_{t \to 0; t \neq 0, t + t_i \in [0, v_1] \setminus \{t_i\}} \dfrac{g_i(t + t_i) - g_i(t_i)}{t} = \dfrac{g_i(v_1) - g_i(0)}{v_1 - 0}   \\
+    \implies & \exists\ t_i \in (0, v_1) :                                                                                                                                            \\
+             & \lim_{t \to 0; t \neq 0, t + t_i \in [0, v_1] \setminus \{t_i\}} \dfrac{f_i(x_0 + (t + t_i) e_1) - f_i(x_0 + t_i e_1)}{t} = \dfrac{f_i(x_0 + v_1 e_1) - f_i(x_0)}{v_1} \\
+    \implies & \exists\ t_i \in (0, v_1) : \dfrac{\partial f_i}{\partial x_1}(x_0 + t_i e_1) = \dfrac{f_i(x_0 + v_1 e_1) - f_i(x_0)}{v_1}                                             \\
+    \implies & \exists\ t_i \in (0, v_1) : \dfrac{\partial f_i}{\partial x_1}(x_0 + t_i e_1) v_1 = f_i(x_0 + v_1 e_1) - f_i(x_0).
   \end{align*}
   The case \(v_1 < 0\) can be proven similarly.
   But we have
   \[
-    \abs{\frac{\partial f_i}{\partial x_j}(x_0 + t_i e_1) - \frac{\partial f_i}{\partial x_j}(x_0)} \leq \norm*{\frac{\partial f}{\partial x_j}(x_0 + t_i e_1) - \frac{\partial f}{\partial x_j}(x_0)} \leq \frac{\varepsilon}{nm}
+    \abs{\dfrac{\partial f_i}{\partial x_j}(x_0 + t_i e_1) - \dfrac{\partial f_i}{\partial x_j}(x_0)} \leq \norm*{\dfrac{\partial f}{\partial x_j}(x_0 + t_i e_1) - \dfrac{\partial f}{\partial x_j}(x_0)} \leq \dfrac{\varepsilon}{nm}
   \]
   and hence
   \[
-    \abs{f_i(x_0 + v_1 e_1) - f_i(x_0) - \frac{\partial f_i}{\partial x_1}(x_0) v_1} \leq \frac{\varepsilon \abs{v_1}}{nm}.
+    \abs{f_i(x_0 + v_1 e_1) - f_i(x_0) - \dfrac{\partial f_i}{\partial x_1}(x_0) v_1} \leq \dfrac{\varepsilon \abs{v_1}}{nm}.
   \]
   Summing this over all \(1 \leq i \leq m\) (and noting that \(\norm*{(y_1, \dots, y_m)} \leq \abs{y_1} + \dots + \abs{y_m}\) from the triangle inequality) we obtain
   \[
-    \norm*{f(x_0 + v_1 e_1) - f(x_0) - \frac{\partial f}{\partial x_1}(x_0) v_1} \leq \frac{\varepsilon \abs{v_1}}{n};
+    \norm*{f(x_0 + v_1 e_1) - f(x_0) - \dfrac{\partial f}{\partial x_1}(x_0) v_1} \leq \dfrac{\varepsilon \abs{v_1}}{n};
   \]
   since \(\abs{v_1} \leq \norm*{x - x_0}\), we thus have
   \[
-    \norm*{f(x_0 + v_1 e_1) - f(x_0) - \frac{\partial f}{\partial x_1}(x_0) v_1} \leq \frac{\varepsilon \norm*{x - x_0}}{n}.
+    \norm*{f(x_0 + v_1 e_1) - f(x_0) - \dfrac{\partial f}{\partial x_1}(x_0) v_1} \leq \dfrac{\varepsilon \norm*{x - x_0}}{n}.
   \]
   A similar argument gives
   \[
-    \norm*{f(x_0 + v_1 e_1 + v_2 e_2) - f(x_0 + v_1 e_1) - \frac{\partial f}{\partial x_2}(x_0) v_2} \leq \frac{\varepsilon \norm*{x - x_0}}{n}
+    \norm*{f(x_0 + v_1 e_1 + v_2 e_2) - f(x_0 + v_1 e_1) - \dfrac{\partial f}{\partial x_2}(x_0) v_2} \leq \dfrac{\varepsilon \norm*{x - x_0}}{n}
   \]
   and so forth up to
   \begin{align*}
-     & \norm*{f(x_0 + v_1 e_1 + \dots + v_n e_n) - f(x_0 + v_1 e_1 + \dots + v_{n - 1} e_{n - 1}) - \frac{\partial f}{\partial x_n}(x_0) v_n} \\
-     & \leq \frac{\varepsilon \norm*{x - x_0}}{n}.
+     & \norm*{f(x_0 + v_1 e_1 + \dots + v_n e_n) - f(x_0 + v_1 e_1 + \dots + v_{n - 1} e_{n - 1}) - \dfrac{\partial f}{\partial x_n}(x_0) v_n} \\
+     & \leq \dfrac{\varepsilon \norm*{x - x_0}}{n}.
   \end{align*}
   If we sum these \(n\) inequalities and use the triangle inequality \(\norm*{x + y} \leq \norm*{x} + \norm*{y}\), we obtain a telescoping series which simplifies to
   \[
-    \norm*{f(x_0 + v_1 e_1 + \dots + v_n e_n) - f(x_0) - \sum_{j = 1}^n \frac{\partial f}{\partial x_j}(x_0) v_j} \leq \varepsilon \norm*{x - x_0}
+    \norm*{f(x_0 + v_1 e_1 + \dots + v_n e_n) - f(x_0) - \sum_{j = 1}^n \dfrac{\partial f}{\partial x_j}(x_0) v_j} \leq \varepsilon \norm*{x - x_0}
   \]
   as desired.
 \end{proof}
@@ -261,11 +261,11 @@
 \begin{ac}\label{ac:6.3.3}
   From \cref{6.3.8} and \cref{6.3.5} we see that if the partial derivatives of a function \(f : E \to \R^m\) exist and are continuous on some set \(F\), then all the directional derivatives also exist at every interior point \(x_0\) of \(F\), and we have the formula
   \[
-    D_{(v_1, \dots, v_n)} f(x_0) = \sum_{j = 1}^n v_j \frac{\partial f}{\partial x_j}(x_0).
+    D_{(v_1, \dots, v_n)} f(x_0) = \sum_{j = 1}^n v_j \dfrac{\partial f}{\partial x_j}(x_0).
   \]
   In particular, if \(f : E \to \R\) is a real-valued function, and we define the \emph{gradient} \(\nabla f(x_0)\) of \(f\) at \(x_0\) to be the \(n\)-dimensional row vector
   \[
-    \nabla f(x_0) \coloneqq \bigg(\frac{\partial f}{\partial x_1}(x_0), \dots, \frac{\partial f}{\partial x_n}(x_0)\bigg),
+    \nabla f(x_0) \coloneqq \bigg(\dfrac{\partial f}{\partial x_1}(x_0), \dots, \dfrac{\partial f}{\partial x_n}(x_0)\bigg),
   \]
   then we have the familiar formula
   \[
@@ -277,7 +277,7 @@
 \begin{ac}\label{ac:6.3.4}
   More generally, if \(f : E \to \R^m\) is a function taking values in \(\R^m\), with \(f = (f_1, \dots, f_m)\), and \(x_0\) is in the interior of the region where the partial derivatives of \(f\) exist and are continuous, then we have from \cref{6.3.8} that
   \[
-    f'(x_0)\big((v_j)_{1 \leq j \leq n}\big) = \sum_{j = 1}^n v_j \frac{\partial f}{\partial x_j}(x_0) = \bigg(\sum_{j = 1}^n v_j \frac{\partial f_i}{\partial x_j}(x_0)\bigg)_{1 \leq i \leq m},
+    f'(x_0)\big((v_j)_{1 \leq j \leq n}\big) = \sum_{j = 1}^n v_j \dfrac{\partial f}{\partial x_j}(x_0) = \bigg(\sum_{j = 1}^n v_j \dfrac{\partial f_i}{\partial x_j}(x_0)\bigg)_{1 \leq i \leq m},
   \]
   which we can rewrite as
   \[
@@ -285,12 +285,12 @@
   \]
   where \(D f(x_0)\) is the \(m \times n\) matrix
   \begin{align*}
-    D f(x_0) & \coloneqq \bigg(\frac{\partial f_i}{\partial x_j}(x_0)\bigg)_{1 \leq i \leq m ; 1 \leq j \leq n}                                    \\
+    D f(x_0) & \coloneqq \bigg(\dfrac{\partial f_i}{\partial x_j}(x_0)\bigg)_{1 \leq i \leq m ; 1 \leq j \leq n}                                      \\
              & = \begin{pmatrix}
-                   \frac{\partial f_1}{\partial x_1}(x_0) & \frac{\partial f_1}{\partial x_2}(x_0) & \dots  & \frac{\partial f_1}{\partial x_n}(x_0) \\
-                   \frac{\partial f_2}{\partial x_1}(x_0) & \frac{\partial f_2}{\partial x_2}(x_0) & \dots  & \frac{\partial f_2}{\partial x_n}(x_0) \\
-                   \vdots                                 & \vdots                                 & \ddots & \vdots                                 \\
-                   \frac{\partial f_m}{\partial x_1}(x_0) & \frac{\partial f_m}{\partial x_2}(x_0) & \dots  & \frac{\partial f_m}{\partial x_n}(x_0)
+                   \dfrac{\partial f_1}{\partial x_1}(x_0) & \dfrac{\partial f_1}{\partial x_2}(x_0) & \dots  & \dfrac{\partial f_1}{\partial x_n}(x_0) \\
+                   \dfrac{\partial f_2}{\partial x_1}(x_0) & \dfrac{\partial f_2}{\partial x_2}(x_0) & \dots  & \dfrac{\partial f_2}{\partial x_n}(x_0) \\
+                   \vdots                                  & \vdots                                  & \ddots & \vdots                                  \\
+                   \dfrac{\partial f_m}{\partial x_1}(x_0) & \dfrac{\partial f_m}{\partial x_2}(x_0) & \dots  & \dfrac{\partial f_m}{\partial x_n}(x_0)
                  \end{pmatrix}.
   \end{align*}
   Thus we have
@@ -301,7 +301,7 @@
   The matrix \(D f(x_0)\) is sometimes also called the \emph{derivative matrix} or \emph{differential matrix} of \(f\) at \(x_0\), and is closely related to the total derivative \(f'(x_0)\).
   One can also write \(Df\) as
   \[
-    D f(x_0) = \bigg(\frac{\partial f}{\partial x_1}(x_0)^\top, \frac{\partial f}{\partial x_2}(x_0)^\top, \dots, \frac{\partial f}{\partial x_n}(x_0)^\top\bigg),
+    D f(x_0) = \bigg(\dfrac{\partial f}{\partial x_1}(x_0)^\top, \dfrac{\partial f}{\partial x_2}(x_0)^\top, \dots, \dfrac{\partial f}{\partial x_n}(x_0)^\top\bigg),
   \]
   i.e., each of the columns of \(D f(x_0)\) is one of the partial derivatives of \(f\), expressed as a column vector.
   Or one could write
@@ -329,37 +329,37 @@
 
 \begin{ex}\label{ex:6.3.2}
   Let \(E\) be a subset of \(\R^n\), let \(f : E \to \R^m\) be a function, let \(x_0\) be an interior point of \(E\), and let \(1 \leq j \leq n\).
-  Show that \(\frac{\partial f}{\partial x_j}(x_0)\) exists if and only if \(D_{e_j} f(x_0)\) and \(D_{-e_j} f(x_0)\) exist and are negatives of each other
+  Show that \(\dfrac{\partial f}{\partial x_j}(x_0)\) exists if and only if \(D_{e_j} f(x_0)\) and \(D_{-e_j} f(x_0)\) exist and are negatives of each other
   (thus \(D_{e_j} f(x_0) = -D_{-e_j} f(x_0)\));
-  furthermore, one has \(\frac{\partial f}{\partial x_j}(x_0) = D_{e_j} f(x_0)\) in this case.
+  furthermore, one has \(\dfrac{\partial f}{\partial x_j}(x_0) = D_{e_j} f(x_0)\) in this case.
 \end{ex}
 
 \begin{proof}
   We have
   \begin{align*}
-     & \frac{\partial f}{\partial x_j}(x_0)                                                                               \\
-     & = \lim_{t \to 0 ; t \neq 0, x_0 + t e_j \in E} \frac{f(x_0 + t e_j) - f(x_0)}{t}        & \text{(by \cref{6.3.7})} \\
-     & = \begin{cases}
-           \lim_{t \to 0 ; t > 0, x_0 + t e_j \in E} \frac{f(x_0 + t e_j) - f(x_0)}{t} \\
-           \lim_{t \to 0 ; t < 0, x_0 + t e_j \in E} \frac{f(x_0 + t e_j) - f(x_0)}{t}
-         \end{cases}          & \text{(by Proposition 9.5.3 in Analysis I)}                                      \\
-     & = \begin{cases}
-           \lim_{t \to 0 ; t > 0, x_0 + t e_j \in E} \frac{f(x_0 + t e_j) - f(x_0)}{t} \\
-           \lim_{t \to 0 ; t > 0, x_0 + t e_j \in E} \frac{f(x_0 - t e_j) - f(x_0)}{-t}
-         \end{cases}                                      \\
-     & = \begin{cases}
-           \lim_{t \to 0 ; t > 0, x_0 + t e_j \in E} \frac{f(x_0 + t e_j) - f(x_0)}{t} \\
-           -\lim_{t \to 0 ; t > 0, x_0 + t e_j \in E} \frac{f\big(x_0 + t (-e_j)\big) - f(x_0)}{t}
-         \end{cases}                           \\
-     & = \begin{cases}
+     & \dfrac{\partial f}{\partial x_j}(x_0)                                                                                  \\
+     & = \lim_{t \to 0 ; t \neq 0, x_0 + t e_j \in E} \dfrac{f(x_0 + t e_j) - f(x_0)}{t}        &  & \text{(by \cref{6.3.7})} \\
+     & = \begin{dcases}
+           \lim_{t \to 0 ; t > 0, x_0 + t e_j \in E} \dfrac{f(x_0 + t e_j) - f(x_0)}{t} \\
+           \lim_{t \to 0 ; t < 0, x_0 + t e_j \in E} \dfrac{f(x_0 + t e_j) - f(x_0)}{t}
+         \end{dcases}          &  & \text{(by Proposition 9.5.3 in Analysis I)}                                         \\
+     & = \begin{dcases}
+           \lim_{t \to 0 ; t > 0, x_0 + t e_j \in E} \dfrac{f(x_0 + t e_j) - f(x_0)}{t} \\
+           \lim_{t \to 0 ; t > 0, x_0 + t e_j \in E} \dfrac{f(x_0 - t e_j) - f(x_0)}{-t}
+         \end{dcases}                                         \\
+     & = \begin{dcases}
+           \lim_{t \to 0 ; t > 0, x_0 + t e_j \in E} \dfrac{f(x_0 + t e_j) - f(x_0)}{t} \\
+           -\lim_{t \to 0 ; t > 0, x_0 + t e_j \in E} \dfrac{f\big(x_0 + t (-e_j)\big) - f(x_0)}{t}
+         \end{dcases}                              \\
+     & = \begin{dcases}
            D_{e_j} f(x_0) \\
            - D_{-e_j} f(x_0)
-         \end{cases}.                                                                       & \text{(by \cref{6.3.1})}
+         \end{dcases}.                                                                        &  & \text{(by \cref{6.3.1})}
   \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.3.3}
-  Let \(f : \R^2 \to \R\) be the function defined by \(f(x, y) \coloneqq \frac{x^3}{x^2 + y^2}\) when \((x, y) \neq (0, 0)\), and \(f(0, 0) \coloneqq 0\).
+  Let \(f : \R^2 \to \R\) be the function defined by \(f(x, y) \coloneqq \dfrac{x^3}{x^2 + y^2}\) when \((x, y) \neq (0, 0)\), and \(f(0, 0) \coloneqq 0\).
   Show that \(f\) is not differentiable at \((0, 0)\), despite being differentiable in every direction \(v \in \R^2\) at \((0, 0)\).
   Explain why this does not contradict \cref{6.3.8}.
 \end{ex}
@@ -368,16 +368,16 @@
   First we show that \(f\) is differentiable in every direction \(v \in \R^2\) at \((0, 0)\).
   Since
   \begin{align*}
-    \forall v \in \R \setminus \{(0, 0)\}, & \lim_{t \to 0 ; t > 0, (0, 0) + tv \in \R^2} \frac{f\big((0, 0) + tv\big) - f(0, 0)}{t}    \\
-                                           & = \lim_{t \to 0 ; t > 0, (0, 0) + tv \in \R^2} \frac{f(tv)}{t}                             \\
-                                           & = \lim_{t \to 0 ; t > 0, (0, 0) + tv \in \R^2} \frac{t^3 v_1^3}{(t^2 v_1^2 + t^2 v_2^2) t} \\
-                                           & = \lim_{t \to 0 ; t > 0, (0, 0) + tv \in \R^2} \frac{v_1^3}{v_1^2 + v_2^2}                 \\
-                                           & = \frac{v_1^3}{v_1^2 + v_2^2}
+    \forall v \in \R \setminus \{(0, 0)\}, & \lim_{t \to 0 ; t > 0, (0, 0) + tv \in \R^2} \dfrac{f\big((0, 0) + tv\big) - f(0, 0)}{t}    \\
+                                           & = \lim_{t \to 0 ; t > 0, (0, 0) + tv \in \R^2} \dfrac{f(tv)}{t}                             \\
+                                           & = \lim_{t \to 0 ; t > 0, (0, 0) + tv \in \R^2} \dfrac{t^3 v_1^3}{(t^2 v_1^2 + t^2 v_2^2) t} \\
+                                           & = \lim_{t \to 0 ; t > 0, (0, 0) + tv \in \R^2} \dfrac{v_1^3}{v_1^2 + v_2^2}                 \\
+                                           & = \dfrac{v_1^3}{v_1^2 + v_2^2}
   \end{align*}
   and
   \begin{align*}
-     & \lim_{t \to 0 ; t > 0, (0, 0) + t (0, 0) \in \R^2} \frac{f\big((0, 0) + t(0, 0)\big) - f(0, 0)}{t} \\
-     & = \lim_{t \to 0 ; t > 0, (0, 0) + t (0, 0) \in \R^2} 0                                             \\
+     & \lim_{t \to 0 ; t > 0, (0, 0) + t (0, 0) \in \R^2} \dfrac{f\big((0, 0) + t(0, 0)\big) - f(0, 0)}{t} \\
+     & = \lim_{t \to 0 ; t > 0, (0, 0) + t (0, 0) \in \R^2} 0                                              \\
      & = 0,
   \end{align*}
   by \cref{6.3.1} we know that \(f\) is differentiable in every direction \(v \in \R^2\) at \((0, 0)\).
@@ -390,35 +390,35 @@
   \]
   But
   \[
-    f'(0, 0)(1, 1) = \frac{1^3}{1^2 + 1^2} = \frac{1}{2}
+    f'(0, 0)(1, 1) = \dfrac{1^3}{1^2 + 1^2} = \dfrac{1}{2}
   \]
   is not equal to
   \[
-    \sum_{i = 1}^2 1 f'(0, 0)(e_i) = f'(0, 0)\big((1, 0)\big) + f'(0, 0)\big((0, 1)\big) = \frac{1^3}{1^2 + 0^2} + \frac{0^3}{0^2 + 1^2} = 1,
+    \sum_{i = 1}^2 1 f'(0, 0)(e_i) = f'(0, 0)\big((1, 0)\big) + f'(0, 0)\big((0, 1)\big) = \dfrac{1^3}{1^2 + 0^2} + \dfrac{0^3}{0^2 + 1^2} = 1,
   \]
   a contradiction.
   Thus \(f\) is not differentiable at \((0, 0)\).
 
   Now we show that this does not contradict \cref{6.3.8}.
-  We claim that \(\frac{\partial f}{\partial x}\) is not continuous at \((0, 0)\).
+  We claim that \(\dfrac{\partial f}{\partial x}\) is not continuous at \((0, 0)\).
   Since
   \[
-    D_{e_1} f(0, 0) = \frac{1^3}{1^2 + 0^2} = 1 = -\frac{(-1)^3}{(-1)^2 + 0^2} = -D_{-e_1} f(0, 0),
+    D_{e_1} f(0, 0) = \dfrac{1^3}{1^2 + 0^2} = 1 = -\dfrac{(-1)^3}{(-1)^2 + 0^2} = -D_{-e_1} f(0, 0),
   \]
-  by \cref{ex:6.3.2} we know that \(\frac{\partial f}{\partial x}(0, 0) = 1\).
+  by \cref{ex:6.3.2} we know that \(\dfrac{\partial f}{\partial x}(0, 0) = 1\).
   But for each \((x_0, y_0) \in \R^2 \setminus \{(0, 0)\}\), we have
   \begin{align*}
-     & = \frac{\partial f}{\partial x}(x_0, y_0)                                                                                                                                                                                      \\
-     & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \R^2} \frac{f\big((x_0, y_0) + t(1, 0)\big) - f(x_0, y_0)}{t}                                                                                                             \\
-     & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \R^2} \frac{f(x_0 + t, y_0) - f(x_0, y_0)}{t}                                                                                                                             \\
-     & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \R^2} \frac{\frac{(x_0 + t)^3}{(x_0 + t)^2 + y_0^2} - \frac{x_0^3}{x_0^2 + y_0^2}}{t}                                                                                     \\
-     & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \R^2} \frac{(x_0 + t)^3 (x_0^2 + y_0^2) - x_0^3 \big((x_0 + t)^2 + y_0^2\big)}{t \big((x_0 + t)^2 + y_0^2\big) (x_0^2 + y_0^2)}                                           \\
-     & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \R^2} \frac{(x_0^3 + 3 x_0^2 t + 3 x_0 t^2 + t^3) (x_0^2 + y_0^2) - x_0^3 (x_0^2 + 2 t x_0 + t^2 + y_0^2)}{t (x_0^2 + 2 t x_0 + t^2 + y_0^2) (x_0^2 + y_0^2)}             \\
-     & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \R^2} \frac{(3 x_0^2 + 3 x_0 t + t^2) (x_0^2 + y_0^2) - x_0^3 (2 x_0 + t)}{(x_0^2 + 2 t x_0 + t^2 + y_0^2) (x_0^2 + y_0^2)}                                               \\
-     & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \R^2} \frac{x_0^4 + 2 t x_0^3 + t^2 x_0^2 + 3 x_0^2 y_0^2 + 3 t x_0 y_0^2 + t^2 y_0^2}{x_0^4 + 2 t x_0^3 + t^2 x_0^2 + 2 x_0^2 y_0^2 + 2 t x_0 y_0^2 + t^2 y_0^2 + y_0^4} \\
-     & = \frac{x_0^4 + 3 x_0^2 y_0^2}{x_0^4 + 2 x_0^2 y_0^2 + y_0^4}.
+     & = \dfrac{\partial f}{\partial x}(x_0, y_0)                                                                                                                                                                                      \\
+     & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \R^2} \dfrac{f\big((x_0, y_0) + t(1, 0)\big) - f(x_0, y_0)}{t}                                                                                                             \\
+     & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \R^2} \dfrac{f(x_0 + t, y_0) - f(x_0, y_0)}{t}                                                                                                                             \\
+     & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \R^2} \dfrac{\dfrac{(x_0 + t)^3}{(x_0 + t)^2 + y_0^2} - \dfrac{x_0^3}{x_0^2 + y_0^2}}{t}                                                                                   \\
+     & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \R^2} \dfrac{(x_0 + t)^3 (x_0^2 + y_0^2) - x_0^3 \big((x_0 + t)^2 + y_0^2\big)}{t \big((x_0 + t)^2 + y_0^2\big) (x_0^2 + y_0^2)}                                           \\
+     & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \R^2} \dfrac{(x_0^3 + 3 x_0^2 t + 3 x_0 t^2 + t^3) (x_0^2 + y_0^2) - x_0^3 (x_0^2 + 2 t x_0 + t^2 + y_0^2)}{t (x_0^2 + 2 t x_0 + t^2 + y_0^2) (x_0^2 + y_0^2)}             \\
+     & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \R^2} \dfrac{(3 x_0^2 + 3 x_0 t + t^2) (x_0^2 + y_0^2) - x_0^3 (2 x_0 + t)}{(x_0^2 + 2 t x_0 + t^2 + y_0^2) (x_0^2 + y_0^2)}                                               \\
+     & = \lim_{t \to 0 ; t \neq 0, (x_0, y_0) + t(1, 0) \in \R^2} \dfrac{x_0^4 + 2 t x_0^3 + t^2 x_0^2 + 3 x_0^2 y_0^2 + 3 t x_0 y_0^2 + t^2 y_0^2}{x_0^4 + 2 t x_0^3 + t^2 x_0^2 + 2 x_0^2 y_0^2 + 2 t x_0 y_0^2 + t^2 y_0^2 + y_0^4} \\
+     & = \dfrac{x_0^4 + 3 x_0^2 y_0^2}{x_0^4 + 2 x_0^2 y_0^2 + y_0^4}.
   \end{align*}
-  Thus we see that \((x_0, y_0) \to (0, 0)\) implies \(\frac{\partial f}{\partial x}(x_0, y_0) \not\to 1\), which means \(\frac{\partial f}{\partial x}\) is not continuous at \((0, 0)\).
+  Thus we see that \((x_0, y_0) \to (0, 0)\) implies \(\dfrac{\partial f}{\partial x}(x_0, y_0) \not\to 1\), which means \(\dfrac{\partial f}{\partial x}\) is not continuous at \((0, 0)\).
 \end{proof}
 
 \begin{ex}\label{ex:6.3.4}
@@ -431,8 +431,8 @@
   First we show the case when the domain of \(f\) is \(\R^n\).
   By \cref{ac:6.3.2} we know that
   \begin{align*}
-             & \forall x_0 \in \R^n, \forall y \in \R^n, f'(x_0)(y) = \sum_{j = 1}^n y_j \frac{\partial f}{\partial x_j}(x_0) = 0_{\R^m} \\
-    \implies & \forall x_0 \in \R^n, \forall 1 \leq j \leq n, \frac{\partial f}{\partial x_j}(x_0) = 0_{\R^m}.
+             & \forall x_0 \in \R^n, \forall y \in \R^n, f'(x_0)(y) = \sum_{j = 1}^n y_j \dfrac{\partial f}{\partial x_j}(x_0) = 0_{\R^m} \\
+    \implies & \forall x_0 \in \R^n, \forall 1 \leq j \leq n, \dfrac{\partial f}{\partial x_j}(x_0) = 0_{\R^m}.
   \end{align*}
   Let \(y \in \R^n\).
   Since
@@ -441,8 +441,8 @@
   \]
   by mean value theorem (cf. the proof of \cref{6.3.8}) we know that
   \begin{align*}
-     & \exists\ t_i \in (y_1, 0) \cup (0, y_1) :                                                                      \\
-     & f_i(0_{\R^n} + y_1 e_1) - f_i(0_{\R^n}) = \frac{\partial f_i}{\partial x_1}(0_{\R^n} + t_i e_1) y_1 = 0_{\R^m}
+     & \exists\ t_i \in (y_1, 0) \cup (0, y_1) :                                                                       \\
+     & f_i(0_{\R^n} + y_1 e_1) - f_i(0_{\R^n}) = \dfrac{\partial f_i}{\partial x_1}(0_{\R^n} + t_i e_1) y_1 = 0_{\R^m}
   \end{align*}
   for all \(1 \leq i \leq m\).
   Similar arguments show that
@@ -467,8 +467,8 @@
   Now we show the case when \(\Omega\), the domain of \(f\), is an open connected subset of \(\R^n\).
   By \cref{ac:6.3.2} we know that
   \begin{align*}
-             & \forall x_0 \in \Omega, \forall y \in \Omega, f'(x_0)(y) = \sum_{j = 1}^n y_j \frac{\partial f}{\partial x_j}(x_0) = 0_{\R^m} \\
-    \implies & \forall x_0 \in \Omega, \forall 1 \leq j \leq n, \frac{\partial f}{\partial x_j}(x_0) = 0.
+             & \forall x_0 \in \Omega, \forall y \in \Omega, f'(x_0)(y) = \sum_{j = 1}^n y_j \dfrac{\partial f}{\partial x_j}(x_0) = 0_{\R^m} \\
+    \implies & \forall x_0 \in \Omega, \forall 1 \leq j \leq n, \dfrac{\partial f}{\partial x_j}(x_0) = 0.
   \end{align*}
   Let \(x_0 \in \Omega\) and let \(d = d_{l^2}|_{\Omega \times \Omega}\).
   Since \((\Omega, d)\) is open, by \cref{1.2.15}(a) we know that
@@ -480,8 +480,8 @@
   We write \(y = x_0 + v_1 e_1 + \dots + v_n e_n\).
   By mean value theorem (cf. the proof of \cref{6.3.8}) we know that
   \begin{align*}
-     & \exists\ t_i \in (v_1, 0) \cup (0, v_1) :                                                       \\
-     & f_i(x_0 + v_1 e_1) - f_i(x_0) = \frac{\partial f_i}{\partial x_1}(x_0 + t_i e_1) v_1 = 0_{\R^m}
+     & \exists\ t_i \in (v_1, 0) \cup (0, v_1) :                                                        \\
+     & f_i(x_0 + v_1 e_1) - f_i(x_0) = \dfrac{\partial f_i}{\partial x_1}(x_0 + t_i e_1) v_1 = 0_{\R^m}
   \end{align*}
   for all \(1 \leq i \leq m\).
   Similar arguments show that
@@ -505,11 +505,11 @@
   Since \(x_0\) is arbitrary, we conclude that \(f\) is constant on every open ball of \(\Omega\).
   But by \cref{2.4.1} we know that \((\Omega, d)\) is connected implies
   \begin{align*}
-             & \forall x_0, y_0 \in \Omega, \exists\ \delta_1, \delta_2 \in \R^+ : \begin{cases}
+             & \forall x_0, y_0 \in \Omega, \exists\ \delta_1, \delta_2 \in \R^+ : \begin{dcases}
                                                                                      B_{(\Omega, d)}(x_0, \delta_1) \subseteq \Omega \\
                                                                                      B_{(\Omega, d)}(y_0, \delta_2) \subseteq \Omega \\
                                                                                      B_{(\Omega, d)}(x_0, \delta_1) \cap B_{(\Omega, d)}(y_0, \delta_2) \neq \emptyset
-                                                                                   \end{cases} \\
+                                                                                   \end{dcases} \\
     \implies & \forall z \in B_{(\Omega, d)}(x_0, \delta_1) \cap B_{(\Omega, d)}(y_0, \delta_2), f(x_0) = f(z) = f(y_0).
   \end{align*}
   Thus \(f\) is constant on \(\Omega\).

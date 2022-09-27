@@ -71,12 +71,12 @@
       & \quad - \Bigg(\sum_{n < n_0 : n \in B} 10^{-n} + \sum_{n > n_0 : n \in B} 10^{-n}\Bigg)       \\
       & = 10^{-n_0} + \sum_{n > n_0 : n \in A} 10^{-n} - \sum_{n > n_0 : n \in B} 10^{-n}             \\
       & \geq 10^{-n_0} + 0 - \sum_{n > n_0} 10^{-n}                                                   \\
-      & \geq 10^{-n_0} - \frac{1}{9} 10^{-n_0}                                                        \\
+      & \geq 10^{-n_0} - \dfrac{1}{9} 10^{-n_0}                                                       \\
       & > 0,
   \end{align*}
   a contradiction, where we have used the geometric series lemma (\cref{7.3.3}) to sum
   \[
-    \sum_{n > n_0} 10^{-n} = \sum_{m = 0}^\infty 10^{-(n_0 + 1 + m)} = 10^{-n_0 - 1} \sum_{m = 0}^\infty 10^{-m} = \frac{1}{9} 10^{-n_0}.
+    \sum_{n > n_0} 10^{-n} = \sum_{m = 0}^\infty 10^{-(n_0 + 1 + m)} = 10^{-n_0 - 1} \sum_{m = 0}^\infty 10^{-m} = \dfrac{1}{9} 10^{-n_0}.
   \]
   Thus \(f\) is injective, which means that \(f(2^{\N})\) has the same cardinality as \(2^{\N}\) and is thus uncountable.
   Since \(f(2^{\N})\) is a subset of \(\R\), this forces \(\R\) to be uncountable also (otherwise this would contradict \cref{8.1.7}), and we are done.
@@ -110,11 +110,11 @@
   Let \(x \in X\).
   Then we have
   \begin{align*}
-    \#(2^X) & = \#(2^{(X \setminus \{x\}) \cup \{x\}})                                            \\
-            & = \#(2^{X \setminus \{x\}}) \times \#(2^{\{x\}}) & \text{(by \cref{ex:3.6.6})}      \\
-            & = 2^n \times \#(2^{\{x\}})                       & \text{(by induction hypothesis)} \\
-            & = 2^n \times \#(\{\emptyset, \{x\}\})                                               \\
-            & = 2^n \times 2                                                                      \\
+    \#(2^X) & = \#(2^{(X \setminus \{x\}) \cup \{x\}})                                               \\
+            & = \#(2^{X \setminus \{x\}}) \times \#(2^{\{x\}}) &  & \text{(by \cref{ex:3.6.6})}      \\
+            & = 2^n \times \#(2^{\{x\}})                       &  & \text{(by induction hypothesis)} \\
+            & = 2^n \times \#(\{\emptyset, \{x\}\})                                                  \\
+            & = 2^n \times 2                                                                         \\
             & = 2^{n + 1}.
   \end{align*}
   This closes the induction.
@@ -140,10 +140,10 @@
   Suppose for sake of contradiction that \(D_{n + 1} \cap D_{n + k + 1} \neq \emptyset\).
   Then we have
   \begin{align*}
-             & \exists\ x : (x \in D_{n + 1} \cap D_{n + k + 1})                                                            \\
-    \implies & \exists\ x : \big(x \in f(D_n) \cap f(D_{n + k})\big)                                                        \\
-    \implies & \exists\ z, z' : \big(z \in D_n \land z' \in D_{n + k} \land f(z) = f(z')\big)                               \\
-    \implies & z = z'.                                                                        & \text{(\(f\) is injective)}
+             & \exists\ x : (x \in D_{n + 1} \cap D_{n + k + 1})                                                               \\
+    \implies & \exists\ x : \big(x \in f(D_n) \cap f(D_{n + k})\big)                                                           \\
+    \implies & \exists\ z, z' : \big(z \in D_n \land z' \in D_{n + k} \land f(z) = f(z')\big)                                  \\
+    \implies & z = z'.                                                                        &  & \text{(\(f\) is injective)}
   \end{align*}
   But by induction hypothesis we know that \(D_n \cap D_{n + k} = \emptyset\), a contradiction.
   Thus \(D_{n + 1} \cap D_{n + k + 1} = \emptyset\).
@@ -152,20 +152,20 @@
   Now we use \(P(n)\) to show that \(\forall n, m \in \N\), \(n \neq m \implies D_n \cap D_m = \emptyset\).
   Since \(m \neq n\), we have
   \[
-    \begin{cases}
+    \begin{dcases}
       n = m + k & \text{if } m < n, \\
       m = n + k & \text{if } n < m,
-    \end{cases}
+    \end{dcases}
   \]
   where \(k \in \Z^+\).
   Using \(P(n)\) we can thus have \(D_n \cap D_m = \emptyset\).
 
   Finally we show that if \(g : A \to B\) is a function where
   \[
-    \forall x \in A : g(x) = \begin{cases}
+    \forall x \in A : g(x) = \begin{dcases}
       f^{-1}(x) & \text{if } x \in \bigcup_{n = 1}^\infty D_n, \\
       x         & \text{otherwise},
-    \end{cases}
+    \end{dcases}
   \]
   then \(g\) is bijective.
   Since \(f\) is injective, \(f\) is thus bijective from \(\bigcup_{n = 0}^\infty D_n\) to \(f(\bigcup_{n = 0}^\infty D_n)\).
@@ -200,9 +200,9 @@
           This is true since \(f\) is bijective from \(\bigcup_{n = 0}^\infty D_n\) to \(\bigcup_{n = 1}^\infty D_n\).
     \item If \(y \in B \setminus (\bigcup_{n = 0}^\infty D_n)\), then we know that \(y \in A\) since
           \begin{align*}
-            B \setminus \bigcup_{n = 0}^\infty D_n & = B \setminus \bigg((B \setminus A) \cup (\bigcup_{n = 1}^\infty D_n)\bigg)                                                     \\
-                                                   & = \bigg(B \setminus (B \setminus A)\bigg) \cap \bigg(B \setminus (\bigcup_{n = 1}^\infty D_n)\bigg) & \text{(by \cref{3.1.28})} \\
-                                                   & = (A \cap B) \cap \bigg(B \setminus (\bigcup_{n = 1}^\infty D_n)\bigg)                                                          \\
+            B \setminus \bigcup_{n = 0}^\infty D_n & = B \setminus \bigg((B \setminus A) \cup (\bigcup_{n = 1}^\infty D_n)\bigg)                                                        \\
+                                                   & = \bigg(B \setminus (B \setminus A)\bigg) \cap \bigg(B \setminus (\bigcup_{n = 1}^\infty D_n)\bigg) &  & \text{(by \cref{3.1.28})} \\
+                                                   & = (A \cap B) \cap \bigg(B \setminus (\bigcup_{n = 1}^\infty D_n)\bigg)                                                             \\
                                                    & \subseteq A.
           \end{align*}
           Since \(y \notin \bigcup_{n = 0}^\infty D_n\), we have \(g(y) = y\).
@@ -235,10 +235,10 @@
   By \cref{ex:8.3.2} we know that \(\forall i, j \in \N\), \(i \neq j \implies D_i \cap D_j = \emptyset\).
   Now let \(h : f\big(g(B)\big) \to f(A)\) be a function as follow:
   \[
-    \forall x \in f\big(g(B)\big), h(x) = \begin{cases}
+    \forall x \in f\big(g(B)\big), h(x) = \begin{dcases}
       (g^{-1} \circ f^{-1})(x) & \text{if } x \in \bigcup_{n = 1}^\infty D_n,    \\
       x                        & \text{if } x \notin \bigcup_{n = 1}^\infty D_n.
-    \end{cases}
+    \end{dcases}
   \]
   By \cref{ex:8.3.2} we know that \(h\) is bijective.
   Thus by \cref{3.6.1} we know \(f(A)\) and \(f\big(g(B)\big)\) have the same cardinality.

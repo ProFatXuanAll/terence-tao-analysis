@@ -3,15 +3,15 @@
 \begin{defn}[Exponential function]\label{4.5.1}
   For every real number \(x\), we define the \emph{exponential function} \(\exp(x)\) to be the real number
   \[
-    \exp(x) \coloneqq \sum_{n = 0}^\infty \frac{x^n}{n!}.
+    \exp(x) \coloneqq \sum_{n = 0}^\infty \dfrac{x^n}{n!}.
   \]
 \end{defn}
 
 \begin{thm}[Basic properties of exponential]\label{4.5.2}
   \quad
   \begin{enumerate}
-    \item For every real number \(x\), the series \(\sum_{n = 0}^\infty \frac{x^n}{n!}\) is absolutely convergent.
-          In particular, \(\exp(x)\) exists and is real for every \(x \in \R\), the power series \(\sum_{n = 0}^\infty \frac{x^n}{n!}\) has an infinite radius of convergence, and \(\exp\) is a real analytic function on \((-\infty, \infty)\).
+    \item For every real number \(x\), the series \(\sum_{n = 0}^\infty \dfrac{x^n}{n!}\) is absolutely convergent.
+          In particular, \(\exp(x)\) exists and is real for every \(x \in \R\), the power series \(\sum_{n = 0}^\infty \dfrac{x^n}{n!}\) has an infinite radius of convergence, and \(\exp\) is a real analytic function on \((-\infty, \infty)\).
     \item \(\exp\) is differentiable on \(R\), and for every \(x \in \R\), \(\exp'(x) = \exp(x)\).
     \item \(\exp\) is continuous on \(R\), and for every interval \([a, b]\), we have \(\int_{[a, b]} \exp(x) \; dx = \exp(b) - \exp(a)\).
     \item For every \(x, y \in \R\), we have \(\exp(x + y) = \exp(x) \exp(y)\).
@@ -25,21 +25,21 @@
 \begin{proof}{(a)}
   If \(x = 0\), then we have
   \[
-    1 = 1 + 0 = \frac{0^0}{0!} + \sum_{n = 1}^\infty \frac{0^n}{n!} = \sum_{n = 0}^\infty \frac{0^n}{n!} = \exp(0).
+    1 = 1 + 0 = \dfrac{0^0}{0!} + \sum_{n = 1}^\infty \dfrac{0^n}{n!} = \sum_{n = 0}^\infty \dfrac{0^n}{n!} = \exp(0).
   \]
   So suppose that \(x \in \R \setminus \{0\}\).
   Since
   \begin{align*}
-             & \limsup_{n \to \infty} \abs{\frac{x^{n + 1}}{(n + 1)!} \frac{n!}{x^n}} = \limsup_{n \to \infty} \frac{\abs{x}}{n + 1} = 0 < 1                          \\
-    \implies & \sum_{n = 0}^\infty \frac{x^n}{n!} \text{ is absolutely convergent},                                                          & \text{(by ratio test)}
+             & \limsup_{n \to \infty} \abs{\dfrac{x^{n + 1}}{(n + 1)!} \dfrac{n!}{x^n}} = \limsup_{n \to \infty} \dfrac{\abs{x}}{n + 1} = 0 < 1                             \\
+    \implies & \sum_{n = 0}^\infty \dfrac{x^n}{n!} \text{ is absolutely convergent},                                                            &  & \text{(by ratio test)}
   \end{align*}
   we know that \(\exp(x)\) exists for all \(x \in \R \setminus \{0\}\).
   Combine all proofs above we have
   \[
-    \forall x \in \R, \begin{cases}
-      \sum_{n = 0}^\infty \frac{x^n}{n!} \text{ is absolutely convergent} \\
+    \forall x \in \R, \begin{dcases}
+      \sum_{n = 0}^\infty \dfrac{x^n}{n!} \text{ is absolutely convergent} \\
       \exp(x) \in \R
-    \end{cases}
+    \end{dcases}
   \]
   and by \cref{4.2.1} \(\exp\) is real analytic on \((-\infty, \infty)\).
 \end{proof}
@@ -47,7 +47,7 @@
 \begin{proof}{(b)}
   By \cref{4.5.2}(a) we know that \(\exp\) is real analytic on \(\R\), thus by \cref{4.1.6}(d) we know that \(\exp\) is differentiable on \(\R\) and
   \[
-    \forall x \in \R, \exp'(x) = \sum_{n = 1}^\infty n \frac{x^{n - 1}}{n!} = \sum_{n = 1}^\infty \frac{x^{n - 1}}{(n - 1)!} = \sum_{n = 0}^\infty \frac{x^n}{n!} = \exp(x).
+    \forall x \in \R, \exp'(x) = \sum_{n = 1}^\infty n \dfrac{x^{n - 1}}{n!} = \sum_{n = 1}^\infty \dfrac{x^{n - 1}}{(n - 1)!} = \sum_{n = 0}^\infty \dfrac{x^n}{n!} = \exp(x).
   \]
 \end{proof}
 
@@ -57,14 +57,14 @@
   Then by \cref{4.5.2}(a) we know that \(\exp(a)\) and \(\exp(b)\) are well-defined.
   Since \([a, b] \subseteq \R\), by \cref{4.1.6}(e) we know that \(\exp\) is Riemann integrable on \([a, b]\) and
   \begin{align*}
-    \int_{[a, b]} \exp & = \int_a^b \exp(x) \; dx                                                                                         \\
-                       & = \sum_{n = 0}^\infty \frac{1}{n!} \frac{(b - 0)^{n + 1} - (a - 0)^{n + 1}}{n + 1} & \text{(by \cref{4.1.6}(e))} \\
-                       & = \sum_{n = 0}^\infty \frac{b^{n + 1} - a^{n + 1}}{(n + 1)!}                                                     \\
-                       & = \sum_{n = 1}^\infty \frac{b^n - a^n}{n!}                                                                       \\
-                       & = \frac{b^0 - a^0}{0!} + \sum_{n = 1}^\infty \frac{b^n - a^n}{n!}                                                \\
-                       & = \sum_{n = 0}^\infty \frac{b^n - a^n}{n!}                                                                       \\
-                       & = \sum_{n = 0}^\infty \frac{b^n}{n!} - \sum_{n = 0}^\infty \frac{a^n}{n!}                                        \\
-                       & = \exp(b) - \exp(a).                                                               & \text{(by \cref{4.5.1})}
+    \int_{[a, b]} \exp & = \int_a^b \exp(x) \; dx                                                                                              \\
+                       & = \sum_{n = 0}^\infty \dfrac{1}{n!} \dfrac{(b - 0)^{n + 1} - (a - 0)^{n + 1}}{n + 1} &  & \text{(by \cref{4.1.6}(e))} \\
+                       & = \sum_{n = 0}^\infty \dfrac{b^{n + 1} - a^{n + 1}}{(n + 1)!}                                                         \\
+                       & = \sum_{n = 1}^\infty \dfrac{b^n - a^n}{n!}                                                                           \\
+                       & = \dfrac{b^0 - a^0}{0!} + \sum_{n = 1}^\infty \dfrac{b^n - a^n}{n!}                                                   \\
+                       & = \sum_{n = 0}^\infty \dfrac{b^n - a^n}{n!}                                                                           \\
+                       & = \sum_{n = 0}^\infty \dfrac{b^n}{n!} - \sum_{n = 0}^\infty \dfrac{a^n}{n!}                                           \\
+                       & = \exp(b) - \exp(a).                                                                 &  & \text{(by \cref{4.5.1})}
   \end{align*}
   Since \(a, b\) is arbitrary, we conclude that
   \[
@@ -75,7 +75,7 @@
 \begin{proof}{(d)}
   If \(x = 0\), then we have
   \[
-    \exp(0) = \sum_{n = 0}^\infty \frac{0^n}{n!} = \frac{0^0}{0!} + \sum_{n = 1}^\infty \frac{0^n}{n!} = 1
+    \exp(0) = \sum_{n = 0}^\infty \dfrac{0^n}{n!} = \dfrac{0^0}{0!} + \sum_{n = 1}^\infty \dfrac{0^n}{n!} = 1
   \]
   and thus
   \[
@@ -86,42 +86,42 @@
     \forall x \in \R, \exp(x + 0) = \exp(0 + x) = \exp(0) \exp(x) = \exp(x) \exp(0).
   \]
   So suppose that \(x, y \in \R \setminus \{0\}\).
-  By \cref{4.5.2}(a) we know that \(\sum_{n = 0}^\infty \frac{x^n}{n!}\) and \(\sum_{n = 0}^\infty \frac{y^n}{n!}\) are absolutely convergent.
+  By \cref{4.5.2}(a) we know that \(\sum_{n = 0}^\infty \dfrac{x^n}{n!}\) and \(\sum_{n = 0}^\infty \dfrac{y^n}{n!}\) are absolutely convergent.
   Thus we know that
   \begin{align*}
-    X & = \sum_{n = 0}^\infty \abs{\frac{x^n}{n!}} \\
-    Y & = \sum_{n = 0}^\infty \abs{\frac{y^n}{n!}}
+    X & = \sum_{n = 0}^\infty \abs{\dfrac{x^n}{n!}} \\
+    Y & = \sum_{n = 0}^\infty \abs{\dfrac{y^n}{n!}}
   \end{align*}
   are well-defined.
   Since
   \begin{align*}
-    \forall N \in \N, & \sum_{n = 0}^N \sum_{m = 0}^\infty \abs{\frac{x^n y^m}{n! m!}}                             \\
-                      & = \sum_{n = 0}^N \bigg(\abs{\frac{x^n}{n!}} \sum_{m = 0}^\infty \abs{\frac{y^m}{m!}}\bigg) \\
-                      & = \sum_{n = 0}^N \bigg(\abs{\frac{x^n}{n!}} Y\bigg)                                        \\
-                      & = Y \sum_{n = 0}^N \abs{\frac{x^n}{n!}}                                                    \\
+    \forall N \in \N, & \sum_{n = 0}^N \sum_{m = 0}^\infty \abs{\dfrac{x^n y^m}{n! m!}}                              \\
+                      & = \sum_{n = 0}^N \bigg(\abs{\dfrac{x^n}{n!}} \sum_{m = 0}^\infty \abs{\dfrac{y^m}{m!}}\bigg) \\
+                      & = \sum_{n = 0}^N \bigg(\abs{\dfrac{x^n}{n!}} Y\bigg)                                         \\
+                      & = Y \sum_{n = 0}^N \abs{\dfrac{x^n}{n!}}                                                     \\
                       & \leq Y X,
   \end{align*}
-  and \((\sum_{n = 0}^N \sum_{m = 0}^\infty \abs{\frac{x^n y^m}{n! m!}})_{N = 0}^\infty\) is monotone increasing, we know that \(\sum_{n = 0}^\infty \sum_{m = 0}^\infty \frac{x^n y^m}{n! m!}\) is absolutely convergent.
+  and \((\sum_{n = 0}^N \sum_{m = 0}^\infty \abs{\dfrac{x^n y^m}{n! m!}})_{N = 0}^\infty\) is monotone increasing, we know that \(\sum_{n = 0}^\infty \sum_{m = 0}^\infty \dfrac{x^n y^m}{n! m!}\) is absolutely convergent.
   Now we define
   \[
-    \forall n \in \Z, c_n = \begin{cases}
-      \frac{1}{n!} & \text{if } n \geq 0; \\
-      0            & \text{if } n < 0.
-    \end{cases}
+    \forall n \in \Z, c_n = \begin{dcases}
+      \dfrac{1}{n!} & \text{if } n \geq 0; \\
+      0             & \text{if } n < 0.
+    \end{dcases}
   \]
   Then we have
   \begin{align*}
-     & \exp(x) \exp(y)                                                                                                                          \\
-     & = \sum_{n = 0}^\infty \sum_{m = 0}^\infty \frac{x^n y^m}{n! m!}                                                                          \\
-     & = \sum_{n = 0}^\infty \sum_{m = 0}^\infty c_n c_m x^n y^m                                                                                \\
-     & = \sum_{n = 0}^\infty \sum_{m = n}^\infty c_n c_{m - n} x^n y^{m - n}                                                                    \\
-     & = \sum_{n = 0}^\infty \sum_{m = 0}^\infty c_n c_{m - n} x^n y^{m - n}                                & (c_{m - n} = 0 \text{ if } m < n) \\
-     & = \sum_{m = 0}^\infty \sum_{n = 0}^\infty c_n c_{m - n} x^n y^{m - n}                                & \text{(by Fubini's theorem)}      \\
-     & = \sum_{m = 0}^\infty \sum_{n = 0}^m c_n c_{m - n} x^n y^{m - n}                                     & (c_{m - n} = 0 \text{ if } n > m) \\
-     & = \sum_{m = 0}^\infty \sum_{n = 0}^m \frac{x^n y^{m - n}}{n! (m - n)!}                                                                   \\
-     & = \sum_{m = 0}^\infty \bigg(\frac{1}{m!} \sum_{n = 0}^m \frac{m!}{n! (m - n)!} (x^n y^{m - n})\bigg)                                     \\
-     & = \sum_{m = 0}^\infty \frac{(x + y)^m}{m!}                                                           & \text{(by \cref{ex:4.2.5})}       \\
-     & = \exp(x + y).                                                                                       & \text{(by \cref{4.5.1})}
+     & \exp(x) \exp(y)                                                                                                                                                           \\
+     & = \sum_{n = 0}^\infty \sum_{m = 0}^\infty \dfrac{x^n y^m}{n! m!}                                                                                                          \\
+     & = \sum_{n = 0}^\infty \sum_{m = 0}^\infty c_n c_m x^n y^m                                                                                                                 \\
+     & = \sum_{n = 0}^\infty \sum_{m = n}^\infty c_n c_{m - n} x^n y^{m - n}                                                                                                     \\
+     & = \sum_{n = 0}^\infty \sum_{m = 0}^\infty c_n c_{m - n} x^n y^{m - n}                                  & (c_{m - n} = 0 \text{ if } m < n)                                \\
+     & = \sum_{m = 0}^\infty \sum_{n = 0}^\infty c_n c_{m - n} x^n y^{m - n}                                  &                                   & \text{(by Fubini's theorem)} \\
+     & = \sum_{m = 0}^\infty \sum_{n = 0}^m c_n c_{m - n} x^n y^{m - n}                                       & (c_{m - n} = 0 \text{ if } n > m)                                \\
+     & = \sum_{m = 0}^\infty \sum_{n = 0}^m \dfrac{x^n y^{m - n}}{n! (m - n)!}                                                                                                   \\
+     & = \sum_{m = 0}^\infty \bigg(\dfrac{1}{m!} \sum_{n = 0}^m \dfrac{m!}{n! (m - n)!} (x^n y^{m - n})\bigg)                                                                    \\
+     & = \sum_{m = 0}^\infty \dfrac{(x + y)^m}{m!}                                                            &                                   & \text{(by \cref{ex:4.2.5})}  \\
+     & = \exp(x + y).                                                                                         &                                   & \text{(by \cref{4.5.1})}
   \end{align*}
   Combine all proofs above we conclude that
   \[
@@ -132,25 +132,25 @@
 \begin{proof}{(e)}
   We have
   \[
-    \exp(0) = \sum_{n = 0}^\infty \frac{0^n}{n!} = \frac{0^0}{0!} + \sum_{n = 1}^\infty \frac{0^n}{n!} = 1
+    \exp(0) = \sum_{n = 0}^\infty \dfrac{0^n}{n!} = \dfrac{0^0}{0!} + \sum_{n = 1}^\infty \dfrac{0^n}{n!} = 1
   \]
   and
   \[
-    \forall x \in \R^+, \exp(x) = \sum_{n = 0}^\infty \frac{x^n}{n!} = \frac{x^0}{0!} + \sum_{n = 1}^\infty \frac{x^n}{n!} \geq 1.
+    \forall x \in \R^+, \exp(x) = \sum_{n = 0}^\infty \dfrac{x^n}{n!} = \dfrac{x^0}{0!} + \sum_{n = 1}^\infty \dfrac{x^n}{n!} \geq 1.
   \]
   Since
   \begin{align*}
-    \forall x \in \R, \exp(0) & = \exp(x - x)                                    \\
-                              & = \exp(x) \exp(-x) & \text{(by \cref{4.5.2}(d))} \\
+    \forall x \in \R, \exp(0) & = \exp(x - x)                                       \\
+                              & = \exp(x) \exp(-x) &  & \text{(by \cref{4.5.2}(d))} \\
                               & = 1,
   \end{align*}
   we know that
   \[
-    \forall x \in \R, \exp(-x) = \frac{1}{\exp(x)}.
+    \forall x \in \R, \exp(-x) = \dfrac{1}{\exp(x)}.
   \]
   Thus
   \[
-    \forall x \in \R^-, \exp(-x) \geq 1 \implies \exp(x) = \frac{1}{\exp(-x)} > 0.
+    \forall x \in \R^-, \exp(-x) \geq 1 \implies \exp(x) = \dfrac{1}{\exp(-x)} > 0.
   \]
   Combine all proofs above we conclude that
   \[
@@ -173,7 +173,7 @@
 \begin{defn}[Euler's number]\label{4.5.3}
   The number \(e\) is defined to be
   \[
-    e = \exp(1) = \sum_{n = 0}^\infty \frac{1}{n!} = \frac{1}{0!} + \frac{1}{1!} + \frac{1}{2!} + \frac{1}{3!} + \dots.
+    e = \exp(1) = \sum_{n = 0}^\infty \dfrac{1}{n!} = \dfrac{1}{0!} + \dfrac{1}{1!} + \dfrac{1}{2!} + \dfrac{1}{3!} + \dots.
   \]
 \end{defn}
 
@@ -185,19 +185,19 @@
   First we use induction on \(x\) to show that \(e^x = \exp(x)\) for all \(x \in \N\).
   For \(x = 0\), we have
   \begin{align*}
-    e^0 & = \big(\exp(1)\big)^0 & \text{(by \cref{4.5.3})}    \\
-        & = 1                   & \text{(by \cref{4.5.2}(a))} \\
-        & = \exp(0)             & \text{(by \cref{4.5.2}(e))}
+    e^0 & = \big(\exp(1)\big)^0 &  & \text{(by \cref{4.5.3})}    \\
+        & = 1                   &  & \text{(by \cref{4.5.2}(a))} \\
+        & = \exp(0)             &  & \text{(by \cref{4.5.2}(e))}
   \end{align*}
   and the base case holds.
   Suppose inductively that \(e^x = \exp(x)\) for some \(x \geq 0\).
   Then for \(x + 1\), we have
   \begin{align*}
-    e^{x + 1} & = \exp(1)^{x + 1}   & \text{(by \cref{4.5.3})}         \\
-              & = \exp(1) \exp(1)^x & \text{(by \cref{4.5.2}(a))}      \\
-              & = \exp(1) e^x       & \text{(by \cref{4.5.3})}         \\
-              & = \exp(1) \exp(x)   & \text{(by induction hypothesis)} \\
-              & = \exp(x + 1)       & \text{(by \cref{4.5.2}(d))}
+    e^{x + 1} & = \exp(1)^{x + 1}   &  & \text{(by \cref{4.5.3})}         \\
+              & = \exp(1) \exp(1)^x &  & \text{(by \cref{4.5.2}(a))}      \\
+              & = \exp(1) e^x       &  & \text{(by \cref{4.5.3})}         \\
+              & = \exp(1) \exp(x)   &  & \text{(by induction hypothesis)} \\
+              & = \exp(x + 1)       &  & \text{(by \cref{4.5.2}(d))}
   \end{align*}
   and this closes the induction.
 
@@ -205,8 +205,8 @@
   Let \(x \in \Z^-\).
   Since \(-x \in \N\), we know that
   \begin{align*}
-    e^{-x} & = \exp(-x)               & \text{(from the proof above)} \\
-           & = \frac{1}{\exp(x)}      & \text{(by \cref{4.5.2}(e))}   \\
+    e^{-x} & = \exp(-x)               &  & \text{(from the proof above)} \\
+           & = \dfrac{1}{\exp(x)}     &  & \text{(by \cref{4.5.2}(e))}   \\
            & = \big(\exp(x)\big)^{-1}
   \end{align*}
   and thus \(e^x = \exp(x)\).
@@ -214,20 +214,20 @@
 
   Next we show that \(e^x = \exp(x)\) for all \(x \in \Q\).
   Let \(x \in \Q\).
-  Since \(x = \frac{a}{b}\) for some \(a \in \Z\) and \(b \in \Z^+\), we know that
+  Since \(x = \dfrac{a}{b}\) for some \(a \in \Z\) and \(b \in \Z^+\), we know that
   \begin{align*}
-    e^a & = \exp(a)                           & \text{(from the proof above)} \\
-        & = \exp(\frac{ab}{b})                                                \\
-        & = \exp(\sum_{i = 1}^b \frac{a}{b})                                  \\
-        & = \prod_{i = 1}^b \exp(\frac{a}{b}) & \text{(by \cref{4.5.2}(d))}   \\
-        & = \exp(\frac{a}{b})^b                                               \\
+    e^a & = \exp(a)                            &  & \text{(from the proof above)} \\
+        & = \exp(\dfrac{ab}{b})                                                   \\
+        & = \exp(\sum_{i = 1}^b \dfrac{a}{b})                                     \\
+        & = \prod_{i = 1}^b \exp(\dfrac{a}{b}) &  & \text{(by \cref{4.5.2}(d))}   \\
+        & = \exp(\dfrac{a}{b})^b                                                  \\
         & = \exp(x)^b
   \end{align*}
   and thus
   \begin{align*}
-    e^x & = e^{\frac{a}{b}}                                                             \\
-        & = \big(e^a\big)^{\frac{1}{b}}                                                 \\
-        & = \Big(\big(\exp(x)\big)^b\Big)^{\frac{1}{b}} & \text{(from the proof above)} \\
+    e^x & = e^{\dfrac{a}{b}}                                                                \\
+        & = \big(e^a\big)^{\dfrac{1}{b}}                                                    \\
+        & = \Big(\big(\exp(x)\big)^b\Big)^{\dfrac{1}{b}} &  & \text{(from the proof above)} \\
         & = \exp(x).
   \end{align*}
   Since \(x\) is arbitrary, we conclude that \(e^x = \exp(x)\) for all \(x \in \Q\).
@@ -237,9 +237,9 @@
   Then we know that there exists a Cauchy sequence \((q_n)_{n = 1}^\infty\) in \(Q\) such that \(\lim_{n \to \infty} q_n = x\).
   Thus
   \begin{align*}
-    e^x & = \lim_{n \to \infty} e^{q_n}                                   \\
-        & = \lim_{n \to \infty} \exp(q_n) & \text{(from the proof above)} \\
-        & = \exp(x).                      & \text{(by \cref{4.5.2}(c))}
+    e^x & = \lim_{n \to \infty} e^{q_n}                                      \\
+        & = \lim_{n \to \infty} \exp(q_n) &  & \text{(from the proof above)} \\
+        & = \exp(x).                      &  & \text{(by \cref{4.5.2}(c))}
   \end{align*}
   Since \(x\) is arbitrary, we conclude that \(e^x = \exp(x)\) for all \(x \in \R\).
 \end{proof}
@@ -266,18 +266,18 @@
 \begin{thm}arithm properties]\label{4.5.6}
   \quad
   \begin{enumerate}
-    \item For every \(x \in (0, \infty)\), we have \(\ln'(x) = \frac{1}{x}\).
-          In particular, by the fundamental theorem of calculus, we have \(\int_{[a, b]} \frac{1}{x} \; dx = \ln(b) - \ln(a)\) for any interval \([a, b]\) in \((0, \infty)\).
+    \item For every \(x \in (0, \infty)\), we have \(\ln'(x) = \dfrac{1}{x}\).
+          In particular, by the fundamental theorem of calculus, we have \(\int_{[a, b]} \dfrac{1}{x} \; dx = \ln(b) - \ln(a)\) for any interval \([a, b]\) in \((0, \infty)\).
     \item We have \(\ln(xy) = \ln(x) + \ln(y)\) for all \(x, y \in (0, \infty)\).
     \item We have \(\ln(1) = 0\) and \(\ln(1 / x) = -\ln(x)\) for all \(x \in (0, \infty)\).
     \item For any \(x \in (0, \infty)\) and \(y \in R\), we have \(\ln(x^y) = y \ln(x)\).
     \item For any \(x \in (-1, 1)\), we have
           \[
-            \ln(1 - x) = - \sum_{n = 1}^\infty \frac{x^n}{n}.
+            \ln(1 - x) = - \sum_{n = 1}^\infty \dfrac{x^n}{n}.
           \]
           In particular, \(\ln\) is analytic at \(1\), with the power series expansion
           \[
-            \ln(x) = \sum_{n = 1}^\infty \frac{(-1)^{n + 1}}{n} (x - 1)^n
+            \ln(x) = \sum_{n = 1}^\infty \dfrac{(-1)^{n + 1}}{n} (x - 1)^n
           \]
           for \(x \in (0, 2)\), with radius of convergence \(1\).
   \end{enumerate}
@@ -288,38 +288,38 @@
   Since \(\exp\) is also differentiable, and the derivative is never zero, we see from the inverse function theorem (Theorem 10.4.2 in Analysis I) that \(\ln\) is also differentiable.
   Thus we have
   \begin{align*}
-             & \forall x \in (0, \infty), \exp\big(\ln(x)\big) = x                  & \text{(by \cref{4.5.5})}              \\
-    \implies & \forall x \in (0, \infty), \ln'(x) = \frac{1}{\exp'\big(\ln(x)\big)} & \text{(Theorem 10.4.2 in Analysis I)} \\
-    \implies & \forall x \in (0, \infty), \ln'(x) = \frac{1}{\exp\big(\ln(x)\big)}  & \text{(by \cref{4.5.2}(b))}           \\
-    \implies & \forall x \in (0, \infty), \ln'(x) = \frac{1}{x}.                    & \text{(by \cref{4.5.5})}
+             & \forall x \in (0, \infty), \exp\big(\ln(x)\big) = x                   &  & \text{(by \cref{4.5.5})}              \\
+    \implies & \forall x \in (0, \infty), \ln'(x) = \dfrac{1}{\exp'\big(\ln(x)\big)} &  & \text{(Theorem 10.4.2 in Analysis I)} \\
+    \implies & \forall x \in (0, \infty), \ln'(x) = \dfrac{1}{\exp\big(\ln(x)\big)}  &  & \text{(by \cref{4.5.2}(b))}           \\
+    \implies & \forall x \in (0, \infty), \ln'(x) = \dfrac{1}{x}.                    &  & \text{(by \cref{4.5.5})}
   \end{align*}
-  Since \(\frac{1}{x}\) is continuous on arbitrary interval \([a, b] \subseteq (0, \infty)\), by Corollary 11.5.2 in Analysis I we know that \(\frac{1}{x}\) is Riemann integrable on \([a, b]\).
+  Since \(\dfrac{1}{x}\) is continuous on arbitrary interval \([a, b] \subseteq (0, \infty)\), by Corollary 11.5.2 in Analysis I we know that \(\dfrac{1}{x}\) is Riemann integrable on \([a, b]\).
   By the fundamental theorem of calculus (Theorem 11.9.4) we thus have
   \[
-    \int_a^b \frac{1}{x} \; dx = \ln(b) - \ln(a).
+    \int_a^b \dfrac{1}{x} \; dx = \ln(b) - \ln(a).
   \]
 \end{proof}
 
 \begin{proof}{(b)}
   We have
   \begin{align*}
-    \forall x, y \in (0, \infty), \ln(xy) & = \ln(e^{\ln(x)} e^{\ln(y)}) & \text{(by \cref{4.5.5})}    \\
-                                          & = \ln(e^{\ln(x) + \ln(y)})   & \text{(by \cref{4.5.2}(d))} \\
-                                          & = \ln(x) + \ln(y).           & \text{(by \cref{4.5.5})}
+    \forall x, y \in (0, \infty), \ln(xy) & = \ln(e^{\ln(x)} e^{\ln(y)}) &  & \text{(by \cref{4.5.5})}    \\
+                                          & = \ln(e^{\ln(x) + \ln(y)})   &  & \text{(by \cref{4.5.2}(d))} \\
+                                          & = \ln(x) + \ln(y).           &  & \text{(by \cref{4.5.5})}
   \end{align*}
 \end{proof}
 
 \begin{proof}{(c)}
   We have
   \begin{align*}
-    \ln(1) & = \ln(e^0) & \text{(by \cref{4.5.2}(e))} \\
-           & = 0        & \text{(by \cref{4.5.5})}
+    \ln(1) & = \ln(e^0) &  & \text{(by \cref{4.5.2}(e))} \\
+           & = 0        &  & \text{(by \cref{4.5.5})}
   \end{align*}
   and
   \begin{align*}
-             & \forall x \in (0, \infty), \ln(\frac{x}{x}) = 0 \text{(from the proof above)}                               \\
-    \implies & \forall x \in (0, \infty), \ln(x) + \ln(\frac{1}{x}) = 0                      & \text{(by \cref{4.5.6}(b))} \\
-    \implies & \forall x \in (0, \infty), \ln(\frac{1}{x}) = -\ln(x).
+             & \forall x \in (0, \infty), \ln(\dfrac{x}{x}) = 0 \text{(from the proof above)}                                  \\
+    \implies & \forall x \in (0, \infty), \ln(x) + \ln(\dfrac{1}{x}) = 0                      &  & \text{(by \cref{4.5.6}(b))} \\
+    \implies & \forall x \in (0, \infty), \ln(\dfrac{1}{x}) = -\ln(x).
   \end{align*}
 \end{proof}
 
@@ -327,9 +327,9 @@
   Let \(x \in (0, \infty)\).
   We know that \(x^y \in (0, \infty)\) for all \(y \in \R\), thus by \cref{4.5.5} \(\ln(x^y)\) is well-defined and we have
   \begin{align*}
-    y \ln(x) & = \ln(e^{y \ln(x)})             & \text{(by \cref{4.5.5})} \\
-             & = \ln\big((e^{\ln(x)})^{y}\big)                            \\
-             & = \ln(x^y).                     & \text{(by \cref{4.5.5})}
+    y \ln(x) & = \ln(e^{y \ln(x)})             &  & \text{(by \cref{4.5.5})} \\
+             & = \ln\big((e^{\ln(x)})^{y}\big)                               \\
+             & = \ln(x^y).                     &  & \text{(by \cref{4.5.5})}
   \end{align*}
   Since \(x\) is arbitrary, we conclude that
   \[
@@ -345,69 +345,69 @@
   by \cref{4.5.5} we know that \(\ln(1 - x)\) is well-defined.
   Observe that
   \begin{align*}
-    \forall x \in (-1, 1), & \ln'(1 - x)                                                                                           \\
-                           & = \big(\ln'(y)|_{y = 1 - x}\big) \times \big((y \mapsto 1 - y)'(x)\big) & \text{(by chain rule)}      \\
-                           & = \frac{1}{1 - x} \times (-1)                                           & \text{(by \cref{4.5.6}(a))} \\
-                           & = \frac{-1}{1 - x}
+    \forall x \in (-1, 1), & \ln'(1 - x)                                                                                              \\
+                           & = \big(\ln'(y)|_{y = 1 - x}\big) \times \big((y \mapsto 1 - y)'(x)\big) &  & \text{(by chain rule)}      \\
+                           & = \dfrac{1}{1 - x} \times (-1)                                          &  & \text{(by \cref{4.5.6}(a))} \\
+                           & = \dfrac{-1}{1 - x}
   \end{align*}
   and
   \begin{align*}
-             & x \in (-1, 1)                                                                      \\
-    \implies & \forall n \in \Z^+, x^n \in (-1, 1)                                                \\
-    \implies & \sum_{n = 0}^\infty x^n = \frac{1}{1 - x}. & \text{(by Lemma 7.3.3 in Analysis I)}
+             & x \in (-1, 1)                                                                          \\
+    \implies & \forall n \in \Z^+, x^n \in (-1, 1)                                                    \\
+    \implies & \sum_{n = 0}^\infty x^n = \dfrac{1}{1 - x}. &  & \text{(by Lemma 7.3.3 in Analysis I)}
   \end{align*}
 
   First suppose that \(x = 0\).
   Then we have
   \begin{align*}
-    \ln(1 - 0) & = \ln(1)                                                             \\
-               & = 0                                    & \text{(by \cref{4.5.6}(c))} \\
-               & = - \sum_{n = 1}^\infty \frac{0^n}{n}.
+    \ln(1 - 0) & = \ln(1)                                                                 \\
+               & = 0                                     &  & \text{(by \cref{4.5.6}(c))} \\
+               & = - \sum_{n = 1}^\infty \dfrac{0^n}{n}.
   \end{align*}
 
   Now suppose that \(x \in (0, 1)\).
   Then we have
   \begin{align*}
-             & - \sum_{n = 0}^\infty x^n = \ln'(1 - x)                                                                                              \\
-    \implies & \int_0^x \bigg(- \sum_{n = 0}^\infty y^n\bigg) \; dy = \int_0^x \ln'(1 - y) \; dy      & \text{(by \cref{4.5.6}(a))}                 \\
-    \implies & - \sum_{n = 0}^\infty \frac{x^{n + 1} - 0^{n + 1}}{n + 1} = \int_0^x \ln'(1 - y) \; dy & \text{(by \cref{4.1.6}(e))}                 \\
-    \implies & - \sum_{n = 0}^\infty \frac{x^{n + 1}}{n + 1} = \ln(1 - x) - \ln(1 - 0)                & \text{(by fundamental theorem of calculus)} \\
-    \implies & - \sum_{n = 0}^\infty \frac{x^{n + 1}}{n + 1} = \ln(1 - x)                             & \text{(by \cref{4.5.6}(c))}                 \\
-    \implies & - \sum_{n = 1}^\infty \frac{x^n}{n} = \ln(1 - x).
+             & - \sum_{n = 0}^\infty x^n = \ln'(1 - x)                                                                                                  \\
+    \implies & \int_0^x \bigg(- \sum_{n = 0}^\infty y^n\bigg) \; dy = \int_0^x \ln'(1 - y) \; dy       &  & \text{(by \cref{4.5.6}(a))}                 \\
+    \implies & - \sum_{n = 0}^\infty \dfrac{x^{n + 1} - 0^{n + 1}}{n + 1} = \int_0^x \ln'(1 - y) \; dy &  & \text{(by \cref{4.1.6}(e))}                 \\
+    \implies & - \sum_{n = 0}^\infty \dfrac{x^{n + 1}}{n + 1} = \ln(1 - x) - \ln(1 - 0)                &  & \text{(by fundamental theorem of calculus)} \\
+    \implies & - \sum_{n = 0}^\infty \dfrac{x^{n + 1}}{n + 1} = \ln(1 - x)                             &  & \text{(by \cref{4.5.6}(c))}                 \\
+    \implies & - \sum_{n = 1}^\infty \dfrac{x^n}{n} = \ln(1 - x).
   \end{align*}
 
   Now suppose that \(x \in (-1, 0)\).
   Then we have
   \begin{align*}
-             & - \sum_{n = 0}^\infty x^n = \ln'(1 - x)                                                                                              \\
-    \implies & \int_x^0 \bigg(- \sum_{n = 0}^\infty y^n\bigg) \; dy = \int_x^0 \ln'(1 - y) \; dy      & \text{(by \cref{4.5.6}(a))}                 \\
-    \implies & - \sum_{n = 0}^\infty \frac{0^{n + 1} - x^{n + 1}}{n + 1} = \int_x^0 \ln'(1 - y) \; dy & \text{(by \cref{4.1.6}(e))}                 \\
-    \implies & \sum_{n = 0}^\infty \frac{x^{n + 1}}{n + 1} = \ln(1 - 0) - \ln(1 - x)                  & \text{(by fundamental theorem of calculus)} \\
-    \implies & \sum_{n = 0}^\infty \frac{x^{n + 1}}{n + 1} = -\ln(1 - x)                              & \text{(by \cref{4.5.6}(c))}                 \\
-    \implies & - \sum_{n = 1}^\infty \frac{x^n}{n} = \ln(1 - x).
+             & - \sum_{n = 0}^\infty x^n = \ln'(1 - x)                                                                                                  \\
+    \implies & \int_x^0 \bigg(- \sum_{n = 0}^\infty y^n\bigg) \; dy = \int_x^0 \ln'(1 - y) \; dy       &  & \text{(by \cref{4.5.6}(a))}                 \\
+    \implies & - \sum_{n = 0}^\infty \dfrac{0^{n + 1} - x^{n + 1}}{n + 1} = \int_x^0 \ln'(1 - y) \; dy &  & \text{(by \cref{4.1.6}(e))}                 \\
+    \implies & \sum_{n = 0}^\infty \dfrac{x^{n + 1}}{n + 1} = \ln(1 - 0) - \ln(1 - x)                  &  & \text{(by fundamental theorem of calculus)} \\
+    \implies & \sum_{n = 0}^\infty \dfrac{x^{n + 1}}{n + 1} = -\ln(1 - x)                              &  & \text{(by \cref{4.5.6}(c))}                 \\
+    \implies & - \sum_{n = 1}^\infty \dfrac{x^n}{n} = \ln(1 - x).
   \end{align*}
 
   Combine all proofs above we conclude that
   \begin{align*}
-             & \forall x \in (-1, 1), \ln(1 - x) = - \sum_{n = 1}^\infty \frac{x^n}{n}                                                  \\
-    \implies & \forall -x \in (-1, 1), \ln\big(1 - (-x)\big) = - \sum_{n = 1}^\infty \frac{(-x)^n}{n}                                   \\
-    \implies & \forall -(x - 1) \in (-1, 1), \ln\Big(1 - \big(-(x - 1)\big)\Big) = - \sum_{n = 1}^\infty \frac{\big(-(x - 1)\big)^n}{n} \\
-    \implies & \forall x \in (0, 2), \ln(x) = - \sum_{n = 1}^\infty \frac{(-1)^n (x - 1)^n}{n}                                          \\
-    \implies & \forall x \in (0, 2), \ln(x) = \sum_{n = 1}^\infty \frac{(-1)^{n + 1} (x - 1)^n}{n}.
+             & \forall x \in (-1, 1), \ln(1 - x) = - \sum_{n = 1}^\infty \dfrac{x^n}{n}                                                  \\
+    \implies & \forall -x \in (-1, 1), \ln\big(1 - (-x)\big) = - \sum_{n = 1}^\infty \dfrac{(-x)^n}{n}                                   \\
+    \implies & \forall -(x - 1) \in (-1, 1), \ln\Big(1 - \big(-(x - 1)\big)\Big) = - \sum_{n = 1}^\infty \dfrac{\big(-(x - 1)\big)^n}{n} \\
+    \implies & \forall x \in (0, 2), \ln(x) = - \sum_{n = 1}^\infty \dfrac{(-1)^n (x - 1)^n}{n}                                          \\
+    \implies & \forall x \in (0, 2), \ln(x) = \sum_{n = 1}^\infty \dfrac{(-1)^{n + 1} (x - 1)^n}{n}.
   \end{align*}
   By \cref{4.2.1} \(\ln\) is real analytic at \(1\) with radius of convergence \(1\).
 \end{proof}
 
 \begin{eg}\label{4.5.7}
   We now give a modest application of Abel's theorem (\cref{4.3.1}):
-  from the alternating series test we see that \(\sum_{n = 1}^\infty \frac{(-1)^{n + 1}}{n}\) is convergent.
+  from the alternating series test we see that \(\sum_{n = 1}^\infty \dfrac{(-1)^{n + 1}}{n}\) is convergent.
   By Abel's theorem we thus see that
   \[
-    \sum_{n = 1}^\infty \frac{(-1)^{n + 1}}{n} = \lim_{x \to 2 ; x \in (0, 2)} \sum_{n = 1}^\infty \frac{(-1)^{n + 1}}{n} (x - 1)^n = \lim_{x \to 2 ; x \in (0, 2)} \ln(x) = \ln(2),
+    \sum_{n = 1}^\infty \dfrac{(-1)^{n + 1}}{n} = \lim_{x \to 2 ; x \in (0, 2)} \sum_{n = 1}^\infty \dfrac{(-1)^{n + 1}}{n} (x - 1)^n = \lim_{x \to 2 ; x \in (0, 2)} \ln(x) = \ln(2),
   \]
   thus we have the formula
   \[
-    \ln(2) = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} +\frac{1}{5} - \dots.
+    \ln(2) = 1 - \dfrac{1}{2} + \dfrac{1}{3} - \dfrac{1}{4} +\dfrac{1}{5} - \dots.
   \]
 \end{eg}
 
@@ -420,10 +420,10 @@
   Suppose that \(x \in \R^+\).
   Then we have
   \begin{align*}
-    e^x & = \sum_{n = 0}^\infty \frac{x^n}{n!}                                   & \text{(by \cref{4.5.1})} \\
-        & = \frac{x^0}{0!} + \frac{x^1}{1!} + \sum_{n = 2}^\infty \frac{x^n}{n!}                            \\
-        & = 1 + x + \sum_{n = 2}^\infty \frac{x^n}{n!}                                                      \\
-        & > 1 + x                                                                & (x > 0)                  \\
+    e^x & = \sum_{n = 0}^\infty \dfrac{x^n}{n!}                                     &         & \text{(by \cref{4.5.1})} \\
+        & = \dfrac{x^0}{0!} + \dfrac{x^1}{1!} + \sum_{n = 2}^\infty \dfrac{x^n}{n!}                                      \\
+        & = 1 + x + \sum_{n = 2}^\infty \dfrac{x^n}{n!}                                                                  \\
+        & > 1 + x                                                                   & (x > 0)                            \\
         & > x.
   \end{align*}
   Now suppose that \(x \in \R^-\).
@@ -444,7 +444,7 @@
 \begin{ex}\label{ex:4.5.2}
   Show that for every integer \(n \geq 3\), we have
   \[
-    0 < \frac{1}{(n + 1)!} + \frac{1}{(n + 2)!} + \dots < \frac{1}{n!}.
+    0 < \dfrac{1}{(n + 1)!} + \dfrac{1}{(n + 2)!} + \dots < \dfrac{1}{n!}.
   \]
   Conclude that \(n! e\) is not an integer for every \(n \geq 3\).
   Deduce from this that \(e\) is irrational.
@@ -461,73 +461,73 @@
   Suppose inductively that \((n + k)! > 2^k n!\) for some \(k \geq 1\).
   Then for \(k + 1\), we have
   \begin{align*}
-    \forall n \geq 3, (n + k + 1)! & = (n + k + 1) (n + k)!                                    \\
-                                   & \geq (4 + k)(n + k)!                                      \\
-                                   & > 2 (n + k)!                                              \\
-                                   & > 2 (2^k) (n!)         & \text{(by induction hypothesis)} \\
+    \forall n \geq 3, (n + k + 1)! & = (n + k + 1) (n + k)!                                       \\
+                                   & \geq (4 + k)(n + k)!                                         \\
+                                   & > 2 (n + k)!                                                 \\
+                                   & > 2 (2^k) (n!)         &  & \text{(by induction hypothesis)} \\
                                    & = 2^{k + 1} (n!)
   \end{align*}
   and this closes the induction.
 
   Next we show that
   \[
-    \forall n \geq 3, 0 < \frac{1}{(n + 1)!} + \frac{1}{(n + 2)!} + \dots < \frac{1}{n!}.
+    \forall n \geq 3, 0 < \dfrac{1}{(n + 1)!} + \dfrac{1}{(n + 2)!} + \dots < \dfrac{1}{n!}.
   \]
   Since
   \begin{align*}
-             & \forall n \geq 3, \forall k \geq 1, \frac{1}{(n + k)!} < \frac{1}{2^k (n!)}                                                                                                                    & \text{(from the proof above)} \\
-    \implies & \forall n \geq 3,                                                                                                                                                                                                              \\
-             & \sum_{k = 1}^\infty \frac{1}{(n + k)!} \leq \sum_{k = 1}^\infty \frac{1}{2^k (n!)} = \frac{1}{n!} \sum_{k = 1}^\infty \frac{1}{2^k} = \frac{1}{2 (n!)} \sum_{k = 1}^\infty \frac{1}{2^{k - 1}} & \text{(geometric series)}     \\
-             & = \frac{1}{2 (n!)} \sum_{k = 0}^\infty \frac{1}{2^k} = \frac{2}{2 (n!)} = \frac{1}{n!}                                                                                                                                         \\
-    \implies & \forall n \geq 3, \sum_{k = 1}^\infty \frac{1}{(n + k)!} \leq \frac{1}{n!},
+             & \forall n \geq 3, \forall k \geq 1, \dfrac{1}{(n + k)!} < \dfrac{1}{2^k (n!)}                                                                                                                        &  & \text{(from the proof above)} \\
+    \implies & \forall n \geq 3,                                                                                                                                                                                                                       \\
+             & \sum_{k = 1}^\infty \dfrac{1}{(n + k)!} \leq \sum_{k = 1}^\infty \dfrac{1}{2^k (n!)} = \dfrac{1}{n!} \sum_{k = 1}^\infty \dfrac{1}{2^k} = \dfrac{1}{2 (n!)} \sum_{k = 1}^\infty \dfrac{1}{2^{k - 1}} &  & \text{(geometric series)}     \\
+             & = \dfrac{1}{2 (n!)} \sum_{k = 0}^\infty \dfrac{1}{2^k} = \dfrac{2}{2 (n!)} = \dfrac{1}{n!}                                                                                                                                              \\
+    \implies & \forall n \geq 3, \sum_{k = 1}^\infty \dfrac{1}{(n + k)!} \leq \dfrac{1}{n!},
   \end{align*}
   we only need to show that
   \[
-    \forall n \geq 3, \sum_{k = 1}^\infty \frac{1}{(n + k)!} \neq \frac{1}{n!}.
+    \forall n \geq 3, \sum_{k = 1}^\infty \dfrac{1}{(n + k)!} \neq \dfrac{1}{n!}.
   \]
   So suppose for sake of contradiction that there exists some \(n \geq 3\) such that the identity above holds.
   Then we have
   \begin{align*}
-             & \sum_{k = 1}^\infty \frac{1}{(n + k)!} = \frac{1}{n!} = \sum_{k = 1}^\infty \frac{1}{2^k (n!)} \\
-    \implies & \sum_{k = 1}^\infty \bigg(\frac{1}{2^k (n!)} - \frac{1}{(n + k)!}\bigg) = 0.
+             & \sum_{k = 1}^\infty \dfrac{1}{(n + k)!} = \dfrac{1}{n!} = \sum_{k = 1}^\infty \dfrac{1}{2^k (n!)} \\
+    \implies & \sum_{k = 1}^\infty \bigg(\dfrac{1}{2^k (n!)} - \dfrac{1}{(n + k)!}\bigg) = 0.
   \end{align*}
   But we know that
   \[
-    \forall k \geq 1, \frac{1}{2^k (n!)} - \frac{1}{(n + k)!} > 0 \implies \sum_{k = 1}^\infty \bigg(\frac{1}{2^k (n!)} - \frac{1}{(n + k)!}\bigg) > 0,
+    \forall k \geq 1, \dfrac{1}{2^k (n!)} - \dfrac{1}{(n + k)!} > 0 \implies \sum_{k = 1}^\infty \bigg(\dfrac{1}{2^k (n!)} - \dfrac{1}{(n + k)!}\bigg) > 0,
   \]
   a contradiction.
   Thus we have
   \[
-    \forall n \geq 3, \sum_{k = 1}^\infty \frac{1}{(n + k)!} < \frac{1}{n!}.
+    \forall n \geq 3, \sum_{k = 1}^\infty \dfrac{1}{(n + k)!} < \dfrac{1}{n!}.
   \]
 
   Now we show that \(n! e\) is not an integer for all \(n \geq 3\).
   Since
   \begin{align*}
-             & \forall n \geq 3, \sum_{m = n + 1}^\infty \frac{1}{m!} < \frac{1}{n!} \\
-    \implies & \forall n \geq 3, \sum_{m = n + 1}^\infty \frac{n!}{m!} < 1
+             & \forall n \geq 3, \sum_{m = n + 1}^\infty \dfrac{1}{m!} < \dfrac{1}{n!} \\
+    \implies & \forall n \geq 3, \sum_{m = n + 1}^\infty \dfrac{n!}{m!} < 1
   \end{align*}
   and
   \[
-    \forall n \geq 3, \sum_{m = 0}^n \frac{n!}{m!} = \sum_{m = 0}^n (n - m)! \in \N,
+    \forall n \geq 3, \sum_{m = 0}^n \dfrac{n!}{m!} = \sum_{m = 0}^n (n - m)! \in \N,
   \]
   we have
   \begin{align*}
-    \forall n \geq 3, n! e & = n! \sum_{m = 0}^\infty \frac{1}{m!}                                                         & \text{(by \cref{4.5.3})} \\
-                           & = \sum_{m = 0}^\infty \frac{n!}{m!}                                                                                      \\
-                           & = \sum_{m = 0}^n \frac{n!}{m!} + \sum_{m = n + 1}^\infty \frac{n!}{m!}                                                   \\
-                           & = \sum_{m = 0}^n (n - m)! + \sum_{m = n + 1}^\infty \frac{n!}{m!}                                                        \\
+    \forall n \geq 3, n! e & = n! \sum_{m = 0}^\infty \dfrac{1}{m!}                                                        &  & \text{(by \cref{4.5.3})} \\
+                           & = \sum_{m = 0}^\infty \dfrac{n!}{m!}                                                                                        \\
+                           & = \sum_{m = 0}^n \dfrac{n!}{m!} + \sum_{m = n + 1}^\infty \dfrac{n!}{m!}                                                    \\
+                           & = \sum_{m = 0}^n (n - m)! + \sum_{m = n + 1}^\infty \dfrac{n!}{m!}                                                          \\
                            & \in \Bigg(\bigg(\sum_{m = 0}^n (n - m)!\bigg), \bigg(\sum_{m = 0}^n (n - m)! + 1\bigg)\Bigg).
   \end{align*}
   Thus \(n! e\) is not an integer for all \(n \geq 3\).
 
   Finally we show that \(e\) is irrational.
   Suppose for sake of contradiction that \(e \in \Q\).
-  Then we know that \(e = \frac{a}{b}\) for some \(a \in \Z\) and \(b \in \Z^+\).
+  Then we know that \(e = \dfrac{a}{b}\) for some \(a \in \Z\) and \(b \in \Z^+\).
   But then we have
   \begin{align*}
-             & e = \frac{a}{b} = \frac{3a}{3b}                          \\
-    \implies & (3b)! e = \frac{(3a) (3b)!}{3b} = (3a) (3b - 1)! \in \N,
+             & e = \dfrac{a}{b} = \dfrac{3a}{3b}                         \\
+    \implies & (3b)! e = \dfrac{(3a) (3b)!}{3b} = (3a) (3b - 1)! \in \N,
   \end{align*}
   a contradiction.
   Thus \(e \in \R \setminus \Q\).
@@ -580,13 +580,13 @@
   Suppose inductively that \(f^{(k)}(0) = 0\) for some \(k \geq 0\).
   Then for \(k + 1\), we have
   \begin{align*}
-     & \lim_{x \to 0 ; x \in \R^+} \frac{f^{(k)}(x) - f^{(k)}(0)}{x - 0}                                        \\
-     & = \lim_{x \to 0 ; x \in \R^+} \frac{P_k(x^{-1}) \exp(-x^{-1}) - 0}{x} & \text{(by induction hypothesis)} \\
-     & = \lim_{x \to 0 ; x \in \R^+} \frac{P_k(x^{-1}) x^{-1}}{\exp(x^{-1})} & \text{(by \cref{4.5.2}(e))}      \\
-     & = \lim_{x \to \infty ; x \in \R^+} \frac{P_k(x) x}{\exp(x)}                                              \\
-     & = 0                                                                   & \text{(by \cref{ex:4.5.8})}      \\
-     & = \lim_{x \to 0 ; x \in \R^-} \frac{0 - 0}{x - 0}                                                        \\
-     & = \lim_{x \to 0 ; x \in \R^-} \frac{f^{(k)}(x) - f^{(k)}(0)}{x - 0}
+     & \lim_{x \to 0 ; x \in \R^+} \dfrac{f^{(k)}(x) - f^{(k)}(0)}{x - 0}                                           \\
+     & = \lim_{x \to 0 ; x \in \R^+} \dfrac{P_k(x^{-1}) \exp(-x^{-1}) - 0}{x} &  & \text{(by induction hypothesis)} \\
+     & = \lim_{x \to 0 ; x \in \R^+} \dfrac{P_k(x^{-1}) x^{-1}}{\exp(x^{-1})} &  & \text{(by \cref{4.5.2}(e))}      \\
+     & = \lim_{x \to \infty ; x \in \R^+} \dfrac{P_k(x) x}{\exp(x)}                                                 \\
+     & = 0                                                                    &  & \text{(by \cref{ex:4.5.8})}      \\
+     & = \lim_{x \to 0 ; x \in \R^-} \dfrac{0 - 0}{x - 0}                                                           \\
+     & = \lim_{x \to 0 ; x \in \R^-} \dfrac{f^{(k)}(x) - f^{(k)}(0)}{x - 0}
   \end{align*}
   and thus \(f^{(k + 1)}(0) = 0\).
   This closes the induction.
@@ -595,11 +595,11 @@
   Suppose for sake of contradiction that \(f\) is real analytic at \(0\).
   Then by \cref{4.2.10} there exists an \(r \in \R^*\) such that
   \[
-    \forall x \in (-r, r), f(x) = \sum_{n = 0}^\infty \frac{f^{(n)}(0)}{n!} x^n.
+    \forall x \in (-r, r), f(x) = \sum_{n = 0}^\infty \dfrac{f^{(n)}(0)}{n!} x^n.
   \]
   But from the proof above we have
   \begin{align*}
-    \sum_{n = 0}^\infty \frac{f^{(n)}(0)}{n!} (\frac{r}{2})^n = 0 \neq f(\frac{r}{2}) = \exp(\frac{-r}{2}) > 0.
+    \sum_{n = 0}^\infty \dfrac{f^{(n)}(0)}{n!} (\dfrac{r}{2})^n = 0 \neq f(\dfrac{r}{2}) = \exp(\dfrac{-r}{2}) > 0.
   \end{align*}
   a contradiction.
   Thus \(f\) is not real analytic at \(0\).
@@ -621,12 +621,12 @@
   Let \(a \in \R^+\).
   By \cref{4.5.6}(e) we know that \(\ln\) is real analytic at \(1\), thus
   \begin{align*}
-             & \forall x \in (0, 2a), \frac{x}{a} \in (0, 2)                                                                                                       \\
-    \implies & \forall x \in (0, 2a), \ln(\frac{x}{a}) = \sum_{n = 1}^\infty \frac{(-1)^{n + 1}}{n} \bigg(\frac{x}{a} - 1\bigg)^n & \text{(by \cref{4.5.6}(e))}    \\
-    \implies & \forall x \in (0, 2a), \ln(x) - \ln(a) = \sum_{n = 1}^\infty \frac{(-1)^{n + 1}}{n} \bigg(\frac{x}{a} - 1\bigg)^n  & \text{(by \cref{4.5.6}(b)(c))} \\
-    \implies & \forall x \in (0, 2a), \ln(x) = \ln(a) + \sum_{n = 1}^\infty \frac{(-1)^{n + 1}}{n} \bigg(\frac{x}{a} - 1\bigg)^n                                   \\
-             & = \ln(a) (x - a)^0 + \sum_{n = 1}^\infty \frac{(-1)^{n + 1}}{n a^n} (x - a)^n                                                                       \\
-    \implies & \ln \text{ is real analytic at } a \text{ with radius of convergence } a.                                          & \text{(by \cref{4.2.1})}
+             & \forall x \in (0, 2a), \dfrac{x}{a} \in (0, 2)                                                                                                            \\
+    \implies & \forall x \in (0, 2a), \ln(\dfrac{x}{a}) = \sum_{n = 1}^\infty \dfrac{(-1)^{n + 1}}{n} \bigg(\dfrac{x}{a} - 1\bigg)^n &  & \text{(by \cref{4.5.6}(e))}    \\
+    \implies & \forall x \in (0, 2a), \ln(x) - \ln(a) = \sum_{n = 1}^\infty \dfrac{(-1)^{n + 1}}{n} \bigg(\dfrac{x}{a} - 1\bigg)^n   &  & \text{(by \cref{4.5.6}(b)(c))} \\
+    \implies & \forall x \in (0, 2a), \ln(x) = \ln(a) + \sum_{n = 1}^\infty \dfrac{(-1)^{n + 1}}{n} \bigg(\dfrac{x}{a} - 1\bigg)^n                                       \\
+             & = \ln(a) (x - a)^0 + \sum_{n = 1}^\infty \dfrac{(-1)^{n + 1}}{n a^n} (x - a)^n                                                                            \\
+    \implies & \ln \text{ is real analytic at } a \text{ with radius of convergence } a.                                             &  & \text{(by \cref{4.2.1})}
   \end{align*}
   Since \(a\) is arbitrary, we conclude that \(\ln\) is real analytic on \(\R^+\).
 \end{proof}
@@ -640,10 +640,10 @@
 \begin{proof}
   Since \(f\) is real analytic on \(\R\), we have
   \begin{align*}
-    \forall x \in \R, f(x) & = \sum_{n = 0}^\infty \frac{f^{(n)}(0)}{n!} (x - 0)^n & \text{(by \cref{4.2.10})} \\
-                           & = \sum_{n = 0}^\infty \frac{f(0)}{n!} x^n             & \text{(by hypothesis)}    \\
-                           & = f(0) \bigg(\sum_{n = 0}^\infty \frac{x^n}{n!}\bigg)                             \\
-                           & = f(0) e^x.                                           & \text{(by \cref{4.5.1})}
+    \forall x \in \R, f(x) & = \sum_{n = 0}^\infty \dfrac{f^{(n)}(0)}{n!} (x - 0)^n &  & \text{(by \cref{4.2.10})} \\
+                           & = \sum_{n = 0}^\infty \dfrac{f(0)}{n!} x^n             &  & \text{(by hypothesis)}    \\
+                           & = f(0) \bigg(\sum_{n = 0}^\infty \dfrac{x^n}{n!}\bigg)                                \\
+                           & = f(0) e^x.                                            &  & \text{(by \cref{4.5.1})}
   \end{align*}
 \end{proof}
 
@@ -651,7 +651,7 @@
   Let \(m > 0\) be an integer.
   Show that
   \[
-    \lim_{x \to +\infty} \frac{e^x}{x^m} = +\infty.
+    \lim_{x \to +\infty} \dfrac{e^x}{x^m} = +\infty.
   \]
 \end{ex}
 
@@ -659,59 +659,59 @@
   Let \(m \in \Z^+\).
   Observe that
   \begin{align*}
-             & \lim_{n \to \infty} \frac{1}{n + 1} = 0                                     \\
-    \implies & \lim_{n \to \infty} \bigg(1 - \frac{1}{n + 1}\bigg) = 1                     \\
-    \implies & \lim_{n \to \infty} \frac{n}{n + 1} = 1                                     \\
-    \implies & \lim_{n \to \infty} \bigg(\frac{n}{n + 1}\bigg)^m = 1^m = 1                 \\
-    \implies & \lim_{n \to \infty} e \bigg(\frac{n}{n + 1}\bigg)^m = e                     \\
-    \implies & \lim_{n \to \infty} \frac{e^{n + 1}}{e^n} \bigg(\frac{n}{n + 1}\bigg)^m = e
+             & \lim_{n \to \infty} \dfrac{1}{n + 1} = 0                                      \\
+    \implies & \lim_{n \to \infty} \bigg(1 - \dfrac{1}{n + 1}\bigg) = 1                      \\
+    \implies & \lim_{n \to \infty} \dfrac{n}{n + 1} = 1                                      \\
+    \implies & \lim_{n \to \infty} \bigg(\dfrac{n}{n + 1}\bigg)^m = 1^m = 1                  \\
+    \implies & \lim_{n \to \infty} e \bigg(\dfrac{n}{n + 1}\bigg)^m = e                      \\
+    \implies & \lim_{n \to \infty} \dfrac{e^{n + 1}}{e^n} \bigg(\dfrac{n}{n + 1}\bigg)^m = e
   \end{align*}
   and
   \[
-    e = \exp(1) = \sum_{n = 0}^\infty \frac{1}{n!} = \frac{1}{0!} + \frac{1}{1!} + \sum_{n = 2}^\infty \frac{1}{n!} > 2.
+    e = \exp(1) = \sum_{n = 0}^\infty \dfrac{1}{n!} = \dfrac{1}{0!} + \dfrac{1}{1!} + \sum_{n = 2}^\infty \dfrac{1}{n!} > 2.
   \]
   We know that
   \begin{align*}
-             & \exists\ N \in \Z^+ : \forall n \geq N, \abs{\frac{e^{n + 1}}{e^n} \bigg(\frac{n}{n + 1}\bigg)^m - e} < \frac{e}{2}         & (e > 2) \\
-    \implies & \exists\ N \in \Z^+ : \forall n \geq N, \abs{\frac{e^{n + 1}}{(n + 1)^m} - \frac{e^{n + 1}}{n^m}} < \frac{e^{n + 1}}{2 n^m}           \\
-    \implies & \exists\ N \in \Z^+ : \forall n \geq N, \frac{e^{n + 1}}{2 n^m} < \frac{e^{n + 1}}{(n + 1)^m} < \frac{3 e^{n + 1}}{2 n^m}             \\
-    \implies & \exists\ N \in \Z^+ : \forall n \geq N, \frac{e^n}{n^m} < \frac{e^{n + 1}}{2 n^m} < \frac{e^{n + 1}}{(n + 1)^m}             & (e > 2) \\
-    \implies & \exists\ N \in \Z^+ : (\frac{e^n}{n^m})_{n = N}^\infty \text{ is monotone increasing sequence}.
+             & \exists\ N \in \Z^+ : \forall n \geq N, \abs{\dfrac{e^{n + 1}}{e^n} \bigg(\dfrac{n}{n + 1}\bigg)^m - e} < \dfrac{e}{2}         & (e > 2) \\
+    \implies & \exists\ N \in \Z^+ : \forall n \geq N, \abs{\dfrac{e^{n + 1}}{(n + 1)^m} - \dfrac{e^{n + 1}}{n^m}} < \dfrac{e^{n + 1}}{2 n^m}           \\
+    \implies & \exists\ N \in \Z^+ : \forall n \geq N, \dfrac{e^{n + 1}}{2 n^m} < \dfrac{e^{n + 1}}{(n + 1)^m} < \dfrac{3 e^{n + 1}}{2 n^m}             \\
+    \implies & \exists\ N \in \Z^+ : \forall n \geq N, \dfrac{e^n}{n^m} < \dfrac{e^{n + 1}}{2 n^m} < \dfrac{e^{n + 1}}{(n + 1)^m}             & (e > 2) \\
+    \implies & \exists\ N \in \Z^+ : (\dfrac{e^n}{n^m})_{n = N}^\infty \text{ is monotone increasing sequence}.
   \end{align*}
   Fix such \(N\).
-  Now we show that \(\sup(\frac{e^n}{n^m})_{n = N}^\infty = +\infty\).
+  Now we show that \(\sup(\dfrac{e^n}{n^m})_{n = N}^\infty = +\infty\).
   Since
   \begin{align*}
-             & \forall n \geq N, \frac{e^{n + 1}}{(n + 1)^m} > \frac{e^{n + 1}}{2 n^m}                                                                           \\
-    \implies & \forall n \geq N, \frac{e^{n + 1}}{(n + 1)^m} > \bigg(\frac{e}{2} - 1 + 1\bigg) \frac{e^n}{n^m}                                                   \\
-    \implies & \forall n \geq N, \frac{e^{n + 1}}{(n + 1)^m} - \frac{e^n}{n^m} > \bigg(\frac{e}{2} - 1\bigg) \frac{e^n}{n^m}                                     \\
-    \implies & \forall n \geq N, \frac{e^{n + 1}}{(n + 1)^m} - \frac{e^n}{n^m} > \bigg(\frac{e}{2} - 1\bigg) \frac{e^N}{N^m} > 0, & \text{(monotone increasing)}
+             & \forall n \geq N, \dfrac{e^{n + 1}}{(n + 1)^m} > \dfrac{e^{n + 1}}{2 n^m}                                                                                \\
+    \implies & \forall n \geq N, \dfrac{e^{n + 1}}{(n + 1)^m} > \bigg(\dfrac{e}{2} - 1 + 1\bigg) \dfrac{e^n}{n^m}                                                       \\
+    \implies & \forall n \geq N, \dfrac{e^{n + 1}}{(n + 1)^m} - \dfrac{e^n}{n^m} > \bigg(\dfrac{e}{2} - 1\bigg) \dfrac{e^n}{n^m}                                        \\
+    \implies & \forall n \geq N, \dfrac{e^{n + 1}}{(n + 1)^m} - \dfrac{e^n}{n^m} > \bigg(\dfrac{e}{2} - 1\bigg) \dfrac{e^N}{N^m} > 0, &  & \text{(monotone increasing)}
   \end{align*}
   we know that
   \begin{align*}
-    \forall n \geq N, & \frac{e^{n + 1}}{(n + 1)^m} - \frac{e^N}{N^m}                                                              \\
-                      & = \sum_{j = N}^n \bigg(\frac{e^{j + 1}}{(j + 1)^m} - \frac{e^j}{j^m}\bigg) & \text{(telescope series)}     \\
-                      & > \sum_{j = N}^n \Bigg(\bigg(\frac{e}{2} - 1\bigg) \frac{e^N}{N^m}\Bigg)   & \text{(from the proof above)} \\
-                      & = (n - N) \Bigg(\bigg(\frac{e}{2} - 1\bigg) \frac{e^N}{N^m}\Bigg)
+    \forall n \geq N, & \dfrac{e^{n + 1}}{(n + 1)^m} - \dfrac{e^N}{N^m}                                                                 \\
+                      & = \sum_{j = N}^n \bigg(\dfrac{e^{j + 1}}{(j + 1)^m} - \dfrac{e^j}{j^m}\bigg) &  & \text{(telescope series)}     \\
+                      & > \sum_{j = N}^n \Bigg(\bigg(\dfrac{e}{2} - 1\bigg) \dfrac{e^N}{N^m}\Bigg)   &  & \text{(from the proof above)} \\
+                      & = (n - N) \Bigg(\bigg(\dfrac{e}{2} - 1\bigg) \dfrac{e^N}{N^m}\Bigg)
   \end{align*}
   and
   \begin{align*}
-             & \forall n \geq N, \frac{e^{n + 1}}{(n + 1)^m} - \frac{e^N}{N^m} > (n - N) \Bigg(\bigg(\frac{e}{2} - 1\bigg) \frac{e^N}{N^m}\Bigg)                                       \\
-    \implies & \forall n \geq N, \frac{e^{n + 1}}{(n + 1)^m} > (n - N) \Bigg(\bigg(\frac{e}{2} - 1\bigg) \frac{e^N}{N^m}\Bigg) + \frac{e^N}{N^m}                                       \\
-    \implies & \forall n \geq N, \frac{e^{n + 1}}{(n + 1)^m} > (n - N) \Bigg(\bigg(\frac{e}{2} - 1\bigg) \frac{e^N}{N^m}\Bigg) + \bigg(\frac{e}{2} - 1\bigg) \frac{e^N}{N^m} & (e < 3) \\
-    \implies & \forall n \geq N, \frac{e^{n + 1}}{(n + 1)^m} > (n + 1 - N) \Bigg(\bigg(\frac{e}{2} - 1\bigg) \frac{e^N}{N^m}\Bigg)
+             & \forall n \geq N, \dfrac{e^{n + 1}}{(n + 1)^m} - \dfrac{e^N}{N^m} > (n - N) \Bigg(\bigg(\dfrac{e}{2} - 1\bigg) \dfrac{e^N}{N^m}\Bigg)                                        \\
+    \implies & \forall n \geq N, \dfrac{e^{n + 1}}{(n + 1)^m} > (n - N) \Bigg(\bigg(\dfrac{e}{2} - 1\bigg) \dfrac{e^N}{N^m}\Bigg) + \dfrac{e^N}{N^m}                                        \\
+    \implies & \forall n \geq N, \dfrac{e^{n + 1}}{(n + 1)^m} > (n - N) \Bigg(\bigg(\dfrac{e}{2} - 1\bigg) \dfrac{e^N}{N^m}\Bigg) + \bigg(\dfrac{e}{2} - 1\bigg) \dfrac{e^N}{N^m} & (e < 3) \\
+    \implies & \forall n \geq N, \dfrac{e^{n + 1}}{(n + 1)^m} > (n + 1 - N) \Bigg(\bigg(\dfrac{e}{2} - 1\bigg) \dfrac{e^N}{N^m}\Bigg)
   \end{align*}
-  Since \(\frac{e^N}{N^m} > 0\), by Archimedean property we know that
+  Since \(\dfrac{e^N}{N^m} > 0\), by Archimedean property we know that
   \begin{align*}
-             & \forall \varepsilon \in \R^+, \exists\ K \in \Z^+ : K \Bigg(\bigg(\frac{e}{2} - 1\bigg) \frac{e^N}{N^m}\Bigg) > \varepsilon                                \\
-    \implies & \forall \varepsilon \in \R^+, \exists\ K \in \Z^+ : \frac{e^{N + K}}{(N + K)^m} > \varepsilon                                                              \\
-    \implies & \forall \varepsilon \in \R^+, \exists\ K \in \Z^+ : \frac{e^K}{K^m} > \varepsilon                                                                          \\
-    \implies & \forall \varepsilon \in \R^+, \exists\ K \in \Z^+ : \forall n \geq K, \frac{e^n}{n^m} > \varepsilon                         & \text{(monotone increasing)} \\
-    \implies & \lim_{n \to \infty} \frac{e^n}{n^m} = +\infty.
+             & \forall \varepsilon \in \R^+, \exists\ K \in \Z^+ : K \Bigg(\bigg(\dfrac{e}{2} - 1\bigg) \dfrac{e^N}{N^m}\Bigg) > \varepsilon                                   \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ K \in \Z^+ : \dfrac{e^{N + K}}{(N + K)^m} > \varepsilon                                                                  \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ K \in \Z^+ : \dfrac{e^K}{K^m} > \varepsilon                                                                              \\
+    \implies & \forall \varepsilon \in \R^+, \exists\ K \in \Z^+ : \forall n \geq K, \dfrac{e^n}{n^m} > \varepsilon                          &  & \text{(monotone increasing)} \\
+    \implies & \lim_{n \to \infty} \dfrac{e^n}{n^m} = +\infty.
   \end{align*}
   Since \(m\) is arbitrary, we conclude that
   \[
-    \forall m \in \Z^+, \lim_{n \to \infty} \frac{e^n}{n^m} = +\infty.
+    \forall m \in \Z^+, \lim_{n \to \infty} \dfrac{e^n}{n^m} = +\infty.
   \]
 \end{proof}
 
@@ -732,21 +732,21 @@
   Let \(b = \ceil{a} + 1 \in \Z^+\).
   By \cref{ex:4.5.8} we have
   \begin{align*}
-             & \forall 0 \leq i \leq m, \exists\ N_i \in \Z^+ : \forall n \geq N_i, \frac{e^n}{n^i} > 1       \\
-    \implies & \forall 0 \leq i \leq m, \exists\ N_i \in \Z^+ : \forall n \geq N_i, \frac{e^{bn}}{(bn)^i} > 1 \\
+             & \forall 0 \leq i \leq m, \exists\ N_i \in \Z^+ : \forall n \geq N_i, \dfrac{e^n}{n^i} > 1       \\
+    \implies & \forall 0 \leq i \leq m, \exists\ N_i \in \Z^+ : \forall n \geq N_i, \dfrac{e^{bn}}{(bn)^i} > 1 \\
     \implies & \forall 0 \leq i \leq m, \exists\ N_i \in \Z^+ : \forall n \geq N_i, e^{bn} > (bn)^i.
   \end{align*}
   Let \(K = \max_{i = 0}^m(N_i) + 1\).
   Then we have
   \begin{align*}
-             & \forall n \geq K, e^{bn} > (bn)^m                                                                                     \\
-    \implies & \forall x \in (K, +\infty), e^{bx} > (bx)^m > (ax)^m                                                                  \\
-    \implies & \forall x \in (K, +\infty),                                                                                           \\
-             & e^{b (m + 1) x} > \big(b (m + 1) x\big)^m > \big(a (m + 1) x\big)^m                & \text{(by Archimedean property)} \\
-    \implies & \forall x \in (K, +\infty),                                                                                           \\
+             & \forall n \geq K, e^{bn} > (bn)^m                                                                                        \\
+    \implies & \forall x \in (K, +\infty), e^{bx} > (bx)^m > (ax)^m                                                                     \\
+    \implies & \forall x \in (K, +\infty),                                                                                              \\
+             & e^{b (m + 1) x} > \big(b (m + 1) x\big)^m > \big(a (m + 1) x\big)^m                &  & \text{(by Archimedean property)} \\
+    \implies & \forall x \in (K, +\infty),                                                                                              \\
              & e^{b (m + 1) x} > \big(a (m + 1) x\big)^m = \sum_{i = 0}^m (ax)^m \geq \abs{P(x)}.
   \end{align*}
-  By setting \(N = \frac{b K (m + 1)}{c}\) we are done.
+  By setting \(N = \dfrac{b K (m + 1)}{c}\) we are done.
 \end{proof}
 
 \begin{ex}\label{ex:4.5.10}
@@ -758,9 +758,9 @@
   Let \(d = d_{l^1}|_{(\R^+ \times \R) \times (\R^+ \times \R)}\).
   We have
   \begin{align*}
-    \forall (x, y) \in \R^+ \times \R, f(x, y) & = x^y                                                  \\
-                                               & = \exp\big(\ln(x^y)\big) & \text{(by \cref{4.5.5})}    \\
-                                               & = \exp(y \ln(x)).        & \text{(by \cref{4.5.6}(d))}
+    \forall (x, y) \in \R^+ \times \R, f(x, y) & = x^y                                                     \\
+                                               & = \exp\big(\ln(x^y)\big) &  & \text{(by \cref{4.5.5})}    \\
+                                               & = \exp(y \ln(x)).        &  & \text{(by \cref{4.5.6}(d))}
   \end{align*}
   Let \((x_n, y_n)_{n = 1}^\infty\) be a sequence in \(\R^+ \times \R\) such that
   \[
@@ -769,9 +769,9 @@
   By Proposition 9.8.3 in Analysis I and \cref{4.5.5} we know that \(\ln\) is continuous on \(\R^+\).
   Thus we have
   \begin{align*}
-             & \lim_{n \to \infty} \ln(x_n) = \ln(x)                                    & \text{(by \cref{2.1.4}(a)(b))} \\
-    \implies & \lim_{n \to \infty} y_n \ln(x_n) = y \ln(x)                              & \text{(by \cref{2.2.2})}       \\
-    \implies & \lim_{n \to \infty} \exp\big(y_n \ln(x_n)\big) = \exp\big(y \ln(x)\big). & \text{(by \cref{4.5.2}(c))}
+             & \lim_{n \to \infty} \ln(x_n) = \ln(x)                                    &  & \text{(by \cref{2.1.4}(a)(b))} \\
+    \implies & \lim_{n \to \infty} y_n \ln(x_n) = y \ln(x)                              &  & \text{(by \cref{2.2.2})}       \\
+    \implies & \lim_{n \to \infty} \exp\big(y_n \ln(x_n)\big) = \exp\big(y \ln(x)\big). &  & \text{(by \cref{4.5.2}(c))}
   \end{align*}
   Since \((x_n, y_n)_{n = 1}^\infty\) is arbitrary, by \cref{2.1.4}(a)(b) we conclude that \(f\) is continuous at \((x, y)\) from \((\R^+ \times \R, d)\) to \((\R, d_{l^1}|_{\R \times \R})\).
   Since \(x, y\) are arbitrary, we conclude that \(f\) is continuous on \(\R^+ \times \R\) from \((\R^+ \times \R, d)\) to \((\R, d_{l^1}|_{\R \times \R})\).

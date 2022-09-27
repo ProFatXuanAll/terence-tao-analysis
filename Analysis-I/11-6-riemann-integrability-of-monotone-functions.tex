@@ -10,30 +10,30 @@
   From \cref{ex:9.8.1} we know that \(f\) is bounded.
   Now let \(N > 0\) be an integer, and partition \([a, b]\) into \(N\) half-open intervals
   \[
-    \bigg\{\big[a + \frac{b - a}{N} j, a + \frac{b - a}{N} (j + 1)\big) : 0 \leq j \leq N - 1\bigg\}
+    \bigg\{\big[a + \dfrac{b - a}{N} j, a + \dfrac{b - a}{N} (j + 1)\big) : 0 \leq j \leq N - 1\bigg\}
   \]
   of length \((b - a) / N\), together with the point \(\{b\}\).
   Then by \cref{11.3.12} we have
   \[
-    \overline{\int}_I f \leq \sum_{j = 0}^{N - 1} \Bigg(\sup_{x \in \big[a + \frac{b - a}{N} j, a + \frac{b - a}{N} (j + 1)\big)} f(x)\Bigg) \frac{b - a}{N},
+    \overline{\int}_I f \leq \sum_{j = 0}^{N - 1} \Bigg(\sup_{x \in \big[a + \dfrac{b - a}{N} j, a + \dfrac{b - a}{N} (j + 1)\big)} f(x)\Bigg) \dfrac{b - a}{N},
   \]
   (the point \(\{b\}\) clearly giving only a zero contribution).
   Since \(f\) is monotone increasing, we thus have
   \[
-    \overline{\int}_I f \leq \sum_{j = 0}^{N - 1} f\bigg(a + \frac{b - a}{N} (j + 1)\bigg) \frac{b - a}{N}.
+    \overline{\int}_I f \leq \sum_{j = 0}^{N - 1} f\bigg(a + \dfrac{b - a}{N} (j + 1)\bigg) \dfrac{b - a}{N}.
   \]
   Similarly we have
   \[
-    \underline{\int}_I f \geq \sum_{j = 0}^{N - 1} f\bigg(a + \frac{b - a}{N} j\bigg) \frac{b - a}{N}.
+    \underline{\int}_I f \geq \sum_{j = 0}^{N - 1} f\bigg(a + \dfrac{b - a}{N} j\bigg) \dfrac{b - a}{N}.
   \]
   Thus we have
   \[
-    \overline{\int}_I f - \underline{\int}_I f \leq \sum_{j = 0}^{N - 1} \Bigg(f\bigg(a + \frac{b - a}{N} (j + 1)\bigg) - f\bigg(a + \frac{b - a}{N} j\bigg)\Bigg) \frac{b - a}{N}.
+    \overline{\int}_I f - \underline{\int}_I f \leq \sum_{j = 0}^{N - 1} \Bigg(f\bigg(a + \dfrac{b - a}{N} (j + 1)\bigg) - f\bigg(a + \dfrac{b - a}{N} j\bigg)\Bigg) \dfrac{b - a}{N}.
   \]
   Using telescoping series (\cref{7.2.15}) we thus have
   \begin{align*}
-    \overline{\int}_I f - \underline{\int}_I f & \leq \Bigg(f\bigg(a + \frac{b - a}{N} N\bigg) - f\bigg(a + \frac{b - a}{N} 0\bigg)\Bigg) \frac{b - a}{N} \\
-                                               & = \big(f(b) - f(a)\big) \frac{b - a}{N}.
+    \overline{\int}_I f - \underline{\int}_I f & \leq \Bigg(f\bigg(a + \dfrac{b - a}{N} N\bigg) - f\bigg(a + \dfrac{b - a}{N} 0\bigg)\Bigg) \dfrac{b - a}{N} \\
+                                               & = \big(f(b) - f(a)\big) \dfrac{b - a}{N}.
   \end{align*}
   But \(N\) was arbitrary, so we can conclude as in the proof of \cref{11.5.1} that \(f\) is Riemann integrable.
 \end{proof}
@@ -62,10 +62,10 @@
   \]
   Define \(\tilde{h} : I \to \R\) by
   \[
-    \tilde{h}(x) \coloneqq \begin{cases}
+    \tilde{h}(x) \coloneqq \begin{dcases}
       h(x) & \text{if } x \in [a + \varepsilon, b - \varepsilon]             \\
       M    & \text{if } x \in I \setminus [a + \varepsilon, b - \varepsilon]
-    \end{cases}
+    \end{dcases}
   \]
   Clearly \(\tilde{h}\) is piecewise constant on \(I\) and majorizes \(f\);
   by \cref{11.2.16} we have
@@ -99,21 +99,21 @@
   Since \(f\) is monotone decreasing, by \cref{11.6.1} we know that \(f\) is Riemann integrable on both \([0, N]\) and every interval \([a, b] \subseteq [0, N]\).
   Then we have
   \begin{align*}
-    \int_{[0, N]} f & = \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f|_{[n, n + 1)} + \int_{[N, N]} f|_{[N, N]} & \text{(by \cref{ex:11.4.3})}             \\
-                    & = \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f|_{[n, n + 1)}                             & \text{(by \cref{11.1.8})}                \\
-                    & \leq \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f(n)                                     & \text{(by \cref{11.4.1}(e))}             \\
-                    & = \sum_{n = 0}^{N - 1} f(n) \abs{n + 1 - n}                                          & \text{(by \cref{11.2.9})}                \\
-                    & = \sum_{n = 0}^{N - 1} f(n)                                                                                                     \\
+    \int_{[0, N]} f & = \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f|_{[n, n + 1)} + \int_{[N, N]} f|_{[N, N]} &                                          & \text{(by \cref{ex:11.4.3})} \\
+                    & = \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f|_{[n, n + 1)}                             &                                          & \text{(by \cref{11.1.8})}    \\
+                    & \leq \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f(n)                                     &                                          & \text{(by \cref{11.4.1}(e))} \\
+                    & = \sum_{n = 0}^{N - 1} f(n) \abs{n + 1 - n}                                          &                                          & \text{(by \cref{11.2.9})}    \\
+                    & = \sum_{n = 0}^{N - 1} f(n)                                                                                                                                    \\
                     & \leq \sum_{n = 0}^N f(n)                                                             & (\forall x \in [0, \infty), f(x) \geq 0)
   \end{align*}
   and
   \begin{align*}
-    \int_{[0, N]} f & = \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f|_{[n, n + 1)} + \int_{[N, N]} f|_{[N, N]} & \text{(by \cref{ex:11.4.3})} \\
-                    & = \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f|_{[n, n + 1)}                             & \text{(by \cref{11.1.8})}    \\
-                    & \geq \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f(n + 1)                                 & \text{(by \cref{11.4.1}(e))} \\
-                    & = \sum_{n = 0}^{N - 1} f(n + 1) \abs{n + 1 - n}                                      & \text{(by \cref{11.2.9})}    \\
-                    & = \sum_{n = 0}^{N - 1} f(n + 1)                                                                                     \\
-                    & = \sum_{n = 1}^N f(n).                                                               & \text{(by \cref{7.1.4}(b))}
+    \int_{[0, N]} f & = \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f|_{[n, n + 1)} + \int_{[N, N]} f|_{[N, N]} &  & \text{(by \cref{ex:11.4.3})} \\
+                    & = \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f|_{[n, n + 1)}                             &  & \text{(by \cref{11.1.8})}    \\
+                    & \geq \sum_{n = 0}^{N - 1} \int_{[n, n + 1)} f(n + 1)                                 &  & \text{(by \cref{11.4.1}(e))} \\
+                    & = \sum_{n = 0}^{N - 1} f(n + 1) \abs{n + 1 - n}                                      &  & \text{(by \cref{11.2.9})}    \\
+                    & = \sum_{n = 0}^{N - 1} f(n + 1)                                                                                        \\
+                    & = \sum_{n = 1}^N f(n).                                                               &  & \text{(by \cref{7.1.4}(b))}
   \end{align*}
 
   Next we show that if \(\sum_{n = 0}^\infty f(n)\) is convergent, then \(\sup_{N > 0} \int_{[0, N]} f\) is finite.
@@ -141,24 +141,24 @@
 
 \begin{cor}\label{11.6.5}
   Let \(p\) be a real number.
-  Then \(\sum_{n = 1}^\infty \frac{1}{n^p}\) converges absolutely when \(p > 1\) and diverges when \(p \leq 1\).
+  Then \(\sum_{n = 1}^\infty \dfrac{1}{n^p}\) converges absolutely when \(p > 1\) and diverges when \(p \leq 1\).
 \end{cor}
 
 \begin{proof}
-  Let \(f : [1, \infty) \to \R\) be the function \(f(x) = \frac{1}{x^p}\).
+  Let \(f : [1, \infty) \to \R\) be the function \(f(x) = \dfrac{1}{x^p}\).
   By \cref{6.7.3}(a)(d) we know that \(f\) is positive and
   \[
-    \begin{cases}
+    \begin{dcases}
       f \text{ is monotone decreasing if } p > 1; \\
       f \text{ is monotone increasing if } p < 1; \\
       f \text{ is both monotone increasing and decreasing if } p = 1.
-    \end{cases}
+    \end{dcases}
   \]
   By \cref{11.6.1} \(f\) is Riemann integrable on \([1, N]\) for every \(N \in \R\) and \(N \geq 1\).
   If \(p \neq 1\), then we have
   \begin{align*}
-    \int_{[1, N]} f & = \frac{1}{1 - p} (N^{1 - p} - 1^{1 - p}) & \text{(by \cref{11.9.4})} \\
-                    & = \frac{1}{1 - p} (N^{1 - p} - 1).
+    \int_{[1, N]} f & = \dfrac{1}{1 - p} (N^{1 - p} - 1^{1 - p}) &  & \text{(by \cref{11.9.4})} \\
+                    & = \dfrac{1}{1 - p} (N^{1 - p} - 1).
   \end{align*}
   If \(p = 1\), then we have
   \[
@@ -169,23 +169,23 @@
   First suppose that \(p > 1\).
   Since
   \begin{align*}
-    \int_{[1, N]} f & = \frac{1}{1 - p} (N^{1 - p} - 1)                      \\
-                    & = \frac{1}{p - 1} (1 - N^{1 - p})                      \\
-                    & \leq \frac{1}{p - 1}              & (N^{1 - p} \leq 1)
+    \int_{[1, N]} f & = \dfrac{1}{1 - p} (N^{1 - p} - 1)                      \\
+                    & = \dfrac{1}{p - 1} (1 - N^{1 - p})                      \\
+                    & \leq \dfrac{1}{p - 1}              & (N^{1 - p} \leq 1)
   \end{align*}
-  and \(N\) is arbitrary, we know that \(\sup_{N > 1} \int_{[1, N]} f \leq \frac{1}{p - 1}\).
-  Thus \(\sup_{N > 1} \int_{[1, N]} f\) is finite and by \cref{11.6.4} \(\sum_{n = 1}^\infty \frac{1}{n^p}\) is convergent.
+  and \(N\) is arbitrary, we know that \(\sup_{N > 1} \int_{[1, N]} f \leq \dfrac{1}{p - 1}\).
+  Thus \(\sup_{N > 1} \int_{[1, N]} f\) is finite and by \cref{11.6.4} \(\sum_{n = 1}^\infty \dfrac{1}{n^p}\) is convergent.
 
   Next suppose that \(p = 1\).
-  Since \(\int_{[1, N]} f = \ln N\) and \(\ln N\) is unbounded, we know that \(\sup_{N > 1} \int_{[1, N]} f = +\infty\) and by \cref{11.6.4} \(\sum_{n = 1}^\infty \frac{1}{n^p}\) is divergent.
+  Since \(\int_{[1, N]} f = \ln N\) and \(\ln N\) is unbounded, we know that \(\sup_{N > 1} \int_{[1, N]} f = +\infty\) and by \cref{11.6.4} \(\sum_{n = 1}^\infty \dfrac{1}{n^p}\) is divergent.
 
   Next suppose that \(0 < p < 1\).
-  Since \(\int_{[1, N]} f = \frac{1}{1 - p} (N^{1 - p} - 1)\) and \(\{N^{1 - p} : N \in \R^+\}\) is unbounded, we know that \(\sup_{N > 1} \int_{[1, N]} f = +\infty\) and by \cref{11.6.4} \(\sum_{n = 1}^\infty \frac{1}{n^p}\) is divergent.
+  Since \(\int_{[1, N]} f = \dfrac{1}{1 - p} (N^{1 - p} - 1)\) and \(\{N^{1 - p} : N \in \R^+\}\) is unbounded, we know that \(\sup_{N > 1} \int_{[1, N]} f = +\infty\) and by \cref{11.6.4} \(\sum_{n = 1}^\infty \dfrac{1}{n^p}\) is divergent.
 
   Finally suppose that \(p \leq 0\).
-  By \cref{6.7.3}(e) we know that \(1 = x^0 \geq x^p\) for all \(x \in [1, \infty)\), thus \(1 = \frac{1}{x^0} \leq \frac{1}{x^p}\).
-  By zero test (\cref{7.2.6}) we know that \(\lim_{n \to \infty} 1 \neq 0\) implies \(\sum_{n = 0}^\infty \frac{1}{x^0}\) diverges.
-  Thus by comparison test (\cref{7.3.1}) \(\sum_{n = 1}^N \frac{1}{x^p}\) is divergent.
+  By \cref{6.7.3}(e) we know that \(1 = x^0 \geq x^p\) for all \(x \in [1, \infty)\), thus \(1 = \dfrac{1}{x^0} \leq \dfrac{1}{x^p}\).
+  By zero test (\cref{7.2.6}) we know that \(\lim_{n \to \infty} 1 \neq 0\) implies \(\sum_{n = 0}^\infty \dfrac{1}{x^0}\) diverges.
+  Thus by comparison test (\cref{7.3.1}) \(\sum_{n = 1}^N \dfrac{1}{x^p}\) is divergent.
 \end{proof}
 
 \exercisesection
@@ -212,15 +212,15 @@
   Since \(f\) is bounded, \(f|_J\) is also bounded, by \cref{11.6.3} we know that \(f|_J\) is Riemann integrable on \(J\).
   Let \(F_J : I \to \R\) be the function
   \[
-    F_J(x) = \begin{cases}
+    F_J(x) = \begin{dcases}
       f|_J(x) & \text{if } x \in J    \\
       0       & \text{if } x \notin J
-    \end{cases}
+    \end{dcases}
   \]
   Then by \cref{11.4.1}(g) we know that \(F_J\) is Riemann integrable and
   \begin{align*}
-    \sum_{J \in \mathbf{P}} \int_I F_J & = \sum_{J \in \mathbf{P}} \int_J f|_J & \text{(by \cref{11.4.1}(g))} \\
-                                       & = \int_I f.                           & \text{(by \cref{ex:11.4.3})}
+    \sum_{J \in \mathbf{P}} \int_I F_J & = \sum_{J \in \mathbf{P}} \int_J f|_J &  & \text{(by \cref{11.4.1}(g))} \\
+                                       & = \int_I f.                           &  & \text{(by \cref{ex:11.4.3})}
   \end{align*}
   Thus \(f\) is Riemann integrable on \(I\).
 \end{proof}
@@ -240,24 +240,24 @@
 \begin{proof}
   Let \(f_1 : [0, \infty) \to \R\) be the function
   \[
-    f_1(x) = \begin{cases}
+    f_1(x) = \begin{dcases}
       1 & \text{if } x \in \N    \\
       0 & \text{if } x \notin \N
-    \end{cases}
+    \end{dcases}
   \]
   Then we know that \(f_1\) is not monotone decreasing and \(\sum_{n = 0}^\infty f_1(n)\) diverges.
   But \(\int_{[0, N]} f_1 = 0\) for all \(N \in \Z^+\), thus \(\sup_{N > 0} \int_{[0, N]} f_1\) is finite.
 
   Let \(f_2 : [0, \infty) \to \R\) be the function
   \[
-    f_2(x) = \begin{cases}
-      \frac{1}{x^2} & \text{if } x \in \N    \\
-      \frac{1}{x}   & \text{if } x \notin \N
-    \end{cases}
+    f_2(x) = \begin{dcases}
+      \dfrac{1}{x^2} & \text{if } x \in \N    \\
+      \dfrac{1}{x}   & \text{if } x \notin \N
+    \end{dcases}
   \]
   Then we know that \(f_2\) is not monotone decreasing.
-  By \cref{11.6.5} we know that \(\sup_{N > 0} \int_{[0, N]} \frac{1}{x}\) is not finite, and since \(\int_{[0, N]} f_2 = \int_{[0, N]} \frac{1}{x}\) we also have \(\sup_{N > 0} \int_{[0, N]} f_2\) is not finite.
-  But by \cref{11.6.5} we know that \(\sum_{n = 0}^\infty \frac{1}{x^2}\) converges.
+  By \cref{11.6.5} we know that \(\sup_{N > 0} \int_{[0, N]} \dfrac{1}{x}\) is not finite, and since \(\int_{[0, N]} f_2 = \int_{[0, N]} \dfrac{1}{x}\) we also have \(\sup_{N > 0} \int_{[0, N]} f_2\) is not finite.
+  But by \cref{11.6.5} we know that \(\sum_{n = 0}^\infty \dfrac{1}{x^2}\) converges.
 \end{proof}
 
 \begin{ex}\label{ex:11.6.5}

@@ -436,11 +436,11 @@
   We start by showing \(f\) is injective.
   Since \((X, \leq_X)\) is partially ordered, by \cref{8.5.1} we know that
   \begin{align*}
-             & \forall x, x' \in X, f(x) = f(x')                                                            \\
-    \implies & (x) = (x')                                                                                   \\
-    \implies & \big(x \in (x')\big) \land \big(x' \in (x)\big) & \text{(\((X, \leq_X)\) is reflexive)}      \\
-    \implies & (x \leq_X x') \land (x' \leq_X x')                                                           \\
-    \implies & x = x'.                                         & \text{(\((X, \leq_X)\) is anti-symmetric)}
+             & \forall x, x' \in X, f(x) = f(x')                                                               \\
+    \implies & (x) = (x')                                                                                      \\
+    \implies & \big(x \in (x')\big) \land \big(x' \in (x)\big) &  & \text{(\((X, \leq_X)\) is reflexive)}      \\
+    \implies & (x \leq_X x') \land (x' \leq_X x')                                                              \\
+    \implies & x = x'.                                         &  & \text{(\((X, \leq_X)\) is anti-symmetric)}
   \end{align*}
   Thus \(f\) is injective.
   Next we show that \(f\) is surjective.
@@ -453,9 +453,9 @@
 
   Finally we show that \(\forall x, y \in X, x \leq_X y \iff f(x) \subseteq f(y)\).
   \begin{align*}
-         & \forall x, y \in X, x \leq_X y                                                             \\
-    \iff & \forall z \in X, (z \leq_X x \implies z \leq_X y) & \text{(\((X, \leq_X)\) is transitive)} \\
-    \iff & (x) \subseteq (y)                                                                          \\
+         & \forall x, y \in X, x \leq_X y                                                                \\
+    \iff & \forall z \in X, (z \leq_X x \implies z \leq_X y) &  & \text{(\((X, \leq_X)\) is transitive)} \\
+    \iff & (x) \subseteq (y)                                                                             \\
     \iff & f(x) \subseteq f(y).
   \end{align*}
 \end{proof}
@@ -483,9 +483,9 @@
   For \(n = 1\), let \(y \in Y\).
   Then we have
   \begin{align*}
-             & \forall y' \in Y, y' = y                                                                                \\
-    \implies & y' = y \leq_X y = y'                                      & \text{(\((Y, \leq_X)\) is totally ordered)} \\
-    \implies & y = \min\big((Y, \leq_X)\big) = \max\big((Y, \leq_X)\big) & \text{(by \cref{8.5.5})}
+             & \forall y' \in Y, y' = y                                                                                   \\
+    \implies & y' = y \leq_X y = y'                                      &  & \text{(\((Y, \leq_X)\) is totally ordered)} \\
+    \implies & y = \min\big((Y, \leq_X)\big) = \max\big((Y, \leq_X)\big) &  & \text{(by \cref{8.5.5})}
   \end{align*}
   and the base case holds.
   Suppose inductively that for some \(n \geq 1\) we know that \(\min\big((Y, \leq_X)\big)\) and \(\max\big((Y, \leq_X)\big)\) exist.
@@ -497,10 +497,10 @@
   \begin{itemize}
     \item If \(y <_X y_{\min}\), then \(y = \min\big((Y, \leq_X)\big)\) since
           \begin{align*}
-                     & \forall y' \in Y                                                                  \\
-            \implies & (y' = y) \lor (y' \in Y \setminus \{y\})                                          \\
-            \implies & (y' = y) \lor (y_{\min} <_X y')          & \text{(by \cref{8.5.5})}               \\
-            \implies & (y' = y) \lor (y <_X y')                 & \text{(\((X, \leq_X)\) is transitive)} \\
+                     & \forall y' \in Y                                                                     \\
+            \implies & (y' = y) \lor (y' \in Y \setminus \{y\})                                             \\
+            \implies & (y' = y) \lor (y_{\min} <_X y')          &  & \text{(by \cref{8.5.5})}               \\
+            \implies & (y' = y) \lor (y <_X y')                 &  & \text{(\((X, \leq_X)\) is transitive)} \\
             \implies & y \leq_X y'.
           \end{align*}
     \item If \(y_{\min} <_X y\), then \(y_{\min} = \min\big((Y, \leq_X)\big)\) since \(\forall y' \in Y, y_{\min} \leq_X y'\).
@@ -521,10 +521,10 @@
   Since \(X \subseteq X\), by hypothesis \(\min\big((X, \leq_X)\big)\) and \(\max\big((X, \leq_X)\big)\) exist.
   Define \(x_n\) recursively as follow
   \[
-    \forall n \in \N, x_n = \begin{cases}
+    \forall n \in \N, x_n = \begin{dcases}
       \min\big((X, \leq_X)\big)                                           & \text{if } n = 0 \\
       \min\big((X \setminus \bigcup_{m = 0}^{n - 1} \{x_m\}, \leq_X)\big) & \text{if } n > 0
-    \end{cases}
+    \end{dcases}
   \]
   Then we have an strictly increasing sequence \((x_n)_{n = 0}^\infty\), i.e., \(x_0 \leq_X x_1 \leq_X x_2 \dots\).
   Let \(X_n = \{x_n : n \in \N\}\) be the set of all elements in sequence \((x_n)_{n = 0}^\infty\).
@@ -558,9 +558,9 @@
   Let \(Z_Y = Z \cap Y\) and let \(Z_{Y'} = Z \cap Y'\).
   We know that
   \begin{align*}
-             & (Z_Y = \emptyset) \lor (Z_{Y'} = \emptyset)                            \\
-    \implies & (Z \subseteq Y') \lor (Z \subseteq Y)                                  \\
-    \implies & Z \text{ is well-ordered}.                  & \text{(by \cref{8.5.8})}
+             & (Z_Y = \emptyset) \lor (Z_{Y'} = \emptyset)                               \\
+    \implies & (Z \subseteq Y') \lor (Z \subseteq Y)                                     \\
+    \implies & Z \text{ is well-ordered}.                  &  & \text{(by \cref{8.5.8})}
   \end{align*}
   So suppose that \(Z_Y \neq \emptyset \land Z_{Y'} \neq \emptyset\).
   Since \(Z_Y \subseteq Y\) and \(Z_{Y'} \subseteq Y'\), by \cref{8.5.8} \(z_Y = \min\big((Z_Y, \leq_X)\big)\) and \(z_{Y'} = \min\big((Z_{Y'}, \leq_X)\big)\) exist.
@@ -568,13 +568,13 @@
   Without the loss of generality suppose that \(z_Y \leq_X z_{Y'}\).
   Then we have
   \begin{align*}
-             & \forall z \in Z                                                             \\
-    \implies & z \in Y \cup Y'                                                             \\
-    \implies & z \in Y \lor z \in Y'                                                       \\
-    \implies & (z_Y \leq_X z) \lor (z_{Y'} \leq_X z)            & \text{(by \cref{8.5.5})} \\
-    \implies & (z_Y \leq_X z) \lor (z_Y \leq_X z_{Y'} \leq_X z) & \text{(by \cref{8.5.1})} \\
-    \implies & z_Y \leq_X z                                                                \\
-    \implies & z_Y = \min\big((Z, \leq_X)\big).                 & \text{(by \cref{8.5.5})}
+             & \forall z \in Z                                                                \\
+    \implies & z \in Y \cup Y'                                                                \\
+    \implies & z \in Y \lor z \in Y'                                                          \\
+    \implies & (z_Y \leq_X z) \lor (z_{Y'} \leq_X z)            &  & \text{(by \cref{8.5.5})} \\
+    \implies & (z_Y \leq_X z) \lor (z_Y \leq_X z_{Y'} \leq_X z) &  & \text{(by \cref{8.5.1})} \\
+    \implies & z_Y \leq_X z                                                                   \\
+    \implies & z_Y = \min\big((Z, \leq_X)\big).                 &  & \text{(by \cref{8.5.5})}
   \end{align*}
   This means for any \(Z \subseteq Y \cup Y'\), \(\min\big((Z, \leq_X)\big)\) must exists.
   Thus by \cref{8.5.8} \((Y \cup Y', \leq_X)\) is well-ordered.
@@ -600,27 +600,27 @@
   we know that \((X \times Y, \leq_{X \times Y})\) is reflexive.
   Since
   \begin{align*}
-             & \forall (x, y), (x', y') \in X \times Y,                                                                                 \\
-             & \big((x, y) \leq_{X \times Y} (x', y')\big) \land \big((x', y') \leq_{X \times Y} (x, y)\big)                            \\
-    \implies & \Big((x <_X x') \lor \big((x = x') \land (y \leq_Y y')\big)\Big)                                                         \\
-             & \land \Big((x' <_X x) \lor \big((x = x') \land (y' \leq_Y y)\big)\Big)                                                   \\
-    \implies & \Big((x \leq_X x') \land \big((x <_X x') \lor (y \leq_Y y')\big)\Big)                                                    \\
-             & \land \Big((x' \leq_X x) \land \big((x' <_X x) \lor (y' \leq_Y y)\big)\Big)                                              \\
-    \implies & (x = x') \land (y \leq_Y y') \land (y' \leq_Y y)                                                                         \\
-    \implies & (x = x') \land (y = y')                                                                       & \text{(by \cref{8.5.1})} \\
-    \implies & (x, y) = (x', y'),                                                                            & \text{(by \cref{3.5.1})}
+             & \forall (x, y), (x', y') \in X \times Y,                                                                                    \\
+             & \big((x, y) \leq_{X \times Y} (x', y')\big) \land \big((x', y') \leq_{X \times Y} (x, y)\big)                               \\
+    \implies & \Big((x <_X x') \lor \big((x = x') \land (y \leq_Y y')\big)\Big)                                                            \\
+             & \land \Big((x' <_X x) \lor \big((x = x') \land (y' \leq_Y y)\big)\Big)                                                      \\
+    \implies & \Big((x \leq_X x') \land \big((x <_X x') \lor (y \leq_Y y')\big)\Big)                                                       \\
+             & \land \Big((x' \leq_X x) \land \big((x' <_X x) \lor (y' \leq_Y y)\big)\Big)                                                 \\
+    \implies & (x = x') \land (y \leq_Y y') \land (y' \leq_Y y)                                                                            \\
+    \implies & (x = x') \land (y = y')                                                                       &  & \text{(by \cref{8.5.1})} \\
+    \implies & (x, y) = (x', y'),                                                                            &  & \text{(by \cref{3.5.1})}
   \end{align*}
   we know that \((X \times Y, \leq_{X \times Y})\) is anti-symmetric.
   Since
   \begin{align*}
-             & \forall (x_1, y_1), (x_2, y_2), (x_3, y_3) \in X \times Y :                                                                          \\
-             & \big((x_1, y_1) \leq_{X \times Y} (x_2, y_2)\big) \land \big((x_2, y_2) \leq_{X \times Y} (x_3, y_3)\big)                            \\
-    \implies & \Big((x_1 <_X x_2) \lor \big((x_1 = x_2) \land (y_1 \leq_Y y_2)\big)\Big)                                                            \\
-             & \land \Big((x_2 <_X x_3) \lor \big((x_2 = x_3) \land (y_2 \leq_Y y_3)\big)\Big)                                                      \\
-    \implies & (x_1 <_X x_2 <_X x_3)                                                                                     & \text{(by \cref{8.5.1})} \\
-             & \lor \big((x_1 = x_2 <_X x_3) \land (y_1 \leq_Y y_2)\big)                                                                            \\
-             & \lor \big((x_1 <_X x_2 = x_3) \land (y_2 \leq_Y y_3)\big)                                                                            \\
-             & \lor \big((x_1 = x_2 = x_3) \land (y_1 \leq_Y y_2 \leq_Y y_3)\big)                                        & \text{(by \cref{8.5.1})} \\
+             & \forall (x_1, y_1), (x_2, y_2), (x_3, y_3) \in X \times Y :                                                                             \\
+             & \big((x_1, y_1) \leq_{X \times Y} (x_2, y_2)\big) \land \big((x_2, y_2) \leq_{X \times Y} (x_3, y_3)\big)                               \\
+    \implies & \Big((x_1 <_X x_2) \lor \big((x_1 = x_2) \land (y_1 \leq_Y y_2)\big)\Big)                                                               \\
+             & \land \Big((x_2 <_X x_3) \lor \big((x_2 = x_3) \land (y_2 \leq_Y y_3)\big)\Big)                                                         \\
+    \implies & (x_1 <_X x_2 <_X x_3)                                                                                     &  & \text{(by \cref{8.5.1})} \\
+             & \lor \big((x_1 = x_2 <_X x_3) \land (y_1 \leq_Y y_2)\big)                                                                               \\
+             & \lor \big((x_1 <_X x_2 = x_3) \land (y_2 \leq_Y y_3)\big)                                                                               \\
+             & \lor \big((x_1 = x_2 = x_3) \land (y_1 \leq_Y y_2 \leq_Y y_3)\big)                                        &  & \text{(by \cref{8.5.1})} \\
     \implies & (x_1, y_1) \leq_{X \times Y} (x_3, y_3),
   \end{align*}
   we know that \((X \times Y, \leq_{X \times Y})\) is transitive.
@@ -632,8 +632,8 @@
   From prove above we know that \((X \times Y, \leq_{X \times Y})\) is partially ordered.
   Since
   \begin{align*}
-             & \forall (x, y), (x', y') \in X \times Y, (x, y) \neq (x', y')                            \\
-    \implies & (x \neq x') \lor \big((x = x') \land (y \neq y')\big),        & \text{(by \cref{3.5.1})}
+             & \forall (x, y), (x', y') \in X \times Y, (x, y) \neq (x', y')                               \\
+    \implies & (x \neq x') \lor \big((x = x') \land (y \neq y')\big),        &  & \text{(by \cref{3.5.1})}
   \end{align*}
   we split into two cases:
   \begin{itemize}
@@ -724,11 +724,11 @@
   By principle of strong induction (\cref{8.5.10}) we know that \(P(n)\) is true for all \(n \in Y \cap Y'\).
   Thus we have
   \begin{align*}
-             & \forall x \in (Y \cap Y') \setminus \{x_0\}, P(x) \text{ is true}                                                \\
-    \implies & \{y \in Y \cap Y' : y \leq x\} = \{y \in Y : y \leq x\}                                                          \\
-    \implies & \{y \in Y \cap Y' : y \leq x\} \setminus \{x\} = \{y \in Y : y \leq x\} \setminus \{x\}                          \\
-    \implies & \{y \in Y \cap Y' : y < x\} = \{y \in Y : y < x\}                                                                \\
-    \implies & s(\{y \in Y \cap Y' : y < x\}) = s(\{y \in Y : y < x\}) = x                             & \text{(\(Y\) is good)}
+             & \forall x \in (Y \cap Y') \setminus \{x_0\}, P(x) \text{ is true}                                                   \\
+    \implies & \{y \in Y \cap Y' : y \leq x\} = \{y \in Y : y \leq x\}                                                             \\
+    \implies & \{y \in Y \cap Y' : y \leq x\} \setminus \{x\} = \{y \in Y : y \leq x\} \setminus \{x\}                             \\
+    \implies & \{y \in Y \cap Y' : y < x\} = \{y \in Y : y < x\}                                                                   \\
+    \implies & s(\{y \in Y \cap Y' : y < x\}) = s(\{y \in Y : y < x\}) = x                             &  & \text{(\(Y\) is good)}
   \end{align*}
   and \(Y \cap Y'\) is good.
 
@@ -740,8 +740,8 @@
   Similarly, we know that \(\forall y_2 \in Y \cap Y'\), \(y_2 \in Y\) and \(y_2 < \min(Y \setminus Y')\), so \(y_2 \in \{y \in Y : y < \min(Y \setminus Y')\}\) and \(Y \cap Y' \subseteq \{y \in Y : y < \min(Y \setminus Y')\}\).
   We now conclude that \(\{y \in Y : y < \min(Y \setminus Y')\} = Y \cap Y'\) and
   \begin{align*}
-             & \min(Y \setminus Y') \in Y \setminus \{x_0\}                                                      \\
-    \implies & \min(Y \setminus Y') = s\big(\{y \in Y : y < \min(Y \setminus Y')\}\big) & \text{(\(Y\) is good)} \\
+             & \min(Y \setminus Y') \in Y \setminus \{x_0\}                                                         \\
+    \implies & \min(Y \setminus Y') = s\big(\{y \in Y : y < \min(Y \setminus Y')\}\big) &  & \text{(\(Y\) is good)} \\
     \implies & \min(Y \setminus Y') = s(Y \cap Y').
   \end{align*}
   Similar arguments show that if \(Y' \setminus Y \neq \emptyset\), then \(s(Y \cap Y') = \min(Y' \setminus Y)\).
@@ -793,9 +793,9 @@
   we know that \((S, \leq_S)\) is reflexive.
   Since
   \begin{align*}
-             & \forall X, Y \in S, (X \leq_S Y) \land (Y \leq_S X)                             \\
-    \implies & (X \subseteq Y) \land (Y \subseteq X)                                           \\
-    \implies & X = Y,                                              & \text{(by \cref{3.1.18})}
+             & \forall X, Y \in S, (X \leq_S Y) \land (Y \leq_S X)                                \\
+    \implies & (X \subseteq Y) \land (Y \subseteq X)                                              \\
+    \implies & X = Y,                                              &  & \text{(by \cref{3.1.18})}
   \end{align*}
   we know that \((S, \leq_S)\) is anti-symmetric.
   Since
@@ -852,9 +852,9 @@
   Let \(S' \subseteq S\) such that \((S', \leq_S)\) is totally ordered.
   Since
   \begin{align*}
-             & \forall Y \in S'                                                                                              \\
-    \implies & \Big(Y \subseteq \bigcup S' \in S\Big)                                            & \text{(from claim above)} \\
-             & \land \Big(\forall y \in Y, f_Y(x) = \big((f_X)_{X \in S'}(Y)\big)(x) = f(y)\Big)                             \\
+             & \forall Y \in S'                                                                                                 \\
+    \implies & \Big(Y \subseteq \bigcup S' \in S\Big)                                            &  & \text{(from claim above)} \\
+             & \land \Big(\forall y \in Y, f_Y(x) = \big((f_X)_{X \in S'}(Y)\big)(x) = f(y)\Big)                                \\
     \implies & Y \leq_S \bigcup S',
   \end{align*}
   we know that \(\bigcup S'\) is an upper bound of \(S'\).
@@ -927,8 +927,8 @@
   Thus by \cref{8.5.1} \((X, =_X)\) is partially ordered and \((X, =_X) \in P\).
   Since
   \begin{align*}
-             & \forall (X, \leq) \in P                                                    \\
-    \implies & (\forall x, y \in X, x =_X y \implies x \leq y) & \text{(by \cref{8.5.1})} \\
+             & \forall (X, \leq) \in P                                                       \\
+    \implies & (\forall x, y \in X, x =_X y \implies x \leq y) &  & \text{(by \cref{8.5.1})} \\
     \implies & =_X \preceq \leq,
   \end{align*}
   by \cref{8.5.5} we have \((X, =_X) = \min\big((P, \preceq)\big)\).
@@ -939,26 +939,26 @@
   \]
   Since
   \begin{align*}
-             & \forall x \in X, \forall \leq \in S, x \leq x & \text{(\((X, \leq)\) is partially ordered)} \\
+             & \forall x \in X, \forall \leq \in S, x \leq x &  & \text{(\((X, \leq)\) is partially ordered)} \\
     \implies & x \leq_S x,
   \end{align*}
   we know that \((X, \leq_S)\) is reflexive.
   Since
   \begin{align*}
-             & \forall x, y \in X, (x \leq_S y) \land (y \leq_S x)                                                                                     \\
-    \implies & \exists\ \leq_1, \leq_2 \in S : (x \leq_1 y) \land (y \leq_2 x)                          & \text{(\((X, \leq)\) is partially ordered)}  \\
-    \implies & (\leq_2 \preceq \leq_1) \lor (\leq_1 \preceq \leq_2)                                     & \text{(\((S, \preceq)\) is totally ordered)} \\
-    \implies & \big((x \leq_1 y) \land (y \leq_1 x)\big) \lor \big((x \leq_2 y) \land (y \leq_2 x)\big)                                                \\
+             & \forall x, y \in X, (x \leq_S y) \land (y \leq_S x)                                                                                        \\
+    \implies & \exists\ \leq_1, \leq_2 \in S : (x \leq_1 y) \land (y \leq_2 x)                          &  & \text{(\((X, \leq)\) is partially ordered)}  \\
+    \implies & (\leq_2 \preceq \leq_1) \lor (\leq_1 \preceq \leq_2)                                     &  & \text{(\((S, \preceq)\) is totally ordered)} \\
+    \implies & \big((x \leq_1 y) \land (y \leq_1 x)\big) \lor \big((x \leq_2 y) \land (y \leq_2 x)\big)                                                   \\
     \implies & x =_X y,
   \end{align*}
   we know that \((X, \leq_S)\) is anti-symmetric.
   Since
   \begin{align*}
-             & \forall x, y, z \in X, (x \leq_S y) \land (y \leq_S z)                                                                                  \\
-    \implies & \exists\ \leq_1, \leq_2 \in S : (x \leq_1 y) \land (y \leq_2 z)                          & \text{(\((X, \leq)\) is partially ordered)}  \\
-    \implies & (\leq_2 \preceq \leq_1) \lor (\leq_1 \preceq \leq_2)                                     & \text{(\((S, \preceq)\) is totally ordered)} \\
-    \implies & \big((x \leq_1 y) \land (y \leq_1 z)\big) \lor \big((x \leq_2 y) \land (y \leq_2 z)\big)                                                \\
-    \implies & (x \leq_1 z) \lor (x \leq_2 z)                                                                                                          \\
+             & \forall x, y, z \in X, (x \leq_S y) \land (y \leq_S z)                                                                                     \\
+    \implies & \exists\ \leq_1, \leq_2 \in S : (x \leq_1 y) \land (y \leq_2 z)                          &  & \text{(\((X, \leq)\) is partially ordered)}  \\
+    \implies & (\leq_2 \preceq \leq_1) \lor (\leq_1 \preceq \leq_2)                                     &  & \text{(\((S, \preceq)\) is totally ordered)} \\
+    \implies & \big((x \leq_1 y) \land (y \leq_1 z)\big) \lor \big((x \leq_2 y) \land (y \leq_2 z)\big)                                                   \\
+    \implies & (x \leq_1 z) \lor (x \leq_2 z)                                                                                                             \\
     \implies & x \leq_S z,
   \end{align*}
   we know that \((X, \leq_S)\) is transitive.
@@ -976,8 +976,8 @@
   So suppose that \(S \neq \emptyset\).
   Then the relation \((S, \leq_S)\) defined as above is an upper bound of \(S\) since for every \((X, \leq) \in S\), we have
   \begin{align*}
-             & \forall x, y \in X, x \leq y                                                 \\
-    \implies & x \leq_S y                   & \text{(by the definition of \((X, \leq_S)\))} \\
+             & \forall x, y \in X, x \leq y                                                    \\
+    \implies & x \leq_S y                   &  & \text{(by the definition of \((X, \leq_S)\))} \\
     \implies & \leq \preceq \leq_S.
   \end{align*}
   Thus every totally ordered subset of \(P\) has an upper bound.
@@ -999,28 +999,28 @@
   we know that \((X, \leq_p)\) is reflexive.
   Since
   \begin{align*}
-         & \forall x, y \in X, (x \leq_p y) \land (y \leq_p x)                                                        \\
-    \iff & \begin{cases}
+         & \forall x, y \in X, (x \leq_p y) \land (y \leq_p x)                                                           \\
+    \iff & \begin{dcases}
              \big((x, y) = (a, b)\big) \land \big((y, x) = (a, b)\big) & \iff \text{false} \\
              \big((x, y) = (a, b)\big) \land (y =_X x)                 & \iff \text{false} \\
              (x =_X y) \land \big((y, x) = (a, b)\big)                 & \iff \text{false} \\
              (x =_X y) \land (y =_X x)                                 & \iff (x =_X y)
-           \end{cases}                              \\
-    \iff & (\text{false}) \lor (x =_X y)                                                                              \\
-    \iff & (x =_X y),                                                                       & \text{(vacuously true)}
+           \end{dcases}                                 \\
+    \iff & (\text{false}) \lor (x =_X y)                                                                                 \\
+    \iff & (x =_X y),                                                                       &  & \text{(vacuously true)}
   \end{align*}
   we know that \((X, \leq_p)\) is anti-symmetric.
   Since
   \begin{align*}
-         & \forall x, y, z \in X, (x \leq_p y) \land (y \leq_p z)                                                        \\
-    \iff & \begin{cases}
+         & \forall x, y, z \in X, (x \leq_p y) \land (y \leq_p z)                                                           \\
+    \iff & \begin{dcases}
              \big((x, y) = (a, b)\big) \land \big((y, z) = (a, b)\big) & \iff \text{false}    \\
              \big((x, y) = (a, b)\big) \land (y =_X z)                 & \iff (x, z) = (a, b) \\
              (x =_X y) \land \big((y, z) = (a, b)\big)                 & \iff (x, z) = (a, b) \\
              (x =_X y) \land (y =_X z)                                 & \iff x =_X y =_X z
-           \end{cases}                              \\
-    \iff & (\text{false}) \lor \big((x, z) = (a, b)\big) \lor (x =_X z)                                                  \\
-    \iff & x \leq_p z,                                                                         & \text{(vacuously true)}
+           \end{dcases}                                 \\
+    \iff & (\text{false}) \lor \big((x, z) = (a, b)\big) \lor (x =_X z)                                                     \\
+    \iff & x \leq_p z,                                                                         &  & \text{(vacuously true)}
   \end{align*}
   we know that \((X, \leq_p)\) is transitive.
   Since \((X, \leq_p)\) is reflexive, anti-symmetric and transitive, by \cref{8.5.1} we know that \((X, \leq_p)\) is partially ordered.
@@ -1057,11 +1057,11 @@
   So suppose that \(S \neq \emptyset\) and \(S \neq \{\emptyset\}\).
   Since
   \begin{align*}
-             & \forall \beta \in I, \forall x_1, x_2 \in \Big(X_{\beta} \cap \bigcup S\Big)                                                               \\
-    \implies & \exists\ Y_1, Y_2 \in S : (x_1 \in X_{\beta} \cap Y_1) \land (x_2 \in X_{\beta} \cap Y_2)                                                  \\
-             & \land (Y_1 \subseteq Y_2 \lor Y_2 \subseteq Y_1)                                          & \text{(\((S, \subseteq)\) is totally ordered)} \\
-    \implies & (x_1, x_2 \in X_{\beta} \cap Y_1) \lor (x_1, x_2 \in X_{\beta} \cap Y_2)                                                                   \\
-    \implies & \big(\#(X_{\beta} \cap Y_1) = \#(X_{\beta} \cap Y_2) = 1\big) \land (x_1 = x_2)                                                            \\
+             & \forall \beta \in I, \forall x_1, x_2 \in \Big(X_{\beta} \cap \bigcup S\Big)                                                                  \\
+    \implies & \exists\ Y_1, Y_2 \in S : (x_1 \in X_{\beta} \cap Y_1) \land (x_2 \in X_{\beta} \cap Y_2)                                                     \\
+             & \land (Y_1 \subseteq Y_2 \lor Y_2 \subseteq Y_1)                                          &  & \text{(\((S, \subseteq)\) is totally ordered)} \\
+    \implies & (x_1, x_2 \in X_{\beta} \cap Y_1) \lor (x_1, x_2 \in X_{\beta} \cap Y_2)                                                                      \\
+    \implies & \big(\#(X_{\beta} \cap Y_1) = \#(X_{\beta} \cap Y_2) = 1\big) \land (x_1 = x_2)                                                               \\
     \implies & \#\Big(X_{\beta} \cap \bigcup S\Big) = 1,
   \end{align*}
   we know that \(\bigcup S \in \Omega\).
@@ -1123,23 +1123,23 @@
   we know that \((\bigcup S, \leq)\) is reflexive.
   Since
   \begin{align*}
-             & \forall x_1, x_2 \in \bigcup S, (x_1 \leq x_2) \land (x_2 \leq x_1)                                                  \\
-    \implies & \exists\ Y_1, Y_2 \in S : (x_1 \in Y_1) \land (x_2 \in Y_2)                                                          \\
-             & \land (Y_1 \subseteq Y_2 \lor Y_2 \subseteq Y_1)                    & \text{(\((S, \subseteq)\) is totally ordered)} \\
-    \implies & (x_1, x_2 \in Y_1) \lor (x_1, x_2 \in Y_2)                                                                           \\
+             & \forall x_1, x_2 \in \bigcup S, (x_1 \leq x_2) \land (x_2 \leq x_1)                                                     \\
+    \implies & \exists\ Y_1, Y_2 \in S : (x_1 \in Y_1) \land (x_2 \in Y_2)                                                             \\
+             & \land (Y_1 \subseteq Y_2 \lor Y_2 \subseteq Y_1)                    &  & \text{(\((S, \subseteq)\) is totally ordered)} \\
+    \implies & (x_1, x_2 \in Y_1) \lor (x_1, x_2 \in Y_2)                                                                              \\
     \implies & x_1 = x_2,
   \end{align*}
   (the last implication follows since \((Y_1, \leq)\), \((Y_2, \leq)\) are partially ordered)
   we know that \((\bigcup S, \leq)\) is anti-symmetric.
   Since
   \begin{align*}
-             & \forall x_1, x_2, x_3 \in \bigcup S, (x_1 \leq x_2) \land (x_2 \leq x_3)                                                           \\
-    \implies & \exists\ Y_1, Y_2, Y_3 \in S :                                                                                                     \\
-             & (x_1 \in Y_1) \land (x_2 \in Y_2) \land (x_3 \in Y_3)                                                                              \\
-             & \land (Y_1 \subseteq Y_2 \lor Y_2 \subseteq Y_1)                                  & \text{(\((S, \subseteq)\) is totally ordered)} \\
-             & \land (Y_1 \subseteq Y_3 \lor Y_3 \subseteq Y_1)                                                                                   \\
-             & \land (Y_2 \subseteq Y_3 \lor Y_3 \subseteq Y_2)                                                                                   \\
-    \implies & (x_1, x_2, x_3 \in Y_1) \lor (x_1, x_2, x_3 \in Y_2) \lor (x_1, x_2, x_3 \in Y_3)                                                  \\
+             & \forall x_1, x_2, x_3 \in \bigcup S, (x_1 \leq x_2) \land (x_2 \leq x_3)                                                              \\
+    \implies & \exists\ Y_1, Y_2, Y_3 \in S :                                                                                                        \\
+             & (x_1 \in Y_1) \land (x_2 \in Y_2) \land (x_3 \in Y_3)                                                                                 \\
+             & \land (Y_1 \subseteq Y_2 \lor Y_2 \subseteq Y_1)                                  &  & \text{(\((S, \subseteq)\) is totally ordered)} \\
+             & \land (Y_1 \subseteq Y_3 \lor Y_3 \subseteq Y_1)                                                                                      \\
+             & \land (Y_2 \subseteq Y_3 \lor Y_3 \subseteq Y_2)                                                                                      \\
+    \implies & (x_1, x_2, x_3 \in Y_1) \lor (x_1, x_2, x_3 \in Y_2) \lor (x_1, x_2, x_3 \in Y_3)                                                     \\
     \implies & x_1 \leq x_3,
   \end{align*}
   (the last implication follows since \((Y_1, \leq)\), \((Y_2, \leq)\), \((Y_3, \leq)\) are partially ordered)
@@ -1147,11 +1147,11 @@
   Since \((\bigcup S, \leq)\) is reflexive, anti-symmetric and transitive, by \cref{8.5.1} we know that \((\bigcup S, \leq)\) is partially ordered.
   Since
   \begin{align*}
-             & \forall x_1, x_2 \in \bigcup S, \exists\ Y_1, Y_2 \in S :                                                                 \\
-             & (x_1 \in Y_1) \land (x_2 \in Y_2)                                                                                         \\
-             & \land (Y_1 \subseteq Y_2 \lor Y_2 \subseteq Y_1)          & \text{(\((S, \subseteq)\) is totally ordered)}                \\
-    \implies & (x_1, x_2 \in Y_1) \lor (x_1, x_2 \in Y_2)                                                                                \\
-    \implies & (x_1 \leq x_2) \lor (x_2 \leq x_1),                       & \text{(\((Y_1, \leq)\), \((Y_2, \leq)\) are totally ordered)}
+             & \forall x_1, x_2 \in \bigcup S, \exists\ Y_1, Y_2 \in S :                                                                    \\
+             & (x_1 \in Y_1) \land (x_2 \in Y_2)                                                                                            \\
+             & \land (Y_1 \subseteq Y_2 \lor Y_2 \subseteq Y_1)          &  & \text{(\((S, \subseteq)\) is totally ordered)}                \\
+    \implies & (x_1, x_2 \in Y_1) \lor (x_1, x_2 \in Y_2)                                                                                   \\
+    \implies & (x_1 \leq x_2) \lor (x_2 \leq x_1),                       &  & \text{(\((Y_1, \leq)\), \((Y_2, \leq)\) are totally ordered)}
   \end{align*}
   by \cref{8.5.3} we know that \((\bigcup S, \leq)\) is totally ordered.
   Thus \(\bigcup S \in X_T\).
@@ -1214,18 +1214,18 @@
   Since
   \begin{align*}
          & \forall (Y_1, \leq_1), (Y_2, \leq_2) \in \Omega, \big((Y_1, \leq_1) \preceq (Y_2, \leq_2)\big) \land \big((Y_2, \leq_2) \preceq (Y_1, \leq_1)\big) \\
-    \iff & \begin{cases}
+    \iff & \begin{dcases}
              \big((Y_1, \leq_1) = (Y_2, \leq_2)\big) \land \big((Y_2, \leq_2) = (Y_1, \leq_1)\big)     \\
              \big((Y_1, \leq_1) = (Y_2, \leq_2)\big) \land (Y_2 \text{ is an initial segment of } Y_1) \\
              (Y_1 \text{ is an initial segment of } Y_2) \land \big((Y_2, \leq_2) = (Y_1, \leq_1)\big) \\
              (Y_1 \text{ is an initial segment of } Y_2) \land (Y_2 \text{ is an initial segment of } Y_1)
-           \end{cases}                                                       \\
-    \iff & \begin{cases}
+           \end{dcases}                                                       \\
+    \iff & \begin{dcases}
              (Y_1, \leq_1) = (Y_2, \leq_2)          \\
              (Y_1 = Y_2) \land (Y_2 \subsetneq Y_1) \\
              (Y_1 \subsetneq Y_2) \land (Y_1 = Y_2) \\
              (Y_1 \subsetneq Y_2) \land (Y_2 \subsetneq Y_1)
-           \end{cases}                                                                                                     \\
+           \end{dcases}                                                                                                     \\
     \iff & \big((Y_1, \leq_1) = (Y_2, \leq_2)\big) \lor (\text{false})                                                                                        \\
     \iff & (Y_1, \leq_1) = (Y_2, \leq_2),
   \end{align*}
@@ -1233,13 +1233,13 @@
   Since
   \begin{align*}
          & \forall (Y_1, \leq_1), (Y_2, \leq_2), (Y_3, \leq_3) \in \Omega, \big((Y_1, \leq_1) \preceq (Y_2, \leq_2)\big) \land \big((Y_2, \leq_2) \preceq (Y_3, \leq_3)\big) \\
-    \iff & \begin{cases}
+    \iff & \begin{dcases}
              \big((Y_1, \leq_1) = (Y_2, \leq_2)\big) \land \big((Y_2, \leq_2) = (Y_3, \leq_3)\big)     \\
              \big((Y_1, \leq_1) = (Y_2, \leq_2)\big) \land (Y_2 \text{ is an initial segment of } Y_3) \\
              (Y_1 \text{ is an initial segment of } Y_2) \land \big((Y_2, \leq_2) = (Y_3, \leq_3)\big) \\
              (Y_1 \text{ is an initial segment of } Y_2) \land (Y_2 \text{ is an initial segment of } Y_3)
-           \end{cases}                                                                      \\
-    \iff & \begin{cases}
+           \end{dcases}                                                                      \\
+    \iff & \begin{dcases}
              (Y_1, \leq_1) = (Y_3, \leq_3)                                                 \\
              Y_1 \text{ is an initial segment of } Y_3                                     \\
              Y_1 \text{ is an initial segment of } Y_3                                     \\
@@ -1247,14 +1247,14 @@
              \quad \land (\forall y_1, y_1' \in Y_1, y_1 \leq_1 y_1' \iff y_1 \leq_2 y_1') \\
              \quad \land (\exists\ y_3 \in Y_3 : Y_2 = \{y \in Y_3 : y <_3 y_3\})          \\
              \quad \land (\forall y_2, y_2' \in Y_2, y_2 \leq_2 y_2' \iff y_2 \leq_3 y_2')\big)
-           \end{cases}                                                                                 \\
-    \iff & \begin{cases}
+           \end{dcases}                                                                                 \\
+    \iff & \begin{dcases}
              (Y_1, \leq_1) = (Y_3, \leq_3)                                 \\
              Y_1 \text{ is an initial segment of } Y_3                     \\
              Y_1 \text{ is an initial segment of } Y_3                     \\
              \big((\exists\ y_3 \in Y_3 : Y_1 = \{y \in Y_3 : y <_2 y_3\}) \\
              \quad \land (\forall y_1, y_1' \in Y_1, y_1 \leq_1 y_1' \iff y_1 \leq_3 y_1')\big)
-           \end{cases}                                                                                 \\
+           \end{dcases}                                                                                 \\
     \iff & \big((Y_1, \leq_1) = (Y_3, \leq_3)\big) \lor (Y_1 \text{ is an initial segment of } Y_3)                                                                          \\
     \iff & (Y_1, \leq_1) \preceq (Y_3, \leq_3),
   \end{align*}
@@ -1294,15 +1294,15 @@
   So suppose that \(S \neq \emptyset \land S \neq \{\emptyset\}\).
   Observe that
   \begin{align*}
-             & \forall y_1, y_2 \in \bigcup S                                                                                                               \\
-    \implies & \exists\ (Y_1, \leq_1), (Y_2, \leq_2) \in S : (y_1 \in Y_1) \land (y_2 \in Y_2)                                                              \\
-    \implies & \big((Y_1, \leq_1) \preceq (Y_2, \leq_2)\big) \lor \big((Y_2, \leq_2) \preceq (Y_1, \leq_1)\big) & \text{(\((S, \preceq)\) is well-ordered)} \\
-    \implies & \begin{cases}
+             & \forall y_1, y_2 \in \bigcup S                                                                                                                  \\
+    \implies & \exists\ (Y_1, \leq_1), (Y_2, \leq_2) \in S : (y_1 \in Y_1) \land (y_2 \in Y_2)                                                                 \\
+    \implies & \big((Y_1, \leq_1) \preceq (Y_2, \leq_2)\big) \lor \big((Y_2, \leq_2) \preceq (Y_1, \leq_1)\big) &  & \text{(\((S, \preceq)\) is well-ordered)} \\
+    \implies & \begin{dcases}
                  (Y_1, \leq_1) = (Y_2, \leq_2)             \\
                  Y_1 \text{ is an initial segment of } Y_2 \\
                  Y_2 \text{ is an initial segment of } Y_1
-               \end{cases}                                                                                                    \\
-    \implies & (Y_1 \subseteq Y_2) \lor (Y_2 \subseteq Y_1)                                                                                                 \\
+               \end{dcases}                                                                                                       \\
+    \implies & (Y_1 \subseteq Y_2) \lor (Y_2 \subseteq Y_1)                                                                                                    \\
     \implies & (y_1 \leq_1 y_2) \lor (y_1 \leq_2 y_2).
   \end{align*}
   We know that \(\exists\ (Y_S, \leq_S) \in S\) such that \(\forall y \in \bigcup S \implies y \in Y_S\).
@@ -1318,14 +1318,14 @@
   Since \((\bigcup S, \leq_S) \in \Omega\) and
   \begin{align*}
              & \forall (Y, \leq) \in S, Y \subseteq \bigcup S \\
-    \implies & \begin{cases}
+    \implies & \begin{dcases}
                  Y = \bigcup S \\
                  Y \subsetneq \bigcup S
-               \end{cases}                          \\
-    \implies & \begin{cases}
+               \end{dcases}                          \\
+    \implies & \begin{dcases}
                  (Y, \leq) = (\bigcup S, \leq_S) \\
                  Y \text{ is an initial segment of } \bigcup S
-               \end{cases}   \\
+               \end{dcases}   \\
     \implies & (Y, \leq) \preceq (\bigcup S, \leq_S),
   \end{align*}
   we know that \((\bigcup S, \leq_S)\) is an upper bound of \((S, \preceq)\).
@@ -1384,10 +1384,10 @@
   Clearly, \(\bigcup S_T \subseteq \Omega\).
   Since
   \begin{align*}
-             & \forall A_1, A_2 \in \bigcup S_T, A_1 \neq A_2                                                                   \\
-    \implies & \exists\ S_1, S_2 \in S_T : (A_1 \in S_1) \land (A_2 \in S_2)                                                    \\
-    \implies & (S_1 \subseteq S_2) \lor (S_2 \subseteq S_1)                  & \text{(\((S_T, \subseteq)\) is totally ordered)} \\
-    \implies & (A_1, A_2 \in S_1) \lor (A_1, A_2 \in S_2)                                                                       \\
+             & \forall A_1, A_2 \in \bigcup S_T, A_1 \neq A_2                                                                      \\
+    \implies & \exists\ S_1, S_2 \in S_T : (A_1 \in S_1) \land (A_2 \in S_2)                                                       \\
+    \implies & (S_1 \subseteq S_2) \lor (S_2 \subseteq S_1)                  &  & \text{(\((S_T, \subseteq)\) is totally ordered)} \\
+    \implies & (A_1, A_2 \in S_1) \lor (A_1, A_2 \in S_2)                                                                          \\
     \implies & A_1 \cap A_2 = \emptyset,
   \end{align*}
   we know that \(\bigcup S_T \in S\).
@@ -1435,21 +1435,21 @@
   We claim that \(\#(Y \cap X_{\alpha}) = 1\) for all \(\alpha \in I\).
   Since
   \begin{align*}
-             & \forall \alpha \in I, X_{\alpha} \neq \emptyset                                                                                \\
-    \implies & \exists\ x_{\alpha} \in X_{\alpha}                                                                                             \\
-    \implies & \exists\ \{(0, \alpha), (1, x_{\alpha}) \in \Omega                                                                             \\
-    \implies & \exists\ \{(0, \beta), (1, x_{\beta})\} \in \Omega' :                                                 & \text{(by hypothesis)} \\
-             & \{(0, \alpha), (1, x_{\alpha})\} \cap \{(0, \beta), (1, x_{\beta})\} \neq \emptyset                                            \\
-    \implies & (\alpha \neq \beta \implies X_{\alpha} \cap X_{\beta} = \emptyset \implies x_{\alpha} \neq x_{\beta}) & \text{(by hypothesis)} \\
-    \implies & (\alpha = \beta) \land (x_{\alpha}, x_{\beta} \in X_{\alpha} = X_{\beta})                                                      \\
+             & \forall \alpha \in I, X_{\alpha} \neq \emptyset                                                                                   \\
+    \implies & \exists\ x_{\alpha} \in X_{\alpha}                                                                                                \\
+    \implies & \exists\ \{(0, \alpha), (1, x_{\alpha}) \in \Omega                                                                                \\
+    \implies & \exists\ \{(0, \beta), (1, x_{\beta})\} \in \Omega' :                                                 &  & \text{(by hypothesis)} \\
+             & \{(0, \alpha), (1, x_{\alpha})\} \cap \{(0, \beta), (1, x_{\beta})\} \neq \emptyset                                               \\
+    \implies & (\alpha \neq \beta \implies X_{\alpha} \cap X_{\beta} = \emptyset \implies x_{\alpha} \neq x_{\beta}) &  & \text{(by hypothesis)} \\
+    \implies & (\alpha = \beta) \land (x_{\alpha}, x_{\beta} \in X_{\alpha} = X_{\beta})                                                         \\
     \implies & (x_\alpha \in Y) \land (Y \cap X_{\alpha} \neq \emptyset)
   \end{align*}
   and
   \begin{align*}
-             & \forall x_{\alpha}, x_{\beta} \in Y                                                                                                  \\
-    \implies & \exists\ \alpha, \beta \in I : \{(0, \alpha), (1, x_{\alpha})\}, \{(0, \beta), (1, x_{\beta})\} \in \Omega'                          \\
-    \implies & \{(0, \alpha), (1, x_{\alpha})\} \cap \{(0, \beta), (1, x_{\beta})\} = \emptyset                            & \text{(by hypothesis)} \\
-    \implies & (\alpha \neq \beta) \land (x_{\alpha} \neq x_{\beta})                                                                                \\
+             & \forall x_{\alpha}, x_{\beta} \in Y                                                                                                     \\
+    \implies & \exists\ \alpha, \beta \in I : \{(0, \alpha), (1, x_{\alpha})\}, \{(0, \beta), (1, x_{\beta})\} \in \Omega'                             \\
+    \implies & \{(0, \alpha), (1, x_{\alpha})\} \cap \{(0, \beta), (1, x_{\beta})\} = \emptyset                            &  & \text{(by hypothesis)} \\
+    \implies & (\alpha \neq \beta) \land (x_{\alpha} \neq x_{\beta})                                                                                   \\
     \implies & \#(Y \cap X_{\alpha}) = \#(Y \cap X_{\beta}) = 1,
   \end{align*}
   we conclude that \cref{ex:8.4.2} is true.

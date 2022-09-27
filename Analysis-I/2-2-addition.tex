@@ -2,9 +2,9 @@
 
 \begin{defn}[Addition of natural numbers]\label{2.2.1}
   Let \(m\) be a natural numbers.
-  To add zero to \(m\), we define \(0+m \coloneqq m\).
+  To add zero to \(m\), we define \(0 + m \coloneqq m\).
   Now suppose inductively that we have defined how to add \(n\) to \(m\).
-  Then we can add \(n++\) to \(m\) by defining \((n++) + m \coloneqq (n + m)++\).
+  Then we can add \(n\pp\) to \(m\) by defining \((n\pp) + m \coloneqq (n + m)\pp\).
 \end{defn}
 
 \begin{note}
@@ -25,12 +25,12 @@
   We use induction on \(n\).
   For \(n = 0\), by \cref{2.2.1} we have \(0 + m = m\), which is a natural number by definition.
   So the base case holds.
-  Suppose inductively that for some \(n\) we have \(n + m\) is a natural number.
-  We want to show that \((n++) + m\) is also a natural number.
-  By \cref{2.2.1} we have \((n++) + m = (n + m)++\).
-  By induction hypothesis, \(n + m\) is a natural number.
-  By \cref{2.2}, \((n + m)++\) is again a natural number.
-  This closes the induction, and thus \(n + m\) is a natural numbers.
+  Suppose inductively that for some natural number \(n\) we know that \(n + m\) is a natural number.
+  We want to show that \((n\pp) + m\) is also a natural number.
+  By \cref{2.2.1} we have \((n\pp) + m = (n + m)\pp\).
+  By induction hypothesis we know that \(n + m\) is a natural number.
+  Thus by \cref{2.2} we know that \((n + m)\pp\) is again a natural number.
+  This closes the induction.
 \end{proof}
 
 \begin{lem}\label{2.2.2}
@@ -39,39 +39,41 @@
 
 \begin{proof}
   We use induction on \(n\).
-  The base case \(0 + 0 = 0\) follows since we know that \(0 + m = m\) for every natural number \(m\), and \(0\) is a natural number.
+  The base case \(0 + 0 = 0\) follows since we know that \(0 + m = m\) for every natural number \(m\) (\cref{2.2.1}), and \(0\) is a natural number (\cref{2.1}).
   Now suppose inductively that \(n + 0 = n\).
-  We wish to show that \((n++) + 0 = n++\).
-  But by \cref{2.2.1}, \((n++) + 0\) is equal to \((n + 0)++\), which is equal to \(n++\) since \(n + 0 = n\).
+  We wish to show that \((n\pp) + 0 = n\pp\).
+  But by \cref{2.2.1}, \((n\pp) + 0\) is equal to \((n + 0)\pp\), which is equal to \(n\pp\) since \(n + 0 = n\).
   This closes the induction.
 \end{proof}
 
 \begin{lem}\label{2.2.3}
-  For any natural numbers \(n\) and \(m\), \(n + (m++) = (n + m)++\).
+  For any natural numbers \(n\) and \(m\), \(n + (m\pp) = (n + m)\pp\).
 \end{lem}
 
 \begin{proof}
   We induct on \(n\) (keeping \(m\) fixed).
   We first consider the base case \(n = 0\).
-  In this case we have to prove \(0 + (m++) = (0 + m)++\).
-  But by \cref{2.2.1}, \(0 + (m++) = m++\) and \(0 + m = m\), so both sides are equal to \(m++\) and are thus equal to each other.
-  Now we assume inductively that \(n + (m++) = (n + m)++\);
-  we now have to show that \((n++) + (m++) = ((n++) + m)++\).
-  The left-hand side is \((n + (m++))++\) by \cref{2.2.1}, which is equal to \(((n+m)++)++\) by the inductive hypothesis.
-  Similarly, we have \((n++) + m = (n + m)++\) by the \cref{2.2.1}, and so the right-hand side is also equal to \(((n + m)++)++\).
+  In this case we have to prove \(0 + (m\pp) = (0 + m)\pp\).
+  But by \cref{2.2.1}, \(0 + (m\pp) = m\pp\) and \(0 + m = m\), so both sides are equal to \(m\pp\) and are thus equal to each other.
+  Now we assume inductively that \(n + (m\pp) = (n + m)\pp\);
+  we now have to show that \((n\pp) + (m\pp) = ((n\pp) + m)\pp\).
+  The left-hand side is \((n + (m\pp))\pp\) by \cref{2.2.1}, which is equal to \(((n+m)\pp)\pp\) by the inductive hypothesis.
+  Similarly, we have \((n\pp) + m = (n + m)\pp\) by \cref{2.2.1}, and so the right-hand side is also equal to \(((n + m)\pp)\pp\).
   Thus both sides are equal to each other, and we have closed the induction.
 \end{proof}
 
 \begin{ac}\label{ac:2.2.2}
-  \(n++ = n + 1\).
+  For any natural number \(n\), we have \(n\pp = n + 1\).
 \end{ac}
 
 \begin{proof}
+  Since \(n\) is a natural number, by \cref{2.2} we know that \(n\pp\) is also a natural number.
+  Thus we can apply \cref{2.2.2} to derive the following fact:
   \begin{align*}
-    n++ & = (n++) + 0 & \text{(by \cref{2.2.2})} \\
-        & = (n + 0)++ & \text{(by \cref{2.2.1})} \\
-        & = n + (0++) & \text{(by \cref{2.2.3})} \\
-        & = n + 1.
+    n\pp & = (n\pp) + 0 &  & \text{(by \cref{2.2.2})} \\
+         & = (n + 0)\pp &  & \text{(by \cref{2.2.1})} \\
+         & = n + (0\pp) &  & \text{(by \cref{2.2.3})} \\
+         & = n + 1.
   \end{align*}
 \end{proof}
 
@@ -82,12 +84,12 @@
 \begin{proof}
   We shall use induction on \(n\) (keeping \(m\) fixed).
   First we do the base case \(n = 0\), i.e., we show \(0 + m = m + 0\).
-  By the \cref{2.2.1}, \(0 + m = m\), while by \cref{2.2.2}, \(m + 0 = m\).
+  By \cref{2.2.1}, \(0 + m = m\), while by \cref{2.2.2}, \(m + 0 = m\).
   Thus the base case is done.
-  Now suppose inductively that \(n + m = m + n\), now we have to prove that \((n++) + m = m + (n++)\) to close the induction.
-  By the \cref{2.2.1}, \((n++) + m = (n + m)++\).
-  By \cref{2.2.3}, \(m + (n++) = (m + n)++\), but this is equal to \((n + m)++\) by the inductive hypothesis \(n+m=m+n\).
-  Thus \((n++) + m = m + (n++)\) and we have closed the induction.
+  Now suppose inductively that \(n + m = m + n\), now we have to prove that \((n\pp) + m = m + (n\pp)\) to close the induction.
+  By \cref{2.2.1}, \((n\pp) + m = (n + m)\pp\).
+  By \cref{2.2.3}, \(m + (n\pp) = (m + n)\pp\), but this is equal to \((n + m)\pp\) by the inductive hypothesis \(n+m=m+n\).
+  Thus \((n\pp) + m = m + (n\pp)\) and we have closed the induction.
 \end{proof}
 
 \begin{prop}[Addition is associative]\label{2.2.5}
@@ -99,10 +101,10 @@
   First we do the base case \(c = 0\), i.e., we show \((a + b) + 0 = a + (b + 0)\).
   By \cref{2.2.2}, \((a + b) + 0 = a + b\) and \(a + (b + 0) = a + b\).
   Thus the base case is done.
-  Now suppose inductively that \((a + b) + c = a + (b + c)\), we have to prove that \((a + b) + (c++) = a + (b + (c++))\) to close the induction.
-  By \cref{2.2.3}, \((a + b) + (c++) = ((a + b) + c)++\).
-  Also By \cref{2.2.3}, \(a + (b + (c++)) = a + ((b + c)++) = (a + (b + c))++\), but this is equal to \(((a + b) + c)++\) by the inductive hypothesis \((a + b) + c = a + (b + c)\).
-  Thus \((a + b) + (c++) = a + (b + (c++))\) and we have closed the induction.
+  Now suppose inductively that \((a + b) + c = a + (b + c)\), we have to prove that \((a + b) + (c\pp) = a + (b + (c\pp))\) to close the induction.
+  By \cref{2.2.3}, \((a + b) + (c\pp) = ((a + b) + c)\pp\).
+  Also By \cref{2.2.3}, \(a + (b + (c\pp)) = a + ((b + c)\pp) = (a + (b + c))\pp\), but this is equal to \(((a + b) + c)\pp\) by the inductive hypothesis \((a + b) + c = a + (b + c)\).
+  Thus \((a + b) + (c\pp) = a + (b + (c\pp))\) and we have closed the induction.
 \end{proof}
 
 \begin{note}
@@ -119,9 +121,9 @@
   First consider the base case \(a = 0\).
   Then we have \(0 + b = 0 + c\), which by \cref{2.2.1} implies that \(b = c\) as desired.
   Now suppose inductively that we have the cancellation law for \(a\) (so that \(a + b = a + c\) implies \(b = c\));
-  we now have to prove the cancellation law for \(a++\).
-  In other words, we assume that \((a++) + b = (a++) + c\) and need to show that \(b = c\).
-  By the \cref{2.2.1}, \((a++) + b = (a + b)++\) and \((a++) + c = (a + c)++\) and so we have \((a + b)++ = (a + c)++\).
+  we now have to prove the cancellation law for \(a\pp\).
+  In other words, we assume that \((a\pp) + b = (a\pp) + c\) and need to show that \(b = c\).
+  By \cref{2.2.1}, \((a\pp) + b = (a + b)\pp\) and \((a\pp) + c = (a + c)\pp\) and so we have \((a + b)\pp = (a + c)\pp\).
   By \cref{2.4}, we have \(a + b = a + c\).
   Since we already have the cancellation law for \(a\), we thus have \(b = c\) as desired.
   This closes the induction.
@@ -139,7 +141,7 @@
   We use induction on \(b\).
   If \(b = 0\), then \(a + b = a + 0 = a\), which is positive, so this proves the base case.
   Now suppose inductively that \(a + b\) is positive.
-  Then \(a + (b++) = (a + b)++\), which cannot be zero by \cref{2.3}, and is hence positive.
+  Then \(a + (b\pp) = (a + b)\pp\), which cannot be zero by \cref{2.3}, and is hence positive.
   This closes the induction.
 \end{proof}
 
@@ -156,19 +158,19 @@
 
 \begin{lem}\label{2.2.10}
   Let \(a\) be a positive number.
-  Then there exists exactly one natural number \(b\) such that \(b++ = a\).
+  Then there exists exactly one natural number \(b\) such that \(b\pp = a\).
 \end{lem}
 
 \begin{proof}
   We use induction.
-  If \(a = 1\) and \(b++ = a\), then \(b = 0\).
-  We want to show that \(0\) is unique, so assume that \(0'\) is a natural number and \(0'++ = 1\).
-  By \cref{2.4}, if \(0++ = 0'++\), then \(0 = 0'\), thus \(0\) is unique, and this proves the base case.
-  Suppose inductively that \(a\) is positive, there exist exactly one natural number \(b\) such that \(b++ = a\).
-  Then \(a++ = (b++)++\) by induction hypothesis, so there exist a natural number \(b++\) such that \((b++)++ = a++\).
-  Now we need to show that \(b++\) is unique.
-  Assume that there exist another natural number \(c\) such that \(a++ = c++\).
-  Then by \cref{2.4}, \(a = c\), and by induction hypothesis, \(c = b++\), so \(c++ = (b++)++\), which means \(b++\) is unique.
+  If \(a = 1\) and \(b\pp = a\), then \(b = 0\).
+  We want to show that \(0\) is unique, so assume that \(0'\) is a natural number and \(0'\pp = 1\).
+  By \cref{2.4}, if \(0\pp = 0'\pp\), then \(0 = 0'\), thus \(0\) is unique, and this proves the base case.
+  Suppose inductively that \(a\) is positive, there exist exactly one natural number \(b\) such that \(b\pp = a\).
+  Then \(a\pp = (b\pp)\pp\) by induction hypothesis, so there exist a natural number \(b\pp\) such that \((b\pp)\pp = a\pp\).
+  Now we need to show that \(b\pp\) is unique.
+  Assume that there exist another natural number \(c\) such that \(a\pp = c\pp\).
+  Then by \cref{2.4}, \(a = c\), and by induction hypothesis, \(c = b\pp\), so \(c\pp = (b\pp)\pp\), which means \(b\pp\) is unique.
   This closes the induction.
 \end{proof}
 
@@ -179,7 +181,7 @@
 \end{defn}
 
 \begin{note}
-  There is no largest natural number \(n\), because the next number \(n++\) is always larger.
+  There is no largest natural number \(n\), because the next number \(n\pp\) is always larger.
 \end{note}
 
 \begin{prop}[Basic properties of order for natural numbers]\label{2.2.12}
@@ -190,7 +192,7 @@
     \item (Order is transitive) If \(a \geq b\) and \(b \geq c\), then \(a \geq c\).
     \item (Order is anti-symmetric) If \(a \geq b\) and \(b \geq a\), then \(a = b\).
     \item (Addition preserves order) \(a \geq b\) iff \(a + c \geq b + c\).
-    \item \(a < b\) iff \(a++ \leq b\).
+    \item \(a < b\) iff \(a\pp \leq b\).
     \item \(a < b\) iff \(b = a + d\) for some \emph{positive} number \(d\).
   \end{enumerate}
 \end{prop}
@@ -199,8 +201,8 @@
   Let \(a\) be a natural number.
   Then
   \begin{align*}
-             & a = a + 0 & \text{(by \cref{2.2.1})}  \\
-    \implies & a \geq a. & \text{(by \cref{2.2.11})}
+             & a = a + 0 &  & \text{(by \cref{2.2.1})}  \\
+    \implies & a \geq a. &  & \text{(by \cref{2.2.11})}
   \end{align*}
 \end{proof}
 
@@ -209,9 +211,9 @@
   By \cref{2.2.11} \(\exists\ d, e\) are natural numbers such that \(a = b + d\) and \(b = c + e\).
   Then
   \begin{align*}
-             & a = b + d = (c + e) + d = c + (e + d) & \text{(by \cref{2.2.5})}    \\
-    \implies & e + d \text{ is a natural number}     & \text{(by \cref{ac:2.2.1})} \\
-    \implies & a \geq c.                             & \text{(by \cref{2.2.11})}   \\
+             & a = b + d = (c + e) + d = c + (e + d) &  & \text{(by \cref{2.2.5})}    \\
+    \implies & e + d \text{ is a natural number}     &  & \text{(by \cref{ac:2.2.1})} \\
+    \implies & a \geq c.                             &  & \text{(by \cref{2.2.11})}   \\
   \end{align*}
 \end{proof}
 
@@ -220,10 +222,10 @@
   By \cref{2.2.11} \(\exists\ c, d\) are natural numbers such that \(a = b + c\) and \(b = a + d\).
   Then
   \begin{align*}
-             & a = b + c = (a + d) + c = a + (d + c) & \text{(by \cref{2.2.5})} \\
-    \implies & 0 = d + c                             & \text{(by \cref{2.2.6})} \\
-    \implies & d = c = 0                             & \text{(by \cref{2.2.9})} \\
-    \implies & a = b + 0 = b.                        & \text{(by \cref{2.2.2})}
+             & a = b + c = (a + d) + c = a + (d + c) &  & \text{(by \cref{2.2.5})} \\
+    \implies & 0 = d + c                             &  & \text{(by \cref{2.2.6})} \\
+    \implies & d = c = 0                             &  & \text{(by \cref{2.2.9})} \\
+    \implies & a = b + 0 = b.                        &  & \text{(by \cref{2.2.2})}
   \end{align*}
 \end{proof}
 
@@ -231,12 +233,12 @@
   Let \(a, b, c, d\) be natural numbers.
   Then
   \begin{align*}
-         & a \geq b                                                      \\
-    \iff & a = b + d           & \text{(by \cref{2.2.11})}               \\
-    \iff & c + a = c + (b + d) & \text{(by \cref{2.4} and \cref{2.2.6})} \\
-    \iff & c + a = (c + b) + d & \text{(by \cref{2.2.5})}                \\
-    \iff & a + c = (b + c) + d & \text{(by \cref{2.2.4})}                \\
-    \iff & a + c \geq b + c.   & \text{(by \cref{2.2.11})}
+         & a \geq b                                                         \\
+    \iff & a = b + d           &  & \text{(by \cref{2.2.11})}               \\
+    \iff & c + a = c + (b + d) &  & \text{(by \cref{2.4} and \cref{2.2.6})} \\
+    \iff & c + a = (c + b) + d &  & \text{(by \cref{2.2.5})}                \\
+    \iff & a + c = (b + c) + d &  & \text{(by \cref{2.2.4})}                \\
+    \iff & a + c \geq b + c.   &  & \text{(by \cref{2.2.11})}
   \end{align*}
 \end{proof}
 
@@ -244,12 +246,12 @@
   Let \(a, b, c, d\) be natural numbers.
   Then
   \begin{align*}
-         & a < b                                                   \\
-    \iff & b = a + c \land a \neq b    & \text{(by \cref{2.2.11})} \\
-    \iff & b = a + c \land c \neq 0    & \text{(by \cref{2.2.2})}  \\
-    \iff & b = a + (d++) \land c = d++ & \text{(by \cref{2.2.10})} \\
-    \iff & b = (a++) + d               & \text{(by \cref{2.2.5})}  \\
-    \iff & a++ \leq b.                 & \text{(by \cref{2.2.11})}
+         & a < b                                                        \\
+    \iff & b = a + c \land a \neq b      &  & \text{(by \cref{2.2.11})} \\
+    \iff & b = a + c \land c \neq 0      &  & \text{(by \cref{2.2.2})}  \\
+    \iff & b = a + (d\pp) \land c = d\pp &  & \text{(by \cref{2.2.10})} \\
+    \iff & b = (a\pp) + d                &  & \text{(by \cref{2.2.5})}  \\
+    \iff & a\pp \leq b.                  &  & \text{(by \cref{2.2.11})}
   \end{align*}
 \end{proof}
 
@@ -257,10 +259,10 @@
   Let \(a, b, d\) be natural numbers.
   Then
   \begin{align*}
-         & a < b                                                              \\
-    \iff & b = a + d \land a \neq b               & \text{(by \cref{2.2.11})} \\
-    \iff & b = a + d \land d \neq 0               & \text{(by \cref{2.2.2})}  \\
-    \iff & b = a + d \land d \text{ is positive}. & \text{(by \cref{2.2.7})}
+         & a < b                                                                 \\
+    \iff & b = a + d \land a \neq b               &  & \text{(by \cref{2.2.11})} \\
+    \iff & b = a + d \land d \neq 0               &  & \text{(by \cref{2.2.2})}  \\
+    \iff & b = a + d \land d \text{ is positive}. &  & \text{(by \cref{2.2.7})}
   \end{align*}
 \end{proof}
 
@@ -278,13 +280,13 @@
   Now we show that at least one of the statements is true.
   We keep \(b\) fixed and induct on \(a\).
   When \(a = 0\) we have \(0 \leq b\) for all \(b\) (by \cref{2.2.11}), so we have either \(0 = b\) or \(0 < b\), which proves the base case.
-  Now suppose we have proven the proposition for \(a\), and now we prove the proposition for \(a++\).
+  Now suppose we have proven the proposition for \(a\), and now we prove the proposition for \(a\pp\).
   From the trichotomy for \(a\), there are three cases: \(a < b\), \(a = b\), and \(a > b\).
-  If \(a > b\), then \(a++ > b\) (since \(a++ > a\) and \(a > b\) implies \(a++ \geq b\) by \cref{2.2.12}(b), but \(a++ \neq b\) otherwise \(b > a\) contradict to \(a > b\)).
-  If \(a = b\), then \(a++ > b\) (since \(a++ = b++ > b\)).
+  If \(a > b\), then \(a\pp > b\) (since \(a\pp > a\) and \(a > b\) implies \(a\pp \geq b\) by \cref{2.2.12}(b), but \(a\pp \neq b\) otherwise \(b > a\) contradict to \(a > b\)).
+  If \(a = b\), then \(a\pp > b\) (since \(a\pp = b\pp > b\)).
   Now suppose that \(a < b\).
-  Then by \cref{2.2.12}(e), we have \(a++ \leq b\).
-  Thus either \(a++ = b\) or \(a++ < b\), and in either case we are done.
+  Then by \cref{2.2.12}(e), we have \(a\pp \leq b\).
+  Thus either \(a\pp = b\) or \(a\pp < b\), and in either case we are done.
   This closes the induction.
 \end{proof}
 
@@ -304,10 +306,10 @@
   For the second case, if \(n = 0 = m_0\), then the statement ``\(P(m)\) is true \(\forall m_0 \leq m < n\)'' is also vacuously true since there is no natural number \(m'\) such that \(0 \leq m' < 0\). Hence, \(Q(0)\) is true for this case and that completes the base case of the induction.
 
   Now suppose inductively that for some \(n \geq m_0\), \(Q(n)\) is true, i.e \(P(m)\) is true \(\forall m_0 \leq m < n\).
-  We need to show that \(Q(n++)\) is true.
+  We need to show that \(Q(n\pp)\) is true.
   By the definition of \(P\) in the hypothesis, \(P(n)\) is also true (because \(Q(n)\) is true).
-  Since \(n < n++\), then \(P(m)\) is true \(\forall m_0 \leq m \leq n < n++\).
-  So \(P(m)\) is true \(\forall m_0 \leq m < n++\) which in turn implies that \(Q(n++)\) is true.
+  Since \(n < n\pp\), then \(P(m)\) is true \(\forall m_0 \leq m \leq n < n\pp\).
+  So \(P(m)\) is true \(\forall m_0 \leq m < n\pp\) which in turn implies that \(Q(n\pp)\) is true.
   This closes the induction and hence we can conclude that \(Q(n)\) is true for any natural number \(n\).
   However, \(Q(n)\) is true implies \(P(m)\) is true \(\forall m_0 \leq m < n\) for all \(n \geq m_0\) and by the definition of \(P\), \(P(n)\) is also true for all \(n \geq m_0\) which concludes the proof.
 \end{proof}
@@ -359,7 +361,7 @@
 \end{proof}
 
 \begin{ex}[Principle of backwards induction]\label{ex:2.2.6}
-  Let \(n\) be a natural number, and let \(P(m)\) be a property pertaining to the natural numbers such that whenever \(P(m++)\) is true, then \(P(m)\) is true.
+  Let \(n\) be a natural number, and let \(P(m)\) be a property pertaining to the natural numbers such that whenever \(P(m\pp)\) is true, then \(P(m)\) is true.
   Suppose that \(P(n)\) is also true.
   Prove that \(P(m)\) is true for all natural numbers \(m \leq n\);
 \end{ex}
@@ -368,7 +370,7 @@
   We use induction.
   The base case \(n = 0\) is trivially true because \(\forall m \leq 0\) means \(m = 0\), thus \(P(m) = P(n) = P(0)\) is true.
   Suppose inductively that \(P(n)\) is true, and \(P(m)\) is true \(\forall m \leq n\).
-  Then when \(P(n++)\) is true, by the given condition \(P(n)\) is true.
-  And by induction hypothesis \(P(m)\) is true \(\forall m \leq n \leq n++\), so \(P(n++)\) is true implies \(P(m)\) is true \(\forall m \leq n++\).
+  Then when \(P(n\pp)\) is true, by the given condition \(P(n)\) is true.
+  And by induction hypothesis \(P(m)\) is true \(\forall m \leq n \leq n\pp\), so \(P(n\pp)\) is true implies \(P(m)\) is true \(\forall m \leq n\pp\).
   This closes the induction.
 \end{proof}

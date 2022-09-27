@@ -33,16 +33,16 @@
 
   Since
   \[
-    \forall x, y \in \R, \abs{\frac{x}{2} - \frac{y}{2}} = \frac{1}{2} \abs{x - y} \leq \frac{1}{2} \abs{x - y},
+    \forall x, y \in \R, \abs{\dfrac{x}{2} - \dfrac{y}{2}} = \dfrac{1}{2} \abs{x - y} \leq \dfrac{1}{2} \abs{x - y},
   \]
-  by \cref{6.6.1} we know that \(x \mapsto \frac{x}{2}\) is a strict contraction.
+  by \cref{6.6.1} we know that \(x \mapsto \dfrac{x}{2}\) is a strict contraction.
 
   Since
   \begin{align*}
-             & \forall x, y \in [0, 1], \begin{cases}
+             & \forall x, y \in [0, 1], \begin{dcases}
                                           -1 \leq -x \leq 0 \\
                                           -1 \leq -y \leq 0
-                                        \end{cases} \\
+                                        \end{dcases} \\
     \implies & -2 \leq -x - y \leq 0                      \\
     \implies & -1 \leq 1 - x - y \leq 1                   \\
     \implies & 0 \leq \abs{1 - x - y} \leq 1,
@@ -61,14 +61,14 @@
   \[
     \forall x, y \in \R, \abs{(x - x^2) - (y - y^2)} \leq c \abs{x - y}.
   \]
-  But when \((x, y) = (\frac{1 - c}{2}, 0)\) we have
+  But when \((x, y) = (\dfrac{1 - c}{2}, 0)\) we have
   \begin{align*}
-    \abs{(x - x^2) - (y - y^2)} & = \abs{\frac{1 - c}{2} - \bigg(\frac{1 - c}{2}\bigg)^2 - (0 - 0^2)}                  \\
-                                & = \frac{1 - c}{2} \abs{1 - \frac{1 - c}{2}}                                          \\
-                                & = \frac{1 - c}{2} \frac{1 + c}{2}                                                    \\
-                                & > \frac{1 - c}{2} \frac{c + c}{2}                                   & (c \in (0, 1)) \\
-                                & = c \frac{1 - c}{2}                                                                  \\
-                                & = c \abs{\frac{1 - c}{2} - 0}                                                        \\
+    \abs{(x - x^2) - (y - y^2)} & = \abs{\dfrac{1 - c}{2} - \bigg(\dfrac{1 - c}{2}\bigg)^2 - (0 - 0^2)}                  \\
+                                & = \dfrac{1 - c}{2} \abs{1 - \dfrac{1 - c}{2}}                                          \\
+                                & = \dfrac{1 - c}{2} \dfrac{1 + c}{2}                                                    \\
+                                & > \dfrac{1 - c}{2} \dfrac{c + c}{2}                                   & (c \in (0, 1)) \\
+                                & = c \dfrac{1 - c}{2}                                                                   \\
+                                & = c \abs{\dfrac{1 - c}{2} - 0}                                                         \\
                                 & = c \abs{x - y},
   \end{align*}
   a contradiction.
@@ -129,9 +129,9 @@
   Suppose inductively that \(d(x_{n + 1}, x_n) \leq c^n d(x_1, x_0)\) for some \(n \geq 0\).
   Then for \(n + 1\), we have
   \begin{align*}
-    d(x_{n + 2}, x_{n + 1}) & = d\big(f(x_{n + 1}), f(x_n)\big) & \text{(by the definition of \((x_n)_{n = 1}^\infty\))} \\
-                            & \leq c d(x_{n + 1}, x_n)          & \text{(by \cref{6.6.1})}                               \\
-                            & \leq c \cdot c^n d(x_1, x_0)                                                               \\
+    d(x_{n + 2}, x_{n + 1}) & = d\big(f(x_{n + 1}), f(x_n)\big) &  & \text{(by the definition of \((x_n)_{n = 1}^\infty\))} \\
+                            & \leq c d(x_{n + 1}, x_n)          &  & \text{(by \cref{6.6.1})}                               \\
+                            & \leq c \cdot c^n d(x_1, x_0)                                                                  \\
                             & = c^{n + 1} d(x_1, x_0).
   \end{align*}
   This closes the induction.
@@ -140,23 +140,23 @@
   Let \(\varepsilon \in \R^+\).
   Observe that
   \begin{align*}
-             & c \in (0, 1)                                                                                                                    \\
-    \implies & \lim_{n \to \infty} c^n = 0                                                                                                     \\
-    \implies & \exists\ N \in \Z^+ : \forall n \geq N, c^n < \frac{\varepsilon (1 - c)}{1 + d(x_1, x_0)}                                       \\
-    \implies & \exists\ N \in \Z^+ : \forall n \geq N, \frac{d(x_1, x_0)}{1 - c} \leq \frac{1 + d(x_1, x_0)}{1 - c} < \frac{\varepsilon}{c^n}.
+             & c \in (0, 1)                                                                                                                       \\
+    \implies & \lim_{n \to \infty} c^n = 0                                                                                                        \\
+    \implies & \exists\ N \in \Z^+ : \forall n \geq N, c^n < \dfrac{\varepsilon (1 - c)}{1 + d(x_1, x_0)}                                         \\
+    \implies & \exists\ N \in \Z^+ : \forall n \geq N, \dfrac{d(x_1, x_0)}{1 - c} \leq \dfrac{1 + d(x_1, x_0)}{1 - c} < \dfrac{\varepsilon}{c^n}.
   \end{align*}
   Fix such \(N\).
   Let \(n, m \geq N\) and without the loss of generality suppose that \(n \leq m\).
   Since
   \begin{align*}
-    d(x_n, x_m) & \leq \sum_{i = n}^m d(x_i, x_{i + 1})                    & \text{(by \cref{1.1.2}(d))}   \\
-                & = \sum_{i = n}^m d(x_{i + 1}, x_i)                       & \text{(by \cref{1.1.2}(c))}   \\
-                & \leq \sum_{i = n}^m c^i d(x_1, x_0)                      & \text{(from the claim above)} \\
-                & = d(x_1, x_0) \bigg(\sum_{i = n}^m c^i\bigg)                                             \\
-                & = d(x_1, x_0) c^n \bigg(\sum_{i = 0}^{m - n} c^i\bigg)                                   \\
-                & \leq d(x_1, x_0) c^n \bigg(\sum_{i = 0}^\infty c^i\bigg) & (c \in (0, 1))                \\
-                & = \frac{d(x_1, x_0) c^n}{1 - c}                          & \text{(by geometric series)}  \\
-                & < \frac{\varepsilon c^n}{c^n}                            & (n \geq N)                    \\
+    d(x_n, x_m) & \leq \sum_{i = n}^m d(x_i, x_{i + 1})                    &                & \text{(by \cref{1.1.2}(d))}   \\
+                & = \sum_{i = n}^m d(x_{i + 1}, x_i)                       &                & \text{(by \cref{1.1.2}(c))}   \\
+                & \leq \sum_{i = n}^m c^i d(x_1, x_0)                      &                & \text{(from the claim above)} \\
+                & = d(x_1, x_0) \bigg(\sum_{i = n}^m c^i\bigg)                                                              \\
+                & = d(x_1, x_0) c^n \bigg(\sum_{i = 0}^{m - n} c^i\bigg)                                                    \\
+                & \leq d(x_1, x_0) c^n \bigg(\sum_{i = 0}^\infty c^i\bigg) & (c \in (0, 1))                                 \\
+                & = \dfrac{d(x_1, x_0) c^n}{1 - c}                         &                & \text{(by geometric series)}  \\
+                & < \dfrac{\varepsilon c^n}{c^n}                           & (n \geq N)                                     \\
                 & = \varepsilon
   \end{align*}
   and \(\varepsilon\) is arbitrary, we know that
@@ -172,29 +172,29 @@
   Since \((x_n)_{n = 1}^\infty\) converges to \(y_0\) in \(X\) with respect to \(d\), we know that
   \begin{align*}
              & \forall \varepsilon \in \R^+, \exists\ N \in \Z^+ : \forall n \geq N, d(y_0, x_n) < \varepsilon \\
-    \implies & \exists\ N \in \Z^+ : \forall n \geq N, d(y_0, x_n) < \frac{d\big(f(y_0), y_0\big)}{2}.
+    \implies & \exists\ N \in \Z^+ : \forall n \geq N, d(y_0, x_n) < \dfrac{d\big(f(y_0), y_0\big)}{2}.
   \end{align*}
   Fix such \(N\).
   But then we have
   \begin{align*}
-             & \begin{cases}
-                 d(y_0, x_N) < \frac{d\big(f(y_0), y_0\big)}{2} \\
-                 d(y_0, x_{N + 1}) < \frac{d\big(f(y_0), y_0\big)}{2}
-               \end{cases}                                                   \\
-    \implies & \begin{cases}
-                 c d(y_0, x_N) < c \frac{d\big(f(y_0), y_0\big)}{2} \\
-                 d(y_0, x_{N + 1}) < \frac{d\big(f(y_0), y_0\big)}{2}
-               \end{cases}                                                   \\
-    \implies & \begin{cases}
-                 d\big(f(y_0), f(x_N)\big) < c d(y_0, x_N) < c \frac{d\big(f(y_0), y_0\big)}{2} \\
-                 d(y_0, x_{N + 1}) < \frac{d\big(f(y_0), y_0\big)}{2}
-               \end{cases}                        \\
-    \implies & \begin{cases}
-                 d\big(f(y_0), x_{N + 1}\big) < c d(y_0, x_N) < c \frac{d\big(f(y_0), y_0\big)}{2} \\
-                 d(y_0, x_{N + 1}) < \frac{d\big(f(y_0), y_0\big)}{2}
-               \end{cases}                     \\
-    \implies & d\big(f(y_0), y_0\big) \leq d\big(f(y_0), x_{N + 1}\big) + d(y_0, x_{N + 1})                          \\
-             & < (c + 1) \frac{d\big(f(y_0), y_0\big)}{2} < d\big(f(y_0), y_0\big),                 & (c \in (0, 1))
+             & \begin{dcases}
+                 d(y_0, x_N) < \dfrac{d\big(f(y_0), y_0\big)}{2} \\
+                 d(y_0, x_{N + 1}) < \dfrac{d\big(f(y_0), y_0\big)}{2}
+               \end{dcases}                                                   \\
+    \implies & \begin{dcases}
+                 c d(y_0, x_N) < c \dfrac{d\big(f(y_0), y_0\big)}{2} \\
+                 d(y_0, x_{N + 1}) < \dfrac{d\big(f(y_0), y_0\big)}{2}
+               \end{dcases}                                                   \\
+    \implies & \begin{dcases}
+                 d\big(f(y_0), f(x_N)\big) < c d(y_0, x_N) < c \dfrac{d\big(f(y_0), y_0\big)}{2} \\
+                 d(y_0, x_{N + 1}) < \dfrac{d\big(f(y_0), y_0\big)}{2}
+               \end{dcases}                        \\
+    \implies & \begin{dcases}
+                 d\big(f(y_0), x_{N + 1}\big) < c d(y_0, x_N) < c \dfrac{d\big(f(y_0), y_0\big)}{2} \\
+                 d(y_0, x_{N + 1}) < \dfrac{d\big(f(y_0), y_0\big)}{2}
+               \end{dcases}                     \\
+    \implies & d\big(f(y_0), y_0\big) \leq d\big(f(y_0), x_{N + 1}\big) + d(y_0, x_{N + 1})                           \\
+             & < (c + 1) \dfrac{d\big(f(y_0), y_0\big)}{2} < d\big(f(y_0), y_0\big),                 & (c \in (0, 1))
   \end{align*}
   a contraction.
   Thus \(y_0\) is the fixed point of \(f\).
@@ -218,7 +218,7 @@
 \begin{lem}\label{6.6.6}
   Let \(B(0, r)\) be a ball in \(\R^n\) centered at the origin, and let \(g : B(0, r) \to \R^n\) be a map such that \(g(0) = 0\) and
   \[
-    \norm*{g(x) - g(y)} \leq \frac{1}{2} \norm*{x - y}
+    \norm*{g(x) - g(y)} \leq \dfrac{1}{2} \norm*{x - y}
   \]
   for all \(x, y \in B(0, r)\)
   (here \(\norm*{x}\) denotes the length of \(x\) in \(\R^n\)).
@@ -232,7 +232,7 @@
   \[
     \norm*{g(x) - g(y)} = \norm*{x - y}.
   \]
-  The only way this can be consistent with our hypothesis \(\norm*{g(x) - g(y)} \leq \frac{1}{2} \norm*{x - y}\) is if \(\norm*{x - y} = 0\), i.e., if \(x = y\), a contradiction.
+  The only way this can be consistent with our hypothesis \(\norm*{g(x) - g(y)} \leq \dfrac{1}{2} \norm*{x - y}\) is if \(\norm*{x - y} = 0\), i.e., if \(x = y\), a contradiction.
   Thus \(f\) is one-to-one.
 
   Now we show that \(f\big(B(0, r)\big)\) contains \(B(0, r / 2)\).
@@ -243,13 +243,13 @@
   Let \(F : B(0, r) \to B(0, r)\) denote the function \(F(x) \coloneqq y - g(x)\).
   Observe that if \(x \in B(0, r)\), then
   \[
-    \norm*{F(x)} \leq \norm*{y} + \norm*{g(x)} \leq \frac{r}{2} + \norm*{g(x) - g(0)} \leq \frac{r}{2} + \frac{1}{2} \norm*{x - 0} < \frac{r}{2} + \frac{r}{2} = r,
+    \norm*{F(x)} \leq \norm*{y} + \norm*{g(x)} \leq \dfrac{r}{2} + \norm*{g(x) - g(0)} \leq \dfrac{r}{2} + \dfrac{1}{2} \norm*{x - 0} < \dfrac{r}{2} + \dfrac{r}{2} = r,
   \]
   so \(F\) does indeed map \(B(0, r)\) to itself.
   The same argument shows that for a sufficiently small \(\varepsilon > 0\), \(F\) maps the closed ball \(\overline{B(0, r - \varepsilon)}\) to itself.
   Also, for any \(x, x'\) in \(B(0, r)\) we have
   \[
-    \norm*{F(x) - F(x')} = \norm*{g(x') - g(x)} \leq \frac{1}{2} \norm*{x' - x}
+    \norm*{F(x) - F(x')} = \norm*{g(x') - g(x)} \leq \dfrac{1}{2} \norm*{x' - x}
   \]
   so \(F\) is a strict contraction on \(B(0, r)\), and hence on the complete space \(\overline{B(0, r - \varepsilon)}\) (see \cref{1.5.7} and \cref{1.5.5}).
   By the contraction mapping theorem, \(F\) has a fixed point, i.e., there exists an \(x\) such that \(x = y - g(x)\).
@@ -274,8 +274,8 @@
   So suppose that \(x \neq y\).
   By mean value theorem (Corollary 10.2.9 in Analysis I) we know that
   \begin{align*}
-             & \exists\ c \in (x, y) \cup (y, x) : \frac{f(x) - f(y)}{x - y} = f'(c)                    \\
-    \implies & \exists\ c \in (x, y) \cup (y, x) : \abs{\frac{f(x) - f(y)}{x - y}} = \abs{f'(c)} \leq 1 \\
+             & \exists\ c \in (x, y) \cup (y, x) : \dfrac{f(x) - f(y)}{x - y} = f'(c)                    \\
+    \implies & \exists\ c \in (x, y) \cup (y, x) : \abs{\dfrac{f(x) - f(y)}{x - y}} = \abs{f'(c)} \leq 1 \\
     \implies & \abs{f(x) - f(y)} \leq \abs{x - y}.
   \end{align*}
   Thus by \cref{6.6.1} \(f\) is a contraction.
@@ -297,8 +297,8 @@
   So suppose that \(x \neq y\).
   By mean value theorem (Corollary 10.2.9) we know that
   \begin{align*}
-             & \exists\ c \in (x, y) \cup (y, x) : \frac{f(x) - f(y)}{x - y} = f'(c)                                                                    \\
-    \implies & \exists\ c \in (x, y) \cup (y, x) : \abs{\frac{f(x) - f(y)}{x - y}} = \abs{f'(c)} < \max\big(\abs{f'(x_{\min})}, \abs{f'(x_{\max})}\big) \\
+             & \exists\ c \in (x, y) \cup (y, x) : \dfrac{f(x) - f(y)}{x - y} = f'(c)                                                                    \\
+    \implies & \exists\ c \in (x, y) \cup (y, x) : \abs{\dfrac{f(x) - f(y)}{x - y}} = \abs{f'(c)} < \max\big(\abs{f'(x_{\min})}, \abs{f'(x_{\max})}\big) \\
     \implies & \abs{f(x) - f(y)} \leq \max\big(\abs{f'(x_{\min})}, \abs{f'(x_{\max})}\big) \cdot \abs{x - y}.
   \end{align*}
   Thus by \cref{6.6.1} \(f\) is a strict contraction.
@@ -311,9 +311,9 @@
 \begin{proof}
   We have
   \begin{align*}
-             & \forall x_0 \in [a, b], \forall x \in [a, b] \setminus \{x_0\}, \abs{f(x) - f(x_0)} \leq \abs{x - x_0}               & \text{(by \cref{6.6.1})} \\
-    \implies & \forall x_0 \in [a, b], \forall x \in [a, b] \setminus \{x_0\}, \abs{\frac{f(x) - f(x_0)}{x - x_0}} \leq 1                                      \\
-    \implies & \forall x_0 \in [a, b], \lim_{x \to x_0 ; x \in [a, b] \setminus \{x_0\}} \abs{\frac{f(x) - f(x_0)}{x - x_0}} \leq 1                            \\
+             & \forall x_0 \in [a, b], \forall x \in [a, b] \setminus \{x_0\}, \abs{f(x) - f(x_0)} \leq \abs{x - x_0}                &  & \text{(by \cref{6.6.1})} \\
+    \implies & \forall x_0 \in [a, b], \forall x \in [a, b] \setminus \{x_0\}, \abs{\dfrac{f(x) - f(x_0)}{x - x_0}} \leq 1                                         \\
+    \implies & \forall x_0 \in [a, b], \lim_{x \to x_0 ; x \in [a, b] \setminus \{x_0\}} \abs{\dfrac{f(x) - f(x_0)}{x - x_0}} \leq 1                               \\
     \implies & \forall x_0 \in [a, b], f'(x_0) \leq 1.
   \end{align*}
 \end{proof}
@@ -346,31 +346,31 @@
 \begin{proof}
   Let \(f : [0, 1] \to \R\) be the function
   \[
-    \forall x \in [0, 1], f(x) = \begin{cases}
-      \frac{x}{2} & \text{if } x \in [0.5, 1] \\
-      \frac{x}{3} & \text{if } x \in [0, 0.5)
-    \end{cases}.
+    \forall x \in [0, 1], f(x) = \begin{dcases}
+      \dfrac{x}{2} & \text{if } x \in [0.5, 1] \\
+      \dfrac{x}{3} & \text{if } x \in [0, 0.5)
+    \end{dcases}.
   \]
   Observe that
   \[
-    \lim_{x \to 0.5+} f(x) = \frac{0.5}{2} \neq \frac{0.5}{3} = \lim_{x \to 0.5-} f(x).
+    \lim_{x \to 0.5+} f(x) = \dfrac{0.5}{2} \neq \dfrac{0.5}{3} = \lim_{x \to 0.5-} f(x).
   \]
   Thus \(f\) is not continuous at \(0.5\) and by Proposition 10.1.10 in Analysis I \(f\) is not differentiable at \(0.5\).
   Since
   \begin{align*}
-             & \forall x, y \in [0, 1], \begin{cases}
-                                          \abs{f(x) - f(y)} = \frac{1}{2} \abs{x - y}   & \text{if } x, y \in [0.5, 1]                   \\
-                                          \abs{f(x) - f(y)} = \frac{1}{3} \abs{x - y}   & \text{if } x, y \in [0, 0.5)                   \\
-                                          \abs{f(x) - f(y)} = \frac{x}{2} - \frac{y}{3} & \text{if } x \in [0.5, 1] \land y \in [0, 0.5) \\
-                                          \abs{f(x) - f(y)} = \frac{y}{2} - \frac{x}{3} & \text{if } x \in [0, 0.5) \land y \in [0.5, 1]
-                                        \end{cases}   \\
-    \implies & \begin{cases}
-                 \abs{f(x) - f(y)} \leq \frac{1}{2} \abs{x - y}                           & \text{if } x, y \in [0.5, 1]                   \\
-                 \abs{f(x) - f(y)} = \frac{1}{3} \abs{x - y} \leq \frac{1}{2} \abs{x - y} & \text{if } x, y \in [0, 0.5)                   \\
-                 \abs{f(x) - f(y)} < \frac{1}{3} (x - y) \leq \frac{1}{2} \abs{x - y}     & \text{if } x \in [0.5, 1] \land y \in [0, 0.5) \\
-                 \abs{f(x) - f(y)} < \frac{1}{3} (y - x) \leq \frac{1}{2} \abs{x - y}     & \text{if } x \in [0, 0.5) \land y \in [0.5, 1]
-               \end{cases} \\
-    \implies & \abs{f(x) - f(y)} \leq \frac{1}{2} \abs{x - y},
+             & \forall x, y \in [0, 1], \begin{dcases}
+                                          \abs{f(x) - f(y)} = \dfrac{1}{2} \abs{x - y}    & \text{if } x, y \in [0.5, 1]                   \\
+                                          \abs{f(x) - f(y)} = \dfrac{1}{3} \abs{x - y}    & \text{if } x, y \in [0, 0.5)                   \\
+                                          \abs{f(x) - f(y)} = \dfrac{x}{2} - \dfrac{y}{3} & \text{if } x \in [0.5, 1] \land y \in [0, 0.5) \\
+                                          \abs{f(x) - f(y)} = \dfrac{y}{2} - \dfrac{x}{3} & \text{if } x \in [0, 0.5) \land y \in [0.5, 1]
+                                        \end{dcases}   \\
+    \implies & \begin{dcases}
+                 \abs{f(x) - f(y)} \leq \dfrac{1}{2} \abs{x - y}                            & \text{if } x, y \in [0.5, 1]                   \\
+                 \abs{f(x) - f(y)} = \dfrac{1}{3} \abs{x - y} \leq \dfrac{1}{2} \abs{x - y} & \text{if } x, y \in [0, 0.5)                   \\
+                 \abs{f(x) - f(y)} < \dfrac{1}{3} (x - y) \leq \dfrac{1}{2} \abs{x - y}     & \text{if } x \in [0.5, 1] \land y \in [0, 0.5) \\
+                 \abs{f(x) - f(y)} < \dfrac{1}{3} (y - x) \leq \dfrac{1}{2} \abs{x - y}     & \text{if } x \in [0, 0.5) \land y \in [0.5, 1]
+               \end{dcases} \\
+    \implies & \abs{f(x) - f(y)} \leq \dfrac{1}{2} \abs{x - y},
   \end{align*}
   by \cref{6.6.1} we know that \(f\) is a strict contraction.
 \end{proof}
@@ -391,8 +391,8 @@
   Let \((X, d)\) be a metric space, let \(f : X \to X\) be a contraction of \(X\) and let \(x_0 \in X\).
   We have
   \begin{align*}
-             & \forall \varepsilon \in \R^+, \forall x \in X, d(x, x_0) < \varepsilon                            \\
-    \implies & d\big(f(x), f(x_0)\big) \leq d(x, x_0) < \varepsilon.                  & \text{(by \cref{6.6.1})}
+             & \forall \varepsilon \in \R^+, \forall x \in X, d(x, x_0) < \varepsilon                               \\
+    \implies & d\big(f(x), f(x_0)\big) \leq d(x, x_0) < \varepsilon.                  &  & \text{(by \cref{6.6.1})}
   \end{align*}
   By setting \(\delta = \varepsilon\) we see that
   \[
@@ -421,31 +421,31 @@
 \begin{proof}
   We have
   \begin{align*}
-    d(x_0, y_0) & = d\big(f(x_0), g(y_0)\big)                                & \text{(by \cref{6.6.3})}    \\
-                & \leq d\big(f(x_0), g(x_0)\big) + d\big(g(x_0), g(y_0)\big) & \text{(by \cref{1.1.2}(d))} \\
-                & \leq \varepsilon + d\big(g(x_0), g(y_0)\big)               & \text{(by hypothesis)}      \\
-                & \leq \varepsilon + c' d(x_0, y_0)                          & \text{(by \cref{6.6.1})}
+    d(x_0, y_0) & = d\big(f(x_0), g(y_0)\big)                                &  & \text{(by \cref{6.6.3})}    \\
+                & \leq d\big(f(x_0), g(x_0)\big) + d\big(g(x_0), g(y_0)\big) &  & \text{(by \cref{1.1.2}(d))} \\
+                & \leq \varepsilon + d\big(g(x_0), g(y_0)\big)               &  & \text{(by hypothesis)}      \\
+                & \leq \varepsilon + c' d(x_0, y_0)                          &  & \text{(by \cref{6.6.1})}
   \end{align*}
   and
   \begin{align*}
-    d(x_0, y_0) & = d\big(f(x_0), g(y_0)\big)                                & \text{(by \cref{6.6.3})}    \\
-                & \leq d\big(f(x_0), f(y_0)\big) + d\big(f(y_0), g(y_0)\big) & \text{(by \cref{1.1.2}(d))} \\
-                & \leq d\big(f(x_0), f(y_0)\big) + \varepsilon               & \text{(by hypothesis)}      \\
-                & \leq c d(x_0, y_0) + \varepsilon.                          & \text{(by \cref{6.6.1})}
+    d(x_0, y_0) & = d\big(f(x_0), g(y_0)\big)                                &  & \text{(by \cref{6.6.3})}    \\
+                & \leq d\big(f(x_0), f(y_0)\big) + d\big(f(y_0), g(y_0)\big) &  & \text{(by \cref{1.1.2}(d))} \\
+                & \leq d\big(f(x_0), f(y_0)\big) + \varepsilon               &  & \text{(by hypothesis)}      \\
+                & \leq c d(x_0, y_0) + \varepsilon.                          &  & \text{(by \cref{6.6.1})}
   \end{align*}
   Thus
   \begin{align*}
-             & \begin{cases}
+             & \begin{dcases}
                  d(x_0, y_0) \leq \varepsilon + \max(c, c') \cdot d(x_0, y_0) \\
                  d(x_0, y_0) \leq \varepsilon + \min(c, c') \cdot d(x_0, y_0)
-               \end{cases} \\
-    \implies & \begin{cases}
+               \end{dcases} \\
+    \implies & \begin{dcases}
                  \big(1 - \max(c, c')\big) d(x_0, y_0) \leq \varepsilon \\
                  \big(1 - \min(c, c')\big) d(x_0, y_0) \leq \varepsilon
-               \end{cases}       \\
-    \implies & \begin{cases}
-                 d(x_0, y_0) \leq \frac{\varepsilon}{1 - \max(c, c')} \\
-                 d(x_0, y_0) \leq \frac{\varepsilon}{1 - \min(c, c')}
-               \end{cases}.
+               \end{dcases}       \\
+    \implies & \begin{dcases}
+                 d(x_0, y_0) \leq \dfrac{\varepsilon}{1 - \max(c, c')} \\
+                 d(x_0, y_0) \leq \dfrac{\varepsilon}{1 - \min(c, c')}
+               \end{dcases}.
   \end{align*}
 \end{proof}

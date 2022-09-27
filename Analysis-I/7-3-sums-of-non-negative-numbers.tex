@@ -30,12 +30,12 @@
   Let \(N \in \N\).
   Then we have
   \begin{align*}
-             & \sum_{n = m}^\infty b_n \text{ converges}                                                                                  \\
-    \implies & \exists\ M \in \R : \forall N \geq m, \sum_{n = m}^N b_n \leq M                                & \text{(by \cref{7.3.1})}  \\
-    \implies & \exists\ M \in \R : \forall N \geq m, \sum_{n = m}^N \abs{a_n} \leq \sum_{n = m}^N b_n \leq M  & \text{(by hypothesis)}    \\
-    \implies & \sum_{n = m}^\infty \abs{a_n} \text{ converges}                                                & \text{(by \cref{7.3.1})}  \\
-    \implies & \sum_{n = m}^\infty \abs{a_n} \leq \sum_{n = m}^\infty b_n                                     & \text{(by \cref{6.4.13})} \\
-    \implies & \abs{\sum_{n = m}^\infty a_n} \leq \sum_{n = m}^\infty \abs{a_n} \leq \sum_{n = m}^\infty b_n. & \text{(by \cref{7.2.9})}
+             & \sum_{n = m}^\infty b_n \text{ converges}                                                                                     \\
+    \implies & \exists\ M \in \R : \forall N \geq m, \sum_{n = m}^N b_n \leq M                                &  & \text{(by \cref{7.3.1})}  \\
+    \implies & \exists\ M \in \R : \forall N \geq m, \sum_{n = m}^N \abs{a_n} \leq \sum_{n = m}^N b_n \leq M  &  & \text{(by hypothesis)}    \\
+    \implies & \sum_{n = m}^\infty \abs{a_n} \text{ converges}                                                &  & \text{(by \cref{7.3.1})}  \\
+    \implies & \sum_{n = m}^\infty \abs{a_n} \leq \sum_{n = m}^\infty b_n                                     &  & \text{(by \cref{6.4.13})} \\
+    \implies & \abs{\sum_{n = m}^\infty a_n} \leq \sum_{n = m}^\infty \abs{a_n} \leq \sum_{n = m}^\infty b_n. &  & \text{(by \cref{7.2.9})}
   \end{align*}
 \end{proof}
 
@@ -67,33 +67,33 @@
   We use induction on \(N\).
   For \(N = 0\), by \cref{7.1.1} we have
   \[
-    \sum_{n = 0}^0 x^n = x^0 = 1 = \frac{1 - x}{1 - x} = \frac{1 - x^1}{1 - x}.
+    \sum_{n = 0}^0 x^n = x^0 = 1 = \dfrac{1 - x}{1 - x} = \dfrac{1 - x^1}{1 - x}.
   \]
   So the base case holds.
   Suppose inductivly that for some \(N \geq 0\) we have \(\sum_{n = 0}^N x^n = (1 - x^{N + 1}) / (1 - x)\).
   Then for \(N + 1\), we have
   \begin{align*}
-    \sum_{n = 0}^{N + 1} x^n & = \sum_{n = 0}^N x^n + x^{N + 1}                                    & \text{(by \cref{7.1.1})}         \\
-                             & = \frac{1 - x^{N + 1}}{1 - x} + x^{N + 1}                           & \text{(by induction hypothesis)} \\
-                             & = \frac{1 - x^{N + 1}}{1 - x} + \frac{(1 - x) x^{N + 1}}{1 - x}                                        \\
-                             & = \frac{1 - x^{N + 1}}{1 - x} + \frac{x^{N + 1} - x^{N + 2}}{1 - x}                                    \\
-                             & = \frac{1 - x^{N + 2}}{1 - x}.
+    \sum_{n = 0}^{N + 1} x^n & = \sum_{n = 0}^N x^n + x^{N + 1}                                      &  & \text{(by \cref{7.1.1})}         \\
+                             & = \dfrac{1 - x^{N + 1}}{1 - x} + x^{N + 1}                            &  & \text{(by induction hypothesis)} \\
+                             & = \dfrac{1 - x^{N + 1}}{1 - x} + \dfrac{(1 - x) x^{N + 1}}{1 - x}                                           \\
+                             & = \dfrac{1 - x^{N + 1}}{1 - x} + \dfrac{x^{N + 1} - x^{N + 2}}{1 - x}                                       \\
+                             & = \dfrac{1 - x^{N + 2}}{1 - x}.
   \end{align*}
   This closes the induction.
   Using similar argument we can show that
   \[
-    \sum_{n = 0}^N \abs{x^n} = \frac{1 - \abs{x^{N + 1}}}{1 - \abs{x}}.
+    \sum_{n = 0}^N \abs{x^n} = \dfrac{1 - \abs{x^{N + 1}}}{1 - \abs{x}}.
   \]
 
   Now we use the induction result to show that if \(\abs{x} < 1\), then \(\sum_{n = 0}^\infty x^n\) is absolutely convergent and \(\sum_{n = 0}^\infty x^n = 1 / (1 - x)\).
   \begin{align*}
-    \sum_{n = 0}^\infty x^n & = \lim_{N \to \infty} \sum_{n = 0}^N x^n                              & \text{(by \cref{7.2.2})}     \\
-                            & = \lim_{N \to \infty} \frac{1 - x^{N + 1}}{1 - x}                     & \text{(from claim above)}    \\
-                            & = \frac{\lim_{N \to \infty} 1 - x^{N + 1}}{1 - x}                     & \text{(by \cref{6.1.19}(f))} \\
-                            & = \frac{\lim_{N \to \infty} 1 - \lim_{N \to \infty} x^{N + 1}}{1 - x} & \text{(by \cref{6.1.19}(d))} \\
-                            & = \frac{1 - (\lim_{N \to \infty} x^{N + 1})}{1 - x}                   & \text{(by \cref{ac:6.5.1})}  \\
-                            & = \frac{1 - 0}{1 - x}                                                 & \text{(by \cref{6.5.2})}     \\
-                            & = \frac{1}{1 - x}.
+    \sum_{n = 0}^\infty x^n & = \lim_{N \to \infty} \sum_{n = 0}^N x^n                               &  & \text{(by \cref{7.2.2})}     \\
+                            & = \lim_{N \to \infty} \dfrac{1 - x^{N + 1}}{1 - x}                     &  & \text{(from claim above)}    \\
+                            & = \dfrac{\lim_{N \to \infty} 1 - x^{N + 1}}{1 - x}                     &  & \text{(by \cref{6.1.19}(f))} \\
+                            & = \dfrac{\lim_{N \to \infty} 1 - \lim_{N \to \infty} x^{N + 1}}{1 - x} &  & \text{(by \cref{6.1.19}(d))} \\
+                            & = \dfrac{1 - (\lim_{N \to \infty} x^{N + 1})}{1 - x}                   &  & \text{(by \cref{ac:6.5.1})}  \\
+                            & = \dfrac{1 - 0}{1 - x}                                                 &  & \text{(by \cref{6.5.2})}     \\
+                            & = \dfrac{1}{1 - x}.
   \end{align*}
   Using similar argument we can show that \(\sum_{n = 0}^\infty \abs{x^n} = 1 / (1 - \abs{x})\).
   Thus we conclude that if \(\abs{x} < 1\), then \(\sum_{n = 0}^\infty x^n\) is absolutely convergent and \(\sum_{n = 0}^\infty x^n = 1 / (1 - x)\).
@@ -182,7 +182,7 @@
   The sequence \((1 / n^q)_{n = 1}^\infty\) is non-negative and decreasing (by \cref{6.7.3}), and so the Cauchy criterion (\cref{7.3.4}) applies.
   Thus this series is convergent if and only if
   \[
-    \sum_{k = 0}^\infty 2^k \frac{1}{(2^k)^q}
+    \sum_{k = 0}^\infty 2^k \dfrac{1}{(2^k)^q}
   \]
   is convergent.
   But by the laws of exponentiation (\cref{6.7.3}) we can rewrite this as the geometric series
@@ -235,9 +235,9 @@
   Let \(N, k \in \N\).
   Then we have \(\forall 0 \leq k \leq N\),
   \begin{align*}
-             & 0 \leq \abs{a_k} \leq \sum_{n = 0}^N \abs{a_n}                                                                                         \\
-    \implies & \lim_{N \to \infty} 0 \leq \lim_{N \to \infty} \abs{a_k} \leq \lim_{N \to \infty} \sum_{n = 0}^N \abs{a_n} & \text{(by \cref{6.4.13})} \\
-    \implies & 0 \leq \abs{a_k} \leq \sum_{n = 0}^\infty \abs{a_n} = 0                                                    & \text{(by \cref{7.2.2})}  \\
+             & 0 \leq \abs{a_k} \leq \sum_{n = 0}^N \abs{a_n}                                                                                            \\
+    \implies & \lim_{N \to \infty} 0 \leq \lim_{N \to \infty} \abs{a_k} \leq \lim_{N \to \infty} \sum_{n = 0}^N \abs{a_n} &  & \text{(by \cref{6.4.13})} \\
+    \implies & 0 \leq \abs{a_k} \leq \sum_{n = 0}^\infty \abs{a_n} = 0                                                    &  & \text{(by \cref{7.2.2})}  \\
     \implies & \abs{a_k} = 0 = a_k.
   \end{align*}
   Since \(N\) is arbitrary, we have \(a_k = 0\) for every \(k \geq 0\).
