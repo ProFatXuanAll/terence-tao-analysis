@@ -182,6 +182,19 @@
 % Integer number.
 \NewDocumentCommand{\Z}{}{\mathbb{Z}}
 
+% Proof statements reference text.
+\NewDocumentCommand{\byOptionalArgumentProcess}{m}{(#1)}
+\NewDocumentCommand{\by}{m >{\SplitList{,}} o}{%
+	\IfNoValueTF{#2}{%
+		\text{(by \cref{#1})}%
+	}{%
+		\text{(by \cref{#1}\ProcessList{#2}{\byOptionalArgumentProcess})}%
+	}%
+}
+
+% Proof statements reference induction hypothesis.
+\NewDocumentCommand{\byIH}{}{\text{(by induction hypothesis)}}
+
 %==============================================================================
 % Document.
 %==============================================================================

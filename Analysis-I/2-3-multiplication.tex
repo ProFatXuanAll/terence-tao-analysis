@@ -36,9 +36,9 @@
   Suppose inductively that for some natural number \(n\) we have \(n \times 0 = 0\).
   Then for \(n++\) we have
   \begin{align*}
-    (n++) \times 0 & = (n \times 0) + 0 &  & \text{(by \cref{2.3.1})}         \\
-                   & = 0 + 0            &  & \text{(by induction hypothesis)} \\
-                   & = 0.               &  & \text{(by \cref{2.2.1})}
+    (n++) \times 0 & = (n \times 0) + 0 &  & \by{2.3.1} \\
+                   & = 0 + 0            &  & \byIH      \\
+                   & = 0.               &  & \by{2.2.1}
   \end{align*}
   This closes the induction.
 \end{proof}
@@ -56,11 +56,11 @@
   Then for \(n++\), we have
   \begin{align*}
     (n++) \times (m++)
-     & = (n \times (m++)) + (m++)  &  & \text{(by \cref{2.3.1})}         \\
-     & = (n \times m) + n + (m++)  &  & \text{(by induction hypothesis)} \\
-     & = (n \times m) + (n++) + m  &  & \text{(by \cref{2.2.5})}         \\
-     & = (n \times m) + m + (n++)  &  & \text{(by \cref{2.2.4})}         \\
-     & = ((n++) \times m) + (n++). &  & \text{(by \cref{2.3.1})}
+     & = (n \times (m++)) + (m++)  &  & \by{2.3.1} \\
+     & = (n \times m) + n + (m++)  &  & \byIH      \\
+     & = (n \times m) + (n++) + m  &  & \by{2.2.5} \\
+     & = (n \times m) + m + (n++)  &  & \by{2.2.4} \\
+     & = ((n++) \times m) + (n++). &  & \by{2.3.1}
   \end{align*}
   This closes the induction.
 \end{proof}
@@ -77,8 +77,8 @@
   Suppose inductively that for some natural number \(n\) we have \(n \times m = m \times n\).
   Then for \(n++\), we have
   \begin{align*}
-    (n++) \times m & = (n \times m) + m &  & \text{(by \cref{2.3.1})}         \\
-                   & = (m \times n) + m &  & \text{(by induction hypothesis)} \\
+    (n++) \times m & = (n \times m) + m &  & \by{2.3.1}                  \\
+                   & = (m \times n) + m &  & \byIH                       \\
                    & = m \times (n++).  &  & \text{(by \cref{ac:2.3.3})}
   \end{align*}
   This closes the induction.
@@ -99,18 +99,18 @@
   Then
   \begin{align*}
          & n \text{ is positive} \land m \text{ is positive}                                                \\
-    \iff & n \neq 0 \land m \neq 0                           &  & \text{(by \cref{2.2.7})}                  \\
+    \iff & n \neq 0 \land m \neq 0                           &  & \by{2.2.7}                                \\
     \iff & n = a++ \land m = b++                             &  & \text{(by \cref{2.2.10})}                 \\
     \iff & nm = (a++)(b++)                                                                                  \\
          & = ab + a + (b++)                                  &  & \text{(by \cref{2.3.1} and \cref{2.3.2})} \\
     \iff & nm = c + d \land d \neq 0                         &  & \text{(by \cref{2.3})}                    \\
-    \iff & nm \text{ is positive}.                           &  & \text{(by \cref{2.2.8})}
+    \iff & nm \text{ is positive}.                           &  & \by{2.2.8}
   \end{align*}
   And we must also have
   \begin{align*}
-         & (n \text{ is positive} \land m \text{ is positive} \iff nm \text{ is positive})                                               \\
-    \iff & (\lnot (n \text{ is positive} \land m \text{ is positive}) \iff \lnot (nm \text{ is positive}))                               \\
-    \iff & (n = 0 \lor m = 0 \iff nm = 0).                                                                 &  & \text{(by \cref{2.2.7})}
+         & (n \text{ is positive} \land m \text{ is positive} \iff nm \text{ is positive})                                 \\
+    \iff & (\lnot (n \text{ is positive} \land m \text{ is positive}) \iff \lnot (nm \text{ is positive}))                 \\
+    \iff & (n = 0 \lor m = 0 \iff nm = 0).                                                                 &  & \by{2.2.7}
   \end{align*}
 \end{proof}
 
@@ -153,9 +153,9 @@
   Suppose inductively that for some natural number \(c\) we have \((a \times b) \times c = a \times (b \times c)\).
   Then for \(c++\), we have
   \begin{align*}
-    (a \times b) \times (c++) & = (a \times b) \times c + a \times b &  & \text{(by \cref{ac:2.3.3})}      \\
-                              & = a \times (b \times c) + a \times b &  & \text{(by induction hypothesis)} \\
-                              & = a \times (b \times c + b)          &  & \text{(by \cref{2.3.4})}         \\
+    (a \times b) \times (c++) & = (a \times b) \times c + a \times b &  & \text{(by \cref{ac:2.3.3})} \\
+                              & = a \times (b \times c) + a \times b &  & \byIH                       \\
+                              & = a \times (b \times c + b)          &  & \by{2.3.4}                  \\
                               & = a \times (b \times (c++)).         &  & \text{(by \cref{ac:2.3.3})}
   \end{align*}
   This closes the induction.
@@ -199,8 +199,8 @@
   Suppose inductively that for some natural number \(n\) we have \(n = mq + r\), \(0 \leq r < q\).
   Then for \(n++\), we have
   \begin{align*}
-    n++ & = (mq + r)++ &  & \text{(by induction hypothesis)} \\
-        & = mq + (r++) &  & \text{(by \cref{2.2.3})}         \\
+    n++ & = (mq + r)++ &  & \byIH      \\
+        & = mq + (r++) &  & \by{2.2.3} \\
   \end{align*}
   Since \(r < q\), by \cref{2.2.12}(e) we have \(r++ \leq q\).
   \begin{itemize}
@@ -261,18 +261,18 @@
     (a + b)^2 & = (a + b)^1 \times (a + b)                             &  & \text{(By \cref{2.3.11})} \\
               & = (a + b)^0 \times (a + b) \times (a + b)              &  & \text{(By \cref{2.3.11})} \\
               & = 1 \times (a + b) \times (a + b)                      &  & \text{(By \cref{2.3.11})} \\
-              & = (1 \times (a + b)) \times (a + b)                    &  & \text{(By \cref{2.3.5})}  \\
-              & = (1 \times a + 1 \times b)) \times (a + b)            &  & \text{(By \cref{2.3.4})}  \\
-              & = ((0 \times a + a) + (0 \times b + b)) \times (a + b) &  & \text{(By \cref{2.3.1})}  \\
-              & = (a + b) \times (a + b)                               &  & \text{(By \cref{2.3.1})}  \\
-              & = a(a + b) + b(a + b)                                  &  & \text{(By \cref{2.3.5})}  \\
-              & = aa + ab + ba + bb                                    &  & \text{(By \cref{2.3.5})}  \\
+              & = (1 \times (a + b)) \times (a + b)                    &  & \by{2.3.5}                \\
+              & = (1 \times a + 1 \times b)) \times (a + b)            &  & \by{2.3.4}                \\
+              & = ((0 \times a + a) + (0 \times b + b)) \times (a + b) &  & \by{2.3.1}                \\
+              & = (a + b) \times (a + b)                               &  & \by{2.3.1}                \\
+              & = a(a + b) + b(a + b)                                  &  & \by{2.3.5}                \\
+              & = aa + ab + ba + bb                                    &  & \by{2.3.5}                \\
               & = a^2 + ab + ba + b^2                                  &  & \text{(By \cref{2.3.11})} \\
-              & = a^2 + ab + ab + b^2                                  &  & \text{(By \cref{2.3.2})}  \\
-              & = a^2 + (0 + ab) + ab + b^2                            &  & \text{(By \cref{2.2.1})}  \\
-              & = a^2 + 0ab + ab + ab + b^2                            &  & \text{(By \cref{2.3.1})}  \\
-              & = a^2 + 1ab + ab + b^2                                 &  & \text{(By \cref{2.3.2})}  \\
-              & = a^2 + 2ab + b^2                                      &  & \text{(By \cref{2.3.1})}  \\
+              & = a^2 + ab + ab + b^2                                  &  & \by{2.3.2}                \\
+              & = a^2 + (0 + ab) + ab + b^2                            &  & \by{2.2.1}                \\
+              & = a^2 + 0ab + ab + ab + b^2                            &  & \by{2.3.1}                \\
+              & = a^2 + 1ab + ab + b^2                                 &  & \by{2.3.2}                \\
+              & = a^2 + 2ab + b^2                                      &  & \by{2.3.1}                \\
   \end{align*}
 \end{proof}
 

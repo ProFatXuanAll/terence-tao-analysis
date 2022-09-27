@@ -70,9 +70,9 @@
   Since \(n\) is a natural number, by \cref{2.2} we know that \(n\pp\) is also a natural number.
   Thus we can apply \cref{2.2.2} to derive the following fact:
   \begin{align*}
-    n\pp & = (n\pp) + 0 &  & \text{(by \cref{2.2.2})} \\
-         & = (n + 0)\pp &  & \text{(by \cref{2.2.1})} \\
-         & = n + (0\pp) &  & \text{(by \cref{2.2.3})} \\
+    n\pp & = (n\pp) + 0 &  & \by{2.2.2} \\
+         & = (n + 0)\pp &  & \by{2.2.1} \\
+         & = n + (0\pp) &  & \by{2.2.3} \\
          & = n + 1.
   \end{align*}
 \end{proof}
@@ -97,14 +97,23 @@
 \end{prop}
 
 \begin{proof}
-  We shall use induction on \(c\) and keeping both \(a\) and \(b\) fixed.
-  First we do the base case \(c = 0\), i.e., we show \((a + b) + 0 = a + (b + 0)\).
-  By \cref{2.2.2}, \((a + b) + 0 = a + b\) and \(a + (b + 0) = a + b\).
-  Thus the base case is done.
-  Now suppose inductively that \((a + b) + c = a + (b + c)\), we have to prove that \((a + b) + (c\pp) = a + (b + (c\pp))\) to close the induction.
-  By \cref{2.2.3}, \((a + b) + (c\pp) = ((a + b) + c)\pp\).
-  Also By \cref{2.2.3}, \(a + (b + (c\pp)) = a + ((b + c)\pp) = (a + (b + c))\pp\), but this is equal to \(((a + b) + c)\pp\) by the inductive hypothesis \((a + b) + c = a + (b + c)\).
-  Thus \((a + b) + (c\pp) = a + (b + (c\pp))\) and we have closed the induction.
+  We use induction on \(c\) and keep both \(a\) and \(b\) fixed.
+  For \(c = 0\), we have
+  \begin{align*}
+    (a + b) + 0 & = a + b        &  & \by{2.2.2} \\
+                & = a + (b + 0). &  & \by{2.2.2}
+  \end{align*}
+  Thus the base case holds.
+  Suppose inductively that \((a + b) + c = a + (b + c)\) for some natural number \(c\).
+  We want to show that \((a + b) + (c\pp) = a + (b + (c\pp))\).
+  But this is true since
+  \begin{align*}
+    (a + b) + (c\pp) & = ((a + b) + c)\pp  &  & \by{2.2.3} \\
+                     & = (a + (b + c))\pp  &  & \byIH      \\
+                     & = a + (b + c)\pp    &  & \by{2.2.3} \\
+                     & = a + (b + (c\pp)). &  & \by{2.2.3}
+  \end{align*}
+  This closes the induction.
 \end{proof}
 
 \begin{note}
@@ -201,7 +210,7 @@
   Let \(a\) be a natural number.
   Then
   \begin{align*}
-             & a = a + 0 &  & \text{(by \cref{2.2.1})}  \\
+             & a = a + 0 &  & \by{2.2.1}                \\
     \implies & a \geq a. &  & \text{(by \cref{2.2.11})}
   \end{align*}
 \end{proof}
@@ -211,7 +220,7 @@
   By \cref{2.2.11} \(\exists\ d, e\) are natural numbers such that \(a = b + d\) and \(b = c + e\).
   Then
   \begin{align*}
-             & a = b + d = (c + e) + d = c + (e + d) &  & \text{(by \cref{2.2.5})}    \\
+             & a = b + d = (c + e) + d = c + (e + d) &  & \by{2.2.5}                  \\
     \implies & e + d \text{ is a natural number}     &  & \text{(by \cref{ac:2.2.1})} \\
     \implies & a \geq c.                             &  & \text{(by \cref{2.2.11})}   \\
   \end{align*}
@@ -222,10 +231,10 @@
   By \cref{2.2.11} \(\exists\ c, d\) are natural numbers such that \(a = b + c\) and \(b = a + d\).
   Then
   \begin{align*}
-             & a = b + c = (a + d) + c = a + (d + c) &  & \text{(by \cref{2.2.5})} \\
-    \implies & 0 = d + c                             &  & \text{(by \cref{2.2.6})} \\
-    \implies & d = c = 0                             &  & \text{(by \cref{2.2.9})} \\
-    \implies & a = b + 0 = b.                        &  & \text{(by \cref{2.2.2})}
+             & a = b + c = (a + d) + c = a + (d + c) &  & \by{2.2.5} \\
+    \implies & 0 = d + c                             &  & \by{2.2.6} \\
+    \implies & d = c = 0                             &  & \by{2.2.9} \\
+    \implies & a = b + 0 = b.                        &  & \by{2.2.2}
   \end{align*}
 \end{proof}
 
@@ -236,8 +245,8 @@
          & a \geq b                                                         \\
     \iff & a = b + d           &  & \text{(by \cref{2.2.11})}               \\
     \iff & c + a = c + (b + d) &  & \text{(by \cref{2.4} and \cref{2.2.6})} \\
-    \iff & c + a = (c + b) + d &  & \text{(by \cref{2.2.5})}                \\
-    \iff & a + c = (b + c) + d &  & \text{(by \cref{2.2.4})}                \\
+    \iff & c + a = (c + b) + d &  & \by{2.2.5}                              \\
+    \iff & a + c = (b + c) + d &  & \by{2.2.4}                              \\
     \iff & a + c \geq b + c.   &  & \text{(by \cref{2.2.11})}
   \end{align*}
 \end{proof}
@@ -248,9 +257,9 @@
   \begin{align*}
          & a < b                                                        \\
     \iff & b = a + c \land a \neq b      &  & \text{(by \cref{2.2.11})} \\
-    \iff & b = a + c \land c \neq 0      &  & \text{(by \cref{2.2.2})}  \\
+    \iff & b = a + c \land c \neq 0      &  & \by{2.2.2}                \\
     \iff & b = a + (d\pp) \land c = d\pp &  & \text{(by \cref{2.2.10})} \\
-    \iff & b = (a\pp) + d                &  & \text{(by \cref{2.2.5})}  \\
+    \iff & b = (a\pp) + d                &  & \by{2.2.5}                \\
     \iff & a\pp \leq b.                  &  & \text{(by \cref{2.2.11})}
   \end{align*}
 \end{proof}
@@ -261,8 +270,8 @@
   \begin{align*}
          & a < b                                                                 \\
     \iff & b = a + d \land a \neq b               &  & \text{(by \cref{2.2.11})} \\
-    \iff & b = a + d \land d \neq 0               &  & \text{(by \cref{2.2.2})}  \\
-    \iff & b = a + d \land d \text{ is positive}. &  & \text{(by \cref{2.2.7})}
+    \iff & b = a + d \land d \neq 0               &  & \by{2.2.2}                \\
+    \iff & b = a + d \land d \text{ is positive}. &  & \by{2.2.7}
   \end{align*}
 \end{proof}
 

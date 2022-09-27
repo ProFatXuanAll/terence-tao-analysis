@@ -71,9 +71,9 @@
   \end{align*}
   we have
   \begin{align*}
-             & \lim_{n \to \infty} \bigg(\dfrac{(n + k)!}{n!}\bigg)^{\dfrac{1}{n}} = 1                                                                        &  & \text{(by induction hypothesis)} \\
-    \implies & \Bigg(\lim_{n \to \infty} \bigg(\dfrac{(n + k)!}{n!}\bigg)^{\dfrac{1}{n}}\Bigg) \bigg(\lim_{n \to \infty} (n + k + 1)^{\dfrac{1}{n}}\bigg) = 1                                       \\
-    \implies & \lim_{n \to \infty} \Bigg(\bigg(\dfrac{(n + k)!}{n!}\bigg)^{\dfrac{1}{n}} (n + k + 1)^{\dfrac{1}{n}}\Bigg) = 1                                                                       \\
+             & \lim_{n \to \infty} \bigg(\dfrac{(n + k)!}{n!}\bigg)^{\dfrac{1}{n}} = 1                                                                        &  & \byIH \\
+    \implies & \Bigg(\lim_{n \to \infty} \bigg(\dfrac{(n + k)!}{n!}\bigg)^{\dfrac{1}{n}}\Bigg) \bigg(\lim_{n \to \infty} (n + k + 1)^{\dfrac{1}{n}}\bigg) = 1            \\
+    \implies & \lim_{n \to \infty} \Bigg(\bigg(\dfrac{(n + k)!}{n!}\bigg)^{\dfrac{1}{n}} (n + k + 1)^{\dfrac{1}{n}}\Bigg) = 1                                            \\
     \implies & \lim_{n \to \infty} \bigg(\dfrac{(n + k + 1)!}{n!}\bigg)^{\dfrac{1}{n}} = 1.
   \end{align*}
   This closes the induction.
@@ -179,7 +179,7 @@
 \begin{proof}
   We have
   \begin{align*}
-    \forall k \in \N, f^{(k)}(a) & = \sum_{n = 0}^\infty c_{n + k} \dfrac{(n + k)!}{n!} (a - a)^n &           & \text{(by \cref{4.2.6})} \\
+    \forall k \in \N, f^{(k)}(a) & = \sum_{n = 0}^\infty c_{n + k} \dfrac{(n + k)!}{n!} (a - a)^n &           & \by{4.2.6} \\
                                  & = c_k k!                                                       & (0^0 = 1)
   \end{align*}
   and thus
@@ -263,12 +263,12 @@
   \]
   By induction hypothesis we know that
   \begin{align*}
-             & \dfrac{f'(x)}{n + 1} = c (x - a)^n                                                                                                     \\
-    \implies & \forall 0 \leq k \leq n, \bigg(\dfrac{f'(x)}{n + 1}\bigg)^{(k)} = c \dfrac{n!}{(n - k)!} (x - a)^{n - k}                               \\
-    \implies & \forall 0 \leq k \leq n, \big(f'(x)\big)^{(k)} = c \dfrac{(n + 1)!}{(n - k)!} (x - a)^{n - k}                                          \\
-    \implies & \forall 0 \leq k \leq n, f(x)^{(k + 1)} = c \dfrac{(n + 1)!}{(n - k)!} (x - a)^{n - k}                   &  & \text{(by \cref{4.2.4})} \\
-    \implies & \forall 1 \leq k \leq n + 1,                                                                                                           \\
-             & f(x)^{\big((k - 1) + 1\big)} = c \dfrac{(n + 1)!}{\big(n - (k - 1)\big)!} (x - a)^{n - (k - 1)}                                        \\
+             & \dfrac{f'(x)}{n + 1} = c (x - a)^n                                                                                       \\
+    \implies & \forall 0 \leq k \leq n, \bigg(\dfrac{f'(x)}{n + 1}\bigg)^{(k)} = c \dfrac{n!}{(n - k)!} (x - a)^{n - k}                 \\
+    \implies & \forall 0 \leq k \leq n, \big(f'(x)\big)^{(k)} = c \dfrac{(n + 1)!}{(n - k)!} (x - a)^{n - k}                            \\
+    \implies & \forall 0 \leq k \leq n, f(x)^{(k + 1)} = c \dfrac{(n + 1)!}{(n - k)!} (x - a)^{n - k}                   &  & \by{4.2.4} \\
+    \implies & \forall 1 \leq k \leq n + 1,                                                                                             \\
+             & f(x)^{\big((k - 1) + 1\big)} = c \dfrac{(n + 1)!}{\big(n - (k - 1)\big)!} (x - a)^{n - (k - 1)}                          \\
     \implies & \forall 1 \leq k \leq n + 1, f(x)^{(k)} = c \dfrac{(n + 1)!}{(n + 1 - k)!} (x - a)^{n + 1 - k}
   \end{align*}
   and we know that
@@ -570,7 +570,7 @@
   and
   \begin{align*}
              & \forall x \in (a, a + r) \setminus (a, a + r - \varepsilon),                                                                               \\
-             & r - \varepsilon < x - a < r \leq \dfrac{1}{\limsup_{n \to \infty} \abs{c_n}^{\dfrac{1}{n}}} &  & \text{(by \cref{4.2.1})}                  \\
+             & r - \varepsilon < x - a < r \leq \dfrac{1}{\limsup_{n \to \infty} \abs{c_n}^{\dfrac{1}{n}}} &  & \by{4.2.1}                                \\
     \implies & \forall x \in (a, a + r) \setminus (a, a + r - \varepsilon),                                                                               \\
              & \sum_{n = 0}^\infty c_n (x - a)^n \text{ is absolutely convergent}                          &  & \text{(by \cref{4.1.6}(b))}               \\
     \implies & \forall x \in (a, a + r) \setminus (a, a + r - \varepsilon),                                                                               \\
@@ -624,7 +624,7 @@
   Since
   \begin{align*}
      & \forall m \in \N, \dfrac{r - \varepsilon}{(r - \varepsilon - \abs{b - a})^{m + 1}}                                                       \\
-     & = \sum_{n = m}^\infty \dfrac{n!}{m! (n - m)!} \abs{b - a}^{n - m} (r - \varepsilon)^{-n}                &  & \text{(by \cref{4.2.7})}    \\
+     & = \sum_{n = m}^\infty \dfrac{n!}{m! (n - m)!} \abs{b - a}^{n - m} (r - \varepsilon)^{-n}                &  & \by{4.2.7}                  \\
      & = \dfrac{1}{C} \sum_{n = m}^\infty \dfrac{n!}{m! (n - m)!} \abs{b - a}^{n - m} C (r - \varepsilon)^{-n}                                  \\
      & \geq \dfrac{1}{C} \sum_{n = m}^\infty \dfrac{n!}{m! (n - m)!} \abs{b - a}^{n - m} \abs{c_n}                                              \\
      & \geq \dfrac{1}{C} \sum_{n = m}^\infty \dfrac{n!}{m! (n - m)!} (b - a)^{n - m} c_n                       &  & \text{(by comparison test)} \\
@@ -661,7 +661,7 @@
                                 & \leq C \sum_{n = m}^\infty \abs{\dfrac{n!}{m! (n - m)!} (b - a)^{n - m} (r - \varepsilon)^{-n}}                                  \\
                                 & = C \sum_{n = m}^\infty \dfrac{n!}{m! (n - m)!} \abs{b - a}^{n - m} (r - \varepsilon)^{-n}                                       \\
                                 & \leq C \sum_{n = m}^\infty \dfrac{n!}{m! (n - m)!} (r - s)^{n - m} (r - \varepsilon)^{-n}                                        \\
-                                & = C \dfrac{r - \varepsilon}{\big((r - \varepsilon) - (r - s)\big)^{m + 1}}                      &  & \text{(by \cref{4.2.7})}    \\
+                                & = C \dfrac{r - \varepsilon}{\big((r - \varepsilon) - (r - s)\big)^{m + 1}}                      &  & \by{4.2.7}                  \\
                                 & = C \dfrac{r - \varepsilon}{(s - \varepsilon)^{m + 1}}                                                                           \\
                                 & = C \dfrac{r - \varepsilon}{s - \varepsilon} (s - \varepsilon)^{-m}.
   \end{align*}
