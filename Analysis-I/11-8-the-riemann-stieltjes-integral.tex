@@ -138,9 +138,9 @@
           \[
             \alpha[\emptyset] \coloneqq 0.
           \]
-    \item If \(I\) is a point of the form \(\{a\}\) for some real number \(a\), we set
+    \item If \(I\) is a point of the form \(\set{a}\) for some real number \(a\), we set
           \[
-            \alpha\big[\{a\}\big] \coloneqq \lim_{x \to a^+ ; x \in X} \alpha(x) - \lim_{x \to a^- ; x \in X} \alpha(x),
+            \alpha\big[\set{a}\big] \coloneqq \lim_{x \to a^+ ; x \in X} \alpha(x) - \lim_{x \to a^- ; x \in X} \alpha(x),
           \]
           with the convention that \(\lim_{x \to a^+ ; x \in X} \alpha(x)\) (resp. \(\lim_{x \to a^- ; x \in X} \alpha(x)\)) is \(\alpha(a)\) when \(a\) is the right (resp. left) endpoint of \(X\).
     \item If \(I\) is an interval of the form \((a, b)\) for some real numbers \(b > a\), set
@@ -150,9 +150,9 @@
     \item If \(I\) is an interval of the form \([a, b)\), \((a, b]\), or \([a, b]\) for some real numbers \(b > a\), then we set
           \[
             \alpha[I] = \begin{dcases}
-              \alpha\big[\{a\}\big] + \alpha\big[(a, b)\big]                         & \text{if } I = [a, b) \\
-              \alpha\big[(a, b)\big] + \alpha\big[\{b\}\big]                         & \text{if } I = (a, b] \\
-              \alpha\big[\{a\}\big] + \alpha\big[(a, b)\big] + \alpha\big[\{b\}\big] & \text{if } I = [a, b]
+              \alpha\big[\set{a}\big] + \alpha\big[(a, b)\big]                           & \text{if } I = [a, b) \\
+              \alpha\big[(a, b)\big] + \alpha\big[\set{b}\big]                           & \text{if } I = (a, b] \\
+              \alpha\big[\set{a}\big] + \alpha\big[(a, b)\big] + \alpha\big[\set{b}\big] & \text{if } I = [a, b]
             \end{dcases}
           \]
   \end{itemize}
@@ -187,53 +187,53 @@
   The base case \(P(0)\) is trivial;
   the only way that \(I\) can be partitioned into an empty partition is if \(I\) is itself empty, so by \cref{11.8.1} \(\alpha[I] = 0\).
   The case \(P(1)\) is also very easy;
-  the only way that \(I\) can be partitioned into a singleton set \(\{J\}\) is if \(J = I\), at which point the claim is again very easy.
+  the only way that \(I\) can be partitioned into a singleton set \(\set{J}\) is if \(J = I\), at which point the claim is again very easy.
 
   Now suppose inductively that \(P(n)\) is true for some \(n \geq 1\), and now we prove \(P(n + 1)\).
   Let \(I\) be a bounded interval, and let \(\mathbf{P}\) be a partition of \(I\) of cardinality \(n + 1\).
 
   If \(I\) is the empty set or a point, then all the intervals in \(\mathbf{P}\) must also be either the empty set or a point, and by \cref{11.8.1} every interval either has \(\alpha\)-length zero or
   \[
-    \alpha[\{a\}] = \lim_{x \to a^+ ; x \in X} \alpha(x) - \lim_{x \to a^- ; x \in X} \alpha(x),
+    \alpha[\set{a}] = \lim_{x \to a^+ ; x \in X} \alpha(x) - \lim_{x \to a^- ; x \in X} \alpha(x),
   \]
   and the claim is trivial.
   Thus we will assume that \(I\) is an interval of the form \((a, b)\), \((a, b]\), \([a, b)\), or \([a, b]\).
 
       Let us first suppose that \(b \in I\), i.e., \(I\) is either \((a, b]\) or \([a, b]\).
   Since \(b \in I\), we know that one of the intervals \(K\) in \(\mathbf{P}\) contains \(b\).
-  Since \(K\) is contained in \(I\), it must therefore be of the form \((c, b]\), \([c, b]\), or \(\{b\}\) for some real number \(c\), with \(a \leq c \leq b\) (in the latter case of \(K = \{b\}\), we set \(c \coloneqq b\)).
+  Since \(K\) is contained in \(I\), it must therefore be of the form \((c, b]\), \([c, b]\), or \(\set{b}\) for some real number \(c\), with \(a \leq c \leq b\) (in the latter case of \(K = \set{b}\), we set \(c \coloneqq b\)).
   In particular, this means that the set \(I \setminus K\) is also an interval of the form \([a, c]\), \((a, c)\), \((a, c]\), \([a, c)\) when \(c > a\), or a point or empty set when \(a = c\).
   Either way, by \cref{11.8.1} we see that
   \begin{align*}
-    \alpha\big[(a, b]\big] & = \alpha\big[(a, b)\big] + \alpha\big[\{b\}\big]                                                            \\
-                           & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) + \alpha\big[\{b\}\big]       \\
-                           & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to c^+ ; x \in X} \alpha(x)                               \\
-                           & \quad + \lim_{x \to c^+ ; x \in X} \alpha(x) - \lim_{x \to c^- ; x \in X} \alpha(x)                         \\
-                           & \quad + \lim_{x \to c^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) + \alpha\big[\{b\}\big] \\
-                           & = \alpha\big[(c, b)\big] + \alpha\big[\{c\}\big] + \alpha\big[(a, c)\big] + \alpha\big[\{b\}\big]           \\
+    \alpha\big[(a, b]\big] & = \alpha\big[(a, b)\big] + \alpha\big[\set{b}\big]                                                            \\
+                           & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) + \alpha\big[\set{b}\big]       \\
+                           & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to c^+ ; x \in X} \alpha(x)                                 \\
+                           & \quad + \lim_{x \to c^+ ; x \in X} \alpha(x) - \lim_{x \to c^- ; x \in X} \alpha(x)                           \\
+                           & \quad + \lim_{x \to c^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) + \alpha\big[\set{b}\big] \\
+                           & = \alpha\big[(c, b)\big] + \alpha\big[\set{c}\big] + \alpha\big[(a, c)\big] + \alpha\big[\set{b}\big]         \\
                            & = \begin{dcases}
                                  \alpha\big[(a, c)\big] + \alpha\big[[c, b]\big] \\
                                  \alpha\big[(a, c]\big] + \alpha\big[(c, b]\big]
-                               \end{dcases}                           \\
+                               \end{dcases}                             \\
                            & = \alpha[K] + \alpha[I \setminus K]
   \end{align*}
   and
   \begin{align*}
-    \alpha\big[[a, b]\big] & = \alpha\big[\{a\}\big] + \alpha\big[(a, b]\big]                                                          \\
+    \alpha\big[[a, b]\big] & = \alpha\big[\set{a}\big] + \alpha\big[(a, b]\big]                                                                         \\
                            & = \begin{dcases}
-                                 \alpha\big[\{a\}\big] + \alpha\big[(a, c)\big] + \alpha\big[[c, b]\big] \\
-                                 \alpha\big[\{a\}\big] + \alpha\big[(a, c]\big] + \alpha\big[(c, b]\big]
+                                 \alpha\big[\set{a}\big] + \alpha\big[(a, c)\big] + \alpha\big[[c, b]\big] \\
+                                 \alpha\big[\set{a}\big] + \alpha\big[(a, c]\big] + \alpha\big[(c, b]\big]
                                \end{dcases} \\
                            & = \begin{dcases}
                                  \alpha\big[[a, c)\big] + \alpha\big[[c, b]\big] \\
                                    \alpha\big[[a, c]\big] + \alpha\big[(c, b]\big]
-                               \end{dcases}                        \\
+                               \end{dcases}                                         \\
                            & = \alpha[K] + \alpha[I \setminus K].
   \end{align*}
-  On the other hand, since \(\mathbf{P}\) forms a partition of \(I\), we see that \(\mathbf{P} \setminus \{K\}\) forms a partition of \(I \setminus K\).
+  On the other hand, since \(\mathbf{P}\) forms a partition of \(I\), we see that \(\mathbf{P} \setminus \set{K}\) forms a partition of \(I \setminus K\).
   By the induction hypothesis, we thus have
   \[
-    \alpha[I \setminus K] = \sum_{J \in \mathbf{P} \setminus \{K\}} \alpha[J].
+    \alpha[I \setminus K] = \sum_{J \in \mathbf{P} \setminus \set{K}} \alpha[J].
   \]
   Combining these two identities (and using the laws of addition for finite sets, see \cref{7.1.11}(e)) we obtain
   \[
@@ -250,7 +250,7 @@
                            & = \lim_{x \to b^- ; x \in X} \alpha(x) - \lim_{x \to c^+ ; x \in X} \alpha(x)       \\
                            & \quad + \lim_{x \to c^+ ; x \in X} \alpha(x) - \lim_{x \to c^- ; x \in X} \alpha(x) \\
                            & \quad + \lim_{x \to c^- ; x \in X} \alpha(x) - \lim_{x \to a^+ ; x \in X} \alpha(x) \\
-                           & = \alpha\big[(c, b)\big] + \alpha\big[\{c\}\big] + \alpha\big[(a, c)\big]           \\
+                           & = \alpha\big[(c, b)\big] + \alpha\big[\set{c}\big] + \alpha\big[(a, c)\big]         \\
                            & = \begin{dcases}
                                  \alpha\big[(a, c)\big] + \alpha\big[[c, b)\big] \\
                                    \alpha\big[(a, c]\big] + \alpha\big[(c, b)\big]
@@ -259,15 +259,15 @@
   \end{align*}
   and
   \begin{align*}
-    \alpha\big[[a, b)\big] & = \alpha\big[\{a\}\big] + \alpha\big[(a, b)\big]                                                      \\
+    \alpha\big[[a, b)\big] & = \alpha\big[\set{a}\big] + \alpha\big[(a, b)\big]                                                                     \\
                            & = \begin{dcases}
-                                 \alpha\big[\{a\}\big] + \alpha\big[(a, c)\big] + \alpha\big[[c, b)\big] \\
-                                   \alpha\big[\{a\}\big] + \alpha\big[(a, c]\big] + \alpha\big[(c, b)\big]
+                                 \alpha\big[\set{a}\big] + \alpha\big[(a, c)\big] + \alpha\big[[c, b)\big] \\
+                                   \alpha\big[\set{a}\big] + \alpha\big[(a, c]\big] + \alpha\big[(c, b)\big]
                                \end{dcases} \\
                            & = \begin{dcases}
                                  \alpha\big[[a, c)\big] + \alpha\big[[c, b)\big] \\
                                  \alpha\big[[a, c]\big] + \alpha\big[(c, b)\big]
-                               \end{dcases}                     \\
+                               \end{dcases}                                      \\
                            & = \alpha[K] + \alpha[I \setminus K].
   \end{align*}
   The rest of the argument then proceeds as above.
@@ -332,7 +332,7 @@
   \]
   For each \(K \in \mathbf{P}\), let \(\mathbf{P}_K\) be the set
   \[
-    \mathbf{P}_K = \{S \in \mathbf{P} \# \mathbf{P}' : S \subseteq K\}.
+    \mathbf{P}_K = \set{S \in \mathbf{P} \# \mathbf{P}' : S \subseteq K}.
   \]
   Since \(\mathbf{P} \# \mathbf{P}'\) is finer than \(\mathbf{P}\), by \cref{ac:11.1.4} we know that \(\mathbf{P}_K\) is a partition of \(K\), and \(\bigcup_{K \in \mathbf{P}} \mathbf{P}_K = \mathbf{P} \# \mathbf{P}'\).
   Since \(f\) is piecewise constant with respect to \(\mathbf{P}\), by \cref{11.2.7} we know that \(f\) is piecewise constant with respect to \(\mathbf{P} \# \mathbf{P}'\).
@@ -373,20 +373,20 @@
   \begin{itemize}
     \item \(I = \emptyset\).
           Then by \cref{11.8.1} we have \(\alpha[\emptyset] = 0\).
-    \item \(I = \{x_0\}\) for some \(x_0 \in \R\).
+    \item \(I = \set{x_0}\) for some \(x_0 \in \R\).
           If \(\alpha\) is monotone increasing, then we have
           \begin{align*}
-            \alpha\big[\{x_0\}\big] & = \lim_{x \to x_0^+} \alpha(x) - \lim_{x \to x_0^-} \alpha(x)                      &  & \by{11.8.1}                                      \\
-                                    & = \inf_{x \in X \cap (x_0, \infty)} f(x) - \sup_{x \in X \cap (-\infty, x_0)} f(x) &  & \by{ac:11.8.1}                                   \\
-                                    & \geq f(x_0) - f(x_0)                                                               &  & \text{(since \(\alpha\) is monotone increasing)} \\
-                                    & = 0.
+            \alpha\big[\set{x_0}\big] & = \lim_{x \to x_0^+} \alpha(x) - \lim_{x \to x_0^-} \alpha(x)                      &  & \by{11.8.1}                                      \\
+                                      & = \inf_{x \in X \cap (x_0, \infty)} f(x) - \sup_{x \in X \cap (-\infty, x_0)} f(x) &  & \by{ac:11.8.1}                                   \\
+                                      & \geq f(x_0) - f(x_0)                                                               &  & \text{(since \(\alpha\) is monotone increasing)} \\
+                                      & = 0.
           \end{align*}
           If \(\alpha\) is monotone decreasing, then we have
           \begin{align*}
-            \alpha\big[\{x_0\}\big] & = \lim_{x \to x_0^+} \alpha(x) - \lim_{x \to x_0^-} \alpha(x)                      &  & \by{11.8.1}                                      \\
-                                    & = \sup_{x \in X \cap (x_0, \infty)} f(x) - \inf_{x \in X \cap (-\infty, x_0)} f(x) &  & \by{ac:11.8.2}                                   \\
-                                    & \leq f(x_0) - f(x_0)                                                               &  & \text{(since \(\alpha\) is monotone decreasing)} \\
-                                    & = 0.
+            \alpha\big[\set{x_0}\big] & = \lim_{x \to x_0^+} \alpha(x) - \lim_{x \to x_0^-} \alpha(x)                      &  & \by{11.8.1}                                      \\
+                                      & = \sup_{x \in X \cap (x_0, \infty)} f(x) - \inf_{x \in X \cap (-\infty, x_0)} f(x) &  & \by{ac:11.8.2}                                   \\
+                                      & \leq f(x_0) - f(x_0)                                                               &  & \text{(since \(\alpha\) is monotone decreasing)} \\
+                                      & = 0.
           \end{align*}
     \item \(I = (a, b)\) for some \(a, b \in \R\) and \(a < b\).
           If \(\alpha\) is monotone increasing, then we have
@@ -408,15 +408,15 @@
     \item \(I\) is one of \([a, b), (a, b], [a, b]\).
           If \(\alpha\) is monotone increasing, then from the proof above we have
           \begin{align*}
-            \alpha\big[[a, b)\big] & = \alpha\big[\{a\}\big] + \alpha\big[(a, b)\big] \geq 0 \\
-            \alpha\big[(a, b]\big] & = \alpha\big[(a, b)\big] + \alpha\big[\{b\}\big] \geq 0 \\
-            \alpha\big[[a, b]\big] & = \alpha\big[\{a\}\big] + \alpha\big[(a, b]\big] \geq 0
+            \alpha\big[[a, b)\big] & = \alpha\big[\set{a}\big] + \alpha\big[(a, b)\big] \geq 0 \\
+            \alpha\big[(a, b]\big] & = \alpha\big[(a, b)\big] + \alpha\big[\set{b}\big] \geq 0 \\
+            \alpha\big[[a, b]\big] & = \alpha\big[\set{a}\big] + \alpha\big[(a, b]\big] \geq 0
           \end{align*}
           If \(\alpha\) is monotone decreasing, then from the proof above we have
           \begin{align*}
-            \alpha\big[[a, b)\big] & = \alpha\big[\{a\}\big] + \alpha\big[(a, b)\big] \leq 0 \\
-            \alpha\big[(a, b]\big] & = \alpha\big[(a, b)\big] + \alpha\big[\{b\}\big] \leq 0 \\
-            \alpha\big[[a, b]\big] & = \alpha\big[\{a\}\big] + \alpha\big[(a, b]\big] \leq 0
+            \alpha\big[[a, b)\big] & = \alpha\big[\set{a}\big] + \alpha\big[(a, b)\big] \leq 0 \\
+            \alpha\big[(a, b]\big] & = \alpha\big[(a, b)\big] + \alpha\big[\set{b}\big] \leq 0 \\
+            \alpha\big[[a, b]\big] & = \alpha\big[\set{a}\big] + \alpha\big[(a, b]\big] \leq 0
           \end{align*}
   \end{itemize}
   From all cases above we conclude that \(\alpha[I] \geq 0\) if \(\alpha\) is monotone increasing and \(\alpha[I] \leq 0\) if \(\alpha\) is monotone decreasing.
@@ -439,7 +439,7 @@
             \end{dcases}
           \]
           Then \(F\) is piecewise constant on \(J\), and \(p.c. \int_J F \; d \alpha = p.c. \int_I f \; d \alpha\).
-    \item Suppose that \(\{J, K\}\) is a partition of \(I\) into two intervals \(J\) and \(K\).
+    \item Suppose that \(\set{J, K}\) is a partition of \(I\) into two intervals \(J\) and \(K\).
           Then the function \(f|_J : J \to \R\) and \(f|_K : K \to \R\) are piecewise constant on \(J\) and \(K\) respectively, and we have
           \[
             p.c. \int_I f \; d \alpha = p.c. \int_J f|_J \; d \alpha + p.c. \int_K f|_K \; d \alpha.
@@ -526,7 +526,7 @@
 \end{proof}
 
 \begin{proof}{(g)}
-  If \(I = \emptyset\), then by \cref{11.2.3} \(F\) is piecewise constant with respect to \(\{J\}\), and by \cref{ac:11.8.7}(f) we have
+  If \(I = \emptyset\), then by \cref{11.2.3} \(F\) is piecewise constant with respect to \(\set{J}\), and by \cref{ac:11.8.7}(f) we have
   \[
     p.c. \int_J F \; d \alpha = 0 \alpha[J] = 0 = p.c \int_I f \; d \alpha.
   \]
@@ -534,13 +534,13 @@
   By \cref{11.2.3}, \(f\) is piecewise constant with respect to \(\mathbf{P}\) for some partition \(\mathbf{P}\) of \(I\).
   Let \(I_1, I_2\) be the sets
   \[
-    I_1 = \Big\{x \in J, \big(x \leq \inf(I)\big) \land (x \notin I)\Big\}
+    I_1 = \set{x \in J, \big(x \leq \inf(I)\big) \land (x \notin I)}
   \]
   and
   \[
-    I_2 = \Big\{x \in J, \big(x \geq \sup(I)\big) \land (x \notin I)\Big\}.
+    I_2 = \set{x \in J, \big(x \geq \sup(I)\big) \land (x \notin I)}.
   \]
-  By \cref{ac:11.1.5} we know that \(\mathbf{P} \cup \{I_1, I_2\}\) is a partition of \(J\).
+  By \cref{ac:11.1.5} we know that \(\mathbf{P} \cup \set{I_1, I_2}\) is a partition of \(J\).
   By hypothesis we know that
   \[
     \forall x \in J, F(x) = \begin{dcases}
@@ -549,10 +549,10 @@
     \end{dcases}
   \]
   Thus by \cref{11.2.5} \(F\) is piecewise constant on \(J\).
-  For each \(K \in \mathbf{P} \cup \{I_1, I_2\}\), we define \(c_K \in \R\) to be the constant value of \(F|_K\).
+  For each \(K \in \mathbf{P} \cup \set{I_1, I_2}\), we define \(c_K \in \R\) to be the constant value of \(F|_K\).
   Then we have
   \begin{align*}
-    p.c. \int_J F \; d \alpha & = p.c. \int_{[\mathbf{P} \cup \{I_1, I_2\}]} F \; d \alpha                          &  & \by{ac:11.8.5}               \\
+    p.c. \int_J F \; d \alpha & = p.c. \int_{[\mathbf{P} \cup \set{I_1, I_2}]} F \; d \alpha                        &  & \by{ac:11.8.5}               \\
                               & = \sum_{K \in \mathbf{P}} c_K \alpha[K]                                             &  & \by{11.8.5}                  \\
                               & = c_{I_1} \alpha[I_1] + \sum_{K \in \mathbf{P}} c_K \alpha[K] + c_{I_2} \alpha[I_2] &  & \text{(by \cref{7.1.11}(e))} \\
                               & = 0 \alpha[I_1] + \sum_{K \in \mathbf{P}} c_K \alpha[K] + 0 \alpha[I_2]             &  & \text{(by hypothesis)}       \\
@@ -563,15 +563,15 @@
 \end{proof}
 
 \begin{proof}{(h)}
-  Let \(\mathbf{P} = \{J, K\}\).
+  Let \(\mathbf{P} = \set{J, K}\).
   By \cref{11.2.3} \(f\) is piecewise constant with respect to \(\mathbf{P}'\) for some partition \(\mathbf{P}'\) of \(I\).
   Now we define \(\mathbf{P}_J\) as
   \[
-    \mathbf{P}_J = \{S \in \mathbf{P} \# \mathbf{P}' : S \subseteq J\}
+    \mathbf{P}_J = \set{S \in \mathbf{P} \# \mathbf{P}' : S \subseteq J}
   \]
   and define \(\mathbf{P}_K\) as
   \[
-    \mathbf{P}_K = \{S \in \mathbf{P} \# \mathbf{P}' : S \subseteq K\}.
+    \mathbf{P}_K = \set{S \in \mathbf{P} \# \mathbf{P}' : S \subseteq K}.
   \]
   By \cref{11.1.8} we know that \(\mathbf{P} \# \mathbf{P}'\) is a partition of \(I\) and is finer than \(\mathbf{P}\).
   Since \(\mathbf{P} \# \mathbf{P}'\) is finer than \(\mathbf{P}\), by \cref{ac:11.1.4} we know that \(\mathbf{P}_J, \mathbf{P}_K\) are partitions of \(J, K\), respectively.
@@ -596,11 +596,11 @@
   Let \(I\) be a bounded interval, let \(\alpha : X \to \R\) be a monotone increasing function defined on some interval \(X\) which contains \(I\), and let \(f : I \to \R\) be a bounded function.
   We define the \emph{upper Riemann-Stieltjes integral} \(\overline{\int}_I f \; d \alpha\) by the formula
   \[
-    \overline{\int}_I f \; d \alpha \coloneqq \inf\bigg\{p.c. \int_I g \; d \alpha : g \text{ is a p.c. function on \(I\) which majorizes } f\bigg\}
+    \overline{\int}_I f \; d \alpha \coloneqq \inf\set{p.c. \int_I g \; d \alpha : g \text{ is a p.c. function on \(I\) which majorizes } f}
   \]
   and the \emph{lower Riemann-Stieltjes integral} \(\underline{\int}_I f \; d \alpha\) by the formula
   \[
-    \underline{\int}_I f \; d \alpha \coloneqq \sup\bigg\{p.c. \int_I g \; d \alpha : g \text{ is a p.c. function on \(I\) which minorizes } f\bigg\}.
+    \underline{\int}_I f \; d \alpha \coloneqq \sup\set{p.c. \int_I g \; d \alpha : g \text{ is a p.c. function on \(I\) which minorizes } f}.
   \]
   If \(\underline{\int}_I f \; d \alpha = \overline{\int}_I f \; d \alpha\), then we say that \(f\) is \emph{Riemann-Stieltjes integrable on \(I\) with respect to \(\alpha\)} and define
   \[
@@ -663,7 +663,7 @@
     \item If \(f(x) \geq 0\) for all \(x \in I\), then \(\int_I f \; d \alpha \geq 0\).
     \item If \(f(x) \geq g(x)\) for all \(x \in I\), then \(\int_I f \; d \alpha \geq \int_I g \; d \alpha\).
     \item If \(f\) is the constant function \(f(x) = c\) for all \(x \in I\), then \(\int_I f \; d \alpha = c \alpha[I]\).
-    \item Suppose that \(\{J, K\}\) is a partition of \(I\) into two intervals \(J\) and \(K\).
+    \item Suppose that \(\set{J, K}\) is a partition of \(I\) into two intervals \(J\) and \(K\).
           Then the functions \(f|_J : J \to \R\) and \(f|_K : K \to \R\) are Riemann-Stieltjes integrable on \(J\) and \(K\) respectively, and we have
           \[
             \int_I f \; d \alpha = \int_J f|_J \; d \alpha + \int_K f|_K \; d \alpha.
@@ -951,11 +951,11 @@
   Let \(f : I \to \R\) be a bounded function.
   Then
   \[
-    \overline{\int}_I f \; d \alpha = \inf\{U(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\}
+    \overline{\int}_I f \; d \alpha = \inf\set{U(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I}
   \]
   and
   \[
-    \underline{\int}_I f \; d \alpha = \sup\{L(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\}.
+    \underline{\int}_I f \; d \alpha = \sup\set{L(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I}.
   \]
 \end{ac}
 
@@ -965,19 +965,19 @@
   Both functions are well defined since \(f\) is bounded function on a bounded interval \(I\).
   By \cref{ac:11.8.13} we have
   \[
-    \inf\big\{U(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\big\} \leq U(f, \alpha, \mathbf{P}_g) \leq p.c. \int_I g \; d \alpha
+    \inf\set{U(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I} \leq U(f, \alpha, \mathbf{P}_g) \leq p.c. \int_I g \; d \alpha
   \]
   and
   \[
-    \sup\big\{L(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\big\} \geq L(f, \alpha, \mathbf{P}_h) \geq p.c. \int_I h \; d \alpha.
+    \sup\set{L(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I} \geq L(f, \alpha, \mathbf{P}_h) \geq p.c. \int_I h \; d \alpha.
   \]
   Since \(g, h\) are arbitrary, by \cref{ac:11.8.8} we have
   \[
-    \inf\big\{U(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\big\} \leq \overline{\int}_I f \; d \alpha
+    \inf\set{U(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I} \leq \overline{\int}_I f \; d \alpha
   \]
   and
   \[
-    \sup\big\{L(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\big\} \geq \underline{\int}_I f \; d \alpha.
+    \sup\set{L(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I} \geq \underline{\int}_I f \; d \alpha.
   \]
 
   Let \(\mathbf{P}\) be a partition of \(I\).
@@ -1008,19 +1008,19 @@
   \]
   Since \(\mathbf{P}\) is arbitrary, we have
   \[
-    \overline{\int}_I f \; d \alpha \leq \inf\big\{U(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\big\} \leq U(f, \alpha, \mathbf{P})
+    \overline{\int}_I f \; d \alpha \leq \inf\set{U(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I} \leq U(f, \alpha, \mathbf{P})
   \]
   and
   \[
-    \underline{\int}_I f \; d \alpha \geq \sup\big\{L(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\big\} \leq L(f, \alpha, \mathbf{P}).
+    \underline{\int}_I f \; d \alpha \geq \sup\set{L(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I} \leq L(f, \alpha, \mathbf{P}).
   \]
   Combine all results above we have
   \[
-    \overline{\int}_I f \; d \alpha = \inf\big\{U(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\big\}
+    \overline{\int}_I f \; d \alpha = \inf\set{U(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I}
   \]
   and
   \[
-    \underline{\int}_I f \; d \alpha = \sup\big\{L(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I\big\}.
+    \underline{\int}_I f \; d \alpha = \sup\set{L(f, \alpha, \mathbf{P}) : \mathbf{P} \text{ is a partition of } I}.
   \]
 \end{proof}
 

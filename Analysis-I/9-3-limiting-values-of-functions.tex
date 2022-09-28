@@ -8,7 +8,7 @@
 \setcounter{thm}{2}
 \begin{defn}[Local \(\varepsilon\)-closeness]\label{9.3.3}
   Let \(X\) be a subset of \(\R\), let \(f : X \to \R\) be a function, let \(L\) be a real number, \(x_0\) be an adherent point of \(X\), and \(\varepsilon > 0\) be a real number.
-  We say that \(f\) is \emph{\(\varepsilon\)-close to \(L\) near \(x_0\)} iff there exists a \(\delta > 0\) such that \(f\) becomes \(\varepsilon\)-close to \(L\) when restricted to the set \(\{x \in X : \abs{x - x_0} < \delta\}\).
+  We say that \(f\) is \emph{\(\varepsilon\)-close to \(L\) near \(x_0\)} iff there exists a \(\delta > 0\) such that \(f\) becomes \(\varepsilon\)-close to \(L\) when restricted to the set \(\set{x \in X : \abs{x - x_0} < \delta}\).
 \end{defn}
 
 \setcounter{thm}{5}
@@ -25,8 +25,8 @@
 \begin{rmk}\label{9.3.7}
   In many cases we will omit the set \(E\) from the above notation (i.e., we will just say that \(f\) converges to \(L\) at \(x_0\), or that \(\lim_{x \to x_0} f(x) = L\)), although this is slightly dangerous.
   For instance, it sometimes makes a difference whether \(E\) actually contains \(x_0\) or not.
-  To give an example, if \(f : \R \to \R\) is the function defined by setting \(f(x) = 1\) when \(x = 0\) and \(f(x) = 0\) when \(x \neq 0\), then one has \(\lim_{x \to 0 ; x \in \R \setminus \{0\}} f(x) = 0\), but \(\lim_{x \to 0 ; x \in \R} f(x)\) is undefined.
-  Some authors only define the limit \(\lim_{x \to x_0 ; x \in E} f(x)\) when \(E\) does not contain \(x_0\) (so that \(x_0\) is now a limit point of \(E\) rather than an adherent point), or would use \(\lim_{x \to x_0 ; x \in E} f(x)\) to denote what we would call \(\lim_{x \to x_0 ; x \in E \setminus \{x_0\}} f(x)\), but we have chosen a slightly more general notation, which allows the possibility that \(E\) contains \(x_0\).
+  To give an example, if \(f : \R \to \R\) is the function defined by setting \(f(x) = 1\) when \(x = 0\) and \(f(x) = 0\) when \(x \neq 0\), then one has \(\lim_{x \to 0 ; x \in \R \setminus \set{0}} f(x) = 0\), but \(\lim_{x \to 0 ; x \in \R} f(x)\) is undefined.
+  Some authors only define the limit \(\lim_{x \to x_0 ; x \in E} f(x)\) when \(E\) does not contain \(x_0\) (so that \(x_0\) is now a limit point of \(E\) rather than an adherent point), or would use \(\lim_{x \to x_0 ; x \in E} f(x)\) to denote what we would call \(\lim_{x \to x_0 ; x \in E \setminus \set{x_0}} f(x)\), but we have chosen a slightly more general notation, which allows the possibility that \(E\) contains \(x_0\).
 \end{rmk}
 
 \setcounter{thm}{8}
@@ -216,10 +216,10 @@
       0 & \text{if } x \neq 0.
     \end{dcases}
   \]
-  Then \(\lim_{x \to 0 ; x \in \R \setminus \{0\}} f(x) = 0\), but \(\lim_{x \to 0 ; x \in \R} f(x)\) is undefined.
+  Then \(\lim_{x \to 0 ; x \in \R \setminus \set{0}} f(x) = 0\), but \(\lim_{x \to 0 ; x \in \R} f(x)\) is undefined.
   (When this happens, we say that \(f\) has a ``removable singularity'' or ``removable discontinuity'' at \(0\).
   Because of such singularities, it is sometimes the convention when writing \(\lim_{x \to x_0} f(x)\) to automatically exclude \(x_0\) from the set;
-  for instance, in some textbook, \(\lim_{x \to x_0} f(x)\) is used as shorthand for \(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} f(x)\).)
+  for instance, in some textbook, \(\lim_{x \to x_0} f(x)\) is used as shorthand for \(\lim_{x \to x_0 ; x \in X \setminus \set{x_0}} f(x)\).)
 \end{eg}
 
 \begin{note}
@@ -273,11 +273,11 @@
   Let \(X\) be a subset of \(\R\), let \(f : X \to \R\) be a function, let \(E\) be a subset of \(X\), and let \(x_0\) be an adherent point of \(E\).
   We define \emph{limit superior at \(x_0\) in \(E\)} as
   \[
-    \limsup_{x \to x_0 ; x \in E} f(x) = \inf\Big\{\sup\big\{f(x) : x \in E \land \abs{x - x_0} < \delta\big\} : \delta \in \R^+\Big\}
+    \limsup_{x \to x_0 ; x \in E} f(x) = \inf\set{\sup\set{f(x) : x \in E \land \abs{x - x_0} < \delta} : \delta \in \R^+}
   \]
   and define \emph{limit inferior at \(x_0\) in \(E\)} as
   \[
-    \liminf_{x \to x_0 ; x \in E} f(x) = \sup\Big\{\inf\big\{f(x) : x \in E \land \abs{x - x_0} < \delta\big\} : \delta \in \R^+\Big\}.
+    \liminf_{x \to x_0 ; x \in E} f(x) = \sup\set{\inf\set{f(x) : x \in E \land \abs{x - x_0} < \delta} : \delta \in \R^+}.
   \]
 \end{ac}
 
@@ -303,7 +303,7 @@
   The proof for limit inferior are similar.
   For each \(\delta \in \R^+\), define \(X_{\delta}\) as follow:
   \[
-    X_{\delta} = \{x \in E : \abs{x - x_0} \leq \delta\}.
+    X_{\delta} = \set{x \in E : \abs{x - x_0} \leq \delta}.
   \]
   We know \(X_{\delta} \neq \emptyset\) for each \(\delta \in \R^+\) since \(\delta \in \R^+\) and \(x_0\) is an adherent point.
   By axiom of choice (\cref{8.1}) we know that \(\prod_{n \in \N} X_{\dfrac{1}{n}} \neq \emptyset\).
@@ -315,17 +315,17 @@
     \implies & \lim_{n \to \infty} b_n - x_0 = 0                          &  & \by{6.4.17} \\
     \implies & \lim_{n \to \infty} b_n = x_0.                             &  & \by{6.1.19}
   \end{align*}
-  Let \(S_{\delta} = \{f(x) : x \in X_{\delta}\}\).
+  Let \(S_{\delta} = \set{f(x) : x \in X_{\delta}}\).
   We can rewrite limit superior as follow:
   \[
-    \limsup_{x \to x_0 ; x \in E} f(x) = \inf\{\sup(S_\delta) : \delta \in \R^+\}.
+    \limsup_{x \to x_0 ; x \in E} f(x) = \inf\set{\sup(S_\delta) : \delta \in \R^+}.
   \]
   We will use \(X_{\delta}\) and \(S_{\delta}\) throughout the proof of this corollary.
 
   We first show that statement (a) implies statement (b).
   Suppose that
   \[
-    L = \limsup_{x \to x_0 ; x \in E} f(x) = \inf\{\sup(S_\delta) : \delta \in \R^+\}.
+    L = \limsup_{x \to x_0 ; x \in E} f(x) = \inf\set{\sup(S_\delta) : \delta \in \R^+}.
   \]
   Let \((a_n)_{n = 1}^\infty\) be a sequence which consists entirely of elements of \(E\) and \(\lim_{n \to \infty} a_n = x_0\).
   Such sequence exists since \cref{9.1.14}.
@@ -339,18 +339,18 @@
     \implies & \forall \delta \in \R^+, \exists N \in \Z^+ :                                                                                    \\
              & \sup\big(f(a_n)\big)_{n = N}^\infty \leq \sup(S_{\delta})                                      &  & \by{5.5.5}                   \\
     \implies & \forall \delta \in \R^+, \limsup_{n \to \infty} f(a_n) \leq \sup(S_{\delta})                   &  & \text{(by \cref{6.4.12}(c))} \\
-    \implies & \limsup_{n \to \infty} f(a_n) \leq \inf\{\sup(S_{\delta}) : \delta \in \R^+\} = L.             &  & \by{5.5.15}
+    \implies & \limsup_{n \to \infty} f(a_n) \leq \inf\set{\sup(S_{\delta}) : \delta \in \R^+} = L.           &  & \by{5.5.15}
   \end{align*}
   For each \(n \in \Z^+\), define \(Y_n\) as follow:
   \[
-    Y_n = \{x \in X_{\dfrac{1}{n}} : L - \dfrac{1}{n} < f(x) \leq L\}.
+    Y_n = \set{x \in X_{\dfrac{1}{n}} : L - \dfrac{1}{n} < f(x) \leq L}.
   \]
   We must have \(Y_n \neq \emptyset\) for each \(n \in \N\), otherwise
   \begin{align*}
-             & Y_n = \emptyset                                                                                   \\
-    \implies & \forall x \in X_{\dfrac{1}{n}}, f(x) \leq L - \dfrac{1}{n}                                        \\
-    \implies & \sup(S_{\dfrac{1}{n}}) \leq L - \dfrac{1}{n}                                                      \\
-    \implies & L = \inf\{\sup(S_{\delta}) : \delta \in \R^+\} \leq \sup(S_{\dfrac{1}{n}}) \leq L - \dfrac{1}{n},
+             & Y_n = \emptyset                                                                                     \\
+    \implies & \forall x \in X_{\dfrac{1}{n}}, f(x) \leq L - \dfrac{1}{n}                                          \\
+    \implies & \sup(S_{\dfrac{1}{n}}) \leq L - \dfrac{1}{n}                                                        \\
+    \implies & L = \inf\set{\sup(S_{\delta}) : \delta \in \R^+} \leq \sup(S_{\dfrac{1}{n}}) \leq L - \dfrac{1}{n},
   \end{align*}
   a contradiction.
   By axiom of choice (\cref{8.1}) we know that \(\prod_{n \in \Z^+} Y_n \neq \emptyset\).
@@ -372,17 +372,17 @@
     \implies & \forall \delta \in \R^+, \exists N \in \Z^+ :                                                                                    \\
              & \sup\big(f(b_n)\big)_{n = N}^\infty \leq \sup(S_{\delta})                                      &  & \by{5.5.5}                   \\
     \implies & \forall \delta \in \R^+, L = \limsup_{n \to \infty} f(b_n) \leq \sup(S_{\delta})               &  & \text{(by \cref{6.4.12}(c))} \\
-    \implies & L \leq \inf\{\sup(S_{\delta}) : \delta \in \R^+\}.                                             &  & \by{5.5.15}
+    \implies & L \leq \inf\set{\sup(S_{\delta}) : \delta \in \R^+}.                                           &  & \by{5.5.15}
   \end{align*}
-  Suppose for sake of contradiction that \(L < \inf\{\sup(S_\delta) : \delta \in \R^+\}\).
+  Suppose for sake of contradiction that \(L < \inf\set{\sup(S_\delta) : \delta \in \R^+}\).
   Then we know that
   \[
-    \inf\{\sup(S_\delta) : \delta \in \R^+\} = L + \varepsilon
+    \inf\set{\sup(S_\delta) : \delta \in \R^+} = L + \varepsilon
   \]
   for some \(\varepsilon \in \R^+\).
   Since statement (a) implies statement (b), we know that there exist a sequence \((c_n)_{n = 1}^\infty\) in \(E\) such that \(\lim_{n \to \infty} c_n = x_0\) and \(\lim_{n \to \infty} f(c_n) = L + \varepsilon\).
   But this contradict to the hypothesis that \(\lim_{n \to \infty} f(c_n) \leq L\).
-  Thus we must have \(L = \inf\{\sup(S_{\delta}) : \delta \in \R^+\}\).
+  Thus we must have \(L = \inf\set{\sup(S_{\delta}) : \delta \in \R^+}\).
 \end{proof}
 
 \exercisesection

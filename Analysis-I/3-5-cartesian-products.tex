@@ -22,7 +22,7 @@
 \begin{defn}[Cartesian product]\label{3.5.4}
   If \(X\) and \(Y\) are sets, then we define the \emph{Cartesian product} \(X \times Y\) to be the collection of ordered pairs, whose first component lies in \(X\) and second component lies in \(Y\), thus
   \[
-    X \times Y \coloneqq \{(x, y) : x \in X, y \in Y\}
+    X \times Y \coloneqq \set{(x, y) : x \in X, y \in Y}
   \]
   or equivalently,
   \[
@@ -49,7 +49,7 @@
   Two ordered \(n\)-tuples \((x_i)_{1 \leq i \leq n}\) and \((y_i)_{1 \leq i \leq n}\) are said to be equal iff \(x_i = y_i\) for all \(1 \leq i \leq n\).
   If \((X_i)_{1 \leq i \leq n}\) is an ordered \(n\)-tuple of sets, we define their \emph{Cartesian product} \(\prod_{1 \leq i \leq n} X_i\) (also denoted \(\prod_{i=1}^n X_i\) or \(X_1 \times \dots \times X_n\)) by
   \[
-    \prod_{1 \leq i \leq n} X_i \coloneqq \{(x_i)_{1 \leq i \leq n} : x_i \in X_i \text{ for all } 1 \leq i \leq n\}.
+    \prod_{1 \leq i \leq n} X_i \coloneqq \set{(x_i)_{1 \leq i \leq n} : x_i \in X_i \text{ for all } 1 \leq i \leq n}.
   \]
 \end{defn}
 
@@ -59,7 +59,7 @@
 
 \begin{rmk}\label{3.5.8}
   One can show that \(\prod_{1 \leq i \leq n} X_i\) is indeed a set.
-  Indeed, from the power set axiom we can consider the set of all functions \(i \mapsto x_i\) from the domain \(\{1 \leq i \leq n\}\) to the range \(\bigcup_{1 \leq i \leq n} X_i\), and then we can restrict using the axiom of specification to restrict to those functions \(i \mapsto x_i\) for which \(x_i \in X_i\) for all \(1 \leq i \leq n\).
+  Indeed, from the power set axiom we can consider the set of all functions \(i \mapsto x_i\) from the domain \(\set{1 \leq i \leq n}\) to the range \(\bigcup_{1 \leq i \leq n} X_i\), and then we can restrict using the axiom of specification to restrict to those functions \(i \mapsto x_i\) for which \(x_i \in X_i\) for all \(1 \leq i \leq n\).
 \end{rmk}
 
 \begin{note}
@@ -77,13 +77,13 @@
 \begin{note}
   If \(x\) is an object, then \((x)\) is a \(1\)-tuple, which we shall identify with \(x\) itself (even though the two are, strictly speaking, not the same object).
   Then if \(X_1\) is any set, then the Cartesian product \(\prod_{1 \leq i \leq 1} X_i\) is just \(X_1\).
-  Also, the \emph{empty Cartesian product} \(\prod_{1 \leq i \leq 0} X_i\) gives, not the empty set \(\{\}\), but rather the singleton set \(\{()\}\) whose only element is the \emph{\(0\)-tuple} \(()\), also known as the \emph{empty tuple}.
+  Also, the \emph{empty Cartesian product} \(\prod_{1 \leq i \leq 0} X_i\) gives, not the empty set \(\set{}\), but rather the singleton set \(\set{()}\) whose only element is the \emph{\(0\)-tuple} \(()\), also known as the \emph{empty tuple}.
 \end{note}
 
 \begin{note}
   If \(n\) is a natural number, we often write \(X^n\) as shorthand for the \(n\)-fold Cartesian product \(X^n \coloneqq \prod_{1 \leq i \leq n} X\).
   Thus \(X^1\) is essentially the same set as \(X\) (if we ignore the distinction between an object \(x\) and the \(1\)-tuple \((x)\)), while \(X^2\) is the Cartesian product \(X \times X\).
-  The set \(X^0\) is a singleton set \(\{()\}\).
+  The set \(X^0\) is a singleton set \(\set{()}\).
 \end{note}
 
 \setcounter{thm}{11}
@@ -112,47 +112,47 @@
 \exercisesection
 
 \begin{ex}\label{ex:3.5.1}
-  Suppose we \emph{define} the ordered pair \((x, y)\) for any objects \(x\) and \(y\) by the formula \((x, y) \coloneqq \{\{x\}, \{x, y\}\}\)
+  Suppose we \emph{define} the ordered pair \((x, y)\) for any objects \(x\) and \(y\) by the formula \((x, y) \coloneqq \set{\set{x}, \set{x, y}}\)
   (thus using several applications of \cref{3.3}).
   Show that such a definition indeed obeys the \cref{3.5.1}, and also whenever \(X\) and \(Y\) are sets, the Cartesian product \(X \times Y\) is also a set.
   Thus this definition can be validly used as a definition of an ordered pair.
-  For an additional challenge, show that the alternate definition \((x, y) := \{x, \{x, y\}\}\) also verifies \cref{3.5.1} and is thus also an acceptable definition of ordered pair.
+  For an additional challenge, show that the alternate definition \((x, y) := \set{x, \set{x, y}}\) also verifies \cref{3.5.1} and is thus also an acceptable definition of ordered pair.
 \end{ex}
 
 \begin{proof}
   Suppose that \(x, x', y, y'\) are objects.
   By definition we have
   \begin{align*}
-    (x, y)   & = \{\{x\}, \{x, y\}\}     \\
-    (x', y') & = \{\{x'\}, \{x', y'\}\}.
+    (x, y)   & = \set{\set{x}, \set{x, y}}     \\
+    (x', y') & = \set{\set{x'}, \set{x', y'}}.
   \end{align*}
   Then we have
   \begin{align*}
-         & \{\{x\}, \{x, y\}\} = \{\{x'\}, \{x', y'\}\}                                                  \\
-    \iff & \{x\} \in \{\{x'\}, \{x', y'\}\}                                                              \\
-         & \land \{x, y\} \in \{\{x'\}, \{x', y'\}\}                                                     \\
-         & \land \{x'\} \in \{\{x\}, \{x, y\}\}                                                          \\
-         & \land \{x', y'\} \in \{\{x\}, \{x, y\}\}                          &  & \by{3.1.4}             \\
-    \iff & \bigg(\{x\} = \{x'\} \lor \{x\} = \{x', y'\}\bigg)                                            \\
-         & \land \bigg(\{x, y\} = \{x'\} \lor \{x, y\} = \{x', y'\}\bigg)                                \\
-         & \land \bigg(\{x'\} = \{x\} \lor \{x'\} = \{x, y\}\bigg)                                       \\
-         & \land \bigg(\{x', y'\} = \{x\} \lor \{x', y'\} = \{x, y\}\bigg)   &  & \text{(by \cref{3.3})} \\
-    \iff & \Bigg(\bigg(\{x\} = \{x'\}\bigg)                                                              \\
-         & \lor \bigg(\{x\} = \{x', y'\} \land \{x'\} = \{x, y\}\bigg)\Bigg)                             \\
-         & \land \Bigg(\bigg(\{x, y\} = \{x', y'\}\bigg)                                                 \\
-         & \lor \bigg(\{x\} = \{x', y'\} \land \{x'\} = \{x, y\}\bigg)\Bigg)                             \\
-    \iff & \bigg(\{x\} = \{x'\} \land \{x, y\} = \{x', y'\}\bigg)                                        \\
-         & \lor \bigg(\{x\} = \{x', y'\} \land \{x'\} = \{x, y\}\bigg)                                   \\
-    \iff & x = x' \land y = y'.                                              &  & \text{(by \cref{3.3})}
+         & \set{\set{x}, \set{x, y}} = \set{\set{x'}, \set{x', y'}}                                              \\
+    \iff & \set{x} \in \set{\set{x'}, \set{x', y'}}                                                              \\
+         & \land \set{x, y} \in \set{\set{x'}, \set{x', y'}}                                                     \\
+         & \land \set{x'} \in \set{\set{x}, \set{x, y}}                                                          \\
+         & \land \set{x', y'} \in \set{\set{x}, \set{x, y}}                          &  & \by{3.1.4}             \\
+    \iff & \bigg(\set{x} = \set{x'} \lor \set{x} = \set{x', y'}\bigg)                                            \\
+         & \land \bigg(\set{x, y} = \set{x'} \lor \set{x, y} = \set{x', y'}\bigg)                                \\
+         & \land \bigg(\set{x'} = \set{x} \lor \set{x'} = \set{x, y}\bigg)                                       \\
+         & \land \bigg(\set{x', y'} = \set{x} \lor \set{x', y'} = \set{x, y}\bigg)   &  & \text{(by \cref{3.3})} \\
+    \iff & \Bigg(\bigg(\set{x} = \set{x'}\bigg)                                                                  \\
+         & \lor \bigg(\set{x} = \set{x', y'} \land \set{x'} = \set{x, y}\bigg)\Bigg)                             \\
+         & \land \Bigg(\bigg(\set{x, y} = \set{x', y'}\bigg)                                                     \\
+         & \lor \bigg(\set{x} = \set{x', y'} \land \set{x'} = \set{x, y}\bigg)\Bigg)                             \\
+    \iff & \bigg(\set{x} = \set{x'} \land \set{x, y} = \set{x', y'}\bigg)                                        \\
+         & \lor \bigg(\set{x} = \set{x', y'} \land \set{x'} = \set{x, y}\bigg)                                   \\
+    \iff & x = x' \land y = y'.                                                      &  & \text{(by \cref{3.3})}
   \end{align*}
   Thus this definition satisfied \cref{3.5.1}.
 
   Now suppose that \(X, Y\) are sets.
-  By \cref{3.3}, \(\forall x \in X\), there exists a set \(\{x\}\), and so does \(\{x, y\} \ \forall y \in Y\).
-  Again by \cref{3.3}, there exists a set \(\{\{x\}, \{x, y\}\}\).
-  Now we fix \(y\) and use \cref{3.6} to replace each \(x\) with \(\{\{x\}, \{x, y\}\}\),
+  By \cref{3.3}, \(\forall x \in X\), there exists a set \(\set{x}\), and so does \(\set{x, y} \ \forall y \in Y\).
+  Again by \cref{3.3}, there exists a set \(\set{\set{x}, \set{x, y}}\).
+  Now we fix \(y\) and use \cref{3.6} to replace each \(x\) with \(\set{\set{x}, \set{x, y}}\),
   \[
-    X_y = \{\{\{x\}, \{x, y\}\} : \forall x \in X\}.
+    X_y = \set{\set{\set{x}, \set{x, y}} : \forall x \in X}.
   \]
   Now we use \cref{3.11} to get \(X \times Y\),
   \[
@@ -163,31 +163,31 @@
   For additional challenge, suppose that \(x, x', y, y'\) are objects.
   By definition we have
   \begin{align*}
-    (x, y)   & = \{x, \{x, y\}\}     \\
-    (x', y') & = \{x', \{x', y'\}\}.
+    (x, y)   & = \set{x, \set{x, y}}     \\
+    (x', y') & = \set{x', \set{x', y'}}.
   \end{align*}
   Then we have
   \begin{align*}
-         & \{x, \{x, y\}\} = \{x', \{x', y'\}\}                                                    \\
-    \iff & x \in \{x', \{x', y'\}\}                                                                \\
-         & \land \{x, y\} \in \{x', \{x', y'\}\}                                                   \\
-         & \land x' \in \{x, \{x, y\}\}                                                            \\
-         & \land \{x', y'\} \in \{x, \{x, y\}\}                        &  & \by{3.1.4}             \\
-    \iff & \bigg(x = x' \lor x = \{x', y'\}\bigg)                                                  \\
-         & \land \bigg(\{x, y\} = x' \lor \{x, y\} = \{x', y'\}\bigg)                              \\
-         & \land \bigg(x' = x \lor x' = \{x, y\}\bigg)                                             \\
-         & \land \bigg(\{x', y'\} = x \lor \{x', y'\} = \{x, y\}\bigg) &  & \text{(by \cref{3.3})} \\
-    \iff & \bigg(x = x' \land \{x, y\} = \{x', y'\}\bigg)                                          \\
-         & \lor \bigg(x = \{x', y'\} \land x' = \{x, y\}\bigg)                                     \\
-    \iff & (x = x' \land y = y') \lor (x \in x' \land x' \in x)        &  & \text{(by \cref{3.3})} \\
-    \iff & (x = x' \land y = y') \lor \bot                             &  & \by{ex:3.2.2}          \\
+         & \set{x, \set{x, y}} = \set{x', \set{x', y'}}                                                  \\
+    \iff & x \in \set{x', \set{x', y'}}                                                                  \\
+         & \land \set{x, y} \in \set{x', \set{x', y'}}                                                   \\
+         & \land x' \in \set{x, \set{x, y}}                                                              \\
+         & \land \set{x', y'} \in \set{x, \set{x, y}}                        &  & \by{3.1.4}             \\
+    \iff & \bigg(x = x' \lor x = \set{x', y'}\bigg)                                                      \\
+         & \land \bigg(\set{x, y} = x' \lor \set{x, y} = \set{x', y'}\bigg)                              \\
+         & \land \bigg(x' = x \lor x' = \set{x, y}\bigg)                                                 \\
+         & \land \bigg(\set{x', y'} = x \lor \set{x', y'} = \set{x, y}\bigg) &  & \text{(by \cref{3.3})} \\
+    \iff & \bigg(x = x' \land \set{x, y} = \set{x', y'}\bigg)                                            \\
+         & \lor \bigg(x = \set{x', y'} \land x' = \set{x, y}\bigg)                                       \\
+    \iff & (x = x' \land y = y') \lor (x \in x' \land x' \in x)              &  & \text{(by \cref{3.3})} \\
+    \iff & (x = x' \land y = y') \lor \bot                                   &  & \by{ex:3.2.2}          \\
     \iff & x = x' \land y = y'.
   \end{align*}
   Thus this definition satisfied \cref{3.5.1}.
 \end{proof}
 
 \begin{ex}\label{ex:3.5.2}
-  Suppose we \emph{define} an ordered \(n\)-tuple to be a surjective function \(x : \{i \in \N : 1 \leq i \leq n\} \to X\) whose range is some arbitrary set \(X\) (so different ordered \(n\)-tuples are allowed to have different ranges);
+  Suppose we \emph{define} an ordered \(n\)-tuple to be a surjective function \(x : \set{i \in \N : 1 \leq i \leq n} \to X\) whose range is some arbitrary set \(X\) (so different ordered \(n\)-tuples are allowed to have different ranges);
   we then write \(x_i\) for \(x(i)\), and also write \(x\) as \((x_i)_{1 \leq i \leq n}\).
   Using this definition, verify that we have \((x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n}\) iff \(x_i = y_i\) for all \(1 \leq i \leq n\).
   Also, show that if \((X_i)_{1 \leq i \leq n}\) are an ordered \(n\)-tuple of sets, then the Cartesian product, as defined in \cref{3.5.7}, is indeed a set.
@@ -195,7 +195,7 @@
 
 \begin{proof}
   Suppose that \(X\) is a set.
-  Let \(I = \{i \in \N : 1 \leq i \leq n\}\) be a set.
+  Let \(I = \set{i \in \N : 1 \leq i \leq n}\) be a set.
   Let \(x : I \to X, y : I \to X\) be two surjective functions.
   Then we have
   \begin{align*}
@@ -208,7 +208,7 @@
   Now we show that \cref{3.5.7} is indeed a set.
   By \cref{3.11}, we have a set \(\bigcup_{1 \leq i \leq n} X_i\).
   By \cref{ex:3.4.7}, there exists a set of all partial function with domain \(I\) and range \(\bigcup_{i \in I} X_i\), and we denote this set \(A\).
-  By \cref{3.5}, there exists a set \(\prod_{1 \leq i \leq n} X_i = \{x \in A : \forall i \in I, x_i \in X_i\}\).
+  By \cref{3.5}, there exists a set \(\prod_{1 \leq i \leq n} X_i = \set{x \in A : \forall i \in I, x_i \in X_i}\).
   Since we define \(x = (x_i)_{1 \leq i \leq n}\), we have shown that \cref{3.5.7} is indeed a set.
 \end{proof}
 
@@ -348,24 +348,24 @@
   Thus by \cref{3.1.4} we have \((A \times B) \cap (C \times D) = (A \cap C) \times (B \cap D)\).
 
   We do not have \((A \times B) \cup (C \times D) = (A \cup C) \times (B \cup D)\).
-  Let \(A = \{1\}, B = \{2\}, C = \{3\}, D = \{4\}\).
+  Let \(A = \set{1}, B = \set{2}, C = \set{3}, D = \set{4}\).
   Then we have
   \begin{align*}
-    (A \times B) \cup (C \times D) & = \{(1, 2)\} \cup \{(3, 4)\}          &  & \by{3.5.4}             \\
-                                   & = \{(1, 2), (3, 4)\}.                 &  & \text{(by \cref{3.4})} \\
-    (A \cup C) \times (B \cup D)   & = \{1, 3\} \times \{2, 4\}            &  & \text{(by \cref{3.4})} \\
-                                   & = \{(1, 2), (1, 4), (3, 2), (3, 4)\}. &  & \by{3.5.4}
+    (A \times B) \cup (C \times D) & = \set{(1, 2)} \cup \set{(3, 4)}        &  & \by{3.5.4}             \\
+                                   & = \set{(1, 2), (3, 4)}.                 &  & \text{(by \cref{3.4})} \\
+    (A \cup C) \times (B \cup D)   & = \set{1, 3} \times \set{2, 4}          &  & \text{(by \cref{3.4})} \\
+                                   & = \set{(1, 2), (1, 4), (3, 2), (3, 4)}. &  & \by{3.5.4}
   \end{align*}
   Clearly \((A \times B) \cup (C \times D) \neq (A \cup C) \times (B \cup D)\) by \cref{3.1.4}.
 
   We do not have \((A \times B) \setminus (C \times D) = (A \setminus C) \times (B \setminus D)\).
-  Let \(A = \{1, 2\}, B = \{3, 4\}, C = \{1\}, D = \{3\}\).
+  Let \(A = \set{1, 2}, B = \set{3, 4}, C = \set{1}, D = \set{3}\).
   Then we have
   \begin{align*}
-    (A \times B) \setminus (C \times D)    & = \{(1, 3), (1, 4), (2, 3), (2, 4)\} \setminus \{(1, 3)\} &  & \by{3.5.4}  \\
-                                           & = \{(1, 4), (2, 3), (2, 4)\}.                             &  & \by{3.1.27} \\
-    (A \setminus C) \times (B \setminus D) & = \{2\} \times \{4\}                                      &  & \by{3.1.27} \\
-                                           & = \{(2, 4)\}.                                             &  & \by{3.5.4}
+    (A \times B) \setminus (C \times D)    & = \set{(1, 3), (1, 4), (2, 3), (2, 4)} \setminus \set{(1, 3)} &  & \by{3.5.4}  \\
+                                           & = \set{(1, 4), (2, 3), (2, 4)}.                               &  & \by{3.1.27} \\
+    (A \setminus C) \times (B \setminus D) & = \set{2} \times \set{4}                                      &  & \by{3.1.27} \\
+                                           & = \set{(2, 4)}.                                               &  & \by{3.5.4}
   \end{align*}
   Clearly \((A \times B) \setminus (C \times D) \neq (A \setminus C) \times (B \setminus D)\) by \cref{3.1.4}..
 \end{proof}
@@ -388,7 +388,7 @@
     \iff & A \subseteq C \land B \subseteq D.                                                          &                                           & \by{3.1.15}
   \end{align*}
   This statement is not true when \(A = \emptyset \lor B = \emptyset\).
-  For example, if \(A = \{1\}\) and \(B = C = D = \emptyset\), then \(A \times B = \{()\} \subseteq C \times D = \{()\}\) but \(A \not \subseteq C\).
+  For example, if \(A = \set{1}\) and \(B = C = D = \emptyset\), then \(A \times B = \set{()} \subseteq C \times D = \set{()}\) but \(A \not \subseteq C\).
 
   Next we show that \(A \times B = C \times D \iff A = C \land B = D\).
   Suppose that \(A, B, C, D\) are non-empty sets.
@@ -402,7 +402,7 @@
     \iff & A = C \land B = D.                                                                       &                                           & \by{3.1.4}
   \end{align*}
   This statement is not true when \((A = \emptyset \land C = \emptyset) \lor (B = \emptyset \land D = \emptyset)\).
-  For example, if \(A = \{1\}\), \(C = \{2\}\) and \(B = D = \emptyset\), then \(A \times B = \{()\} = C \times D\) but \(A \neq C\).
+  For example, if \(A = \set{1}\), \(C = \set{2}\) and \(B = D = \emptyset\), then \(A \times B = \set{()} = C \times D\) but \(A \neq C\).
 \end{proof}
 
 \begin{ex}\label{ex:3.5.7}
@@ -454,12 +454,12 @@
   Suppose that \(X_1, \dots, X_n\) are sets.
   Then we have
   \begin{align*}
-             & \prod_{i = 1}^n X_i = \emptyset                                                                             \\
-    \implies & \lnot (\forall 1 \leq i \leq n : X_i \neq \emptyset)                            &  & \by{3.5.12}            \\
-    \implies & \exists 1 \leq i \leq n : X_i = \emptyset.                                                                  \\
-             & \exists 1 \leq i \leq n : X_i = \emptyset                                                                   \\
-    \implies & \{(x_i)_{1 \leq i \leq n} : x_i \in X_i \ \forall 1 \leq i \leq n\} = \emptyset &  & \text{(by \cref{3.5})} \\
-    \implies & \prod_{i = 1}^n X_i = \emptyset.                                                &  & \by{3.5.7}
+             & \prod_{i = 1}^n X_i = \emptyset                                                                               \\
+    \implies & \lnot (\forall 1 \leq i \leq n : X_i \neq \emptyset)                              &  & \by{3.5.12}            \\
+    \implies & \exists 1 \leq i \leq n : X_i = \emptyset.                                                                    \\
+             & \exists 1 \leq i \leq n : X_i = \emptyset                                                                     \\
+    \implies & \set{(x_i)_{1 \leq i \leq n} : x_i \in X_i \ \forall 1 \leq i \leq n} = \emptyset &  & \text{(by \cref{3.5})} \\
+    \implies & \prod_{i = 1}^n X_i = \emptyset.                                                  &  & \by{3.5.7}
   \end{align*}
   Thus \(\prod_{i = 1}^n X_i = \emptyset \iff \exists 1 \leq i \leq n : X_i = \emptyset\).
 \end{proof}
@@ -484,24 +484,24 @@
 \end{proof}
 
 \begin{ex}\label{ex:3.5.10}
-  If \(f : X \to Y\) is a function, define the \emph{graph} of \(f\) to be the subset of \(X \times Y\) defined by \(\{(x, f(x)) : x \in X\}\).
+  If \(f : X \to Y\) is a function, define the \emph{graph} of \(f\) to be the subset of \(X \times Y\) defined by \(\set{(x, f(x)) : x \in X}\).
   Show that two functions \(f : X \to Y\), \(\tilde{f} : X \to Y\) are equal iff they have the same graph.
-  Conversely, if \(G\) is any subset of \(X \times Y\) with the property that for each \(x \in X\), the set \(\{y \in Y : (x, y) \in G\}\) has exactly one element (or in other words, \(G\) obeys the \emph{vertical line test}), show that there is exactly one function \(f : X \to Y\) whose graph is equal to \(G\).
+  Conversely, if \(G\) is any subset of \(X \times Y\) with the property that for each \(x \in X\), the set \(\set{y \in Y : (x, y) \in G}\) has exactly one element (or in other words, \(G\) obeys the \emph{vertical line test}), show that there is exactly one function \(f : X \to Y\) whose graph is equal to \(G\).
 \end{ex}
 
 \begin{proof}
-  We first show that \(f : X \to Y = \tilde{f} : X \to Y \iff \{(x, f(x)) : x \in X\} = \{(x, \tilde{f}(x)) : x \in X\}\).
+  We first show that \(f : X \to Y = \tilde{f} : X \to Y \iff \set{(x, f(x)) : x \in X} = \set{(x, \tilde{f}(x)) : x \in X}\).
   Suppose that \(X, Y\) are sets and \(f : X \to Y, \tilde{f} : X \to Y\) are functions.
   Then we have
   \begin{align*}
-         & f = \tilde{f}                                                                          \\
-    \iff & \forall x \in X : f(x) = \tilde{f}(x)                      &  & \by{3.3.7}             \\
-    \iff & \forall x \in X : (x, f(x)) = (x, \tilde{f}(x))            &  & \by{3.5.1}             \\
-    \iff & \{(x, f(x)) : x \in X\} = \{(x, \tilde{f}(x)) : x \in X\}. &  & \text{(by \cref{3.6})}
+         & f = \tilde{f}                                                                              \\
+    \iff & \forall x \in X : f(x) = \tilde{f}(x)                          &  & \by{3.3.7}             \\
+    \iff & \forall x \in X : (x, f(x)) = (x, \tilde{f}(x))                &  & \by{3.5.1}             \\
+    \iff & \set{(x, f(x)) : x \in X} = \set{(x, \tilde{f}(x)) : x \in X}. &  & \text{(by \cref{3.6})}
   \end{align*}
 
-  Now we show that \(\exists!\ G = \{(x, f(x)) : x \in X\}\).
-  Suppose that \(G, X, Y\) are sets such that \(G \subseteq X \times Y\) and \(\forall x \in X\), the set \(\{y \in Y : (x, y) \in G\}\) has exactly one element.
+  Now we show that \(\exists!\ G = \set{(x, f(x)) : x \in X}\).
+  Suppose that \(G, X, Y\) are sets such that \(G \subseteq X \times Y\) and \(\forall x \in X\), the set \(\set{y \in Y : (x, y) \in G}\) has exactly one element.
   We now define a function \(f : X \to Y\) where \(f(x) = y \land (x, y) \in G\).
   Since \(\forall x \in X\), \(\exists!\ y \in Y : f(x) = y\), by \cref{3.6} such function \(f\) is well-defined.
   Thus \(G\) is the graph of \(f\), which means \(f\) is unique since if \(f, f'\) have the same graph \(G\) then it follows from proof above that \(f = f'\).
@@ -516,11 +516,10 @@
   Then by \cref{ex:3.5.1}, \(X \times Y\) is a set.
   We now show that the following sets exist:
   \begin{align*}
-    S_1 & = \{S | S \subseteq X \times Y\}                                                 &  & \by{3.4.9}             \\
-    S_2 & = \{X' \times Y' \in S_1 | X' = X \land Y' \subseteq Y \land Y' \neq \emptyset\} &  & \text{(by \cref{3.5})} \\
-    S_3 & = \{X \times Y' \in S_2 |                                                                                    \\
-        & \quad\quad \forall (x, y), (x', y') \in X \times Y' : x = x' \implies y = y'\}   &  & \by{ex:3.5.10}         \\
-    Y^X & = \{f : X \to Y | f \text{'s graph } G \in S_3\}.                                &  & \text{(by \cref{3.6})}
+    S_1 & = \set{S | S \subseteq X \times Y}                                                              &  & \by{3.4.9}             \\
+    S_2 & = \set{X' \times Y' \in S_1 | X' = X \land Y' \subseteq Y \land Y' \neq \emptyset}              &  & \text{(by \cref{3.5})} \\
+    S_3 & = \set{X \times Y' \in S_2 | \forall (x, y), (x', y') \in X \times Y' : x = x' \implies y = y'} &  & \by{ex:3.5.10}         \\
+    Y^X & = \set{f : X \to Y | f \text{'s graph } G \in S_3}.                                             &  & \text{(by \cref{3.6})}
   \end{align*}
 \end{proof}
 
@@ -540,18 +539,18 @@
 \end{ex}
 
 \begin{proof}
-  We claim that for every natural number \(N \in \N\), there exists a unique function \(a_N : \{n \in \N : n \leq N\} \to \N\) such that \(a_N(0) = c\) and \(a_N(n++) = f(n, a_{N}(n))\) for all \(n \in \N\) such that \(n < N\).
+  We claim that for every natural number \(N \in \N\), there exists a unique function \(a_N : \set{n \in \N : n \leq N} \to \N\) such that \(a_N(0) = c\) and \(a_N(n++) = f(n, a_{N}(n))\) for all \(n \in \N\) such that \(n < N\).
 
   We prove the claim by using induction on \(N\).
-  For \(N = 0\), we need to show that such function \(a_0 : \{n \in \N : n \leq 0\} \to \N\) exists and is unique.
-  The domain of \(a_0\) is equal to \(\{0\}\) since \(0\) is the only natural number less than or equal to \(0\).
-  Then by defining \(a_0(0) = c\) where \(c \in \N\) we get a unique function \(a_0 : \{0\} \to \{c\}\) (if \(a'_0 : \{0\} \to \{c\}\), then by \cref{3.3.7} \(a_0 = a'_0\)).
-  And because the domain of \(a_0\) is equal to \(\{0\}\), so there is no \(n \in \{0\}\) such that \((n \in \N) \land (n < 0)\), so \(a_0(n++) = f(n, a_0(n))\) is vacuously true.
+  For \(N = 0\), we need to show that such function \(a_0 : \set{n \in \N : n \leq 0} \to \N\) exists and is unique.
+  The domain of \(a_0\) is equal to \(\set{0}\) since \(0\) is the only natural number less than or equal to \(0\).
+  Then by defining \(a_0(0) = c\) where \(c \in \N\) we get a unique function \(a_0 : \set{0} \to \set{c}\) (if \(a'_0 : \set{0} \to \set{c}\), then by \cref{3.3.7} \(a_0 = a'_0\)).
+  And because the domain of \(a_0\) is equal to \(\set{0}\), so there is no \(n \in \set{0}\) such that \((n \in \N) \land (n < 0)\), so \(a_0(n++) = f(n, a_0(n))\) is vacuously true.
   Thus for \(N = 0\) the claim is true.
 
   Suppose inductively that for some \(N\) the claim is also true.
-  The function \(a_N : \{n \in \N : n \leq N\} \to \N\) exists and is unique, and \(a_N(0) = c\) and \(a_N(n++) = f(n, a_N(n))\) for all \(n \in \N\) such that \(n < N\).
-  Then for \(N++\), we can define \(a_{N++} : \{n \in \N : n \leq N++\} \to \N\) by setting \(a_{N++}(n) = a_N(n)\) when \((n \in \N) \land (n < N++)\) (which is unique by induction hypothesis) and \(a_{N++}(N++) = f(N, a_{N++}(N))\) when \((n \in \N) \land (n = N++)\) (which is also unique because \(N\) is unique by \cref{2.4} and \(a_{N++}(N) = a_N(N)\) is unique by induction hypothesis, so \(f(n, a(n))\) is unique by \cref{3.3.1}).
+  The function \(a_N : \set{n \in \N : n \leq N} \to \N\) exists and is unique, and \(a_N(0) = c\) and \(a_N(n++) = f(n, a_N(n))\) for all \(n \in \N\) such that \(n < N\).
+  Then for \(N++\), we can define \(a_{N++} : \set{n \in \N : n \leq N++} \to \N\) by setting \(a_{N++}(n) = a_N(n)\) when \((n \in \N) \land (n < N++)\) (which is unique by induction hypothesis) and \(a_{N++}(N++) = f(N, a_{N++}(N))\) when \((n \in \N) \land (n = N++)\) (which is also unique because \(N\) is unique by \cref{2.4} and \(a_{N++}(N) = a_N(N)\) is unique by induction hypothesis, so \(f(n, a(n))\) is unique by \cref{3.3.1}).
   So \(a_{N++}\) exists and is unique, and \(a_{N++}(0) = a_N(0) = c\) and \(a_{N++}(n++) = f(n, a_{N++}(n))\) for all \(n \in \N\) such that \(n < N++\).
   Thus we conclude that the claim is true.
 
@@ -572,35 +571,35 @@
   \end{enumerate}
 
   We prove the claim by using induction on \(N\).
-  For \(N = 0\), by \cref{3.3} there exists a set \(\{0\}\), and let \(A_0 = \{0\}\).
-  Also by \cref{3.5,3.7}, there exists a set \(\N\), and there also exists a set \(B_0 = \{n \in \N \mid n \neq 0\}\).
+  For \(N = 0\), by \cref{3.3} there exists a set \(\set{0}\), and let \(A_0 = \set{0}\).
+  Also by \cref{3.5,3.7}, there exists a set \(\N\), and there also exists a set \(B_0 = \set{n \in \N \mid n \neq 0}\).
   Then \(A_0 \cap B_0 = \emptyset\), \(A_0 \cup B_0 = \N\), \(0 \in A_0\), \(0++ = 1 \in B_0\), \(\forall n \in B_0\) whenever \(n \in B_0\), we have \(n++ \in B_0\).
-  And \(\forall n \in A_0\) whenever \(n \in A_0\) and \(n \neq 0\), \(n++ \in A_0\) is vacuously true since \(\{n \in A_0 : n \neq 0\} = \emptyset\).
+  And \(\forall n \in A_0\) whenever \(n \in A_0\) and \(n \neq 0\), \(n++ \in A_0\) is vacuously true since \(\set{n \in A_0 : n \neq 0} = \emptyset\).
   Now we need to show that \(A_0\) and \(B_0\) is unique, so assume that there exists another sets \(A_0'\) and \(B_0'\) such that the above condition holds.
-  Then \(0 \in A_0'\) according to condition (c), and \(A_0' = \{0\}\) according to condition (f), so \(A_0 = A_0'\).
-  And because \(A_0' \cap B_0' = \{0\} \cap B_0' = \emptyset\), and \(A_0' \cup B_0' = \N\), and condition (e) is true, so \(B_0' = \{n \in \N : n \neq 0\} = B_0\).
+  Then \(0 \in A_0'\) according to condition (c), and \(A_0' = \set{0}\) according to condition (f), so \(A_0 = A_0'\).
+  And because \(A_0' \cap B_0' = \set{0} \cap B_0' = \emptyset\), and \(A_0' \cup B_0' = \N\), and condition (e) is true, so \(B_0' = \set{n \in \N : n \neq 0} = B_0\).
   Thus for \(N = 0\), there exists a unique pair \(A_0\) and \(B_0\) such that the above conditions hold.
 
   Suppose inductively that for some \(N\) there exists a unique pair \(A_N\) and \(B_N\) such that the above conditions hold.
-  Then for \(N++\) we can define \(A_{N++}\) and \(B_{N++}\) by setting \(A_{N++} = A_N \cup \{N++\}\) and \(B_{N++} = \{n \in B_N : n \neq N++\} = B_N \setminus \{N++\}\).
+  Then for \(N++\) we can define \(A_{N++}\) and \(B_{N++}\) by setting \(A_{N++} = A_N \cup \set{N++}\) and \(B_{N++} = \set{n \in B_N : n \neq N++} = B_N \setminus \set{N++}\).
   Thus we can check the above conditions still hold.
 
-  For condition (a), \(A_{N++} \cap B_{N++} = (A_N \cup \{N++\}) \cap (B_N \setminus \{N++\})\).
+  For condition (a), \(A_{N++} \cap B_{N++} = (A_N \cup \set{N++}) \cap (B_N \setminus \set{N++})\).
   For all \(n \in A_{N++}\), \(n \in A_N\) or \(n = N++\).
-  If \(n \in A_N\), then \(n \notin B_N\) because \(A_N \cap B_N = \emptyset\) by induction hypothesis, so \(n \notin B_N \setminus \{N++\}\).
-  If \(n = N++\), then \(n \notin B_N \setminus \{N++\}\).
+  If \(n \in A_N\), then \(n \notin B_N\) because \(A_N \cap B_N = \emptyset\) by induction hypothesis, so \(n \notin B_N \setminus \set{N++}\).
+  If \(n = N++\), then \(n \notin B_N \setminus \set{N++}\).
   Thus \(A_{N++} \cap B_{N++} = \emptyset\), and condition (a) is true for \(A_{N++}\) and \(B_{N++}\).
 
-  For condition (b), \(A_{N++} \cup B_{N++} = (A_N \cup \{N++\}) \cup (B_N \setminus \{N++\}) = (A_N \cup (B_N \setminus \{N++\})) \cup (\{N++\} \cup (B_N \setminus \{N++\})) = (A_N \cup (B_N \setminus \{N++\})) \cup B_N = A_N \cup B_N = \N\) by induction hypothesis.
+  For condition (b), \(A_{N++} \cup B_{N++} = (A_N \cup \set{N++}) \cup (B_N \setminus \set{N++}) = (A_N \cup (B_N \setminus \set{N++})) \cup (\set{N++} \cup (B_N \setminus \set{N++})) = (A_N \cup (B_N \setminus \set{N++})) \cup B_N = A_N \cup B_N = \N\) by induction hypothesis.
   Thus condition (b) is true for \(A_{N++}\) and \(B_{N++}\).
 
-  For condition (c), \(0 \in A_{N++}\) because \(0 \in A_N\) and \(A_{N++} = A_N \cup \{N++\}\), so condition (c) is true for \(A_{N++}\).
+  For condition (c), \(0 \in A_{N++}\) because \(0 \in A_N\) and \(A_{N++} = A_N \cup \set{N++}\), so condition (c) is true for \(A_{N++}\).
 
   For condition (d), we want to show that \((N++)++ \in B_N\).
   By induction hypothesis, \(N \in A_N\) and \(N++ \in B_N\) is true, so \((N++)++ \in B_N\) is true.
-  Thus \((N++)++ \in B_N \setminus \{N++\} = B_{N++}\) is also true, so condition (e) is true for \(B_{N++}\).
+  Thus \((N++)++ \in B_N \setminus \set{N++} = B_{N++}\) is also true, so condition (e) is true for \(B_{N++}\).
 
-  For condition (f), since \(N \in A_N\) by induction hypothesis, \(N++ \in A_N \cup \{N++\} = A_{N++}\) is true.
+  For condition (f), since \(N \in A_N\) by induction hypothesis, \(N++ \in A_N \cup \set{N++} = A_{N++}\) is true.
   And by conditions (a) and (e), \((N++)++\) is not in \(A_N\).
   So whenever \(n \in A_{N++}\) and \(n \neq N++\), we have \(n++ \in A_{N++}\).
   Thus condition (f) is true for \(A_{N++}\).
@@ -613,7 +612,7 @@
   This closes the induction, so for every \(N \in \N\) we have unique \(A_N\) and \(B_N\) such that the conditions (a) - (f) are true.
 
   Now we claim that for every natural number \(N \in \N\), there exists a unique function \(a_N : A_N \to \N\) such that \(a_N(0) = c\) and \(a_N(n++) = f(n, a_{N}(n))\) for all \(n \in \N\) such that \(n < N\).
-  This is done since \(A_N = \{n \in \N : n \leq N\}\).
+  This is done since \(A_N = \set{n \in \N : n \leq N}\).
 \end{proof}
 
 \begin{ex}\label{ex:3.5.13}

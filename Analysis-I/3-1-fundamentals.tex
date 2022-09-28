@@ -14,7 +14,7 @@
 \setcounter{thm}{2}
 \begin{rmk}\label{3.1.3}
   There is a special case of set theory, called ``pure set theory'', in which \emph{all} objects are sets;
-  for instance the number \(0\) might be identified with the empty set \(\emptyset = \{\}\), the number \(1\) might be identified with \(\{0\} = \{\{\}\}\), the number \(2\) might be identified with \(\{0, 1\} = \{\{\}, \{\{\}\}\}\), and so forth.
+  for instance the number \(0\) might be identified with the empty set \(\emptyset = \set{}\), the number \(1\) might be identified with \(\set{0} = \set{\set{}}\), the number \(2\) might be identified with \(\set{0, 1} = \set{\set{}, \set{\set{}}}\), and so forth.
   From a logical point of view, pure set theory is a simpler theory, since one only has to deal with sets and not with objects;
   however, from a conceptual point of view it is often easier to deal with impure set theories in which some objects are not considered to be sets.
   The two types of theories are more or less equivalent for the purposes of doing mathematics, and so we shall take an agnostic position as to whether all objects are sets or not.
@@ -75,7 +75,7 @@
 \end{ax}
 
 \begin{note}
-  The empty set is also denoted \(\{\}\).
+  The empty set is also denoted \(\set{}\).
 \end{note}
 
 \begin{ac}\label{ac:3.1.2}
@@ -126,10 +126,10 @@
 \end{rmk}
 
 \begin{ax}[Singleton sets and pair sets]\label{3.3}
-  If \(a\) is an object, then there exists a set \(\{a\}\) whose only element is \(a\), i.e., for every object \(y\), we have \(y \in \{a\}\) iff \(y = a\);
-  we refer to \(\{a\}\) as the \emph{singleton set} whose element is \(a\).
-  Furthermore, if \(a\) and \(b\) are objects, then there exists a set \(\{a, b\}\) whose only elements are \(a\) and \(b\);
-  i.e., for every object \(y\), we have \(y \in \{a, b\}\) iff \(y = a\) or \(y = b\);
+  If \(a\) is an object, then there exists a set \(\set{a}\) whose only element is \(a\), i.e., for every object \(y\), we have \(y \in \set{a}\) iff \(y = a\);
+  we refer to \(\set{a}\) as the \emph{singleton set} whose element is \(a\).
+  Furthermore, if \(a\) and \(b\) are objects, then there exists a set \(\set{a, b}\) whose only elements are \(a\) and \(b\);
+  i.e., for every object \(y\), we have \(y \in \set{a, b}\) iff \(y = a\) or \(y = b\);
   we refer to this set as the \emph{pair set} formed by \(a\) and \(b\).
 \end{ax}
 
@@ -162,8 +162,8 @@
 \end{proof}
 
 \begin{eg}\label{3.1.10}
-  Since \(\emptyset\) is a set (and hence an object), so is the singleton set \(\{\emptyset\}\), i.e., the set whose only element is \(\emptyset\), is a set (and it is not the same set as \(\emptyset\), \(\{\emptyset\} \neq \emptyset\)).
-  Similarly, the singleton set \(\{\{\emptyset\}\}\) and the pair set \(\{\emptyset, \{\emptyset\}\}\) are also sets.
+  Since \(\emptyset\) is a set (and hence an object), so is the singleton set \(\set{\emptyset}\), i.e., the set whose only element is \(\emptyset\), is a set (and it is not the same set as \(\emptyset\), \(\set{\emptyset} \neq \emptyset\)).
+  Similarly, the singleton set \(\set{\set{\emptyset}}\) and the pair set \(\set{\emptyset, \set{\emptyset}}\) are also sets.
   These three sets are not equal to each other.
 \end{eg}
 
@@ -203,21 +203,21 @@
 \end{proof}
 
 \begin{lem}\label{3.1.13}
-  If \(a\) and \(b\) are objects, then \(\{a, b\} = \{a\} \cup \{b\}\).
+  If \(a\) and \(b\) are objects, then \(\set{a, b} = \set{a} \cup \set{b}\).
   If \(A\), \(B\), \(C\) are sets, then the union operation is commutative (i.e., \(A \cup B = B \cup A\)) and associative (i.e., \((A \cup B) \cup C = A \cup (B \cup C)\)).
   Also, we have \(A \cup A = A \cup \emptyset = \emptyset \cup A = A\).
 \end{lem}
 
 \begin{proof}
-  We first show that \(\{a, b\} = \{a\} \cup \{b\}\).
-  By \cref{3.3}, the sets \(\{a\}, \{b\}, \{a, b\}\) exist.
-  And by \cref{3.4}, the set \(\{a\} \cup \{b\}\) exists.
+  We first show that \(\set{a, b} = \set{a} \cup \set{b}\).
+  By \cref{3.3}, the sets \(\set{a}, \set{b}, \set{a, b}\) exist.
+  And by \cref{3.4}, the set \(\set{a} \cup \set{b}\) exists.
   Then we have
   \begin{align*}
-         & (\forall x : x \in \{a, b\} \iff x = a \lor x = b)             &  & \text{(by \cref{3.3})} \\
-    \iff & (\forall x : x \in \{a, b\} \iff x \in \{a\} \lor x \in \{b\}) &  & \text{(by \cref{3.3})} \\
-    \iff & (\forall x : x \in \{a, b\} \iff x \in \{a\} \cup \{b\})       &  & \text{(by \cref{3.4})} \\
-    \iff & \{a, b\} = \{a\} \cup \{b\}.                                   &  & \by{3.1.4}
+         & (\forall x : x \in \set{a, b} \iff x = a \lor x = b)                 &  & \text{(by \cref{3.3})} \\
+    \iff & (\forall x : x \in \set{a, b} \iff x \in \set{a} \lor x \in \set{b}) &  & \text{(by \cref{3.3})} \\
+    \iff & (\forall x : x \in \set{a, b} \iff x \in \set{a} \cup \set{b})       &  & \text{(by \cref{3.4})} \\
+    \iff & \set{a, b} = \set{a} \cup \set{b}.                                   &  & \by{3.1.4}
   \end{align*}
 
   Next we show the commutative identity of union sets.
@@ -266,8 +266,8 @@
 \end{rmk}
 
 \begin{note}
-  \cref{3.4} allows us to define triplet sets, quadruplet sets, and so forth: if \(a, b, c\) are three objects, we define \(\{a, b, c\} \coloneqq \{a\} \cup \{b\} \cup \{c\}\);
-  if \(a, b, c, d\) are four objects, then we define \(\{a, b, c, d\} \coloneqq \{a\} \cup \{b\} \cup \{c\} \cup \{d\}\), and so forth.
+  \cref{3.4} allows us to define triplet sets, quadruplet sets, and so forth: if \(a, b, c\) are three objects, we define \(\set{a, b, c} \coloneqq \set{a} \cup \set{b} \cup \set{c}\);
+  if \(a, b, c, d\) are four objects, then we define \(\set{a, b, c, d} \coloneqq \set{a} \cup \set{b} \cup \set{c} \cup \set{d}\), and so forth.
   On the other hand, we are not yet in a position to define sets consisting of \(n\) objects for any given natural number \(n\);
   this would require iterating the above construction ``\(n\) times'', but the concept of \(n\)-fold iteration has not yet been rigorously defined.
   For similar reasons, we cannot yet define sets consisting of infinitely many objects, because that would require iterating the axiom of pairwise union (\cref{3.4}) infinitely often, and it is not clear at this stage that one can do this rigorously.
@@ -375,21 +375,21 @@
   We should also caution that the subset relation \(\subseteq\) is not the same as the element relation \(\in\).
   It is important to distinguish sets from their elements, as they can have different properties.
   For instance, it is possible to have an infinite set consisting of finite numbers (the set \(\N\) of natural numbers is one such example), and it is also possible to have a finite set consisting of infinite objects
-  (consider for instance the finite set \(\{\N, \Z, \Q, \R\}\), which has four elements, all of which are infinite).
+  (consider for instance the finite set \(\set{\N, \Z, \Q, \R}\), which has four elements, all of which are infinite).
 \end{rmk}
 
 \begin{ax}[Axiom of specification]\label{3.5}
   Let \(A\) be a set, and for each \(x \in A\), let \(P(x)\) be a property pertaining to \(x\) (i.e., \(P(x)\) is either a true statement or a false statement).
-  Then there exists a set, called \(\{x \in A : P(x) \text{ is true}\}\) (or simply \(\{x \in A : P(x)\}\) for short), whose elements are precisely the elements \(x\) in \(A\) for which \(P(x)\) is true.
+  Then there exists a set, called \(\set{x \in A : P(x) \text{ is true}}\) (or simply \(\set{x \in A : P(x)}\) for short), whose elements are precisely the elements \(x\) in \(A\) for which \(P(x)\) is true.
   In other words, for any object \(y\),
   \[
-    y \in \{x \in A : P(x) \text{ is true}\} \iff (y \in A \text{ and } P(y) \text{ is true}).
+    y \in \set{x \in A : P(x) \text{ is true}} \iff (y \in A \text{ and } P(y) \text{ is true}).
   \]
 \end{ax}
 
 \begin{note}
   \cref{3.5} is also known as the \emph{axiom of separation}.
-  We sometimes write \(\{x \in A \mid P(x)\}\) instead of \(\{x \in A : P(x)\}\);
+  We sometimes write \(\set{x \in A \mid P(x)}\) instead of \(\set{x \in A : P(x)}\);
   this is useful when we are using the colon ``:'' to denote something else.
 \end{note}
 
@@ -397,7 +397,7 @@
 \begin{defn}[Intersections]\label{3.1.23}
   The intersection \(S_1 \cap S_2\) of two sets is defined to be the set
   \[
-    S_1 \cap S_2 \coloneqq \{x \in S_1 : x \in S_2\}.
+    S_1 \cap S_2 \coloneqq \set{x \in S_1 : x \in S_2}.
   \]
   In other words, \(S_1 \cap S_2\) consists of all the elements which belong to both \(S_1\) and \(S_2\).
   Thus, for all objects \(x\),
@@ -416,7 +416,7 @@
 \begin{defn}[Difference sets]\label{3.1.27}
   Given two sets \(A\) and \(B\), we define the set \(A - B\) or \(A \setminus B\) to be the set \(A\) with any elements of \(B\) removed:
   \[
-    A \setminus B \coloneqq \{x \in A : x \notin B\}.
+    A \setminus B \coloneqq \set{x \in A : x \notin B}.
   \]
 \end{defn}
 
@@ -615,26 +615,26 @@
 \begin{ax}[Replacement]\label{3.6}
   Let \(A\) be a set.
   For any object \(x \in A\), and any object \(y\), suppose we have a statement \(P(x, y)\) pertaining to \(x\) and \(y\), such that for each \(x \in A\) there is at most one \(y\) for which \(P(x, y)\) is true.
-  Then there exists a set \(\{y : P(x, y) \text{ is true for some } x \in A\}\), such that for any object \(z\),
+  Then there exists a set \(\set{y : P(x, y) \text{ is true for some } x \in A}\), such that for any object \(z\),
   \[
-    z \in \{y: P(x, y) \text{ is true for some } x \in A\} \iff P(x, y) \text{ is true for some } x \in A.
+    z \in \set{y: P(x, y) \text{ is true for some } x \in A} \iff P(x, y) \text{ is true for some } x \in A.
   \]
 \end{ax}
 
 \begin{note}
   The keyword here is ``suppose'';
-  We have to assume that there exists a set \(E = \{x \in A : \exists!\ y \text{ such that } P(x, y) \text{ is true}\}\).
+  We have to assume that there exists a set \(E = \set{x \in A : \exists!\ y \text{ such that } P(x, y) \text{ is true}}\).
   \(E\) must exist first so we can apply \cref{3.6}.
-  This means we assert the existence of a function \(f : E \to \{y : P(x, y) \text{ is true for some } x\}\).
+  This means we assert the existence of a function \(f : E \to \set{y : P(x, y) \text{ is true for some } x}\).
 \end{note}
 
 \begin{note}
   We often abbreviate a set of the form
   \[
-    \{y : y = f(x) \text{ for some } x \in A\}
+    \set{y : y = f(x) \text{ for some } x \in A}
   \]
-  as \(\{f(x) : x \in A\}\) or \(\{f(x) \mid x \in A\}\).
-  We can of course combine the axiom of replacement with the axiom of specification, thus for instance we can create sets such as \(\{f(x) : x \in A; P(x) \text{ is true}\}\) by starting with the set \(A\), using the axiom of specification to create the set \(\{x \in A : P(x) \text{ is true}\}\), and then applying the axiom of replacement to create \(\{f(x) : x \in A; P(x) \text{ is true}\}\).
+  as \(\set{f(x) : x \in A}\) or \(\set{f(x) \mid x \in A}\).
+  We can of course combine the axiom of replacement with the axiom of specification, thus for instance we can create sets such as \(\set{f(x) : x \in A; P(x) \text{ is true}}\) by starting with the set \(A\), using the axiom of specification to create the set \(\set{x \in A : P(x) \text{ is true}}\), and then applying the axiom of replacement to create \(\set{f(x) : x \in A; P(x) \text{ is true}}\).
 \end{note}
 
 \begin{ax}[Infinity]\label{3.7}
@@ -652,33 +652,33 @@
 \end{proof}
 
 \begin{ex}\label{ex:3.1.2}
-  Using only \cref{3.1.4}, \cref{3.1}, \cref{3.2}, and \cref{3.3}, prove that the sets \(\emptyset\), \(\{\emptyset\}\), \(\{\{\emptyset\}\}\), and \(\{\emptyset, \{\emptyset\}\}\) are all distinct
+  Using only \cref{3.1.4}, \cref{3.1}, \cref{3.2}, and \cref{3.3}, prove that the sets \(\emptyset\), \(\set{\emptyset}\), \(\set{\set{\emptyset}}\), and \(\set{\emptyset, \set{\emptyset}}\) are all distinct
   (i.e., no two of them are equal to each other).
 \end{ex}
 
 \begin{proof}
-  We first show that \(\emptyset \neq \{\emptyset\}\), \(\emptyset \neq \{\{\emptyset\}\}\) and \(\emptyset \neq \{\emptyset, \{\emptyset\}\}\).
+  We first show that \(\emptyset \neq \set{\emptyset}\), \(\emptyset \neq \set{\set{\emptyset}}\) and \(\emptyset \neq \set{\emptyset, \set{\emptyset}}\).
   \begin{align*}
-             & \emptyset \in \{\emptyset\} \land \emptyset \notin \emptyset                &  & \text{(by \cref{3.2})} \\
-    \implies & \{\emptyset\} \neq \emptyset.                                               &  & \by{3.1.4}             \\
-             & \{\emptyset\} \in \{\{\emptyset\}\} \land \{\emptyset\} \notin \emptyset    &  & \text{(by \cref{3.2})} \\
-    \implies & \{\{\emptyset\}\} \neq \emptyset.                                           &  & \by{3.1.4}             \\
-             & \emptyset \in \{\emptyset, \{\emptyset\}\} \land \emptyset \notin \emptyset &  & \text{(by \cref{3.2})} \\
-    \implies & \{\emptyset\} \neq \emptyset.                                               &  & \by{3.1.4}
+             & \emptyset \in \set{\emptyset} \land \emptyset \notin \emptyset                   &  & \text{(by \cref{3.2})} \\
+    \implies & \set{\emptyset} \neq \emptyset.                                                  &  & \by{3.1.4}             \\
+             & \set{\emptyset} \in \set{\set{\emptyset}} \land \set{\emptyset} \notin \emptyset &  & \text{(by \cref{3.2})} \\
+    \implies & \set{\set{\emptyset}} \neq \emptyset.                                            &  & \by{3.1.4}             \\
+             & \emptyset \in \set{\emptyset, \set{\emptyset}} \land \emptyset \notin \emptyset  &  & \text{(by \cref{3.2})} \\
+    \implies & \set{\emptyset} \neq \emptyset.                                                  &  & \by{3.1.4}
   \end{align*}
 
-  Next we show that \(\{\emptyset\} \neq \{\{\emptyset\}\}\) and \(\{\emptyset\} \neq \{\emptyset, \{\emptyset\}\}\).
+  Next we show that \(\set{\emptyset} \neq \set{\set{\emptyset}}\) and \(\set{\emptyset} \neq \set{\emptyset, \set{\emptyset}}\).
   \begin{align*}
-             & \{\emptyset\} \in \{\{\emptyset\}\} \land \{\emptyset\} \notin \{\emptyset\}            &  & \text{(by \cref{3.3})} \\
-    \implies & \{\emptyset\} \neq \{\{\emptyset\}\}.                                                   &  & \by{3.1.4}             \\
-             & \{\emptyset\} \in \{\emptyset, \{\emptyset\}\} \land \{\emptyset\} \notin \{\emptyset\} &  & \text{(by \cref{3.2})} \\
-    \implies & \{\emptyset\} \neq \{\{\emptyset\}\}.                                                   &  & \by{3.1.4}
+             & \set{\emptyset} \in \set{\set{\emptyset}} \land \set{\emptyset} \notin \set{\emptyset}            &  & \text{(by \cref{3.3})} \\
+    \implies & \set{\emptyset} \neq \set{\set{\emptyset}}.                                                       &  & \by{3.1.4}             \\
+             & \set{\emptyset} \in \set{\emptyset, \set{\emptyset}} \land \set{\emptyset} \notin \set{\emptyset} &  & \text{(by \cref{3.2})} \\
+    \implies & \set{\emptyset} \neq \set{\set{\emptyset}}.                                                       &  & \by{3.1.4}
   \end{align*}
 
-  Finally we show that \(\{\{\emptyset\}\} \neq \{\emptyset, \{\emptyset\}\}\).
+  Finally we show that \(\set{\set{\emptyset}} \neq \set{\emptyset, \set{\emptyset}}\).
   \begin{align*}
-             & \emptyset \in \{\emptyset, \{\emptyset\}\} \land \emptyset \notin \{\{\emptyset\}\} &  & \text{(by \cref{3.3})} \\
-    \implies & \{\{\emptyset\}\} \neq \{\emptyset, \{\emptyset\}\}.                                &  & \by{3.1.4}
+             & \emptyset \in \set{\emptyset, \set{\emptyset}} \land \emptyset \notin \set{\set{\emptyset}} &  & \text{(by \cref{3.3})} \\
+    \implies & \set{\set{\emptyset}} \neq \set{\emptyset, \set{\emptyset}}.                                &  & \by{3.1.4}
   \end{align*}
 \end{proof}
 
@@ -907,7 +907,7 @@
 \end{ex}
 
 \begin{proof}
-  By \cref{3.6}, \(z \in \{y : P(x, y) \text{ is true for some } x \in A\} \iff P(x, z)\) is true for some \(x \in A\).
-  Change all \(y\) and \(z\) into \(x\), and replace \(P(x, x)\) with \(P(x)\), we derive \(x \in \{x : P(x) \text{ is true for some } x \in A\} \iff P(x)\) is true for some \(x \in A\), which is the same as \cref{3.5}.
+  By \cref{3.6}, \(z \in \set{y : P(x, y) \text{ is true for some } x \in A} \iff P(x, z)\) is true for some \(x \in A\).
+  Change all \(y\) and \(z\) into \(x\), and replace \(P(x, x)\) with \(P(x)\), we derive \(x \in \set{x : P(x) \text{ is true for some } x \in A} \iff P(x)\) is true for some \(x \in A\), which is the same as \cref{3.5}.
   Thus we conclude that \cref{3.6} implies \cref{3.5}.
 \end{proof}

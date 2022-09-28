@@ -22,7 +22,7 @@
   Let \(I\) be a set (possibly infinite), and for each \(\alpha \in I\) let \(X_{\alpha}\) be a set.
   We then define the Cartesian product \(\prod_{\alpha \in I} X_{\alpha}\) to be the set
   \[
-    \prod_{\alpha \in I} X_{\alpha} = \Bigg\{(x_{\alpha})_{\alpha \in I} \in (\bigcup_{\beta \in I} X_{\beta})^I : x_{\alpha} \in X_{\alpha} \ \forall \alpha \in I\Bigg\},
+    \prod_{\alpha \in I} X_{\alpha} = \set{(x_{\alpha})_{\alpha \in I} \in (\bigcup_{\beta \in I} X_{\beta})^I : x_{\alpha} \in X_{\alpha} \ \forall \alpha \in I},
   \]
   where we recall (from \cref{3.10}) that \((\bigcup_{\alpha \in I} X_{\alpha})^I\) is the set of all functions \((x_{\alpha})_{\alpha \in I}\) which assign an element \(x_{\alpha} \in \bigcup_{\beta \in I} X_{\beta}\) to each \(\alpha \in I\).
   Thus \(\prod_{\alpha \in I} X_{\alpha}\) is a subset of that set of functions, consisting instead of those functions \((x_{\alpha})_{\alpha \in I}\) which assign an element \(x_{\alpha} \in X_{\alpha}\) to each \(\alpha \in I\).
@@ -30,7 +30,7 @@
 
 \begin{eg}\label{8.4.2}
   For any sets \(I\) and X, we have \(\prod_{\alpha \in I} X = X^I\).
-  If \(I\) is a set of the form \(I \coloneqq \{i \in \N : 1 \leq i \leq n\}\), then \(\prod_{\alpha \in I} X_{\alpha}\) is the same set as the set \(\prod_{1 \leq i \leq N} X_i\) defined in \cref{3.5.7}.
+  If \(I\) is a set of the form \(I \coloneqq \set{i \in \N : 1 \leq i \leq n}\), then \(\prod_{\alpha \in I} X_{\alpha}\) is the same set as the set \(\prod_{1 \leq i \leq N} X_i\) defined in \cref{3.5.7}.
 \end{eg}
 
 \begin{note}
@@ -73,7 +73,7 @@
 \begin{proof}
   For each positive natural number \(n\), let \(X_n\) denote the set
   \[
-    X_n \coloneqq \{x \in E : \sup(E) - 1 / n \leq x \leq \sup(E)\}.
+    X_n \coloneqq \set{x \in E : \sup(E) - 1 / n \leq x \leq \sup(E)}.
   \]
   Since \(\sup(E)\) is the least upper bound for \(E\), then \(\sup(E) - 1 / n\) cannot be an upper bound for \(E\), and so \(X_n\) is non-empty for each \(n\).
   Using the axiom of choice (\cref{8.1}, or the axiom of countable choice), we can then find a sequence \((a_n)_{n = 1}^\infty\) such that \(a_n \in X_n\) for all \(n \geq 1\).
@@ -96,13 +96,13 @@
   We first show that axiom of choice (\cref{8.1}) implies \(\exists f : X \to Y\) such that \(P(x, f(x))\) is true for all \(x \in X\).
   Define
   \[
-    Y_x \coloneqq \{y \in Y : P(x, y) \text{ is true}\}
+    Y_x \coloneqq \set{y \in Y : P(x, y) \text{ is true}}
   \]
   for each \(x \in X\).
   Such a set exist by \cref{3.5} and is non-empty by the hypothesis.
   By \cref{3.10}, we know that the set
   \[
-    \prod_{x \in X} Y_x = \Bigg\{(y_x)_{x \in X} \in (\bigcup_{x \in X} Y_x)^X : y_x \in Y_x \text{ for all } x \in X\Bigg\}
+    \prod_{x \in X} Y_x = \set{(y_x)_{x \in X} \in (\bigcup_{x \in X} Y_x)^X : y_x \in Y_x \text{ for all } x \in X}
   \]
   exists.
   By axiom of choice (\cref{8.1}) we also know that the set \(\prod_{x \in X} Y_x\) is non-empty.
@@ -144,18 +144,18 @@
   Let \(f \in \prod_{\alpha \in I} X_{\alpha}\) and let \(Y = f(I)\).
   Then we have
   \begin{align*}
-     & \forall \alpha \in I, Y \cap X_{\alpha}                                                                                                         \\
-     & = f(I) \cap X_{\alpha}                                                                                                                          \\
-     & = \Bigg(\bigcup_{\beta \in I} \{f(\beta)\}\Bigg) \cap X_{\alpha}                                                                                \\
-     & = \Bigg(\{f(\alpha)\} \cup \bigg(\bigcup_{\beta \in I : \beta \neq \alpha} \{f(\beta)\}\bigg)\Bigg) \cap X_{\alpha}                             \\
-     & = \{f(\alpha)\} \cap X_{\alpha}                                                                                     &  & \text{(by hypothesis)} \\
-     & = \{f(\alpha)\}.
+     & \forall \alpha \in I, Y \cap X_{\alpha}                                                                                                             \\
+     & = f(I) \cap X_{\alpha}                                                                                                                              \\
+     & = \Bigg(\bigcup_{\beta \in I} \set{f(\beta)}\Bigg) \cap X_{\alpha}                                                                                  \\
+     & = \Bigg(\set{f(\alpha)} \cup \bigg(\bigcup_{\beta \in I : \beta \neq \alpha} \set{f(\beta)}\bigg)\Bigg) \cap X_{\alpha}                             \\
+     & = \set{f(\alpha)} \cap X_{\alpha}                                                                                       &  & \text{(by hypothesis)} \\
+     & = \set{f(\alpha)}.
   \end{align*}
   Thus \(\#(Y \cap X_{\alpha}) = 1\) for every \(\alpha \in I\).
   We conclude that axiom of choice (\cref{8.1}) implies there exists a set \(Y\) such that \(\#(Y \cap X_{\alpha}) = 1\) for all \(\alpha \in I\).
 
   Now we show that if there exists a set \(Y\) such that \(\#(Y \cap X_{\alpha}) = 1\) for all \(\alpha \in I\), then axiom of choice (\cref{8.1}) is true.
-  Since we know that \(\exists Y : \#(Y \cap X_{\alpha}) = 1\) for all \(\alpha \in I\), we can let \(Y \cap X_{\alpha} = \{x_{\alpha}\}\) for some \(x_{\alpha} \in X_{\alpha}\).
+  Since we know that \(\exists Y : \#(Y \cap X_{\alpha}) = 1\) for all \(\alpha \in I\), we can let \(Y \cap X_{\alpha} = \set{x_{\alpha}}\) for some \(x_{\alpha} \in X_{\alpha}\).
   Thus by \cref{3.6} we have a function \(f : I \to \bigcup_{\alpha \in I} X_{\alpha}\) such that \(f(\alpha) = x_{\alpha} \in X_{\alpha}\) for all \(\alpha \in I\).
   But this means \(f \in \prod_{\alpha \in I} X_{\alpha}\), so \(\prod_{\alpha \in I} X_{\alpha} \neq \emptyset\), and axiom of choice (\cref{8.1}) is true.
   Thus if there exists a set \(Y\) such that \(\#(Y \cap X_{\alpha}) = 1\) for all \(\alpha \in I\), then axiom of choice (\cref{8.1}) is true.
@@ -172,25 +172,25 @@
 \begin{proof}
   We first show that if \(g : B \to A\) is a surjection, then there exists an injection \(f : A \to B\).
   Let \(g^{-1}(A)\) be the inverse image of \(A\).
-  Since \(g\) is surjective, we know that \(g^{-1}(A) = \bigcup_{a \in A} g^{-1}(\{a\}) = B\).
-  By axiom of choice (\cref{8.1}), we know that the set \(\prod_{a \in A} g^{-1}(\{a\}) \neq \emptyset\).
-  Let \(f \in \prod_{a \in A} g^{-1}(\{a\})\).
-  We know that \(f\) has domain \(A\) and range \(\bigcup_{a \in A} g^{-1}(\{a\}) = B\).
+  Since \(g\) is surjective, we know that \(g^{-1}(A) = \bigcup_{a \in A} g^{-1}(\set{a}) = B\).
+  By axiom of choice (\cref{8.1}), we know that the set \(\prod_{a \in A} g^{-1}(\set{a}) \neq \emptyset\).
+  Let \(f \in \prod_{a \in A} g^{-1}(\set{a})\).
+  We know that \(f\) has domain \(A\) and range \(\bigcup_{a \in A} g^{-1}(\set{a}) = B\).
   We now show that \(f\) is injective.
-  \(\forall a_1, a_2 \in A\), if \(a_1 \neq a_2\), then we must have \(g^{-1}(\{a_1\}) \cap g^{-1}(\{a_2\}) = \emptyset\).
+  \(\forall a_1, a_2 \in A\), if \(a_1 \neq a_2\), then we must have \(g^{-1}(\set{a_1}) \cap g^{-1}(\set{a_2}) = \emptyset\).
   Otherwise by \cref{3.4.4} \(\exists b \in B\) such that \(g(b) = a_1 \land g(b) = a_2\), a contradiction.
-  By the definition of \(f\), we know that \(f(a_1) \in g^{-1}(\{a_1\}) \land f(a_2) \in g^{-1}(\{a_2\})\).
-  Since \(g^{-1}(\{a_1\}) \cap g^{-1}(\{a_2\}) = \emptyset\), we know that \(f(a_1) \neq f(a_2)\), thus \(f\) is injective.
+  By the definition of \(f\), we know that \(f(a_1) \in g^{-1}(\set{a_1}) \land f(a_2) \in g^{-1}(\set{a_2})\).
+  Since \(g^{-1}(\set{a_1}) \cap g^{-1}(\set{a_2}) = \emptyset\), we know that \(f(a_1) \neq f(a_2)\), thus \(f\) is injective.
 
   Next we show that \(g \circ f : A \to A\) is an identity map.
   \begin{align*}
-             & \forall a \in A, f(a) \in g^{-1}(\{a\})                 \\
-    \implies & g(f(a)) = a.                            &  & \by{3.4.4}
+             & \forall a \in A, f(a) \in g^{-1}(\set{a})                 \\
+    \implies & g(f(a)) = a.                              &  & \by{3.4.4}
   \end{align*}
   Thus \(g \circ f : A \to A\) is an identity map.
 
   Now we show that if \(g : B \to A\) is a surjection and there exists an injection \(f : A \to B\) where \(g \circ f : A \to A\) is an identity map, then the axiom of choice is true.
-  Let \(A_a = \{a \in A : g(f(a)) = a\}\).
+  Let \(A_a = \set{a \in A : g(f(a)) = a}\).
   Since \(g \circ f\) is an identity map, \(\forall a_1, a_2 \in A\), we have \(a_1 \neq a_2 \implies g(f(a_1)) \neq g(f(a_2))\).
   Thus \(\#(A_a) = 1\) and \(\forall a_1, a_2 \in A\), \(a_1 \neq a_2 \implies A_{a_1} \cap A_{a_2} = \emptyset\).
   Also we have \(A \cap A_a = A_a\) for every \(a \in A\), and thus \(\#(A \cap A_a) = 1\).

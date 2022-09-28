@@ -9,7 +9,7 @@
   Some authors exclude the case \(x = x_0\) from the above definition, thus requiring \(0 < d_X(x, x_0) < \delta\).
   In our current notation, this would correspond to removing \(x_0\) from \(E\), thus one would consider
   \[
-    \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} f(x)
+    \lim_{x \to x_0 ; x \in E \setminus \set{x_0}} f(x)
   \]
   instead of
   \[
@@ -49,7 +49,7 @@
     \item \(\lim_{x \to x_0 ; x \in E} f(x) = L\).
     \item For every sequence \((x^{(n)})_{n = 1}^\infty\) in \(E\) which converges to \(x_0\) with respect to the metric \(d_X\), the sequence \(\big(f(x^{(n)})\big)_{n = 1}^\infty\) converges to \(L\) with respect to the metric \(d_Y\).
     \item For every open set \(V \subseteq Y\) which contains \(L\), there exists an open set \(U \subseteq X\) containing \(x_0\) such that \(f(U \cap E) \subseteq V\).
-    \item If one defines the function \(g : E \cup \{x_0\} \to Y\) by defining \(g(x_0) \coloneqq L\), and \(g(x) \coloneqq f(x)\) for \(x \in E \setminus \{x_0\}\), then \(g\) is continuous at \(x_0\).
+    \item If one defines the function \(g : E \cup \set{x_0} \to Y\) by defining \(g(x_0) \coloneqq L\), and \(g(x) \coloneqq f(x)\) for \(x \in E \setminus \set{x_0}\), then \(g\) is continuous at \(x_0\).
           Furthermore, if \(x_0 \in E\), then \(f(x_0) = L\).
   \end{enumerate}
 \end{prop}
@@ -189,21 +189,21 @@
   \[
     \forall \varepsilon \in \R^+, \exists \delta \in \R^+ : \Big(\forall x \in E, d_X(x, x_0) < \delta \implies d_Y\big(f(x), L\big) < \varepsilon\Big).
   \]
-  Let \(g : E \cup \{x_0\} \to Y\) be a function where
+  Let \(g : E \cup \set{x_0} \to Y\) be a function where
   \[
-    \forall x \in E \cup \{x_0\}, g(x) = \begin{dcases}
+    \forall x \in E \cup \set{x_0}, g(x) = \begin{dcases}
       L    & \text{if } x = x_0    \\
       f(x) & \text{if } x \neq x_0
     \end{dcases}
   \]
   Then we have
   \begin{align*}
-             & \forall \varepsilon \in \R^+, \exists \delta \in \R^+ :                                                        \\
-             & \Big(\forall x \in E, d_X(x, x_0) < \delta \implies d_Y\big(f(x), L\big) < \varepsilon\Big)                    \\
-    \implies & \forall \varepsilon \in \R^+, \exists \delta \in \R^+ :                                                        \\
-             & \Big(\forall x \in E \cup \{x_0\}, d_X(x, x_0) < \delta \implies d_Y\big(g(x), g(x_0)\big) < \varepsilon\Big).
+             & \forall \varepsilon \in \R^+, \exists \delta \in \R^+ :                                                          \\
+             & \Big(\forall x \in E, d_X(x, x_0) < \delta \implies d_Y\big(f(x), L\big) < \varepsilon\Big)                      \\
+    \implies & \forall \varepsilon \in \R^+, \exists \delta \in \R^+ :                                                          \\
+             & \Big(\forall x \in E \cup \set{x_0}, d_X(x, x_0) < \delta \implies d_Y\big(g(x), g(x_0)\big) < \varepsilon\Big).
   \end{align*}
-  Thus by \cref{2.1.1} \(g\) is continuous at \(x_0\) from \((E \cup \{x_0\}, d_X|_{(E \cup \{x_0\}) \times (E \cup \{x_0\})})\) to \((Y, d_Y)\).
+  Thus by \cref{2.1.1} \(g\) is continuous at \(x_0\) from \((E \cup \set{x_0}, d_X|_{(E \cup \set{x_0}) \times (E \cup \set{x_0})})\) to \((Y, d_Y)\).
 
   Now suppose that \(x_0 \in E\).
   We claim that \(f(x_0) = L\).
@@ -219,25 +219,25 @@
   Thus we have \(f(x_0) = L\).
 
   Finally we show that statement (d) implies statement (a).
-  Suppose that \(g : E \cup \{x_0\} \to Y\) is a function where
+  Suppose that \(g : E \cup \set{x_0} \to Y\) is a function where
   \[
-    \forall x \in E \cup \{x_0\}, g(x) = \begin{dcases}
+    \forall x \in E \cup \set{x_0}, g(x) = \begin{dcases}
       L    & \text{if } x = x_0    \\
       f(x) & \text{if } x \neq x_0
     \end{dcases}
   \]
-  and \(g\) is continuous from \((E \cup \{x_0\}, d_X|_{(E \cup \{x_0\}) \times (E \cup \{x_0\})})\) to \((Y, d_Y)\).
+  and \(g\) is continuous from \((E \cup \set{x_0}, d_X|_{(E \cup \set{x_0}) \times (E \cup \set{x_0})})\) to \((Y, d_Y)\).
   Suppose also that if \(x_0 \in E\), then \(f(x_0) = L\).
   Then by \cref{2.1.1} we have
   \begin{align*}
-             & \forall \varepsilon \in \R^+, \exists \delta \in \R^+ :                                                        \\
-             & \Big(\forall x \in E \cup \{x_0\}, d_X(x, x_0) < \delta \implies d_Y\big(g(x), g(x_0)\big) < \varepsilon\Big)  \\
-    \implies & \forall \varepsilon \in \R^+, \exists \delta \in \R^+ :                                                        \\
+             & \forall \varepsilon \in \R^+, \exists \delta \in \R^+ :                                                         \\
+             & \Big(\forall x \in E \cup \set{x_0}, d_X(x, x_0) < \delta \implies d_Y\big(g(x), g(x_0)\big) < \varepsilon\Big) \\
+    \implies & \forall \varepsilon \in \R^+, \exists \delta \in \R^+ :                                                         \\
              & \begin{dcases}
-                 \forall x \in E \setminus \{x_0\}, d_X(x, x_0) < \delta \implies d_Y\big(f(x), L\big) < \varepsilon \\
+                 \forall x \in E \setminus \set{x_0}, d_X(x, x_0) < \delta \implies d_Y\big(f(x), L\big) < \varepsilon \\
                  x_0 \in E \implies d_X(x_0, x_0) = 0 < \delta \implies f(x_0) = L \implies d_Y\big(f(x_0), L\big) < \varepsilon
-               \end{dcases} \\
-    \implies & \forall \varepsilon \in \R^+, \exists \delta \in \R^+ :                                                        \\
+               \end{dcases}  \\
+    \implies & \forall \varepsilon \in \R^+, \exists \delta \in \R^+ :                                                         \\
              & \Big(\forall x \in E, d_X(x, x_0) < \delta \implies d_Y\big(f(x), L\big) < \varepsilon\Big).
   \end{align*}
   By \cref{3.1.1} this means
@@ -274,9 +274,9 @@
 
 \begin{ex}\label{ex:3.1.1}
   Let \((X, d_X)\) and \((Y, d_Y)\) be metric spaces, let \(E\) be a subset of \(X\), let \(f : E \to Y\) be a function, and let \(x_0\) be an element of \(E\).
-  Assume that \(x_0\) is an adherent point of \(E \setminus \{x_0\}\)
+  Assume that \(x_0\) is an adherent point of \(E \setminus \set{x_0}\)
   (or equivalently, that \(x_0\) is not an \emph{isolated point} of \(E\)).
-  Show that the limit \(\lim_{x \to x_0 ; x \in E} f(x)\) exists iff the limit \(\lim_{x \to x_0 ; x \in E \setminus \{x_0\}} f(x)\) exists and is equal to \(f(x_0)\).
+  Show that the limit \(\lim_{x \to x_0 ; x \in E} f(x)\) exists iff the limit \(\lim_{x \to x_0 ; x \in E \setminus \set{x_0}} f(x)\) exists and is equal to \(f(x_0)\).
   Also, show that if the limit \(\lim_{x \to x_0 ; x \in E} f(x)\) exists at all, then it must equal \(f(x_0)\).
 \end{ex}
 
@@ -288,12 +288,12 @@
   \]
   Thus we have
   \begin{align*}
-         & d_Y - \lim_{x \to x_0 ; x \in E \setminus \{x_0\}} f(x) = f(x_0)                                                                                                    \\
-    \iff & \forall \varepsilon \in \R^+, \exists \delta \in \R^+ :                                                                                                             \\
-         & \Big(\forall x \in E \setminus \{x_0\}, d_X(x, x_0) < \delta \implies d_Y\big(f(x), f(x_0)\big) < \varepsilon\Big) &                                   & \by{3.1.1} \\
-    \iff & \forall \varepsilon \in \R^+, \exists \delta \in \R^+ :                                                                                                             \\
-         & \Big(\forall x \in E, d_X(x, x_0) < \delta \implies d_Y\big(f(x), f(x_0)\big) < \varepsilon\Big)                   & (E \setminus \{x_0\} \subseteq E)              \\
-    \iff & d_Y - \lim_{x \to x_0 ; x \in E} f(x) = f(x_0).                                                                    &                                   & \by{3.1.1}
+         & d_Y - \lim_{x \to x_0 ; x \in E \setminus \set{x_0}} f(x) = f(x_0)                                                                                                      \\
+    \iff & \forall \varepsilon \in \R^+, \exists \delta \in \R^+ :                                                                                                                 \\
+         & \Big(\forall x \in E \setminus \set{x_0}, d_X(x, x_0) < \delta \implies d_Y\big(f(x), f(x_0)\big) < \varepsilon\Big) &                                     & \by{3.1.1} \\
+    \iff & \forall \varepsilon \in \R^+, \exists \delta \in \R^+ :                                                                                                                 \\
+         & \Big(\forall x \in E, d_X(x, x_0) < \delta \implies d_Y\big(f(x), f(x_0)\big) < \varepsilon\Big)                     & (E \setminus \set{x_0} \subseteq E)              \\
+    \iff & d_Y - \lim_{x \to x_0 ; x \in E} f(x) = f(x_0).                                                                      &                                     & \by{3.1.1}
   \end{align*}
 \end{proof}
 
@@ -321,14 +321,14 @@
     \end{dcases}
   \]
   We want to show that if \((Y, \mathcal{F}_Y)\) is Hausdorff, then the definition above is equivalent to the follow:
-  If \(g : E \cup \{x_0\} \to Y\) is a function such that
+  If \(g : E \cup \set{x_0} \to Y\) is a function such that
   \[
-    \forall x \in E \cup \{x_0\}, g(x) = \begin{dcases}
+    \forall x \in E \cup \set{x_0}, g(x) = \begin{dcases}
       L    & \text{if } x = x_0    \\
       f(x) & \text{if } x \neq x_0
     \end{dcases}
   \]
-  and \((E \cup \{x_0\}, \mathcal{F}_{E \cup \{x_0\}})\) is a topological subspace induced by \((X, \mathcal{F}_X)\), then \(g\) is continuous at \(x_0\) from \((E \cup \{x_0\}, \mathcal{F}_{E \cup \{x_0\}})\) to \((Y, \mathcal{F}_Y)\).
+  and \((E \cup \set{x_0}, \mathcal{F}_{E \cup \set{x_0}})\) is a topological subspace induced by \((X, \mathcal{F}_X)\), then \(g\) is continuous at \(x_0\) from \((E \cup \set{x_0}, \mathcal{F}_{E \cup \set{x_0}})\) to \((Y, \mathcal{F}_Y)\).
 
   First suppose that \(f(x)\) converges to \(L\) in \(Y\) as \(x\) converges to \(x_0\) in \(E\).
   Let \(g\) be the function in the definition and let \(V \in \mathcal{F}_Y\) such that \(L \in V\).
@@ -339,15 +339,15 @@
       f(U \cap E) \subseteq V
     \end{dcases}
   \]
-  Then by \cref{2.5.7} we have \(U \cap (E \cup \{x_0\}) \in \mathcal{F}_{E \cup \{x_0\}}\) and
+  Then by \cref{2.5.7} we have \(U \cap (E \cup \set{x_0}) \in \mathcal{F}_{E \cup \set{x_0}}\) and
   \begin{align*}
-    g\big(U \cap (E \cup \{x_0\})\big) & = g\big((U \cap E) \cup \{x_0\}\big)                      \\
-                                       & = g\big((U \cap E) \setminus \{x_0\}\big) \cup g(\{x_0\}) \\
-                                       & = f\big((U \cap E) \setminus \{x_0\}\big) \cup \{L\}      \\
-                                       & \subseteq f(U \cap E) \cup \{L\}                          \\
-                                       & \subseteq V.
+    g\big(U \cap (E \cup \set{x_0})\big) & = g\big((U \cap E) \cup \set{x_0}\big)                        \\
+                                         & = g\big((U \cap E) \setminus \set{x_0}\big) \cup g(\set{x_0}) \\
+                                         & = f\big((U \cap E) \setminus \set{x_0}\big) \cup \set{L}      \\
+                                         & \subseteq f(U \cap E) \cup \set{L}                            \\
+                                         & \subseteq V.
   \end{align*}
-  Since \(V\) is arbitrary, by \cref{2.5.8} we know that \(g\) is continuous at \(x_0\) from \((E \cup \{x_0\}, \mathcal{F}_{E \cup \{x_0\}})\) to \((Y, \mathcal{F}_Y)\).
+  Since \(V\) is arbitrary, by \cref{2.5.8} we know that \(g\) is continuous at \(x_0\) from \((E \cup \set{x_0}, \mathcal{F}_{E \cup \set{x_0}})\) to \((Y, \mathcal{F}_Y)\).
 
   Next suppose that \(x_0 \in E\) and \(f(x)\) converges to \(L\) in \(Y\) as \(x\) converges to \(x_0\) in \(E\).
   We want to show that \(f(x_0) = L\).
@@ -381,27 +381,27 @@
   which means \(V \cap W \neq \emptyset\), a contradiction.
   Thus we have \(f(x_0) = L\).
 
-  Now suppose that \(g\) is the function in the definition such that \(g\) is continuous at \(x_0\) from \((E \cup \{x_0\}, \mathcal{F}_{E \cup \{x_0\}})\) to \((Y, \mathcal{F}_Y)\).
+  Now suppose that \(g\) is the function in the definition such that \(g\) is continuous at \(x_0\) from \((E \cup \set{x_0}, \mathcal{F}_{E \cup \set{x_0}})\) to \((Y, \mathcal{F}_Y)\).
   Also suppose that if \(x_0 \in E\), then \(f(x_0) = L\).
   Let \(V \in \mathcal{F}_Y\) such that \(g(x_0) = L \in V\).
   By \cref{2.5.8} we know that
   \[
-    \exists U \in \mathcal{F}_{E \cup \{x_0\}} : \begin{dcases}
+    \exists U \in \mathcal{F}_{E \cup \set{x_0}} : \begin{dcases}
       x_0 \in U \\
       g(U) \subseteq V
     \end{dcases}
   \]
   By \cref{2.5.7} we know that
   \[
-    \exists U_X \in \mathcal{F}_X : U_X \cap (E \cup \{x_0\}) = U.
+    \exists U_X \in \mathcal{F}_X : U_X \cap (E \cup \set{x_0}) = U.
   \]
   Since \(x_0 \in U\), we know that \(x_0 \in U_X\).
   Thus we have
   \begin{align*}
-    f(U_X \cap E) & = f\big((U_X \cap E) \setminus \{x_0\}\big) \cup f(E \cap \{x_0\})  & (f(E \cap \{x_0\}) = \emptyset \iff x_0 \notin E) \\
-                  & \subseteq g\big((U_X \cap E) \setminus \{x_0\}\big) \cup g(\{x_0\}) & (x_0 \in E \iff f(x_0) = L = g(x_0))              \\
-                  & = g\big(U_X \cap (E \cup \{x_0\})\big)                                                                                  \\
-                  & = g(U)                                                                                                                  \\
+    f(U_X \cap E) & = f\big((U_X \cap E) \setminus \set{x_0}\big) \cup f(E \cap \set{x_0})  & (f(E \cap \set{x_0}) = \emptyset \iff x_0 \notin E) \\
+                  & \subseteq g\big((U_X \cap E) \setminus \set{x_0}\big) \cup g(\set{x_0}) & (x_0 \in E \iff f(x_0) = L = g(x_0))                \\
+                  & = g\big(U_X \cap (E \cup \set{x_0})\big)                                                                                      \\
+                  & = g(U)                                                                                                                        \\
                   & \subseteq V.
   \end{align*}
   Since \(V\) is arbitrary, we conclude that \(f(x)\) converges to \(L\) in \(Y\) as \(x\) converges to \(x_0\) in \(E\).
@@ -465,8 +465,8 @@
   Then we know that \(I\) is an interval of \(\R^*\) and by \cref{ex:2.5.5} we have \(I \in \mathcal{F}_{\R^*}\).
   Observe that
   \begin{align*}
-             & I \cap \N = \{m \in \N : m \geq N + 1\} \\
-    \implies & \forall n \in I \cap \N, f(n) \in V     \\
+             & I \cap \N = \set{m \in \N : m \geq N + 1} \\
+    \implies & \forall n \in I \cap \N, f(n) \in V       \\
     \implies & f(I \cap \N) \subseteq V.
   \end{align*}
   Since this is true for arbitrary \(V \in \mathcal{F}_Y\), by \cref{ex:3.1.3} we have
@@ -526,14 +526,14 @@
                                                                          M \neq 0
                                                                        \end{dcases}
   \end{align*}
-  Let \(f^* : E \cup \{x_0\} \to \R\) be the function
+  Let \(f^* : E \cup \set{x_0} \to \R\) be the function
   \[
     \forall x \in E, f^*(x) = \begin{dcases}
       L    & \text{if } x = x_0    \\
       f(x) & \text{if } x \neq x_0
     \end{dcases}
   \]
-  and let \(g^* : E \cup \{x_0\} \to \R\) be the function
+  and let \(g^* : E \cup \set{x_0} \to \R\) be the function
   \[
     \forall x \in E, g^*(x) = \begin{dcases}
       M    & \text{if } x = x_0    \\
@@ -556,37 +556,37 @@
   \end{align*}
   Since
   \begin{align*}
-    \forall x \in E \cup \{x_0\}, & (f^* + g^*)(x) = \begin{dcases}
-                                                       L + M       & \text{if } x = x_0    \\
-                                                       f(x) + g(x) & \text{if } x \neq x_0
-                                                     \end{dcases}                     \\
-                                  & (f^* - g^*)(x) = \begin{dcases}
-                                                       L - M       & \text{if } x = x_0    \\
-                                                       f(x) - g(x) & \text{if } x \neq x_0
-                                                     \end{dcases}                     \\
-                                  & (f^* g^*)(x) = \begin{dcases}
-                                                     LM        & \text{if } x = x_0    \\
-                                                     f(x) g(x) & \text{if } x \neq x_0
-                                                   \end{dcases}                         \\
-                                  & \min(f^*, g^*)(x) = \begin{dcases}
-                                                          \min(L, M)               & \text{if } x = x_0    \\
-                                                          \min\big(f(x), g(x)\big) & \text{if } x \neq x_0
-                                                        \end{dcases}     \\
-                                  & \max(f^*, g^*)(x) = \begin{dcases}
-                                                          \max(L, M)               & \text{if } x = x_0    \\
-                                                          \max\big(f(x), g(x)\big) & \text{if } x \neq x_0
-                                                        \end{dcases}     \\
-                                  & (c f^*)(x) = \begin{dcases}
-                                                   cL     & \text{if } x = x_0    \\
-                                                   c f(x) & \text{if } x \neq x_0
-                                                 \end{dcases}                              \\
-                                  & (f^* / g^*)(x) = \begin{dcases}
-                                                       L / M       & \text{if } x = x_0    \\
-                                                       f(x) / g(x) & \text{if } x \neq x_0
-                                                     \end{dcases} \text{ when } \begin{dcases}
-                                                                                  \forall x \in E, g(x) \neq 0 \\
-                                                                                  M \neq 0
-                                                                                \end{dcases}
+    \forall x \in E \cup \set{x_0}, & (f^* + g^*)(x) = \begin{dcases}
+                                                         L + M       & \text{if } x = x_0    \\
+                                                         f(x) + g(x) & \text{if } x \neq x_0
+                                                       \end{dcases}                     \\
+                                    & (f^* - g^*)(x) = \begin{dcases}
+                                                         L - M       & \text{if } x = x_0    \\
+                                                         f(x) - g(x) & \text{if } x \neq x_0
+                                                       \end{dcases}                     \\
+                                    & (f^* g^*)(x) = \begin{dcases}
+                                                       LM        & \text{if } x = x_0    \\
+                                                       f(x) g(x) & \text{if } x \neq x_0
+                                                     \end{dcases}                         \\
+                                    & \min(f^*, g^*)(x) = \begin{dcases}
+                                                            \min(L, M)               & \text{if } x = x_0    \\
+                                                            \min\big(f(x), g(x)\big) & \text{if } x \neq x_0
+                                                          \end{dcases}     \\
+                                    & \max(f^*, g^*)(x) = \begin{dcases}
+                                                            \max(L, M)               & \text{if } x = x_0    \\
+                                                            \max\big(f(x), g(x)\big) & \text{if } x \neq x_0
+                                                          \end{dcases}     \\
+                                    & (c f^*)(x) = \begin{dcases}
+                                                     cL     & \text{if } x = x_0    \\
+                                                     c f(x) & \text{if } x \neq x_0
+                                                   \end{dcases}                              \\
+                                    & (f^* / g^*)(x) = \begin{dcases}
+                                                         L / M       & \text{if } x = x_0    \\
+                                                         f(x) / g(x) & \text{if } x \neq x_0
+                                                       \end{dcases} \text{ when } \begin{dcases}
+                                                                                    \forall x \in E, g(x) \neq 0 \\
+                                                                                    M \neq 0
+                                                                                  \end{dcases}
   \end{align*}
   by \cref{3.1.5}(a)(d) we know that
   \begin{align*}

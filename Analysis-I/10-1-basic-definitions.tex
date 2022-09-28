@@ -15,16 +15,16 @@
   Let \(f : X \to \R\) be a function.
   If the limit
   \[
-    \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{f(x) - f(x_0)}{x - x_0}
+    \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{f(x) - f(x_0)}{x - x_0}
   \]
   converges to some real number \(L\), then we say that \(f\) is \emph{differentiable at \(x_0\) on \(X\) with derivative \(L\)}, and write \(f'(x_0) \coloneqq L\).
   If the limit does not exist, or if \(x_0\) is not an element of \(X\) or not a limit point of \(X\), we leave \(f'(x_0)\) undefined, and say that \(f\) is \emph{not differentiable at \(x_0\) on \(X\)}.
 \end{defn}
 
 \begin{rmk}\label{10.1.2}
-  Note that we need \(x_0\) to be a limit point in order for \(x_0\) to be adherent to \(X \setminus \{x_0\}\), otherwise the limit
+  Note that we need \(x_0\) to be a limit point in order for \(x_0\) to be adherent to \(X \setminus \set{x_0}\), otherwise the limit
   \[
-    \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{f(x) - f(x_0)}{x - x_0}
+    \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{f(x) - f(x_0)}{x - x_0}
   \]
   would automatically be undefined.
   In particular, we do not define the derivative of a function at an isolated point;
@@ -52,7 +52,7 @@
   Let \(f : \R \to \R\) be the function \(f(x) \coloneqq \abs{x}\), and let \(x_0 = 0\).
   To see whether \(f\) is differentiable at \(0\) on \(\R\), we compute the limit
   \[
-    \lim_{x \to 0 ; x \in \R \setminus \{0\}} \dfrac{f(x) - f(0)}{x - 0} = \lim_{x \to 0 ; x \in \R \setminus \{0\}} \dfrac{\abs{x}}{x}.
+    \lim_{x \to 0 ; x \in \R \setminus \set{0}} \dfrac{f(x) - f(0)}{x - 0} = \lim_{x \to 0 ; x \in \R \setminus \set{0}} \dfrac{\abs{x}}{x}.
   \]
   Now we take left limits and right limits.
   The right limit is
@@ -67,7 +67,7 @@
   Thus \(\lim_{x \to 0 ; x \in (0, \infty)} \dfrac{\abs{x}}{x}\) does not exist, and \(f\) is not differentiable at \(0\) on \(\R\).
   However, if one restricts \(f\) to \([0, \infty)\), then the restricted function \(f|_{[0, \infty)}\) \emph{is} differentiable at \(0\) on \([0, \infty)\), with derivative \(1\):
   \[
-  \lim_{x \to 0 ; x \in [0, \infty) \setminus \{0\}} \dfrac{f(x) - f(0)}{x - 0} = \lim_{x \to 0 ; x \in (0, \infty)} \dfrac{\abs{x}}{x} = 1.
+  \lim_{x \to 0 ; x \in [0, \infty) \setminus \set{0}} \dfrac{f(x) - f(0)}{x - 0} = \lim_{x \to 0 ; x \in (0, \infty)} \dfrac{\abs{x}}{x} = 1.
     \]
     Similarly, when one restricts \(f\) to \((-\infty, 0]\), the restricted function \(f|_{(-\infty, 0]}\) is differentiable at \(0\) on \((-\infty, 0]\), with derivative \(-1\).
   Thus even when a function is not differentiable, it is sometimes possible to restore the differentiability by restricting the domain of the function.
@@ -90,15 +90,15 @@
   We first show that the first statement implies the second statement.
   Since \(f\) is differentiable at \(x_0\) on \(X\) with derivative \(L\), by \cref{10.1.1} we have
   \[
-    \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{f(x) - f(x_0)}{x - x_0} = L.
+    \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{f(x) - f(x_0)}{x - x_0} = L.
   \]
   By \cref{9.3.6} this means
   \[
-    \forall \varepsilon \in \R^+, \exists \delta \in \R^+ : \bigg(\forall x \in X \setminus \{x_0\}, \abs{x - x_0} < \delta \implies \abs{\dfrac{f(x) - f(x_0)}{x - x_0} - L} \leq \varepsilon\bigg).
+    \forall \varepsilon \in \R^+, \exists \delta \in \R^+ : \bigg(\forall x \in X \setminus \set{x_0}, \abs{x - x_0} < \delta \implies \abs{\dfrac{f(x) - f(x_0)}{x - x_0} - L} \leq \varepsilon\bigg).
   \]
   Thus we have
   \begin{align*}
-             & \forall x \in X \setminus \{x_0\}, \abs{x - x_0} \leq \delta / 2 < \delta             \\
+             & \forall x \in X \setminus \set{x_0}, \abs{x - x_0} \leq \delta / 2 < \delta           \\
     \implies & \abs{\dfrac{f(x) - f(x_0)}{x - x_0} - L} \leq \varepsilon                             \\
     \implies & \abs{\dfrac{f(x) - f(x_0)}{x - x_0} - L} \abs{x - x_0} \leq \varepsilon \abs{x - x_0} \\
     \implies & \abs{(f(x) - f(x_0)) - L(x - x_0)} \leq \varepsilon \abs{x - x_0}                     \\
@@ -121,18 +121,18 @@
   \]
   In particular, we have
   \[
-    \forall x \in X \setminus \{x_0\}, \abs{x - x_0} \leq \delta \implies \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} \leq \varepsilon \abs{x - x_0}.
+    \forall x \in X \setminus \set{x_0}, \abs{x - x_0} \leq \delta \implies \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} \leq \varepsilon \abs{x - x_0}.
   \]
   Thus we have
   \begin{align*}
-             & \forall x \in X \setminus \{x_0\}, \abs{x - x_0} \leq \delta                       \\
+             & \forall x \in X \setminus \set{x_0}, \abs{x - x_0} \leq \delta                     \\
     \implies & \abs{f(x) - \big(f(x_0) + L(x - x_0)\big)} \leq \varepsilon \abs{x - x_0}          \\
     \implies & \dfrac{\abs{f(x) - \big(f(x_0) + L(x - x_0)\big)}}{\abs{x - x_0}} \leq \varepsilon \\
     \implies & \abs{\dfrac{f(x) - f(x_0)}{x - x_0} - L} \leq \varepsilon.
   \end{align*}
   By \cref{9.3.6} this means
   \[
-    \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{f(x) - f(x_0)}{x - x_0} = L
+    \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{f(x) - f(x_0)}{x - x_0} = L
   \]
   and by \cref{10.1.1} we know that \(f\) is differentiable at \(x_0\) on \(X\) with derivative \(L\).
 \end{proof}
@@ -154,7 +154,7 @@
 \begin{proof}
   Since \(f\) is differentiable at \(x_0\), by \cref{10.1.1} we have
   \[
-    L = \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{f(x) - f(x_0)}{x - x_0}
+    L = \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{f(x) - f(x_0)}{x - x_0}
   \]
   for some \(L \in \R\).
   By \cref{10.1.7}, we have \(\forall \varepsilon \in \R^+\), \(\exists \delta \in \R^+\) such that
@@ -195,7 +195,7 @@
   By \cref{10.1.10} and \cref{10.1.11} we know that if \(x_0\) is a limit point then \(f\) is continuous at \(x_0\).
   So we only need to show that if \(x_0\) is an isolated point, then \(f\) is also continuous at \(x_0\).
   Suppose that \(x_0\) is an isolated point of \(X\).
-  By \cref{9.1.18} we know that \(\exists \varepsilon' \in \R^+\) such that \(\abs{x - x_0} > \varepsilon'\) for all \(x \in X \setminus \{x_0\}\).
+  By \cref{9.1.18} we know that \(\exists \varepsilon' \in \R^+\) such that \(\abs{x - x_0} > \varepsilon'\) for all \(x \in X \setminus \set{x_0}\).
   To show that \(f\) is continuous at \(x_0\), by \cref{9.4.1} and \cref{9.3.6} we need to show that
   \[
     \forall \varepsilon \in \R^+, \exists \delta \in \R^+ : \big(\forall x \in X, \abs{x - x_0} < \delta \implies \abs{f(x) - f(x_0)} \leq \varepsilon\big).
@@ -229,11 +229,11 @@
 \begin{proof}{(a)}
   We have \(\forall \varepsilon \in \R^+\), \(\forall \delta \in \R^+\) such that
   \[
-    \forall x \in X \setminus \{x_0\}, \abs{x - x_0} < \delta \implies \abs{\dfrac{f(x) - f(x_0)}{x - x_0} - 0} = \abs{\dfrac{c - c}{x - x_0} - 0} = 0 \leq \varepsilon.
+    \forall x \in X \setminus \set{x_0}, \abs{x - x_0} < \delta \implies \abs{\dfrac{f(x) - f(x_0)}{x - x_0} - 0} = \abs{\dfrac{c - c}{x - x_0} - 0} = 0 \leq \varepsilon.
   \]
   Thus by \cref{9.3.6} we have
   \[
-    \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{f(x) - f(x_0)}{x - x_0} = 0
+    \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{f(x) - f(x_0)}{x - x_0} = 0
   \]
   and by \cref{10.1.1} we have \(f'(x_0) = 0\).
 \end{proof}
@@ -241,11 +241,11 @@
 \begin{proof}{(b)}
   We have \(\forall \varepsilon \in \R^+\), \(\forall \delta \in \R^+\) such that
   \[
-    \forall x \in X \setminus \{x_0\}, \abs{x - x_0} < \delta \implies \abs{\dfrac{f(x) - f(x_0)}{x - x_0} - 1} = \abs{\dfrac{x - x_0}{x - x_0} - 1} = 0 \leq \varepsilon.
+    \forall x \in X \setminus \set{x_0}, \abs{x - x_0} < \delta \implies \abs{\dfrac{f(x) - f(x_0)}{x - x_0} - 1} = \abs{\dfrac{x - x_0}{x - x_0} - 1} = 0 \leq \varepsilon.
   \]
   Thus by \cref{9.3.6} we have
   \[
-    \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{f(x) - f(x_0)}{x - x_0} = 1
+    \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{f(x) - f(x_0)}{x - x_0} = 1
   \]
   and by \cref{10.1.1} we have \(f'(x_0) = 1\).
 \end{proof}
@@ -253,12 +253,12 @@
 \begin{proof}{(c)}
   By \cref{10.1.1} and \cref{9.3.14} we have
   \begin{align*}
-      & f'(x_0) + g'(x_0)                                                                                                                                         \\
-    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{f(x) - f(x_0)}{x - x_0} + \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{g(x) - g(x_0)}{x - x_0} \\
-    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{f(x) - f(x_0)}{x - x_0} + \dfrac{g(x) - g(x_0)}{x - x_0}                                              \\
-    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{f(x) - f(x_0) + g(x) - g(x_0)}{x - x_0}                                                               \\
-    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{f(x) + g(x) - (f(x_0) + g(x_0))}{x - x_0}                                                             \\
-    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{(f + g)(x) - (f + g)(x_0)}{x - x_0}                                                                   \\
+      & f'(x_0) + g'(x_0)                                                                                                                                             \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{f(x) - f(x_0)}{x - x_0} + \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{g(x) - g(x_0)}{x - x_0} \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{f(x) - f(x_0)}{x - x_0} + \dfrac{g(x) - g(x_0)}{x - x_0}                                                \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{f(x) - f(x_0) + g(x) - g(x_0)}{x - x_0}                                                                 \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{f(x) + g(x) - (f(x_0) + g(x_0))}{x - x_0}                                                               \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{(f + g)(x) - (f + g)(x_0)}{x - x_0}                                                                     \\
     = & (f + g)'(x_0).
   \end{align*}
   Thus \(f + g\) is differentiable at \(x_0\) and \((f + g)'(x_0) = f'(x_0) + g'(x_0)\).
@@ -267,15 +267,15 @@
 \begin{proof}{(d)}
   By \cref{10.1.1} and \cref{9.3.14} we have
   \begin{align*}
-      & f'(x_0) g(x_0) + f(x_0) g'(x_0)                                                                                                                                                                                   \\
-    = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{f(x) - f(x_0)}{x - x_0}\bigg) \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} g(x)\bigg)                                                             \\
-      & + f(x_0) \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{g(x) - g(x_0)}{x - x_0}\bigg)                                                                                                                  \\
-    = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{\big(f(x) - f(x_0)\big) g(x)}{x - x_0}\bigg) + \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{f(x_0) \big(g(x) - g(x_0)\big)}{x - x_0}\bigg) \\
-    = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{f(x) g(x) - f(x_0) g(x)}{x - x_0}\bigg) + \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}\bigg)         \\
-    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \bigg(\dfrac{f(x) g(x) - f(x_0) g(x)}{x - x_0} + \dfrac{f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}\bigg)                                                                  \\
-    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{f(x) g(x) - f(x_0) g(x) + f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}                                                                                               \\
-    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{f(x) g(x) - f(x_0) g(x_0)}{x - x_0}                                                                                                                           \\
-    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{(fg)(x) - (fg)(x_0)}{x - x_0}                                                                                                                                 \\
+      & f'(x_0) g(x_0) + f(x_0) g'(x_0)                                                                                                                                                                                       \\
+    = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{f(x) - f(x_0)}{x - x_0}\bigg) \bigg(\lim_{x \to x_0 ; x \in X \setminus \set{x_0}} g(x)\bigg)                                                             \\
+      & + f(x_0) \bigg(\lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{g(x) - g(x_0)}{x - x_0}\bigg)                                                                                                                    \\
+    = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{\big(f(x) - f(x_0)\big) g(x)}{x - x_0}\bigg) + \bigg(\lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{f(x_0) \big(g(x) - g(x_0)\big)}{x - x_0}\bigg) \\
+    = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{f(x) g(x) - f(x_0) g(x)}{x - x_0}\bigg) + \bigg(\lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}\bigg)         \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \bigg(\dfrac{f(x) g(x) - f(x_0) g(x)}{x - x_0} + \dfrac{f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}\bigg)                                                                    \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{f(x) g(x) - f(x_0) g(x) + f(x_0) g(x) - f(x_0) g(x_0)}{x - x_0}                                                                                                 \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{f(x) g(x) - f(x_0) g(x_0)}{x - x_0}                                                                                                                             \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{(fg)(x) - (fg)(x_0)}{x - x_0}                                                                                                                                   \\
     = & (fg)'(x_0).
   \end{align*}
   Thus \(fg\) is differentiable at \(x_0\) and \((fg)'(x_0) = f'(x_0) g(x_0) + f(x_0) g'(x_0)\).
@@ -284,11 +284,11 @@
 \begin{proof}{(e)}
   By \cref{10.1.1} and \cref{9.3.14} we have
   \begin{align*}
-      & cf'(x_0)                                                                                  \\
-    = & c \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{f(x) - f(x_0)}{x - x_0}\bigg) \\
-    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \bigg(c \dfrac{f(x) - f(x_0)}{x - x_0}\bigg) \\
-    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{cf(x) - cf(x_0)}{x - x_0}             \\
-    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{(cf)(x) - (cf)(x_0)}{x - x_0}         \\
+      & cf'(x_0)                                                                                    \\
+    = & c \bigg(\lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{f(x) - f(x_0)}{x - x_0}\bigg) \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \bigg(c \dfrac{f(x) - f(x_0)}{x - x_0}\bigg) \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{cf(x) - cf(x_0)}{x - x_0}             \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{(cf)(x) - (cf)(x_0)}{x - x_0}         \\
     = & (cf)'(x_0).
   \end{align*}
   Thus \(cf\) is differentiable at \(x_0\) and \((cf)'(x_0) = cf'(x_0)\).
@@ -308,14 +308,14 @@
 \begin{proof}{(g)}
   By \cref{10.1.1} and \cref{9.3.14} we have
   \begin{align*}
-      & -\dfrac{g'(x_0)}{g(x_0)^2}                                                                                                                                                      \\
-    = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\dfrac{-1}{g(x_0)^2}\bigg)                                                        \\
-    = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\dfrac{-g(x_0)}{g(x_0) g(x_0)^2}\bigg)                                            \\
-    = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{-g(x_0)}{g(x) g(x_0)^2}\bigg) \\
-    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \Bigg(\bigg(\dfrac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\dfrac{-g(x_0)}{g(x) g(x_0)^2}\bigg)\Bigg)                                  \\
-    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{\dfrac{g(x_0)(g(x_0) - g(x))}{g(x) g(x_0)^2}}{x - x_0}                                                                      \\
-    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{\dfrac{g(x_0) - g(x)}{g(x) g(x_0)}}{x - x_0}                                                                                \\
-    = & \lim_{x \to x_0 ; x \in X \setminus \{x_0\}} \dfrac{\dfrac{1}{g(x)} - \dfrac{1}{g(x_0)}}{x - x_0}                                                                               \\
+      & -\dfrac{g'(x_0)}{g(x_0)^2}                                                                                                                                                          \\
+    = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\dfrac{-1}{g(x_0)^2}\bigg)                                                          \\
+    = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\dfrac{-g(x_0)}{g(x_0) g(x_0)^2}\bigg)                                              \\
+    = & \bigg(\lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{-g(x_0)}{g(x) g(x_0)^2}\bigg) \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \Bigg(\bigg(\dfrac{g(x) - g(x_0)}{x - x_0}\bigg) \bigg(\dfrac{-g(x_0)}{g(x) g(x_0)^2}\bigg)\Bigg)                                    \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{\dfrac{g(x_0)(g(x_0) - g(x))}{g(x) g(x_0)^2}}{x - x_0}                                                                        \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{\dfrac{g(x_0) - g(x)}{g(x) g(x_0)}}{x - x_0}                                                                                  \\
+    = & \lim_{x \to x_0 ; x \in X \setminus \set{x_0}} \dfrac{\dfrac{1}{g(x)} - \dfrac{1}{g(x_0)}}{x - x_0}                                                                                 \\
     = & (\dfrac{1}{g})'(x_0).
   \end{align*}
   Thus \(1 / g\) is differentiable at \(x_0\) and \((1 / g)'(x_0) = -\dfrac{g'(x_0)}{g(x_0)^2}\).
@@ -508,12 +508,12 @@
 \end{proof}
 
 \begin{ex}\label{ex:10.1.6}
-  Let \(n\) be a \emph{negative} integer, and let \(f : \R \setminus \{0\} \to \R\) be the function \(f(x) \coloneqq x^n\).
-  Show that \(f\) is differentiable on \(\R \setminus \{0\}\) and \(f'(x) = n x^{n - 1}\) for all \(x \in \R \setminus \{0\}\).
+  Let \(n\) be a \emph{negative} integer, and let \(f : \R \setminus \set{0} \to \R\) be the function \(f(x) \coloneqq x^n\).
+  Show that \(f\) is differentiable on \(\R \setminus \set{0}\) and \(f'(x) = n x^{n - 1}\) for all \(x \in \R \setminus \set{0}\).
 \end{ex}
 
 \begin{proof}
-  Let \(x \in \R \setminus \{0\}\).
+  Let \(x \in \R \setminus \set{0}\).
   Since \(n \in \Z^-\), \(-n \in \Z^+\).
   Then we have \((1 / f)(x) = 1 / x^n = x^{-n}\) and \(f(x) = \big(1 / (1 / f)\big)(x)\).
   Thus \(f\) is differentiable at \(x\) and

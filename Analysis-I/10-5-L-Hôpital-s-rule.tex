@@ -3,9 +3,9 @@
 \begin{prop}[L'Hôpital's rule I]\label{10.5.1}
   Let \(X\) be a subset of \(\R\), let \(f : X \to \R\) and \(g : X \to \R\) be functions, and let \(x_0 \in X\) be a limit point of \(X\).
   Suppose that \(f(x_0) = g(x_0) = 0\), that \(f\) and \(g\) are both differentiable at \(x_0\), but \(g'(x_0) \neq 0\).
-  Then there exists a \(\delta > 0\) such that \(g(x) \neq 0\) for all \(x \in (X \cap (x_0 - \delta, x_0 + \delta)) \setminus \{x_0\}\), and
+  Then there exists a \(\delta > 0\) such that \(g(x) \neq 0\) for all \(x \in (X \cap (x_0 - \delta, x_0 + \delta)) \setminus \set{x_0}\), and
   \[
-    \lim_{x \to x_0 ; x \in (X \cap (x_0 - \delta, x_0 + \delta)) \setminus \{x_0\}} \dfrac{f(x)}{g(x)} = \dfrac{f'(x_0)}{g'(x_0)}.
+    \lim_{x \to x_0 ; x \in (X \cap (x_0 - \delta, x_0 + \delta)) \setminus \set{x_0}} \dfrac{f(x)}{g(x)} = \dfrac{f'(x_0)}{g'(x_0)}.
   \]
 \end{prop}
 
@@ -39,21 +39,21 @@
   \]
   In particular, we have
   \[
-    \exists \delta \in \R^+ : \forall x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \{x_0\}, 0 < \dfrac{\abs{g'(x_0)}}{2} \abs{x - x_0} \leq \abs{g(x)}.
+    \exists \delta \in \R^+ : \forall x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \set{x_0}, 0 < \dfrac{\abs{g'(x_0)}}{2} \abs{x - x_0} \leq \abs{g(x)}.
   \]
-  This means \(g(x) \neq 0\) for every \(x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \{x_0\}\).
+  This means \(g(x) \neq 0\) for every \(x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \set{x_0}\).
   Thus
   \begin{align*}
-      & \lim_{x \to x_0 ; x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \{x_0\}} \dfrac{f(x)}{g(x)}                                                                                                                                                                                    \\
-    = & \lim_{x \to x_0 ; x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \{x_0\}} \dfrac{f(x) - f(x_0)}{g(x) - g(x_0)}                                                                                                                            & (f(x_0) = g(x_0) = 0)               \\
-    = & \lim_{x \to x_0 ; x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \{x_0\}} \dfrac{f(x) - f(x_0)}{x - x_0} \dfrac{x - x_0}{g(x) - g(x_0)}                                                                                                   & (x \neq x_0)                        \\
-    = & \dfrac{\lim_{x \to x_0 ; x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \{x_0\}} \dfrac{f(x) - f(x_0)}{x - x_0}}{\lim_{x \to x_0 ; x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \{x_0\}} \dfrac{g(x) - g(x_0)}{x - x_0}} &                       & \by{9.3.14} \\
-    = & \dfrac{f'(x_0)}{g'(x_0)}.                                                                                                                                                                                                                                &                       & \by{10.1.1}
+      & \lim_{x \to x_0 ; x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \set{x_0}} \dfrac{f(x)}{g(x)}                                                                                                                                                                                      \\
+    = & \lim_{x \to x_0 ; x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \set{x_0}} \dfrac{f(x) - f(x_0)}{g(x) - g(x_0)}                                                                                                                              & (f(x_0) = g(x_0) = 0)               \\
+    = & \lim_{x \to x_0 ; x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \set{x_0}} \dfrac{f(x) - f(x_0)}{x - x_0} \dfrac{x - x_0}{g(x) - g(x_0)}                                                                                                     & (x \neq x_0)                        \\
+    = & \dfrac{\lim_{x \to x_0 ; x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \set{x_0}} \dfrac{f(x) - f(x_0)}{x - x_0}}{\lim_{x \to x_0 ; x \in \big(X \cap (x_0 - \delta, x_0 + \delta)\big) \setminus \set{x_0}} \dfrac{g(x) - g(x_0)}{x - x_0}} &                       & \by{9.3.14} \\
+    = & \dfrac{f'(x_0)}{g'(x_0)}.                                                                                                                                                                                                                                    &                       & \by{10.1.1}
   \end{align*}
 \end{proof}
 
 \begin{note}
-  The presence of the \(\delta\) here may seem somewhat strange, but is needed because \(g(x)\) might vanish at some points other than \(x_0\), which would imply that quotient \(\dfrac{f(x)}{g(x)}\) is not necessarily defined at all points in \(X \setminus \{x_0\}\).
+  The presence of the \(\delta\) here may seem somewhat strange, but is needed because \(g(x)\) might vanish at some points other than \(x_0\), which would imply that quotient \(\dfrac{f(x)}{g(x)}\) is not necessarily defined at all points in \(X \setminus \set{x_0}\).
 \end{note}
 
 \begin{prop}[L'Hôpital's rule II]\label{10.5.2}

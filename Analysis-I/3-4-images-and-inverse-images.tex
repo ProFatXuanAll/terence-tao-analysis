@@ -3,7 +3,7 @@
 \begin{defn}[Images of sets]\label{3.4.1}
   If \(f : X \to Y\) is a function from \(X\) to \(Y\), and \(S\) is a set in \(X\), we define \(f(S)\) to be the set
   \[
-    f(S) \coloneqq \{f(x) : x \in S\};
+    f(S) \coloneqq \set{f(x) : x \in S};
   \]
   this set is a subset of \(Y\), and is sometimes called the \emph{image} of \(S\) under the map \(f\).
   We sometimes call \(f(S)\) the \emph{forward image} of \(S\) to distinguish it from the concept of the \emph{inverse image} \(f^{-1}(S)\) of \(S\).
@@ -13,7 +13,7 @@
 \begin{defn}[Inverse images]\label{3.4.4}
   If \(U\) is a subset of \(Y\), we define the set \(f^{-1}(U)\) to be the set
   \[
-    f^{-1}(U) \coloneqq \{x \in X : f(x) \in U\}.
+    f^{-1}(U) \coloneqq \set{x \in X : f(x) \in U}.
   \]
   In other words, \(f^{-1}(U)\) consists of all the elements of \(X\) which map into \(U\):
   \[
@@ -44,46 +44,46 @@
   Let \(X\) be a set.
   Then the set
   \[
-    \{Y : Y \text{ is a subset of } X\}
+    \set{Y : Y \text{ is a subset of } X}
   \]
   is a set.
 \end{lem}
 
 \begin{proof}
   Suppose that \(X\) is a set.
-  By \cref{3.10}, there exists a set \(\{0, 1\}^X\) which consists of all the functions from \(X\) to \(\{0, 1\}\).
+  By \cref{3.10}, there exists a set \(\set{0, 1}^X\) which consists of all the functions from \(X\) to \(\set{0, 1}\).
   \[
-    f \in \{0, 1\}^X \iff (f \text{ is a function with domain } X \text{ and range } \{0, 1\}).
+    f \in \set{0, 1}^X \iff (f \text{ is a function with domain } X \text{ and range } \set{0, 1}).
   \]
-  By \cref{3.6}, we can replace each \(f \in \{0, 1\}^X\) with \(f^{-1}(\{1\})\), i.e., there exists a set
+  By \cref{3.6}, we can replace each \(f \in \set{0, 1}^X\) with \(f^{-1}(\set{1})\), i.e., there exists a set
   \[
-    S = \{f^{-1}(\{1\}) : f \in \{0, 1\}^X\}.
+    S = \set{f^{-1}(\set{1}) : f \in \set{0, 1}^X}.
   \]
   By \cref{3.4.4} we have
   \begin{align*}
-             & \forall Y \in S                                                             \\
-    \implies & \exists f \in \{0, 1\}^X : Y = f^{-1}(\{1\}) = \{x \in X : f(x) \in \{1\}\} \\
+             & \forall Y \in S                                                                     \\
+    \implies & \exists f \in \set{0, 1}^X : Y = f^{-1}(\set{1}) = \set{x \in X : f(x) \in \set{1}} \\
     \implies & Y \subseteq X.
   \end{align*}
   Now \(\forall Y' \subseteq X\) we can define the following sets:
   \begin{align*}
-    A_0 & = \{0 : x \in X \setminus Y'\}. &  & \text{(by \cref{3.1.27} and \cref{3.6})} \\
-    A_1 & = \{1 : x \in Y'\}.             &  & \text{(by \cref{3.6})}
+    A_0 & = \set{0 : x \in X \setminus Y'}. &  & \text{(by \cref{3.1.27} and \cref{3.6})} \\
+    A_1 & = \set{1 : x \in Y'}.             &  & \text{(by \cref{3.6})}
   \end{align*}
   So we have
   \begin{align*}
              & \forall Y' \subseteq X                                      \\
     \implies & \exists A_0, A_1                                            \\
     \implies & \exists f : X \to A_0 \cup A_1 &  & \text{(by \cref{3.6})}  \\
-    \implies & f \in \{0, 1\}^X               &  & \text{(by \cref{3.10})} \\
+    \implies & f \in \set{0, 1}^X             &  & \text{(by \cref{3.10})} \\
     \implies & f^{-1}(A_1) = Y'               &  & \by{3.4.4}              \\
     \implies & Y' \in S.
   \end{align*}
-  Since \(\forall Y : Y \in S \iff Y \subseteq X\), we have show that \(S = \{Y : Y \subseteq X\}\) exists.
+  Since \(\forall Y : Y \in S \iff Y \subseteq X\), we have show that \(S = \set{Y : Y \subseteq X}\) exists.
 \end{proof}
 
 \begin{rmk}\label{3.4.10}
-  The set \(\{Y : Y \text{ is a subset of } X\}\) is know as the \emph{power set} of \(X\) and is denoted \(2^X\).
+  The set \(\set{Y : Y \text{ is a subset of } X}\) is know as the \emph{power set} of \(X\) and is denoted \(2^X\).
 \end{rmk}
 
 \begin{ax}[Union]\label{3.11}
@@ -98,7 +98,7 @@
   The axiom of union (\cref{3.11}), combined with the axiom of pair set (\cref{3.3}), implies the axiom of pairwise union (\cref{3.4}).
   Another important consequence of \cref{3.11} is that if one has some set \(I\), and for every element \(\alpha \in I\) we have some set \(A_{\alpha}\), then we can form the union set \(\bigcup_{\alpha \in I} A_{\alpha}\) by defining
   \[
-    \bigcup_{\alpha \in I} A_{\alpha} \coloneqq \bigcup \{A_{\alpha} : \alpha \in I\},
+    \bigcup_{\alpha \in I} A_{\alpha} \coloneqq \bigcup \set{A_{\alpha} : \alpha \in I},
   \]
   which is a set thanks to the axiom of replacement (\cref{3.6}) and the axiom of union (\cref{3.11}).
   More generally, we see that for any object \(y\),
@@ -114,7 +114,7 @@
   We can similarly form intersections of families of sets, as long as the index set is non-empty.
   More specifically, given any non-empty set \(I\), and given an assignment of a set \(A_{\alpha}\) to each \(\alpha \in I\), we can define the intersection \(\bigcap_{\alpha \in I} A_{\alpha}\) by first choosing some element \(\beta\) of \(I\) (which we can do since \(I\) is non-empty), and setting
   \[
-    \bigcap_{\alpha \in I} A_{\alpha} \coloneqq \{x \in A_{\beta} : x \in A_{\alpha} \text{ for all } \alpha \in I\},
+    \bigcap_{\alpha \in I} A_{\alpha} \coloneqq \set{x \in A_{\beta} : x \in A_{\alpha} \text{ for all } \alpha \in I},
   \]
   which is a set by the axiom of specification (\cref{3.5}).
   This definition may look like it depends on the choice of \(\beta\), but it does not.
@@ -191,12 +191,12 @@
   Suppose that \(f : X \to Y\) is a function.
   Then we have
   \begin{align*}
-             & \forall y \in f(A \cap B)                                                \\
-    \implies & y \in \{f(x) : x \in A \cap B\}                         &  & \by{3.4.1}  \\
-    \implies & y \in \{f(x) : x \in A \land x \in B\}                  &  & \by{3.1.23} \\
-    \implies & y \in \{f(x) : x \in A\} \land y \in \{f(x) : x \in B\}                  \\
-    \implies & y \in f(A) \land y \in f(B)                             &  & \by{3.4.1}  \\
-    \implies & y \in f(A) \cap f(B).                                   &  & \by{3.1.23}
+             & \forall y \in f(A \cap B)                                                    \\
+    \implies & y \in \set{f(x) : x \in A \cap B}                           &  & \by{3.4.1}  \\
+    \implies & y \in \set{f(x) : x \in A \land x \in B}                    &  & \by{3.1.23} \\
+    \implies & y \in \set{f(x) : x \in A} \land y \in \set{f(x) : x \in B}                  \\
+    \implies & y \in f(A) \land y \in f(B)                                 &  & \by{3.4.1}  \\
+    \implies & y \in f(A) \cap f(B).                                       &  & \by{3.1.23}
   \end{align*}
   Thus by \cref{3.1.15} we have \(f(A \cap B) \subseteq f(A) \cap f(B)\).
 
@@ -205,12 +205,12 @@
   Suppose that \(f : X \to Y\) is a function.
   Then we have
   \begin{align*}
-             & \forall y \in f(A) \setminus f(B)                                           \\
-    \implies & y \in f(A) \land y \notin f(B)                             &  & \by{3.1.27} \\
-    \implies & y \in \{f(x) : x \in A\} \land y \notin \{f(x) : x \in B\} &  & \by{3.4.1}  \\
-    \implies & y \in \{f(x) : x \in A \land x \notin B\}                                   \\
-    \implies & y \in \{f(x) : x \in A \setminus B\}                       &  & \by{3.1.27} \\
-    \implies & y \in f(A \setminus B).                                    &  & \by{3.4.1}
+             & \forall y \in f(A) \setminus f(B)                                               \\
+    \implies & y \in f(A) \land y \notin f(B)                                 &  & \by{3.1.27} \\
+    \implies & y \in \set{f(x) : x \in A} \land y \notin \set{f(x) : x \in B} &  & \by{3.4.1}  \\
+    \implies & y \in \set{f(x) : x \in A \land x \notin B}                                     \\
+    \implies & y \in \set{f(x) : x \in A \setminus B}                         &  & \by{3.1.27} \\
+    \implies & y \in f(A \setminus B).                                        &  & \by{3.4.1}
   \end{align*}
   Thus by \cref{3.1.15} we have \(f(A) \setminus f(B) \subseteq f(A \setminus B)\).
 
@@ -219,12 +219,12 @@
   Suppose that \(f : X \to Y\) is a function.
   Then we have
   \begin{align*}
-         & \forall y \in f(A \cup B)                                                          \\
-    \iff & y \in \{f(x) : x \in A \cup B\}                        &  & \by{3.4.1}             \\
-    \iff & y \in \{f(x) : x \in A \lor x \in B\}                  &  & \text{(by \cref{3.4})} \\
-    \iff & y \in \{f(x) : x \in A\} \lor y \in \{f(x) : x \in B\}                             \\
-    \iff & y \in f(A) \lor y \in f(B)                             &  & \by{3.4.1}             \\
-    \iff & y \in f(A) \cup f(B).                                  &  & \text{(by \cref{3.4})}
+         & \forall y \in f(A \cup B)                                                              \\
+    \iff & y \in \set{f(x) : x \in A \cup B}                          &  & \by{3.4.1}             \\
+    \iff & y \in \set{f(x) : x \in A \lor x \in B}                    &  & \text{(by \cref{3.4})} \\
+    \iff & y \in \set{f(x) : x \in A} \lor y \in \set{f(x) : x \in B}                             \\
+    \iff & y \in f(A) \lor y \in f(B)                                 &  & \by{3.4.1}             \\
+    \iff & y \in f(A) \cup f(B).                                      &  & \text{(by \cref{3.4})}
   \end{align*}
   Thus by \cref{3.1.4} we have \(f(A \cup B) = f(A) \cup f(B)\).
 \end{proof}
@@ -308,10 +308,10 @@
   By \cref{ex:3.4.2} we have \(S \subseteq f^{-1}(f(S))\), thus by \cref{3.1.18} we have \(S = f^{-1}(f(S))\).
   On the other hand, if \(\forall S \subseteq X : f^{-1}(f(S)) = S\), then we have
   \begin{align*}
-             & \forall x, x' \in S : f(x) = f(x')                                   \\
-    \implies & x \in f^{-1}(f(\{x\})) = f^{-1}(f(\{x'\})) = \{x'\}                  \\
-    \implies & x = x'                                                               \\
-    \implies & f \text{ is injective}.                             &  & \by{3.3.14}
+             & \forall x, x' \in S : f(x) = f(x')                                         \\
+    \implies & x \in f^{-1}(f(\set{x})) = f^{-1}(f(\set{x'})) = \set{x'}                  \\
+    \implies & x = x'                                                                     \\
+    \implies & f \text{ is injective}.                                   &  & \by{3.3.14}
   \end{align*}
   Thus we conclude that \(\forall S \subseteq X : f^{-1}(f(S)) = S \iff f\) is injective.
 \end{proof}
@@ -332,11 +332,11 @@
 
 \begin{proof}
   Suppose that \(X, Y\) are sets.
-  Then by \cref{3.4.9}, the set \(A = \{X' : X' \subseteq X\}\) exists, so does \(B = \{Y' : Y' \subseteq Y\}\).
+  Then by \cref{3.4.9}, the set \(A = \set{X' : X' \subseteq X}\) exists, so does \(B = \set{Y' : Y' \subseteq Y}\).
   Now we have
   \begin{align*}
-    C_1 & = \{Y'^{X'} : X' \in A \land Y' \in B\}             &  & \text{(by \cref{3.10})} \\
-    C_2 & = \bigcup C_1 = \{f \in Y'^{X'} : Y'^{X'} \in C_1\} &  & \text{(by \cref{3.11})} \\
+    C_1 & = \set{Y'^{X'} : X' \in A \land Y' \in B}             &  & \text{(by \cref{3.10})} \\
+    C_2 & = \bigcup C_1 = \set{f \in Y'^{X'} : Y'^{X'} \in C_1} &  & \text{(by \cref{3.11})} \\
   \end{align*}
   If \(f : X' \to Y'\) is a partial function whose domain \(X' \subseteq X\) and whose range \(Y' \subseteq Y\), then we have \(Y'^{X'} \in C_1\), and thus \(f \in C_2\).
 \end{proof}
@@ -348,15 +348,15 @@
 \begin{proof}
   By \cref{3.1}, \(A\) is a set and \(B\) is a set.
   And if \(x\) is a object, we can say \(x \in A\) or \(x \in B\).
-  By \cref{3.3}, there exists a set \(\{A, B\}\) whose only elements are \(A\) and \(B\).
-  By \cref{3.11}, \(x \in \bigcup \{A, B\} \iff x \in A \lor x \in B\).
-  By defining \(A \cup B \coloneqq \bigcup \{A, B\}\), we show that \(x \in A \cup B \iff x \in A \lor x \in B\) is true.
+  By \cref{3.3}, there exists a set \(\set{A, B}\) whose only elements are \(A\) and \(B\).
+  By \cref{3.11}, \(x \in \bigcup \set{A, B} \iff x \in A \lor x \in B\).
+  By defining \(A \cup B \coloneqq \bigcup \set{A, B}\), we show that \(x \in A \cup B \iff x \in A \lor x \in B\) is true.
 \end{proof}
 
 \begin{ex}\label{ex:3.4.9}
   Show that if \(\beta\) and \(\beta'\) are two elements of a set \(I\), and to each \(\alpha \in I\) we assign a set \(A_{\alpha}\), then
   \[
-    \{x \in A_{\beta} : x \in A_{\alpha} \ \forall \alpha \in I\} = \{x \in A_{\beta'} : x \in A_{\alpha} \ \forall \alpha \in I\},
+    \set{x \in A_{\beta} : x \in A_{\alpha} \ \forall \alpha \in I} = \set{x \in A_{\beta'} : x \in A_{\alpha} \ \forall \alpha \in I},
   \]
   and so the definition of \(\bigcap_{\alpha \in I} A_{\alpha}\) does not depend on \(\beta\).
 \end{ex}
@@ -365,8 +365,8 @@
   Suppose that \(I\) is a set and \(\forall \alpha \in I : A_{\alpha}\) is a set.
   Let \(\beta, \beta' \in I\) and \(B, B'\) be sets
   \begin{align*}
-    B  & = \{x \in A_{\beta} : x \in A_{\alpha} \ \forall \alpha \in I\}   \\
-    B' & = \{x \in A_{\beta'} : x \in A_{\alpha} \ \forall \alpha \in I\}.
+    B  & = \set{x \in A_{\beta} : x \in A_{\alpha} \ \forall \alpha \in I}   \\
+    B' & = \set{x \in A_{\beta'} : x \in A_{\alpha} \ \forall \alpha \in I}.
   \end{align*}
   We now show that \(B = B'\).
   \begin{align*}

@@ -105,7 +105,7 @@
   \begin{itemize}
     \item One of \(X_1, X_2\) is finite and one is countable.
           Without the loss of generality suppose that \(X_1\) is finite.
-          Since \(X_1\) is finite, we know that \(\exists q_1 : \{i \in \N : 1 \leq i \leq \#(X_1)\} \to X_1\) such that \(q_1\) is bijective.
+          Since \(X_1\) is finite, we know that \(\exists q_1 : \set{i \in \N : 1 \leq i \leq \#(X_1)} \to X_1\) such that \(q_1\) is bijective.
           Since \(X_2\) is countable, by \cref{8.1.1} we know that \(\exists q_2 : \N \to X_2\) such that \(q_2\) is bijective.
           Then we define a function \(q : \N \to X\) as follow:
           \[
@@ -198,7 +198,7 @@
   \begin{itemize}
     \item One of \(X_1, X_2\) is finite and one is countable.
           Without the loss of generality suppose that \(X_1\) is finite.
-          Since \(X_1\) is finite, we know that \(\exists q_1 : \{i \in \N : 1 \leq i \leq \#(X_1)\} \to X_1\) such that \(q_1\) is bijective.
+          Since \(X_1\) is finite, we know that \(\exists q_1 : \set{i \in \N : 1 \leq i \leq \#(X_1)} \to X_1\) such that \(q_1\) is bijective.
           Since \(X_2\) is countable, by \cref{8.1.1} we know that \(\exists q_2 : \N \to X_2\) such that \(q_2\) is bijective.
           Then we define a function \(q : \N \to X_1 \cup X_2\) as follow:
           \[
@@ -298,7 +298,7 @@
   \[
     \sum_{n = 0}^N \sum_{m = 0}^M f(n, m) = \sum_{(n, m) \in X} f(n, m) \leq L
   \]
-  where \(X\) is the set \(\{(n,m) \in \N \times \N : n \leq N, m \leq M\}\) which is finite by \cref{3.6.14}.
+  where \(X\) is the set \(\set{(n,m) \in \N \times \N : n \leq N, m \leq M}\) which is finite by \cref{3.6.14}.
   Taking limits of this as \(M \to \infty\) we have (by \cref{ex:7.1.5} and either \cref{6.3.8} or \cref{6.4.13})
   \[
     \sum_{n = 0}^N \sum_{m = 0}^\infty f(n, m) \leq L.
@@ -321,8 +321,8 @@
   So, let \(\varepsilon > 0\).
   By definition of \(L\), we can then find a finite set \(X \subseteq \N \times \N\) such that \(\sum_{(n, m) \in X} f(n, m) \geq L - \varepsilon\).
   (Since \(\N \times \N\) is countable by \cref{8.1.13}, we can find a bijection \(g : \N \to \N \times \N\) such that \(\sum_{i = 0}^\infty f(g(i)) = L\), which means \(\forall \varepsilon > 0\), \(\exists H \in \N\) such that \(\abs{\sum_{i = 0}^h f(g(i)) - L} \leq \varepsilon\) for all \(h \geq H\).
-  Now we can choose \(X = \{g(i) : 0 \leq i \leq H\}\))
-  This set, being finite, must be contained in some set of the form \(Y \coloneqq \{(n,m) \in \N \times \N : n \leq N; m \leq M \}\).
+  Now we can choose \(X = \set{g(i) : 0 \leq i \leq H}\))
+  This set, being finite, must be contained in some set of the form \(Y \coloneqq \set{(n,m) \in \N \times \N : n \leq N; m \leq M }\).
   Thus by \cref{7.1.14}
   \[
     \sum_{n = 0}^N \sum_{m = 0}^M f(n, m) = \sum_{(n, m) \in Y} f(n, m) \geq \sum_{(n, m) \in X} f(n, m) \geq L - \varepsilon
@@ -349,14 +349,14 @@
   Let \(X\) be a countable set, and let \(f : X \to \R\) be a function.
   Then the series \(\sum_{x \in X} f(x)\) is absolutely convergent iff
   \[
-    \sup\Bigg\{\sum_{x \in A} \abs{f(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty.
+    \sup\set{\sum_{x \in A} \abs{f(x)} : A \subseteq X, A \text{ finite}} < \infty.
   \]
 \end{lem}
 
 \begin{proof}
   Let \(P(X, f)\) be the statement
   \[
-    \sup\Bigg\{\sum_{x \in A} \abs{f(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty.
+    \sup\set{\sum_{x \in A} \abs{f(x)} : A \subseteq X, A \text{ finite}} < \infty.
   \]
   We first show that if \(\sum_{x \in X} f(x)\) is absolutely convergent, then \(P(X, f)\) is true.
   Let \(L = \sum_{x \in X} f(x)\).
@@ -382,10 +382,10 @@
   Since \(X\) is countable, \(\exists g : \N \to X\) where \(g\) is a bijection.
   So we have
   \begin{align*}
-             & \forall n \in \N : \sum_{x \in g(\{i \in \N : 0 \leq i \leq n\})} \abs{f(x)} \leq L & (P(X, f) \text{ is true})              \\
-    \implies & \forall n \in \N : \sum_{i = 0}^n \abs{f(g(i))} \leq L                              &                           & \by{7.1.6} \\
-    \implies & \sum_{i = 0}^\infty \abs{f(g(i))} \text{ converges}                                 &                           & \by{7.3.1} \\
-    \implies & \sum_{x \in X} \abs{f(x)} \text{ converges}.                                        &                           & \by{8.2.1}
+             & \forall n \in \N : \sum_{x \in g(\set{i \in \N : 0 \leq i \leq n})} \abs{f(x)} \leq L & (P(X, f) \text{ is true})              \\
+    \implies & \forall n \in \N : \sum_{i = 0}^n \abs{f(g(i))} \leq L                                &                           & \by{7.1.6} \\
+    \implies & \sum_{i = 0}^\infty \abs{f(g(i))} \text{ converges}                                   &                           & \by{7.3.1} \\
+    \implies & \sum_{x \in X} \abs{f(x)} \text{ converges}.                                          &                           & \by{8.2.1}
   \end{align*}
 \end{proof}
 
@@ -397,22 +397,22 @@
   Let \(X\) be a set (which could be uncountable), and let \(f : X \to \R\) be a function.
   We say that the series \(\sum_{x \in X} f(x)\) is absolutely convergent iff
   \[
-    \sup\Bigg\{\sum_{x \in A} \abs{f(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty.
+    \sup\set{\sum_{x \in A} \abs{f(x)} : A \subseteq X, A \text{ finite}} < \infty.
   \]
 \end{defn}
 
 \begin{lem}\label{8.2.5}
   Let \(X\) be a set (which could be uncountable), and let \(f : X \to \R\) be a function such that the series \(\sum_{x \in X} f(x)\) is absolutely convergent.
-  Then the set \(\{x \in X : f(x) \neq 0\}\) is at most countable.
+  Then the set \(\set{x \in X : f(x) \neq 0}\) is at most countable.
 \end{lem}
 
 \begin{proof}
   Suppose that \(X\) is a set and \(f : X \to \R\) is a function such that \(\sum_{x \in X} f(x)\) is absolutely convergent.
   Since \(\sum_{x \in X} f(x)\) is absolutely convergent, by \cref{8.2.4} we have
   \[
-    M = \sup\Bigg\{\sum_{x \in A} \abs{f(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty.
+    M = \sup\set{\sum_{x \in A} \abs{f(x)} : A \subseteq X, A \text{ finite}} < \infty.
   \]
-  We first show that \(\forall n \in \Z^+\), the set \(S_n = \{x \in X : \abs{f(x)} > 1 / n\}\) is finite and \(\#(S_n) \leq Mn\).
+  We first show that \(\forall n \in \Z^+\), the set \(S_n = \set{x \in X : \abs{f(x)} > 1 / n}\) is finite and \(\#(S_n) \leq Mn\).
 
   Suppose for sake of contradiction that \(S_n\) is infinite.
   Then we can have a finite set \(S \subseteq S_n\) where \(\#(S) > (M + 1)n\).
@@ -434,18 +434,18 @@
   Thus \(\#(S_n) \leq Mn\).
 
   Let \(x \in X\) where \(f(x) \neq 0\).
-  If \(x\) does not exist, then we have \(\{x \in X : f(x) \neq 0\} = \emptyset\) which is at most countable.
+  If \(x\) does not exist, then we have \(\set{x \in X : f(x) \neq 0} = \emptyset\) which is at most countable.
   So suppose that such \(x\) exists.
   Since \(\abs{f(x)} \in \R^+\), by \cref{5.4.12} we have
   \begin{align*}
-             & \exists N \in \Z^+ : \dfrac{1}{\abs{f(x)}} < N                                                           \\
-    \implies & \abs{f(x)} > \dfrac{1}{N}                                                                                \\
-    \implies & x \in S_N                                                     &  & \text{(by the definition of \(S_N\))} \\
-    \implies & x \in \bigcup_{n \in \Z^+} S_n                                &  & \text{(by \cref{3.11})}               \\
-    \implies & \{x \in X : f(x) \neq 0\} \subseteq \bigcup_{n \in \Z^+} S_n. &  & \by{3.1.15}
+             & \exists N \in \Z^+ : \dfrac{1}{\abs{f(x)}} < N                                                             \\
+    \implies & \abs{f(x)} > \dfrac{1}{N}                                                                                  \\
+    \implies & x \in S_N                                                       &  & \text{(by the definition of \(S_N\))} \\
+    \implies & x \in \bigcup_{n \in \Z^+} S_n                                  &  & \text{(by \cref{3.11})}               \\
+    \implies & \set{x \in X : f(x) \neq 0} \subseteq \bigcup_{n \in \Z^+} S_n. &  & \by{3.1.15}
   \end{align*}
   Since \(\forall n \in \Z^+\), \(S_n\) is finite, by \cref{8.1.9} we know that \(\bigcup_{n \in \Z^+} S_n\) is at most countable.
-  Since \(\{x \in X : f(x) \neq 0\} \subseteq \bigcup_{n \in \Z^+} S_n\), by \cref{8.1.7} we know that \(\{x \in X : f(x) \neq 0\}\) is at most countable.
+  Since \(\set{x \in X : f(x) \neq 0} \subseteq \bigcup_{n \in \Z^+} S_n\), by \cref{8.1.7} we know that \(\set{x \in X : f(x) \neq 0}\) is at most countable.
 \end{proof}
 
 \begin{note}
@@ -453,7 +453,7 @@
   \[
     \sum_{x \in X} \coloneqq \sum_{x \in X : f(x) \neq 0} f(x),
   \]
-  since we have replaced a sum on an uncountable set \(X\) by a sum on the at most countable set \(\{x \in X : f(x) \neq 0\}\).
+  since we have replaced a sum on an uncountable set \(X\) by a sum on the at most countable set \(\set{x \in X : f(x) \neq 0}\).
   (If the former sum is absolutely convergent, then the latter one is also.)
   \cref{8.2.4} is consistent with the definitions we already have for series on countable sets (\cref{8.2.1}).
 \end{note}
@@ -493,11 +493,11 @@
   We first show that \(\sum_{x \in X} (f(x) + g(x))\) is absolutely convergent.
   Since \(\sum_{x \in X} f(x)\) and \(\sum_{x \in X} g(x)\) are both absolutely convergent, by \cref{8.2.4} \(\exists N, M \in \R\) such that
   \[
-    N = \sup\Bigg\{\sum_{x \in A} \abs{f(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty
+    N = \sup\set{\sum_{x \in A} \abs{f(x)} : A \subseteq X, A \text{ finite}} < \infty
   \]
   and
   \[
-    M = \sup\Bigg\{\sum_{x \in A} \abs{g(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty.
+    M = \sup\set{\sum_{x \in A} \abs{g(x)} : A \subseteq X, A \text{ finite}} < \infty.
   \]
   Let \(A \subseteq X\) be a finite set.
   Then we have
@@ -508,14 +508,14 @@
   \end{align*}
   Since \(A\) is arbitrary, we have
   \[
-    \sup\Bigg\{\sum_{x \in A} \abs{f(x) + g(x)} : A \subseteq X, A \text{ finite}\Bigg\} \leq N + M < \infty.
+    \sup\set{\sum_{x \in A} \abs{f(x) + g(x)} : A \subseteq X, A \text{ finite}} \leq N + M < \infty.
   \]
   Thus by \cref{8.2.4} \(\sum_{x \in X} \big(f(x) + g(x)\big)\) is absolutely convergent.
 
   Now we show that \(\sum_{x \in X} (f(x) + g(x)) = \sum_{x \in X} f(x) + \sum_{x \in X} g(x)\).
   If \(X\) is at most countable, then the statement follows by \cref{ac:8.2.1}(a).
   So suppose that \(X\) is uncountable.
-  Let \(X_f = \{x \in X : f(x) \neq 0\}\), \(X_g = \{x \in X : g(x) \neq 0\}\) and \(X_h = \{x \in X : f(x) + g(x) \neq 0\}\) be sets.
+  Let \(X_f = \set{x \in X : f(x) \neq 0}\), \(X_g = \set{x \in X : g(x) \neq 0}\) and \(X_h = \set{x \in X : f(x) + g(x) \neq 0}\) be sets.
   Then by \cref{8.2.5} we know that \(X_f\), \(X_g\) and \(X_h\) are at most countable.
   Since
   \begin{align*}
@@ -561,7 +561,7 @@
   Suppose that \(c \in \R\), \(X\) is a set and \(f : X \to \R\) is a function such that \(\sum_{x \in X} f(x)\) is absolutely convergent.
   Since \(\sum_{x \in X} f(x)\) is absolutely convergent, by \cref{8.2.4} \(\exists N \in \R\) such that
   \[
-    N = \sup\Bigg\{\sum_{x \in A} \abs{f(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty.
+    N = \sup\set{\sum_{x \in A} \abs{f(x)} : A \subseteq X, A \text{ finite}} < \infty.
   \]
   Let \(A \subseteq X\) be a finite set.
   Then we have
@@ -572,14 +572,14 @@
   \end{align*}
   Since \(A\) is arbitrary, we have
   \[
-    \sup\Bigg\{\sum_{x \in A} \abs{cf(x)} : A \subseteq X, A \text{ finite}\Bigg\} \leq \abs{c}N < \infty.
+    \sup\set{\sum_{x \in A} \abs{cf(x)} : A \subseteq X, A \text{ finite}} \leq \abs{c}N < \infty.
   \]
   Thus by \cref{8.2.4} \(\sum_{x \in X} cf(x)\) is absolutely convergent.
 
   Now we show that \(\sum_{x \in X} cf(x) = c \sum_{x \in X} f(x)\).
   If \(X\) is at most countable, then the statement follows by \cref{ac:8.2.1}(b).
   So suppose that \(X\) is uncountable.
-  Let \(X_f = \{x \in X : f(x) \neq 0\}\) and \(X_h = \{x \in X : cf(x) \neq 0\}\) be two sets.
+  Let \(X_f = \set{x \in X : f(x) \neq 0}\) and \(X_h = \set{x \in X : cf(x) \neq 0}\) be two sets.
   By \cref{8.2.5} we know that both \(X_f\) and \(X_h\) are at most countable.
   \begin{itemize}
     \item If \(c = 0\), then \(X_h = \emptyset\) and we have
@@ -610,7 +610,7 @@
   We first show that if \(X = X_1 \cup X_2\), \(X_1 \cap X_2 = \emptyset\), then \(\sum_{x \in X_1} f(x)\) and \(\sum_{x \in X_2} f(x)\) is absolutely convergent.
   Since \(\sum_{x \in X} f(x)\) is absolutely convergent, by \cref{8.2.4} \(\exists N \in \R\) such that
   \[
-    N = \sup\Bigg\{\sum_{x \in A} \abs{f(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty.
+    N = \sup\set{\sum_{x \in A} \abs{f(x)} : A \subseteq X, A \text{ finite}} < \infty.
   \]
   Let \(A_1 \subseteq X_1, A_2 \subseteq X_2\) and both \(A_1, A_2\) are finite.
   Then we have
@@ -620,11 +620,11 @@
   \end{align*}
   Since \(A_1, A_2\) are arbitrary, we have
   \[
-    \sup\Bigg\{\sum_{x \in A} \abs{f(x)} : A \subseteq X_1, A \text{ finite}\Bigg\} \leq N < \infty
+    \sup\set{\sum_{x \in A} \abs{f(x)} : A \subseteq X_1, A \text{ finite}} \leq N < \infty
   \]
   and
   \[
-    \sup\Bigg\{\sum_{x \in A} \abs{f(x)} : A \subseteq X_2, A \text{ finite}\Bigg\} \leq N < \infty.
+    \sup\set{\sum_{x \in A} \abs{f(x)} : A \subseteq X_2, A \text{ finite}} \leq N < \infty.
   \]
   Thus by \cref{8.2.4} both \(\sum_{x \in X_1} f(x)\) and \(\sum_{x \in X_2} f(x)\) are absolutely convergent.
 
@@ -632,7 +632,7 @@
   \[
     \sum_{x \in X_1 \cup X_2} f(x) = \sum_{x \in X_1} f(x) + \sum_{x \in X_2} f(x).
   \]
-  Let \(X_f = \{x \in X : f(x) \neq 0\}, X_{f_1} = \{x \in X_1 : f(x) \neq 0\}, X_{f_2} = \{x \in X_2 : f(x) \neq 0\}\) be sets.
+  Let \(X_f = \set{x \in X : f(x) \neq 0}, X_{f_1} = \set{x \in X_1 : f(x) \neq 0}, X_{f_2} = \set{x \in X_2 : f(x) \neq 0}\) be sets.
   Clearly we have \(X_{f_1} \cup X_{f_2} = X_f\) and \(X_{f_1} \cap X_{f_2} = \emptyset\).
   By \cref{8.2.5} we know that \(X_f, X_{f_1}, X_{f_2}\) are at most countable.
   Then we have
@@ -646,11 +646,11 @@
   Finally we show that if \(X_1 \cup X_2 \subseteq X\), \(X_1 \cap X_2 = \emptyset\), \(h : X \to \R\) is a function such that \(\sum_{x \in X_1} h(x)\) and \(\sum_{x \in X_2} h(x)\) are absolutely convergent, then \(\sum_{x \in X_1 \cup X_2} h(x)\) is also absolutely convergent.
   Since \(\sum_{x \in X_1} h(x)\) and \(\sum_{x \in X_2} h(x)\) are absolutely convergent, by \cref{8.2.4} \(\exists N, M \in \R\) such that
   \[
-    N = \sup\Bigg\{\sum_{x \in A} \abs{h(x)} : A \subseteq X_1, A \text{ finite}\Bigg\} < \infty
+    N = \sup\set{\sum_{x \in A} \abs{h(x)} : A \subseteq X_1, A \text{ finite}} < \infty
   \]
   and
   \[
-    M = \sup\Bigg\{\sum_{x \in A} \abs{h(x)} : A \subseteq X_2, A \text{ finite}\Bigg\} < \infty.
+    M = \sup\set{\sum_{x \in A} \abs{h(x)} : A \subseteq X_2, A \text{ finite}} < \infty.
   \]
   Let \(A \subseteq X_1 \cup X_2\) be a finite set.
   Let \(A_1 = A \cap X_1\) and \(A_2 = A \cap X_2\).
@@ -671,7 +671,7 @@
   \end{align*}
   Since \(A\) is arbitrary, we have
   \[
-    \sup\Bigg\{\sum_{x \in A} \abs{h(x)} : A \subseteq X_1 \cup X_2, A \text{ finite}\Bigg\} \leq N + M < \infty
+    \sup\set{\sum_{x \in A} \abs{h(x)} : A \subseteq X_1 \cup X_2, A \text{ finite}} \leq N + M < \infty
   \]
   Thus by \cref{8.2.4} \(\sum_{x \in X_1 \cup X_2} h(x)\) is absolutely convergent.
   Since \(\sum_{x \in X_1 \cup X_2} h(x)\) is absolutely convergent, from the proof above we have
@@ -687,7 +687,7 @@
   We first show that \(\sum_{y \in Y} f\big(\phi(y)\big)\) is absolutely convergent.
   Since \(\sum_{x \in X} f(x)\) is absolutely convergent, by \cref{8.2.4}, \(\exists N \in \R\) such that
   \[
-    N = \sup\Bigg\{\sum_{x \in A} \abs{f(x)} : A \subseteq X, A \text{ finite}\Bigg\} < \infty
+    N = \sup\set{\sum_{x \in A} \abs{f(x)} : A \subseteq X, A \text{ finite}} < \infty
   \]
   Let \(A \subseteq Y\) be a finite set.
   Then we have
@@ -697,12 +697,12 @@
   \end{align*}
   Since \(A\) is arbitrary, we have
   \[
-    \sup\Bigg\{\sum_{y \in A} \abs{f\big(\phi(x)\big)} : A \subseteq Y, A \text{ finite}\Bigg\} \leq N < \infty.
+    \sup\set{\sum_{y \in A} \abs{f\big(\phi(x)\big)} : A \subseteq Y, A \text{ finite}} \leq N < \infty.
   \]
   Thus by \cref{8.2.4} \(\sum_{y \in Y} f\big(\phi(y)\big)\) is absolutely convergent.
 
   Now we show that \(\sum_{y \in Y} f\big(\phi(y)\big) = \sum_{x \in X} f(x)\).
-  Let \(X_f = \{x \in X : f(x) \neq 0\}\) and \(Y_f = \{y \in Y : f\big(\phi(y)\big) \neq 0\}\) be sets.
+  Let \(X_f = \set{x \in X : f(x) \neq 0}\) and \(Y_f = \set{y \in Y : f\big(\phi(y)\big) \neq 0}\) be sets.
   By \cref{8.2.5} we know that \(X_f\) and \(Y_f\) are at most countable.
   Clearly \(\phi\) is a bijective between \(X_f\) and \(Y_f\).
   Thus we have
@@ -715,7 +715,7 @@
 
 \begin{lem}\label{8.2.7}
   Let \(\sum_{n = 0}^\infty a_n\) be a series of real numbers which is conditionally convergent, but not absolutely convergent.
-  Define the sets \(A_+ \coloneqq \{n \in \N : a_n \geq 0\}\) and \(A_- \coloneqq \{n \in \N : a_n < 0\}\), thus \(A_+ \cup A_- = \N\) and \(A_+ \cap A_- = \emptyset\).
+  Define the sets \(A_+ \coloneqq \set{n \in \N : a_n \geq 0}\) and \(A_- \coloneqq \set{n \in \N : a_n < 0}\), thus \(A_+ \cup A_- = \N\) and \(A_+ \cap A_- = \emptyset\).
   Then both of the series \(\sum_{n \in A_+} a_n\) and \(\sum_{n \in A_-} a_n\) are not absolutely convergent.
 \end{lem}
 
@@ -777,14 +777,14 @@
   \begin{enumerate}[label=(\Roman*)]
     \item If \(\sum_{0 \leq i < j} a_{n_i} < L\), then we set
           \[
-            n_j \coloneqq \min\{n \in A_+ : n \neq n_i \text{ for all } i < j\}.
+            n_j \coloneqq \min\set{n \in A_+ : n \neq n_i \text{ for all } i < j}.
           \]
     \item If instead \(\sum_{0 \leq i < j} a_{n_i} \geq L\), then we set
           \[
-            n_j \coloneqq \min\{n \in A_- : n \neq n_i \text{ for all } i < j\}.
+            n_j \coloneqq \min\set{n \in A_- : n \neq n_i \text{ for all } i < j}.
           \]
   \end{enumerate}
-  Note that this recursive definition is well-defined because \(A_+\) and \(A_-\) are infinite, and so the sets \(\{n \in A_+ : n \neq n_i \text{ for all } i < j\}\) and \(\{n \in A_- : n \neq n_i \text{ for all } i < j\}\) are never empty.
+  Note that this recursive definition is well-defined because \(A_+\) and \(A_-\) are infinite, and so the sets \(\set{n \in A_+ : n \neq n_i \text{ for all } i < j}\) and \(\set{n \in A_- : n \neq n_i \text{ for all } i < j}\) are never empty.
   (Intuitively, we add a non-negative number to the series whenever the partial sum is too low, and add a negative number when the sum is too high.)
   One can then verify the following claims:
   \begin{itemize}
@@ -811,7 +811,7 @@
           Similar proof show that case II also occurs infinite number of times.
     \item The map \(j \mapsto n_j\) is surjective.
           We know that \(\forall n \in \N\), either \(n \in A_+\) or \(n \in A_-\).
-          If \(n \in A_+\) and there is no \(j \mapsto n\), then \(\forall n' > n\) there must also have no \(j \mapsto n'\), otherwise by definition we must have \(n = \min\{n \in A_+ : n \neq n_i \text{ for all } i < j\}\).
+          If \(n \in A_+\) and there is no \(j \mapsto n\), then \(\forall n' > n\) there must also have no \(j \mapsto n'\), otherwise by definition we must have \(n = \min\set{n \in A_+ : n \neq n_i \text{ for all } i < j}\).
           But then case I only occur finite number of times, a contradiction.
           Thus \(\exists j \mapsto n\).
           Similar argument show that if \(n \in A_-\) then \(\exists j \mapsto n\).
@@ -822,8 +822,8 @@
           \[
             \forall \varepsilon \in \R^+, \exists N \in \N : \forall j \geq N, \abs{a_j - 0} \leq \varepsilon.
           \]
-          Thus the set \(E = \{j \in \N : a_j - 0 > \varepsilon\}\) is finite.
-          Since \(j \to n_j\) is bijective, we know that the set \(E' = \{n_j \in \N : j \in E\}\) is also finite.
+          Thus the set \(E = \set{j \in \N : a_j - 0 > \varepsilon}\) is finite.
+          Since \(j \to n_j\) is bijective, we know that the set \(E' = \set{n_j \in \N : j \in E}\) is also finite.
           Let \(M = \max(E')\).
           Then we have
           \[
@@ -837,7 +837,7 @@
           \]
           Let \(K\) be the set
           \[
-            K = \Bigg\{k \in \N : (k \geq j) \land \Bigg(\sum_{i = 0}^k a_{n_i} < L\Bigg) \land \Bigg(\sum_{i = 0}^{k + 1} a_{n_i} \geq L\Bigg)\Bigg\}.
+            K = \set{k \in \N : (k \geq j) \land \Bigg(\sum_{i = 0}^k a_{n_i} < L\Bigg) \land \Bigg(\sum_{i = 0}^{k + 1} a_{n_i} \geq L\Bigg)}.
           \]
           We know that \(K \neq \emptyset\) since case II occurs infinite number of times.
           Let \(k = \min(K)\).
@@ -957,12 +957,12 @@
   \begin{enumerate}[label=(\Roman*)]
     \item If \(\sum_{0 \leq i < j} a_{n_i} < L_j\), then we set
           \begin{align*}
-            n_j       & = \min\{n \in A_+ : n \neq n_i \text{ for all } i < j\}; \\
+            n_j       & = \min\set{n \in A_+ : n \neq n_i \text{ for all } i < j}; \\
             L_{j + 1} & = L_j.
           \end{align*}
     \item If \(\sum_{0 \leq i < j} a_{n_i} \geq L_j\), then we set
           \begin{align*}
-            n_j       & = \min\{n \in A_- : n \neq n_i \text{ for all } i < j\}; \\
+            n_j       & = \min\set{n \in A_- : n \neq n_i \text{ for all } i < j}; \\
             L_{j + 1} & = L_j + 1.
           \end{align*}
   \end{enumerate}
@@ -1018,7 +1018,7 @@
           We conclude that both Case I and II occur infinite number of times.
     \item The map \(j \mapsto n_j\) is surjective.
           We know that \(\forall n \in \N\), either \(n \in A_+\) or \(n \in A_-\).
-          If \(n \in A_+\) and there is no \(j \mapsto n\), then \(\forall n' > n\) there must also have no \(j \mapsto n'\), otherwise by definition we must have \(n = \min\{n \in A_+ : n \neq n_i \text{ for all } i < j\}\).
+          If \(n \in A_+\) and there is no \(j \mapsto n\), then \(\forall n' > n\) there must also have no \(j \mapsto n'\), otherwise by definition we must have \(n = \min\set{n \in A_+ : n \neq n_i \text{ for all } i < j}\).
           But then case I only occur finite number of times, a contradiction.
           Thus \(\exists j \mapsto n\).
           Similar argument show that if \(n \in A_-\) then \(\exists j \mapsto n\).

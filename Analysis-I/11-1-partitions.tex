@@ -99,7 +99,7 @@
   The base case \(P(0)\) is trivial;
   the only way that \(I\) can be partitioned into an empty partition is if \(I\) is itself empty, at which point the claim is easy.
   The case \(P(1)\) is also very easy;
-  the only way that \(I\) can be partitioned into a singleton set \(\{J\}\) is if \(J = I\), at which point the claim is again very easy.
+  the only way that \(I\) can be partitioned into a singleton set \(\set{J}\) is if \(J = I\), at which point the claim is again very easy.
 
   Now suppose inductively that \(P(n)\) is true for some \(n \geq 1\), and now we prove \(P(n + 1)\).
   Let \(I\) be a bounded interval, and let \(\mathbf{P}\) be a partition of \(I\) of cardinality \(n + 1\).
@@ -109,16 +109,16 @@
 
       Let us first suppose that \(b \in I\), i.e., \(I\) is either \((a, b]\) or \([a, b]\).
   Since \(b \in I\), we know that one of the intervals \(K\) in \(\mathbf{P}\) contains \(b\).
-  Since \(K\) is contained in \(I\), it must therefore be of the form \((c, b]\), \([c, b]\), or \(\{b\}\) for some real number \(c\), with \(a \leq c \leq b\) (in the latter case of \(K = \{b\}\), we set \(c \coloneqq b\)).
+  Since \(K\) is contained in \(I\), it must therefore be of the form \((c, b]\), \([c, b]\), or \(\set{b}\) for some real number \(c\), with \(a \leq c \leq b\) (in the latter case of \(K = \set{b}\), we set \(c \coloneqq b\)).
   In particular, this means that the set \(I \setminus K\) is also an interval of the form \([a, c]\), \((a, c)\), \((a, c]\), \([a, c)\) when \(c > a\), or a point or empty set when \(a = c\).
   Either way, we easily see that
   \[
     \abs{I} = \abs{K} + \abs{I \setminus K}.
   \]
-  On the other hand, since \(\mathbf{P}\) forms a partition of \(I\), we see that \(\mathbf{P} \setminus \{K\}\) forms a partition of \(I \setminus K\).
+  On the other hand, since \(\mathbf{P}\) forms a partition of \(I\), we see that \(\mathbf{P} \setminus \set{K}\) forms a partition of \(I \setminus K\).
   By the induction hypothesis, we thus have
   \[
-    \abs{I \setminus K} = \sum_{J \in \mathbf{P} \setminus \{K\}} \abs{J}.
+    \abs{I \setminus K} = \sum_{J \in \mathbf{P} \setminus \set{K}} \abs{J}.
   \]
   Combining these two identities (and using the laws of addition for finite sets, see \cref{7.1.11}(e)) we obtain
   \[
@@ -148,7 +148,7 @@
   Let \(I\) be a bounded interval, and let \(\mathbf{P}\) and \(\mathbf{P}'\) be two partitions of \(I\).
   We define the \emph{common refinement} \(\mathbf{P} \# \mathbf{P}'\) of \(\mathbf{P}\) and \(\mathbf{P}'\) to be the set
   \[
-    \mathbf{P} \# \mathbf{P}' \coloneqq \{K \cap J : K \in \mathbf{P} \text{ and } J \in \mathbf{P}'\}.
+    \mathbf{P} \# \mathbf{P}' \coloneqq \set{K \cap J : K \in \mathbf{P} \text{ and } J \in \mathbf{P}'}.
   \]
 \end{defn}
 
@@ -240,7 +240,7 @@
   Let \(I\) be a bounded interval, and let \(\mathbf{P}, \mathbf{P}'\) be two partitions of \(I\) such that \(\mathbf{P}'\) is finer than \(\mathbf{P}\).
   For each \(K \in \mathbf{P}\), we define \(\mathbf{P}_K\) as follow:
   \[
-    \mathbf{P}_K = \{K' \in \mathbf{P}' : K' \subseteq K\}.
+    \mathbf{P}_K = \set{K' \in \mathbf{P}' : K' \subseteq K}.
   \]
   Then \(\mathbf{P}_K\) is a partition of \(K\) for every \(K \in \mathbf{P}\), and \(\bigcup_{K \in \mathbf{P}} \mathbf{P}_K = \mathbf{P}'\).
 \end{ac}
@@ -276,13 +276,13 @@
   Let \(I, J\) be bounded intervals such that \(I \neq \emptyset\) and \(I \subseteq J\), and let \(\mathbf{P}\) be a partition of \(I\).
   Let \(I_1, I_2\) be the sets
   \[
-    I_1 = \Big\{x \in J : \big(x \leq \inf(I)\big) \land (x \notin I)\Big\}
+    I_1 = \set{x \in J : \big(x \leq \inf(I)\big) \land (x \notin I)}
   \]
   and
   \[
-    I_2 = \Big\{x \in J : \big(x \geq \sup(I)\big) \land (x \notin I)\Big\}.
+    I_2 = \set{x \in J : \big(x \geq \sup(I)\big) \land (x \notin I)}.
   \]
-  Then \(\mathbf{P} \cup \{I_1, I_2\}\) is a partion of \(J\).
+  Then \(\mathbf{P} \cup \set{I_1, I_2}\) is a partion of \(J\).
 \end{ac}
 
 \begin{proof}
@@ -332,13 +332,13 @@
   Then we have \(x \leq \inf(I) \leq \sup(I) \leq x\).
   Now we split into two cases:
   \begin{itemize}
-    \item If \(\inf(I) = \sup(I)\), then \(I = \{a\}\) for some \(a \in \R\).
+    \item If \(\inf(I) = \sup(I)\), then \(I = \set{a}\) for some \(a \in \R\).
           But \(x \leq a \leq x\) implies \(x = a\) and \(x \in I\), which contradict to \(x \notin I\).
     \item If \(\inf(I) < \sup(I)\), then we have \(x < x\), a contradiction.
   \end{itemize}
   From all cases above we conclude that \(I_1 \cap I_2 = \emptyset\).
 
-  Let \(\mathbf{P}_J = \mathbf{P} \cup \{I_1, I_2\}\).
+  Let \(\mathbf{P}_J = \mathbf{P} \cup \set{I_1, I_2}\).
   By definition we know that \(\bigcup \mathbf{P}_J \subseteq J\).
   Let \(x \in J\).
   Now we split into two cases:
@@ -380,14 +380,14 @@
 \end{ex}
 
 \begin{proof}
-  Let \(\mathbf{P} = \{I_1, \dots, I_n\}\).
-  If \(c = b\), then \((c, b) = \emptyset\), and thus by \cref{11.1.10} \(\mathbf{P} \cup \{\emptyset\}\) is a partition of \(I\).
+  Let \(\mathbf{P} = \set{I_1, \dots, I_n}\).
+  If \(c = b\), then \((c, b) = \emptyset\), and thus by \cref{11.1.10} \(\mathbf{P} \cup \set{\emptyset}\) is a partition of \(I\).
   So we only need to proof the cases where \(a \leq c < b\).
   Suppose for sake of contradiction that every interval \(I_j\) in the partition \(\mathbf{P}\) is not of the form \((c, b)\) or \([c, b)\).
-  By \cref{11.1.10} this means for every \(j \in \{1, \dots, n\}\), \(x \in I_j\) implies \(x \geq b\) or \(x < c\).
+  By \cref{11.1.10} this means for every \(j \in \set{1, \dots, n}\), \(x \in I_j\) implies \(x \geq b\) or \(x < c\).
   Since \(I = (a, b)\) or \(I = [a, b)\), we cannot have \(x \geq b\), thus we must have \(x < c\).
-  This means \(\sup(I_j) \leq c < b\) for every \(j \in \{1, \dots, n\}\).
-  But then we have \(\sup(I) = b > \max\big\{\sup(I_j) : j \in \{1, \dots, n\}\big\}\), a contradiction.
+  This means \(\sup(I_j) \leq c < b\) for every \(j \in \set{1, \dots, n}\).
+  But then we have \(\sup(I) = b > \max\set{\sup(I_j) : j \in \set{1, \dots, n}}\), a contradiction.
   Thus we must have one interval \(I_j \in \mathbf{P}\) such that \(I_j = (c, b)\) for some \(a \leq c < b\).
 \end{proof}
 
