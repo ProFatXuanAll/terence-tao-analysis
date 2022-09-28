@@ -4,21 +4,21 @@
   Let \(m\) be a natural number.
   To multiply zero to \(m\), we define \(0 \times m \coloneqq 0\).
   Now suppose inductively that we have defined how to multiply \(n\) to \(m\).
-  Then we can multiply \(n++\) to \(m\) by defining \((n++) \times m \coloneqq (n \times m) + m\).
+  Then we can multiply \(n\pp\) to \(m\) by defining \((n\pp) \times m \coloneqq (n \times m) + m\).
 \end{defn}
 
 \begin{ac}\label{ac:2.3.1}
   The product of two natural numbers is a natural number.
 \end{ac}
 
-\begin{proof}
-  Let \(n\), \(m\) be two natural numbers.
+\begin{proof}[\pf{ac:2.3.1}]
+  Let \(n, m\) be two natural numbers.
   We use induction on \(n\).
   For \(n = 0\), by \cref{2.3.1} we have \(0 \times m = 0\), which is a natural number by \cref{2.1}.
   So the base case holds.
   Suppose inductively that for some natural number \(n\) we have \(n \times m\) is a natural number.
-  We want to show that \((n++) \times m\) is also a natural number.
-  By \cref{2.3.1}, \((n++) \times m = (n \times m) + m\).
+  We want to show that \((n\pp) \times m\) is also a natural number.
+  By \cref{2.3.1}, \((n\pp) \times m = (n \times m) + m\).
   By induction hypothesis \(n \times m\) is a natural number.
   By \cref{ac:2.2.1}, \((n \times m) + m\) is again a natural number.
   This closes the induction.
@@ -29,57 +29,60 @@
   Then \(n \times 0 = 0\).
 \end{ac}
 
-\begin{proof}
+\begin{proof}[\pf{ac:2.3.2}]
   We use induction on \(n\).
   For \(n = 0\), by \cref{2.3.1} we have \(0 \times 0 = 0\).
   So the base case holds.
   Suppose inductively that for some natural number \(n\) we have \(n \times 0 = 0\).
-  Then for \(n++\) we have
+  Then for \(n\pp\) we have
   \begin{align*}
-    (n++) \times 0 & = (n \times 0) + 0 &  & \by{2.3.1} \\
-                   & = 0 + 0            &  & \byIH      \\
-                   & = 0.               &  & \by{2.2.1}
+    (n\pp) \times 0 & = (n \times 0) + 0 &  & \by{2.3.1} \\
+                    & = 0 + 0            &  & \byIH      \\
+                    & = 0.               &  & \by{2.2.1}
   \end{align*}
   This closes the induction.
 \end{proof}
 
 \begin{ac}\label{ac:2.3.3}
-  Let \(n\), \(m\) be natural numbers.
-  Then \(n \times (m++) = (n \times m) + n\).
+  Let \(n, m\) be natural numbers.
+  Then \(n \times (m\pp) = (n \times m) + n\).
 \end{ac}
 
-\begin{proof}
+\begin{proof}[\pf{ac:2.3.3}]
   We use induction on \(n\) (fixed \(m\)).
-  For \(n = 0\), by \cref{2.3.1} we have \(0 \times (m++) = 0\).
+  For \(n = 0\), by \cref{2.3.1} we have \(0 \times (m\pp) = 0\).
   So the base case holds.
-  Suppose inductively that for some natural number \(n\) we have \(n \times (m++) = (n \times m) + n\).
-  Then for \(n++\), we have
+  Suppose inductively that for some natural number \(n\) we have \(n \times (m\pp) = (n \times m) + n\).
+  Then for \(n\pp\), we have
   \begin{align*}
-    (n++) \times (m++)
-     & = (n \times (m++)) + (m++)  &  & \by{2.3.1} \\
-     & = (n \times m) + n + (m++)  &  & \byIH      \\
-     & = (n \times m) + (n++) + m  &  & \by{2.2.5} \\
-     & = (n \times m) + m + (n++)  &  & \by{2.2.4} \\
-     & = ((n++) \times m) + (n++). &  & \by{2.3.1}
+    (n\pp) \times (m\pp)
+     & = (n \times (m\pp)) + (m\pp)  &  & \by{2.3.1} \\
+     & = ((n \times m) + n) + (m\pp) &  & \byIH      \\
+     & = (n \times m) + (n + (m\pp)) &  & \by{2.2.5} \\
+     & = (n \times m) + ((n + m)\pp) &  & \by{2.2.3} \\
+     & = (n \times m) + ((m + n)\pp) &  & \by{2.2.4} \\
+     & = (n \times m) + (m + (n\pp)) &  & \by{2.2.3} \\
+     & = ((n \times m) + m) + (n\pp) &  & \by{2.2.5} \\
+     & = ((n\pp) \times m) + (n\pp). &  & \by{2.3.1}
   \end{align*}
   This closes the induction.
 \end{proof}
 
 \begin{lem}[Multiplication is commutative]\label{2.3.2}
-  Let \(n\), \(m\) be natural numbers.
-  Then \(n \times m = m \times n\)
+  Let \(n, m\) be natural numbers.
+  Then \(n \times m = m \times n\).
 \end{lem}
 
-\begin{proof}
+\begin{proof}[\pf{2.3.2}]
   We use induction on \(n\) (fixed \(m\)).
   For \(n = 0\), by \cref{2.3.1} we have \(0 \times m = 0\), and by \cref{ac:2.3.2} we have \(m \times 0 = 0\).
   So the base case holds.
   Suppose inductively that for some natural number \(n\) we have \(n \times m = m \times n\).
-  Then for \(n++\), we have
+  Then for \(n\pp\), we have
   \begin{align*}
-    (n++) \times m & = (n \times m) + m &  & \by{2.3.1}    \\
-                   & = (m \times n) + m &  & \byIH         \\
-                   & = m \times (n++).  &  & \by{ac:2.3.3}
+    (n\pp) \times m & = (n \times m) + m &  & \by{2.3.1}    \\
+                    & = (m \times n) + m &  & \byIH         \\
+                    & = m \times (n\pp). &  & \by{ac:2.3.3}
   \end{align*}
   This closes the induction.
 \end{proof}
@@ -89,29 +92,34 @@
 \end{note}
 
 \begin{lem}[Positive natural numbers have no zero divisors]\label{2.3.3}
-  Let \(n\), \(m\) be natural numbers.
-  Then \(n \times m = 0\) if and only if at least one of \(n\), \(m\) is equal to zero.
+  Let \(n, m\) be natural numbers.
+  Then \(n \times m = 0\) iff at least one of \(n, m\) is equal to zero.
   In particular, if \(n\) and \(m\) are both positive, then \(nm\) is also positive.
 \end{lem}
 
-\begin{proof}
-  Let \(n, m, a, b, c, d\) be natural numbers where \(n = a++\), \(m = b++\), \(c = ab + a\) and \(d = b++\).
-  Then
+\begin{proof}[\pf{2.3.3}]
+  First suppose that \(n \times m = 0\).
+  Suppose for sake of contradiction that \(n \neq 0 \neq m\).
+  By \cref{2.2.7} this means \(n, m\) are positive natural numbers.
+  Then by \cref{2.2.10} there exist some natural numbers \(a, b\) such that \(n = a\pp\) and \(m = b\pp\).
+  Thus we have
   \begin{align*}
-         & n \text{ is positive} \land m \text{ is positive}                                                \\
-    \iff & n \neq 0 \land m \neq 0                           &  & \by{2.2.7}                                \\
-    \iff & n = a++ \land m = b++                             &  & \by{2.2.10}                               \\
-    \iff & nm = (a++)(b++)                                                                                  \\
-         & = ab + a + (b++)                                  &  & \text{(by \cref{2.3.1} and \cref{2.3.2})} \\
-    \iff & nm = c + d \land d \neq 0                         &  & \text{(by \cref{2.3})}                    \\
-    \iff & nm \text{ is positive}.                           &  & \by{2.2.8}
+    n \times m & = (a\pp) \times (b\pp)                      \\
+               & = a \times (b\pp) + (b\pp). &  & \by{2.3.1}
   \end{align*}
-  And we must also have
-  \begin{align*}
-         & (n \text{ is positive} \land m \text{ is positive} \iff nm \text{ is positive})                                 \\
-    \iff & (\lnot (n \text{ is positive} \land m \text{ is positive}) \iff \lnot (nm \text{ is positive}))                 \\
-    \iff & (n = 0 \lor m = 0 \iff nm = 0).                                                                 &  & \by{2.2.7}
-  \end{align*}
+  By \cref{2.3} we know that \(b\pp \neq 0\).
+  Thus by \cref{2.2.8} we know that \(n \times m\) is a positive natural number.
+  But this contradict to \(n \times m = 0\).
+  Thus we must have either \(n = 0\) or \(m = 0\).
+
+  Now suppose that \(n = 0\) or \(m = 0\).
+  If \(n = 0\), then by \cref{2.3.1} we have \(n \times m = 0 \times m = 0\).
+  If \(m = 0\), then by \cref{ac:2.3.2} we have \(n \times m = n \times 0 = 0\).
+  In either cases we have \(n \times m = 0\).
+
+  From all proofs above we conclude that \(n \times m = 0 \iff (n = 0) \lor (m = 0)\).
+  Thus the contrapositive show that \((n \neq 0) \land (m \neq 0) \iff n \times m \neq 0\).
+  By \cref{2.2.7} we see that \(n, m\) are positive natural number iff \(n \times m \neq 0\).
 \end{proof}
 
 \begin{ac}\label{ac:2.3.4}
@@ -119,64 +127,64 @@
   Then \(n1 = 1n = n\).
 \end{ac}
 
-\begin{proof}
+\begin{proof}[\pf{ac:2.3.4}]
   By \cref{2.3.2} we know that \(n1 = 1n\), thus we only need to show that \(n1 = n\).
   We use induction on \(n\).
   For \(n=0\), by \cref{2.3.3} we have \(0 \times 1 = 0\), so the base case holds.
   Suppose inductively that \(n1 = n\) is true for some \(n\).
   Then for \(n + 1\), by \cref{2.3.1} we have \((n + 1) \times 1 = n1 + 1\).
   By induction hypothesis we have \(n1 = n\).
-  Thus we have \(n1 + 1 = n + 1\), and this closes the induction.
+  Thus we have \((n + 1) \times 1 = n + 1\), and this closes the induction.
 \end{proof}
 
 \begin{prop}[Distributive law]\label{2.3.4}
-  For any natural numbers \(a\), \(b\), \(c\), we have \(a(b + c) = ab + ac\) and \((b + c)a = ba + ca\).
+  For any natural numbers \(a, b, c\), we have \(a(b + c) = ab + ac\) and \((b + c)a = ba + ca\).
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{2.3.4}]
   Since multiplication is commutative we only need to show the first identity \(a(b + c) = ab + ac\).
   We keep \(a\) and \(b\) fixed, and use induction on \(c\).
   Let's prove the base case \(c = 0\), i.e., \(a(b + 0) = ab + a0\).
   The left-hand side is \(ab\), while the right-hand side is \(ab + 0 = ab\), so we are done with the base case.
-  Now let us suppose inductively that \(a(b + c) = ab + ac\), and let us prove that \(a(b + (c++)) = ab + a(c++)\).
-  The left-hand side is \(a((b + c)++) = a(b + c) + a\), while the right-hand side is \(ab + ac + a = a(b + c) + a\) by the induction hypothesis, and so we can close the induction.
+  Now let us suppose inductively that \(a(b + c) = ab + ac\), and let us prove that \(a(b + (c\pp)) = ab + a(c\pp)\).
+  The left-hand side is \(a((b + c)\pp) = a(b + c) + a\) by \cref{ac:2.3.3}, while the right-hand side is \(ab + ac + a = a(b + c) + a\) by the induction hypothesis, and so we can close the induction.
 \end{proof}
 
 \begin{prop}[Multiplication is associative]\label{2.3.5}
-  For any natural numbers \(a\), \(b\), \(c\), we have \((a \times b) \times c = a \times (b \times c)\).
+  For any natural numbers \(a, b, c\), we have \((a \times b) \times c = a \times (b \times c)\).
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{2.3.5}]
   We keep \(a\) and \(b\) fixed, and use induction on \(c\).
-  For \(c = 0\), by \cref{ac:2.3.2} we have \((a \times b) \times 0 = 0\) and \(a \times (b \times 0) = a \times 0 = 0\).
+  For \(c = 0\), by \cref{ac:2.3.2} we have \((a \times b) \times 0 = 0 = a \times 0 = a \times (b \times 0)\).
   So the base case holds.
   Suppose inductively that for some natural number \(c\) we have \((a \times b) \times c = a \times (b \times c)\).
-  Then for \(c++\), we have
+  Then for \(c\pp\), we have
   \begin{align*}
-    (a \times b) \times (c++) & = (a \times b) \times c + a \times b &  & \by{ac:2.3.3} \\
-                              & = a \times (b \times c) + a \times b &  & \byIH         \\
-                              & = a \times (b \times c + b)          &  & \by{2.3.4}    \\
-                              & = a \times (b \times (c++)).         &  & \by{ac:2.3.3}
+    (a \times b) \times (c\pp) & = (a \times b) \times c + a \times b &  & \by{ac:2.3.3} \\
+                               & = a \times (b \times c) + a \times b &  & \byIH         \\
+                               & = a \times (b \times c + b)          &  & \by{2.3.4}    \\
+                               & = a \times (b \times (c\pp)).        &  & \by{ac:2.3.3}
   \end{align*}
   This closes the induction.
 \end{proof}
 
 \begin{prop}[Multiplication preserves order]\label{2.3.6}
-  If \(a\), \(b\) are natural numbers such that \(a < b\), and \(c\) is positive, then \(ac < bc\).
+  If \(a, b\) are natural numbers such that \(a < b\), and \(c\) is positive, then \(ac < bc\).
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{2.3.6}]
   Since \(a < b\), we have \(b = a + d\) for some positive \(d\) by \cref{2.2.12}(f).
-  Multiplying by \(c\) and using the distributive law (by \cref{2.3.4}) we obtain \(bc = ac + dc\).
-  Since \(d\) is positive, and \(c\) is positive, \(dc\) is positive (by \cref{2.3.3}), and hence \(ac < bc\) (by \cref{2.2.11}) as desired.
+  Multiplying by \(c\) and using the distributive law (\cref{2.3.4}) we obtain \(bc = ac + dc\).
+  Since \(d\) is positive, and \(c\) is positive, \(dc\) is positive (\cref{2.3.3}), and hence \(ac < bc\) (by \cref{2.2.11}), as desired.
 \end{proof}
 
 \begin{cor}[Cancellation law]\label{2.3.7}
-  Let \(a\), \(b\), \(c\) be natural numbers such that \(ac = bc\) and \(c\) is non-zero.
+  Let \(a, b, c\) be natural numbers such that \(ac = bc\) and \(c\) is non-zero.
   Then \(a = b\).
 \end{cor}
 
-\begin{proof}
+\begin{proof}[\pf{2.3.7}]
   By the trichotomy of order (\cref{2.2.13}), we have three cases: \(a < b\), \(a = b\), \(a > b\).
   Suppose first that \(a < b\), then by \cref{2.3.6} we have \(ac < bc\), a contradiction.
   We can obtain a similar contradiction when \(a > b\).
@@ -192,26 +200,38 @@
   Then there exist natural numbers \(m\), \(r\) such that \(0 \leq r < q\) and \(n = mq + r\).
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{2.3.9}]
   We use induction on \(n\) (fixed \(q\)).
-  For \(n = 0\), let \(r = m = 0\), then we have \(0 = 0q + 0\) and \(0 \leq 0 < q\).
-  So the base case holds.
-  Suppose inductively that for some natural number \(n\) we have \(n = mq + r\), \(0 \leq r < q\).
-  Then for \(n++\), we have
+  For \(n = 0\), let \(r = m = 0\).
+  Then we have
   \begin{align*}
-    n++ & = (mq + r)++ &  & \byIH      \\
-        & = mq + (r++) &  & \by{2.2.3} \\
+    mq + r & = 0q + 0                 \\
+           & = 0 + 0  &  & \by{2.3.1} \\
+           & = 0      &  & \by{2.2.1}
   \end{align*}
-  Since \(r < q\), by \cref{2.2.12}(e) we have \(r++ \leq q\).
+  and
+  \begin{align*}
+    0 & \leq 0 = r &  & \by{2.2.12}[a] \\
+      & < q.       &  & \by{2.2.11}
+  \end{align*}
+  So the base case holds.
+  Suppose inductively that for some natural number \(n\), there exist natural numbers \(m, r\) such that \(n = mq + r\) and \(0 \leq r < q\).
+  Then for \(n\pp\), we have
+  \begin{align*}
+    n\pp & = (mq + r)\pp  &  & \byIH      \\
+         & = mq + (r\pp). &  & \by{2.2.3} \\
+  \end{align*}
+  Since \(r < q\), by \cref{2.2.12}(e) we have \(r\pp \leq q\).
+  Now we split into two cases:
   \begin{itemize}
-    \item If \(r++ < q\), then we have \(0 \leq r < r++\) and we are done in this case.
-    \item If \(r++ = q\), then by \cref{2.3.1} we have
+    \item If \(r\pp < q\), then we have \(0 \leq r < r\pp < q\) and we are done in this case.
+    \item If \(r\pp = q\), then by \cref{2.3.1} we have
           \[
-            n++ = mq + q = (m++) \times q = (m++) \times q + r'
+            n\pp = mq + (r\pp) = mq + q = (m\pp) \times q = (m\pp) \times q + r'
           \]
-          where \(r' = 0\) and \(0 \leq r' < q\) by \cref{2.2.11}, and we are also done in this case.
+          where \(r' = 0\) and \(0 \leq r' < q\) by \cref{ac:2.2.4}, and we are also done in this case.
   \end{itemize}
-  From all cases above we can find some natural numbers \(m, r\) such that \(n++ = mq + r\) and \(0 \leq r < q\).
+  From all cases above we can find some natural numbers \(m, r\) such that \(n\pp = mq + r\) and \(0 \leq r < q\).
   This closes the induction.
 \end{proof}
 
@@ -223,8 +243,20 @@
 \begin{defn}[Exponentiation for natural numbers]\label{2.3.11}
   Let \(m\) be a natural number.
   To raise \(m\) to the power \(0\), we define \(m^0 \coloneqq 1\); in particular, we define \(0^0 \coloneqq 1\).
-  Now suppose recursively that \(m^n\) has been defined for some natural number \(n\), then we define \(m^{n++} \coloneqq m^n \times m\).
+  Now suppose recursively that \(m^n\) has been defined for some natural number \(n\), then we define \(m^{n\pp} \coloneqq m^n \times m\).
 \end{defn}
+
+\begin{ac}\label{ac:2.3.5}
+  For any natural number \(n\), we have \(n^1 = n\).
+\end{ac}
+
+\begin{proof}[\pf{ac:2.3.5}]
+  We have
+  \begin{align*}
+    n^1 & = n^0 \times n = 1 \times n &  & \by{2.3.11}   \\
+        & = n.                        &  & \by{ac:2.3.4}
+  \end{align*}
+\end{proof}
 
 \exercisesection
 
@@ -232,7 +264,7 @@
   Prove \cref{2.3.2}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:2.3.1}]
   See \cref{2.3.2}
 \end{proof}
 
@@ -240,7 +272,7 @@
   Prove \cref{2.3.3}
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:2.3.2}]
   See \cref{2.3.3}
 \end{proof}
 
@@ -248,7 +280,7 @@
   Prove \cref{2.3.5}
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:2.3.3}]
   See \cref{2.3.5}
 \end{proof}
 
@@ -256,23 +288,17 @@
   Prove the identity \((a + b)^2 = a^2 + 2ab + b^2\) for all natural numbers \(a\), \(b\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:2.3.4}]
+  We have
   \begin{align*}
-    (a + b)^2 & = (a + b)^1 \times (a + b)                             &  & \by{2.3.11} \\
-              & = (a + b)^0 \times (a + b) \times (a + b)              &  & \by{2.3.11} \\
-              & = 1 \times (a + b) \times (a + b)                      &  & \by{2.3.11} \\
-              & = (1 \times (a + b)) \times (a + b)                    &  & \by{2.3.5}  \\
-              & = (1 \times a + 1 \times b)) \times (a + b)            &  & \by{2.3.4}  \\
-              & = ((0 \times a + a) + (0 \times b + b)) \times (a + b) &  & \by{2.3.1}  \\
-              & = (a + b) \times (a + b)                               &  & \by{2.3.1}  \\
-              & = a(a + b) + b(a + b)                                  &  & \by{2.3.5}  \\
-              & = aa + ab + ba + bb                                    &  & \by{2.3.5}  \\
-              & = a^2 + ab + ba + b^2                                  &  & \by{2.3.11} \\
-              & = a^2 + ab + ab + b^2                                  &  & \by{2.3.2}  \\
-              & = a^2 + (0 + ab) + ab + b^2                            &  & \by{2.2.1}  \\
-              & = a^2 + 0ab + ab + ab + b^2                            &  & \by{2.3.1}  \\
-              & = a^2 + 1ab + ab + b^2                                 &  & \by{2.3.2}  \\
-              & = a^2 + 2ab + b^2                                      &  & \by{2.3.1}  \\
+    (a + b)^2 & = (a + b)^1 \times (a + b)                         &  & \by{2.3.11}   \\
+              & = (a + b) \times (a + b)                           &  & \by{ac:2.3.5} \\
+              & = a(a + b) + b(a + b) = aa + ab + ba + bb          &  & \by{2.3.4}    \\
+              & = a^1 \times a + ab + ba + b^1 \times b            &  & \by{ac:2.3.5} \\
+              & = a^2 + ab + ba + b^2                              &  & \by{2.3.11}   \\
+              & = a^2 + ab + ab + b^2                              &  & \by{2.3.2}    \\
+              & = a^2 + 1 \times ab + 1 \times ab + b^2            &  & \by{ac:2.3.4} \\
+              & = a^2 + (1 + 1) \times ab + b^2 = a^2 + 2ab + b^2. &  & \by{2.3.4}
   \end{align*}
 \end{proof}
 
@@ -280,6 +306,6 @@
   Prove \cref{2.3.9}
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:2.3.5}]
   See \cref{2.3.9}
 \end{proof}
