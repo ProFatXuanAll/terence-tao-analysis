@@ -77,14 +77,13 @@
   if there were two sets \(\emptyset\) and \(\emptyset'\) which were both empty, then they would be equal to each other.
 \end{ac}
 
-\begin{proof}
-  Suppose there exist two empty set \(\emptyset\) and \(\emptyset'\).
-  Then we have
-  \begin{align*}
-         & (\forall x : (x \in \emptyset \implies x \in \emptyset') \land (x \in \emptyset' \implies x \in \emptyset)) &  & \text{(vacuously true)} \\
-    \iff & (\forall x : x \in \emptyset \iff x \in \emptyset')                                                                                      \\
-    \iff & \emptyset = \emptyset'.                                                                                     &  & \by{3.1.4}
-  \end{align*}
+\begin{proof}[\pf{ac:3.1.2}]
+  Suppose there exist two empty sets \(\emptyset\) and \(\emptyset'\).
+  Then the statement ``every element \(x\) of \(\emptyset\) is also an element of \(\emptyset'\)'' is vacuously true since by \cref{3.2} there does not exist any element \(x\) of \(\emptyset\).
+  Similarly the statement ``every element \(x\) of \(\emptyset'\) is also an element of \(\emptyset\)'' is vacuously true.
+  Thus we see that \(x\) is an element of \(\emptyset\) iff \(x\) is an element \(\emptyset'\).
+  By \cref{3.1.4} this means \(\emptyset = \emptyset'\).
+  Thus we conclude that empty set is unique.
 \end{proof}
 
 \begin{note}
@@ -97,7 +96,7 @@
   Then there exists an object \(x\) such that \(x \in A\).
 \end{lem}
 
-\begin{proof}
+\begin{proof}[\pf{3.1.6}]
   We prove by contradiction.
   Suppose there does not exist any object \(x\) such that \(x \in A\).
   Then for all objects \(x\), we have \(x \notin A\).
@@ -106,7 +105,7 @@
 \end{proof}
 
 \begin{rmk}\label{3.1.7}
-  The above Lemma asserts that given any non-empty set \(A\), we are allowed to ``choose'' an element \(x\) of \(A\) which demonstrates this non-emptyness.
+  \cref{3.1.6} asserts that given any non-empty set \(A\), we are allowed to ``choose'' an element \(x\) of \(A\) which demonstrates this non-emptyness.
   Later on (in \cref{3.5.12}) we will show that given any finite number of non-empty sets, say \(A_1, \dots, A_n\), it is possible to choose one element \(x_1, \dots, x_n\) from each set \(A_1, \dots, A_n\);
   this is known as ``finite choice''.
   However, in order to choose elements from an infinite number of sets, we need an additional axiom, the \emph{axiom of choice} (\cref{8.1}).
@@ -117,6 +116,7 @@
   One is a set;
   the other is a number.
   However, it is true that the \emph{cardinality} of the empty set is \(0\).
+  See \cref{ex:3.6.2}.
 \end{rmk}
 
 \begin{ax}[Singleton sets and pair sets]\label{3.3}
@@ -130,29 +130,45 @@
 \begin{rmk}\label{3.1.9}
   There is only one singleton set for each object \(a\).
   Similarly, given any two objects \(a\) and \(b\), there is only one pair set formed by \(a\) and \(b\).
+  Also, \cref{3.1.4} also ensures that \(\set{a, b} = \set{b, a}\) and \(\set{a, a} = \set{a}\).
   Thus the singleton set axiom is in fact redundant, being a consequence of the pair set axiom.
-  Conversely, the pair set axiom will follow from the singleton set axiom and the pairwise union axiom (\cref{3.4}).
+  Conversely, the pair set axiom will follow from the singleton set axiom and the pairwise union axiom (\cref{3.4}) below (see \cref{3.1.13}).
+  One may wonder why we don't go further and create triplet axioms, quadruplet axioms, etc.;
+  however there will be no need for this once we introduce the pairwise union axiom (\cref{3.4}) below.
 \end{rmk}
 
-\begin{proof}
+\begin{proof}[\pf{3.1.9}]
   We first show the uniqueness of singleton set.
-  Suppose there exists two sets \(A\) and \(A'\) which are singleton sets of object \(a\).
-  Then we have
-  \begin{align*}
-         & (\forall x : x \in A \iff x = a) \land (\forall x : x \in A' \iff x = a) &  & \by{3.3}   \\
-    \iff & \forall x : x \in A \iff x \in A'                                                        \\
-    \iff & A = A'.                                                                  &  & \by{3.1.4}
-  \end{align*}
+  Suppose there exist two sets \(A\) and \(A'\) which are singleton sets of object \(a\).
+  Then by \cref{3.3} we have ``\(x \in A \iff x = a\)'' and ``\(x \in A' \iff x = a\)''.
+  But this means \(x \in A \iff x \in A'\).
+  Thus by \cref{3.1.4} we have \(A = A'\) and therefore the uniqueness of singleton set is proved.
 
   Next we show the uniqueness of pair set.
-  Suppose there exists two sets \(X\) and \(X'\) which are pair sets of object \(a\) and \(b\).
-  Then we have
+  Suppose there exist two sets \(X\) and \(X'\) which are pair sets of object \(a\) and \(b\).
+  Then by \cref{3.3} we have ``\(x \in X \iff (x = a) \lor (x = b)\)'' and ``\(x \in X' \iff (x = a) \lor (x = b)\)''.
+  But this means \(x \in X \iff x \in X'\).
+  Thus by \cref{3.1.4} we have \(X = X'\) and therefore the uniqueness of pair set is proved.
+
+  Next we show that \(\set{a, b} = \set{b, a}\).
+  Since
   \begin{align*}
-         & (\forall x : x \in X \iff (x = a) \lor (x = b))                        \\
-         & \land (\forall x : x \in X' \iff (x = a) \lor (x = b)) &  & \by{3.3}   \\
-    \iff & \forall x : x \in X \iff x \in X'                                      \\
-    \iff & X = X'.                                                &  & \by{3.1.4}
+         & x \in \set{a, b}                   \\
+    \iff & (x = a) \lor (x = b) &  & \by{3.3} \\
+    \iff & (x = b) \lor (x = a)               \\
+    \iff & x \in \set{b, a},    &  & \by{3.3}
   \end{align*}
+  by \cref{3.1.4} we know that \(\set{a, b} = \set{b, a}\).
+
+  Finally we show that \(\set{a, a} = \set{a}\).
+  Since
+  \begin{align*}
+         & x \in \set{a, a}                   \\
+    \iff & (x = a) \lor (x = a) &  & \by{3.3} \\
+    \iff & x = a                              \\
+    \iff & x \in \set{a},       &  & \by{3.3}
+  \end{align*}
+  by \cref{3.1.4} we know that \(\set{a, a} = \set{a}\).
 \end{proof}
 
 \begin{eg}\label{3.1.10}
@@ -162,92 +178,100 @@
 \end{eg}
 
 \begin{ax}[Pairwise union]\label{3.4}
-  Given any two sets \(A\), \(B\), there exists a set \(A \cup B\), called the \emph{union} \(A \cup B\) of \(A\) and \(B\), whose elements consist of all the elements which belong to \(A\) or \(B\) or both.
+  Given any two sets \(A\), \(B\), there exists a set \(A \cup B\), called the \emph{union} of \(A\) and \(B\), whose elements consist of all the elements which belong to \(A\) or \(B\) or both.
   In other words, for any object \(x\),
   \[
-    x \in A \cup B \iff (x \in A \lor x \in B).
+    x \in A \cup B \iff (x \in A) \lor (x \in B).
   \]
 \end{ax}
 
 \setcounter{thm}{11}
 \begin{rmk}\label{3.1.12}
-  If \(A\), \(B\), \(A'\) are sets, and \(A\) is equal to \(A'\), then \(A \cup B\) is equal to \(A' \cup B\).
+  If \(A, B, A'\) are sets, and \(A\) is equal to \(A'\), then \(A \cup B\) is equal to \(A' \cup B\).
   Similarly if \(B'\) is a set which is equal to \(B\), then \(A \cup B\) is equal to \(A \cup B'\).
   Thus the operation of union obeys the axiom of substitution, and is thus well-defined on sets.
 \end{rmk}
 
-\begin{proof}
-  Suppose \(A, A', B\) are sets such that \(A = A'\).
+\begin{proof}[\pf{3.1.12}]
+  First suppose \(A = A'\).
   Then we have
   \begin{align*}
-         & \forall x : x \in A \cup B                 \\
-    \iff & x \in A \lor x \in B       &  & \by{3.4}   \\
-    \iff & x \in A' \lor x \in B      &  & \by{3.1.4} \\
-    \iff & x \in A' \cup B.           &  & \by{3.4}
+         & x \in A \cup B                            \\
+    \iff & (x \in A) \lor (x \in B)  &  & \by{3.4}   \\
+    \iff & (x \in A') \lor (x \in B) &  & \by{3.1.4} \\
+    \iff & x \in A' \cup B.          &  & \by{3.4}
   \end{align*}
+  Thus by \cref{3.1.4} we have \(A \cup B = A' \cup B\).
 
-  Similarly, suppose \(A, B, B'\) are sets such that \(B = B'\).
+  Now suppose \(B = B'\).
   Then we have
   \begin{align*}
-         & \forall x : x \in A \cup B                 \\
-    \iff & x \in A \lor x \in B       &  & \by{3.4}   \\
-    \iff & x \in A \lor x \in B'      &  & \by{3.1.4} \\
-    \iff & x \in A \cup B'.           &  & \by{3.4}
+         & x \in A \cup B                            \\
+    \iff & (x \in A) \lor (x \in B)  &  & \by{3.4}   \\
+    \iff & (x \in A) \lor (x \in B') &  & \by{3.1.4} \\
+    \iff & x \in A \cup B'.          &  & \by{3.4}
   \end{align*}
+  Thus by \cref{3.1.4} we have \(A \cup B = A \cup B'\).
 \end{proof}
 
 \begin{lem}\label{3.1.13}
   If \(a\) and \(b\) are objects, then \(\set{a, b} = \set{a} \cup \set{b}\).
-  If \(A\), \(B\), \(C\) are sets, then the union operation is commutative (i.e., \(A \cup B = B \cup A\)) and associative (i.e., \((A \cup B) \cup C = A \cup (B \cup C)\)).
+  If \(A, B, C\) are sets, then the union operation is commutative (i.e., \(A \cup B = B \cup A\)) and associative (i.e., \((A \cup B) \cup C = A \cup (B \cup C)\)).
   Also, we have \(A \cup A = A \cup \emptyset = \emptyset \cup A = A\).
 \end{lem}
 
-\begin{proof}
+\begin{proof}[\pf{3.1.13}]
   We first show that \(\set{a, b} = \set{a} \cup \set{b}\).
-  By \cref{3.3}, the sets \(\set{a}, \set{b}, \set{a, b}\) exist.
-  And by \cref{3.4}, the set \(\set{a} \cup \set{b}\) exists.
+  By \cref{3.3} we know the sets \(\set{a}, \set{b}, \set{a, b}\) exist.
+  By \cref{3.4} we know the set \(\set{a} \cup \set{b}\) exists.
   Then we have
   \begin{align*}
-         & (\forall x : x \in \set{a, b} \iff x = a \lor x = b)                 &  & \by{3.3}   \\
-    \iff & (\forall x : x \in \set{a, b} \iff x \in \set{a} \lor x \in \set{b}) &  & \by{3.3}   \\
-    \iff & (\forall x : x \in \set{a, b} \iff x \in \set{a} \cup \set{b})       &  & \by{3.4}   \\
-    \iff & \set{a, b} = \set{a} \cup \set{b}.                                   &  & \by{3.1.4}
+         & x \in \set{a, b}                                   \\
+    \iff & (x = a) \lor (x = b)                 &  & \by{3.3} \\
+    \iff & (x \in \set{a}) \lor (x \in \set{b}) &  & \by{3.3} \\
+    \iff & x \in \set{a} \cup \set{b}.          &  & \by{3.4}
   \end{align*}
+  Thus by \cref{3.1.4} we have \(\set{a, b} = \set{a} \cup \set{b}\).
 
   Next we show the commutative identity of union sets.
   Suppose that \(A, B\) are sets.
-  By \cref{3.4}, the sets \(A \cup B\) and \(B \cup A\) exists.
+  By \cref{3.4} we know that both \(A \cup B\) and \(B \cup A\) exist.
   Then we have
   \begin{align*}
-         & (\forall x : x \in A \cup B \iff x \in A \lor x \in B) &  & \by{3.4}   \\
-    \iff & (\forall x : x \in A \cup B \iff x \in B \lor x \in A)                 \\
-    \iff & (\forall x : x \in A \cup B \iff x \in B \cup A)       &  & \by{3.4}   \\
-    \iff & A \cup B = B \cup A.                                   &  & \by{3.1.4}
+         & x \in A \cup B                         \\
+    \iff & (x \in A) \lor (x \in B) &  & \by{3.4} \\
+    \iff & (x \in B) \lor (x \in A)               \\
+    \iff & x \in B \cup A.          &  & \by{3.4}
   \end{align*}
+  Thus by \cref{3.1.4} we have \(A \cup B = B \cup A\).
 
   Next we show the associativity identity of union sets.
-  By \cref{3.1.4}, we need to show that every element \(x\) of \((A \cup B) \cup C\) is an element of \(A \cup (B \cup C)\), and vice versa.
-  So suppose first that \(x\) is an element of \((A \cup B) \cup C\).
-  By \cref{3.4}, this means that at least one of \(x \in A \cup B\) or \(x \in C\) is true.
-  We now divide into two cases.
-  If \(x \in C\), then by \cref{3.4} again \(x \in B \cup C\), and so by \cref{3.4} again we have \(x \in A \cup (B \cup C)\).
-  Now suppose instead \(x \in A \cup B\), then by \cref{3.4} again \(x \in A\) or \(x \in B\).
-  If \(x \in A\) then \(x \in A \cup (B \cup C)\) by \cref{3.4}, while if \(x \in B\) then by consecutive applications of \cref{3.4} we have \(x \in B \cup C\) and hence \(x \in A \cup (B \cup C)\).
-  Thus in all cases we see that every element of \((A \cup B) \cup C\) lies in \(A \cup (B \cup C)\).
-  A similar argument shows that every element of \(A \cup (B \cup C)\) lies in \((A \cup B) \cup C\), and so \((A \cup B) \cup C = A \cup (B \cup C) \) as desired.
-
-  Finally we show that \(A \cup A = A \cup \emptyset = \emptyset \cup A = A\).
-  Suppose that \(A\) is a set.
+  Suppose \(A, B, C\) are sets.
+  By \cref{3.4} we know that both \(A \cup B\) and \(B \cup C\) exist.
+  Thus by \cref{3.4} again we know that both \((A \cup B) \cup C\) and \(A \cup (B \cup C)\) exist.
   Then we have
   \begin{align*}
-         & (\forall x : x \in A \iff x \in A \lor x \in A)                                      \\
-    \iff & (\forall x : x \in A \iff x \in A \cup A)               &  & \by{3.4}                \\
-    \iff & (A = A \cup A)                                          &  & \by{3.1.4}              \\
-    \iff & (\forall x : x \in A \iff x \in A \lor x \in \emptyset) &  & \text{(vacuously true)} \\
-    \iff & A = A \cup \emptyset                                    &  & \by{3.1.4}              \\
-    \iff & (\forall x : x \in A \iff x \in \emptyset \lor x \in A) &  & \text{(vacuously true)} \\
-    \iff & A = \emptyset \cup A.                                   &  & \by{3.1.4}
+         & x \in (A \cup B) \cup C                                 \\
+    \iff & (x \in (A \cup B)) \lor (x \in C)         &  & \by{3.4} \\
+    \iff & ((x \in A) \lor (x \in B)) \lor (x \in C) &  & \by{3.4} \\
+    \iff & (x \in A) \lor ((x \in B) \lor (x \in C))               \\
+    \iff & (x \in A) \lor (x \in B \cup B)           &  & \by{3.4} \\
+    \iff & x \in A \cup (B \cup C).                  &  & \by{3.4}
   \end{align*}
+  Thus by \cref{3.1.4} we have \((A \cup B) \cup C = A \cup (B \cup C)\).
+
+  Finally we show that \(A \cup A = A \cup \emptyset = \emptyset \cup A = A\) for any set \(A\).
+  By \cref{3.4} we know that the sets \(A \cup A\), \(A \cup \emptyset\) and \(\emptyset \cup A\) exist.
+  Since
+  \begin{align*}
+         & x \in A \cup A                                 \\
+    \iff & (x \in A) \lor (x \in A)         &  & \by{3.4} \\
+    \iff & x \in A                                        \\
+    \iff & (x \in A) \lor (x \in \emptyset) &  & \by{3.2} \\
+    \iff & x \in A \cup \emptyset,          &  & \by{3.4}
+  \end{align*}
+  by \cref{3.1.4} we see that \(A \cup A = A = A \cup \emptyset\).
+  Using commutative law of union we see that \(A \cup \emptyset = \emptyset \cup A\).
 \end{proof}
 
 \begin{note}
@@ -286,75 +310,73 @@
   Given any set \(A\), we always have \(A \subseteq A\) and \(\emptyset \subseteq A\).
 \end{eg}
 
-\begin{proof}
-  Suppose that \(A\) is a set.
-  Then we have
-  \begin{align*}
-    \top \iff & (\forall x : x \in A \implies x \in A)                  \\
-    \iff      & A \subseteq A.                         &  & \by{3.1.15}
-  \end{align*}
-  And we also have
-  \begin{align*}
-         & (\forall x : x \in \emptyset \implies x \in A) &  & \text{(vacuously true)} \\
-    \iff & \emptyset \subseteq A.                         &  & \by{3.1.15}
-  \end{align*}
+\begin{proof}[\pf{3.1.17}]
+  The statement ``\(x \in A \implies x \in A\)'' is a tautology.
+  Therefore by \cref{3.1.15} we have \(A \subseteq A\).
+  The statement ``\(x \in \emptyset \implies x \in A\)'' is vacuously true since \(x \in \emptyset\) is false for all object \(x\) (\cref{3.2}).
+  Thus by \cref{3.1.15} we have \(\emptyset \subseteq A\).
 \end{proof}
 
 \begin{prop}[Sets are partially ordered by set inclusion]\label{3.1.18}
-  Let \(A\), \(B\), \(C\) be sets.
-  If \(A \subseteq B\) and \(B \subseteq C\) then \(A \subseteq C\).
-  \(A \subseteq B\) and \(B \subseteq A\) iff \(A = B\).
-  Finally, if \(A \subsetneq B\) and \(B \subsetneq C\) then \(A \subsetneq C\).
+  Let \(A, B, C\) be sets.
+  \begin{itemize}
+    \item If \(A \subseteq B\) and \(B \subseteq C\) then \(A \subseteq C\).
+    \item \(A \subseteq B\) and \(B \subseteq A\) iff \(A = B\).
+    \item If \(A \subsetneq B\) and \(B \subsetneq C\) then \(A \subsetneq C\).
+  \end{itemize}
 \end{prop}
 
-\begin{proof}
-  We first show that \(A \subseteq B \land B \subseteq C \implies A \subseteq C\).
-  Suppose that \(A \subseteq B\) and \(B \subseteq C\).
-  To prove that \(A \subseteq C\), we have to prove that every element of \(A\) is an element of \(C\).
-  So, let us pick an arbitrary element \(x\) of \(A\).
-  Then, since \(A \subseteq B\), \(x\) must then be an element of \(B\).
-  But then since \(B \subseteq C\), \(x\) is an element of \(C\).
-  Thus every element of \(A\) is indeed an element of \(C\), as claimed.
-
-  Next we show that \(A \subseteq B \land B \subseteq A \iff A = B\).
-  Suppose that \(A, B\) are sets and \(A \subseteq B \land B \subseteq A\).
-  Then we have
+\begin{proof}[\pf{3.1.18}]
+  First we show that \((A \subseteq B) \land (B \subseteq C) \implies A \subseteq C\).
+  This is true since
   \begin{align*}
-         & A \subseteq B \land B \subseteq A                                                          \\
-    \iff & (\forall x : (x \in A \implies x \in B) \land (x \in B \implies x \in A)) &  & \by{3.1.15} \\
-    \iff & (\forall x : x \in A \iff x \in B)                                                         \\
-    \iff & A = B.                                                                    &  & \by{3.1.4}
+             & \begin{dcases}
+                 A \subseteq B \\
+                 B \subseteq C
+               \end{dcases}                                                \\
+    \implies & \begin{dcases}
+                 x \in A \implies x \in B \\
+                 y \in B \implies y \in C
+               \end{dcases}                 &  & \by{3.1.15}                \\
+    \implies & (x \in A \implies x \in B \implies x \in C)                  \\
+    \implies & A \subseteq C.                              &  & \by{3.1.15}
   \end{align*}
 
-  Finally we show that \(A \subsetneq B \land B \subsetneq C \implies A \subsetneq C\).
-  Suppose that \(A, B, C\) are sets and \(A \subsetneq B \land B \subsetneq C\).
-  Then we have
+  Next we show that \((A \subseteq B) \land (B \subseteq A) \iff A = B\).
+  This is true since
   \begin{align*}
-             & A \subsetneq B \land B \subsetneq C                                                                                                         \\
-    \implies & (\forall x : x \in A \implies x \in B) \land (A \neq B)                                                                                     \\
-             & \land (\forall x : x \in B \implies x \in C) \land (B \neq C)                  &  & \by{3.1.15}                                             \\
-    \implies & (\forall x : x \in A \implies x \in B)                                                                                                      \\
-             & \land \lnot(\forall x : x \in A \iff x \in B)                                                                                               \\
-             & \land (\forall x : x \in B \implies x \in C)                                                                                                \\
-             & \land (B \neq C)                                                                                                                            \\
-    \implies & (\forall x : x \in A \implies x \in B)                                                                                                      \\
-             & \land (\exists x : (x \in A \land x \notin B) \lor (x \in B \land x \notin A))                                                              \\
-             & \land (\forall x : x \in B \implies x \in C)                                                                                                \\
-             & \land (B \neq C)                                                                                                                            \\
-    \implies & (\forall x : x \in A \implies x \in B)                                                                                                      \\
-             & \land (\exists x : x \in B \land x \notin A)                                   &  & \text{(since \(\forall x : x \in A \implies x \in B\))} \\
-             & \land (\forall x : x \in B \implies x \in C)                                                                                                \\
-             & \land (B \neq C)                                                                                                                            \\
-    \implies & (\forall x : x \in A \implies x \in B)                                                                                                      \\
-             & \land (\exists x : x \in C \land x \notin A)                                   &  & \text{(since \(\forall x : x \in B \implies x \in C\))} \\
-             & \land (\forall x : x \in B \implies x \in C)                                                                                                \\
-             & \land (B \neq C)                                                                                                                            \\
-    \implies & (\forall x : x \in A \implies x \in C)                                                                                                      \\
-             & \land (A \neq C) \land (B \neq C)                                                                                                           \\
-    \implies & A \subseteq C \land A \neq C \land B \neq C                                    &  & \by{3.1.15}                                             \\
-    \implies & A \subsetneq C \land B \neq C                                                  &  & \by{3.1.15}                                             \\
-    \implies & A \subsetneq C.
+         & \begin{dcases}
+             A \subseteq B \\
+             B \subseteq A
+           \end{dcases}                               \\
+    \iff & \begin{dcases}
+             x \in A \implies x \in B \\
+             y \in B \implies y \in A
+           \end{dcases} &  & \by{3.1.15}               \\
+    \iff & A = B.                      &  & \by{3.1.4}
   \end{align*}
+
+  Finally we show that \((A \subsetneq B) \land (B \subsetneq C) \implies A \subsetneq C\).
+  So suppose that  \((A \subsetneq B) \land (B \subsetneq C)\).
+  Since
+  \begin{align*}
+             & \begin{dcases}
+                 A \subsetneq B \\
+                 B \subsetneq C
+               \end{dcases}                                       \\
+    \implies & \begin{dcases}
+                 A \subseteq B \\
+                 B \subseteq C
+               \end{dcases}  &  & \by{3.1.15}                       \\
+    \implies & A \subseteq C,    &  & \text{(from the proof above)}
+  \end{align*}
+  by \cref{3.1.15} we only need to show that \(A \neq C\).
+  Suppose for sake of contradiction that \(A = C\).
+  Then from the proof above we have \(C \subseteq A\).
+  Since \(A \subseteq B\), from the proof above we have \(C \subseteq B\).
+  We also have \(B \subseteq C\), thus \(B = C\).
+  But this contradict to \(B \subsetneq C\).
+  Thus we must have \(A \neq C\).
 \end{proof}
 
 \setcounter{thm}{19}
@@ -362,7 +384,7 @@
   There is one important difference between the subset relation \(\subsetneq\) and the less than relation \(<\).
   Given any two distinct natural numbers \(n\), \(m\), we know that one of them is smaller than the other (\cref{2.2.13});
   however, given two distinct sets, it is not in general true that one of them is a subset of the other.
-  we say that sets are only \emph{partially ordered}, whereas the natural numbers are \emph{totally ordered}.
+  We say that sets are only \emph{partially ordered}, whereas the natural numbers are \emph{totally ordered} (see \cref{8.5.1,8.5.3}).
 \end{rmk}
 
 \begin{rmk}\label{3.1.21}
@@ -389,7 +411,7 @@
 
 \setcounter{thm}{22}
 \begin{defn}[Intersections]\label{3.1.23}
-  The intersection \(S_1 \cap S_2\) of two sets is defined to be the set
+  The \emph{intersection} \(S_1 \cap S_2\) of two sets is defined to be the set
   \[
     S_1 \cap S_2 \coloneqq \set{x \in S_1 : x \in S_2}.
   \]
@@ -415,7 +437,7 @@
 \end{defn}
 
 \begin{prop}[Sets form a boolean algebra]\label{3.1.28}
-  Let \(A\), \(B\), \(C\) be sets, and let \(X\) be a set containing \(A\), \(B\), \(C\) as subsets.
+  Let \(A, B, C\) be sets, and let \(X\) be a set containing \(A, B, C\) as subsets.
   \begin{enumerate}
     \item (Minimal element) We have \(A \cup \emptyset = A\) and \(A \cap \emptyset = \emptyset\).
     \item (Maximal element) We have \(A \cup X = X\) and \(A \cap X = A\).
@@ -428,172 +450,156 @@
   \end{enumerate}
 \end{prop}
 
-\begin{proof}{(a)}
-  Suppose that \(A\) is a set.
+\begin{proof}[\pf{3.1.28}(a)]
   By \cref{3.1.13} we have \(A \cup \emptyset = A\).
-  We only need to show that \(A \cap \emptyset = \emptyset\).
+  Since
   \begin{align*}
-    \top \iff & (\bot \iff \bot)                                                 &  & \text{(vacuously true)} \\
-    \iff      & (\forall x : x \in \emptyset \iff x \in \emptyset)               &  & \text{(vacuously true)} \\
-    \iff      & (\forall x : x \in \emptyset \iff x \in A \land x \in \emptyset)                              \\
-    \iff      & (\forall x : x \in \emptyset \iff x \in A \cap \emptyset)        &  & \by{3.1.23}             \\
-    \iff      & \emptyset = A \cap \emptyset.                                    &  & \by{3.1.4}
+         & x \in A \cap \emptyset                             \\
+    \iff & (x \in A) \land (x \in \emptyset) &  & \by{3.1.27} \\
+    \iff & x \in \emptyset,                  &  & \by{3.2}
   \end{align*}
+  by \cref{3.1.4} we have \(A \cap \emptyset = \emptyset\).
 \end{proof}
 
-\begin{proof}{(b)}
-  Suppose that \(A, X\) are sets and \(A \subseteq X\).
-  Then we have
+\begin{proof}[\pf{3.1.28}(b)]
+  Since
   \begin{align*}
-    \top \iff                     & (\forall x : x \in X \implies x \in A \lor x \in X)                  \\
-    \iff                          & (\forall x : x \in X \implies x \in A \cup X).      &  & \by{3.4}    \\
-    A \subseteq X \iff            & (\forall x : x \in A \implies x \in X)              &  & \by{3.1.15} \\
-    \iff                          & (\forall x : x \in A \lor x \in X \implies x \in X)                  \\
-    \iff                          & (\forall x : x \in A \cup X \implies x \in X).      &  & \by{3.4}    \\
-    \top \land A \subseteq X \iff & (\forall x : x \in X \iff x \in A \cup X)                            \\
-    \iff                          & X = A \cup X.                                       &  & \by{3.1.4}
+         & \begin{dcases}
+             x \in A \cup X \\
+             A \subseteq X
+           \end{dcases}                    \\
+    \iff & \begin{dcases}
+             (x \in A) \lor (x \in X) \\
+             x \in A \implies x \in X
+           \end{dcases} &  & \by{3.4,3.1.15} \\
+    \iff & \begin{dcases}
+             x \in X \\
+             x \in A \implies x \in X
+           \end{dcases},    &  & \by{3.1.15}
   \end{align*}
-  And we also have
+  by \cref{3.1.4} we have \(A \cup X = X\).
+  Since
   \begin{align*}
-    \top \iff                     & (\forall x : x \in A \land x \in X \implies x \in A)                  \\
-    \iff                          & (\forall x : x \in A \cap X \implies x \in A).       &  & \by{3.1.23} \\
-    A \subseteq X \iff            & (\forall x : x \in A \implies x \in X)               &  & \by{3.1.15} \\
-    \iff                          & (\forall x : x \in A \implies x \in A \land x \in X)                  \\
-    \iff                          & (\forall x : x \in A \implies x \in A \cap X).       &  & \by{3.1.23} \\
-    \top \land A \subseteq X \iff & (\forall x : x \in A \cap X \iff x \in A)                             \\
-    \iff                          & A \cap X = A.                                        &  & \by{3.1.4}
+         & \begin{dcases}
+             x \in A \cap X \\
+             A \subseteq X
+           \end{dcases}                       \\
+    \iff & \begin{dcases}
+             (x \in A) \land (x \in X) \\
+             x \in A \implies x \in X
+           \end{dcases} &  & \by{3.1.15,3.1.23} \\
+    \iff & \begin{dcases}
+             x \in A \\
+             x \in A \implies x \in X
+           \end{dcases},     &  & \by{3.1.15}
   \end{align*}
+  by \cref{3.1.4} we have \(A \cap X = A\).
 \end{proof}
 
-\begin{proof}{(c)}
-  Suppose that \(A\) is a set.
+\begin{proof}[\pf{3.1.28}(c)]
   By \cref{3.1.13} we have \(A \cup A = A\).
-  We only need to show that \(A \cap A = A\).
+  Since
   \begin{align*}
-    \top \iff & (\forall x : x \in A \iff x \in A)                                \\
-    \iff      & (\forall x : x \in A \land x \in A \iff x \in A)                  \\
-    \iff      & (\forall x : x \in A \cap A \iff x \in A)        &  & \by{3.1.23} \\
-    \iff      & A \cap A = A.                                    &  & \by{3.1.4}
+         & x \in A \cap A                             \\
+    \iff & (x \in A) \land (x \in A) &  & \by{3.1.23} \\
+    \iff & x \in A,
   \end{align*}
+  by \cref{3.1.4} we have \(A \cap A = A\).
 \end{proof}
 
-\begin{proof}{(d)}
-  Suppose that \(A, B\) are sets.
-  Then we have
+\begin{proof}[\pf{3.1.28}(d)]
+  By \cref{3.1.13} we have \(A \cup B = B \cup A\).
+  Since
   \begin{align*}
-         & (\forall x : x \in A \cup B \iff x \in A \lor x \in B) &  & \by{3.4}   \\
-    \iff & (\forall x : x \in A \cup B \iff x \in B \lor x \in A)                 \\
-    \iff & (\forall x : x \in A \cup B \iff x \in B \cup A)       &  & \by{3.4}   \\
-    \iff & A \cup B = B \cup A.                                   &  & \by{3.1.4}
+         & x \in A \cap B                             \\
+    \iff & (x \in A) \land (x \in B) &  & \by{3.1.23} \\
+    \iff & (x \in B) \land (x \in A)                  \\
+    \iff & x \in B \cap A,           &  & \by{3.1.23}
   \end{align*}
-  And we also have
-  \begin{align*}
-         & (\forall x : x \in A \cap B \iff x \in A \land x \in B) &  & \by{3.1.23} \\
-    \iff & (\forall x : x \in A \cap B \iff x \in B \land x \in A)                  \\
-    \iff & (\forall x : x \in A \cap B \iff x \in B \cap A)        &  & \by{3.1.23} \\
-    \iff & A \cap B = B \cap A.                                    &  & \by{3.1.4}
-  \end{align*}
+  by \cref{3.1.4} we have \(A \cap B = B \cap A\).
 \end{proof}
 
-\begin{proof}{(e)}
-  Suppose that \(A, B, C\) are sets.
-  Then we have
+\begin{proof}[\pf{3.1.28}(e)]
+  By \cref{3.1.13} we have \((A \cup B) \cup C = A \cup (B \cup C)\).
+  Since
   \begin{align*}
-         & (\forall x : x \in (A \cup B) \cup C \iff (x \in A \lor x \in B) \lor x \in C) &  & \by{3.4}   \\
-    \iff & (\forall x : x \in (A \cup B) \cup C \iff x \in A \lor (x \in B \lor x \in C))                 \\
-    \iff & (\forall x : x \in (A \cup B) \cup C \iff x \in A \cup (B \cup C))             &  & \by{3.4}   \\
-    \iff & (A \cup B) \cup C = A \cup (B \cup C).                                         &  & \by{3.1.4}
+         & x \in (A \cap B) \cap C                                      \\
+    \iff & (x \in A \cap B) \land (x \in C)            &  & \by{3.1.23} \\
+    \iff & ((x \in A) \land (x \in B)) \land (x \in C) &  & \by{3.1.23} \\
+    \iff & (x \in A) \land ((x \in B) \land (x \in C))                  \\
+    \iff & (x \in A) \land (x \in B \cap C)            &  & \by{3.1.23} \\
+    \iff & x \in A \cap (B \cap C),                    &  & \by{3.1.23}
   \end{align*}
-  And we also have
-  \begin{align*}
-         & (\forall x : x \in (A \cap B) \cap C \iff (x \in A \land x \in B) \land x \in C) &  & \by{3.1.23} \\
-    \iff & (\forall x : x \in (A \cap B) \cap C \iff x \in A \land (x \in B \land x \in C))                  \\
-    \iff & (\forall x : x \in (A \cap B) \cap C \iff x \in A \cap (B \cap C))               &  & \by{3.1.23} \\
-    \iff & (A \cap B) \cap C = A \cap (B \cap C).                                           &  & \by{3.1.4}
-  \end{align*}
+  by \cref{3.1.4} we have \((A \cap B) \cap C = A \cap (B \cap C)\).
 \end{proof}
 
-\begin{proof}{(f)}
-  Suppose that \(A, B, C\) are sets.
-  Then we have
+\begin{proof}[\pf{3.1.28}(f)]
+  Since
   \begin{align*}
-         & \forall x : x \in A \cap (B \cup C)                                   \\
-    \iff & x \in A \land x \in B \cup C                         &  & \by{3.1.23} \\
-    \iff & x \in A \land (x \in B \lor x \in C)                 &  & \by{3.4}    \\
-    \iff & (x \in A \land x \in B) \lor (x \in A \land x \in C)                  \\
-    \iff & (x \in A \cap B) \lor (x \in A \cap C)               &  & \by{3.1.23} \\
-    \iff & x \in (A \cap B) \cup (A \cap C).                    &  & \by{3.4}
+         & x \in A \cap (B \cup C)                                                       \\
+    \iff & (x \in A) \land (x \in B \cup C)                             &  & \by{3.1.23} \\
+    \iff & (x \in A) \land ((x \in B) \lor (x \in C))                   &  & \by{3.4}    \\
+    \iff & ((x \in A) \land (x \in B)) \lor ((x \in A) \land (x \in C))                  \\
+    \iff & (x \in A \cap B) \lor (x \in A \cap C)                       &  & \by{3.1.23} \\
+    \iff & x \in (A \cap B) \cup (A \cap C)                             &  & \by{3.4}
   \end{align*}
-  Thus by \cref{3.1.4} we have \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\).
-  Similarly we have
+  and
   \begin{align*}
-         & \forall x : x \in A \cup (B \cap C)                                  \\
-    \iff & x \in A \lor x \in B \cap C                         &  & \by{3.4}    \\
-    \iff & x \in A \lor (x \in B \land x \in C)                &  & \by{3.1.23} \\
-    \iff & (x \in A \lor x \in B) \land (x \in A \lor x \in C)                  \\
-    \iff & (x \in A \cup B) \land (x \in A \cup C)             &  & \by{3.4}    \\
-    \iff & x \in (A \cup B) \cap (A \cup C).                   &  & \by{3.1.23}
+         & x \in A \cup (B \cap C)                                                      \\
+    \iff & (x \in A) \lor (x \in B \cap C)                             &  & \by{3.4}    \\
+    \iff & (x \in A) \lor ((x \in B) \land (x \in C))                  &  & \by{3.1.23} \\
+    \iff & ((x \in A) \lor (x \in B)) \land ((x \in A) \lor (x \in C))                  \\
+    \iff & (x \in A \cup B) \land (x \in A \cup C)                     &  & \by{3.4}    \\
+    \iff & x \in (A \cup B) \cap (A \cup C),                           &  & \by{3.1.23}
   \end{align*}
-  Thus by \cref{3.1.4} we have \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\).
+  by \cref{3.1.4} we know that \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\) and \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\).
 \end{proof}
 
-\begin{proof}{(g)}
-  Suppose that \(A, X\) are sets and \(A \subseteq X\).
-  Then we have
+\begin{proof}[\pf{3.1.28}(g)]
+  Since
   \begin{align*}
-         & \forall x : x \in A \cup (X \setminus A)                                                 \\
-    \iff & x \in A \lor x \in (X \setminus A)                     &  & \by{3.4}                     \\
-    \iff & x \in A \lor (x \in X \land x \notin A)                &  & \by{3.1.27}                  \\
-    \iff & (x \in A \lor x \in X) \land (x \in A \lor x \notin A)                                   \\
-    \iff & (x \in A \lor x \in X) \land \top                                                        \\
-    \iff & x \in A \lor x \in X                                                                     \\
-    \iff & x \in A \cup X                                         &  & \by{3.4}                     \\
-    \iff & x \in X.                                               &  & \text{(by \cref{3.1.28})(b)}
+         & x \in A \cup (X \setminus A)                                                    \\
+    \iff & (x \in A) \lor (x \in X \setminus A)                           &  & \by{3.4}    \\
+    \iff & (x \in A) \lor ((x \in X) \land (x \notin A))                  &  & \by{3.1.27} \\
+    \iff & ((x \in A) \lor (x \in X)) \land ((x \in A) \lor (x \notin A))                  \\
+    \iff & (x \in A) \lor (x \in X)                                                        \\
+    \iff & x \in A \cup X                                                 &  & \by{3.4}
   \end{align*}
-  Thus by \cref{3.1.4} we have \(A \cup (X \setminus A) = X\).
-  Similarly we have
+  and
   \begin{align*}
-         & \forall x : x \in A \cap (X \setminus A)                              \\
-    \iff & x \in A \land x \in (X \setminus A)      &  & \by{3.1.23}             \\
-    \iff & x \in A \land (x \in X \land x \notin A) &  & \by{3.1.27}             \\
-    \iff & (x \in A \land x \notin A) \land x \in X                              \\
-    \iff & \bot \land x \in X                                                    \\
-    \iff & \bot                                                                  \\
-    \iff & x \in \emptyset.                         &  & \text{(vacuously true)}
+         & x \in A \cap (X \setminus A)                                    \\
+    \iff & (x \in A) \land (x \in X \setminus A)          &  & \by{3.1.23} \\
+    \iff & (x \in A) \land ((x \in X) \land (x \notin A)) &  & \by{3.1.27} \\
+    \iff & (x \in A) \land (x \notin A)                                    \\
+    \iff & x \in \emptyset,                               &  & \by{3.2}
   \end{align*}
-  Thus by \cref{3.1.4} we have \(A \cap (X \setminus A) = \emptyset\).
+  by \cref{3.1.4} we have \(A \cup (X \setminus A) = A \cup X\) and \(A \cap (X \setminus A) = \emptyset\).
 \end{proof}
 
-\begin{proof}{(h)}
-  Suppose that \(A, B, X\) are sets such that \(A \subseteq X\) and \(B \subseteq X\).
-  Then we have
+\begin{proof}[\pf{3.1.28}(h)]
+  Since
   \begin{align*}
-         & \forall x : x \in X \setminus (A \cup B)                                     \\
-    \iff & x \in X \land x \notin (A \cup B)                           &  & \by{3.1.27} \\
-    \iff & x \in X \land \lnot (x \in A \cup B)                                         \\
-    \iff & x \in X \land \lnot (x \in A \lor x \in B)                  &  & \by{3.4}    \\
-    \iff & x \in X \land (x \notin A \land x \notin B)                                  \\
-    \iff & (x \in X \land x \notin A) \land (x \in X \land x \notin B)                  \\
-    \iff & (x \in X \setminus A) \land (x \in X \setminus B)           &  & \by{3.1.27} \\
-    \iff & x \in (X \setminus A) \cap (X \setminus B).                 &  & \by{3.1.23}
+         & x \in X \setminus (A \cup B)                                                         \\
+    \iff & (x \in X) \land (x \notin A \cup B)                                 &  & \by{3.1.27} \\
+    \iff & (x \in X) \land ((x \notin A) \land (x \notin B))                   &  & \by{3.4}    \\
+    \iff & ((x \in X) \land (x \notin A)) \land ((x \in X) \land (x \notin B))                  \\
+    \iff & (x \in X \setminus A) \land (x \in X \setminus B)                   &  & \by{3.1.27} \\
+    \iff & x \in (X \setminus A) \cap (X \setminus B)                          &  & \by{3.1.23}
   \end{align*}
-  Thus by \cref{3.1.4} we have \(X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B)\).
-  Similarly we have
+  and
   \begin{align*}
-         & \forall x : x \in X \setminus (A \cap B)                                    \\
-    \iff & x \in X \land x \notin (A \cap B)                          &  & \by{3.1.27} \\
-    \iff & x \in X \land \lnot (x \in A \cap B)                                        \\
-    \iff & x \in X \land \lnot (x \in A \land x \in B)                &  & \by{3.1.23} \\
-    \iff & x \in X \land (x \notin A \lor x \notin B)                                  \\
-    \iff & (x \in X \land x \notin A) \lor (x \in X \land x \notin B)                  \\
-    \iff & (x \in X \setminus A) \lor (x \in X \setminus B)           &  & \by{3.1.27} \\
-    \iff & x \in (X \setminus A) \cup (X \setminus B).                &  & \by{3.4}
+         & x \in X \setminus (A \cap B)                                                        \\
+    \iff & (x \in X) \land (x \notin A \cap B)                                &  & \by{3.1.27} \\
+    \iff & (x \in X) \land ((x \notin A) \lor (x \notin B))                   &  & \by{3.1.23} \\
+    \iff & ((x \in X) \land (x \notin A)) \lor ((x \in X) \land (x \notin B))                  \\
+    \iff & (x \in X \setminus A) \lor (x \in X \setminus B)                   &  & \by{3.1.27} \\
+    \iff & x \in (X \setminus A) \cup (X \setminus B),                        &  & \by{3.4}
   \end{align*}
-  Thus by \cref{3.1.4} we have \(X \setminus (A \cap B) = (X \setminus A) \cup (X \setminus B)\).
+  by \cref{3.1.4} we have \(X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B)\) and \(X \setminus (A \cap B) = (X \setminus A) \cup (X \setminus B)\).
 \end{proof}
 
 \begin{rmk}\label{3.1.29}
-  The de Morgan laws are named after the logician Augustus De Morgan (1806 -- 1871), who identified them as one of the basic laws of set theory.
+  The de Morgan laws are named after the logician Augustus De Morgan (1806--1871), who identified them as one of the basic laws of set theory.
 \end{rmk}
 
 \begin{rmk}\label{3.1.30}
@@ -602,7 +608,7 @@
   In this case, the duality is manifested by the complementation relation \(A \mapsto X \setminus A\);
   the de Morgan laws assert that this relation converts unions into intersections and vice versa.
   (It also interchanges \(X\) and the empty set.)
-  \cref{3.1.28} are collectively known as the \emph{laws of Boolean algebra}, after the mathematician George Boole (1815 -- 1864), and are also applicable to a number of other objects other than sets;
+  \cref{3.1.28} are collectively known as the \emph{laws of Boolean algebra}, after the mathematician George Boole (1815--1864), and are also applicable to a number of other objects other than sets;
   it plays a particularly important role in logic.
 \end{rmk}
 
@@ -732,7 +738,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:3.1.7}
-  Let \(A\), \(B\), \(C\) be sets.
+  Let \(A, B, C\) be sets.
   Show that \(A \cap B \subseteq A\) and \(A \cap B \subseteq B\).
   Furthermore, show that \(C \subseteq A\) and \(C \subseteq B\) iff \(C \subseteq A \cap B\).
   In a similar spirit, show that \(A \subseteq A \cup B\) and \(B \subseteq A \cup B\), and furthermore that \(A \subseteq C\) and \(B \subseteq C\) iff \(A \cup B \subseteq C\).
@@ -810,7 +816,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:3.1.9}
-  Let \(A\), \(B\), \(X\) be sets such that \(A \cup B = X\) and \(A \cap B = \emptyset\).
+  Let \(A, B, X\) be sets such that \(A \cup B = X\) and \(A \cap B = \emptyset\).
   Show that \(A = X \setminus B\) and \(B = X \setminus A\).
 \end{ex}
 
