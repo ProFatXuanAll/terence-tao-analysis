@@ -490,3 +490,30 @@
   Combining the statement ``\(P(n\pp)\) is true'' we see that the statement ``\(P(m)\) is true for all natural number \(m\) satisfying \(m \leq n\pp\)'' is true.
   This closes the induction.
 \end{proof}
+
+\begin{ex}\label{ex:2.2.7}
+  Let \(n\) be a natural number, and let \(P(m)\) be a property pertaining to the natural numbers such that whenever \(P(m)\) is true, \(P(m\pp)\) is true.
+  Show that if \(P(n)\) is true, then \(P(m)\) is true for any natural number \(m\) satisfying \(m \geq n\).
+  This principle is sometimes referred to as \emph{the principle of induction starting from the base case \(n\)}.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.2.7}]
+  Suppose that \(P(n)\) is true.
+  Let \(Q(k) = P(n + k)\) for every natural number \(k\).
+  We use induction to show that \(Q(k)\) is true for every natural number \(k\).
+
+  For \(k = 0\), by \cref{2.2.2} we have \(Q(0) = P(n + 0) = P(n)\).
+  Since \(P(n)\) is true by hypothesis, we know that \(Q(0)\) is true.
+  Thus the base case holds.
+
+  Suppose inductively that \(Q(k)\) is true for some natural number \(k\).
+  We want to show that \(Q(k\pp)\) is true.
+  By \cref{2.2.3} we have \(Q(k\pp) = P(n + (k\pp)) = P((n + k)\pp)\).
+  By induction hypothesis we have \(Q(k) = P(n + k)\) is true.
+  Thus we can use the hypothesis of \(P\) to show that \(P((n + k)\pp)\) is also true.
+  This closes the induction.
+  Thus we conclude that \(P(n + k)\) is true for every natural number \(k\).
+
+  By \cref{2.2.11} we know that for every natural number \(m\), we have \(m \geq n \iff m = n + k\) for some natural number \(k\).
+  Thus we see that \(P(m)\) is true for every natural number \(m\) satisfying \(m \geq n\).
+\end{proof}
