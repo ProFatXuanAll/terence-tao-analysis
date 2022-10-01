@@ -639,7 +639,7 @@
 \end{note}
 
 \begin{ax}[Infinity]\label{3.7}
-  There exists a set \(\N\), whose elements are called natural numbers, as well as an object \(0\) in \(\N\), and an object \(n++\) assigned to every natural number \(n \in \N\), such that the Peano axioms (\crefrange{2.1}{2.5}) hold.
+  There exists a set \(\N\), whose elements are called natural numbers, as well as an object \(0\) in \(\N\), and an object \(n\pp\) assigned to every natural number \(n \in \N\), such that the Peano axioms (\crefrange{2.1}{2.5}) hold.
 \end{ax}
 
 \exercisesection
@@ -906,21 +906,23 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:3.1.11}]
-  Let \(A\) be a set.
-  Let \(Q(x)\) be a property of any object \(x \in A\).
+  To show that \cref{3.6} implies \cref{3.5}, we need to show that every set created by \cref{3.5} can also be created by \cref{3.6}.
+  So let \(\set{x \in A : Q(x)}\) be a set created by \cref{3.5} where \(A\) is a set and \(Q(x)\) is a property of object \(x \in A\).
   Let \(P(x, y)\) be the statement ``\(Q(x)\) is true and \(x = y\)'' for any \(x \in A\) and any object \(y\).
-  Suppose that for each \(x \in A\) there is at most one object \(y\) for which \(P(x, y)\) is true.
+  Since \(A\) is a set, we know that each \(x \in A\) is unique, and thus \(P(x, y)\) is true iff \(x = y\).
+  Therefore the statement ``there is at most one object \(y\) for which \(P(x, y)\) is true'' is true.
+  And we can use \cref{3.6} to create a set \(\set{y : P(x, y) \text{ is true for some } x \in A}\).
   Then we have
   \begin{align*}
          & z \in \set{y : P(x, y) \text{ is true for some } x \in A}               \\
     \iff & P(x, z) \text{ is true for some } x \in A                 &  & \by{3.6} \\
-    \iff & Q(x) \text{ is true and } x = z                                         \\
-    \iff & Q(z) \text{ is true and } z \in A                                       \\
+    \iff & Q(x) \text{ is true and } x = z \text{ for some } x \in A               \\
     \iff & z \in \set{x \in A : Q(x) \text{ is true}}                &  & \by{3.5}
   \end{align*}
   Thus by \cref{3.1.4} we have
   \[
     \set{y : P(x, y) \text{ is true for some } x \in A} = \set{x \in A : Q(x) \text{ is true}}.
   \]
-  We conclude that \cref{3.6} implies \cref{3.5}.
+  This means any set created by \cref{3.5} can be created by \cref{3.6}.
+  Thus we conclude that \cref{3.6} implies \cref{3.5}.
 \end{proof}
