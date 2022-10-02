@@ -1,13 +1,29 @@
 \section{Images and inverse images}\label{sec:3.4}
 
 \begin{defn}[Images of sets]\label{3.4.1}
-  If \(f : X \to Y\) is a function from \(X\) to \(Y\), and \(S\) is a set in \(X\), we define \(f(S)\) to be the set
+  If \(f : X \to Y\) is a function from \(X\) to \(Y\), and \(S\) is a subset of \(X\), we define \(f(S)\) to be the set
   \[
     f(S) \coloneqq \set{f(x) : x \in S};
   \]
   this set is a subset of \(Y\), and is sometimes called the \emph{image} of \(S\) under the map \(f\).
   We sometimes call \(f(S)\) the \emph{forward image} of \(S\) to distinguish it from the concept of the \emph{inverse image} \(f^{-1}(S)\) of \(S\).
 \end{defn}
+
+\begin{ac}\label{ac:3.4.1}
+  Let \(f : X \to Y\) be a function and let \(S \subseteq X\).
+  The set \(f(S)\) is well-defined thanks to the axiom of replacement (\cref{3.6}).
+  One can also define \(f(S)\) using the axiom of specification (\cref{3.5}) instead of replacement.
+\end{ac}
+
+\begin{proof}[\pf{ac:3.4.1}]
+  First we use \cref{3.4.1} to create the set \(f(X) = \set{f(x) : x \in X}\).
+  Now we use \cref{3.5} to create the set
+  \[
+    E = \set{y \in f(X) \mid \exists x \in S : f(x) = y}.
+  \]
+  By \cref{3.1.4,3.4.1} we see that \(E = f(S)\).
+  Thus we can define \(f(S)\) by \cref{3.5} instead of \cref{3.6}.
+\end{proof}
 
 \setcounter{thm}{3}
 \begin{defn}[Inverse images]\label{3.4.4}
@@ -24,7 +40,7 @@
 
 \setcounter{thm}{6}
 \begin{rmk}\label{3.4.6}
-  If \(f\) is a bijective function, then we have defined \(f^{-1}\) in two slightly different ways, but this is not an issue because both definitions are equivalent.
+  If \(f\) is a bijective function, then we have defined \(f^{-1}\) in two slightly different ways, but this is not an issue because both definitions are equivalent (\cref{ex:3.4.1}).
 \end{rmk}
 
 \begin{ax}[Power set axiom]\label{3.10}
@@ -37,6 +53,7 @@
 
 \begin{note}
   The reason we use the notation \(Y^X\) to denote this set is that if \(Y\) has \(n\) elements and \(X\) has \(m\) elements, then one can show that \(Y^X\) has \(n^m\) elements.
+  See \cref{3.6.14}(f).
 \end{note}
 
 \setcounter{thm}{8}
@@ -49,37 +66,41 @@
   is a set.
 \end{lem}
 
-\begin{proof}
+\begin{proof}[\pf{3.4.9}]
   Suppose that \(X\) is a set.
-  By \cref{3.10}, there exists a set \(\set{0, 1}^X\) which consists of all the functions from \(X\) to \(\set{0, 1}\).
+  By \cref{3.10}, there exists a set \(\set{0, 1}^X\) which consists of functions with domain \(X\) and codomain \(\set{0, 1}\).
+  By \cref{3.6}, we can replace each \(f \in \set{0, 1}^X\) with \(f^{-1}\pa{\set{1}}\), i.e., there exists a set
   \[
-    f \in \set{0, 1}^X \iff (f \text{ is a function with domain } X \text{ and codomain } \set{0, 1}).
+    S = \set{f^{-1}\pa{\set{1}} : f \in \set{0, 1}^X}.
   \]
-  By \cref{3.6}, we can replace each \(f \in \set{0, 1}^X\) with \(f^{-1}(\set{1})\), i.e., there exists a set
+
+  Next we claim that \(S\) is consist of subsets of \(X\).
+  Let \(Y \in S\).
+  We want to show that \(Y\) is a subset of \(X\).
+  By the definition of \(S\) we know that \(Y = f^{-1}\pa{\set{1}}\) for some \(f \in \set{0, 1}^X\).
+  By \cref{3.4.4} we know that \(Y = \set{x \in X : f(x) \in \set{1}}\), which clearly is a subset of \(X\) (\cref{3.1.15}).
+  Thus our claim is true.
+
+  Finally we show that \(S\) is consist of all subsets of \(X\) and therefore \cref{3.4.9} is true.
+  Let \(Y\) be a subset of \(X\).
+  We want to show that \(Y \in S\) and we will use \cref{ex:3.3.8}(d) to achieve this.
+  We define two functions \(f : X \setminus Y \to \set{0, 1}\) and \(g : Y \to \set{0, 1}\) as follow:
+  \begin{align*}
+     & \forall z \in X \setminus Y, f(z) = 0; \\
+     & \forall z \in Y, g(z) = 1.
+  \end{align*}
+  Since every element in \(X \setminus Y\) is mapped by \(f\) to the unique element \(0\) in \(\set{0, 1}\), we know that \(f\) obey the vertical line test and therefore by \cref{3.3.1} \(f\) is well-defined.
+  Similarly \(g\) is well-defined.
+  By \cref{3.1.28}(g) we know that \((X \setminus Y) \cap Y = \emptyset\) and \((X \setminus Y) \cup Y = X\).
+  Thus we can apply \cref{ex:3.3.8}(d) to create a function \(h : X \to \set{0, 1}\) as follow:
   \[
-    S = \set{f^{-1}(\set{1}) : f \in \set{0, 1}^X}.
+    \forall z \in X, h(z) = \begin{dcases}
+      f(z) = 0 & \text{if } z \in X \setminus Y \\
+      g(z) = 1 & \text{if } z \in Y
+    \end{dcases}.
   \]
-  By \cref{3.4.4} we have
-  \begin{align*}
-             & \forall Y \in S                                                                     \\
-    \implies & \exists f \in \set{0, 1}^X : Y = f^{-1}(\set{1}) = \set{x \in X : f(x) \in \set{1}} \\
-    \implies & Y \subseteq X.
-  \end{align*}
-  Now \(\forall Y' \subseteq X\) we can define the following sets:
-  \begin{align*}
-    A_0 & = \set{0 : x \in X \setminus Y'}. &  & \text{(by \cref{3.1.27} and \cref{3.6})} \\
-    A_1 & = \set{1 : x \in Y'}.             &  & \by{3.6}
-  \end{align*}
-  So we have
-  \begin{align*}
-             & \forall Y' \subseteq X                         \\
-    \implies & \exists A_0, A_1                               \\
-    \implies & \exists f : X \to A_0 \cup A_1 &  & \by{3.6}   \\
-    \implies & f \in \set{0, 1}^X             &  & \by{3.10}  \\
-    \implies & f^{-1}(A_1) = Y'               &  & \by{3.4.4} \\
-    \implies & Y' \in S.
-  \end{align*}
-  Since \(\forall Y : Y \in S \iff Y \subseteq X\), we have show that \(S = \set{Y : Y \subseteq X}\) exists.
+  Clearly \(h \in \set{0, 1}^X\) and \(h^{-1}\pa{\set{1}} = Y\).
+  But by the definition of \(S\) we know that \(h^{-1}\pa{\set{1}} \in S\), therefore \(Y \in S\).
 \end{proof}
 
 \begin{rmk}\label{3.4.10}
@@ -95,39 +116,39 @@
 \end{ax}
 
 \begin{note}
-  The axiom of union (\cref{3.11}), combined with the axiom of pair set (\cref{3.3}), implies the axiom of pairwise union (\cref{3.4}).
-  Another important consequence of \cref{3.11} is that if one has some set \(I\), and for every element \(\alpha \in I\) we have some set \(A_{\alpha}\), then we can form the union set \(\bigcup_{\alpha \in I} A_{\alpha}\) by defining
+  The axiom of union (\cref{3.11}), combined with the axiom of pair set (\cref{3.3}), implies the axiom of pairwise union (\cref{3.4}) (see \cref{ex:3.4.8}).
+  Another important consequence of \cref{3.11} is that if one has some set \(I\), and for every element \(\alpha \in I\) we have some set \(A_\alpha\), then we can form the union set \(\bigcup_{\alpha \in I} A_\alpha\) by defining
   \[
-    \bigcup_{\alpha \in I} A_{\alpha} \coloneqq \bigcup \set{A_{\alpha} : \alpha \in I},
+    \bigcup_{\alpha \in I} A_\alpha \coloneqq \bigcup \set{A_\alpha : \alpha \in I},
   \]
   which is a set thanks to the axiom of replacement (\cref{3.6}) and the axiom of union (\cref{3.11}).
   More generally, we see that for any object \(y\),
   \[
-    y \in \bigcup_{\alpha \in I} A_{\alpha} \iff (y \in A_{\alpha} \text{ for some } \alpha \in I).
+    y \in \bigcup_{\alpha \in I} A_\alpha \iff (y \in A_\alpha \text{ for some } \alpha \in I).
   \]
   In situations like this, we often refer to \(I\) as an \emph{index set}, and the elements \(\alpha\) of this index set as \emph{labels};
-  the sets \(A_{\alpha}\) are then called a \emph{family of sets}, and are \emph{indexed} by the labels \(\alpha \in I\).
-  Note that if \(I\) was empty, then \(\bigcup_{\alpha \in I} A_{\alpha}\) would automatically also be empty.
+  the sets \(A_\alpha\) are then called a \emph{family of sets}, and are \emph{indexed} by the labels \(\alpha \in I\).
+  Note that if \(I\) was empty, then \(\bigcup_{\alpha \in I} A_\alpha\) would automatically also be empty.
 \end{note}
 
 \begin{note}
   We can similarly form intersections of families of sets, as long as the index set is non-empty.
-  More specifically, given any non-empty set \(I\), and given an assignment of a set \(A_{\alpha}\) to each \(\alpha \in I\), we can define the intersection \(\bigcap_{\alpha \in I} A_{\alpha}\) by first choosing some element \(\beta\) of \(I\) (which we can do since \(I\) is non-empty), and setting
+  More specifically, given any non-empty set \(I\), and given an assignment of a set \(A_\alpha\) to each \(\alpha \in I\), we can define the intersection \(\bigcap_{\alpha \in I} A_\alpha\) by first choosing some element \(\beta\) of \(I\) (which we can do since \(I\) is non-empty), and setting
   \[
-    \bigcap_{\alpha \in I} A_{\alpha} \coloneqq \set{x \in A_{\beta} : x \in A_{\alpha} \text{ for all } \alpha \in I},
+    \bigcap_{\alpha \in I} A_\alpha \coloneqq \set{x \in A_\beta : x \in A_\alpha \text{ for all } \alpha \in I},
   \]
   which is a set by the axiom of specification (\cref{3.5}).
   This definition may look like it depends on the choice of \(\beta\), but it does not.
   Observe that for any object \(y\),
   \[
-    y \in \bigcap_{\alpha \in I} A_{\alpha} \iff (y \in A_{\alpha} \text{ for all } \alpha \in I).
+    y \in \bigcap_{\alpha \in I} A_\alpha \iff (y \in A_\alpha \text{ for all } \alpha \in I).
   \]
 \end{note}
 
 \setcounter{thm}{11}
 \begin{rmk}\label{3.4.12}
   The axioms of set theory that we have introduced (\crefrange{3.1}{3.11}, excluding the dangerous \cref{3.8}) are known as the \emph{Zermelo-Fraenkel axioms of set theory}, after Ernst Zermelo (1871--1953) and Abraham Fraenkel (1891--1965).
-  There is one further axiom we will eventually need, the famous \emph{axiom of choice}, giving rise to the \emph{Zermelo-Fraenkel-Choice (ZFC) axioms of set theory}, but we will not need this axiom for some time.
+  There is one further axiom we will eventually need, the famous \emph{axiom of choice} (see \cref{sec:8.4}), giving rise to the \emph{Zermelo-Fraenkel-Choice (ZFC) axioms of set theory}, but we will not need this axiom for some time.
 \end{rmk}
 
 \exercisesection
@@ -139,16 +160,15 @@
   thus the fact that both sets are denoted by \(f^{-1}(V)\) will not lead to any inconsistency.
 \end{ex}
 
-\begin{proof}
-  Suppose that \(X, Y, V\) are sets and \(f : X \to Y\) is a function such that \(V \subseteq Y\) and \(f\) is bijective.
-  Let \(f^{-1} : Y \to X\) be the inverse of \(f\).
+\begin{proof}[\pf{ex:3.4.1}]
   Let \(A\) be the set of the forward image of \(V\) under \(f^{-1}\).
   Let \(B\) be the set of the inverse image of \(V\) under \(f\).
   Then we have
   \begin{align*}
-    \forall x \in A \iff & \exists v \in V : f^{-1}(v) = x &  & \by{3.4.1}  \\
-    \iff                 & f(f^{-1}(v)) = v = f(x)         &  & \by{3.3.20} \\
-    \iff                 & x \in B.                        &  & \by{3.4.4}
+         & x \in A                                          \\
+    \iff & \exists y \in V : f^{-1}(y) = x &  & \by{3.4.1}  \\
+    \iff & \exists y \in V : f(x) = y      &  & \by{3.3.20} \\
+    \iff & x \in B.                        &  & \by{3.4.4}
   \end{align*}
   Thus by \cref{3.1.4} we have \(A = B\).
 \end{proof}
@@ -159,24 +179,24 @@
   What about \(f(f^{-1}(U))\) and \(U\)?
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.4.2}]
   We first show that \(S \subseteq f^{-1}(f(S))\).
-  Suppose that \(X, Y, S\) are sets such that \(S \subseteq X\) and \(f : X \to Y\) is a function.
-  Then we have
+  Since
   \begin{align*}
-    \forall x \in S \implies & f(x) \in f(S)       &  & \by{3.4.1} \\
-    \implies                 & x \in f^{-1}(f(S)). &  & \by{3.4.4}
+             & x \in S                             \\
+    \implies & f(x) \in f(S)       &  & \by{3.4.1} \\
+    \implies & x \in f^{-1}(f(S)), &  & \by{3.4.4}
   \end{align*}
-  Thus by \cref{3.1.15} we have \(S \subseteq f^{-1}(f(S))\).
+  by \cref{3.1.15} we have \(S \subseteq f^{-1}(f(S))\).
 
   Now we show that \(f(f^{-1}(U)) \subseteq U\).
-  Suppose that \(X, Y, U\) are sets such that \(U \subseteq Y\) and \(f : X \to Y\) is a function.
-  Then we have
+  Since
   \begin{align*}
-    \forall y \in f(f^{-1}(U)) \implies & \exists x \in f^{-1}(U) : f(x) = y &  & \by{3.4.1} \\
-    \implies                            & y \in U.                           &  & \by{3.4.4}
+             & y \in f(f^{-1}(U))                                 \\
+    \implies & \exists x \in f^{-1}(U) : f(x) = y &  & \by{3.4.1} \\
+    \implies & y \in U,                           &  & \by{3.4.4}
   \end{align*}
-  Thus by \cref{3.1.15} we have \(f(f^{-1}(U)) \subseteq U\).
+  by \cref{3.1.15} we have \(f(f^{-1}(U)) \subseteq U\).
 \end{proof}
 
 \begin{ex}\label{ex:3.4.3}
@@ -185,48 +205,48 @@
   For the first two statements, is it true that the \(\subseteq\) relation can be imporved to \(=\)?
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.4.3}]
   We first show that \(f(A \cap B) \subseteq f(A) \cap f(B)\).
-  Suppose that \(A, B, X, Y\) are sets such that \(A \subseteq X\) and \(B \subseteq X\).
-  Suppose that \(f : X \to Y\) is a function.
-  Then we have
+  Since
   \begin{align*}
-             & \forall y \in f(A \cap B)                                                    \\
-    \implies & y \in \set{f(x) : x \in A \cap B}                           &  & \by{3.4.1}  \\
-    \implies & y \in \set{f(x) : x \in A \land x \in B}                    &  & \by{3.1.23} \\
-    \implies & y \in \set{f(x) : x \in A} \land y \in \set{f(x) : x \in B}                  \\
-    \implies & y \in f(A) \land y \in f(B)                                 &  & \by{3.4.1}  \\
-    \implies & y \in f(A) \cap f(B).                                       &  & \by{3.1.23}
+             & y \in f(A \cap B)                                                                      \\
+    \implies & y \in \set{f(x) : x \in A \cap B}                                     &  & \by{3.4.1}  \\
+    \implies & y \in \set{f(x) : (x \in A) \land (x \in B)}                          &  & \by{3.1.23} \\
+    \implies & \pa{y \in \set{f(x) : x \in A}} \land \pa{y \in \set{f(x) : x \in B}}                  \\
+    \implies & (y \in f(A)) \land (y \in f(B))                                       &  & \by{3.4.1}  \\
+    \implies & y \in f(A) \cap f(B),                                                 &  & \by{3.1.23}
   \end{align*}
-  Thus by \cref{3.1.15} we have \(f(A \cap B) \subseteq f(A) \cap f(B)\).
+  by \cref{3.1.15} we have \(f(A \cap B) \subseteq f(A) \cap f(B)\).
+  We do not have \(f(A \cap B) = f(A) \cap f(B)\) in general.
+  Consider the example \(f = x \mapsto x^2\), \(A = \set{1}\) and \(B = \set{-1}\).
+  We have \(f(A \cap B) = f(\emptyset) = \emptyset \neq \set{1} = \set{1} \cap \set{1} = f(A) \cap f(B)\).
 
   Next we show that \(f(A) \setminus f(B) \subseteq f(A \setminus B)\).
-  Suppose that \(A, B, X, Y\) are sets such that \(A \subseteq X\) and \(B \subseteq X\).
-  Suppose that \(f : X \to Y\) is a function.
-  Then we have
+  Since
   \begin{align*}
-             & \forall y \in f(A) \setminus f(B)                                               \\
-    \implies & y \in f(A) \land y \notin f(B)                                 &  & \by{3.1.27} \\
-    \implies & y \in \set{f(x) : x \in A} \land y \notin \set{f(x) : x \in B} &  & \by{3.4.1}  \\
-    \implies & y \in \set{f(x) : x \in A \land x \notin B}                                     \\
-    \implies & y \in \set{f(x) : x \in A \setminus B}                         &  & \by{3.1.27} \\
-    \implies & y \in f(A \setminus B).                                        &  & \by{3.4.1}
+             & y \in f(A) \setminus f(B)                                                                 \\
+    \implies & (y \in f(A)) \land (y \notin f(B))                                       &  & \by{3.1.27} \\
+    \implies & \pa{y \in \set{f(x) : x \in A}} \land \pa{y \notin \set{f(x) : x \in B}} &  & \by{3.4.1}  \\
+    \implies & y \in \set{f(x) : (x \in A) \land (x \notin B)}                                           \\
+    \implies & y \in \set{f(x) : x \in A \setminus B}                                   &  & \by{3.1.27} \\
+    \implies & y \in f(A \setminus B),                                                  &  & \by{3.4.1}
   \end{align*}
-  Thus by \cref{3.1.15} we have \(f(A) \setminus f(B) \subseteq f(A \setminus B)\).
+  by \cref{3.1.15} we have \(f(A) \setminus f(B) \subseteq f(A \setminus B)\).
+  We do not have \(f(A) \setminus f(B) = f(A \setminus B)\) in general.
+  Consider the example \(f = x \mapsto x^2\), \(A = \set{1}\) and \(B = \set{-1}\).
+  We have \(f(A) \setminus f(B) = \set{1} \setminus \set{1} = \emptyset \neq \set{1} = f(\set{1}) = f(A \setminus B)\).
 
   Finally we show that \(f(A \cup B) = f(A) \cup f(B)\).
-  Suppose that \(A, B, X, Y\) are sets such that \(A \subseteq X\) and \(B \subseteq X\).
-  Suppose that \(f : X \to Y\) is a function.
-  Then we have
+  Since
   \begin{align*}
-         & \forall y \in f(A \cup B)                                                  \\
-    \iff & y \in \set{f(x) : x \in A \cup B}                          &  & \by{3.4.1} \\
-    \iff & y \in \set{f(x) : x \in A \lor x \in B}                    &  & \by{3.4}   \\
-    \iff & y \in \set{f(x) : x \in A} \lor y \in \set{f(x) : x \in B}                 \\
-    \iff & y \in f(A) \lor y \in f(B)                                 &  & \by{3.4.1} \\
-    \iff & y \in f(A) \cup f(B).                                      &  & \by{3.4}
+         & y \in f(A \cup B)                                                                    \\
+    \iff & y \in \set{f(x) : x \in A \cup B}                                    &  & \by{3.4.1} \\
+    \iff & y \in \set{f(x) : (x \in A) \lor (x \in B)}                          &  & \by{3.4}   \\
+    \iff & \pa{y \in \set{f(x) : x \in A}} \lor \pa{y \in \set{f(x) : x \in B}}                 \\
+    \iff & (y \in f(A)) \lor (y \in f(B))                                       &  & \by{3.4.1} \\
+    \iff & y \in f(A) \cup f(B),                                                &  & \by{3.4}
   \end{align*}
-  Thus by \cref{3.1.4} we have \(f(A \cup B) = f(A) \cup f(B)\).
+  by \cref{3.1.4} we have \(f(A \cup B) = f(A) \cup f(B)\).
 \end{proof}
 
 \begin{ex}\label{ex:3.4.4}
@@ -234,45 +254,39 @@
   \(f^{-1}(U \cap V) = f^{-1}(U) \cap f^{-1}(V)\), and that \(f^{-1}(U \setminus V) = f^{-1}(U) \setminus f^{-1}(V)\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.4.4}]
   We first show that \(f^{-1}(U \cup V) = f^{-1}(U) \cup f^{-1}(V)\).
-  Suppose that \(U, V, X, Y\) are sets such that \(U \subseteq Y\) and \(V \subseteq Y\).
-  Suppose that \(f : X \to Y\) is a function.
-  Then we have
+  Since
   \begin{align*}
-         & \forall x \in f^{-1}(U \cup V)                       \\
-    \iff & f(x) \in U \cup V                    &  & \by{3.4.4} \\
-    \iff & f(x) \in U \lor f(x) \in V           &  & \by{3.4}   \\
-    \iff & x \in f^{-1}(U) \lor x \in f^{-1}(V) &  & \by{3.4.4} \\
-    \iff & x \in f^{-1}(U) \cup f^{-1}(V).      &  & \by{3.4}
+         & x \in f^{-1}(U \cup V)                                         \\
+    \iff & f(x) \in U \cup V                              &  & \by{3.4.4} \\
+    \iff & (f(x) \in U) \lor (f(x) \in V)                 &  & \by{3.4}   \\
+    \iff & \pa{x \in f^{-1}(U)} \lor \pa{x \in f^{-1}(V)} &  & \by{3.4.4} \\
+    \iff & x \in f^{-1}(U) \cup f^{-1}(V),                &  & \by{3.4}
   \end{align*}
-  Thus by \cref{3.1.4} we have \(f^{-1}(U \cup V) = f^{-1}(U) \cup f^{-1}(V)\).
+  by \cref{3.1.4} we have \(f^{-1}(U \cup V) = f^{-1}(U) \cup f^{-1}(V)\).
 
   Next we show that \(f^{-1}(U \cap V) = f^{-1}(U) \cap f^{-1}(V)\).
-  Suppose that \(U, V, X, Y\) are sets such that \(U \subseteq Y\) and \(V \subseteq Y\).
-  Suppose that \(f : X \to Y\) is a function.
-  Then we have
+  Since
   \begin{align*}
-         & \forall x \in f^{-1}(U \cap V)                         \\
-    \iff & f(x) \in U \cap V                     &  & \by{3.4.4}  \\
-    \iff & f(x) \in U \land f(x) \in V           &  & \by{3.1.23} \\
-    \iff & x \in f^{-1}(U) \land x \in f^{-1}(V) &  & \by{3.4.4}  \\
-    \iff & x \in f^{-1}(U) \cap f^{-1}(V).       &  & \by{3.1.23}
+         & x \in f^{-1}(U \cap V)                                           \\
+    \iff & f(x) \in U \cap V                               &  & \by{3.4.4}  \\
+    \iff & (f(x) \in U) \land (f(x) \in V)                 &  & \by{3.1.23} \\
+    \iff & \pa{x \in f^{-1}(U)} \land \pa{x \in f^{-1}(V)} &  & \by{3.4.4}  \\
+    \iff & x \in f^{-1}(U) \cap f^{-1}(V),                 &  & \by{3.1.23}
   \end{align*}
-  Thus by \cref{3.1.4} we have \(f^{-1}(U \cap V) = f^{-1}(U) \cap f^{-1}(V)\).
+  by \cref{3.1.4} we have \(f^{-1}(U \cap V) = f^{-1}(U) \cap f^{-1}(V)\).
 
   Finally we show that \(f^{-1}(U \setminus V) = f^{-1}(U) \setminus f^{-1}(V)\).
-  Suppose that \(U, V, X, Y\) are sets such that \(U \subseteq Y\) and \(V \subseteq Y\).
-  Suppose that \(f : X \to Y\) is a function.
-  Then we have
+  Since
   \begin{align*}
-         & \forall x \in f^{-1}(U \setminus V)                       \\
-    \iff & f(x) \in U \setminus V                   &  & \by{3.4.4}  \\
-    \iff & f(x) \in U \land f(x) \notin V           &  & \by{3.1.23} \\
-    \iff & x \in f^{-1}(U) \land x \notin f^{-1}(V) &  & \by{3.4.4}  \\
-    \iff & x \in f^{-1}(U) \setminus f^{-1}(V).     &  & \by{3.1.23}
+         & x \in f^{-1}(U \setminus V)                                         \\
+    \iff & f(x) \in U \setminus V                             &  & \by{3.4.4}  \\
+    \iff & (f(x) \in U) \land (f(x) \notin V)                 &  & \by{3.1.23} \\
+    \iff & \pa{x \in f^{-1}(U)} \land \pa{x \notin f^{-1}(V)} &  & \by{3.4.4}  \\
+    \iff & x \in f^{-1}(U) \setminus f^{-1}(V),               &  & \by{3.1.23}
   \end{align*}
-  Thus by \cref{3.1.4} we have \(f^{-1}(U \setminus V) = f^{-1}(U) \setminus f^{-1}(V)\).
+  by \cref{3.1.4} we have \(f^{-1}(U \setminus V) = f^{-1}(U) \setminus f^{-1}(V)\).
 \end{proof}
 
 \begin{ex}\label{ex:3.4.5}
@@ -281,178 +295,181 @@
   Show that \(f^{-1}(f(S)) = S\) for every \(S \subseteq X\) iff \(f\) is injective.
 \end{ex}
 
-\begin{proof}
-  We first show that \(\forall S \subseteq Y : f(f^{-1}(S)) = S \iff f\) is surjective.
-  Suppose that \(X, Y, S\) are sets such that \(S \subseteq Y\) and \(f : X \to Y\) is a function.
-  Then we have
+\begin{proof}[\pf{ex:3.4.5}]
+  We first show that \(f\pa{f^{-1}(S)} = S\) for every \(S \subseteq Y\) iff \(f\) is surjective.
+  By \cref{ex:3.4.2} we have \(f\pa{f^{-1}(S)} \subseteq S\) for every \(S \subseteq Y\).
+  Thus it suffices to show that \(S \subseteq f\pa{f^{-1}(S)}\) for every \(S \subseteq Y\) iff \(f\) is surjective.
+  This is true since
   \begin{align*}
-         & f \text{ is surjective}                                                                              \\
-    \iff & (\forall S \subseteq Y : y \in S \implies \exists x \in X : f(x) = y)             &  & \by{3.3.17}   \\
-    \iff & (\forall S \subseteq Y : y \in S \implies \exists x \in f^{-1}(S) : f(x) = y)     &  & \by{3.4.4}    \\
-    \iff & (\forall S \subseteq Y : y \in S \implies y \in f(f^{-1}(S)))                     &  & \by{3.4.1}    \\
-    \iff & (\forall S \subseteq Y : S \subseteq f(f^{-1}(S)))                                &  & \by{3.1.15}   \\
-    \iff & (\forall S \subseteq Y : S \subseteq f(f^{-1}(S)) \land f(f^{-1}(S)) \subseteq S) &  & \by{ex:3.4.2} \\
-    \iff & (\forall S \subseteq Y : S = f(f^{-1}(S))).                                       &  & \by{3.1.18}
+         & f \text{ is surjective}                                                                     \\
+    \iff & \forall y \in Y, \exists x \in X : f(x) = y                                &  & \by{3.3.17} \\
+    \iff & \forall S \subseteq Y, \forall y \in S, \exists x \in X : f(x) = y         &  & \by{3.1.15} \\
+    \iff & \forall S \subseteq Y, \forall y \in S, \exists x \in f^{-1}(S) : f(x) = y &  & \by{3.4.4}  \\
+    \iff & \forall S \subseteq Y, \forall y \in S, y \in f\pa{f^{-1}(S)}              &  & \by{3.4.1}  \\
+    \iff & \forall S \subseteq Y, S \subseteq f\pa{f^{-1}(S)}.                        &  & \by{3.1.15}
   \end{align*}
 
-  Now we show that \(\forall S \subseteq X : f^{-1}(f(S)) = S \iff f\) is injective.
-  Suppose that \(X, Y, S\) are sets such that \(S \subseteq X\) and \(f : X \to Y\) is a function.
-  If \(f\) is injective, then \(\forall S \subseteq X\) we have
-  \begin{align*}
-             & x \in f^{-1}(f(S))                                                 \\
-    \implies & f(x) \in f(S)                                     &  & \by{3.4.4}  \\
-    \implies & \exists x' \in S : (f(x) = f(x') \implies x = x') &  & \by{3.3.14} \\
-    \implies & x \in S.
-  \end{align*}
-  Thus \(f^{-1}(f(S)) \subseteq S\).
-  By \cref{ex:3.4.2} we have \(S \subseteq f^{-1}(f(S))\), thus by \cref{3.1.18} we have \(S = f^{-1}(f(S))\).
-  On the other hand, if \(\forall S \subseteq X : f^{-1}(f(S)) = S\), then we have
-  \begin{align*}
-             & \forall x, x' \in S : f(x) = f(x')                                         \\
-    \implies & x \in f^{-1}(f(\set{x})) = f^{-1}(f(\set{x'})) = \set{x'}                  \\
-    \implies & x = x'                                                                     \\
-    \implies & f \text{ is injective}.                                   &  & \by{3.3.14}
-  \end{align*}
-  Thus we conclude that \(\forall S \subseteq X : f^{-1}(f(S)) = S \iff f\) is injective.
+  Now we show that \(f^{-1}\pa{f(S)} = S\) for all \(S \subseteq X\) iff \(f\) is injective.
+  By \cref{ex:3.4.2} we have \(S \subseteq f^{-1}\pa{f(S)}\) for every \(S \subseteq X\).
+  Thus it suffices to show that \(f^{-1}\pa{f(S)} \subseteq S\) for every \(S \subseteq X\) iff \(f\) is injective.
+
+  We start by showing that if \(f^{-1}\pa{f(S)} \subseteq S\) for every \(S \subseteq X\), then \(f\) is injective.
+  So suppose that \(f^{-1}\pa{f(S)} \subseteq S\) for every \(S \subseteq X\).
+  Let \(x_1, x_2 \in X\) such that \(x_1 \neq x_2\).
+  Then by \cref{3.3,3.1.15} we know that \(\set{x_1} \subseteq X\) and \(\set{x_2} \subseteq X\).
+  Thus we can apply the hypothesis and \cref{ex:3.4.2} to derive
+  \[
+    \set{x_1} \subseteq f^{-1}\pa{f\pa{\set{x_1}}} \subseteq \set{x_1} \quad \text{and} \quad \set{x_2} \subseteq f^{-1}\pa{f\pa{\set{x_2}}} \subseteq \set{x_2}.
+  \]
+  By \cref{3.1.18} this means \(\set{x_1} = f^{-1}\pa{f\pa{\set{x_1}}}\) and \(\set{x_2} = f^{-1}\pa{f\pa{\set{x_2}}}\).
+  By \cref{3.4.1} we see that \(f\pa{\set{x_1}}\) and \(f\pa{\set{x_2}}\) are singleton sets.
+  Thus by \cref{3.4.4} we must have \(f(x_1) \neq f(x_2)\), otherwise we would have \(f(\set{x_1}) = f(\set{x_2})\) which implies \(\set{x_1} = \set{x_2}\), a contradiction.
+  Therefore \(f\) is injective by \cref{3.3.14}.
+
+  Now we show that \(f\) is injective implies \(f^{-1}\pa{f(S)} \subseteq S\) for every \(S \subseteq X\).
+  Suppose that \(f\) is injective.
+  Let \(S \subseteq X\).
+  Suppose for sake of contradiction that \(f^{-1}\pa{f(S)} \nsubseteq S\).
+  Then by \cref{3.1.15} there exists an \(x \in f^{-1}\pa{f(S)}\) such that \(x \notin S\).
+  Fix one such \(x\).
+  By \cref{3.4.4} we know that there exists a \(y \in f(S)\) such that \(f(x) = y\).
+  Fix one such \(y\).
+  Since \(y \in f(S)\), by \cref{3.4.1} there exists an \(x' \in S\) such that \(f(x') = y\).
+  But \(f\) is injective implies \(x = x'\), which means \(x \in S\), a contradiction.
+  Thus we must have \(f^{-1}\pa{f(S)} \subseteq S\).
 \end{proof}
 
 \begin{ex}\label{ex:3.4.6}
   Prove \cref{3.4.9}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.4.6}]
   See \cref{3.4.9}.
 \end{proof}
 
 \begin{ex}\label{ex:3.4.7}
-  Let \(X\), \(Y\) be sets.
+  Let \(X, Y\) be sets.
   Define a \emph{partial function} from \(X\) to \(Y\) to be any function \(f : X' \to Y'\) whose domain \(X'\) is a subset of \(X\), and whose codomain \(Y'\) is a subset of \(Y\).
   Show that the collection of all partial functions from \(X\) to \(Y\) is itself a set.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.4.7}]
   Suppose that \(X, Y\) are sets.
-  Then by \cref{3.4.9}, the set \(A = \set{X' : X' \subseteq X}\) exists, so does \(B = \set{Y' : Y' \subseteq Y}\).
+  Then by \cref{3.4.9}, both the sets \(A = \set{X' : X' \subseteq X}\) and \(B = \set{Y' : Y' \subseteq Y}\) exist.
   Now we have
   \begin{align*}
-    C_1 & = \set{Y'^{X'} : X' \in A \land Y' \in B}             &  & \by{3.10} \\
-    C_2 & = \bigcup C_1 = \set{f \in Y'^{X'} : Y'^{X'} \in C_1} &  & \by{3.11} \\
+    C_1 & = \set{Y'^{X'} : \pa{X' \in A} \land \pa{Y' \in B}};   &  & \by{3.5,3.6,3.10} \\
+    C_2 & = \bigcup C_1 = \set{f \in Y'^{X'} : Y'^{X'} \in C_1}. &  & \by{3.11}         \\
   \end{align*}
   If \(f : X' \to Y'\) is a partial function whose domain \(X' \subseteq X\) and whose codomain \(Y' \subseteq Y\), then we have \(Y'^{X'} \in C_1\), and thus \(f \in C_2\).
 \end{proof}
 
 \begin{ex}\label{ex:3.4.8}
-  Show that \cref{3.4} can be deduced from \cref{3.1}, \cref{3.3} and \cref{3.11}.
+  Show that \cref{3.4} can be deduced from \cref{3.1,3.3,3.11}.
 \end{ex}
 
-\begin{proof}
-  By \cref{3.1}, \(A\) is a set and \(B\) is a set.
-  And if \(x\) is a object, we can say \(x \in A\) or \(x \in B\).
+\begin{proof}[\pf{ex:3.4.8}]
+  Let \(A, B\) be sets (the existence of \(A, B\) are guaranteed by \cref{3.1}).
   By \cref{3.3}, there exists a set \(\set{A, B}\) whose only elements are \(A\) and \(B\).
-  By \cref{3.11}, \(x \in \bigcup \set{A, B} \iff x \in A \lor x \in B\).
-  By defining \(A \cup B \coloneqq \bigcup \set{A, B}\), we show that \(x \in A \cup B \iff x \in A \lor x \in B\) is true.
+  By \cref{3.11} we can create a set \(\bigcup \set{A, B}\).
+  Now we claim that \(A \cup B = \bigcup \set{A, B}\).
+  Since
+  \begin{align*}
+         & x \in \bigcup \set{A, B}                          \\
+    \iff & \exists C \in \set{A, B} : x \in C &  & \by{3.11} \\
+    \iff & (x \in A) \lor (x \in B)           &  & \by{3.3}  \\
+    \iff & x \in A \cup B,                    &  & \by{3.4}
+  \end{align*}
+  by \cref{3.1.4} we see that \(A \cup B = \bigcup \set{A, B}\).
 \end{proof}
 
 \begin{ex}\label{ex:3.4.9}
-  Show that if \(\beta\) and \(\beta'\) are two elements of a set \(I\), and to each \(\alpha \in I\) we assign a set \(A_{\alpha}\), then
+  Show that if \(\beta\) and \(\beta'\) are two elements of a set \(I\), and to each \(\alpha \in I\) we assign a set \(A_\alpha\), then
   \[
-    \set{x \in A_{\beta} : x \in A_{\alpha} \ \forall \alpha \in I} = \set{x \in A_{\beta'} : x \in A_{\alpha} \ \forall \alpha \in I},
+    \set{x \in A_\beta : \forall \alpha \in I, x \in A_\alpha} = \set{x \in A_{\beta'} : \forall \alpha \in I, x \in A_\alpha},
   \]
-  and so the definition of \(\bigcap_{\alpha \in I} A_{\alpha}\) does not depend on \(\beta\).
+  and so the definition of \(\bigcap_{\alpha \in I} A_\alpha\) does not depend on \(\beta\).
 \end{ex}
 
-\begin{proof}
-  Suppose that \(I\) is a set and \(\forall \alpha \in I : A_{\alpha}\) is a set.
-  Let \(\beta, \beta' \in I\) and \(B, B'\) be sets
+\begin{proof}[\pf{ex:3.4.9}]
+  Let \(B, B'\) be sets
   \begin{align*}
-    B  & = \set{x \in A_{\beta} : x \in A_{\alpha} \ \forall \alpha \in I}   \\
-    B' & = \set{x \in A_{\beta'} : x \in A_{\alpha} \ \forall \alpha \in I}.
+    B  & = \set{x \in A_\beta : \forall \alpha \in I, x \in A_\alpha}     \\
+    B' & = \set{x \in A_{\beta'} : \forall \alpha \in I, x \in A_\alpha}.
   \end{align*}
-  We now show that \(B = B'\).
+  Since
   \begin{align*}
-         & \forall x \in B                                                                 \\
-    \iff & x \in A_{\beta} \land x \in A_{\alpha} \ \forall \alpha \in I                   \\
-    \iff & x \in A_{\alpha} \ \forall \alpha \in I                        & (\beta \in I)  \\
-    \iff & x \in A_{\beta'} \land x \in A_{\alpha} \ \forall \alpha \in I & (\beta' \in I) \\
-    \iff & x \in B'.
+         & x \in B                                                                          \\
+    \iff & (x \in A_\beta) \land (\forall \alpha \in I, x \in A_\alpha)                     \\
+    \iff & \forall \alpha \in I, x \in A_\alpha                            & (\beta \in I)  \\
+    \iff & (x \in A_{\beta'}) \land (\forall \alpha \in I, x \in A_\alpha) & (\beta' \in I) \\
+    \iff & x \in B',
   \end{align*}
-  Thus by \cref{3.1.4} we have \(B = B'\).
+  by \cref{3.1.4} we have \(B = B'\).
 \end{proof}
 
 \begin{ex}\label{ex:3.4.10}
-  Suppose that \(I\) and \(J\) are two sets, and for all \(\alpha \in I \cup J\) let \(A_{\alpha}\) be a set.
-  Show that \((\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha}) = \bigcup_{\alpha \in I \cup J} A_{\alpha}\).
-  If \(I\) and \(J\) are non-empty, show that \((\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha}) = \bigcap_{\alpha \in I \cup J} A_{\alpha}\).
+  Suppose that \(I\) and \(J\) are two sets, and for all \(\alpha \in I \cup J\) let \(A_\alpha\) be a set.
+  Show that \(\pa{\bigcup_{\alpha \in I} A_\alpha} \cup \pa{\bigcup_{\alpha \in J} A_\alpha} = \bigcup_{\alpha \in I \cup J} A_\alpha\).
+  If \(I\) and \(J\) are non-empty, show that \(\pa{\bigcap_{\alpha \in I} A_\alpha} \cap \pa{\bigcap_{\alpha \in J} A_\alpha} = \bigcap_{\alpha \in I \cup J} A_\alpha\).
 \end{ex}
 
-\begin{proof}
-  We first show that \((\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha}) = \bigcup_{\alpha \in I \cup J} A_{\alpha}\).
-  Suppose that \(I\) and \(J\) are two sets, and \(\forall \alpha \in I \cup J : A_{\alpha}\) be a set.
-  Then we have
+\begin{proof}[\pf{ex:3.4.10}]
+  Since
   \begin{align*}
-         & \forall x \in (\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha})                \\
-    \iff & x \in \bigcup_{\alpha \in I} A_{\alpha} \lor x \in \bigcup_{\alpha \in J} A_{\alpha}       &  & \by{3.4}  \\
-    \iff & (\exists \alpha \in I : x \in A_{\alpha}) \lor (\exists \alpha \in J : x \in A_{\alpha})   &  & \by{3.11} \\
-    \iff & \exists \alpha \in I \lor \alpha \in J : x \in A_{\alpha}                                                 \\
-    \iff & \exists \alpha \in I \cup J : x \in A_{\alpha}                                             &  & \by{3.4}  \\
-    \iff & x \in \bigcup_{\alpha \in I \cup J} A_{\alpha}.                                            &  & \by{3.11}
+         & x \in \pa{\bigcup_{\alpha \in I} A_\alpha} \cup \pa{\bigcup_{\alpha \in J} A_\alpha}                      \\
+    \iff & \pa{x \in \bigcup_{\alpha \in I} A_\alpha} \lor \pa{x \in \bigcup_{\alpha \in J} A_\alpha} &  & \by{3.4}  \\
+    \iff & (\exists \alpha \in I : x \in A_\alpha) \lor (\exists \alpha \in J : x \in A_\alpha)       &  & \by{3.11} \\
+    \iff & \exists \alpha : ((\alpha \in I) \lor (\alpha \in J)) \land (x \in A_\alpha)                              \\
+    \iff & \exists \alpha \in I \cup J : x \in A_\alpha                                               &  & \by{3.4}  \\
+    \iff & x \in \bigcup_{\alpha \in I \cup J} A_\alpha                                               &  & \by{3.11}
   \end{align*}
-  Thus by \cref{3.1.4} we have \((\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha}) = \bigcup_{\alpha \in I \cup J} A_{\alpha}\).
-
-  Now we show that \(I \neq \emptyset \land J \neq \emptyset \implies (\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha}) = \bigcap_{\alpha \in I \cup J} A_{\alpha}\).
-  Suppose that \(I\) and \(J\) are two non-empty sets, and \(\forall \alpha \in I \cup J : A_{\alpha}\) be a set.
-  Then we have
+  and
   \begin{align*}
-         & \forall x \in (\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha})                    \\
-    \iff & x \in \bigcap_{\alpha \in I} A_{\alpha} \land x \in \bigcap_{\alpha \in J} A_{\alpha}      &  & \by{3.1.23}   \\
-    \iff & (\forall \alpha \in I : x \in A_{\alpha}) \land (\forall \alpha \in J : x \in A_{\alpha})  &  & \by{ex:3.4.9} \\
-    \iff & \forall \alpha \in I \lor \alpha \in J : x \in A_{\alpha}                                                     \\
-    \iff & \forall \alpha \in I \cup J : x \in A_{\alpha}                                             &  & \by{3.4}      \\
-    \iff & x \in \bigcap_{\alpha \in I \cup J} A_{\alpha}.                                            &  & \by{ex:3.4.9}
+         & x \in \pa{\bigcap_{\alpha \in I} A_\alpha} \cap \pa{\bigcap_{\alpha \in J} A_\alpha}                           \\
+    \iff & \pa{x \in \bigcap_{\alpha \in I} A_\alpha} \land \pa{x \in \bigcap_{\alpha \in J} A_\alpha} &  & \by{3.1.23}   \\
+    \iff & (\forall \alpha \in I, x \in A_\alpha) \land (\forall \alpha \in J, x \in A_\alpha)         &  & \by{ex:3.4.9} \\
+    \iff & \forall \alpha, ((\alpha \in I) \lor (\alpha \in J)) \land (x \in A_\alpha)                                    \\
+    \iff & \forall \alpha \in I \cup J, x \in A_\alpha                                                 &  & \by{3.4}      \\
+    \iff & x \in \bigcap_{\alpha \in I \cup J} A_\alpha,                                               &  & \by{ex:3.4.9}
   \end{align*}
-  Thus by \cref{3.1.4} we have \((\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha}) = \bigcap_{\alpha \in I \cup J} A_{\alpha}\).
+  by \cref{3.1.4} we have \(\pa{\bigcup_{\alpha \in I} A_\alpha} \cup \pa{\bigcup_{\alpha \in J} A_\alpha} = \bigcup_{\alpha \in I \cup J} A_\alpha\) and \(\pa{\bigcap_{\alpha \in I} A_\alpha} \cap \pa{\bigcap_{\alpha \in J} A_\alpha} = \bigcap_{\alpha \in I \cup J} A_\alpha\).
 \end{proof}
 
 \begin{ex}\label{ex:3.4.11}
-  Let \(X\) be a set, let \(I\) be a non-empty set, and for all \(\alpha \in I\) let \(A_{\alpha}\) be a subset of \(X\).
+  Let \(X\) be a set, let \(I\) be a non-empty set, and for all \(\alpha \in I\) let \(A_\alpha\) be a subset of \(X\).
   Show that
   \[
-    X \setminus \bigcup_{\alpha \in I} A_{\alpha} = \bigcap_{\alpha \in I} (X \setminus A_{\alpha})
+    X \setminus \bigcup_{\alpha \in I} A_\alpha = \bigcap_{\alpha \in I} (X \setminus A_\alpha)
   \]
   and
   \[
-    X \setminus \bigcap_{\alpha \in I} A_{\alpha} = \bigcup_{\alpha \in I} (X \setminus A_{\alpha}).
+    X \setminus \bigcap_{\alpha \in I} A_\alpha = \bigcup_{\alpha \in I} (X \setminus A_\alpha).
   \]
   This should be compared with de Morgan's laws in \cref{3.1.28}
   (although one cannot derive the above identities directly from de Morgan's laws, as \(I\) could be infinite).
 \end{ex}
 
-\begin{proof}
-  We first show that \(X \setminus \bigcup_{\alpha \in I} A_{\alpha} = \bigcap_{\alpha \in I} (X \setminus A_{\alpha})\).
-  Suppose that \(X, I\) are sets, \(I \neq \emptyset\), \(\forall \alpha \in I : A_{\alpha}\) is a set and \(A_{\alpha} \subseteq X\).
-  Then we have
+\begin{proof}[\pf{ex:3.4.11}]
+  Since
   \begin{align*}
-         & \forall x \in X \setminus \bigcup_{\alpha \in I} A_{\alpha}                     \\
-    \iff & x \in X \land x \notin \bigcup_{\alpha \in I} A_{\alpha}     &  & \by{3.1.27}   \\
-    \iff & x \in X \land \lnot(\exists \alpha \in I : x \in A_{\alpha}) &  & \by{3.11}     \\
-    \iff & x \in X \land (\forall \alpha \in I : x \notin A_{\alpha})                      \\
-    \iff & \forall \alpha \in I : x \in X \land x \notin A_{\alpha}                        \\
-    \iff & \forall \alpha \in I : x \in X \setminus A_{\alpha}          &  & \by{3.1.27}   \\
-    \iff & x \in \bigcap_{\alpha \in I} (X \setminus A_{\alpha})        &  & \by{ex:3.4.9} \\
+         & x \in X \setminus \bigcup_{\alpha \in I} A_\alpha                                \\
+    \iff & (x \in X) \land \pa{x \notin \bigcup_{\alpha \in I} A_\alpha} &  & \by{3.1.27}   \\
+    \iff & (x \in X) \land \lnot(\exists \alpha \in I : x \in A_\alpha)  &  & \by{3.11}     \\
+    \iff & (x \in X) \land (\forall \alpha \in I, x \notin A_\alpha)                        \\
+    \iff & \forall \alpha \in I, (x \in X) \land (x \notin A_\alpha)                        \\
+    \iff & \forall \alpha \in I, x \in X \setminus A_\alpha              &  & \by{3.1.27}   \\
+    \iff & x \in \bigcap_{\alpha \in I} (X \setminus A_\alpha)           &  & \by{ex:3.4.9}
   \end{align*}
-  Thus by \cref{3.1.4} we have \(X \setminus \bigcup_{\alpha \in I} A_{\alpha} = \bigcap_{\alpha \in I} (X \setminus A_{\alpha})\).
-
-  Now we show that \(X \setminus \bigcap_{\alpha \in I} A_{\alpha} = \bigcup_{\alpha \in I} (X \setminus A_{\alpha})\).
-  Suppose that \(X, I\) are sets, \(I \neq \emptyset\), \(\forall \alpha \in I : A_{\alpha}\) is a set and \(A_{\alpha} \subseteq X\).
-  Then we have
+  and
   \begin{align*}
-         & \forall x \in X \setminus \bigcap_{\alpha \in I} A_{\alpha}                     \\
-    \iff & x \in X \land x \notin \bigcap_{\alpha \in I} A_{\alpha}     &  & \by{3.1.27}   \\
-    \iff & x \in X \land \lnot(\forall \alpha \in I : x \in A_{\alpha}) &  & \by{ex:3.4.9} \\
-    \iff & x \in X \land (\exists \alpha \in I : x \notin A_{\alpha})                      \\
-    \iff & \exists \alpha \in I : x \in X \land x \notin A_{\alpha}                        \\
-    \iff & \exists \alpha \in I : x \in X \setminus A_{\alpha}          &  & \by{3.1.27}   \\
-    \iff & x \in \bigcup_{\alpha \in I} (X \setminus A_{\alpha})        &  & \by{3.11}     \\
+         & x \in X \setminus \bigcap_{\alpha \in I} A_\alpha                                \\
+    \iff & (x \in X) \land \pa{x \notin \bigcap_{\alpha \in I} A_\alpha} &  & \by{3.1.27}   \\
+    \iff & (x \in X) \land \lnot(\forall \alpha \in I, x \in A_\alpha)   &  & \by{ex:3.4.9} \\
+    \iff & (x \in X) \land (\exists \alpha \in I : x \notin A_\alpha)                       \\
+    \iff & \exists \alpha \in I : (x \in X) \land (x \notin A_\alpha)                       \\
+    \iff & \exists \alpha \in I : x \in X \setminus A_\alpha             &  & \by{3.1.27}   \\
+    \iff & x \in \bigcup_{\alpha \in I} (X \setminus A_\alpha),          &  & \by{3.11}
   \end{align*}
-  Thus by \cref{3.1.4} we have \(X \setminus \bigcap_{\alpha \in I} A_{\alpha} = \bigcup_{\alpha \in I} (X \setminus A_{\alpha})\).
+  by \cref{3.1.4} we have \(X \setminus \bigcup_{\alpha \in I} A_\alpha = \bigcap_{\alpha \in I} (X \setminus A_\alpha)\) and \(X \setminus \bigcap_{\alpha \in I} A_\alpha = \bigcup_{\alpha \in I} (X \setminus A_\alpha)\).
 \end{proof}
