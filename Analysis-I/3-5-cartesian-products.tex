@@ -6,11 +6,12 @@
 	\[
 		(x, y) = (x', y') \iff (x = x' \text{ and } y = y').
 	\]
+	This is consistent with the usual axioms of equality (\cref{ex:3.5.3}).
 \end{defn}
 
 \begin{rmk}\label{3.5.2}
-	Strictly speaking, this definition is partly an axiom, because we have simply postulated that given any two objects \(x\) and \(y\), that an object of the form \((x, y)\) exists.
-	However, it is possible to define an ordered pair using the axioms of set theory in such a way that we do not need any further postulates.
+	Strictly speaking, \cref{3.5.1} is partly an axiom, because we have simply postulated that given any two objects \(x\) and \(y\), that an object of the form \((x, y)\) exists.
+	However, it is possible to define an ordered pair using the axioms of set theory in such a way that we do not need any further postulates (see \cref{ex:3.5.1}).
 \end{rmk}
 
 \begin{rmk}\label{3.5.3}
@@ -31,7 +32,8 @@
 \end{defn}
 
 \begin{rmk}\label{3.5.5}
-	We shall simply assume that our notion of ordered pair is such that whenever \(X\) and \(Y\) are sets, the Cartesian product \(X \times Y\) is also a set.
+	One can show that the Cartesian product \(X \times Y\) is indeed a set;
+	see \cref{ex:3.5.1}.
 \end{rmk}
 
 \begin{note}
@@ -54,12 +56,13 @@
 \end{defn}
 
 \begin{note}
-	Again, \cref{3.5.7} simply postulates that an ordered \(n\)-tuple and a Cartesian product always exist when needed, but using the axioms of set theory one can explicitly construct these objects
+	Again, \cref{3.5.7} simply postulates that an ordered \(n\)-tuple and a Cartesian product always exist when needed, but using the axioms of set theory one can explicitly construct these objects (\cref{ex:3.5.2}).
 \end{note}
 
 \begin{rmk}\label{3.5.8}
 	One can show that \(\prod_{1 \leq i \leq n} X_i\) is indeed a set.
 	Indeed, from the power set axiom we can consider the set of all functions \(i \mapsto x_i\) from the domain \(\set{1 \leq i \leq n}\) to the codomain \(\bigcup_{1 \leq i \leq n} X_i\), and then we can restrict using the axiom of specification to restrict to those functions \(i \mapsto x_i\) for which \(x_i \in X_i\) for all \(1 \leq i \leq n\).
+	One can generalize this construction to infinite Cartesian products, see \cref{8.4.1}.
 \end{rmk}
 
 \begin{note}
@@ -72,19 +75,54 @@
 \setcounter{thm}{9}
 \begin{rmk}\label{3.5.10}
 	An ordered \(n\)-tuple \(x_1, \dots, x_n\) of objects is also called an \emph{ordered sequence} of \(n\) elements, or a \emph{finite sequence} for short.
+	In \cref{ch:5} we shall also introduce the very useful concept of an \emph{infinite sequence}.
 \end{rmk}
 
-\begin{note}
+\begin{eg}\label{3.5.11}
 	If \(x\) is an object, then \((x)\) is a \(1\)-tuple, which we shall identify with \(x\) itself (even though the two are, strictly speaking, not the same object).
 	Then if \(X_1\) is any set, then the Cartesian product \(\prod_{1 \leq i \leq 1} X_i\) is just \(X_1\).
 	Also, the \emph{empty Cartesian product} \(\prod_{1 \leq i \leq 0} X_i\) gives, not the empty set \(\set{}\), but rather the singleton set \(\set{()}\) whose only element is the \emph{\(0\)-tuple} \(()\), also known as the \emph{empty tuple}.
-\end{note}
 
-\begin{note}
 	If \(n\) is a natural number, we often write \(X^n\) as shorthand for the \(n\)-fold Cartesian product \(X^n \coloneqq \prod_{1 \leq i \leq n} X\).
 	Thus \(X^1\) is essentially the same set as \(X\) (if we ignore the distinction between an object \(x\) and the \(1\)-tuple \((x)\)), while \(X^2\) is the Cartesian product \(X \times X\).
 	The set \(X^0\) is a singleton set \(\set{()}\).
-\end{note}
+\end{eg}
+
+\begin{proof}[\pf{3.5.11}]
+	First we show that \(\prod_{1 \leq i \leq 1} X_i = X_1\).
+	This is true since
+	\[
+		\prod_{1 \leq i \leq 1} X_i = \set{(x) : x \in X_1} = \set{x : x \in X_1} = X_1.
+	\]
+
+	Next we show that \((x_i)_{1 \leq i \leq 0} = ()\).
+	By \cref{ex:3.5.2} we see that \(x : \set{i \in \N : 1 \leq i \leq 0} \to Y\) is a surjective function where \(Y\) is an arbitrary set.
+	Clearly the domain of \(x\) is the empty set.
+	Since the \(i^{th}\) component of \(x\) and \(()\) do not exist, we see that the statement ``for \(1 \leq i \leq n\), the \(i^{th}\) component of \(x\) and \(()\) are the same'' is vacuously true for arbitrary natural number \(n\).
+	Thus \((x_i)_{1 \leq i \leq 0} = ()\).
+
+	Next we show that \(\prod_{1 \leq i \leq 0} X_i = \set{()}\).
+	This is true since
+	\begin{align*}
+		\prod_{1 \leq i \leq 0} X_i & = \set{(x_i)_{1 \leq i \leq 0} : x_i \in X_i \text{ for all } 1 \leq i \leq 0} &  & \by{3.5.7}                    \\
+		                            & = \set{() : x_i \in X_i \text{ for all } 1 \leq i \leq 0}                      &  & \text{(from the proof above)} \\
+		                            & = \set{()}.                                                                    &  & \by{3.2}
+	\end{align*}
+
+	Next we show that \(X^1 = X\).
+	This is true since
+	\begin{align*}
+		X^1 & = \prod_{1 \leq i \leq 1} X &  & \text{(by definition)}        \\
+		    & = X.                        &  & \text{(from the proof above)}
+	\end{align*}
+
+	Finally we show that \(X^0 = \set{()}\).
+	This is true since
+	\begin{align*}
+		X^0 & = \prod_{1 \leq i \leq 0} X &  & \text{(by definition)}        \\
+		    & = \set{()}.                 &  & \text{(from the proof above)}
+	\end{align*}
+\end{proof}
 
 \setcounter{thm}{11}
 \begin{lem}[Finite choice]\label{3.5.12}
@@ -93,33 +131,37 @@
 	In other words, if each \(X_i\) is non-empty, then the set \(\prod_{1 \leq i \leq n} X_i\) is also non-empty.
 \end{lem}
 
-\begin{proof}
+\begin{proof}[\pf{3.5.12}]
 	We induct on \(n\) (starting with the base case \(n = 1\); the claim is also vacuously true with \(n = 0\) but is not particularly interesting in that case).
 	When \(n = 1\) the claim follows from \cref{3.1.6}.
 	Now suppose inductively that the claim has already been proven for some \(n\);
-	we will now prove it for \(n++\).
-	Let \(X_1, \dots, X_{n++}\) be a collection of non-empty sets.
+	we will now prove it for \(n\pp\).
+	Let \(X_1, \dots, X_{n\pp}\) be a collection of non-empty sets.
 	By induction hypothesis, we can find an \(n\)-tuple \((x_i)_{1 \leq i \leq n}\) such that \(x_i \in X_i\) for all \(1 \leq i \leq n\).
-	Also, since \(X_{n++}\) is non-empty, by \cref{3.1.6} we may find an object \(a\) such that \(a \in X_{n++}\).
-	If we thus define the \(n++\)-tuple \((y_i)_{1 \leq i \leq n++}\) by setting \(y_i \coloneqq x_i\) when \(1 \leq i \leq n\) and \(y_i \coloneqq a\) when \(i = n++\) it is clear that \(y_i \in X_i\) for all \(1 \leq i \leq n++\), thus closing the induction.
+	Also, since \(X_{n\pp}\) is non-empty, by \cref{3.1.6} we may find an object \(a\) such that \(a \in X_{n\pp}\).
+	If we thus define the \(n\pp\)-tuple \((y_i)_{1 \leq i \leq n\pp}\) by setting \(y_i \coloneqq x_i\) when \(1 \leq i \leq n\) and \(y_i \coloneqq a\) when \(i = n\pp\) it is clear that \(y_i \in X_i\) for all \(1 \leq i \leq n\pp\), thus closing the induction.
 \end{proof}
 
 \begin{rmk}\label{3.5.13}
 	It is intuitively plausible that this lemma should be extended to allow for an infinite number of choices, but this cannot be done automatically;
 	it requires an additional axiom, the \emph{axiom of choice}.
+	See \cref{sec:8.4}.
 \end{rmk}
 
 \exercisesection
 
 \begin{ex}\label{ex:3.5.1}
-	Suppose we \emph{define} the ordered pair \((x, y)\) for any objects \(x\) and \(y\) by the formula \((x, y) \coloneqq \set{\set{x}, \set{x, y}}\)
-	(thus using several applications of \cref{3.3}).
-	Show that such a definition indeed obeys the \cref{3.5.1}, and also whenever \(X\) and \(Y\) are sets, the Cartesian product \(X \times Y\) is also a set.
-	Thus this definition can be validly used as a definition of an ordered pair.
-	For an additional challenge, show that the alternate definition \((x, y) := \set{x, \set{x, y}}\) also verifies \cref{3.5.1} and is thus also an acceptable definition of ordered pair.
+	\begin{enumerate}
+		\item Suppose we \emph{define} the ordered pair \((x, y)\) for any objects \(x\) and \(y\) by the formula \((x, y) \coloneqq \set{\set{x}, \set{x, y}}\)
+		      (thus using several applications of \cref{3.3}).
+		      Show that such a definition indeed obeys the \cref{3.5.1}.
+		      Thus this definition can be validly used as a definition of an ordered pair.
+		\item For an additional challenge, show that the alternate definition \((x, y) := \set{x, \set{x, y}}\) also verifies \cref{3.5.1} and is thus also an acceptable definition of ordered pair.
+		\item Show that regardless of the definition of ordered pair, the Cartesian product \(X \times Y\) is a set.
+	\end{enumerate}
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.5.1}(a)]
 	Suppose that \(x, x', y, y'\) are objects.
 	By definition we have
 	\begin{align*}
@@ -128,39 +170,26 @@
 	\end{align*}
 	Then we have
 	\begin{align*}
-		     & \set{\set{x}, \set{x, y}} = \set{\set{x'}, \set{x', y'}}                                  \\
-		\iff & \set{x} \in \set{\set{x'}, \set{x', y'}}                                                  \\
-		     & \land \set{x, y} \in \set{\set{x'}, \set{x', y'}}                                         \\
-		     & \land \set{x'} \in \set{\set{x}, \set{x, y}}                                              \\
-		     & \land \set{x', y'} \in \set{\set{x}, \set{x, y}}                          &  & \by{3.1.4} \\
-		\iff & \bigg(\set{x} = \set{x'} \lor \set{x} = \set{x', y'}\bigg)                                \\
-		     & \land \bigg(\set{x, y} = \set{x'} \lor \set{x, y} = \set{x', y'}\bigg)                    \\
-		     & \land \bigg(\set{x'} = \set{x} \lor \set{x'} = \set{x, y}\bigg)                           \\
-		     & \land \bigg(\set{x', y'} = \set{x} \lor \set{x', y'} = \set{x, y}\bigg)   &  & \by{3.3}   \\
-		\iff & \Bigg(\bigg(\set{x} = \set{x'}\bigg)                                                      \\
-		     & \lor \bigg(\set{x} = \set{x', y'} \land \set{x'} = \set{x, y}\bigg)\Bigg)                 \\
-		     & \land \Bigg(\bigg(\set{x, y} = \set{x', y'}\bigg)                                         \\
-		     & \lor \bigg(\set{x} = \set{x', y'} \land \set{x'} = \set{x, y}\bigg)\Bigg)                 \\
-		\iff & \bigg(\set{x} = \set{x'} \land \set{x, y} = \set{x', y'}\bigg)                            \\
-		     & \lor \bigg(\set{x} = \set{x', y'} \land \set{x'} = \set{x, y}\bigg)                       \\
-		\iff & x = x' \land y = y'.                                                      &  & \by{3.3}
+		     & \begin{dcases}
+			       x = x' \\
+			       y = y'
+		       \end{dcases}                                                                  \\
+		\iff & \begin{dcases}
+			       x = x' \\
+			       \pa{x = y = y' = x'} \lor \pa{x \neq y = y' \neq x'}
+		       \end{dcases}                            \\
+		\iff & \begin{dcases}
+			       \set{x} = \set{x'} \\
+			       \set{x, y} = \set{x', y'}
+		       \end{dcases}                                &  & \by{3.3}                      \\
+		\iff & \set{\set{x}, \set{x, y}} = \set{\set{x'}, \set{x', y'}} &  & \by{3.3}         \\
+		\iff & (x, y) = (x', y').                                       &  & \by{ex:3.5.1}[a]
 	\end{align*}
-	Thus this definition satisfied \cref{3.5.1}.
+	Thus \cref{ex:3.5.1}(a) is a valid definition of ordered pairs.
+\end{proof}
 
-	Now suppose that \(X, Y\) are sets.
-	By \cref{3.3}, \(\forall x \in X\), there exists a set \(\set{x}\), and so does \(\set{x, y} \ \forall y \in Y\).
-	Again by \cref{3.3}, there exists a set \(\set{\set{x}, \set{x, y}}\).
-	Now we fix \(y\) and use \cref{3.6} to replace each \(x\) with \(\set{\set{x}, \set{x, y}}\),
-	\[
-		X_y = \set{\set{\set{x}, \set{x, y}} : \forall x \in X}.
-	\]
-	Now we use \cref{3.11} to get \(X \times Y\),
-	\[
-		X \times Y = \bigcup_{y \in Y} X_y.
-	\]
-	Thus \(X \times Y\) is a set.
-
-	For additional challenge, suppose that \(x, x', y, y'\) are objects.
+\begin{proof}[\pf{ex:3.5.1}(b)]
+	Suppose that \(x, x', y, y'\) are objects.
 	By definition we have
 	\begin{align*}
 		(x, y)   & = \set{x, \set{x, y}}     \\
@@ -168,116 +197,146 @@
 	\end{align*}
 	Then we have
 	\begin{align*}
-		     & \set{x, \set{x, y}} = \set{x', \set{x', y'}}                                         \\
-		\iff & x \in \set{x', \set{x', y'}}                                                         \\
-		     & \land \set{x, y} \in \set{x', \set{x', y'}}                                          \\
-		     & \land x' \in \set{x, \set{x, y}}                                                     \\
-		     & \land \set{x', y'} \in \set{x, \set{x, y}}                        &  & \by{3.1.4}    \\
-		\iff & \bigg(x = x' \lor x = \set{x', y'}\bigg)                                             \\
-		     & \land \bigg(\set{x, y} = x' \lor \set{x, y} = \set{x', y'}\bigg)                     \\
-		     & \land \bigg(x' = x \lor x' = \set{x, y}\bigg)                                        \\
-		     & \land \bigg(\set{x', y'} = x \lor \set{x', y'} = \set{x, y}\bigg) &  & \by{3.3}      \\
-		\iff & \bigg(x = x' \land \set{x, y} = \set{x', y'}\bigg)                                   \\
-		     & \lor \bigg(x = \set{x', y'} \land x' = \set{x, y}\bigg)                              \\
-		\iff & (x = x' \land y = y') \lor (x \in x' \land x' \in x)              &  & \by{3.3}      \\
-		\iff & (x = x' \land y = y') \lor \bot                                   &  & \by{ex:3.2.2} \\
-		\iff & x = x' \land y = y'.
+		     & \begin{dcases}
+			       x = x' \\
+			       y = y'
+		       \end{dcases}                                                              \\
+		\iff & \begin{dcases}
+			       x = x' \\
+			       \pa{x = y = y' = x'} \lor \pa{x \neq y = y' \neq x'}
+		       \end{dcases}                        \\
+		\iff & \begin{dcases}
+			       x = x' \\
+			       \set{x, y} = \set{x', y'}
+		       \end{dcases}                            &  & \by{3.3}                      \\
+		\iff & \set{x, \set{x, y}} = \set{x', \set{x', y'}}         &  & \by{3.3}         \\
+		\iff & (x, y) = (x', y').                                   &  & \by{ex:3.5.1}[b]
 	\end{align*}
-	Thus this definition satisfied \cref{3.5.1}.
+	Thus \cref{ex:3.5.1}(b) is a valid definition of ordered pairs.
+\end{proof}
+
+\begin{proof}[\pf{ex:3.5.1}(c)]
+	We use \cref{ex:3.5.1}(a) as the definition of ordered pairs.
+	Suppose that \(X, Y\) are sets.
+	For each \(x \in X\), we can use \cref{3.3} to create singleton set \(\set{x}\).
+	Using \cref{3.3} again we can create pair sets \(\set{x, y}\) and \(\set{\set{x}, \set{x, y}}\) for each \(x \in X\) and each \(y \in Y\).
+	Since \(Y\) is a set, each object in \(Y\) is uniquely identified (\cref{3.1.1}).
+	Thus for each \(x \in X\) and each \(y \in Y\), the statement ``\(P_y(x, y') \coloneqq y' = y\)'' is only true for one \(y' \in Y\), namely \(y\).
+	Thus for each \(y \in Y\), we can use \cref{3.6} to create the set \(S_y\) using \(P_y\):
+	\begin{align*}
+		S_y & = \set{\set{\set{x}, \set{x, y'}} : P_y(x, y') \text{ is true for some } x \in X} &  & \by{3.6}       \\
+		    & = \set{\set{\set{x}, \set{x, y}} : x \in X}                                                           \\
+		    & = \set{(x, y) : x \in X}.                                                         &  & \by{ex:3.5.1}.
+	\end{align*}
+	By \cref{3.11} we see that \(\bigcup_{y \in Y} S_y = \set{(x, y) : x \in X, y \in Y}\), which equals to \(X \times Y\) (\cref{3.5.4}).
+	Thus \(X \times Y\) is a set.
 \end{proof}
 
 \begin{ex}\label{ex:3.5.2}
-	Suppose we \emph{define} an ordered \(n\)-tuple to be a surjective function \(x : \set{i \in \N : 1 \leq i \leq n} \to X\) whose codomain is some arbitrary set \(X\) (so different ordered \(n\)-tuples are allowed to have different codomains);
+	Suppose we \emph{define} an ordered \(n\)-tuple to be a surjective function
+	\[
+		x : \set{i \in \N : 1 \leq i \leq n} \to X
+	\]
+	whose codomain is some arbitrary set \(X\) (so different ordered \(n\)-tuples are allowed to have different codomains);
 	we then write \(x_i\) for \(x(i)\), and also write \(x\) as \((x_i)_{1 \leq i \leq n}\).
 	Using this definition, verify that we have \((x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n}\) iff \(x_i = y_i\) for all \(1 \leq i \leq n\).
 	Also, show that if \((X_i)_{1 \leq i \leq n}\) are an ordered \(n\)-tuple of sets, then the Cartesian product, as defined in \cref{3.5.7}, is indeed a set.
+	(Technically, this construction of ordered \(n\)-tuple is not compatible with the construction of ordered pair in \cref{ex:3.5.1}, but this does not cause a difficulty in practice;
+	for instance, one can use the definition of an ordered \(2\)-tuple here to replace the construction in \cref{ex:3.5.1}, or one can make a rather pedantic distinction between an ordered \(2\)-tuple and an ordered pair in one's mathematical arguments.)
 \end{ex}
 
-\begin{proof}
-	Suppose that \(X\) is a set.
-	Let \(I = \set{i \in \N : 1 \leq i \leq n}\) be a set.
+\begin{proof}[\pf{ex:3.5.2}]
+	First we show that \cref{ex:3.5.2} is a valid definition of \(n\)-tuple.
+	Let \(n \in \N\), let \(X\) be a set and let \(I = \set{i \in \N : 1 \leq i \leq n}\).
 	Let \(x : I \to X, y : I \to X\) be two surjective functions.
+	By definition we have \(x = (x_i)_{1 \leq i \leq n}\) and \(y = (y_i)_{1 \leq i \leq n}\).
 	Then we have
 	\begin{align*}
-		     & \forall 1 \leq i \leq n : x_i = y_i                                \\
-		\iff & x(i) = y(i)                                                        \\
-		\iff & x = y                                              &  & \by{3.3.7} \\
-		\iff & (x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n}.
+		     & (x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n}                    \\
+		\iff & x = y                                             &  & \by{ex:3.5.2} \\
+		\iff & \forall i \in I, x(i) = y(i)                      &  & \by{3.3.1}    \\
+		\iff & \forall i \in I, x_i = y_i.                       &  & \by{ex:3.5.2}
 	\end{align*}
+	Thus \cref{ex:3.5.2} is a valid definition of \(n\)-tuple.
 
-	Now we show that \cref{3.5.7} is indeed a set.
-	By \cref{3.11}, we have a set \(\bigcup_{1 \leq i \leq n} X_i\).
-	By \cref{ex:3.4.7}, there exists a set of all partial function with domain \(I\) and codomain \(\bigcup_{i \in I} X_i\), and we denote this set \(A\).
-	By \cref{3.5}, there exists a set \(\prod_{1 \leq i \leq n} X_i = \set{x \in A : \forall i \in I, x_i \in X_i}\).
-	Since we define \(x = (x_i)_{1 \leq i \leq n}\), we have shown that \cref{3.5.7} is indeed a set.
+	Now we show that \(\prod_{i = 1}^n X_i\) defined in \cref{3.5.7} is indeed a set.
+	Suppose that \((X_i)_{1 \leq i \leq n}\) is an ordered \(n\)-tuple of sets.
+	Let \(I = \set{i \in \N : 1 \leq i \leq n}\).
+	By definition we have a surjective function \(X : I \to Y\) where \(Y\) is a set and \(X(i) = X_i \in Y\) for each \(i \in I\).
+	Then we can create the following set
+	\begin{align*}
+		\bigcup \set{X(i) : i \in I} & = \bigcup_{i \in I} X(i) &  & \by{3.11}     \\
+		                             & = \bigcup_{i \in I} X_i. &  & \by{ex:3.5.2}
+	\end{align*}
+	By \cref{ex:3.4.7} there exists a set of all partial function with domain \(I\) and codomain \(\bigcup_{i \in I} X_i\), and we denote this set \(A\).
+	By \cref{3.5} there exists a set \(B = \set{x \in A : \forall i \in I, x_i \in X_i}\).
+	Clearly every \(x \in B\) has the form \(x = (x_i)_{1 \leq i \leq n}\).
+	And every \(n\)-tuple \((x_i)_{1 \leq i \leq n}\) with \(x_i \in X_i\) for all \(i \in I\) is also in \(B\) thanks to \cref{ex:3.4.7}.
+	Thus by \cref{3.5.7} we see that \(B = \prod_{i = 1}^n X_i\) and therefore \(\prod_{i = 1}^n X_i\) is indeed a set.
 \end{proof}
 
 \begin{ex}\label{ex:3.5.3}
-	Show that the definitions of equality for ordered pair and ordered \(n\)-tuple obey the reflexivity, symmetry, and transitivity axioms.
+	Show that the definitions of equality for ordered pair and ordered \(n\)-tuple are consistent with the reflexivity, symmetry, and transitivity axioms in the sense that if these axioms of equality are already assumed to hold for the individual components \(x, y\) of an ordered pair \((x, y)\), then they hold for an ordered pair itself.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.5.3}]
+	Let \((x, y), (x', y'), (x'', y'')\) be ordered pairs.
 	We first show that \cref{3.5.1} is reflexive.
-	Suppose that \((x, y)\) is an ordered pair.
-	Then we have
+	Since
 	\begin{align*}
-		     & x = x \land y = y                 \\
-		\iff & (x, y) = (x, y).  &  & \by{3.5.1}
+		         & (x = x) \land (y = y)                 \\
+		\implies & (x, y) = (x, y),      &  & \by{3.5.1}
 	\end{align*}
-	Thus \cref{3.5.1} is reflexive.
+	we see that \cref{3.5.1} is reflexive.
 
 	Next we show that \cref{3.5.1} is symmetry.
-	Suppose that \((x, y), (x', y')\) are two ordered pairs.
-	Then we have
+	Since
 	\begin{align*}
-		     & (x, y) = (x', y')                   \\
-		\iff & x = x' \land y = y' &  & \by{3.5.1} \\
-		\iff & x' = x \land y' = y                 \\
-		\iff & (x', y') = (x, y).  &  & \by{3.5.1}
+		     & (x, y) = (x', y')                       \\
+		\iff & (x = x') \land (y = y') &  & \by{3.5.1} \\
+		\iff & (x' = x) \land (y' = y)                 \\
+		\iff & (x', y') = (x, y),      &  & \by{3.5.1}
 	\end{align*}
-	Thus \cref{3.5.1} is symmetry.
+	we see that \cref{3.5.1} is symmetry.
 
 	Next we show that \cref{3.5.1} is transitive.
-	Suppose that \((x, y), (x', y'), (x'', y'')\) are three ordered pairs.
-	Then we have
+	Since
 	\begin{align*}
-		         & (x, y) = (x', y') \land (x', y') = (x'', y'')                     \\
-		\implies & x = x' \land y = y' \land x' = x'' \land y' = y'' &  & \by{3.5.1} \\
-		\implies & x = x'' \land y = y''                                             \\
-		\implies & (x, y) = (x'', y'').                              &  & \by{3.5.1}
+		         & ((x, y) = (x', y')) \land ((x', y') = (x'', y''))                         \\
+		\implies & (x = x') \land (y = y') \land (x' = x'') \land (y' = y'') &  & \by{3.5.1} \\
+		\implies & (x = x'') \land (y = y'')                                                 \\
+		\implies & (x, y) = (x'', y''),                                      &  & \by{3.5.1}
 	\end{align*}
-	Thus \cref{3.5.1} is transitive.
+	we see that \cref{3.5.1} is transitive.
 
+	Let \(i, n \in \N\) and let \((x_i)_{1 \leq i \leq n}, (y_i)_{1 \leq i \leq n}, (z_i)_{1 \leq i \leq n}\) be ordered \(n\)-tuples.
 	Next we show that \cref{3.5.7} is reflexive.
-	Suppose that \(i, n \in \N\) and \((x_i)_{1 \leq i \leq n}\) is an ordered \(n\)-tuple.
-	Then we have
+	Since
 	\begin{align*}
-		     & \forall 1 \leq i \leq n : x_i = x_i                                \\
-		\iff & (x_i)_{1 \leq i \leq n} = (x_i)_{1 \leq i \leq n}. &  & \by{3.5.7}
+		         & \forall 1 \leq i \leq n, x_i = x_i                                 \\
+		\implies & (x_i)_{1 \leq i \leq n} = (x_i)_{1 \leq i \leq n}, &  & \by{3.5.7}
 	\end{align*}
-	Thus \cref{3.5.7} is reflexive.
+	we see that \cref{3.5.7} is reflexive.
 
 	Next we show that \cref{3.5.7} is symmetry.
-	Suppose that \(i, n \in \N\) and \((x_i)_{1 \leq i \leq n}, (y_i)_{1 \leq i \leq n}\) are two ordered \(n\)-tuples.
-	Then we have
+	Since
 	\begin{align*}
 		     & (x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n}                  \\
-		\iff & \forall 1 \leq i \leq n : x_i = y_i                &  & \by{3.5.7} \\
-		\iff & \forall 1 \leq i \leq n : y_i = x_i                                \\
-		\iff & (y_i)_{1 \leq i \leq n} = (x_i)_{1 \leq i \leq n}. &  & \by{3.5.7}
+		\iff & \forall 1 \leq i \leq n, x_i = y_i                 &  & \by{3.5.7} \\
+		\iff & \forall 1 \leq i \leq n, y_i = x_i                                 \\
+		\iff & (y_i)_{1 \leq i \leq n} = (x_i)_{1 \leq i \leq n}, &  & \by{3.5.7}
 	\end{align*}
-	Thus \cref{3.5.7} is symmetry.
+	we see that \cref{3.5.7} is symmetry.
 
 	Finally we show that \cref{3.5.7} is transitive.
-	Suppose that \(i, n \in \N\) and \((x_i)_{1 \leq i \leq n}, (y_i)_{1 \leq i \leq n}, (z_i)_{1 \leq i \leq n}\) are three ordered \(n\)-tuples.
-	Then we have
+	Since
 	\begin{align*}
-		         & (x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n} \land (y_i)_{1 \leq i \leq n} = (z_i)_{1 \leq i \leq n}                 \\
-		\implies & \forall 1 \leq i \leq n : x_i = y_i \land y_i = z_i                                                       &  & \by{3.5.7} \\
-		\implies & \forall 1 \leq i \leq n : x_i = z_i                                                                                       \\
-		\implies & (x_i)_{1 \leq i \leq n} = (z_i)_{1 \leq i \leq n}.                                                        &  & \by{3.5.7}
+		         & \pa{(x_i)_{1 \leq i \leq n} = (y_i)_{1 \leq i \leq n}} \land \pa{(y_i)_{1 \leq i \leq n} = (z_i)_{1 \leq i \leq n}}                 \\
+		\implies & \forall 1 \leq i \leq n, (x_i = y_i) \land (y_i = z_i)                                                              &  & \by{3.5.7} \\
+		\implies & \forall 1 \leq i \leq n, x_i = z_i                                                                                                  \\
+		\implies & (x_i)_{1 \leq i \leq n} = (z_i)_{1 \leq i \leq n},                                                                  &  & \by{3.5.7}
 	\end{align*}
-	Thus \cref{3.5.7} is transitive.
+	we see that \cref{3.5.7} is transitive.
 \end{proof}
 
 \begin{ex}\label{ex:3.5.4}
@@ -285,67 +344,63 @@
 	Show that \(A \times (B \cup C) = (A \times B) \cup (A \times C)\), that \(A \times (B \cap C) = (A \times B) \cap (A \times C)\), and that \(A \times (B \setminus C) = (A \times B) \setminus (A \times C)\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.5.4}]
 	We first show that \(A \times (B \cup C) = (A \times B) \cup (A \times C)\).
-	Suppose that \(A, B, C\) are sets.
-	Then we have
+	Since
 	\begin{align*}
-		     & \forall (x, y) \in A \times (B \cup C)                               \\
-		\iff & x \in A \land y \in B \cup C                         &  & \by{3.5.4} \\
-		\iff & x \in A \land (y \in B \lor y \in C)                 &  & \by{3.4}   \\
-		\iff & (x \in A \land y \in B) \lor (x \in A \land y \in C)                 \\
-		\iff & (x, y) \in A \times B \lor (x, y) \in A \times C     &  & \by{3.5.4} \\
-		\iff & (x, y) \in (A \times B) \cup (A \times C).           &  & \by{3.4}
+		     & (x, y) \in A \times (B \cup C)                                               \\
+		\iff & (x \in A) \land (y \in B \cup C)                             &  & \by{3.5.4} \\
+		\iff & (x \in A) \land ((y \in B) \lor (y \in C))                   &  & \by{3.4}   \\
+		\iff & ((x \in A) \land (y \in B)) \lor ((x \in A) \land (y \in C))                 \\
+		\iff & ((x, y) \in A \times B) \lor ((x, y) \in A \times C)         &  & \by{3.5.4} \\
+		\iff & (x, y) \in (A \times B) \cup (A \times C),                   &  & \by{3.4}
 	\end{align*}
-	Thus by \cref{3.1.4} we have \(A \times (B \cup C) = (A \times B) \cup (A \times C)\).
+	by \cref{3.1.4} we have \(A \times (B \cup C) = (A \times B) \cup (A \times C)\).
 
 	Next we show that \(A \times (B \cap C) = (A \times B) \cap (A \times C)\).
-	Suppose that \(A, B, C\) are sets.
-	Then we have
+	Since
 	\begin{align*}
-		     & \forall (x, y) \in A \times (B \cap C)                                 \\
-		\iff & x \in A \land y \in B \cap C                          &  & \by{3.5.4}  \\
-		\iff & x \in A \land (y \in B \land y \in C)                 &  & \by{3.1.23} \\
-		\iff & (x \in A \land y \in B) \land (x \in A \land y \in C)                  \\
-		\iff & (x, y) \in A \times B \land (x, y) \in A \times C     &  & \by{3.5.4}  \\
-		\iff & (x, y) \in (A \times B) \cap (A \times C).            &  & \by{3.1.23}
+		     & (x, y) \in A \times (B \cap C)                                                 \\
+		\iff & (x \in A) \land (y \in B \cap C)                              &  & \by{3.5.4}  \\
+		\iff & (x \in A) \land ((y \in B) \land (y \in C))                   &  & \by{3.1.23} \\
+		\iff & ((x \in A) \land (y \in B)) \land ((x \in A) \land (y \in C))                  \\
+		\iff & ((x, y) \in A \times B) \land ((x, y) \in A \times C)         &  & \by{3.5.4}  \\
+		\iff & (x, y) \in (A \times B) \cap (A \times C),                    &  & \by{3.1.23}
 	\end{align*}
-	Thus by \cref{3.1.4} we have \(A \times (B \cap C) = (A \times B) \cap (A \times C)\).
+	by \cref{3.1.4} we have \(A \times (B \cap C) = (A \times B) \cap (A \times C)\).
 
 	Finally we show that \(A \times (B \setminus C) = (A \times B) \setminus (A \times C)\).
-	Suppose that \(A, B, C\) are sets.
-	Then we have
+	Since
 	\begin{align*}
-		     & \forall (x, y) \in A \times (B \setminus C)                               \\
-		\iff & x \in A \land y \in B \setminus C                        &  & \by{3.5.4}  \\
-		\iff & x \in A \land (y \in B \land y \notin C)                 &  & \by{3.1.27} \\
-		\iff & (x \in A \land y \in B) \land (x \in A \land y \notin C)                  \\
-		\iff & (x, y) \in A \times B \land (x, y) \notin A \times C     &  & \by{3.5.4}  \\
-		\iff & (x, y) \in (A \times B) \setminus (A \times C).          &  & \by{3.1.27}
+		     & (x, y) \in A \times (B \setminus C)                                               \\
+		\iff & (x \in A) \land (y \in B \setminus C)                            &  & \by{3.5.4}  \\
+		\iff & (x \in A) \land ((y \in B) \land (y \notin C))                   &  & \by{3.1.27} \\
+		\iff & ((x \in A) \land (y \in B)) \land ((x \in A) \land (y \notin C))                  \\
+		\iff & ((x, y) \in A \times B) \land ((x, y) \notin A \times C)         &  & \by{3.5.4}  \\
+		\iff & (x, y) \in (A \times B) \setminus (A \times C),                  &  & \by{3.1.27}
 	\end{align*}
-	Thus by \cref{3.1.4} we have \(A \times (B \setminus C) = (A \times B) \setminus (A \times C)\).
+	by \cref{3.1.4} we have \(A \times (B \setminus C) = (A \times B) \setminus (A \times C)\).
 \end{proof}
 
 \begin{ex}\label{ex:3.5.5}
-	Let \(A\), \(B\), \(C\), \(D\) be sets.
+	Let \(A, B, C, D\) be sets.
 	Show that \((A \times B) \cap (C \times D) = (A \cap C) \times (B \cap D)\).
 	Is it true that \((A \times B) \cup (C \times D) = (A \cup C) \times (B \cup D)?\)
 	Is it true that \((A \times B) \setminus (C \times D) = (A \setminus C) \times (B \setminus D)?\)
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.5.5}]
 	We first show that \((A \times B) \cap (C \times D) = (A \cap C) \times (B \cap D)\).
-	Suppose that \(A, B, C, D\) are sets.
-	Then we have
+	Since
 	\begin{align*}
-		     & \forall (x, y) \in (A \times B) \cap (C \times D)                      \\
-		\iff & (x, y) \in (A \times B) \land (x, y) \in (C \times D) &  & \by{3.1.23} \\
-		\iff & (x \in A \land y \in B) \land (x \in C \land y \in D) &  & \by{3.5.4}  \\
-		\iff & (x \in A \land x \in C) \land (y \in B \land y \in D)                  \\
-		\iff & (x \in A \cap C) \land (y \in B \cap D)               &  & \by{3.1.23} \\
-		\iff & (x, y) \in (A \cap C) \times (B \cap D).              &  & \by{3.5.4}
+		     & (x, y) \in (A \times B) \cap (C \times D)                                      \\
+		\iff & ((x, y) \in A \times B) \land ((x, y) \in C \times D)         &  & \by{3.1.23} \\
+		\iff & ((x \in A) \land (y \in B)) \land ((x \in C) \land (y \in D)) &  & \by{3.5.4}  \\
+		\iff & ((x \in A) \land (x \in C)) \land ((y \in B) \land (y \in D))                  \\
+		\iff & (x \in A \cap C) \land (y \in B \cap D)                       &  & \by{3.1.23} \\
+		\iff & (x, y) \in (A \cap C) \times (B \cap D),                      &  & \by{3.5.4}
 	\end{align*}
-	Thus by \cref{3.1.4} we have \((A \times B) \cap (C \times D) = (A \cap C) \times (B \cap D)\).
+	by \cref{3.1.4} we have \((A \times B) \cap (C \times D) = (A \cap C) \times (B \cap D)\).
 
 	We do not have \((A \times B) \cup (C \times D) = (A \cup C) \times (B \cup D)\).
 	Let \(A = \set{1}, B = \set{2}, C = \set{3}, D = \set{4}\).
@@ -367,41 +422,38 @@
 		(A \setminus C) \times (B \setminus D) & = \set{2} \times \set{4}                                      &  & \by{3.1.27} \\
 		                                       & = \set{(2, 4)}.                                               &  & \by{3.5.4}
 	\end{align*}
-	Clearly \((A \times B) \setminus (C \times D) \neq (A \setminus C) \times (B \setminus D)\) by \cref{3.1.4}..
+	Clearly \((A \times B) \setminus (C \times D) \neq (A \setminus C) \times (B \setminus D)\) by \cref{3.1.4}.
 \end{proof}
 
 \begin{ex}\label{ex:3.5.6}
-	Let \(A\), \(B\), \(C\), \(D\) be non-empty sets.
+	Let \(A, B, C, D\) be non-empty sets.
 	Show that \(A \times B \subseteq C \times D\) iff \(A \subseteq C\) and \(B \subseteq D\), and that \(A \times B = C \times D\) iff \(A = C\) and \(B = D\).
-	What happens if the hypotheses that the \(A\), \(B\), \(C\), \(D\) are all non-empty are removed?
+	What happens if the hypotheses that the \(A, B, C, D\) are all non-empty are removed?
 \end{ex}
 
-\begin{proof}
-	We first show that \(A \times B \subseteq C \times D \iff A \subseteq C \land B \subseteq D\).
-	Suppose that \(A, B, C, D\) are non-empty sets.
-	Then we have
+\begin{proof}[\pf{ex:3.5.6}]
+	We first show that if \(A, B, C, D\) are non-empty sets, then \(A \times B \subseteq C \times D \iff (A \subseteq C) \land (B \subseteq D)\).
+	This is true since
 	\begin{align*}
-		     & A \times B \subseteq C \times D                                                                                                                       \\
-		\iff & \bigg(\forall x \ \forall y : (x, y) \in A \times B \implies (x, y) \in C \times D\bigg)    &                                           & \by{3.1.15} \\
-		\iff & \bigg(\forall x \ \forall y :(x \in A \land y \in B) \implies (x \in C \land y \in D)\bigg) &                                           & \by{3.5.4}  \\
-		\iff & (\forall x \in A \iff x \in C) \land (\forall y \in B \iff y \in D)                         & (A \neq \emptyset \land B \neq \emptyset)               \\
-		\iff & A \subseteq C \land B \subseteq D.                                                          &                                           & \by{3.1.15}
+		     & A \times B \subseteq C \times D                                                                                      \\
+		\iff & \pa{(x, y) \in A \times B \implies (x, y) \in C \times D}             &  & \by{3.1.15}                               \\
+		\iff & \pa{((x \in A) \land (y \in B)) \implies ((x \in C) \land (y \in D))} &  & \by{3.5.4}                                \\
+		\iff & \pa{x \in A \implies x \in C} \land \pa{y \in B \implies y \in D}     &  & (A \neq \emptyset \land B \neq \emptyset) \\
+		\iff & (A \subseteq C) \land (B \subseteq D).                                &  & \by{3.1.15}
 	\end{align*}
-	This statement is not true when \(A = \emptyset \lor B = \emptyset\).
+	This statement is not true when \((A = \emptyset) \lor (B = \emptyset)\).
 	For example, if \(A = \set{1}\) and \(B = C = D = \emptyset\), then \(A \times B = \set{()} \subseteq C \times D = \set{()}\) but \(A \not \subseteq C\).
 
-	Next we show that \(A \times B = C \times D \iff A = C \land B = D\).
-	Suppose that \(A, B, C, D\) are non-empty sets.
-	Then we have
+	Next we show that if \(A, B, C, D\) are non-empty sets, then \(A \times B = C \times D \iff (A = C) \land (B = D)\).
+	This is true since
 	\begin{align*}
-		     & A \times B = C \times D                                                                                                                           \\
-		\iff & \bigg(\forall x \ \forall y : (x, y) \in A \times B \iff (x, y) \in C \times D\bigg)     &                                           & \by{3.1.4} \\
-		\iff & \bigg(\forall x \ \forall y : (x \in A \land y \in B) \iff (x \in C \land y \in D)\bigg) &                                           & \by{3.5.4} \\
-		\iff & (\forall x \in A \iff x \in C)                                                           & (A \neq \emptyset \land C \neq \emptyset)              \\
-		     & \land (\forall y \in B \iff y \in D)                                                     & (B \neq \emptyset \land D \neq \emptyset)              \\
-		\iff & A = C \land B = D.                                                                       &                                           & \by{3.1.4}
+		     & A \times B = C \times D                                                                                      \\
+		\iff & \pa{(x, y) \in A \times B \iff (x, y) \in C \times D}             &  & \by{3.1.4}                            \\
+		\iff & \pa{((x \in A) \land (y \in B)) \iff ((x \in C) \land (y \in D))} &  & \by{3.5.4}                            \\
+		\iff & (x \in A \iff x \in C) \land (y \in B \iff y \in D)               &  & \text{(\(A, B, C, D\) are non-empty)} \\
+		\iff & (A = C) \land (B = D).                                            &  & \by{3.1.4}
 	\end{align*}
-	This statement is not true when \((A = \emptyset \land C = \emptyset) \lor (B = \emptyset \land D = \emptyset)\).
+	This statement is not true when \(((A = \emptyset) \land (C = \emptyset)) \lor ((B = \emptyset) \land (D = \emptyset))\).
 	For example, if \(A = \set{1}\), \(C = \set{2}\) and \(B = D = \emptyset\), then \(A \times B = \set{()} = C \times D\) but \(A \neq C\).
 \end{proof}
 
@@ -412,7 +464,7 @@
 	This function \(h\) is known as the \emph{direct sum} of \(f\) and \(g\) and is denoted \(h = f \oplus g\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.5.7}]
 	We first show the existence of such function \(h\).
 	Suppose that \(X, Y, Z\) are sets and \(f : Z \to X, g : Z \to Y\) be functions.
 	Let \(\pi_{X \times Y \to X} : X \times Y \to X, \pi_{X \times Y \to Y} : X \times Y \to Y\) be functions where \(\pi_{X \times Y \to X}(x, y) = x\) and \(\pi_{X \times Y \to Y}(x, y) = y\).
@@ -450,7 +502,7 @@
 	Show that the Cartesian product \(\prod_{i = 1}^n X_i\) is empty iff at least one of the \(X_i\) is empty.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.5.8}]
 	Suppose that \(X_1, \dots, X_n\) are sets.
 	Then we have
 	\begin{align*}
@@ -469,7 +521,7 @@
 	Show that \((\bigcup_{\alpha \in I} A_{\alpha}) \cap (\bigcup_{\beta \in J} B_{\beta}) = \bigcup_{(\alpha, \beta) \in I \times J} (A_{\alpha} \cap B_{\beta})\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.5.9}]
 	Suppose that \(I\) and \(J\) are two sets, and \(\forall \alpha \in I\) let \(A_{\alpha}\) be a set, and \(\forall \beta \in J\) let \(B_{\beta}\) be a set.
 	Then we have
 	\begin{align*}
@@ -489,7 +541,7 @@
 	Conversely, if \(G\) is any subset of \(X \times Y\) with the property that for each \(x \in X\), the set \(\set{y \in Y : (x, y) \in G}\) has exactly one element (or in other words, \(G\) obeys the \emph{vertical line test}), show that there is exactly one function \(f : X \to Y\) whose graph is equal to \(G\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.5.10}]
 	We first show that \(f : X \to Y = \tilde{f} : X \to Y \iff \set{(x, f(x)) : x \in X} = \set{(x, \tilde{f}(x)) : x \in X}\).
 	Suppose that \(X, Y\) are sets and \(f : X \to Y, \tilde{f} : X \to Y\) are functions.
 	Then we have
@@ -511,7 +563,7 @@
 	Show that \cref{3.10} can in fact be deduced from \cref{3.4.9} and the other axioms of set theory, and thus \cref{3.4.9} can be used as an alternate formulation of the power set axiom.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.5.11}]
 	Suppose that \(X, Y\) are sets.
 	Then by \cref{ex:3.5.1}, \(X \times Y\) is a set.
 	We now show that the following sets exist:
@@ -532,31 +584,31 @@
 	\]
 	and
 	\[
-		a(n++) = f(n, a(n)) \text{ for all } n \in \N,
+		a(n\pp) = f(n, a(n)) \text{ for all } n \in \N,
 	\]
 	and furthermore that this function is unique.
 	For an additional challenge, prove this result without using any properties of the natural numbers other than the Peano axioms directly.
 \end{ex}
 
-\begin{proof}
-	We claim that for every natural number \(N \in \N\), there exists a unique function \(a_N : \set{n \in \N : n \leq N} \to \N\) such that \(a_N(0) = c\) and \(a_N(n++) = f(n, a_{N}(n))\) for all \(n \in \N\) such that \(n < N\).
+\begin{proof}[\pf{ex:3.5.12}]
+	We claim that for every natural number \(N \in \N\), there exists a unique function \(a_N : \set{n \in \N : n \leq N} \to \N\) such that \(a_N(0) = c\) and \(a_N(n\pp) = f(n, a_{N}(n))\) for all \(n \in \N\) such that \(n < N\).
 
 	We prove the claim by using induction on \(N\).
 	For \(N = 0\), we need to show that such function \(a_0 : \set{n \in \N : n \leq 0} \to \N\) exists and is unique.
 	The domain of \(a_0\) is equal to \(\set{0}\) since \(0\) is the only natural number less than or equal to \(0\).
 	Then by defining \(a_0(0) = c\) where \(c \in \N\) we get a unique function \(a_0 : \set{0} \to \set{c}\) (if \(a'_0 : \set{0} \to \set{c}\), then by \cref{3.3.7} \(a_0 = a'_0\)).
-	And because the domain of \(a_0\) is equal to \(\set{0}\), so there is no \(n \in \set{0}\) such that \((n \in \N) \land (n < 0)\), so \(a_0(n++) = f(n, a_0(n))\) is vacuously true.
+	And because the domain of \(a_0\) is equal to \(\set{0}\), so there is no \(n \in \set{0}\) such that \((n \in \N) \land (n < 0)\), so \(a_0(n\pp) = f(n, a_0(n))\) is vacuously true.
 	Thus for \(N = 0\) the claim is true.
 
 	Suppose inductively that for some \(N\) the claim is also true.
-	The function \(a_N : \set{n \in \N : n \leq N} \to \N\) exists and is unique, and \(a_N(0) = c\) and \(a_N(n++) = f(n, a_N(n))\) for all \(n \in \N\) such that \(n < N\).
-	Then for \(N++\), we can define \(a_{N++} : \set{n \in \N : n \leq N++} \to \N\) by setting \(a_{N++}(n) = a_N(n)\) when \((n \in \N) \land (n < N++)\) (which is unique by induction hypothesis) and \(a_{N++}(N++) = f(N, a_{N++}(N))\) when \((n \in \N) \land (n = N++)\) (which is also unique because \(N\) is unique by \cref{2.4} and \(a_{N++}(N) = a_N(N)\) is unique by induction hypothesis, so \(f(n, a(n))\) is unique by \cref{3.3.1}).
-	So \(a_{N++}\) exists and is unique, and \(a_{N++}(0) = a_N(0) = c\) and \(a_{N++}(n++) = f(n, a_{N++}(n))\) for all \(n \in \N\) such that \(n < N++\).
+	The function \(a_N : \set{n \in \N : n \leq N} \to \N\) exists and is unique, and \(a_N(0) = c\) and \(a_N(n\pp) = f(n, a_N(n))\) for all \(n \in \N\) such that \(n < N\).
+	Then for \(N\pp\), we can define \(a_{N\pp} : \set{n \in \N : n \leq N\pp} \to \N\) by setting \(a_{N\pp}(n) = a_N(n)\) when \((n \in \N) \land (n < N\pp)\) (which is unique by induction hypothesis) and \(a_{N\pp}(N\pp) = f(N, a_{N\pp}(N))\) when \((n \in \N) \land (n = N\pp)\) (which is also unique because \(N\) is unique by \cref{2.4} and \(a_{N\pp}(N) = a_N(N)\) is unique by induction hypothesis, so \(f(n, a(n))\) is unique by \cref{3.3.1}).
+	So \(a_{N\pp}\) exists and is unique, and \(a_{N\pp}(0) = a_N(0) = c\) and \(a_{N\pp}(n\pp) = f(n, a_{N\pp}(n))\) for all \(n \in \N\) such that \(n < N\pp\).
 	Thus we conclude that the claim is true.
 
 	Now we prove the exercise.
 	\(\forall N \in \N\), we can define \(a(N)\) be the value of \(a_N(N)\), where \(a_N\) is the function in the claim, i.e., \(a(N) = a_{N}(N)\).
-	Then \(a(0) = a_0(0) = c\), and \(a(N++) = a_{N++}(N++) = f(N, a_{N++}(N)) = f(N, a_{N}(N)) = f(N, a(N))\).
+	Then \(a(0) = a_0(0) = c\), and \(a(N\pp) = a_{N\pp}(N\pp) = f(N, a_{N\pp}(N)) = f(N, a_{N}(N)) = f(N, a(N))\).
 	Since all \(a_N\) exists and unique, thus such \(a\) exists and is unique.
 
 	Now we prove the additional challenge.
@@ -565,91 +617,91 @@
 		\item \(A_N \cap B_N = \emptyset\)
 		\item \(A_N \cup B_N = \N\)
 		\item \(0 \in A_N\)
-		\item \(N++ \in B_N\)
-		\item Whenever \(n \in B_N\), we have \(n++ \in B_N\)
-		\item Whenever \(n \in A_N\) and \(n \neq N\), we have \(n++ \in A_N\)
+		\item \(N\pp \in B_N\)
+		\item Whenever \(n \in B_N\), we have \(n\pp \in B_N\)
+		\item Whenever \(n \in A_N\) and \(n \neq N\), we have \(n\pp \in A_N\)
 	\end{enumerate}
 
 	We prove the claim by using induction on \(N\).
 	For \(N = 0\), by \cref{3.3} there exists a set \(\set{0}\), and let \(A_0 = \set{0}\).
 	Also by \cref{3.5,3.7}, there exists a set \(\N\), and there also exists a set \(B_0 = \set{n \in \N \mid n \neq 0}\).
-	Then \(A_0 \cap B_0 = \emptyset\), \(A_0 \cup B_0 = \N\), \(0 \in A_0\), \(0++ = 1 \in B_0\), \(\forall n \in B_0\) whenever \(n \in B_0\), we have \(n++ \in B_0\).
-	And \(\forall n \in A_0\) whenever \(n \in A_0\) and \(n \neq 0\), \(n++ \in A_0\) is vacuously true since \(\set{n \in A_0 : n \neq 0} = \emptyset\).
+	Then \(A_0 \cap B_0 = \emptyset\), \(A_0 \cup B_0 = \N\), \(0 \in A_0\), \(0\pp = 1 \in B_0\), \(\forall n \in B_0\) whenever \(n \in B_0\), we have \(n\pp \in B_0\).
+	And \(\forall n \in A_0\) whenever \(n \in A_0\) and \(n \neq 0\), \(n\pp \in A_0\) is vacuously true since \(\set{n \in A_0 : n \neq 0} = \emptyset\).
 	Now we need to show that \(A_0\) and \(B_0\) is unique, so assume that there exists another sets \(A_0'\) and \(B_0'\) such that the above condition holds.
 	Then \(0 \in A_0'\) according to condition (c), and \(A_0' = \set{0}\) according to condition (f), so \(A_0 = A_0'\).
 	And because \(A_0' \cap B_0' = \set{0} \cap B_0' = \emptyset\), and \(A_0' \cup B_0' = \N\), and condition (e) is true, so \(B_0' = \set{n \in \N : n \neq 0} = B_0\).
 	Thus for \(N = 0\), there exists a unique pair \(A_0\) and \(B_0\) such that the above conditions hold.
 
 	Suppose inductively that for some \(N\) there exists a unique pair \(A_N\) and \(B_N\) such that the above conditions hold.
-	Then for \(N++\) we can define \(A_{N++}\) and \(B_{N++}\) by setting \(A_{N++} = A_N \cup \set{N++}\) and \(B_{N++} = \set{n \in B_N : n \neq N++} = B_N \setminus \set{N++}\).
+	Then for \(N\pp\) we can define \(A_{N\pp}\) and \(B_{N\pp}\) by setting \(A_{N\pp} = A_N \cup \set{N\pp}\) and \(B_{N\pp} = \set{n \in B_N : n \neq N\pp} = B_N \setminus \set{N\pp}\).
 	Thus we can check the above conditions still hold.
 
-	For condition (a), \(A_{N++} \cap B_{N++} = (A_N \cup \set{N++}) \cap (B_N \setminus \set{N++})\).
-	For all \(n \in A_{N++}\), \(n \in A_N\) or \(n = N++\).
-	If \(n \in A_N\), then \(n \notin B_N\) because \(A_N \cap B_N = \emptyset\) by induction hypothesis, so \(n \notin B_N \setminus \set{N++}\).
-	If \(n = N++\), then \(n \notin B_N \setminus \set{N++}\).
-	Thus \(A_{N++} \cap B_{N++} = \emptyset\), and condition (a) is true for \(A_{N++}\) and \(B_{N++}\).
+	For condition (a), \(A_{N\pp} \cap B_{N\pp} = (A_N \cup \set{N\pp}) \cap (B_N \setminus \set{N\pp})\).
+	For all \(n \in A_{N\pp}\), \(n \in A_N\) or \(n = N\pp\).
+	If \(n \in A_N\), then \(n \notin B_N\) because \(A_N \cap B_N = \emptyset\) by induction hypothesis, so \(n \notin B_N \setminus \set{N\pp}\).
+	If \(n = N\pp\), then \(n \notin B_N \setminus \set{N\pp}\).
+	Thus \(A_{N\pp} \cap B_{N\pp} = \emptyset\), and condition (a) is true for \(A_{N\pp}\) and \(B_{N\pp}\).
 
-	For condition (b), \(A_{N++} \cup B_{N++} = (A_N \cup \set{N++}) \cup (B_N \setminus \set{N++}) = (A_N \cup (B_N \setminus \set{N++})) \cup (\set{N++} \cup (B_N \setminus \set{N++})) = (A_N \cup (B_N \setminus \set{N++})) \cup B_N = A_N \cup B_N = \N\) by induction hypothesis.
-	Thus condition (b) is true for \(A_{N++}\) and \(B_{N++}\).
+	For condition (b), \(A_{N\pp} \cup B_{N\pp} = (A_N \cup \set{N\pp}) \cup (B_N \setminus \set{N\pp}) = (A_N \cup (B_N \setminus \set{N\pp})) \cup (\set{N\pp} \cup (B_N \setminus \set{N\pp})) = (A_N \cup (B_N \setminus \set{N\pp})) \cup B_N = A_N \cup B_N = \N\) by induction hypothesis.
+	Thus condition (b) is true for \(A_{N\pp}\) and \(B_{N\pp}\).
 
-	For condition (c), \(0 \in A_{N++}\) because \(0 \in A_N\) and \(A_{N++} = A_N \cup \set{N++}\), so condition (c) is true for \(A_{N++}\).
+	For condition (c), \(0 \in A_{N\pp}\) because \(0 \in A_N\) and \(A_{N\pp} = A_N \cup \set{N\pp}\), so condition (c) is true for \(A_{N\pp}\).
 
-	For condition (d), we want to show that \((N++)++ \in B_N\).
-	By induction hypothesis, \(N \in A_N\) and \(N++ \in B_N\) is true, so \((N++)++ \in B_N\) is true.
-	Thus \((N++)++ \in B_N \setminus \set{N++} = B_{N++}\) is also true, so condition (e) is true for \(B_{N++}\).
+	For condition (d), we want to show that \((N\pp)\pp \in B_N\).
+	By induction hypothesis, \(N \in A_N\) and \(N\pp \in B_N\) is true, so \((N\pp)\pp \in B_N\) is true.
+	Thus \((N\pp)\pp \in B_N \setminus \set{N\pp} = B_{N\pp}\) is also true, so condition (e) is true for \(B_{N\pp}\).
 
-	For condition (f), since \(N \in A_N\) by induction hypothesis, \(N++ \in A_N \cup \set{N++} = A_{N++}\) is true.
-	And by conditions (a) and (e), \((N++)++\) is not in \(A_N\).
-	So whenever \(n \in A_{N++}\) and \(n \neq N++\), we have \(n++ \in A_{N++}\).
-	Thus condition (f) is true for \(A_{N++}\).
+	For condition (f), since \(N \in A_N\) by induction hypothesis, \(N\pp \in A_N \cup \set{N\pp} = A_{N\pp}\) is true.
+	And by conditions (a) and (e), \((N\pp)\pp\) is not in \(A_N\).
+	So whenever \(n \in A_{N\pp}\) and \(n \neq N\pp\), we have \(n\pp \in A_{N\pp}\).
+	Thus condition (f) is true for \(A_{N\pp}\).
 
-	Now we need to show that \(A_{N++}\) and \(B_{N++}\) is unique.
-	So suppose that there exist \(A_{N++}', B_{N++}'\) such that conditions (a) to (f) holds.
-	Then by condition (f) \(\forall n \in A_{N++}' \iff n \neq N++ \land n++ \in A_{N++}'\).
-	The same condition holds for \(A_{N++}\), this means \(\forall n \in A_{N++}' \iff n \in A_{N++}\), and thus \(A_{N++} = A_{N++}'\).
-	Similar argument holds for \(B_{N++}'\), thus \(A_{N++}, B_{N++}\) are unique.
+	Now we need to show that \(A_{N\pp}\) and \(B_{N\pp}\) is unique.
+	So suppose that there exist \(A_{N\pp}', B_{N\pp}'\) such that conditions (a) to (f) holds.
+	Then by condition (f) \(\forall n \in A_{N\pp}' \iff n \neq N\pp \land n\pp \in A_{N\pp}'\).
+	The same condition holds for \(A_{N\pp}\), this means \(\forall n \in A_{N\pp}' \iff n \in A_{N\pp}\), and thus \(A_{N\pp} = A_{N\pp}'\).
+	Similar argument holds for \(B_{N\pp}'\), thus \(A_{N\pp}, B_{N\pp}\) are unique.
 	This closes the induction, so for every \(N \in \N\) we have unique \(A_N\) and \(B_N\) such that the conditions (a) - (f) are true.
 
-	Now we claim that for every natural number \(N \in \N\), there exists a unique function \(a_N : A_N \to \N\) such that \(a_N(0) = c\) and \(a_N(n++) = f(n, a_{N}(n))\) for all \(n \in \N\) such that \(n < N\).
+	Now we claim that for every natural number \(N \in \N\), there exists a unique function \(a_N : A_N \to \N\) such that \(a_N(0) = c\) and \(a_N(n\pp) = f(n, a_{N}(n))\) for all \(n \in \N\) such that \(n < N\).
 	This is done since \(A_N = \set{n \in \N : n \leq N}\).
 \end{proof}
 
 \begin{ex}\label{ex:3.5.13}
-	Suppose we have a set \(\N'\) of ``alternative natural numbers'', an ``alternative zero'' \(0'\), and an ``alternative increment operation'' which takes any alternative natural number \(n' \in N\) and returns another alternative natural number \(n'++' \in \N'\), such that the Peano axioms (\crefrange{2.1}{2.5}) all hold with the natural numbers, zero, and increment replaced by their alternative counterparts.
-	Show that there exists a bijection \(f : \N \to \N'\) from the natural numbers to the alternative natural numbers such that \(f(0) = 0'\), and such that for any \(n \in \N\) and \(n' \in \N'\), we have \(f(n) = n'\) iff \(f(n++) = n'++'\).
+	Suppose we have a set \(\N'\) of ``alternative natural numbers'', an ``alternative zero'' \(0'\), and an ``alternative increment operation'' which takes any alternative natural number \(n' \in N\) and returns another alternative natural number \(n'\pp' \in \N'\), such that the Peano axioms (\crefrange{2.1}{2.5}) all hold with the natural numbers, zero, and increment replaced by their alternative counterparts.
+	Show that there exists a bijection \(f : \N \to \N'\) from the natural numbers to the alternative natural numbers such that \(f(0) = 0'\), and such that for any \(n \in \N\) and \(n' \in \N'\), we have \(f(n) = n'\) iff \(f(n\pp) = n'\pp'\).
 \end{ex}
 
-\begin{proof}
-	Define \(f : \N \to \N'\) be a function such that \(f(0) = 0'\) and \(f(n++) = f(n)++'\).
+\begin{proof}[\pf{ex:3.5.13}]
+	Define \(f : \N \to \N'\) be a function such that \(f(0) = 0'\) and \(f(n\pp) = f(n)\pp'\).
 	We need to show that such \(f\) exists and is bijective.
 
 	First we show that \(f\) exists, for which we need to show that \(\forall n \in \N\), there exists exactly one value \(f(n) \in \N'\).
 	And we use induction on \(n\).
 	For \(n = 0\), by the above definition \(f(0) = 0' \in \N'\), so the base case holds.
 	Suppose inductively that for some \(n \in \N\), \(\exists!\ f(n) \in \N'\).
-	Then for \(n++\), we need to show that \(\exists!\ f(n++) \in \N'\).
-	By induction hypothesis, \(f(n) \in \N'\), and because by the given condition \crefrange{2.1}{2.5} all hold on \(\N'\), \(f(n)++' \in \N'\) and there is only one value for \(f(n)++'\).
-	So by the above definition \(f(n++) = f(n)++'\) exists and there is only one value for \(f(n++)\), this closes the induction.
+	Then for \(n\pp\), we need to show that \(\exists!\ f(n\pp) \in \N'\).
+	By induction hypothesis, \(f(n) \in \N'\), and because by the given condition \crefrange{2.1}{2.5} all hold on \(\N'\), \(f(n)\pp' \in \N'\) and there is only one value for \(f(n)\pp'\).
+	So by the above definition \(f(n\pp) = f(n)\pp'\) exists and there is only one value for \(f(n\pp)\), this closes the induction.
 
 	Next we show that \(f\) is injective.
 	Let \(a, b \in \N\) and \(f(a) = f(b)\).
 	We claim that \(f(a) = f(b) \implies a = b\), and we use induction on \(a\).
 	For \(a = 0\), \(f(a) = f(0) = 0' = f(b)\) by the above definition.
-	If \(b \neq 0\), then by \cref{2.2.10}, there exists exactly one natural number \(c\) such that \(c++ = b\).
-	So \(f(b) = f(c++) = f(c)++' = 0'\) by the above definition, but by \cref{2.3}, \(f(c)++' \neq 0'\), a contradiction.
+	If \(b \neq 0\), then by \cref{2.2.10}, there exists exactly one natural number \(c\) such that \(c\pp = b\).
+	So \(f(b) = f(c\pp) = f(c)\pp' = 0'\) by the above definition, but by \cref{2.3}, \(f(c)\pp' \neq 0'\), a contradiction.
 	Thus \(b = 0\), which means the base case holds.
 	Suppose inductively that \(f(a) = f(b) \implies a = b\) for some \(a\).
-	Then for \(a++\), we need to show that \(f(a++) = f(b++) \implies a++ = b++\).
-	By the above definition \(f(a++) = f(a)++' = f(b++) = f(b)++'\).
-	Because \(f(a)++' = f(b)++'\), by \cref{2.4}, \(f(a) = f(b)\).
-	By induction hypothesis, \(f(a) = f(b) \implies a = b\), thus \(a++ = b++\) by \cref{2.4}, and this closes the induction.
+	Then for \(a\pp\), we need to show that \(f(a\pp) = f(b\pp) \implies a\pp = b\pp\).
+	By the above definition \(f(a\pp) = f(a)\pp' = f(b\pp) = f(b)\pp'\).
+	Because \(f(a)\pp' = f(b)\pp'\), by \cref{2.4}, \(f(a) = f(b)\).
+	By induction hypothesis, \(f(a) = f(b) \implies a = b\), thus \(a\pp = b\pp\) by \cref{2.4}, and this closes the induction.
 
 	Finally we show that \(f\) is surjective.
 	We need to show that \(\forall n' \in \N'\), \(\exists n \in \N\) such that \(f(n) = n'\).
 	We use induction on \(n'\).
 	For \(n' = 0'\), \(f(0) = 0'\) by the above definition, so the base case holds.
 	Suppose inductively that for some \(n' \in \N'\), \(\exists n \in \N\) such that \(f(n) = n'\).
-	Then for \(n'++'\), by induction hypothesis, \(n'++' = (n')++' = f(n)++'\)
-	By the above definition, \(f(n)++' = f(n++)\), this closes the induction.
+	Then for \(n'\pp'\), by induction hypothesis, \(n'\pp' = (n')\pp' = f(n)\pp'\)
+	By the above definition, \(f(n)\pp' = f(n\pp)\), this closes the induction.
 \end{proof}
