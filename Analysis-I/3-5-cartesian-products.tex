@@ -458,9 +458,10 @@
 \end{proof}
 
 \begin{ex}\label{ex:3.5.7}
-	Let \(X\), \(Y\) be sets, and let \(\pi_{X \times Y \to X} : X \times Y \to X\) and \(\pi_{X \times Y \to Y} : X \times Y \to Y\) be the maps \(\pi_{X \times Y \to X}(x, y) \coloneqq x\) and \(\pi_{X \times Y \to Y}(x, y) \coloneqq y\);
+	Let \(X, Y\) be sets, and let \(\pi_{X \times Y \to X} : X \times Y \to X\) and \(\pi_{X \times Y \to Y} : X \times Y \to Y\) be the maps \(\pi_{X \times Y \to X}(x, y) \coloneqq x\) and \(\pi_{X \times Y \to Y}(x, y) \coloneqq y\);
 	these maps are known as the \emph{co-ordinate functions} on \(X \times Y\).
 	Show that for any functions \(f : Z \to X\) and \(g : Z \to Y\), there exists a unique function \(h : Z \to X \times Y\) such that \(\pi_{X \times Y \to X} \circ h = f\) and \(\pi_{X \times Y \to Y} \circ h = g\).
+	(Compare this to \cref{ex:3.3.8}(d), and to \cref{ex:3.1.7}.)
 	This function \(h\) is known as the \emph{direct sum} of \(f\) and \(g\) and is denoted \(h = f \oplus g\).
 \end{ex}
 
@@ -468,33 +469,38 @@
 	We first show the existence of such function \(h\).
 	Suppose that \(X, Y, Z\) are sets and \(f : Z \to X, g : Z \to Y\) be functions.
 	Let \(\pi_{X \times Y \to X} : X \times Y \to X, \pi_{X \times Y \to Y} : X \times Y \to Y\) be functions where \(\pi_{X \times Y \to X}(x, y) = x\) and \(\pi_{X \times Y \to Y}(x, y) = y\).
-	We now define a function \(h : Z \to X \times Y\) where \(h(z) = (f(z), g(z))\).
-	Since \(f, g\) are functions, by \cref{3.6} \(\forall z \in Z\), \(\exists!\ f(z) \land \ \exists!\ g(z)\), and thus by \cref{ex:3.5.3} \(\exists!\ (f(z), g(z))\).
-	Since \(\forall z \in Z\), \(\exists!\ (f(z), g(z))\), by \cref{3.6} function \(h\) is well-defined.
+	Both \(\pi_{X \times Y \to X}\) and \(\pi_{X \times Y \to Y}\) are well-defined by \cref{3.6}.
+	We now define a function \(h : Z \to X \times Y\) where
+	\[
+		\forall z \in Z, h(z) = (f(z), g(z)).
+	\]
+	To show that \(h\) is well-defined, by \cref{3.3.1} we have to show that \(h\) pass the vertical line test.
+	Since \(f, g\) are functions, by \cref{3.3.1} we know that for each \(z \in Z\), \(f(z)\) and \(g(z)\) are unique objects in \(X\) and \(Y\), respectively.
+	Thus by \cref{ex:3.5.3} \((f(z), g(z)) \in X \times Y\) is unique for each \(z \in Z\).
+	Therefore \(h(z) \in X \times Y\) is unique for each \(z \in Z\) and thus \(h\) is well-defined.
 	Now we have
 	\begin{align*}
-		\forall z \in Z : (\pi_{X \times Y \to X} \circ h)(z) & = \pi_{X \times Y \to X}(h(z))         &  & \by{3.3.10} \\
-		                                                      & = \pi_{X \times Y \to X}((f(z), g(z)))                  \\
-		                                                      & = f(z).                                                 \\
-		\forall z \in Z : (\pi_{X \times Y \to Y} \circ h)(z) & = \pi_{X \times Y \to Y}(h(z))         &  & \by{3.3.10} \\
-		                                                      & = \pi_{X \times Y \to Y}((f(z), g(z)))                  \\
-		                                                      & = g(z).
+		\forall z \in Z, (\pi_{X \times Y \to X} \circ h)(z) & = \pi_{X \times Y \to X}(h(z))       &  & \by{3.3.10} \\
+		                                                     & = \pi_{X \times Y \to X}(f(z), g(z))                  \\
+		                                                     & = f(z).                                               \\
+		\forall z \in Z, (\pi_{X \times Y \to Y} \circ h)(z) & = \pi_{X \times Y \to Y}(h(z))       &  & \by{3.3.10} \\
+		                                                     & = \pi_{X \times Y \to Y}(f(z), g(z))                  \\
+		                                                     & = g(z).
 	\end{align*}
 	Thus by \cref{3.3.7} we have \(\pi_{X \times Y \to X} \circ h = f\) and \(\pi_{X \times Y \to Y} \circ h = g\).
 
 	Now we show the uniqueness of such function \(h\).
-	Suppose that \(X, Y, Z\) are sets and \(f : Z \to X, g : Z \to Y\) be functions.
-	Let \(\pi_{X \times Y \to X} : X \times Y \to X, \pi_{X \times Y \to Y} : X \times Y \to Y\) be functions where \(\pi_{X \times Y \to X}(x, y) = x\) and \(\pi_{X \times Y \to Y}(x, y) = y\).
-	Let \(h : Z \to X \times Y\) where \(h(z) = (f(z), g(z))\).
 	Suppose that there exists another function \(h' : Z \to X \times Y\) such that \(\pi_{X \times Y \to X} \circ h' = f\) and \(\pi_{X \times Y \to Y} \circ h' = g\).
 	Then we have
 	\begin{align*}
-		         & \forall z \in Z, \exists x \ \exists y : x \in X \land y \in Y \land h'(z) = (x, y)                    &  & \by{3.3.1} \\
-		\implies & \forall z \in Z : h'(z) = ((\pi_{X \times Y \to X} \circ h')(z), (\pi_{X \times Y \to Y} \circ h')(z)) &  & \by{3.3.7} \\
-		\implies & \forall z \in Z : h'(z) = (f(z), g(z))                                                                 &  & \by{3.3.7} \\
-		\implies & \forall z \in Z : h'(z) = h(z)                                                                                         \\
-		\implies & h' = h.                                                                                                &  & \by{3.3.7}
+		         & \forall z \in Z, \begin{dcases}
+			                            f(z) = \pa{\pi_{X \times Y \to X} \circ h'}(z) = \pi_{X \times Y \to X}\pa{h'(z)} \\
+			                            g(z) = \pa{\pi_{X \times Y \to Y} \circ h'}(z) = \pi_{X \times Y \to Y}\pa{h'(z)}
+		                            \end{dcases} &  & \by{3.3.7,3.3.10}   \\
+		\implies & \forall z \in Z, h'(z) = (f(z), g(z)) = h(z)                                                          \\
+		\implies & h' = h.                                                                               &  & \by{3.3.7}
 	\end{align*}
+	Thus \(h\) is unique.
 \end{proof}
 
 \begin{ex}\label{ex:3.5.8}
@@ -503,36 +509,30 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:3.5.8}]
-	Suppose that \(X_1, \dots, X_n\) are sets.
-	Then we have
+	We have
 	\begin{align*}
-		         & \prod_{i = 1}^n X_i = \emptyset                                                                    \\
-		\implies & \lnot (\forall 1 \leq i \leq n : X_i \neq \emptyset)                              &  & \by{3.5.12} \\
-		\implies & \exists 1 \leq i \leq n : X_i = \emptyset.                                                         \\
-		         & \exists 1 \leq i \leq n : X_i = \emptyset                                                          \\
-		\implies & \set{(x_i)_{1 \leq i \leq n} : x_i \in X_i \ \forall 1 \leq i \leq n} = \emptyset &  & \by{3.5}    \\
-		\implies & \prod_{i = 1}^n X_i = \emptyset.                                                  &  & \by{3.5.7}
+		     & \emptyset = \prod_{i = 1}^n X_i = \set{(x_i)_{1 \leq i \leq n} : x_i \in X_i \text{ for all } 1 \leq i \leq n} &  & \by{3.5.7} \\
+		\iff & \exists i \in \N : (1 \leq i \leq n) \land (\forall x_i, x_i \notin X_i)                                       &  & \by{3.5.7} \\
+		\iff & \exists i \in N : (1 \leq i \leq n) \land (X_i = \emptyset).                                                   &  & \by{3.2}
 	\end{align*}
-	Thus \(\prod_{i = 1}^n X_i = \emptyset \iff \exists 1 \leq i \leq n : X_i = \emptyset\).
 \end{proof}
 
 \begin{ex}\label{ex:3.5.9}
-	Suppose that \(I\) and \(J\) are two sets, and for all \(\alpha \in I\) let \(A_{\alpha}\) be a set, and for all \(\beta \in J\) let \(B_{\beta}\) be a set.
-	Show that \((\bigcup_{\alpha \in I} A_{\alpha}) \cap (\bigcup_{\beta \in J} B_{\beta}) = \bigcup_{(\alpha, \beta) \in I \times J} (A_{\alpha} \cap B_{\beta})\).
+	Suppose that \(I\) and \(J\) are two sets, and for all \(\alpha \in I\) let \(A_\alpha\) be a set, and for all \(\beta \in J\) let \(B_\beta\) be a set.
+	Show that \(\pa{\bigcup_{\alpha \in I} A_\alpha} \cap \pa{\bigcup_{\beta \in J} B_\beta} = \bigcup_{(\alpha, \beta) \in I \times J} (A_\alpha \cap B_\beta)\).
 \end{ex}
 
 \begin{proof}[\pf{ex:3.5.9}]
-	Suppose that \(I\) and \(J\) are two sets, and \(\forall \alpha \in I\) let \(A_{\alpha}\) be a set, and \(\forall \beta \in J\) let \(B_{\beta}\) be a set.
-	Then we have
+	Since
 	\begin{align*}
-		     & \forall x \in (\bigcup_{\alpha \in I} A_{\alpha}) \cap (\bigcup_{\beta \in J} B_{\beta})                                              \\
-		\iff & (x \in \bigcup_{\alpha \in I} A_{\alpha}) \land (x \in \bigcup_{\beta \in J} B_{\beta})                              &  & \by{3.1.23} \\
-		\iff & (\exists \alpha \in I : x \in A_{\alpha}) \land (\exists \beta \in J : x \in B_{\beta})                              &  & \by{3.11}   \\
-		\iff & \exists \alpha \ \exists \beta : (\alpha \in I) \land (\beta \in J) \land (x \in A_{\alpha}) \land (x \in B_{\beta})                  \\
-		\iff & \exists \alpha \ \exists \beta : (\alpha \in I) \land (\beta \in J) \land (x \in A_{\alpha} \cap B_{\beta})          &  & \by{3.1.23} \\
-		\iff & \exists (\alpha, \beta) \in I \times J \land x \in A_{\alpha} \cap B_{\beta}                                         &  & \by{3.5.4}  \\
-		\iff & x \in \bigcup_{(\alpha, \beta) \in I \times J} (A_{\alpha} \cap B_{\beta}).                                          &  & \by{3.11}
+		     & x \in \pa{\bigcup_{\alpha \in I} A_\alpha} \cap \pa{\bigcup_{\beta \in J} B_\beta}                         \\
+		\iff & \pa{x \in \bigcup_{\alpha \in I} A_\alpha} \land \pa{x \in \bigcup_{\beta \in J} B_\beta} &  & \by{3.1.23} \\
+		\iff & \pa{\exists \alpha \in I : x \in A_\alpha} \land \pa{\exists \beta \in J : x \in B_\beta} &  & \by{3.11}   \\
+		\iff & \exists (\alpha, \beta) \in I \times J : (x \in A_\alpha) \land (x \in B_\beta)           &  & \by{3.5.4}  \\
+		\iff & \exists (\alpha, \beta) \in I \times J : x \in A_\alpha \cap B_\beta                      &  & \by{3.1.23} \\
+		\iff & x \in \bigcup_{(\alpha, \beta) \in I \times J} (A_\alpha \cap B_\beta),                   &  & \by{3.11}
 	\end{align*}
+	by \cref{3.1.4} we have \(\pa{\bigcup_{\alpha \in I} A_\alpha} \cap \pa{\bigcup_{\beta \in J} B_\beta} = \bigcup_{(\alpha, \beta) \in I \times J} (A_\alpha \cap B_\beta)\).
 \end{proof}
 
 \begin{ex}\label{ex:3.5.10}
@@ -542,21 +542,34 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:3.5.10}]
-	We first show that \(f : X \to Y = \tilde{f} : X \to Y \iff \set{(x, f(x)) : x \in X} = \set{(x, \tilde{f}(x)) : x \in X}\).
-	Suppose that \(X, Y\) are sets and \(f : X \to Y, \tilde{f} : X \to Y\) are functions.
-	Then we have
+	The first statement is true since
 	\begin{align*}
-		     & f = \tilde{f}                                                                  \\
-		\iff & \forall x \in X : f(x) = \tilde{f}(x)                          &  & \by{3.3.7} \\
-		\iff & \forall x \in X : (x, f(x)) = (x, \tilde{f}(x))                &  & \by{3.5.1} \\
-		\iff & \set{(x, f(x)) : x \in X} = \set{(x, \tilde{f}(x)) : x \in X}. &  & \by{3.6}
+		     & f = \tilde{f}                                                                     \\
+		\iff & \forall x \in X, f(x) = \tilde{f}(x)                              &  & \by{3.3.7} \\
+		\iff & \forall x \in X, (x, f(x)) = \pa{x, \tilde{f}(x)}                 &  & \by{3.5.1} \\
+		\iff & \set{(x, f(x)) : x \in X} = \set{\pa{x, \tilde{f}(x)} : x \in X}. &  & \by{3.6}
 	\end{align*}
 
-	Now we show that \(\exists!\ G = \set{(x, f(x)) : x \in X}\).
-	Suppose that \(G, X, Y\) are sets such that \(G \subseteq X \times Y\) and \(\forall x \in X\), the set \(\set{y \in Y : (x, y) \in G}\) has exactly one element.
-	We now define a function \(f : X \to Y\) where \(f(x) = y \land (x, y) \in G\).
-	Since \(\forall x \in X\), \(\exists!\ y \in Y : f(x) = y\), by \cref{3.6} such function \(f\) is well-defined.
-	Thus \(G\) is the graph of \(f\), which means \(f\) is unique since if \(f, f'\) have the same graph \(G\) then it follows from proof above that \(f = f'\).
+	Next we show that there exists a function whose graph is equal to \(G\).
+	For each \(x \in X\), we use \cref{3.6} to create the set \(S_x = \set{y \in Y : (x, y) \in G}\).
+	Define \(P(x, y)\) to be the statement ``\(y \in S_x\)'' for each \((x, y) \in X \times Y\).
+	Then by the hypothesis of \(G\) we know that for each \(x \in X\), there is only one \(y \in Y\) such that \(P(x, y)\) is true.
+	Thus we can use \cref{3.3.1} to create a function \(f : X \to Y\) such that
+	\[
+		\forall (x, y) \in X \times Y, y = f(x) \iff P(x, y) \iff y \in S_x \iff (x, y) \in G.
+	\]
+	By definition the graph of \(f\) is \(\set{(x, f(x)) : x \in X}\).
+	Thus we have
+	\[
+		\forall (x, y) \in X \times Y, (x, y) \in \set{(x, f(x)) : x \in X} \iff y = f(x) \iff (x, y) \in G.
+	\]
+	By \cref{3.1.4} this means \(G = \set{(x, f(x)) : x \in X}\).
+	Thus \(f\) is a function whose graph is equal to \(G\).
+
+	Now we show that \(f\) is unique.
+	Suppose that there exists another function \(\tilde{f} : X \to Y\) such that the graph of \(\tilde{f}\) is equal to \(G\).
+	But then \(f\) and \(\tilde{f}\) have the same graph, and by the first part of the proof we see that \(f = \tilde{f}\).
+	Thus \(f\) is unique.
 \end{proof}
 
 \begin{ex}\label{ex:3.5.11}
@@ -565,20 +578,26 @@
 
 \begin{proof}[\pf{ex:3.5.11}]
 	Suppose that \(X, Y\) are sets.
-	Then by \cref{ex:3.5.1}, \(X \times Y\) is a set.
-	We now show that the following sets exist:
-	\begin{align*}
-		S_1 & = \set{S | S \subseteq X \times Y}                                                              &  & \by{3.4.9}     \\
-		S_2 & = \set{X' \times Y' \in S_1 | X' = X \land Y' \subseteq Y \land Y' \neq \emptyset}              &  & \by{3.5}       \\
-		S_3 & = \set{X \times Y' \in S_2 | \forall (x, y), (x', y') \in X \times Y' : x = x' \implies y = y'} &  & \by{ex:3.5.10} \\
-		Y^X & = \set{f : X \to Y | f \text{'s graph } G \in S_3}.                                             &  & \by{3.6}
-	\end{align*}
+	Then by \cref{ex:3.5.1}(c), \(X \times Y\) is a set.
+	Thus we can use \cref{3.4.9} to create a set of subsets of \(X \times Y\), i.e., \(S_1 = \set{S : S \subseteq X \times Y}\).
+	If \(f : X \to Y\) is a function, then by \cref{3.3.1} every element on \(X\) must be assigned exactly one object in \(Y\).
+	Thus we use \cref{3.5} to rule out those sets violating the vertical line test and we derive the following set
+	\[
+		S_2 = \set{G \in S_1 \mid \forall x \in X, \exists! y \in Y : (x, y) \in G}.
+	\]
+	By \cref{ex:3.5.10} we see that every element \(G \in S_2\) is a graph and we know that there exists exactly one function \(f : X \to Y\) whose graph is \(G\).
+	Thus we can use \cref{3.6} to create the following set
+	\[
+		S_3 = \set{f : X \to Y \mid \text{the graph of } f \text{ is in } S_2}.
+	\]
+	Now we claim that every function \(f : X \to Y\) is an element of \(S_3\), and thus by \cref{3.10} we have \(S_3 = X^Y\) and \(X^Y\) is indeed a set.
+	But by \cref{ex:3.5.10} every function with domain \(X\) and codomain \(Y\) is uniquely identified by one graph and vice versa.
+	Thus the claim is true.
 \end{proof}
 
 \begin{ex}\label{ex:3.5.12}
-	Let \(f : \N \times X \to X\) be a function, and let \(c\) be a natural number.
-	Let \(X\) be an arbitrary set.
-	Show that there exists a function \(a : \N \to \N\) such that
+	Let \(X\) be an arbitrary set, let \(f : \N \times X \to X\) be a function, and let \(c \in X\).
+	Show that there exists a function \(a : \N \to X\) such that
 	\[
 		a(0) = c
 	\]
@@ -591,80 +610,169 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:3.5.12}]
-	We claim that for every natural number \(N \in \N\), there exists a unique function \(a_N : \set{n \in \N : n \leq N} \to \N\) such that \(a_N(0) = c\) and \(a_N(n\pp) = f(n, a_{N}(n))\) for all \(n \in \N\) such that \(n < N\).
+	For each \(N \in \N\), let \(P(N)\) be the statement ``there exists an unique function \(a_N : \set{n \in \N : n \leq N} \to X\) such that \(a_N(0) = c\) and \(a_N(n\pp) = f(n, a_N(n))\) for all \(n \in \N\) such that \(n < N\)''.
+	We use induction to prove that \(P(N)\) is true for all \(N \in \N\).
 
-	We prove the claim by using induction on \(N\).
-	For \(N = 0\), we need to show that such function \(a_0 : \set{n \in \N : n \leq 0} \to \N\) exists and is unique.
-	The domain of \(a_0\) is equal to \(\set{0}\) since \(0\) is the only natural number less than or equal to \(0\).
-	Then by defining \(a_0(0) = c\) where \(c \in \N\) we get a unique function \(a_0 : \set{0} \to \set{c}\) (if \(a'_0 : \set{0} \to \set{c}\), then by \cref{3.3.7} \(a_0 = a'_0\)).
-	And because the domain of \(a_0\) is equal to \(\set{0}\), so there is no \(n \in \set{0}\) such that \((n \in \N) \land (n < 0)\), so \(a_0(n\pp) = f(n, a_0(n))\) is vacuously true.
-	Thus for \(N = 0\) the claim is true.
+	For \(N = 0\), we define \(a_0 : \set{0} \to X\) to be the function \(a_0(0) = c\).
+	By \cref{ac:2.2.4} we see that \(\set{0} = \set{n \in \N : n \leq 0}\) and the statement ``\(a_0(n\pp) = f(n, a_0(n))\) for all \(n \in \N\) such that \(n < 0\)'' is vacuously true.
+	Thus to close the base case, we only need to show that \(a_0\) is unique.
+	Let \(b_0 : \set{0} \to X\) be another function satisfying \(b_0(0) = c\) and \(b_0(n\pp) = f(n, b_0(n))\) for all \(n \in \N\) such that \(n < 0\).
+	Since \(0\) is the only element in \(\set{0}\) and \(b_0(0) = c = a_0(0)\), by \cref{3.3.7} we have \(b_0 = a_0\).
+	Thus \(a_0\) is unique and the base case holds.
 
-	Suppose inductively that for some \(N\) the claim is also true.
-	The function \(a_N : \set{n \in \N : n \leq N} \to \N\) exists and is unique, and \(a_N(0) = c\) and \(a_N(n\pp) = f(n, a_N(n))\) for all \(n \in \N\) such that \(n < N\).
-	Then for \(N\pp\), we can define \(a_{N\pp} : \set{n \in \N : n \leq N\pp} \to \N\) by setting \(a_{N\pp}(n) = a_N(n)\) when \((n \in \N) \land (n < N\pp)\) (which is unique by induction hypothesis) and \(a_{N\pp}(N\pp) = f(N, a_{N\pp}(N))\) when \((n \in \N) \land (n = N\pp)\) (which is also unique because \(N\) is unique by \cref{2.4} and \(a_{N\pp}(N) = a_N(N)\) is unique by induction hypothesis, so \(f(n, a(n))\) is unique by \cref{3.3.1}).
-	So \(a_{N\pp}\) exists and is unique, and \(a_{N\pp}(0) = a_N(0) = c\) and \(a_{N\pp}(n\pp) = f(n, a_{N\pp}(n))\) for all \(n \in \N\) such that \(n < N\pp\).
-	Thus we conclude that the claim is true.
+	Suppose inductively that \(P(N)\) is true for some \(N \in \N\).
+	We want to show that \(P(N\pp)\) is true.
+	By induction hypothesis there exists an unique function \(a_N : \set{n \in \N : n \leq N} \to X\) such that \(a_N(0) = c\) and \(a_N(n\pp) = f(n, a_N(n))\) for all \(n \in \N\) such that \(n < N\).
+	Now we define a function \(a_{N\pp} : \set{n \in \N : n \leq N\pp} \to X\) as follow:
+	\[
+		\forall n \in \N \text{ such that } n \leq N\pp, a_{N\pp}(n) = \begin{dcases}
+			a_N(n)       & \text{if } n \neq N\pp                    \\
+			f(m, a_N(m)) & \text{if } n = N\pp \text{ and } m\pp = n
+		\end{dcases}.
+	\]
+	Since each \(n \in \set{n \in \N : n \leq N\pp}\) is assigned with an unique object in \(X\), we see that \(a_{N\pp}\) is well-define.
+	Since \(0 \neq N\pp\) (\cref{2.3}), we have \(a_{N\pp}(0) = a_N(0) = c\).
+	We claim that we must have \(a_{N\pp}(n) = f(n, a_{N\pp}(n))\) for natural number \(n < N\pp\).
+	So let \(n \in N\) and \(n < N\pp\).
+	We split into two cases:
+	\begin{itemize}
+		\item If \(n\pp \neq N\pp\), then we have
+		      \begin{align*}
+			      a_{N\pp}(n\pp) & = a_N(n\pp)          &  & (n\pp \neq N\pp) \\
+			                     & = f(n, a_N(n))       &  & \byIH            \\
+			                     & = f(n, a_{N\pp}(n)). &  & (n < N\pp)
+		      \end{align*}
+		\item If \(n\pp = N\pp\), then we have
+		      \begin{align*}
+			      a_{N\pp}(n\pp) & = f(n, a_N(n))       &  & (n\pp = N\pp) \\
+			                     & = f(n, a_{N\pp}(n)). &  & (n < N\pp)
+		      \end{align*}
+	\end{itemize}
+	From all cases above we see that \(a_{N\pp}(n\pp) = f(n, a_{N\pp}(n))\).
+	Thus our claim is true.
+	To close the induction, we need to show that \(a_{N\pp}\) is unique.
+	So suppose that there exists another function \(b_{N\pp} : \set{n \in \N : n \leq N\pp} \to X\) where \(b_{N\pp}(0) = c\) and \(b_{N\pp}(n\pp) = f(n, b_{N\pp}(n))\) for all \(n \in \N\) such that \(n < N\).
+	Clearly we have \(b_{N\pp}(0) = c = a_{N\pp}(0)\).
+	If we have show that \(b_{N\pp}(n) = a_{N\pp}(n)\) for some \(n \in \N\) and \(n < N\pp\), then we see that
+	\[
+		b_{N\pp}(n\pp) = f(n, b_{N\pp}(n)) = f(n, a_{N\pp}(n)) = a_{N\pp}(n\pp).
+	\]
+	Thus we have \(b_{N\pp}(n) = a_{N\pp}(n)\) for all \(n \in \set{n \in \N : n \leq N\pp}\).
+	By \cref{3.1.4} this means \(b_{N\pp} = a_{N\pp}\), and this closes the induction.
 
-	Now we prove the exercise.
-	\(\forall N \in \N\), we can define \(a(N)\) be the value of \(a_N(N)\), where \(a_N\) is the function in the claim, i.e., \(a(N) = a_{N}(N)\).
-	Then \(a(0) = a_0(0) = c\), and \(a(N\pp) = a_{N\pp}(N\pp) = f(N, a_{N\pp}(N)) = f(N, a_{N}(N)) = f(N, a(N))\).
-	Since all \(a_N\) exists and unique, thus such \(a\) exists and is unique.
+	Now we define \(a : \N \to X\) as follow:
+	\[
+		\forall n \in \N, a(n) = a_n(n).
+	\]
+	Since \(P(n)\) is true for all \(n \in \N\), we know that \(a_n\) is well-defined and \(a_n(n)\) is unique for each \(n \in \N\), thus \(a\) is well-defined.
+	Clearly we have \(a(0) = a_0(0) = c\).
+	We claim that \(a(n\pp) = f(n, a(n))\) for all \(n \in \N\).
+	This is true since
+	\begin{align*}
+		\forall n \in \N, a(n\pp) & = a_{n\pp}(n\pp)                    \\
+		                          & = f(n, a_{n\pp}(n))                 \\
+		                          & = f(n, a_n(n))      &  & (n < n\pp) \\
+		                          & = f(n, a(n)).
+	\end{align*}
+	Now we show that \(a\) is unique.
+	Suppose there exists another \(b : \N \to X\) where \(b(0) = c\) and \(b(n\pp) = f(n, b(n))\) for all \(n \in \N\).
+	Clealy \(b(0) = c = a(0)\).
+	If \(b(n) = a(n)\) is true for some \(n \in \N\), then we have
+	\[
+		b(n\pp) = f(n, b(n)) = f(n, a(n)) = a(n\pp).
+	\]
+	Thus by \cref{2.5} we know that \(b(n) = a(n)\) for all \(n \in \N\).
+	By \cref{3.1.4} this means \(b = a\).
+	Thus \(a\) is unique.
 
 	Now we prove the additional challenge.
-	We claim that for every natural number \(N \in \N\), there exists a unique pair \(A_N\), \(B_N\) of subsets of \(\N\) which obeys the following properties:
+	We claim that for every natural number \(N \in \N\), there exists a unique pair \(A_N, B_N\) of subsets of \(\N\) which obeys the following properties:
 	\begin{enumerate}
-		\item \(A_N \cap B_N = \emptyset\)
-		\item \(A_N \cup B_N = \N\)
-		\item \(0 \in A_N\)
-		\item \(N\pp \in B_N\)
-		\item Whenever \(n \in B_N\), we have \(n\pp \in B_N\)
-		\item Whenever \(n \in A_N\) and \(n \neq N\), we have \(n\pp \in A_N\)
+		\item \(A_N \cap B_N = \emptyset\);
+		\item \(A_N \cup B_N = \N\);
+		\item \(0 \in A_N\);
+		\item \(N\pp \in B_N\);
+		\item Whenever \(n \in B_N\), we have \(n\pp \in B_N\);
+		\item Whenever \(n \in A_N\) and \(n \neq N\), we have \(n\pp \in A_N\).
 	\end{enumerate}
+	We use induction on \(N\) to prove the claim.
 
-	We prove the claim by using induction on \(N\).
-	For \(N = 0\), by \cref{3.3} there exists a set \(\set{0}\), and let \(A_0 = \set{0}\).
-	Also by \cref{3.5,3.7}, there exists a set \(\N\), and there also exists a set \(B_0 = \set{n \in \N \mid n \neq 0}\).
-	Then \(A_0 \cap B_0 = \emptyset\), \(A_0 \cup B_0 = \N\), \(0 \in A_0\), \(0\pp = 1 \in B_0\), \(\forall n \in B_0\) whenever \(n \in B_0\), we have \(n\pp \in B_0\).
-	And \(\forall n \in A_0\) whenever \(n \in A_0\) and \(n \neq 0\), \(n\pp \in A_0\) is vacuously true since \(\set{n \in A_0 : n \neq 0} = \emptyset\).
-	Now we need to show that \(A_0\) and \(B_0\) is unique, so assume that there exists another sets \(A_0'\) and \(B_0'\) such that the above condition holds.
-	Then \(0 \in A_0'\) according to condition (c), and \(A_0' = \set{0}\) according to condition (f), so \(A_0 = A_0'\).
-	And because \(A_0' \cap B_0' = \set{0} \cap B_0' = \emptyset\), and \(A_0' \cup B_0' = \N\), and condition (e) is true, so \(B_0' = \set{n \in \N : n \neq 0} = B_0\).
-	Thus for \(N = 0\), there exists a unique pair \(A_0\) and \(B_0\) such that the above conditions hold.
+	For \(N = 0\), let \(A_0 = \set{0}\) and let \(B_0 = \N \setminus A_0\).
+	By \cref{3.1.28}(g) we see that (a)(b) holds for \(A_0, B_0\).
+	By \cref{3.3} we have \(0 \in A_0\) and \(0\pp = 1 \notin A_0\).
+	Thus \(1 \in B_0\).
+	So (c)(d) holds for \(A_0, B_0\).
+	If \(n \in B_0\), then \(n \in \N\) and \(n\pp \neq 0\) (\cref{2.4}).
+	Thus we have \(n\pp \notin A_0\) and therefore \(n\pp \in B_0\).
+	So (e) holds for \(A_0, B_0\).
+	Since there is no natural number \(n\) satisfying \(n \in A_0\) and \(n \neq 0\), we see that (f) holds for \(A_0, B_0\).
+	To close the base case, we are left to show that \(A_0, B_0\) are unique.
+	So suppose that there exist another pair of sets \(A_0', B_0'\) such that (a)--(f) hold.
+	By (c)(d) we know that \(0 \in A_0'\) and \(1 \in B_0'\).
+	Thus by (e) we see that \(n \in B_0'\) for all \(n \in \N\) and \(n \geq 1\).
+	Therefore we have \(A_0' = \set{0} = A_0\) by (a).
+	By \cref{ex:3.1.9} we have \(B_0' = \N \setminus A_0' = \N \setminus A_0 = B_0\).
+	Thus \(A_0, B_0\) is unique and the base case holds.
 
-	Suppose inductively that for some \(N\) there exists a unique pair \(A_N\) and \(B_N\) such that the above conditions hold.
-	Then for \(N\pp\) we can define \(A_{N\pp}\) and \(B_{N\pp}\) by setting \(A_{N\pp} = A_N \cup \set{N\pp}\) and \(B_{N\pp} = \set{n \in B_N : n \neq N\pp} = B_N \setminus \set{N\pp}\).
-	Thus we can check the above conditions still hold.
+	Suppose inductively that, for some natural number \(N\), there exists a unique pair of set \(A_N, B_N\) such that (a)--(f) hold.
+	We define \(A_{N\pp} = A_N \cup \set{N\pp}\) and \(B_{N\pp} = B_N \setminus \set{N\pp}\).
+	Since
+	\begin{align*}
+		 & A_{N\pp} \cap B_{N\pp}                                                                                        \\
+		 & = (A_N \cup \set{N\pp}) \cap (B_N \setminus \set{N\pp})                                                       \\
+		 & = (A_N \cap (B_N \setminus \set{N\pp})) \cup (\set{N\pp} \cap (B_N \setminus \set{N\pp})) &  & \by{3.1.28}[f] \\
+		 & = (A_N \cap (B_N \setminus \set{N\pp})) \cup \emptyset                                    &  & \by{3.1.28}[g] \\
+		 & = A_N \cap (B_N \setminus \set{N\pp})                                                     &  & \by{3.1.28}[a] \\
+		 & \subseteq A_n \cap B_N                                                                    &  & \by{3.1.15}    \\
+		 & = \emptyset,                                                                              &  & \byIH
+	\end{align*}
+	by \cref{3.2} we see that \(A_{N\pp} \cap B_{N\pp} = \emptyset\) and thus (a) is true for \(A_{N\pp}, B_{N\pp}\).
+	Since
+	\begin{align*}
+		 & A_{N\pp} \cup B_{N\pp}                                                      \\
+		 & = (A_N \cup \set{N\pp}) \cup (B_N \setminus \set{N\pp})                     \\
+		 & = A_N \cup (\set{N\pp} \cup (B_N \setminus \set{N\pp})) &  & \by{3.1.28}[e] \\
+		 & = A_N \cup B_N                                          &  & \by{3.1.28}[g] \\
+		 & = \N,                                                   &  & \byIH
+	\end{align*}
+	we see that (b) is true for \(A_{N\pp}, B_{N\pp}\).
+	Since \(A_{N\pp} = A_N \cup \set{N\pp}\), by \cref{ex:3.1.7} we have \(A_N \subseteq A_{N\pp}\).
+	By induction hypothesis we know that \(0 \in A_N\).
+	Thus by \cref{3.1.15} we have \(0 \in A_{N\pp}\) and (c) is true for \(A_{N\pp}, B_{N\pp}\).
+	By induction hypothesis we have \(N\pp \in B_N\).
+	Thus by (e) we see that \((N\pp)\pp \in B_N\).
+	Since \(B_{N\pp} = B_N \setminus \set{N\pp}\), we see that \((N\pp)\pp \in B_{N\pp}\).
+	Thus (d) is true for \(A_{N\pp}, B_{N\pp}\).
+	If \(n \in B_{N\pp} = B_N \setminus \set{N\pp}\), then by \cref{3.1.27,3.3} we have \(n \in B_N\) and \(n \neq N\pp\).
+	We must have \(n\pp \neq N\pp\), for otherwise we would have \(n\pp = N\pp\) and \(n = N\) by \cref{2.4}.
+	But by induction hypotheses we would have \(N\pp = n\pp \in B_N\), a contradiction.
+	Thus \(n \in B_{N\pp} \implies n\pp \neq N\pp\).
+	Hence
+	\begin{align*}
+		         & \forall n \in B_{N\pp}, (n \in B_n) \land (n\pp \neq N\pp)                                 \\
+		\implies & \forall n \in B_{N\pp}, (n\pp \in B_N) \land (n\pp \neq N\pp)         &  & \byIH           \\
+		\implies & \forall n \in B_{N\pp}, n\pp \in B_N \setminus \set{N\pp} = B_{N\pp}. &  & \by{3.1.27,3.3}
+	\end{align*}
+	So (e) is true for \(A_{N\pp}, B_{N\pp}\).
+	Since
+	\begin{align*}
+		         & (n \in A_{N\pp} = A_N \cup \set{N\pp}) \land (n \neq N\pp)                             \\
+		\implies & ((n \in A_N) \lor (n = N\pp)) \land (n \neq N\pp)                    &  & \by{3.3,3.4} \\
+		\implies & ((n \in A_N) \land (n \neq N)) \lor ((n = N\pp) \land (n \neq N\pp))                   \\
+		\implies & (n \in A_N) \land (n \neq N)                                                           \\
+		\implies & n\pp \in A_N                                                         &  & \byIH        \\
+		\implies & n\pp \in A_{N\pp},                                                   &  & \by{3.1.15}
+	\end{align*}
+	we see that (f) is true for \(A_{N\pp}, B_{N\pp}\).
+	To close the induction, we only need to show that the pair of sets \(A_{N\pp}, B_{N\pp}\) is unique.
+	So suppose that there exist another pair of sets \(A_{N\pp}', B_{N\pp}'\) such that (a)--(f) hold.
+	Then by (c) and (f) we see that \(A_{N\pp}' = A_{N\pp}\).
+	Thus by (b) and \cref{ex:3.1.9} we see that \(B_{N\pp}' = B_{N\pp}\).
+	Thus the pair \(A_{N\pp}, B_{N\pp}\) is unique and this closes the induction.
 
-	For condition (a), \(A_{N\pp} \cap B_{N\pp} = (A_N \cup \set{N\pp}) \cap (B_N \setminus \set{N\pp})\).
-	For all \(n \in A_{N\pp}\), \(n \in A_N\) or \(n = N\pp\).
-	If \(n \in A_N\), then \(n \notin B_N\) because \(A_N \cap B_N = \emptyset\) by induction hypothesis, so \(n \notin B_N \setminus \set{N\pp}\).
-	If \(n = N\pp\), then \(n \notin B_N \setminus \set{N\pp}\).
-	Thus \(A_{N\pp} \cap B_{N\pp} = \emptyset\), and condition (a) is true for \(A_{N\pp}\) and \(B_{N\pp}\).
-
-	For condition (b), \(A_{N\pp} \cup B_{N\pp} = (A_N \cup \set{N\pp}) \cup (B_N \setminus \set{N\pp}) = (A_N \cup (B_N \setminus \set{N\pp})) \cup (\set{N\pp} \cup (B_N \setminus \set{N\pp})) = (A_N \cup (B_N \setminus \set{N\pp})) \cup B_N = A_N \cup B_N = \N\) by induction hypothesis.
-	Thus condition (b) is true for \(A_{N\pp}\) and \(B_{N\pp}\).
-
-	For condition (c), \(0 \in A_{N\pp}\) because \(0 \in A_N\) and \(A_{N\pp} = A_N \cup \set{N\pp}\), so condition (c) is true for \(A_{N\pp}\).
-
-	For condition (d), we want to show that \((N\pp)\pp \in B_N\).
-	By induction hypothesis, \(N \in A_N\) and \(N\pp \in B_N\) is true, so \((N\pp)\pp \in B_N\) is true.
-	Thus \((N\pp)\pp \in B_N \setminus \set{N\pp} = B_{N\pp}\) is also true, so condition (e) is true for \(B_{N\pp}\).
-
-	For condition (f), since \(N \in A_N\) by induction hypothesis, \(N\pp \in A_N \cup \set{N\pp} = A_{N\pp}\) is true.
-	And by conditions (a) and (e), \((N\pp)\pp\) is not in \(A_N\).
-	So whenever \(n \in A_{N\pp}\) and \(n \neq N\pp\), we have \(n\pp \in A_{N\pp}\).
-	Thus condition (f) is true for \(A_{N\pp}\).
-
-	Now we need to show that \(A_{N\pp}\) and \(B_{N\pp}\) is unique.
-	So suppose that there exist \(A_{N\pp}', B_{N\pp}'\) such that conditions (a) to (f) holds.
-	Then by condition (f) \(\forall n \in A_{N\pp}' \iff n \neq N\pp \land n\pp \in A_{N\pp}'\).
-	The same condition holds for \(A_{N\pp}\), this means \(\forall n \in A_{N\pp}' \iff n \in A_{N\pp}\), and thus \(A_{N\pp} = A_{N\pp}'\).
-	Similar argument holds for \(B_{N\pp}'\), thus \(A_{N\pp}, B_{N\pp}\) are unique.
-	This closes the induction, so for every \(N \in \N\) we have unique \(A_N\) and \(B_N\) such that the conditions (a) - (f) are true.
-
-	Now we claim that for every natural number \(N \in \N\), there exists a unique function \(a_N : A_N \to \N\) such that \(a_N(0) = c\) and \(a_N(n\pp) = f(n, a_{N}(n))\) for all \(n \in \N\) such that \(n < N\).
-	This is done since \(A_N = \set{n \in \N : n \leq N}\).
+	From the construction of \(A_N\) we see that \(A_N = \set{n \in N : 0 \leq N}\).
+	Thus we can simply apply \(A_N\) to define \(a_N : N \to X\) as in the first part of the proof.
+	The rest claim than follows.
 \end{proof}
 
 \begin{ex}\label{ex:3.5.13}
