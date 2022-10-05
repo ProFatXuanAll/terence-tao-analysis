@@ -1,5 +1,28 @@
 \section{Cardinality of sets}\label{sec:3.6}
 
+\begin{note}
+	In \cref{ch:2} we defined the natural numbers axiomatically, assuming that they were equipped with a \(0\) and an increment operation, and assuming five axioms on these numbers.
+	Philosophically, this is quite different from one of our main conceptualizations of natural numbers
+	- that of \emph{cardinality}, or measuring \emph{how many} elements there are in a set.
+	Indeed, the Peano axiom approach treats natural numbers more like \emph{ordinals} than \emph{cardinals}.
+	(The \emph{cardinals} are One, Two, Three, ..., and are used to count how many things there are in a set.
+	The \emph{ordinals} are First, Second, Third, ..., and are used to order a sequence of objects.
+	There is a subtle difference between the two, especially when comparing infinite cardinals with infinite ordinals, but this is beyond the scope of this text.)
+	We paid a lot of attention to what number came \emph{next} after a given number \(n\)
+	- which is an operation which is quite natural for ordinals, but less so for cardinals
+	- but did not address the issue of whether these numbers could be used to \emph{count} sets.
+	The purpose of \cref{sec:3.6} is to address this issue by noting that the natural numbers \emph{can} be used to count the cardinality of sets, as long as the set is finite.
+
+	One way to define cardinality is to say that two sets have the same size if they have the same number of elements, but we have not yet defined what the ``number of elements'' in a set is.
+	Besides, this runs into problems when a set is infinite.
+
+	The right way to define the concept of ``two sets having the same size'' is not immediately obvious, but can be worked out with some thought.
+	One intuitive reason why two sets have the same size is that one can match the elements of the first set with the elements in the second set in a one-to-one correspondence
+	(Indeed, this is how we first learn to count a set:
+	we correspond the set we are trying to count with another set, such as a set of fingers on your hand).
+	We will use this intuitive understanding as our rigorous basis for ``having the same size''.
+\end{note}
+
 \begin{defn}[Equal cardinality]\label{3.6.1}
 	We say that two sets \(X\) and \(Y\) have \emph{equal cardinality} iff there exists a bijection \(f : X \to Y\) from \(X\) to \(Y\).
 \end{defn}
@@ -17,24 +40,32 @@
 	If \(X\) has equal cardinality with \(Y\) and \(Y\) has equal cardinality with \(Z\), then \(X\) has equal cardinality with \(Z\).
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{3.6.4}]
 	We first show that \cref{3.6.1} is reflexive.
-	Suppose that \(X\) is a set.
 	Let \(f : X \to X\) be a function where \(f = x \mapsto x\).
 	By \cref{3.6} \(f\) is well-defined.
-	Such \(f\) is injective since \(\forall x, x' \in X\), \(f(x) = f(x') \implies x = x'\), and \(f\) is also surjective since \(\forall x \in X\), \(\exists x \in X\) such that \(f(x) = x\).
-	Thus \(f\) is bijective, and by \cref{3.6.1} \(X\) has equal cardinality with \(X\).
+	Since
+	\[
+		\forall x_1, x_2 \in X, x_1 \neq x_2 \implies x_1 = f(x_1) \neq f(x_2) = x_2,
+	\]
+	by \cref{3.3.14} we know that \(f\) is injective.
+	Since
+	\[
+		\forall x \in X, f(x) = x,
+	\]
+	by \cref{3.3.17} we know that \(f\) is surjective.
+	Thus by \cref{3.3.20} \(f\) is bijective, and by \cref{3.6.1} \(X\) has equal cardinality with \(X\).
 
 	Next we show that \cref{3.6.1} is symmetric.
-	Suppose that \(X, Y\) are sets such that \(X\) has equal cardinality with \(Y\).
-	Then by \cref{3.6.1} there exists a function \(f : X \to Y\) such that \(f\) is bijective.
-	Since \(f\) is bijective, by \cref{ex:3.3.6} \(f^{-1} : Y \to X\) is also bijective.
+	Suppose that \(X\) has equal cardinality with \(Y\).
+	Then by \cref{3.6.1} there exists a bijective function \(f : X \to Y\).
+	Since \(f\) is bijective, by \cref{ex:3.3.6} we know that \(f^{-1} : Y \to X\) is also bijective.
 	Thus by \cref{3.6.1} \(Y\) has equal cardinality with \(X\).
 
 	Finally we show that \cref{3.6.1} is transitive.
-	Suppose that \(X, Y, Z\) are sets such that \(X\) has equal cardinality with \(Y\) and \(Y\) has equal cardinality with \(Z\).
-	Then by \cref{3.6.1} there exist two functions \(f : X \to Y\) and \(g : Y \to Z\) such that \(f\) and \(g\) are bijective.
-	Since \(f\) and \(g\) are bijective, by \cref{ex:3.3.7} \(g \circ f : X \to Z\) is also bijective.
+	Suppose that \(X\) has equal cardinality with \(Y\) and \(Y\) has equal cardinality with \(Z\).
+	Then by \cref{3.6.1} there exist two bijective functions \(f : X \to Y\) and \(g : Y \to Z\).
+	Since \(f\) and \(g\) are bijective, by \cref{ex:3.3.7} we know that \(g \circ f : X \to Z\) is also bijective.
 	Thus by \cref{3.6.1} \(X\) has equal cardinality with \(Z\).
 \end{proof}
 
@@ -48,38 +79,107 @@
 	One can use the set \(\set{i \in \N : i < n}\) instead of \(\set{i \in \N : 1 \leq i \leq n}\), since these two sets clearly have equal cardinality.
 \end{rmk}
 
+\begin{proof}[\pf{3.6.6}]
+	Let \(A = \set{i \in \N : i < n}\) and let \(B = \set{i \in \N : 1 \leq i \leq n}\).
+	Let \(f : A \to B\) be the function defined by \(f = n \mapsto n\pp\).
+	By \cref{2.4,3.3.14} we see that \(f\) is injective.
+	Since \(0 \notin B\), by \cref{2.2.10} we know that for every \(i \in B\), there exists an \(j \in \N\) such that \(j\pp = i\).
+	Then we have
+	\begin{align*}
+		         & i \in B                             \\
+		\implies & j\pp = i \leq n &  & \by{3.5}       \\
+		\implies & j < n           &  & \by{2.2.12}[e] \\
+		\implies & j \in A.        &  & \by{3.5}
+	\end{align*}
+	Thus \(f(j)\) is well-defined by \cref{3.3.1} and \(f(j) = j\pp = i\).
+	By \cref{3.3.17} this means \(f\) is surjective.
+	Since \(f\) is both injective and surjective, by \cref{3.3.20} we know that \(f\) is bijective.
+	Thus by \cref{3.6.1} \(A, B\) have equal cardinality.
+\end{proof}
+
 \setcounter{thm}{7}
 \begin{prop}[Uniqueness of cardinality]\label{3.6.8}
 	Let \(X\) be a set with some cardinality \(n\).
 	Then \(X\) cannot have any other cardinality, i.e., \(X\) cannot have cardinality \(m\) for any \(m \neq n\).
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{3.6.8}]
 	We induct on \(n\).
 	First suppose that \(n = 0\).
-	Then \(X\) must be empty, and so \(X\) cannot have any non-zero cardinality.
+	Then \(X\) must be empty (\cref{ex:3.3.3}), and so \(X\) cannot have any non-zero cardinality.
 	Now suppose that the proposition is already proven for some \(n\);
-	we now prove it for \(n++\).
-	Let \(X\) have cardinality \(n++\);
-	and suppose that \(X\) also has some other cardinality \(m \neq n++\).
-	By \cref{3.6.9}, \(X\) is non-empty, and if \(x\) is any element of \(X\), then \(X \setminus \set{x}\) has cardinality \(n\) and also has cardinality \(p\), where \(p++ = m\), by \cref{3.6.9}.
-	By induction hypothesis, this means that \(n = p\), which implies that \(p++ = m = n++\), a contradiction.
+	we now prove it for \(n\pp\).
+	Let \(X\) have cardinality \(n\pp\);
+	and suppose that \(X\) also has some other cardinality \(m \neq n\pp\).
+	By \cref{2.2.10} there exists a \(p \in \N\) such that \(p\pp = m\).
+	By \cref{3.6.9}, \(X\) is non-empty, and if \(x\) is any element of \(X\), then \(X \setminus \set{x}\) has cardinality \(n\) and also has cardinality \(p\), by \cref{3.6.9}.
+	By induction hypothesis, this means that \(n = p\), which implies that \(p\pp = m = n\pp\), a contradiction.
 	This closes the induction.
 \end{proof}
 
 \begin{lem}\label{3.6.9}
-	Suppose that \(n \geq 1\), and \(X\) has cardinality \(n\).
-	Then \(X\) is non-empty, and if \(x\) is any element of \(X\), then the set \(X \setminus \set{x}\) (i.e., \(X\) with the element \(x\) removed) has cardinality \(m\), where \(m++ = n\).
+	Let \(X\) be a set with cardinality \(n \geq 1\).
+	Then \(X\) is non-empty, and if \(x\) is any element of \(X\), then the set \(X \setminus \set{x}\) (i.e., \(X\) with the element \(x\) removed) has cardinality \(m\), where \(m\pp = n\).
+	(Such \(m\) exists by \cref{2.2.10}.)
 \end{lem}
 
-\begin{proof}
-	If \(X\) is empty then it clearly cannot have the same cardinality as the non-empty set \(\set{i \in \N : 1 \leq i \leq n}\), as there is no bijection from the empty set to a non-empty set.
+\begin{proof}[\pf{3.6.9}]
+	If \(X\) is empty then it clearly cannot have the same cardinality as the non-empty set \(\set{i \in \N : 1 \leq i \leq n}\), as there is no bijection from the empty set to a non-empty set (\cref{ex:3.3.3}).
 	Now let \(x\) be an element of \(X\).
-	Since \(X\) has the same cardinality as \(\set{i \in \N : 1 \leq i \leq n}\), we thus have a bijection \(f\) from \(X\) to \(\set{i \in \N : 1 \leq i \leq n}\).
+	Since \(X\) has the same cardinality as \(\set{i \in \N : 1 \leq i \leq n}\) (\cref{3.6.5}), we thus have a bijection \(f\) from \(X\) to \(\set{i \in \N : 1 \leq i \leq n}\).
 	In particular, \(f(x)\) is a natural number between \(1\) and \(n\).
-	Now define the function \(g : X \setminus \set{x} \to \set{i \in \N : 1 \leq i \leq m}\) by the following rule: for any \(y \in X \setminus \set{x}\), we define \(g(y) \coloneqq f(y)\) if \(f(y) < f(x)\), and define \(g(y)++ \coloneqq f(y)\) if \(f(y) > f(x)\).
-	(Note that \(f(y)\) cannot equal \(f(x)\) since \(y \neq x\) and \(f\) is a bijection.)
-	It is easy to check that this map is also a bijection, and so \(X \setminus \set{x}\) has equal cardinality with \(\set{i \in \N : 1 \leq i \leq m}\).
+	Now define the function \(g : X \setminus \set{x} \to \set{i \in \N : 1 \leq i \leq m}\) by the following rule:
+	\[
+		\forall y \in X \setminus \set{x}, g(y) \coloneqq \begin{dcases}
+			f(y) & \text{if } f(y) < f(x)                          \\
+			k    & \text{if } f(y) > f(x) \text{ and } k\pp = f(y)
+		\end{dcases}.
+	\]
+	Note that \(f(y)\) cannot equal \(f(x)\) since \(y \neq x\) and \(f\) is a bijection.
+	Also note that since \(f(y) \geq 1\), \(k\) is well-defined by \cref{2.2.10}.
+
+	We show that \(g\) is injective.
+	Let \(y_1, y_2 \in X \setminus \set{x}\) and \(y_1 \neq y_2\).
+	Now we split into four cases:
+	\begin{itemize}
+		\item If \(f(y_1) < f(x)\) and \(f(y_2) < f(x)\), then \(g(y_1) = f(y_1) \neq f(y_2) = g(y_2)\) since \(f\) is bijective.
+		\item If \(f(y_1) < f(x)\) and \(f(y_2) > f(x)\), then there exists a \(k \in \N\) such that \(k\pp = f(y_2)\).
+		      Thus we have
+		      \begin{align*}
+			               & g(y_1) = f(y_1) < f(x) < f(y_2) = k\pp                              \\
+			      \implies & g(y_1) < f(x) < f(x)\pp \leq k\pp      &  & \by{ac:2.2.3,2.2.12}[e] \\
+			      \implies & g(y_1) < f(x) \leq k = g(y_2)          &  & \by{2.2.12}[d]          \\
+			      \implies & g(y_1) < g(y_2).                       &  & \by{2.2.12}[b]
+		      \end{align*}
+		      In particular we have \(g(y_1) \neq g(y_2)\) by \cref{2.2.13}.
+		\item If \(f(y_1) > f(x)\) and \(f(y_2) < f(x)\), then we can use the second case and switch the role of \(f(y_1)\) and \(f(y_2)\) to derive \(g(y_2) \neq g(y_1)\).
+		\item If \(f(y_1) > f(x)\) and \(f(y_2) > f(x)\), then there exist some \(k_1, k_2 \in \N\) such that \(k_1\pp = f(y_1)\) and \(k_2\pp = f(y_2)\).
+		      Since \(f\) is bijective, we must have \(f(y_1) \neq f(y_2)\).
+		      Therefore by \cref{2.4} we have \(g(y_1) = k_1 \neq k_2 = g(y_2)\).
+	\end{itemize}
+	From all cases above we see that \(g(y_1) \neq g(y_2)\).
+	Therefore by \cref{3.3.14} \(g\) is injective.
+
+	Next we show that \(g\) is surjective.
+	Let \(i \in \set{i \in \N : 1 \leq i \leq m}\).
+	Since \(f\) is bijective and \(i \leq m < n\), we know that \(f^{-1}(i) \in X\) is well-defined.
+	Now we split into two cases:
+	\begin{itemize}
+		\item If \(1 \leq i < f(x)\), then we have \(f^{-1}(i) \neq f^{-1}(f(x)) = x\) since \(f\) is bijective.
+		      Thus by \cref{3.1.27} we have \(f^{-1}(i) \in X \setminus \set{x}\).
+		      By \cref{3.3.1} we know that \(g\pa{f^{-1}(i)}\) is well-defined and by the definition of \(g\) we have \(i = f\pa{f^{-1}(i)} < f(x) \implies g\pa{f^{-1}(i)} = f\pa{f^{-1}(i)} = i\).
+		      Thus we have found some \(y \in X \setminus \set{x}\) such that \(g(y) = i\).
+		\item If \(f(x) \leq i \leq m\), then by \cref{2.2.12}(d)(e) we have \(f(x) < i\pp \leq m\pp = n\).
+		      Since \(f\) is bijective, we know that \(f^{-1}(i\pp)\) is well-defined and \(f(x) \neq i\pp \implies f^{-1}(f(x)) = x \neq f^{-1}(i\pp)\).
+		      Thus by \cref{3.1.27} we have \(f^{-1}(i\pp) \in X \setminus \set{x}\).
+		      By \cref{3.3.1} we know that \(g\pa{f^{-1}(i\pp)}\) is well-defined and by the definition of \(g\) we have \(i\pp = f\pa{f^{-1}(i\pp)} > f(x) \implies g\pa{f^{-1}(i\pp)} = i\).
+		      Thus we have found some \(y \in X \setminus \set{x}\) such that \(g(y) = i\).
+	\end{itemize}
+	From all cases above we see that there exists a \(y \in X \setminus \set{x}\) such that \(g(y) = i\).
+	Therefore by \cref{3.3.17} \(g\) is surjective.
+	Since \(g\) is both injective and surjective, by \cref{3.3.20} we know that \(g\) is bijective.
+
+	By \cref{3.6.5} this means \(X \setminus \set{x}\) has equal cardinality with \(\set{i \in \N : 1 \leq i \leq m}\).
 	In particular \(X \setminus \set{x}\) has cardinality \(m\), as desired.
 \end{proof}
 
@@ -94,7 +194,7 @@
 	The set of natural numbers \(\N\) is infinite.
 \end{thm}
 
-\begin{proof}
+\begin{proof}[\pf{3.6.12}]
 	Suppose for sake of contradiction that the set of natural numbers \(\N\) was finite, so it had some cardinality \(\#(\N) = n\).
 	Then there is a bijection \(f\) from \(\set{i \in \N : 1 \leq i \leq n}\) to \(\N\).
 	One can show that the sequence \(f(1), f(2), \dots, f(n)\) is bounded, or more precisely that there exists a natural number \(M\) such that \(f(i) \leq M\) for all \(1 \leq i \leq n\) (\cref{ex:3.6.3}).
@@ -127,7 +227,7 @@
 	\end{enumerate}
 \end{prop}
 
-\begin{proof}{(a)}
+\begin{proof}[\pf{3.6.14}(a)]
 	Suppose that \(X\) is a finite set and \(x \notin X\).
 	By \cref{3.6.10} \(\exists n \in \N\) such that \(\#(X) = n\).
 	By \cref{3.6.5} \(\exists f : X \to \set{i \in \N : 1 \leq i \leq n}\) such that \(f\) is bijective.
@@ -151,7 +251,7 @@
 	Since \(g\) is bijective, we have \(\#(X \cup \set{x}) = n + 1 = \#(X) + 1\).
 \end{proof}
 
-\begin{proof}{(b)}
+\begin{proof}[\pf{3.6.14}(b)]
 	Suppose that \(X, Y\) are finite sets.
 	If \(X = \emptyset \lor X = Y\), then \(X \cup Y = Y\) is finite.
 	Similarly if \(Y = \emptyset \lor Y = X\), then \(X \cup Y = X\) is finite.
@@ -167,7 +267,7 @@
 	\end{align*}
 	Thus \(X \cup Y\) is finite and the base case holds.
 	Suppose inductively that the statement is true for some \(\#(X) = n\).
-	We show that the statement is still true for \(\#(X) = n++\).
+	We show that the statement is still true for \(\#(X) = n\pp\).
 	Let \(x \in X\).
 	By \cref{3.6.9} we have \(\#(X \setminus \set{x}) = n\).
 	If \(x \in Y\), then we have
@@ -202,7 +302,7 @@
 	\end{align*}
 	Thus the base case holds.
 	Suppose inductively that the statement is true for some \(\#(X) = n\).
-	We show that the statement is still true for \(\#(X) = n++\).
+	We show that the statement is still true for \(\#(X) = n\pp\).
 	Let \(x \in X\).
 	By \cref{3.6.9} we have \(\#(X \setminus \set{x}) = n\).
 	Since \(X \cap Y = \emptyset\), \(x \notin Y\).
@@ -218,7 +318,7 @@
 	This closes the induction.
 \end{proof}
 
-\begin{proof}{(c)}
+\begin{proof}[\pf{3.6.14}(c)]
 	Suppose that \(X\) is a finite sets.
 	By \cref{3.6.10} \(\exists n \in \N\) such that \(\#(X) = n\).
 	We use induction on \(n\) to show that \(\forall Y \subseteq X\), \(Y\) is finite and \(\#(Y) \leq \#(X)\).
@@ -230,7 +330,7 @@
 	\end{align*}
 	Thus the base case holds.
 	Suppose inductively that the statement is true for some \(\#(X) = n\).
-	We show that the statement is still true for \(\#(X) = n++\).
+	We show that the statement is still true for \(\#(X) = n\pp\).
 	Let \(Y \subseteq X\).
 	If \(Y = X\), then by \cref{3.6.8} \(\#(Y) = \#(X)\).
 	If \(Y \neq X\), then \(\exists x \in X \setminus Y\) such that \(Y \subseteq X \setminus \set{x}\) and
@@ -253,9 +353,9 @@
 	\end{align*}
 	Thus the base case holds.
 	Suppose inductively that the statement is true for some \(\#(X) = n\).
-	We show that the statement is still true for \(\#(X) = n++\).
+	We show that the statement is still true for \(\#(X) = n\pp\).
 	Let \(Y \subseteq X \land Y \neq X\).
-	If \(Y = \emptyset\), then \(\#(Y) = 0 < n++ = \#(X)\).
+	If \(Y = \emptyset\), then \(\#(Y) = 0 < n\pp = \#(X)\).
 	If \(Y \neq \emptyset\), then \(\exists x \in Y\) such that
 	\begin{align*}
 		         & \#(Y \setminus \set{x}) < \#(X \setminus \set{x})                               &  & \byIH                        \\
@@ -266,7 +366,7 @@
 	This closes the induction.
 \end{proof}
 
-\begin{proof}{(d)}
+\begin{proof}[\pf{3.6.14}(d)]
 	Suppose that \(X\) is a finite sets.
 	By \cref{3.6.10} \(\exists n \in \N\) such that \(\#(X) = n\).
 	We use induction on \(n\) to show that for any set \(Y\) and any function \(f : X \to Y\) we have \(\#(f(X)) \leq \#(X)\).
@@ -279,7 +379,7 @@
 	\end{align*}
 	Thus the base case holds.
 	Suppose inductively that the statement is true for some \(\#(X) = n\).
-	We show that the statement is still true for \(\#(X) = n++\).
+	We show that the statement is still true for \(\#(X) = n\pp\).
 	Let \(x \in X\), \(Y\) be arbitrary set and \(f : X \to Y\) be arbitrary function.
 	If \(f(X \setminus \set{x}) = f(X)\), then we have
 	\begin{align*}
@@ -310,7 +410,7 @@
 	\end{align*}
 	Thus the base case holds.
 	Suppose inductively that the statement is true for some \(\#(X) = n\).
-	We show that the statement is still true for \(\#(X) = n++\).
+	We show that the statement is still true for \(\#(X) = n\pp\).
 	Let \(x \in X\), \(Y\) be arbitrary set and \(f : X \to Y\) be arbitrary one-to-one function.
 	Since \(f\) is one-to-one, we must have \(f(X \setminus \set{x}) \neq f(X)\) and
 	\begin{align*}
@@ -323,7 +423,7 @@
 	This closes the induction.
 \end{proof}
 
-\begin{proof}{(e)}
+\begin{proof}[\pf{3.6.14}(e)]
 	Suppose that \(X, Y\) are finite sets.
 	We first show that \(\forall x : \#(\set{x} \times Y) = \#(Y)\).
 	By \cref{3.6.1}, we only need to find a function \(f : \set{x} \times Y \to Y\) such that \(f\) is bijective.
@@ -357,7 +457,7 @@
 	\end{align*}
 	Thus the base case holds.
 	Suppose inductively that the statement is true for some \(\#(X) = n\).
-	We show that the statement is still true for \(\#(X) = n++\).
+	We show that the statement is still true for \(\#(X) = n\pp\).
 	Let \(x \in X\).
 	Then we have
 	\begin{align*}
@@ -373,7 +473,7 @@
 	This closes the induction.
 \end{proof}
 
-\begin{proof}{(f)}
+\begin{proof}[\pf{3.6.14}(f)]
 	Suppose that \(X, Y\) are finite sets.
 	We first show that \(\forall x : \#(Y^{\set{x}}) = \#(Y)\).
 	We define a function \(f : Y^{\set{x}} \to Y\) by setting \(\forall g \in Y^{\set{x}} : f(g) = g(x)\).
@@ -407,7 +507,7 @@
 	So the base case holds.
 
 	Suppose inductively that the statement is true for some \(\#(X) = n\).
-	We show that the statement is still true for \(\#(X) = n++\).
+	We show that the statement is still true for \(\#(X) = n\pp\).
 	Let \(x \in X\).
 	We define a function \(h : Y^X \to Y^{X \setminus \set{x}} \times Y^{\set{x}}\) as follow:
 	\[
@@ -464,7 +564,7 @@
 	Prove \cref{3.6.4}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.6.1}]
 	See \cref{3.6.4}.
 \end{proof}
 
@@ -472,7 +572,7 @@
 	Show that a set \(X\) has cardinality \(0\) iff \(X\) is the empty set.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.6.2}]
 	\begin{align*}
 		     & \#(X) = 0                                                                                       \\
 		\iff & \exists f : X \to \set{i \in \N : 1 \leq i \leq 0} \land f \text{ is bijective} &  & \by{3.6.5} \\
@@ -487,7 +587,7 @@
 	Thus finite subsets of the natural numbers are bounded.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.6.3}]
 	Suppose that \(n \in \N\).
 	We use induction on \(n\) to show that for any function \(f : \set{i \in \N : 1 \leq i \leq n} \to \N\), \(\exists M \in \N\) such that \(f(i) \leq M\).
 	For \(n = 0\), for any function \(f : \set{i \in \N : 1 \leq i \leq 0} \to \N\) we have
@@ -498,14 +598,14 @@
 	\end{align*}
 	Thus the base case holds.
 	Suppose inductively that for some \(n\) the statement is true.
-	Then for \(n++\), for any function \(f : \set{i \in \N : 1 \leq i \leq n++} \to \N\) we have
+	Then for \(n\pp\), for any function \(f : \set{i \in \N : 1 \leq i \leq n\pp} \to \N\) we have
 	\begin{itemize}
 		\item By induction hypothesis, \(\exists M \in \N\) such that \(f(\set{i \in \N : 1 \leq i \leq n}) \leq M\).
-		\item By \cref{2.2.13}, exactly one of \(M < f(n++)\), \(M = f(n++)\) or \(M > f(n++)\) is true.
+		\item By \cref{2.2.13}, exactly one of \(M < f(n\pp)\), \(M = f(n\pp)\) or \(M > f(n\pp)\) is true.
 	\end{itemize}
-	If \(f(n++) \leq M\), then we have \(\forall i \in \set{i \in \N : 1 \leq i \leq n++} : f(i) \leq M\).
-	If \(f(n++) > M\), then we can set \(M' = f(n++)\) and thus \(\forall i \in \set{i \in \N : 1 \leq i \leq n++} : f(i) \leq M'\).
-	In all cases above we can conclude that \(\exists M \in \N\) such that \(\forall i \in \set{i \in \N : 1 \leq i \leq n++} : f(i) \leq M\).
+	If \(f(n\pp) \leq M\), then we have \(\forall i \in \set{i \in \N : 1 \leq i \leq n\pp} : f(i) \leq M\).
+	If \(f(n\pp) > M\), then we can set \(M' = f(n\pp)\) and thus \(\forall i \in \set{i \in \N : 1 \leq i \leq n\pp} : f(i) \leq M'\).
+	In all cases above we can conclude that \(\exists M \in \N\) such that \(\forall i \in \set{i \in \N : 1 \leq i \leq n\pp} : f(i) \leq M\).
 	This closes the induction.
 \end{proof}
 
@@ -513,7 +613,7 @@
 	Prove \cref{3.6.14}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.6.4}]
 	See \cref{3.6.14}.
 \end{proof}
 
@@ -523,7 +623,7 @@
 	Then use \cref{3.6.14} to conclude an alternate proof of \cref{2.3.2}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.6.5}]
 	Suppose that \(A, B\) are sets.
 	By \cref{3.5.4} we have \(A \times B, B \times A\) are sets.
 	We define a function \(f : A \times B \to B \times A\) by setting \(\forall (a, b) \in A \times B : f(a, b) = (b, a)\).
@@ -565,7 +665,7 @@
 	Use a similar argument to also conclude \(a^b \times a^c = a^{b+c}\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.6.6}]
 	We first show that \((A^B)^C\) and \(A^{B \times C}\) have equal cardinality.
 	Suppose that \(A, B, C\) are sets.
 	By \cref{3.5.4}, \(B \times C\) is a set.
@@ -663,7 +763,7 @@
 	Show that if \(A\) and \(B\) are finite sets, then \(A\) has lesser or equal cardinality to \(B\) iff \(\#(A) \leq \#(B)\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.6.7}]
 	Suppose that \(A, B\) are finite sets.
 	Then we have
 	\begin{align*}
@@ -693,7 +793,7 @@
 	Show that there exists a surjection \(g : B \to A\) from \(B\) to \(A\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.6.8}]
 	Suppose that \(A, B\) are sets, \(A \neq \emptyset\) and \(f : A \to B\) where \(f\) is injection.
 	We now define a function \(g : B \to A\) as follow:
 	\[
@@ -718,7 +818,7 @@
 	Show that \(A \cup B\) and \(A \cap B\) are also finite sets, and that \(\#(A) + \#(B) = \#(A \cup B) + \#(A \cap B)\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.6.9}]
 	Suppose that \(A, B\) are finite sets.
 	By \cref{3.6.14}(b) we have \(A \cup B\) is finite.
 	By \cref{ex:3.1.7} we have \(A \cap B \subseteq A\), and thus by \cref{3.6.14}(c) we have \(A \cup B\) is finite.
@@ -735,8 +835,8 @@
 	\end{align*}
 	Thus the base case holds.
 	Suppose inductively that for some \(n\) the statement is true.
-	We now show that for \(n++\) the statement is also true.
-	Since \(\#(A) = n++\), By \cref{3.6.8} we must have \(A \neq \emptyset\).
+	We now show that for \(n\pp\) the statement is also true.
+	Since \(\#(A) = n\pp\), By \cref{3.6.8} we must have \(A \neq \emptyset\).
 	Let \(a \in A\).
 	Then we have
 	\begin{align*}
@@ -772,7 +872,7 @@
 	(This is known as the \emph{pigeonhole principle}.)
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:3.6.10}]
 	Suppose that \(n \in \N\), \(A_1, \dots, A_n\) are finite sets and \(\#(\bigcup_{i \in \set{1, \dots, n}} A_i) > n\).
 	We use induction on \(n\) to show that \(\exists i \in \set{1, \dots, n} : \#(A_i) \geq 2\).
 	We start with \(n = 1\) since for \(n = 0\) the statement is vacuously true.
@@ -784,22 +884,22 @@
 	\end{align*}
 	Thus the base case holds.
 	Suppose inductively that for some \(n\) the statement is true.
-	Then for \(n++\), we have
+	Then for \(n\pp\), we have
 	\begin{align*}
-		         & \#(\bigcup_{i \in \set{1, \dots, n++}} A_i) > n++                                                \\
-		\implies & \#((\bigcup_{i \in \set{1, \dots, n}} A_i) \cup A_{n++}) > n++ &  & \by{3.11}                    \\
-		\implies & \#(\bigcup_{i \in \set{1, \dots, n}} A_i) + \#(A_{n++}) > n++. &  & \text{(by \cref{3.6.14}(b))}
+		         & \#(\bigcup_{i \in \set{1, \dots, n\pp}} A_i) > n\pp                                                \\
+		\implies & \#((\bigcup_{i \in \set{1, \dots, n}} A_i) \cup A_{n\pp}) > n\pp &  & \by{3.11}                    \\
+		\implies & \#(\bigcup_{i \in \set{1, \dots, n}} A_i) + \#(A_{n\pp}) > n\pp. &  & \text{(by \cref{3.6.14}(b))}
 	\end{align*}
 	Now we split into three cases:
 	\begin{itemize}
-		\item If \(\#(A_{n++}) = 0\), then we have \(\#(\bigcup_{i \in \set{1, \dots, n}} A_i) > n++ > n\).
+		\item If \(\#(A_{n\pp}) = 0\), then we have \(\#(\bigcup_{i \in \set{1, \dots, n}} A_i) > n\pp > n\).
 		      By induction hypothesis, \(\exists i \in \set{1, \dots, n} : \#(A_i) \geq 2\).
-		      Then we have \(\exists i \in \set{1, \dots, n++} : \#(A_i) \geq 2\).
-		\item If \(\#(A_{n++}) = 1\), then we have \(\#(\bigcup_{i \in \set{1, \dots, n}} A_i) + 1 > n++\).
+		      Then we have \(\exists i \in \set{1, \dots, n\pp} : \#(A_i) \geq 2\).
+		\item If \(\#(A_{n\pp}) = 1\), then we have \(\#(\bigcup_{i \in \set{1, \dots, n}} A_i) + 1 > n\pp\).
 		      This means \(\#(\bigcup_{i \in \set{1, \dots, n}} A_i) > n\) and by induction hypothesis, \(\exists i \in \set{1, \dots, n} : \#(A_i) \geq 2\).
-		      Then we have \(\exists i \in \set{1, \dots, n++} : \#(A_i) \geq 2\).
-		\item If \(\#(A_{n++}) > 1\), then \(\#(A_{n++}) \geq 2\) and we have \(\exists i \in \set{1, \dots, n++} : \#(A_i) \geq 2\).
+		      Then we have \(\exists i \in \set{1, \dots, n\pp} : \#(A_i) \geq 2\).
+		\item If \(\#(A_{n\pp}) > 1\), then \(\#(A_{n\pp}) \geq 2\) and we have \(\exists i \in \set{1, \dots, n\pp} : \#(A_i) \geq 2\).
 	\end{itemize}
-	From all cases above we have \(\exists i \in \set{1, \dots, n++} : \#(A_i) \geq 2\).
+	From all cases above we have \(\exists i \in \set{1, \dots, n\pp} : \#(A_i) \geq 2\).
 	This closes the induction.
 \end{proof}
