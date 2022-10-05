@@ -781,35 +781,56 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:3.5.13}]
-	Define \(f : \N \to \N'\) be a function such that \(f(0) = 0'\) and \(f(n\pp) = f(n)\pp'\).
-	We need to show that such \(f\) exists and is bijective.
+	Define \(g : \N \times \N' \to \N'\) as follow:
+	\[
+		\forall (n, n') \in \N \times \N', g(n, n') = n'\pp'.
+	\]
+	By \cref{2.4} we see that \(g\) pass the vertical line test, thus \(g\) is well-defined.
+	By \cref{ex:3.5.12} there exists a unique function \(a : \N \to \N'\) such that
+	\[
+		a(0) = 0' \quad \text{and} \quad \forall n \in \N, a(n\pp) = g(n, a(n)) = a(n)\pp'.
+	\]
 
-	First we show that \(f\) exists, for which we need to show that \(\forall n \in \N\), there exists exactly one value \(f(n) \in \N'\).
-	And we use induction on \(n\).
-	For \(n = 0\), by the above definition \(f(0) = 0' \in \N'\), so the base case holds.
-	Suppose inductively that for some \(n \in \N\), \(\exists!\ f(n) \in \N'\).
-	Then for \(n\pp\), we need to show that \(\exists!\ f(n\pp) \in \N'\).
-	By induction hypothesis, \(f(n) \in \N'\), and because by the given condition \crefrange{2.1}{2.5} all hold on \(\N'\), \(f(n)\pp' \in \N'\) and there is only one value for \(f(n)\pp'\).
-	So by the above definition \(f(n\pp) = f(n)\pp'\) exists and there is only one value for \(f(n\pp)\), this closes the induction.
+	First we show that \(a\) is injective.
+	Let \(n_1, n_2 \in \N\).
+	We use induction on \(n_1\) to show that \(n_1 \neq n_2 \implies a(n_1) \neq a(n_2)\).
+	For \(n_1 = 0\), we have \(n_2 \neq 0\) and \(a(n_1) = a(0) = 0'\).
+	Since \(n_2 \neq 0\), by \cref{2.2.10} there exists an \(m \in \N\) such that \(m\pp = n_2\).
+	By the definition of \(a\) we see that \(a(n_2) = a(m\pp) = a(m)\pp'\).
+	By \cref{2.3} we know that \(a(m)\pp' \neq 0'\).
+	Thus we have \(a(n_1) \neq a(n_2)\) and the base case holds.
+	Suppose inductively that \(n_1 \neq n_2 \implies a(n_1) \neq a(n_2)\) for some \(n_1 \in \N\).
+	We want to show that \(n_1\pp \neq n_2 \implies a(n_1\pp) \neq a(n_2)\).
+	We split into two cases:
+	\begin{itemize}
+		\item If \(n_2 = 0\), then we can use the identical proof as in the base case but replacing \((n_1, n_2)\) with \((n_2, n_1\pp)\) to see that \(a(n_1\pp) \neq a(n_2)\).
+		\item If \(n_2 \neq 0\), then by \cref{2.2.10} there exists an \(m \in \N\) such that \(m\pp = n_2\).
+		      Thus
+		      \begin{align*}
+			               & n_1\pp \neq m\pp = n_2           &  & \by{2.2.10}                         \\
+			      \implies & n_1 \neq m                       &  & \by{2.4}                            \\
+			      \implies & a(n_1) \neq a(m)                 &  & \byIH                               \\
+			      \implies & a(n_1)\pp' \neq a(m)\pp'         &  & \by{2.4}                            \\
+			      \implies & a(n_1\pp) \neq a(m\pp) = a(n_2). &  & \text{(by the definition of \(a\))}
+		      \end{align*}
+	\end{itemize}
+	From all cases above we see that \(a(n_1\pp) \neq a(n_2)\).
+	This closes the induction and by \cref{3.3.14} \(a\) is injective.
 
-	Next we show that \(f\) is injective.
-	Let \(a, b \in \N\) and \(f(a) = f(b)\).
-	We claim that \(f(a) = f(b) \implies a = b\), and we use induction on \(a\).
-	For \(a = 0\), \(f(a) = f(0) = 0' = f(b)\) by the above definition.
-	If \(b \neq 0\), then by \cref{2.2.10}, there exists exactly one natural number \(c\) such that \(c\pp = b\).
-	So \(f(b) = f(c\pp) = f(c)\pp' = 0'\) by the above definition, but by \cref{2.3}, \(f(c)\pp' \neq 0'\), a contradiction.
-	Thus \(b = 0\), which means the base case holds.
-	Suppose inductively that \(f(a) = f(b) \implies a = b\) for some \(a\).
-	Then for \(a\pp\), we need to show that \(f(a\pp) = f(b\pp) \implies a\pp = b\pp\).
-	By the above definition \(f(a\pp) = f(a)\pp' = f(b\pp) = f(b)\pp'\).
-	Because \(f(a)\pp' = f(b)\pp'\), by \cref{2.4}, \(f(a) = f(b)\).
-	By induction hypothesis, \(f(a) = f(b) \implies a = b\), thus \(a\pp = b\pp\) by \cref{2.4}, and this closes the induction.
+	Next we claim that \(a\) is surjective, i.e. (\cref{3.3.17}), for each \(n' \in \N'\), there exists an \(n \in \N\) such that \(a(n) = n'\).
+	Since \cref{2.5} holds for \(\N'\), we can use induction on \(n'\) to prove the claim.
+	For \(n' = 0'\), we see that \(a(0) = 0'\).
+	So the base case holds.
+	Suppose inductively that for some \(n' \in \N'\), there exists an \(n \in \N\) such that \(a(n) = n'\).
+	Then we have
+	\begin{align*}
+		a(n\pp) & = a(n)\pp' &  & \text{(by the definition of \(a\))} \\
+		        & = n'\pp'   &  & \byIH
+	\end{align*}
+	and the claim is true for \(n'\pp'\).
+	This closes the induction and thus \(a\) is surjective.
+	Since \(a\) is both injective and surjective, by \cref{3.3.20} we know that \(a\) is bijective.
 
-	Finally we show that \(f\) is surjective.
-	We need to show that \(\forall n' \in \N'\), \(\exists n \in \N\) such that \(f(n) = n'\).
-	We use induction on \(n'\).
-	For \(n' = 0'\), \(f(0) = 0'\) by the above definition, so the base case holds.
-	Suppose inductively that for some \(n' \in \N'\), \(\exists n \in \N\) such that \(f(n) = n'\).
-	Then for \(n'\pp'\), by induction hypothesis, \(n'\pp' = (n')\pp' = f(n)\pp'\)
-	By the above definition, \(f(n)\pp' = f(n\pp)\), this closes the induction.
+	By the definition of \(a\) we see that for all \(n, n' \in \N \times \N'\), we have \(a(n) = n' \iff a(n\pp) = n'\pp'\).
+	Thus by setting \(f = a\) we are done.
 \end{proof}
