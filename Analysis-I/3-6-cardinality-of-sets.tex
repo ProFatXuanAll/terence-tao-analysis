@@ -205,10 +205,10 @@
 	One can also use similar arguments to show that any unbounded set is infinite;
 	for instance the rationals \(\Q\) and the reals \(\R\) are infinite.
 	However, it is possible for some sets to be ``more'' infinite than others.
+	See \cref{sec:8.3}.
 \end{rmk}
 
 \begin{prop}[Cardinal arithmetic]\label{3.6.14}
-	\leavevmode
 	\begin{enumerate}
 		\item Let \(X\) be a finite set, and let \(x\) be an object which is not an element of \(X\).
 		      Then \(X \cup \set{x}\) is finite and \(\#(X \cup \set{x}) = \#(X) + 1\).
@@ -223,331 +223,434 @@
 		\item Let \(X\) and \(Y\) be finite sets.
 		      Then Cartesian product \(X \times Y\) is finite and \(\#(X \times Y) = \#(X) \times \#(Y)\).
 		\item Let \(X\) and \(Y\) be finite sets.
-		      Then the set \(Y^X\) (defined in \cref{3.10}) is finite and \(\#(Y^X) = \#(Y)^{\#(X)}\).
+		      Then the set \(Y^X\) (defined in \cref{3.10}) is finite and \(\#\pa{Y^X} = \#(Y)^{\#(X)}\).
 	\end{enumerate}
 \end{prop}
 
 \begin{proof}[\pf{3.6.14}(a)]
-	Suppose that \(X\) is a finite set and \(x \notin X\).
-	By \cref{3.6.10} \(\exists n \in \N\) such that \(\#(X) = n\).
-	By \cref{3.6.5} \(\exists f : X \to \set{i \in \N : 1 \leq i \leq n}\) such that \(f\) is bijective.
+	Since \(X\) is finite, by \cref{3.6.10} there exists an \(n \in \N\) such that \(\#(X) = n\).
+	By \cref{3.6.5} there exists a bijective function \(f : X \to \set{i \in \N : 1 \leq i \leq n}\).
 	Now we define a function \(g : X \cup \set{x} \to \set{i \in \N : 1 \leq i \leq n + 1}\) as follow:
 	\[
-		g(y) = \begin{dcases}
-			f(y)  & \text{if } y \in X \\
-			n + 1 & \text{otherwise}
-		\end{dcases}
+		\forall y \in X \cup \set{x}, g(y) = \begin{dcases}
+			f(y)  & \text{if } y \neq x \\
+			n + 1 & \text{if } y = x
+		\end{dcases}.
 	\]
+	Since \(x \notin X\), we see that \(g\) passes the vertical line test and therefore \(g\) is well-defined.
 
-	Now we need to show that \(g\) is bijective.
-	Since \(f\) is bijective, \(\forall i \in \set{i \in \N : 1 \leq i \leq n}, \exists y \in X\) such that \(f(y) = i\).
-	With that and \(g(x) = n + 1\) we thus have \(g\) is surjective.
-	For any \(y, y' \in X \cup \set{x}\), if \(g(y) = g(y')\), then we have two cases:
+	Now we claim that \(g\) is bijective.
+	Since \(f\) is bijective, we know that for all \(j \in \set{i \in \N : 1 \leq i \leq n}\), there exists a \(y \in X\) such that \(f(y) = j\).
+	With that and \(g(x) = n + 1\), we see that \(g\) is surjective by \cref{3.3.17}.
+	To show that \(g\) is bijective, by \cref{3.3.20} we also need to show that \(g\) is injective.
+	So let \(y, y' \in X \cup \set{x}\) and \(y \neq y'\).
+	Now we split into three cases:
 	\begin{itemize}
-		\item If \(g(y) \in X\), then \(y = y'\) since \(f\) is bijective.
-		\item If \(g(y) = x\), then \(y = y' = x\) by definition of \(g\).
+		\item If \(y \neq x \neq y'\), then we have \(g(y) = f(y) \neq f(y') = g(y')\) since \(f\) is bijective.
+		\item If \(y \neq x = y'\), then by \cref{ac:2.2.3} we have \(g(y) = f(y) \leq n < n + 1 = g(x) = g(y')\).
+		      By \cref{2.2.13} this means \(g(y) \neq g(y')\).
+		\item If \(y = x \neq y'\), then by \cref{ac:2.2.3} we have \(g(y') = f(y') \leq n < n + 1 = g(x) = g(y)\).
+		      By \cref{2.2.13} this means \(g(y) \neq g(y')\).
 	\end{itemize}
-	For all cases above we have \(g(y) = g(y') \implies y = y'\), thus \(g\) is injective.
-	Since \(g\) is bijective, we have \(\#(X \cup \set{x}) = n + 1 = \#(X) + 1\).
+	For all cases above we have \(g(y) \neq g(y')\), thus by \cref{3.3.14} \(g\) is injective.
+	This means \(g\) is bijective, therefore by \cref{3.6.10} we know that \(X \cup \set{x}\) is finite and \(\#(X \cup \set{x}) = n + 1 = \#(X) + 1\).
 \end{proof}
 
 \begin{proof}[\pf{3.6.14}(b)]
-	Suppose that \(X, Y\) are finite sets.
-	If \(X = \emptyset \lor X = Y\), then \(X \cup Y = Y\) is finite.
-	Similarly if \(Y = \emptyset \lor Y = X\), then \(X \cup Y = X\) is finite.
-	Thus assume that \(X \neq \emptyset \land Y \neq \emptyset\) and \(X, Y\) are distinct.
-	By \cref{3.6.10} \(\exists n \in \N\) such that \(\#(X) = n\).
-	We use induction on \(n\) to show that \(X \cup Y\) is finite and \(\#(X \cup Y) \leq \#(X) + \#(Y)\).
-	We start with \(n = 1\) since \(X \neq \emptyset\).
-	For \(n = 1\), we have
+	Since \(X\) is finite, by \cref{3.6.10} there exists an \(n \in \N\) such that \(\#(X) = n\).
+	We induct on \(n\) to show that \(X \cup Y\) is finite and \(\#(X \cup Y) \leq \#(X) + \#(Y)\).
+	For \(n = 0\), by \cref{ex:3.6.2} we have \(X = \emptyset\).
+	By \cref{3.1.28}(a) we have \(\emptyset \cup Y = Y\).
+	Since \(Y\) is finite, we know that \(\emptyset \cup Y\) is finite.
+	Thus we have
 	\begin{align*}
-		\#(X \cup Y) & = \#(Y) + 1         &  & \text{(by \cref{3.6.14}(a))} \\
-		             & = \#(X) + \#(Y)     &  & \by{3.6.5}                   \\
-		             & \leq \#(X) + \#(Y).
+		\#(\emptyset \cup Y) & = \#(Y)                  &  & \by{3.1.28}[a] \\
+		                     & = 0 + \#(Y)              &  & \by{2.2.1}     \\
+		                     & = \#(\emptyset) + \#(Y). &  & \by{ex:3.6.2}
 	\end{align*}
-	Thus \(X \cup Y\) is finite and the base case holds.
-	Suppose inductively that the statement is true for some \(\#(X) = n\).
-	We show that the statement is still true for \(\#(X) = n\pp\).
-	Let \(x \in X\).
-	By \cref{3.6.9} we have \(\#(X \setminus \set{x}) = n\).
-	If \(x \in Y\), then we have
-	\begin{align*}
-		\#(X \cup Y) & = \#((X \setminus \set{x}) \cup \set{x} \cup Y)   &  & \text{(by \cref{3.1.28}(g))} \\
-		             & = \#((X \setminus \set{x}) \cup (\set{x} \cup Y)) &  & \text{(by \cref{3.1.28}(e))} \\
-		             & = \#((X \setminus \set{x}) \cup Y)                                                  \\
-		             & \leq \#(X \setminus \set{x}) + \#(Y)              &  & \byIH                        \\
-		             & < \#(X) + \#(Y).
-	\end{align*}
-	If \(x \notin Y\), then we have
-	\begin{align*}
-		\#(X \cup Y) & = \#((X \setminus \set{x}) \cup \set{x} \cup Y)  &  & \text{(by \cref{3.1.28}(g))}    \\
-		             & = \#((X \setminus \set{x}) \cup Y \cup \set{x})  &  & \text{(by \cref{3.1.28}(d)(e))} \\
-		             & = \#((X \setminus \set{x}) \cup Y) + 1           &  & \text{(by \cref{3.6.14}(a))}    \\
-		             & \leq \#(X \setminus \set{x}) + \#(Y) + 1         &  & \byIH                           \\
-		             & = \#((X \setminus \set{x}) \cup \set{x}) + \#(Y) &  & \text{(by \cref{3.6.14}(a))}    \\
-		             & = \#(X) + \#(Y).                                 &  & \text{(by \cref{3.1.28}(g))}
-	\end{align*}
-	In either cases we have \(\#(X \cup Y) \leq \#(X) + \#(Y)\).
-	Thus \(X \cup Y\) is finite and this closes the induction.
-
-	Now suppose that \(X, Y\) are finite sets and \(X \cap Y = \emptyset\).
-	By \cref{3.6.10} \(\exists n \in \N\) such that \(\#(X) = n\).
-	From proof above we already know that \(\#(X \cup Y) \leq \#(X) + \#(Y)\).
-	We now use induction on \(n\) to show that \(\#(X \cup Y) = \#(X) + \#(Y)\).
-	For \(n = 0\), we have
-	\begin{align*}
-		\#(X \cup Y) & = \#(Y)          &  & \text{(by \cref{3.1.28}(a))} \\
-		             & = 0 + \#(Y)                                        \\
-		             & = \#(X) + \#(Y). &  & \by{3.6.5}
-	\end{align*}
-	Thus the base case holds.
-	Suppose inductively that the statement is true for some \(\#(X) = n\).
-	We show that the statement is still true for \(\#(X) = n\pp\).
-	Let \(x \in X\).
-	By \cref{3.6.9} we have \(\#(X \setminus \set{x}) = n\).
-	Since \(X \cap Y = \emptyset\), \(x \notin Y\).
-	So we have
-	\begin{align*}
-		\#(X \cup Y) & = \#((X \setminus \set{x}) \cup \set{x} \cup Y)  &  & \text{(by \cref{3.1.28}(g))}    \\
-		             & = \#((X \setminus \set{x}) \cup Y \cup \set{x})  &  & \text{(by \cref{3.1.28}(d)(e))} \\
-		             & = \#((X \setminus \set{x}) \cup Y) + 1           &  & \text{(by \cref{3.6.14}(a))}    \\
-		             & = \#(X \setminus \set{x}) + \#(Y) + 1            &  & \byIH                           \\
-		             & = \#((X \setminus \set{x}) \cup \set{x}) + \#(Y) &  & \text{(by \cref{3.6.14}(a))}    \\
-		             & = \#(X) + \#(Y).                                 &  & \text{(by \cref{3.1.28}(g))}
-	\end{align*}
+	So the base case holds.
+	Suppose inductively that \(X \cup Y\) is finite and \(\#(X \cup Y) \leq \#(X) + \#(Y)\) for some \(\#(X) = n\).
+	We want to show that when \(\#(X) = n\pp\), we have \(X \cup Y\) is finite and \(\#(X \cup Y) \leq \#(X) + \#(Y)\).
+	So let \(X\) be a set with cardinality \(n\pp\).
+	We split into two cases:
+	\begin{itemize}
+		\item If \(X \setminus Y = \emptyset\), then we have
+		      \begin{align*}
+			      X \cup Y & = (X \setminus Y) \cup (X \cap Y) \cup (Y \setminus X) &  & \by{ex:3.1.10} \\
+			               & = (X \cap Y) \cup (Y \setminus X)                      &  & \by{3.1.28}[a] \\
+			               & \subseteq Y.                                           &  & \by{3.1.15}
+		      \end{align*}
+		      But by \cref{ex:3.1.7} we have \(Y \subseteq X \cup Y\).
+		      Thus by \cref{3.1.18} we have \(X \cup Y = Y\).
+		      Since \(Y\) is finite, \(X \cup Y\) is also finite.
+		      By \cref{2.2.11} this means \(\#(X \cup Y) = \#(Y) \leq \#(X) + \#(Y)\).
+		\item If \(X \setminus Y \neq \emptyset\), then by \cref{3.1.6,3.1.27} there exists a \(z \in X\) such that \(z \notin Y\).
+		      This implies \((X \setminus \set{z}) \cup Y = (X \cup Y) \setminus \set{z}\).
+		      By \cref{3.6.9} we know that \(\#(X \setminus \set{z}) = n\), thus by induction hypothesis we know that \((X \setminus \set{z}) \cup Y\) is finite and \(\#((X \setminus \set{z}) \cup Y) \leq \#(X \setminus \set{z}) + \#(Y)\).
+		      By \cref{3.6.14}(a) we know that \(X \cup Y = (X \setminus \set{z}) \cup Y \cup \set{z}\) is finite.
+		      Thus we have
+		      \begin{align*}
+			      \#(X \cup Y) & = \#(((X \cup Y) \setminus \set{z}) \cup \set{z}) &  & \by{3.1.28}[e] \\
+			                   & = \#(((X \setminus \set{z}) \cup Y) \cup \set{z}) &  & \by{3.1.28}[e] \\
+			                   & = \#((X \setminus \set{z}) \cup Y) + 1            &  & \by{3.6.14}[a] \\
+			                   & \leq \#(X \setminus \set{z}) + \#(Y) + 1          &  & \by{2.2.12}[d] \\
+			                   & = \#((X \setminus \set{z}) \cup \set{z}) + \#(Y)  &  & \by{3.6.14}[a] \\
+			                   & = \#(X) + \#(Y).                                  &  & \by{3.1.28}[e]
+		      \end{align*}
+	\end{itemize}
+	From all cases above we see that \(X \cup Y\) is finite and \(\#(X \cup Y) \leq \#(X) + \#(Y)\).
 	This closes the induction.
+
+	Now we show that \(X \cap Y = \emptyset \implies \#(X \cup Y) = \#(X) + \#(Y)\).
+	So suppose that \(X \cap Y = \emptyset\).
+	Since \(X, Y\) are finite, by \cref{3.6.5} there exist two bijective functions \(f : X \to \set{i \in \N : 1 \leq i \leq \#(X)}\) and \(g : Y \to \set{i \in \N : 1 \leq i \leq \#(Y)}\).
+	Now we define a function \(h : X \cup Y \to \set{i \in \N : 1 \leq i \leq \#(X) + \#(Y)}\) as follow:
+	\[
+		\forall z \in X \cup Y, h(z) = \begin{dcases}
+			f(z)         & \text{if } z \in X \\
+			g(z) + \#(X) & \text{if } z \in Y
+		\end{dcases}.
+	\]
+	Since \(X \cap Y = \emptyset\), we know that \(h\) passes the vertical line test, therefore \(h\) is well-defined.
+	We claim that \(h\) is injective.
+	So let \(z_1, z_2 \in X \cup Y\) and \(z_1 \neq z_2\).
+	Since \(X \cap Y = \emptyset\), we know that \(z_1\) and \(z_2\) can be either in \(X\) or \(Y\) but not both.
+	Thus we can split into four cases:
+	\begin{itemize}
+		\item If both \(z_1\) and \(z_2\) are in \(X\), then we have \(h(z_1) = f(z_1) \neq f(z_2) = h(z_2)\) since \(f\) is bijective.
+		\item If both \(z_1\) and \(z_2\) are in \(Y\), then we have \(g(z_1) \neq g(z_2)\) since \(g\) is bijective.
+		      By \cref{2.2.13} this means \(g(z_1) < g(z_2)\) or \(g(z_1) > g(z_2)\), thus we can apply \cref{2.2.12}(d) to derive \(g(z_1) + \#(X) < g(z_2) + \#(X)\) or \(g(z_1) + \#(X) > g(z_2) + \#(X)\).
+		      By \cref{2.2.13} again we have \(h(z_1) = g(z_1) + \#(X) \neq g(z_2) + \#(X) = h(z_2)\).
+		\item If \(z_1 \in X\) and \(z_2 \in Y\), then by \cref{ac:2.2.3} and \cref{2.2.12}(b)(d) we have
+		      \[
+			      1 \leq h(z_1) = f(z_1) \leq \#(X) < \#(X) + 1 \leq h(z_2) = g(z_2) + \#(X) \leq \#(X) + \#(Y).
+		      \]
+		      By \cref{2.2.13} this means \(h(z_1) \neq h(z_2)\).
+		\item If \(z_1 \in Y\) and \(z_2 \in X\), then by \cref{ac:2.2.3} and \cref{2.2.12}(b)(d) we have
+		      \[
+			      1 \leq h(z_2) = f(z_2) \leq \#(X) < \#(X) + 1 \leq h(z_1) = g(z_1) + \#(X) \leq \#(X) + \#(Y).
+		      \]
+		      By \cref{2.2.13} this means \(h(z_1) \neq h(z_2)\).
+	\end{itemize}
+	From all cases above we see that \(h(z_1) \neq h(z_2)\).
+	Therefore \(h\) is injective.
+	Now we claim that \(h\) is surjective.
+	Let \(j \in \set{i \in \N : 1 \leq i \leq \#(X) + \#(Y)}\).
+	We split into two cases:
+	\begin{itemize}
+		\item If \(1 \leq j \leq \#(X)\), then there exists a \(z \in X\) such that \(f(z) = j\).
+		      This is true since \(f\) is bijective.
+		      By the definition of \(h\) we know that \(h(z) = f(z) = j\).
+		      Thus we conclude that there exists a \(z \in X \cup Y\) such that \(h(z) = j\).
+		\item If \(\#(X) + 1 \leq j \leq \#(X) + \#(Y)\), then by \cref{2.2.11} we have \(j = \#(X) + 1 + k\) for some \(k \in \N\).
+		      By \cref{2.2.12}(d) we know that \(\#(X) + 1 \leq \#(X) + 1 + k \leq \#(X) + \#(Y) \implies 1 \leq 1 + k \leq \#(Y)\).
+		      Thus there exists a \(z \in Y\) such that \(g(z) = 1 + k\) since \(g\) is bijective.
+		      By the definition of \(h\) we know that \(h(z) = g(z) + \#(X) = k + 1 + \#(X) = j\).
+		      Thus we conclude that there exists a \(z \in X \cup Y\) such that \(h(z) = j\).
+	\end{itemize}
+	From all cases above we conclude that there exists a \(z \in X \cup Y\) such that \(h(z) = j\).
+	Thus \(h\) is surjective.
+	Since \(h\) is both injective and surjective, by \cref{3.3.20} we know that \(h\) is bijective.
+	By \cref{3.6.5} this means \(X \cup Y\) has cardinality \(\#(X) + \#(Y)\).
+	Thus by \cref{3.6.10} we have \(\#(X \cup Y) = \#(X) + \#(Y)\).
 \end{proof}
 
 \begin{proof}[\pf{3.6.14}(c)]
-	Suppose that \(X\) is a finite sets.
-	By \cref{3.6.10} \(\exists n \in \N\) such that \(\#(X) = n\).
-	We use induction on \(n\) to show that \(\forall Y \subseteq X\), \(Y\) is finite and \(\#(Y) \leq \#(X)\).
-	For \(n = 0\), we have
-	\begin{align*}
-		         & \forall Y \subseteq \emptyset                 \\
-		\implies & Y = \emptyset                 &  & \by{3.2}   \\
-		\implies & \#(Y) = 0 \leq 0 = \#(X).     &  & \by{3.6.5}
-	\end{align*}
-	Thus the base case holds.
-	Suppose inductively that the statement is true for some \(\#(X) = n\).
-	We show that the statement is still true for \(\#(X) = n\pp\).
-	Let \(Y \subseteq X\).
-	If \(Y = X\), then by \cref{3.6.8} \(\#(Y) = \#(X)\).
-	If \(Y \neq X\), then \(\exists x \in X \setminus Y\) such that \(Y \subseteq X \setminus \set{x}\) and
-	\begin{align*}
-		\#(X) & = \#((X \setminus \set{x}) \cup \set{x}) &  & \text{(by \cref{3.1.28}(g))} \\
-		      & = \#(X \setminus \set{x}) + 1            &  & \text{(by \cref{3.6.14}(a))} \\
-		      & \geq \#(Y) + 1                           &  & \byIH                        \\
-		      & > \#(Y).
-	\end{align*}
-	From all cases above we have \(\forall Y \subseteq X \implies \#(Y) \leq \#(X)\).
-	Thus \(Y\) is finite and this closes the induction.
-
-	We now use induction on \(n\) to show that \(\forall Y \subseteq X : Y \neq X \implies \#(Y) < \#(X)\).
-	We start with \(n = 1\) since for \(n = 0\) we have \(X = \emptyset\) and \(\nexists Y : Y \subseteq X \land Y \neq X\).
-	For \(n = 1\), we have
-	\begin{align*}
-		         & \forall Y : Y \subseteq X \land Y \neq X                 \\
-		\implies & Y = \emptyset                            &  & \by{3.3}   \\
-		\implies & \#(Y) = 0 < 1 = \#(X).                   &  & \by{3.6.5}
-	\end{align*}
-	Thus the base case holds.
-	Suppose inductively that the statement is true for some \(\#(X) = n\).
-	We show that the statement is still true for \(\#(X) = n\pp\).
-	Let \(Y \subseteq X \land Y \neq X\).
-	If \(Y = \emptyset\), then \(\#(Y) = 0 < n\pp = \#(X)\).
-	If \(Y \neq \emptyset\), then \(\exists x \in Y\) such that
-	\begin{align*}
-		         & \#(Y \setminus \set{x}) < \#(X \setminus \set{x})                               &  & \byIH                        \\
-		\implies & \#(Y \setminus \set{x}) + 1 < \#(X \setminus \set{x}) + 1                                                         \\
-		\implies & \#((Y \setminus \set{x}) \cup \set{x}) < \#((X \setminus \set{x}) \cup \set{x}) &  & \text{(by \cref{3.6.14}(a))} \\
-		\implies & \#(Y) < \#(X).                                                                  &  & \text{(by \cref{3.1.28}(g))}
-	\end{align*}
+	Since \(X\) is finite, by \cref{3.6.10} there exists an \(n \in \N\) such that \(\#(X) = n\).
+	We induct on \(n\) to show that any subset \(Y\) of \(X\) is finite and \(\#(Y) \leq \#(X)\).
+	For \(n = 0\), by \cref{ex:3.6.2} we have \(X = \emptyset\).
+	The only subset of \(\emptyset\) is \(\emptyset\), and we have \(\#(\emptyset) = 0 = \#(\emptyset)\).
+	So the base case holds.
+	Suppose inductively that for some \(\#(X) = n\), we have ``\(Y \subseteq X\) implies \(Y\) is finite and \(\#(Y) \leq \#(X)\)''.
+	We want to show that when \(\#(X) = n\pp\), we have ``\(Y \subseteq X\) implies \(Y\) is finite and \(\#(Y) \leq \#(X)\)''.
+	So let \(X\) be a set with cardinality \(n\pp\).
+	Let \(Y \subseteq X\) and let \(z \in X\).
+	We split into two cases:
+	\begin{itemize}
+		\item If \(z \in Y\), then we have \(Y \setminus \set{z} \subseteq X \setminus \set{z}\).
+		      By \cref{3.6.9} we know that \(\#(X \setminus \set{z}) = n\).
+		      Thus we can use induction hypothesis to derive \(Y \setminus \set{z}\) is finite and \(\#(Y \setminus \set{z}) \leq \#(X \setminus \set{z})\).
+		      By \cref{3.1.28}(g) we have \(Y = (Y \setminus \set{z}) \cup \set{z}\), thus by \cref{3.6.14}(a) we know that \(Y\) is finite.
+		      Therefore we have
+		      \begin{align*}
+			      \#(Y) & = \#((Y \setminus \set{z}) \cup \set{z}) &  & \by{3.1.28}[g] \\
+			            & = \#(Y \setminus \set{z}) + 1            &  & \by{3.6.14}[a] \\
+			            & \leq \#(X \setminus \set{z}) + 1         &  & \by{2.2.12}[d] \\
+			            & = \#((X \setminus \set{z}) \cup \set{z}) &  & \by{3.6.14}[a] \\
+			            & = \#(X).                                 &  & \by{3.1.28}[g]
+		      \end{align*}
+		\item If \(z \notin Y\), then we have \(Y \subseteq X \setminus \set{z}\).
+		      By \cref{3.6.9} we know that \(\#(X \setminus \set{z}) = n\).
+		      Thus we can use induction hypothesis to derive \(Y\) is finite and \(\#(Y) \leq \#(X \setminus \set{z})\).
+		      Then we have
+		      \begin{align*}
+			      \#(Y) & \leq \#(X \setminus \set{z})             &  & \byIH          \\
+			            & < \#(X \setminus \set{z}) + 1            &  & \by{ac:2.2.3}  \\
+			            & = \#((X \setminus \set{z}) \cup \set{z}) &  & \by{3.6.14}[a] \\
+			            & = \#(X).                                 &  & \by{3.1.28}[g]
+		      \end{align*}
+	\end{itemize}
+	From all cases above we conclude that \(Y\) is finite and \(\#(Y) \leq \#(X)\).
 	This closes the induction.
+
+	Now suppose that \(Y \neq X\).
+	Then we know that \(X \setminus Y \neq \emptyset\).
+	Since \(X \setminus Y \subseteq X\), from first part of the proof we know that \(X \setminus Y\) is finite.
+	Thus by \cref{ex:3.6.2} we have \(X \setminus Y \neq \emptyset \iff \#(X \setminus Y) > 0\).
+	Since
+	\begin{align*}
+		\#(X) & = \#(Y \cup (X \setminus Y)) &  & \by{3.1.28}[g] \\
+		      & = \#(Y) + \#(X \setminus Y), &  & \by{3.6.14}[b]
+	\end{align*}
+	by \cref{2.2.12}(f) we have \(\#(Y) < \#(X)\).
 \end{proof}
 
 \begin{proof}[\pf{3.6.14}(d)]
-	Suppose that \(X\) is a finite sets.
-	By \cref{3.6.10} \(\exists n \in \N\) such that \(\#(X) = n\).
-	We use induction on \(n\) to show that for any set \(Y\) and any function \(f : X \to Y\) we have \(\#(f(X)) \leq \#(X)\).
-	For \(n = 0\), let \(Y\) be arbitrary set and \(f : X \to Y\) be arbitrary function.
-	Then we have
+	Since \(X\) is finite, by \cref{3.6.10} there exists an \(n \in \N\) such that \(\#(X) = n\).
+	We induct on \(n\) to show that \(\#(f(X))\) is finite and \(\#(f(X)) \leq \#(X)\).
+	For \(n = 0\), we have
 	\begin{align*}
-		         & X = \emptyset                                \\
-		\implies & f(X) = \emptyset             &  & \by{3.4.1} \\
-		\implies & \#(f(X)) = 0 \leq 0 = \#(X). &  & \by{3.6.5}
+		         & X = \emptyset         &  & \by{ex:3.6.2} \\
+		\implies & f(X) = \emptyset      &  & \by{3.4.1}    \\
+		\implies & \#(f(X)) = 0 = \#(X). &  & \by{ex:3.6.2}
 	\end{align*}
 	Thus the base case holds.
-	Suppose inductively that the statement is true for some \(\#(X) = n\).
-	We show that the statement is still true for \(\#(X) = n\pp\).
-	Let \(x \in X\), \(Y\) be arbitrary set and \(f : X \to Y\) be arbitrary function.
-	If \(f(X \setminus \set{x}) = f(X)\), then we have
-	\begin{align*}
-		         & \#(f(X \setminus \set{x})) \leq \#(X \setminus \set{x}) &  & \byIH                        \\
-		\implies & \#(f(X)) \leq \#(X \setminus \set{x})                                                     \\
-		\implies & \#(f(X)) < \#(X \setminus \set{x}) + 1                                                    \\
-		\implies & \#(f(X)) < \#((X \setminus \set{x}) \cup \set{x})       &  & \text{(by \cref{3.6.14}(a))} \\
-		\implies & \#(f(X)) < \#(X).                                       &  & \text{(by \cref{3.1.28}(g))}
-	\end{align*}
-	If \(f(X \setminus \set{x}) \neq f(X)\), then we have
-	\begin{align*}
-		\#(f(X)) & = \#(f(X \setminus \set{x}) \cup \set{f(x)}) &  & \by{ex:3.4.3}                \\
-		         & = \#(f(X \setminus \set{x})) + 1             &  & \text{(by \cref{3.6.14}(a))} \\
-		         & \leq \#(X \setminus \set{x}) + 1             &  & \byIH                        \\
-		         & = \#((X \setminus \set{x}) \cup \set{x})     &  & \text{(by \cref{3.6.14}(a))} \\
-		         & = \#(X).                                     &  & \text{(by \cref{3.1.28}(g))}
-	\end{align*}
-	From all cases above we have \(\#(f(X)) \leq \#(X)\).
+	Suppose inductively that \(f(X)\) is finite and \(\#(f(X)) \leq \#(X)\) for some \(\#(X) = n\).
+	We show that the statement is still true when \(\#(X) = n\pp\).
+	So let \(X\) be a set with cardinality \(n\pp\).
+	Let \(x \in X\).
+	By \cref{3.6.9} we have \(\#(X \setminus \set{x}) = n\).
+	Thus we can use induction hypothesis to derive ``\(f(X \setminus \set{x})\) is finite and \(\#(f(X \setminus \set{x})) \leq \#(X \setminus \set{x})\)''.
+	Now we split into two cases:
+	\begin{itemize}
+		\item If \(f(X \setminus \set{x}) = f(X)\), then \(f(X)\) is finite and we have
+		      \begin{align*}
+			      \#(f(X)) & = \#(f(X \setminus \set{x}))                                 \\
+			               & \leq \#(X \setminus \set{x})             &  & \byIH          \\
+			               & < \#(X \setminus \set{x}) + 1            &  & \by{ac:2.2.3}  \\
+			               & = \#((X \setminus \set{x}) \cup \set{x}) &  & \by{3.6.14}[a] \\
+			               & = \#(X).                                 &  & \by{3.1.28}[g]
+		      \end{align*}
+		\item If \(f(X \setminus \set{x}) \neq f(X)\), then by \cref{ex:3.4.3,3.6.14}(a) we know that \(f(X) = f(X \setminus \set{x}) \cup \set{f(x)}\) is finite.
+		      Thus
+		      \begin{align*}
+			      \#(f(X)) & = \#(f(X \setminus \set{x}) \cup \set{f(x)}) &  & \by{ex:3.4.3}                \\
+			               & = \#(f(X \setminus \set{x})) + 1             &  & \text{(by \cref{3.6.14}(a))} \\
+			               & \leq \#(X \setminus \set{x}) + 1             &  & \byIH                        \\
+			               & = \#((X \setminus \set{x}) \cup \set{x})     &  & \text{(by \cref{3.6.14}(a))} \\
+			               & = \#(X).                                     &  & \text{(by \cref{3.1.28}(g))}
+		      \end{align*}
+	\end{itemize}
+	From all cases above we conclude that \(f(X)\) is finite and \(\#(f(X)) \leq \#(X)\).
 	This closes the induction.
 
-	We now use induction on \(n\) to show that for any set \(Y\) and any one-to-one function \(f : X \to Y\) we have \(\#(f(X)) = \#(X)\).
-	For \(n = 0\), let \(Y\) be arbitrary set and \(f : X \to Y\) be arbitrary one-to-one function.
-	Then we have
-	\begin{align*}
-		         & X = \emptyset                         \\
-		\implies & f(X) = \emptyset      &  & \by{3.4.1} \\
-		\implies & \#(f(X)) = 0 = \#(X). &  & \by{3.6.5}
-	\end{align*}
-	Thus the base case holds.
-	Suppose inductively that the statement is true for some \(\#(X) = n\).
-	We show that the statement is still true for \(\#(X) = n\pp\).
-	Let \(x \in X\), \(Y\) be arbitrary set and \(f : X \to Y\) be arbitrary one-to-one function.
-	Since \(f\) is one-to-one, we must have \(f(X \setminus \set{x}) \neq f(X)\) and
-	\begin{align*}
-		\#(f(X)) & = \#(f(X \setminus \set{x}) \cup \set{f(x)}) &  & \by{ex:3.4.3}                \\
-		         & = \#(f(X \setminus \set{x})) + 1             &  & \text{(by \cref{3.6.14}(a))} \\
-		         & = \#(X \setminus \set{x}) + 1                &  & \byIH                        \\
-		         & = \#((X \setminus \set{x}) \cup \set{x})     &  & \text{(by \cref{3.6.14}(a))} \\
-		         & = \#(X).                                     &  & \text{(by \cref{3.1.28}(g))}
-	\end{align*}
-	This closes the induction.
+	Now suppose that \(f\) is injective.
+	Define \(g : X \to f(X)\) as follow:
+	\[
+		\forall x \in X, g(x) = f(x).
+	\]
+	Since \(f\) is a function, \(g\) is well-defined.
+	By \cref{3.4.1} we know that \(g\) is surjective.
+	Since \(f\) is injective, by \cref{3.3.14} we know that
+	\[
+		\forall x_1, x_2 \in X, x_1 \neq x_2 \implies g(x_1) = f(x_1) \neq f(x_2) = g(x_2).
+	\]
+	Thus \(g\) is injective.
+	By \cref{3.3.20} this means \(g\) is bijective.
+	Therefore by \cref{3.6.1} \(X\) and \(f(X)\) have the same cardinality.
+	From first part of the proof we know that \(f(X)\) is finite.
+	Thus by \cref{3.6.10} we have \(\#(f(X)) = \#(X)\).
 \end{proof}
 
 \begin{proof}[\pf{3.6.14}(e)]
-	Suppose that \(X, Y\) are finite sets.
-	We first show that \(\forall x : \#(\set{x} \times Y) = \#(Y)\).
-	By \cref{3.6.1}, we only need to find a function \(f : \set{x} \times Y \to Y\) such that \(f\) is bijective.
-	We now define \(f : \set{x} \times Y \to Y\) as \(f(x', y) = y\).
-	We need to show that \(f\) is bijective.
-	We start by showing \(f\) is injective.
+	We first show that for any object \(x\), \(\set{x} \times Y\) is finite and \(\#(\set{x} \times Y) = \#(Y)\).
+	Define \(f : \set{x} \times Y \to Y\) as follow:
+	\[
+		\forall (z, y) \in \set{x} \times Y, f(z, y) = y.
+	\]
+	By \cref{ex:3.5.7} we see that \(f = \pi_{\set{x} \times Y \to Y}\).
+	We claim that \(f\) is injective.
+	Let \((x_1, y_1), (x_2, y_2) \in \set{x} \times Y\) and \((x_1, y_1) \neq (x_2, y_2)\).
+	Since
 	\begin{align*}
-		         & \forall (x_1, y_1), (x_2, y_2) \in \set{x} \times Y : f(x_1, y_1) = f(x_2, y_2)                 \\
-		\implies & x_1 = x_2 \land y_1 = y_2                                                       &  & \by{3.3}   \\
-		\implies & (x_1, y_1) = (x_2, y_2).                                                        &  & \by{3.5.1}
+		         & \begin{dcases}
+			           (x_1, y_1), (x_2, y_2) \in \set{x} \times Y \\
+			           (x_1, y_1) \neq (x_2, y_2)
+		           \end{dcases}    \\
+		\implies & \begin{dcases}
+			           x_1, x_2 \in \set{x} \\
+			           (x_1 \neq x_2) \lor (y_1 \neq y_2)
+		           \end{dcases}             &  & \by{3.5.1,3.5.4} \\
+		\implies & \begin{dcases}
+			           x_1 = x_2 = x \\
+			           (x_1 \neq x_2) \lor (y_1 \neq y_2)
+		           \end{dcases}             &  & \by{3.3}         \\
+		\implies & y_1 \neq y_2                                   \\
+		\implies & y_1 = f(x_1, y_1) \neq f(x_2, y_2) = y_2,
 	\end{align*}
-	Thus \(f\) is injective.
+	by \cref{3.3.14} we see that \(f\) is injective.
 	Now we show that \(f\) is surjective.
-	\begin{align*}
-		         & \forall y \in Y                                                    \\
-		\implies & (x, y) \in \set{x} \times Y                        &  & \by{3.5.4} \\
-		\implies & \exists (x, y) \in \set{x} \times Y : f(x, y) = y.
-	\end{align*}
-	Thus \(f\) is surjective.
-	Since \(f\) is both injective and surjective, \(f\) is bijective and thus by \cref{3.6.1} we have \(\#(\set{x} \times Y) = \#(Y)\).
-
-	Now we show that \(\#(X \times Y) = \#(X) \times \#(Y)\).
-	By \cref{3.6.10} \(\exists n \in \N\) such that \(\#(X) = n\).
-	We use induction on \(n\) to show that \(\#(X \times Y) = \#(X) \times \#(Y)\).
-	For \(n = 0\), we have
-	\begin{align*}
-		\#(X \times Y) & = \#(\emptyset \times Y) &  & \by{3.6.5} \\
-		               & = \#(\emptyset)          &  & \by{3.5.4} \\
-		               & = 0                      &  & \by{3.6.5} \\
-		               & = \#(X) \times \#(Y).
-	\end{align*}
-	Thus the base case holds.
-	Suppose inductively that the statement is true for some \(\#(X) = n\).
-	We show that the statement is still true for \(\#(X) = n\pp\).
-	Let \(x \in X\).
+	Let \(y \in Y\).
 	Then we have
 	\begin{align*}
-		\#(X \times Y) & = \#\bigg(\big((X \setminus \set{x}) \cup \set{x}\big) \times Y\bigg)                                   \\
-		               & = \#((X \setminus \set{x}) \times Y \cup \set{x} \times Y)            &  & \by{ex:3.5.4}                \\
-		               & = \#((X \setminus \set{x}) \times Y) + \#(\set{x} \times Y)           &  & \text{(by \cref{3.6.14}(b))} \\
-		               & = \#(X \setminus \set{x}) \times \#(Y) + \#(\set{x} \times Y)         &  & \byIH                        \\
-		               & = \#(X \setminus \set{x}) \times \#(Y) + \#(Y)                        &  & \text{(from proof above)}    \\
-		               & = (\#(X \setminus \set{x}) + 1) \times \#(Y)                                                            \\
-		               & = \#((X \setminus \set{x}) \cup \set{x}) \times \#(Y)                 &  & \text{(by \cref{3.6.14}(a))} \\
-		               & = \#(X) \times \#(Y).                                                 &  & \text{(by \cref{3.1.28}(g))}
+		         & \begin{dcases}
+			           x \in \set{x} \\
+			           y \in Y
+		           \end{dcases}            &  & \by{3.3}       \\
+		\implies & (x, y) \in \set{x} \times Y &  & \by{3.5.4} \\
+		\implies & f(x, y) = y.
+	\end{align*}
+	Thus by \cref{3.3.17} we see that \(f\) is surjective.
+	Since \(f\) is both injective and surjective, by \cref{3.3.20} we know that \(f\) is bijective.
+	Thus by \cref{3.6.1} \(\set{x} \times Y\) and \(Y\) have the same cardinality.
+	Since \(Y\) is finite, by \cref{3.6.4} we know that \(\set{x} \times Y\) is also finite.
+	Thus by \cref{3.6.10} we have \(\#(\set{x} \times Y) = \#(Y)\).
+
+	Now we show that \(X \times Y\) is finite and \(\#(X \times Y) = \#(X) \times \#(Y)\).
+	By \cref{3.6.10} there exists an \(n \in \N\) such that \(\#(X) = n\).
+	We induct on \(n\) to show that \(X \times Y\) is finite and \(\#(X \times Y) = \#(X) \times \#(Y)\).
+	For \(n = 0\), by \cref{ex:3.6.2} we have \(X = \emptyset\).
+	Thus by \cref{3.5.4} we have \(\emptyset \times Y = \emptyset\) and therefore \(\emptyset \times Y\) is finite.
+	Then we have
+	\begin{align*}
+		\#(\emptyset \times Y) & = \#(\emptyset)               &  & \by{3.5.4}    \\
+		                       & = 0                           &  & \by{ex:3.6.2} \\
+		                       & = 0 \times \#(Y)              &  & \by{2.3.1}    \\
+		                       & = \#(\emptyset) \times \#(Y). &  & \by{ex:3.6.2}
+	\end{align*}
+	Thus the base case holds.
+	Suppose inductively that \(X \times Y\) is finite and \(\#(X \times Y) = \#(X) \times \#(Y)\) for some \(\#(X) = n\).
+	We show that the statement is still true for \(\#(X) = n\pp\).
+	So let \(X\) be a set with cardinality \(n\pp\).
+	Let \(x \in X\).
+	By \cref{3.6.9} we have \(\#(X \setminus \set{x}) = n\).
+	Thus by induction hypothesis we know that \((X \setminus \set{x}) \times Y\) is finite.
+	From first part of the proof we know that \(\set{x} \times Y\) is finite.
+	Since
+	\begin{align*}
+		X \times Y & = ((X \setminus \set{x}) \cup \set{x}) \times Y             &  & \by{3.1.28}[g] \\
+		           & = ((X \setminus \set{x}) \times Y) \cup (\set{x} \times Y), &  & \by{ex:3.5.4}
+	\end{align*}
+	by \cref{3.6.14}(b) we know that \(X \times Y\) is finite.
+	Thus we have
+	\begin{align*}
+		\#(X \times Y) & = \#(((X \setminus \set{x}) \times Y) \cup (\set{x} \times Y)) &  & \by{ex:3.5.4}                \\
+		               & = \#((X \setminus \set{x}) \times Y) + \#(\set{x} \times Y)    &  & \text{(by \cref{3.6.14}(b))} \\
+		               & = \#(X \setminus \set{x}) \times \#(Y) + \#(\set{x} \times Y)  &  & \byIH                        \\
+		               & = \#(X \setminus \set{x}) \times \#(Y) + \#(Y)                 &  & \text{(from proof above)}    \\
+		               & = (\#(X \setminus \set{x}) + 1) \times \#(Y)                   &  & \by{2.3.1}                   \\
+		               & = \#((X \setminus \set{x}) \cup \set{x}) \times \#(Y)          &  & \text{(by \cref{3.6.14}(a))} \\
+		               & = \#(X) \times \#(Y).                                          &  & \text{(by \cref{3.1.28}(g))}
 	\end{align*}
 	This closes the induction.
 \end{proof}
 
 \begin{proof}[\pf{3.6.14}(f)]
-	Suppose that \(X, Y\) are finite sets.
-	We first show that \(\forall x : \#(Y^{\set{x}}) = \#(Y)\).
-	We define a function \(f : Y^{\set{x}} \to Y\) by setting \(\forall g \in Y^{\set{x}} : f(g) = g(x)\).
+	We first show that \(Y^{\set{x}}\) is finite and \(\#\pa{Y^{\set{x}}} = \#(Y)\) for any object \(x\).
+	Define \(f : Y^{\set{x}} \to Y\) as follow:
+	\[
+		\forall g \in Y^{\set{x}}, f(g) = g(x).
+	\]
+	Since \(g \in Y^{\set{x}}\) implies \(g(x)\) is an unique object defined in \(Y\), we know that \(f(g)\) passes the vertical line test.
+	Thus by \cref{3.3.1} \(f\) is well-defined.
 	We now show that \(f\) is bijective.
 	We start by showing \(f\) is injective.
+	Let \(g_1, g_2 \in Y^{\set{x}}\) and \(g_1 \neq g_2\).
+	Since
 	\begin{align*}
-		         & \forall g, g' \in Y^{\set{x}} : f(g) = f(g')                 \\
-		\implies & g(x) = g'(x)                                                 \\
-		\implies & \forall x' \in \set{x} : g(x') = g'(x').     &  & \by{3.3}   \\
-		\implies & g = g'.                                      &  & \by{3.3.7}
+		         & g_1 \neq g_2                                               \\
+		\implies & \exists z \in \set{x} : g_1(z) \neq g_2(z) &  & \by{3.3.7} \\
+		\implies & g_1(x) \neq g_2(x)                         &  & \by{3.3}   \\
+		\implies & g_1(x) = f(g_1) \neq f(g_2) = g_2(x),
 	\end{align*}
-	Thus \(f\) is injective.
+	by \cref{3.3.14} we see that \(f\) is injective.
 	Now we show that \(f\) is surjective.
-	\begin{align*}
-		         & \forall y \in Y, \exists (g : \set{x} \to Y) : g(x) = y &  & \by{3.6}  \\
-		\implies & g \in Y^{\set{x}}.                                      &  & \by{3.10}
-	\end{align*}
-	Thus \(f\) is surjective.
-	Since \(f\) is both injective and surjective, \(f\) is bijective and thus by \cref{3.6.1} we have \(\#(Y^{\set{x}}) = \#(Y)\).
+	Let \(y \in Y\).
+	Let \(g : \set{x} \to Y\) be defined by \(g(x) = y\).
+	By \cref{3.10} we know that \(g \in Y^{\set{x}}\).
+	Therefore \(f(g) = y\).
+	By \cref{3.3.17} we see that \(f\) is surjective.
+	Since \(f\) is both injective and surjective, by \cref{3.3.20} we know that \(f\) is bijective.
+	Thus by \cref{3.6.1} \(Y^{\set{x}}\) and \(Y\) have the same cardinality.
+	Since \(Y\) is finite, by \cref{3.6.10} we know that \(Y^{\set{x}}\) is finite, and we have \(\#\pa{Y^{\set{x}}} = \#(Y)\).
 
-	Now we show that \(\#(Y^X) = \#(Y)^{\#(X)}\).
-	By \cref{3.6.10} \(\exists n \in \N\) such that \(\#(X) = n\).
-	We use induction on \(n\) to show that \(\#(Y^X) = \#(Y)^{\#(X)}\).
-	For \(n = 0\), by \cref{3.6.5} we have \(X = \emptyset\) and
-	\[
-		\forall f, f' \in Y^\emptyset, \forall x \in \emptyset : f(x) = f'(x).
-	\]
-	Thus by \cref{3.3} \(Y^\emptyset\) is a singleton set.
-	We can construct a bijection \(g : \set{i \in \N : 1 \leq i \leq 1} \to Y^\emptyset\) and thus by \cref{3.6.5} \(\#(Y^\emptyset) = 1\).
-	Again by \cref{3.6.5} we have \(\#(X) = 0\), and thus by \cref{2.3.11} we have \(\#(Y)^0 = 1\).
+	Now we show that \(Y^X\) is finite and \(\#\pa{Y^X} = \#(Y)^{\#(X)}\).
+	By \cref{3.6.10} there exists an \(n \in \N\) such that \(\#(X) = n\).
+	We induct on \(n\) to show that \(Y^X\) is finite and \(\#\pa{Y^X} = \#(Y)^{\#(X)}\).
+	For \(n = 0\), by \cref{ex:3.6.2} we have \(X = \emptyset\).
+	By \cref{3.3.9} there is only one function in \(Y^\emptyset\), thus by \cref{3.3} \(Y^\emptyset\) is a singleton set and therefore \(Y^\emptyset\) is finite.
+	By \cref{3.6.10} we have \(\#\pa{Y^\emptyset} = 1\), thus
+	\begin{align*}
+		\#(Y)^{\#(\emptyset)} & = \#(Y)^0             &  & \by{ex:3.6.2} \\
+		                      & = 1                   &  & \by{2.3.11}   \\
+		                      & = \#\pa{Y^\emptyset}. &  & \by{3.6.10}
+	\end{align*}
 	So the base case holds.
 
 	Suppose inductively that the statement is true for some \(\#(X) = n\).
 	We show that the statement is still true for \(\#(X) = n\pp\).
+	So let \(X\) be a set with cardinality \(n\pp\).
 	Let \(x \in X\).
-	We define a function \(h : Y^X \to Y^{X \setminus \set{x}} \times Y^{\set{x}}\) as follow:
+	If \(f \in Y^X\), then we define two functions \(f_1 : X \setminus \set{x} \to Y\) and \(f_2 : \set{x} \to Y\) as follow:
 	\[
-		\forall f \in Y^X : h(f) = \bigg(g : X \setminus \set{x} \to f(X \setminus \set{x}), g' : \set{x} \to f(\set{x})\bigg),
+		\forall z \in X \setminus \set{x}, f_1(z) = f(z) \quad \text{and} \quad \forall z \in \set{x}, f_2(z) = f(z).
 	\]
-	where \(\forall x' \in X \setminus \set{x} : g(x') = f(x')\).
-	We show that such \(h\) is bijective.
-	We start by showing \(h\) is injective.
-	\begin{align*}
-		         & \forall f_1, f_2 \in Y^X : h(f_1) = h(f_2)                                                        \\
-		\implies & (g_{f_1}, g_{f_1}') = (g_{f_2}, g_{f_2}')                                                         \\
-		\implies & g_{f_1} = g_{f_2} \land g_{f_2} = g_{f_2}'                      &  & \by{3.5.1}                   \\
-		\implies & (\forall x' \in X \setminus \set{x} : g_{f_1}(x') = g_{f_2}(x') &  & \by{3.3.7}                   \\
-		         & \land (\forall x' \in \set{x} : g_{f_1}'(x') = g_{f_2}'(x')                                       \\
-		\implies & (\forall x' \in X \setminus \set{x} : f_1(x') = f_2(x')                                           \\
-		         & \land (\forall x' \in \set{x} : f_1(x') = f_2(x')                                                 \\
-		\implies & \forall x' \in X : f_1(x') = f_2(x')                            &  & \text{(by \cref{3.1.28}(g))} \\
-		\implies & f_1 = f_2.                                                      &  & \by{3.3.7}
-	\end{align*}
-	Thus \(h\) is injective.
-	Now we show that \(h\) is surjective.
-	\(\forall (g, g') \in Y^{X \setminus \set{x}} \times Y^{\set{x}}\), we define a function \(k : X \to Y\) as follow:
+	Since \(f\) is a function, we know that \(f_1, f_2\) are well-defined and unique to \(f\).
+	Now we define \(h : Y^X \to Y^{X \setminus \set{x}} \times Y^{\set{x}}\) as follow:
 	\[
-		\forall x' \in X : k(x') = \begin{dcases}
-			g(x')  & \text{if } x' \in X \setminus \set{x} \\
-			g'(x') & \text{if } x' \in \set{x}
+		\forall f \in Y^X : h(f) = (f_1, f_2).
+	\]
+	Since \(f_1, f_2\) are unique to \(f\), we know that \(h\) is well-defined.
+	We claim that \(h\) is bijective.
+	We start by showing \(h\) is injective.
+	So let \(f, g \in Y^X\) and \(f \neq g\).
+	Since
+	\begin{align*}
+		         & f \neq g                                                                                                           \\
+		\implies & \exists z \in X : f(z) \neq g(z)                                                                   &  & \by{3.3.7} \\
+		\implies & (\exists z \in X \setminus \set{x} : f(z) \neq g(z)) \lor (\exists z \in \set{x} : f(z) \neq g(z))                 \\
+		\implies & (f_1 \neq g_1) \lor (f_2 \neq g_2)                                                                 &  & \by{3.3.7} \\
+		\implies & (f_1, f_2) \neq (g_1, g_2)                                                                         &  & \by{3.5.1} \\
+		\implies & h(f) \neq h(g),
+	\end{align*}
+	by \cref{3.3.14} we see that \(h\) is injective.
+	Now we show that \(h\) is surjective.
+	Let \(p \in Y^{X \setminus \set{x}}\) and let \(q \in Y^{\set{x}}\).
+	Define \(f : X \to Y\) as follow:
+	\[
+		\forall z \in X : f(z) = \begin{dcases}
+			p(z) & \text{if } z \in X \setminus \set{x} \\
+			q(z) & \text{if } z \in \set{x}
 		\end{dcases}
 	\]
-	Then \(k \in Y^X\).
-	Thus \(h\) is surjective.
-	Since \(h\) is both injective and surjective, \(h\) is bijective, and we have \(\#(Y^X) = \#(Y^{(X \setminus \set{x})} \times Y^{\set{x}})\).
+	Since \(p, q\) are functions, we know that \(f\) is well-defined and thus \(f \in Y^X\).
+	Since
+	\begin{align*}
+		         & \begin{dcases}
+			           \forall z \in X \setminus \set{x}, f_1(z) = f(z) = p(z) \\
+			           \forall z \in \set{x}, f_2(z) = f(z) = q(z)
+		           \end{dcases}                    \\
+		\implies & (f_1 = p) \land (f_2 = q)                                  &  & \by{3.3.7} \\
+		\implies & (f_1, f_2) = (p, q)                                        &  & \by{3.5.1} \\
+		\implies & h(f) = (p, q),
+	\end{align*}
+	by \cref{3.3.17} we see that \(h\) is surjective.
+	Since \(h\) is both injective and surjective, by \cref{3.3.20} we know that \(h\) is bijective.
+	Thus by \cref{3.6.1} we know that \(Y^X\) and \(Y^{X \setminus \set{x}} \times Y^{\set{x}}\) have equal cardinality.
+	By \cref{3.6.9} we know that \(\#(X \setminus \set{x}) = n\).
+	Thus by induction hypothesis we know that \(Y^{X \setminus \set{x}}\) is finite.
+	From the first part of the proof we know that \(Y^{\set{x}}\) is finite.
+	Thus by \cref{3.6.14}(e) we know that \(Y^{X \setminus \set{x}} \times Y^{\set{x}}\) is finite.
+	By \cref{3.6.10} this means \(Y^X\) is finite and we have \(\#\pa{Y^X} = \#\pa{Y^{X \setminus \set{x}} \times Y^{\set{x}}}\).
 	We now finish our induction as follow:
 	\begin{align*}
-		\#(Y^X) & = \#(Y^{(X \setminus \set{x})} \times Y^{\set{x}})       &  & \text{(by proof above)}      \\
-		        & = \#(Y^{(X \setminus \set{x})}) \times \#(Y^{\set{x}})   &  & \text{(by \cref{3.6.14}(e))} \\
-		        & = \#(Y)^{\#(X \setminus \set{x})} \times \#(Y^{\set{x}}) &  & \byIH                        \\
-		        & = \#(Y)^{\#(X \setminus \set{x})} \times \#(Y)           &  & \text{(by proof above)}      \\
-		        & = \#(Y)^{\#(X \setminus \set{x}) + 1}                    &  & \by{2.3.11}                  \\
-		        & = \#(Y)^{\#((X \setminus \set{x}) \cup \set{x})}         &  & \text{(by \cref{3.6.14}(a))} \\
-		        & = \#(Y)^{\#(X)}.                                         &  & \text{(by \cref{3.1.28}(g))}
+		\#\pa{Y^X} & = \#\pa{Y^{X \setminus \set{x}} \times Y^{\set{x}}}         &  & \text{(from the proof above)}             \\
+		           & = \#\pa{Y^{X \setminus \set{x}}} \times \#\pa{Y^{\set{x}}}  &  & \by{3.6.14}[e]                            \\
+		           & = \#(Y)^{\#(X \setminus \set{x})} \times \#\pa{Y^{\set{x}}} &  & \byIH                                     \\
+		           & = \#(Y)^{\#(X \setminus \set{x})} \times \#(Y)              &  & \text{(from the first part of the proof)} \\
+		           & = \#(Y)^{\#(X \setminus \set{x}) + 1}                       &  & \by{2.3.11}                               \\
+		           & = \#(Y)^{\#((X \setminus \set{x}) \cup \set{x})}            &  & \by{3.6.14}[a]                            \\
+		           & = \#(Y)^{\#(X)}.                                            &  & \by{3.1.28}[g]
 	\end{align*}
 	This closes the induction.
 \end{proof}
@@ -555,7 +658,8 @@
 \begin{rmk}\label{3.6.15}
 	\cref{3.6.14} suggests that there is another way to define the arithmetic operations of natural numbers;
 	not defined recursively as in \cref{2.2.1,2.3.1,2.3.11}, but instead using the notions of union, Cartesian product, and power set.
-	This is the basis of \emph{cardinal arithmetic}, which is an alternative foundation to arithmetic than the Peano arithmetic we have developed here.
+	This is the basis of \emph{cardinal arithmetic}, which is an alternative foundation to arithmetic than the Peano arithmetic we have developed here;
+	we will not develop this arithmetic in this text, but we give some examples of how one would work with this arithmetic in \cref{ex:3.6.5,ex:3.6.6}.
 \end{rmk}
 
 \exercisesection
@@ -573,12 +677,9 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:3.6.2}]
-	\begin{align*}
-		     & \#(X) = 0                                                                                       \\
-		\iff & \exists f : X \to \set{i \in \N : 1 \leq i \leq 0} \land f \text{ is bijective} &  & \by{3.6.5} \\
-		\iff & \exists f : X \to \emptyset                                                     &  & \by{3.2}   \\
-		\iff & X = \emptyset.                                                                  &  & \by{3.6}
-	\end{align*}
+	By \cref{3.6.5} we know that \(\#(X) = 0\) iff there exists a bijective function \(f : X \to \set{i \in \N : 1 \leq i \leq 0}\).
+	Since \(\set{i \in \N : 1 \leq i \leq 0} = \emptyset\), by \cref{ex:3.3.3} we know that \(f\) is a bijective function iff \(X = \emptyset\).
+	Thus we have \(\#(X) = 0\) iff \(X = \emptyset\).
 \end{proof}
 
 \begin{ex}\label{ex:3.6.3}
@@ -588,8 +689,7 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:3.6.3}]
-	Suppose that \(n \in \N\).
-	We use induction on \(n\) to show that for any function \(f : \set{i \in \N : 1 \leq i \leq n} \to \N\), \(\exists M \in \N\) such that \(f(i) \leq M\).
+	We induct on \(n\) to show that for any function \(f : \set{i \in \N : 1 \leq i \leq n} \to \N\), \(\exists M \in \N\) such that \(f(i) \leq M\).
 	For \(n = 0\), for any function \(f : \set{i \in \N : 1 \leq i \leq 0} \to \N\) we have
 	\begin{align*}
 		         & f : \set{i \in \N : 1 \leq i \leq 0} \to \N                                           \\
