@@ -384,11 +384,12 @@
 \end{proof}
 
 \begin{ac}\label{ac:4.2.5}
-  Let \(x = a // b\) be a rational number where \(a, b \in \Z\) and \(b \neq 0\).
+  Let \(x = a / b\) be a rational number where \(a, b \in \Z\) and \(b \neq 0\).
   Then we have
   \[
-    -x = (-a) // b = a // (-b) = (-1) (a // b) = (-1) x.
+    -x = (-a) / b = a / (-b) = (-1) (a / b) = (-1) x
   \]
+  and \(-(-x) = x\).
   If \(y \in \Q\) and \(y \neq 0\), then we have
   \[
     -(x / y) = (-x) / y = x / (-y).
@@ -396,59 +397,64 @@
 \end{ac}
 
 \begin{proof}[\pf{ac:4.2.5}]
-  By \cref{4.2.2} we have \(-x = (-a) // b\) and by \cref{4.2.3} we have \((-1) x = (-1) (a // b)\).
-  We first show that \((-a) // b = a // (-b)\).
+  By \cref{4.2.2,ac:4.2.4} we have \(-x = (-a) / b\) and by \cref{4.2.3} we have \((-1) x = (-1) (a / b)\).
+  We first show that \((-a) / b = a / (-b)\).
   This is true since
   \begin{align*}
-    (-a) // b & = ((-a) // b) \times 1              &  & \by{4.2.4}    \\
-              & = ((-a) // b) \times (1 // 1)       &  & \by{ac:4.2.2} \\
-              & = ((-a) // b) \times ((-1) // (-1)) &  & \by{4.2.1}    \\
-              & = ((-a) (-1)) // (b (-1))           &  & \by{4.2.2}    \\
-              & = ((-1) (-a)) // ((-1) b)           &  & \by{4.1.6}    \\
-              & = (-(-a)) // (-b)                   &  & \by{ac:4.1.5} \\
-              & = a // (-b).                        &  & \by{ac:4.1.6}
+    (-a) / b & = ((-a) / b) \times 1             &  & \by{4.2.4}    \\
+             & = ((-a) / b) \times (1 / 1)       &  & \by{ac:4.2.2} \\
+             & = ((-a) / b) \times ((-1) / (-1)) &  & \by{4.2.1}    \\
+             & = ((-a) (-1)) / (b (-1))          &  & \by{4.2.2}    \\
+             & = ((-1) (-a)) / ((-1) b)          &  & \by{4.1.6}    \\
+             & = (-(-a)) / (-b)                  &  & \by{ac:4.1.5} \\
+             & = a / (-b).                       &  & \by{ac:4.1.6}
   \end{align*}
 
   Next we show that \(-x = (-1) x\).
   This is true since
   \begin{align*}
-    -x & = -(a // b)                                      \\
-       & = (-a) // b                   &  & \by{4.2.2}    \\
-       & = ((-1) a) // b               &  & \by{ac:4.1.5} \\
-       & = ((-1) a) // 1b              &  & \by{4.1.6}    \\
-       & = ((-1) // 1) \times (a // b) &  & \by{4.2.2}    \\
-       & = (-1) (a // b)               &  & \by{ac:4.2.2} \\
-       & = (-1) x.
+    -x & = -(a / b)                  &  & \by{ac:4.2.4} \\
+       & = (-a) / b                  &  & \by{4.2.2}    \\
+       & = ((-1) a) / b              &  & \by{ac:4.1.5} \\
+       & = ((-1) a) / (1b)           &  & \by{4.1.6}    \\
+       & = ((-1) / 1) \times (a / b) &  & \by{4.2.2}    \\
+       & = (-1) (a / b)              &  & \by{ac:4.2.2} \\
+       & = (-1) x.                   &  & \by{ac:4.2.4}
+  \end{align*}
+
+  Next we show that \(-(-x) = x\).
+  This is true since
+  \begin{align*}
+    -(-x) & = (-1) ((-1) x) &  & \text{(from the proof above)} \\
+          & = ((-1) (-1)) x &  & \by{4.2.4}                    \\
+          & = 1 x           &  & \by{ac:4.1.7}                 \\
+          & = x.            &  & \by{4.2.4}
   \end{align*}
 
   Next we show that if \(y \neq 0\), then \(-(x / y) = (-x) / y\).
-  Suppose that \(y = c // d\) where \(c, d \neq 0\).
+  Suppose that \(y \neq 0\).
   Then we have
   \begin{align*}
-    -(x / y) & = -\pa{(a // b) \times (c // d)^{-1}} &  & \by{ac:4.2.4} \\
-             & = -((a // b) \times (d // c))         &  & \by{ac:4.2.3} \\
-             & = -(ad // bc)                         &  & \by{4.2.2}    \\
-             & = (-(ad)) // bc                       &  & \by{4.2.2}    \\
-             & = ((-a) d) // bc                      &  & \by{ac:4.1.5} \\
-             & = ((-a) // b) \times (d // c)         &  & \by{4.2.2}    \\
-             & = ((-a) // b) \times (c // d)^{-1}    &  & \by{ac:4.2.3} \\
-             & = (-x) \times y^{-1}                  &  & \by{4.2.2}    \\
-             & = (-x) / y.                           &  & \by{ac:4.2.4}
+    -(x / y) & = -(x \times y^{-1})            &  & \by{ac:4.2.4}                 \\
+             & = (-1) \times (x \times y^{-1}) &  & \text{(from the proof above)} \\
+             & = ((-1) \times x) \times y^{-1} &  & \by{4.2.4}                    \\
+             & = (-x) \times y^{-1}            &  & \text{(from the proof above)} \\
+             & = (-x) / y.                     &  & \by{ac:4.2.4}
   \end{align*}
 
   Finally we show that if \(y \neq 0\), then \((-x) / y = x / (-y)\).
-  Suppose that \(y = c // d\) where \(c, d \neq 0\).
+  Suppose that \(y = c / d\) where \(c, d \neq 0\).
   Then we have
   \begin{align*}
-    (-x) / y & = (-x) \times y^{-1}              &  & \by{ac:4.2.4}                 \\
-             & = ((-1) \times x) \times y^{-1}   &  & \text{(from the proof above)} \\
-             & = ((-1) \times x) \times (d // c) &  & \by{ac:4.2.3}                 \\
-             & = (x \times (-1)) \times (d // c) &  & \by{4.2.4}                    \\
-             & = x \times ((-1) \times (d // c)) &  & \by{4.2.4}                    \\
-             & = x \times (d // (-c))            &  & \text{(from the proof above)} \\
-             & = x \times ((-c) // d)^{-1}       &  & \by{ac:4.2.3}                 \\
-             & = x \times (-y)^{-1}              &  & \by{4.2.2}                    \\
-             & = x / (-y).                       &  & \by{ac:4.2.4}
+    (-x) / y & = (-x) \times y^{-1}             &  & \by{ac:4.2.4}                 \\
+             & = ((-1) \times x) \times y^{-1}  &  & \text{(from the proof above)} \\
+             & = ((-1) \times x) \times (d / c) &  & \by{ac:4.2.3}                 \\
+             & = (x \times (-1)) \times (d / c) &  & \by{4.2.4}                    \\
+             & = x \times ((-1) \times (d / c)) &  & \by{4.2.4}                    \\
+             & = x \times (d / (-c))            &  & \text{(from the proof above)} \\
+             & = x \times ((-c) / d)^{-1}       &  & \by{ac:4.2.3}                 \\
+             & = x \times (-y)^{-1}             &  & \by{4.2.2}                    \\
+             & = x / (-y).                      &  & \by{ac:4.2.4}
   \end{align*}
 \end{proof}
 
@@ -472,26 +478,26 @@
 
 \begin{proof}[\pf{4.2.7}]
   We first show that at least one of (a), (b), (c) is true.
-  Let \(x = a // b\), where \(a, b \in \Z\) and \(b \neq 0\).
+  Let \(x = a / b\), where \(a, b \in \Z\) and \(b \neq 0\).
   By \cref{4.1.11}(f), \(a\) can only satisified one of the following three statements:
   \(a = 0\), \(a > 0\) and \(a < 0\).
   Similarly, \(b\) can only satisified one of the following two statements:
   \(b > 0\) and \(b < 0\).
   We first consider \(a\):
   \begin{itemize}
-    \item If \(a = 0\), then \(x = 0 // b = 0\).
+    \item If \(a = 0\), then \(x = 0 / b = 0\).
     \item If \(a > 0\), then we need to consider \(b\):
           \begin{itemize}
             \item If \(b > 0\), then by \cref{4.2.6} \(x\) is positive.
             \item If \(b < 0\), then by \cref{4.1.4} \(b = -c\) for some \(c \in \Z^+\).
-                  Thus by \cref{ac:4.2.5} we have \(a // b = a // (-c) = (-a) // c\), which means \(x\) is negative by \cref{4.2.6}.
+                  Thus by \cref{ac:4.2.5} we have \(a / b = a / (-c) = (-a) / c\), which means \(x\) is negative by \cref{4.2.6}.
           \end{itemize}
     \item If \(a < 0\), then by \cref{4.1.4} \(a = -c\) for some \(c \in \Z^+\).
           Now we consider \(b\):
           \begin{itemize}
-            \item If \(b > 0\), then \(a // b = (-c) // b\), which means \(x\) is negative by \cref{4.2.6}.
+            \item If \(b > 0\), then \(a / b = (-c) / b\), which means \(x\) is negative by \cref{4.2.6}.
             \item If \(b < 0\), then by \cref{4.1.4} \(b = -d\) for some \(d \in \Z^+\).
-                  Thus by \cref{4.2.1} we have \(a // b = (-c) // (-d) = (-1) // (-1) \times (c // d) = c // d\), which means \(x\) is positive by \cref{4.2.6}.
+                  Thus by \cref{4.2.1} we have \(a / b = (-c) / (-d) = (-1) / (-1) \times (c / d) = c / d\), which means \(x\) is positive by \cref{4.2.6}.
           \end{itemize}
   \end{itemize}
   From all cases above we conclude that at least one of (a), (b), (c) is true.
@@ -525,20 +531,20 @@
   We first show that if \(x\) and \(y\) are two positive rationals, then \(x + y\) is also positive.
   By \cref{4.2.6} we have \(x = a / b\) and \(y = c / d\) where \(a, b, c, d \in \Z^+\).
   Then by \cref{4.2.2} we have \(x + y = (ad + bc) / bd\).
-  By \cref{2.3.2} we know that \(ad, bc, bd \in \Z^+\).
+  By \cref{2.3.3} we know that \(ad, bc, bd \in \Z^+\).
   Since \(ad, bc \in \Z^+\), by \cref{2.2.8} we know that \(ad + bc \in \Z^+\).
   Thus by \cref{4.2.6} we know that \(x + y = (ad + bc) / bd\) is a positive rational number.
 
   Now we show that if \(x\) and \(y\) are two negative rationals, then \(x + y\) is also negative.
   By \cref{4.2.6} we have \(x = (-a) / b\) and \(y = (-c) / d\) where \(a, b, c, d \in \Z^+\).
   Then by \cref{4.2.2} we have \(x + y = ((-a)d + b(-c)) / bd\).
-  By \cref{4.2.4} and \cref{ac:4.2.5} we have
+  By \cref{ac:4.1.5,4.1.6} we have
   \[
-    (-a)d + b(-c) = (-a)d + (-c)b = ((-1)a)d + ((-1)c)b = (-1)(ad + cb) = -(ad + cb).
+    (-a)d + b(-c) = (-1) (ad) + (-1) (cb) = (-1)(ad + cb) = -(ad + cb).
   \]
-  By \cref{2.3.2} we know that \(ad, cb, bd \in \Z^+\).
+  By \cref{2.3.3} we know that \(ad, cb, bd \in \Z^+\).
   Since \(ad, cb \in \Z^+\), by \cref{2.2.8} we have \(ad + cb \in \Z^+\).
-  Thus by \cref{4.1.4} we have \(-(ad + cb) \in \Z^-\) and by \cref{4.2.6}, \(x + y = -(ad + cb) / bd\) is a negative rational number.
+  Thus by \cref{4.1.4} we have \(-(ad + cb) \in \Z^-\) and by \cref{4.2.6} \(x + y = -(ad + cb) / bd\) is a negative rational number.
 \end{proof}
 
 \begin{ac}\label{ac:4.2.7}
@@ -551,13 +557,13 @@
   We first show that if \(x\) and \(y\) are two positive rationals, then \(xy\) is a positive rational number.
   By \cref{4.2.6} we know that \(x = a / b\) and \(y = c / d\) where \(a, b, c, d \in \Z^+\).
   By \cref{4.2.2} we have \(xy = ac / bd\).
-  By \cref{2.3.2} we have \(ac, bd \in \Z^+\), thus by \cref{4.2.6} we know that \(xy\) is a positive rational number.
+  By \cref{2.3.3} we have \(ac, bd \in \Z^+\), thus by \cref{4.2.6} we know that \(xy\) is a positive rational number.
 
   Now we show that if \(x\) and \(y\) are two negative rationals, then \(xy\) is a positive rational number.
   By \cref{4.2.6} we know that \(x = (-a) / b\) and \(y = (-c) / d\) where \(a, b, c, d \in \Z^+\).
   By \cref{4.2.2} we have \(xy = (-a)(-c) / bd\).
-  By \cref{ac:4.1.6} we have \((-a)(-c) = ac\).
-  By \cref{2.3.2} we have \(ac, bd \in \Z^+\), thus by \cref{4.2.6} we know that \(xy\) is a positive rational number.
+  By \cref{ac:4.1.7} we have \((-a)(-c) = ac\).
+  By \cref{2.3.3} we have \(ac, bd \in \Z^+\), thus by \cref{4.2.6} we know that \(xy\) is a positive rational number.
 \end{proof}
 
 \begin{ac}\label{ac:4.2.8}
@@ -571,7 +577,7 @@
   By \cref{4.2.6} we know that \(x = (-a) / b\) and \(y = c / d\) where \(a, b, c, d \in \Z^+\).
   By \cref{4.2.2} we have \(xy = (-a)c / bd\).
   By \cref{ac:4.1.5} we have \((-a)c = -(ac)\).
-  By \cref{2.3.2} we know that \(ac, bd \in \Z^+\), thus by \cref{4.2.6} we know that \(xy\) is a negative rational number.
+  By \cref{2.3.3} we know that \(ac, bd \in \Z^+\), thus by \cref{4.2.6} we know that \(xy\) is a negative rational number.
 \end{proof}
 
 \begin{ac}\label{ac:4.2.9}
@@ -580,23 +586,9 @@
 \end{ac}
 
 \begin{proof}[\pf{ac:4.2.9}]
-  We first show that \(x\) is a positive rational number iff \(x > 0\).
-  By \cref{4.2.6} we know that \(x = a / b\) where \(a, b \in \Z^+\).
-  Thus
-  \begin{align*}
-         & x = a / b \in \Q^+         &  & \by{4.2.6}    \\
-    \iff & x - 0 = a / b - 0 \in \Q^+ &  & \by{ac:4.2.5} \\
-    \iff & x > 0.                     &  & \by{4.2.8}
-  \end{align*}
-
-  Now we show that \(x\) is a negative rational number iff \(x < 0\).
-  By \cref{4.2.6} we know that \(x = (-a) / b\) where \(a, b \in \Z^+\).
-  Thus
-  \begin{align*}
-         & x = (-a) / b \in \Q^-         &  & \by{4.2.6}    \\
-    \iff & x - 0 = (-a) / b - 0 \in \Q^- &  & \by{ac:4.2.5} \\
-    \iff & x < 0.                        &  & \by{4.2.8}
-  \end{align*}
+  By \cref{4.2.1} we have \(x = x - 0\).
+  Thus \(x\) is a positive rational number iff \(x - 0\) is a positive rational number, iff \(x > 0\) (\cref{4.2.8}).
+  Similarly \(x\) is a negative rational number iff \(x - 0\) is a negative rational number, iff \(x < 0\) (\cref{4.2.8}).
 \end{proof}
 
 \begin{prop}[Basic properties of order on the rationals]\label{4.2.9}
@@ -617,76 +609,82 @@
 \end{prop}
 
 \begin{proof}[\pf{4.2.9}(a)]
-  By \cref{4.2.7} \(x - y\) is exactly one of the following three cases:
-  \begin{enumerate}[label=(\Roman*)]
+  By \cref{4.2.7} \(x - y\) satisfy exactly one of the following three statements:
+  \begin{itemize}
     \item \(x - y = 0\).
           Then by \cref{4.2.4} we have \(x = y\).
-    \item \(x - y\) is positive.
+    \item \(x - y\) is a positive rational number.
           Then by \cref{4.2.8} we have \(x > y\).
-    \item \(x - y\) is negative.
+    \item \(x - y\) is a negative rational number.
           Then by \cref{4.2.8} we have \(x < y\).
-  \end{enumerate}
+  \end{itemize}
 \end{proof}
 
 \begin{proof}[\pf{4.2.9}(b)]
   Since
   \begin{align*}
-    x - y & = (-1)(-1)(x - y)                 &  & \by{4.2.2}    \\
-          & = (-1)(-1)\big(x + (-1)y\big)     &  & \by{ac:4.2.5} \\
-          & = (-1)\big((-1)x + (-1)(-1)y\big) &  & \by{4.2.4}    \\
-          & = (-1)\big((-1)x + y\big)         &  & \by{4.2.2}    \\
-          & = (-1)\big(y + (-1)x\big)         &  & \by{4.2.4}    \\
-          & = (-1)(y - x),                    &  & \by{ac:4.2.5}
+    x - y & = -(-(x - y))           &  & \by{ac:4.2.5} \\
+          & = -((-1) (x - y))       &  & \by{ac:4.2.5} \\
+          & = -((-1) (x + (-y)))    &  & \by{ac:4.2.4} \\
+          & = -((-1) x + (-1) (-y)) &  & \by{4.2.4}    \\
+          & = -((-x) + y)           &  & \by{ac:4.2.5} \\
+          & = -(y + (-x))           &  & \by{4.2.4}    \\
+          & = -(y - x)              &  & \by{ac:4.2.4} \\
+          & = (-1)(y - x),          &  & \by{ac:4.2.5}
   \end{align*}
   we have
   \begin{align*}
-         & x < y                                                  \\
-    \iff & x - y \text{ is negative}           &  & \by{4.2.8}    \\
-    \iff & (-1)(x - y) \text{ is positive}     &  & \by{ac:4.2.7} \\
-    \iff & (-1)(-1)(y - x) \text{ is positive} &  & \by{ac:4.2.3} \\
-    \iff & y - x \text{ is positive}           &  & \by{4.2.2}    \\
-    \iff & y > x.                              &  & \by{4.2.8}
+         & x < y                                                \\
+    \iff & x - y \in \Q^-           &  & \by{4.2.8}             \\
+    \iff & (-1)(x - y) \in \Q^+     &  & \by{ac:4.2.7,ac:4.2.8} \\
+    \iff & (-1)(-1)(y - x) \in \Q^+ &  & \by{4.2.3}             \\
+    \iff & y - x \in \Q^+           &  & \by{ac:4.2.5}          \\
+    \iff & y > x.                   &  & \by{4.2.8}
   \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{4.2.9}(c)]
   We have
   \begin{align*}
-             & (x < y) \land (y < z)                                                            \\
-    \implies & (x - y \text{ is negative}) \land (y - z \text{ is negative}) &  & \by{4.2.8}    \\
-    \implies & (x - y) + (y - z) \text{ is negative}                         &  & \by{ac:4.2.6} \\
-    \implies & x + z \text{ is negative}                                     &  & \by{4.2.4}    \\
-    \implies & x < z.                                                        &  & \by{4.2.8}
+             & (x < y) \land (y < z)                                      \\
+    \implies & (x - y \in \Q^-) \land (y - z \in \Q^-) &  & \by{4.2.8}    \\
+    \implies & (x - y) + (y - z) \in \Q^-              &  & \by{ac:4.2.6} \\
+    \implies & x + z \in \Q^-                          &  & \by{4.2.4}    \\
+    \implies & x < z.                                  &  & \by{4.2.8}
   \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{4.2.9}(d)]
   We have
   \begin{align*}
-             & x < y                                                  \\
-    \implies & x - y \text{ is negative}           &  & \by{4.2.8}    \\
-    \implies & x + z - z - y \text{ is negative}   &  & \by{4.2.4}    \\
-    \implies & x + z - y - z \text{ is negative}   &  & \by{4.2.4}    \\
-    \implies & x + z - (y + z) \text{ is negative} &  & \by{ac:4.2.5} \\
-    \implies & x + z < y + z.                      &  & \by{4.2.8}
+             & x < y                                               \\
+    \implies & x - y \in \Q^-                   &  & \by{4.2.8}    \\
+    \implies & x + (-y) \in \Q^-                &  & \by{ac:4.2.4} \\
+    \implies & x + z + (-z) + (-y) \in \Q^-     &  & \by{4.2.4}    \\
+    \implies & x + z + (-y) + (-z) \in \Q^-     &  & \by{4.2.4}    \\
+    \implies & x + z + (-1) y + (-1) z \in \Q^- &  & \by{ac:4.2.5} \\
+    \implies & x + z + (-1) (y + z) \in \Q^-    &  & \by{4.2.4}    \\
+    \implies & x + z + (-(y + z)) \in \Q^-      &  & \by{ac:4.2.5} \\
+    \implies & x + z - (y + z) \in \Q^-         &  & \by{ac:4.2.4} \\
+    \implies & x + z < y + z.                   &  & \by{4.2.8}
   \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{4.2.9}(e)]
   We have
   \begin{align*}
-             & x < y                                           \\
-    \implies & x - y \text{ is negative}    &  & \by{4.2.8}    \\
-    \implies & (x - y)z \text{ is negative} &  & \by{ac:4.2.8} \\
-    \implies & xz - yz \text{ is negative}  &  & \by{4.2.4}    \\
-    \implies & xz < yz.                     &  & \by{4.2.8}
+             & x < y                                \\
+    \implies & x - y \in \Q^-    &  & \by{4.2.8}    \\
+    \implies & (x - y)z \in \Q^- &  & \by{ac:4.2.8} \\
+    \implies & xz - yz \in \Q^-  &  & \by{4.2.4}    \\
+    \implies & xz < yz.          &  & \by{4.2.8}
   \end{align*}
 \end{proof}
 
 \begin{rmk}\label{4.2.10}
   The above five properties in \cref{4.2.9}, combined with the field axioms in \cref{4.2.4}, have a name:
   they assert that the rationals \(\Q\) form an \emph{ordered field}.
-  It is important to keep in mind that \cref{4.2.9}(e) only works when \(z\) is positive.
+  It is important to keep in mind that \cref{4.2.9}(e) only works when \(z\) is positive, see \cref{ex:4.2.6}.
 \end{rmk}
 
 \exercisesection
@@ -738,10 +736,10 @@
 \begin{proof}[\pf{ex:4.2.6}]
   We have
   \begin{align*}
-             & x < y                                           \\
-    \implies & x - y \text{ is negative}    &  & \by{4.2.8}    \\
-    \implies & (x - y)z \text{ is positive} &  & \by{ac:4.2.7} \\
-    \implies & xz - yz \text{ is positive}  &  & \by{4.2.4}    \\
-    \implies & xz > yz.                     &  & \by{4.2.8}
+             & x < y                                \\
+    \implies & x - y \in \Q^-    &  & \by{4.2.8}    \\
+    \implies & (x - y)z \in \Q^+ &  & \by{ac:4.2.7} \\
+    \implies & xz - yz \in \Q^+  &  & \by{4.2.4}    \\
+    \implies & xz > yz.          &  & \by{4.2.8}
   \end{align*}
 \end{proof}
