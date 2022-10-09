@@ -13,7 +13,7 @@
 \end{defn}
 
 \begin{prop}[Basic properties of absolute value and distance]\label{4.3.3}
-  Let \(x\), \(y\), \(z\) be rational numbers.
+  Let \(x, y, z\) be rational numbers.
   \begin{enumerate}
     \item (Non-degeneracy of absolute value)
           We have \(\abs{x} \geq 0\).
@@ -35,155 +35,134 @@
   \end{enumerate}
 \end{prop}
 
-\begin{proof}{(a)}
+\begin{proof}[\pf{4.3.3}(a)]
   By \cref{4.2.7} we know that exactly one of the three statements is true:
   \begin{itemize}
     \item \(x = 0\).
           Then by \cref{4.3.1} we have \(\abs{x} = 0\).
-    \item \(x\) is a positive rational number.
-          Then by \cref{4.3.1} we have \(\abs{x} = x\), which is a positive rational number.
+    \item \(x \in \Q^+\).
+          Then by \cref{4.3.1} we have \(\abs{x} = x \in \Q^+\).
           By \cref{ac:4.2.9} we have \(\abs{x} = x > 0\).
-    \item \(x\) is a negative rational number.
+    \item \(x \in \Q^-\).
           Then by \cref{4.3.1} we have \(\abs{x} = -x\).
-          By \cref{ac:4.2.5,ac:4.2.7} we know that \(-x = (-1)x\) is a positive rational number.
-          By \cref{ac:4.2.9} we have \(\abs{x} = -x > 0\).
+          By \cref{ac:4.2.5,ac:4.2.7} we know that \(-x = (-1)x \in \Q^+\).
+          Thus by \cref{ac:4.2.9} we have \(\abs{x} = -x > 0\).
   \end{itemize}
   From all cases above we conclude that \(\abs{x} \geq 0\) and \(\abs{x} = 0 \iff x = 0\).
 \end{proof}
 
-\begin{proof}{(b)}
+\begin{proof}[\pf{4.3.3}(b)]
   By \cref{4.2.7} exactly one of the following three statements is true:
   \begin{itemize}
-    \item \(x = 0\).
-          Then we have
+    \item \(x + y = 0\).
+          By \cref{4.3.3}(a) we have \(\abs{x + y} = 0 \leq \abs{x}\) and \(0 \leq \abs{y}\).
+          Thus
           \begin{align*}
-            \abs{0 + y} & = \abs{y}            &  & \by{4.2.4}                  \\
-                        & = 0 + \abs{y}        &  & \by{4.2.4}                  \\
-                        & = \abs{0} + \abs{y}. &  & \text{(by \cref{4.3.3}(a))}
+            \abs{x + y} & = 0 \leq \abs{y}        &  & \by{4.3.3}[a] \\
+                        & = 0 + \abs{y}           &  & \by{4.2.4}    \\
+                        & \leq \abs{x} + \abs{y}. &  & \by{4.2.9}[d]
           \end{align*}
-    \item \(x\) is positive.
-          By \cref{4.2.7} again exactly one of the following three statements is true:
+    \item \(x + y \in \Q^+\).
+          By \cref{ac:4.2.6} we know that we cannot have both \(x \in \Q^-\) and \(y \in \Q^-\).
+          So we can use \cref{4.2.7} to split into two further cases:
           \begin{itemize}
-            \item \(y = 0\).
-                  By \cref{4.2.4} we know that \(x + y = y + x\), thus this is the same case as \(x = 0\).
-            \item \(y\) is positive.
-                  Then we have
+            \item If exactly one of \(x, y\) is a negative rational number, say \(x\), then by \cref{ac:4.2.9} we have \(x < 0\) and \(y > 0\).
+                  Note that \(y \neq 0\), otherwise we would have \(x + y = x \in \Q^-\) by \cref{4.2.4}, which contradicts to \(x + y \in \Q^+\).
+                  Since \(x \neq 0\), by \cref{4.3.3}(a) we have \(0 < \abs{x}\).
+                  Thus
                   \begin{align*}
-                             & x + y \text{ is positive}                &  & \by{ac:4.2.6} \\
-                    \implies & \abs{x + y} = x + y = \abs{x} + \abs{y}. &  & \by{4.3.1}
+                    \abs{x + y} & = x + y              &  & \by{4.3.1}    \\
+                                & < 0 + y              &  & \by{4.2.9}[d] \\
+                                & < \abs{x} + y        &  & \by{4.2.9}[d] \\
+                                & = \abs{x} + \abs{y}. &  & \by{4.3.1}
                   \end{align*}
-            \item \(y\) is negative.
-                  Then by \cref{4.3.3}(a) we know that \(\abs{x} > 0\) and \(\abs{y} > 0\).
-                  By \cref{4.2.9}(a) exactly one of the following three statements is true:
-                  \begin{itemize}
-                    \item \(x + y = 0\).
-                          Then we have
-                          \begin{align*}
-                            \abs{x + y} & = 0                                                   \\
-                                        & < \abs{x}            &  & \text{(by \cref{4.3.3}(a))} \\
-                                        & < \abs{x} + \abs{y}. &  & \text{(by \cref{4.2.9}(c))}
-                          \end{align*}
-                    \item \(x + y > 0\).
-                          Then we have
-                          \begin{align*}
-                                     & y < 0                                                                       \\
-                            \implies & x + y < x + 0                              &  & \text{(by \cref{4.2.9}(d))} \\
-                            \implies & x + y < x                                  &  & \by{4.2.4}                  \\
-                            \implies & 0 < x + y < x                              &  & \text{(by \cref{4.2.9}(c))} \\
-                            \implies & \abs{x + y} = x + y < x = \abs{x}          &  & \by{4.3.1}                  \\
-                            \implies & \abs{x + y} < \abs{x} < \abs{x} + \abs{y}. &  & \text{(by \cref{4.2.9}(c))}
-                          \end{align*}
-                    \item \(x + y < 0\).
-                          Then we have
-                          \begin{align*}
-                                     & -x < -0 = 0                                &  & \by{ex:4.2.6}               \\
-                            \implies & (-x) + (-y) < 0 + (-y)                     &  & \text{(by \cref{4.2.9}(d))} \\
-                            \implies & (-x) + (-y) < -y                           &  & \by{4.2.4}                  \\
-                            \implies & (-1)x + (-1)y < -y                         &  & \by{ac:4.2.5}               \\
-                            \implies & (-1)(x + y) < -y                           &  & \by{4.2.4}                  \\
-                            \implies & -(x + y) < -y                              &  & \by{ac:4.2.5}               \\
-                            \implies & 0 = -0 < -(x + y) < -y                     &  & \by{ex:4.2.6}               \\
-                            \implies & \abs{x + y} = -(x + y) < -y = \abs{y}      &  & \by{4.3.1}                  \\
-                            \implies & \abs{x + y} < \abs{y} < \abs{x} + \abs{y}. &  & \text{(by \cref{4.2.9}(c))}
-                          \end{align*}
-                  \end{itemize}
-          \end{itemize}
-    \item \(x\) is negative.
-          \begin{itemize}
-            \item \(y = 0\).
-                  By \cref{4.2.4} we know that \(x + y = y + x\), thus this is the same case as \(x = 0\).
-            \item \(y\) is positive.
-                  By \cref{4.2.4} we know that \(x + y = y + x\), thus this is the same case as \(x\) is positive and \(y\) is negative.
-            \item \(y\) is negative.
-                  Then we have
+            \item If none of \(x, y\) are negative rational numbers, then by \cref{ac:4.2.9} we have \(x \geq 0\) and \(y \geq 0\).
+                  Thus
                   \begin{align*}
-                             & x + y < 0                                      &  & \by{ac:4.2.6} \\
-                    \implies & -(x + y) > -0 = 0                              &  & \by{ex:4.2.6} \\
-                    \implies & (-1)(x + y) > 0                                &  & \by{ac:4.2.5} \\
-                    \implies & (-1)x + (-1)y > 0                              &  & \by{4.2.4}    \\
-                    \implies & (-x) + (-y) > 0                                &  & \by{ac:4.2.5} \\
-                    \implies & \abs{x + y} = (-x) + (-y) = \abs{x} + \abs{y}. &  & \by{4.3.1}
+                    \abs{x + y} & = x + y              &  & \by{4.3.1} \\
+                                & = \abs{x} + \abs{y}. &  & \by{4.3.1}
                   \end{align*}
           \end{itemize}
+    \item \(x + y \in \Q^-\).
+          Then by \cref{ac:4.2.7} we have \(-(x + y) \in \Q^+\).
+          Since
+          \begin{align*}
+            -(x + y) & = (-1) (x + y)    &  & \by{ac:4.2.5} \\
+                     & = (-1) x + (-1) y &  & \by{4.2.4}    \\
+                     & = (-x) + (-y),    &  & \by{ac:4.2.5}
+          \end{align*}
+          we can use the second case to derive \(\abs{-(x + y)} \leq \abs{-x} + \abs{-y}\).
+          But by \cref{4.3.1} we have \(\abs{x + y} = -(x + y) = \abs{-(x + y)}\).
+          And \(\abs{-x} = \abs{x}\) since
+          \begin{align*}
+            \abs{-x} & = \begin{dcases}
+                           -x    & \text{if } (-x) > 0 \\
+                           0     & \text{if } (-x) = 0 \\
+                           -(-x) & \text{if } (-x) < 0
+                         \end{dcases} &  & \by{4.3.1}                   \\
+                     & = \begin{dcases}
+                           -x & \text{if } x < 0 \\
+                           0  & \text{if } x = 0 \\
+                           x  & \text{if } x > 0
+                         \end{dcases}       &  & \by{ac:4.2.5,ex:4.2.6} \\
+                     & = \abs{x}.                     &  & \by{4.3.1}
+          \end{align*}
+          Similarly \(\abs{-y} = \abs{y}\).
+          Thus we have \(\abs{x + y} \leq \abs{x} + \abs{y}\).
   \end{itemize}
   For all cases above we conclude that \(\abs{x + y} \leq \abs{x} + \abs{y}\).
 \end{proof}
 
-\begin{proof}{(c)}
+\begin{proof}[\pf{4.3.3}(c)]
   We have
   \begin{align*}
          & -y \leq x \leq y                                \\
     \iff & (x \leq y) \land (-x \leq y) &  & \by{ex:4.2.6} \\
     \iff & \abs{x} \leq y.              &  & \by{4.3.1}
   \end{align*}
-  In particular, we have
-  \[
-    \abs{x} \leq \abs{x} \iff -\abs{x} \leq x \leq \abs{x}.
-  \]
+  In particular, we have \(\abs{x} \leq \abs{x} \iff -\abs{x} \leq x \leq \abs{x}\).
 \end{proof}
 
-\begin{proof}{(d)}
+\begin{proof}[\pf{4.3.3}(d)]
   By \cref{4.2.7} we know that exactly one of the following three statements is true:
   \begin{itemize}
     \item \(x = 0\).
           Then we have
           \begin{align*}
-            \abs{0y} & = \abs{0}          &  & \by{4.2.2}                  \\
-                     & = 0                                                 \\
-                     & = 0 \abs{y}        &  & \by{4.2.2}                  \\
-                     & = \abs{0} \abs{y}. &  & \text{(by \cref{4.3.3}(a))}
+            \abs{0y} & = \abs{0}          &  & \by{4.2.2} \\
+                     & = 0                &  & \by{4.3.1} \\
+                     & = 0 \abs{y}        &  & \by{4.2.2} \\
+                     & = \abs{0} \abs{y}. &  & \by{4.3.1}
           \end{align*}
-    \item \(x\) is positive.
+    \item \(x \in \Q^+\).
           By \cref{4.2.7} again we know that exactly one of the following three statements is true:
           \begin{itemize}
             \item \(y = 0\).
                   By \cref{4.2.4} we know that \(xy = yx\), thus this is the same case as \(x = 0\).
-            \item \(y\) is positive.
-                  By \cref{ac:4.2.7} we know that \(xy\) is positive.
+            \item \(y \in \Q^+\).
+                  By \cref{ac:4.2.7} we know that \(xy \in \Q^+\).
                   Thus
                   \begin{align*}
-                    \abs{xy} & = xy               &  & \by{4.3.1}                  \\
-                             & = \abs{x} \abs{y}. &  & \text{(by \cref{4.3.3}(a))}
+                    \abs{xy} & = xy               &  & \by{4.3.1}    \\
+                             & = \abs{x} \abs{y}. &  & \by{4.3.3}[a]
                   \end{align*}
-            \item \(y\) is negative.
-                  By \cref{ac:4.2.8} we know that \(xy\) is a negative rational number.
+            \item \(y \in \Q^-\).
+                  By \cref{ac:4.2.8} we know that \(xy \in \Q^-\).
                   Thus
                   \begin{align*}
                     \abs{xy} & = -xy              &  & \by{4.3.1}    \\
-                             & = (-1)xy           &  & \by{ac:4.2.5} \\
-                             & = x(-1)y           &  & \by{4.2.4}    \\
                              & = x(-y)            &  & \by{ac:4.2.5} \\
                              & = \abs{x} \abs{y}. &  & \by{4.3.1}    \\
                   \end{align*}
           \end{itemize}
-    \item \(x\) is negative.
+    \item \(x \in \Q^-\).
           By \cref{4.2.7}, exactly one of the following three statements is true:
           \begin{itemize}
             \item \(y = 0\).
                   By \cref{4.2.4} we know that \(xy = yx\), thus this is the same case as \(x = 0\).
-            \item \(y\) is positive.
-                  By \cref{4.2.4} we know that \(xy = yx\), thus this is the same case as \(x\) is positive and \(y\) is negative.
-            \item \(y\) is negative.
+            \item \(y \in \Q^+\).
+                  By \cref{4.2.4} we know that \(xy = yx\), thus this is the same case as \(x \in \Q^+\) and \(y \in \Q^-\).
+            \item \(y \in \Q^-\).
                   By \cref{ac:4.2.7}, \(xy\) is a positive.
                   Thus
                   \begin{align*}
@@ -198,41 +177,41 @@
   From all cases above we conclude that \(\abs{xy} = \abs{x} \abs{y}\).
   In particular, we have
   \begin{align*}
-    \abs{-x} & = \abs{(-1)x}      &  & \by{ac:4.2.5} \\
-             & = \abs{-1} \abs{x}                    \\
-             & = -(-1) \abs{x}    &  & \by{4.3.1}    \\
-             & = 1 \abs{x}        &  & \by{4.2.2}    \\
+    \abs{-x} & = \abs{(-1)x}      &  & \by{ac:4.2.5}                 \\
+             & = \abs{-1} \abs{x} &  & \text{(from the proof above)} \\
+             & = -(-1) \abs{x}    &  & \by{4.3.1}                    \\
+             & = 1 \abs{x}        &  & \by{ac:4.1.6}                 \\
              & = \abs{x}.         &  & \by{4.2.4}
   \end{align*}
 \end{proof}
 
-\begin{proof}{(e)}
+\begin{proof}[\pf{4.3.3}(e)]
   Since \(x - y \in \Q\), by \cref{4.3.3}(a) we have \(d(x, y) = \abs{x - y} \geq 0\) and
   \begin{align*}
-    d(x, y) = 0
-    \iff & \abs{x - y} = 0 &  & \by{4.3.2}                  \\
-    \iff & x - y = 0       &  & \text{(by \cref{4.3.3}(a))} \\
+         & d(x, y) = 0                        \\
+    \iff & \abs{x - y} = 0 &  & \by{4.3.2}    \\
+    \iff & x - y = 0       &  & \by{4.3.3}[a] \\
     \iff & x = y.          &  & \by{4.2.4}
   \end{align*}
 \end{proof}
 
-\begin{proof}{(f)}
+\begin{proof}[\pf{4.3.3}(f)]
   We have
   \begin{align*}
-    d(x, y) & = \abs{x - y}    &  & \by{4.3.2}                  \\
-            & = \abs{-(x - y)} &  & \text{(by \cref{4.3.3}(d))} \\
-            & = \abs{y - x}    &  & \by{4.2.4}                  \\
+    d(x, y) & = \abs{x - y}    &  & \by{4.3.2}    \\
+            & = \abs{-(x - y)} &  & \by{4.3.3}[d] \\
+            & = \abs{y - x}    &  & \by{4.2.4}    \\
             & = d(y, x).       &  & \by{4.3.2}
   \end{align*}
 \end{proof}
 
-\begin{proof}{(g)}
+\begin{proof}[\pf{4.3.3}(g)]
   We have
   \begin{align*}
-    d(x, z) & = \abs{x - z}                  &  & \by{4.3.2}                  \\
-            & = \abs{x - y + y - z}          &  & \by{4.2.4}                  \\
-            & \leq \abs{x - y} + \abs{y - z} &  & \text{(by \cref{4.3.3}(b))} \\
-            & = d(x, y) + d(y, z).           &  & \by{4.3.2}                  \\
+    d(x, z) & = \abs{x - z}                  &  & \by{4.3.2}    \\
+            & = \abs{x - y + y - z}          &  & \by{4.2.4}    \\
+            & \leq \abs{x - y} + \abs{y - z} &  & \by{4.3.3}[b] \\
+            & = d(x, y) + d(y, z).           &  & \by{4.3.2}
   \end{align*}
 \end{proof}
 
@@ -241,14 +220,14 @@
   Then \(\abs{x} - \abs{y} \leq \abs{x + y}\).
 \end{ac}
 
-\begin{proof}
+\begin{proof}[\pf{ac:4.3.1}]
   \begin{align*}
-             & \abs{x + y + (-y)} \leq \abs{x + y} + \abs{-y}               &  & \text{(by \cref{4.3.3}(b))} \\
-    \implies & \abs{x} \leq \abs{x + y} + \abs{-y}                          &  & \by{4.2.4}                  \\
-    \implies & \abs{x} \leq \abs{x + y} + \abs{y}                           &  & \text{(by \cref{4.3.3}(d))} \\
-    \implies & \abs{x} + (-\abs{y}) \leq \abs{x + y} + \abs{y} + (-\abs{y}) &  & \text{(by \cref{4.2.9}(d))} \\
-    \implies & \abs{x} + (-\abs{y}) \leq \abs{x + y}                        &  & \by{4.2.4}                  \\
-    \implies & \abs{x} - \abs{y} \leq \abs{x + y}.
+             & \abs{x + y + (-y)} \leq \abs{x + y} + \abs{-y}               &  & \by{4.3.3}[b] \\
+    \implies & \abs{x} \leq \abs{x + y} + \abs{-y}                          &  & \by{4.2.4}    \\
+    \implies & \abs{x} \leq \abs{x + y} + \abs{y}                           &  & \by{4.3.3}[d] \\
+    \implies & \abs{x} + (-\abs{y}) \leq \abs{x + y} + \abs{y} + (-\abs{y}) &  & \by{4.2.9}[d] \\
+    \implies & \abs{x} + (-\abs{y}) \leq \abs{x + y}                        &  & \by{4.2.4}    \\
+    \implies & \abs{x} - \abs{y} \leq \abs{x + y}.                          &  & \by{ac:4.2.4}
   \end{align*}
 \end{proof}
 
@@ -294,126 +273,125 @@
   \end{enumerate}
 \end{prop}
 
-\begin{proof}{(a)}
+\begin{proof}[\pf{4.3.7}(a)]
   We first show that if \(x = y\), then \(x\) is \(\varepsilon\)-close to \(y\) for every \(\varepsilon \in \Q^+\).
   \begin{align*}
-             & x = y                                                                                                    \\
-    \implies & x - y = 0                                                               &  & \by{4.2.4}                  \\
-    \implies & \abs{x - y} = 0                                                         &  & \text{(by \cref{4.3.3}(a))} \\
-    \implies & \forall \varepsilon \in \Q^+, \abs{x - y} \leq \varepsilon              &  & \by{ac:4.2.9}               \\
+             & x = y                                                                                            \\
+    \implies & x - y = 0                                                               &  & \by{4.2.4}          \\
+    \implies & d(x, y) = \abs{x - y} = 0                                               &  & \by{4.3.2,4.3.3}[a] \\
+    \implies & \forall \varepsilon \in \Q^+, d(x, y) \leq \varepsilon                  &  & \by{ac:4.2.9}       \\
     \implies & \forall \varepsilon \in \Q^+, x \text{ is \(\varepsilon\)-close to } y. &  & \by{4.3.4}
   \end{align*}
 
   Now we show that if \(x\) is \(\varepsilon\)-close to \(y\) for every \(\varepsilon \in \Q^+\), then \(x = y\).
   Suppose for sake of contradiction that \(x \neq y\).
   Then by \cref{4.3.3}(e) we have \(d(x, y) > 0\).
-  But then we have \(d(x, y) < d(x, y)\), a contradiction.
+  But then we have \(d(x, y) \in \Q^+\), so \(d(x, y) < d(x, y)\), a contradiction.
   Thus we must have \(x = y\).
 \end{proof}
 
-\begin{proof}{(b)}
+\begin{proof}[\pf{4.3.7}(b)]
   We have
   \begin{align*}
-         & x \text{ is \(\varepsilon\)-close to } y                                   \\
-    \iff & d(x, y) \leq \varepsilon                  &  & \by{4.3.4}                  \\
-    \iff & d(y, x) \leq \varepsilon                  &  & \text{(by \cref{4.3.3}(f))} \\
+         & x \text{ is \(\varepsilon\)-close to } y                     \\
+    \iff & d(x, y) \leq \varepsilon                  &  & \by{4.3.4}    \\
+    \iff & d(y, x) \leq \varepsilon                  &  & \by{4.3.3}[f] \\
     \iff & y \text{ is \(\varepsilon\)-close to } x. &  & \by{4.3.4}
   \end{align*}
 \end{proof}
 
-\begin{proof}{(c)}
+\begin{proof}[\pf{4.3.7}(c)]
   We have
   \begin{align*}
-             & (x \text{ is \(\varepsilon\)-close to } y) \land (y \text{ is \(\delta\)-close to } z)                                     \\
-    \implies & \big(d(x, y) \leq \varepsilon\big) \land \big(d(y, z) \leq \delta\big)                 &  & \by{4.3.4}                     \\
-    \implies & d(x, y) + d(y, z) \leq \varepsilon + d(y, z) \leq \varepsilon + \delta                 &  & \text{(by \cref{4.2.9}(c)(d))} \\
-    \implies & d(x, z) \leq d(x, y) + d(y, z) \leq \varepsilon + \delta                               &  & \text{(by \cref{4.3.3}(g))}    \\
+             & (x \text{ is \(\varepsilon\)-close to } y) \land (y \text{ is \(\delta\)-close to } z)                      \\
+    \implies & \big(d(x, y) \leq \varepsilon\big) \land \big(d(y, z) \leq \delta\big)                 &  & \by{4.3.4}      \\
+    \implies & d(x, y) + d(y, z) \leq \varepsilon + d(y, z) \leq \varepsilon + \delta                 &  & \by{4.2.9}[c,d] \\
+    \implies & d(x, z) \leq d(x, y) + d(y, z) \leq \varepsilon + \delta                               &  & \by{4.3.3}[g]   \\
     \implies & x \text{ is \((\varepsilon + \delta)\)-close to } z.                                   &  & \by{4.3.4}
   \end{align*}
 \end{proof}
 
-\begin{proof}{(d)}
+\begin{proof}[\pf{4.3.7}(d)]
+  Since
   \begin{align*}
-             & (x \text{ is \(\varepsilon\)-close to } y) \land (z \text{ is \(\delta\)-close to } w)                                     \\
-    \implies & \big(d(x, y) \leq \varepsilon\big) \land \big(d(z, w) \leq \delta\big)                 &  & \by{4.3.4}                     \\
-    \implies & d(x, y) + d(z, w) \leq \varepsilon + d(z, w) \leq \varepsilon + \delta                 &  & \text{(by \cref{4.2.9}(c)(d))} \\
-    \implies & \abs{x - y} + \abs{z - w} \leq \varepsilon + \delta                                    &  & \by{4.3.2}                     \\
-    \implies & \abs{x - y + z - w} \leq \abs{x - y} + \abs{z - w} \leq \varepsilon + \delta           &  & \text{(by \cref{4.3.3}(b))}    \\
-    \implies & \abs{x + z - (y + w)} \leq \varepsilon + \delta                                        &  & \by{4.2.4}                     \\
-    \implies & (x + z) \text{ is \((\varepsilon + \delta)\)-close to } (y + w)                        &  & \by{4.3.4}                     \\
-    \implies & \abs{x - y} + \abs{-(z - w)} \leq \varepsilon + \delta                                 &  & \text{(by \cref{4.3.3})(d)}    \\
-    \implies & \abs{x - y} + \abs{w - z} \leq \varepsilon + \delta                                    &  & \by{4.2.4}                     \\
-    \implies & \abs{x - y + w - z} \leq \abs{x - y} + \abs{w - z} \leq \varepsilon + \delta           &  & \text{(by \cref{4.3.3}(b))}    \\
-    \implies & \abs{x - z - (y - w)} \leq \varepsilon + \delta                                        &  & \by{4.2.4}                     \\
-    \implies & (x - z) \text{ is \((\varepsilon + \delta)\)-close to } (y - w).                       &  & \by{4.3.4}
+             & (x \text{ is \(\varepsilon\)-close to } y) \land (z \text{ is \(\delta\)-close to } w)                      \\
+    \implies & \big(d(x, y) \leq \varepsilon\big) \land \big(d(z, w) \leq \delta\big)                 &  & \by{4.3.4}      \\
+    \implies & d(x, y) + d(z, w) \leq \varepsilon + d(z, w) \leq \varepsilon + \delta                 &  & \by{4.2.9}[c,d] \\
+    \implies & \abs{x - y} + \abs{z - w} \leq \varepsilon + \delta,                                   &  & \by{4.3.2}
+  \end{align*}
+  we have
+  \begin{align*}
+             & \abs{x - y} + \abs{z - w} \leq \varepsilon + \delta                                             \\
+    \implies & \abs{x - y + z - w} \leq \abs{x - y} + \abs{z - w} \leq \varepsilon + \delta &  & \by{4.3.3}[b] \\
+    \implies & \abs{x + z - (y + w)} \leq \varepsilon + \delta                              &  & \by{4.2.4}    \\
+    \implies & d(x + z, y + w) \leq \varepsilon + \delta                                    &  & \by{4.3.2}    \\
+    \implies & (x + z) \text{ is \((\varepsilon + \delta)\)-close to } (y + w)              &  & \by{4.3.4}
+  \end{align*}
+  and
+  \begin{align*}
+             & \abs{x - y} + \abs{z - w} \leq \varepsilon + \delta                                             \\
+    \implies & \abs{x - y} + \abs{-(z - w)} \leq \varepsilon + \delta                       &  & \by{4.3.3}[d] \\
+    \implies & \abs{x - y} + \abs{w - z} \leq \varepsilon + \delta                          &  & \by{4.2.4}    \\
+    \implies & \abs{x - y + w - z} \leq \abs{x - y} + \abs{w - z} \leq \varepsilon + \delta &  & \by{4.3.3}[b] \\
+    \implies & \abs{x - z - (y - w)} \leq \varepsilon + \delta                              &  & \by{4.2.4}    \\
+    \implies & d(x - z, y - w) \leq \varepsilon + \delta                                    &  & \by{4.3.2}    \\
+    \implies & (x - z) \text{ is \((\varepsilon + \delta)\)-close to } (y - w).             &  & \by{4.3.4}
   \end{align*}
 \end{proof}
 
-\begin{proof}{(e)}
+\begin{proof}[\pf{4.3.7}(e)]
+  We have
   \begin{align*}
-             & (x \text{ is \(\varepsilon\)-close to } y) \land (\varepsilon' > \varepsilon)                                  \\
-    \implies & \big(d(x, y) \leq \varepsilon\big) \land (\varepsilon' > \varepsilon)         &  & \by{4.3.4}                  \\
-    \implies & d(x, y) < \varepsilon'                                                        &  & \text{(by \cref{4.2.9}(c))} \\
+             & (x \text{ is \(\varepsilon\)-close to } y) \land (\varepsilon' > \varepsilon)                      \\
+    \implies & \big(d(x, y) \leq \varepsilon\big) \land (\varepsilon' > \varepsilon)         &  & \by{4.3.4}      \\
+    \implies & d(x, y) < \varepsilon'                                                        &  & \by{4.2.9}[b,c] \\
     \implies & x \text{ is \(\varepsilon'\)-close to } y.                                    &  & \by{4.3.4}
   \end{align*}
 \end{proof}
 
-\begin{proof}{(f)}
+\begin{proof}[\pf{4.3.7}(f)]
   We have
   \begin{align*}
-             & (y \text{ is } \varepsilon\text{-close to } x) \land (z \text{ is } \varepsilon\text{-close to } x)                                  \\
-    \implies & \big(d(y, x) \leq \varepsilon\big) \land \big(d(z, x) \leq \varepsilon\big)                         &  & \by{4.3.4}                  \\
-    \implies & (\abs{y - x} \leq \varepsilon) \land (\abs{z - x} \leq \varepsilon)                                 &  & \by{4.3.2}                  \\
-    \implies & (-\varepsilon \leq y - x \leq \varepsilon) \land (-\varepsilon \leq z - x \leq \varepsilon).        &  & \text{(by \cref{4.3.3}(c))}
+             & (y \text{ is } \varepsilon\text{-close to } x) \land (z \text{ is } \varepsilon\text{-close to } x)                    \\
+    \implies & \big(d(y, x) \leq \varepsilon\big) \land \big(d(z, x) \leq \varepsilon\big)                         &  & \by{4.3.4}    \\
+    \implies & (\abs{y - x} \leq \varepsilon) \land (\abs{z - x} \leq \varepsilon)                                 &  & \by{4.3.2}    \\
+    \implies & (-\varepsilon \leq y - x \leq \varepsilon) \land (-\varepsilon \leq z - x \leq \varepsilon).        &  & \by{4.3.3}[c]
   \end{align*}
-  Now we split into two cases:
-  \begin{itemize}
-    \item If \(y \leq w \leq z\), then we have
-          \begin{align*}
-                     & y \leq w \leq z                                                                                 \\
-            \implies & y - x \leq w - x \leq z - x                                    &  & \text{(by \cref{4.2.9}(d))} \\
-            \implies & -\varepsilon \leq y - x \leq w - x \leq z - x \leq \varepsilon &  & \text{(by \cref{4.2.9}(c))} \\
-            \implies & \abs{w - x} \leq \varepsilon                                   &  & \text{(by \cref{4.3.3}(c))} \\
-            \implies & d(w, x) \leq \varepsilon                                       &  & \by{4.3.2}                  \\
-            \implies & w \text{ is } \varepsilon\text{-close to } x.                  &  & \by{4.3.4}
-          \end{align*}
-    \item If \(z \leq w \leq y\), then we have
-          \begin{align*}
-                     & z \leq w \leq y                                                                                 \\
-            \implies & z - x \leq w - x \leq y - x                                    &  & \text{(by \cref{4.2.9}(d))} \\
-            \implies & -\varepsilon \leq z - x \leq w - x \leq y - x \leq \varepsilon &  & \text{(by \cref{4.2.9}(c))} \\
-            \implies & \abs{w - x} \leq \varepsilon                                   &  & \text{(by \cref{4.3.3}(c))} \\
-            \implies & d(w, x) \leq \varepsilon                                       &  & \by{4.3.2}                  \\
-            \implies & w \text{ is } \varepsilon\text{-close to } x.                  &  & \by{4.3.4}
-          \end{align*}
-  \end{itemize}
-  From all cases above we conclude that \(w\) is \(\varepsilon\)-close to \(x\).
+  If \(y \leq w \leq z\), then we have
+  \begin{align*}
+             & y \leq w \leq z                                                                   \\
+    \implies & y - x \leq w - x \leq z - x                                    &  & \by{4.2.9}[d] \\
+    \implies & -\varepsilon \leq y - x \leq w - x \leq z - x \leq \varepsilon &  & \by{4.2.9}[c] \\
+    \implies & \abs{w - x} \leq \varepsilon                                   &  & \by{4.3.3}[c] \\
+    \implies & d(w, x) \leq \varepsilon                                       &  & \by{4.3.2}    \\
+    \implies & w \text{ is } \varepsilon\text{-close to } x.                  &  & \by{4.3.4}
+  \end{align*}
+  The case for \(z \leq w \leq y\) can be proven similarly.
 \end{proof}
 
-\begin{proof}{(g)}
+\begin{proof}[\pf{4.3.7}(g)]
+  We have
   \begin{align*}
-             & (x \text{ is } \varepsilon\text{-close to } y) \land (z \neq 0)                                  \\
-    \implies & \big(d(x, y) \leq \varepsilon\big) \land (z \neq 0)             &  & \by{4.3.4}                  \\
-    \implies & (\abs{x - y} \leq \varepsilon) \land (z \neq 0)                 &  & \by{4.3.2}                  \\
-    \implies & (\abs{x - y} \leq \varepsilon) \land (\abs{z} > 0)              &  & \text{(by \cref{4.3.3}(a))} \\
-    \implies & \abs{x - y} \abs{z} \leq \varepsilon \abs{z}                    &  & \text{(by \cref{4.2.9}(e))} \\
-    \implies & \abs{(x - y)z} \leq \varepsilon \abs{z}                         &  & \text{(by \cref{4.3.3}(d))} \\
-    \implies & \abs{xz - yz} \leq \varepsilon \abs{z}                          &  & \by{4.2.4}                  \\
-    \implies & d(xz, yz) \leq \varepsilon \abs{z}                              &  & \by{4.3.2}                  \\
+             & (x \text{ is } \varepsilon\text{-close to } y) \land (z \neq 0)                       \\
+    \implies & (\abs{x - y} \leq \varepsilon) \land (z \neq 0)                 &  & \by{4.3.2,4.3.4} \\
+    \implies & (\abs{x - y} \leq \varepsilon) \land (\abs{z} > 0)              &  & \by{4.3.3}[a]    \\
+    \implies & \abs{x - y} \abs{z} \leq \varepsilon \abs{z}                    &  & \by{4.2.9}[e]    \\
+    \implies & \abs{(x - y)z} \leq \varepsilon \abs{z}                         &  & \by{4.3.3}[d]    \\
+    \implies & \abs{xz - yz} \leq \varepsilon \abs{z}                          &  & \by{4.2.4}       \\
+    \implies & d(xz, yz) \leq \varepsilon \abs{z}                              &  & \by{4.3.2}       \\
     \implies & xz \text{ is } (\varepsilon \abs{z})\text{-close to } yz.       &  & \by{4.3.4}
   \end{align*}
 \end{proof}
 
-\begin{proof}{(h)}
-  Let \(\varepsilon, \delta > 0\), and suppose that \(x\) and \(y\) are \(\varepsilon\)-close.
+\begin{proof}[\pf{4.3.7}(h)]
   If we write \(a \coloneqq y - x\), then we have \(y = x + a\) and that \(\abs{a} \leq \varepsilon\).
-  Similarly, if \(z\) and \(w\) are \(\delta\)-close, and we define \(b \coloneqq w - z\), then \(w = z + b\) and \(\abs{b} \leq \delta\).
+  Similarly, if we define \(b \coloneqq w - z\), then \(w = z + b\) and \(\abs{b} \leq \delta\).
 
-  Since \(y = x + a\) and \(w = z + b\), we have
+  Since \(y = x + a\) and \(w = z + b\), by \cref{4.2.4} we have
   \[
     yw = (x + a)(z + b) = xz + az + xb + ab.
   \]
-  Thus
+  Thus by \cref{4.3.3}(b)(d) we have
   \[
     \abs{yw - xz} = \abs{az + bx + ab} \leq \abs{az} + \abs{bx} + \abs{ab} = \abs{a}\abs{z} + \abs{b}\abs{x} + \abs{a}\abs{b}.
   \]
@@ -437,7 +415,7 @@
 \end{defn}
 
 \begin{prop}[Properties of exponentiation, I]\label{4.3.10}
-  Let \(x\), \(y\) be rational numbers, and let \(n\), \(m\) be natural numbers.
+  Let \(x, y\) be rational numbers, and let \(n, m\) be natural numbers.
   \begin{enumerate}
     \item We have \(x^n x^m = x^{n + m}\), \((x^n)^m = x^{nm}\), and \((xy)^n = x^n y^n\).
     \item Suppose \(n > 0\).
@@ -448,205 +426,207 @@
   \end{enumerate}
 \end{prop}
 
-\begin{proof}{(a)}
+\begin{proof}[\pf{4.3.10}(a)]
   We first show that \(x^n x^m = x^{n + m}\).
-  We use induction on \(n\).
+  We induct on \(n\).
   For \(n = 0\), we have
   \begin{align*}
-    x^0 x^m & = 1 x^m     &  & \by{4.3.9} \\
-            & = x^m       &  & \by{4.2.4} \\
-            & = x^{0 + m} &  & \by{2.2.1}
+    x^0 x^m & = 1 x^m      &  & \by{4.3.9} \\
+            & = x^m        &  & \by{4.2.4} \\
+            & = x^{0 + m}. &  & \by{2.2.1}
   \end{align*}
-  and the base case holds.
-  Suppose inductively that for some \(n \geq 0\) we have \(x^n x^m = x^{n + m}\).
+  So the base case holds.
+  Suppose inductively that for some \(n \in \N\) we have \(x^n x^m = x^{n + m}\).
   Then for \(n + 1\), we have
   \begin{align*}
-    x^{n + 1} x^m & = (x^n x) x^m     &  & \by{4.3.9} \\
-                  & = x^n (x x^m)     &  & \by{4.2.4} \\
-                  & = x^n (x^m x)     &  & \by{4.2.4} \\
-                  & = (x^n x^m) x     &  & \by{4.2.4} \\
-                  & = x^{n + m} x     &  & \byIH      \\
-                  & = x^{(n + m) + 1} &  & \by{4.3.9} \\
-                  & = x^{n + (m + 1)} &  & \by{2.2.5} \\
-                  & = x^{n + (1 + m)} &  & \by{2.2.4} \\
-                  & = x^{(n + 1) + m} &  & \by{2.2.5}
+    x^{n + 1} x^m & = (x^n x) x^m      &  & \by{4.3.9} \\
+                  & = x^n (x x^m)      &  & \by{4.2.4} \\
+                  & = x^n (x^m x)      &  & \by{4.2.4} \\
+                  & = (x^n x^m) x      &  & \by{4.2.4} \\
+                  & = x^{n + m} x      &  & \byIH      \\
+                  & = x^{(n + m) + 1}  &  & \by{4.3.9} \\
+                  & = x^{n + (m + 1)}  &  & \by{2.2.5} \\
+                  & = x^{n + (1 + m)}  &  & \by{2.2.4} \\
+                  & = x^{(n + 1) + m}. &  & \by{2.2.5}
   \end{align*}
-  and this closes the induction.
+  This closes the induction.
 
   Next we show that \((x^n)^m = x^{nm}\).
-  We use induction on \(m\).
+  We induct on \(m\).
   For \(m = 0\), we have
   \begin{align*}
-    (x^n)^0 & = 1      &  & \by{4.3.9}    \\
-            & = x^0    &  & \by{4.3.9}    \\
-            & = x^{n0} &  & \by{ac:2.3.2}
+    (x^n)^0 & = 1       &  & \by{4.3.9}    \\
+            & = x^0     &  & \by{4.3.9}    \\
+            & = x^{n0}. &  & \by{ac:2.3.2}
   \end{align*}
-  and the base case holds.
-  Suppose inductively that for some \(m \geq 0\) we have \((x^n)^m = x^{nm}\).
+  So the base case holds.
+  Suppose inductively that for some \(m \in \N\) we have \((x^n)^m = x^{nm}\).
   Then for \(m + 1\), we have
   \begin{align*}
-    (x^n)^{m + 1} & = (x^n)^m (x^n) &  & \by{4.3.9} \\
-                  & = x^{nm} x^n    &  & \byIH      \\
-                  & = x^{nm + n}                    \\
-                  & = x^{n(m + 1)}  &  & \by{2.3.4}
+    (x^n)^{m + 1} & = (x^n)^m (x^n) &  & \by{4.3.9}                    \\
+                  & = x^{nm} x^n    &  & \byIH                         \\
+                  & = x^{nm + n}    &  & \text{(from the proof above)} \\
+                  & = x^{n(m + 1)}. &  & \by{ac:2.3.3}
   \end{align*}
-  and this closes the induction.
+  This closes the induction.
 
   Finally we show that \((xy)^n = x^n y^n\).
-  We use induction on \(n\).
+  We induct on \(n\).
   For \(n = 0\), we have
   \begin{align*}
-    (xy)^0 & = 1       &  & \by{4.3.9} \\
-           & = y^0     &  & \by{4.3.9} \\
-           & = 1y^0    &  & \by{4.2.4} \\
-           & = x^0 y^0 &  & \by{4.3.9}
+    (xy)^0 & = 1        &  & \by{4.3.9} \\
+           & = y^0      &  & \by{4.3.9} \\
+           & = 1y^0     &  & \by{4.2.4} \\
+           & = x^0 y^0. &  & \by{4.3.9}
   \end{align*}
-  and the base case holds.
-  Suppose inductively that for some \(n \geq 0\) we have \((xy)^n = x^n y^n\).
+  So the base case holds.
+  Suppose inductively that for some \(n \in \N\) we have \((xy)^n = x^n y^n\).
   Then for \(n + 1\), we have
   \begin{align*}
-    (xy)^{n + 1} & = (xy)^n (xy)         &  & \by{4.3.9} \\
-                 & = (x^n y^n) (xy)      &  & \byIH      \\
-                 & = x^n (y^n x) y       &  & \by{4.2.4} \\
-                 & = x^n (x y^n) y       &  & \by{4.2.4} \\
-                 & = (x^n x)(y^n y)      &  & \by{4.2.4} \\
-                 & = x^{n + 1} y^{n + 1} &  & \by{4.3.9}
+    (xy)^{n + 1} & = (xy)^n (xy)          &  & \by{4.3.9} \\
+                 & = (x^n y^n) (xy)       &  & \byIH      \\
+                 & = x^n (y^n x) y        &  & \by{4.2.4} \\
+                 & = x^n (x y^n) y        &  & \by{4.2.4} \\
+                 & = (x^n x)(y^n y)       &  & \by{4.2.4} \\
+                 & = x^{n + 1} y^{n + 1}. &  & \by{4.3.9}
   \end{align*}
-  and this closes the induction.
+  This closes the induction.
 \end{proof}
 
-\begin{proof}{(b)}
-  We use induction on \(n\) and we start with \(n = 1\).
+\begin{proof}[\pf{4.3.10}(b)]
+  We induct on \(n\) and we start with \(n = 1\).
   For \(n = 1\), we have
   \begin{align*}
          & x^1 = 0                   \\
     \iff & x^0 x = 0 &  & \by{4.3.9} \\
     \iff & 1x = 0    &  & \by{4.3.9} \\
-    \iff & x = 0     &  & \by{4.2.4}
+    \iff & x = 0.    &  & \by{4.2.4}
   \end{align*}
-  and the base case holds.
-  Suppose inductively that for some \(n \geq 1\) we have \(x^n = 0 \iff x = 0\).
+  So the base case holds.
+  Suppose inductively that for some \(n \in \N \setminus \set{0}\) we have \(x^n = 0 \iff x = 0\).
   Then for \(n + 1\), we have
   \begin{align*}
-         & x^{n + 1} = 0                                                    \\
-    \iff & x^n x = 0              &  & \by{4.3.9}                           \\
-    \iff & (x^n = 0) \lor (x = 0) &  & \text{(by \cref{ac:4.2.7,ac:4.2.8})} \\
-    \iff & x = 0                  &  & \byIH
+         & x^{n + 1} = 0                                      \\
+    \iff & x^n x = 0              &  & \by{4.3.9}             \\
+    \iff & (x^n = 0) \lor (x = 0) &  & \by{ac:4.2.7,ac:4.2.8} \\
+    \iff & x = 0.                 &  & \byIH
   \end{align*}
-  and this closes the induction.
+  This closes the induction.
 \end{proof}
 
-\begin{proof}{(c)}
+\begin{proof}[\pf{4.3.10}(c)]
   We first show that if \(x \geq y \geq 0\), then \(x^n \geq y^n \geq 0\).
-  We use induction on \(n\).
+  We induct on \(n\).
   For \(n = 0\), we have
   \begin{align*}
-             & x \geq y \geq 0                             \\
-    \implies & x^0 = 1 \geq y^0 = 1 \geq 0 &  & \by{4.3.9}
+             & x \geq y \geq 0                              \\
+    \implies & x^0 = 1 \geq y^0 = 1 \geq 0. &  & \by{4.3.9}
   \end{align*}
-  and the base case holds.
-  Suppose inductively that for some \(n \geq 0\) we have \(x^n \geq y^n \geq 0\).
+  So the base case holds.
+  Suppose inductively that for some \(n \in \N\) we have \(x^n \geq y^n \geq 0\).
   Then for \(n + 1\), we have
   \begin{align*}
-             & (x \geq y \geq 0) \land (x^n \geq y^n \geq 0)                  &  & \byIH                       \\
-    \implies & (x^n x \geq y^n x \geq 0x) \land (y^n x \geq y^n y \geq y^n 0) &  & \text{(by \cref{4.2.9}(e))} \\
-    \implies & x^n x \geq y^n x \geq y^n y \geq y^n 0                         &  & \text{(by \cref{4.2.9}(c))} \\
-    \implies & x^n x \geq y^n y \geq 0                                        &  & \by{4.2.2}                  \\
-    \implies & x^{n + 1} \geq y^{n + 1} \geq 0                                &  & \by{4.3.9}
+             & (x^n \geq y^n \geq 0) \land (x \geq y \geq 0)                  &  & \byIH            \\
+    \implies & (x^n x \geq y^n x \geq 0x) \land (y^n x \geq y^n y \geq y^n 0) &  & \by{4.2.9}[e]    \\
+    \implies & x^n x \geq y^n x \geq y^n y \geq y^n 0                         &  & \by{4.2.9}[c]    \\
+    \implies & x^{n + 1} \geq y^{n + 1} \geq 0.                               &  & \by{4.2.2,4.3.9}
   \end{align*}
-  and this closes the induction.
+  This closes the induction.
 
   Now we show that if \(x > y \geq 0\) and \(n > 0\), then \(x^n > y^n \geq 0\).
-  If \(y = 0\), then by \cref{4.3.10}(b) we know that \(y^n = 0\).
-  By \cref{4.2.9}(e) \(x > 0 \implies x^n\), thus we have \(x^n > 0 \geq 0\).
-  So suppose that \(y > 0\).
-  We use induction on \(n\) and start with \(n = 1\).
-  For \(n = 1\), we have
-  \begin{align*}
-             & (x > y > 0) \land (x^1 = x^0 x = 1x) \land (y^1 = y^0 y = 1y) &  & \by{4.3.9} \\
-             & (x > y > 0) \land (x^1 = x) \land (y^1 = y)                   &  & \by{4.2.4} \\
-    \implies & x^1 > y^1 > 0                                                 &  & \by{4.3.9}
-  \end{align*}
-  and the base case holds.
-  Suppose inductively that for some \(n \geq 1\) we have \(x^n > y^n > 0\).
-  Then for \(n + 1\), we have
-  \begin{align*}
-             & (x > y > 0) \land (x^n > y^n > 0)                  &  & \byIH                       \\
-    \implies & (x^n x > y^n x > 0x) \land (y^n x > y^n y > y^n 0) &  & \text{(by \cref{4.2.9}(e))} \\
-    \implies & x^n x > y^n x > y^n y > y^n 0                      &  & \text{(by \cref{4.2.9}(c))} \\
-    \implies & x^n x > y^n y > 0                                  &  & \by{4.2.2}                  \\
-    \implies & x^{n + 1} > y^{n + 1} > 0                          &  & \by{4.3.9}
-  \end{align*}
-  and this closes the induction.
-  Combine with the result above we have
-  \[
-    x > y \geq 0 \implies x^n > y^n \geq 0.
-  \]
+  We split into two cases:
+  \begin{itemize}
+    \item If \(y = 0\), then by \cref{4.3.10}(b) we know that \(x \neq 0 \iff x^n \neq 0\) and \(y = 0 \iff y^n = 0\).
+          By \cref{4.2.9}(e) we know that \(x > 0 \implies x^n > 0\).
+          Thus by \cref{4.2.9}(c) we have \(x^n > y^n = 0\).
+    \item If \(y > 0\), then we have \(x > y > 0\).
+          We induct on \(n\) to show that \(x^n > y^n > 0\) and we start with \(n = 1\).
+          For \(n = 1\), we have
+          \begin{align*}
+                     & \begin{dcases}
+                         x > y > 0            \\
+                         x^1 = x^0 x = 1x = x \\
+                         y^1 = y^0 y = 1y = y
+                       \end{dcases} &  & \by{4.2.4,4.3.9}      \\
+            \implies & x^1 > y^1 > 0.          &  & \by{4.3.9}
+          \end{align*}
+          So the base case holds.
+          Suppose inductively that for some \(n \in \N \setminus \set{0}\) we have \(x^n > y^n > 0\).
+          Then for \(n + 1\), we have
+          \begin{align*}
+                     & (x^n > y^n > 0) \land (x > y > 0)                  &  & \byIH            \\
+            \implies & (x^n x > y^n x > 0x) \land (y^n x > y^n y > y^n 0) &  & \by{4.2.9}[e]    \\
+            \implies & x^n x > y^n x > y^n y > y^n 0                      &  & \by{4.2.9}[c]    \\
+            \implies & x^{n + 1} > y^{n + 1} > 0.                         &  & \by{4.2.2,4.3.9}
+          \end{align*}
+          This closes the induction.
+  \end{itemize}
+  From all cases above we conclude that \(x > y \geq 0 \implies x^n > y^n \geq 0\).
 \end{proof}
 
-\begin{proof}{(d)}
-  We use induction on \(n\).
+\begin{proof}[\pf{4.3.10}(d)]
+  We induct on \(n\).
   For \(n = 0\), we have
   \begin{align*}
-    \abs{x^0} & = \abs{1}   &  & \by{4.3.9} \\
-              & = 1         &  & \by{4.3.1} \\
-              & = \abs{x}^0 &  & \by{4.3.9}
+    \abs{x^0} & = \abs{1}    &  & \by{4.3.9} \\
+              & = 1          &  & \by{4.3.1} \\
+              & = \abs{x}^0. &  & \by{4.3.9}
   \end{align*}
-  and the base case holds.
-  Suppose inductively that for some \(n \geq 0\) we have \(\abs{x^n} = \abs{x}^n\).
+  So the base case holds.
+  Suppose inductively that for some \(n \in \N\) we have \(\abs{x^n} = \abs{x}^n\).
   Then for \(n + 1\), we have
   \begin{align*}
-    \abs{x^{n + 1}} & = \abs{x^n x}       &  & \by{4.3.9}                  \\
-                    & = \abs{x^n} \abs{x} &  & \text{(by \cref{4.3.3}(d))} \\
-                    & = \abs{x}^n \abs{x} &  & \byIH                       \\
-                    & = \abs{x}^{n + 1}   &  & \by{4.3.9}
+    \abs{x^{n + 1}} & = \abs{x^n x}       &  & \by{4.3.9}    \\
+                    & = \abs{x^n} \abs{x} &  & \by{4.3.3}[d] \\
+                    & = \abs{x}^n \abs{x} &  & \byIH         \\
+                    & = \abs{x}^{n + 1}.  &  & \by{4.3.9}
   \end{align*}
-  and this closes the induction.
+  This closes the induction.
 \end{proof}
 
 \begin{defn}[Exponentiation to a negative number]\label{4.3.11}
   Let \(x\) be a non-zero rational number.
   Then for any negative integer \(-n\), we define \(x^{-n} \coloneqq 1 / x^n\).
+
+  Note that when \(n = 1\), the definition of \(x^{-1}\) provided by \cref{4.3.11} coincides with the reciprocal of \(x\) defined previously, so there is no incompatibility of notation caused by this new definition.
 \end{defn}
 
-\begin{note}
-  When \(n = 1\), the definition of \(x^{-1}\) provided by \cref{4.3.11} coincides with the reciprocal of \(x\) defined previously, so there is no incompatibility of notation caused by this new definition.
-\end{note}
 
 \begin{ac}\label{ac:4.3.2}
   Let \(x\) be a non-zero rational number.
   Then for any negative integer \(-n\), we have \(x^{-n + 1} = x^{-n} \times x\).
 \end{ac}
 
-\begin{proof}
+\begin{proof}[\pf{ac:4.3.2}]
   By \cref{4.1.11}(f), exactly one of the following three statements is true:
   \begin{itemize}
     \item \(-n + 1 = 0\).
           Then by \cref{4.1.6} we have \(n = 1\) and
           \begin{align*}
-            x^{-1 + 1} & = x^0                       \\
+            x^{-1 + 1} & = x^0       &  & \by{4.1.6} \\
                        & = 1         &  & \by{4.3.9} \\
                        & = x^{-1} x. &  & \by{4.2.4}
           \end{align*}
     \item \(-n + 1 > 0\).
           Then we have
           \begin{align*}
-                     & -n + 1 > 0                                   \\
-            \implies & n < 1      &  & \text{(by \cref{4.1.11}(b))} \\
-            \implies & n = 0      &  & \by{2.3}                     \\
-            \implies & -n = 0     &  & \by{ac:4.2.5}
+                     & -n + 1 > 0                     \\
+            \implies & n < 1      &  & \by{4.1.11}[b] \\
+            \implies & n = 0      &  & \by{2.3}       \\
+            \implies & -n = 0     &  & \by{ac:4.1.8}
           \end{align*}
           which contradict to \(-n\) is negative.
-          Thus this case does not exist.
+          Thus we cannot have \(-n + 1 > 0\).
     \item \(-n + 1 < 0\).
-          Then by \cref{4.1.11}(d) we have \(n - 1 > 0\) and
+          Then by \cref{4.1.11}(d) we have \(n - 1 > 0\) and by \cref{4.3.9} we have \(x^{n - 1} x = x^n\).
+          Therefore,
           \begin{align*}
                      & x^{-n + 1} x^{n - 1} = 1              &  & \by{4.2.4} \\
             \implies & (x^{-n + 1} x^{n - 1}) x = 1x         &  & \by{4.2.3} \\
             \implies & x^{-n + 1} (x^{n - 1} x) = 1x         &  & \by{4.2.4} \\
             \implies & x^{-n + 1} x^{n - 1 + 1} = 1x         &  & \by{4.3.9} \\
             \implies & x^{-n + 1} x^n = 1x                   &  & \by{4.1.6} \\
-            \implies & (x^{-n + 1} x^n) x^{-n} = (1x) x^{-n} &  & \by{4.1.6} \\
+            \implies & (x^{-n + 1} x^n) x^{-n} = (1x) x^{-n} &  & \by{4.2.3} \\
             \implies & x^{-n + 1} (x^n x^{-n}) = 1(x x^{-n}) &  & \by{4.2.4} \\
             \implies & x^{-n + 1} 1 = 1x x^{-n}              &  & \by{4.2.4} \\
             \implies & x^{-n + 1} = x x^{-n}                 &  & \by{4.2.4} \\
@@ -666,117 +646,91 @@
   \end{enumerate}
 \end{prop}
 
-\begin{proof}{(a)}
+\begin{proof}[\pf{4.3.12}(a)]
   We first show that \(x^n x^m = x^{n + m}\).
-  By \cref{4.1.5} exactly one of the following two statements is true:
+  By \cref{4.1.11}(f) exactly one of \(n > 0\), \(n = 0\) or \(n < 0\) is true.
+  Similarly, exactly one of \(m > 0\), \(m = 0\) or \(m < 0\) is true, and exactly one of \(n + m > 0\), \(n + m = 0\) or \(n + m < 0\) is true.
+  Thus we can split into following cases:
   \begin{itemize}
-    \item \(n \geq 0\).
-          Then we use induction on \(n\).
-          For \(n = 0\), we have
+    \item If \(n = 0\) or \(m = 0\), then we have
           \begin{align*}
-            x^0 x^m & = 1x^m      &  & \by{4.3.9} \\
+            x^0 x^m & = 1 x^m     &  & \by{4.3.9} \\
                     & = x^m       &  & \by{4.2.4} \\
                     & = x^{0 + m} &  & \by{4.1.6}
           \end{align*}
-          and the base case holds.
-          Suppose inductively that for some \(n \geq 0\) we have \(x^n x^m = x^{n + m}\).
-          Then for \(n + 1\), we have
+          and
           \begin{align*}
-            x^{n + 1} x^m & = (x^n x) x^m  &  & \by{4.3.9} \\
-                          & = x^n (x x^m)  &  & \by{4.2.4} \\
-                          & = x^n (x^m x)  &  & \by{4.2.4} \\
-                          & = (x^n x^m) x  &  & \by{4.2.4} \\
-                          & = x^{n + m} x. &  & \byIH
+            x^n x^0 & = x^0 x^n    &  & \by{4.2.4}                    \\
+                    & = x^{0 + n}  &  & \text{(from the proof above)} \\
+                    & = x^{n + 0}. &  & \by{4.1.6}
           \end{align*}
-          By \cref{4.1.5} again exactly one of the following two statements is true:
-          \begin{itemize}
-            \item If \(n + m \geq 0\), then we have
-                  \begin{align*}
-                    x^{n + m} x & = x^{(n + m) + 1}  &  & \by{4.3.9} \\
-                                & = x^{n + (m + 1)}  &  & \by{2.2.5} \\
-                                & = x^{n + (1 + m)}  &  & \by{2.2.4} \\
-                                & = x^{(n + 1) + m}. &  & \by{2.2.5}
-                  \end{align*}
-            \item If \(n + m < 0\), then we have
-                  \begin{align*}
-                    x^{n + m} x & = x^{(n + m) + 1}  &  & \by{ac:4.3.2} \\
-                                & = x^{n + (m + 1)}  &  & \by{4.1.6}    \\
-                                & = x^{n + (1 + m)}  &  & \by{4.1.6}    \\
-                                & = x^{(n + 1) + m}. &  & \by{4.1.6}
-                  \end{align*}
-          \end{itemize}
-          From all cases above we conclude that \(x^{n + 1} x^m = x^{(n + 1) + m}\), and this closes the induction.
-    \item \(n < 0\).
-          Then by \cref{4.1.4} we know that \(-n > 0\).
-          By \cref{4.1.5} again exactly one of the following two statements is true:
-          \begin{itemize}
-            \item If \(n + m \geq 0\), then we have
-                  \begin{align*}
-                             & (n < 0) \land (n + m \geq 0)                                      \\
-                    \implies & (-n > 0) \land (m \geq -n)   &  & \text{(by \cref{4.1.11}(b)(d))} \\
-                    \implies & m \geq -n > 0                &  & \text{(by \cref{4.1.11}(e)}
-                  \end{align*}
-                  and
-                  \begin{align*}
-                    x^n x^m & = \dfrac{1x^m}{x^{-n}}                    &  & \by{4.3.11}                  \\
-                            & = \dfrac{x^m}{x^{-n}}                     &  & \by{4.2.4}                   \\
-                            & = \dfrac{x^m x^{n + m}}{x^{-n} x^{n + m}} &  & \by{4.2.2}                   \\
-                            & = \dfrac{x^m x^{n + m}}{x^{(-n) + n + m}} &  & \text{(by \cref{4.3.10}(a))} \\
-                            & = \dfrac{x^m x^{n + m}}{x^m}              &  & \by{4.1.6}                   \\
-                            & = x^{n + m}.                              &  & \by{4.2.2}
-                  \end{align*}
-            \item If \(n + m < 0\), then by \cref{4.1.5} again exactly one of the following two statements is true:
-                  \begin{itemize}
-                    \item \(m \geq 0\).
-                          This is the same as the case \(n \geq 0\) since
-                          \begin{align*}
-                            x^n x^m & = x^m x^n    &  & \by{4.2.4}                             \\
-                                    & = x^{m + n}  &  & \text{(same as the case \(n \geq 0\))} \\
-                                    & = x^{n + m}. &  & \by{2.2.4}
-                          \end{align*}
-                    \item \(m < 0\).
-                          Then we have \(-n, -m, -(n + m) > 0\) and
-                          \begin{align*}
-                            x^{n + m} & = \dfrac{1}{x^{-(n + m)}}    &  & \by{4.3.11}   \\
-                                      & = \dfrac{1}{x^{(-n) + (-m)}} &  & \by{ac:4.1.5} \\
-                                      & = \dfrac{1}{x^{-n} x^{-m}}   &  & \by{4.2.2}    \\
-                                      & = x^n x^m.                   &  & \by{4.3.11}
-                          \end{align*}
-                  \end{itemize}
-          \end{itemize}
+    \item If \(n > 0\) and \(m > 0\), then by \cref{4.3.10}(a) we have \(x^n x^m = x^{n + m}\).
+    \item If \(n > 0\), \(m < 0\) and \(n + m \geq 0\), then by \cref{4.1.11}(d) we have \(-m > 0\).
+          Thus
+          \begin{align*}
+            x^n x^m & = \dfrac{1 x^n}{x^{-m}}            &  & \by{4.3.11}    \\
+                    & = \dfrac{x^n}{x^{-m}}              &  & \by{4.2.4}     \\
+                    & = \dfrac{x^{n + m + (-m)}}{x^{-m}} &  & \by{4.1.6}     \\
+                    & = \dfrac{x^{n + m} x^{-m}}{x^{-m}} &  & \by{4.3.10}[a] \\
+                    & = x^{n + m}.                       &  & \by{4.2.3}
+          \end{align*}
+    \item If \(n > 0\), \(m < 0\) and \(n + m < 0\), then by \cref{4.1.11}(d) we have \(-(n + m) > 0\).
+          Thus
+          \begin{align*}
+            x^n x^m & = \dfrac{1 x^n}{x^{-m}}              &  & \by{4.3.11}    \\
+                    & = \dfrac{1 x^n}{x^{n + (-n) + (-m)}} &  & \by{4.1.6}     \\
+                    & = \dfrac{1 x^n}{x^{n + (-(n + m))}}  &  & \by{ac:4.1.5}  \\
+                    & = \dfrac{1 x^n}{x^n x^{-(n + m)}}    &  & \by{4.3.10}[a] \\
+                    & = \dfrac{1}{x^{-(n + m)}}            &  & \by{4.2.3}     \\
+                    & = x^{n + m}.                         &  & \by{4.3.11}
+          \end{align*}
+    \item If \(n < 0\) and \(m > 0\), then we can use the previous two cases to conclude that
+          \begin{align*}
+            x^n x^m & = x^m x^n    &  & \by{4.2.4}                           \\
+                    & = x^{m + n}  &  & \text{(from the previous two cases)} \\
+                    & = x^{n + m}. &  & \by{4.1.6}
+          \end{align*}
+    \item If \(n < 0\) and \(m < 0\), then by \cref{4.1.11}(d) we have \(-n > 0\), \(-m > 0\) and \(-(n + m) > 0\).
+          Thus
+          \begin{align*}
+            x^n x^m & = \dfrac{1}{x^{-n} x^{-m}}   &  & \by{4.3.11}    \\
+                    & = \dfrac{1}{x^{(-n) + (-m)}} &  & \by{4.3.10}[a] \\
+                    & = \dfrac{1}{x^{-(n + m)}}    &  & \by{ac:4.1.5}  \\
+                    & = x^{n + m}.                 &  & \by{4.3.11}
+          \end{align*}
   \end{itemize}
   From all cases above we conclude that \(x^n x^m = x^{n + m}\).
 
   Next we show that \((x^n)^m = x^{nm}\).
   By \cref{4.1.5} exactly one of the following two statements is true:
-  \begin{enumerate}[label=(\Roman*)]
+  \begin{itemize}
     \item \(m \geq 0\).
-          Then we use induction on \(m\).
+          Then we induct on \(m\) to show that \((x^n)^m = x^{nm}\).
           For \(m = 0\), we have
           \begin{align*}
-            (x^n)^0 & = 1      &  & \by{4.3.9} \\
-                    & = x^0    &  & \by{4.2.4} \\
-                    & = x^{n0} &  & \by{4.1.6}
+            (x^n)^0 & = 1       &  & \by{4.3.9} \\
+                    & = x^0     &  & \by{4.2.4} \\
+                    & = x^{n0}. &  & \by{4.1.6}
           \end{align*}
-          and the base case holds.
-          Suppose inductively that for some \(n \geq 0\) we have \((x^n)^m = x^{nm}\).
+          So the base case holds.
+          Suppose inductively that for some \(m \in \N\) we have \((x^n)^m = x^{nm}\).
           Then for \(n + 1\), we have
           \begin{align*}
-            (x^n)^{m + 1} & = (x^n)^m x^n  &  & \by{ac:4.3.2}                \\
-                          & = x^{nm} x^n   &  & \byIH                        \\
-                          & = x^{nm + n}   &  & \text{(by \cref{4.3.10}(a))} \\
-                          & = x^{n(m + 1)} &  & \by{2.3.4}
+            (x^n)^{m + 1} & = (x^n)^m x^n   &  & \by{ac:4.3.2}  \\
+                          & = x^{nm} x^n    &  & \byIH          \\
+                          & = x^{nm + n}    &  & \by{4.3.12}[a] \\
+                          & = x^{n(m + 1)}. &  & \by{ac:2.3.3}
           \end{align*}
-          and this closes the induction.
+          This closes the induction.
     \item \(m < 0\).
           Then by \cref{ac:4.2.7} we have \(-m > 0\) and
           \begin{align*}
-            (x^n)^m & = \dfrac{1}{(x^n)^{-m}} &  & \by{4.3.11}          \\
-                    & = \dfrac{1}{x^{n(-m)}}  &  & \text{(by case (I))} \\
-                    & = \dfrac{1}{x^{-nm}}    &  & \by{ac:4.1.5}        \\
+            (x^n)^m & = \dfrac{1}{(x^n)^{-m}} &  & \by{4.3.11}                  \\
+                    & = \dfrac{1}{x^{n(-m)}}  &  & \text{(from the first case)} \\
+                    & = \dfrac{1}{x^{-nm}}    &  & \by{ac:4.1.5}                \\
                     & = x^{nm}.               &  & \by{4.3.11}
           \end{align*}
-  \end{enumerate}
+  \end{itemize}
   From all cases above we conclude that \((x^n)^m = x^{nm}\).
 
   Finally we show that \((xy)^n = x^n y^n\).
@@ -787,15 +741,15 @@
     \item \(n < 0\).
           Then by \cref{ac:4.2.7} we have \(-n > 0\) and
           \begin{align*}
-            (xy)^n & = \dfrac{1}{(xy)^{-n}}     &  & \by{4.3.11}                  \\
-                   & = \dfrac{1}{x^{-n} y^{-n}} &  & \text{(by \cref{4.3.10}(a))} \\
+            (xy)^n & = \dfrac{1}{(xy)^{-n}}     &  & \by{4.3.11}    \\
+                   & = \dfrac{1}{x^{-n} y^{-n}} &  & \by{4.3.10}[a] \\
                    & = x^n y^n.                 &  & \by{4.3.11}
           \end{align*}
   \end{itemize}
   From all cases above we conclude that \((xy)^n = x^n y^n\).
 \end{proof}
 
-\begin{proof}{(b)}
+\begin{proof}[\pf{4.3.12}(b)]
   By \cref{4.1.5} exactly one of the following two statements is true:
   \begin{itemize}
     \item \(n \geq 0\).
@@ -803,17 +757,17 @@
     \item \(n < 0\).
           Then by \cref{ac:4.2.7} we have \(-n > 0\) and
           \begin{align*}
-                     & x^{-n} \geq y^{-n} > 0                                                   &  & \text{(by \cref{4.3.10}(b)(c))} \\
-            \implies & \dfrac{1}{x^n} \geq \dfrac{1}{y^n} > 0                                   &  & \by{4.3.11}                     \\
-            \implies & (\dfrac{1}{x^n} \geq \dfrac{1}{y^n} > 0) \land (x^n > 0) \land (y^n > 0) &  & \by{ac:4.2.8}                   \\
-            \implies & \dfrac{x^n y^n}{x^n} \geq \dfrac{x^n y^n}{y^n} > 0(x^n y^n)              &  & \text{(by \cref{4.2.9}(e))}     \\
-            \implies & y^n \geq x^n > 0(x^n y^n)                                                &  & \by{4.2.2}                      \\
+                     & x^{-n} \geq y^{-n} > 0                                                   &  & \by{4.3.10}[b,c] \\
+            \implies & \dfrac{1}{x^n} \geq \dfrac{1}{y^n} > 0                                   &  & \by{4.3.11}      \\
+            \implies & (\dfrac{1}{x^n} \geq \dfrac{1}{y^n} > 0) \land (x^n > 0) \land (y^n > 0) &  & \by{ac:4.2.8}    \\
+            \implies & \dfrac{x^n y^n}{x^n} \geq \dfrac{x^n y^n}{y^n} > 0(x^n y^n)              &  & \by{4.2.9}[e]    \\
+            \implies & y^n \geq x^n > 0(x^n y^n)                                                &  & \by{4.2.2}       \\
             \implies & y^n \geq x^n > 0.                                                        &  & \by{4.2.4}
           \end{align*}
   \end{itemize}
 \end{proof}
 
-\begin{proof}{(c)}
+\begin{proof}[\pf{4.3.12}(c)]
   Suppose for sake of contradiction that \(x \neq y\)
   Then by \cref{4.2.9} exactly one of the following two statements is true:
   \begin{enumerate}[label=(\Roman*)]
@@ -826,8 +780,8 @@
             \item \(n < 0\).
                   Then by \cref{ac:4.2.7} we have \(-n > 0\) and
                   \begin{align*}
-                             & x^{-n} > y^{-n} > 0 &  & \text{(by \cref{4.3.10}(b)(c))} \\
-                    \implies & y^n > x^n > 0,      &  & \text{(by \cref{4.3.12}(b))}
+                             & x^{-n} > y^{-n} > 0 &  & \by{4.3.10}[b,c] \\
+                    \implies & y^n > x^n > 0,      &  & \by{4.3.12}[b]
                   \end{align*}
                   a contradiction.
           \end{itemize}
@@ -837,7 +791,7 @@
   From all cases above we derive contradictions, thus we must have \(x = y\).
 \end{proof}
 
-\begin{proof}{(d)}
+\begin{proof}[\pf{4.3.12}(d)]
   By \cref{4.1.5} exactly one of the following two statements is true:
   \begin{itemize}
     \item \(n \geq 0\).
@@ -845,15 +799,15 @@
     \item \(n < 0\).
           Then by \cref{ac:4.2.7} we have \(-n > 0\) and
           \begin{align*}
-            \abs{x^n} & = \abs{x^{-(-n)}}                       &  & \by{ac:4.1.6}                \\
-                      & = \abs{x^{(-1)(-n)}}                    &  & \by{ac:4.1.5}                \\
-                      & = \abs{(x^{-1})^{-n}}                   &  & \text{(by \cref{4.3.12}(a))} \\
-                      & = \abs{x^{-1}}^{-n}                     &  & \text{(by \cref{4.3.10}(d))} \\
-                      & = \abs{\dfrac{1}{x^1}}^{-n}             &  & \by{4.3.11}                  \\
-                      & = \bigg(\dfrac{1}{\abs{x^1}}\bigg)^{-n} &  & \by{4.2.2}                   \\
-                      & = \bigg(\dfrac{1}{\abs{x}^1}\bigg)^{-n} &  & \text{(by \cref{4.3.10}(d))} \\
-                      & = (\abs{x}^{-1})^{-n}                   &  & \by{4.3.11}                  \\
-                      & = \abs{x}^{-1(-n)}                      &  & \text{(by \cref{4.3.12}(a))} \\
+            \abs{x^n} & = \abs{x^{-(-n)}}                       &  & \by{ac:4.1.6}  \\
+                      & = \abs{x^{(-1)(-n)}}                    &  & \by{ac:4.1.5}  \\
+                      & = \abs{(x^{-1})^{-n}}                   &  & \by{4.3.12}[a] \\
+                      & = \abs{x^{-1}}^{-n}                     &  & \by{4.3.10}[d] \\
+                      & = \abs{\dfrac{1}{x^1}}^{-n}             &  & \by{4.3.11}    \\
+                      & = \bigg(\dfrac{1}{\abs{x^1}}\bigg)^{-n} &  & \by{4.2.2}     \\
+                      & = \bigg(\dfrac{1}{\abs{x}^1}\bigg)^{-n} &  & \by{4.3.10}[d] \\
+                      & = (\abs{x}^{-1})^{-n}                   &  & \by{4.3.11}    \\
+                      & = \abs{x}^{-1(-n)}                      &  & \by{4.3.12}[a] \\
                       & = \abs{x}^n.                            &  & \by{ac:4.1.6}
           \end{align*}
   \end{itemize}
@@ -866,7 +820,7 @@
   Prove \cref{4.3.3}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:4.3.1}]
   See \cref{4.3.3}.
 \end{proof}
 
@@ -874,7 +828,7 @@
   Prove the remaining claims in \cref{4.3.7}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:4.3.2}]
   See \cref{4.3.7}.
 \end{proof}
 
@@ -882,15 +836,15 @@
   Prove \cref{4.3.10}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:4.3.3}]
   See \cref{4.3.10}.
 \end{proof}
 
-\begin{ex}
+\begin{ex}\label{ex:4.3.4}
   Prove \cref{4.3.12}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:4.3.4}]
   See \cref{4.3.12}.
 \end{proof}
 
@@ -898,8 +852,8 @@
   Prove that \(2^N \geq N\) for all positive integers \(N\).
 \end{ex}
 
-\begin{proof}
-  We use induction on \(N\) and start with \(N = 1\).
+\begin{proof}[\pf{ex:4.3.5}]
+  We induct on \(N\) and start with \(N = 1\).
   For \(N = 1\), by \cref{4.3.9} we have
   \[
     2^1 = 2^0 \times 2 = 1 \times 2 = 2 \geq 1,
