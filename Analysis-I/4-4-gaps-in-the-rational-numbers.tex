@@ -2,30 +2,39 @@
 
 \begin{ac}[Euclidean algorithm]\label{ac:4.4.1}
   Let \(n \in \Z\) and let \(q \in \Z^+\).
-  Then \(\exists!\ m, r \in \Z\) such that \(0 \leq r < q\) and \(n = mq + r\).
+  Then there exist an unique pair of \((m, r) \in \Z \times \N\) such that \(0 \leq r < q\) and \(n = mq + r\).
 \end{ac}
 
-\begin{proof}
-  We first show that there exists at least one pairs of \(m, r \in \Z\) satisfy the statement.
+\begin{proof}[\pf{ac:4.4.1}]
+  We first show that there exists at least one pairs of \((m, r) \in \Z \times \N\) satisfy the statement.
   By \cref{4.1.5} exactly one of the following two statements is true:
   \begin{itemize}
     \item \(n \geq 0\).
-          Then by \cref{2.3.9} we know that such \(m, r \in \Z\) exist.
+          Then by \cref{2.3.9} we know that there exists a pair of \((m, r) \in \N \times \N\) such that \(0 \leq r < q\) and \(n = mq + r\).
+          By \cref{ac:4.1.2} we have \(m \in \Z\).
+          Thus there exists a pair of \((m, r) \in \Z \times \N\) such that \(0 \leq r < q\) and \(n = mq + r\).
     \item \(n < 0\).
-          Then by \cref{ac:4.2.7} we have \(-n > 0\) and
+          Then by \cref{ac:4.2.7} we have \(-n > 0\) and by \cref{2.3.9} there exists a pair of \((m, r) \in \N \times \N\) such that \(0 \leq r < q\) and \(-n = mq + r\).
+          Fix one such pair \((m, r)\).
+          Since \(0 \leq r\), by \cref{4.1.11}(d) we have \(-r \leq 0\), and by \cref{4.1.11}(b) we have \(q - r \leq q\).
+          Since \(r < q\), by \cref{4.1.11}(a) we have \(q - r > 0\).
+          Thus by \cref{4.1.11}(e) we have \(0 < q - r \leq q\).
+          Now observe that
           \begin{align*}
-                     & \exists m, r \in \Z : (0 \leq r < q) \land (-n = mq + r) &  & \by{2.3.9}     \\
-            \implies & (q > q - r > 0) \land (-n = mq + r)                      &  & \by{4.1.11}[a] \\
-            \implies & (q > q - r > 0) \land (n = (-m)q - r)                    &  & \by{ac:4.1.5}  \\
-            \implies & n = (-m)q - q + q - r                                    &  & \by{4.1.6}     \\
-            \implies & n = (-m - 1)q + (q - r).                                 &  & \by{4.1.6}
+            n & = -(-n)                         &  & \by{ac:4.1.6}       \\
+              & = -(mq + r)                     &  & \by{2.3.9}          \\
+              & = -(mq + q + (-q) + r)          &  & \by{4.1.6}          \\
+              & = -((m + 1) q + (r - q))        &  & \by{4.1.6,ac:4.1.4} \\
+              & = (-1) ((m + 1) q + (r - q))    &  & \by{ac:4.1.5}       \\
+              & = (-1) (m + 1) q + (-1) (r - q) &  & \by{4.1.6}          \\
+              & = -(m + 1) q + (q - r).         &  & \by{ac:4.1.5,4.1.6}
           \end{align*}
-          Since \(-m - 1 \in \Z\) and \(q > q - r > 0\), by setting \(m' = -m - 1\) and \(r' = q - r\) we see that \(n = m'q + r'\) satisfy the statement.
+          Since \(-(m + 1) \in \Z\) and \(q > q - r \geq 0\), by setting \(m' = -m - 1\) and \(r' = q - r\) we see that \(n = m'q + r'\) satisfy the statement.
   \end{itemize}
-  From all cases above we conclude that at least one pairs of \(m, r \in \Z\) satisfy the statement.
+  From all cases above we conclude that at least one pairs of \((m, r) \in \Z \times \N\) satisfy the statement.
 
-  Now we show the uniqueness of such \(m, r\).
-  Let \(m, m', r, r' \in \Z\) such that
+  Now we show the uniqueness of such \((m, r) \in \Z \times \N\).
+  Let \((m, r), (m', r') \in \Z \times \N\) such that
   \[
     (n = mq + r = m'q + r') \land (0 \leq r < q) \land (0 \leq r' < q).
   \]
@@ -37,28 +46,28 @@
           By \cref{4.1.11}(a) we know that \(a \in \Z^+\).
           Then we have
           \begin{align*}
-                     & mq + r = m'q + r'                        \\
-            \implies & r - r' = (m' - m)q   &  & \by{4.1.6}     \\
-            \implies & m' - m > 0           &  & \by{ac:4.2.8}  \\
-            \implies & m' - m \in \Z^+                          \\
-            \implies & (m' - m)q \geq q     &  & \by{2.2.12}[d] \\
-            \implies & r - r' \geq q                            \\
-            \implies & r \geq q + r' \geq q &  & \by{4.1.11}[b]
+                     & mq + r = m'q + r'                                 \\
+            \implies & r - r' = (m' - m)q    &  & \by{4.1.6}             \\
+            \implies & m' - m > 0            &  & \by{ac:4.2.8,ac:4.2.9} \\
+            \implies & m' - m \geq 1         &  & \by{2.2.12}[e]         \\
+            \implies & (m' - m)q \geq q      &  & \by{2.3.6}             \\
+            \implies & r - r' \geq q                                     \\
+            \implies & r \geq q + r' \geq q. &  & \by{4.1.11}[b]
           \end{align*}
-          which contradict to \(r < q\).
+          But this contradict to \(r < q\).
     \item \(r < r'\).
           By \cref{4.1.10} we have \(r' > r\).
           Using similar argument above we derive a contradiction.
   \end{itemize}
-  From all cases we derive contradictions, thus we must have \(r = r'\).
+  From all cases above we derive contradictions, thus we must have \(r = r'\).
   This means
   \begin{align*}
              & mq + r = m'q + r'                 \\
-    \implies & mq + r = m'q + r                  \\
+    \implies & mq + r = m'q + r  &  & \by{4.1.3} \\
     \implies & mq = m'q          &  & \by{4.1.6} \\
     \implies & m = m'.           &  & \by{4.1.9}
   \end{align*}
-  Thus we conclude that for every \(n \in \Z\) and \(q \in \Z^+\), \(\exists!\ m, r \in \Z\) such that \(n = mq + r\) and \(0 \leq r < q\).
+  Thus such \((m, r) \in \Z \times \N\) is unique.
 \end{proof}
 
 \begin{prop}[Interspersing of integers by rationals]\label{4.4.1}
@@ -69,20 +78,44 @@
   (i.e., there is no such thing as a rational number which is larger than all the natural numbers).
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{4.4.1}]
   By \cref{4.2.1} we know that \(x = a / b\) where \(a, b \in \Z\) and \(b > 0\).
-  Since \(a \in \Z\) and \(b \in \Z^+\), by \cref{ac:4.4.1} we know that \(\exists!\ m, r \in \Z\) such that \(a = mb + r\) and \(0 \leq r < b\).
+  Since \(a \in \Z\) and \(b \in \Z^+\), by \cref{ac:4.4.1} we know that there exists a pair of \((m, r) \in \Z \times \N\) such that \(a = mb + r\) and \(0 \leq r < b\).
   Then we have
   \begin{align*}
-             & (a = mb + r) \land (0 \leq r < b)                                                        \\
-    \implies & (x = \dfrac{a}{b} = m + \dfrac{r}{b}) \land (0 \leq r < b)            &  & \by{4.2.4}    \\
-    \implies & (x = \dfrac{a}{b} = m + \dfrac{r}{b}) \land (0 \leq \dfrac{r}{b} < 1) &  & \by{4.2.9}[e] \\
-    \implies & m \leq x = m + \dfrac{r}{b} < m + 1.                                  &  & \by{4.2.9}[d]
+             & (a = mb + r) \land (0 \leq r < b)                                                              \\
+    \implies & \pa{x = \dfrac{a}{b} = m + \dfrac{r}{b}} \land (0 \leq r < b)               &  & \by{4.2.4}    \\
+    \implies & \pa{x = \dfrac{a}{b} = m + \dfrac{r}{b}} \land \pa{0 \leq \dfrac{r}{b} < 1} &  & \by{4.2.9}[e] \\
+    \implies & m \leq x = m + \dfrac{r}{b} < m + 1.                                        &  & \by{4.2.9}[d]
   \end{align*}
-  Note that such \(m\) is unique by \cref{4.4.2}.
-  If \(m + 1 < 0\), then by setting \(N = 0\) we have \(x < N\).
-  If \(m + 1 \geq 0\), then by setting \(N = m + 1\) we again have \(x < N\).
-  Thus we conclude that \(\forall x \in \Q\), \(\exists N \in \N\) such that \(x < N\).
+
+  Next we show the uniqueness of such \(n\).
+  Suppose there exists another \(n' \in \Z\) such that \(n' \leq x < n' + 1\).
+  Then we have
+  \begin{align*}
+             & (n \leq x < n + 1) \land (n' \leq x < n' + 1)                     \\
+    \implies & (n < n' + 1) \land (n' < n + 1)               &  & \by{4.2.9}[c]  \\
+    \implies & (n' + 1 - n > 0) \land (n + 1 - n' > 0)       &  & \by{4.2.9}[d]  \\
+    \implies & (n' + 1 - n \geq 1) \land (n + 1 - n' \geq 1) &  & \by{2.2.12}[e] \\
+    \implies & (n' \geq n) \land (n \geq n')                 &  & \by{4.2.9}[d]  \\
+    \implies & n' = n.                                       &  & \by{4.2.9}[a]
+  \end{align*}
+  Thus such \(n\) is unique.
+
+  Finally we show that there exists an \(N \in \N\) such that \(N > x\).
+  By \cref{4.2.9}(a) we split into three cases:
+  \begin{itemize}
+    \item \(x = 0\).
+          Then by setting \(N = 1\) we have \(N > x\).
+    \item \(x < 0\).
+          Then by setting \(N = 0\) we have \(N > x\).
+    \item \(x > 0\).
+          From the proof above we know that there exists an \(n \in \Z\) such that \(n \leq x < n + 1\).
+          Since \(x > 0\), by \cref{4.2.9}(c) we know that \(n + 1 > 0\).
+          Thus \(n + 1 \in \N\).
+          By setting \(N = n + 1\) we have \(N > x\).
+  \end{itemize}
+  From all cases above we conclude that there exists an \(N \in \N\) such that \(x < N\).
 \end{proof}
 
 \begin{rmk}\label{4.4.2}
@@ -93,7 +126,7 @@
   If \(x\) and \(y\) are two rationals such that \(x < y\), then there exists a third rational \(z\) such that \(x < z < y\).
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{4.4.3}]
   We set \(z \coloneqq (x + y) / 2\).
   Since \(x < y\), and \(1 / 2 = 1 // 2\) is positive, we have from \cref{4.2.9} that \(x / 2 < y / 2\).
   If we add \(y / 2\) to both sides using \cref{4.2.9} we obtain \(x / 2 + y / 2 < y / 2 + y / 2\), i.e., \(z < y\).
@@ -107,23 +140,35 @@
 \end{note}
 
 \begin{ac}\label{ac:4.4.2}
-  Let \(n, m\) be two natural numbers.
-  Define \(n\) to be even if \(n = 2m\), and odd if \(n = 2m + 1\).
+  Let \(n \in \N\).
+  Define \(n\) to be \emph{even} if \(n = 2m\) for some \(m \in \N\), and \emph{odd} if \(n = 2m + 1\) for some \(m \in \N\).
   Then every natural number is either even or odd, but not both.
 \end{ac}
 
-\begin{proof}
-  We use induction on \(n\).
-  For \(n = 0\), by \cref{2.3.1} and \cref{2.3.2} we have \(0 = 0 \times 2 = 2 \times 0\).
+\begin{proof}[\pf{ac:4.4.2}]
+  We induct on \(n\).
+  For \(n = 0\), by \cref{2.3.1,2.3.2} we have \(0 = 0 \times 2 = 2 \times 0\).
   By \cref{2.3} we have \(0 \neq 2m + 1\).
   Thus \(0\) is even and is not odd, so the base case holds.
-  Suppose inductively that for some \(n \geq 0\), \(\exists m \in \N\) such that either \(n = 2m\) or \(n = 2m + 1\) is true, but not both.
-  Then for \(n + 1\), by induction hypothesis we can split into two cases:
+  Suppose inductively that for some \(n \in N\), there exists some \(m \in \N\) such that either \(n = 2m\) or \(n = 2m + 1\) is true, but not both.
+  Then we need to show that the same statement holds for \(n + 1\).
+  By induction hypothesis we can split into two cases:
   \begin{itemize}
-    \item If \(n = 2m\), then \(n + 1 = 2m + 1\), which means \(n + 1\) is odd.
-    \item If \(n = 2m + 1\), then by \cref{2.2.5} and \cref{2.3.4} we have \(n + 1 = 2m + 2 = 2(m + 1)\), which means \(n + 1\) is even.
+    \item \(n = 2m\) for some \(m \in \N\).
+          Then \(n + 1 = 2m + 1\), which means \(n + 1\) is odd.
+    \item \(n = 2m + 1\) for some \(m \in \N\).
+          Then by \cref{2.2.5,2.3.4} we have \(n + 1 = 2m + 2 = 2(m + 1)\), which means \(n + 1\) is even.
   \end{itemize}
-  By induction hypothesis the two cases can not be true at the same time, thus \(n + 1\) is also either even or odd, but not both.
+  Thus \(n + 1\) is either even or odd.
+  Now we show that we cannot have \(n + 1\) be both even and odd.
+  Suppose for sake of contradiction that \(n + 1\) is both even and odd.
+  Then there exist \(m, k \in \N\) such that \(n + 1 = 2m = 2k + 1\).
+  By \cref{2.3} we know that \(2m = n + 1 > 0\), thus by \cref{2.3.3} we must have \(m > 0\).
+  By \cref{2.2.12}(e) we have \(m \geq 1\), so by \cref{4.1.11}(b) we have \(m - 1 \geq 0\), and by definition \(2(m - 1) + 1\) is odd.
+  Now we use \cref{4.1.6} to rewrite \(2m = 2 (m - 1 + 1) = 2 (m - 1) + 2\).
+  Therefore by \cref{2.2.10} \(n + 1 = 2m \implies n = 2 (m - 1) + 1\), which means \(n\) is odd.
+  But by \cref{2.2.10} again we have \(n + 1 = 2k + 1 \implies n = 2k\), which means \(n\) is even, contradict to induction hypothesis that \(n\) cannot be both even and odd.
+  Therefore \(n + 1\) cannot be both even and odd.
   This closes the induction.
 \end{proof}
 
@@ -133,41 +178,42 @@
   If \(n\) is odd, then \(n^2\) is also odd.
 \end{ac}
 
-\begin{proof}
+\begin{proof}[\pf{ac:4.4.3}]
   We first show that \(n\) is even implies \(n^2\) is even.
-  Since \(n\) is even, by \cref{ac:4.4.2} \(\exists m \in \N\) such that \(n = 2m\).
-  Then we have
+  Since \(n\) is even, by \cref{ac:4.4.2} there exists an \(m \in \N\) such that \(n = 2m\).
+  By \cref{ac:2.3.1} we have \(m (2m) \in \N\).
+  Since
   \begin{align*}
-    n^2 & = (2m)^2                            \\
-        & = (2m)(2m)         &  & \by{2.3.11} \\
-        & = 2\big(m(2m)\big) &  & \by{2.3.5}
+    n^2 & = (2m)^2                       \\
+        & = (2m) (2m)   &  & \by{2.3.11} \\
+        & = 2 (m (2m)), &  & \by{2.3.5}
   \end{align*}
-  and thus by \cref{ac:4.4.2} \(n^2\) is even.
+  by \cref{ac:4.4.2} this means \(n^2\) is even.
 
   Now we show that \(n\) is odd implies \(n^2\) is odd.
-  Since \(n\) is odd, by \cref{ac:4.4.2} \(\exists m \in \N\) such that \(n = 2m + 1\).
-  Then we have
+  Since \(n\) is odd, by \cref{ac:4.4.2} there exists an \(m \in \N\) such that \(n = 2m + 1\).
+  By \cref{ac:2.3.1} we know that \(m (2m) \in \N\), thus by \cref{ac:2.2.1} we have \(m (2m) + 2m \in \N\).
+  Since
   \begin{align*}
-    n^2 & = (2m + 1)^2                                      \\
-        & = (2m)^2 + 2(2m)1 + 1^2        &  & \by{ex:2.3.4} \\
-        & = (2m)(2m) + 2(2m) + 1         &  & \by{2.3.11}   \\
-        & = 2\big(m(2m)\big) + 2(2m) + 1 &  & \by{2.3.5}    \\
-        & = 2\big(m(2m) + 2m\big) + 1    &  & \by{2.3.4}
+    n^2 & = (2m + 1)^2                                 \\
+        & = (2m)^2 + 2 (2m) + 1^2   &  & \by{ex:2.3.4} \\
+        & = (2m) (2m) + 2 (2m) + 1  &  & \by{2.3.11}   \\
+        & = 2 (m (2m)) + 2 (2m) + 1 &  & \by{2.3.5}    \\
+        & = 2 (m (2m) + 2m) + 1,    &  & \by{2.3.4}
   \end{align*}
-  and thus by \cref{ac:4.4.2} \(n^2\) is odd.
+  by \cref{ac:4.4.2} this means \(n^2\) is odd.
 \end{proof}
 
 \begin{prop}\label{4.4.4}
   There does not exist any rational number \(x\) for which \(x^2 = 2\).
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{4.4.4}]
   Suppose for sake of contradiction that we had a rational number \(x\) for which \(x^2 = 2\).
-  Clearly \(x\) is not zero.
+  Clearly \(x\) is not zero by \cref{4.3.12}(c).
   We may assume that \(x\) is positive, for if \(x\) were negative then we could just replace \(x\) by \(-x\)
   (since \(x^2 = (-x)^2\)).
   Thus \(x = p / q\) for some positive integers \(p, q\), so \((p / q)^2 = 2\), which we can rearrange as \(p^2 = 2q^2\).
-  Define a natural number \(p\) to be even if \(p = 2k\) for some natural number \(k\), and odd if \(p = 2k + 1\) for some natural number \(k\).
   By \cref{ac:4.4.2}, every natural number is either even or odd, but not both.
   By \cref{ac:4.4.3}, if \(p\) is odd, then \(p^2\) is also odd, which contradicts \(p^2 = 2q^2\).
   Thus \(p\) is even, i.e., \(p = 2k\) for some natural number \(k\).
@@ -175,10 +221,18 @@
   Inserting \(p = 2k\) into \(p^2 = 2q^2\) we obtain \(4k^2 = 2q^2\), so that \(q^2 = 2k^2\).
 
   To summarize, we started with a pair \((p, q)\) of positive integers such that \(p^2 = 2q^2\), and ended up with a pair \((q, k)\) of positive integers such that \(q^2 = 2k^2\).
-  Since \(p^2 = 2q^2\), by \cref{2.2.12} we have \(p^2 = q^2 + q^2 \implies p^2 > q^2\).
-  If \(p < q\), then by \cref{2.3.6}, \(p^2 < pq\) and \(pq < q^2\).
-  So by \cref{2.2.12}, \(p^2 < q^2\), a contradiction.
-  Thus we have \(q < p\).
+  Now we claim that \(p^2 = 2q^2 \implies q < p\).
+  We prove the claim by contradiction.
+  Suppose for sake of contradiction that \(q \geq p\).
+  \begin{itemize}
+    \item If \(q = p\), then we have \(p^2 = q^2\).
+          But \(p^2 = 2q^2 = q^2 + q^2\) implies \(q^2 = 0\), and by \cref{4.3.10}(b) this means \(q = 0\), which contradicts to \(q > 0\).
+    \item If \(q > p\), then by \cref{4.3.10}(c) we have \(q^2 > p^2\).
+          Since \(q > 0\), by \cref{4.3.10}(b) we have \(q^2 > 0\).
+          But by \cref{2.2.12}(f) \(p^2 = 2q^2 = q^2 + q^2\) implies \(p^2 > q^2\), which contradicts to \(q^2 > p^2\).
+  \end{itemize}
+  From all cases above we derive contradiction.
+  Thus we must have \(p^2 = 2q^2 \implies q < p\).
   If we rewrite \(p' \coloneqq q\) and \(q' \coloneqq k\), we thus can pass from one solution \((p, q)\) to the equation \(p^2 = 2q^2\) to a new solution \((p', q')\) to the same equation which has a smaller value of \(p\).
   But then we can repeat this procedure again and again, obtaining a sequence \((p'', q'')\), \((p''', q''')\), etc. of solutions to \(p^2 = 2q^2\), each one with a smaller value of \(p\) than the previous, and each one consisting of positive integers.
   But this contradicts the principle of infinite descent (see \cref{ex:4.4.2}).
@@ -189,7 +243,7 @@
   For every rational number \(\varepsilon > 0\), there exists a non-negative rational number \(x\) such that \(x^2 < 2 < (x + \varepsilon)^2\).
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{4.4.5}]
   Let \(\varepsilon > 0\) be rational.
   Suppose for sake of contradiction that there is no non-negative rational number \(x\) for which \(x^2 < 2 < (x + \varepsilon)^2\).
   This means that whenever \(x\) is non-negative and \(x^2 < 2\), we must also have \((x + \varepsilon)^2 < 2\)
@@ -211,7 +265,7 @@
     1.96, 1.9881, 1.99396, 1.99996164, 1.9999899241, \dots
   \]
   Thus it seems that we can create a square root of \(2\) by taking a ``limit'' of a sequence of rationals.
-  This is how we shall construct the real numbers in the next chapter.
+  This is how we shall construct the real numbers in \cref{ch:5}.
 \end{note}
 
 \begin{note}
@@ -225,7 +279,7 @@
   Prove \cref{4.4.1}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:4.4.1}]
   See \cref{4.4.1}.
 \end{proof}
 
@@ -241,35 +295,36 @@
   \end{enumerate}
 \end{ex}
 
-\begin{proof}{(a)}
-  Suppose for sake of contradiction that there exists a sequence of natural numbers \(a_0, a_1, a_2, \dots\) is in infinite descent.
-  Since all the \(a_n\) are natural numbers, \(a_n \geq 0\) for all \(n \in \N\).
-  Now we use induction on \(k\) to show in fact that \(a_n \geq k\) for all \(k \in \N\) and for all \(n \in \N\).
-  For \(k = 0\), we have \(a_n \geq 0\) for all \(n \in \N\), so the base case holds.
-  Suppose inductively that for some \(k \geq 0\) we have \(a_n \geq k\) for all \(n \in \N\).
+\begin{proof}[\pf{ex:4.4.2}(a)]
+  Suppose for sake of contradiction that there exists a sequence of natural numbers \(a_0, a_1, \dots\) is in infinite descent.
+  Now we claim that if \(k \in \N\), then \(a_n \geq k\) for all \(n \in \N\).
+  We induct on \(k\) to prove the claim.
+  For \(k = 0\), by \cref{ac:2.2.4} we have \(a_n \geq 0\) for all \(n \in \N\), so the base case holds.
+  Suppose inductively that for some \(k \in \N\) we have \(a_n \geq k\) for all \(n \in \N\).
   Then for \(k + 1\), we want to show that \(a_n \geq k + 1\) for all \(n \in \N\).
-  By induction hypothesis, \(\forall m \in \N\) such that \(a_m \geq k\), which also implies \(a_{m + 1} \geq k\).
-  And since the sequence is in infinite descent, we have \(a_m > a_{m + 1}\).
+  By induction hypothesis we have \(a_n \geq k\) for all \(n \in \N\).
+  Since the sequence \(a_0, a_1, \dots\) is in infinite descent, we know that \(a_n > a_{n + 1} \geq k\) for all \(n \in \N\).
   Thus we have
   \begin{align*}
-             & a_m > a_{m + 1} \geq k                     \\
-    \implies & a_m > k                &  & \by{2.2.12}[b] \\
-    \implies & a_m \geq k + 1         &  & \by{2.2.12}[c]
+             & \forall n \in \N, a_n > a_{n + 1} \geq k &  & \byIH          \\
+    \implies & \forall n \in \N, a_n > k                &  & \by{2.2.12}[b] \\
+    \implies & \forall n \in \N, a_n \geq k + 1.        &  & \by{2.2.12}[e]
   \end{align*}
-  and this closes the induction.
+  This closes the induction.
 
   Now we show that such sequence does not exist.
-  Since \(\forall k \in \N\), we have \(a_n \geq k\) for all \(n \in \N\).
-  We set \(k = a_0\).
-  Then \(a_n \geq a_0\), which contradicts to the sequence which is in infinite descent.
-  So such sequence does not exist.
+  From the proof above we see that \(a_1 \geq k\) for all \(k \in \N\).
+  If we set \(k = a_0\), then we must have \(a_1 \geq a_0\).
+  Since the sequence is in infinite descent, we must have \(a_0 > a_1\).
+  But both \(a_1 \geq a_0\) and \(a_0 > a_1\) being true contradict to \cref{2.2.13}.
+  So we cannot have a sequence of natural number which is in infinite descent.
 \end{proof}
 
-\begin{proof}{(b)}
-  By setting \(a_n = -n \ \forall n \in \N\), we can always have \(a_n > a_{n + 1}\).
+\begin{proof}[\pf{ex:4.4.2}(b)]
+  By setting \(a_n = -n\) for all \(n \in \N\), we can always have \(a_n > a_{n + 1}\).
   So the principle of infinite descent does not work on integers.
 
-  Similarly, by setting \(a_n = 1 / n \ \forall n \in \N\), we can always have \(a_n > a_{n + 1}\).
+  Similarly, by setting \(a_n = 1 / n\) for all \(n \in \N\), we can always have \(a_n > a_{n + 1}\).
   So the principle of infinite descent does not work on rationals.
 \end{proof}
 
@@ -277,6 +332,6 @@
   Fill in the gaps marked (why?) in the proof of \cref{4.4.4}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:4.4.3}]
   See \cref{4.4.4}.
 \end{proof}
