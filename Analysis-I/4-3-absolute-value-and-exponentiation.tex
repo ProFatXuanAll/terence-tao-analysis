@@ -591,51 +591,6 @@
   Note that when \(n = 1\), the definition of \(x^{-1}\) provided by \cref{4.3.11} coincides with the reciprocal of \(x\) defined previously, so there is no incompatibility of notation caused by this new definition.
 \end{defn}
 
-
-\begin{ac}\label{ac:4.3.2}
-  Let \(x\) be a non-zero rational number.
-  Then for any negative integer \(-n\), we have \(x^{-n + 1} = x^{-n} \times x\).
-\end{ac}
-
-\begin{proof}[\pf{ac:4.3.2}]
-  By \cref{4.1.11}(f), exactly one of the following three statements is true:
-  \begin{itemize}
-    \item \(-n + 1 = 0\).
-          Then by \cref{4.1.6} we have \(n = 1\) and
-          \begin{align*}
-            x^{-1 + 1} & = x^0       &  & \by{4.1.6} \\
-                       & = 1         &  & \by{4.3.9} \\
-                       & = x^{-1} x. &  & \by{4.2.4}
-          \end{align*}
-    \item \(-n + 1 > 0\).
-          Then we have
-          \begin{align*}
-                     & -n + 1 > 0                     \\
-            \implies & n < 1      &  & \by{4.1.11}[b] \\
-            \implies & n = 0      &  & \by{2.3}       \\
-            \implies & -n = 0     &  & \by{ac:4.1.8}
-          \end{align*}
-          which contradict to \(-n\) is negative.
-          Thus we cannot have \(-n + 1 > 0\).
-    \item \(-n + 1 < 0\).
-          Then by \cref{4.1.11}(d) we have \(n - 1 > 0\) and by \cref{4.3.9} we have \(x^{n - 1} x = x^n\).
-          Therefore,
-          \begin{align*}
-                     & x^{-n + 1} x^{n - 1} = 1              &  & \by{4.2.4} \\
-            \implies & (x^{-n + 1} x^{n - 1}) x = 1x         &  & \by{4.2.3} \\
-            \implies & x^{-n + 1} (x^{n - 1} x) = 1x         &  & \by{4.2.4} \\
-            \implies & x^{-n + 1} x^{n - 1 + 1} = 1x         &  & \by{4.3.9} \\
-            \implies & x^{-n + 1} x^n = 1x                   &  & \by{4.1.6} \\
-            \implies & (x^{-n + 1} x^n) x^{-n} = (1x) x^{-n} &  & \by{4.2.3} \\
-            \implies & x^{-n + 1} (x^n x^{-n}) = 1(x x^{-n}) &  & \by{4.2.4} \\
-            \implies & x^{-n + 1} 1 = 1x x^{-n}              &  & \by{4.2.4} \\
-            \implies & x^{-n + 1} = x x^{-n}                 &  & \by{4.2.4} \\
-            \implies & x^{-n + 1} = x^{-n} x.                &  & \by{4.2.4}
-          \end{align*}
-  \end{itemize}
-  From all cases above we conclude that \(x^{-n + 1} = x^{-n} x\).
-\end{proof}
-
 \begin{prop}[Properties of exponentiation, II]\label{4.3.12}
   Let \(x\), \(y\) be nonzero rational numbers, and let \(n\), \(m\) be integers.
   \begin{enumerate}
@@ -709,16 +664,16 @@
           For \(m = 0\), we have
           \begin{align*}
             (x^n)^0 & = 1       &  & \by{4.3.9} \\
-                    & = x^0     &  & \by{4.2.4} \\
+                    & = x^0     &  & \by{4.3.9} \\
                     & = x^{n0}. &  & \by{4.1.6}
           \end{align*}
           So the base case holds.
           Suppose inductively that for some \(m \in \N\) we have \((x^n)^m = x^{nm}\).
-          Then for \(n + 1\), we have
+          Then for \(m + 1\), we have \(m + 1 > 0\) and
           \begin{align*}
-            (x^n)^{m + 1} & = (x^n)^m x^n   &  & \by{ac:4.3.2}  \\
-                          & = x^{nm} x^n    &  & \byIH          \\
-                          & = x^{nm + n}    &  & \by{4.3.12}[a] \\
+            (x^n)^{m + 1} & = (x^n)^m x^n   &  & \by{4.3.9}                    \\
+                          & = x^{nm} x^n    &  & \byIH                         \\
+                          & = x^{nm + n}    &  & \text{(from the proof above)} \\
                           & = x^{n(m + 1)}. &  & \by{ac:2.3.3}
           \end{align*}
           This closes the induction.
@@ -750,65 +705,104 @@
 \end{proof}
 
 \begin{proof}[\pf{4.3.12}(b)]
-  By \cref{4.1.5} exactly one of the following two statements is true:
-  \begin{itemize}
-    \item \(n \geq 0\).
-          Then by \cref{4.3.10}(b)(c) we have \(x^n \geq y^n > 0\).
-    \item \(n < 0\).
-          Then by \cref{ac:4.2.7} we have \(-n > 0\) and
-          \begin{align*}
-                     & x^{-n} \geq y^{-n} > 0                                                   &  & \by{4.3.10}[b,c] \\
-            \implies & \dfrac{1}{x^n} \geq \dfrac{1}{y^n} > 0                                   &  & \by{4.3.11}      \\
-            \implies & (\dfrac{1}{x^n} \geq \dfrac{1}{y^n} > 0) \land (x^n > 0) \land (y^n > 0) &  & \by{ac:4.2.8}    \\
-            \implies & \dfrac{x^n y^n}{x^n} \geq \dfrac{x^n y^n}{y^n} > 0(x^n y^n)              &  & \by{4.2.9}[e]    \\
-            \implies & y^n \geq x^n > 0(x^n y^n)                                                &  & \by{4.2.2}       \\
-            \implies & y^n \geq x^n > 0.                                                        &  & \by{4.2.4}
-          \end{align*}
-  \end{itemize}
+  First suppose that \(n > 0\).
+  Then by \cref{4.3.10}(b)(c) we have \(x^n \geq y^n > 0\).
+  Now suppose that \(n < 0\).
+  Then by \cref{ac:4.2.7} we have \(-n > 0\) and
+  \begin{align*}
+             & x^{-n} \geq y^{-n} > 0                                                      &  & \by{4.3.10}[b,c] \\
+    \implies & \dfrac{1}{x^n} \geq \dfrac{1}{y^n} > 0                                      &  & \by{4.3.11}      \\
+    \implies & \pa{\dfrac{1}{x^n} \geq \dfrac{1}{y^n} > 0} \land (x^n > 0) \land (y^n > 0) &  & \by{ac:4.2.8}    \\
+    \implies & \dfrac{x^n y^n}{x^n} \geq \dfrac{x^n y^n}{y^n} > 0(x^n y^n)                 &  & \by{4.2.9}[e]    \\
+    \implies & y^n \geq x^n > 0.                                                           &  & \by{4.2.3}
+  \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{4.3.12}(c)]
-  Suppose for sake of contradiction that \(x \neq y\)
-  Then by \cref{4.2.9} exactly one of the following two statements is true:
-  \begin{enumerate}[label=(\Roman*)]
+  Suppose for sake of contradiction that \(x \neq y\).
+  Then by \cref{4.2.9}(a) exactly one of the following two statements is true:
+  \begin{itemize}
     \item \(x > y\).
           By hypothesis we know that \(n \neq 0\).
-          Then by \cref{4.1.5} exactly one of the following two statements is true:
+          Then by \cref{4.1.11}(f) exactly one of the following two statements is true:
           \begin{itemize}
             \item \(n > 0\).
-                  But by \cref{4.3.10}(c) we must have \(x^n > y^n\), a contradiction.
+                  But by \cref{4.3.10}(c) we must have \(x^n > y^n\), which contradicts to \(x^n = y^n\).
             \item \(n < 0\).
-                  Then by \cref{ac:4.2.7} we have \(-n > 0\) and
+                  Then by \cref{ac:4.2.7} we have \(-n > 0\) and by \cref{4.3.10}(b)(c) we have \(x^{-n} > y^{-n} > 0\).
+                  Since
                   \begin{align*}
-                             & x^{-n} > y^{-n} > 0 &  & \by{4.3.10}[b,c] \\
-                    \implies & y^n > x^n > 0,      &  & \by{4.3.12}[b]
+                    x^n x^{-n} & = x^{n + (-n)} &  & \by{4.3.12}[a] \\
+                               & = x^0          &  & \by{4.1.6}     \\
+                               & = 1            &  & \by{4.3.9}     \\
+                               & > 0
                   \end{align*}
-                  a contradiction.
+                  and \(x^{-n} > 0\), by \cref{ac:4.2.8} we know that \(x^n > 0\).
+                  Similarly we have \(y^n > 0\).
+                  Thus by \cref{ac:4.2.7} \(x^n y^n > 0\).
+                  But then we have
+                  \begin{align*}
+                             & (x^{-n} > y^{-n} > 0) \land (x^n y^n > 0)                       \\
+                    \implies & x^{-n} x^n y^n > y^{-n} x^n y^n > 0 x^n y^n &  & \by{4.2.9}[e]  \\
+                    \implies & x^{-n} x^n y^n > x^n y^{-n} y^n > 0         &  & \by{4.2.4}     \\
+                    \implies & x^{(-n) + n} y^n > x^n y^{(-n) + n} > 0     &  & \by{4.3.12}[a] \\
+                    \implies & x^0 y^n > x^n y^0 > 0                       &  & \by{4.1.6}     \\
+                    \implies & 1 y^n > x^n 1 > 0                           &  & \by{4.3.9}     \\
+                    \implies & y^n > x^n > 0,                              &  & \by{4.2.4}
+                  \end{align*}
+                  which contradicts to \(x^n = y^n\).
           \end{itemize}
     \item \(x < y\).
-          By \cref{4.2.9} we know that \(x < y \implies y > x\), which is just the same as case (I).
-  \end{enumerate}
+          By \cref{4.2.9} we know that \(x < y \implies y > x\), and we can use the first cases to derive either \(y^n > x^n\) or \(x^n > y^n\).
+          But again this contradicts to \(x^n = y^n\).
+  \end{itemize}
   From all cases above we derive contradictions, thus we must have \(x = y\).
 \end{proof}
 
 \begin{proof}[\pf{4.3.12}(d)]
-  By \cref{4.1.5} exactly one of the following two statements is true:
+  First we claim that \(\abs{x^{-1}} = \abs{x}^{-1}\).
+  By \cref{ac:4.2.3} we know that \(x^{-1} \neq 0\).
+  By \cref{4.2.4} we have \(x x^{-1} = 1\).
+  Thus by \cref{ac:4.2.7,ac:4.2.8} both \(x, x^{-1}\) are positive or negative.
+  So we use \cref{4.2.9}(a) to split into two cases:
+  \begin{itemize}
+    \item If \(x > 0\) and \(x^{-1} > 0\), then we have
+          \begin{align*}
+            \abs{x^{-1}} & = x^{-1}               &  & \by{4.3.1}  \\
+                         & = \dfrac{1}{x^1}       &  & \by{4.3.11} \\
+                         & = \dfrac{1}{x}         &  & \by{4.3.9}  \\
+                         & = \dfrac{1}{\abs{x}}   &  & \by{4.3.1}  \\
+                         & = \dfrac{1}{\abs{x}^1} &  & \by{4.3.9}  \\
+                         & = \abs{x}^{-1}.        &  & \by{4.3.11}
+          \end{align*}
+    \item If \(x < 0\) and \(x^{-1} < 0\), then we have
+          \begin{align*}
+            \abs{x^{-1}} & = -(x^{-1})            &  & \by{4.3.1}    \\
+                         & = (-1) (x^{-1})        &  & \by{ac:4.2.5} \\
+                         & = \dfrac{-1}{x}        &  & \by{ac:4.2.4} \\
+                         & = \dfrac{1}{-x}        &  & \by{ac:4.2.5} \\
+                         & = \dfrac{1}{\abs{x}}   &  & \by{4.3.1}    \\
+                         & = \dfrac{1}{\abs{x}^1} &  & \by{4.3.9}    \\
+                         & = \abs{x}^{-1}.        &  & \by{4.3.11}
+          \end{align*}
+  \end{itemize}
+  From all cases above we conclude that \(\abs{x^{-1}} = \abs{x}^{-1}\).
+
+  Now we show that \(\abs{x^n} = \abs{x}^n\).
+  By \cref{4.1.11}(f) exactly one of the following two statements is true:
   \begin{itemize}
     \item \(n \geq 0\).
           Then by \cref{4.3.10}(d) we have \(\abs{x^n} = \abs{x}^n\).
     \item \(n < 0\).
           Then by \cref{ac:4.2.7} we have \(-n > 0\) and
           \begin{align*}
-            \abs{x^n} & = \abs{x^{-(-n)}}                       &  & \by{ac:4.1.6}  \\
-                      & = \abs{x^{(-1)(-n)}}                    &  & \by{ac:4.1.5}  \\
-                      & = \abs{(x^{-1})^{-n}}                   &  & \by{4.3.12}[a] \\
-                      & = \abs{x^{-1}}^{-n}                     &  & \by{4.3.10}[d] \\
-                      & = \abs{\dfrac{1}{x^1}}^{-n}             &  & \by{4.3.11}    \\
-                      & = \bigg(\dfrac{1}{\abs{x^1}}\bigg)^{-n} &  & \by{4.2.2}     \\
-                      & = \bigg(\dfrac{1}{\abs{x}^1}\bigg)^{-n} &  & \by{4.3.10}[d] \\
-                      & = (\abs{x}^{-1})^{-n}                   &  & \by{4.3.11}    \\
-                      & = \abs{x}^{-1(-n)}                      &  & \by{4.3.12}[a] \\
-                      & = \abs{x}^n.                            &  & \by{ac:4.1.6}
+            \abs{x^n} & = \abs{x^{-(-n)}}     &  & \by{ac:4.1.6}                 \\
+                      & = \abs{x^{(-1) (-n)}} &  & \by{ac:4.1.5}                 \\
+                      & = \abs{(x^{-1})^{-n}} &  & \by{4.3.12}[a]                \\
+                      & = \abs{x^{-1}}^{-n}   &  & \by{4.3.10}[d]                \\
+                      & = (\abs{x}^{-1})^{-n} &  & \text{(from the claim above)} \\
+                      & = \abs{x}^{(-1) (-n)} &  & \by{4.3.12}[a]                \\
+                      & = \abs{x}^n.          &  & \by{ac:4.1.6}
           \end{align*}
   \end{itemize}
   From all cases above we conclude that \(\abs{x^n} = \abs{x}^n\).
@@ -859,18 +853,18 @@
     2^1 = 2^0 \times 2 = 1 \times 2 = 2 \geq 1,
   \]
   so the base case holds.
-  Suppose inductively that for some \(N \geq 1\) we have \(2^N \geq N\).
+  Suppose inductively that for some \(N \in \N \setminus \set{0}\) we have \(2^N \geq N\).
   Then for \(N + 1\), we have
   \begin{align*}
-             & 0 < N                          \\
-    \implies & N < 2N        &  & \by{2.2.11} \\
-    \implies & N + 1 \leq 2N &  & \by{2.2.12}
+             & 0 < N                  &  & \by{ac:2.2.4}  \\
+    \implies & N = 0 + N < N + N = 2N &  & \by{2.2.12}[d] \\
+    \implies & N + 1 \leq 2N          &  & \by{2.2.12}[e]
   \end{align*}
   and
   \begin{align*}
-    2^{N + 1} & = 2 \times 2^N &  & \by{4.3.9} \\
-              & \geq 2N        &  & \byIH      \\
-              & \geq N + 1.
+             & 2^N \geq N                      &  & \byIH           \\
+    \implies & 2^N \times 2 \geq 2N \geq N + 1 &  & \by{4.2.9}[c,e] \\
+    \implies & 2^{N + 1} \geq N + 1.           &  & \by{4.3.9}
   \end{align*}
   This closes the induction.
 \end{proof}
