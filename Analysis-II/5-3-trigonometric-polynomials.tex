@@ -1,11 +1,11 @@
-\section{Trigonometric polynomials}\label{sec:5.3}
+\section{Trigonometric polynomials}\label{ii:sec:5.3}
 
 \begin{note}
   We now define the concept of a \emph{trigonometric polynomial}.
   Just as polynomials are combinations of the functions \(x^n\) (sometimes called \emph{monomials}), trigonometric polynomials are combinations of the functions \(e^{2 \pi i n x}\) (sometimes called \emph{characters}).
 \end{note}
 
-\begin{defn}[Characters]\label{5.3.1}
+\begin{defn}[Characters]\label{ii:5.3.1}
   For every integer \(n\), we let \(e_n \in C(\R / \Z ; \C)\) denote the function
   \[
     e_n(x) \coloneqq e^{2 \pi i n x}.
@@ -13,13 +13,13 @@
   This is sometimes referred to as the \emph{character with frequency \(n\)}.
 \end{defn}
 
-\begin{defn}[Trigonometric polynomials]\label{5.3.2}
+\begin{defn}[Trigonometric polynomials]\label{ii:5.3.2}
   A function \(f\) in \(C(\R / \Z ; \C)\) is said to be a \emph{trigonometric polynomial} if we can write
   \(f = \sum_{n = -N}^N c_n e_n\) for some integer \(N \geq 0\) and some complex numbers \((c_n)_{n = -N}^N\).
 \end{defn}
 
 \setcounter{thm}{3}
-\begin{eg}\label{5.3.4}
+\begin{eg}\label{ii:5.3.4}
   For any integer \(n\), the function \(\cos(2 \pi n x)\) is a trigonometric polynomial, since
   \[
     \cos(2 \pi n x) = \dfrac{e^{2 \pi n x} + e^{- 2 \pi n x}}{2} = \dfrac{1}{2} e_{-n} + \dfrac{1}{2} e_n.
@@ -28,7 +28,7 @@
   In fact, any linear combination of sines and cosines is also a trigonometric polynomial.
 \end{eg}
 
-\begin{lem}[Characters are an orthonormal system]\label{5.3.5}
+\begin{lem}[Characters are an orthonormal system]\label{ii:5.3.5}
   For any integers \(n\) and \(m\), we have \(\inner*{e_n, e_m} = 1\) when \(n = m\) and \(\inner*{e_n, e_m} = 0\) when \(n \neq m\).
   Also, we have \(\norm*{e_n}_2 = 1\).
 \end{lem}
@@ -37,40 +37,40 @@
   Let \(n, m \in \Z\).
   Observe that
   \begin{align*}
-    \inner*{e_n, e_m} & = \int_{[0, 1]} e_n(x) \overline{e_m(x)} \; dx                   &  & \by{5.2.1}                     \\
-                      & = \int_{[0, 1]} e^{2 \pi i n x} \overline{e^{2 \pi i m x}} \; dx &  & \by{5.3.1}                     \\
-                      & = \int_{[0, 1]} e^{2 \pi i n x} e^{- 2 \pi i m x} \; dx          &  & \text{(by \cref{4.7.2}(c)(f))} \\
-                      & = \int_{[0, 1]} e^{2 \pi i n x - 2 \pi i m x} \; dx              &  & \by{ex:4.6.16}                 \\
+    \inner*{e_n, e_m} & = \int_{[0, 1]} e_n(x) \overline{e_m(x)} \; dx                   &  & \by{ii:5.2.1}      \\
+                      & = \int_{[0, 1]} e^{2 \pi i n x} \overline{e^{2 \pi i m x}} \; dx &  & \by{ii:5.3.1}      \\
+                      & = \int_{[0, 1]} e^{2 \pi i n x} e^{- 2 \pi i m x} \; dx          &  & \by{ii:4.7.2}[c,f] \\
+                      & = \int_{[0, 1]} e^{2 \pi i n x - 2 \pi i m x} \; dx              &  & \by{ii:ex:4.6.16}  \\
                       & = \int_{[0, 1]} e^{2 \pi i (n - m) x} \; dx.
   \end{align*}
   If \(n = m\), then we have
   \begin{align*}
-    \inner*{e_n, e_n} & = \int_{[0, 1]} e^{2 \pi i (n - n) x} \; dx                                  \\
-                      & = \int_{[0, 1]} e^0 \; dx                                                    \\
-                      & = \int_{[0, 1]} 1 \; dx                     &  & \text{(by \cref{4.5.2}(e))} \\
+    \inner*{e_n, e_n} & = \int_{[0, 1]} e^{2 \pi i (n - n) x} \; dx                    \\
+                      & = \int_{[0, 1]} e^0 \; dx                                      \\
+                      & = \int_{[0, 1]} 1 \; dx                     &  & \by{ii:4.5.2}[e] \\
                       & = 1
   \end{align*}
   and
   \begin{align*}
-    \norm*{e_n}_2 & = \sqrt{\inner*{e_n, e_n}} &  & \by{ac:5.2.1} \\
+    \norm*{e_n}_2 & = \sqrt{\inner*{e_n, e_n}} &  & \by{ii:ac:5.2.1} \\
                   & = \sqrt{1} = 1.
   \end{align*}
   If \(n \neq m\), then we have
   \begin{align*}
-     & \inner*{e_n, e_m}                                                                                                                \\
-     & = \int_{[0, 1]} e^{2 \pi i (n - m) x} \; dx                                                                                      \\
-     & = \int_{[0, 1]} \cos\big(2 \pi (n - m) x\big) + i \sin\big(2 \pi (n - m) x\big) \; dx        &  & \text{(by \cref{4.7.2}(f))}    \\
-     & = \int_{[0, 1]} \cos\big(2 \pi (n - m) x\big) \; dx                                          &  & \by{5.2.2}                     \\
-     & \quad + i \int_{[0, 1]} \sin\big(2 \pi (n - m) x\big) \; dx                                                                      \\
-     & = \bigg(\dfrac{\sin\big(2 \pi (n - m) x\big)}{2 \pi (n - m)}|_{x = 0}^{x = 1}\bigg)          &  & \text{(by \cref{4.7.2}(b))}    \\
-     & \quad + i \bigg(\dfrac{-\cos\big(2 \pi (n - m) x\big)}{2 \pi (n - m)}|_{x = 0}^{x = 1}\bigg)                                     \\
-     & = 0 - 0                                                                                      &  & \text{(by \cref{ac:4.7.2}(c))} \\
-     & \quad + i \bigg(\dfrac{- (-1) + (-1)}{2 \pi (n - m)}\bigg)                                   &  & \text{(by \cref{ac:4.7.2}(f))} \\
+     & \inner*{e_n, e_m}                                                                                                  \\
+     & = \int_{[0, 1]} e^{2 \pi i (n - m) x} \; dx                                                                        \\
+     & = \int_{[0, 1]} \cos\big(2 \pi (n - m) x\big) + i \sin\big(2 \pi (n - m) x\big) \; dx        &  & \by{ii:4.7.2}[f]    \\
+     & = \int_{[0, 1]} \cos\big(2 \pi (n - m) x\big) \; dx                                          &  & \by{ii:5.2.2}       \\
+     & \quad + i \int_{[0, 1]} \sin\big(2 \pi (n - m) x\big) \; dx                                                        \\
+     & = \bigg(\dfrac{\sin\big(2 \pi (n - m) x\big)}{2 \pi (n - m)}|_{x = 0}^{x = 1}\bigg)          &  & \by{ii:4.7.2}[b]    \\
+     & \quad + i \bigg(\dfrac{-\cos\big(2 \pi (n - m) x\big)}{2 \pi (n - m)}|_{x = 0}^{x = 1}\bigg)                       \\
+     & = 0 - 0                                                                                      &  & \by{ii:ac:4.7.2}[c] \\
+     & \quad + i \bigg(\dfrac{- (-1) + (-1)}{2 \pi (n - m)}\bigg)                                   &  & \by{ii:ac:4.7.2}[f] \\
      & = 0.
   \end{align*}
 \end{proof}
 
-\begin{cor}\label{5.3.6}
+\begin{cor}\label{ii:5.3.6}
   Let \(f = \sum_{n = -N}^N c_n e_n\) be a trigonometric polynomial.
   Then we have the formula
   \[
@@ -88,26 +88,26 @@
   Let \(m \in \N\).
   Then we have
   \begin{align*}
-    \inner*{f, e_m} & = \inner*{\sum_{n = -N}^N (c_n e_n), e_m}         &  & \text{(by hypothesis)}      \\
-                    & = \sum_{n = -N}^N \inner*{c_n e_n, e_m}           &  & \text{(by \cref{5.2.5}(c))} \\
-                    & = \sum_{n = -N}^N \big(c_n \inner*{e_n, e_m}\big) &  & \text{(by \cref{5.2.5}(c))} \\
+    \inner*{f, e_m} & = \inner*{\sum_{n = -N}^N (c_n e_n), e_m}         &  & \text{(by hypothesis)} \\
+                    & = \sum_{n = -N}^N \inner*{c_n e_n, e_m}           &  & \by{ii:5.2.5}[c]          \\
+                    & = \sum_{n = -N}^N \big(c_n \inner*{e_n, e_m}\big) &  & \by{ii:5.2.5}[c]          \\
                     & = \begin{dcases}
                           c_m & \text{if } -N \leq m \leq N         \\
                           0   & \text{if } m > N \text{ or } m < -N
-                        \end{dcases}      &  & \by{5.3.5}
+                        \end{dcases}      &  & \by{ii:5.3.5}
   \end{align*}
   and
   \begin{align*}
-    \norm*{f}_2^2 & = \inner*{f, f}                                            &  & \by{ac:5.2.1}                 \\
+    \norm*{f}_2^2 & = \inner*{f, f}                                            &  & \by{ii:ac:5.2.1}                 \\
                   & = \inner*{f, \sum_{n = -N}^N (c_n e_n)}                    &  & \text{(by hypothesis)}        \\
-                  & = \sum_{n = -N}^N \inner*{f, c_n e_n}                      &  & \text{(by \cref{5.2.5}(d))}   \\
-                  & = \sum_{n = -N}^N \big(\overline{c_n} \inner*{f, e_n}\big) &  & \text{(by \cref{5.2.5}(d))}   \\
+                  & = \sum_{n = -N}^N \inner*{f, c_n e_n}                      &  & \by{ii:5.2.5}[d]                 \\
+                  & = \sum_{n = -N}^N \big(\overline{c_n} \inner*{f, e_n}\big) &  & \by{ii:5.2.5}[d]                 \\
                   & = \sum_{n = -N}^N \big(\overline{c_n} c_n\big)             &  & \text{(from the proof above)} \\
-                  & = \sum_{n = -N}^N \abs{c_n}^2.                             &  & \by{4.6.11}
+                  & = \sum_{n = -N}^N \abs{c_n}^2.                             &  & \by{ii:4.6.11}
   \end{align*}
 \end{proof}
 
-\begin{defn}[Fourier transform]\label{5.3.7}
+\begin{defn}[Fourier transform]\label{ii:5.3.7}
   For any function \(f \in C(\R / \Z ; \C)\), and any integer \(n \in \Z\), we define the \(n^{\text{th}}\) \emph{Fourier coefficient of} \(f\), denoted \(\hat{f}(n)\), by the formula
   \[
     \hat{f}(n) \coloneqq \inner*{f, e_n} = \int_{[0, 1]} f(x) e^{- 2 \pi i n x} \; dx.
@@ -115,8 +115,8 @@
   The function \(\hat{f} : \Z \to \C\) is called the \emph{Fourier transform} of \(f\).
 \end{defn}
 
-\begin{ac}\label{ac:5.3.1}
-  From \cref{5.3.6}, we see that whenever
+\begin{ac}\label{ii:ac:5.3.1}
+  From \cref{ii:5.3.6}, we see that whenever
   \[
     f = \sum_{n = -N}^N c_n e_n
   \]
@@ -133,13 +133,13 @@
     f(x) = \sum_{n = -\infty}^\infty \hat{f}(n) e^{2 \pi i n x}.
   \]
   The right-hand side is referred to as the \emph{Fourier series} of \(f\).
-  Also, from the second identity of \cref{5.3.6} we have the \emph{Plancherel formula}
+  Also, from the second identity of \cref{ii:5.3.6} we have the \emph{Plancherel formula}
   \[
     \norm*{f}_2^2 = \sum_{n = -\infty}^\infty \abs{\hat{f}(n)}^2.
   \]
 \end{ac}
 
-\begin{rmk}\label{5.3.8}
+\begin{rmk}\label{ii:5.3.8}
   We stress that at present we have only proven the Fourier inversion and Plancherel formulae in the case when \(f\) is a trigonometric polynomial.
   Note that in this case that the Fourier coefficients \(\hat{f}(n)\) are mostly zero (indeed, they can only be non-zero when \(-N \leq n \leq N\)), and so this infinite sum is really just a finite sum in disguise.
   In particular there are no issues about what sense the above series converge in;
@@ -155,7 +155,7 @@
 
 \exercisesection
 
-\begin{ex}\label{ex:5.3.1}
+\begin{ex}\label{ii:ex:5.3.1}
   Show that the sum or product of any two trigonometric polynomials is again a trigonometric polynomial.
 \end{ex}
 
@@ -181,8 +181,8 @@
   For \(fg\), we use induction on \(M\) to show that \(fg\) is trigonometric polynomial.
   For \(M = 0\), we have
   \begin{align*}
-    fg & = \bigg(\sum_{n = -N}^N (c_n e_n)\bigg) (d_0 e^0)                                  \\
-       & = \bigg(\sum_{n = -N}^N (c_n e_n)\bigg) d_0       &  & \text{(by \cref{4.5.2}(e))} \\
+    fg & = \bigg(\sum_{n = -N}^N (c_n e_n)\bigg) (d_0 e^0)                    \\
+       & = \bigg(\sum_{n = -N}^N (c_n e_n)\bigg) d_0       &  & \by{ii:4.5.2}[e] \\
        & = \sum_{n = -N}^N (c_n d_0 e_n).
   \end{align*}
   Clearly \(fg\) is trigonometric polynomial and thus the base case holds.
@@ -217,18 +217,18 @@
   Thus from the proof above we know that \(fg\) is trigonometric polynomial, and this closes the induction.
 \end{proof}
 
-\begin{ex}\label{ex:5.3.2}
-  Prove \cref{5.3.5}.
+\begin{ex}\label{ii:ex:5.3.2}
+  Prove \cref{ii:5.3.5}.
 \end{ex}
 
 \begin{proof}
-  See \cref{5.3.5}.
+  See \cref{ii:5.3.5}.
 \end{proof}
 
-\begin{ex}\label{ex:5.3.3}
-  Prove \cref{5.3.6}.
+\begin{ex}\label{ii:ex:5.3.3}
+  Prove \cref{ii:5.3.6}.
 \end{ex}
 
 \begin{proof}
-  See \cref{5.3.6}.
+  See \cref{ii:5.3.6}.
 \end{proof}

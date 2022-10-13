@@ -1,6 +1,6 @@
-\section{Monotonic functions}\label{sec:9.8}
+\section{Monotonic functions}\label{i:sec:9.8}
 
-\begin{defn}[Monotonic functions]\label{9.8.1}
+\begin{defn}[Monotonic functions]\label{i:9.8.1}
   Let \(X\) be a subset of \(\R\), and let \(f : X \to \R\) be a function.
   We say that \(f\) is \emph{monotone increasing} iff \(f(y) \geq f(x)\) whenever \(x, y \in X\) and \(y > x\).
   We say that \(f\) is \emph{strictly monotone increasing} iff \(f(y) > f(x)\) whenever \(x, y \in X\) and \(y > x\).
@@ -19,30 +19,30 @@
 \end{note}
 
 \setcounter{thm}{2}
-\begin{prop}\label{9.8.3}
+\begin{prop}\label{i:9.8.3}
   Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a function which is both continuous and strictly monotone increasing.
   Then \(f\) is a bijection from \([a, b]\) to \([f(a), f(b)]\), and the inverse \(f^{-1} : [f(a), f(b)] \to [a, b]\) is also continuous and strictly monotone increasing.
 \end{prop}
 
 \begin{proof}
   We first show that \(f\) is bijective from \([a, b]\) to \([f(a), f(b)]\).
-  Since \(a < b\) and \(f\) is strictly monotone increasing, by \cref{9.8.1} we know that \(f(a) < f(b)\).
+  Since \(a < b\) and \(f\) is strictly monotone increasing, by \cref{i:9.8.1} we know that \(f(a) < f(b)\).
   In particular, \(\forall c \in (a, b)\), we have \(a < c < b\) and \(f(a) < f(c) < f(b)\).
-  By \cref{9.6.5} this means \(f\) attains its minimum at \(a\) and attains its maximum at \(b\).
-  By \cref{9.7.4} we know that \(f([a, b]) = [f(a), f(b)]\), thus \(f\) is surjective from \([a, b]\) to \([f(a), f(b)]\).
-  Since \(f\) is strictly monotone increasing, by \cref{9.8.1} \(x \neq y \implies f(x) \neq f(y)\), thus \(f\) is injective from \([a, b]\) to \([f(a), f(b)]\).
+  By \cref{i:9.6.5} this means \(f\) attains its minimum at \(a\) and attains its maximum at \(b\).
+  By \cref{i:9.7.4} we know that \(f([a, b]) = [f(a), f(b)]\), thus \(f\) is surjective from \([a, b]\) to \([f(a), f(b)]\).
+  Since \(f\) is strictly monotone increasing, by \cref{i:9.8.1} \(x \neq y \implies f(x) \neq f(y)\), thus \(f\) is injective from \([a, b]\) to \([f(a), f(b)]\).
   Since \(f\) is both injective and surjective from \([a, b]\) to \([f(a), f(b)]\), we know that \(f\) is bijective from \([a, b]\) to \([f(a), f(b)]\).
 
   Next we show that \(f^{-1}\) is continuous.
   Let \(y_0 \in [f(a), f(b)]\).
-  By \cref{9.1.12} we know that \([f(a), f(b)]\) is closed, so \(y_0\) is an adherent point of \([f(a), f(b)]\).
+  By \cref{i:9.1.12} we know that \([f(a), f(b)]\) is closed, so \(y_0\) is an adherent point of \([f(a), f(b)]\).
   Since \(f\) is bijective from \([a, b]\) to \([f(a), f(b)]\), we know that \(\exists!\ x_0 \in [a, b]\) such that \(f(x_0) = y_0\) and thus \(f^{-1}(y_0) = x_0\).
-  Again by \cref{9.1.12} we know that \([a, b]\) is closed, so \(x_0\) is an adherent point of \([a, b]\).
-  To show that \(f^{-1}\) is continuous at \(y_0\), by \cref{9.4.1} we need to show that
+  Again by \cref{i:9.1.12} we know that \([a, b]\) is closed, so \(x_0\) is an adherent point of \([a, b]\).
+  To show that \(f^{-1}\) is continuous at \(y_0\), by \cref{i:9.4.1} we need to show that
   \[
     \lim_{y \to y_0 ; y \in [f(a), f(b)]} f^{-1}(y) = f^{-1}(y_0) = x_0.
   \]
-  By \cref{9.3.6}, it suffice to show that
+  By \cref{i:9.3.6}, it suffice to show that
   \[
     \forall \varepsilon \in \R^+, \exists \delta \in \R^+ : \big(\forall y \in [f(a), f(b)], \abs{y - y_0} < \delta \implies \abs{f^{-1}(y) - x_0} \leq \varepsilon\big).
   \]
@@ -53,15 +53,15 @@
   Let \(\delta = \min\big(y_0 - f(x_L), f(x_H) - y_0\big)\).
   Then we have
   \begin{align*}
-             & \forall y \in [f(a), f(b)], \abs{y - y_0} < \delta                                                               \\
-    \implies & -\delta < y - y_0 < \delta                                                                                       \\
-    \implies & f(x_L) - y_0 \leq -\delta < y - y_0 < \delta \leq f(x_H) - y_0                                                   \\
-    \implies & f(x_L) \leq y \leq f(x_H)                                                                                        \\
-    \implies & \exists x \in [x_L, x_H] : \big(f(x) = y\big) \land (x_L \leq x \leq x_H)                        &  & \by{9.7.1} \\
-    \implies & \exists x \in [x_L, x_H] : \big(f(x) = y\big)                                                                    \\
-             & \land (x_0 - \varepsilon \leq x_L \leq x \leq x_H \leq x_0 + \varepsilon)                                        \\
-    \implies & \exists x \in [x_L, x_H] : \big(f(x) = y\big) \land (-\varepsilon \leq x - x_0 \leq \varepsilon)                 \\
-    \implies & \exists x \in [x_L, x_H] : \big(f(x) = y\big) \land (\abs{x - x_0} \leq \varepsilon)                             \\
+             & \forall y \in [f(a), f(b)], \abs{y - y_0} < \delta                                                                 \\
+    \implies & -\delta < y - y_0 < \delta                                                                                         \\
+    \implies & f(x_L) - y_0 \leq -\delta < y - y_0 < \delta \leq f(x_H) - y_0                                                     \\
+    \implies & f(x_L) \leq y \leq f(x_H)                                                                                          \\
+    \implies & \exists x \in [x_L, x_H] : \big(f(x) = y\big) \land (x_L \leq x \leq x_H)                        &  & \by{i:9.7.1} \\
+    \implies & \exists x \in [x_L, x_H] : \big(f(x) = y\big)                                                                      \\
+             & \land (x_0 - \varepsilon \leq x_L \leq x \leq x_H \leq x_0 + \varepsilon)                                          \\
+    \implies & \exists x \in [x_L, x_H] : \big(f(x) = y\big) \land (-\varepsilon \leq x - x_0 \leq \varepsilon)                   \\
+    \implies & \exists x \in [x_L, x_H] : \big(f(x) = y\big) \land (\abs{x - x_0} \leq \varepsilon)                               \\
     \implies & \exists x \in [x_L, x_H] : \big(f(x) = y\big) \land (\abs{f^{-1}(y) - x_0} \leq \varepsilon).
   \end{align*}
   Since \(\varepsilon\) is arbitrary, \(f^{-1}\) is continuous at \(y_0\).
@@ -73,8 +73,8 @@
   Suppose for sake of contradiction that \(f^{-1}(y_1) \geq f^{-1}(y_2)\).
   Since \(f\) is strictly monotone increasing, we know that
   \begin{align*}
-             & f^{-1}(y_1) \geq f^{-1}(y_2)                                       \\
-    \implies & f\big(f^{-1}(y_1)\big) \geq f\big(f^{-1}(y_2)\big) &  & \by{9.8.1} \\
+             & f^{-1}(y_1) \geq f^{-1}(y_2)                                         \\
+    \implies & f\big(f^{-1}(y_1)\big) \geq f\big(f^{-1}(y_2)\big) &  & \by{i:9.8.1} \\
     \implies & y_1 \geq y_2.
   \end{align*}
   But this contradict to \(y_1 < y_2\), thus \(f^{-1}(y_1) < f^{-1}(y_2)\).
@@ -94,7 +94,7 @@
   Then \(f\) is monotone but not bijective.
 \end{proof}
 
-\begin{ac}\label{ac:9.8.1}
+\begin{ac}\label{i:ac:9.8.1}
   Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a function which is both continuous and strictly monotone decreasing.
   Then \(f\) is a bijection from \([a, b]\) to \([f(b), f(a)]\), and the inverse \(f^{-1} : [f(b), f(a)] \to [a, b]\) is also continuous and strictly monotone decreasing.
 \end{ac}
@@ -103,48 +103,48 @@
   Let \(h : \R \to \R\) be the function \(h(x) = -x\).
   We define a function \(g : [a, b] \to \R\) by setting \(g = -f\).
   Then we have \(g = h \circ f\) and \(f = h \circ g\).
-  By \cref{9.4.9} we know that \(h\) is continuous on \(\R\), thus by \cref{9.4.13} we know that \(g\) is continuous.
+  By \cref{i:9.4.9} we know that \(h\) is continuous on \(\R\), thus by \cref{i:9.4.13} we know that \(g\) is continuous.
   Since \(f\) is strictly monotone decreasing, we have
   \begin{align*}
-             & \forall x_1, x_2 \in [a, b], x_1 < x_2                 \\
-    \implies & f(x_1) > f(x_2)                        &  & \by{9.8.1} \\
-    \implies & -f(x_1) < -f(x_2)                                      \\
+             & \forall x_1, x_2 \in [a, b], x_1 < x_2                   \\
+    \implies & f(x_1) > f(x_2)                        &  & \by{i:9.8.1} \\
+    \implies & -f(x_1) < -f(x_2)                                        \\
     \implies & g(x_1) < g(x_2)
   \end{align*}
   and \(g\) is strictly monotone increasing.
-  Since \(g\) is monotone increasing and continuous, by \cref{9.8.3} we know that \(g : [a, b] \to [g(a), g(b)]\) is bijective and \(g^{-1} : [g(a), g(b)] \to [a, b]\) is continuous and strictly monotone increasing.
-  Since \(h\) is bijective, by \cref{ex:3.3.7} we know that \(f = h \circ g\) is bijective from \([a, b]\) to \([-g(b), -g(a)] = [f(b), f(a)]\).
-  Again by \cref{ex:3.3.7} we know that
+  Since \(g\) is monotone increasing and continuous, by \cref{i:9.8.3} we know that \(g : [a, b] \to [g(a), g(b)]\) is bijective and \(g^{-1} : [g(a), g(b)] \to [a, b]\) is continuous and strictly monotone increasing.
+  Since \(h\) is bijective, by \cref{i:ex:3.3.7} we know that \(f = h \circ g\) is bijective from \([a, b]\) to \([-g(b), -g(a)] = [f(b), f(a)]\).
+  Again by \cref{i:ex:3.3.7} we know that
   \[
     f^{-1} = g^{-1} \circ h^{-1}|_{[f(a), f(b)]}.
   \]
-  Since \(h^{-1} = h\) is continuous, by \cref{9.4.13} we know that \(f^{-1}\) is continuous.
+  Since \(h^{-1} = h\) is continuous, by \cref{i:9.4.13} we know that \(f^{-1}\) is continuous.
   Since \(g^{-1}\) is strictly monotone increasing, we have
   \begin{align*}
-             & \forall y_1, y_2 \in [f(b), f(a)], y_1 < y_2                                                            \\
-    \implies & \exists x_1, x_2 \in [a, b] :                                                                           \\
-             & \big(x_1 = f^{-1}(y_1)\big) \land \big(x_2 = f^{-1}(y_2)\big) \land \big(y_1 < y_2\big)                 \\
-    \implies & \exists x_1, x_2 \in [a, b] :                                                                           \\
-             & \big(g(x_1) = -y_1\big) \land \big(g(x_2) = -y_2\big) \land \big(y_1 < y_2\big)                         \\
-    \implies & \exists x_1, x_2 \in [a, b] :                                                                           \\
-             & \big(g(x_1) = -y_1\big) \land \big(g(x_2) = -y_2\big) \land \big(g(x_1) > g(x_2)\big)                   \\
-    \implies & \exists x_1, x_2 \in [a, b] :                                                                           \\
-             & \big(g(x_1) = -y_1\big) \land \big(g(x_2) = -y_2\big)                                                   \\
-             & \land \Big(x_1 = g^{-1}\big(g(x_1)\big) > g^{-1}\big(g(x_2)\big) = x_2\Big)             &  & \by{9.8.1} \\
+             & \forall y_1, y_2 \in [f(b), f(a)], y_1 < y_2                                                              \\
+    \implies & \exists x_1, x_2 \in [a, b] :                                                                             \\
+             & \big(x_1 = f^{-1}(y_1)\big) \land \big(x_2 = f^{-1}(y_2)\big) \land \big(y_1 < y_2\big)                   \\
+    \implies & \exists x_1, x_2 \in [a, b] :                                                                             \\
+             & \big(g(x_1) = -y_1\big) \land \big(g(x_2) = -y_2\big) \land \big(y_1 < y_2\big)                           \\
+    \implies & \exists x_1, x_2 \in [a, b] :                                                                             \\
+             & \big(g(x_1) = -y_1\big) \land \big(g(x_2) = -y_2\big) \land \big(g(x_1) > g(x_2)\big)                     \\
+    \implies & \exists x_1, x_2 \in [a, b] :                                                                             \\
+             & \big(g(x_1) = -y_1\big) \land \big(g(x_2) = -y_2\big)                                                     \\
+             & \land \Big(x_1 = g^{-1}\big(g(x_1)\big) > g^{-1}\big(g(x_2)\big) = x_2\Big)             &  & \by{i:9.8.1} \\
     \implies & f^{-1}(y_1) > f^{-1}(y_2)
   \end{align*}
-  and thus by \cref{9.8.1} \(f^{-1}\) is strictly monotone decreasing.
+  and thus by \cref{i:9.8.1} \(f^{-1}\) is strictly monotone decreasing.
 \end{proof}
 
-\begin{eg}\label{9.8.4}
+\begin{eg}\label{i:9.8.4}
   Let \(n\) be a positive integer and \(R > 0\).
-  Since the function \(f(x) \coloneqq x^n\) is strictly increasing on the interval \([0, R]\), we see from \cref{9.8.3} that this function is a bijection from \([0, R]\) to \([0, R^n]\), and hence there is an inverse from \([0, R^n]\) to \([0, R]\).
-  This can be used to give an alternate means to construct the \(n^\text{th}\) root \(x^{1 / n}\) of a number \(x \in [0, R]\) than what was done in \cref{5.6.5}.
+  Since the function \(f(x) \coloneqq x^n\) is strictly increasing on the interval \([0, R]\), we see from \cref{i:9.8.3} that this function is a bijection from \([0, R]\) to \([0, R^n]\), and hence there is an inverse from \([0, R^n]\) to \([0, R]\).
+  This can be used to give an alternate means to construct the \(n^\text{th}\) root \(x^{1 / n}\) of a number \(x \in [0, R]\) than what was done in \cref{i:5.6.5}.
 \end{eg}
 
 \exercisesection
 
-\begin{ex}\label{ex:9.8.1}
+\begin{ex}\label{i:ex:9.8.1}
   Explain why the maximum principle remains true if the hypothesis that \(f\) is continuous is replaced with \(f\) being monotone, or with \(f\) being strictly monotone.
 \end{ex}
 
@@ -153,16 +153,16 @@
   Suppose that \(f\) is monotone.
   Then we have
   \begin{align*}
-             & \forall c \in [a, b]                                                                       \\
-    \implies & a \leq c \leq b                                                            &  & \by{9.1.1} \\
-    \implies & \big(f(a) \leq f(c) \leq f(b)\big) \lor \big(f(a) \geq f(c) \geq f(b)\big) &  & \by{9.8.1} \\
+             & \forall c \in [a, b]                                                                         \\
+    \implies & a \leq c \leq b                                                            &  & \by{i:9.1.1} \\
+    \implies & \big(f(a) \leq f(c) \leq f(b)\big) \lor \big(f(a) \geq f(c) \geq f(b)\big) &  & \by{i:9.8.1} \\
   \end{align*}
   Thus \(f\) attains its maximum at \(f(b)\) and attains its minimum at \(f(a)\) when \(f\) is monotone increasing;
   \(f\) attains its maximum at \(f(a)\) and attains its minimum at \(f(b)\) when \(f\) is monotone decreasing.
   The same argument holds when \(f\) is strictly monotone.
 \end{proof}
 
-\begin{ex}\label{ex:9.8.2}
+\begin{ex}\label{i:ex:9.8.2}
   Give an example to show that the intermediate value theorem becomes false if the hypothesis that \(f\) is continuous is replaced with \(f\) being monotone, or with \(f\) being strictly monotone.
 \end{ex}
 
@@ -175,10 +175,10 @@
     \end{dcases}
   \]
   Then \(f\) is strictly monotone and thus monotone.
-  Since \(\forall y \in [0.5, 1.5)\), \(\nexists x \in \N\) such that \(f(x) = y\), the intermediate value theorem (\cref{9.7.1}) does not hold.
+  Since \(\forall y \in [0.5, 1.5)\), \(\nexists x \in \N\) such that \(f(x) = y\), the intermediate value theorem (\cref{i:9.7.1}) does not hold.
 \end{proof}
 
-\begin{ex}\label{ex:9.8.3}
+\begin{ex}\label{i:ex:9.8.3}
   Let \(a < b\) be real numbers, and let \(f : [a, b] \to \R\) be a function which is both continuous and one-to-one.
   Show that \(f\) is strictly monotone.
 \end{ex}
@@ -203,7 +203,7 @@
             \implies & \begin{dcases}
                          \exists x_1 \in (c, b) : f(x_1) = f(a) \\
                          \exists x_2 \in (a, c) : f(x_2) = f(b) \\
-                       \end{dcases} &  & \by{9.7.1}                                    \\
+                       \end{dcases} &  & \by{i:9.7.1}                                    \\
             \implies & \begin{dcases}
                          x_1 = a \\
                          x_2 = b
@@ -211,7 +211,7 @@
           \end{align*}
           a contradiction.
           Thus \(f\) is strictly monotone.
-          Since \(f(a) < f(b)\), by \cref{9.8.1} \(f\) is strictly monotone increasing.
+          Since \(f(a) < f(b)\), by \cref{i:9.8.1} \(f\) is strictly monotone increasing.
     \item \(f(a) > f(b)\).
           Suppose for sake of contradiction that \(f\) is not strictly monotone.
           Then \(\exists c \in (a, b)\) such that
@@ -228,7 +228,7 @@
             \implies & \begin{dcases}
                          \exists x_1 \in (a, c) : f(x_1) = f(b) \\
                          \exists x_2 \in (c, b) : f(x_2) = f(a) \\
-                       \end{dcases} &  & \by{9.7.1}                                    \\
+                       \end{dcases} &  & \by{i:9.7.1}                                    \\
             \implies & \begin{dcases}
                          x_1 = b \\
                          x_2 = a
@@ -236,22 +236,22 @@
           \end{align*}
           a contradiction.
           Thus \(f\) is strictly monotone.
-          Since \(f(a) > f(b)\), by \cref{9.8.1} \(f\) is strictly monotone decreasing.
+          Since \(f(a) > f(b)\), by \cref{i:9.8.1} \(f\) is strictly monotone decreasing.
   \end{itemize}
   From all cases above we conclude that \(f\) is strictly monotone.
 \end{proof}
 
-\begin{ex}\label{ex:9.8.4}
-  Prove \cref{9.8.3}.
+\begin{ex}\label{i:ex:9.8.4}
+  Prove \cref{i:9.8.3}.
   Is the proposition still true if the continuity assumption is dropped, or if strict monotonicity is replaced just by monotonicity?
   How should one modify the proposition to deal with strictly monotone decreasing functions instead of strictly monotone increasing functions?
 \end{ex}
 
 \begin{proof}
-  See \cref{9.8.3} and \cref{ac:9.8.1}.
+  See \cref{i:9.8.3} and \cref{i:ac:9.8.1}.
 \end{proof}
 
-\begin{ex}\label{ex:9.8.5}
+\begin{ex}\label{i:ex:9.8.5}
   In this exercise we give an example of a function which has a discontinuity at every rational point, but is continuous at every irrational.
   Since the rationals are countable, we can write them as \(\Q = \set{q(0), q(1), q(2), \dots}\), where \(q : \N \to \Q\) is a bijection from \(\N\) to \(\Q\).
   Now define a function \(g : \Q \to \R\) by setting \(g(q(n)) \coloneqq 2^{-n}\) for each natural number \(n\);
@@ -271,15 +271,15 @@
 
 \begin{proof}{(a)}
   Let \(a, b \in \R\) and \(a < b\).
-  By \cref{5.4.14}, \(\exists c \in \Q\) such that \(a < c < b\).
+  By \cref{i:5.4.14}, \(\exists c \in \Q\) such that \(a < c < b\).
   Then we have
   \begin{align*}
-    f(b) & = \sum_{r \in \Q : r < b} g(r)                                                                                                \\
-         & = \sum_{r \in \Q : r < a} g(r) + \sum_{r \in \Q : a \leq r < c} g(r) + \sum_{r \in \Q : c \leq r < b} g(r) &  & \by{8.2.6}[c] \\
-         & = f(a) + \sum_{r \in \Q : a \leq r < c} g(r) + g(c) + \sum_{r \in \Q : c < r < b} g(r)                     &  & \by{8.2.6}[c] \\
+    f(b) & = \sum_{r \in \Q : r < b} g(r)                                                                                                  \\
+         & = \sum_{r \in \Q : r < a} g(r) + \sum_{r \in \Q : a \leq r < c} g(r) + \sum_{r \in \Q : c \leq r < b} g(r) &  & \by{i:8.2.6}[c] \\
+         & = f(a) + \sum_{r \in \Q : a \leq r < c} g(r) + g(c) + \sum_{r \in \Q : c < r < b} g(r)                     &  & \by{i:8.2.6}[c] \\
          & > f(a).
   \end{align*}
-  and by \cref{9.8.1} \(f\) is strictly monotone increasing.
+  and by \cref{i:9.8.1} \(f\) is strictly monotone increasing.
 \end{proof}
 
 \begin{proof}{(b)}
@@ -287,18 +287,18 @@
   Since \(q\) is bijective, \(\exists!\ n \in \N\) such that \(q(n) = \gamma\).
   Then \(\forall x \in (\gamma, \infty)\), we have
   \begin{align*}
-    f(x) & = \sum_{r \in \Q : r < x} g(r)                                                                             \\
-         & = \sum_{r \in \Q : r < \gamma} g(r) + g(\gamma) + \sum_{r \in \Q : \gamma < r < x} g(r) &  & \by{8.2.6}[c] \\
-         & = f(\gamma) + g(\gamma) + \sum_{r \in \Q : \gamma < r < x} g(r)                                            \\
-         & > f(\gamma) + g(\gamma)                                                                                    \\
+    f(x) & = \sum_{r \in \Q : r < x} g(r)                                                                               \\
+         & = \sum_{r \in \Q : r < \gamma} g(r) + g(\gamma) + \sum_{r \in \Q : \gamma < r < x} g(r) &  & \by{i:8.2.6}[c] \\
+         & = f(\gamma) + g(\gamma) + \sum_{r \in \Q : \gamma < r < x} g(r)                                              \\
+         & > f(\gamma) + g(\gamma)                                                                                      \\
          & = f(\gamma) + 2^{-n}.
   \end{align*}
   But this means
   \begin{align*}
-             & \forall x \in (\gamma, \infty), f(x) - f(\gamma) > 2^{-n}                          \\
-    \implies & \forall x \in (\gamma, \infty), \abs{f(x) - f(\gamma)} > 2^{-n}                    \\
-    \implies & f(\gamma^+) \text{ does not exist}                              &  & \by{9.5.1}    \\
-    \implies & f \text{ is not continuous at } \gamma.                         &  & \by{ac:9.5.1}
+             & \forall x \in (\gamma, \infty), f(x) - f(\gamma) > 2^{-n}                            \\
+    \implies & \forall x \in (\gamma, \infty), \abs{f(x) - f(\gamma)} > 2^{-n}                      \\
+    \implies & f(\gamma^+) \text{ does not exist}                              &  & \by{i:9.5.1}    \\
+    \implies & f \text{ is not continuous at } \gamma.                         &  & \by{i:ac:9.5.1}
   \end{align*}
   Since \(\gamma\) is arbitrary, we conclude that \(f\) is discontinuous at each \(\gamma \in \Q\).
 \end{proof}
@@ -313,7 +313,7 @@
     f_n(x) = \sum_{r \in E_n : r < x} g(r) = \sum_{r \in \Q : r < x, g(r) \geq 2^{-n}} g(r).
   \]
   Since \(q\) is bijective, there are at most \(n + 1\) rationals satisfying \((r \in \Q) \land \big(g(r) \geq 2^{-n}\big)\), thus \(E_n\) is finite and non-empty.
-  Since \(\R \setminus \Q \subseteq \R\), by \cref{9.1.11} \(\forall x_0 \in \R \setminus \Q\), \(x_0\) is an adherent point of \(\R \setminus \Q\).
+  Since \(\R \setminus \Q \subseteq \R\), by \cref{i:9.1.11} \(\forall x_0 \in \R \setminus \Q\), \(x_0\) is an adherent point of \(\R \setminus \Q\).
   Let \(\varepsilon \in \R^+\) and let \(\delta = \min\set{\abs{r - x_0} : r \in E_n}\).
   Since \(x_0 \notin \Q\), we have \(\delta > 0\).
   Then we have
@@ -334,23 +334,23 @@
     \implies & f_n(x) = f_n(x_0)                                                   \\
     \implies & 0 = \abs{f_n(x) - f_n(x_0)} < \varepsilon.
   \end{align*}
-  Since \(\varepsilon\) is arbitrary, by \cref{9.3.6} we have \(\lim_{x \to x_0 ; x \in \R \setminus \Q} f_n(x) = f_n(x_0)\), and by \cref{9.4.1} \(f_n\) is continuous at \(x_0\).
+  Since \(\varepsilon\) is arbitrary, by \cref{i:9.3.6} we have \(\lim_{x \to x_0 ; x \in \R \setminus \Q} f_n(x) = f_n(x_0)\), and by \cref{i:9.4.1} \(f_n\) is continuous at \(x_0\).
 
   Now we show that \(f\) is continuous at \(x_0\).
   We have
   \begin{align*}
-     & \forall x \in \R \setminus \Q, \abs{f(x) - f_n(x)}                                                       \\
-     & = \abs{\sum_{r \in \Q : r < x} g(r) - \sum_{r \in E_n : r < x} g(r)}                                     \\
-     & = \abs{\sum_{r \in \Q : r < x} g(r) - \sum_{r \in \Q : r < x, g(r) \geq 2^{-n}} g(r)}                    \\
-     & = \abs{\sum_{r \in \Q : r < x, g(r) < 2^{-n}} g(r)}                                   &  & \by{8.2.6}[c] \\
-     & = \sum_{r \in \Q : r < x, g(r) < 2^{-n}} g(r)                                                            \\
-     & = \sum_{r \in \Q : r < x, g(r) \leq 2^{-(n + 1)}} g(r)                                                   \\
-     & \leq \sum_{r \in \Q : g(r) \leq 2^{-(n + 1)}} g(r)                                                       \\
-     & \leq \sum_{k = n + 1}^\infty 2^{-k}                                                                      \\
-     & = 2^{-(n + 1)} \bigg(\sum_{k = 0}^\infty 2^{-k}\bigg)                                                    \\
-     & = 2^{-n}.                                                                             &  & \by{7.3.3}
+     & \forall x \in \R \setminus \Q, \abs{f(x) - f_n(x)}                                                         \\
+     & = \abs{\sum_{r \in \Q : r < x} g(r) - \sum_{r \in E_n : r < x} g(r)}                                       \\
+     & = \abs{\sum_{r \in \Q : r < x} g(r) - \sum_{r \in \Q : r < x, g(r) \geq 2^{-n}} g(r)}                      \\
+     & = \abs{\sum_{r \in \Q : r < x, g(r) < 2^{-n}} g(r)}                                   &  & \by{i:8.2.6}[c] \\
+     & = \sum_{r \in \Q : r < x, g(r) < 2^{-n}} g(r)                                                              \\
+     & = \sum_{r \in \Q : r < x, g(r) \leq 2^{-(n + 1)}} g(r)                                                     \\
+     & \leq \sum_{r \in \Q : g(r) \leq 2^{-(n + 1)}} g(r)                                                         \\
+     & \leq \sum_{k = n + 1}^\infty 2^{-k}                                                                        \\
+     & = 2^{-(n + 1)} \bigg(\sum_{k = 0}^\infty 2^{-k}\bigg)                                                      \\
+     & = 2^{-n}.                                                                             &  & \by{i:7.3.3}
   \end{align*}
-  By \cref{5.4.14}, \(\forall \varepsilon \in \R^+\), \(\exists n \in \N\) such that \(2^{-n} < \varepsilon / 2\).
+  By \cref{i:5.4.14}, \(\forall \varepsilon \in \R^+\), \(\exists n \in \N\) such that \(2^{-n} < \varepsilon / 2\).
   From the proof above we also have
   \[
     \forall x \in \R \setminus \Q, \abs{x - x_0} < \delta \implies f_n(x) = f_n(x_0) \\
@@ -365,5 +365,5 @@
      & < \varepsilon / 2 + \varepsilon / 2              \\
      & = \varepsilon.
   \end{align*}
-  Since \(\varepsilon\) is arbitrary, by \cref{9.3.6} we have \(\lim_{x \to x_0 ; x \in \R \setminus \Q} f(x) = f(x_0)\), and by \cref{9.4.1} \(f\) is continuous at \(x_0\).
+  Since \(\varepsilon\) is arbitrary, by \cref{i:9.3.6} we have \(\lim_{x \to x_0 ; x \in \R \setminus \Q} f(x) = f(x_0)\), and by \cref{i:9.4.1} \(f\) is continuous at \(x_0\).
 \end{proof}

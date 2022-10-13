@@ -1,6 +1,6 @@
-\section{Finite series}\label{sec:7.1}
+\section{Finite series}\label{i:sec:7.1}
 
-\begin{defn}[Finite series]\label{7.1.1}
+\begin{defn}[Finite series]\label{i:7.1.1}
   Let \(m, n\) be integers, and let \((a_i)_{i = m}^n\) be a finite sequence of real numbers, assigning a real number \(a_i\) to each integer \(i\) between \(m\) and \(n\) inclusive (i.e., \(m \leq i \leq n\)).
   Then we define the finite sum (or finite series) \(\sum_{i = m}^n a_i\) by the recursive formula
   \begin{align*}
@@ -16,7 +16,7 @@
   \]
 \end{note}
 
-\begin{rmk}\label{7.1.2}
+\begin{rmk}\label{i:7.1.2}
   The difference between ``sum'' and ``series'' is a subtle linguistic one.
   Strictly speaking, a series is an \emph{expression} of the form \(\sum_{i = m}^n a_i\);
   this series is mathematically (but not semantically) equal to a real number, which is then the \emph{sum} of that series.
@@ -26,7 +26,7 @@
   the expressions \(1 + 2 + 3 + 4 + 5\) and \(15\) are the same number, and thus \emph{mathematically} interchangeable, in the sense of the axiom of substitution, even if they are not semantically interchangeable.
 \end{rmk}
 
-\begin{rmk}\label{7.1.3}
+\begin{rmk}\label{i:7.1.3}
   Note that the variable \(i\) (sometimes called the \emph{index of summation}) is a \emph{bound variable} (sometimes called a \emph{dummy variable});
   the expression \(\sum_{i = m}^n a_i\) does not actually depend on any quantity named \(i\).
   In particular, one can replace the index of summation \(i\) with any other symbol, and obtain the same sum:
@@ -35,7 +35,7 @@
   \]
 \end{rmk}
 
-\begin{lem}\label{7.1.4}
+\begin{lem}\label{i:7.1.4}
   \begin{enumerate}
     \item Let \(m \leq n < p\) be integers, and let \(a_i\) be a real number assigned to each integer \(m \leq i \leq p\).
           Then we have
@@ -75,18 +75,18 @@
 \begin{proof}{(a)}
   Let \(k = p - m\).
   By hypothesis we know that \(k > 0\).
-  Now we use induction on \(k\) to show that \cref{7.1.4}(a) is true and we start with \(k = 1\).
-  For \(k = 1\), we have \(p = m + 1\) and by \cref{7.1.1} we have
+  Now we use induction on \(k\) to show that \cref{i:7.1.4}(a) is true and we start with \(k = 1\).
+  For \(k = 1\), we have \(p = m + 1\) and by \cref{i:7.1.1} we have
   \[
     \sum_{i = m}^n a_i + \sum_{i = n + 1}^p a_i = \sum_{i = m}^m a_i + \sum_{i = m + 1}^p a_i = a_m + a_{m + 1} = \sum_{i = m}^p a_i.
   \]
   Thus the base case holds.
-  Suppose inductively that for some \(k \geq 1\) \cref{7.1.4}(a) is true.
+  Suppose inductively that for some \(k \geq 1\) \cref{i:7.1.4}(a) is true.
   Then for \(k + 1 = p - m\), we have \(p - 1 = k + m\) and
   \begin{align*}
-    \sum_{i = m}^n a_i + \sum_{i = n + 1}^p a_i & = \Bigg(\sum_{i = m}^n a_i\Bigg) + \Bigg(\sum_{i = n + 1}^{p - 1} a_i\Bigg) + a_p &  & \by{7.1.1} \\
-                                                & = \Bigg(\sum_{i = m}^{p - 1} a_i\Bigg) + a_p                                      &  & \byIH      \\
-                                                & = \sum_{i = m}^p a_i.                                                             &  & \by{7.1.1}
+    \sum_{i = m}^n a_i + \sum_{i = n + 1}^p a_i & = \Bigg(\sum_{i = m}^n a_i\Bigg) + \Bigg(\sum_{i = n + 1}^{p - 1} a_i\Bigg) + a_p &  & \by{i:7.1.1} \\
+                                                & = \Bigg(\sum_{i = m}^{p - 1} a_i\Bigg) + a_p                                      &  & \byIH        \\
+                                                & = \sum_{i = m}^p a_i.                                                             &  & \by{i:7.1.1}
   \end{align*}
   This closes the induction.
 \end{proof}
@@ -94,23 +94,23 @@
 \begin{proof}{(b)}
   Let \(p = n - m\).
   By hypothesis we know that \(p \geq 0\).
-  Now we use induction on \(p\) to show that \cref{7.1.4}(b) is true.
+  Now we use induction on \(p\) to show that \cref{i:7.1.4}(b) is true.
   For \(p = 0\), we have \(n = m\) and
   \begin{align*}
-    \sum_{j = m + k}^{m + k} a_{j - k} & = \Bigg(\sum_{j = m + k}^{m + k - 1} a_{j - k}\Bigg) + a_{m + k - k} &  & \by{7.1.1} \\
-                                       & = 0 + a_{m + k - k}                                                  &  & \by{7.1.1} \\
-                                       & = 0 + a_m                                                                            \\
-                                       & = \Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + a_m                         &  & \by{7.1.1} \\
-                                       & = \sum_{i = m}^m a_i.                                                &  & \by{7.1.1}
+    \sum_{j = m + k}^{m + k} a_{j - k} & = \Bigg(\sum_{j = m + k}^{m + k - 1} a_{j - k}\Bigg) + a_{m + k - k} &  & \by{i:7.1.1} \\
+                                       & = 0 + a_{m + k - k}                                                  &  & \by{i:7.1.1} \\
+                                       & = 0 + a_m                                                                              \\
+                                       & = \Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + a_m                         &  & \by{i:7.1.1} \\
+                                       & = \sum_{i = m}^m a_i.                                                &  & \by{i:7.1.1}
   \end{align*}
   So the base case holds.
-  Suppose inductively that for some \(p \geq 0\) \cref{7.1.4}(b) is true.
+  Suppose inductively that for some \(p \geq 0\) \cref{i:7.1.4}(b) is true.
   Then for \(p + 1 = n - m\), we have \(p = n - m - 1\) and
   \begin{align*}
-    \sum_{j = m + k}^{n + k} a_{j - k} & = \Bigg(\sum_{j = m + k}^{n + k - 1} a_{j - k}\Bigg) + a_{n + k - k} &  & \by{7.1.1} \\
-                                       & = \Bigg(\sum_{j = m + k}^{n + k - 1} a_{j - k}\Bigg) + a_n                           \\
-                                       & = \Bigg(\sum_{i = m}^{n - 1} a_i\Bigg) + a_n                         &  & \byIH      \\
-                                       & = \sum_{i = m}^n a_i.                                                &  & \by{7.1.1}
+    \sum_{j = m + k}^{n + k} a_{j - k} & = \Bigg(\sum_{j = m + k}^{n + k - 1} a_{j - k}\Bigg) + a_{n + k - k} &  & \by{i:7.1.1} \\
+                                       & = \Bigg(\sum_{j = m + k}^{n + k - 1} a_{j - k}\Bigg) + a_n                             \\
+                                       & = \Bigg(\sum_{i = m}^{n - 1} a_i\Bigg) + a_n                         &  & \byIH        \\
+                                       & = \sum_{i = m}^n a_i.                                                &  & \by{i:7.1.1}
   \end{align*}
   This closes the induction.
 \end{proof}
@@ -118,21 +118,21 @@
 \begin{proof}{(c)}
   Let \(p = n - m\).
   By hypothesis we know that \(p \geq 0\).
-  Now we use induction on \(p\) to show that \cref{7.1.4}(c) is true.
+  Now we use induction on \(p\) to show that \cref{i:7.1.4}(c) is true.
   For \(p = 0\), we have \(n = m\) and
   \begin{align*}
-    \sum_{i = m}^m (a_i + b_i) & = \Bigg(\sum_{i = m}^{m - 1} (a_i + b_i)\Bigg) + a_m + b_m                                &  & \by{7.1.1} \\
-                               & = 0 + a_m + b_m                                                                           &  & \by{7.1.1} \\
-                               & = \Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + \Bigg(\sum_{i = m}^{m - 1} b_i\Bigg) + a_m + b_m &  & \by{7.1.1} \\
-                               & = \Bigg(\sum_{i = m}^m a_i\Bigg) + \Bigg(\sum_{i = m}^m b_i\Bigg).                        &  & \by{7.1.1}
+    \sum_{i = m}^m (a_i + b_i) & = \Bigg(\sum_{i = m}^{m - 1} (a_i + b_i)\Bigg) + a_m + b_m                                &  & \by{i:7.1.1} \\
+                               & = 0 + a_m + b_m                                                                           &  & \by{i:7.1.1} \\
+                               & = \Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + \Bigg(\sum_{i = m}^{m - 1} b_i\Bigg) + a_m + b_m &  & \by{i:7.1.1} \\
+                               & = \Bigg(\sum_{i = m}^m a_i\Bigg) + \Bigg(\sum_{i = m}^m b_i\Bigg).                        &  & \by{i:7.1.1}
   \end{align*}
   So the base case holds.
-  Suppose inductively that for some \(p \geq 0\) \cref{7.1.4}(c) is true.
+  Suppose inductively that for some \(p \geq 0\) \cref{i:7.1.4}(c) is true.
   Then for \(p + 1 = n - m\), we have \(p = n - m - 1\) and
   \begin{align*}
-    \sum_{i = m}^n (a_i + b_i) & = \Bigg(\sum_{i = m}^{n - 1} (a_i + b_i)\Bigg) + a_n + b_n                                &  & \by{7.1.1} \\
-                               & = \Bigg(\sum_{i = m}^{n - 1} a_i\Bigg) + \Bigg(\sum_{i = m}^{n - 1} b_i\Bigg) + a_n + b_n &  & \byIH      \\
-                               & = \Bigg(\sum_{i = m}^n a_i\Bigg) + \Bigg(\sum_{i = m}^n b_i\Bigg).                        &  & \by{7.1.1}
+    \sum_{i = m}^n (a_i + b_i) & = \Bigg(\sum_{i = m}^{n - 1} (a_i + b_i)\Bigg) + a_n + b_n                                &  & \by{i:7.1.1} \\
+                               & = \Bigg(\sum_{i = m}^{n - 1} a_i\Bigg) + \Bigg(\sum_{i = m}^{n - 1} b_i\Bigg) + a_n + b_n &  & \byIH        \\
+                               & = \Bigg(\sum_{i = m}^n a_i\Bigg) + \Bigg(\sum_{i = m}^n b_i\Bigg).                        &  & \by{i:7.1.1}
   \end{align*}
   This closes the induction.
 \end{proof}
@@ -140,24 +140,24 @@
 \begin{proof}{(d)}
   Let \(p = n - m\).
   By hypothesis we know that \(p \geq 0\).
-  Now we use induction on \(p\) to show that \cref{7.1.4}(d) is true.
+  Now we use induction on \(p\) to show that \cref{i:7.1.4}(d) is true.
   For \(p = 0\), we have \(n = m\) and
   \begin{align*}
-    \sum_{i = m}^m ca_i & = \Bigg(\sum_{i = m}^{m - 1} ca_i\Bigg) + ca_m             &  & \by{7.1.1} \\
-                        & = 0 + ca_m                                                 &  & \by{7.1.1} \\
-                        & = c \times 0 + ca_m                                                        \\
-                        & = c \Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + ca_m            &  & \by{7.1.1} \\
-                        & = c \Bigg(\Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + a_m\Bigg)                 \\
-                        & = c \Bigg(\sum_{i = m}^m a_i\Bigg).                        &  & \by{7.1.1}
+    \sum_{i = m}^m ca_i & = \Bigg(\sum_{i = m}^{m - 1} ca_i\Bigg) + ca_m             &  & \by{i:7.1.1} \\
+                        & = 0 + ca_m                                                 &  & \by{i:7.1.1} \\
+                        & = c \times 0 + ca_m                                                          \\
+                        & = c \Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + ca_m            &  & \by{i:7.1.1} \\
+                        & = c \Bigg(\Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + a_m\Bigg)                   \\
+                        & = c \Bigg(\sum_{i = m}^m a_i\Bigg).                        &  & \by{i:7.1.1}
   \end{align*}
   So the base case holds.
-  Suppose inductively that for some \(p \geq 0\) \cref{7.1.4}(d) is true.
+  Suppose inductively that for some \(p \geq 0\) \cref{i:7.1.4}(d) is true.
   Then for \(p + 1 = n - m\), we have \(p = n - m - 1\) and
   \begin{align*}
-    \sum_{i = m}^n ca_i & = \Bigg(\sum_{i = m}^{n - 1} ca_i\Bigg) + ca_n             &  & \by{7.1.1} \\
-                        & = c \Bigg(\sum_{i = m}^{n - 1} a_i\Bigg) + ca_n            &  & \byIH      \\
-                        & = c \Bigg(\Bigg(\sum_{i = m}^{n - 1} a_i\Bigg) + a_n\Bigg)                 \\
-                        & = c \Bigg(\sum_{i = m}^n a_i\Bigg).                        &  & \by{7.1.1}
+    \sum_{i = m}^n ca_i & = \Bigg(\sum_{i = m}^{n - 1} ca_i\Bigg) + ca_n             &  & \by{i:7.1.1} \\
+                        & = c \Bigg(\sum_{i = m}^{n - 1} a_i\Bigg) + ca_n            &  & \byIH        \\
+                        & = c \Bigg(\Bigg(\sum_{i = m}^{n - 1} a_i\Bigg) + a_n\Bigg)                   \\
+                        & = c \Bigg(\sum_{i = m}^n a_i\Bigg).                        &  & \by{i:7.1.1}
   \end{align*}
   This closes the induction.
 \end{proof}
@@ -165,23 +165,23 @@
 \begin{proof}{(e)}
   Let \(p = n - m\).
   By hypothesis we know that \(p \geq 0\).
-  Now we use induction on \(p\) to show that \cref{7.1.4}(e) is true.
+  Now we use induction on \(p\) to show that \cref{i:7.1.4}(e) is true.
   For \(p = 0\), we have \(n = m\) and
   \begin{align*}
-    \abs{\sum_{i = m}^m a_i} & = \abs{\Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + a_m}       &  & \by{7.1.1} \\
-                             & = \abs{0 + a_m}                                          &  & \by{7.1.1} \\
-                             & = 0 + \abs{a_m}                                                          \\
-                             & = \Bigg(\sum_{i = m}^{m - 1} \abs{a_i}\Bigg) + \abs{a_m} &  & \by{7.1.1} \\
-                             & = \sum_{i = m}^m \abs{a_i}.                              &  & \by{7.1.1}
+    \abs{\sum_{i = m}^m a_i} & = \abs{\Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + a_m}       &  & \by{i:7.1.1} \\
+                             & = \abs{0 + a_m}                                          &  & \by{i:7.1.1} \\
+                             & = 0 + \abs{a_m}                                                            \\
+                             & = \Bigg(\sum_{i = m}^{m - 1} \abs{a_i}\Bigg) + \abs{a_m} &  & \by{i:7.1.1} \\
+                             & = \sum_{i = m}^m \abs{a_i}.                              &  & \by{i:7.1.1}
   \end{align*}
   So the base case holds.
-  Suppose inductively that for some \(p \geq 0\) \cref{7.1.4}(e) is true.
+  Suppose inductively that for some \(p \geq 0\) \cref{i:7.1.4}(e) is true.
   Then for \(p + 1 = n - m\), we have \(p = n - m - 1\) and
   \begin{align*}
-    \abs{\sum_{i = m}^n a_i} & = \abs{\Bigg(\sum_{i = m}^{n - 1} a_i\Bigg) + a_n} &  & \by{7.1.1} \\
-                             & \leq \abs{\sum_{i = m}^{n - 1} a_i} + \abs{a_n}                    \\
-                             & \leq \sum_{i = m}^{n - 1} \abs{a_i} + \abs{a_n}    &  & \byIH      \\
-                             & = \sum_{i = m}^n \abs{a_i}.                        &  & \by{7.1.1}
+    \abs{\sum_{i = m}^n a_i} & = \abs{\Bigg(\sum_{i = m}^{n - 1} a_i\Bigg) + a_n} &  & \by{i:7.1.1} \\
+                             & \leq \abs{\sum_{i = m}^{n - 1} a_i} + \abs{a_n}                      \\
+                             & \leq \sum_{i = m}^{n - 1} \abs{a_i} + \abs{a_n}    &  & \byIH        \\
+                             & = \sum_{i = m}^n \abs{a_i}.                        &  & \by{i:7.1.1}
   \end{align*}
   This closes the induction.
 \end{proof}
@@ -189,34 +189,34 @@
 \begin{proof}{(f)}
   Let \(p = n - m\).
   By hypothesis we know that \(p \geq 0\).
-  Now we use induction on \(p\) to show that \cref{7.1.4}(f) is true.
+  Now we use induction on \(p\) to show that \cref{i:7.1.4}(f) is true.
   For \(p = 0\), we have \(n = m\) and
   \begin{align*}
-    \sum_{i = m}^m a_i & = \Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + a_m &  & \by{7.1.1}             \\
-                       & = 0 + a_m                                    &  & \by{7.1.1}             \\
+    \sum_{i = m}^m a_i & = \Bigg(\sum_{i = m}^{m - 1} a_i\Bigg) + a_m &  & \by{i:7.1.1}           \\
+                       & = 0 + a_m                                    &  & \by{i:7.1.1}           \\
                        & \leq 0 + b_m                                 &  & \text{(by hypothesis)} \\
-                       & = \Bigg(\sum_{i = m}^{m - 1} b_i\Bigg) + b_m &  & \by{7.1.1}             \\
-                       & = \sum_{i = m}^m b_i.                        &  & \by{7.1.1}             \\
+                       & = \Bigg(\sum_{i = m}^{m - 1} b_i\Bigg) + b_m &  & \by{i:7.1.1}           \\
+                       & = \sum_{i = m}^m b_i.                        &  & \by{i:7.1.1}           \\
   \end{align*}
   So the base case holds.
-  Suppose inductively that for some \(p \geq 0\) \cref{7.1.4}(f) is true.
+  Suppose inductively that for some \(p \geq 0\) \cref{i:7.1.4}(f) is true.
   Then for \(p + 1 = n - m\), we have \(p = n - m - 1\) and
   \begin{align*}
-    \sum_{i = m}^n a_i & = \Bigg(\sum_{i = m}^{n - 1} a_i\Bigg) + a_n    &  & \by{7.1.1}             \\
+    \sum_{i = m}^n a_i & = \Bigg(\sum_{i = m}^{n - 1} a_i\Bigg) + a_n    &  & \by{i:7.1.1}           \\
                        & \leq \Bigg(\sum_{i = m}^{n - 1} b_i\Bigg) + a_n &  & \byIH                  \\
                        & \leq \Bigg(\sum_{i = m}^{n - 1} b_i\Bigg) + b_n &  & \text{(by hypothesis)} \\
-                       & = \sum_{i = m}^n b_i.                           &  & \by{7.1.1}             \\
+                       & = \sum_{i = m}^n b_i.                           &  & \by{i:7.1.1}           \\
   \end{align*}
   This closes the induction.
 \end{proof}
 
-\begin{rmk}\label{7.1.5}
+\begin{rmk}\label{i:7.1.5}
   In the future we may omit some of the parentheses in series expressions, for instance we may write \(\sum_{i = m}^n (a_i + b_i)\) simply as \(\sum_{i = m}^n a_i + b_i\).
   This is reasonably safe from being mis-interpreted, because the alternative interpretation \((\sum_{i = m}^n a_i) + b_i\) does not make any sense
   (the index \(i\) in \(b_i\) is meaningless outside of the summation, since \(i\) is only a dummy variable).
 \end{rmk}
 
-\begin{defn}[Summations over finite sets]\label{7.1.6}
+\begin{defn}[Summations over finite sets]\label{i:7.1.6}
   Let \(X\) be a finite set with \(n\) elements (where \(n \in \N\)), and let \(f : X \to \R\) be a function from \(X\) to the real numbers
   (i.e., \(f\) assigns a real number \(f(x)\) to each element \(x\) of \(X\)).
   Then we can define the finite sum \(\sum_{x \in X} f(x)\) as follows.
@@ -231,7 +231,7 @@
 \end{defn}
 
 \setcounter{thm}{7}
-\begin{prop}[Finite summations are well-defined]\label{7.1.8}
+\begin{prop}[Finite summations are well-defined]\label{i:7.1.8}
   Let \(X\) be a finite set with \(n\) elements (where \(n \in \N\)), let \(f : X \to \R\) be a function, and let \(g : \set{i \in \N : 1 \leq i \leq n} \to X\) and \(h : \set{i \in \N : 1 \leq i \leq n} \to X\) be bijections.
   Then we have
   \[
@@ -242,57 +242,57 @@
 \begin{proof}
   We use induction on \(n\);
   more precisely, we let \(P(n)\) be the assertion that ``For any set \(X\) of \(n\) elements, any function \(f : X \to \R\), and any two bijections \(g, h\) from \(\set{i \in \N : 1 \leq i \leq n}\) to \(X\), we have \(\sum_{i = 1}^n f(g(i)) = \sum_{i = 1}^n f(h(i))\)''.
-  (More informally, \(P(n)\) is the assertion that \cref{7.1.8} is true for that value of \(n\).)
+  (More informally, \(P(n)\) is the assertion that \cref{i:7.1.8} is true for that value of \(n\).)
   We want to prove that \(P(n)\) is true for all natural numbers \(n\).
 
   We first check the base case \(P(0)\).
-  In this case \(\sum_{i = 1}^0 f(g(i))\) and \(\sum_{i = 1}^0 f(h(i))\) both equal to \(0\), by definition of finite series (\cref{7.1.1}), so we are done.
+  In this case \(\sum_{i = 1}^0 f(g(i))\) and \(\sum_{i = 1}^0 f(h(i))\) both equal to \(0\), by definition of finite series (\cref{i:7.1.1}), so we are done.
 
   Now suppose inductively that \(P(n)\) is true;
   we now prove that \(P(n + 1)\) is true.
   Thus, let \(X\) be a set with \(n + 1\) elements, let \(f : X \to \R\) be a function, and let \(g\) and \(h\) be bijections from \(\set{i \in N : 1 \leq i \leq n + 1}\) to \(X\).
   We have to prove that
   \[
-    \sum_{i = 1}^{n + 1} f(g(i)) = \sum_{i = 1}^{n + 1} f(h(i)). \tag{7.1}\label{eq 7.1}
+    \sum_{i = 1}^{n + 1} f(g(i)) = \sum_{i = 1}^{n + 1} f(h(i)). \tag{i:7.1}\label{i:eq 7.1}
   \]
   Let \(x \coloneqq g(n + 1)\);
   thus \(x\) is an element of \(X\).
-  By definition of finite series (\cref{7.1.1}), we can expand the left-hand side of \eqref{eq 7.1} as
+  By definition of finite series (\cref{i:7.1.1}), we can expand the left-hand side of \cref{i:eq 7.1} as
   \[
     \sum_{i = 1}^{n + 1} f(g(i)) = \Bigg(\sum_{i = 1}^n f(g(i))\Bigg) + f(x).
   \]
-  Now let us look at the right-hand side of \eqref{eq 7.1}.
+  Now let us look at the right-hand side of \cref{i:eq 7.1}.
   Ideally we would like to have \(h(n + 1)\) also equal to \(x\)
   - this would allow us to use the inductive hypothesis \(P(n)\) much more easily
   - but we cannot assume this.
   However, since \(h\) is a bijection, we do know that there is \emph{some} index \(j\), with \(1 \leq j \leq n + 1\), for which \(h(j) = x\).
-  We now use \cref{7.1.4} and the definition of finite series (\cref{7.1.1}) to write
+  We now use \cref{i:7.1.4} and the definition of finite series (\cref{i:7.1.1}) to write
   \begin{align*}
     \sum_{i = 1}^{n + 1} f(h(i)) & = \Bigg(\sum_{i = 1}^j f(h(i))\Bigg) + \Bigg(\sum_{i = j + 1}^{n + 1} f(h(i))\Bigg)                 \\
                                  & = \Bigg(\sum_{i = 1}^{j - 1} f(h(i))\Bigg) + f(h(j)) + \Bigg(\sum_{i = j + 1}^{n + 1} f(h(i))\Bigg) \\
                                  & = \Bigg(\sum_{i = 1}^{j - 1} f(h(i))\Bigg) + f(x) + \Bigg(\sum_{i = j}^n f(h(i + 1))\Bigg).
   \end{align*}
   We now define the function \(\tilde{h} : \set{i \in \N : 1 \leq i \leq n} \to X - \set{x}\) by setting \(\tilde{h}(i) \coloneqq h(i)\) when \(i < j\) and \(\tilde{h}(i) \coloneqq h(i + 1)\) when \(i \geq j\).
-  We can thus write the right-hand side of \eqref{eq 7.1} as
+  We can thus write the right-hand side of \cref{i:eq 7.1} as
   \[
     = \Bigg(\sum_{i = 1}^{j - 1} f(\tilde{h}(i))\Bigg) + f(x) + \Bigg(\sum_{i = j}^n f(\tilde{h}(i))\Bigg) = \Bigg(\sum_{i = 1}^n f(\tilde{h}(i))\Bigg) + f(x)
   \]
-  where we have used \cref{7.1.4} once again.
-  Thus to finish the proof of \eqref{eq 7.1} we have to show that
+  where we have used \cref{i:7.1.4} once again.
+  Thus to finish the proof of \cref{i:eq 7.1} we have to show that
   \[
-    \sum_{i = 1}^n f(g(i)) = \sum_{i = 1}^n f(\tilde{h}(i)). \tag{7.2}\label{eq 7.2}
+    \sum_{i = 1}^n f(g(i)) = \sum_{i = 1}^n f(\tilde{h}(i)). \tag{i:7.2}\label{i:eq 7.2}
   \]
   But the function \(g\) (when restricted to \(\set{i \in \N : 1 \leq i \leq n}\)) is a bijection from \(\set{i \in \N : 1 \leq i \leq n} \to X - \set{x}\).
-  The function \(\tilde{h}\) is also a bijection from \(\set{i \in \N : 1 \leq i \leq n} \to X - \set{x}\) (cf. \cref{3.6.9}).
-  Since \(X - \set{x}\) has \(n\) elements (by \cref{3.6.9}), the claim \eqref{eq 7.2} then follows directly from the induction hypothesis \(P(n)\).
+  The function \(\tilde{h}\) is also a bijection from \(\set{i \in \N : 1 \leq i \leq n} \to X - \set{x}\) (cf. \cref{i:3.6.9}).
+  Since \(X - \set{x}\) has \(n\) elements (by \cref{i:3.6.9}), the claim \cref{i:eq 7.2} then follows directly from the induction hypothesis \(P(n)\).
 \end{proof}
 
-\begin{rmk}\label{7.1.9}
+\begin{rmk}\label{i:7.1.9}
   The issue is somewhat more complicated when summing over infinite sets;
-  See \cref{sec:8.2}.
+  See \cref{i:sec:8.2}.
 \end{rmk}
 
-\begin{rmk}\label{7.1.10}
+\begin{rmk}\label{i:7.1.10}
   Suppose that \(X\) is a set, that \(P(x)\) is a property pertaining to an element \(x\) of \(X\), and \(f : \set{y \in X : P(y) \text{ is true}} \to \R\) is a function.
   Then we will often abbreviate
   \[
@@ -301,7 +301,7 @@
   as \(\sum_{x \in X : P(x) \text{ is true}} f(x)\) or even as \(\sum_{P(x) \text{ is true}} f(x)\) when there is no change of confusion.
 \end{rmk}
 
-\begin{prop}[Basic properties of summation over finite sets]\label{7.1.11}
+\begin{prop}[Basic properties of summation over finite sets]\label{i:7.1.11}
   \begin{enumerate}
     \item If \(X\) is empty, and \(f : X \to \R\) is a function (i.e., \(f\) is the empty function), we have
           \[
@@ -351,8 +351,8 @@
   Let \(g : \set{i \in \N : 1 \leq i \leq 0} \to \emptyset\) be a function.
   Then \(g\) is a bijection and
   \begin{align*}
-    \sum_{x \in X} f(x) & = \sum_{i = 1}^0 f(g(i)) &  & \by{7.1.6} \\
-                        & = 0.                     &  & \by{7.1.1}
+    \sum_{x \in X} f(x) & = \sum_{i = 1}^0 f(g(i)) &  & \by{i:7.1.6} \\
+                        & = 0.                     &  & \by{i:7.1.1}
   \end{align*}
 \end{proof}
 
@@ -360,9 +360,9 @@
   Let \(g : \set{1} \to \set{x_0}\) be a function.
   Then \(g\) is a bijection and
   \begin{align*}
-    \sum_{x \in X} f(x) & = \sum_{i = 1}^1 f(g(i))                       &  & \by{7.1.6} \\
-                        & = \bigg(\sum_{i = 1}^0 f(g(i))\bigg) + f(g(1)) &  & \by{7.1.1} \\
-                        & = 0 + f(g(1))                                  &  & \by{7.1.1} \\
+    \sum_{x \in X} f(x) & = \sum_{i = 1}^1 f(g(i))                       &  & \by{i:7.1.6} \\
+                        & = \bigg(\sum_{i = 1}^0 f(g(i))\bigg) + f(g(1)) &  & \by{i:7.1.1} \\
+                        & = 0 + f(g(1))                                  &  & \by{i:7.1.1} \\
                         & = f(x_0).
   \end{align*}
 \end{proof}
@@ -372,10 +372,10 @@
   Since \(X\) is finite and \(g\) is a bijection between \(X\) and \(Y\), we know that \(Y\) is finite and thus such \(h\) is well-defined.
   Then we know that \(g \circ h : \set{i \in \N : 1 \leq i \leq \#(Y)} \to X\) is also a bijection and
   \begin{align*}
-    \sum_{x \in X} f(x) & = \sum_{i = 1}^{\#(Y)} f((g \circ h)(i)) &  & \by{7.1.6} \\
-                        & = \sum_{i = 1}^{\#(Y)} f(g(h(i)))                        \\
-                        & = \sum_{i = 1}^{\#(Y)} (f \circ g)(h(i))                 \\
-                        & = \sum_{y \in Y} (f \circ g)(y)          &  & \by{7.1.6} \\
+    \sum_{x \in X} f(x) & = \sum_{i = 1}^{\#(Y)} f((g \circ h)(i)) &  & \by{i:7.1.6} \\
+                        & = \sum_{i = 1}^{\#(Y)} f(g(h(i)))                          \\
+                        & = \sum_{i = 1}^{\#(Y)} (f \circ g)(h(i))                   \\
+                        & = \sum_{y \in Y} (f \circ g)(y)          &  & \by{i:7.1.6} \\
                         & = \sum_{y \in Y} f(g(y)).
   \end{align*}
 \end{proof}
@@ -385,11 +385,11 @@
   Let \(g : \set{i \in \N : 1 \leq i \leq m - n + 1} \to X\) be a function where \(g = i \mapsto i + n - 1\).
   Then \(g\) is a bijection and
   \begin{align*}
-    \sum_{i \in X} a_i & = \sum_{i \in X} f(i)                                                               \\
-                       & = \sum_{i = 1}^{m - n + 1} f(g(i))                               &  & \by{7.1.6}    \\
-                       & = \sum_{i = 1}^{m - n + 1} f(i + n - 1)                                             \\
-                       & = \sum_{i = 1}^{m - n + 1} a_{i + n - 1}                                            \\
-                       & = \sum_{i = 1 + n - 1}^{m - n + 1 + n - 1} a_{i + n - 1 - n + 1} &  & \by{7.1.4}[b] \\
+    \sum_{i \in X} a_i & = \sum_{i \in X} f(i)                                                                 \\
+                       & = \sum_{i = 1}^{m - n + 1} f(g(i))                               &  & \by{i:7.1.6}    \\
+                       & = \sum_{i = 1}^{m - n + 1} f(i + n - 1)                                               \\
+                       & = \sum_{i = 1}^{m - n + 1} a_{i + n - 1}                                              \\
+                       & = \sum_{i = 1 + n - 1}^{m - n + 1 + n - 1} a_{i + n - 1 - n + 1} &  & \by{i:7.1.4}[b] \\
                        & = \sum_{i = n}^m a_i.
   \end{align*}
 \end{proof}
@@ -407,11 +407,11 @@
   Since \(X \cup Y\) is finite, we know that \(k\) is well-defined and \(\#(X \cup Y) = \#(X) + \#(Y)\).
   Then we have
   \begin{align*}
-    \sum_{z \in X \cup Y} f(z) & = \sum_{i = 1}^{\#(X \cup Y)} f(k(i))                                                &  & \by{7.1.6}    \\
-                               & = \sum_{i = 1}^{\#(X)} f(k(i)) + \sum_{i = \#(X) + 1}^{\#(X \cup Y)} f(k(i))         &  & \by{7.1.4}[a] \\
-                               & = \sum_{i = 1}^{\#(X)} f(g(i)) + \sum_{i = \#(X) + 1}^{\#(X \cup Y)} f(h(i - \#(X)))                    \\
-                               & = \sum_{i = 1}^{\#(X)} f(g(i)) + \sum_{i = 1}^{\#(Y)} f(h(i))                        &  & \by{7.1.4}[b] \\
-                               & = \sum_{x \in X} f(x) + \sum_{y \in Y} f(y).                                         &  & \by{7.1.6}
+    \sum_{z \in X \cup Y} f(z) & = \sum_{i = 1}^{\#(X \cup Y)} f(k(i))                                                &  & \by{i:7.1.6}    \\
+                               & = \sum_{i = 1}^{\#(X)} f(k(i)) + \sum_{i = \#(X) + 1}^{\#(X \cup Y)} f(k(i))         &  & \by{i:7.1.4}[a] \\
+                               & = \sum_{i = 1}^{\#(X)} f(g(i)) + \sum_{i = \#(X) + 1}^{\#(X \cup Y)} f(h(i - \#(X)))                      \\
+                               & = \sum_{i = 1}^{\#(X)} f(g(i)) + \sum_{i = 1}^{\#(Y)} f(h(i))                        &  & \by{i:7.1.4}[b] \\
+                               & = \sum_{x \in X} f(x) + \sum_{y \in Y} f(y).                                         &  & \by{i:7.1.6}
   \end{align*}
 \end{proof}
 
@@ -419,11 +419,11 @@
   Let \(h : \set{i \in \N : 1 \leq i \leq \#(X)} \to X\) be a bijection.
   Since \(X\) is finite, we know that \(h\) is well-defined and
   \begin{align*}
-    \sum_{x \in X} (f(x) + g(x)) & = \sum_{x \in X} (f + g)(x)                                                      \\
-                                 & = \sum_{i = 1}^{\#(X)} (f + g)(h(i))                          &  & \by{7.1.6}    \\
-                                 & = \sum_{i = 1}^{\#(X)} (f(h(i)) + g(h(i)))                                       \\
-                                 & = \sum_{i = 1}^{\#(X)} f(h(i)) + \sum_{i = 1}^{\#(X)} g(h(i)) &  & \by{7.1.4}[c] \\
-                                 & = \sum_{x \in X} f(x) + \sum_{x \in X} g(x).                  &  & \by{7.1.6}
+    \sum_{x \in X} (f(x) + g(x)) & = \sum_{x \in X} (f + g)(x)                                                        \\
+                                 & = \sum_{i = 1}^{\#(X)} (f + g)(h(i))                          &  & \by{i:7.1.6}    \\
+                                 & = \sum_{i = 1}^{\#(X)} (f(h(i)) + g(h(i)))                                         \\
+                                 & = \sum_{i = 1}^{\#(X)} f(h(i)) + \sum_{i = 1}^{\#(X)} g(h(i)) &  & \by{i:7.1.4}[c] \\
+                                 & = \sum_{x \in X} f(x) + \sum_{x \in X} g(x).                  &  & \by{i:7.1.6}
   \end{align*}
 \end{proof}
 
@@ -431,11 +431,11 @@
   Let \(g : \set{i \in \N : 1 \leq i \leq \#(X)} \to X\) be a bijection.
   Since \(X\) is finite, we know that \(g\) is well-defined and
   \begin{align*}
-    \sum_{x \in X} cf(x) & = \sum_{x \in X} (cf)(x)                             \\
-                         & = \sum_{i = 1}^{\#(X)} (cf)(g(i)) &  & \by{7.1.6}    \\
-                         & = \sum_{i = 1}^{\#(X)} cf(g(i))                      \\
-                         & = c \sum_{i = 1}^{\#(X)} f(g(i))  &  & \by{7.1.4}[d] \\
-                         & = c \sum_{x \in X} f(x).          &  & \by{7.1.6}
+    \sum_{x \in X} cf(x) & = \sum_{x \in X} (cf)(x)                               \\
+                         & = \sum_{i = 1}^{\#(X)} (cf)(g(i)) &  & \by{i:7.1.6}    \\
+                         & = \sum_{i = 1}^{\#(X)} cf(g(i))                        \\
+                         & = c \sum_{i = 1}^{\#(X)} f(g(i))  &  & \by{i:7.1.4}[d] \\
+                         & = c \sum_{x \in X} f(x).          &  & \by{i:7.1.6}
   \end{align*}
 \end{proof}
 
@@ -443,9 +443,9 @@
   Let \(h : \set{i \in \N : 1 \leq i \leq \#(X)} \to X\) be a bijection.
   Since \(X\) is finite, we know that \(h\) is well-defined and
   \begin{align*}
-    \sum_{x \in X} f(x) & = \sum_{i = 1}^{\#(X)} f(h(i))    &  & \by{7.1.6}    \\
-                        & \leq \sum_{i = 1}^{\#(X)} g(h(i)) &  & \by{7.1.4}[f] \\
-                        & = \sum_{x \in X} g(x).            &  & \by{7.1.6}
+    \sum_{x \in X} f(x) & = \sum_{i = 1}^{\#(X)} f(h(i))    &  & \by{i:7.1.6}    \\
+                        & \leq \sum_{i = 1}^{\#(X)} g(h(i)) &  & \by{i:7.1.4}[f] \\
+                        & = \sum_{x \in X} g(x).            &  & \by{i:7.1.6}
   \end{align*}
 \end{proof}
 
@@ -453,16 +453,16 @@
   Let \(g : \set{i \in \N : 1 \leq i \leq \#(X)} \to X\) be a bijection.
   Since \(X\) is finite, we know that \(g\) is well-defined and
   \begin{align*}
-    \abs{\sum_{x \in X} f(x)} & = \abs{\sum_{i = 1}^{\#(X)} f(g(i))}    &  & \by{7.1.6}    \\
-                              & \leq \sum_{i = 1}^{\#(X)} \abs{f(g(i))} &  & \by{7.1.4}[e] \\
-                              & = \sum_{x \in X} \abs{f(x)}.            &  & \by{7.1.6}
+    \abs{\sum_{x \in X} f(x)} & = \abs{\sum_{i = 1}^{\#(X)} f(g(i))}    &  & \by{i:7.1.6}    \\
+                              & \leq \sum_{i = 1}^{\#(X)} \abs{f(g(i))} &  & \by{i:7.1.4}[e] \\
+                              & = \sum_{x \in X} \abs{f(x)}.            &  & \by{i:7.1.6}
   \end{align*}
 \end{proof}
 
-\begin{rmk}\label{7.1.12}
-  The substitution rule in \cref{7.1.11}(c) can be thought of as making the substitution \(x \coloneqq g(y)\) (hence the name).
+\begin{rmk}\label{i:7.1.12}
+  The substitution rule in \cref{i:7.1.11}(c) can be thought of as making the substitution \(x \coloneqq g(y)\) (hence the name).
   Note that the assumption that \(g\) is a bijection is essential.
-  From \cref{7.1.11}(c) and (d) we see that
+  From \cref{i:7.1.11}(c) and (d) we see that
   \[
     \sum_{i = n}^m a_i = \sum_{i = n}^m a_{f(i)}
   \]
@@ -470,7 +470,7 @@
   Informally, this means that we can rearrange the elements of a finite sequence at will and still obtain the same value.
 \end{rmk}
 
-\begin{lem}\label{7.1.13}
+\begin{lem}\label{i:7.1.13}
   Let \(X, Y\) be finite sets, and let \(f : X \times Y \to \R\) be a function.
   Then
   \[
@@ -480,16 +480,16 @@
 
 \begin{proof}
   Let \(n\) be the number of elements in \(X\).
-  We will use induction on \(n\) (cf. \cref{7.1.8});
-  i.e., we let \(P(n)\) be the assertion that \cref{7.1.13} is true for any set \(X\) with \(n\) elements, and any finite set \(Y\) and any function \(f : X \times Y \to \R\).
+  We will use induction on \(n\) (cf. \cref{i:7.1.8});
+  i.e., we let \(P(n)\) be the assertion that \cref{i:7.1.13} is true for any set \(X\) with \(n\) elements, and any finite set \(Y\) and any function \(f : X \times Y \to \R\).
   We wish to prove \(P(n)\) for all natural numbers \(n\).
 
-  The base case \(P(0)\) is easy, following from \cref{7.1.11}(a).
+  The base case \(P(0)\) is easy, following from \cref{i:7.1.11}(a).
   Now suppose that \(P(n)\) is true;
   we now show that \(P(n + 1)\) is true.
   Let \(X\) be a set with \(n + 1\) elements.
-  In particular, by \cref{3.6.9}, we can write \(X = X' \cup \set{x_0}\), where \(x_0\) is an element of \(X\) and \(X' \coloneqq X - \set{x_0}\) has \(n\) elements.
-  Then by \cref{7.1.11}(e) we have
+  In particular, by \cref{i:3.6.9}, we can write \(X = X' \cup \set{x_0}\), where \(x_0\) is an element of \(X\) and \(X' \coloneqq X - \set{x_0}\) has \(n\) elements.
+  Then by \cref{i:7.1.11}(e) we have
   \[
     \sum_{x \in X} \bigg(\sum_{y \in Y} f(x, y)\bigg) = \sum_{x \in X'} \bigg(\sum_{y \in Y} f(x, y)\bigg) + \bigg(\sum_{y \in Y} f(x_0, y)\bigg);
   \]
@@ -497,18 +497,18 @@
   \[
     \sum_{(x, y) \in X' \times Y} f(x, y) + \bigg(\sum_{y \in Y} f(x_0, y)\bigg).
   \]
-  By \cref{7.1.11}(c) this is equal to
+  By \cref{i:7.1.11}(c) this is equal to
   \[
     \sum_{(x, y) \in X' \times Y} f(x, y) + \bigg(\sum_{(x, y) \in \set{x_0} \times Y} f(x, y)\bigg).
   \]
-  By \cref{7.1.11}(e) this is equal to
+  By \cref{i:7.1.11}(e) this is equal to
   \[
     \sum_{(x, y) \in X \times Y} f(x, y)
   \]
   as desired.
 \end{proof}
 
-\begin{cor}[Fubini's theorem for finite series]\label{7.1.14}
+\begin{cor}[Fubini's theorem for finite series]\label{i:7.1.14}
   Let \(X, Y\) be finite sets, and let \(f : X \times Y \to \R\) be a function.
   Then
   \begin{align*}
@@ -519,19 +519,19 @@
 \end{cor}
 
 \begin{proof}
-  In light of \cref{7.1.13}, it suffices to show that
+  In light of \cref{i:7.1.13}, it suffices to show that
   \[
     \sum_{(x, y) \in X \times Y} f(x, y) = \sum_{(y, x) \in Y \times X} f(x, y).
   \]
-  But this follows from \cref{7.1.11}(c) by applying the bijection \(h : Y \times X \to X \times Y\) defined by \(h(y, x) \coloneqq (x, y)\).
+  But this follows from \cref{i:7.1.11}(c) by applying the bijection \(h : Y \times X \to X \times Y\) defined by \(h(y, x) \coloneqq (x, y)\).
 \end{proof}
 
-\begin{rmk}\label{7.1.15}
+\begin{rmk}\label{i:7.1.15}
   We anticipate something interesting to happen when we move from finite sums to infinite sums.
-  However, see \cref{8.2.2}.
+  However, see \cref{i:8.2.2}.
 \end{rmk}
 
-\begin{ac}[Products over finite sets]\label{ac:7.1.1}
+\begin{ac}[Products over finite sets]\label{i:ac:7.1.1}
   Let \(m, n\) be integers, and let \((a_i)_{i = m}^n\) be a finite sequence of real numbers, assigning a real number \(a_i\) to each integer \(i\) between \(m\) and \(n\) inclusive (i.e., \(m \leq i \leq n\)).
   Then we define the finite product \(\prod_{i = m}^n a_i\) by the recursive formula
   \begin{align*}
@@ -540,7 +540,7 @@
   \end{align*}
 \end{ac}
 
-\begin{ac}\label{ac:7.1.2}
+\begin{ac}\label{i:ac:7.1.2}
   \begin{enumerate}
     \item Let \(m \leq n < p\) be integers, and let \(a_i\) be a real number assigned to each integer \(m \leq i \leq p\).
           Then we have
@@ -573,19 +573,19 @@
 \begin{proof}{(a)}
   Let \(k = p - m\).
   By hypothesis we know that \(k > 0\).
-  Now we use induction on \(k\) to show that \cref{ac:7.1.2}(a) is true and we start with \(k = 1\).
-  For \(k = 1\), we have \(p = m + 1\) and by \cref{ac:7.1.1} we have
+  Now we use induction on \(k\) to show that \cref{i:ac:7.1.2}(a) is true and we start with \(k = 1\).
+  For \(k = 1\), we have \(p = m + 1\) and by \cref{i:ac:7.1.1} we have
   \[
     \prod_{i = m}^n a_i \times \prod_{i = n + 1}^p a_i = \prod_{i = m}^m a_i \times \prod_{i = m + 1}^p a_i = a_m \times a_{m + 1} = \prod_{i = m}^p a_i.
   \]
   Thus the base case holds.
-  Suppose inductively that for some \(k \geq 1\) \cref{ac:7.1.2}(a) is true.
+  Suppose inductively that for some \(k \geq 1\) \cref{i:ac:7.1.2}(a) is true.
   Then for \(k + 1 = p - m\), we have \(p - 1 = k + m\) and
   \begin{align*}
-     & \prod_{i = m}^n a_i \times \prod_{i = n + 1}^p a_i                                                               \\
-     & = \Bigg(\prod_{i = m}^n a_i\Bigg) \times \Bigg(\prod_{i = n + 1}^{p - 1} a_i\Bigg) \times a_p &  & \by{ac:7.1.1} \\
-     & = \Bigg(\prod_{i = m}^{p - 1} a_i\Bigg) \times a_p                                            &  & \byIH         \\
-     & = \prod_{i = m}^p a_i.                                                                        &  & \by{ac:7.1.1}
+     & \prod_{i = m}^n a_i \times \prod_{i = n + 1}^p a_i                                                                 \\
+     & = \Bigg(\prod_{i = m}^n a_i\Bigg) \times \Bigg(\prod_{i = n + 1}^{p - 1} a_i\Bigg) \times a_p &  & \by{i:ac:7.1.1} \\
+     & = \Bigg(\prod_{i = m}^{p - 1} a_i\Bigg) \times a_p                                            &  & \byIH           \\
+     & = \prod_{i = m}^p a_i.                                                                        &  & \by{i:ac:7.1.1}
   \end{align*}
   This closes the induction.
 \end{proof}
@@ -593,23 +593,23 @@
 \begin{proof}{(b)}
   Let \(p = n - m\).
   By hypothesis we know that \(p \geq 0\).
-  Now we use induction on \(p\) to show that \cref{ac:7.1.2}(b) is true.
+  Now we use induction on \(p\) to show that \cref{i:ac:7.1.2}(b) is true.
   For \(p = 0\), we have \(n = m\) and
   \begin{align*}
-    \prod_{j = m + k}^{m + k} a_{j - k} & = \Bigg(\prod_{j = m + k}^{m + k - 1} a_{j - k}\Bigg) \times a_{m + k - k} &  & \by{ac:7.1.1} \\
-                                        & = 1 \times a_{m + k - k}                                                   &  & \by{ac:7.1.1} \\
-                                        & = 1 \times a_m                                                                                \\
-                                        & = \Bigg(\prod_{i = m}^{m - 1} a_i\Bigg) \times a_m                         &  & \by{ac:7.1.1} \\
-                                        & = \prod_{i = m}^m a_i.                                                     &  & \by{ac:7.1.1}
+    \prod_{j = m + k}^{m + k} a_{j - k} & = \Bigg(\prod_{j = m + k}^{m + k - 1} a_{j - k}\Bigg) \times a_{m + k - k} &  & \by{i:ac:7.1.1} \\
+                                        & = 1 \times a_{m + k - k}                                                   &  & \by{i:ac:7.1.1} \\
+                                        & = 1 \times a_m                                                                                  \\
+                                        & = \Bigg(\prod_{i = m}^{m - 1} a_i\Bigg) \times a_m                         &  & \by{i:ac:7.1.1} \\
+                                        & = \prod_{i = m}^m a_i.                                                     &  & \by{i:ac:7.1.1}
   \end{align*}
   So the base case holds.
-  Suppose inductively that for some \(p \geq 0\) \cref{ac:7.1.2}(b) is true.
+  Suppose inductively that for some \(p \geq 0\) \cref{i:ac:7.1.2}(b) is true.
   Then for \(p + 1 = n - m\), we have \(p = n - m - 1\) and
   \begin{align*}
-    \prod_{j = m + k}^{n + k} a_{j - k} & = \Bigg(\prod_{j = m + k}^{n + k - 1} a_{j - k}\Bigg) \times a_{n + k - k} &  & \by{ac:7.1.1} \\
-                                        & = \Bigg(\prod_{j = m + k}^{n + k - 1} a_{j - k}\Bigg) \times a_n                              \\
-                                        & = \Bigg(\prod_{i = m}^{n - 1} a_i\Bigg) \times a_n                         &  & \byIH         \\
-                                        & = \prod_{i = m}^n a_i.                                                     &  & \by{ac:7.1.1}
+    \prod_{j = m + k}^{n + k} a_{j - k} & = \Bigg(\prod_{j = m + k}^{n + k - 1} a_{j - k}\Bigg) \times a_{n + k - k} &  & \by{i:ac:7.1.1} \\
+                                        & = \Bigg(\prod_{j = m + k}^{n + k - 1} a_{j - k}\Bigg) \times a_n                                \\
+                                        & = \Bigg(\prod_{i = m}^{n - 1} a_i\Bigg) \times a_n                         &  & \byIH           \\
+                                        & = \prod_{i = m}^n a_i.                                                     &  & \by{i:ac:7.1.1}
   \end{align*}
   This closes the induction.
 \end{proof}
@@ -617,21 +617,21 @@
 \begin{proof}{(c)}
   Let \(p = n - m\).
   By hypothesis we know that \(p \geq 0\).
-  Now we use induction on \(p\) to show that \cref{ac:7.1.2}(c) is true.
+  Now we use induction on \(p\) to show that \cref{i:ac:7.1.2}(c) is true.
   For \(p = 0\), we have \(n = m\) and
   \begin{align*}
-    \prod_{i = m}^m (a_i \times b_i) & = \Bigg(\prod_{i = m}^{m - 1} (a_i \times b_i)\Bigg) \times a_m \times b_m                                 &  & \by{ac:7.1.1} \\
-                                     & = 1 \times a_m \times b_m                                                                                  &  & \by{ac:7.1.1} \\
-                                     & = \Bigg(\prod_{i = m}^{m - 1} a_i\Bigg) \times \Bigg(\prod_{i = m}^{m - 1} b_i\Bigg) \times a_m \times b_m &  & \by{ac:7.1.1} \\
-                                     & = \Bigg(\prod_{i = m}^m a_i\Bigg) \times \Bigg(\prod_{i = m}^m b_i\Bigg).                                  &  & \by{ac:7.1.1}
+    \prod_{i = m}^m (a_i \times b_i) & = \Bigg(\prod_{i = m}^{m - 1} (a_i \times b_i)\Bigg) \times a_m \times b_m                                 &  & \by{i:ac:7.1.1} \\
+                                     & = 1 \times a_m \times b_m                                                                                  &  & \by{i:ac:7.1.1} \\
+                                     & = \Bigg(\prod_{i = m}^{m - 1} a_i\Bigg) \times \Bigg(\prod_{i = m}^{m - 1} b_i\Bigg) \times a_m \times b_m &  & \by{i:ac:7.1.1} \\
+                                     & = \Bigg(\prod_{i = m}^m a_i\Bigg) \times \Bigg(\prod_{i = m}^m b_i\Bigg).                                  &  & \by{i:ac:7.1.1}
   \end{align*}
   So the base case holds.
-  Suppose inductively that for some \(p \geq 0\) \cref{ac:7.1.2}(c) is true.
+  Suppose inductively that for some \(p \geq 0\) \cref{i:ac:7.1.2}(c) is true.
   Then for \(p + 1 = n - m\), we have \(p = n - m - 1\) and
   \begin{align*}
-    \prod_{i = m}^n (a_i \times b_i) & = \Bigg(\prod_{i = m}^{n - 1} (a_i \times b_i)\Bigg) \times a_n \times b_n                                 &  & \by{ac:7.1.1} \\
-                                     & = \Bigg(\prod_{i = m}^{n - 1} a_i\Bigg) \times \Bigg(\prod_{i = m}^{n - 1} b_i\Bigg) \times a_n \times b_n &  & \byIH         \\
-                                     & = \Bigg(\prod_{i = m}^n a_i\Bigg) \times \Bigg(\prod_{i = m}^n b_i\Bigg).                                  &  & \by{ac:7.1.1}
+    \prod_{i = m}^n (a_i \times b_i) & = \Bigg(\prod_{i = m}^{n - 1} (a_i \times b_i)\Bigg) \times a_n \times b_n                                 &  & \by{i:ac:7.1.1} \\
+                                     & = \Bigg(\prod_{i = m}^{n - 1} a_i\Bigg) \times \Bigg(\prod_{i = m}^{n - 1} b_i\Bigg) \times a_n \times b_n &  & \byIH           \\
+                                     & = \Bigg(\prod_{i = m}^n a_i\Bigg) \times \Bigg(\prod_{i = m}^n b_i\Bigg).                                  &  & \by{i:ac:7.1.1}
   \end{align*}
   This closes the induction.
 \end{proof}
@@ -639,23 +639,23 @@
 \begin{proof}{(d)}
   Let \(p = n - m\).
   By hypothesis we know that \(p \geq 0\).
-  Now we use induction on \(p\) to show that \cref{ac:7.1.2}(d) is true.
+  Now we use induction on \(p\) to show that \cref{i:ac:7.1.2}(d) is true.
   For \(p = 0\), we have \(n = m\) and
   \begin{align*}
-    \prod_{i = m}^m ca_i & = \Bigg(\prod_{i = m}^{m - 1} ca_i\Bigg) \times ca_m &  & \by{ac:7.1.1} \\
-                         & = 1 \times ca_m                                      &  & \by{ac:7.1.1} \\
-                         & = c \times a_m                                                          \\
-                         & = c \Bigg(\prod_{i = m}^m a_i\Bigg)                  &  & \by{ac:7.1.1} \\
+    \prod_{i = m}^m ca_i & = \Bigg(\prod_{i = m}^{m - 1} ca_i\Bigg) \times ca_m &  & \by{i:ac:7.1.1} \\
+                         & = 1 \times ca_m                                      &  & \by{i:ac:7.1.1} \\
+                         & = c \times a_m                                                            \\
+                         & = c \Bigg(\prod_{i = m}^m a_i\Bigg)                  &  & \by{i:ac:7.1.1} \\
                          & = c^{m - m + 1} \Bigg(\prod_{i = m}^m a_i\Bigg).
   \end{align*}
   So the base case holds.
-  Suppose inductively that for some \(p \geq 0\) \cref{ac:7.1.2}(d) is true.
+  Suppose inductively that for some \(p \geq 0\) \cref{i:ac:7.1.2}(d) is true.
   Then for \(p + 1 = n - m\), we have \(p = n - m - 1\) and
   \begin{align*}
-    \prod_{i = m}^n ca_i & = \Bigg(\prod_{i = m}^{n - 1} ca_i\Bigg) \times ca_n                         &  & \by{ac:7.1.1} \\
-                         & = c^{n - 1 - m + 1} \Bigg(\prod_{i = m}^{n - 1} a_i\Bigg) \times ca_n        &  & \byIH         \\
-                         & = c^{n - m + 1} \Bigg(\Bigg(\prod_{i = m}^{n - 1} a_i\Bigg) \times a_n\Bigg)                    \\
-                         & = c^{n - m + 1} \Bigg(\prod_{i = m}^n a_i\Bigg).                             &  & \by{ac:7.1.1}
+    \prod_{i = m}^n ca_i & = \Bigg(\prod_{i = m}^{n - 1} ca_i\Bigg) \times ca_n                         &  & \by{i:ac:7.1.1} \\
+                         & = c^{n - 1 - m + 1} \Bigg(\prod_{i = m}^{n - 1} a_i\Bigg) \times ca_n        &  & \byIH           \\
+                         & = c^{n - m + 1} \Bigg(\Bigg(\prod_{i = m}^{n - 1} a_i\Bigg) \times a_n\Bigg)                      \\
+                         & = c^{n - m + 1} \Bigg(\prod_{i = m}^n a_i\Bigg).                             &  & \by{i:ac:7.1.1}
   \end{align*}
   This closes the induction.
 \end{proof}
@@ -663,28 +663,28 @@
 \begin{proof}{(e)}
   Let \(p = n - m\).
   By hypothesis we know that \(p \geq 0\).
-  Now we use induction on \(p\) to show that \cref{ac:7.1.2}(e) is true.
+  Now we use induction on \(p\) to show that \cref{i:ac:7.1.2}(e) is true.
   For \(p = 0\), we have \(n = m\) and
   \begin{align*}
-    \abs{\prod_{i = m}^m a_i} & = \abs{\Bigg(\prod_{i = m}^{m - 1} a_i\Bigg) \times a_m}       &  & \by{ac:7.1.1} \\
-                              & = \abs{1a_m}                                                   &  & \by{ac:7.1.1} \\
-                              & = \abs{1}\abs{a_m}                                                                \\
-                              & = \Bigg(\prod_{i = m}^{m - 1} \abs{a_i}\Bigg) \times \abs{a_m} &  & \by{ac:7.1.1} \\
-                              & = \prod_{i = m}^m \abs{a_i}.                                   &  & \by{ac:7.1.1}
+    \abs{\prod_{i = m}^m a_i} & = \abs{\Bigg(\prod_{i = m}^{m - 1} a_i\Bigg) \times a_m}       &  & \by{i:ac:7.1.1} \\
+                              & = \abs{1a_m}                                                   &  & \by{i:ac:7.1.1} \\
+                              & = \abs{1}\abs{a_m}                                                                  \\
+                              & = \Bigg(\prod_{i = m}^{m - 1} \abs{a_i}\Bigg) \times \abs{a_m} &  & \by{i:ac:7.1.1} \\
+                              & = \prod_{i = m}^m \abs{a_i}.                                   &  & \by{i:ac:7.1.1}
   \end{align*}
   So the base case holds.
-  Suppose inductively that for some \(p \geq 0\) \cref{ac:7.1.2}(e) is true.
+  Suppose inductively that for some \(p \geq 0\) \cref{i:ac:7.1.2}(e) is true.
   Then for \(p + 1 = n - m\), we have \(p = n - m - 1\) and
   \begin{align*}
-    \abs{\prod_{i = m}^n a_i} & = \abs{\Bigg(\prod_{i = m}^{n - 1} a_i\Bigg) \times a_n}       &  & \by{ac:7.1.1} \\
-                              & = \abs{\prod_{i = m}^{n - 1} a_i} \times \abs{a_n}                                \\
-                              & = \Bigg(\prod_{i = m}^{n - 1} \abs{a_i}\Bigg) \times \abs{a_n} &  & \byIH         \\
-                              & = \prod_{i = m}^n \abs{a_i}.                                   &  & \by{ac:7.1.1}
+    \abs{\prod_{i = m}^n a_i} & = \abs{\Bigg(\prod_{i = m}^{n - 1} a_i\Bigg) \times a_n}       &  & \by{i:ac:7.1.1} \\
+                              & = \abs{\prod_{i = m}^{n - 1} a_i} \times \abs{a_n}                                  \\
+                              & = \Bigg(\prod_{i = m}^{n - 1} \abs{a_i}\Bigg) \times \abs{a_n} &  & \byIH           \\
+                              & = \prod_{i = m}^n \abs{a_i}.                                   &  & \by{i:ac:7.1.1}
   \end{align*}
   This closes the induction.
 \end{proof}
 
-\begin{ac}\label{ac:7.1.3}
+\begin{ac}\label{i:ac:7.1.3}
   Let \(X\) be a finite set with \(n\) elements (where \(n \in \N\)), and let \(f : X \to \R\) be a function from \(X\) to the real numbers
   (i.e., \(f\) assigns a real number \(f(x)\) to each element \(x\) of \(X\)).
   Then we can define the finite product \(\prod_{x \in X} f(x)\) as follows.
@@ -696,7 +696,7 @@
   \]
 \end{ac}
 
-\begin{ac}[Finite products are well-defined]\label{ac:7.1.4}
+\begin{ac}[Finite products are well-defined]\label{i:ac:7.1.4}
   Let \(X\) be a finite set with \(n\) elements (where \(n \in \N\)), let \(f : X \to \R\) be a function, and let \(g : \set{i \in \N : 1 \leq i \leq n} \to X\) and \(h : \set{i \in \N : 1 \leq i \leq n} \to X\) be bijections.
   Then we have
   \[
@@ -706,49 +706,49 @@
 
 \begin{proof}
   Let \(P(n)\) be the assertion that ``For any set \(X\) of \(n\) elements, any function \(f : X \to \R\), and any two bijections \(g, h\) from \(\set{i \in \N : 1 \leq i \leq n}\) to \(X\), we have \(\prod_{i = 1}^n f(g(i)) = \prod_{i = 1}^n f(h(i))\)''.
-  (More informally, \(P(n)\) is the assertion that \cref{ac:7.1.4} is true for that value of \(n\).)
+  (More informally, \(P(n)\) is the assertion that \cref{i:ac:7.1.4} is true for that value of \(n\).)
   We use induction on \(n\);
 
   We first check the base case \(P(0)\).
-  In this case \(\prod_{i = 1}^0 f(g(i))\) and \(\prod_{i = 1}^0 f(h(i))\) both equal to \(1\), by \cref{ac:7.1.1}, so we are done.
+  In this case \(\prod_{i = 1}^0 f(g(i))\) and \(\prod_{i = 1}^0 f(h(i))\) both equal to \(1\), by \cref{i:ac:7.1.1}, so we are done.
 
   Now suppose inductively that \(P(n)\) is true;
   we now prove that \(P(n + 1)\) is true.
   Thus, let \(X\) be a set with \(n + 1\) elements, let \(f : X \to \R\) be a function, and let \(g\) and \(h\) be bijections from \(\set{i \in N : 1 \leq i \leq n + 1}\) to \(X\).
   We have to prove that
   \[
-    \prod_{i = 1}^{n + 1} f(g(i)) = \prod_{i = 1}^{n + 1} f(h(i)). \tag{ac 7.1}\label{eq ac 7.1}
+    \prod_{i = 1}^{n + 1} f(g(i)) = \prod_{i = 1}^{n + 1} f(h(i)). \tag{i:ac:7.1}\label{i:eq:ac:7.1}
   \]
   Let \(x \coloneqq g(n + 1)\);
   thus \(x\) is an element of \(X\).
-  By \cref{ac:7.1.1}, we can expand the left-hand side of \eqref{eq ac 7.1} as
+  By \cref{i:ac:7.1.1}, we can expand the left-hand side of \cref{i:eq:ac:7.1} as
   \[
     \prod_{i = 1}^{n + 1} f(g(i)) = \Bigg(\prod_{i = 1}^n f(g(i))\Bigg) \times f(x).
   \]
-  Now let us look at the right-hand side of \eqref{eq ac 7.1}.
+  Now let us look at the right-hand side of \cref{i:eq:ac:7.1}.
   Since \(h\) is a bijection, we do know that there is \emph{some} index \(j\), with \(1 \leq j \leq n + 1\), for which \(h(j) = x\).
-  We now use \cref{ac:7.1.1,ac:7.1.2} to write
+  We now use \cref{i:ac:7.1.1,i:ac:7.1.2} to write
   \begin{align*}
     \prod_{i = 1}^{n + 1} f(h(i)) & = \Bigg(\prod_{i = 1}^j f(h(i))\Bigg) \times \Bigg(\prod_{i = j + 1}^{n + 1} f(h(i))\Bigg)                      \\
                                   & = \Bigg(\prod_{i = 1}^{j - 1} f(h(i))\Bigg) \times f(h(j)) \times \Bigg(\prod_{i = j + 1}^{n + 1} f(h(i))\Bigg) \\
                                   & = \Bigg(\prod_{i = 1}^{j - 1} f(h(i))\Bigg) \times f(x) \times \Bigg(\prod_{i = j}^n f(h(i + 1))\Bigg).
   \end{align*}
   We now define the function \(\tilde{h} : \set{i \in \N : 1 \leq i \leq n} \to X - \set{x}\) by setting \(\tilde{h}(i) \coloneqq h(i)\) when \(i < j\) and \(\tilde{h}(i) \coloneqq h(i + 1)\) when \(i \geq j\).
-  We can thus write the right-hand side of \eqref{eq ac 7.1} as
+  We can thus write the right-hand side of \cref{i:eq:ac:7.1} as
   \[
     = \Bigg(\prod_{i = 1}^{j - 1} f(\tilde{h}(i))\Bigg) \times f(x) \times \Bigg(\prod_{i = j}^n f(\tilde{h}(i))\Bigg) = \Bigg(\prod_{i = 1}^n f(\tilde{h}(i))\Bigg) \times f(x)
   \]
-  where we have used \cref{ac:7.1.2} once again.
-  Thus to finish the proof of \eqref{eq ac 7.1} we have to show that
+  where we have used \cref{i:ac:7.1.2} once again.
+  Thus to finish the proof of \cref{i:eq:ac:7.1} we have to show that
   \[
-    \prod_{i = 1}^n f(g(i)) = \prod_{i = 1}^n f(\tilde{h}(i)). \tag{ac 7.2}\label{eq ac 7.2}
+    \prod_{i = 1}^n f(g(i)) = \prod_{i = 1}^n f(\tilde{h}(i)). \tag{i:ac:7.2}\label{i:eq:ac:7.2}
   \]
   But the function \(g\) (when restricted to \(\set{i \in \N : 1 \leq i \leq n}\)) is a bijection from \(\set{i \in \N : 1 \leq i \leq n} \to X - \set{x}\).
-  The function \(\tilde{h}\) is also a bijection from \(\set{i \in \N : 1 \leq i \leq n} \to X - \set{x}\) (cf. \cref{3.6.9}).
-  Since \(X - \set{x}\) has \(n\) elements (by \cref{3.6.9}), the claim \eqref{eq ac 7.2} then follows directly from the induction hypothesis \(P(n)\).
+  The function \(\tilde{h}\) is also a bijection from \(\set{i \in \N : 1 \leq i \leq n} \to X - \set{x}\) (cf. \cref{i:3.6.9}).
+  Since \(X - \set{x}\) has \(n\) elements (by \cref{i:3.6.9}), the claim \cref{i:eq:ac:7.2} then follows directly from the induction hypothesis \(P(n)\).
 \end{proof}
 
-\begin{ac}[Basic properties of product over finite sets]\label{ac:7.1.5}
+\begin{ac}[Basic properties of product over finite sets]\label{i:ac:7.1.5}
   \begin{enumerate}
     \item If \(X\) is empty, and \(f : X \to \R\) is a function (i.e., \(f\) is the empty function), we have
           \[
@@ -793,8 +793,8 @@
   Let \(g : \set{i \in \N : 1 \leq i \leq 0} \to \emptyset\) be a function.
   Then \(g\) is a bijection and
   \begin{align*}
-    \prod_{x \in X} f(x) & = \prod_{i = 1}^0 f(g(i)) &  & \by{ac:7.1.3} \\
-                         & = 1.                      &  & \by{ac:7.1.1}
+    \prod_{x \in X} f(x) & = \prod_{i = 1}^0 f(g(i)) &  & \by{i:ac:7.1.3} \\
+                         & = 1.                      &  & \by{i:ac:7.1.1}
   \end{align*}
 \end{proof}
 
@@ -802,9 +802,9 @@
   Let \(g : \set{1} \to \set{x_0}\) be a function.
   Then \(g\) is a bijection and
   \begin{align*}
-    \prod_{x \in X} f(x) & = \prod_{i = 1}^1 f(g(i))                            &  & \by{ac:7.1.3} \\
-                         & = \bigg(\prod_{i = 1}^0 f(g(i))\bigg) \times f(g(1)) &  & \by{ac:7.1.1} \\
-                         & = 1 \times f(g(1))                                   &  & \by{ac:7.1.1} \\
+    \prod_{x \in X} f(x) & = \prod_{i = 1}^1 f(g(i))                            &  & \by{i:ac:7.1.3} \\
+                         & = \bigg(\prod_{i = 1}^0 f(g(i))\bigg) \times f(g(1)) &  & \by{i:ac:7.1.1} \\
+                         & = 1 \times f(g(1))                                   &  & \by{i:ac:7.1.1} \\
                          & = f(x_0).
   \end{align*}
 \end{proof}
@@ -814,10 +814,10 @@
   Since \(X\) is finite and \(g\) is a bijection between \(X\) and \(Y\), we know that \(Y\) is finite and thus such \(h\) is well-defined.
   Then we know that \(g \circ h : \set{i \in \N : 1 \leq i \leq \#(Y)} \to X\) is also a bijection and
   \begin{align*}
-    \prod_{x \in X} f(x) & = \prod_{i = 1}^{\#(Y)} f((g \circ h)(i)) &  & \by{ac:7.1.3} \\
-                         & = \prod_{i = 1}^{\#(Y)} f(g(h(i)))                           \\
-                         & = \prod_{i = 1}^{\#(Y)} (f \circ g)(h(i))                    \\
-                         & = \prod_{y \in Y} (f \circ g)(y)          &  & \by{ac:7.1.3} \\
+    \prod_{x \in X} f(x) & = \prod_{i = 1}^{\#(Y)} f((g \circ h)(i)) &  & \by{i:ac:7.1.3} \\
+                         & = \prod_{i = 1}^{\#(Y)} f(g(h(i)))                             \\
+                         & = \prod_{i = 1}^{\#(Y)} (f \circ g)(h(i))                      \\
+                         & = \prod_{y \in Y} (f \circ g)(y)          &  & \by{i:ac:7.1.3} \\
                          & = \prod_{y \in Y} f(g(y)).
   \end{align*}
 \end{proof}
@@ -827,11 +827,11 @@
   Let \(g : \set{i \in \N : 1 \leq i \leq m - n + 1} \to X\) be a function where \(g = i \mapsto i + n - 1\).
   Then \(g\) is a bijection and
   \begin{align*}
-    \prod_{i \in X} a_i & = \prod_{i \in X} f(i)                                                                  \\
-                        & = \prod_{i = 1}^{m - n + 1} f(g(i))                               &  & \by{ac:7.1.3}    \\
-                        & = \prod_{i = 1}^{m - n + 1} f(i + n - 1)                                                \\
-                        & = \prod_{i = 1}^{m - n + 1} a_{i + n - 1}                                               \\
-                        & = \prod_{i = 1 + n - 1}^{m - n + 1 + n - 1} a_{i + n - 1 - n + 1} &  & \by{ac:7.1.2}[b] \\
+    \prod_{i \in X} a_i & = \prod_{i \in X} f(i)                                                                    \\
+                        & = \prod_{i = 1}^{m - n + 1} f(g(i))                               &  & \by{i:ac:7.1.3}    \\
+                        & = \prod_{i = 1}^{m - n + 1} f(i + n - 1)                                                  \\
+                        & = \prod_{i = 1}^{m - n + 1} a_{i + n - 1}                                                 \\
+                        & = \prod_{i = 1 + n - 1}^{m - n + 1 + n - 1} a_{i + n - 1 - n + 1} &  & \by{i:ac:7.1.2}[b] \\
                         & = \prod_{i = n}^m a_i.
   \end{align*}
 \end{proof}
@@ -849,12 +849,12 @@
   Since \(X \cup Y\) is finite, we know that \(k\) is well-defined and \(\#(X \cup Y) = \#(X) + \#(Y)\).
   Then we have
   \begin{align*}
-     & \prod_{z \in X \cup Y} f(z)                                                                                       \\
-     & = \prod_{i = 1}^{\#(X \cup Y)} f(k(i))                                                      &  & \by{ac:7.1.3}    \\
-     & = \prod_{i = 1}^{\#(X)} f(k(i)) \times \prod_{i = \#(X) + 1}^{\#(X \cup Y)} f(k(i))         &  & \by{ac:7.1.2}[a] \\
-     & = \prod_{i = 1}^{\#(X)} f(g(i)) \times \prod_{i = \#(X) + 1}^{\#(X \cup Y)} f(h(i - \#(X)))                       \\
-     & = \prod_{i = 1}^{\#(X)} f(g(i)) \times \prod_{i = 1}^{\#(Y)} f(h(i))                        &  & \by{ac:7.1.2}[b] \\
-     & = \prod_{x \in X} f(x) \times \prod_{y \in Y} f(y).                                         &  & \by{ac:7.1.3}
+     & \prod_{z \in X \cup Y} f(z)                                                                                         \\
+     & = \prod_{i = 1}^{\#(X \cup Y)} f(k(i))                                                      &  & \by{i:ac:7.1.3}    \\
+     & = \prod_{i = 1}^{\#(X)} f(k(i)) \times \prod_{i = \#(X) + 1}^{\#(X \cup Y)} f(k(i))         &  & \by{i:ac:7.1.2}[a] \\
+     & = \prod_{i = 1}^{\#(X)} f(g(i)) \times \prod_{i = \#(X) + 1}^{\#(X \cup Y)} f(h(i - \#(X)))                         \\
+     & = \prod_{i = 1}^{\#(X)} f(g(i)) \times \prod_{i = 1}^{\#(Y)} f(h(i))                        &  & \by{i:ac:7.1.2}[b] \\
+     & = \prod_{x \in X} f(x) \times \prod_{y \in Y} f(y).                                         &  & \by{i:ac:7.1.3}
   \end{align*}
 \end{proof}
 
@@ -862,12 +862,12 @@
   Let \(h : \set{i \in \N : 1 \leq i \leq \#(X)} \to X\) be a bijection.
   Since \(X\) is finite, we know that \(h\) is well-defined and
   \begin{align*}
-     & \prod_{x \in X} (f(x) \times g(x))                                                         \\
-     & = \prod_{x \in X} (f \times g)(x)                                                          \\
-     & = \prod_{i = 1}^{\#(X)} (f \times g)(h(i))                           &  & \by{ac:7.1.3}    \\
-     & = \prod_{i = 1}^{\#(X)} (f(h(i)) \times g(h(i)))                                           \\
-     & = \prod_{i = 1}^{\#(X)} f(h(i)) \times \prod_{i = 1}^{\#(X)} g(h(i)) &  & \by{ac:7.1.2}[c] \\
-     & = \prod_{x \in X} f(x) \times \prod_{x \in X} g(x).                  &  & \by{ac:7.1.3}
+     & \prod_{x \in X} (f(x) \times g(x))                                                           \\
+     & = \prod_{x \in X} (f \times g)(x)                                                            \\
+     & = \prod_{i = 1}^{\#(X)} (f \times g)(h(i))                           &  & \by{i:ac:7.1.3}    \\
+     & = \prod_{i = 1}^{\#(X)} (f(h(i)) \times g(h(i)))                                             \\
+     & = \prod_{i = 1}^{\#(X)} f(h(i)) \times \prod_{i = 1}^{\#(X)} g(h(i)) &  & \by{i:ac:7.1.2}[c] \\
+     & = \prod_{x \in X} f(x) \times \prod_{x \in X} g(x).                  &  & \by{i:ac:7.1.3}
   \end{align*}
 \end{proof}
 
@@ -875,11 +875,11 @@
   Let \(g : \set{i \in \N : 1 \leq i \leq \#(X)} \to X\) be a bijection.
   Since \(X\) is finite, we know that \(g\) is well-defined and
   \begin{align*}
-    \prod_{x \in X} cf(x) & = \prod_{x \in X} (cf)(x)                                       \\
-                          & = \prod_{i = 1}^{\#(X)} (cf)(g(i))        &  & \by{ac:7.1.3}    \\
-                          & = \prod_{i = 1}^{\#(X)} cf(g(i))                                \\
-                          & = c^{\#(X)} \prod_{i = 1}^{\#(X)} f(g(i)) &  & \by{ac:7.1.2}[d] \\
-                          & = c^{\#(X)} \prod_{x \in X} f(x).         &  & \by{ac:7.1.3}
+    \prod_{x \in X} cf(x) & = \prod_{x \in X} (cf)(x)                                         \\
+                          & = \prod_{i = 1}^{\#(X)} (cf)(g(i))        &  & \by{i:ac:7.1.3}    \\
+                          & = \prod_{i = 1}^{\#(X)} cf(g(i))                                  \\
+                          & = c^{\#(X)} \prod_{i = 1}^{\#(X)} f(g(i)) &  & \by{i:ac:7.1.2}[d] \\
+                          & = c^{\#(X)} \prod_{x \in X} f(x).         &  & \by{i:ac:7.1.3}
   \end{align*}
 \end{proof}
 
@@ -887,13 +887,13 @@
   Let \(g : \set{i \in \N : 1 \leq i \leq \#(X)} \to X\) be a bijection.
   Since \(X\) is finite, we know that \(g\) is well-defined and
   \begin{align*}
-    \abs{\prod_{x \in X} f(x)} & = \abs{\prod_{i = 1}^{\#(X)} f(g(i))} &  & \by{ac:7.1.3}    \\
-                               & = \prod_{i = 1}^{\#(X)} \abs{f(g(i))} &  & \by{ac:7.1.2}[e] \\
-                               & = \prod_{x \in X} \abs{f(x)}.         &  & \by{ac:7.1.3}
+    \abs{\prod_{x \in X} f(x)} & = \abs{\prod_{i = 1}^{\#(X)} f(g(i))} &  & \by{i:ac:7.1.3}    \\
+                               & = \prod_{i = 1}^{\#(X)} \abs{f(g(i))} &  & \by{i:ac:7.1.2}[e] \\
+                               & = \prod_{x \in X} \abs{f(x)}.         &  & \by{i:ac:7.1.3}
   \end{align*}
 \end{proof}
 
-\begin{ac}\label{ac:7.1.6}
+\begin{ac}\label{i:ac:7.1.6}
   Let \(X, Y\) be finite sets, and let \(f : X \times Y \to \R\) be a function.
   Then
   \[
@@ -903,16 +903,16 @@
 
 \begin{proof}
   Let \(n\) be the number of elements in \(X\).
-  We will use induction on \(n\) (cf. \cref{ac:7.1.4});
-  i.e., we let \(P(n)\) be the assertion that \cref{ac:7.1.6} is true for any set \(X\) with \(n\) elements, and any finite set \(Y\) and any function \(f : X \times Y \to \R\).
+  We will use induction on \(n\) (cf. \cref{i:ac:7.1.4});
+  i.e., we let \(P(n)\) be the assertion that \cref{i:ac:7.1.6} is true for any set \(X\) with \(n\) elements, and any finite set \(Y\) and any function \(f : X \times Y \to \R\).
   We wish to prove \(P(n)\) for all natural numbers \(n\).
 
-  The base case \(P(0)\) is easy, following from \cref{ac:7.1.5}(a).
+  The base case \(P(0)\) is easy, following from \cref{i:ac:7.1.5}(a).
   Now suppose that \(P(n)\) is true;
   we now show that \(P(n + 1)\) is true.
   Let \(X\) be a set with \(n + 1\) elements.
-  In particular, by \cref{3.6.9}, we can write \(X = X' \cup \set{x_0}\), where \(x_0\) is an element of \(X\) and \(X' \coloneqq X - \set{x_0}\) has \(n\) elements.
-  Then by \cref{7.1.5}(e) we have
+  In particular, by \cref{i:3.6.9}, we can write \(X = X' \cup \set{x_0}\), where \(x_0\) is an element of \(X\) and \(X' \coloneqq X - \set{x_0}\) has \(n\) elements.
+  Then by \cref{i:7.1.5}(e) we have
   \[
     \prod_{x \in X} \bigg(\prod_{y \in Y} f(x, y)\bigg) = \prod_{x \in X'} \bigg(\prod_{y \in Y} f(x, y)\bigg) \times \bigg(\prod_{y \in Y} f(x_0, y)\bigg);
   \]
@@ -920,18 +920,18 @@
   \[
     \prod_{(x, y) \in X' \times Y} f(x, y) \times \bigg(\prod_{y \in Y} f(x_0, y)\bigg).
   \]
-  By \cref{7.1.11}(c) this is equal to
+  By \cref{i:7.1.11}(c) this is equal to
   \[
     \prod_{(x, y) \in X' \times Y} f(x, y) \times \bigg(\prod_{(x, y) \in \set{x_0} \times Y} f(x, y)\bigg).
   \]
-  By \cref{7.1.11}(e) this is equal to
+  By \cref{i:7.1.11}(e) this is equal to
   \[
     \prod_{(x, y) \in X \times Y} f(x, y)
   \]
   as desired.
 \end{proof}
 
-\begin{ac}\label{ac:7.1.7}
+\begin{ac}\label{i:ac:7.1.7}
   Let \(X, Y\) be finite sets, and let \(f : X \times Y \to \R\) be a function.
   Then
   \begin{align*}
@@ -942,41 +942,41 @@
 \end{ac}
 
 \begin{proof}
-  In light of \cref{ac:7.1.6}, it suffices to show that
+  In light of \cref{i:ac:7.1.6}, it suffices to show that
   \[
     \prod_{(x, y) \in X \times Y} f(x, y) = \prod_{(y, x) \in Y \times X} f(x, y).
   \]
-  But this follows from \cref{ac:7.1.5}(c) by applying the bijection \(h : Y \times X \to X \times Y\) defined by \(h(y, x) \coloneqq (x, y)\).
+  But this follows from \cref{i:ac:7.1.5}(c) by applying the bijection \(h : Y \times X \to X \times Y\) defined by \(h(y, x) \coloneqq (x, y)\).
 \end{proof}
 
 \exercisesection
 
-\begin{ex}\label{ex:7.1.1}
-  Prove \cref{7.1.4}.
+\begin{ex}\label{i:ex:7.1.1}
+  Prove \cref{i:7.1.4}.
 \end{ex}
 
 \begin{proof}
-  See \cref{7.1.4}.
+  See \cref{i:7.1.4}.
 \end{proof}
 
-\begin{ex}\label{ex:7.1.2}
-  Prove \cref{7.1.11}.
+\begin{ex}\label{i:ex:7.1.2}
+  Prove \cref{i:7.1.11}.
 \end{ex}
 
 \begin{proof}
-  See \cref{7.1.11}.
+  See \cref{i:7.1.11}.
 \end{proof}
 
-\begin{ex}\label{ex:7.1.3}
+\begin{ex}\label{i:ex:7.1.3}
   Form a definition for the finite products \(\prod_{i = 1}^n a_i\) and \(\prod_{x \in X} f(x)\).
   Which of the above result for finite series have analoges for finite products?
 \end{ex}
 
 \begin{proof}
-  See \crefrange{ac:7.1.1}{ac:7.1.7}.
+  See \crefrange{i:ac:7.1.1}{i:ac:7.1.7}.
 \end{proof}
 
-\begin{ex}\label{ex:7.1.4}
+\begin{ex}\label{i:ex:7.1.4}
   Define the \emph{factorial function} \(n!\) for natural numbers \(n\) by the recursive definition \(0! \coloneqq 1\) and \((n + 1)! \coloneqq n! \times (n + 1)\).
   If \(x\) and \(y\) are real numbers, prove the \emph{binomial formula}
   \[
@@ -991,8 +991,8 @@
   \begin{align*}
     (x + y)^0 & = 1                                                                                                                         \\
               & = \dfrac{0!}{0!(0 - 0)!} x^0 y^{0 - 0}                                                          &  & \text{(by definition)} \\
-              & = \sum_{j = 0}^{-1} \dfrac{0!}{j!(0 - j)!} x^j y^{0 - j} + \dfrac{0!}{0!(0 - 0)!} x^0 y^{0 - 0} &  & \by{7.1.1}             \\
-              & = \sum_{j = 0}^0 \dfrac{0!}{j!(0 - j)!} x^j y^{0 - j}                                           &  & \by{7.1.1}
+              & = \sum_{j = 0}^{-1} \dfrac{0!}{j!(0 - j)!} x^j y^{0 - j} + \dfrac{0!}{0!(0 - 0)!} x^0 y^{0 - 0} &  & \by{i:7.1.1}           \\
+              & = \sum_{j = 0}^0 \dfrac{0!}{j!(0 - j)!} x^j y^{0 - j}                                           &  & \by{i:7.1.1}
   \end{align*}
   So the base case holds.
   Suppose inductively that for some \(n \geq 0\) the statement holds.
@@ -1002,32 +1002,32 @@
                     & = \bigg(\sum_{j = 0}^n \dfrac{n!}{j!(n - j)!} x^j y^{n - j}\bigg) \times (x + y)            &  & \byIH                  \\
                     & = \bigg(\sum_{j = 0}^n \dfrac{n!}{j!(n - j)!} x^{j + 1} y^{n - j}\bigg)                                                 \\
                     & \quad + \bigg(\sum_{j = 0}^n \dfrac{n!}{j!(n - j)!} x^j y^{n + 1 - j}\bigg)                                             \\
-                    & = \bigg(\sum_{j = 0}^{n - 1} \dfrac{n!}{j!(n - j)!} x^{j + 1} y^{n - j}\bigg)               &  & \by{7.1.1}             \\
+                    & = \bigg(\sum_{j = 0}^{n - 1} \dfrac{n!}{j!(n - j)!} x^{j + 1} y^{n - j}\bigg)               &  & \by{i:7.1.1}           \\
                     & \quad + \bigg(\dfrac{n!}{n!0!} x^{n + 1} y^0\bigg)                                                                      \\
                     & \quad + \bigg(\sum_{j = 1}^n \dfrac{n!}{j!(n - j)!} x^j y^{n + 1 - j}\bigg)                                             \\
                     & \quad + \bigg(\dfrac{n!}{0!n!} x^0 y^{n + 1}\bigg)                                                                      \\
                     & = \bigg(\sum_{j = 0}^{n - 1} \dfrac{n!}{j!(n - j)!} x^{j + 1} y^{n - j}\bigg) + x^{n + 1}   &  & \text{(by definition)} \\
                     & \quad + \bigg(\sum_{j = 1}^n \dfrac{n!}{j!(n - j)!} x^j y^{n + 1 - j}\bigg) + y^{n + 1}                                 \\
-                    & = \bigg(\sum_{j = 1}^n \dfrac{n!}{(j - 1)!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg) + x^{n + 1} &  & \by{7.1.4}[b]          \\
+                    & = \bigg(\sum_{j = 1}^n \dfrac{n!}{(j - 1)!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg) + x^{n + 1} &  & \by{i:7.1.4}[b]        \\
                     & \quad + \bigg(\sum_{j = 1}^n \dfrac{n!}{j!(n - j)!} x^j y^{n + 1 - j}\bigg) + y^{n + 1}
   \end{align*}
   and
   \begin{align*}
-     & \bigg(\sum_{j = 1}^n \dfrac{n!}{(j - 1)!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                                                                                           \\
-     & \quad + \bigg(\sum_{j = 1}^n \dfrac{n!}{j!(n - j)!} x^j y^{n + 1 - j}\bigg)                                                                                             \\
-     & = \sum_{j = 1}^n \bigg(\dfrac{n!}{(j - 1)!(n + 1 - j)!} x^j y^{n + 1 - j} + \dfrac{n!}{j!(n - j)!} x^j y^{n + 1 - j}\bigg)                           &  & \by{7.1.4}[c] \\
-     & = \sum_{j = 1}^n \bigg(\dfrac{j \times n!}{j!(n + 1 - j)!} x^j y^{n + 1 - j} + \dfrac{(n + 1 - j) \times n!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                    \\
-     & = \sum_{j = 1}^n \bigg(\dfrac{j \times n! + (n + 1 - j) \times n!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                                                              \\
+     & \bigg(\sum_{j = 1}^n \dfrac{n!}{(j - 1)!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                                                                                             \\
+     & \quad + \bigg(\sum_{j = 1}^n \dfrac{n!}{j!(n - j)!} x^j y^{n + 1 - j}\bigg)                                                                                               \\
+     & = \sum_{j = 1}^n \bigg(\dfrac{n!}{(j - 1)!(n + 1 - j)!} x^j y^{n + 1 - j} + \dfrac{n!}{j!(n - j)!} x^j y^{n + 1 - j}\bigg)                           &  & \by{i:7.1.4}[c] \\
+     & = \sum_{j = 1}^n \bigg(\dfrac{j \times n!}{j!(n + 1 - j)!} x^j y^{n + 1 - j} + \dfrac{(n + 1 - j) \times n!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                      \\
+     & = \sum_{j = 1}^n \bigg(\dfrac{j \times n! + (n + 1 - j) \times n!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                                                                \\
      & = \sum_{j = 1}^n \bigg(\dfrac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg).
   \end{align*}
   We also have
   \begin{align*}
      & \sum_{j = 0}^{n + 1} \dfrac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}                                                                                   \\
-     & = \dfrac{(n + 1)!}{(n + 1)! 0!} x^{n + 1} y^0 + \bigg(\sum_{j = 0}^n \dfrac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg) &  & \by{7.1.1}             \\
+     & = \dfrac{(n + 1)!}{(n + 1)! 0!} x^{n + 1} y^0 + \bigg(\sum_{j = 0}^n \dfrac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg) &  & \by{i:7.1.1}           \\
      & = x^{n + 1} + \bigg(\sum_{j = 0}^n \dfrac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                                   &  & \text{(by definition)} \\
-     & = x^{n + 1} + \bigg(\sum_{j = 0}^0 \dfrac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                                   &  & \by{7.1.4}[a]          \\
+     & = x^{n + 1} + \bigg(\sum_{j = 0}^0 \dfrac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                                   &  & \by{i:7.1.4}[a]        \\
      & \quad + \bigg(\sum_{j = 1}^n \dfrac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                                                                     \\
-     & = x^{n + 1} + \dfrac{(n + 1)!}{0! (n + 1)!} x^0 y^{n + 1}                                                                     &  & \by{7.1.1}             \\
+     & = x^{n + 1} + \dfrac{(n + 1)!}{0! (n + 1)!} x^0 y^{n + 1}                                                                     &  & \by{i:7.1.1}           \\
      & \quad + \bigg(\sum_{j = 1}^n \dfrac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg)                                                                     \\
      & = x^{n + 1} + y^{n + 1} + \bigg(\sum_{j = 1}^n \dfrac{(n + 1)!}{j!(n + 1 - j)!} x^j y^{n + 1 - j}\bigg).                      &  & \text{(by definition)}
   \end{align*}
@@ -1038,7 +1038,7 @@
   and this closes the induction.
 \end{proof}
 
-\begin{ex}\label{ex:7.1.5}
+\begin{ex}\label{i:ex:7.1.5}
   Let \(X\) be a finite set, let \(m\) be an integer, and for each \(x \in X\) let \((a_n(x))_{n = m}^\infty\) be a convergent sequence of real numbers.
   Show that the sequence \((\sum_{x \in X} a_n(x))_{n = m}^\infty\) is convergent, and
   \[
@@ -1054,9 +1054,9 @@
   For \(k = 0\), we have \(X = \emptyset\).
   So
   \begin{align*}
-    \lim_{n \to \infty} \sum_{x \in X} a_n(x) & = \lim_{n \to \infty} 0                      &  & \by{7.1.11} \\
-                                              & = 0                                                           \\
-                                              & = \sum_{x \in X} \lim_{n \to \infty} a_n(x). &  & \by{7.1.11}
+    \lim_{n \to \infty} \sum_{x \in X} a_n(x) & = \lim_{n \to \infty} 0                      &  & \by{i:7.1.11} \\
+                                              & = 0                                                             \\
+                                              & = \sum_{x \in X} \lim_{n \to \infty} a_n(x). &  & \by{i:7.1.11}
   \end{align*}
   Thus the base case holds.
   Suppose inductively that for some \(k \geq 0\) the statement is true.
@@ -1064,14 +1064,14 @@
   Let \(x_0 \in X\) and \(X' = X \setminus \set{x_0}\).
   So \(\#(X') = \#(X) - 1 = n\), and we have
   \begin{align*}
-     & \lim_{n \to \infty} \sum_{x \in X} a_n(x)                                                                                                    \\
-     & = \lim_{n \to \infty} \sum_{x \in \set{x_0} \cup X'} a_n(x)                                                                                  \\
-     & = \lim_{n \to \infty} \bigg(\sum_{x \in \set{x_0}} a_n(x) + \sum_{x \in X'} a_n(x)\bigg)                                 &  & \by{7.1.11}[e] \\
-     & = \bigg(\lim_{n \to \infty} \sum_{x \in \set{x_0}} a_n(x)\bigg) + \bigg(\lim_{n \to \infty} \sum_{x \in X'} a_n(x)\bigg) &  & \by{6.1.19}[a] \\
-     & = \bigg(\lim_{n \to \infty} a_n(x_0)\bigg) + \bigg(\lim_{n \to \infty} \sum_{x \in X'} a_n(x)\bigg)                      &  & \by{7.1.11}[b] \\
-     & = \bigg(\sum_{x \in \set{x_0}} \lim_{n \to \infty} a_n(x)\bigg) + \bigg(\lim_{n \to \infty} \sum_{x \in X'} a_n(x)\bigg) &  & \by{7.1.11}[b] \\
-     & = \bigg(\sum_{x \in \set{x_0}} \lim_{n \to \infty} a_n(x)\bigg) + \bigg(\sum_{x \in X'} \lim_{n \to \infty} a_n(x)\bigg) &  & \byIH          \\
-     & = \bigg(\sum_{x \in \set{x_0} \cup X'} \lim_{n \to \infty} a_n(x)\bigg)                                                  &  & \by{7.1.11}[e] \\
+     & \lim_{n \to \infty} \sum_{x \in X} a_n(x)                                                                                                      \\
+     & = \lim_{n \to \infty} \sum_{x \in \set{x_0} \cup X'} a_n(x)                                                                                    \\
+     & = \lim_{n \to \infty} \bigg(\sum_{x \in \set{x_0}} a_n(x) + \sum_{x \in X'} a_n(x)\bigg)                                 &  & \by{i:7.1.11}[e] \\
+     & = \bigg(\lim_{n \to \infty} \sum_{x \in \set{x_0}} a_n(x)\bigg) + \bigg(\lim_{n \to \infty} \sum_{x \in X'} a_n(x)\bigg) &  & \by{i:6.1.19}[a] \\
+     & = \bigg(\lim_{n \to \infty} a_n(x_0)\bigg) + \bigg(\lim_{n \to \infty} \sum_{x \in X'} a_n(x)\bigg)                      &  & \by{i:7.1.11}[b] \\
+     & = \bigg(\sum_{x \in \set{x_0}} \lim_{n \to \infty} a_n(x)\bigg) + \bigg(\lim_{n \to \infty} \sum_{x \in X'} a_n(x)\bigg) &  & \by{i:7.1.11}[b] \\
+     & = \bigg(\sum_{x \in \set{x_0}} \lim_{n \to \infty} a_n(x)\bigg) + \bigg(\sum_{x \in X'} \lim_{n \to \infty} a_n(x)\bigg) &  & \byIH            \\
+     & = \bigg(\sum_{x \in \set{x_0} \cup X'} \lim_{n \to \infty} a_n(x)\bigg)                                                  &  & \by{i:7.1.11}[e] \\
      & = \sum_{x \in X} \lim_{n \to \infty} a_n(x).
   \end{align*}
   This closes the induction.

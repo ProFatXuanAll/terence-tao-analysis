@@ -1,29 +1,29 @@
-\section{Periodic convolutions}\label{sec:5.4}
+\section{Periodic convolutions}\label{ii:sec:5.4}
 
-\begin{thm}\label{5.4.1}
+\begin{thm}\label{ii:5.4.1}
   Let \(f \in C(\R / \Z ; \C)\), and let \(\varepsilon > 0\).
   Then there exists a trigonometric polynomial \(P\) such that \(\norm*{f - P}_{\infty} \leq \varepsilon\).
 \end{thm}
 
 \begin{proof}
   Let \(f\) be any element of \(C(\R / \Z ; \C)\);
-  we know that \(f\) is bounded (by \cref{5.1.5}(a)), so that we have some \(M > 0\) such that \(\abs{f(x)} \leq M\) for all \(x \in \R\).
+  we know that \(f\) is bounded (by \cref{ii:5.1.5}(a)), so that we have some \(M > 0\) such that \(\abs{f(x)} \leq M\) for all \(x \in \R\).
 
   Let \(\varepsilon > 0\) be arbitrary.
-  Since \(f\) is uniformly continuous (by \cref{2.3.5}), there exists a \(\delta > 0\) such that \(\abs{f(x) - f(y)} \leq \varepsilon\) whenever \(\abs{x - y} \leq \delta\).
-  Now use \cref{5.4.6} to find a trigonometric polynomial \(P\) which is a \((\varepsilon, \delta)\) approximation to the identity.
-  Then \(f * P\) is also a trigonometric polynomial (by \cref{ac:5.4.1}).
+  Since \(f\) is uniformly continuous (by \cref{ii:2.3.5}), there exists a \(\delta > 0\) such that \(\abs{f(x) - f(y)} \leq \varepsilon\) whenever \(\abs{x - y} \leq \delta\).
+  Now use \cref{ii:5.4.6} to find a trigonometric polynomial \(P\) which is a \((\varepsilon, \delta)\) approximation to the identity.
+  Then \(f * P\) is also a trigonometric polynomial (by \cref{ii:ac:5.4.1}).
   We now estimate \(\norm*{f - f * P}_{\infty}\).
 
   Let \(x\) be any real number.
   We have
   \begin{align*}
-     & \abs{f(x) - f * P(x)}                                                                                         \\
-     & = \abs{f(x) - P * f(x)}                                                   &  & \text{(by \cref{5.4.4}(a)(b))} \\
-     & = \abs{f(x) - \int_{[0, 1]} f(x - y) P(y) \; dy}                          &  & \by{5.4.2}                     \\
-     & = \abs{\int_{[0, 1]} f(x) P(y) \; dy - \int_{[0, 1]} f(x - y) P(y) \; dy} &  & \text{(by \cref{5.4.5}(a))}    \\
-     & = \abs{\int_{[0, 1]} \big(f(x) - f(x - y)\big) P(y) \; dy}                                                    \\
-     & \leq \int_{[0, 1]} \abs{f(x) - f(x - y)} P(y) \; dy.                      &  & \by{5.2.2}
+     & \abs{f(x) - f * P(x)}                                                                          \\
+     & = \abs{f(x) - P * f(x)}                                                   &  & \by{ii:5.4.4}[a,b] \\
+     & = \abs{f(x) - \int_{[0, 1]} f(x - y) P(y) \; dy}                          &  & \by{ii:5.4.2}      \\
+     & = \abs{\int_{[0, 1]} f(x) P(y) \; dy - \int_{[0, 1]} f(x - y) P(y) \; dy} &  & \by{ii:5.4.5}[a]   \\
+     & = \abs{\int_{[0, 1]} \big(f(x) - f(x - y)\big) P(y) \; dy}                                     \\
+     & \leq \int_{[0, 1]} \abs{f(x) - f(x - y)} P(y) \; dy.                      &  & \by{ii:5.2.2}
   \end{align*}
   The right-hand side can be split as
   \begin{align*}
@@ -42,7 +42,7 @@
 \end{proof}
 
 \begin{note}
-  \cref{5.4.1} asserts that any continuous periodic function can be uniformly approximated by trigonometric polynomials.
+  \cref{ii:5.4.1} asserts that any continuous periodic function can be uniformly approximated by trigonometric polynomials.
   To put it another way, if we let
   \[
     P(\R / \Z ; \C)
@@ -51,12 +51,12 @@
 \end{note}
 
 \begin{note}
-  It is possible to prove this theorem directly from the Weierstrass approximation theorem for polynomials (\cref{3.8.3}), and both theorems are a special case of a much more general theorem known as the \emph{Stone-Weierstrass theorem}, which we will not discuss here.
+  It is possible to prove this theorem directly from the Weierstrass approximation theorem for polynomials (\cref{ii:3.8.3}), and both theorems are a special case of a much more general theorem known as the \emph{Stone-Weierstrass theorem}, which we will not discuss here.
   However we shall instead prove this theorem from scratch, in order to introduce a couple of interesting notions, notably that of periodic convolution.
-  The proof here, though, should strongly remind you of the arguments used to prove \cref{3.8.3}.
+  The proof here, though, should strongly remind you of the arguments used to prove \cref{ii:3.8.3}.
 \end{note}
 
-\begin{defn}[Periodic convolution]\label{5.4.2}
+\begin{defn}[Periodic convolution]\label{ii:5.4.2}
   Let \(f, g \in C(\R / \Z ; \C)\).
   Then we define the periodic convolution \(f * g : \R \to \C\) of \(f\) and \(g\) by the formula
   \[
@@ -64,13 +64,13 @@
   \]
 \end{defn}
 
-\begin{rmk}\label{5.4.3}
-  Note that \cref{5.4.2} is slightly different from the convolution for compactly supported functions defined in \cref{3.8.9}, because we are only integrating over \([0, 1]\) and not on all of \(\R\).
+\begin{rmk}\label{ii:5.4.3}
+  Note that \cref{ii:5.4.2} is slightly different from the convolution for compactly supported functions defined in \cref{ii:3.8.9}, because we are only integrating over \([0, 1]\) and not on all of \(\R\).
   Thus, in principle we have given the symbol \(f * g\) two conflicting meanings.
   However, in practice there will be no confusion, because it is not possible for a non-zero function to both be periodic and compactly supported.
 \end{rmk}
 
-\begin{lem}[Basic properties of periodic convolution]\label{5.4.4}
+\begin{lem}[Basic properties of periodic convolution]\label{ii:5.4.4}
   Let \(f, g, h \in C(\R / \Z ; \C)\).
   \begin{enumerate}
     \item (Closure)
@@ -85,12 +85,12 @@
 \end{lem}
 
 \begin{proof}{(a)}
-  By \cref{5.2.2} we know that \(f * g\) is continuous on \(\R\).
+  By \cref{ii:5.2.2} we know that \(f * g\) is continuous on \(\R\).
   Since
   \begin{align*}
-    \forall x \in \R, f * g(x + 1) & = \int_{[0, 1]} f(y) g(x + 1 - y) \; dy &                         & \by{5.4.2} \\
+    \forall x \in \R, f * g(x + 1) & = \int_{[0, 1]} f(y) g(x + 1 - y) \; dy &                         & \by{ii:5.4.2} \\
                                    & = \int_{[0, 1]} f(y) g(x - y) \; dy     & (g \in C(\R / \Z ; \C))              \\
-                                   & = f * g(x),                             &                         & \by{5.4.2}
+                                   & = f * g(x),                             &                         & \by{ii:5.4.2}
   \end{align*}
   we know that \(f * g \in C(\R / \Z ; \C)\).
 \end{proof}
@@ -100,13 +100,13 @@
   Then we have
   \begin{align*}
      & f * g(x)                                                                                                                      \\
-     & = \int_{[0, 1]} f(y) g(x - y) \; dy                                           &  & \by{5.4.2}                                 \\
+     & = \int_{[0, 1]} f(y) g(x - y) \; dy                                           &  & \by{ii:5.4.2}                                 \\
      & = \int_{\big[\phi(x), \phi(x - 1)\big]} f(y) g(x - y) \; dy                                                                   \\
      & = -\int_{[x - 1, x]} f\big(\phi(y)\big) g\big(x - \phi(y)\big) \phi'(y) \; dy &  & \text{(by Exercise 11.10.4 in Analysis I)} \\
      & = \int_{[x - 1, x]} f(x - y) g(y) \; dy                                                                                       \\
      & = \int_{[x - 1, x]} g(y) f(x - y) \; dy.                                                                                      \\
   \end{align*}
-  Let \([x]\) be the integer defined in \cref{ex:5.1.1}.
+  Let \([x]\) be the integer defined in \cref{ii:ex:5.1.1}.
   Then we have
   \begin{align*}
              & [x] \leq x < [x] + 1     \\
@@ -124,48 +124,48 @@
      & = \int_{\big[[x], [x] + 1\big]} g(y) f(x - y) \; dy                                                                                       \\
      & = \int_{\big[[x] - [x], [x] + 1 - [x]\big]} g(y + [x]) f(x - y + [x]) \; dy                                                               \\
      & = \int_{[0, 1]} g(y) f(x - y) \; dy                                                             & (f, g \in C(\R / \Z ; \C))              \\
-     & = g * f(x).                                                                                     &                            & \by{5.4.2}
+     & = g * f(x).                                                                                     &                            & \by{ii:5.4.2}
   \end{align*}
   Since \(x\) is arbitrary, we conclude that \(f * g = g * f\).
 \end{proof}
 
 \begin{proof}{(c)}
-  By \cref{5.1.5}(b) we know that \(f + g, g + h, cf, cg \in C(\R / \Z ; \C)\).
+  By \cref{ii:5.1.5}(b) we know that \(f + g, g + h, cf, cg \in C(\R / \Z ; \C)\).
   Thus \(f * (g + h), (f + g) * h, (cf) * g, f * (cg)\) are well-defined.
   Let \(x \in \R\).
   Then we have
   \begin{align*}
      & \big(f * (g + h)\big)(x)                                                                                              \\
-     & = \int_{[0, 1]} f(y) \cdot (g + h)(x - y) \; dy                         &  & \by{5.4.2}                               \\
+     & = \int_{[0, 1]} f(y) \cdot (g + h)(x - y) \; dy                         &  & \by{ii:5.4.2}                               \\
      & = \int_{[0, 1]} f(y) \cdot \big(g(x - y) + h(x - y)\big) \; dy                                                        \\
      & = \int_{[0, 1]} f(y) g(x - y) + f(y) h(x - y) \; dy                                                                   \\
-     & = \int_{[0, 1]} f(y) g(x - y) \; dy + \int_{[0, 1]} f(y) h(x - y) \; dy &  & \text{(cf the proof of \cref{5.2.5}(c))} \\
-     & = (f * g)(x) + (f * h)(x)                                               &  & \by{5.4.2}                               \\
+     & = \int_{[0, 1]} f(y) g(x - y) \; dy + \int_{[0, 1]} f(y) h(x - y) \; dy &  & \text{(cf the proof of \cref{ii:5.2.5}(c))} \\
+     & = (f * g)(x) + (f * h)(x)                                               &  & \by{ii:5.4.2}                               \\
      & = (f * g + f * h)(x)
   \end{align*}
   and
   \begin{align*}
-    \big((cf) * g\big)(x) & = \int_{[0, 1]} (cf)(y) \cdot g(x - y) \; dy &  & \by{5.4.2}                               \\
+    \big((cf) * g\big)(x) & = \int_{[0, 1]} (cf)(y) \cdot g(x - y) \; dy &  & \by{ii:5.4.2}                               \\
                           & = \int_{[0, 1]} c f(y) g(x - y) \; dy                                                      \\
-                          & = c \int_{[0, 1]} f(y) g(x - y) \; dy        &  & \text{(cf the proof of \cref{5.2.5}(c))} \\
-                          & = c (f * g)(x).                              &  & \by{5.4.2}
+                          & = c \int_{[0, 1]} f(y) g(x - y) \; dy        &  & \text{(cf the proof of \cref{ii:5.2.5}(c))} \\
+                          & = c (f * g)(x).                              &  & \by{ii:5.4.2}
   \end{align*}
   Since \(x\) is arbitrary, we conclude that \(f * (g + h) = f * g + f * h\) and \((cf) * g = c (f * g)\).
   This implies
   \begin{align*}
-    (f + g) * h & = h * (f + g)   &  & \text{(by \cref{5.4.4}(b))}   \\
+    (f + g) * h & = h * (f + g)   &  & \by{ii:5.4.4}[b]                 \\
                 & = h * f + h * g &  & \text{(from the proof above)} \\
-                & = f * h + g * h &  & \text{(by \cref{5.4.4}(b))}
+                & = f * h + g * h &  & \by{ii:5.4.4}[b]
   \end{align*}
   and
   \begin{align*}
-    f * (cg) & = (cg) * f  &  & \text{(by \cref{5.4.4}(b))}   \\
+    f * (cg) & = (cg) * f  &  & \by{ii:5.4.4}[b]                 \\
              & = c(g * f)  &  & \text{(from the proof above)} \\
-             & = c(f * g). &  & \text{(by \cref{5.4.4}(b))}
+             & = c(f * g). &  & \by{ii:5.4.4}[b]
   \end{align*}
 \end{proof}
 
-\begin{ac}\label{ac:5.4.1}
+\begin{ac}\label{ii:ac:5.4.1}
   Now we observe an interesting identity:
   for any \(f \in C(\R / \Z ; \C)\) and any integer \(n\), we have
   \[
@@ -173,23 +173,23 @@
   \]
   To prove this, we compute
   \begin{align*}
-    f * e_n(x) & = \int_{[0, 1]} f(y) e_n(x - y) \; dy                        &  & \by{5.4.2}                               \\
-               & = \int_{[0, 1]} f(y) e^{2 \pi i n (x - y)} \; dy             &  & \by{5.3.1}                               \\
-               & = e^{2 \pi i n x} \int_{[0, 1]} f(y) e^{- 2 \pi i n y} \; dy &  & \text{(cf the proof of \cref{5.2.5}(c))} \\
-               & = \inner*{f, e_n} e^{2 \pi i n x}                            &  & \by{5.2.1}                               \\
-               & = \hat{f}(n) e^{2 \pi i n x}                                 &  & \by{5.3.7}                               \\
-               & = \hat{f}(n) e_n                                             &  & \by{5.3.1}
+    f * e_n(x) & = \int_{[0, 1]} f(y) e_n(x - y) \; dy                        &  & \by{ii:5.4.2}                               \\
+               & = \int_{[0, 1]} f(y) e^{2 \pi i n (x - y)} \; dy             &  & \by{ii:5.3.1}                               \\
+               & = e^{2 \pi i n x} \int_{[0, 1]} f(y) e^{- 2 \pi i n y} \; dy &  & \text{(cf the proof of \cref{ii:5.2.5}(c))} \\
+               & = \inner*{f, e_n} e^{2 \pi i n x}                            &  & \by{ii:5.2.1}                               \\
+               & = \hat{f}(n) e^{2 \pi i n x}                                 &  & \by{ii:5.3.7}                               \\
+               & = \hat{f}(n) e_n                                             &  & \by{ii:5.3.1}
   \end{align*}
   as desired.
-  More generally, we see from \cref{5.4.4}(c) that for any trigonometric polynomial \(P = \sum_{n = -N}^N c_n e_n\), we have
+  More generally, we see from \cref{ii:5.4.4}(c) that for any trigonometric polynomial \(P = \sum_{n = -N}^N c_n e_n\), we have
   \[
     f * P = \sum_{n = -N}^N c_n (f * e_n) = \sum_{n = -N}^N \hat{f}(n) c_n e_n.
   \]
   Thus the periodic convolution of any function in \(C(\R / \Z ; \C)\) with a trigonometric polynomial, is again a trigonometric polynomial.
-  (Compare with \cref{3.8.13}.)
+  (Compare with \cref{ii:3.8.13}.)
 \end{ac}
 
-\begin{defn}[Periodic approximation to the identity]\label{5.4.5}
+\begin{defn}[Periodic approximation to the identity]\label{ii:5.4.5}
   Let \(\varepsilon > 0\) and \(0 < \delta < 1 / 2\).
   A function \(f \in C(\R / \Z ; \C)\) is said to be a \emph{periodic \((\varepsilon, \delta)\) approximation to the identity} if the following properties are true:
   \begin{enumerate}
@@ -198,7 +198,7 @@
   \end{enumerate}
 \end{defn}
 
-\begin{ac}[Fejér kernel]\label{ac:5.4.2}
+\begin{ac}[Fejér kernel]\label{ii:ac:5.4.2}
   Let \(N \geq 1\) be an integer.
   Then we have
   \[
@@ -214,10 +214,10 @@
   We proof the claim by induction on \(N\) and we start with \(N = 1\).
   For \(N = 1\), we have
   \begin{align*}
-    \sum_{n = 0}^0 (1 - \abs{n - 1 + 1}) \cdot e_n & = \sum_{n = 0}^0 (1 - \abs{n}) e_n                                   \\
-                                                   & = 1 e_0                                                              \\
-                                                   & = 1                                 &  & \text{(by \cref{4.5.2}(e))} \\
-                                                   & = e_0^2                             &  & \text{(by \cref{4.5.2}(e))} \\
+    \sum_{n = 0}^0 (1 - \abs{n - 1 + 1}) \cdot e_n & = \sum_{n = 0}^0 (1 - \abs{n}) e_n                     \\
+                                                   & = 1 e_0                                                \\
+                                                   & = 1                                 &  & \by{ii:4.5.2}[e] \\
+                                                   & = e_0^2                             &  & \by{ii:4.5.2}[e] \\
                                                    & = \bigg(\sum_{n = 0}^0 e_n\bigg)^2.
   \end{align*}
   Thus the base case holds.
@@ -229,16 +229,16 @@
   This is true since
   \begin{align*}
      & \bigg(\sum_{n = 0}^N e_n\bigg)^2                                                                                                               \\
-     & = \Bigg(\bigg(\sum_{n = 0}^{N - 1} e_n\bigg) + e_N\Bigg)^2                                                                     &  & \by{4.6.4} \\
-     & = \bigg(\sum_{n = 0}^{N - 1} e_n\bigg)^2 + 2 e_N \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) + e_N^2                                  &  & \by{4.6.6} \\
+     & = \Bigg(\bigg(\sum_{n = 0}^{N - 1} e_n\bigg) + e_N\Bigg)^2                                                                     &  & \by{ii:4.6.4} \\
+     & = \bigg(\sum_{n = 0}^{N - 1} e_n\bigg)^2 + 2 e_N \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) + e_N^2                                  &  & \by{ii:4.6.6} \\
      & = \sum_{n = 0}^{2N - 2} (N - \abs{n - N + 1}) \cdot e_n + 2 e_N \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) + e_N^2                   &  & \byIH      \\
-     & = \sum_{n = 0}^{N - 1} (N - \abs{n - N + 1}) \cdot e_n + \sum_{n = N}^{2N - 2} (N - \abs{n - N + 1}) \cdot e_n                 &  & \by{4.6.4} \\
+     & = \sum_{n = 0}^{N - 1} (N - \abs{n - N + 1}) \cdot e_n + \sum_{n = N}^{2N - 2} (N - \abs{n - N + 1}) \cdot e_n                 &  & \by{ii:4.6.4} \\
      & \quad + 2 e_N \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) + e_N^2                                                                                     \\
      & = \sum_{n = 0}^{N - 1} (n + 1) \cdot e_n + \sum_{n = N}^{2N - 2} (2N - n - 1) \cdot e_n                                                        \\
      & \quad + 2 e_N \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) + e_N^2                                                                                     \\
-     & = \sum_{n = 0}^{N - 1} n e_n + \sum_{n = 0}^{N - 1} e_n + \sum_{n = N}^{2N - 2} (2N - n) \cdot e_n - \sum_{n = N}^{2N - 2} e_n &  & \by{4.6.6} \\
-     & \quad + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                                                     &  & \by{4.6.6} \\
-     & = \sum_{n = 0}^{N - 1} n e_n + \sum_{n = N}^{2N - 2} (2N - n) \cdot e_n                                                        &  & \by{4.6.4} \\
+     & = \sum_{n = 0}^{N - 1} n e_n + \sum_{n = 0}^{N - 1} e_n + \sum_{n = N}^{2N - 2} (2N - n) \cdot e_n - \sum_{n = N}^{2N - 2} e_n &  & \by{ii:4.6.6} \\
+     & \quad + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                                                     &  & \by{ii:4.6.6} \\
+     & = \sum_{n = 0}^{N - 1} n e_n + \sum_{n = N}^{2N - 2} (2N - n) \cdot e_n                                                        &  & \by{ii:4.6.4} \\
      & \quad + \sum_{n = 0}^{N - 1} e_n - \sum_{n = N}^{2N - 2} e_n + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                              \\
      & = \sum_{n = 0}^{N - 1} (N - \abs{n - N}) \cdot e_n + \sum_{n = N}^{2N - 2} (N - \abs{n - N}) \cdot e_n                                         \\
      & \quad + \sum_{n = 0}^{N - 1} e_n - \sum_{n = N}^{2N - 2} e_n + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2
@@ -246,15 +246,15 @@
   \begin{align*}
      & = \sum_{n = 0}^{2N - 2} (N - \abs{n - N}) \cdot e_n                                                               &  & \text{(conti. from above)} \\
      & \quad + \sum_{n = 0}^{N - 1} e_n - \sum_{n = N}^{2N - 2} e_n + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                 \\
-     & = \sum_{n = 0}^{2N - 2} (N + 1 - \abs{n - N}) \cdot e_n - \sum_{n = 0}^{2N - 2} e_n                               &  & \by{4.6.6}                 \\
+     & = \sum_{n = 0}^{2N - 2} (N + 1 - \abs{n - N}) \cdot e_n - \sum_{n = 0}^{2N - 2} e_n                               &  & \by{ii:4.6.6}                 \\
      & \quad + \sum_{n = 0}^{N - 1} e_n - \sum_{n = N}^{2N - 2} e_n + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                 \\
-     & = \sum_{n = 0}^{2N - 2} (N + 1 - \abs{n - N}) \cdot e_n                                                           &  & \by{4.6.6}                 \\
+     & = \sum_{n = 0}^{2N - 2} (N + 1 - \abs{n - N}) \cdot e_n                                                           &  & \by{ii:4.6.6}                 \\
      & \quad - 2 \bigg(\sum_{n = N}^{2N - 2} e_n\bigg) + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                              \\
-     & = \sum_{n = 0}^{2N} (N + 1 - \abs{n - N}) \cdot e_n - 2 e_{2N - 1} - e_{2N}                                       &  & \by{4.6.6}                 \\
+     & = \sum_{n = 0}^{2N} (N + 1 - \abs{n - N}) \cdot e_n - 2 e_{2N - 1} - e_{2N}                                       &  & \by{ii:4.6.6}                 \\
      & \quad - 2 \bigg(\sum_{n = N}^{2N - 2} e_n\bigg) + 2 \bigg(\sum_{n = 0}^{N - 1} e_N e_n\bigg) + e_N^2                                              \\
      & = \sum_{n = 0}^{2N} (N + 1 - \abs{n - N}) \cdot e_n - 2 e_{2N - 1} - e_{2N}                                                                       \\
-     & \quad - 2 \bigg(\sum_{n = N}^{2N - 2} e_n\bigg) + 2 \bigg(\sum_{n = 0}^{N - 1} e_{n + N}\bigg) + e_{2N}           &  & \by{ex:4.6.16}             \\
-     & = \sum_{n = 0}^{2N} (N + 1 - \abs{n - N}) \cdot e_n                                                               &  & \by{4.6.4}                 \\
+     & \quad - 2 \bigg(\sum_{n = N}^{2N - 2} e_n\bigg) + 2 \bigg(\sum_{n = 0}^{N - 1} e_{n + N}\bigg) + e_{2N}           &  & \by{ii:ex:4.6.16}             \\
+     & = \sum_{n = 0}^{2N} (N + 1 - \abs{n - N}) \cdot e_n                                                               &  & \by{ii:4.6.4}                 \\
      & \quad - 2 \bigg(\sum_{n = N}^{2N - 1} e_n\bigg) + 2 \bigg(\sum_{n = 0}^{N - 1} e_{n + N}\bigg)                                                    \\
      & = \sum_{n = 0}^{2N} (N + 1 - \abs{n - N}) \cdot e_n                                                                                               \\
      & \quad - 2 \bigg(\sum_{n = N}^{2N - 1} e_n\bigg) + 2 \bigg(\sum_{n = N}^{2N - 1} e_n\bigg)                                                         \\
@@ -265,23 +265,23 @@
   Using the claim above we have
   \begin{align*}
      & \sum_{n = -N}^N \bigg(1 - \dfrac{\abs{n}}{N}\bigg) e_n                                                                                 \\
-     & = \dfrac{1}{N} \sum_{n = -N}^N (N - \abs{n}) e_n                                                    &  & \by{4.6.6}                    \\
+     & = \dfrac{1}{N} \sum_{n = -N}^N (N - \abs{n}) e_n                                                    &  & \by{ii:4.6.6}                    \\
      & = \dfrac{1}{N} \sum_{n = -(N - 1)}^{N - 1} (N - \abs{n}) \cdot e_n                                                                     \\
      & = \dfrac{1}{N} \sum_{n = 0}^{2N - 2} (N - \abs{n - N + 1}) \cdot e_{n - N + 1}                                                         \\
-     & = \dfrac{1}{N} \sum_{n = 0}^{2N - 2} (N - \abs{n - N + 1}) \cdot e_n \cdot e_{-N + 1}               &  & \by{ex:4.6.16}                \\
-     & = \dfrac{e_{-N + 1}}{N} \sum_{n = 0}^{2N - 2} (N - \abs{n - N + 1}) \cdot e_n                       &  & \by{4.6.6}                    \\
+     & = \dfrac{1}{N} \sum_{n = 0}^{2N - 2} (N - \abs{n - N + 1}) \cdot e_n \cdot e_{-N + 1}               &  & \by{ii:ex:4.6.16}                \\
+     & = \dfrac{e_{-N + 1}}{N} \sum_{n = 0}^{2N - 2} (N - \abs{n - N + 1}) \cdot e_n                       &  & \by{ii:4.6.6}                    \\
      & = \dfrac{e_{-N + 1}}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg)^2                                      &  & \text{(from the claim above)} \\
      & = \dfrac{e_{-N + 1}}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\sum_{n = 0}^{N - 1} e_n\bigg)                                      \\
-     & = \dfrac{1}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\sum_{n = 0}^{N - 1} e_{-N + 1} e_n\bigg) &  & \by{4.6.6}                    \\
-     & = \dfrac{1}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\sum_{n = 0}^{N - 1} e_{n - N + 1}\bigg)  &  & \by{ex:4.6.16}                \\
-     & = \dfrac{1}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\sum_{n = 0}^{N - 1} e_{-n}\bigg)         &  & \by{4.6.4}                    \\
-     & = \dfrac{1}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\sum_{n = 0}^{N - 1} \overline{e_n}\bigg) &  & \by{4.6.15}                   \\
-     & = \dfrac{1}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\overline{\sum_{n = 0}^{N - 1} e_n}\bigg) &  & \by{4.6.9}                    \\
-     & = \dfrac{1}{N} \abs{\sum_{n = 0}^{N - 1} e_n}^2.                                                    &  & \by{4.6.11}
+     & = \dfrac{1}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\sum_{n = 0}^{N - 1} e_{-N + 1} e_n\bigg) &  & \by{ii:4.6.6}                    \\
+     & = \dfrac{1}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\sum_{n = 0}^{N - 1} e_{n - N + 1}\bigg)  &  & \by{ii:ex:4.6.16}                \\
+     & = \dfrac{1}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\sum_{n = 0}^{N - 1} e_{-n}\bigg)         &  & \by{ii:4.6.4}                    \\
+     & = \dfrac{1}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\sum_{n = 0}^{N - 1} \overline{e_n}\bigg) &  & \by{ii:4.6.15}                   \\
+     & = \dfrac{1}{N} \bigg(\sum_{n = 0}^{N - 1} e_n\bigg) \bigg(\overline{\sum_{n = 0}^{N - 1} e_n}\bigg) &  & \by{ii:4.6.9}                    \\
+     & = \dfrac{1}{N} \abs{\sum_{n = 0}^{N - 1} e_n}^2.                                                    &  & \by{ii:4.6.11}
   \end{align*}
 \end{proof}
 
-\begin{lem}\label{5.4.6}
+\begin{lem}\label{ii:5.4.6}
   For every \(\varepsilon > 0\) and \(0 < \delta < 1 / 2\), there exists a trigonometric polynomial \(P\) which is an \((\varepsilon, \delta)\) approximation to the identity.
 \end{lem}
 
@@ -296,29 +296,29 @@
   \[
     F_N = \dfrac{1}{N} \abs{\sum_{n = 0}^{N - 1} e_n}^2
   \]
-  by \cref{ac:5.4.2}.
+  by \cref{ii:ac:5.4.2}.
   But from the geometric series formula (Lemma 7.3.3 in Analysis I) we have
   \begin{align*}
-    \sum_{n = 0}^{N - 1} e_n(x) & = \sum_{n = 0}^{N - 1} \big(e_1(x)\big)^n                                                                                &  & \by{ex:4.6.16}              \\
-                                & = \dfrac{\big(e_1(x)\big)^N - 1}{e_1(x) - 1}                                                                             &  & \text{(geometric series)}   \\
-                                & = \dfrac{\big(e_1(x)\big)^N - e_0(x)}{e_1(x) - e_0(x)}                                                                   &  & \text{(by \cref{4.5.2}(e))} \\
-                                & = \dfrac{e_N(x) - e_0(x)}{e_1(x) - e_0(x)}                                                                               &  & \by{ex:4.6.16}              \\
-                                & = \dfrac{e^{2 \pi i N x} - e^0}{e^{2 \pi i x} - e^0}                                                                     &  & \by{5.3.1}                  \\
-                                & = \dfrac{e^{\pi i N x} e^{\pi i N x} - e^{\pi i N x} e^{-\pi i N x}}{e^{\pi i x} e^{\pi i x} - e^{\pi i x} e^{-\pi i x}} &  & \by{ex:4.6.16}              \\
-                                & = \dfrac{e^{\pi i N x} (e^{\pi i N x} - e^{-\pi i N x})}{e^{\pi i x} (e^{\pi i x} - e^{-\pi i x})}                       &  & \by{4.6.6}                  \\
-                                & = \dfrac{e^{\pi i (N - 1) x} (e^{\pi i N x} - e^{-\pi i N x})}{e^{\pi i x} - e^{-\pi i x}}                               &  & \by{4.6.12}                 \\
-                                & = \dfrac{2i e^{\pi i (N - 1) x} \sin(\pi N x)}{2i \sin(\pi x)}                                                           &  & \by{4.7.1}                  \\
-                                & = \dfrac{e^{\pi i (N - 1) x} \sin(\pi N x)}{\sin(\pi x)}                                                                 &  & \by{4.6.12}
+    \sum_{n = 0}^{N - 1} e_n(x) & = \sum_{n = 0}^{N - 1} \big(e_1(x)\big)^n                                                                                &  & \by{ii:ex:4.6.16}            \\
+                                & = \dfrac{\big(e_1(x)\big)^N - 1}{e_1(x) - 1}                                                                             &  & \text{(geometric series)} \\
+                                & = \dfrac{\big(e_1(x)\big)^N - e_0(x)}{e_1(x) - e_0(x)}                                                                   &  & \by{ii:4.5.2}[e]             \\
+                                & = \dfrac{e_N(x) - e_0(x)}{e_1(x) - e_0(x)}                                                                               &  & \by{ii:ex:4.6.16}            \\
+                                & = \dfrac{e^{2 \pi i N x} - e^0}{e^{2 \pi i x} - e^0}                                                                     &  & \by{ii:5.3.1}                \\
+                                & = \dfrac{e^{\pi i N x} e^{\pi i N x} - e^{\pi i N x} e^{-\pi i N x}}{e^{\pi i x} e^{\pi i x} - e^{\pi i x} e^{-\pi i x}} &  & \by{ii:ex:4.6.16}            \\
+                                & = \dfrac{e^{\pi i N x} (e^{\pi i N x} - e^{-\pi i N x})}{e^{\pi i x} (e^{\pi i x} - e^{-\pi i x})}                       &  & \by{ii:4.6.6}                \\
+                                & = \dfrac{e^{\pi i (N - 1) x} (e^{\pi i N x} - e^{-\pi i N x})}{e^{\pi i x} - e^{-\pi i x}}                               &  & \by{ii:4.6.12}               \\
+                                & = \dfrac{2i e^{\pi i (N - 1) x} \sin(\pi N x)}{2i \sin(\pi x)}                                                           &  & \by{ii:4.7.1}                \\
+                                & = \dfrac{e^{\pi i (N - 1) x} \sin(\pi N x)}{\sin(\pi x)}                                                                 &  & \by{ii:4.6.12}
   \end{align*}
   when \(x\) is not an integer, and hence we have the formula
   \begin{align*}
-    F_N(x) & = \dfrac{1}{N} \abs{\sum_{n = 0}^{N - 1} e_n(x)}^2                                                       &            & \by{ac:5.4.2}                 \\
+    F_N(x) & = \dfrac{1}{N} \abs{\sum_{n = 0}^{N - 1} e_n(x)}^2                                                       &            & \by{ii:ac:5.4.2}                 \\
            & = \dfrac{1}{N} \abs{\dfrac{e^{\pi i (N - 1) x} \sin(\pi N x)}{\sin(\pi x)}}^2                            &            & \text{(from the proof above)} \\
-           & = \dfrac{\abs{e^{\pi i (N - 1) x}}^2 \abs{\sin(\pi N x)}^2}{N \abs{\sin(\pi x)}^2}                       &            & \by{ex:4.6.7}                 \\
+           & = \dfrac{\abs{e^{\pi i (N - 1) x}}^2 \abs{\sin(\pi N x)}^2}{N \abs{\sin(\pi x)}^2}                       &            & \by{ii:ex:4.6.7}                 \\
            & = \dfrac{\abs{e^{\pi i (N - 1) x}}^2 \big(\sin(\pi N x)\big)^2}{N \big(\sin(\pi x)\big)^2}               & (x \in \R)                                 \\
-           & = \dfrac{e^{\pi i (N - 1) x} e^{- \pi i (N - 1) x} \big(\sin(\pi N x)\big)^2}{N \big(\sin(\pi x)\big)^2} &            & \by{4.6.11}                   \\
-           & = \dfrac{e^0 \big(\sin(\pi N x)\big)^2}{N \big(\sin(\pi x)\big)^2}                                       &            & \by{ex:4.6.16}                \\
-           & = \dfrac{\big(\sin(\pi N x)\big)^2}{N \big(\sin(\pi x)\big)^2}.                                          &            & \text{(by \cref{4.5.2}(e))}
+           & = \dfrac{e^{\pi i (N - 1) x} e^{- \pi i (N - 1) x} \big(\sin(\pi N x)\big)^2}{N \big(\sin(\pi x)\big)^2} &            & \by{ii:4.6.11}                   \\
+           & = \dfrac{e^0 \big(\sin(\pi N x)\big)^2}{N \big(\sin(\pi x)\big)^2}                                       &            & \by{ii:ex:4.6.16}                \\
+           & = \dfrac{\big(\sin(\pi N x)\big)^2}{N \big(\sin(\pi x)\big)^2}.                                          &            & \by{ii:4.5.2}[e]
   \end{align*}
   When \(x\) is an integer, the geometric series formula does not apply, but one has \(F_N(x) = N\) in that case, as one can see by direct computation.
   In either case we see that \(F_N(x) \geq 0\) for any \(x\).
@@ -326,11 +326,11 @@
   \begin{align*}
      & \int_{[0, 1]} F_N(x) \; dx                                                                                                                 \\
      & = \int_{[0, 1]} \sum_{n = -N}^N \bigg(1 - \dfrac{\abs{n}}{N}\bigg) e_n(x) \; dx                                                            \\
-     & = \sum_{n = -N}^N \Bigg(\bigg(1 - \dfrac{\abs{n}}{N}\bigg) \int_{[0, 1]} e_n(x) \; dx\Bigg)                            &  & \by{5.2.2}     \\
-     & = \sum_{n = -N}^N \Bigg(\bigg(1 - \dfrac{\abs{n}}{N}\bigg) \int_{[0, 1]} e_{n - 1}(x) e_1(x) \; dx\Bigg)               &  & \by{ex:4.6.16} \\
-     & = \sum_{n = -N}^N \Bigg(\bigg(1 - \dfrac{\abs{n}}{N}\bigg) \int_{[0, 1]} e_{n - 1}(x) \overline{e_{-1}(x)} \; dx\Bigg) &  & \by{4.6.15}    \\
-     & = \sum_{n = -N}^N \Bigg(\bigg(1 - \dfrac{\abs{n}}{N}\bigg) \inner*{e_{n - 1}, e_{-1}}\Bigg)                            &  & \by{5.2.1}     \\
-     & = \bigg(1 - \dfrac{\abs{0}}{N}\bigg) 1                                                                                 &  & \by{5.3.5}     \\
+     & = \sum_{n = -N}^N \Bigg(\bigg(1 - \dfrac{\abs{n}}{N}\bigg) \int_{[0, 1]} e_n(x) \; dx\Bigg)                            &  & \by{ii:5.2.2}     \\
+     & = \sum_{n = -N}^N \Bigg(\bigg(1 - \dfrac{\abs{n}}{N}\bigg) \int_{[0, 1]} e_{n - 1}(x) e_1(x) \; dx\Bigg)               &  & \by{ii:ex:4.6.16} \\
+     & = \sum_{n = -N}^N \Bigg(\bigg(1 - \dfrac{\abs{n}}{N}\bigg) \int_{[0, 1]} e_{n - 1}(x) \overline{e_{-1}(x)} \; dx\Bigg) &  & \by{ii:4.6.15}    \\
+     & = \sum_{n = -N}^N \Bigg(\bigg(1 - \dfrac{\abs{n}}{N}\bigg) \inner*{e_{n - 1}, e_{-1}}\Bigg)                            &  & \by{ii:5.2.1}     \\
+     & = \bigg(1 - \dfrac{\abs{0}}{N}\bigg) 1                                                                                 &  & \by{ii:5.3.5}     \\
      & = 1.
   \end{align*}
   Finally, since \(\sin(\pi N x) \leq 1\), we have
@@ -349,7 +349,7 @@
                                   & = \begin{dcases}
                                         \big(\sin(\pi x)\big)^2  & \text{if } x \geq 0 \\
                                         \big(-\sin(\pi x)\big)^2 & \text{if } x < 0
-                                      \end{dcases} &  & \text{(by \cref{4.7.2}(c))} \\
+                                      \end{dcases} &  & \by{ii:4.7.2}[c] \\
                                   & = \big(\sin(\pi x)\big)^2
   \end{align*}
   and
@@ -369,56 +369,56 @@
     \implies & \begin{dcases}
                  \sin(\pi \delta) < \sin(\pi \abs{x}) \leq \sin(\dfrac{\pi}{2}) & \text{if } \abs{x} \leq \dfrac{1}{2} \\
                  \sin(\dfrac{\pi}{2}) > \sin(\pi \abs{x}) > -\sin(-\pi \delta)  & \text{if } \abs{x} > \dfrac{1}{2}    \\
-               \end{dcases}    &  & \text{(by \cref{4.7.5}(a))}    \\
+               \end{dcases}    &  & \by{ii:4.7.5}[a]    \\
     \implies & \begin{dcases}
                  \sin(\pi \delta) < \sin(\pi \abs{x}) \leq \sin(\dfrac{\pi}{2}) & \text{if } \abs{x} \leq \dfrac{1}{2} \\
                  \sin(\dfrac{\pi}{2}) > \sin(\pi \abs{x}) > \sin(\pi \delta)    & \text{if } \abs{x} > \dfrac{1}{2}    \\
-               \end{dcases}    &  & \text{(by \cref{4.7.2}(c))}    \\
+               \end{dcases}    &  & \by{ii:4.7.2}[c]    \\
     \implies & \sin(\pi \delta) < \sin(\pi \abs{x}),
   \end{align*}
   we have
   \begin{align*}
-             & 0 < \big(\sin(\pi \delta)\big)^2 < \big(\sin(\pi \abs{x})\big)^2                  &  & \text{(by \cref{ac:4.7.2}(d))} \\
-    \implies & 0 < \big(\sin(\pi \delta)\big)^2 < \big(\sin(\pi x)\big)^2                        &  & \text{(from the proof above)}  \\
+             & 0 < \big(\sin(\pi \delta)\big)^2 < \big(\sin(\pi \abs{x})\big)^2                  &  & \by{ii:ac:4.7.2}[d]              \\
+    \implies & 0 < \big(\sin(\pi \delta)\big)^2 < \big(\sin(\pi x)\big)^2                        &  & \text{(from the proof above)} \\
     \implies & 0 < \dfrac{1}{\big(\sin(\pi x)\big)^2} < \dfrac{1}{\big(\sin(\pi \delta)\big)^2}.
   \end{align*}
 \end{proof}
 
 \exercisesection
 
-\begin{ex}\label{ex:5.4.1}
+\begin{ex}\label{ii:ex:5.4.1}
   Show that if \(f : \R \to \C\) is both compactly supported and \(\Z\)-periodic, then it is identically zero.
 \end{ex}
 
 \begin{proof}
-  Since \(f\) is compactly supported, by \cref{3.8.4} we know that
+  Since \(f\) is compactly supported, by \cref{ii:3.8.4} we know that
   \[
     \exists L, U \in \R : \forall x \in \R \setminus [L, U], f(x) = 0.
   \]
   Fix such \(L, U\).
-  Let \([U - L]\) be the integer defined in \cref{ex:5.1.1}.
+  Let \([U - L]\) be the integer defined in \cref{ii:ex:5.1.1}.
   Then we have
   \begin{align*}
              & \forall x \in [L, U], L \leq x                                                                 \\
     \implies & L + [U - L] \leq x + [U - L]                                                                   \\
-    \implies & U = L + U - L < L + [U - L] + 1 \leq x + [U - L] + 1 &                         & \by{ex:5.1.1} \\
+    \implies & U = L + U - L < L + [U - L] + 1 \leq x + [U - L] + 1 &                         & \by{ii:ex:5.1.1} \\
     \implies & f(x) = f(x + [U - L] + 1) = 0.                       & (f \in C(\R / \Z ; \C))
   \end{align*}
   Thus \(f = 0\).
 \end{proof}
 
-\begin{ex}\label{ex:5.4.2}
-  Prove \cref{5.4.4}.
+\begin{ex}\label{ii:ex:5.4.2}
+  Prove \cref{ii:5.4.4}.
 \end{ex}
 
 \begin{proof}
-  See \cref{5.4.4}.
+  See \cref{ii:5.4.4}.
 \end{proof}
 
-\begin{ex}\label{ex:5.4.3}
-  Fill in the gaps marked in \cref{5.4.6}.
+\begin{ex}\label{ii:ex:5.4.3}
+  Fill in the gaps marked in \cref{ii:5.4.6}.
 \end{ex}
 
 \begin{proof}
-  See \cref{5.4.6}.
+  See \cref{ii:5.4.6}.
 \end{proof}
