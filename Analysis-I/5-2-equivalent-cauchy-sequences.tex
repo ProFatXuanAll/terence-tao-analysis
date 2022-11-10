@@ -1,16 +1,22 @@
 \section{Equivalent Cauchy sequences}\label{i:sec:5.2}
 
+\begin{note}
+  If we are to define the real numbers from the rationals as limits of rational Cauchy sequences, we have to know when two Cauchy sequences of rationals give the same limit, without first defining a real number
+  (since that would be circular).
+  To do this we use a similar set of definitions to those used to define a Cauchy sequence in the first place.
+\end{note}
+
 \begin{defn}[\(\varepsilon\)-close sequences]\label{i:5.2.1}
-  Let \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) be two sequences, and let \(\varepsilon > 0\).
-  We say that the sequence \((a_n)_{n = 0}^{\infty}\) is \emph{\(\varepsilon\)-close} to \((b_n)_{n = 0}^{\infty}\) iff \(a_n\) is \(\varepsilon\)-close to \(b_n\) for each \(n \in \N\).
-  In other words, the sequence \(a_0, a_1, a_2, \dots\) is \(\varepsilon\)-close to the sequence \(b_0, b_1, b_2, \dots\) iff \(\abs{a_n - b_n} \leq \varepsilon\) for all \(n = 0, 1, 2, \dots\).
+  Let \((a_n)_{n = m}^{\infty}\) and \((b_n)_{n = m}^{\infty}\) be two rational sequences, and let \(\varepsilon \in \Q^+\).
+  We say that the sequence \((a_n)_{n = m}^{\infty}\) is \emph{\(\varepsilon\)-close} to \((b_n)_{n = m}^{\infty}\) iff \(a_n\) is \(\varepsilon\)-close to \(b_n\) for each \(n \in \Z_{\geq m}\).
+  In other words, the sequence \(a_m, a_{m + 1}, a_{m + 2}, \dots\) is \(\varepsilon\)-close to the sequence \(b_m, b_{m + 1}, b_{m + 2}, \dots\) iff \(\abs{a_n - b_n} \leq \varepsilon\) for all \(n = m, m + 1, m + 2, \dots\).
 \end{defn}
 
 \setcounter{thm}{2}
-\begin{defn}[\(Eventually \varepsilon\)-close sequences]\label{i:5.2.3}
-  Let \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) be two sequences, and let \(\varepsilon > 0\).
-  We say that the sequence \((a_n)_{n = 0}^{\infty}\) is \emph{eventually \(\varepsilon\)-close} to \((b_n)_{n = 0}^{\infty}\) iff there exists an \(N \geq 0\) such that the sequences \((a_n)_{n = N}^{\infty}\) and \((b_n)_{n = N}^{\infty}\) are \(\varepsilon\)-close.
-  In other words, \(a_0, a_1, a_2, \dots\) is eventually \(\varepsilon\)-close to \(b_0, b_1, b_2, \dots\) iff there exists an \(N \geq 0\) such that \(\abs{a_n - b_n} \leq \varepsilon\) for all \(n \geq N\).
+\begin{defn}[Eventually \(\varepsilon\)-close sequences]\label{i:5.2.3}
+  Let \((a_n)_{n = m}^{\infty}\) and \((b_n)_{n = m}^{\infty}\) be two rational sequences, and let \(\varepsilon \in \Q^+\).
+  We say that the sequence \((a_n)_{n = m}^{\infty}\) is \emph{eventually \(\varepsilon\)-close} to \((b_n)_{n = m}^{\infty}\) iff there exists an \(N \in \Z_{\geq m}\) such that the sequences \((a_n)_{n = N}^{\infty}\) and \((b_n)_{n = N}^{\infty}\) are \(\varepsilon\)-close.
+  In other words, \(a_m, a_{m + 1}, a_{m + 2}, \dots\) is eventually \(\varepsilon\)-close to \(b_m, b_{m + 1}, b_{m + 2}, \dots\) iff there exists an \(N \in \Z_{\geq m}\) such that \(\abs{a_n - b_n} \leq \varepsilon\) for all \(n \in \Z_{\geq N}\).
 \end{defn}
 
 \begin{rmk}\label{i:5.2.4}
@@ -19,86 +25,91 @@
 
 \setcounter{thm}{5}
 \begin{defn}[Equivalent sequences]\label{i:5.2.6}
-  Two sequences \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are \emph{equivalent} iff for each rational \(\varepsilon > 0\), the sequences \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are eventually \(\varepsilon\)-close.
-  In other words, \(a_0, a_1, a_2, \dots\) and \(b_0, b_1, b_2, \dots\) are equivalent iff for every rational \(\varepsilon > 0\), there exists an \(N \geq 0\) such that \(\abs{a_n - b_n} \leq \varepsilon\) for all \(n \geq N\).
+  Two rational sequences \((a_n)_{n = m}^{\infty}\) and \((b_n)_{n = m}^{\infty}\) are \emph{equivalent} iff for each \(\varepsilon \in \Q^+\), the sequences \((a_n)_{n = m}^{\infty}\) and \((b_n)_{n = m}^{\infty}\) are eventually \(\varepsilon\)-close.
+  In other words, \(a_m, a_{m + 1}, a_{m + 2}, \dots\) and \(b_m, b_{m + 1}, b_{m + 2}, \dots\) are equivalent iff for every \(\varepsilon \in \Q^+\), there exists an \(N \in \Z_{\geq m}\) such that \(\abs{a_n - b_n} \leq \varepsilon\) for all \(n \in \Z_{\geq N}\).
 \end{defn}
 
 \begin{rmk}\label{i:5.2.7}
-  As with \cref{i:5.1.8}, the quantity \(\varepsilon > 0\) is currently restricted to be a positive rational, rather than a positive real.
-  However, we shall eventually see that it makes no difference whether \(\varepsilon\) ranges over the positive rationals or positive reals.
+  As with \cref{i:5.1.8}, the quantity \(\varepsilon \in \Q^+\) is currently restricted to be a positive rational, rather than a positive real.
+  However, we shall eventually see that it makes no difference whether \(\varepsilon\) ranges over the positive rationals or positive reals;
+  see \cref{i:ex:6.1.10}.
 \end{rmk}
 
 \begin{ac}\label{i:ac:5.2.1}
   Equivalence defined as \cref{i:5.2.6} is reflexive, symmetric and transitive.
 \end{ac}
 
-\begin{proof}
-  Let \((a_n)_{n = m}^\infty\), \((b_n)_{n = m}^\infty\), \((c_n)_{n = m}^\infty\) be sequences of rationals.
-  We have
+\begin{proof}[\pf{i:ac:5.2.1}]
+  Let \((a_n)_{n = m}^\infty, (b_n)_{n = m}^\infty, (c_n)_{n = m}^\infty\) be rational sequences.
+  We denote the equivalence relation defined in \cref{i:5.2.6} as \(\equiv\).
+  First we show that \(\equiv\) is reflexive.
+  Since for arbitrary \((a_n)_{n = m}^\infty\), we always have
   \begin{align*}
              & \forall \varepsilon \in \Q^+, \forall n \geq m, \abs{a_n - a_n} = \abs{0} = 0 \leq \varepsilon                   \\
-    \implies & (a_n)_{n = m}^\infty = (a_n)_{n = m}^\infty                                                    &  & \by{i:5.2.6}
+    \implies & (a_n)_{n = m}^\infty \equiv (a_n)_{n = m}^\infty,                                              &  & \by{i:5.2.6}
   \end{align*}
-  and thus \cref{i:5.2.6} is reflexive.
+  we see that \(\equiv\) is reflexive.
 
-  Now suppose that \((a_n)_{n = m}^\infty = (b_n)_{n = m}^\infty\).
+  Next we show that \(\equiv\) is symmetric.
+  Suppose that \((a_n)_{n = m}^\infty \equiv (b_n)_{n = m}^\infty\).
   Then we have
   \begin{align*}
-             & (a_n)_{n = m}^\infty = (b_n)_{n = m}^\infty                                         \\
-    \implies & \forall \varepsilon \in \Q^+, \exists N \in \N \land N \geq m:                      \\
-             & \forall n \geq N, \abs{a_n - b_n} \leq \varepsilon             &  & \by{i:5.2.6}    \\
-    \implies & \forall \varepsilon \in \Q^+, \exists N \in \N \land N \geq m:                      \\
-             & \forall n \geq N, \abs{b_n - a_n} \leq \varepsilon             &  & \by{i:4.3.3}[f] \\
-    \implies & (b_n)_{n = m}^\infty = (a_n)_{n = m}^\infty                    &  & \by{i:5.2.6}
+             & (a_n)_{n = m}^\infty \equiv (b_n)_{n = m}^\infty                                                                                          \\
+    \implies & \forall \varepsilon \in \Q^+, \exists N \in \Z_{\geq m}: \forall n \in \Z_{\geq N}, \abs{a_n - b_n} \leq \varepsilon &  & \by{i:5.2.6}    \\
+    \implies & \forall \varepsilon \in \Q^+, \exists N \in \Z_{\geq m}: \forall n \in \Z_{\geq N}, \abs{b_n - a_n} \leq \varepsilon &  & \by{i:4.3.3}[f] \\
+    \implies & (b_n)_{n = m}^\infty \equiv (a_n)_{n = m}^\infty.                                                                    &  & \by{i:5.2.6}
   \end{align*}
-  and thus \cref{i:5.2.6} is symmetric.
+  Thus \(\equiv\) is symmetric.
 
-  Finally suppose that \((a_n)_{n = m}^\infty = (b_n)_{n = m}^\infty\) and \((b_n)_{n = m}^\infty = (c_n)_{n = m}^\infty\).
+  Finally we show that \(\equiv\) is transitive.
+  Suppose that \((a_n)_{n = m}^\infty \equiv (b_n)_{n = m}^\infty\) and \((b_n)_{n = m}^\infty \equiv (c_n)_{n = m}^\infty\).
   Then we have
   \begin{align*}
-             & \big((a_n)_{n = m}^\infty = (b_n)_{n = m}^\infty\big) \land \big((b_n)_{n = m}^\infty = (c_n)_{n = m}^\infty\big)                          \\
-    \implies & \forall \varepsilon \in \Q^+, \exists N_1, N_2 \in \N \land N_1, N_2 \geq m:                                        &  & \by{i:5.2.6}      \\
-             & \begin{dcases}
-                 \abs{a_n - b_n} \leq \dfrac{\varepsilon}{2} & \forall n \geq N_1 \\
-                 \abs{b_n - c_n} \leq \dfrac{\varepsilon}{2} & \forall n \geq N_2 \\
-               \end{dcases}                                                                           \\
-    \implies & \forall \varepsilon \in \Q^+, \exists N = \max(N_1, N_2) \geq m:                                                    &  & \by{i:2.2.13}     \\
-             & \forall n \geq N, (\abs{a_n - b_n} \leq \dfrac{\varepsilon}{2}) \land (\abs{b_n - c_n} \leq \dfrac{\varepsilon}{2})                        \\
-    \implies & \forall \varepsilon \in \Q^+, \exists N = \max(N_1, N_2) \geq m:                                                                           \\
-             & \forall n \geq N, \abs{a_n - b_n} + \abs{b_n - c_n} \leq \varepsilon                                                &  & \by{i:4.2.9}[c,d] \\
-    \implies & \forall \varepsilon \in \Q^+, \exists N = \max(N_1, N_2) \geq m:                                                                           \\
-             & \forall n \geq N, \abs{a_n - c_n} \leq \abs{a_n - b_n} + \abs{b_n - c_n} \leq \varepsilon                           &  & \by{i:4.3.3}[b]   \\
-    \implies & (a_n)_{n = m}^\infty = (c_n)_{n = m}^\infty                                                                         &  & \by{i:5.2.6}
+             & \pa{(a_n)_{n = m}^\infty \equiv (b_n)_{n = m}^\infty} \land \pa{(b_n)_{n = m}^\infty \equiv (c_n)_{n = m}^\infty}                        \\
+    \implies & \forall \varepsilon \in \Q^+, \exists N_1, N_2 \in \Z_{\geq m}: \begin{dcases}
+                                                                                 \forall n \in \Z_{\geq N_1}, \abs{a_n - b_n} \leq \dfrac{\varepsilon}{2} \\
+                                                                                 \forall n \in \Z_{\geq N_2}, \abs{b_n - c_n} \leq \dfrac{\varepsilon}{2}
+                                                                               \end{dcases}                                    &  & \by{i:5.2.6} \\
+    \implies & \forall \varepsilon \in \Q^+, \exists N = \max(N_1, N_2) \in \Z_{\geq m} :                                        &  & \by{i:4.1.11}[f]  \\
+             & \forall n \in \Z_{\geq N}, \begin{dcases}
+                                            \abs{a_n - b_n} \leq \dfrac{\varepsilon}{2} \\
+                                            \abs{b_n - c_n} \leq \dfrac{\varepsilon}{2}
+                                          \end{dcases}                                                                   \\
+    \implies & \forall \varepsilon \in \Q^+, \exists N = \max(N_1, N_2) \in \Z_{\geq m} :                                                               \\
+             & \forall n \in \Z_{\geq N}, \abs{a_n - b_n} + \abs{b_n - c_n} \leq \varepsilon                                     &  & \by{i:4.2.9}[c,d] \\
+    \implies & \forall \varepsilon \in \Q^+, \exists N = \max(N_1, N_2) \in \Z_{\geq m} :                                                               \\
+             & \forall n \in \Z_{\geq N}, \abs{a_n - c_n} \leq \abs{a_n - b_n} + \abs{b_n - c_n} \leq \varepsilon                &  & \by{i:4.3.3}[b]   \\
+    \implies & (a_n)_{n = m}^\infty \equiv (c_n)_{n = m}^\infty.                                                                 &  & \by{i:5.2.6}
   \end{align*}
-  and thus \cref{i:5.2.6} is transitive.
+  Thus \(\equiv\) is transitive.
 \end{proof}
 
 \begin{prop}\label{i:5.2.8}
   Let \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) be the sequences \(a_n = 1 + 10^{-n}\) and \(b_n = 1 - 10^{-n}\).
-  Then the sequences \(a_n, b_n\) are equivalent.
+  Then the sequences \((a_n)_{n = 1}^{\infty}, (b_n)_{n = 1}^{\infty}\) are equivalent.
 \end{prop}
 
-\begin{proof}
-  We need to prove that for every \(\varepsilon > 0\), the two sequences \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close to each other.
-  So we fix an \(\varepsilon > 0\).
-  We need to find an \(N > 0\) such that \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are \(\varepsilon\)-close;
-  in other words, we need to find an \(N > 0\) such that
+\begin{proof}[\pf{i:5.2.8}]
+  We need to prove that for every \(\varepsilon \in \Q^+\), the two sequences \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close to each other.
+  So we fix an \(\varepsilon \in \Q^+\).
+  We need to find an \(N \in \Z^+\) such that \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are \(\varepsilon\)-close;
+  in other words, we need to find an \(N \in \Z^+\) such that
   \[
-    \abs{a_n - b_n} \leq \varepsilon \text{ for all } n \geq N.
+    \abs{a_n - b_n} \leq \varepsilon \text{ for all } n \in \Z_{\geq N}.
   \]
   However, we have
   \[
     \abs{a_n - b_n} = \abs{(1 + 10^{-n}) - (1 - 10^{-n})} = 2 \times 10^{-n}.
   \]
   Since \(10^{-n}\) is a decreasing function of \(n\) (i.e., \(10^{-m} < 10^{-n}\) whenever \(m > n\);
-  this is easily proven by induction), and \(n \geq N\), we have \(2 \times 10^{-n} \leq 2 \times 10^{-N}\).
+  this is easily proven by induction), and \(n \in \Z_{\geq N}\), we have \(2 \times 10^{-n} \leq 2 \times 10^{-N}\).
   Thus we have
   \[
-    \abs{a_n - b_n} \leq 2 \times 10^{-N} \text{ for all } n \geq N.
+    \abs{a_n - b_n} \leq 2 \times 10^{-N} \text{ for all } n \in \Z_{\geq N}.
   \]
-  Thus in order to obtain \(\abs{a_n - b_n} \leq \varepsilon\) for all \(n \geq N\), it will be sufficient to choose \(N\) so that \(2 \times 10^{-N} \leq \varepsilon\).
+  Thus in order to obtain \(\abs{a_n - b_n} \leq \varepsilon\) for all \(n \in \Z_{\geq N}\), it will be sufficient to choose \(N\) so that \(2 \times 10^{-N} \leq \varepsilon\).
   This is easy to do using logarithms, but we have not yet developed logarithms yet, so we will use a cruder method.
-  First, we observe \(10^N\) is always greater than \(N\) for any \(N \geq 1\) (see \cref{i:ex:4.3.5}).
+  First, we observe \(10^N\) is always greater than \(N\) for any \(N \in \Z^+\) (see \cref{i:ex:4.3.5}).
   Thus \(10^{-N} \leq 1 / N\), and so \(2 \times 10^{-N} \leq 2 / N\).
   Thus to get \(2 \times 10^{-N} \leq \varepsilon\), it will suffice to choose \(N\) so that \(2 / N \leq \varepsilon\), or equivalently that \(N \geq 2 / \varepsilon\).
   But by \cref{i:4.4.1} we can always choose such an \(N\), and the claim follows.
@@ -114,63 +125,71 @@
 \exercisesection
 
 \begin{ex}\label{i:ex:5.2.1}
-  Show that if \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are equivalent sequences of rationals, then \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence iff \((b_n)_{n = 1}^{\infty}\) is a Cauchy sequence.
+  Show that if \((a_n)_{n = m}^{\infty}\) and \((b_n)_{n = m}^{\infty}\) are equivalent sequences of rationals, then \((a_n)_{n = m}^{\infty}\) is a Cauchy sequence iff \((b_n)_{n = m}^{\infty}\) is a Cauchy sequence.
 \end{ex}
 
-\begin{proof}
-  Let \(j, k \in \Z^+\).
-  Since \((a_n)_{n = 1}^\infty = (b_n)_{n = 1}^\infty\), by \cref{i:5.2.6} we have
+\begin{proof}[\pf{i:ex:5.2.1}]
+  First suppose that \((a_n)_{n = m}^\infty\) is a Cauchy sequence.
+  Let \(\varepsilon \in \Q^+\).
+  Since \((a_n)_{n = m}^\infty, (b_n)_{n = m}^\infty\) are equivalent, by \cref{i:5.2.6} we have
   \[
-    \forall \varepsilon \in \Q^+, \exists N_1 \in \Z^+ : \forall n \geq N_1, \abs{a_n - b_n} \leq \dfrac{\varepsilon}{3}.
+    \exists N_1 \in \Z_{\geq m} : \forall n \in \Z_{\geq N_1}, \abs{a_n - b_n} \leq \dfrac{\varepsilon}{3}.
   \]
+  Fix such \(N_1\).
+  Since \((a_n)_{n = m}^\infty\) is a Cauchy sequence, by \cref{i:5.1.8} we have
+  \[
+    \exists N_2 \in \Z_{\geq m} : \forall j, k \in \Z_{\geq N}, \abs{a_j - a_k} \leq \dfrac{\varepsilon}{3}.
+  \]
+  Fix such \(N_2\).
+  Now let \(N = \max(N_1, N_2)\).
+  By \cref{i:4.1.11}(f) we know that \(N\) is well-defined.
   Then we have
   \begin{align*}
-             & (a_n)_{n = 1}^\infty \text{ is a Cauchy sequence}                                                                  \\
-    \implies & \exists N_2 \in \Z^+ : \forall j, k \geq N,                                                                        \\
-             & \abs{a_j - a_k} \leq \dfrac{\varepsilon}{3}                                                 &  & \by{i:5.1.8}      \\
-    \implies & \exists N = \max(N_1, N_2) \in \Z^+ : \forall j, k \geq N,                                  &  & \by{i:2.2.13}     \\
-             & \abs{a_j - a_k} \leq \dfrac{\varepsilon}{3}                                                                        \\
-    \implies & \exists N = \max(N_1, N_2) \in \Z^+ : \forall j, k \geq N,                                                         \\
-             & \abs{a_j - a_k} + \abs{a_j - b_j} + \abs{a_k - b_k}                                                                \\
-             & \leq \dfrac{\varepsilon}{3} + \dfrac{\varepsilon}{3} + \dfrac{\varepsilon}{3} = \varepsilon &  & \by{i:4.2.9}[c,d] \\
-    \implies & \exists N = \max(N_1, N_2) \in \Z^+ : \forall j, k \geq N,                                                         \\
-             & \abs{a_j - a_k} + \abs{b_j - a_j} + \abs{a_k - b_k} \leq \varepsilon                        &  & \by{i:4.3.3}[f]   \\
-    \implies & \exists N = \max(N_1, N_2) \in \Z^+ : \forall j, k \geq N,                                                         \\
-             & \abs{b_j - b_k} = \abs{a_j - a_k + b_j - a_j + a_k - b_k}                                                          \\
-             & \leq \abs{a_j - a_k} + \abs{b_j - a_j} + \abs{a_k - b_k} \leq \varepsilon                   &  & \by{i:4.3.3}[b]   \\
-    \implies & (b_n)_{n = 1}^\infty \text{ is a Cauchy sequence}.                                          &  & \by{i:5.1.8}
+    \forall j, k \in \Z_{\geq N}, \abs{b_j - b_k} & = \abs{a_j - a_k + b_j - a_j + a_k - b_k}                                                                           \\
+                                                  & \leq \abs{a_j - a_k} + \abs{a_j - b_j} + \abs{a_k - b_k}                                     &  & \by{i:4.3.3}[b]   \\
+                                                  & \leq \dfrac{\varepsilon}{3} + \dfrac{\varepsilon}{3} + \dfrac{\varepsilon}{3} = \varepsilon. &  & \by{i:4.2.9}[c,d]
   \end{align*}
-  Using similar arguments we can show that \((b_n)_{n = 1}^\infty\) is a Cauchy sequence implies \((a_n)_{n = 1}^\infty\) is a Cauchy sequence.
-  Thus we conclude that \((a_n)_{n = 1}^\infty\) is a Cauchy sequence iff \((b_n)_{n = 1}^\infty\) is a Cauchy sequence.
+  Since \(\varepsilon\) is arbitrary, we see that
+  \[
+    \forall \varepsilon \in \Q^+, \exists N \in \Z_{\geq m} : \forall j, k \in \Z_{\geq N}, \abs{b_j - b_k} \leq \varepsilon.
+  \]
+  By \cref{i:5.1.8} this means \((b_n)_{n = m}^\infty\) is a Cauchy sequence.
+
+  Using similar arguments we can show that \((b_n)_{n = m}^\infty\) is a Cauchy sequence implies \((a_n)_{n = m}^\infty\) is a Cauchy sequence.
+  Thus we conclude that \((a_n)_{n = m}^\infty\) is a Cauchy sequence iff \((b_n)_{n = m}^\infty\) is a Cauchy sequence.
 \end{proof}
 
 \begin{ex}\label{i:ex:5.2.2}
-  Let \(\varepsilon > 0\).
-  Show that if \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close, then \((a_n)_{n = 1}^{\infty}\) is bounded iff \((b_n)_{n = 1}^{\infty}\) is bounded.
+  Let \(\varepsilon \in \Q^+\).
+  Show that if \((a_n)_{n = m}^{\infty}\) and \((b_n)_{n = m}^{\infty}\) are eventually \(\varepsilon\)-close, then \((a_n)_{n = m}^{\infty}\) is bounded iff \((b_n)_{n = m}^{\infty}\) is bounded.
 \end{ex}
 
-\begin{proof}
-  Since \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close, by \cref{i:5.2.3} we have
+\begin{proof}[\pf{i:ex:5.2.2}]
+  First suppose that \((a_n)_{n = m}^\infty\) is bounded.
+  Since \((a_n)_{n = m}^{\infty}\) and \((b_n)_{n = m}^{\infty}\) are eventually \(\varepsilon\)-close, by \cref{i:5.2.3} we have
   \[
-    \exists N \in \Z^+ : \forall n \geq N, \abs{a_n - b_n} \leq \varepsilon.
+    \exists N \in \Z_{\geq m} : \forall n \in \Z_{\geq N}, \abs{a_n - b_n} \leq \varepsilon.
   \]
+  Fix such \(N\).
+  Since \((a_n)_{n = m}^\infty\) is bounded, by \cref{i:5.1.12} there exists some \(M \in \Q_{\geq 0}\) such that \(\abs{a_n} \leq M\) for all \(n \in \Z_{\geq m}\).
   Then we have
   \begin{align*}
-             & (a_n)_{n = 1}^\infty \text{ is bounded}                                                                            \\
-    \implies & \exists M \in \Q \setminus \Q^- : \forall n \geq 1, \abs{a_n} \leq M                        &  & \by{i:5.1.12}     \\
-    \implies & \exists M \in \Q \setminus \Q^- : \forall n \geq \max(1, N), \abs{a_n} \leq M               &  & \by{i:2.2.13}     \\
-    \implies & \exists M \in \Q \setminus \Q^- : \forall n \geq \max(1, N), \abs{-a_n} \leq M              &  & \by{i:4.3.3}[d]   \\
-    \implies & \exists M \in \Q \setminus \Q^- : \forall n \geq \max(1, N),                                                       \\
-             & \abs{-a_n} + \abs{a_n - b_n} \leq M + \varepsilon                                           &  & \by{i:4.2.9}[c,d] \\
-    \implies & \exists M \in \Q \setminus \Q^- : \forall n \geq \max(1, N),                                                       \\
-             & \abs{-a_n + a_n - b_n} \leq \abs{-a_n} + \abs{a_n - b_n} \leq M + \varepsilon               &  & \by{i:4.3.3}[b]   \\
-    \implies & \exists M \in \Q \setminus \Q^- : \forall n \geq \max(1, N),                                                       \\
-             & \abs{-b_n} \leq M + \varepsilon                                                             &  & \by{i:4.2.4}      \\
-    \implies & \exists M \in \Q \setminus \Q^- : \forall n \geq \max(1, N), \abs{b_n} \leq M + \varepsilon &  & \by{i:4.3.3}[d]   \\
-    \implies & \exists M \in \Q \setminus \Q^- : \forall n \geq 1,                                                                \\
-             & \abs{b_n} \leq M + \varepsilon + \max_{1 \leq n \leq N - 1}\set{\abs{b_n}}                  &  & \by{i:5.1.14}     \\
-    \implies & (a_n)_{n = 1}^\infty \text{ is bounded}.                                                    &  & \by{i:5.1.12}
+    \forall n \in \Z_{\geq N}, \abs{b_n} & = \abs{-b_n}                     &  & \by{i:4.3.3}[d]   \\
+                                         & = \abs{a_n - b_n + a_n}                                 \\
+                                         & \leq \abs{a_n - b_n} + \abs{a_n} &  & \by{i:4.3.3}[b]   \\
+                                         & \leq \varepsilon + M.            &  & \by{i:4.2.9}[c,d]
   \end{align*}
-  Using similar arguments we can show that \((b_n)_{n = 1}^\infty\) is bounded implies \((a_n)_{n = 1}^\infty\) is bounded.
-  Thus we conclude that \((a_n)_{n = 1}^\infty\) is bounded iff \((b_n)_{n = 1}^\infty\) is bounded.
+  Thus \((b_n)_{n = N}^\infty\) is bounded by \(\varepsilon + M\).
+  Now we split into two cases:
+  \begin{itemize}
+    \item If \(N = m\), then we see that \((b_n)_{n = m}^\infty\) is bounded by \(\varepsilon + M\).
+    \item If \(N \neq m\), then we must have \(m < N\).
+          By \cref{i:5.1.14} we know that the finite rational sequence \((b_n)_{n = m}^{N - 1}\) is bounded by some \(M' \in \Q_{\geq 0}\).
+          So both \((b_n)_{n = m}^{N - 1}\) and \((b_n)_{n = N}^\infty\) are bounded by \(M' + \varepsilon + M\).
+          Thus \((b_n)_{n = m}^\infty\) is bounded by \(M' + \varepsilon + M\).
+  \end{itemize}
+  From all cases above we see that \((b_n)_{n = m}^\infty\) is bounded.
+
+  Using similar arguments we can show that \((b_n)_{n = m}^\infty\) is bounded implies \((a_n)_{n = m}^\infty\) is bounded.
+  Thus we conclude that \((a_n)_{n = m}^\infty\) is bounded iff \((b_n)_{n = m}^\infty\) is bounded.
 \end{proof}
