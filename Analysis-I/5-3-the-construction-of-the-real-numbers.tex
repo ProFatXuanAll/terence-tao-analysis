@@ -1,32 +1,61 @@
 \section{The construction of the real numbers}\label{i:sec:5.3}
 
 \begin{defn}[Real numbers]\label{i:5.3.1}
-  A \emph{real number} is defined to be an object of the form \(\text{LIM}_{n \to \infty} a_n\), where \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence of rational numbers.
-  Two real numbers \(\text{LIM}_{n \to \infty} a_n\) an and \(\text{LIM}_{n \to \infty} b_n\) are said to be equal iff \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are equivalent Cauchy sequences.
+  A \emph{real number} is defined to be an object of the form \(\LIM_{n \to \infty} a_n\), where \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence of rational numbers.
+  Two real numbers \(\LIM_{n \to \infty} a_n\) and \(\LIM_{n \to \infty} b_n\) are said to be equal iff \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are equivalent rational Cauchy sequences.
   The set of all real numbers is denoted \(\R\).
 \end{defn}
 
 \begin{note}
-  We will refer to \(\text{LIM}_{n \to \infty} a_n\) as the \emph{formal limit} of the sequence \((a_n)_{n = 1}^{\infty}\).
+  We will refer to \(\LIM_{n \to \infty} a_n\) as the \emph{formal limit} of the sequence \((a_n)_{n = 1}^{\infty}\).
   Later on we will define a genuine notion of limit, and show that the formal limit of a Cauchy sequence is the same as the limit of that sequence;
   after that, we will not need formal limits ever again.
 \end{note}
 
 \setcounter{thm}{2}
 \begin{prop}[Formal limits are well-defined]\label{i:5.3.3}
-  Let
-  \[
-    x = \text{LIM}_{n \to \infty} a_n, y = \text{LIM}_{n \to \infty} b_n, z = \text{LIM}_{n \to \infty} c_n
-  \]
-  be real numbers.
+  Let \(x = \LIM_{n \to \infty} a_n, y = \LIM_{n \to \infty} b_n, z = \LIM_{n \to \infty} c_n\) be real numbers.
   Then, with the above definition of equality for real numbers, we have \(x = x\).
   Also, if \(x = y\), then \(y = x\).
   Finally, if \(x = y\) and \(y = z\), then \(x = z\).
 \end{prop}
 
-\begin{proof}
-  By \cref{i:ac:5.2.1} we know that the equality of sequence are well-defined.
-  Since every Cauchy sequence is a sequence, we know that the Formal limits are well-defined.
+\begin{proof}[\pf{i:5.3.3}]
+  Let \((a_n)_{n = 1}^\infty, (b_n)_{n = 1}^\infty, (c_n)_{n = 1}^\infty\) be rational Cauchy sequences such that \(x = \LIM_{n \to \infty} a_n, y = \LIM_{n \to \infty} b_n, z = \LIM_{n \to \infty} c_n\), respectively.
+  Let \(\equiv\) denote the equivalence of rational Cauchy sequences as defined in \cref{i:5.2.6}.
+  First we show that the equality defined in \cref{i:5.3.1} is reflexive.
+  This is true since
+  \begin{align*}
+             & (a_n)_{n = 1}^\infty \equiv (a_n)_{n = 1}^\infty           &  & \by{i:ac:5.2.1} \\
+    \implies & x = \LIM_{n \to \infty} a_n = \LIM_{n \to \infty} a_n = x. &  & \by{i:5.3.1}
+  \end{align*}
+
+  Next we show that the equality defined in \cref{i:5.3.1} is symmetric.
+  Suppose that \(x = y\).
+  Then we have
+  \begin{align*}
+             & x = \LIM_{n \to \infty} a_n = \LIM_{n \to \infty} b_n = y                       \\
+    \implies & (a_n)_{n = 1}^\infty \equiv (b_n)_{n = 1}^\infty           &  & \by{i:5.3.1}    \\
+    \implies & (b_n)_{n = 1}^\infty \equiv (a_n)_{n = 1}^\infty           &  & \by{i:ac:5.2.1} \\
+    \implies & y = \LIM_{n \to \infty} b_n = \LIM_{n \to \infty} a_n = x. &  & \by{i:5.3.1}
+  \end{align*}
+  Thus the equality defined in \cref{i:5.3.1} is symmetric.
+
+  Finally we show that the equality defined in \cref{i:5.3.1} is transitive.
+  Suppose that \(x = y\) and \(y = z\).
+  Then we have
+  \begin{align*}
+             & \begin{dcases}x = \LIM_{n \to \infty} a_n = \LIM_{n \to \infty} b_n = y \\
+                 y = \LIM_{n \to \infty} b_n = \LIM_{n \to \infty} c_n = z
+               \end{dcases}                         \\
+    \implies & \begin{dcases}
+                 (a_n)_{n = 1}^\infty \equiv (b_n)_{n = 1}^\infty \\
+                 (b_n)_{n = 1}^\infty \equiv (c_n)_{n = 1}^\infty \\
+               \end{dcases}                        &  & \by{i:5.3.1}                                           \\
+    \implies & (a_n)_{n = 1}^\infty \equiv (c_n)_{n = 1}^\infty                           &  & \by{i:ac:5.2.1} \\
+    \implies & x = \LIM_{n \to \infty} a_n = \LIM_{n \to \infty} c_n = z.                 &  & \by{i:5.3.1}
+  \end{align*}
+  Thus the equality defined in \cref{i:5.3.1} is transitive.
 \end{proof}
 
 \begin{note}
@@ -36,19 +65,19 @@
 \end{note}
 
 \begin{defn}[Addition of reals]\label{i:5.3.4}
-  Let \(x = \text{LIM}_{n \to \infty} a_n\) and \(y = \text{LIM}_{n \to \infty} b_n\) be real numbers.
-  Then we define the sum \(x + y\) to be \(x + y \coloneqq \text{LIM}_{n \to \infty} (a_n + b_n)\).
+  Let \(x = \LIM_{n \to \infty} a_n\) and \(y = \LIM_{n \to \infty} b_n\) be real numbers.
+  Then we define the sum \(x + y\) to be \(x + y \coloneqq \LIM_{n \to \infty} (a_n + b_n)\).
 \end{defn}
 
 \setcounter{thm}{5}
 \begin{lem}[Sum of Cauchy sequences is Cauchy]\label{i:5.3.6}
-  Let \(x = \text{LIM}_{n \to \infty} a_n\) and \(y = \text{LIM}_{n \to \infty} b_n\) be real numbers.
+  Let \(x = \LIM_{n \to \infty} a_n\) and \(y = \LIM_{n \to \infty} b_n\) be real numbers.
   Then \(x + y\) is also a real number
   (i.e., \((a_n + b_n)_{n = 1}^{\infty}\) is a Cauchy sequence of rationals).
 \end{lem}
 
-\begin{proof}
-  We need to show that for every \(\varepsilon > 0\), the sequence \((a_n + b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady.
+\begin{proof}[\pf{i:5.3.6}]
+  We need to show that for every \(\varepsilon \in \Q^+\), the sequence \((a_n + b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady.
   Now from hypothesis we know that \((a_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady, and \((b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady, but it turns out that this is not quite enough
   (this can be used to imply that \((a_n + b_n)_{n = 1}^{\infty}\) is eventually \(2\varepsilon\)-steady, but that's not what we want).
   So we need to do a little trick, which is to play with the value of \(\varepsilon\).
@@ -58,31 +87,27 @@
   Similarly, the sequence \((b_n)_{n = 1}^{\infty}\) is also eventually \(\varepsilon / 2\)-steady.
   This will turn out to be enough to conclude that \((a_n + b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady.
 
-  Since \((a_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon / 2\)-steady, we know that there exists an \(N \geq 1\) such that \((a_n)_{n = N}^{\infty}\) is \(\varepsilon / 2\)-steady, i.e., \(a_n\) and \(a_m\) are \(\varepsilon / 2\)-close for every \(n, m \geq N\).
-  Similarly there exists an \(M \geq 1\) such that \((b_n)_{n = M}^{\infty}\) is \(\varepsilon / 2\)-steady, i.e., \(b_n\) and \(b_m\) are \(\varepsilon / 2\)-close for every \(n, m \geq M\).
+  Since \((a_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon / 2\)-steady, we know that there exists an \(N \in \Z^+\) such that \((a_n)_{n = N}^{\infty}\) is \(\varepsilon / 2\)-steady, i.e., \(a_n\) and \(a_m\) are \(\varepsilon / 2\)-close for every \(n, m \in \Z_{\geq N}\).
+  Similarly there exists an \(M \in \Z^+\) such that \((b_n)_{n = M}^{\infty}\) is \(\varepsilon / 2\)-steady, i.e., \(b_n\) and \(b_m\) are \(\varepsilon / 2\)-close for every \(n, m \in \Z_{\geq M}\).
 
   Let \(\max(N, M)\) be the larger of \(N\) and \(M\)
   (we know from \cref{i:2.2.13} that one has to be greater than or equal to the other).
-  If \(n, m \geq \max(N, M)\), then we know that \(a_n\) and \(a_m\) are \(\varepsilon / 2\)-close, and \(b_n\) and \(b_m\) are \(\varepsilon / 2\)-close, and so by \cref{i:4.3.7} we see that \(a_n + b_n\) and \(a_m + b_m\) are \(\varepsilon\)-close for every \(n, m \geq \max(N, M)\).
+  If \(n, m \geq \max(N, M)\), then we know that \(a_n\) and \(a_m\) are \(\varepsilon / 2\)-close, and \(b_n\) and \(b_m\) are \(\varepsilon / 2\)-close, and so by \cref{i:4.3.7}(d) we see that \(a_n + b_n\) and \(a_m + b_m\) are \(\varepsilon\)-close for every \(n, m \geq \max(N, M)\).
   This implies that the sequence \((a_n + b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady, as desired.
 \end{proof}
 
 \begin{lem}[Sums of equivalent Cauchy sequences are equivalent]\label{i:5.3.7}
-  Let
-  \[
-    x = \text{LIM}_{n \to \infty} a_n, y = \text{LIM}_{n \to \infty} b_n, x' = \text{LIM}_{n \to \infty} a'_n
-  \]
-  be real numbers.
+  Let \(x = \LIM_{n \to \infty} a_n, y = \LIM_{n \to \infty} b_n, x' = \LIM_{n \to \infty} a_n'\) be real numbers.
   Suppose that \(x = x'\).
   Then we have \(x + y = x' + y\).
 \end{lem}
 
-\begin{proof}
-  Since \(x\) and \(x'\) are equal, we know that the Cauchy sequences \((a_n)_{n = 1}^{\infty}\) and \((a'_n)_{n = 1}^{\infty}\) are equivalent, so in other words they are eventually \(\varepsilon\)-close for each \(\varepsilon > 0\).
-  We need to show that the sequences \((a_n + b_n)_{n = 1}^{\infty}\) and \((a'_n + b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close for each \(\varepsilon > 0\).
-  But we already know that there is an \(N \geq 1\) such that \((a_n)_{n = N}^{\infty}\) and \((a'_n)_{n = N}^{\infty}\) are \(\varepsilon\)-close, i.e., that \(a_n\) and \(a'_n\) are \(\varepsilon\)-close for each \(n \geq N\).
-  Since \(b_n\) is of course \(0\)-close to \(b_n\) (where we extend the notion of \(\varepsilon\)-closeness to include \(\varepsilon = 0\) in the obvious fashion), we thus see from \cref{i:4.3.7} (extended in the obvious manner to the \(\delta = 0\) case) that \(a_n + b_n\) and \(a'_n + b_n\) are \(\varepsilon\)-close for each \(n \geq N\).
-  This implies that \((a_n + b_n)_{n = 1}^{\infty}\) and \((a'_n + b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close for each \(\varepsilon > 0\), and we are done.
+\begin{proof}[\pf{i:5.3.7}]
+  Since \(x\) and \(x'\) are equal, we know that the rational Cauchy sequences \((a_n)_{n = 1}^{\infty}\) and \((a_n')_{n = 1}^{\infty}\) are equivalent, so in other words they are eventually \(\varepsilon\)-close for each \(\varepsilon \in \Q^+\).
+  We need to show that the sequences \((a_n + b_n)_{n = 1}^{\infty}\) and \((a_n' + b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close for each \(\varepsilon \in \Q^+\).
+  But we already know that there is an \(N \in \Z^+\) such that \((a_n)_{n = N}^{\infty}\) and \((a_n')_{n = N}^{\infty}\) are \(\varepsilon\)-close, i.e., that \(a_n\) and \(a_n'\) are \(\varepsilon\)-close for each \(n \in \Z_{\geq N}\).
+  Since \(b_n\) is of course \(0\)-close to \(b_n\), we thus see from \cref{i:4.3.7}(d) that \(a_n + b_n\) and \(a_n' + b_n\) are \(\varepsilon\)-close for each \(n \in \Z_{\geq N}\).
+  This implies that \((a_n + b_n)_{n = 1}^{\infty}\) and \((a_n' + b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close for each \(\varepsilon \in \Q^+\), and we are done.
 \end{proof}
 
 \begin{rmk}\label{i:5.3.8}
@@ -91,95 +116,133 @@
 \end{rmk}
 
 \begin{defn}[Multiplication of reals]\label{i:5.3.9}
-  Let \(x = \text{LIM}_{n \to \infty} a_n\) and \(y = \text{LIM}_{n \to \infty} b_n\) be real numbers.
-  Then we define the product \(xy\) to be \(xy \coloneqq \text{LIM}_{n \to \infty} a_n b_n\).
+  Let \(x = \LIM_{n \to \infty} a_n\) and \(y = \LIM_{n \to \infty} b_n\) be real numbers.
+  Then we define the product \(xy\) to be \(xy \coloneqq \LIM_{n \to \infty} a_n b_n\).
 \end{defn}
 
 \begin{prop}[Multiplication is well defined]\label{i:5.3.10}
-  Let
-  \[
-    x = \text{LIM}_{n \to \infty} a_n, y = \text{LIM}_{n \to \infty} b_n, x' = \text{LIM}_{n \to \infty} a'_n
-  \]
-  be real numbers.
+  Let \(x = \LIM_{n \to \infty} a_n, y = \LIM_{n \to \infty} b_n, x' = \LIM_{n \to \infty} a_n'\) be real numbers.
   Then \(xy\) is also a real number.
   Furthermore, if \(x = x'\), then \(xy = x'y\).
 \end{prop}
 
-\begin{proof}
-  We first show that \(x, y \in \R \implies xy \in \R\).
-  Let \(\varepsilon \in \Q^+\) and let \(j, k \in \Z^+\).
-  Since \((a_n)_{n = 1}^\infty\) and \((b_n)_{n = 1}^\infty\) are Cauchy sequence, by \cref{i:5.1.15} we know that \((a_n)_{n = 1}^\infty\) and \((b_n)_{n = 1}^\infty\) are bounded by some \(M_1, M_2 \in \Q \setminus \Q^-\).
+\begin{proof}[\pf{i:5.3.10}]
+  Let \((a_n)_{n = 1}^\infty, (b_n)_{n = 1}^\infty, (a_n')_{n = 1}^\infty\) be rational Cauchy sequences where \(x = \LIM_{n \to \infty} a_n\), \(y = \LIM_{n \to \infty} b_n\) and \(x' = \LIM_{n \to \infty} a_n'\).
+  We first show that \(xy \in \R\).
+  Let \(\varepsilon \in \Q^+\).
+  Since \((a_n)_{n = 1}^\infty\) and \((b_n)_{n = 1}^\infty\) are rational Cauchy sequences, by \cref{i:5.1.15} we know that \((a_n)_{n = 1}^\infty\) and \((b_n)_{n = 1}^\infty\) are bounded by some \(M_1, M_2 \in \Q_{\geq 0}\).
   Then by \cref{i:4.2.9}(a) we know that \((a_n)_{n = 1}^\infty\) and \((b_n)_{n = 1}^\infty\) are bounded by \(M = \max(M_1, M_2) + 1\).
-  Since \(x = \text{LIM}_{n \to \infty} a_n\) and \(y = \text{LIM}_{n \to \infty} b_n\), by \cref{i:5.1.8} we have
+  Clearly \(M \in \Q^+\), so \(\dfrac{\varepsilon}{2M} \in \Q^+\).
+  Then by \cref{i:5.1.8} we have
   \begin{align*}
-     & \exists N_1 \in \Z^+ : \forall j, k \geq N_1, \abs{a_j - a_k} \leq \varepsilon; \\
-     & \exists N_2 \in \Z^+ : \forall j, k \geq N_2, \abs{b_j - b_k} \leq \varepsilon.
-  \end{align*}
-  In particular, we have
-  \begin{align*}
-     & \exists N_1 \in \Z^+ : \forall j, k \geq N_1, \abs{a_j - a_k} \leq \dfrac{\varepsilon}{2M}; \\
-     & \exists N_2 \in \Z^+ : \forall j, k \geq N_2, \abs{b_j - b_k} \leq \dfrac{\varepsilon}{2M}.
+     & \exists N_1 \in \Z^+ : \forall j, k \in \Z_{\geq N_1}, \abs{a_j - a_k} \leq \dfrac{\varepsilon}{2M}; \\
+     & \exists N_2 \in \Z^+ : \forall j, k \in \Z_{\geq N_2}, \abs{b_j - b_k} \leq \dfrac{\varepsilon}{2M}.
   \end{align*}
   Let \(N = \max(N_1, N_2)\).
-  Such \(N\) is well-defined since \cref{i:2.2.13}.
-  Then \(\forall j, k \geq N\), we have
-  \begin{align*}
-    \abs{a_j b_j - a_k b_k} & = \abs{a_j b_j - a_j b_k + a_j b_k - a_k b_k}              &  & \by{i:4.2.4}      \\
-                            & \leq \abs{a_j b_j - a_j b_k} + \abs{a_j b_k - a_k b_k}     &  & \by{i:4.3.3}[b]   \\
-                            & = \abs{a_j} \abs{b_j - b_k} + \abs{b_k} \abs{a_j - a_k}    &  & \by{i:4.3.3}[d]   \\
-                            & \leq M \dfrac{\varepsilon}{2M} + M \dfrac{\varepsilon}{2M} &  & \by{i:4.2.9}[c,e] \\
-                            & = \varepsilon.
-  \end{align*}
-  Thus by \cref{i:5.1.8} \((a_n b_n)_{n = 1}^\infty\) is a Cauchy sequence and by \cref{i:5.3.1} \(xy \in \R\).
-
-  Now we show that \(x = x' \implies xy = xy'\).
-  Since \((a_n)_{n = 1}^\infty\), \((a_n')_{n = 1}^\infty\), \((b_n)_{n = 1}^\infty\) are Cauchy sequence, by \cref{i:5.1.15} we know that \((a_n)_{n = 1}^\infty\) and \((a_n')_{n = 1}^\infty\) are bounded by some \(M_1, M_2 M_3 \in \Q \setminus \Q^-\).
-  Then by \cref{i:4.2.9}(a) we know that \((a_n)_{n = 1}^\infty\), \((a_n')_{n = 1}^\infty\), \((b_n)_{n = 1}^\infty\) are bounded by \(M = \max(M_1, M_2, M_3) + 1\).
-  Since \(x = x'\), by \cref{i:5.2.6} we know that
-  \[
-    \forall \varepsilon \in \Q^+, \exists N \in \Z^+ : \forall n \geq N, \abs{a_n - a_n'} \leq \varepsilon.
-  \]
-  In particular, we have
-  \[
-    \forall \varepsilon \in \Q^+, \exists N \in \Z^+ : \forall n \geq N, \abs{a_n - a_n'} \leq \dfrac{\varepsilon}{M}.
-  \]
+  Clearly \(N \in \Z^+\).
   Then we have
   \begin{align*}
-             & \abs{a_n - a_n'} \leq \dfrac{\varepsilon}{M}                                            \\
-    \implies & \abs{b_n} \abs{a_n - a_n'} \leq \abs{b_n} \dfrac{\varepsilon}{M} &  & \by{i:4.2.9}[c,e] \\
-    \implies & \abs{b_n} \abs{a_n - a_n'} \leq M \dfrac{\varepsilon}{M}         &  & \by{i:4.2.9}[c,e] \\
-    \implies & \abs{b_n} \abs{a_n - a_n'} \leq \varepsilon                                             \\
-    \implies & \abs{b_n (a_n - a_n')} \leq \varepsilon                          &  & \by{i:4.3.3}[d]   \\
-    \implies & \abs{a_n b_n - a_n' b_n} \leq \varepsilon                        &  & \by{i:4.2.4}
+    \forall j, k \in \Z_{\geq N}, \abs{a_j b_j - a_k b_k} & = \abs{a_j b_j - a_j b_k + a_j b_k - a_k b_k}              &  & \by{i:4.2.4}      \\
+                                                          & \leq \abs{a_j b_j - a_j b_k} + \abs{a_j b_k - a_k b_k}     &  & \by{i:4.3.3}[b]   \\
+                                                          & = \abs{a_j} \abs{b_j - b_k} + \abs{b_k} \abs{a_j - a_k}    &  & \by{i:4.3.3}[d]   \\
+                                                          & \leq M \dfrac{\varepsilon}{2M} + M \dfrac{\varepsilon}{2M} &  & \by{i:4.2.9}[c,e] \\
+                                                          & = \varepsilon.
   \end{align*}
-  and thus by \cref{i:5.2.6} we have \(xy = x'y\).
+  Since \(\varepsilon\) is arbitrary, we can conclude that
+  \[
+    \forall \varepsilon \in \Q^+, \exists N \in \Z^+ : \forall j, k \in \Z_{\geq N}, \abs{a_j b_j - a_k b_k} \leq \varepsilon.
+  \]
+  Thus by \cref{i:5.1.8} \((a_n b_n)_{n = 1}^\infty\) is a rational Cauchy sequence and by \cref{i:5.3.1} \(xy \in \R\).
+
+  Now we show that \(x = x' \implies xy = xy'\).
+  Let \(\varepsilon \in \Q^+\).
+  Since \((a_n)_{n = 1}^\infty, (a_n')_{n = 1}^\infty, (b_n)_{n = 1}^\infty\) are rational Cauchy sequences, by \cref{i:5.1.15} we know that \((a_n)_{n = 1}^\infty\) and \((a_n')_{n = 1}^\infty\) are bounded by some \(M_1, M_2, M_3 \in \Q_{\geq 0}\).
+  Then by \cref{i:4.2.9}(a) we know that \((a_n)_{n = 1}^\infty, (a_n')_{n = 1}^\infty, (b_n)_{n = 1}^\infty\) are bounded by \(M = \max(M_1, M_2, M_3) + 1\).
+  Clearly \(M \in \Q^+\), so \(\dfrac{\varepsilon}{M} \in \Q^+\).
+  Since \(x = x'\), by \cref{i:5.2.6} we know that
+  \[
+    \exists N \in \Z^+ : \forall n \in \Z_{\geq N}, \abs{a_n - a_n'} \leq \dfrac{\varepsilon}{M}.
+  \]
+  Fix such \(N\).
+  Then we have
+  \begin{align*}
+             & \forall n \in \Z_{\geq N}, \abs{a_n - a_n'} \leq \dfrac{\varepsilon}{M}                                                                                        \\
+    \implies & \forall n \in \Z_{\geq N}, \abs{b_n} \abs{a_n - a_n'} \leq \abs{b_n} \dfrac{\varepsilon}{M} \leq M \dfrac{\varepsilon}{M} = \varepsilon &  & \by{i:4.2.9}[c,e] \\
+    \implies & \forall n \in \Z_{\geq N}, \abs{b_n (a_n - a_n')} \leq \varepsilon                                                                      &  & \by{i:4.3.3}[d]   \\
+    \implies & \forall n \in \Z_{\geq N}, \abs{a_n b_n - a_n' b_n} \leq \varepsilon.                                                                   &  & \by{i:4.2.4}
+  \end{align*}
+  Since \(\varepsilon\) is arbitrary, we conclude that
+  \[
+    \forall \varepsilon \in \Q^+, \exists N \in \Z^+ : \forall n \in \Z_{\geq N}, \abs{a_n b_n - a_n' b_n} \leq \varepsilon.
+  \]
+  Thus by \cref{i:5.2.6,i:5.3.9} we have \(xy = x'y\).
 \end{proof}
 
 \begin{note}
   Of course we can prove a similar substitution rule when \(y\) is replaced by a real number \(y'\) which is equal to \(y\).
 \end{note}
 
-\begin{note}
-  At this point we embed the rationals back into the reals, by equating every rational number \(q\) with the real number \(\text{LIM}_{n \to \infty} q\).
+\begin{ac}\label{i:ac:5.3.1}
+  At this point we embed the rationals back into the reals, by equating every rational number \(q\) with the real number \(\LIM_{n \to \infty} q\).
   This embedding is consistent with our definitions of addition and multiplication, since for any rational numbers \(a, b\) we have
-  \begin{align*}
-    (\text{LIM}_{n \to \infty} a) + (\text{LIM}_{n \to \infty} b)      & = \text{LIM}_{n \to \infty} (a + b) \text{ and} \\
-    (\text{LIM}_{n \to \infty} a) \times (\text{LIM}_{n \to \infty} b) & = \text{LIM}_{n \to \infty} (ab);
-  \end{align*}
-  this means that when one wants to add or multiply two rational numbers \(a, b\) it does not matter whether one thinks of these numbers as rationals or as the real numbers \(\text{LIM}_{n \to \infty} a, \text{LIM}_{n \to \infty} b\).
-  Also, this identification of rational numbers and real numbers is consistent with our definitions of equality.
-\end{note}
+  \[
+    \pa{\LIM_{n \to \infty} a} + \pa{\LIM_{n \to \infty} b} = \LIM_{n \to \infty} (a + b) \quad \text{ and } \quad \pa{\LIM_{n \to \infty} a} \times \pa{\LIM_{n \to \infty} b} = \LIM_{n \to \infty} (ab);
+  \]
+  this means that when one wants to add or multiply two rational numbers \(a, b\) it does not matter whether one thinks of these numbers as rationals or as the real numbers \(\LIM_{n \to \infty} a, \LIM_{n \to \infty} b\).
+  Also, this identification of rational numbers and real numbers is consistent with our definitions of equality (\cref{i:ex:5.3.3}).
+\end{ac}
 
-\begin{note}
+\begin{proof}[\pf{i:ac:5.3.1}]
+  First we show that for any \(q \in \Q\), \(\LIM_{n \to \infty} q\) is well-defined.
+  So let \(q \in \Q\).
+  Let \((a_n)_{n = 1}^\infty\) be a sequence where \(a_n = q\) for all \(n \in \Z^+\).
+  Since
+  \begin{align*}
+             & \forall \varepsilon \in \Q^+, \forall j, k \in \Z^+, \abs{a_j - a_k} = \abs{q - q} = 0 \leq \varepsilon            \\
+    \implies & \forall \varepsilon \in \Q^+, \exists N \in \Z^+ : \forall j, k \in \Z_{\geq N}, \abs{a_j - a_k} \leq \varepsilon,
+  \end{align*}
+  by \cref{i:5.1.8} we see that \((a_n)_{n = 1}^\infty\) is a rational Cauchy sequence.
+  Thus by \cref{i:5.3.1} \(\LIM_{n \to \infty} a_n\) is well-defined.
+  But \(a_n = q\) for all \(n \in \Z^+\), thus \(\LIM_{n \to \infty} q\) is well-defined.
+
+  Next we show that addition and multiplication of rationals (denoted as \(+_\Q, \times_\Q\), respectively) are consistent with addition and multiplication of reals (denoted as \(+_\R, \times_\R\), respectively).
+  Let \(a, b \in \Q\).
+  Then we have
+  \begin{align*}
+    a +_\Q b & = \LIM_{n \to \infty} (a +_\Q b)                             &  & \by{i:ac:5.3.1} \\
+             & = \pa{\LIM_{n \to \infty} a} +_\R \pa{\LIM_{n \to \infty} b} &  & \by{i:5.3.4}    \\
+             & = a +_\R b                                                   &  & \by{i:ac:5.3.1}
+  \end{align*}
+  and
+  \begin{align*}
+    a \times_\Q b & = \LIM_{n \to \infty} (a \times_\Q b)                             &  & \by{i:ac:5.3.1} \\
+                  & = \pa{\LIM_{n \to \infty} a} \times_\R \pa{\LIM_{n \to \infty} b} &  & \by{i:5.3.9}    \\
+                  & = a \times_\R b.                                                  &  & \by{i:ac:5.3.1}
+  \end{align*}
+
+  Now we show that for any \(a, b \in \Q\), we have \(a = b\) iff \(\LIM_{n \to \infty} a = \LIM_{n \to \infty} b\).
+  If \(a = b\), then we have \((a)_{n = 1}^\infty = (b)_{n = 1}^\infty\) and thus by \cref{i:5.3.3} we have \(\LIM_{n \to \infty} a = \LIM_{n \to \infty} b\).
+  So suppose that \(\LIM_{n \to \infty} a = \LIM_{n \to \infty} b\).
+  By \cref{i:ac:5.3.1} this means \((a)_{n = 1}^\infty\) and \((b)_{n = 1}^\infty\) are equivalent rational Cauchy sequences.
+  Then we have
+  \begin{align*}
+             & \forall \varepsilon \in \Q^+, \exists N \in \Z^+ : \forall n \in \N, \abs{a - b} \leq \varepsilon &  & \by{i:5.2.6}    \\
+    \implies & \forall \varepsilon \in \Q^+, \abs{a - b} \leq \varepsilon                                                             \\
+    \implies & a = b.                                                                                            &  & \by{i:4.3.7}[a]
+  \end{align*}
+  Thus we conclude that for any \(a, b \in \Q\), we have \(a = b\) iff \(\LIM_{n \to \infty} a = \LIM_{n \to \infty} b\).
+\end{proof}
+
+\begin{ac}\label{i:ac:5.3.2}
   We can now easily define negation \(-x\) for real numbers \(x\) by the formula
   \[
     -x \coloneqq (-1) \times x,
   \]
-  since \(-1\) is a rational number and is hence real.
-  Note that this is clearly consistent with our negation for rational numbers since we have \(-q = (-1) \times q\) for all rational numbers \(q\).
+  since \(-1\) is a rational number and is hence real (\cref{i:ac:5.3.1}).
+  Note that this is clearly consistent with our negation for rational numbers since we have \(-q = (-1) \times q\) for all rational numbers \(q\) (\cref{i:ac:5.3.1}).
   Also, from our definitions it is clear that
   \[
-    -\text{LIM}_{n \to \infty} a_n = \text{LIM}_{n \to \infty} (-a_n).
+    -\LIM_{n \to \infty} a_n = \LIM_{n \to \infty} (-a_n).
   \]
   Once we have addition and negation, we can define subtraction as usual by
   \[
@@ -187,129 +250,169 @@
   \]
   this implies
   \[
-    \text{LIM}_{n \to \infty} a_n - \text{LIM}_{n \to \infty} b_n = \text{LIM}_{n \to \infty} (a_n - b_n).
+    \LIM_{n \to \infty} a_n - \LIM_{n \to \infty} b_n = \LIM_{n \to \infty} (a_n - b_n).
   \]
-\end{note}
+\end{ac}
+
+\begin{proof}[\pf{i:ac:5.3.2}]
+  First we show that \(-\LIM_{n \to \infty} a_n = \LIM_{n \to \infty} (-a_n)\) for any rational Cauchy sequence \((a_n)_{n = 1}^\infty\).
+  This is true since
+  \begin{align*}
+    -\LIM_{n \to \infty} a_n & = (-1) \times \pa{\LIM_{n \to \infty} a_n}                        &  & \by{i:ac:5.3.2} \\
+                             & = \pa{\LIM_{n \to \infty} -1} \times \pa{\LIM_{n \to \infty} a_n} &  & \by{i:ac:5.3.1} \\
+                             & = \LIM_{n \to \infty} ((-1) \times a_n)                           &  & \by{i:5.3.9}    \\
+                             & = \LIM_{n \to \infty} (-a_n).                                     &  & \by{i:ac:4.2.5}
+  \end{align*}
+
+  Now we show that \(\LIM_{n \to \infty} a_n - \LIM_{n \to \infty} b_n = \LIM_{n \to \infty} (a_n - b_n)\) for any rational Cauchy sequences \((a_n)_{n = 1}^\infty, (b_n)_{n = 1}^\infty\).
+  This is true since
+  \begin{align*}
+    \LIM_{n \to \infty} a_n - \LIM_{n \to \infty} b_n & = \LIM_{n \to \infty} a_n + \pa{-\LIM_{n \to \infty} b_n} &  & \by{i:ac:5.3.2}               \\
+                                                      & = \LIM_{n \to \infty} a_n + \LIM_{n \to \infty} (-b_n)    &  & \text{(from the proof above)} \\
+                                                      & = \LIM_{n \to \infty} (a_n + (-b_n))                      &  & \by{i:5.3.4}                  \\
+                                                      & = \LIM_{n \to \infty} (a_n - b_n).                        &  & \by{i:ac:4.2.4}
+  \end{align*}
+\end{proof}
 
 \begin{prop}\label{i:5.3.11}
   All the laws of algebra from \cref{i:4.1.6} hold not only for the integers, but for the reals as well.
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{i:5.3.11}]
   We illustrate this with one such rule: \(x(y + z) = xy + xz\).
-  Let \(x = \text{LIM}_{n \to \infty} a_n\), \(y = \text{LIM}_{n \to \infty} b_n\), and \(z = \text{LIM}_{n \to \infty} c_n\) be real numbers.
-  Then by definition, \(xy = \text{LIM}_{n \to \infty} a_n b_n\) and \(xz = \text{LIM}_{n \to \infty} a_n c_n\), and so \(xy + xz = \text{LIM}_{n \to \infty} (a_n b_n + a_n c_n)\).
-  A similar line of reasoning shows that \(x(y + z) = \text{LIM}_{n \to \infty} a_n (b_n + c_n)\).
+  Let \(x = \LIM_{n \to \infty} a_n\), \(y = \LIM_{n \to \infty} b_n\), and \(z = \LIM_{n \to \infty} c_n\) be real numbers.
+  Then by definition, \(xy = \LIM_{n \to \infty} a_n b_n\) and \(xz = \LIM_{n \to \infty} a_n c_n\), and so \(xy + xz = \LIM_{n \to \infty} (a_n b_n + a_n c_n)\).
+  A similar line of reasoning shows that \(x(y + z) = \LIM_{n \to \infty} a_n (b_n + c_n)\).
   But we already know that \(a_n (b_n + c_n)\) is equal to \(a_n b_n + a_n c_n\) for the rational numbers \(a_n, b_n, c_n\), and the claim follows.
   The other laws of algebra are proven similarly.
 \end{proof}
 
 \begin{defn}[Sequences bounded away from zero]\label{i:5.3.12}
-  A sequence \(\text{LIM}_{n \to \infty} a_n\) of rational numbers is said to be \emph{bounded away from zero} iff there exists a rational number \(c > 0\) such that \(\abs{a_n} \geq c\) for all \(n \geq 1\).
+  A sequence \((a_n)_{n = m}^\infty\) of rational numbers is said to be \emph{bounded away from zero} iff there exists a \(c \in \Q^+\) such that \(\abs{a_n} \geq c\) for all \(n \in \Z_{\geq m}\).
 \end{defn}
 
 \setcounter{thm}{13}
 \begin{lem}\label{i:5.3.14}
   Let \(x\) be a non-zero real number.
-  Then \(x = \text{LIM}_{n \to \infty} a_n\) for some Cauchy sequence \((a_n)_{n = 1}^{\infty}\) which is bounded away from zero.
+  Then \(x = \LIM_{n \to \infty} a_n\) for some rational Cauchy sequence \((a_n)_{n = 1}^{\infty}\) which is bounded away from zero.
 \end{lem}
 
-\begin{proof}
-  Since \(x\) is real, we know that \(x = \text{LIM}_{n \to \infty} b_n\) for some Cauchy sequence \((b_n)_{n = 1}^{\infty}\).
+\begin{proof}[\pf{i:5.3.14}]
+  Since \(x\) is real, we know that \(x = \LIM_{n \to \infty} b_n\) for some rational Cauchy sequence \((b_n)_{n = 1}^{\infty}\).
   But we are not yet done, because we do not know that \(b_n\) is bounded away from zero.
-  On the other hand, we are given that \(x \neq 0 = \text{LIM}_{n \to \infty} 0\), which means that the sequence \((b_n)_{n = 1}^{\infty}\) is not equivalent to \((0)_{n = 1}^{\infty}\).
-  Thus the sequence \((b_n)_{n = 1}^{\infty}\) cannot be eventually \(\varepsilon\)-close to \((0)_{n = 1}^{\infty}\) for every \(\varepsilon > 0\).
-  Therefore we can find an \(\varepsilon > 0\) such that \((b_n)_{n = 1}^{\infty}\) is not eventually \(\varepsilon\)-close to \((0)_{n = 1}^{\infty}\).
+  On the other hand, we are given that \(x \neq 0 = \LIM_{n \to \infty} 0\), which means that the sequence \((b_n)_{n = 1}^{\infty}\) is not equivalent to \((0)_{n = 1}^{\infty}\).
+  Thus the sequence \((b_n)_{n = 1}^{\infty}\) cannot be eventually \(\varepsilon\)-close to \((0)_{n = 1}^{\infty}\) for every \(\varepsilon \in \Q^+\).
+  Therefore we can find an \(\varepsilon \in \Q^+\) such that \((b_n)_{n = 1}^{\infty}\) is not eventually \(\varepsilon\)-close to \((0)_{n = 1}^{\infty}\).
 
   Let us fix this \(\varepsilon\).
-  We know that \((b_n)_{n = 1}^{\infty}\) is a Cauchy sequence, so it is eventually \(\varepsilon\)-steady.
-  Moreover, it is eventually \(\varepsilon / 2\)-steady, since \(\varepsilon / 2 > 0\).
-  Thus there is an \(N \geq 1\) such that \(\abs{b_n - b_m} \leq \varepsilon / 2\) for all \(n, m \geq N\).
+  We know that \((b_n)_{n = 1}^{\infty}\) is a rational Cauchy sequence, so it is eventually \(\varepsilon\)-steady.
+  Moreover, it is eventually \(\varepsilon / 2\)-steady, since \(\varepsilon / 2 \in \Q^+\).
+  Thus there is an \(N \in \Z^+\) such that \(\abs{b_n - b_m} \leq \varepsilon / 2\) for all \(n, m \in \Z_{\geq N}\).
 
-  On the other hand, we cannot have \(\abs{b_n} \leq \varepsilon\) for all \(n \geq N\), since this would imply that \((b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-close to \((0)_{n = 1}^{\infty}\).
-  Thus there must be some \(n_0 \geq N\) for which \(\abs{b_{n_0}} > \varepsilon\).
-  Since we already know that \(\abs{b_{n_0} - b_n} \leq \varepsilon / 2\) for all \(n \geq N\), we have
+  On the other hand, we cannot have \(\abs{b_n} \leq \varepsilon\) for all \(n \in \Z_{\geq N}\), since this would imply that \((b_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-close to \((0)_{n = 1}^{\infty}\).
+  Thus there must be some \(n_0 \in \Z_{\geq N}\) for which \(\abs{b_{n_0}} > \varepsilon\).
+  Since we already know that \(\abs{b_{n_0} - b_n} \leq \varepsilon / 2\) for all \(n \in \Z_{\geq N}\), we have
   \begin{align*}
-             & \abs{b_{n_0}} - \abs{b_{n_0} - b_n} \geq \varepsilon - \varepsilon / 2 = \varepsilon / 2 &  & \by{i:4.2.9}    \\
-    \implies & \abs{b_{n_0}} - \abs{b_n - b_{n_0}} \geq \varepsilon / 2                                 &  & \by{i:4.3.3}    \\
-    \implies & \abs{b_{n_0} + (b_n - b_{n_0})} \geq \varepsilon / 2                                     &  & \by{i:ac:4.3.1} \\
-    \implies & \abs{b_n} \geq \varepsilon / 2.                                                          &  & \by{i:4.2.4}    \\
+             & \abs{b_{n_0}} - \abs{b_{n_0} - b_n} \geq \varepsilon - \varepsilon / 2 = \varepsilon / 2 &  & \by{i:4.2.9}[c,d] \\
+    \implies & \abs{b_{n_0}} - \abs{b_n - b_{n_0}} \geq \varepsilon / 2                                 &  & \by{i:4.3.3}[d]   \\
+    \implies & \abs{b_{n_0} + (b_n - b_{n_0})} \geq \varepsilon / 2                                     &  & \by{i:ac:4.3.1}   \\
+    \implies & \abs{b_n} \geq \varepsilon / 2.                                                          &  & \by{i:4.2.4}
   \end{align*}
-  Thus conclude from above that \(\abs{b_n} \geq \varepsilon / 2\) for all \(n \geq N\).
+  Thus we conclude from above that \(\abs{b_n} \geq \varepsilon / 2\) for all \(n \in \Z_{\geq N}\).
 
   This almost proves that \((b_n)_{n = 1}^{\infty}\) is bounded away from zero.
   Actually, what it does is show that \((b_n)_{n = 1}^{\infty}\) is \emph{eventually} bounded away from zero.
-  But this is easily fixed, by defining a new sequence \(a_n\), by setting \(a_n \coloneqq \varepsilon / 2\) if \(n < N\) and \(a_n \coloneqq b_n\) if \(n \geq N\).
-  Since \(b_n\) is a Cauchy sequence, it is not hard to verify that \(a_n\) is also a Cauchy sequence which is equivalent to \(b_n\) (because the two sequences are eventually the same), and so \(x = \text{LIM}_{n \to \infty} a_n\).
-  And since \(\abs{b_n} \geq \varepsilon / 2\) for all \(n \geq N\), we know that \(\abs{a_n} \geq \varepsilon / 2\) for all \(n \geq 1\) (splitting into the two cases \(n \geq N\) and \(n < N\) separately).
-  Thus we have a Cauchy sequence which is bounded away from zero (by \(\varepsilon / 2\) instead of \(\varepsilon\), but that's still OK since \(\varepsilon / 2 > 0\)), and which has \(x\) as a formal limit, and so we are done.
+  But this is easily fixed, by defining a new sequence \(a_n\), by setting \(a_n \coloneqq \varepsilon / 2\) if \(n \in \Z_{< N}\) and \(a_n \coloneqq b_n\) if \(n \in \Z_{\geq N}\).
+  Since \(b_n\) is a rational Cauchy sequence, it is not hard to verify that \(a_n\) is also a rational Cauchy sequence which is equivalent to \(b_n\) (because the two sequences are eventually the same), and so \(x = \LIM_{n \to \infty} a_n\).
+  And since \(\abs{b_n} \geq \varepsilon / 2\) for all \(n \in \Z_{\geq N}\), we know that \(\abs{a_n} \geq \varepsilon / 2\) for all \(n \in \Z^+\) (splitting into the two cases \(n \in \Z_{\geq N}\) and \(n \in \Z_{< N}\) separately).
+  Thus we have a rational Cauchy sequence which is bounded away from zero (by \(\varepsilon / 2\) instead of \(\varepsilon\), but that's still OK since \(\varepsilon / 2 \in \Q^+\)), and which has \(x\) as a formal limit, and so we are done.
 \end{proof}
 
 \begin{lem}\label{i:5.3.15}
-  Suppose that \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence which is bounded away from zero.
-  Then the sequence \((a_n^{-1})_{n = 1}^{\infty}\) is also a Cauchy sequence.
+  Suppose that \((a_n)_{n = 1}^{\infty}\) is a rational Cauchy sequence which is bounded away from zero.
+  Then the sequence \((a_n^{-1})_{n = 1}^{\infty}\) is also a rational Cauchy sequence.
 \end{lem}
 
-\begin{proof}
-  Since \((a_n)_{n = 1}^{\infty}\) is bounded away from zero, we know that there is a \(c > 0\) such that \(\abs{a_n} \geq c\) for all \(n \geq 1\).
-  Now we need to show that \((a_n^{-1})_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady for each \(\varepsilon > 0\).
-  Thus let us fix an \(\varepsilon > 0\);
-  our task is now to find an \(N \geq 1\) such that \(\abs{a_n^{-1} - a_m^{-1}} \leq \varepsilon\) for all \(n, m \geq N\).
+\begin{proof}[\pf{i:5.3.15}]
+  Since \((a_n)_{n = 1}^{\infty}\) is bounded away from zero, we know that there is a \(c \in \Q^+\) such that \(\abs{a_n} \geq c\) for all \(n \in \Z^+\).
+  Now we need to show that \((a_n^{-1})_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady for each \(\varepsilon \in \Q^+\).
+  Thus let us fix an \(\varepsilon \in \Q^+\);
+  our task is now to find an \(N \in \Z^+\) such that \(\abs{a_n^{-1} - a_m^{-1}} \leq \varepsilon\) for all \(n, m \in \Z_{\geq N}\).
   But
   \[
     \abs{a_n^{-1} - a_m^{-1}} = \abs{\dfrac{a_m - a_n}{a_m a_n}} \leq \dfrac{\abs{a_m - a_n}}{c^2}
   \]
   (since \(\abs{a_m}, \abs{a_n} \geq c\)), and so to make \(\abs{a_n^{-1} - a_m^{-1}}\) less than or equal to \(\varepsilon\), it will suffice to make \(\abs{a_m - a_n}\) less than or equal to \(c^2 \varepsilon\).
-  But since \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence, and \(c^2 \varepsilon > 0\), we can certainly find an \(N\) such that the sequence \((a_n)_{n = N}^{\infty}\) is \(c^2 \varepsilon\)-steady, i.e., \(\abs{a_m - a_n} \leq c^2 \varepsilon\) for all \(n, m \geq N\).
-  By what we have said above, this shows that \(\abs{a_n^{-1} - a_m^{-1}} \leq \varepsilon\) for all \(m, n \geq N\), and hence the sequence \((a_n^{-1})_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady.
-  Since we have proven this for every \(\varepsilon\), we have that \((a_n^{-1})_{n = 1}^{\infty}\) is a Cauchy sequence, as desired.
+  But since \((a_n)_{n = 1}^{\infty}\) is a rational Cauchy sequence, and \(c^2 \varepsilon \in \Q^+\), we can certainly find an \(N\) such that the sequence \((a_n)_{n = N}^{\infty}\) is \(c^2 \varepsilon\)-steady, i.e., \(\abs{a_m - a_n} \leq c^2 \varepsilon\) for all \(n, m \in \Z_{\geq N}\).
+  By what we have said above, this shows that \(\abs{a_n^{-1} - a_m^{-1}} \leq \varepsilon\) for all \(m, n \in \Z_{\geq N}\), and hence the sequence \((a_n^{-1})_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-steady.
+  Since we have proven this for every \(\varepsilon\), we have that \((a_n^{-1})_{n = 1}^{\infty}\) is a rational Cauchy sequence, as desired.
 \end{proof}
 
 \begin{defn}[Reciprocals of real numbers]\label{i:5.3.16}
   Let \(x\) be a non-zero real number.
-  Let \((a_n)_{n = 1}^{\infty}\) be a Cauchy sequence bounded away from zero such that \(x = \text{LIM}_{n \to \infty} a_n\) (such a sequence exists by \cref{i:5.3.14}).
-  Then we define the reciprocal \(x^{-1}\) by the formula \(x^{-1} \coloneqq \text{LIM}_{n \to \infty} a_n^{-1}\).
+  Let \((a_n)_{n = 1}^{\infty}\) be a rational Cauchy sequence bounded away from zero such that \(x = \LIM_{n \to \infty} a_n\) (such a sequence exists by \cref{i:5.3.14}).
+  Then we define the reciprocal \(x^{-1}\) by the formula \(x^{-1} \coloneqq \LIM_{n \to \infty} a_n^{-1}\).
   (From \cref{i:5.3.15} we know that \(x^{-1}\) is a real number.)
 \end{defn}
 
 \begin{lem}[Reciprocation is well defined]\label{i:5.3.17}
-  Let \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) be two Cauchy sequences bounded away from zero such that \(\text{LIM}_{n \to \infty} a_n = \text{LIM}_{n \to \infty} b_n\) (i.e., the two sequences are equivalent).
-  Then \(\text{LIM}_{n \to \infty} a_n^{-1} = \text{LIM}_{n \to \infty} b_n^{-1}\).
+  Let \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) be two rational Cauchy sequences bounded away from zero such that \(\LIM_{n \to \infty} a_n = \LIM_{n \to \infty} b_n\) (i.e., the two sequences are equivalent).
+  Then \(\LIM_{n \to \infty} a_n^{-1} = \LIM_{n \to \infty} b_n^{-1}\).
 \end{lem}
 
-\begin{proof}
+\begin{proof}[\pf{i:5.3.17}]
   Consider the following product \(P\) of three real numbers:
   \[
-    P \coloneqq (\text{LIM}_{n \to \infty} a_n^{-1}) \times (\text{LIM}_{n \to \infty} a_n) \times (\text{LIM}_{n \to \infty} b_n^{-1}).
+    P \coloneqq \pa{\LIM_{n \to \infty} a_n^{-1}} \times \pa{\LIM_{n \to \infty} a_n} \times \pa{\LIM_{n \to \infty} b_n^{-1}}.
   \]
   If we multiply this out, we obtain
   \[
-    P = \text{LIM}_{n \to \infty} a_n^{-1} a_n b_n^{-1} = \text{LIM}_{n \to \infty} b_n^{-1}.
+    P = \LIM_{n \to \infty} a_n^{-1} a_n b_n^{-1} = \LIM_{n \to \infty} b_n^{-1}.
   \]
-  On the other hand, since \(\text{LIM}_{n \to \infty} a_n = \text{LIM}_{n \to \infty} b_n\), we can write \(P\) in another way as
+  On the other hand, since \(\LIM_{n \to \infty} a_n = \LIM_{n \to \infty} b_n\), we can write \(P\) in another way as
   \[
-    P = (\text{LIM}_{n \to \infty} a_n^{-1}) \times (\text{LIM}_{n \to \infty} b_n) \times (\text{LIM}_{n \to \infty} b_n^{-1}).
+    P = \pa{\LIM_{n \to \infty} a_n^{-1}} \times \pa{\LIM_{n \to \infty} b_n} \times \pa{\LIM_{n \to \infty} b_n^{-1}}.
   \]
   (cf. \cref{i:5.3.10}).
   Multiplying things out again, we get
   \[
-    P = \text{LIM}_{n \to \infty} a_n^{-1} b_n b_n^{-1} = \text{LIM}_{n \to \infty} a_n^{-1}.
+    P = \LIM_{n \to \infty} a_n^{-1} b_n b_n^{-1} = \LIM_{n \to \infty} a_n^{-1}.
   \]
-  Comparing our different formulae for \(P\) we see that \(\text{LIM}_{n \to \infty} a_n^{-1} = \text{LIM}_{n \to \infty} b_n^{-1}\), as desired.
+  Comparing our different formulae for \(P\) we see that \(\LIM_{n \to \infty} a_n^{-1} = \LIM_{n \to \infty} b_n^{-1}\), as desired.
 \end{proof}
 
-\begin{note}
-  It is clear from the definition that \(xx^{-1} = x^{-1}x = 1\);
+\begin{ac}\label{i:ac:5.3.3}
+  It is clear from \cref{i:5.3.16} that \(x x^{-1} = x^{-1} x = 1\);
   thus all the field axioms (\cref{i:4.2.4}) apply to the reals as well as to the rationals.
   We of course cannot give \(0\) a reciprocal, since \(0\) multiplied by anything gives \(0\), not \(1\).
-\end{note}
+\end{ac}
 
-\begin{note}
-  if \(q\) is a non-zero rational, and hence equal to the real number \(\text{LIM}_{n \to \infty} q\), then the reciprocal of \(\text{LIM}_{n \to \infty} q\) is \(\text{LIM}_{n \to \infty} q^{-1} = q^{-1}\);
+\begin{proof}[\pf{i:ac:5.3.3}]
+  Let \((a_n)_{n = 1}^\infty\) be a rational Cauchy sequence which is bounded away from zero.
+  Then we have
+  \begin{align*}
+    \pa{\LIM_{n \to \infty} a_n} \times \pa{\LIM_{n \to \infty} a_n}^{-1} & = \pa{\LIM_{n \to \infty} a_n} \times \pa{\LIM_{n \to \infty} a_n^{-1}} &  & \by{i:5.3.16}   \\
+                                                                          & = \LIM_{n \to \infty} (a_n \times a_n^{-1})                             &  & \by{i:5.3.9}    \\
+                                                                          & = \LIM_{n \to \infty} 1                                                 &  & \by{i:4.2.4}    \\
+                                                                          & = 1.                                                                    &  & \by{i:ac:5.3.1}
+  \end{align*}
+\end{proof}
+
+\begin{ac}\label{i:ac:5.3.4}
+  If \(q\) is a non-zero rational, and hence equal to the real number \(\LIM_{n \to \infty} q\), then the reciprocal of \(\LIM_{n \to \infty} q\) is \(\LIM_{n \to \infty} q^{-1} = q^{-1}\);
   thus the operation of reciprocal on real numbers is consistent with the operation of reciprocal on rational numbers.
-\end{note}
+\end{ac}
 
-\begin{note}
+\begin{proof}[\pf{i:ac:5.3.4}]
+  We have
+  \begin{align*}
+    q^{-1} & = \pa{\LIM_{n \to \infty} q}^{-1} &  & \by{i:ac:5.3.1} \\
+           & = \LIM_{n \to \infty} (q^{-1})    &  & \by{i:5.3.16}   \\
+           & = q^{-1}.                         &  & \by{i:ac:5.3.1}
+  \end{align*}
+\end{proof}
+
+\begin{ac}\label{i:ac:5.3.5}
   Once one has reciprocal, one can define division \(x / y\) of two real numbers \(x, y\), provided \(y\) is non-zero, by the formula
   \[
     x / y \coloneqq x \times y^{-1},
@@ -318,7 +421,21 @@
   In particular, we have the \emph{cancellation law}:
   if \(x, y, z\) are real numbers such that \(xz = yz\), and \(z\) is non-zero, then by dividing by \(z\) we conclude that \(x = y\).
   This cancellation law does not work when \(z\) is zero.
-\end{note}
+\end{ac}
+
+\begin{proof}[\pf{i:ac:5.3.5}]
+  Suppose that \(xz = yz\) and \(z \neq 0\).
+  Then we have
+  \begin{align*}
+    x & = x 1          &  & \by{i:5.3.11}   \\
+      & = x (z z^{-1}) &  & \by{i:ac:5.3.3} \\
+      & = (xz) z^{-1}  &  & \by{i:5.3.11}   \\
+      & = (yz) z^{-1}  &  &                 \\
+      & = y (z z^{-1}) &  & \by{i:5.3.11}   \\
+      & = y 1          &  & \by{i:ac:5.3.3} \\
+      & = y.           &  & \by{i:5.3.11}
+  \end{align*}
+\end{proof}
 
 \exercisesection
 
@@ -326,7 +443,7 @@
   Prove \cref{i:5.3.3}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{i:ex:5.3.1}]
   See \cref{i:5.3.3}.
 \end{proof}
 
@@ -334,61 +451,48 @@
   Prove \cref{i:5.3.10}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{i:ex:5.3.2}]
   See \cref{i:5.3.10}.
 \end{proof}
 
 \begin{ex}\label{i:ex:5.3.3}
   Let \(a, b\) be rational numbers.
-  Show that \(a = b\) iff \(\text{LIM}_{n \to \infty} a = \text{LIM}_{n \to \infty} b\) (i.e., the Cauchy sequences \(a, a, a, a, \dots\) and \(b, b, b, b \dots\) equivalent iff \(a = b\)).
+  Show that \(a = b\) iff \(\LIM_{n \to \infty} a = \LIM_{n \to \infty} b\) (i.e., the rational Cauchy sequences \(a, a, a, a, \dots\) and \(b, b, b, b \dots\) equivalent iff \(a = b\)).
   This allows us to embed the rational numbers inside the real numbers in a well-defined manner.
 \end{ex}
 
-\begin{proof}
-  Let \((a)_{n = 1}^{\infty}\) and \((b)_{n = 1}^{\infty}\) be two sequences where \(a, b \in \Q\).
-  By \cref{i:5.2.6} \((a)_{n = 1}^\infty\) and \((b)_{n = 1}^\infty\) is Cauchy sequence since
-  \[
-    \forall \varepsilon \in \Q^+, \forall n \geq 1, \abs{a - a} = \abs{b - b} = 0 \leq \varepsilon.
-  \]
-  Then we have
-  \begin{align*}
-         & a = b                                                                                             \\
-    \iff & \forall \varepsilon \in \Q^+, \forall n \geq 1, \abs{a - b} \leq \varepsilon &  & \by{i:4.3.7}[a] \\
-    \iff & (a)_{n = 1}^\infty = (b)_{n = 1}^\infty                                      &  & \by{i:5.2.6}    \\
-    \iff & \text{LIM}_{n \to \infty} a = \text{LIM}_{n \to \infty} b.                   &  & \by{i:5.3.1}
-  \end{align*}
+\begin{proof}[\pf{i:ex:5.3.3}]
+  See \cref{i:ac:5.3.1}
 \end{proof}
 
 \begin{ex}\label{i:ex:5.3.4}
-  Let \((a_n)_{n = 0}^{\infty}\) be a sequence of rational numbers which is bounded.
-  Let \((b_n)_{n = 0}^{\infty}\) be another sequence of rational numbers which is equivalent to \((a_n)_{n = 0}^{\infty}\).
-  Show that \((b_n)_{n = 0}^{\infty}\) is also bounded.
+  Let \((a_n)_{n = m}^{\infty}\) be a sequence of rational numbers which is bounded.
+  Let \((b_n)_{n = m}^{\infty}\) be another sequence of rational numbers which is equivalent to \((a_n)_{n = m}^{\infty}\).
+  Show that \((b_n)_{n = m}^{\infty}\) is also bounded.
 \end{ex}
 
-\begin{proof}
-  Since \((a_n)_{n = 0}^{\infty} = (b_n)_{n = 0}^{\infty}\), by \cref{i:5.2.6} we know that \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are eventually \(\varepsilon\)-close for every \(\varepsilon \in \Q^+\).
-  Thus by \cref{i:ex:5.2.2} \((a_n)_{n = 0}^{\infty}\) is bounded iff \((b_n)_{n = 0}^{\infty}\) is bounded.
+\begin{proof}[\pf{i:ex:5.3.4}]
+  Since \((a_n)_{n = m}^{\infty}\) and \((b_n)_{n = m}^{\infty}\) are equivalent, by \cref{i:5.2.6} we know that \((a_n)_{n = m}^{\infty}\) and \((b_n)_{n = m}^{\infty}\) are eventually \(\varepsilon\)-close for every \(\varepsilon \in \Q^+\).
+  Thus by \cref{i:ex:5.2.2} \((a_n)_{n = m}^{\infty}\) is bounded iff \((b_n)_{n = m}^{\infty}\) is bounded.
 \end{proof}
 
 \begin{ex}\label{i:ex:5.3.5}
-  Show that \(\text{LIM}_{n \to \infty} 1 / n = 0\).
+  Show that \(\LIM_{n \to \infty} 1 / n = 0\).
 \end{ex}
 
-\begin{proof}
-  By \cref{i:5.1.11} we know that the sequence \((\dfrac{1}{n})_{n = 1}^{\infty}\) is a Cauchy sequence.
-  By \cref{i:4.4.1}, \(\forall \varepsilon \in \Q^+\), \(\exists N \in \Z^+\) such that
-  \[
-    \dfrac{1}{\varepsilon} < N \implies \dfrac{1}{N} < \varepsilon.
-  \]
+\begin{proof}[\pf{i:ex:5.3.5}]
+  By \cref{i:5.3.1} we need to show that \((1 / n)_{n = 1}^\infty\) and \((0)_{n = 1}^\infty\) are equivalent rational Cauchy sequences.
+  By \cref{i:5.1.11,i:ac:5.3.1} we know that both \((1/ n)_{n = 1}^{\infty}\) and \((0)_{n = 1}^\infty\) are rational Cauchy sequences.
+  So we only need to show that both are eventually \(\varepsilon\)-close for arbitrary \(\varepsilon \in \Q^+\).
+  Let \(\varepsilon \in \Q^+\).
+  Clearly \(\dfrac{1}{\varepsilon} \in \Q^+\).
+  By \cref{i:4.4.1} we know that there exists an \(N \in \Z^+\) such that \(\dfrac{1}{\varepsilon} \leq N\), or \(\dfrac{1}{N} \leq \varepsilon\).
+  Fix such \(N\).
   Then we have
   \begin{align*}
-    \forall n \geq N, \abs{\dfrac{1}{n} - 0} & = \dfrac{1}{n}    &  & \by{i:4.3.1}     \\
-                                             & \leq \dfrac{1}{N} &  & \by{i:4.3.12}[b] \\
-                                             & < \varepsilon
+    \forall n \in \Z_{\geq N}, \abs{\dfrac{1}{n} - 0} & = \dfrac{1}{n}    &  & \by{i:4.3.1}     \\
+                                                      & \leq \dfrac{1}{N} &  & \by{i:4.3.12}[b] \\
+                                                      & < \varepsilon.
   \end{align*}
-  and thus by \cref{i:5.2.6} \((\dfrac{1}{n})_{n = 1}^\infty = (0)_{n = 1}^\infty\).
-  By \cref{i:5.3.1} and \cref{i:ex:5.3.3} we have
-  \[
-    \text{LIM}_{n \to \infty} \dfrac{1}{n} = \text{LIM}_{n \to \infty} 0 = 0.
-  \]
+  Since \(\varepsilon\) is arbitrary, we conclude that \((1 / n)_{n = 1}^\infty\) and \((0)_{n = 1}^\infty\) are eventually \(\varepsilon\)-close for arbitrary \(\varepsilon \in \Q^+\).
 \end{proof}
