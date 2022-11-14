@@ -1,9 +1,9 @@
 \section{Ordering the reals}\label{i:sec:5.4}
 
 \begin{defn}\label{i:5.4.1}
-  Let \((a_n)_{n = 1}^{\infty}\) be a sequence of rationals.
-  We say that this sequence is \emph{positively bounded away from zero} iff we have a positive rational \(c > 0\) such that \(a_n \geq c\) for all \(n \geq 1\) (in particular, the sequence is entirely positive).
-  The sequence is \emph{negatively bounded away from zero} iff we have a negative rational \(-c < 0\) such that \(a_n \leq -c\) for all \(n \geq 1\) (in particular, the sequence is entirely negative).
+  Let \((a_n)_{n = m}^{\infty}\) be a sequence of rationals.
+  We say that this sequence is \emph{positively bounded away from zero} iff we have a positive rational \(c \in \Q^+\) such that \(a_n \geq c\) for all \(n \in \Z_{\geq m}\) (in particular, the sequence is entirely positive).
+  The sequence is \emph{negatively bounded away from zero} iff we have a negative rational \(c \in \Q^-\) such that \(a_n \leq c\) for all \(n \in \Z_{\geq m}\) (in particular, the sequence is entirely negative).
 \end{defn}
 
 \begin{note}
@@ -28,113 +28,104 @@
   If \(x\) and \(y\) are positive, then so are \(x + y\) and \(xy\).
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{i:5.4.4}]
   We first show that at least one of the three statements is true.
-  Let \(x\) be the formal limit of some rational sequence \((a_n)_{n = 1}^{\infty}\), let \(\varepsilon, c \in \Q^+\) and let \(N, j, k \in \N\).
-  Consider the following two cases:
-  \begin{itemize}
-    \item If \((a_n)_{n = 1}^{\infty}\) is eventually \(\varepsilon\)-close to \(0\) for all \(\varepsilon > 0\), then by \cref{i:5.2.6} we have \(x = 0\).
-    \item If \((a_n)_{n = 1}^{\infty}\) is not eventually \(\varepsilon\)-close to \(0\) for all \(\varepsilon > 0\), then by \cref{i:5.2.6} we have \(x \neq 0\).
-  \end{itemize}
-  By \cref{i:5.3.14}, \(x \neq 0\) implies \(\exists c > 0\) such that \(\abs{a_n} \geq c > 0\) for every \(n \geq 1\).
-  By \cref{i:4.3.3}(a) we have \(a_n \neq 0\).
-  By \cref{i:4.2.9}(a) we now split into two cases:
-  \begin{itemize}
-    \item If \(a_n > 0\), then by \cref{i:4.3.1} we have \(a_n \geq c > 0\).
-    \item If \(a_n < 0\), then by \cref{i:4.3.1} we have \(-a_n \geq c > 0\), and by \cref{i:ex:4.2.6} we have \(a_n \leq -c < 0\).
-  \end{itemize}
-  Since \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence, by \cref{i:5.1.8} we have
+  Let \(x \in \R\).
+  By \cref{i:ac:5.3.1} we know that \(0\) is the formal limit of \((0)_{n = 1}^\infty\), thus by \cref{i:5.3.1,i:5.3.3} we can ask whether \(x = 0\) or \(x \neq 0\).
+  If \(x = 0\), then we are done.
+  Otherwise by \cref{i:5.3.14} we know that \(x\) is the formal limit of a rational Cauchy sequence \((a_n)_{n = 1}^\infty\) which is bounded away from \(0\).
+  In particular, by \cref{i:5.3.12} we know that there exists a \(c \in \Q^+\) such that \(\abs{a_n} \geq c\) for all \(n \in \Z^+\).
+  Fix such \(c\).
+  Since \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence and \(c \in \Q^+\), by \cref{i:5.1.8} we have
   \[
-    \forall \varepsilon > 0, \exists N \geq 1 : \forall j, k \geq N, \abs{a_j - a_k} \leq \varepsilon.
+    \exists N \in \Z^+ : \forall j, k \in \Z_{\geq N}, \abs{a_j - a_k} \leq c.
   \]
-  In particular,
-  \[
-    \exists N \geq 1 : \forall j, k \geq N, \abs{a_j - a_k} \leq c.
-  \]
-  So
+  Fix such \(N\).
+  Then we have
   \begin{align*}
-             & \abs{a_j - a_N} \leq c                            \\
-    \implies & -c \leq a_j - a_N \leq c        &  & \by{i:4.3.3} \\
-    \implies & -c + a_N \leq a_j \leq c + a_N. &  & \by{i:4.2.9} \\
+             & \forall j \in \Z_{\geq N}, \abs{a_j - a_N} \leq c          &  & (N \in \Z_{\geq N}) \\
+    \implies & \forall j \in \Z_{\geq N}, -c \leq a_j - a_N \leq c        &  & \by{i:4.3.3}[c]     \\
+    \implies & \forall j \in \Z_{\geq N}, -c + a_N \leq a_j \leq c + a_N. &  & \by{i:4.2.9}[c,d]
   \end{align*}
-  By \cref{i:4.2.9}(a) again we now split into two cases:
+  Since \(\abs{a_N} \geq c \in \Q^+\), by \cref{i:4.3.1} we know that we have either \(a_N \in \Q^+\) or \(a_N \in \Q^-\).
+  So we split into two cases:
   \begin{itemize}
-    \item If \(a_N > 0\), then we have
+    \item If \(a_N \in \Q^+\), then by \cref{i:4.3.1} we have \(a_N \geq c\).
+          Thus
           \begin{align*}
-                     & (-c + a_N \leq a_j \leq c + a_N) \land (0 < c \leq a_N)                                  \\
-            \implies & 0 \leq a_j \leq c + a_N                                 &            & \by{i:4.2.9}[c,d] \\
-            \implies & c < a_j \leq c + a_N.                                   & (x \neq 0)
+                     & \forall j \in \Z_{\geq N}, 0 \leq -c + a_N \leq a_j \leq c + a_N &  & \by{i:4.2.9}[c,d] \\
+            \implies & \forall j \in \Z_{\geq N}, 0 \leq a_j.                           &  & \by{i:4.2.9}[c]
           \end{align*}
-          Since this is true for all \(j \geq N\), by \cref{i:5.3.14} and \cref{i:5.4.1} we know that \((a_n)_{n = 1}^\infty\) is positively bounded away from zero.
+          This means \(a_j \in \Q^+\) for all \(j \in \Z_{\geq N}\).
+          If we now define \((b_n)_{n = 1}^\infty\) to be the sequence where \(b_n = c\) for all \(n \in \Z^+ \cap \Z_{< N}\) and \(b_n = a_n\) for all \(n \in \Z_{\geq N}\), then we see that \((a_n)_{n = 1}^\infty, (b_n)_{n = 1}^\infty\) are equivalent rational Cauchy sequences and \((b_n)_{n = 1}^\infty\) is positively bounded away from zero.
           Thus by \cref{i:5.4.3} \(x\) is positive.
-    \item If \(a_N < 0\), then we have
+    \item If \(a_N \in \Q^-\), then by \cref{i:4.3.1} we have \(-a_N \geq c\).
+          By \cref{i:ex:4.2.6} we have \(a_N \leq -c\).
+          Thus
           \begin{align*}
-                     & (-c + a_N \leq a_j \leq c + a_N) \land (a_N \leq -c < 0)                                  \\
-            \implies & -c + a_N \leq a_j \leq 0                                 &            & \by{i:4.2.9}[c,d] \\
-            \implies & -c + a_N \leq a_j < -c.                                  & (x \neq 0)
+                     & \forall j \in \Z_{\geq N}, -c + a_N \leq a_j \leq c + a_N \leq 0 &  & \by{i:4.2.9}[c,d] \\
+            \implies & \forall j \in \Z_{\geq N}, a_j \leq 0.                           &  & \by{i:4.2.9}[c]
           \end{align*}
-          Since this is true for all \(j \geq N\), by \cref{i:5.3.14} and \cref{i:5.4.1} we know that \((a_n)_{n = 1}^\infty\) is negatively bounded away from zero.
+          This means \(a_j \in \Q^-\) for all \(j \in \Z_{\geq N}\).
+          If we now define \((b_n)_{n = 1}^\infty\) to be the sequence where \(b_n = -c\) for all \(n \in \Z^+ \cap \Z_{< N}\) and \(b_n = a_n\) for all \(n \in \Z_{\geq N}\), then we see that \((a_n)_{n = 1}^\infty, (b_n)_{n = 1}^\infty\) are equivalent rational Cauchy sequences and \((b_n)_{n = 1}^\infty\) is negatively bounded away from zero.
           Thus by \cref{i:5.4.3} \(x\) is negative.
   \end{itemize}
-  From all cases above we conclude that at least one of the three statements is true.
+  From all cases above we see that \(x\) is either positive or negative.
+  Thus we conclude that at least one of the three statements is true.
 
   Next we show that at most one of the three statements is true.
-  Let \(x\) be the formal limit of some rational sequence \((a_n)_{n = 1}^{\infty}\) and let \(\varepsilon, c \in \Q^+\).
+  Let \(x \in \R\).
+  Suppose for sake of contradiction that one of the following three cases is true:
   \begin{itemize}
-    \item If \(x = 0\) and \(x\) is positive, then we have \((a_n)\) eventually \(\varepsilon\)-close to \(0\) for all \(\varepsilon > 0\) and \(a_n \geq c\) for all \(n \geq 1\).
-          But then we have \(\abs{a_n - 0} \leq c / 2\) and \(a_n \geq c > 0\), a contradiction.
-    \item If \(x = 0\) and \(x\) is negative, then we have \((a_n)\) eventually \(\varepsilon\)-close to \(0\) for all \(\varepsilon > 0\) and \(a_n \leq -c\) for all \(n \geq 1\).
-          But then we have \(\abs{a_n - 0} \leq c / 2\) and \(a_n \leq -c < 0\), a contradiction.
-    \item If \(x\) is positive and \(x\) is negative, then we have \(a_n \geq c\) and \(a_n \leq -c\) for all \(n \geq 1\).
-          But then we have \(a_n < 0\) and \(0 < a_n\), a contradiction.
+    \item We have both \(x = 0\) and \(x\) is positive.
+          Then from the first part of the proof we know that \(x\) is the formal limit of a rational Cauchy sequence \((a_n)_{n = 1}^\infty\) which is positively bounded away from \(0\).
+          In particular, there exists a \(c \in \Q^+\) such that \(a_n \geq c\) for all \(n \in \Z^+\).
+          Fix such \(c\).
+          Since \(x = 0\), by \cref{i:5.2.6} we know that \((a_n)_{n = 1}^\infty\) and \((0)_{n = 1}^\infty\) are eventually \(\varepsilon\)-close for all \(\varepsilon \in \Q^+\).
+          Since \(c \in \Q^+\), we know that \(c / 2 \in \Q^+\).
+          Thus \((a_n)_{n = 1}^\infty\) and \((0)_{n = 1}^\infty\) must be eventually \(c / 2\)-close, i.e., there exists an \(N \in \Z^+\) such that \(a_n = \abs{a_n - 0} \leq c / 2 < c\) for all \(n \in \Z_{\geq N}\).
+          But this means for any \(n \in \Z_{\geq N}\), we have both \(a_n < c\) and \(a_n \geq c\), which contradict to \cref{i:4.2.9}(a).
+    \item We have both \(x = 0\) and \(x\) is negative.
+          Then from the first part of the proof we know that \(x\) is the formal limit of a rational Cauchy sequence \((a_n)_{n = 1}^\infty\) which is negatively bounded away from \(0\).
+          In particular, there exists a \(c \in \Q^-\) such that \(a_n \leq c\) for all \(n \in \Z^+\).
+          Fix such \(c\).
+          Since \(x = 0\), by \cref{i:5.2.6} we know that \((a_n)_{n = 1}^\infty\) and \((0)_{n = 1}^\infty\) are eventually \(\varepsilon\)-close for all \(\varepsilon \in \Q^+\).
+          Since \(c \in \Q^-\), we know that \(-c / 2 \in \Q^+\).
+          Thus \((a_n)_{n = 1}^\infty\) and \((0)_{n = 1}^\infty\) must be eventually \(-c / 2\)-close, i.e., there exists an \(N \in \Z^+\) such that \(-a_n = \abs{a_n - 0} \leq -c / 2 < -c\) for all \(n \in \Z_{\geq N}\).
+          But this means for any \(n \in \Z_{\geq N}\), we have both \(a_n > c\) and \(a_n \leq c\), which contradict to \cref{i:4.2.9}(a).
+    \item We have \(x\) is both positive and negative.
+          From the first part of the proof we know that \(x\) is the formal limit of a rational Cauchy sequence \((a_n)_{n = 1}^\infty\) which is positively bounded away from \(0\).
+          Similarly we know that \(x\) is the formal limit of a rational Cauchy sequence \((b_n)_{n = 1}^\infty\) which is negatively bounded away from \(0\).
+          By \cref{i:5.4.1} we know that there exist some \(c \in \Q^+\) and \(d \in \Q^-\) such that \(a_n \geq c\) and \(b_n \leq d\) for all \(n \in \Z^+\).
+          Fix such \(c, d\) and observe that \(c - d \in \Q^+\).
+          Since \(x = \LIM_{n \to \infty} a_n = \LIM_{n \to \infty} b_n\), by \cref{i:5.3.3} we know that \((a_n)_{n = 1}^\infty\) and \((b_n)_{n = 1}^\infty\) are equivalent rational Cauchy sequences.
+          Thus by \cref{i:5.2.6} we have
+          \[
+            \exists N \in \Z^+ : \forall n \in \Z_{\geq n}, \abs{a_n - b_n} \leq \dfrac{c - d}{2} < c - d.
+          \]
+          Fix such \(N\).
+          But then we have
+          \begin{align*}
+                     & \forall n \in \Z_{\geq N}, (a_n \geq c) \land (b_n \leq d)                                \\
+            \implies & \forall n \in \Z_{\geq N}, (a_n \geq c) \land (-b_n \geq -d)       &  & \by{i:ex:4.2.6}   \\
+            \implies & \forall n \in \Z_{\geq N}, a_n - b_n = \abs{a_n - b_n} \geq c - d, &  & \by{i:4.2.9}[c,d]
+          \end{align*}
+          which contradict to \cref{i:4.2.9}(a).
   \end{itemize}
-  From all cases above we conclude that at most one of the three statements is true.
+  From all cases above we derived contradictions.
+  Thus we conclude that at most one of the three statements is true.
 
   Next we show that \(x\) is negative iff \(-x\) is positive.
-  Let \(x\) be the formal limit of some sequence \((a_n)_{n = 1}^{\infty}\).
-  Then we have
-  \begin{align*}
-         & x \text{ is negative}                                                               \\
-    \iff & (x = \LIM_{n \to \infty} a_n)                                                       \\
-         & \land (\exists c \in \Q^+ : \forall n \geq 1, a_n \leq -c < 0) &  & \by{i:5.4.3}    \\
-    \iff & (-x = \LIM_{n \to \infty} -a_n)                                &  & \by{i:5.3.9}    \\
-         & \land (\exists c \in \Q^+ : \forall n \geq 1, a_n \leq -c < 0)                      \\
-    \iff & (-x = \LIM_{n \to \infty} -a_n)                                                     \\
-         & \land (\exists c \in \Q^+ : \forall n \geq 1, -a_n \geq c > 0) &  & \by{i:ex:4.2.6} \\
-    \iff & -x \text{ is positive}.                                        &  & \by{i:5.4.3}
-  \end{align*}
+  Suppose that \(x\) is negative.
+  From the first part of the proof we know that \(x\) is the formal limit of a rational Cauchy sequence \((a_n)_{n = 1}^\infty\) which is negatively bounded away from \(0\).
+  This means \((-a_n)_{n = 1}^\infty\) is positively bounded away from \(0\).
+  But by \cref{i:ac:5.3.2} we know that \(-x = \LIM_{n \to \infty} -a_n\), thus by \cref{i:5.4.1} we know that \(-x\) is positive.
+  The converse argument holds by reversing the previous reasoning.
 
-  Next we show that \(x, y\) are positive implies \(x + y\) is also positive.
-  Let \(x\) be the formal limit of some sequence \((a_n)_{n = 1}^{\infty}\) and let \(y\) be the formal limit of some sequence \((b_n)_{n = 1}^{\infty}\).
-  Then we have
-  \begin{align*}
-             & (x \text{ is positive}) \land (y \text{ is positive})                                                  \\
-    \implies & (x = \LIM_{n \to \infty} a_n) \land (y = \LIM_{n \to \infty} b_n)                                      \\
-             & \land (\exists c_1 \in \Q^+ : \forall n \geq 1, 0 < c_1 < a_n)                                         \\
-             & \land (\exists c_2 \in \Q^+ : \forall n \geq 1, 0 < c_2 < b_n)                  &  & \by{i:5.4.3}      \\
-    \implies & (x + y = \LIM_{n \to \infty} a_n + b_n)                                         &  & \by{i:5.3.4}      \\
-             & \land (\exists c_1 \in \Q^+ : \forall n \geq 1, 0 < c_1 < a_n)                                         \\
-             & \land (\exists c_2 \in \Q^+ : \forall n \geq 1, 0 < c_2 < b_n)                                         \\
-    \implies & (x + y = \LIM_{n \to \infty} a_n + b_n)                                                                \\
-             & \land (\exists c_1, c_2 \in \Q^+ : \forall n \geq 1, 0 < c_1 + c_2 < a_n + b_n) &  & \by{i:4.2.9}[c,d] \\
-    \implies & x + y \text{ is positive}.                                                      &  & \by{i:5.4.3}
-  \end{align*}
-
-  Finally we show that \(x, y\) are positive implies \(xy\) is also positive.
-  Let \(x\) be the formal limit of some sequence \((a_n)_{n = 1}^{\infty}\) and let \(y\) be the formal limit of some sequence \((b_n)_{n = 1}^{\infty}\).
-  Then we have
-  \begin{align*}
-             & (x \text{ is positive}) \land (y \text{ is positive})                                              \\
-    \implies & (x = \LIM_{n \to \infty} a_n) \land (y = \LIM_{n \to \infty} b_n)                                  \\
-             & \land (\exists c_1 \in \Q^+ : \forall n \geq 1, 0 < c_1 < a_n)                                     \\
-             & \land (\exists c_2 \in \Q^+ : \forall n \geq 1, 0 < c_2 < b_n)              &  & \by{i:5.4.3}      \\
-    \implies & (xy = \LIM_{n \to \infty} a_n b_n)                                          &  & \by{i:5.3.9}      \\
-             & \land (\exists c_1 \in \Q^+ : \forall n \geq 1, 0 < c_1 < a_n)                                     \\
-             & \land (\exists c_2 \in \Q^+ : \forall n \geq 1, 0 < c_2 < b_n)                                     \\
-    \implies & (xy = \LIM_{n \to \infty} a_n b_n)                                                                 \\
-             & \land (\exists c_1, c_2 \in \Q^+ : \forall n \geq 1, 0 < c_1 c_2 < a_n b_n) &  & \by{i:4.2.9}[d,e] \\
-    \implies & xy \text{ is positive}.                                                     &  & \by{i:5.4.3}
-  \end{align*}
+  Finally we show that \(x, y\) are positive implies \(x + y\) and \(xy\) are positive.
+  From the first part of the proof we know that \(x\) and \(y\) are the formal limits of rational Cauchy sequences \((a_n)_{n = 1}^\infty\) and \((b_n)_{n = 1}^\infty\), respectively, which are positively bounded away from \(0\).
+  Clearly \((a_n + b_n)_{n = 1}^\infty\) and \((a_n b_n)_{n = 1}^\infty\) are positively bounded away from \(0\).
+  But by \cref{i:5.3.4,i:5.3.9} we know that \(x + y = \LIM_{n \to \infty} a_n + b_n\) and \(xy = \LIM_{n \to \infty} a_n b_n\), thus by \cref{i:5.4.1} we know that \(x + y\) and \(xy\) are positive.
 \end{proof}
 
 \begin{note}
@@ -155,40 +146,27 @@
 \end{defn}
 
 \begin{note}
-  Comparing this with the definition of order on the rationals from \cref{i:4.2.8} we see that order on the reals is consistent with order on the rationals, i.e., if two rational numbers \(q, q'\) are such that \(q\) is less than \(q'\) in the rational number system, then \(q\) is still less than \(q'\) in the real number system, and similarly for ``greater than''.
-  In the same way we see that the definition of absolute value given here is consistent with that in \cref{i:4.3.1}.
+  Comparing \cref{i:5.4.6} with the definition of order on the rationals from \cref{i:4.2.8} we see that order on the reals is consistent with order on the rationals, i.e., if two rational numbers \(q, q'\) are such that \(q\) is less than \(q'\) in the rational number system, then \(q\) is still less than \(q'\) in the real number system, and similarly for ``greater than''.
+  In the same way we see that the definition of absolute value given in \cref{i:5.4.5} is consistent with that in \cref{i:4.3.1}.
 \end{note}
 
 \begin{prop}\label{i:5.4.7}
   All the claims in \cref{i:4.2.9} which held for rationals, continue to hold for real numbers.
 \end{prop}
 
-\begin{proof}{(a)}
-  We first show that at least one of the three statements is true.
-  By \cref{i:5.4.4}, exactly one of the following three statements is true:
+\begin{proof}[\pf{i:5.4.7}(a)]
+  By \cref{i:5.4.4} \(x - y\) satisfy exactly one of the following three statements:
   \begin{itemize}
     \item \(x - y = 0\).
           Then by \cref{i:5.3.11} we have \(x = y\).
-    \item \(x - y\) is positive.
+    \item \(x - y\) is a positive rational number.
           Then by \cref{i:5.4.6} we have \(x > y\).
-    \item \(x - y\) is negative.
+    \item \(x - y\) is a negative rational number.
           Then by \cref{i:5.4.6} we have \(x < y\).
   \end{itemize}
-  So at least one of the three statements is true.
-
-  Now we show that at most one of the three statements is true.
-  \begin{itemize}
-    \item If \(x = y\) and \(x > y\) are true, then by \cref{i:5.3.11} we have \(x - y = 0\) and by \cref{i:5.4.6} we have \(x - y\) is positive.
-          But this contradict to \cref{i:5.4.4}.
-    \item If \(x = y\) and \(x < y\) are true, then by \cref{i:5.3.11} we have \(x - y = 0\) and by \cref{i:5.4.6} we have \(x - y\) is negative.
-          But this contradict to \cref{i:5.4.4}.
-    \item If \(x > y\) and \(x < y\) are true, then by \cref{i:5.4.6}, \(x - y\) is both positive and negative.
-          But this contradict to \cref{i:5.4.4}.
-  \end{itemize}
-  From all cases above we conclude that at most one of the three statements is true.
 \end{proof}
 
-\begin{proof}{(b)}
+\begin{proof}[\pf{i:5.4.7}(b)]
   We have
   \begin{align*}
          & x < y                                           \\
@@ -199,7 +177,7 @@
   \end{align*}
 \end{proof}
 
-\begin{proof}{(c)}
+\begin{proof}[\pf{i:5.4.7}(c)]
   We have
   \begin{align*}
              & (x < y) \land (y < z)                                                                  \\
@@ -207,25 +185,24 @@
     \implies & (-(x - y) \text{ is positive}) \land (-(y - z) \text{ is positive}) &  & \by{i:5.4.4}  \\
     \implies & (y - x \text{ is positive}) \land (z - y \text{ is positive})       &  & \by{i:5.3.11} \\
     \implies & y - x + z - y \text{ is positive}                                   &  & \by{i:5.4.4}  \\
-    \implies & - x + z \text{ is positive}                                         &  & \by{i:5.3.11} \\
     \implies & -(x - z) \text{ is positive}                                        &  & \by{i:5.3.11} \\
     \implies & x - z \text{ is negative}                                           &  & \by{i:5.4.4}  \\
     \implies & x < z.                                                              &  & \by{i:5.4.6}
   \end{align*}
 \end{proof}
 
-\begin{proof}{(d)}
+\begin{proof}[\pf{i:5.4.7}(d)]
   We have
   \begin{align*}
-             & x < y                                                  \\
-    \implies & x - y \text{ is negative}           &  & \by{i:5.4.6}  \\
-    \implies & x + z - z - y \text{ is negative}   &  & \by{i:5.3.11} \\
-    \implies & x + z - (y + z) \text{ is negative} &  & \by{i:5.3.11} \\
-    \implies & x + z < y + z.                      &  & \by{i:5.4.6}
+             & x < y                                                    \\
+    \implies & x - y \text{ is negative}             &  & \by{i:5.4.6}  \\
+    \implies & x + z - z - y \text{ is negative}     &  & \by{i:5.3.11} \\
+    \implies & (x + z) - (y + z) \text{ is negative} &  & \by{i:5.3.11} \\
+    \implies & x + z < y + z.                        &  & \by{i:5.4.6}
   \end{align*}
 \end{proof}
 
-\begin{proof}{(e)}
+\begin{proof}[\pf{i:5.4.7}(e)]
   We have
   \begin{align*}
              & x < y                                             \\
@@ -244,7 +221,7 @@
   Also, if \(y\) is another positive number and \(x > y\), then \(x^{-1} < y^{-1}\).
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{i:5.4.8}]
   Let \(x\) be positive.
   Since \(xx^{-1} = 1\), the real number \(x^{-1}\) cannot be zero (since \(x0 = 0 \neq 1\)).
   Also, from \cref{i:5.4.4} it is easy to see that a positive number times a negative number is negative;
@@ -252,19 +229,20 @@
   Thus, by \cref{i:5.4.4}, the only possibility left is that \(x^{-1}\) is positive.
 
   Now let \(y\) be positive as well, so \(x^{-1}\) and \(y^{-1}\) are also positive.
+  Suppose that \(x > y\).
   If \(x^{-1} \geq y^{-1}\), then by \cref{i:5.4.7} we have \(xx^{-1} > yx^{-1} \geq yy^{-1}\), thus \(1 > 1\), which is a contradiction.
   Thus we must have \(x^{-1} < y^{-1}\).
 \end{proof}
 
 \begin{prop}[The non-negative reals are closed]\label{i:5.4.9}
-  Let \(a_1, a_2, a_3, \dots\) be a Cauchy sequence of non-negative rational numbers.
+  Let \((a_n)_{n = 1}^\infty\) be a Cauchy sequence of non-negative rational numbers.
   Then \(\LIM_{n \to \infty} a_n\) is a non-negative real number.
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{i:5.4.9}]
   We argue by contradiction, and suppose that the real number \(x \coloneqq \LIM_{n \to \infty} a_n\) is a negative number.
-  Then by definition of negative real number, we have \(x = \LIM_{n \to \infty} b_n\) for some sequence \(b_n\) which is negatively bounded away from zero, i.e., there is a negative rational \(-c < 0\) such that \(b_n \leq -c\) for all \(n \geq 1\).
-  On the other hand, we have \(a_n \geq 0\) for all \(n \geq 1\), by hypothesis.
+  Then by definition of negative real number, we have \(x = \LIM_{n \to \infty} b_n\) for some sequence \((b_n)_{n = 1}^\infty\) which is negatively bounded away from \(0\), i.e., there is a negative rational \(-c \in \Q^-\) such that \(b_n \leq -c\) for all \(n \in \Z^+\).
+  On the other hand, we have \(a_n \in \Q_{\geq 0}\) for all \(n \in \Z^+\), by hypothesis.
   Thus the numbers \(a_n\) and \(b_n\) are never \(c / 2\)-close, since \(c / 2 < c\).
   Thus the sequences \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are not eventually \(c / 2\)-close.
   Since \(c / 2 > 0\), this implies that \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are not equivalent.
@@ -274,15 +252,16 @@
 \begin{note}
   Eventually, we will see a better explanation of \cref{i:5.4.9}:
   the set of non-negative reals is \emph{closed}, whereas the set of positive reals is \emph{open}.
+  See \cref{i:sec:11.4}.
 \end{note}
 
 \begin{cor}\label{i:5.4.10}
-  Let \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) be Cauchy sequences of rationals such that \(a_n \geq b_n\) for all \(n \geq 1\).
+  Let \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) be Cauchy sequences of rationals such that \(a_n \geq b_n\) for all \(n \in \Z^+\).
   Then \(\LIM_{n \to \infty} a_n \geq \LIM_{n \to \infty} b_n\).
 \end{cor}
 
-\begin{proof}
-  Apply \cref{i:5.4.9} to the sequence \(a_n - b_n\).
+\begin{proof}[\pf{i:5.4.10}]
+  Apply \cref{i:5.4.9} to the sequence \((a_n - b_n)_{n = 1}^\infty\).
 \end{proof}
 
 \begin{rmk}\label{i:5.4.11}
@@ -301,13 +280,13 @@
   Then there exists a positive rational number \(q\) such that \(q \leq x\), and there exists a positive integer \(N\) such that \(x \leq N\).
 \end{prop}
 
-\begin{proof}
-  Since \(x\) is a positive real, it is the formal limit of some Cauchy sequence \((a_n)_{n = 1}^{\infty}\) which is positively bounded away from zero.
+\begin{proof}[\pf{i:5.4.12}]
+  Since \(x\) is a positive real, it is the formal limit of a rational Cauchy sequence \((a_n)_{n = 1}^{\infty}\) which is positively bounded away from \(0\).
   Also, by \cref{i:5.1.15}, this sequence is bounded.
-  Thus we have rationals \(q > 0\) and \(r\) such that \(q \leq a_n \leq r\) for all \(n \geq 1\).
+  Thus we have rationals \(q, r \in \Q^+\) such that \(q \leq a_n \leq r\) for all \(n \in \Z^+\).
   But by \cref{i:4.4.1} we know that there is some integer \(N\) such that \(r \leq N\);
   since \(q\) is positive and \(q \leq r \leq N\), we see that \(N\) is positive.
-  Thus \(q \leq a_n \leq N\) for all \(n \geq 1\).
+  Thus \(q \leq a_n \leq N\) for all \(n \in \Z^+\).
   Applying \cref{i:5.4.10} we obtain that \(q \leq x \leq N\), as desired.
 \end{proof}
 
@@ -316,7 +295,7 @@
   Then there exists a positive integer \(M\) such that \(M\varepsilon > x\).
 \end{cor}
 
-\begin{proof}
+\begin{proof}[\pf{i:5.4.13}]
   The number \(x / \varepsilon\) is positive, and hence by \cref{i:5.4.12} there exists a positive integer \(N\) such that \(x / \varepsilon \leq N\).
   If we set \(M \coloneqq N + 1\), then \(x / \varepsilon < M\).
   Now multiply by \(\varepsilon\).
@@ -331,27 +310,27 @@
   Given any two real numbers \(x < y\), we can find a rational number \(q\) such that \(x < q < y\).
 \end{prop}
 
-\begin{proof}
-  We have
+\begin{proof}[\pf{i:5.4.14}]
+  First observe that
   \begin{align*}
-             & x < y                                                   \\
-    \implies & y > x                              &  & \by{i:5.4.7}    \\
-    \implies & y - x \text{ is positive}          &  & \by{i:5.4.6}    \\
-    \implies & \exists N \in \Z^+ : y - x > 1 / N &  & \by{i:ex:5.4.4} \\
-    \implies & y > x + 1 / N.                     &  & \by{i:5.4.7}    \\
+             & x < y                                                    \\
+    \implies & y > x                               &  & \by{i:5.4.7}    \\
+    \implies & y - x \text{ is positive}           &  & \by{i:5.4.6}    \\
+    \implies & \exists N \in \Z^+ : y - x > 1 / N  &  & \by{i:ex:5.4.4} \\
+    \implies & \exists N \in \Z^+ : y > x + 1 / N. &  & \by{i:5.4.7}
   \end{align*}
+  Fix one such \(N\).
   Since \(x\) is a real number, by \cref{i:5.3.10} we know that \(Nx\) is also a real number.
-  By \cref{i:ex:5.4.3}, \(\exists M \in \Z\) such that \(M \leq Nx < M + 1\).
+  By \cref{i:ex:5.4.3}, there exists an \(M \in \Z\) such that \(M \leq Nx < M + 1\).
   So we have
   \begin{align*}
-             & M \leq Nx < M + 1                                                                       \\
-    \implies & \dfrac{M}{N} \leq x < \dfrac{M + 1}{N}                                &  & \by{i:5.4.7} \\
-    \implies & (\dfrac{M}{N} \leq x) \land (x < \dfrac{M + 1}{N})                    &  & \by{i:5.4.7} \\
-    \implies & (\dfrac{M + 1}{N} \leq x + \dfrac{1}{N}) \land (x < \dfrac{M + 1}{N}) &  & \by{i:5.4.7} \\
-    \implies & x < \dfrac{M + 1}{N} \leq x + \dfrac{1}{N}                            &  & \by{i:5.4.7} \\
-    \implies & x < \dfrac{M + 1}{N} \leq x + \dfrac{1}{N} < y.                       &  & \by{i:5.4.7}
+             & M \leq Nx < M + 1                                                                                \\
+    \implies & \dfrac{M}{N} \leq x < \dfrac{M + 1}{N}                                      &  & \by{i:5.4.7}[e] \\
+    \implies & \pa{\dfrac{M + 1}{N} \leq x + \dfrac{1}{N}} \land \pa{x < \dfrac{M + 1}{N}} &  & \by{i:5.4.7}[d] \\
+    \implies & x < \dfrac{M + 1}{N} \leq x + \dfrac{1}{N} < y.                             &  & \by{i:5.4.7}[c]
   \end{align*}
-  Since \((M + 1) / N \in \Q\), we conclude that \(\exists q = (M + 1) / N \in \Q\) such that \(x < q < y\) for arbitrary real numbers \(x, y\).
+  Clearly \((M + 1) / N \in \Q\).
+  So by setting \(q = (M + 1) / N\) we are done.
 \end{proof}
 
 \begin{rmk}\label{i:5.4.15}
@@ -376,51 +355,68 @@
   \]
 \end{ac}
 
-\begin{proof}
+\begin{proof}[\pf{i:ac:5.4.1}]
   Let \(n = \#(X)\).
-  We use induction on \(n\) to show that \(\max(X), \min(X) \in X\) and we start with \(n = 1\) (since \(\#(\emptyset) = 0\) by \cref{i:ex:3.6.2}).
+  We induct on \(n\) to show that \(\max(X) \in X\) and \(\min(X) \in X\), and we start with \(n = 1\).
   For \(n = 1\), we have \(X = \set{x}\) for some \(x \in \R\).
   Then we have
   \begin{align*}
              & \forall y \in X, y = x                                        &  & \by{i:3.3}   \\
     \implies & (\forall y \in X, y \leq x) \land (\forall y \in X, y \geq x) &  & \by{i:5.4.6} \\
-    \implies & \max(X) = \min(X) = x
+    \implies & \max(X) = \min(X) = x.
   \end{align*}
-  and the base case holds.
-  Suppose inductively that for some \(n \geq 1\) we have \(\max(X) \in X\) and \(\min(X) \in X\).
-  Then for \(n + 1\), we need to show that \(\max(X) \in X\) and \(\min(X) \in X\).
+  Thus the base case holds.
+  Suppose inductively that for some \(n \in \Z^+\) we have \(\max(X) \in X\) and \(\min(X) \in X\).
+  Now let \(X\) be a finite subset of real number with \(\#(X) = n + 1\).
   Let \(x \in X\) and let \(X' = X \setminus \set{x}\).
+  By \cref{i:3.6.9} we know that \(\#(X') = n\).
+  Since \(n \in \Z^+\), we know that \(X'\) is non-empty.
   Then we have
   \begin{align*}
-             & X = X' \cup \set{x}                                                                                                             \\
-    \implies & \#(X') = n                                                                                &                  & \by{i:3.6.14}[a] \\
-    \implies & (\max(X') \in X') \land (\min(X') \in X')                                                 &                  & \byIH            \\
-    \implies & (\max(X') \in X) \land (\min(X') \in X)                                                   & (X' \subseteq X)                    \\
+             & (\max(X') \in X') \land (\min(X') \in X')                         &  & \byIH            \\
+    \implies & (\max(X') \in X) \land (\min(X') \in X)                           &  & (X' \subseteq X) \\
     \implies & \begin{dcases}
-                 \max(X) = \begin{dcases}
-                  \max(X') & \text{if } \max(X') > x \\
-                  x        & \text{if } \max(X') < x
-                \end{dcases} \\
-                 \min(X) = \begin{dcases}
-                  \min(X') & \text{if } \min(X') < x \\
-                  x        & \text{if } \min(X') > x
-                \end{dcases}
-               \end{dcases}                                                                                            \\
-    \implies & \big(\forall y \in X, x \leq \max(X)\big) \land \big(\forall y \in X, x \geq \min(X)\big)
+                 \forall y \in X', y \leq \max(X') \leq \max(\max(X'), x) \in X \\
+                 \forall y \in X', y \geq \min(X') \geq \min(\min(X'), x) \in X \\
+                 x \leq \max(\max(X'), x)                                       \\
+                 x \geq \min(\min(X'), x)
+               \end{dcases} &  & \by{i:5.4.7}[a]                          \\
+    \implies & \begin{dcases}
+                 \forall y \in X, y \leq \max(\max(X'), x) \\
+                 \forall y \in X, y \geq \min(\min(X'), x)
+               \end{dcases}                                               \\
+    \implies & \begin{dcases}
+                 \max(X) = \max(\max(X'), x) \\
+                 \min(X) = \min(\min(X'), x)
+               \end{dcases}.
   \end{align*}
-  and this closes the induction.
+  This closes the induction.
 
-  Now we show that at most one \(\max(X), \min(X) \in X\).
-  Suppose that \(x_1 = \max(X)\) and \(x_2 = \max(X)\).
-  Then by \cref{i:5.4.7}(a) we have
-  \[
-    (x_1 \leq x_2) \land (x_2 \leq x_1) \implies x_1 = x_2.
-  \]
-  Similarly suppose that \(x_1 = \min(X)\) and \(x_2 = \min(X)\).
-  Then by \cref{i:5.4.7}(a) we have
-  \[
-    (x_1 \geq x_2) \land (x_2 \geq x_1) \implies x_1 = x_2.
-  \]
+  Now we show that both \(\max(X), \min(X)\) are unique.
+  Suppose there are two \(x, x' \in X\) such that \(y \leq x\) and \(y \leq x'\) for all \(y \in X\).
+  But since \(x, x' \in X\), we have \(x \leq x'\) and \(x' \leq x\).
+  Thus by \cref{i:5.4.7}(a) we must have \(x = x'\) and \(\max(X)\) is unique.
+  Using similarly argument we can show that \(\min(X)\) is unique.
+\end{proof}
+
+\begin{ac}\label{i:ac:5.4.2}
+  Let \(x \in \R\).
+  Then \(x\) is positive iff \(x > 0\);
+  \(x\) is negative iff \(x < 0\).
+
+  Let \(y \in \R\).
+  We define the following eight subsets of \(\R\):
+  \begin{align*}
+    \R_{\leq x}   & \coloneqq \set{r \in \R : r \leq x};        & \R_{< x}   & \coloneqq \set{r \in \R : r < x};     & \R^+ & \coloneqq \R_{> 0}; \\
+    \R_{\geq x}   & \coloneqq \set{r \in \R : r \geq x};        & \R_{> x}   & \coloneqq \set{r \in \R : r > x};     & \R^- & \coloneqq \R_{< 0}; \\
+    \R_{x \leq y} & \coloneqq \set{r \in \R : x \leq r \leq y}; & \R_{x < y} & \coloneqq \set{r \in \R : x < r < y}. &      &
+  \end{align*}
+\end{ac}
+
+\begin{proof}[\pf{i:ac:5.4.2}]
+  By \cref{i:5.3.11} we have \(x = x - 0\).
+  Thus \(x\) is a positive rational number iff \(x - 0\) is a positive rational number, iff \(x > 0\) (\cref{i:5.4.6}).
+  Similarly \(x\) is a negative rational number iff \(x - 0\) is a negative rational number, iff \(x < 0\) (\cref{i:5.4.6}).
 \end{proof}
 
 \exercisesection
@@ -429,7 +425,7 @@
   Prove \cref{i:5.4.4}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{i:ex:5.4.1}]
   See \cref{i:5.4.4}.
 \end{proof}
 
@@ -437,7 +433,7 @@
   Prove the remaining claims in \cref{i:5.4.7}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{i:ex:5.4.2}]
   See \cref{i:5.4.7}.
 \end{proof}
 
@@ -446,46 +442,41 @@
   (This integer \(N\) is called the \emph{integer part} of \(x\), and is sometimes denoted \(N = \floor{x}\).)
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{i:ex:5.4.3}]
   We first prove the existence of the integer \(N\).
   By \cref{i:5.4.4}, exactly one of the following three statements is true:
   \begin{itemize}
     \item \(x = 0\).
           Then we choose \(N = 0\) so that \(0 \leq 0 < 1\).
     \item \(x\) is positive.
-          Then by \cref{i:5.4.12} \(\exists q \in \Q^+\) and \(\exists N_1' \in \Z^+\) such that \(q \leq x \leq N_1'\).
+          Then by \cref{i:5.4.12} there exist some \(q \in \Q^+\) and \(N_1' \in \Z^+\) such that \(q \leq x \leq N_1'\).
           Let \(N_1 = N_1' + 1\).
           Then we have \(x < N_1\).
-          By \cref{i:4.4.1} we know that \(\exists N_2 \in \Z\) such that \(N_2 \leq q\), thus by \cref{i:5.4.7}(c) we have \(N_2 \leq x < N_1\).
+          By \cref{i:4.4.1} we know that there exists an \(N_2 \in \Z\) such that \(N_2 \leq q\), thus by \cref{i:5.4.7}(c) we have \(N_2 \leq x < N_1\).
           Let \(X\) be the set
           \[
-            X = \set{n \in \Z : N_2 \leq n < N_1}
+            X = \set{n \in Z : N_2 \leq n \leq x < N_1}.
           \]
-          and let \(X'\) be the set
-          \[
-            X' = \set{n \in X : n \leq x < N_1}.
-          \]
-          We know that \(X, X'\) is finite since \(\#(X) = N_1 - N_2 + 1 \geq 1\) and \(X' \subseteq X\) (by \cref{i:3.6.14}(c)).
-          We also know that \(X, X'\) is non-empty since \(N_2 \in X'X\).
-          By \cref{i:ac:5.4.1} we know that \(\exists!\ \max(X') \in X'\).
-          Let \(N = \max(X')\).
-          By the definition of \(X'\) we know that \(N \leq x < N_1\).
-          We must also have \(x < N + 1\), otherwise if \(N + 1 \leq x\) then \(\max(X') = N + 1\), a contradiction.
+          We know that \(X\) is finite since \(X \subseteq \Z_{N_2 \leq N_1}\) and \(\Z_{N_2 \leq N_1}\) is finite (\cref{i:3.6.14}(c)).
+          We also know that \(X\) is non-empty since \(N_2 \in X\).
+          By \cref{i:ac:5.4.1} we know that there exists an unique \(\max(X) \in X\).
+          Let \(N = \max(X)\).
+          By the definition of \(X\) we know that \(N \leq x < N_1\).
+          We must have \(x < N + 1\), otherwise if \(N + 1 \leq x\) then we would have \(N + 1 \in X\), which means \(N + 1 \leq \max(X) = N\), a contradiction.
           Thus we have \(N \leq x < N + 1\).
     \item \(x\) is negative.
-          Then we have
-          \begin{align*}
-                     & -x > 0                                  &  & \by{i:5.4.4}             \\
-            \implies & \exists M \in \Z^+ : M1 = M > x         &  & \by{i:5.4.13}            \\
-            \implies & x + M > 0                               &  & \by{i:5.4.7}[d]          \\
-            \implies & \exists N \in \Z : N \leq x + M < N + 1 &  & \text{(from case above)} \\
-            \implies & N - M \leq x < N - M + 1.
-          \end{align*}
+          Then by \cref{i:5.4.4} we know that \(-x\) is positive.
+          By \cref{i:5.4.13} we know that there exists an \(M \in \Z^+\) such that \(-x < 1M = M\).
+          Fix such \(M\).
+          By \cref{i:5.4.7}(d) we know that \(0 < x + M\).
+          From the above case we know that there exists an \(K \in \Z\) such that \(K \leq x + M < K + 1\).
+          So by setting \(N = K - M\) we see that \(N \leq x < N + 1\).
   \end{itemize}
-  From all cases above we conclude that \(\exists N \in \Z : N \leq x < N + 1\).
+  From all cases above we conclude that for all \(x \in \R\), there exists an \(N \in \Z\) such that \(N \leq x < N + 1\).
 
   Now we prove the uniqueness of the integer \(N\).
-  Suppose that \(\exists N_1, N_2 \in \Z\) such that \(N_1 \leq x < N_1 + 1\) and \(N_2 \leq x < N_2 + 1\).
+  Let \(x \in \R\).
+  Suppose that there exist some \(N_1, N_2 \in \Z\) such that \(N_1 \leq x < N_1 + 1\) and \(N_2 \leq x < N_2 + 1\).
   Then we have
   \begin{align*}
              & (N_1 \leq x < N_1 + 1) \land (N_2 \leq x < N_2 + 1)                      \\
@@ -494,14 +485,14 @@
     \implies & (N_1 \leq N_2) \land (N_2 \leq N_1)                 &  & \by{i:4.1.10}   \\
     \implies & N_1 = N_2.                                          &  & \by{i:4.1.11}
   \end{align*}
-  Thus we conclude that \(\exists!\ N \in \Z : N \leq x < N + 1\).
+  Thus for all \(x \in \R\), \(N\) is unique and \(\floor{x}\) is well-defined.
 \end{proof}
 
 \begin{ex}\label{i:ex:5.4.4}
   Show that for any positive real number \(x > 0\) there exists a positive integer \(N\) such that \(x > 1 / N > 0\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{i:ex:5.4.4}]
   We have
   \begin{align*}
              & x > 0                                                   \\
@@ -515,90 +506,77 @@
   Prove \cref{i:5.4.14}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{i:ex:5.4.5}]
   See \cref{i:5.4.14}.
 \end{proof}
 
 \begin{ex}\label{i:ex:5.4.6}
-  Let \(x, y\) be real numbers and let \(\varepsilon > 0\) be a positive real.
+  Let \(x, y \in \R\) and let \(\varepsilon \in \R^+\).
   Show that \(\abs{x - y} < \varepsilon\) iff \(y - \varepsilon < x < y + \varepsilon\), and that \(\abs{x - y} \leq \varepsilon\) iff \(y - \varepsilon \leq x \leq y + \varepsilon\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{i:ex:5.4.6}]
   We first show that \(\abs{x - y} < \varepsilon \iff y - \varepsilon < x < y + \varepsilon\).
   \begin{align*}
-         & \abs{x - y} < \varepsilon                                                                                       \\
-    \iff & \big(-(x - y) \leq x - y < \varepsilon\big) \lor \big(x - y \leq -(x - y) < \varepsilon\big) &  & \by{i:5.4.5}  \\
-    \iff & (x - y < \varepsilon) \land (-(x - y) < \varepsilon)                                                            \\
-    \iff & (x - y < \varepsilon) \land (y - x < \varepsilon)                                            &  & \by{i:5.3.11} \\
-    \iff & (x < y + \varepsilon) \land (y - \varepsilon < x)                                            &  & \by{i:5.4.7}  \\
-    \iff & y - \varepsilon < x < y + \varepsilon.                                                       &  & \by{i:5.4.7}
+         & \abs{x - y} < \varepsilon                                                                               \\
+    \iff & \pa{-(x - y) \leq x - y < \varepsilon} \lor \pa{x - y \leq -(x - y) < \varepsilon} &  & \by{i:5.4.5}    \\
+    \iff & (x - y < \varepsilon) \land (-(x - y) < \varepsilon)                               &  & \by{i:5.4.7}[a] \\
+    \iff & (x - y < \varepsilon) \land (y - x < \varepsilon)                                  &  & \by{i:5.3.11}   \\
+    \iff & (x < y + \varepsilon) \land (y - \varepsilon < x)                                  &  & \by{i:5.4.7}[d] \\
+    \iff & y - \varepsilon < x < y + \varepsilon.                                             &  & \by{i:5.4.7}[c]
   \end{align*}
 
   Now we show that \(\abs{x - y} \leq \varepsilon \iff y - \varepsilon \leq x \leq y + \varepsilon\).
-  Since
-  \begin{align*}
-         & \abs{x - y} = \varepsilon                                              \\
-    \iff & (x - y = \varepsilon) \lor (-(x - y) = \varepsilon) &  & \by{i:5.4.5}  \\
-    \iff & (x = y + \varepsilon) \lor (x = y - \varepsilon),   &  & \by{i:5.3.11}
-  \end{align*}
-  we have
-  \begin{align*}
-         & \abs{x - y} \leq \varepsilon                                                                             \\
-    \iff & (\abs{x - y} < \varepsilon) \land (\abs{x - y} = \varepsilon)                                            \\
-    \iff & (y - \varepsilon < x < y + \varepsilon) \land \big((x = y + \varepsilon) \lor (x = y - \varepsilon)\big) \\
-    \iff & (y - \varepsilon \leq x < y + \varepsilon) \lor (y - \varepsilon < x \leq y + \varepsilon)               \\
-    \iff & y - \varepsilon \leq x \leq y + \varepsilon.
-  \end{align*}
+  By replacing \(<\) with \(\leq\) in the above argument we are done.
 \end{proof}
 
 \begin{ex}\label{i:ex:5.4.7}
-  Let \(x\) and \(y\) be real numbers.
-  Show that \(x \leq y + \varepsilon\) for all real numbers \(\varepsilon > 0\) iff \(x \leq y\).
-  Show that \(\abs{x - y} \leq \varepsilon\) for all real numbers \(\varepsilon > 0\) iff \(x = y\).
+  Let \(x, y \in \R\).
+  Show that \(x \leq y + \varepsilon\) for all \(\varepsilon \in \R^+\) iff \(x \leq y\).
+  Show that \(\abs{x - y} \leq \varepsilon\) for all \(\varepsilon \in \R^+\) iff \(x = y\).
 \end{ex}
 
-\begin{proof}
-  We first show that \(x \leq y + \varepsilon\) for all real numbers \(\varepsilon > 0\) iff \(x \leq y\).
+\begin{proof}[\pf{i:ex:5.4.7}]
+  We first show that \(x \leq y + \varepsilon\) for all \(\varepsilon \in \R^+\) iff \(x \leq y\).
   \begin{align*}
-         & \forall \varepsilon \in \R^+, x \leq y + \varepsilon                   \\
-    \iff & \forall \varepsilon \in \R^+, x - y \leq \varepsilon &  & \by{i:5.4.7} \\
-    \iff & \lnot (x - y > 0)                                                      \\
-    \iff & x - y \leq 0                                         &  & \by{i:5.4.7} \\
-    \iff & x \leq y.                                            &  & \by{i:5.4.6}
+         & \forall \varepsilon \in \R^+, x \leq y + \varepsilon                      \\
+    \iff & \forall \varepsilon \in \R^+, x - y \leq \varepsilon &  & \by{i:5.4.7}[d] \\
+    \iff & \lnot (x - y > 0)                                                         \\
+    \iff & x - y \leq 0                                         &  & \by{i:5.4.7}[a] \\
+    \iff & x \leq y.                                            &  & \by{i:5.4.7}[d]
   \end{align*}
 
-  Now we show that \(\abs{x - y} \leq \varepsilon\) for all real numbers \(\varepsilon > 0\) iff \(x = y\).
+  Now we show that \(\abs{x - y} \leq \varepsilon\) for all \(\varepsilon \in \R^+\) iff \(x = y\).
   \begin{align*}
-         & \forall \varepsilon \in \R^+, \abs{x - y} \leq \varepsilon                                     \\
-    \iff & \forall \varepsilon \in \R^+, y - \varepsilon \leq x \leq y + \varepsilon &  & \by{i:ex:5.4.6} \\
-    \iff & (x \leq y) \land (y \leq x)                                                                    \\
-    \iff & x = y.                                                                    &  & \by{i:5.3.11}
+         & \forall \varepsilon \in \R^+, \abs{x - y} \leq \varepsilon                                                   \\
+    \iff & \forall \varepsilon \in \R^+, y - \varepsilon \leq x \leq y + \varepsilon &  & \by{i:ex:5.4.6}               \\
+    \iff & (x \leq y) \land (y \leq x)                                               &  & \text{(from the proof above)} \\
+    \iff & x = y.                                                                    &  & \by{i:5.4.7}[a]
   \end{align*}
 \end{proof}
 
 \begin{ex}\label{i:ex:5.4.8}
   Let \((a_n)_{n = 1}^{\infty}\) be a Cauchy sequence of rationals, and let \(x\) be a real number.
-  Show that if \(a_n \leq x\) for all \(n \geq 1\), then \(\LIM_{n \to \infty} a_n \leq x\).
-  Similarly, show that if \(a_n \geq x\) for all \(n \geq 1\), then \(\LIM_{n \to \infty} a_n \geq x\).
+  Show that if \(a_n \leq x\) for all \(n \in \Z^+\), then \(\LIM_{n \to \infty} a_n \leq x\).
+  Similarly, show that if \(a_n \geq x\) for all \(n \in \Z^+\), then \(\LIM_{n \to \infty} a_n \geq x\).
 \end{ex}
 
-\begin{proof}
-  We first show that if \(a_n \leq x\) for all \(n \geq 1\), then \(\LIM_{n \to \infty} a_n \leq x\).
+\begin{proof}[\pf{i:ex:5.4.8}]
+  We first show that if \(a_n \leq x\) for all \(n \in \Z^+\), then \(\LIM_{n \to \infty} a_n \leq x\).
   Let \(a = \LIM_{n \to \infty} a_n\).
   Suppose for sake of contradiction that \(a > x\).
-  Then by \cref{i:5.4.14}, \(\exists q \in \Q\) such that \(a > q > x\).
-  Since \(q > x\), we have \(a_n \leq x < q\) for all \(n \geq 1\).
+  Then by \cref{i:5.4.14}, there exists a \(q \in \Q\) such that \(a > q > x\).
+  Since \(q > x\), we have \(a_n \leq x < q\) for all \(n \in \Z^+\).
   But by \cref{i:5.4.10} we have \(a = \LIM_{n \to \infty} a_n \leq \LIM_{n \to \infty} q = q\), which contradict to \(a > q\).
   Thus we must have \(a \leq x\).
 
-  Now we show that if \(a_n \geq x\) for all \(n \geq 1\), then \(\LIM_{n \to \infty} a_n \geq x\).
-  We have
+  Now we show that if \(a_n \geq x\) for all \(n \in \Z^+\), then \(\LIM_{n \to \infty} a_n \geq x\).
+  This is true since
   \begin{align*}
              & a_n \geq x                                                      \\
-    \implies & -a_n \leq -x                     &  & \by{i:5.4.7}              \\
+    \implies & -a_n \leq -x                     &  & \by{i:ex:4.2.6}           \\
     \implies & \LIM_{n \to \infty} -a_n \leq -x &  & \text{(from proof above)} \\
     \implies & -\LIM_{n \to \infty} a_n \leq -x &  & \by{i:5.3.10}             \\
-    \implies & \LIM_{n \to \infty} a_n \geq x.  &  & \by{i:5.4.7}
+    \implies & \LIM_{n \to \infty} a_n \geq x.  &  & \by{i:ex:4.2.6}
   \end{align*}
 \end{proof}
