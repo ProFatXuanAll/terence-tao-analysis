@@ -12,12 +12,12 @@
   (More precisely, \(\R^+\) has no upper bounds which are real numbers.)
 \end{eg}
 
-\begin{proof}
-  Suppose for sake of contradiction that \(\exists M \in \R\) such that \(M\) is an upper bound for \(\R^+\).
-  Then \(\forall x \in \R^+\) we have \(x \leq M\).
+\begin{proof}[\pf{i:5.5.3}]
+  Suppose for sake of contradiction that there exists an \(M \in \R\) such that \(M\) is an upper bound for \(\R^+\).
+  Then we have \(x \leq M\) for all \(x \in \R^+\).
   Since \(x > 0\), by \cref{i:5.4.7} we have \(M > 0\), thus \(M \in \R^+\).
-  But this means \(M + 1 > M\) and \(M + 1 \in \R^+\), and we must have \(M > M + 1\), a contradiction.
-  Thus \(\nexists M \in \R\) such that \(M\) is an upper bound for \(\R^+\).
+  But this means \(M + 1 \in \R^+\), and we must have \(M > M + 1\), a contradiction.
+  Thus such \(M\) does not exist and \(\R^+\) has no upper bounds in \(\R\).
 \end{proof}
 
 \begin{eg}\label{i:5.5.4}
@@ -29,6 +29,7 @@
 \begin{note}
   It is clear that if \(M\) is an upper bound of \(E\), then any larger number \(M' \geq M\) is also an upper bound of \(E\).
   On the other hand, it is not so clear whether it is also possible for any number smaller than \(M\) to also be an upper bound of \(E\).
+  This motivates the \cref{i:5.5.5}.
 \end{note}
 
 \begin{defn}[Least upper bound]\label{i:5.5.5}
@@ -45,9 +46,9 @@
   The empty set does not have a least upper bound.
 \end{eg}
 
-\begin{proof}
-  Suppose for sake of contradiction that \(\exists M \in \R\) such that \(M\) is a least upper bound of \(\emptyset\).
-  By \cref{i:5.5.5} we know that \(\forall x \in \emptyset\), \(x \leq M\).
+\begin{proof}[\pf{i:5.5.7}]
+  Suppose for sake of contradiction that there exists an \(M \in \R\) such that \(M\) is a least upper bound of \(\emptyset\).
+  By \cref{i:5.5.5} we know that \(x \leq M\) for all \(x \in \emptyset\).
   But by \cref{i:5.5.4} we know that \(M - 1\) is also a upper bound of \(\emptyset\), so by \cref{i:5.5.5} we have \(M < M - 1\), a contradiction.
   Thus \(\emptyset\) does not have a least upper bound.
 \end{proof}
@@ -57,7 +58,7 @@
   Then \(E\) can have at most one least upper bound.
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{i:5.5.8}]
   Let \(M_1\) and \(M_2\) be two least upper bounds of \(E\).
   Since \(M_1\) is a least upper bound and \(M_2\) is an upper bound, then by definition of least upper bound we have \(M_2 \geq M_1\).
   Since \(M_2\) is a least upper bound and \(M_1\) is an upper bound, we similarly have \(M_1 \geq M_2\).
@@ -70,28 +71,28 @@
   If \(E\) has an upper bound (i.e., \(E\) has some upper bound \(M\)), then it must have exactly one least upper bound.
 \end{thm}
 
-\begin{proof}
+\begin{proof}[\pf{i:5.5.9}]
   Let \(E\) be a non-empty subset of \(\R\) with an upper bound \(M\).
   By \cref{i:5.5.8}, we know that \(E\) has at most one least upper bound;
   we have to show that \(E\) has at least one least upper bound.
   Since \(E\) is non-empty, we can choose some element \(x_0\) in \(E\).
 
-  Let \(n \geq 1\) be a positive integer.
+  Let \(n \in \Z^+\).
   We know that \(E\) has an upper bound \(M\).
-  By the Archimedean property (\cref{i:5.4.13}), we can find an integer \(K\) such that \(K / n \geq M\), and hence \(K / n\) is also an upper bound for \(E\).
+  By the Archimedean property (\cref{i:5.4.13}), we can find a \(K \in \Z^+\) such that \(K / n \geq M\), and hence \(K / n\) is also an upper bound for \(E\).
   (Note that \(K\) is positive, and \(M\) can be either zero or negative, but \(K / n\) is positive, so we are fine.)
-  By the Archimedean property again, there exists another integer \(L\) such that \(L / n < x_0\).
+  By the Archimedean property again, there exists another \(L \in \Z\) such that \(L / n < x_0\).
   (Note that if \(x_0 \geq 0\), then we can set \(L = -1\); if \(x_0 < 0\), then \(-x_0\) is positive, so by Archimedean property we have some \(-L \in \Z^+\) such that \(-L / n > -x_0\).)
   Since \(x_0\) lies in \(E\), we see that \(L / n\) is not an upper bound for \(E\).
-  Since \(K / n\) is an upper bound but \(L / n\) is not, we see that \(K \geq L\).
+  Since \(K / n\) is an upper bound but \(L / n\) is not, we see that \(K > L\).
 
   Since \(K / n\) is an upper bound for \(E\) and \(L / n\) is not, we can find an integer \(L < m_n \leq K\) with the property that \(m_n / n\) is an upper bound for \(E\), but \((m_n - 1) / n\) is not (see \cref{i:ex:5.5.2}).
   In fact, this integer \(m_n\) is unique (\cref{i:ex:5.5.3}).
   We subscript \(m_n\) by \(n\) to emphasize the fact that this integer \(m\) depends on the choice of \(n\).
   This gives a well-defined (and unique) sequence \(m_1, m_2, m_3, \dots\) of integers, with each of the \(m_n / n\) being upper bounds and each of the \((m_n - 1) / n\) not being upper bounds.
 
-  Now let \(N \geq 1\) be a positive integer, and let \(n, n' \geq N\) be integers larger than or equal to \(N\).
-  Since \(m_n / n\) is an upper bound for \(E\) and \((m_{n'} - 1) / n'\) is not, we must have \(m_n / n > (m_{n'} - 1) / n'\).
+  Now let \(N \in \Z^+\), and let \(n, n' \in \Z_{\geq N}\).
+  Since \(m_n / n\) is an upper bound for \(E\) and \((m_{n'} - 1) / n'\) is not, by \cref{i:5.5.1} we must have \(m_n / n > (m_{n'} - 1) / n'\).
   After a little algebra, this implies that
   \[
     \dfrac{m_n}{n} - \dfrac{m_{n'}}{n'} > -\dfrac{1}{n'} \geq -\dfrac{1}{N}.
@@ -116,13 +117,13 @@
   To finish the proof of the theorem, we need to show that \(S\) is the least upper bound for \(E\).
   First we show that it is an upper bound.
   Let \(x\) be any element of \(E\).
-  Then, since \(m_n / n\) is an upper bound for \(E\), we have \(x \leq m_n / n\) for all \(n \geq 1\).
+  Then, since \(m_n / n\) is an upper bound for \(E\), we have \(x \leq m_n / n\) for all \(n \in \Z^+\).
   Applying \cref{i:ex:5.4.8}, we conclude that \(x \leq \LIM_{n \to \infty} m_n / n = S\).
   Thus \(S\) is indeed an upper bound for \(E\).
 
   Now we show it is a least upper bound.
   Suppose \(y\) is an upper bound for \(E\).
-  Since \((m_n - 1) / n\) is not an upper bound, we conclude that \(y \geq (m_n - 1) / n\) for all \(n \geq 1\).
+  Since \((m_n - 1) / n\) is not an upper bound, we conclude that \(y \geq (m_n - 1) / n\) for all \(n \in \Z^+\).
   Applying \cref{i:ex:5.4.8}, we conclude that \(y \geq \LIM_{n \to \infty} (m_n - 1) / n = S\).
   Thus the upper bound \(S\) is less than or equal to every upper bound of \(E\), and \(S\) is thus a least upper bound of \(E\).
 \end{proof}
@@ -140,7 +141,7 @@
 \begin{rmk}\label{i:5.5.11}
   At present, \(+\infty\) and \(-\infty\) are meaningless symbols;
   we have no operations on them at present, and none of our results involving real numbers apply to \(+\infty\) and \(-\infty\), because these are not real numbers.
-  In Section 6.2 we add \(+\infty\) and \(-\infty\) to the reals to form the \emph{extended real number system}, but this system is not as convenient to work with as the real number system, because many of the laws of algebra break down.
+  In \cref{i:sec:6.2} we add \(+\infty\) and \(-\infty\) to the reals to form the \emph{extended real number system}, but this system is not as convenient to work with as the real number system, because many of the laws of algebra break down.
   For instance, it is not a good idea to try to define \(+\infty + -\infty\);
   setting this equal to \(0\) causes some problems.
 \end{rmk}
@@ -149,8 +150,8 @@
   There exists a positive real number \(x\) such that \(x^2 = 2\).
 \end{prop}
 
-\begin{proof}
-  Let \(E\) be the set \(\set{y \in R : y \geq 0 \text{ and } y^2 < 2}\);
+\begin{proof}[\pf{i:5.5.12}]
+  Let \(E\) be the set \(\set{y \in \R : y \geq 0 \text{ and } y^2 < 2}\);
   thus \(E\) is the set of all non-negative real numbers whose square is less than \(2\).
   Observe that \(E\) has an upper bound of \(2\) (because if \(y > 2\), then \(y^2 > 4 > 2\) and hence \(y \notin E\)).
   Also, \(E\) is non-empty (for instance, \(1\) is an element of \(E\)).
@@ -163,25 +164,24 @@
   We argue this by contradiction.
   We show that both \(x^2 < 2\) and \(x^2 > 2\) lead to contradictions.
   First suppose that \(x^2 < 2\).
-  Let \(0 < \varepsilon < 1\) be a small number;
+  Let \(\varepsilon \in \Q_{0 < 1}\) be a small number;
   then we have
   \[
     (x + \varepsilon)^2 = x^2 + 2\varepsilon x + \varepsilon^2 \leq x^2 + 4\varepsilon + \varepsilon = x^2 + 5\varepsilon
   \]
   since \(x \leq 2\) and \(\varepsilon^2 \leq \varepsilon\).
-  Since \(x^2 < 2\), we see that we can choose an \(0 < \varepsilon < 1\) such that \(x^2 + 5\varepsilon < 2\), thus \((x + \varepsilon)^2 < 2\).
-  (By \cref{i:5.4.14}, \(\exists q \in \Q\) such that \(x^2 < q < 2\))
+  Since \(x^2 < 2\), we see that we can use the Archimedean property (\cref{i:5.4.13}) to choose an \(\varepsilon \in \Q_{0 < 1}\) such that \(x^2 + 5\varepsilon < 2\), thus \((x + \varepsilon)^2 < 2\).
   By construction of \(E\), this means that \(x + \varepsilon \in E\);
   but this contradicts the fact that \(x\) is an upper bound of \(E\).
 
   Now suppose that \(x^2 > 2\).
-  Let \(0 < \varepsilon < 1\) be a small number;
+  Let \(\varepsilon \in \Q_{0 < 1}\) be a small number;
   then we have
   \[
     (x - \varepsilon)^2 = x^2 - 2\varepsilon x + \varepsilon^2 \geq x^2 - 2\varepsilon x \geq x^2 - 4\varepsilon
   \]
   since \(x \leq 2\) and \(\varepsilon^2 \geq 0\).
-  Since \(x^2 > 2\), we can choose \(0 < \varepsilon < 1\) such that \(x^2 - 4\varepsilon > 2\), and thus \((x - \varepsilon)^2 > 2\).
+  Since \(x^2 > 2\), we can choose \(\varepsilon \in \Q_{0 < 1}\) such that \(x^2 - 4\varepsilon > 2\), and thus \((x - \varepsilon)^2 > 2\).
   But then this implies that \(x - \varepsilon \geq y\) for all \(y \in E\).
   (Why? If \(x - \varepsilon < y\) then \((x - \varepsilon)^2 < y^2 \leq 2\), a contradiction.)
   Thus \(x - \varepsilon\) is an upper bound for \(E\), which contradicts the fact that \(x\) is the \emph{least} upper bound of \(E\).
@@ -190,18 +190,19 @@
 
 \begin{rmk}\label{i:5.5.13}
   Comparing \cref{i:5.5.12} with \cref{i:4.4.4}, we see that certain numbers are real but not rational.
-  The proof of this proposition also shows that the rationals \(\Q\) do not obey the least upper bound property, otherwise one could use that property to construct a square root of \(2\), which by \cref{i:4.4.4} is not possible.
+  The proof of \cref{i:5.5.12} also shows that the rationals \(\Q\) do not obey the least upper bound property, otherwise one could use that property to construct a square root of \(2\), which by \cref{i:4.4.4} is not possible.
 \end{rmk}
 
 \begin{rmk}\label{i:5.5.14}
-  In Chapter 6 we will use the least upper bound property to develop the theory of limits, which allows us to do many more things than just take square roots.
+  In \cref{i:ch:6} we will use the least upper bound property to develop the theory of limits, which allows us to do many more things than just take square roots.
 \end{rmk}
 
 \begin{rmk}\label{i:5.5.15}
   We can of course talk about lower bounds, and greatest lower bounds, of sets \(E\);
   the greatest lower bound of a set \(E\) is also known as the \emph{infimum} of \(E\) and is denoted \(\inf(E)\) or \(\inf E\).
   Everything we say about suprema has a counterpart for infima;
-  we will usually leave such statements to the reader.
+  A precise relationship between the two notions is given by \cref{i:ex:5.5.1}.
+  See also \cref{i:sec:6.2}.
 \end{rmk}
 
 \begin{note}
@@ -217,21 +218,31 @@
   Let \(E\) be a subset of the real numbers \(\R\), and suppose that \(E\) has a least upper bound \(M\) which is a real number, i.e., \(M = \sup(E)\).
   Let \(-E\) be the set
   \[
-    -E \coloneqq \set{-x : x \in E}
+    -E \coloneqq \set{-x : x \in E}.
   \]
   Show that \(-M\) is the greatest lower bound of \(-E\), i.e., \(-M = \inf(-E)\).
 \end{ex}
 
-\begin{proof}
-  We first show that \(-M\) is a greatest lower bound for \(-E\).
+\begin{proof}[\pf{i:ex:5.5.1}]
+  We first show that \(-M\) is a lower bound for \(-E\).
+  This is true since
+  \begin{align*}
+             & \forall x \in E, x \leq M           &  & \by{i:5.5.1}  \\
+    \implies & \forall x \in E, -x \geq -M         &  & \by{i:5.4.7}  \\
+    \implies & \forall -x \in -E, -x \geq -M                          \\
+    \implies & -M \text{ is a lower bound of } -E. &  & \by{i:5.5.15}
+  \end{align*}
+
+  Next we show that \(-M\) is a greatest lower bound for \(-E\).
   Let \(L \in \R\) be any lower bound for \(-E\).
   Then we have
   \begin{align*}
-             & \forall -x \in -E, L \leq -x                                   \\
-    \implies & x \leq -L                                    &  & \by{i:5.4.7} \\
-    \implies & x \leq M \leq -L                             &  & \by{i:5.5.5} \\
-    \implies & L \geq -M \geq -x                            &  & \by{i:5.4.7} \\
-    \implies & -M \text{ is a greatest lower bound of } -E.
+             & \forall x \in E, L \leq -x                                      \\
+    \implies & \forall x \in E, x \leq -L                   &  & \by{i:5.4.7}  \\
+    \implies & -L \text{ is an upper bound of } E           &  & \by{i:5.5.1}  \\
+    \implies & M \leq -L                                    &  & \by{i:5.5.5}  \\
+    \implies & -M \geq L                                    &  & \by{i:5.4.7}  \\
+    \implies & -M \text{ is a greatest lower bound of } -E. &  & \by{i:5.5.15}
   \end{align*}
 
   Now we show that the greatest lower bound is unique.
@@ -241,74 +252,78 @@
 \end{proof}
 
 \begin{ex}\label{i:ex:5.5.2}
-  Let \(E\) be a non-empty subset of \(\R\), let \(n \geq 1\) be an integer, and let \(L < K\) be integers.
+  Let \(E\) be a non-empty subset of \(\R\), let \(n \in \Z^+\), and let \(L < K\) be integers.
   Suppose that \(K / n\) is an upper bound for \(E\), but that \(L / n\) is not an upper bound for \(E\).
   Without using \cref{i:5.5.9}, show that there exists an integer \(L < m \leq K\) such that \(m / n\) is an upper bound for \(E\), but that \((m - 1) / n\) is not an upper bound for \(E\).
 \end{ex}
 
-\begin{proof}
-  Let \(d = K - L\), so \(d\) is positive by \cref{i:4.1.10}.
-  Now we use induction on \(d\) to show that for all \(d \in \Z^+\), \(\exists m \in \Z\) such that \(L < m \leq K\) and \(m / n\) is an upper bound for \(E\), but that \((m - 1) / n\) is not an upper bound for \(E\).
+\begin{proof}[\pf{i:ex:5.5.2}]
+  Let \(d = K - L\), so \(d\) is positive by \cref{i:4.1.11}(a).
+  Now we induct on \(d\) to show that for every \(d \in \Z^+\), there exists an \(m \in \Z_{> L} \cap \Z_{\leq K}\) such that \(m / n\) is an upper bound for \(E\), but that \((m - 1) / n\) is not.
   We start with \(d = 1\).
   For \(d = 1\), we have \(K - 1 = L\).
   Then let \(m = K\).
-  So by hypothesis we have \(L < m = K \leq K\), \(m / n = K / n\) is an upper bound for \(E\) and \((m - 1) / n = (K - 1) / n = L / n\) is not an upper bound for \(E\).
+  So by hypothesis we have \(m = K \in \Z_{> L} \cap \Z_{\leq K}\), \(m / n = K / n\) is an upper bound for \(E\), and \((m - 1) / n = (K - 1) / n = L / n\) is not an upper bound for \(E\).
   Thus the base case holds.
-  Suppose inductively that the statement holds for some \(d \geq 1\).
-  Then for \(d + 1\), we need to show that the statement is also true.
-  We have \(K - L = d + 1\).
+  Suppose inductively that the statement holds for some \(d \in \Z^+\).
+  Now we show that for \(d + 1\) the statement is also true.
+  So suppose that for some \(K, L \in \Z\), we have \(K - L = d + 1\), \(K / n\) is an upper bound of \(E\), but \(L / n\) is not.
   Since \(K / n\) is an upper bound for \(E\), we can ask whether \((K - 1) / n\) is an upper bound for \(E\).
-  If \((K - 1) / n\) is not an upper bound for \(E\), then we can choose \(m = K\) and we are done.
-  If \((K - 1) / n\) is an upper bound for \(E\), then we know that \(L = K - 1 - d < K - 1\) since \(d \geq 1\).
-  Since \(K - 1 - L = d\), by induction hypothesis \(\exists m \in \Z\) such that \(L < m \leq K - 1\) and \(m / n\) is an upper bound for \(E\), but \((m - 1) / n\) is not an upper bound for \(E\).
+  \begin{itemize}
+    \item If \((K - 1) / n\) is not an upper bound for \(E\), then we can choose \(m = K\) and we are done.
+    \item If \((K - 1) / n\) is an upper bound for \(E\), then by \cref{i:5.5.1} we have \(L < K - 1\).
+          Since \(K - 1 - L = d\), by induction hypothesis we know that there exists an \(m \in \Z_{> L} \cap \Z_{\leq K}\) such that \(m / n\) is an upper bound for \(E\), but \((m - 1) / n\) is not.
+  \end{itemize}
+  From all cases above we found an \(m \in \Z_{> L} \cap \Z_{\leq K}\) such that \(m / n\) is an upper bound for \(E\), but \((m - 1) / n\) is not.
   This closes the induction.
 \end{proof}
 
 \begin{ex}\label{i:ex:5.5.3}
-  Let \(E\) be a non-empty subset of \(\R\), let \(n \geq 1\) be an integer, and let \(m, m'\) be integers with the properties that \(m / n\) and \(m' / n\) are upper bounds for \(E\), but \((m - 1) / n\) and \((m' - 1) / n\) are not upper bounds for \(E\).
+  Let \(E\) be a non-empty subset of \(\R\), let \(n \in \Z^+\), and let \(m, m' \in \Z\) with the properties that \(m / n\) and \(m' / n\) are upper bounds for \(E\), but \((m - 1) / n\) and \((m' - 1) / n\) are not upper bounds for \(E\).
   Show that \(m = m'\).
   This shows that the integer \(m\) constructed in \cref{i:ex:5.5.2} is unique.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{i:ex:5.5.3}]
   Suppose for sake of contradiction that \(m \neq m'\).
-  Then by \cref{i:4.1.11}, we have either \(m < m'\) or \(m > m'\), but not both.
+  Then by \cref{i:4.1.11}(f) we have either \(m < m'\) or \(m > m'\).
   \begin{itemize}
-    \item If \(m < m'\), then by \cref{i:4.1.11}(e) we have \(m - 1 < m \leq m' - 1\).
-          Again by \cref{i:4.1.11}(e) we have \(m / n \leq (m' - 1) / n\), which means \((m' - 1) / n\) is also a upper bound for \(E\), a contradiction.
-    \item If \(m > m'\), then by \cref{i:4.1.10} we have \(m' < m\).
-          Using similar proof as above we can show that \((m - 1) / n\) is also a upper bound for \(E\), a contradiction.
+    \item If \(m < m'\), then we have \(m \leq m' - 1\).
+          By \cref{i:4.2.9}(e) we have \(m / n \leq (m' - 1) / n\), which means \((m' - 1) / n\) is an upper bound for \(E\).
+          But this contradict to the hypothesis.
+    \item If \(m > m'\), then by switching the row of \(m\) and \(m'\) in the previous case we can also derive contradiction.
   \end{itemize}
+  From all cases above we derive contradictions.
   Thus we must have \(m = m'\).
 \end{proof}
 
 \begin{ex}\label{i:ex:5.5.4}
-  Let \(q_1, q_2, q_3, \dots\) be a sequence of rational numbers with the property that \(\abs{q_n - q_{n'}} \leq \dfrac{1}{M}\) whenever \(M \geq 1\) is an integer and \(n, n' \geq M\).
-  Show that \(q_1, q_2, q_3, \dots\) is a Cauchy sequence.
-  Furthermore, if \(S \coloneqq \LIM_{n \to \infty} q_n\), show that \(\abs{q_M - S} \leq \dfrac{1}{M}\) for every \(M \geq 1\).
+  Let \((q_n)_{n = 1}^\infty\) be a sequence of rational numbers with the property that \(\abs{q_n - q_{n'}} \leq \dfrac{1}{M}\) whenever \(M \in \Z^+\) and \(n, n' \in \Z_{\geq M}\).
+  Show that \((q_n)_{n = 1}^\infty\) is a Cauchy sequence.
+  Furthermore, if \(S \coloneqq \LIM_{n \to \infty} q_n\), show that \(\abs{q_M - S} \leq \dfrac{1}{M}\) for every \(M \in \Z^+\).
 \end{ex}
 
-\begin{proof}
-  We first show that \(q_1, q_2, q_3, \dots\) is a Cauchy sequence.
-  By Archimedean property (\cref{i:5.4.13}) we know that \(\forall \varepsilon \in \Q^+\), \(\exists M \in \Z^+\) such that \(M\varepsilon > 1\).
-  By \cref{i:4.2.9} we have \(\varepsilon > 1 / M\).
-  By hypothesis we have \(\forall n, n' \geq M\), \(\abs{q_n - q_{n'}} \leq \dfrac{1}{M} < \varepsilon\).
-  Since \(\varepsilon\) is arbitrary, by \cref{i:5.1.8} \((q_n)_{n = 1}^{\infty}\) is a Cauchy sequence.
+\begin{proof}[\pf{i:ex:5.5.4}]
+  We first show that \((q_n)_{n = 1}^\infty\) is a Cauchy sequence.
+  Let \(\varepsilon \in \Q^+\).
+  By Archimedean property (\cref{i:5.4.13}) we know that there exists an \(M \in \Z^+\) such that \(M \varepsilon > 1\).
+  By \cref{i:4.2.9}(e) we have \(\varepsilon > 1 / M\).
+  But by hypothesis we have \(\abs{q_n - q_{n'}} \leq \dfrac{1}{M} < \varepsilon\) for all \(n, n' \in \Z_{\geq M}\).
+  Since \(\varepsilon\) is arbitrary, by \cref{i:5.1.8} this means \((q_n)_{n = 1}^{\infty}\) is a Cauchy sequence.
 
-  Now we show that if \(S = \LIM_{n \to \infty} q_n\), then \(\abs{q_M - S} \leq \dfrac{1}{M}\) for every \(M \geq 1\).
-  From proof above we know that \((q_n)_{n = 1}^\infty\) is indeed a Cauchy sequence, thus \(S = \LIM_{n \to \infty} q_n\) is well-defined.
+  Now we show that if \(S = \LIM_{n \to \infty} q_n\), then \(\abs{q_M - S} \leq \dfrac{1}{M}\) for every \(M \in \Z^+\).
+  From the proof above we know that \((q_n)_{n = 1}^\infty\) is a Cauchy sequence, thus \(S = \LIM_{n \to \infty} q_n\) is well-defined.
   By hypothesis we have \(\abs{q_M - q_n} \leq 1 / M\) for all \(M \in \Z^+\) and for all \(n \geq M\).
   Then we have
   \begin{align*}
-             & \abs{q_M - q_n} \leq 1 / M                                                      \\
-    \implies & \abs{q_n - q_M} \leq 1 / M                                 &  & \by{i:4.3.1}    \\
-    \implies & -1 / M \leq q_n - q_M \leq 1 / M                           &  & \by{i:4.3.3}[c] \\
-    \implies & -1 / M + q_M \leq q_n \leq 1 / M + q_M                     &  & \by{i:4.2.9}[d] \\
-    \implies & -1 / M + q_M \leq \LIM_{n \to \infty} q_n \leq 1 / M + q_M &  & \by{i:ex:5.4.8} \\
-    \implies & -1 / M + q_M \leq S \leq 1 / M + q_M                                            \\
-    \implies & -1 / M \leq S - q_M \leq 1 / M                             &  & \by{i:5.4.7}    \\
-    \implies & \abs{S - q_M} \leq 1 / M                                   &  & \by{i:ex:5.4.6} \\
-    \implies & \abs{q_M - S} \leq 1 / M.                                  &  & \by{i:5.4.5}
+             & \forall M \in \Z^+, \forall n \in \Z_{\geq M}, \abs{q_M - q_n} \leq 1 / M                                  \\
+    \implies & \forall M \in \Z^+, \forall n \in \Z_{\geq M}, \abs{q_n - q_M} \leq 1 / M             &  & \by{i:4.3.1}    \\
+    \implies & \forall M \in \Z^+, \forall n \in \Z_{\geq M}, -1 / M \leq q_n - q_M \leq 1 / M       &  & \by{i:4.3.3}[c] \\
+    \implies & \forall M \in \Z^+, \forall n \in \Z_{\geq M}, -1 / M + q_M \leq q_n \leq 1 / M + q_M &  & \by{i:4.2.9}[d] \\
+    \implies & \forall M \in \Z^+, -1 / M + q_M \leq S \leq 1 / M + q_M                              &  & \by{i:ex:5.4.8} \\
+    \implies & \forall M \in \Z^+, -1 / M \leq S - q_M \leq 1 / M                                    &  & \by{i:5.4.7}[d] \\
+    \implies & \forall M \in \Z^+, \abs{S - q_M} \leq 1 / M                                          &  & \by{i:ex:5.4.6} \\
+    \implies & \forall M \in \Z^+, \abs{q_M - S} \leq 1 / M.                                         &  & \by{i:5.4.5}
   \end{align*}
 \end{proof}
 
@@ -316,12 +331,12 @@
   Establish an analogue of \cref{i:5.4.14}, in which ``rational'' is replaced by ``irrational''.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{i:ex:5.5.5}]
   Let \(x, y, z \in \R\) where \(x < y\) and \(z^2 = 2\).
-  (\(z\) is well-defined thanks to \cref{i:5.5.12})
+  (\(z\) is well-defined thanks to \cref{i:5.5.12}.)
   So by \cref{i:5.4.7} we have \(x - z < y - z\).
-  But by \cref{i:5.4.14} \(\exists q \in \Q\) such that \(x - z < q < y - z\).
-  Again by \cref{i:5.4.7} we have \(x < q + z < y\).
+  But by \cref{i:5.4.14} there exists a \(q \in \Q\) such that \(x - z < q < y - z\).
+  So by \cref{i:5.4.7} again we have \(x < q + z < y\).
   Because \(z\) is irrational, \(q + z\) is also irrational
   (otherwised we have \(a = q + z \in \Q\) and \(z = a - q \in \Q\), contradicts to \cref{i:4.4.4}).
   So we have an irrational number in between any two real numbers \(x, y\) where \(x < y\).
