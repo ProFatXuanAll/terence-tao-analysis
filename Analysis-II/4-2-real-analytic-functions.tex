@@ -27,7 +27,7 @@
   Let \(E\) be a subset of \(\R\) with the property that every element of \(E\) is a limit point of \(E\).
   We say a function \(f : E \to \R\) is \emph{once differentiable on \(E\)} iff it is differentiable, in particular \(f': E \to \R\) is also a function on \(E\).
   More generally, for any \(k \geq 2\) we say that \(f : E \to \R\) is \emph{\(k\) times differentiable on \(E\)}, or just \emph{\(k\) times differentiable}, iff \(f\) is differentiable, and \(f'\) is \(k - 1\) times differentiable.
-  If \(f\) is \(k\) times differentiable, we define the \(k^{\text{th}}\) derivative \(f^{(k)} : E \to \R\) by the recursive rule \(f^{(1)} \coloneqq f'\), and \(f^{(k)} = (f^{(k - 1)})'\) for all \(k \geq 2\).
+  If \(f\) is \(k\) times differentiable, we define the \(k^{\opTh}\) derivative \(f^{(k)} : E \to \R\) by the recursive rule \(f^{(1)} \coloneqq f'\), and \(f^{(k)} = (f^{(k - 1)})'\) for all \(k \geq 2\).
   We also define \(f^{(0)} \coloneqq f\) (this is \(f\) differentiated \(0\) times), and we allow every function to be zero times differentiable (since clearly \(f^{(0)}\) exists for every \(f\)).
   A function is said to be \emph{infinitely differentiable} (or \emph{smooth}) iff it is \(k\) times differentiable for every \(k \geq 0\).
 \end{defn}
@@ -86,7 +86,7 @@
     f(x) = \sum_{n = 0}^\infty c_n (x - a)^n
   \]
   for all \(x \in (a - r, a + r)\).
-  Then for every \(k \geq 0\), the function \(f\) is \(k\)-times differentiable on \((a - r, a + r)\), and for each \(k \geq 0\) the \(k^{\text{th}}\) derivative is given by
+  Then for every \(k \geq 0\), the function \(f\) is \(k\)-times differentiable on \((a - r, a + r)\), and for each \(k \geq 0\) the \(k^{\opTh}\) derivative is given by
   \begin{align*}
     f^{(k)}(x) & = \sum_{n = 0}^\infty c_{n + k} (n + 1) (n + 2) \dots (n + k) (x - a)^n \\
                & = \sum_{n = 0}^\infty c_{n + k} \dfrac{(n + k)!}{n!} (x - a)^n
@@ -263,12 +263,12 @@
   \]
   By induction hypothesis we know that
   \begin{align*}
-             & \dfrac{f'(x)}{n + 1} = c (x - a)^n                                                                                       \\
-    \implies & \forall 0 \leq k \leq n, \bigg(\dfrac{f'(x)}{n + 1}\bigg)^{(k)} = c \dfrac{n!}{(n - k)!} (x - a)^{n - k}                 \\
-    \implies & \forall 0 \leq k \leq n, \big(f'(x)\big)^{(k)} = c \dfrac{(n + 1)!}{(n - k)!} (x - a)^{n - k}                            \\
+             & \dfrac{f'(x)}{n + 1} = c (x - a)^n                                                                                          \\
+    \implies & \forall 0 \leq k \leq n, \bigg(\dfrac{f'(x)}{n + 1}\bigg)^{(k)} = c \dfrac{n!}{(n - k)!} (x - a)^{n - k}                    \\
+    \implies & \forall 0 \leq k \leq n, \big(f'(x)\big)^{(k)} = c \dfrac{(n + 1)!}{(n - k)!} (x - a)^{n - k}                               \\
     \implies & \forall 0 \leq k \leq n, f(x)^{(k + 1)} = c \dfrac{(n + 1)!}{(n - k)!} (x - a)^{n - k}                   &  & \by{ii:4.2.4} \\
-    \implies & \forall 1 \leq k \leq n + 1,                                                                                             \\
-             & f(x)^{\big((k - 1) + 1\big)} = c \dfrac{(n + 1)!}{\big(n - (k - 1)\big)!} (x - a)^{n - (k - 1)}                          \\
+    \implies & \forall 1 \leq k \leq n + 1,                                                                                                \\
+             & f(x)^{\big((k - 1) + 1\big)} = c \dfrac{(n + 1)!}{\big(n - (k - 1)\big)!} (x - a)^{n - (k - 1)}                             \\
     \implies & \forall 1 \leq k \leq n + 1, f(x)^{(k)} = c \dfrac{(n + 1)!}{(n + 1 - k)!} (x - a)^{n + 1 - k}
   \end{align*}
   and we know that
@@ -407,7 +407,7 @@
   Now we show that \(P\) is real analytic at \(a \in \R \setminus \set{0}\).
   Since \(a \neq 0\), we have
   \begin{align*}
-    \forall x \in \R, P(x) & = \sum_{i = 0}^n c_i x^i                                                                                                       \\
+    \forall x \in \R, P(x) & = \sum_{i = 0}^n c_i x^i                                                                                                          \\
                            & = \sum_{i = 0}^n c_i \bigg(\sum_{m = 0}^i \dfrac{i!}{m! (i - m)!} a^{i - m} (x - a)^m\bigg)                 &  & \by{ii:ex:4.2.5} \\
                            & = \sum_{i = 0}^n c_i \bigg(\sum_{m = 0}^i \dfrac{i!}{m! (i - m)!} a^{i - m} (x - a)^{m - i}\bigg) (x - a)^i
   \end{align*}
@@ -503,8 +503,8 @@
   Since
   \begin{align*}
              & \forall m \in \N, \lim_{n \to \infty} \bigg(\dfrac{(n + m)!}{n!}\bigg)^{\dfrac{1}{n}} = 1        &  & \by{ii:ac:4.2.1} \\
-    \implies & \forall m \in \N, \lim_{n \to \infty} \bigg(\dfrac{n!}{(n - m)!}\bigg)^{\dfrac{1}{n - m}} = 1                       \\
-    \implies & \forall m \in \N, \lim_{n \to \infty} \bigg(\dfrac{n!}{(n - m)!}\bigg)^{\dfrac{1}{n}} = 1                           \\
+    \implies & \forall m \in \N, \lim_{n \to \infty} \bigg(\dfrac{n!}{(n - m)!}\bigg)^{\dfrac{1}{n - m}} = 1                          \\
+    \implies & \forall m \in \N, \lim_{n \to \infty} \bigg(\dfrac{n!}{(n - m)!}\bigg)^{\dfrac{1}{n}} = 1                              \\
     \implies & \forall m \in \N, \lim_{n \to \infty} \bigg(\dfrac{n!}{m! (n - m)!}\bigg)^{\dfrac{1}{n}} \leq 1,
   \end{align*}
   we have
@@ -570,9 +570,9 @@
   and
   \begin{align*}
              & \forall x \in (a, a + r) \setminus (a, a + r - \varepsilon),                                                                               \\
-             & r - \varepsilon < x - a < r \leq \dfrac{1}{\limsup_{n \to \infty} \abs{c_n}^{\dfrac{1}{n}}} &  & \by{ii:4.2.1}                                \\
+             & r - \varepsilon < x - a < r \leq \dfrac{1}{\limsup_{n \to \infty} \abs{c_n}^{\dfrac{1}{n}}} &  & \by{ii:4.2.1}                             \\
     \implies & \forall x \in (a, a + r) \setminus (a, a + r - \varepsilon),                                                                               \\
-             & \sum_{n = 0}^\infty c_n (x - a)^n \text{ is absolutely convergent}                          &  & \by{ii:4.1.6}[b]                             \\
+             & \sum_{n = 0}^\infty c_n (x - a)^n \text{ is absolutely convergent}                          &  & \by{ii:4.1.6}[b]                          \\
     \implies & \forall x \in (a, a + r) \setminus (a, a + r - \varepsilon),                                                                               \\
              & \lim_{n \to \infty} c_n (x - a)^n = 0                                                       &  & \text{(by Corollary 7.2.6 in Analysis I)} \\
     \implies & \forall x \in (a, a + r) \setminus (a, a + r - \varepsilon),                                                                               \\
@@ -624,7 +624,7 @@
   Since
   \begin{align*}
      & \forall m \in \N, \dfrac{r - \varepsilon}{(r - \varepsilon - \abs{b - a})^{m + 1}}                                                       \\
-     & = \sum_{n = m}^\infty \dfrac{n!}{m! (n - m)!} \abs{b - a}^{n - m} (r - \varepsilon)^{-n}                &  & \by{ii:4.2.7}                  \\
+     & = \sum_{n = m}^\infty \dfrac{n!}{m! (n - m)!} \abs{b - a}^{n - m} (r - \varepsilon)^{-n}                &  & \by{ii:4.2.7}               \\
      & = \dfrac{1}{C} \sum_{n = m}^\infty \dfrac{n!}{m! (n - m)!} \abs{b - a}^{n - m} C (r - \varepsilon)^{-n}                                  \\
      & \geq \dfrac{1}{C} \sum_{n = m}^\infty \dfrac{n!}{m! (n - m)!} \abs{b - a}^{n - m} \abs{c_n}                                              \\
      & \geq \dfrac{1}{C} \sum_{n = m}^\infty \dfrac{n!}{m! (n - m)!} (b - a)^{n - m} c_n                       &  & \text{(by comparison test)} \\
@@ -661,7 +661,7 @@
                                 & \leq C \sum_{n = m}^\infty \abs{\dfrac{n!}{m! (n - m)!} (b - a)^{n - m} (r - \varepsilon)^{-n}}                                  \\
                                 & = C \sum_{n = m}^\infty \dfrac{n!}{m! (n - m)!} \abs{b - a}^{n - m} (r - \varepsilon)^{-n}                                       \\
                                 & \leq C \sum_{n = m}^\infty \dfrac{n!}{m! (n - m)!} (r - s)^{n - m} (r - \varepsilon)^{-n}                                        \\
-                                & = C \dfrac{r - \varepsilon}{\big((r - \varepsilon) - (r - s)\big)^{m + 1}}                      &  & \by{ii:4.2.7}                  \\
+                                & = C \dfrac{r - \varepsilon}{\big((r - \varepsilon) - (r - s)\big)^{m + 1}}                      &  & \by{ii:4.2.7}               \\
                                 & = C \dfrac{r - \varepsilon}{(s - \varepsilon)^{m + 1}}                                                                           \\
                                 & = C \dfrac{r - \varepsilon}{s - \varepsilon} (s - \varepsilon)^{-m}.
   \end{align*}
@@ -708,7 +708,7 @@
      & = \sum_{m = 0}^\infty \bigg(\sum_{n = m}^\infty \dfrac{c_n n!}{m! (n - m)!} (b - a)^{n - m} (x - b)^m\bigg)                                   \\
      & = \sum_{n = 0}^\infty \bigg(\sum_{m = 0}^n \dfrac{c_n n!}{m! (n - m)!} (b - a)^{n - m} (x - b)^m\bigg)      &  & \text{(by Fubini's theorem)} \\
      & = \sum_{n = 0}^\infty c_n \bigg(\sum_{m = 0}^n \dfrac{n!}{m! (n - m)!} (b - a)^{n - m} (x - b)^m\bigg)                                        \\
-     & = \sum_{n = 0}^\infty c_n (x - a)                                                                           &  & \by{ii:ex:4.2.5}                \\
+     & = \sum_{n = 0}^\infty c_n (x - a)                                                                           &  & \by{ii:ex:4.2.5}             \\
      & = f(x).
   \end{align*}
   Since \(x\) is arbitrary, we conclude that
