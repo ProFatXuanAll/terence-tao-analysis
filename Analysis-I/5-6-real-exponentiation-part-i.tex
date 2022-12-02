@@ -1,7 +1,7 @@
 \section{Real exponentiation, part I}\label{i:sec:5.6}
 
 \begin{defn}[Exponentiating a real by a natural number]\label{i:5.6.1}
-  Let \(x\) be a real number.
+  Let \(x \in \R\).
   To raise \(x\) to the power \(0\), we define \(x^0 \coloneqq 1\).
   Now suppose recursively that \(x^n\) has been defined for some natural number \(n\), then we define \(x^{n + 1} \coloneqq x^n \times x\).
 \end{defn}
@@ -27,7 +27,7 @@ Thus we can modify the proof of \cref{i:4.3.10,i:4.3.12} to hold in the case whe
 \end{note}
 
 \begin{defn}\label{i:5.6.4}
-  Let \(x \geq 0\) be a non-negative real, and let \(n \geq 1\) be a positive integer.
+  Let \(x \in \R_{\geq 0}\), and let \(n \in \Z^+\).
   We define \(x^{1 / n}\), also known as the \emph{\(n^{\opTh}\) root of \(x\)}, by the formula
   \[
     x^{1 / n} \coloneqq \sup\set{y \in \R : y \geq 0 \text{ and } y^n \leq x}.
@@ -36,14 +36,14 @@ Thus we can modify the proof of \cref{i:4.3.10,i:4.3.12} to hold in the case whe
 \end{defn}
 
 \begin{note}
-  we do not define the \(n^{\opTh}\) roots of a negative number.
+  We do not define the \(n^{\opTh}\) roots of a negative number.
   In fact, we will leave the \(n^{\opTh}\) roots of negative numbers undefined for the rest of the text
   (one can define these \(n^{\opTh}\) roots once one defines the complex numbers, but we shall refrain from doing so).
 \end{note}
 
 \begin{lem}[Existence of \(n^{\opTh}\) roots]\label{i:5.6.5}
-  Let \(x \geq 0\) be a non-negative real, and let \(n \geq 1\) be a positive integer.
-  Then the set \(E \coloneqq \set{y \in R : y \geq 0 \text{ and } y^n \leq x}\) is non-empty and is also bounded above.
+  Let \(x \in \R_{\geq 0}\), and let \(n \in \Z^+\).
+  Then the set \(E \coloneqq \set{y \in \R : y \geq 0 \text{ and } y^n \leq x}\) is non-empty and is also bounded above.
   In particular, \(x^{1 / n}\) is a real number.
 \end{lem}
 
@@ -65,7 +65,7 @@ Thus we can modify the proof of \cref{i:4.3.10,i:4.3.12} to hold in the case whe
 \end{proof}
 
 \begin{lem}\label{i:5.6.6}
-  Let \(x, y \geq 0\) be non-negative reals, and let \(n, m \geq 1\) be positive integers.
+  Let \(x, y \in \R_{\geq 0}\), and let \(n, m \in \Z^+\).
   \begin{enumerate}
     \item If \(y = x^{1 / n}\), then \(y^n = x\).
     \item Conversely, if \(y^n = x\), then \(y = x^{1 / n}\).
@@ -81,115 +81,72 @@ Thus we can modify the proof of \cref{i:4.3.10,i:4.3.12} to hold in the case whe
 \end{lem}
 
 \begin{proof}[\pf{i:5.6.6}(a)]
-  Let \(E = \set{z \in \R : (z \geq 0) \land (z^n \leq x)}\) and let \(y = x^{1 / n} = \sup(E)\).
-  Since \(0 \in E\), by \cref{i:5.5.5} we know that \(0 \leq y\).
+  Let \(E = \set{z \in \R_{\geq 0} : z^n \leq x}\).
+  By \cref{i:5.6.5} we have \(y = x^{1 / n} = \sup(E)\).
   Suppose for sake of contradiction that \(y^n \neq x\).
-  Then by \cref{i:5.4.7} exactly one of the following statements is true:
+  Then by \cref{i:5.4.7}(a) we have either \(y^n < x\) or \(y^n > x\).
   \begin{itemize}
-    \item \(y^n < x\).
-          Now we show that \(\exists m \in \Z^+\) such that \((y + \dfrac{1}{m})^n < x\).
-          Suppose for sake of contradiction that \(\forall m \in \Z^+\), we have \((y + \dfrac{1}{m})^n \geq x\).
-          Let \((y + \dfrac{1}{m})_{m = 1}^\infty\) be a sequences.
-          Then we have
-          \begin{align*}
-            \LIM_{m \to \infty} \bigg(y + \dfrac{1}{m}\bigg) & = \LIM_{m \to \infty} y + \LIM_{m \to \infty} \dfrac{1}{m} &  & \by{i:5.3.4}    \\
-                                                             & = \LIM_{m \to \infty} y + 0                                &  & \by{i:ex:5.3.5} \\
-                                                             & = y.                                                       &  & \by{i:6.1.15}
-          \end{align*}
-          Note that we use \cref{i:6.1.15} without circularity.
-          But then we have
-          \begin{align*}
-                     & \forall m \in \Z^+, y^n < x \leq \bigg(y + \dfrac{1}{m}\bigg)^n                                  \\
-            \implies & y^n < x \leq \LIM_{m \to \infty} \bigg(y + \dfrac{1}{m}\bigg)^n             &  & \by{i:ex:5.4.8} \\
-            \implies & y^n < x \leq \Bigg(\LIM_{m \to \infty} \bigg(y + \dfrac{1}{m}\bigg)\Bigg)^n &  & \by{i:5.3.9}    \\
-            \implies & y^n < x \leq y^n                                                                                 \\
-            \implies & y^n < y^n,
-          \end{align*}
-          a contradiction.
-          Thus we know that \(\exists m \in \Z^+\) such that \((y + \dfrac{1}{m})^n < x\).
-          Since \(m \in \Z^+\), we know that \(y < y + \dfrac{1}{m}\), thus by \cref{i:5.6.3} we know that \(y^n < (y + \dfrac{1}{m})^n\).
-          But this means \(y + \dfrac{1}{m} \in E\) and \(y + \dfrac{1}{m} \leq y\), a contradiction.
-    \item \(y^n > x\).
-          Now we show that \(\exists m \in \Z^+\) such that \((y - \dfrac{1}{m})^n > x\).
-          Suppose for sake of contradiction that \(\forall m \in \Z^+\), we have \((y - \dfrac{1}{m})^n \leq x\).
-          Let \((y - \dfrac{1}{m})_{m = 1}^\infty\) be a sequences.
-          Then we have
-          \begin{align*}
-            \LIM_{m \to \infty} \bigg(y - \dfrac{1}{m}\bigg) & = \LIM_{m \to \infty} y - \LIM_{m \to \infty} \dfrac{1}{m} &  & \by{i:5.3.4}    \\
-                                                             & = \LIM_{m \to \infty} y - 0                                &  & \by{i:ex:5.3.5} \\
-                                                             & = y.                                                       &  & \by{i:6.1.15}
-          \end{align*}
-          Note that we use \cref{i:6.1.15} without circularity.
-          But then we have
-          \begin{align*}
-                     & \forall m \in \Z^+, \bigg(y - \dfrac{1}{m}\bigg)^n \leq x < y^n                                  \\
-            \implies & \LIM_{m \to \infty} \bigg(y - \dfrac{1}{m}\bigg)^n \leq x < y^n             &  & \by{i:ex:5.4.8} \\
-            \implies & \Bigg(\LIM_{m \to \infty} \bigg(y - \dfrac{1}{m}\bigg)\Bigg)^n \leq x < y^n &  & \by{i:5.3.9}    \\
-            \implies & y^n \leq x < y^n                                                                                 \\
-            \implies & y^n < y^n,
-          \end{align*}
-          a contradiction.
-          Thus we know that \(\exists m \in \Z^+\) such that \((y - \dfrac{1}{m})^n > x\).
-          Since \(m \in \Z^+\), we know that \(y - \dfrac{1}{m} < y\), thus by \cref{i:5.6.3} we know that \((y - \dfrac{1}{m})^n < y^n\).
-          But this means \(y - \dfrac{1}{m} \notin E\) and \(y - \dfrac{1}{m}\) and upper bound for \(E\) which is strictly less than \(y\), a contradiction.
+    \item If \(y^n < x\), then we can find a small number \(\varepsilon \in \Q_{0 < 1}\) such that \((y + \varepsilon)^n < x\)
+          (this can be proved by induction, and using the binomial formula, see \cref{i:ex:7.1.4}).
+          But by the definition of \(E\) we see that \(y + \varepsilon \in E\), so we must have \(y + \varepsilon \leq y\), a contradiction.
+    \item If \(y^n > x\), then we can find a small number \(\varepsilon \in \Q_{0 < 1}\) such that \((y - \varepsilon)^n > x\).
+          Then by the definition of \(E\) we see that \((y - \varepsilon)^n > x\) implies \(y - \varepsilon\) is an upper bound of \(E\).
+          But by \cref{i:5.5.5} this means \(y - \varepsilon \geq y\), a contradiction.
   \end{itemize}
-  From all cases above we get contradictions, so \(y = x^{1 / n} \implies y^n = x\).
+  From all cases above we derived contradictions.
+  So we must have \(y^n = x\).
 \end{proof}
 
 \begin{proof}[\pf{i:5.6.6}(b)]
-  Let \(E = \set{z \in \R : (z \geq 0) \land (z^n \leq x)}\).
-  By \cref{i:5.6.4} we have \(x^{1 / n} = \sup(E)\).
-  Since \(0 \in E\), by \cref{i:5.5.5} we know that \(0 \leq x^{1 / n}\).
-  Let \(y \in \R \setminus \R^-\) such that \(y^n = x\).
-  Such \(y\) is well-defined since \cref{i:5.6.6}(a).
-  By the definition of \(E\) we know that \(y \in E\).
+  Let \(E = \set{z \in \R_{\geq 0} : z^n \leq x}\).
+  By \cref{i:5.6.5} we have \(x^{1 / n} = \sup(E)\).
+  Since \(y^n = x\), by the definition of \(E\) we know that \(y \in E\).
   Suppose for sake of contradiction that \(y \neq x^{1 / n}\).
-  Then by \cref{i:5.4.7} exactly one of the following statements is true:
+  Then by \cref{i:5.4.7}(a) exactly one of the following statements is true:
   \begin{itemize}
     \item \(y < x^{1 / n}\).
           But then we have
           \begin{align*}
-                     & y^n < (x^{1 / n})^n &  & \by{i:5.6.3}    \\
-            \implies & x < (x^{1 / n})^n                        \\
-            \implies & x < x,              &  & \by{i:5.6.6}[a]
+            x & = y^n                                \\
+              & < (x^{1 / n})^n &  & \by{i:5.6.3}    \\
+              & = x,            &  & \by{i:5.6.6}[a]
           \end{align*}
           a contradiction.
     \item \(y > x^{1 / n}\).
           But then we have
           \begin{align*}
-                     & y^n > (x^{1 / n})^n &  & \by{i:5.6.3}    \\
-            \implies & x > (x^{1 / n})^n                        \\
-            \implies & x > x,              &  & \by{i:5.6.6}[a]
+            x & = y^n                                \\
+              & > (x^{1 / n})^n &  & \by{i:5.6.3}    \\
+              & = x,            &  & \by{i:5.6.6}[a]
           \end{align*}
           a contradiction.
   \end{itemize}
-  From all cases above we get contradictions, so \(y^n = x \implies y = x^{1 / n}\).
+  From all cases above we derived contradictions.
+  So we must have \(y = x^{1 / n}\).
 \end{proof}
 
 \begin{proof}[\pf{i:5.6.6}(c)]
-  Let \(E = \set{z \in \R : (z \geq 0) \land (z^n \leq x)}\).
-  By \cref{i:5.6.4} we have \(x^{1 / n} = \sup(E)\).
-  Since \(0 \in E\), by \cref{i:5.5.5} we know that \(0 \leq x^{1 / n}\), thus \(x^{1 / n}\) is non-negative real number.
+  Let \(E = \set{z \in \R_{\geq 0} : z^n \leq x}\).
+  By \cref{i:5.6.5} we have \(x^{1 / n} = \sup(E)\).
+  Since \(0 \in E\), by \cref{i:5.5.5} we know that \(0 \leq x^{1 / n}\), thus \(x^{1 / n}\) is a non-negative real number.
 
-  Now suppose that \(x^{1 / n}\) is positive.
+  Next suppose that \(x^{1 / n} \in \R^+\).
   Then we have
   \begin{align*}
-             & x^{1 / n} > 0                          \\
-    \implies & (x^{1 / n})^n > 0 &  & \by{i:5.6.3}    \\
-    \implies & x > 0.            &  & \by{i:5.6.6}[a] \\
+             & x^{1 / n} \in \R^+                                       \\
+    \implies & x = (x^{1 / n})^n \in \R^+. &  & \by{i:5.6.3,i:5.6.6}[a]
   \end{align*}
 
-  Finally, suppose that \(x\) is positive.
-  Suppose for sake of contradiction that \(x^{1 / n}\) is not positive.
+  Finally, suppose that \(x \in \R^+\).
+  Suppose for sake of contradiction that \(x^{1 / n} \notin \R^+\).
   Then from proof above we know that \(x^{1 / n} = 0\).
-  But then we have
-  \begin{align*}
-             & (x^{1 / n})^n = 0^n = 0                      \\
-    \implies & x = 0,                  &  & \by{i:5.6.6}[a]
-  \end{align*}
+  But by \cref{i:5.6.6}(a) we have
+  \[
+    x = (x^{1 / n})^n = 0^n = 0,
+  \]
   a contradiction.
-  Thus we must have \(x^{1 / n} > 0\).
-  And we conclude that \(x^{1 / n}\) is positive iff \(x\) is positive.
+  Thus we must have \(x^{1 / n} \in \R^+\).
+  We conclude that \(x^{1 / n} \in \R^+\) iff \(x \in \R^+\).
 \end{proof}
 
 \begin{proof}[\pf{i:5.6.6}(d)]
@@ -210,55 +167,49 @@ Thus we can modify the proof of \cref{i:4.3.10,i:4.3.12} to hold in the case whe
   \end{align*}
   a contradiction.
   Thus we must have \(x^{1 / n} > y^{1 / n}\).
-  And we conclude that \(x > y \iff x^{1 / n} > y^{1 / n}\).
+  We conclude that \(x > y \iff x^{1 / n} > y^{1 / n}\).
 \end{proof}
 
 \begin{proof}[\pf{i:5.6.6}(e)]
   If \(x = 0\), then by \cref{i:5.6.6}(c) we know that \(x^{1 / k} = 0\) for every \(k \in \Z^+\).
   Thus we only consider the case \(x \in \R^+\).
 
-  We first show that if \(x > 1\), then \(x^{1 / k}\) is a decreasing function of \(k\).
-  Let \(f : \Z^+ \to \R\) be a function such that \(f(k) = x^{1 / k}\).
-  Such function \(f\) is well-defined since \cref{i:5.6.5}.
-  Now we want to show that \(x^{1 / k} > x^{1 / (k + 1)}\).
-  Suppose for sake of contradiction that \(x^{1 / k} \leq x^{1 / (k + 1)}\).
+  We first show that if \(x > 1\), then \(x^{1 / k}\) is a decreasing function of \(k \in \Z^+\).
+  Suppose for sake of contradiction that there exists a \(k \in \Z^+\) such that \(x^{1 / k} \leq x^{1 / (k + 1)}\).
   But then we have
   \begin{align*}
-             & x^{\dfrac{1}{k}} \leq x^{\dfrac{1}{k + 1}}                                                                                                              \\
-    \implies & (x^{\dfrac{1}{k}})^k \leq (x^{\dfrac{1}{k + 1}})^k                                                                               &  & \by{i:5.6.3}      \\
-    \implies & x \leq (x^{\dfrac{1}{k + 1}})^k                                                                                                  &  & \by{i:5.6.6}[a]   \\
-    \implies & (x^{\dfrac{1}{k + 1}})^{k + 1} \leq (x^{\dfrac{1}{k + 1}})^k                                                                     &  & \by{i:5.6.6}[a,b] \\
-    \implies & (x^{\dfrac{1}{k + 1}})^{k + 1} \cdot (x^{\dfrac{1}{k + 1}})^{-1} \leq (x^{\dfrac{1}{k + 1}})^k \cdot (x^{\dfrac{1}{k + 1}})^{-1} &  & \by{i:5.6.6}[c]   \\
-    \implies & (x^{\dfrac{1}{k + 1}})^{k + 1} \cdot (x^{\dfrac{1}{k + 1}})^{-k} \leq (x^{\dfrac{1}{k + 1}})^k \cdot (x^{\dfrac{1}{k + 1}})^{-k} &  & \by{i:5.6.3}      \\
-    \implies & x^{\dfrac{1}{k + 1}} \leq 1                                                                                                      &  & \by{i:5.6.3}      \\
-    \implies & (x^{\dfrac{1}{k + 1}})^{k + 1} \leq 1^{k + 1} = 1                                                                                &  & \by{i:5.6.3}      \\
-    \implies & x \leq 1,                                                                                                                        &  & \by{i:5.6.6}[a]
+             & x^{1 / k} \leq x^{1 / (k + 1)}                                                                                                      \\
+    \implies & (x^{1 / k})^k \leq (x^{1 / (k + 1)})^k                                                                       &  & \by{i:5.6.3}      \\
+    \implies & x \leq (x^{1 / (k + 1)})^k                                                                                   &  & \by{i:5.6.6}[a]   \\
+    \implies & (x^{1 / (k + 1)})^{k + 1} \leq (x^{1 / (k + 1)})^k                                                           &  & \by{i:5.6.6}[a,b] \\
+    \implies & (x^{1 / (k + 1)})^{k + 1} \cdot (x^{1 / (k + 1)})^{-1} \leq (x^{1 / (k + 1)})^k \cdot (x^{1 / (k + 1)})^{-1} &  & \by{i:5.6.6}[c]   \\
+    \implies & (x^{1 / (k + 1)})^{k + 1} \cdot (x^{1 / (k + 1)})^{-k} \leq (x^{1 / (k + 1)})^k \cdot (x^{1 / (k + 1)})^{-k} &  & \by{i:5.6.3}      \\
+    \implies & x^{1 / (k + 1)} \leq 1                                                                                       &  & \by{i:5.6.3}      \\
+    \implies & (x^{1 / (k + 1)})^{k + 1} \leq 1^{k + 1} = 1                                                                 &  & \by{i:5.6.3}      \\
+    \implies & x \leq 1,                                                                                                    &  & \by{i:5.6.6}[a]
   \end{align*}
   a contradiction.
-  Thus we must have \(f(k) = x^{1 / k} > x^{1 / (k + 1)} = f(k + 1)\), and \(f(k) = x^{1 / k}\) is a decreasing function of \(k\).
+  Thus such \(k\) does not exist, and \(x^{1 / k}\) is a decreasing function of \(k\) when \(x > 1\).
 
-  Next we show that if \(x < 1\), then \(x^{1 / k}\) is a increasing function of \(k\).
-  Let \(f : \Z^+ \to \R\) be a function such that \(f(k) = x^{1 / k}\).
-  Such function \(f\) is well-defined since \cref{i:5.6.5}.
-  Now we want to show that \(x^{1 / k} < x^{1 / (k + 1)}\).
-  Suppose for sake of contradiction that \(x^{1 / k} \geq x^{1 / (k + 1)}\).
+  Next we show that if \(x < 1\), then \(x^{1 / k}\) is an increasing function of \(k \in \Z^+\).
+  Suppose for sake of contradiction that there exists a \(k \in \Z^+\) such that \(x^{1 / k} \geq x^{1 / (k + 1)}\).
   But then we have
   \begin{align*}
-             & x^{\dfrac{1}{k}} \geq x^{\dfrac{1}{k + 1}}                                                                                                              \\
-    \implies & (x^{\dfrac{1}{k}})^k \geq (x^{\dfrac{1}{k + 1}})^k                                                                               &  & \by{i:5.6.3}      \\
-    \implies & x \geq (x^{\dfrac{1}{k + 1}})^k                                                                                                  &  & \by{i:5.6.6}[a]   \\
-    \implies & (x^{\dfrac{1}{k + 1}})^{k + 1} \geq (x^{\dfrac{1}{k + 1}})^k                                                                     &  & \by{i:5.6.6}[a,b] \\
-    \implies & (x^{\dfrac{1}{k + 1}})^{k + 1} \cdot (x^{\dfrac{1}{k + 1}})^{-1} \geq (x^{\dfrac{1}{k + 1}})^k \cdot (x^{\dfrac{1}{k + 1}})^{-1} &  & \by{i:5.6.6}[c]   \\
-    \implies & (x^{\dfrac{1}{k + 1}})^{k + 1} \cdot (x^{\dfrac{1}{k + 1}})^{-k} \geq (x^{\dfrac{1}{k + 1}})^k \cdot (x^{\dfrac{1}{k + 1}})^{-k} &  & \by{i:5.6.3}      \\
-    \implies & x^{\dfrac{1}{k + 1}} \geq 1                                                                                                      &  & \by{i:5.6.3}      \\
-    \implies & (x^{\dfrac{1}{k + 1}})^{k + 1} \geq 1^{k + 1} = 1                                                                                &  & \by{i:5.6.3}      \\
-    \implies & x \geq 1,                                                                                                                        &  & \by{i:5.6.6}[a]
+             & x^{1 / k} \geq x^{1 / (k + 1)}                                                                                                      \\
+    \implies & (x^{1 / k})^k \geq (x^{1 / (k + 1)})^k                                                                       &  & \by{i:5.6.3}      \\
+    \implies & x \geq (x^{1 / (k + 1)})^k                                                                                   &  & \by{i:5.6.6}[a]   \\
+    \implies & (x^{1 / (k + 1)})^{k + 1} \geq (x^{1 / (k + 1)})^k                                                           &  & \by{i:5.6.6}[a,b] \\
+    \implies & (x^{1 / (k + 1)})^{k + 1} \cdot (x^{1 / (k + 1)})^{-1} \geq (x^{1 / (k + 1)})^k \cdot (x^{1 / (k + 1)})^{-1} &  & \by{i:5.6.6}[c]   \\
+    \implies & (x^{1 / (k + 1)})^{k + 1} \cdot (x^{1 / (k + 1)})^{-k} \geq (x^{1 / (k + 1)})^k \cdot (x^{1 / (k + 1)})^{-k} &  & \by{i:5.6.3}      \\
+    \implies & x^{1 / (k + 1)} \geq 1                                                                                       &  & \by{i:5.6.3}      \\
+    \implies & (x^{1 / (k + 1)})^{k + 1} \geq 1^{k + 1} = 1                                                                 &  & \by{i:5.6.3}      \\
+    \implies & x \geq 1,                                                                                                    &  & \by{i:5.6.6}[a]
   \end{align*}
   a contradiction.
-  Thus we must have \(f(k) = x^{1 / k} < x^{1 / (k + 1)} = f(k + 1)\), and \(f(k) = x^{1 / k}\) is a increasing function of \(k\).
+  Thus such \(k\) does not exist, and \(x^{1 / k}\) is a increasing function of \(k\) when \(x < 1\).
 
   Finally we show that if \(x = 1\), then \(x^{1 / k} = 1\) for every \(k \in \Z^+\).
-  Suppose for sake of contradiction that \(x^{1 / k} \neq 1\).
+  Suppose for sake of contradiction that there exists a \(k \in \Z^+\) such that \(x^{1 / k} \neq 1\).
   Then by \cref{i:5.4.7} exactly one of the following two statements is true:
   \begin{itemize}
     \item \(x^{1 / k} > 1\).
@@ -276,8 +227,8 @@ Thus we can modify the proof of \cref{i:4.3.10,i:4.3.12} to hold in the case whe
           \end{align*}
           a contradiction.
   \end{itemize}
-  From all cases above we get contradictions.
-  Thus we must have \(x^{1 / k} = 1\).
+  From all cases above we derived contradictions.
+  Thus we must have \(x^{1 / k} = 1\) for all \(k \in \Z^+\).
 \end{proof}
 
 \begin{proof}[\pf{i:5.6.6}(f)]
@@ -285,24 +236,24 @@ Thus we can modify the proof of \cref{i:4.3.10,i:4.3.12} to hold in the case whe
   \begin{align*}
     ((xy)^{1 / n})^n & = xy                          &  & \by{i:5.6.6}[a]   \\
                      & = (x^{1 / n})^n (y^{1 / n})^n &  & \by{i:5.6.6}[a,b] \\
-                     & = (x^{1 / n} y^{1 / n})^n     &  & \by{i:5.6.3}
+                     & = (x^{1 / n} y^{1 / n})^n.    &  & \by{i:5.6.3}
   \end{align*}
-  and thus by \cref{i:5.6.6}(b) we have \((xy)^{1 / n} = x^{1 / n} y^{1 / n}\).
+  Thus by \cref{i:5.6.6}(b) we have \((xy)^{1 / n} = x^{1 / n} y^{1 / n}\).
 \end{proof}
 
 \begin{proof}[\pf{i:5.6.6}(g)]
   We have
   \begin{align*}
-    (x^{1 / nm})^{nm} & = x                                           &  & \by{i:5.6.6}[a]   \\
-                      & = (x^{1 / n})^n                               &  & \by{i:5.6.6}[a,b] \\
-                      & = \Big(\big((x^{1 / n})^{1 / m}\big)^m\Big)^n &  & \by{i:5.6.6}[a,b] \\
-                      & = \big((x^{1 / n})^{1 / m}\big)^{nm}          &  & \by{i:5.6.3}
+    (x^{1 / nm})^{nm} & = x                                 &  & \by{i:5.6.6}[a]   \\
+                      & = (x^{1 / n})^n                     &  & \by{i:5.6.6}[a,b] \\
+                      & = \pa{\pa{(x^{1 / n})^{1 / m}}^m}^n &  & \by{i:5.6.6}[a,b] \\
+                      & = \pa{(x^{1 / n})^{1 / m}}^{nm}.    &  & \by{i:5.6.3}
   \end{align*}
-  and thus by \cref{i:5.6.6}(b) we have \(x^{1 / nm} = (x^{1 / n})^{1 / m}\).
+  Thus by \cref{i:5.6.6}(b) we have \(x^{1 / nm} = (x^{1 / n})^{1 / m}\).
 \end{proof}
 
 \begin{note}
-  The observant reader may note that this definition of \(x^{1 / n}\) might possibly be inconsistent with our previous notion of \(x^n\) when \(n = 1\), but it is easy to check that \(x^{1 / 1} = x = x^1\) by using \cref{i:5.6.6}, so there is no inconsistency.
+  The observant reader may note that this definition of \(x^{1 / n}\) might possibly be inconsistent with our previous notion of \(x^n\) when \(n = 1\), but it is easy to check that \(x^{1 / 1} = x = x^1\) by using \cref{i:5.6.6}(e), so there is no inconsistency.
 \end{note}
 
 \begin{note}
@@ -313,8 +264,8 @@ Thus we can modify the proof of \cref{i:4.3.10,i:4.3.12} to hold in the case whe
 \end{note}
 
 \begin{defn}\label{i:5.6.7}
-  Let \(x > 0\) be a positive real number, and let \(q\) be a rational number.
-  To define \(x^q\), we write \(q = a / b\) for some integer \(a\) and positive integer \(b\), and define
+  Let \(x \in \R^+\), and let \(q \in \Q\).
+  To define \(x^q\), we write \(q = a / b\) for some \(a \in \Z\) and \(b \in \Z^+\), and define
   \[
     x^q \coloneqq (x^{1 / b})^a.
   \]
@@ -358,9 +309,9 @@ Thus we can modify the proof of \cref{i:4.3.10,i:4.3.12} to hold in the case whe
 \end{note}
 
 \begin{lem}\label{i:5.6.9}
-  Let \(x, y > 0\) be positive reals, and let \(q, r\) be rationals.
+  Let \(x, y \in \R^+\), and let \(q, r \in \Q\).
   \begin{enumerate}
-    \item \(x^q\) is a positive real.
+    \item \(x^q \in \R^+\).
     \item \(x^{q + r} = x^q x^r\) and \((x^q)^r = x^{qr}\).
     \item \(x^{-q} = 1 / x^q\).
     \item If \(q > 0\), then \(x > y\) iff \(x^q > y^q\).
@@ -394,14 +345,14 @@ Thus we can modify the proof of \cref{i:4.3.10,i:4.3.12} to hold in the case whe
   \end{align*}
   and
   \begin{align*}
-    x^{qr} & = x^{ac / bd}                                                        &  & \by{i:4.2.2}      \\
-           & = (x^{1 / bd})^{ac}                                                  &  & \by{i:5.6.7}      \\
-           & = \big((x^{1 / b})^{1 / d}\big)^{ac}                                 &  & \by{i:5.6.6}[g]   \\
-           & = \bigg(\Big(\big((x^{1 / b})^a\big)^{1 / a}\Big)^{1 / d}\Bigg)^{ac} &  & \by{i:5.6.6}[a,b] \\
-           & = \Big(\big((x^{a / b})^{1 / a}\big)^{1 / d}\Big)^{ac}               &  & \by{i:5.6.7}      \\
-           & = \big((x^{a / b})^{1 / ad}\big)^{ac}                                &  & \by{i:5.6.6}[g]   \\
-           & = (x^{a / b})^{ac / ad}                                              &  & \by{i:5.6.7}      \\
-           & = (x^{a / b})^{c / d}                                                &  & \by{i:5.6.8}      \\
+    x^{qr} & = x^{ac / bd}                                       &  & \by{i:4.2.2}      \\
+           & = (x^{1 / bd})^{ac}                                 &  & \by{i:5.6.7}      \\
+           & = \pa{(x^{1 / b})^{1 / d}}^{ac}                     &  & \by{i:5.6.6}[g]   \\
+           & = \pa{\pa{\pa{(x^{1 / b})^a}^{1 / a}}^{1 / d}}^{ac} &  & \by{i:5.6.6}[a,b] \\
+           & = \pa{\pa{(x^{a / b})^{1 / a}}^{1 / d}}^{ac}        &  & \by{i:5.6.7}      \\
+           & = \pa{(x^{a / b})^{1 / ad}}^{ac}                    &  & \by{i:5.6.6}[g]   \\
+           & = (x^{a / b})^{ac / ad}                             &  & \by{i:5.6.7}      \\
+           & = (x^{a / b})^{c / d}                               &  & \by{i:5.6.8}      \\
            & = (x^q)^r.
   \end{align*}
 \end{proof}
@@ -428,11 +379,11 @@ Thus we can modify the proof of \cref{i:4.3.10,i:4.3.12} to hold in the case whe
   \end{align*}
   and
   \begin{align*}
-             & x^q > y^q                                                                                \\
-    \implies & (x^{1 / b})^a > (y^{1 / b})^a                                     &  & \by{i:5.6.7}      \\
-    \implies & \big((x^{1 / b})^a\big)^{1 / a} > \big((y^{1 / b})^a\big)^{1 / a} &  & \by{i:5.6.6}[d]   \\
-    \implies & x^{1 / b} > y^{1 / b}                                             &  & \by{i:5.6.6}[a,b] \\
-    \implies & x > y.                                                            &  & \by{i:5.6.6}[d]
+             & x^q > y^q                                                                      \\
+    \implies & (x^{1 / b})^a > (y^{1 / b})^a                           &  & \by{i:5.6.7}      \\
+    \implies & \pa{(x^{1 / b})^a}^{1 / a} > \pa{(y^{1 / b})^a}^{1 / a} &  & \by{i:5.6.6}[d]   \\
+    \implies & x^{1 / b} > y^{1 / b}                                   &  & \by{i:5.6.6}[a,b] \\
+    \implies & x > y.                                                  &  & \by{i:5.6.6}[d]
   \end{align*}
   Thus we conclude that \(x > y \iff x^q > y^q\) when \(x, y \in \R^+\) and \(q \in \Q^+\).
 \end{proof}
@@ -442,16 +393,15 @@ Thus we can modify the proof of \cref{i:4.3.10,i:4.3.12} to hold in the case whe
   First suppose that \(x > 1\) and \(x^q > x^r\).
   Then we have
   \begin{align*}
-             & x^q > x^r                                                                  \\
-    \implies & x^q x^{-r} > x^r x^{-r}                              &  & \by{i:5.6.9}[a]  \\
-    \implies & x^{q - r} > x^{r - r} = x^0 = 1                      &  & \by{i:5.6.9}[b]  \\
-    \implies & x^{(ad - bc) / bd} > 1                               &  & \by{i:4.2.2}     \\
-    \implies & (x^{(ad - bc)})^{1 / bd} > 1                         &  & \by{i:5.6.9}[b]  \\
-    \implies & \big((x^{(ad - bc)})^{1 / bd}\big)^{bd} > 1^{bd} = 1 &  & \by{i:5.6.3}     \\
-    \implies & x^{(ad - bc)} > 1                                    &  & \by{i:5.6.6}[a]  \\
-    \implies & ad - bc > 0                                          &  & \by{i:4.3.12}[b] \\
-    \implies & ad > bc                                              &  & \by{i:4.1.11}[b] \\
-    \implies & a / b > c / d                                        &  & \by{i:4.2.9}[e]  \\
+             & x^q > x^r                                                       \\
+    \implies & x^q x^{-r} > x^r x^{-r}                   &  & \by{i:5.6.9}[a]  \\
+    \implies & x^{q - r} > x^{r - r} = x^0 = 1           &  & \by{i:5.6.9}[b]  \\
+    \implies & x^{(ad - bc) / bd} > 1                    &  & \by{i:4.2.2}     \\
+    \implies & \pa{x^{(ad - bc) / bd}}^{bd} > 1^{bd} = 1 &  & \by{i:5.6.3}     \\
+    \implies & x^{(ad - bc)} > 1 = 1^{(ad - bc)}         &  & \by{i:5.6.9}[b]  \\
+    \implies & ad - bc > 0                               &  & \by{i:4.3.12}[b] \\
+    \implies & ad > bc                                   &  & \by{i:4.1.11}[b] \\
+    \implies & a / b > c / d                             &  & \by{i:4.2.9}[e]  \\
     \implies & q > r.
   \end{align*}
 
@@ -465,24 +415,22 @@ Thus we can modify the proof of \cref{i:4.3.10,i:4.3.12} to hold in the case whe
     \implies & x^{q - r} > (1^{1 / bd})^{ad - bc} &  & \by{i:5.6.7}    \\
     \implies & x^{q - r} > 1^{ad - bc} = 1        &  & \by{i:5.6.6}[e] \\
     \implies & x^{q - r} x^r > x^r                &  & \by{i:5.6.9}[a] \\
-    \implies & x^{q - r + r} > x^r                &  & \by{i:5.6.9}[b] \\
-    \implies & x^q > x^r.                         &  & \by{i:5.6.8}
+    \implies & x^q > x^r.                         &  & \by{i:5.6.9}[b]
   \end{align*}
   Thus we conclude that if \(x > 1\), then \(x^q > x^r \iff q > r\).
 
   Next suppose that \(x < 1\) and \(x^q > x^r\).
   Then we have
   \begin{align*}
-             & x^q > x^r                                                                  \\
-    \implies & x^q x^{-r} > x^r x^{-r}                              &  & \by{i:5.6.9}[a]  \\
-    \implies & x^{q - r} > x^{r - r} = x^0 = 1                      &  & \by{i:5.6.9}[b]  \\
-    \implies & x^{(ad - bc) / bd} > 1                               &  & \by{i:4.2.2}     \\
-    \implies & (x^{(ad - bc)})^{1 / bd} > 1                         &  & \by{i:5.6.9}[b]  \\
-    \implies & \big((x^{(ad - bc)})^{1 / bd}\big)^{bd} > 1^{bd} = 1 &  & \by{i:5.6.3}     \\
-    \implies & x^{(ad - bc)} > 1                                    &  & \by{i:5.6.6}[a]  \\
-    \implies & ad - bc < 0                                          &  & \by{i:4.3.12}[b] \\
-    \implies & ad < bc                                              &  & \by{i:4.1.11}[b] \\
-    \implies & a / b < c / d                                        &  & \by{i:4.2.9}[e]  \\
+             & x^q > x^r                                                       \\
+    \implies & x^q x^{-r} > x^r x^{-r}                   &  & \by{i:5.6.9}[a]  \\
+    \implies & x^{q - r} > x^{r - r} = x^0 = 1           &  & \by{i:5.6.9}[b]  \\
+    \implies & x^{(ad - bc) / bd} > 1                    &  & \by{i:4.2.2}     \\
+    \implies & \pa{x^{(ad - bc) / bd}}^{bd} > 1^{bd} = 1 &  & \by{i:5.6.3}     \\
+    \implies & x^{(ad - bc)} > 1 = 1^{(ad - bc)}         &  & \by{i:5.6.9}[b]  \\
+    \implies & ad - bc < 0                               &  & \by{i:4.3.12}[b] \\
+    \implies & ad < bc                                   &  & \by{i:4.1.11}[b] \\
+    \implies & a / b < c / d                             &  & \by{i:4.2.9}[e]  \\
     \implies & q < r.
   \end{align*}
 
@@ -496,8 +444,7 @@ Thus we can modify the proof of \cref{i:4.3.10,i:4.3.12} to hold in the case whe
     \implies & x^{r - q} < (1^{1 / bd})^{bc - ad} &  & \by{i:5.6.7}    \\
     \implies & x^{r - q} < 1^{bc - ad} = 1        &  & \by{i:5.6.6}[e] \\
     \implies & x^{r - q} x^q < x^q                &  & \by{i:5.6.9}[a] \\
-    \implies & x^{r - q + q} < x^q                &  & \by{i:5.6.9}[b] \\
-    \implies & x^r < x^q.                         &  & \by{i:5.6.8}
+    \implies & x^r < x^q.                         &  & \by{i:5.6.9}[b]
   \end{align*}
   Thus we conclude that if \(x < 1\), then \(x^q > x^r \iff q < r\).
 \end{proof}
@@ -506,7 +453,7 @@ Thus we can modify the proof of \cref{i:4.3.10,i:4.3.12} to hold in the case whe
   Let \(q = a / b\) where \(a \in \Z\) and \(b \in \Z^+\).
   Then we have
   \begin{align*}
-    (xy)^q & = \big((xy)^{1 / b}\big)^a    &  & \by{i:5.6.7}    \\
+    (xy)^q & = \pa{(xy)^{1 / b}}^a         &  & \by{i:5.6.7}    \\
            & = (x^{1 / b} y^{1 / b})^a     &  & \by{i:5.6.6}[f] \\
            & = (x^{1 / b})^a (y^{1 / b})^a &  & \by{i:5.6.3}    \\
            & = x^q y^q.                    &  & \by{i:5.6.7}
@@ -536,8 +483,8 @@ Thus we can modify the proof of \cref{i:4.3.10,i:4.3.12} to hold in the case whe
 \end{ex}
 
 \begin{proof}[\pf{i:ex:5.6.3}]
-  By \cref{i:5.4.7} exactly one of the following three statements is true:
-  \begin{enumerate}
+  By \cref{i:5.4.7}(a) exactly one of the following three statements is true:
+  \begin{itemize}
     \item \(x > 0\).
           Then by \cref{i:5.4.5} we have \(\abs{x} = x\) and by \cref{i:5.6.6}(a)(b) we have \(\abs{x} = x = (x^2)^{1 / 2}\).
     \item \(x = 0\).
@@ -547,6 +494,6 @@ Thus we can modify the proof of \cref{i:4.3.10,i:4.3.12} to hold in the case whe
           By \cref{i:5.6.6}(b)(c) we have \(-x = ((-x)^2)^{1 / 2}\).
           But by \cref{i:5.3.11} we know that \((-x)^2 = (-x)(-x) = x^2\).
           Thus we have \(\abs{x} = -x = (x^2)^{1 / 2}\).
-  \end{enumerate}
+  \end{itemize}
   From all cases above we conclude that \(\abs{x} = (x^2)^{1 / 2}\).
 \end{proof}
