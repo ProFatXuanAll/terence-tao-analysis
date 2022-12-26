@@ -130,7 +130,7 @@
   Then for \(n + 1\), we have
   \begin{align*}
     d(x_{n + 2}, x_{n + 1}) & = d\big(f(x_{n + 1}), f(x_n)\big) &  & \text{(by the definition of \((x_n)_{n = 1}^\infty\))} \\
-                            & \leq c d(x_{n + 1}, x_n)          &  & \by{ii:6.6.1}                                             \\
+                            & \leq c d(x_{n + 1}, x_n)          &  & \by{ii:6.6.1}                                          \\
                             & \leq c \cdot c^n d(x_1, x_0)                                                                  \\
                             & = c^{n + 1} d(x_1, x_0).
   \end{align*}
@@ -149,8 +149,8 @@
   Let \(n, m \geq N\) and without the loss of generality suppose that \(n \leq m\).
   Since
   \begin{align*}
-    d(x_n, x_m) & \leq \sum_{i = n}^m d(x_i, x_{i + 1})                    &                & \by{ii:1.1.2}[d]                 \\
-                & = \sum_{i = n}^m d(x_{i + 1}, x_i)                       &                & \by{ii:1.1.2}[c]                 \\
+    d(x_n, x_m) & \leq \sum_{i = n}^m d(x_i, x_{i + 1})                    &                & \by{ii:1.1.2}[d]              \\
+                & = \sum_{i = n}^m d(x_{i + 1}, x_i)                       &                & \by{ii:1.1.2}[c]              \\
                 & \leq \sum_{i = n}^m c^i d(x_1, x_0)                      &                & \text{(from the claim above)} \\
                 & = d(x_1, x_0) \bigg(\sum_{i = n}^m c^i\bigg)                                                              \\
                 & = d(x_1, x_0) c^n \bigg(\sum_{i = 0}^{m - n} c^i\bigg)                                                    \\
@@ -159,7 +159,7 @@
                 & < \dfrac{\varepsilon c^n}{c^n}                           & (n \geq N)                                     \\
                 & = \varepsilon
   \end{align*}
-  and \(\varepsilon\) is arbitrary, we know that
+  and \(\varepsilon\) was arbitrary, we know that
   \[
     \forall \varepsilon \in \R^+, \exists N \in \Z^+ : \forall n, m \geq N, d(x_n, x_m) \leq \varepsilon.
   \]
@@ -312,8 +312,8 @@
   We have
   \begin{align*}
              & \forall x_0 \in [a, b], \forall x \in [a, b] \setminus \set{x_0}, \abs{f(x) - f(x_0)} \leq \abs{x - x_0}                &  & \by{ii:6.6.1} \\
-    \implies & \forall x_0 \in [a, b], \forall x \in [a, b] \setminus \set{x_0}, \abs{\dfrac{f(x) - f(x_0)}{x - x_0}} \leq 1                           \\
-    \implies & \forall x_0 \in [a, b], \lim_{x \to x_0 ; x \in [a, b] \setminus \set{x_0}} \abs{\dfrac{f(x) - f(x_0)}{x - x_0}} \leq 1                 \\
+    \implies & \forall x_0 \in [a, b], \forall x \in [a, b] \setminus \set{x_0}, \abs{\dfrac{f(x) - f(x_0)}{x - x_0}} \leq 1                              \\
+    \implies & \forall x_0 \in [a, b], \lim_{x \to x_0 ; x \in [a, b] \setminus \set{x_0}} \abs{\dfrac{f(x) - f(x_0)}{x - x_0}} \leq 1                    \\
     \implies & \forall x_0 \in [a, b], f'(x_0) \leq 1.
   \end{align*}
 \end{proof}
@@ -391,14 +391,14 @@
   Let \((X, d)\) be a metric space, let \(f : X \to X\) be a contraction of \(X\) and let \(x_0 \in X\).
   We have
   \begin{align*}
-             & \forall \varepsilon \in \R^+, \forall x \in X, d(x, x_0) < \varepsilon                 \\
+             & \forall \varepsilon \in \R^+, \forall x \in X, d(x, x_0) < \varepsilon                    \\
     \implies & d\big(f(x), f(x_0)\big) \leq d(x, x_0) < \varepsilon.                  &  & \by{ii:6.6.1}
   \end{align*}
   By setting \(\delta = \varepsilon\) we see that
   \[
     \forall \varepsilon \in \R^+, \exists \delta \in \R^+ : \forall x \in X, d(x, x_0) < \delta \implies d\big(f(x), f(x_0)\big) < \varepsilon.
   \]
-  Since \(x_0\) is arbitrary, by \cref{ii:2.1.1} this means \(f\) is continuous on \(X\) from \((X, d)\) to \((X, d)\).
+  Since \(x_0\) was arbitrary, by \cref{ii:2.1.1} this means \(f\) is continuous on \(X\) from \((X, d)\) to \((X, d)\).
 \end{proof}
 
 \begin{ex}\label{ii:ex:6.6.7}
@@ -421,15 +421,15 @@
 \begin{proof}
   We have
   \begin{align*}
-    d(x_0, y_0) & = d\big(f(x_0), g(y_0)\big)                                &  & \by{ii:6.6.3}             \\
-                & \leq d\big(f(x_0), g(x_0)\big) + d\big(g(x_0), g(y_0)\big) &  & \by{ii:1.1.2}[d]          \\
+    d(x_0, y_0) & = d\big(f(x_0), g(y_0)\big)                                &  & \by{ii:6.6.3}          \\
+                & \leq d\big(f(x_0), g(x_0)\big) + d\big(g(x_0), g(y_0)\big) &  & \by{ii:1.1.2}[d]       \\
                 & \leq \varepsilon + d\big(g(x_0), g(y_0)\big)               &  & \text{(by hypothesis)} \\
                 & \leq \varepsilon + c' d(x_0, y_0)                          &  & \by{ii:6.6.1}
   \end{align*}
   and
   \begin{align*}
-    d(x_0, y_0) & = d\big(f(x_0), g(y_0)\big)                                &  & \by{ii:6.6.3}             \\
-                & \leq d\big(f(x_0), f(y_0)\big) + d\big(f(y_0), g(y_0)\big) &  & \by{ii:1.1.2}[d]          \\
+    d(x_0, y_0) & = d\big(f(x_0), g(y_0)\big)                                &  & \by{ii:6.6.3}          \\
+                & \leq d\big(f(x_0), f(y_0)\big) + d\big(f(y_0), g(y_0)\big) &  & \by{ii:1.1.2}[d]       \\
                 & \leq d\big(f(x_0), f(y_0)\big) + \varepsilon               &  & \text{(by hypothesis)} \\
                 & \leq c d(x_0, y_0) + \varepsilon.                          &  & \by{ii:6.6.1}
   \end{align*}

@@ -57,16 +57,16 @@
   Then by \cref{ii:4.5.2}(a) we know that \(\exp(a)\) and \(\exp(b)\) are well-defined.
   Since \([a, b] \subseteq \R\), by \cref{ii:4.1.6}(e) we know that \(\exp\) is Riemann integrable on \([a, b]\) and
   \begin{align*}
-    \int_{[a, b]} \exp & = \int_a^b \exp(x) \; dx                                                                                \\
+    \int_{[a, b]} \exp & = \int_a^b \exp(x) \; dx                                                                                   \\
                        & = \sum_{n = 0}^\infty \dfrac{1}{n!} \dfrac{(b - 0)^{n + 1} - (a - 0)^{n + 1}}{n + 1} &  & \by{ii:4.1.6}[e] \\
-                       & = \sum_{n = 0}^\infty \dfrac{b^{n + 1} - a^{n + 1}}{(n + 1)!}                                           \\
-                       & = \sum_{n = 1}^\infty \dfrac{b^n - a^n}{n!}                                                             \\
-                       & = \dfrac{b^0 - a^0}{0!} + \sum_{n = 1}^\infty \dfrac{b^n - a^n}{n!}                                     \\
-                       & = \sum_{n = 0}^\infty \dfrac{b^n - a^n}{n!}                                                             \\
-                       & = \sum_{n = 0}^\infty \dfrac{b^n}{n!} - \sum_{n = 0}^\infty \dfrac{a^n}{n!}                             \\
+                       & = \sum_{n = 0}^\infty \dfrac{b^{n + 1} - a^{n + 1}}{(n + 1)!}                                              \\
+                       & = \sum_{n = 1}^\infty \dfrac{b^n - a^n}{n!}                                                                \\
+                       & = \dfrac{b^0 - a^0}{0!} + \sum_{n = 1}^\infty \dfrac{b^n - a^n}{n!}                                        \\
+                       & = \sum_{n = 0}^\infty \dfrac{b^n - a^n}{n!}                                                                \\
+                       & = \sum_{n = 0}^\infty \dfrac{b^n}{n!} - \sum_{n = 0}^\infty \dfrac{a^n}{n!}                                \\
                        & = \exp(b) - \exp(a).                                                                 &  & \by{ii:4.5.1}
   \end{align*}
-  Since \(a, b\) is arbitrary, we conclude that
+  Since \(a, b\) was arbitrary, we conclude that
   \[
     \forall [a, b] \subseteq \R, \int_{[a, b]} \exp = \exp(b) - \exp(a).
   \]
@@ -120,7 +120,7 @@
      & = \sum_{m = 0}^\infty \sum_{n = 0}^m c_n c_{m - n} x^n y^{m - n}                                       & (c_{m - n} = 0 \text{ if } n > m)                                \\
      & = \sum_{m = 0}^\infty \sum_{n = 0}^m \dfrac{x^n y^{m - n}}{n! (m - n)!}                                                                                                   \\
      & = \sum_{m = 0}^\infty \bigg(\dfrac{1}{m!} \sum_{n = 0}^m \dfrac{m!}{n! (m - n)!} (x^n y^{m - n})\bigg)                                                                    \\
-     & = \sum_{m = 0}^\infty \dfrac{(x + y)^m}{m!}                                                            &                                   & \by{ii:ex:4.2.5}                \\
+     & = \sum_{m = 0}^\infty \dfrac{(x + y)^m}{m!}                                                            &                                   & \by{ii:ex:4.2.5}             \\
      & = \exp(x + y).                                                                                         &                                   & \by{ii:4.5.1}
   \end{align*}
   Combine all proofs above we conclude that
@@ -140,7 +140,7 @@
   \]
   Since
   \begin{align*}
-    \forall x \in \R, \exp(0) & = \exp(x - x)                         \\
+    \forall x \in \R, \exp(0) & = \exp(x - x)                            \\
                               & = \exp(x) \exp(-x) &  & \by{ii:4.5.2}[d] \\
                               & = 1,
   \end{align*}
@@ -196,7 +196,7 @@
     e^{x + 1} & = \exp(1)^{x + 1}   &  & \by{ii:4.5.3}    \\
               & = \exp(1) \exp(1)^x &  & \by{ii:4.5.2}[a] \\
               & = \exp(1) e^x       &  & \by{ii:4.5.3}    \\
-              & = \exp(1) \exp(x)   &  & \byIH         \\
+              & = \exp(1) \exp(x)   &  & \byIH            \\
               & = \exp(x + 1)       &  & \by{ii:4.5.2}[d]
   \end{align*}
   and this closes the induction.
@@ -206,11 +206,11 @@
   Since \(-x \in \N\), we know that
   \begin{align*}
     e^{-x} & = \exp(-x)               &  & \text{(from the proof above)} \\
-           & = \dfrac{1}{\exp(x)}     &  & \by{ii:4.5.2}[e]                 \\
+           & = \dfrac{1}{\exp(x)}     &  & \by{ii:4.5.2}[e]              \\
            & = \big(\exp(x)\big)^{-1}
   \end{align*}
   and thus \(e^x = \exp(x)\).
-  Since \(x\) is arbitrary, combine the proofs above we conclude that \(e^x = \exp(x)\) for all \(x \in \Z\).
+  Since \(x\) was arbitrary, combine the proofs above we conclude that \(e^x = \exp(x)\) for all \(x \in \Z\).
 
   Next we show that \(e^x = \exp(x)\) for all \(x \in \Q\).
   Let \(x \in \Q\).
@@ -219,7 +219,7 @@
     e^a & = \exp(a)                            &  & \text{(from the proof above)} \\
         & = \exp(\dfrac{ab}{b})                                                   \\
         & = \exp(\sum_{i = 1}^b \dfrac{a}{b})                                     \\
-        & = \prod_{i = 1}^b \exp(\dfrac{a}{b}) &  & \by{ii:4.5.2}[d]                 \\
+        & = \prod_{i = 1}^b \exp(\dfrac{a}{b}) &  & \by{ii:4.5.2}[d]              \\
         & = \exp(\dfrac{a}{b})^b                                                  \\
         & = \exp(x)^b
   \end{align*}
@@ -230,7 +230,7 @@
         & = \Big(\big(\exp(x)\big)^b\Big)^{\dfrac{1}{b}} &  & \text{(from the proof above)} \\
         & = \exp(x).
   \end{align*}
-  Since \(x\) is arbitrary, we conclude that \(e^x = \exp(x)\) for all \(x \in \Q\).
+  Since \(x\) was arbitrary, we conclude that \(e^x = \exp(x)\) for all \(x \in \Q\).
 
   Finally we show that \(e^x = \exp(x)\) for all \(x \in \R\).
   Let \(x \in \R\).
@@ -241,7 +241,7 @@
         & = \lim_{n \to \infty} \exp(q_n) &  & \text{(from the proof above)} \\
         & = \exp(x).                      &  & \by{ii:4.5.2}[c]
   \end{align*}
-  Since \(x\) is arbitrary, we conclude that \(e^x = \exp(x)\) for all \(x \in \R\).
+  Since \(x\) was arbitrary, we conclude that \(e^x = \exp(x)\) for all \(x \in \R\).
 \end{proof}
 
 \begin{note}
@@ -288,9 +288,9 @@
   Since \(\exp\) is also differentiable, and the derivative is never zero, we see from the inverse function theorem (Theorem 10.4.2 in Analysis I) that \(\ln\) is also differentiable.
   Thus we have
   \begin{align*}
-             & \forall x \in (0, \infty), \exp\big(\ln(x)\big) = x                   &  & \by{ii:4.5.5}                            \\
+             & \forall x \in (0, \infty), \exp\big(\ln(x)\big) = x                   &  & \by{ii:4.5.5}                         \\
     \implies & \forall x \in (0, \infty), \ln'(x) = \dfrac{1}{\exp'\big(\ln(x)\big)} &  & \text{(Theorem 10.4.2 in Analysis I)} \\
-    \implies & \forall x \in (0, \infty), \ln'(x) = \dfrac{1}{\exp\big(\ln(x)\big)}  &  & \by{ii:4.5.2}[b]                         \\
+    \implies & \forall x \in (0, \infty), \ln'(x) = \dfrac{1}{\exp\big(\ln(x)\big)}  &  & \by{ii:4.5.2}[b]                      \\
     \implies & \forall x \in (0, \infty), \ln'(x) = \dfrac{1}{x}.                    &  & \by{ii:4.5.5}
   \end{align*}
   Since \(\dfrac{1}{x}\) is continuous on arbitrary interval \([a, b] \subseteq (0, \infty)\), by Corollary 11.5.2 in Analysis I we know that \(\dfrac{1}{x}\) is Riemann integrable on \([a, b]\).
@@ -317,7 +317,7 @@
   \end{align*}
   and
   \begin{align*}
-             & \forall x \in (0, \infty), \ln(\dfrac{x}{x}) = 0 \text{(from the proof above)}                    \\
+             & \forall x \in (0, \infty), \ln(\dfrac{x}{x}) = 0 \text{(from the proof above)}                       \\
     \implies & \forall x \in (0, \infty), \ln(x) + \ln(\dfrac{1}{x}) = 0                      &  & \by{ii:4.5.6}[b] \\
     \implies & \forall x \in (0, \infty), \ln(\dfrac{1}{x}) = -\ln(x).
   \end{align*}
@@ -328,10 +328,10 @@
   We know that \(x^y \in (0, \infty)\) for all \(y \in \R\), thus by \cref{ii:4.5.5} \(\ln(x^y)\) is well-defined and we have
   \begin{align*}
     y \ln(x) & = \ln(e^{y \ln(x)})             &  & \by{ii:4.5.5} \\
-             & = \ln\big((e^{\ln(x)})^{y}\big)                 \\
+             & = \ln\big((e^{\ln(x)})^{y}\big)                    \\
              & = \ln(x^y).                     &  & \by{ii:4.5.5}
   \end{align*}
-  Since \(x\) is arbitrary, we conclude that
+  Since \(x\) was arbitrary, we conclude that
   \[
     \forall x \in (0, \infty), \forall y \in \R, y \ln(x) = \ln(x^y).
   \]
@@ -347,7 +347,7 @@
   \begin{align*}
     \forall x \in (-1, 1), & \ln'(1 - x)                                                                                         \\
                            & = \big(\ln'(y)|_{y = 1 - x}\big) \times \big((y \mapsto 1 - y)'(x)\big) &  & \text{(by chain rule)} \\
-                           & = \dfrac{1}{1 - x} \times (-1)                                          &  & \by{ii:4.5.6}[a]          \\
+                           & = \dfrac{1}{1 - x} \times (-1)                                          &  & \by{ii:4.5.6}[a]       \\
                            & = \dfrac{-1}{1 - x}
   \end{align*}
   and
@@ -360,7 +360,7 @@
   First suppose that \(x = 0\).
   Then we have
   \begin{align*}
-    \ln(1 - 0) & = \ln(1)                                                   \\
+    \ln(1 - 0) & = \ln(1)                                                      \\
                & = 0                                     &  & \by{ii:4.5.6}[c] \\
                & = - \sum_{n = 1}^\infty \dfrac{0^n}{n}.
   \end{align*}
@@ -369,10 +369,10 @@
   Then we have
   \begin{align*}
              & - \sum_{n = 0}^\infty x^n = \ln'(1 - x)                                                                                                  \\
-    \implies & \int_0^x \bigg(- \sum_{n = 0}^\infty y^n\bigg) \; dy = \int_0^x \ln'(1 - y) \; dy       &  & \by{ii:4.5.6}[a]                               \\
-    \implies & - \sum_{n = 0}^\infty \dfrac{x^{n + 1} - 0^{n + 1}}{n + 1} = \int_0^x \ln'(1 - y) \; dy &  & \by{ii:4.1.6}[e]                               \\
+    \implies & \int_0^x \bigg(- \sum_{n = 0}^\infty y^n\bigg) \; dy = \int_0^x \ln'(1 - y) \; dy       &  & \by{ii:4.5.6}[a]                            \\
+    \implies & - \sum_{n = 0}^\infty \dfrac{x^{n + 1} - 0^{n + 1}}{n + 1} = \int_0^x \ln'(1 - y) \; dy &  & \by{ii:4.1.6}[e]                            \\
     \implies & - \sum_{n = 0}^\infty \dfrac{x^{n + 1}}{n + 1} = \ln(1 - x) - \ln(1 - 0)                &  & \text{(by fundamental theorem of calculus)} \\
-    \implies & - \sum_{n = 0}^\infty \dfrac{x^{n + 1}}{n + 1} = \ln(1 - x)                             &  & \by{ii:4.5.6}[c]                               \\
+    \implies & - \sum_{n = 0}^\infty \dfrac{x^{n + 1}}{n + 1} = \ln(1 - x)                             &  & \by{ii:4.5.6}[c]                            \\
     \implies & - \sum_{n = 1}^\infty \dfrac{x^n}{n} = \ln(1 - x).
   \end{align*}
 
@@ -380,10 +380,10 @@
   Then we have
   \begin{align*}
              & - \sum_{n = 0}^\infty x^n = \ln'(1 - x)                                                                                                  \\
-    \implies & \int_x^0 \bigg(- \sum_{n = 0}^\infty y^n\bigg) \; dy = \int_x^0 \ln'(1 - y) \; dy       &  & \by{ii:4.5.6}[a]                               \\
-    \implies & - \sum_{n = 0}^\infty \dfrac{0^{n + 1} - x^{n + 1}}{n + 1} = \int_x^0 \ln'(1 - y) \; dy &  & \by{ii:4.1.6}[e]                               \\
+    \implies & \int_x^0 \bigg(- \sum_{n = 0}^\infty y^n\bigg) \; dy = \int_x^0 \ln'(1 - y) \; dy       &  & \by{ii:4.5.6}[a]                            \\
+    \implies & - \sum_{n = 0}^\infty \dfrac{0^{n + 1} - x^{n + 1}}{n + 1} = \int_x^0 \ln'(1 - y) \; dy &  & \by{ii:4.1.6}[e]                            \\
     \implies & \sum_{n = 0}^\infty \dfrac{x^{n + 1}}{n + 1} = \ln(1 - 0) - \ln(1 - x)                  &  & \text{(by fundamental theorem of calculus)} \\
-    \implies & \sum_{n = 0}^\infty \dfrac{x^{n + 1}}{n + 1} = -\ln(1 - x)                              &  & \by{ii:4.5.6}[c]                               \\
+    \implies & \sum_{n = 0}^\infty \dfrac{x^{n + 1}}{n + 1} = -\ln(1 - x)                              &  & \by{ii:4.5.6}[c]                            \\
     \implies & - \sum_{n = 1}^\infty \dfrac{x^n}{n} = \ln(1 - x).
   \end{align*}
 
@@ -421,9 +421,9 @@
   Then we have
   \begin{align*}
     e^x & = \sum_{n = 0}^\infty \dfrac{x^n}{n!}                                     &         & \by{ii:4.5.1} \\
-        & = \dfrac{x^0}{0!} + \dfrac{x^1}{1!} + \sum_{n = 2}^\infty \dfrac{x^n}{n!}                        \\
-        & = 1 + x + \sum_{n = 2}^\infty \dfrac{x^n}{n!}                                                    \\
-        & > 1 + x                                                                   & (x > 0)              \\
+        & = \dfrac{x^0}{0!} + \dfrac{x^1}{1!} + \sum_{n = 2}^\infty \dfrac{x^n}{n!}                           \\
+        & = 1 + x + \sum_{n = 2}^\infty \dfrac{x^n}{n!}                                                       \\
+        & > 1 + x                                                                   & (x > 0)                 \\
         & > x.
   \end{align*}
   Now suppose that \(x \in \R^-\).
@@ -514,9 +514,9 @@
   we have
   \begin{align*}
     \forall n \geq 3, n! e & = n! \sum_{m = 0}^\infty \dfrac{1}{m!}                                                        &  & \by{ii:4.5.3} \\
-                           & = \sum_{m = 0}^\infty \dfrac{n!}{m!}                                                                          \\
-                           & = \sum_{m = 0}^n \dfrac{n!}{m!} + \sum_{m = n + 1}^\infty \dfrac{n!}{m!}                                      \\
-                           & = \sum_{m = 0}^n (n - m)! + \sum_{m = n + 1}^\infty \dfrac{n!}{m!}                                            \\
+                           & = \sum_{m = 0}^\infty \dfrac{n!}{m!}                                                                             \\
+                           & = \sum_{m = 0}^n \dfrac{n!}{m!} + \sum_{m = n + 1}^\infty \dfrac{n!}{m!}                                         \\
+                           & = \sum_{m = 0}^n (n - m)! + \sum_{m = n + 1}^\infty \dfrac{n!}{m!}                                               \\
                            & \in \Bigg(\bigg(\sum_{m = 0}^n (n - m)!\bigg), \bigg(\sum_{m = 0}^n (n - m)! + 1\bigg)\Bigg).
   \end{align*}
   Thus \(n! e\) is not an integer for all \(n \geq 3\).
@@ -580,12 +580,12 @@
   Suppose inductively that \(f^{(k)}(0) = 0\) for some \(k \geq 0\).
   Then for \(k + 1\), we have
   \begin{align*}
-     & \lim_{x \to 0 ; x \in \R^+} \dfrac{f^{(k)}(x) - f^{(k)}(0)}{x - 0}                        \\
-     & = \lim_{x \to 0 ; x \in \R^+} \dfrac{P_k(x^{-1}) \exp(-x^{-1}) - 0}{x} &  & \byIH         \\
+     & \lim_{x \to 0 ; x \in \R^+} \dfrac{f^{(k)}(x) - f^{(k)}(0)}{x - 0}                           \\
+     & = \lim_{x \to 0 ; x \in \R^+} \dfrac{P_k(x^{-1}) \exp(-x^{-1}) - 0}{x} &  & \byIH            \\
      & = \lim_{x \to 0 ; x \in \R^+} \dfrac{P_k(x^{-1}) x^{-1}}{\exp(x^{-1})} &  & \by{ii:4.5.2}[e] \\
-     & = \lim_{x \to \infty ; x \in \R^+} \dfrac{P_k(x) x}{\exp(x)}                              \\
+     & = \lim_{x \to \infty ; x \in \R^+} \dfrac{P_k(x) x}{\exp(x)}                                 \\
      & = 0                                                                    &  & \by{ii:ex:4.5.8} \\
-     & = \lim_{x \to 0 ; x \in \R^-} \dfrac{0 - 0}{x - 0}                                        \\
+     & = \lim_{x \to 0 ; x \in \R^-} \dfrac{0 - 0}{x - 0}                                           \\
      & = \lim_{x \to 0 ; x \in \R^-} \dfrac{f^{(k)}(x) - f^{(k)}(0)}{x - 0}
   \end{align*}
   and thus \(f^{(k + 1)}(0) = 0\).
@@ -621,14 +621,14 @@
   Let \(a \in \R^+\).
   By \cref{ii:4.5.6}(e) we know that \(\ln\) is real analytic at \(1\), thus
   \begin{align*}
-             & \forall x \in (0, 2a), \dfrac{x}{a} \in (0, 2)                                                                                             \\
+             & \forall x \in (0, 2a), \dfrac{x}{a} \in (0, 2)                                                                                                \\
     \implies & \forall x \in (0, 2a), \ln(\dfrac{x}{a}) = \sum_{n = 1}^\infty \dfrac{(-1)^{n + 1}}{n} \bigg(\dfrac{x}{a} - 1\bigg)^n &  & \by{ii:4.5.6}[e]   \\
     \implies & \forall x \in (0, 2a), \ln(x) - \ln(a) = \sum_{n = 1}^\infty \dfrac{(-1)^{n + 1}}{n} \bigg(\dfrac{x}{a} - 1\bigg)^n   &  & \by{ii:4.5.6}[b,c] \\
-    \implies & \forall x \in (0, 2a), \ln(x) = \ln(a) + \sum_{n = 1}^\infty \dfrac{(-1)^{n + 1}}{n} \bigg(\dfrac{x}{a} - 1\bigg)^n                        \\
-             & = \ln(a) (x - a)^0 + \sum_{n = 1}^\infty \dfrac{(-1)^{n + 1}}{n a^n} (x - a)^n                                                             \\
+    \implies & \forall x \in (0, 2a), \ln(x) = \ln(a) + \sum_{n = 1}^\infty \dfrac{(-1)^{n + 1}}{n} \bigg(\dfrac{x}{a} - 1\bigg)^n                           \\
+             & = \ln(a) (x - a)^0 + \sum_{n = 1}^\infty \dfrac{(-1)^{n + 1}}{n a^n} (x - a)^n                                                                \\
     \implies & \ln \text{ is real analytic at } a \text{ with radius of convergence } a.                                             &  & \by{ii:4.2.1}
   \end{align*}
-  Since \(a\) is arbitrary, we conclude that \(\ln\) is real analytic on \(\R^+\).
+  Since \(a\) was arbitrary, we conclude that \(\ln\) is real analytic on \(\R^+\).
 \end{proof}
 
 \begin{ex}\label{ii:ex:4.5.7}
@@ -640,7 +640,7 @@
 \begin{proof}
   Since \(f\) is real analytic on \(\R\), we have
   \begin{align*}
-    \forall x \in \R, f(x) & = \sum_{n = 0}^\infty \dfrac{f^{(n)}(0)}{n!} (x - 0)^n &  & \by{ii:4.2.10}            \\
+    \forall x \in \R, f(x) & = \sum_{n = 0}^\infty \dfrac{f^{(n)}(0)}{n!} (x - 0)^n &  & \by{ii:4.2.10}         \\
                            & = \sum_{n = 0}^\infty \dfrac{f(0)}{n!} x^n             &  & \text{(by hypothesis)} \\
                            & = f(0) \bigg(\sum_{n = 0}^\infty \dfrac{x^n}{n!}\bigg)                             \\
                            & = f(0) e^x.                                            &  & \by{ii:4.5.1}
@@ -709,7 +709,7 @@
     \implies & \forall \varepsilon \in \R^+, \exists K \in \Z^+ : \forall n \geq K, \dfrac{e^n}{n^m} > \varepsilon                          &  & \text{(monotone increasing)} \\
     \implies & \lim_{n \to \infty} \dfrac{e^n}{n^m} = +\infty.
   \end{align*}
-  Since \(m\) is arbitrary, we conclude that
+  Since \(m\) was arbitrary, we conclude that
   \[
     \forall m \in \Z^+, \lim_{n \to \infty} \dfrac{e^n}{n^m} = +\infty.
   \]
@@ -758,7 +758,7 @@
   Let \(d = d_{l^1}|_{(\R^+ \times \R) \times (\R^+ \times \R)}\).
   We have
   \begin{align*}
-    \forall (x, y) \in \R^+ \times \R, f(x, y) & = x^y                                       \\
+    \forall (x, y) \in \R^+ \times \R, f(x, y) & = x^y                                          \\
                                                & = \exp\big(\ln(x^y)\big) &  & \by{ii:4.5.5}    \\
                                                & = \exp(y \ln(x)).        &  & \by{ii:4.5.6}[d]
   \end{align*}
@@ -773,6 +773,6 @@
     \implies & \lim_{n \to \infty} y_n \ln(x_n) = y \ln(x)                              &  & \by{ii:2.2.2}      \\
     \implies & \lim_{n \to \infty} \exp\big(y_n \ln(x_n)\big) = \exp\big(y \ln(x)\big). &  & \by{ii:4.5.2}[c]
   \end{align*}
-  Since \((x_n, y_n)_{n = 1}^\infty\) is arbitrary, by \cref{ii:2.1.4}(a)(b) we conclude that \(f\) is continuous at \((x, y)\) from \((\R^+ \times \R, d)\) to \((\R, d_{l^1}|_{\R \times \R})\).
-  Since \(x, y\) are arbitrary, we conclude that \(f\) is continuous on \(\R^+ \times \R\) from \((\R^+ \times \R, d)\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Since \((x_n, y_n)_{n = 1}^\infty\) was arbitrary, by \cref{ii:2.1.4}(a)(b) we conclude that \(f\) is continuous at \((x, y)\) from \((\R^+ \times \R, d)\) to \((\R, d_{l^1}|_{\R \times \R})\).
+  Since \(x, y\) were arbitrary, we conclude that \(f\) is continuous on \(\R^+ \times \R\) from \((\R^+ \times \R, d)\) to \((\R, d_{l^1}|_{\R \times \R})\).
 \end{proof}
