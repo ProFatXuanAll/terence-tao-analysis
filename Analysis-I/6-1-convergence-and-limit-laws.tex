@@ -10,7 +10,7 @@
 \end{note}
 
 \begin{defn}[\(\varepsilon\)-close real numbers]\label{i:6.1.2}
-  Let \(\varepsilon > 0\) be a real number.
+  Let \(\varepsilon \in \R_{\geq 0}\).
   We say that two real numbers \(x, y\) are \emph{\(\varepsilon\)-close} iff we have \(d(y, x) \leq \varepsilon\).
 \end{defn}
 
@@ -28,14 +28,14 @@
 \end{note}
 
 \begin{defn}[Cauchy sequences of reals]\label{i:6.1.3}
-  Let \(\varepsilon > 0\) be a real number.
-  A sequence \((a_n)_{n = N}^\infty\) of real numbers starting at some integer index \(N\) is said to be \emph{\(\varepsilon\)-steady} iff \(a_j\) and \(a_k\) are \(\varepsilon\)-close for every \(j, k \geq N\).
-  A sequence \((a_n)_{n = m}^\infty\) starting at some integer index \(m\) is said to be \emph{eventually \(\varepsilon\)-steady} iff there exists an \(N \geq m\) such that \((a_n)_{n = N}^\infty\) is \(\varepsilon\)-steady.
-  We say that \((a_n)_{n = m}^\infty\) is a \emph{Cauchy sequence} iff it is eventually \(\varepsilon\)-steady for every \(\varepsilon > 0\).
+  Let \(\varepsilon \in \R^+\).
+  A sequence \((a_n)_{n = N}^\infty\) of real numbers starting at some integer index \(N\) is said to be \emph{\(\varepsilon\)-steady} iff \(a_j\) and \(a_k\) are \(\varepsilon\)-close for every \(j, k \in \Z_{\geq N}\).
+  A sequence \((a_n)_{n = m}^\infty\) starting at some integer index \(m\) is said to be \emph{eventually \(\varepsilon\)-steady} iff there exists an \(N \in \Z_{\geq m}\) such that \((a_n)_{n = N}^\infty\) is \(\varepsilon\)-steady.
+  We say that \((a_n)_{n = m}^\infty\) is a \emph{Cauchy sequence} iff it is eventually \(\varepsilon\)-steady for every \(\varepsilon \in \R^+\).
 \end{defn}
 
 \begin{note}
-  To put it another way, a sequence \((a_n)_{n = m}^\infty\) of real numbers is a Cauchy sequence if, for every real \(\varepsilon > 0\), there exists an \(N \geq m\) such that \(\abs{a_n - a_n'} \leq \varepsilon\) for all \(n, n' \geq N\).
+  To put it another way, a sequence \((a_n)_{n = m}^\infty\) of real numbers is a Cauchy sequence if, for every \(\varepsilon \in \R^+\), there exists an \(N \in \Z_{\geq m}\) such that \(\abs{a_n - a_{n'}} \leq \varepsilon\) for all \(n, n' \in \Z_{\geq N}\).
   These definitions are consistent with the corresponding definitions for rational numbers (\cref{i:5.1.3,i:5.1.6,i:5.1.8}), although verifying consistency for Cauchy sequences takes a little bit of care.
 \end{note}
 
@@ -44,14 +44,14 @@
   Then \((a_n)_{n = m}^\infty\) is a Cauchy sequence in the sense of \cref{i:5.1.8} iff it is a Cauchy sequence in the sense of \cref{i:6.1.3}.
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{i:6.1.4}]
   Suppose first that \((a_n)_{n = m}^\infty\) is a Cauchy sequence in the sense of \cref{i:6.1.3};
-  then it is eventually \(\varepsilon\)-steady for every \emph{real} \(\varepsilon > 0\).
-  In particular, it is eventually \(\varepsilon\)-steady for every \emph{rational} \(\varepsilon > 0\), which makes it a Cauchy sequence in the sense of \cref{i:5.1.8}.
+  then it is eventually \(\varepsilon\)-steady for every \(\varepsilon \in \R^+\).
+  In particular, it is eventually \(\varepsilon\)-steady for every \(\varepsilon \in \Q^+\), which makes it a Cauchy sequence in the sense of \cref{i:5.1.8}.
 
   Now suppose that \((a_n)_{n = m}^\infty\) is a Cauchy sequence in the sense of \cref{i:5.1.8};
-  then it is eventually \(\varepsilon'\)-steady for every \emph{rational} \(\varepsilon' > 0\).
-  If \(\varepsilon > 0\) is a real number, then there exists a \emph{rational} \(\varepsilon' > 0\) which is smaller than \(\varepsilon\), by \cref{i:5.4.12}.
+  then it is eventually \(\varepsilon'\)-steady for every \(\varepsilon' \in \Q^+\).
+  If \(\varepsilon \in \R^+\), then there exists an \(\varepsilon' \in \Q^+\) which is smaller than \(\varepsilon\), by \cref{i:5.4.12}.
   Since \(\varepsilon'\) is rational, we know that \((a_n)_{n = m}^\infty\) is eventually \(\varepsilon'\)-steady;
   since \(\varepsilon' < \varepsilon\), this implies that \((a_n)_{n = m}^\infty\) is eventually \(\varepsilon\)-steady.
   Since \(\varepsilon\) is an arbitrary positive real number, we thus see that \((a_n)_{n = m}^\infty\) is a Cauchy sequence in the sense of \cref{i:6.1.3}.
@@ -62,10 +62,10 @@
 \end{note}
 
 \begin{defn}[Convergence of sequences]\label{i:6.1.5}
-  Let \(\varepsilon > 0\) be a real number, and let \(L\) be a real number.
-  A sequence \((a_n)_{n = N}^\infty\) of real numbers is said to be \emph{\(\varepsilon\)-close to \(L\)} iff \(a_n\) is \(\varepsilon\)-close to \(L\) for every \(n \geq N\), i.e., we have \(\abs{a_n - L} \leq \varepsilon\) for every \(n \geq N\).
-  We say that a sequence \((a_n)_{n = m}^\infty\) is \emph{eventually \(\varepsilon\)-close to \(L\)} iff there exists an \(N \geq m\) such that \((a_n)_{n = N}^\infty\) is \(\varepsilon\)-close to \(L\).
-  We say that a sequence \((a_n)_{n = m}^\infty\) \emph{converges to \(L\)} iff it is eventually \(\varepsilon\)-close to \(L\) for every real \(\varepsilon > 0\).
+  Let \(\varepsilon \in \R^+\), and let \(L \in \R\).
+  A sequence \((a_n)_{n = N}^\infty\) of real numbers is said to be \emph{\(\varepsilon\)-close to \(L\)} iff \(a_n\) is \(\varepsilon\)-close to \(L\) for every \(n \in \Z_{\geq N}\), i.e., we have \(\abs{a_n - L} \leq \varepsilon\) for every \(n \in \Z_{\geq N}\).
+  We say that a sequence \((a_n)_{n = m}^\infty\) is \emph{eventually \(\varepsilon\)-close to \(L\)} iff there exists an \(N \in \Z_{\geq m}\) such that \((a_n)_{n = N}^\infty\) is \(\varepsilon\)-close to \(L\).
+  We say that a sequence \((a_n)_{n = m}^\infty\) \emph{converges to \(L\)} iff it is eventually \(\varepsilon\)-close to \(L\) for every \(\varepsilon \in \R^+\).
 \end{defn}
 
 \setcounter{thm}{6}
@@ -74,13 +74,13 @@
   Then it is not possible for \((a_n)_{n = m}^\infty\) to converge to \(L\) while also converging to \(L'\).
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{i:6.1.7}]
   Suppose for sake of contradiction that \((a_n)_{n = m}^\infty\) was converging to both \(L\) and \(L'\).
-  Let \(\varepsilon = \abs{L - L'} / 3\);
-  note that \(\varepsilon\) is positive since \(L \neq L'\).
+  Let \(\varepsilon = \abs{L - L'} / 3\).
+  Note that \(\varepsilon\) is positive since \(L \neq L'\).
   Since \((a_n)_{n = m}^\infty\) converges to \(L\), we know that \((a_n)_{n = m}^\infty\) is eventually \(\varepsilon\)-close to \(L\);
-  thus there is an \(N \geq m\) such that \(d(a_n, L) \leq \varepsilon\) for all \(n \geq N\).
-  Similarly, there is an \(M \geq m\) such that \(d(a_n, L') \leq \varepsilon\) for all \(n \geq M\).
+  thus there is an \(N \in \Z_{\geq m}\) such that \(d(a_n, L) \leq \varepsilon\) for all \(n \in \Z_{\geq N}\).
+  Similarly, there is an \(M \in \Z_{\geq m}\) such that \(d(a_n, L') \leq \varepsilon\) for all \(n \in \Z_{\geq M}\).
   In particular, if we set \(n \coloneqq \max(N, M)\), then we have \(d(a_n, L) \leq \varepsilon\) and \(d(a_n, L') \leq \varepsilon\), hence by the triangle inequality \(d(L, L') \leq 2\varepsilon = 2\abs{L - L'} / 3\).
   But then we have \(\abs{L - L'} \leq 2\abs{L - L'} / 3\), which contradicts the fact that \(\abs{L - L'} > 0\).
   Thus it is not possible to converge to both \(L\) and \(L'\).
@@ -102,7 +102,7 @@
 \end{note}
 
 \begin{rmk}\label{i:6.1.9}
-  The notation \(\lim_{n \to \infty} a_n\) does not give any indication about the starting index \(m\) of the sequence, but the starting index is irrelevant.
+  The notation \(\lim_{n \to \infty} a_n\) does not give any indication about the starting index \(m\) of the sequence, but the starting index is irrelevant (\cref{i:ex:6.1.3}).
   Thus in the rest of this discussion we shall not be too careful as to where these sequences start, as we shall be mostly focused on their limits.
 \end{rmk}
 
@@ -117,22 +117,23 @@
   the phrase \(\lim_{n \to \infty} a_n\) has exactly the same meaning as \(\lim_{k \to \infty} a_k\), for instance.
   Sometimes it will be convenient to change the label of the index to avoid conflicts of notation;
   for instance, we might want to change \(n\) to \(k\) because \(n\) is simultaneously being used for some other purpose, and we want to reduce confusion.
+  See \cref{i:ex:6.1.4}.
 \end{rmk}
 
 \begin{prop}\label{i:6.1.11}
   We have \(\lim_{n \to \infty} 1 / n = 0\).
 \end{prop}
 
-\begin{proof}
+\begin{proof}[\pf{i:6.1.11}]
   We have to show that the sequence \((a_n)_{n = 1}^\infty\) converges to \(0\), where \(a_n \coloneqq 1 / n\).
-  In other words, for every \(\varepsilon > 0\), we need to show that the sequence \((a_n)_{n = 1}^\infty\) is eventually \(\varepsilon\)-close to \(0\).
-  So, let \(\varepsilon > 0\) be an arbitrary real number.
-  We have to find an \(N\) such that \(\abs{a_n - 0} \leq \varepsilon\) for every \(n \geq N\).
-  But if \(n \geq N\), then
+  In other words, for every \(\varepsilon \in \R^+\), we need to show that the sequence \((a_n)_{n = 1}^\infty\) is eventually \(\varepsilon\)-close to \(0\).
+  So, let \(\varepsilon \in \R^+\) be an arbitrary real number.
+  We have to find an \(N \in \Z^+\) such that \(\abs{a_n - 0} \leq \varepsilon\) for every \(n \in \Z_{\geq N}\).
+  But if \(n \in \Z_{\geq N}\), then
   \[
     \abs{a_n - 0} = \abs{1 / n - 0} = 1 / n \leq 1 / N.
   \]
-  Thus, if we pick \(N > 1 / \varepsilon\) (which we can do by the Archimedean principle), then \(1 / N < \varepsilon\), and so \((a_n)_{n = 1}^\infty\) is \(\varepsilon\)-close to \(0\).
+  Thus, if we pick \(N > 1 / \varepsilon\) (which we can do by the Archimedean principle, \cref{i:5.4.13}), then \(1 / N < \varepsilon\), and so \((a_n)_{n = N}^\infty\) is \(\varepsilon\)-close to \(0\).
   Thus \((a_n)_{n = 1}^\infty\) is eventually \(\varepsilon\)-close to \(0\).
   Since \(\varepsilon\) was arbitrary, \((a_n)_{n = 1}^\infty\) converges to \(0\).
 \end{proof}
@@ -142,89 +143,114 @@
   Then \((a_n)_{n = m}^\infty\) is also a Cauchy sequence.
 \end{prop}
 
-\begin{proof}
-  Let \((a_n)_{n = m}^\infty\) be a sequence of real numbers converges to \(L\).
-  Then by \cref{i:6.1.5} \(\forall \varepsilon \in \R^+\), \(\exists N \in \N\) and \(N \geq m\) such that \(\abs{a_n - L} \leq \varepsilon\) for every \(n \geq N\).
-  In particular, we have \(\abs{a_n - L} \leq \varepsilon / 2\).
-  Let \(n' \in \N\) and \(n' \geq N\).
+\begin{proof}[\pf{i:6.1.12}]
+  Suppose that \((a_n)_{n = m}^\infty\) converges to \(L \in \R\).
+  Let \(\varepsilon \in \R^+\).
+  Since \(\lim_{n \to \infty} a_n = L\), by \cref{i:6.1.5} there exists an \(N \in \Z_{\geq m}\) such that \((a_n)_{n = N}^\infty\) is \(\varepsilon / 2\)-close to \(L\).
+  This means \(\abs{a_n - L} \leq \varepsilon / 2\) for all \(n \in \Z_{\geq N}\).
   Then we have
   \begin{align*}
-    \abs{a_n - a_{n'}} & = \abs{a_n - a_{n'} + L - L}           \\
-                       & = \abs{(a_n - L) + (L - a_{n'})}       \\
-                       & \leq \abs{a_n - L} + \abs{L - a_{n'}}  \\
-                       & = \abs{a_n - L} + \abs{a_{n'} - L}     \\
-                       & \leq \varepsilon / 2 + \varepsilon / 2 \\
-                       & = \varepsilon.
+    \forall j, k \in \Z_{\geq N}, \abs{a_j - a_k} & \leq \abs{a_j - L} + \abs{a_k - L}                                  &  & \by{i:ac:5.4.1}[f,g] \\
+                                                  & \leq \dfrac{\varepsilon}{2} + \dfrac{\varepsilon}{2} = \varepsilon. &  & \by{i:5.4.7}[c,d]
   \end{align*}
-  Since \(\varepsilon\) is arbitrary, by \cref{i:6.1.3} we know that \((a_n)_{n = m}^\infty\) is a Cauchy sequence.
+  Thus \((a_n)_{n = N}^\infty\) is \(\varepsilon\)-steady and \((a_n)_{n = m}^\infty\) is eventually \(\varepsilon\)-steady.
+  Since \(\varepsilon\) is arbitrary, by \cref{i:6.1.3} we see that \((a_n)_{n = m}^\infty\) is a Cauchy sequence of reals.
 \end{proof}
 
-\setcounter{thm}{14}
+\setcounter{thm}{13}
+\begin{rmk}\label{i:6.1.14}
+  For a converse to \cref{i:6.1.12}, see \cref{i:6.4.18} below.
+\end{rmk}
+
 \begin{prop}[Formal limits are genuine limits]\label{i:6.1.15}
-  Suppose that \((a_n)_{n = 1}^\infty\) is a Cauchy sequence of rational numbers.
-  Then \((a_n)_{n = 1}^\infty\) converges to \(\LIM_{n \to \infty} a_n\), i.e.
+  Suppose that \((a_n)_{n = m}^\infty\) is a Cauchy sequence of rational numbers.
+  Then \((a_n)_{n = m}^\infty\) converges to \(\LIM_{n \to \infty} a_n\), i.e.
   \[
     \LIM_{n \to \infty} a_n = \lim_{n \to \infty} a_n.
   \]
 \end{prop}
 
-\begin{proof}
-  Let \((a_n)_{n = m}^\infty\) be a Cauchy sequence of rationals, and let \(L = \LIM_{n \to \infty} a_n\).
+\begin{proof}[\pf{i:6.1.15}]
+  Let \(L = \LIM_{n \to \infty} a_n\).
   By \cref{i:5.3.1} we know that \(L \in \R\).
-  Thus by \cref{i:6.1.4} and \cref{i:6.1.5} we can ask whether \((a_n)_{n = m}^\infty\) converges to \(L\).
-  Suppose for sake of contradiction that sequence \(a_n\) is not eventually \(\varepsilon\)-close to \(L\) for every \(\varepsilon \in \R^+\).
-  Then \(\exists \varepsilon \in \R^+\) such that \(\forall n \in \N\) and \(n \geq m\), we have \(\abs{a_n - L} > \varepsilon\).
-  Since \(\varepsilon > 0\), we know that \(\abs{a_n - L} > 0\), now we split into two cases:
-  \begin{itemize}
-    \item If \(a_n - L > 0\), then we have
-          \begin{align*}
-                     & \forall n \geq m, \abs{a_n - L} > \varepsilon                      \\
-            \implies & a_n - L > \varepsilon                                              \\
-            \implies & a_n > L + \varepsilon                                              \\
-            \implies & \LIM_{n \to \infty} a_n > L + \varepsilon     &  & \by{i:ex:5.4.8} \\
-            \implies & L > L + \varepsilon                                                \\
-            \implies & 0 > \varepsilon.
-          \end{align*}
-          But this contradict to \(\varepsilon > 0\).
-    \item If \(a_n - L < 0\), then we have
-          \begin{align*}
-                     & \forall n \geq m, \abs{a_n - L} > \varepsilon                      \\
-            \implies & L - a_n > \varepsilon                                              \\
-            \implies & a_n < L - \varepsilon                                              \\
-            \implies & \LIM_{n \to \infty} a_n < L - \varepsilon     &  & \by{i:ex:5.4.8} \\
-            \implies & L < L - \varepsilon                                                \\
-            \implies & \varepsilon < 0.
-          \end{align*}
-          But this contradict to \(\varepsilon > 0\).
-  \end{itemize}
-  From all cases above we derived contradictions.
-  Thus such \(\varepsilon\) does not exist, and therefor we must have \((a_n)_{n = m}^\infty\) eventually \(\varepsilon\)-close to \(L\) for every \(\varepsilon \in \R^+\).
-  By \cref{i:6.1.5} this means \(\lim_{n \to \infty} a_n = L\).
+  Thus by \cref{i:6.1.4,i:6.1.5} we can ask whether \((a_n)_{n = m}^\infty\) converges to \(L\).
+  Suppose for sake of contradiction that \((a_n)_{n = m}^\infty\) does not converge to \(L\).
+  Then there must exist an \(\varepsilon \in \R^+\) such that \((a_n)_{n = m}^\infty\) is not eventually \(\varepsilon\)-close to \(L\).
+  Fix such \(\varepsilon\).
+
+  Since \((a_n)_{n = m}^\infty\) is a Cauchy sequence of reals, we know that there exists an \(N \in \Z_{\geq m}\) such that \(\abs{a_j - a_k} \leq \dfrac{\varepsilon}{4}\) for all \(j, k \in \Z_{\geq N}\).
+  Fix such \(N\).
+  Since \((a_n)_{n = m}^\infty\) is not eventually \(\varepsilon\)-close to \(L\), we know that \((a_n)_{n = m}^\infty\) is not eventually \(\varepsilon'\)-close to \(L\) for every \(\varepsilon' \in \R_{0 < \varepsilon}\).
+  So \((a_n)_{n = m}^\infty\) is not eventually \(\dfrac{2 \varepsilon}{3}\)-close to \(L\), and we can find a \(j \in \Z_{\geq N}\) such that \(\abs{a_j - L} > \dfrac{2 \varepsilon}{3}\).
+  Similarly \((a_n)_{n = m}^\infty\) is not eventually \(\dfrac{\varepsilon}{3}\)-close to \(L\), and we can find a \(k \in \Z_{\geq N}\) such that \(\abs{a_k - L} > \dfrac{\varepsilon}{3}\).
+  Fix such \(j\) and \(k\).
+  But then we have
+  \begin{align*}
+    \dfrac{\varepsilon}{4} & \geq \abs{a_j - a_k}                                                             &  & \by{i:6.1.3}      \\
+                           & \geq \abs{a_j - L} - \abs{a_k - L}                                               &  & \by{i:4.3.3}[f,g] \\
+                           & \geq \dfrac{2 \varepsilon}{3} - \dfrac{\varepsilon}{3} = \dfrac{\varepsilon}{3},
+  \end{align*}
+  a contradiction.
+  Thus such \(\varepsilon\) does not exist.
+  Therefore we must have \(\lim_{n \to \infty} a_n = L = \LIM_{n \to \infty} a_n\).
 \end{proof}
 
 \begin{defn}[Bounded sequences]\label{i:6.1.16}
-  A sequence \((a_n)_{n = m}^\infty\) of reals is \emph{bounded by} a real number \(M\) iff we have \(\abs{a_n} \leq M\) for all \(n \geq m\).
-  We say that \((a_n)_{n = m}^\infty\) is bounded iff it is \emph{bounded} by \(M\) for some real number \(M > 0\).
+  A sequence \((a_n)_{n = m}^\infty\) of reals is \emph{bounded by} a real number \(M \in \R_{\geq 0}\) iff we have \(\abs{a_n} \leq M\) for all \(n \in \Z_{\geq m}\).
+  We say that \((a_n)_{n = m}^\infty\) is bounded iff it is \emph{bounded} by \(M\) for some real number \(M \in \R_{\geq 0}\).
 \end{defn}
 
 \begin{note}
   \cref{i:6.1.16} is consistent with \cref{i:5.1.12}.
-\end{note}
-
-\begin{note}
-  Recall from \cref{i:5.1.15} that every Cauchy sequence of rational numbers is bounded.
-  An inspection of the proof of that Lemma shows that the same argument works for real numbers;
-  every Cauchy sequence of real numbers is bounded.
+  See \cref{i:ex:6.1.7}.
 \end{note}
 
 \begin{cor}\label{i:6.1.17}
   Every convergent sequence of real numbers is bounded.
 \end{cor}
 
-\begin{proof}
-  From \cref{i:6.1.12} we have every convergent sequence of real numbers is a Cauchy sequence.
-  And by \cref{i:5.1.15} every Cauchy sequence is bounded.
-  Thus every convergent sequence of real numbers is bounded.
+\begin{proof}[\pf{i:6.1.17}]
+  Recall from \cref{i:5.1.15} that every Cauchy sequence of rationals is bounded.
+  An inspection of the proof of \cref{i:5.1.15} shows that the same argument works for reals;
+  every Cauchy sequence of reals is bounded.
+  From \cref{i:6.1.12} we see that every convergent sequence of reals is a Cauchy sequence.
+  Thus every convergent sequence of reals is bounded.
+\end{proof}
+
+\begin{ac}\label{i:ac:6.1.1}
+  Let \(x, y \in \R\).
+  Then we have \(\min(x, y) = -\max(-x, -y)\).
+  Similarly we have \(\max(x, y) = -\min(-x, -y)\).
+\end{ac}
+
+\begin{proof}[\pf{i:ac:6.1.1}]
+  First we show that \(\min(x, y) = -\max(-x, -y)\).
+  We split into two cases:
+  \begin{itemize}
+    \item If \(x \leq y\), then we have \(-x \geq -y\) by \cref{i:ex:4.2.6}.
+          Thus,
+          \begin{align*}
+            \min(x, y) & = x                                   \\
+                       & = -(-x)          &  & \by{i:ac:5.3.3} \\
+                       & = -\max(-x, -y). &  & (-x \geq -y)
+          \end{align*}
+    \item If \(x > y\), then we have \(-x < -y\) by \cref{i:ex:4.2.6}.
+          Thus,
+          \begin{align*}
+            \min(x, y) & = y                                   \\
+                       & = -(-y)          &  & \by{i:ac:5.3.3} \\
+                       & = -\max(-x, -y). &  & (-x < -y)
+          \end{align*}
+  \end{itemize}
+  From all cases above we see that \(\min(x, y) = -\max(-x, -y)\).
+  Thus we conclude that \(\min(x, y) = -\max(-x, -y)\).
+
+  Now we show that \(\max(x, y) = -\min(-x, -y)\).
+  This is true since
+  \begin{align*}
+    \max(x, y) & = -(-\max(-(-x), -(-y))) &  & \by{i:ac:5.3.3}               \\
+               & = -\min(-x, -y).         &  & \text{(from the proof above)}
+  \end{align*}
 \end{proof}
 
 \setcounter{thm}{18}
@@ -234,30 +260,30 @@
     \item The sequence \((a_n + b_n)_{n = m}^\infty\) converges to \(x + y\);
           in other words,
           \[
-            \lim_{n \to \infty} (a_n + b_n) = \lim_{n \to \infty} a_n + \lim_{n \to \infty} b_n.
+            \lim_{n \to \infty} (a_n + b_n) = \pa{\lim_{n \to \infty} a_n} + \pa{\lim_{n \to \infty} b_n}.
           \]
     \item The sequence \((a_n b_n)_{n = m}^\infty\) converges to \(xy\);
           in other words,
           \[
-            \lim_{n \to \infty} (a_n b_n) = (\lim_{n \to \infty} a_n)(\lim_{n \to \infty} b_n).
+            \lim_{n \to \infty} (a_n b_n) = \pa{\lim_{n \to \infty} a_n} \pa{\lim_{n \to \infty} b_n}.
           \]
     \item For any real number \(c\), the sequence \((c a_n)_{n = m}^\infty\) converges to \(cx\);
           in other words,
           \[
-            \lim_{n \to \infty} (c a_n) = c(\lim_{n \to \infty} a_n).
+            \lim_{n \to \infty} (c a_n) = c \pa{\lim_{n \to \infty} a_n}.
           \]
     \item The sequence \((a_n - b_n)_{n = m}^\infty\) converges to \(x - y\);
           in other words,
           \[
-            \lim_{n \to \infty} (a_n - b_n) = \lim_{n \to \infty} a_n - \lim_{n \to \infty} b_n.
+            \lim_{n \to \infty} (a_n - b_n) = \pa{\lim_{n \to \infty} a_n} - \pa{\lim_{n \to \infty} b_n}.
           \]
     \item Suppose that \(y \neq 0\), and that \(b_n \neq 0\) for all \(n \geq m\).
           Then the sequence \((b_n^{-1})_{n = m}^\infty\) converges to \(y^{-1}\);
           in other words,
           \[
-            \lim_{n \to \infty} b_n^{-1} = (\lim_{n \to \infty} b_n)^{-1}.
+            \lim_{n \to \infty} b_n^{-1} = \pa{\lim_{n \to \infty} b_n}^{-1}.
           \]
-    \item Suppose that \(y \neq 0\), and that \(b_n \neq 0\) for all \(n \geq m\).
+    \item Suppose that \(y \neq 0\), and that \(b_n \neq 0\) for all \(n \in \Z_{\geq m}\).
           Then the sequence \((a_n / b_n)_{n = m}^\infty\) converges to \(x / y\);
           in other words,
           \[
@@ -266,210 +292,271 @@
     \item The sequence \((\max(a_n, b_n))_{n = m}^\infty\) converges to \(\max(x, y)\);
           in other words,
           \[
-            \lim_{n \to \infty} \max(a_n, b_n) = \max(\lim_{n \to \infty} a_n, \lim_{n \to \infty} b_n).
+            \lim_{n \to \infty} \max(a_n, b_n) = \max\pa{\lim_{n \to \infty} a_n, \lim_{n \to \infty} b_n}.
           \]
     \item The sequence \((\min(a_n, b_n))_{n = m}^\infty\) converges to \(\min(x, y)\);
           in other words,
           \[
-            \lim_{n \to \infty} \min(a_n, b_n) = \min(\lim_{n \to \infty} a_n, \lim_{n \to \infty} b_n).
+            \lim_{n \to \infty} \min(a_n, b_n) = \min\pa{\lim_{n \to \infty} a_n, \lim_{n \to \infty} b_n}.
           \]
   \end{enumerate}
 \end{thm}
 
-\begin{proof}{(a)}
-  By \cref{i:6.1.8} \(\forall \varepsilon \in \R^+\), \(\exists N_a \in \N\) such that \(\abs{a_n - x} \leq \varepsilon / 2\) for every \(n \geq N_a\).
-  Similarly \(\exists N_b \in \N\) such that \(\abs{b_n - y} \leq \varepsilon / 2\) for every \(n \geq N_b\).
-  Let \(N = \max(N_a, N_b)\).
-  Then we have \(\forall n \geq N\),
-  \begin{align*}
-    \abs{a_n + b_n - (x + y)} & = \abs{(a_n - x) + (b_n - y)}          \\
-                              & \leq \abs{a_n - x} + \abs{b_n - y}     \\
-                              & \leq \varepsilon / 2 + \varepsilon / 2 \\
-                              & = \varepsilon.
-  \end{align*}
-  Thus by \cref{i:6.1.5} \((a_n + b_n)_{n = m}^\infty\) converges to \(x + y\).
-  And by \cref{i:6.1.8} we have \(\lim_{n \to \infty} (a_n + b_n) = x + y = \lim_{n \to \infty} a_n + \lim_{n \to \infty} b_n\).
-\end{proof}
-
-\begin{proof}{(b)}
-  By \cref{i:6.1.17}, \(\exists A, B \in \R^+\) such that \(\abs{a_n} \leq A\) and \(\abs{b_n} \leq B\) for every \(n \geq m\).
-  By \cref{i:6.1.8} \(\forall \varepsilon \in \R^+\), \(\exists N_a \in \N\) such that \(\abs{a_n - x} \leq \varepsilon / 2B\) for every \(n \geq N_a\).
-  Similarly \(\exists N_b \in \N\) such that \(\abs{b_n - y} \leq \varepsilon / 2A\) for every \(n \geq N_b\).
+\begin{proof}[\pf{i:6.1.19}(a)]
+  Let \(\varepsilon \in \R^+\).
+  By \cref{i:6.1.8}, there exists an \(N_a \in \Z_{\geq m}\) such that \(\abs{a_n - x} \leq \varepsilon / 2\) for every \(n \in \Z_{\geq N_a}\).
+  Similarly, there exists an \(N_b \in \Z_{\geq m}\) such that \(\abs{b_n - y} \leq \varepsilon / 2\) for every \(n \in \Z_{\geq N_b}\).
+  Now we fix both \(N_a\) and \(N_b\).
   Let \(N = \max(N_a, N_b)\).
   Then we have
   \begin{align*}
-    \abs{a_n b_n - x y} & = \abs{a_n b_n - x y + x b_n - x b_n}                                    \\
-                        & = \abs{a_n b_n - x b_n + x b_n - x y}                                    \\
-                        & = \abs{b_n(a_n - x) + x(b_n - y)}                                        \\
-                        & \leq \abs{b_n(a_n - x)} + \abs{x(b_n - y)}                               \\
-                        & = \abs{b_n}\abs{a_n - x} + \abs{x}\abs{b_n - y}                          \\
-                        & \leq B \times \dfrac{\varepsilon}{2B} + A \times \dfrac{\varepsilon}{2A} \\
-                        & = \varepsilon.
+    \forall n \in \Z_{\geq N}, \abs{(a_n + b_n) - (x + y)} & = \abs{(a_n - x) + (b_n - y)}                         &  & \by{i:ac:5.3.3}   \\
+                                                           & \leq \abs{a_n - x} + \abs{b_n - y}                    &  & \by{i:ac:5.4.1}   \\
+                                                           & \leq \varepsilon / 2 + \varepsilon / 2 = \varepsilon. &  & \by{i:5.4.7}[c,d]
   \end{align*}
-  Thus by \cref{i:6.1.5} \((a_n b_n)_{n = m}^\infty\) converges to \(x y\).
-  And by \cref{i:6.1.8} we have \(\lim_{n \to \infty} (a_n b_n) = x y = (\lim_{n \to \infty} a_n)(\lim_{n \to \infty} b_n)\).
+  Thus, by \cref{i:6.1.5}, \((a_n + b_n)_{n = N}^\infty\) is \(\varepsilon\)-close to \(x + y\), and \((a_n + b_n)_{n = m}^\infty\) is eventually \(\varepsilon\)-close to \(x + y\).
+  Since \(\varepsilon\) is arbitrary, by \cref{i:6.1.5} again we know that \((a_n + b_n)_{n = m}^\infty\) converges to \(x + y\).
 \end{proof}
 
-\begin{proof}{(c)}
-  Let \((b_n)_{n = m}^\infty\) be a sequence where \(b_n = c \) for every \(n \geq m\).
-  Then we have \(\lim_{n \to \infty} c = c\) and
-  \begin{align*}
-    \lim_{n \to \infty} (c a_n) & = \lim_{n \to \infty} (b_n a_n)                                            \\
-                                & = (\lim_{n \to \infty} b_n)(\lim_{n \to \infty} a_n) &  & \by{i:6.1.19}[b] \\
-                                & = c(\lim_{n \to \infty} a_n).
-  \end{align*}
-\end{proof}
+\begin{proof}[\pf{i:6.1.19}(b)]
+  Since \(x = \lim_{n \to \infty} a_n\) and \(y = \lim_{n \to \infty} b_n\), by \cref{i:6.1.17}, there exist some \(A, B \in \R_{\geq 0}\) such that \(\abs{a_n} \leq A\) and \(\abs{b_n} \leq B\) for all \(n \in \Z_{\geq m}\).
+  Fix both \(A\) and \(B\).
+  Clearly we have \(A < \abs{x} + A + 1\) and \(B < B + 1\), so we must have \(\abs{a_n} \leq \abs{x} + A + 1\) and \(\abs{b_n} \leq B + 1\) for all \(n \in \Z_{\geq m}\).
 
-\begin{proof}{(d)}
-  We have
-  \begin{align*}
-    \lim_{n \to \infty} (a_n - b_n) & = \lim_{n \to \infty} (a_n + (-1)(b_n))                     &  & \by{i:5.3.11}    \\
-                                    & = \lim_{n \to \infty} a_n + \lim_{n \to \infty} ((-1)(b_n)) &  & \by{i:6.1.19}[a] \\
-                                    & = \lim_{n \to \infty} a_n + (-1)(\lim_{n \to \infty} b_n)   &  & \by{i:6.1.19}[c] \\
-                                    & = \lim_{n \to \infty} a_n - \lim_{n \to \infty} b_n.        &  & \by{i:5.3.11}
-  \end{align*}
-\end{proof}
-
-\begin{proof}{(e)}
-  We first show that \((b_n)_{n = m}^\infty\) is bounded away from zero.
-  Since \(\lim_{n \to \infty} b_n \neq 0\), we must have some \(M \in \R^+\) such that \(\abs{b_n - 0} > M\) for every \(n \in \N\).
-  Otherwise we would have \(\lim_{n \to \infty} b_n = 0\), which is a contradiction by \cref{i:6.1.7}.
-  Since \(\abs{b_n - 0} = \abs{b_n} > M > 0\) for every \(n \geq m\), we know that \((b_n)_{n = m}^\infty\) is bounded away from zero.
-
-  Now we show that \(\lim_{n \to \infty} b_n^{-1} = (\lim_{n \to \infty} b_n)^{-1}\).
-  By \cref{i:6.1.8} \(\forall \varepsilon \in \R^+\), \(\exists N \in \N\) such that \(\abs{b_n - y} \leq \varepsilon M \abs{y}\) for every \(n \geq N\).
-  (\(M\) is derived from the claim above).
-  So
-  \begin{align*}
-    \abs{b_n^{-1} - y^{-1}} & = \abs{\dfrac{1}{b_n} - \dfrac{1}{y}}                                           \\
-                            & = \abs{\dfrac{y - b_n}{b_n y}}                                                  \\
-                            & = \abs{y - b_n}\dfrac{1}{\abs{b_n}\abs{y}}                                      \\
-                            & < \abs{y - b_n}\dfrac{1}{M\abs{y}}           &  & \text{(From the claim above)} \\
-                            & \leq \varepsilon M\abs{y}\dfrac{1}{M\abs{y}}                                    \\
-                            & = \varepsilon.
-  \end{align*}
-  Thus by \cref{i:6.1.5} \((b_n^{-1})_{n = m}^\infty\) converges to \(y^{-1}\).
-  And by \cref{i:6.1.8} we have \(\lim_{n \to \infty} (b_n^{-1}) = y^{-1} = (\lim_{n \to \infty} b_n)^{-1}\).
-\end{proof}
-
-\begin{proof}{(f)}
-  We have
-  \begin{align*}
-    \lim_{n \to \infty} \dfrac{a_n}{b_n} & = \lim_{n \to \infty} a_n b_n^{-1}                                                \\
-                                         & = (\lim_{n \to \infty} a_n)(\lim_{n \to \infty} b_n^{-1})   &  & \by{i:6.1.19}[b] \\
-                                         & = (\lim_{n \to \infty} a_n)(\lim_{n \to \infty} b_n)^{-1}   &  & \by{i:6.1.19}[e] \\
-                                         & = \dfrac{\lim_{n \to \infty} a_n}{\lim_{n \to \infty} b_n}.
-  \end{align*}
-\end{proof}
-
-\begin{proof}{(g)}
-  By \cref{i:6.1.8} \(\forall \varepsilon \in \R^+\), \(\exists N_a \in \N\) such that \(\abs{a_n - x} \leq \varepsilon\) for every \(n \geq N_a\).
-  Similarly \(\exists N_b \in \N\) such that \(\abs{b_n - y} \leq \varepsilon\) for every \(n \geq N_b\).
+  Let \(\varepsilon \in \R^+\).
+  Observe that \(\dfrac{\varepsilon}{2 (\abs{x} + A + 1)} \in \R^+\) and \(\dfrac{\varepsilon}{2 (B + 1)} \in \R^+\).
+  Since \(x = \lim_{n \to \infty} a_n\), by \cref{i:6.1.8}, there exists an \(N_a \in \Z_{\geq m}\) such that \(\abs{a_n - x} \leq \dfrac{\varepsilon}{2(B + 1)}\) for all \(n \in \Z_{\geq N_a}\).
+  Similarly, since \(y = \lim_{n \to \infty} b_n\), there exists an \(N_b \in \Z_{\geq m}\) such that \(\abs{b_n - y} \leq \dfrac{\varepsilon}{2 (\abs{x} + A + 1)}\) for all \(n \in \Z_{\geq N_b}\).
+  Now we fix both \(N_a\) and \(N_b\).
   Let \(N = \max(N_a, N_b)\).
-  Then we have \(\abs{a_n - x} \leq \varepsilon \land \abs{b_n - y} \leq \varepsilon\) for every \(n \geq N\).
-  Now we split into two cases:
-  \begin{itemize}
-    \item If \(x = y\), then we have \(\max(x, y) = x\) and for every \(n \geq N\),
-          \begin{align*}
-                     & (\abs{a_n - x} < \varepsilon) \land (\abs{b_n - x} < \varepsilon) \\
-            \implies & \abs{\max(a_n, b_n) - x} < \varepsilon                            \\
-            \implies & \abs{\max(a_n, b_n) - \max(x, y)} < \varepsilon                   \\
-            \implies & \lim_{n \to \infty} \max(a_n, b_n) = \max(x, y) = x.
-          \end{align*}
-    \item If \(x \neq y\), then we have either \(x < y\) or \(x > y\).
-          Without loss of generality suppose that \(x < y\).
-          Since \(x < y\), we have \(y - x > 0\).
-          Since we have \(\abs{a_n - x} \leq \varepsilon\) and \(\abs{b_n - y} \leq \varepsilon\) for every positive real number \(\varepsilon\), we also have \(\abs{a_n - x} \leq (y - x) / 2\) and \(\abs{b_n - y} \leq (y - x) / 2\).
-          So \(\forall n \geq N\), we have
-          \begin{align*}
-                     & (\abs{a_n - x} \leq \dfrac{y - x}{2}) \land (\abs{b_n - y} \leq \dfrac{y - x}{2})                                   \\
-            \implies & (-\dfrac{y - x}{2} \leq a_n - x \leq \dfrac{y - x}{2}) \land (-\dfrac{y - x}{2} \leq b_n - y \leq \dfrac{y - x}{2}) \\
-            \implies & (a_n - x \leq \dfrac{y - x}{2}) \land (-\dfrac{y - x}{2} \leq b_n - y)                                              \\
-            \implies & (a_n \leq \dfrac{y - x}{2} + x) \land (y - \dfrac{y - x}{2} \leq b_n)                                               \\
-            \implies & (a_n \leq \dfrac{x + y}{2}) \land (\dfrac{x + y}{2} \leq b_n)                                                       \\
-            \implies & a_n \leq \dfrac{x + y}{2} \leq b_n.
-          \end{align*}
-          This means \(\forall n \geq N, \max(a_n, b_n) = b_n\).
-          Thus \(\forall n \geq N\), we have
-          \begin{align*}
-                     & \abs{\max(a_n, b_n) - \max(x, y)} = \abs{b_n - y} \leq \varepsilon                                        \\
-            \implies & \lim_{n \to \infty} \max(a_n, b_n) = \max(x, y) = \max(\lim_{n \to \infty} a_n, \lim_{n \to \infty} b_n).
-          \end{align*}
-  \end{itemize}
+  Then we have
+  \begin{align*}
+    \forall n \in \Z_{\geq N}, \abs{a_n b_n - x y} & = \abs{a_n b_n - x y + x b_n - x b_n}                                                           &  & \by{i:ac:5.3.3}     \\
+                                                   & = \abs{b_n(a_n - x) + x(b_n - y)}                                                               &  & \by{i:ac:5.3.3}     \\
+                                                   & \leq \abs{b_n(a_n - x)} + \abs{x(b_n - y)}                                                      &  & \by{i:ac:5.4.1}     \\
+                                                   & = \abs{b_n}\abs{a_n - x} + \abs{x}\abs{b_n - y}                                                 &  & \by{i:ac:5.4.1}     \\
+                                                   & \leq (B + 1) \times \dfrac{\varepsilon}{2 (B + 1)} + \abs{x}\abs{b_n - y}                       &  & \by{i:5.4.7}[c,d,e] \\
+                                                   & \leq \dfrac{\varepsilon}{2} + (\abs{x} + A + 1) \times \dfrac{\varepsilon}{2 (\abs{x} + A + 1)} &  & \by{i:5.4.7}[c,d,e] \\
+                                                   & = \dfrac{\varepsilon}{2} + \dfrac{\varepsilon}{2} = \varepsilon.
+  \end{align*}
+  Thus, by \cref{i:6.1.5}, \((a_n b_n)_{n = N}^\infty\) is \(\varepsilon\)-close to \(xy\), and \((a_n b_n)_{n = m}^\infty\) is eventually \(\varepsilon\)-close to \(xy\).
+  Since \(\varepsilon\) is arbitrary, by \cref{i:6.1.5} again we know that \((a_n b_n)_{n = m}^\infty\) converges to \(xy\).
 \end{proof}
 
-\begin{proof}{(h)}
-  We have \(\min(x, y) = -\max(-x, -y)\) and
+\begin{proof}[\pf{i:6.1.19}(c)]
+  Let \((c_n)_{n = m}^\infty\) be a sequence of reals where \(c_n = c\) for all \(n \in \Z_{\geq m}\).
+  Clearly we have \(\lim_{n \to \infty} c_n = \lim_{n \to \infty} c = c\).
+  Then we have
   \begin{align*}
-    \lim_{n \to \infty} \min(a_n, b_n) & = \lim_{n \to \infty} -\max(-a_n, -b_n)                       \\
-                                       & = -\lim_{n \to \infty} \max(-a_n, -b_n) &  & \by{i:6.1.19}[c] \\
-                                       & = -\max(-x, -y)                         &  & \by{i:6.1.19}[g] \\
-                                       & = \min(x, y).
+    \lim_{n \to \infty} (c a_n) & = \lim_{n \to \infty} (c_n a_n)                                                   \\
+                                & = \pa{\lim_{n \to \infty} c_n} \pa{\lim_{n \to \infty} a_n} &  & \by{i:6.1.19}[b] \\
+                                & = c \pa{\lim_{n \to \infty} a_n}.
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{i:6.1.19}(d)]
+  We have
+  \begin{align*}
+    \lim_{n \to \infty} (a_n - b_n) & = \lim_{n \to \infty} (a_n + (-1)(b_n))                                &  & \by{i:ac:5.3.2}  \\
+                                    & = \pa{\lim_{n \to \infty} a_n} + \pa{\lim_{n \to \infty} ((-1)(b_n))}  &  & \by{i:6.1.19}[a] \\
+                                    & = \pa{\lim_{n \to \infty} a_n} + \pa{(-1)\pa{\lim_{n \to \infty} b_n}} &  & \by{i:6.1.19}[c] \\
+                                    & = \pa{\lim_{n \to \infty} a_n} - \pa{\lim_{n \to \infty} b_n}.         &  & \by{i:ac:5.3.2}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{i:6.1.19}(e)]
+  First we show that \((b_n)_{n = m}^\infty\) is bounded away from zero.
+  Since \(y \neq 0\), we know that \(\abs{y} > 0\).
+  Since \(y = \lim_{n \to \infty} b_n\), we know that there exists an \(N \in \Z_{\geq m}\) such that \(\abs{b_n - y} \leq \dfrac{\abs{y}}{2}\) for all \(n \in \Z_{\geq N}\).
+  Then we have
+  \begin{align*}
+             & \forall n \in \Z_{\geq N}, \dfrac{-\abs{y}}{2} \leq b_n - y \leq \dfrac{\abs{y}}{2} &  & \by{i:ac:5.4.1} \\
+    \implies & \forall n \in \Z_{\geq N}, \begin{dcases}
+                                            \dfrac{y}{2} \leq b_n \leq \dfrac{3y}{2} & \text{if } y \in \R^+ \\
+                                            \dfrac{3y}{2} \leq b_n \leq \dfrac{y}{2} & \text{if } y \in \R^-
+                                          \end{dcases}                 &  & \by{i:5.4.7}[c,d]              \\
+    \implies & \forall n \in \Z_{\geq N}, \begin{dcases}
+                                            \dfrac{y}{2} \leq b_n   & \text{if } y \in \R^+ \\
+                                            \dfrac{-y}{2} \leq -b_n & \text{if } y \in \R^-
+                                          \end{dcases}                                  &  & \by{i:ex:4.2.6}            \\
+    \implies & \forall n \in \Z_{\geq N}, \abs{\dfrac{y}{2}} \leq \abs{b_n}.                       &  & \by{i:ac:5.4.1}
+  \end{align*}
+  Since \(y \neq 0\), we see that \(\abs{\dfrac{y}{2}} \in \R^+\).
+  Thus \((b_n)_{n = N}^\infty\) is bounded away from zero.
+  Since \(b_n \neq 0\) for all \(n \in \Z_{\geq m}\), we see that \((b_n)_{n = m}^{N - 1}\) is also bounded away from zero.
+  Combining the results we see that \((b_n)_{n = m}^\infty\) is bounded away from zero.
+
+  Now we show that \(\lim_{n \to \infty} b_n^{-1} = y^{-1}\).
+  Let \(\varepsilon \in \R^+\).
+  Since \((b_n)_{n = m}^\infty\) is bounded away from zero, there exists an \(M \in \R^+\) such that \(\abs{b_n} \geq M\) for all \(n \in \Z_{\geq m}\).
+  Fix such \(M\).
+  Clearly we have \(\varepsilon M \abs{y} \in \R^+\) and \(\dfrac{1}{\abs{b_n}} \leq \dfrac{1}{M}\) for all \(n \in \Z_{\geq m}\).
+  Since \(y = \lim_{n \to \infty} b_n \neq 0\), by \cref{i:6.1.8}, there exists an \(N \in \Z_{\geq m}\) such that \(\abs{b_n - y} \leq \varepsilon M \abs{y}\) for all \(n \in \Z_{\geq N}\).
+  Fix such \(N\).
+  Then we have
+  \begin{align*}
+    \forall n \in \Z_{\geq N}, \abs{b_n^{-1} - y^{-1}} & = \abs{\dfrac{1}{b_n} - \dfrac{1}{y}}                       &  & \by{i:5.6.2}    \\
+                                                       & = \abs{\dfrac{y - b_n}{b_n y}}                              &  & \by{i:ac:5.3.3} \\
+                                                       & = \abs{y - b_n}\dfrac{1}{\abs{b_n}\abs{y}}                  &  & \by{i:ac:5.4.1} \\
+                                                       & \leq \abs{y - b_n}\dfrac{1}{M\abs{y}}                       &  & \by{i:5.4.7}[e] \\
+                                                       & \leq \varepsilon M\abs{y}\dfrac{1}{M\abs{y}} = \varepsilon. &  & \by{i:5.4.7}[e]
+  \end{align*}
+  Thus, by \cref{i:6.1.5}, \(\pa{b_n^{-1}}_{n = N}^\infty\) is \(\varepsilon\)-close to \(y^{-1}\), and \(\pa{b_n^{-1}}_{n = m}^\infty\) is eventually \(\varepsilon\)-close to \(y^{-1}\).
+  Since \(\varepsilon\) is arbitrary, by \cref{i:6.1.5} again we know that \(\pa{b_n^{-1}}_{n = m}^\infty\) converges to \(y^{-1}\).
+\end{proof}
+
+\begin{proof}[\pf{i:6.1.19}(f)]
+  We have
+  \begin{align*}
+    \lim_{n \to \infty} \dfrac{a_n}{b_n} & = \lim_{n \to \infty} \pa{a_n b_n^{-1}}                          &  & \by{i:ac:5.3.5}  \\
+                                         & = \pa{\lim_{n \to \infty} a_n} \pa{\lim_{n \to \infty} b_n^{-1}} &  & \by{i:6.1.19}[b] \\
+                                         & = \pa{\lim_{n \to \infty} a_n} \pa{\lim_{n \to \infty} b_n}^{-1} &  & \by{i:6.1.19}[e] \\
+                                         & = \dfrac{\lim_{n \to \infty} a_n}{\lim_{n \to \infty} b_n}.      &  & \by{i:ac:5.3.5}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{i:6.1.19}(g)]
+  First suppose that \(x = y\).
+  Let \(\varepsilon \in \R^+\).
+  By \cref{i:6.1.8}, there exists an \(N_a \in \Z_{\geq m}\) such that \(\abs{a_n - x} \leq \varepsilon\) for all \(n \in \Z_{\geq N_a}\).
+  Similarly, there exists an \(N_b \in \Z_{\geq m}\) such that \(\abs{b_n - y} \leq \varepsilon\) for all \(n \in \Z_{\geq N_b}\).
+  Fix both \(N_a\) and \(N_b\).
+  Let \(N = \max(N_a, N_b)\).
+  Then we have \(\abs{a_n - x} \leq \varepsilon\) and \(\abs{b_n - y} \leq \varepsilon\) for all \(n \in \Z_{\geq N}\).
+  Since \(x = y\), we have \(\max(x, y) = x\).
+  Thus,
+  \begin{align*}
+             & \forall n \in \Z_{\geq N}, \begin{dcases}
+                                            \abs{a_n - \max(x, y)} = \abs{a_n - x} \leq \varepsilon \\
+                                            \abs{b_n - \max(x, y)} = \abs{b_n - x} = \abs{b_n - y} \leq \varepsilon
+                                          \end{dcases}                       \\
+    \implies & \forall n \in \Z_{\geq N}, \abs{\max(a_n, b_n) - \max(x, y)} = \begin{dcases}
+                                                                                \abs{a_n - x} \leq \varepsilon & \text{if } a_n \geq b_n \\
+                                                                                \abs{b_n - x} \leq \varepsilon & \text{if } a_n < b_n
+                                                                              \end{dcases} \\
+    \implies & \forall n \in \Z_{\geq N}, \abs{\max(a_n, b_n) - \max(x, y)} \leq \varepsilon.
+  \end{align*}
+  By \cref{i:6.1.5}, \(\pa{\max(a_n, b_n)}_{n = N}^\infty\) is \(\varepsilon\)-close to \(\max(x, y)\), and \(\pa{\max(a_n, b_n)}_{n = m}^\infty\) is eventually \(\varepsilon\)-close to \(\max(x, y)\).
+  Since \(\varepsilon\) is arbitrary, by \cref{i:6.1.5} again we know that \(\pa{\max(a_n, b_n)}_{n = m}^\infty\) converges to \(\max(x, y)\).
+
+  Now suppose that \(x \neq y\).
+  We have either \(x < y\) or \(x > y\), so without the loss of generality, suppose that \(x < y\).
+  Then we have \(\dfrac{y - x}{2} \in \R^+\).
+  Let \(\varepsilon \in \R^+\).
+  Clearly we have \(\min\pa{\varepsilon, \dfrac{y - x}{2}} \in \R^+\).
+  By \cref{i:6.1.8}, there exists an \(N_a \in \Z_{\geq m}\) such that \(\abs{a_n - x} \leq \min\pa{\varepsilon, \dfrac{y - x}{2}}\) for all \(n \in \Z_{\geq N_a}\).
+  Similarly, there exists an \(N_b \in \Z_{\geq m}\) such that \(\abs{b_n - y} \leq \min\pa{\varepsilon, \dfrac{y - x}{2}}\) for all \(n \in \Z_{\geq N_b}\).
+  Fix both \(N_a\) and \(N_b\).
+  Let \(N = \max(N_a, N_b)\).
+  Then we have
+  \begin{align*}
+             & \forall n \in \Z_{\geq N}, \begin{dcases}
+                                            \abs{a_n - x} \leq \min\pa{\varepsilon, \dfrac{y - x}{2}} \leq \dfrac{y - x}{2} \\
+                                            \abs{b_n - y} \leq \min\pa{\varepsilon, \dfrac{y - x}{2}} \leq \dfrac{y - x}{2}
+                                          \end{dcases} &  & \by{i:5.4.7}[c] \\
+    \implies & \forall n \in \Z_{\geq N}, \begin{dcases}
+                                            -\dfrac{y - x}{2} \leq a_n - x \leq \dfrac{y - x}{2} \\
+                                            -\dfrac{y - x}{2} \leq b_n - y \leq \dfrac{y - x}{2}
+                                          \end{dcases}                                   &  & \by{i:ac:5.4.1}                    \\
+    \implies & \forall n \in \Z_{\geq N}, \begin{dcases}
+                                            a_n \leq \dfrac{y - x}{2} + x \\
+                                            y - \dfrac{y - x}{2} \leq b_n
+                                          \end{dcases}                                                 &  & \by{i:5.4.7}[d]      \\
+    \implies & \forall n \in \Z_{\geq N}, \begin{dcases}
+                                            a_n \leq \dfrac{x + y}{2} \\
+                                            \dfrac{x + y}{2} \leq b_n
+                                          \end{dcases}                                                 &  & \by{i:ac:5.3.3}      \\
+    \implies & \forall n \in \Z_{\geq N}, a_n \leq \dfrac{x + y}{2} \leq b_n.                            &  & \by{i:5.4.7}[c]
+  \end{align*}
+  This means \(\max(a_n, b_n) = b_n\) for all \(n \in \Z_{\geq N}\).
+  Thus,
+  \begin{align*}
+    \forall n \in \Z_{\geq N}, \abs{\max(a_n, b_n) - \max(x, y)} & = \abs{b_n - y}                                                  \\
+                                                                 & \leq \min\pa{\varepsilon, \dfrac{y - x}{2}}                      \\
+                                                                 & \leq \varepsilon.                           &  & \by{i:5.4.7}[c]
+  \end{align*}
+  By \cref{i:6.1.5}, \(\pa{\max(a_n, b_n)}_{n = N}^\infty\) is \(\varepsilon\)-close to \(\max(x, y)\), and \(\pa{\max(a_n, b_n)}_{n = m}^\infty\) is eventually \(\varepsilon\)-close to \(\max(x, y)\).
+  Since \(\varepsilon\) is arbitrary, by \cref{i:6.1.5} again we know that \(\pa{\max(a_n, b_n)}_{n = m}^\infty\) converges to \(\max(x, y)\).
+\end{proof}
+
+\begin{proof}[\pf{i:6.1.19}(h)]
+  We have
+  \begin{align*}
+    \lim_{n \to \infty} \min(a_n, b_n) & = \lim_{n \to \infty} -\max(-a_n, -b_n)                                  &  & \by{i:ac:6.1.1}  \\
+                                       & = -\pa{\lim_{n \to \infty} \max(-a_n, -b_n)}                             &  & \by{i:6.1.19}[c] \\
+                                       & = -\max\pa{\lim_{n \to \infty} -a_n, \lim_{n \to \infty} -b_n}           &  & \by{i:6.1.19}[g] \\
+                                       & = -\max\pa{-\pa{\lim_{n \to \infty} a_n}, -\pa{\lim_{n \to \infty} b_n}} &  & \by{i:6.1.19}[c] \\
+                                       & = \min\pa{\lim_{n \to \infty} a_n, \lim_{n \to \infty} b_n}.             &  & \by{i:ac:6.1.1}
   \end{align*}
 \end{proof}
 
 \exercisesection
 
 \begin{ex}\label{i:ex:6.1.1}
-  Let \((a_n)_{n = m}^\infty\) be a sequence of real numbers, such that \(a_{n + 1} > a_n\) for each natural number \(n\).
-  Prove that whenever \(n\) and \(m\) are natural numbers such that \(m > n\), then we have \(a_m > a_n\).
+  Let \((a_n)_{n = m}^\infty\) be a sequence of reals, such that \(a_{n + 1} > a_n\) for each \(n \in \Z_{\geq m}\).
+  Prove that whenever \(j, k \in \Z_{\geq m}\) such that \(j > k\), then we have \(a_j > a_k\).
   (We refer to these sequences as \emph{increasing} sequences.)
 \end{ex}
 
-\begin{proof}
-  Let \(E = \set{z \in \N : n \leq z \leq m}\).
-  Then \(E\) is finite (since \(\#(E) = m - n + 1\)) and non-empty (since \(n, m \in E\)).
-  Let \((a_z)_{z = n}^m\) be a sequence by mapping \(z \in E\) to \(a_z\).
-  So \((a_z)_{z = n}^m\) is a finite sequence, and the elements in sequence \((a_z)_{z = n}^m\) are \(\set{a_n, a_{n + 1}, \dots, a_{m - 1}, a_m}\).
-  By the given conditions we have \(a_{z + 1} > a_z\) for each natural number \(z\).
-  Thus we have \(a_n < a_{n + 1} < \dots < a_{m - 1} < a_m\), and by \cref{i:5.4.7} we have \(a_n < a_m\).
+\begin{proof}[\pf{i:ex:6.1.1}]
+  Let \(E = \set{z \in \Z_{\geq m} : j \leq z \leq k}\).
+  Then \(E\) is finite (since \(\#(E) = k - j + 1\)) and non-empty (since \(j, k \in E\)).
+  So \((a_n)_{n = j}^k\) is a finite sequence, and the elements in \((a_n)_{n = j}^k\) are \(\set{a_j, a_{j + 1}, \dots, a_{k - 1}, a_k}\).
+  By hypothesis, we have \(a_{n + 1} > a_n\) for each \(n \in \Z_{\geq m}\).
+  Thus, we have \(a_j < a_{j + 1} < \dots < a_{k - 1} < a_k\), and by \cref{i:5.4.7}(c) we have \(a_j < a_k\).
 \end{proof}
 
 \begin{ex}\label{i:ex:6.1.2}
-  Let \((a_n)_{n = m}^\infty\) be a sequence of real numbers, and let \(L\) be a real number.
-  Show that \((a_n)_{n = m}^\infty\) converges to \(L\) iff, given any real \(\varepsilon > 0\), one can find an \(N \geq m\) such that \(\abs{a_n - L} \leq \varepsilon\) for all \(n \geq N\).
+  Let \((a_n)_{n = m}^\infty\) be a sequence of reals, and let \(L \in \R\).
+  Show that \((a_n)_{n = m}^\infty\) converges to \(L\) iff, given any \(\varepsilon \in \R^+\), one can find an \(N \in \Z_{\geq m}\) such that \(\abs{a_n - L} \leq \varepsilon\) for all \(n \in \Z_{\geq N}\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{i:ex:6.1.2}]
+  We have
   \begin{align*}
-         & (a_n)_{n = m}^\infty \text{ converges to } L                                                                               \\
-    \iff & \forall \varepsilon \in \R^+, (a_n)_{n = m}^\infty \text{ is eventually } \varepsilon\text{-close to } L &  & \by{i:6.1.5} \\
-    \iff & \forall \varepsilon \in \R^+, \exists N \in \N \land N \geq m :                                                            \\
-         & (a_n)_{n = N}^\infty \text{ is } \varepsilon\text{-close to } L                                          &  & \by{i:6.1.5} \\
-    \iff & \forall \varepsilon \in \R^+, \exists N \in \N \land N \geq m :                                                            \\
-         & \forall n \geq N, \abs{a_n - L} \leq \varepsilon.                                                        &  & \by{i:6.1.5}
+         & (a_n)_{n = m}^\infty \text{ converges to } L                                                                                                \\
+    \iff & \forall \varepsilon \in \R^+, (a_n)_{n = m}^\infty \text{ is eventually } \varepsilon\text{-close to } L                  &  & \by{i:6.1.5} \\
+    \iff & \forall \varepsilon \in \R^+, \exists N \in \Z_{\geq m} : (a_n)_{n = N}^\infty \text{ is } \varepsilon\text{-close to } L &  & \by{i:6.1.5} \\
+    \iff & \forall \varepsilon \in \R^+, \exists N \in \Z_{\geq m} : \forall n \in \Z_{\geq N}, \abs{a_n - L} \leq \varepsilon.      &  & \by{i:6.1.5}
   \end{align*}
 \end{proof}
 
 \begin{ex}\label{i:ex:6.1.3}
-  Let \((a_n)_{n = m}^\infty\) be a sequence of real numbers, let \(c\) be a real number, and let \(m' \geq m\) be an integer.
+  Let \((a_n)_{n = m}^\infty\) be a sequence of reals, let \(c \in \R\), and let \(m' \in \Z_{\geq m}\).
   Show that \((a_n)_{n = m}^\infty\) converges to \(c\) iff \((a_n)_{n = m'}^\infty\) converges to \(c\).
 \end{ex}
 
-\begin{proof}
-  If \((a_n)_{n = m'}^\infty\) converges to \(c\) for all \(m' \in \N\) and \(m' \geq m\), then obviously \((a_n)_{n = m}^\infty\) converges to \(c\).
-  So we only need to show that if \((a_n)_{n = m}^\infty\) converges to \(c\), then \((a_n)_{n = m'}^\infty\) converges to \(c\) for all \(m' \in \N\) and \(m' \geq m\).
-  Let \(N \in \N\).
-  Then we have
-  \begin{align*}
-             & (a_n)_{n = m}^\infty \text{ converges to } c                                                                               \\
-    \implies & \forall \varepsilon \in \R^+, (a_n)_{n = m}^\infty \text{ is eventually } \varepsilon\text{-close to } c &  & \by{i:6.1.5} \\
-    \implies & \forall \varepsilon \in \R^+, \exists N \geq m :                                                                           \\
-             & (a_n)_{n = N}^\infty \text{ is } \varepsilon\text{-close to } c                                          &  & \by{i:6.1.5} \\
-    \implies & \forall \varepsilon \in \R^+, \exists N \geq m' \geq m :                                                                   \\
-             & (a_n)_{n = N}^\infty \text{ is } \varepsilon\text{-close to } c                                                            \\
-    \implies & (a_n)_{n = m}^\infty \text{ converges to } c \text{ for all } m' \geq m
-  \end{align*}
-  Thus if \((a_n)_{n = m}^\infty\) converges to \(c\), then \((a_n)_{n = m'}^\infty\) converges to \(c\) for all \(m' \geq m\).
+\begin{proof}[\pf{i:ex:6.1.3}]
+  First suppose that \((a_n)_{n = m}^\infty\) converges to \(c\).
+  Let \(\varepsilon \in \R^+\).
+  By \cref{i:6.1.5}, there exists an \(N \in \Z_{\geq m}\) such that \(\abs{a_n - c} \leq \varepsilon\) for all \(n \in \Z_{\geq N}\).
+  Fix such \(N\).
+  Now we split into two cases:
+  \begin{itemize}
+    \item If \(N \geq m'\), then we have found an \(N \in \Z_{\geq m'}\) such that \(\abs{a_n - c} \leq \varepsilon\) for all \(n \in \Z_{\geq N}\).
+    \item If \(N < m'\), then by setting \(N' = m'\) we see that there exists an \(N' \in \Z_{\geq m'}\) such that \(\abs{a_n - c} \leq \varepsilon\) for all \(n \in \Z_{\geq N'}\).
+  \end{itemize}
+  From all cases above we see that we can find an \(M \in \Z_{\geq m'}\) such that \(\abs{a_n - c} \leq \varepsilon\) for all \(n \in \Z_{\geq M}\).
+  Thus, by \cref{i:6.1.5}, we see that \((a_n)_{n = m'}^\infty\) is eventually \(\varepsilon\)-close to \(c\).
+  Since \(\varepsilon\) was arbitrary, by \cref{i:6.1.5} again we see that \((a_n)_{n = m'}^\infty\) converges to \(c\).
+
+  Now suppose that \((a_n)_{n = m'}^\infty\) converges to \(c\).
+  Let \(\varepsilon \in \R^+\).
+  By \cref{i:6.1.5}, there exists an \(N \in \Z_{\geq m'}\) such that \(\abs{a_n - c} \leq \varepsilon\) for all \(n \in \Z_{\geq N}\).
+  Fix such \(N\).
+  Since \(m \leq m'\), we have found an \(N \in \Z_{\geq m}\) such that \(\abs{a_n - c} \leq \varepsilon\) for all \(n \in \Z_{\geq N}\).
+  Thus, by \cref{i:6.1.5}, we see that \((a_n)_{n = m}^\infty\) is eventually \(\varepsilon\)-close to \(c\).
+  Since \(\varepsilon\) was arbitrary, by \cref{i:6.1.5} again we see that \((a_n)_{n = m}^\infty\) converges to \(c\).
 \end{proof}
 
 \begin{ex}\label{i:ex:6.1.4}
-  Let \((a_n)_{n = m}^\infty\) be a sequence of real numbers, let \(c\) be a real number, and let \(k \geq 0\) be a non-negative integer.
+  Let \((a_n)_{n = m}^\infty\) be a sequence of reals, let \(c \in \R\), and let \(k \in \Z_{\geq 0}\).
   Show that \((a_n)_{n = m}^\infty\) converges to \(c\) iff \((a_{n + k})_{n = m}^\infty\) converges to \(c\).
 \end{ex}
 
-\begin{proof}
-  Since \((a_{n + k})_{n = m}^\infty = (a_n)_{n = m + k}^\infty\) and \(m + k \geq m\), by \cref{i:ex:6.1.3} we have \((a_n)_{n = m}^\infty\) converges to \(c\) iff \((a_n)_{n = m + k}^\infty\) converges to \(c\).
+\begin{proof}[\pf{i:ex:6.1.4}]
+  First observe that \((a_{n + k})_{n = m}^\infty = (a_n)_{n = m + k}^\infty\).
+  Since \(m + k \geq m\), by \cref{i:ex:6.1.3} we see that \((a_n)_{n = m}^\infty\) converges to \(c\) iff \((a_n)_{n = m + k}^\infty\) converges to \(c\).
   Thus \((a_n)_{n = m}^\infty\) converges to \(c\) iff \((a_{n + k})_{n = m}^\infty\) converges to \(c\).
 \end{proof}
 
@@ -477,7 +564,7 @@
   Prove \cref{i:6.1.12}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{i:ex:6.1.5}]
   See \cref{i:6.1.12}.
 \end{proof}
 
@@ -485,7 +572,7 @@
   Prove \cref{i:6.1.15}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{i:ex:6.1.6}]
   See \cref{i:6.1.15}.
 \end{proof}
 
@@ -494,15 +581,16 @@
   (i.e., prove an analogue of \cref{i:6.1.4} for bounded sequences instead of Cauchy sequences).
 \end{ex}
 
-\begin{proof}
-  First suppose that \((a_n)_{n = m}^\infty\) is a bounded sequence in the sense of \cref{i:6.1.16};
-  then \(\exists M \in \R^+\) such that \(\abs{a_n} \leq M\) for every \(n \geq m\).
-  By \cref{i:5.4.12}, \(\exists N \in \N\) such that \(M \leq N\).
-  Since \(N \in \N\), we also have \(N \in \Q\).
-  Thus \(\abs{a_n} \leq N\) for every \(n \geq m\), and \((a_n)_{n = m}^\infty\) is a bounded sequence in the sense of \cref{i:5.1.12}.
+\begin{proof}[\pf{i:ex:6.1.7}]
+  First suppose that \((a_n)_{n = m}^\infty\) is a sequence of reals which is bounded in the sense of \cref{i:6.1.16}.
+  Then there exists an \(M \in \R_{\geq 0}\) such that \(\abs{a_n} \leq M\) for all \(n \in \Z_{\geq m}\).
+  By \cref{i:5.4.12}, there exists an \(M' \in \Z^+\) such that \(M \leq M'\).
+  Clearly \(M' \in \Z^+\) implies \(M' \in \Q_{\geq 0}\).
+  Thus, by \cref{i:5.4.7}(c), we have \(\abs{a_n} \leq M'\) for all \(n \in \Z_{\geq m}\).
+  This means that \((a_n)_{n = m}^\infty\) is a bounded sequence in the sense of \cref{i:5.1.12}.
 
-  Now suppose that \((a_n)_{n = m}^\infty\) is a bounded sequence in the sense of \cref{i:5.1.12};
-  then \(\exists M \in \Q^+\) such that \(\abs{a_n} \leq M\) for every \(n \geq m\).
+  Now suppose that \((a_n)_{n = m}^\infty\) is a sequence of reals which is bounded in the sense of \cref{i:5.1.12}.
+  Then there exists an \(M \in \Q_{\geq 0}\) such that \(\abs{a_n} \leq M\) for all \(n \in \Z_{\geq m}\).
   Since \(M\) is also a real number, we see that \((a_n)_{n = m}^\infty\) is a bounded sequence in the sense of \cref{i:6.1.16}.
 \end{proof}
 
@@ -510,24 +598,25 @@
   Proof \cref{i:6.1.19}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{i:ex:6.1.8}]
   See \cref{i:6.1.19}.
 \end{proof}
 
 \begin{ex}\label{i:ex:6.1.9}
   Explain why \cref{i:6.1.19}(f) fails when the limit of the denominator is \(0\).
+  (To repair that problem requires \emph{L'Hôpital's rule}, see \cref{i:sec:10.5}.)
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{i:ex:6.1.9}]
   Suppose for sake of contradiction that \cref{i:6.1.19}(f) works when denominator is \(0\).
-  Let \((a_n)_{n = 1}^\infty = (b_n)_{n = 1}^\infty = 1 / n\).
+  Let \((a_n)_{n = 1}^\infty = (1 / n)_{n = 1}^\infty\).
   Then we have
   \[
-    \lim_{n \to \infty} a_n / b_n = \lim_{n \to \infty} \dfrac{1 / n}{1 / n} = \lim_{n \to \infty} 1 = 1.
+    \lim_{n \to \infty} \dfrac{a_n}{a_n} = \lim_{n \to \infty} \dfrac{1 / n}{1 / n} = \lim_{n \to \infty} 1 = 1.
   \]
   But by \cref{i:6.1.11} we also have
   \[
-    \dfrac{\lim_{n \to \infty} a_n}{\lim_{n \to \infty} b_n} = \dfrac{0}{0}
+    \dfrac{\lim_{n \to \infty} a_n}{\lim_{n \to \infty} a_n} = \dfrac{0}{0}
   \]
   which is undefined.
   Thus \cref{i:6.1.19}(f) fails when denominator is \(0\).
@@ -535,18 +624,19 @@
 
 \begin{ex}\label{i:ex:6.1.10}
   Show that the concept of equivalent Cauchy sequence, as defined in \cref{i:5.2.6}, does not change if \(\varepsilon\) is required to be positive real instead of positive rational.
-  More precisely, if \((a_n)_{n = 0}^\infty\) and \((b_n)_{n = 0}^\infty\) are sequences of reals, show that \((a_n)_{n = 0}^\infty\) and \((b_n)_{n = 0}^\infty\) are eventually \(\varepsilon\)-close for every rational \(\varepsilon > 0\) iff they are eventually \(\varepsilon\)-close for every real \(\varepsilon > 0\).
+  More precisely, if \((a_n)_{n = m}^\infty\) and \((b_n)_{n = m}^\infty\) are sequences of reals, show that \((a_n)_{n = m}^\infty\) and \((b_n)_{n = m}^\infty\) are eventually \(\varepsilon\)-close for every \(\varepsilon \in \Q^+\) iff they are eventually \(\varepsilon\)-close for every \(\varepsilon \in \R^+\).
 \end{ex}
 
-\begin{proof}
-  Suppose first that \((a_n)_{n = 0}^\infty\) and \((b_n)_{n = 0}^\infty\) are eventually \(\varepsilon\)-close \(\forall \varepsilon \in \Q^+\).
+\begin{proof}[\pf{i:ex:6.1.10}]
+  Suppose first that \((a_n)_{n = m}^\infty\) and \((b_n)_{n = m}^\infty\) are eventually \(\varepsilon\)-close for all \(\varepsilon \in \Q^+\).
   Let \(\varepsilon' \in \R^+\).
-  By \cref{i:5.4.12} \(\exists \varepsilon \in \Q^+\) such that \(\varepsilon \leq \varepsilon'\).
-  Since \(\varepsilon \in \Q^+\), we know that \((a_n)_{n = 0}^\infty\) and \((b_n)_{n = 0}^\infty\) are eventually \(\varepsilon\)-close.
-  Thus \((a_n)_{n = 0}^\infty\) and \((b_n)_{n = 0}^\infty\) are eventually \(\varepsilon'\)-close.
-  Since \(\varepsilon'\) is arbitrary, we have \((a_n)_{n = 0}^\infty\) and \((b_n)_{n = 0}^\infty\) are eventually \(\varepsilon'\)-close \(\forall \varepsilon' \in \R^+\).
+  By \cref{i:5.4.12}, there exists an \(\varepsilon \in \Q^+\) such that \(\varepsilon \leq \varepsilon'\).
+  Fix such \(\varepsilon\).
+  Since \(\varepsilon \in \Q^+\), by hypothesis we know that \((a_n)_{n = m}^\infty\) and \((b_n)_{n = m}^\infty\) are eventually \(\varepsilon\)-close.
+  This implies that \((a_n)_{n = m}^\infty\) and \((b_n)_{n = m}^\infty\) are eventually \(\varepsilon'\)-close.
+  Since \(\varepsilon'\) was arbitrary, we see that \((a_n)_{n = m}^\infty\) and \((b_n)_{n = m}^\infty\) are eventually \(\varepsilon'\)-close for all \(\varepsilon' \in \R^+\).
 
-  Now suppose that \((a_n)_{n = 0}^\infty\) and \((b_n)_{n = 0}^\infty\) are eventually \(\varepsilon'\)-close \(\forall \varepsilon' \in \R^+\).
-  This implies that \((a_n)_{n = 0}^\infty\) and \((b_n)_{n = 0}^\infty\) are eventually \(\varepsilon\)-close for \(\forall \varepsilon \in \Q^+\).
-  Thus we conclude that \((a_n)_{n = 0}^\infty\) and \((b_n)_{n = 0}^\infty\) are eventually \(\varepsilon\)-close \(\forall \varepsilon \in \Q^+\) iff they are eventually \(\varepsilon'\)-close \(\forall \varepsilon' \in \R^+\).
+  Now suppose that \((a_n)_{n = m}^\infty\) and \((b_n)_{n = m}^\infty\) are eventually \(\varepsilon'\)-close for all \(\varepsilon' \in \R^+\).
+  This implies that \((a_n)_{n = m}^\infty\) and \((b_n)_{n = m}^\infty\) are eventually \(\varepsilon\)-close for all \(\varepsilon \in \Q^+\).
+  Thus we conclude that \((a_n)_{n = m}^\infty\) and \((b_n)_{n = m}^\infty\) are eventually \(\varepsilon\)-close for all \(\varepsilon \in \Q^+\) iff they are eventually \(\varepsilon'\)-close for all \(\varepsilon' \in \R^+\).
 \end{proof}
