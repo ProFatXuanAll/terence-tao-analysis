@@ -1,20 +1,11 @@
 \section{Addition}\label{i:sec:2.2}
 
 \begin{defn}[Addition of natural numbers]\label{i:2.2.1}
-  Let \(m\) be a natural numbers.
+  Let \(m\) be a natural number.
   To add zero to \(m\), we define \(0 + m \coloneqq m\).
   Now suppose inductively that we have defined how to add \(n\) to \(m\).
   Then we can add \(n\pp\) to \(m\) by defining \((n\pp) + m \coloneqq (n + m)\pp\).
 \end{defn}
-
-\begin{note}
-  From a logical point of view, there is no difference between a lemma, proposition, theorem, or corollary
-  - they are all claims waiting to be proved.
-  However, we use these terms to suggest different levels of importance and difficulty.
-  A lemma is an easily proved claim which is helpful for proving other propositions and theorems, but is usually not particularly interesting in its own right.
-  A proposition is a statement which is interesting in its own right, while a theorem is a more important statement than a proposition which says something definitive on the subject, and often takes more effort to prove than a proposition or lemma.
-  A corollary is a quick consequence of a proposition or theorem that was proven recently.
-\end{note}
 
 \begin{ac}\label{i:ac:2.2.1}
   The sum \(n + m\) of two natural numbers \(n, m\) is again a natural number.
@@ -23,9 +14,9 @@
 \begin{proof}[\pf{i:ac:2.2.1}]
   Let \(m, n\) be a natural number.
   We induct on \(n\).
-  For \(n = 0\), by \cref{i:2.2.1}, we have \(0 + m = m\), which is a natural number by definition.
+  For \(n = 0\), by \cref{i:2.2.1}, we have \(0 + m = m\), which is a natural number by the definition of \(m\).
   So the base case holds.
-  Suppose inductively that for some natural number \(n\) we know that \(n + m\) is a natural number.
+  Suppose inductively that for some natural number \(n\), we know that \(n + m\) is a natural number.
   We want to show that \((n\pp) + m\) is also a natural number.
   By \cref{i:2.2.1}, we have \((n\pp) + m = (n + m)\pp\).
   By the induction hypothesis, we know that \(n + m\) is a natural number.
@@ -34,7 +25,7 @@
 \end{proof}
 
 \begin{lem}\label{i:2.2.2}
-  For any natural number \(n\), \(n + 0 = n\).
+  For any natural number \(n\), we have \(n + 0 = n\).
 \end{lem}
 
 \begin{proof}[\pf{i:2.2.2}]
@@ -47,19 +38,19 @@
 \end{proof}
 
 \begin{lem}\label{i:2.2.3}
-  For any natural numbers \(n\) and \(m\), \(n + (m\pp) = (n + m)\pp\).
+  For any natural numbers \(n\) and \(m\), we have \(n + (m\pp) = (n + m)\pp\).
 \end{lem}
 
 \begin{proof}[\pf{i:2.2.3}]
   We induct on \(n\) (keeping \(m\) fixed).
-  We first consider the base case \(n = 0\).
-  In this case we have to prove \(0 + (m\pp) = (0 + m)\pp\).
+  For \(n = 0\), we must prove \(0 + (m\pp) = (0 + m)\pp\).
   But by \cref{i:2.2.1}, \(0 + (m\pp) = m\pp\) and \(0 + m = m\), so both sides are equal to \(m\pp\) and are thus equal to each other.
-  Now we assume inductively that \(n + (m\pp) = (n + m)\pp\);
-  we now have to show that \((n\pp) + (m\pp) = ((n\pp) + m)\pp\).
+  So the base case holds.
+  Suppose inductively that \(n + (m\pp) = (n + m)\pp\).
+  We need to show that \((n\pp) + (m\pp) = ((n\pp) + m)\pp\).
   The left-hand side is \((n + (m\pp))\pp\) by \cref{i:2.2.1}, which is equal to \(((n+m)\pp)\pp\) by the inductive hypothesis.
   Similarly, we have \((n\pp) + m = (n + m)\pp\) by \cref{i:2.2.1}, and so the right-hand side is also equal to \(((n + m)\pp)\pp\).
-  Thus, both sides are equal to each other, and we have closed the induction.
+  Thus, both sides are equal, and we have closed the induction.
 \end{proof}
 
 \begin{ac}\label{i:ac:2.2.2}
@@ -78,18 +69,19 @@
 \end{proof}
 
 \begin{prop}[Addition is commutative]\label{i:2.2.4}
-  For any natural numbers \(n\) and \(m\), \(n + m = m + n\).
+  For any natural numbers \(n\) and \(m\), we have \(n + m = m + n\).
 \end{prop}
 
 \begin{proof}[\pf{i:2.2.4}]
-  We shall use induction on \(n\) (keeping \(m\) fixed).
-  First we do the base case \(n = 0\), i.e., we show \(0 + m = m + 0\).
-  By \cref{i:2.2.1}, \(0 + m = m\), while by \cref{i:2.2.2}, \(m + 0 = m\).
-  Thus, the base case is done.
-  Now suppose inductively that \(n + m = m + n\), now we have to prove that \((n\pp) + m = m + (n\pp)\) to close the induction.
+  We induct on \(n\).
+  For \(n = 0\), we need to show \(0 + m = m + 0\).
+  But by \cref{i:2.2.1}, \(0 + m = m\), while by \cref{i:2.2.2}, \(m + 0 = m\).
+  Thus, both sides are equal, and the base case holds.
+  Suppose inductively that \(n + m = m + n\).
+  We must prove that \((n\pp) + m = m + (n\pp)\) to close the induction.
   By \cref{i:2.2.1}, \((n\pp) + m = (n + m)\pp\).
-  By \cref{i:2.2.3}, \(m + (n\pp) = (m + n)\pp\), but this is equal to \((n + m)\pp\) by the inductive hypothesis \(n+m=m+n\).
-  Thus, \((n\pp) + m = m + (n\pp)\) and we have closed the induction.
+  By \cref{i:2.2.3}, \(m + (n\pp) = (m + n)\pp\), but this is equal to \((n + m)\pp\) by the induction hypothesis.
+  Thus, \((n\pp) + m = m + (n\pp)\), and we have closed the induction.
 \end{proof}
 
 \begin{prop}[Addition is associative]\label{i:2.2.5}
@@ -126,13 +118,12 @@
 \end{prop}
 
 \begin{proof}[\pf{i:2.2.6}]
-  We prove this by induction on \(a\).
-  First consider the base case \(a = 0\).
-  Then we have \(0 + b = 0 + c\), which by \cref{i:2.2.1} implies that \(b = c\) as desired.
-  Now suppose inductively that we have the cancellation law for \(a\) (so that \(a + b = a + c\) implies \(b = c\));
+  We induct on \(a\).
+  For \(a = 0\), we have \(0 + b = 0 + c\), which by \cref{i:2.2.1} implies that \(b = c\) as desired.
+  Suppose inductively that we have the cancellation law for \(a\) (so that \(a + b = a + c\) implies \(b = c\));
   we now have to prove the cancellation law for \(a\pp\).
   In other words, we assume that \((a\pp) + b = (a\pp) + c\) and need to show that \(b = c\).
-  By \cref{i:2.2.1}, \((a\pp) + b = (a + b)\pp\) and \((a\pp) + c = (a + c)\pp\) and so we have \((a + b)\pp = (a + c)\pp\).
+  By \cref{i:2.2.1}, we have \((a\pp) + b = (a + b)\pp\) and \((a\pp) + c = (a + c)\pp\), and so we have \((a + b)\pp = (a + c)\pp\).
   By \cref{i:2.4}, we have \(a + b = a + c\).
   Since we already have the cancellation law for \(a\), we thus have \(b = c\) as desired.
   This closes the induction.
@@ -148,20 +139,20 @@
 
 \begin{proof}[\pf{i:2.2.8}]
   We induct on \(b\).
-  If \(b = 0\), then \(a + b = a + 0 = a\), which is positive by \cref{i:2.2.7}, so this proves the base case.
-  Now suppose inductively that \(a + b\) is positive.
-  Then \(a + (b\pp) = (a + b)\pp\), which cannot be zero by \cref{i:2.3}, and is hence positive.
+  If \(b = 0\), then \(a + b = a + 0 = a\), which is positive, proving the base case.
+  Suppose inductively that \(a + b\) is positive.
+  Then \(a + (b\pp) = (a + b)\pp\), which cannot be zero by \cref{i:2.3}, and is hence positive by \cref{i:2.2.7}.
   This closes the induction.
 \end{proof}
 
 \begin{cor}\label{i:2.2.9}
-  If \(a\) and \(b\) are natural numbers such that \(a + b = 0\), then \(a = 0\) and \(b = 0\).
+  If \(a\) and \(b\) are natural numbers such that \(a + b = 0\), then we have \(a = 0\) and \(b = 0\).
 \end{cor}
 
 \begin{proof}[\pf{i:2.2.9}]
-  Suppose for sake of contradiction that \(a \neq 0\) or \(b \neq 0\).
-  If \(a \neq 0\) then \(a\) is positive, and hence \(a + b = 0\) is positive by \cref{i:2.2.8}, a contradiction.
-  Similarly if \(b \neq 0\) then \(b\) is positive, and again \(a + b = 0\) is positive by \cref{i:2.2.8}, a contradiction.
+  Suppose for the sake of contradiction that \(a \neq 0\) or \(b \neq 0\).
+  If \(a \neq 0\), then \(a\) is positive, and hence \(a + b = 0\) is positive by \cref{i:2.2.8}, a contradiction.
+  Similarly, if \(b \neq 0\), then \(b\) is positive, and again \(a + b = 0\) is positive by \cref{i:2.2.8}, a contradiction.
   Thus, \(a\) and \(b\) must both be zero.
 \end{proof}
 
