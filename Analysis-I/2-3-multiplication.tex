@@ -2,9 +2,9 @@
 
 \begin{defn}[Multiplication of natural numbers]\label{i:2.3.1}
   Let \(m\) be a natural number.
-  To multiply zero to \(m\), we define \(0 \times m \coloneqq 0\).
-  Now suppose inductively that we have defined how to multiply \(n\) to \(m\).
-  Then we can multiply \(n\pp\) to \(m\) by defining \((n\pp) \times m \coloneqq (n \times m) + m\).
+  To multiply zero by \(m\), we define \(0 \times m \coloneqq 0\).
+  Now suppose inductively that we have defined how to multiply \(n\) by \(m\).
+  Then we can multiply \(n\pp\) by \(m\) by defining \((n\pp) \times m \coloneqq (n \times m) + m\).
 \end{defn}
 
 \begin{ac}\label{i:ac:2.3.1}
@@ -12,11 +12,11 @@
 \end{ac}
 
 \begin{proof}[\pf{i:ac:2.3.1}]
-  Let \(n, m\) be two natural numbers.
+  Let \(n\) and \(m\) be two natural numbers.
   We induct on \(n\).
   For \(n = 0\), by \cref{i:2.3.1}, we have \(0 \times m = 0\), which is a natural number by \cref{i:2.1}.
   So the base case holds.
-  Suppose inductively that, for some natural number \(n\), we know that \(n \times m\) is a natural number.
+  Suppose inductively that for some natural number \(n\), we know that \(n \times m\) is a natural number.
   We want to show that \((n\pp) \times m\) is a natural number.
   By \cref{i:2.3.1}, \((n\pp) \times m = (n \times m) + m\).
   By the induction hypothesis, \(n \times m\) is a natural number.
@@ -34,8 +34,8 @@
   We induct on \(n\).
   For \(n = 0\), by \cref{i:2.3.1}, we have \(0 \times 0 = 0\).
   So the base case holds.
-  Suppose inductively that, for some natural number \(n\), we have \(n \times 0 = 0\).
-  Then, for \(n\pp\), we have
+  Suppose inductively that for some natural number \(n\), we have \(n \times 0 = 0\).
+  Then for \(n\pp\), we have
   \begin{align*}
     (n\pp) \times 0 & = (n \times 0) + 0 &  & \by{i:2.3.1} \\
                     & = 0 + 0            &  & \byIH        \\
@@ -45,7 +45,7 @@
 \end{proof}
 
 \begin{ac}\label{i:ac:2.3.3}
-  Let \(n, m\) be natural numbers.
+  Let \(n\) and \(m\) be natural numbers.
   Then \(n \times (m\pp) = (n \times m) + n\).
 \end{ac}
 
@@ -53,8 +53,8 @@
   We induct on \(n\) and fix \(m\).
   For \(n = 0\), by \cref{i:2.3.1}, we have \(0 \times (m\pp) = 0\).
   So the base case holds.
-  Suppose inductively that, for some natural number \(n\), we have \(n \times (m\pp) = (n \times m) + n\).
-  Then, for \(n\pp\), we have
+  Suppose inductively that for some natural number \(n\), we have \(n \times (m\pp) = (n \times m) + n\).
+  Then for \(n\pp\), we have
   \begin{align*}
     (n\pp) \times (m\pp)
      & = (n \times (m\pp)) + (m\pp)  &  & \by{i:2.3.1} \\
@@ -70,7 +70,7 @@
 \end{proof}
 
 \begin{lem}[Multiplication is commutative]\label{i:2.3.2}
-  Let \(n, m\) be natural numbers.
+  Let \(n\) and \(m\) be natural numbers.
   Then \(n \times m = m \times n\).
 \end{lem}
 
@@ -78,8 +78,8 @@
   We induct on \(n\) and fix \(m\).
   For \(n = 0\), by \cref{i:2.3.1}, we have \(0 \times m = 0\), and by \cref{i:ac:2.3.2}, we have \(m \times 0 = 0\).
   So the base case holds.
-  Suppose inductively that, for some natural number \(n\), we have \(n \times m = m \times n\).
-  Then, for \(n\pp\), we have
+  Suppose inductively that for some natural number \(n\), we have \(n \times m = m \times n\).
+  Then for \(n\pp\), we have
   \begin{align*}
     (n\pp) \times m & = (n \times m) + m &  & \by{i:2.3.1}    \\
                     & = (m \times n) + m &  & \byIH           \\
@@ -89,20 +89,21 @@
 \end{proof}
 
 \begin{note}
-  We will now abbreviate \(n \times m\) as \(nm\), and use the usual convention that multiplication takes precedence over addition, thus for instance \(ab + c\) means \((a \times b) + c\), not \(a \times (b + c)\).
+  We will now abbreviate \(n \times m\) as \(nm\), and use the convention that multiplication takes precedence over addition.
+  Thus, for instance, \(ab + c\) means \((a \times b) + c\), not \(a \times (b + c)\).
 \end{note}
 
 \begin{lem}[Positive natural numbers have no zero divisors]\label{i:2.3.3}
-  Let \(n, m\) be natural numbers.
-  Then \(n \times m = 0\) iff at least one of \(n, m\) is equal to zero.
+  Let \(n\) and \(m\) be natural numbers.
+  Then \(n \times m = 0\) iff at least one of \(n\) or \(m\) equals zero.
   In particular, if \(n\) and \(m\) are both positive, then \(nm\) is also positive.
 \end{lem}
 
 \begin{proof}[\pf{i:2.3.3}]
   First, suppose that \(n \times m = 0\).
   Suppose for the sake of contradiction that \(n \neq 0 \neq m\).
-  By \cref{i:2.2.7}, this means \(n, m\) are positive natural numbers.
-  Then by \cref{i:2.2.10}, there exist some natural numbers \(a, b\), such that \(n = a\pp\) and \(m = b\pp\).
+  By \cref{i:2.2.7}, this means \(n\) and \(m\) are positive natural numbers.
+  Then by \cref{i:2.2.10}, there exist some natural numbers \(a\) and \(b\) such that \(n = a\pp\) and \(m = b\pp\).
   Thus, we have
   \begin{align*}
     n \times m & = (a\pp) \times (b\pp)                        \\
@@ -110,7 +111,7 @@
   \end{align*}
   By \cref{i:2.3}, we know that \(b\pp \neq 0\).
   Thus, by \cref{i:2.2.8}, we know that \(n \times m\) is a positive natural number.
-  But this contradict to \(n \times m = 0\).
+  But this contradicts \(n \times m = 0\).
   Thus, we must have either \(n = 0\) or \(m = 0\).
 
   Now suppose that \(n = 0\) or \(m = 0\).
