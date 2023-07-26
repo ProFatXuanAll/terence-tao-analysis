@@ -1,0 +1,104 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mypackage}[2023/06/26 My package]
+
+%------------------------------------------------------------------------------
+% Load packages.
+%------------------------------------------------------------------------------
+
+% This includes package `amsfonts'.
+% This package MUST be loaded BEFORE the package `mathtools'.
+\RequirePackage{amssymb}
+
+% This package includes the package `amsmath' and fixes bugs for `amsmath'.
+\RequirePackage{mathtools}
+
+% This package MUST be loaded AFTER the packages `amsmath' and `mathtools'.
+\RequirePackage{amsthm}
+
+% This package provides LaTex 3 command customization utilities.
+\RequirePackage{xparse}
+
+% This package parses lists inside the command `\newcommand'.
+\RequirePackage{listofitems}
+
+% This package provide a nice looking if-then-else structure and comparison functionalities.
+\RequirePackage{ifthen}
+
+%------------------------------------------------------------------------------
+% Define operators and symbols.
+%------------------------------------------------------------------------------
+
+% Absolute value.
+\DeclarePairedDelimiter{\absTmp}{\lvert}{\rvert}
+\NewDocumentCommand{\abs}{m}{\absTmp*{#1}}
+% Ceiling.
+\DeclarePairedDelimiter{\ceilTmp}{\lceil}{\rceil}
+\NewDocumentCommand{\ceil}{m}{\ceilTmp*{#1}}
+% Floor.
+\DeclarePairedDelimiter{\floorTmp}{\lfloor}{\rfloor}
+\NewDocumentCommand{\floor}{m}{\floorTmp*{#1}}
+% Evaluate.
+\DeclarePairedDelimiter{\evalTmp}{.}{\rvert}
+\NewDocumentCommand{\eval}{m}{\evalTmp*{#1}}
+% Parenthese.
+\DeclarePairedDelimiter{\paTmp}{\lparen}{\rparen}
+\NewDocumentCommand{\pa}{m}{\paTmp*{#1}}
+% Bracket.
+\DeclarePairedDelimiter{\brTmp}{\lbrack}{\rbrack}
+\NewDocumentCommand{\br}{m}{\brTmp*{#1}}
+% Brace.
+\DeclarePairedDelimiter{\BTmp}{\lbrace}{\rbrace}
+\NewDocumentCommand{\B}{m}{\BTmp*{#1}}
+% Set.
+\NewDocumentCommand{\set}{m}{\B{#1}}
+% Norm.
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+% Inner product.
+\DeclarePairedDelimiter\inner{\langle}{\rangle}
+% -th in superscript.
+\NewDocumentCommand{\opTh}{}{\operatorname{th}}
+
+% Define common symbols.
+% See `amsmath' section 9.2 for details.
+
+% Fields.
+\NewDocumentCommand{\field}{m}{\mathbf{#1}}
+% General field.
+\NewDocumentCommand{\F}{}{\field{F}}
+% Complex number.
+\NewDocumentCommand{\C}{}{\mathbb{C}}
+% Natural number.
+\NewDocumentCommand{\N}{}{\mathbb{N}}
+% Rational number.
+\NewDocumentCommand{\Q}{}{\mathbb{Q}}
+% Real number.
+\NewDocumentCommand{\R}{}{\mathbb{R}}
+% Integer number.
+\NewDocumentCommand{\Z}{}{\mathbb{Z}}
+
+% Plus plus operation.
+% Braces are used to make operators style as symbols, in particular no spaces are added before and after.
+\NewDocumentCommand{\pp}{}{{+}\!{+}}
+% Minus minus operation.
+% Braces are used to make operators style as symbols, in particular no spaces are added before and after.
+\NewDocumentCommand{\mm}{}{{-}\!{-}}
+% LIM operator.
+\DeclareMathOperator*{\LIM}{LIM}
+
+% Proof environments reference text.
+\NewDocumentCommand{\pf}{m}{%
+  Proof of \cref{#1}%
+}
+
+% Proof statements reference text.
+\NewDocumentCommand{\byOptionalArgumentProcess}{m}{(#1)}
+\NewDocumentCommand{\by}{m >{\SplitList{,}} o}{%
+  \IfNoValueTF{#2}{%
+    \text{(by \cref{#1})}%
+  }{%
+    \text{(by \cref{#1}\ProcessList{#2}{\byOptionalArgumentProcess})}%
+  }%
+}
+
+% Proof statements reference the induction hypothesis.
+\NewDocumentCommand{\byIH}{}{\text{(by the induction hypothesis)}}

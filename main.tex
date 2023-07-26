@@ -1,231 +1,8 @@
-% We use chapter structure.
-\documentclass[11pt,a4paper]{book}
+% We use part-chapter-section structure.
+\documentclass{myclass}
 
-%==============================================================================
-% Preamble.
-%==============================================================================
-
-% Correctly showing characters outside ASCII.
-\usepackage[T1]{fontenc}
-% File is written and read with utf8 encoding.
-\usepackage[utf8]{inputenc}
-% Set paging layout.
-\usepackage[paperwidth=160mm,paperheight=240mm,left=4mm,right=4mm,top=20mm,bottom=10mm]{geometry}
-% Including `amsfonts'.
-% Must be loaded before `mathtools'.
-\usepackage{amssymb}
-% Including `amsmath' and fixing bugs for `amsmath'.
-\usepackage{mathtools}
-% Must be loaded after `amsmath' and `mathtools'.
-\usepackage{amsthm}
-% Define page header and footer layout.
-\usepackage{fancyhdr}
-% LaTex 3 new command tools.
-\usepackage{xparse}
-% Current file dir absolute path macro.
-% \usepackage[abspath]{currfile}
-% \usepackage{currfile}
-\usepackage{import}
-
-% Use `fancyhdr' page style.  All page style settings must be called only after
-% this command.  See `fancyhdr' for details.
-\pagestyle{fancy}
-
-% Make header height enough to fit chapter / section titles.
-\setlength{\headheight}{15pt}
-% Change chapter and section marks' formatting.
-% Note that I use `\markright'
-% to make sure header use chapter information when section information is not available (this is need for appendix).
-\renewcommand{\chaptermark}[1]{\markright{\textsf{\small Chap. \thechapter \quad #1}}}
-\renewcommand{\sectionmark}[1]{\markright{\textsf{\small Sec. \thesection \quad #1}}}
-% Cleanup page header settings.
-\fancyhead{}
-% Put page number on the left of page header.
-\fancyhead[L]{\textbf{\textsf{\small \thepage}}}
-% Put chapter / section information on the right of page header.
-\fancyhead[R]{\rightmark}
-% Cleanup page footer settings.
-\fancyfoot{}
-
-% Reset `plain' page style which is used for the first page of each chapter.
-% I set this to make page number style consistent.
-\fancypagestyle{plain}{%
-  \fancyhf{}% clear all fields
-  \fancyfoot[C]{\textbf{\textsf{\small \thepage}}}%
-  \renewcommand{\headrulewidth}{0pt}%
-}
-
-% Automatically adjust character spacing at margins.
-\usepackage{microtype}
-% Provide further utilities and fix bugs for `enumerate', `itemize' and `description'.
-\usepackage{enumitem}
-% Provide better quoting environment.
-\usepackage{dirtytalk}
-% Parsing list inside `\newcommand'.
-\usepackage{listofitems}
-% Nice looking if-then-else structure with comparison functionality.
-\usepackage{ifthen}
-% Automatically add hyperlinks to labels/refs.
-% Must be loaded after all packages above and before `cleveref'.
-% Recommend to use with `natbib' when you need bibtex.
-\usepackage{hyperref}
-
-\hypersetup{       % This macro come with `hyperref'.
-	colorlinks=true, % Color hyperlinks.
-	linkcolor=blue,  % Color local hyperlinks with blue.
-	urlcolor=cyan,   % Color url links with cyan.
-}
-
-% Chapter numbers are reset in each part.
-% This must be done only when `hyperref' is loaded.
-\usepackage{chngcntr}
-\counterwithin*{chapter}{part}
-% Remove words and numbering in each part.
-\renewcommand{\partname}{}
-\renewcommand{\thepart}{}
-
-% Must be loaded after `hyperref'.
-% We always capitalize each cross-references' type name.
-% See `cleveref' for details.
-\usepackage[capitalize]{cleveref}
-
-% Allow page break in the middle of multi-line equations.
-\allowdisplaybreaks
-
-%------------------------------------------------------------------------------
-% Define environments.
-%------------------------------------------------------------------------------
-
-% Text inside the body of theorem-like environments are set to Roman font.
-% Theorem-like environments share their counters, counters follow section and reset in every sections
-% (except for axioms, axioms counters are reset in each chapter).
-% Exercises has their owned counter.
-% Notes do not use counter.
-% See `amsthm' for details.
-\theoremstyle{definition}
-\newtheorem{ax}{Ax.}[chapter]
-\newtheorem{ac}{A.Cor.}[section]
-\newtheorem{ex}{Ex.}[section]
-\newtheorem{thm}{Thm.}[section]
-\newtheorem{cor}[thm]{Cor.}
-\newtheorem{defn}[thm]{Def.}
-\newtheorem{eg}[thm]{E.g.}
-\newtheorem{lem}[thm]{Lem.}
-\newtheorem{prop}[thm]{Prop.}
-\newtheorem{rmk}[thm]{Rmk.}
-\newtheorem*{note}{Note}
-
-\theoremstyle{remark}
-\newtheorem*{meta-proof}{Meta-proof}
-
-% Define plural form for theorem-like environments.
-% See `cleveref' for details.
-\crefname{ax}{Ax.}{Ax.}
-\crefname{ac}{A.Cor.}{A.Cor.}
-\crefname{chapter}{Ch.}{Ch.}
-\crefname{cor}{Cor.}{Cor.}
-\crefname{defn}{Def.}{Def.}
-\crefname{eg}{E.g.}{E.g.}
-\crefname{ex}{Ex.}{Ex.}
-\crefname{lem}{Lem.}{Lem.}
-\crefname{note}{Note}{Notes}
-\crefname{prop}{Prop.}{Prop.}
-\crefname{rmk}{Rmk.}{Rmk.}
-\crefname{section}{Sec.}{Sec.}
-\crefname{thm}{Thm.}{Thm.}
-
-% In `enumerate' enviroments, items' label are alphabets and surrounded by
-% parentheses.  See `enumitem' for details.
-\renewcommand{\labelenumi}{\textnormal{(}\alph{enumi}\textnormal{)}}
-
-% Formatting exercises section.
-\NewDocumentCommand{\exercisesection}{}{
-  \begin{center}
-    --- Exercises ---
-  \end{center}
-}
-
-%------------------------------------------------------------------------------
-% Define operators and symbols.
-%------------------------------------------------------------------------------
-
-% Absolute value.
-\DeclarePairedDelimiter{\absTmp}{\lvert}{\rvert}
-\NewDocumentCommand{\abs}{m}{\absTmp*{#1}}
-% Ceiling.
-\DeclarePairedDelimiter{\ceilTmp}{\lceil}{\rceil}
-\NewDocumentCommand{\ceil}{m}{\ceilTmp*{#1}}
-% Floor.
-\DeclarePairedDelimiter{\floorTmp}{\lfloor}{\rfloor}
-\NewDocumentCommand{\floor}{m}{\floorTmp*{#1}}
-% Evaluate.
-\DeclarePairedDelimiter{\evalTmp}{.}{\rvert}
-\NewDocumentCommand{\eval}{m}{\evalTmp*{#1}}
-% Parenthese.
-\DeclarePairedDelimiter{\paTmp}{\lparen}{\rparen}
-\NewDocumentCommand{\pa}{m}{\paTmp*{#1}}
-% Bracket.
-\DeclarePairedDelimiter{\brTmp}{\lbrack}{\rbrack}
-\NewDocumentCommand{\br}{m}{\brTmp*{#1}}
-% Brace.
-\DeclarePairedDelimiter{\BTmp}{\lbrace}{\rbrace}
-\NewDocumentCommand{\B}{m}{\BTmp*{#1}}
-% Set.
-\NewDocumentCommand{\set}{m}{\B{#1}}
-% Norm.
-\DeclarePairedDelimiter\norm{\lVert}{\rVert}
-% Inner product.
-\DeclarePairedDelimiter\inner{\langle}{\rangle}
-% -th in superscript.
-\NewDocumentCommand{\opTh}{}{\operatorname{th}}
-
-% Define common symbols.
-% See `amsmath' section 9.2 for details.
-
-% Fields.
-\NewDocumentCommand{\field}{m}{\mathbf{#1}}
-% General field.
-\NewDocumentCommand{\F}{}{\field{F}}
-% Complex number.
-\NewDocumentCommand{\C}{}{\mathbb{C}}
-% Natural number.
-\NewDocumentCommand{\N}{}{\mathbb{N}}
-% Rational number.
-\NewDocumentCommand{\Q}{}{\mathbb{Q}}
-% Real number.
-\NewDocumentCommand{\R}{}{\mathbb{R}}
-% Integer number.
-\NewDocumentCommand{\Z}{}{\mathbb{Z}}
-
-% Plus plus operation.
-% Braces are used to make operators style as symbols, in particular no spaces are added before and after.
-\NewDocumentCommand{\pp}{}{{+}\!{+}}
-% Minus minus operation.
-% Braces are used to make operators style as symbols, in particular no spaces are added before and after.
-\NewDocumentCommand{\mm}{}{{-}\!{-}}
-% LIM operator.
-\DeclareMathOperator*{\LIM}{LIM}
-
-% Proof environments reference text.
-\NewDocumentCommand{\pf}{m}{%
-	Proof of \cref{#1}%
-}
-
-% Proof statements reference text.
-\NewDocumentCommand{\byOptionalArgumentProcess}{m}{(#1)}
-\NewDocumentCommand{\by}{m >{\SplitList{,}} o}{%
-	\IfNoValueTF{#2}{%
-		\text{(by \cref{#1})}%
-	}{%
-		\text{(by \cref{#1}\ProcessList{#2}{\byOptionalArgumentProcess})}%
-	}%
-}
-
-% Proof statements reference the induction hypothesis.
-\NewDocumentCommand{\byIH}{}{\text{(by the induction hypothesis)}}
-
-% Use display style on inline math.
-\everymath{\displaystyle}
+% We load customized commands.
+\usepackage{mypackage}
 
 %==============================================================================
 % Document.
@@ -239,16 +16,13 @@
 
 \frontmatter
 
-% Author informations.
-\title{Notes for Analysis I and II (3e) by Terence Tao}
-\author{ProFatXuanAll}
 \maketitle
 
 % Table of contents.
 \tableofcontents
 
 % Preface.
-\input{preface.tex}
+\subimport*{./}{preface.tex}
 \addcontentsline{toc}{chapter}{Preface}
 
 %------------------------------------------------------------------------------
@@ -287,5 +61,7 @@
 %------------------------------------------------------------------------------
 
 \backmatter
+
+\printindex
 
 \end{document}
