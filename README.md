@@ -13,6 +13,11 @@ One has to install [texlive](https://www.tug.org/texlive/) before compiling tex 
 I use vscode extenstion `latex-workshop` to build PDF file from TeX.
 I use the default recipe to build `main.tex`.
 
+OR
+
+On Ubuntu (and the like), install `texlive-full` (or `texlive-latex-extra`): `sudo apt install texlive-full` (or `sudo apt install texlive-latex-extra`)
+and run `make` to let the `Makefile` generate the pdf for you. This will make a pdf, including all the reference and citation links.
+
 ## Contribution
 
 ### Issues
