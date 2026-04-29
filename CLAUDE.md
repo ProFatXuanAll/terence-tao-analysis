@@ -22,5 +22,6 @@ Read the relevant file before substantive edits:
 - [structure.md](.claude/rules/structure.md) — `\subimport` tree; how to add sections and chapters.
 - [macros.md](.claude/rules/macros.md) — reuse macros from `mypackage.sty` / `myclass.cls`; don't redefine inline.
 - [labels.md](.claude/rules/labels.md) — theorem environment counters and the `i:` / `ii:` label scheme.
+- [proof.md](.claude/rules/proof.md) — always cite the theorem being proved; bare references break under renumbering.
 - [editing.md](.claude/rules/editing.md) — author voice, errata handling, formatting.
 - [commits.md](.claude/rules/commits.md) — Angular commit convention; scopes reuse the label namespaces.
