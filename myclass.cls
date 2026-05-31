@@ -182,6 +182,25 @@
 % See `enumitem' for details.
 \renewcommand{\labelenumi}{\textnormal{\lparen}\alph{enumi}\textnormal{\rparen}}
 
+% Let a first-level enumerate item inside a statement be cross-referenced as `<statement>(<letter>)', e.g. \cref{i:2.2.12.e} -> Prop. I.2.2.12(e).
+% At each list we capture the enclosing statement's number as the item-reference prefix (\p@enumi) and its `cleveref' type as an alias for the `enumi' counter, so the reference inherits the parent's name (Prop./Def./Thm./...).
+% The visual item marker is unchanged (still driven by \labelenumi above).
+% The logic is a robust command so `enumitem' stores it verbatim instead of expanding it at \setlist time, when \cref@currentlabel is still empty.
+\makeatletter
+\def\subref@settype[#1]#2\@nil{\xdef\cref@enumi@alias{#1}}
+\DeclareRobustCommand{\subref@capture}{%
+  \protected@xdef\p@enumi{\@currentlabel}%
+  \ifx\cref@currentlabel\@empty\else
+    \expandafter\subref@settype\cref@currentlabel\@nil
+  \fi%
+}
+\setlist[enumerate,1]{%
+  before=\subref@capture,%
+  ref={(\alph*)},%
+  after={\global\let\cref@enumi@alias\relax\global\let\p@enumi\@empty}%
+}
+\makeatother
+
 %------------------------------------------------------------------------------
 % Set up math style.
 %------------------------------------------------------------------------------
