@@ -219,17 +219,20 @@
 % This must be done only when `hyperref' is loaded.
 \counterwithin*{chapter}{part}
 
-% We format chapter number as `part.chapter'.
-\renewcommand{\thechapter}{\Roman{part}.\arabic{chapter}}
+% We embed `ch' in chapter numbers so their references are distinguishable from ordinary statements (e.g. `I.ch.2').
+\renewcommand{\thechapter}{\Roman{part}.ch.\arabic{chapter}}
 
-% We format section number as `part.chapter.section'.
-\renewcommand{\thesection}{\Roman{part}.\arabic{chapter}.\arabic{section}}
+% We embed `sec' in section numbers so their references are distinguishable from ordinary statements (e.g. `I.sec.2.2').
+\renewcommand{\thesection}{\Roman{part}.sec.\arabic{chapter}.\arabic{section}}
 
 % We display theorem tag as `part.chatper.section.theorem'.
 \renewcommand{\thethm}{\Roman{part}.\arabic{chapter}.\arabic{section}.\arabic{thm}}
 
-% We display equation tag as `part.chatper.equation'.
-\renewcommand{\theequation}{\Roman{part}.\arabic{chapter}.\arabic{equation}}
+% We embed `ac' in additional corollary numbers so their references are distinguishable from ordinary statements (e.g. `I.ac.2.2.4' instead of `I.2.2.4').
+\renewcommand{\theac}{\Roman{part}.ac.\arabic{chapter}.\arabic{section}.\arabic{ac}}
+
+% We embed `eq' in equation numbers so their references are distinguishable from ordinary statements (e.g. `I.eq.2.5').
+\renewcommand{\theequation}{\Roman{part}.eq.\arabic{chapter}.\arabic{equation}}
 
 % Adjust title number width in table of content.
 \makeatletter
