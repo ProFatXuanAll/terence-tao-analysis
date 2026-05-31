@@ -382,6 +382,22 @@
   This closes the induction.
 \end{proof}
 
+\begin{ac}\label{i:ac:2.2.5}
+  Let \(m\) and \(n\) be natural numbers.
+  Then \(m < n\pp\) iff \(m \leq n\).
+\end{ac}
+
+\begin{proof}[\pf{i:ac:2.2.5}]
+  Let \(m\) and \(n\) be natural numbers.
+  Then we have
+  \begin{align*}
+         & m < n\pp                              \\
+    \iff & m\pp \leq n\pp   &  & \by{i:2.2.12.e} \\
+    \iff & m + 1 \leq n + 1 &  & \by{i:ac:2.2.2} \\
+    \iff & m \leq n.        &  & \by{i:2.2.12.d}
+  \end{align*}
+\end{proof}
+
 \begin{prop}[Strong principle of induction]\label{i:2.2.14}
   Let \(m_0\) be a natural number, and let \(P(m)\) be a property pertaining to an arbitrary natural number \(m\).
   Suppose that for each \(m \geq m_0\), we have the following implication: if \(P(m')\) is true for all natural numbers \(m_0 \leq m' < m\), then \(P(m)\) is also true.
@@ -394,7 +410,7 @@
   We induct on \(n\) to show that \(Q(n)\) is true for any natural number \(n\).
 
   For \(n = 0\), we want to show that \(Q(0)\) is true.
-  However, we know that \(0 \leq m_0\) for any natural number \(m_0\).
+  However, by \cref{i:ac:2.2.4}, we know that \(0 \leq m_0\) for any natural number \(m_0\).
   Thus, we have either \(0 = m_0\) or \(0 < m_0\).
   So we split it into two cases:
   \begin{itemize}
@@ -410,11 +426,11 @@
   We need to show that \(Q(n\pp)\) is true.
   We split into two cases:
   \begin{itemize}
-    \item If \(n < m_0\), then there does not exist a natural number \(m\) satisfying \(m_0 \leq m < n\pp\), since such an \(m\) would satisfy \(m_0 \leq m \leq n < m_0\), which is absurd.
+    \item If \(n < m_0\), then there does not exist a natural number \(m\) satisfying \(m_0 \leq m < n\pp\), since such an \(m\) would satisfy \(m \leq n\) by \cref{i:ac:2.2.5}, and thus \(m_0 \leq m \leq n < m_0\), which is absurd.
           Thus, \(Q(n\pp)\) is vacuously true in this case.
     \item If \(n \geq m_0\), then by the induction hypothesis \(Q(n)\), we know that \(P(m')\) is true for all natural numbers \(m_0 \leq m' < n\).
           So by the hypothesis of \(P\), which is applicable since \(n \geq m_0\), we see that \(P(n)\) is true.
-          Combining this with \(Q(n)\), we know that \(P(m)\) is true for any natural number \(m\) satisfying \(m_0 \leq m \leq n\), or equivalently \(m_0 \leq m < n\pp\).
+          Combining this with \(Q(n)\), we know that \(P(m)\) is true for any natural number \(m\) satisfying \(m_0 \leq m \leq n\), and hence, by \cref{i:ac:2.2.5}, for any natural number \(m\) satisfying \(m_0 \leq m < n\pp\).
           Thus, \(Q(n\pp)\) is true in this case.
   \end{itemize}
   From all cases above, we see that \(Q(n\pp)\) is true.
@@ -422,8 +438,8 @@
   Hence, we can conclude that \(Q(n)\) is true for any natural number \(n\).
 
   Now let \(n\) be any natural number satisfying \(n \geq m_0\).
-  Applying \(Q(n\pp)\), we know that \(P(m)\) is true for any natural number \(m\) satisfying \(m_0 \leq m < n\pp\), that is, \(m_0 \leq m \leq n\).
-  In particular, since \(m_0 \leq n \leq n\), we see that \(P(n)\) is true.
+  By \cref{i:ac:2.2.3}, we have \(n < n\pp\), and so \(m_0 \leq n < n\pp\).
+  Applying \(Q(n\pp)\), we conclude that \(P(n)\) is true.
   Hence, \(P(n)\) is true for all natural numbers \(n \geq m_0\), as desired.
 \end{proof}
 
