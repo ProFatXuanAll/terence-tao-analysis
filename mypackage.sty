@@ -85,18 +85,32 @@
 % LIM operator.
 \DeclareMathOperator*{\LIM}{LIM}
 
+% Like \cref but prints only the reference number(s), dropping the statement
+% type (e.g. `I.2.2.11', not `Def. I.2.2.11').
+% cleveref's \labelcref handles a single label only in this version, so split a
+% comma list and apply it per item, joined by commas.
+\newif\iflabelcrefsfirst
+\NewDocumentCommand{\labelcrefs}{ >{\SplitList{,}} m }{%
+  \labelcrefsfirsttrue
+  \ProcessList{#1}{\labelcrefsitem}%
+}
+\newcommand{\labelcrefsitem}[1]{%
+  \iflabelcrefsfirst\labelcrefsfirstfalse\else, \fi
+  \labelcref{#1}%
+}
+
 % Proof environments reference text.
 \NewDocumentCommand{\pf}{m}{%
-  Proof of \cref{#1}%
+  Proof of \labelcrefs{#1}%
 }
 
 % Proof statements reference text.
 \NewDocumentCommand{\byOptionalArgumentProcess}{m}{(#1)}
 \NewDocumentCommand{\by}{m >{\SplitList{,}} o}{%
   \IfNoValueTF{#2}{%
-    \text{(by \cref{#1})}%
+    \text{(by \labelcrefs{#1})}%
   }{%
-    \text{(by \cref{#1}\ProcessList{#2}{\byOptionalArgumentProcess})}%
+    \text{(by \labelcrefs{#1}\ProcessList{#2}{\byOptionalArgumentProcess})}%
   }%
 }
 
