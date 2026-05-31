@@ -234,6 +234,9 @@
 % We embed `ac' in additional corollary numbers so their references are distinguishable from ordinary statements (e.g. `I.ac.2.2.4' instead of `I.2.2.4').
 \renewcommand{\theac}{\Roman{part}.ac.\arabic{chapter}.\arabic{section}.\arabic{ac}}
 
+% We embed `ex' in exercise numbers so their references are distinguishable from ordinary statements (e.g. `I.ex.2.2.1' instead of inheriting the `sec' marker from `\thesection').
+\renewcommand{\theex}{\Roman{part}.ex.\arabic{chapter}.\arabic{section}.\arabic{ex}}
+
 % We embed `eq' in equation numbers so their references are distinguishable from ordinary statements (e.g. `I.eq.2.5').
 \renewcommand{\theequation}{\Roman{part}.eq.\arabic{chapter}.\arabic{equation}}
 
