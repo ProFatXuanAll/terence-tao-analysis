@@ -88,14 +88,27 @@
 % Like \cref but prints only the reference number(s), dropping the statement
 % type (e.g. `I.2.2.11', not `Def. I.2.2.11').
 % cleveref's \labelcref handles a single label only in this version, so split a
-% comma list and apply it per item, joined by commas.
-\newif\iflabelcrefsfirst
+% comma list and apply it per item, joined as English prose: `A and B' for two
+% items, `A, B, and C' for three or more.
+\newcounter{labelcrefspos}
+\newcounter{labelcrefstot}
 \NewDocumentCommand{\labelcrefs}{ >{\SplitList{,}} m }{%
-  \labelcrefsfirsttrue
+  \setcounter{labelcrefstot}{0}%
+  \ProcessList{#1}{\labelcrefscount}%
+  \setcounter{labelcrefspos}{0}%
   \ProcessList{#1}{\labelcrefsitem}%
 }
+\newcommand{\labelcrefscount}[1]{\stepcounter{labelcrefstot}}
 \newcommand{\labelcrefsitem}[1]{%
-  \iflabelcrefsfirst\labelcrefsfirstfalse\else, \fi
+  \stepcounter{labelcrefspos}%
+  \ifnum\value{labelcrefspos}=1\relax\else
+    \ifnum\value{labelcrefspos}=\value{labelcrefstot}\relax
+      \ifnum\value{labelcrefstot}>2\relax,\fi
+      \space and\space
+    \else
+      ,\space
+    \fi
+  \fi
   \labelcref{#1}%
 }
 
