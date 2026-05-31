@@ -408,14 +408,23 @@
 
   Suppose inductively that \(Q(n)\) is true for some natural number \(n\).
   We need to show that \(Q(n\pp)\) is true.
-  Using the induction hypothesis \(Q(n)\) and the hypothesis of \(P\), we see that \(P(n)\) is true.
-  Since \(n < n\pp\), we know that \(P(m)\) is true for any natural number \(m\) satisfying \(m_0 \leq m \leq n < n\pp\).
-  So \(P(m)\) is true for any natural number \(m\) satisfying \(m_0 \leq m < n\pp\), which in turn implies that \(Q(n\pp)\) is true.
+  We split into two cases:
+  \begin{itemize}
+    \item If \(n < m_0\), then there does not exist a natural number \(m\) satisfying \(m_0 \leq m < n\pp\), since such an \(m\) would satisfy \(m_0 \leq m \leq n < m_0\), which is absurd.
+          Thus, \(Q(n\pp)\) is vacuously true in this case.
+    \item If \(n \geq m_0\), then by the induction hypothesis \(Q(n)\), we know that \(P(m')\) is true for all natural numbers \(m_0 \leq m' < n\).
+          So by the hypothesis of \(P\), which is applicable since \(n \geq m_0\), we see that \(P(n)\) is true.
+          Combining this with \(Q(n)\), we know that \(P(m)\) is true for any natural number \(m\) satisfying \(m_0 \leq m \leq n\), or equivalently \(m_0 \leq m < n\pp\).
+          Thus, \(Q(n\pp)\) is true in this case.
+  \end{itemize}
+  From all cases above, we see that \(Q(n\pp)\) is true.
   This closes the induction.
   Hence, we can conclude that \(Q(n)\) is true for any natural number \(n\).
 
-  Since \(Q(n)\) is true for any natural number \(n\), by the hypothesis of \(P\), we know that \(P(n)\) is true for any natural number \(n\).
-  In particular, we see that \(P(n)\) is true for any natural number \(n\) satisfying \(n \geq m_0\).
+  Now let \(n\) be any natural number satisfying \(n \geq m_0\).
+  Applying \(Q(n\pp)\), we know that \(P(m)\) is true for any natural number \(m\) satisfying \(m_0 \leq m < n\pp\), that is, \(m_0 \leq m \leq n\).
+  In particular, since \(m_0 \leq n \leq n\), we see that \(P(n)\) is true.
+  Hence, \(P(n)\) is true for all natural numbers \(n \geq m_0\), as desired.
 \end{proof}
 
 \begin{rmk}\label{i:2.2.15}
