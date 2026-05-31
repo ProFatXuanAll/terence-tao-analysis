@@ -12,7 +12,7 @@ Open exercises tracked in `README.md` — keep that list in sync.
   VSCode `latex-workshop` default recipe also works.
   PDF is git-ignored.
 - Uses `makeidx` + `cleveref`, so a single pdflatex pass leaves refs/index empty — `latexmk` handles passes; by hand, run `makeindex main.idx` between passes.
-- Format with `latexindent` (no config — defaults).
+- Format with `make fmt` (runs `latexindent` with `latexindent.yaml`, which sets two-space indent — latexindent's shipped default is a tab).
 
 ## Project rules
 
