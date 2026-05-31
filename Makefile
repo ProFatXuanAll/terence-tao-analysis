@@ -14,6 +14,7 @@ watch:
 
 clean:
 	$(LATEXMK) -c $(MAIN).tex
+	$(RM) $(MAIN).fdb_latexmk
 
 cleanall:
 	$(LATEXMK) -C $(MAIN).tex
