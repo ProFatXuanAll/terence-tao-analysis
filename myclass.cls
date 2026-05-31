@@ -222,6 +222,9 @@
 % We embed `ch' in chapter numbers so their references are distinguishable from ordinary statements (e.g. `I.ch.2').
 \renewcommand{\thechapter}{\Roman{part}.ch.\arabic{chapter}}
 
+% Axioms keep plain `part.chapter.axiom' numbers, since `\theax' would otherwise inherit the `ch' marker from `\thechapter'.
+\renewcommand{\theax}{\Roman{part}.\arabic{chapter}.\arabic{ax}}
+
 % We embed `sec' in section numbers so their references are distinguishable from ordinary statements (e.g. `I.sec.2.2').
 \renewcommand{\thesection}{\Roman{part}.sec.\arabic{chapter}.\arabic{section}}
 
