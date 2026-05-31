@@ -46,11 +46,11 @@
   Let \(x_0 \in X\) be an adherent point of \(E\) and \(L \in Y\).
   Then the following four statements are logically equivalent:
   \begin{enumerate}
-    \item \(\lim_{x \to x_0 ; x \in E} f(x) = L\).
-    \item For every sequence \((x^{(n)})_{n = 1}^\infty\) in \(E\) which converges to \(x_0\) with respect to the metric \(d_X\), the sequence \(\big(f(x^{(n)})\big)_{n = 1}^\infty\) converges to \(L\) with respect to the metric \(d_Y\).
-    \item For every open set \(V \subseteq Y\) which contains \(L\), there exists an open set \(U \subseteq X\) containing \(x_0\) such that \(f(U \cap E) \subseteq V\).
-    \item If one defines the function \(g : E \cup \set{x_0} \to Y\) by defining \(g(x_0) \coloneqq L\), and \(g(x) \coloneqq f(x)\) for \(x \in E \setminus \set{x_0}\), then \(g\) is continuous at \(x_0\).
-          Furthermore, if \(x_0 \in E\), then \(f(x_0) = L\).
+    \item\label{ii:3.1.5.a} \(\lim_{x \to x_0 ; x \in E} f(x) = L\).
+    \item\label{ii:3.1.5.b} For every sequence \((x^{(n)})_{n = 1}^\infty\) in \(E\) which converges to \(x_0\) with respect to the metric \(d_X\), the sequence \(\big(f(x^{(n)})\big)_{n = 1}^\infty\) converges to \(L\) with respect to the metric \(d_Y\).
+    \item\label{ii:3.1.5.c} For every open set \(V \subseteq Y\) which contains \(L\), there exists an open set \(U \subseteq X\) containing \(x_0\) such that \(f(U \cap E) \subseteq V\).
+    \item\label{ii:3.1.5.d} If one defines the function \(g : E \cup \set{x_0} \to Y\) by defining \(g(x_0) \coloneqq L\), and \(g(x) \coloneqq f(x)\) for \(x \in E \setminus \set{x_0}\), then \(g\) is continuous at \(x_0\).
+    Furthermore, if \(x_0 \in E\), then \(f(x_0) = L\).
   \end{enumerate}
 \end{prop}
 
@@ -128,15 +128,15 @@
   Let \(V\) be an open set in \((Y, d_Y)\) such that \(L \in V\).
   Then we have
   \begin{align*}
-             & V = \text{int}_{(Y, d_Y)}(V)                                                                           &  & \by{ii:1.2.15}[a] \\
-    \implies & \exists \varepsilon \in \R^+ : B_{(Y, d_Y)}(L, \varepsilon) \subseteq V                                &  & \by{ii:1.2.5}     \\
-    \implies & \exists \delta \in \R^+ :                                                                                                     \\
+             & V = \text{int}_{(Y, d_Y)}(V)                                                                           &  & \by{ii:1.2.15.a} \\
+    \implies & \exists \varepsilon \in \R^+ : B_{(Y, d_Y)}(L, \varepsilon) \subseteq V                                &  & \by{ii:1.2.5}    \\
+    \implies & \exists \delta \in \R^+ :                                                                                                    \\
              & \begin{dcases}
                  x \in B_{(X, d_X)}(x_0, \delta) \cap E \implies d_Y\big(f(x), L\big) < \varepsilon \\
                  f\big(B_{(X, d_X)}(x_0, \delta) \cap E\big) \subseteq B_{(Y, d_Y)}\big(L, \varepsilon\big) \subseteq V
                \end{dcases}
   \end{align*}
-  and by \cref{ii:1.2.15}(c) we know that \(B_{(X, d_X)}(x_0, \delta)\) is open in \((X, d_X)\).
+  and by \cref{ii:1.2.15.c} we know that \(B_{(X, d_X)}(x_0, \delta)\) is open in \((X, d_X)\).
   Since \(V\) was arbitrary, we conclude that statement (a) implies statement (c).
 
   Next we show that statement (c) implies statement (a).
@@ -152,7 +152,7 @@
     \end{dcases}
   \]
   Let \(\varepsilon \in \R^+\).
-  By \cref{ii:1.2.15}(c) we know that \(B_{(Y, d_Y)}(L, \varepsilon)\) is open in \((Y, d_Y)\).
+  By \cref{ii:1.2.15.c} we know that \(B_{(Y, d_Y)}(L, \varepsilon)\) is open in \((Y, d_Y)\).
   By hypothesis we know that there exists some \(U \subseteq X\) such that
   \[
     \begin{dcases}
@@ -166,7 +166,7 @@
              & \begin{dcases}
                  x_0 \in U \\
                  U = \text{int}_{(X, d_X)}(U)
-               \end{dcases}                                                                             &  & \by{ii:1.2.15}[a]             \\
+               \end{dcases}                                                                             &  & \by{ii:1.2.15.a}              \\
     \implies & \exists \delta \in \R^+ : B_{(X, d_X)}(x_0, \delta) \subseteq U                                          &  & \by{ii:1.2.5} \\
     \implies & \exists \delta \in \R^+ : B_{(X, d_X)}(x_0, \delta) \cap E \subseteq U \cap E                                               \\
     \implies & \exists \delta \in \R^+ :                                                                                                   \\
@@ -208,7 +208,7 @@
   Now suppose that \(x_0 \in E\).
   We claim that \(f(x_0) = L\).
   Suppose for the sake of contradiction that \(f(x_0) \neq L\).
-  Then by \cref{ii:1.1.2}(b) we have \(d_Y\big(f(x_0), L\big) > 0\).
+  Then by \cref{ii:1.1.2.b} we have \(d_Y\big(f(x_0), L\big) > 0\).
   Let \(r = d_Y\big(f(x_0), L\big)\).
   By \cref{ii:3.1.1} we have
   \[
@@ -248,7 +248,7 @@
 \end{proof}
 
 \begin{rmk}\label{ii:3.1.6}
-  Observe from \cref{ii:3.1.5}(b) and \cref{ii:1.1.20} that a function \(f(x)\) can converge to at most one limit \(L\) as \(x\) converges to \(x_0\).
+  Observe from \cref{ii:3.1.5.b} and \cref{ii:1.1.20} that a function \(f(x)\) can converge to at most one limit \(L\) as \(x\) converges to \(x_0\).
   In other words, if the limit
   \[
     \lim_{x \to x_0 ; x \in E} f(x)
@@ -282,7 +282,7 @@
 
 \begin{proof}
   Let \(L \in Y\).
-  By \cref{ii:1.1.2}(a) we know that
+  By \cref{ii:1.1.2.a} we know that
   \[
     \forall \varepsilon \in \R^+, d_Y\big(f(x_0), L\big) < \varepsilon \iff L = f(x_0).
   \]
@@ -306,8 +306,8 @@
 \end{proof}
 
 \begin{ex}\label{ii:ex:3.1.3}
-  Use \cref{ii:3.1.5}(c) to define a notion of a limiting value of a function \(f : E \to Y\) from one topological space \((X, \mathcal{F}_X)\) to another \((Y, \mathcal{F}_Y)\) where \(E \subseteq X\).
-  If \(X\) is a topological space and \(Y\) is a Hausdorff topological space (see \cref{ii:ex:2.5.4}), prove the equivalence of \cref{ii:3.1.5}(c)(d) in this setting, as well as an analogue of \cref{ii:3.1.6}.
+  Use \cref{ii:3.1.5.c} to define a notion of a limiting value of a function \(f : E \to Y\) from one topological space \((X, \mathcal{F}_X)\) to another \((Y, \mathcal{F}_Y)\) where \(E \subseteq X\).
+  If \(X\) is a topological space and \(Y\) is a Hausdorff topological space (see \cref{ii:ex:2.5.4}), prove the equivalence of \cref{ii:3.1.5.c,ii:3.1.5.d} in this setting, as well as an analogue of \cref{ii:3.1.6}.
   What happens to these statements of \(Y\) is not Hausdorff?
 \end{ex}
 
@@ -540,7 +540,7 @@
       g(x) & \text{if } x \neq x_0
     \end{dcases}
   \]
-  By \cref{ii:3.1.5}(c) we know that \(f^*\) and \(g^*\) are continuous at \(x_0\) from \((X, d)\) to \((\R, d_1)\).
+  By \cref{ii:3.1.5.c} we know that \(f^*\) and \(g^*\) are continuous at \(x_0\) from \((X, d)\) to \((\R, d_1)\).
   Thus, by \cref{ii:2.2.3} we have
   \begin{align*}
      & f^* + g^* \text{ is continuous at } x_0 \text{ from } (X, d) \text{ to } (\R, d_1)                                          \\
@@ -588,7 +588,7 @@
                                                                                     M \neq 0
                                                                                   \end{dcases}
   \end{align*}
-  by \cref{ii:3.1.5}(a)(d) we know that
+  by \cref{ii:3.1.5.a,ii:3.1.5.d} we know that
   \begin{align*}
      & d_1 - \lim_{x \to x_0 ; x \in E} (f + g)(x) = L + M                                          \\
      & d_1 - \lim_{x \to x_0 ; x \in E} (f - g)(x) = L - M                                          \\

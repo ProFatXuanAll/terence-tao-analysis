@@ -105,12 +105,12 @@
   Since \(f\) is piecewise constant with respect to \(\mathbf{P}\), by \cref{i:11.2.7} we know that \(f\) is piecewise constant with respect to \(\mathbf{P} \# \mathbf{P}'\).
   So we have
   \begin{align*}
-    p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f & = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \abs{J}                        &                 & \by{i:11.2.9}    \\
-                                              & = \sum_{J \in \bigcup_{K \in \mathbf{P}} \mathbf{P}_K} c_J \abs{J}                                               \\
-                                              & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_J \abs{J}             &                 & \by{i:7.1.11}[e] \\
-                                              & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_K \abs{J}             & (J \subseteq K)                    \\
-                                              & = \sum_{K \in \mathbf{P}} c_K \bigg(\sum_{J \in \mathbf{P}_K} \abs{J}\bigg)                                      \\
-                                              & = \sum_{K \in \mathbf{P}} c_K \abs{K}                                       &                 & \by{i:11.1.13}   \\
+    p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f & = \sum_{J \in \mathbf{P} \# \mathbf{P}'} c_J \abs{J}                        &                 & \by{i:11.2.9}   \\
+                                              & = \sum_{J \in \bigcup_{K \in \mathbf{P}} \mathbf{P}_K} c_J \abs{J}                                              \\
+                                              & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_J \abs{J}             &                 & \by{i:7.1.11.e} \\
+                                              & = \sum_{K \in \mathbf{P}} \sum_{J \in \mathbf{P}_K} c_K \abs{J}             & (J \subseteq K)                   \\
+                                              & = \sum_{K \in \mathbf{P}} c_K \bigg(\sum_{J \in \mathbf{P}_K} \abs{J}\bigg)                                     \\
+                                              & = \sum_{K \in \mathbf{P}} c_K \abs{K}                                       &                 & \by{i:11.1.13}  \\
                                               & = p.c. \int_{[\mathbf{P}]} f.                                               &                 & \by{i:11.2.9}
   \end{align*}
   Using similar arguments, we can show that \(p.c. \int_{[\mathbf{P}']} f = p.c. \int_{[\mathbf{P} \# \mathbf{P}']} f\).
@@ -131,25 +131,25 @@
 \begin{thm}[Laws of integration]\label{i:11.2.16}
   Let \(I\) be a bounded interval, and let \(f : I \to \R\) and \(g : I \to \R\) be piecewise constant functions on \(I\).
   \begin{enumerate}
-    \item We have \(p.c. \int_I (f + g) = p.c. \int_I f + p.c. \int_I g\).
-    \item For any real number \(c\), we have \(p.c. \int_I (cf) = c (p.c. \int_I f)\).
-    \item We have \(p.c. \int_I (f - g) = p.c. \int_I f - p.c. \int_I g\).
-    \item If \(f(x) \geq 0\) for all \(x \in I\), then \(p.c. \int_I f \geq 0\).
-    \item If \(f(x) \geq g(x)\) for all \(x \in I\), then \(p.c. \int_I f \geq p.c. \int_I g\).
-    \item If \(f\) is the constant function \(f(x) = c\) for all \(x \in I\), then \(p.c. \int_I f = c \abs{I}\).
-    \item Let \(J\) be a bounded interval containing \(I\) (i.e., \(I \subseteq J\)), and let \(F : J \to \R\) be the function
-          \[
-            F(x) \coloneqq \begin{dcases}
-              f(x) & \text{if } x \in I    \\
-              0    & \text{if } x \notin I
-            \end{dcases}
-          \]
-          Then \(F\) is piecewise constant on \(J\), and \(p.c. \int_J F = p.c. \int_I f\).
-    \item Suppose that \(\set{J, K}\) is a partition of \(I\) into two intervals \(J\) and \(K\).
-          Then the function \(f|_J : J \to \R\) and \(f|_K : K \to \R\) are piecewise constant on \(J\) and \(K\) respectively, and we have
-          \[
-            p.c. \int_I f = p.c. \int_J f|_J + p.c. \int_K f|_K.
-          \]
+    \item\label{i:11.2.16.a} We have \(p.c. \int_I (f + g) = p.c. \int_I f + p.c. \int_I g\).
+    \item\label{i:11.2.16.b} For any real number \(c\), we have \(p.c. \int_I (cf) = c (p.c. \int_I f)\).
+    \item\label{i:11.2.16.c} We have \(p.c. \int_I (f - g) = p.c. \int_I f - p.c. \int_I g\).
+    \item\label{i:11.2.16.d} If \(f(x) \geq 0\) for all \(x \in I\), then \(p.c. \int_I f \geq 0\).
+    \item\label{i:11.2.16.e} If \(f(x) \geq g(x)\) for all \(x \in I\), then \(p.c. \int_I f \geq p.c. \int_I g\).
+    \item\label{i:11.2.16.f} If \(f\) is the constant function \(f(x) = c\) for all \(x \in I\), then \(p.c. \int_I f = c \abs{I}\).
+    \item\label{i:11.2.16.g} Let \(J\) be a bounded interval containing \(I\) (i.e., \(I \subseteq J\)), and let \(F : J \to \R\) be the function
+    \[
+      F(x) \coloneqq \begin{dcases}
+        f(x) & \text{if } x \in I    \\
+        0    & \text{if } x \notin I
+      \end{dcases}
+    \]
+    Then \(F\) is piecewise constant on \(J\), and \(p.c. \int_J F = p.c. \int_I f\).
+    \item\label{i:11.2.16.h} Suppose that \(\set{J, K}\) is a partition of \(I\) into two intervals \(J\) and \(K\).
+    Then the function \(f|_J : J \to \R\) and \(f|_K : K \to \R\) are piecewise constant on \(J\) and \(K\) respectively, and we have
+    \[
+      p.c. \int_I f = p.c. \int_J f|_J + p.c. \int_K f|_K.
+    \]
   \end{enumerate}
 \end{thm}
 
@@ -161,10 +161,10 @@
   Then by \cref{i:11.2.1} \(c_{f|_J} + c_{g|_J}\) is the constant value of \((f + g)|_J\) for each \(J \in \mathbf{P}\).
   Thus, \(f + g\) is piecewise constant with respect to \(\mathbf{P}\) and
   \begin{align*}
-    p.c. \int_I f + p.c. \int_I g & = p.c. \int_{[\mathbf{P}]} f + p.c. \int_{[\mathbf{P}]} g                             &  & \by{i:11.2.14}   \\
-                                  & = \sum_{J \in \mathbf{P}} c_{f|_J} \abs{J} + \sum_{J \in \mathbf{P}} c_{g|_J} \abs{J} &  & \by{i:11.2.9}    \\
-                                  & = \sum_{J \in \mathbf{P}} (c_{f|_J} + c_{g|_J}) \abs{J}                               &  & \by{i:7.1.11}[f] \\
-                                  & = p.c. \int_{[\mathbf{P}]} (f + g)                                                    &  & \by{i:11.2.9}    \\
+    p.c. \int_I f + p.c. \int_I g & = p.c. \int_{[\mathbf{P}]} f + p.c. \int_{[\mathbf{P}]} g                             &  & \by{i:11.2.14}  \\
+                                  & = \sum_{J \in \mathbf{P}} c_{f|_J} \abs{J} + \sum_{J \in \mathbf{P}} c_{g|_J} \abs{J} &  & \by{i:11.2.9}   \\
+                                  & = \sum_{J \in \mathbf{P}} (c_{f|_J} + c_{g|_J}) \abs{J}                               &  & \by{i:7.1.11.f} \\
+                                  & = p.c. \int_{[\mathbf{P}]} (f + g)                                                    &  & \by{i:11.2.9}   \\
                                   & = p.c. \int_I (f + g).                                                                &  & \by{i:11.2.14}
   \end{align*}
 \end{proof}
@@ -176,10 +176,10 @@
   Then by \cref{i:11.2.1} \(c \cdot c_J\) is the constant value of \((cf)|_J\).
   Thus, \(cf\) is piecewise constant with respect to \(\mathbf{P}\) and
   \begin{align*}
-    c \bigg(p.c. \int_I f\bigg) & = c \bigg(p.c. \int_{[\mathbf{P}]} f\bigg)          &  & \by{i:11.2.14}   \\
-                                & = c \bigg(\sum_{J \in \mathbf{P}} c_J \abs{J}\bigg) &  & \by{i:11.2.9}    \\
-                                & = \sum_{J \in \mathbf{P}} c \cdot c_J \abs{J}       &  & \by{i:7.1.11}[g] \\
-                                & = p.c. \int_{[\mathbf{P}]} (c f)                    &  & \by{i:11.2.9}    \\
+    c \bigg(p.c. \int_I f\bigg) & = c \bigg(p.c. \int_{[\mathbf{P}]} f\bigg)          &  & \by{i:11.2.14}  \\
+                                & = c \bigg(\sum_{J \in \mathbf{P}} c_J \abs{J}\bigg) &  & \by{i:11.2.9}   \\
+                                & = \sum_{J \in \mathbf{P}} c \cdot c_J \abs{J}       &  & \by{i:7.1.11.g} \\
+                                & = p.c. \int_{[\mathbf{P}]} (c f)                    &  & \by{i:11.2.9}   \\
                                 & = p.c. \int_I (c f).                                &  & \by{i:11.2.14}
   \end{align*}
 \end{proof}
@@ -187,9 +187,9 @@
 \begin{proof}{(c)}
   We have
   \begin{align*}
-    p.c. \int_I f - p.c. \int_I g & = p.c. \int_I f + (-1) p.c. \int_I g                        \\
-                                  & = p.c. \int_I f + p.c. \int_I (-g)   &  & \by{i:11.2.16}[b] \\
-                                  & = p.c. \int_I \big(f + (-g)\big)     &  & \by{i:11.2.16}[a] \\
+    p.c. \int_I f - p.c. \int_I g & = p.c. \int_I f + (-1) p.c. \int_I g                       \\
+                                  & = p.c. \int_I f + p.c. \int_I (-g)   &  & \by{i:11.2.16.b} \\
+                                  & = p.c. \int_I \big(f + (-g)\big)     &  & \by{i:11.2.16.a} \\
                                   & = p.c. \int_I (f - g).               &  & \by{i:9.2.1}
   \end{align*}
 \end{proof}
@@ -201,9 +201,9 @@
   Since \(f(x) \geq 0\) for every \(x \in I\), we have \(c_J \geq 0\) and \(c_J \abs{J} \geq 0\) for every \(J \in \mathbf{P}\).
   Thus
   \begin{align*}
-    p.c. \int_I f & = p.c. \int_{[\mathbf{P}]} f          &  & \by{i:11.2.14}   \\
-                  & = \sum_{J \in \mathbf{P}} c_J \abs{J} &  & \by{i:11.2.9}    \\
-                  & \geq \sum_{J \in \mathbf{P}} 0        &  & \by{i:7.1.11}[h] \\
+    p.c. \int_I f & = p.c. \int_{[\mathbf{P}]} f          &  & \by{i:11.2.14}  \\
+                  & = \sum_{J \in \mathbf{P}} c_J \abs{J} &  & \by{i:11.2.9}   \\
+                  & \geq \sum_{J \in \mathbf{P}} 0        &  & \by{i:7.1.11.h} \\
                   & = 0.
   \end{align*}
 \end{proof}
@@ -211,8 +211,8 @@
 \begin{proof}{(e)}
   Since \(f(x) \geq g(x)\) for all \(x \in I\), we have \(f(x) - g(x) \geq 0\) for all \(x \in I\) and
   \begin{align*}
-    p.c. \int_I f - p.c. \int_I g & = p.c. \int_I (f - g) &  & \by{i:11.2.16}[c] \\
-                                  & \geq 0.               &  & \by{i:11.2.16}[d]
+    p.c. \int_I f - p.c. \int_I g & = p.c. \int_I (f - g) &  & \by{i:11.2.16.c} \\
+                                  & \geq 0.               &  & \by{i:11.2.16.d}
   \end{align*}
   Thus
   \[
@@ -223,15 +223,15 @@
 \begin{proof}{(f)}
   Since \(\set{I}\) is a partition of \(I\), we have
   \begin{align*}
-    p.c. \int_I f & = p.c. \int_{[I]} f        &  & \by{i:11.2.14}   \\
-                  & = \sum_{J \in I} c \abs{J} &  & \by{i:11.2.9}    \\
-                  & = c \sum_{J \in I} \abs{J} &  & \by{i:7.1.11}[g] \\
+    p.c. \int_I f & = p.c. \int_{[I]} f        &  & \by{i:11.2.14}  \\
+                  & = \sum_{J \in I} c \abs{J} &  & \by{i:11.2.9}   \\
+                  & = c \sum_{J \in I} \abs{J} &  & \by{i:7.1.11.g} \\
                   & = c \abs{I}.               &  & \by{i:11.1.13}
   \end{align*}
 \end{proof}
 
 \begin{proof}{(g)}
-  If \(I = \emptyset\), then by \cref{i:11.2.3} \(F\) is piecewise constant with respect to \(\set{J}\), and by \cref{i:11.2.16}(f) we have
+  If \(I = \emptyset\), then by \cref{i:11.2.3} \(F\) is piecewise constant with respect to \(\set{J}\), and by \cref{i:11.2.16.f} we have
   \[
     p.c. \int_J F = 0 \abs{J} = 0 = p.c \int_I f.
   \]
@@ -259,7 +259,7 @@
   \begin{align*}
     p.c. \int_J F & = p.c. \int_{[\mathbf{P} \cup \set{I_1, I_2}]} F                              &  & \by{i:11.2.14}         \\
                   & = \sum_{K \in \mathbf{P} \cup \set{I_1, I_2}} c_K \abs{K}                     &  & \by{i:11.2.9}          \\
-                  & = c_{I_1} \abs{I_1} + \sum_{K \in \mathbf{P}} c_K \abs{K} + c_{I_2} \abs{I_2} &  & \by{i:7.1.11}[e]       \\
+                  & = c_{I_1} \abs{I_1} + \sum_{K \in \mathbf{P}} c_K \abs{K} + c_{I_2} \abs{I_2} &  & \by{i:7.1.11.e}        \\
                   & = 0 \abs{I_1} + \sum_{K \in \mathbf{P}} c_K \abs{K} + 0 \abs{I_2}             &  & \text{(by hypothesis)} \\
                   & = \sum_{K \in \mathbf{P}} c_K \abs{K}                                                                     \\
                   & = p.c. \int_{[\mathbf{P}]} f                                                  &  & \by{i:11.2.9}          \\
@@ -287,11 +287,11 @@
   Similarly, for each \(S \in \mathbf{P}_K\), we define \(c_S \in \R\) to be the constant value of \(f|_K\).
   Then we have
   \begin{align*}
-    p.c. \int_J f|_J + p.c. \int_K f|_K & = p.c. \int_{[\mathbf{P}_J]} f|_J + p.c. \int_{[\mathbf{P}_K]} f|_K             &  & \by{i:11.2.14}   \\
-                                        & = \sum_{S \in \mathbf{P}_J} c_S \abs{S} + \sum_{S \in \mathbf{P}_K} c_S \abs{S} &  & \by{i:7.1.11}[e] \\
-                                        & = \sum_{S \in \mathbf{P}_J \cup \mathbf{P}_K} c_S \abs{S}                       &  & \by{i:11.2.9}    \\
-                                        & = \sum_{S \in \mathbf{P}} c_S \abs{S}                                                                 \\
-                                        & = p.c. \int_{[\mathbf{P}]} f                                                    &  & \by{i:11.2.9}    \\
+    p.c. \int_J f|_J + p.c. \int_K f|_K & = p.c. \int_{[\mathbf{P}_J]} f|_J + p.c. \int_{[\mathbf{P}_K]} f|_K             &  & \by{i:11.2.14}  \\
+                                        & = \sum_{S \in \mathbf{P}_J} c_S \abs{S} + \sum_{S \in \mathbf{P}_K} c_S \abs{S} &  & \by{i:7.1.11.e} \\
+                                        & = \sum_{S \in \mathbf{P}_J \cup \mathbf{P}_K} c_S \abs{S}                       &  & \by{i:11.2.9}   \\
+                                        & = \sum_{S \in \mathbf{P}} c_S \abs{S}                                                                \\
+                                        & = p.c. \int_{[\mathbf{P}]} f                                                    &  & \by{i:11.2.9}   \\
                                         & = p.c. \int_I f.                                                                &  & \by{i:11.2.14}
   \end{align*}
 \end{proof}

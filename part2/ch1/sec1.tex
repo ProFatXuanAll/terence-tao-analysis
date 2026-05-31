@@ -32,10 +32,10 @@
   A metric space \((X, d)\) is a space \(X\) of objects (called \emph{points}), together with a \emph{distance function} or \emph{metric} \(d : X \times X \to [0, +\infty)\), which associates to each pair \(x, y\) of points in \(X\) a non-negative real number \(d(x, y) \geq 0\).
   Furthermore, the metric must satisfy the following four axioms:
   \begin{enumerate}
-    \item For any \(x \in X\), we have \(d(x, x) = 0\).
-    \item (Positivity) For any distinct \(x, y \in X\), we have \(d(x, y) > 0\).
-    \item (Symmetry) For any \(x, y \in X\), we have \(d(x, y) = d(y, x)\).
-    \item (Triangle inequality) For any \(x, y, z \in X\), we have \(d(x, z) \leq d(x, y) + d(y, z)\).
+    \item\label{ii:1.1.2.a} For any \(x \in X\), we have \(d(x, x) = 0\).
+    \item\label{ii:1.1.2.b} (Positivity) For any distinct \(x, y \in X\), we have \(d(x, y) > 0\).
+    \item\label{ii:1.1.2.c} (Symmetry) For any \(x, y \in X\), we have \(d(x, y) = d(y, x)\).
+    \item\label{ii:1.1.2.d} (Triangle inequality) For any \(x, y, z \in X\), we have \(d(x, z) \leq d(x, y) + d(y, z)\).
   \end{enumerate}
 \end{defn}
 
@@ -174,11 +174,11 @@
   Let \(x = (x_1, \dots, x_n)\) be a point in \(\R^n\).
   Then the following four statements are equivalent:
   \begin{enumerate}
-    \item \((x^{(k)})_{k = m}^\infty\) converges to \(x\) with respect to the Euclidean metric \(d_{l^2}\).
-    \item \((x^{(k)})_{k = m}^\infty\) converges to \(x\) with respect to the taxi-cab metric \(d_{l^1}\).
-    \item \((x^{(k)})_{k = m}^\infty\) converges to \(x\) with respect to the sup norm metric \(d_{l^\infty}\).
-    \item For every \(1 \leq j \leq n\), the sequence \((x_j^{(k)})_{k = m}^\infty\) converges to \(x_j\).
-          (Notice that this is a sequence of real numbers, not of points in \(\R^n\).)
+    \item\label{ii:1.1.18.a} \((x^{(k)})_{k = m}^\infty\) converges to \(x\) with respect to the Euclidean metric \(d_{l^2}\).
+    \item\label{ii:1.1.18.b} \((x^{(k)})_{k = m}^\infty\) converges to \(x\) with respect to the taxi-cab metric \(d_{l^1}\).
+    \item\label{ii:1.1.18.c} \((x^{(k)})_{k = m}^\infty\) converges to \(x\) with respect to the sup norm metric \(d_{l^\infty}\).
+    \item\label{ii:1.1.18.d} For every \(1 \leq j \leq n\), the sequence \((x_j^{(k)})_{k = m}^\infty\) converges to \(x_j\).
+    (Notice that this is a sequence of real numbers, not of points in \(\R^n\).)
   \end{enumerate}
 \end{prop}
 
@@ -201,7 +201,7 @@
 \end{proof}
 
 \begin{note}
-  Because of the equivalence of \cref{ii:1.1.18}(a), (b) and (c), we say that the Euclidean, taxicab, and sup norm metrics on \(\R^n\) are \emph{equivalent}.
+  Because of the equivalence of \cref{ii:1.1.18.a}, (b) and (c), we say that the Euclidean, taxicab, and sup norm metrics on \(\R^n\) are \emph{equivalent}.
   (There are infinite-dimensional analogues of the Euclidean, taxicab, and sup norm metrics which are \emph{not} equivalent.)
 \end{note}
 
@@ -226,11 +226,11 @@
   By \cref{ii:1.1.14} we have \(\lim_{n \to \infty} d(x^{(n)}, x) = 0\) and \(\lim_{n \to \infty} d(x^{(n)}, x') = 0\).
   So
   \begin{align*}
-             & \lim_{n \to \infty} d(x^{(n)}, x) + \lim_{n \to \infty} d(x^{(n)}, x') = 0                         \\
-    \implies & \lim_{n \to \infty} \bigg(d(x^{(n)}, x) + d(x^{(n)}, x')\bigg) = 0                                 \\
-    \implies & d(x, x') = \lim_{n \to \infty} d(x, x') \leq 0                             &  & \by{ii:1.1.2}[d]   \\
-    \implies & d(x, x') = 0                                                               &  & \by{ii:1.1.2}[a,b] \\
-    \implies & x = x'.                                                                    &  & \by{ii:1.1.2}[a]
+             & \lim_{n \to \infty} d(x^{(n)}, x) + \lim_{n \to \infty} d(x^{(n)}, x') = 0                                 \\
+    \implies & \lim_{n \to \infty} \bigg(d(x^{(n)}, x) + d(x^{(n)}, x')\bigg) = 0                                         \\
+    \implies & d(x, x') = \lim_{n \to \infty} d(x, x') \leq 0                             &  & \by{ii:1.1.2.d}            \\
+    \implies & d(x, x') = 0                                                               &  & \by{ii:1.1.2.a,ii:1.1.2.b} \\
+    \implies & x = x'.                                                                    &  & \by{ii:1.1.2.a}
   \end{align*}
 \end{proof}
 
@@ -339,22 +339,22 @@
 
 \begin{proof}{(a)}
   Let \(X = \R\), and let \(d(x, y) = 1\) for all \(x, y \in \R\).
-  Then \((X, d)\) does not satisfy \cref{ii:1.1.2}(a) but (bcd).
+  Then \((X, d)\) does not satisfy \cref{ii:1.1.2.a} but (bcd).
 \end{proof}
 
 \begin{proof}{(b)}
   Let \(X = \R\) and let \(d(x, y) = 0\) for all \(x, y \in \R\).
-  Then \((X, d)\) does not satisfy \cref{ii:1.1.2}(b) but (acd).
+  Then \((X, d)\) does not satisfy \cref{ii:1.1.2.b} but (acd).
 \end{proof}
 
 \begin{proof}{(c)}
   Let \(X = \set{1, 2}\), let \(x, y \in X\) and let \(d(x, y) = x^y\) if \(x \neq y\) and \(d(x, y) = 0\) if \(x = y\).
-  Then \((X, d)\) does not satisfy \cref{ii:1.1.2}(c) but (abd).
+  Then \((X, d)\) does not satisfy \cref{ii:1.1.2.c} but (abd).
 \end{proof}
 
 \begin{proof}{(d)}
   Let \(X = \R^+\), let \(x, y \in \R^+\) and let \(d(x, y) = \max(x, y)\) if \(x \neq y\) and \(d(x, y) = 0\) if \(x = y\).
-  Then \((X, d)\) does not satisfy \cref{ii:1.1.2}(d) but (abc).
+  Then \((X, d)\) does not satisfy \cref{ii:1.1.2.d} but (abc).
 \end{proof}
 
 \begin{ex}\label{ii:ex:1.1.4}
@@ -848,15 +848,15 @@
   \end{align*}
   Since
   \begin{align*}
-    d(x_n, y_n) & \leq d(x_n, x) + d(x, y_n)           &  & \by{ii:1.1.2}[d] \\
-                & \leq d(x_n, x) + d(x, y) + d(y, y_n) &  & \by{ii:1.1.2}[d] \\
-                & = d(x_n, x) + d(x, y) + d(y_n, y)    &  & \by{ii:1.1.2}[c]
+    d(x_n, y_n) & \leq d(x_n, x) + d(x, y_n)           &  & \by{ii:1.1.2.d} \\
+                & \leq d(x_n, x) + d(x, y) + d(y, y_n) &  & \by{ii:1.1.2.d} \\
+                & = d(x_n, x) + d(x, y) + d(y_n, y)    &  & \by{ii:1.1.2.c}
   \end{align*}
   and
   \begin{align*}
-    d(x, y) & \leq d(x, x_n) + d(x_n, y)               &  & \by{ii:1.1.2}[d] \\
-            & \leq d(x, x_n) + d(x_n, y_n) + d(y_n, y) &  & \by{ii:1.1.2}[d] \\
-            & = d(x_n, x) + d(x_n, y_n) + d(y_n, y),   &  & \by{ii:1.1.2}[c]
+    d(x, y) & \leq d(x, x_n) + d(x_n, y)               &  & \by{ii:1.1.2.d} \\
+            & \leq d(x, x_n) + d(x_n, y_n) + d(y_n, y) &  & \by{ii:1.1.2.d} \\
+            & = d(x_n, x) + d(x_n, y_n) + d(y_n, y),   &  & \by{ii:1.1.2.c}
   \end{align*}
   we have
   \begin{align*}

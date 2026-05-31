@@ -7,7 +7,7 @@
 
 \begin{proof}
   Let \(f\) be any element of \(C(\R / \Z ; \C)\);
-  we know that \(f\) is bounded (by \cref{ii:5.1.5}(a)), so that we have some \(M > 0\) such that \(\abs{f(x)} \leq M\) for all \(x \in \R\).
+  we know that \(f\) is bounded (by \cref{ii:5.1.5.a}), so that we have some \(M > 0\) such that \(\abs{f(x)} \leq M\) for all \(x \in \R\).
 
   Let \(\varepsilon > 0\) be arbitrary.
   Since \(f\) is uniformly continuous (by \cref{ii:2.3.5}), there exists a \(\delta > 0\) such that \(\abs{f(x) - f(y)} \leq \varepsilon\) whenever \(\abs{x - y} \leq \delta\).
@@ -18,11 +18,11 @@
   Let \(x\) be any real number.
   We have
   \begin{align*}
-     & \abs{f(x) - f * P(x)}                                                                             \\
-     & = \abs{f(x) - P * f(x)}                                                   &  & \by{ii:5.4.4}[a,b] \\
-     & = \abs{f(x) - \int_{[0, 1]} f(x - y) P(y) \; dy}                          &  & \by{ii:5.4.2}      \\
-     & = \abs{\int_{[0, 1]} f(x) P(y) \; dy - \int_{[0, 1]} f(x - y) P(y) \; dy} &  & \by{ii:5.4.5}[a]   \\
-     & = \abs{\int_{[0, 1]} \big(f(x) - f(x - y)\big) P(y) \; dy}                                        \\
+     & \abs{f(x) - f * P(x)}                                                                                     \\
+     & = \abs{f(x) - P * f(x)}                                                   &  & \by{ii:5.4.4.a,ii:5.4.4.b} \\
+     & = \abs{f(x) - \int_{[0, 1]} f(x - y) P(y) \; dy}                          &  & \by{ii:5.4.2}              \\
+     & = \abs{\int_{[0, 1]} f(x) P(y) \; dy - \int_{[0, 1]} f(x - y) P(y) \; dy} &  & \by{ii:5.4.5.a}            \\
+     & = \abs{\int_{[0, 1]} \big(f(x) - f(x - y)\big) P(y) \; dy}                                                \\
      & \leq \int_{[0, 1]} \abs{f(x) - f(x - y)} P(y) \; dy.                      &  & \by{ii:5.2.2}
   \end{align*}
   The right-hand side can be split as
@@ -73,14 +73,14 @@
 \begin{lem}[Basic properties of periodic convolution]\label{ii:5.4.4}
   Let \(f, g, h \in C(\R / \Z ; \C)\).
   \begin{enumerate}
-    \item (Closure)
-          The convolution \(f * g\) is continuous and \(\Z\)-periodic.
-          In other words, \(f * g \in C(\R / \Z ; \C)\).
-    \item (Commutativity)
-          We have \(f * g = g * f\).
-    \item (Bilinearity)
-          We have \(f * (g + h) = f * g + f * h\) and \((f + g) * h = f * h + g * h\).
-          For any complex number \(c\), we have \(c(f * g) = (cf) * g = f * (cg)\).
+    \item\label{ii:5.4.4.a} (Closure)
+    The convolution \(f * g\) is continuous and \(\Z\)-periodic.
+    In other words, \(f * g \in C(\R / \Z ; \C)\).
+    \item\label{ii:5.4.4.b} (Commutativity)
+    We have \(f * g = g * f\).
+    \item\label{ii:5.4.4.c} (Bilinearity)
+    We have \(f * (g + h) = f * g + f * h\) and \((f + g) * h = f * h + g * h\).
+    For any complex number \(c\), we have \(c(f * g) = (cf) * g = f * (cg)\).
   \end{enumerate}
 \end{lem}
 
@@ -130,38 +130,38 @@
 \end{proof}
 
 \begin{proof}{(c)}
-  By \cref{ii:5.1.5}(b) we know that \(f + g, g + h, cf, cg \in C(\R / \Z ; \C)\).
+  By \cref{ii:5.1.5.b} we know that \(f + g, g + h, cf, cg \in C(\R / \Z ; \C)\).
   Thus, \(f * (g + h), (f + g) * h, (cf) * g, f * (cg)\) are well-defined.
   Let \(x \in \R\).
   Then we have
   \begin{align*}
-     & \big(f * (g + h)\big)(x)                                                                                                 \\
-     & = \int_{[0, 1]} f(y) \cdot (g + h)(x - y) \; dy                         &  & \by{ii:5.4.2}                               \\
-     & = \int_{[0, 1]} f(y) \cdot \big(g(x - y) + h(x - y)\big) \; dy                                                           \\
-     & = \int_{[0, 1]} f(y) g(x - y) + f(y) h(x - y) \; dy                                                                      \\
-     & = \int_{[0, 1]} f(y) g(x - y) \; dy + \int_{[0, 1]} f(y) h(x - y) \; dy &  & \text{(cf the proof of \cref{ii:5.2.5}(c))} \\
-     & = (f * g)(x) + (f * h)(x)                                               &  & \by{ii:5.4.2}                               \\
+     & \big(f * (g + h)\big)(x)                                                                                                \\
+     & = \int_{[0, 1]} f(y) \cdot (g + h)(x - y) \; dy                         &  & \by{ii:5.4.2}                              \\
+     & = \int_{[0, 1]} f(y) \cdot \big(g(x - y) + h(x - y)\big) \; dy                                                          \\
+     & = \int_{[0, 1]} f(y) g(x - y) + f(y) h(x - y) \; dy                                                                     \\
+     & = \int_{[0, 1]} f(y) g(x - y) \; dy + \int_{[0, 1]} f(y) h(x - y) \; dy &  & \text{(cf the proof of \cref{ii:5.2.5.c})} \\
+     & = (f * g)(x) + (f * h)(x)                                               &  & \by{ii:5.4.2}                              \\
      & = (f * g + f * h)(x)
   \end{align*}
   and
   \begin{align*}
-    \big((cf) * g\big)(x) & = \int_{[0, 1]} (cf)(y) \cdot g(x - y) \; dy &  & \by{ii:5.4.2}                               \\
-                          & = \int_{[0, 1]} c f(y) g(x - y) \; dy                                                         \\
-                          & = c \int_{[0, 1]} f(y) g(x - y) \; dy        &  & \text{(cf the proof of \cref{ii:5.2.5}(c))} \\
+    \big((cf) * g\big)(x) & = \int_{[0, 1]} (cf)(y) \cdot g(x - y) \; dy &  & \by{ii:5.4.2}                              \\
+                          & = \int_{[0, 1]} c f(y) g(x - y) \; dy                                                        \\
+                          & = c \int_{[0, 1]} f(y) g(x - y) \; dy        &  & \text{(cf the proof of \cref{ii:5.2.5.c})} \\
                           & = c (f * g)(x).                              &  & \by{ii:5.4.2}
   \end{align*}
   Since \(x\) was arbitrary, we conclude that \(f * (g + h) = f * g + f * h\) and \((cf) * g = c (f * g)\).
   This implies
   \begin{align*}
-    (f + g) * h & = h * (f + g)   &  & \by{ii:5.4.4}[b]              \\
+    (f + g) * h & = h * (f + g)   &  & \by{ii:5.4.4.b}               \\
                 & = h * f + h * g &  & \text{(from the proof above)} \\
-                & = f * h + g * h &  & \by{ii:5.4.4}[b]
+                & = f * h + g * h &  & \by{ii:5.4.4.b}
   \end{align*}
   and
   \begin{align*}
-    f * (cg) & = (cg) * f  &  & \by{ii:5.4.4}[b]              \\
+    f * (cg) & = (cg) * f  &  & \by{ii:5.4.4.b}               \\
              & = c(g * f)  &  & \text{(from the proof above)} \\
-             & = c(f * g). &  & \by{ii:5.4.4}[b]
+             & = c(f * g). &  & \by{ii:5.4.4.b}
   \end{align*}
 \end{proof}
 
@@ -173,15 +173,15 @@
   \]
   To prove this, we compute
   \begin{align*}
-    f * e_n(x) & = \int_{[0, 1]} f(y) e_n(x - y) \; dy                        &  & \by{ii:5.4.2}                               \\
-               & = \int_{[0, 1]} f(y) e^{2 \pi i n (x - y)} \; dy             &  & \by{ii:5.3.1}                               \\
-               & = e^{2 \pi i n x} \int_{[0, 1]} f(y) e^{- 2 \pi i n y} \; dy &  & \text{(cf the proof of \cref{ii:5.2.5}(c))} \\
-               & = \inner*{f, e_n} e^{2 \pi i n x}                            &  & \by{ii:5.2.1}                               \\
-               & = \hat{f}(n) e^{2 \pi i n x}                                 &  & \by{ii:5.3.7}                               \\
+    f * e_n(x) & = \int_{[0, 1]} f(y) e_n(x - y) \; dy                        &  & \by{ii:5.4.2}                              \\
+               & = \int_{[0, 1]} f(y) e^{2 \pi i n (x - y)} \; dy             &  & \by{ii:5.3.1}                              \\
+               & = e^{2 \pi i n x} \int_{[0, 1]} f(y) e^{- 2 \pi i n y} \; dy &  & \text{(cf the proof of \cref{ii:5.2.5.c})} \\
+               & = \inner*{f, e_n} e^{2 \pi i n x}                            &  & \by{ii:5.2.1}                              \\
+               & = \hat{f}(n) e^{2 \pi i n x}                                 &  & \by{ii:5.3.7}                              \\
                & = \hat{f}(n) e_n                                             &  & \by{ii:5.3.1}
   \end{align*}
   as desired.
-  More generally, we see from \cref{ii:5.4.4}(c) that for any trigonometric polynomial \(P = \sum_{n = -N}^N c_n e_n\), we have
+  More generally, we see from \cref{ii:5.4.4.c} that for any trigonometric polynomial \(P = \sum_{n = -N}^N c_n e_n\), we have
   \[
     f * P = \sum_{n = -N}^N c_n (f * e_n) = \sum_{n = -N}^N \hat{f}(n) c_n e_n.
   \]
@@ -193,8 +193,8 @@
   Let \(\varepsilon > 0\) and \(0 < \delta < 1 / 2\).
   A function \(f \in C(\R / \Z ; \C)\) is said to be a \emph{periodic \((\varepsilon, \delta)\) approximation to the identity} if the following properties are true:
   \begin{enumerate}
-    \item \(f(x) \geq 0\) for all \(x \in \R\), and \(\int_{[0, 1]} f(x) \; dx = 1\).
-    \item We have \(f(x) < \varepsilon\) for all \(\delta \leq \abs{x} \leq 1 - \delta\).
+    \item\label{ii:5.4.5.a} \(f(x) \geq 0\) for all \(x \in \R\), and \(\int_{[0, 1]} f(x) \; dx = 1\).
+    \item\label{ii:5.4.5.b} We have \(f(x) < \varepsilon\) for all \(\delta \leq \abs{x} \leq 1 - \delta\).
   \end{enumerate}
 \end{defn}
 
@@ -214,10 +214,10 @@
   We proof the claim by induction on \(N\) and we start with \(N = 1\).
   For \(N = 1\), we have
   \begin{align*}
-    \sum_{n = 0}^0 (1 - \abs{n - 1 + 1}) \cdot e_n & = \sum_{n = 0}^0 (1 - \abs{n}) e_n                        \\
-                                                   & = 1 e_0                                                   \\
-                                                   & = 1                                 &  & \by{ii:4.5.2}[e] \\
-                                                   & = e_0^2                             &  & \by{ii:4.5.2}[e] \\
+    \sum_{n = 0}^0 (1 - \abs{n - 1 + 1}) \cdot e_n & = \sum_{n = 0}^0 (1 - \abs{n}) e_n                       \\
+                                                   & = 1 e_0                                                  \\
+                                                   & = 1                                 &  & \by{ii:4.5.2.e} \\
+                                                   & = e_0^2                             &  & \by{ii:4.5.2.e} \\
                                                    & = \bigg(\sum_{n = 0}^0 e_n\bigg)^2.
   \end{align*}
   Thus, the base case holds.
@@ -301,7 +301,7 @@
   \begin{align*}
     \sum_{n = 0}^{N - 1} e_n(x) & = \sum_{n = 0}^{N - 1} \big(e_1(x)\big)^n                                                                                &  & \by{ii:ex:4.6.16}         \\
                                 & = \dfrac{\big(e_1(x)\big)^N - 1}{e_1(x) - 1}                                                                             &  & \text{(geometric series)} \\
-                                & = \dfrac{\big(e_1(x)\big)^N - e_0(x)}{e_1(x) - e_0(x)}                                                                   &  & \by{ii:4.5.2}[e]          \\
+                                & = \dfrac{\big(e_1(x)\big)^N - e_0(x)}{e_1(x) - e_0(x)}                                                                   &  & \by{ii:4.5.2.e}           \\
                                 & = \dfrac{e_N(x) - e_0(x)}{e_1(x) - e_0(x)}                                                                               &  & \by{ii:ex:4.6.16}         \\
                                 & = \dfrac{e^{2 \pi i N x} - e^0}{e^{2 \pi i x} - e^0}                                                                     &  & \by{ii:5.3.1}             \\
                                 & = \dfrac{e^{\pi i N x} e^{\pi i N x} - e^{\pi i N x} e^{-\pi i N x}}{e^{\pi i x} e^{\pi i x} - e^{\pi i x} e^{-\pi i x}} &  & \by{ii:ex:4.6.16}         \\
@@ -318,7 +318,7 @@
            & = \dfrac{\abs{e^{\pi i (N - 1) x}}^2 \big(\sin(\pi N x)\big)^2}{N \big(\sin(\pi x)\big)^2}               & (x \in \R)                                 \\
            & = \dfrac{e^{\pi i (N - 1) x} e^{- \pi i (N - 1) x} \big(\sin(\pi N x)\big)^2}{N \big(\sin(\pi x)\big)^2} &            & \by{ii:4.6.11}                \\
            & = \dfrac{e^0 \big(\sin(\pi N x)\big)^2}{N \big(\sin(\pi x)\big)^2}                                       &            & \by{ii:ex:4.6.16}             \\
-           & = \dfrac{\big(\sin(\pi N x)\big)^2}{N \big(\sin(\pi x)\big)^2}.                                          &            & \by{ii:4.5.2}[e]
+           & = \dfrac{\big(\sin(\pi N x)\big)^2}{N \big(\sin(\pi x)\big)^2}.                                          &            & \by{ii:4.5.2.e}
   \end{align*}
   When \(x\) is an integer, the geometric series formula does not apply, but one has \(F_N(x) = N\) in that case, as one can see by direct computation.
   In either case we see that \(F_N(x) \geq 0\) for any \(x\).
@@ -349,7 +349,7 @@
                                   & = \begin{dcases}
                                         \big(\sin(\pi x)\big)^2  & \text{if } x \geq 0 \\
                                         \big(-\sin(\pi x)\big)^2 & \text{if } x < 0
-                                      \end{dcases} &  & \by{ii:4.7.2}[c] \\
+                                      \end{dcases} &  & \by{ii:4.7.2.c} \\
                                   & = \big(\sin(\pi x)\big)^2
   \end{align*}
   and
@@ -369,16 +369,16 @@
     \implies & \begin{dcases}
                  \sin(\pi \delta) < \sin(\pi \abs{x}) \leq \sin(\dfrac{\pi}{2}) & \text{if } \abs{x} \leq \dfrac{1}{2} \\
                  \sin(\dfrac{\pi}{2}) > \sin(\pi \abs{x}) > -\sin(-\pi \delta)  & \text{if } \abs{x} > \dfrac{1}{2}    \\
-               \end{dcases}    &  & \by{ii:4.7.5}[a]    \\
+               \end{dcases}    &  & \by{ii:4.7.5.a}    \\
     \implies & \begin{dcases}
                  \sin(\pi \delta) < \sin(\pi \abs{x}) \leq \sin(\dfrac{\pi}{2}) & \text{if } \abs{x} \leq \dfrac{1}{2} \\
                  \sin(\dfrac{\pi}{2}) > \sin(\pi \abs{x}) > \sin(\pi \delta)    & \text{if } \abs{x} > \dfrac{1}{2}    \\
-               \end{dcases}    &  & \by{ii:4.7.2}[c]    \\
+               \end{dcases}    &  & \by{ii:4.7.2.c}    \\
     \implies & \sin(\pi \delta) < \sin(\pi \abs{x}),
   \end{align*}
   we have
   \begin{align*}
-             & 0 < \big(\sin(\pi \delta)\big)^2 < \big(\sin(\pi \abs{x})\big)^2                  &  & \by{ii:ac:4.7.2}[d]           \\
+             & 0 < \big(\sin(\pi \delta)\big)^2 < \big(\sin(\pi \abs{x})\big)^2                  &  & \by{ii:ac:4.7.2.d}            \\
     \implies & 0 < \big(\sin(\pi \delta)\big)^2 < \big(\sin(\pi x)\big)^2                        &  & \text{(from the proof above)} \\
     \implies & 0 < \dfrac{1}{\big(\sin(\pi x)\big)^2} < \dfrac{1}{\big(\sin(\pi \delta)\big)^2}.
   \end{align*}

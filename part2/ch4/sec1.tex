@@ -39,10 +39,10 @@
 \begin{thm}\label{ii:4.1.6}
   Let \(\sum_{n = 0}^\infty c_n (x - a)^n\) be a formal power series, and let \(R\) be its radius of convergence.
   \begin{enumerate}
-    \item (Divergence outside of the radius of convergence)
-          If \(x \in \R\) is such that \(\abs{x - a} > R\), then the series \(\sum_{n = 0}^\infty c_n (x - a)^n\) is divergent for that value of \(x\).
-    \item (Convergence inside the radius of convergence)
-          If \(x \in \R\) is such that \(\abs{x - a} < R\), then the series \(\sum_{n = 0}^\infty c_n (x - a)^n\) is absolutely convergent for that value of \(x\).
+    \item\label{ii:4.1.6.a} (Divergence outside of the radius of convergence)
+    If \(x \in \R\) is such that \(\abs{x - a} > R\), then the series \(\sum_{n = 0}^\infty c_n (x - a)^n\) is divergent for that value of \(x\).
+    \item\label{ii:4.1.6.b} (Convergence inside the radius of convergence)
+    If \(x \in \R\) is such that \(\abs{x - a} < R\), then the series \(\sum_{n = 0}^\infty c_n (x - a)^n\) is absolutely convergent for that value of \(x\).
   \end{enumerate}
   For parts (c)-(e) we assume that \(R > 0\)
   (i.e., the series converges at at least one other point than \(x = a\)).
@@ -50,16 +50,16 @@
   this function is guaranteed to exist by (b).
   \begin{enumerate}
     \setcounter{enumi}{2}
-    \item (Uniform convergence on compact sets)
-          For any \(0 < r < R\), the series \(\sum_{n = 0}^\infty c_n (x - a)^n\) converges uniformly to \(f\) on the compact interval \([a - r, a + r]\).
-          In particular, \(f\) is continuous on \((a - R, a + R)\).
-    \item (Differentiation of power series)
-          The function \(f\) is differentiable on \((a - R, a + R)\), and for any \(0 < r < R\), the series \(\sum_{n = 1}^\infty n c_n (x - a)^{n - 1}\) converges uniformly to \(f'\) on the interval \([a - r, a + r]\).
-    \item (Integration of power series)
-          For any closed interval \([y, z]\) contained in \((a - R, a + R)\), we have
-          \[
-            \int_{[y, z]} f = \sum_{n = 0}^\infty c_n \dfrac{(z - a)^{n + 1} - (y - a)^{n + 1}}{n + 1}.
-          \]
+    \item\label{ii:4.1.6.c} (Uniform convergence on compact sets)
+    For any \(0 < r < R\), the series \(\sum_{n = 0}^\infty c_n (x - a)^n\) converges uniformly to \(f\) on the compact interval \([a - r, a + r]\).
+    In particular, \(f\) is continuous on \((a - R, a + R)\).
+    \item\label{ii:4.1.6.d} (Differentiation of power series)
+    The function \(f\) is differentiable on \((a - R, a + R)\), and for any \(0 < r < R\), the series \(\sum_{n = 1}^\infty n c_n (x - a)^{n - 1}\) converges uniformly to \(f'\) on the interval \([a - r, a + r]\).
+    \item\label{ii:4.1.6.e} (Integration of power series)
+    For any closed interval \([y, z]\) contained in \((a - R, a + R)\), we have
+    \[
+      \int_{[y, z]} f = \sum_{n = 0}^\infty c_n \dfrac{(z - a)^{n + 1} - (y - a)^{n + 1}}{n + 1}.
+    \]
   \end{enumerate}
 \end{thm}
 
@@ -119,7 +119,7 @@
   \[
     \forall x \in [a - r, a + r] \implies \abs{x - a} < r < R,
   \]
-  by \cref{ii:4.1.6}(b) we know that \(\sum_{n = 0}^\infty c_n (x - a)^n\) is absolutely convergent for all \(x \in [a - r, a + r]\).
+  by \cref{ii:4.1.6.b} we know that \(\sum_{n = 0}^\infty c_n (x - a)^n\) is absolutely convergent for all \(x \in [a - r, a + r]\).
   For each \(n \in \N\), we define \(f_n : [a - r, a + r] \to \R\) by setting \(f_n(x) = c_n (x - a)^n\) for all \(x \in [a - r, a + r]\).
   Since
   \begin{align*}
@@ -183,7 +183,7 @@
     \forall x \in [a - r, a + r], \sum_{n = 1}^\infty f_n'(x) = \sum_{n = 1}^\infty n c_n (x - a)^{n - 1} = \sum_{n = 1}^\infty c_{n - 1}' (x - a)^{n - 1} = \sum_{n = 0}^\infty c_n' (x - a)^n.
   \]
   For each \(n \in \N\), we define \(g_n : [a - r, a + r] \to \R\) by setting \(g_n(x) = c_n' (x - a)^n\) for all \(x \in [a - r, a + r]\).
-  By \cref{ii:4.1.6}(c) we know that
+  By \cref{ii:4.1.6.c} we know that
   \begin{align*}
              & \bigg(\sum_{n = 0}^N g_n\bigg)_{N = 0}^\infty \text{ converges uniformly to some } g : [a - r, a + r] \to \R              \\
              & \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\R \times \R}                                               \\
@@ -238,7 +238,7 @@
     \implies & -R < -r \leq y - a < z - a \leq r < R \\
     \implies & [y, z] \subseteq [a - r, a + r].
   \end{align*}
-  By \cref{ii:4.1.6}(c) we know that
+  By \cref{ii:4.1.6.c} we know that
   \begin{align*}
      & \bigg(x \mapsto \sum_{n = 0}^N c_n (x - a)^n\bigg)_{N = 0}^\infty \text{ converges uniformly to }                                       \\
      & f = \bigg(x \mapsto \sum_{n = 0}^\infty c_n (x - a)^n\bigg) \text{ on } [a - r, a + r] \text{ with respect to } d_{l^1}|_{\R \times \R} \\
@@ -272,8 +272,8 @@
 
 \begin{rmk}\label{ii:4.1.9}
   Note that while \cref{ii:4.1.6} assures us that the power series \(\sum_{n = 0}^\infty c_n (x - a)^n\) will converge pointwise on the interval \((a - R, a + R)\), it need not converge uniformly on that interval
-  (see \cref{ii:ex:4.1.2}(e)).
-  On the other hand, \cref{ii:4.1.6}(c) assures us that the power series will converge uniformly on any smaller interval \([a - r, a + r]\).
+  (see \cref{ii:ex:4.1.2.e}).
+  On the other hand, \cref{ii:4.1.6.c} assures us that the power series will converge uniformly on any smaller interval \([a - r, a + r]\).
   In particular, being uniformly convergent on every closed subinterval of \((a - R, a + R)\) is not enough to guarantee being uniformly convergent on all of \((a - R, a + R)\).
 \end{rmk}
 
@@ -290,11 +290,11 @@
 \begin{ex}\label{ii:ex:4.1.2}
   Give examples of a formal power series \(\sum_{n = 0}^\infty c_n x^n\) centered at \(0\) with radius of convergence \(1\), which
   \begin{enumerate}
-    \item diverges at both \(x = 1\) and \(x = -1\);
-    \item diverges at \(x = 1\) but converges at \(x = -1\);
-    \item converges at \(x = 1\) but diverges at \(x = -1\);
-    \item converges at both \(x = 1\) and \(x = -1\).
-    \item converges pointwise on \((-1, 1)\), but does not converge uniformly on \((-1, 1)\).
+    \item\label{ii:ex:4.1.2.a} diverges at both \(x = 1\) and \(x = -1\);
+    \item\label{ii:ex:4.1.2.b} diverges at \(x = 1\) but converges at \(x = -1\);
+    \item\label{ii:ex:4.1.2.c} converges at \(x = 1\) but diverges at \(x = -1\);
+    \item\label{ii:ex:4.1.2.d} converges at both \(x = 1\) and \(x = -1\).
+    \item\label{ii:ex:4.1.2.e} converges pointwise on \((-1, 1)\), but does not converge uniformly on \((-1, 1)\).
   \end{enumerate}
 \end{ex}
 
